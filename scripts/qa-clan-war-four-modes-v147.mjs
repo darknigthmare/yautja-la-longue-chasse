@@ -5,14 +5,14 @@
  */
 import assert from "node:assert/strict";
 import {createServer} from "node:http";
-import {readFile,mkdir,writeFile} from "node:fs/promises";
+import {mkdir,writeFile} from "node:fs/promises";
 import {resolve} from "node:path";
 import {fileURLToPath} from "node:url";
 import {build} from "esbuild";
 import {chromium} from "playwright-core";
 const root=fileURLToPath(new URL("../",import.meta.url));
 const out=resolve(root,"outputs/clan-war-four-modes-v147");
-const key="yautja.clan-war.v115.operations.free.v1";
+const key="yautja.clan-war.v115.operations.fenced.v2";
 const sentinel="yautja.v147.unrelated-campaign-safe";
 const bundle=await build({
   absWorkingDir:root,entryPoints:["tests/browser/clan-war-v147-four-modes.fixture.tsx"],

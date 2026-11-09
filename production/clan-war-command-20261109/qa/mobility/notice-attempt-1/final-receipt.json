@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T11:33:07.625764+00:00",
+  "passed": true,
+  "scope": "Current-build native notice complement to the existing full MOB-001 run, not a new 29-check run.",
+  "qualification": "QUALIFIE_BORNE_NOTICE_COMPLEMENT",
+  "buildId": "mdrvYovYvfvhuJqeZXn1D",
+  "checksPassed": 13,
+  "checksFailed": 0,
+  "screenshotsOpened": 3,
+  "priorFullMOB001Run": {
+    "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-receipt.json",
+    "bytes": 9015,
+    "sha256": "5af29c4976c6685d3b0053386be61ee9d05b4ae0755bc4854361ea402425b7d3"
+  },
+  "priorFullMOB001Build": "nItYejsE7HSH4L0ykJM5K",
+  "fullMOB001RunRepeatedOnThisBuild": false,
+  "fixture": {
+    "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-save.json",
+    "sha256": "ead3b25a4e04303b58a55f49a7d3b93eeccd0b52c9ca21416ad51c7d5d89893b",
+    "owner": "2026-11-08T17:00:00.000Z",
+    "earnedOnBuild": "nItYejsE7HSH4L0ykJM5K",
+    "disclosedReplay": true,
+    "replayedExistingEarnedResults": true,
+    "fabricatedNewResults": false,
+    "initialMarks": 9580,
+    "initialRecoveryDebt": 21
+  },
+  "pauseNoticeCorrect": true,
+  "failedWriteNoticeRemainsHonest": true,
+  "successfulRetryPublishesActualAcknowledgement": true,
+  "staleFailureAlertRemoved": true,
+  "regularFlushAnnouncementScope": "Verified by the source delta: the regular flushNow success branch was not changed. No screen-reader cadence measurement is claimed.",
+  "profilePreservedExceptExplicitRecoveryDebtAndTime": true,
+  "unrelatedMissionsTrophiesInventoryPreserved": true,
+  "finalMarks": 9559,
+  "paidDebt": 21,
+  "quotaObservation": {
+    "armed": false,
+    "rejections": [
+      {
+        "beforeRevision": 147,
+        "beforeTick": 57,
+        "attemptedTick": 87
+      }
+    ]
+  },
+  "sourceBeforeAfterEqual": true,
+  "implementationSources": {
+    "buildId": "mdrvYovYvfvhuJqeZXn1D",
+    "sources": [
+      {
+        "file": "app/game/GameClient.tsx",
+        "sha256": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343"
+      },
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "6fd223d741945bfc0f8010053fae3e34751ccfccbc47504b33c8c4dd2935b409"
+      },
+      {
+        "file": "app/game/MobilityGarage.tsx",
+        "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76"
+      },
+      {
+        "file": "app/game/MobilityGarage.module.css",
+        "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03"
+      },
+      {
+        "file": "app/game/MobilityDrivingYard.tsx",
+        "sha256": "17c5d57a3d09b1bc702fb550d56f9fa920db1f27d2b5d9d26aa1529cc75f2383"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
+      },
+      {
+        "file": "app/game/types.ts",
+        "sha256": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946"
+      },
+      {
+        "file": "app/game/systems/mobility/ledger.ts",
+        "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+      },
+      {
+        "file": "app/game/systems/mobility/controller.ts",
+        "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+      },
+      {
+        "file": "app/game/systems/mobility/course.ts",
+        "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+      },
+      {
+        "file": "scripts/qa-mobility-notice-smoke-20261109.mjs",
+        "sha256": "e47bba0f9fe23672f4ff5df1befb6bc69389ab84ca30c6589b34019375a1e68e"
+      }
+    ]
+  },
+  "servedJsResponsesCompared": 51,
+  "servedUniqueJsFiles": 31,
+  "servedCssResponsesCompared": 7,
+  "servedUniqueCssFiles": 5,
+  "allServedJsCssMatchBuiltFiles": true,
+  "errors": 0,
+  "consoleErrors": 0,
+  "httpErrors": 0,
+  "requestFailures": 0,
+  "physicalControllerTested": false,
+  "humanArtApproved": false,
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/report.browser-run.json",
+      "bytes": 38221,
+      "sha256": "69a2e2fcae399e114956d7fa8cfb36f7a8f5ee69020d541b5a1f7012015f0712"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/report.json",
+      "bytes": 38355,
+      "sha256": "eb98ae3bca5692b6243ab6e64c0a0ab93b3433ada80eb39962fe0164ca9457b3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/screenshot-inspection.json",
+      "bytes": 1359,
+      "sha256": "1c76e823e3fa2c4fe22483320fe87fd4afd3a536507cf6aca44d622930c67206"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/initial-replayed-save.json",
+      "bytes": 14523,
+      "sha256": "ead3b25a4e04303b58a55f49a7d3b93eeccd0b52c9ca21416ad51c7d5d89893b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/fixture-disclosure.json",
+      "bytes": 417,
+      "sha256": "c6bd4e00b60a1d243c80bc4c50fbf0469f487c17b31a84bb691aa5d96ee995c5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/final-save.json",
+      "bytes": 15090,
+      "sha256": "8f5866069e347f45c23da3629d0247a72a163d25b769879d23c904cae6a81259"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/recipe-used.mjs",
+      "bytes": 12974,
+      "sha256": "e47bba0f9fe23672f4ff5df1befb6bc69389ab84ca30c6589b34019375a1e68e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/01-pause-confirmed.png",
+      "bytes": 210859,
+      "sha256": "252a5e96ae33d94fad923946b667f0b3594c7d95ef1048f0365e629d7a38787c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/02-refused-write.png",
+      "bytes": 211944,
+      "sha256": "5fef086176ae21b466552404fd1a9d68f1de3c870ec600ac3a4e23378a1521d9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/03-retry-acknowledged.png",
+      "bytes": 207571,
+      "sha256": "31b615e962768126172b5e6e16cedd906b2c2f3215c7392f5a2d7bd3f254a36d"
+    }
+  ]
+}

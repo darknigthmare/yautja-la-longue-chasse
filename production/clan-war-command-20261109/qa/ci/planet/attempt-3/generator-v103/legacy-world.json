@@ -1,0 +1,418 @@
+{
+  "format": "yautja-war-planet",
+  "version": 102,
+  "code": "proc-v102-m1ln-1110011-xkz70",
+  "recipe": {
+    "version": 102,
+    "seed": 1028507,
+    "landform": "continents",
+    "landCoverage": "balanced",
+    "coast": "rugged",
+    "landBiome": "temperate",
+    "surface": "water",
+    "biomeDiversity": "varied",
+    "atmosphere": "haze"
+  },
+  "name": "Kelion-M1LN",
+  "description": "Kelion-M1LN combine forêts tempérées et océans et détroits. Atmosphère voilée, aérosols diffus et nébulosité modérée. Six régions et 36 territoires forment un front connecté.",
+  "environment": {
+    "climate": "Tempéré, précipitations saisonnières",
+    "atmosphere": "Atmosphère voilée, aérosols diffus et nébulosité modérée",
+    "liquid": "Eaux libres entre les terres ; les liaisons stratégiques relient les rives.",
+    "gravity": 0.71,
+    "dayLengthHours": 27
+  },
+  "landmasses": [
+    {
+      "landmassId": "proc-v102-m1ln-1110011-xkz70-land-1",
+      "name": "Terres des Brasiers 1",
+      "kind": "continent",
+      "description": "Terres des Brasiers 1 porte 8 territoires de 2 régions. Des caps et des baies irrégulières jalonnent ses côtes."
+    },
+    {
+      "landmassId": "proc-v102-m1ln-1110011-xkz70-land-2",
+      "name": "Île des Balises 2",
+      "kind": "island",
+      "description": "Île des Balises 2 porte 4 territoires de 1 région. Des caps et des baies irrégulières jalonnent ses côtes."
+    },
+    {
+      "landmassId": "proc-v102-m1ln-1110011-xkz70-land-3",
+      "name": "Terres des Refuges 3",
+      "kind": "continent",
+      "description": "Terres des Refuges 3 porte 8 territoires de 2 régions. Des caps et des baies irrégulières jalonnent ses côtes."
+    },
+    {
+      "landmassId": "proc-v102-m1ln-1110011-xkz70-land-4",
+      "name": "Terres des Horizons 4",
+      "kind": "continent",
+      "description": "Terres des Horizons 4 porte 8 territoires de 2 régions. Des caps et des baies irrégulières jalonnent ses côtes."
+    },
+    {
+      "landmassId": "proc-v102-m1ln-1110011-xkz70-land-5",
+      "name": "Terres des Roches 5",
+      "kind": "continent",
+      "description": "Terres des Roches 5 porte 8 territoires de 2 régions. Des caps et des baies irrégulières jalonnent ses côtes."
+    }
+  ],
+  "regions": [
+    {
+      "regionId": "CON-REG01",
+      "biome": "temperate",
+      "climate": "Tempéré, précipitations saisonnières",
+      "features": [
+        "falaises couvertes de mousses",
+        "dorsales de granite"
+      ],
+      "resources": [
+        "Port",
+        "Quartier",
+        "Atelier",
+        "Passage",
+        "Assemblée",
+        "Fort"
+      ],
+      "description": "Marches de la Longue Veille : forêts tempérées, falaises couvertes de mousses et dorsales de granite. Ses six territoires occupent 2 masses terrestres. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG02",
+      "biome": "tundra",
+      "climate": "Froid, vents persistants",
+      "features": [
+        "crêtes exposées",
+        "plaines de lichens"
+      ],
+      "resources": [
+        "Habitat",
+        "Dépôt",
+        "Passage",
+        "Atelier",
+        "Observation",
+        "Assemblée"
+      ],
+      "description": "Dorsale des Ombres : toundras, crêtes exposées et plaines de lichens. Ses six territoires occupent 2 masses terrestres. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG03",
+      "biome": "mountain",
+      "climate": "Montagnard, gradients d’altitude",
+      "features": [
+        "hautes crêtes",
+        "cols étroits"
+      ],
+      "resources": [
+        "Fort",
+        "Transport",
+        "Dépôt",
+        "Atelier",
+        "Passage"
+      ],
+      "description": "Terrasses du Crépuscule : montagnes, hautes crêtes et cols étroits. Ses six territoires occupent 2 masses terrestres. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG04",
+      "biome": "jungle",
+      "climate": "Chaud et humide",
+      "features": [
+        "terrasses humides",
+        "falaises tropicales"
+      ],
+      "resources": [
+        "Assemblée",
+        "Eau",
+        "Transport",
+        "Dépôt",
+        "Habitat",
+        "Atelier"
+      ],
+      "description": "Caps des Brasiers : jungles, terrasses humides et falaises tropicales. Ses six territoires occupent 1 masse terrestre. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG05",
+      "biome": "swamp",
+      "climate": "Humide, poches de brouillard",
+      "features": [
+        "forêts inondables",
+        "berges tourbeuses"
+      ],
+      "resources": [
+        "Fort",
+        "Assemblée",
+        "Passage",
+        "Commandement",
+        "Dépôt",
+        "Observation"
+      ],
+      "description": "Plateaux des Balises : marécages, forêts inondables et berges tourbeuses. Ses six territoires occupent 1 masse terrestre. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG06",
+      "biome": "tundra",
+      "climate": "Froid, vents persistants",
+      "features": [
+        "vallées de gel",
+        "crêtes exposées"
+      ],
+      "resources": [
+        "Atelier",
+        "Habitat",
+        "Assemblée",
+        "Passage",
+        "Service",
+        "Port"
+      ],
+      "description": "Vallées des Refuges : toundras, vallées de gel et crêtes exposées. Ses six territoires occupent 1 masse terrestre. Les sites et revenus restent ceux du scénario stratégique."
+    }
+  ],
+  "traits": [
+    {
+      "id": "coasts",
+      "name": "Géographie du front",
+      "description": "4 continents, 1 île et 4 liaisons entre terres distinctes."
+    },
+    {
+      "id": "gravity",
+      "name": "Gravité indicative",
+      "description": "0,71 g. Donnée descriptive du monde ; aucun multiplicateur de déplacement ou de combat n’est appliqué."
+    },
+    {
+      "id": "day",
+      "name": "Durée du jour",
+      "description": "27 heures. Donnée descriptive ; l’éclairage de l’atlas reste réglé par ses modules visuels."
+    },
+    {
+      "id": "regional",
+      "name": "Diversité des terres",
+      "description": "5 familles de biomes réparties sur six régions administratives."
+    }
+  ],
+  "strategicDossier": {
+    "territoryCount": 36,
+    "regionCount": 6,
+    "topology": "insular",
+    "scale": "standard",
+    "headquarters": {
+      "CON-F01": "CON-T01",
+      "CON-F02": "CON-T08"
+    },
+    "headquartersDistance": 3,
+    "headquartersPath": [
+      "CON-T01",
+      "CON-T02",
+      "CON-T07",
+      "CON-T08"
+    ],
+    "crossingCount": 0,
+    "chokepointTerritoryIds": [
+      "CON-T03",
+      "CON-T05",
+      "CON-T16",
+      "CON-T18",
+      "CON-T22",
+      "CON-T27",
+      "CON-T28",
+      "CON-T31"
+    ],
+    "regions": [
+      {
+        "regionId": "CON-REG01",
+        "name": "Marches de la Longue Veille",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG02",
+          "CON-REG04"
+        ],
+        "borderLinks": 4,
+        "crossingLinks": 0,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [
+          "CON-T03",
+          "CON-T05"
+        ],
+        "headquarters": [
+          "CON-F01"
+        ]
+      },
+      {
+        "regionId": "CON-REG02",
+        "name": "Dorsale des Ombres",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG01",
+          "CON-REG05"
+        ],
+        "borderLinks": 4,
+        "crossingLinks": 0,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [],
+        "headquarters": [
+          "CON-F02"
+        ]
+      },
+      {
+        "regionId": "CON-REG03",
+        "name": "Terrasses du Crépuscule",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG06"
+        ],
+        "borderLinks": 2,
+        "crossingLinks": 0,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 0
+        },
+        "chokepointTerritoryIds": [
+          "CON-T16",
+          "CON-T18"
+        ],
+        "headquarters": []
+      },
+      {
+        "regionId": "CON-REG04",
+        "name": "Caps des Brasiers",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG01",
+          "CON-REG05"
+        ],
+        "borderLinks": 3,
+        "crossingLinks": 0,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [
+          "CON-T22"
+        ],
+        "headquarters": []
+      },
+      {
+        "regionId": "CON-REG05",
+        "name": "Plateaux des Balises",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG02",
+          "CON-REG04",
+          "CON-REG06"
+        ],
+        "borderLinks": 4,
+        "crossingLinks": 0,
+        "income": {
+          "s": 2,
+          "m": 0,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [
+          "CON-T27",
+          "CON-T28"
+        ],
+        "headquarters": []
+      },
+      {
+        "regionId": "CON-REG06",
+        "name": "Vallées des Refuges",
+        "territoryCount": 6,
+        "neighboringRegionIds": [
+          "CON-REG03",
+          "CON-REG05"
+        ],
+        "borderLinks": 3,
+        "crossingLinks": 0,
+        "income": {
+          "s": 2,
+          "m": 2,
+          "i": 1
+        },
+        "chokepointTerritoryIds": [
+          "CON-T31"
+        ],
+        "headquarters": []
+      }
+    ]
+  },
+  "materialDossier": {
+    "code": "proc-v102-m1ln-1110011-xkz70",
+    "surface": {
+      "kind": "water",
+      "title": "Océans",
+      "sourceTextureId": "surface-water",
+      "state": "liquid",
+      "substrate": "Eau et sels dissous",
+      "structure": "Houle, courants et écume",
+      "peculiarity": "Les reflets sont indépendants des nuages et des côtes."
+    },
+    "regions": [
+      {
+        "regionId": "CON-REG01",
+        "regionName": "Marches de la Longue Veille",
+        "biome": "temperate",
+        "title": "Forêts tempérées",
+        "sourceTextureId": "land-temperate",
+        "substrate": "Terre minérale et humus",
+        "structure": "Versants boisés, alluvions et clairières",
+        "peculiarity": "Lisières et vallées servent de repères aux frontières régionales."
+      },
+      {
+        "regionId": "CON-REG02",
+        "regionName": "Dorsale des Ombres",
+        "biome": "tundra",
+        "title": "Toundras",
+        "sourceTextureId": "land-tundra",
+        "substrate": "Permafrost, cailloutis et lichens",
+        "structure": "Plaques gelées, vallons ouverts et mousses",
+        "peculiarity": "La neige et la roche distinguent les plaines froides."
+      },
+      {
+        "regionId": "CON-REG03",
+        "regionName": "Terrasses du Crépuscule",
+        "biome": "mountain",
+        "title": "Montagnes",
+        "sourceTextureId": "land-mountain",
+        "substrate": "Roche métamorphique et éboulis",
+        "structure": "Crêtes, ravins et moraines",
+        "peculiarity": "L'altitude apparente ne change pas le graphe des passages."
+      },
+      {
+        "regionId": "CON-REG04",
+        "regionName": "Caps des Brasiers",
+        "biome": "jungle",
+        "title": "Jungles",
+        "sourceTextureId": "land-jungle",
+        "substrate": "Sol ferrugineux et racines",
+        "structure": "Canopées serrées, méandres et escarpements",
+        "peculiarity": "La végétation ne donne aucun camouflage automatique."
+      },
+      {
+        "regionId": "CON-REG05",
+        "regionName": "Plateaux des Balises",
+        "biome": "swamp",
+        "title": "Marécages",
+        "sourceTextureId": "land-swamp",
+        "substrate": "Tourbe, limon et sédiments organiques",
+        "structure": "Tourbières, chenaux et racines",
+        "peculiarity": "Les véritables traversées restent définies par les routes."
+      },
+      {
+        "regionId": "CON-REG06",
+        "regionName": "Vallées des Refuges",
+        "biome": "tundra",
+        "title": "Toundras",
+        "sourceTextureId": "land-tundra",
+        "substrate": "Permafrost, cailloutis et lichens",
+        "structure": "Plaques gelées, vallons ouverts et mousses",
+        "peculiarity": "La neige et la roche distinguent les plaines froides."
+      }
+    ],
+    "rule": "Descriptions et textures uniquement : aucun changement implicite aux déplacements, dégâts, revenus ou routes."
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "format": "yautja-planet-environmental-study",
+  "version": 146,
+  "worldCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "assumedAxialTiltDeg": 45,
+  "season": "southern-solstice",
+  "solarDeclinationDeg": -45,
+  "surfaceKind": "water",
+  "mediumClass": "liquid",
+  "dayLengthPlanetaryHours": 29,
+  "gravityEarthG": 1.39,
+  "physical": {
+    "radiusKm": 6371,
+    "circumferenceKm": 40030,
+    "equatorialRotationKmPerHour": 1380.34,
+    "escapeVelocityKmPerSecond": 13.179,
+    "inferredMeanDensityKgPerM3": 7653
+  },
+  "regions": [
+    {
+      "regionId": "CON-REG01",
+      "name": "Marches des Roches",
+      "latitude": -27.191427,
+      "longitude": -133.335176,
+      "biome": "temperate",
+      "climateDescription": "Tempéré, précipitations saisonnières",
+      "latitudeBand": "subtropical",
+      "daylightFraction": 0.671741,
+      "daylightPlanetaryHours": 19.48,
+      "solarNoonAltitudeDeg": 72.19,
+      "flags": []
+    },
+    {
+      "regionId": "CON-REG02",
+      "name": "Dorsale des Brumes",
+      "latitude": 19.132381,
+      "longitude": -125.761633,
+      "biome": "mountain",
+      "climateDescription": "Montagnard, gradients d’altitude",
+      "latitudeBand": "equatorial",
+      "daylightFraction": 0.38723,
+      "daylightPlanetaryHours": 11.23,
+      "solarNoonAltitudeDeg": 25.87,
+      "flags": []
+    },
+    {
+      "regionId": "CON-REG03",
+      "name": "Terrasses des Veilleurs",
+      "latitude": -4.791269,
+      "longitude": -37.43447,
+      "biome": "jungle",
+      "climateDescription": "Chaud et humide",
+      "latitudeBand": "equatorial",
+      "daylightFraction": 0.526712,
+      "daylightPlanetaryHours": 15.27,
+      "solarNoonAltitudeDeg": 49.79,
+      "flags": []
+    },
+    {
+      "regionId": "CON-REG04",
+      "name": "Caps du Levant",
+      "latitude": -13.538699,
+      "longitude": -32.992247,
+      "biome": "swamp",
+      "climateDescription": "Humide, poches de brouillard",
+      "latitudeBand": "equatorial",
+      "daylightFraction": 0.577408,
+      "daylightPlanetaryHours": 16.74,
+      "solarNoonAltitudeDeg": 58.54,
+      "flags": []
+    },
+    {
+      "regionId": "CON-REG05",
+      "name": "Plateaux des Échos",
+      "latitude": -33.561275,
+      "longitude": 32.479171,
+      "biome": "tundra",
+      "climateDescription": "Froid, vents persistants",
+      "latitudeBand": "subtropical",
+      "daylightFraction": 0.730898,
+      "daylightPlanetaryHours": 21.2,
+      "solarNoonAltitudeDeg": 78.56,
+      "flags": []
+    },
+    {
+      "regionId": "CON-REG06",
+      "name": "Vallées de la Longue Veille",
+      "latitude": -48.027144,
+      "longitude": 95.695956,
+      "biome": "mountain",
+      "climateDescription": "Montagnard, gradients d’altitude",
+      "latitudeBand": "temperate",
+      "daylightFraction": 1,
+      "daylightPlanetaryHours": 29,
+      "solarNoonAltitudeDeg": 86.97,
+      "flags": []
+    },
+    {
+      "regionId": "CON-REG07",
+      "name": "Confins des Ombres",
+      "latitude": 21.612462,
+      "longitude": 97.116041,
+      "biome": "jungle",
+      "climateDescription": "Chaud et humide",
+      "latitudeBand": "equatorial",
+      "daylightFraction": 0.370336,
+      "daylightPlanetaryHours": 10.74,
+      "solarNoonAltitudeDeg": 23.39,
+      "flags": []
+    },
+    {
+      "regionId": "CON-REG08",
+      "name": "Hauteurs du Crépuscule",
+      "latitude": 7.693539,
+      "longitude": 137.146861,
+      "biome": "swamp",
+      "climateDescription": "Humide, poches de brouillard",
+      "latitudeBand": "equatorial",
+      "daylightFraction": 0.456867,
+      "daylightPlanetaryHours": 13.25,
+      "solarNoonAltitudeDeg": 37.31,
+      "flags": []
+    }
+  ],
+  "flags": [],
+  "limitations": [
+    "L'inclinaison est une hypothèse de l'étude, absente des codes V102/V103/V115 ; aucune orbite ni saison réelle n'est simulée.",
+    "L'ensoleillement idéal ignore les nuages, le relief, l'atmosphère et l'éventuelle multiplicité des étoiles.",
+    "La gravité des recettes est descriptive : densité et vitesse d'évasion sont inférées, jamais des propriétés canoniques imposées.",
+    "Les alertes climatiques ne modifient ni les biomes, ni les missions, ni les territoires. Une planète extraterrestre peut justifier ses exceptions.",
+    "Les océans de sable/spores et les champs cristallins ne sont pas assimilés à de l'eau liquide."
+  ]
+}

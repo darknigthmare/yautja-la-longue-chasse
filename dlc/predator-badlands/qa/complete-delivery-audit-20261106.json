@@ -1,0 +1,36 @@
+{
+  "scope": "comparison of complete conversation package against PR121 at 520333c1; local validation only",
+  "sourceCommit": "520333c1ad9e590be2f5c7501c0b79a684812de2",
+  "comparedPrFiles": 54,
+  "packageFiles": 79,
+  "missingPackageFiles": 28,
+  "previousPatchFiles": 16,
+  "previousPatchOmittedAdditionalFiles": 12,
+  "patchContainsOnlyAdditions": true,
+  "patchApplicationTest": "PASS_IN_LOCAL_TEMPORARY_REPOSITORY",
+  "restoredFileBytesMatch": 28,
+  "gitHubApplicationPerformed": false,
+  "archive": {
+    "name": "BADLANDS_PR121_V02_RECONSTRUITE_COMPLET.zip",
+    "bytes": 4931101,
+    "sha256": "db3fc9faf3a6a89a22ef0266a439e72a97bb9ca5701f463bce913484b6101909",
+    "driveFileId": "17W6Wa0tnTm4G2PiF8JDbxO7BQNktJzcX",
+    "driveMetadataSizeVerified": true,
+    "publicSharingEnabled": false
+  },
+  "patch": {
+    "name": "BADLANDS_PR121_IMPORT_COMPLET_28_FICHIERS.patch",
+    "bytes": 6468836,
+    "sha256": "8efda32e10d55b9cbb810fdfa92c28ddd5b220dd224d4249015f7ed4df86eece",
+    "driveFileId": "1w-CzLSPtZuim82I6mayw8uY_bMIpF03B",
+    "driveMetadataSizeVerified": true,
+    "publicSharingEnabled": false
+  },
+  "originalArchiveSha256Checks": 42,
+  "pngFilesVerified": 13,
+  "svgFilesPresent": 18,
+  "legacyAssertionsRerun": 198,
+  "coreTestsRerun": 88,
+  "standaloneV02RebuildMatches": true,
+  "browserTestsRerunThisPass": false
+}

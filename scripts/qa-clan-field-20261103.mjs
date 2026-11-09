@@ -10,8 +10,8 @@ import {build} from "esbuild";
 import {chromium} from "playwright-core";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
-const out=resolve(root,"outputs/clan-field-20261103");
-const key="yautja.clan-war.v115.operations.free.v1";
+const out=resolve(root,process.env.CLAN_FIELD_QA_OUTPUT||"outputs/clan-field-20261103");
+const key="yautja.clan-war.v115.operations.fenced.v2";
 const bundle=await build({absWorkingDir:root,
   entryPoints:["tests/browser/clan-field-20261103.fixture.tsx"],bundle:true,
   platform:"browser",format:"iife",jsx:"automatic",write:false,
@@ -65,11 +65,14 @@ async function runBrowser(){
 
     // Launch a real persisted infiltration via its normal preparation controls.
     await ops.getByRole("button",{name:/^Infiltration et sabotage/}).click();
-    await ops.getByRole("combobox",{name:"Territoire de la Bible V6"}).selectOption(await lab.getAttribute("data-legal-target"));
-    const teams=ops.locator('input[type="checkbox"]');
+    const briefing=page.getByRole("dialog",{name:"Préparer un mandat",exact:true});
+    await briefing.waitFor({state:"visible"});
+    await briefing.getByRole("combobox",{name:"Territoire de la Bible V6"}).selectOption(await lab.getAttribute("data-legal-target"));
+    await briefing.locator('[data-war-briefing-step-button="teams"]').click();
+    const teams=briefing.locator('[data-war-briefing-panel="teams"] input[type="checkbox"]');
     for(let index=await teams.count()-1;index>=1;index--)if(await teams.nth(index).isChecked())await teams.nth(index).uncheck();
     if(!await teams.first().isChecked())await teams.first().check();
-    await ops.getByRole("button",{name:/^Lancer :/}).click();
+    await briefing.getByRole("button",{name:/^Lancer :/}).click();
     await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||"null")?.active?.mode==="stealth",key);
     const archive=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)||"null"),key);
     const rule=ops.getByRole("combobox",{name:"Règle de renfort :"});

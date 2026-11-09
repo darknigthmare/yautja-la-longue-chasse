@@ -1,0 +1,156 @@
+{
+  "schema": 126,
+  "sourceSchema": 120,
+  "status": "design-only",
+  "total": 1,
+  "filteredBy": {
+    "mode": "all",
+    "family": "all",
+    "query": "Musée du Louvre"
+  },
+  "variants": [
+    {
+      "sourceId": "CW120-S-HO-001",
+      "mode": "stealth",
+      "geography": {
+        "worldId": "earth",
+        "worldKind": "earth",
+        "siteName": "Musée du Louvre",
+        "regionName": "Terre — lieu historique/géographique réel",
+        "latitude": 48.8606,
+        "longitude": 2.3376,
+        "accuracy": "region",
+        "earthSiteId": null,
+        "earthReferenceName": "Musée du Louvre",
+        "mapAvailability": "pinned",
+        "worldExplanation": "Évocation fictive d'une mission Yautja SUR TERRE ; coordonnées cartographiques approximatives, pas un événement réel/canonique.",
+        "biomeSource": "lexical-inference"
+      },
+      "environment": {
+        "climate": "temperate",
+        "temperatureRule": "conditions du biome et de la saison, sans chiffre météo inventé",
+        "biome": "zone tempérée terrestre",
+        "terrain": "sol bâti intérieur, matière locale à vérifier",
+        "liquid": "eau uniquement si réseau intérieur attesté",
+        "weather": "pas de météo extérieure à l'intérieur",
+        "light": "éclairage artificiel dépendant du courant",
+        "hazards": [
+          "visibilité locale",
+          "accès instable",
+          "aléas du terrain"
+        ],
+        "isFrozen": false,
+        "allowsNaturalSnow": false,
+        "seasonRule": "météo déterministe cohérente avec le climat",
+        "weatherAdjusted": true,
+        "originalWeather": "aurore striée",
+        "siteKind": "interior",
+        "effectiveHazard": "coupure de lumière intérieure et ronde de surveillance",
+        "originalHazard": "racines qui déplacent les couverts",
+        "effectiveTwist": "le sol bascule sous le poids ; coupure de lumière intérieure et ronde de surveillance transforme l'approche lors de la phase 1.",
+        "climateConfidence": "requires-geographic-verification"
+      },
+      "original": {
+        "id": "CW120-S-HO-001",
+        "version": 120,
+        "mode": "stealth",
+        "family": "homage",
+        "status": "design-only",
+        "title": "Infiltration : Mouvement des caisses — Reconstruction d'écho Musée du Louvre — conduit inférieur",
+        "settingName": "Reconstruction d'écho Musée du Louvre — conduit inférieur",
+        "zoneName": "Hommage géographique fictif · Musée du Louvre",
+        "referenceName": "Musée du Louvre",
+        "referenceWork": null,
+        "referenceContinuity": null,
+        "referenceKind": "real-place-homage",
+        "canonClaim": false,
+        "inspirationNote": "Clin d'œil à Musée du Louvre : volumes/reliefs réinterprétés sur un monde fictif. Aucune guerre Yautja historique revendiquée.",
+        "environment": {
+          "biome": "toundra vitreuse",
+          "terrain": "glace fumée",
+          "liquid": "liquide sombre sous croûte",
+          "sky": "aurores cassées",
+          "altitude": "rez-de-dalle",
+          "layout": "bassin de pompage et salle des filtres ; galeries d'exposition fictives, mezzanines et vitrines occultantes",
+          "scene": "Écho de Musée du Louvre : galeries d'exposition fictives, mezzanines et vitrines occultantes dans toundra vitreuse",
+          "weather": "aurore striée",
+          "timeOfDay": "midi",
+          "cover": "galeries latérales",
+          "entrances": [
+            "aile des transmetteurs",
+            "antichambre du guet"
+          ],
+          "environmentalHazard": "racines qui déplacent les couverts",
+          "hazardsReaction": "Après racines qui déplacent les couverts, la patrouille réévalue sa ligne de vue, pas la position omnisciente du joueur.",
+          "powerFailure": "Les portes motorisées se figent ; utiliser un verrou mécanique fictionnel sans supprimer le risque des patrouilles autonomes.",
+          "mapScaleHint": "16×9 scènes compactes",
+          "territoryShapeRequest": "forme-region-V120-033",
+          "islandShapeRequest": "forme-île-proposée-041",
+          "worldSize": "small",
+          "climateZone": "tempérée rocheuse"
+        },
+        "operation": {
+          "missionType": "Mouvement des caisses",
+          "setup": "déplacer une caisse vide pour débloquer une trappe dans conduit inférieur sur Reconstruction d'écho Musée du Louvre — conduit inférieur.",
+          "primaryObjective": "déplacer une caisse vide pour débloquer une trappe puis gagner le point d'exfiltration",
+          "secondaryObjective": "conserver le chargement officiel intact ; adapter le rythme aux toundra vitreuse.",
+          "gameplayHook": "utiliser une rampe de l'étage inférieur",
+          "twist": "le sol bascule sous le poids ; racines qui déplacent les couverts transforme l'approche lors de la phase 1.",
+          "failure": "un objet apparaît de l'autre côté sans transport ; ou absence des unités nécessaires au retour.",
+          "victoryProof": "interaction réellement déclenchée, état de conserver le chargement officiel intact, puis extraction avec garde et alerte évalués",
+          "fallback": "utiliser une rampe de l'étage inférieur ; en absence de courant : Les portes motorisées se figent ; utiliser un verrou mécanique fictionnel sans supprimer le risque des patrouilles autonomes.",
+          "extraction": "retour discret au sas initial",
+          "recommendedUnitIds": [
+            "W3-U02",
+            "W3-U05"
+          ],
+          "lengthClass": "short",
+          "threat": 2,
+          "dynamicPhases": [
+            "Repérer les patrouilles dans toundra vitreuse",
+            "Approcher depuis bassin de pompage et salle des filtres",
+            "Interagir pour mouvement des caisses",
+            "Quitter l'aire avec l'alerte limitée"
+          ],
+          "resultReceipt": "CW120-S-HO-001-receipt-v1",
+          "neverAutoAnnex": true
+        },
+        "production": {
+          "neededSprites": [
+            "combattants-identifiés-stealth",
+            "décor-toundra vitreuse",
+            "objet-Mouvement des caisses",
+            "vfx-racines qui déplacent les couverts",
+            "surface-glace fumée"
+          ],
+          "neededTiles": [
+            "sol-glace fumée",
+            "liquide-liquide sombre sous croûte",
+            "couverts-galeries latérales",
+            "geom-bassin de pompage et salle des filtres"
+          ],
+          "missingSystems": [
+            "géométrie jouable du terrain",
+            "déclencheurs physiques de mission",
+            "IA adaptée à l'objectif",
+            "assets animés et synchronisés",
+            "audit sauvegarde/rapport unique"
+          ],
+          "gameplayBackend": "clanWarOperationsV115.stealth",
+          "authoredGeneratorTags": [
+            "forme-region-V120-033",
+            "toundra vitreuse",
+            "glace fumée",
+            "liquide sombre sous croûte",
+            "racines qui déplacent les couverts",
+            "aurore striée"
+          ],
+          "uniquenessSignature": "stealth|homage|Reconstruction d'écho Musée du Louvre — conduit inférieur|Mouvement des caisses|bassin de pompage et salle des filtres|racines qui déplacent les couverts"
+        }
+      },
+      "auditWarnings": [
+        "Météo originale remplacée pour cohérence climatique"
+      ]
+    }
+  ]
+}

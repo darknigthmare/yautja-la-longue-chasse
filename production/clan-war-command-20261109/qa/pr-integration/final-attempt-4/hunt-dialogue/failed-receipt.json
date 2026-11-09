@@ -1,0 +1,66 @@
+{
+  "at": "2026-11-09T11:43:46.910349+00:00",
+  "passed": false,
+  "checksCompleted": 143,
+  "screenshotCount": 19,
+  "completedContexts": [
+    {
+      "name": "1440x1000-shared-crown",
+      "completed": true,
+      "checks": 43
+    },
+    {
+      "name": "1440x1000-private-crown",
+      "completed": true,
+      "checks": 8
+    },
+    {
+      "name": "390x844-shared-crown",
+      "completed": true,
+      "checks": 43
+    },
+    {
+      "name": "390x844-private-crown",
+      "completed": true,
+      "checks": 8
+    }
+  ],
+  "errors": [
+    {
+      "message": "AssertionError [ERR_ASSERTION]: {\"visible\":false,\"bounds\":{\"left\":42.59375,\"top\":527.46875,\"right\":279.40625,\"bottom\":677.9375},\"clip\":{\"left\":0,\"top\":181.75,\"right\":320,\"bottom\":677.625}}\n    at file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-hunt-dialogue-browser-20261109.mjs:156:7"
+    }
+  ],
+  "missingAssets": [],
+  "failure": "Strict complete-line framing failed by0.3125 CSS pixel in320x740 shared-crown threshold-guard after scrollIntoViewIfNeeded.",
+  "browserReportSha256": "4425e09190d3e01a85f9ea3d3c72a7b3b5fabbc88baa5655f1a9b7ceda63dcf6",
+  "exactExecutedRecipe": "recipe-used.mjs",
+  "exactExecutedRecipeSha256": "a1fe12e2db4711ebe9a8533ed82d9a24398bef480e15299b20a01144cba2a169",
+  "rawReportUnchanged": true,
+  "diagnosis": {
+    "resultFile": "../hunt-dialogue-scroll-diagnostic/native-wheel-result.json",
+    "resultSha256": "c815e86da48373884cb5952cc1fe1b5556adda13fcd95bf2c17c6a020ce841ca",
+    "targetedRecipe": "../hunt-dialogue-scroll-diagnostic/diagnostic-recipe.mjs",
+    "targetedRecipeSha256": "6d6d11f75f9b6a2bb3e19f0de6438ed8479e15c9242c1419cf2f360e2806bb14",
+    "reproducedOriginalFractionalOverflow": 0.3125,
+    "nativeWheelDelta": 80,
+    "nativeContentScrollTopBefore": 3694,
+    "nativeContentScrollTopAfter": 3774,
+    "strictFrameVisibleAfterRealInput": true,
+    "diagnosticChecks": 8,
+    "diagnosticChecksAreNotAdditionalUniqueCases": true,
+    "applicationChanged": false,
+    "interpretation": "The text can be completely framed through native panel scroll; the nearest-scroll driver left a fractional clipping edge. No geometry tolerance or application change is needed."
+  },
+  "replacementAttempt": "../../final-attempt-5/hunt-dialogue",
+  "limit": "This failed report is historical diagnostic evidence and is never counted as a passing169-check run.",
+  "sourceBookend": {
+    "before": "../source-before.json",
+    "beforeSha256": "5983da32498b092bcd90db6206488af591d4d9529362b84720380d854959956c",
+    "after": "source-after.json",
+    "afterSha256": "3f0bcb04140679c714624b5752f1577dd8d30aa893db4f674121475d6762a138",
+    "appFiles": 1293,
+    "appBytesIdentical": true,
+    "changedPaths": [],
+    "canonicalDriverChangedOnlyAfterOriginalReport": true
+  }
+}

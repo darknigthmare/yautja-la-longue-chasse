@@ -1,0 +1,74 @@
+{
+  "passed": 17,
+  "failed": 0,
+  "screenshotsInspected": 12,
+  "domainTests": 25,
+  "browserVersion": "154.0.8037.57",
+  "nextProductionTested": false,
+  "fullGameClientTested": false,
+  "sourceIdentityBeforeAfterEqual": true,
+  "recipeSha256": "4187efb3c3c5a2cf111a061838f3b4d70b2d5cc345598189e1578832385507fe",
+  "artOneToOneApproved": false,
+  "nativeConfirmationAbortCount": 1,
+  "nonCooperatingLegacyClientActuallyExercised": true,
+  "oldSourceScope": {
+    "commit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+    "exactPinnedSources": [
+      {
+        "path": "app/game/ClanWarOperationsV115.tsx",
+        "sha256": "21ca8570de06a728c53889c0d2fe1658e6942ad5d0da1ff775bb41162e604b86"
+      },
+      {
+        "path": "app/game/systems/clanWarOperationsV115.ts",
+        "sha256": "159fd3ad1b06646705b8d1978d24bfd449c34c0d78b11ab8f875f24c0724d905"
+      }
+    ],
+    "sharedDependencies": "Current files included in source-identity; only the two listed UI/model modules are loaded from the old commit",
+    "jsSha256": "cb04caab79ca5763a90fa92b25a89f8edb0e57ee23f98f8b9d5430becb7d296e",
+    "cssSha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6",
+    "fullHistoricalCheckout": false,
+    "writesViaOriginalUiHandler": true
+  },
+  "files": {
+    "report.browser-run.json": {
+      "bytes": 16184,
+      "sha256": "4afb2bf95b782a65380caa70a3548ecb64e5c6e9b150c52e463e14eabd2e3810"
+    },
+    "report.json": {
+      "bytes": 16360,
+      "sha256": "bcae673b9959cf4ce9f7f29fc6e965106f244c51a58262cf75fd2990ac0342e5"
+    },
+    "source-identity.json": {
+      "bytes": 27341,
+      "sha256": "7e621efbb486b73a52d3ae15dd8043e0178bbe405e1e304af1f31b8178d51768"
+    },
+    "screenshot-inspection.json": {
+      "bytes": 4268,
+      "sha256": "c6a4f8dffbeaac620cf709a44f1a2689dec399c89b2bbde56982fe9f8ba64ec8"
+    },
+    "run.log": {
+      "bytes": 2204,
+      "sha256": "d41407c691c20b1a02d66bce3683a07481da0c84f83a82cc199d4f5ce44cd30a"
+    },
+    "domain-tests-25.tap": {
+      "bytes": 6750,
+      "sha256": "8a8cd722b46bc6304d251f4b4cd29083953b6a52e7499b10c1e870da66f6d0e3"
+    },
+    "driver.executed.mjs.txt": {
+      "bytes": 35517,
+      "sha256": "4187efb3c3c5a2cf111a061838f3b4d70b2d5cc345598189e1578832385507fe"
+    },
+    "legacy-migration-native.json": {
+      "bytes": 109670,
+      "sha256": "26c2d4c50285008f096330170186cb2a13cdb1a875fa9572b16fcde700626966"
+    },
+    "legacy-recovery-before-adoption.json": {
+      "bytes": 4765,
+      "sha256": "21b7425b6551de5f63ce1a2e375b9cc10ef1091de1c2406bb9e6c5d99820d13c"
+    },
+    "legacy-recovery-after-old-write.json": {
+      "bytes": 4808,
+      "sha256": "b7d26278ff989771a4e17881a9117525d00fb8d18fc90dae265b5c3930002795"
+    }
+  }
+}

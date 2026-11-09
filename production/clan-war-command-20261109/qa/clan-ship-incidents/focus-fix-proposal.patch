@@ -1,0 +1,56 @@
+--- a/app/game/ClanShipIncidentPanel.tsx
++++ b/app/game/ClanShipIncidentPanel.tsx
+@@ -102,9 +102,32 @@
+   const [focused, setFocused] = useState(false);
+   const rootRef = useRef<HTMLDetailsElement>(null);
+   const pendingFocusRef = useRef(false);
++  const pendingMaintenanceFocusRef = useRef<{ ownerCreatedAt: string; expectedRevision: number;
++    incidentId: 'sealed-lot' | 'relay-fault'; type: ClanShipIncidentCommand['type']; branch?: 'A' | 'B' } | null>(null);
+   const { save } = controlled;
+   const exit = () => { setFocused(false); if (rootRef.current) rootRef.current.open = false; onExit?.(); };
+   useMenuGamepad(rootRef, open && focused && !suspended, `${save.createdAt}:clan-incidents`, exit);
++  useLayoutEffect(() => {
++    const pending = pendingMaintenanceFocusRef.current;
++    if (!pending || suspended) return;
++    const state = inspectClanShipIncidents(save.clanShipIncidents, save.createdAt).state;
++    if (!state || state.ownerCreatedAt !== pending.ownerCreatedAt || save.createdAt !== pending.ownerCreatedAt) {
++      pendingMaintenanceFocusRef.current = null; return;
++    }
++    if (state.revision < pending.expectedRevision) return;
++    pendingMaintenanceFocusRef.current = null;
++    const event = state.incidents.find(run => run.id === pending.incidentId)?.events.at(-1);
++    const root = rootRef.current;
++    if (state.revision !== pending.expectedRevision || !root?.open || !event || event.revision !== pending.expectedRevision ||
++        event.type !== pending.type || event.branch !== pending.branch) return;
++    const focused = document.activeElement;
++    if (focused && focused !== document.body && !root.contains(focused)) return;
++    const prefix = `[data-clan-incident="${pending.incidentId}"]`;
++    const target = root.querySelector<HTMLElement>(`${prefix} [data-incident-action]:not(:disabled)`) ??
++      root.querySelector<HTMLElement>(`${prefix} [data-incident-guide]:not(:disabled)`) ??
++      root.querySelector<HTMLElement>('[data-incident-return]') ?? root.querySelector<HTMLElement>('summary');
++    target?.focus({ preventScroll: true });
++  }, [save.createdAt, save.clanShipIncidents, suspended]);
+   useLayoutEffect(() => {
+     if (!pendingFocusRef.current || suspended) return;
+     pendingFocusRef.current = false;
+@@ -126,6 +149,11 @@
+   const ongoing = views.filter(view => view.accepted && view.completedRevision === null).length;
+   const act = (command: ClanShipIncidentCommand) => {
+     const result = submitClanShipIncident(controlled, command, observe(), !suspended && !protectedState);
++    if (result.accepted && command.incidentId !== 'contested-trophy') pendingMaintenanceFocusRef.current = {
++      ownerCreatedAt: save.createdAt, expectedRevision: (save.clanShipIncidents?.revision ?? 0) + 1,
++      incidentId: command.incidentId, type: command.type, ...('branch' in command ? { branch: command.branch } : {}),
++    };
++    else if (command.incidentId === 'contested-trophy') pendingMaintenanceFocusRef.current = null;
+     pendingFocusRef.current = result.accepted && command.incidentId === 'contested-trophy'; setStatus(result.message);
+   };
+   const actHearing = (command: ClanShipTrophyHearingCommand) => {
+@@ -139,7 +167,7 @@
+     }} onKeyDown={event => { if (event.key === 'Escape' && !suspended) { event.preventDefault(); event.stopPropagation(); exit(); } }}>
+     <summary><span>Incidents du bord <small>Confinement, circuits et mémoire du clan</small></span><span>{ongoing} intervention{ongoing > 1 ? 's' : ''} en cours</span></summary>
+     {open && <div className={styles.body}>
+-      {onExit && <button type="button" disabled={suspended} onClick={exit}>Reprendre le déplacement · B / Échap</button>}
++      {onExit && <button type="button" disabled={suspended} data-incident-return onClick={exit}>Reprendre le déplacement · B / Échap</button>}
+       <p className={styles.lead}>Les indices et commandes appartiennent aux objets du pont. Rejoins leur point de contrôle puis confirme l’action à portée. Une erreur conserve un passage sûr et un dossier reprenable.</p>
+       {protectedState && <p className={styles.failure}>Le registre doit être récupéré avant une intervention.</p>}
+       <div className={styles.grid}>{CLAN_SHIP_INCIDENTS.map((definition, index) => {

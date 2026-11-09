@@ -1,0 +1,25 @@
+{
+  "id": "predator-badlands",
+  "title": "Predator: Badlands — La Meute de Genna",
+  "version": "0.1.0",
+  "type": "standalone-dlc",
+  "entry": "JOUER_PREDATOR_BADLANDS_STANDALONE.html",
+  "campaigns": [
+    {
+      "id": "weyland",
+      "label": "Weyland-Yutani / synthétiques",
+      "scenes": 16
+    },
+    {
+      "id": "predator",
+      "label": "Dek",
+      "scenes": 30
+    }
+  ],
+  "host": {
+    "repo": "darknigthmare/aliens-tantalus-frontier",
+    "baselineCommit": "496996f5ea557d970ec625aa346876f3eaed1c5f",
+    "baselineVersion": "86.0.0"
+  },
+  "canonPolicy": "Aucun humain inventé; les événements majeurs du film sont verrouillés."
+}

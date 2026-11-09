@@ -1,0 +1,448 @@
+{
+  "version": 1,
+  "asOfDate": "2026-11-09",
+  "baseCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "readyForWorkbook": true,
+  "status": "verified-bounded-dialogue",
+  "runtimeReport": "production/crew-dialogue-20261109/verification.json",
+  "scope": "Complément B05 uniquement. Ni les classeurs ni les trois lots Excel/bible antérieurs ne sont réécrits. Q27 reste partielle ; B04, B06 et B07 restent ouverts.",
+  "phases": [
+    "implementation",
+    "domainTested",
+    "ssrTested",
+    "browserTested",
+    "controllerTested",
+    "humanArtReviewed"
+  ],
+  "sourceReferences": [
+    {
+      "id": "B05",
+      "kind": "Critère source",
+      "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+      "detail": "Opérations!A62:L62 · OPS-B05, P1 ; critère exact D62."
+    },
+    {
+      "id": "Q27",
+      "kind": "Recette globale",
+      "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+      "detail": "Recette!A36:I36 · routines/animations ET dialogues distincts ; mêmes identités après retour et recharge."
+    },
+    {
+      "id": "SPEC",
+      "kind": "Spécification",
+      "path": "production/clan-ship-20261104/operations-spec.md",
+      "detail": "§13.1 lignes364–379 ; cinq contextes et préoccupations des six membres."
+    },
+    {
+      "id": "C37-NATIVE",
+      "kind": "Preuve antérieure datée",
+      "path": "production/excel-bible-witnesses-20261108/qa/native-c37-bdc/inspection.json",
+      "detail": "27 contrôles et6 captures inspectées sur bdc2 b4 af; aucune rétroqualification du classeur initial."
+    },
+    {
+      "id": "C37-SUITE",
+      "kind": "Suite antérieure datée",
+      "path": "production/excel-bible-witnesses-20261108/qa/post-conclusion-20261108/README.md",
+      "detail": "Reprise après clôture PR130; ancien échec5 edd59 dfet correctif de cadrageff93 e037 conservés."
+    },
+    {
+      "id": "MODEL",
+      "kind": "Source runtime",
+      "path": "app/game/systems/clanShipCrewDialogue.ts",
+      "detail": "Sélecteur en lecture seule des cinq contextes des six membres."
+    },
+    {
+      "id": "PANEL",
+      "kind": "Source de présentation",
+      "path": "app/game/ClanShipOperationsPanel.tsx",
+      "detail": "Vrai panneau; parole physique focalisée distincte des cartes à distance."
+    },
+    {
+      "id": "CSS",
+      "kind": "Source de présentation",
+      "path": "app/game/ClanShipOperationsPanel.module.css",
+      "detail": "Styles du panneau et de la réplique."
+    },
+    {
+      "id": "INTERIOR",
+      "kind": "Raccord physique",
+      "path": "app/game/ClanShipInterior.tsx",
+      "detail": "Acteurs physiques et contrôle de proximité existant; mutations visibles séparées."
+    },
+    {
+      "id": "DOM",
+      "kind": "Tests de domaine",
+      "path": "tests/clan-ship-crew-dialogue.test.mjs",
+      "detail": "Matrice six membres/cinq contextes, présence, dossiers et absence de mutation."
+    },
+    {
+      "id": "SSR",
+      "kind": "Tests React SSR",
+      "path": "tests/clan-ship-crew-dialogue-ui.test.mjs",
+      "detail": "Six scénarios des vrais composants; aucune interaction/pixel déduit du SSR."
+    },
+    {
+      "id": "SSR-LOG",
+      "kind": "Preuve préparatoire datée",
+      "path": "production/crew-dialogue-20261109/qa/ui/ssr-detailed.tap",
+      "detail": "Invocation directe Node22,6 tests réussis; le wrapper --test du runtime seul ne les dénombre pas. La suite finale root248 et les SHA courants font foi pour cette qualification."
+    },
+    {
+      "id": "NAV",
+      "kind": "Recette navigateur",
+      "path": "scripts/qa-clan-ship-crew-dialogue-20261109.mjs",
+      "detail": "Vrai GameClient, fixtures déclarées,30 entretiens, desktop/mobile, clavier et contrôleur synthétique."
+    },
+    {
+      "id": "DOM-LOG",
+      "kind": "Preuve préparatoire datée",
+      "path": "production/crew-dialogue-20261109/qa/engine/tests-run.txt",
+      "detail": "45 tests de domaine (30 contextes/membres+15 protections) réussis; isolationnone pour détailler le TAP. La suite finale root248 et les SHA courants font foi pour cette qualification."
+    },
+    {
+      "id": "DOM-RESULT",
+      "kind": "Preuve préparatoire datée",
+      "path": "production/crew-dialogue-20261109/qa/engine/verification.json",
+      "detail": "Commandes/exits/SHA/portée de la passe moteur; pas de navigateur ou build déduit. La suite finale root248 et les SHA courants font foi pour cette qualification."
+    },
+    {
+      "id": "SSR-RESULT",
+      "kind": "Preuve préparatoire datée",
+      "path": "production/crew-dialogue-20261109/qa/ui/results.json",
+      "detail": "Commandes exactes et exit0 pour6 tests SSR et lint ciblé. La suite finale root248 et les SHA courants font foi pour cette qualification."
+    },
+    {
+      "id": "ROOT-TESTS",
+      "kind": "Rapport final des tests",
+      "path": "production/crew-dialogue-20261109/qa/root/tests.json",
+      "detail": "248 tests réussis/0 échec/0 ignoré sur17 fichiers Node22.23.4; inclut51 nouveaux tests."
+    },
+    {
+      "id": "ROOT-DOM",
+      "kind": "Journal final domaine",
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-crew-dialogue.test.mjs.tap",
+      "detail": "45 tests de domaine sur le sélecteur courant après correction grammaticale;30 combinaisons+15 protections."
+    },
+    {
+      "id": "ROOT-SSR",
+      "kind": "Journal final SSR",
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-crew-dialogue-ui.test.mjs.tap",
+      "detail": "6 tests des vrais composants; toutes les30 combinaisons restent du contenuSSR, pas30 tests supplémentaires."
+    },
+    {
+      "id": "BROWSER",
+      "kind": "Rapport natif final",
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/report.json",
+      "detail": "52 contrôles;30 entretiens+6 résidents réaffectés;50 paires de sauvegarde inchangées; navigateur Nextproduction identifié."
+    },
+    {
+      "id": "INSPECTION",
+      "kind": "Inspection des captures",
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/screenshot-inspection.json",
+      "detail": "9 PNG originaux réellement ouverts; lisibilité et absence de chevauchement bloquant; aucune revue artistique canonique."
+    },
+    {
+      "id": "FIXTURE",
+      "kind": "État initial déclaré",
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/fixture-disclosure.json",
+      "detail": "Huit fixtures prérequis synthétiques via reducers; aucun parcours de campagne complet présenté."
+    },
+    {
+      "id": "BUILD",
+      "kind": "Build final",
+      "path": "production/crew-dialogue-20261109/qa/root/build.log",
+      "detail": "Nextproduction compilé, TypeScript final après grammaire; BuildIDPUL1 NfHFyDlOk1 yK5 kC_k."
+    },
+    {
+      "id": "REVIEW",
+      "kind": "Relecture indépendante",
+      "path": "production/crew-dialogue-20261109/qa/review/resolution.md",
+      "detail": "Résolution des constats de relecture; périmètre physique et voix documentés."
+    },
+    {
+      "id": "ROOT-COMMANDS",
+      "kind": "Commandes finales",
+      "path": "production/crew-dialogue-20261109/qa/root/commands.json",
+      "detail": "Commandes exactes Node 22.23.4 et sorties réelles typegen, TypeScript, lint, build et relevé courant."
+    }
+  ],
+  "rows": [
+    {
+      "id": "B05-01",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Les six membres ont des répliques propres dans les cinq contextes du §13.1.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "Oui",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION"
+      ],
+      "remaining": "Matrice5 ×6 attestée en domaine etSSR,30 entretiens joués; aucune animation produite."
+    },
+    {
+      "id": "B05-02",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Une preuve manquante ou récemment gagnée produit la réplique appropriée sans recruter.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "Oui",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION"
+      ],
+      "remaining": "Répliques de preuve réelle et action explicite de recrutement distinguées; native recruitment au bon poste conservé."
+    },
+    {
+      "id": "B05-03",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Accord, dernier retour d’opération et cercle confirmé sélectionnent des répliques cohérentes avec les faits enregistrés.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "Oui",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION"
+      ],
+      "remaining": "Les trois issues spatiales sont testées en domaine; le navigateur joue le retour victorieux et le cercle. Aucun dommage individuel inventé."
+    },
+    {
+      "id": "B05-04",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Seul le membre réellement disponible et rencontré à son poste parle.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "Oui",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION"
+      ],
+      "remaining": "Postes historiques et six quartiers gérés joués; refus réserve/suspension/autre coque joués. C37 et formatsfuturs sont attestés en domaine/SSR, pas ajoutés artificiellement au parcours navigateur."
+    },
+    {
+      "id": "B05-05",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Le panneau distingue une présentation de dossier et un entretien physique.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "Oui",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION"
+      ],
+      "remaining": "Dossiers distants/suspendus factuels, sans parole attribuée; retour physique et routes existantes joués."
+    },
+    {
+      "id": "B05-06",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Les versions futures, propriétaires et états invalides refusent le dialogue sans modifier la campagne.",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "ssrTested": "Oui",
+      "browserTested": "Oui",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION"
+      ],
+      "remaining": "Refus propriétaires/versions/données en domaine+SSR; export/import et lecture déterministe testés;50 paires brutes et rechargement navigateur sans mutation de l’écoute."
+    },
+    {
+      "id": "B05-07",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Les vrais composants présentent nom, contexte, réplique et raison de refus de manière lisible.",
+      "implementation": "Oui",
+      "domainTested": "Sans objet",
+      "ssrTested": "Oui",
+      "browserTested": "Oui",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION"
+      ],
+      "remaining": "Vrais composants SSR et9 captures originales inspectées. Lisibilité technique constatée; aucune nouvelle ressource artistique."
+    },
+    {
+      "id": "B05-08",
+      "sourceKey": "Clan Ship:OPS-B05",
+      "criterion": "Le parcours navigateur exerce l’entretien réel au clavier et aux formats desktop/mobile avec reprise.",
+      "implementation": "Oui",
+      "domainTested": "Sans objet",
+      "ssrTested": "Sans objet",
+      "browserTested": "Oui",
+      "controllerTested": "À vérifier",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "ROOT-TESTS",
+        "ROOT-DOM",
+        "ROOT-SSR",
+        "BROWSER",
+        "INSPECTION",
+        "FIXTURE",
+        "BUILD"
+      ],
+      "remaining": "Clavier, tactile390/320 et contrôleur synthétique exercés sur Nextproduction. Manette physique reste à essayer; fixtures déclarées, aucune campagne intégrale."
+    },
+    {
+      "id": "OPS-Q27",
+      "sourceKey": "Clan Ship:OPS-Q27",
+      "criterion": "La recette globale de vie et gestes des PNJ reste partielle.",
+      "implementation": "Partiel",
+      "domainTested": "Partiel",
+      "ssrTested": "Partiel",
+      "browserTested": "Partiel",
+      "controllerTested": "À vérifier",
+      "humanArtReviewed": "À vérifier",
+      "evidence": [
+        "BROWSER",
+        "ROOT-TESTS"
+      ],
+      "remaining": "Les dialogues B05 sont attestés; routines B06 et animations B07 restent ouvertes. Aucun temps hors application ni déplacement autonome ajouté."
+    },
+    {
+      "id": "OPS-B04",
+      "sourceKey": "Clan Ship:OPS-B04",
+      "criterion": "L’escorte collective hangar→soins reste ouverte.",
+      "implementation": "Non",
+      "domainTested": "Non",
+      "ssrTested": "Non",
+      "browserTested": "Non",
+      "controllerTested": "Sans objet",
+      "humanArtReviewed": "Sans objet",
+      "evidence": [
+        "SPEC"
+      ],
+      "remaining": "Aucun accompagnement collectif, trajet de groupe ou sauvegarde de positions de groupe ajouté par les dialogues."
+    }
+  ],
+  "laterEvidence": [
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/report.json",
+      "sha256": "5aa1e396155ffca01977d4c97767fc13730815fc1231e16e9f0e030ccb23984b",
+      "scope": "Vrai GameClient Nextproduction,52contrôles; aucune rétroqualificationC37."
+    }
+  ],
+  "implementationContract": {
+    "selector": "app/game/systems/clanShipCrewDialogue.ts#selectClanShipCrewDialogue",
+    "test": "tests/clan-ship-crew-dialogue.test.mjs",
+    "contextPriority": [
+      "circle-confirmed",
+      "operation-return",
+      "agreement",
+      "recent-proof",
+      "missing-proof"
+    ],
+    "stateMutation": false,
+    "newArt": false,
+    "newAnimation": false
+  },
+  "limits": [
+    "Manette physique et revue artistique humaine non attestées.",
+    "OPS-B05 qualifie seulement le dialogue, sans fermer Q27 routines/animations niB04 escorte.",
+    "Les prérequis synthétiques ne sont pas une campagne intégrale; les anciens reçus gardent leur date et commit."
+  ],
+  "sourceCriterion": "Accueils, refus, preuve récente, recrutement et retour d’opération ont des répliques propres.",
+  "baselineWorkbook": {
+    "path": "production/excel-bible-witnesses-20261108/suivi/Yautja_Audience_C37_20261108.xlsx",
+    "sha256": "3915848e84da6cbf8832b11e68d1344d8e521ec50b40e7f3fec5625bc61e1cb4",
+    "bytes": 22771,
+    "sheetNames": [
+      "Audience",
+      "Sources"
+    ]
+  },
+  "dialogueMembers": [
+    {
+      "id": "ash-scar",
+      "name": "Balafre de Cendre"
+    },
+    {
+      "id": "star-watch",
+      "name": "Veille des Astres"
+    },
+    {
+      "id": "iron-claw",
+      "name": "Griffe de Fer"
+    },
+    {
+      "id": "cold-trace",
+      "name": "Trace Froide"
+    },
+    {
+      "id": "black-suture",
+      "name": "Suture Noire"
+    },
+    {
+      "id": "threshold-guard",
+      "name": "Garde du Seuil"
+    }
+  ],
+  "dialogueContexts": [
+    {
+      "id": "missing-proof",
+      "label": "Preuve manquante"
+    },
+    {
+      "id": "recent-proof",
+      "label": "Preuve récente"
+    },
+    {
+      "id": "agreement",
+      "label": "Accord enregistré"
+    },
+    {
+      "id": "operation-return",
+      "label": "Retour d’opération"
+    },
+    {
+      "id": "circle-confirmed",
+      "label": "Cercle confirmé"
+    }
+  ],
+  "contextEvidence": [
+    "ROOT-TESTS",
+    "ROOT-DOM",
+    "ROOT-SSR",
+    "BROWSER",
+    "INSPECTION"
+  ],
+  "boundedQualification": "OPS-B05 dialogue attesté dans le périmètre des cinq contextes et six membres; Q27 globale reste partielle."
+}

@@ -1,0 +1,79 @@
+{
+  "asOf": "2026-11-09T12:35:22.094483+00:00",
+  "sourceCommit": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+  "workflow": ".github/workflows/audit-v94.yml",
+  "workflowSha256Before": "3bef26168783b6d6f99666554516ac6e80f519826aead02f8c6e5aaf3c508ddc",
+  "remoteFailure": {
+    "run": 42614007868,
+    "job": 129149257820,
+    "step": 67
+  },
+  "scope": "Reconstructed the published 1aaa runtime inventory in a temporary sparse file tree. Inputs are pinned published bytes; currently dirty non-assets restored from that Git object. Immutable binaries use read-only hardlinks. Only the 10 omitted exact inputs are added between fail and pass. No freeze, snapshot implementation, assertion or application file edited.",
+  "dependencies": "Shared locked primary node_modules; no fresh npm ci or remote execution claimed.",
+  "temporaryCheckout": "/tmp/v113-audit-sparse-1aaa-n00743ga",
+  "freeze": "docs/qa/current-integration-20261103/runtime-inputs.json",
+  "freezeSha256": "1a31e3857697c51c56742203a946986b536a99060cfebfbfbd61e45a009ac986",
+  "freezeUnchangedFromPublishedCommit": true,
+  "coverage": {
+    "missingDeclared": [
+      ".github/workflows/p0-p1-coherence-20261109.yml",
+      "production/p0p1-20261109/qa/ci/runtime-file-inputs.json",
+      "production/p0p1-20261109/qa/root/test-selection-current.json",
+      "public/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+      "public/game/warp-universe/20261109/200_module_salle_avatar_fond.png",
+      "public/game/warp-universe/20261109/201_module_archiviste_yautja.png",
+      "public/game/warp-universe/20261109/202_module_sas_decontamination.png",
+      "public/game/warp-universe/20261109/203_module_memoire_avatar.png",
+      "production/clan-war-command-20261109/qa/ci/test-selection.json",
+      "production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json"
+    ],
+    "missingInventory": [
+      ".github/workflows/p0-p1-coherence-20261109.yml",
+      "production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json",
+      "production/clan-war-command-20261109/qa/ci/test-selection.json",
+      "production/p0p1-20261109/qa/ci/runtime-file-inputs.json",
+      "production/p0p1-20261109/qa/root/test-selection-current.json",
+      "public/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+      "public/game/warp-universe/20261109/200_module_salle_avatar_fond.png",
+      "public/game/warp-universe/20261109/201_module_archiviste_yautja.png",
+      "public/game/warp-universe/20261109/202_module_sas_decontamination.png",
+      "public/game/warp-universe/20261109/203_module_memoire_avatar.png"
+    ]
+  },
+  "currentDirtySourcesRestoredToPublishedBytes": [
+    "scripts/qa-clan-field-20261103.mjs",
+    "scripts/qa-clan-war-v115-multitab-v151.mjs",
+    "tests/trophy-tutorial-save-v6.test.mjs",
+    "tests/trophy-tutorial-v6.test.mjs"
+  ],
+  "results": [
+    {
+      "phase": "before",
+      "exitCode": 1,
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "/tmp/v113-audit-sparse-1aaa-n00743ga/scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "/tmp/v113-audit-sparse-1aaa-n00743ga/docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "log": "before.log",
+      "logSha256": "bf9e86102cba18df014b39fc1b773cabf6db14f0ed64b0cea4eae4bdf800fa0a"
+    },
+    {
+      "phase": "after",
+      "exitCode": 0,
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "/tmp/v113-audit-sparse-1aaa-n00743ga/scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "/tmp/v113-audit-sparse-1aaa-n00743ga/docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "log": "after.log",
+      "logSha256": "8257b22149ee9965ce935ee75e631abca7aed9da3d8d39f5532aef83a90a2cc0"
+    }
+  ],
+  "workflowSha256After": "3cb76b4731849694b02a019550ff307d98625af423edd4377f973e662d3d0f2c",
+  "coverageAfterMissingInventory": [],
+  "patchScope": "Exactly 10 missing declared source/asset inclusion lines added to matrix checkout. No other workflow byte, command, action, assertion, permission or historical freeze changed.",
+  "finalizedAt": "2026-11-09T12:37:40.925158+00:00"
+}

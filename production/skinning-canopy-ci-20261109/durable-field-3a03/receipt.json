@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-09T09:42:58.799512+00:00",
+  "scope": "Separate CI annex for the bounded native durable browser recipe, without changing frozen local or Excel proof packets",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "pullRequest": 131,
+  "workflow": {
+    "id": 42592671946,
+    "runAttempt": 1,
+    "name": "V112 hunt closure qualifications",
+    "status": "completed",
+    "conclusion": "success",
+    "headSha": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42592671946"
+  },
+  "job": {
+    "id": 129077780656,
+    "name": "Native GameClient skinning, sidecar resume and canopy",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-11-09T09:23:51Z",
+    "completedAt": "2026-11-09T09:29:52Z",
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42592671946/job/129077780656"
+  },
+  "checkout": {
+    "sha": "51958bfcf0da7edb3d5693fe389fee71a5f85005",
+    "kind": "GitHub pull request synthetic merge",
+    "headSha": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+    "headAndMergeTreesEqual": true,
+    "treeSha": "ea129962aa920d0337947c7cc306aaaae42afd2f"
+  },
+  "resultFromRawLog": {
+    "passed": true,
+    "classification": "BOUNDED_NATIVE_DURABLE_PASS",
+    "checks": 16,
+    "captures": 17,
+    "failure": null,
+    "report": "/home/runner/work/yautja-la-longue-chasse/yautja-la-longue-chasse/outputs/qa-skinning-canopy-20261109/report.json"
+  },
+  "artifact": {
+    "id": 13661948968,
+    "name": "skinning-canopy-durable-51958bfcf0da7edb3d5693fe389fee71a5f85005",
+    "sizeInBytes": 11501612,
+    "createdAt": "2026-11-09T09:29:49Z",
+    "expiresAt": "2026-12-09T09:29:47Z",
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42592671946/artifacts/13661948968",
+    "apiUrl": "https://api.github.com/repos/darknigthmare/yautja-la-longue-chasse/actions/artifacts/13661948968",
+    "declaredZipDigest": "sha256:ba60b1ff78e73be07bf2f294ba47c1962d76f0d02d53a1c0a72538487050f8c1",
+    "digestVerifiedAgainstRawJobLog": true,
+    "zipIndependentlyDownloadedAndHashed": false
+  },
+  "retrieval": {
+    "rawJobLogSaved": true,
+    "rawGitHubApiMetadataSaved": true,
+    "fullBrowserReportRetrieved": false,
+    "ciPngsInspected": false,
+    "limitation": "GitHub artifact ZIP redirects to productionresultssa14.blob.core.windows.net, which returned Forbidden through the environment network proxy. The native connector returns a FileService reference without an available local reader; download_file accepts Sediment IDs only. ZIP download stopped as instructed; no new dependency, network bypass or CI rerun.",
+    "fileServiceFileId": "file_00000000d2bc81f4a4b2d9d7284b12b1",
+    "signedUrlsSaved": false
+  },
+  "interpretation": "SUCCESS with 16 PASS lines and 17 captures is established by exact job log and GitHub job metadata. Full per-check JSON details and PNG pixels are not independently read from this CI ZIP. The read-only asset repin review is separate and is not a fresh browser result on sourceRef 1f9b009.",
+  "indexReview": "asset-index-repin-review.json",
+  "objects": [
+    {
+      "path": "artifact-13661948968.json",
+      "bytes": 799,
+      "sha256": "a4b0538e8e92bb05c02c7db832ad026712f1200007b390e7ec8656314208334b"
+    },
+    {
+      "path": "asset-index-repin-review.json",
+      "bytes": 1468,
+      "sha256": "dea42ae55edee93f0166e3a98eef43940b78e00087ba21849056ec8a4a185412"
+    },
+    {
+      "path": "build-receipt.py",
+      "bytes": 8776,
+      "sha256": "e19af248d9b2f869e73f0b7443460c3d8a0340577e09870cfafdd26b4805e3da"
+    },
+    {
+      "path": "commit-head-3a03.json",
+      "bytes": 1268,
+      "sha256": "3e048392d43bf9901eb3558213131d0eea25570d29b277f9f68caf0e13bdb904"
+    },
+    {
+      "path": "commit-merge-51958.json",
+      "bytes": 2750,
+      "sha256": "2ed2fa91f99356f9586dae18398d25aae9f42fb247fa078b747cabe91dd74d57"
+    },
+    {
+      "path": "job-129077780656.log",
+      "bytes": 31450,
+      "sha256": "e35d54febea4bf6b7b95a25ab108a820461169b29ea46e1c38f3decf0224ebe7"
+    },
+    {
+      "path": "summary-from-job-log.json",
+      "bytes": 2459,
+      "sha256": "f3fab8e526abee8f29d3847521a0a1367784a183b12978d36062b8903dc15c8f"
+    },
+    {
+      "path": "workflow-job-129077780656.json",
+      "bytes": 3046,
+      "sha256": "f5b24d20d1a2b2bce4832309f3118a364469e5e2840c7587b3d0ab423f87626e"
+    },
+    {
+      "path": "workflow-run-42592671946.json",
+      "bytes": 14933,
+      "sha256": "d447187ac815b234b08e100d3bb0716cb1d129843aa73bf96e927907e11d8f85"
+    }
+  ],
+  "hashPolicy": "SHA256SUMS covers every saved object, including this receipt, except SHA256SUMS itself."
+}

@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: prototype starts on authored ground, with no campaign access or earned state
+ok 1 - prototype starts on authored ground, with no campaign access or earned state
+  ---
+  duration_ms: 2.594825
+  type: 'test'
+  ...
+# Subtest: reading from a distant position neither acts nor moves a hunter
+ok 2 - reading from a distant position neither acts nor moves a hunter
+  ---
+  duration_ms: 0.51713
+  type: 'test'
+  ...
+# Subtest: closed airlock prevents path and continuous motion through its aperture
+ok 3 - closed airlock prevents path and continuous motion through its aperture
+  ---
+  duration_ms: 11.950206
+  type: 'test'
+  ...
+# Subtest: each bay station has a usable, continuous return route around the real props
+ok 4 - each bay station has a usable, continuous return route around the real props
+  ---
+  duration_ms: 6.032599
+  type: 'test'
+  ...
+# Subtest: door command, physical threshold, dry bench and two-way return form one spatial loop
+ok 5 - door command, physical threshold, dry bench and two-way return form one spatial loop
+  ---
+  duration_ms: 12.758305
+  type: 'test'
+  ...
+# Subtest: bench refuses out-of-order testing while preserving the physical route home
+ok 6 - bench refuses out-of-order testing while preserving the physical route home
+  ---
+  duration_ms: 6.925065
+  type: 'test'
+  ...
+# Subtest: low frame rates, invalid input and diagonal motion respect one bounded movement clock
+ok 7 - low frame rates, invalid input and diagonal motion respect one bounded movement clock
+  ---
+  duration_ms: 0.366433
+  type: 'test'
+  ...
+# Subtest: every authored footprint and exterior floor remain solid with open and closed doors
+ok 8 - every authored footprint and exterior floor remain solid with open and closed doors
+  ---
+  duration_ms: 0.24558
+  type: 'test'
+  ...
+# Subtest: real component exposes accessible posts and the current closed door without writing saves
+ok 9 - real component exposes accessible posts and the current closed door without writing saves
+  ---
+  duration_ms: 182.343449
+  type: 'test'
+  ...
+# Subtest: runtime assets preserve three originals and declare two new unvalidated single images
+ok 10 - runtime assets preserve three originals and declare two new unvalidated single images
+  ---
+  duration_ms: 16.081933
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 296.693086

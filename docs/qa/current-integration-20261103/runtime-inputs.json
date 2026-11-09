@@ -5,9 +5,14 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2204,
-  "bytes": 1093166757,
+  "files": 2308,
+  "bytes": 1106384408,
   "entries": [
+    {
+      "path": ".github/workflows/p0-p1-coherence-20261109.yml",
+      "bytes": 2243,
+      "sha256": "90f6eef29d30244a482d7c5d497d7f8f109ff9e4a0220a0e72a8e362ffa71d61"
+    },
     {
       "path": ".openai/hosting.json",
       "bytes": 91,
@@ -45,8 +50,8 @@
     },
     {
       "path": "app/dev/destinations.ts",
-      "bytes": 16343,
-      "sha256": "0b756432bb3bd2619707ca46bc85023d5f015631d108c68e33d7ace9cb6acb25"
+      "bytes": 16599,
+      "sha256": "9aaafd77cd9a6c6408a2a2224a39b1edcb9b45ae7fcb4db13504179df673fb4c"
     },
     {
       "path": "app/dev/dev-travel.module.css",
@@ -60,8 +65,8 @@
     },
     {
       "path": "app/dev/services.tsx",
-      "bytes": 9703,
-      "sha256": "423710d5e58584813798608edd68b6fe545be577beb76614b485678cbf402d38"
+      "bytes": 10070,
+      "sha256": "7827402122f5eceb505f4dcd1968ac0582d29dbc2cabc247222c536c0ceead51"
     },
     {
       "path": "app/dev/session.module.css",
@@ -70,13 +75,13 @@
     },
     {
       "path": "app/dev/session.tsx",
-      "bytes": 30931,
-      "sha256": "857f9825d7889ea5ba8320ee197a26c702d153263f249c52908e4947349ab6bc"
+      "bytes": 31174,
+      "sha256": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb"
     },
     {
       "path": "app/dialogues/page.tsx",
-      "bytes": 3862,
-      "sha256": "f133b677fbc4db5ed0f854df9cbaf87c56b3bde960192ea0a73608955e7d9877"
+      "bytes": 3867,
+      "sha256": "b06ba0b598db1e0f2f393bf09d62bd12cf0d9e11ab3d0e93cc3ac909309503b8"
     },
     {
       "path": "app/error.tsx",
@@ -110,8 +115,8 @@
     },
     {
       "path": "app/game/BuriedCradleReturnPanel.tsx",
-      "bytes": 8976,
-      "sha256": "3f144961fcabcef5b227e7324bff517311cac774e919cdaeea92bb1cc9238793"
+      "bytes": 9261,
+      "sha256": "0c26b0c5aa690c0edb6a803dff75fb5a95eb029f7e967dee23c4e2f6ffe9e6e2"
     },
     {
       "path": "app/game/BuriedCradleScene.module.css",
@@ -169,14 +174,24 @@
       "sha256": "d260f79df82016080b0ffc9d9302b754e94c0e142824864078104be3339df049"
     },
     {
+      "path": "app/game/ClanShipCrewDialogue.tsx",
+      "bytes": 2057,
+      "sha256": "9ebecd74b869153d13f2c809a327ec1ab927fc7763c05fcb40dce7f5e822496f"
+    },
+    {
       "path": "app/game/ClanShipHub.module.css",
       "bytes": 10357,
       "sha256": "dce81e3bc9b5eca6c1c74798099fd1bd26567de2974a2aad169c38ee5229d89c"
     },
     {
       "path": "app/game/ClanShipHub.tsx",
-      "bytes": 16634,
-      "sha256": "59392b7b6dd56ba63a47f64e8cd1c97fc57bc0d75f226ced3dfe0a6f8496e36a"
+      "bytes": 18552,
+      "sha256": "044cda5b20fad88c7cf7e228c2c25bac0abd5ec96249ae8df3a07114916d5cba"
+    },
+    {
+      "path": "app/game/ClanShipHuntConversation.tsx",
+      "bytes": 2421,
+      "sha256": "4674b33cc4d3f6bc59dbb744f00ebb430c94da86c5ef9c2f9b1b8fe10380cdc4"
     },
     {
       "path": "app/game/ClanShipIncidentPanel.module.css",
@@ -185,8 +200,8 @@
     },
     {
       "path": "app/game/ClanShipIncidentPanel.tsx",
-      "bytes": 19985,
-      "sha256": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d"
+      "bytes": 22087,
+      "sha256": "613ff7bc7ab296f75eb88afd084f3c39ecb0d3cc6bfcc3ab69680bfc492820cd"
     },
     {
       "path": "app/game/ClanShipIncidentScene.module.css",
@@ -205,28 +220,38 @@
     },
     {
       "path": "app/game/ClanShipInterior.tsx",
-      "bytes": 40517,
-      "sha256": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0"
+      "bytes": 49194,
+      "sha256": "2e4974a688933c7f92419b72ff570363213c1f34850aad85ab63e2cf094ba7ba"
     },
     {
       "path": "app/game/ClanShipOperationsPanel.module.css",
-      "bytes": 8826,
-      "sha256": "2f21cf66851e43f490033e077b2d3f714255c6d803de5c23c565ab3a8013872d"
+      "bytes": 10603,
+      "sha256": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b"
     },
     {
       "path": "app/game/ClanShipOperationsPanel.tsx",
-      "bytes": 20619,
-      "sha256": "5061870449cdefc85c86757c2e1ddff03254d288bbc644620b44866f09d92bdd"
+      "bytes": 24741,
+      "sha256": "4304de4ec0adbd2c5e4ed04c3cc9af3f696676341b927e9ccf253888fdc82194"
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.module.css",
+      "bytes": 1405,
+      "sha256": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273"
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.tsx",
+      "bytes": 8294,
+      "sha256": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9"
     },
     {
       "path": "app/game/ClanShipSpaceEncounter.module.css",
-      "bytes": 12555,
-      "sha256": "01295ca35430852d9feb1394c70bb7dd9c9a3e7a4b4457bc757d3c49d5018274"
+      "bytes": 13678,
+      "sha256": "85a54980581464dfb771dcadb157406b22367cd99f7d03cf585ef7ec93424cd0"
     },
     {
       "path": "app/game/ClanShipSpaceEncounter.tsx",
-      "bytes": 14907,
-      "sha256": "1ea3ab789ad2045bb402994d9cb51e019a83247eb4dbd15f0fe6cf903c97c8f6"
+      "bytes": 16812,
+      "sha256": "650f84cb12bed1d1e1d05079b96a9ed91e16e4803ef67047274772ff612cc43e"
     },
     {
       "path": "app/game/ClanShipTrophyTelemetry.module.css",
@@ -260,18 +285,28 @@
     },
     {
       "path": "app/game/ClanWarAtlasV95.module.css",
-      "bytes": 21624,
-      "sha256": "f298fd718f29fabf10170fce9c993f03a6e92de17b1cdf14f2254896d416cbef"
+      "bytes": 26327,
+      "sha256": "115b7646d0c031b0e00c355e4251ee9991897ac1ef234b262b9105355644af6c"
     },
     {
       "path": "app/game/ClanWarAtlasV95.tsx",
-      "bytes": 52861,
-      "sha256": "e5fdceeefc7e31ccb6740e4dcafdcd8be97bb3ebca3fd62c369ebf3ff64e7842"
+      "bytes": 55482,
+      "sha256": "e1abcad9fb45df381687063634dea0955a859ac59cffae5263665d7359476af9"
     },
     {
       "path": "app/game/ClanWarBibleV6Panel.tsx",
-      "bytes": 21912,
-      "sha256": "f6047efe7e48568cab3fe7c9de3d1d6b5d8d37f25ccfd3117c0ab4ff109c6f57"
+      "bytes": 24527,
+      "sha256": "eb3bd605b0d365d521326e2486b4ad86e87e43935f8ab5d06e61401f79b5dc99"
+    },
+    {
+      "path": "app/game/ClanWarCommandOverlay.module.css",
+      "bytes": 2271,
+      "sha256": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e"
+    },
+    {
+      "path": "app/game/ClanWarCommandOverlay.tsx",
+      "bytes": 2433,
+      "sha256": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4"
     },
     {
       "path": "app/game/ClanWarCommandV98.module.css",
@@ -335,13 +370,13 @@
     },
     {
       "path": "app/game/ClanWarGauntletV131.module.css",
-      "bytes": 8481,
-      "sha256": "b3803e81186849b9decd3775fe6bf29513be070710d22b0b06d9e74e849a903d"
+      "bytes": 10443,
+      "sha256": "a632428c117411c256575dfe132331b2bfac7034b46f14114d32fe0c2dc52ea5"
     },
     {
       "path": "app/game/ClanWarGauntletV131.tsx",
-      "bytes": 3836,
-      "sha256": "9135c9e6914c3a515b3b12ae131b02bfe37aebe5dcf056aff25a428978d7a0de"
+      "bytes": 4051,
+      "sha256": "3587055b23394898e5e08d7e0fe6b7a9a0a9231a4a460a24d3f1a47e41072566"
     },
     {
       "path": "app/game/ClanWarGeoAiV126.module.css",
@@ -365,8 +400,8 @@
     },
     {
       "path": "app/game/ClanWarMissionDossiersV117.tsx",
-      "bytes": 10769,
-      "sha256": "af6baf00bb15bde37850099ac54247db596ce3c687294e965eb23927b2f65711"
+      "bytes": 10738,
+      "sha256": "5d8e853c0654da4ddafdc4f15711db81f427a928633fab80b9e60f7a9ed66af0"
     },
     {
       "path": "app/game/ClanWarMissionsV114.module.css",
@@ -390,23 +425,23 @@
     },
     {
       "path": "app/game/ClanWarOperationsV115.module.css",
-      "bytes": 9183,
-      "sha256": "3d6b542ca8e1121cac4809df552b36b0d1962a4553eb2e805495eb798a3906d2"
+      "bytes": 20266,
+      "sha256": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727"
     },
     {
       "path": "app/game/ClanWarOperationsV115.tsx",
-      "bytes": 84377,
-      "sha256": "21ca8570de06a728c53889c0d2fe1658e6942ad5d0da1ff775bb41162e604b86"
+      "bytes": 99086,
+      "sha256": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f"
     },
     {
       "path": "app/game/ClanWarPanelV85.module.css",
-      "bytes": 11991,
-      "sha256": "9da7b1ff730139a1a3cebec23e3a336aa2cad92747dbb2b52763866e7ca217cf"
+      "bytes": 28443,
+      "sha256": "eda99ae678c862d335343b799e6fc86db6903bcea76420645328b68ac3aacc9d"
     },
     {
       "path": "app/game/ClanWarPanelV85.tsx",
-      "bytes": 74502,
-      "sha256": "c895a1789f36b99d46dc4d7677863bf9e782b76aa0cd06fbe9db96a9fbf2f6a2"
+      "bytes": 82935,
+      "sha256": "fe9d75c32fa10a34c032d74e2239f11ede13ce13c9db2f050b9724545586c216"
     },
     {
       "path": "app/game/ClanWarPlanetsV96.module.css",
@@ -465,8 +500,8 @@
     },
     {
       "path": "app/game/ClanWarVariantAtlasV120.tsx",
-      "bytes": 14757,
-      "sha256": "714a7494caf1d597eee1e79335040567410783cda9bf7f3afa1b70792745872f"
+      "bytes": 14207,
+      "sha256": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e"
     },
     {
       "path": "app/game/ClanWarWorksV6.tsx",
@@ -490,8 +525,8 @@
     },
     {
       "path": "app/game/CompanionCataloguePanel.tsx",
-      "bytes": 4521,
-      "sha256": "bd1d548224d0f062bad3d9a34f811265f1cf5209a0d5609b93fdc7dd409f1d14"
+      "bytes": 4632,
+      "sha256": "84ae77af17babcd3b890efc880e88ed6278435c6584bbb900e4cae00f0e1806b"
     },
     {
       "path": "app/game/CompanionQuartersScene.module.css",
@@ -665,8 +700,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 362372,
-      "sha256": "916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df"
+      "bytes": 372612,
+      "sha256": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1000,8 +1035,8 @@
     },
     {
       "path": "app/game/HomeworldHub.tsx",
-      "bytes": 183568,
-      "sha256": "1fe63077ed64a1d8e58cfbbff163b5d457702cb8b8d1fec9adb92072f7354e45"
+      "bytes": 184675,
+      "sha256": "6fd223d741945bfc0f8010053fae3e34751ccfccbc47504b33c8c4dd2935b409"
     },
     {
       "path": "app/game/HomeworldInteriorDecorV76.tsx",
@@ -1120,8 +1155,8 @@
     },
     {
       "path": "app/game/HomeworldRetainingSupportV82.tsx",
-      "bytes": 3187,
-      "sha256": "e1afcfd8601b7dd832cfd73df65ffabd2383a272521df6090c539e9e27b24f18"
+      "bytes": 3103,
+      "sha256": "dcb395cdc2648b38717d9cdfd3abb20df0e3e4c0d736304af234d5bff26625b9"
     },
     {
       "path": "app/game/HomeworldRouteGuideV109.tsx",
@@ -1255,8 +1290,18 @@
     },
     {
       "path": "app/game/HuntAccessibilityV112.module.css",
-      "bytes": 2129,
-      "sha256": "e931db3b3cb6efb58a75215e7f4e2ac5c8465f6d68406e71c69799005a21f369"
+      "bytes": 2540,
+      "sha256": "9f4814b8e448fca0db6e9a34efa7eedd98f2f866a22982f5f17699cf0d3cadaf"
+    },
+    {
+      "path": "app/game/HuntCanopyHudV112.module.css",
+      "bytes": 991,
+      "sha256": "861f4bb5782d43bcb3967d96fb6dd72c2dee411b25da95a0309ba8072402ccfe"
+    },
+    {
+      "path": "app/game/HuntCanopyHudV112.tsx",
+      "bytes": 4384,
+      "sha256": "23d2b6ccf3f1d619aa3dd6831800bedaf981eb94b9910c2c14d4ccd9f715db18"
     },
     {
       "path": "app/game/HuntCanvas.module.css",
@@ -1265,23 +1310,23 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 465503,
-      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5"
+      "bytes": 471511,
+      "sha256": "f4e1d0736352256b284b4d717747add3cda055e85b62d0abcff5bb1eed7caca3"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
-      "bytes": 7565,
-      "sha256": "c6d4e5f7feb34786deccc7668e6cb00f798cc5129776d3abdb16c59a1a19dcf3"
+      "bytes": 8062,
+      "sha256": "72df7d105b31c61b134bef0b5af4b38c88d1455ddbd21407053afbaccb1bd4e3"
     },
     {
       "path": "app/game/HuntRitesMenuV77.module.css",
-      "bytes": 1185,
-      "sha256": "43f77a9cb0f3fa10f40c2b1182735df7a20cfc7d3b5ae86a5ea99f3bd4ac5a93"
+      "bytes": 2622,
+      "sha256": "4ae4aafacd2903aec731c96f2dc9463b18c1fcc91c3335dbce16d3eb563fa22d"
     },
     {
       "path": "app/game/HuntRitesMenuV77.tsx",
-      "bytes": 4417,
-      "sha256": "fe1966bf0c96db480913db6e0b0a7973fc6b2b789e4fcd2a6f9bbcf0f89eddc8"
+      "bytes": 12345,
+      "sha256": "c56bb211e8a2806dfc21123a2cd0c9102f72eba43ae722ce6be0a8c7fb874419"
     },
     {
       "path": "app/game/HuntRitualMeterV112.tsx",
@@ -1305,8 +1350,8 @@
     },
     {
       "path": "app/game/HunterRigPreview.tsx",
-      "bytes": 31627,
-      "sha256": "98cf20082796c1ab7e788e6e7416e72a45906956f7b29bac57538fcc2fa6fc4a"
+      "bytes": 31816,
+      "sha256": "fcfedbad9f84c69a619f66df437dd4560bd2ada8d65e0359e288dcd3ac98fc93"
     },
     {
       "path": "app/game/IceExplorationMap.tsx",
@@ -1367,6 +1412,21 @@
       "path": "app/game/MissionReplayGoals.module.css",
       "bytes": 1180,
       "sha256": "ae9fd6c4f1c10a6310d6f0a84fc846b5bfd7850dc9c1d44d7d52d97fa4e2e547"
+    },
+    {
+      "path": "app/game/MobilityDrivingYard.tsx",
+      "bytes": 14071,
+      "sha256": "17c5d57a3d09b1bc702fb550d56f9fa920db1f27d2b5d9d26aa1529cc75f2383"
+    },
+    {
+      "path": "app/game/MobilityGarage.module.css",
+      "bytes": 4283,
+      "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03"
+    },
+    {
+      "path": "app/game/MobilityGarage.tsx",
+      "bytes": 11417,
+      "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76"
     },
     {
       "path": "app/game/NurseryPrologueScreen.module.css",
@@ -1610,8 +1670,8 @@
     },
     {
       "path": "app/game/PlanetTraversalLabV154.tsx",
-      "bytes": 13137,
-      "sha256": "eccd7659a82662e709c9bea70317050a3e5775c35f9f4a2e11d8ea0430c850bf"
+      "bytes": 13108,
+      "sha256": "b34d98cab1728089928d2bb4542d67d9f5f0a8047f189873bf223506ef02c8fc"
     },
     {
       "path": "app/game/RecentFaunaReferencesV85.tsx",
@@ -1724,6 +1784,16 @@
       "sha256": "b67318cdde9454ca999b10a1d16f26ba41128e45f196a88b7a9d919447edcb8c"
     },
     {
+      "path": "app/game/TrophyTutorialBay.module.css",
+      "bytes": 7707,
+      "sha256": "e34d15a767f7a37629b768277b38339dfe81bea5112df46803a53d1f4f09bafc"
+    },
+    {
+      "path": "app/game/TrophyTutorialBay.tsx",
+      "bytes": 24792,
+      "sha256": "3bdb164423af2d455a04d5a1fa1ab7cf47d29ceb8095eab94948600a4588f93d"
+    },
+    {
       "path": "app/game/TrophyWorkshop.tsx",
       "bytes": 20902,
       "sha256": "a2f425d0b38b84d4111aa5992abcba780092a11c9ed3ac257fceb77099f16a13"
@@ -1732,6 +1802,16 @@
       "path": "app/game/V6AtlasSprite.tsx",
       "bytes": 2411,
       "sha256": "81884b9547e402179b790589587006404b0c58665123168b884046f3365210e6"
+    },
+    {
+      "path": "app/game/WarpModuleBay.module.css",
+      "bytes": 2839,
+      "sha256": "e30ae6fb1dca1f9a1819dda0f35be2e969421248c2a028f2d6936c1969856c63"
+    },
+    {
+      "path": "app/game/WarpModuleBay.tsx",
+      "bytes": 13310,
+      "sha256": "9809a3938b5c7f67db0e0340920a5f4bb6b594c244cf933d9988bfaf6c581230"
     },
     {
       "path": "app/game/WolfCastleScene.module.css",
@@ -3270,8 +3350,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 95730,
-      "sha256": "17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29"
+      "bytes": 97485,
+      "sha256": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3300,8 +3380,8 @@
     },
     {
       "path": "app/game/sound.ts",
-      "bytes": 40926,
-      "sha256": "cf0e124639cb3541cdb43453344fee051fa90dd08b8f2c2c18b64f6541b9b138"
+      "bytes": 42640,
+      "sha256": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65"
     },
     {
       "path": "app/game/spriteContact.ts",
@@ -3434,6 +3514,21 @@
       "sha256": "5bd0d11ff05f10eec0f8941b2124e8434bb2c829132997d573ee17e046d81e39"
     },
     {
+      "path": "app/game/systems/canopyGripPresentationV112.ts",
+      "bytes": 2862,
+      "sha256": "b4970ee573f97020df36173b3047040e8a2382c950070e68d97ae8fe57bfe061"
+    },
+    {
+      "path": "app/game/systems/canopyNavigationV112.ts",
+      "bytes": 9420,
+      "sha256": "7ee562ab163521a49f5eaf72a52216a9a8f3e2400ef55eca0d5eb482eab181f1"
+    },
+    {
+      "path": "app/game/systems/canopySupportRendererV112.ts",
+      "bytes": 8445,
+      "sha256": "5e4190994e7493975842481b8423d7c5beebcc557a347ed23705c09f0800cd51"
+    },
+    {
       "path": "app/game/systems/canopyTraversalV112.ts",
       "bytes": 11875,
       "sha256": "82094c0d4dc1dccf18c3e89a381647572bdace86fcc51cb62cf17560ff076d57"
@@ -3464,14 +3559,29 @@
       "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd"
     },
     {
+      "path": "app/game/systems/clanShipCrewDialogue.ts",
+      "bytes": 15242,
+      "sha256": "70fe3a2eb0edd8e09721990ff16d8a6c1a07c7219d7c2891b04a8bd3827de58c"
+    },
+    {
+      "path": "app/game/systems/clanShipDialogue.ts",
+      "bytes": 12819,
+      "sha256": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe"
+    },
+    {
       "path": "app/game/systems/clanShipDocking.ts",
       "bytes": 11213,
       "sha256": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb"
     },
     {
+      "path": "app/game/systems/clanShipHuntDialogue.ts",
+      "bytes": 12187,
+      "sha256": "74e38db852605186425b420d982ef9054ef75d395a66da912e5c981b69e44d5c"
+    },
+    {
       "path": "app/game/systems/clanShipIncidents.ts",
-      "bytes": 44851,
-      "sha256": "f17a007b246f264881323b823d4f655c597b77a8524fd662a5f0d02454649a00"
+      "bytes": 45227,
+      "sha256": "c2f52265dd043d1b6402a0353e4d181d7cdbef829a3cca500e6aa80d3d51e65d"
     },
     {
       "path": "app/game/systems/clanShipInterior.ts",
@@ -3479,9 +3589,24 @@
       "sha256": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096"
     },
     {
+      "path": "app/game/systems/clanShipMaintenanceDiagnostics.ts",
+      "bytes": 7112,
+      "sha256": "6fb73c72b7f11c424430f2739e76dd01993374967ac939fa3cf1c3bd5345f804"
+    },
+    {
       "path": "app/game/systems/clanShipOperations.ts",
-      "bytes": 49811,
-      "sha256": "c066bdd255db4041f72a808800284a26bcf6c7151034c140d80dc91b4c4c82ee"
+      "bytes": 52371,
+      "sha256": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746"
+    },
+    {
+      "path": "app/game/systems/clanShipOperationsAudio.ts",
+      "bytes": 9476,
+      "sha256": "594376cc11060d6eec145f2626f57e23903f76eb1aa1d21d9e292b064caf3f20"
+    },
+    {
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "bytes": 21049,
+      "sha256": "0fac9efb73358b1f744a50e3812062264286c855450461a479cb1b75c3eb76cc"
     },
     {
       "path": "app/game/systems/clanShipSpaceEncounter.ts",
@@ -3490,8 +3615,8 @@
     },
     {
       "path": "app/game/systems/clanShipTrophyCase.ts",
-      "bytes": 4188,
-      "sha256": "6399c8c0f6d6eb4c385b194113f0e2f0e2699d4a7972dc44a22979d46b688c8c"
+      "bytes": 4276,
+      "sha256": "9531adfa477208423320f40efe39ccd541b4cc58b1fe9c1d244006e7abc34c00"
     },
     {
       "path": "app/game/systems/clanShipTrophyHearing.ts",
@@ -3615,13 +3740,13 @@
     },
     {
       "path": "app/game/systems/clanWarEncounterDirectorV127.ts",
-      "bytes": 11166,
-      "sha256": "fab8872147502bff3d1d7adaf488e340dbba03aef60925ff273fb0435481d140"
+      "bytes": 11142,
+      "sha256": "9261543e558acdd66a283d4e413e759d7fe6cd359ad6e18ded401e06170aeeba"
     },
     {
       "path": "app/game/systems/clanWarEnemyProfilesV126.ts",
-      "bytes": 10198,
-      "sha256": "d43233c002bd6c9cf740f2d196618e2d285d0c2e5c67e6593687d14bfba5cd91"
+      "bytes": 10183,
+      "sha256": "5592b249a2146d9504bf82b7b4afa405161223d7959b4f6b7c8abafc77b18d42"
     },
     {
       "path": "app/game/systems/clanWarEvacuationV100.ts",
@@ -3635,8 +3760,8 @@
     },
     {
       "path": "app/game/systems/clanWarFenceV94.ts",
-      "bytes": 5743,
-      "sha256": "6b7bc81712b938f81c08f39b859db8b1a02e7ae17986e79eb226e6f729d7779f"
+      "bytes": 5835,
+      "sha256": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092"
     },
     {
       "path": "app/game/systems/clanWarFieldControls.ts",
@@ -3704,9 +3829,14 @@
       "sha256": "f467e704396734bb025ebba85c900e31cd46c057f30ad0a5ccecbebe435b248b"
     },
     {
+      "path": "app/game/systems/clanWarOperationsArchive.ts",
+      "bytes": 11482,
+      "sha256": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814"
+    },
+    {
       "path": "app/game/systems/clanWarOperationsV115.ts",
-      "bytes": 103458,
-      "sha256": "159fd3ad1b06646705b8d1978d24bfd449c34c0d78b11ab8f875f24c0724d905"
+      "bytes": 103845,
+      "sha256": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b"
     },
     {
       "path": "app/game/systems/clanWarOuterChoicesV142.ts",
@@ -3740,8 +3870,8 @@
     },
     {
       "path": "app/game/systems/clanWarOuterWeightedProgressV141.ts",
-      "bytes": 3368,
-      "sha256": "79a360a93f7ec20f7ba338bc5a013c72003cef5a6f4ff9f3d22f97bf8f502028"
+      "bytes": 4174,
+      "sha256": "f515d116839e1619147458e70ee185ff2d748e62f4412f77c1afa32938dcfb34"
     },
     {
       "path": "app/game/systems/clanWarParallelModesV135.ts",
@@ -3910,8 +4040,8 @@
     },
     {
       "path": "app/game/systems/clanWarRtsScenariosV119.ts",
-      "bytes": 30489,
-      "sha256": "6a40b3658ed73d0bf91fcac66d9547b60886cce2ab4d948101f67e985ae9e7db"
+      "bytes": 30467,
+      "sha256": "b2b21107ebe18e771827de83a2205769e1f787e1776f30eceda4ddda431b6233"
     },
     {
       "path": "app/game/systems/clanWarRtsSourceMissionsV129.ts",
@@ -4034,6 +4164,11 @@
       "sha256": "c90e6b3efdfc38988c1a60053898a25edc27d6699713aef8773fefc951eaf0a6"
     },
     {
+      "path": "app/game/systems/clanWarVariantExportV126.ts",
+      "bytes": 3598,
+      "sha256": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a"
+    },
+    {
       "path": "app/game/systems/clanWarViewV131.ts",
       "bytes": 557,
       "sha256": "eb384e364f6dcb08dccc22fc73f0435529a6feee2e9fb949f29ea1ad4543845e"
@@ -4045,8 +4180,8 @@
     },
     {
       "path": "app/game/systems/clanWarWorldClimateV126.ts",
-      "bytes": 20701,
-      "sha256": "cae44926687e653b2956f02c1b21efd3d9fdfc9d37ab3eeeb3eb4cce2311ce4f"
+      "bytes": 20682,
+      "sha256": "429d4d88bdefc0be405754062e7f3bfc5830090e7f1a155f10719ae723ebbd6c"
     },
     {
       "path": "app/game/systems/cloudAccountRestV71.ts",
@@ -4085,8 +4220,8 @@
     },
     {
       "path": "app/game/systems/companionResidence.ts",
-      "bytes": 60010,
-      "sha256": "83432416fb6869c65db49d5d67fa8a46a984227cf9e4831a837ea273c0545767"
+      "bytes": 61217,
+      "sha256": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e"
     },
     {
       "path": "app/game/systems/completeArchive.ts",
@@ -4250,8 +4385,8 @@
     },
     {
       "path": "app/game/systems/homeworld.ts",
-      "bytes": 31411,
-      "sha256": "3de925fbd4494d050237e987a7ddc1ef6544c6226aa67c3afb5044d83229f954"
+      "bytes": 31424,
+      "sha256": "5820db0a1ea044538866b0a92d798640bf09eacb8de7009d79b48e470659e34c"
     },
     {
       "path": "app/game/systems/homeworldAccessV69.ts",
@@ -4535,8 +4670,8 @@
     },
     {
       "path": "app/game/systems/homeworldCivicNeighborhoodsV80.ts",
-      "bytes": 3690,
-      "sha256": "79c1e4d17d0d8dbdbcc7183fa18ff0c333a62fe02353c1a1cb40135ec953a950"
+      "bytes": 4129,
+      "sha256": "753d85d64753865321caec73cdd9a4ecafad54be2ddfbe3f434a3aa03ab8d760"
     },
     {
       "path": "app/game/systems/homeworldCivicPublicComplexCodexV83.ts",
@@ -5209,6 +5344,16 @@
       "sha256": "701e9dc4cc200f6a612aa68642e66e4fb4f0d71bf70b17c416c5715a9f2ea46e"
     },
     {
+      "path": "app/game/systems/huntFieldFeedbackV112.ts",
+      "bytes": 1408,
+      "sha256": "01c1ca4f169bfa43500a1a0ffdac7fdfd14f473e31343905f677dfc40a4a488b"
+    },
+    {
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "bytes": 13406,
+      "sha256": "1883adca617ac9b07be8f63c32c3187052fa5423450561aa846c2938ed8606b6"
+    },
+    {
       "path": "app/game/systems/huntGauntletIdentityV142.ts",
       "bytes": 1290,
       "sha256": "7678350bb36568fcb1b4ae1c593418f92fc8a256cb82641cd321c8bb2334762b"
@@ -5235,8 +5380,8 @@
     },
     {
       "path": "app/game/systems/huntRitesRuntimeV77.ts",
-      "bytes": 13349,
-      "sha256": "fa9098ff0f1c34cfb7849e515556398564bcd5c0d7f3439f4216a0338b318ab3"
+      "bytes": 17554,
+      "sha256": "0e2b3adbbd1c5c72f121d95b821a344825789da8357bcd02a93873787b13faeb"
     },
     {
       "path": "app/game/systems/huntStructuralBarrierV94.ts",
@@ -5287,6 +5432,66 @@
       "path": "app/game/systems/metroidvaniaPilot.ts",
       "bytes": 9770,
       "sha256": "ef26a4079788294739039a1ed1b8e6350bd83c603c453c46fb4a06608e30e4c7"
+    },
+    {
+      "path": "app/game/systems/mobility/access.ts",
+      "bytes": 821,
+      "sha256": "6ebd5adb3d07b3ea92fe6e2295e7ea25d130308a8e42770d18df788c44b0fc88"
+    },
+    {
+      "path": "app/game/systems/mobility/catalogue-source/01-10.json",
+      "bytes": 15615,
+      "sha256": "97af9eab8764b3041e748ee80b708c9fe77ea384da50df9d988573943c435818"
+    },
+    {
+      "path": "app/game/systems/mobility/catalogue-source/11-20.json",
+      "bytes": 14392,
+      "sha256": "934b3b6e920a552349cf5fbfb5e7807b0a893ac25caa4fe6751270af30e138f8"
+    },
+    {
+      "path": "app/game/systems/mobility/catalogue-source/21-30.json",
+      "bytes": 14174,
+      "sha256": "250cf5e274dfe7b48cecbfcbcf17051f9ab3bc93d3192d2e8f3193bca4276443"
+    },
+    {
+      "path": "app/game/systems/mobility/catalogue-source/31-40.json",
+      "bytes": 14287,
+      "sha256": "fc75f13109611d9fd94e91f8485fc4484f588a0e926db5910c583b2419df0064"
+    },
+    {
+      "path": "app/game/systems/mobility/catalogue-source/41-50.json",
+      "bytes": 14704,
+      "sha256": "a885da26d73d11465abc2ab508e3d5ccc79356f75f4507a01f6d31050ed23e7b"
+    },
+    {
+      "path": "app/game/systems/mobility/catalogue.ts",
+      "bytes": 4777,
+      "sha256": "33840ee3172cb6c087c4ff7e9786c4319cd1cf432ef53d3eae7e9b588b9f955f"
+    },
+    {
+      "path": "app/game/systems/mobility/controller.ts",
+      "bytes": 2764,
+      "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+    },
+    {
+      "path": "app/game/systems/mobility/controls.ts",
+      "bytes": 3689,
+      "sha256": "949eee61c903b18130ed5c19d6a6b9bd321337a9874ec4e38a54cf207bc6350c"
+    },
+    {
+      "path": "app/game/systems/mobility/course.ts",
+      "bytes": 7273,
+      "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+    },
+    {
+      "path": "app/game/systems/mobility/ledger.ts",
+      "bytes": 17051,
+      "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+    },
+    {
+      "path": "app/game/systems/mobility/workshop.ts",
+      "bytes": 1307,
+      "sha256": "0d8acc38e0ad8cd6ecec1addf7a04b6ac678d9bdb628c9cae8aaaf49317a2662"
     },
     {
       "path": "app/game/systems/nativeImagePreloadV94.ts",
@@ -5815,8 +6020,8 @@
     },
     {
       "path": "app/game/systems/ritesOfHuntV77.ts",
-      "bytes": 19219,
-      "sha256": "9142fff55727028cba870670607a0506fa42ca8303b25e0a6155481243b45e57"
+      "bytes": 22562,
+      "sha256": "d3bded7f0b9f96b36cf31bf2dcaf78f8343e8b13b97068f0b5f597aed575dd29"
     },
     {
       "path": "app/game/systems/sceneAudio.ts",
@@ -5894,6 +6099,11 @@
       "sha256": "c20e3988a0857359440a2f310134ade092573b9fe892ec0f355401a816ecd3f8"
     },
     {
+      "path": "app/game/systems/trophyTutorialV6.ts",
+      "bytes": 23909,
+      "sha256": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9"
+    },
+    {
       "path": "app/game/systems/trophyWorkshop.ts",
       "bytes": 10642,
       "sha256": "84d17290fff5ee976c746cab5a632f08fd4c62b6b1de12a4580314572c605fec"
@@ -5912,6 +6122,11 @@
       "path": "app/game/systems/useHunterGauntletV133.ts",
       "bytes": 4007,
       "sha256": "4eac5387c4ae8fa1dff36b32615169ca04738aed8557c29108d4105b91b98676"
+    },
+    {
+      "path": "app/game/systems/warpModuleBay.ts",
+      "bytes": 10574,
+      "sha256": "329a14a555c29dd465438cdc37d5a8c553b869d73aa3d08682544c3ad1df4403"
     },
     {
       "path": "app/game/systems/wolfCastle.ts",
@@ -5995,8 +6210,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 20597,
-      "sha256": "98678751a44f09371f82460907b24cde62ed90886cc1f98014827c25b9e99b29"
+      "bytes": 21130,
+      "sha256": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -6025,8 +6240,8 @@
     },
     {
       "path": "app/game/useMenuGamepad.ts",
-      "bytes": 6584,
-      "sha256": "7fcb3efdc52140d41c29f4901932fb7bf826fc88cfbfdb648a9e6ecb1a3ac5ba"
+      "bytes": 7619,
+      "sha256": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35"
     },
     {
       "path": "app/game/useNativeImageAssetsV94.ts",
@@ -6807,6 +7022,26 @@
       "path": "package.json",
       "bytes": 8562,
       "sha256": "246599abd3ca304b98201bbffbbcaaeef481486a91f3cad637a15c3ee20efbe5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json",
+      "bytes": 28637,
+      "sha256": "5d2b6ca85b69da49c32dbd54d9ed90eea3876de3072148668402a0ee4f90ade4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/test-selection.json",
+      "bytes": 4624,
+      "sha256": "6c4f96aaf8c590e72a328a2b328ca70b78e8756b51f8ef953d5ab4921eaa9f92"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/ci/runtime-file-inputs.json",
+      "bytes": 22520,
+      "sha256": "e587ef758e33943558fc89d5bb43bf9915304b9a01d493e447b7cdfecdaba8a2"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/root/test-selection-current.json",
+      "bytes": 3153,
+      "sha256": "fec622911445ccf6b90fc983fad98002927965e521e0f7a6544b0c7b780679eb"
     },
     {
       "path": "public/audio/ambience/ship/v54.wav",
@@ -10104,6 +10339,36 @@
       "sha256": "bea22b01bbf8a6b394932abc705b850e40d5037f077add9e6e347b3b65fee1ad"
     },
     {
+      "path": "public/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+      "bytes": 2874040,
+      "sha256": "c5b88e5939bb4eaaad016da06377802e0ff8cf7d127f48c4ca438bfcb47d17ad"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/200_module_salle_avatar_fond.png",
+      "bytes": 2447227,
+      "sha256": "13719336fdcaca91941eaac942e3b06dbb31efd2ce8fe3bd5bbd6d43bf84c752"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/201_module_archiviste_yautja.png",
+      "bytes": 2514865,
+      "sha256": "84c87998fcde4c031781a4ea2c13c46dbf96649ad5cc018e12d4f1050fa7b6d9"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/202_module_sas_decontamination.png",
+      "bytes": 1659675,
+      "sha256": "deefa94a2392a5ace06988cda718684283ebebae382d335d846a16ceaedf7cb6"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/203_module_memoire_avatar.png",
+      "bytes": 2468644,
+      "sha256": "1bb83c64ec652d0bc6b43c24a8e47840f6ad12454ca44f412f2fb14a3de441fd"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/manifest.json",
+      "bytes": 4059,
+      "sha256": "92d88a4ac0288a45263e669d9fd716e4826f39bc24acb2e7c736cac8e043891b"
+    },
+    {
       "path": "public/game/youth/v48/unblooded-right.png",
       "bytes": 1366371,
       "sha256": "ad1873f50d793d0d570379f32ceb4d368843c2bc84c56c88b6f898bab6e78fc6"
@@ -10179,6 +10444,11 @@
       "sha256": "55553b085e3518fc2e5cae207709c4bd823201926a8533f85673d5dabaf64a03"
     },
     {
+      "path": "scripts/check-p0p1-coherence-20261109.mjs",
+      "bytes": 3650,
+      "sha256": "71d76479750211e74ffe430a40876cb81985da9f46e36c215a9254f3a6f351c7"
+    },
+    {
       "path": "scripts/collect-pit-variant-inputs-v107.mjs",
       "bytes": 3495,
       "sha256": "87721a070cf922cbd6302575a553a87aaca33a4b35d7d109f18e3d39fa3f23c9"
@@ -10200,8 +10470,8 @@
     },
     {
       "path": "scripts/generate-preserve-grand-hunts.mjs",
-      "bytes": 27005,
-      "sha256": "8c5a32fcd6d803251e7a04fa8780c86e3616c030e2d26e03bfef87b4dfae72a1"
+      "bytes": 26965,
+      "sha256": "dc436f99914bfad20c2b41c9c2c6dfa6020e72801c6260a19541be79ab63ca45"
     },
     {
       "path": "scripts/generate-preserve-legacy-decor.mjs",
@@ -10217,6 +10487,11 @@
       "path": "scripts/homeworld-qa-model-v64.mjs",
       "bytes": 1923,
       "sha256": "85441450063cf646ec6e778368ad685f54c3e9b7fc4515d669ce98018c83d283"
+    },
+    {
+      "path": "scripts/include-p0p1-ci-inputs-20261109.mjs",
+      "bytes": 2323,
+      "sha256": "d94f7103af7cd4e2492ddaed1d3076c4c205dd501f49b08774c94ff5952ef8a4"
     },
     {
       "path": "scripts/lib/excel-followup-evidence.mjs",
@@ -10244,9 +10519,19 @@
       "sha256": "0f60e6845d1f899da6b7a5d5b439bc045018d9bfe9d4765069d0f60eb47f8f97"
     },
     {
+      "path": "scripts/lib/qa-clan-field-fixture-20261109.mjs",
+      "bytes": 5764,
+      "sha256": "0f8c527917288dc899be636d5a2b33805aa2241a7a6b3a98913fc71e7230ab60"
+    },
+    {
       "path": "scripts/lib/qa-hunt-accessibility-v112.mjs",
       "bytes": 4856,
       "sha256": "9b78b72a2c8e427c03ec347db82dc60dc3bd89dca9d98bc269eef3637c07e048"
+    },
+    {
+      "path": "scripts/lib/qa-hunt-campaign-input-v112.mjs",
+      "bytes": 5533,
+      "sha256": "033be399d3a4a913a119dd78bf35818a54f9eef6f4363aea7639e12bc829f6c1"
     },
     {
       "path": "scripts/lib/qa-hunt-field-guide-v112.mjs",
@@ -10254,9 +10539,24 @@
       "sha256": "de63f60a480b2e1d87004afa9a20403f2960bea4abb503bd4bcaa9ebfc5ce1f4"
     },
     {
+      "path": "scripts/lib/qa-native-hunt-inspection-20261109.mjs",
+      "bytes": 5553,
+      "sha256": "eaf51bb55cdace6a0c83bf7c8ff4c37c358fab632c2efcc03b9bbc9eb0a4b35d"
+    },
+    {
+      "path": "scripts/lib/trace-p0p1-file-inputs-20261109.mjs",
+      "bytes": 2055,
+      "sha256": "5dd78e7f3fb5bd47fee9879785565e93550d009172380d91d7789a855a29ea29"
+    },
+    {
       "path": "scripts/lib/v112-hunt-native-scope.mjs",
       "bytes": 582,
       "sha256": "359f02835643ea86913d3381daa175ae43bbd3065d933c62c9a232e82bc31163"
+    },
+    {
+      "path": "scripts/mobility-qa-driver.mjs",
+      "bytes": 1732,
+      "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
     },
     {
       "path": "scripts/pit-selection-browser-helpers.mjs",
@@ -10284,9 +10584,74 @@
       "sha256": "1ab7bd2c26d83b430839eb3a27747a4369da579715e6d79873441f5f70120de5"
     },
     {
+      "path": "scripts/qa-clan-field-20261103.mjs",
+      "bytes": 11808,
+      "sha256": "f953b49a451216c338bb63aa08cb1d8e88f9928390a8df2e0b8566928048a0d3"
+    },
+    {
+      "path": "scripts/qa-clan-ship-crew-dialogue-20261109.mjs",
+      "bytes": 39777,
+      "sha256": "e8a8e6e35d7e1c100c27af85e3cf8ffe3dece08b5df275dc7b75645bf69b09c6"
+    },
+    {
+      "path": "scripts/qa-clan-ship-field-p0p1-20261109.mjs",
+      "bytes": 17145,
+      "sha256": "1e314ed3a59c3287672738f0c87bba9569064cdce3a6abe286410447754447cc"
+    },
+    {
+      "path": "scripts/qa-clan-ship-maintenance-20261109.mjs",
+      "bytes": 22959,
+      "sha256": "f8be56a11438f5427b49763698dc7845ae955e4d3f954a8129e943adb9f7e2a9"
+    },
+    {
+      "path": "scripts/qa-clan-ship-p0p1-20261109.mjs",
+      "bytes": 35597,
+      "sha256": "6af42a5b8d7b1427d4401691ad667cac31570d807690edbf3df1e2f140dfc1c0"
+    },
+    {
       "path": "scripts/qa-clan-supply-route-v109.mjs",
       "bytes": 32119,
       "sha256": "54bb7a9722fcfb9b8384ff64d17b34a107e7cc798efbe5c16fdca86c5513810c"
+    },
+    {
+      "path": "scripts/qa-clan-war-command-20261109.mjs",
+      "bytes": 17356,
+      "sha256": "6ea5c1854aad269b5885e1e02135c83b27711bcb29a00032de0844a9e935428e"
+    },
+    {
+      "path": "scripts/qa-clan-war-command-next-20261109.mjs",
+      "bytes": 15789,
+      "sha256": "bd5c8219ae1accddf6a5958450783b5ba53fd2c58763fdeb31323c45d4a89add"
+    },
+    {
+      "path": "scripts/qa-clan-war-command-operations-20261109.mjs",
+      "bytes": 15242,
+      "sha256": "60d0487466b8827693683402f3d6c27d0379d57ed7a15a50abdcf0e43562c0cc"
+    },
+    {
+      "path": "scripts/qa-clan-war-four-modes-v147.mjs",
+      "bytes": 8712,
+      "sha256": "e410e755baf9727f07ac5ba7150236a1e40236b1d074344304187216798e7145"
+    },
+    {
+      "path": "scripts/qa-clan-war-operations-archive-20261109.mjs",
+      "bytes": 35517,
+      "sha256": "4187efb3c3c5a2cf111a061838f3b4d70b2d5cc345598189e1578832385507fe"
+    },
+    {
+      "path": "scripts/qa-clan-war-rts-two-tabs-v152.mjs",
+      "bytes": 9803,
+      "sha256": "c07c956718caba2d74457df212ded41b2988d2478ac3bac0c68c614623fde4d2"
+    },
+    {
+      "path": "scripts/qa-clan-war-v115-multitab-v148.mjs",
+      "bytes": 18682,
+      "sha256": "25cc7430c456e5422ec96dc44f872b633ce3d2d0e0a56283f414886a5fa78131"
+    },
+    {
+      "path": "scripts/qa-clan-war-v115-multitab-v151.mjs",
+      "bytes": 21476,
+      "sha256": "121fab77bb7e07ea2361ad3daef6a43faeecfc66c1ee8c27fae8c7104025d148"
     },
     {
       "path": "scripts/qa-discovery-hud-layout-v112.mjs",
@@ -10349,6 +10714,46 @@
       "sha256": "e73ed15ba170b91d2de67e918cc6df765089e34d8d9a5dddcc1ff0351fbfe58c"
     },
     {
+      "path": "scripts/qa-menu-native-dialog-20261109.mjs",
+      "bytes": 9810,
+      "sha256": "b5eb3576acd9cce19a96d08e3bcce8657b6ed9811cb3d9075b6dcd82080a52a4"
+    },
+    {
+      "path": "scripts/qa-mobility-campaign-20261109.mjs",
+      "bytes": 27270,
+      "sha256": "944101a34b897416f8604d2328c3986c34627185be29a61b2c176d96c5fc9a55"
+    },
+    {
+      "path": "scripts/qa-mobility-notice-smoke-20261109.mjs",
+      "bytes": 12974,
+      "sha256": "e47bba0f9fe23672f4ff5df1befb6bc69389ab84ca30c6589b34019375a1e68e"
+    },
+    {
+      "path": "scripts/qa-outer-inspection-browser.mjs",
+      "bytes": 5165,
+      "sha256": "f85f3983dec52a06e11795a5c576a03841f823e2e92143ebe62e02858a7c8837"
+    },
+    {
+      "path": "scripts/qa-outer-pace-browser.mjs",
+      "bytes": 5042,
+      "sha256": "8542d5cbcd8c3bdcb58cb20778a33834ff26769d9e0f17aa485a59e09ee8a9e8"
+    },
+    {
+      "path": "scripts/qa-phg-endurance-p0p1-20261109.mjs",
+      "bytes": 23046,
+      "sha256": "7aabaadbfdd234b15f424290b43c424c26b3663a3f77b04defd4631f1ed4cd6c"
+    },
+    {
+      "path": "scripts/qa-phg-hunt-p0p1-20261109.mjs",
+      "bytes": 23691,
+      "sha256": "d70b732e85e32af789af5255ce3c3d69bce9280ebed482393bd8e84fcc0c5e1f"
+    },
+    {
+      "path": "scripts/qa-phg-p0p1-20261109.mjs",
+      "bytes": 24779,
+      "sha256": "90369bf03ff72c8c0512e8b1727633c2a01d0ec9169d6e0977ebeaffe27706d5"
+    },
+    {
       "path": "scripts/qa-pit-backward-throws-v112.mjs",
       "bytes": 36391,
       "sha256": "eb50526c6106146768097cbc0298c4465f84ffa9b2a71b0c4cb8c2660bc2ac8f"
@@ -10374,14 +10779,39 @@
       "sha256": "aa2f7ef7d973b8d06cd3210306b472d22f65c59adb00f00de413dcb16317f02a"
     },
     {
+      "path": "scripts/qa-stealth-last-contact-browser.mjs",
+      "bytes": 6249,
+      "sha256": "00970875d5ef78c5d346fb58d1702dedbd4c09470bbc0b5f95cabcb6a5620ec3"
+    },
+    {
+      "path": "scripts/qa-stealth-reconciliation-browser.mjs",
+      "bytes": 12161,
+      "sha256": "fa2fa607b8f8438b7204935c3a6f415a73bd76540284cd91c6f6a29df47e5da8"
+    },
+    {
+      "path": "scripts/qa-trophy-tutorial-campaign-20261109.mjs",
+      "bytes": 29259,
+      "sha256": "439f568a7dd8c087988c138e15dca64e1e4d235e99cd99878227aeb07be13395"
+    },
+    {
+      "path": "scripts/qa-trophy-tutorial-fixture-v2-20261109.mjs",
+      "bytes": 15452,
+      "sha256": "7f5a9a6713221fe8aa0e2fcf44eb059cc59db6bea9e5801a6aa775a786e3576f"
+    },
+    {
+      "path": "scripts/qa-warp-module-p0p1-20261109.mjs",
+      "bytes": 8672,
+      "sha256": "97a9e7877649bcf32378ac42fd77160d9c17234eb9074ce97b006616285819a0"
+    },
+    {
       "path": "scripts/review-pit-native-borders-v109.py",
       "bytes": 5625,
       "sha256": "fc39ea46cb48c4040a44e042be5c6a0a96ae879747a5e7b10309918c2427fc07"
     },
     {
       "path": "scripts/runtime-v113-inputs.json",
-      "bytes": 6164,
-      "sha256": "c47dc8a98966ccf041a2d5f3e9f692071f8c2f75acc6765af7bb79d356b1f9ca"
+      "bytes": 9410,
+      "sha256": "78d11a432ca10054e3e06a2cf2dacfde706410b474e39615741beb2b1c17c8ed"
     },
     {
       "path": "scripts/snapshot-runtime-v107.mjs",
@@ -10439,14 +10869,74 @@
       "sha256": "711beec36d1d09ef764453c0bf24bf968d56a53c1c20a614d2d7de7bdd04a45a"
     },
     {
+      "path": "tests/browser/menu-native-dialog-20261109.fixture.tsx",
+      "bytes": 4709,
+      "sha256": "60c7bfd0985cb7b2c4ff70fdb163265a6b70e74e946ae2d1c7c7b10314644eb0"
+    },
+    {
+      "path": "tests/browser/trophy-tutorial-v6.fixture.tsx",
+      "bytes": 2840,
+      "sha256": "aaa23132177cae5b5f65918791957010e06e28ee41261e40b4a514ece0287c51"
+    },
+    {
       "path": "tests/canopy-traversal-v112.test.mjs",
-      "bytes": 11629,
-      "sha256": "9c0f2f57e91a925b4c51a20a5f45a28ca33f21c7c77f5840a3b24fd7bc414391"
+      "bytes": 11584,
+      "sha256": "d1080e8fb5c1242015db4a53ac28052034882395ccce616d1b386c8cfeda0081"
     },
     {
       "path": "tests/carcass-anatomy-v112.test.mjs",
-      "bytes": 8945,
-      "sha256": "bae476edffa54daab2169cc86b2674c1f8b428a4ade47c0f9ccdc98aff81de56"
+      "bytes": 11220,
+      "sha256": "111942301d2eae657771855a2788093f5bfd12bc0ce21b29ade21949fb7a088e"
+    },
+    {
+      "path": "tests/clan-ship-crew-dialogue-ui.test.mjs",
+      "bytes": 10417,
+      "sha256": "6eb71abca17330ab1f06b638591ef02bc743cd3b1b196765b3e730c69d1de6ad"
+    },
+    {
+      "path": "tests/clan-ship-crew-dialogue.test.mjs",
+      "bytes": 20333,
+      "sha256": "7c3923370cc8c5801e0126ac0c61a3a918daf1457decbc29c6f16ca74b5efee3"
+    },
+    {
+      "path": "tests/clan-ship-maintenance-diagnostics.test.mjs",
+      "bytes": 11881,
+      "sha256": "df41737cc2d62ececbbb07678544a6ef308f79d7943202289f2e8c92ccd02cf9"
+    },
+    {
+      "path": "tests/clan-ship-operations-audio.test.mjs",
+      "bytes": 14773,
+      "sha256": "3fd98fc509db59da70d2e2252cd7e53ac81c27a4045336eda126f77ff6769994"
+    },
+    {
+      "path": "tests/clan-war-climate-place-tokens.test.mjs",
+      "bytes": 2013,
+      "sha256": "875ab39260aee3a5ddc1fa010e21b6bbdb7f01bb623b32c2b1364f058deed29a"
+    },
+    {
+      "path": "tests/clan-war-operations-archive.test.mjs",
+      "bytes": 20398,
+      "sha256": "f0563d7c4b5ae38a3f295b95a1cfe62938276fb1b2d21dedbf78877842f91513"
+    },
+    {
+      "path": "tests/clan-war-outer-recall-continuity.test.mjs",
+      "bytes": 9099,
+      "sha256": "de850bd81e95583cfea0666ff39f53d4dda4fe3a5bf435b95dd96e2fc179e424"
+    },
+    {
+      "path": "tests/clan-war-v115-multitab-v148.test.mjs",
+      "bytes": 3668,
+      "sha256": "5b2baa05513acb579ff1092bba271b08b25d5180dbd02e62f8408f5c0dd15d7a"
+    },
+    {
+      "path": "tests/clan-war-v115-multitab-v151.test.mjs",
+      "bytes": 3668,
+      "sha256": "90d54a8bdaa23191c2949488d96a91ef60afddcc1d8d979c49ec92c5847d04d7"
+    },
+    {
+      "path": "tests/clan-war-variant-export-coherence.test.mjs",
+      "bytes": 7796,
+      "sha256": "e74b126a7b96c4af7e9999ad1b8e580a406f5745488eefddeac1524c0d01b049"
     },
     {
       "path": "tests/cloud-account-gamepad-isolation-v71.test.mjs",
@@ -10679,6 +11169,16 @@
       "sha256": "6e696f607f0c14410c4e3c0672f28617c3cb5673eb3aa7af58ed74c5e819bde1"
     },
     {
+      "path": "tests/helpers/clan-ship-maintenance-fixtures-20261109.mjs",
+      "bytes": 4550,
+      "sha256": "910306a700540ab1a32552aa35cd96e1055a3184340a4a2d1ae4a202259fe323"
+    },
+    {
+      "path": "tests/helpers/clan-ship-trophy-hearing-fixture.mjs",
+      "bytes": 9799,
+      "sha256": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772"
+    },
+    {
       "path": "tests/helpers/homeworld-geometry-upgrade-v112-route.mjs",
       "bytes": 9140,
       "sha256": "3fa8ffbf14ad02aeebe8b6b15852ce80c822d701c798f84d1e8d132f68dcbc6b"
@@ -10905,23 +11405,23 @@
     },
     {
       "path": "tests/hunt-carcass-runtime-v112.test.mjs",
-      "bytes": 9973,
-      "sha256": "224154ee9d446eabc3895d876bf8f8b81459cb1c936269801e2a6c1e825e1f01"
+      "bytes": 14713,
+      "sha256": "c9457a415fd4046ece200d60e787743db20c6010b136f324a258c8b168098056"
     },
     {
       "path": "tests/hunt-carried-corpse-menu-v112.test.mjs",
-      "bytes": 10092,
-      "sha256": "80bd2d401e8f33d8a756e7591553958dfd90235a3db9d9dfb47f68396cb09ebc"
+      "bytes": 16328,
+      "sha256": "ba56db4ed323e1996b685a13807ab4d7140c8d929df3679b812448a7b38678f7"
     },
     {
       "path": "tests/hunt-catalogue-contract-v112.test.mjs",
-      "bytes": 14315,
-      "sha256": "695460bdf1b91ce649be16f2ac63c6901fa21ef8b631455a18052969c9228de4"
+      "bytes": 14412,
+      "sha256": "48d18e7663875829395c68c165d9a074d516583eb5544bed66e25e7ed51a24b8"
     },
     {
       "path": "tests/hunt-field-guide-v112.test.mjs",
-      "bytes": 6619,
-      "sha256": "1f5dbf1e6720642ffe42a642963808c543e61095b9e9e31e38de88685e7f2e01"
+      "bytes": 7664,
+      "sha256": "cf43d0f0825ef1c2e45a5a8242b698ba13b7d86b2d8fcb9d838c1b256146fac0"
     },
     {
       "path": "tests/hunt-field-load-v112.test.mjs",
@@ -10942,6 +11442,11 @@
       "path": "tests/hunt-mechanics-workbook-v112.test.mjs",
       "bytes": 12975,
       "sha256": "49e87ed346df6dcc1230528e2344fc97071e147f74e53ab9e4de01478d0a60c7"
+    },
+    {
+      "path": "tests/hunter-armor-chromatic-clipping.test.mjs",
+      "bytes": 7394,
+      "sha256": "cd401b994898d23380c5e3e128fea0419d8248a3db8890714f8368700b5aebaa"
     },
     {
       "path": "tests/hunter-material-facilities-v113.test.mjs",
@@ -11017,6 +11522,21 @@
       "path": "tests/r7-publication-history-v113.test.mjs",
       "bytes": 6367,
       "sha256": "d1b972ec42a4384a97281620adac61475ef5588c71d18550dc4bb0fc2b1362d1"
+    },
+    {
+      "path": "tests/trophy-tutorial-save-v6.test.mjs",
+      "bytes": 8117,
+      "sha256": "5419e527bdaf6490a5a587f3382f09dbb4a188083d5a4ce9289a8225e46daab6"
+    },
+    {
+      "path": "tests/trophy-tutorial-v6.test.mjs",
+      "bytes": 13372,
+      "sha256": "ced00a008a724e91abe2d8d7629edc1ab65969ecfd031767d204b1bc859402b7"
+    },
+    {
+      "path": "tests/warp-module-bay.test.mjs",
+      "bytes": 7742,
+      "sha256": "b6d183fb1e20868060104df6e6194bbe52a0740596026c8e26be8ccdbb5e4a29"
     },
     {
       "path": "tsconfig.json",

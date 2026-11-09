@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "classification": "ACTUAL_COMPONENT_COMPACT_MOBILE_LAYOUT_AND_NATIVE_BUTTON_ROUTING",
+  "observedAt": "2026-11-09T08:04:19.575567+00:00",
+  "checkoutCommit": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+  "workingTreeDirty": true,
+  "browserVersion": "154.0.8037.57",
+  "command": [
+    "node",
+    "/tmp/measure-compact-rites-final-20261109.mjs"
+  ],
+  "exitCode": 0,
+  "sourceFiles": {
+    "app/game/HuntRitesMenuV77.tsx": {
+      "bytes": 12345,
+      "sha256": "c56bb211e8a2806dfc21123a2cd0c9102f72eba43ae722ce6be0a8c7fb874419"
+    },
+    "app/game/HuntRitesMenuV77.module.css": {
+      "bytes": 2622,
+      "sha256": "4ae4aafacd2903aec731c96f2dc9463b18c1fcc91c3335dbce16d3eb563fa22d"
+    }
+  },
+  "report": {
+    "bytes": 10157,
+    "sha256": "34d356e30e49f0a6e29f87b10c613c985ad9d6975a3d1a947e81e30bb6afb801"
+  },
+  "harness": {
+    "bytes": 7395,
+    "sha256": "2110235b54866ea93bdf49f4b2fbff812eed3a01e8d08e7f715e6b16168f4d1d"
+  },
+  "measurements": [
+    {
+      "viewportWidth": 320,
+      "mode": "before",
+      "panelHeight": 222,
+      "panelWidth": 280,
+      "compact": null,
+      "buttons": null,
+      "horizontalOverflow": false
+    },
+    {
+      "viewportWidth": 320,
+      "mode": "working",
+      "panelHeight": 62,
+      "panelWidth": 280,
+      "compact": "true",
+      "buttons": [
+        {
+          "text": "Infos",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Interrompre",
+          "width": 82,
+          "height": 44
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "viewportWidth": 320,
+      "mode": "cancelled",
+      "panelHeight": 222,
+      "panelWidth": 280,
+      "compact": null,
+      "buttons": null,
+      "horizontalOverflow": false
+    },
+    {
+      "viewportWidth": 390,
+      "mode": "before",
+      "panelHeight": 222,
+      "panelWidth": 280,
+      "compact": null,
+      "buttons": null,
+      "horizontalOverflow": false
+    },
+    {
+      "viewportWidth": 390,
+      "mode": "working",
+      "panelHeight": 62,
+      "panelWidth": 280,
+      "compact": "true",
+      "buttons": [
+        {
+          "text": "Infos",
+          "width": 44,
+          "height": 44
+        },
+        {
+          "text": "Interrompre",
+          "width": 82,
+          "height": 44
+        }
+      ],
+      "horizontalOverflow": false
+    },
+    {
+      "viewportWidth": 390,
+      "mode": "cancelled",
+      "panelHeight": 222,
+      "panelWidth": 280,
+      "compact": null,
+      "buttons": null,
+      "horizontalOverflow": false
+    },
+    {
+      "viewportWidth": 1120,
+      "mode": "before",
+      "panelHeight": 130.890625,
+      "panelWidth": 340,
+      "compact": null,
+      "buttons": null,
+      "horizontalOverflow": false
+    },
+    {
+      "viewportWidth": 1120,
+      "mode": "working",
+      "panelHeight": 130.890625,
+      "panelWidth": 340,
+      "compact": null,
+      "buttons": [
+        {
+          "text": "×",
+          "width": 25.4375,
+          "height": 44
+        },
+        {
+          "text": "Interrompre le geste",
+          "width": 314,
+          "height": 44
+        }
+      ],
+      "horizontalOverflow": false
+    }
+  ],
+  "nativeButtonRouting": "Verbatim AST-extracted navigateHuntDialogWithGamepad from the current HuntCanvas; opens Infos then activates the existing supplied onClose callback once. No gamepad polling, engine mutation or physical controller claimed.",
+  "pageErrors": [],
+  "tests": {
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "--test-concurrency=1",
+      "tests/hunt-skinning-worksite-20261109.test.mjs",
+      "tests/carcass-anatomy-v112.test.mjs",
+      "tests/hunt-rites-v77.test.mjs",
+      "tests/field-tools-rites-v111.test.mjs"
+    ],
+    "exitCode": 0,
+    "passed": 36,
+    "failed": 0,
+    "skipped": 0,
+    "log": {
+      "path": "/tmp/skinning-worksite-compact-tests-20261109.log",
+      "bytes": 4037,
+      "sha256": "c56c2ede92cc550aa0e820b809d49624d468835ae5d35df97e2b499f3f2cf0b0"
+    }
+  },
+  "lint": {
+    "command": [
+      "node",
+      "node_modules/eslint/bin/eslint.js",
+      "app/game/HuntRitesMenuV77.tsx",
+      "--max-warnings",
+      "0"
+    ],
+    "exitCode": 0,
+    "log": {
+      "path": "/tmp/skinning-worksite-compact-eslint-20261109.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "limits": [
+    "Actual component/CSS with declared menu facts inside a240px-high scene fixture; not mounted GameClient or a played hunt.",
+    "Mobile dimensions are emulated Chromium viewports, not a physical phone or human validation.",
+    "Only pageerror events are recorded by this component harness; the forthcoming full native recipe records its own console and gameplay observations.",
+    "The260px details popup from the initial preview was reduced to130px in the final measured sources to stay inside the mobile scene; the first preview remains separate.",
+    "No source writes were made after this frozen measurement by the owning agent."
+  ]
+}

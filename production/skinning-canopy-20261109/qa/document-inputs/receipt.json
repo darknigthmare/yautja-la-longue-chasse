@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "classification": "PRODUCER_AND_PROTECTED_INPUT_CHECK_NOT_FINAL_WORKBOOK_BYTE_ATTESTATION",
+  "command": [
+    "python3",
+    "production/skinning-canopy-20261109/qa/document-inputs/check.py.txt"
+  ],
+  "exitCode": 0,
+  "checkoutCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+  "pythonVersion": "3.12.14",
+  "sourceFiles": {
+    "production/skinning-canopy-20261109/build-followup.py": "c422ad02d85b7328dc67bb4aaaa418446eb1964f58668b59d47e1db2c94235e2",
+    "production/skinning-canopy-20261109/verify-followup.py": "358e66c2a6f398dd066ab82d508729123bf74fcf8c21325badfb8bdcc122ff1f",
+    "production/skinning-canopy-20261109/baseline.json": "75cb2e5eacb3471adfebfc079a5ae80dd7d2549a112edf196385aa46aa5f3271",
+    "production/skinning-canopy-20261109/qa/document-inputs/check.py.txt": "c5c9662f3e0a599b29636c2703a2787049594113b32907ffc886c7c8e482b9c8",
+    "production/reprise-chasse-bible-20261109/build-followup.py": "0bf6fcd861aef7cec02151a03a8dfe80aa6153ba401c28fdbfc8379959de960a",
+    "scripts/build-resume-workbook-20261101.py": "e45d85361f2bd054f71600ab34f31344568f1167c1ec1990a53ac162c5474a49"
+  },
+  "inputCommand": [
+    "python3",
+    "production/skinning-canopy-20261109/build-followup.py",
+    "--check-data"
+  ],
+  "inputCommandExitCode": 0,
+  "inputResult": {
+    "status": "PASS_DATA_ONLY_NO_EXPORT",
+    "criteria": 22,
+    "protectedEntries": 413,
+    "originalWorkbooks": 108,
+    "remainingV112": 8,
+    "qualificationsReceived": 21
+  },
+  "protectedEntries": 413,
+  "protectedUniqueFiles": 412,
+  "originalWorkbooks": 108,
+  "remainingV112": 8,
+  "inMemoryDeterministicRepeats": 2,
+  "inMemoryVerification": {
+    "sheets": 9,
+    "rows": 592,
+    "cellsChecked": 4884,
+    "hyperlinksChecked": 679,
+    "xmlPartsParsed": 23,
+    "formulas": 0,
+    "macros": 0,
+    "fontPt": 11,
+    "frozenRows": 4,
+    "frozenColumns": 2,
+    "nativeExcelExecuted": false
+  },
+  "exportsWritten": false,
+  "limits": [
+    "This validates the formatting producer and protected inputs before the final document gate. The final data will add this receipt afterwards.",
+    "It intentionally does not attest the SHA or counts of a later workbook. verification-classeur.json and the independent post-export reader provide those final checks.",
+    "No native Microsoft Excel, browser rendering, print device or human readability session is inferred."
+  ]
+}

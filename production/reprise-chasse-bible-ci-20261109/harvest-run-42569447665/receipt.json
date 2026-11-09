@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-09T06:04:34.369820+00:00",
+  "classification": "SUCCESSFUL_BOUNDED_HARVEST_BROWSER_CI_ATTEMPT",
+  "workflow": {
+    "conclusion": "success",
+    "created_at": "2026-11-09T05:49:03Z",
+    "head_branch": "codex/reprise-bible-chasse-20261109",
+    "head_sha": "1edbf69117949df3d3e1591b79fdcc416928862d",
+    "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42569447665",
+    "id": 42569447665,
+    "name": "V112 hunt closure qualifications",
+    "run_attempt": 1,
+    "status": "completed",
+    "updated_at": "2026-11-09T05:55:52Z"
+  },
+  "jobs": [
+    {
+      "id": 129003187239,
+      "name": "Native rules, types, CPU and reproducible workbook",
+      "conclusion": "success",
+      "successfulSteps": 19
+    },
+    {
+      "id": 129003187499,
+      "name": "Mounted hunting controls, guide, lifecycle and durable workshop",
+      "conclusion": "success",
+      "successfulSteps": 13
+    }
+  ],
+  "artifact": {
+    "id": 13652524087,
+    "downloadedZipBytes": 1843367,
+    "sha256": "00f7d33df3926bea01387406d69e3e0e4e7f92d7dab6d2b9ea4fbd9a4d403a46",
+    "capturesPreservedInArtifact": 18,
+    "capturePngsDuplicatedHere": false
+  },
+  "recipe": "scripts/qa-hunt-harvest-preview-browser-20261109.mjs",
+  "checks": 18,
+  "captures": 18,
+  "browserExecuted": true,
+  "passed": true,
+  "browserVersion": "156.0.8078.79",
+  "workingTreeDirty": false,
+  "checkoutProvenance": {
+    "pullRequestHead": {
+      "parents": [
+        "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc"
+      ],
+      "sha": "1edbf69117949df3d3e1591b79fdcc416928862d",
+      "tree": "e62fdd6f95bd598554a582ec724dcf41c20b5846"
+    },
+    "syntheticMergeCheckout": {
+      "parents": [
+        "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+        "1edbf69117949df3d3e1591b79fdcc416928862d"
+      ],
+      "sha": "43b5996543d89cdf0405ae684f67557eb8d4d132",
+      "tree": "e62fdd6f95bd598554a582ec724dcf41c20b5846"
+    },
+    "gitTreesEqual": true,
+    "verification": "GitHub Git commits API read for both exact SHAs"
+  },
+  "scope": "Actual React HuntRitesMenu and native HuntCanvas callback, rite state, catalogue and emulated gamepad polling. The fixture omits the world renderer and uses disclosed native source-body and bag boundary initial states. No whole HuntCanvas lifecycle, campaign win, physical device, human comprehension or artistic qualification.",
+  "limits": [
+    "Constructed body and bag boundary fixtures are disclosed in the raw browser report.",
+    "This is not a complete hunt campaign, a physical controller or phone test, a human comprehension result, or an artistic qualification.",
+    "The frozen local delivery and its earlier captures remain unchanged."
+  ],
+  "files": [
+    {
+      "path": "browser-verification.json",
+      "bytes": 20174,
+      "sha256": "ab127f5d3967b03cd58542377cfbb790072b7ba5bb9a5c35700f2400c8dffe95"
+    },
+    {
+      "path": "new-harvest-step.log",
+      "bytes": 1084,
+      "sha256": "cd40fff917444f8da70d4abf4fcb7e272d5c069b32102f6da3f6555cd21d8ec3"
+    }
+  ]
+}

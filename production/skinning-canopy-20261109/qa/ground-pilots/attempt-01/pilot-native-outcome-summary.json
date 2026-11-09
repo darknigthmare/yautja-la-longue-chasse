@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "classification": "READ_ONLY_POSTPROCESSING_OF_PRESERVED_FIRST_NATIVE_PILOT",
+  "observedAt": "2026-11-09T07:10:44.936302+00:00",
+  "notANewExecution": true,
+  "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "sourceFiles": {
+    "app/game/HuntCanvas.tsx": {
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96"
+    },
+    "app/game/systems/ritesOfHuntV77.ts": {
+      "bytes": 22562,
+      "sha256": "d3bded7f0b9f96b36cf31bf2dcaf78f8343e8b13b97068f0b5f597aed575dd29"
+    },
+    "app/game/systems/huntRitesRuntimeV77.ts": {
+      "bytes": 17137,
+      "sha256": "02dc653895b23fbc04e79b0b21c82d307d2ef92e018987fce1873eb23aec538d"
+    },
+    "app/game/systems/anatomyHarvestV112.ts": {
+      "bytes": 5792,
+      "sha256": "cf0e561770ff5f8878ca213997a0d0bc6a10c3dc2269685c3ec6637d177a7527"
+    },
+    "app/game/systems/harvestInventoryV112.ts": {
+      "bytes": 17889,
+      "sha256": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1"
+    },
+    "scripts/qa-hunt-ground-campaign-v112.mjs": {
+      "bytes": 19916,
+      "sha256": "12b5cdb6dd2c7b03dbba4621279fcb307887e480f957d4d000d0537884e42c55"
+    },
+    "scripts/lib/qa-hunt-ground-policy-v112.mjs": {
+      "bytes": 5533,
+      "sha256": "033be399d3a4a913a119dd78bf35818a54f9eef6f4363aea7639e12bc829f6c1"
+    },
+    "scripts/qa-hunt-ground-admissible-pilot-20261109.mjs": {
+      "bytes": 7585,
+      "sha256": "33154435a9543dafb5a5b544d4904dbce3abd6800cd36b345c0e6d1e2b79e8f0"
+    }
+  },
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "scripts/qa-hunt-ground-campaign-v112.mjs",
+    "--mission=fungal-hivemind",
+    "--armor=hunter",
+    "--baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json",
+    "--harvest=true",
+    "--seconds=180",
+    "--replay=true",
+    "--output=outputs/qa-ground-admissible-pilot-20261109-01"
+  ],
+  "nativeCommandExitCode": 0,
+  "wrapperExitCode": 1,
+  "status": "CONTROLLER_DIED",
+  "missionId": "fungal-hivemind",
+  "armorId": "hunter",
+  "simulationSeconds": 74.483,
+  "health": 0,
+  "peakLoadRatio": 0,
+  "harvestActions": 0,
+  "deliveredAnatomy": [],
+  "climbFrames": 0,
+  "swingFrames": 0,
+  "canopyRestContactFrames": 0,
+  "replay": {
+    "verified": true,
+    "ticks": 4469,
+    "terminalSha256": "ac8d8506a8c3d5b8ad40f0d0414ff9571165d03382ff1422a7e16c35264ce927"
+  },
+  "terminal": {
+    "t": 74.483,
+    "phase": "dead",
+    "x": 7801.44,
+    "y": 508,
+    "vx": 240,
+    "vy": 0,
+    "health": 0,
+    "stamina": 100,
+    "energy": 100,
+    "kills": 10,
+    "boss": {
+      "active": true,
+      "alive": false,
+      "health": 0,
+      "x": 6821.348773097434
+    },
+    "scans": [
+      true,
+      true,
+      true
+    ],
+    "recoveries": [
+      true,
+      true
+    ],
+    "objectives": [
+      "fungal-hivemind-scan",
+      "fungal-hivemind-hunt",
+      "fungal-hivemind-recover",
+      "fungal-hivemind-boss"
+    ],
+    "message": "Impact subi : -24 intégrité",
+    "grounded": true,
+    "climbing": false,
+    "load": {
+      "massKg": 0,
+      "volumeUnits": 0,
+      "capacityMassKg": 36,
+      "capacityVolumeUnits": 24,
+      "ratio": 0,
+      "overloaded": false,
+      "movementMultiplier": 1,
+      "jumpMultiplier": 1,
+      "climbStaminaMultiplier": 1,
+      "noiseMultiplier": 1
+    },
+    "energyWeaponsLocked": false,
+    "weaponSlot": 1,
+    "threats": [
+      {
+        "id": "fungal-hivemind-territorials-2",
+        "x": 4607.822702798212,
+        "y": 528,
+        "health": 43.73393200000001,
+        "width": 114,
+        "height": 96
+      },
+      {
+        "id": "fungal-hivemind-guardians-1",
+        "x": 4532.391719322279,
+        "y": 402.518669842286,
+        "health": 192.27,
+        "width": 90,
+        "height": 75
+      },
+      {
+        "id": "extraction-fungal-hivemind-1256-0",
+        "x": 7481.38541999997,
+        "y": 535,
+        "health": 245.30999999999997,
+        "width": 106,
+        "height": 89
+      },
+      {
+        "id": "extraction-fungal-hivemind-1257-1",
+        "x": 7565,
+        "y": 534,
+        "health": 218.79,
+        "width": 98,
+        "height": 90
+      },
+      {
+        "id": "extraction-fungal-hivemind-1258-2",
+        "x": 7865.981166666622,
+        "y": 530,
+        "health": 218.79,
+        "width": 66,
+        "height": 94
+      }
+    ]
+  },
+  "sources": [
+    {
+      "path": "pilot-admission.json",
+      "bytes": 3637,
+      "sha256": "03469027d141941abecd9ea9d9a7307d761d203de9e2ba470528a46dfb9cfd81"
+    },
+    {
+      "path": "report.json",
+      "bytes": 25359,
+      "sha256": "61d68bd1ecfdfa10a6b95e0fed1347bc6a177eb89155a38f8a9960c84068e0f8"
+    },
+    {
+      "path": "execution.log",
+      "bytes": 243,
+      "sha256": "f1d0ca03a6774718d6b05071708f4a8e02172a339f1b219d0889a84b140b3a8e"
+    },
+    {
+      "path": "wrapper-at-admission.mjs.txt",
+      "bytes": 7585,
+      "sha256": "33154435a9543dafb5a5b544d4904dbce3abd6800cd36b345c0e6d1e2b79e8f0"
+    },
+    {
+      "path": "wrapper-failure.json",
+      "bytes": 558,
+      "sha256": "be91395fe358598329b5025e1283dcaa1123c7784f294dc929055186f92f1f55"
+    }
+  ],
+  "interpretation": "This input controller died without starting an anatomical harvest. It does not demonstrate a geometric obstruction, a loaded extraction or a globally qualified route. REM112-08 stays open."
+}

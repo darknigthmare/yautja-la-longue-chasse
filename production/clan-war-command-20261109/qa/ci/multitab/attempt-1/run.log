@@ -1,0 +1,17 @@
+[V151 PASS] Both real V115 panels initially observe an empty exercise archive
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.isEnabled: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('[data-testid="clan-operations-v115"]').getByRole('button', { name: /^Lancer :/ })[22m
+
+    at /workspace/yautja-la-longue-chasse/scripts/qa-clan-war-v115-multitab-v151.mjs:96:35 {
+  log: [
+    `  - waiting for locator('[data-testid="clan-operations-v115"]').getByRole('button', { name: /^Lancer :/ })`
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4

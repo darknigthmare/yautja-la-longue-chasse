@@ -1,0 +1,89 @@
+{
+  "fixtureVersion": 2,
+  "report": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/report.json",
+  "result": "18/18 native fixture assertions passed; all nine original screenshots inspected.",
+  "scope": "Visual evidence for the live fixture observer migration, not Next/GameClient validation or an art/hardware qualification. These are rerun cases, not new unique domain cases.",
+  "images": [
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/00-niche-start.png",
+      "sha256": "41d61c116b429809b23198d9fb3b099eff758b09f5ba008e0a3b927d59ecfef5",
+      "bytes": 709357,
+      "width": 1440,
+      "height": 1024,
+      "originalViewed": true,
+      "observation": "Initial 00/18 state, station names and walking instructions are visible; the room and empty niche are rendered."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/01-refused-write.png",
+      "sha256": "6cfa8957b0df75a69ca1b78c1dc6200109fd2020e076ec87e754afafa58b24af",
+      "bytes": 755996,
+      "width": 1440,
+      "height": 1132,
+      "originalViewed": true,
+      "observation": "Refused-writer checkbox is active; progress remains 00/18 and retry guidance remains visible with the current controls."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/02-observation-frame.png",
+      "sha256": "ca7cdd6c0ba2c07508362b3fffdec403507f461a4b8263a20c05d66e4ce2bce9",
+      "bytes": 724988,
+      "width": 1440,
+      "height": 1212,
+      "originalViewed": true,
+      "observation": "The framing control shows the model, ground line and fixed reference inside the visible frame; progress remains 01/18."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/03-discovery.png",
+      "sha256": "25ad40ccd47b72f364517ad74290a6d8c617895431e9879792b7288f9b1fcc8b",
+      "bytes": 705269,
+      "width": 1440,
+      "height": 1024,
+      "originalViewed": true,
+      "observation": "Progress is 03/18; the model is visibly held near the hunter and the next transport station is identified."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/06-carry-container.png",
+      "sha256": "0b6005a969d881b94436f639665d31a9dd3cff28348e8d5052e824c8f06cf828",
+      "bytes": 727252,
+      "width": 1440,
+      "height": 1024,
+      "originalViewed": true,
+      "observation": "Progress is 06/18; the carried containing cradle is visible and the rail-admission instruction is displayed."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/09-face-390.png",
+      "sha256": "35cd26d350cd4f5d49ff0ab1a4bad306026041fb0abd8fce70366ab65617ca62",
+      "bytes": 262965,
+      "width": 390,
+      "height": 1479,
+      "originalViewed": true,
+      "observation": "At 390px, partial progress 08/18 and Face confirmation are visible; Profile, Revers and confirmation controls remain within the page width."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/09-face-320.png",
+      "sha256": "a64d9f72f6aa7e3c4503758623f4355aa69e2fa0f1b1fcb6219678d4c43746b8",
+      "bytes": 229753,
+      "width": 320,
+      "height": 1504,
+      "originalViewed": true,
+      "observation": "At 320px, partial progress 08/18 and the face guidance remain readable; controls stack within the page width. The room uses a cropped camera view, so peripheral floor labels can be clipped inside the viewport."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/16-plaque.png",
+      "sha256": "1ac8f2093bc263e58cadac3308f58c882db6ac562a66202bf3a84fdfedd77e8d",
+      "bytes": 700747,
+      "width": 1440,
+      "height": 1024,
+      "originalViewed": true,
+      "observation": "Progress is 16/18; the model and next cabinet transport instruction are visible."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-fixture-v2/attempt-1/18-cabinet-complete.png",
+      "sha256": "a5af3352daa82afd20df9b43f49bf0cee8e3dd433d36df9cf33dafd971eeb7d9",
+      "bytes": 746767,
+      "width": 1440,
+      "height": 1024,
+      "originalViewed": true,
+      "observation": "The final 18/18 state, cabinet and completed-exposition guidance are visible. The hunter and model overlap near the cabinet in this fixed fixture framing; no new art-quality claim is made."
+    }
+  ]
+}

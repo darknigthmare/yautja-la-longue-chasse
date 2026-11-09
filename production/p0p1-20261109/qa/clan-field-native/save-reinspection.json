@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "source": "actual parseSaveImport/inspectClanShipOperations/evaluateClanShipOperationsCampaign",
+  "profiles": [
+    {
+      "profile": "jungle-attempt-1",
+      "importFailure": null,
+      "operationsInspection": "valid",
+      "campaignEvidenceMatches": true,
+      "uniqueTargetReceipt": true
+    },
+    {
+      "profile": "ice-attempt-1",
+      "importFailure": null,
+      "operationsInspection": "valid",
+      "campaignEvidenceMatches": true,
+      "uniqueTargetReceipt": true
+    },
+    {
+      "profile": "bad-blood-attempt-1",
+      "importFailure": null,
+      "operationsInspection": "valid",
+      "campaignEvidenceMatches": true,
+      "uniqueTargetReceipt": true
+    },
+    {
+      "profile": "ruins-attempt-1",
+      "importFailure": null,
+      "operationsInspection": "valid",
+      "campaignEvidenceMatches": true,
+      "uniqueTargetReceipt": true
+    }
+  ]
+}

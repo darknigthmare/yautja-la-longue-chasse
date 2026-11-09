@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: assault: a deployed, physically nearby V6 unit protects its own damaged bastion, never free recruits
+ok 1 - assault: a deployed, physically nearby V6 unit protects its own damaged bastion, never free recruits
+  ---
+  duration_ms: 11.410432
+  type: 'test'
+  ...
+# Subtest: Outer Ops: one early retask keeps clock, route, original participant identities and source upkeep
+ok 2 - Outer Ops: one early retask keeps clock, route, original participant identities and source upkeep
+  ---
+  duration_ms: 2.54541
+  type: 'test'
+  ...
+# Subtest: Outer Ops: recon-to-intercept retask and delayed recall remain mutually exclusive and nonduplicating
+ok 3 - Outer Ops: recon-to-intercept retask and delayed recall remain mutually exclusive and nonduplicating
+  ---
+  duration_ms: 0.52972
+  type: 'test'
+  ...
+# Subtest: stealth: real-position diversion draws one patrol for limited turns and is non-repeatable
+ok 4 - stealth: real-position diversion draws one patrol for limited turns and is non-repeatable
+  ---
+  duration_ms: 2.399089
+  type: 'test'
+  ...
+# Subtest: RTS: visible-source suppressing fire costs two RAV, stops one real hostile reaction and then expires
+ok 5 - RTS: visible-source suppressing fire costs two RAV, stops one real hostile reaction and then expires
+  ---
+  duration_ms: 6.684154
+  type: 'test'
+  ...
+# Subtest: four modes: no free V85 land, no duplicated reports, no cross-mode hidden rewards
+ok 6 - four modes: no free V85 land, no duplicated reports, no cross-mode hidden rewards
+  ---
+  duration_ms: 0.743212
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 31.337132

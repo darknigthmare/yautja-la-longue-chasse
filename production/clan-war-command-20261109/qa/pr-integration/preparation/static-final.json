@@ -1,0 +1,40 @@
+{
+  "asOf": "2026-11-09T10:22:19.847241+00:00",
+  "scope": "Static checks after presence-gating the optional drawer; final native replay pending",
+  "strictLintExitCode": 0,
+  "annotationFormatChecksPassed": true,
+  "files": [
+    {
+      "path": ".github/workflows/planet-arrival-spatial.yml",
+      "sha256": "9d67ea17a33b2a552c1b43c12712dfdd68e69d65f30dab615b242afe899a4949"
+    },
+    {
+      "path": ".github/workflows/pod-systems.yml",
+      "sha256": "4070ad9da8c1e483af2c95047cb73bacb67095e2e55686751d6388e8b925b7e5"
+    },
+    {
+      "path": ".github/workflows/clan-quest-dialogue.yml",
+      "sha256": "12f0ccf89940981bbd323c0c8acba80f6d6a977424edcfdac28de4451fb439ad"
+    },
+    {
+      "path": "app/game/ClanShipOperationsPanel.tsx",
+      "sha256": "8f86d0d61fb875d8cc34bd5e9f87c1072995d82ce608bcaed2dfc4a740673dc7"
+    },
+    {
+      "path": "app/game/ClanShipOperationsPanel.module.css",
+      "sha256": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b"
+    },
+    {
+      "path": "scripts/qa-clan-dialogue-browser-20261109.mjs",
+      "sha256": "a8285d79c9fd7a17314fd5976b502b67c771c4ee3fb95a6380c8eca463b78abd"
+    },
+    {
+      "path": "scripts/qa-clan-hunt-dialogue-browser-20261109.mjs",
+      "sha256": "a1fe12e2db4711ebe9a8533ed82d9a24398bef480e15299b20a01144cba2a169"
+    }
+  ],
+  "sourceFrozenForFinalReplay": true,
+  "nativeFinalReplayPassed": false,
+  "oldDialogue81Receipt": "../dialogue/attempt-2/final-receipt.json",
+  "oldDialogue81ReceiptScope": "Earlier bounded source, before the final empty-drawer presence guard; preserved without rewriting."
+}

@@ -99,9 +99,13 @@ const {runInNewContext}=await import('node:vm');
 for(const name of ['persist','persistNursery','persistSocialProgress','go','launchMission','resetProgress','confirmCompleteImport','confirmImport','saveManagedCheckpoint','returnToMainMenu','persistExplorationProgress','completeMission','exportComplete','readArchiveFile','openPit','openMap','openStationScreen','openHomeworldService'])test(`actual ${name} cannot discard or overwrite an unconfirmed rite`,async()=>{
  const messages=[],pending={current:{}};
  const env={pendingTrophyCommitRef:pending,sessionAliveRef:{current:true},saveRef:{current:{createdAt:owner}},setToast:m=>messages.push(m),setSaveTransferMessage:m=>messages.push(m),setCampaignSaveMessage:m=>messages.push(m)};
+ // go also reads the actual location before its rite guard to protect driving.
+ // Supply the workshop location while keeping every mutation dependency absent.
+ if(name==='go')env.screen='trophies';
  const code=ts.transpileModule(`(${callback(name)})`,{compilerOptions:{module:ts.ModuleKind.None,target:ts.ScriptTarget.ES2022}}).outputText;
  const fn=runInNewContext(code,env);await fn({createdAt:owner});assert.equal(pending.current!==null,true);
- // Every other campaign dependency is deliberately absent: reaching it would
+ if(name==='go')assert.deepEqual(messages,['Confirmez la sauvegarde du rite ou exportez son résultat avant de changer de lieu.']);
+ // Every other campaign mutation dependency is deliberately absent: reaching it would
  // throw, making a missing guard visible rather than mocking a successful save.
 });
 let unloadEffect;

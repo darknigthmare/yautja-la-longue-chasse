@@ -1,0 +1,71 @@
+{
+  "asOf": "2026-11-09T10:07:25.746404+00:00",
+  "passed": true,
+  "domainTests": 24,
+  "commands": [
+    {
+      "name": "domain",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/trophy-tutorial-v6.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/trophy-tutorial/domain.tap",
+      "sha256": "69dd1c77d0d51f978ac7d742729ab4b553d390f3c6e337b34023559b49fac491"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "node_modules/eslint/bin/eslint.js",
+        "app/game/TrophyTutorialBay.tsx",
+        "app/game/systems/trophyTutorialV6.ts",
+        "tests/trophy-tutorial-v6.test.mjs",
+        "--max-warnings",
+        "0"
+      ],
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/trophy-tutorial/lint-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "types",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--pretty",
+        "false",
+        "--strict",
+        "--target",
+        "ES2017",
+        "--lib",
+        "dom,dom.iterable,esnext",
+        "--module",
+        "esnext",
+        "--moduleResolution",
+        "bundler",
+        "--jsx",
+        "react-jsx",
+        "--esModuleInterop",
+        "--skipLibCheck",
+        "--allowImportingTsExtensions",
+        "--resolveJsonModule",
+        "next-env.d.ts",
+        "app/game/TrophyTutorialBay.tsx",
+        "app/game/systems/trophyTutorialV6.ts"
+      ],
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/trophy-tutorial/types-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sourceSha256": {
+    "app/game/systems/trophyTutorialV6.ts": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be",
+    "app/game/TrophyTutorialBay.tsx": "3bdb164423af2d455a04d5a1fa1ab7cf47d29ceb8095eab94948600a4588f93d",
+    "app/game/TrophyTutorialBay.module.css": "e34d15a767f7a37629b768277b38339dfe81bea5112df46803a53d1f4f09bafc",
+    "tests/trophy-tutorial-v6.test.mjs": "ead0fefb36f07312502d9db8d53f4ad631560ea0d24b76e2912aa5d2cc89fcef"
+  },
+  "scope": "24 actual pure behavioral tests plus target TypeScript with project flags and strict ESLint. No GameClient browser test implied."
+}

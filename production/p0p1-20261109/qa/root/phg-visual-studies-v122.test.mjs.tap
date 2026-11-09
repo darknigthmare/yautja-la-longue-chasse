@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: V122 preserves all 34 unresolved fidelity cases
+ok 1 - V122 preserves all 34 unresolved fidelity cases
+  ---
+  duration_ms: 1.178258
+  type: 'test'
+  ...
+# Subtest: four generative studies are traceable but never registered as authentic PHG pixels
+ok 2 - four generative studies are traceable but never registered as authentic PHG pixels
+  ---
+  duration_ms: 0.472112
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8.590058

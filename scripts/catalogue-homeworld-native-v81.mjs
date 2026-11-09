@@ -35,7 +35,7 @@ for(const spec of records){
   ...(spec.groundFrame?{groundFrame:spec.groundFrame}:{}),sha256:m.sha256,
   ...(spec.groundSupportPixelsV81?{groundSupportPixelsV81:spec.groundSupportPixelsV81}:{}),
   measurementStatus:spec.width?'VISUAL_NATIVE_JAMBS_AND_ORIENTED_FRONT_SUPPORT;CONSERVATIVE_PHYSICAL_ENVELOPE':'NON_PLAYABLE_NATIVE_BACKGROUND_NO_COLLIDER'};
- const {opaqueRowsV76,...summary}=m;
+ const summary=Object.fromEntries(Object.entries(m).filter(([key])=>key!=='opaqueRowsV76'));
  catalogue.assets[spec.id]={title:spec.title,role:spec.role,width:spec.width,depth:spec.depth,art,lore:'LORE_COMPATIBLE_ORIGINAL',
   measurement:{...summary,sourceOriginal:spec.source,tool:'OpenAI-built-in-imagegen',animation:'static-native-pixels; no action clip',
    geometry:spec.width?'Human-observed native support and open passage; same art consumed by physical foundation and renderer.':'Separate distant/scenery layer, not a new visitable building or physical prop.'}};

@@ -1,0 +1,234 @@
+{
+  "startedAt": "2026-11-09T10:39:27.607Z",
+  "url": "http://127.0.0.1:3152",
+  "browserExecuted": true,
+  "passed": false,
+  "recipe": "scripts/qa-clan-ship-maintenance-20261109.mjs",
+  "recipeSha256": "c1bf7ef7f05ab340940696e273aab69f89ab16ad36100cb859ac87a6287e0a92",
+  "scope": "Actual Next/GameClient, physical incident controls, resident reply and manual tactical order. No DOM, reducer, clock or result callback patched.",
+  "fixture": {
+    "source": "initial-save.json",
+    "sha256": "79bf10e01c39b026c733e4c83a69ad4582afaabd396dda96e49349cf53aecb78",
+    "disclosure": "Adult historical campaign, boarding/welcome/mandate, ship-seal-check, ship-armory-audit and previous space-screening earned through production reducers. Neither incident nor interception is completed or active initially. No field hunt/full campaign claimed."
+  },
+  "sourceBefore": {
+    "app/game/systems/clanShipMaintenanceDiagnostics.ts": "6fb73c72b7f11c424430f2739e76dd01993374967ac939fa3cf1c3bd5345f804",
+    "app/game/systems/clanShipCrewDialogue.ts": "70fe3a2eb0edd8e09721990ff16d8a6c1a07c7219d7c2891b04a8bd3827de58c",
+    "app/game/systems/clanShipIncidents.ts": "c2f52265dd043d1b6402a0353e4d181d7cdbef829a3cca500e6aa80d3d51e65d",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/clanShipSpaceEncounter.ts": "fc83b432bf63fb6ce006ae5b6460c67b389ec4ce113c72d527c9e749a6b0f3a0",
+    "app/game/ClanShipSpaceEncounter.tsx": "650f84cb12bed1d1e1d05079b96a9ed91e16e4803ef67047274772ff612cc43e",
+    "app/game/ClanShipSpaceEncounter.module.css": "85a54980581464dfb771dcadb157406b22367cd99f7d03cf585ef7ec93424cd0",
+    "app/game/ClanShipOperationsPanel.tsx": "43d993bb9aded4f8aa4fdd31c99a55c7969ff4c81a3013aa97f7bdde118b3d89",
+    "app/game/ClanShipIncidentPanel.tsx": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d",
+    "app/game/ClanShipIncidentScene.tsx": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+    "app/game/GameClient.tsx": "05d35cd1499f46ceafb061234a4eb3acd6cb62d5294f0a2d49cda77cdc0e7208"
+  },
+  "buildIdBefore": "kS-6-0gmSFRZVosfYvnq6",
+  "checks": [],
+  "screenshots": [],
+  "commands": [
+    {
+      "id": "sealed-lot",
+      "type": "accept",
+      "branch": null,
+      "revision": 1,
+      "completed": null,
+      "rewardDelta": 0
+    }
+  ],
+  "walking": [],
+  "saveChecks": [],
+  "servedScripts": [
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "bytes": 529,
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "buildSha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/webpack-8d3a176fb763e3d6.js",
+      "bytes": 8781,
+      "sha256": "7cf5442a9a66c2a3814d84d87f20579b2bdc9d38d5747bc6d2fe3bc05d792c7e",
+      "buildSha256": "7cf5442a9a66c2a3814d84d87f20579b2bdc9d38d5747bc6d2fe3bc05d792c7e",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "bytes": 28221,
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "buildSha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "bytes": 1186,
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "buildSha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "bytes": 16901,
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "buildSha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "bytes": 26360,
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "buildSha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "bytes": 150540,
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "buildSha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "bytes": 201060,
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "buildSha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "bytes": 241388,
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "buildSha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "bytes": 33589,
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "buildSha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "bytes": 27389,
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "buildSha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "bytes": 6412,
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "buildSha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "bytes": 33874,
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "buildSha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "bytes": 337971,
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "buildSha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "bytes": 11669,
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "buildSha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "bytes": 462211,
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "buildSha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "bytes": 338894,
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "buildSha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-4a5ba92d50aa5a22.js",
+      "bytes": 668000,
+      "sha256": "fec957089276f133ed67c308fb1dfec346f6813d452f1ae5f842a7b82fa923a7",
+      "buildSha256": "fec957089276f133ed67c308fb1dfec346f6813d452f1ae5f842a7b82fa923a7",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "bytes": 1015178,
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "buildSha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "bytes": 2691383,
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "buildSha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3663.bb3c0876d49d8928.js",
+      "bytes": 22887,
+      "sha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "buildSha256": "596eb72b970dbe6bd3330e844bfa67c53ec9f62c40b999119b0a98b52df5066d",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7562.a7c266f799a22ad5.js",
+      "bytes": 155126,
+      "sha256": "609d4aa9e1cb9423c7cf3b9697465c65093dc7d5b446f64d3c190809b9516099",
+      "buildSha256": "609d4aa9e1cb9423c7cf3b9697465c65093dc7d5b446f64d3c190809b9516099",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "bytes": 475443,
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "buildSha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5908.3ff3dd004db96759.js",
+      "bytes": 4595,
+      "sha256": "4e60a10c0c49d8ac279491f2cb3004797d703e1f294df877647c3daea208fbbb",
+      "buildSha256": "4e60a10c0c49d8ac279491f2cb3004797d703e1f294df877647c3daea208fbbb",
+      "matches": true
+    },
+    {
+      "pathname": "/_next/static/chunks/910.974a5ff94f63ddbf.js",
+      "bytes": 3215,
+      "sha256": "dea9eaf24d39d627901e023a9ce36d8337098f98c08557a55d8515387c6fa68b",
+      "buildSha256": "dea9eaf24d39d627901e023a9ce36d8337098f98c08557a55d8515387c6fa68b",
+      "matches": true
+    }
+  ],
+  "errors": [
+    {
+      "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-incident=\"sealed-lot\"] [data-incident-guide=\"seal-controls\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" data-incident-guide=\"seal-controls\">Approcher : Boîtier du lot scellé</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-incident=\"sealed-lot\"] [data-incident-guide=\"seal-controls\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button disabled type=\"button\" data-incident-guide=\"seal-controls\">Approcher : Boîtier du lot scellé</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not enabled\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    56 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not enabled\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at incident (/workspace/yautja-la-longue-chasse/scripts/qa-clan-ship-maintenance-20261109.mjs:120:114)\n    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-ship-maintenance-20261109.mjs:147:73\n    at async check (/workspace/yautja-la-longue-chasse/scripts/qa-clan-ship-maintenance-20261109.mjs:98:5)\n    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-ship-maintenance-20261109.mjs:146:3"
+    }
+  ],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "physicalController": false,
+  "humanArtApproved": false,
+  "fullCampaignPlayed": false,
+  "browserVersion": "154.0.8037.57",
+  "failureScreenshotSha256": "c6484eab9b4bbc4db522810a4a615e5fa8ffebae6cd00ce344cb0755521ae17e",
+  "finishedAt": "2026-11-09T10:40:03.585Z"
+}

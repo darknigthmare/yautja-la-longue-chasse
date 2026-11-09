@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "sourceKey": "Personnalisation et arsenal:T15",
+  "status": "QUALIFIE_BORNE",
+  "implementation": "Oui",
+  "domainTested": "Sans objet",
+  "browserTested": "Oui",
+  "physicalController": "Sans objet",
+  "humanArt": "Sans objet",
+  "sourceCriterion": {
+    "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+    "sheet": "Tests_Parcours",
+    "row": 19,
+    "id": "T15",
+    "priority": "P1",
+    "trigger": "60min, alternance 77 matières",
+    "expected": "Pas de fuite mémoire GPU"
+  },
+  "durationSeconds": 3600.0028699410004,
+  "visibleSeconds": 3600.003900000006,
+  "materials": 77,
+  "selections": 300,
+  "minimumSelectionsPerMaterial": 3,
+  "gpuCounterMeasured": "CDP memory-infra GPU-process allocator gpu and child gpu/shared_images; hexadecimal bytes, not double-counted",
+  "gpuBackend": "ANGLE Vulkan SwiftShader / SwANGLE software",
+  "gpuAllocatorWarmBaselineBytes": 63340544,
+  "gpuAllocatorEndBytes": 52543488,
+  "gpuAllocatorGrowthBytes": -10797056,
+  "gpuProcessRssGrowthBytes": -9428992,
+  "gpuDumps": 13,
+  "screenshotsOpened": 9,
+  "physicalGpuOrVramQualified": false,
+  "qualificationScope": "60 minutes réelles et visibles sur le vrai Next/GameClient desktop, 77 matières admissibles à Alpha, 300 commits natifs, allocations GPU mesurées et bornées sur SwANGLE logiciel seulement. Le dépôt a depuis évolué sur cinq fichiers Guerre des clans, explicitement listés ; les sources PHG testées restent inchangées.",
+  "remaining": "Autres matériels et VRAM physique non mesurés ; aucune absence universelle de fuite ni fidélité artistique PHG 1:1 attribuée.",
+  "evidence": [
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/report.json",
+      "bytes": 1143839,
+      "sha256": "f39bfa03604909dbb7a213af947a2635197c82b5c28f201ff8a31640d14ce138"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/memory-analysis.json",
+      "bytes": 30478,
+      "sha256": "32f05db19ef168b7a82f022f2a8b47a60dfc1afa2e07ea135c12604e7dd75015"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/memory-trace.json.gz",
+      "bytes": 5775502,
+      "sha256": "8ae21a779986fea680573d6c40d8b75c4f155791005b917a36e7a73ce3568f93"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/screenshot-inspection.json",
+      "bytes": 3153,
+      "sha256": "729cf9c3dcedf7010aa932749a3431410628dae9775084f5766a9fb8364ab592"
+    }
+  ]
+}

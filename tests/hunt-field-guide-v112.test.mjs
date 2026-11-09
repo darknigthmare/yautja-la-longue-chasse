@@ -53,9 +53,22 @@ test("keyboard and controller remaps reach both immediate objective cues and the
   assert.ok(html.includes("X / Carré"));assert.doesNotMatch(html,/Espace/);
 });
 test("nearby-body help exposes pointer and keyboard access separately from direct trophy collection",()=>{
-  const text=cue(render({corpseNearby:true}));
-  assert.match(text,/Examiner la proie vaincue/);assert.match(text,/clavier ou au toucher/);
+  const html=render({corpseNearby:true}),text=preflight(html);
+  assert.match(cue(html),/Examiner la proie vaincue/);assert.match(text,/clavier ou au toucher/);
   assert.match(text,/Bas \+ B \/ Cercle/);assert.match(text,/Interagir seul/);
+});
+test("closed preparation exposes actual critical tool and pack states while keeping all detailed guidance",()=>{
+  const load={massKg:24,volumeUnits:8,capacityMassKg:24,capacityVolumeUnits:18};
+  const html=render({corpseNearby:true,toolOwned:false,fieldLoad:load});
+  const summary=html.match(/<summary data-guide-preparation-summary-v112[^>]*>([\s\S]*?)<\/summary>/)?.[1];
+  assert.match(html,/<details data-guide-preparation-details-v112/);
+  assert.doesNotMatch(html,/<details[^>]*open/);
+  assert.match(summary,/Flaying Tool absent/);assert.match(summary,/Sac plein/);
+  assert.match(preflight(html),/24\.0 \/ 24 kg/);assert.match(preflight(html),/8\.0 \/ 18 volumes/);
+  const worn=render({corpseNearby:true,toolOwned:true,toolCondition:0,fieldLoad:{...load,massKg:2}});
+  assert.match(worn.match(/<summary data-guide-preparation-summary-v112[^>]*>([\s\S]*?)<\/summary>/)?.[1],/Outil 0\/100.*Sac non plein/);
+  assert.match(preflight(worn),/reste utilisable/);
+  assert.equal((html.match(/<li>/g)||[]).length,11);
 });
 test("actual missing tool, worn tool, and both capacity dimensions are visible before a body gesture",()=>{
   const load={massKg:24,volumeUnits:8,capacityMassKg:24,capacityVolumeUnits:18};

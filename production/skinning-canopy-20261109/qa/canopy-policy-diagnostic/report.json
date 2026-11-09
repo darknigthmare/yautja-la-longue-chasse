@@ -1,0 +1,1779 @@
+{
+  "scope": "Native full stepGame VM from the genuine saved pendulum checkpoint, original enemies/hazards retained; only keyboard/pause/jump inputs. This is a controller policy diagnostic, not a browser replay.",
+  "sourceSha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+  "checkpointSha256": "16f5e21b4f5d978652a7d93ef01f83337ac23f07c2d663603c7b98b9b3178427",
+  "cases": [
+    {
+      "minimumVx": 180,
+      "caught": true,
+      "failed": false,
+      "releaseState": {
+        "elapsed": 24.016666666666584,
+        "player": {
+          "x": 2556.180276412627,
+          "y": 68.31435011307981,
+          "previousY": 72.0352301974523,
+          "width": 72,
+          "height": 116,
+          "velocityX": 268.9676679508812,
+          "velocityY": -230.85709829336628,
+          "facing": 1,
+          "grounded": false,
+          "aerialBoostUsed": false,
+          "health": 151.84,
+          "maxHealth": 160,
+          "stamina": 70.83333333333499,
+          "maxStamina": 100,
+          "energy": 100,
+          "maxEnergy": 100,
+          "medicomps": 3,
+          "activeWeaponSlot": 1,
+          "weaponAmmo": [
+            1,
+            -1
+          ],
+          "cloaked": false,
+          "maskOn": true,
+          "aiming": false,
+          "aimAngle": 2.0344992238331194,
+          "aimPoint": {
+            "x": 2369.7382813973313,
+            "y": 567.74
+          },
+          "climbing": true,
+          "climbZoneId": "v112-canopy-jungle-vey-0-1-grip",
+          "climbReattachSeconds": 0,
+          "climbGripExhausted": false,
+          "gauntletOpen": 0,
+          "bladeExtension": 0,
+          "dreadAngles": [
+            0.15756769715410945,
+            0.16554246730294214,
+            0.17328601714011477,
+            0.18079911475438024,
+            0.18808018029110266,
+            0.1951244665276265,
+            0.201922889913268
+          ],
+          "dreadVelocities": [
+            0.22967216201085128,
+            0.2362598859080529,
+            0.24156110104998277,
+            0.24555277041248066,
+            0.248218025677252,
+            0.24954638018250297,
+            0.24953413413838477
+          ],
+          "attackFlash": 0,
+          "melee": {
+            "phase": "idle",
+            "phaseRemainingSeconds": 0,
+            "comboIndex": 0,
+            "actionSequence": 0,
+            "facing": 1,
+            "buffered": false,
+            "queuedFacing": 1,
+            "hitTargetIds": [],
+            "profile": null,
+            "queuedProfile": null,
+            "actionKind": "light",
+            "lockedTargetId": null,
+            "defensePhase": "neutral",
+            "defenseRemainingSeconds": 0,
+            "defenseCooldownSeconds": 0,
+            "dodgeDirection": 1,
+            "parryConsumed": false
+          },
+          "invulnerability": 0,
+          "meleeCooldown": 0,
+          "weaponCooldown": 0,
+          "weaponChargeSeconds": 0,
+          "scanCooldown": 0,
+          "healCooldown": 0,
+          "canopySwing": {
+            "supportId": "v112-canopy-jungle-vey-0-1-grip",
+            "length": 80.11700351467134,
+            "angle": 0.7092975500432004,
+            "angularVelocity": 4.4242214523321834
+          }
+        },
+        "vx": 268.9676679508812,
+        "oldReachable": false
+      },
+      "catchState": {
+        "x": 2644.4297994815784,
+        "y": 89.15096270338049,
+        "previousY": 86.93222062506993,
+        "width": 72,
+        "height": 116,
+        "velocityX": 392.6690624653706,
+        "velocityY": 190.34436229295986,
+        "facing": 1,
+        "grounded": false,
+        "aerialBoostUsed": false,
+        "health": 151.84,
+        "maxHealth": 160,
+        "stamina": 74.85000000000167,
+        "maxStamina": 100,
+        "energy": 100,
+        "maxEnergy": 100,
+        "medicomps": 3,
+        "activeWeaponSlot": 1,
+        "weaponAmmo": [
+          1,
+          -1
+        ],
+        "cloaked": false,
+        "maskOn": true,
+        "aiming": false,
+        "aimAngle": 2.183768423666112,
+        "aimPoint": {
+          "x": 2370.9707813973314,
+          "y": 567.74
+        },
+        "climbing": true,
+        "climbZoneId": "v112-canopy-jungle-vey-0-2-grip",
+        "climbReattachSeconds": 0,
+        "climbGripExhausted": false,
+        "gauntletOpen": 0,
+        "bladeExtension": 0,
+        "dreadAngles": [
+          0.18197760443761704,
+          0.1921511269917093,
+          0.20201578297191983,
+          0.21154693819896292,
+          0.22071830852852603,
+          0.22950132078666,
+          0.2378641753430019
+        ],
+        "dreadVelocities": [
+          0.07518268787600811,
+          0.08231091204282383,
+          0.08939980156963757,
+          0.09636607296276466,
+          0.10312191488999548,
+          0.1095756801951782,
+          0.11563274164701043
+        ],
+        "attackFlash": 0,
+        "melee": {
+          "phase": "idle",
+          "phaseRemainingSeconds": 0,
+          "comboIndex": 0,
+          "actionSequence": 0,
+          "facing": 1,
+          "buffered": false,
+          "queuedFacing": 1,
+          "hitTargetIds": [],
+          "profile": null,
+          "queuedProfile": null,
+          "actionKind": "light",
+          "lockedTargetId": null,
+          "defensePhase": "neutral",
+          "defenseRemainingSeconds": 0,
+          "defenseCooldownSeconds": 0,
+          "dodgeDirection": 1,
+          "parryConsumed": false
+        },
+        "invulnerability": 0,
+        "meleeCooldown": 0,
+        "weaponCooldown": 0,
+        "weaponChargeSeconds": 0,
+        "scanCooldown": 0,
+        "healCooldown": 0,
+        "canopySwing": {
+          "supportId": "v112-canopy-jungle-vey-0-2-grip",
+          "length": 90.71612227685218,
+          "angle": -0.4513692951124551,
+          "angularVelocity": 4.810295621432251
+        }
+      },
+      "elapsed": 24.333333333333233,
+      "enemyCount": 4,
+      "hazardCount": 3,
+      "health": 151.84,
+      "invulnerability": 0,
+      "aerialBoostUsed": false,
+      "trace": [
+        {
+          "t": 24.03333333333325,
+          "x": 2560.663070878475,
+          "y": 64.98062069707926,
+          "vx": 268.9676679508812,
+          "vy": -200.02376496003293,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right",
+            "jump"
+          ]
+        },
+        {
+          "t": 24.049999999999915,
+          "x": 2565.1458653443233,
+          "y": 62.1607801699676,
+          "vx": 268.9676679508812,
+          "vy": -169.1904316266996,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.06666666666658,
+          "x": 2569.6286598101715,
+          "y": 59.85482853174483,
+          "vx": 268.9676679508812,
+          "vy": -138.35709829336625,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.083333333333247,
+          "x": 2574.1114542760197,
+          "y": 58.06276578241095,
+          "vx": 268.9676679508812,
+          "vy": -107.52376496003292,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.099999999999913,
+          "x": 2578.594248741868,
+          "y": 56.784591921965955,
+          "vx": 268.9676679508812,
+          "vy": -76.69043162669959,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.11666666666658,
+          "x": 2583.077043207716,
+          "y": 56.020306950409854,
+          "vx": 268.9676679508812,
+          "vy": -45.85709829336626,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.133333333333244,
+          "x": 2587.5598376735643,
+          "y": 55.76991086774264,
+          "vx": 268.9676679508812,
+          "vy": -15.023764960032931,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.14999999999991,
+          "x": 2592.0426321394125,
+          "y": 56.03340367396431,
+          "vx": 268.9676679508812,
+          "vy": 15.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.166666666666575,
+          "x": 2596.5254266052607,
+          "y": 56.81078536907487,
+          "vx": 268.9676679508812,
+          "vy": 46.64290170663374,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.18333333333324,
+          "x": 2601.008221071109,
+          "y": 58.10205595307432,
+          "vx": 268.9676679508812,
+          "vy": 77.47623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.199999999999907,
+          "x": 2605.491015536957,
+          "y": 59.90721542596266,
+          "vx": 268.9676679508812,
+          "vy": 108.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.216666666666573,
+          "x": 2609.9738100028053,
+          "y": 62.22626378773989,
+          "vx": 268.9676679508812,
+          "vy": 139.14290170663372,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.23333333333324,
+          "x": 2614.4566044686535,
+          "y": 65.059201038406,
+          "vx": 268.9676679508812,
+          "vy": 169.97623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.249999999999904,
+          "x": 2618.9393989345017,
+          "y": 68.40602717796101,
+          "vx": 268.9676679508812,
+          "vy": 200.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.26666666666657,
+          "x": 2623.42219340035,
+          "y": 72.2667422064049,
+          "vx": 268.9676679508812,
+          "vy": 231.64290170663375,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.283333333333236,
+          "x": 2628.017049065264,
+          "y": 76.64134612373769,
+          "vx": 275.6913398948569,
+          "vy": 262.4762350399671,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.2999999999999,
+          "x": 2632.6996860027803,
+          "y": 81.52983892995937,
+          "vx": 280.95821625097125,
+          "vy": 293.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.316666666666567,
+          "x": 2637.451084937168,
+          "y": 86.93222062506993,
+          "vx": 285.0839360632608,
+          "vy": 324.1429017066337,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.333333333333233,
+          "x": 2644.4297994815784,
+          "y": 89.15096270338049,
+          "vx": 392.6690624653706,
+          "vy": 190.34436229295986,
+          "id": "v112-canopy-jungle-vey-0-2-grip",
+          "climbing": true,
+          "grounded": false,
+          "keys": [
+            "right",
+            "up"
+          ]
+        }
+      ]
+    },
+    {
+      "minimumVx": 200,
+      "caught": true,
+      "failed": false,
+      "releaseState": {
+        "elapsed": 24.016666666666584,
+        "player": {
+          "x": 2556.180276412627,
+          "y": 68.31435011307981,
+          "previousY": 72.0352301974523,
+          "width": 72,
+          "height": 116,
+          "velocityX": 268.9676679508812,
+          "velocityY": -230.85709829336628,
+          "facing": 1,
+          "grounded": false,
+          "aerialBoostUsed": false,
+          "health": 151.84,
+          "maxHealth": 160,
+          "stamina": 70.83333333333499,
+          "maxStamina": 100,
+          "energy": 100,
+          "maxEnergy": 100,
+          "medicomps": 3,
+          "activeWeaponSlot": 1,
+          "weaponAmmo": [
+            1,
+            -1
+          ],
+          "cloaked": false,
+          "maskOn": true,
+          "aiming": false,
+          "aimAngle": 2.0344992238331194,
+          "aimPoint": {
+            "x": 2369.7382813973313,
+            "y": 567.74
+          },
+          "climbing": true,
+          "climbZoneId": "v112-canopy-jungle-vey-0-1-grip",
+          "climbReattachSeconds": 0,
+          "climbGripExhausted": false,
+          "gauntletOpen": 0,
+          "bladeExtension": 0,
+          "dreadAngles": [
+            0.15756769715410945,
+            0.16554246730294214,
+            0.17328601714011477,
+            0.18079911475438024,
+            0.18808018029110266,
+            0.1951244665276265,
+            0.201922889913268
+          ],
+          "dreadVelocities": [
+            0.22967216201085128,
+            0.2362598859080529,
+            0.24156110104998277,
+            0.24555277041248066,
+            0.248218025677252,
+            0.24954638018250297,
+            0.24953413413838477
+          ],
+          "attackFlash": 0,
+          "melee": {
+            "phase": "idle",
+            "phaseRemainingSeconds": 0,
+            "comboIndex": 0,
+            "actionSequence": 0,
+            "facing": 1,
+            "buffered": false,
+            "queuedFacing": 1,
+            "hitTargetIds": [],
+            "profile": null,
+            "queuedProfile": null,
+            "actionKind": "light",
+            "lockedTargetId": null,
+            "defensePhase": "neutral",
+            "defenseRemainingSeconds": 0,
+            "defenseCooldownSeconds": 0,
+            "dodgeDirection": 1,
+            "parryConsumed": false
+          },
+          "invulnerability": 0,
+          "meleeCooldown": 0,
+          "weaponCooldown": 0,
+          "weaponChargeSeconds": 0,
+          "scanCooldown": 0,
+          "healCooldown": 0,
+          "canopySwing": {
+            "supportId": "v112-canopy-jungle-vey-0-1-grip",
+            "length": 80.11700351467134,
+            "angle": 0.7092975500432004,
+            "angularVelocity": 4.4242214523321834
+          }
+        },
+        "vx": 268.9676679508812,
+        "oldReachable": false
+      },
+      "catchState": {
+        "x": 2644.4297994815784,
+        "y": 89.15096270338049,
+        "previousY": 86.93222062506993,
+        "width": 72,
+        "height": 116,
+        "velocityX": 392.6690624653706,
+        "velocityY": 190.34436229295986,
+        "facing": 1,
+        "grounded": false,
+        "aerialBoostUsed": false,
+        "health": 151.84,
+        "maxHealth": 160,
+        "stamina": 74.85000000000167,
+        "maxStamina": 100,
+        "energy": 100,
+        "maxEnergy": 100,
+        "medicomps": 3,
+        "activeWeaponSlot": 1,
+        "weaponAmmo": [
+          1,
+          -1
+        ],
+        "cloaked": false,
+        "maskOn": true,
+        "aiming": false,
+        "aimAngle": 2.183768423666112,
+        "aimPoint": {
+          "x": 2370.9707813973314,
+          "y": 567.74
+        },
+        "climbing": true,
+        "climbZoneId": "v112-canopy-jungle-vey-0-2-grip",
+        "climbReattachSeconds": 0,
+        "climbGripExhausted": false,
+        "gauntletOpen": 0,
+        "bladeExtension": 0,
+        "dreadAngles": [
+          0.18197760443761704,
+          0.1921511269917093,
+          0.20201578297191983,
+          0.21154693819896292,
+          0.22071830852852603,
+          0.22950132078666,
+          0.2378641753430019
+        ],
+        "dreadVelocities": [
+          0.07518268787600811,
+          0.08231091204282383,
+          0.08939980156963757,
+          0.09636607296276466,
+          0.10312191488999548,
+          0.1095756801951782,
+          0.11563274164701043
+        ],
+        "attackFlash": 0,
+        "melee": {
+          "phase": "idle",
+          "phaseRemainingSeconds": 0,
+          "comboIndex": 0,
+          "actionSequence": 0,
+          "facing": 1,
+          "buffered": false,
+          "queuedFacing": 1,
+          "hitTargetIds": [],
+          "profile": null,
+          "queuedProfile": null,
+          "actionKind": "light",
+          "lockedTargetId": null,
+          "defensePhase": "neutral",
+          "defenseRemainingSeconds": 0,
+          "defenseCooldownSeconds": 0,
+          "dodgeDirection": 1,
+          "parryConsumed": false
+        },
+        "invulnerability": 0,
+        "meleeCooldown": 0,
+        "weaponCooldown": 0,
+        "weaponChargeSeconds": 0,
+        "scanCooldown": 0,
+        "healCooldown": 0,
+        "canopySwing": {
+          "supportId": "v112-canopy-jungle-vey-0-2-grip",
+          "length": 90.71612227685218,
+          "angle": -0.4513692951124551,
+          "angularVelocity": 4.810295621432251
+        }
+      },
+      "elapsed": 24.333333333333233,
+      "enemyCount": 4,
+      "hazardCount": 3,
+      "health": 151.84,
+      "invulnerability": 0,
+      "aerialBoostUsed": false,
+      "trace": [
+        {
+          "t": 24.03333333333325,
+          "x": 2560.663070878475,
+          "y": 64.98062069707926,
+          "vx": 268.9676679508812,
+          "vy": -200.02376496003293,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right",
+            "jump"
+          ]
+        },
+        {
+          "t": 24.049999999999915,
+          "x": 2565.1458653443233,
+          "y": 62.1607801699676,
+          "vx": 268.9676679508812,
+          "vy": -169.1904316266996,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.06666666666658,
+          "x": 2569.6286598101715,
+          "y": 59.85482853174483,
+          "vx": 268.9676679508812,
+          "vy": -138.35709829336625,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.083333333333247,
+          "x": 2574.1114542760197,
+          "y": 58.06276578241095,
+          "vx": 268.9676679508812,
+          "vy": -107.52376496003292,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.099999999999913,
+          "x": 2578.594248741868,
+          "y": 56.784591921965955,
+          "vx": 268.9676679508812,
+          "vy": -76.69043162669959,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.11666666666658,
+          "x": 2583.077043207716,
+          "y": 56.020306950409854,
+          "vx": 268.9676679508812,
+          "vy": -45.85709829336626,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.133333333333244,
+          "x": 2587.5598376735643,
+          "y": 55.76991086774264,
+          "vx": 268.9676679508812,
+          "vy": -15.023764960032931,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.14999999999991,
+          "x": 2592.0426321394125,
+          "y": 56.03340367396431,
+          "vx": 268.9676679508812,
+          "vy": 15.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.166666666666575,
+          "x": 2596.5254266052607,
+          "y": 56.81078536907487,
+          "vx": 268.9676679508812,
+          "vy": 46.64290170663374,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.18333333333324,
+          "x": 2601.008221071109,
+          "y": 58.10205595307432,
+          "vx": 268.9676679508812,
+          "vy": 77.47623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.199999999999907,
+          "x": 2605.491015536957,
+          "y": 59.90721542596266,
+          "vx": 268.9676679508812,
+          "vy": 108.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.216666666666573,
+          "x": 2609.9738100028053,
+          "y": 62.22626378773989,
+          "vx": 268.9676679508812,
+          "vy": 139.14290170663372,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.23333333333324,
+          "x": 2614.4566044686535,
+          "y": 65.059201038406,
+          "vx": 268.9676679508812,
+          "vy": 169.97623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.249999999999904,
+          "x": 2618.9393989345017,
+          "y": 68.40602717796101,
+          "vx": 268.9676679508812,
+          "vy": 200.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.26666666666657,
+          "x": 2623.42219340035,
+          "y": 72.2667422064049,
+          "vx": 268.9676679508812,
+          "vy": 231.64290170663375,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.283333333333236,
+          "x": 2628.017049065264,
+          "y": 76.64134612373769,
+          "vx": 275.6913398948569,
+          "vy": 262.4762350399671,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.2999999999999,
+          "x": 2632.6996860027803,
+          "y": 81.52983892995937,
+          "vx": 280.95821625097125,
+          "vy": 293.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.316666666666567,
+          "x": 2637.451084937168,
+          "y": 86.93222062506993,
+          "vx": 285.0839360632608,
+          "vy": 324.1429017066337,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.333333333333233,
+          "x": 2644.4297994815784,
+          "y": 89.15096270338049,
+          "vx": 392.6690624653706,
+          "vy": 190.34436229295986,
+          "id": "v112-canopy-jungle-vey-0-2-grip",
+          "climbing": true,
+          "grounded": false,
+          "keys": [
+            "right",
+            "up"
+          ]
+        }
+      ]
+    },
+    {
+      "minimumVx": 220,
+      "caught": true,
+      "failed": false,
+      "releaseState": {
+        "elapsed": 24.016666666666584,
+        "player": {
+          "x": 2556.180276412627,
+          "y": 68.31435011307981,
+          "previousY": 72.0352301974523,
+          "width": 72,
+          "height": 116,
+          "velocityX": 268.9676679508812,
+          "velocityY": -230.85709829336628,
+          "facing": 1,
+          "grounded": false,
+          "aerialBoostUsed": false,
+          "health": 151.84,
+          "maxHealth": 160,
+          "stamina": 70.83333333333499,
+          "maxStamina": 100,
+          "energy": 100,
+          "maxEnergy": 100,
+          "medicomps": 3,
+          "activeWeaponSlot": 1,
+          "weaponAmmo": [
+            1,
+            -1
+          ],
+          "cloaked": false,
+          "maskOn": true,
+          "aiming": false,
+          "aimAngle": 2.0344992238331194,
+          "aimPoint": {
+            "x": 2369.7382813973313,
+            "y": 567.74
+          },
+          "climbing": true,
+          "climbZoneId": "v112-canopy-jungle-vey-0-1-grip",
+          "climbReattachSeconds": 0,
+          "climbGripExhausted": false,
+          "gauntletOpen": 0,
+          "bladeExtension": 0,
+          "dreadAngles": [
+            0.15756769715410945,
+            0.16554246730294214,
+            0.17328601714011477,
+            0.18079911475438024,
+            0.18808018029110266,
+            0.1951244665276265,
+            0.201922889913268
+          ],
+          "dreadVelocities": [
+            0.22967216201085128,
+            0.2362598859080529,
+            0.24156110104998277,
+            0.24555277041248066,
+            0.248218025677252,
+            0.24954638018250297,
+            0.24953413413838477
+          ],
+          "attackFlash": 0,
+          "melee": {
+            "phase": "idle",
+            "phaseRemainingSeconds": 0,
+            "comboIndex": 0,
+            "actionSequence": 0,
+            "facing": 1,
+            "buffered": false,
+            "queuedFacing": 1,
+            "hitTargetIds": [],
+            "profile": null,
+            "queuedProfile": null,
+            "actionKind": "light",
+            "lockedTargetId": null,
+            "defensePhase": "neutral",
+            "defenseRemainingSeconds": 0,
+            "defenseCooldownSeconds": 0,
+            "dodgeDirection": 1,
+            "parryConsumed": false
+          },
+          "invulnerability": 0,
+          "meleeCooldown": 0,
+          "weaponCooldown": 0,
+          "weaponChargeSeconds": 0,
+          "scanCooldown": 0,
+          "healCooldown": 0,
+          "canopySwing": {
+            "supportId": "v112-canopy-jungle-vey-0-1-grip",
+            "length": 80.11700351467134,
+            "angle": 0.7092975500432004,
+            "angularVelocity": 4.4242214523321834
+          }
+        },
+        "vx": 268.9676679508812,
+        "oldReachable": false
+      },
+      "catchState": {
+        "x": 2644.4297994815784,
+        "y": 89.15096270338049,
+        "previousY": 86.93222062506993,
+        "width": 72,
+        "height": 116,
+        "velocityX": 392.6690624653706,
+        "velocityY": 190.34436229295986,
+        "facing": 1,
+        "grounded": false,
+        "aerialBoostUsed": false,
+        "health": 151.84,
+        "maxHealth": 160,
+        "stamina": 74.85000000000167,
+        "maxStamina": 100,
+        "energy": 100,
+        "maxEnergy": 100,
+        "medicomps": 3,
+        "activeWeaponSlot": 1,
+        "weaponAmmo": [
+          1,
+          -1
+        ],
+        "cloaked": false,
+        "maskOn": true,
+        "aiming": false,
+        "aimAngle": 2.183768423666112,
+        "aimPoint": {
+          "x": 2370.9707813973314,
+          "y": 567.74
+        },
+        "climbing": true,
+        "climbZoneId": "v112-canopy-jungle-vey-0-2-grip",
+        "climbReattachSeconds": 0,
+        "climbGripExhausted": false,
+        "gauntletOpen": 0,
+        "bladeExtension": 0,
+        "dreadAngles": [
+          0.18197760443761704,
+          0.1921511269917093,
+          0.20201578297191983,
+          0.21154693819896292,
+          0.22071830852852603,
+          0.22950132078666,
+          0.2378641753430019
+        ],
+        "dreadVelocities": [
+          0.07518268787600811,
+          0.08231091204282383,
+          0.08939980156963757,
+          0.09636607296276466,
+          0.10312191488999548,
+          0.1095756801951782,
+          0.11563274164701043
+        ],
+        "attackFlash": 0,
+        "melee": {
+          "phase": "idle",
+          "phaseRemainingSeconds": 0,
+          "comboIndex": 0,
+          "actionSequence": 0,
+          "facing": 1,
+          "buffered": false,
+          "queuedFacing": 1,
+          "hitTargetIds": [],
+          "profile": null,
+          "queuedProfile": null,
+          "actionKind": "light",
+          "lockedTargetId": null,
+          "defensePhase": "neutral",
+          "defenseRemainingSeconds": 0,
+          "defenseCooldownSeconds": 0,
+          "dodgeDirection": 1,
+          "parryConsumed": false
+        },
+        "invulnerability": 0,
+        "meleeCooldown": 0,
+        "weaponCooldown": 0,
+        "weaponChargeSeconds": 0,
+        "scanCooldown": 0,
+        "healCooldown": 0,
+        "canopySwing": {
+          "supportId": "v112-canopy-jungle-vey-0-2-grip",
+          "length": 90.71612227685218,
+          "angle": -0.4513692951124551,
+          "angularVelocity": 4.810295621432251
+        }
+      },
+      "elapsed": 24.333333333333233,
+      "enemyCount": 4,
+      "hazardCount": 3,
+      "health": 151.84,
+      "invulnerability": 0,
+      "aerialBoostUsed": false,
+      "trace": [
+        {
+          "t": 24.03333333333325,
+          "x": 2560.663070878475,
+          "y": 64.98062069707926,
+          "vx": 268.9676679508812,
+          "vy": -200.02376496003293,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right",
+            "jump"
+          ]
+        },
+        {
+          "t": 24.049999999999915,
+          "x": 2565.1458653443233,
+          "y": 62.1607801699676,
+          "vx": 268.9676679508812,
+          "vy": -169.1904316266996,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.06666666666658,
+          "x": 2569.6286598101715,
+          "y": 59.85482853174483,
+          "vx": 268.9676679508812,
+          "vy": -138.35709829336625,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.083333333333247,
+          "x": 2574.1114542760197,
+          "y": 58.06276578241095,
+          "vx": 268.9676679508812,
+          "vy": -107.52376496003292,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.099999999999913,
+          "x": 2578.594248741868,
+          "y": 56.784591921965955,
+          "vx": 268.9676679508812,
+          "vy": -76.69043162669959,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.11666666666658,
+          "x": 2583.077043207716,
+          "y": 56.020306950409854,
+          "vx": 268.9676679508812,
+          "vy": -45.85709829336626,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.133333333333244,
+          "x": 2587.5598376735643,
+          "y": 55.76991086774264,
+          "vx": 268.9676679508812,
+          "vy": -15.023764960032931,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.14999999999991,
+          "x": 2592.0426321394125,
+          "y": 56.03340367396431,
+          "vx": 268.9676679508812,
+          "vy": 15.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.166666666666575,
+          "x": 2596.5254266052607,
+          "y": 56.81078536907487,
+          "vx": 268.9676679508812,
+          "vy": 46.64290170663374,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.18333333333324,
+          "x": 2601.008221071109,
+          "y": 58.10205595307432,
+          "vx": 268.9676679508812,
+          "vy": 77.47623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.199999999999907,
+          "x": 2605.491015536957,
+          "y": 59.90721542596266,
+          "vx": 268.9676679508812,
+          "vy": 108.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.216666666666573,
+          "x": 2609.9738100028053,
+          "y": 62.22626378773989,
+          "vx": 268.9676679508812,
+          "vy": 139.14290170663372,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.23333333333324,
+          "x": 2614.4566044686535,
+          "y": 65.059201038406,
+          "vx": 268.9676679508812,
+          "vy": 169.97623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.249999999999904,
+          "x": 2618.9393989345017,
+          "y": 68.40602717796101,
+          "vx": 268.9676679508812,
+          "vy": 200.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.26666666666657,
+          "x": 2623.42219340035,
+          "y": 72.2667422064049,
+          "vx": 268.9676679508812,
+          "vy": 231.64290170663375,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.283333333333236,
+          "x": 2628.017049065264,
+          "y": 76.64134612373769,
+          "vx": 275.6913398948569,
+          "vy": 262.4762350399671,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.2999999999999,
+          "x": 2632.6996860027803,
+          "y": 81.52983892995937,
+          "vx": 280.95821625097125,
+          "vy": 293.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.316666666666567,
+          "x": 2637.451084937168,
+          "y": 86.93222062506993,
+          "vx": 285.0839360632608,
+          "vy": 324.1429017066337,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.333333333333233,
+          "x": 2644.4297994815784,
+          "y": 89.15096270338049,
+          "vx": 392.6690624653706,
+          "vy": 190.34436229295986,
+          "id": "v112-canopy-jungle-vey-0-2-grip",
+          "climbing": true,
+          "grounded": false,
+          "keys": [
+            "right",
+            "up"
+          ]
+        }
+      ]
+    },
+    {
+      "minimumVx": 240,
+      "caught": true,
+      "failed": false,
+      "releaseState": {
+        "elapsed": 24.016666666666584,
+        "player": {
+          "x": 2556.180276412627,
+          "y": 68.31435011307981,
+          "previousY": 72.0352301974523,
+          "width": 72,
+          "height": 116,
+          "velocityX": 268.9676679508812,
+          "velocityY": -230.85709829336628,
+          "facing": 1,
+          "grounded": false,
+          "aerialBoostUsed": false,
+          "health": 151.84,
+          "maxHealth": 160,
+          "stamina": 70.83333333333499,
+          "maxStamina": 100,
+          "energy": 100,
+          "maxEnergy": 100,
+          "medicomps": 3,
+          "activeWeaponSlot": 1,
+          "weaponAmmo": [
+            1,
+            -1
+          ],
+          "cloaked": false,
+          "maskOn": true,
+          "aiming": false,
+          "aimAngle": 2.0344992238331194,
+          "aimPoint": {
+            "x": 2369.7382813973313,
+            "y": 567.74
+          },
+          "climbing": true,
+          "climbZoneId": "v112-canopy-jungle-vey-0-1-grip",
+          "climbReattachSeconds": 0,
+          "climbGripExhausted": false,
+          "gauntletOpen": 0,
+          "bladeExtension": 0,
+          "dreadAngles": [
+            0.15756769715410945,
+            0.16554246730294214,
+            0.17328601714011477,
+            0.18079911475438024,
+            0.18808018029110266,
+            0.1951244665276265,
+            0.201922889913268
+          ],
+          "dreadVelocities": [
+            0.22967216201085128,
+            0.2362598859080529,
+            0.24156110104998277,
+            0.24555277041248066,
+            0.248218025677252,
+            0.24954638018250297,
+            0.24953413413838477
+          ],
+          "attackFlash": 0,
+          "melee": {
+            "phase": "idle",
+            "phaseRemainingSeconds": 0,
+            "comboIndex": 0,
+            "actionSequence": 0,
+            "facing": 1,
+            "buffered": false,
+            "queuedFacing": 1,
+            "hitTargetIds": [],
+            "profile": null,
+            "queuedProfile": null,
+            "actionKind": "light",
+            "lockedTargetId": null,
+            "defensePhase": "neutral",
+            "defenseRemainingSeconds": 0,
+            "defenseCooldownSeconds": 0,
+            "dodgeDirection": 1,
+            "parryConsumed": false
+          },
+          "invulnerability": 0,
+          "meleeCooldown": 0,
+          "weaponCooldown": 0,
+          "weaponChargeSeconds": 0,
+          "scanCooldown": 0,
+          "healCooldown": 0,
+          "canopySwing": {
+            "supportId": "v112-canopy-jungle-vey-0-1-grip",
+            "length": 80.11700351467134,
+            "angle": 0.7092975500432004,
+            "angularVelocity": 4.4242214523321834
+          }
+        },
+        "vx": 268.9676679508812,
+        "oldReachable": false
+      },
+      "catchState": {
+        "x": 2644.4297994815784,
+        "y": 89.15096270338049,
+        "previousY": 86.93222062506993,
+        "width": 72,
+        "height": 116,
+        "velocityX": 392.6690624653706,
+        "velocityY": 190.34436229295986,
+        "facing": 1,
+        "grounded": false,
+        "aerialBoostUsed": false,
+        "health": 151.84,
+        "maxHealth": 160,
+        "stamina": 74.85000000000167,
+        "maxStamina": 100,
+        "energy": 100,
+        "maxEnergy": 100,
+        "medicomps": 3,
+        "activeWeaponSlot": 1,
+        "weaponAmmo": [
+          1,
+          -1
+        ],
+        "cloaked": false,
+        "maskOn": true,
+        "aiming": false,
+        "aimAngle": 2.183768423666112,
+        "aimPoint": {
+          "x": 2370.9707813973314,
+          "y": 567.74
+        },
+        "climbing": true,
+        "climbZoneId": "v112-canopy-jungle-vey-0-2-grip",
+        "climbReattachSeconds": 0,
+        "climbGripExhausted": false,
+        "gauntletOpen": 0,
+        "bladeExtension": 0,
+        "dreadAngles": [
+          0.18197760443761704,
+          0.1921511269917093,
+          0.20201578297191983,
+          0.21154693819896292,
+          0.22071830852852603,
+          0.22950132078666,
+          0.2378641753430019
+        ],
+        "dreadVelocities": [
+          0.07518268787600811,
+          0.08231091204282383,
+          0.08939980156963757,
+          0.09636607296276466,
+          0.10312191488999548,
+          0.1095756801951782,
+          0.11563274164701043
+        ],
+        "attackFlash": 0,
+        "melee": {
+          "phase": "idle",
+          "phaseRemainingSeconds": 0,
+          "comboIndex": 0,
+          "actionSequence": 0,
+          "facing": 1,
+          "buffered": false,
+          "queuedFacing": 1,
+          "hitTargetIds": [],
+          "profile": null,
+          "queuedProfile": null,
+          "actionKind": "light",
+          "lockedTargetId": null,
+          "defensePhase": "neutral",
+          "defenseRemainingSeconds": 0,
+          "defenseCooldownSeconds": 0,
+          "dodgeDirection": 1,
+          "parryConsumed": false
+        },
+        "invulnerability": 0,
+        "meleeCooldown": 0,
+        "weaponCooldown": 0,
+        "weaponChargeSeconds": 0,
+        "scanCooldown": 0,
+        "healCooldown": 0,
+        "canopySwing": {
+          "supportId": "v112-canopy-jungle-vey-0-2-grip",
+          "length": 90.71612227685218,
+          "angle": -0.4513692951124551,
+          "angularVelocity": 4.810295621432251
+        }
+      },
+      "elapsed": 24.333333333333233,
+      "enemyCount": 4,
+      "hazardCount": 3,
+      "health": 151.84,
+      "invulnerability": 0,
+      "aerialBoostUsed": false,
+      "trace": [
+        {
+          "t": 24.03333333333325,
+          "x": 2560.663070878475,
+          "y": 64.98062069707926,
+          "vx": 268.9676679508812,
+          "vy": -200.02376496003293,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right",
+            "jump"
+          ]
+        },
+        {
+          "t": 24.049999999999915,
+          "x": 2565.1458653443233,
+          "y": 62.1607801699676,
+          "vx": 268.9676679508812,
+          "vy": -169.1904316266996,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.06666666666658,
+          "x": 2569.6286598101715,
+          "y": 59.85482853174483,
+          "vx": 268.9676679508812,
+          "vy": -138.35709829336625,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.083333333333247,
+          "x": 2574.1114542760197,
+          "y": 58.06276578241095,
+          "vx": 268.9676679508812,
+          "vy": -107.52376496003292,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.099999999999913,
+          "x": 2578.594248741868,
+          "y": 56.784591921965955,
+          "vx": 268.9676679508812,
+          "vy": -76.69043162669959,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.11666666666658,
+          "x": 2583.077043207716,
+          "y": 56.020306950409854,
+          "vx": 268.9676679508812,
+          "vy": -45.85709829336626,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.133333333333244,
+          "x": 2587.5598376735643,
+          "y": 55.76991086774264,
+          "vx": 268.9676679508812,
+          "vy": -15.023764960032931,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.14999999999991,
+          "x": 2592.0426321394125,
+          "y": 56.03340367396431,
+          "vx": 268.9676679508812,
+          "vy": 15.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.166666666666575,
+          "x": 2596.5254266052607,
+          "y": 56.81078536907487,
+          "vx": 268.9676679508812,
+          "vy": 46.64290170663374,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.18333333333324,
+          "x": 2601.008221071109,
+          "y": 58.10205595307432,
+          "vx": 268.9676679508812,
+          "vy": 77.47623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.199999999999907,
+          "x": 2605.491015536957,
+          "y": 59.90721542596266,
+          "vx": 268.9676679508812,
+          "vy": 108.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.216666666666573,
+          "x": 2609.9738100028053,
+          "y": 62.22626378773989,
+          "vx": 268.9676679508812,
+          "vy": 139.14290170663372,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.23333333333324,
+          "x": 2614.4566044686535,
+          "y": 65.059201038406,
+          "vx": 268.9676679508812,
+          "vy": 169.97623503996707,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.249999999999904,
+          "x": 2618.9393989345017,
+          "y": 68.40602717796101,
+          "vx": 268.9676679508812,
+          "vy": 200.8095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.26666666666657,
+          "x": 2623.42219340035,
+          "y": 72.2667422064049,
+          "vx": 268.9676679508812,
+          "vy": 231.64290170663375,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.283333333333236,
+          "x": 2628.017049065264,
+          "y": 76.64134612373769,
+          "vx": 275.6913398948569,
+          "vy": 262.4762350399671,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.2999999999999,
+          "x": 2632.6996860027803,
+          "y": 81.52983892995937,
+          "vx": 280.95821625097125,
+          "vy": 293.3095683733004,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.316666666666567,
+          "x": 2637.451084937168,
+          "y": 86.93222062506993,
+          "vx": 285.0839360632608,
+          "vy": 324.1429017066337,
+          "id": null,
+          "climbing": false,
+          "grounded": false,
+          "keys": [
+            "right"
+          ]
+        },
+        {
+          "t": 24.333333333333233,
+          "x": 2644.4297994815784,
+          "y": 89.15096270338049,
+          "vx": 392.6690624653706,
+          "vy": 190.34436229295986,
+          "id": "v112-canopy-jungle-vey-0-2-grip",
+          "climbing": true,
+          "grounded": false,
+          "keys": [
+            "right",
+            "up"
+          ]
+        }
+      ]
+    }
+  ]
+}

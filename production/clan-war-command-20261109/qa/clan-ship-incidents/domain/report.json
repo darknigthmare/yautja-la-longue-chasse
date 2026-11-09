@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "file": "tests/clan-ship-maintenance-diagnostics.test.mjs",
+      "exitCode": 0,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "production/clan-war-command-20261109/qa/clan-ship-incidents/domain/clan-ship-maintenance-diagnostics.test.mjs.tap",
+      "logSha256": "8abb1c1c0c6c001cb7c9d8d34ef3a1c44da14a7893df928783c7acaf04c05329",
+      "sourceSha256": "df41737cc2d62ececbbb07678544a6ef308f79d7943202289f2e8c92ccd02cf9"
+    },
+    {
+      "file": "tests/clan-ship-incidents.test.mjs",
+      "exitCode": 0,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "production/clan-war-command-20261109/qa/clan-ship-incidents/domain/clan-ship-incidents.test.mjs.tap",
+      "logSha256": "fabc167d5f309884f9164eabaadd730b28c18f8e99b013e0607ba10bdc3cba3d",
+      "sourceSha256": "2df0ab68f691ca95c8af85fc0c1f95a647d79f5cd680cb230349a3c9a5fb3314"
+    },
+    {
+      "file": "tests/clan-ship-crew-dialogue.test.mjs",
+      "exitCode": 0,
+      "pass": 45,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "production/clan-war-command-20261109/qa/clan-ship-incidents/domain/clan-ship-crew-dialogue.test.mjs.tap",
+      "logSha256": "42a9fe1c312107f109a7f73ac65909afe709434b84e133e6a482745a90ccc9a0",
+      "sourceSha256": "7c3923370cc8c5801e0126ac0c61a3a918daf1457decbc29c6f16ca74b5efee3"
+    },
+    {
+      "file": "tests/clan-ship-space-encounter.test.mjs",
+      "exitCode": 0,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "production/clan-war-command-20261109/qa/clan-ship-incidents/domain/clan-ship-space-encounter.test.mjs.tap",
+      "logSha256": "0ec7c3ac50d5a04fb63d53217d09d53982773083cd967c05ce45fad36ad24ff0",
+      "sourceSha256": "46b193115aef3ffe9a96be2e163be7261fd1a1dbc258af32d8c7cba9d9acb56a"
+    }
+  ],
+  "totalPassed": 91,
+  "totalFailed": 0,
+  "scope": "Domain behavior, real reducer replay, save roundtrip and SSR only. No browser/gameplay or human artistic certification."
+}

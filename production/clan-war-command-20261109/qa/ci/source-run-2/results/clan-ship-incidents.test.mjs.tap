@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: the three incidents reuse named contracts, characters and fourteen walkable physical interaction points
+ok 1 - the three incidents reuse named contracts, characters and fourteen walkable physical interaction points
+  ---
+  duration_ms: 3.167577
+  type: 'test'
+  ...
+# Subtest: legacy saves stay absent/null and mere access to the board creates neither incident nor prop
+ok 2 - legacy saves stay absent/null and mere access to the board creates neither incident nor prop
+  ---
+  duration_ms: 158.695235
+  type: 'test'
+  ...
+# Subtest: acceptance and every object command require owner, current revision, actual room and close physical coordinates
+ok 3 - acceptance and every object command require owner, current revision, actual room and close physical coordinates
+  ---
+  duration_ms: 7.43196
+  type: 'test'
+  ...
+# Subtest: a clan recruit in reserve cannot speak or offer a maintenance case from an absent post
+ok 4 - a clan recruit in reserve cannot speak or offer a maintenance case from an absent post
+  ---
+  duration_ms: 2.392719
+  type: 'test'
+  ...
+# Subtest: sealed lot uses the two clues; a wrong isolator requires archive diagnosis again and never closes the passage
+ok 5 - sealed lot uses the two clues; a wrong isolator requires archive diagnosis again and never closes the passage
+  ---
+  duration_ms: 30.659034
+  type: 'test'
+  ...
+# Subtest: relay measures two readable cycles and preserves the identified component through a wrong branch and permutation
+ok 6 - relay measures two readable cycles and preserves the identified component through a wrong branch and permutation
+  ---
+  duration_ms: 41.736182
+  type: 'test'
+  ...
+# Subtest: independent cases can interleave without stale revisions or duplicate receipt numbers
+ok 7 - independent cases can interleave without stale revisions or duplicate receipt numbers
+  ---
+  duration_ms: 20.332769
+  type: 'test'
+  ...
+# Subtest: the archive rejects forged history, skipped clues, foreign positions, future schemas and missing source contracts
+ok 8 - the archive rejects forged history, skipped clues, foreign positions, future schemas and missing source contracts
+  ---
+  duration_ms: 17.736062
+  type: 'test'
+  ...
+# Subtest: a refused storage write cannot acknowledge a component pickup or grant the same physical piece twice
+ok 9 - a refused storage write cannot acknowledge a component pickup or grant the same physical piece twice
+  ---
+  duration_ms: 17.072651
+  type: 'test'
+  ...
+# Subtest: all saved steps, failure history and installed component survive ordinary writer reloads
+ok 10 - all saved steps, failure history and installed component survive ordinary writer reloads
+  ---
+  duration_ms: 30.916311
+  type: 'test'
+  ...
+# Subtest: the actual controller walks between every required object and returns through real thresholds
+ok 11 - the actual controller walks between every required object and returns through real thresholds
+  ---
+  duration_ms: 74.248366
+  type: 'test'
+  ...
+# Subtest: world rendering changes the exact prop and each circuit independently, with no art or powers granted by a label
+ok 12 - world rendering changes the exact prop and each circuit independently, with no art or powers granted by a label
+  ---
+  duration_ms: 38.182381
+  type: 'test'
+  ...
+# Subtest: repeated wrong relay tests cannot consume the journal slots needed for a successful recovery
+ok 13 - repeated wrong relay tests cannot consume the journal slots needed for a successful recovery
+  ---
+  duration_ms: 404.494165
+  type: 'test'
+  ...
+# Subtest: portable import rejects a fabricated error beyond the runtime journal guard and accepts its reserved successful finish
+ok 14 - portable import rejects a fabricated error beyond the runtime journal guard and accepts its reserved successful finish
+  ---
+  duration_ms: 463.474297
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1322.486791

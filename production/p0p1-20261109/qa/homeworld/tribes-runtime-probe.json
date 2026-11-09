@@ -1,0 +1,648 @@
+{
+  "asOf": "2026-11-09",
+  "scope": "Existing region source and route helper calls only, not a native browser or protected V5 cistern import.",
+  "regionIds": [
+    "ash-marches",
+    "glass-desert",
+    "pillar-jungle",
+    "luminous-marshes",
+    "storm-chain",
+    "leviathan-coast",
+    "thermal-caves",
+    "cold-crown",
+    "first-city-ruins",
+    "forbidden-reserve"
+  ],
+  "existingCommunities": [
+    {
+      "id": "glass-desert",
+      "name": "Désert de Verre",
+      "village": "Village des Citernes",
+      "clan": "Peuple des Citernes",
+      "guideName": "Vek’shan",
+      "panorama": "/game/homeworld/v67/glass-processional-vista.png",
+      "residents": [
+        {
+          "id": "guide",
+          "name": "Vek’shan",
+          "role": "Pisteur du clan"
+        },
+        {
+          "id": "artisan",
+          "name": "Ka’resh 2",
+          "role": "Artisane des balises"
+        },
+        {
+          "id": "healer",
+          "name": "Na’ra 2",
+          "role": "Soigneuse"
+        },
+        {
+          "id": "keeper",
+          "name": "Isha’ren",
+          "role": "Gardienne des récits"
+        },
+        {
+          "id": "porter-a",
+          "name": "Tor’esh 2",
+          "role": "Porteur"
+        },
+        {
+          "id": "porter-b",
+          "name": "Vel’ra 2",
+          "role": "Convoyeuse"
+        },
+        {
+          "id": "hunter-a",
+          "name": "Khe’ron 2",
+          "role": "Chasseur de retour"
+        },
+        {
+          "id": "hunter-b",
+          "name": "Sha’vek 2",
+          "role": "Chasseuse"
+        },
+        {
+          "id": "apprentice-a",
+          "name": "Or’ta 2",
+          "role": "Apprenti accompagné"
+        },
+        {
+          "id": "apprentice-b",
+          "name": "Vesh’ra 2",
+          "role": "Apprentie accompagnée"
+        },
+        {
+          "id": "watcher-a",
+          "name": "Rha’ko 2",
+          "role": "Veilleur"
+        },
+        {
+          "id": "watcher-b",
+          "name": "Tek’na 2",
+          "role": "Veilleuse"
+        }
+      ]
+    },
+    {
+      "id": "pillar-jungle",
+      "name": "Jungle des Piliers",
+      "village": "Terrasses des Hautes Branches",
+      "clan": "Gardiens des Hautes Branches",
+      "guideName": "Sha’ra",
+      "panorama": "/game/assets/v37/tribes/v2/homeworld-forest-v2--8fdc633789dcd9c0.webp",
+      "residents": [
+        {
+          "id": "guide",
+          "name": "Sha’ra",
+          "role": "Pisteur du clan"
+        },
+        {
+          "id": "artisan",
+          "name": "Ka’resh 3",
+          "role": "Artisane des balises"
+        },
+        {
+          "id": "healer",
+          "name": "Na’ra 3",
+          "role": "Soigneuse"
+        },
+        {
+          "id": "keeper",
+          "name": "Osh’ka 3",
+          "role": "Gardienne des récits"
+        },
+        {
+          "id": "porter-a",
+          "name": "Tor’esh 3",
+          "role": "Porteur"
+        },
+        {
+          "id": "porter-b",
+          "name": "Vel’ra 3",
+          "role": "Convoyeuse"
+        },
+        {
+          "id": "hunter-a",
+          "name": "Khe’ron 3",
+          "role": "Chasseur de retour"
+        },
+        {
+          "id": "hunter-b",
+          "name": "Sha’vek 3",
+          "role": "Chasseuse"
+        },
+        {
+          "id": "apprentice-a",
+          "name": "Or’ta 3",
+          "role": "Apprenti accompagné"
+        },
+        {
+          "id": "apprentice-b",
+          "name": "Vesh’ra 3",
+          "role": "Apprentie accompagnée"
+        },
+        {
+          "id": "watcher-a",
+          "name": "Rha’ko 3",
+          "role": "Veilleur"
+        },
+        {
+          "id": "watcher-b",
+          "name": "Tek’na 3",
+          "role": "Veilleuse"
+        }
+      ]
+    },
+    {
+      "id": "thermal-caves",
+      "name": "Grottes Thermiques",
+      "village": "Enclave des Forges Basses",
+      "clan": "Artisans de la Roche Chaude",
+      "guideName": "Kha’ru",
+      "panorama": "/game/assets/v37/tribes/v2/homeworld-lava-v2--ecd85e06796799d2.webp",
+      "residents": [
+        {
+          "id": "guide",
+          "name": "Kha’ru",
+          "role": "Pisteur du clan"
+        },
+        {
+          "id": "artisan",
+          "name": "Ka’resh 7",
+          "role": "Artisane des balises"
+        },
+        {
+          "id": "healer",
+          "name": "Na’ra 7",
+          "role": "Soigneuse"
+        },
+        {
+          "id": "keeper",
+          "name": "Osh’ka 7",
+          "role": "Gardienne des récits"
+        },
+        {
+          "id": "porter-a",
+          "name": "Tor’esh 7",
+          "role": "Porteur"
+        },
+        {
+          "id": "porter-b",
+          "name": "Vel’ra 7",
+          "role": "Convoyeuse"
+        },
+        {
+          "id": "hunter-a",
+          "name": "Khe’ron 7",
+          "role": "Chasseur de retour"
+        },
+        {
+          "id": "hunter-b",
+          "name": "Sha’vek 7",
+          "role": "Chasseuse"
+        },
+        {
+          "id": "apprentice-a",
+          "name": "Or’ta 7",
+          "role": "Apprenti accompagné"
+        },
+        {
+          "id": "apprentice-b",
+          "name": "Vesh’ra 7",
+          "role": "Apprentie accompagnée"
+        },
+        {
+          "id": "watcher-a",
+          "name": "Rha’ko 7",
+          "role": "Veilleur"
+        },
+        {
+          "id": "watcher-b",
+          "name": "Tek’na 7",
+          "role": "Veilleuse"
+        }
+      ]
+    },
+    {
+      "id": "forbidden-reserve",
+      "name": "Réserve Interdite",
+      "village": "Poste des Gardiens de Réserve",
+      "clan": "Gardiens du Confinement",
+      "guideName": "Tha’vek",
+      "panorama": "/game/assets/v37/tribes/v2/homeworld-darkjungle-v2--fbc392bc9618642d.webp",
+      "residents": [
+        {
+          "id": "guide",
+          "name": "Tha’vek",
+          "role": "Pisteur du clan"
+        },
+        {
+          "id": "artisan",
+          "name": "Ka’resh 10",
+          "role": "Artisane des balises"
+        },
+        {
+          "id": "healer",
+          "name": "Na’ra 10",
+          "role": "Soigneuse"
+        },
+        {
+          "id": "keeper",
+          "name": "Osh’ka 10",
+          "role": "Gardienne des récits"
+        },
+        {
+          "id": "porter-a",
+          "name": "Tor’esh 10",
+          "role": "Porteur"
+        },
+        {
+          "id": "porter-b",
+          "name": "Vel’ra 10",
+          "role": "Convoyeuse"
+        },
+        {
+          "id": "hunter-a",
+          "name": "Khe’ron 10",
+          "role": "Chasseur de retour"
+        },
+        {
+          "id": "hunter-b",
+          "name": "Sha’vek 10",
+          "role": "Chasseuse"
+        },
+        {
+          "id": "apprentice-a",
+          "name": "Or’ta 10",
+          "role": "Apprenti accompagné"
+        },
+        {
+          "id": "apprentice-b",
+          "name": "Vesh’ra 10",
+          "role": "Apprentie accompagnée"
+        },
+        {
+          "id": "watcher-a",
+          "name": "Rha’ko 10",
+          "role": "Veilleur"
+        },
+        {
+          "id": "watcher-b",
+          "name": "Tek’na 10",
+          "role": "Veilleuse"
+        }
+      ]
+    },
+    {
+      "id": "luminous-marshes",
+      "name": "Marais Luminescents",
+      "village": "Veillée des Racines",
+      "clan": "Veilleurs des Eaux Calmes",
+      "guideName": "Nesh’ra",
+      "panorama": "/game/backgrounds/swamp-depth-v8.png",
+      "residents": [
+        {
+          "id": "guide",
+          "name": "Nesh’ra",
+          "role": "Pisteur du clan"
+        },
+        {
+          "id": "artisan",
+          "name": "Ka’resh 4",
+          "role": "Artisane des balises"
+        },
+        {
+          "id": "healer",
+          "name": "Na’ra 4",
+          "role": "Soigneuse"
+        },
+        {
+          "id": "keeper",
+          "name": "Osh’ka 4",
+          "role": "Gardienne des récits"
+        },
+        {
+          "id": "porter-a",
+          "name": "Tor’esh 4",
+          "role": "Porteur"
+        },
+        {
+          "id": "porter-b",
+          "name": "Vel’ra 4",
+          "role": "Convoyeuse"
+        },
+        {
+          "id": "hunter-a",
+          "name": "Khe’ron 4",
+          "role": "Chasseur de retour"
+        },
+        {
+          "id": "hunter-b",
+          "name": "Sha’vek 4",
+          "role": "Chasseuse"
+        },
+        {
+          "id": "apprentice-a",
+          "name": "Or’ta 4",
+          "role": "Apprenti accompagné"
+        },
+        {
+          "id": "apprentice-b",
+          "name": "Vesh’ra 4",
+          "role": "Apprentie accompagnée"
+        },
+        {
+          "id": "watcher-a",
+          "name": "Rha’ko 4",
+          "role": "Veilleur"
+        },
+        {
+          "id": "watcher-b",
+          "name": "Tek’na 4",
+          "role": "Veilleuse"
+        }
+      ]
+    },
+    {
+      "id": "storm-chain",
+      "name": "Chaîne des Orages",
+      "village": "Refuge des Trois Vents",
+      "clan": "Veilleurs des Crêtes",
+      "guideName": "Vhar’ko",
+      "panorama": "/game/backgrounds/ice-depth-v4.webp",
+      "residents": [
+        {
+          "id": "guide",
+          "name": "Vhar’ko",
+          "role": "Pisteur du clan"
+        },
+        {
+          "id": "artisan",
+          "name": "Ka’resh 5",
+          "role": "Artisane des balises"
+        },
+        {
+          "id": "healer",
+          "name": "Na’ra 5",
+          "role": "Soigneuse"
+        },
+        {
+          "id": "keeper",
+          "name": "Osh’ka 5",
+          "role": "Gardienne des récits"
+        },
+        {
+          "id": "porter-a",
+          "name": "Tor’esh 5",
+          "role": "Porteur"
+        },
+        {
+          "id": "porter-b",
+          "name": "Vel’ra 5",
+          "role": "Convoyeuse"
+        },
+        {
+          "id": "hunter-a",
+          "name": "Khe’ron 5",
+          "role": "Chasseur de retour"
+        },
+        {
+          "id": "hunter-b",
+          "name": "Sha’vek 5",
+          "role": "Chasseuse"
+        },
+        {
+          "id": "apprentice-a",
+          "name": "Or’ta 5",
+          "role": "Apprenti accompagné"
+        },
+        {
+          "id": "apprentice-b",
+          "name": "Vesh’ra 5",
+          "role": "Apprentie accompagnée"
+        },
+        {
+          "id": "watcher-a",
+          "name": "Rha’ko 5",
+          "role": "Veilleur"
+        },
+        {
+          "id": "watcher-b",
+          "name": "Tek’na 5",
+          "role": "Veilleuse"
+        }
+      ]
+    }
+  ],
+  "glassDesertEntry": {
+    "x": 520,
+    "y": 2800,
+    "vx": 0,
+    "vy": 0,
+    "grounded": true,
+    "facing": 1
+  },
+  "cisternRelatedActivities": [
+    {
+      "id": "glass-desert-scene-1",
+      "name": "Tour des citernes",
+      "material": "coffrets des citernes",
+      "kind": "sort",
+      "stationId": "place-table",
+      "station": {
+        "x": 1940,
+        "y": 2060
+      },
+      "approach": {
+        "x": 1940,
+        "y": 2170
+      },
+      "destinationId": "door:hall",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 1170,
+          "y": 2565
+        },
+        {
+          "x": 1940,
+          "y": 2170
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 1940,
+          "y": 2170
+        },
+        {
+          "x": 1170,
+          "y": 2565
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-scene-2",
+      "name": "Inspection des conduits",
+      "material": "conduits de débit",
+      "kind": "calibrate",
+      "stationId": "workshop",
+      "station": {
+        "x": 3530,
+        "y": 1670
+      },
+      "approach": {
+        "x": 3530,
+        "y": 1780
+      },
+      "destinationId": "door:forge",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 3530,
+          "y": 1780
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 3530,
+          "y": 1780
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-scene-3",
+      "name": "Transmission des routes",
+      "material": "poussière abritée",
+      "kind": "observe",
+      "stationId": "garden-b",
+      "station": {
+        "x": 2870,
+        "y": 3040
+      },
+      "approach": {
+        "x": 2870,
+        "y": 3150
+      },
+      "destinationId": "door:clinic",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 2870,
+          "y": 3150
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 2870,
+          "y": 3150
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-scene-4",
+      "name": "Réserve du soir",
+      "material": "réserve d’eau scellée",
+      "kind": "prepare",
+      "stationId": "storage",
+      "station": {
+        "x": 3650,
+        "y": 2420
+      },
+      "approach": {
+        "x": 3650,
+        "y": 2530
+      },
+      "destinationId": "field",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 3195,
+          "y": 2745
+        },
+        {
+          "x": 3650,
+          "y": 2530
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 3650,
+          "y": 2530
+        },
+        {
+          "x": 3240,
+          "y": 2655
+        },
+        {
+          "x": 720,
+          "y": 2700
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    }
+  ]
+}

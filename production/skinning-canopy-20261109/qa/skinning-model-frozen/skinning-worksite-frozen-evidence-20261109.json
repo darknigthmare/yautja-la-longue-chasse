@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "classification": "FROZEN_SKINNING_MODEL_CATALOGUE_CLOCK_AND_REAL_MENU_RENDER",
+  "observedAt": "2026-11-09T07:03:05.791318+00:00",
+  "checkoutCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "command": [
+    "node",
+    "--test",
+    "--test-isolation=none",
+    "--test-concurrency=1",
+    "tests/hunt-skinning-worksite-20261109.test.mjs",
+    "tests/carcass-anatomy-v112.test.mjs",
+    "tests/hunt-rites-v77.test.mjs",
+    "tests/field-tools-rites-v111.test.mjs"
+  ],
+  "exitCode": 0,
+  "nodeVersion": "v24.19.0",
+  "tests": {
+    "passed": 36,
+    "failed": 0,
+    "skipped": 0,
+    "newTests": 9
+  },
+  "log": {
+    "path": "/tmp/skinning-worksite-frozen-tests-20261109.log",
+    "bytes": 4039,
+    "sha256": "c16fe8fefc23d25f222ddb6488bae0baa2713b1078ec305daf71674c2809e3b5"
+  },
+  "lint": {
+    "command": [
+      "node",
+      "node_modules/eslint/bin/eslint.js",
+      "app/game/systems/ritesOfHuntV77.ts",
+      "app/game/systems/huntRitesRuntimeV77.ts",
+      "app/game/HuntRitesMenuV77.tsx",
+      "tests/hunt-skinning-worksite-20261109.test.mjs",
+      "--max-warnings",
+      "0"
+    ],
+    "exitCode": 0,
+    "log": {
+      "path": "/tmp/skinning-worksite-frozen-eslint-20261109.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "sourceOverlay": {
+    "app/game/systems/ritesOfHuntV77.ts": {
+      "bytes": 22562,
+      "sha256": "d3bded7f0b9f96b36cf31bf2dcaf78f8343e8b13b97068f0b5f597aed575dd29"
+    },
+    "app/game/systems/huntRitesRuntimeV77.ts": {
+      "bytes": 17137,
+      "sha256": "02dc653895b23fbc04e79b0b21c82d307d2ef92e018987fce1873eb23aec538d"
+    },
+    "app/game/HuntRitesMenuV77.tsx": {
+      "bytes": 8649,
+      "sha256": "b1b3321474897ff72cc24d8769abd277720d3f46d384769d1c9d89e384f76c98"
+    },
+    "app/game/HuntRitesMenuV77.module.css": {
+      "bytes": 1633,
+      "sha256": "c755177e10b2e5f1717e2d3482fa828a0ff7c78f2b89787107ccfbb5960dd9ce"
+    },
+    "tests/hunt-skinning-worksite-20261109.test.mjs": {
+      "bytes": 13309,
+      "sha256": "e2c9063ea85f2fd0602995d2c63251849e01050e6c5ff133bb92bc34c0b58aa6"
+    }
+  },
+  "previousReceipts": [
+    "/tmp/skinning-worksite-evidence-20261109.json",
+    "/tmp/skinning-worksite-evidence-explicit-isolation-20261109.json"
+  ],
+  "previousFailedAttempt": {
+    "log": {
+      "path": "/tmp/skinning-worksite-duration-tests-20261109.log",
+      "bytes": 5015,
+      "sha256": "8d750a69eb0c54cd0f79e08b7d74a72649e4d15d968f880cc9ac980ad15440c6"
+    },
+    "classification": "FAILED_INTERMEDIATE_DURATION_REFACTOR",
+    "reason": "Multiplying delta by duration then dividing introduced a one-ULP difference (0.05000000000000001 instead of0.05) in an unchanged historical assertion. Division by the duration ratio restores the original exact unscaled delta; no historical assertion changed."
+  },
+  "limits": [
+    "Deliberate unit prey fixtures and actual React static rendering. No played mission or browser geometry/rig contact is claimed here.",
+    "Catalogue clocks cover all existing species parts; the injected contact predicate is controlled by the unit fixture, while its physical rig geometry requires root/browser verification.",
+    "The static renderer has an empty CSS loader; minimum44px is source configuration, not a layout measurement.",
+    "No human comprehension, artistic or physical-device qualification.",
+    "Source files were fingerprinted immediately after the command and frozen by their owning agent; the checkout is not presented as a new clean commit."
+  ]
+}

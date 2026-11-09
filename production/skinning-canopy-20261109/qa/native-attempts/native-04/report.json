@@ -1,0 +1,5232 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T07:11:36.574Z",
+  "sourceCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "workingTreeOverlay": [
+    "M app/game/HuntCanvas.tsx",
+    " M app/game/HuntRitesMenuV77.module.css",
+    " M app/game/HuntRitesMenuV77.tsx",
+    " M app/game/sound.ts",
+    " M app/game/systems/huntRitesRuntimeV77.ts",
+    " M app/game/systems/ritesOfHuntV77.ts",
+    "?? app/game/HuntCanopyHudV112.module.css",
+    "?? app/game/HuntCanopyHudV112.tsx",
+    "?? app/game/systems/canopyNavigationV112.ts",
+    "?? app/game/systems/canopySupportRendererV112.ts",
+    "?? app/game/systems/huntFieldFeedbackV112.ts",
+    "?? app/game/systems/huntFieldPresentationV112.ts",
+    "?? production/skinning-canopy-20261109/",
+    "?? scripts/qa-hunt-ground-admissible-pilot-20261109.mjs",
+    "?? scripts/qa-skinning-canopy-durable-browser-20261109.mjs",
+    "?? tests/browser/skinning-canopy-durable-20261109.fixture.jsx",
+    "?? tests/canopy-navigation-v112.test.mjs",
+    "?? tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+    "?? tests/hunt-field-feedback-20261109.test.mjs",
+    "?? tests/hunt-field-presentation-v112.test.mjs",
+    "?? tests/hunt-skinning-worksite-20261109.test.mjs"
+  ],
+  "classification": "FAILED_ATTEMPT",
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [
+    {
+      "name": "field fixture retains the canonical insertion, authored enemies, geometry and hazards",
+      "status": "PASS",
+      "startedAt": "2026-11-09T07:12:01.689Z",
+      "details": {
+        "kind": "ONE_DECLARED_INITIAL_PREY_CREATED_BY_NATIVE_DAMAGE",
+        "sourceEnemyId": "hell-hound-stalker",
+        "sourceActorId": "qa-durable-field-prey",
+        "originalEnemyIds": [
+          "jungle-patrol-0",
+          "jungle-patrol-1",
+          "jungle-patrol-2",
+          "jungle-patrol-3"
+        ],
+        "originalEnemyCount": 4,
+        "resultingEnemyCount": 5,
+        "playerMoved": false,
+        "worldGeometryChanged": false,
+        "enemiesRemoved": false,
+        "hazardsRemoved": false,
+        "playerInvulnerable": false,
+        "corpse": {
+          "id": "qa-durable-field-prey",
+          "sourceEnemyId": "hell-hound-stalker",
+          "label": "Traqueur Hell-Hound",
+          "kind": "beast",
+          "x": 319,
+          "y": 624,
+          "worthy": true,
+          "protectedPrey": false,
+          "defeatedAt": 0,
+          "analyzed": false,
+          "marked": false,
+          "flayed": false,
+          "erased": false,
+          "supportId": null,
+          "hangingAt": null,
+          "witnesses": [],
+          "witnessFear": [],
+          "integrity": 91,
+          "massKg": 140,
+          "hung": false
+        }
+      }
+    },
+    {
+      "name": "native menu presents real worn-tool duration and finite stock before field work",
+      "status": "PASS",
+      "startedAt": "2026-11-09T07:12:03.887Z",
+      "details": {
+        "tool": "Flaying Tool : acquis. État : 25/100. Après un dépeçage ou prélèvement confirmé : 20/100. Usure par geste terminé : 5 points. Une interruption n’use pas l’outil.",
+        "stock": "Parties encore sur cette proie : 2 / 2. Les prises retirées ne repoussent pas.",
+        "text": "Manette : Bas + B / Cercle pour examiner. Haut/Bas pour choisir, A / Croix pour activer, B / Cercle pour fermer. La chasse continue.\nTraqueur Hell-Hound\n×\n\nLa chasse continue. Dégâts, action ou éloignement interrompent le geste. Intégrité : 91/100. Analyse avant le premier prélèvement pour éviter une perte de qualité de 12 points. Chaque partie est unique.\n\nFlaying Tool : acquis. État : 25/100. Après un dépeçage ou prélèvement confirmé : 20/100. Usure par geste terminé : 5 points. Une interruption n’use pas l’outil.\n\nParties encore sur cette proie : 2 / 2. Les prises retirées ne repoussent pas.\n\nSac : 0 / 36 kg · 0 / 24 volumes. Disponibles : 36 kg · 24 volumes.\n\nAnalyser · 1,4 s\nMarquer · 1 s\nLaisser sur place\nEffacer la trace · 1,8 s\nDépecer · 4,8 s\nPrépare la peau ; prélever la partie reste un geste distinct.\nPorter la carcasse · 140 kg\nDépecer d’abord la carcasse.\nSuspendre · 2,5 s\nDépecer puis porter la carcasse jusqu’au crochet.\nCuir de chien de chasse · 5,7 s · qualité 79/100\n2,4 kg · 3 volumes. Après la prise : 2,4 / 36 kg · 3 / 24 volumes. Dépecer d’abord.\nTendon de poursuite · 3,9 s · qualité 76/100\n0,4 kg · 1 volumes. Après la prise : 0,4 / 36 kg · 1 / 24 volumes.\n0 témoins de la mise en scène. Le dépeçage prépare la peau ; le trophée principal et les prélèvements secondaires sont distincts. Saut, escalade ou combat déposent le corps ; le sac conserve ses prises."
+      }
+    },
+    {
+      "name": "interrupting a native started flay leaves its unique stock and tool-use ledger unchanged",
+      "status": "PASS",
+      "startedAt": "2026-11-09T07:12:12.484Z",
+      "details": null
+    },
+    {
+      "name": "a real in-progress flay is written, claimed and restored by GameClient in a new document",
+      "status": "PASS",
+      "startedAt": "2026-11-09T07:12:20.805Z",
+      "details": {
+        "elapsedBefore": 0.5042016806722691,
+        "elapsedAfter": 0.5042016806722691,
+        "runIdChanged": true
+      }
+    },
+    {
+      "name": "resumed native flay completes exactly once and the next physical part is harvested once",
+      "status": "PASS",
+      "startedAt": "2026-11-09T07:12:43.914Z",
+      "details": {
+        "specimen": {
+          "id": "jungle-vey:0:qa-durable-field-prey:hide",
+          "sourceId": "jungle-vey:0:qa-durable-field-prey",
+          "speciesId": "hell-hound-stalker",
+          "partId": "hide",
+          "label": "Cuir de chien de chasse",
+          "quality": 91,
+          "massKg": 2.4,
+          "volumeUnits": 3,
+          "stage": "raw"
+        },
+        "toolPreview": "Flaying Tool : acquis. État : 15/100. Après un dépeçage ou prélèvement confirmé : 10/100. Usure par geste terminé : 5 points. Une interruption n’use pas l’outil."
+      }
+    },
+    {
+      "name": "a field deposit survives durable reload and is picked up without another harvest or tool debit",
+      "status": "PASS",
+      "startedAt": "2026-11-09T07:13:13.191Z",
+      "details": null
+    },
+    {
+      "name": "native field details stay inside 390px and 320px viewports",
+      "status": "PASS",
+      "startedAt": "2026-11-09T07:13:26.524Z",
+      "details": [
+        {
+          "width": 390,
+          "rect": {
+            "x": 101,
+            "y": 482.5625,
+            "width": 280,
+            "height": 274.25
+          },
+          "targets": [
+            {
+              "text": "×",
+              "height": 44,
+              "width": 24.296875
+            },
+            {
+              "text": "Analyser · 1,4 s · fait",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Marquer · 1 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Laisser sur place",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Effacer la trace · 1,8 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Dépecer · 5,0 s · fait",
+              "height": 77.375,
+              "width": 127
+            },
+            {
+              "text": "Porter la carcasse · 140 kg",
+              "height": 51,
+              "width": 127
+            },
+            {
+              "text": "Suspendre · 2,5 s",
+              "height": 89.5,
+              "width": 127
+            },
+            {
+              "text": "Cuir de chien de chasse · 5,9 s · qualité 91/100",
+              "height": 85.5,
+              "width": 127
+            },
+            {
+              "text": "Tendon de poursuite · 4,0 s · qualité 88/100",
+              "height": 85.5,
+              "width": 127
+            }
+          ],
+          "minimumTargetHeight": 44
+        },
+        {
+          "width": 320,
+          "rect": {
+            "x": 31,
+            "y": 569.40625,
+            "width": 280,
+            "height": 234.875
+          },
+          "targets": [
+            {
+              "text": "×",
+              "height": 44,
+              "width": 24.296875
+            },
+            {
+              "text": "Analyser · 1,4 s · fait",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Marquer · 1 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Laisser sur place",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Effacer la trace · 1,8 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Dépecer · 5,0 s · fait",
+              "height": 77.375,
+              "width": 127
+            },
+            {
+              "text": "Porter la carcasse · 140 kg",
+              "height": 51,
+              "width": 127
+            },
+            {
+              "text": "Suspendre · 2,5 s",
+              "height": 89.5,
+              "width": 127
+            },
+            {
+              "text": "Cuir de chien de chasse · 5,9 s · qualité 91/100",
+              "height": 85.5,
+              "width": 127
+            },
+            {
+              "text": "Tendon de poursuite · 4,0 s · qualité 88/100",
+              "height": 85.5,
+              "width": 127
+            }
+          ],
+          "minimumTargetHeight": 44
+        }
+      ]
+    },
+    {
+      "name": "declared terminal segment keeps field identity and uses native boarding, settlement and tool wear",
+      "status": "FAIL",
+      "startedAt": "2026-11-09T07:13:34.239Z",
+      "error": "locator.waitFor: Error: strict mode violation: getByRole('button', { name: 'Retour au vaisseau', exact: true }) resolved to 2 elements:\n    1) <button type=\"button\" aria-label=\"Retour au vaisseau\" class=\"brand-lockup ghost-button\">…</button> aka getByLabel('Retour au vaisseau')\n    2) <button type=\"button\" class=\"alien-button\">Retour au vaisseau</button> aka getByText('Retour au vaisseau')\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Retour au vaisseau', exact: true }) to be visible\u001b[22m\n\n    at /workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:299:75\n    at async check (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:93:21)\n    at async field (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:289:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:465:22"
+    }
+  ],
+  "captures": [
+    {
+      "file": "01-field-before-work.png",
+      "bytes": 1008205,
+      "sha256": "6f0f9dd1eb4d39ffe1610579b99ac150bdc88c4b4dbec624edf52d9a6137751b",
+      "width": 1280,
+      "height": 1494
+    },
+    {
+      "file": "02-restored-flay-paused.png",
+      "bytes": 633258,
+      "sha256": "292e719ce5dc15352d16cdc33e7679e19cc8463d984ad8e546017f2e496e794e",
+      "width": 1280,
+      "height": 1362
+    },
+    {
+      "file": "03-native-harvest-complete.png",
+      "bytes": 984512,
+      "sha256": "aedcdff121eaa40bf29a6af4555365e3a2b269051c854580599e56ebcf6f9e9b",
+      "width": 1280,
+      "height": 1494
+    },
+    {
+      "file": "04-recovered-native-field-pack.png",
+      "bytes": 634612,
+      "sha256": "b76bfaba82bf87bac0fcf765f37bfc316bed3987a33dd3616fafb4eb00d248b8",
+      "width": 1280,
+      "height": 1362
+    },
+    {
+      "file": "05-field-menu-390.png",
+      "bytes": 200898,
+      "sha256": "63b76ec53573cf5bae4f3aefa3dd58523d17b363c89817aa7c057bf73e669903",
+      "width": 390,
+      "height": 1353
+    },
+    {
+      "file": "05-field-menu-320.png",
+      "bytes": 166704,
+      "sha256": "65fe29ffcdc831a778fafccb83141debce4bfc3a1587faa88e422f054b2a31c1",
+      "width": 320,
+      "height": 1400
+    },
+    {
+      "file": "failure.png",
+      "bytes": 605920,
+      "sha256": "49e61746c0c6fbc48d840aad0126491e85f3de4a4fad80dbc7b04ac6f433b8c0",
+      "width": 1280,
+      "height": 917
+    }
+  ],
+  "errors": [],
+  "cases": {
+    "field": {
+      "initial": {
+        "alive": true,
+        "resumed": false,
+        "missionId": "jungle-vey",
+        "encounterRun": 0,
+        "elapsed": 0.19999999999999998,
+        "paused": false,
+        "phase": "tracking",
+        "message": "La chasse commence. Localise les signatures.",
+        "player": {
+          "x": 225,
+          "y": 508,
+          "previousY": 508,
+          "width": 72,
+          "height": 116,
+          "velocityX": 0,
+          "velocityY": 0,
+          "facing": 1,
+          "grounded": true,
+          "aerialBoostUsed": false,
+          "health": 160,
+          "maxHealth": 160,
+          "stamina": 100,
+          "maxStamina": 100,
+          "energy": 100,
+          "maxEnergy": 100,
+          "medicomps": 3,
+          "activeWeaponSlot": 1,
+          "weaponAmmo": [
+            1,
+            -1
+          ],
+          "cloaked": false,
+          "maskOn": true,
+          "aiming": false,
+          "aimAngle": 0,
+          "aimPoint": {
+            "x": 1074.4984184128298,
+            "y": 523.409793901294
+          },
+          "climbing": false,
+          "climbZoneId": null,
+          "climbReattachSeconds": 0,
+          "climbGripExhausted": false,
+          "gauntletOpen": 0,
+          "bladeExtension": 0,
+          "dreadAngles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "dreadVelocities": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "attackFlash": 0,
+          "melee": {
+            "phase": "idle",
+            "phaseRemainingSeconds": 0,
+            "comboIndex": 0,
+            "actionSequence": 0,
+            "facing": 1,
+            "buffered": false,
+            "queuedFacing": 1,
+            "hitTargetIds": [],
+            "profile": null,
+            "queuedProfile": null,
+            "actionKind": "light",
+            "lockedTargetId": null,
+            "defensePhase": "neutral",
+            "defenseRemainingSeconds": 0,
+            "defenseCooldownSeconds": 0,
+            "dodgeDirection": 1,
+            "parryConsumed": false
+          },
+          "invulnerability": 0,
+          "meleeCooldown": 0,
+          "weaponCooldown": 0,
+          "weaponChargeSeconds": 0,
+          "scanCooldown": 0,
+          "healCooldown": 0,
+          "canopySwing": null
+        },
+        "rites": {
+          "version": 1,
+          "runId": "jungle-vey:0",
+          "missionId": "jungle-vey",
+          "elapsed": 0.19999999999999998,
+          "corpses": [
+            {
+              "id": "qa-durable-field-prey",
+              "sourceEnemyId": "hell-hound-stalker",
+              "label": "Traqueur Hell-Hound",
+              "kind": "beast",
+              "x": 319,
+              "y": 624,
+              "worthy": true,
+              "protectedPrey": false,
+              "defeatedAt": 0,
+              "analyzed": false,
+              "marked": false,
+              "flayed": false,
+              "erased": false,
+              "supportId": null,
+              "hangingAt": null,
+              "witnesses": [],
+              "witnessFear": [],
+              "integrity": 91,
+              "massKg": 140,
+              "hung": false
+            }
+          ],
+          "operation": null,
+          "honorDelta": 0,
+          "awareness": 0,
+          "fear": 0,
+          "completedEventIds": [],
+          "carryingCorpseId": null,
+          "specimensV112": [],
+          "stashedSpecimensV112": []
+        },
+        "riteToolInitialCondition": 25,
+        "damageTaken": 0,
+        "world": {
+          "width": 8400,
+          "floorY": 624,
+          "spawn": {
+            "x": 225,
+            "y": 508
+          },
+          "extraction": {
+            "x": 8025,
+            "y": 624
+          },
+          "platforms": [
+            {
+              "id": "j-cave-lip",
+              "x": 3052.5,
+              "y": 534,
+              "width": 532.5,
+              "height": 28,
+              "material": "stone",
+              "routeId": "flooded-cut",
+              "collision": "one-way",
+              "noiseMultiplier": 0.9,
+              "trackPersistence": 0.08
+            },
+            {
+              "id": "j-camp-01",
+              "x": 4350,
+              "y": 552,
+              "width": 525,
+              "height": 26,
+              "material": "metal",
+              "routeId": "ground",
+              "collision": "one-way",
+              "noiseMultiplier": 1.55,
+              "trackPersistence": 0.04
+            },
+            {
+              "id": "j-flood-exit",
+              "x": 5565,
+              "y": 522,
+              "width": 495,
+              "height": 24,
+              "material": "stone",
+              "routeId": "flooded-cut",
+              "collision": "one-way",
+              "noiseMultiplier": 0.95,
+              "trackPersistence": 0.12
+            },
+            {
+              "id": "j-arena-left",
+              "x": 6847.5,
+              "y": 515,
+              "width": 495,
+              "height": 25,
+              "material": "soil",
+              "routeId": "ground",
+              "collision": "one-way",
+              "noiseMultiplier": 0.9,
+              "trackPersistence": 0.75
+            },
+            {
+              "id": "feature-j-ruins-slab",
+              "x": 3015,
+              "y": 430,
+              "width": 300,
+              "height": 28,
+              "material": "ruin",
+              "routeId": "ground",
+              "collision": "one-way",
+              "noiseMultiplier": 1.05,
+              "trackPersistence": 0.08
+            },
+            {
+              "id": "feature-j-lake-root",
+              "x": 4410,
+              "y": 366,
+              "width": 270,
+              "height": 24,
+              "material": "root",
+              "routeId": "ground",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "id": "feature-j-camp-deck",
+              "x": 5895,
+              "y": 430,
+              "width": 270,
+              "height": 24,
+              "material": "root",
+              "routeId": "ground",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "id": "feature-j-arena-crown",
+              "x": 7335,
+              "y": 430,
+              "width": 270,
+              "height": 24,
+              "material": "root",
+              "routeId": "ground",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "x": 800,
+              "y": 392,
+              "width": 1180,
+              "height": 24,
+              "id": "jungle-pilot-gallery-west",
+              "material": "ruin",
+              "routeId": "canopy",
+              "collision": "solid",
+              "noiseMultiplier": 0.85,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 2140,
+              "y": 392,
+              "width": 60,
+              "height": 24,
+              "id": "jungle-pilot-gallery-east",
+              "material": "ruin",
+              "routeId": "canopy",
+              "collision": "solid",
+              "noiseMultiplier": 0.85,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 2200,
+              "y": 0,
+              "width": 28,
+              "height": 416,
+              "id": "jungle-pilot-right-wall",
+              "material": "ruin",
+              "routeId": "canopy",
+              "collision": "solid",
+              "noiseMultiplier": 0.85,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 1120,
+              "y": -800,
+              "width": 28,
+              "height": 1192,
+              "id": "jungle-resonance-seal",
+              "material": "ruin",
+              "routeId": "canopy",
+              "collision": "solid",
+              "noiseMultiplier": 0.85,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 1980,
+              "y": 392,
+              "width": 160,
+              "height": 24,
+              "id": "jungle-canopy-hatch",
+              "material": "ruin",
+              "routeId": "canopy",
+              "collision": "solid",
+              "noiseMultiplier": 0.85,
+              "trackPersistence": 0.12
+            },
+            {
+              "id": "jungle-vertical-root-west",
+              "x": 470,
+              "y": -120,
+              "width": 420,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.62,
+              "trackPersistence": 0.28
+            },
+            {
+              "id": "jungle-vertical-crown-west",
+              "x": 930,
+              "y": -300,
+              "width": 340,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.58,
+              "trackPersistence": 0.22
+            },
+            {
+              "id": "jungle-vertical-crown-heart",
+              "x": 1390,
+              "y": -420,
+              "width": 370,
+              "height": 26,
+              "material": "ruin",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.76,
+              "trackPersistence": 0.12
+            },
+            {
+              "id": "jungle-vertical-ruin-bridge",
+              "x": 1830,
+              "y": -260,
+              "width": 390,
+              "height": 24,
+              "material": "stone",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.88,
+              "trackPersistence": 0.1
+            },
+            {
+              "id": "jungle-vertical-lookout",
+              "x": 2320,
+              "y": -380,
+              "width": 340,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.61,
+              "trackPersistence": 0.25
+            },
+            {
+              "id": "jungle-vertical-ravine-ledge",
+              "x": 2940,
+              "y": 345,
+              "width": 420,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.25
+            },
+            {
+              "id": "jungle-vertical-ravine-step",
+              "x": 3420,
+              "y": 235,
+              "width": 340,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.68,
+              "trackPersistence": 0.24
+            },
+            {
+              "id": "jungle-vertical-ravine-arch",
+              "x": 3820,
+              "y": 115,
+              "width": 340,
+              "height": 24,
+              "material": "ruin",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.82,
+              "trackPersistence": 0.12
+            },
+            {
+              "id": "jungle-vertical-cave-bridge",
+              "x": 4220,
+              "y": -5,
+              "width": 350,
+              "height": 24,
+              "material": "stone",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.88,
+              "trackPersistence": 0.1
+            },
+            {
+              "id": "jungle-vertical-cave-crown",
+              "x": 4620,
+              "y": 115,
+              "width": 350,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.64,
+              "trackPersistence": 0.27
+            },
+            {
+              "id": "jungle-vertical-camp-watch",
+              "x": 5020,
+              "y": 235,
+              "width": 360,
+              "height": 24,
+              "material": "metal",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 1.18,
+              "trackPersistence": 0.04
+            },
+            {
+              "id": "jungle-vertical-camp-roof",
+              "x": 5430,
+              "y": 345,
+              "width": 360,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.23
+            },
+            {
+              "id": "jungle-vertical-camp-beam",
+              "x": 5840,
+              "y": 235,
+              "width": 360,
+              "height": 24,
+              "material": "metal",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 1.2,
+              "trackPersistence": 0.03
+            },
+            {
+              "id": "jungle-vertical-scout-perch",
+              "x": 6250,
+              "y": 345,
+              "width": 300,
+              "height": 24,
+              "material": "root",
+              "routeId": "canopy",
+              "collision": "one-way",
+              "noiseMultiplier": 0.68,
+              "trackPersistence": 0.25
+            },
+            {
+              "id": "jungle-pilot-cave-roof-west",
+              "x": 4000,
+              "y": 400,
+              "width": 520,
+              "height": 34,
+              "material": "stone",
+              "routeId": "flooded-cut",
+              "collision": "solid",
+              "noiseMultiplier": 0.9,
+              "trackPersistence": 0.12
+            },
+            {
+              "id": "jungle-pilot-cave-roof-east",
+              "x": 4590,
+              "y": 400,
+              "width": 480,
+              "height": 34,
+              "material": "root",
+              "routeId": "flooded-cut",
+              "collision": "solid",
+              "noiseMultiplier": 0.76,
+              "trackPersistence": 0.2
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-0-rest",
+              "x": 2295,
+              "y": 270,
+              "width": 130,
+              "height": 18,
+              "material": "root",
+              "routeId": "canopy-transfer",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-1-rest",
+              "x": 2475,
+              "y": 245,
+              "width": 130,
+              "height": 18,
+              "material": "root",
+              "routeId": "canopy-transfer",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-2-rest",
+              "x": 2655,
+              "y": 270,
+              "width": 130,
+              "height": 18,
+              "material": "root",
+              "routeId": "canopy-transfer",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-3-rest",
+              "x": 2835,
+              "y": 245,
+              "width": 130,
+              "height": 18,
+              "material": "root",
+              "routeId": "canopy-transfer",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-4-rest",
+              "x": 3015,
+              "y": 270,
+              "width": 130,
+              "height": 18,
+              "material": "root",
+              "routeId": "canopy-transfer",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-5-rest",
+              "x": 3195,
+              "y": 245,
+              "width": 130,
+              "height": 18,
+              "material": "root",
+              "routeId": "canopy-transfer",
+              "collision": "one-way",
+              "noiseMultiplier": 0.7,
+              "trackPersistence": 0.3
+            }
+          ],
+          "climbables": [
+            {
+              "id": "j-rock-cut",
+              "x": 3180,
+              "y": 430,
+              "width": 132,
+              "height": 194,
+              "kind": "rock-face",
+              "routeId": "flooded-cut",
+              "climbSpeedMultiplier": 0.78,
+              "staminaPerSecond": 5,
+              "dismounts": [
+                {
+                  "x": 3120,
+                  "y": 534
+                },
+                {
+                  "x": 3360,
+                  "y": 420
+                }
+              ]
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-0-grip",
+              "x": 2336,
+              "y": 40,
+              "width": 48,
+              "height": 584,
+              "kind": "tree",
+              "routeId": "canopy-transfer",
+              "climbSpeedMultiplier": 1,
+              "staminaPerSecond": 3,
+              "dismounts": [
+                {
+                  "x": 2360,
+                  "y": 270
+                },
+                {
+                  "x": 2440,
+                  "y": 624
+                }
+              ]
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-1-grip",
+              "x": 2516,
+              "y": 40,
+              "width": 48,
+              "height": 250,
+              "kind": "vine",
+              "routeId": "canopy-transfer",
+              "climbSpeedMultiplier": 1,
+              "staminaPerSecond": 4,
+              "dismounts": [
+                {
+                  "x": 2540,
+                  "y": 245
+                },
+                {
+                  "x": 2620,
+                  "y": 624
+                }
+              ]
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-2-grip",
+              "x": 2696,
+              "y": 40,
+              "width": 48,
+              "height": 250,
+              "kind": "vine",
+              "routeId": "canopy-transfer",
+              "climbSpeedMultiplier": 1,
+              "staminaPerSecond": 4,
+              "dismounts": [
+                {
+                  "x": 2720,
+                  "y": 270
+                },
+                {
+                  "x": 2800,
+                  "y": 624
+                }
+              ]
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-3-grip",
+              "x": 2876,
+              "y": 40,
+              "width": 48,
+              "height": 250,
+              "kind": "vine",
+              "routeId": "canopy-transfer",
+              "climbSpeedMultiplier": 1,
+              "staminaPerSecond": 4,
+              "dismounts": [
+                {
+                  "x": 2900,
+                  "y": 245
+                },
+                {
+                  "x": 2980,
+                  "y": 624
+                }
+              ]
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-4-grip",
+              "x": 3056,
+              "y": 40,
+              "width": 48,
+              "height": 250,
+              "kind": "vine",
+              "routeId": "canopy-transfer",
+              "climbSpeedMultiplier": 1,
+              "staminaPerSecond": 4,
+              "dismounts": [
+                {
+                  "x": 3080,
+                  "y": 270
+                },
+                {
+                  "x": 3160,
+                  "y": 624
+                }
+              ]
+            },
+            {
+              "id": "v112-canopy-jungle-vey-0-5-grip",
+              "x": 3236,
+              "y": 40,
+              "width": 48,
+              "height": 584,
+              "kind": "tree",
+              "routeId": "canopy-transfer",
+              "climbSpeedMultiplier": 1,
+              "staminaPerSecond": 3,
+              "dismounts": [
+                {
+                  "x": 3260,
+                  "y": 245
+                },
+                {
+                  "x": 3340,
+                  "y": 624
+                }
+              ]
+            }
+          ],
+          "hazards": [
+            {
+              "id": "j-mud-west",
+              "x": 1575,
+              "y": 582,
+              "width": 630,
+              "height": 42,
+              "kind": "deep-mud",
+              "routeId": "ground",
+              "damagePerSecond": 0,
+              "movementMultiplier": 0.58,
+              "noisePerSecond": 0.08,
+              "trackMultiplier": 2.4,
+              "revealsCloak": false,
+              "telegraphSeconds": 0,
+              "cycle": null
+            },
+            {
+              "id": "j-flora-center",
+              "x": 4020,
+              "y": 574,
+              "width": 232.5,
+              "height": 50,
+              "kind": "predatory-flora",
+              "routeId": "ground",
+              "damagePerSecond": 9,
+              "movementMultiplier": 0.72,
+              "noisePerSecond": 0.42,
+              "trackMultiplier": 1.1,
+              "revealsCloak": true,
+              "telegraphSeconds": 0.45,
+              "cycle": {
+                "periodSeconds": 4.5,
+                "activeSeconds": 1.4,
+                "phaseSeconds": 0.8
+              }
+            },
+            {
+              "id": "j-flood-pulse",
+              "x": 4815,
+              "y": 570,
+              "width": 915,
+              "height": 54,
+              "kind": "flash-flood",
+              "routeId": "flooded-cut",
+              "damagePerSecond": 6,
+              "movementMultiplier": 0.48,
+              "noisePerSecond": 0.6,
+              "trackMultiplier": 0.2,
+              "revealsCloak": true,
+              "telegraphSeconds": 1.25,
+              "cycle": {
+                "periodSeconds": 12,
+                "activeSeconds": 3.5,
+                "phaseSeconds": 2
+              }
+            }
+          ]
+        },
+        "enemies": [
+          {
+            "id": "jungle-patrol-0",
+            "archetype": "oseris-iv--spore-bloom",
+            "alive": true,
+            "active": true,
+            "boss": false,
+            "x": 1448.999,
+            "y": 534,
+            "health": 54.45
+          },
+          {
+            "id": "jungle-patrol-1",
+            "archetype": "oseris-iv--corporate-juggernaut",
+            "alive": true,
+            "active": true,
+            "boss": false,
+            "x": 2472.8889723052835,
+            "y": 527,
+            "health": 61.04999999999999
+          },
+          {
+            "id": "jungle-patrol-2",
+            "archetype": "oseris-iv--mist-pouncer",
+            "alive": true,
+            "active": true,
+            "boss": false,
+            "x": 3319.5715087666395,
+            "y": 535,
+            "health": 61.04999999999999
+          },
+          {
+            "id": "jungle-patrol-3",
+            "archetype": "common--wandering-xeno-drone",
+            "alive": true,
+            "active": true,
+            "boss": false,
+            "x": 2221.871000000003,
+            "y": 528,
+            "health": 67.65
+          },
+          {
+            "id": "qa-durable-field-prey",
+            "archetype": "hell-hound-stalker",
+            "alive": false,
+            "active": true,
+            "boss": false,
+            "x": 265,
+            "y": 546,
+            "health": 0
+          }
+        ],
+        "ship": null,
+        "inputs": {
+          "keyboard": [],
+          "touch": [],
+          "gamepad": []
+        }
+      },
+      "setups": [
+        {
+          "kind": "ONE_DECLARED_INITIAL_PREY_CREATED_BY_NATIVE_DAMAGE",
+          "sourceEnemyId": "hell-hound-stalker",
+          "sourceActorId": "qa-durable-field-prey",
+          "originalEnemyIds": [
+            "jungle-patrol-0",
+            "jungle-patrol-1",
+            "jungle-patrol-2",
+            "jungle-patrol-3"
+          ],
+          "originalEnemyCount": 4,
+          "resultingEnemyCount": 5,
+          "playerMoved": false,
+          "worldGeometryChanged": false,
+          "enemiesRemoved": false,
+          "hazardsRemoved": false,
+          "playerInvulnerable": false,
+          "corpse": {
+            "id": "qa-durable-field-prey",
+            "sourceEnemyId": "hell-hound-stalker",
+            "label": "Traqueur Hell-Hound",
+            "kind": "beast",
+            "x": 319,
+            "y": 624,
+            "worthy": true,
+            "protectedPrey": false,
+            "defeatedAt": 0,
+            "analyzed": false,
+            "marked": false,
+            "flayed": false,
+            "erased": false,
+            "supportId": null,
+            "hangingAt": null,
+            "witnesses": [],
+            "witnessFear": [],
+            "integrity": 91,
+            "massKg": 140,
+            "hung": false
+          }
+        }
+      ],
+      "worksiteApproach": [],
+      "initialMenu": {
+        "tool": "Flaying Tool : acquis. État : 25/100. Après un dépeçage ou prélèvement confirmé : 20/100. Usure par geste terminé : 5 points. Une interruption n’use pas l’outil.",
+        "stock": "Parties encore sur cette proie : 2 / 2. Les prises retirées ne repoussent pas.",
+        "text": "Manette : Bas + B / Cercle pour examiner. Haut/Bas pour choisir, A / Croix pour activer, B / Cercle pour fermer. La chasse continue.\nTraqueur Hell-Hound\n×\n\nLa chasse continue. Dégâts, action ou éloignement interrompent le geste. Intégrité : 91/100. Analyse avant le premier prélèvement pour éviter une perte de qualité de 12 points. Chaque partie est unique.\n\nFlaying Tool : acquis. État : 25/100. Après un dépeçage ou prélèvement confirmé : 20/100. Usure par geste terminé : 5 points. Une interruption n’use pas l’outil.\n\nParties encore sur cette proie : 2 / 2. Les prises retirées ne repoussent pas.\n\nSac : 0 / 36 kg · 0 / 24 volumes. Disponibles : 36 kg · 24 volumes.\n\nAnalyser · 1,4 s\nMarquer · 1 s\nLaisser sur place\nEffacer la trace · 1,8 s\nDépecer · 4,8 s\nPrépare la peau ; prélever la partie reste un geste distinct.\nPorter la carcasse · 140 kg\nDépecer d’abord la carcasse.\nSuspendre · 2,5 s\nDépecer puis porter la carcasse jusqu’au crochet.\nCuir de chien de chasse · 5,7 s · qualité 79/100\n2,4 kg · 3 volumes. Après la prise : 2,4 / 36 kg · 3 / 24 volumes. Dépecer d’abord.\nTendon de poursuite · 3,9 s · qualité 76/100\n0,4 kg · 1 volumes. Après la prise : 0,4 / 36 kg · 1 / 24 volumes.\n0 témoins de la mise en scène. Le dépeçage prépare la peau ; le trophée principal et les prélèvements secondaires sont distincts. Saut, escalade ou combat déposent le corps ; le sac conserve ses prises."
+      },
+      "specimen": {
+        "id": "jungle-vey:0:qa-durable-field-prey:hide",
+        "sourceId": "jungle-vey:0:qa-durable-field-prey",
+        "speciesId": "hell-hound-stalker",
+        "partId": "hide",
+        "label": "Cuir de chien de chasse",
+        "quality": 91,
+        "massKg": 2.4,
+        "volumeUnits": 3,
+        "stage": "raw"
+      },
+      "mobile": [
+        {
+          "width": 390,
+          "rect": {
+            "x": 101,
+            "y": 482.5625,
+            "width": 280,
+            "height": 274.25
+          },
+          "targets": [
+            {
+              "text": "×",
+              "height": 44,
+              "width": 24.296875
+            },
+            {
+              "text": "Analyser · 1,4 s · fait",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Marquer · 1 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Laisser sur place",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Effacer la trace · 1,8 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Dépecer · 5,0 s · fait",
+              "height": 77.375,
+              "width": 127
+            },
+            {
+              "text": "Porter la carcasse · 140 kg",
+              "height": 51,
+              "width": 127
+            },
+            {
+              "text": "Suspendre · 2,5 s",
+              "height": 89.5,
+              "width": 127
+            },
+            {
+              "text": "Cuir de chien de chasse · 5,9 s · qualité 91/100",
+              "height": 85.5,
+              "width": 127
+            },
+            {
+              "text": "Tendon de poursuite · 4,0 s · qualité 88/100",
+              "height": 85.5,
+              "width": 127
+            }
+          ],
+          "minimumTargetHeight": 44
+        },
+        {
+          "width": 320,
+          "rect": {
+            "x": 31,
+            "y": 569.40625,
+            "width": 280,
+            "height": 234.875
+          },
+          "targets": [
+            {
+              "text": "×",
+              "height": 44,
+              "width": 24.296875
+            },
+            {
+              "text": "Analyser · 1,4 s · fait",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Marquer · 1 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Laisser sur place",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Effacer la trace · 1,8 s",
+              "height": 44,
+              "width": 127
+            },
+            {
+              "text": "Dépecer · 5,0 s · fait",
+              "height": 77.375,
+              "width": 127
+            },
+            {
+              "text": "Porter la carcasse · 140 kg",
+              "height": 51,
+              "width": 127
+            },
+            {
+              "text": "Suspendre · 2,5 s",
+              "height": 89.5,
+              "width": 127
+            },
+            {
+              "text": "Cuir de chien de chasse · 5,9 s · qualité 91/100",
+              "height": 85.5,
+              "width": 127
+            },
+            {
+              "text": "Tendon de poursuite · 4,0 s · qualité 88/100",
+              "height": 85.5,
+              "width": 127
+            }
+          ],
+          "minimumTargetHeight": 44
+        }
+      ],
+      "terminalSegment": {
+        "classification": "PREPARED_TERMINAL_SEGMENT_NOT_CONTINUOUS_MISSION_TRAVERSAL",
+        "before": {
+          "player": {
+            "x": 225,
+            "y": 508,
+            "previousY": 508,
+            "width": 72,
+            "height": 116,
+            "velocityX": 0,
+            "velocityY": 0,
+            "facing": 1,
+            "grounded": true,
+            "aerialBoostUsed": false,
+            "health": 160,
+            "maxHealth": 160,
+            "stamina": 100,
+            "maxStamina": 100,
+            "energy": 100,
+            "maxEnergy": 100,
+            "medicomps": 3,
+            "activeWeaponSlot": 1,
+            "weaponAmmo": [
+              1,
+              -1
+            ],
+            "cloaked": false,
+            "maskOn": true,
+            "aiming": false,
+            "aimAngle": 0,
+            "aimPoint": {
+              "x": 1075.1006870678184,
+              "y": 524.1026978075951
+            },
+            "climbing": false,
+            "climbZoneId": null,
+            "climbReattachSeconds": 0,
+            "climbGripExhausted": false,
+            "gauntletOpen": 0,
+            "bladeExtension": 0,
+            "dreadAngles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "dreadVelocities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "attackFlash": 0,
+            "melee": {
+              "phase": "idle",
+              "phaseRemainingSeconds": 0,
+              "comboIndex": 0,
+              "actionSequence": 0,
+              "facing": 1,
+              "buffered": false,
+              "queuedFacing": 1,
+              "hitTargetIds": [],
+              "profile": null,
+              "queuedProfile": null,
+              "actionKind": "light",
+              "lockedTargetId": null,
+              "defensePhase": "neutral",
+              "defenseRemainingSeconds": 0,
+              "defenseCooldownSeconds": 0,
+              "dodgeDirection": 1,
+              "parryConsumed": false
+            },
+            "invulnerability": 0,
+            "meleeCooldown": 0,
+            "weaponCooldown": 0,
+            "weaponChargeSeconds": 0,
+            "scanCooldown": 0,
+            "healCooldown": 0,
+            "canopySwing": null
+          },
+          "rites": {
+            "version": 1,
+            "runId": "jungle-vey:0",
+            "missionId": "jungle-vey",
+            "elapsed": 21.70000000000005,
+            "corpses": [
+              {
+                "id": "qa-durable-field-prey",
+                "sourceEnemyId": "hell-hound-stalker",
+                "label": "Traqueur Hell-Hound",
+                "kind": "beast",
+                "x": 319,
+                "y": 624,
+                "worthy": true,
+                "protectedPrey": false,
+                "defeatedAt": 0,
+                "analyzed": true,
+                "marked": false,
+                "flayed": true,
+                "erased": false,
+                "supportId": null,
+                "hangingAt": null,
+                "witnesses": [],
+                "witnessFear": [],
+                "integrity": 91,
+                "massKg": 140,
+                "hung": false
+              }
+            ],
+            "operation": null,
+            "honorDelta": 0,
+            "awareness": 0,
+            "fear": 0,
+            "completedEventIds": [
+              "analyze:qa-durable-field-prey",
+              "flay:qa-durable-field-prey",
+              "harvest-hide:qa-durable-field-prey"
+            ],
+            "carryingCorpseId": null,
+            "specimensV112": [
+              {
+                "id": "jungle-vey:0:qa-durable-field-prey:hide",
+                "sourceId": "jungle-vey:0:qa-durable-field-prey",
+                "speciesId": "hell-hound-stalker",
+                "partId": "hide",
+                "label": "Cuir de chien de chasse",
+                "quality": 91,
+                "massKg": 2.4,
+                "volumeUnits": 3,
+                "stage": "raw"
+              }
+            ],
+            "stashedSpecimensV112": []
+          },
+          "worldExtraction": {
+            "x": 8025,
+            "y": 624
+          }
+        },
+        "after": {
+          "player": {
+            "x": 7829,
+            "y": 508,
+            "previousY": 508,
+            "width": 72,
+            "height": 116,
+            "velocityX": 0,
+            "velocityY": 0,
+            "facing": 1,
+            "grounded": true,
+            "aerialBoostUsed": false,
+            "health": 160,
+            "maxHealth": 160,
+            "stamina": 100,
+            "maxStamina": 100,
+            "energy": 100,
+            "maxEnergy": 100,
+            "medicomps": 3,
+            "activeWeaponSlot": 1,
+            "weaponAmmo": [
+              1,
+              -1
+            ],
+            "cloaked": false,
+            "maskOn": true,
+            "aiming": false,
+            "aimAngle": 0,
+            "aimPoint": {
+              "x": 1075.1006870678184,
+              "y": 524.1026978075951
+            },
+            "climbing": false,
+            "climbZoneId": null,
+            "climbReattachSeconds": 0,
+            "climbGripExhausted": false,
+            "gauntletOpen": 0,
+            "bladeExtension": 0,
+            "dreadAngles": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "dreadVelocities": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "attackFlash": 0,
+            "melee": {
+              "phase": "idle",
+              "phaseRemainingSeconds": 0,
+              "comboIndex": 0,
+              "actionSequence": 0,
+              "facing": 1,
+              "buffered": false,
+              "queuedFacing": 1,
+              "hitTargetIds": [],
+              "profile": null,
+              "queuedProfile": null,
+              "actionKind": "light",
+              "lockedTargetId": null,
+              "defensePhase": "neutral",
+              "defenseRemainingSeconds": 0,
+              "defenseCooldownSeconds": 0,
+              "dodgeDirection": 1,
+              "parryConsumed": false
+            },
+            "invulnerability": 0,
+            "meleeCooldown": 0,
+            "weaponCooldown": 0,
+            "weaponChargeSeconds": 0,
+            "scanCooldown": 0,
+            "healCooldown": 0,
+            "canopySwing": null
+          },
+          "rites": {
+            "version": 1,
+            "runId": "jungle-vey:0",
+            "missionId": "jungle-vey",
+            "elapsed": 21.70000000000005,
+            "corpses": [
+              {
+                "id": "qa-durable-field-prey",
+                "sourceEnemyId": "hell-hound-stalker",
+                "label": "Traqueur Hell-Hound",
+                "kind": "beast",
+                "x": 319,
+                "y": 624,
+                "worthy": true,
+                "protectedPrey": false,
+                "defeatedAt": 0,
+                "analyzed": true,
+                "marked": false,
+                "flayed": true,
+                "erased": false,
+                "supportId": null,
+                "hangingAt": null,
+                "witnesses": [],
+                "witnessFear": [],
+                "integrity": 91,
+                "massKg": 140,
+                "hung": false
+              }
+            ],
+            "operation": null,
+            "honorDelta": 0,
+            "awareness": 0,
+            "fear": 0,
+            "completedEventIds": [
+              "analyze:qa-durable-field-prey",
+              "flay:qa-durable-field-prey",
+              "harvest-hide:qa-durable-field-prey"
+            ],
+            "carryingCorpseId": null,
+            "specimensV112": [
+              {
+                "id": "jungle-vey:0:qa-durable-field-prey:hide",
+                "sourceId": "jungle-vey:0:qa-durable-field-prey",
+                "speciesId": "hell-hound-stalker",
+                "partId": "hide",
+                "label": "Cuir de chien de chasse",
+                "quality": 91,
+                "massKg": 2.4,
+                "volumeUnits": 3,
+                "stage": "raw"
+              }
+            ],
+            "stashedSpecimensV112": []
+          },
+          "worldExtraction": {
+            "x": 8025,
+            "y": 624
+          }
+        },
+        "prepared": [
+          "Apex and non-extraction objectives",
+          "initial segment position 160 px west of the real extraction"
+        ],
+        "retained": [
+          "harvested identities and quality",
+          "tool-use receipts",
+          "all non-boss enemies and hazards",
+          "authored world geometry and extraction position"
+        ],
+        "notClaimed": [
+          "Apex combat",
+          "main mission traversal",
+          "complete campaign",
+          "eight-mission ground fallback"
+        ]
+      }
+    }
+  },
+  "admissionArrivals": [
+    {
+      "case": "field",
+      "control": "Native Passer l’arrivée",
+      "claim": "skipped cinematic; real campaign handoff and canonical hunt insertion"
+    }
+  ],
+  "sourceHashes": {
+    "app/game/GameClient.tsx": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+    "app/game/HuntCanopyHudV112.tsx": "23d2b6ccf3f1d619aa3dd6831800bedaf981eb94b9910c2c14d4ccd9f715db18",
+    "app/game/HuntCanvas.tsx": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+    "app/game/HuntRitesMenuV77.tsx": "b1b3321474897ff72cc24d8769abd277720d3f46d384769d1c9d89e384f76c98",
+    "app/game/fieldStashRenderingV112.ts": "dfae5689dc7a08c433176232190c0f64f2fd5decff2e8f15cd6fa56fba729b8f",
+    "app/game/systems/activeHuntSave.ts": "ed8e5bfbe5d1c3c0c099d765f24fddf90b350529b7bda4fb6d8a55268f7b7d38",
+    "app/game/systems/canopyNavigationV112.ts": "7ee562ab163521a49f5eaf72a52216a9a8f3e2400ef55eca0d5eb482eab181f1",
+    "app/game/systems/canopySupportRendererV112.ts": "5e4190994e7493975842481b8423d7c5beebcc557a347ed23705c09f0800cd51",
+    "app/game/systems/canopyTraversalV112.ts": "82094c0d4dc1dccf18c3e89a381647572bdace86fcc51cb62cf17560ff076d57",
+    "app/game/systems/fieldStashV112.ts": "4bd744bd057c3f11a10fe9b7707d545af851002659a86b25e5a39817c41ee6bf",
+    "app/game/systems/harvestInventoryV112.ts": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1",
+    "app/game/systems/huntFieldPresentationV112.ts": "1883adca617ac9b07be8f63c32c3187052fa5423450561aa846c2938ed8606b6",
+    "app/game/systems/huntRitesRuntimeV77.ts": "02dc653895b23fbc04e79b0b21c82d307d2ef92e018987fce1873eb23aec538d",
+    "app/game/systems/ritesOfHuntV77.ts": "d3bded7f0b9f96b36cf31bf2dcaf78f8343e8b13b97068f0b5f597aed575dd29"
+  },
+  "hookSha256": "865cdc4364e16defaa4212a9d0d0c3fb2c492e632d45b3d6ca1d1bf38b8a2951",
+  "bundleSha256": "274029fea4355ada9903b0a664b57a608cc8c0c7183ef28ed1025d1d558cddcf",
+  "admission": {
+    "kind": "Declared production defaultSave with field tool, 100 marks and condition25",
+    "sha256": "3f8afa46d1ec40fdcbc1851db33eb4a404ff1302df52d304219694ef76bfcebf",
+    "save": {
+      "version": 13,
+      "prologue": null,
+      "youthTraining": null,
+      "soloV66": null,
+      "soloV67": null,
+      "soloV68": null,
+      "soloV69": null,
+      "soloV70": null,
+      "homeworldRegionV68": null,
+      "homeworldPassageV67": null,
+      "gameReserveV66": null,
+      "gauntletV134": {
+        "version": 1,
+        "ownerCreatedAt": "2026-11-09T00:00:00.000Z",
+        "equippedId": "jungle-hunter",
+        "claimedStudies": []
+      },
+      "createdAt": "2026-11-09T00:00:00.000Z",
+      "updatedAt": "2026-11-09T00:00:00.000Z",
+      "profile": {
+        "hunterName": "Chasseur sans nom",
+        "rankId": "young-blood",
+        "honor": 0,
+        "clanMarks": 100,
+        "playTimeSeconds": 0
+      },
+      "inventory": {
+        "fieldToolIds": [
+          "flaying-tool"
+        ],
+        "harvestV112": {
+          "version": 1,
+          "specimens": [],
+          "toolCondition": 25,
+          "toolUseIds": [],
+          "jobs": [],
+          "settledEncounterRuns": {},
+          "archive": []
+        },
+        "unlockedWeaponIds": [
+          "wristblades",
+          "combistick",
+          "plasma-caster"
+        ],
+        "unlockedGearIds": [
+          "motion-sensor",
+          "audio-decoy"
+        ],
+        "unlockedArmorIds": [
+          "hunter"
+        ],
+        "weaponUpgrades": {
+          "wristblades": 0,
+          "combistick": 0,
+          "plasma-caster": 0,
+          "smart-disc": 0,
+          "yautja-bow": 0
+        },
+        "gearUpgrades": {
+          "netgun": 0,
+          "motion-sensor": 0,
+          "audio-decoy": 0,
+          "snare": 0
+        },
+        "armorUpgrades": {
+          "scout": 0,
+          "hunter": 0,
+          "berserker": 0
+        }
+      },
+      "loadout": {
+        "armorId": "hunter",
+        "weaponIds": [
+          "combistick",
+          "plasma-caster"
+        ],
+        "gearIds": [
+          "motion-sensor",
+          "audio-decoy"
+        ]
+      },
+      "appearance": {
+        "presetId": "jungle-hunter",
+        "bodyMorphId": "classic",
+        "headStyleId": "reference",
+        "skinId": "ochre-mottle",
+        "biomaskId": "jungle",
+        "dreadStyleId": "classic",
+        "dreadTintId": "obsidian",
+        "armorStyleId": "classic",
+        "armorTintId": "bronze",
+        "trophyAdornmentId": "skull-spine",
+        "laserColorId": "crimson",
+        "chromaticsV113": {
+          "skinHex": null,
+          "dreadHex": null,
+          "outfitHex": null,
+          "armorHex": null,
+          "maskHex": null,
+          "maskOriginId": null,
+          "maskDecalId": null,
+          "faceDecalId": null,
+          "bodyDecalId": null,
+          "armorDecalId": null,
+          "skinMaterialId": null,
+          "dreadMaterialId": null,
+          "outfitMaterialId": null,
+          "armorMaterialId": null,
+          "maskMaterialId": null
+        }
+      },
+      "missionProgress": {
+        "jungle-vey": {
+          "status": "available",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "ice-cryostalker": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "volcano-bad-blood": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "swamp-hydra": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "desert-sandmaw": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "ocean-leviathan": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "fungal-hivemind": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        },
+        "ruins-ancient-guardian": {
+          "status": "locked",
+          "attempts": 0,
+          "completions": 0,
+          "bestScore": 0,
+          "bestTimeSeconds": null,
+          "bestDifficultyId": null,
+          "completedObjectiveIds": [],
+          "lastPlayedAt": null
+        }
+      },
+      "trophies": [],
+      "exploration": {
+        "abilityIds": [],
+        "openedGateIds": [],
+        "secretIds": [],
+        "discoveredRoomIds": []
+      },
+      "codex": {
+        "unlockedEntryIds": [
+          "yautja-honor",
+          "biomask",
+          "cloaking-device"
+        ],
+        "scanCounts": {},
+        "discoveredEnemyIds": []
+      },
+      "statistics": {
+        "missionsStarted": 0,
+        "missionsCompleted": 0,
+        "missionsFailed": 0,
+        "totalKills": 0,
+        "totalScans": 0,
+        "secondWindsUsed": 0,
+        "bestHuntStreak": 0,
+        "currentHuntStreak": 0
+      },
+      "settings": {
+        "huntAccessibility": {
+          "version": 1,
+          "ritualTiming": "normal",
+          "ritualConfirm": "press",
+          "gripInput": "hold",
+          "aimInput": "hold",
+          "fieldGuide": true,
+          "largeGlyphs": true,
+          "gamepadButtons": {
+            "jump": 0,
+            "melee": 2,
+            "weapon": 7,
+            "scan": 4,
+            "cloak": 3,
+            "heal": 5,
+            "interact": 1,
+            "weaponNext": 8,
+            "gearOne": 10,
+            "gearTwo": 11,
+            "pause": 9,
+            "aim": 6
+          }
+        },
+        "difficultyId": "hunter",
+        "masterVolume": 0,
+        "musicVolume": 0.65,
+        "effectsVolume": 0.85,
+        "screenShake": false,
+        "reducedGore": true,
+        "highContrastVision": false,
+        "controlBindings": {
+          "hunt.moveLeft": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "hunt.moveRight": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "hunt.moveUp": [
+            "KeyZ",
+            "ArrowUp"
+          ],
+          "hunt.moveDown": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "hunt.jump": [
+            "Space"
+          ],
+          "hunt.melee": [
+            "KeyJ"
+          ],
+          "hunt.weaponPrimary": [
+            "KeyK"
+          ],
+          "hunt.selectWeaponOne": [
+            "Digit1",
+            "Numpad1"
+          ],
+          "hunt.selectWeaponTwo": [
+            "Digit2",
+            "Numpad2"
+          ],
+          "hunt.nextWeapon": [
+            "KeyR"
+          ],
+          "hunt.aim": [
+            "ShiftLeft",
+            "ShiftRight"
+          ],
+          "hunt.toggleMask": [
+            "KeyM"
+          ],
+          "hunt.scan": [
+            "KeyV"
+          ],
+          "hunt.toggleCloak": [
+            "KeyC"
+          ],
+          "hunt.heal": [
+            "KeyH"
+          ],
+          "hunt.useGearOne": [
+            "Digit3",
+            "Numpad3"
+          ],
+          "hunt.useGearTwo": [
+            "Digit4",
+            "Numpad4"
+          ],
+          "hunt.interact": [
+            "KeyE"
+          ],
+          "hunt.podSelfDestruct": [
+            "KeyX"
+          ],
+          "hunt.pause": [
+            "Escape"
+          ],
+          "pit.p1MoveLeft": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "pit.p1MoveRight": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "pit.p1MoveDown": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "pit.p1Jump": [
+            "Space"
+          ],
+          "pit.p1AttackLight": [
+            "KeyJ"
+          ],
+          "pit.p1AttackMedium": [
+            "KeyK"
+          ],
+          "pit.p1AttackHeavy": [
+            "KeyL"
+          ],
+          "pit.p1AttackTechnique": [
+            "KeyU"
+          ],
+          "pit.p1GuardHigh": [
+            "KeyI"
+          ],
+          "pit.p1GuardLow": [
+            "KeyO"
+          ],
+          "pit.p1Throw": [
+            "KeyP"
+          ],
+          "pit.p1Resource": [
+            "KeyH"
+          ],
+          "pit.p2MoveLeft": [
+            "Numpad4"
+          ],
+          "pit.p2MoveRight": [
+            "Numpad6"
+          ],
+          "pit.p2MoveDown": [
+            "Numpad2"
+          ],
+          "pit.p2Jump": [
+            "Numpad8"
+          ],
+          "pit.p2AttackLight": [
+            "Numpad1"
+          ],
+          "pit.p2AttackMedium": [
+            "Numpad3"
+          ],
+          "pit.p2AttackHeavy": [
+            "Numpad5"
+          ],
+          "pit.p2AttackTechnique": [
+            "Numpad7"
+          ],
+          "pit.p2GuardHigh": [
+            "Numpad9"
+          ],
+          "pit.p2GuardLow": [
+            "Numpad0"
+          ],
+          "pit.p2Throw": [
+            "NumpadEnter"
+          ],
+          "pit.p2Resource": [
+            "NumpadSubtract"
+          ],
+          "pit.pause": [
+            "Escape"
+          ],
+          "galaxy.flyLeft": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "galaxy.flyRight": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "galaxy.flyUp": [
+            "KeyZ",
+            "ArrowUp"
+          ],
+          "galaxy.flyDown": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "galaxy.previousTarget": [
+            "PageUp",
+            "KeyR"
+          ],
+          "galaxy.nextTarget": [
+            "PageDown",
+            "KeyE"
+          ],
+          "galaxy.activate": [
+            "Enter",
+            "Space"
+          ],
+          "galaxy.back": [
+            "Escape",
+            "Backspace"
+          ],
+          "galaxy.returnToGalaxy": [
+            "KeyG"
+          ],
+          "shipHub.previousRoom": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "shipHub.nextRoom": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "shipHub.previousAction": [
+            "ArrowUp"
+          ],
+          "shipHub.nextAction": [
+            "ArrowDown"
+          ],
+          "shipHub.activate": [
+            "Enter",
+            "Space"
+          ],
+          "shipHub.returnToBridge": [
+            "Escape"
+          ],
+          "shipHub.firstRoom": [
+            "Home"
+          ],
+          "shipHub.lastRoom": [
+            "End"
+          ],
+          "training.left": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "training.right": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "training.primary": [
+            "Space",
+            "KeyJ",
+            "Enter"
+          ],
+          "training.secondary": [
+            "KeyE",
+            "KeyK",
+            "ShiftLeft",
+            "ShiftRight"
+          ],
+          "training.cancel": [
+            "Escape"
+          ],
+          "workshop.left": [
+            "KeyQ",
+            "ArrowLeft"
+          ],
+          "workshop.up": [
+            "KeyZ",
+            "ArrowUp"
+          ],
+          "workshop.down": [
+            "KeyS",
+            "ArrowDown"
+          ],
+          "workshop.right": [
+            "KeyD",
+            "ArrowRight"
+          ],
+          "workshop.confirm": [
+            "Enter",
+            "Space",
+            "KeyE"
+          ],
+          "workshop.restart": [
+            "KeyR"
+          ],
+          "workshop.cancel": [
+            "Escape"
+          ]
+        }
+      },
+      "storyCompleted": false,
+      "homeworld": {
+        "version": 1,
+        "cntlipV77": {
+          "version": 1,
+          "revision": 0,
+          "state": {
+            "version": 1,
+            "knownLore": false,
+            "totalServings": 0,
+            "activeDoses": 0,
+            "worldElapsedMs": 0,
+            "memories": [],
+            "pending": null
+          },
+          "invitedSiteIds": [],
+          "stock": {
+            "clan-common": 0,
+            "market-halt": 0,
+            "pit-rest": 0,
+            "council-gathering": 0
+          }
+        },
+        "contractsV68": {
+          "version": 1,
+          "serial": 0,
+          "entries": []
+        },
+        "sideStoryV66": {
+          "version": 1,
+          "accepted": false,
+          "clues": [],
+          "archiveRead": false,
+          "chronologyVerified": false,
+          "deductionVerified": false,
+          "testimonyHeard": false,
+          "resolution": null,
+          "branchVerified": false,
+          "completed": false
+        },
+        "npcMissionsV66": {
+          "version": 1,
+          "ash": {
+            "accepted": false,
+            "report": null,
+            "delivered": false
+          },
+          "glass": {
+            "accepted": false,
+            "report": null,
+            "delivered": false
+          }
+        },
+        "mausoleum": {
+          "version": 1,
+          "examinedIds": [],
+          "consultedIds": []
+        },
+        "inquiry": {
+          "version": 1,
+          "convoyReviewed": false,
+          "archiveReviewed": false,
+          "approach": null,
+          "followupVerified": false,
+          "audienceFiled": false
+        },
+        "expeditions": {
+          "ash-marches": null,
+          "glass-desert": null
+        },
+        "visitedDistrictIds": [],
+        "evidenceIds": [],
+        "greetedNpcIds": [],
+        "witnessChoice": null,
+        "audienceOutcome": null,
+        "relations": {
+          "first-blood-houses": 0,
+          "forge-circle": 0,
+          "reserve-keepers": 0,
+          "star-navigators": 0,
+          "throne-court": 0,
+          "exile-network": 0
+        }
+      },
+      "justice": {
+        "version": 1,
+        "originChoice": null,
+        "declaration": "recognized",
+        "incidents": [],
+        "evidence": [],
+        "identifications": [],
+        "warrants": [],
+        "pressure": {
+          "homeworld": 0,
+          "clan-core": 0,
+          "frontier": 0,
+          "neutral-station": 0,
+          "renegade-port": 0
+        },
+        "clandestineNotoriety": 0,
+        "detention": null,
+        "intervention": {
+          "stage": "none",
+          "jurisdictionId": null,
+          "remainingBudget": 2,
+          "cooldownTicks": 0
+        }
+      }
+    }
+  },
+  "scope": "Complete production GameClient, its actual campaign front end, admission/claim, active-hunt serializer and localStorage writer. Mounted HuntCanvas uses the native rAF, DOM controls and keyboard listeners. One initial physical prey is created through native damage for field work. A separate declared terminal segment prepares Apex prerequisites and initial position; outcome and settlement are native. Canopy starts at the canonical insertion with original geometry, enemies and hazards.",
+  "limits": [
+    "Automated desktop Chromium, not physical phone/controller or novice comprehension",
+    "No artistic or audio-listening qualification; audio is muted",
+    "No complete campaign or eight-mission ground fallback claim",
+    "The terminal extraction segment has a declared position/prerequisite fixture and does not prove intervening main-route traversal"
+  ],
+  "browserVersion": "154.0.8037.57",
+  "failure": "locator.waitFor: Error: strict mode violation: getByRole('button', { name: 'Retour au vaisseau', exact: true }) resolved to 2 elements:\n    1) <button type=\"button\" aria-label=\"Retour au vaisseau\" class=\"brand-lockup ghost-button\">…</button> aka getByLabel('Retour au vaisseau')\n    2) <button type=\"button\" class=\"alien-button\">Retour au vaisseau</button> aka getByText('Retour au vaisseau')\n\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Retour au vaisseau', exact: true }) to be visible\u001b[22m\n\n    at /workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:299:75\n    at async check (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:93:21)\n    at async field (/workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:289:3)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-skinning-canopy-durable-browser-20261109.mjs:465:22",
+  "failureState": {
+    "alive": false,
+    "resumed": true,
+    "missionId": "jungle-vey",
+    "encounterRun": 0,
+    "elapsed": 29.5999999999996,
+    "paused": true,
+    "phase": "finished",
+    "message": "Objectif accompli : Quitter la zone de chasse",
+    "player": {
+      "x": 7988.999999999996,
+      "y": 173,
+      "previousY": 508,
+      "width": 72,
+      "height": 116,
+      "velocityX": 0,
+      "velocityY": 0,
+      "facing": 1,
+      "grounded": false,
+      "aerialBoostUsed": false,
+      "health": 160,
+      "maxHealth": 160,
+      "stamina": 100,
+      "maxStamina": 100,
+      "energy": 100,
+      "maxEnergy": 100,
+      "medicomps": 3,
+      "activeWeaponSlot": 1,
+      "weaponAmmo": [
+        1,
+        -1
+      ],
+      "cloaked": false,
+      "maskOn": true,
+      "aiming": false,
+      "aimAngle": 0,
+      "aimPoint": {
+        "x": 8830.861437370688,
+        "y": 184.00398236337207
+      },
+      "climbing": false,
+      "climbZoneId": null,
+      "climbReattachSeconds": 0,
+      "climbGripExhausted": false,
+      "gauntletOpen": 0,
+      "bladeExtension": 0,
+      "dreadAngles": [
+        1.3338270946252855e-15,
+        2.2328130148687075e-15,
+        -2.2433168420029404e-15,
+        -1.3489116019752795e-15,
+        4.097115383069294e-15,
+        -5.206682350197678e-15,
+        7.766003195774528e-15
+      ],
+      "dreadVelocities": [
+        -1.279640348243996e-14,
+        -5.9021475255547415e-15,
+        1.638779970624239e-14,
+        -1.500731648233492e-15,
+        -1.7192067482367366e-14,
+        2.672430298628387e-14,
+        -3.555410444785793e-14
+      ],
+      "attackFlash": 0,
+      "melee": {
+        "phase": "idle",
+        "phaseRemainingSeconds": 0,
+        "comboIndex": 0,
+        "actionSequence": 0,
+        "facing": 1,
+        "buffered": false,
+        "queuedFacing": 1,
+        "hitTargetIds": [],
+        "profile": null,
+        "queuedProfile": null,
+        "actionKind": "light",
+        "lockedTargetId": null,
+        "defensePhase": "neutral",
+        "defenseRemainingSeconds": 0,
+        "defenseCooldownSeconds": 0,
+        "dodgeDirection": 1,
+        "parryConsumed": false
+      },
+      "invulnerability": 4.983333333333333,
+      "meleeCooldown": 0,
+      "weaponCooldown": 0,
+      "weaponChargeSeconds": 0,
+      "scanCooldown": 0,
+      "healCooldown": 0,
+      "canopySwing": null
+    },
+    "rites": {
+      "version": 1,
+      "runId": "jungle-vey:0",
+      "missionId": "jungle-vey",
+      "elapsed": 29.583333333332934,
+      "corpses": [
+        {
+          "id": "qa-durable-field-prey",
+          "sourceEnemyId": "hell-hound-stalker",
+          "label": "Traqueur Hell-Hound",
+          "kind": "beast",
+          "x": 319,
+          "y": 624,
+          "worthy": true,
+          "protectedPrey": false,
+          "defeatedAt": 0,
+          "analyzed": true,
+          "marked": false,
+          "flayed": true,
+          "erased": false,
+          "supportId": null,
+          "hangingAt": null,
+          "witnesses": [],
+          "witnessFear": [],
+          "integrity": 91,
+          "massKg": 140,
+          "hung": false
+        }
+      ],
+      "operation": null,
+      "honorDelta": 0,
+      "awareness": 0,
+      "fear": 0,
+      "completedEventIds": [
+        "analyze:qa-durable-field-prey",
+        "flay:qa-durable-field-prey",
+        "harvest-hide:qa-durable-field-prey"
+      ],
+      "carryingCorpseId": null,
+      "specimensV112": [
+        {
+          "id": "jungle-vey:0:qa-durable-field-prey:hide",
+          "sourceId": "jungle-vey:0:qa-durable-field-prey",
+          "speciesId": "hell-hound-stalker",
+          "partId": "hide",
+          "label": "Cuir de chien de chasse",
+          "quality": 91,
+          "massKg": 2.4,
+          "volumeUnits": 3,
+          "stage": "raw"
+        }
+      ],
+      "stashedSpecimensV112": []
+    },
+    "riteToolInitialCondition": 25,
+    "damageTaken": 0,
+    "world": {
+      "width": 8400,
+      "floorY": 624,
+      "spawn": {
+        "x": 225,
+        "y": 508
+      },
+      "extraction": {
+        "x": 8025,
+        "y": 624
+      },
+      "platforms": [
+        {
+          "id": "j-cave-lip",
+          "x": 3052.5,
+          "y": 534,
+          "width": 532.5,
+          "height": 28,
+          "material": "stone",
+          "routeId": "flooded-cut",
+          "collision": "one-way",
+          "noiseMultiplier": 0.9,
+          "trackPersistence": 0.08
+        },
+        {
+          "id": "j-camp-01",
+          "x": 4350,
+          "y": 552,
+          "width": 525,
+          "height": 26,
+          "material": "metal",
+          "routeId": "ground",
+          "collision": "one-way",
+          "noiseMultiplier": 1.55,
+          "trackPersistence": 0.04
+        },
+        {
+          "id": "j-flood-exit",
+          "x": 5565,
+          "y": 522,
+          "width": 495,
+          "height": 24,
+          "material": "stone",
+          "routeId": "flooded-cut",
+          "collision": "one-way",
+          "noiseMultiplier": 0.95,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "j-arena-left",
+          "x": 6847.5,
+          "y": 515,
+          "width": 495,
+          "height": 25,
+          "material": "soil",
+          "routeId": "ground",
+          "collision": "one-way",
+          "noiseMultiplier": 0.9,
+          "trackPersistence": 0.75
+        },
+        {
+          "id": "feature-j-ruins-slab",
+          "x": 3015,
+          "y": 430,
+          "width": 300,
+          "height": 28,
+          "material": "ruin",
+          "routeId": "ground",
+          "collision": "one-way",
+          "noiseMultiplier": 1.05,
+          "trackPersistence": 0.08
+        },
+        {
+          "id": "feature-j-lake-root",
+          "x": 4410,
+          "y": 366,
+          "width": 270,
+          "height": 24,
+          "material": "root",
+          "routeId": "ground",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "id": "feature-j-camp-deck",
+          "x": 5895,
+          "y": 430,
+          "width": 270,
+          "height": 24,
+          "material": "root",
+          "routeId": "ground",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "id": "feature-j-arena-crown",
+          "x": 7335,
+          "y": 430,
+          "width": 270,
+          "height": 24,
+          "material": "root",
+          "routeId": "ground",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "x": 800,
+          "y": 392,
+          "width": 1180,
+          "height": 24,
+          "id": "jungle-pilot-gallery-west",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 2140,
+          "y": 392,
+          "width": 60,
+          "height": 24,
+          "id": "jungle-pilot-gallery-east",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 2200,
+          "y": 0,
+          "width": 28,
+          "height": 416,
+          "id": "jungle-pilot-right-wall",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1120,
+          "y": -800,
+          "width": 28,
+          "height": 1192,
+          "id": "jungle-resonance-seal",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "x": 1980,
+          "y": 392,
+          "width": 160,
+          "height": 24,
+          "id": "jungle-canopy-hatch",
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "solid",
+          "noiseMultiplier": 0.85,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-vertical-root-west",
+          "x": 470,
+          "y": -120,
+          "width": 420,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.62,
+          "trackPersistence": 0.28
+        },
+        {
+          "id": "jungle-vertical-crown-west",
+          "x": 930,
+          "y": -300,
+          "width": 340,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.58,
+          "trackPersistence": 0.22
+        },
+        {
+          "id": "jungle-vertical-crown-heart",
+          "x": 1390,
+          "y": -420,
+          "width": 370,
+          "height": 26,
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.76,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-vertical-ruin-bridge",
+          "x": 1830,
+          "y": -260,
+          "width": 390,
+          "height": 24,
+          "material": "stone",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.88,
+          "trackPersistence": 0.1
+        },
+        {
+          "id": "jungle-vertical-lookout",
+          "x": 2320,
+          "y": -380,
+          "width": 340,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.61,
+          "trackPersistence": 0.25
+        },
+        {
+          "id": "jungle-vertical-ravine-ledge",
+          "x": 2940,
+          "y": 345,
+          "width": 420,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.25
+        },
+        {
+          "id": "jungle-vertical-ravine-step",
+          "x": 3420,
+          "y": 235,
+          "width": 340,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.68,
+          "trackPersistence": 0.24
+        },
+        {
+          "id": "jungle-vertical-ravine-arch",
+          "x": 3820,
+          "y": 115,
+          "width": 340,
+          "height": 24,
+          "material": "ruin",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.82,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-vertical-cave-bridge",
+          "x": 4220,
+          "y": -5,
+          "width": 350,
+          "height": 24,
+          "material": "stone",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.88,
+          "trackPersistence": 0.1
+        },
+        {
+          "id": "jungle-vertical-cave-crown",
+          "x": 4620,
+          "y": 115,
+          "width": 350,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.64,
+          "trackPersistence": 0.27
+        },
+        {
+          "id": "jungle-vertical-camp-watch",
+          "x": 5020,
+          "y": 235,
+          "width": 360,
+          "height": 24,
+          "material": "metal",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 1.18,
+          "trackPersistence": 0.04
+        },
+        {
+          "id": "jungle-vertical-camp-roof",
+          "x": 5430,
+          "y": 345,
+          "width": 360,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.23
+        },
+        {
+          "id": "jungle-vertical-camp-beam",
+          "x": 5840,
+          "y": 235,
+          "width": 360,
+          "height": 24,
+          "material": "metal",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 1.2,
+          "trackPersistence": 0.03
+        },
+        {
+          "id": "jungle-vertical-scout-perch",
+          "x": 6250,
+          "y": 345,
+          "width": 300,
+          "height": 24,
+          "material": "root",
+          "routeId": "canopy",
+          "collision": "one-way",
+          "noiseMultiplier": 0.68,
+          "trackPersistence": 0.25
+        },
+        {
+          "id": "jungle-pilot-cave-roof-west",
+          "x": 4000,
+          "y": 400,
+          "width": 520,
+          "height": 34,
+          "material": "stone",
+          "routeId": "flooded-cut",
+          "collision": "solid",
+          "noiseMultiplier": 0.9,
+          "trackPersistence": 0.12
+        },
+        {
+          "id": "jungle-pilot-cave-roof-east",
+          "x": 4590,
+          "y": 400,
+          "width": 480,
+          "height": 34,
+          "material": "root",
+          "routeId": "flooded-cut",
+          "collision": "solid",
+          "noiseMultiplier": 0.76,
+          "trackPersistence": 0.2
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-0-rest",
+          "x": 2295,
+          "y": 270,
+          "width": 130,
+          "height": 18,
+          "material": "root",
+          "routeId": "canopy-transfer",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-1-rest",
+          "x": 2475,
+          "y": 245,
+          "width": 130,
+          "height": 18,
+          "material": "root",
+          "routeId": "canopy-transfer",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-2-rest",
+          "x": 2655,
+          "y": 270,
+          "width": 130,
+          "height": 18,
+          "material": "root",
+          "routeId": "canopy-transfer",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-3-rest",
+          "x": 2835,
+          "y": 245,
+          "width": 130,
+          "height": 18,
+          "material": "root",
+          "routeId": "canopy-transfer",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-4-rest",
+          "x": 3015,
+          "y": 270,
+          "width": 130,
+          "height": 18,
+          "material": "root",
+          "routeId": "canopy-transfer",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-5-rest",
+          "x": 3195,
+          "y": 245,
+          "width": 130,
+          "height": 18,
+          "material": "root",
+          "routeId": "canopy-transfer",
+          "collision": "one-way",
+          "noiseMultiplier": 0.7,
+          "trackPersistence": 0.3
+        }
+      ],
+      "climbables": [
+        {
+          "id": "j-rock-cut",
+          "x": 3180,
+          "y": 430,
+          "width": 132,
+          "height": 194,
+          "kind": "rock-face",
+          "routeId": "flooded-cut",
+          "climbSpeedMultiplier": 0.78,
+          "staminaPerSecond": 5,
+          "dismounts": [
+            {
+              "x": 3120,
+              "y": 534
+            },
+            {
+              "x": 3360,
+              "y": 420
+            }
+          ]
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-0-grip",
+          "x": 2336,
+          "y": 40,
+          "width": 48,
+          "height": 584,
+          "kind": "tree",
+          "routeId": "canopy-transfer",
+          "climbSpeedMultiplier": 1,
+          "staminaPerSecond": 3,
+          "dismounts": [
+            {
+              "x": 2360,
+              "y": 270
+            },
+            {
+              "x": 2440,
+              "y": 624
+            }
+          ]
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-1-grip",
+          "x": 2516,
+          "y": 40,
+          "width": 48,
+          "height": 250,
+          "kind": "vine",
+          "routeId": "canopy-transfer",
+          "climbSpeedMultiplier": 1,
+          "staminaPerSecond": 4,
+          "dismounts": [
+            {
+              "x": 2540,
+              "y": 245
+            },
+            {
+              "x": 2620,
+              "y": 624
+            }
+          ]
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-2-grip",
+          "x": 2696,
+          "y": 40,
+          "width": 48,
+          "height": 250,
+          "kind": "vine",
+          "routeId": "canopy-transfer",
+          "climbSpeedMultiplier": 1,
+          "staminaPerSecond": 4,
+          "dismounts": [
+            {
+              "x": 2720,
+              "y": 270
+            },
+            {
+              "x": 2800,
+              "y": 624
+            }
+          ]
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-3-grip",
+          "x": 2876,
+          "y": 40,
+          "width": 48,
+          "height": 250,
+          "kind": "vine",
+          "routeId": "canopy-transfer",
+          "climbSpeedMultiplier": 1,
+          "staminaPerSecond": 4,
+          "dismounts": [
+            {
+              "x": 2900,
+              "y": 245
+            },
+            {
+              "x": 2980,
+              "y": 624
+            }
+          ]
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-4-grip",
+          "x": 3056,
+          "y": 40,
+          "width": 48,
+          "height": 250,
+          "kind": "vine",
+          "routeId": "canopy-transfer",
+          "climbSpeedMultiplier": 1,
+          "staminaPerSecond": 4,
+          "dismounts": [
+            {
+              "x": 3080,
+              "y": 270
+            },
+            {
+              "x": 3160,
+              "y": 624
+            }
+          ]
+        },
+        {
+          "id": "v112-canopy-jungle-vey-0-5-grip",
+          "x": 3236,
+          "y": 40,
+          "width": 48,
+          "height": 584,
+          "kind": "tree",
+          "routeId": "canopy-transfer",
+          "climbSpeedMultiplier": 1,
+          "staminaPerSecond": 3,
+          "dismounts": [
+            {
+              "x": 3260,
+              "y": 245
+            },
+            {
+              "x": 3340,
+              "y": 624
+            }
+          ]
+        }
+      ],
+      "hazards": [
+        {
+          "id": "j-mud-west",
+          "x": 1575,
+          "y": 582,
+          "width": 630,
+          "height": 42,
+          "kind": "deep-mud",
+          "routeId": "ground",
+          "damagePerSecond": 0,
+          "movementMultiplier": 0.58,
+          "noisePerSecond": 0.08,
+          "trackMultiplier": 2.4,
+          "revealsCloak": false,
+          "telegraphSeconds": 0,
+          "cycle": null
+        },
+        {
+          "id": "j-flora-center",
+          "x": 4020,
+          "y": 574,
+          "width": 232.5,
+          "height": 50,
+          "kind": "predatory-flora",
+          "routeId": "ground",
+          "damagePerSecond": 9,
+          "movementMultiplier": 0.72,
+          "noisePerSecond": 0.42,
+          "trackMultiplier": 1.1,
+          "revealsCloak": true,
+          "telegraphSeconds": 0.45,
+          "cycle": {
+            "periodSeconds": 4.5,
+            "activeSeconds": 1.4,
+            "phaseSeconds": 0.8
+          }
+        },
+        {
+          "id": "j-flood-pulse",
+          "x": 4815,
+          "y": 570,
+          "width": 915,
+          "height": 54,
+          "kind": "flash-flood",
+          "routeId": "flooded-cut",
+          "damagePerSecond": 6,
+          "movementMultiplier": 0.48,
+          "noisePerSecond": 0.6,
+          "trackMultiplier": 0.2,
+          "revealsCloak": true,
+          "telegraphSeconds": 1.25,
+          "cycle": {
+            "periodSeconds": 12,
+            "activeSeconds": 3.5,
+            "phaseSeconds": 2
+          }
+        }
+      ]
+    },
+    "enemies": [
+      {
+        "id": "jungle-patrol-0",
+        "archetype": "oseris-iv--spore-bloom",
+        "alive": true,
+        "active": true,
+        "boss": false,
+        "x": 1448.999,
+        "y": 534,
+        "health": 54.45
+      },
+      {
+        "id": "jungle-patrol-1",
+        "archetype": "oseris-iv--corporate-juggernaut",
+        "alive": true,
+        "active": true,
+        "boss": false,
+        "x": 2413.0914723052883,
+        "y": 527,
+        "health": 61.04999999999999
+      },
+      {
+        "id": "jungle-patrol-2",
+        "archetype": "oseris-iv--mist-pouncer",
+        "alive": true,
+        "active": true,
+        "boss": false,
+        "x": 3259.7740087666443,
+        "y": 535,
+        "health": 61.04999999999999
+      },
+      {
+        "id": "jungle-patrol-3",
+        "archetype": "common--wandering-xeno-drone",
+        "alive": true,
+        "active": true,
+        "boss": false,
+        "x": 2100.3685000000314,
+        "y": 528,
+        "health": 67.65
+      },
+      {
+        "id": "qa-durable-field-prey",
+        "archetype": "hell-hound-stalker",
+        "alive": false,
+        "active": true,
+        "boss": false,
+        "x": 265,
+        "y": 546,
+        "health": 0
+      }
+    ],
+    "ship": {
+      "phase": "complete",
+      "phaseElapsedSeconds": 0,
+      "totalElapsedSeconds": 7.899999999999977
+    },
+    "inputs": {
+      "keyboard": [],
+      "touch": [],
+      "gamepad": []
+    }
+  },
+  "failureSidecar": null,
+  "failureText": "Y\nLA LONGUE CHASSE\nV1.6.1\n·\nLOCAL\nRANG\nJeune Sang\nHONNEUR\n182\nMARQUES\n467\n⛶\n⚙\nA\n\nCHASSE ACCOMPLIE\n\nCOMMANDANTE VEY\n\nVey est tombée en combattante et le transpondeur revient au clan. Ses dernières données isolent un appel de détresse provenant d'une colonie sous la glace.\n\nTRACE SUIVANTE · L'APPEL MÈNE À NIVALIS-K, OÙ UNE PRÉSENCE SANS CHALEUR A INTERROMPU LES ÉQUIPES D'EXTRACTION.\n\nSCORE\n93\nTEMPS\n0:30\nSCANS\n0\nPRISES\n1\nTROPHÉE APEX\nDigne\nHONNEUR GAGNÉ\n+182\nMARQUES GAGNÉES\n+367\nJOURNAL D’HONNEUR\nRETOUR AU VAISSEAU\nREJOUER LA CHASSE",
+  "assets": [
+    {
+      "url": "/game/prologue/v47/village.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "6bba1a10a7a21c7d43488d0a3abcae3a686e8e2c",
+      "matchesHead": true,
+      "bytes": 2846184,
+      "sha256": "6a5dfbd5de1f93271a0fb4b6670ab177934cd0ad606d19aa099f79bb6b9c5c60"
+    },
+    {
+      "url": "/audio/manifest.json",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "d0e60887f96b9666d183cad53d7d04c66d8da054",
+      "matchesHead": true,
+      "bytes": 11157,
+      "sha256": "33f6d2b4d2c7393343fae12732866d44a50971ce4e7094a1ec3114b8a9ce83d0"
+    },
+    {
+      "url": "/game/ship-interior/v22/archive-terminal.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "5aafa82df3959fd1b1e7201c7773181d9726b240",
+      "matchesHead": true,
+      "bytes": 153362,
+      "sha256": "b05026ffcb7e52fa1b4792cfda820e8ae6e7ed072359ac3e02762bacd5a34ef6"
+    },
+    {
+      "url": "/game/ship-interior/v23/navigation-console.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "8be8f94e5373421bb41db6c9f28f479ce932423a",
+      "matchesHead": true,
+      "bytes": 1326022,
+      "sha256": "863ffedfa629e0e9e90538469a858d46fe20249a01a5bce51da7b6ea910ad1af"
+    },
+    {
+      "url": "/audio/sfx/ui/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "23c546256af180508bb6949b206ccece68e7543d",
+      "matchesHead": true,
+      "bytes": 8610,
+      "sha256": "05830b46be4e59761024d276b6bec18a4025964a819d188ed68304fe92b40bed"
+    },
+    {
+      "url": "/audio/sfx/jump/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "2f247afc0946b33d99accce216c0fe404ed09029",
+      "matchesHead": true,
+      "bytes": 58346,
+      "sha256": "b07f7f28dbe2b6ebef4508f0fb3b45f1b2c8d909ca4d7659773b1e32529aeb16"
+    },
+    {
+      "url": "/audio/sfx/select/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "9bba9f97245352d39717d3dcd420f467df06a4d6",
+      "matchesHead": true,
+      "bytes": 47584,
+      "sha256": "68771760d2a5810f9f020ee00be44f97dcbc989ef251e6b03a2049b4e02ab8c3"
+    },
+    {
+      "url": "/game/ship-interior/v23/floor-panel.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "7457bed609652d7b6fa81ada3994938eec7e2f9f",
+      "matchesHead": true,
+      "bytes": 2849410,
+      "sha256": "414e75e8c33ffda7b31a382163bceeef1cf680324ef27d5a8d75f68ac9e088b4"
+    },
+    {
+      "url": "/audio/sfx/footstep/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "38a6c61fb145829c0a384ed05ca9069223626a34",
+      "matchesHead": true,
+      "bytes": 23770,
+      "sha256": "d7c8ed478556cf7c747bcee2f85136438dea0b4c8926ee0450b100c03758fbac"
+    },
+    {
+      "url": "/audio/sfx/slash/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "4107c68f208050dbe0b07ba6c22afc992aba251d",
+      "matchesHead": true,
+      "bytes": 52922,
+      "sha256": "dd4efed6463c40b749a4c832f501f7af6fbc5423164ccf0e09992e1f3ece0dd4"
+    },
+    {
+      "url": "/audio/sfx/plasma/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "60524791d98bd8fada8b5802a184a25995835509",
+      "matchesHead": true,
+      "bytes": 59724,
+      "sha256": "d336712da21eea798974387a7bcf2520878317044f5182806947252184e86a4c"
+    },
+    {
+      "url": "/audio/sfx/scan/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "d8209d44cae679fb354b54a02adcc887166b5da0",
+      "matchesHead": true,
+      "bytes": 33560,
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d"
+    },
+    {
+      "url": "/audio/sfx/cloak-on/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ea64c2a249c1ab5e8dae90ff7561535650a24ea3",
+      "matchesHead": true,
+      "bytes": 84188,
+      "sha256": "c20114f57d3fb83b7a5fde25ea6787644519f0d80fbd34bf5c079bfdb31681f0"
+    },
+    {
+      "url": "/audio/sfx/cloak-off/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "e98c5a3047534864645c51692dae6a49339fae98",
+      "matchesHead": true,
+      "bytes": 84136,
+      "sha256": "d1b347e76fe796e4776bf235eb49b2c5becb3e868dfd9bd7045eefdcfe773815"
+    },
+    {
+      "url": "/audio/sfx/mask-on/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "c642b8db6fcd2f4227c90316adec910b680010d0",
+      "matchesHead": true,
+      "bytes": 23092,
+      "sha256": "b29adbb030624b3c904fc38e9f0f40ec10dec8f82547a490a34eafe7f8eb625f"
+    },
+    {
+      "url": "/audio/sfx/mask-off/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "58b7d90ed59d210c4e34669e47c951e280d3d020",
+      "matchesHead": true,
+      "bytes": 39366,
+      "sha256": "6e7cef893466b939a2bcf7bb1705b85447cbc6f1fce44dc350f8575dba8ec516"
+    },
+    {
+      "url": "/audio/sfx/weapon-switch/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "5a85b2f1a06e66fa8c4a26ece955ecd8c9f65302",
+      "matchesHead": true,
+      "bytes": 39366,
+      "sha256": "ae907ea016243a4853bd6f430a109a24c7e03ca81fbf45106f1f9dacee1e9814"
+    },
+    {
+      "url": "/game/ship-interior/v21/wall-observatory.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "c2e67c6d0adf2afafdb2c6ea0a78981b1c78eba5",
+      "matchesHead": true,
+      "bytes": 156540,
+      "sha256": "77f00d9a01f4a829eb64efb2721bc8b215ba05f09ad178d8e5ad9986ccd6ff87"
+    },
+    {
+      "url": "/game/ship-interior/v22/floor-edge.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "2f9fae92a26df23216aece281cb23e9714224ed0",
+      "matchesHead": true,
+      "bytes": 61170,
+      "sha256": "cfa859e51539f631ef6abbf15f3b0b7adadc42d526841e50151750553e9f1550"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "8afd4fa9bca4b076852b8cc7c25a36a8aeda0164",
+      "matchesHead": true,
+      "bytes": 5454,
+      "sha256": "a6c83af29fdb0a346b49f5827088afa17708b434d011b8e3029588d5b400c8d7"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "51bb49a4335b774a5ecc8877ac3308de97fffd0d",
+      "matchesHead": true,
+      "bytes": 6364,
+      "sha256": "4ebbab85960059eee93d4f64f246fab27c6ace6f041dfb20368fa1512777f92a"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "31b3b1528ad48caf949558a06597a334206dcdba",
+      "matchesHead": true,
+      "bytes": 6838,
+      "sha256": "15d09331c50d9dc59828c69dc44de5a6cebff322a6107911555cbcb1eb5492d1"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "33f23f18242ff7df706d185437c03b6beb4ae8cd",
+      "matchesHead": true,
+      "bytes": 5694,
+      "sha256": "ac103c84c6adb451e4779ff4c28ca6965cd4484cc96213d90a68fe0a34d75064"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "2e936b61e9f5635ee06e43d0d115e6a4d78942d7",
+      "matchesHead": true,
+      "bytes": 6490,
+      "sha256": "af57e5c656a0df4297c6a73f5f460ecf9ea43068b952b7042221b80dfbb3fa3a"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "f0045219395fb6cfa1918bba94438d62581ede53",
+      "matchesHead": true,
+      "bytes": 10728,
+      "sha256": "6e3a5ea3ee41a3edc7c1e96e136ee0579eed09b12d7deab3dce1fc311e18fee7"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "db20ddcaf50deaac88669159bc55894c9fbc7090",
+      "matchesHead": true,
+      "bytes": 7344,
+      "sha256": "7874125aee86e72da4b8013c449b1c4ef0dc77256319a03a7a3dfa6dd8c39959"
+    },
+    {
+      "url": "/game/ship-interior/v21/door-frame.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "4b08e3d6bf8d5df6ebe64756c032c36ff86a8a48",
+      "matchesHead": true,
+      "bytes": 72468,
+      "sha256": "7ad88ed29fb78b84cab555bc110793ed600e0024249410937903361a183934ab"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "dc367abc3f7856dae13b58598fdf5837e4a89ff1",
+      "matchesHead": true,
+      "bytes": 6632,
+      "sha256": "cd92f0deefe6c15deebc0429bc000ecd8985c2f87ef72e7b833f5152d4097aee"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "598dae7e5d22f32098e15efc04d2ecd907577a8e",
+      "matchesHead": true,
+      "bytes": 6402,
+      "sha256": "7d3a8803e0877655c455914f07dd01738c9d40ef4a7fb2051a660b5d89cdee0e"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "f524641c70c8ae96a263f596ae13e7096e2ccbfd",
+      "matchesHead": true,
+      "bytes": 4900,
+      "sha256": "df94bf95aa47f8ecba7f6b7756cc576a3b56872041135ad6df0378ae6c8cf2e1"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "91cd6993c65b61310d173de21e359bbf2d33656d",
+      "matchesHead": true,
+      "bytes": 3212,
+      "sha256": "b29809aeb1f77aa3a4686eaaaca350535d84dba89f1aab18c478c7edf8f26fc3"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ba86131e09a33dc1fdaee4a95bf8669f0e212032",
+      "matchesHead": true,
+      "bytes": 9632,
+      "sha256": "a530fcb2b93dadd0753e7a2ce325cd2d77aca2a3f997e9786d65b501671411ac"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "da389f92f0b47b7b9523ace10012f36463f544f4",
+      "matchesHead": true,
+      "bytes": 2970,
+      "sha256": "412becddc6cd2b4bf78f61f848fe847afff6ad682850eb430672a498e54ec544"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "95e1872d5ade5b236fac3bdbfa2484f0c3614af0",
+      "matchesHead": true,
+      "bytes": 7340,
+      "sha256": "d3fdf2267dcd60047cc6d86a56e9fb0531f8540d4c0d9b355f320a4d7ff555cc"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "2256707151db47455f938897b5b84d42f511cde0",
+      "matchesHead": true,
+      "bytes": 6562,
+      "sha256": "c8e43e27fb057de7048346b3f3b176029860b32a3c8ce2fec365fe6ea77fe4e4"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "345949c4aa8e279bcf84407e03783fb066e66a42",
+      "matchesHead": true,
+      "bytes": 4568,
+      "sha256": "394635bb8c9644f78dfd37e14e13dd02fb4bdbd2029ea45563381fc4e6303b4a"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "2e651826b4dfdf4abcc4d2c136a4c56d9fa8835c",
+      "matchesHead": true,
+      "bytes": 2906,
+      "sha256": "27545f03f48de88c5f64634f7372e36fd503c0077f6ad39413c4035a0d8b2435"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ff3783edc5940b53b2c4093cf1cd6d4037e70995",
+      "matchesHead": true,
+      "bytes": 560,
+      "sha256": "c3cf5fa1829e0068fc7ed7515d6bf697f9aa5959b126f58eb01865de30190a7d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ea7a5352b3096f3e09a77dd4aa48b7c5612936d3",
+      "matchesHead": true,
+      "bytes": 9576,
+      "sha256": "0d34e7d21f68366fbc0159395e66798452cea56a731b591b62c4f001a79af681"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "a3189c590236896291526475f17f16439818dec4",
+      "matchesHead": true,
+      "bytes": 8984,
+      "sha256": "5729bb2d559caa2eb14ad100e28973e41e97245b253705a2b3b893dfecaca55b"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "a3f9c2dd309561d4b58a1ccdb096ee6e19aa9d25",
+      "matchesHead": true,
+      "bytes": 14142,
+      "sha256": "a7e6741ff184bde8af00b25867c675b1c10835935004f32308dc049c5f50297e"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "bbe19ffc0df9620974205b282e73b71b963744c2",
+      "matchesHead": true,
+      "bytes": 15080,
+      "sha256": "6f6d4ca67e52451c2f824c10dc36bbf5c774340b0d3346b408440dae02019503"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "988de8bfc083eaf9364cc52f0850d525e979a230",
+      "matchesHead": true,
+      "bytes": 4094,
+      "sha256": "b0386958f84f0cd05b76529a3dfbfb8b6989fbc4885a54ff1a76ab93de6706cb"
+    },
+    {
+      "url": "/game/sprites/v62/heads/classic-head.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "8ffac7b45321c4b7912fd3bfaa16dd76079de972",
+      "matchesHead": true,
+      "bytes": 1434487,
+      "sha256": "10c91cfc7807fec0a5c50e612eb3e394e182d432515cb0195bf8c4e7fac4f9bd"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "bcdd874d173851567a02fc56fa833c9291eb7d3c",
+      "matchesHead": true,
+      "bytes": 2890,
+      "sha256": "8789efc74dd361821269bc4d1b43275c72e540372a8d4b9461bec8f59694d1dc"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "25bc5a09cb2bbe0acf5fe9bebaf6737408253097",
+      "matchesHead": true,
+      "bytes": 2770,
+      "sha256": "91ab8f6afadcc6b2fc7577673b976153aa6b7085ee76ee72e57333d9a9d29040"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "efb96a5764930c85190487be13ccd11fe42803eb",
+      "matchesHead": true,
+      "bytes": 2262,
+      "sha256": "7c17b9e9d00a6debee2dcafa8dd8abea6625c7ccf0f61db3d406ef45c57c814a"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "dc6e00c4d0437ace05d6af25700a7d8166c0a575",
+      "matchesHead": true,
+      "bytes": 2846,
+      "sha256": "bbd022057d1f716172b353acdc12b99dd8d1ebc465a1998cfc99e70214a62d6d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "082f74ab5a3ba5c3da1606332fd91f805069b204",
+      "matchesHead": true,
+      "bytes": 5770,
+      "sha256": "ebdb67e2130b46c3892552d3b77103c2e9c387cbf6616313b1e10c70fbc148de"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "a6c3a028fd0db0600e7fd6fc9805cc80ea733008",
+      "matchesHead": true,
+      "bytes": 6088,
+      "sha256": "30b643e0a6893edfb749262407bff0355ab0dadb782b5d9dc9917ec99764edde"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "acf8766de7b7608269d3317003f4b8e7e6b3a6bc",
+      "matchesHead": true,
+      "bytes": 8758,
+      "sha256": "cf092ccd099fc4f8ae45ba3d1db74a98c14047d392203a97ce7f826cba886b13"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ded7cb19b67afc8824f2d3bc4ae1f9c17bb4ab4d",
+      "matchesHead": true,
+      "bytes": 3678,
+      "sha256": "efa88bea3c3c4137405092c2502122b5019462e02c61d04cc46ffbcce3670ca5"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "4dd940d96757255106ba8f0da035b2ad63a56721",
+      "matchesHead": true,
+      "bytes": 3254,
+      "sha256": "ed15b7d86f64e7894536ad7b553513dc7a17b7aef57dbc81f8c492186c97b7bf"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "8dedf0904a50a916b601cca3cf17f662bd963596",
+      "matchesHead": true,
+      "bytes": 3916,
+      "sha256": "b72fc4cd8ebe57b369f72d326eb030080ba130b02acf30424334698fa2d56b9d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ff8621d44468f09d33e19d742f9737ab2a83bdf2",
+      "matchesHead": true,
+      "bytes": 394,
+      "sha256": "2c1b65a3e04d935d5f94c1120e274bfb56bc2117cfa22669495b1763b11f028f"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "60b011d2ff3a100405378a936a2169909228b767",
+      "matchesHead": true,
+      "bytes": 5364,
+      "sha256": "ec02e3ad7cf7f8360283582825e7cea26d5ff83399c918ff95d595cb4551e297"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "f6edcbb0fe3596d60097781eef351457d3dd76a2",
+      "matchesHead": true,
+      "bytes": 2598,
+      "sha256": "2239548f08e3e5b32f0b04493fb4b5b732105b1c46f57dc813e86b2c52b30c3d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "826a4b8050cd771fda672614715366581fb2720c",
+      "matchesHead": true,
+      "bytes": 15402,
+      "sha256": "35fe4485f3da7e259803119a331b06b830e7f18e865f235890550d4f3fb38c91"
+    },
+    {
+      "url": "/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "788cec8d37955fc497eb4a896e6b3ed1d574d1e3",
+      "matchesHead": true,
+      "bytes": 1212,
+      "sha256": "ca11ff160f69a58b4faaf8a106489520003f147277f0e50f2c11d515cb91575d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "386fd80414345b1b307e93f95c46b8fc4953ac4e",
+      "matchesHead": true,
+      "bytes": 1782,
+      "sha256": "a31c45e5b40910966d8da8cc965f782da85c3501a614b14af9e0ffbf1575aa5d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "e9db04a05b6b7d90ea91f43cbbf00920709439a4",
+      "matchesHead": true,
+      "bytes": 2462,
+      "sha256": "ea30cb687a1e6eb28762dec97495e39951dc655179d8a9270c1b95cffa8ad1b9"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "60c024775abc16a842e0996f082c348056b42dfa",
+      "matchesHead": true,
+      "bytes": 6560,
+      "sha256": "aad6b53951e97f8cff9c2390a5f7836cd471f0b40491fa6772888e2bc06769cc"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "7dd1f34d8f5efd9a04fe3460e9edbe411371864b",
+      "matchesHead": true,
+      "bytes": 3352,
+      "sha256": "c12b24910d71f9430cccc9ed8fa6883202c76144779c858cb3121424bfc1d599"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "c6c30cf8b94682aae61ae4a61cf4c01155991bdf",
+      "matchesHead": true,
+      "bytes": 3820,
+      "sha256": "9ebe51026a3a0120607b76b2b19ea9fecc77c278217376ab7180884ec2dbdda3"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "9578f6368744c8980ca6f2e44eb487ecad867f2a",
+      "matchesHead": true,
+      "bytes": 6826,
+      "sha256": "14dc2b779680884d2fbd1f2d50e3e463f5d02d5207a3b22e2678b91a8084380d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "e6fc72e9e100fa40b6b51c323e6ed8f5744067b5",
+      "matchesHead": true,
+      "bytes": 1054,
+      "sha256": "b00cac1318d1981884126c968ffebd00b37075999255a4dfd236609b85c8398d"
+    },
+    {
+      "url": "/game/sprites/v62/masks/jungle.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "1b8a159cc88b2b34fe5aa1ae3e5e1c2452f539dd",
+      "matchesHead": true,
+      "bytes": 2624929,
+      "sha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709"
+    },
+    {
+      "url": "/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "116feeb119d63b8d8411e95316eeb690ecff32ef",
+      "matchesHead": true,
+      "bytes": 3025,
+      "sha256": "b3355956706d4896c45f2cc03c69051e8fd904bd4042ff066304b244342494e5"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "dd60b751a9b3ee364908844de78f2db3327f849e",
+      "matchesHead": true,
+      "bytes": 766,
+      "sha256": "1f62632d42d613cb6e5b22bc508422bd08382ebd1c2912cc29fd0463549ee567"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "f801b55248335e82e9a58200e29fa2856c79fa2c",
+      "matchesHead": true,
+      "bytes": 4306,
+      "sha256": "1e20249c97b455b17ceb7140771c7f2efa9b09c8fc95f24447274bbf77ccbc94"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "fe6dc263891922d7ad485a7bf0e03605d99178f9",
+      "matchesHead": true,
+      "bytes": 3830,
+      "sha256": "b3ad37630606959d326b020eda039c4a25b196aafc19072246b72fa2068df097"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "b6e478f804781820aba77f812243df1bec334374",
+      "matchesHead": true,
+      "bytes": 3834,
+      "sha256": "fda2af229ced15fe2dd1e00392c0c8a04d149e81ac6a80132e72b8873afb0c46"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "14ec15b9f67daca0351f428bcd2c0a3427bf6043",
+      "matchesHead": true,
+      "bytes": 2000,
+      "sha256": "ac4016fbd50e6c09fd222cbef2f8d8b40fd2deb8a6be5c3609f50943507eafe4"
+    },
+    {
+      "url": "/audio/ambience/ship/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "58329214b7f7846f1f9fcfced3301e24f626fe88",
+      "matchesHead": true,
+      "bytes": 418994,
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371"
+    },
+    {
+      "url": "/audio/sfx/medicomp/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "7752cf72a930942843003b8a55f5331e24647b12",
+      "matchesHead": true,
+      "bytes": 30408,
+      "sha256": "94f68331a930ddf1658f7fa7601cfd6bc8f12a7ec9da6ce88f268ee6f238d8f5"
+    },
+    {
+      "url": "/audio/sfx/netgun/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "2cfa3a861941e96aec6145ab76a86080c8ef0ee9",
+      "matchesHead": true,
+      "bytes": 24740,
+      "sha256": "2cd320068b282e8e2cba7a2758d5d76f913a905426bb06e2ab5b696d651aca00"
+    },
+    {
+      "url": "/audio/sfx/enemy-alert/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "fd81a70af66a0f5ad90703a912c9fed9997c556f",
+      "matchesHead": true,
+      "bytes": 29114,
+      "sha256": "8ed0cbb86388638679a2b6e9d7ff5970bd6a4084a875a331de1cd4061019a97d"
+    },
+    {
+      "url": "/audio/sfx/objective/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "3fc6157ea3ea1302d6369a544dea55a0db2e1e91",
+      "matchesHead": true,
+      "bytes": 43298,
+      "sha256": "371d585b2783406698c4a9e94cb1acc2a8c00e006a40ecae51d1e7b3a359e07e"
+    },
+    {
+      "url": "/audio/sfx/snare/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "e8032477da77af328b1014646fba6dca829c7edb",
+      "matchesHead": true,
+      "bytes": 63770,
+      "sha256": "3e1304aff0657366b8fafdfb3e5295b0840265253b08c176d28ef4aadc172b6e"
+    },
+    {
+      "url": "/audio/sfx/hit/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "76c8649347e85025e2e75ccb88a455cec567ba3a",
+      "matchesHead": true,
+      "bytes": 36654,
+      "sha256": "c9fab9d00656beaaaed4d150a574742b04fea3ccb988fd35cf51365e56fcb0c7"
+    },
+    {
+      "url": "/audio/sfx/trophy/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "3353a51c18a741f207e6efa91cde85d78e1186f9",
+      "matchesHead": true,
+      "bytes": 105884,
+      "sha256": "f58c1995dd144316b8474448a621440c6c8a58f4a077ace922b6d8360c1c97a4"
+    },
+    {
+      "url": "/audio/sfx/victory/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "238f00015188c69ee4b3b66a6758c33c06127f11",
+      "matchesHead": true,
+      "bytes": 141164,
+      "sha256": "c13708e8a33adaa0f988aab76671bf39b7b5c4e80177d3f496437e1eb219575a"
+    },
+    {
+      "url": "/audio/sfx/defeat/v54.wav",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "e3895f1034313a7767ed4c2888aaf7667d49d12a",
+      "matchesHead": true,
+      "bytes": 123524,
+      "sha256": "e302f3ee18a421d1940a80a4f35bb61826c546dcade2359ad8822e38f989a35c"
+    },
+    {
+      "url": "/game/backgrounds/v10/galaxy-overview-v10.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "9219b1b31b1ba6e6adc442920049c09035893a50",
+      "matchesHead": true,
+      "bytes": 284088,
+      "sha256": "c4d8f232b60d742a4b8a422d30e25ab6c62d69acd52d0ec5e421ccb7eda94d2f"
+    },
+    {
+      "url": "/game/ships/v13/classic-predator-spaceship-top.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "0527ceb4a79a7e856c3b85a9d079c0010f80baf4",
+      "matchesHead": true,
+      "bytes": 197962,
+      "sha256": "c739e27e5066ad41cf9c6fa7f9e38204d2b054469e2723914fae39c58b5a8595"
+    },
+    {
+      "url": "/game/backgrounds/v10/sector-nebula-v10.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "af8be4843335ca5b9c442a866e2c746aec6e47b8",
+      "matchesHead": true,
+      "bytes": 294130,
+      "sha256": "ce70936a424dfa7d0a915eb97433da6d8c90131921f886f3c6ea3192f3a318fc"
+    },
+    {
+      "url": "/game/backgrounds/v11/systems/system-oseris.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "e032e60c6a4ed8fa02a4a14b8d6ec6040ffba603",
+      "matchesHead": true,
+      "bytes": 169620,
+      "sha256": "8483e1e16ef71263aa571ff730afc0441079976d6ea988a0ca3bf5446cba4343"
+    },
+    {
+      "url": "/game/planets/v10/planet-oseris-iv.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "5220a60a7776122fd42dd17070f5cbb28e2845f8",
+      "matchesHead": true,
+      "bytes": 21058,
+      "sha256": "02a43c0f4454017f938b9fbbb1cfcb9b37c48ee4d1a04ffee51f585c8eaecb34"
+    },
+    {
+      "url": "/game/planets/v10/planet-oseris-ii.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "62f98cbba791c523d65a0b8274cfa770ea5b7da3",
+      "matchesHead": true,
+      "bytes": 20020,
+      "sha256": "518cb19bf99e50ecc88b9de1fbf31fa7da3c69166b7a0935c12b8741d9d4f0f6"
+    },
+    {
+      "url": "/game/celestial/v10/moon-khepri.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "5811b3279a0d20204a6a7e9928bd1261eba2282f",
+      "matchesHead": true,
+      "bytes": 17340,
+      "sha256": "89dacac7591c668ccfbc829deec81faa9d4a0221e5ba070b37f9178cfba83450"
+    },
+    {
+      "url": "/game/celestial/v10/belt-saal.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "52301efa6395c3a34feb5462a92b3701bddfe543",
+      "matchesHead": true,
+      "bytes": 12956,
+      "sha256": "c30fba8117d20e9cd32b8c6b4a03fc58588637ca787168ed3124eedea7d08895"
+    },
+    {
+      "url": "/game/backgrounds/v9/galaxy-sector-v9.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "44f5d50126841d035c69064d46efc72a66d3a419",
+      "matchesHead": true,
+      "bytes": 142446,
+      "sha256": "b26d57d27eff86f73e38fbd82dc49f34dcadf44875e1917b4e65ac397270b2de"
+    },
+    {
+      "url": "/game/backgrounds/jungle-multiscreen-v6.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f49851bd374b0aa8d7199f48f1804e9bddf789bb",
+      "matchesHead": true,
+      "bytes": 3035015,
+      "sha256": "3cab9cfc6019b6a2cff2e804ba947158d8e44fbead8c59fdb68162e23cc6b58d"
+    },
+    {
+      "url": "/game/sprites/v4/commandante-vey.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "085614a7a48e7c72e6284586f3e7ff2dbfeb26fc",
+      "matchesHead": true,
+      "bytes": 991001,
+      "sha256": "0a9c6e7bd57d59e70e2092dc80e64929a7bc4b9fa343d13ba3844ab7c1c2dfe0"
+    },
+    {
+      "url": "/game/planet-arrival/v1/space.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "b51f7b0f34abb50d9036323377d93887d2f8b428",
+      "matchesHead": true,
+      "bytes": 15640,
+      "sha256": "89a90aed2ab87ff9c11456c9ad9e2795480617a30e51691fb12a9303fe62e8a8"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-forward-quarter.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "8c6581f351a0f531abf159aceebdc7017e4d8cd1",
+      "matchesHead": true,
+      "bytes": 922936,
+      "sha256": "4a85daf4c5dd7452dcebbe9df6de9a2778b7c4ac1397294007d54686a1a2e673"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-forward-quarter-shallow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "989d8a6559b937a29a62c41c85f911279f1f4c71",
+      "matchesHead": true,
+      "bytes": 832224,
+      "sha256": "ebfeed7ccdcf9e1d0371d5c0db27dd4860083c609a68da89b0e2da36a07c21e2"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f46e0c21edf7502275c95ce2c46a955292475a10",
+      "matchesHead": true,
+      "bytes": 935208,
+      "sha256": "1fa19eed577e792615075d55a073f45b02b63ad95e16a223520f81ec141115ea"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal-shallow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "d0dd5fed72e0ca26e65fc7f362562dd5e6d4e0d1",
+      "matchesHead": true,
+      "bytes": 893968,
+      "sha256": "ac5604e9658f4051732fb6427d2bf72c764afb69ff242347a6781f41bfb59fb6"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-bank-ventral.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "9c93935a88e0939e7e2979bd277b352371eb253f",
+      "matchesHead": true,
+      "bytes": 845320,
+      "sha256": "caa21f490484c0b0b26c5ba8dff06ef8ada4c8789333804145a7f32a95495ee6"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-bank-ventral-shallow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "7d42629ea130ab4225995aebf57be7f2d654dd37",
+      "matchesHead": true,
+      "bytes": 767852,
+      "sha256": "71ad4f03ed09d65e08c41048b6f1fe6520f8468bd6e6748577826c5c3f281373"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-rear-quarter-shallow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "b2d9c0523ceee1d0e4f01bd43ffb0a7748e6229c",
+      "matchesHead": true,
+      "bytes": 891804,
+      "sha256": "8e0940c26757b1fc66e071bc155e778cd30c70e9a2a4aa0da254477b4975e4ab"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "7c912634c1a21a3683193e88eadaf679b6bb5647",
+      "matchesHead": true,
+      "bytes": 981752,
+      "sha256": "3e19e37fd35f99ac6ffa8a809a11db917737b87645f4f7948fe9c3b177b86ed9"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-engine-core.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "ee70ef75a782d81367e944514530cc7ca33bad16",
+      "matchesHead": true,
+      "bytes": 475044,
+      "sha256": "e87ebec40dcb5fcaa20935b94a2dd22c77e18dbf36618ebc36a2d804523e320c"
+    },
+    {
+      "url": "/game/planet-arrival/ship-motion-v1/classic-engine-plume.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "fcfec881e107c6618d971e67b4204eef26c71940",
+      "matchesHead": true,
+      "bytes": 323296,
+      "sha256": "bfc0a271beaa3fa4f2af2072ae47f39bfa8c0cf688483319bfed1c07dd8df528"
+    },
+    {
+      "url": "/game/planet-arrival/v1/pod-flight.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "0a0ec68916677a367b52a8d859b7ceb9a875ea71",
+      "matchesHead": true,
+      "bytes": 140866,
+      "sha256": "4eb8c702a91cdf05299c737e20184550fa7268c008c78222dbefad8a9b3b2a68"
+    },
+    {
+      "url": "/game/planet-arrival/v1/pod-ground.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "110c8a5aa52e43f63df9446c7700ecd37f08d1af",
+      "matchesHead": true,
+      "bytes": 177522,
+      "sha256": "816235132f99cf19272702cc8f3e008d626616005c9b2fee556a94d4474806f1"
+    },
+    {
+      "url": "/game/planet-arrival/v2/pod-hatch.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "15b46a70781acd288cfa4c009d797ecb0ffa921e",
+      "matchesHead": true,
+      "bytes": 312836,
+      "sha256": "3e2578693156589fc4270a0179d15acf1186fe4df0f8996131072ea96cf4093d"
+    },
+    {
+      "url": "/game/planet-arrival/v1/release-jet.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "928683e4ce4f1ec8c6c69cf5da1cee895d26d400",
+      "matchesHead": true,
+      "bytes": 202366,
+      "sha256": "c62b3830b4d2c9ca99d0ae2e0b10a9526478d34b353cfeb66f7c419a85b6b082"
+    },
+    {
+      "url": "/game/planet-arrival/v1/heat-trail.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "119157c951f67b4d4864078f5ef8288ade24c960",
+      "matchesHead": true,
+      "bytes": 321434,
+      "sha256": "7cb4c9369ea405bd414021f0b811b0511fe4eb9dc7488874e0c5202746ca2fa7"
+    },
+    {
+      "url": "/game/planet-arrival/v1/atmosphere-clouds.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "d276fb8c0ac80cbcadc5c878ea9e22f21a980da8",
+      "matchesHead": true,
+      "bytes": 499918,
+      "sha256": "4e5eefa5c8d67e9b941bb634b25bd7761047217e75ce4a8e83c4db0e51162c53"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "a807e20a0d3b6fd8c958d1a412835696a9910eed",
+      "matchesHead": true,
+      "bytes": 457638,
+      "sha256": "a8d11a4446ab1ef1f556281150a774d6060c849603dd098f06c4a2e8ff6b4336"
+    },
+    {
+      "url": "/game/planet-arrival/v2/pod-hatch-interior.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "6a66f276e312e57c9085b3317e5f5dbb830d267e",
+      "matchesHead": true,
+      "bytes": 230332,
+      "sha256": "85f60f652647a6d09e880c1ed9c5cdf6eb37a4a9097cad6fa0a91f5b4096f0d9"
+    },
+    {
+      "url": "/game/planet-arrival/v2/vent-vapor.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "1228e75e034e28afe9e5fe41b21b4376b9f281dd",
+      "matchesHead": true,
+      "bytes": 201862,
+      "sha256": "db1db63fd3fae21f0050f14c0fbb41b03d609ac9ab416f5182e5aba2372d72fa"
+    },
+    {
+      "url": "/game/planet-arrival/v2/vent-vapor-thin.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "2bfa4ea2aba3c38feb3553c56fe004a23a9f2a06",
+      "matchesHead": true,
+      "bytes": 230286,
+      "sha256": "aca054af39d484a7d1050ce877955b90102ddb85271615916ee2cdc079be6335"
+    },
+    {
+      "url": "/game/planet-arrival/v2/impact-fragment.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "a1d09cdc8eaae8a31bc1c1c7485aa5f00b9c3899",
+      "matchesHead": true,
+      "bytes": 36310,
+      "sha256": "e505b0a3adc6d9a629e94a3bb25e6ed4eb6a6e870a8e88ac1f4a326c6ca84c3b"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-flight-core.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "37e6f6341933b21e7e0b703f66e03f8d8f967b54",
+      "matchesHead": true,
+      "bytes": 379876,
+      "sha256": "857f884dbbf9371a2c0f67d2d0676bd4746ca8db0f211cf708710d4d0986aba7"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-entry-bow-shock.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "d8137827e23e343c43bba281895fd4b0dd68e344",
+      "matchesHead": true,
+      "bytes": 574182,
+      "sha256": "656e3abcce7e1122dbf6e1ab64215c39eecd0089b64c45cce4954c4ea3333f43"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-entry-plasma-wake.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "dbff653935e4778301fc8bcbc7d34f25a1a95e71",
+      "matchesHead": true,
+      "bytes": 678804,
+      "sha256": "394e00685f9817fa91b23103882391e02f04e5e0f00f7614d6d50af78fba5666"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f3b04a8d9791e94e96d85151e08224d11fa30a2e",
+      "matchesHead": true,
+      "bytes": 284082,
+      "sha256": "62a9a1468f000ad561e027e4ba833968ed39f214b7d98dd258148e93d889e23f"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-jungle.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "307446ebf61815f3ad77b3297e8e116f70ade350",
+      "matchesHead": true,
+      "bytes": 219800,
+      "sha256": "880aeb5ec294b9e715cd85cd77106f0d85cfda43dce69cb26c4569e170f5a205"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "7bd3acef56ebd735e6a3a6146677a10bc8cbc7d1",
+      "matchesHead": true,
+      "bytes": 154326,
+      "sha256": "a61f127e30bf236ef164d34147a140f4e7e309d39ba6a4be4810d9384338da24"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "a4800c2e79e6ed48e7917a5e45b57aa142579a4e",
+      "matchesHead": true,
+      "bytes": 425746,
+      "sha256": "0cd848140ec6bdc86e5b8a28201adba4d0e8937b2efd9d026db6c80338c80db7"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "7b2eb566eb41b026d8834f45a13c72e756b94f92",
+      "matchesHead": true,
+      "bytes": 274846,
+      "sha256": "b7a2dc706954c0ba662dd91634f647690e319c322b1aaabbb12224b4b3274d4a"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "b96f75e9c7149cdcee594ac64ad11c8bd9d72fa8",
+      "matchesHead": true,
+      "bytes": 827830,
+      "sha256": "0b40c8bc5f4b98e1b69ba4c9f36d56d098f6945814d7e7c25944f339a3bad258"
+    },
+    {
+      "url": "/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "9cc6c04f95343bb183a7ad36bfcaef033671ad69",
+      "matchesHead": true,
+      "bytes": 24524,
+      "sha256": "9c2ab16e2263e5e9012531f6428e52b838ebcd7bc40e2779f86b73805a43968e"
+    },
+    {
+      "url": "/game/ships/v12/classic-predator-spaceship.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "d732d51ba1d232810c7950dc0c25a9ef2bb74661",
+      "matchesHead": true,
+      "bytes": 154650,
+      "sha256": "bb374f95f28dad53ce8ed745dde6f6a18c4f9038e0181b1714eec2f6c5991f7a"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-03-forked.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "6e6e9fd32c567f7bf130a8206a367c979eff9feb",
+      "matchesHead": true,
+      "bytes": 76258,
+      "sha256": "ab0cc45aede0bad0aad065a9bb24f9576dc0662c1af0994f97fe5820ee0286e5"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-01-patch.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "91ee0396fbe53f88595e7b17e9c853a6c25bd5ac",
+      "matchesHead": true,
+      "bytes": 98512,
+      "sha256": "fc643f950fba89bccf2d81de63215c4c04153c380df257a140ece6110d81a497"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-05-tiered.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "168ff970c00caec4b7a15771b07034cff7e09a92",
+      "matchesHead": true,
+      "bytes": 110374,
+      "sha256": "0ab8778e47497e83aff3516bd23fa03e2aeb13b3c3fbd5c2affcb78e6812103f"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-05-tiered.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "5e564611e2e26d7ed236dd6c92939f4c3b5d651c",
+      "matchesHead": true,
+      "bytes": 156332,
+      "sha256": "e72d97ed88128c8a6c432afe3b57c2c2f80d082662ecc1230776474044f0d04d"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-04-broken.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "85cb53acd94b0f3fbe057ae73655ffd0c7b28ba3",
+      "matchesHead": true,
+      "bytes": 69816,
+      "sha256": "d44b932714419487959c2dae5819b0a5dc2590e622261699fa7a340f3a45d847"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-05-paired.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "b046063dae31ba21df549e61b248f683de1e9ff5",
+      "matchesHead": true,
+      "bytes": 50188,
+      "sha256": "e5de3b33746628aa7fff3747f6d6d5d9dbe52c228b564f94da24d5ab5852a397"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-04-interrupted.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "a5ec563df159e507fbecbdabf5be6c240de5644e",
+      "matchesHead": true,
+      "bytes": 53372,
+      "sha256": "241471b2ed298b1b6b1ce188d19976f159291166c0579c5e41df8aa21e113ade"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-01-straight.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "2ff8e58462363c326c82ff6c9cc8eae52cae5f37",
+      "matchesHead": true,
+      "bytes": 42270,
+      "sha256": "f6987c4ce5bee3d8f3133b8dc002d77531068e118fcf6bdf083f6475500ed251"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-01-low-wide.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ee4a972cb72f2186aa2b695687c3e5a68c6a1502",
+      "matchesHead": true,
+      "bytes": 68484,
+      "sha256": "8b406cfbde82aa787128b38b2e60e3ed3206fe36cff72c1a510f5ba2f4ffe534"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-05-transition.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "68289f334b0b4892daca2616ea5710ad476a8cd1",
+      "matchesHead": true,
+      "bytes": 68216,
+      "sha256": "1145d45ac3bf3768055dd18d96dcc4a7bdcede29374bb3192e233162bad12689"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-03-cluster.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "e54a080a9d9f39c279bb554b8c562583bc025222",
+      "matchesHead": true,
+      "bytes": 178716,
+      "sha256": "d4e7fbffce922513bcbf5bd068e13c032fb8d486ea8d88a3b864f014ef5dc644"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-05-evidence.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "116a24b897fe86175bdf0a9d55e913ce9f9a8431",
+      "matchesHead": true,
+      "bytes": 200450,
+      "sha256": "653eb62c952f0fb09686874ab10ba72c60e935e99c26d1dfaaffd653c03c612e"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-02-pair.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "22037dda140fd821227126cc2b4ad536801b6743",
+      "matchesHead": true,
+      "bytes": 149494,
+      "sha256": "1642e14dd5d58808562838c801e5a7a6c3a8521b7db192805af0f0bc83984820"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-02-high-narrow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "b682189df0cc2b2238053fc044a66b09d4b220c9",
+      "matchesHead": true,
+      "bytes": 118764,
+      "sha256": "dd61eb2bbf022580b529f07a6cd5471c55147557288be1ba4a3f9bc7b1f1f18e"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-05-paired.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "d711633fcc87b70384a67b0d9f66191a2742ae4b",
+      "matchesHead": true,
+      "bytes": 87822,
+      "sha256": "8b30c2f73dcf86171c8ebbef170c8ab2dfce9433f38e012a0db5f805d32691fb"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-05-tiered.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "edb29011449e6984d2e5d20b8236f959b6daae7d",
+      "matchesHead": true,
+      "bytes": 110700,
+      "sha256": "339684e48637ba3f91dc6c9f41f0f02e4e0c78773c29b9c10c2d1fff987fa2d2"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-04-fallen.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "f88d8a7ca6cf733ff22b1481aa33fd3c62c12d5f",
+      "matchesHead": true,
+      "bytes": 106816,
+      "sha256": "98799a877604b0b268e27d5cb2bab965f8d245fb14f01b787c8079304e623d8c"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-02-high-narrow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "fdcc605585190046f99a506a5167b379a042b015",
+      "matchesHead": true,
+      "bytes": 85760,
+      "sha256": "ec77f2da460e4dc58cd6954928ee18d7e363752ff66b215774390c71d2a819ec"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-04-broken.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "768202fbe4ed7975ce82094d068178e7b4d17b77",
+      "matchesHead": true,
+      "bytes": 120058,
+      "sha256": "5c2d8280c265889e62eb0b4c30a02125c140c7761e918a1b857287010d70f629"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-03-forked.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "ce4f69d17c24c86dda2f3471aa91dcee97f360aa",
+      "matchesHead": true,
+      "bytes": 65836,
+      "sha256": "d48a5190da965438083bdf4d41c81498a6128149a6f2df577ab85e8a78cef636"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-01-narrow.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "0bb936156397ab5e6d13b4bf2e630180702fb6ab",
+      "matchesHead": true,
+      "bytes": 108102,
+      "sha256": "9564dfd34e04676d4430ab9fd77ea34c8e1ea0f8ea4628da6cfe4d4e372bc485"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-04-interrupted.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "a287488ae575816639452d258694d4c598cfdf48",
+      "matchesHead": true,
+      "bytes": 44354,
+      "sha256": "d175a5455ac776f09fe7583ab75720c354279ae1dc94f1e5315524b17ba99116"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-02-hooked.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "30e97fca7b01614fdb345bae6138f839e8dfc2a3",
+      "matchesHead": true,
+      "bytes": 44254,
+      "sha256": "406ba6c35d51f0f7eaeaee704b13ead33a953714299013588a10188bcc2f54c2"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-01-low-wide.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "282a09b4a5a5b959570f758b287b5dffce195767",
+      "matchesHead": true,
+      "bytes": 52022,
+      "sha256": "894d9d68944595bfce42ee0446718597d767e65cd9bed00fd10d404761a3b862"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-05-paired.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "122118f1f1afd4450091236bbfe834d80bfb8c25",
+      "matchesHead": true,
+      "bytes": 68162,
+      "sha256": "2f53f98cd2a3b8d89e602ca38c0cb3a3a930ccb34ee347cd6ba1e3d4dd4d3ac2"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/haz/haz-spectral-flare-tripwire-04-cyclic.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "0f53c493fdc72a51ec029e7d58327ffeb768f493",
+      "matchesHead": true,
+      "bytes": 80480,
+      "sha256": "0f326ae6c7dc3c960129dfa991bfed3a24ce9643f70bebccdb49f9bb1fc4e0ea"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-03-cluster.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "c99bcafa33deae0c9e82c688ad0d73d1388eb698",
+      "matchesHead": true,
+      "bytes": 88464,
+      "sha256": "c0e04ca4af26aaaaa4d4f084a5203ac4a8237195c630470b7bb05379022b1422"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-04-fallen.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "00f5ee76c6ea2279c3a98d38a26432d87cbd1e97",
+      "matchesHead": true,
+      "bytes": 142050,
+      "sha256": "ccffbca926c7ed641d15a28f56783689a5a68d87df025978c550689deb7db7a7"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-04-broken.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "0eaa1acc8674ac4c963a941f36eea1b0ee66f19b",
+      "matchesHead": true,
+      "bytes": 76534,
+      "sha256": "7498318f2d5ec4fde10bbbd1b728c13d1cba667b955f48558f06911767334d52"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-02-broad.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "737b9f3f59b99e974a48c3e80fb4c0d3560b3aff",
+      "matchesHead": true,
+      "bytes": 159116,
+      "sha256": "c727296f5ad36c84689404a99fb9b6371456dd9601ca7f3683d21df902d20a61"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-02-pair.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "e03145bee8d958b8e5dff9fcc07dad3a18f5f74e",
+      "matchesHead": true,
+      "bytes": 135748,
+      "sha256": "6f5cd3c2ff68ecf1782965851930f221604573f859ea90c4404f9c05e0e55f63"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-03-cluster.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "d801e09e6209751f047200934272415a5940e102",
+      "matchesHead": true,
+      "bytes": 145236,
+      "sha256": "7b0a2440d116f6f706d0ed5752244135fe5318c09db2b5070edd3e2e8ae3df32"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-03-ridge.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "04312c48bf656258454a50e2aca98d56ed8b0981",
+      "matchesHead": true,
+      "bytes": 81022,
+      "sha256": "f1ba6bb369f8796c41644103429daf1cd6b2e2babedfc016bc81b97e55cab944"
+    },
+    {
+      "url": "/game/assets/v15/trophies/trophy-vey.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "63be4e5a7ec1687534224cd71af78ada7a2f00a7",
+      "matchesHead": true,
+      "bytes": 114604,
+      "sha256": "62a02c38135e989a4abdbc531335f1dd5ea34cc7f488e4a116f005159465a150"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-destruction-core.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "9b38137775f6b4e344e876098fda76e51c35bd38",
+      "matchesHead": true,
+      "bytes": 1347666,
+      "sha256": "67c03df36c79c15eb2f42b3fad46da4fbd8aefbd4dd2a9b22ad7b29c3ab4ff24"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-destruction-pressure-ring.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "90e8f342def80aea248cd241aa24d9fd2924c9e2",
+      "matchesHead": true,
+      "bytes": 754036,
+      "sha256": "8786c665ea1c4ba4eda9f63c9ab634ec3b42193a48896ab6b65f69a537051319"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-destruction-scorch.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "7d2135e03a747a7a5d69d54c8a00cf28b5b86afe",
+      "matchesHead": true,
+      "bytes": 770702,
+      "sha256": "ea12c2d14e314eb6bbc73d0ed73eba352566b7b5f5b9706274d925e45ef740c6"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-destruction-metal-shard.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "75432069be63e3e80af2b6cb47b0f9edf3372142",
+      "matchesHead": true,
+      "bytes": 536132,
+      "sha256": "82cbce3b51afc8898084360414cbdfe43450f0fbfe5dce11624aa66c334d57da"
+    },
+    {
+      "url": "/game/planet-arrival/v3/pod-destruction-smoke.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "9e28de500cc83fc64401b968c818ac2d6b4c7058",
+      "matchesHead": true,
+      "bytes": 405072,
+      "sha256": "244c1a43c22819f6f4b5adf707bd246f6211e51ea1ddbb6ff97224b3cf372aa5"
+    },
+    {
+      "url": "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "beec942ff0a9a60850c1af6187c89ee37ed808dd",
+      "matchesHead": true,
+      "bytes": 275164,
+      "sha256": "f49837b76f10080e669c080ab97b3fb8a75f04d5f05ad78077ae980ccc2b76c4"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "fb4cc80be7ad8b419fbd62bc348bb2ae49a262a2",
+      "matchesHead": true,
+      "bytes": 80094,
+      "sha256": "82805f7c868f82cc619ca35217add18062911b541dd0882f9cd25ac5a56f751d"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "7ae9f34584a0bef8bee0dc5201ab7882da4a2313",
+      "matchesHead": true,
+      "bytes": 2438,
+      "sha256": "0ba40594355fdb58dd88c92b3d80047597583b1cf17fc924640818c81fc674e1"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "a37269b705bd0c5b5080f29bd089882e445208b7",
+      "matchesHead": true,
+      "bytes": 2088,
+      "sha256": "c03e3d729303e0d261414e88b11d2b47085751848639a7397ac8e02e00cfb773"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick-folded.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "7f6048766da0d059c0df5b52566eb6bb9d54fba6",
+      "matchesHead": true,
+      "bytes": 4700,
+      "sha256": "0d98337262f5a5efb59dfefd213774b526636d8843548c4dd94aca29daf73b8e"
+    },
+    {
+      "url": "/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "21f9a42a5bcfc1c53ee5b19fc8fea8840a8526b9",
+      "matchesHead": true,
+      "bytes": 2556,
+      "sha256": "ff105224077b026b9ef387854bef5fe10f651a0f78cb244ea81d8b3f0251ae88"
+    },
+    {
+      "url": "/game/props/v4/ruin-platform.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "8912963ef020c2b31df84807531f2142eb916f03",
+      "matchesHead": true,
+      "bytes": 190155,
+      "sha256": "feb7729978efeac59dcf3a2c66b7b9ad944e6dfb07a482bd673f364962e41cac"
+    },
+    {
+      "url": "/game/props/v4/crown-platform.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f0f9ec553b1da68ade4d25e15a8e0c55fd2ffbd0",
+      "matchesHead": true,
+      "bytes": 189821,
+      "sha256": "0f0a262a46135d90a02560a0702e751fe21020d2565437f6f2fbf833ce45b39f"
+    },
+    {
+      "url": "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "ea1a277bbeeaa9e28a92cd351e8ef4a1b33f455e",
+      "matchesHead": true,
+      "bytes": 44448,
+      "sha256": "58e386b94ae0f62e3e8a927731ca60dc006f96728e28532268f6e93630264f85"
+    },
+    {
+      "url": "/game/props/v4/tree-trunk.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "6acda40a095823ee270fe32c470026d05dcbfe9a",
+      "matchesHead": true,
+      "bytes": 345049,
+      "sha256": "b1d98cd4d6a132d85762a5b467cd157fc9ea6bf033c0abac4c984dac1d5dbc05"
+    },
+    {
+      "url": "/game/props/v4/root-platform.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "20437869a79d7c1fa48bf7872d6903559d646424",
+      "matchesHead": true,
+      "bytes": 140243,
+      "sha256": "8a7abf0d92d9d38b985d2c6d18bb7e441c9d5f7bd7b2c22c4bae83bbf57319db"
+    },
+    {
+      "url": "/game/props/v4/expedition-platform.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "eb50b5b3d49e494b46940c07228bd300e955b206",
+      "matchesHead": true,
+      "bytes": 130406,
+      "sha256": "e525a4a4b1393c0b4f61ef0174418512578386908f8a7b96b2c0e87f816512dd"
+    },
+    {
+      "url": "/game/sprites/mercenary.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "1fc73d6ee5aa998011f48af2956586da76c61166",
+      "matchesHead": true,
+      "bytes": 98468,
+      "sha256": "360242c1e987cb64365f0378d782afdbfc9cfceafe2fb3032421be2c78e328c0"
+    },
+    {
+      "url": "/game/sprites/cryostalker.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "b13f11ac581affb32795d3cf06df5177eb04045d",
+      "matchesHead": true,
+      "bytes": 172800,
+      "sha256": "5df8c8168d6c4ec2f4421f52a1663a50fa8a2acf3f645b0783883ee9102c1adf"
+    },
+    {
+      "url": "/game/props/v4/foreground-ferns.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "4a7cd22a209b7d8bfd34dbbc1cca526ea71e017b",
+      "matchesHead": true,
+      "bytes": 232859,
+      "sha256": "ce81d33f394f9e53188f4c0476d7c22d3a8f18e8f8514c6349bff6a0f13eb8bf"
+    },
+    {
+      "url": "/game/sprites/bad-blood.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "dd0946a8f568cfb1be7b748830a8d736994feb0c",
+      "matchesHead": true,
+      "bytes": 190394,
+      "sha256": "d237fc710705e015d5aab3897d096cbcddbf534630e790eefd2dd5e2ffaf706a"
+    },
+    {
+      "url": "/game/sprites/v6/ships-atlas.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "64082f36a8af4b99470f02644ead78d60116f34a",
+      "matchesHead": true,
+      "bytes": 1658225,
+      "sha256": "44b4c0f518a3674cf2232d9fe5d3ac4225cbd6de5d0b24cd42a5f76e0b853304"
+    },
+    {
+      "url": "/game/sprites/v6/ranks-lasers-atlas.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f5d4f7d7afe812947e848fed287b1d07c88e65b7",
+      "matchesHead": true,
+      "bytes": 856184,
+      "sha256": "c1b6675357e48506eb7af7abec00ac607adbe2627a958bb97d208a3912a0226c"
+    },
+    {
+      "url": "/game/sprites/v4/scout.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "3f68de0a869b98b0d7fd6c9e650e4ca254770386",
+      "matchesHead": true,
+      "bytes": 912109,
+      "sha256": "d46624325cd072067a19f735ce3b36fa4eb26d97ea07407215ee29ae8cb9d7b9"
+    },
+    {
+      "url": "/game/sprites/v4/rifle-soldier.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "04d0bdf5134ec511aa01f710b24196342d234b83",
+      "matchesHead": true,
+      "bytes": 838078,
+      "sha256": "f84e95a713f5e1a4d1ce8c1b5a094d1c1b57aef61ced526f7780beb7765d07b1"
+    },
+    {
+      "url": "/game/sprites/v4/heavy.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "af51c67ba26d11ce8cd6c9e6d48fcb73a2412780",
+      "matchesHead": true,
+      "bytes": 1218441,
+      "sha256": "24a241abb72275f19365653644d42ff7c49ec76341b573caa206a727f98b33e9"
+    },
+    {
+      "url": "/game/sprites/v4/cryostalker-runner.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "60f73c3cbdfc810f42cb129b6d65f85754134833",
+      "matchesHead": true,
+      "bytes": 607276,
+      "sha256": "7d9a9d58bf71b0d67930ebd4dacd6c3ae016d7e891e6d3c17a0f4f71fa2dc227"
+    },
+    {
+      "url": "/game/sprites/v4/cryostalker-brute.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f0e4eec8092838c7afa87822e85931f16963e149",
+      "matchesHead": true,
+      "bytes": 1898729,
+      "sha256": "9cf1411bbccd8a249e71b761370158860bfa61e19fc26b497b8374a863dc898e"
+    },
+    {
+      "url": "/game/sprites/v6/prey-atlas.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "622317885b82519e68b0272518d7cbdb96ec2527",
+      "matchesHead": true,
+      "bytes": 1515213,
+      "sha256": "cfd2d74a92e2eeb611f218cd7960e12b9941e835e22d630f732555b169c8bb77"
+    },
+    {
+      "url": "/game/sprites/v4/bad-blood-initiate.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "16965ca8e1f59461312bd061286b20ab36b2f057",
+      "matchesHead": true,
+      "bytes": 1031175,
+      "sha256": "9038cf708f487d7aa5b22cfa4084815ddb45ef669d34a356958bd3d2dc8c1f48"
+    },
+    {
+      "url": "/game/sprites/v6/masks-trophies-atlas.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "4d34a8addb7d6c53e8ebf5020915bb8d86cc0141",
+      "matchesHead": true,
+      "bytes": 1905332,
+      "sha256": "28b3e4734ab3cd0d32eb3148196153733cc178946a64e243dde0f092d2d8873e"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-sac-pollinique-intact.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "2ceeb53cc1e0c2a3b4053b1dcbef9222cd845d4b",
+      "matchesHead": true,
+      "bytes": 74064,
+      "sha256": "c9c36756a05c4da7c46c16ff9bb749aac1f1834cdfa9652dce1a24a2313970a9"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/oseris-iv/corporate-juggernaut-sheet.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "12e55cdfcec8f59dd5bc033103926423da7073af",
+      "matchesHead": true,
+      "bytes": 235153,
+      "sha256": "544ea626c77f18fea3d02a1ab1be47f7b39890ad75a16049b957d1bec48d43b9"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-noyau-de-servomoteur.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "de6ccd32508cf1a2a02b9c71cc729fcb532cda16",
+      "matchesHead": true,
+      "bytes": 67624,
+      "sha256": "18c602a86ef0b2cfbb982b78934dcb520c2a8726850d078c40465388ac1b3114"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crocs-a-canal-thermique.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "2d0866de49666b1ecdc2a7e7c56a639479a52f1c",
+      "matchesHead": true,
+      "bytes": 34272,
+      "sha256": "f7f1119e6f67e8b49de3bd79af34da5643e8aeed6a29aca79e3f61f2d83d4c7e"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/common/wandering-xeno-drone-sheet.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "16322c007c9c4d467f95bc65244f78396b631fd7",
+      "matchesHead": true,
+      "bytes": 246865,
+      "sha256": "6e2998625c3065eda68f18deb0335a502017cfe2461efa15118a51cf71d90861"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/oseris-iv/spore-bloom-sheet.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "0a77ddb7b42108846d3e4df0985fa51466c5ea5e",
+      "matchesHead": true,
+      "bytes": 271656,
+      "sha256": "f057f5a9f3fd519680985ca8cbcba7b76062658d3df4322dcb0a3a9497ba3b4e"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-dome-cranien-intact.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "19602e927cfce6161216d3e0951a277b353186af",
+      "matchesHead": true,
+      "bytes": 43336,
+      "sha256": "3230e40e9a6d530dc259bb3fa750c1327e79b3771e8d55dcb7c92c0e0f40efb3"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/oseris-iv/jungle-xeno-scout-sheet.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "d27b5bdbfb878a4871e0a86a42b82d7012217b9e",
+      "matchesHead": true,
+      "bytes": 234924,
+      "sha256": "e2bafda3899b16b797d6c2c9873816c678baa4d0353e596417bbe8a5ef87c915"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-dome-cranien-mouchete.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "3502c9309effc00d638c51446d7018d1230ebd08",
+      "matchesHead": true,
+      "bytes": 40038,
+      "sha256": "786928bd5eee68dc0282915b3c9fce06757d476a07767fcda5a571e7697b01d9"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/oseris-iv/mist-pouncer-sheet.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "4fd3f2685049767f40ff45d719c83be85d145db0",
+      "matchesHead": true,
+      "bytes": 213571,
+      "sha256": "6b1f19f460262e832020eff85ed87e0a8ce37da3865dd5434619558398a43ab9"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-plaque-d-unite.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "2a2998a75d1e2c25c1e0ef0cc1834f9e5457e5b8",
+      "matchesHead": true,
+      "bytes": 34916,
+      "sha256": "e9b2929685903b60d1a4b2dc563120e31a51383d6183bb5d4405333f1018dc9b"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/oseris-iv/jungle-smuggler-drone-sheet.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "4dc2cac1b78615ad6b5e809c5f649278c509b613",
+      "matchesHead": true,
+      "bytes": 181950,
+      "sha256": "3a462bb3210bfe4bb377e92ef6a744471b1b27fb5fb3ef98a1aefb3788617822"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-matrice-de-ciblage.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "c05d586b5ce34314634121ecbdc54fbcc2fdc8d1",
+      "matchesHead": true,
+      "bytes": 69658,
+      "sha256": "f8bfd3924db754ab30f2f82c3bcd8ee502028eebb127b6bd6c01f3a4b9129073"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/common/interplanetary-scavenger-sheet.png",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "d5ff834fb2add9b4ebaafecc4d7aecc664944b64",
+      "matchesHead": true,
+      "bytes": 221990,
+      "sha256": "3134ce89c4f0f078c94e99cdf2762dffabf3709c3bdb5ab447b5db35c8c19a3e"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crane-a-quatre-narines.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "9b931665e2c1f2fd500964f0041c75add1bb6cbe",
+      "matchesHead": true,
+      "bytes": 51290,
+      "sha256": "0571da689b060fca157892be7026f2bd314ca1a4ab4f3812f0bfd63529f9e2cf"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/oseris-iv/vey-jungle-marine-sheet.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "4bfbc4decdacd6e4425e5b58f88faf57760066f3",
+      "matchesHead": true,
+      "bytes": 223147,
+      "sha256": "1c0424cf2e624414c76aac15aa82a8d97436e0c12b8164fe8d31f0ceea508a44"
+    },
+    {
+      "url": "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-crete-de-resonance.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "c472101d8ca291c294391733bc975031daf74a3e",
+      "matchesHead": true,
+      "bytes": 45218,
+      "sha256": "422f019eba88569fc2f20faf523e9b488d2881b168667f3f46409e2cdf656291"
+    },
+    {
+      "url": "/game/sprites/v8/ecology/oseris-iv/drumcrest-herdling-sheet.png",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "dcd469cf887070370e035ef95b7c81cd11a3493b",
+      "matchesHead": true,
+      "bytes": 203593,
+      "sha256": "3457b91dfc21901bfcc766076e7eb7fef3ad2935d4d6055c3d3c99837ae39de9"
+    },
+    {
+      "url": "/game/ui/v112/field-harvest-symbols.svg",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "028753d8cf3611649a5f8502eeab1dfd8f7d6f6d",
+      "matchesHead": true,
+      "bytes": 1240,
+      "sha256": "bea22b01bbf8a6b394932abc705b850e40d5037f077add9e6e347b3b65fee1ad"
+    },
+    {
+      "url": "/game/backgrounds/ship.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "fda8ca46cc93f0d14ac3c027926c64934ec94fe3",
+      "matchesHead": true,
+      "bytes": 306748,
+      "sha256": "a4842250b6ce9e7452a56a0461d95c1ea71808d58d399ac4c2d0be621e1da4cd"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-04-interrupted.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "b0e20651fb2d4cae1b505ba09db9e4b6403136e9",
+      "matchesHead": true,
+      "bytes": 60188,
+      "sha256": "33e091bf1b4c12d11b805e3fac1c7c53af818fe79eed800b9032d21eb4efcc11"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/cov/cov-ruined-idol-01-narrow.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "f184fff9adc48717c3fcbfb0b5e6076ab8300dfb",
+      "matchesHead": true,
+      "bytes": 90588,
+      "sha256": "8cb0fe76dde7485cb6250caa18938f2bd3611cc69b7b57220d5334af856a0cbb"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-02-hooked.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "ec295b501906308ed2c21eb74138df1f548922ef",
+      "matchesHead": true,
+      "bytes": 70946,
+      "sha256": "f4dc76f313fb49e6c0fad8810626ba4f9f10f3724aba9054e403f18af39a6819"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-01-low-wide.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "1c448c5471dac6bf36353c8d416c018f0d2e9187",
+      "matchesHead": true,
+      "bytes": 98440,
+      "sha256": "6f6b9f12db10d21178ba5a5ae7ed8f0a81f2e9f3e325ea8ebc95debe486e3c12"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/cov/cov-ruined-idol-03-pierced.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "5f371ca386bd34ba769fde000ec8d98593278fde",
+      "matchesHead": true,
+      "bytes": 152040,
+      "sha256": "8ced16ed500947bc9c3f090a0c9a1508166f89f99182df637991ff2312b700b5"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-02-pair.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f96adce544061fdb75f258e92fc435b82bc599bd",
+      "matchesHead": true,
+      "bytes": 96532,
+      "sha256": "d6564095af595dce6a4aff14267bbb6c156e7245852dc03c635a3d3010b15a5b"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-03-cluster.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "49f13d7871eff58beaa29dd105a2b1f02160ec73",
+      "matchesHead": true,
+      "bytes": 144216,
+      "sha256": "fbf38f35ea1a7eaf25a0cf9a53a6a4cd088b02f931aff6fbfe13a843f0daf24a"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-05-evidence.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "3f2dc0edf16ee0da1eae44aec946a18d3b382cae",
+      "matchesHead": true,
+      "bytes": 104162,
+      "sha256": "4dc28f11814ca21e3b1813ccfa778c7d310ceea1753f5e9c39b7b128f61914b7"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-02-high-narrow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "11b54248465250f76a3b8432f751807e0d5136c1",
+      "matchesHead": true,
+      "bytes": 71718,
+      "sha256": "b1c190e0edbe85f86221f2e74ea2574c8d1d939862bf457b38b7d287940308e1"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-02-hooked.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "531d5c878e058772037f296f2bf6391efe9c918b",
+      "matchesHead": true,
+      "bytes": 81662,
+      "sha256": "a200b4ecadedd4542541d378cce31f274729404576e58ce0c9ed2419a6d98fe9"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-02-high-narrow.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "131c3e52bd50a871b8f27daa0c777b2386148db7",
+      "matchesHead": true,
+      "bytes": 103722,
+      "sha256": "9d911dcf87a169c68474bbad45c054d27c46ac600a631b1785724ab934c63ec1"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-03-pierced.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "f53ef1e2cf0116e6f64d5df49878165211d409a8",
+      "matchesHead": true,
+      "bytes": 72166,
+      "sha256": "c063f654fccfc997633781b08298671473ab2155d027aa59c8fda13b4a3f20f7"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-03-ridge.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "a697513860877d9db9733e9dd98c11a3e536e03a",
+      "matchesHead": true,
+      "bytes": 67116,
+      "sha256": "a1e36a0444027e1c622b8fd213617280254e5f571ff4dab8fdaf59e01bbbd004"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-04-broken.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "fb1d8f675bc9cbbc85c1663fecbb9baef4219b08",
+      "matchesHead": true,
+      "bytes": 76020,
+      "sha256": "51330b82cba33b81d8b5ea7c88cc7ad77c895f359c03ef292ca110a7d196ef03"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/srf/srf-crushed-fern-bed-04-crater.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "cee100407cb79a04ba56913953d97a7135452627",
+      "matchesHead": true,
+      "bytes": 46972,
+      "sha256": "d3d230e524b50377c9977064f78ed6c21b63c62f1e679ae4209f0dfd67289905"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-04-fallen.webp",
+      "status": 200,
+      "origin": "exact-git-blob",
+      "gitBlob": "3b4ea25c4979d73533ae5864d0fb800c1c82f083",
+      "matchesHead": true,
+      "bytes": 98006,
+      "sha256": "dabfef646f4135f9a9497071306a482f54468ea502269625c7bd47436fd1ea06"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-lake-reeds-02-pair.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "46c95595085c5090e87942f67ff15d16e20d1072",
+      "matchesHead": true,
+      "bytes": 114812,
+      "sha256": "0063ecebe7c8d10955b928bf9d1b005bbe6c39eaafbb76c334ec406fbafc287c"
+    },
+    {
+      "url": "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-01-single.webp",
+      "status": 200,
+      "origin": "workspace",
+      "gitBlob": "a89029f01c16d2a03c9453eeb32604aa4addd458",
+      "matchesHead": true,
+      "bytes": 144684,
+      "sha256": "15cac3fe839bcecc6ad93435df5d59212c8167e39ee8f7d9079b8c7291c81b34"
+    }
+  ],
+  "assetFailures": [],
+  "finishedAt": "2026-11-09T07:13:56.964Z"
+}

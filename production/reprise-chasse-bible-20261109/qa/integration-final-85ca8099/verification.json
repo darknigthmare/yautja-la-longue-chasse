@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "executedCodeCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+  "context": "Final product sources and the26native test files were committed and stable at execution. New QA recipes, workflows and repository documentation were still uncommitted. The two native browser reports retain their own execution context and source identity receipts.",
+  "nativeResults": {
+    "tests": 539,
+    "pass": 539,
+    "fail": 0,
+    "skipped": 0
+  },
+  "strictLintFiles": 21,
+  "records": [
+    {
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "exitCodeObserved": 0,
+      "log": "next-build.log",
+      "bytes": 957,
+      "sha256": "ad434072a04d215263fdccecb48a4425fc52118ddda4f0482200571f3c090a25",
+      "scope": "Next webpack application build and TypeScript, not complete release packaging or deployment."
+    },
+    {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/clan-ship-docking.test.mjs",
+        "tests/clan-ship-save.test.mjs",
+        "tests/clan-ship-interior.test.mjs",
+        "tests/clan-ship-operations.test.mjs",
+        "tests/clan-ship-space-encounter.test.mjs",
+        "tests/clan-ship-operations-save.test.mjs",
+        "tests/clan-ship-incidents.test.mjs",
+        "tests/clan-ship-trophy-case.test.mjs",
+        "tests/clan-ship-trophy-hearing.test.mjs",
+        "tests/clan-ship-trophy-hearing-presentation.test.mjs",
+        "tests/clan-ship-return-escort.test.mjs",
+        "tests/clan-ship-return-escort-save.test.mjs",
+        "tests/clan-ship-return-escort-ui.test.mjs",
+        "tests/buried-cradle-return.test.mjs",
+        "tests/complete-archive.test.mjs",
+        "tests/campaign-slots.test.mjs",
+        "tests/cloud-account-archives-v71.test.mjs",
+        "tests/game-client-ship-flow.test.mjs",
+        "tests/campaign-resume-priority-v94.test.mjs",
+        "tests/ship-hub-input-runtime.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/harvest-inventory-v112.test.mjs",
+        "tests/hunt-carcass-runtime-v112.test.mjs",
+        "tests/hunt-catalogue-contract-v112.test.mjs",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs",
+        "tests/hunt-accessibility-v112.test.mjs"
+      ],
+      "exitCodeObserved": 0,
+      "log": "native-regressions.log",
+      "bytes": 58759,
+      "sha256": "d2cf4746697f3c304dccc3b8f6022179b00cefdbf744a39f1e4206b3d9475004",
+      "scope": "26 distinct native regression files."
+    },
+    {
+      "command": [
+        "node",
+        "node_modules/eslint/bin/eslint.js",
+        "--max-warnings",
+        "0",
+        "app/game/HuntCanvas.tsx",
+        "app/game/HuntRitesMenuV77.tsx",
+        "app/game/systems/huntRitesRuntimeV77.ts",
+        "app/game/systems/ritesOfHuntV77.ts",
+        "app/game/ClanShipHub.tsx",
+        "app/game/ClanShipInterior.tsx",
+        "app/game/ClanShipReturnEscortScene.tsx",
+        "app/game/GameClient.tsx",
+        "app/game/save.ts",
+        "app/game/types.ts",
+        "app/game/systems/clanShipReturnEscort.ts",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/hunt-carcass-runtime-v112.test.mjs",
+        "tests/hunt-catalogue-contract-v112.test.mjs",
+        "tests/clan-ship-return-escort.test.mjs",
+        "tests/clan-ship-return-escort-save.test.mjs",
+        "tests/clan-ship-return-escort-ui.test.mjs",
+        "tests/helpers/clan-ship-return-escort-fixture.mjs",
+        "scripts/qa-clan-return-escort-browser-20261109.mjs",
+        "scripts/qa-hunt-harvest-preview-browser-20261109.mjs",
+        "tests/browser/hunt-harvest-preview-20261109.fixture.jsx"
+      ],
+      "exitCodeObserved": 0,
+      "log": "changed-source-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "scope": "Strict lint of the21changed code/test/recipe files; exit0 explicitly observed, even though stdout is empty."
+    }
+  ]
+}

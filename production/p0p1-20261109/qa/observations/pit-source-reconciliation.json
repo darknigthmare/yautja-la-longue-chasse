@@ -1,0 +1,280 @@
+{
+  "asOf": "2026-11-09",
+  "scope": "Read-only runtime admission and binding observations at current HEAD. No PNG artistic review, gameplay or tests performed by this observation.",
+  "backward": {
+    "boundActionIds": [
+      "M_F006_TH_B",
+      "M_F003_TH_B"
+    ],
+    "nativeBodyDrawings": 48,
+    "feralBound": true,
+    "scarBound": true,
+    "attackerDrawings": {
+      "feral-hunter": 12,
+      "scar": 12
+    },
+    "victimDrawings": {
+      "feral-hunter": 12,
+      "scar": 12
+    },
+    "partnerScope": "unvaried-feral-scar-duo",
+    "sourceCompletion": false
+  },
+  "rows": [
+    {
+      "id": "M_F006_TH_F",
+      "fighterId": "feral-hunter",
+      "nativeAdmitted": true,
+      "binding": "conditional-move",
+      "nativeAction": {
+        "atlasId": "feral-source-th_f-v100",
+        "clips": [
+          {
+            "id": "workbook.M_F006_TH_F",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.M_F006_TH_F",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/feral/022-throw-forward-right-a.png",
+          "/game/sprites/v100/pit/feral/023-throw-forward-right-b.png",
+          "/game/sprites/v100/pit/feral/036-throw-forward-left-a-corrected.png",
+          "/game/sprites/v100/pit/feral/037-throw-forward-left-b-corrected.png"
+        ]
+      }
+    },
+    {
+      "id": "M_F006_TH_B",
+      "fighterId": "feral-hunter",
+      "nativeAdmitted": true,
+      "binding": "conditional-move",
+      "nativeAction": {
+        "atlasId": "feral-source-th_b-v100",
+        "clips": [
+          {
+            "id": "workbook.M_F006_TH_B",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.M_F006_TH_B",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/feral/026-throw-back-right-a.png",
+          "/game/sprites/v100/pit/feral/038-throw-back-right-b-corrected.png",
+          "/game/sprites/v100/pit/feral/039-throw-back-left-a-corrected.png",
+          "/game/sprites/v100/pit/feral/040-throw-back-left-b-corrected.png"
+        ]
+      }
+    },
+    {
+      "id": "CIN_F006_FATALITE_1",
+      "fighterId": "feral-hunter",
+      "nativeAdmitted": true,
+      "binding": null,
+      "nativeAction": {
+        "atlasId": "feral-workbook-fatalite-1-v100",
+        "clips": [
+          {
+            "id": "workbook.CIN_F006_FATALITE_1",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.CIN_F006_FATALITE_1",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-right-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-a-left-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-final-right-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-return-right-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-1-b-left-v100.png"
+        ]
+      }
+    },
+    {
+      "id": "CIN_F006_FATALITE_2",
+      "fighterId": "feral-hunter",
+      "nativeAdmitted": true,
+      "binding": null,
+      "nativeAction": {
+        "atlasId": "feral-workbook-fatalite-2-v100",
+        "clips": [
+          {
+            "id": "workbook.CIN_F006_FATALITE_2",
+            "facing": "right",
+            "frames": 7,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.CIN_F006_FATALITE_2",
+            "facing": "left",
+            "frames": 7,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-right-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-a-left-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-b-left-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-fatalite-2-stow-left-v100.png"
+        ]
+      }
+    },
+    {
+      "id": "CIN_F006_CLEMENCE",
+      "fighterId": "feral-hunter",
+      "nativeAdmitted": true,
+      "binding": null,
+      "nativeAction": {
+        "atlasId": "feral-workbook-clemence-v100",
+        "clips": [
+          {
+            "id": "workbook.CIN_F006_CLEMENCE",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.CIN_F006_CLEMENCE",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/feral/feral-special-clemence-a-right-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-clemence-b-right-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-clemence-a-left-v100.png",
+          "/game/sprites/v100/pit/feral/feral-special-clemence-b-left-v100.png"
+        ]
+      }
+    },
+    {
+      "id": "M_F003_TH_F",
+      "fighterId": "scar",
+      "nativeAdmitted": true,
+      "binding": "conditional-move",
+      "nativeAction": {
+        "atlasId": "scar-workbook-th_f-v100",
+        "clips": [
+          {
+            "id": "workbook.M_F003_TH_F",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.M_F003_TH_F",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/scar/scar-TH_F-right-native.png",
+          "/game/sprites/v100/pit/scar/scar-TH_F-left-partial-native.png",
+          "/game/sprites/v100/pit/scar/scar-TH_F-left-recovery-native.png"
+        ]
+      }
+    },
+    {
+      "id": "M_F003_TH_B",
+      "fighterId": "scar",
+      "nativeAdmitted": true,
+      "binding": "conditional-move",
+      "nativeAction": {
+        "atlasId": "scar-workbook-th_b-v100",
+        "clips": [
+          {
+            "id": "workbook.M_F003_TH_B",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.M_F003_TH_B",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/scar/scar-TH_B-right-native.png",
+          "/game/sprites/v100/pit/scar/scar-TH_B-left-native.png"
+        ]
+      }
+    },
+    {
+      "id": "CIN_F003_FATALITE_1",
+      "fighterId": "scar",
+      "nativeAdmitted": true,
+      "binding": null,
+      "nativeAction": {
+        "atlasId": "scar-special-fatalite-1-body-v100",
+        "clips": [
+          {
+            "id": "workbook.CIN_F003_FATALITE_1",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.CIN_F003_FATALITE_1",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/scar/scar-special-fatalite-1-right.png",
+          "/game/sprites/v100/pit/scar/scar-special-fatalite-1-left.png"
+        ]
+      }
+    },
+    {
+      "id": "CIN_F003_CLEMENCE",
+      "fighterId": "scar",
+      "nativeAdmitted": true,
+      "binding": "partial-scene",
+      "nativeAction": {
+        "atlasId": "scar-special-clemence-body-v100",
+        "clips": [
+          {
+            "id": "workbook.CIN_F003_CLEMENCE",
+            "facing": "right",
+            "frames": 6,
+            "status": "validated"
+          },
+          {
+            "id": "workbook.CIN_F003_CLEMENCE",
+            "facing": "left",
+            "frames": 6,
+            "status": "validated"
+          }
+        ],
+        "sources": [
+          "/game/sprites/v100/pit/scar/scar-special-clemence-right.png",
+          "/game/sprites/v100/pit/scar/scar-special-clemence-left.png"
+        ]
+      }
+    }
+  ]
+}

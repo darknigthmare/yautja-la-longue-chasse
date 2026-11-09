@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "inspectedAt": "2026-11-09T11:08:54.482993+00:00",
+  "allOriginalPngsOpened": true,
+  "screenshotsOpened": 7,
+  "humanArtCertified": false,
+  "physicalControllerTested": false,
+  "headerClearanceQualified": false,
+  "scope": "Seven original final-build PNGs opened. Navigation/map/width checks pass; the council header remains occluded by the absolute global top bar at page scroll0. This integration defect is reported separately and no corrected header is claimed.",
+  "screenshots": [
+    {
+      "filename": "01-next-front-desktop.png",
+      "sha256": "30f759deb5c211260d087fae20a5f648cd9fe5d800e87b3c336e6ae9a35918d6",
+      "opened": true,
+      "observation": "1440×1000 : vrai globe entier et stocks/navigation lisibles. Page-scroll0 n’empêche pas le HUD global absolu de recouvrir l’en-tête de guerre ; défaut d’intégration déclaré, aucune retouche."
+    },
+    {
+      "filename": "02-next-front-390.png",
+      "sha256": "fb89d44e11f529b5efdcbcf3f3690dc0274c051eccce9da8609c1bcd691426db",
+      "opened": true,
+      "observation": "390×844 : globe et boutons principaux visibles, stocks contenus. L’en-tête de guerre reste couvert par le HUD global malgré scroll0 ; ce critère n’est pas qualifié."
+    },
+    {
+      "filename": "03-next-orders-390.png",
+      "sha256": "5e49eca67b8bbc41d395af78f8b760ca3f41061c4cea7af6d5cd0b81d58a74ab",
+      "opened": true,
+      "observation": "390×844 : tiroir après sa vraie animation, fermeture/titre/garnison/ordre/route et effectifs visibles, suite défilable sans débordement horizontal."
+    },
+    {
+      "filename": "02-next-front-320.png",
+      "sha256": "eddc0bd250af4d27a7c5c0eacc484badacfda5150100ca506202f23cb96c8d6a",
+      "opened": true,
+      "observation": "320×844 : globe visible et contrôle/stock distincts, navigation lisible. Même recouvrement d’en-tête déclaré, pas attribué à une correction de cadrage."
+    },
+    {
+      "filename": "03-next-orders-320.png",
+      "sha256": "c16dccc443e3d9661bc8e62fa3250a8dc433e14b214ca1f4486be306eba88aa3",
+      "opened": true,
+      "observation": "320×844 : focus de fermeture visible ; texte et sélecteurs complets dans la largeur, liste des effectifs défilable."
+    },
+    {
+      "filename": "04-next-mandates-desktop.png",
+      "sha256": "4f22a5f9829142b7d9bba7795d9094c4a882ba2046d205d123e8416f61b65d9c",
+      "opened": true,
+      "observation": "Composant Operations dans le vrai Next : postes et quatre cartes de modes lisibles, cadrage sur le contenu Operations après défilement normal."
+    },
+    {
+      "filename": "05-next-rts-active.png",
+      "sha256": "91d933105be2900fd5c4b5911d83b093a2de8240180a163dc160858dd6bcc8ad",
+      "opened": true,
+      "observation": "RTS réellement lancé, une escouade sur terrain existant9×6 ; contrôles actifs et identité du mandat visibles. Ni grande carte source ni victoire prétendue."
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: lost diagonal contact follows the last observed tile
+ok 1 - lost diagonal contact follows the last observed tile
+  ---
+  duration_ms: 7.1573
+  type: 'test'
+  ...
+# Subtest: lost diagonal with second guard contact follows the last observed tile
+ok 2 - lost diagonal with second guard contact follows the last observed tile
+  ---
+  duration_ms: 3.626012
+  type: 'test'
+  ...
+# Subtest: lost cloaked contact follows the last observed tile
+ok 3 - lost cloaked contact follows the last observed tile
+  ---
+  duration_ms: 1.180071
+  type: 'test'
+  ...
+# Subtest: lost concealed by cover contact follows the last observed tile
+ok 4 - lost concealed by cover contact follows the last observed tile
+  ---
+  duration_ms: 1.253651
+  type: 'test'
+  ...
+# Subtest: still-visible contact keeps the ordinary patrol rather than chasing stale memory
+ok 5 - still-visible contact keeps the ordinary patrol rather than chasing stale memory
+  ---
+  duration_ms: 1.12668
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 28.512932

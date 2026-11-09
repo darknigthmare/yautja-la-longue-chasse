@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: Assault: all regional profiles use only distinct source W3 teams and finite authored wave caps
+ok 1 - Assault: all regional profiles use only distinct source W3 teams and finite authored wave caps
+  ---
+  duration_ms: 9.140572
+  type: 'test'
+  ...
+# Subtest: Assault: a real V6 wave arrives on cadence, once, without overlapping live entry
+ok 2 - Assault: a real V6 wave arrives on cadence, once, without overlapping live entry
+  ---
+  duration_ms: 3.649005
+  type: 'test'
+  ...
+# Subtest: Assault: source profiles persist and finite wave counter never exceeds regional maximum
+ok 3 - Assault: source profiles persist and finite wave counter never exceeds regional maximum
+  ---
+  duration_ms: 2.474554
+  type: 'test'
+  ...
+# Subtest: Outer Ops: active progress displays only true V6 passage names and never a hidden garrison
+ok 4 - Outer Ops: active progress displays only true V6 passage names and never a hidden garrison
+  ---
+  duration_ms: 0.773117
+  type: 'test'
+  ...
+# Subtest: Outer Ops: a halt actually pauses passage travel and recalled teams traverse source IDs back
+ok 5 - Outer Ops: a halt actually pauses passage travel and recalled teams traverse source IDs back
+  ---
+  duration_ms: 0.731704
+  type: 'test'
+  ...
+# Subtest: Infiltration: all 6 W3 regions spawn guards on walkable ground, patrol one tile and avoid all walls
+ok 6 - Infiltration: all 6 W3 regions spawn guards on walkable ground, patrol one tile and avoid all walls
+  ---
+  duration_ms: 44.270109
+  type: 'test'
+  ...
+# Subtest: Infiltration: old legacy patrol inside a wall makes one legal step and saved guardY remains optional
+ok 7 - Infiltration: old legacy patrol inside a wall makes one legal step and saved guardY remains optional
+  ---
+  duration_ms: 3.078194
+  type: 'test'
+  ...
+# Subtest: RTS: environmental hazard hits real active enemy and ally on the same world tick
+ok 8 - RTS: environmental hazard hits real active enemy and ally on the same world tick
+  ---
+  duration_ms: 60.242258
+  type: 'test'
+  ...
+# Subtest: RTS: environment preview gives only source window, not an enemy position
+ok 9 - RTS: environment preview gives only source window, not an enemy position
+  ---
+  duration_ms: 36.52344
+  type: 'test'
+  ...
+# Subtest: Source boundary: no V85 mutation, all 24 scripts and 72 objectives remain
+ok 10 - Source boundary: no V85 mutation, all 24 scripts and 72 objectives remain
+  ---
+  duration_ms: 29.184495
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 199.330986

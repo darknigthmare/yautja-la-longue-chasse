@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "classification": "PRIOR_GATE_BYTE_IDENTITY_NOT_NEW_EXECUTION_OR_FINAL_TARGET_FIX",
+  "executedCheckout": "c23000fae806c6a777e719432c6fde5e9e2e259c",
+  "comparedCommit": "9c603846cc2577221ad1f6587d4afc14af1a199f",
+  "receipts": [
+    {
+      "path": "native-command.json",
+      "sourceFilesMatched": 44,
+      "sha256": "1383bd760fb2de4e9523f7b206c7369efcd46fd848be2eecf2a11750a14565b0"
+    },
+    {
+      "path": "build-command.json",
+      "sourceFilesMatched": 14,
+      "sha256": "b9e86d254f76f29a72e8d60dba5529a4c1a077e3fb72382a0169be50d0250309"
+    },
+    {
+      "path": "lint-command.json",
+      "sourceFilesMatched": 18,
+      "sha256": "ea5224810ce19547a57fda8bbdd08c6a9262e41e4a40c3662a824d80df55bf49"
+    }
+  ],
+  "limit": "This pass predates the later selected/operation corpse target correction. It is kept as its own successful earlier gate, not the final one."
+}

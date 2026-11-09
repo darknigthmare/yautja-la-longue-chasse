@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "classification": "FINAL_PRODUCT_BYTE_COMPARISON_NOT_A_NEW_EXECUTION",
+  "executedCheckout": "9c603846cc2577221ad1f6587d4afc14af1a199f",
+  "comparedCommit": "ce82e2b742c2243e524e23aee4efe26cd5c6a644",
+  "receipts": [
+    {
+      "path": "native-command.json",
+      "sourceFilesMatched": 44,
+      "sha256": "49ee8b208e107df3a755d9c0a46c39de2a518861850e56b13e1cce5b4de5bcc4"
+    },
+    {
+      "path": "build-command.json",
+      "sourceFilesMatched": 14,
+      "sha256": "008c366bb398719dccd3f7a0e71a2b768109666413df262c390f09b7348247c2"
+    },
+    {
+      "path": "lint-command.json",
+      "sourceFilesMatched": 18,
+      "sha256": "5f5a1394f53258ef557db8a90ab737c9ad7f3efb2eff97b4499b364d05d41650"
+    }
+  ],
+  "scope": "The actual local gate commands ran on 9c603846 with the target-selection correction overlay. Their recorded bytes match ce82e2b; no new execution on ce82e2b is claimed."
+}

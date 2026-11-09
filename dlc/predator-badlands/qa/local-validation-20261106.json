@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-06",
+  "scope": "local-recovered-archive-and-source-integrity; not CI or browser gameplay certification",
+  "archiveIntegrity": "PASS",
+  "originalArchiveSha256": "65fba89f2148ee36cea58bafde3f93066f5a1883dea02f10dfef95350194b320",
+  "originalFilesInLocalArchive": 43,
+  "originalSha256ManifestEntriesPassed": 42,
+  "svgXmlFilesValidated": 18,
+  "pngFilesValidatedLocally": 7,
+  "pngDimensions": [1440, 900],
+  "localHtmlReferencesCheckedInCompleteArchive": 10,
+  "javascriptSyntaxChecks": 2,
+  "dataAssertionsPassed": 198,
+  "standaloneRebuiltByteIdentically": true,
+  "standaloneRebuiltBytes": 67354,
+  "standaloneSha256": "f8be31ce49b3a1a6c7aa40c7cce0f974216e76ae16ab308e2c9d1b2e6b52f3f6",
+  "browserGameplayRerun": false,
+  "sourceReportIsHistorical": true,
+  "caution": "The 7 PNG files were validated in the local complete archive, but are NOT committed in this partial PR. The original HTML report therefore has missing screenshot references on a fresh checkout."
+}

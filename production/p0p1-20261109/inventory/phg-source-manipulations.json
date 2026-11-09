@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 1,
+  "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+  "sha256": "701b3556fef308b9a7cc216b7912f0b7d35a60645755831ac238280b7d670472",
+  "sheet": "Tests_Parcours",
+  "headers": {
+    "A": "Test_ID",
+    "B": "Parcours",
+    "C": "Manipulation",
+    "D": "Résultat_attendu",
+    "E": "État_de_preuve",
+    "F": "Priorité"
+  },
+  "rows": [
+    {
+      "row": 5,
+      "cells": {
+        "A": "T01",
+        "B": "Créer chasseur Alpha",
+        "C": "Alpha→skin custom→masque Ogre",
+        "D": "Class origin maintenue",
+        "E": "Unitaires réussis, UI ouvert",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 6,
+      "cells": {
+        "A": "T02",
+        "B": "Créer chasseur Samurai",
+        "C": "Samurai→armor custom→Requiem/Nova",
+        "D": "Choix 2 peintures disponibles",
+        "E": "UI à vérifier",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 7,
+      "cells": {
+        "A": "T03",
+        "B": "Changer de biomask",
+        "C": "Alpha→masque City",
+        "D": "Ogre non appliqué",
+        "E": "UI à vérifier",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 8,
+      "cells": {
+        "A": "T04",
+        "B": "Retirer biomask",
+        "C": "Activer/retirer mask en chasse",
+        "D": "Ogre/decal uniquement si porté",
+        "E": "UI à vérifier",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 9,
+      "cells": {
+        "A": "T05",
+        "B": "Appliquer decal visage",
+        "C": "Choisir texture sur tête nue",
+        "D": "Pas de peinture armure/dreads",
+        "E": "Visuel 6 morphs ouvert",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 10,
+      "cells": {
+        "A": "T06",
+        "B": "Appliquer decal corps",
+        "C": "Body→décal sur torse",
+        "D": "Pivots et clips suivent bones",
+        "E": "Visuel 6 morphs ouvert",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 11,
+      "cells": {
+        "A": "T07",
+        "B": "Appliquer decal armure",
+        "C": "Armor→plaque torse",
+        "D": "Masque alpha pas corps",
+        "E": "Visuel 6 morphs ouvert",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 12,
+      "cells": {
+        "A": "T08",
+        "B": "Appliquer decal biomask",
+        "C": "Masque Alpha/Celtic",
+        "D": "Aucun débordement yeux/cou",
+        "E": "Visuel 6 morphs ouvert",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 13,
+      "cells": {
+        "A": "T09",
+        "B": "Changer couleur pendant texture",
+        "C": "Tint+PNG atlas",
+        "D": "Pigment visible, UV d'origine non revendiquées",
+        "E": "Test V117 vert",
+        "F": "P1"
+      }
+    },
+    {
+      "row": 14,
+      "cells": {
+        "A": "T10",
+        "B": "Atlas absent",
+        "C": "Supprimer un fichier de test",
+        "D": "Aucune URL à chargement externe",
+        "E": "Test statique",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 15,
+      "cells": {
+        "A": "T11",
+        "B": "Sauvegarde bloquée",
+        "C": "Échec localStorage",
+        "D": "Pas de faux succès",
+        "E": "Unitaire V116 vert",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 16,
+      "cells": {
+        "A": "T12",
+        "B": "Save ancien",
+        "C": "Importer V85/V113",
+        "D": "Aucune migration brisée",
+        "E": "Tests statiques verts",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 17,
+      "cells": {
+        "A": "T13",
+        "B": "Dreadlocks en mouvement",
+        "C": "Bouger/viser/coiffer",
+        "D": "Raccord dreads/anneaux",
+        "E": "QA manuelle",
+        "F": "P1"
+      }
+    },
+    {
+      "row": 18,
+      "cells": {
+        "A": "T14",
+        "B": "Matrice six morphs",
+        "C": "6 x (face,profil,dos)",
+        "D": "Zéro débordement",
+        "E": "À produire",
+        "F": "P0"
+      }
+    },
+    {
+      "row": 19,
+      "cells": {
+        "A": "T15",
+        "B": "Longue session",
+        "C": "60min, alternance 77 matières",
+        "D": "Pas de fuite mémoire GPU",
+        "E": "À mesurer",
+        "F": "P1"
+      }
+    },
+    {
+      "row": 20,
+      "cells": {
+        "A": "T16",
+        "B": "Test effet Warpaint/Scar",
+        "C": "Coque/plaque/corps",
+        "D": "Motifs non confondus",
+        "E": "À produire",
+        "F": "P1"
+      }
+    }
+  ],
+  "scope": "Exact source manipulations C and expected outcomes D; source status retained, no gameplay inferred."
+}

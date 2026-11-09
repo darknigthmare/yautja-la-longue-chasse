@@ -1,0 +1,148 @@
+
+> yautja-la-longue-chasse@1.0.0 prebuild
+> npm run audio:manifest && npm run biome-decor:v19:runtime-data
+
+
+> yautja-la-longue-chasse@1.0.0 audio:manifest
+> node scripts/build-audio-manifest.mjs
+
+[audio] 44 slots, 0 supplied, 0 ignored
+
+> yautja-la-longue-chasse@1.0.0 biome-decor:v19:runtime-data
+> node scripts/build-biome-decor-v19-manifests.mjs --runtime-data-only
+
+Biome decor V19 runtime data: 800 sanitized entries, 0 available pairs written.
+
+> yautja-la-longue-chasse@1.0.0 build
+> vinext build
+
+
+  vinext build  (Vite 8.1.5)
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mProxy environment variables detected. We'll use your proxy for fetch requests.[0m
+
+
+[1/5] analyze client references...
+[2Ktransforming...
+/game/backgrounds/ship.webp referenced in /game/backgrounds/ship.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/backgrounds/ship-hub-v4.webp referenced in /game/backgrounds/ship-hub-v4.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/backgrounds/armory-war-room-v6.png referenced in /game/backgrounds/armory-war-room-v6.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/backgrounds/v9/galaxy-sector-v9.webp referenced in /game/backgrounds/v9/galaxy-sector-v9.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 585 modules transformed.
+rendering chunks...
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - rsc:virtual-client-package (18%)
+  - alias (12%)
+  - vinext:og-inline-fetch-assets (11%)
+  - vinext:middleware-server-only (8%)
+  - vinext:validate-middleware-exports (6%)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+✓ built in 3.62s
+[2/5] analyze server references...
+[2Ktransforming...
+/game/ship-interior/v21/wall-machinery.webp referenced in /game/ship-interior/v21/wall-machinery.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/backgrounds/volcanic-depth-v4.webp referenced in /game/backgrounds/volcanic-depth-v4.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/backgrounds/ruins-depth-v8.png referenced in /game/backgrounds/ruins-depth-v8.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/homeworld/v54/basalt-pavement.png referenced in /game/homeworld/v54/basalt-pavement.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/ship-interior/v21/foreground-rib.webp referenced in /game/ship-interior/v21/foreground-rib.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/backgrounds/volcanic.webp referenced in /game/backgrounds/volcanic.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/props/v4/ruin-platform.png referenced in /game/props/v4/ruin-platform.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/backgrounds/desert-depth-v8.png referenced in /game/backgrounds/desert-depth-v8.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/assets/v19/biome-decor/desert/plt/plt-sandstone-ledge-01-low-wide.webp referenced in /game/assets/v19/biome-decor/desert/plt/plt-sandstone-ledge-01-low-wide.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/assets/v19/biome-decor/desert/plt/plt-vitrified-glass-slab-01-low-wide.webp referenced in /game/assets/v19/biome-decor/desert/plt/plt-vitrified-glass-slab-01-low-wide.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/sprites/v8/ecology/serekh-9/sandmaw-juvenile-sheet.png referenced in /game/sprites/v8/ecology/serekh-9/sandmaw-juvenile-sheet.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+
+/game/ship-interior/v22/floor-edge.webp referenced in /game/ship-interior/v22/floor-edge.webp didn't resolve at build time, it will remain unchanged to be resolved at runtime
+✓ 1397 modules transformed.
+rendering chunks...
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - vinext:require-condition-resolution (22%)
+  - vinext:og-inline-fetch-assets (18%)
+  - rsc:virtual-client-package (15%)
+  - vinext:middleware-server-only (11%)
+  - vinext:validate-middleware-exports (6%)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+✓ built in 7.60s
+[3/5] build rsc environment...
+[2Ktransforming...✓ 576 modules transformed.
+rendering chunks...
+computing gzip size...
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - rsc:load-environment-module (17%)
+  - rsc:virtual-client-package (15%)
+  - vinext:og-inline-fetch-assets (10%)
+  - vinext:middleware-server-only (9%)
+  - alias (8%)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+✓ built in 4.73s
+[4/5] build client environment...
+[2Ktransforming...✓ 1404 modules transformed.
+rendering chunks...
+computing gzip size...
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - rsc:virtual-client-package (24%)
+  - vinext:middleware-server-only (11%)
+  - vinext:require-condition-resolution (11%)
+  - vinext:og-inline-fetch-assets (9%)
+  - vite-plugin-commonjs (6%)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+✓ built in 8.83s
+[5/5] build ssr environment...
+[2Ktransforming...✓ 1395 modules transformed.
+rendering chunks...
+computing gzip size...
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - rsc:virtual-client-package (21%)
+  - vinext:og-inline-fetch-assets (16%)
+  - vinext:require-condition-resolution (7%)
+  - vinext:middleware-server-only (6%)
+  - vite-plugin-commonjs (5%)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+✓ built in 7.77s
+[0m
+  Route (app)
+  ┌ ? /                     
+  ├ ƒ /clan-war-qa-v92      
+  ├ ? /dev                  
+  ├ ? /dialogues            
+  ├ ƒ /gauntlet-qa-v135     
+  ├ ƒ /gauntlet-qa-v136     
+  ├ ? /pit-lab              
+  ├ ? /planet-generator-v102
+  ├ ? /planet-generator-v103
+  ├ ? /planet-materials-v101
+  ├ ? /rig-lab              
+  ├ ƒ /solo-qa-v92          
+  └ ƒ /visual-qa-v90        
+
+  ƒ Dynamic  ? Unknown
+
+  ? Some routes could not be classified. vinext currently uses static analysis
+    and cannot detect dynamic API usage (headers(), cookies(), etc.) at build time.
+    Automatic classification will be improved in a future release.
+
+  Build complete. Run `vinext start` to start the production server.
+

@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: B04 starts only from a genuine recovery receipt and available return officers, never from a catalogue
+ok 1 - B04 starts only from a genuine recovery receipt and available return officers, never from a catalogue
+  ---
+  duration_ms: 25.857757
+  type: 'test'
+  ...
+# Subtest: return commands reject another owner, stale revision, inactive scene, distant feet and wrong room
+ok 2 - return commands reject another owner, stale revision, inactive scene, distant feet and wrong room
+  ---
+  duration_ms: 15.273761
+  type: 'test'
+  ...
+# Subtest: preparing the real doorway and a chosen medical post is required before the group can follow
+ok 3 - preparing the real doorway and a chosen medical post is required before the group can follow
+  ---
+  duration_ms: 37.783357
+  type: 'test'
+  ...
+# Subtest: the group really walks through clear geometry, waits for a distant leader and cannot leave an unjoined threshold
+ok 4 - the group really walks through clear geometry, waits for a distant leader and cannot leave an unjoined threshold
+  ---
+  duration_ms: 21.751943
+  type: 'test'
+  ...
+# Subtest: each simulated group step is bounded and collision-safe; pause, invalid time and wrong scene advance nothing
+ok 5 - each simulated group step is bounded and collision-safe; pause, invalid time and wrong scene advance nothing
+  ---
+  duration_ms: 29.635977
+  type: 'test'
+  ...
+# Subtest: the doorway transfers docking and both nearby actors together; neither wrong exits nor a split group are accepted
+ok 6 - the doorway transfers docking and both nearby actors together; neither wrong exits nor a split group are accepted
+  ---
+  duration_ms: 25.267616
+  type: 'test'
+  ...
+# Subtest: both medical posts finish after actual leader/group travel and the final report never creates healing, rank or currency
+ok 7 - both medical posts finish after actual leader/group travel and the final report never creates healing, rank or currency
+  ---
+  duration_ms: 99.970412
+  type: 'test'
+  ...
+# Subtest: the inspector rejects split rooms, impossible feet, phases, hidden properties and missing recovery evidence
+ok 8 - the inspector rejects split rooms, impossible feet, phases, hidden properties and missing recovery evidence
+  ---
+  duration_ms: 8.687746
+  type: 'test'
+  ...
+# Subtest: an unavailable medical officer cannot acknowledge a distant return, while the stopped group remains recoverable
+ok 9 - an unavailable medical officer cannot acknowledge a distant return, while the stopped group remains recoverable
+  ---
+  duration_ms: 42.287592
+  type: 'test'
+  ...
+# Subtest: JSON property order never changes the meaning of an accepted return dossier
+ok 10 - JSON property order never changes the meaning of an accepted return dossier
+  ---
+  duration_ms: 5.460477
+  type: 'test'
+  ...
+# Subtest: separate flanks keep both returnees clear of the leader at the doorway and at either medical destination, including after resume
+ok 11 - separate flanks keep both returnees clear of the leader at the doorway and at either medical destination, including after resume
+  ---
+  duration_ms: 96.650079
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 418.784911

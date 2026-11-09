@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "classification": "LATENCE_NON_PROUVEE",
+  "observedAt": "2026-11-09T09:45:54.004159+00:00",
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "sourceCommit": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "sourceFiles": {
+    "scripts/qa-planet-arrival-spatial.mjs": {
+      "bytes": 205930,
+      "sha256": "73ae53a9078547973647ec737c540a17a11fb97552e475d8f06c52847b13b022"
+    },
+    "scripts/qa-planet-arrival-x11.py": {
+      "bytes": 54688,
+      "sha256": "93d7dc8628c44f8710bdf21accfd8401eaf5f60737dcb254f6979cf70d2aa285"
+    },
+    "tests/planet-arrival-observation.test.mjs": {
+      "bytes": 12119,
+      "sha256": "6e1dde7e4779cc3fc0c994de8da900235db664cbb1df5d1ee41e2e203927a333"
+    },
+    "tests/planet-arrival-harness.test.mjs": {
+      "bytes": 5066,
+      "sha256": "eb4914992f802f6cd5955174213c7520b3e82eef44ca8152a399aac7f8a70bdf"
+    }
+  },
+  "tests": {
+    "shellCommand": "node --test --test-isolation=none --test-concurrency=1 tests/planet-arrival-observation.test.mjs tests/planet-arrival-harness.test.mjs && node node_modules/eslint/bin/eslint.js scripts/qa-planet-arrival-spatial.mjs --max-warnings 0",
+    "exitCode": 0,
+    "checksPassed": 6,
+    "failed": 0,
+    "skipped": 0,
+    "lintExitCode": 0,
+    "logFile": null,
+    "logRepresentation": "Observed tool stdout only; no raw log file was recorded",
+    "sandboxPermissions": "with_additional_permissions",
+    "networkEnabled": true,
+    "sourceCommitAtInvocation": null
+  },
+  "setups": [
+    {
+      "id": "initial-xvfb-run",
+      "command": "xvfb-run -a --server-args=\"-screen 0 1920x1200x24\" node outputs/qa-spatial-cdp-kick-preflight-20261109/driver.mjs",
+      "environmentOverrides": {
+        "ARRIVAL_SPATIAL_OUTPUT": "outputs/qa-spatial-cdp-kick-preflight-20261109/run-01",
+        "ARRIVAL_SPATIAL_HEADED": "1",
+        "CHROMIUM_EXECUTABLE": "/usr/bin/chromium"
+      },
+      "exitCode": 127,
+      "log": "run-01.log",
+      "result": "No browser: xvfb-run absent"
+    },
+    {
+      "id": "system-package-helper-check",
+      "command": "sudo -n /usr/local/bin/cloud-agent-packages install xvfb xauth",
+      "exitCode": 127,
+      "observedOutput": "/bin/bash: line 1: sudo: command not found",
+      "configurationChanged": false
+    },
+    {
+      "id": "portable-official-xvfb",
+      "result": "Debian package extracted in user-owned output directory; existing libraries resolve without system changes",
+      "packageReceipt": "portable-xvfb/xvfb.receipt.json"
+    },
+    {
+      "id": "actual-x11-chromium-version-guard",
+      "command": "xvfb-run -a --server-args=\"-screen 0 1920x1200x24\" node outputs/qa-spatial-cdp-kick-preflight-20261109/driver.mjs",
+      "environmentOverrides": {
+        "PATH": "/workspace/yautja-reprise-20261109/outputs/qa-spatial-cdp-kick-preflight-20261109/portable-xvfb/root/usr/bin:INHERITED_PATH",
+        "ARRIVAL_SPATIAL_OUTPUT": "outputs/qa-spatial-cdp-kick-preflight-20261109/run-02",
+        "ARRIVAL_SPATIAL_HEADED": "1"
+      },
+      "exitCode": 1,
+      "log": "run-02.log",
+      "report": "run-02/report.json",
+      "result": "Actual headed X11 browser153 guard rejected installed Chrome154 before any calibration or final acquisition"
+    },
+    {
+      "id": "locked-chromium-install",
+      "command": "node node_modules/playwright-core/cli.js install chromium --no-shell",
+      "environmentOverrides": {
+        "PLAYWRIGHT_BROWSERS_PATH": "/workspace/yautja-reprise-20261109/outputs/qa-spatial-cdp-kick-preflight-20261109/playwright-browsers"
+      },
+      "exitCode": 1,
+      "log": "install-chromium-153.log",
+      "result": "Official cdn.playwright.dev download rejected by network policy: 403 Domain forbidden; no bypass attempted"
+    }
+  ],
+  "nativeFinalRepetitionsExecuted": 0,
+  "nativeFinalRepetitionsQualified": 0,
+  "limits": [
+    "No measured effect on acquisition latency; the parallel CDP request is an unqualified QA prototype pending actual GitHub Actions execution.",
+    "All native clock, Chromium153 identity, fresh paint, X11 geometry/pixel, standing/ground, and playing-before/after guards remain unchanged.",
+    "No product duration, clock, source rendering, viewport or acceptance threshold changed.",
+    "Auxiliary CDP full-viewport pixels are unused and cannot qualify the final photograph.",
+    "The portable package files are setup tools, not game assets or evidence photographs."
+  ],
+  "artifacts": [
+    {
+      "path": "driver.mjs",
+      "bytes": 159657,
+      "sha256": "bf338dd24e9704d023d7feec57a9d549b76bfc751a4b7815ae4c9737c2fe4cae"
+    },
+    {
+      "path": "run-01.log",
+      "bytes": 48,
+      "sha256": "6069409c826ce3f384eb55f5a3134be8f1d31ab0cd8afe11965bd25dfea3c976"
+    },
+    {
+      "path": "run-02.log",
+      "bytes": 787,
+      "sha256": "554e2111fb21ee8b18f575a6e8e622b5a02376397b992715066df72eda5e86e2"
+    },
+    {
+      "path": "run-02/report.json",
+      "bytes": 18426,
+      "sha256": "8738dea917af27cdc4145660f866430e8c86a62819b1f47c50fcb058222594f1"
+    },
+    {
+      "path": "install-chromium-153.log",
+      "bytes": 3630,
+      "sha256": "c0a798eb0e31d7209f4ba4414e8674af68deee6773fea45a3bb24411c7917f85"
+    },
+    {
+      "path": "portable-xvfb/xvfb.receipt.json",
+      "bytes": 281,
+      "sha256": "589fa44cc45cd20e1787df1b57ec78be9c83ed5cc85df6b01fafe7c17f51864a"
+    }
+  ],
+  "checkoutAtReceipt": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "sourceOverlaySha256": "73ae53a9078547973647ec737c540a17a11fb97552e475d8f06c52847b13b022",
+  "executionProvenance": "The original investigation began at3a03. Setup02 records its own actual sourceCommit1f9 and script overlay hash in its raw report. Tests/lint ran against the unchanged prototype working-tree bytes, but HEAD was not captured at their invocation; no later commit is claimed as a separate test execution.",
+  "investigationBasisRef": "3a03ca990"
+}

@@ -1,0 +1,85 @@
+✖ legacy campaign import does not create an activity, object or tutorial completion (31.151213ms)
+✔ three physically completed gestures survive the actual writer, reload and portable import without rewards (10.170423ms)
+✔ one observed face at gesture nine remains a partial observation after campaign normalization (10.853973ms)
+✔ complete archive parsing retains the same pedagogical object and stable post (14.671143ms)
+✔ future, explicit null, foreign and fabricated tutorial records cannot overwrite a confirmed campaign (38.927484ms)
+✔ a future primary stays protected beside an older valid tutorial backup (8.972966ms)
+✔ quota denial leaves the old checkpoint readable; retry stores the same gesture once (4.82591ms)
+✔ TR-M01..03 define exactly six gestures each, with physical posts (2.645491ms)
+✖ old absent activity, explicit null, foreign owner and future ledgers remain distinct (1.347993ms)
+✔ 18 actual floor journeys and gestures end with one unique pedagogical model at the cabinet (9.40015ms)
+✔ a good gesture from a distant point cannot manipulate the physical niche (0.626886ms)
+✔ skipped or repeated gestures preserve the last stable checkpoint (0.580435ms)
+✔ a closed niche or insufficient margin cannot be passed (0.357859ms)
+✔ source observation requires object, ground and fixed reference in one frame (0.897053ms)
+✔ an unobserved kill cannot be smuggled into the discovery record (1.086058ms)
+✔ cradle and attachments must preserve the model and its central mark (2.211035ms)
+✔ transport starts only after a real local provenance and closed container (1.759604ms)
+✔ all six object transfers require a walked distance, even if a test changes only the actor point (14.946678ms)
+✔ rail admission cannot hide the source or leave the crate halfway (2.872102ms)
+✔ the unknown screen never grants fictional clearance to open an original (9.53279ms)
+✔ three distinct views and an intact initial observation are required (3.666391ms)
+✔ only the indexed detachable fibre can be lifted (3.184635ms)
+✔ stabilizer, numbered pieces and base each have a distinct rejection (4.201779ms)
+✔ light and plaque never turn an unknown history into a trophy claim (3.790928ms)
+✔ the cabinet requires both locks and close/check/reopen in that order (5.268487ms)
+✔ three interruptions restore a discovery, a partial face inspection and a ready plaque without replay (2.617328ms)
+✔ face observations are individually durable, cannot repeat and do not prematurely complete gesture9 (2.566242ms)
+✔ the campaign checkpoint accepts one next event but refuses stale, skipped and forked histories (26.586015ms)
+✔ tampered progression, unsupported source facts, duplicate object and out-of-floor saves are not normalized away (5.386266ms)
+✔ movement clamps frame gaps, rejects nonfinite input and cannot cross a bench footprint (0.352842ms)
+✔ each workstation has continuous outbound and return paths on the authored floor (5.101796ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 29
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 11185.184592
+
+✖ failing tests:
+
+test at tests/trophy-tutorial-save-v6.test.mjs:63:1
+✖ legacy campaign import does not create an activity, object or tutorial completion (31.151213ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'invalid-save'
+  - 'future-version'
+  
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/trophy-tutorial-save-v6.test.mjs:79:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.start (node:internal/test_runner/test:944:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'invalid-save',
+    expected: 'future-version',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/trophy-tutorial-v6.test.mjs:75:1
+✖ old absent activity, explicit null, foreign owner and future ledgers remain distinct (1.347993ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'invalid'
+  - 'absent'
+  
+      at TestContext.<anonymous> (file:///workspace/yautja-la-longue-chasse/tests/trophy-tutorial-v6.test.mjs:78:12)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1047:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+      at Test.postRun (node:internal/test_runner/test:1173:19)
+      at Test.run (node:internal/test_runner/test:1101:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'invalid',
+    expected: 'absent',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

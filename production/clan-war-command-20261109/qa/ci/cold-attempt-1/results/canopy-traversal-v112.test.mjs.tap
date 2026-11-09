@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: grasp initializes from the actual hand without changing position; rigid and short supports refuse
+ok 1 - grasp initializes from the actual hand without changing position; rigid and short supports refuse
+  ---
+  duration_ms: 1.500924
+  type: 'test'
+  ...
+# Subtest: unpowered pendulum uses rope length and gravity, with damping rather than energy growth
+ok 2 - unpowered pendulum uses rope length and gravity, with damping rather than energy growth
+  ---
+  duration_ms: 63.794906
+  type: 'test'
+  ...
+# Subtest: pumping and length adjustment remain finite, bounded and charge stamina only for simulated time
+ok 3 - pumping and length adjustment remain finite, bounded and charge stamina only for simulated time
+  ---
+  duration_ms: 123.989439
+  type: 'test'
+  ...
+# Subtest: release exports tangent velocity, including downward motion, without adding a boost
+ok 4 - release exports tangent velocity, including downward motion, without adding a boost
+  ---
+  duration_ms: 0.192931
+  type: 'test'
+  ...
+# Subtest: swept swing stops at a thin solid wall and releases rather than crossing or snapping to the rope
+ok 5 - swept swing stops at a thin solid wall and releases rather than crossing or snapping to the rope
+  ---
+  duration_ms: 0.816502
+  type: 'test'
+  ...
+# Subtest: support reach checks reject remote or wall-separated grips and malformed suspended state
+ok 6 - support reach checks reject remote or wall-separated grips and malformed suspended state
+  ---
+  duration_ms: 0.262135
+  type: 'test'
+  ...
+# Subtest: each authored hunt has reachable resting sequences, real end supports and an optional fallback
+ok 7 - each authored hunt has reachable resting sequences, real end supports and an optional fallback
+  ---
+  duration_ms: 3.736135
+  type: 'test'
+  ...
+# Subtest: authoring is idempotent and excludes solid exploration rooms after replacements
+ok 8 - authoring is idempotent and excludes solid exploration rooms after replacements
+  ---
+  duration_ms: 1.303166
+  type: 'test'
+  ...
+# Subtest: actual Oseris vine lengths above 720 share the attach, simulation and snapshot domain
+ok 9 - actual Oseris vine lengths above 720 share the attach, simulation and snapshot domain
+  ---
+  duration_ms: 13.169572
+  type: 'test'
+  ...
+# Subtest: the shared maximum refuses an overlong grasp gracefully and caps reeling without invalid state
+ok 10 - the shared maximum refuses an overlong grasp gracefully and caps reeling without invalid state
+  ---
+  duration_ms: 1.998595
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 235.632553

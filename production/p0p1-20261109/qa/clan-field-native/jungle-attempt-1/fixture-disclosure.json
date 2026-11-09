@@ -1,0 +1,64 @@
+{
+  "adultInitialAccess": true,
+  "dockingAndWelcomePreparedByProductionReducers": true,
+  "missionAccess": "Default mission progression and locks; every attempt/completion counter remains zero.",
+  "difficulty": "young-blood",
+  "equipment": {
+    "armorId": "hunter",
+    "weaponIds": [
+      "combistick",
+      "plasma-caster"
+    ],
+    "gearIds": [
+      "motion-sensor",
+      "audio-decoy"
+    ]
+  },
+  "inventory": {
+    "fieldToolIds": [],
+    "harvestV112": {
+      "version": 1,
+      "specimens": [],
+      "toolCondition": 100,
+      "toolUseIds": [],
+      "jobs": [],
+      "settledEncounterRuns": {},
+      "archive": []
+    },
+    "unlockedWeaponIds": [
+      "wristblades",
+      "combistick",
+      "plasma-caster"
+    ],
+    "unlockedGearIds": [
+      "motion-sensor",
+      "audio-decoy"
+    ],
+    "unlockedArmorIds": [
+      "hunter"
+    ],
+    "weaponUpgrades": {
+      "wristblades": 0,
+      "combistick": 0,
+      "plasma-caster": 0,
+      "smart-disc": 0,
+      "yautja-bow": 0
+    },
+    "gearUpgrades": {
+      "netgun": 0,
+      "motion-sensor": 0,
+      "audio-decoy": 0,
+      "snare": 0
+    },
+    "armorUpgrades": {
+      "scout": 0,
+      "hunter": 0,
+      "berserker": 0
+    }
+  },
+  "initialFieldReceipts": [],
+  "huntHealthOverride": false,
+  "objectiveInjection": false,
+  "forcedResult": false,
+  "callbackInjection": false
+}

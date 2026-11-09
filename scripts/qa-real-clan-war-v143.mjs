@@ -13,7 +13,7 @@ import {chromium} from "playwright-core";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
 const publicRoot=resolve(root,"public");
-const out=resolve(root,"outputs/clan-war-real-panel-v143");
+const out=resolve(root,process.env.REAL_WAR_PANEL_OUTPUT||"outputs/clan-war-real-panel-v143");
 const WAR_KEY="yautja.clan-war.v85.free.v1";
 const PRESENTATION_KEY="yautja.clan-war.presentation.v1";
 const SENTINEL="unrelated-campaign-stays-untouched-v143";
@@ -73,7 +73,9 @@ try{
   started=true;
   const address=server.address();
   assert.ok(address&&typeof address==="object");
-  browser=await chromium.launch({channel:process.env.AUDIT_CHROME_CHANNEL||"chrome",headless:true});
+  browser=await chromium.launch({...(process.env.AUDIT_CHROME_EXECUTABLE
+    ? {executablePath:process.env.AUDIT_CHROME_EXECUTABLE}
+    : {channel:process.env.AUDIT_CHROME_CHANNEL||"chrome"}),headless:true});
   const ctx=await browser.newContext({viewport:{width:1366,height:900},locale:"fr-FR"});
   const page=await ctx.newPage();
   page.setDefaultTimeout(25000);
@@ -82,6 +84,18 @@ try{
   await page.goto(`http://127.0.0.1:${address.port}/`,{waitUntil:"domcontentloaded"});
   const panel=page.locator('[data-clan-war-v85="free-profile"]');
   await panel.waitFor({timeout:40000});
+  const theaters=page.getByRole("dialog",{name:"Théâtres planétaires",exact:true});
+  const projection=page.getByRole("dialog",{name:"Projection du commandement",exact:true});
+  async function closeModal(dialog){
+    await dialog.waitFor({state:"visible"});
+    await page.keyboard.press("Escape");
+    await dialog.waitFor({state:"hidden"});
+  }
+  async function openCommand(id,dialog){
+    await panel.locator(`[data-command-open="${id}"]`).click();
+    await dialog.waitFor({state:"visible"});
+  }
+  await closeModal(theaters);
   const atlas=page.locator('[data-testid="clan-war-shared-atlas-v131"]');
   assert.equal(await atlas.count(),1);
   assert.equal(await panel.getAttribute("data-war-campaign-write"),"none");
@@ -91,12 +105,14 @@ try{
   await page.screenshot({path:resolve(out,"01-real-korthas-hologram.png"),fullPage:false});
   pass("Production ClanWarPanelV85 and V95 atlas loaded",{presentation:"gauntlet",oneAtlas:true});
 
-  await page.getByRole("button",{name:"Vue stratégique classique"}).click();
+  await openCommand("settings",projection);
+  await projection.getByRole("button",{name:"Vue stratégique classique"}).click();
   assert.equal(await panel.getAttribute("data-war-presentation"),"classic");
   assert.equal(await page.evaluate(()=>window.__v143SharedAtlasElement===document.querySelector('[data-testid="clan-war-shared-atlas-v131"]')),true);
-  await page.getByRole("button",{name:"Gauntlet holographique"}).click();
+  await projection.getByRole("button",{name:"Gauntlet holographique"}).click();
   assert.equal(await panel.getAttribute("data-war-presentation"),"gauntlet");
   assert.equal(await page.evaluate(()=>window.__v143SharedAtlasElement===document.querySelector('[data-testid="clan-war-shared-atlas-v131"]')),true);
+  await closeModal(projection);
   await page.screenshot({path:resolve(out,"02-real-atlas-not-remounted.png"),fullPage:false});
   pass("Hologram/classic switch does not remount the true V95 atlas",{stateKept:true});
 
@@ -121,28 +137,36 @@ try{
 
   await page.reload({waitUntil:"domcontentloaded"});
   await panel.waitFor({timeout:40000});
-  await page.waitForFunction(()=>document.querySelector('[data-clan-war-v85="free-profile"]')?.textContent?.includes("tour 2"),null,{timeout:35000});
+  await closeModal(theaters);
+  await panel.getByText("THÉÂTRE ACTIF · CYCLE 02",{exact:true}).waitFor({state:"visible",timeout:35000});
   assert.equal(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)||"null")?.turn,WAR_KEY),2);
   assert.equal(await atlas.count(),1);
   await page.screenshot({path:resolve(out,"04-real-reloaded-front-turn-2.png"),fullPage:false});
   pass("Actual strategy exercise archive hydrates after page reload",{turn:2});
 
-  const planetPicker=page.locator('[data-testid="war-planet-selector-v96"] select').first();
+  await openCommand("worlds",theaters);
+  const planetPicker=theaters.locator('[data-testid="war-planet-selector-v96"] select').first();
   const alternate=await planetPicker.evaluate(el=>([...el.options].map(x=>x.value).find(x=>x&&x!=="korthas")||null));
   assert.ok(alternate,"A distinct second war planet must exist");
   await planetPicker.selectOption(alternate);
   await page.waitForFunction(id=>document.querySelector('[data-testid="war-planet-selector-v96"]')?.getAttribute("data-active-planet")===id,alternate);
-  assert.match(await panel.locator('h3').allTextContents().then(x=>x.join(" ")),/tour 1/);
+  await theaters.waitFor({state:"hidden"});
+  assert.equal(await panel.getByText("THÉÂTRE ACTIF · CYCLE 01",{exact:true}).innerText(),"THÉÂTRE ACTIF · CYCLE 01");
+  await openCommand("worlds",theaters);
   await planetPicker.selectOption("korthas");
   await page.waitForFunction(()=>document.querySelector('[data-testid="war-planet-selector-v96"]')?.getAttribute("data-active-planet")==="korthas");
-  assert.match(await panel.locator('h3').allTextContents().then(x=>x.join(" ")),/tour 2/);
+  await theaters.waitFor({state:"hidden"});
+  assert.equal(await panel.getByText("THÉÂTRE ACTIF · CYCLE 02",{exact:true}).innerText(),"THÉÂTRE ACTIF · CYCLE 02");
   assert.equal(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)||"null")?.turn,WAR_KEY),2);
   await page.screenshot({path:resolve(out,"05-real-planet-switch-preserves-korthas.png"),fullPage:false});
   pass("Different planets retain independent strategy sessions",{otherPlanet:alternate,korthasTurn:2});
 
-  await page.getByRole("button",{name:"Vue stratégique classique"}).click();
+  await openCommand("settings",projection);
+  await projection.getByRole("button",{name:"Vue stratégique classique"}).click();
+  await closeModal(projection);
   await page.reload({waitUntil:"domcontentloaded"});
   await panel.waitFor({timeout:40000});
+  await closeModal(theaters);
   await page.waitForFunction(()=>document.querySelector('[data-clan-war-v85="free-profile"]')?.getAttribute("data-war-presentation")==="classic");
   assert.equal(await page.evaluate(key=>localStorage.getItem(key),PRESENTATION_KEY),"classic");
   assert.equal(await page.evaluate(key=>localStorage.getItem(key),SENTINEL),"campaign-safe");

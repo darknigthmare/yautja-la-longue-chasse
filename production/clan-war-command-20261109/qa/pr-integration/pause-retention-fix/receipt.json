@@ -1,0 +1,37 @@
+{
+  "asOf": "2026-11-09T11:21:28.887366+00:00",
+  "scope": "Actual selector/domain and SSR accessibility checks. State retention and focus interruption still need native final replay. These52 cases overlap the global suite; only2 are newly added.",
+  "testsPassed": 52,
+  "testsFailed": 0,
+  "newTestsIncluded": 2,
+  "strictLintExitCode": 0,
+  "businessApiActiveFalseChanged": false,
+  "nativeReplayQualified": false,
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "9ebecd74b869153d13f2c809a327ec1ab927fc7763c05fcb40dce7f5e822496f",
+    "app/game/ClanShipHuntConversation.tsx": "4674b33cc4d3f6bc59dbb744f00ebb430c94da86c5ef9c2f9b1b8fe10380cdc4",
+    "tests/clan-ship-dialogue.test.mjs": "a393fda583128eed5373a3a294d88b246cd2c93aafd83887981f7a3c1fa5e7ac",
+    "tests/clan-ship-hunt-dialogue.test.mjs": "3e940fc292d64ffae0712ef16a6c90b1e688b2b05e65573e029191f6938f88f2",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "a16f9376f02ff138942c99a81e04ed43e562d879191a12708f765ab8728bf6cc"
+  },
+  "testOutputs": [
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/pause-retention-fix/dialogue.tap",
+      "sha256": "4871db48cb3a01c262cd35551e672d465680b32abac593190a3a125a2b30f146",
+      "tests": 22,
+      "passed": 22,
+      "failed": 0,
+      "skipped": 0,
+      "source": "Complete unified-exec output captured from the actual direct Node22 test invocation"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/pause-retention-fix/hunt-dialogue.tap",
+      "sha256": "8f27ff9197680c8681ae6564d58f1dedcfae05903798f39267993fd24ce8db6e",
+      "tests": 30,
+      "passed": 30,
+      "failed": 0,
+      "skipped": 0,
+      "source": "Complete unified-exec output captured from the actual direct Node22 test invocation"
+    }
+  ]
+}

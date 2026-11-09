@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: all twelve contracts retain the exact baseline mechanics, rewards, rooms, identities and recruitment gates
+ok 1 - all twelve contracts retain the exact baseline mechanics, rewards, rooms, identities and recruitment gates
+  ---
+  duration_ms: 1.943382
+  type: 'test'
+  ...
+# Subtest: six original voices have complete, distinct responses without production IDs or a universal canon claim
+ok 2 - six original voices have complete, distinct responses without production IDs or a universal canon claim
+  ---
+  duration_ms: 0.86884
+  type: 'test'
+  ...
+# Subtest: each earned interview uses its actual post without granting personal recruitment
+ok 3 - each earned interview uses its actual post without granting personal recruitment
+  ---
+  duration_ms: 3.223222
+  type: 'test'
+  ...
+# Subtest: unearned contacts stay silent instead of becoming automatic occupants
+ok 4 - unearned contacts stay silent instead of becoming automatic occupants
+  ---
+  duration_ms: 2.463827
+  type: 'test'
+  ...
+# Subtest: wrong room, wrong hull context, owner mismatch and suspension cannot produce speech
+ok 5 - wrong room, wrong hull context, owner mismatch and suspension cannot produce speech
+  ---
+  duration_ms: 0.674567
+  type: 'test'
+  ...
+# Subtest: unknown character and topic fail closed
+ok 6 - unknown character and topic fail closed
+  ---
+  duration_ms: 0.187973
+  type: 'test'
+  ...
+# Subtest: foreign or future campaign records are neither rewritten nor voiced
+ok 7 - foreign or future campaign records are neither rewritten nor voiced
+  ---
+  duration_ms: 2.766693
+  type: 'test'
+  ...
+# Subtest: an invitation does not recruit, allocate a cabin or spend marks
+ok 8 - an invitation does not recruit, allocate a cabin or spend marks
+  ---
+  duration_ms: 0.721298
+  type: 'test'
+  ...
+# Subtest: a newly recruited contact in reserve cannot keep speaking from the former post
+ok 9 - a newly recruited contact in reserve cannot keep speaking from the former post
+  ---
+  duration_ms: 2.04842
+  type: 'test'
+  ...
+# Subtest: after a confirmed refit, the same agreement is spoken at the real new room only
+ok 10 - after a confirmed refit, the same agreement is spoken at the real new room only
+  ---
+  duration_ms: 2.679021
+  type: 'test'
+  ...
+# Subtest: suspended or transferred residents do not leave a ghost conversation behind
+ok 11 - suspended or transferred residents do not leave a ghost conversation behind
+  ---
+  duration_ms: 3.821044
+  type: 'test'
+  ...
+# Subtest: C37 gathering moves the conversation with both actual actors, without giving evidence
+ok 12 - C37 gathering moves the conversation with both actual actors, without giving evidence
+  ---
+  duration_ms: 44.940554
+  type: 'test'
+  ...
+# Subtest: C37 completion restores ordinary conversations at the real posts without duplicate marks
+ok 13 - C37 completion restores ordinary conversations at the real posts without duplicate marks
+  ---
+  duration_ms: 47.681699
+  type: 'test'
+  ...
+# Subtest: no-result responses do not manufacture a successful or failed encounter
+ok 14 - no-result responses do not manufacture a successful or failed encounter
+  ---
+  duration_ms: 1.236144
+  type: 'test'
+  ...
+# Subtest: actual victory, defeat and withdrawal produce different reactions for all six contacts
+ok 15 - actual victory, defeat and withdrawal produce different reactions for all six contacts
+  ---
+  duration_ms: 3.471287
+  type: 'test'
+  ...
+# Subtest: an archived successful encounter is still remembered after accepting another operation
+ok 16 - an archived successful encounter is still remembered after accepting another operation
+  ---
+  duration_ms: 0.716852
+  type: 'test'
+  ...
+# Subtest: reloading preserves the same context and does not add a dialogue save format
+ok 17 - reloading preserves the same context and does not add a dialogue save format
+  ---
+  duration_ms: 4.880934
+  type: 'test'
+  ...
+# Subtest: SSR renders the actual conversation and four accessible topic controls, but no recruitment command
+ok 18 - SSR renders the actual conversation and four accessible topic controls, but no recruitment command
+  ---
+  duration_ms: 28.919956
+  type: 'test'
+  ...
+# Subtest: SSR has no conversation for absent, wrong-room, foreign or future contacts
+ok 19 - SSR has no conversation for absent, wrong-room, foreign or future contacts
+  ---
+  duration_ms: 8.576779
+  type: 'test'
+  ...
+# Subtest: SSR retains a paused interview subtree hidden, inert and non-announcing with all four topics disabled
+ok 20 - SSR retains a paused interview subtree hidden, inert and non-announcing with all four topics disabled
+  ---
+  duration_ms: 1.574145
+  type: 'test'
+  ...
+# Subtest: SSR integrates the dialogue into the native operations panel and counts agreements, not assigned bodies
+ok 21 - SSR integrates the dialogue into the native operations panel and counts agreements, not assigned bodies
+  ---
+  duration_ms: 157.606147
+  type: 'test'
+  ...
+# Subtest: reading every topic repeatedly is a pure observation, including every operation outcome
+ok 22 - reading every topic repeatedly is a pure observation, including every operation outcome
+  ---
+  duration_ms: 16.112206
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 352.328299

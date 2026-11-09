@@ -1,0 +1,21 @@
+✔ the running canyon receives one simulated step per delivered interval (35.818345ms)
+✔ manual pause never starts the tactical interval (4.33487ms)
+✔ different tab never starts the tactical interval (2.961428ms)
+✔ completed battle never starts the tactical interval (3.430135ms)
+✔ parent suspension never starts the tactical interval (3.195851ms)
+✔ inactive page never starts the tactical interval (7.602959ms)
+✔ focus changes before effect cleanup cannot advance the canyon (4.062178ms)
+✔ an inert/hidden settings ancestor or open native dialog blocks the world without pausing the overlay (7.159521ms)
+✔ a removed scene cannot receive a tactical update from a late callback (4.379156ms)
+✔ effect cleanup both cancels the interval and invalidates already-queued callbacks (3.099936ms)
+✔ an extracted selected formation falls back to the first formation still in the field (1.936982ms)
+✔ no field formation means no order recipient; extracted actors are never substituted (1.523478ms)
+✔ the durable result label and retry action are wired to confirmed storage state (5.364483ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 584.981872

@@ -1,0 +1,1146 @@
+{
+  "startedAt": "2026-11-09T11:30:06.740Z",
+  "checkoutCommit": "b666504c7d7889ea4c8c083aa97c4909aab32560",
+  "scope": "Native GameClient on three viewport sizes, earned clan contacts, four read-only dialogue topics, one browser-played escort and reload. Not a full campaign, physical controller, native mobile or art certification.",
+  "fixture": {
+    "file": "initial-dialogue-fixture.json",
+    "sha256": "1921ce439d0c77fa5fc062cb68ea266df68c017aaa4cac3aa47d50ee89cef6d4",
+    "browserPlayed": false,
+    "description": "Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.",
+    "clanMarks": 1912,
+    "completedContracts": [
+      "welcome-aboard",
+      "ship-training-circuit",
+      "field-jungle-survey",
+      "field-ice-route",
+      "ship-seal-check",
+      "ship-armory-audit",
+      "ship-triage-route"
+    ],
+    "recruitedNpcIds": [],
+    "operation": null
+  },
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "9ebecd74b869153d13f2c809a327ec1ab927fc7763c05fcb40dce7f5e822496f",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx": "4304de4ec0adbd2c5e4ed04c3cc9af3f696676341b927e9ccf253888fdc82194",
+    "app/game/ClanShipOperationsPanel.module.css": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343",
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "a16f9376f02ff138942c99a81e04ed43e562d879191a12708f765ab8728bf6cc"
+  },
+  "browserExecuted": true,
+  "passed": true,
+  "checks": [
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "Natural autosave retains the open drawer, topic and nested selected report without progression changes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "A real tab interruption preserves the open drawer, topic and selected nested report after focus returns",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "The native tactical controls complete one escort; only its normal reward is granted",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "The navigator reacts to the browser-played victory without a second reward",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "Reload, keyboard activation and Escape preserve the encounter, recruitment and marks",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "Natural autosave retains the open drawer, topic and nested selected report without progression changes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "A real tab interruption preserves the open drawer, topic and selected nested report after focus returns",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "The native tactical controls complete one escort; only its normal reward is granted",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "The navigator reacts to the browser-played victory without a second reward",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "Reload, keyboard activation and Escape preserve the encounter, recruitment and marks",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "Natural autosave retains the open drawer, topic and nested selected report without progression changes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "A real tab interruption preserves the open drawer, topic and selected nested report after focus returns",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "The native tactical controls complete one escort; only its normal reward is granted",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "The navigator reacts to the browser-played victory without a second reward",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "Reload, keyboard activation and Escape preserve the encounter, recruitment and marks",
+      "passed": true
+    }
+  ],
+  "contexts": [
+    {
+      "name": "1440x1000",
+      "completed": true,
+      "checks": 29
+    },
+    {
+      "name": "390x844",
+      "completed": true,
+      "checks": 29
+    },
+    {
+      "name": "320x740",
+      "completed": true,
+      "checks": 29
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [
+    "1440x1000-ash-scar-before-space.png",
+    "1440x1000-star-watch-before-space.png",
+    "1440x1000-iron-claw-before-space.png",
+    "1440x1000-cold-trace-before-space.png",
+    "1440x1000-black-suture-before-space.png",
+    "1440x1000-threshold-guard-before-space.png",
+    "1440x1000-star-watch-after-space.png",
+    "390x844-ash-scar-before-space.png",
+    "390x844-star-watch-before-space.png",
+    "390x844-iron-claw-before-space.png",
+    "390x844-cold-trace-before-space.png",
+    "390x844-black-suture-before-space.png",
+    "390x844-threshold-guard-before-space.png",
+    "390x844-star-watch-after-space.png",
+    "320x740-ash-scar-before-space.png",
+    "320x740-star-watch-before-space.png",
+    "320x740-iron-claw-before-space.png",
+    "320x740-cold-trace-before-space.png",
+    "320x740-black-suture-before-space.png",
+    "320x740-threshold-guard-before-space.png",
+    "320x740-star-watch-after-space.png"
+  ],
+  "retention": [
+    {
+      "context": "1440x1000",
+      "npcId": "ash-scar",
+      "automatic": {
+        "elapsedMs": 31504.699999999255,
+        "samples": [
+          {
+            "elapsedMs": 0.2999999988824129,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": false,
+              "crewInert": false,
+              "liveSpeech": "polite",
+              "huntPresent": true,
+              "huntHidden": false,
+              "huntInert": false,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": false,
+              "hidden": false,
+              "focused": true
+            }
+          },
+          {
+            "elapsedMs": 1619.9000000003725,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": true,
+              "crewInert": true,
+              "liveSpeech": "off",
+              "huntPresent": true,
+              "huntHidden": true,
+              "huntInert": true,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": true,
+              "hidden": false,
+              "focused": true
+            }
+          },
+          {
+            "elapsedMs": 1714.4000000003725,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": false,
+              "crewInert": false,
+              "liveSpeech": "polite",
+              "huntPresent": true,
+              "huntHidden": false,
+              "huntInert": false,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": false,
+              "hidden": false,
+              "focused": true
+            }
+          }
+        ]
+      },
+      "interrupted": {
+        "elapsedMs": 31609.400000000373,
+        "state": {
+          "phase": "manual-tab-interruption",
+          "connected": true,
+          "sameDrawer": true,
+          "open": true,
+          "topic": "work",
+          "crewHidden": true,
+          "crewInert": true,
+          "liveSpeech": "off",
+          "huntPresent": true,
+          "huntHidden": true,
+          "huntInert": true,
+          "huntOpen": "true",
+          "huntSelected": "field-jungle-survey",
+          "busy": true,
+          "hidden": false,
+          "focused": false
+        }
+      },
+      "manual": [
+        {
+          "elapsedMs": 0.2999999988824129,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 1619.9000000003725,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": true,
+            "crewInert": true,
+            "liveSpeech": "off",
+            "huntPresent": true,
+            "huntHidden": true,
+            "huntInert": true,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": true,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 1714.4000000003725,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 31609.400000000373,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": true,
+            "crewInert": true,
+            "liveSpeech": "off",
+            "huntPresent": true,
+            "huntHidden": true,
+            "huntInert": true,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": true,
+            "hidden": false,
+            "focused": false
+          }
+        },
+        {
+          "elapsedMs": 31679.699999999255,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 31774.099999999627,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": true,
+            "crewInert": true,
+            "liveSpeech": "off",
+            "huntPresent": true,
+            "huntHidden": true,
+            "huntInert": true,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": true,
+            "hidden": false,
+            "focused": true
+          }
+        }
+      ],
+      "scope": "Native autosave and real browser tab interruption, not a Settings-menu pause or synthetic lifecycle event."
+    },
+    {
+      "context": "390x844",
+      "npcId": "ash-scar",
+      "automatic": {
+        "elapsedMs": 31516.199999999255,
+        "samples": [
+          {
+            "elapsedMs": 0.2999999988824129,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": false,
+              "crewInert": false,
+              "liveSpeech": "polite",
+              "huntPresent": true,
+              "huntHidden": false,
+              "huntInert": false,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": false,
+              "hidden": false,
+              "focused": true
+            }
+          },
+          {
+            "elapsedMs": 18712.199999999255,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": true,
+              "crewInert": true,
+              "liveSpeech": "off",
+              "huntPresent": true,
+              "huntHidden": true,
+              "huntInert": true,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": true,
+              "hidden": false,
+              "focused": true
+            }
+          },
+          {
+            "elapsedMs": 18768.099999999627,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": false,
+              "crewInert": false,
+              "liveSpeech": "polite",
+              "huntPresent": true,
+              "huntHidden": false,
+              "huntInert": false,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": false,
+              "hidden": false,
+              "focused": true
+            }
+          }
+        ]
+      },
+      "interrupted": {
+        "elapsedMs": 31574.900000000373,
+        "state": {
+          "phase": "manual-tab-interruption",
+          "connected": true,
+          "sameDrawer": true,
+          "open": true,
+          "topic": "work",
+          "crewHidden": true,
+          "crewInert": true,
+          "liveSpeech": "off",
+          "huntPresent": true,
+          "huntHidden": true,
+          "huntInert": true,
+          "huntOpen": "true",
+          "huntSelected": "field-jungle-survey",
+          "busy": true,
+          "hidden": false,
+          "focused": false
+        }
+      },
+      "manual": [
+        {
+          "elapsedMs": 0.2999999988824129,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 18712.199999999255,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": true,
+            "crewInert": true,
+            "liveSpeech": "off",
+            "huntPresent": true,
+            "huntHidden": true,
+            "huntInert": true,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": true,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 18768.099999999627,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 31574.900000000373,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": true,
+            "crewInert": true,
+            "liveSpeech": "off",
+            "huntPresent": true,
+            "huntHidden": true,
+            "huntInert": true,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": true,
+            "hidden": false,
+            "focused": false
+          }
+        },
+        {
+          "elapsedMs": 31664.199999999255,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        }
+      ],
+      "scope": "Native autosave and real browser tab interruption, not a Settings-menu pause or synthetic lifecycle event."
+    },
+    {
+      "context": "320x740",
+      "npcId": "ash-scar",
+      "automatic": {
+        "elapsedMs": 31515.599999999627,
+        "samples": [
+          {
+            "elapsedMs": 0.19999999925494194,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": false,
+              "crewInert": false,
+              "liveSpeech": "polite",
+              "huntPresent": true,
+              "huntHidden": false,
+              "huntInert": false,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": false,
+              "hidden": false,
+              "focused": true
+            }
+          },
+          {
+            "elapsedMs": 18760.599999999627,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": true,
+              "crewInert": true,
+              "liveSpeech": "off",
+              "huntPresent": true,
+              "huntHidden": true,
+              "huntInert": true,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": true,
+              "hidden": false,
+              "focused": true
+            }
+          },
+          {
+            "elapsedMs": 18825.599999999627,
+            "state": {
+              "phase": "autosave",
+              "connected": true,
+              "sameDrawer": true,
+              "open": true,
+              "topic": "work",
+              "crewHidden": false,
+              "crewInert": false,
+              "liveSpeech": "polite",
+              "huntPresent": true,
+              "huntHidden": false,
+              "huntInert": false,
+              "huntOpen": "true",
+              "huntSelected": "field-jungle-survey",
+              "busy": false,
+              "hidden": false,
+              "focused": true
+            }
+          }
+        ]
+      },
+      "interrupted": {
+        "elapsedMs": 31559.099999999627,
+        "state": {
+          "phase": "manual-tab-interruption",
+          "connected": true,
+          "sameDrawer": true,
+          "open": true,
+          "topic": "work",
+          "crewHidden": true,
+          "crewInert": true,
+          "liveSpeech": "off",
+          "huntPresent": true,
+          "huntHidden": true,
+          "huntInert": true,
+          "huntOpen": "true",
+          "huntSelected": "field-jungle-survey",
+          "busy": true,
+          "hidden": false,
+          "focused": false
+        }
+      },
+      "manual": [
+        {
+          "elapsedMs": 0.19999999925494194,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 18760.599999999627,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": true,
+            "crewInert": true,
+            "liveSpeech": "off",
+            "huntPresent": true,
+            "huntHidden": true,
+            "huntInert": true,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": true,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 18825.599999999627,
+          "state": {
+            "phase": "autosave",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        },
+        {
+          "elapsedMs": 31559.099999999627,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": true,
+            "crewInert": true,
+            "liveSpeech": "off",
+            "huntPresent": true,
+            "huntHidden": true,
+            "huntInert": true,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": true,
+            "hidden": false,
+            "focused": false
+          }
+        },
+        {
+          "elapsedMs": 31633.599999999627,
+          "state": {
+            "phase": "manual-tab-interruption",
+            "connected": true,
+            "sameDrawer": true,
+            "open": true,
+            "topic": "work",
+            "crewHidden": false,
+            "crewInert": false,
+            "liveSpeech": "polite",
+            "huntPresent": true,
+            "huntHidden": false,
+            "huntInert": false,
+            "huntOpen": "true",
+            "huntSelected": "field-jungle-survey",
+            "busy": false,
+            "hidden": false,
+            "focused": true
+          }
+        }
+      ],
+      "scope": "Native autosave and real browser tab interruption, not a Settings-menu pause or synthetic lifecycle event."
+    }
+  ],
+  "focusObservation": "Default Playwright forced-focus emulation explicitly disabled after navigation; real Chromium target activation, no synthetic lifecycle events.",
+  "browserVersion": "154.0.8037.57",
+  "completedAt": "2026-11-09T11:35:40.837Z"
+}

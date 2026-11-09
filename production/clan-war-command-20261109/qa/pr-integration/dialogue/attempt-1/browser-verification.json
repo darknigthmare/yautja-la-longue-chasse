@@ -1,0 +1,67 @@
+{
+  "startedAt": "2026-11-09T10:05:04.139Z",
+  "checkoutCommit": "d277c3cfbc9ac7db0651e192a2acadccb0e30cf6",
+  "scope": "Native GameClient on three viewport sizes, earned clan contacts, four read-only dialogue topics, one browser-played escort and reload. Not a full campaign, physical controller, native mobile or art certification.",
+  "fixture": {
+    "file": "initial-dialogue-fixture.json",
+    "sha256": "7fe6c192abea05280fda103d1747f50035e48604986849643a912dececbc25af",
+    "browserPlayed": false,
+    "description": "Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.",
+    "clanMarks": 1912,
+    "completedContracts": [
+      "welcome-aboard",
+      "ship-training-circuit",
+      "field-jungle-survey",
+      "field-ice-route",
+      "ship-seal-check",
+      "ship-armory-audit",
+      "ship-triage-route"
+    ],
+    "recruitedNpcIds": [],
+    "operation": null
+  },
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx": "474a55c0610dae2e313984a2bdb964ebc4c9390439156e57c86ff4b5fa5e1c71",
+    "app/game/ClanShipOperationsPanel.module.css": "eff860a8e1d1d7e7fbdea35f33ec34811ad2940c394bedbc97155c7e9d033bb8",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx": "583bfbb6fac5e78a6fa361fc630355033e9eeebac95009aa14044788db82e0a8",
+    "app/game/save.ts": "958046d60dacddaae9f6fdacdc8aa43a64b85310117fa099270edb1028218a4e",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "495165339da8da0abd1c8ff020295e271d5f5a10882006ceb3c325f9856543b2"
+  },
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    }
+  ],
+  "contexts": [],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [],
+  "browserVersion": "154.0.8037.57",
+  "failure": "AssertionError [ERR_ASSERTION]: {\"scroll\":84,\"width\":83,\"text\":\"Montre-moi d’abord un engagement de ton cercle. Sans les images, je ne peux pas te dire où tu as laissé l’adversaire reprendre l’avantage.\",\"buttons\":5}\n    at capture (file:///workspace/yautja-main-integration-20261109/scripts/qa-clan-dialogue-browser-20261109.mjs:118:14)\n    at async file:///workspace/yautja-main-integration-20261109/scripts/qa-clan-dialogue-browser-20261109.mjs:140:7",
+  "completedAt": "2026-11-09T10:05:21.981Z"
+}

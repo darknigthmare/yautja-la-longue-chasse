@@ -1,0 +1,36 @@
+{
+  "at": "2026-11-09T10:02:36.945493+00:00",
+  "scope": "Preparation and static QA only; native reproduction pending production build",
+  "sourceFiles": [
+    {
+      "path": "scripts/qa-clan-dialogue-browser-20261109.mjs",
+      "sha256": "495165339da8da0abd1c8ff020295e271d5f5a10882006ceb3c325f9856543b2"
+    },
+    {
+      "path": "scripts/qa-clan-hunt-dialogue-browser-20261109.mjs",
+      "sha256": "ac1d2d41ae7a71d7f5a301462307fed995bc52d3da738a7a692d2cb80dec472f"
+    },
+    {
+      "path": ".github/workflows/planet-arrival-spatial.yml",
+      "sha256": "9d67ea17a33b2a552c1b43c12712dfdd68e69d65f30dab615b242afe899a4949"
+    },
+    {
+      "path": ".github/workflows/pod-systems.yml",
+      "sha256": "4070ad9da8c1e483af2c95047cb73bacb67095e2e55686751d6388e8b925b7e5"
+    },
+    {
+      "path": ".github/workflows/clan-quest-dialogue.yml",
+      "sha256": "12f0ccf89940981bbd323c0c8acba80f6d6a977424edcfdac28de4451fb439ad"
+    }
+  ],
+  "strictLintExitCode": 0,
+  "annotationChecks": {
+    "syntax": true,
+    "missingReport": true,
+    "failureReport": true,
+    "escapedSingleAnnotation": true
+  },
+  "gameplayExecuted": false,
+  "remoteActionsExecuted": false,
+  "spatialX11LocalAvailable": false
+}

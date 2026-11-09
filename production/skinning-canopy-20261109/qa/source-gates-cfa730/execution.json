@@ -1,0 +1,29 @@
+{
+  "records": [
+    {
+      "command": [
+        "node",
+        "scripts/check-hunt-integration-source-v112.mjs",
+        "--current"
+      ],
+      "checkoutCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+      "startedAt": "2026-11-09T08:52:30.310855+00:00",
+      "exitCodeObserved": 0,
+      "finishedAt": "2026-11-09T08:52:31.426104+00:00",
+      "log": "current-source.log"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/snapshot-runtime-v113.mjs",
+        "--check",
+        "docs/qa/current-integration-20261103/runtime-inputs.json"
+      ],
+      "checkoutCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+      "startedAt": "2026-11-09T08:52:31.428140+00:00",
+      "exitCodeObserved": 0,
+      "finishedAt": "2026-11-09T08:52:36.135565+00:00",
+      "log": "runtime-inputs.log"
+    }
+  ]
+}

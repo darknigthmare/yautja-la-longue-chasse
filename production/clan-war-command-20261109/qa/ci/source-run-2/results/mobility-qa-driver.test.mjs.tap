@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: QA course completes using real input steps, observation every 3 ticks
+ok 1 - QA course completes using real input steps, observation every 3 ticks
+  ---
+  duration_ms: 19.406496
+  type: 'test'
+  ...
+# Subtest: QA course completes using real input steps, observation every 4 ticks
+ok 2 - QA course completes using real input steps, observation every 4 ticks
+  ---
+  duration_ms: 28.55741
+  type: 'test'
+  ...
+# Subtest: QA course completes using real input steps, observation every 5 ticks
+ok 3 - QA course completes using real input steps, observation every 5 ticks
+  ---
+  duration_ms: 9.941597
+  type: 'test'
+  ...
+# Subtest: QA course completes using real input steps, observation every 6 ticks
+ok 4 - QA course completes using real input steps, observation every 6 ticks
+  ---
+  duration_ms: 15.052047
+  type: 'test'
+  ...
+# Subtest: QA steering corrects the exact failed run observation rather than holding the wall
+ok 5 - QA steering corrects the exact failed run observation rather than holding the wall
+  ---
+  duration_ms: 4.06328
+  type: 'test'
+  ...
+# Subtest: QA guidance is read-only and preserves real physical clearance
+ok 6 - QA guidance is read-only and preserves real physical clearance
+  ---
+  duration_ms: 0.472343
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 91.630766

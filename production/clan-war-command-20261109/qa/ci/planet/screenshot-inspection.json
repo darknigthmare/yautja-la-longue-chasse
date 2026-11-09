@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-09T12:34:54.185222+00:00",
+  "method": "Three current final original files opened with view_image; two additional final PNGs verified byte-identical to original attempt3 files already opened. No edited or reconstructed imagery.",
+  "inspected": [
+    {
+      "path": "attempt-5/generator-v103/desktop-generator.png",
+      "sha256": "f91e062a66b9827369bc33cee2cc5f1e76de5faecdb62508b6e880977fbd81e9",
+      "observation": "The desktop editor and world parameters are readable; copied capture is byte-identical to the opened attempt3 original.",
+      "identicalPreviouslyOpenedPath": "attempt-3/generator-v103/desktop-generator.png",
+      "identicalPreviouslyOpenedSha256": "f91e062a66b9827369bc33cee2cc5f1e76de5faecdb62508b6e880977fbd81e9"
+    },
+    {
+      "path": "attempt-5/generator-v103/mobile-generator.png",
+      "sha256": "910b83e8079deb97463013b4d9221945b076ba7a51883ba627630015c1e6e1c5",
+      "observation": "The narrow editor controls remain in one column; copied capture is byte-identical to the opened attempt3 original.",
+      "identicalPreviouslyOpenedPath": "attempt-3/generator-v103/mobile-generator.png",
+      "identicalPreviouslyOpenedSha256": "910b83e8079deb97463013b4d9221945b076ba7a51883ba627630015c1e6e1c5"
+    },
+    {
+      "path": "attempt-5/generator-v103/mobile-large-atlas.png",
+      "sha256": "087a0ca1598718a86be0f34488e06307024c4bc792b3c70cb7162bf2e0b0724f",
+      "observation": "The narrow 96-territory map, region indicators and selection dossier remain scrollable and readable. Original long image was displayed scaled by view_image."
+    },
+    {
+      "path": "attempt-5/generator-v102/desktop-generated-front.png",
+      "sha256": "c08d801940db6173f2139fb13c10069cc162c6d367c257074ad4d884d5dfadf9",
+      "observation": "The generated acid/jungle front is visible after native drawer closure, with played turn, globe, ownership outlines and normal command buttons."
+    },
+    {
+      "path": "attempt-5/generator-v102/mobile-generator-controls.png",
+      "sha256": "cc9cb67346ec8eb538624d236e90ec0de1162bd419a4bab5b2ab3c5f69372e4c",
+      "observation": "Labels, selects and generator actions remain readable within the narrow viewport."
+    }
+  ],
+  "limits": [
+    "Five final images inspected; no claim that every PNG/export was opened.",
+    "Long mobile atlas is automatically scaled in the viewer; original artifact bytes are retained.",
+    "No physical mobile/controller, whole campaign, visual-lore certification or measured performance."
+  ]
+}

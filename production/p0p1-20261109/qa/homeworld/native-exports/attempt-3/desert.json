@@ -1,0 +1,157 @@
+{
+  "schema": 126,
+  "sourceSchema": 120,
+  "status": "design-only",
+  "total": 1,
+  "filteredBy": {
+    "mode": "all",
+    "family": "all",
+    "query": "Erg Chebbi"
+  },
+  "variants": [
+    {
+      "sourceId": "CW120-R-HO-001",
+      "mode": "rts",
+      "geography": {
+        "worldId": "earth",
+        "worldKind": "earth",
+        "siteName": "Erg Chebbi",
+        "regionName": "Terre — lieu historique/géographique réel",
+        "latitude": 31.15,
+        "longitude": -3.98,
+        "accuracy": "region",
+        "earthSiteId": null,
+        "earthReferenceName": "Erg Chebbi",
+        "mapAvailability": "pinned",
+        "worldExplanation": "Évocation fictive d'une mission Yautja SUR TERRE ; coordonnées cartographiques approximatives, pas un événement réel/canonique.",
+        "biomeSource": "lexical-inference"
+      },
+      "environment": {
+        "climate": "hot-desert",
+        "temperatureRule": "zone chaude et sèche ; pas de neige naturelle",
+        "biome": "désert terrestre",
+        "terrain": "sable et roche sèche",
+        "liquid": "aucune eau permanente hors oasis ou saline attestée",
+        "weather": "brume sèche",
+        "light": "matin",
+        "hazards": [
+          "déshydratation",
+          "vent abrasif",
+          "visibilité réduite par sable"
+        ],
+        "isFrozen": false,
+        "allowsNaturalSnow": false,
+        "seasonRule": "pas d'événement glacial naturel",
+        "weatherAdjusted": true,
+        "originalWeather": "matin clair",
+        "siteKind": "outdoor",
+        "effectiveHazard": "ensablement des accès",
+        "originalHazard": "nuage de spores",
+        "effectiveTwist": "le chenal principal change de largeur ; ensablement des accès transforme l'approche lors de la phase 1.",
+        "climateConfidence": "requires-geographic-verification"
+      },
+      "original": {
+        "id": "CW120-R-HO-001",
+        "version": 120,
+        "mode": "rts",
+        "family": "homage",
+        "status": "design-only",
+        "title": "Guerre RTS : Hauts-fonds mouvants — Reconstruction d'écho Erg Chebbi — bassin de réparation",
+        "settingName": "Reconstruction d'écho Erg Chebbi — bassin de réparation",
+        "zoneName": "Hommage géographique fictif · Erg Chebbi",
+        "referenceName": "Erg Chebbi",
+        "referenceWork": null,
+        "referenceContinuity": null,
+        "referenceKind": "real-place-homage",
+        "canonClaim": false,
+        "inspirationNote": "Clin d'œil à Erg Chebbi : volumes/reliefs réinterprétés sur un monde fictif. Aucune guerre Yautja historique revendiquée.",
+        "environment": {
+          "biome": "plateau de sel",
+          "terrain": "croûte cristalline",
+          "liquid": "mares saumâtres",
+          "sky": "midi violet",
+          "altitude": "niveau des arches",
+          "layout": "îles de sel entre chenaux alternés ; dunes à plusieurs hauteurs, oueds secs et pistes vulnérables",
+          "scene": "Écho de Erg Chebbi : dunes à plusieurs hauteurs, oueds secs et pistes vulnérables dans plateau de sel",
+          "weather": "matin clair",
+          "timeOfDay": "matin",
+          "cover": "racines géantes",
+          "entrances": [
+            "carrefour des fronts",
+            "carrière de garnison"
+          ],
+          "environmentalHazard": "nuage de spores",
+          "hazardsReaction": "La case sous nuage de spores devient impraticable temporairement, obligeant le cheminement d'unités existantes.",
+          "powerFailure": "Les radars et ascenseurs cessent ; déplacer les équipes par les routes ouvertes et exiger une présence réelle sur les objectifs.",
+          "mapScaleHint": "32×24 scènes composites",
+          "territoryShapeRequest": "forme-region-V120-044",
+          "islandShapeRequest": "forme-île-proposée-054",
+          "worldSize": "medium",
+          "climateZone": "volcanique"
+        },
+        "operation": {
+          "missionType": "Hauts-fonds mouvants",
+          "setup": "amener des forces par chemins accessibles à marée basse dans bassin de réparation sur Reconstruction d'écho Erg Chebbi — bassin de réparation.",
+          "primaryObjective": "amener des forces par chemins accessibles à marée basse grâce à des positions et des unités réellement présentes",
+          "secondaryObjective": "tenir la tête de pont jusqu'au flot ; adapter le rythme aux plateau de sel.",
+          "gameplayHook": "utiliser des unités légères sur chaque rive",
+          "twist": "le chenal principal change de largeur ; nuage de spores transforme l'approche lors de la phase 1.",
+          "failure": "les troupes lourdes traversent un gué interdit ; ou absence des unités nécessaires au retour.",
+          "victoryProof": "occupation physique des cases visées, transport/tenue effectifs, résultat unique et tenir la tête de pont jusqu'au flot",
+          "fallback": "utiliser des unités légères sur chaque rive ; en absence de courant : Les radars et ascenseurs cessent ; déplacer les équipes par les routes ouvertes et exiger une présence réelle sur les objectifs.",
+          "extraction": "point d'extraction logistique",
+          "recommendedUnitIds": [
+            "W3-U07",
+            "W3-U19",
+            "W3-U20"
+          ],
+          "lengthClass": "medium",
+          "threat": 3,
+          "dynamicPhases": [
+            "Choisir les forces selon les PC réels",
+            "Occuper les accès de îles de sel entre chenaux alternés",
+            "Réaliser hauts-fonds mouvants",
+            "Conserver présence et route d'évacuation"
+          ],
+          "resultReceipt": "CW120-R-HO-001-receipt-v1",
+          "neverAutoAnnex": true
+        },
+        "production": {
+          "neededSprites": [
+            "combattants-identifiés-rts",
+            "décor-plateau de sel",
+            "objet-Hauts-fonds mouvants",
+            "vfx-nuage de spores",
+            "surface-croûte cristalline"
+          ],
+          "neededTiles": [
+            "sol-croûte cristalline",
+            "liquide-mares saumâtres",
+            "couverts-racines géantes",
+            "geom-îles de sel entre chenaux alternés"
+          ],
+          "missingSystems": [
+            "géométrie jouable du terrain",
+            "déclencheurs physiques de mission",
+            "IA adaptée à l'objectif",
+            "assets animés et synchronisés",
+            "audit sauvegarde/rapport unique"
+          ],
+          "gameplayBackend": "clanWarOperationsV115.rts",
+          "authoredGeneratorTags": [
+            "forme-region-V120-044",
+            "plateau de sel",
+            "croûte cristalline",
+            "mares saumâtres",
+            "nuage de spores",
+            "matin clair"
+          ],
+          "uniquenessSignature": "rts|homage|Reconstruction d'écho Erg Chebbi — bassin de réparation|Hauts-fonds mouvants|îles de sel entre chenaux alternés|nuage de spores"
+        }
+      },
+      "auditWarnings": [
+        "Météo originale remplacée pour cohérence climatique"
+      ]
+    }
+  ]
+}

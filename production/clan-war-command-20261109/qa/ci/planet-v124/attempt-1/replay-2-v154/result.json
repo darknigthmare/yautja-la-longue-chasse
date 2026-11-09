@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "checks": [
+    "V154 playable traversal is tied to exact canonical planet, not another front",
+    "V154 uses actual V115 territory IDs as departure anchors",
+    "V154 displays a real interactive and bounded 19x13 cartographic grid",
+    "V154 generated planet includes a navigable actual dry-land neighbor for a pisteur",
+    "V155 displays the sampled real altitude profile of the intended path",
+    "V154 click prepares only a contiguous path instead of teleporting the unit",
+    "V155 vertical marker advances when the same unit moves one cell",
+    "V154 move command performs exactly one real adjacent step on dry ground",
+    "V154 exported exercise is fully separate from war archives and identifies exact real unit and world",
+    "V154 choosing the real chariot unit recalculates mobility without changing the actual world",
+    "V154 reset cannot change saved war state or the V115 planet",
+    "V154 interactive movement controls stay accessible on mobile viewport"
+  ],
+  "errors": [],
+  "world": "proc-v115-m9bf-331013100011300111100202030200-0vi1j"
+}

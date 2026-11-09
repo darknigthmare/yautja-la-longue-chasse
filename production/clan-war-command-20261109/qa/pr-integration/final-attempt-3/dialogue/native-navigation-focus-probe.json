@@ -1,0 +1,25 @@
+{
+  "scope": "Local static HTTP and blank tab; no gameplay or synthetic lifecycle event",
+  "afterNavigation": {
+    "a": {
+      "focused": true,
+      "hidden": false
+    },
+    "b": {
+      "focused": true,
+      "hidden": false
+    }
+  },
+  "afterRemovingOverridesAgain": {
+    "a": {
+      "focused": false,
+      "hidden": false
+    },
+    "b": {
+      "focused": true,
+      "hidden": false
+    }
+  },
+  "rafPolling": true,
+  "intervalPolling": true
+}

@@ -1,0 +1,72 @@
+{
+  "recordedAt": "2026-11-09T12:37:01.241917+00:00",
+  "openedOriginalScreenshots": 10,
+  "artisticApproval": false,
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/after-v125-shape-preview.png",
+      "sha256": "03a910a00d016044b9e6478738b74c9315651922652790965094e67fae8e3a50",
+      "opened": true,
+      "observation": "Three native contour previews visible; not a realism approval."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/after-modular-export-panel.png",
+      "sha256": "e1a4ed1a809f7a75167d2c130b7a026acd1d102f8f174293ed5432b0f480e79d",
+      "opened": true,
+      "observation": "Export controls and modular regional inputs visible; Next development warning badge retained."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/after-v125-material-catalog.png",
+      "sha256": "3030203861c6689487545213bfe4516ee8fc99512516e30e8df100700cfefae3",
+      "opened": true,
+      "observation": "Actual bioceramic normal source preview and independent regional controls visible."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v128-regional-kit-desktop.png",
+      "sha256": "8fdd0b8f38c34a023af4a988ce7875a24a05f923b9bd47aee63050121fb4e435",
+      "opened": true,
+      "observation": "Regional draft, material profile and rendered comparison visible."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v128-regional-kit-mobile.png",
+      "sha256": "9c49a1f063505839927f0fac66f25b194cc763c8923ec2683f20ccf448bafb3f",
+      "opened": true,
+      "observation": "Narrow form remains a long technical editor with tall lock-control areas; this QA navigation fix does not redesign that editor."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v131-pbr-coastal-map.png",
+      "sha256": "a9dcfad729d62915251c33a3497f1642bf379cbcde80794a01e8515af52bd835",
+      "opened": true,
+      "observation": "Native regional PBR planisphere, coastline and material sample visible."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v131-pbr-globe.png",
+      "sha256": "8dfedd0c13f932675f59d91747a04101169bc8919cc235ee00c5233bd270fbc6",
+      "opened": true,
+      "observation": "Native regional PBR globe visibly rendered."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v141-interactive-atlas-globe.png",
+      "sha256": "399b56855d6c9faf1397b6f324512c719555471e5ed6e02e4c75de82cc1dbace",
+      "opened": true,
+      "observation": "Interactive globe visibly combines regional materials, terrain outlines and territory markers."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v141-interactive-atlas-map.png",
+      "sha256": "d21c04afc995997283607449aaddc7e9b4324c0c5514ab37d031430cd41a7262",
+      "opened": true,
+      "observation": "Planisphere visibly combines the same materials and territory geometry."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v142-local-atlas-controls.png",
+      "sha256": "ef2206221a952cd7f5446680984022ffeb9e61f3956a64512e87aab9498dedd2",
+      "opened": true,
+      "observation": "Actual native Carte et affichage dialog at390px, local-load and native-reset actions visible near bottom of captured viewport."
+    }
+  ],
+  "limitations": [
+    "Next dev warning badge and known duplicate React-key warnings are retained rather than hidden.",
+    "The sparse CI host omits non-planet character art; background portrait completeness is outside this export-navigation proof.",
+    "The long regional material form remains a separate design task."
+  ]
+}

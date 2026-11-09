@@ -1,0 +1,84 @@
+{
+  "status": "PASS",
+  "checks": {
+    "1811_unique_rows": true,
+    "1806_original_preserved": true,
+    "all_entity_references_resolve": true,
+    "all_related_references_resolve": true,
+    "1134_cases_preserve_morph_and_view": true,
+    "no_artist_or_1to1_certification": true,
+    "all_entities_explicit_phases": true,
+    "all_runtime_assertions_pass": true,
+    "all_pinned_hashes_pass": true,
+    "source_snapshots_still_match": true,
+    "historical_validators_pass": true
+  },
+  "scope": "Diagnostic source/fichiers/admission; aucune preuve navigateur ou approbation artistique créée.",
+  "artifacts": [
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/README.md",
+      "bytes": 6726,
+      "sha256": "c6f86680f1f821fd1af108a46df187d21fccdad6be0031d63977ca2869791d4c"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/audit-runtime.mjs",
+      "bytes": 8365,
+      "sha256": "b23f7970c2b71b140151dbea620cb76fffc5800b76fa32e99ee34947240ae6fa"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/entities.json",
+      "bytes": 1087736,
+      "sha256": "32e706de30be088aedd081879f9da2e02ee8ed336b9edaa283d92268adeedfcb"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/reconcile.log",
+      "bytes": 492,
+      "sha256": "c825331b9130305ad824fc1bd7f6d54188b0364a7a8cba4381f7411583a5b559"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/reconcile.py",
+      "bytes": 26013,
+      "sha256": "4ec83f3852aa3b8c1d1163e2a014988091be943898a9a3f40b1377732e302e49"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/registre-updates.json",
+      "bytes": 1744092,
+      "sha256": "9fea419b54931ffcbf33c9e9741805c36655ea6debb17b83c4041e3cd357ff31"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/rows.json",
+      "bytes": 6696948,
+      "sha256": "f44fa81706a1a0484c4f3a793b4d1b2a2b21bc08620adec7a93c00b5820a2c6c"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/runtime-assets.json",
+      "bytes": 394445,
+      "sha256": "0b02d1b86615770a681ccaff47e0c2a27c66e21c6f218b27a0e98f0ca61d9a16"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/runtime-check.log",
+      "bytes": 590,
+      "sha256": "a506fcf4fec35bd93ce641279b1234256179a89c0a71b04baba3b04d885251e8"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/source-tests.tap",
+      "bytes": 1920,
+      "sha256": "fab8fde833c0c420dffab15eafc348acc53c4aa249c0ec46dbb358a395268ef7"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/source-xlsx-rows.json",
+      "bytes": 1995540,
+      "sha256": "9531c952975148ba745d7b55919e5e16a7e2847fb70047ed2efa7e656af198cd"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/summary.json",
+      "bytes": 71101,
+      "sha256": "bd5a72a47948b6fb00ac0537236d40d78f6a9ba6592802a0fe049e9688f46302"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/validation-source.json",
+      "bytes": 1267,
+      "sha256": "0624cc2c14707c16d1dedbe454d585d428362cee2270e289f8ded2595d342ef2"
+    }
+  ]
+}

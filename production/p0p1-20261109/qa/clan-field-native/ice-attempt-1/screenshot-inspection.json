@@ -1,0 +1,31 @@
+{
+  "inspectedAt": "2026-11-09T06:20:57.861256+00:00",
+  "method": "Three original screenshots (native start, defeated Apex/trophy, terminal result) individually opened with view_image; no image editing.",
+  "screenshotsCaptured": 7,
+  "screenshotsOpened": 3,
+  "humanArtReviewed": false,
+  "blockingFindings": [],
+  "screenshots": [
+    {
+      "filename": "field-ice-route-native-start.png",
+      "sha256": "0ac55bdd1ac0bd33a57ee03f1f4e236d04e22e9eabd3eeec2fdfd90a33248079",
+      "inspected": false,
+      "opened": true,
+      "finding": "Vrai départ avec objectif initial non complété."
+    },
+    {
+      "filename": "field-ice-route-phase-trophy.png",
+      "sha256": "376be8402e0cb6a8490f8ba4ae7f456826f19dd98dea100c626805d79425266a",
+      "inspected": false,
+      "opened": true,
+      "finding": "Apex vaincu et fenêtre de trophée native visible."
+    },
+    {
+      "filename": "field-ice-route-terminal.png",
+      "sha256": "1de5856fa95e20b6bdc33c517dc3ceabc07b76a4620fcc20f989305d826a6727",
+      "inspected": false,
+      "opened": true,
+      "finding": "Résultat natif visible après extraction; valeurs du reçu conservées dans le rapport."
+    }
+  ]
+}

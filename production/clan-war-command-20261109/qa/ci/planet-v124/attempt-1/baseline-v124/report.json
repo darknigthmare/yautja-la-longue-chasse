@@ -1,0 +1,158 @@
+{
+  "passed": true,
+  "planetCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "checks": [
+    "browser preview is a genuine V115 recipe",
+    "V125 editor displays the three actual shape contours",
+    "V137 filters all 120 genuine forms by continent, motif and footprint",
+    "V137 selects the true V115 shape index without generating a world",
+    "V139 chooses the physical-size 96-territory and 12-region draft without altering the preview",
+    "V139 can restore the exact previous draft topology",
+    "region identity and regional material exports are present",
+    "hydrology exports only show actually available features",
+    "region mask has 1024x512 map dimensions",
+    "mask distinguishes land from surrounding liquids without invalid region indices",
+    "V115 regional material atlas has four columns of 256-pixel tiles",
+    "lake-mask keeps 1024x512 independent map geometry",
+    "lake-mask contains rasterized inland features rather than an empty placeholder",
+    "lake-mask does not overlap the V115 solid-land region mask",
+    "river-mask keeps 1024x512 independent map geometry",
+    "river-mask contains rasterized inland features rather than an empty placeholder",
+    "river-mask does not overlap the V115 solid-land region mask",
+    "V125 supplemental terrain normal map is a real 512-pixel bitmap",
+    "V125 normal map contains differentiated texels",
+    "V125 source preview is painted on the actual canvas",
+    "V125 material source supports every real planet region",
+    "V125 same source and channel produce distinct deterministic regional variation",
+    "ZIP contains all four classes of modular layers when available",
+    "V151 ZIP retains all original V124 layers while adding independent environment and integrity studies",
+    "V151 studies cover exactly the same world without war orders or hidden campaign stocks",
+    "V151 default physical altitude exports are present only for V115 worlds",
+    "V151 physically-scaled RG16 export is a true 512x256 PNG in the ZIP",
+    "V153 terrain study adds gradient PNG and actual-route JSON without removing V151 files",
+    "V153 ZIP route study remains bound to actual planet and contains only read-only grade samples",
+    "V153 pentes physically preserve the 512x256 dry-land atlas",
+    "V124 ZIP keeps the canonical world code",
+    "V124 manifest maps actual region indices to texture tiles",
+    "V125 manifest records physical planet radius and 120 independent forms",
+    "V125 manifest includes 32 independent earthlike / alien material entries",
+    "V140 manifest adds 16 new V130 materials without reordering the 32 historical entries",
+    "V124 manifest matches every exported file and real canvas dimensions",
+    "no browser exceptions while exporting"
+  ],
+  "layers": [
+    {
+      "name": "composite-map.png",
+      "layer": "composite",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "albedo-map.png",
+      "layer": "albedo",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "land-map.png",
+      "layer": "land",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "surface-map.png",
+      "layer": "surface",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "clouds-map.png",
+      "layer": "clouds",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "weather-map.png",
+      "layer": "weather",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "atmosphere-map.png",
+      "layer": "atmosphere",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "night-map.png",
+      "layer": "night",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "mask-map.png",
+      "layer": "mask",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "region-index-map.png",
+      "layer": "region-index",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "regional-atlas-atlas.png",
+      "layer": "regional-atlas",
+      "projection": "atlas",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "lake-mask-map.png",
+      "layer": "lake-mask",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "river-mask-map.png",
+      "layer": "river-mask",
+      "projection": "map",
+      "width": 1024,
+      "height": 512
+    },
+    {
+      "name": "relief-height-rg16-map.png",
+      "layer": "relief-height-rg16",
+      "projection": "map",
+      "width": 512,
+      "height": 256
+    },
+    {
+      "name": "relief-preview-map.png",
+      "layer": "relief-preview",
+      "projection": "map",
+      "width": 512,
+      "height": 256
+    },
+    {
+      "name": "terrain-slope-v152-map.png",
+      "layer": "terrain-slope-v152",
+      "projection": "map",
+      "width": 512,
+      "height": 256
+    }
+  ],
+  "errors": []
+}

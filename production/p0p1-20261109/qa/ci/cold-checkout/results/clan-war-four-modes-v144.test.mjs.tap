@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: Assault V144: two real allies withdraw together, spend exactly 16 AP and retain IDs without an extra combat tick
+ok 1 - Assault V144: two real allies withdraw together, spend exactly 16 AP and retain IDs without an extra combat tick
+  ---
+  duration_ms: 9.980637
+  type: 'test'
+  ...
+# Subtest: Assault V144: a rear enemy, non-deployed team, cost shortage and forged receipt never yield a free regroup
+ok 2 - Assault V144: a rear enemy, non-deployed team, cost shortage and forged receipt never yield a free regroup
+  ---
+  duration_ms: 0.651543
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: an author-legal route switch can be ordered ONLY before leaving the first passage
+ok 3 - Outer Ops V144: an author-legal route switch can be ordered ONLY before leaving the first passage
+  ---
+  duration_ms: 39.091844
+  type: 'test'
+  ...
+# Subtest: Outer Ops V144: cannot forge passage IDs, RAV or the historical deadline after route change
+ok 4 - Outer Ops V144: cannot forge passage IDs, RAV or the historical deadline after route change
+  ---
+  duration_ms: 0.718574
+  type: 'test'
+  ...
+# Subtest: Infiltration V144: reinforcement is optional, uses a real walkable gate and acts on real ticks
+ok 5 - Infiltration V144: reinforcement is optional, uses a real walkable gate and acts on real ticks
+  ---
+  duration_ms: 3.217724
+  type: 'test'
+  ...
+# Subtest: Infiltration V144: two guards move physically and fake guard placement is refused
+ok 6 - Infiltration V144: two guards move physically and fake guard placement is refused
+  ---
+  duration_ms: 2.703659
+  type: 'test'
+  ...
+# Subtest: RTS V144: two physical shooters deal two hits for 2 RAV in exactly one AI turn
+ok 7 - RTS V144: two physical shooters deal two hits for 2 RAV in exactly one AI turn
+  ---
+  duration_ms: 21.514997
+  type: 'test'
+  ...
+# Subtest: RTS V144: duplicate squad, invisible target, 1 RAV and inactive phase reject without mutation
+ok 8 - RTS V144: duplicate squad, invisible target, 1 RAV and inactive phase reject without mutation
+  ---
+  duration_ms: 2.984693
+  type: 'test'
+  ...
+# Subtest: Source V6/W3: cross-mode V144 actions still cannot write a free mission result to the campaign
+ok 9 - Source V6/W3: cross-mode V144 actions still cannot write a free mission result to the campaign
+  ---
+  duration_ms: 59.933016
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 150.653177

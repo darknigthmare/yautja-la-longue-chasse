@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "scope": "Same isolated actual sparse checkout and asset inclusion as receipt.json; only the portable runner was refreshed to its stricter final TAP verdict. All70actualfiles rerun; shared locked dependencies, not a fresh npm install or remote CI run.",
+  "sparseCheckoutReceipt": {
+    "path": "production/p0p1-20261109/qa/ci/cold-checkout/receipt.json",
+    "bytes": 679,
+    "sha256": "5c81e733e0290ce1a1b25e2c4fc976102568ac16d2bfbee6e90970b6acdb8970"
+  },
+  "runner": {
+    "path": "scripts/check-p0p1-coherence-20261109.mjs",
+    "bytes": 3423,
+    "sha256": "9dc1ef61c5cf6d4d3c18e801a8e25215c9c2d5b3cc023c84292bda55ab1c4314"
+  },
+  "include": {
+    "path": "scripts/include-p0p1-ci-inputs-20261109.mjs",
+    "bytes": 2090,
+    "sha256": "ada82115e729a845ad8e4e4a467aa7513d1060e4d6c81a95bc8ac1a3fb946b05"
+  },
+  "workflow": {
+    "path": ".github/workflows/p0-p1-coherence-20261109.yml",
+    "bytes": 1971,
+    "sha256": "aeb294186f621512dfccb178cb815eacc3c65763f4da179e5714b1927d1a8acd"
+  },
+  "manifest": {
+    "path": "production/p0p1-20261109/qa/ci/runtime-file-inputs.json",
+    "bytes": 22520,
+    "sha256": "e587ef758e33943558fc89d5bb43bf9915304b9a01d493e447b7cdfecdaba8a2"
+  },
+  "report": {
+    "path": "production/p0p1-20261109/qa/ci/cold-checkout/strict-results/report.json",
+    "bytes": 50111,
+    "sha256": "b4cfaff2efa02f82e0e646feb8e884a1c285e64b571089371c79dd282c88bdcc"
+  },
+  "testFiles": 70,
+  "totals": {
+    "tests": 677,
+    "pass": 677,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "spawnFailures": 0
+}

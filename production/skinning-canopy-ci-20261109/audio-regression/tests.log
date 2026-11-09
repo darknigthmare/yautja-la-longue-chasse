@@ -1,0 +1,24 @@
+✔ inventory covers every declared effect, biome and music context without requiring audio (5.441014ms)
+✔ a real file wins over the missing marker, empty audio is excluded and URL names are escaped (4.692013ms)
+✔ format ordering, deterministic output and content fingerprints survive adds, replacement and removal (9.610628ms)
+✔ a configurable local public prefix is supported and unsafe prefixes are rejected (1.815251ms)
+[audio] inventory updated: 1 supplied slots
+[audio] inventory updated: 0 supplied slots
+✔ development watcher updates added and deleted audio without rewriting its own manifest forever (811.557673ms)
+✔ V54 delivered audio decodes as bounded PCM with exact source and manifest fingerprints (55.845484ms)
+✔ ship overlap loop has no impulsive boundary compared with its own adjacent samples (86.270341ms)
+✔ scene pause preserves preferences and does not create or resume an unactivated engine (0.802661ms)
+✔ an unactivated score request keeps its context but does not fetch the optional inventory (0.269797ms)
+✔ pause suspends an already activated context; resume preserves mute and bus levels (0.613202ms)
+✔ a late browser suspend cannot override a newer resume (0.288083ms)
+✔ remote pod events each dispatch one optional authored sound without a duplicate synthesized voice (0.308553ms)
+✔ the pod fallback produces distinct arm, cancel and blast sounds on the existing effects clock (0.361962ms)
+✔ pod synthesis stays silent when the existing audio transport is not ready (0.138214ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1036.584118

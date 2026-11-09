@@ -1,0 +1,733 @@
+{
+  "schemaVersion": 1,
+  "selection": "production/clan-war-command-20261109/qa/ci/test-selection.json",
+  "selectionSha256": "6c4f96aaf8c590e72a328a2b328ca70b78e8756b51f8ef953d5ab4921eaa9f92",
+  "scope": "Exact successful non-source reads of the 103-file current regression suite, plus pinned public JSON imports in the application graph compiled by esbuild subprocesses. App, scripts, tests, lib, types and configuration source trees are included separately. No full public checkout or art certification.",
+  "files": [
+    {
+      "path": "docs/campagne/mobilite/catalogue/01-10.json",
+      "bytes": 15615,
+      "sha256": "97af9eab8764b3041e748ee80b708c9fe77ea384da50df9d988573943c435818"
+    },
+    {
+      "path": "docs/campagne/mobilite/catalogue/11-20.json",
+      "bytes": 14392,
+      "sha256": "934b3b6e920a552349cf5fbfb5e7807b0a893ac25caa4fe6751270af30e138f8"
+    },
+    {
+      "path": "docs/campagne/mobilite/catalogue/21-30.json",
+      "bytes": 14174,
+      "sha256": "250cf5e274dfe7b48cecbfcbcf17051f9ab3bc93d3192d2e8f3193bca4276443"
+    },
+    {
+      "path": "docs/campagne/mobilite/catalogue/31-40.json",
+      "bytes": 14287,
+      "sha256": "fc75f13109611d9fd94e91f8485fc4484f588a0e926db5910c583b2419df0064"
+    },
+    {
+      "path": "docs/campagne/mobilite/catalogue/41-50.json",
+      "bytes": 14704,
+      "sha256": "a885da26d73d11465abc2ab508e3d5ccc79356f75f4507a01f6d31050ed23e7b"
+    },
+    {
+      "path": "docs/campagne/warp-universe/lot-06-20261106/module/199_module_baie_warp_fond.png",
+      "bytes": 2874040,
+      "sha256": "c5b88e5939bb4eaaad016da06377802e0ff8cf7d127f48c4ca438bfcb47d17ad"
+    },
+    {
+      "path": "docs/campagne/warp-universe/lot-06-20261106/module/201_module_archiviste_yautja.png",
+      "bytes": 2514865,
+      "sha256": "84c87998fcde4c031781a4ea2c13c46dbf96649ad5cc018e12d4f1050fa7b6d9"
+    },
+    {
+      "path": "docs/campagne/warp-universe/lot-06-20261106/module/203_module_memoire_avatar.png",
+      "bytes": 2468644,
+      "sha256": "1bb83c64ec652d0bc6b43c24a8e47840f6ad12454ca44f412f2fb14a3de441fd"
+    },
+    {
+      "path": "docs/clan-war-v152/Yautja_ClanWar_V152_Provenance_QA.xlsx",
+      "bytes": 34057,
+      "sha256": "40ad861f04e789961b1619b3aa464e1c41c26424313ae7e8159b917b72adad37"
+    },
+    {
+      "path": "docs/hunt-mechanics-v112.json",
+      "bytes": 432273,
+      "sha256": "47b91ad876359968ffaa7a41c8413e9bc69ebf01715dd2a5884a69b466f44b5e"
+    },
+    {
+      "path": "public/audio/ambience/ship/v54.wav",
+      "bytes": 418994,
+      "sha256": "b2ed760f17352aca514eb2a7aa6f6295127188bf2e7b02390a25ec12295d3371"
+    },
+    {
+      "path": "public/audio/manifest.json",
+      "bytes": 11771,
+      "sha256": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78"
+    },
+    {
+      "path": "public/audio/provenance-v54.json",
+      "bytes": 24967,
+      "sha256": "bcba9bc2d56318434fe0d3e7dfe836a30fa616c3a57b6f208ee33cfbc16caf71"
+    },
+    {
+      "path": "public/audio/sfx/cloak-off/v54.wav",
+      "bytes": 84136,
+      "sha256": "d1b347e76fe796e4776bf235eb49b2c5becb3e868dfd9bd7045eefdcfe773815"
+    },
+    {
+      "path": "public/audio/sfx/cloak-on/v54.wav",
+      "bytes": 84188,
+      "sha256": "c20114f57d3fb83b7a5fde25ea6787644519f0d80fbd34bf5c079bfdb31681f0"
+    },
+    {
+      "path": "public/audio/sfx/defeat/v54.wav",
+      "bytes": 123524,
+      "sha256": "e302f3ee18a421d1940a80a4f35bb61826c546dcade2359ad8822e38f989a35c"
+    },
+    {
+      "path": "public/audio/sfx/enemy-alert/v54.wav",
+      "bytes": 29114,
+      "sha256": "8ed0cbb86388638679a2b6e9d7ff5970bd6a4084a875a331de1cd4061019a97d"
+    },
+    {
+      "path": "public/audio/sfx/footstep/v54.wav",
+      "bytes": 23770,
+      "sha256": "d7c8ed478556cf7c747bcee2f85136438dea0b4c8926ee0450b100c03758fbac"
+    },
+    {
+      "path": "public/audio/sfx/hit/v54.wav",
+      "bytes": 36654,
+      "sha256": "c9fab9d00656beaaaed4d150a574742b04fea3ccb988fd35cf51365e56fcb0c7"
+    },
+    {
+      "path": "public/audio/sfx/jump/v54.wav",
+      "bytes": 58346,
+      "sha256": "b07f7f28dbe2b6ebef4508f0fb3b45f1b2c8d909ca4d7659773b1e32529aeb16"
+    },
+    {
+      "path": "public/audio/sfx/mask-off/v54.wav",
+      "bytes": 39366,
+      "sha256": "6e7cef893466b939a2bcf7bb1705b85447cbc6f1fce44dc350f8575dba8ec516"
+    },
+    {
+      "path": "public/audio/sfx/mask-on/v54.wav",
+      "bytes": 23092,
+      "sha256": "b29adbb030624b3c904fc38e9f0f40ec10dec8f82547a490a34eafe7f8eb625f"
+    },
+    {
+      "path": "public/audio/sfx/medicomp/v54.wav",
+      "bytes": 30408,
+      "sha256": "94f68331a930ddf1658f7fa7601cfd6bc8f12a7ec9da6ce88f268ee6f238d8f5"
+    },
+    {
+      "path": "public/audio/sfx/netgun/v54.wav",
+      "bytes": 24740,
+      "sha256": "2cd320068b282e8e2cba7a2758d5d76f913a905426bb06e2ab5b696d651aca00"
+    },
+    {
+      "path": "public/audio/sfx/objective/v54.wav",
+      "bytes": 43298,
+      "sha256": "371d585b2783406698c4a9e94cb1acc2a8c00e006a40ecae51d1e7b3a359e07e"
+    },
+    {
+      "path": "public/audio/sfx/plasma/v54.wav",
+      "bytes": 59724,
+      "sha256": "d336712da21eea798974387a7bcf2520878317044f5182806947252184e86a4c"
+    },
+    {
+      "path": "public/audio/sfx/scan/v54.wav",
+      "bytes": 33560,
+      "sha256": "86e2562187736d346c8fac42eeeeb87ff3e77fd75fb8ede2ee562f2a8632907d"
+    },
+    {
+      "path": "public/audio/sfx/select/v54.wav",
+      "bytes": 47584,
+      "sha256": "68771760d2a5810f9f020ee00be44f97dcbc989ef251e6b03a2049b4e02ab8c3"
+    },
+    {
+      "path": "public/audio/sfx/slash/v54.wav",
+      "bytes": 52922,
+      "sha256": "dd4efed6463c40b749a4c832f501f7af6fbc5423164ccf0e09992e1f3ece0dd4"
+    },
+    {
+      "path": "public/audio/sfx/snare/v54.wav",
+      "bytes": 63770,
+      "sha256": "3e1304aff0657366b8fafdfb3e5295b0840265253b08c176d28ef4aadc172b6e"
+    },
+    {
+      "path": "public/audio/sfx/trophy/v54.wav",
+      "bytes": 105884,
+      "sha256": "f58c1995dd144316b8474448a621440c6c8a58f4a077ace922b6d8360c1c97a4"
+    },
+    {
+      "path": "public/audio/sfx/ui/v54.wav",
+      "bytes": 8610,
+      "sha256": "05830b46be4e59761024d276b6bec18a4025964a819d188ed68304fe92b40bed"
+    },
+    {
+      "path": "public/audio/sfx/victory/v54.wav",
+      "bytes": 141164,
+      "sha256": "c13708e8a33adaa0f988aab76671bf39b7b5c4e80177d3f496437e1eb219575a"
+    },
+    {
+      "path": "public/audio/sfx/weapon-switch/v54.wav",
+      "bytes": 39366,
+      "sha256": "ae907ea016243a4853bd6f430a109a24c7e03ca81fbf45106f1f9dacee1e9814"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/barrier-damaged.png",
+      "bytes": 40541,
+      "sha256": "39c3d108e57408a32ef586ce4354a7abc2cf0d30323fa664215e4006f3031272"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/barrier-damaged.svg",
+      "bytes": 3579,
+      "sha256": "b7657ca0fd0842227892f2f5048f3eef11d487f5b8a5c99e0bc5ae8f4d49de10"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/barrier-damaged.webp",
+      "bytes": 5032,
+      "sha256": "4e400f2fab3423184c55ef4873a09da1335fba6cdeb8483c4b672b41a66d18b6"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/barrier-intact.png",
+      "bytes": 37989,
+      "sha256": "22245581678d5ea0e550d74d25d78bccbcf27ed8ed7cc929c0e27d3554d3c303"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/barrier-intact.svg",
+      "bytes": 3086,
+      "sha256": "fe02b6a4f962eb4508865d42aad37160e2acab9edfae5eda9243e814691f4025"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/barrier-intact.webp",
+      "bytes": 4764,
+      "sha256": "ed122a03dcbb0f648860e21429a7d95ad63bd71eab3ca9ebec0cea49af443ca4"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/beacon-active.png",
+      "bytes": 28053,
+      "sha256": "e693f5272c6132243d8762aeeb6f00bdf40e84904c4d8f5b2d59a4dbd60052f4"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/beacon-active.svg",
+      "bytes": 3111,
+      "sha256": "27ea798092414179cb29e0e9ea9708bb84f748be09cf78291a9a6797ac259115"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/beacon-active.webp",
+      "bytes": 4570,
+      "sha256": "e67cbffe907532cd8b36533a2b337be760e8174709cc8162057abcc1a74a4cf1"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/beacon-disabled.png",
+      "bytes": 26711,
+      "sha256": "2353bbdb37627802053f9c5b96b04bebdf4c696f90f18dd08e6507c09f348c29"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/beacon-disabled.svg",
+      "bytes": 3112,
+      "sha256": "1cab62bad374aa46785d68172d339acaba6b7b2578e774347e41d6f448926471"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/beacon-disabled.webp",
+      "bytes": 4174,
+      "sha256": "e2b0756682584b691c8a28dd9f2440b86917eb15ebffbe507f9da96b990bc2b0"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/core-active.png",
+      "bytes": 33559,
+      "sha256": "5bca40f17e67472d7b30dad4dedf5593a6b0f7c94cd0ebd02457f3cc97b87a56"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/core-active.svg",
+      "bytes": 2967,
+      "sha256": "ad81276569d4fe94568c82e404843529e3761ef8b07146d283e1b617cd0fcdb4"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/core-active.webp",
+      "bytes": 4078,
+      "sha256": "03d6c97fa068896728faab530ca2989ffedfc63c70c1f5d7c8b5fadd10df9c30"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/core-disabled.png",
+      "bytes": 25625,
+      "sha256": "353ca93b0e573d4b4ebd885ff2bf4279e7d2025fc4036cf072c0aa4e1f3ce878"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/core-disabled.svg",
+      "bytes": 2968,
+      "sha256": "8b089ab710125e99693c72d1e59358acfdf0897d2b31b432e48cd37cb29e72b4"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/core-disabled.webp",
+      "bytes": 3136,
+      "sha256": "16465e9323e121bf9969f0b7080a5df8aa50b9061395a30b1c21a8b938058cbc"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/manifest.json",
+      "bytes": 12711,
+      "sha256": "14b5530475dedcfbcbb4e0327590d4e012f6aac8aec35328e640117f72651c6c"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/medical-empty.png",
+      "bytes": 23442,
+      "sha256": "afa15e8fbdb78b4fc3d6ee4e18f2d26d59785b104a6b2b7b6d069e87a79529ea"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/medical-empty.webp",
+      "bytes": 3790,
+      "sha256": "0e85a6cb7cd912e145c72216f232c192e53118a27e9ac0e73aabc1b761b25a30"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/medical-stocked.png",
+      "bytes": 24294,
+      "sha256": "d4ac5b75b525ecc1b9354d68c796817a6f1d4ee1a90daf94993a47edd13d1231"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/medical-stocked.svg",
+      "bytes": 3174,
+      "sha256": "557502a8b4de359da6a049265859d14c412a5b4f0a87f4a587cad9dcf3dbdd70"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/medical-stocked.webp",
+      "bytes": 4080,
+      "sha256": "8593bec5869873d52a5ecb4069875ede45fadfb9f1e6636bdc85636ba1b779cd"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/relay-active.png",
+      "bytes": 33817,
+      "sha256": "e5f0640c75eaa7cd5ee93bf778f962d02df069e0c26e571fd24838bb03048e43"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/relay-active.svg",
+      "bytes": 3769,
+      "sha256": "38d755191306441377679a7dd4ba0de91288d4b194052ccf6944d2a795440e2b"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/relay-active.webp",
+      "bytes": 4622,
+      "sha256": "c0d362f52f69840fe334a608601017128f390c2ecce5d869e2ed6c440eb4ea68"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/relay-disabled.png",
+      "bytes": 33719,
+      "sha256": "1bb7d6213c27bcd8acb8835bc8ee75eb29c11e5b7e0c577cd9b7ccd86236e529"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/relay-disabled.svg",
+      "bytes": 3769,
+      "sha256": "a90ff43f27b9de94c9a7e20293e763ba11f34c16111d5fbb3cd8ce52e4ae5957"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/relay-disabled.webp",
+      "bytes": 4488,
+      "sha256": "f900d24eed268be0adafd698bc3d0f285793fdc58fa116413dee2ad83f46ebc5"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/supply-open.png",
+      "bytes": 32673,
+      "sha256": "f8e69504e7eca8f7a5d6faaf40b37a023295fb3a29ea4c595e939becf291e9e5"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/supply-open.svg",
+      "bytes": 4039,
+      "sha256": "24131a1f3eac377179e5522ed1312ec94289519378d50ff884ab0e380b98f4a9"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/supply-open.webp",
+      "bytes": 5062,
+      "sha256": "8e9534b2bd1467bd0cf6bd808f6dd5e99fbc014b5c3bd88fcfb2c403b7e49e6f"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/supply-sealed.png",
+      "bytes": 24888,
+      "sha256": "e975c13d584eafa823ccc1757236fe01681cbef33a7652bf694cd8e29a86b5c1"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/supply-sealed.svg",
+      "bytes": 3517,
+      "sha256": "84e5b291cbf319e6723d33925f960de7e96ec0eb1a2d071822a6f4ddc6896093"
+    },
+    {
+      "path": "public/game/assets/clan-field-20261103/supply-sealed.webp",
+      "bytes": 4134,
+      "sha256": "482848e831130dc9735f6c1fc839fd6bcfc79e75f007bac29c12a50c804778be"
+    },
+    {
+      "path": "public/game/assets/v113/phg/armor_classe_samurai_laque_rouge_volutes.png",
+      "bytes": 2616053,
+      "sha256": "7c52d1f8a69f4f4c3e4c10d66545ab35801b599a249941b4a3bfdacfe3e5a85d"
+    },
+    {
+      "path": "public/game/assets/v113/phg/armor_filet_fin_noir_losanges.png",
+      "bytes": 1850203,
+      "sha256": "38c40fffbe095e25ffeadf22c23bb85b3d7a721c73f4306b8d5ecf428632a23b"
+    },
+    {
+      "path": "public/game/assets/v113/phg/skin_shatter_demon_provisoire.png",
+      "bytes": 2841876,
+      "sha256": "57e2a82635e48a58fcc248e57791fe35f5dc19fffd6d6b5961df88cf1dd211c0"
+    },
+    {
+      "path": "public/game/assets/v125/phg-studies/atlas.webp",
+      "bytes": 627678,
+      "sha256": "d912467995891fac85304aa6d69853d6a2ed77b7efade77f76ba23fe475664da"
+    },
+    {
+      "path": "public/game/assets/v126/phg-recent/atlas.webp",
+      "bytes": 386062,
+      "sha256": "7a337cad2bd818b77d1ff5d8a67745f7fdca843607f177fee8a788653a09ec05"
+    },
+    {
+      "path": "public/game/assets/v127/phg-historical/atlas.webp",
+      "bytes": 458248,
+      "sha256": "8be3538f63b9ff4b990361f603d57f91040f3039c4c9c45486409224c17b4e2c"
+    },
+    {
+      "path": "public/game/assets/v128/phg-platform/atlas.webp",
+      "bytes": 426232,
+      "sha256": "7ea43242987fe99abaae5cbe884ce7f428be586543f48fd9221fcd197654933a"
+    },
+    {
+      "path": "public/game/assets/v129/phg-patches/atlas.webp",
+      "bytes": 409912,
+      "sha256": "4eac66e3dc679a207791f8d10d1ca75970a61db0c5c20b3547d52b91833d6b8f"
+    },
+    {
+      "path": "public/game/assets/v132/phg-biomask/atlas.webp",
+      "bytes": 840690,
+      "sha256": "1606b3f815acf465e71ab0dd99a92e668c8eec1bbd306c31b2f45c6832a1084c"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/glypic.webp",
+      "bytes": 6004,
+      "sha256": "41d64588928742251f424bc2ebe073d1845877224ef2193fe78d49535df2bbed"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/instinct.webp",
+      "bytes": 5572,
+      "sha256": "773c8164146ced141c592fa1ed785d80ad5ef6662cf283ef37664955dafb549a"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/nova.webp",
+      "bytes": 5692,
+      "sha256": "6aac14a067f8b9eeb152c62fe5320ca87905d37777dddd60d199bd70db405f21"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/paroxysm.webp",
+      "bytes": 5580,
+      "sha256": "97212abde1053892d8bfd8b73d4ca5f6627dbf9477365f648bf4eb6b830a8057"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/requiem.webp",
+      "bytes": 5992,
+      "sha256": "6cb669139f310541896f89fd5576b38f6de62e9493d128c99c06aa5dca21def1"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/tyrant.webp",
+      "bytes": 6002,
+      "sha256": "7f54b0c28b2321fbd7bdf0cfe3e56f3b7a4f21d38e43c17257ca81a489051534"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/warlord.webp",
+      "bytes": 5986,
+      "sha256": "614f778a9399cd8fdba73cc39939be9d412fd61409b95d9085415d4b011d8e56"
+    },
+    {
+      "path": "public/game/assets/v133/decals/decal-atlas.webp",
+      "bytes": 1390552,
+      "sha256": "53f7c0c6d5349c4c88ab585183aa0c398c81ff39c5f224bf1f66dab951ff4536"
+    },
+    {
+      "path": "public/game/assets/v14/hunter-kit/manifest.json",
+      "bytes": 22588,
+      "sha256": "da981f709c6c5ae3f3a3fa8d2e787e6dbd74abdeda2358a071f1d21b5feb1778"
+    },
+    {
+      "path": "public/game/assets/v15/trophies/manifest.json",
+      "bytes": 13990,
+      "sha256": "45270df58a616cf97b9e078e6ce0222c9ba864493083d88f36d7b2c1068b54b7"
+    },
+    {
+      "path": "public/game/assets/v16/franchise-trophies/manifest.json",
+      "bytes": 193735,
+      "sha256": "13887255bb7d61a7146f4cf67033ec9e875cb5d9694ff10e81536f89828abf1c"
+    },
+    {
+      "path": "public/game/assets/v17/enemy-trophies/manifest.json",
+      "bytes": 354628,
+      "sha256": "5c31fabb80d16a16b08d77276202618a98caf7a7d5f41e5d65117369b821011d"
+    },
+    {
+      "path": "public/game/assets/v18/enemy-trophy-gameplay/manifest.json",
+      "bytes": 479128,
+      "sha256": "d00682b031b5920180f359b17bf1ff6ee30635c096688341003f34bcc4274c90"
+    },
+    {
+      "path": "public/game/assets/v28/sprite-review/manifest.json",
+      "bytes": 86223,
+      "sha256": "554282574e5868945c6444516c711ea414ca9c3d6d83b4f2da54b8eb3d068068"
+    },
+    {
+      "path": "public/game/clan-ship/props/manifest.json",
+      "bytes": 7359,
+      "sha256": "a00424abd463b6285b07e34e2547030c4c50279caa180eb92990473ca9a64790"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/anneau_ligature_fil_rouge_observe_2022.png",
+      "bytes": 3436801,
+      "sha256": "35eb639167a981be767c08810a0ee0deab7ddfe806d13131657dd9bd40bb32e2"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_alpha_ceinture_ivoire_cannelee.png",
+      "bytes": 3129783,
+      "sha256": "8adb8bc7f07862434f0d387d5f98cdb1f412a1f5af5a3e86c4dd7c9802e84d75"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_alpha_fibres_brun_noir.png",
+      "bytes": 3331361,
+      "sha256": "9291827dbe1c13c8c8fb91b6ba535178aa22ad3b676bf599704286071491ad33"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_anubis_etoffe_claire.png",
+      "bytes": 4245821,
+      "sha256": "084731210c8217eae6db6ba752a78656970a2e16613dfd82df063d29472b44fc"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_avp_cuir_noir.png",
+      "bytes": 4175072,
+      "sha256": "56534c23427bac9a1144ece34041654157ed57bdaed2c63b0a222a717497377d"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_bionic_etoffe_gris.png",
+      "bytes": 4447447,
+      "sha256": "249b1dbfc9c15860523d8e8438587744e4e0477f706f9e8d9753783737ea5189"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_cleopatra_etoffe_ivoire_ocre.png",
+      "bytes": 4396348,
+      "sha256": "3365f57e08ee1db1b05ab41d410cc95e0c931f31b3711b34489e93e3baa7fdb5"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_emissary_toile_brune.png",
+      "bytes": 3964701,
+      "sha256": "e9d60206ead77791402d6e331cbeda90496f2a2e61d2b6a000a86942862771e3"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_exiled_fibres_brun_sombre.png",
+      "bytes": 3851321,
+      "sha256": "43c77822bb2e68c53504f1ffc979ecc54efc12d28b6311b0503a208361eeb975"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_father_etoffe_bleu_ardoise.png",
+      "bytes": 4066588,
+      "sha256": "71eb02da1a54077a0b619190a9edf9ff6b972943480f98d4196d370a91735868"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_father_masque_beige_strie.png",
+      "bytes": 4129591,
+      "sha256": "fb3253efac9651ad053b76ffe30656334727d65a07b8f2475c4e203945bb71b1"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_father_tissu_gris_prune.png",
+      "bytes": 4414700,
+      "sha256": "6eec28b1ead6294b50faf6949dc597e25b0031a61b7cf86ec975ca78efbfb33d"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_gladiator_cuir_grave.png",
+      "bytes": 4149726,
+      "sha256": "43fd7d454d440f20a6fc95c4f17aba146c486e0b430425db8b56b50395c94840"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_gladiator_etoffe_bordeaux.png",
+      "bytes": 3797074,
+      "sha256": "cc35d57dbca2e42675c7b0cf61d76ee58839f929a27518c2806ffa7388f5e560"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_jotun_sangle_brun_grave.png",
+      "bytes": 3856318,
+      "sha256": "1f11210ae3cd14f14c8888eaea8e7f7473aeada79c58a8cdfdd5bc4b12ea2461"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_oni_tissu_anthracite.png",
+      "bytes": 4061229,
+      "sha256": "22e671e54558b89279800c75e74a4d3f346e6208c34cf2f5fd0f551c20a9f7d2"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_pirate_cuir_brun_sombre.png",
+      "bytes": 4051332,
+      "sha256": "ef8679be00b5759075d573a01d2eee905ffa305d1efbafb3ceb7b6650efcf89e"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_pirate_etoffe_vert_sauge.png",
+      "bytes": 4413084,
+      "sha256": "f1d2280aedd920fc69f8ab78bab6766b9c3696d0aecb22f556a6f2d5730a8d50"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_samurai_laque_rouge_volutes.png",
+      "bytes": 2616053,
+      "sha256": "7c52d1f8a69f4f4c3e4c10d66545ab35801b599a249941b4a3bfdacfe3e5a85d"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_samurai_tressage_brun.png",
+      "bytes": 4041965,
+      "sha256": "f9aa5d03c4b7379810542704f770ef695590bec14658a651dd44d5762714e5d4"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_valkyrie_entrelacs_cuivres.png",
+      "bytes": 3288215,
+      "sha256": "88f301c8a080ade62d670a394f74e7835e3c2436a59e938a6f449d7b7cb1f013"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_viking_fourrure_gris_taupe.png",
+      "bytes": 4431957,
+      "sha256": "dd77e8ae8cadaf744bd785d3ddd826449096ea1a680492e7b312b9d67b541655"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_witch_etoffe_taupe_usee.png",
+      "bytes": 4367210,
+      "sha256": "bcbbcc45634f222f2d5a866f2fa8491ef41ce42b1e24a3f9a1448344551787da"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_wolf_cuir_brun_sangles.png",
+      "bytes": 4172365,
+      "sha256": "9d0a055d55b052ae1c1c36fe77f7fad899233a3f410488dd34c018e9e3775a13"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_wolf_tablier_gris_brun.png",
+      "bytes": 4359700,
+      "sha256": "f3a1dca7e4dabad3afd9c4b9cdf8279e86e144a7788ca3ae88ac92a5debeb328"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_epic_promo_2020.png",
+      "bytes": 4697650,
+      "sha256": "7aa4825c222152b62f6f0b3533f630e9e68116bff7c5301f7d62ef5ea69cbe3f"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_filet_epais_brun_losanges.png",
+      "bytes": 2022183,
+      "sha256": "dce76ab75b83975f5656035b69cc52767cd56ce5a7f7c261b3d05a68db913d15"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_filet_fin_noir_losanges.png",
+      "bytes": 1850203,
+      "sha256": "38c40fffbe095e25ffeadf22c23bb85b3d7a721c73f4306b8d5ecf428632a23b"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_playstation_promo_2019.png",
+      "bytes": 4293720,
+      "sha256": "5eabc02e7509863145a555bf13be339db3e312a7cd7ce82b56444fa7cb9f2e0e"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/dread_anubis_gris_motif_ecaille.png",
+      "bytes": 3309674,
+      "sha256": "de67426c56e2227e8bffc04d5186b7fdfd3d4683fca7f64fa9bfc17a07739b7f"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/dread_exalted_noir_annele_fin.png",
+      "bytes": 3337319,
+      "sha256": "76078c6c44c6738c7ef18a1c860d787d303bf46212e265b299479c39d46de730"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_captured_base_observee.png",
+      "bytes": 3274130,
+      "sha256": "788f37e34a76624563a41f21d2f73175d84773f7060cd81b3a091b94b193db4b"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_cityhunter97_sector_provisoire.png",
+      "bytes": 3611758,
+      "sha256": "7d4c391fa182eefd2cfb85c7a9225e163b8c84f7ab1e13b6ae55d01244d0a6c6"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_cityhunter97_tract_provisoire.png",
+      "bytes": 3666894,
+      "sha256": "9be1d084acc46e4061f87f81e2e4fa4d9af29278ac5456edc7702fbf5cc9f9db"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_cityhunter97_ward_provisoire.png",
+      "bytes": 3574092,
+      "sha256": "15ba6f69cf9d0a8e9c9d29d5df24764f821d08ffe51344e8a4f7d52923e923b9"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_cleopatra_base_observee.png",
+      "bytes": 3883986,
+      "sha256": "1ffdc69f4baf137f31a0c6e0dc9ec4affadeae0c3bd86aa394c87ec45cd405a2"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_exiled_base_observee.png",
+      "bytes": 4070141,
+      "sha256": "c05154dce22df3d2859bac6fe56a6648921c61c82f35336d549a3a4b8765abff"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_samurai_base_observee.png",
+      "bytes": 3928611,
+      "sha256": "182b6418d7348fa64311433b6fca4b24764fbf929edbc462ce1a8adea3a9c287"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_valkyrie_base_observee.png",
+      "bytes": 3982362,
+      "sha256": "31fb479f4887fc0d4bf02743336f7048fa85411f876347d77a41fac94995eba4"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_classe_viking_base_observee.png",
+      "bytes": 3413502,
+      "sha256": "668a5bdac8a0419da7e9ffdbf091f702567615641bfe545037df86d08f17a1e4"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_default_epic_exclusive.png",
+      "bytes": 3525171,
+      "sha256": "af6ee1f4002bfde74fed259e01f5f74ef5f72dbf7d1c413392caf7d79ac54bd5"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_default_ps_exclusive.png",
+      "bytes": 3600437,
+      "sha256": "efe324fa23336fdb6d596099429baa68267e5c17f9ea7a25b61bc3e28f0a4f70"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_shatter_demon_provisoire.png",
+      "bytes": 2841876,
+      "sha256": "57e2a82635e48a58fcc248e57791fe35f5dc19fffd6d6b5961df88cf1dd211c0"
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/skin_shatter_demon_revision_mrblack.png",
+      "bytes": 3712552,
+      "sha256": "7f12608f61698c61e8b90cae03854bf318aacb2173054b41ab5f6ffcb43f9626"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+      "bytes": 2874040,
+      "sha256": "c5b88e5939bb4eaaad016da06377802e0ff8cf7d127f48c4ca438bfcb47d17ad"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/200_module_salle_avatar_fond.png",
+      "bytes": 2447227,
+      "sha256": "13719336fdcaca91941eaac942e3b06dbb31efd2ce8fe3bd5bbd6d43bf84c752"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/201_module_archiviste_yautja.png",
+      "bytes": 2514865,
+      "sha256": "84c87998fcde4c031781a4ea2c13c46dbf96649ad5cc018e12d4f1050fa7b6d9"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/202_module_sas_decontamination.png",
+      "bytes": 1659675,
+      "sha256": "deefa94a2392a5ace06988cda718684283ebebae382d335d846a16ceaedf7cb6"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/203_module_memoire_avatar.png",
+      "bytes": 2468644,
+      "sha256": "1bb83c64ec652d0bc6b43c24a8e47840f6ad12454ca44f412f2fb14a3de441fd"
+    },
+    {
+      "path": "public/game/warp-universe/20261109/manifest.json",
+      "bytes": 4059,
+      "sha256": "92d88a4ac0288a45263e669d9fd716e4826f39bc24acb2e7c736cac8e043891b"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "browserExecuted": true,
+  "artisticApproval": false,
+  "viewport": {
+    "width": 1280,
+    "height": 850
+  },
+  "checks": [
+    {
+      "name": "Stealth props leave the out-of-range guard hidden",
+      "status": "PASS",
+      "detail": {
+        "tick": 0
+      }
+    },
+    {
+      "name": "Stealth normal press and held key each issue one locked order; repeat is ignored",
+      "status": "PASS",
+      "detail": {
+        "orders": 2
+      }
+    },
+    {
+      "name": "Stealth selects, buttons, shortcuts and IME do not dispatch a tactical order",
+      "status": "PASS"
+    },
+    {
+      "name": "RTS planning ignores keys; unobserved objective and rival positions remain hidden",
+      "status": "PASS",
+      "detail": {
+        "visibleRivals": 0
+      }
+    },
+    {
+      "name": "RTS actual SVG dimensions follow 75–300% zoom without changing topology, collision or visibility",
+      "status": "PASS",
+      "detail": {
+        "baselineWidth": 576,
+        "blockedKey": "ArrowUp"
+      }
+    },
+    {
+      "name": "RTS keyboard dispatches one order; repeats, focused controls, shortcuts and IME remain isolated",
+      "status": "PASS",
+      "detail": {
+        "orders": 2
+      }
+    }
+  ],
+  "errors": []
+}

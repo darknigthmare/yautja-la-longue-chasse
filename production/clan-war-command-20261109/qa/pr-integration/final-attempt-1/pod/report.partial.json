@@ -1,0 +1,3321 @@
+{
+  "schema": 1,
+  "partial": true,
+  "status": "running",
+  "startedAt": "2026-11-09T10:40:23.538Z",
+  "updatedAt": "2026-11-09T10:50:41.055Z",
+  "sourceCommit": "8eaea6be2fd5e87241629e3b0ab175552fdc1968",
+  "sourceHashes": {
+    ".github/workflows/pod-systems.yml": "4070ad9da8c1e483af2c95047cb73bacb67095e2e55686751d6388e8b925b7e5",
+    "app/dev/destinations.ts": "9aaafd77cd9a6c6408a2a2224a39b1edcb9b45ae7fcb4db13504179df673fb4c",
+    "app/dev/session.tsx": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb",
+    "app/game/HuntCanvas.tsx": "f4e1d0736352256b284b4d717747add3cda055e85b62d0abcff5bb1eed7caca3",
+    "app/game/PlanetArrivalCinematic.module.css": "37aa7bb09b144de888c86cdbde731ad18aa7d3b08ab452d01e1b4d11d5380fc3",
+    "app/game/PlanetArrivalCinematic.tsx": "a8d856465380ee86678b89ce74dbe5c037764575cd4cb4f7fd5d0e79b6d0851e",
+    "app/game/sound.ts": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65",
+    "app/game/systems/controlBindings.ts": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993",
+    "app/game/systems/huntInsertion.ts": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0",
+    "app/game/systems/huntPodRecovery.ts": "a6be60b6bf1eb155c2878fa90b54d6cc2ca93a86d5ecfba17a7541b81ba02332",
+    "app/game/systems/planetArrival.ts": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259",
+    "app/game/systems/planetArrivalPodArt.ts": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7",
+    "app/game/systems/planetArrivalPodFlight.ts": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd",
+    "app/game/systems/planetInsertion.ts": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94",
+    "app/game/systems/worldBlueprints.ts": "2afc002b8d94aec6e18a6567f3127b5113a7d7b886ddcc147981f5c9e0a94f78",
+    "scripts/qa-pod-systems.mjs": "00ee2fd344bd0dfa734e46c659a3c076000160b77dc04e26b63e0132bbee0e9e"
+  },
+  "workingTreeDirty": true,
+  "workingTreeStatus": "M public/audio/manifest.json\n M scripts/qa-trophy-tutorial-campaign-20261109.mjs",
+  "url": "http://127.0.0.1:3152/dev",
+  "browserMode": "headless",
+  "browserVersion": "154.0.8037.57",
+  "runtime": "Production Next /dev, native arrival and HuntCanvas; no injected gameplay state or clock",
+  "scope": "Atmospheric shutters and heating, natural triad handoff, safe remote pod controls, native in-memory suspend/resume, single-pod and ship exclusions, isolated reset/reload. No campaign durability, art approval or performance qualification.",
+  "currentCheck": "Every requested game image loads and all native sessions remain free of runtime errors and storage writes",
+  "destinationId": "arrival-ship-jungle-vey",
+  "latestProgress": {
+    "at": "2026-11-09T10:50:41.055Z",
+    "elapsedWallMs": 617516.08552,
+    "check": "Every requested game image loads and all native sessions remain free of runtime errors and storage writes",
+    "phase": "check-pass"
+  },
+  "checks": [
+    {
+      "name": "Native triad arrival keeps the three shutters folded in space",
+      "passed": true
+    },
+    {
+      "name": "Actual atmospheric playback heats each pod and opens its panels before surface contact",
+      "passed": true
+    },
+    {
+      "name": "The complete 62-second arrival hands off once to three physical capsules",
+      "passed": true
+    },
+    {
+      "name": "X cannot arm beside the pods, or while one companion stays inside the safety radius",
+      "passed": true
+    },
+    {
+      "name": "Walking the whole triad away enables arming and a second X cancels",
+      "passed": true
+    },
+    {
+      "name": "Native pause and in-memory suspend/resume conserve the exact countdown",
+      "passed": true
+    },
+    {
+      "name": "Resume completes one destruction and the native checkpoint cannot rearm it",
+      "passed": true
+    },
+    {
+      "name": "Reset and reload deliberately create fresh isolated trials; a direct solo hunt has one pod",
+      "passed": true
+    },
+    {
+      "name": "A native landed-ship hunt never creates a pod or its remote control",
+      "passed": true
+    },
+    {
+      "name": "Every requested game image loads and all native sessions remain free of runtime errors and storage writes",
+      "passed": true
+    }
+  ],
+  "captures": [
+    {
+      "file": "01-space-shutters-closed.png",
+      "sha256": "3a4b23e8d46266bdd1b15ada78fcbafb3ec48005cab25dac84e7f9b725d2813f",
+      "bytes": 168214,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": {
+        "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+        "elapsed": 31716,
+        "status": "paused",
+        "shot": "descent",
+        "method": "pod",
+        "team": "triad"
+      },
+      "after": {
+        "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+        "elapsed": 31716,
+        "status": "paused",
+        "shot": "descent",
+        "method": "pod",
+        "team": "triad"
+      }
+    },
+    {
+      "file": "02-atmosphere-shutters-open.png",
+      "sha256": "2fa219623b0389a7a9779c858500bfef2493fb82e0e20a81f08ad13baca695d8",
+      "bytes": 223934,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": {
+        "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+        "elapsed": 45315,
+        "status": "paused",
+        "shot": "atmosphere",
+        "method": "pod",
+        "team": "triad"
+      },
+      "after": {
+        "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+        "elapsed": 45315,
+        "status": "paused",
+        "shot": "atmosphere",
+        "method": "pod",
+        "team": "triad"
+      }
+    },
+    {
+      "file": "03-triad-capsules-on-ground.png",
+      "sha256": "4a9e89104cc14bb3605d0130ffd40351a62618bef8e49c66cbed5604b0e51839",
+      "bytes": 1160740,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": null,
+      "after": null
+    },
+    {
+      "file": "04-ally-safety-interlock.png",
+      "sha256": "6fb629ec36fdfb2f768abc1c1e4a76097146df03b45c6f86693ab91e5cf7d729",
+      "bytes": 260601,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": null,
+      "after": null
+    },
+    {
+      "file": "05-countdown-paused.png",
+      "sha256": "9e800ae003d10b43ef059fca45f3d7d7083a0e403ee2db17c3fd4fafb2c896b4",
+      "bytes": 383706,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": null,
+      "after": null
+    },
+    {
+      "file": "06-countdown-restored.png",
+      "sha256": "9e800ae003d10b43ef059fca45f3d7d7083a0e403ee2db17c3fd4fafb2c896b4",
+      "bytes": 383706,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": null,
+      "after": null
+    },
+    {
+      "file": "07-destruction-native.png",
+      "sha256": "68c49b98dde8672a01f61db93ec76c8d66adfeb851435ac31ca7134c0f275503",
+      "bytes": 1038705,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": null,
+      "after": null
+    },
+    {
+      "file": "08-direct-solo-pod.png",
+      "sha256": "9af031775f2ff47ac30222af4bdf9824c5fae616d020d6e409db2c35fa0def10",
+      "bytes": 1140674,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "before": null,
+      "after": null
+    }
+  ],
+  "movement": [
+    {
+      "label": "leave-held-companion-near-pod",
+      "target": "unsafe-companion",
+      "margin": 48,
+      "startedAt": "2026-11-09T10:43:22.998Z",
+      "limits": {
+        "observations": 140,
+        "heldMs": 91000
+      },
+      "budgetBefore": {
+        "remaining": 140,
+        "heldMs": 0
+      },
+      "observations": [
+        {
+          "observation": 1,
+          "at": "2026-11-09T10:43:34.450Z",
+          "readMs": 3581.8129080000217,
+          "heldMs": 0,
+          "browserObservedAt": 190499.5,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 0,
+          "radioDistance": 197,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 49.23182105524866,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.768178944751341
+            }
+          ],
+          "progressWriteMs": 3.036099999997532
+        },
+        {
+          "observation": 2,
+          "at": "2026-11-09T10:43:39.052Z",
+          "readMs": 3380.3150940000196,
+          "heldMs": 4598.836102000001,
+          "browserObservedAt": 195103.5,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 0,
+          "radioDistance": 183,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 53.40726899811054,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 11.592731001889462
+            }
+          ],
+          "progressWriteMs": 1.3428560000029393
+        },
+        {
+          "observation": 3,
+          "at": "2026-11-09T10:43:43.066Z",
+          "readMs": 3357.549159999995,
+          "heldMs": 8613.221076000016,
+          "browserObservedAt": 199117.60000000056,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 39,
+          "radioDistance": 242,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 92.69320994619001,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 0
+            }
+          ],
+          "progressWriteMs": 1.589008000009926
+        },
+        {
+          "observation": 4,
+          "at": "2026-11-09T10:43:46.896Z",
+          "readMs": 3178.076984000014,
+          "heldMs": 12442.811171000008,
+          "browserObservedAt": 202947.40000000037,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 0,
+          "radioDistance": 301,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 146.22218325937547,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 17.22218325937547
+            }
+          ],
+          "progressWriteMs": 1.3813139999983832
+        },
+        {
+          "observation": 5,
+          "at": "2026-11-09T10:43:50.874Z",
+          "readMs": 3326.4471310000226,
+          "heldMs": 16421.237260000024,
+          "browserObservedAt": 206925.5,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 0,
+          "radioDistance": 361,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 204.61183450979559,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 20.388165490204415
+            }
+          ],
+          "progressWriteMs": 1.6542259999841917
+        },
+        {
+          "observation": 6,
+          "at": "2026-11-09T10:43:54.765Z",
+          "readMs": 3239.045658999996,
+          "heldMs": 20312.360981000005,
+          "browserObservedAt": 210816.40000000037,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 98,
+          "radioDistance": 458,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 273.49851377665874,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 0
+            }
+          ],
+          "progressWriteMs": 3.26026899999124
+        },
+        {
+          "observation": 7,
+          "at": "2026-11-09T10:43:58.706Z",
+          "readMs": 3287.006470000022,
+          "heldMs": 24252.90662700002,
+          "browserObservedAt": 214757.10000000056,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 203,
+          "radioDistance": 562,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 345.24851377665914,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 39.75148622334086
+            }
+          ],
+          "progressWriteMs": 2.5211140000028536
+        },
+        {
+          "observation": 8,
+          "at": "2026-11-09T10:44:02.606Z",
+          "readMs": 3244.557719000004,
+          "heldMs": 28152.791066000005,
+          "browserObservedAt": 218657.40000000037,
+          "reason": "unsafe-player",
+          "state": "ready",
+          "distance": 308,
+          "radioDistance": 666,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 416.99851377665954,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 0
+            }
+          ],
+          "progressWriteMs": 1.9338970000098925
+        },
+        {
+          "observation": 9,
+          "at": "2026-11-09T10:44:05.945Z",
+          "readMs": 2683.4050520000164,
+          "heldMs": 31491.656776000018,
+          "browserObservedAt": 221995.90000000037,
+          "reason": "unsafe-companion",
+          "state": "ready",
+          "distance": 413,
+          "radioDistance": 771,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 488.74851377665993,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 39.748513776659934
+            }
+          ]
+        }
+      ],
+      "start": {
+        "live": {
+          "observedAt": 190499.5,
+          "state": "ready",
+          "reason": "unsafe-player",
+          "remaining": 0,
+          "count": 3,
+          "distance": 0,
+          "radioDistance": 197,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": false,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 15.51820426291033,
+                  "horizontal": 15.51820426291033
+                },
+                {
+                  "pod": "karhek",
+                  "body": 80.48179573708967,
+                  "horizontal": 80.48179573708967
+                },
+                {
+                  "pod": "saketh",
+                  "body": 240.48179573708967,
+                  "horizontal": 240.48179573708967
+                }
+              ],
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 49.23182105524866,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 15.768178944751341,
+                  "horizontal": 15.768178944751341
+                },
+                {
+                  "pod": "karhek",
+                  "body": 175.76817894475136,
+                  "horizontal": 175.76817894475136
+                },
+                {
+                  "pod": "saketh",
+                  "body": 335.76817894475136,
+                  "horizontal": 335.76817894475136
+                }
+              ],
+              "horizontalDistance": 15.768178944751341
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 3.949999999999991,
+          "x": 225,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 144.51820426291033,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 49.23182105524866,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "leave-held-companion-near-pod-0",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "finish": {
+        "live": {
+          "observedAt": 221995.90000000037,
+          "state": "ready",
+          "reason": "unsafe-companion",
+          "remaining": 0,
+          "count": 3,
+          "distance": 413,
+          "radioDistance": 771,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": false,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 144.51820426291033,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 15.51820426291033,
+                  "horizontal": 15.51820426291033
+                },
+                {
+                  "pod": "karhek",
+                  "body": 80.48179573708967,
+                  "horizontal": 80.48179573708967
+                },
+                {
+                  "pod": "saketh",
+                  "body": 240.48179573708967,
+                  "horizontal": 240.48179573708967
+                }
+              ],
+              "horizontalDistance": 15.51820426291033
+            },
+            {
+              "id": "saketh",
+              "x": 488.74851377665993,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 359.74851377665993,
+                  "horizontal": 359.74851377665993
+                },
+                {
+                  "pod": "karhek",
+                  "body": 199.74851377665993,
+                  "horizontal": 199.74851377665993
+                },
+                {
+                  "pod": "saketh",
+                  "body": 39.748513776659934,
+                  "horizontal": 39.748513776659934
+                }
+              ],
+              "horizontalDistance": 39.748513776659934
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 3.949999999999991,
+          "x": 225,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 144.51820426291033,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 49.23182105524866,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "leave-held-companion-near-pod-8",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "input": {
+        "downRequestedAt": "2026-11-09T10:43:34.453Z",
+        "downAcknowledgedAt": "2026-11-09T10:43:35.022Z",
+        "releaseReason": "condition-reached",
+        "upRequestedAt": "2026-11-09T10:44:05.945Z",
+        "holdUntilReleaseRequestMs": 31491.84664200002,
+        "upAcknowledgedAt": "2026-11-09T10:44:06.315Z",
+        "heldMs": 31861.770941000024,
+        "releaseLatencyMs": 369.9278849999828
+      },
+      "finishedAt": "2026-11-09T10:44:06.315Z",
+      "budgetAfter": {
+        "remaining": 131,
+        "heldMs": 31861.770941000024
+      }
+    },
+    {
+      "label": "first-arm-preparation-1-walk",
+      "target": "ready",
+      "margin": 48,
+      "startedAt": "2026-11-09T10:44:39.648Z",
+      "limits": {
+        "observations": 140,
+        "heldMs": 91000
+      },
+      "budgetBefore": {
+        "remaining": 140,
+        "heldMs": 0
+      },
+      "observations": [
+        {
+          "observation": 1,
+          "at": "2026-11-09T10:44:50.654Z",
+          "readMs": 3413.8543720000307,
+          "heldMs": 0,
+          "browserObservedAt": 266697.7000000002,
+          "reason": "unsafe-companion",
+          "state": "ready",
+          "distance": 454,
+          "radioDistance": 812,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 626.2682042629102,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 177.26820426291022
+            },
+            {
+              "id": "saketh",
+              "x": 696.4710534263609,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 247.47105342636087
+            }
+          ],
+          "progressWriteMs": 1.788533000042662
+        },
+        {
+          "observation": 2,
+          "at": "2026-11-09T10:44:55.423Z",
+          "readMs": 3584.000113999995,
+          "heldMs": 4767.789914000023,
+          "browserObservedAt": 271474.60000000056,
+          "reason": "unsafe-companion",
+          "state": "ready",
+          "distance": 526,
+          "radioDistance": 884,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 708.2682042629093,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 259.2682042629093
+            },
+            {
+              "id": "saketh",
+              "x": 729.4540660715387,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 280.4540660715387
+            }
+          ],
+          "progressWriteMs": 1.7450020000105724
+        },
+        {
+          "observation": 3,
+          "at": "2026-11-09T10:44:59.872Z",
+          "readMs": 3796.308803999971,
+          "heldMs": 9216.682302000001,
+          "browserObservedAt": 275923.9000000004,
+          "reason": "unsafe-companion",
+          "state": "ready",
+          "distance": 631,
+          "radioDistance": 989,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 780.0182042629085,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 331.0182042629085
+            },
+            {
+              "id": "saketh",
+              "x": 800.0326765270792,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 351.03267652707916
+            }
+          ],
+          "progressWriteMs": 1.399961999966763
+        },
+        {
+          "observation": 4,
+          "at": "2026-11-09T10:45:04.029Z",
+          "readMs": 3504.8228269999963,
+          "heldMs": 13373.10630600003,
+          "browserObservedAt": 280079.60000000056,
+          "reason": "ready",
+          "state": "ready",
+          "distance": 736,
+          "radioDistance": 1094,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 851.7682042629077,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 402.7682042629077
+            },
+            {
+              "id": "saketh",
+              "x": 871.7826765270784,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 422.78267652707837
+            }
+          ],
+          "progressWriteMs": 1.7394450000138022
+        },
+        {
+          "observation": 5,
+          "at": "2026-11-09T10:45:08.036Z",
+          "readMs": 3355.63638500002,
+          "heldMs": 17380.271024000016,
+          "browserObservedAt": 284085.9000000004,
+          "reason": "ready",
+          "state": "ready",
+          "distance": 841,
+          "radioDistance": 1199,
+          "focused": true,
+          "canvasFocused": true,
+          "hidden": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 923.5182042629069,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 474.5182042629069
+            },
+            {
+              "id": "saketh",
+              "x": 943.5326765270776,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "groundedOnFloor": true,
+              "horizontalDistance": 494.53267652707757
+            }
+          ]
+        }
+      ],
+      "start": {
+        "live": {
+          "observedAt": 266697.7000000002,
+          "state": "ready",
+          "reason": "unsafe-companion",
+          "remaining": 0,
+          "count": 3,
+          "distance": 454,
+          "radioDistance": 812,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": false,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 626.2682042629102,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 497.2682042629102,
+                  "horizontal": 497.2682042629102
+                },
+                {
+                  "pod": "karhek",
+                  "body": 337.2682042629102,
+                  "horizontal": 337.2682042629102
+                },
+                {
+                  "pod": "saketh",
+                  "body": 177.26820426291022,
+                  "horizontal": 177.26820426291022
+                }
+              ],
+              "horizontalDistance": 177.26820426291022
+            },
+            {
+              "id": "saketh",
+              "x": 696.4710534263609,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 567.4710534263609,
+                  "horizontal": 567.4710534263609
+                },
+                {
+                  "pod": "karhek",
+                  "body": 407.47105342636087,
+                  "horizontal": 407.47105342636087
+                },
+                {
+                  "pod": "saketh",
+                  "body": 247.47105342636087,
+                  "horizontal": 247.47105342636087
+                }
+              ],
+              "horizontalDistance": 247.47105342636087
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 11.550000000000153,
+          "x": 903.2464011802551,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 144.51820426291033,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 696.4710534263609,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm-preparation-1-walk-0",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "finish": {
+        "live": {
+          "observedAt": 284085.9000000004,
+          "state": "ready",
+          "reason": "ready",
+          "remaining": 0,
+          "count": 3,
+          "distance": 841,
+          "radioDistance": 1199,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 923.5182042629069,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 794.5182042629069,
+                  "horizontal": 794.5182042629069
+                },
+                {
+                  "pod": "karhek",
+                  "body": 634.5182042629069,
+                  "horizontal": 634.5182042629069
+                },
+                {
+                  "pod": "saketh",
+                  "body": 474.5182042629069,
+                  "horizontal": 474.5182042629069
+                }
+              ],
+              "horizontalDistance": 474.5182042629069
+            },
+            {
+              "id": "saketh",
+              "x": 943.5326765270776,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 814.5326765270776,
+                  "horizontal": 814.5326765270776
+                },
+                {
+                  "pod": "karhek",
+                  "body": 654.5326765270776,
+                  "horizontal": 654.5326765270776
+                },
+                {
+                  "pod": "saketh",
+                  "body": 494.53267652707757,
+                  "horizontal": 494.53267652707757
+                }
+              ],
+              "horizontalDistance": 494.53267652707757
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 11.550000000000153,
+          "x": 903.2464011802551,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 144.51820426291033,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 696.4710534263609,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm-preparation-1-walk-4",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "input": {
+        "downRequestedAt": "2026-11-09T10:44:50.656Z",
+        "downAcknowledgedAt": "2026-11-09T10:44:51.189Z",
+        "releaseReason": "condition-reached",
+        "upRequestedAt": "2026-11-09T10:45:08.036Z",
+        "holdUntilReleaseRequestMs": 17380.29916699999,
+        "upAcknowledgedAt": "2026-11-09T10:45:08.678Z",
+        "heldMs": 18022.586598000024,
+        "releaseLatencyMs": 642.2891240000026
+      },
+      "finishedAt": "2026-11-09T10:45:08.678Z",
+      "budgetAfter": {
+        "remaining": 135,
+        "heldMs": 18022.586598000024
+      }
+    }
+  ],
+  "armingPreparations": [
+    {
+      "label": "first-arm",
+      "attempt": 1,
+      "margin": 48,
+      "initial": {
+        "live": {
+          "observedAt": 255695.7000000002,
+          "state": "ready",
+          "reason": "unsafe-companion",
+          "remaining": 0,
+          "count": 3,
+          "distance": 454,
+          "radioDistance": 812,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": false,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 421.26820426291096,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 292.26820426291096,
+                  "horizontal": 292.26820426291096
+                },
+                {
+                  "pod": "karhek",
+                  "body": 132.26820426291096,
+                  "horizontal": 132.26820426291096
+                },
+                {
+                  "pod": "saketh",
+                  "body": 0,
+                  "horizontal": 0
+                }
+              ],
+              "horizontalDistance": 0
+            },
+            {
+              "id": "saketh",
+              "x": 696.4710534263609,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 567.4710534263609,
+                  "horizontal": 567.4710534263609
+                },
+                {
+                  "pod": "karhek",
+                  "body": 407.47105342636087,
+                  "horizontal": 407.47105342636087
+                },
+                {
+                  "pod": "saketh",
+                  "body": 247.47105342636087,
+                  "horizontal": 247.47105342636087
+                }
+              ],
+              "horizontalDistance": 247.47105342636087
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 11.550000000000153,
+          "x": 903.2464011802551,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 144.51820426291033,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 696.4710534263609,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm-preparation-1-start",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "accepted": true,
+      "beforeHold": {
+        "live": {
+          "observedAt": 284085.9000000004,
+          "state": "ready",
+          "reason": "ready",
+          "remaining": 0,
+          "count": 3,
+          "distance": 841,
+          "radioDistance": 1199,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 923.5182042629069,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 794.5182042629069,
+                  "horizontal": 794.5182042629069
+                },
+                {
+                  "pod": "karhek",
+                  "body": 634.5182042629069,
+                  "horizontal": 634.5182042629069
+                },
+                {
+                  "pod": "saketh",
+                  "body": 474.5182042629069,
+                  "horizontal": 474.5182042629069
+                }
+              ],
+              "horizontalDistance": 474.5182042629069
+            },
+            {
+              "id": "saketh",
+              "x": 943.5326765270776,
+              "y": 512,
+              "order": "follow",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 814.5326765270776,
+                  "horizontal": 814.5326765270776
+                },
+                {
+                  "pod": "karhek",
+                  "body": 654.5326765270776,
+                  "horizontal": 654.5326765270776
+                },
+                {
+                  "pod": "saketh",
+                  "body": 494.53267652707757,
+                  "horizontal": 494.53267652707757
+                }
+              ],
+              "horizontalDistance": 494.53267652707757
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 11.550000000000153,
+          "x": 903.2464011802551,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 144.51820426291033,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": -1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 696.4710534263609,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "follow",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm-preparation-1-walk-4",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "afterHold": {
+        "live": {
+          "observedAt": 342594.10000000056,
+          "state": "ready",
+          "reason": "ready",
+          "remaining": 0,
+          "count": 3,
+          "distance": 883,
+          "radioDistance": 1240,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 1193.9493259128715,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 1064.9493259128715,
+                  "horizontal": 1064.9493259128715
+                },
+                {
+                  "pod": "karhek",
+                  "body": 904.9493259128715,
+                  "horizontal": 904.9493259128715
+                },
+                {
+                  "pod": "saketh",
+                  "body": 744.9493259128715,
+                  "horizontal": 744.9493259128715
+                }
+              ],
+              "horizontalDistance": 744.9493259128715
+            },
+            {
+              "id": "saketh",
+              "x": 1124.6044604683673,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 995.6044604683673,
+                  "horizontal": 995.6044604683673
+                },
+                {
+                  "pod": "karhek",
+                  "body": 835.6044604683673,
+                  "horizontal": 835.6044604683673
+                },
+                {
+                  "pod": "saketh",
+                  "body": 675.6044604683673,
+                  "horizontal": 675.6044604683673
+                }
+              ],
+              "horizontalDistance": 675.6044604683673
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 19.000000000000203,
+          "x": 1331.592802363662,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 1193.9493259128715,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 1124.6044604683673,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm-preparation-1-after-hold",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "settled": {
+        "live": {
+          "observedAt": 346391.5,
+          "state": "ready",
+          "reason": "ready",
+          "remaining": 0,
+          "count": 3,
+          "distance": 883,
+          "radioDistance": 1240,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": false,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 1193.9493259128715,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 1064.9493259128715,
+                  "horizontal": 1064.9493259128715
+                },
+                {
+                  "pod": "karhek",
+                  "body": 904.9493259128715,
+                  "horizontal": 904.9493259128715
+                },
+                {
+                  "pod": "saketh",
+                  "body": 744.9493259128715,
+                  "horizontal": 744.9493259128715
+                }
+              ],
+              "horizontalDistance": 744.9493259128715
+            },
+            {
+              "id": "saketh",
+              "x": 1124.6044604683673,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 995.6044604683673,
+                  "horizontal": 995.6044604683673
+                },
+                {
+                  "pod": "karhek",
+                  "body": 835.6044604683673,
+                  "horizontal": 835.6044604683673
+                },
+                {
+                  "pod": "saketh",
+                  "body": 675.6044604683673,
+                  "horizontal": 675.6044604683673
+                }
+              ],
+              "horizontalDistance": 675.6044604683673
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 19.000000000000203,
+          "x": 1331.592802363662,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 1193.9493259128715,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 1124.6044604683673,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm-preparation-1-settled",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "observationsUsed": 5,
+      "heldMs": 18022.586598000024,
+      "stable": true
+    },
+    {
+      "label": "pause-arm",
+      "attempt": 1,
+      "margin": 48,
+      "initial": {
+        "live": {
+          "observedAt": 389713.80000000075,
+          "state": "ready",
+          "reason": "ready",
+          "remaining": 0,
+          "count": 3,
+          "distance": 883,
+          "radioDistance": 1240,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 1193.9493259128715,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 1064.9493259128715,
+                  "horizontal": 1064.9493259128715
+                },
+                {
+                  "pod": "karhek",
+                  "body": 904.9493259128715,
+                  "horizontal": 904.9493259128715
+                },
+                {
+                  "pod": "saketh",
+                  "body": 744.9493259128715,
+                  "horizontal": 744.9493259128715
+                }
+              ],
+              "horizontalDistance": 744.9493259128715
+            },
+            {
+              "id": "saketh",
+              "x": 1124.6044604683673,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 995.6044604683673,
+                  "horizontal": 995.6044604683673
+                },
+                {
+                  "pod": "karhek",
+                  "body": 835.6044604683673,
+                  "horizontal": 835.6044604683673
+                },
+                {
+                  "pod": "saketh",
+                  "body": 675.6044604683673,
+                  "horizontal": 675.6044604683673
+                }
+              ],
+              "horizontalDistance": 675.6044604683673
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 23.24999999999996,
+          "x": 1331.592802363662,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 1193.9493259128715,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 1124.6044604683673,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "pause-arm-preparation-1-start",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "accepted": true,
+      "reusedHeldFormation": true
+    }
+  ],
+  "armingCommands": [
+    {
+      "label": "first-arm",
+      "before": {
+        "live": {
+          "observedAt": 368416.5,
+          "state": "ready",
+          "reason": "ready",
+          "remaining": 0,
+          "count": 3,
+          "distance": 883,
+          "radioDistance": 1240,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 1193.9493259128715,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 1064.9493259128715,
+                  "horizontal": 1064.9493259128715
+                },
+                {
+                  "pod": "karhek",
+                  "body": 904.9493259128715,
+                  "horizontal": 904.9493259128715
+                },
+                {
+                  "pod": "saketh",
+                  "body": 744.9493259128715,
+                  "horizontal": 744.9493259128715
+                }
+              ],
+              "horizontalDistance": 744.9493259128715
+            },
+            {
+              "id": "saketh",
+              "x": 1124.6044604683673,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 995.6044604683673,
+                  "horizontal": 995.6044604683673
+                },
+                {
+                  "pod": "karhek",
+                  "body": 835.6044604683673,
+                  "horizontal": 835.6044604683673
+                },
+                {
+                  "pod": "saketh",
+                  "body": 675.6044604683673,
+                  "horizontal": 675.6044604683673
+                }
+              ],
+              "horizontalDistance": 675.6044604683673
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 19.000000000000203,
+          "x": 1331.592802363662,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 1193.9493259128715,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 1124.6044604683673,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm-before-X",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "sent": true,
+      "after": {
+        "live": {
+          "observedAt": 374076.9000000004,
+          "state": "countdown",
+          "reason": "ready",
+          "remaining": 2.6000000000000014,
+          "count": 3,
+          "distance": 883,
+          "radioDistance": 1240,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 1193.9493259128715,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 1064.9493259128715,
+                  "horizontal": 1064.9493259128715
+                },
+                {
+                  "pod": "karhek",
+                  "body": 904.9493259128715,
+                  "horizontal": 904.9493259128715
+                },
+                {
+                  "pod": "saketh",
+                  "body": 744.9493259128715,
+                  "horizontal": 744.9493259128715
+                }
+              ],
+              "horizontalDistance": 744.9493259128715
+            },
+            {
+              "id": "saketh",
+              "x": 1124.6044604683673,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 995.6044604683673,
+                  "horizontal": 995.6044604683673
+                },
+                {
+                  "pod": "karhek",
+                  "body": 835.6044604683673,
+                  "horizontal": 835.6044604683673
+                },
+                {
+                  "pod": "saketh",
+                  "body": 675.6044604683673,
+                  "horizontal": 675.6044604683673
+                }
+              ],
+              "horizontalDistance": 675.6044604683673
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 22.55,
+          "x": 1331.592802363662,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 1193.9493259128715,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 1124.6044604683673,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "countdown",
+              "remainingSeconds": 2.95,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "first-arm",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      }
+    },
+    {
+      "label": "pause-arm",
+      "before": {
+        "live": {
+          "observedAt": 412900.4000000004,
+          "state": "ready",
+          "reason": "ready",
+          "remaining": 0,
+          "count": 3,
+          "distance": 883,
+          "radioDistance": 1240,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": true,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": true,
+          "companions": [
+            {
+              "id": "karhek",
+              "x": 1193.9493259128715,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 100,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 1064.9493259128715,
+                  "horizontal": 1064.9493259128715
+                },
+                {
+                  "pod": "karhek",
+                  "body": 904.9493259128715,
+                  "horizontal": 904.9493259128715
+                },
+                {
+                  "pod": "saketh",
+                  "body": 744.9493259128715,
+                  "horizontal": 744.9493259128715
+                }
+              ],
+              "horizontalDistance": 744.9493259128715
+            },
+            {
+              "id": "saketh",
+              "x": 1124.6044604683673,
+              "y": 512,
+              "order": "hold",
+              "status": "active",
+              "health": 120,
+              "width": 64,
+              "height": 112,
+              "groundedOnFloor": true,
+              "distances": [
+                {
+                  "pod": "hunter",
+                  "body": 995.6044604683673,
+                  "horizontal": 995.6044604683673
+                },
+                {
+                  "pod": "karhek",
+                  "body": 835.6044604683673,
+                  "horizontal": 835.6044604683673
+                },
+                {
+                  "pod": "saketh",
+                  "body": 675.6044604683673,
+                  "horizontal": 675.6044604683673
+                }
+              ],
+              "horizontalDistance": 675.6044604683673
+            }
+          ]
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 23.24999999999996,
+          "x": 1331.592802363662,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 1193.9493259128715,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 1124.6044604683673,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "ready",
+              "remainingSeconds": 0,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "pause-arm-before-X",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      },
+      "sent": true,
+      "after": {
+        "live": {
+          "observedAt": 426481.80000000075,
+          "state": "countdown",
+          "reason": "unavailable",
+          "remaining": 2.450000000000002,
+          "count": 3,
+          "distance": 883,
+          "radioDistance": 1240,
+          "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.054Z",
+          "method": "pod",
+          "team": "triad",
+          "assetsReady": "true",
+          "commandEnabled": false,
+          "focused": true,
+          "hidden": false,
+          "canvasFocused": false,
+          "companions": []
+        },
+        "checkpoint": {
+          "generation": 0,
+          "elapsed": 26.44999999999978,
+          "x": 1331.592802363662,
+          "y": 508,
+          "insertion": {
+            "version": 1,
+            "runId": "jungle-vey:1",
+            "plan": {
+              "version": 1,
+              "method": "pod",
+              "team": "triad"
+            },
+            "origin": {
+              "x": 261,
+              "y": 624
+            },
+            "searchUntil": 10,
+            "patrolIds": [
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "alertedIds": [
+              "jungle-patrol-0",
+              "jungle-patrol-1",
+              "jungle-patrol-3",
+              "jungle-vey:1:insertion-patrol-0"
+            ],
+            "companions": [
+              {
+                "id": "karhek",
+                "x": 1193.9493259128715,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 100,
+                "maxHealth": 100,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              },
+              {
+                "id": "saketh",
+                "x": 1124.6044604683673,
+                "y": 512,
+                "width": 64,
+                "height": 112,
+                "health": 120,
+                "maxHealth": 120,
+                "velocityX": 0,
+                "velocityY": 0,
+                "facing": 1,
+                "grounded": true,
+                "climbing": false,
+                "order": "hold",
+                "status": "active",
+                "attackCooldown": 0,
+                "attackFlash": 0,
+                "invulnerability": 0,
+                "blockedSeconds": 0,
+                "jumpTargetX": null
+              }
+            ],
+            "podRecovery": {
+              "version": 1,
+              "phase": "countdown",
+              "remainingSeconds": 2.450000000000002,
+              "destroyedAt": null,
+              "alertedIds": []
+            }
+          }
+        },
+        "canvasMounts": 1,
+        "label": "armed-paused",
+        "podAnchors": [
+          {
+            "id": "hunter",
+            "x": 129,
+            "y": 624
+          },
+          {
+            "id": "karhek",
+            "x": 289,
+            "y": 624
+          },
+          {
+            "id": "saketh",
+            "x": 449,
+            "y": 624
+          }
+        ]
+      }
+    }
+  ],
+  "latestHuntObservation": {
+    "live": {
+      "observedAt": 11195.399999999441,
+      "state": "absent",
+      "reason": "unavailable",
+      "remaining": 0,
+      "count": 0,
+      "distance": 0,
+      "radioDistance": 0,
+      "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.053Z",
+      "method": "ship",
+      "team": "solo",
+      "assetsReady": "false",
+      "commandEnabled": false,
+      "focused": true,
+      "hidden": false,
+      "canvasFocused": true,
+      "companions": []
+    },
+    "checkpoint": {
+      "generation": 0,
+      "elapsed": 0,
+      "x": 225,
+      "y": 508,
+      "insertion": {
+        "version": 1,
+        "runId": "jungle-vey:1",
+        "plan": {
+          "version": 1,
+          "method": "ship",
+          "team": "solo"
+        },
+        "origin": {
+          "x": 261,
+          "y": 624
+        },
+        "searchUntil": 35,
+        "patrolIds": [
+          "jungle-vey:1:insertion-patrol-0",
+          "jungle-vey:1:insertion-patrol-2"
+        ],
+        "alertedIds": [
+          "jungle-patrol-0",
+          "jungle-patrol-1",
+          "jungle-patrol-3",
+          "jungle-vey:1:insertion-patrol-0",
+          "jungle-vey:1:insertion-patrol-2"
+        ],
+        "companions": []
+      }
+    },
+    "canvasMounts": 1,
+    "label": "landed-ship-after-X",
+    "podAnchors": []
+  },
+  "latestArrivalObservation": {
+    "label": "ready",
+    "run": "dev-arrival:jungle-vey:2000-01-01T00:00:00.053Z",
+    "elapsed": 250,
+    "status": "playing",
+    "shot": "orbit",
+    "method": "ship",
+    "team": "solo"
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "failedRequests": [],
+  "missingAssets": [],
+  "requestedAssets": [
+    "/audio/manifest.json",
+    "/audio/sfx/cloak-off/v54.wav",
+    "/audio/sfx/cloak-on/v54.wav",
+    "/audio/sfx/defeat/v54.wav",
+    "/audio/sfx/enemy-alert/v54.wav",
+    "/audio/sfx/footstep/v54.wav",
+    "/audio/sfx/hit/v54.wav",
+    "/audio/sfx/jump/v54.wav",
+    "/audio/sfx/mask-off/v54.wav",
+    "/audio/sfx/mask-on/v54.wav",
+    "/audio/sfx/medicomp/v54.wav",
+    "/audio/sfx/netgun/v54.wav",
+    "/audio/sfx/objective/v54.wav",
+    "/audio/sfx/plasma/v54.wav",
+    "/audio/sfx/scan/v54.wav",
+    "/audio/sfx/select/v54.wav",
+    "/audio/sfx/slash/v54.wav",
+    "/audio/sfx/snare/v54.wav",
+    "/audio/sfx/trophy/v54.wav",
+    "/audio/sfx/ui/v54.wav",
+    "/audio/sfx/victory/v54.wav",
+    "/audio/sfx/weapon-switch/v54.wav",
+    "/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+    "/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+    "/game/assets/v15/trophies/trophy-vey.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-balise-de-clan-profanee.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-c-ur-ligneux-spirale.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-glande-a-aiguillons.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-iris-thermosensible.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-n-ud-sensoriel.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-noyau-mnesique.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-noyau-racinaire.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-rostre-fouisseur.webp",
+    "/game/assets/v18/enemy-trophy-gameplay/enemy-trophy-vertebres-articulees.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-01-straight.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-02-hooked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-buttress-trunk-04-interrupted.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-01-straight.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-02-hooked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-field-ladder-05-paired.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-01-straight.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-02-hooked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-04-interrupted.webp",
+    "/game/assets/v19/biome-decor/jungle/clm/clm-hanging-vine-05-paired.webp",
+    "/game/assets/v19/biome-decor/jungle/cov/cov-strangler-root-wall-03-pierced.webp",
+    "/game/assets/v19/biome-decor/jungle/cov/cov-supply-palisade-02-broad.webp",
+    "/game/assets/v19/biome-decor/jungle/haz/haz-collapsing-branch-04-cyclic.webp",
+    "/game/assets/v19/biome-decor/jungle/haz/haz-spectral-flare-tripwire-05-unstable.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-02-pair.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-03-cluster.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-04-fallen.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-storm-flower-05-evidence.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-03-cluster.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-04-fallen.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-transponder-debris-05-evidence.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-02-pair.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-03-cluster.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-04-fallen.webp",
+    "/game/assets/v19/biome-decor/jungle/orn/orn-vine-curtain-05-evidence.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-01-low-wide.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-canopy-crown-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-02-high-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-04-broken.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-expedition-deck-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-01-low-wide.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-02-high-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-04-broken.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-mossy-ruin-slab-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-02-high-narrow.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-03-forked.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-04-broken.webp",
+    "/game/assets/v19/biome-decor/jungle/plt/plt-root-bridge-05-tiered.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-02-trail.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-footprint-mud-04-crater.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-02-trail.webp",
+    "/game/assets/v19/biome-decor/jungle/srf/srf-rain-puddle-03-ridge.webp",
+    "/game/assets/v2/environments/jungle/climbables/vine-ladder.webp",
+    "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/braided.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/ringed.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-base.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/gauntlet-lid.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/motion-sensor.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/snare.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+    "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick-folded.webp",
+    "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+    "/game/backgrounds/jungle-multiscreen-v6.png",
+    "/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.webp",
+    "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.webp",
+    "/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.webp",
+    "/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.webp",
+    "/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-jungle.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-ventral-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-ventral.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-engine-core.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-engine-plume.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-forward-quarter-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-forward-quarter.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-rear-quarter-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp",
+    "/game/planet-arrival/v1/atmosphere-clouds.webp",
+    "/game/planet-arrival/v1/heat-trail.webp",
+    "/game/planet-arrival/v1/pod-flight.webp",
+    "/game/planet-arrival/v1/pod-ground.webp",
+    "/game/planet-arrival/v1/release-jet.webp",
+    "/game/planet-arrival/v1/space.webp",
+    "/game/planet-arrival/v2/impact-fragment.webp",
+    "/game/planet-arrival/v2/pod-hatch-interior.webp",
+    "/game/planet-arrival/v2/pod-hatch.webp",
+    "/game/planet-arrival/v2/vent-vapor-thin.webp",
+    "/game/planet-arrival/v2/vent-vapor.webp",
+    "/game/planet-arrival/v3/pod-destruction-core.webp",
+    "/game/planet-arrival/v3/pod-destruction-metal-shard.webp",
+    "/game/planet-arrival/v3/pod-destruction-pressure-ring.webp",
+    "/game/planet-arrival/v3/pod-destruction-scorch.webp",
+    "/game/planet-arrival/v3/pod-destruction-smoke.webp",
+    "/game/planet-arrival/v3/pod-entry-bow-shock.webp",
+    "/game/planet-arrival/v3/pod-entry-plasma-wake.webp",
+    "/game/planet-arrival/v3/pod-flight-core.webp",
+    "/game/planets/v10/planet-oseris-iv.webp",
+    "/game/props/v4/crown-platform.png",
+    "/game/props/v4/expedition-platform.png",
+    "/game/props/v4/foreground-ferns.png",
+    "/game/props/v4/root-platform.png",
+    "/game/props/v4/ruin-platform.png",
+    "/game/props/v4/tree-trunk.png",
+    "/game/ships/v12/classic-predator-spaceship.webp",
+    "/game/sprites/bad-blood.webp",
+    "/game/sprites/cryostalker.webp",
+    "/game/sprites/hunter.webp",
+    "/game/sprites/mercenary.webp",
+    "/game/sprites/v4/bad-blood-initiate.png",
+    "/game/sprites/v4/commandante-vey.png",
+    "/game/sprites/v4/cryostalker-brute.png",
+    "/game/sprites/v4/cryostalker-runner.png",
+    "/game/sprites/v4/heavy.png",
+    "/game/sprites/v4/rifle-soldier.png",
+    "/game/sprites/v4/scout.png",
+    "/game/sprites/v6/masks-trophies-atlas.png",
+    "/game/sprites/v6/prey-atlas.png",
+    "/game/sprites/v6/ranks-lasers-atlas.png",
+    "/game/sprites/v6/ships-atlas.png",
+    "/game/sprites/v62/heads/classic-head.png",
+    "/game/sprites/v62/masks/jungle.png",
+    "/game/sprites/v8/ecology/common/bad-blood-scout-sheet.png",
+    "/game/sprites/v8/ecology/common/weyland-security-synth-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/carnivore-vine-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/coil-serpent-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/needle-frog-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/root-burrower-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/sentinel-orchid-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/strangler-fig-sheet.png",
+    "/game/sprites/v8/ecology/oseris-iv/walking-mangrove-sheet.png"
+  ],
+  "passed": null,
+  "failure": null
+}

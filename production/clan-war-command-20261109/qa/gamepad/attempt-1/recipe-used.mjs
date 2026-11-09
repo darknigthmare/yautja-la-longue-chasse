@@ -1,0 +1,72 @@
+/** Actual React hook and native dialogs; only the Gamepad input provider is synthetic. */
+import assert from 'node:assert/strict';
+import {createServer} from 'node:http';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import {build} from 'esbuild';
+import {chromium} from 'playwright-core';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const out=path.resolve(root,process.env.COMMAND_GAMEPAD_OUTPUT||'production/clan-war-command-20261109/qa/gamepad/attempt-1');
+await fs.mkdir(out,{recursive:true});await fs.writeFile(path.join(out,'run.lock'),new Date().toISOString()+'\n',{flag:'wx'});
+await fs.copyFile(fileURLToPath(import.meta.url),path.join(out,'recipe-used.mjs'));
+const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+const sourceNames=['app/game/useMenuGamepad.ts','app/game/systems/menuNavigation.ts','tests/browser/menu-native-dialog-20261109.fixture.tsx','scripts/qa-menu-native-dialog-20261109.mjs'];
+const sources=async()=>Object.fromEntries(await Promise.all(sourceNames.map(async name=>[name,sha(await fs.readFile(path.join(root,name)))])));
+const report={schemaVersion:1,scope:'Actual production useMenuGamepad hook, React callbacks and browser-native dialog focus/cancel. navigator.getGamepads is a declared synthetic input provider; native RAF, focus, requestClose, cancel and DOM results are not mocked. No gameplay, saves, Next integration or physical-controller qualification.',checks:[],errors:[],sourceBefore:await sources(),screenshots:[]};
+const pass=(name,detail={})=>report.checks.push({name,passed:true,...detail});
+const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/menu-native-dialog-20261109.fixture.tsx'],bundle:true,platform:'browser',format:'iife',jsx:'automatic',write:false,outfile:'native-menu.js',logLevel:'warning'});
+const js=bundle.outputFiles.find(row=>row.path.endsWith('.js')).contents;report.bundleSha256=sha(js);
+const html='<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Native modal menu</title><style>body{background:#0b1716;color:#e3e9dc;font:15px system-ui;padding:24px}main{max-width:850px;margin:auto}button{display:block;margin:10px 0;padding:12px 18px;background:#264237;color:#e4e8d6;border:1px solid #739176}button:focus-visible,input:focus-visible{outline:3px solid #f4c481;outline-offset:3px}dialog{max-width:min(550px,90vw);padding:24px;background:#102922;color:#e3e8ce;border:1px solid #9dba92}dialog::backdrop{background:#000b}label{display:block;margin:16px 0}#legacy{position:fixed;inset:15%;background:#132d28;padding:30px;border:2px solid #94a678}</style></head><body><div id="root"></div><script src="/native-menu.js"></script></body></html>';
+const server=createServer((request,response)=>{const url=new URL(request.url??'/','http://localhost');if(url.pathname==='/'){response.writeHead(200,{'content-type':'text/html'});response.end(html);}else if(url.pathname==='/native-menu.js'){response.writeHead(200,{'content-type':'text/javascript'});response.end(js);}else{response.writeHead(204);response.end();}});
+let browser,context,page;
+try{
+ await new Promise((ok,fail)=>{server.once('error',fail);server.listen(0,'127.0.0.1',ok);});
+ browser=await chromium.launch({headless:true,executablePath:'/usr/bin/chromium',args:['--no-sandbox']});report.browserVersion=browser.version();
+ context=await browser.newContext({viewport:{width:1100,height:900}});
+ await context.addInitScript(()=>{const input={connected:true,index:0,id:'declared-synthetic-controller',axes:[0,0],buttons:Array.from({length:16},()=>({pressed:false,value:0,touched:false}))};window.__nativeModalPadInput=input;Object.defineProperty(navigator,'getGamepads',{configurable:true,value:()=>[input]});});
+ page=await context.newPage();page.setDefaultTimeout(10000);page.on('pageerror',error=>report.errors.push(error.message));
+ report.url='http://127.0.0.1:'+server.address().port;await page.goto(report.url,{waitUntil:'networkidle'});await page.bringToFront();await page.locator('[data-modal-fixture]').waitFor();
+ const frames=()=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))));
+ const input=async(button,pressed)=>{await page.evaluate(({button,pressed})=>{window.__nativeModalPadInput.buttons[button].pressed=pressed;window.__nativeModalPadInput.buttons[button].value=pressed?1:0;},{button,pressed});await frames();};
+ const tap=async button=>{await input(button,true);await input(button,false);};
+ const count=async key=>Number(await page.locator('[data-modal-fixture]').getAttribute('data-'+key));
+ const open=async id=>page.locator('#'+id).evaluate(el=>el.open&&el.matches(':modal'));
+ const capture=async name=>{await page.screenshot({path:path.join(out,name)});report.screenshots.push({filename:name,sha256:sha(await fs.readFile(path.join(out,name))),opened:false});};
+ await frames();
+ await page.locator('#open-beta').click();await page.locator('#beta').waitFor({state:'visible'});
+ await page.locator('#beta-open-alpha').click();await page.locator('#alpha').waitFor({state:'visible'});
+ assert.equal(await open('alpha'),true);assert.equal(await open('beta'),true);pass('Two actual native modal dialogs open in reverse DOM order');
+ await page.locator('#alpha-primary').focus();await tap(13);assert.equal(await page.evaluate(()=>document.activeElement?.id),'alpha-secondary');
+ await tap(0);assert.equal(await count('alpha-actions'),1);assert.equal(await count('beta-actions'),0);assert.equal(await count('background-actions'),0);
+ pass('Direction and confirm target only the focused native top layer');await capture('01-native-top-layer.png');
+ await input(1,true);assert.equal(await open('alpha'),false);assert.equal(await open('beta'),true);assert.equal(await count('root-backs'),0);
+ assert.equal(await page.evaluate(()=>document.activeElement?.id),'beta-open-alpha');await frames();assert.equal(await open('beta'),true);
+ pass('Back requests cancellation of Alpha, restores Beta focus and held input never cascades');
+ await input(1,false);await tap(1);assert.equal(await open('beta'),false);assert.equal(await count('root-backs'),0);assert.equal(await page.evaluate(()=>document.activeElement?.id),'open-beta');
+ pass('Next distinct Back closes Beta through its real React cancel owner');
+ await tap(1);assert.equal(await count('root-backs'),1);pass('Only a subsequent root Back invokes the existing menu callback');
+ await page.locator('#open-alpha').click();await page.locator('#alpha-veto').check();const cancelsBefore=await count('alpha-cancels');await tap(1);
+ assert.equal(await open('alpha'),true);assert.equal(await count('alpha-cancels'),cancelsBefore+1);assert.equal(await count('root-backs'),1);
+ pass('Native cancellation veto is respected without falling through to root Back');
+ await page.locator('#alpha-veto').uncheck();await tap(1);assert.equal(await open('alpha'),false);assert.equal(await count('root-backs'),1);
+ pass('Removing the veto lets the native owner close and keeps the root untouched');
+ for(const kind of ['owner','root']){
+  await page.locator('#open-alpha').click();await page.locator('#alpha-inert-'+kind).click();await frames();assert.equal(await open('alpha'),true);
+  assert.equal(await page.locator('[data-modal-fixture]').getAttribute('data-'+kind+'-inert'),'true');const before={actions:await count('alpha-actions'),cancels:await count('alpha-cancels'),backs:await count('root-backs')};
+  await input(0,true);await input(0,false);await input(1,true);
+  assert.equal(await count('alpha-actions'),before.actions);assert.equal(await count('alpha-cancels'),before.cancels);assert.equal(await count('root-backs'),before.backs);
+  await page.locator('#alpha-resume').click();await frames();assert.equal(await open('alpha'),true);assert.equal(await count('root-backs'),before.backs);
+  await input(1,false);await tap(1);assert.equal(await open('alpha'),false);
+  pass(`Inert ${kind} blocks confirm/Back and held Back cannot leak on resume`);
+ }
+ await page.locator('#open-legacy').click();await page.locator('#legacy-primary').focus();await tap(13);assert.equal(await page.evaluate(()=>document.activeElement?.id),'legacy-secondary');await tap(0);assert.equal(await count('legacy-actions'),1);
+ const rootBeforeLegacyBack=await count('root-backs');await tap(1);await page.locator('#legacy').waitFor({state:'hidden'});assert.equal(await count('legacy-backs'),1);assert.equal(await count('root-backs'),rootBeforeLegacyBack);
+ pass('Legacy role/aria-modal controls and their original Back callback remain compatible');
+ await page.locator('#open-alpha').click();await page.locator('#alpha-primary').focus();await page.keyboard.press('Escape');await page.locator('#alpha').waitFor({state:'hidden'});assert.equal(await count('root-backs'),rootBeforeLegacyBack);
+ pass('Native keyboard Escape still follows React cancellation and preserves root');
+ await capture('02-menu-restored.png');assert.deepEqual(report.errors,[]);pass('No browser page errors');
+ report.sourceAfter=await sources();assert.deepEqual(report.sourceAfter,report.sourceBefore);pass('Hook, navigation input contract, fixture and recipe remain byte-identical during run');report.passed=true;
+}catch(error){report.passed=false;report.failure={message:error.message,stack:error.stack};if(page)await page.screenshot({path:path.join(out,'failure.png')}).catch(()=>{});throw error;}
+finally{await fs.writeFile(path.join(out,'report.browser-run.json'),JSON.stringify(report,null,2)+'\n');await context?.close();await browser?.close();await new Promise(ok=>server.close(ok));console.log(JSON.stringify({passed:report.passed,checks:report.checks.length,out}));}

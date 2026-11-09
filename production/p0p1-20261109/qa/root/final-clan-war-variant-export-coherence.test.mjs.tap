@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: all 1200 JSON exports match the current atlas world/climate and retain exact original source designs
+ok 1 - all 1200 JSON exports match the current atlas world/climate and retain exact original source designs
+  ---
+  duration_ms: 117.953591
+  type: 'test'
+  ...
+# Subtest: CSV's current fields use reconciled locations, climates and liquids instead of alien source placeholders
+ok 2 - CSV's current fields use reconciled locations, climates and liquids instead of alien source placeholders
+  ---
+  duration_ms: 170.327109
+  type: 'test'
+  ...
+# Subtest: desert, indoor and multiregion exports preserve their respective corrected weather and exact source evidence
+ok 3 - desert, indoor and multiregion exports preserve their respective corrected weather and exact source evidence
+  ---
+  duration_ms: 1.160481
+  type: 'test'
+  ...
+# Subtest: CSV retains Unicode, quotes, semicolons and newlines while neutralizing spreadsheet executable prefixes
+ok 4 - CSV retains Unicode, quotes, semicolons and newlines while neutralizing spreadsheet executable prefixes
+  ---
+  duration_ms: 0.419653
+  type: 'test'
+  ...
+# Subtest: a filtered export contains exactly the chosen source IDs and remains an unqualified design catalog
+ok 5 - a filtered export contains exactly the chosen source IDs and remains an unqualified design catalog
+  ---
+  duration_ms: 11.989191
+  type: 'test'
+  ...
+# Subtest: real SSR detail and exports agree on current place and secondary biome: Musée du Louvre
+ok 6 - real SSR detail and exports agree on current place and secondary biome: Musée du Louvre
+  ---
+  duration_ms: 15.551826
+  type: 'test'
+  ...
+# Subtest: real SSR detail and exports agree on current place and secondary biome: Pont de Normandie
+ok 7 - real SSR detail and exports agree on current place and secondary biome: Pont de Normandie
+  ---
+  duration_ms: 2.163234
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 607.076673

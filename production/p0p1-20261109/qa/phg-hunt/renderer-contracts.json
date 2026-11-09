@@ -1,0 +1,82 @@
+{
+  "asOf": "2026-11-09",
+  "scope": "Source corroboration for the exact production build; these are source facts, not additional browser assertions or artistic approval.",
+  "contracts": [
+    {
+      "file": "app/game/HuntCanvas.tsx",
+      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5",
+      "lineNumbers": [
+        4259
+      ],
+      "needle": "if (player.aiming && player.maskOn && appearance.biomaskId)",
+      "interpretation": "Caster laser bitmap is drawn only while aiming with biomask worn."
+    },
+    {
+      "file": "app/game/HuntCanvas.tsx",
+      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5",
+      "lineNumbers": [
+        4272,
+        4320
+      ],
+      "needle": "if (player.maskOn && appearance.biomaskId) {",
+      "interpretation": "Mask image, current biomask pigment and biomask decal share the worn-mask branch. The later aim-assist branch gates beams independently."
+    },
+    {
+      "file": "app/game/HuntCanvas.tsx",
+      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5",
+      "lineNumbers": [
+        5401
+      ],
+      "needle": "if (state.player.maskOn || state.scanPulse > 0)",
+      "interpretation": "Track vision is available with mask or active scan pulse; no assertion that all vision disappears."
+    },
+    {
+      "file": "app/game/HuntCanvas.tsx",
+      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5",
+      "lineNumbers": [
+        4175
+      ],
+      "needle": "solveHunterSideDreadsV145(frame, appearance.bodyMorphId",
+      "interpretation": "Native front strands read the same player spring angles and ringed bitmap."
+    },
+    {
+      "file": "app/game/HuntCanvas.tsx",
+      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5",
+      "lineNumbers": [
+        4021
+      ],
+      "needle": "solveHunterDreadsV63(frame, appearance.bodyMorphId",
+      "interpretation": "Native rear strands read the same player spring angles and ringed bitmap."
+    },
+    {
+      "file": "app/game/hunterDreadsV63.ts",
+      "sha256": "e8307b5505bd7bd3f011494fbd00d5ced06ebff86ddf98d2f2c06016ccae4b2f",
+      "lineNumbers": [
+        30
+      ],
+      "needle": "export function stepHunterDreadsV63",
+      "interpretation": "Seven bounded damped springs update from native speed; no 3D rope claim."
+    },
+    {
+      "file": "app/game/hunterDreadsV63.ts",
+      "sha256": "e8307b5505bd7bd3f011494fbd00d5ced06ebff86ddf98d2f2c06016ccae4b2f",
+      "lineNumbers": [
+        148
+      ],
+      "needle": "const swing = finite(angles[index % HUNTER_DREAD_STRANDS_V63.length]",
+      "interpretation": "Side strands reuse rear spring state with damping; rings are baked into the same loaded strand image."
+    }
+  ],
+  "ringedSource": {
+    "file": "public/game/assets/v3/actors/yautja/hunter/dreads/registered/ringed.webp",
+    "sha256": "337501f0471e6a2f5c1db54a69846c900072a5548ffa280420c37cd9985e558a",
+    "bytes": 7018
+  },
+  "limits": [
+    "No canvas or prototype interception.",
+    "No HP, clock, gameplay callback or mission result write.",
+    "Manual crosshair remains supported without biomask.",
+    "A scan pulse can still reveal tracks without biomask.",
+    "Whole PHG UV/artistic 1:1 conformity and all characters/angles are not certified."
+  ]
+}

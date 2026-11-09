@@ -10,6 +10,8 @@ const allowedKeys = new Set([
   "yautja.clan-war.v85.free.v1",
   "yautja.clan-war.v85.canyon.free.v1",
   "yautja.clan-war.v85.composition.free.v1",
+  "yautja.clan-war.v115.operations.free.v1",
+  "yautja.clan-war.v115.operations.fenced.v2",
 ]);
 export interface WarFenceRecordV94 {
   version: 1; token: string; before: string | null; after: string; phase: "intent" | "confirmed";

@@ -1,0 +1,22 @@
+{
+  "asOf": "2026-11-09",
+  "reviewerRole": "Independent read-only source review by Homeworld/planet agent",
+  "filesSha256": {
+    "app/game/systems/clanWarOperationsArchive.ts": "d0583368ba5bdf306ae671f9a25f50230e8ff28241eb3eb3f73084af633def99",
+    "app/game/systems/clanWarFenceV94.ts": "e5ffdfac79946a9b5f5ccdf072ef3309427b4acf942f63803182e1050e95591c",
+    "app/game/ClanWarOperationsV115.tsx": "4dc4e08732fe40e3356792ee6aca53cdca7b1ba4eec7655790b6dfd549d72aec"
+  },
+  "blockingFindings": [],
+  "checked": [
+    "Exact IDB CAS token,phase,before,after matching, with legacy localStorage mirror kept.",
+    "Mirror comparison before reservation and after confirmation; interrupted writes remain an explicit recovery.",
+    "Repair refuses a foreign third mirror value or superseded intent token; does not replay economy reducers.",
+    "Native fence adapter validates allowed keys,recordshape,IDB timeouts/version failures and transaction completion.",
+    "Same-tab writing ref and origin-wide WebLock wrap UI,timers,reset and repair; unmount prevents success UI writes."
+  ],
+  "limits": [
+    "This is source review, not a browser or physical controller test.",
+    "Non-cooperating old clients, remote cloud devices and server-authoritative conquest remain outside this fence.",
+    "Native two-tab/reload/interruption verification must be attested by the separate final browser recipe."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-09",
+  "baseline": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "qualifiedCodeCommit": "84a8ff61e4d08ab8ebd9875b56b01fbb97636fbe",
+  "run": {"id":42566142213,"job":128992953938,"triggerCommit":"08319327cecb4afb6f948b1682e56ee25c9c7690","qualificationCheckout":"84a8ff61e4d08ab8ebd9875b56b01fbb97636fbe","conclusion":"success"},
+  "tests": {"passed":184,"failed":0,"skipped":0,"newDialogueTestsIncluded":21},
+  "typecheck": {"scope":"full project","passed":true},
+  "lint": {"scope":"strict changed TS/TSX/MJS","passed":true},
+  "browser": {
+    "passed":true,"executed":true,"checks":81,"contexts":[{"name":"1440x1000","completed":true,"checks":27},{"name":"390x844","completed":true,"checks":27},{"name":"320x740","completed":true,"checks":27}],
+    "screenshots":21,"errors":[],"missingAssets":[],"version":"156.0.8078.0",
+    "fixture":{"file":"initial-dialogue-fixture.json","sha256":"4f692e1d7d631bb87fe406dc88ba9255895e79ae944c3d03afdc38c4c8264c6f","browserPlayed":false,"description":"Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.","clanMarks":1912,"completedContracts":["welcome-aboard","ship-training-circuit","field-jungle-survey","field-ice-route","ship-seal-check","ship-armory-audit","ship-triage-route"],"recruitedNpcIds":[],"operation":null}
+  },
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx":"9c1b0590bc5cf742ba1a82f40a483f61c81f334f14c9a515939aac8885ceffb7",
+    "app/game/systems/clanShipDialogue.ts":"c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx":"6dbcbb0e4965711cc91ea8ab082b17c4647cd6ed68588c85890634ec1daaaed6",
+    "app/game/ClanShipOperationsPanel.module.css":"e24990896673b514fa4d1ca92efbaf4d9580a40667fea3f16358e10229bba4b4",
+    "app/game/systems/clanShipOperations.ts":"6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts":"83432416fb6869c65db49d5d67fa8a46a984227cf9e4831a837ea273c0545767",
+    "app/game/systems/clanShipTrophyHearing.ts":"43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx":"916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df",
+    "app/game/save.ts":"17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs":"0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs":"4d84044ee9a846a61200727a3e8abfab76f9c9c963e39058828794c67d500a73"
+  },
+  "archive":{"artifactId":13651468850,"bytes":3224686,"sha256":"57d03afdc2c31f71a490cfcc2a9393eaa735574ea7988affff4d57c84397185c","entries":34},
+  "report":{"bytes":15776,"sha256":"e2fdfac26898d63a21b1807e2657e44c8bd90455d2824311025575f5e68d341b"},
+  "logsSha256": {
+    "tests.txt":"da6109c5c08a09254d7399d654f03ddc5f4de53d0daee42531c28942078ffa16",
+    "typecheck.txt":"7e963cd266edc6da8946458eef070015c14509120a807963ef61b9535323931b",
+    "lint.txt":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime-write.txt":"31124b6a32c394d9a423e0d6a404d99afeb4c8e457fc179814da1c01c605784a",
+    "runtime-check.txt":"fb14b3646e08fc966ef3c161e596f1c7bd8e5958ded884257ded90efcfb2e3f7"
+  },
+  "visualReview":{"individuallyOpened":["1440x1000-iron-claw-before-space.png","390x844-black-suture-before-space.png","320x740-star-watch-after-space.png"],"limit":"Existing bottom toast overlaps part of the mobile footer. Dialogue text and four tested buttons remain readable. No claim of all 21 captures individually reviewed."},
+  "workbook":{"sha256":"5344019af67069a48268ae866498b4552fdad83ae996cbe002868cfefde2931c","gitBlob":"843db37e458199abd0f4175240010477553cc812","bytes":427081,"sheets":9,"formulas":5,"errorCells":0,"publicationRun":42568728945,"unchangedHistoricalWorkbooks":111},
+  "limits":["No full campaign played","No native mobile hardware","No physical controller","No global production build claimed","No new dedicated artwork, animation or audio","OPS-B04, R2-M027 and OPS-Q26 are not mechanically completed","No production merge by this delivery"],
+  "integrity":{"nativeInputsVerified":13,"officialCurrentInventoryEntries":2206,"historicalFrozenEvidenceChanged":false,"temporaryTransportWorkflowsRemoved":true,"permanentWorkflowPermissions":"contents: read"}
+}

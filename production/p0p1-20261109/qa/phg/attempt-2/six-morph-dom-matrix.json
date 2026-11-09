@@ -1,0 +1,992 @@
+[
+  {
+    "morph": "classic",
+    "mask": "city",
+    "maskSurface": [
+      {
+        "background": "none"
+      }
+    ],
+    "decals": [
+      {
+        "zone": "body",
+        "id": "clan-v133-body-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "43.75%",
+          "top": "28.125%",
+          "width": "24.2188%",
+          "height": "17.1875%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "face",
+        "id": "clan-v133-face-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "34.7022%",
+          "top": "2.97548%",
+          "width": "37.886%",
+          "height": "25.2573%"
+        },
+        "cell": {
+          "left": "33.1612%",
+          "top": "27.3994%",
+          "width": "43.3043%",
+          "height": "37.1179%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "armor",
+        "id": "clan-v133-armor-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "45.3125%",
+          "top": "29.4271%",
+          "width": "26.1719%",
+          "height": "14.5833%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "biomask",
+        "id": "clan-v133-biomask-hunting-glyph",
+        "transform": "none",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/city.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "41.2598%",
+          "top": "4.72729%",
+          "width": "34.0169%",
+          "height": "22.678%"
+        },
+        "cell": {
+          "left": "18.8038%",
+          "top": "20.4944%",
+          "width": "51.6746%",
+          "height": "44.7847%"
+        },
+        "opacity": "0.82"
+      }
+    ],
+    "bodySources": [
+      {
+        "slot": "body-thigh-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp"
+      },
+      {
+        "slot": "body-shin-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp"
+      },
+      {
+        "slot": "body-foot-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp"
+      },
+      {
+        "slot": "body-upper-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp"
+      },
+      {
+        "slot": "body-lower-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp"
+      },
+      {
+        "slot": "body-hand-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp"
+      },
+      {
+        "slot": "body-pelvis",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp"
+      },
+      {
+        "slot": "body-torso",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp"
+      },
+      {
+        "slot": "body-head",
+        "src": "http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png"
+      },
+      {
+        "slot": "body-thigh-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp"
+      },
+      {
+        "slot": "body-shin-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp"
+      },
+      {
+        "slot": "body-foot-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp"
+      },
+      {
+        "slot": "body-upper-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp"
+      },
+      {
+        "slot": "body-lower-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp"
+      },
+      {
+        "slot": "body-hand-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp"
+      }
+    ]
+  },
+  {
+    "morph": "elder",
+    "mask": "city",
+    "maskSurface": [
+      {
+        "background": "none"
+      }
+    ],
+    "decals": [
+      {
+        "zone": "body",
+        "id": "clan-v133-body-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/torso.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "43.75%",
+          "top": "28.125%",
+          "width": "24.2188%",
+          "height": "17.1875%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "face",
+        "id": "clan-v133-face-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/elder-head.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "35.1501%",
+          "top": "3.2171%",
+          "width": "37.3759%",
+          "height": "24.9172%"
+        },
+        "cell": {
+          "left": "32.4153%",
+          "top": "26.8036%",
+          "width": "43.8953%",
+          "height": "37.6245%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "armor",
+        "id": "clan-v133-armor-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "45.3125%",
+          "top": "29.4271%",
+          "width": "26.1719%",
+          "height": "14.5833%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "biomask",
+        "id": "clan-v133-biomask-hunting-glyph",
+        "transform": "none",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/city.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "41.2598%",
+          "top": "4.72729%",
+          "width": "34.0169%",
+          "height": "22.678%"
+        },
+        "cell": {
+          "left": "18.8038%",
+          "top": "20.4944%",
+          "width": "51.6746%",
+          "height": "44.7847%"
+        },
+        "opacity": "0.82"
+      }
+    ],
+    "bodySources": [
+      {
+        "slot": "body-thigh-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-back.webp"
+      },
+      {
+        "slot": "body-shin-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-back.webp"
+      },
+      {
+        "slot": "body-foot-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-back.webp"
+      },
+      {
+        "slot": "body-upper-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-back.webp"
+      },
+      {
+        "slot": "body-lower-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-back.webp"
+      },
+      {
+        "slot": "body-hand-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-back.webp"
+      },
+      {
+        "slot": "body-pelvis",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/pelvis.webp"
+      },
+      {
+        "slot": "body-torso",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/torso.webp"
+      },
+      {
+        "slot": "body-head",
+        "src": "http://127.0.0.1:3121/game/sprites/v62/heads/elder-head.png"
+      },
+      {
+        "slot": "body-thigh-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-front.webp"
+      },
+      {
+        "slot": "body-shin-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-front.webp"
+      },
+      {
+        "slot": "body-foot-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-front.webp"
+      },
+      {
+        "slot": "body-upper-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-front.webp"
+      },
+      {
+        "slot": "body-lower-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-front.webp"
+      },
+      {
+        "slot": "body-hand-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-front.webp"
+      }
+    ]
+  },
+  {
+    "morph": "super",
+    "mask": "city",
+    "maskSurface": [
+      {
+        "background": "none"
+      }
+    ],
+    "decals": [
+      {
+        "zone": "body",
+        "id": "clan-v133-body-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/torso.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "43.75%",
+          "top": "28.125%",
+          "width": "24.2188%",
+          "height": "17.1875%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "face",
+        "id": "clan-v133-face-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/super-head.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "36.9773%",
+          "top": "3.46802%",
+          "width": "33.2308%",
+          "height": "24.2418%"
+        },
+        "cell": {
+          "left": "30.9601%",
+          "top": "26.5154%",
+          "width": "49.3706%",
+          "height": "38.6729%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "armor",
+        "id": "clan-v133-armor-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "45.3125%",
+          "top": "29.4271%",
+          "width": "26.1719%",
+          "height": "14.5833%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "biomask",
+        "id": "clan-v133-biomask-hunting-glyph",
+        "transform": "none",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/city.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "41.2598%",
+          "top": "4.72729%",
+          "width": "34.0169%",
+          "height": "22.678%"
+        },
+        "cell": {
+          "left": "18.8038%",
+          "top": "20.4944%",
+          "width": "51.6746%",
+          "height": "44.7847%"
+        },
+        "opacity": "0.82"
+      }
+    ],
+    "bodySources": [
+      {
+        "slot": "body-thigh-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-back.webp"
+      },
+      {
+        "slot": "body-shin-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-back.webp"
+      },
+      {
+        "slot": "body-foot-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-back.webp"
+      },
+      {
+        "slot": "body-upper-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-back.webp"
+      },
+      {
+        "slot": "body-lower-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-back.webp"
+      },
+      {
+        "slot": "body-hand-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-back.webp"
+      },
+      {
+        "slot": "body-pelvis",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/pelvis.webp"
+      },
+      {
+        "slot": "body-torso",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/torso.webp"
+      },
+      {
+        "slot": "body-head",
+        "src": "http://127.0.0.1:3121/game/sprites/v62/heads/super-head.png"
+      },
+      {
+        "slot": "body-thigh-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-front.webp"
+      },
+      {
+        "slot": "body-shin-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-front.webp"
+      },
+      {
+        "slot": "body-foot-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-front.webp"
+      },
+      {
+        "slot": "body-upper-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-front.webp"
+      },
+      {
+        "slot": "body-lower-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-front.webp"
+      },
+      {
+        "slot": "body-hand-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-front.webp"
+      }
+    ]
+  },
+  {
+    "morph": "feral",
+    "mask": "city",
+    "maskSurface": [
+      {
+        "background": "none"
+      }
+    ],
+    "decals": [
+      {
+        "zone": "body",
+        "id": "clan-v133-body-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/torso.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "43.75%",
+          "top": "28.125%",
+          "width": "24.2188%",
+          "height": "17.1875%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "face",
+        "id": "clan-v133-face-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/feral-head.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "37.6163%",
+          "top": "3.10377%",
+          "width": "30.9933%",
+          "height": "25.8185%"
+        },
+        "cell": {
+          "left": "31.1335%",
+          "top": "26.307%",
+          "width": "52.9349%",
+          "height": "36.3112%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "armor",
+        "id": "clan-v133-armor-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "45.3125%",
+          "top": "29.4271%",
+          "width": "26.1719%",
+          "height": "14.5833%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "biomask",
+        "id": "clan-v133-biomask-hunting-glyph",
+        "transform": "none",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/city.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "41.2598%",
+          "top": "4.72729%",
+          "width": "34.0169%",
+          "height": "22.678%"
+        },
+        "cell": {
+          "left": "18.8038%",
+          "top": "20.4944%",
+          "width": "51.6746%",
+          "height": "44.7847%"
+        },
+        "opacity": "0.82"
+      }
+    ],
+    "bodySources": [
+      {
+        "slot": "body-thigh-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-back.webp"
+      },
+      {
+        "slot": "body-shin-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-back.webp"
+      },
+      {
+        "slot": "body-foot-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-back.webp"
+      },
+      {
+        "slot": "body-upper-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-back.webp"
+      },
+      {
+        "slot": "body-lower-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-back.webp"
+      },
+      {
+        "slot": "body-hand-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-back.webp"
+      },
+      {
+        "slot": "body-pelvis",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/pelvis.webp"
+      },
+      {
+        "slot": "body-torso",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/torso.webp"
+      },
+      {
+        "slot": "body-head",
+        "src": "http://127.0.0.1:3121/game/sprites/v62/heads/feral-head.png"
+      },
+      {
+        "slot": "body-thigh-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-front.webp"
+      },
+      {
+        "slot": "body-shin-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-front.webp"
+      },
+      {
+        "slot": "body-foot-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-front.webp"
+      },
+      {
+        "slot": "body-upper-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-front.webp"
+      },
+      {
+        "slot": "body-lower-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-front.webp"
+      },
+      {
+        "slot": "body-hand-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-front.webp"
+      }
+    ]
+  },
+  {
+    "morph": "huntress",
+    "mask": "city",
+    "maskSurface": [
+      {
+        "background": "none"
+      }
+    ],
+    "decals": [
+      {
+        "zone": "body",
+        "id": "clan-v133-body-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/torso.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "43.75%",
+          "top": "28.125%",
+          "width": "24.2188%",
+          "height": "17.1875%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "face",
+        "id": "clan-v133-face-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "34.7022%",
+          "top": "2.97548%",
+          "width": "37.886%",
+          "height": "25.2573%"
+        },
+        "cell": {
+          "left": "33.1612%",
+          "top": "27.3994%",
+          "width": "43.3043%",
+          "height": "37.1179%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "armor",
+        "id": "clan-v133-armor-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "45.3125%",
+          "top": "29.4271%",
+          "width": "26.1719%",
+          "height": "14.5833%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "biomask",
+        "id": "clan-v133-biomask-hunting-glyph",
+        "transform": "none",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/city.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "41.2598%",
+          "top": "4.72729%",
+          "width": "34.0169%",
+          "height": "22.678%"
+        },
+        "cell": {
+          "left": "18.8038%",
+          "top": "20.4944%",
+          "width": "51.6746%",
+          "height": "44.7847%"
+        },
+        "opacity": "0.82"
+      }
+    ],
+    "bodySources": [
+      {
+        "slot": "body-thigh-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-back.webp"
+      },
+      {
+        "slot": "body-shin-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-back.webp"
+      },
+      {
+        "slot": "body-foot-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-back.webp"
+      },
+      {
+        "slot": "body-upper-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-back.webp"
+      },
+      {
+        "slot": "body-lower-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-back.webp"
+      },
+      {
+        "slot": "body-hand-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-back.webp"
+      },
+      {
+        "slot": "body-pelvis",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/pelvis.webp"
+      },
+      {
+        "slot": "body-torso",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/torso.webp"
+      },
+      {
+        "slot": "body-head",
+        "src": "http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png"
+      },
+      {
+        "slot": "body-thigh-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-front.webp"
+      },
+      {
+        "slot": "body-shin-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-front.webp"
+      },
+      {
+        "slot": "body-foot-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-front.webp"
+      },
+      {
+        "slot": "body-upper-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-front.webp"
+      },
+      {
+        "slot": "body-lower-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-front.webp"
+      },
+      {
+        "slot": "body-hand-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-front.webp"
+      }
+    ]
+  },
+  {
+    "morph": "young",
+    "mask": "city",
+    "maskSurface": [
+      {
+        "background": "none"
+      }
+    ],
+    "decals": [
+      {
+        "zone": "body",
+        "id": "clan-v133-body-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "43.75%",
+          "top": "28.125%",
+          "width": "24.2188%",
+          "height": "17.1875%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "face",
+        "id": "clan-v133-face-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "34.7022%",
+          "top": "2.97548%",
+          "width": "37.886%",
+          "height": "25.2573%"
+        },
+        "cell": {
+          "left": "33.1612%",
+          "top": "27.3994%",
+          "width": "43.3043%",
+          "height": "37.1179%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "armor",
+        "id": "clan-v133-armor-hunting-glyph",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "0%",
+          "top": "0%",
+          "width": "100%",
+          "height": "100%"
+        },
+        "cell": {
+          "left": "45.3125%",
+          "top": "29.4271%",
+          "width": "26.1719%",
+          "height": "14.5833%"
+        },
+        "opacity": "0.82"
+      },
+      {
+        "zone": "biomask",
+        "id": "clan-v133-biomask-hunting-glyph",
+        "transform": "none",
+        "transformChain": [
+          "matrix(1, 0, 0, 1, 0, 0)"
+        ],
+        "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/city.png\")",
+        "maskRepeat": "no-repeat",
+        "owner": {
+          "left": "41.2598%",
+          "top": "4.72729%",
+          "width": "34.0169%",
+          "height": "22.678%"
+        },
+        "cell": {
+          "left": "18.8038%",
+          "top": "20.4944%",
+          "width": "51.6746%",
+          "height": "44.7847%"
+        },
+        "opacity": "0.82"
+      }
+    ],
+    "bodySources": [
+      {
+        "slot": "body-thigh-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-back.webp"
+      },
+      {
+        "slot": "body-shin-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-back.webp"
+      },
+      {
+        "slot": "body-foot-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-back.webp"
+      },
+      {
+        "slot": "body-upper-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-back.webp"
+      },
+      {
+        "slot": "body-lower-arm-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-back.webp"
+      },
+      {
+        "slot": "body-hand-back",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-back.webp"
+      },
+      {
+        "slot": "body-pelvis",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/pelvis.webp"
+      },
+      {
+        "slot": "body-torso",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp"
+      },
+      {
+        "slot": "body-head",
+        "src": "http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png"
+      },
+      {
+        "slot": "body-thigh-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-front.webp"
+      },
+      {
+        "slot": "body-shin-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-front.webp"
+      },
+      {
+        "slot": "body-foot-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-front.webp"
+      },
+      {
+        "slot": "body-upper-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-front.webp"
+      },
+      {
+        "slot": "body-lower-arm-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-front.webp"
+      },
+      {
+        "slot": "body-hand-front",
+        "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-front.webp"
+      }
+    ]
+  }
+]

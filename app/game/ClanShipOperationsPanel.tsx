@@ -11,9 +11,12 @@ import {
   type ClanShipNpcId, type ClanShipOperationsAction, type ClanShipOperationsState,
 } from './systems/clanShipOperations';
 import ClanShipSpaceEncounter from './ClanShipSpaceEncounter';
+import ClanShipCrewDialogue from './ClanShipCrewDialogue';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
 import { availableClanResidenceCrew, companionHostLabel } from './systems/companionResidence';
+import { selectClanShipCrewDialogue, type ClanShipCrewDialogueContext } from './systems/clanShipCrewDialogue';
+import { clanShipDialogue } from './systems/clanShipDialogue';
 import { useMenuGamepad } from './useMenuGamepad';
 import styles from './ClanShipOperationsPanel.module.css';
 
@@ -39,6 +42,11 @@ const PHASES = {
   'blooded-required': 'Rite Blooded attendu', welcome: 'Reconnaissance du bord', mandate: 'Audience du conseil',
   operations: 'Mandat d’opération', 'circle-confirmed': 'Cercle confirmé',
 };
+const CREW_DIALOGUE_CONTEXTS: Record<ClanShipCrewDialogueContext, string> = {
+  'missing-proof': 'Le dossier attendu', 'recent-proof': 'La preuve rapportée',
+  agreement: 'L’accord du cercle', 'operation-return': 'Le retour d’opération',
+  'circle-confirmed': 'Le cercle confirmé',
+};
 
 /** Controlled campaign terminal. Only the parent can acknowledge a durable
  * command; closing, tabbing or looking at a card never grants progression. */
@@ -48,6 +56,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   const [tab, setTab] = useState<Tab>(crewFocus ? 'crew' : roomId === 'conseil' && state.mandateAccepted ? 'contracts' : 'post');
   const [selectedId, setSelectedId] = useState(state.activeContract?.contractId ?? 'space-screening');
   const [feedback, setFeedback] = useState('');
+  const [heardDialogue, setHeardDialogue] = useState<string | null>(null);
   const phase = evaluateClanShipOperationsPhase(save, state);
   const currentOnboarding = CLAN_SHIP_ONBOARDING_STEPS[state.onboardingStep];
   const activeContract = state.activeContract ? clanShipContract(state.activeContract.contractId) : null;
@@ -89,6 +98,21 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
     if (event.shiftKey && document.activeElement === first && last) { event.preventDefault(); last.focus(); }
     else if (!event.shiftKey && document.activeElement === last && first) { event.preventDefault(); first.focus(); }
   };
+  useEffect(() => {
+    if (suspended) return;
+    const onOrphanEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key !== 'Escape' || event.repeat || event.defaultPrevented ||
+          event.target !== document.body && event.target !== document.documentElement) return;
+      const root = rootRef.current;
+      if (!root || root.closest('[hidden],[inert]') || !root.getClientRects().length ||
+          document.querySelector('dialog[open]:modal')) return;
+      // Clicking readable non-focusable text can leave focus on body. The
+      // visible operations dialog still owns Back; do not affect another modal.
+      event.preventDefault(); event.stopPropagation(); onClose();
+    };
+    document.addEventListener('keydown', onOrphanEscape, true);
+    return () => document.removeEventListener('keydown', onOrphanEscape, true);
+  }, [onClose, suspended]);
   const activeSection = activeContract && <article className={styles.activeContract} data-clan-active-contract={activeContract.id}>
     <span className={styles.eyebrow}>ORDRE EN COURS · {KINDS[activeContract.kind]}</span>
     <h3>{activeContract.name}</h3><p>{activeContract.briefing}</p>
@@ -105,7 +129,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       <p>Rejoins le hangar, embarque sur ton vaisseau puis désamarre. Le bouton « Contrat du clan » du pont ouvre le briefing de la chasse. Le rapport sera reconnu après une réussite répondant aux objectifs.</p>
       {routeButton('hangar', 'Rejoindre le hangar pour préparer le départ')}
     </div>}
-    {state.spaceEncounter && (atCouncil ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended}
+    {state.spaceEncounter && (atCouncil ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
       : <div className={styles.step}><p>L’engagement reste à son dernier ordre enregistré. Reprends son commandement à la table du conseil.</p>{routeButton('conseil')}</div>)}
     {atCouncil && <button type="button" className={styles.quiet} disabled={suspended}
@@ -115,18 +139,18 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   </article>;
   const spaceReport = !activeContract && state.spaceEncounter && atCouncil && <article className={styles.activeContract} data-clan-space-report>
     <span className={styles.eyebrow}>DERNIER RAPPORT TACTIQUE</span>
-    <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended}
+    <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
   </article>;
 
   return <div className={styles.backdrop}>
-    <section ref={rootRef} role="dialog" aria-modal="true" aria-labelledby="clan-operations-title"
+    <section ref={rootRef} tabIndex={-1} role="dialog" aria-modal="true" aria-labelledby="clan-operations-title"
       className={styles.terminal} onKeyDown={onKeyDown} inert={suspended} data-clan-operations
       data-clan-operations-room={roomId} data-clan-operations-phase={phase} data-clan-operations-revision={state.revision}>
       <header className={styles.header}>
         <div><span className={styles.eyebrow}>CLAN SHIP · {atCouncil ? 'TABLE HOLOGRAPHIQUE DE GUERRE' : CLAN_SHIP_INTERIOR_ROOMS[roomId].label}</span>
           <h2 id="clan-operations-title">{atCouncil ? 'Le cercle de commandement' : 'Dossier du poste'}</h2>
-          <p>{PHASES[phase]} <span aria-hidden="true"> / </span> {state.recruitedNpcIds.length} membres affectés <span aria-hidden="true"> / </span> {completed.size} dossiers accomplis</p>
+          <p>{PHASES[phase]} <span aria-hidden="true"> / </span> {state.recruitedNpcIds.length} accords conclus <span aria-hidden="true"> / </span> {completed.size} dossiers accomplis</p>
         </div>
         <button ref={closeRef} type="button" className={styles.close} disabled={suspended} data-clan-operations-close onClick={onClose}>Retour au pont <span aria-hidden="true">×</span></button>
       </header>
@@ -138,7 +162,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         {tab === 'post' && <div className={styles.postLayout}>
           <section className={styles.introduction}>
             <span className={styles.eyebrow}>DU RITE AU MANDAT</span><h3>Une place dans le clan se gagne.</h3>
-            <p>Le rite Blooded ouvre l’accès au vaisseau pour la campagne initiatique. Le conseil te confie ensuite des opérations ; le vaisseau-mère demeure le bien collectif du clan.</p>
+            <p>Le rite Blooded ouvre les premières sorties sur un vaisseau personnel. Les mandats du conseil se préparent aux postes du Clan Ship, le bien collectif du clan.</p>
             <ol className={styles.onboarding}>
               {CLAN_SHIP_ONBOARDING_STEPS.map((step, index) => <li key={step.id} data-done={index < state.onboardingStep} aria-current={index === state.onboardingStep ? 'step' : undefined}>
                 <span>{index < state.onboardingStep ? '✓' : String(index + 1).padStart(2, '0')}</span>
@@ -204,15 +228,47 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
             const residence = save.companionResidence?.members.find(member => member.id === npc.id);
             const posting = availableCrew.includes(npc.id) ? 'Disponible au Clan Ship' : residence?.relation === 'suspended' ? 'Affectation suspendue'
               : residence?.assignment ? `Affecté : ${companionHostLabel(residence.assignment)}` : 'Recruté · réserve du réseau';
+            const dialogue = selectClanShipCrewDialogue({ ...save, clanShipOperations: state }, npc.id, {
+              roomId, focusedNpcId: suspended ? null : crewFocus ?? null,
+            });
+            const dialogueKey = `${npc.id}:${dialogue.context}:${dialogue.line}:${dialogue.facts.join('|')}`;
+            // Physical presence does not disappear during an autosave or pause.
+            // Keep the native details and its chosen subject mounted; the child
+            // still suspends speech and input through its suspended prop.
+            const optionalDialogue = clanShipDialogue(save, npc.id, roomId, 'greeting', true);
             return <article key={npc.id} tabIndex={-1} className={styles.crewCard} data-clan-recruit={npc.id} data-clan-recruit-status={joined ? 'recruited' : access.allowed ? 'available' : 'locked'}>
               <div className={styles.portrait} aria-hidden="true"><div><HomeworldNpcSpriteV84 npcId={clanShipCrewArtIdentity(npc.id)} role={CLAN_SHIP_CREW_ART_ROLES[npc.id]} height={150} /></div></div>
               <div><span className={styles.eyebrow}>{npc.role}</span><h4>{npc.name}</h4><p>{npc.summary}</p>
-                <p className={styles.crewEffect}>Compétence lorsqu’il est affecté et disponible au clan : {npc.effect}</p><small>Poste de rencontre : {CLAN_SHIP_INTERIOR_ROOMS[npc.roomId].label}</small>
-                {joined ? <p className={styles.joined}><strong>{posting}</strong><br />Accord enregistré : « {npc.joinLine} »</p> : <><p className={styles.availability}>{access.reason}</p>
-                  {access.allowed && (roomId === npc.roomId ? <button type="button" className={styles.primary} disabled={suspended}
+                {crewFocus === npc.id && dialogue.status !== 'spoken' && <p className={styles.availability}
+                  data-clan-crew-dialogue-unavailable={npc.id}>{dialogue.reason}</p>}
+                <p className={styles.crewEffect}>Compétence lorsqu’il est affecté et disponible au clan : {npc.effect}</p>
+                <small>{dialogue.targetRoomId ? 'Poste de rencontre' : 'Poste habituel'} : {CLAN_SHIP_INTERIOR_ROOMS[dialogue.targetRoomId ?? npc.roomId].label}</small>
+                {joined ? <p className={styles.joined}><strong>{posting}</strong><br />Accord de recrutement enregistré.</p> : <><p className={styles.availability}>{access.reason}</p>
+                  {access.allowed && roomId === npc.roomId && <button type="button" className={styles.primary} disabled={suspended}
                     data-clan-recruit-action={npc.id} onClick={() => act({ type: 'recruit', npcId: npc.id, expectedRevision: state.revision })}>Proposer un accord de recrutement</button>
-                    : routeButton(npc.roomId, `Rencontrer ${npc.name}`))}</>}
+                  }</>}
+                {dialogue.status === 'route' && dialogue.targetRoomId && roomId !== dialogue.targetRoomId &&
+                  routeButton(dialogue.targetRoomId, joined ? `Rejoindre le poste de ${npc.name}` : `Rencontrer ${npc.name}`)}
               </div>
+              {dialogue.status === 'spoken' && dialogue.context && dialogue.line && <section className={styles.crewDialogue}
+                aria-label={`Échange avec ${npc.name}`} data-clan-crew-dialogue={npc.id}
+                data-clan-crew-dialogue-context={dialogue.context}>
+                <span className={styles.eyebrow}>{CREW_DIALOGUE_CONTEXTS[dialogue.context]}</span>
+                <blockquote id={`clan-crew-dialogue-${npc.id}`}>{dialogue.line}</blockquote>
+                {dialogue.facts.length > 0 && <ul className={styles.dialogueFacts} aria-label="Repères du dossier">
+                  {dialogue.facts.map(fact => <li key={fact}>{fact}</li>)}
+                </ul>}
+                <button type="button" className={styles.secondary} disabled={suspended}
+                  aria-describedby={`clan-crew-dialogue-${npc.id}`} data-clan-crew-dialogue-ack={npc.id} onClick={() => {
+                    if (suspended) return;
+                    setHeardDialogue(dialogueKey);
+                    setFeedback('Tu prends acte de cet échange.');
+                  }}>J’ai entendu</button>
+                {heardDialogue === dialogueKey && <small className={styles.dialogueHeard}>Paroles entendues.</small>}
+              </section>}
+              {optionalDialogue?.present && <details className={styles.conversationDrawer}><summary>Autres sujets avec {npc.name}</summary>
+              <ClanShipCrewDialogue save={save} npcId={npc.id} roomId={roomId} suspended={suspended} />
+              </details>}
             </article>;
           })}</div>
           {!state.circleConfirmed && state.recruitedNpcIds.length === CLAN_SHIP_RECRUITS.length && <div className={styles.step}>

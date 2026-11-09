@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: source: 24 mission W3 grids accept at least two distinct formations within true PC budgets
+ok 1 - source: 24 mission W3 grids accept at least two distinct formations within true PC budgets
+  ---
+  duration_ms: 89.60175
+  type: 'test'
+  ...
+# Subtest: planning: no free recruitment, no PC overspend, no branch/source mutation
+ok 2 - planning: no free recruitment, no PC overspend, no branch/source mutation
+  ---
+  duration_ms: 1.485791
+  type: 'test'
+  ...
+# Subtest: two separately controlled detachments obey independent one-cell orders
+ok 3 - two separately controlled detachments obey independent one-cell orders
+  ---
+  duration_ms: 2.505999
+  type: 'test'
+  ...
+# Subtest: commands: illegal moves, hidden targets and remote objectives do not tick or consume RAV
+ok 4 - commands: illegal moves, hidden targets and remote objectives do not tick or consume RAV
+  ---
+  duration_ms: 2.05595
+  type: 'test'
+  ...
+# Subtest: combat: one source-derived team's firing requires actual LOS/range and spends RAV
+ok 5 - combat: one source-derived team's firing requires actual LOS/range and spends RAV
+  ---
+  duration_ms: 1.389305
+  type: 'test'
+  ...
+# Subtest: environment & geography: power/pressure are local, no Earth city on alien planets
+ok 6 - environment & geography: power/pressure are local, no Earth city on alien planets
+  ---
+  duration_ms: 21.668405
+  type: 'test'
+  ...
+# Subtest: 24 isolated objective chains: 72 physical tasks, escorts, return and unique receipts
+ok 7 - 24 isolated objective chains: 72 physical tasks, escorts, return and unique receipts
+  ---
+  duration_ms: 548.965884
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 675.929527

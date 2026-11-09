@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: SSR keeps ordinary campaigns unchanged and exposes no invented return group without the actual recovery prerequisite
+ok 1 - SSR keeps ordinary campaigns unchanged and exposes no invented return group without the actual recovery prerequisite
+  ---
+  duration_ms: 7.884003
+  type: 'test'
+  ...
+# Subtest: SSR draws exactly two stable return identities in their actual room without duplicating recruited officers
+ok 2 - SSR draws exactly two stable return identities in their actual room without duplicating recruited officers
+  ---
+  duration_ms: 44.053334
+  type: 'test'
+  ...
+# Subtest: SSR explains both post choices at the real threshold and prevents a distant or unjoined confirmation
+ok 3 - SSR explains both post choices at the real threshold and prevents a distant or unjoined confirmation
+  ---
+  duration_ms: 26.548414
+  type: 'test'
+  ...
+# Subtest: SSR freezes confirmations after an unacknowledged write while retaining a separate retry and the bounded resumption explanation
+ok 4 - SSR freezes confirmations after an unacknowledged write while retaining a separate retry and the bounded resumption explanation
+  ---
+  duration_ms: 14.188218
+  type: 'test'
+  ...
+# Subtest: SSR first guides a reloaded or distant player back to the safely waiting group instead of away toward the threshold
+ok 5 - SSR first guides a reloaded or distant player back to the safely waiting group instead of away toward the threshold
+  ---
+  duration_ms: 14.591972
+  type: 'test'
+  ...
+# Subtest: SSR preserves the medical group while the player reports alone at the council, with no new reward promise
+ok 6 - SSR preserves the medical group while the player reports alone at the council, with no new reward promise
+  ---
+  duration_ms: 50.900499
+  type: 'test'
+  ...
+# Subtest: the actual GameClient acknowledgement writes threshold docking and group in one real save
+ok 7 - the actual GameClient acknowledgement writes threshold docking and group in one real save
+  ---
+  duration_ms: 54.4978
+  type: 'test'
+  ...
+# Subtest: the actual GameClient scene/owner guards reject commands without publishing any campaign
+ok 8 - the actual GameClient scene/owner guards reject commands without publishing any campaign
+  ---
+  duration_ms: 270.215151
+  type: 'test'
+  ...
+# Subtest: quota refusal preserves the confirmed group and retry writes no extra movement
+ok 9 - quota refusal preserves the confirmed group and retry writes no extra movement
+  ---
+  duration_ms: 51.742764
+  type: 'test'
+  ...
+# Subtest: uncertain advancement is reconciled separately from a different proposal, so the UI cannot acknowledge the wrong positions
+ok 10 - uncertain advancement is reconciled separately from a different proposal, so the UI cannot acknowledge the wrong positions
+  ---
+  duration_ms: 46.132741
+  type: 'test'
+  ...
+# Subtest: legacy room changes cannot bypass the escorted threshold callback
+ok 11 - legacy room changes cannot bypass the escorted threshold callback
+  ---
+  duration_ms: 31.465521
+  type: 'test'
+  ...
+# Subtest: the actual legacy doorway still lets a player rejoin a medical group after leaving its room or ship
+ok 12 - the actual legacy doorway still lets a player rejoin a medical group after leaving its room or ship
+  ---
+  duration_ms: 71.894057
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 760.376482

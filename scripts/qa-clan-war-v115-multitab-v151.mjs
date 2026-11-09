@@ -4,14 +4,15 @@
  * still local browser storage, NOT a cloud/PvP concurrency certificate. */
 import assert from "node:assert/strict";
 import {createServer} from "node:http";
-import {mkdir,writeFile} from "node:fs/promises";
+import {mkdir,writeFile,readFile,readdir} from "node:fs/promises";
+import {createHash} from "node:crypto";
 import {resolve} from "node:path";
 import {fileURLToPath} from "node:url";
 import {build} from "esbuild";
 import {chromium} from "playwright-core";
 const root=fileURLToPath(new URL("../",import.meta.url));
-const out=resolve(root,"outputs/clan-war-v115-multitab-v151");
-const key="yautja.clan-war.v115.operations.free.v1";
+const out=resolve(root,process.env.CLAN_WAR_V151_QA_OUTPUT||"outputs/clan-war-v115-multitab-v151");
+const key="yautja.clan-war.v115.operations.fenced.v2";
 const sentinel="v151-unrelated-hunter-campaign";
 const bundle=await build({absWorkingDir:root,
   entryPoints:["tests/browser/clan-war-v151-four-modes.fixture.tsx"],
@@ -20,6 +21,7 @@ const bundle=await build({absWorkingDir:root,
 const js=bundle.outputFiles.find(x=>x.path.endsWith(".js"))?.contents;
 const css=bundle.outputFiles.find(x=>x.path.endsWith(".css"))?.contents;
 assert.ok(js&&css,"Production V115 and CSS need to bundle");
+const servedFieldArt=new Map();
 const html=`<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V151 deux onglets V115</title><style>body{background:#0d1f24;color:#eaf8ee;font-family:system-ui;margin:0}*{box-sizing:border-box}button,select{min-height:38px}</style><link rel="stylesheet" href="/v151.css"></head><body><div id="root"></div><script src="/v151.js"></script></body></html>`;
 const server=createServer((req,res)=>{
   const url=new URL(req.url??"/","http://127.0.0.1");
@@ -27,27 +29,82 @@ const server=createServer((req,res)=>{
   if(url.pathname==="/v151.js"){res.writeHead(200,{"content-type":"text/javascript;charset=utf-8"});res.end(js);return;}
   if(url.pathname==="/v151.css"){res.writeHead(200,{"content-type":"text/css;charset=utf-8"});res.end(css);return;}
   if(url.pathname==="/favicon.ico"){res.writeHead(204);res.end();return;}
+  if(/^\/game\/assets\/clan-field-20261103\/[a-z0-9-]+\.(svg|png|webp)$/.test(url.pathname)){
+    void readFile(resolve(root,"public"+url.pathname)).then(bytes=>{
+      servedFieldArt.set(url.pathname,{path:"public"+url.pathname,bytes:bytes.length,sha256:sha(bytes)});
+      res.writeHead(200,{"content-type":url.pathname.endsWith(".svg")?"image/svg+xml":url.pathname.endsWith(".png")?"image/png":"image/webp"});res.end(bytes);
+    }).catch(()=>{res.writeHead(404);res.end("Existing field art not found");});return;
+  }
   res.writeHead(404);res.end("No mocked missions or art");
 });
-const checks=[],errors=[];let browser,online=false;
+const checks=[],errors=[],contexts=[];let browser,ctx,a,b,online=false;
+const sha=bytes=>createHash("sha256").update(bytes).digest("hex");
+async function appSnapshot(){
+  async function filesBelow(directory){
+    const entries=await readdir(directory,{withFileTypes:true});
+    return (await Promise.all(entries.map(entry=>entry.isDirectory()?filesBelow(resolve(directory,entry.name)):entry.isFile()?[resolve(directory,entry.name)]:[]))).flat();
+  }
+  const files=await filesBelow(resolve(root,"app"));
+  const entries=await Promise.all(files.sort().map(async file=>({path:file.slice(root.length).replaceAll("\\","/"),sha256:sha(await readFile(file))})));
+  return {files:entries,sha256:sha(JSON.stringify(entries))};
+}
+const sourceBefore=await appSnapshot();
+const recipeSha256=sha(await readFile(fileURLToPath(import.meta.url)));
 const pass=(name,detail)=>{checks.push({name,status:"PASS",detail});console.log("[V151 PASS] "+name);};
 const readRaw=p=>p.evaluate(key=>localStorage.getItem(key),key);
 const read=p=>p.evaluate(key=>{try{return JSON.parse(localStorage.getItem(key)||"null");}catch{return null;}},key);
 const op=p=>p.locator('[data-testid="clan-operations-v115"]');
 const reset=p=>op(p).getByRole("button",{name:"Réinitialiser V115 uniquement"});
+async function closePanels(page){
+  while(await page.locator("dialog[open]").count()){
+    await page.keyboard.press("Escape");
+    await page.waitForFunction(()=>!document.querySelector("dialog[open]"));
+  }
+}
+async function openDesk(page,desk,title){
+  await page.bringToFront();await closePanels(page);
+  await op(page).locator(`[data-war-command="${desk}"]`).click();
+  const dialog=page.getByRole("dialog",{name:title,exact:true});await dialog.waitFor({state:"visible"});
+  await dialog.evaluate(element=>Promise.all(element.getAnimations({subtree:true}).map(animation=>animation.finished.catch(()=>{}))));return dialog;
+}
+async function prepareMode(page,mode){
+  const dialog=await openDesk(page,"briefing","Préparer un mandat");
+  await dialog.locator('[data-war-briefing-step-button="mode"]').click();
+  const label={outer:/^Mandats délégués/,stealth:/^Infiltration et sabotage/,assault:/^Assaut latéral/}[mode];
+  await dialog.getByRole("button",{name:label}).click();
+  await dialog.locator('[data-war-briefing-step-button="teams"]').click();
+  return dialog;
+}
+async function freshPair(url,scenario){
+  // A scenario owns an isolated origin storage partition, including its IDB
+  // fence. Its A/B tabs share that partition throughout the whole scenario.
+  const hadPreviousContext=Boolean(ctx);await ctx?.close();ctx=await browser.newContext({locale:"fr-FR",viewport:{width:1280,height:850}});
+  const a=await ctx.newPage(),b=await ctx.newPage();
+  for(const [id,page] of [["A",a],["B",b]]){
+    page.setDefaultTimeout(30000);page.on("pageerror",error=>errors.push(scenario+" "+id+": "+error.message));
+    await page.goto(url,{waitUntil:"domcontentloaded"});await op(page).waitFor({timeout:40000});
+    await op(page).locator('[data-war-command="briefing"]').waitFor({state:"visible"});
+  }
+  await a.evaluate(k=>localStorage.setItem(k,"hunter-campaign-safe"),sentinel);
+  assert.equal(await read(a),null);assert.equal(await read(b),null);
+  contexts.push({scenario,tabs:["A","B"],sharedWithinScenario:true,previousContextClosed:hadPreviousContext?true:null,initialArchive:null});
+  return {a,b};
+}
 async function selectTeamAndLaunch(page,mode){
   const lab=page.locator('[data-testid="v147-actual-four-mode-lab"]');
   const targetId=await lab.getAttribute("data-legal-target");
   const teamId=await lab.getAttribute("data-legal-team");
   assert.ok(targetId&&teamId);
-  await op(page).getByRole("button",{name:mode==="outer"?/^Mandats délégués/:/^Infiltration et sabotage/}).click();
-  await op(page).getByRole("combobox",{name:"Territoire de la Bible V6"}).selectOption(targetId);
-  const members=op(page).locator('input[type="checkbox"]');
+  const dialog=await prepareMode(page,mode);
+  await dialog.locator('[data-war-briefing-step-button="target"]').click();
+  await dialog.getByRole("combobox",{name:"Territoire de la Bible V6"}).selectOption(targetId);
+  await dialog.locator('[data-war-briefing-step-button="teams"]').click();
+  const members=dialog.locator('input[type="checkbox"]');
   for(let i=await members.count()-1;i>=1;i--){
     if(await members.nth(i).isChecked())await members.nth(i).uncheck();
   }
   if(!await members.first().isChecked())await members.first().check();
-  const launch=op(page).getByRole("button",{name:/^Lancer :/});
+  const launch=dialog.getByRole("button",{name:/^Lancer :/});
   assert.equal(await launch.isEnabled(),true);
   await launch.click();
   await page.waitForFunction(({key,mode})=>{
@@ -67,16 +124,8 @@ try{
   online=true;
   const addr=server.address();assert.ok(addr&&typeof addr==="object");
   browser=await chromium.launch(process.env.AUDIT_CHROME_EXECUTABLE?{executablePath:process.env.AUDIT_CHROME_EXECUTABLE,headless:true}:{channel:process.env.AUDIT_CHROME_CHANNEL||"chrome",headless:true});
-  const ctx=await browser.newContext({locale:"fr-FR",viewport:{width:1280,height:850}});
   const url=`http://127.0.0.1:${addr.port}/`;
-  const a=await ctx.newPage(),b=await ctx.newPage();
-  for(const [id,page] of [["A",a],["B",b]]){
-    page.setDefaultTimeout(30000);
-    page.on("pageerror",error=>errors.push(id+": "+error.message));
-    await page.goto(url,{waitUntil:"domcontentloaded"});
-    await op(page).waitFor({timeout:40000});
-  }
-  await a.evaluate(k=>localStorage.setItem(k,"hunter-campaign-safe"),sentinel);
+  ({a,b}=await freshPair(url,"held-lock-and-simultaneous-race"));
   assert.equal(await read(a),null);
   assert.equal(await read(b),null);
   pass("Both real V115 panels initially observe an empty exercise archive",{tabs:2});
@@ -84,23 +133,25 @@ try{
   // A lock held in another real tab must prevent both an operation and reset.
   await b.evaluate(()=>{
     window.lockHeldV151=false;
-    void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+    void navigator.locks.request("yautja.clan-war.v115.operations.fenced.v2.write",()=>{
       window.lockHeldV149=true;
       return new Promise(resolve=>{window.releaseV151=resolve;});
     });
   });
   await b.waitForFunction(()=>window.lockHeldV149===true);
   await a.bringToFront();
-  await op(a).getByRole("button",{name:/^Mandats délégués/}).click();
+  await prepareMode(a,"outer");
   const launchLocked=op(a).getByRole("button",{name:/^Lancer :/});
   assert.equal(await launchLocked.isEnabled(),true);
   await launchLocked.click();
   await op(a).getByText(/Une autre écriture V115 est en cours/).waitFor();
   assert.equal(await readRaw(a),null);
+  await prepareMode(b,"assault");
   await op(b).getByRole("button",{name:/^Lancer :/}).click();
   await op(b).getByText(/Une autre écriture V115 est en cours/).waitFor();
   assert.equal(await readRaw(b),null);
   a.once("dialog",dialog=>dialog.accept());
+  await openDesk(a,"archive","Archives et règles");
   await reset(a).click();
   await a.waitForTimeout(100);
   assert.equal(await readRaw(a),null);
@@ -110,11 +161,14 @@ try{
 
   // Start two actual panels at nearly the same instant. Exactly one archive
   // is accepted; the loser may observe the lock or the new bytes first.
-  await op(b).getByRole("button",{name:/^Mandats délégués/}).click();
+  await prepareMode(a,"outer");
+  await prepareMode(b,"outer");
+  assert.equal(await op(a).getByRole("button",{name:/^Lancer :/}).isEnabled(),true);
   assert.equal(await op(b).getByRole("button",{name:/^Lancer :/}).isEnabled(),true);
   await Promise.all([a,b].map(page=>page.evaluate(()=>{
-    const button=[...document.querySelectorAll('button')].find(item=>item.textContent?.trim().startsWith('Lancer :'));
-    button?.click();
+    const button=[...document.querySelectorAll('dialog[open] button')].find(item=>item.textContent?.trim().startsWith('Lancer :'));
+    if(!button||button.disabled||!button.getClientRects().length)throw new Error('Visible native launch button missing');
+    button.click();
   })));
   await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return !!raw&&JSON.parse(raw).serial===1;},key);
   await a.waitForTimeout(200);
@@ -123,20 +177,21 @@ try{
   assert.equal(raced.outer.length,1);
   assert.equal(await readRaw(a),await readRaw(b));
   pass("Simultaneous real panels accept one mission and preserve one archive",{serial:1,orders:1});
-  // Fixture cleanup followed by full hydration of both real panels.
-  await a.evaluate(key=>localStorage.removeItem(key),key);
-  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
-  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+  // New context pair: never clear localStorage while leaving an IDB fence behind.
+  ({a,b}=await freshPair(url,"missing-web-locks"));
 
   const unsupported=await ctx.newPage();
   await unsupported.addInitScript(()=>Object.defineProperty(navigator,"locks",{value:undefined,configurable:true}));
   await unsupported.goto(url,{waitUntil:"domcontentloaded"});
   await op(unsupported).waitFor();
+  await prepareMode(unsupported,"assault");
   await op(unsupported).getByRole("button",{name:/^Lancer :/}).click();
   await op(unsupported).getByRole("alert").filter({hasText:/Verrouillage sécurisé indisponible/}).waitFor();
   assert.equal(await readRaw(unsupported),null);
   await unsupported.close();
   pass("Missing Web Locks leaves persistent archive unchanged",{readOnly:true});
+
+  ({a,b}=await freshPair(url,"rapid-same-tab-submissions"));
 
   // Defer the first callback to model a slow local storage write and submit two
   // clicks in the same turn. The second action must not disappear silently.
@@ -149,15 +204,17 @@ try{
       return callback(lock);
     })});
   });
-  await op(a).getByRole("button",{name:/^Mandats délégués/}).click();
+  await prepareMode(a,"outer");
   await a.evaluate(()=>{
-    const button=[...document.querySelectorAll('button')].find(item=>item.textContent?.trim().startsWith('Lancer :'));
-    button?.click();button?.click();
+    const button=[...document.querySelectorAll('dialog[open] button')].find(item=>item.textContent?.trim().startsWith('Lancer :'));
+    if(!button||button.disabled||!button.getClientRects().length)throw new Error('Visible native launch button missing');
+    button.click();button.click();
   });
   await a.waitForFunction(()=>window.heldOwnWriteV151===true);
   await op(a).getByText(/Une écriture V115 est en cours/).waitFor({timeout:3000});
   assert.equal(await readRaw(a),null);
   a.once("dialog",dialog=>dialog.accept());
+  await openDesk(a,"archive","Archives et règles");
   await reset(a).click();
   await op(a).getByText(/Une écriture V115 est en cours/).waitFor();
   assert.equal(await readRaw(a),null);
@@ -165,15 +222,14 @@ try{
   await a.waitForFunction(key=>{const value=localStorage.getItem(key);return value&&JSON.parse(value).serial===1;},key);
   assert.equal((await read(a)).outer.length,1);
   pass("Rapid same-tab submissions provide feedback and charge only once",{serial:1});
-  await a.evaluate(key=>localStorage.removeItem(key),key);
-  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
-  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+  ({a,b}=await freshPair(url,"assault-timer-lock"));
 
   // Start a real assault, hold its shared lock in B across several ticks,
   // then release it and check that the timer advances from the saved state.
+  await prepareMode(a,"assault");
   await op(a).getByRole("button",{name:/^Lancer :/}).click();
   await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return raw&&JSON.parse(raw).active?.mode==="assault";},key);
-  await b.evaluate(()=>{window.timerLockHeld=false;void navigator.locks.request("yautja.clan-war.v115.operations.free.v1.write",()=>{
+  await b.evaluate(()=>{window.timerLockHeld=false;void navigator.locks.request("yautja.clan-war.v115.operations.fenced.v2.write",()=>{
     window.timerLockHeld=true;return new Promise(resolve=>{window.releaseTimerLock=resolve;});
   });});
   await b.waitForFunction(()=>window.timerLockHeld===true);
@@ -184,13 +240,12 @@ try{
   await a.waitForFunction(({key,tick})=>{const raw=localStorage.getItem(key);return raw&&JSON.parse(raw).active?.tick>tick;},{key,tick:frozenTick},{timeout:5000});
   assert.equal(await a.evaluate(k=>localStorage.getItem(k),sentinel),"hunter-campaign-safe");
   pass("Assault timer waits for lock and resumes after release",{frozenTick});
-  await a.evaluate(key=>localStorage.removeItem(key),key);
-  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
-  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+  ({a,b}=await freshPair(url,"simultaneous-due-events"));
 
   // Real Outer Ops and real recruitment become due together. Move the clock
   // forward without altering either persisted record, and wait for both timers.
   await selectTeamAndLaunch(a,"outer");
+  await openDesk(a,"recruitment","Renforts de clan");
   await op(a).getByRole("button",{name:/^Recruter ·/}).click();
   await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return raw&&JSON.parse(raw).pendingRecruits?.length===1;},key);
   const dueBefore=await read(a);
@@ -201,9 +256,7 @@ try{
   },key,{timeout:10000});
   assert.equal(await a.evaluate(k=>localStorage.getItem(k),sentinel),"hunter-campaign-safe");
   pass("Simultaneous due mandate and recruitment both settle without losing either",{mandates:1,recruits:1,clockAdvanced:true});
-  await a.evaluate(key=>localStorage.removeItem(key),key);
-  await Promise.all([a.reload({waitUntil:"domcontentloaded"}),b.reload({waitUntil:"domcontentloaded"})]);
-  await Promise.all([op(a).waitFor(),op(b).waitFor()]);
+  ({a,b}=await freshPair(url,"stale-reset-and-reload"));
 
   await a.bringToFront();
   const launched=await selectTeamAndLaunch(a,"outer");
@@ -215,8 +268,10 @@ try{
 
   await b.bringToFront();
   await op(b).getByRole("alert").filter({hasText:/Front V115 modifié/}).waitFor({state:"visible",timeout:30000});
+  await openDesk(b,"archive","Archives et règles");
   assert.equal(await reset(b).isDisabled(),true);
-  assert.equal(await op(b).getByRole("button",{name:/^Lancer :/}).isDisabled(),true);
+  assert.equal(await op(b).locator('[data-war-command="briefing"]').isDisabled(),true);
+  assert.equal(await op(b).getByRole("button",{name:/^Lancer :/,includeHidden:true}).isDisabled(),true);
   assert.equal(await readRaw(b),firstBytes);
   await b.screenshot({path:resolve(out,"01-tab-b-stale-reset-disabled.png"),fullPage:false});
   pass("Stale tab B disables reset and launch instead of overwriting A",
@@ -233,6 +288,7 @@ try{
   await a.bringToFront();
   let accepted=0;
   a.on("dialog",async dialog=>{accepted++;await dialog.accept();});
+  await openDesk(a,"archive","Archives et règles");
   await reset(a).click();
   await a.waitForFunction(key=>{const raw=localStorage.getItem(key);return !!raw&&JSON.parse(raw).serial===0;},key,{timeout:20000});
   const resetBytes=await readRaw(a);
@@ -244,9 +300,11 @@ try{
     {reset:true,serial:0});
 
   await b.bringToFront();
+  await openDesk(b,"archive","Archives et règles");
   assert.equal(await reset(b).isDisabled(),true);
   await b.reload({waitUntil:"domcontentloaded"});
   await op(b).waitFor();
+  await openDesk(b,"archive","Archives et règles");
   assert.equal(await reset(b).isEnabled(),true);
   const revived=await read(b);
   assert.equal(revived.serial,0);
@@ -260,6 +318,7 @@ try{
 
   await a.bringToFront();
   await op(a).getByRole("alert").filter({hasText:/Front V115 modifié/}).waitFor({state:"visible",timeout:30000});
+  await openDesk(a,"archive","Archives et règles");
   assert.equal(await reset(a).isDisabled(),true);
   assert.equal(await readRaw(a),await readRaw(b));
   assert.equal((await read(a)).active?.mode,"stealth");
@@ -269,14 +328,23 @@ try{
 
   assert.equal(await a.evaluate(k=>localStorage.getItem(k),sentinel),"hunter-campaign-safe");
   assert.deepEqual(errors,[]);
-  const report={schema:151,scope:"Two real V115 panels, Web Locks and shared localStorage: contended writes, unavailable lock and stale reset. Only cooperating tabs, not legacy writers, other devices, cloud or full GameClient.",
+  assert.equal(checks.length,14);
+  const sourceAfter=await appSnapshot();assert.equal(sourceAfter.sha256,sourceBefore.sha256,"Application source changed during native QA");
+  assert.equal(sha(await readFile(fileURLToPath(import.meta.url))),recipeSha256,"QA recipe changed during run");
+  const report={schema:151,browserVersion:browser.version(),sourceBefore,sourceAfter,recipeSha256,contexts,servedFieldArt:[...servedFieldArt.values()],scope:"Two real V115 panels, Web Locks and shared localStorage: contended writes, unavailable lock and stale reset. Only cooperating tabs, not legacy writers, other devices, cloud or full GameClient.",
     checked:checks.length,preventedStaleReset:true,verifiedFocusRefresh:true,localOnly:true,
     sourceModes:["outer","stealth"],campaignUnchanged:true,oneToOneValidated:0,
-    checks,errors,artApproved:false};
+    checks,errors,artApproved:false,campaignProbe:"Unrelated sentinel key only; no full SaveGame is mounted",
+    clockFixture:"Date.now is advanced only in the disclosed simultaneous-due scenario; the native timers and persisted records are unchanged",
+    contextIsolation:"Each scenario uses a fresh BrowserContext; A/B share storage within that scenario, no localStorage or IDB deletion"};
   await writeFile(resolve(out,"v151-two-tab-operations-proof.json"),JSON.stringify(report,null,2)+"\n");
   console.log(JSON.stringify({checked:report.checked,preventedStaleReset:report.preventedStaleReset,
     modes:report.sourceModes,errors:report.errors.length},null,2));
   await ctx.close();
+}catch(error){
+  await writeFile(resolve(out,"failure.json"),JSON.stringify({passed:false,checked:checks.length,checks,errors,message:error.message,stack:error.stack,sourceBefore,sourceAfter:await appSnapshot(),recipeSha256},null,2)+"\n");
+  await a?.screenshot({path:resolve(out,"failure.png"),fullPage:false}).catch(()=>{});
+  throw error;
 }finally{
   await browser?.close();
   if(online){server.closeAllConnections();await new Promise(done=>server.close(done));}

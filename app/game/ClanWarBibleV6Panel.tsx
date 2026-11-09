@@ -7,6 +7,7 @@ import {
   type WarRulesV6, type WarTeamHypothesisV6,
 } from "./systems/clanWarBibleV6";
 import styles from "./ClanWarPanelV85.module.css";
+import ClanWarCommandOverlay from "./ClanWarCommandOverlay";
 import ClanWarExerciseV6 from "./ClanWarExerciseV6";
 import ClanWarWorksV6 from "./ClanWarWorksV6";
 import ClanWarSpecializedV107 from "./ClanWarSpecializedV107";
@@ -20,6 +21,22 @@ import ClanWarRtsMissionStudyV129 from "./ClanWarRtsMissionStudyV129";
 import ClanWarRtsSquadsV133 from "./ClanWarRtsSquadsV133";
 import type { WarSourceRtsScenarioIdV119 } from "./systems/clanWarRtsScenariosV119";
 
+const COUNCIL_TOOL_GROUPS = [
+  { id: "front", label: "Mandats", number: "I", description: "Déployer un détachement et préparer les batailles.", tools: [
+    ["missions", "Opérations jouables · 4 modes", "Déploiement"], ["exercise", "Jouer la reconnaissance", "Reconnaissance"], ["rtsSquads", "RTS W3 · escouades", "Escouades"],
+  ] },
+  { id: "forces", label: "Forces et logistique", number: "II", description: "Préparer les effectifs, les ouvrages et leur ravitaillement.", tools: [
+    ["teams", "Simuler une équipe", "Préparation des équipes"], ["routes", "Passages de Korthas", "Routes et passages"], ["works", "Logistique et ouvrages", "Ouvrages"], ["specialized", "Six ateliers physiques", "Ateliers"], ["logistics", "Convoi des six ouvrages", "Convoi"],
+  ] },
+  { id: "cartography", label: "Cartographie", number: "III", description: "Explorer les théâtres et consulter les études de missions.", tools: [
+    ["variants", "1 200 variantes · 4 gameplays", "Atlas des variantes"], ["geoai", "Terre · climats · IA · multijoueur", "Milieux et doctrines"], ["w3maps", "12 cartes W3 · exploration", "Cartes d'exploration"], ["rts24", "24 missions RTS W3 · objectifs", "Objectifs tactiques"],
+  ] },
+  { id: "archives", label: "Dossiers du conseil", number: "IV", description: "Consulter les missions documentées et leurs règles sources.", tools: [
+    ["dossiers", "108 missions sources · W3/W5", "Dossiers de mission"], ["library", "Toutes les fiches V6", "Bibliothèque des règles"],
+  ] },
+] as const;
+type CouncilSection = typeof COUNCIL_TOOL_GROUPS[number]["tools"][number][0];
+
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
 export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false }: { active?: boolean; gauntletId?: string; holographic?: boolean }) {
@@ -30,7 +47,9 @@ export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungl
   const [requestedRtsPilot,setRequestedRtsPilot]=useState<WarSourceRtsScenarioIdV119|null>(null);
   const rules = privateRules ?? DEFAULT_WAR_RULES_V6;
   const { metadata: WAR_BIBLE_V6, entries: WAR_BIBLE_ENTRIES_V6, sections: WAR_BIBLE_SECTIONS_V6, parameters: WAR_PARAMETERS_V6, units: WAR_UNITS_V6, specializations: WAR_SPECIALIZATIONS_V6, territories: WAR_TERRITORIES_V6, passages: WAR_PASSAGES_V6 } = rules;
-  const [section, setSection] = useState<"teams" | "routes" | "exercise" | "works" | "specialized" | "logistics" | "missions" | "dossiers" | "variants" | "geoai" | "w3maps" | "rts24" | "rtsSquads" | "library">("teams");
+  const [section, setSection] = useState<CouncilSection>("missions");
+  const [sourceOpen, setSourceOpen] = useState(false), [rulesOpen, setRulesOpen] = useState(false);
+  const activeGroup = COUNCIL_TOOL_GROUPS.find(group => group.tools.some(tool => tool[0] === section)) ?? COUNCIL_TOOL_GROUPS[0];
   const [hypothesis, setHypothesis] = useState<WarTeamHypothesisV6>({ unitId: "W3-U01", xp: 40, fatigue: 20, deployableMembers: 2, availableRav: 6, frontNeedRav: 6, terrainBonus: 10, nextObjectiveXp: 8 });
   const [fromId, setFromId] = useState("W3-K01"), [toId, setToId] = useState("W3-K36");
   const [commandPoints, setCommandPoints] = useState(12), [closed, setClosed] = useState<string[]>([]);
@@ -84,13 +103,22 @@ export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungl
   </aside>;
   if (WAR_BIBLE_ENTRIES_V6.length === 0) return <div><div className={styles.notice}><h3>Bible V6 · règles locales</h3><p>La source récupérée depuis votre Drive privé n’est pas incluse dans cette version publique. Chargez son JSON local ci-dessous pour utiliser les outils V6. Les exercices V3 restent accessibles dans leurs archives séparées.</p></div>{privateImport}</div>;
   return <div data-war-bible="V6" data-war-bible-source-sha={WAR_BIBLE_V6.sha256}>
-    <div className={styles.sectionHeader}><div><h3>Bible V6 · équipes, passages et mandats</h3><p>Source du 7 octobre 2026 · {WAR_BIBLE_ENTRIES_V6.length} fiches de guerre dans {WAR_BIBLE_SECTIONS_V6.length} feuilles.</p></div></div>
-    {privateImport}
-    <p className={styles.notice}>La version actuelle emploie RAV pour le ravitaillement et PC pour le commandement. L’expérience d’une équipe reste entre {WAR_PARAMETERS_V6.xp_min} et {WAR_PARAMETERS_V6.xp_max}, avec les paliers {WAR_PARAMETERS_V6.xp_tier_2} et {WAR_PARAMETERS_V6.xp_tier_3}. Les fiches V3 du 6 octobre décrivent une version antérieure, accessible dans ses exercices propres.</p>
-    <nav className={styles.tabs} aria-label="Outils de guerre de la Bible V6">{([["teams", "Simuler une équipe"], ["routes", "Passages de Korthas"], ["exercise", "Jouer la reconnaissance"], ["works", "Logistique et ouvrages"], ["specialized", "Six ateliers physiques"], ["logistics", "Convoi des six ouvrages"], ["missions", "Opérations jouables · 4 modes"], ["dossiers", "108 missions sources · W3/W5"], ["variants", "1 200 variantes · 4 gameplays"], ["geoai", "Terre · climats · IA · multijoueur"], ["w3maps", "12 cartes W3 · exploration"], ["rts24", "24 missions RTS W3 · objectifs"], ["rtsSquads", "RTS W3 · escouades"], ["library", "Toutes les fiches V6"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}</nav>
+    <header className={styles.councilHeader}>
+      <div><p className={styles.eyebrow}>MANDATS ACTUELS · TABLE DU CONSEIL</p><h3>Préparer la guerre</h3><p>Choisissez une opération ou ouvrez les dossiers de préparation.</p></div>
+      <div className={styles.councilSourceActions}><button type="button" data-command-open="council-rules" onClick={() => setRulesOpen(true)}>Règles du conseil</button><button type="button" data-command-open="council-source" onClick={() => setSourceOpen(true)}>Source locale</button></div>
+    </header>
+    <nav className={styles.councilGroups} aria-label="Domaines du conseil">
+      {COUNCIL_TOOL_GROUPS.map(group => <button type="button" key={group.id} data-war-tool-group={group.id} aria-pressed={activeGroup.id === group.id} onClick={() => setSection(group.tools[0][0])}><small>{group.number}</small><span>{group.label}</span></button>)}
+    </nav>
+    <div className={styles.councilSubmenu}>
+      <p>{activeGroup.description}</p>
+      <nav className={styles.councilTools} aria-label="Outils de guerre de la Bible V6">
+        {activeGroup.tools.map(([id, label, title]) => <button type="button" key={id} data-war-tool-id={id} aria-label={label} aria-pressed={section === id} onClick={() => setSection(id)}>{title}<span aria-hidden="true">{section === id ? "●" : "+"}</span></button>)}
+      </nav>
+    </div>
     <div hidden={section !== "missions"}><ClanWarOperationsV115
       key={rulesGeneration+":"+(requestedRtsPilot??"free")}
-      rules={rules} active={active && section === "missions"}
+      rules={rules} active={active && section === "missions" && !sourceOpen && !rulesOpen}
       persist={rules === DEFAULT_WAR_RULES_V6} initialScenarioId={requestedRtsPilot} gauntletId={gauntletId} holographic={holographic}/></div>
     {section === "variants" && <ClanWarVariantAtlasV120 onOpenPrototype={()=>{setRequestedRtsPilot(null);setSection("missions");}}/>}
     {section === "geoai" && <ClanWarGeoAiV126/>}
@@ -102,8 +130,8 @@ export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungl
       onOpenSourceRts={id=>{setRequestedRtsPilot(id);setSection("missions");}}/>}
     <div hidden={section !== "exercise"}><ClanWarExerciseV6 key={rulesGeneration} rules={rules}/></div>
     <div hidden={section !== "works"}><ClanWarWorksV6 key={rulesGeneration} rules={rules}/></div>
-    <div hidden={section !== "specialized"}><ClanWarSpecializedV107 key={rulesGeneration} rules={rules} active={active && section === "specialized"}/></div>
-    <div hidden={section !== "logistics"}>{section === "logistics" && <ClanSupplyRouteV109 key={rulesGeneration} rules={rules} active={active && section === "logistics"}/>}</div>
+    <div hidden={section !== "specialized"}><ClanWarSpecializedV107 key={rulesGeneration} rules={rules} active={active && section === "specialized" && !sourceOpen && !rulesOpen}/></div>
+    <div hidden={section !== "logistics"}>{section === "logistics" && <ClanSupplyRouteV109 key={rulesGeneration} rules={rules} active={active && section === "logistics" && !sourceOpen && !rulesOpen}/>}</div>
     {section === "teams" && <div>
       <h4>Hypothèses de l’équipe</h4><p>Le calcul reprend la feuille « Simuler Une équipe ». Ces valeurs servent à comparer une préparation ; elles ne deviennent pas des guerriers, des compétences ou des ressources dans votre campagne.</p>
       <div className={styles.controlGrid}><label>Type d’équipe<select value={hypothesis.unitId} onChange={event => { const selected = WAR_UNITS_V6.find(item => item.id === event.target.value); if (selected) setHypothesis(current => ({ ...current, unitId: selected.id, deployableMembers: selected.fullMembers, frontNeedRav: Math.max(current.frontNeedRav, selected.upkeepRav) })); }}>{WAR_UNITS_V6.map(item => <option key={item.id} value={item.id}>{item.id} · {item.name}</option>)}</select></label>{numberInput("xp", `Expérience · 0 à ${WAR_PARAMETERS_V6.xp_max}`, WAR_PARAMETERS_V6.xp_max)}{numberInput("fatigue", `Fatigue · 0 à ${WAR_PARAMETERS_V6.fatigue_max}`, WAR_PARAMETERS_V6.fatigue_max)}{numberInput("deployableMembers", "Membres déployables", unit?.fullMembers ?? 0)}{numberInput("availableRav", "RAV disponibles ce tour", WAR_PARAMETERS_V6.rav_cap)}{numberInput("frontNeedRav", "Besoin RAV du front · équipe incluse une fois", 1000000)}{numberInput("terrainBonus", `Bonus de défense du terrain · plafonné à ${WAR_PARAMETERS_V6.terrain_bonus_cap} %`, 100)}<label>Prochain objectif<select value={hypothesis.nextObjectiveXp} onChange={event => setHypothesis(current => ({ ...current, nextObjectiveXp: Number(event.target.value) }))}><option value={WAR_PARAMETERS_V6.xp_recon}>Reconnaissance nouvelle · {WAR_PARAMETERS_V6.xp_recon} XP</option><option value={WAR_PARAMETERS_V6.xp_hero}>Action héroïque{WAR_PARAMETERS_V6.xp_retreat === WAR_PARAMETERS_V6.xp_hero ? " ou repli" : ""} · {WAR_PARAMETERS_V6.xp_hero} XP</option>{WAR_PARAMETERS_V6.xp_retreat !== WAR_PARAMETERS_V6.xp_hero && <option value={WAR_PARAMETERS_V6.xp_retreat}>Repli organisé · {WAR_PARAMETERS_V6.xp_retreat} XP</option>}<option value={WAR_PARAMETERS_V6.xp_battle}>Objectif de bataille · {WAR_PARAMETERS_V6.xp_battle} XP</option><option value={WAR_PARAMETERS_V6.xp_campaign}>Finale · remplace l’objectif standard · {WAR_PARAMETERS_V6.xp_campaign} XP</option></select></label></div>
@@ -125,6 +153,13 @@ export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungl
       <div className={styles.controlGrid}><label>Rechercher<input type="search" maxLength={120} value={query} onChange={event => { setQuery(event.target.value); setPage(0); }} placeholder="W3-K01, W5-SP, doctrine, foyer…"/></label><label>Feuille<select value={sheet} onChange={event => { setSheet(event.target.value); setPage(0); }}><option>Toutes les feuilles</option>{WAR_BIBLE_SECTIONS_V6.map(name => <option key={name}>{name}</option>)}</select></label></div><p>{filtered.length} fiche(s).</p>
       <div className={styles.library}><div className={styles.entryList}>{filtered.slice(page * 24, page * 24 + 24).map(item => <button type="button" key={`${item.sheet}-${item.id}`} aria-pressed={entryId === `${item.sheet}:${item.id}`} onClick={() => setEntryId(`${item.sheet}:${item.id}`)}><small>{item.id} · {item.sheet}</small><strong>{item.title}</strong></button>)}<div className={styles.actions}><button type="button" disabled={page === 0} onClick={() => setPage(current => current - 1)}>Précédent</button><span>{page + 1}/{Math.max(1, Math.ceil(filtered.length / 24))}</span><button type="button" disabled={(page + 1) * 24 >= filtered.length} onClick={() => setPage(current => current + 1)}>Suivant</button></div></div><div>{entry && <article className={styles.entry}><p className={styles.eyebrow}>{entry.id} · {entry.sheet} · ligne {entry.row}</p><h3>{entry.title}</h3><dl>{entry.fields.map(item => <div key={item.cell}><dt>{item.label}</dt><dd>{String(item.value)}</dd></div>)}</dl></article>}</div></div>
     </div>}
+    <ClanWarCommandOverlay open={sourceOpen} onClose={() => setSourceOpen(false)} title="Source locale des règles" eyebrow="ARCHIVES DU CONSEIL">
+      {privateImport}
+    </ClanWarCommandOverlay>
+    <ClanWarCommandOverlay open={rulesOpen} onClose={() => setRulesOpen(false)} title="Règles du conseil" eyebrow="DOCTRINE · BIBLE V6">
+      <p>{WAR_BIBLE_ENTRIES_V6.length} fiches de guerre dans {WAR_BIBLE_SECTIONS_V6.length} feuilles · source du 7 octobre 2026.</p>
+    <p className={styles.notice}>La version actuelle emploie RAV pour le ravitaillement et PC pour le commandement. L’expérience d’une équipe reste entre {WAR_PARAMETERS_V6.xp_min} et {WAR_PARAMETERS_V6.xp_max}, avec les paliers {WAR_PARAMETERS_V6.xp_tier_2} et {WAR_PARAMETERS_V6.xp_tier_3}. Les fiches V3 du 6 octobre décrivent une version antérieure, accessible dans ses exercices propres.</p>
     <p className={styles.source}>Source prioritaire : {WAR_BIBLE_V6.workbook}. Les tables W3 et W5 se déclarent reconstituées et proposées pour le projet. Le système ne les présente pas comme du lore canonique ni comme des campagnes déjà réalisées.</p>
+    </ClanWarCommandOverlay>
   </div>;
 }

@@ -1,0 +1,44 @@
+import assert from 'node:assert/strict';
+import {build} from 'esbuild';
+import {chromium} from 'playwright-core';
+import {createServer} from 'node:http';
+import {readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+
+const root=process.cwd(),out=path.join(root,'outputs/qa-field-guide-compact-20261109');
+const entry=`import React from 'react';import {createRoot} from 'react-dom/client';import Guide from './app/game/HuntFieldGuideV112';import {DEFAULT_CONTROL_BINDINGS} from './app/game/systems/controlBindings';import {normalizeHuntAccessibilityV112,rebindHuntGamepadV112} from './app/game/systems/huntAccessibilityV112';const root=createRoot(document.getElementById('root'));window.showCase=(kind)=>{const defaults={bindings:DEFAULT_CONTROL_BINDINGS,phase:'tracking',climbing:false,grounded:true,stamina:100,corpseNearby:true,toolOwned:true,toolCondition:100,fieldLoad:{massKg:2,volumeUnits:1,capacityMassKg:24,capacityVolumeUnits:18}};let extra={};if(kind==='missing-full')extra={toolOwned:false,fieldLoad:{...defaults.fieldLoad,massKg:24}};if(kind==='worn')extra={toolCondition:0};if(kind==='air')extra={grounded:false};if(kind==='exhausted')extra={grounded:false,stamina:0,gripExhausted:true};if(kind==='extraction')extra={phase:'extraction'};if(kind==='remapped'){let settings=normalizeHuntAccessibilityV112(undefined);settings=rebindHuntGamepadV112(settings,'jump',2);settings=rebindHuntGamepadV112(settings,'interact',3);extra={bindings:{...DEFAULT_CONTROL_BINDINGS,'hunt.moveUp':['F1'],'hunt.moveDown':['F2'],'hunt.jump':['F3'],'hunt.interact':['F4']},gamepadButtons:settings.gamepadButtons};}root.render(<Guide {...defaults} {...extra}/>)};window.showCase('missing-full');`;
+const built=await build({stdin:{contents:entry,loader:'jsx',resolveDir:root},bundle:true,write:false,format:'iife',platform:'browser',jsx:'automatic',outfile:'guide.js',logLevel:'silent'});
+const js=built.outputFiles.find(f=>f.path.endsWith('.js')).contents,css=built.outputFiles.find(f=>f.path.endsWith('.css')).contents;
+const html='<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/guide.css"><style>*{box-sizing:border-box}body{margin:16px;font-family:Arial,sans-serif;background:#090f0d}</style><div id="root"></div><script src="/guide.js"></script>';
+const server=createServer((req,res)=>{if(req.url==='/guide.js')res.writeHead(200,{'content-type':'application/javascript'}).end(js);else if(req.url==='/guide.css')res.writeHead(200,{'content-type':'text/css'}).end(css);else res.writeHead(200,{'content-type':'text/html'}).end(html);});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));
+const hash=b=>createHash('sha256').update(b).digest('hex');
+const report={scope:'Standalone actual field guide component; constructed body/tool/pack states; not HuntCanvas, campaign, physical-device or human qualification',baseCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceFiles:{},entrySha256:hash(entry),cases:[],checks:[],captures:[],errors:[]};
+for(const file of ['app/game/HuntFieldGuideV112.tsx','app/game/HuntAccessibilityV112.module.css','app/game/controlBindingLabels.ts','app/game/systems/controlBindings.ts','app/game/systems/huntAccessibilityV112.ts','app/game/systems/harvestInventoryV112.ts'])report.sourceFiles[file]=hash(await readFile(path.join(root,file)));
+let browser;
+try{
+ browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});report.browser=browser.version();
+ const page=await browser.newPage();page.on('pageerror',e=>report.errors.push(String(e)));
+ const frames=()=>page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+ for(const width of [390,320]){
+  await page.setViewportSize({width,height:844});await page.goto('http://127.0.0.1:'+server.address().port);
+  for(const mode of ['missing-full','worn','sharp','air','exhausted','extraction']){
+   await page.evaluate(mode=>window.showCase(mode),mode);await page.locator('[data-field-guide-v112]').waitFor();await frames();
+   report.cases.push(await page.locator('[data-field-guide-v112]').evaluate((el,input)=>({viewport:input.width,state:input.mode,height:el.getBoundingClientRect().height,width:el.getBoundingClientRect().width,closed:[...el.querySelectorAll('details')].every(x=>!x.open),overflow:el.scrollWidth>el.clientWidth,documentOverflow:document.documentElement.scrollWidth>innerWidth,summary:el.querySelector('[data-guide-preparation-summary-v112]').textContent}),{width,mode}));
+   if(mode==='missing-full'){const bytes=await page.screenshot({fullPage:true});const file='closed-missing-full-'+width+'.png';await writeFile(path.join(out,file),bytes);report.captures.push({file,bytes:bytes.length,sha256:hash(bytes)});}
+  }
+ }
+ await page.evaluate(()=>window.showCase('remapped'));await frames();
+ const guide=page.locator('[data-field-guide-v112]'),prep=page.locator('[data-guide-preparation-summary-v112]');
+ await prep.focus();await page.keyboard.press('Enter');assert.equal(await prep.evaluate(el=>el.parentElement.open),true);
+ const content=await page.locator('[data-guide-preparation-v112]').innerText();assert.match(content,/Bas \+ Y \/ Triangle/);assert.match(content,/Interagir seul \(F4\)/);assert.match(content,/2\.0 \/ 24 kg/);assert.match(content,/1\.0 \/ 18 volumes/);assert.match(content,/Analyse avant le premier prélèvement/);
+ report.checks.push('Native Enter opens actual detailed preparation; remapped access, both capacity dimensions and irreversible-analysis text remain visible');
+ await prep.focus();await page.keyboard.press('Space');assert.equal(await prep.evaluate(el=>el.parentElement.open),false);report.checks.push('Native Space closes preparation without removing its critical summary');
+ const learning=guide.getByText('Apprendre les gestes et annulations',{exact:true});await learning.focus();await page.keyboard.press('Enter');assert.equal(await learning.evaluate(el=>el.parentElement.open),true);assert.equal(await guide.locator('[data-guide-checklist-v112] > li').count(),11);const text=await guide.innerText();assert.match(text,/nettoie, traite, sèche puis monte/);assert.match(text,/F1/);assert.match(text,/F2/);assert.match(text,/F3/);assert.match(text,/X \/ Carré/);report.checks.push('All eleven original steps remain keyboard reachable with remapped actions');
+ await page.evaluate(()=>document.documentElement.style.fontSize='200%');await frames();assert.ok(await guide.evaluate(el=>parseFloat(getComputedStyle(el).fontSize))>=32);assert.equal(await guide.evaluate(el=>[...el.querySelectorAll('p,li,summary')].some(x=>x.scrollWidth>x.clientWidth+1)),false);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);report.checks.push('Actual guide at 200% root text and 320px wraps all content without horizontal overflow');
+ report.passed=report.errors.length===0&&report.cases.every(c=>c.closed&&!c.overflow&&!c.documentOverflow&&c.height<=175);
+}catch(error){report.failure=String(error.stack??error);report.passed=false;}
+finally{await browser?.close();await new Promise(r=>server.close(r));await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');}
+console.log(JSON.stringify({passed:report.passed,cases:report.cases,checks:report.checks,errors:report.errors,failure:report.failure}));if(!report.passed)process.exitCode=1;

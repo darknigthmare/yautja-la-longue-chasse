@@ -1,0 +1,90 @@
+{
+  "asOf": "2026-11-09",
+  "reviewer": "independent Codex sub-agent; not human art review",
+  "scope": "OPS-B14 audio and temporary Warp boundaries",
+  "method": "Read actual source and run18 audio +10 shared-voice tests directly in Node22.23.4. No new browser run or listening session.",
+  "fingerprints": [
+    {
+      "path": "app/game/systems/clanShipOperationsAudio.ts",
+      "sha256": "594376cc11060d6eec145f2626f57e23903f76eb1aa1d21d9e292b064caf3f20"
+    },
+    {
+      "path": "app/game/ClanShipHub.tsx",
+      "sha256": "cde4eb8c5aafef328fb6911cf09617f92719075963d0b0c134c70dd3a5714352"
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "sha256": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972"
+    },
+    {
+      "path": "app/game/systems/sceneAudio.ts",
+      "sha256": "959ca61dc2e373147672fb5735c7635324822a059a3af02b77b56effabb754dc"
+    },
+    {
+      "path": "app/game/sound.ts",
+      "sha256": "cf0e124639cb3541cdb43453344fee051fa90dd08b8f2c2c18b64f6541b9b138"
+    },
+    {
+      "path": "tests/clan-ship-operations-audio.test.mjs",
+      "sha256": "3fd98fc509db59da70d2e2252cd7e53ac81c27a4045336eda126f77ff6769994"
+    },
+    {
+      "path": "tests/scene-audio.test.mjs",
+      "sha256": "c1c77f051afef16e3ef7df9eef070a49bd29e795aae8e36cfc22011966f7479f"
+    },
+    {
+      "path": "app/game/systems/warpModuleBay.ts",
+      "sha256": "329a14a555c29dd465438cdc37d5a8c553b869d73aa3d08682544c3ad1df4403"
+    },
+    {
+      "path": "app/game/WarpModuleBay.tsx",
+      "sha256": "9809a3938b5c7f67db0e0340920a5f4bb6b594c244cf933d9988bfaf6c581230"
+    },
+    {
+      "path": "app/game/WarpModuleBay.module.css",
+      "sha256": "e30ae6fb1dca1f9a1819dda0f35be2e969421248c2a028f2d6936c1969856c63"
+    },
+    {
+      "path": "app/dev/session.tsx",
+      "sha256": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb"
+    }
+  ],
+  "audio": {
+    "blockingFindings": [],
+    "checks": [
+      "Shared GameAudio effects/master bus; no second context or loop.",
+      "Output follows changed durable revision, exact replayed tactical state and real action.",
+      "Forecasts, loaded receipts, skipped revisions and repeated synchronization remain silent.",
+      "Storage refusal clears pending success; latest interaction owns bounded voice.",
+      "Blur/hidden/settings/screen/archive guards stop and clear pending audio; focus sync never replays a debrief.",
+      "Foreign/future/invalid state rejected; dispose releases voice once."
+    ],
+    "independentTests": {
+      "passed": 28,
+      "failed": 0,
+      "newTestsNotAdditiveToRootSuite": true
+    },
+    "limitation": "B14 voice tests model muted/autoplay failure as play(false); GameAudio actually gates through mix gains. Shared voice tests assert zero gain. Neither establishes listening quality or a physical controller."
+  },
+  "warp": {
+    "blockingBoundaryFindings": [],
+    "checks": [
+      "Only appearance/loadout passed from /dev owner; no save writer or campaign progression.",
+      "Actor traversal, station reach, door closure and return belong to local geometry.",
+      "Blur/visibility/suspension clears held keys and paths; A/B held on first pad frame does not execute an interaction."
+    ],
+    "findings": [
+      {
+        "id": "WARP-REVIEW-01",
+        "severity": "P2",
+        "location": "app/game/WarpModuleBay.tsx: HunterRigPreview pose/speed",
+        "finding": "Keyboard/stick movement clears navigating, but pose and speed depend solely on navigating. The actor slides in idle during direct movement.",
+        "requestedFix": "Use effective movement from actor displacement for pose/speed; preserve reduced motion.",
+        "status": "resolved by owning agent; final source re-read independently",
+        "resolution": "Effective displacement updates moving; pose and speed now use moving for both clicked routes and keyboard/stick input. Clear/stop also reset moving.",
+        "resolvedSourceSha256": "9809a3938b5c7f67db0e0340920a5f4bb6b594c244cf933d9988bfaf6c581230",
+        "resolutionVerification": "Source re-read; a native browser motion inspection remains a separate verification."
+      }
+    ]
+  }
+}

@@ -1,4 +1,8 @@
 "use client";
+import { actMobility, type MobilityCommand } from "./systems/mobility/ledger";
+import { atMobilityForge } from "./systems/mobility/access";
+import type { MobilityReceipt } from "./systems/mobility/controller";
+import { acceptTrophyTutorialCheckpointV6, inspectTrophyTutorialV6, type TrophyTutorialStateV6 } from "./systems/trophyTutorialV6";
 import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
 import {startConservationV112,workConservationV112,pauseConservationV112,resumeConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
 import { normalizeHuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
@@ -63,6 +67,7 @@ import { actClanShipDocking, normalizeClanShipDocking, type ClanShipDockingActio
 import { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, type ClanShipOperationsAction } from "./systems/clanShipOperations";
 import { actClanShipIncident, actClanShipTrophyHearing, type ClanShipIncidentAction, type ClanShipIncidentObservation } from './systems/clanShipIncidents';
 import type { ClanShipTrophyHearingAction } from './systems/clanShipTrophyHearing';
+import { actClanShipReturnEscort, type ClanShipReturnEscortAction, type ClanShipReturnEscortObservation } from './systems/clanShipReturnEscort';
 import type { ClanShipService } from "./ClanShipHub";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
 import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
@@ -295,6 +300,7 @@ import { captureHuntGauntletV142, resumeHuntGauntletV142 } from "./systems/huntG
 
 const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
+const MobilityGarage = React.lazy(() => import("./MobilityGarage"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const ClanWarPanelV85 = React.lazy(() => import("./ClanWarPanelV85"));
@@ -326,6 +332,7 @@ const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
 const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
+const TrophyTutorialBay = React.lazy(() => import("./TrophyTutorialBay"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
 const CatalogueHunterBrowser = React.lazy(() =>
   import("./CatalogueHunterBrowser").then((module) => ({
@@ -366,6 +373,7 @@ type Screen =
   | "homeworld-expedition"
   | "glass-desert-expedition"
   | "justice"
+  | "mobility"
   | "medbay"
   | "training"
   | "pit"
@@ -384,7 +392,7 @@ type HubLocation = "deck" | "homeworld" | "clan-ship";
 type MapReturnScreen = Extract<Screen, "ship" | "deck" | "homeworld" | "clan-ship">;
 type StationScreen = Extract<
   Screen,
-  "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "justice" | "mausoleum"
+  "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "justice" | "mausoleum" | "mobility"
 >;
 type StationReturnScreen = Extract<Screen, "ship" | "deck" | "briefing" | "homeworld" | "clan-ship">;
 
@@ -1139,6 +1147,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [previewAiming, setPreviewAiming] = useState(false);
   const [selectedCatalogueEntryId, setSelectedCatalogueEntryId] =
     useState<CatalogueStableId | null>(null);
+  const [trophyTutorialOpen, setTrophyTutorialOpen] = useState(false);
+  const trophyTutorialEntryRef = useRef<HTMLButtonElement>(null);
+  const closeTrophyTutorial = useCallback(() => {
+    setTrophyTutorialOpen(false);
+    requestAnimationFrame(() => trophyTutorialEntryRef.current?.focus({ preventScroll: true }));
+  }, []);
   const [trophyWorkshop, setTrophyWorkshop] = useState<{
     trophyId: string;
     trophyName: string;
@@ -1179,7 +1193,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const shipStationOpen = screen === "ship" || screen === "map" ||
     screen === "briefing" || screen === "armory" || screen === "customization" ||
     screen === "trophies" || screen === "codex" || screen === "medbay" ||
-    screen === "training" || screen === "justice";
+    screen === "training" || screen === "justice" || screen === "mobility";
   const deckVisible = !newGamePhase && (screen === "deck" || (shipStationOpen && hubLocation === "deck"));
   const clanShipState = normalizeClanShipDocking(save.clanShipDocking, save.createdAt, selectedShipId);
   const clanShipActiveContract = save.clanShipOperations?.activeContract
@@ -1551,8 +1565,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if (nestedDialog && nestedDialog !== dialog) return;
       if (event.key === "Escape") {
         event.preventDefault();
-        if (newGamePhase === "identity") setSettingsOpen(true);
+        if (trophyTutorialOpen) closeTrophyTutorial();
+        else if (newGamePhase === "identity") setSettingsOpen(true);
         else if (newGamePhase === "briefing") { setNewGamePhase("identity"); setScreen("customization"); }
+        else if (screen === "mobility" && saveRef.current.mobilityV1?.active) setToast("Mets la conduite en pause puis remise au garage ou retour de sécurité.");
         else setScreen(hubLocation);
       } else if (event.key === "Tab") {
         const controls = Array.from(dialog.querySelectorAll<HTMLElement>(
@@ -1570,7 +1586,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     };
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [settingsOpen, shipStationOpen, trophyWorkshop, hubLocation, newGamePhase]);
+  }, [settingsOpen, shipStationOpen, trophyWorkshop, trophyTutorialOpen, closeTrophyTutorial, hubLocation, newGamePhase, screen]);
 
   const playSound = useCallback(
     (
@@ -2167,7 +2183,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2177,7 +2193,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2215,6 +2231,24 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
+
+  const commitTrophyTutorialCheckpoint = useCallback((candidate: TrophyTutorialStateV6): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "trophies" ||
+        !trophyTutorialOpen || !gameFocusedV89 || settingsOpen || trophyWorkshop || pendingHuntResult ||
+        archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
+        current.planetArrival && current.planetArrival.status !== 'complete' ||
+        current.buriedCradle && ['active', 'suspended'].includes(current.buriedCradle.status)) return false;
+    const confirmed = inspectTrophyTutorialV6(current.trophyTutorialV6, current.createdAt);
+    const proposed = inspectTrophyTutorialV6(candidate, current.createdAt);
+    // A previous reconciliation may already have published this exact durable
+    // checkpoint. Acknowledge it without replaying a gesture or writing again.
+    if (confirmed.status === 'valid' && proposed.status === 'valid' &&
+        JSON.stringify(confirmed.state) === JSON.stringify(proposed.state)) return true;
+    const next = acceptTrophyTutorialCheckpointV6(current.trophyTutorialV6, candidate, current.createdAt);
+    return !!next && persistSocialProgress({ trophyTutorialV6: next });
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    pendingHuntResult, persistSocialProgress, resumableHunt, screen, settingsOpen, trophyTutorialOpen, trophyWorkshop]);
 
   const commitCompanionResidence = useCallback((action: CompanionResidenceAction, observation: CompanionResidenceObservation): boolean => {
     const current = saveRef.current;
@@ -2273,6 +2307,53 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setToast(result.message); return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
     persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
+  const commitClanShipReturnEscort = useCallback((action: ClanShipReturnEscortAction, observation: ClanShipReturnEscortObservation): boolean => {
+    const current = saveRef.current;
+    const active = sessionAliveRef.current && current.createdAt === entry.ownerCreatedAt && screen === 'clan-ship' &&
+      current.clanShipDocking?.status === 'aboard' && gameFocusedV89 && !settingsOpen && !trophyWorkshop &&
+      !archiveTransferBusy && !archiveRecoveryIssue && !campaignSaveBusy && !activeHuntSessionRef.current &&
+      !resumableHunt && !current.planetArrival &&
+      !(current.buriedCradle && ['active', 'suspended'].includes(current.buriedCradle.status));
+    if (!active) return false;
+    const result = actClanShipReturnEscort(action, { save: current, active, observation });
+    if (!result.accepted) { setToast(result.message); return false; }
+    if (result.changed && (!result.state || !persistSocialProgress({ clanShipReturnEscort: result.state,
+      ...(result.dockingState ? { clanShipDocking: result.dockingState } : {}),
+    }))) return false;
+    if (action.type !== 'advance') setToast(result.message);
+    return true;
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
+  const retryClanShipReturnEscort = useCallback((): boolean => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== 'clan-ship' ||
+        current.clanShipDocking?.status !== 'aboard' || !gameFocusedV89 || settingsOpen || trophyWorkshop ||
+        archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || activeHuntSessionRef.current ||
+        resumableHunt || current.planetArrival ||
+        current.buriedCradle && ['active', 'suspended'].includes(current.buriedCradle.status)) return false;
+    // Reconcile an uncertain write through its existing owner. If it confirms
+    // a newer snapshot, persistSocialProgress publishes that snapshot and asks
+    // the scene to refresh; it never replaces it with this older proposal.
+    return persistSocialProgress({ clanShipReturnEscort: current.clanShipReturnEscort });
+  }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
+    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+
+  const commitMobility = useCallback((command: MobilityCommand): MobilityReceipt => {
+    const current=saveRef.current;
+    const refused=(message:string):MobilityReceipt=>({accepted:false,message,state:saveRef.current.mobilityV1??null});
+    if(!sessionAliveRef.current || current.createdAt!==entry.ownerCreatedAt || screen!=="mobility" ||
+       stationReturnScreen!=="homeworld" || !atMobilityForge(current) || archiveTransferBusy || archiveRecoveryIssue ||
+       campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
+       (command.type!=="drive" && (!gameFocusedV89 || settingsOpen))) return refused("Service suspendu ou présence au comptoir non confirmée.");
+    const result=actMobility(current,command);
+    if(!result.accepted||!result.state)return refused(result.message);
+    if(!persistSocialProgress({mobilityV1:result.state,profile:{...current.profile,clanMarks:result.clanMarks}}))
+      return refused("Écriture non confirmée : conduite suspendue, marques et commande à réconcilier avant toute suite.");
+    if(command.type!=="drive")setToast(result.message);
+    return {accepted:true,message:result.message,state:saveRef.current.mobilityV1??null};
+  },[entry.ownerCreatedAt,screen,stationReturnScreen,archiveTransferBusy,archiveRecoveryIssue,campaignSaveBusy,resumableHunt,gameFocusedV89,settingsOpen,persistSocialProgress]);
 
   const recruitExpeditionHunter = useCallback((id: ExpeditionMemberId) => {
     const current = saveRef.current;
@@ -2475,6 +2556,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const go = useCallback(
     (next: Screen) => {
+      if (screen === "mobility" && saveRef.current.mobilityV1?.active && next !== "mobility") { setToast("Remise au garage ou retour de sécurité requis avant de quitter l’aire."); return; }
       if (pendingTrophyCommitRef.current) { setToast("Confirmez la sauvegarde du rite ou exportez son résultat avant de changer de lieu."); return; }
       const cradle = saveRef.current.buriedCradle;
       if (cradle && ['active', 'suspended'].includes(cradle.status) && !['buried-cradle', 'buried-cradle-briefing'].includes(next)) {
@@ -2509,9 +2591,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if (next === "deck" || next === "ship") setHubLocation("deck");
       if (next === "homeworld") setHubLocation("homeworld");
       if (next === "clan-ship") setHubLocation("clan-ship");
+      if (next !== "trophies") setTrophyTutorialOpen(false);
       setScreen(next);
     },
-    [playSound],
+    [playSound, screen],
   );
 
   const openClanShip = useCallback(() => {
@@ -2616,6 +2699,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const commitClanShipAction = useCallback((action: ClanShipDockingAction): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || screen !== "clan-ship" || !gameFocusedV89 || settingsOpen || archiveTransferBusy || archiveRecoveryIssue || campaignSaveBusy || resumableHunt) return false;
+    if (action.type === 'move-room' && action.roomId === 'soins' && current.clanShipDocking?.roomId === 'hangar' &&
+        current.clanShipReturnEscort?.phase === 'escorting' && current.clanShipReturnEscort.actors[0].roomId === 'hangar') {
+      setToast('Accompagne toute l’équipe jusqu’au passage avant de changer de salle.'); return false;
+    }
     const personalShipId = loadShipProgression(current).selectedShipId;
     const state = normalizeClanShipDocking(current.clanShipDocking, current.createdAt, personalShipId);
     if (!state) return false;
@@ -2877,7 +2964,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant d’utiliser un autre service."); return; }
     const youth = saveRef.current.prologue;
     if (youth && !["blooded", "elite", "elder", "ancient"].includes(getChronicleRank(youth.chronicle) ?? "") &&
-        ["armory", "customization", "training", "medbay", "pit"].includes(service)) {
+        ["armory", "customization", "training", "medbay", "pit", "mobility"].includes(service)) {
       const training = saveRef.current.youthTraining;
       setToast(training?.status === "completed"
         ? youthCampaignObjective(training) + " Les installations des chasseurs autonomes restent fermées."
@@ -2885,6 +2972,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           ? "Ta formation est en cours. Rejoins le mentor pour reprendre les exercices à l’étape sauvegardée ; cet accès ne remplace pas les exercices du dojo."
           : "Rencontre d’abord le chef du clan puis l’instructeur des terrasses. Son dialogue ouvre le dojo ; la lame et le biomask se reçoivent uniquement aux étapes réussies de la formation."); return;
     }
+    if (service === "mobility" && !atMobilityForge(saveRef.current)) { setToast("Rejoins le comptoir des Forges et enregistre ta position."); return; }
     if (service === "justice") setJusticeJurisdiction("homeworld");
     if (service === "pit") openPit();
     else openStationScreen(service, "homeworld");
@@ -3103,6 +3191,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, mountArrivalHunt, persistSocialProgress, screen, settingsOpen]);
 
   const launchMission = useCallback(() => {
+    if(saveRef.current.mobilityV1?.active){setToast("Remise au garage requise avant une chasse : reprends la sortie depuis le comptoir des Forges.");return;}
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de lancer une chasse."); return; }
     if (!sessionAliveRef.current) return;
     // Resolve an uncertain paid departure before a baseline write can replace
@@ -4121,20 +4210,29 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [checkpointBlockedReason, onMainMenu, saveManagedCheckpoint, screen]);
   useEffect(() => {
     if (!hydrated || !sessionAliveRef.current) return;
-    const timer = window.setInterval(() => { if (!document.hidden) void saveManagedCheckpoint("auto"); }, 30000);
+    const timer = window.setInterval(() => {
+      // Driving already confirms its canonical inputs every 30 frames. A slot
+      // rotation here would suspend the yard while its pending frames flush,
+      // turning an ordinary autosave into a refused drive command. Continue
+      // captures this newer workspace; manual saves and menu exit stay intact.
+      if (!document.hidden && !(screen === "mobility" && saveRef.current.mobilityV1?.active)) {
+        void saveManagedCheckpoint("auto");
+      }
+    }, 30000);
     return () => window.clearInterval(timer);
-  }, [hydrated, saveManagedCheckpoint]);
+  }, [hydrated, saveManagedCheckpoint, screen]);
 
   const menuBack = useCallback(() => {
     if (archiveTransferBusy || archiveRecoveryIssue) return;
     if (settingsOpen) { setSettingsOpen(false); setResetArmed(false); setImportCandidate(null); setCompleteImportPlan(null); ++archiveSelectionRef.current; setArchiveTransferBusy(false); }
+    else if (trophyTutorialOpen) closeTrophyTutorial();
     else if (pendingHuntResult) setToast("Le résultat attend sa vérification. Réessayez avant de quitter cette chasse.");
     else if (screen === "clan-chronicle") go(chronicleReturnScreen);
     else if (screen === "clan-war" || screen === "sprite-library") go(archiveReturnV85);
     else if (newGamePhase === "identity") void returnToMainMenu();
     else if (newGamePhase === "briefing") { setNewGamePhase("identity"); setScreen("customization"); }
     else if (screen !== "title") go(hubLocation);
-  }, [archiveRecoveryIssue, archiveTransferBusy, go, hubLocation, pendingHuntResult, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, archiveReturnV85]);
+  }, [archiveRecoveryIssue, archiveTransferBusy, go, hubLocation, pendingHuntResult, trophyTutorialOpen, closeTrophyTutorial, screen, settingsOpen, newGamePhase, returnToMainMenu, chronicleReturnScreen, archiveReturnV85]);
   useEffect(() => {
     if (!["clan-chronicle", "clan-war", "sprite-library"].includes(screen) || settingsOpen) return;
     const onBack = (event: KeyboardEvent) => {
@@ -4145,10 +4243,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     document.addEventListener("keydown", onBack);
     return () => document.removeEventListener("keydown", onBack);
   }, [screen, settingsOpen, menuBack]);
-  const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && (settingsOpen || Boolean(pendingHuntResult) ||
-    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mission", "deck", "ship", "clan-ship", "wolf-castle", "planet-arrival", "buried-cradle", "map", "medbay", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
+  const menuGamepadEnabled = Boolean(archiveRecoveryIssue) || (!trophyWorkshop && !trophyTutorialOpen && (settingsOpen || Boolean(pendingHuntResult) ||
+    !["prologue", "youth-training", "solo-v66", "solo-v67", "solo-v68", "solo-v69", "solo-v70", "solo-v90", "homeworld-region-v68", "homeworld-passage-v67", "game-reserve", "mobility", "mission", "deck", "ship", "clan-ship", "wolf-castle", "planet-arrival", "buried-cradle", "map", "medbay", "training", "pit", "pit-narrative", "mausoleum", "homeworld", "homeworld-expedition", "glass-desert-expedition"].includes(screen)));
   const conservationPadButtonsV112=normalizeHuntAccessibilityV112(save.settings.huntAccessibility).gamepadButtons;
-  const conservationPadActiveV112=!settingsOpen&&!pendingHuntResult&&!archiveRecoveryIssue&&(screen==="armory"||screen==="trophies");
+  const conservationPadActiveV112=!trophyTutorialOpen&&!settingsOpen&&!pendingHuntResult&&!archiveRecoveryIssue&&(screen==="armory"||screen==="trophies");
   useMenuGamepad(gameShellRef, menuGamepadEnabled, `${screen}:${settingsOpen}:${Boolean(pendingHuntResult)}:${Boolean(archiveRecoveryIssue)}`, menuBack,
     conservationPadActiveV112?{confirmButton:conservationPadButtonsV112.jump,backButton:conservationPadButtonsV112.interact}:undefined);
 
@@ -4242,7 +4340,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       data-campaign-location={campaignLocation}
       data-campaign-owner={entry.ownerCreatedAt}
     >
-      <div hidden={screen === "homeworld" || screen === "sprite-library"} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
+      <div hidden={screen === "homeworld" || screen === "sprite-library" || trophyTutorialOpen} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
 
       {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
         <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134} /></Suspense>
@@ -4605,6 +4703,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <section className="screen panel-screen" hidden={screen !== "clan-ship"} style={screen !== "clan-ship" ? { display: "none" } : undefined} inert={screen !== "clan-ship" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
               <ClanShipHub
+                createSceneAudio={createSceneAudio}
                 key={save.createdAt}
                 state={clanShipState}
                 save={save}
@@ -4614,6 +4713,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 onOperations={commitClanShipOperations}
                 companions={{ save, selectedShipId, ownedShipIds: loadShipProgression(save).unlockedShipIds, onAction: commitCompanionResidence }}
                 incidents={{ save, onAction: commitClanShipIncident, onHearingAction: commitClanShipTrophyHearing }}
+                returnEscort={{ save, onAction: commitClanShipReturnEscort, onRetry: retryClanShipReturnEscort, checkpointFailed: saveFailure !== null }}
                 onService={openClanShipService}
                 onExit={() => go("deck")}
                 onOpenSettings={() => setSettingsOpen(true)}
@@ -4722,6 +4822,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               Réglages
             </button>
           </div>}
+      {screen === "mobility" && (<Suspense fallback={<DeferredGameScreen />}><MobilityGarage key={save.createdAt} save={save} suspended={settingsOpen || Boolean(trophyWorkshop) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy} onCommand={commitMobility} onClose={() => go("homeworld")} onSound={playGameplaySound} /></Suspense>)}
       {screen === "justice" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <JusticePanel progress={save.justice} jurisdictionId={justiceJurisdiction}
@@ -5742,7 +5843,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </section>
       )}
 
-      {screen === "trophies" && (
+      {screen === "trophies" && (trophyTutorialOpen ? (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <TrophyTutorialBay owner={save.createdAt} save={save} initialState={save.trophyTutorialV6}
+            onCheckpoint={commitTrophyTutorialCheckpoint} onExit={closeTrophyTutorial}
+            suspended={settingsOpen || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy || !gameFocusedV89} />
+        </Suspense>
+      ) : (
         <section
           className="screen panel-screen"
           aria-labelledby="trophies-title"
@@ -5755,6 +5862,17 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               id="trophies-title"
               onBack={() => go(stationReturnScreen)}
             />
+            <article className="trophy-card" aria-labelledby="trophy-tutorial-title">
+              <h2 id="trophy-tutorial-title">L’atelier de transmission</h2>
+              <p>Apprends les 18 gestes avec l’artisan, sur un modèle pédagogique à transporter entre les postes.</p>
+              <div className="trophy-workshop-actions">
+                <button ref={trophyTutorialEntryRef} type="button" data-trophy-tutorial-open
+                  disabled={settingsOpen || Boolean(trophyWorkshop) || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy || !gameFocusedV89}
+                  onClick={() => setTrophyTutorialOpen(true)}>
+                  {save.trophyTutorialV6?.events.length ? 'Reprendre le parcours de l’artisan' : 'Apprendre les 18 gestes'}
+                </button>
+              </div>
+            </article>
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
             </Suspense>
@@ -5969,7 +6087,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             </div>
           </div>
         </section>
-      )}
+      ))}
 
       {screen === "codex" && (
         <Suspense fallback={<DeferredGameScreen />}>

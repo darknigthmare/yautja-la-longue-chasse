@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T06:02:37.243343+00:00",
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "command": [
+    "node",
+    "scripts/qa-clan-ship-browser.mjs"
+  ],
+  "environment": {
+    "CHROMIUM_EXECUTABLE": "/usr/bin/chromium",
+    "CLAN_SHIP_HEADLESS": "1",
+    "CLAN_SHIP_QA_OUTPUT": "outputs/qa-clan-ship-ci-fix-20261109",
+    "CLAN_SHIP_SOURCE_COMMIT": "1edbf69117949df3d3e1591b79fdcc416928862d"
+  },
+  "checkoutCommit": "1edbf69117949df3d3e1591b79fdcc416928862d",
+  "scriptOverlaySha256": "923b93d6466b3bf87b15061b5820c2118f75a1975651901110e5ac0ca6a1293e",
+  "workingTreeDiff": [
+    "scripts/qa-clan-ship-browser.mjs"
+  ],
+  "logPath": "outputs/qa-clan-ship-ci-fix-20261109/execution.log",
+  "exitCode": 1,
+  "finishedAt": "2026-11-09T06:02:37.914550+00:00"
+}

@@ -1,0 +1,244 @@
+{
+  "schema": 1,
+  "sourceCommit": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+  "pod": {
+    "run": 42592671598,
+    "job": 129077778882,
+    "artifact": 13662058403,
+    "assertion": "The reviewed checkout must be clean.",
+    "source": "scripts/qa-pod-systems.mjs:604",
+    "dirty": "M public/audio/manifest.json",
+    "browserStarted": false,
+    "checks": 0,
+    "captures": 0,
+    "cause": "The official audio manifest contains 40 slots but current GameSfxId requires 44. productionBuildStepsV94 regenerates the deterministic official manifest before the native recipe.",
+    "addedSlots": [
+      "field-work",
+      "field-secure",
+      "canopy-grab",
+      "canopy-release"
+    ],
+    "existingEntriesChanged": 0,
+    "oldVersion": "81e264223d71364cc12a97d30d6ffc99e6f05b158bbe8752e2cb57de2a1332a3",
+    "expectedVersion": "06ecd451449c503580196939a631b49343a224c325775eda18c8068e5e7fcf8e"
+  },
+  "spatial": {
+    "run": 42592671826,
+    "job": 129077782713,
+    "artifact": 13661858243,
+    "assertion": "Every final trio PNG crossed completion; all attempts remain rejected and no final visual proof is available.",
+    "source": "scripts/qa-planet-arrival-spatial.mjs:2454",
+    "dirty": "M public/audio/manifest.json",
+    "checks": [
+      {
+        "name": "desktop: prepared native ROI preserves paused pixels and CSS geometry",
+        "passed": true
+      },
+      {
+        "name": "desktop: ship-triad prepared native ROI preserves paused pixels and CSS geometry",
+        "passed": true
+      },
+      {
+        "name": "desktop: ship-cloaked-triad prepared native ROI preserves paused pixels and CSS geometry",
+        "passed": true
+      },
+      {
+        "name": "desktop: ship-solo real flight, contact and complete disembarkation",
+        "passed": true
+      },
+      {
+        "name": "desktop: pod-triad real flight, contact and complete disembarkation",
+        "passed": false
+      }
+    ],
+    "errors": [],
+    "consoleErrors": [],
+    "missingAssets": [],
+    "attempts": [
+      {
+        "label": "desktop-pod-triad-egress-final-detail",
+        "attempt": 1,
+        "elapsedBefore": 61799.90000000006,
+        "elapsedAfter": 62000,
+        "afterStatus": "complete",
+        "nodeStageMs": {
+          "beforeObservationRpc": 5561.472473999995,
+          "nativeX11CaptureRpc": 201.05948999999964,
+          "afterObservationRpc": 10.868384999994305,
+          "validationAndClip": 0.681217999997898,
+          "completeGeometryRpc": 42.80717500000901,
+          "pngMaterialization": 0.006785999998101033,
+          "nativeRawExportAndPng": 253.58838699999615,
+          "losslessDetailPostprocessing": 24.310138000000734,
+          "pngWrite": 0.5884510000032606,
+          "assertionsAndReport": 1.0031940000044415
+        },
+        "browserBefore": {
+          "clock": "browser performance.now()",
+          "evaluationStartedAtMs": 813.7999999999884,
+          "readStartedAtMs": 6366.700000000012,
+          "finishedAtMs": 6369.400000000023,
+          "scheduledWaitMs": 5552.900000000023,
+          "readMs": 2.7000000000116415,
+          "totalMs": 5555.600000000035,
+          "boxReads": 204
+        },
+        "browserAfter": {
+          "clock": "browser performance.now()",
+          "evaluationStartedAtMs": 6579.200000000012,
+          "readStartedAtMs": 6579.299999999988,
+          "finishedAtMs": 6581.700000000012,
+          "scheduledWaitMs": 0.09999999997671694,
+          "readMs": 2.400000000023283,
+          "totalMs": 2.5,
+          "boxReads": 204
+        },
+        "x11Timings": {
+          "requestStartMonotonicNs": "378306485207",
+          "probeStartMonotonicNs": "378306870216",
+          "probeEndMonotonicNs": "378499578877",
+          "getImageStartMonotonicNs": "378499580652",
+          "getImageEndMonotonicNs": "378505297434",
+          "privateCopyEndMonotonicNs": "378505926434",
+          "getImageMs": 5.716782,
+          "privateCopyMs": 0.629,
+          "copyMs": 6.345782,
+          "ackReadyMonotonicNs": "378506523703",
+          "probeCount": 91,
+          "probeRounds": 88,
+          "probeMs": 192.708661,
+          "totalMs": 200.038496
+        },
+        "rejection": "Arrival completed during native acquisition; no visual proof accepted.",
+        "sourceCapture": {
+          "file": "desktop-pod-triad-egress-final-detail-rejected-attempt-1-source-native.png",
+          "sha256": "c68d879b9a952ab08681d3259415d7473b4f78667fe5e68bf34a7e54600fba79",
+          "bytes": 1299922
+        }
+      },
+      {
+        "label": "desktop-pod-triad-egress-final-detail",
+        "attempt": 2,
+        "elapsedBefore": 61783.30000000006,
+        "elapsedAfter": 62000,
+        "afterStatus": "complete",
+        "nodeStageMs": {
+          "beforeObservationRpc": 5525.567123999994,
+          "nativeX11CaptureRpc": 206.54769199999282,
+          "afterObservationRpc": 29.73939099999552,
+          "validationAndClip": 0.44173099999898113,
+          "completeGeometryRpc": 58.29055099999823,
+          "pngMaterialization": 0.005288000000291504,
+          "nativeRawExportAndPng": 256.00554199999897,
+          "losslessDetailPostprocessing": 24.16178399999626,
+          "pngWrite": 0.6022400000074413,
+          "assertionsAndReport": 0.7901459999993676
+        },
+        "browserBefore": {
+          "clock": "browser performance.now()",
+          "evaluationStartedAtMs": 683.4000000000233,
+          "readStartedAtMs": 6201.600000000035,
+          "finishedAtMs": 6204.300000000047,
+          "scheduledWaitMs": 5518.200000000012,
+          "readMs": 2.7000000000116415,
+          "totalMs": 5520.900000000023,
+          "boxReads": 204
+        },
+        "browserAfter": {
+          "clock": "browser performance.now()",
+          "evaluationStartedAtMs": 6440.800000000047,
+          "readStartedAtMs": 6440.900000000023,
+          "finishedAtMs": 6442.5,
+          "scheduledWaitMs": 0.09999999997671694,
+          "readMs": 1.599999999976717,
+          "totalMs": 1.6999999999534339,
+          "boxReads": 204
+        },
+        "x11Timings": {
+          "requestStartMonotonicNs": "385068427997",
+          "probeStartMonotonicNs": "385069182967",
+          "probeEndMonotonicNs": "385265513663",
+          "getImageStartMonotonicNs": "385265515259",
+          "getImageEndMonotonicNs": "385272531825",
+          "privateCopyEndMonotonicNs": "385273398181",
+          "getImageMs": 7.016566,
+          "privateCopyMs": 0.866356,
+          "copyMs": 7.882922,
+          "ackReadyMonotonicNs": "385273925402",
+          "probeCount": 87,
+          "probeRounds": 84,
+          "probeMs": 196.330696,
+          "totalMs": 205.497405
+        },
+        "rejection": "Arrival completed during native acquisition; no visual proof accepted.",
+        "sourceCapture": {
+          "file": "desktop-pod-triad-egress-final-detail-rejected-attempt-2-source-native.png",
+          "sha256": "01229f0eb37b5cb1edb92cdbc4ee2d3328e5da4e479f97cd9bf9df7195df855a",
+          "bytes": 1301681
+        }
+      },
+      {
+        "label": "desktop-pod-triad-egress-final-detail",
+        "attempt": 3,
+        "elapsedBefore": 61783.10000000005,
+        "elapsedAfter": 62000,
+        "afterStatus": "complete",
+        "nodeStageMs": {
+          "beforeObservationRpc": 5413.355168000009,
+          "nativeX11CaptureRpc": 205.13515200000256,
+          "afterObservationRpc": 4.852114999986952,
+          "validationAndClip": 0.6776289999979781,
+          "completeGeometryRpc": 71.85267999999633,
+          "pngMaterialization": 0.009755999999470077,
+          "nativeRawExportAndPng": 284.4501270000037,
+          "losslessDetailPostprocessing": 24.185316000002786,
+          "pngWrite": 0.35693900000478607,
+          "assertionsAndReport": 0.9032479999877978
+        },
+        "browserBefore": {
+          "clock": "browser performance.now()",
+          "evaluationStartedAtMs": 812.2999999999884,
+          "readStartedAtMs": 6218.399999999965,
+          "finishedAtMs": 6221.599999999977,
+          "scheduledWaitMs": 5406.099999999977,
+          "readMs": 3.2000000000116415,
+          "totalMs": 5409.299999999988,
+          "boxReads": 204
+        },
+        "browserAfter": {
+          "clock": "browser performance.now()",
+          "evaluationStartedAtMs": 6431.399999999965,
+          "readStartedAtMs": 6431.399999999965,
+          "finishedAtMs": 6433.099999999977,
+          "scheduledWaitMs": 0,
+          "readMs": 1.7000000000116415,
+          "totalMs": 1.7000000000116415,
+          "boxReads": 204
+        },
+        "x11Timings": {
+          "requestStartMonotonicNs": "391875190266",
+          "probeStartMonotonicNs": "391879471127",
+          "probeEndMonotonicNs": "392069497037",
+          "getImageStartMonotonicNs": "392069498481",
+          "getImageEndMonotonicNs": "392077813198",
+          "privateCopyEndMonotonicNs": "392078578303",
+          "getImageMs": 8.314717,
+          "privateCopyMs": 0.765105,
+          "copyMs": 9.079822,
+          "ackReadyMonotonicNs": "392079316639",
+          "probeCount": 88,
+          "probeRounds": 85,
+          "probeMs": 190.02591,
+          "totalMs": 204.126373
+        },
+        "rejection": "Arrival completed during native acquisition; no visual proof accepted.",
+        "sourceCapture": {
+          "file": "desktop-pod-triad-egress-final-detail-rejected-attempt-3-source-native.png",
+          "sha256": "b17b97e1e394ac5b1b4893ebd7f137ea9b1f3d7abdfb7084aaaec1c0b43f97f0",
+          "bytes": 1301898
+        }
+      }
+    ],
+    "assessment": "All three native final-detail acquisitions crossed completion. X11 fresh marker probing consumed 190–196 ms plus 6–9 ms image copy, within a native standing interval of 250 ms that began before the observed request. PNG export/encoding occurred after the after-observation and is not the cause. No final proof was accepted."
+  }
+}

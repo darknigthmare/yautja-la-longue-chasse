@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T06:20:57.988161+00:00",
+  "passed": true,
+  "qualifiedCriteria": [
+    "OPS-F18",
+    "OPS-F19"
+  ],
+  "nativeTargetHuntsCompleted": 4,
+  "nativeTargetReceiptsEarned": 4,
+  "fullCampaignPlayed": false,
+  "buildId": "RYl37_8hN58IOB8jDpRj1",
+  "sourceIdentitySha256": "f6387c723dcd02486251051d53d94b7923eb347ea0092139197d1069f3581903",
+  "sourceFiles": 1268,
+  "productionBuildSha256": "e7bb52b2ed31e2ffdd89a1d2ec761f3cc0e44d3610b2001e5a5e8acf28f829cb",
+  "browserVersion": "154.0.8037.57",
+  "fixturePolicy": "Only adult admission/welcome and earlier prerequisite missions/contracts are initial hypotheses, declared per profile and built with production reducers. Every tested target starts with zero attempts/completions and no target receipt; every target is actually accepted, bound, played, extracted and settled by mounted GameClient.",
+  "observerPolicy": "CDP reads native React hook function [[Scopes]], then JSON-only copies of the real game. No app callback invoked, ref/HP/objective/world/clock written, debug kill, result override or modified Next bundle.",
+  "cases": [
+    {
+      "contractId": "field-jungle-survey",
+      "missionId": "jungle-vey",
+      "nativeSuccess": true,
+      "report": "production/p0p1-20261109/qa/clan-field-native/jungle-attempt-1/report.json",
+      "reportSha256": "c3111e7faf37e6f0b87d9459e923e9ed8811e51526b7ff346b84f35d03a6e2f2",
+      "fixture": "production/p0p1-20261109/qa/clan-field-native/jungle-attempt-1/fixture-disclosure.json",
+      "fixtureSha256": "d59733d02b36c082e13c3d71ce72314a4c5bcc96ca059cef691158014eab43cd",
+      "initialSave": "production/p0p1-20261109/qa/clan-field-native/jungle-attempt-1/initial-campaign.json",
+      "initialSaveSha256": "a1321cc117a855accf59fff9c09178b34be85f8de618854361c6c8d1d5247beb",
+      "ownerCreatedAt": "2026-11-09T15:00:00.000Z",
+      "before": {
+        "status": "available",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "binding": {
+        "contractId": "field-jungle-survey",
+        "acceptedRevision": 5,
+        "stepIndex": 0,
+        "missionEncounterRun": 0,
+        "baselineCompletions": 0
+      },
+      "after": {
+        "status": "completed",
+        "attempts": 1,
+        "completions": 1,
+        "bestScore": 93,
+        "bestTimeSeconds": 76,
+        "bestDifficultyId": "young-blood",
+        "completedObjectiveIds": [
+          "scan-vanguard",
+          "recover-transponder",
+          "defeat-vey",
+          "extract-jungle-trophy"
+        ],
+        "lastPlayedAt": "2026-11-09T06:01:03.256Z"
+      },
+      "newReceipt": {
+        "contractId": "field-jungle-survey",
+        "completedRevision": 7,
+        "proof": {
+          "kind": "field",
+          "missionId": "jungle-vey",
+          "encounterRun": 0,
+          "completedAt": "2026-11-09T06:01:03.256Z",
+          "score": 93,
+          "scans": 4
+        }
+      },
+      "minimumScore": 50,
+      "minimumScans": 1,
+      "targetReceiptAbsentInitially": true,
+      "targetReceiptCountAfter": 1,
+      "nativeElapsedSeconds": 75.99999999999697,
+      "healthAtStart": 160,
+      "healthAtEnd": 103.22999999999996,
+      "nativeKills": 10,
+      "nativeInputDecisions": 788,
+      "samples": 75,
+      "sourceIdentityMode": "External native-27 snapshot captured before this hunt, compared to sources/build after it; original executed recipe/observer/policy archived. No served-JS trace was collected by this first driver.",
+      "servedScriptResponses": 0,
+      "screenshotsOpened": 3,
+      "screenshotsCaptured": 7,
+      "gameStateWrittenByTest": false,
+      "forcedResult": false,
+      "observerMethod": "CDP Runtime.getProperties on native React hook function [[Scopes]]; JSON-only snapshots"
+    },
+    {
+      "contractId": "field-ice-route",
+      "missionId": "ice-cryostalker",
+      "nativeSuccess": true,
+      "report": "production/p0p1-20261109/qa/clan-field-native/ice-attempt-1/report.json",
+      "reportSha256": "bca39ea68e32ac2ffcbcfe7b64ad95f15f1854218188a7e4478d6c57fbbc5b52",
+      "fixture": "production/p0p1-20261109/qa/clan-field-native/ice-attempt-1/fixture-disclosure.json",
+      "fixtureSha256": "cfc1c2313726f2d7f66790d6a5baa4c899c1e03268a3a354d6d0c965bcf2709a",
+      "initialSave": "production/p0p1-20261109/qa/clan-field-native/ice-attempt-1/initial-campaign.json",
+      "initialSaveSha256": "8433627558816d8c6fc7857e36f45e7088eb82b2f234f402354af8c72fa774d1",
+      "ownerCreatedAt": "2026-11-09T00:00:00.000Z",
+      "before": {
+        "status": "available",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "binding": {
+        "contractId": "field-ice-route",
+        "acceptedRevision": 5,
+        "stepIndex": 0,
+        "missionEncounterRun": 0,
+        "baselineCompletions": 0
+      },
+      "after": {
+        "status": "completed",
+        "attempts": 1,
+        "completions": 1,
+        "bestScore": 97,
+        "bestTimeSeconds": 94,
+        "bestDifficultyId": "young-blood",
+        "completedObjectiveIds": [
+          "scan-ice-traces",
+          "hunt-cryorunners",
+          "defeat-cryostalker",
+          "extract-ice-trophy"
+        ],
+        "lastPlayedAt": "2026-11-09T06:10:09.548Z"
+      },
+      "newReceipt": {
+        "contractId": "field-ice-route",
+        "completedRevision": 7,
+        "proof": {
+          "kind": "field",
+          "missionId": "ice-cryostalker",
+          "encounterRun": 0,
+          "completedAt": "2026-11-09T06:10:09.548Z",
+          "score": 97,
+          "scans": 7
+        }
+      },
+      "minimumScore": 50,
+      "minimumScans": 1,
+      "targetReceiptAbsentInitially": true,
+      "targetReceiptCountAfter": 1,
+      "nativeElapsedSeconds": 93.84999999999596,
+      "healthAtStart": 160,
+      "healthAtEnd": 133.7166666666667,
+      "nativeKills": 11,
+      "nativeInputDecisions": 854,
+      "samples": 93,
+      "sourceIdentityMode": "Source/build fingerprints captured by this driver before and after; all served Next scripts compared with build bytes.",
+      "servedScriptResponses": 27,
+      "screenshotsOpened": 3,
+      "screenshotsCaptured": 7,
+      "gameStateWrittenByTest": false,
+      "forcedResult": false,
+      "observerMethod": "CDP Runtime.getProperties on native React hook function [[Scopes]]; JSON-only snapshots"
+    },
+    {
+      "contractId": "field-bad-blood",
+      "missionId": "volcano-bad-blood",
+      "nativeSuccess": true,
+      "report": "production/p0p1-20261109/qa/clan-field-native/bad-blood-attempt-1/report.json",
+      "reportSha256": "8ef7652b0dffd1a3d0b79f3cd308907192d664637f592c241e92569a962298cc",
+      "fixture": "production/p0p1-20261109/qa/clan-field-native/bad-blood-attempt-1/fixture-disclosure.json",
+      "fixtureSha256": "78cf4be99b92129ec2fe8e31e4e5447b804421b1f1de3bb631a1e01a90cd2b7b",
+      "initialSave": "production/p0p1-20261109/qa/clan-field-native/bad-blood-attempt-1/initial-campaign.json",
+      "initialSaveSha256": "1ecbbcb672e7ce166657807c94a11f55ab0d1b2c7b3794d7795f78a9038e1b9d",
+      "ownerCreatedAt": "2026-11-09T00:00:00.000Z",
+      "before": {
+        "status": "available",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "binding": {
+        "contractId": "field-bad-blood",
+        "acceptedRevision": 8,
+        "stepIndex": 0,
+        "missionEncounterRun": 0,
+        "baselineCompletions": 0
+      },
+      "after": {
+        "status": "completed",
+        "attempts": 1,
+        "completions": 1,
+        "bestScore": 87,
+        "bestTimeSeconds": 87,
+        "bestDifficultyId": "young-blood",
+        "completedObjectiveIds": [
+          "scan-fallen-hunters",
+          "recover-stolen-beacons",
+          "defeat-bad-blood",
+          "escape-self-destruct"
+        ],
+        "lastPlayedAt": "2026-11-09T06:10:10.226Z"
+      },
+      "newReceipt": {
+        "contractId": "field-bad-blood",
+        "completedRevision": 10,
+        "proof": {
+          "kind": "field",
+          "missionId": "volcano-bad-blood",
+          "encounterRun": 0,
+          "completedAt": "2026-11-09T06:10:10.226Z",
+          "score": 87,
+          "scans": 6
+        }
+      },
+      "minimumScore": 60,
+      "minimumScans": 0,
+      "targetReceiptAbsentInitially": true,
+      "targetReceiptCountAfter": 1,
+      "nativeElapsedSeconds": 86.94999999999635,
+      "healthAtStart": 160,
+      "healthAtEnd": 54.833333333333364,
+      "nativeKills": 10,
+      "nativeInputDecisions": 933,
+      "samples": 86,
+      "sourceIdentityMode": "Source/build fingerprints captured by this driver before and after; all served Next scripts compared with build bytes.",
+      "servedScriptResponses": 27,
+      "screenshotsOpened": 3,
+      "screenshotsCaptured": 7,
+      "gameStateWrittenByTest": false,
+      "forcedResult": false,
+      "observerMethod": "CDP Runtime.getProperties on native React hook function [[Scopes]]; JSON-only snapshots"
+    },
+    {
+      "contractId": "field-ruins-memory",
+      "missionId": "ruins-ancient-guardian",
+      "nativeSuccess": true,
+      "report": "production/p0p1-20261109/qa/clan-field-native/ruins-attempt-1/report.json",
+      "reportSha256": "c57d2eab79ddf2c4f55edba10545f054774f908c44e71e3eadb6c4ec68862416",
+      "fixture": "production/p0p1-20261109/qa/clan-field-native/ruins-attempt-1/fixture-disclosure.json",
+      "fixtureSha256": "04e08ec6c11f003af06c4e15fcf3147461dab3c3e139ccbc584d75301de92e7a",
+      "initialSave": "production/p0p1-20261109/qa/clan-field-native/ruins-attempt-1/initial-campaign.json",
+      "initialSaveSha256": "e52d23cc60dacdee121f3b4c8bca5530c4d381781ae4acc7f6cc462341f10ee7",
+      "ownerCreatedAt": "2026-11-09T00:00:00.000Z",
+      "before": {
+        "status": "available",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "binding": {
+        "contractId": "field-ruins-memory",
+        "acceptedRevision": 8,
+        "stepIndex": 0,
+        "missionEncounterRun": 0,
+        "baselineCompletions": 0
+      },
+      "after": {
+        "status": "completed",
+        "attempts": 1,
+        "completions": 1,
+        "bestScore": 95,
+        "bestTimeSeconds": 113,
+        "bestDifficultyId": "young-blood",
+        "completedObjectiveIds": [
+          "ruins-ancient-guardian-scan",
+          "ruins-ancient-guardian-hunt",
+          "ruins-ancient-guardian-recover",
+          "ruins-ancient-guardian-boss",
+          "ruins-ancient-guardian-extract"
+        ],
+        "lastPlayedAt": "2026-11-09T06:18:07.208Z"
+      },
+      "newReceipt": {
+        "contractId": "field-ruins-memory",
+        "completedRevision": 10,
+        "proof": {
+          "kind": "field",
+          "missionId": "ruins-ancient-guardian",
+          "encounterRun": 0,
+          "completedAt": "2026-11-09T06:18:07.208Z",
+          "score": 95,
+          "scans": 5
+        }
+      },
+      "minimumScore": 60,
+      "minimumScans": 2,
+      "targetReceiptAbsentInitially": true,
+      "targetReceiptCountAfter": 1,
+      "nativeElapsedSeconds": 112.89999999999488,
+      "healthAtStart": 160,
+      "healthAtEnd": 150.08166666666665,
+      "nativeKills": 12,
+      "nativeInputDecisions": 928,
+      "samples": 112,
+      "sourceIdentityMode": "Source/build fingerprints captured by this driver before and after; all served Next scripts compared with build bytes.",
+      "servedScriptResponses": 27,
+      "screenshotsOpened": 3,
+      "screenshotsCaptured": 7,
+      "gameStateWrittenByTest": false,
+      "forcedResult": false,
+      "observerMethod": "CDP Runtime.getProperties on native React hook function [[Scopes]]; JSON-only snapshots"
+    }
+  ],
+  "inspections": [
+    {
+      "path": "production/p0p1-20261109/qa/clan-field-native/jungle-attempt-1/screenshot-inspection.json",
+      "sha256": "088ea53dd68860692de0d4c0118f3a84ccddb914a5397b60f6e3e0b32a81fd42",
+      "opened": 3,
+      "captured": 7
+    },
+    {
+      "path": "production/p0p1-20261109/qa/clan-field-native/ice-attempt-1/screenshot-inspection.json",
+      "sha256": "193faa7c8cfaa1c5a0b491a86830b9c2808d234dfb2356cc6120400551271726",
+      "opened": 3,
+      "captured": 7
+    },
+    {
+      "path": "production/p0p1-20261109/qa/clan-field-native/bad-blood-attempt-1/screenshot-inspection.json",
+      "sha256": "a0e9bb1f24a06b4b59f8d6fd74be228b85851b6396521d5e61553722fdb32beb",
+      "opened": 3,
+      "captured": 7
+    },
+    {
+      "path": "production/p0p1-20261109/qa/clan-field-native/ruins-attempt-1/screenshot-inspection.json",
+      "sha256": "b68f15c61dd4aa300f2c3e6f2782c5b8d39ba97a9ee6093df5ba43e438aa4f42",
+      "opened": 3,
+      "captured": 7
+    }
+  ],
+  "screenshotsOpened": 12,
+  "screenshotsCaptured": 28,
+  "recipeSourceManifest": {
+    "path": "production/p0p1-20261109/qa/clan-field-native/recipe-source/manifest.json",
+    "sha256": "dbdf5ab3795be96ffff3235ca0dfee01100436ce57faa05fc3fa7a905eab31c3"
+  },
+  "errors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "limits": [
+    "Four separately disclosed target profiles; not eight consecutive hunts or a full campaign from zero.",
+    "No physical device or controller, human art fidelity review, audio listening or performance qualification.",
+    "The first Vey driver has external before/after source/build reconciliation; its exact original executed source bytes remain archived. The other three drivers capture direct before/after and served-JS fingerprints."
+  ],
+  "postRunSaveValidation": {
+    "path": "production/p0p1-20261109/qa/clan-field-native/save-reinspection.json",
+    "sha256": "8c2e1431c09e948bdab981f54589afb7db7fceb756bb8282f7c9e24fd763002e",
+    "profiles": 4,
+    "importAndOwnershipAndUniqueReceiptPassed": true,
+    "notAnAdditionalBrowserTest": true
+  },
+  "lint": {
+    "path": "production/p0p1-20261109/qa/clan-field-native/lint-final.log",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exitCode": 0,
+    "warnings": 0
+  }
+}

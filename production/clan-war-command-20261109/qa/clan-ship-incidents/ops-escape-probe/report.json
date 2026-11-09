@@ -1,0 +1,95 @@
+{
+  "scope": "Focused read-only keyboard diagnosis in the actual Next GameClient. Completed B01 is a declared reducer-built fixture, not a newly browser-played incident.",
+  "buildId": "nItYejsE7HSH4L0ykJM5K",
+  "fixtureSha256": "0881603ea48c3debd4fba5ac12ba79b7761b1c7101cb3197e64d7a78744e0f0e",
+  "stages": [
+    {
+      "name": "panel-open",
+      "documentHasFocus": true,
+      "activeTag": "ARTICLE",
+      "activeMarkup": "<article tabindex=\"-1\" class=\"ClanShipOperationsPanel_crewCard__v2B31\" data-clan-recruit=\"threshold-guard\" data-clan-recruit-status=\"available\"><div class=\"ClanShipOperationsPanel_portrait__jyBGf\" aria-hidden=\"true\"><div><img data-homeworld-npc-variant-v84=\"guard-10\" data-homeworld-npc-identity-v84=\"clan-ship-crew:threshold-guard\" data-homeworld-npc-role-v84=\"guard\" data-native-source=\"/game/homeworld/v84/npcs/guard/10.png\" data-native-clip=\"idle",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "settingsVisible": false
+    },
+    {
+      "name": "ack-clicked",
+      "documentHasFocus": true,
+      "activeTag": "BUTTON",
+      "activeMarkup": "<button type=\"button\" class=\"ClanShipOperationsPanel_secondary__ZtYyM\" aria-describedby=\"clan-crew-dialogue-threshold-guard\" data-clan-crew-dialogue-ack=\"threshold-guard\">J’ai entendu</button>",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "settingsVisible": false
+    },
+    {
+      "name": "toast-hidden",
+      "documentHasFocus": true,
+      "activeTag": "BUTTON",
+      "activeMarkup": "<button type=\"button\" class=\"ClanShipOperationsPanel_secondary__ZtYyM\" aria-describedby=\"clan-crew-dialogue-threshold-guard\" data-clan-crew-dialogue-ack=\"threshold-guard\">J’ai entendu</button>",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "settingsVisible": false
+    },
+    {
+      "name": "screenshot-taken",
+      "documentHasFocus": true,
+      "activeTag": "BUTTON",
+      "activeMarkup": "<button type=\"button\" class=\"ClanShipOperationsPanel_secondary__ZtYyM\" aria-describedby=\"clan-crew-dialogue-threshold-guard\" data-clan-crew-dialogue-ack=\"threshold-guard\">J’ai entendu</button>",
+      "focusedInsideOperations": true,
+      "operationsVisible": true,
+      "settingsVisible": false
+    },
+    {
+      "name": "escape-sent",
+      "documentHasFocus": true,
+      "activeTag": "DIV",
+      "activeMarkup": "<div class=\"ClanShipInterior_world__jCaEg\" data-interior-world=\"true\" data-screen-focus=\"true\" tabindex=\"0\" aria-label=\"Pont explorable. Flèches ou ZQSD/WASD pour marcher, E pour interagir.\" style=\"width: 1440px; height: 800px; transform: translate(0px, -127.062px) scale(0.965278);\"><div class=\"ClanShipInterior_background__ed2dD\" aria-hidden=\"true\"><img alt=\"\" draggable=\"false\" decoding=\"async\" data-interior-background=\"hangar\" src=\"/game/clan-sh",
+      "focusedInsideOperations": false,
+      "operationsVisible": false,
+      "settingsVisible": false
+    }
+  ],
+  "keyEvents": [
+    {
+      "name": "window",
+      "capture": true,
+      "key": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "document",
+      "capture": true,
+      "key": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "panel",
+      "capture": true,
+      "key": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "panel",
+      "capture": false,
+      "key": "Escape",
+      "defaultPrevented": false,
+      "target": "BUTTON",
+      "insidePanel": true
+    },
+    {
+      "name": "document",
+      "capture": false,
+      "key": "Escape",
+      "defaultPrevented": true,
+      "target": "BUTTON",
+      "insidePanel": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,72 @@
+{
+  "scope": "OPS-B05 contextual crew dialogue, deterministic read-only selector",
+  "base": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "asOfDate": "2026-11-09",
+  "files": [
+    {
+      "path": "app/game/systems/clanShipCrewDialogue.ts",
+      "bytes": 14787,
+      "sha256": "e7ebe93f6339132340c4c4bf8ead688e46387c2004dd1394f3a74267010086c5"
+    },
+    {
+      "path": "tests/clan-ship-crew-dialogue.test.mjs",
+      "bytes": 20333,
+      "sha256": "7c3923370cc8c5801e0126ac0c61a3a918daf1457decbc29c6f16ca74b5efee3"
+    }
+  ],
+  "checks": [
+    {
+      "command": "node --experimental-strip-types --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/clan-ship-crew-dialogue.test.mjs",
+      "exitCode": 0,
+      "passed": 45,
+      "failed": 0,
+      "skipped": 0,
+      "log": "/workspace/reprise-20261109/engine/tests-run.txt"
+    },
+    {
+      "command": "node_modules/.bin/eslint app/game/systems/clanShipCrewDialogue.ts tests/clan-ship-crew-dialogue.test.mjs --max-warnings=0",
+      "exitCode": 0,
+      "log": "/workspace/reprise-20261109/engine/lint.txt"
+    }
+  ],
+  "precedence": [
+    "circle-confirmed",
+    "operation-return (retained terminal spaceEncounter only)",
+    "agreement",
+    "recent-proof (owned required receipts)",
+    "missing-proof"
+  ],
+  "coverage": [
+    "all five contexts for each of the six NPCs",
+    "distinct role voices",
+    "owner mismatch and future operations/docking/residence/hearing ledgers",
+    "inconsistent field receipts/progress refused",
+    "getter read refusal yields no voice",
+    "reserve, suspended and other hull unavailable",
+    "managed real berth and no duplicate historic post",
+    "C37 gathered witnesses unavailable at historic stations",
+    "victory/defeat/withdrawal remain distinct",
+    "recorded formation/asset integrity, energy, scans and ordered tactical history",
+    "actual boarding and recovery extraction",
+    "no ice evidence invented from tactical return",
+    "circle headline preserves terminal return facts",
+    "active/new operation does not expose old return as current",
+    "no wall-clock consultation",
+    "frozen input, repeat reading, real save export/import payload unchanged"
+  ],
+  "limitations": [
+    "UI integration and browser interactions are assigned to other agents.",
+    "Physical interaction reach is enforced by existing ClanShipInterior.operations before it supplies focusedNpcId, rather than a new saved position.",
+    "No clan NPC currently supports field deployment (fieldReady=false); no invented deployed/recovering state was added.",
+    "Context repeats deterministically; no new seen counter or dialogue/save migration.",
+    "No animation, audio, human artistic validation, rank, recruitment, reward or healing delivered.",
+    "Full TypeScript graph/build and broader integration verification are coordinated by root."
+  ],
+  "guideReferences": [
+    "AGENTS.md",
+    "docs/GAMEDEV_AGENT_GUIDE.md",
+    "project-pinned custom-engines.md at 19d93f97c9c1ea0f8b306e77aa81e0d3e352d3e9",
+    "production/clan-ship-20261104/operations-spec.md §13.1",
+    "docs/campagne/BIBLE_DE_CAMPAGNE.md L-01 to L-10"
+  ]
+}

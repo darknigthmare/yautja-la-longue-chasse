@@ -1,0 +1,1028 @@
+{
+  "startedAt": "2026-11-09T05:22:55.071Z",
+  "url": "http://127.0.0.1:3121",
+  "fixture": "Initial adult defaultSave and selected class only; no palette or decal reward/result seeded.",
+  "scope": "Native Next GameClient controls and durable campaign palette; no official PHG pixel comparison, three-angle art approval, physical controller or long soak claim.",
+  "checks": [
+    {
+      "name": "T01 Alpha lineage survives skin customization and durable Ogre selection",
+      "passed": true,
+      "detail": {
+        "chromatics": {
+          "skinHex": "#346b50",
+          "dreadHex": null,
+          "outfitHex": null,
+          "armorHex": null,
+          "maskHex": null,
+          "maskOriginId": "alpha",
+          "maskDecalId": null,
+          "faceDecalId": null,
+          "bodyDecalId": null,
+          "armorDecalId": null,
+          "skinMaterialId": null,
+          "dreadMaterialId": null,
+          "outfitMaterialId": null,
+          "armorMaterialId": null,
+          "maskMaterialId": "phg-study-v131-alpha-ogre-biomask"
+        }
+      }
+    },
+    {
+      "name": "alpha T05 native face decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "face",
+          "id": "clan-v133-face-hunting-glyph",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "34.7022%",
+            "top": "2.97548%",
+            "width": "37.886%",
+            "height": "25.2573%"
+          },
+          "cell": {
+            "left": "33.1612%",
+            "top": "27.3994%",
+            "width": "43.3043%",
+            "height": "37.1179%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "alpha T06 native body decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "body",
+          "id": "clan-v133-body-hunting-glyph",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "0%",
+            "top": "0%",
+            "width": "100%",
+            "height": "100%"
+          },
+          "cell": {
+            "left": "43.75%",
+            "top": "28.125%",
+            "width": "24.2188%",
+            "height": "17.1875%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "alpha T07 native armor decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "armor",
+          "id": "clan-v133-armor-hunting-glyph",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "0%",
+            "top": "0%",
+            "width": "100%",
+            "height": "100%"
+          },
+          "cell": {
+            "left": "45.3125%",
+            "top": "29.4271%",
+            "width": "26.1719%",
+            "height": "14.5833%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "alpha T08 native biomask decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "biomask",
+          "id": "clan-v133-biomask-hunting-glyph",
+          "transform": "none",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/feral.png\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "45.7017%",
+            "top": "4.14592%",
+            "width": "25.1424%",
+            "height": "16.7616%"
+          },
+          "cell": {
+            "left": "7.77375%",
+            "top": "31.1967%",
+            "width": "69.9142%",
+            "height": "60.5923%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "alpha durable reload restores the committed palette and all four real controls",
+      "passed": true,
+      "detail": {
+        "appearanceSha256": "38ffbca3c915e2daecd7175ed97c351048e880e1c574f21ee92ae6daf596ca53"
+      }
+    },
+    {
+      "name": "alpha T04 preview removal hides both the biomask pigment and decal without writing equipment",
+      "passed": true
+    },
+    {
+      "name": "alpha T04 durable biomask removal survives reload and has no worn-mask layers",
+      "passed": true
+    },
+    {
+      "name": "T03 Alpha-to-City rejects Ogre on actual geometry, clears the unavailable finish on confirmation and reloads cleanly",
+      "passed": true,
+      "detail": {
+        "morph": "classic",
+        "mask": "city",
+        "maskSurface": [],
+        "decals": [
+          {
+            "zone": "body",
+            "id": "clan-v133-body-hunting-glyph",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "transformChain": [
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ],
+            "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp\")",
+            "maskRepeat": "no-repeat",
+            "owner": {
+              "left": "0%",
+              "top": "0%",
+              "width": "100%",
+              "height": "100%"
+            },
+            "cell": {
+              "left": "43.75%",
+              "top": "28.125%",
+              "width": "24.2188%",
+              "height": "17.1875%"
+            },
+            "opacity": "0.82"
+          },
+          {
+            "zone": "face",
+            "id": "clan-v133-face-hunting-glyph",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "transformChain": [
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ],
+            "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+            "maskRepeat": "no-repeat",
+            "owner": {
+              "left": "34.7022%",
+              "top": "2.97548%",
+              "width": "37.886%",
+              "height": "25.2573%"
+            },
+            "cell": {
+              "left": "33.1612%",
+              "top": "27.3994%",
+              "width": "43.3043%",
+              "height": "37.1179%"
+            },
+            "opacity": "0.82"
+          },
+          {
+            "zone": "armor",
+            "id": "clan-v133-armor-hunting-glyph",
+            "transform": "matrix(1, 0, 0, 1, 0, 0)",
+            "transformChain": [
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ],
+            "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp\")",
+            "maskRepeat": "no-repeat",
+            "owner": {
+              "left": "0%",
+              "top": "0%",
+              "width": "100%",
+              "height": "100%"
+            },
+            "cell": {
+              "left": "45.3125%",
+              "top": "29.4271%",
+              "width": "26.1719%",
+              "height": "14.5833%"
+            },
+            "opacity": "0.82"
+          },
+          {
+            "zone": "biomask",
+            "id": "clan-v133-biomask-hunting-glyph",
+            "transform": "none",
+            "transformChain": [
+              "matrix(1, 0, 0, 1, 0, 0)"
+            ],
+            "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/city.png\")",
+            "maskRepeat": "no-repeat",
+            "owner": {
+              "left": "41.2598%",
+              "top": "4.72729%",
+              "width": "34.0169%",
+              "height": "22.678%"
+            },
+            "cell": {
+              "left": "18.8038%",
+              "top": "20.4944%",
+              "width": "51.6746%",
+              "height": "44.7847%"
+            },
+            "opacity": "0.82"
+          }
+        ],
+        "bodySources": [
+          {
+            "slot": "body-thigh-back",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp"
+          },
+          {
+            "slot": "body-shin-back",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp"
+          },
+          {
+            "slot": "body-foot-back",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp"
+          },
+          {
+            "slot": "body-upper-arm-back",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp"
+          },
+          {
+            "slot": "body-lower-arm-back",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp"
+          },
+          {
+            "slot": "body-hand-back",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp"
+          },
+          {
+            "slot": "body-pelvis",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp"
+          },
+          {
+            "slot": "body-torso",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp"
+          },
+          {
+            "slot": "body-head",
+            "src": "http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png"
+          },
+          {
+            "slot": "body-thigh-front",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp"
+          },
+          {
+            "slot": "body-shin-front",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp"
+          },
+          {
+            "slot": "body-foot-front",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp"
+          },
+          {
+            "slot": "body-upper-arm-front",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp"
+          },
+          {
+            "slot": "body-lower-arm-front",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp"
+          },
+          {
+            "slot": "body-hand-front",
+            "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp"
+          }
+        ]
+      }
+    },
+    {
+      "name": "T14 six real morphology selections preserve four independent alpha owners and bone transforms",
+      "passed": true,
+      "detail": {
+        "morphs": [
+          "classic",
+          "elder",
+          "super",
+          "feral",
+          "huntress",
+          "young"
+        ],
+        "scope": "Technical native orientation; visual/UV fidelity and unavailable angles remain open."
+      }
+    },
+    {
+      "name": "alpha native keyboard confirmation and mobile viewport remain usable",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    },
+    {
+      "name": "T02 Samurai lineage keeps both Requiem and Nova after custom armor",
+      "passed": true,
+      "detail": [
+        {
+          "value": "phg-study-v132-requiem",
+          "label": "Étude V132 · biomask Requiem · provisoire"
+        },
+        {
+          "value": "phg-study-v132-nova",
+          "label": "Étude V132 · biomask Nova · provisoire"
+        }
+      ]
+    },
+    {
+      "name": "samurai T05 native face decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "face",
+          "id": "clan-v133-face-hunting-glyph",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "34.7022%",
+            "top": "2.97548%",
+            "width": "37.886%",
+            "height": "25.2573%"
+          },
+          "cell": {
+            "left": "33.1612%",
+            "top": "27.3994%",
+            "width": "43.3043%",
+            "height": "37.1179%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "samurai T06 native body decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "body",
+          "id": "clan-v133-body-hunting-glyph",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "0%",
+            "top": "0%",
+            "width": "100%",
+            "height": "100%"
+          },
+          "cell": {
+            "left": "43.75%",
+            "top": "28.125%",
+            "width": "24.2188%",
+            "height": "17.1875%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "samurai T07 native armor decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "armor",
+          "id": "clan-v133-armor-hunting-glyph",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/armor/registered/chest-avp.webp\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "0%",
+            "top": "0%",
+            "width": "100%",
+            "height": "100%"
+          },
+          "cell": {
+            "left": "45.3125%",
+            "top": "29.4271%",
+            "width": "26.1719%",
+            "height": "14.5833%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "samurai T08 native biomask decal persists with its actual masked owner",
+      "passed": true,
+      "detail": [
+        {
+          "zone": "biomask",
+          "id": "clan-v133-biomask-hunting-glyph",
+          "transform": "none",
+          "transformChain": [
+            "matrix(1, 0, 0, 1, 0, 0)"
+          ],
+          "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/masks/celtic.png\")",
+          "maskRepeat": "no-repeat",
+          "owner": {
+            "left": "43.145%",
+            "top": "5.68325%",
+            "width": "30.4125%",
+            "height": "20.275%"
+          },
+          "cell": {
+            "left": "14.8336%",
+            "top": "18.2084%",
+            "width": "57.799%",
+            "height": "50.0925%"
+          },
+          "opacity": "0.82"
+        }
+      ]
+    },
+    {
+      "name": "samurai durable reload restores the committed palette and all four real controls",
+      "passed": true,
+      "detail": {
+        "appearanceSha256": "a8beae53fdf6e2d8908d121fc00dea86ed32d8ef94bb2c917d890b62ae5380fd"
+      }
+    },
+    {
+      "name": "samurai T04 preview removal hides both the biomask pigment and decal without writing equipment",
+      "passed": true
+    },
+    {
+      "name": "samurai T04 durable biomask removal survives reload and has no worn-mask layers",
+      "passed": true
+    },
+    {
+      "name": "T16 Scar base sources and original clan decal remain separate; PHG Warpaint names keep their stated limitations",
+      "passed": true,
+      "detail": {
+        "before": {
+          "morph": "young",
+          "mask": "scar",
+          "maskSurface": [],
+          "decals": [],
+          "bodySources": [
+            {
+              "slot": "body-thigh-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-back.webp"
+            },
+            {
+              "slot": "body-shin-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-back.webp"
+            },
+            {
+              "slot": "body-foot-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-back.webp"
+            },
+            {
+              "slot": "body-upper-arm-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-back.webp"
+            },
+            {
+              "slot": "body-lower-arm-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-back.webp"
+            },
+            {
+              "slot": "body-hand-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-back.webp"
+            },
+            {
+              "slot": "body-pelvis",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/pelvis.webp"
+            },
+            {
+              "slot": "body-torso",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp"
+            },
+            {
+              "slot": "body-head",
+              "src": "http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png"
+            },
+            {
+              "slot": "body-thigh-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-front.webp"
+            },
+            {
+              "slot": "body-shin-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-front.webp"
+            },
+            {
+              "slot": "body-foot-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-front.webp"
+            },
+            {
+              "slot": "body-upper-arm-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-front.webp"
+            },
+            {
+              "slot": "body-lower-arm-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-front.webp"
+            },
+            {
+              "slot": "body-hand-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-front.webp"
+            }
+          ]
+        },
+        "after": {
+          "morph": "young",
+          "mask": "scar",
+          "maskSurface": [],
+          "decals": [
+            {
+              "zone": "face",
+              "id": "clan-v133-face-hunting-glyph",
+              "transform": "matrix(1, 0, 0, 1, 0, 0)",
+              "transformChain": [
+                "matrix(1, 0, 0, 1, 0, 0)"
+              ],
+              "maskImage": "url(\"http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png\")",
+              "maskRepeat": "no-repeat",
+              "owner": {
+                "left": "34.7022%",
+                "top": "2.97548%",
+                "width": "37.886%",
+                "height": "25.2573%"
+              },
+              "cell": {
+                "left": "33.1612%",
+                "top": "27.3994%",
+                "width": "43.3043%",
+                "height": "37.1179%"
+              },
+              "opacity": "0.82"
+            }
+          ],
+          "bodySources": [
+            {
+              "slot": "body-thigh-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-back.webp"
+            },
+            {
+              "slot": "body-shin-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-back.webp"
+            },
+            {
+              "slot": "body-foot-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-back.webp"
+            },
+            {
+              "slot": "body-upper-arm-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-back.webp"
+            },
+            {
+              "slot": "body-lower-arm-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-back.webp"
+            },
+            {
+              "slot": "body-hand-back",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-back.webp"
+            },
+            {
+              "slot": "body-pelvis",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/pelvis.webp"
+            },
+            {
+              "slot": "body-torso",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp"
+            },
+            {
+              "slot": "body-head",
+              "src": "http://127.0.0.1:3121/game/sprites/v62/heads/classic-head.png"
+            },
+            {
+              "slot": "body-thigh-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-front.webp"
+            },
+            {
+              "slot": "body-shin-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-front.webp"
+            },
+            {
+              "slot": "body-foot-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-front.webp"
+            },
+            {
+              "slot": "body-upper-arm-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-front.webp"
+            },
+            {
+              "slot": "body-lower-arm-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-front.webp"
+            },
+            {
+              "slot": "body-hand-front",
+              "src": "http://127.0.0.1:3121/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-front.webp"
+            }
+          ]
+        },
+        "scope": "No independent PHG Warpaint/Scar-effect selector or official pixel comparison is offered; criterion remains partial."
+      }
+    },
+    {
+      "name": "samurai native keyboard confirmation and mobile viewport remain usable",
+      "passed": true,
+      "detail": {
+        "width": 390,
+        "scrollWidth": 390
+      }
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "screenshots": [
+    {
+      "filename": "alpha-palette.png",
+      "sha256": "4f232e0b413c680255b28cdf670289508f4b47b2ed55a7d5339a0aaed4178dfb",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-mask-inspection-off.png",
+      "sha256": "a118de9e5044da1ea557e45a97a17558568383a10eb04761686694a5c0fcd443",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-durable-unmasked.png",
+      "sha256": "a118de9e5044da1ea557e45a97a17558568383a10eb04761686694a5c0fcd443",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-city-no-ogre.png",
+      "sha256": "a8c6d18903bc7d2d61fdd831a350354715d05b6fb28be0621e9d9e5c62123399",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-morph-classic.png",
+      "sha256": "67203de131f5047618ac2d40775c8a2f2837bee03edb12e96753d83fb60f82bd",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-morph-elder.png",
+      "sha256": "804f848228128da4b3af3eaf3a58e5765ea89a9ef983ed7e26d6efeb945644f2",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-morph-super.png",
+      "sha256": "e69830652dae203137d8dcd8cecfcf656af8862cffe86ef0aafde28f2dc197ba",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-morph-feral.png",
+      "sha256": "0a42bcd1aa2b29af3d57336a6012baf34b128407001d3de91014abe9a80f9e75",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-morph-huntress.png",
+      "sha256": "e563a969b5317534bf7f452d0acc5dd2864d293074f6bab73e6552f697f30014",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-morph-young.png",
+      "sha256": "7504c3a4022e209e3ca8b9e515775e98f29ce7b38023e7f4a76239d834fceb4e",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "alpha-mobile-390.png",
+      "sha256": "e94b2b6fdf37ced7051eac1dd12700e23e67b927121bc7cd5adc7c7ce9d99434",
+      "inspected": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "samurai-palette.png",
+      "sha256": "7d980a6ca537dbb38f38786bc369c4b0600a7b964882b48baa69f4a573c1b82f",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "samurai-mask-inspection-off.png",
+      "sha256": "0a9728281890a6de65203e8cea4b97bc8aeeb4380cbe02fd56d881a4442eabff",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "samurai-durable-unmasked.png",
+      "sha256": "0a9728281890a6de65203e8cea4b97bc8aeeb4380cbe02fd56d881a4442eabff",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "samurai-scar-before-clan-mark.png",
+      "sha256": "1179d4a51ebe9e1a622a6ed71f3743320e9aa4f504015e63ad5737940413db31",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "samurai-scar-after-clan-mark.png",
+      "sha256": "799579da65ace031e3c5a06c75c2db4e417d751c9531cd11e7412903947b6052",
+      "inspected": false,
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    },
+    {
+      "filename": "samurai-mobile-390.png",
+      "sha256": "5e9a8ec35f93788a420305e7cb240675db2b94f75f8534f7e5a94548da411ebd",
+      "inspected": false,
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "scope": "Actual native preview; current offered orientation only."
+    }
+  ],
+  "browserVersion": "154.0.8037.57",
+  "buildId": "TDA_a9vb2sdq4pe9FwXuE",
+  "limits": {
+    "nativeViewAngles": "Only the orientation actually offered by customization is exercised; no face/profile/back views are invented.",
+    "physicalController": false,
+    "longSoak60Minutes": false,
+    "officialPhgUvComparison": false,
+    "humanArtApproval": false
+  },
+  "recipeSha256": "53941fc16efbfe53aacaf071f2d47d5a5d0281cf095a530711f1771e8ab6ce6f",
+  "saveObservations": [
+    {
+      "preset": "alpha",
+      "label": "skin-color-keyboard",
+      "filename": "alpha-save-01-skin-color-keyboard.json",
+      "beforeSha256": "75ae5bccf64306091f1d8ae09b27cf152682f54f2650866783d80d3b0031050e",
+      "afterSha256": "f3b20196a39a7fd788166e562da9eee353aee6c75ac391ae119cb272fa8df182"
+    },
+    {
+      "preset": "alpha",
+      "label": "alpha-ogre",
+      "filename": "alpha-save-02-alpha-ogre.json",
+      "beforeSha256": "f3b20196a39a7fd788166e562da9eee353aee6c75ac391ae119cb272fa8df182",
+      "afterSha256": "b67756bf4449a7fd9a3c0947e342956d9cb9af42fab0edaab0c5148485f23153"
+    },
+    {
+      "preset": "alpha",
+      "label": "decal-face",
+      "filename": "alpha-save-03-decal-face.json",
+      "beforeSha256": "b67756bf4449a7fd9a3c0947e342956d9cb9af42fab0edaab0c5148485f23153",
+      "afterSha256": "c2e38230ab87a5347947fdaa5f0ef5264ed3f452950465b22d7caf56063e4154"
+    },
+    {
+      "preset": "alpha",
+      "label": "decal-body",
+      "filename": "alpha-save-04-decal-body.json",
+      "beforeSha256": "c2e38230ab87a5347947fdaa5f0ef5264ed3f452950465b22d7caf56063e4154",
+      "afterSha256": "baaf4563014a8cfeaf6ea7beb6a1b9903143ce95bfebd0e00d657d3ca6366cfe"
+    },
+    {
+      "preset": "alpha",
+      "label": "decal-armor",
+      "filename": "alpha-save-05-decal-armor.json",
+      "beforeSha256": "baaf4563014a8cfeaf6ea7beb6a1b9903143ce95bfebd0e00d657d3ca6366cfe",
+      "afterSha256": "6b937953c44c5e931b53ca2d6a25305ca569783bc4d9c4290a6cf16bafabcf52"
+    },
+    {
+      "preset": "alpha",
+      "label": "decal-biomask",
+      "filename": "alpha-save-06-decal-biomask.json",
+      "beforeSha256": "6b937953c44c5e931b53ca2d6a25305ca569783bc4d9c4290a6cf16bafabcf52",
+      "afterSha256": "c5835819305fd8f793aacec1689d1885da25e5a4c73bffe9a16961c8aa227ee8"
+    },
+    {
+      "preset": "alpha",
+      "label": "biomask-visage-d-couvert",
+      "filename": "alpha-save-07-biomask-visage-d-couvert.json",
+      "beforeSha256": "c5835819305fd8f793aacec1689d1885da25e5a4c73bffe9a16961c8aa227ee8",
+      "afterSha256": "b956e159472a3caf144aec55fde7eaeea931a307f21e4a681ee3f6dea03aeb28"
+    },
+    {
+      "preset": "alpha",
+      "label": "biomask-city-hunter",
+      "filename": "alpha-save-08-biomask-city-hunter.json",
+      "beforeSha256": "b956e159472a3caf144aec55fde7eaeea931a307f21e4a681ee3f6dea03aeb28",
+      "afterSha256": "86a623ff9b1a7439a15a5bd41b2a1ae78c48ccc4f25411284fc1b42021111647"
+    },
+    {
+      "preset": "alpha",
+      "label": "city-natural-geometry",
+      "filename": "alpha-save-09-city-natural-geometry.json",
+      "beforeSha256": "86a623ff9b1a7439a15a5bd41b2a1ae78c48ccc4f25411284fc1b42021111647",
+      "afterSha256": "b0ad0955019bd42d044bf3f056db6024084276876d89bfdbbdc21f995e4b0134"
+    },
+    {
+      "preset": "alpha",
+      "label": "morphologie-classique",
+      "filename": "alpha-save-10-morphologie-classique.json",
+      "beforeSha256": "b0ad0955019bd42d044bf3f056db6024084276876d89bfdbbdc21f995e4b0134",
+      "afterSha256": "16b1b37aa65659676d360ace5488302a659ea656afa92aa9f81e24660bdbaf7d"
+    },
+    {
+      "preset": "alpha",
+      "label": "morphologie-elder",
+      "filename": "alpha-save-11-morphologie-elder.json",
+      "beforeSha256": "16b1b37aa65659676d360ace5488302a659ea656afa92aa9f81e24660bdbaf7d",
+      "afterSha256": "5f0b068617f68cce6b667eaf8d92cfa9c5f80ac41d0575010b6dc8a79a979a34"
+    },
+    {
+      "preset": "alpha",
+      "label": "morphologie-super",
+      "filename": "alpha-save-12-morphologie-super.json",
+      "beforeSha256": "5f0b068617f68cce6b667eaf8d92cfa9c5f80ac41d0575010b6dc8a79a979a34",
+      "afterSha256": "730416b87e2ea590dd2fdfbb265ab1f7dcc37b6ea96e393eca6183a43adff608"
+    },
+    {
+      "preset": "alpha",
+      "label": "morphologie-feral",
+      "filename": "alpha-save-13-morphologie-feral.json",
+      "beforeSha256": "730416b87e2ea590dd2fdfbb265ab1f7dcc37b6ea96e393eca6183a43adff608",
+      "afterSha256": "e95cd6e4eb61ce79fb51a4049d5e10940212624edce87b040ab80aba2a9c1ae8"
+    },
+    {
+      "preset": "alpha",
+      "label": "morphologie-huntress",
+      "filename": "alpha-save-14-morphologie-huntress.json",
+      "beforeSha256": "e95cd6e4eb61ce79fb51a4049d5e10940212624edce87b040ab80aba2a9c1ae8",
+      "afterSha256": "143528e5ab75181112a5239c7779183645fc9e1464a7fca9a0cfc2864f61b86a"
+    },
+    {
+      "preset": "alpha",
+      "label": "morphologie-young-blood",
+      "filename": "alpha-save-15-morphologie-young-blood.json",
+      "beforeSha256": "143528e5ab75181112a5239c7779183645fc9e1464a7fca9a0cfc2864f61b86a",
+      "afterSha256": "00ae10b6a72c4ee3f68c12a3b8ea74f20ee8b7d09941ed6d3865972ba919dd3d"
+    },
+    {
+      "preset": "samurai",
+      "label": "armor-color-keyboard",
+      "filename": "samurai-save-01-armor-color-keyboard.json",
+      "beforeSha256": "ceda0d0450889b1937320badd0a83e1207548dd1826f5d5793dea18bb5b4c738",
+      "afterSha256": "f6c5394f3fe2aa8b01ddb6da7b60f04a2b4250156e5518a0695b7b536e28a210"
+    },
+    {
+      "preset": "samurai",
+      "label": "samurai-phg-study-v-requiem",
+      "filename": "samurai-save-02-samurai-phg-study-v-requiem.json",
+      "beforeSha256": "f6c5394f3fe2aa8b01ddb6da7b60f04a2b4250156e5518a0695b7b536e28a210",
+      "afterSha256": "a956dbb69cf301b8087bdfcd065368b24a44f788f7dece4a23d8d3b6d6873afc"
+    },
+    {
+      "preset": "samurai",
+      "label": "samurai-phg-study-v-nova",
+      "filename": "samurai-save-03-samurai-phg-study-v-nova.json",
+      "beforeSha256": "a956dbb69cf301b8087bdfcd065368b24a44f788f7dece4a23d8d3b6d6873afc",
+      "afterSha256": "9df1e6fe4207aff39c3668f68fd59a00d584fbbdc25d0ee6d5243fa7b8098727"
+    },
+    {
+      "preset": "samurai",
+      "label": "decal-face",
+      "filename": "samurai-save-04-decal-face.json",
+      "beforeSha256": "9df1e6fe4207aff39c3668f68fd59a00d584fbbdc25d0ee6d5243fa7b8098727",
+      "afterSha256": "36e78c45455e592e8af9e67df046bc26347252839f0b63786dd93cda534bfc93"
+    },
+    {
+      "preset": "samurai",
+      "label": "decal-body",
+      "filename": "samurai-save-05-decal-body.json",
+      "beforeSha256": "36e78c45455e592e8af9e67df046bc26347252839f0b63786dd93cda534bfc93",
+      "afterSha256": "42bb1ec19fd740c1579b30dc9a14017cb09d359be2459ce93addc4b4af01f0e3"
+    },
+    {
+      "preset": "samurai",
+      "label": "decal-armor",
+      "filename": "samurai-save-06-decal-armor.json",
+      "beforeSha256": "42bb1ec19fd740c1579b30dc9a14017cb09d359be2459ce93addc4b4af01f0e3",
+      "afterSha256": "d19eaeb63a10779d3ea095aa4a5e1872b0fd932e339f8327cb326156b50125bd"
+    },
+    {
+      "preset": "samurai",
+      "label": "decal-biomask",
+      "filename": "samurai-save-07-decal-biomask.json",
+      "beforeSha256": "d19eaeb63a10779d3ea095aa4a5e1872b0fd932e339f8327cb326156b50125bd",
+      "afterSha256": "068731e021640e24c1993c4f581ee5dda133e3547745ecaf6f0cd044584f680e"
+    },
+    {
+      "preset": "samurai",
+      "label": "biomask-visage-d-couvert",
+      "filename": "samurai-save-08-biomask-visage-d-couvert.json",
+      "beforeSha256": "068731e021640e24c1993c4f581ee5dda133e3547745ecaf6f0cd044584f680e",
+      "afterSha256": "a5f3d32335a4c97d11876b0d5d7c1cf7d09a06a74205d71f351e5a62a47b07de"
+    },
+    {
+      "preset": "samurai",
+      "label": "scar-original-face-mark",
+      "filename": "samurai-save-09-scar-original-face-mark.json",
+      "beforeSha256": "311be2a051a2781a2c9267d4b84f116b1ae36e7d9f89ca2bea3ef0fff4a50e9b",
+      "afterSha256": "aa45a4ac43860b71ce826438dc4c56c1da266d17713667309a72761a2f56c310"
+    }
+  ],
+  "passed": true,
+  "finishedAt": "2026-11-09T05:24:04.587Z"
+}

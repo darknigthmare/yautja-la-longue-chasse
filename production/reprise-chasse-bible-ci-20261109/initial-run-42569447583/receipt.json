@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-09T06:04:34.369820+00:00",
+  "classification": "FAILED_HISTORICAL_CI_ATTEMPT_NOT_NEW_QUALIFICATION",
+  "workflow": {
+    "conclusion": "failure",
+    "created_at": "2026-11-09T05:49:03Z",
+    "head_branch": "codex/reprise-bible-chasse-20261109",
+    "head_sha": "1edbf69117949df3d3e1591b79fdcc416928862d",
+    "html_url": "https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/42569447583",
+    "id": 42569447583,
+    "name": "Clan Ship campaign, interior, crew and tactical operations",
+    "run_attempt": 1,
+    "status": "completed",
+    "updated_at": "2026-11-09T05:53:27Z"
+  },
+  "job": {
+    "id": 129003186883,
+    "name": "docking",
+    "conclusion": "failure",
+    "failedStep": "Walk the real interior and restore its clan berth"
+  },
+  "artifact": {
+    "id": 13652489045,
+    "downloadedZipBytes": 3396795,
+    "sha256": "a928ab8105865b4a563ff79045a90220dcb7dd143959190d74bd3b281ebf5bcd"
+  },
+  "checkout": {
+    "sourceCommit": "1edbf69117949df3d3e1591b79fdcc416928862d",
+    "checkoutCommit": "1edbf69117949df3d3e1591b79fdcc416928862d",
+    "workingTreeDirty": false,
+    "browserVersion": "153.0.8010.12"
+  },
+  "failure": {
+    "recipe": "scripts/qa-clan-ship-browser.mjs",
+    "line": 388,
+    "code": "ERR_ASSERTION",
+    "actual": "false",
+    "expected": "true",
+    "check": "The archive service requires walking into reach and a separate interaction",
+    "checksRecorded": 12,
+    "consoleOrPageErrors": [],
+    "missingAssets": []
+  },
+  "lastObservedState": {
+    "room": "archives",
+    "x": "240.03",
+    "y": "645.00",
+    "moving": "false",
+    "suspended": "false",
+    "documentFocused": true,
+    "hidden": false
+  },
+  "interpretation": "The service command was acknowledged by its planning text while the rendered actor still stood at 240.03 / 645. This is evidence of the failed arrival assertion; the stopped-before-first-frame race is a diagnosis to verify, not a successful replay.",
+  "logHandling": {
+    "representation": "Native decoded UTF-8 job log copied without line filtering",
+    "sourceCharacters": 223523,
+    "signedURLPatternMatches": 0,
+    "unmaskedGitHubTokenPatternMatches": 0
+  },
+  "frozenLotModified": false,
+  "files": [
+    {
+      "path": "failure-page.txt",
+      "bytes": 1308,
+      "sha256": "87e9fe359734c98f133bef03a5fd3e261f80812aefca3c9c8e4cc1938fdb30d5"
+    },
+    {
+      "path": "failure.png",
+      "bytes": 1423855,
+      "sha256": "fc1b8bb60927e1a843aa6cb441d43034e46c20624a9b44a60d05930921268afc"
+    },
+    {
+      "path": "job-129003186883.log",
+      "bytes": 226165,
+      "sha256": "95a07c8829d25833e9c5404816c6b93bac94b625b2d9661447cd9c8c18c8016e"
+    },
+    {
+      "path": "report.json",
+      "bytes": 8412,
+      "sha256": "8aac6ee6b7afaf1ba10dc3f4134c6ea7d2da9f87ac0747369531221b6ace7d21"
+    }
+  ]
+}

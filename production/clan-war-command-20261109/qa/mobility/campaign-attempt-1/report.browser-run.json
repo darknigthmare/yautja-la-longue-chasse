@@ -1,0 +1,906 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T10:41:36.924Z",
+  "url": "http://127.0.0.1:3152",
+  "probe": false,
+  "passed": false,
+  "qualification": "PENDING",
+  "scope": "Actual Next/GameClient → exterior forge approach → interior service → garage → native training and owned sortie → homeworld. Declared initial adult checkpoint; not a complete campaign from nursery.",
+  "sourceBefore": {
+    "buildId": "kS-6-0gmSFRZVosfYvnq6",
+    "sources": [
+      {
+        "file": "app/game/GameClient.tsx",
+        "sha256": "05d35cd1499f46ceafb061234a4eb3acd6cb62d5294f0a2d49cda77cdc0e7208"
+      },
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "6fd223d741945bfc0f8010053fae3e34751ccfccbc47504b33c8c4dd2935b409"
+      },
+      {
+        "file": "app/game/MobilityGarage.tsx",
+        "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76"
+      },
+      {
+        "file": "app/game/MobilityGarage.module.css",
+        "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03"
+      },
+      {
+        "file": "app/game/MobilityDrivingYard.tsx",
+        "sha256": "64c457b5515592140245a9ee550be4e362dc95250277c7a76c20fc0ff939398d"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
+      },
+      {
+        "file": "app/game/types.ts",
+        "sha256": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946"
+      },
+      {
+        "file": "app/game/systems/mobility/access.ts",
+        "sha256": "6ebd5adb3d07b3ea92fe6e2295e7ea25d130308a8e42770d18df788c44b0fc88"
+      },
+      {
+        "file": "app/game/systems/mobility/catalogue.ts",
+        "sha256": "33840ee3172cb6c087c4ff7e9786c4319cd1cf432ef53d3eae7e9b588b9f955f"
+      },
+      {
+        "file": "app/game/systems/mobility/controller.ts",
+        "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+      },
+      {
+        "file": "app/game/systems/mobility/controls.ts",
+        "sha256": "949eee61c903b18130ed5c19d6a6b9bd321337a9874ec4e38a54cf207bc6350c"
+      },
+      {
+        "file": "app/game/systems/mobility/course.ts",
+        "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+      },
+      {
+        "file": "app/game/systems/mobility/ledger.ts",
+        "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+      },
+      {
+        "file": "app/game/systems/mobility/workshop.ts",
+        "sha256": "0d8acc38e0ad8cd6ecec1addf7a04b6ac678d9bdb628c9cae8aaaf49317a2662"
+      },
+      {
+        "file": "scripts/qa-mobility-campaign-20261109.mjs",
+        "sha256": "0d9c8066df757f88c0048e28bfb83bb047dc3cc39e54fcbe391aed137610a3dd"
+      },
+      {
+        "file": "scripts/mobility-qa-driver.mjs",
+        "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "initial real campaign slot migrated and checkpointed before playing",
+      "passed": true
+    },
+    {
+      "name": "GameClient resumes the disclosed exterior on the actual homeworld",
+      "passed": true
+    },
+    {
+      "name": "actual forge door changes the native physical room",
+      "passed": true,
+      "detail": {
+        "outsideSamples": [
+          {
+            "x": 3080,
+            "y": 3033
+          },
+          {
+            "x": 3080,
+            "y": 2980
+          }
+        ]
+      }
+    },
+    {
+      "name": "counter is reached by native walking inside the actual forge",
+      "passed": true,
+      "detail": {
+        "samples": [
+          {
+            "x": 269,
+            "y": 236
+          },
+          {
+            "x": 269,
+            "y": 236
+          },
+          {
+            "x": 250,
+            "y": 221
+          },
+          {
+            "x": 228,
+            "y": 221
+          },
+          {
+            "x": 222,
+            "y": 221
+          },
+          {
+            "x": 222,
+            "y": 212
+          },
+          {
+            "x": 222,
+            "y": 186
+          },
+          {
+            "x": 222,
+            "y": 164
+          },
+          {
+            "x": 222,
+            "y": 147
+          },
+          {
+            "x": 222,
+            "y": 125
+          },
+          {
+            "x": 222,
+            "y": 121
+          },
+          {
+            "x": 222,
+            "y": 121
+          },
+          {
+            "x": 222,
+            "y": 121
+          },
+          {
+            "x": 206,
+            "y": 121
+          },
+          {
+            "x": 189,
+            "y": 121
+          }
+        ]
+      }
+    },
+    {
+      "name": "physical counter opens the mounted campaign garage with all fifty models",
+      "passed": true
+    },
+    {
+      "name": "desktop wallet and actual garage controls remain within the GameClient station",
+      "passed": true
+    },
+    {
+      "name": "opening the actual garage grants no permit, property or free ledger",
+      "passed": true
+    },
+    {
+      "name": "counter checkpoint belongs to this campaign and remains physically in reach",
+      "passed": true
+    },
+    {
+      "name": "actual campaign loan is recorded and starts paused",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "01-exterior-before-forge.png",
+      "sha256": "3ad808a59b71032344e82975dd78f0530f43fdef4cfe0ddb9832ab9756a6998c",
+      "inspected": false
+    },
+    {
+      "filename": "02-physical-forge-counter.png",
+      "sha256": "33f5233feb20c9c54589b1e68df34c62c5ede0938af49a2210b2109e9df8389e",
+      "inspected": false
+    },
+    {
+      "filename": "03-campaign-garage.png",
+      "sha256": "e445720cdd2d4aa524be761c86a603f7b6973c7fc8c03334a249dfa1506ed07a",
+      "inspected": false
+    },
+    {
+      "filename": "failure.png",
+      "sha256": "d05b0bbcaf42726ae8c0ac101f449b445c68156b557a3d012786dfa0a4f5a5b5",
+      "inspected": false
+    }
+  ],
+  "servedScripts": [
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "file": ".next/static/chunks/main-app-340bf771475649a8.js",
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "file": ".next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/webpack-8d3a176fb763e3d6.js",
+      "file": ".next/static/chunks/webpack-8d3a176fb763e3d6.js",
+      "sha256": "7cf5442a9a66c2a3814d84d87f20579b2bdc9d38d5747bc6d2fe3bc05d792c7e",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "file": ".next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "file": ".next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "file": ".next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "file": ".next/static/chunks/5151-2b5acbc4e490de14.js",
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "file": ".next/static/chunks/3794-6cecce02b123eb1f.js",
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "file": ".next/static/chunks/49-2d3614459171c485.js",
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "file": ".next/static/chunks/8482-97fd3178822a871b.js",
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "file": ".next/static/chunks/3013-d7dd1404155871c3.js",
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "file": ".next/static/chunks/7178-91125a118647fb13.js",
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "file": ".next/static/chunks/7555-de0a1466f913dee5.js",
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "file": ".next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "file": ".next/static/chunks/2887-5349be72c36ef2d1.js",
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "file": ".next/static/chunks/9372-5a69314ee210bcac.js",
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "file": ".next/static/chunks/9548-15f6d72975d5f216.js",
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-4a5ba92d50aa5a22.js",
+      "file": ".next/static/chunks/app/page-4a5ba92d50aa5a22.js",
+      "sha256": "fec957089276f133ed67c308fb1dfec346f6813d452f1ae5f842a7b82fa923a7",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "file": ".next/static/chunks/4292-68018d71f488e6b1.js",
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "file": ".next/static/chunks/84-b773dabbd6c85016.js",
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "file": ".next/static/chunks/9372-5a69314ee210bcac.js",
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "file": ".next/static/chunks/4292-68018d71f488e6b1.js",
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "file": ".next/static/chunks/9548-15f6d72975d5f216.js",
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "file": ".next/static/chunks/84-b773dabbd6c85016.js",
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-4a5ba92d50aa5a22.js",
+      "file": ".next/static/chunks/app/page-4a5ba92d50aa5a22.js",
+      "sha256": "fec957089276f133ed67c308fb1dfec346f6813d452f1ae5f842a7b82fa923a7",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/webpack-8d3a176fb763e3d6.js",
+      "file": ".next/static/chunks/webpack-8d3a176fb763e3d6.js",
+      "sha256": "7cf5442a9a66c2a3814d84d87f20579b2bdc9d38d5747bc6d2fe3bc05d792c7e",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "file": ".next/static/chunks/main-app-340bf771475649a8.js",
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "file": ".next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "file": ".next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "file": ".next/static/chunks/5151-2b5acbc4e490de14.js",
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "file": ".next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "file": ".next/static/chunks/3794-6cecce02b123eb1f.js",
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "file": ".next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "file": ".next/static/chunks/49-2d3614459171c485.js",
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "file": ".next/static/chunks/3013-d7dd1404155871c3.js",
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "file": ".next/static/chunks/7178-91125a118647fb13.js",
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "file": ".next/static/chunks/8482-97fd3178822a871b.js",
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "file": ".next/static/chunks/7555-de0a1466f913dee5.js",
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "file": ".next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "file": ".next/static/chunks/2887-5349be72c36ef2d1.js",
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3257-c9dfc8aaa0f472e3.js",
+      "file": ".next/static/chunks/3257-c9dfc8aaa0f472e3.js",
+      "sha256": "ff54fc45d48e920c4c427aec88125630594fb677e63592b0bc08dd6254865533",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7786-66a01e803ffab2ad.js",
+      "file": ".next/static/chunks/7786-66a01e803ffab2ad.js",
+      "sha256": "5327d00f1827ecc44b4845be5e3a3f349f4a34f54d0975a92050ad100119e537",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8733.4d7889922ffb33f6.js",
+      "file": ".next/static/chunks/8733.4d7889922ffb33f6.js",
+      "sha256": "40003472d7cf9831056799b92dd1d32effef68dd402ac0801791b29d8225c841",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/352-57c914148026e48c.js",
+      "file": ".next/static/chunks/352-57c914148026e48c.js",
+      "sha256": "5a4f493f47ae26a1feb2957bc875b3cd9a8256ea00b487a5abd6be627dc1649b",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7340-e05acd1833e1d9fa.js",
+      "file": ".next/static/chunks/7340-e05acd1833e1d9fa.js",
+      "sha256": "7cc69cd85e803e67d4198ce3d9a60f09b46a093c67ce5c02519c3d8ae56e60e3",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "file": ".next/static/chunks/6191-731e57ae014ed88a.js",
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7062.bfada75f224713ab.js",
+      "file": ".next/static/chunks/7062.bfada75f224713ab.js",
+      "sha256": "b25fc3d517f0190e2bb69dc9f57e7c1ea1868f150b3d804e031f48aef9258288",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/1352-431744f73b4ac840.js",
+      "file": ".next/static/chunks/1352-431744f73b4ac840.js",
+      "sha256": "446ca413e10bcba9484f953a5d018d5e323b06787233081f0f69c7b2fd202e9f",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/564-0d46d191fe00fc55.js",
+      "file": ".next/static/chunks/564-0d46d191fe00fc55.js",
+      "sha256": "c191c10605a772df21cf1b33f08fc5f580dcc0f8712308336a27008532c3cc78",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6794.d14559868cb33736.js",
+      "file": ".next/static/chunks/6794.d14559868cb33736.js",
+      "sha256": "00a56d5e19981701cdb7e7309213191d5f718cd49c468ec23b7e793048714bb5",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4646.00452fda79d1264d.js",
+      "file": ".next/static/chunks/4646.00452fda79d1264d.js",
+      "sha256": "abad36faa010ef7d9921d82b462e1f27c7e0db72e6af287cba073c6e45625902",
+      "matchesBuiltFile": true
+    }
+  ],
+  "servedStyles": [
+    {
+      "pathname": "/_next/static/css/37e68a663ba2fbdb.css",
+      "file": ".next/static/css/37e68a663ba2fbdb.css",
+      "sha256": "23fc88b418b819ea694fa08041e8e412e5da6cd2858d9c0d36d38851ed910fae",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d92d46d78d2045c7.css",
+      "file": ".next/static/css/d92d46d78d2045c7.css",
+      "sha256": "671b21ffa204eb007422542a8b640ebc23f5ffc4b2ce4dbd9c38000863ad3bdb",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d92d46d78d2045c7.css",
+      "file": ".next/static/css/d92d46d78d2045c7.css",
+      "sha256": "671b21ffa204eb007422542a8b640ebc23f5ffc4b2ce4dbd9c38000863ad3bdb",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/37e68a663ba2fbdb.css",
+      "file": ".next/static/css/37e68a663ba2fbdb.css",
+      "sha256": "23fc88b418b819ea694fa08041e8e412e5da6cd2858d9c0d36d38851ed910fae",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/7cc51f62e12609e8.css",
+      "file": ".next/static/css/7cc51f62e12609e8.css",
+      "sha256": "43f4d5be067f4eef7af83f8e090d32bc3c688123341436cf10f8b503769b70a1",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d6796612d993ac53.css",
+      "file": ".next/static/css/d6796612d993ac53.css",
+      "sha256": "9b466657fcb21e3a94a245b85db7928b0e1473652a59b54b80d2a63e3be187d4",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d8452cc1d8861450.css",
+      "file": ".next/static/css/d8452cc1d8861450.css",
+      "sha256": "45ad480ce5a6ccc894da065c19759d9ce25792718d6bfc22adbf25ad927f7be4",
+      "matchesBuiltFile": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "assets": [
+    "/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "/game/homeworld/v109/archive-plaque-atlas-v109.png",
+    "/game/homeworld/v111/archivist-conversation/explain.png",
+    "/game/homeworld/v111/archivist-conversation/indicate.png",
+    "/game/homeworld/v111/archivist-conversation/listen.png",
+    "/game/homeworld/v111/archivist-conversation/return.png",
+    "/game/homeworld/v64/clan-shuttle.png",
+    "/game/homeworld/v64/house-c-ribbed.png",
+    "/game/homeworld/v64/interior-panels.png",
+    "/game/homeworld/v64/landing-pad.png",
+    "/game/homeworld/v64/pavement.png",
+    "/game/homeworld/v64/props-atlas.png",
+    "/game/homeworld/v71/cinder-ground.png",
+    "/game/homeworld/v71/outskirts-kit.png",
+    "/game/homeworld/v72/civic-furniture-kit.png",
+    "/game/homeworld/v72/civic-identity-atlas.png",
+    "/game/homeworld/v72/civic-specialists-spaced-atlas.png",
+    "/game/homeworld/v72/civilian-roles-atlas.png",
+    "/game/homeworld/v74/01-chief-artisan-walk-corrected.png",
+    "/game/homeworld/v74/01-chief-artisan-walk-final.png",
+    "/game/homeworld/v74/02-healer-archivist-walk-spaced.png",
+    "/game/homeworld/v74/03-guard-courier-walk-spaced-left-fixed.png",
+    "/game/homeworld/v74/04-instructor-apprentice-walk.png",
+    "/game/homeworld/v74/05-dock-forge-walk-spaced.png",
+    "/game/homeworld/v74/06-witness-herald-walk.png",
+    "/game/homeworld/v74/07-arena-rite-walk.png",
+    "/game/homeworld/v75/architecture/market-canopy.png",
+    "/game/homeworld/v76/architecture/convoy-store.png",
+    "/game/homeworld/v76/architecture/convoy-workshop.png",
+    "/game/homeworld/v76/architecture/dock-control.png",
+    "/game/homeworld/v76/architecture/rampart-watch.png",
+    "/game/homeworld/v76/architecture/rite-sanctum.png",
+    "/game/homeworld/v76/architecture/trophy-mausoleum.png",
+    "/game/homeworld/v76/interior/bench-left.png",
+    "/game/homeworld/v76/interior/chest-diagonal.png",
+    "/game/homeworld/v76/interior/rack-lateral.png",
+    "/game/homeworld/v76/interior/worktable-right.png",
+    "/game/homeworld/v76/logistics-container-rack-native.png",
+    "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+    "/game/homeworld/v76/mineral-planter-left-native.png",
+    "/game/homeworld/v76/terrace-bench-right-native.png",
+    "/game/homeworld/v77/council-stair-native.png",
+    "/game/homeworld/v77/lava-transit-skiff.png",
+    "/game/homeworld/v77/lava-warrior-left.png",
+    "/game/homeworld/v77/lava-warrior-right.png",
+    "/game/homeworld/v78/archive-shelf-right.png",
+    "/game/homeworld/v78/civic-water-cistern-right.png",
+    "/game/homeworld/v78/clan-common-table-left.png",
+    "/game/homeworld/v78/forge-workstation-left.png",
+    "/game/homeworld/v78/market-stall-right.png",
+    "/game/homeworld/v78/port-cargo-sorting-cart.png",
+    "/game/homeworld/v78/terrace-retaining-front.png",
+    "/game/homeworld/v80/amber-lamp-post.png",
+    "/game/homeworld/v80/bench-left.png",
+    "/game/homeworld/v80/clan-banner-standard.png",
+    "/game/homeworld/v80/clan-lectern-right.png",
+    "/game/homeworld/v80/corner-wall-left.png",
+    "/game/homeworld/v80/maintenance-rack.png",
+    "/game/homeworld/v80/mineral-basin-right.png",
+    "/game/homeworld/v80/sealed-cargo-case-left.png",
+    "/game/homeworld/v81/basalt-city-foundation.png",
+    "/game/homeworld/v81/clan-residence-left.png",
+    "/game/homeworld/v81/council-hall-left.png",
+    "/game/homeworld/v81/distant-city-terraces.png",
+    "/game/homeworld/v81/industrial-residence-right.png",
+    "/game/homeworld/v81/paving-civic.png",
+    "/game/homeworld/v81/paving-council.png",
+    "/game/homeworld/v81/paving-undercity.png",
+    "/game/homeworld/v81/prime-sky.png",
+    "/game/homeworld/v81/royal-pyramid-front.png",
+    "/game/homeworld/v81/spaceport-gantry.png",
+    "/game/homeworld/v82/acropolis-stair.png",
+    "/game/homeworld/v82/clan-lift-cabin.png",
+    "/game/homeworld/v82/clan-lift-gantry-adult.png",
+    "/game/homeworld/v82/diagonal-service-ramp.png",
+    "/game/homeworld/v82/industrial-distant-quarter.png",
+    "/game/homeworld/v82/industrial-ramp.png",
+    "/game/homeworld/v82/lower-gallery-stair.png",
+    "/game/homeworld/v82/port-distant-quarter.png",
+    "/game/homeworld/v83/basalt-planter-left.png",
+    "/game/homeworld/v83/cargo-rack-right.png",
+    "/game/homeworld/v83/clan-waymarker-right.png",
+    "/game/homeworld/v83/forge-bench-right.png",
+    "/game/homeworld/v83/merchant-counter-left.png",
+    "/game/homeworld/v84/care-cabinet-left.png",
+    "/game/homeworld/v84/maintenance-console-right.png",
+    "/game/homeworld/v84/npcs/forge-master/19.png",
+    "/game/homeworld/v84/ritual-brazier-right.png",
+    "/game/homeworld/v84/training-rack-left.png",
+    "/game/mobility/v1/03_clan_hoverbike__3q_left.png",
+    "/game/mobility/v1/05_scout_grav_sled__3q_left.png",
+    "/game/mobility/v1/19_trophy_carrier__3q_left.png",
+    "/game/prologue/v47/village.png",
+    "/game/sprites/hunter.webp",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+    "/game/sprites/v5/film-plates/jungle-hunter.png",
+    "/game/sprites/v62/heads/classic-head.png"
+  ],
+  "physicalController": false,
+  "humanArtValidated": false,
+  "browserVersion": "154.0.8037.57",
+  "forgeApproach": {
+    "nodes": [
+      {
+        "x": 269,
+        "y": 236
+      },
+      {
+        "x": 269,
+        "y": 228
+      },
+      {
+        "x": 261,
+        "y": 228
+      },
+      {
+        "x": 253,
+        "y": 228
+      },
+      {
+        "x": 245,
+        "y": 228
+      },
+      {
+        "x": 237,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 220
+      },
+      {
+        "x": 229,
+        "y": 212
+      },
+      {
+        "x": 229,
+        "y": 204
+      },
+      {
+        "x": 229,
+        "y": 196
+      },
+      {
+        "x": 229,
+        "y": 188
+      },
+      {
+        "x": 229,
+        "y": 180
+      },
+      {
+        "x": 229,
+        "y": 172
+      },
+      {
+        "x": 229,
+        "y": 164
+      },
+      {
+        "x": 229,
+        "y": 156
+      },
+      {
+        "x": 229,
+        "y": 148
+      },
+      {
+        "x": 229,
+        "y": 140
+      },
+      {
+        "x": 229,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 124
+      },
+      {
+        "x": 213,
+        "y": 124
+      },
+      {
+        "x": 205,
+        "y": 124
+      },
+      {
+        "x": 197,
+        "y": 124
+      },
+      {
+        "x": 189,
+        "y": 124
+      },
+      {
+        "x": 181,
+        "y": 124
+      }
+    ],
+    "turns": [
+      {
+        "x": 269,
+        "y": 236
+      },
+      {
+        "x": 269,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 124
+      },
+      {
+        "x": 181,
+        "y": 124
+      }
+    ]
+  },
+  "failure": {
+    "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Pause et enregistrer', exact: true })\u001b[22m\n",
+    "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Pause et enregistrer', exact: true })\u001b[22m\n\n    at click (/workspace/yautja-la-longue-chasse/scripts/qa-mobility-campaign-20261109.mjs:132:72)\n    at /workspace/yautja-la-longue-chasse/scripts/qa-mobility-campaign-20261109.mjs:207:11"
+  },
+  "sourceAfter": {
+    "buildId": "kS-6-0gmSFRZVosfYvnq6",
+    "sources": [
+      {
+        "file": "app/game/GameClient.tsx",
+        "sha256": "05d35cd1499f46ceafb061234a4eb3acd6cb62d5294f0a2d49cda77cdc0e7208"
+      },
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "6fd223d741945bfc0f8010053fae3e34751ccfccbc47504b33c8c4dd2935b409"
+      },
+      {
+        "file": "app/game/MobilityGarage.tsx",
+        "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76"
+      },
+      {
+        "file": "app/game/MobilityGarage.module.css",
+        "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03"
+      },
+      {
+        "file": "app/game/MobilityDrivingYard.tsx",
+        "sha256": "64c457b5515592140245a9ee550be4e362dc95250277c7a76c20fc0ff939398d"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
+      },
+      {
+        "file": "app/game/types.ts",
+        "sha256": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946"
+      },
+      {
+        "file": "app/game/systems/mobility/access.ts",
+        "sha256": "6ebd5adb3d07b3ea92fe6e2295e7ea25d130308a8e42770d18df788c44b0fc88"
+      },
+      {
+        "file": "app/game/systems/mobility/catalogue.ts",
+        "sha256": "33840ee3172cb6c087c4ff7e9786c4319cd1cf432ef53d3eae7e9b588b9f955f"
+      },
+      {
+        "file": "app/game/systems/mobility/controller.ts",
+        "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+      },
+      {
+        "file": "app/game/systems/mobility/controls.ts",
+        "sha256": "949eee61c903b18130ed5c19d6a6b9bd321337a9874ec4e38a54cf207bc6350c"
+      },
+      {
+        "file": "app/game/systems/mobility/course.ts",
+        "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+      },
+      {
+        "file": "app/game/systems/mobility/ledger.ts",
+        "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+      },
+      {
+        "file": "app/game/systems/mobility/workshop.ts",
+        "sha256": "0d8acc38e0ad8cd6ecec1addf7a04b6ac678d9bdb628c9cae8aaaf49317a2662"
+      },
+      {
+        "file": "scripts/qa-mobility-campaign-20261109.mjs",
+        "sha256": "0d9c8066df757f88c0048e28bfb83bb047dc3cc39e54fcbe391aed137610a3dd"
+      },
+      {
+        "file": "scripts/mobility-qa-driver.mjs",
+        "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
+      }
+    ]
+  },
+  "sourceBeforeAfterEqual": true,
+  "endedAt": "2026-11-09T10:45:15.756Z"
+}

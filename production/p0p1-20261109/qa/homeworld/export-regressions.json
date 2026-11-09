@@ -1,0 +1,62 @@
+[
+  {
+    "file": "tests/clan-war-variant-export-coherence.test.mjs",
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/clan-war-variant-export-coherence.test.mjs"
+    ],
+    "exitCode": 0,
+    "log": "production/p0p1-20261109/qa/homeworld/clan-war-variant-export-coherence.test.mjs.tap",
+    "sha256": "cf48f66caaa31920c241a2304073b9743e67717f866f1dd1a990807acc3ad5dc",
+    "tests": 5,
+    "pass": 5,
+    "fail": 0,
+    "skipped": 0
+  },
+  {
+    "file": "tests/clan-war-variants-v120.test.mjs",
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/clan-war-variants-v120.test.mjs"
+    ],
+    "exitCode": 0,
+    "log": "production/p0p1-20261109/qa/homeworld/clan-war-variants-v120.test.mjs.tap",
+    "sha256": "e9db485f32dd22542a657a7aaf4de3751e69cad2621f38a69f8417936b4f5b2e",
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0
+  },
+  {
+    "file": "tests/clan-war-geo-ai-multiplayer-v126.test.mjs",
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/clan-war-geo-ai-multiplayer-v126.test.mjs"
+    ],
+    "exitCode": 0,
+    "log": "production/p0p1-20261109/qa/homeworld/clan-war-geo-ai-multiplayer-v126.test.mjs.tap",
+    "sha256": "484597b5b9612dba6b5d177516424e7b263818ed4e80f35d2dc76b6b87f081eb",
+    "tests": 7,
+    "pass": 7,
+    "fail": 0,
+    "skipped": 0
+  },
+  {
+    "file": "tests/clan-war-production-v130.test.mjs",
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/clan-war-production-v130.test.mjs"
+    ],
+    "exitCode": 0,
+    "log": "production/p0p1-20261109/qa/homeworld/clan-war-production-v130.test.mjs.tap",
+    "sha256": "f19e0fbf15e11b781f4da1d020894fa3bbf094b6354ff5ee9ebc2ead54868950",
+    "tests": 4,
+    "pass": 4,
+    "fail": 0,
+    "skipped": 0
+  }
+]

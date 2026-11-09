@@ -1,0 +1,75 @@
+{
+  "nodeVersion": "v22.23.4",
+  "typegen": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/next/dist/bin/next",
+      "typegen"
+    ],
+    "exitCode": 0,
+    "log": "typegen.log"
+  },
+  "typecheck": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "log": "typecheck.log"
+  },
+  "lint": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/eslint/bin/eslint.js",
+      "--max-warnings=0",
+      "app/game/ClanShipInterior.tsx",
+      "app/game/ClanShipOperationsPanel.tsx",
+      "app/game/systems/clanShipCrewDialogue.ts",
+      "app/game/systems/homeworldCivicNeighborhoodsV80.ts",
+      "tests/clan-ship-crew-dialogue.test.mjs",
+      "tests/clan-ship-crew-dialogue-ui.test.mjs",
+      "scripts/qa-clan-ship-crew-dialogue-20261109.mjs"
+    ],
+    "exitCode": 0,
+    "log": "lint-final.log",
+    "cssValidation": "CSS module compiled in actual Next production build; CSS is not passed as JavaScript to ESLint."
+  },
+  "build": {
+    "command": [
+      "npm",
+      "run",
+      "build:production"
+    ],
+    "environment": {
+      "PATHPrefix": "/workspace/.cloud-tools/node22/node_modules/node/bin"
+    },
+    "exitCode": 0,
+    "log": "build.log",
+    "buildId": "PUL1NfHFyDlOk1yK5kC_k"
+  },
+  "tests": {
+    "commandManifest": "tests.json",
+    "exitCode": 0,
+    "passed": 248,
+    "failed": 0,
+    "skipped": 0,
+    "newBehaviorCasesIncluded": 51
+  },
+  "runtimeInputs": {
+    "writeCommand": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--write",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "checkCommand": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--check",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "writeExitCode": 0,
+    "checkExitCode": 0
+  }
+}

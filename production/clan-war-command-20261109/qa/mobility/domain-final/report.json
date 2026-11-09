@@ -1,0 +1,99 @@
+{
+  "startedAt": "2026-11-09T10:05:57.437501+00:00",
+  "scope": "Unique final mobility suite with real production reducers, save writer, archive/reload and SSR. No full native campaign or global build/lint claim. Earlier invocations are not added.",
+  "node": "v22.23.4",
+  "files": [
+    {
+      "file": "tests/mobility-build-boundary.test.mjs",
+      "sha256": "db97c9fc3dfbdecf35036fb9f382c8afb5b2ffaef5b05d54a12bfdef7d4e2ee7",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-final/mobility-build-boundary.test.mjs.tap",
+      "logSha256": "dd32d71c3baad72b9b1c28570ce5e1d19b958ebdbe257565608d394a858bf383",
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-controls-workshop.test.mjs",
+      "sha256": "09dde95d9588fbda52aa937ce23731b4548628dbedfe5306b1cc31cad3fd624e",
+      "sourceUnchanged": true,
+      "exitCode": 1,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-final/mobility-controls-workshop.test.mjs.tap",
+      "logSha256": "35d9e0c847f351fcfc6e725368e4528ff6a57554ce7d4b9f6cd13c8711d24309",
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-core.test.mjs",
+      "sha256": "2df6b4a4d1ab4c2dbe178d802198147171bd63aca0091459266df3f8ae55abf5",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-final/mobility-core.test.mjs.tap",
+      "logSha256": "683063d7231f53bbb04e72d376d0272366db883b25e6912e523468802664b492",
+      "pass": 79,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-hardening.test.mjs",
+      "sha256": "2b96474e763f8489d0d412dabd80d5342ba02a9421de0b1514ffa9369c8421c7",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-final/mobility-hardening.test.mjs.tap",
+      "logSha256": "0d28510a1fbb5ba2fafefd04ae69c3b348fb720c5e7c9f2857a7cdd3e6d93cf7",
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-integration.test.mjs",
+      "sha256": "f12d82152183f85aa94cdabd808d3e4041d71b7c95822153aff56a1a5b15a01a",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-final/mobility-integration.test.mjs.tap",
+      "logSha256": "49c7f6cc3e218c1c2d7a7e5921f489fb7bed58ed94569eec0c125b7d3a1ca6f0",
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-qa-driver.test.mjs",
+      "sha256": "eff481157b450bb6b7780f2cfa83ae958aa7042e4bae40244f0b66f1184eb49f",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-final/mobility-qa-driver.test.mjs.tap",
+      "logSha256": "220e9d232278096bc54a33c8058d02795b0360fa9327187111d6c9b32d7bd913",
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-training-reward.test.mjs",
+      "sha256": "5ca1964aa613cce9ba5deb8ee6c771539eaaa6d9567bc266a34c1be79052d674",
+      "sourceUnchanged": true,
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/mobility/domain-final/mobility-training-reward.test.mjs.tap",
+      "logSha256": "7557623c9742dd55c84dae46afa33e506ca90efa96e106d9a25753ed7e44d298",
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  ],
+  "totals": {
+    "pass": 175,
+    "fail": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "passed": false,
+  "finishedAt": "2026-11-09T10:06:12.461107+00:00"
+}

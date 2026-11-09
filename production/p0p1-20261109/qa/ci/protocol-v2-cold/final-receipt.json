@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "scope": "Final current-protocol source in the proven isolated sparse checkout; all70files execute under realNode22. Dependencies shared from locked installation; no remote Actions/fresh npm ci claimed. Prior677receipts remain dated and are not added to this total.",
+  "node": "v22.23.4",
+  "tests": {
+    "tests": 689,
+    "pass": 689,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "testFiles": 70,
+  "report": {
+    "path": "production/p0p1-20261109/qa/ci/protocol-v2-cold/results/report.json",
+    "bytes": 49761,
+    "sha256": "a3b3d48c71024a39ba3fa089b86c3876de3d61206385afb2135da815edc5fbcc"
+  },
+  "sourceOverlay": {
+    "path": "production/p0p1-20261109/qa/ci/protocol-v2-cold/current-source-overlay.json",
+    "bytes": 552897,
+    "sha256": "cfc1696c54141a4c28d36b9a7f621ff3860d65178e4096cf664b96b6cd70ac37"
+  },
+  "workflow": {
+    "path": ".github/workflows/p0-p1-coherence-20261109.yml",
+    "bytes": 1971,
+    "sha256": "aeb294186f621512dfccb178cb815eacc3c65763f4da179e5714b1927d1a8acd"
+  },
+  "runner": {
+    "path": "scripts/check-p0p1-coherence-20261109.mjs",
+    "bytes": 3423,
+    "sha256": "9dc1ef61c5cf6d4d3c18e801a8e25215c9c2d5b3cc023c84292bda55ab1c4314"
+  },
+  "inputManifest": {
+    "path": "production/p0p1-20261109/qa/ci/runtime-file-inputs.json",
+    "bytes": 22520,
+    "sha256": "e587ef758e33943558fc89d5bb43bf9915304b9a01d493e447b7cdfecdaba8a2"
+  },
+  "sourceFilesMatchCurrent": true,
+  "newNamespace": "yautja.clan-war.v115.operations.fenced.v2"
+}

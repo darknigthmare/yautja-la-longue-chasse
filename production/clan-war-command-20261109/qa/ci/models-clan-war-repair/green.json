@@ -1,0 +1,144 @@
+{
+  "asOf": "2026-11-09T12:39:32.100979+00:00",
+  "phase": "GREEN after the actual optional-tutorial compatibility fix",
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=1",
+    "tests/clan-war-session-v85.test.mjs",
+    "tests/clan-war-durability-v94.test.mjs",
+    "tests/clan-war-lifecycle-v94.test.mjs",
+    "tests/clan-war-canyon-validity-v94.test.mjs",
+    "tests/clan-war-atlas-v95.test.mjs",
+    "tests/clan-war-atlas-ui-v95.test.mjs",
+    "tests/clan-war-planets-v96.test.mjs",
+    "tests/clan-war-atlas-ui-v96.test.mjs",
+    "tests/clan-war-coastlines-v97.test.mjs",
+    "tests/clan-war-planets-engine-v96.test.mjs",
+    "tests/clan-war-planet-archive-boundaries-v96.test.mjs",
+    "tests/planet-material-v101.test.mjs",
+    "tests/planet-material-export-v101.test.mjs",
+    "tests/planet-generator-v102.test.mjs",
+    "tests/planet-generator-persistence-v102.test.mjs",
+    "tests/planet-regional-material-v102.test.mjs",
+    "tests/planet-generator-v103.test.mjs",
+    "tests/planet-generator-integration-v103.test.mjs",
+    "tests/planet-generator-draft-v103.test.mjs",
+    "tests/planet-material-profiles-v103.test.mjs",
+    "tests/planet-strategy-v114.test.mjs",
+    "tests/planet-export-zip-v114.test.mjs",
+    "tests/planet-generator-v115.test.mjs"
+  ],
+  "exitCode": 0,
+  "passed": true,
+  "counts": {
+    "tests": 280,
+    "pass": 280,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "testSourcesBeforeAfterEqual": true,
+  "sources": [
+    {
+      "path": "tests/clan-war-session-v85.test.mjs",
+      "sha256": "cba6c41ddb11698bc58e67862b1617b3de0530d222d5290f0754b53bc95040cc"
+    },
+    {
+      "path": "tests/clan-war-durability-v94.test.mjs",
+      "sha256": "7d3f4282b6bbddb193294c36e421457038eca7d307ca40ab4b955d63d5364e25"
+    },
+    {
+      "path": "tests/clan-war-lifecycle-v94.test.mjs",
+      "sha256": "e3ef4c781e72fec516a926fd4043d10fa09b09777f765b805b1a7196f2f50bac"
+    },
+    {
+      "path": "tests/clan-war-canyon-validity-v94.test.mjs",
+      "sha256": "6ba5deadb9b0ccb1f93a978248af5339e1550848ede136b188d765c8db2ced24"
+    },
+    {
+      "path": "tests/clan-war-atlas-v95.test.mjs",
+      "sha256": "552788c0bb30a3ba68cc9848848d657da0c883f74776dee88fcef4f5f87ff71c"
+    },
+    {
+      "path": "tests/clan-war-atlas-ui-v95.test.mjs",
+      "sha256": "e0029d3c213c96a4fba50a30b626f0cc200add839420a17f0d72b6fe472e36f5"
+    },
+    {
+      "path": "tests/clan-war-planets-v96.test.mjs",
+      "sha256": "44dc873f1c4a97197e9815c66458def71556ef0729a783a99e4a159a5dea931c"
+    },
+    {
+      "path": "tests/clan-war-atlas-ui-v96.test.mjs",
+      "sha256": "a3b02f90be7266555d33b85f805415ad177842993bd6a24cb7532c8708f09a46"
+    },
+    {
+      "path": "tests/clan-war-coastlines-v97.test.mjs",
+      "sha256": "5c19f730bb91704fbf84a6e227bc116da56714c61390e4e4910f5a9e8fa33d13"
+    },
+    {
+      "path": "tests/clan-war-planets-engine-v96.test.mjs",
+      "sha256": "f32cd84888f9775bef462133cb5f542877929f04d504222620cf35512a32cb5e"
+    },
+    {
+      "path": "tests/clan-war-planet-archive-boundaries-v96.test.mjs",
+      "sha256": "e3791ba8f5d12bb55ba530e01e8d79fd3095362fa60a90a3876e6c3e81dffdc5"
+    },
+    {
+      "path": "tests/planet-material-v101.test.mjs",
+      "sha256": "a5f568974c9c631719c9cfbc9d207f07f00a5e59539269180f85336b03a1898b"
+    },
+    {
+      "path": "tests/planet-material-export-v101.test.mjs",
+      "sha256": "788c91159c769345439dc9350da10624c03111f3286770e086241fbae11c07cc"
+    },
+    {
+      "path": "tests/planet-generator-v102.test.mjs",
+      "sha256": "893d890291fe6d4e4df635947b4ce4312963603781c6fb46ec7ee48c79546385"
+    },
+    {
+      "path": "tests/planet-generator-persistence-v102.test.mjs",
+      "sha256": "492da9a1fcd64f10b55461b8f4b141f482fea479f79840834a372153b00909dd"
+    },
+    {
+      "path": "tests/planet-regional-material-v102.test.mjs",
+      "sha256": "22cb1dbacbb76a6c06f4813ba7a04d3ae62cf9970c4eb42d6c186ffc13d9a562"
+    },
+    {
+      "path": "tests/planet-generator-v103.test.mjs",
+      "sha256": "77cbdd7ffb428725547b80b0fc6e366ffcad4d4031dbc6825f1937133dae8eaf"
+    },
+    {
+      "path": "tests/planet-generator-integration-v103.test.mjs",
+      "sha256": "12709128e812e2ff36dd00d79467566782a5a4958b021cb7a62863f6bdcd9856"
+    },
+    {
+      "path": "tests/planet-generator-draft-v103.test.mjs",
+      "sha256": "dd44a428ee4e05039bd68a1f3b2bc8dd927c63d91db630ea641a09f3c53cca42"
+    },
+    {
+      "path": "tests/planet-material-profiles-v103.test.mjs",
+      "sha256": "0ee75f466b81aa10f0099f351ae751b15666a63efce20b5ae9c55804f2598ad6"
+    },
+    {
+      "path": "tests/planet-strategy-v114.test.mjs",
+      "sha256": "2a8218140061088f27fc4ef7d08e20a5297c70cec13a17b36cc861d529abf3e5"
+    },
+    {
+      "path": "tests/planet-export-zip-v114.test.mjs",
+      "sha256": "11b7b6ce723050d4ba255f11ed814b4421a2315cd2a0e84ed5e28c61e2afa844"
+    },
+    {
+      "path": "tests/planet-generator-v115.test.mjs",
+      "sha256": "2a296b13bc630ba8782c388ade12a4475e5ee36810d04da30032c95ad478e526"
+    }
+  ],
+  "appFile": "app/game/systems/trophyTutorialV6.ts",
+  "appSha256Before": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9",
+  "appSha256After": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9",
+  "log": "green.log",
+  "logSha256": "997889dde1aeea08b0944e7fa142b7480ee4927b818286b4488cd3cab222174e",
+  "scope": "Exact original command and case count; existing assertions retained. Tests are a scoped replay, not new cases added to other aggregate totals."
+}

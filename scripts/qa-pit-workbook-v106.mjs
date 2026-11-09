@@ -312,15 +312,6 @@ async function observeAction(move, slot, label, motion = false) {
   observations.push({kind: 'native-action', label, actionId: move.actionId, fighterId: move.fighterId, slot, facing, motion, samples, draws: observed});
   console.log(JSON.stringify({journey: label, actionId: move.actionId, facing, motion, stage: 'native-action-verified'}));
 }
-async function taunts(identities, label) {
-  for (const [slot, identity] of identities.entries()) for (const variant of [1, 2]) {
-    const scene = presentations.find(scene => scene.fighterId === identity && scene.key === 'TAUNT_' + variant);
-    await page.locator(`[data-pit-taunt="${slot}"]`).click(); await page.clock.runFor(32);
-    check(`${label}/${identity}: public taunts alternate the two source choices`, (await read()).tauntVariants[slot] === variant);
-    await page.clock.runFor(450); await shot(`${label}-${identity}-taunt-${variant}.png`); await page.clock.runFor(650);
-    observations.push({kind: 'taunt-command', label, actionId: scene.actionId, slot, variant});
-  }
-}
 async function finishDuel(winnerSlot, label) {
   for (let attempt = 0; attempt < 320; attempt++) {
     const state = await read();

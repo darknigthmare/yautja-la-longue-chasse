@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: SSR: an unconfirmed or single invitation leaves both witnesses at their real legacy posts
+ok 1 - SSR: an unconfirmed or single invitation leaves both witnesses at their real legacy posts
+  ---
+  duration_ms: 558.706511
+  type: 'test'
+  ...
+# Subtest: SSR: confirmed witnesses appear together once at C-37 and their legacy actors disappear
+ok 2 - SSR: confirmed witnesses appear together once at C-37 and their legacy actors disappear
+  ---
+  duration_ms: 112.896314
+  type: 'test'
+  ...
+# Subtest: SSR: managed quarters stay installed while their avatars are shown only at the hearing
+ok 3 - SSR: managed quarters stay installed while their avatars are shown only at the hearing
+  ---
+  duration_ms: 190.448231
+  type: 'test'
+  ...
+# Subtest: SSR: witnesses remain for the shared replies and return to real posts only after acknowledgement
+ok 4 - SSR: witnesses remain for the shared replies and return to real posts only after acknowledgement
+  ---
+  duration_ms: 239.305083
+  type: 'test'
+  ...
+# Subtest: SSR: a suspended or reassigned witness never becomes a ghost actor in the gallery
+ok 5 - SSR: a suspended or reassigned witness never becomes a ghost actor in the gallery
+  ---
+  duration_ms: 101.331369
+  type: 'test'
+  ...
+# Subtest: SSR: the actual telemetry starts with B-17 alone, names the sources and offers native accessible controls
+ok 6 - SSR: the actual telemetry starts with B-17 alone, names the sources and offers native accessible controls
+  ---
+  duration_ms: 1.914107
+  type: 'test'
+  ...
+# Subtest: SSR: out-of-reach or already recorded telemetry cannot expose an enabled duplicate record control
+ok 7 - SSR: out-of-reach or already recorded telemetry cannot expose an enabled duplicate record control
+  ---
+  duration_ms: 1.207021
+  type: 'test'
+  ...
+# Subtest: SSR: the native interior exposes a dossier button with documented keyboard and controller labels
+ok 8 - SSR: the native interior exposes a dossier button with documented keyboard and controller labels
+  ---
+  duration_ms: 36.786422
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1253.197551

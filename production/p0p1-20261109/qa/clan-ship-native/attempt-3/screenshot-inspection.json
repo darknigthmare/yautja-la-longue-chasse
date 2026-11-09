@@ -1,0 +1,99 @@
+{
+  "inspectedAt": "2026-11-09T05:41:58.446567+00:00",
+  "method": "Nine new original PNG files from attempt 3 individually opened with view_image by the QA agent; no image editing or substituted capture.",
+  "humanArtReviewed": false,
+  "physicalHardwareListening": false,
+  "blockingVisualFindings": [],
+  "screenshots": [
+    {
+      "filename": "01-native-council-mandate.png",
+      "sha256": "4e58ef6bafca6095849bec8e75e22cb1ee87e4d0bdb603643951aa000f12ba4c",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "findings": "Les trois postes et le mandat sont cochés; les quatre rubriques et le retour sont lisibles. Capture du dossier, pas une revue de l’architecture physique du conseil."
+    },
+    {
+      "filename": "02-native-guidance-seven-rooms.png",
+      "sha256": "212c4b3e73a05c2d251eb45269ef651985f5eaa9a8ebb3609992ad36db339054",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "findings": "Le dossier de l’armurerie montre audit et entraînement accomplis; le guidage propre vers le conseil est visible. Le relevé de trajectoires prouve les sept pièces, pas cette seule image."
+    },
+    {
+      "filename": "03-native-recharge-capped.png",
+      "sha256": "2f7f307bdca3fb04cf3d39e92bd4c9f191440cebc46f36541f5aeb5e4af15d58",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "findings": "Énergie 8/8; Répartir l’énergie est désactivé avec réserve pleine. Les prévisions et autres ordres restent visibles."
+    },
+    {
+      "filename": "04-native-formation-defeat.png",
+      "sha256": "4992669dc3c6eeb01e3c94da7e7e8af9aa17f4a7177e155fdc3e05d32bf62a59",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "findings": "Formation 0/100, transport 38/100 et rapport Opération interrompue sont visibles ensemble; l’échec est lié à l’intégrité, avant le délai de seize tours."
+    },
+    {
+      "filename": "05-native-voluntary-withdrawal.png",
+      "sha256": "751e7fb868774d0faf019f14ea3a5743ff24fb392f86a366806df2cf4e8373e4",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "findings": "Rapport Contact rompu et formation 100/100; le repli reste distinct d’une défaite et ne présente pas de victoire attribuée."
+    },
+    {
+      "filename": "06-native-escort-victory.png",
+      "sha256": "06c792a9502fe56f0e3d517fc22cad8debac909bcdfeae2caa84dfd5392f68b3",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "findings": "Ouvrir un passage sûr est Accompli et son bouton est désactivé. Les reçus et le delta de marques dans le rapport établissent le paiement unique."
+    },
+    {
+      "filename": "07-native-recovery-victory.png",
+      "sha256": "7e8b6c53c1999b33d4d638ac98bb14d1c90ec9ebcc68f631161bd9cf590ef848",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "inspected": true,
+      "findings": "Rapport Opération réussie et objectif sécurisé; le dossier Ramener le signal est visible. Le journal exact d’ordres conserve analyse, neutralisation, abordage et extraction."
+    },
+    {
+      "filename": "08-native-tactical-report-390.png",
+      "sha256": "083bd4c88887aa71ce08a7e2372ed6120426818c56b01939683425bce52482e3",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "inspected": true,
+      "findings": "À 390 px le titre, retour, rubriques, rapport et projection tiennent dans la largeur. La recette a réellement activé les rubriques au tactile."
+    },
+    {
+      "filename": "08-native-tactical-report-320.png",
+      "sha256": "cbbf5d5288ff14c3aaa342989aaa4f8c321cbe1273b53df115794bfdec148d7d",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "inspected": true,
+      "findings": "À 320 px le texte principal revient à la ligne; retour, rubriques et rapport restent accessibles sans débordement horizontal. Les signes de projection sont petits, leur fidélité artistique n’est pas qualifiée."
+    }
+  ]
+}

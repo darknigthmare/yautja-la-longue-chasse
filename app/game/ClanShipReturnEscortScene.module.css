@@ -1,0 +1,14 @@
+.actor { position: absolute; width: 0; height: 0; pointer-events: none; }
+.shadow { position: absolute; left: -33px; top: -7px; width: 66px; height: 15px; border-radius: 50%; background: #061411aa; box-shadow: 0 0 12px #05131077; }
+.actorLabel { position: absolute; left: -48px; top: 11px; width: 96px; padding: 4px; text-align: center; background: #142b2aeb; border: 1px solid #8ec4b9; border-radius: 4px; color: #d9efdf; font-size: 9px; letter-spacing: .04em; }
+.controls { border: 1px solid #789d91; border-radius: 8px; background: #142723; color: #e3eddb; margin: 12px 0; font-size: 13px; line-height: 1.55; }
+.controls summary { cursor: pointer; padding: 14px; min-height: 48px; font-weight: 700; }
+.content { padding: 0 14px 14px; display: grid; gap: 10px; }
+.content p { margin: 0; }
+.note { color: #bed0c1; font-size: 12px; }
+.failure { color: #ffe1c5; border: 1px solid #c39b72; border-radius: 5px; background: #3d2c23; padding: 10px; }
+.content button { min-height: 44px; padding: 10px 14px; border: 1px solid #a6c4a5; border-radius: 6px; background: #294737; color: #f0f2df; text-align: left; cursor: pointer; font: inherit; }
+.content button:disabled { opacity: .55; cursor: not-allowed; }
+.content button:focus-visible, .controls summary:focus-visible { outline: 3px solid #ffe8a3; outline-offset: 3px; }
+.action { display: grid; gap: 5px; }
+.action span { color: #cdd8c8; font-size: 12px; }

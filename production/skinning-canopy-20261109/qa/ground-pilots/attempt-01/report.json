@@ -1,0 +1,881 @@
+{
+  "schema": 1,
+  "createdAt": "2026-11-09T07:07:59.140Z",
+  "commit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "sourceSha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+  "bundleSha256": "e6b11156a36cd07a1b76bd90a6cf9118d30fb00398e1e57bacb762e28b9a5c16",
+  "scriptSha256": "12b5cdb6dd2c7b03dbba4621279fcb307887e480f957d4d000d0537884e42c55",
+  "policySha256": "033be399d3a4a913a119dd78bf35818a54f9eef6f4363aea7639e12bc829f6c1",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "/workspace/yautja-reprise-20261109/scripts/qa-hunt-ground-campaign-v112.mjs",
+    "--mission=fungal-hivemind",
+    "--armor=hunter",
+    "--baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json",
+    "--harvest=true",
+    "--seconds=180",
+    "--replay=true",
+    "--output=outputs/qa-ground-admissible-pilot-20261109-01"
+  ],
+  "harvest": true,
+  "scope": "Native stepGame, unchanged production source with appended exports and verbatim AST-extracted rite UI callback. GameInput and native menu callback only after explicit replay armor admission. Hunter difficulty, zero upgrades, seeded Math.random for reproducible legal spawn jitter. Harvest mode buys its tool using two documented real mission results, and only prepares real prey killed during this run. Actions capped at 10 rising edges per second. No browser, progression, physical keyboard or visual qualification.",
+  "outcomes": [
+    {
+      "missionId": "fungal-hivemind",
+      "armorId": "hunter",
+      "success": false,
+      "result": null,
+      "climbFrames": 0,
+      "swingFrames": 0,
+      "authoredCanopyContactFrames": 0,
+      "maxX": 7801.444816507603,
+      "terminal": {
+        "t": 74.483,
+        "phase": "dead",
+        "x": 7801.44,
+        "y": 508,
+        "vx": 240,
+        "vy": 0,
+        "health": 0,
+        "stamina": 100,
+        "energy": 100,
+        "kills": 10,
+        "boss": {
+          "active": true,
+          "alive": false,
+          "health": 0,
+          "x": 6821.348773097434
+        },
+        "scans": [
+          true,
+          true,
+          true
+        ],
+        "recoveries": [
+          true,
+          true
+        ],
+        "objectives": [
+          "fungal-hivemind-scan",
+          "fungal-hivemind-hunt",
+          "fungal-hivemind-recover",
+          "fungal-hivemind-boss"
+        ],
+        "message": "Impact subi : -24 intégrité",
+        "grounded": true,
+        "climbing": false,
+        "load": {
+          "massKg": 0,
+          "volumeUnits": 0,
+          "capacityMassKg": 36,
+          "capacityVolumeUnits": 24,
+          "ratio": 0,
+          "overloaded": false,
+          "movementMultiplier": 1,
+          "jumpMultiplier": 1,
+          "climbStaminaMultiplier": 1,
+          "noiseMultiplier": 1
+        },
+        "energyWeaponsLocked": false,
+        "weaponSlot": 1,
+        "threats": [
+          {
+            "id": "fungal-hivemind-territorials-2",
+            "x": 4607.822702798212,
+            "y": 528,
+            "health": 43.73393200000001,
+            "width": 114,
+            "height": 96
+          },
+          {
+            "id": "fungal-hivemind-guardians-1",
+            "x": 4532.391719322279,
+            "y": 402.518669842286,
+            "health": 192.27,
+            "width": 90,
+            "height": 75
+          },
+          {
+            "id": "extraction-fungal-hivemind-1256-0",
+            "x": 7481.38541999997,
+            "y": 535,
+            "health": 245.30999999999997,
+            "width": 106,
+            "height": 89
+          },
+          {
+            "id": "extraction-fungal-hivemind-1257-1",
+            "x": 7565,
+            "y": 534,
+            "health": 218.79,
+            "width": 98,
+            "height": 90
+          },
+          {
+            "id": "extraction-fungal-hivemind-1258-2",
+            "x": 7865.981166666622,
+            "y": 530,
+            "health": 218.79,
+            "width": 66,
+            "height": 94
+          }
+        ]
+      },
+      "admission": {
+        "missionId": "fungal-hivemind",
+        "armorId": "hunter",
+        "loadout": {
+          "armorId": "hunter",
+          "weaponIds": [
+            "combistick",
+            "plasma-caster"
+          ],
+          "gearIds": [
+            "motion-sensor",
+            "audio-decoy"
+          ]
+        },
+        "inventory": {
+          "fieldToolIds": [
+            "flaying-tool"
+          ],
+          "harvestV112": {
+            "version": 1,
+            "specimens": [],
+            "toolCondition": 100,
+            "toolUseIds": [],
+            "jobs": [],
+            "settledEncounterRuns": {
+              "jungle-vey": 0,
+              "ice-cryostalker": 0,
+              "volcano-bad-blood": 0,
+              "swamp-hydra": 0,
+              "desert-sandmaw": 0,
+              "ocean-leviathan": 0,
+              "fungal-hivemind": 0,
+              "ruins-ancient-guardian": 0
+            },
+            "archive": []
+          },
+          "unlockedWeaponIds": [
+            "wristblades",
+            "combistick",
+            "plasma-caster",
+            "yautja-bow",
+            "smart-disc"
+          ],
+          "unlockedGearIds": [
+            "motion-sensor",
+            "audio-decoy",
+            "netgun",
+            "snare"
+          ],
+          "unlockedArmorIds": [
+            "hunter",
+            "scout",
+            "berserker"
+          ],
+          "weaponUpgrades": {
+            "wristblades": 0,
+            "combistick": 0,
+            "plasma-caster": 0,
+            "smart-disc": 0,
+            "yautja-bow": 0
+          },
+          "gearUpgrades": {
+            "netgun": 0,
+            "motion-sensor": 0,
+            "audio-decoy": 0,
+            "snare": 0
+          },
+          "armorUpgrades": {
+            "scout": 0,
+            "hunter": 0,
+            "berserker": 0
+          }
+        },
+        "toolOrigin": {
+          "path": "docs/qa/v112-ground-campaign/campaign-origin-save.json",
+          "sha256": "72a1efee04bda609d5d74f3a9fc8e52823da9394476235a9941f759cae3ae897",
+          "missions": null,
+          "balanceBefore": 4597,
+          "spentClanMarks": 120,
+          "balanceAfter": 4477
+        },
+        "baseSaveOrigin": {
+          "path": "docs/qa/v112-ground-campaign/campaign-origin-save.json",
+          "sha256": "72a1efee04bda609d5d74f3a9fc8e52823da9394476235a9941f759cae3ae897",
+          "missionAttempts": {
+            "jungle-vey": 1,
+            "ice-cryostalker": 1,
+            "volcano-bad-blood": 1,
+            "swamp-hydra": 1,
+            "desert-sandmaw": 1,
+            "ocean-leviathan": 1,
+            "fungal-hivemind": 1,
+            "ruins-ancient-guardian": 1
+          }
+        },
+        "exploration": {
+          "abilityIds": [],
+          "openedGateIds": [],
+          "secretIds": [],
+          "discoveredRoomIds": [
+            "jungle-pilot-approach",
+            "jungle-pilot-underpass",
+            "jungle-pilot-module",
+            "jungle-pilot-ravine",
+            "jungle-pilot-river-caves",
+            "jungle-pilot-vey-camp",
+            "jungle-pilot-duel-extraction",
+            "ice-region-approach",
+            "ice-region-shaft",
+            "ice-region-return",
+            "volcano-forge-approach",
+            "volcano-forge-return",
+            "swamp-brood-approach",
+            "swamp-brood-return",
+            "desert-crypt-approach",
+            "desert-crypt-return",
+            "ocean-pressure-approach",
+            "ocean-pressure-return",
+            "fungal-memory-approach",
+            "fungal-memory-return",
+            "ruins-oracle-approach",
+            "ruins-oracle-return"
+          ]
+        },
+        "difficulty": "hunter",
+        "encounterRun": 1,
+        "random": {
+          "algorithm": "xorshift32",
+          "seed": 17965094
+        },
+        "spawn": {
+          "x": 225,
+          "y": 508
+        },
+        "initial": {
+          "t": 0,
+          "phase": "tracking",
+          "x": 225,
+          "y": 508,
+          "vx": 0,
+          "vy": 0,
+          "health": 160,
+          "stamina": 100,
+          "energy": 100,
+          "kills": 0,
+          "boss": {
+            "active": false,
+            "alive": true,
+            "health": 1120,
+            "x": 6882
+          },
+          "scans": [
+            false,
+            false,
+            false
+          ],
+          "recoveries": [
+            false,
+            false
+          ],
+          "objectives": [],
+          "message": "La chasse commence. Localise les signatures.",
+          "grounded": true,
+          "climbing": false,
+          "energyWeaponsLocked": false,
+          "weaponSlot": 1,
+          "threats": [
+            {
+              "id": "fungal-hivemind-foragers-0",
+              "x": 1536.6595276650041,
+              "y": 535,
+              "health": 117.65999999999998,
+              "width": 106,
+              "height": 89
+            }
+          ]
+        },
+        "world": {
+          "width": 8400,
+          "bossArena": {
+            "x": 6090,
+            "y": 240,
+            "width": 1650,
+            "height": 384
+          },
+          "extraction": {
+            "x": 8025,
+            "y": 624
+          },
+          "platforms": [
+            {
+              "x": 720,
+              "y": 280,
+              "width": 360,
+              "height": 24,
+              "id": "fungal-memory-upper-floor",
+              "material": "mycelium",
+              "routeId": "fungal-memory-route",
+              "collision": "solid",
+              "noiseMultiplier": 1,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 1110,
+              "y": 380,
+              "width": 150,
+              "height": 24,
+              "id": "fungal-memory-vault-underfloor",
+              "material": "mycelium",
+              "routeId": "fungal-memory-route",
+              "collision": "solid",
+              "noiseMultiplier": 1,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 1260,
+              "y": 380,
+              "width": 190,
+              "height": 24,
+              "id": "fungal-memory-vault-floor",
+              "material": "mycelium",
+              "routeId": "fungal-memory-route",
+              "collision": "solid",
+              "noiseMultiplier": 1,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 1570,
+              "y": 0,
+              "width": 28,
+              "height": 404,
+              "id": "fungal-memory-outer-wall",
+              "material": "mycelium",
+              "routeId": "fungal-memory-route",
+              "collision": "solid",
+              "noiseMultiplier": 1,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 1080,
+              "y": 0,
+              "width": 30,
+              "height": 404,
+              "id": "fungal-memory-membrane",
+              "material": "mycelium",
+              "routeId": "fungal-memory-route",
+              "collision": "solid",
+              "noiseMultiplier": 1,
+              "trackPersistence": 0.12
+            },
+            {
+              "x": 1450,
+              "y": 380,
+              "width": 120,
+              "height": 24,
+              "id": "fungal-ancient-lattice",
+              "material": "mycelium",
+              "routeId": "fungal-memory-route",
+              "collision": "solid",
+              "noiseMultiplier": 1,
+              "trackPersistence": 0.12
+            }
+          ],
+          "hazards": [
+            {
+              "id": "fg-spores-tower",
+              "kind": "spore-cloud",
+              "x": 3525,
+              "y": 300,
+              "width": 450,
+              "height": 324,
+              "routeId": "canopy",
+              "damagePerSecond": 4,
+              "movementMultiplier": 0.72,
+              "noisePerSecond": 0.18,
+              "trackMultiplier": 1.6,
+              "revealsCloak": true,
+              "telegraphSeconds": 1.6,
+              "cycle": {
+                "periodSeconds": 12,
+                "activeSeconds": 4,
+                "phaseSeconds": 0
+              }
+            },
+            {
+              "id": "fg-snare-relay",
+              "kind": "mycelial-snare",
+              "x": 2970,
+              "y": 580,
+              "width": 390,
+              "height": 44,
+              "routeId": "ground",
+              "damagePerSecond": 6,
+              "movementMultiplier": 0.4,
+              "noisePerSecond": 0.1,
+              "trackMultiplier": 2.3,
+              "revealsCloak": false,
+              "telegraphSeconds": 0.7,
+              "cycle": {
+                "periodSeconds": 8,
+                "activeSeconds": 3,
+                "phaseSeconds": 1
+              }
+            },
+            {
+              "id": "fg-acid-pool",
+              "kind": "acid-bloom",
+              "x": 4650,
+              "y": 572,
+              "width": 480,
+              "height": 52,
+              "routeId": "flooded-cut",
+              "damagePerSecond": 15,
+              "movementMultiplier": 0.65,
+              "noisePerSecond": 0.4,
+              "trackMultiplier": 0.6,
+              "revealsCloak": true,
+              "telegraphSeconds": 1,
+              "cycle": {
+                "periodSeconds": 6.5,
+                "activeSeconds": 1.5,
+                "phaseSeconds": 1.2
+              }
+            },
+            {
+              "id": "fg-spores-gill",
+              "kind": "spore-cloud",
+              "x": 5340,
+              "y": 280,
+              "width": 420,
+              "height": 344,
+              "routeId": "canopy",
+              "damagePerSecond": 4,
+              "movementMultiplier": 0.72,
+              "noisePerSecond": 0.18,
+              "trackMultiplier": 1.6,
+              "revealsCloak": true,
+              "telegraphSeconds": 1.6,
+              "cycle": {
+                "periodSeconds": 12,
+                "activeSeconds": 4,
+                "phaseSeconds": 3.9000000000000004
+              }
+            },
+            {
+              "id": "feature-fungal-3-ecology",
+              "x": 2811.5,
+              "y": 290,
+              "width": 290,
+              "height": 334,
+              "kind": "spore-cloud",
+              "routeId": "ground",
+              "damagePerSecond": 4,
+              "movementMultiplier": 0.72,
+              "noisePerSecond": 0.18,
+              "trackMultiplier": 1.6,
+              "revealsCloak": true,
+              "telegraphSeconds": 1.6,
+              "cycle": {
+                "periodSeconds": 12,
+                "activeSeconds": 4,
+                "phaseSeconds": 2.6
+              }
+            },
+            {
+              "x": 900,
+              "y": 164,
+              "width": 210,
+              "height": 116,
+              "id": "fungal-memory-ability-hazard",
+              "kind": "spore-cloud",
+              "routeId": "fungal-memory-route",
+              "damagePerSecond": 12,
+              "movementMultiplier": 0.7,
+              "noisePerSecond": 0.18,
+              "trackMultiplier": 0.5,
+              "revealsCloak": true,
+              "telegraphSeconds": 0,
+              "cycle": null
+            }
+          ]
+        },
+        "scanNodes": [
+          {
+            "id": "trace-1",
+            "x": 924,
+            "y": 588,
+            "scanned": false
+          },
+          {
+            "id": "trace-2",
+            "x": 2016,
+            "y": 395,
+            "scanned": false
+          },
+          {
+            "id": "trace-3",
+            "x": 3108,
+            "y": 588,
+            "scanned": false
+          }
+        ],
+        "recoveryNodes": [
+          {
+            "id": "technology-1",
+            "x": 4257.999666666667,
+            "y": 590,
+            "recovered": false
+          },
+          {
+            "id": "technology-2",
+            "x": 4504.998333333333,
+            "y": 590,
+            "recovered": false
+          }
+        ]
+      },
+      "events": [
+        {
+          "t": 10.75,
+          "phase": "target",
+          "x": 2667.58,
+          "y": 479.65,
+          "vx": 128.53,
+          "vy": -38.33,
+          "health": 160,
+          "stamina": 85.23,
+          "energy": 19.57,
+          "kills": 2,
+          "boss": {
+            "active": false,
+            "alive": true,
+            "health": 1120,
+            "x": 6882
+          },
+          "scans": [
+            true,
+            true,
+            true
+          ],
+          "recoveries": [
+            false,
+            false
+          ],
+          "objectives": [
+            "fungal-hivemind-scan"
+          ],
+          "message": "Cœur-Mère mycélien peut désormais être pisté.",
+          "grounded": false,
+          "climbing": false,
+          "load": {
+            "massKg": 0,
+            "volumeUnits": 0,
+            "capacityMassKg": 36,
+            "capacityVolumeUnits": 24,
+            "ratio": 0,
+            "overloaded": false,
+            "movementMultiplier": 1,
+            "jumpMultiplier": 1,
+            "climbStaminaMultiplier": 1,
+            "noiseMultiplier": 1
+          },
+          "energyWeaponsLocked": false,
+          "weaponSlot": 1,
+          "threats": [
+            {
+              "id": "fungal-hivemind-foragers-2",
+              "x": 2682.3143644983475,
+              "y": 527,
+              "health": 12.939999999999973,
+              "width": 68,
+              "height": 97
+            },
+            {
+              "id": "fungal-hivemind-foragers-3",
+              "x": 3845.111239999973,
+              "y": 542,
+              "health": 104.94,
+              "width": 98,
+              "height": 82
+            },
+            {
+              "id": "fungal-hivemind-foragers-4",
+              "x": 2448.7315052169674,
+              "y": 528,
+              "health": 42.773932,
+              "width": 114,
+              "height": 96
+            },
+            {
+              "id": "fungal-hivemind-territorials-0",
+              "x": 5196.87994971089,
+              "y": 517,
+              "health": 170.93999999999997,
+              "width": 88,
+              "height": 107
+            }
+          ]
+        },
+        {
+          "t": 51.55,
+          "phase": "trophy",
+          "x": 6695.35,
+          "y": 508,
+          "vx": 0,
+          "vy": 0,
+          "health": 74.48,
+          "stamina": 94.8,
+          "energy": 11.33,
+          "kills": 9,
+          "boss": {
+            "active": true,
+            "alive": false,
+            "health": 0,
+            "x": 6821.348773097434
+          },
+          "scans": [
+            true,
+            true,
+            true
+          ],
+          "recoveries": [
+            true,
+            true
+          ],
+          "objectives": [
+            "fungal-hivemind-scan",
+            "fungal-hivemind-hunt",
+            "fungal-hivemind-recover",
+            "fungal-hivemind-boss"
+          ],
+          "message": "Cœur-Mère mycélien est vaincu. Intégrité du trophée 84 %. Réclame le trophée avec [E].",
+          "grounded": true,
+          "climbing": false,
+          "load": {
+            "massKg": 0,
+            "volumeUnits": 0,
+            "capacityMassKg": 36,
+            "capacityVolumeUnits": 24,
+            "ratio": 0,
+            "overloaded": false,
+            "movementMultiplier": 1,
+            "jumpMultiplier": 1,
+            "climbStaminaMultiplier": 1,
+            "noiseMultiplier": 1
+          },
+          "energyWeaponsLocked": false,
+          "weaponSlot": 1,
+          "threats": [
+            {
+              "id": "fungal-hivemind-territorials-2",
+              "x": 4557.229786131554,
+              "y": 528,
+              "health": 43.73393200000001,
+              "width": 114,
+              "height": 96
+            },
+            {
+              "id": "fungal-hivemind-guardians-1",
+              "x": 4571.106385988953,
+              "y": 438.9995211229802,
+              "health": 192.27,
+              "width": 90,
+              "height": 75
+            },
+            {
+              "id": "fungal-hivemind-guardians-2",
+              "x": 6382.336261025066,
+              "y": 517,
+              "health": 106.66393199999999,
+              "width": 88,
+              "height": 107
+            }
+          ]
+        },
+        {
+          "t": 67.733,
+          "phase": "extraction",
+          "x": 6863.91,
+          "y": 508,
+          "vx": 0,
+          "vy": 0,
+          "health": 21.44,
+          "stamina": 100,
+          "energy": 100,
+          "kills": 10,
+          "boss": {
+            "active": true,
+            "alive": false,
+            "health": 0,
+            "x": 6821.348773097434
+          },
+          "scans": [
+            true,
+            true,
+            true
+          ],
+          "recoveries": [
+            true,
+            true
+          ],
+          "objectives": [
+            "fungal-hivemind-scan",
+            "fungal-hivemind-hunt",
+            "fungal-hivemind-recover",
+            "fungal-hivemind-boss"
+          ],
+          "message": "Noyau du Cœur-Mère : prise récupérée et scellée. Le chasseur célèbre sa victoire ; vaisseau en approche.",
+          "grounded": true,
+          "climbing": false,
+          "load": {
+            "massKg": 0,
+            "volumeUnits": 0,
+            "capacityMassKg": 36,
+            "capacityVolumeUnits": 24,
+            "ratio": 0,
+            "overloaded": false,
+            "movementMultiplier": 1,
+            "jumpMultiplier": 1,
+            "climbStaminaMultiplier": 1,
+            "noiseMultiplier": 1
+          },
+          "energyWeaponsLocked": false,
+          "weaponSlot": 1,
+          "threats": [
+            {
+              "id": "fungal-hivemind-territorials-2",
+              "x": 4559.40720279822,
+              "y": 528,
+              "health": 43.73393200000001,
+              "width": 114,
+              "height": 96
+            },
+            {
+              "id": "fungal-hivemind-guardians-1",
+              "x": 4532.391719322279,
+              "y": 404.97121878285003,
+              "health": 192.27,
+              "width": 90,
+              "height": 75
+            },
+            {
+              "id": "extraction-fungal-hivemind-1256-0",
+              "x": 7404.12892,
+              "y": 535,
+              "health": 245.30999999999997,
+              "width": 106,
+              "height": 89
+            }
+          ]
+        },
+        {
+          "t": 74.483,
+          "phase": "dead",
+          "x": 7801.44,
+          "y": 508,
+          "vx": 240,
+          "vy": 0,
+          "health": 0,
+          "stamina": 100,
+          "energy": 100,
+          "kills": 10,
+          "boss": {
+            "active": true,
+            "alive": false,
+            "health": 0,
+            "x": 6821.348773097434
+          },
+          "scans": [
+            true,
+            true,
+            true
+          ],
+          "recoveries": [
+            true,
+            true
+          ],
+          "objectives": [
+            "fungal-hivemind-scan",
+            "fungal-hivemind-hunt",
+            "fungal-hivemind-recover",
+            "fungal-hivemind-boss"
+          ],
+          "message": "Impact subi : -24 intégrité",
+          "grounded": true,
+          "climbing": false,
+          "load": {
+            "massKg": 0,
+            "volumeUnits": 0,
+            "capacityMassKg": 36,
+            "capacityVolumeUnits": 24,
+            "ratio": 0,
+            "overloaded": false,
+            "movementMultiplier": 1,
+            "jumpMultiplier": 1,
+            "climbStaminaMultiplier": 1,
+            "noiseMultiplier": 1
+          },
+          "energyWeaponsLocked": false,
+          "weaponSlot": 1,
+          "threats": [
+            {
+              "id": "fungal-hivemind-territorials-2",
+              "x": 4607.822702798212,
+              "y": 528,
+              "health": 43.73393200000001,
+              "width": 114,
+              "height": 96
+            },
+            {
+              "id": "fungal-hivemind-guardians-1",
+              "x": 4532.391719322279,
+              "y": 402.518669842286,
+              "health": 192.27,
+              "width": 90,
+              "height": 75
+            },
+            {
+              "id": "extraction-fungal-hivemind-1256-0",
+              "x": 7481.38541999997,
+              "y": 535,
+              "health": 245.30999999999997,
+              "width": 106,
+              "height": 89
+            },
+            {
+              "id": "extraction-fungal-hivemind-1257-1",
+              "x": 7565,
+              "y": 534,
+              "health": 218.79,
+              "width": 98,
+              "height": 90
+            },
+            {
+              "id": "extraction-fungal-hivemind-1258-2",
+              "x": 7865.981166666622,
+              "y": 530,
+              "health": 218.79,
+              "width": 66,
+              "height": 94
+            }
+          ]
+        }
+      ],
+      "traceFrames": 769,
+      "ticksExecuted": 4469,
+      "harvestActions": [],
+      "peakLoadRatio": 0,
+      "peakSpecimens": [],
+      "firstLoadAt": null,
+      "replay": {
+        "verified": true,
+        "ticks": 4469,
+        "terminalSha256": "ac8d8506a8c3d5b8ad40f0d0414ff9571165d03382ff1422a7e16c35264ce927"
+      }
+    }
+  ]
+}

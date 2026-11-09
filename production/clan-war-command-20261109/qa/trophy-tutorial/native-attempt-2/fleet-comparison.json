@@ -1,0 +1,958 @@
+{
+  "passed": true,
+  "runtimeStorageKey": "yautja-long-hunt.ship-progression",
+  "runtimeKeyAbsentBefore": true,
+  "runtimeKeyAbsentAfter": true,
+  "slotFleetManifestsCompared": 4,
+  "semanticallyIdentical": true,
+  "ignoredOnly": [
+    "shipProgression.updatedAt",
+    "shipProgression.loadoutPresets[].savedAt"
+  ],
+  "reason": "Production complete-archive snapshot reconstructs a default manifest when runtime ship sidecar is absent. Existing Continue API timestamps differ; no ship unlock, rite, equipment or acquisition change.",
+  "shipAcquisitionAbsentBefore": true,
+  "shipAcquisitionAbsentAfter": true,
+  "fleetBaseline": {
+    "version": 3,
+    "ownerSaveCreatedAt": "2026-11-09T18:00:00.000Z",
+    "selectedShipId": "classic-predator-spaceship",
+    "unlockedShipIds": [
+      "classic-predator-spaceship"
+    ],
+    "completedRiteIds": [],
+    "trophies": [],
+    "displaySlots": [
+      {
+        "id": "display-1",
+        "label": "Alcôve 01",
+        "claimId": null
+      },
+      {
+        "id": "display-2",
+        "label": "Alcôve 02",
+        "claimId": null
+      },
+      {
+        "id": "display-3",
+        "label": "Alcôve 03",
+        "claimId": null
+      },
+      {
+        "id": "display-4",
+        "label": "Alcôve 04",
+        "claimId": null
+      },
+      {
+        "id": "display-5",
+        "label": "Alcôve 05",
+        "claimId": null
+      },
+      {
+        "id": "display-6",
+        "label": "Alcôve 06",
+        "claimId": null
+      },
+      {
+        "id": "display-7",
+        "label": "Alcôve 07",
+        "claimId": null
+      },
+      {
+        "id": "display-8",
+        "label": "Alcôve 08",
+        "claimId": null
+      },
+      {
+        "id": "display-9",
+        "label": "Alcôve 09",
+        "claimId": null
+      },
+      {
+        "id": "display-10",
+        "label": "Alcôve 10",
+        "claimId": null
+      },
+      {
+        "id": "display-11",
+        "label": "Alcôve 11",
+        "claimId": null
+      },
+      {
+        "id": "display-12",
+        "label": "Alcôve 12",
+        "claimId": null
+      }
+    ],
+    "loadoutPresets": [
+      {
+        "id": "hunt-1",
+        "name": "Chasse active",
+        "loadout": {
+          "armorId": "hunter",
+          "weaponIds": [
+            "combistick",
+            "plasma-caster"
+          ],
+          "gearIds": [
+            "motion-sensor",
+            "audio-decoy"
+          ]
+        },
+        "appearance": {
+          "presetId": "jungle-hunter",
+          "bodyMorphId": "classic",
+          "headStyleId": "reference",
+          "skinId": "ochre-mottle",
+          "biomaskId": "jungle",
+          "dreadStyleId": "classic",
+          "dreadTintId": "obsidian",
+          "armorStyleId": "classic",
+          "armorTintId": "bronze",
+          "trophyAdornmentId": "skull-spine",
+          "laserColorId": "crimson",
+          "chromaticsV113": {
+            "skinHex": null,
+            "dreadHex": null,
+            "outfitHex": null,
+            "armorHex": null,
+            "maskHex": null,
+            "maskOriginId": null,
+            "maskDecalId": null,
+            "faceDecalId": null,
+            "bodyDecalId": null,
+            "armorDecalId": null,
+            "skinMaterialId": null,
+            "dreadMaterialId": null,
+            "outfitMaterialId": null,
+            "armorMaterialId": null,
+            "maskMaterialId": null
+          }
+        }
+      },
+      {
+        "id": "hunt-2",
+        "name": "Configuration 2",
+        "loadout": null,
+        "appearance": null
+      },
+      {
+        "id": "hunt-3",
+        "name": "Configuration 3",
+        "loadout": null,
+        "appearance": null
+      },
+      {
+        "id": "hunt-4",
+        "name": "Configuration 4",
+        "loadout": null,
+        "appearance": null
+      }
+    ],
+    "training": {
+      "targeting": {
+        "disciplineId": "targeting",
+        "attempts": 0,
+        "bestScore": 0,
+        "lastScore": 0,
+        "lastCompletedAt": null
+      },
+      "wristblades": {
+        "disciplineId": "wristblades",
+        "attempts": 0,
+        "bestScore": 0,
+        "lastScore": 0,
+        "lastCompletedAt": null
+      },
+      "cloaking": {
+        "disciplineId": "cloaking",
+        "attempts": 0,
+        "bestScore": 0,
+        "lastScore": 0,
+        "lastCompletedAt": null
+      },
+      "mobility": {
+        "disciplineId": "mobility",
+        "attempts": 0,
+        "bestScore": 0,
+        "lastScore": 0,
+        "lastCompletedAt": null
+      },
+      "honor-duel": {
+        "disciplineId": "honor-duel",
+        "attempts": 0,
+        "bestScore": 0,
+        "lastScore": 0,
+        "lastCompletedAt": null
+      }
+    },
+    "medbay": {
+      "status": "ready",
+      "treatmentId": null,
+      "startedAt": null,
+      "completesAt": null,
+      "treatmentsCompleted": 0
+    }
+  },
+  "manifests": [
+    {
+      "context": "before",
+      "checkpoint": "auto-2",
+      "shipProgression": {
+        "version": 3,
+        "ownerSaveCreatedAt": "2026-11-09T18:00:00.000Z",
+        "updatedAt": "2026-11-09T18:00:00.000Z",
+        "selectedShipId": "classic-predator-spaceship",
+        "unlockedShipIds": [
+          "classic-predator-spaceship"
+        ],
+        "completedRiteIds": [],
+        "trophies": [],
+        "displaySlots": [
+          {
+            "id": "display-1",
+            "label": "Alcôve 01",
+            "claimId": null
+          },
+          {
+            "id": "display-2",
+            "label": "Alcôve 02",
+            "claimId": null
+          },
+          {
+            "id": "display-3",
+            "label": "Alcôve 03",
+            "claimId": null
+          },
+          {
+            "id": "display-4",
+            "label": "Alcôve 04",
+            "claimId": null
+          },
+          {
+            "id": "display-5",
+            "label": "Alcôve 05",
+            "claimId": null
+          },
+          {
+            "id": "display-6",
+            "label": "Alcôve 06",
+            "claimId": null
+          },
+          {
+            "id": "display-7",
+            "label": "Alcôve 07",
+            "claimId": null
+          },
+          {
+            "id": "display-8",
+            "label": "Alcôve 08",
+            "claimId": null
+          },
+          {
+            "id": "display-9",
+            "label": "Alcôve 09",
+            "claimId": null
+          },
+          {
+            "id": "display-10",
+            "label": "Alcôve 10",
+            "claimId": null
+          },
+          {
+            "id": "display-11",
+            "label": "Alcôve 11",
+            "claimId": null
+          },
+          {
+            "id": "display-12",
+            "label": "Alcôve 12",
+            "claimId": null
+          }
+        ],
+        "loadoutPresets": [
+          {
+            "id": "hunt-1",
+            "name": "Chasse active",
+            "loadout": {
+              "armorId": "hunter",
+              "weaponIds": [
+                "combistick",
+                "plasma-caster"
+              ],
+              "gearIds": [
+                "motion-sensor",
+                "audio-decoy"
+              ]
+            },
+            "appearance": {
+              "presetId": "jungle-hunter",
+              "bodyMorphId": "classic",
+              "headStyleId": "reference",
+              "skinId": "ochre-mottle",
+              "biomaskId": "jungle",
+              "dreadStyleId": "classic",
+              "dreadTintId": "obsidian",
+              "armorStyleId": "classic",
+              "armorTintId": "bronze",
+              "trophyAdornmentId": "skull-spine",
+              "laserColorId": "crimson",
+              "chromaticsV113": {
+                "skinHex": null,
+                "dreadHex": null,
+                "outfitHex": null,
+                "armorHex": null,
+                "maskHex": null,
+                "maskOriginId": null,
+                "maskDecalId": null,
+                "faceDecalId": null,
+                "bodyDecalId": null,
+                "armorDecalId": null,
+                "skinMaterialId": null,
+                "dreadMaterialId": null,
+                "outfitMaterialId": null,
+                "armorMaterialId": null,
+                "maskMaterialId": null
+              }
+            },
+            "savedAt": "2026-11-09T18:00:00.000Z"
+          },
+          {
+            "id": "hunt-2",
+            "name": "Configuration 2",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-3",
+            "name": "Configuration 3",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-4",
+            "name": "Configuration 4",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          }
+        ],
+        "training": {
+          "targeting": {
+            "disciplineId": "targeting",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "wristblades": {
+            "disciplineId": "wristblades",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "cloaking": {
+            "disciplineId": "cloaking",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "mobility": {
+            "disciplineId": "mobility",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "honor-duel": {
+            "disciplineId": "honor-duel",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          }
+        },
+        "medbay": {
+          "status": "ready",
+          "treatmentId": null,
+          "startedAt": null,
+          "completesAt": null,
+          "treatmentsCompleted": 0
+        }
+      }
+    },
+    {
+      "context": "before",
+      "checkpoint": "auto-1",
+      "shipProgression": {
+        "version": 3,
+        "ownerSaveCreatedAt": "2026-11-09T18:00:00.000Z",
+        "updatedAt": "2026-11-09T10:41:30.234Z",
+        "selectedShipId": "classic-predator-spaceship",
+        "unlockedShipIds": [
+          "classic-predator-spaceship"
+        ],
+        "completedRiteIds": [],
+        "trophies": [],
+        "displaySlots": [
+          {
+            "id": "display-1",
+            "label": "Alcôve 01",
+            "claimId": null
+          },
+          {
+            "id": "display-2",
+            "label": "Alcôve 02",
+            "claimId": null
+          },
+          {
+            "id": "display-3",
+            "label": "Alcôve 03",
+            "claimId": null
+          },
+          {
+            "id": "display-4",
+            "label": "Alcôve 04",
+            "claimId": null
+          },
+          {
+            "id": "display-5",
+            "label": "Alcôve 05",
+            "claimId": null
+          },
+          {
+            "id": "display-6",
+            "label": "Alcôve 06",
+            "claimId": null
+          },
+          {
+            "id": "display-7",
+            "label": "Alcôve 07",
+            "claimId": null
+          },
+          {
+            "id": "display-8",
+            "label": "Alcôve 08",
+            "claimId": null
+          },
+          {
+            "id": "display-9",
+            "label": "Alcôve 09",
+            "claimId": null
+          },
+          {
+            "id": "display-10",
+            "label": "Alcôve 10",
+            "claimId": null
+          },
+          {
+            "id": "display-11",
+            "label": "Alcôve 11",
+            "claimId": null
+          },
+          {
+            "id": "display-12",
+            "label": "Alcôve 12",
+            "claimId": null
+          }
+        ],
+        "loadoutPresets": [
+          {
+            "id": "hunt-1",
+            "name": "Chasse active",
+            "loadout": {
+              "armorId": "hunter",
+              "weaponIds": [
+                "combistick",
+                "plasma-caster"
+              ],
+              "gearIds": [
+                "motion-sensor",
+                "audio-decoy"
+              ]
+            },
+            "appearance": {
+              "presetId": "jungle-hunter",
+              "bodyMorphId": "classic",
+              "headStyleId": "reference",
+              "skinId": "ochre-mottle",
+              "biomaskId": "jungle",
+              "dreadStyleId": "classic",
+              "dreadTintId": "obsidian",
+              "armorStyleId": "classic",
+              "armorTintId": "bronze",
+              "trophyAdornmentId": "skull-spine",
+              "laserColorId": "crimson",
+              "chromaticsV113": {
+                "skinHex": null,
+                "dreadHex": null,
+                "outfitHex": null,
+                "armorHex": null,
+                "maskHex": null,
+                "maskOriginId": null,
+                "maskDecalId": null,
+                "faceDecalId": null,
+                "bodyDecalId": null,
+                "armorDecalId": null,
+                "skinMaterialId": null,
+                "dreadMaterialId": null,
+                "outfitMaterialId": null,
+                "armorMaterialId": null,
+                "maskMaterialId": null
+              }
+            },
+            "savedAt": "2026-11-09T10:41:30.234Z"
+          },
+          {
+            "id": "hunt-2",
+            "name": "Configuration 2",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-3",
+            "name": "Configuration 3",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-4",
+            "name": "Configuration 4",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          }
+        ],
+        "training": {
+          "targeting": {
+            "disciplineId": "targeting",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "wristblades": {
+            "disciplineId": "wristblades",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "cloaking": {
+            "disciplineId": "cloaking",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "mobility": {
+            "disciplineId": "mobility",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "honor-duel": {
+            "disciplineId": "honor-duel",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          }
+        },
+        "medbay": {
+          "status": "ready",
+          "treatmentId": null,
+          "startedAt": null,
+          "completesAt": null,
+          "treatmentsCompleted": 0
+        }
+      }
+    },
+    {
+      "context": "after",
+      "checkpoint": "auto-1",
+      "shipProgression": {
+        "version": 3,
+        "ownerSaveCreatedAt": "2026-11-09T18:00:00.000Z",
+        "updatedAt": "2026-11-09T10:42:38.228Z",
+        "selectedShipId": "classic-predator-spaceship",
+        "unlockedShipIds": [
+          "classic-predator-spaceship"
+        ],
+        "completedRiteIds": [],
+        "trophies": [],
+        "displaySlots": [
+          {
+            "id": "display-1",
+            "label": "Alcôve 01",
+            "claimId": null
+          },
+          {
+            "id": "display-2",
+            "label": "Alcôve 02",
+            "claimId": null
+          },
+          {
+            "id": "display-3",
+            "label": "Alcôve 03",
+            "claimId": null
+          },
+          {
+            "id": "display-4",
+            "label": "Alcôve 04",
+            "claimId": null
+          },
+          {
+            "id": "display-5",
+            "label": "Alcôve 05",
+            "claimId": null
+          },
+          {
+            "id": "display-6",
+            "label": "Alcôve 06",
+            "claimId": null
+          },
+          {
+            "id": "display-7",
+            "label": "Alcôve 07",
+            "claimId": null
+          },
+          {
+            "id": "display-8",
+            "label": "Alcôve 08",
+            "claimId": null
+          },
+          {
+            "id": "display-9",
+            "label": "Alcôve 09",
+            "claimId": null
+          },
+          {
+            "id": "display-10",
+            "label": "Alcôve 10",
+            "claimId": null
+          },
+          {
+            "id": "display-11",
+            "label": "Alcôve 11",
+            "claimId": null
+          },
+          {
+            "id": "display-12",
+            "label": "Alcôve 12",
+            "claimId": null
+          }
+        ],
+        "loadoutPresets": [
+          {
+            "id": "hunt-1",
+            "name": "Chasse active",
+            "loadout": {
+              "armorId": "hunter",
+              "weaponIds": [
+                "combistick",
+                "plasma-caster"
+              ],
+              "gearIds": [
+                "motion-sensor",
+                "audio-decoy"
+              ]
+            },
+            "appearance": {
+              "presetId": "jungle-hunter",
+              "bodyMorphId": "classic",
+              "headStyleId": "reference",
+              "skinId": "ochre-mottle",
+              "biomaskId": "jungle",
+              "dreadStyleId": "classic",
+              "dreadTintId": "obsidian",
+              "armorStyleId": "classic",
+              "armorTintId": "bronze",
+              "trophyAdornmentId": "skull-spine",
+              "laserColorId": "crimson",
+              "chromaticsV113": {
+                "skinHex": null,
+                "dreadHex": null,
+                "outfitHex": null,
+                "armorHex": null,
+                "maskHex": null,
+                "maskOriginId": null,
+                "maskDecalId": null,
+                "faceDecalId": null,
+                "bodyDecalId": null,
+                "armorDecalId": null,
+                "skinMaterialId": null,
+                "dreadMaterialId": null,
+                "outfitMaterialId": null,
+                "armorMaterialId": null,
+                "maskMaterialId": null
+              }
+            },
+            "savedAt": "2026-11-09T10:42:38.228Z"
+          },
+          {
+            "id": "hunt-2",
+            "name": "Configuration 2",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-3",
+            "name": "Configuration 3",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-4",
+            "name": "Configuration 4",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          }
+        ],
+        "training": {
+          "targeting": {
+            "disciplineId": "targeting",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "wristblades": {
+            "disciplineId": "wristblades",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "cloaking": {
+            "disciplineId": "cloaking",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "mobility": {
+            "disciplineId": "mobility",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "honor-duel": {
+            "disciplineId": "honor-duel",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          }
+        },
+        "medbay": {
+          "status": "ready",
+          "treatmentId": null,
+          "startedAt": null,
+          "completesAt": null,
+          "treatmentsCompleted": 0
+        }
+      }
+    },
+    {
+      "context": "after",
+      "checkpoint": "auto-2",
+      "shipProgression": {
+        "version": 3,
+        "ownerSaveCreatedAt": "2026-11-09T18:00:00.000Z",
+        "updatedAt": "2026-11-09T10:42:54.652Z",
+        "selectedShipId": "classic-predator-spaceship",
+        "unlockedShipIds": [
+          "classic-predator-spaceship"
+        ],
+        "completedRiteIds": [],
+        "trophies": [],
+        "displaySlots": [
+          {
+            "id": "display-1",
+            "label": "Alcôve 01",
+            "claimId": null
+          },
+          {
+            "id": "display-2",
+            "label": "Alcôve 02",
+            "claimId": null
+          },
+          {
+            "id": "display-3",
+            "label": "Alcôve 03",
+            "claimId": null
+          },
+          {
+            "id": "display-4",
+            "label": "Alcôve 04",
+            "claimId": null
+          },
+          {
+            "id": "display-5",
+            "label": "Alcôve 05",
+            "claimId": null
+          },
+          {
+            "id": "display-6",
+            "label": "Alcôve 06",
+            "claimId": null
+          },
+          {
+            "id": "display-7",
+            "label": "Alcôve 07",
+            "claimId": null
+          },
+          {
+            "id": "display-8",
+            "label": "Alcôve 08",
+            "claimId": null
+          },
+          {
+            "id": "display-9",
+            "label": "Alcôve 09",
+            "claimId": null
+          },
+          {
+            "id": "display-10",
+            "label": "Alcôve 10",
+            "claimId": null
+          },
+          {
+            "id": "display-11",
+            "label": "Alcôve 11",
+            "claimId": null
+          },
+          {
+            "id": "display-12",
+            "label": "Alcôve 12",
+            "claimId": null
+          }
+        ],
+        "loadoutPresets": [
+          {
+            "id": "hunt-1",
+            "name": "Chasse active",
+            "loadout": {
+              "armorId": "hunter",
+              "weaponIds": [
+                "combistick",
+                "plasma-caster"
+              ],
+              "gearIds": [
+                "motion-sensor",
+                "audio-decoy"
+              ]
+            },
+            "appearance": {
+              "presetId": "jungle-hunter",
+              "bodyMorphId": "classic",
+              "headStyleId": "reference",
+              "skinId": "ochre-mottle",
+              "biomaskId": "jungle",
+              "dreadStyleId": "classic",
+              "dreadTintId": "obsidian",
+              "armorStyleId": "classic",
+              "armorTintId": "bronze",
+              "trophyAdornmentId": "skull-spine",
+              "laserColorId": "crimson",
+              "chromaticsV113": {
+                "skinHex": null,
+                "dreadHex": null,
+                "outfitHex": null,
+                "armorHex": null,
+                "maskHex": null,
+                "maskOriginId": null,
+                "maskDecalId": null,
+                "faceDecalId": null,
+                "bodyDecalId": null,
+                "armorDecalId": null,
+                "skinMaterialId": null,
+                "dreadMaterialId": null,
+                "outfitMaterialId": null,
+                "armorMaterialId": null,
+                "maskMaterialId": null
+              }
+            },
+            "savedAt": "2026-11-09T10:42:54.652Z"
+          },
+          {
+            "id": "hunt-2",
+            "name": "Configuration 2",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-3",
+            "name": "Configuration 3",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          },
+          {
+            "id": "hunt-4",
+            "name": "Configuration 4",
+            "loadout": null,
+            "appearance": null,
+            "savedAt": null
+          }
+        ],
+        "training": {
+          "targeting": {
+            "disciplineId": "targeting",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "wristblades": {
+            "disciplineId": "wristblades",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "cloaking": {
+            "disciplineId": "cloaking",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "mobility": {
+            "disciplineId": "mobility",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          },
+          "honor-duel": {
+            "disciplineId": "honor-duel",
+            "attempts": 0,
+            "bestScore": 0,
+            "lastScore": 0,
+            "lastCompletedAt": null
+          }
+        },
+        "medbay": {
+          "status": "ready",
+          "treatmentId": null,
+          "startedAt": null,
+          "completesAt": null,
+          "treatmentsCompleted": 0
+        }
+      }
+    }
+  ]
+}

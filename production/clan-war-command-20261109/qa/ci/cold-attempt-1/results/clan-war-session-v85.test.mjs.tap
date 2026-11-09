@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: external store has a stable SSR snapshot and hydrates on subscription without writing defaults
+ok 1 - external store has a stable SSR snapshot and hydrates on subscription without writing defaults
+  ---
+  duration_ms: 4.745259
+  type: 'test'
+  ...
+# Subtest: event updates use the latest snapshot and write only their dedicated free exercise key
+ok 2 - event updates use the latest snapshot and write only their dedicated free exercise key
+  ---
+  duration_ms: 2.475685
+  type: 'test'
+  ...
+# Subtest: future and corrupt archives retain their exact bytes and forbid implicit writes
+ok 3 - future and corrupt archives retain their exact bytes and forbid implicit writes
+  ---
+  duration_ms: 1.891043
+  type: 'test'
+  ...
+# Subtest: an explicit reset unlocks only its archive; other incompatible bytes stay preserved
+ok 4 - an explicit reset unlocks only its archive; other incompatible bytes stay preserved
+  ---
+  duration_ms: 1.016374
+  type: 'test'
+  ...
+# Subtest: quota failure keeps the current exercise in memory and preserves the previous archive
+ok 5 - quota failure keeps the current exercise in memory and preserves the previous archive
+  ---
+  duration_ms: 1.705452
+  type: 'test'
+  ...
+# Subtest: blocked browser storage leaves all exercises usable in memory without touching campaign data
+ok 6 - blocked browser storage leaves all exercises usable in memory without touching campaign data
+  ---
+  duration_ms: 0.88824
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 20.94789

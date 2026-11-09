@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: all 24 source RTS narratives map to exactly 12 proper W3 planets and 72 explicit objectives
+ok 1 - all 24 source RTS narratives map to exactly 12 proper W3 planets and 72 explicit objectives
+  ---
+  duration_ms: 173.337617
+  type: 'test'
+  ...
+# Subtest: every W3 RTS brief has its own V6 rival detachments and physically distinct initial positions
+ok 2 - every W3 RTS brief has its own V6 rival detachments and physically distinct initial positions
+  ---
+  duration_ms: 26.559821
+  type: 'test'
+  ...
+# Subtest: missions involving human tracks never manufacture a hostile human faction
+ok 3 - missions involving human tracks never manufacture a hostile human faction
+  ---
+  duration_ms: 2.134679
+  type: 'test'
+  ...
+# Subtest: 24 different titles, three distinct source-positioned tasks per mission, no fake city/planet
+ok 4 - 24 different titles, three distinct source-positioned tasks per mission, no fake city/planet
+  ---
+  duration_ms: 22.400289
+  type: 'test'
+  ...
+# Subtest: source-map and task association cannot be tampered into another planet
+ok 5 - source-map and task association cannot be tampered into another planet
+  ---
+  duration_ms: 0.810323
+  type: 'test'
+  ...
+# Subtest: cannot win mission by remote switch, incomplete tasks, invisible guard or simulated teleport
+ok 6 - cannot win mission by remote switch, incomplete tasks, invisible guard or simulated teleport
+  ---
+  duration_ms: 2.601312
+  type: 'test'
+  ...
+# Subtest: hold orders consume real consecutive turns and stepping off breaks the hold
+ok 7 - hold orders consume real consecutive turns and stepping off breaks the hold
+  ---
+  duration_ms: 2.688274
+  type: 'test'
+  ...
+# Subtest: vacuum pressure and power can disable the right W3 devices without blocking alternate corridors
+ok 8 - vacuum pressure and power can disable the right W3 devices without blocking alternate corridors
+  ---
+  duration_ms: 3.317272
+  type: 'test'
+  ...
+# Subtest: companion is placed at a real source tile, never duplicates, then walks one tile per tick
+ok 9 - companion is placed at a real source tile, never duplicates, then walks one tile per tick
+  ---
+  duration_ms: 2.193998
+  type: 'test'
+  ...
+# Subtest: 24 source missions all allow physical full-round-trip victory in a civilian-safe lab
+ok 10 - 24 source missions all allow physical full-round-trip victory in a civilian-safe lab
+  ---
+  duration_ms: 491.342345
+  type: 'test'
+  ...
+# Subtest: tidal passage, wind calibration, cracked ice and hot jets gate interaction on physical ticks
+ok 11 - tidal passage, wind calibration, cracked ice and hot jets gate interaction on physical ticks
+  ---
+  duration_ms: 4.871176
+  type: 'test'
+  ...
+# Subtest: 24 live Yautja rival formations cannot teleport, respawn or grant victory without an objective
+ok 12 - 24 live Yautja rival formations cannot teleport, respawn or grant victory without an objective
+  ---
+  duration_ms: 18.478695
+  type: 'test'
+  ...
+# Subtest: a lost real rescued team blocks mission completion and produces one immutable loss receipt
+ok 13 - a lost real rescued team blocks mission completion and produces one immutable loss receipt
+  ---
+  duration_ms: 0.885636
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 761.510259

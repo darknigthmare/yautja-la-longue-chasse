@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-09T09:50:06.606149+00:00",
+  "historicalInputReference": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+  "newerSourceReference": "dab4b7760863a645ca5bcf63934ee2baf820d7f7",
+  "historicalNonBaseInputRowsChecked": 68,
+  "inputByteChanges": [
+    {
+      "path": "tests/fixtures/skinning-canopy-browser-assets-20261109.json",
+      "before": {
+        "bytes": 75923,
+        "sha256": "9e6561299a7dcd1876ef13490c0ccd43cada1a706bbf8fd34d23bfaadc8a8a54"
+      },
+      "after": {
+        "bytes": 76819,
+        "sha256": "f9dc1c6653c2d703acb787308b3b8f7d3232ab9077f087981a98d441e1580ff9"
+      }
+    }
+  ],
+  "command": [
+    "python3",
+    "production/skinning-canopy-20261109/verify-followup.py"
+  ],
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "observedHead": "dab4b7760863a645ca5bcf63934ee2baf820d7f7",
+  "exitCode": 1,
+  "expectedRefusal": true,
+  "log": "newer-checkout-expected-refusal.log",
+  "bytes": 542,
+  "sha256": "caa7b30119fdfb71538fec27fe6f738a3aa0677f22fa16d639527efd71f71ddd",
+  "interpretation": "The frozen source-bound verifier correctly refuses the newer repinned fixture. It remains a verifier for historical3a03 input bytes; its expectations are unchanged. See successful exact3a03 sparse execution in receipt.json."
+}

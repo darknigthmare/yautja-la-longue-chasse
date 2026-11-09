@@ -1,0 +1,25 @@
+node:internal/child_process:1160
+    result.error = new ErrnoException(result.error, 'spawnSync ' + options.file);
+                   ^
+
+<ref *1> Error: spawnSync git EPERM
+    at Object.spawnSync (node:internal/child_process:1160:20)
+    at spawnSync (node:child_process:928:24)
+    at execFileSync (node:child_process:971:15)
+    at file:///workspace/yautja-reprise-20261109/scripts/qa-clan-ship-browser.mjs:23:24
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'spawnSync git',
+  path: 'git',
+  spawnargs: [ 'rev-parse', 'HEAD' ],
+  error: [Circular *1],
+  status: 0,
+  signal: null,
+  output: [ null, '1edbf69117949df3d3e1591b79fdcc416928862d\n', '' ],
+  pid: 16854,
+  stdout: '1edbf69117949df3d3e1591b79fdcc416928862d\n',
+  stderr: ''
+}
+
+Node.js v24.19.0

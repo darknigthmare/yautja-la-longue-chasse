@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: V114 reuses 44 tracked PNGs without copying the old V85 artwork
+ok 1 - V114 reuses 44 tracked PNGs without copying the old V85 artwork
+  ---
+  duration_ms: 3.96383
+  type: 'test'
+  ...
+# Subtest: 39 historical materials, three V113 IDs and V125/V126 studies coexist
+ok 2 - 39 historical materials, three V113 IDs and V125/V126 studies coexist
+  ---
+  duration_ms: 0.880608
+  type: 'test'
+  ...
+# Subtest: previously waiting materials are now selectable under verifiable native IDs
+ok 3 - previously waiting materials are now selectable under verifiable native IDs
+  ---
+  duration_ms: 0.664052
+  type: 'test'
+  ...
+# Subtest: ring accessory, biomask paint and archived Shatter are not falsely presented as full-body textures
+ok 4 - ring accessory, biomask paint and archived Shatter are not falsely presented as full-body textures
+  ---
+  duration_ms: 0.25189
+  type: 'test'
+  ...
+# Subtest: exact saved canonical material ID is validated and resolved to a local URL
+ok 5 - exact saved canonical material ID is validated and resolved to a local URL
+  ---
+  duration_ms: 0.486664
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15.344046

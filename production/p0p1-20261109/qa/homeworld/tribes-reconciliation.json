@@ -1,0 +1,326 @@
+{
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "scope": "Read-only reconciliation of PT-RACCORD/P0 and PT-CITERNE/P1; no binary import, actor identity assignment or region migration.",
+  "criteria": [
+    {
+      "id": "PT-RACCORD",
+      "priority": "P0",
+      "source": "docs/campagne/planetes-tribus/REPRISE.md:26",
+      "status": "PARTIEL",
+      "documentationReconciled": true,
+      "runtimeComplete": false,
+      "verified": [
+        "V37 retains204source entries with unique IDs; main+thumbnail public paths exist for all204.",
+        "Ten current V68region IDs remain unchanged.",
+        "DESERT maps to glass-desert Village desCiternes, guideVek’shan+keeperIsha’ren retained.",
+        "FOREST maps to pillar-jungle placeTerrassesdesHautesBranches and communityGardiensdesHautesBranches.",
+        "SLUMSCourdesForgesBasses is distinct from thermal-caves EnclavedesForgesBasses; no IDalias created.",
+        "DARKJUNGLEpanorama reused at forbidden-reserve is distinct from undergroundRefugedesVeilleurs; luminous-marshes andstorm-chain retain their ownVeilleurs communities."
+      ],
+      "remaining": [
+        "Physical local implantation/access forCourSLUMS,Caldeira andRefugedesVeilleurs, without renaming existing regions.",
+        "Persistent identities for selected V4/V5members; art role or portrait is not a named recruit.",
+        "Reconcile region gates with current ten-region Bible and preserve historical saved access; currentV68 reserve gate still requiresglass-desert report."
+      ]
+    },
+    {
+      "id": "PT-CITERNE",
+      "priority": "P1",
+      "source": "docs/campagne/planetes-tribus/REPRISE.md:27",
+      "status": "PARTIEL",
+      "existingUsageProbe": "production/p0p1-20261109/qa/homeworld/tribes-runtime-probe.json",
+      "existingActivities": 4,
+      "walkableApproaches": 4,
+      "bidirectionalRoutes": 4,
+      "protectedVariants": [
+        {
+          "id": "PT-ART-01-V1",
+          "name": "CITERNE_DESERT_ORIGINE_V1_PROTEGEE_V5.png",
+          "historicalSha256": "d2897149c3d43240e0c9731467a0ef0a1fdd8e85d85ea175100ee08e4d68039c",
+          "historicalBytes": 2790216,
+          "historicalRuntimeStatus": "not_imported_into_game",
+          "inV37": false,
+          "trackedPathsByFilename": [],
+          "declaredNativePath": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/corrections/CITERNE_DESERT_ORIGINE_V1_PROTEGEE_V5.png",
+          "declaredNativePathExists": false,
+          "humanArtApproval": false
+        },
+        {
+          "id": "PT-ART-01-V2",
+          "name": "CITERNE_DESERT_ORIGINE_V2_PROTEGEE_V5.png",
+          "historicalSha256": "d285b4e976085909b9069808de3dc1837b30488702c79028a36be8be7211da81",
+          "historicalBytes": 2684149,
+          "historicalRuntimeStatus": "not_imported_into_game",
+          "inV37": false,
+          "trackedPathsByFilename": [],
+          "declaredNativePath": "/workspace/scratch/a215ef7a9d28/production_v5_20261106/images/corrections/CITERNE_DESERT_ORIGINE_V2_PROTEGEE_V5.png",
+          "declaredNativePathExists": false,
+          "humanArtApproval": false
+        }
+      ],
+      "remaining": [
+        "Retrieve the exact two protected V5native PNGs from their original delivery or supply a separately identified new asset; do not label legacy derivatives as those missing bytes.",
+        "Choose each variant by functional use, prepare measured derivatives/pivots/footprints, integrate and inspect in the actual target scene.",
+        "Keep original oldV37 sources and source identities; native art validation and replacement have not occurred in this audit."
+      ]
+    }
+  ],
+  "catalog": {
+    "entries": 204,
+    "uniqueIds": 204,
+    "mainFilesPresent": 204,
+    "thumbnailFilesPresent": 204
+  },
+  "currentRegionIds": [
+    "ash-marches",
+    "glass-desert",
+    "pillar-jungle",
+    "luminous-marshes",
+    "storm-chain",
+    "leviathan-coast",
+    "thermal-caves",
+    "cold-crown",
+    "first-city-ruins",
+    "forbidden-reserve"
+  ],
+  "existingCisternActivities": [
+    {
+      "id": "glass-desert-scene-1",
+      "name": "Tour des citernes",
+      "material": "coffrets des citernes",
+      "kind": "sort",
+      "stationId": "place-table",
+      "station": {
+        "x": 1940,
+        "y": 2060
+      },
+      "approach": {
+        "x": 1940,
+        "y": 2170
+      },
+      "destinationId": "door:hall",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 1170,
+          "y": 2565
+        },
+        {
+          "x": 1940,
+          "y": 2170
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 1940,
+          "y": 2170
+        },
+        {
+          "x": 1170,
+          "y": 2565
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-scene-2",
+      "name": "Inspection des conduits",
+      "material": "conduits de débit",
+      "kind": "calibrate",
+      "stationId": "workshop",
+      "station": {
+        "x": 3530,
+        "y": 1670
+      },
+      "approach": {
+        "x": 3530,
+        "y": 1780
+      },
+      "destinationId": "door:forge",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 3530,
+          "y": 1780
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 3530,
+          "y": 1780
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-scene-3",
+      "name": "Transmission des routes",
+      "material": "poussière abritée",
+      "kind": "observe",
+      "stationId": "garden-b",
+      "station": {
+        "x": 2870,
+        "y": 3040
+      },
+      "approach": {
+        "x": 2870,
+        "y": 3150
+      },
+      "destinationId": "door:clinic",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 2870,
+          "y": 3150
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 2870,
+          "y": 3150
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    },
+    {
+      "id": "glass-desert-scene-4",
+      "name": "Réserve du soir",
+      "material": "réserve d’eau scellée",
+      "kind": "prepare",
+      "stationId": "storage",
+      "station": {
+        "x": 3650,
+        "y": 2420
+      },
+      "approach": {
+        "x": 3650,
+        "y": 2530
+      },
+      "destinationId": "field",
+      "approachWalkable": true,
+      "fromVillageEntry": [
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        },
+        {
+          "x": 3195,
+          "y": 2745
+        },
+        {
+          "x": 3650,
+          "y": 2530
+        }
+      ],
+      "returnToVillageEntry": [
+        {
+          "x": 3650,
+          "y": 2530
+        },
+        {
+          "x": 3240,
+          "y": 2655
+        },
+        {
+          "x": 720,
+          "y": 2700
+        },
+        {
+          "x": 520,
+          "y": 2800,
+          "vx": 0,
+          "vy": 0,
+          "grounded": true,
+          "facing": 1
+        }
+      ]
+    }
+  ],
+  "historicalDeliveryStorage": {
+    "delivery_channel": "conversation",
+    "produced_png_files": 42,
+    "delivered_png_files_in_conversation": 42,
+    "new_archives_delivered_in_conversation": 6,
+    "new_archives_durably_saved": 0,
+    "catalogue_pdf_durably_saved": false,
+    "storage_status": "workspace_ready_persistent_save_failed",
+    "persistence_error": {
+      "stage": "prepare_uploads",
+      "message": "library upload failed: prepare_uploads failed",
+      "known_finalizations": 0,
+      "helper_attempts": 3,
+      "outcome": "preparation_failed_no_library_file_ids_returned"
+    },
+    "session_links_published_in_github_documentation": false
+  },
+  "inputsSha256": {
+    "docs/campagne/planetes-tribus/REPRISE.md": "85875108a34628c5ece9106770aec9bc230f74930d01e620f6cee620a67b792b",
+    "docs/campagne/planetes-tribus/README.md": "2adda5804b59dcbcf407492a5fc1e7bd22b9e6cdeb0ee3cfd2197e555e04f670",
+    "docs/campagne/planetes-tribus/TRIBUS.md": "29b49784c9b93590c7ce8628ad403542babdae9c29648f9141e75e5bdaf16804",
+    "docs/campagne/planetes-tribus/RACCORD_EXISTANT.json": "6b29ad162e4751745f620d304f96d07887296f89cb24fac3d3b1598af2d3a3eb",
+    "docs/campagne/planetes-tribus/LIVRAISON_V5.json": "328f7de89470fd826a0892635ef5517c77b679acd2a1959a584146edd9eb5f3e",
+    "app/game/tribeArtV37.json": "b1105b9593c234a5b997e11d0057502ca7c2d83ed3957e32ab5fd02d6f60dc0b",
+    "app/game/systems/homeworldRegionsV68.ts": "95f1aaef3909f52095271c49c57f7ae7da54c024d86b54fcafc34cc053c6b1fa",
+    "app/game/systems/homeworldVillageActivitiesV70.ts": "2bd164a1d921e1bef9a7a7f37bcd93c9eef342914d308bdfea49d9911af9c046",
+    "app/game/systems/homeworldVillageRoutesV70.ts": "b1b9ba2b8e4971b347483c515c4194d63076bc1aca2f259bb93059d041147264"
+  },
+  "qualifications": {
+    "sourceInspected": true,
+    "realRouteHelpersExecuted": true,
+    "browserExecuted": false,
+    "protectedV5PngImported": false,
+    "newAssets": false,
+    "humanArtApproved": false,
+    "globalCriterionClosure": false
+  }
+}

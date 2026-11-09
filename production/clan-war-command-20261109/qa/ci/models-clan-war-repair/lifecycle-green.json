@@ -1,0 +1,14 @@
+{
+  "asOf": "2026-11-09T12:27:53.003039+00:00",
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "--test",
+    "--test-reporter=spec",
+    "tests/clan-war-lifecycle-v94.test.mjs"
+  ],
+  "exitCode": 0,
+  "source": "tests/clan-war-lifecycle-v94.test.mjs",
+  "sourceSha256": "e3ef4c781e72fec516a926fd4043d10fa09b09777f765b805b1a7196f2f50bac",
+  "logSha256": "4a4c663317df5a5e0fbbe73ad3c4319f1237ce1fbdceee1cb7dde6419982e9ff",
+  "scope": "Targeted lifecycle VM fixture replay only; full 23-file 280-case replay follows after the sequential app compatibility fix. Initial-open and late native-dialog pause/resume added inside existing cases; no case removed or added."
+}

@@ -1,0 +1,45 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.uncheck: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByTestId('clan-operations-v115').locator('input[type="checkbox"]').nth(1)[22m
+[2m    - locator resolved to <input checked type="checkbox"/>[22m
+[2m  - attempting click action[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible, enabled and stable[22m
+[2m      - element is not visible[22m
+[2m    - retrying click action[22m
+[2m      - waiting 100ms[22m
+[2m    58 × waiting for element to be visible, enabled and stable[22m
+[2m       - element is not visible[22m
+[2m     - retrying click action[22m
+[2m       - waiting 500ms[22m
+
+    at runBrowser (/workspace/yautja-la-longue-chasse/scripts/qa-clan-field-20261103.mjs:70:119)
+    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-field-20261103.mjs:30:3 {
+  log: [
+    `  - waiting for getByTestId('clan-operations-v115').locator('input[type="checkbox"]').nth(1)`,
+    '    - locator resolved to <input checked type="checkbox"/>',
+    '  - attempting click action',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '    - waiting 20ms',
+    '    2 × waiting for element to be visible, enabled and stable',
+    '      - element is not visible',
+    '    - retrying click action',
+    '      - waiting 100ms',
+    '    58 × waiting for element to be visible, enabled and stable',
+    '       - element is not visible',
+    '     - retrying click action',
+    '       - waiting 500ms'
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4

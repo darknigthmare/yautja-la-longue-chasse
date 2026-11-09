@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "browserExitCode": 0,
+  "nativeChecksPassed": 14,
+  "nativeChecksFailed": 0,
+  "originalPassSitesPreserved": 14,
+  "browserVersion": "154.0.8037.57",
+  "sourceBeforeAfterEqual": true,
+  "appFilesCompared": 1293,
+  "appSha256DuringRun": "3df9b42dbe169f62529fe074a3bccecf667a335f97bcaaf5f256bc39c3137cb4",
+  "recipeSha256": "121fab77bb7e07ea2361ad3daef6a43faeecfc66c1ee8c27fae8c7104025d148",
+  "script": "scripts/qa-clan-war-v115-multitab-v151.mjs",
+  "sourceTestsPassed": 3,
+  "sourceTestEdited": false,
+  "lintExitCode": 0,
+  "originalScreenshotsOpened": 4,
+  "contexts": [
+    {
+      "scenario": "held-lock-and-simultaneous-race",
+      "tabs": [
+        "A",
+        "B"
+      ],
+      "sharedWithinScenario": true,
+      "previousContextClosed": null,
+      "initialArchive": null
+    },
+    {
+      "scenario": "missing-web-locks",
+      "tabs": [
+        "A",
+        "B"
+      ],
+      "sharedWithinScenario": true,
+      "previousContextClosed": true,
+      "initialArchive": null
+    },
+    {
+      "scenario": "rapid-same-tab-submissions",
+      "tabs": [
+        "A",
+        "B"
+      ],
+      "sharedWithinScenario": true,
+      "previousContextClosed": true,
+      "initialArchive": null
+    },
+    {
+      "scenario": "assault-timer-lock",
+      "tabs": [
+        "A",
+        "B"
+      ],
+      "sharedWithinScenario": true,
+      "previousContextClosed": true,
+      "initialArchive": null
+    },
+    {
+      "scenario": "simultaneous-due-events",
+      "tabs": [
+        "A",
+        "B"
+      ],
+      "sharedWithinScenario": true,
+      "previousContextClosed": true,
+      "initialArchive": null
+    },
+    {
+      "scenario": "stale-reset-and-reload",
+      "tabs": [
+        "A",
+        "B"
+      ],
+      "sharedWithinScenario": true,
+      "previousContextClosed": true,
+      "initialArchive": null
+    }
+  ],
+  "baselineReproduced": true,
+  "baselineExitCode": 1,
+  "baselineFailure": "Original launch locator cannot see the Teams step after opening the modern briefing. Original recipe archived; only optional output override added for baseline execution.",
+  "scope": "Two real V115 panels, Web Locks and shared localStorage: contended writes, unavailable lock and stale reset. Only cooperating tabs, not legacy writers, other devices, cloud or full GameClient.",
+  "clockFixture": "Date.now is advanced only in the disclosed simultaneous-due scenario; the native timers and persisted records are unchanged",
+  "campaignProbe": "Unrelated sentinel key only; no full SaveGame is mounted",
+  "sourceVersionLimit": "Bookend at12:25:42UTC precedes the independently authorized root tutorial source edit. No driver rerun after that bookend.",
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/v151-two-tab-operations-proof.json",
+      "bytes": 421324,
+      "sha256": "d331207111532d09a2b9fe89e50a3dc591f0a5545c4bf40c45cb5aa0187d2c49"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/recipe.executed.mjs",
+      "bytes": 21476,
+      "sha256": "121fab77bb7e07ea2361ad3daef6a43faeecfc66c1ee8c27fae8c7104025d148"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/run.log",
+      "bytes": 1191,
+      "sha256": "45e0fa25d10c3e0512bb838cea2d6b445f1605e700d059f39f1ceea79f4cfd83"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/screenshot-inspection.json",
+      "bytes": 1503,
+      "sha256": "79eb9081484b3d8d5591696699364e12e1b12e9e2f15fdc1f2df508be55c3676"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/bookend-before-next-root-edit.json",
+      "bytes": 441,
+      "sha256": "f0a3225ae7d29fd4473a7ad85e579b64179c303d30f1772ae9053281afa1adb2"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/lint-final.json",
+      "bytes": 362,
+      "sha256": "1311604e964caf4357ca192c39bd42ca3440f7224a9a8570fd9c40a6551af559"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/lint-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/source-tests-final.json",
+      "bytes": 402,
+      "sha256": "10a06909463ba9c52d59f20f633433c0309a98f3894341232821f1bdefafed13"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/source-tests-final.tap",
+      "bytes": 898,
+      "sha256": "68f7597e771ee569d7a88ff1c54ae0f6d44cdd0a2dd7e5603201688cd6892772"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/01-tab-b-stale-reset-disabled.png",
+      "bytes": 263968,
+      "sha256": "8b432bcda8dfe2109e3155243ea0ee09fdaa64e4982089911d43e23a1c611bf5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/02-tab-a-explicit-safe-reset.png",
+      "bytes": 266904,
+      "sha256": "a3d7fadfc5a74e9108a66f51fbe9fa9492d515f0954d572c4f064e9b88101b95"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/03-tab-b-safe-stealth-after-reload.png",
+      "bytes": 141623,
+      "sha256": "e4b96b8799b1f57ac31a4677471534ca0d7edf9743ae70adf269ee3a4ad2f066"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-3/04-tab-a-now-stale.png",
+      "bytes": 264091,
+      "sha256": "570a5780d3155ff5cf22c31ee1adf8eeafe00b3b5a437a21ed8739f0ee9ac690"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-1/recipe.original.mjs",
+      "bytes": 16846,
+      "sha256": "eedbcab61a397630f968e98122f69fc89729e1c452cb0b1d5a627ce0741859d1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-1/recipe.executed.mjs",
+      "bytes": 16883,
+      "sha256": "5e9593bef125b1f16c864d72c7d11fac36868a53f7b6f567de4fef3e29d2f3f3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-1/baseline-inputs.json",
+      "bytes": 399,
+      "sha256": "4601591f59b319138e0579f7a80dc2a10feb4f0d2adad945aa7a8e5c6213eef1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/multitab/attempt-1/run.log",
+      "bytes": 585,
+      "sha256": "e05cc36fc80f9c96d4431ef3eef889ea381179c26b49de9dd6f08a760e26ef67"
+    }
+  ]
+}

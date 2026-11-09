@@ -1,0 +1,184 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "checksPassed": 25,
+  "checksFailed": 0,
+  "sourceBeforeAfterEqual": true,
+  "selectedSources": 13,
+  "screenshotsOpened": 10,
+  "domainRegressionTestsPassed": 56,
+  "scope": "Actual council/Bible/Atlas/Gauntlet components and original public assets, esbuild profile-only harness. Real DOM, native modal focus and browser storage; not full Next/GameClient/campaign. Grouping and geometry presentation only; no simulation/save schema migration.",
+  "candidateCriterion": "Guerre des clans:CW130-SYS-024 — bounded keyboard/focus/small-screen subcriteria; full controller/human art review remains separate.",
+  "nextProductionTested": false,
+  "physicalControllerTested": false,
+  "humanArtCertification": false,
+  "beforeComparison": "Before PNGs were captured on prior real Next build lSBcQd-2LuUCPafGoIZvC; current after PNGs are a component host. Their different hosts are declared; no strict same-host pixel/performance percentage is inferred.",
+  "existingHeadlessV94": {
+    "passed": 8,
+    "failed": 1,
+    "headless": true,
+    "knownUnqualifiedCase": "Native headed/X11 focus; Xvfb absent, assertion preserved for CI. This run is not labelled green.",
+    "receipt": {
+      "path": "production/clan-war-command-20261109/qa/shell/v94-headless-1/receipt.json",
+      "bytes": 1940,
+      "sha256": "ba40eb3df9d1ae5e01c96d4777f02932eb70f35ab984e714d367651b81723cfa"
+    }
+  },
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/report.browser-run.json",
+      "bytes": 9165,
+      "sha256": "83b3008f57e3405307df01d558e599ba93a9fc67c7f9cc71521619064e34e147"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/report.json",
+      "bytes": 9660,
+      "sha256": "78d02fa033a62b2d19fccc70caf13fc4f7570a0c86817438051a3d14f535facc"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/screenshot-inspection.json",
+      "bytes": 3504,
+      "sha256": "7a20b5702b74aed2c5ccfbd8852eb68cb867b1f20bbad4789c66c39766692df3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/recipe-used.mjs",
+      "bytes": 17356,
+      "sha256": "6ea5c1854aad269b5885e1e02135c83b27711bcb29a00032de0844a9e935428e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/report.json",
+      "bytes": 3576,
+      "sha256": "9e201d6522cd1763c094215ed4d0e5bc4dddb2b5529ee509f95434902dc0f44d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/v94-headless-1/receipt.json",
+      "bytes": 1940,
+      "sha256": "ba40eb3df9d1ae5e01c96d4777f02932eb70f35ab984e714d367651b81723cfa"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/v94-headless-1/recipe-used.mjs",
+      "bytes": 13655,
+      "sha256": "7f0ddff8d091b6da5becc27583c9a472e187847389f3c4b0f06a7d21be17ea42"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/v94-headless-1/clan-war-browser.json",
+      "bytes": 1512,
+      "sha256": "5f27d3e1f14788f5dafa9c8e8f6eb680e43cfbd02976f9592ee9673b4e7f021c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/v94-headless-1/run.log",
+      "bytes": 2596,
+      "sha256": "7362c1477142f4b76f106b7280360866ae46e739b5549eeada1a503ace42014e"
+    },
+    {
+      "path": "scripts/qa-clan-war-command-20261109.mjs",
+      "bytes": 17356,
+      "sha256": "6ea5c1854aad269b5885e1e02135c83b27711bcb29a00032de0844a9e935428e"
+    },
+    {
+      "path": "scripts/qa-clan-war-browser-v94.mjs",
+      "bytes": 13655,
+      "sha256": "7f0ddff8d091b6da5becc27583c9a472e187847389f3c4b0f06a7d21be17ea42"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/01-front-desktop.png",
+      "bytes": 610452,
+      "sha256": "bc53fa538f279b1f513414a7f5e58d931efb3e39f324843bbab2c3b57470f311"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/02-mandates-desktop.png",
+      "bytes": 477331,
+      "sha256": "9a3d2d7435d56ec4dbdc0fccf389f080d7e4f362c6c94a4c8d2d34353d0d809c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/03-front-390.png",
+      "bytes": 226180,
+      "sha256": "1c45f19ae162375b8272997304f871f3d0c5728f5c2fca5b17f2f3c7c7bb37c1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/03-archives-390.png",
+      "bytes": 124867,
+      "sha256": "81b966e8f227f1c2547fe51bc835ec038a17780bf2573009c5624757f826a492"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/04-orders-390.png",
+      "bytes": 139461,
+      "sha256": "4637f741d2ad6234a19aca44af250016e6ef558491c13433c90e19ec1e6e4c59"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/05-submenus-390.png",
+      "bytes": 148764,
+      "sha256": "4500becfdc6baf70a7d74c50c6c5e29b362f432fb07cde98dda4e5daf390286e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/03-front-320.png",
+      "bytes": 194053,
+      "sha256": "4c5a8f80c85ed761946bd134294cd2c309e7b1c672c3095167a35c410c28e4e2"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/03-archives-320.png",
+      "bytes": 106365,
+      "sha256": "674c34858a282f8b09311d3744072ce22128ca3cdad61511f57e6ecb1aba621b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/04-orders-320.png",
+      "bytes": 114127,
+      "sha256": "5a10e1793e72ad01a464e44c285bcf65104728a0ab37a71e7aa7948bedb7c7e6"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/attempt-6/05-submenus-320.png",
+      "bytes": 125977,
+      "sha256": "cb72fa75f313061785c23d62b1f3cbfbc6b4cab2c105d58245d183e4776bebaf"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-atlas-v95.test.mjs.tap",
+      "bytes": 1992,
+      "sha256": "2f510b0b7f680a6dba1aef17fc59bc54118be621f6045945d1e0d6d8dfab9a6a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-atlas-ui-v95.test.mjs.tap",
+      "bytes": 861,
+      "sha256": "be15cefcf9787e590e91347ea21076973f4380754bc1bcadd62a8ff495431b0a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-atlas-ui-v96.test.mjs.tap",
+      "bytes": 1469,
+      "sha256": "fe7afd0336e676619c6744a11db6760bc17327bc433a3fa18a33c1b46f4ec98b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-gauntlet-v131.test.mjs.tap",
+      "bytes": 546,
+      "sha256": "047967e592b18d550b0b5022a01f6cc551fcaf55f5d85df4aaa9bd182ff6a4a7"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-gauntlets-v132.test.mjs.tap",
+      "bytes": 1096,
+      "sha256": "3e069f157bf9175c5967fcdc7fab54a7290204ee5dce1c22dd826195d5a77355"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-gauntlets-v133.test.mjs.tap",
+      "bytes": 1261,
+      "sha256": "2f8394f0cbebc9d85e71821fff7c998ed48ad519f7166c1f5a4612fc4e234482"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-bible-v6.test.mjs.tap",
+      "bytes": 3403,
+      "sha256": "92cbfedf2932db29f3baa45d73d8423689e536cd4ede9a47a56822d88e064bad"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-command-v98.test.mjs.tap",
+      "bytes": 2258,
+      "sha256": "c306088b7e6ff2535f5cfe58918766df704150a40d2b1f2e5664b0855e5d3282"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/clan-war-turn-gate-v143.test.mjs.tap",
+      "bytes": 822,
+      "sha256": "72b0c763345c429d233e8e1a72cd4ec00165ab1dbac5307159d083f44c693974"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/shell/unit-1/planet-war-atlas-visual-v142.test.mjs.tap",
+      "bytes": 1056,
+      "sha256": "c6007e65866a7cead3bcadf6a3bdba9750d86257cdfe4df629555b8c5fbe9697"
+    }
+  ]
+}

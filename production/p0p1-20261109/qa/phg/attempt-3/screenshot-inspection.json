@@ -1,0 +1,124 @@
+{
+  "asOf": "2026-11-09",
+  "method": "Each of19originalPNGopenedusingview_image;imagebytesremainunchanged.",
+  "scope": "Technical inspection by Codex, not human art approval or official PHG pixel comparison.",
+  "knownShinFragmentRegression": "Resolved in two native regions; see fragment-pixel-regression.json. Raw changed-pixel counts retained; one8-bit rounding level remains.",
+  "strictWholeCharacterZeroOverflowCertified": false,
+  "unavailableViews": "Customization offers no full face/profile/back view set; none was injected or invented.",
+  "images": [
+    {
+      "filename": "alpha-palette.png",
+      "sha256": "4f232e0b413c680255b28cdf670289508f4b47b2ed55a7d5339a0aaed4178dfb",
+      "opened": true,
+      "observation": "Ogre et pigment sont visibles sur le biomask porté ; le corps et les plaques gardent leurs propres surfaces. Pas de comparaison PHG officielle."
+    },
+    {
+      "filename": "alpha-mask-inspection-off.png",
+      "sha256": "a118de9e5044da1ea557e45a97a17558568383a10eb04761686694a5c0fcd443",
+      "opened": true,
+      "observation": "Retrait d’inspection : coque et ses calques absents, visage visible ; l’équipement sauvegardé reste distinct de cette vue."
+    },
+    {
+      "filename": "alpha-durable-unmasked.png",
+      "sha256": "a118de9e5044da1ea557e45a97a17558568383a10eb04761686694a5c0fcd443",
+      "opened": true,
+      "observation": "Même retrait après choix durable Visage découvert ; capture cohérente avec l’état enregistré."
+    },
+    {
+      "filename": "alpha-city-no-ogre.png",
+      "sha256": "a8c6d18903bc7d2d61fdd831a350354715d05b6fb28be0621e9d9e5c62123399",
+      "opened": true,
+      "observation": "Masque City visible avec pigment libre ; aucune texture Ogre portée par la coque City dans les observations DOM."
+    },
+    {
+      "filename": "alpha-morph-classic.png",
+      "sha256": "67203de131f5047618ac2d40775c8a2f2837bee03edb12e96753d83fb60f82bd",
+      "opened": true,
+      "observation": "Morphologie classic sélectionnée par le vrai bouton. Quatre propriétaires alpha et transformations réelles relevés ; comparaison technique dans l’unique orientation offerte. L’ajustement artistique complet et les UV PHG restent à vérifier."
+    },
+    {
+      "filename": "alpha-morph-elder.png",
+      "sha256": "804f848228128da4b3af3eaf3a58e5765ea89a9ef983ed7e26d6efeb945644f2",
+      "opened": true,
+      "observation": "Morphologie elder sélectionnée par le vrai bouton. Quatre propriétaires alpha et transformations réelles relevés ; comparaison technique dans l’unique orientation offerte. L’ajustement artistique complet et les UV PHG restent à vérifier."
+    },
+    {
+      "filename": "alpha-morph-super.png",
+      "sha256": "e69830652dae203137d8dcd8cecfcf656af8862cffe86ef0aafde28f2dc197ba",
+      "opened": true,
+      "observation": "Morphologie super sélectionnée par le vrai bouton. Quatre propriétaires alpha et transformations réelles relevés ; comparaison technique dans l’unique orientation offerte. L’ajustement artistique complet et les UV PHG restent à vérifier."
+    },
+    {
+      "filename": "alpha-morph-feral.png",
+      "sha256": "0a42bcd1aa2b29af3d57336a6012baf34b128407001d3de91014abe9a80f9e75",
+      "opened": true,
+      "observation": "Morphologie feral sélectionnée par le vrai bouton. Quatre propriétaires alpha et transformations réelles relevés ; comparaison technique dans l’unique orientation offerte. L’ajustement artistique complet et les UV PHG restent à vérifier."
+    },
+    {
+      "filename": "alpha-morph-huntress.png",
+      "sha256": "e563a969b5317534bf7f452d0acc5dd2864d293074f6bab73e6552f697f30014",
+      "opened": true,
+      "observation": "Morphologie huntress sélectionnée par le vrai bouton. Quatre propriétaires alpha et transformations réelles relevés ; comparaison technique dans l’unique orientation offerte. L’ajustement artistique complet et les UV PHG restent à vérifier."
+    },
+    {
+      "filename": "alpha-morph-young.png",
+      "sha256": "7504c3a4022e209e3ca8b9e515775e98f29ce7b38023e7f4a76239d834fceb4e",
+      "opened": true,
+      "observation": "Morphologie young sélectionnée par le vrai bouton. Quatre propriétaires alpha et transformations réelles relevés ; comparaison technique dans l’unique orientation offerte. L’ajustement artistique complet et les UV PHG restent à vérifier."
+    },
+    {
+      "filename": "alpha-mobile-390.png",
+      "sha256": "e94b2b6fdf37ced7051eac1dd12700e23e67b927121bc7cd5adc7c7ce9d99434",
+      "opened": true,
+      "observation": "Chasseur entier dans l’aperçu à390px, pieds visibles ; aucune attestation des autres angles."
+    },
+    {
+      "filename": "samurai-native-no-chromatics.png",
+      "sha256": "99bd5df4680275f2c5737edd6ba3d8ae7066cd575ddb6fc7db41894a4560b362",
+      "opened": true,
+      "observation": "Samurai natif sans palette ni decal ; image témoin avant la seule teinte d’armure."
+    },
+    {
+      "filename": "samurai-armor-pigment-only.png",
+      "sha256": "b0d0b74efab22b6aa1914a533b29b0625b0421024c30877cf744077abee65e67",
+      "opened": true,
+      "observation": "Seule la teinte d’armure a été ajoutée. Les deux fragments de jambière identifiés dans l’ancien build ont disparu ; parité des clips native/pigment et mesure PNG séparées."
+    },
+    {
+      "filename": "samurai-palette.png",
+      "sha256": "5c7047fd4ee066ad2880799f44f6f1c20cbdabb46f50d42c0c4560f2c4530439",
+      "opened": true,
+      "observation": "Nova et quatre calques indépendants. Les fragments gris de jambière du diagnostic ne sont plus visibles ; les UV PHG, autres angles et fidélité artistique globale restent ouverts."
+    },
+    {
+      "filename": "samurai-mask-inspection-off.png",
+      "sha256": "51a6421a7c07c162007d293eab7d7dcd79eeae554ce74edcadde8e86862c9cce",
+      "opened": true,
+      "observation": "Coque et calques du biomask masqués sans mutation de sauvegarde. Les deux fragments gris de jambière sont absents après le correctif."
+    },
+    {
+      "filename": "samurai-durable-unmasked.png",
+      "sha256": "51a6421a7c07c162007d293eab7d7dcd79eeae554ce74edcadde8e86862c9cce",
+      "opened": true,
+      "observation": "Retrait durable du biomask cohérent après recharge ; pas de fragments gris de jambière dans cette vue."
+    },
+    {
+      "filename": "samurai-scar-before-clan-mark.png",
+      "sha256": "1179d4a51ebe9e1a622a6ed71f3743320e9aa4f504015e63ad5737940413db31",
+      "opened": true,
+      "observation": "Préréglage Scar sélectionné dans l’archive, masque porté ; vue native seulement."
+    },
+    {
+      "filename": "samurai-scar-after-clan-mark.png",
+      "sha256": "799579da65ace031e3c5a06c75c2db4e417d751c9531cd11e7412903947b6052",
+      "opened": true,
+      "observation": "Les mêmes fichiers corps/tête sont conservés. Le decal visage est derrière le biomask porté : l’image seule ne démontre aucun nouvel effet Scar ni Warpaint PHG."
+    },
+    {
+      "filename": "samurai-mobile-390.png",
+      "sha256": "5e9a8ec35f93788a420305e7cb240675db2b94f75f8534f7e5a94548da411ebd",
+      "opened": true,
+      "observation": "Aperçu entier à390px, commandes conservées par le parcours ; aucun appareil physique ni troisième angle testé."
+    }
+  ]
+}

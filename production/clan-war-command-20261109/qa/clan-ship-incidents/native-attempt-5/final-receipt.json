@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T11:36:37.038965+00:00",
+  "passed": true,
+  "buildId": "mdrvYovYvfvhuJqeZXn1D",
+  "browserVersion": "154.0.8037.57",
+  "node": "v22.23.4",
+  "sourceKey": [
+    "Clan Ship:OPS-B01",
+    "Clan Ship:OPS-B02"
+  ],
+  "scope": "Actual final Next/GameClient physical incident paths, retries, durable state, guard trust reply and bounded two-order interception diagnostic. Keyboard ownership fixes are exercised after real acknowledgements and native heading/backdrop clicks.",
+  "nativeChecksPassed": 6,
+  "nativeChecksFailed": 0,
+  "nativeIncidentInterventions": 18,
+  "incidentEscapeAfterAcknowledgementPassed": 18,
+  "otherReadOnlyDossierEscapePassed": 3,
+  "nativeGuardHeadingEscapePassed": true,
+  "nativeOrphanBodyEscapeProbePassed": true,
+  "orphanProbeScope": "Declared completed B01 fixture for keyboard diagnosis only; not an additional browser-played incident.",
+  "screenshotsOpened": 7,
+  "screenshotsCaptured": 7,
+  "walkingSamples": 2027,
+  "roomsVisited": [
+    "archives",
+    "armurerie",
+    "conseil",
+    "entrainement",
+    "hangar",
+    "soins",
+    "trophees"
+  ],
+  "sourceFilesCompared": 11,
+  "sourceBeforeAfterEqual": true,
+  "sourceSha256": {
+    "app/game/systems/clanShipMaintenanceDiagnostics.ts": "6fb73c72b7f11c424430f2739e76dd01993374967ac939fa3cf1c3bd5345f804",
+    "app/game/systems/clanShipCrewDialogue.ts": "70fe3a2eb0edd8e09721990ff16d8a6c1a07c7219d7c2891b04a8bd3827de58c",
+    "app/game/systems/clanShipIncidents.ts": "c2f52265dd043d1b6402a0353e4d181d7cdbef829a3cca500e6aa80d3d51e65d",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/clanShipSpaceEncounter.ts": "fc83b432bf63fb6ce006ae5b6460c67b389ec4ce113c72d527c9e749a6b0f3a0",
+    "app/game/ClanShipSpaceEncounter.tsx": "650f84cb12bed1d1e1d05079b96a9ed91e16e4803ef67047274772ff612cc43e",
+    "app/game/ClanShipSpaceEncounter.module.css": "85a54980581464dfb771dcadb157406b22367cd99f7d03cf585ef7ec93424cd0",
+    "app/game/ClanShipOperationsPanel.tsx": "4304de4ec0adbd2c5e4ed04c3cc9af3f696676341b927e9ccf253888fdc82194",
+    "app/game/ClanShipIncidentPanel.tsx": "613ff7bc7ab296f75eb88afd084f3c39ecb0d3cc6bfcc3ab69680bfc492820cd",
+    "app/game/ClanShipIncidentScene.tsx": "115af50a38cf547fbaa2d4813fefe288860a2bee90012eb1c53b1d8548c2a998",
+    "app/game/GameClient.tsx": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343"
+  },
+  "buildBeforeAfterEqual": true,
+  "servedNextScriptResponses": 92,
+  "servedUniqueNextScripts": 23,
+  "servedNextScriptsAllMatch": true,
+  "servedCssByteComparisonClaimed": false,
+  "marksBefore": 280,
+  "marksAfter": 335,
+  "newIncidentMarks": 55,
+  "newInterceptionTurns": 1,
+  "interceptionReplayedAfterReload": false,
+  "missionsProgressUnchanged": true,
+  "rankUnchanged": true,
+  "readOnlyMainSavePairs": 2,
+  "readOnlyMainSavePairsEqual": true,
+  "fixture": {
+    "source": "initial-save.json",
+    "sha256": "79bf10e01c39b026c733e4c83a69ad4582afaabd396dda96e49349cf53aecb78",
+    "disclosure": "Adult historical campaign, boarding/welcome/mandate, ship-seal-check, ship-armory-audit and previous space-screening earned through production reducers. Neither incident nor interception is completed or active initially. No field hunt/full campaign claimed."
+  },
+  "humanArtApproved": false,
+  "physicalControllerVerified": false,
+  "fullCampaignPlayed": false,
+  "globalP0P1Closed": false,
+  "limitations": [
+    "No new full campaign, physical controller or canonical artistic validation.",
+    "Future B01 extraction variant and reward balance approval remain outside this bounded delivery.",
+    "Three forecast alternatives are vertically scrollable; screenshots do not claim they all fit one mobile viewport.",
+    "Older attempts/probes stay dated and are not added to these six final checks.",
+    "The two-order diagnostic grants no crew role, scan, energy or combat-stat bonus. Only the first explicitly selected order was committed."
+  ],
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/report.browser-run.json",
+      "bytes": 203357,
+      "sha256": "9159dd53648f90d6276558ecbd2f926f92ababd2c0be19540656e7286549a214"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/report.json",
+      "bytes": 204112,
+      "sha256": "5db1e51efd7ac747cd0d0f4150fbc12989e04a29c1dfaeb252ec8a939e400fb1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/screenshot-inspection.json",
+      "bytes": 3654,
+      "sha256": "07dd1b5fc6dc2ab4654149b17c70185e564f6273ecd6707d96f2d0a452d39aec"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/save-verification.json",
+      "bytes": 1768,
+      "sha256": "bdc6ea7915f081e60050503841ce57543bcef1975804bb4b1e7204ae115fc70d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/initial-save.json",
+      "bytes": 15269,
+      "sha256": "79bf10e01c39b026c733e4c83a69ad4582afaabd396dda96e49349cf53aecb78"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/final-save.json",
+      "bytes": 19699,
+      "sha256": "648c43f205de0985db12a2eeb7742bbe7e773979ee08f88ae438588ca6b48662"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/recipe-used.mjs",
+      "bytes": 22959,
+      "sha256": "f8be56a11438f5427b49763698dc7845ae955e4d3f954a8129e943adb9f7e2a9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/01-seal-revalidated.png",
+      "bytes": 244236,
+      "sha256": "4fd7ebc20858bd6af6310b11cf4fbaa818064854515b8a7615876aaaa4b4658c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/02-guard-trust.png",
+      "bytes": 262596,
+      "sha256": "3a86b1ccde2d9cb283f21a2f268445ffe1f1c39228712052f4e123af776d8013"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/03-relay-one-circuit-390.png",
+      "bytes": 73146,
+      "sha256": "f5a90b3d7a91cbc56f237687a3f5bb128139acb10c0e15ec452d1800cf26ba33"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/04-relay-completed-390.png",
+      "bytes": 75988,
+      "sha256": "bef14e02ef337da1edf97818baf31b6c3b87783ade16b3fd4afd69c06a489ccf"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/05-interception-diagnostic-390.png",
+      "bytes": 102968,
+      "sha256": "b90348bf41e18defe1e1456e2d5d16664585a9795bc9da93fd9c7a201352a242"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/06-interception-diagnostic-320.png",
+      "bytes": 91763,
+      "sha256": "077a92bcdac07c6d08f15487aa43af91f00911bda3e5661e2f01356e766fe66c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/07-one-order-reloaded.png",
+      "bytes": 93183,
+      "sha256": "2f988d12fc6520daf14d223cb840c37a586c81b4e67a533ac4bcbc1cd69a1d83"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/ops-escape-probe-final/report.json",
+      "bytes": 8536,
+      "sha256": "1c6f998380979b67919e86d190a5e29001eda83f728cb84b73c1f4d0c37bc5c1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/ops-escape-probe-final/recipe-used.mjs",
+      "bytes": 7914,
+      "sha256": "9c429cbc692c407e3fa911b7ce9330416344ffc235f65eb4362527512c33ed48"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/ops-escape-probe-final/initial-save.json",
+      "bytes": 17201,
+      "sha256": "ba4ac3fc0da167f44fc975cb269cbbb3f2dbd3eecc3594cb1037ba37f81aa390"
+    },
+    {
+      "path": "scripts/qa-clan-ship-maintenance-20261109.mjs",
+      "bytes": 22959,
+      "sha256": "f8be56a11438f5427b49763698dc7845ae955e4d3f954a8129e943adb9f7e2a9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/source-criteria.json",
+      "bytes": 1463,
+      "sha256": "9e0f2662935d190a9008bf6f135546486bd0a92c1cf10318a83d50b33654a6ae"
+    }
+  ]
+}

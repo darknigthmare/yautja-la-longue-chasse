@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T07:09:28.899601+00:00",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "upstreamMainAtStart": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "scope": "Current bounded P0/P1 implementations and actual receipts, with all documentary priorities diagnosed; not global game completion.",
+  "allP0P1Closed": false,
+  "documentarySubjects": 2577,
+  "historicalWorkbooksPreserved": 112,
+  "tests": {
+    "passed": 689,
+    "failed": 0,
+    "skipped": 0,
+    "todo": 0,
+    "files": 70,
+    "sourceReport": {
+      "path": "production/p0p1-20261109/qa/ci/protocol-v2-cold/results/report.json",
+      "bytes": 49761,
+      "sha256": "a3b3d48c71024a39ba3fa089b86c3876de3d61206385afb2135da815edc5fbcc"
+    },
+    "scope": "Unique final suite; older677/688, independent329 and repeated46 cases are not added."
+  },
+  "build": {
+    "exitCode": 0,
+    "buildId": "lSBcQd-2LuUCPafGoIZvC",
+    "node": "v22.23.4",
+    "typescriptCheckedByActualNextBuild": true,
+    "appSourceBeforeStillMatches": true,
+    "log": {
+      "path": "production/p0p1-20261109/qa/root/build-migration-final.log",
+      "bytes": 4610,
+      "sha256": "889a5677834ae6c0d1eb34b14ea93ac2b88c5ee155b7b29442a87f4c7baeaa2f"
+    },
+    "deploymentTested": false
+  },
+  "lint": {
+    "exitCode": 0,
+    "maxWarnings": 0,
+    "files": 48,
+    "report": {
+      "path": "production/p0p1-20261109/qa/root/lint-source-final.json",
+      "bytes": 2653,
+      "sha256": "06082e1ac868339565e7c62ea0592f5e6e58c51017de19abdf6809e6a10703aa"
+    },
+    "scope": "Earlier pre-existing unused constant/import warnings were fixed; failed invocations stay dated."
+  },
+  "nativeNext": {
+    "checksPassed": 105,
+    "checksFailed": 0,
+    "recipes": [
+      {
+        "name": "clan-ship",
+        "checksPassed": 27,
+        "checksFailed": 0,
+        "buildId": "RYl37_8hN58IOB8jDpRj1",
+        "report": {
+          "path": "production/p0p1-20261109/qa/clan-ship-native/attempt-3/report.json",
+          "bytes": 621661,
+          "sha256": "5075dba72f22fd384e578b198e604972b172e1c397a474b5927d112000366629"
+        }
+      },
+      {
+        "name": "phg",
+        "checksPassed": 23,
+        "checksFailed": 0,
+        "buildId": "RYl37_8hN58IOB8jDpRj1",
+        "report": {
+          "path": "production/p0p1-20261109/qa/phg/attempt-3/report.json",
+          "bytes": 539214,
+          "sha256": "7f09cdc44a2520365369707d6f61ee287df980658423d5a8dac486212b06016e"
+        }
+      },
+      {
+        "name": "warp",
+        "checksPassed": 17,
+        "checksFailed": 0,
+        "buildId": "RYl37_8hN58IOB8jDpRj1",
+        "report": {
+          "path": "production/p0p1-20261109/qa/warp/attempt-2/report.json",
+          "bytes": 481064,
+          "sha256": "edd26677b6e00ae8f91a1f3a06f5c7c1fd25ee309f70e354d5142411c8b0a0df"
+        }
+      },
+      {
+        "name": "atlas",
+        "checksPassed": 12,
+        "checksFailed": 0,
+        "buildId": "lSBcQd-2LuUCPafGoIZvC",
+        "report": {
+          "path": "production/p0p1-20261109/qa/homeworld/native-exports/attempt-4/report.json",
+          "bytes": 15544,
+          "sha256": "1f3ad73c52364e31d04af9bfef481da4086552ef3cd5a8399d263a030240e235"
+        }
+      },
+      {
+        "name": "archive-next",
+        "checksPassed": 15,
+        "checksFailed": 0,
+        "buildId": "lSBcQd-2LuUCPafGoIZvC",
+        "report": {
+          "path": "production/p0p1-20261109/qa/archive-next/attempt-2/report.json",
+          "bytes": 35558,
+          "sha256": "e0b5a4fb5f23ea09b8147bffb93d58783e2744d2e8ff8703e6a55c7b547792c8"
+        }
+      },
+      {
+        "name": "phg-hunt",
+        "checksPassed": 11,
+        "checksFailed": 0,
+        "buildId": "RYl37_8hN58IOB8jDpRj1",
+        "report": {
+          "path": "production/p0p1-20261109/qa/phg-hunt/attempt-3/report.json",
+          "bytes": 840116,
+          "sha256": "a7deb275e32f5a279aceaffa449c0ee761bc6617828f646dd0ed54fedd2cc8ee"
+        }
+      }
+    ],
+    "scope": "Exact production JS compared by each recipe; earlier RYl reports target unchanged hunt/audio/PHG/Warp code. Final lSB includes namespace migration and atlas. No full campaign or physical-controller claim."
+  },
+  "archiveComponentFixture": {
+    "checksPassed": 17,
+    "checksFailed": 0,
+    "scope": "Actual UI/reducers/IDB/WebLocks, two historical source modules with current dependencies; separate from Next15 and not a full old checkout.",
+    "receipt": {
+      "path": "production/p0p1-20261109/qa/archive/attempt-3/final-receipt.json",
+      "bytes": 2725,
+      "sha256": "f6b0f4be7736f2d4da1d60165c57668b46e73033d460c8b1eaf36bac5607e33a"
+    }
+  },
+  "nativeHunts": {
+    "completed": 4,
+    "newTargetReceipts": 4,
+    "fullCampaign": false,
+    "receipt": {
+      "path": "production/p0p1-20261109/qa/clan-field-native/final-receipt.json",
+      "bytes": 14525,
+      "sha256": "d4b2a1643262dda9bf2c1142a91abce473c2bc249bdcf6a59bd2d6f049cadc88"
+    }
+  },
+  "endurance": {
+    "elapsedSeconds": 3600.0028699410004,
+    "nativeCommits": 300,
+    "distinctMaterials": 77,
+    "fullCycles": 3,
+    "gpuLeakCriterionQualified": true,
+    "scope": "Measured software GPU backend and predeclared bounds, not physical VRAM or universal FPS.",
+    "report": {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/report.json",
+      "bytes": 1143839,
+      "sha256": "f39bfa03604909dbb7a213af947a2635197c82b5c28f201ff8a31640d14ce138"
+    },
+    "receipt": {
+      "path": "production/p0p1-20261109/qa/phg-endurance/attempt-1/final-receipt.json",
+      "bytes": 8012,
+      "sha256": "b0227cde6a1a701c3abe25172031375f745245319530fe9d3fee8d9d0a238029"
+    },
+    "rendererSourcesIdenticalToFinal": [
+      {
+        "path": "app/game/GameClient.tsx",
+        "bytes": 362424,
+        "sha256": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972"
+      },
+      {
+        "path": "app/game/HunterChromaticForgeV113.tsx",
+        "bytes": 18684,
+        "sha256": "ae325ac36899afb10c29f74efdbe1a7034fd569dda95c8eaf5a64d03ff0f875d"
+      },
+      {
+        "path": "app/game/HunterChromaticForgeV113.module.css",
+        "bytes": 4002,
+        "sha256": "5389067fca46c406d358976cf1bd05e376188c22873fc55117eed768ff95045c"
+      },
+      {
+        "path": "app/game/HunterRigPreview.tsx",
+        "bytes": 31816,
+        "sha256": "fcfedbad9f84c69a619f66df437dd4560bd2ada8d65e0359e288dcd3ac98fc93"
+      },
+      {
+        "path": "app/game/ChromaticSurfaceV113.tsx",
+        "bytes": 1366,
+        "sha256": "f87d7c853360807d497daa8a3121b1658ddf69f3f8d53280b13d327f6cfccc04"
+      },
+      {
+        "path": "app/game/hunterChromaticsV113.ts",
+        "bytes": 28651,
+        "sha256": "de376a5e48991493ef462cba96446bec2f80670e6265a591df4d5cb09d0be0d4"
+      },
+      {
+        "path": "app/game/hunterChromaticCanvasV113.ts",
+        "bytes": 6014,
+        "sha256": "b927dcc23aa8b00b62e71c7eac535fc54ce62c1f06f54f96c3f66c21c90d3203"
+      },
+      {
+        "path": "app/game/phgBiomaskTintsV131.ts",
+        "bytes": 2383,
+        "sha256": "ccb01eef1230fc2c2d24d3645272f82010a608f3a3c38c27409835b48ca8c4bb"
+      },
+      {
+        "path": "app/game/phgBiomaskStudiesV132.ts",
+        "bytes": 3213,
+        "sha256": "e250e4a9d49607b5351e941c3aca4618e82d1072e192bee5f48873efc196141e"
+      }
+    ]
+  },
+  "art": {
+    "newPng": 19,
+    "reusedPng": 3,
+    "newP0PngIntegratedInPilot": 2,
+    "newP1PngSourceCandidatesOnly": 17,
+    "imageRequestsUnfulfilled": [
+      97,
+      208,
+      209,
+      210
+    ],
+    "humanArtApproved": false,
+    "newAnimationsClaimed": 0
+  },
+  "runtimeInputs": {
+    "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "bytes": 418406,
+    "sha256": "2bb04652535ebd84ed0c12c7a657029f738ac9bcb2167e14311610b60724c059"
+  },
+  "sourceSha256": {
+    ".github/workflows/p0-p1-coherence-20261109.yml": "aeb294186f621512dfccb178cb815eacc3c65763f4da179e5714b1927d1a8acd",
+    "app/dev/destinations.ts": "9aaafd77cd9a6c6408a2a2224a39b1edcb9b45ae7fcb4db13504179df673fb4c",
+    "app/dev/session.tsx": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb",
+    "app/game/ClanShipHub.tsx": "cde4eb8c5aafef328fb6911cf09617f92719075963d0b0c134c70dd3a5714352",
+    "app/game/ClanWarOperationsV115.tsx": "820e700818808b3d552cb26ee7e6d8fb74f1311411cb2f4d99962f5086fc5abb",
+    "app/game/ClanWarVariantAtlasV120.tsx": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e",
+    "app/game/GameClient.tsx": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972",
+    "app/game/HunterRigPreview.tsx": "fcfedbad9f84c69a619f66df437dd4560bd2ada8d65e0359e288dcd3ac98fc93",
+    "app/game/WarpModuleBay.module.css": "e30ae6fb1dca1f9a1819dda0f35be2e969421248c2a028f2d6936c1969856c63",
+    "app/game/WarpModuleBay.tsx": "9809a3938b5c7f67db0e0340920a5f4bb6b594c244cf933d9988bfaf6c581230",
+    "app/game/systems/clanShipOperationsAudio.ts": "594376cc11060d6eec145f2626f57e23903f76eb1aa1d21d9e292b064caf3f20",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarOuterWeightedProgressV141.ts": "f515d116839e1619147458e70ee185ff2d748e62f4412f77c1afa32938dcfb34",
+    "app/game/systems/clanWarVariantExportV126.ts": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "app/game/systems/clanWarWorldClimateV126.ts": "429d4d88bdefc0be405754062e7f3bfc5830090e7f1a155f10719ae723ebbd6c",
+    "app/game/systems/warpModuleBay.ts": "329a14a555c29dd465438cdc37d5a8c553b869d73aa3d08682544c3ad1df4403",
+    "docs/campagne/BIBLE_DE_CAMPAGNE.md": "64d42cae132bb2758514afddf84d3e22b68be8cdf0e476cdd84a98bd9015b0e0",
+    "docs/campagne/CONCORDANCE_P0_P1_20261109.md": "459f8fa4415d4b20127d980cc486391527df8e95f970a6f60333bf138203b65e",
+    "scripts/check-p0p1-coherence-20261109.mjs": "9dc1ef61c5cf6d4d3c18e801a8e25215c9c2d5b3cc023c84292bda55ab1c4314",
+    "scripts/include-p0p1-ci-inputs-20261109.mjs": "ada82115e729a845ad8e4e4a467aa7513d1060e4d6c81a95bc8ac1a3fb946b05",
+    "scripts/lib/qa-clan-field-fixture-20261109.mjs": "0f8c527917288dc899be636d5a2b33805aa2241a7a6b3a98913fc71e7230ab60",
+    "scripts/lib/qa-native-hunt-inspection-20261109.mjs": "eaf51bb55cdace6a0c83bf7c8ff4c37c358fab632c2efcc03b9bbc9eb0a4b35d",
+    "scripts/lib/trace-p0p1-file-inputs-20261109.mjs": "5dd78e7f3fb5bd47fee9879785565e93550d009172380d91d7789a855a29ea29",
+    "scripts/qa-clan-field-20261103.mjs": "59af43309ad2e338e4d2dda5c063ce229b668e03b4a7a0e42571de68885292ef",
+    "scripts/qa-clan-ship-field-p0p1-20261109.mjs": "1e314ed3a59c3287672738f0c87bba9569064cdce3a6abe286410447754447cc",
+    "scripts/qa-clan-ship-p0p1-20261109.mjs": "6af42a5b8d7b1427d4401691ad667cac31570d807690edbf3df1e2f140dfc1c0",
+    "scripts/qa-clan-war-four-modes-v147.mjs": "e410e755baf9727f07ac5ba7150236a1e40236b1d074344304187216798e7145",
+    "scripts/qa-clan-war-operations-archive-20261109.mjs": "4187efb3c3c5a2cf111a061838f3b4d70b2d5cc345598189e1578832385507fe",
+    "scripts/qa-clan-war-rts-two-tabs-v152.mjs": "c07c956718caba2d74457df212ded41b2988d2478ac3bac0c68c614623fde4d2",
+    "scripts/qa-clan-war-v115-multitab-v148.mjs": "25cc7430c456e5422ec96dc44f872b633ce3d2d0e0a56283f414886a5fa78131",
+    "scripts/qa-clan-war-v115-multitab-v151.mjs": "eedbcab61a397630f968e98122f69fc89729e1c452cb0b1d5a627ce0741859d1",
+    "scripts/qa-outer-inspection-browser.mjs": "f85f3983dec52a06e11795a5c576a03841f823e2e92143ebe62e02858a7c8837",
+    "scripts/qa-outer-pace-browser.mjs": "8542d5cbcd8c3bdcb58cb20778a33834ff26769d9e0f17aa485a59e09ee8a9e8",
+    "scripts/qa-phg-endurance-p0p1-20261109.mjs": "7aabaadbfdd234b15f424290b43c424c26b3663a3f77b04defd4631f1ed4cd6c",
+    "scripts/qa-phg-hunt-p0p1-20261109.mjs": "d70b732e85e32af789af5255ce3c3d69bce9280ebed482393bd8e84fcc0c5e1f",
+    "scripts/qa-phg-p0p1-20261109.mjs": "90369bf03ff72c8c0512e8b1727633c2a01d0ec9169d6e0977ebeaffe27706d5",
+    "scripts/qa-stealth-last-contact-browser.mjs": "00970875d5ef78c5d346fb58d1702dedbd4c09470bbc0b5f95cabcb6a5620ec3",
+    "scripts/qa-stealth-reconciliation-browser.mjs": "fa2fa607b8f8438b7204935c3a6f415a73bd76540284cd91c6f6a29df47e5da8",
+    "scripts/qa-warp-module-p0p1-20261109.mjs": "97a9e7877649bcf32378ac42fd77160d9c17234eb9074ce97b006616285819a0",
+    "scripts/runtime-v113-inputs.json": "3e3b505fa4c186c348096b5d246091d59d7a684d6cec9fe3e68b66b630524d7a",
+    "tests/clan-ship-operations-audio.test.mjs": "3fd98fc509db59da70d2e2252cd7e53ac81c27a4045336eda126f77ff6769994",
+    "tests/clan-war-climate-place-tokens.test.mjs": "875ab39260aee3a5ddc1fa010e21b6bbdb7f01bb623b32c2b1364f058deed29a",
+    "tests/clan-war-operations-archive.test.mjs": "f0563d7c4b5ae38a3f295b95a1cfe62938276fb1b2d21dedbf78877842f91513",
+    "tests/clan-war-outer-recall-continuity.test.mjs": "de850bd81e95583cfea0666ff39f53d4dda4fe3a5bf435b95dd96e2fc179e424",
+    "tests/clan-war-rts-web-lock-v152.test.mjs": "b5c5e24cfcc23a13cae36be3b26dfba2be32776f7d7f9d013ff93e4fb5f6e1d7",
+    "tests/clan-war-v115-multitab-v148.test.mjs": "5b2baa05513acb579ff1092bba271b08b25d5180dbd02e62f8408f5c0dd15d7a",
+    "tests/clan-war-v115-multitab-v151.test.mjs": "90d54a8bdaa23191c2949488d96a91ef60afddcc1d8d979c49ec92c5847d04d7",
+    "tests/clan-war-variant-export-coherence.test.mjs": "e74b126a7b96c4af7e9999ad1b8e580a406f5745488eefddeac1524c0d01b049",
+    "tests/hunter-armor-chromatic-clipping.test.mjs": "cd401b994898d23380c5e3e128fea0419d8248a3db8890714f8368700b5aebaa",
+    "tests/phg-historical-v127.test.mjs": "b436791cda546af78a01439ff752e030a0c0cd2319b11b6bab9056faaa4422c8",
+    "tests/warp-module-bay.test.mjs": "b6d183fb1e20868060104df6e6194bbe52a0740596026c8e26be8ccdbb5e4a29"
+  },
+  "evidence": [
+    {
+      "path": "production/p0p1-20261109/qa/ci/protocol-v2-cold/final-receipt.json",
+      "bytes": 1529,
+      "sha256": "a5c720cc7887fe80dd7bc714fc4fd8c04756f13184b9f46122122eb8917b0c6f"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/root/build-migration-final.log",
+      "bytes": 4610,
+      "sha256": "889a5677834ae6c0d1eb34b14ea93ac2b88c5ee155b7b29442a87f4c7baeaa2f"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/root/build-source-before-migration-final.json",
+      "bytes": 220436,
+      "sha256": "386934ddf518a469b4b62ed0f3bf25003093ad936e4e45d78df3ad692e7dfdeb"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/root/lint-source-final.json",
+      "bytes": 2653,
+      "sha256": "06082e1ac868339565e7c62ea0592f5e6e58c51017de19abdf6809e6a10703aa"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/root/lint-source-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/root/runtime-check-final.log",
+      "bytes": 175,
+      "sha256": "83c022064d6641face98107f559449c6290f311caacb5d46f65446b408f2002a"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/archive/attempt-3/final-receipt.json",
+      "bytes": 2725,
+      "sha256": "f6b0f4be7736f2d4da1d60165c57668b46e73033d460c8b1eaf36bac5607e33a"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/archive-next/attempt-2/final-receipt.json",
+      "bytes": 8006,
+      "sha256": "fa54b2aad50bb5a6cd43ac0fbb60eb1f6669fcee201dffebf79e269ca9a7adb1"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/clan-field-native/final-receipt.json",
+      "bytes": 14525,
+      "sha256": "d4b2a1643262dda9bf2c1142a91abce473c2bc249bdcf6a59bd2d6f049cadc88"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-hunt/attempt-3/final-receipt.json",
+      "bytes": 1438,
+      "sha256": "d8c93da8311dc5a2a2c15defe7a70287fe9f523764898cff712487cbe7a47b64"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/warp/asset-verification.json",
+      "bytes": 3971,
+      "sha256": "58e87744b6a7e680c33e0271d2a5cf0569bcd0000beee76ab31fafab25157b4f"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/phg-admission/verification.json",
+      "bytes": 3138,
+      "sha256": "776cebd9c12f67e957a75bbd08c65f324dcb09c535e95861b69aa62e3b7c9393"
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/final-receipt.json",
+      "bytes": 16482,
+      "sha256": "074ac16805c792b921824c71d7380f16a73b8e4dc5dae161bccf091b3f6669b1"
+    },
+    {
+      "path": "production/p0p1-20261109/lore/README.md",
+      "bytes": 2522,
+      "sha256": "2381e19e95f6f09904668984d4e16d014ec5cc90c706572b1af5f5def09667e9"
+    }
+  ],
+  "remaining": [
+    "Current registry retains real open/partial game development and art/reference requirements.",
+    "Remote authoritative War server, complete campaign/variant scenes and unadmitted assets remain unfinished.",
+    "Canonical human art, physical controllers and inaccessible primary references remain unqualified."
+  ]
+}

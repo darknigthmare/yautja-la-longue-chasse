@@ -1,0 +1,75 @@
+{
+  "owner": "2026-11-09T18:00:00.000Z",
+  "initialSave": "initial-save.json",
+  "initialSaveSha256": "ae085e7c4593ba8137e8ceccf792db4198f4d2b582db4878a3dddd9d630328ea",
+  "kind": "Production defaultSave legacy Young Blood, absent prologue; valid nearby exterior Homeworld checkpoint only.",
+  "seededRanksEarnedByRecipe": false,
+  "currentNurseryOrYoungBloodRiteQualified": false,
+  "tutorialProgressSeeded": false,
+  "missionResultsSeeded": false,
+  "body": {
+    "startActor": {
+      "x": 653.2703181035313,
+      "y": 2139.6956266351413,
+      "vx": 0,
+      "vy": 0,
+      "grounded": true,
+      "facing": 1
+    },
+    "level": "0",
+    "building": "trophy-mausoleum",
+    "doorway": {
+      "threshold": {
+        "x": 680,
+        "y": 1965
+      },
+      "approach": {
+        "x": 653.2703181035313,
+        "y": 2029.6956266351413
+      },
+      "clearWidth": 110.58558631715283,
+      "clearHeight": 160.96888055648236,
+      "paintedSocket": {
+        "x": 494,
+        "y": 476,
+        "width": 222,
+        "height": 407,
+        "threshold": {
+          "x": 605,
+          "y": 855.5
+        },
+        "units": "source-pixels"
+      },
+      "frontOffset": 8.471968381445201,
+      "normal": {
+        "x": -0.3818525985209811,
+        "y": 0.9242232376448747
+      },
+      "groundOpening": {
+        "left": {
+          "x": 629.2399268699729,
+          "y": 1943.0749469530535
+        },
+        "right": {
+          "x": 730.7600731300271,
+          "y": 1986.9250530469465
+        }
+      }
+    },
+    "room": {
+      "width": 538,
+      "depth": 308,
+      "spawn": {
+        "x": 269,
+        "y": 236
+      },
+      "service": {
+        "pointId": "trophy-service",
+        "x": 110,
+        "y": 130
+      }
+    }
+  },
+  "preparation": "Fresh browser origin: production migrateLegacyCampaignSlot then saveCampaignCheckpoint(location=homeworld), native Web Locks/localStorage, before mounting GameClient. This is initial fixture setup, not an earned result.",
+  "fault": "For the quota check only, Storage.setItem on the principal campaign key rejects a candidate tutorial step1. Other writes delegate to the native method. The original method is restored before retry and on cleanup."
+}

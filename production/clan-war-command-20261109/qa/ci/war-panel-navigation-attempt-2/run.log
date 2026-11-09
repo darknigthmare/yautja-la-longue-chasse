@@ -1,0 +1,66 @@
+{
+  "schema": 143,
+  "scope": "Real ClanWarPanelV85 + WarSessionV85 + V95 atlas in a seeded local browser fixture; not full GameClient navigation or 1:1 visual certification",
+  "checks": [
+    {
+      "name": "Production ClanWarPanelV85 and V95 atlas loaded",
+      "status": "PASS",
+      "detail": {
+        "presentation": "gauntlet",
+        "oneAtlas": true
+      }
+    },
+    {
+      "name": "Hologram/classic switch does not remount the true V95 atlas",
+      "status": "PASS",
+      "detail": {
+        "stateKept": true
+      }
+    },
+    {
+      "name": "Real tour resolution survives two rapid click events without a duplicate turn",
+      "status": "PASS",
+      "detail": {
+        "turn": 2,
+        "revision": 1,
+        "unrelatedCampaignUnchanged": true
+      }
+    },
+    {
+      "name": "Actual strategy exercise archive hydrates after page reload",
+      "status": "PASS",
+      "detail": {
+        "turn": 2
+      }
+    },
+    {
+      "name": "Different planets retain independent strategy sessions",
+      "status": "PASS",
+      "detail": {
+        "otherPlanet": "thalassa",
+        "korthasTurn": 2
+      }
+    },
+    {
+      "name": "Classic presentation persisted without modifying unrelated campaign bytes",
+      "status": "PASS",
+      "detail": {
+        "choice": "classic",
+        "warTurn": 2
+      }
+    }
+  ],
+  "checkCount": 6,
+  "actualWarTurn": 2,
+  "duplicateAdvancePrevented": true,
+  "loadedStaticAssets": 21,
+  "unavailableOptionalAssets": [
+    "/game/assets/clan-field-20261103/medical-empty.svg",
+    "/game/assets/clan-field-20261103/medical-empty.svg",
+    "/game/assets/clan-field-20261103/medical-empty.svg",
+    "/game/assets/clan-field-20261103/medical-empty.svg"
+  ],
+  "browserErrors": [],
+  "filmOneToOneApproved": 0,
+  "fullCampaignTested": false
+}

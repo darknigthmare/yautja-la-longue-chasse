@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "classification": "EXECUTED_WORKTREE_TESTS_THEN_COMMITTED",
+  "observedCheckout": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "implementationCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+  "executionContext": "Sources de travail exécutées puis committées ; identité vérifiée après coup, pas une nouvelle exécution sur le commit.",
+  "tests": {
+    "command": "node --experimental-strip-types --test --test-isolation=none --test-concurrency=1 tests/carcass-anatomy-v112.test.mjs tests/harvest-inventory-v112.test.mjs tests/hunt-carcass-runtime-v112.test.mjs tests/hunt-catalogue-contract-v112.test.mjs tests/hunt-carried-corpse-menu-v112.test.mjs tests/hunt-accessibility-v112.test.mjs",
+    "exitCodeObserved": 0,
+    "passed": 153,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "durationMs": 2216.513741,
+    "log": "tests.log",
+    "logSha256": "dc70bf81f66f06f470ce4d0e705857baa4a85807420ef82fbbb1c5ebd3a470c5",
+    "exitStatusProvenance": "Reported by executing agent /root/reprise_chasse_nov9, session42261, final chunk37583b, and confirmed by root."
+  },
+  "lint": {
+    "command": "./node_modules/.bin/eslint app/game/HuntRitesMenuV77.tsx app/game/HuntCanvas.tsx app/game/systems/huntRitesRuntimeV77.ts app/game/systems/ritesOfHuntV77.ts --max-warnings 0",
+    "exitCodeObserved": 0,
+    "log": "lint.log",
+    "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdoutEmpty": true,
+    "exitStatusProvenance": "Explicit final tool result reported by executing agent: session22315, chunk512b83; an empty file alone is not treated as exit0."
+  },
+  "implementationEntries": [
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "sha256": "4d96880d167b6eec4d725315f359bf89bf2ea02d590430d37d694eb211b08fb0",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "app/game/HuntRitesMenuV77.tsx",
+      "sha256": "9bc54a051d67f1b5627f1ce0d201c374e824da04652efcfcbb37deb6a45cd610",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "sha256": "fc36cb457e81c27172840fab2f2223775016b9a5dc7dc5eb8e83f5dcbd32f6f7",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "app/game/systems/ritesOfHuntV77.ts",
+      "sha256": "de2b71f6b38a76b6cda7d9c389e345349fc0ed795d5e2e637988c7817318faba",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "tests/carcass-anatomy-v112.test.mjs",
+      "sha256": "111942301d2eae657771855a2788093f5bfd12bc0ce21b29ade21949fb7a088e",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "tests/hunt-carcass-runtime-v112.test.mjs",
+      "sha256": "c9457a415fd4046ece200d60e787743db20c6010b136f324a258c8b168098056",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "tests/hunt-catalogue-contract-v112.test.mjs",
+      "sha256": "48d18e7663875829395c68c165d9a074d516583eb5544bed66e25e7ed51a24b8",
+      "equalToCommittedBytes": true
+    }
+  ],
+  "limits": [
+    "153 tests are the total of these overlapping sub-suites, not 153 new features.",
+    "Model and DOM checks do not prove a full campaign, a physical controller or human comprehension."
+  ]
+}

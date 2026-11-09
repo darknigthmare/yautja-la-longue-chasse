@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T10:19:43.095Z",
+  "scope": "Actual council, Bible navigation and original assets in the existing profile-only esbuild fixture. Real browser clicks, keys, localStorage, IDB and Web Locks. Parent suspension uses the declared fixture API; no gameplay callback or clock replaced. No Next, complete campaign, physical-controller or human artistic certification.",
+  "motion": "prefers-reduced-motion: reduce, declared before capture",
+  "checks": [
+    {
+      "name": "The central atlas appears within the first desktop screen, with ancillary systems behind command layers",
+      "passed": true,
+      "measurements": {
+        "height": 1100.90625,
+        "viewport": 1000,
+        "visibleButtons": 22,
+        "atlasTop": 356.90625,
+        "globeTop": 356.90625,
+        "globeBottom": 776.90625
+      }
+    },
+    {
+      "name": "archives: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "settings: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "help: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "worlds: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "territory: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "orders: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "forces: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "convoy: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "journal: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "sources: native focus confinement, Escape return and unchanged gameplay archive",
+      "passed": true
+    },
+    {
+      "name": "Atlas display: former map options/readouts remain accessible in their actual focused layer",
+      "passed": true
+    },
+    {
+      "name": "Atlas intel: former map options/readouts remain accessible in their actual focused layer",
+      "passed": true
+    },
+    {
+      "name": "Keyboard Enter on the actual SVG territory opens contextual orders and Escape restores that territory",
+      "passed": true
+    },
+    {
+      "name": "Choosing a target from intelligence closes its modal so the real map is immediately usable",
+      "passed": true
+    },
+    {
+      "name": "Both real projections stay available without serializing view state into a front",
+      "passed": true
+    },
+    {
+      "name": "An owner pause closes the native top layer under inert; resume restores its focus confinement",
+      "passed": true,
+      "ownerFixtureOnly": true
+    },
+    {
+      "name": "Changing projection preserves the actual mounted atlas and all war archive bytes",
+      "passed": true
+    },
+    {
+      "name": "The native world selector switches and returns fronts without gameplay resets, and restores visible keyboard focus",
+      "passed": true,
+      "worlds": 30
+    },
+    {
+      "name": "All fourteen former Bible tools remain reachable through four actual submenus",
+      "passed": true,
+      "groups": 4,
+      "tools": 14
+    },
+    {
+      "name": "390px: shell and contextual orders fit, old exercises remain visible and submenu choices stay accessible",
+      "passed": true,
+      "viewport": 390
+    },
+    {
+      "name": "320px: shell and contextual orders fit, old exercises remain visible and submenu choices stay accessible",
+      "passed": true,
+      "viewport": 320
+    },
+    {
+      "name": "The archived canyon remains genuinely playable through the new archive layer; one native tactical second is persisted",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser or HTTP resource errors",
+      "passed": true
+    },
+    {
+      "name": "Every selected source and the executed recipe remain byte identical throughout the run",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "screenshots": [
+    {
+      "filename": "01-front-desktop.png",
+      "sha256": "bc53fa538f279b1f513414a7f5e58d931efb3e39f324843bbab2c3b57470f311",
+      "opened": false
+    },
+    {
+      "filename": "02-mandates-desktop.png",
+      "sha256": "9a3d2d7435d56ec4dbdc0fccf389f080d7e4f362c6c94a4c8d2d34353d0d809c",
+      "opened": false
+    },
+    {
+      "filename": "03-front-390.png",
+      "sha256": "1c45f19ae162375b8272997304f871f3d0c5728f5c2fca5b17f2f3c7c7bb37c1",
+      "opened": false
+    },
+    {
+      "filename": "03-archives-390.png",
+      "sha256": "81b966e8f227f1c2547fe51bc835ec038a17780bf2573009c5624757f826a492",
+      "opened": false
+    },
+    {
+      "filename": "04-orders-390.png",
+      "sha256": "4637f741d2ad6234a19aca44af250016e6ef558491c13433c90e19ec1e6e4c59",
+      "opened": false
+    },
+    {
+      "filename": "05-submenus-390.png",
+      "sha256": "4500becfdc6baf70a7d74c50c6c5e29b362f432fb07cde98dda4e5daf390286e",
+      "opened": false
+    },
+    {
+      "filename": "03-front-320.png",
+      "sha256": "4c5a8f80c85ed761946bd134294cd2c309e7b1c672c3095167a35c410c28e4e2",
+      "opened": false
+    },
+    {
+      "filename": "03-archives-320.png",
+      "sha256": "674c34858a282f8b09311d3744072ce22128ca3cdad61511f57e6ecb1aba621b",
+      "opened": false
+    },
+    {
+      "filename": "04-orders-320.png",
+      "sha256": "5a10e1793e72ad01a464e44c285bcf65104728a0ab37a71e7aa7948bedb7c7e6",
+      "opened": false
+    },
+    {
+      "filename": "05-submenus-320.png",
+      "sha256": "cb72fa75f313061785c23d62b1f3cbfbc6b4cab2c105d58245d183e4776bebaf",
+      "opened": false
+    }
+  ],
+  "sourceBefore": {
+    "app/game/ClanWarPanelV85.tsx": "fe9d75c32fa10a34c032d74e2239f11ede13ce13c9db2f050b9724545586c216",
+    "app/game/ClanWarPanelV85.module.css": "54eb00ff09c13c863a1b7385df9200d570e0b30cd4f9233dc3d92a3caf17a2c6",
+    "app/game/ClanWarBibleV6Panel.tsx": "eb3bd605b0d365d521326e2486b4ad86e87e43935f8ab5d06e61401f79b5dc99",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/ClanWarOperationsV115.tsx": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f",
+    "app/game/ClanWarOperationsV115.module.css": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727",
+    "app/game/ClanWarAtlasV95.tsx": "e1abcad9fb45df381687063634dea0955a859ac59cffae5263665d7359476af9",
+    "app/game/ClanWarAtlasV95.module.css": "115b7646d0c031b0e00c355e4251ee9991897ac1ef234b262b9105355644af6c",
+    "app/game/ClanWarGauntletV131.tsx": "c8976654289bbb93e84c9efc09b0a93b7ef5d430e6fd58d5a2fd4c8793f80d2d",
+    "app/game/ClanWarGauntletV131.module.css": "a632428c117411c256575dfe132331b2bfac7034b46f14114d32fe0c2dc52ea5",
+    "tests/browser/clan-war-v94.fixture.tsx": "d7cdefdf5a2ae81a392b29db4272566e0a00d8e525428b6b1778628d0001ef6b",
+    "scripts/qa-clan-war-command-20261109.mjs": "6ea5c1854aad269b5885e1e02135c83b27711bcb29a00032de0844a9e935428e"
+  },
+  "bundle": {
+    "jsSha256": "a19a0f91cb1ef8905bbee9d646dfb96470e0968852e09826a02300e8b2296452",
+    "cssSha256": "67762d233914faa1117cf8c79003c42622144d79287eeed2d2107659cf82730a"
+  },
+  "browserVersion": "154.0.8037.57",
+  "pristineArchive": {},
+  "sourceAfter": {
+    "app/game/ClanWarPanelV85.tsx": "fe9d75c32fa10a34c032d74e2239f11ede13ce13c9db2f050b9724545586c216",
+    "app/game/ClanWarPanelV85.module.css": "54eb00ff09c13c863a1b7385df9200d570e0b30cd4f9233dc3d92a3caf17a2c6",
+    "app/game/ClanWarBibleV6Panel.tsx": "eb3bd605b0d365d521326e2486b4ad86e87e43935f8ab5d06e61401f79b5dc99",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/ClanWarOperationsV115.tsx": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f",
+    "app/game/ClanWarOperationsV115.module.css": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727",
+    "app/game/ClanWarAtlasV95.tsx": "e1abcad9fb45df381687063634dea0955a859ac59cffae5263665d7359476af9",
+    "app/game/ClanWarAtlasV95.module.css": "115b7646d0c031b0e00c355e4251ee9991897ac1ef234b262b9105355644af6c",
+    "app/game/ClanWarGauntletV131.tsx": "c8976654289bbb93e84c9efc09b0a93b7ef5d430e6fd58d5a2fd4c8793f80d2d",
+    "app/game/ClanWarGauntletV131.module.css": "a632428c117411c256575dfe132331b2bfac7034b46f14114d32fe0c2dc52ea5",
+    "tests/browser/clan-war-v94.fixture.tsx": "d7cdefdf5a2ae81a392b29db4272566e0a00d8e525428b6b1778628d0001ef6b",
+    "scripts/qa-clan-war-command-20261109.mjs": "6ea5c1854aad269b5885e1e02135c83b27711bcb29a00032de0844a9e935428e"
+  },
+  "passed": true
+}

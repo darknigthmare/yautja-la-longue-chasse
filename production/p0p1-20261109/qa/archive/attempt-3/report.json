@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T06:35:12.483Z",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "runKind": "esbuild V151 fixture hosting the actual current V115 component, reducers, native localStorage, IndexedDB and Web Locks",
+  "fullGameClientTested": false,
+  "nextProductionTested": false,
+  "cloudTested": false,
+  "physicalControllerTested": false,
+  "artOneToOneApproved": false,
+  "namespace": {
+    "canonical": "yautja.clan-war.v115.operations.fenced.v2",
+    "legacy": "yautja.clan-war.v115.operations.free.v1",
+    "legacyNeverWrittenByCurrentClient": true,
+    "adoption": "Explicitly chosen checkpoint revalidated before canonical reservation; later old-client progress remains separately recoverable. No atomic compare-and-swap across non-cooperating localStorage/IDB writers is claimed."
+  },
+  "oldClient": {
+    "commit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+    "exactPinnedSources": [
+      {
+        "path": "app/game/ClanWarOperationsV115.tsx",
+        "sha256": "21ca8570de06a728c53889c0d2fe1658e6942ad5d0da1ff775bb41162e604b86"
+      },
+      {
+        "path": "app/game/systems/clanWarOperationsV115.ts",
+        "sha256": "159fd3ad1b06646705b8d1978d24bfd449c34c0d78b11ab8f875f24c0724d905"
+      }
+    ],
+    "sharedDependencies": "Current files included in source-identity; only the two listed UI/model modules are loaded from the old commit",
+    "jsSha256": "cb04caab79ca5763a90fa92b25a89f8edb0e57ee23f98f8b9d5430becb7d296e",
+    "cssSha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6",
+    "fullHistoricalCheckout": false,
+    "writesViaOriginalUiHandler": true
+  },
+  "fixture": "tests/browser/clan-war-v151-four-modes.fixture.tsx",
+  "referenceDriver": "scripts/qa-clan-war-rts-two-tabs-v152.mjs",
+  "initialV115ArchiveInjected": false,
+  "reducersMocked": false,
+  "domPatched": false,
+  "clocksMocked": false,
+  "faultInjection": {
+    "kind": "One native IDBObjectStore.put(confirmed) is delegated, then its real readwrite transaction is aborted",
+    "affectedOrigin": "Fresh isolated browser context C",
+    "nativeApisDelegated": [
+      "IDBObjectStore.put",
+      "Storage.setItem"
+    ],
+    "nativeTransactionAborts": 1,
+    "archiveBytesWrittenBy": "Production V115 UI only",
+    "doubleRepairInput": "Two actual button.click() events in one task; native component busy guard and native Web Lock decide acceptance"
+  },
+  "browserVersion": "154.0.8037.57",
+  "viewports": [
+    {
+      "width": 1320,
+      "height": 900
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "passed": 17,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Two real V115 panels adopt empty archives read-only without inventing a default save",
+      "status": "PASS",
+      "detail": {
+        "tabs": 2,
+        "mirror": null,
+        "fence": null
+      }
+    },
+    {
+      "name": "Actual RTS launch reserves and confirms a native IDB intent before acknowledging the same mission and RAV mirror",
+      "status": "PASS",
+      "detail": {
+        "serial": 1,
+        "team": "W115-TEAM-01",
+        "target": "W3-K02",
+        "beforeRav": 120,
+        "afterRav": 119,
+        "token": "cadf9096-4e20-4680-ab0e-aa7c0278e665"
+      }
+    },
+    {
+      "name": "A sibling native Web Lock freezes both RTS ticks and the IDB fence",
+      "status": "PASS",
+      "detail": {
+        "tick": 0,
+        "durationMs": 2500,
+        "token": "cadf9096-4e20-4680-ab0e-aa7c0278e665"
+      }
+    },
+    {
+      "name": "Lock release resumes the same native mission without charging upkeep twice",
+      "status": "PASS",
+      "detail": {
+        "fromTick": 0,
+        "toTick": 1,
+        "serial": 1,
+        "rav": 119
+      }
+    },
+    {
+      "name": "Switching to alternating orders confirms another fence without starting or paying for another mission",
+      "status": "PASS",
+      "detail": {
+        "clock": 1,
+        "tick": 1,
+        "token": "3601be71-469e-4adf-bc40-d24491273257"
+      }
+    },
+    {
+      "name": "The stale sibling detects the authoritative front and cannot reset it",
+      "status": "PASS",
+      "detail": {
+        "archiveBytesPreserved": true
+      }
+    },
+    {
+      "name": "Reload adopts the exact confirmed archive without mirror writes, fence writes or another upkeep debit",
+      "status": "PASS",
+      "detail": {
+        "serial": 1,
+        "rav": 119,
+        "sameToken": true
+      }
+    },
+    {
+      "name": "A real old V115 UI/model creates and pauses its original legacy archive without a canonical mirror",
+      "status": "PASS",
+      "detail": {
+        "commit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+        "pinnedFiles": [
+          "app/game/ClanWarOperationsV115.tsx",
+          "app/game/systems/clanWarOperationsV115.ts"
+        ],
+        "sharedDependencies": "Current declared dependencies; this is not a complete historical checkout",
+        "serial": 1,
+        "rav": 119
+      }
+    },
+    {
+      "name": "The new UI requires explicit adoption, copies the exact chosen checkpoint and offers a real recovery download without altering legacy",
+      "status": "PASS",
+      "detail": {
+        "serial": 1,
+        "rav": 119,
+        "token": "2af6d792-9131-4e6a-9644-2d996338dcc0",
+        "legacyBytesPreserved": true
+      }
+    },
+    {
+      "name": "An old client genuinely writes its legacy key while the canonical Web Lock is held, without changing the adopted canonical bytes or fence",
+      "status": "PASS",
+      "detail": {
+        "oldTick": 2,
+        "canonicalTick": 1,
+        "canonicalToken": "2af6d792-9131-4e6a-9644-2d996338dcc0",
+        "oldClientUsesOwnLegacyProtocol": true
+      }
+    },
+    {
+      "name": "Canonical orders continue with one upkeep debit and the independently advanced legacy branch remains downloadable from the current UI",
+      "status": "PASS",
+      "detail": {
+        "serial": 1,
+        "rav": 119,
+        "canonicalTick": 2,
+        "actualRecoveryDownload": true
+      }
+    },
+    {
+      "name": "Reload selects the established canonical exercise and never re-imports an old-client branch",
+      "status": "PASS",
+      "detail": {
+        "canonicalBytesUnchanged": true,
+        "noSecondAdoptionPrompt": true
+      }
+    },
+    {
+      "name": "A delegated native confirmation put followed by real transaction abort preserves the durable intent and refuses a success announcement",
+      "status": "PASS",
+      "detail": {
+        "aborts": 1,
+        "phase": "intent",
+        "serial": 1,
+        "tick": 0,
+        "rav": 119,
+        "token": "4fe469db-d3fb-4b2d-86b2-0febe78c2fc1"
+      }
+    },
+    {
+      "name": "Reload rediscovers the same real intent in read-only recovery and does not replay the operation",
+      "status": "PASS",
+      "detail": {
+        "token": "4fe469db-d3fb-4b2d-86b2-0febe78c2fc1",
+        "sameBytes": true,
+        "writes": 0
+      }
+    },
+    {
+      "name": "Explicit double-input repair confirms the original token once, without replaying launch, rewriting identical bytes or charging upkeep again",
+      "status": "PASS",
+      "detail": {
+        "originalToken": "4fe469db-d3fb-4b2d-86b2-0febe78c2fc1",
+        "originalConfirmations": 1,
+        "serial": 1,
+        "rav": 119,
+        "currentToken": "b19141ce-36dc-4c12-93e1-771d360501bb"
+      }
+    },
+    {
+      "name": "A second reload is a normal confirmed read with no recovery button, duplicate mission or unrelated hunter-save change",
+      "status": "PASS",
+      "detail": {
+        "serial": 1,
+        "sameBytes": true,
+        "sameFence": true
+      }
+    },
+    {
+      "name": "Actual fixture resources load without runtime, console, HTTP or asset errors and source inputs stay byte-identical",
+      "status": "PASS",
+      "detail": {
+        "sourceFiles": 77,
+        "servedResponses": 36
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01-native-rts-committed.png",
+      "bytes": 92829,
+      "sha256": "1b672a5409ec102388a0cf1aaf81564b4aed7692d5eb506fb51e71d3968daa4e"
+    },
+    {
+      "file": "02-native-lock-frozen.png",
+      "bytes": 92829,
+      "sha256": "1b672a5409ec102388a0cf1aaf81564b4aed7692d5eb506fb51e71d3968daa4e"
+    },
+    {
+      "file": "03-native-stale-tab-blocked.png",
+      "bytes": 252713,
+      "sha256": "45433e99f83f46319a149247639f6bcb574e3fafc48c098016f933c99601ab42"
+    },
+    {
+      "file": "04-native-reloaded-alternating.png",
+      "bytes": 245772,
+      "sha256": "4fa9769ccd183be3c20bba25b9b85ff684ebc00ec64f0ff9c00db045c7412fd0"
+    },
+    {
+      "file": "10-actual-old-client-before-adoption.png",
+      "bytes": 92984,
+      "sha256": "33923be45ee49bac8c32d22ccfffbea869b1e422ebe42b523106d1911fa167e7"
+    },
+    {
+      "file": "11-native-explicit-adoption-preview.png",
+      "bytes": 180487,
+      "sha256": "7d7c2bfc355c176f7d2dd75bdc6cca28b4db14e1bcd155c0f0a34aab6196026c"
+    },
+    {
+      "file": "12-native-canonical-continues-after-old-write.png",
+      "bytes": 93155,
+      "sha256": "5ecf163f7c5aecf8398bbd40468e41c796134070b86dbb1c318b330a641579d0"
+    },
+    {
+      "file": "05-native-interrupted-write.png",
+      "bytes": 250451,
+      "sha256": "46be8373947a186d02864bf0d9545b4636eccea196803d6a9cc05344c4a7fe53"
+    },
+    {
+      "file": "06-native-recovery-awaits-confirmation.png",
+      "bytes": 245366,
+      "sha256": "0e0a984e4f14c36edd475969ddde6cc4dbd3ca154d0fb1704ae8ff9b9e583262"
+    },
+    {
+      "file": "09-native-recovery-mobile-390.png",
+      "bytes": 74545,
+      "sha256": "6217e4c9d76fec2b533c913ce7fc24e6f40e05967dccd8ba0001301cff4291b0"
+    },
+    {
+      "file": "07-native-repaired-mission.png",
+      "bytes": 92705,
+      "sha256": "87f674a1dd4a8e309351dba60cf6a3636f1d896d2d55a55ba4e7fe9f4bb98e4b"
+    },
+    {
+      "file": "08-native-repaired-mobile-390.png",
+      "bytes": 94131,
+      "sha256": "02cde51a872f461111d6905b6b7a974ad61c8a6fc6ef4a1e54e4b278bb015d80"
+    }
+  ],
+  "screenshotVisualInspection": {
+    "completed": true,
+    "originalPngsOpened": 12,
+    "scopePassed": true,
+    "path": "screenshot-inspection.json",
+    "scope": "Actual fixture desktop mission/recovery/adoption screens and bounded390px readability; no human canonical art or complete mobile campaign approval."
+  },
+  "bundle": {
+    "jsSha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74",
+    "cssSha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6",
+    "htmlSha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216",
+    "sourceFiles": 77,
+    "sourceIdentitySha256": "8c39cce8efa43683f5bc8ae3510b1afdf67028e518e7c5892c6b8f3b7eba7028"
+  },
+  "served": [
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/legacy/",
+      "bytes": 440,
+      "sha256": "5d39c37b6e05c1a4aae5ddc0786f1e97f1b50df7d9b7ce8bbde3501a4ebb1567"
+    },
+    {
+      "path": "/legacy.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/legacy.js",
+      "bytes": 4050284,
+      "sha256": "cb04caab79ca5763a90fa92b25a89f8edb0e57ee23f98f8b9d5430becb7d296e"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    },
+    {
+      "path": "/",
+      "bytes": 450,
+      "sha256": "7cce8e85a5579b7b970131675c5218f518a1e1f4e4c74771239673a3409db216"
+    },
+    {
+      "path": "/archive.css",
+      "bytes": 14340,
+      "sha256": "c94e55025ebdbb69219ca9f3ffea517b3e3aafd53e8636da03f0580aaf5f40f6"
+    },
+    {
+      "path": "/archive.js",
+      "bytes": 4262362,
+      "sha256": "f8a129f2422b734f0016a2f85fd3dd9b699b5b24373af7b7e670bc7085ea9c74"
+    },
+    {
+      "path": "/game/assets/clan-field-20261103/medical-empty.svg",
+      "bytes": 2348,
+      "sha256": "b5d7c9335bb1852a9c21b72217d5b3efa1e61cdd259df13436c56ba302173947"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "missingAssets": []
+}

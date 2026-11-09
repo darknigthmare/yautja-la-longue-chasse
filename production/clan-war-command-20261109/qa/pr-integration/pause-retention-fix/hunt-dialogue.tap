@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: four field and three Cradle situations have 42 original, distinct, bounded lines
+ok 1 - four field and three Cradle situations have 42 original, distinct, bounded lines
+  ---
+  duration_ms: 1.809092
+  type: 'test'
+  ...
+# Subtest: six contacts discuss the actual archived field proof: field-jungle-survey
+ok 2 - six contacts discuss the actual archived field proof: field-jungle-survey
+  ---
+  duration_ms: 5.025751
+  type: 'test'
+  ...
+# Subtest: six contacts discuss the actual archived field proof: field-ice-route
+ok 3 - six contacts discuss the actual archived field proof: field-ice-route
+  ---
+  duration_ms: 1.773749
+  type: 'test'
+  ...
+# Subtest: six contacts discuss the actual archived field proof: field-bad-blood
+ok 4 - six contacts discuss the actual archived field proof: field-bad-blood
+  ---
+  duration_ms: 1.397901
+  type: 'test'
+  ...
+# Subtest: six contacts discuss the actual archived field proof: field-ruins-memory
+ok 5 - six contacts discuss the actual archived field proof: field-ruins-memory
+  ---
+  duration_ms: 1.513996
+  type: 'test'
+  ...
+# Subtest: six contacts distinguish the shared Cradle outcome: retreated
+ok 6 - six contacts distinguish the shared Cradle outcome: retreated
+  ---
+  duration_ms: 2.120493
+  type: 'test'
+  ...
+# Subtest: private workshop analysis stays private: retreated
+ok 7 - private workshop analysis stays private: retreated
+  ---
+  duration_ms: 3.850255
+  type: 'test'
+  ...
+# Subtest: six contacts distinguish the shared Cradle outcome: victory-without-crown
+ok 8 - six contacts distinguish the shared Cradle outcome: victory-without-crown
+  ---
+  duration_ms: 1.659967
+  type: 'test'
+  ...
+# Subtest: private workshop analysis stays private: victory-without-crown
+ok 9 - private workshop analysis stays private: victory-without-crown
+  ---
+  duration_ms: 3.91319
+  type: 'test'
+  ...
+# Subtest: six contacts distinguish the shared Cradle outcome: crown-returned
+ok 10 - six contacts distinguish the shared Cradle outcome: crown-returned
+  ---
+  duration_ms: 1.86024
+  type: 'test'
+  ...
+# Subtest: private workshop analysis stays private: crown-returned
+ok 11 - private workshop analysis stays private: crown-returned
+  ---
+  duration_ms: 4.962375
+  type: 'test'
+  ...
+# Subtest: an extraction without the actual clan presentation does not unlock a queen story
+ok 12 - an extraction without the actual clan presentation does not unlock a queen story
+  ---
+  duration_ms: 0.726708
+  type: 'test'
+  ...
+# Subtest: legacy reported dossiers lacking a disclosure choice are not retrospectively published
+ok 13 - legacy reported dossiers lacking a disclosure choice are not retrospectively published
+  ---
+  duration_ms: 1.163207
+  type: 'test'
+  ...
+# Subtest: invalid, future and foreign queen records cannot add a story while field records remain available
+ok 14 - invalid, future and foreign queen records cannot add a story while field records remain available
+  ---
+  duration_ms: 2.896785
+  type: 'test'
+  ...
+# Subtest: wrong room, invalid hull, future docking, foreign owner and suspension remain silent
+ok 15 - wrong room, invalid hull, future docking, foreign owner and suspension remain silent
+  ---
+  duration_ms: 0.408336
+  type: 'test'
+  ...
+# Subtest: future/foreign records and missing earned contacts cannot become remote speech
+ok 16 - future/foreign records and missing earned contacts cannot become remote speech
+  ---
+  duration_ms: 0.684274
+  type: 'test'
+  ...
+# Subtest: reserve, transfer, suspension and refit use the same real actor presence
+ok 17 - reserve, transfer, suspension and refit use the same real actor presence
+  ---
+  duration_ms: 5.289759
+  type: 'test'
+  ...
+# Subtest: C37 hearing stays the only conversation for gathered witnesses, and closure restores field talk
+ok 18 - C37 hearing stays the only conversation for gathered witnesses, and closure restores field talk
+  ---
+  duration_ms: 133.225383
+  type: 'test'
+  ...
+# Subtest: contradictory mission counters refuse interpretation rather than infer a win
+ok 19 - contradictory mission counters refuse interpretation rather than infer a win
+  ---
+  duration_ms: 2.060912
+  type: 'test'
+  ...
+# Subtest: an unknown, removed, or non-field selection never silently selects a different victory
+ok 20 - an unknown, removed, or non-field selection never silently selects a different victory
+  ---
+  duration_ms: 1.610463
+  type: 'test'
+  ...
+# Subtest: newer failed attempts do not relabel a historical completed contract as the last hunt
+ok 21 - newer failed attempts do not relabel a historical completed contract as the last hunt
+  ---
+  duration_ms: 0.74776
+  type: 'test'
+  ...
+# Subtest: field stories follow receipt revisions, not rewritten clocks or aggregate trophy counts
+ok 22 - field stories follow receipt revisions, not rewritten clocks or aggregate trophy counts
+  ---
+  duration_ms: 0.689992
+  type: 'test'
+  ...
+# Subtest: no contract receipts means no inferred story from old trophies, rank or scores
+ok 23 - no contract receipts means no inferred story from old trophies, rank or scores
+  ---
+  duration_ms: 0.461987
+  type: 'test'
+  ...
+# Subtest: portable save round trip preserves all selected reports and does not create a new dialogue ledger
+ok 24 - portable save round trip preserves all selected reports and does not create a new dialogue ledger
+  ---
+  duration_ms: 5.708181
+  type: 'test'
+  ...
+# Subtest: repeated views cannot pay, recruit, heal, disclose private returns or change equipment
+ok 25 - repeated views cannot pay, recruit, heal, disclose private returns or change equipment
+  ---
+  duration_ms: 31.799426
+  type: 'test'
+  ...
+# Subtest: native parent keeps four original topics and adds one closed, accessible disclosure control
+ok 26 - native parent keeps four original topics and adds one closed, accessible disclosure control
+  ---
+  duration_ms: 22.098544
+  type: 'test'
+  ...
+# Subtest: absent, wrong-room, foreign and future contacts render no story controller
+ok 27 - absent, wrong-room, foreign and future contacts render no story controller
+  ---
+  duration_ms: 1.604634
+  type: 'test'
+  ...
+# Subtest: SSR retains a paused story controller hidden and inert without an enabled toggle or live speech
+ok 28 - SSR retains a paused story controller hidden and inert without an enabled toggle or live speech
+  ---
+  duration_ms: 0.985708
+  type: 'test'
+  ...
+# Subtest: four recruitment rewrites preserve every non-prose value, branch, location, and numeric threshold
+ok 29 - four recruitment rewrites preserve every non-prose value, branch, location, and numeric threshold
+  ---
+  duration_ms: 0.681779
+  type: 'test'
+  ...
+# Subtest: recruitment speakers do not recite scores, production identifiers, or universal racial commandments
+ok 30 - recruitment speakers do not recite scores, production identifiers, or universal racial commandments
+  ---
+  duration_ms: 0.505964
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 297.389306

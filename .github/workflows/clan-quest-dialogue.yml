@@ -1,0 +1,142 @@
+name: Clan quest dialogue native regressions
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/**'
+      - 'scripts/qa-clan*dialogue*.mjs'
+      - 'tests/clan-ship*.mjs'
+      - 'tests/buried-cradle*.mjs'
+      - 'tests/helpers/clan-ship*dialogue*.mjs'
+      - 'tests/companion-residence.test.mjs'
+      - 'tests/fixtures/clan-quest-mechanics-19317af4.json'
+      - 'tests/fixtures/companion-recruitment-mechanics-19317af4.json'
+      - 'production/quetes-vivantes-20261109/**'
+      - 'production/quetes-vivantes-suite-20261109/**'
+      - '.github/workflows/clan-quest-dialogue.yml'
+      - 'package*.json'
+      - 'tsconfig.json'
+permissions:
+  contents: read
+jobs:
+  dialogue:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+          filter: blob:none
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /scripts/
+            /tests/
+            /docs/
+            /desktop/
+            /build/
+            /production/quetes-vivantes-20261109/
+            /production/quetes-vivantes-suite-20261109/
+            /.openai/hosting.json
+            /public/**/manifest.json
+      - name: Restore original declared assets without modifying their contents
+        run: |
+          python3 - <<'PY'
+          import json,pathlib,subprocess
+          root=pathlib.Path.cwd()
+          files={x['path'] for x in json.loads((root/'docs/qa/current-integration-20261103/runtime-inputs.json').read_text())['entries']}
+          files.update(json.loads((root/'tests/fixtures/clan-ship-browser-assets.json').read_text())['paths'])
+          files.update('public'+x['src'] for x in json.loads((root/'app/game/data/buriedCradleArt.json').read_text())['assets'].values())
+          files.update(['public/game/prologue/v47/village.png','public/game/prologue/v47/arena.png','public/game/ships/v14/avp-predator-mothership.webp','public/game/ships/v12/classic-predator-spaceship.webp','public/game/ships/v13/classic-predator-spaceship-top.webp','public/game/backgrounds/ship-hub-v4.webp'])
+          for name in files:
+            path=pathlib.PurePosixPath(name);assert not path.is_absolute() and '..' not in path.parts
+          subprocess.run(['git','sparse-checkout','add','--stdin'],input='\n'.join('/'+p for p in sorted(files))+'\n',text=True,check=True)
+          assert all((root/p).is_file() for p in files)
+          PY
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Check official current inventory without rewriting evidence
+        run: node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+      - name: Full TypeScript
+        run: npm run typecheck
+      - name: Strict lint
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/BuriedCradleReturnPanel.tsx app/game/ClanShipOperationsPanel.tsx
+          app/game/ClanShipCrewDialogue.tsx app/game/ClanShipHuntConversation.tsx
+          app/game/systems/clanShipDialogue.ts app/game/systems/clanShipHuntDialogue.ts
+          app/game/systems/clanShipOperations.ts app/game/systems/clanShipIncidents.ts
+          app/game/systems/clanShipTrophyCase.ts app/game/systems/companionResidence.ts
+          scripts/qa-clan-dialogue-browser-20261109.mjs scripts/qa-clan-hunt-dialogue-browser-20261109.mjs
+          tests/clan-ship-dialogue.test.mjs tests/clan-ship-hunt-dialogue.test.mjs
+          tests/helpers/clan-ship-hunt-dialogue-fixture.mjs
+      - name: New and existing regressions
+        run: |
+          set -euo pipefail
+          mkdir -p outputs/qa-clan-dialogue-20261109
+          node --experimental-strip-types --test --test-reporter=tap --test-concurrency=1 tests/clan-ship-hunt-dialogue.test.mjs tests/clan-ship-dialogue.test.mjs tests/clan-ship-operations.test.mjs tests/clan-ship-operations-save.test.mjs tests/clan-ship-space-encounter.test.mjs tests/clan-ship-incidents.test.mjs tests/clan-ship-trophy-case.test.mjs tests/clan-ship-trophy-hearing.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs tests/buried-cradle-return.test.mjs tests/buried-cradle-campaign.test.mjs tests/buried-cradle-snapshot.test.mjs tests/companion-residence.test.mjs | tee outputs/qa-clan-dialogue-20261109/regressions.tap
+      - name: Verify both native workbooks without replacing historical bytes
+        run: |
+          python3 - <<'PY'
+          import hashlib,json,pathlib,zipfile,xml.etree.ElementTree as ET
+          ns={'s':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
+          for folder in ['quetes-vivantes-20261109','quetes-vivantes-suite-20261109']:
+            root=pathlib.Path('production')/folder;meta=json.loads((root/'verification-classeur.json').read_text());file=root/meta['file']
+            raw=file.read_bytes();assert len(raw)==meta['bytes'] and hashlib.sha256(raw).hexdigest()==meta['sha256']
+            with zipfile.ZipFile(file) as z:
+              assert z.testzip() is None
+              assert [s.attrib['name'] for s in ET.fromstring(z.read('xl/workbook.xml')).findall('s:sheets/s:sheet',ns)]==meta['sheets']
+              formulas=0
+              for name in z.namelist():
+                if name.startswith('xl/worksheets/') and name.endswith('.xml'):
+                  xml=ET.fromstring(z.read(name));formulas+=len(xml.findall('.//s:f',ns));assert not xml.findall('.//s:c[@t="e"]',ns)
+              assert formulas==meta['formulas']==5
+            print(folder,': exact bytes, sheets, formula count and absence of error cells confirmed.')
+          PY
+      - name: Install locked Chromium
+        run: node node_modules/playwright-core/cli.js install --with-deps chromium
+      - name: Native meetings, space orders, return and reload on three viewports
+        run: node scripts/qa-clan-dialogue-browser-20261109.mjs
+      - name: Native archived hunts, private returns and reload
+        run: node scripts/qa-clan-hunt-dialogue-browser-20261109.mjs
+      - name: Expose the observed failure in readable check annotations
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          paths = [Path('outputs/qa-clan-dialogue-20261109/browser-verification.json'), Path('outputs/qa-clan-hunt-dialogue-20261109/browser-verification.json')]
+          found = False
+          for path in paths:
+            if not path.is_file():
+              continue
+            report = json.loads(path.read_text())
+            if report.get('passed') is True:
+              continue
+            found = True
+            failure = report.get('failure') or report.get('errors') or 'Inspect the preserved report for the failed assertion.'
+            message = json.dumps(failure, ensure_ascii=False) if not isinstance(failure, str) else failure
+            message = (str(path) + ': ' + message)[:16000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+            print('::error title=Native clan dialogue diagnostic::' + message)
+          if not found:
+            print('::error title=Native clan dialogue diagnostic::No failing native report was produced; inspect the preceding setup or build step.')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: clan-dialogue-native-${{ github.event.pull_request.head.sha }}
+          path: |
+            outputs/qa-clan-dialogue-20261109/
+            outputs/qa-clan-hunt-dialogue-20261109/
+          retention-days: 14
+          if-no-files-found: error

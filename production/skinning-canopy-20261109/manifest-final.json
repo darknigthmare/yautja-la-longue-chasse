@@ -1,0 +1,2070 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "reviewedCodeCommit": "cfa730ba65c03d353eb97acfec56eabc383a499b",
+  "files": [
+    {
+      "path": "production/skinning-canopy-20261109/README.md",
+      "bytes": 4606,
+      "sha256": "3a4917017885c1eaf704c8a026737a98307e545106c1975d3c5fd5e2c8c38fab",
+      "gitBlob": "11f7d959a61214fef01b1a47445393abc9a88e15",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/Yautja_Skinning_Canopee_20261109.html",
+      "bytes": 563127,
+      "sha256": "e7ba1c15c9e8771fade670fc7ec56fd17fad4dc05f206641fa0afa7f80b4a5d1",
+      "gitBlob": "be8b48e8390fc372c1fdcf587898c548feac4771",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/Yautja_Skinning_Canopee_20261109.xlsx",
+      "bytes": 110378,
+      "sha256": "fc7c871a26218fb8b09a9463a9d67884a6f29c848899171ced5c7362125abc79",
+      "gitBlob": "7463815a779fd731f212bbd47be8eb15d886d670",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/baseline.json",
+      "bytes": 133441,
+      "sha256": "75cb2e5eacb3471adfebfc079a5ae80dd7d2549a112edf196385aa46aa5f3271",
+      "gitBlob": "bbc63cad9ba5561f342bd128a906e80417dbfd18",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/build-followup.py",
+      "bytes": 20599,
+      "sha256": "fb0f771572da9483eb2a26a83066dd6ac0f43a037c27ea575376d9dd2efd9e71",
+      "gitBlob": "3a055875fbea6c03e9bab30e49052b3c62ba7e8b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/README.md",
+      "bytes": 9339,
+      "sha256": "dfff5924b7c1f2570a26080fffd4791424e923263888beee53356a8cbd616610",
+      "gitBlob": "e96484784e70355776ef400c4ab069839b9a5563",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/build-final-initial/build.log",
+      "bytes": 957,
+      "sha256": "fef4014bc1882f6ab6d3aa23bc86d7fcb61e2956a5706ad6c2520bf1b5434ba5",
+      "gitBlob": "8b4b8965afeb899370c87bccde55013b96709d41",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/build-final-initial/receipt.json",
+      "bytes": 3204,
+      "sha256": "30465e568f00b9410ebc0e11edc5ee6ee9443a2d6e40bce4be6e285c91dce257",
+      "gitBlob": "047b948a8df399616d017d020b79b0f6b9792995",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-hud-preflight/check.mjs.txt",
+      "bytes": 5231,
+      "sha256": "cae0bda7728123d3e7f6d24be70bbcd7d166ba67886ea60ff507a975facb7af3",
+      "gitBlob": "e7d75c65e33d5fe668a0bbd2416331cd99c559dd",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-hud-preflight/first-measurement.json",
+      "bytes": 2104,
+      "sha256": "485505aaa0e453ee7c485d27e19aee3bcb55b4c8d7379638ae6067a0ef82c817",
+      "gitBlob": "b91936824876bbe4693aff26ba20f5d49ef8e770",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-hud-preflight/receipt.json",
+      "bytes": 2369,
+      "sha256": "55f98668b18fd57de2a9dcd29e608b8dcaf7408a6a6c7d73d235857b35f381b2",
+      "gitBlob": "0e0b52d4a5469b450c28655a0cd189494040d776",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-hud-preflight/report.json",
+      "bytes": 3708,
+      "sha256": "73052613ac23a18d6f01d8280ba98f9f2bc98ffb9cbe9cdfd58ea69082226f63",
+      "gitBlob": "079247be42e4bb96f41eb53d33d5941e022a8abc",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-hud-preflight/swinging-320.png",
+      "bytes": 30131,
+      "sha256": "bc11cc5cbfaac28d8adbbf527a3481975186873b7a2487aba0061a8d632f4121",
+      "gitBlob": "1c82308d064f5b685d2f0449333c0e125471a16e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-hud-preflight/swinging-390.png",
+      "bytes": 33337,
+      "sha256": "bcc95c5b84a3fd0fb4ed67646e51db2a5ed731777346db4527a06cedea3ab5e2",
+      "gitBlob": "50667d75c443e152dea20eedb14ed327203ff7b3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-policy-diagnostic/check.mjs.txt",
+      "bytes": 5145,
+      "sha256": "9710a5a315504c78bf841a34d952f85b26505186bb923b2f6b8a04a5027d5dde",
+      "gitBlob": "d3e4507d23f5dd9be73f948d67bb62e33ffc8fa0",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-policy-diagnostic/report.json",
+      "bytes": 48100,
+      "sha256": "83aa3333fecef7e174f573862d14504f7111ac60a2af2d8c5e96cb03a4035646",
+      "gitBlob": "6f82420eea99290609aa83b126bde52a4f22f61b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-policy-diagnostic/sampling-first-six.json",
+      "bytes": 74575,
+      "sha256": "9484db52c0af136f55359a891c3a8b7b88d127edfaf93c2bf77c205390caf128",
+      "gitBlob": "0426b4bf814e3347de5b35b7b8b1ffcee6f74b73",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-policy-diagnostic/sampling-report.json",
+      "bytes": 110858,
+      "sha256": "862796f9977334a8e4df5a1ef4e95eb865233aabd0a0bed77f2b99992c7bc4c8",
+      "gitBlob": "54817d4da37b5581e01d3abbab23afe4898f2525",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-policy-diagnostic/sampling.mjs.txt",
+      "bytes": 5416,
+      "sha256": "26285fbd10353b67e0599d204dfacccaba339dcbaa55907f4d15b54baf1b04eb",
+      "gitBlob": "d33242364bb62e7835c6b6183abc9008394ef6c5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-rear-hand-model/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-rear-hand-model/measurements.json",
+      "bytes": 6611,
+      "sha256": "19ffa9e05bb9dc3a25c42e586996b05c01eb1a37cb5f88cc6da0c8996f0e2ae3",
+      "gitBlob": "f0129c81a0c8f89d300e0b6c4517663d9803779c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-rear-hand-model/receipt.json",
+      "bytes": 1338,
+      "sha256": "946771de458427fd0b25edd721bb82a97611250efead6aa45fda4be6cc17846a",
+      "gitBlob": "a85d88b1f66177523a26e76897847684c4be87b1",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/canopy-rear-hand-model/tests.log",
+      "bytes": 743,
+      "sha256": "48fce13eb6508f4112f36be9c5ea838afa73a36a98405d491b6850d7c38ccfa1",
+      "gitBlob": "8bc4aed7d997c7fb58fccb73b3426746622387dc",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/candidate.html",
+      "bytes": 560630,
+      "sha256": "f018be76102acc725b1192bf63c5ff7bd1f4542a498d055fb38207541b595f6e",
+      "gitBlob": "291a8f6974cbba921d7aa460f97d5f99328b4098",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/candidate.xlsx",
+      "bytes": 109710,
+      "sha256": "3d7b24ca7b84a1091cd7e93f4bac0fa338d8ca4e4598813c92c824e514a84656",
+      "gitBlob": "5927dda09a14cba82a0c9be65a79d8f1b972530d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/independent-result.json",
+      "bytes": 276,
+      "sha256": "e063ba9223df14f7d86d39467bc05c6e18fefce39099d80a6b639dba81198fce",
+      "gitBlob": "34c37646b25157af091ad25bd65c4c3aa68b453e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/independent-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/qualification-before-document-qualification.json",
+      "bytes": 86542,
+      "sha256": "36fe69a553522124c96f9c880248d6872494bbd1bcea4add17ac8bdd1304b29a",
+      "gitBlob": "6e31cc320d598b068cd76d53953150ea7febd9ea",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/receipt.json",
+      "bytes": 2259,
+      "sha256": "243fe77212ff502e6be47f3b9a5bb66ac3d64fa37f1b498d9208fb3ad622b1ea",
+      "gitBlob": "d38edba3388b9c7f518b5eb1da059407e3fe2a48",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/verification-before-document-qualification.json",
+      "bytes": 164343,
+      "sha256": "ea141b278973bb29d2d395656c5df4169b8ea9ca4a1d6de278fbe3dfe25e50e3",
+      "gitBlob": "3179264dae590050e7ab4cdb4976e34816b79aa4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/attempt01-failure.json",
+      "bytes": 712,
+      "sha256": "be110492e743cd03ae8e5ee2f66e80db5b82267c5cf8ed57aa92f6dd0376782d",
+      "gitBlob": "5152895bc5ec3f46939f37528cc7981c407bfb07",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/check.py.txt",
+      "bytes": 3116,
+      "sha256": "c5c9662f3e0a599b29636c2703a2787049594113b32907ffc886c7c8e482b9c8",
+      "gitBlob": "97e906539d3913c347f4d827b4a6dde1a8852d7c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/input-check.log",
+      "bytes": 156,
+      "sha256": "227fcfafb6d89662fa93b1f6e068248384eefd2d063acde78975cd6e794169bf",
+      "gitBlob": "2d57219e07bcfbb890ca1d672fd1a0f4a9cea405",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/prior-source/build-followup.py.txt",
+      "bytes": 20049,
+      "sha256": "c422ad02d85b7328dc67bb4aaaa418446eb1964f58668b59d47e1db2c94235e2",
+      "gitBlob": "e2f8a1a7db464c5131e550a183e59276a086b1d7",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/prior-source/check.py.txt.txt",
+      "bytes": 3116,
+      "sha256": "c5c9662f3e0a599b29636c2703a2787049594113b32907ffc886c7c8e482b9c8",
+      "gitBlob": "97e906539d3913c347f4d827b4a6dde1a8852d7c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/prior-source/index.json",
+      "bytes": 1012,
+      "sha256": "8041b178056c8f8b410dde0b159052bf881ac8f20e789098218303599611b150",
+      "gitBlob": "abb2f04f549c438fbbd1fdf00e43267ef16b1a15",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/prior-source/verify-followup.py.txt",
+      "bytes": 10604,
+      "sha256": "358e66c2a6f398dd066ab82d508729123bf74fcf8c21325badfb8bdcc122ff1f",
+      "gitBlob": "dd4e6c1354da6364d4d7466678aa7e49a1fd2bf9",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs/receipt.json",
+      "bytes": 2391,
+      "sha256": "9e486b5ff8e4b1e62f5d790789fce182c507c57ffeb493b7ab8e3bcfd7352efd",
+      "gitBlob": "31232cad3140a541e8139168775b56ad6fb9c6ef",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs-final/check.py.txt",
+      "bytes": 3968,
+      "sha256": "f784ab9dfcd84b9a2a5c255ef7f62abd0a8a77f9f5417ab4b75d207cf29997ca",
+      "gitBlob": "4c279684d45b269c3ec2c9e3c49bd96756bdcdd3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs-final/input-check.log",
+      "bytes": 155,
+      "sha256": "63d891a7dfbde7de7b7893baef8ce42aecd793514005f30800806097aae8312a",
+      "gitBlob": "690e931cc5a7fb8eccf82496512a2b44f0c0fab3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-inputs-final/receipt.json",
+      "bytes": 2475,
+      "sha256": "3f84321b4fd3cf1ef209742610f08970174bfb5dabd743abaab093bb3695e99e",
+      "gitBlob": "ee2961985483f273cc4a1d426cd5699a3c070f12",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/check.mjs.txt",
+      "bytes": 7497,
+      "sha256": "0d8702f62b32bd77dd72d20ee88d626736c377234b1de0041988b8a33abc33c8",
+      "gitBlob": "c576696f7895db31c93885a0216119796e276929",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/closed-missing-full-320.png",
+      "bytes": 14604,
+      "sha256": "62b164d1e82ca3423740cfe780eec147bbd48e3f0ae08cb50312ffca6929442e",
+      "gitBlob": "dddad4d245d43b76a75b88af4fb63c1fa8a03a43",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/closed-missing-full-390.png",
+      "bytes": 14831,
+      "sha256": "a7d15b219857aed4820a3ecbf94892a02b7a285d44d7808aa4d04c497715b279",
+      "gitBlob": "f5683c6cda1152bcf515c58e6a449975e492cf3c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/execution-receipt.json",
+      "bytes": 2200,
+      "sha256": "2263b212a12741abbf28910a2cb5f014755c8954330d24c9615bc83b0ad717c7",
+      "gitBlob": "8d2a36fcd487e9eeaa2fe49ae713e978370e442d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/first-measurement.json",
+      "bytes": 4861,
+      "sha256": "34b8fb370200f974dee3d25e698f4f621cdd24bc88e1508e13f76ab27fca417b",
+      "gitBlob": "2a117f7851b0583d8b8dde42bb0cf74f389a5e16",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/report.json",
+      "bytes": 4854,
+      "sha256": "7f23704703aed04091b2ab324140a707e2ef72ef261b1a862de2a74b2741b82f",
+      "gitBlob": "f45bf9af37a19070a6b6d5ce64cd6937d13e68f8",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-guide-compact/unit-tests.log",
+      "bytes": 1142,
+      "sha256": "3e04e4cd29c4d599aa80a6b5d9961dce4087bb8fa3da5f20ec00d4e83473409b",
+      "gitBlob": "3e8440b42724a3adf5b995197f7944a7b1729bd6",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/contact-probes.json",
+      "bytes": 97455,
+      "sha256": "627611fb91aff510be48bb05a7eec0c6d46a56ad2c734c77aa89b7aa43dfd6fb",
+      "gitBlob": "df6675de7af7bda180ebea63f79120e4101e5c10",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/contact-probes.png",
+      "bytes": 113531,
+      "sha256": "d2a2aeed9cb1e605833ca8df10d91fe14315150e93cfcbcf65ec2ec2b0b773bc",
+      "gitBlob": "32ecfd2ee51352cc48af962303861db6af56281f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/contact-probes.svg",
+      "bytes": 23914,
+      "sha256": "e9954ae8ea4758c4163db88597c812b1b5a809d3211a8f83306c1ce10447a257",
+      "gitBlob": "61bbf68d1228300612a823131c4d14ca562c2b0a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/lint-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/receipt-final.json",
+      "bytes": 3066,
+      "sha256": "6d93ec63eb00676a4b2fd9d7f71bc267d6ff6d9d65117e2de7429fc839951bf3",
+      "gitBlob": "3dfd42ced9727f96ed108b39b0b616d71212af78",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/receipt.json",
+      "bytes": 1666,
+      "sha256": "f285ded48ea01114c8cfda577a059bd4e99cc0c42916be07382893b617b47b5f",
+      "gitBlob": "7117cd2470a7df4b2213fbc7102906975622873c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/tests-final.log",
+      "bytes": 1383,
+      "sha256": "564c46cb953a832ac38de72950534a6f3a6c7ea88689208dcaa4100ce6a35118",
+      "gitBlob": "0be63704fb01f02307c36b36053807a82d4eb47b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/field-visuals-model/tests.log",
+      "bytes": 1144,
+      "sha256": "5be696aaeaa0f4687c2d84cc9c0fc1f9b2b402b02850df420ca664476a951b0c",
+      "gitBlob": "81f86646de06dbbb8e525a67a4250e81180fbbb3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/build-command.json",
+      "bytes": 3527,
+      "sha256": "b3f4994d3da27ead080a60d1ba6e04135d65ae3416867d9e380934fc6cc9a0a9",
+      "gitBlob": "91a18ab22c7e137f295782e7c6bbe4667cbeaca8",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/commit-byte-comparison.json",
+      "bytes": 1180,
+      "sha256": "903bd0b90598d642960868355c16d0ada31b2067ad5f020a55afb649d35d0f27",
+      "gitBlob": "f977e598690749d4e757b62a03005489ad24caad",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/lint-command.json",
+      "bytes": 3094,
+      "sha256": "f480af9f202deb6ba45f366876dd23ee79101dfbf544634eab942a3d0779a156",
+      "gitBlob": "62e165de26a1633ac29b47d689423b77a54490a4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/native-command.json",
+      "bytes": 11789,
+      "sha256": "057209dbd2868f0a28989dab41534fc2e3d48491706a7f54fb9fdd25f04c3fcc",
+      "gitBlob": "1dd76a60af359d3b284a5305363706b0e149121a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/native-tests.log",
+      "bytes": 48224,
+      "sha256": "41ed4ed3bf946bd9985eb691db050ad3dc9cbb8aed46ea05cbe4769ef655509b",
+      "gitBlob": "2937ac652b98d95ea21a0a7ea84dfae74827a75f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-c23000/next-build.log",
+      "bytes": 957,
+      "sha256": "68a5fc2ce455b13ac4c9f85de9e274f1e7a42b5f6d29b5819eea82f5abb2b388",
+      "gitBlob": "39d54743af1ddb412e0efe870cb920f886dc09d2",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/build-command.json",
+      "bytes": 3527,
+      "sha256": "008c366bb398719dccd3f7a0e71a2b768109666413df262c390f09b7348247c2",
+      "gitBlob": "f86d61d8cc5d77ac2a5882e3f4a996623023d8ce",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/commit-byte-comparison.json",
+      "bytes": 923,
+      "sha256": "54e54158e08ed27e6080f3a209b3e2ac012ed1d74884cf8be269e3f77de26418",
+      "gitBlob": "83662e9ca109e5cb3447dc3267157569fe0d9bb5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/lint-command.json",
+      "bytes": 5292,
+      "sha256": "5f5a1394f53258ef557db8a90ab737c9ad7f3efb2eff97b4499b364d05d41650",
+      "gitBlob": "eb30fd5a032b307994c52f1ea657fce76a228fa4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/native-command.json",
+      "bytes": 11760,
+      "sha256": "49ee8b208e107df3a755d9c0a46c39de2a518861850e56b13e1cce5b4de5bcc4",
+      "gitBlob": "ba72cb84100e64a42f92302e8e78666556026236",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/native-tests.log",
+      "bytes": 48422,
+      "sha256": "46a1c8ee222c295b6d3e43835e9dcea6012baac819e13603e4411c3b96365f9b",
+      "gitBlob": "0538bc9ab69c3afe75c2e20e7a31dbd0c15f9bd5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-ce82e2b/next-build.log",
+      "bytes": 957,
+      "sha256": "046c0e1471673c733750e4e15bd157fcca38f5e8082278def630c1a2ac757a0d",
+      "gitBlob": "ea4c24de450b54897d08c4560dfda1cb038ce0f9",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/build-command.json",
+      "bytes": 3771,
+      "sha256": "fb0828c9884b75fd09c3e5ec80020c8888c6b2b670a4a49de6ee2fd7f82fb8d5",
+      "gitBlob": "8a9d6f2df28067fd4791b627663739d18ee4276f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/commit-byte-comparison.json",
+      "bytes": 897,
+      "sha256": "b5630d480222cda596eaca11a95dc94ae2a3ff4383bd3d05374a2cf5b6a5c29a",
+      "gitBlob": "bf368b88b28bc17c4fdd1768c17f05556ad11b40",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/lint-command.json",
+      "bytes": 5882,
+      "sha256": "86d435f208273929cd010724b8ce515cfe0b192697f8c737c4c059c35457921a",
+      "gitBlob": "04286ac7b1e266f966583fba2ae2dec076a62f8b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/native-command.json",
+      "bytes": 12296,
+      "sha256": "917d2ade6a9dc0e54547ff4c47bb73c156a5d776768abc6c5db31bfe3093bda5",
+      "gitBlob": "5f82f5055390417ace11714c33059bc066d6918c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/native-tests.log",
+      "bytes": 49070,
+      "sha256": "d06e4dd2baaa69d2516f330eb6a07501acf76dcbaa28852caeb840c022de8971",
+      "gitBlob": "49159f5a7b5db938b8c2f616bbb749e8a75d4c8a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/final-local-cfa730/next-build.log",
+      "bytes": 957,
+      "sha256": "f3088a2d26c4da0959b27112dad29688cd3de7cec4e1f5dd530a6cfa0edabf47",
+      "gitBlob": "ed70d7d928ddd2052d74f12e054feb509234cb5c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-01/execution.log",
+      "bytes": 243,
+      "sha256": "f1d0ca03a6774718d6b05071708f4a8e02172a339f1b219d0889a84b140b3a8e",
+      "gitBlob": "df3786b390f56b278347d8ce77746a46f18daee7",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-01/fungal-hivemind-hunter.json",
+      "bytes": 271674,
+      "sha256": "24b6278bac1e3291162d7a1e4e3b661b3bbb251bc5f6373fb3d587077f1b9617",
+      "gitBlob": "61706d890c6fc4dd04d1f2eaa13d8ff270e9a170",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-01/pilot-admission.json",
+      "bytes": 3637,
+      "sha256": "03469027d141941abecd9ea9d9a7307d761d203de9e2ba470528a46dfb9cfd81",
+      "gitBlob": "94d21a32a949992e09379b457330426855559e53",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-01/pilot-native-outcome-summary.json",
+      "bytes": 5421,
+      "sha256": "8df5dc55267e77e59b7cf1170ad874fc41635ef81b3e3060cc52cc94fc390783",
+      "gitBlob": "ce08102f5c95ac6fb9808cfa634015a2acac22ed",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-01/report.json",
+      "bytes": 25359,
+      "sha256": "61d68bd1ecfdfa10a6b95e0fed1347bc6a177eb89155a38f8a9960c84068e0f8",
+      "gitBlob": "ef48ca579829983b465471c9571b17d34d1d49bb",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-01/wrapper-at-admission.mjs.txt",
+      "bytes": 7585,
+      "sha256": "33154435a9543dafb5a5b544d4904dbce3abd6800cd36b345c0e6d1e2b79e8f0",
+      "gitBlob": "54ab2b62dfb18fa985cb13a2247634d3f6b0b17f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-01/wrapper-failure.json",
+      "bytes": 558,
+      "sha256": "be91395fe358598329b5025e1283dcaa1123c7784f294dc929055186f92f1f55",
+      "gitBlob": "983db987566f978dceb9f3a89b8d7f851dc184c4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-02/execution.log",
+      "bytes": 245,
+      "sha256": "360d45e6a724ed5c2a562e2271d81a545f1d007e3acc29a6af5b3522ac08273b",
+      "gitBlob": "299c8dc6cd7ac31e6f6e5a7b0b43b7f7ee04c02d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-02/jungle-vey-hunter.json",
+      "bytes": 168351,
+      "sha256": "3407074b4e668c103254b39ceb19bd163beb9dec3d9e98461b34da56d9476405",
+      "gitBlob": "42f19d9676103819d1f4594258d83035327f3c67",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-02/pilot-admission.json",
+      "bytes": 3632,
+      "sha256": "aa8bacc4c04df30d2628b630cfc50fc2ec0419a9bd3e894c36c980bd798e88c8",
+      "gitBlob": "cd00072614c3d71957e42fe7272bc403965805bb",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-02/pilot-receipt.json",
+      "bytes": 7067,
+      "sha256": "5783a96e9f5af472a9966f91db903a6fa5d47f77fc2688ad1a4820c0ab09ad8e",
+      "gitBlob": "eca1a181a275732e5985bbfbbba4628bd1f3ad01",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/ground-pilots/attempt-02/report.json",
+      "bytes": 31333,
+      "sha256": "bddc2967c0cb7749729a5b36fb6fc255c714fd2835dd68d362834556eb47729c",
+      "gitBlob": "843758cc6a69bbb2ca1fc737d2c52b727df66971",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/integration-first-failure/native-command.json",
+      "bytes": 11073,
+      "sha256": "18d0ed2a8d7b985163aa2af633f0dcc3674b81f055ea980b3cad5c2c4125fcf6",
+      "gitBlob": "243c1d4f80303e4bf12931ae3b6e910b3092fdc5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/integration-first-failure/native-tests.log",
+      "bytes": 60944,
+      "sha256": "85f2171265d1b4430bc6ea9a3c77b2d351f66c617bb65ce87b2cdf9f13c3624f",
+      "gitBlob": "9e15bc2a44875ef2c6e8373850cc7cbac7fb78b5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/build-command.json",
+      "bytes": 3527,
+      "sha256": "b9e86d254f76f29a72e8d60dba5529a4c1a077e3fb72382a0169be50d0250309",
+      "gitBlob": "d8192bb7d401df535511b6fbf06edefbb569c257",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/commit-byte-comparison.json",
+      "bytes": 907,
+      "sha256": "d51cc77ec1c7be5d9ba3d88d45a77cdb0af5accf1bed159a23c701fe1a65af40",
+      "gitBlob": "146e635f496364d2b2ee4ce662a7e449fcf09329",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/lint-command.json",
+      "bytes": 5292,
+      "sha256": "ea5224810ce19547a57fda8bbdd08c6a9262e41e4a40c3662a824d80df55bf49",
+      "gitBlob": "0a557828f8646e3848f9f23de2d8b53ba74913a1",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/native-command.json",
+      "bytes": 11760,
+      "sha256": "1383bd760fb2de4e9523f7b206c7369efcd46fd848be2eecf2a11750a14565b0",
+      "gitBlob": "eaf5170711f322c0b10c78cab4017bc6692573e7",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/native-tests.log",
+      "bytes": 48221,
+      "sha256": "01764d93d89d3be86b3c8f8ce31c599c78698e417201e779ed0f67cee513a531",
+      "gitBlob": "eaf2d8fff08c545e16c68dc3585c113cb15b11ea",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/next-build.log",
+      "bytes": 957,
+      "sha256": "24a2817c91549219046ef9fe269380b547b76463d8a1929e0b8d6d2863ddf59a",
+      "gitBlob": "9a58da26317303becb461e1c2a4674a7dbec69ab",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/01-field-before-work.png",
+      "bytes": 974815,
+      "sha256": "99f146c06139174da7342307b3bf1d4c545dce5a2d6d97c05e65eb96b03b4c4b",
+      "gitBlob": "c0f751133c0d229ee1a8ffed569cf1f290b87c63",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/01b-native-active-flay-stroke.png",
+      "bytes": 962018,
+      "sha256": "6d1054eaaed15ec980a7d41c4abd64a25581fccd06a3c255cc29191637cdcd34",
+      "gitBlob": "52a95dd7d89b11b939f0cdec48c344b273dc05d0",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/02-flay-reload.json",
+      "bytes": 189562,
+      "sha256": "b47d52f8ae4b5503c6f4430ad9b2c3a64e59d68955160d55438967bae5cf817c",
+      "gitBlob": "5e2c4d9d04547c7cb0d11d489aaddb1b6908f9de",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/02-restored-flay-paused.png",
+      "bytes": 621643,
+      "sha256": "756314d11006159e396fffdc8135a71fcb07841211f876388b1066ed103fe8d7",
+      "gitBlob": "beec8ef366ea4c0210845a6d5f3fef88858145c4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/03-native-harvest-complete.png",
+      "bytes": 127282,
+      "sha256": "a6663d4ca02d462f1034bfb6a60c7883563ea3c00c0cb432c85f666635b53332",
+      "gitBlob": "f7a1f9a3fcb80d83b820c4e5c77d46880e56f9a5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/03a-native-active-hide-work.png",
+      "bytes": 153153,
+      "sha256": "c33df2a36c01a2f871340d20011132419e5075e1cc0d50b323310b4649652ba6",
+      "gitBlob": "9956be8bb8c893f10ba3b8907c11f79e4460b0dc",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/04-recovered-native-field-pack.png",
+      "bytes": 106540,
+      "sha256": "d3af89df7461e845b02fd30c24ee1e765ab0c9e9e749f98944067378f948a810",
+      "gitBlob": "37e5a74b677e73c08e0291bfb44ffeb0d38e3a92",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/04-stash-reload.json",
+      "bytes": 352613,
+      "sha256": "2524cc7b02b51a35ca13aad11f0c1d388820e22571ebf88ea5e087357568314a",
+      "gitBlob": "488fa2479516a989272e2312eb542f7249c3126d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/05-field-menu-320.png",
+      "bytes": 112625,
+      "sha256": "e0170d40aa199855647764d57ff2ee6b626e9444c9f2fe18dddf2ed4d6afe18d",
+      "gitBlob": "d1fee55d7fa52f9175b653cd0645d849835ab280",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/05-field-menu-390.png",
+      "bytes": 149769,
+      "sha256": "5714719bc4ee554735772e059e406e87f096bd7e1b51a10f465ffed16f4a6138",
+      "gitBlob": "1662b652226db5ef3a9aa58f310e04ae123203e9",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/06-native-field-settlement.png",
+      "bytes": 606134,
+      "sha256": "fcf81edd139037fc0518115cb24d2cbf479efa53c928b1296da4ba9000c65d2c",
+      "gitBlob": "56720436f24eddc742700b9acba01f98abc67d39",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/07-native-conserved-part.png",
+      "bytes": 759801,
+      "sha256": "bacd5ab05f962e8efe20018d155cfefcf29aecab97e9cb745abe6d9404d2f958",
+      "gitBlob": "f4b917f161da19f26c4c48e470f4c5b78364cc6b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/08-canopy-canonical-insertion.png",
+      "bytes": 999227,
+      "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+      "gitBlob": "29695ef703786e6fe1950b51453290a5a9fa3795",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/08b-native-entry-canopy-hud.png",
+      "bytes": 1042204,
+      "sha256": "288116fb39399ae81e2cf84dbb5d1938dc232c81fd0a239ce4e29f84ab9271bc",
+      "gitBlob": "5bf22e3db22ae707cada1edb8006f3aa5ae1ad08",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/09-first-native-rest.png",
+      "bytes": 1071528,
+      "sha256": "43c9d718d0433f859422d3ec316624136558085327508de9a865670548fb2b30",
+      "gitBlob": "9318aec034d584305ea1cdc031e44b529ccb0535",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/10-pendulum-reload.json",
+      "bytes": 412331,
+      "sha256": "c823321b98a58fdb50d66b123bb6d21f06522efed495617fc206c3a8e4c0d219",
+      "gitBlob": "e42e672a00149a4368b2ad701f543e447bda52ce",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/10-pendulum-restored-paused.png",
+      "bytes": 641158,
+      "sha256": "3f00a832f75b769f9ec26e45c8ffdfb875b77a84697439a482ae4fea5e6d9dc5",
+      "gitBlob": "7d3e5289cac929071f4cd168f0307d0247580cbe",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/11-native-pumped-pendulum.png",
+      "bytes": 1096121,
+      "sha256": "31868299ed5576c878a37a0c1a81900a640bfb546474a7c2bc9f4503ac2417fd",
+      "gitBlob": "207c9435f6a256c90ee4cd9dfe7b722495980fd7",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/12-release-grace-reload.json",
+      "bytes": 417591,
+      "sha256": "48f2a8712d8a859c3b5d6c7234cdd29f877593e69ad6e3df713c41d815616009",
+      "gitBlob": "f29f7dd0ff32ad445fb926b69f59b505bdc2a95a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/12-release-grace-restored.png",
+      "bytes": 665137,
+      "sha256": "023d61a3610294ed1a7bad8ede951d69f548f4adfdb9660462f1ba38b74de433",
+      "gitBlob": "197bc01834c26880388f2f309daf6970680784d9",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/13-native-next-vine-caught.png",
+      "bytes": 1176351,
+      "sha256": "dc342b873491ca74690d3ebf87aa320fdd4ec8180516d01f8fa5e2ac68af7127",
+      "gitBlob": "50fa8f89d4ba29904c7d55a070bb4519cde8e46d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/canopy-progress.json",
+      "bytes": 2313,
+      "sha256": "72dd3f0176c34f9fe33e731b7ecc298d5ab13e55e99ed2169813f197e4ccbc64",
+      "gitBlob": "dfaca28d86003e70a1041c8d49368fa3f0ba00bf",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/command.json",
+      "bytes": 717,
+      "sha256": "d2fd5f909fb417333f2a6fbedd0d84b4e1c57333024aff049248a5a33e88834a",
+      "gitBlob": "157ffca6b56b1d1e7209786fd18d6cb67a9feb08",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/copy-integrity.json",
+      "bytes": 666,
+      "sha256": "97b08273e2907eda2adcbb110bf0d99c7d90f3d4a13e70b684aeca2431204374",
+      "gitBlob": "f94cd0b5645d2d3ce2bb5859e361fadff796bee9",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/execution.log",
+      "bytes": 1702,
+      "sha256": "68be14063e123a11cf6eb315ae6fde356e8b10be6031aec7e093cfb753943dc1",
+      "gitBlob": "6904f1eeae1c24b1ed05f6822bc5ed2ae43f23b0",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/independent-integrity.json",
+      "bytes": 6644,
+      "sha256": "72ce0a5847ada085cc656b60f9850db914ca47a1e8419bdab8caff4e6a1b33c6",
+      "gitBlob": "49634d6120164f2548d788765be8b07191b5715c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/report.json",
+      "bytes": 915981,
+      "sha256": "fb8e89853a0dda0a50ce69294c5f80743328cd591aa3b984f530eb78fb8128c4",
+      "gitBlob": "c2853a7e0327b68573524341a969eb914ce8fbfc",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/source/HuntCanvas.tsx.txt",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+      "gitBlob": "f10f65296ceeb0e18dc44519abc19cf11e763e5b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/source/fixture.jsx.txt",
+      "bytes": 6619,
+      "sha256": "e6c1e71ce486e6165db5c2d6c25ac9a10791ca051f4718ec5aa2e44bdc20512b",
+      "gitBlob": "08082de2b17a5e203d98bc0614a0cc44d441943c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-09-final/source/runner.mjs.txt",
+      "bytes": 44041,
+      "sha256": "f8c3de10cfeca17940b3a892595489e0fb6beca3eaa40680bae7d4c9a3a49b2f",
+      "gitBlob": "3ccc4066062e0275629df695ef6b2efd456f1547",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/01-field-before-work.png",
+      "bytes": 974815,
+      "sha256": "99f146c06139174da7342307b3bf1d4c545dce5a2d6d97c05e65eb96b03b4c4b",
+      "gitBlob": "c0f751133c0d229ee1a8ffed569cf1f290b87c63",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/01b-native-active-flay-stroke.png",
+      "bytes": 962037,
+      "sha256": "8344c0ddbd6f27193bb4942b6b2663d154094f23f512919ae75fe5c4300fd01f",
+      "gitBlob": "ba014952fd1f935355115e720c239dfc681bac73",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/02-flay-reload.json",
+      "bytes": 188393,
+      "sha256": "59263c42a8491683f4f4b0d9910aec6a409363ee1b56503e455eaac310da445b",
+      "gitBlob": "86e5f0bcead60d3e290c9f858e3aec9592aa2e38",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/02-restored-flay-paused.png",
+      "bytes": 621630,
+      "sha256": "4db682144ee0f97f2676c2020bdc974d18e63cac9c0f71523c651d56a0adeac0",
+      "gitBlob": "3b06a05ec63ef9bed237f225154840170efef3f9",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/03-native-harvest-complete.png",
+      "bytes": 127282,
+      "sha256": "a6663d4ca02d462f1034bfb6a60c7883563ea3c00c0cb432c85f666635b53332",
+      "gitBlob": "f7a1f9a3fcb80d83b820c4e5c77d46880e56f9a5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/03a-native-active-hide-work.png",
+      "bytes": 153113,
+      "sha256": "a782d354bdc7b824db9a0346cb3368a10f756527b083eba1fadb1bb9271c7dd4",
+      "gitBlob": "90240a9f3ca5ba567ada90295596469bb34bf98d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/04-recovered-native-field-pack.png",
+      "bytes": 106540,
+      "sha256": "d3af89df7461e845b02fd30c24ee1e765ab0c9e9e749f98944067378f948a810",
+      "gitBlob": "37e5a74b677e73c08e0291bfb44ffeb0d38e3a92",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/04-stash-reload.json",
+      "bytes": 352688,
+      "sha256": "cd3f996a138ba00d300f605a7ccb5ba5d313ae20433c2167676b75712308ca19",
+      "gitBlob": "1bff470f5fc847767063ff1f8ca2f4235729ee95",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/05-field-menu-320.png",
+      "bytes": 112605,
+      "sha256": "12e0b791ac16ddefd125597b619042d1dec4b1ccd44bdeb597850e4faf03184c",
+      "gitBlob": "9dda2d61f35d7bacfcdadeff71b767d9d689f4d4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/05-field-menu-390.png",
+      "bytes": 149759,
+      "sha256": "a9128ce5362e24dbb2c3970bdb90311425b4346fb583feb5482c701406519a02",
+      "gitBlob": "e76bf8a0844e758b39eb44f4145be87ac1af88f7",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/06-native-field-settlement.png",
+      "bytes": 606134,
+      "sha256": "fcf81edd139037fc0518115cb24d2cbf479efa53c928b1296da4ba9000c65d2c",
+      "gitBlob": "56720436f24eddc742700b9acba01f98abc67d39",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/07-native-conserved-part.png",
+      "bytes": 763625,
+      "sha256": "6c419d2d655770ede62fc7c58de62519c70d2f45c1fd4af7ba71092b97ad3152",
+      "gitBlob": "0ccc0a042f498abbc84ecb2a76f229c3fb46093c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/08-canopy-canonical-insertion.png",
+      "bytes": 999227,
+      "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+      "gitBlob": "29695ef703786e6fe1950b51453290a5a9fa3795",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/08b-native-entry-canopy-hud.png",
+      "bytes": 1044949,
+      "sha256": "f33d13dcaf789fdddd64b3dba1175483d1ab5c9022fef4e30ccdfd3a0722e8a1",
+      "gitBlob": "ae62bbd504607e45512cc68ee7e80efe19d6eb33",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/09-first-native-rest.png",
+      "bytes": 1071507,
+      "sha256": "955fdcc0bc3c6d9dde60c1f74c44f7f96da6c20473a229e456d8762ab1282bc2",
+      "gitBlob": "1e7a9f14cd5774384b7e23a4be9f638bf4cf97c7",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/10-pendulum-reload.json",
+      "bytes": 413212,
+      "sha256": "2b3e7f3a68ff0e22298c691c424d1bb369f4f6ebf126023c42ad6f12b40199c8",
+      "gitBlob": "12aa39a7a1a8691f00dec962ae6202a148d44ac8",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/10-pendulum-restored-paused.png",
+      "bytes": 642804,
+      "sha256": "9d745036e667d62cf48f68e759dd17a148f2dbc97245c325718dfc3317a21887",
+      "gitBlob": "b4bd17fcddf52634267e970875e785b681e48623",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/11-native-pumped-pendulum.png",
+      "bytes": 1094612,
+      "sha256": "6417ecb4559c10e6627bd12d9988c3fa7aed6b9ee404184718ea960b38a1a65b",
+      "gitBlob": "c940962011b28b02b585b0cded043c320d40f643",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/12-release-grace-reload.json",
+      "bytes": 420862,
+      "sha256": "bee95f11f98bab3c346c639543ad241632b7ff04b6b49f48c04d820e3f7a66bd",
+      "gitBlob": "14aff2aa1b417197697b3c7750c59b9dfab46758",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/12-release-grace-restored.png",
+      "bytes": 664047,
+      "sha256": "25f83cfd75f708458a36c1ee4e3cc9c23cfc194c175f792184778b907442c18e",
+      "gitBlob": "de86b25890163be6f956e630f1d38b16a6186162",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/13-native-next-vine-caught.png",
+      "bytes": 1175925,
+      "sha256": "9a247d4a733b198ee852947a405612238a7e2238dc2a501ace01eb2849a6229e",
+      "gitBlob": "5ae8e625a81650d10c4793e0c6154a6ac416c94c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/canopy-progress.json",
+      "bytes": 2318,
+      "sha256": "893bfa706d40527bae2da03deecc1b4d6119cb916f1bca63d6adb0dc81dba1d9",
+      "gitBlob": "f7ba0bf9382fc5980a2c5add9a6976a833a6b295",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/command.json",
+      "bytes": 717,
+      "sha256": "ebef685364180c3ac17482802938c81edc264b98d552075ae4df52056fe9b6b8",
+      "gitBlob": "e67f1ae08524ef45e2fd7bf25efb4d5095e2a3cd",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/copy-integrity.json",
+      "bytes": 923,
+      "sha256": "ad1e1bd2969c6c1ca24e565475d827f3ac2940b600d0b295775887660e071926",
+      "gitBlob": "444231cfad33fae56d6f4f576d190feba188ec8a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/execution.log",
+      "bytes": 1702,
+      "sha256": "e70dc7edcda51b168229736850e296844ea13e07800137db5e0ec83001c579d9",
+      "gitBlob": "10cf1ab0b96c376a736852d37a669fbf38e78d28",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/independent-integrity.json",
+      "bytes": 7148,
+      "sha256": "674a32f006f3372d723604507ca78d55c6d0e7be0b97006ad54dc7fbd02fd30a",
+      "gitBlob": "1a9dbd1daaa319659a3cb3b0c7af47cc6e88e64c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/report.json",
+      "bytes": 962193,
+      "sha256": "05a53f2397d1fc2c4a7755eb01a2a01af2361840b634e4ec9ccce98b969d6b7a",
+      "gitBlob": "0b071a8707434a6f782f3e320832a663bfb2ba96",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/source/HuntCanvas.tsx.txt",
+      "bytes": 471511,
+      "sha256": "f4e1d0736352256b284b4d717747add3cda055e85b62d0abcff5bb1eed7caca3",
+      "gitBlob": "fad1d809852c32052ac22106e534363d13df076a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/source/fixture.jsx.txt",
+      "bytes": 7585,
+      "sha256": "8484149bce2d9099d1791e5a5ef9f4a3de7cc100d76da0a3de6ab35e936f371f",
+      "gitBlob": "88d64d30ebb9f5833fd93ba0f3e4dbb53dafdb1d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-10-final/source/runner.mjs.txt",
+      "bytes": 44797,
+      "sha256": "e5c4df459b81567c6e7c0f0722d754c2f265dd8264a706ee8cb9aff0e83ad8bf",
+      "gitBlob": "f4ceff62a050eef3a907b343ddff8665807cdcee",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/copy-integrity.json",
+      "bytes": 463,
+      "sha256": "768e6a2fe9eeb0f78d8934e08a5e2e929f7aa3978bb5b0098a78cdda65de1ca1",
+      "gitBlob": "cb9588a0b52c264f4bd947b5ac3422464e8eb28a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/index.json",
+      "bytes": 22139,
+      "sha256": "928734caf4579b77f2cbecf61ed3908a8c05f99b107a0d08eeb37317570f14b0",
+      "gitBlob": "690d2f21855dab345fd761542ff3485fbb853395",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-01/command.json",
+      "bytes": 711,
+      "sha256": "4e8e777be8ead6ab19b7cc9c47788605d4395d6bbd2a6233e471308168cd79cd",
+      "gitBlob": "9e86fc2f33cc081a3db8f96d8b3e2c3fed477de0",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-01/execution.log",
+      "bytes": 921,
+      "sha256": "f70450eeefd44a45d9e3dce8a52e4e3ce8a4d887642e53090144b873b3607b78",
+      "gitBlob": "f0fe3dd92f64de666ac3450becd3914d7e5e280e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-01/failure.png",
+      "bytes": 1356814,
+      "sha256": "349a02654485a9b80c88ab4fa815028aadfb664478d73af2763e4d94d1150a3d",
+      "gitBlob": "dfef7faf3190c1f9b68a336de5da61eb436a9793",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-01/report.json",
+      "bytes": 21573,
+      "sha256": "91f879d18baa057f5f7dd072b861a6f38ca3592e4ec58fdd00c42ad813246677",
+      "gitBlob": "a9c7f5144444576fb3a2d9ea0b88987184c0b14d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-01/source/fixture.jsx.txt",
+      "bytes": 6243,
+      "sha256": "4d4b477bbd313a6a2d88c425181f4044f700f1a0d837d384c01e86353a5a66ef",
+      "gitBlob": "fc282db463fa25d75281fba13187675e35dcbde3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-01/source/runner.mjs.txt",
+      "bytes": 34502,
+      "sha256": "ebe91038d2e7e46c2d4805c8b5a71b2d03bd7d87047967625778094f30a4be1b",
+      "gitBlob": "e1530cc50fc2a009473b0d609c128ea8ff46b193",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-02/command.json",
+      "bytes": 711,
+      "sha256": "c7d69f0079f4df42f53a5a3d7a7ea283a83c1816f58a9f71cea628ea34057db1",
+      "gitBlob": "25d581552ce743e71ed117bd81d3a08434c069ea",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-02/execution.log",
+      "bytes": 868,
+      "sha256": "9c2268533ddc7600fb0386f672b30b819a785ed34f722dc5c86eb18404123a31",
+      "gitBlob": "9f7befba78bb88a58f3315a6db9659121e111483",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-02/failure.png",
+      "bytes": 1157687,
+      "sha256": "253c6d2e35f8d3f767fe9f643c08c455f37c367fd8c75210a9c7b39ea11a241a",
+      "gitBlob": "39ba55fd6ac19e1df0c00d639cbefd65995c9cf1",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-02/report.json",
+      "bytes": 49372,
+      "sha256": "ec4bf8f2f1a512fa2e2820d189ac0b16659847084e7a5cce329337a908bbf820",
+      "gitBlob": "58d11b76d2592abad4b7e784531b45c366c07df9",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-02/source/fixture.jsx.txt",
+      "bytes": 6243,
+      "sha256": "4d4b477bbd313a6a2d88c425181f4044f700f1a0d837d384c01e86353a5a66ef",
+      "gitBlob": "fc282db463fa25d75281fba13187675e35dcbde3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-02/source/runner.mjs.txt",
+      "bytes": 34665,
+      "sha256": "2a3ce5d8e0633db23f9564d19f407c506329bb004790c4b6bdad216c4ccb99ab",
+      "gitBlob": "c2b255549c4f4f9d68b9812ce732db85f971dca2",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/command.json",
+      "bytes": 711,
+      "sha256": "e102fd1ab890521a03822b96465ece74a07baad6402fa3bc2e38813ecb6c80ed",
+      "gitBlob": "ef0b39bc9cf8bbbd4328c4400d26cb4b39c69bc5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/execution.log",
+      "bytes": 821,
+      "sha256": "51d9fe649cf5b7606906ae0109faa496ea13592dc0684c4ade4c2990be1a1d53",
+      "gitBlob": "5162d8093de75743a07ec2abff74809746db184e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/failure.png",
+      "bytes": 511147,
+      "sha256": "0bda021047adbef7a34263fffedb98fb95d954b9b12108057fd8ae9ccd0264a0",
+      "gitBlob": "5633392d89405c295c29b10bbbaa5bfa484dd388",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/report.json",
+      "bytes": 62504,
+      "sha256": "c641a860172ca40b951429c313f3b20ae57a1c28f272e787db45f33829ffeff0",
+      "gitBlob": "332f1174a99dd13999b1cfdc382f88a6793f6f8f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/source/HuntCanvas.tsx.txt",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+      "gitBlob": "f10f65296ceeb0e18dc44519abc19cf11e763e5b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/source/fixture.jsx.txt",
+      "bytes": 6243,
+      "sha256": "4d4b477bbd313a6a2d88c425181f4044f700f1a0d837d384c01e86353a5a66ef",
+      "gitBlob": "fc282db463fa25d75281fba13187675e35dcbde3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-03/source/runner.mjs.txt",
+      "bytes": 34653,
+      "sha256": "67d22afda2c7824715d7aaeb94353b1be1135fd7aacf4eef06b2c44b09a7f0c9",
+      "gitBlob": "f04399a29ee455550b805193a595311d2e4f695d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/01-field-before-work.png",
+      "bytes": 1008205,
+      "sha256": "6f0f9dd1eb4d39ffe1610579b99ac150bdc88c4b4dbec624edf52d9a6137751b",
+      "gitBlob": "df08b12ce170e5c39a525cbc3741bcf3e7deba77",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/02-flay-reload.json",
+      "bytes": 169862,
+      "sha256": "e4c4027d3dc06fe22f4833c05036210725fbe672890cfac7c54e34f336f0ded5",
+      "gitBlob": "1136df9d6edaef529ff45429b301cd13ee607333",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/02-restored-flay-paused.png",
+      "bytes": 633258,
+      "sha256": "292e719ce5dc15352d16cdc33e7679e19cc8463d984ad8e546017f2e496e794e",
+      "gitBlob": "2c6f7675d4cad76d4c0f955f36b644e553b0438e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/03-native-harvest-complete.png",
+      "bytes": 984512,
+      "sha256": "aedcdff121eaa40bf29a6af4555365e3a2b269051c854580599e56ebcf6f9e9b",
+      "gitBlob": "8f3f2e614374c6aac5ae42d04b26726a2c7e5389",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/04-recovered-native-field-pack.png",
+      "bytes": 634612,
+      "sha256": "b76bfaba82bf87bac0fcf765f37bfc316bed3987a33dd3616fafb4eb00d248b8",
+      "gitBlob": "d239e55ff8462f87a7fbc6e3a8c917625c7496c7",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/04-stash-reload.json",
+      "bytes": 318251,
+      "sha256": "3c2607975de6c0a21885eb2d3ffb3ceb3b9ce06703b839ac0f3663fd2dd2490e",
+      "gitBlob": "0a895a5ac41a9010674059f3090038ff3e0f6b5d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/05-field-menu-320.png",
+      "bytes": 166704,
+      "sha256": "65fe29ffcdc831a778fafccb83141debce4bfc3a1587faa88e422f054b2a31c1",
+      "gitBlob": "41bb96badd10008b4dc0661eb390d42c9f46bdb8",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/05-field-menu-390.png",
+      "bytes": 200898,
+      "sha256": "63b76ec53573cf5bae4f3aefa3dd58523d17b363c89817aa7c057bf73e669903",
+      "gitBlob": "c638e1b8a8a0a8e224253c3d417f3b214e18f3c4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/command.json",
+      "bytes": 711,
+      "sha256": "4a2ae4aaf0f488a1e7266e71c661eee09d814a185289b2742346d07f9a09cfc9",
+      "gitBlob": "fbf91c44290a4c387877e2d8338ddfda152c725f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/execution.log",
+      "bytes": 1812,
+      "sha256": "b3ba8b661b5a68edc3e38956197d88616c8998de6fe0f2ac9ec33d228489c2aa",
+      "gitBlob": "555313b21dd4ac5339f9d0efff222536378d8bea",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/failure.png",
+      "bytes": 605920,
+      "sha256": "49e61746c0c6fbc48d840aad0126491e85f3de4a4fad80dbc7b04ac6f433b8c0",
+      "gitBlob": "1542129be4d894aa6fd6cdac9bb34f86e102d15d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/report.json",
+      "bytes": 171017,
+      "sha256": "633b836d2050508aa55a5ea3ccaf5595eb80b203d1d6018e0d6261be6b78100d",
+      "gitBlob": "5061d2228ec5ed03ce040dbdeef55c6ce8456695",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/source/HuntCanvas.tsx.txt",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+      "gitBlob": "f10f65296ceeb0e18dc44519abc19cf11e763e5b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/source/fixture.jsx.txt",
+      "bytes": 6243,
+      "sha256": "4d4b477bbd313a6a2d88c425181f4044f700f1a0d837d384c01e86353a5a66ef",
+      "gitBlob": "fc282db463fa25d75281fba13187675e35dcbde3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-04/source/runner.mjs.txt",
+      "bytes": 34947,
+      "sha256": "c892aa50721fd30563eb33dc89f69f50ed2e67ef0c62fe3737e379808f923b84",
+      "gitBlob": "2832e5663019406d12fb2774244f4298127f75de",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/01-field-before-work.png",
+      "bytes": 1008172,
+      "sha256": "2f22ebddd761f0cd21bbc078cbd16d0d3575546260880b60db83c455e0ceb957",
+      "gitBlob": "d78fc45e2c1f598e1e6761518e34c4a903439a33",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/02-flay-reload.json",
+      "bytes": 169815,
+      "sha256": "b264b659f7a3aa1b2846292a69af7f9d7ad9f03a04d6af107fc418ca14950387",
+      "gitBlob": "ade241eee18ac7bf5bdc9f27f298c5a31639fa55",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/02-restored-flay-paused.png",
+      "bytes": 633275,
+      "sha256": "161b44696f8aafd231173fd795f9dc352f2d5e6de202f35fff87b41108a99d0e",
+      "gitBlob": "02e124db605342f131d94c6bf373b2204df9f86b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/03-native-harvest-complete.png",
+      "bytes": 984567,
+      "sha256": "2f8ed4ea4999b048044d6346421faa1c19a92455afcde6022fc39792fa45ab6f",
+      "gitBlob": "967f26da7380cbebcb5e1a6f7214bb26604b6c1a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/04-recovered-native-field-pack.png",
+      "bytes": 634553,
+      "sha256": "9df19da79f0f31e48835eef19839fa0392d92e3ee2fe85a8848ad95a642f8a62",
+      "gitBlob": "41c7bbab1b0596afffe835540aae271134edc0ed",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/04-stash-reload.json",
+      "bytes": 315764,
+      "sha256": "8ba11e5e85bc16ab92f724ad79cd8476df0721f583c8578f75b53db3a4570351",
+      "gitBlob": "f012f2ee20f2baec974685347bdaa3fa803b2d9b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/05-field-menu-320.png",
+      "bytes": 166704,
+      "sha256": "65fe29ffcdc831a778fafccb83141debce4bfc3a1587faa88e422f054b2a31c1",
+      "gitBlob": "41bb96badd10008b4dc0661eb390d42c9f46bdb8",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/05-field-menu-390.png",
+      "bytes": 200914,
+      "sha256": "bef869d9bda5c892573063b340ea6e35d4c83d75f0ec65f4df0cd4ef4cbb733b",
+      "gitBlob": "11aa0b474bbad613c9eb08347dd468d9561bfc5f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/06-native-field-settlement.png",
+      "bytes": 606424,
+      "sha256": "6e67d76c8f731a41fb3adb083c14d82d4d3771141c0c10a9819584a472bb49d5",
+      "gitBlob": "25d629cb5b638cab7a0e8f07b3d4e3f660dd6022",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/07-native-conserved-part.png",
+      "bytes": 759801,
+      "sha256": "bacd5ab05f962e8efe20018d155cfefcf29aecab97e9cb745abe6d9404d2f958",
+      "gitBlob": "f4b917f161da19f26c4c48e470f4c5b78364cc6b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/command.json",
+      "bytes": 711,
+      "sha256": "d75bc277c093faf6c08a5aae276746916a9059ac040356865a5ce9710bfa31a6",
+      "gitBlob": "c9a924bde8c8674aff48d69d0d8426e04cda472a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/execution.log",
+      "bytes": 1622,
+      "sha256": "e4a42e8f2b23875f3171672b3707a1d1571f484f74730ebc2ea35232e61db3c3",
+      "gitBlob": "c7d76d8f7cae5fb8f41159b4ae50ffbcd1e788cf",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/failure.png",
+      "bytes": 994053,
+      "sha256": "744cd176c3c7a866d5d8a0ff694f8074056716b965a25b1488feaf2b9bc804c8",
+      "gitBlob": "f1770f83f0134aad5d809417414ee8c2860052ad",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/report.json",
+      "bytes": 248547,
+      "sha256": "8bb140e2500ed8b50097489540038059f309e23b56bd06b281c4746e617e8fe1",
+      "gitBlob": "7faead65dc39eb49df1327cf47bf53908fd8569e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/source/HuntCanvas.tsx.txt",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+      "gitBlob": "f10f65296ceeb0e18dc44519abc19cf11e763e5b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/source/fixture.jsx.txt",
+      "bytes": 6243,
+      "sha256": "4d4b477bbd313a6a2d88c425181f4044f700f1a0d837d384c01e86353a5a66ef",
+      "gitBlob": "fc282db463fa25d75281fba13187675e35dcbde3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-05/source/runner.mjs.txt",
+      "bytes": 35003,
+      "sha256": "0c3d5a0fc283c3df02c58863e92bdda4d1d73e393377d41442efc7efdb2ac909",
+      "gitBlob": "6e92ad8c1c3d6680c27b132e55c9f0a2d82ec3dd",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/01-field-before-work.png",
+      "bytes": 974815,
+      "sha256": "99f146c06139174da7342307b3bf1d4c545dce5a2d6d97c05e65eb96b03b4c4b",
+      "gitBlob": "c0f751133c0d229ee1a8ffed569cf1f290b87c63",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/01b-native-active-flay-stroke.png",
+      "bytes": 962037,
+      "sha256": "8344c0ddbd6f27193bb4942b6b2663d154094f23f512919ae75fe5c4300fd01f",
+      "gitBlob": "ba014952fd1f935355115e720c239dfc681bac73",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/02-flay-reload.json",
+      "bytes": 188215,
+      "sha256": "562519a6a3c356ad897430776b5100b7fafca1be6763efdfef4f21d2cc98a7e0",
+      "gitBlob": "f39cc009e968eb939cfc6abcd09a264d31f5871e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/02-restored-flay-paused.png",
+      "bytes": 621620,
+      "sha256": "3d988ee87a2af87f3b7efcd8da8d9f69ce32d3dbf9063b569008ee3aa7be72c4",
+      "gitBlob": "5d24030b696a734a7b6d090d07eff5ea274fc596",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/03-native-harvest-complete.png",
+      "bytes": 954729,
+      "sha256": "f251404a8b4c63411e4cb768c9a406d614739eb0695d961888dd08aa1fcbff22",
+      "gitBlob": "0298d052d78c6861ddda77ceaa35ecc11518af77",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/03a-native-active-hide-work.png",
+      "bytes": 967063,
+      "sha256": "8388bc9ab31bfc5c22bcd7743e734b31a4225a6bdb76d539c54efd85d096365a",
+      "gitBlob": "859a8aa06307b4e833f406767a5eac84c64ffb07",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/04-recovered-native-field-pack.png",
+      "bytes": 622963,
+      "sha256": "2cbbc3887790a57920b072c7d82a12c372f5d97a3789e30e4dab3da1a53c5e13",
+      "gitBlob": "ef88f7f822975df87fdae22a85a29eb2f05fac77",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/04-stash-reload.json",
+      "bytes": 348014,
+      "sha256": "2689866b4ee06c7599abd6b33665f97a1081a9693512f7bcfb43424bfc11204d",
+      "gitBlob": "ff83ea6e8c60001f759edb6c3a314cb16ec1f8f1",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/05-field-menu-320.png",
+      "bytes": 127690,
+      "sha256": "b070ad0cca0a3b8f0c9265182d3d61ce3eb8639e6d499c0b9049f6a826504805",
+      "gitBlob": "5c4cc08b8f1413f3d7f9cd3418f540b802953c8f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/05-field-menu-390.png",
+      "bytes": 164031,
+      "sha256": "e11a8c4f0f745dd3d7d831ca5c23d383e64bdf2af94044237a49d1930da940fd",
+      "gitBlob": "1dbb7b7d9b91690f71932d158f0093e5a848e001",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/06-native-field-settlement.png",
+      "bytes": 606134,
+      "sha256": "fcf81edd139037fc0518115cb24d2cbf479efa53c928b1296da4ba9000c65d2c",
+      "gitBlob": "56720436f24eddc742700b9acba01f98abc67d39",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/07-native-conserved-part.png",
+      "bytes": 759801,
+      "sha256": "bacd5ab05f962e8efe20018d155cfefcf29aecab97e9cb745abe6d9404d2f958",
+      "gitBlob": "f4b917f161da19f26c4c48e470f4c5b78364cc6b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/08-canopy-canonical-insertion.png",
+      "bytes": 999227,
+      "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+      "gitBlob": "29695ef703786e6fe1950b51453290a5a9fa3795",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/command.json",
+      "bytes": 711,
+      "sha256": "adcc16234c8ec945ed7110095014d309feb369ec7bababd826eaeb882947cd7c",
+      "gitBlob": "98617989c92f2eb4c01ae9560be00f3fc142532e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/execution.log",
+      "bytes": 1542,
+      "sha256": "07dd0319064a103cf6270d5ff873c47afe025e97c3db5826f2bcfce5d0284d6b",
+      "gitBlob": "43197b5a86619628e7d807cd094e134e95776f70",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/failure.png",
+      "bytes": 994248,
+      "sha256": "bf788a9ebb390896cd5dc551d1dc8eb15f2f95c5cedea42a0a5783317ef44f61",
+      "gitBlob": "96f3fac1dd0a4266d48182a91398bd9a53b98dba",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/report.json",
+      "bytes": 419070,
+      "sha256": "35056307251ad603bbc264448c1659d81f3c1f5358034938bf1ac94f441d7d6d",
+      "gitBlob": "99118296fe94bd9e41a6e97c20030e18d39db5fe",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/source/HuntCanvas.tsx.txt",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+      "gitBlob": "f10f65296ceeb0e18dc44519abc19cf11e763e5b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/source/fixture.jsx.txt",
+      "bytes": 6403,
+      "sha256": "1535eb6a45621a45fda8d29d7bfc449e124166361f749990e75381919a5a5f4a",
+      "gitBlob": "fb4843c6b20ae8380c14727d1413b1a93bba9b9a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-06/source/runner.mjs.txt",
+      "bytes": 38814,
+      "sha256": "4dbdfb4a5c3ee636acb851a4fbc01da5599a063254a95efe771a32a70a1ff123",
+      "gitBlob": "794475cce93dc8594933ace974a1ee21709fb2de",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/08-canopy-canonical-insertion.png",
+      "bytes": 999227,
+      "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+      "gitBlob": "29695ef703786e6fe1950b51453290a5a9fa3795",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/08b-native-entry-canopy-hud.png",
+      "bytes": 1033418,
+      "sha256": "7631d93236b175cc25e80e894637b8be67b8e335fec7ccfef515dddae72c960d",
+      "gitBlob": "d5c39822337eaa9af7e7387c2348b6720a806097",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/09-first-native-rest.png",
+      "bytes": 1070621,
+      "sha256": "59f16356e82df6c64f8519e7b8e548745cff5826be297a6233fb5cdce2bb647f",
+      "gitBlob": "3b30eae68d866f37dd09b7263ace5db283468d7b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/10-pendulum-reload.json",
+      "bytes": 412819,
+      "sha256": "16f5e21b4f5d978652a7d93ef01f83337ac23f07c2d663603c7b98b9b3178427",
+      "gitBlob": "68c4afaec91f1847d5ea4d8be4887f859374aec5",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/10-pendulum-restored-paused.png",
+      "bytes": 641187,
+      "sha256": "36a000e8743a6673dcffb1bc078af59947e27beeec75df578ef8c288cf38451e",
+      "gitBlob": "bfc3e5ddd16d4c2d3de133d3ecab7a3d8830f3e8",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/11-native-pumped-pendulum.png",
+      "bytes": 1089612,
+      "sha256": "7217580ec92b1b428d5190a6fc1c0ab0dcc262260002e760b268ee4827d6f845",
+      "gitBlob": "c67cdd8975c1078e0611fcc9d5277d55d662122b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/12-release-grace-reload.json",
+      "bytes": 417361,
+      "sha256": "318b48c846506382f3292c065c712feda3d9c497d74f1eed4ca8af080538d645",
+      "gitBlob": "9528e2a653e80fbef863ee909ed25f7f5d263342",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/12-release-grace-restored.png",
+      "bytes": 635441,
+      "sha256": "ec4f7bfe1505302ec2bbfb2df9be108633c9397745d26c6697dd03a1e40d247e",
+      "gitBlob": "eb76c8e2ab90fb3e3af5c7292bf008eab81be897",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/canopy-progress.json",
+      "bytes": 2318,
+      "sha256": "bd00892df4243f57a878b1e2e3808bfb64a7cf540255a034ef58f258c800e4c5",
+      "gitBlob": "f91b77af5caa56a71bd6b4c8cd10ea6a3cf10150",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/command.json",
+      "bytes": 759,
+      "sha256": "34232472c73e63c7fa57b03655ff857644ffbf8b313280fc549af4f890e266cd",
+      "gitBlob": "5681d13e8590e97cfb753d14fc89e7d95fc9aaeb",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/execution.log",
+      "bytes": 1479,
+      "sha256": "196276454fab233c22f2db638584eb873268307b59ff663dfeda13ecbaa73626",
+      "gitBlob": "ddc1a03f137400d4ea93c701f3f05b03e2bdfc9e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/failure.png",
+      "bytes": 1091954,
+      "sha256": "66ca1d9e5a446cb10e105da18afcf6339e0740a754727fbf49d897a17c585d0b",
+      "gitBlob": "72b3e3894dc59abb8d4437e535dc3f9317800d3f",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/report.json",
+      "bytes": 738403,
+      "sha256": "04d59c97bdf3e91da514262ba39dcd914a305214def2a5138c47ad2a5a27db74",
+      "gitBlob": "5fcdccf3689db7e1403acb881ada78499cc54a92",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/source/HuntCanvas.tsx.txt",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+      "gitBlob": "f10f65296ceeb0e18dc44519abc19cf11e763e5b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/source/fixture.jsx.txt",
+      "bytes": 6403,
+      "sha256": "1535eb6a45621a45fda8d29d7bfc449e124166361f749990e75381919a5a5f4a",
+      "gitBlob": "fb4843c6b20ae8380c14727d1413b1a93bba9b9a",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-07-canopy/source/runner.mjs.txt",
+      "bytes": 40079,
+      "sha256": "72d431acbfbdc21099f44ed6823d9fd69ac3f25c779503692918b07011942cdc",
+      "gitBlob": "d1d50340ff470310604f1b2f8e50f44b73090779",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/08-canopy-canonical-insertion.png",
+      "bytes": 999227,
+      "sha256": "0af58d1257569c7d922c645eb6b1e1910c918fdcddc0700cd95fcef40d6315cc",
+      "gitBlob": "29695ef703786e6fe1950b51453290a5a9fa3795",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/08b-native-entry-canopy-hud.png",
+      "bytes": 1035810,
+      "sha256": "c05bd97fc5edeabfeb848a3611dfeb9989ce76ebc5cbd7aed614b3b51f79bbc3",
+      "gitBlob": "323be21a75d0143d55aaf042d023657fafb6124d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/09-first-native-rest.png",
+      "bytes": 1070621,
+      "sha256": "59f16356e82df6c64f8519e7b8e548745cff5826be297a6233fb5cdce2bb647f",
+      "gitBlob": "3b30eae68d866f37dd09b7263ace5db283468d7b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/10-pendulum-reload.json",
+      "bytes": 414339,
+      "sha256": "4250d5312c9b83cfabbc4c1e2b024e73013f303f0ce557006b4694b26a6b43b5",
+      "gitBlob": "4448a2e7e0a96186619b3e89fc72d1efee9543e3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/10-pendulum-restored-paused.png",
+      "bytes": 642817,
+      "sha256": "5403784350ac33e637494c3a5d1199b8529810d5b8893cf13a3532a887ebe7d1",
+      "gitBlob": "76e7366ad2497162cf0f2c90e4292bfb48cf9626",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/11-native-pumped-pendulum.png",
+      "bytes": 1085377,
+      "sha256": "5ee1d9d70978a92efc2eab70a3faa3d92788e64c8b170efa6a1ddd3805f61eba",
+      "gitBlob": "41b86246ad41cf6beecd23a26ec8275f482095df",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/canopy-progress.json",
+      "bytes": 2336,
+      "sha256": "1fc71e68520c3cf6f49adc6da9e8707e9c4a802c2c4f9b09c8c19adc31807615",
+      "gitBlob": "776854a2c14161b0207b99bbee566b32b680b81c",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/command.json",
+      "bytes": 759,
+      "sha256": "c84a14413f7f2ab46c694993e615722037e30ddcfa5c8f097bf358e70a70aeb3",
+      "gitBlob": "506de50ae5dd2f2c0e2e2e4dd16420dd0901ef90",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/execution.log",
+      "bytes": 1247,
+      "sha256": "edc574cf35c3366906ec2e6ec49481aedec8cf36fb544d4514f183f3bc6fbccc",
+      "gitBlob": "c941f2aad0aa66712675bea79990a4f64a6dbcb4",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/failure.png",
+      "bytes": 1044730,
+      "sha256": "b7107badb15336bf69a98664ff76bad46411cdadb04a7a8be573aceb520052f1",
+      "gitBlob": "f41df8ea33f29b1f492f1ee6642c2dc310cc1388",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/report.json",
+      "bytes": 823071,
+      "sha256": "93ec9e86a604b9fd4b0ccb89fc8ad9975b8b7ccbecca2c5fb0dbf604ea0b4f7d",
+      "gitBlob": "a6c92cb7380e809ce4871f3856c48a77a1aff0ec",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/source/HuntCanvas.tsx.txt",
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96",
+      "gitBlob": "f10f65296ceeb0e18dc44519abc19cf11e763e5b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/source/fixture.jsx.txt",
+      "bytes": 6575,
+      "sha256": "066e77cc68376d45cf9ad082c1c424cf7b33f3512bb0e75af4803c268a403a40",
+      "gitBlob": "959d00b364a86349a389b7e072d4f08244dfcf4b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/native-attempts/native-08-canopy/source/runner.mjs.txt",
+      "bytes": 41976,
+      "sha256": "1d6d1d277e4a9d17aedbf2e0a452a014415718218a3cc6fea50bd969e36e1fa6",
+      "gitBlob": "9b2005fa3920ffc12239fdcfc62f349d46895cb6",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/1120-before.png",
+      "bytes": 26138,
+      "sha256": "26cde23194531aa62743e5d06d76487584abb2749b94b12bfebfcbff0805d15b",
+      "gitBlob": "16ed13170228c55d246f2f58ebfd9b37a1f5764b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/1120-working.png",
+      "bytes": 26138,
+      "sha256": "26cde23194531aa62743e5d06d76487584abb2749b94b12bfebfcbff0805d15b",
+      "gitBlob": "16ed13170228c55d246f2f58ebfd9b37a1f5764b",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/320-before.png",
+      "bytes": 28365,
+      "sha256": "f72597689ce07e4572343961c771097f97fae8a075fd271c3dd5b48cf9ae4def",
+      "gitBlob": "6a76236aa536b55f7735b65016e02ed11c3bbd0e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/320-details.png",
+      "bytes": 29968,
+      "sha256": "22fddc316c15dab46091fd49cb3e4e7c1649ebf16a158cff482230e104a8f646",
+      "gitBlob": "150a5d796328f997161186332f8c130ac7530f1d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/320-working.png",
+      "bytes": 16957,
+      "sha256": "14b4617e4c00dd05183d04d61957058bd9fa454593a7f828fa68bae01df6039a",
+      "gitBlob": "64d54ffcb696c9324a9980fa79858753c8992a16",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/390-before.png",
+      "bytes": 30384,
+      "sha256": "2e1ccd5027e7d04784fa0e6f1128f12b49dfac854ec4d395c0efd7ccdfd18dbe",
+      "gitBlob": "ccdfbed59b9bf26a40c20323e93e8896d65ed4e8",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/390-details.png",
+      "bytes": 30587,
+      "sha256": "0c12db31274c79ca87d15ff4773f3f304c186e5585e4f6d92c01708ac9767d90",
+      "gitBlob": "2c64a469ec0db49e400cf913b14d5b466ba5e649",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/390-working.png",
+      "bytes": 17404,
+      "sha256": "95ae74e3c0b7fc8e07472c86e0fcfa0d94ee05f93b04aa5bdd7e46821e923ad5",
+      "gitBlob": "ebd00277443c5006a69c7c2b9916b1fa70a2fbbd",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/component-measurement-harness.mjs.txt",
+      "bytes": 7395,
+      "sha256": "2110235b54866ea93bdf49f4b2fbff812eed3a01e8d08e7f715e6b16168f4d1d",
+      "gitBlob": "29da2b1b6a5006d8de068c3c51cfca85450b0f32",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/receipt.json",
+      "bytes": 5080,
+      "sha256": "29c2abea396d6320861db0694fc67f89fe46242260fd5e0f6bfcec9d484960e6",
+      "gitBlob": "f60fdd278e3f0eca39e19697351105baada6c107",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/report.json",
+      "bytes": 10157,
+      "sha256": "34d356e30e49f0a6e29f87b10c613c985ad9d6975a3d1a947e81e30bb6afb801",
+      "gitBlob": "24717f0f9b221c556fba1be9c9c18cf1c090097e",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/skinning-worksite-compact-eslint-20261109.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/rites-compact-component/skinning-worksite-compact-tests-20261109.log",
+      "bytes": 4037,
+      "sha256": "c56c2ede92cc550aa0e820b809d49624d468835ae5d35df97e2b499f3f2cf0b0",
+      "gitBlob": "e974c36a8d09171191a59dc0aa2ee1ce65bb33ce",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-frozen/skinning-worksite-duration-tests-20261109.log",
+      "bytes": 5015,
+      "sha256": "8d750a69eb0c54cd0f79e08b7d74a72649e4d15d968f880cc9ac980ad15440c6",
+      "gitBlob": "4e9d2c945ec98398b039396a77c8f20c049e986d",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-frozen/skinning-worksite-frozen-eslint-20261109.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-frozen/skinning-worksite-frozen-evidence-20261109.json",
+      "bytes": 3601,
+      "sha256": "59ed30329599db7b331183ed324f2968915be95d49e4189a20803b737e255d0f",
+      "gitBlob": "7c42ed106adba0560c19108b18cd420df5928945",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-frozen/skinning-worksite-frozen-tests-20261109.log",
+      "bytes": 4039,
+      "sha256": "c16fe8fefc23d25f222ddb6488bae0baa2713b1078ec305daf71674c2809e3b5",
+      "gitBlob": "ca02b886fd822ccbedd88c7a6297ef6da02f91dc",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-evidence-20261109.json",
+      "bytes": 2677,
+      "sha256": "63a246ecc41ff4fc3664c7c601c72258e6dd777ac5d6e5eb7edb2a0eb224f325",
+      "gitBlob": "d1769b84ce5f7c3c3f22808335315eaa465f0ab6",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-evidence-explicit-isolation-20261109.json",
+      "bytes": 2836,
+      "sha256": "fb5899e79b59ead0410edf4807ccab1abe7b185ddcb5f698ccae297a23431e85",
+      "gitBlob": "401a59dd0d3b1c8dd7bf711e07595e79f2c0fd92",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-tests-20261109.log",
+      "bytes": 3807,
+      "sha256": "729273bf3c2b144de4528dd0c0226a74a43c09abfdeb14302dd08bdffa4c5924",
+      "gitBlob": "bfcf01d86920cfe7e745644ead3d34a29d96dbdb",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-tests-explicit-isolation-20261109.log",
+      "bytes": 3811,
+      "sha256": "d14da6a63b887401cb99fec2372ef363fbe72dd93adf46a83ad8dfea3544bd4d",
+      "gitBlob": "57a3e44e42e59068de18ee63c69eada04fdb5937",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/source-gates-cfa730/current-source.log",
+      "bytes": 300,
+      "sha256": "8b877ce3304c25670ed5534b84aca357f0de094e623e22e160d7dcfcb3bd55ef",
+      "gitBlob": "d1ee374d40a40031b647a93fbe1c050bb8939ad3",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/source-gates-cfa730/execution.json",
+      "bytes": 829,
+      "sha256": "53e59721ce59c54798099a8ae3cb0363bb6b2498ef88728a8e30653af67507c8",
+      "gitBlob": "0055af1e386ec44e48c2bd2e8e997af6ed4964c6",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/source-gates-cfa730/runtime-inputs.log",
+      "bytes": 175,
+      "sha256": "9e635278b117c0a93494c5ad7be2b7361a63ce62ab14b96261421ce44f026604",
+      "gitBlob": "c07255ad80f3c0f32bd48199c67dcb4351d88c81",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qualification.json",
+      "bytes": 87604,
+      "sha256": "a2782bb169c6ea6c813d805bc60269bca4a6e9ff71d6a96f0a5593b200f17a92",
+      "gitBlob": "6a1315813ccfdd8078d96a94531c568ff58e7f31",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/specification.md",
+      "bytes": 7880,
+      "sha256": "6f65d5b41bc096f8f4f15354a017938cf0d2275b1a169664ee491d9c5aaaf148",
+      "gitBlob": "5230119d777d97a46a131087672baf0965899f77",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/verification-classeur.json",
+      "bytes": 165667,
+      "sha256": "d8f60f175bd00e5b1a3d8cbcc995ed5f0f6654a5bc38eb52cf5faa5195d7eca8",
+      "gitBlob": "c08cf43f15efa6d132b6fc98aaa8c5f38d8c6053",
+      "observation": "DELIVERY_FILE"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/verify-followup.py",
+      "bytes": 10890,
+      "sha256": "5cf394e51a627bf337f25ce37a14f47a9972dfede91ab420d0347c6981adac07",
+      "gitBlob": "5bc5cb647fe006aa41b351e7d57c8e803a053178",
+      "observation": "DELIVERY_FILE"
+    }
+  ],
+  "fileCount": 291,
+  "bytes": 75028545,
+  "deliveryDocuments": [
+    {
+      "path": "docs/campagne/AVENANT_SKINNING_CANOPEE_20261109.md",
+      "bytes": 6677,
+      "sha256": "fd45626d95b4f36ec50ee2753be03fa2b349d8f6bdc365a8712ebbe0c6eece80",
+      "gitBlob": "0a000e3763dd31bbe6fc18599e453e03abac040e",
+      "observation": "CURRENT_DELIVERY_DOCUMENT"
+    },
+    {
+      "path": "docs/campagne/README.md",
+      "bytes": 19824,
+      "sha256": "e40565b53a73f747aacd0953b13453ec5fc4b82762f6fbc21d857a5297a9f304",
+      "gitBlob": "8743052b65b7a9c03c5046c231655db254e97654",
+      "observation": "CURRENT_DELIVERY_DOCUMENT"
+    },
+    {
+      "path": "docs/hunt-mechanics-v112.md",
+      "bytes": 16734,
+      "sha256": "d85dc21b76d4a52ef9a5e326d8b433a0cf27ac446e9426314beb32f482fb9713",
+      "gitBlob": "112061dfafcdc241dd6211f3890bc74b3eb81a2a",
+      "observation": "CURRENT_DELIVERY_DOCUMENT"
+    }
+  ],
+  "nativeExcelExecuted": false
+}

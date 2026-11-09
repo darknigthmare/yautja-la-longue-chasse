@@ -1,0 +1,206 @@
+{
+  "format": "yautja-war-planet",
+  "version": 102,
+  "code": "proc-v102-11gyrh2-2021113-yuqlv",
+  "recipe": {
+    "version": 102,
+    "seed": 2265744278,
+    "landform": "archipelago",
+    "landCoverage": "low",
+    "coast": "fjords",
+    "landBiome": "jungle",
+    "surface": "acid",
+    "biomeDiversity": "varied",
+    "atmosphere": "aurora"
+  },
+  "name": "Nyruun-11GYRH2",
+  "description": "Nyruun-11GYRH2 combine jungles et mers corrosives. Ciel auroral, émissions polaires et nuages fins. Six régions et 36 territoires forment un front connecté.",
+  "environment": {
+    "climate": "Chaud et humide",
+    "atmosphere": "Ciel auroral, émissions polaires et nuages fins",
+    "liquid": "Bassins acides ; les surfaces corrosives restent hors des zones conquérables.",
+    "gravity": 0.73,
+    "dayLengthHours": 38
+  },
+  "landmasses": [
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-1",
+      "name": "Île des Refuges 1",
+      "kind": "island",
+      "description": "Île des Refuges 1 porte 4 territoires de 1 région. Des anses profondes découpent ses rivages."
+    },
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-2",
+      "name": "Île des Horizons 2",
+      "kind": "island",
+      "description": "Île des Horizons 2 porte 4 territoires de 1 région. Des anses profondes découpent ses rivages."
+    },
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-3",
+      "name": "Île des Roches 3",
+      "kind": "island",
+      "description": "Île des Roches 3 porte 2 territoires de 2 régions. Des anses profondes découpent ses rivages."
+    },
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-4",
+      "name": "Terres des Brumes 4",
+      "kind": "continent",
+      "description": "Terres des Brumes 4 porte 6 territoires de 4 régions. Des anses profondes découpent ses rivages."
+    },
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-5",
+      "name": "Terres des Veilleurs 5",
+      "kind": "continent",
+      "description": "Terres des Veilleurs 5 porte 6 territoires de 2 régions. Des anses profondes découpent ses rivages."
+    },
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-6",
+      "name": "Île du Levant 6",
+      "kind": "island",
+      "description": "Île du Levant 6 porte 2 territoires de 1 région. Des anses profondes découpent ses rivages."
+    },
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-7",
+      "name": "Terres des Échos 7",
+      "kind": "continent",
+      "description": "Terres des Échos 7 porte 6 territoires de 1 région. Des anses profondes découpent ses rivages."
+    },
+    {
+      "landmassId": "proc-v102-11gyrh2-2021113-yuqlv-land-8",
+      "name": "Terres de la Longue Veille 8",
+      "kind": "continent",
+      "description": "Terres de la Longue Veille 8 porte 6 territoires de 1 région. Des anses profondes découpent ses rivages."
+    }
+  ],
+  "regions": [
+    {
+      "regionId": "CON-REG01",
+      "biome": "jungle",
+      "climate": "Chaud et humide",
+      "features": [
+        "canopée dense",
+        "ravins de racines"
+      ],
+      "resources": [
+        "Port",
+        "Quartier",
+        "Atelier",
+        "Passage",
+        "Assemblée",
+        "Fort"
+      ],
+      "description": "Marches des Roches : jungles, canopée dense et ravins de racines. Ses six territoires occupent 3 masses terrestres. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG02",
+      "biome": "swamp",
+      "climate": "Humide, poches de brouillard",
+      "features": [
+        "berges tourbeuses",
+        "racines compactes"
+      ],
+      "resources": [
+        "Habitat",
+        "Dépôt",
+        "Passage",
+        "Atelier",
+        "Observation",
+        "Assemblée"
+      ],
+      "description": "Dorsale des Brumes : marécages, berges tourbeuses et racines compactes. Ses six territoires occupent 2 masses terrestres. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG03",
+      "biome": "temperate",
+      "climate": "Tempéré, précipitations saisonnières",
+      "features": [
+        "vallées forestières",
+        "clairières rocheuses"
+      ],
+      "resources": [
+        "Fort",
+        "Transport",
+        "Dépôt",
+        "Atelier",
+        "Passage"
+      ],
+      "description": "Terrasses des Veilleurs : forêts tempérées, vallées forestières et clairières rocheuses. Ses six territoires occupent 1 masse terrestre. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG04",
+      "biome": "mountain",
+      "climate": "Montagnard, gradients d’altitude",
+      "features": [
+        "cols étroits",
+        "vallées encaissées"
+      ],
+      "resources": [
+        "Assemblée",
+        "Eau",
+        "Transport",
+        "Dépôt",
+        "Habitat",
+        "Atelier"
+      ],
+      "description": "Caps du Levant : montagnes, cols étroits et vallées encaissées. Ses six territoires occupent 3 masses terrestres. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG05",
+      "biome": "ocean",
+      "climate": "Maritime, vents côtiers",
+      "features": [
+        "caps battus par le vent",
+        "terrasses littorales"
+      ],
+      "resources": [
+        "Fort",
+        "Assemblée",
+        "Passage",
+        "Commandement",
+        "Dépôt",
+        "Observation"
+      ],
+      "description": "Plateaux des Échos : terres littorales, caps battus par le vent et terrasses littorales. Ses six territoires occupent 3 masses terrestres. Les sites et revenus restent ceux du scénario stratégique."
+    },
+    {
+      "regionId": "CON-REG06",
+      "biome": "swamp",
+      "climate": "Humide, poches de brouillard",
+      "features": [
+        "buttes humides",
+        "forêts inondables"
+      ],
+      "resources": [
+        "Atelier",
+        "Habitat",
+        "Assemblée",
+        "Passage",
+        "Service",
+        "Port"
+      ],
+      "description": "Vallées de la Longue Veille : marécages, buttes humides et forêts inondables. Ses six territoires occupent 1 masse terrestre. Les sites et revenus restent ceux du scénario stratégique."
+    }
+  ],
+  "traits": [
+    {
+      "id": "coasts",
+      "name": "Géographie du front",
+      "description": "4 continents, 4 îles et 7 liaisons entre terres distinctes."
+    },
+    {
+      "id": "gravity",
+      "name": "Gravité indicative",
+      "description": "0,73 g. Donnée descriptive du monde ; aucun multiplicateur de déplacement ou de combat n’est appliqué."
+    },
+    {
+      "id": "day",
+      "name": "Durée du jour",
+      "description": "38 heures. Donnée descriptive ; l’éclairage de l’atlas reste réglé par ses modules visuels."
+    },
+    {
+      "id": "regional",
+      "name": "Diversité des terres",
+      "description": "5 familles de biomes réparties sur six régions administratives."
+    }
+  ]
+}

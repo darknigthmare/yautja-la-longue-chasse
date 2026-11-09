@@ -1,0 +1,208 @@
+TAP version 13
+# Subtest: actual training awards permit and unclaimed receipt, no property or rank
+ok 1 - actual training awards permit and unclaimed receipt, no property or rank
+  ---
+  duration_ms: 1.174832
+  type: 'test'
+  ...
+# Subtest: explicit hand-over transfers the exact inspected hull, no currency or orbital side effect
+ok 2 - explicit hand-over transfers the exact inspected hull, no currency or orbital side effect
+  ---
+  duration_ms: 1.296787
+  type: 'test'
+  ...
+# Subtest: confirmation is unique even with a fresh ledger revision
+ok 3 - confirmation is unique even with a fresh ledger revision
+  ---
+  duration_ms: 0.587727
+  type: 'test'
+  ...
+# Subtest: permitted but unearned campaign cannot claim; old report never fabricates a receipt
+ok 4 - permitted but unearned campaign cannot claim; old report never fabricates a receipt
+  ---
+  duration_ms: 0.517701
+  type: 'test'
+  ...
+# Subtest: hand-over refuses wrong run
+ok 5 - hand-over refuses wrong run
+  ---
+  duration_ms: 0.345801
+  type: 'test'
+  ...
+# Subtest: hand-over refuses string run
+ok 6 - hand-over refuses string run
+  ---
+  duration_ms: 0.482949
+  type: 'test'
+  ...
+# Subtest: hand-over refuses stale revision
+ok 7 - hand-over refuses stale revision
+  ---
+  duration_ms: 0.280183
+  type: 'test'
+  ...
+# Subtest: hand-over refuses foreign owner
+ok 8 - hand-over refuses foreign owner
+  ---
+  duration_ms: 0.247433
+  type: 'test'
+  ...
+# Subtest: hand-over refuses young rank
+ok 9 - hand-over refuses young rank
+  ---
+  duration_ms: 0.466564
+  type: 'test'
+  ...
+# Subtest: hand-over refuses recovery debt
+ok 10 - hand-over refuses recovery debt
+  ---
+  duration_ms: 0.544842
+  type: 'test'
+  ...
+# Subtest: hand-over refuses active sortie
+ok 11 - hand-over refuses active sortie
+  ---
+  duration_ms: 0.632904
+  type: 'test'
+  ...
+# Subtest: no marques required for earned hand-over, and no negative or imaginary debit
+ok 12 - no marques required for earned hand-over, and no negative or imaginary debit
+  ---
+  duration_ms: 0.391261
+  type: 'test'
+  ...
+# Subtest: recovery and immediate parking do not earn receipt
+ok 13 - recovery and immediate parking do not earn receipt
+  ---
+  duration_ms: 0.721519
+  type: 'test'
+  ...
+# Subtest: repeating training preserves first hand-over record, including after it is claimed
+ok 14 - repeating training preserves first hand-over record, including after it is claimed
+  ---
+  duration_ms: 62.778142
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects invalid outcome
+ok 15 - receipt validation rejects invalid outcome
+  ---
+  duration_ms: 0.374876
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects cargo still aboard
+ok 16 - receipt validation rejects cargo still aboard
+  ---
+  duration_ms: 0.182815
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects unfinished checkpoints
+ok 17 - receipt validation rejects unfinished checkpoints
+  ---
+  duration_ms: 0.163867
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects not at depot
+ok 18 - receipt validation rejects not at depot
+  ---
+  duration_ms: 0.158829
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects moving hull
+ok 19 - receipt validation rejects moving hull
+  ---
+  duration_ms: 0.156376
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects too short
+ok 20 - receipt validation rejects too short
+  ---
+  duration_ms: 0.15189
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects destroyed hull
+ok 21 - receipt validation rejects destroyed hull
+  ---
+  duration_ms: 0.210908
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects invalid reserve
+ok 22 - receipt validation rejects invalid reserve
+  ---
+  duration_ms: 0.158129
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects future run
+ok 23 - receipt validation rejects future run
+  ---
+  duration_ms: 0.158599
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects wrong status
+ok 24 - receipt validation rejects wrong status
+  ---
+  duration_ms: 0.160893
+  type: 'test'
+  ...
+# Subtest: receipt validation rejects unknown receipt key
+ok 25 - receipt validation rejects unknown receipt key
+  ---
+  duration_ms: 0.161273
+  type: 'test'
+  ...
+# Subtest: future nested receipt is protected rather than dropped
+ok 26 - future nested receipt is protected rather than dropped
+  ---
+  duration_ms: 0.202576
+  type: 'test'
+  ...
+# Subtest: claim and physical ownership must agree in both directions
+ok 27 - claim and physical ownership must agree in both directions
+  ---
+  duration_ms: 0.634707
+  type: 'test'
+  ...
+# Subtest: personal sled actually drives, wears, recharges and upgrades separately from loan
+ok 28 - personal sled actually drives, wears, recharges and upgrades separately from loan
+  ---
+  duration_ms: 1.368244
+  type: 'test'
+  ...
+# Subtest: loan never borrows personal upgrade stats and controller stays in sync
+ok 29 - loan never borrows personal upgrade stats and controller stays in sync
+  ---
+  duration_ms: 2.469636
+  type: 'test'
+  ...
+# Subtest: both machines coexist; maintenance and upgrades affect only selected hull
+ok 30 - both machines coexist; maintenance and upgrades affect only selected hull
+  ---
+  duration_ms: 0.712545
+  type: 'test'
+  ...
+# Subtest: acquired hull and unclaimed receipt survive real writer, reload and complete archive
+ok 31 - acquired hull and unclaimed receipt survive real writer, reload and complete archive
+  ---
+  duration_ms: 30.52001
+  type: 'test'
+  ...
+# Subtest: storage failure grants nothing; reconciled readback never duplicates the reward
+ok 32 - storage failure grants nothing; reconciled readback never duplicates the reward
+  ---
+  duration_ms: 9.213524
+  type: 'test'
+  ...
+# Subtest: garage exposes earned hand-over and marks completed transfer without auto-actions
+ok 33 - garage exposes earned hand-over and marks completed transfer without auto-actions
+  ---
+  duration_ms: 122.283227
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 262.77939

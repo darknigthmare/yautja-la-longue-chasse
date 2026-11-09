@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "classification": "EXACT_HEAD_AUDIO_MANIFEST_REGRESSION_WITH_PRESERVED_EARLIER_PASS",
+  "observedAt": "2026-11-09T09:36:25.603143+00:00",
+  "cwd": "/workspace/yautja-reprise-20261109",
+  "workingTreeDirty": true,
+  "executionPoint": "This final14-test pass captured HEAD, dirty state and all declared input fingerprints before execution; HEAD and source bytes remained identical afterwards. The earlier pass and its incomplete commit-admission metadata remain separately archived.",
+  "nodeVersion": "v24.19.0",
+  "tests": {
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "--test-concurrency=1",
+      "tests/audio-manifest.test.mjs",
+      "tests/audio-pack-v54.test.mjs",
+      "tests/pod-audio.test.mjs"
+    ],
+    "exitCode": 0,
+    "passed": 14,
+    "failed": 0,
+    "skipped": 0,
+    "log": {
+      "file": "tests-exact-head.log",
+      "bytes": 1652,
+      "sha256": "27f30752684bd597ef89a9ecb790bcad391af27147042b9ac53d29a04fb2ed37"
+    },
+    "checkoutCommitAtAdmission": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+    "sourceOverlayIdentity": "The recorded two test files and current builder/manifest source bytes were fingerprinted after execution; owning test files were not modified between the run and this archive."
+  },
+  "lint": {
+    "command": [
+      "node",
+      "node_modules/eslint/bin/eslint.js",
+      "tests/audio-manifest.test.mjs",
+      "tests/audio-pack-v54.test.mjs",
+      "--max-warnings",
+      "0"
+    ],
+    "exitCode": 0,
+    "stdout": "empty (not separately captured)"
+  },
+  "redProof": {
+    "command": [
+      "node",
+      "--input-type=module"
+    ],
+    "stdin": "prove-stale-head.mjs.txt",
+    "exitCode": 0,
+    "log": {
+      "file": "red-proof.log",
+      "bytes": 223,
+      "sha256": "c8c84b4298408f93403eba2d78a110477942a88e0bf21e145bbe02c63e139c40"
+    },
+    "staleManifestHead": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+    "write": false,
+    "scope": "Read-only builder result rejects the exact stale tracked bytes. No repository file is replaced during this proof.",
+    "observedResult": {
+      "staleHead": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+      "staleHeadRejected": true,
+      "write": false,
+      "missingSlots": [
+        "field-work",
+        "field-secure",
+        "canopy-grab",
+        "canopy-release"
+      ],
+      "originalAudioFilesStillRequiredByExistingTest": 22
+    }
+  },
+  "sources": {
+    "tests/audio-manifest.test.mjs": {
+      "bytes": 5275,
+      "sha256": "8d510a69c6079e8b8bb6fe1c1fd076e93c08e5d0f56ff7629699ca72059e832d"
+    },
+    "tests/audio-pack-v54.test.mjs": {
+      "bytes": 5980,
+      "sha256": "a9a590f94b539c51611503ced46f56fa338178b0ba7035481e31a44614ca423a"
+    },
+    "public/audio/manifest.json": {
+      "bytes": 11771,
+      "sha256": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78"
+    },
+    "scripts/build-audio-manifest.mjs": {
+      "bytes": 7178,
+      "sha256": "080c06dcf2d92f5004d653db8ebdbffc8c9158b0e0d6fa00049959943f5a9fd3"
+    },
+    "app/game/sound.ts": {
+      "bytes": 42640,
+      "sha256": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65"
+    },
+    "public/audio/provenance-v54.json": {
+      "bytes": 24967,
+      "sha256": "bcba9bc2d56318434fe0d3e7dfe836a30fa616c3a57b6f208ee33cfbc16caf71"
+    }
+  },
+  "sparseContract": "audio-pack-v54 already reads and validates all22original WAV files. The new exact-manifest comparison adds no fixture asset requirement. Generic audio-manifest temporary fixtures remain source-free. Pod workflow materializes /public/audio/.",
+  "remainingAssertions": "All existing priorities, content fingerprints, caching/watch, fallback, PCM and lifecycle assertions are preserved. Only obsolete SFX count21 becomes an explicit28-ID contract, and one exact-byte guard is added.",
+  "archiveFiles": {
+    "tests-exact-head.log": {
+      "bytes": 1652,
+      "sha256": "27f30752684bd597ef89a9ecb790bcad391af27147042b9ac53d29a04fb2ed37"
+    },
+    "initial-receipt-metadata-only.json": {
+      "bytes": 5205,
+      "sha256": "08559e20f5fc2d3cae226622307d3cce7185c39ee9f384b56e70a6ee4099aeef"
+    },
+    "stale-manifest-3a03ca990.json": {
+      "bytes": 11157,
+      "sha256": "33f6d2b4d2c7393343fae12732866d44a50971ce4e7094a1ec3114b8a9ce83d0"
+    },
+    "current-manifest-observed.json": {
+      "bytes": 11771,
+      "sha256": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78"
+    },
+    "build-audio-manifest.mjs.txt": {
+      "bytes": 7178,
+      "sha256": "080c06dcf2d92f5004d653db8ebdbffc8c9158b0e0d6fa00049959943f5a9fd3"
+    },
+    "audio-pack-v54.test.mjs.txt": {
+      "bytes": 5980,
+      "sha256": "a9a590f94b539c51611503ced46f56fa338178b0ba7035481e31a44614ca423a"
+    },
+    "audio-manifest.test.mjs.txt": {
+      "bytes": 5275,
+      "sha256": "8d510a69c6079e8b8bb6fe1c1fd076e93c08e5d0f56ff7629699ca72059e832d"
+    },
+    "red-proof.log": {
+      "bytes": 223,
+      "sha256": "c8c84b4298408f93403eba2d78a110477942a88e0bf21e145bbe02c63e139c40"
+    },
+    "prove-stale-head.mjs.txt": {
+      "bytes": 805,
+      "sha256": "4d912b9093e3e2d8bf960a24362e7d081a075690200ed1fb7c8fccc8d2a561da"
+    },
+    "tests.log": {
+      "bytes": 1652,
+      "sha256": "86acb6c2543d6989ac58be1f22f7537b2381c2b3555c44d0496f3a45e7231c34"
+    }
+  },
+  "checkoutCommitAtArchiveObservation": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "earliestObservedCheckoutBeforeTestEdits": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+  "startedAt": "2026-11-09T09:37:41.772535+00:00",
+  "finishedAt": "2026-11-09T09:37:42.841896+00:00",
+  "checkoutCommit": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "checkoutCommitAfter": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "priorReceipt": "initial-receipt-metadata-only.json"
+}

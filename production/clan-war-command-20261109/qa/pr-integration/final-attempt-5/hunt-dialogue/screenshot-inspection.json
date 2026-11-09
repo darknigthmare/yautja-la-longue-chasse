@@ -1,0 +1,42 @@
+{
+  "at": "2026-11-09T11:48:25.314342+00:00",
+  "method": "Six original, unmodified PNGs opened using view_image at their screenshot dimensions; no montage or visual reconstruction.",
+  "inspected": [
+    {
+      "file": "1440x1000-shared-crown-ash-scar.png",
+      "sha256": "d0f22630e9a4c66dd1c8dd4bb89cab1f33ca02396ea13b73c26e7a8785d42f27",
+      "observation": "Shared Cradle crown report is visibly selected in the full-width optional conversation with four crew topics plus a separate Hunt disclosure."
+    },
+    {
+      "file": "1440x1000-private-crown-iron-claw.png",
+      "sha256": "6ae29c1b98b3480a4c644b226e1900381ebd9491c8f5d51180a4958cfa113b1e",
+      "observation": "The private workshop scenario exposes the four field reports and their context, with no Cradle option disclosed."
+    },
+    {
+      "file": "390x844-shared-crown-star-watch.png",
+      "sha256": "bac14281a3dad60d6306fb0b5a1a5d0b5c3914c2411633c94a553cabd7686cf6",
+      "observation": "The selected public Cradle report and privacy note remain readable in the narrow scroll card above the footer."
+    },
+    {
+      "file": "320x740-shared-crown-threshold-guard.png",
+      "sha256": "e9f963b9629ac789146c5c96a1d4322d6bb8de75dd1af6563d79bdce17dfa1b2",
+      "observation": "The complete selected Cradle line is visible above the footer after a real wheel gesture. The lower privacy note remains outside this crop and can be reached through further scrolling."
+    },
+    {
+      "file": "320x740-private-crown-iron-claw.png",
+      "sha256": "0743494d48d4302cea038b88c48df92acda3ebe5bd3a2eb1caa4c003496f4b26",
+      "observation": "The private scenario shows the selected field line and source note inside the narrow scroll viewport, with no Cradle report."
+    },
+    {
+      "file": "1440x1000-shared-retreat-iron-claw.png",
+      "sha256": "fcbc33e36980676b29d4a56ab640e06cd05011c31b241282d6d0da8352ed1f73",
+      "observation": "The retreat outcome supplies a return line without inventing a returned crown, while public disclosure context remains visible."
+    }
+  ],
+  "limits": [
+    "Only these six of23 original captures were visually inspected.",
+    "The strict runtime framing check covers the complete selected report line, not every surrounding heading, option or privacy note simultaneously.",
+    "320px wheel input is actual Chromium scrolling, not a physical touchscreen swipe.",
+    "Art fidelity, native devices, controller behavior, frame rate and full campaign are not certified."
+  ]
+}

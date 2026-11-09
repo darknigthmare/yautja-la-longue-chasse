@@ -1,0 +1,85 @@
+{
+  "format": "yautja-planet-traversal-session",
+  "version": 154,
+  "worldCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "unitTypeId": "RTS-U02",
+  "position": {
+    "x": 10,
+    "y": 6
+  },
+  "queued": [],
+  "walked": [
+    {
+      "x": 9,
+      "y": 6
+    },
+    {
+      "x": 10,
+      "y": 6
+    }
+  ],
+  "totalDistanceKm": 77.76,
+  "steps": 1,
+  "sectorTerritory": "CON-T01",
+  "grid": {
+    "width": 19,
+    "height": 13,
+    "samplePixels": 1,
+    "radiusKm": 6371,
+    "center": {
+      "longitude": -124.78999,
+      "latitude": -6.2492,
+      "sourceX": 78,
+      "sourceY": 136
+    }
+  },
+  "unitName": "Pisteur solitaire",
+  "maximumAllowedGradePercent": 27,
+  "blockedCells": 0,
+  "terrainElevationProfileV155": {
+    "format": "yautja-planet-traversal-section",
+    "version": 155,
+    "worldCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+    "nodes": [
+      {
+        "x": 9,
+        "y": 6,
+        "distanceFromStartKm": 0,
+        "elevationMeters": 5329,
+        "gradePercent": 0.4,
+        "longitude": -124.8046875,
+        "latitude": -5.9765625,
+        "visited": true
+      },
+      {
+        "x": 10,
+        "y": 6,
+        "distanceFromStartKm": 77.76,
+        "elevationMeters": 5537,
+        "gradePercent": 0.14,
+        "longitude": -124.1015625,
+        "latitude": -5.9765625,
+        "visited": true
+      }
+    ],
+    "currentNodeIndex": 1,
+    "totalDistanceKm": 77.76,
+    "ascentMeters": 208,
+    "descentMeters": 0,
+    "minElevationMeters": 5329,
+    "maxElevationMeters": 5537,
+    "notes": [
+      "This is the true V150 sampled elevation along a V154 cartographic exercise, not a new terrain source.",
+      "Vertical exaggeration in the drawn section is for readability; heights in JSON remain metres.",
+      "A 512x256 planet tile can span tens of kilometres: it is not tactical walk animation, collision, erosion or a mount physics simulator.",
+      "No war order, mission, roster, territory, stock, canon location or save file is changed."
+    ]
+  },
+  "limitations": [
+    "Authoring exercise on actual V150 global pixels: cells can span several kilometres, not a local metre-scale mission map.",
+    "Slope limits are prototype per-unit options based on existing RTS-U roles; no official Predator movement specifications are claimed.",
+    "Medium/water pixels are blocking; legitimate strategic crossing routes require a separate verified transport actor or bridge.",
+    "No war save, mission result, naval travel, mounts ownership, lore registry or territory borders are changed.",
+    "Local path and travelled cells are an editor exercise, never a campaign/war transaction."
+  ]
+}

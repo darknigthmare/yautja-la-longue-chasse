@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "classification": "MODEL_AND_REAL_MENU_RENDER_TESTS_EXPLICIT_PROCESS_ISOLATION_NONE",
+  "observedAt": "2026-11-09T06:50:48.646278+00:00",
+  "checkoutCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "command": [
+    "node",
+    "--test",
+    "--test-isolation=none",
+    "--test-concurrency=1",
+    "tests/hunt-skinning-worksite-20261109.test.mjs",
+    "tests/carcass-anatomy-v112.test.mjs",
+    "tests/hunt-rites-v77.test.mjs",
+    "tests/field-tools-rites-v111.test.mjs"
+  ],
+  "exitCode": 0,
+  "nodeVersion": "v24.19.0",
+  "tests": {
+    "passed": 34,
+    "failed": 0,
+    "skipped": 0,
+    "newTests": 7
+  },
+  "log": {
+    "path": "/tmp/skinning-worksite-tests-explicit-isolation-20261109.log",
+    "bytes": 3811,
+    "sha256": "d14da6a63b887401cb99fec2372ef363fbe72dd93adf46a83ad8dfea3544bd4d",
+    "lastWrittenAt": "2026-11-09T06:50:37.191062+00:00"
+  },
+  "sourceOverlay": {
+    "app/game/systems/ritesOfHuntV77.ts": {
+      "bytes": 21452,
+      "sha256": "0c12e4ba57575d91c64e6defb00b3a1280d05ba595f52962be0dcdf78d40ea3d"
+    },
+    "app/game/systems/huntRitesRuntimeV77.ts": {
+      "bytes": 16824,
+      "sha256": "f9fac63cf402c5c50d3e85fad0bedfdc0f84191ea75c5fdcce15d1ece149ecfb"
+    },
+    "app/game/HuntRitesMenuV77.tsx": {
+      "bytes": 8576,
+      "sha256": "dac6f9f1e2993bfe446a3d77ff067db5645dcb894374a9537e4ca4b2ff5e4c6e"
+    },
+    "app/game/HuntRitesMenuV77.module.css": {
+      "bytes": 1497,
+      "sha256": "7744c41a2e95236bc22739774659396f7a3277a717c0383d6f56bde794cb09c9"
+    },
+    "tests/hunt-skinning-worksite-20261109.test.mjs": {
+      "bytes": 10413,
+      "sha256": "7a20924aba4e51dce306e28976bff1d14e4ec7656bfd065866c90dd13cb9c8f9"
+    }
+  },
+  "priorRegressionFiles": {
+    "tests/carcass-anatomy-v112.test.mjs": {
+      "bytes": 11220,
+      "sha256": "111942301d2eae657771855a2788093f5bfd12bc0ce21b29ade21949fb7a088e"
+    },
+    "tests/hunt-rites-v77.test.mjs": {
+      "bytes": 6442,
+      "sha256": "ccaf694fc7c54391d4f47ee4d4968d2c9b959f1f6d90c051d3d2a1a42aa22c05"
+    },
+    "tests/field-tools-rites-v111.test.mjs": {
+      "bytes": 8505,
+      "sha256": "5f16610f59c118456f2d57d384196713e73855d6d4a7aab9152e6014e3db7c64"
+    }
+  },
+  "limits": [
+    "Actual production rules and React static rendering, deliberate unit prey fixtures.",
+    "HuntCanvas adapter integration and automated browser interaction are not qualified by this command.",
+    "CSS is included in the source overlay identity; the static renderer uses an empty CSS loader and does not measure layout.",
+    "Sources were fingerprinted after the run, before any further writes by the owning agent; the checkout is not presented as a new clean commit."
+  ],
+  "priorReceipt": "/tmp/skinning-worksite-evidence-20261109.json",
+  "sameSourceOverlayAsPriorPass": true
+}

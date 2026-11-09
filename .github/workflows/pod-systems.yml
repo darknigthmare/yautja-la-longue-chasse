@@ -133,13 +133,30 @@ jobs:
           npm run typecheck
           node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/PlanetArrivalCinematic.tsx app/game/sound.ts app/game/systems/huntPodRecovery.ts app/game/systems/huntInsertion.ts app/game/systems/controlBindings.ts app/game/systems/planetArrival*.ts scripts/qa-pod-systems.mjs tests/planet-arrival*.test.mjs tests/hunt-pod-recovery.test.mjs tests/pod-audio.test.mjs
       - name: Behavior and save regressions
-        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/expedition-roster-assignment.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs tests/hunt-pod-recovery.test.mjs tests/control-bindings.test.mjs tests/save-v2.test.mjs tests/pod-audio.test.mjs
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/planet-arrival*.test.mjs tests/planet-insertion.test.mjs tests/expedition-roster-assignment.test.mjs tests/ship-insertion-energy.test.mjs tests/hunt-insertion.test.mjs tests/hunt-pod-recovery.test.mjs tests/control-bindings.test.mjs tests/save-v2.test.mjs tests/pod-audio.test.mjs tests/audio-pack-v54.test.mjs
       - name: Build the production application
         run: npm run build:production
       - name: Install pinned Chromium and video dependencies
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
       - name: Play native pod controls and observe atmospheric panels
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-pod-systems.mjs
+      - name: Expose the observed failure in readable check annotations
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          paths = [Path('outputs/qa-pod-systems/report.json'), Path('outputs/qa-pod-systems/report.partial.json')]
+          path = next((candidate for candidate in paths if candidate.is_file()), None)
+          if path:
+            report = json.loads(path.read_text())
+            failure = report.get('failure') or report.get('latestProgress') or report.get('errors') or 'Inspect the preserved report for the failed assertion.'
+            message = json.dumps(failure, ensure_ascii=False) if not isinstance(failure, str) else failure
+          else:
+            message = 'No native pod report was produced; inspect the preceding setup or build step.'
+          message = message[:16000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+          print('::error title=Native pod diagnostic::' + message)
+          PY
       - name: Preserve the exact inventory candidate, screenshots and observations
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

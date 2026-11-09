@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: PR57 archive becomes canonical PR56 guard without losing location or old archives
+ok 1 - PR57 archive becomes canonical PR56 guard without losing location or old archives
+  ---
+  duration_ms: 5.51337
+  type: 'test'
+  ...
+# Subtest: conflicting or invalid legacy guard archives are refused without rewriting caller data
+ok 2 - conflicting or invalid legacy guard archives are refused without rewriting caller data
+  ---
+  duration_ms: 1.162804
+  type: 'test'
+  ...
+# Subtest: reinforcement never appears within two steps of the player
+ok 3 - reinforcement never appears within two steps of the player
+  ---
+  duration_ms: 2.313551
+  type: 'test'
+  ...
+# Subtest: automatic diversion rule is opt-in, persistent and spawns only one local guard
+ok 4 - automatic diversion rule is opt-in, persistent and spawns only one local guard
+  ---
+  duration_ms: 1.976122
+  type: 'test'
+  ...
+# Subtest: ambiguous legacy mission pauses until an explicit choice, preserving its state
+ok 5 - ambiguous legacy mission pauses until an explicit choice, preserving its state
+  ---
+  duration_ms: 1.866746
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 26.023737

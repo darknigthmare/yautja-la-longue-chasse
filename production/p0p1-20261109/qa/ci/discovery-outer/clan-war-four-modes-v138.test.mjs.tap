@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: Assault: one actual V6 team surges a bounded distance for 12 AP
+ok 1 - Assault: one actual V6 team surges a bounded distance for 12 AP
+  ---
+  duration_ms: 11.869097
+  type: 'test'
+  ...
+# Subtest: Assault: no burst through a rival, no free AP, no bypassing a defensive hold
+ok 2 - Assault: no burst through a rival, no free AP, no bypassing a defensive hold
+  ---
+  duration_ms: 0.723501
+  type: 'test'
+  ...
+# Subtest: Outer Ops: mid-route bulletin shows public terrain and existing fit members, never a victory forecast
+ok 3 - Outer Ops: mid-route bulletin shows public terrain and existing fit members, never a victory forecast
+  ---
+  duration_ms: 2.365107
+  type: 'test'
+  ...
+# Subtest: Outer Ops: recall or falsified time, source and packet cannot reveal distant opposition
+ok 4 - Outer Ops: recall or falsified time, source and packet cannot reveal distant opposition
+  ---
+  duration_ms: 1.563949
+  type: 'test'
+  ...
+# Subtest: Stealth: acoustic contact is available only from a real W3 covered location and returns bearing, not x
+ok 5 - Stealth: acoustic contact is available only from a real W3 covered location and returns bearing, not x
+  ---
+  duration_ms: 2.396795
+  type: 'test'
+  ...
+# Subtest: Stealth: fog of war hides an unobservable guard, and hearing has no permanent omniscience
+ok 6 - Stealth: fog of war hides an unobservable guard, and hearing has no permanent omniscience
+  ---
+  duration_ms: 1.061371
+  type: 'test'
+  ...
+# Subtest: RTS: real W3-U18 can stabilize a down squad at one physical step, spending 3 RAV
+ok 7 - RTS: real W3-U18 can stabilize a down squad at one physical step, spending 3 RAV
+  ---
+  duration_ms: 6.653366
+  type: 'test'
+  ...
+# Subtest: RTS: no remote medical teleport, unavailable RAV, false medic role or repeated rescue
+ok 8 - RTS: no remote medical teleport, unavailable RAV, false medic role or repeated rescue
+  ---
+  duration_ms: 2.374332
+  type: 'test'
+  ...
+# Subtest: Provenance: 24 real W3 missions and 12 distinct maps remain, free V6 practice cannot capture V85
+ok 9 - Provenance: 24 real W3 missions and 12 distinct maps remain, free V6 practice cannot capture V85
+  ---
+  duration_ms: 45.791682
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 84.236937

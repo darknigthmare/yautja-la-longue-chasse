@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "newHeadCiStatus": "EN_ATTENTE",
+  "observedCiCommit": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+  "correctedCodeCommit": "dab4b7760863a645ca5bcf63934ee2baf820d7f7",
+  "fileCount": 64,
+  "bytes": 30085180,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7992,
+      "sha256": "769d8d6bac020e59561caff1f14ff004865a92e3a6e0248b544f30222ceb3d8f"
+    },
+    {
+      "path": "audio-regression/audio-manifest.test.mjs.txt",
+      "bytes": 5275,
+      "sha256": "8d510a69c6079e8b8bb6fe1c1fd076e93c08e5d0f56ff7629699ca72059e832d"
+    },
+    {
+      "path": "audio-regression/audio-pack-v54.test.mjs.txt",
+      "bytes": 5980,
+      "sha256": "a9a590f94b539c51611503ced46f56fa338178b0ba7035481e31a44614ca423a"
+    },
+    {
+      "path": "audio-regression/build-audio-manifest.mjs.txt",
+      "bytes": 7178,
+      "sha256": "080c06dcf2d92f5004d653db8ebdbffc8c9158b0e0d6fa00049959943f5a9fd3"
+    },
+    {
+      "path": "audio-regression/current-manifest-observed.json",
+      "bytes": 11771,
+      "sha256": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78"
+    },
+    {
+      "path": "audio-regression/initial-receipt-metadata-only.json",
+      "bytes": 5205,
+      "sha256": "08559e20f5fc2d3cae226622307d3cce7185c39ee9f384b56e70a6ee4099aeef"
+    },
+    {
+      "path": "audio-regression/prove-stale-head.mjs.txt",
+      "bytes": 805,
+      "sha256": "4d912b9093e3e2d8bf960a24362e7d081a075690200ed1fb7c8fccc8d2a561da"
+    },
+    {
+      "path": "audio-regression/receipt.json",
+      "bytes": 5788,
+      "sha256": "11ce2b18473d2471b2e88bbc095b0939041df83f2e068a988c1e4ddc21ea647e"
+    },
+    {
+      "path": "audio-regression/red-proof.log",
+      "bytes": 223,
+      "sha256": "c8c84b4298408f93403eba2d78a110477942a88e0bf21e145bbe02c63e139c40"
+    },
+    {
+      "path": "audio-regression/stale-manifest-3a03ca990.json",
+      "bytes": 11157,
+      "sha256": "33f6d2b4d2c7393343fae12732866d44a50971ce4e7094a1ec3114b8a9ce83d0"
+    },
+    {
+      "path": "audio-regression/tests-exact-head.log",
+      "bytes": 1652,
+      "sha256": "27f30752684bd597ef89a9ecb790bcad391af27147042b9ac53d29a04fb2ed37"
+    },
+    {
+      "path": "audio-regression/tests.log",
+      "bytes": 1652,
+      "sha256": "86acb6c2543d6989ac58be1f22f7537b2381c2b3555c44d0496f3a45e7231c34"
+    },
+    {
+      "path": "durable-field-3a03/SHA256SUMS",
+      "bytes": 900,
+      "sha256": "0dd87b0ed1fc81ca3c50d4d74cfdda0aa9482cb740d7557b2850d324f1a6ae10"
+    },
+    {
+      "path": "durable-field-3a03/artifact-13661948968.json",
+      "bytes": 799,
+      "sha256": "a4b0538e8e92bb05c02c7db832ad026712f1200007b390e7ec8656314208334b"
+    },
+    {
+      "path": "durable-field-3a03/asset-index-repin-review.json",
+      "bytes": 1468,
+      "sha256": "dea42ae55edee93f0166e3a98eef43940b78e00087ba21849056ec8a4a185412"
+    },
+    {
+      "path": "durable-field-3a03/build-receipt.py",
+      "bytes": 8776,
+      "sha256": "e19af248d9b2f869e73f0b7443460c3d8a0340577e09870cfafdd26b4805e3da"
+    },
+    {
+      "path": "durable-field-3a03/commit-head-3a03.json",
+      "bytes": 1268,
+      "sha256": "3e048392d43bf9901eb3558213131d0eea25570d29b277f9f68caf0e13bdb904"
+    },
+    {
+      "path": "durable-field-3a03/commit-merge-51958.json",
+      "bytes": 2750,
+      "sha256": "2ed2fa91f99356f9586dae18398d25aae9f42fb247fa078b747cabe91dd74d57"
+    },
+    {
+      "path": "durable-field-3a03/job-129077780656.log",
+      "bytes": 31450,
+      "sha256": "e35d54febea4bf6b7b95a25ab108a820461169b29ea46e1c38f3decf0224ebe7"
+    },
+    {
+      "path": "durable-field-3a03/receipt.json",
+      "bytes": 4754,
+      "sha256": "da86e5e21cf4c0768ca13168ff4125138ed8c201f1a940a7f493fb6cddbcf90f"
+    },
+    {
+      "path": "durable-field-3a03/summary-from-job-log.json",
+      "bytes": 2459,
+      "sha256": "f3fab8e526abee8f29d3847521a0a1367784a183b12978d36062b8903dc15c8f"
+    },
+    {
+      "path": "durable-field-3a03/workflow-job-129077780656.json",
+      "bytes": 3046,
+      "sha256": "f5b24d20d1a2b2bce4832309f3118a364469e5e2840c7587b3d0ab423f87626e"
+    },
+    {
+      "path": "durable-field-3a03/workflow-run-42592671946.json",
+      "bytes": 14933,
+      "sha256": "d447187ac815b234b08e100d3bb0716cb1d129843aa73bf96e927907e11d8f85"
+    },
+    {
+      "path": "final-ci-snapshot-3a03/commit-3a03ca99-final-workflows.json",
+      "bytes": 63748,
+      "sha256": "b80460305eac85145da293567557922d3a5c85164abe33a33142c8159613dcf6"
+    },
+    {
+      "path": "final-ci-snapshot-3a03/independent-failure-diagnosis.json",
+      "bytes": 9850,
+      "sha256": "beefce14a93187d57390d477624b62e792a6524382bbed37114bd01b917da845"
+    },
+    {
+      "path": "final-ci-snapshot-3a03/v94-42592671169-application-proof.json",
+      "bytes": 152,
+      "sha256": "8df97af5f6e01caf3a599bb2722837aab89ebd5e32c7d5d823a65877caae6182"
+    },
+    {
+      "path": "final-ci-snapshot-3a03/v94-42592671169-history-proof.json",
+      "bytes": 148,
+      "sha256": "ecb69ea099b9eeb06d7f6b6624f934cbfd5fbace6cfe4957b2704d0232d5ec3c"
+    },
+    {
+      "path": "final-ci-snapshot-3a03/v94-42592671169-models-proof.json",
+      "bytes": 147,
+      "sha256": "b35b649d4693e778a8e56ef4fd2f37da37584c6385f4793664705f8545593bce"
+    },
+    {
+      "path": "final-local-dab4b776/audio-rebuild.log",
+      "bytes": 41,
+      "sha256": "a4c18180b72836162145f98ff96f7667e3c462ff01c80565192d03b1065f96a5"
+    },
+    {
+      "path": "final-local-dab4b776/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "final-local-dab4b776/receipt.json",
+      "bytes": 5065,
+      "sha256": "43ab8573984ea5f4aa5db89376333094d277fd90a85b14ae6bfa644b801171fd"
+    },
+    {
+      "path": "final-local-dab4b776/regressions.log",
+      "bytes": 2710,
+      "sha256": "0b63679630371877af82c886dba772a894111418839e1564cb5558f61f9e67bc"
+    },
+    {
+      "path": "final-local-dab4b776/runtime-current.log",
+      "bytes": 175,
+      "sha256": "9e635278b117c0a93494c5ad7be2b7361a63ce62ab14b96261421ce44f026604"
+    },
+    {
+      "path": "final-local-dab4b776/source-current.log",
+      "bytes": 300,
+      "sha256": "8b5d4371632ddaff8d3964a2126ac80178083d827052e6b704a6407940b19d00"
+    },
+    {
+      "path": "frozen-context-3a03/newer-checkout-context.json",
+      "bytes": 1291,
+      "sha256": "947aa793c95e7e7bb47cc3c56f76571c0568df81b76416775db39a9eefc6e36f"
+    },
+    {
+      "path": "frozen-context-3a03/newer-checkout-expected-refusal.log",
+      "bytes": 542,
+      "sha256": "caa7b30119fdfb71538fec27fe6f738a3aa0677f22fa16d639527efd71f71ddd"
+    },
+    {
+      "path": "frozen-context-3a03/receipt.json",
+      "bytes": 4758,
+      "sha256": "8d19f9774b87cdd60dbdb09a4862e68e2701e5f0a7dae38f263af92c8552362a"
+    },
+    {
+      "path": "frozen-context-3a03/setup.log",
+      "bytes": 440,
+      "sha256": "6f45c4e4ac6ac63fed0fb6abb02452c0f0530475931ebc8c7e834bee57ef0469"
+    },
+    {
+      "path": "frozen-context-3a03/verify.log",
+      "bytes": 276,
+      "sha256": "1c92eff6516d38a9c9960d0670e98733a7f80895f6f6d955d49840dd1a53b5a9"
+    },
+    {
+      "path": "observed-ci-3a03.json",
+      "bytes": 8986,
+      "sha256": "c6cd4c401f1ac5314c66000efbb6dc0dbe15d66f7fe056f037a3e19d34401186"
+    },
+    {
+      "path": "pod-42592671598/artifact.zip",
+      "bytes": 121132,
+      "sha256": "6ce4cedfa861439765dc0a2f9788c46db6a7c126dce28a671125975b1c750456"
+    },
+    {
+      "path": "pod-42592671598/github-observation.json",
+      "bytes": 4051,
+      "sha256": "7834f4a1563b3e4f92c7faffcc047c20d2d1d6be6224eaeb2096fa2b00f6eaec"
+    },
+    {
+      "path": "pod-42592671598/job-129077778882.log",
+      "bytes": 191645,
+      "sha256": "8de9fcb0b3023a8fa1778526df6a4b41e5f97d46c726a868fbdb12a0c81be271"
+    },
+    {
+      "path": "pod-42592671598/log-copy-check.json",
+      "bytes": 227,
+      "sha256": "1ec826136f345d8a4ca2139d31a673401b7de85c1fc2a5ea7b845155ce1f55b9"
+    },
+    {
+      "path": "pod-42592671598/report.json",
+      "bytes": 3520,
+      "sha256": "3683a5d8adbb5219f8e881702c923aef710176dda8f3b26c0afde48dbe7a2da5"
+    },
+    {
+      "path": "pod-42592671598/report.partial.json",
+      "bytes": 3342,
+      "sha256": "1714bc7aecc615a6f12c8d66efb9bfc2fa24043e767b09f2a749c8d302316dd2"
+    },
+    {
+      "path": "pod-42592671598/runtime-inputs.candidate.json",
+      "bytes": 410975,
+      "sha256": "5fd5c2829564ccc5a7498365f4e28ec32b99804957befff1806496a33bb8e83e"
+    },
+    {
+      "path": "pod-42592671598/zip-integrity.json",
+      "bytes": 807,
+      "sha256": "52b0ed33893cd6bb2b2835d8fbe2d3cc9549983287031825a372867ae7a22b80"
+    },
+    {
+      "path": "preserved-baseline.json",
+      "bytes": 142809,
+      "sha256": "7c49775b980ca25e863f9ee25f2ab02c3140b2644759453137547a918c39f366"
+    },
+    {
+      "path": "spatial-42592671826/artifact.zip",
+      "bytes": 23642523,
+      "sha256": "f7f9123795278481efc8e844d5c9303ba69f22394097293d126bfeac6c65646e"
+    },
+    {
+      "path": "spatial-42592671826/github-observation.json",
+      "bytes": 3931,
+      "sha256": "49e1abe4c4fb6d540d58a8e45b5a7ffcca3d53d69df84a55478dee250bddbfaa"
+    },
+    {
+      "path": "spatial-42592671826/job-129077782713.log",
+      "bytes": 2333566,
+      "sha256": "9f42e38ecd7968327da49cefdf5d2fef4007be1268e6e1c25f83e9a51c330805"
+    },
+    {
+      "path": "spatial-42592671826/log-copy-check.json",
+      "bytes": 227,
+      "sha256": "1ec826136f345d8a4ca2139d31a673401b7de85c1fc2a5ea7b845155ce1f55b9"
+    },
+    {
+      "path": "spatial-42592671826/report.json",
+      "bytes": 2783614,
+      "sha256": "d0e813664dcb895df0333d54eb5b5e0e2f9ec01cf251dfdf2de7f140545621f2"
+    },
+    {
+      "path": "spatial-42592671826/zip-integrity.json",
+      "bytes": 8886,
+      "sha256": "28881d69526902f92ad55661b4bfb59cbbe26ff8d3ed0f97f9844f1137861307"
+    },
+    {
+      "path": "spatial-cdp-local/driver.mjs.txt",
+      "bytes": 159657,
+      "sha256": "bf338dd24e9704d023d7feec57a9d549b76bfc751a4b7815ae4c9737c2fe4cae"
+    },
+    {
+      "path": "spatial-cdp-local/execution-receipt.json",
+      "bytes": 5874,
+      "sha256": "00aa82554003c7a2129278b5954c512c3fade5cb6af819f1a6a07b4ea826801a"
+    },
+    {
+      "path": "spatial-cdp-local/install-chromium-153.log",
+      "bytes": 3630,
+      "sha256": "c0a798eb0e31d7209f4ba4414e8674af68deee6773fea45a3bb24411c7917f85"
+    },
+    {
+      "path": "spatial-cdp-local/portable-xvfb/xvfb.receipt.json",
+      "bytes": 281,
+      "sha256": "589fa44cc45cd20e1787df1b57ec78be9c83ed5cc85df6b01fafe7c17f51864a"
+    },
+    {
+      "path": "spatial-cdp-local/run-01.log",
+      "bytes": 48,
+      "sha256": "6069409c826ce3f384eb55f5a3134be8f1d31ab0cd8afe11965bd25dfea3c976"
+    },
+    {
+      "path": "spatial-cdp-local/run-02/report.json",
+      "bytes": 18426,
+      "sha256": "8738dea917af27cdc4145660f866430e8c86a62819b1f47c50fcb058222594f1"
+    },
+    {
+      "path": "spatial-cdp-local/run-02.log",
+      "bytes": 787,
+      "sha256": "554e2111fb21ee8b18f575a6e8e622b5a02376397b992715066df72eda5e86e2"
+    },
+    {
+      "path": "status.json",
+      "bytes": 2459,
+      "sha256": "b4d2b1fb47301229c16b1d268a259a02dd0a431cbce72f637dc35e4427cfe912"
+    },
+    {
+      "path": "verify-integrity.py",
+      "bytes": 6853,
+      "sha256": "877780ebc6efff5de4a0d8bf0b7a3c0386069c50b000216f09f37bf98491f1d2"
+    }
+  ],
+  "policy": "Covers all annex files except this manifest; no old packet or old delivery document is rewritten."
+}

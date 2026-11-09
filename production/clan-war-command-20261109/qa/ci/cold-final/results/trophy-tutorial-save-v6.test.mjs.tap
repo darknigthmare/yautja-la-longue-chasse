@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: legacy campaign import does not create an activity, object or tutorial completion
+ok 1 - legacy campaign import does not create an activity, object or tutorial completion
+  ---
+  duration_ms: 12.199033
+  type: 'test'
+  ...
+# Subtest: three physically completed gestures survive the actual writer, reload and portable import without rewards
+ok 2 - three physically completed gestures survive the actual writer, reload and portable import without rewards
+  ---
+  duration_ms: 6.909464
+  type: 'test'
+  ...
+# Subtest: one observed face at gesture nine remains a partial observation after campaign normalization
+ok 3 - one observed face at gesture nine remains a partial observation after campaign normalization
+  ---
+  duration_ms: 4.524686
+  type: 'test'
+  ...
+# Subtest: complete archive parsing retains the same pedagogical object and stable post
+ok 4 - complete archive parsing retains the same pedagogical object and stable post
+  ---
+  duration_ms: 8.719675
+  type: 'test'
+  ...
+# Subtest: future, explicit null, foreign and fabricated tutorial records cannot overwrite a confirmed campaign
+ok 5 - future, explicit null, foreign and fabricated tutorial records cannot overwrite a confirmed campaign
+  ---
+  duration_ms: 3.999754
+  type: 'test'
+  ...
+# Subtest: a future primary stays protected beside an older valid tutorial backup
+ok 6 - a future primary stays protected beside an older valid tutorial backup
+  ---
+  duration_ms: 0.968171
+  type: 'test'
+  ...
+# Subtest: quota denial leaves the old checkpoint readable; retry stores the same gesture once
+ok 7 - quota denial leaves the old checkpoint readable; retry stores the same gesture once
+  ---
+  duration_ms: 2.762918
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 48.668002

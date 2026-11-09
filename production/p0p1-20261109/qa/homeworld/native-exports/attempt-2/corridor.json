@@ -1,0 +1,157 @@
+{
+  "schema": 126,
+  "sourceSchema": 120,
+  "status": "design-only",
+  "total": 1,
+  "filteredBy": {
+    "mode": "all",
+    "family": "all",
+    "query": "Pont de Normandie"
+  },
+  "variants": [
+    {
+      "sourceId": "CW120-O-HO-024",
+      "mode": "outer",
+      "geography": {
+        "worldId": "earth",
+        "worldKind": "earth",
+        "siteName": "Pont de Normandie",
+        "regionName": "Terre — lieu historique/géographique réel",
+        "latitude": null,
+        "longitude": null,
+        "accuracy": "unverified",
+        "earthSiteId": null,
+        "earthReferenceName": "Pont de Normandie",
+        "mapAvailability": "name-only",
+        "worldExplanation": "Lieu réel correctement attribué à la Terre, mais coordonnées non vérifiées : ne pas inventer de position ni de ville extraterrestre.",
+        "biomeSource": "lexical-inference"
+      },
+      "environment": {
+        "climate": "alpine",
+        "temperatureRule": "altitude : températures dépendant de la saison et de l'exposition",
+        "biome": "montagne terrestre",
+        "terrain": "roche montagneuse et sol saisonnier",
+        "liquid": "cours d'eau et fonte de neige saisonnière",
+        "weather": "météo variable selon secteurs parcourus",
+        "light": "midi",
+        "hazards": [
+          "chutes de pierres",
+          "vents de crête",
+          "hypothermie selon saison"
+        ],
+        "isFrozen": false,
+        "allowsNaturalSnow": true,
+        "seasonRule": "neige seulement si saison/altitude le permettent",
+        "weatherAdjusted": true,
+        "originalWeather": "rosée électrisée",
+        "siteKind": "multi-region",
+        "effectiveHazard": "incident de tronçon en itinéraire multirégional",
+        "originalHazard": "panne de projecteurs",
+        "effectiveTwist": "le chenal se scinde après le relevé ; incident de tronçon en itinéraire multirégional transforme l'approche lors de la phase 3.",
+        "climateConfidence": "requires-geographic-verification"
+      },
+      "original": {
+        "id": "CW120-O-HO-024",
+        "version": 120,
+        "mode": "outer",
+        "family": "homage",
+        "status": "design-only",
+        "title": "Mandat Outer Ops : Cartographie liquide — Reconstruction d'écho Pont de Normandie — station de balisage",
+        "settingName": "Reconstruction d'écho Pont de Normandie — station de balisage",
+        "zoneName": "Hommage géographique fictif · Pont de Normandie",
+        "referenceName": "Pont de Normandie",
+        "referenceWork": null,
+        "referenceContinuity": null,
+        "referenceKind": "real-place-homage",
+        "canonClaim": false,
+        "inspirationNote": "Clin d'œil à Pont de Normandie : volumes/reliefs réinterprétés sur un monde fictif. Aucune guerre Yautja historique revendiquée.",
+        "environment": {
+          "biome": "volcan de neige",
+          "terrain": "pierre givrée",
+          "liquid": "lave froide bleutée fictive",
+          "sky": "ciel blanc d'étain",
+          "altitude": "terrasses hautes",
+          "layout": "forêt à clairières interdites ; tablier exposé, travées étroites et appuis de rive",
+          "scene": "Écho de Pont de Normandie : tablier exposé, travées étroites et appuis de rive dans volcan de neige",
+          "weather": "rosée électrisée",
+          "timeOfDay": "midi",
+          "cover": "coraux secs",
+          "entrances": [
+            "relais du convoi",
+            "gare de pisteurs"
+          ],
+          "environmentalHazard": "panne de projecteurs",
+          "hazardsReaction": "À l'échéance, l'équipe signale panne de projecteurs et la route empruntée ; aucun rapport n'est dévoilé avant la confirmation du retour.",
+          "powerFailure": "La transmission radio ne déclenche aucun succès : la patrouille doit revenir avec un registre physique à l'échéance.",
+          "mapScaleHint": "48×32 terrain multizone",
+          "territoryShapeRequest": "forme-region-V120-051",
+          "islandShapeRequest": "forme-île-proposée-065",
+          "worldSize": "large",
+          "climateZone": "subpolaire"
+        },
+        "operation": {
+          "missionType": "Cartographie liquide",
+          "setup": "relever un chenal changeant dans station de balisage sur Reconstruction d'écho Pont de Normandie — station de balisage.",
+          "primaryObjective": "relever un chenal changeant puis déposer un compte rendu daté",
+          "secondaryObjective": "livrer une route ouverte et sa marée ; adapter le rythme aux volcan de neige.",
+          "gameplayHook": "un itinéraire alternatif reste dans le rapport",
+          "twist": "le chenal se scinde après le relevé ; panne de projecteurs transforme l'approche lors de la phase 3.",
+          "failure": "un fleuve non testé devient franchissable ; ou absence des unités nécessaires au retour.",
+          "victoryProof": "rapport unique CW120-O-HO-024 avec nom des membres, trajet daté, état de la charge et preuve de livrer une route ouverte et sa marée",
+          "fallback": "un itinéraire alternatif reste dans le rapport ; en absence de courant : La transmission radio ne déclenche aucun succès : la patrouille doit revenir avec un registre physique à l'échéance.",
+          "extraction": "retour avec détachement identifié",
+          "recommendedUnitIds": [
+            "W3-U01",
+            "W3-U19"
+          ],
+          "lengthClass": "long",
+          "threat": 4,
+          "dynamicPhases": [
+            "Réserver les membres et les RAV",
+            "Suivre la route déclarée avec rosée électrisée",
+            "Attendre le rapport, sans résoudre hors échéance",
+            "Recevoir un seul reçu, vérifier livrer une route ouverte et sa marée"
+          ],
+          "resultReceipt": "CW120-O-HO-024-receipt-v1",
+          "neverAutoAnnex": true
+        },
+        "production": {
+          "neededSprites": [
+            "combattants-identifiés-outer",
+            "décor-volcan de neige",
+            "objet-Cartographie liquide",
+            "vfx-panne de projecteurs",
+            "surface-pierre givrée"
+          ],
+          "neededTiles": [
+            "sol-pierre givrée",
+            "liquide-lave froide bleutée fictive",
+            "couverts-coraux secs",
+            "geom-forêt à clairières interdites"
+          ],
+          "missingSystems": [
+            "géométrie jouable du terrain",
+            "déclencheurs physiques de mission",
+            "IA adaptée à l'objectif",
+            "assets animés et synchronisés",
+            "audit sauvegarde/rapport unique"
+          ],
+          "gameplayBackend": "clanWarOperationsV115.outer",
+          "authoredGeneratorTags": [
+            "forme-region-V120-051",
+            "volcan de neige",
+            "pierre givrée",
+            "lave froide bleutée fictive",
+            "panne de projecteurs",
+            "rosée électrisée"
+          ],
+          "uniquenessSignature": "outer|homage|Reconstruction d'écho Pont de Normandie — station de balisage|Cartographie liquide|forêt à clairières interdites|panne de projecteurs"
+        }
+      },
+      "auditWarnings": [
+        "Coordonnées du lieu en attente : aucune épingle GPS inventée",
+        "Météo originale remplacée pour cohérence climatique"
+      ]
+    }
+  ]
+}

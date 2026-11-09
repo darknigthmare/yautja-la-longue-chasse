@@ -54,55 +54,55 @@ export interface CompanionRecruitmentDefinition {
  * and from canonical movie events. Finishing a hunt alone recruits nobody. */
 export const COMPANION_RECRUITMENT: readonly CompanionRecruitmentDefinition[] = [
   { id: 'breche', rumour: 'Un appel près d’un ancien chenil', missionId: 'jungle-vey', world: 'Oseris-IV', minimumScans: 1, minimumScore: 40,
-    briefing: 'Un gardien cherche un chasseur capable de reconnaître la route du chenil. Repars dans la canopée, rapporte au moins un scan et extrais-toi avec un score de 40. Les soins et la familiarisation seront ensuite préparés au port.',
-    consent: 'Brèche reconnaît le signal de rappel et accepte de quitter le refuge avec toi. Il attend en réserve tant que son habitat n’est pas installé.',
+    briefing: 'Le gardien du chenil veut revoir la piste avant de confier Brèche à un autre chasseur. Retourne dans la canopée et rapporte tes observations. Au port, il te demandera comment tu comptes approcher le chien et le rappeler.',
+    consent: 'Le gardien accepte de te confier Brèche. Le chien reste au refuge avec lui tant que son habitat n’est pas prêt.',
     steps: [
-      { id: 'care', title: 'Préparer le retour au calme', description: 'Le gardien demande une prise en charge sans contrainte. Choisis le protocole de soins.', personalRoom: 'medical-bay', clanRoom: 'soins', choices: [
-        { id: 'quiet-care', label: 'Isoler le bruit, examiner puis nourrir', accepted: true, response: 'Le protocole de soins est accepté. Le gardien accompagne encore l’animal au refuge.' },
-        { id: 'force', label: 'Forcer immédiatement le collier de chasse', accepted: false, response: 'Le gardien refuse : une contention ne remplace ni les soins ni la familiarisation.' },
+      { id: 'care', title: 'Préparer le retour au calme', description: 'Le gardien désigne le collier : « Pas encore. Avant de le lui passer, dis-moi ce que tu fais s’il ne te laisse pas approcher. »', personalRoom: 'medical-bay', clanRoom: 'soins', choices: [
+        { id: 'quiet-care', label: 'Isoler le bruit, examiner puis nourrir', accepted: true, response: '« D’abord le calme et l’examen. Bien. Je reste près de lui pour les premiers soins ; tu ne prendras pas sa peur pour un ordre compris. »' },
+        { id: 'force', label: 'Forcer immédiatement le collier de chasse', accepted: false, response: '« Il tirera contre le collier, et tu ne sauras pas pourquoi. Nous ne commencerons pas comme ça. »' },
       ] },
-      { id: 'recall', title: 'Convenir d’un essai sans proie', description: 'Définis avec le gardien le premier essai et son issue en cas d’agitation.', personalRoom: 'training-arena', clanRoom: 'entrainement', choices: [
-        { id: 'recall-stop', label: 'Rappel, arrêt de l’essai, retour au refuge', accepted: true, response: 'Le gardien valide ce protocole d’accueil. Aucun animal n’a servi de sacrifice.' },
-        { id: 'live-bait', label: 'Utiliser une cible vivante pour accélérer', accepted: false, response: 'Cet essai est refusé. Prépare une sortie sans sacrifice.' },
+      { id: 'recall', title: 'Convenir d’un essai sans proie', description: '« Quand il partira, il faudra le faire revenir. Pour le premier essai, je veux savoir à quel moment tu arrêtes, pas ce que tu espères lui faire abattre. »', personalRoom: 'training-arena', clanRoom: 'entrainement', choices: [
+        { id: 'recall-stop', label: 'Rappel, arrêt de l’essai, retour au refuge', accepted: true, response: '« Nous essaierons le rappel, puis nous rentrerons. S’il s’agite, l’essai s’arrête là. La chasse viendra après. »' },
+        { id: 'live-bait', label: 'Utiliser une cible vivante pour accélérer', accepted: false, response: '« Avec une proie devant lui, tu verras s’il sait poursuivre. Ce n’est pas ce que je te demande. Montre-moi d’abord comment tu le rappelleras. »' },
       ] },
     ] },
   { id: 'eclisse', rumour: 'Une unité de commande répond encore', missionId: 'ruins-ancient-guardian', world: 'Acheron-Sigma', minimumScans: 2, minimumScore: 40,
-    briefing: 'Le réseau des ateliers a reçu une réponse de l’unité Éclisse. Fais une nouvelle reconnaissance d’Acheron-Sigma, rapporte deux scans et extrais-toi avec un score de 40 avant de préparer son accueil.',
-    consent: 'L’unité de maintenance est confiée à ton réseau. Sa baie et son alimentation doivent être affectées séparément.',
+    briefing: 'Un atelier reçoit encore les réponses d’Éclisse depuis Acheron-Sigma. Ses commandes ne suffisent pas à expliquer ce qui l’entoure. Repars observer les ruines ; le mécanicien veut comparer tes relevés avant de préparer son branchement.',
+    consent: 'Le mécanicien te confie Éclisse. L’unité attendra à l’atelier tant que tu n’auras pas préparé sa baie et son alimentation.',
     steps: [
-      { id: 'isolate', title: 'Isoler la commande de l’atelier', description: 'La carte de commande est encore reliée à un bus inconnu. Prépare le diagnostic au poste de forge.', personalRoom: 'appearance-forge', clanRoom: 'armurerie', choices: [
-        { id: 'isolated-bus', label: 'Isoler le bus avant tout branchement', accepted: true, response: 'Le diagnostic local peut commencer sans accès au réseau du vaisseau.' },
-        { id: 'ship-network', label: 'Brancher directement le réseau du vaisseau', accepted: false, response: 'Le contrôle refuse cette connexion : la provenance du bus reste inconnue.' },
+      { id: 'isolate', title: 'Isoler la commande de l’atelier', description: 'Le mécanicien garde la carte loin du connecteur du vaisseau. « Elle répond, oui. Je ne sais pas encore à quoi elle reste reliée. Où veux-tu commencer ? »', personalRoom: 'appearance-forge', clanRoom: 'armurerie', choices: [
+        { id: 'isolated-bus', label: 'Isoler le bus avant tout branchement', accepted: true, response: '« Sur l’établi, avec une alimentation séparée. Nous regarderons ses réponses avant de lui ouvrir autre chose. »' },
+        { id: 'ship-network', label: 'Brancher directement le réseau du vaisseau', accepted: false, response: 'Le mécanicien retient le câble. « Pas dans le vaisseau. Je n’y brancherai pas une commande dont je ne connais pas les liaisons. »' },
       ] },
-      { id: 'calibrate', title: 'Limiter les droits de maintenance', description: 'Le registre attend une première mission précise pour le mécanicien.', personalRoom: 'clan-archives', clanRoom: 'archives', choices: [
-        { id: 'local-tools', label: 'Diagnostic local, outils consignés, arrêt manuel', accepted: true, response: 'La calibration est enregistrée. Les outils ne peuvent pas intervenir hors du poste attribué.' },
-        { id: 'all-access', label: 'Accès permanent à tous les systèmes', accepted: false, response: 'Un mécanicien ne reçoit pas un accès universel. Limite ses interventions.' },
+      { id: 'calibrate', title: 'Limiter les droits de maintenance', description: '« Donne-lui une première tâche, pas tout le bord. Quels outils veux-tu lui confier, et comment l’arrêteras-tu si quelque chose se passe mal ? »', personalRoom: 'clan-archives', clanRoom: 'archives', choices: [
+        { id: 'local-tools', label: 'Diagnostic local, outils consignés, arrêt manuel', accepted: true, response: '« Ce poste, ces outils, et un arrêt à portée de main. Je peux préparer ça. Nous élargirons son travail quand nous le connaîtrons mieux. »' },
+        { id: 'all-access', label: 'Accès permanent à tous les systèmes', accepted: false, response: '« Tout le bord ? Tu n’as même pas encore vu une intervention se terminer. Choisis d’abord un poste. »' },
       ] },
     ] },
   { id: 'lance-fendue', rumour: 'Un vétéran écoute les rapports de retour', missionId: 'jungle-vey', world: 'Oseris-IV', minimumScans: 2, minimumScore: 50,
-    briefing: 'Un instructeur veut comparer tes décisions à une piste récente. Termine une nouvelle chasse de canopée avec deux scans, un score de 50 et une extraction réussie, puis présente ton plan de retour.',
-    consent: '« Tu prépares aussi le retour. Je resterai disponible dans ton réseau. Nous déciderons séparément de ma place à bord. »',
+    briefing: 'Lance-Fendue ne s’intéresse pas à un ancien récit. Il veut tes observations d’une nouvelle chasse dans la canopée, puis entendre comment tu préparerais le retour avec un partenaire.',
+    consent: '« Tu as pensé au retour. Je veux bien préparer tes sorties avec toi. Pour ma place à bord, nous en parlerons au quai. »',
     steps: [
-      { id: 'retreat', title: 'Présenter la priorité d’extraction', description: 'Un partenaire décroche pendant que la piste du trophée se prolonge. Quel ordre prépares-tu ?', personalRoom: 'training-arena', clanRoom: 'entrainement', choices: [
-        { id: 'bring-back', label: 'Sécuriser le repli et ramener le partenaire', accepted: true, response: 'Le vétéran accepte d’étudier ta méthode : le trophée ne passe pas avant le retour annoncé.' },
-        { id: 'chase-trophy', label: 'Poursuivre la proie sans point de retour', accepted: false, response: 'Lance-Fendue refuse cet engagement. Présente une extraction réalisable.' },
+      { id: 'retreat', title: 'Présenter la priorité d’extraction', description: 'Lance-Fendue pose le cas devant toi : « Ton partenaire décroche. Tu peux encore poursuivre la proie, mais vous n’avez plus de point de retour commun. Que fais-tu ? »', personalRoom: 'training-arena', clanRoom: 'entrainement', choices: [
+        { id: 'bring-back', label: 'Sécuriser le repli et ramener le partenaire', accepted: true, response: '« Alors fixe le point de repli avant le départ. Je saurai où te retrouver. C’est avec ce chasseur-là que j’accepte de sortir. »' },
+        { id: 'chase-trophy', label: 'Poursuivre la proie sans point de retour', accepted: false, response: '« Tu peux choisir de poursuivre. Mais ne me demande pas de partir avec toi sans savoir où nous devons nous retrouver. »' },
       ] },
-      { id: 'boundaries', title: 'Fixer les limites de l’accord', description: 'Le vétéran ne fera jamais une épreuve personnelle à ta place.', personalRoom: 'clan-archives', clanRoom: 'archives', choices: [
-        { id: 'own-rites', label: 'Conserver mes rites solitaires et son autonomie', accepted: true, response: 'Les limites de l’accord sont consignées sans modifier aucun rang.' },
-        { id: 'win-for-me', label: 'Lui confier mes épreuves individuelles', accepted: false, response: 'Un mentor ne valide pas tes rites par ses propres coups.' },
+      { id: 'boundaries', title: 'Fixer les limites de l’accord', description: '« Je peux préparer un exercice avec toi. Pour ton épreuve personnelle, mes coups ne compteront pas. Nous sommes d’accord ? »', personalRoom: 'clan-archives', clanRoom: 'archives', choices: [
+        { id: 'own-rites', label: 'Conserver mes rites solitaires et son autonomie', accepted: true, response: '« Bien. Je garderai ma chasse, tu garderas la tienne. Nous aurons encore de quoi travailler ensemble. »' },
+        { id: 'win-for-me', label: 'Lui confier mes épreuves individuelles', accepted: false, response: '« Non. Tu reviendrais avec mon combat à raconter. Ce n’est pas l’accord que je te propose. »' },
       ] },
     ] },
   { id: 'opale', rumour: 'Une expédition cherche la mémoire de son équipe', missionId: 'swamp-hydra', world: 'Naraka-Delta', minimumScans: 2, minimumScore: 40,
-    briefing: 'Un message autonome demande des observations de Naraka-Delta. Rapporte deux scans et un nouveau retour réussi à 40 points. Opale pourra alors confronter ton rapport au dossier de son ancienne équipe.',
-    consent: '« Je choisis de travailler avec ton réseau. Je garde mes souvenirs et le droit de refuser une opération. Mon installation se décidera au quai. »',
+    briefing: 'Opale cherche à comprendre ce qui est arrivé à son équipe sur Naraka-Delta. Elle demande des observations récentes du terrain, pas une conclusion arrangée pour la convaincre de partir avec toi.',
+    consent: '« Je travaillerai avec toi. Je garde mes souvenirs, et je te dirai quand je refuse une sortie. Pour la baie, nous verrons au quai. »',
     steps: [
-      { id: 'memory', title: 'Restituer le dossier d’expédition', description: 'Opale souhaite consulter le relevé complet, y compris ses zones incertaines.', personalRoom: 'clan-archives', clanRoom: 'archives', choices: [
-        { id: 'full-report', label: 'Remettre le rapport entier avec ses incertitudes', accepted: true, response: 'Le dossier est communiqué à Opale. Aucune mémoire n’est effacée.' },
-        { id: 'wipe-memory', label: 'Effacer les souvenirs avant l’activation', accepted: false, response: 'Opale refuse une alliance fondée sur l’effacement de son équipe.' },
+      { id: 'memory', title: 'Restituer le dossier d’expédition', description: '« Donne-moi tout ce que tu as relevé. Même les passages où tu n’as rien compris. Je préfère une question à une réponse inventée sur mon équipe. »', personalRoom: 'clan-archives', clanRoom: 'archives', choices: [
+        { id: 'full-report', label: 'Remettre le rapport entier avec ses incertitudes', accepted: true, response: 'Opale parcourt les relevés. « Il reste des blancs. Au moins, tu ne les as pas remplis à ma place. »' },
+        { id: 'wipe-memory', label: 'Effacer les souvenirs avant l’activation', accepted: false, response: '« Tu veux mes compétences sans ce que j’ai vécu. Tu n’auras pas cet accord. »' },
       ] },
-      { id: 'autonomy', title: 'Préparer un espace choisi', description: 'La baie fournit diagnostic et repos. Elle ne donne aucun contrôle sur sa volonté.', personalRoom: 'medical-bay', clanRoom: 'soins', choices: [
-        { id: 'consent', label: 'Garantir son autonomie et un réseau isolable', accepted: true, response: 'Les conditions d’accueil sont acceptées. Opale attend ta proposition explicite.' },
-        { id: 'override', label: 'Exiger une commande d’obéissance permanente', accepted: false, response: 'L’accord est refusé dans ces conditions.' },
+      { id: 'autonomy', title: 'Préparer un espace choisi', description: 'Opale regarde les connexions proposées. « Je veux pouvoir couper cette liaison moi-même. Me préparer une baie ne te donne pas mes décisions. »', personalRoom: 'medical-bay', clanRoom: 'soins', choices: [
+        { id: 'consent', label: 'Garantir son autonomie et un réseau isolable', accepted: true, response: '« Une liaison que je peux isoler. Cela me convient. Il reste à décider si nous partons ensemble. »' },
+        { id: 'override', label: 'Exiger une commande d’obéissance permanente', accepted: false, response: '« Alors tu cherches un outil, pas une alliée. Ce ne sera pas moi. »' },
       ] },
     ] },
 ];

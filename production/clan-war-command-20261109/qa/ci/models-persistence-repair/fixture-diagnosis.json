@@ -1,0 +1,45 @@
+{
+  "scope": "Read-only diagnosis of an additive owner-bound default fixture field; no app source or test expectation mutation.",
+  "records": [
+    {
+      "fixture": "valid-owner-future-gauntlet",
+      "gauntletVersion": 2,
+      "hasCreatedAt": true,
+      "hasMobilityV1": false,
+      "parserFailure": "future-version",
+      "slotFailure": "future-version",
+      "ok": false,
+      "writes": 0
+    },
+    {
+      "fixture": "absent-owner-future-gauntlet",
+      "gauntletVersion": 2,
+      "hasCreatedAt": false,
+      "hasMobilityV1": false,
+      "parserFailure": "invalid-save",
+      "slotFailure": "owner-conflict",
+      "ok": false,
+      "writes": 0
+    },
+    {
+      "fixture": "absent-owner-future-gauntlet-no-mobility",
+      "gauntletVersion": 2,
+      "hasCreatedAt": false,
+      "hasMobilityV1": false,
+      "parserFailure": "invalid-save",
+      "slotFailure": "owner-conflict",
+      "ok": false,
+      "writes": 0
+    },
+    {
+      "fixture": "absent-owner-current-gauntlet-no-mobility",
+      "gauntletVersion": 1,
+      "hasCreatedAt": false,
+      "hasMobilityV1": false,
+      "parserFailure": "invalid-save",
+      "slotFailure": "owner-conflict",
+      "ok": false,
+      "writes": 0
+    }
+  ]
+}

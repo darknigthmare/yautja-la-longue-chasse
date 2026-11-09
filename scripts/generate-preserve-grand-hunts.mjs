@@ -2,7 +2,6 @@
 // so the game never runs this generator: what ships is reviewable, fixed geometry.
 import fs from 'node:fs';
 import path from 'node:path';
-import {fileURLToPath} from 'node:url';
 const ROOT = process.cwd(); // run from the repository root
 const OUT = process.argv[2] ?? path.join(ROOT, 'app/game/systems/gameReserveGrandHuntData.ts');
 const W = 19200, G = 438, SECTOR = 1600, TEAMS = 6;

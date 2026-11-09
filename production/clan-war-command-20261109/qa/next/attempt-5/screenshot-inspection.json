@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "inspectedAt": "2026-11-09T12:44:01.675491+00:00",
+  "buildId": "-FZ8BLkijX4wYooxQn-in",
+  "allOriginalPngsOpened": true,
+  "screenshotsOpened": 7,
+  "humanArtCertified": false,
+  "physicalControllerTested": false,
+  "headerClearanceQualified": true,
+  "scope": "Seven actual new-build original PNGs opened across root UI agent and its child; geometry/hit testing comes from the18 native checks. Static captures alone do not certify Escape/focus behavior, all small labels, full scrolling lists or final art.",
+  "screenshots": [
+    {
+      "filename": "01-next-front-desktop.png",
+      "sha256": "9bf36c3978a3abbec5d4383aa85b769f9fa4fb5c3cd56d3ea4409d419da64e0b",
+      "opened": true,
+      "observation": "1440×1000 : titre et Quitter sous le HUD global, globe entier au premier écran, navigation secondaire et stocks dans leur largeur, vrai gauntlet visible."
+    },
+    {
+      "filename": "02-next-front-390.png",
+      "sha256": "f3f8cd2807a9bc4eaf61483d00b17958be979777eed849b903ea2e3dd61a51f0",
+      "opened": true,
+      "observation": "HUD global limité aux 62 pixels supérieurs ; titre « Guerres de territoire » et bouton « Quitter le conseil » sont séparés, en dessous. Les sous-menus tiennent dans 390 pixels ; le globe entier est visible dans le premier écran, sans devoir parcourir de longues listes. Aucun débordement horizontal apparent sur l'image."
+    },
+    {
+      "filename": "03-next-orders-390.png",
+      "sha256": "5e49eca67b8bbc41d395af78f8b760ca3f41061c4cea7af6d5cd0b81d58a74ab",
+      "opened": true,
+      "observation": "Le tiroir d'ordres remplit le viewport mobile. Titre et fermeture « ÉCHAP » sont visibles en haut, les sélecteurs et la liste des personnes tiennent dans la largeur. Le contenu continue sous le bord inférieur : cette seule image ne prouve pas l'accès à toute la liste. Aucun anneau de focus distinct n'est visible sur la fermeture dans cet instantané."
+    },
+    {
+      "filename": "02-next-front-320.png",
+      "sha256": "d792bc49f4d569fce1dda56af4988d88ed59d3790feaf3ef0ed213aea1fbe60a",
+      "opened": true,
+      "observation": "À 320 pixels, titre et Quitter restent séparés du HUD global et l'un de l'autre. Navigation et indicateurs se replient dans leur largeur ; le globe entier reste visible au premier écran. Les petites étiquettes géographiques sont denses et très petites à cette échelle, sans qualification de leur lisibilité exhaustive."
+    },
+    {
+      "filename": "03-next-orders-320.png",
+      "sha256": "c16dccc443e3d9661bc8e62fa3250a8dc433e14b214ca1f4486be306eba88aa3",
+      "opened": true,
+      "observation": "Tiroir plein écran de 320 pixels : titre et fermeture ÉCHAP ne se chevauchent pas, un anneau de focus doré est nettement visible autour de la fermeture. Les champs, options et cases restent dans la largeur ; le texte de région se replie. La liste continue sous le bord inférieur. Aucune activation ou fermeture n'a été exécutée pour cette lecture d'image."
+    },
+    {
+      "filename": "04-next-mandates-desktop.png",
+      "sha256": "108e2b92f2288177550f6e38c128725c140fe60641c1118ea7901032e7cb28a1",
+      "opened": true,
+      "observation": "Conseil des mandats réel : cinq postes distincts et quatre cartes de modes entièrement visibles, lecture et hiérarchie conservées. Cadrage après défilement normal."
+    },
+    {
+      "filename": "05-next-rts-active.png",
+      "sha256": "ff429369cda9b6abd25772f9375c0e34857263f894dba5148edffec3eae4ece8",
+      "opened": true,
+      "observation": "Opération RTS réelle W115-OPS-0001 : une équipe, terrain existant9×6 et commandes visibles. Ni victoire, ni art final, ni grande carte source qualifiés."
+    }
+  ],
+  "mobileInspection": "screenshot-inspection-mobile.json"
+}

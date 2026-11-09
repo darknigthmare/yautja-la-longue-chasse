@@ -1,0 +1,444 @@
+{
+  "asOf": "2026-11-09",
+  "baseCommit": "39b601ce1873a1f400d2f545f0fab97691b779e3",
+  "branch": "codex/bible-coherence-20261109",
+  "sourcePriorityCounts": {
+    "Homeworld et habitats": {
+      "P0": 4,
+      "P1": 103,
+      "total": 107,
+      "v81Targets": 97
+    },
+    "Guerre des clans": {
+      "P0": 325,
+      "P1": 257,
+      "total": 582
+    }
+  },
+  "changes": [
+    {
+      "kind": "fix",
+      "criterionIds": [
+        "CW144-OUT-004",
+        "CW144-OUT-007",
+        "CW145-OUT-003",
+        "CW130-OUTER-004"
+      ],
+      "description": "Turn around at the exact reached fraction of the weighted passage; no untouched leg on recall; historical observations preserve original outbound phase; no storage/deadline/schema changes."
+    },
+    {
+      "kind": "fix",
+      "criterionIds": [
+        "BACK144-006",
+        "BACK144-018"
+      ],
+      "description": "CSV/JSON export current V126 geography and climate; complete immutable V120source preserved, source-only fields explicitly labeled."
+    }
+  ],
+  "criteria": [
+    {
+      "id": "CW144-OUT-004",
+      "priority": "P0",
+      "result": "Partiel — continuité au rappel corrigée et testée",
+      "scope": "Fraction de passage réellement parcourue, pauses antérieures conservées; aucune marche réelle de véhicule ni autorité distante nouvellement certifiée.",
+      "sources": [
+        {
+          "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx",
+          "sheet": "OUTER_OPS_V144",
+          "row": 8
+        },
+        {
+          "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31_PR57.xlsx",
+          "sheet": "OUTER_OPS_V144",
+          "row": 8
+        }
+      ]
+    },
+    {
+      "id": "CW144-OUT-007",
+      "priority": "P0",
+      "result": "Partiel — itinéraire de retour corrigé et testé",
+      "scope": "Retour limité aux tronçons et fraction atteints; reste véhicules et unités physiquement incarnés et QA produit.",
+      "sources": [
+        {
+          "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Avenants_Production_V144_V147_2026-11-01.xlsx",
+          "sheet": "OUTER_OPS_V144",
+          "row": 11
+        },
+        {
+          "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx",
+          "sheet": "OUTER_OPS_V144",
+          "row": 11
+        },
+        {
+          "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31_PR57.xlsx",
+          "sheet": "OUTER_OPS_V144",
+          "row": 11
+        }
+      ]
+    },
+    {
+      "id": "CW145-OUT-003",
+      "priority": "P1",
+      "result": "Implémenté et testé — recette navigateur à produire",
+      "scope": "Un vrai changement autorisé V6, puis rappel, n’utilise que les passages atteints du nouvel itinéraire. Schéma/délais/économie inchangés.",
+      "sources": [
+        {
+          "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Avenants_Production_V144_V147_2026-11-01.xlsx",
+          "sheet": "OUTER_OPS_V145",
+          "row": 7
+        }
+      ]
+    },
+    {
+      "id": "CW130-OUTER-004",
+      "priority": "P0",
+      "result": "Partiel — défaut de progression au rappel résolu",
+      "scope": "Anciennes archives PR55/57 conservées; un seul reçu à échéance. Le suivi temporel est une estimation locale, pas une équipe animée sur carte 1:1.",
+      "sources": [
+        {
+          "path": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sheet": "OUTER_OPS",
+          "row": 8
+        },
+        {
+          "path": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sheet": "ROADMAP_GLOBALE",
+          "row": 28
+        },
+        {
+          "path": "docs/clan-war-v130/Yautja_Guerres_Clans_Plan_Production_V130_2026-10-30.xlsx",
+          "sheet": "ROADMAP_GLOBALE",
+          "row": 28
+        }
+      ]
+    },
+    {
+      "id": "BACK144-006",
+      "priority": "P0",
+      "result": "Partiel — exports CSV/JSON alignés sur géographie V126",
+      "scope": "1200fiches de conception,400homages sur Terre, conditions corrigées; aucune scène de guerre complète ni géocodage absent inventé.",
+      "sources": [
+        {
+          "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Source_Conseil_V147_2026-11-01.xlsx",
+          "sheet": "07_MANQUANTS_1TO1",
+          "row": 10
+        }
+      ]
+    },
+    {
+      "id": "BACK144-018",
+      "priority": "P0",
+      "result": "Partiel — export source et monde courant distingués",
+      "scope": "Localisation/climat V126 courants, V120original conservé, pas certification de saisons ou lieux de continuité non résolus.",
+      "sources": [
+        {
+          "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Source_Conseil_V147_2026-11-01.xlsx",
+          "sheet": "07_MANQUANTS_1TO1",
+          "row": 22
+        }
+      ]
+    },
+    {
+      "id": "CW130-SYS-015",
+      "priority": "P1",
+      "result": "Préexistant testé — MAP12 en couche orbitale",
+      "scope": "Le générateur V128 reste orbital et MAP10 souterrain; aucune liaison de campagne depuis une prairie n’est créée. Une véritable scène orbitale reste à produire.",
+      "sources": [
+        {
+          "path": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sheet": "SYSTEMES_COMMUNS",
+          "row": 19
+        },
+        {
+          "path": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+          "sheet": "ROADMAP_GLOBALE",
+          "row": 103
+        },
+        {
+          "path": "docs/clan-war-v130/Yautja_Guerres_Clans_Plan_Production_V130_2026-10-30.xlsx",
+          "sheet": "ROADMAP_GLOBALE",
+          "row": 103
+        }
+      ]
+    }
+  ],
+  "sourceSha256": {
+    "app/game/systems/clanWarOuterWeightedProgressV141.ts": "f515d116839e1619147458e70ee185ff2d748e62f4412f77c1afa32938dcfb34",
+    "app/game/systems/clanWarVariantExportV126.ts": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "app/game/ClanWarVariantAtlasV120.tsx": "d8308aedae8b88db5fc5bc46e6d939c7bf36e53249f053cd06eba763fbd51b9e",
+    "tests/clan-war-outer-recall-continuity.test.mjs": "de850bd81e95583cfea0666ff39f53d4dda4fe3a5bf435b95dd96e2fc179e424",
+    "tests/clan-war-variant-export-coherence.test.mjs": "669d56c06c2014380281d06def20ba1d6ae659ed896f9dd51c7e6469a0c528bd"
+  },
+  "newTargetedTests": 13,
+  "regressionSuites": [
+    {
+      "file": "tests/clan-war-outer-recall-continuity.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-recall-continuity.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-outer-recall-continuity.test.mjs.tap",
+      "sha256": "d6a064bcf9b319bc777878e63cf1c0a5631ef8a746a7ad8a648bc2eed4a5076e",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v140.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v140.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-v140.test.mjs.tap",
+      "sha256": "bca3b39e12e7460348d1a14ebca25a742920d4a8a11004f563b78d33cba73447",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v141.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v141.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-v141.test.mjs.tap",
+      "sha256": "104d3904eff8ffa1022e6401862c62d1581224f38f6572691e18f859466a35cb",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v145.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v145.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-v145.test.mjs.tap",
+      "sha256": "0c2cf6ffba3cc3eabb3ba6e972463c7c0e35cf3ead8aeaafdf986e1a9ba3d8f0",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-outer-pace-reconcile.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-pace-reconcile.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-outer-pace-reconcile.test.mjs.tap",
+      "sha256": "a684732b391c128eb019b9e9e32868a0f21ae921169652a0cbb96558d100382c",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-outer-inspection-reconcile.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-inspection-reconcile.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-outer-inspection-reconcile.test.mjs.tap",
+      "sha256": "46dc53f6c564f902a594cbe5ef8e818da2287a4ee06c51c823633999c7331a01",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-outer-recall-v116.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-recall-v116.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-outer-recall-v116.test.mjs.tap",
+      "sha256": "e884e417f500ad47a40912d41de103bddbf38377b84f9addd6f97074c9085392",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-pr55-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-pr55-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-pr55-v144.test.mjs.tap",
+      "sha256": "a129e479e561431ab5a22ee476f5e6cfcdde4366c6218633fbff4458e3cabc93",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-pr57-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-pr57-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-four-modes-pr57-v144.test.mjs.tap",
+      "sha256": "5220bc6481a7e0e974826b702963c5e1ae7d3ba0e8d39d8ba0fd546f4ec704bc",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-variant-export-coherence.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-variant-export-coherence.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-variant-export-coherence.test.mjs.tap",
+      "sha256": "cf48f66caaa31920c241a2304073b9743e67717f866f1dd1a990807acc3ad5dc",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-variants-v120.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-variants-v120.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-variants-v120.test.mjs.tap",
+      "sha256": "e9db485f32dd22542a657a7aaf4de3751e69cad2621f38a69f8417936b4f5b2e",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-geo-ai-multiplayer-v126.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-geo-ai-multiplayer-v126.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-geo-ai-multiplayer-v126.test.mjs.tap",
+      "sha256": "484597b5b9612dba6b5d177516424e7b263818ed4e80f35d2dc76b6b87f081eb",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "file": "tests/clan-war-production-v130.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-production-v130.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-production-v130.test.mjs.tap",
+      "sha256": "f19e0fbf15e11b781f4da1d020894fa3bbf094b6354ff5ee9ebc2ead54868950",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "existingGeographyChecks": [
+    {
+      "log": "production/p0p1-20261109/qa/homeworld/planet-level-design.tap",
+      "sha256": "f16e27be4a0448a626c9fefe1eddb40ce59dc63d4075e47764e0683d3dc2392e",
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "production/p0p1-20261109/qa/homeworld/30-planets.tap",
+      "sha256": "8481bad099398afdb9cad7bcef83749ec7691230d5032bc4888917c96163038e",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "log": "production/p0p1-20261109/qa/homeworld/clan-war-source-maps-v128.test.mjs.tap",
+      "sha256": "b413c370e98353d9c39535fc6705f9381dc879cea9315dda4d5f59c9f155249c",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0
+    }
+  ],
+  "testsTotal": 147,
+  "failed": 0,
+  "lint": {
+    "exitCode": 0,
+    "maxWarnings": 0,
+    "files": [
+      "app/game/systems/clanWarOuterWeightedProgressV141.ts",
+      "app/game/systems/clanWarVariantExportV126.ts",
+      "app/game/ClanWarVariantAtlasV120.tsx",
+      "tests/clan-war-outer-recall-continuity.test.mjs",
+      "tests/clan-war-variant-export-coherence.test.mjs"
+    ],
+    "log": "production/p0p1-20261109/qa/homeworld/lint-final.log"
+  },
+  "homeworldGeometry": {
+    "anchors": 71,
+    "unreachable": 0,
+    "blockedCentres": 0,
+    "residentVerticesInSolids": 0,
+    "fullPathSamples": 9769,
+    "fullPathObstructions": 0,
+    "samplingStep": 16,
+    "enclosedEmptyPockets": 4,
+    "codeChangesMade": false,
+    "source": "access-before.json andnpc-segments-before.json",
+    "limit": "Geometry sampling only, not native browser, artistic admission or 1:1 validation."
+  },
+  "qualification": {
+    "browserExecuted": false,
+    "physicalControllerTested": false,
+    "humanArtReviewed": false,
+    "newAssets": false,
+    "globalP0P1Closure": false
+  },
+  "preserved": [
+    "No historical workbook/reports rewritten",
+    "No main campaign/save/owner/recruit/reward/rank mutation",
+    "No planet IDs/seeds/territorial graphs changed",
+    "No historical source V120catalog rewritten"
+  ],
+  "initialFailure": {
+    "log": "production/p0p1-20261109/qa/homeworld/recall-continuity-before.tap",
+    "tests": 7,
+    "passed": 0,
+    "failed": 7,
+    "note": "Initial reproduction before production fix; final suite adds one real authorized reroute test and uses a non-junction halted sample."
+  }
+}

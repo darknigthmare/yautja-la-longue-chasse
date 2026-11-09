@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: Normandie and Grand urban names do not become mountain terrain through the substring and
+ok 1 - Normandie and Grand urban names do not become mountain terrain through the substring and
+  ---
+  duration_ms: 1.07437
+  type: 'test'
+  ...
+# Subtest: actual mountain passes and the Andes retain alpine interpretation with unknown positions left unpinned
+ok 2 - actual mountain passes and the Andes retain alpine interpretation with unknown positions left unpinned
+  ---
+  duration_ms: 0.314975
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7.733692

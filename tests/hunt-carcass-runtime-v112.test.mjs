@@ -12,7 +12,7 @@ export {makeGameState,makeEnemy,damageEnemy,updateHuntRitesV77,riteContextV77,ri
 export {defaultSave} from "./save";
 export {MISSION_BY_ID} from "./data";
 export {startHuntRiteV77} from "./systems/ritesOfHuntV77";
-export {restoreRitesRuntimeV77} from "./systems/huntRitesRuntimeV77";
+export {restoreRitesRuntimeV77,huntRiteMenuSnapshotV77} from "./systems/huntRitesRuntimeV77";
 export {carcassSupportsForWorldV112} from "./systems/carcassSupportsV112";`,resolveDir:fileURLToPath(new URL("../app/game/",import.meta.url)),sourcefile:fileURLToPath(canvasUrl),loader:"tsx"},
   bundle:true,write:false,format:"cjs",platform:"node",jsx:"automatic",loader:{".module.css":"empty"},external:["react","react/jsx-runtime","react-dom"],logLevel:"silent"});
 const mod={exports:{}};
@@ -71,6 +71,66 @@ test("native interrupted anatomy and a full depot never consume or invent specim
   r.updateHuntRitesV77(f.state,.05);assert.equal(f.state.huntRites.operation,null);assert.equal(f.state.huntRites.specimensV112.length,0);
   f.state.harvestDepotFreeV112=0;started=r.startHuntRiteV77(f.state.huntRites,"body","harvest-hide",r.riteContextV77(f.state));
   assert.equal(started.accepted,false);assert.equal(f.state.huntRites.specimensV112.length,0);
+});
+function stockItem(state,index,massKg=.4,volumeUnits=1){
+  const sourceId=state.huntRites.runId+":other-"+index;
+  return {id:sourceId+":tissue",sourceId,speciesId:"hell-hound-stalker",partId:"tissue",label:"Tendon de poursuite",
+    quality:88,massKg,volumeUnits,stage:"raw"};
+}
+function menuFor(f,options=r.riteRuntimeOptionsV112(f.state)){
+  return r.huntRiteMenuSnapshotV77(f.state.huntRites,r.riteContextV77(f.state).actor,"body",true,options);
+}
+for(const [armor,mass,volume] of [["scout",24,18],["hunter",36,24],["berserker",52,30]]){
+  for(const dimension of ["mass","volume"])test(armor+": native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)",()=>{
+    const f=fixture();f.state.harvestArmorIdV112=armor;
+    f.state.huntRites.specimensV112=[stockItem(f.state,0,dimension==="mass"?mass-.2:1,dimension==="volume"?volume:1)];
+    const before=JSON.stringify(f.state.huntRites),options=r.riteRuntimeOptionsV112(f.state),menu=menuFor(f,options);
+    const part=menu.parts.find(p=>p.action==="harvest-tissue");
+    const item={...stockItem(f.state,1),id:f.state.huntRites.runId+":body:tissue",sourceId:f.state.huntRites.runId+":body"};
+    assert.equal(part.massKg,.4);assert.equal(part.volumeUnits,1);
+    assert.equal(menu.fieldLoad.capacityMassKg,mass);assert.equal(menu.fieldLoad.capacityVolumeUnits,volume);
+    assert.equal(part.available,options.acceptSpecimen(item));assert.equal(part.available,false);
+    assert.match(part.reason,dimension==="mass"?/Masse maximale/:/Volume maximal/);
+    assert.equal(part.projectedLoad.capacityMassKg,mass);assert.equal(part.projectedLoad.capacityVolumeUnits,volume);
+    assert.ok(Math.abs(part.projectedLoad.massKg-(menu.fieldLoad.massKg+.4))<1e-9);
+    assert.equal(part.projectedLoad.volumeUnits,menu.fieldLoad.volumeUnits+1);
+    assert.equal(r.startHuntRiteV77(f.state.huntRites,"body","harvest-tissue",r.riteContextV77(f.state)).accepted,false);
+    assert.equal(JSON.stringify(f.state.huntRites),before,"inspection cannot change stock, quality or receipts");
+  });
+}
+test("native previews distinguish a full campaign depot from a full 64-part field registry",()=>{
+  const f=fixture();f.state.harvestDepotFreeV112=0;
+  let part=menuFor(f).parts.find(p=>p.action==="harvest-tissue");
+  assert.equal(part.available,false);assert.match(part.reason,/Dépôt de campagne plein/);
+  f.state.harvestDepotFreeV112=256;
+  f.state.huntRites.specimensV112=Array.from({length:64},(_,index)=>stockItem(f.state,index));
+  f.state.huntRites.stashedSpecimensV112=f.state.huntRites.specimensV112.map(item=>({specimenId:item.id,x:1100,y:624,fallSpeed:0}));
+  const menu=menuFor(f);part=menu.parts.find(p=>p.action==="harvest-tissue");
+  assert.equal(menu.fieldLoad.massKg,0);assert.equal(menu.fieldLoad.volumeUnits,0);
+  assert.equal(part.available,false);assert.match(part.reason,/Registre de terrain plein.*64/);
+  assert.equal(r.startHuntRiteV77(f.state.huntRites,"body","harvest-tissue",r.riteContextV77(f.state)).accepted,false);
+});
+test("native pickup admission and preview re-read stock and depot changes after their options were created",()=>{
+  const f=fixture(),options=r.riteRuntimeOptionsV112(f.state);
+  let part=menuFor(f,options).parts.find(p=>p.action==="harvest-tissue");
+  assert.equal(part.available,true);assert.equal(menuFor(f,options).fieldLoad.massKg,0);
+  f.state.huntRites.specimensV112=[stockItem(f.state,0,36,1)];
+  part=menuFor(f,options).parts.find(p=>p.action==="harvest-tissue");
+  assert.equal(part.available,false);assert.match(part.reason,/Masse maximale/);
+  assert.equal(menuFor(f,options).fieldLoad.massKg,36);
+  f.state.huntRites.specimensV112=[];f.state.harvestDepotFreeV112=0;
+  part=menuFor(f,options).parts.find(p=>p.action==="harvest-tissue");
+  assert.equal(part.available,false);assert.match(part.reason,/Dépôt de campagne plein/);
+});
+test("the native final tick still refuses a depot filled after an admissible harvest started",()=>{
+  const f=fixture();f.state.harvestDepotFreeV112=1;
+  const started=r.startHuntRiteV77(f.state.huntRites,"body","harvest-tissue",r.riteContextV77(f.state));
+  assert.equal(started.accepted,true);f.state.huntRites=started.state;f.state.riteOperationDamageStart=f.state.damageTaken;
+  f.state.harvestDepotFreeV112=0;
+  for(let i=0;i<100&&f.state.huntRites.operation;i++){f.state.elapsed+=.05;r.updateHuntRitesV77(f.state,.05);}
+  assert.equal(f.state.huntRites.operation,null);assert.deepEqual(plain(f.state.huntRites.specimensV112),[]);
+  assert.equal(f.state.huntRites.completedEventIds.includes("harvest-tissue:body"),false);
+  assert.equal(f.state.regularTrophyDrops.length,1);assert.equal(f.state.regularTrophyDrops[0].collected,false);
 });
 test("live source teleport across a solid obstruction cannot complete a harvest",()=>{
   const f=fixture();act(f,"flay");f.state.player.x=1050;

@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "file": "tests/menu-navigation.test.mjs",
+      "exitCode": 0,
+      "totals": {
+        "tests": 6,
+        "pass": 6,
+        "fail": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "file": "tests/menu-disabled-controls-v94.test.mjs",
+      "exitCode": 0,
+      "totals": {
+        "tests": 15,
+        "pass": 15,
+        "fail": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    }
+  ],
+  "testsPassed": 21,
+  "scope": "Existing direct Node22 menu/control regressions, not new test cases or native/hardware evidence."
+}

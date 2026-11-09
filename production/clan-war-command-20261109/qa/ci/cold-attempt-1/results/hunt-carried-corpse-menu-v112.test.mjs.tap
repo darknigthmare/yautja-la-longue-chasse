@@ -1,0 +1,21 @@
+/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1748
+  let error = new Error(text);
+              ^
+
+Error: Build failed with 1 error:
+app/game/enemyTrophyGameplayV18.ts:1:44: ERROR: Could not resolve "../../public/game/assets/v18/enemy-trophy-gameplay/manifest.json"
+    at failureErrorWithLog (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1748:15)
+    at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1207:25
+    at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1159:52
+    at buildResponseToResult (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1205:7)
+    at /workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:1232:16
+    at responseCallbacks.<computed> (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:884:9)
+    at handleIncomingPacket (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:939:12)
+    at Socket.readFromStdout (/workspace/yautja-la-longue-chasse/node_modules/esbuild/lib/main.js:862:7)
+    at Socket.emit (node:events:519:28)
+    at addChunk (node:internal/streams/readable:561:12) {
+  errors: [Getter/Setter],
+  warnings: [Getter/Setter]
+}
+
+Node.js v22.23.4

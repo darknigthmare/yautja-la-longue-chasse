@@ -1,0 +1,22 @@
+TAP version 13
+# Subtest: real SSR paints exactly the occupied floor ground and each actual civic source uniformly, with no related-floor floating facade
+ok 1 - real SSR paints exactly the occupied floor ground and each actual civic source uniformly, with no related-floor floating facade
+  ---
+  duration_ms: 1396.474382
+  type: 'test'
+  ...
+# Subtest: real physical transit paints exactly its two endpoint floors and keeps their civic solids above source-aligned support
+ok 2 - real physical transit paints exactly its two endpoint floors and keeps their civic solids above source-aligned support
+  ---
+  duration_ms: 255.762434
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1659.945385

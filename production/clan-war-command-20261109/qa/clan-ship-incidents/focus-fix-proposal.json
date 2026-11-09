@@ -1,0 +1,8 @@
+{
+  "applied": false,
+  "sourceSha256": "dd4b577cd711282bf46d7c4d3df297b61f6876d2c7035f5a29138fa742dba69d",
+  "patchSha256": "47eedaee2f54d5e9d3c2bea4c778fc0e843bf5ad57ddcbc483ffd44f959fe061",
+  "appChanged": false,
+  "scope": "Only B01/B02 focus after an owner-confirmed new journal revision matching the issued operation/branch. No focus on refused writes, no focus stolen from another surface, owner/invalid-state protection and unchanged B03 focus path.",
+  "nativeRegressionNeeded": "After each actual B01/B02 durable action, verify focus remains inside incident dossier, press Escape and verify dossier closes without opening GameClient settings."
+}

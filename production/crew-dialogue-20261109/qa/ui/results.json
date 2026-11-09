@@ -1,0 +1,23 @@
+[
+  {
+    "name": "ssr-detailed",
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/clan-ship-crew-dialogue-ui.test.mjs"
+    ],
+    "exitCode": 0,
+    "signal": null
+  },
+  {
+    "name": "scoped-lint",
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/eslint/bin/eslint.js",
+      "app/game/ClanShipOperationsPanel.tsx",
+      "tests/clan-ship-crew-dialogue-ui.test.mjs"
+    ],
+    "exitCode": 0,
+    "signal": null
+  }
+]

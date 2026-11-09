@@ -1,0 +1,28 @@
+TAP version 13
+# Subtest: the complete 30-unit V6 source is selectable and a paid medic is not created instantly
+ok 1 - the complete 30-unit V6 source is selectable and a paid medic is not created instantly
+  ---
+  duration_ms: 3.142309
+  type: 'test'
+  ...
+# Subtest: queue obeys both limited simultaneous arrivals and finite RAV, without duplicated identifiers
+ok 2 - queue obeys both limited simultaneous arrivals and finite RAV, without duplicated identifiers
+  ---
+  duration_ms: 6.264416
+  type: 'test'
+  ...
+# Subtest: a pending recruit cannot deploy, and a future or corrupted arrival preserves existing archive
+ok 3 - a pending recruit cannot deploy, and a future or corrupted arrival preserves existing archive
+  ---
+  duration_ms: 0.940448
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16.666513

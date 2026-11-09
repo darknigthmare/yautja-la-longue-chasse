@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: Samurai armor pigment keeps both shin overlays and both limb wraps inside the existing source keep region
+ok 1 - Samurai armor pigment keeps both shin overlays and both limb wraps inside the existing source keep region
+  ---
+  duration_ms: 226.281252
+  type: 'test'
+  ...
+# Subtest: all six morphologies keep clipped shin and shoulder recoloring registered in both facings and resting/moving poses
+ok 2 - all six morphologies keep clipped shin and shoulder recoloring registered in both facings and resting/moving poses
+  ---
+  duration_ms: 538.00173
+  type: 'test'
+  ...
+# Subtest: an integrated armor material obeys the same keep region with or without a pigment
+ok 3 - an integrated armor material obeys the same keep region with or without a pigment
+  ---
+  duration_ms: 8.384938
+  type: 'test'
+  ...
+# Subtest: adding pigment preserves all native art paths, transforms, clips and limb-owner masks
+ok 4 - adding pigment preserves all native art paths, transforms, clips and limb-owner masks
+  ---
+  duration_ms: 12.693139
+  type: 'test'
+  ...
+# Subtest: the armor decal remains attached to the chest rather than either shin or the detached pixels
+ok 5 - the armor decal remains attached to the chest rather than either shin or the detached pixels
+  ---
+  duration_ms: 4.974124
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 801.058729

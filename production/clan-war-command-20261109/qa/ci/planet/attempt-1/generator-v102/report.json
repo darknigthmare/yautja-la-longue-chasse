@@ -1,0 +1,46 @@
+{
+  "route": "/planet-generator-v102",
+  "viewport": [
+    1440,
+    1080
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "checkedAt": "2026-11-09T12:16:04.867Z",
+  "worldA": "proc-v102-11gyrh2-2021113-yuqlv",
+  "worldB": "proc-v102-jdly-0223010-4o0mk",
+  "checks": [
+    "editing modular controls keeps the applied preview unchanged",
+    "explicit keyboard generation applies a new self-contained world code",
+    "the atlas, six regional dossiers and landmass descriptions use the applied world",
+    "the applied archipelago exposes all 36 keyboard territories",
+    "downloaded JSON contains the applied code, modular recipe and actual descriptions",
+    "copy shares the applied world code",
+    "denied clipboard selects the code and exposes a manual copy message",
+    "remember stores the canonical world code",
+    "another recipe creates genuinely different rendered geography",
+    "an invalid code leaves the last valid world intact",
+    "a mismatched JSON recipe is rejected without changing the preview",
+    "JSON import is bounded and preserves the preview on failure",
+    "a JSON round trip recreates the exact applied world and coastline geometry",
+    "code round trips preserve geography independently of local shortcuts",
+    "downloaded land PNG has the advertised dimensions and a nonempty transparent sea",
+    "opening uses the applied preview even when the draft has ungenerated changes",
+    "the active picker separates thirty historical worlds from two discoveries"
+  ],
+  "pngResult": {
+    "file": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/generator-v102/proc-v102-11gyrh2-2021113-yuqlv-land-map.png",
+    "width": 1024,
+    "height": 512,
+    "channels": 4,
+    "hasAlpha": true,
+    "transparent": 442854,
+    "opaque": 77978
+  },
+  "errors": [],
+  "consoleErrors": [],
+  "passed": false,
+  "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-war-v85=\"free-profile\"]').getByTestId('clan-war-atlas-v95').getByRole('button', { name: '▱ Planisphère', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-pressed=\"false\">▱ Planisphère</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_b_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_b_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    41 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_b_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v102.mjs:157:75"
+}

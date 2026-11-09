@@ -1,12 +1,13 @@
 name: V94 transactional exercises and trophy confirmation
 on:
+  workflow_dispatch:
   pull_request:
     branches: [main]
     paths: ['app/**', 'scripts/**', 'tests/**', '.github/workflows/persistence-v94.yml']
 permissions:
   contents: read
 concurrency:
-  group: persistence-v94-${{ github.event.pull_request.number }}
+  group: persistence-v94-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 jobs:
   persistence:

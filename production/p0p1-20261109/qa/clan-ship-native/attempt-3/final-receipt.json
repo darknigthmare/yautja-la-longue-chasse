@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "checksPassed": 27,
+  "checksFailed": 0,
+  "buildId": "RYl37_8hN58IOB8jDpRj1",
+  "rawReport": {
+    "path": "report.browser-run.json",
+    "sha256": "39506f640dfd0f9b8577e592265730c93e17ce6b1f3a472a4cb74194f6a9f305"
+  },
+  "report": {
+    "path": "report.json",
+    "sha256": "5075dba72f22fd384e578b198e604972b172e1c397a474b5927d112000366629"
+  },
+  "inspection": {
+    "path": "screenshot-inspection.json",
+    "sha256": "08d827d5c79369872804517c2bf8d31b9bac37ebde96218f2f7145b4c858500f"
+  },
+  "recipe": {
+    "path": "scripts/qa-clan-ship-p0p1-20261109.mjs",
+    "sha256": "6af42a5b8d7b1427d4401691ad667cac31570d807690edbf3df1e2f140dfc1c0"
+  },
+  "sourceIdentitySha256": "70bd1e386fa52d0bf47219917dd10feea2dda05438c275d5a67e915bae716410",
+  "sourceFilesCompared": 1269,
+  "productionBuildSha256": "e7bb52b2ed31e2ffdd89a1d2ec761f3cc0e44d3610b2001e5a5e8acf28f829cb",
+  "sourceBeforeAfterEqual": true,
+  "productionBuildBeforeAfterEqual": true,
+  "servedScriptResponses": 71,
+  "servedUniqueScripts": 25,
+  "servedScriptsMatchBuiltFiles": true,
+  "walking": {
+    "samples": 1470,
+    "rooms": [
+      "hangar",
+      "soins",
+      "trophees",
+      "archives",
+      "conseil",
+      "entrainement",
+      "armurerie"
+    ]
+  },
+  "routes": 10,
+  "nativeOrders": 35,
+  "orderTypes": [
+    "board",
+    "brace",
+    "disrupt",
+    "extract",
+    "fire",
+    "manoeuvre",
+    "recharge",
+    "scan",
+    "withdraw"
+  ],
+  "readOnlySavePairs": 5,
+  "screenshotsOpened": 9,
+  "audio": {
+    "nativeObserved": true,
+    "mutedMasterGain": [
+      0
+    ],
+    "restoredMasterGain": [
+      0.05400000140070915
+    ],
+    "humanListening": false,
+    "observation": "Original native calls preserved; gain master through limiter observed, synthesized cue frequencies and start scheduling verified; no old recharge/alert recreated on unmute."
+  },
+  "errors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "missingAssets": [],
+  "boundedCriteria": [
+    "OPS-F08/F09/F10: missing native terminal-specific guidance and physical service approach; all seven rooms reached by ten terminal routes.",
+    "OPS-F29/F30/F31/F32/F33/F47/F48: missing recharge and integrity-defeat native checks, all nine accepted order types, actual outcomes, retained report/reload, read-only previews and tab/focus handling.",
+    "OPS-B14: real WebAudio synthesis scheduling and shared-master mute/restoration, without human mix qualification."
+  ],
+  "notQualified": [
+    "OPS-F18/F19: no field hunt was completed by this recipe.",
+    "Physical gamepad and human artistic/mix review.",
+    "No full campaign, multiplayer, new animation, autonomous routine or canonical art certification."
+  ],
+  "previousAttempt": "../attempt-2/final-receipt.json remains the successful original 27-check run on the preceding build TDA_a9vb2sdq4pe9FwXuE. Attempt 3 repeats the unchanged recipe on the final common build after the shared PHG/climate corrections; attempt 1 remains a dated failed audio-observation attempt."
+}

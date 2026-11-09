@@ -3,11 +3,12 @@
 import { useMemo, useState } from "react";
 import {
   clanWarVariantCountsV120, searchClanWarVariantsV120, drawUnseenClanWarVariantV120,
-  type ClanWarVariantFamilyV120, type ClanWarVariantModeV120,
+  type ClanWarVariantFamilyV120, type ClanWarVariantModeV120, type ClanWarVariantV120,
 } from "./systems/clanWarVariantAtlasV120";
 import {buildWarEncounterSubVariantV127} from "./systems/clanWarEncounterDirectorV127";
 import styles from "./ClanWarVariantAtlasV120.module.css";
 import {CLAN_WAR_COHERENT_VARIANTS_V126} from "./systems/clanWarWorldClimateV126";
+import {clanWarVariantCsvV126,clanWarVariantExportV126} from "./systems/clanWarVariantExportV126";
 const V126_BY_ID=new Map(CLAN_WAR_COHERENT_VARIANTS_V126.map(item=>[item.sourceId,item]));
 
 const MODE_LABELS:Record<ClanWarVariantModeV120,string> = {
@@ -16,30 +17,6 @@ const MODE_LABELS:Record<ClanWarVariantModeV120,string> = {
 const FAMILY_LABELS:Record<ClanWarVariantFamilyV120,string> = {
   original:"Créations originales",lore:"Extrapolations lore Yautja",homage:"Clins d’œil aux lieux connus",
 };
-const CSV_COLUMNS = [
-  ["id","ID"],["mode","Gameplay"],["family","Famille"],["title","Mission"],["settingName","Lieu"],
-  ["referenceName","Référence"],["referenceWork","Œuvre de référence"],
-  ["environment.biome","Biome"],["environment.terrain","Sol"],["environment.liquid","Zone liquide"],
-  ["environment.layout","Géométrie"],["environment.weather","Météo"],
-  ["environment.environmentalHazard","Danger"],["environment.powerFailure","Sans électricité"],
-  ["operation.primaryObjective","Objectif"],["operation.secondaryObjective","Objectif secondaire"],
-  ["operation.gameplayHook","Mécanique"],["operation.twist","Événement"],
-  ["operation.failure","Échec"],["operation.victoryProof","Preuve de réussite"],
-  ["operation.fallback","Solution alternative"],["operation.extraction","Extraction"],
-  ["production.gameplayBackend","Moteur"],["status","Statut"],
-] as const;
-function fieldValue(value:unknown,path:string):string {
-  const valueObject=value as Record<string,unknown>;
-  const result=path.split(".").reduce<unknown>((item,key)=>
-    item&&typeof item==="object"?(item as Record<string,unknown>)[key]:undefined,valueObject);
-  return Array.isArray(result)?result.join(" | "):result==null?"":String(result);
-}
-function csvCell(value:string) {
-  // Prevent spreadsheet-formula injection when a future editable source
-  // begins with an Excel executable character.
-  const safe=/^[\s]*[=+\-@]/.test(value)?"'"+value:value;
-  return '"'+safe.replace(/"/g,'""')+'"';
-}
 const pageSize=12;
 
 export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototype?:()=>void}) {
@@ -56,8 +33,6 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
   const currentPage=Math.min(page,maxPage);
   const visible=entries.slice(currentPage*pageSize,(currentPage+1)*pageSize);
   const chosen=entries.find(row=>row.id===picked)??visible[0]??null;
-  const earthCoherence=chosen?V126_BY_ID.get(chosen.id):undefined;
-  const tactical=earthCoherence?buildWarEncounterSubVariantV127(earthCoherence,2):null;
   function drawNewVariant(){
     const result=drawUnseenClanWarVariantV120(Date.now(),drawnIds,mode,family,query);
     if(!result)return;
@@ -66,23 +41,18 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
     setPage(Math.floor(entries.findIndex(item=>item.id===result.id)/pageSize));
   }
   function downloadCSV() {
-    const header=CSV_COLUMNS.map(([,label])=>csvCell(label)).join(";");
-    const lines=entries.map(row=>CSV_COLUMNS.map(([key])=>csvCell(fieldValue(row,key))).join(";"));
-    const file=new Blob(["\uFEFF",header,"\r\n",lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
+    const file=new Blob(["\uFEFF",clanWarVariantCsvV126(entries)],{type:"text/csv;charset=utf-8"});
     const url=URL.createObjectURL(file);
     const link=document.createElement("a");
-    link.href=url;link.download="Yautja_Guerre_Clans_V120_"+mode+"_"+family+"_"+entries.length+".csv";
+    link.href=url;link.download="Yautja_Guerre_Clans_V126_"+mode+"_"+family+"_"+entries.length+".csv";
     document.body.appendChild(link);link.click();link.remove();
     window.setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   function downloadJSON() {
-    const file=new Blob([JSON.stringify({
-      schema:120,status:"design-only",total:entries.length,
-      filteredBy:{mode,family,query},variants:entries,
-    },null,2)+"\n"],{type:"application/json;charset=utf-8"});
+    const file=new Blob([JSON.stringify(clanWarVariantExportV126(entries,{mode,family,query}),null,2)+"\n"],{type:"application/json;charset=utf-8"});
     const url=URL.createObjectURL(file);
     const link=document.createElement("a");
-    link.href=url;link.download="Yautja_Guerre_Clans_V120_"+mode+"_"+family+"_"+entries.length+".json";
+    link.href=url;link.download="Yautja_Guerre_Clans_V126_"+mode+"_"+family+"_"+entries.length+".json";
     document.body.appendChild(link);link.click();link.remove();
     window.setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
@@ -145,10 +115,23 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
           <button type="button" disabled={currentPage>=maxPage} onClick={()=>{setPage(maxPage);setPicked("");}}>Fin</button>
         </div>
       </div>
-      <article className={styles.detail} aria-live="polite">
+      <ClanWarVariantDetailV126 chosen={chosen} onOpenPrototype={onOpenPrototype}/>
+    </div>
+  </section>;
+}
+
+/** The live atlas and SSR qualification share this exact source detail.
+ * Current V126 location/climate are shown first; V120 history stays readable. */
+export function ClanWarVariantDetailV126({chosen,onOpenPrototype}:{
+  chosen:ClanWarVariantV120|null;onOpenPrototype?:()=>void;
+}) {
+  const earthCoherence=chosen?V126_BY_ID.get(chosen.id):undefined;
+  const tactical=earthCoherence?buildWarEncounterSubVariantV127(earthCoherence,2):null;
+  return (
+      <article className={styles.detail} aria-live="polite" data-clan-war-variant-detail={chosen?.id}>
         {chosen?<><p className={styles.eyebrow}>{chosen.id} · PROPOSITION DE GAMEPLAY</p>
-          <h4>{chosen.title}</h4>
-          <p>{chosen.inspirationNote}</p>
+          <h4>{chosen.operation.missionType} · {earthCoherence?.geography.siteName??chosen.settingName}</h4>
+          <p>{earthCoherence?.geography.worldExplanation??chosen.inspirationNote}</p>
           {earthCoherence&&<div className={styles.geoNotice}>
             <strong>Géographie V126 (prioritaire)</strong>
             <p><strong>Monde :</strong> {earthCoherence.geography.worldId} · {earthCoherence.geography.worldKind} · {earthCoherence.geography.regionName}</p>
@@ -167,9 +150,9 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
           </div>
           <h5>Mission et conditions</h5>
           <dl className={styles.dossier}>
-            <div><dt>Préparation</dt><dd>{chosen.operation.setup}</dd></div>
+            <div><dt>Préparation</dt><dd>{chosen.operation.setup.replaceAll(chosen.settingName,earthCoherence?.geography.siteName??chosen.settingName)}</dd></div>
             <div><dt>Objectif principal</dt><dd>{chosen.operation.primaryObjective}</dd></div>
-            <div><dt>Objectif secondaire</dt><dd>{chosen.operation.secondaryObjective}</dd></div>
+            <div><dt>Objectif secondaire</dt><dd data-clan-war-secondary-objective>{chosen.operation.secondaryObjective.replaceAll(chosen.environment.biome,earthCoherence?.environment.biome??chosen.environment.biome)}</dd></div>
             <div><dt>Mécanique spécifique</dt><dd>{chosen.operation.gameplayHook}</dd></div>
             <div><dt>Événement dynamique</dt><dd>{earthCoherence?.environment.effectiveTwist??chosen.operation.twist}</dd></div>
             <div><dt>Réaction du terrain</dt><dd>{earthCoherence?.environment.temperatureRule??"À préciser"} : les unités doivent recalculer leur déplacement réel.</dd></div>
@@ -184,6 +167,10 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
             {index+1}. {phase.part} · {phase.weather} · {phase.hazard} · {phase.coverType}
           </li>)}</ol>
           <details><summary>Consulter le brouillon V120 original (historique, non validé géographiquement)</summary>
+            <p><strong>Titre source :</strong> {chosen.title}</p>
+            <p>{chosen.inspirationNote}</p>
+            <p><strong>Préparation source :</strong> {chosen.operation.setup}</p>
+            <p><strong>Objectif secondaire source :</strong> {chosen.operation.secondaryObjective}</p>
             <p>{chosen.operation.twist}</p>
             <ol>{chosen.operation.dynamicPhases.map((phase,index)=><li key={index}>{phase}</li>)}</ol>
           </details>
@@ -199,6 +186,5 @@ export default function ClanWarVariantAtlasV120({onOpenPrototype}:{onOpenPrototy
           </button>}
         </>:<p>Sélectionnez une variante dans la liste.</p>}
       </article>
-    </div>
-  </section>;
+  );
 }

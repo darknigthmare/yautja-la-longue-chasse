@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: Assault V142: real paid focus shot is V6 range-limited, spends 12 AP once, then expires
+ok 1 - Assault V142: real paid focus shot is V6 range-limited, spends 12 AP once, then expires
+  ---
+  duration_ms: 11.253868
+  type: 'test'
+  ...
+# Subtest: Assault V142: remote target, obscuring rival, KO group, absent AP and forged save all fail safely
+ok 2 - Assault V142: remote target, obscuring rival, KO group, absent AP and forged save all fail safely
+  ---
+  duration_ms: 0.670281
+  type: 'test'
+  ...
+# Subtest: Outer Ops V142: each offered itinerary is a feasible V6 directed-capacity route
+ok 3 - Outer Ops V142: each offered itinerary is a feasible V6 directed-capacity route
+  ---
+  duration_ms: 349.266668
+  type: 'test'
+  ...
+# Subtest: Outer Ops V142: chosen alternative actually dispatches, debits once, locks the route in archive
+ok 4 - Outer Ops V142: chosen alternative actually dispatches, debits once, locks the route in archive
+  ---
+  duration_ms: 22.760536
+  type: 'test'
+  ...
+# Subtest: Stealth V142: all 6 regions give deterministic one-step path without consulting guard position
+ok 5 - Stealth V142: all 6 regions give deterministic one-step path without consulting guard position
+  ---
+  duration_ms: 52.662875
+  type: 'test'
+  ...
+# Subtest: Stealth V142: no teleport, automatic sabotage, external source, or action at completed waypoint
+ok 6 - Stealth V142: no teleport, automatic sabotage, external source, or action at completed waypoint
+  ---
+  duration_ms: 0.742169
+  type: 'test'
+  ...
+# Subtest: RTS V142: guided step obeys source map, power, next-turn weather and one enemy reaction
+ok 7 - RTS V142: guided step obeys source map, power, next-turn weather and one enemy reaction
+  ---
+  duration_ms: 171.511696
+  type: 'test'
+  ...
+# Subtest: RTS V142: hidden mission objective cannot be used as a waypoint before observing it
+ok 8 - RTS V142: hidden mission objective cannot be used as a waypoint before observing it
+  ---
+  duration_ms: 1.55169
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 620.812309

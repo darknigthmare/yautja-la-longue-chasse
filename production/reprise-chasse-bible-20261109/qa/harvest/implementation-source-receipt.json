@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "classification": "BYTE_IDENTITY_OF_TESTED_IMPLEMENTATION_NOT_A_NEW_BROWSER_RUN",
+  "implementationCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+  "browserReport": "browser-verification.json",
+  "browserReportSha256": "9b9a7d17c47a481a3317db97e0afdbef7fa90c94fa2e90e896a559e9ef6ac40c",
+  "entries": [
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "browserSourceSha256": "4d96880d167b6eec4d725315f359bf89bf2ea02d590430d37d694eb211b08fb0",
+      "committedSourceSha256": "4d96880d167b6eec4d725315f359bf89bf2ea02d590430d37d694eb211b08fb0",
+      "equal": true
+    },
+    {
+      "path": "app/game/HuntRitesMenuV77.tsx",
+      "browserSourceSha256": "9bc54a051d67f1b5627f1ce0d201c374e824da04652efcfcbb37deb6a45cd610",
+      "committedSourceSha256": "9bc54a051d67f1b5627f1ce0d201c374e824da04652efcfcbb37deb6a45cd610",
+      "equal": true
+    },
+    {
+      "path": "app/game/HuntRitesMenuV77.module.css",
+      "browserSourceSha256": "43f77a9cb0f3fa10f40c2b1182735df7a20cfc7d3b5ae86a5ea99f3bd4ac5a93",
+      "committedSourceSha256": "43f77a9cb0f3fa10f40c2b1182735df7a20cfc7d3b5ae86a5ea99f3bd4ac5a93",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/huntRitesRuntimeV77.ts",
+      "browserSourceSha256": "fc36cb457e81c27172840fab2f2223775016b9a5dc7dc5eb8e83f5dcbd32f6f7",
+      "committedSourceSha256": "fc36cb457e81c27172840fab2f2223775016b9a5dc7dc5eb8e83f5dcbd32f6f7",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/ritesOfHuntV77.ts",
+      "browserSourceSha256": "de2b71f6b38a76b6cda7d9c389e345349fc0ed795d5e2e637988c7817318faba",
+      "committedSourceSha256": "de2b71f6b38a76b6cda7d9c389e345349fc0ed795d5e2e637988c7817318faba",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/anatomyHarvestV112.ts",
+      "browserSourceSha256": "cf0e561770ff5f8878ca213997a0d0bc6a10c3dc2269685c3ec6637d177a7527",
+      "committedSourceSha256": "cf0e561770ff5f8878ca213997a0d0bc6a10c3dc2269685c3ec6637d177a7527",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/harvestInventoryV112.ts",
+      "browserSourceSha256": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1",
+      "committedSourceSha256": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1",
+      "equal": true
+    }
+  ],
+  "scope": "The seven application source files bundled in the browser proof have exactly the bytes committed in ebe171849. The browser report retains the original checkout19317 and dirty-working-tree provenance. The QA harness is identified separately by its source hashes and bundle hash."
+}

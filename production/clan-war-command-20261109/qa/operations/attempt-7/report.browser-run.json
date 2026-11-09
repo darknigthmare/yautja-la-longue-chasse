@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual production operations component and shared dialog, esbuild host with original W3 rules. Real browser events, localStorage, IDB and Web Locks. Not full GameClient, campaign, physical-controller or canonical-art certification.",
+  "checks": [
+    {
+      "name": "Mount and command desks never initialize a war archive",
+      "passed": true
+    },
+    {
+      "name": "Renforts de clan: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Triage du clan: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Comptes rendus: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Archives et règles: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Briefing steps retain native selections, and cancellation never debits RAV",
+      "passed": true
+    },
+    {
+      "name": "Briefing launches through the real V2 archive, spends exactly the selected unit’s source upkeep and reveals actual RTS terrain",
+      "passed": true,
+      "missionId": "W115-OPS-0001",
+      "rav": 119,
+      "sourceUpkeepRav": 1
+    },
+    {
+      "name": "Actual player input pauses realtime through the original persistent RTS command",
+      "passed": true
+    },
+    {
+      "name": "390px: command HUD and drawer fit viewport; closing preserves actual mission",
+      "passed": true
+    },
+    {
+      "name": "390px: briefing remains readable and cannot relaunch an occupied playable slot",
+      "passed": true
+    },
+    {
+      "name": "320px: command HUD and drawer fit viewport; closing preserves actual mission",
+      "passed": true
+    },
+    {
+      "name": "320px: briefing remains readable and cannot relaunch an occupied playable slot",
+      "passed": true
+    },
+    {
+      "name": "Every command-menu interaction preserves unrelated campaign bytes",
+      "passed": true
+    },
+    {
+      "name": "Reload restores the actual paused field and mission identity without reopening a drawer or debiting RAV again",
+      "passed": true
+    },
+    {
+      "name": "Uncovered actual stealth field accepts native keyboard input",
+      "passed": true
+    },
+    {
+      "name": "Tactical keyboard events never traverse an open native command drawer",
+      "passed": true
+    },
+    {
+      "name": "Closing the drawer restores a usable native stealth field without resetting its mission",
+      "passed": true
+    },
+    {
+      "name": "No page or resource errors",
+      "passed": true
+    },
+    {
+      "name": "Sources and shared overlay remain byte-identical during native run",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "01-command-desktop.png",
+      "sha256": "a8168d417e5a63baa521d40e86d0759541415d281ff00dfd10adf24198140caf",
+      "opened": false
+    },
+    {
+      "filename": "01b-briefing-teams-desktop.png",
+      "sha256": "055a86712bdd186b384817bb288300466d1edba42d44bd7880a01ad29eb124d0",
+      "opened": false
+    },
+    {
+      "filename": "02-rts-field-desktop.png",
+      "sha256": "ef867f20be3e566115c0f2ff2d8495c23811f0c310f84fc9d9f8a9ffca2875cb",
+      "opened": false
+    },
+    {
+      "filename": "03-triage-390.png",
+      "sha256": "69a4d6a6e4b9be0fc926d2c255bc73c1756e6738e8c4bfd54f9d2f4808e5a91f",
+      "opened": false
+    },
+    {
+      "filename": "05-briefing-390.png",
+      "sha256": "ef14bc26882d84fd85234d74be094fa65a24da5f3055be239e6a125b620607e9",
+      "opened": false
+    },
+    {
+      "filename": "03-triage-320.png",
+      "sha256": "9983ac1ff6efd644608c9d124002e0cbf6d87f23c730e599e1ac41e6de02ba32",
+      "opened": false
+    },
+    {
+      "filename": "05-briefing-320.png",
+      "sha256": "48cb165d0a4a950d0df14ef851c12698d1238fceceba52bdb80193683db572df",
+      "opened": false
+    },
+    {
+      "filename": "04-stealth-field-desktop.png",
+      "sha256": "ceeb0f686239b47f63d717d260685eae1a39fe1f7a45d233dfc910bfe0765849",
+      "opened": false
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "sourceBefore": {
+    "app/game/ClanWarOperationsV115.tsx": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f",
+    "app/game/ClanWarOperationsV115.module.css": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "scripts/qa-clan-war-command-operations-20261109.mjs": "60d0487466b8827693683402f3d6c27d0379d57ed7a15a50abdcf0e43562c0cc"
+  },
+  "canonicalKey": "yautja.clan-war.v115.operations.fenced.v2",
+  "bundle": {
+    "jsSha256": "19fc2327de254488b0e2cf2f69caee6aee009dfd406549970d58d57aeeed9bbe",
+    "cssSha256": "279e3128064d4977f0d703d36c1d452a4441a8191ce337800025e35371f8652a"
+  },
+  "browserVersion": "154.0.8037.57",
+  "url": "http://127.0.0.1:42813",
+  "sourceAfter": {
+    "app/game/ClanWarOperationsV115.tsx": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f",
+    "app/game/ClanWarOperationsV115.module.css": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "scripts/qa-clan-war-command-operations-20261109.mjs": "60d0487466b8827693683402f3d6c27d0379d57ed7a15a50abdcf0e43562c0cc"
+  },
+  "passed": true
+}

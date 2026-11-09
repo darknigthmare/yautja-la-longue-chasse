@@ -11,7 +11,10 @@ import ClanShipInterior from "./ClanShipInterior";
 import ClanShipOperationsPanel from "./ClanShipOperationsPanel";
 import type { CompanionResidenceControlled } from "./CompanionResidencePanel";
 import type { ClanShipIncidentControlled } from "./ClanShipIncidentPanel";
+import type { ClanShipReturnEscortControlled } from "./ClanShipReturnEscortScene";
 import { CLAN_SHIP_ONBOARDING_STEPS, clanShipContract, createClanShipOperations, getClanShipActiveStep, inspectClanShipOperations, type ClanShipNpcId, type ClanShipOperationsAction } from "./systems/clanShipOperations";
+import { ClanShipOperationsAudio } from "./systems/clanShipOperationsAudio";
+import type { SceneAudioPort } from "./systems/sceneAudio";
 import styles from "./ClanShipHub.module.css";
 
 export type ClanShipService = "armory" | "trophies" | "medbay" | "training" | "codex" | "clan-war";
@@ -29,6 +32,8 @@ export interface ClanShipHubProps {
   onOpenSettings: () => void;
   companions?: CompanionResidenceControlled;
   incidents?: ClanShipIncidentControlled;
+  createSceneAudio?: () => SceneAudioPort | null;
+  returnEscort?: ClanShipReturnEscortControlled;
 }
 
 type Room = { id: ClanShipRoomId; name: string; detail: string; action: string; service?: ClanShipService; number: string };
@@ -52,13 +57,14 @@ const STATUS = {
 } as const;
 const STEPS = ["Approche", "Amarrage", "À bord"];
 
-export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onService, onExit, onOpenSettings, companions, incidents }: ClanShipHubProps) {
+export default function ClanShipHub({ state, save, selectedShipId, suspended, temporarySession = false, onAction, onOperations, onService, onExit, onOpenSettings, companions, incidents, returnEscort, createSceneAudio }: ClanShipHubProps) {
   const rootRef = useRef<HTMLElement>(null);
   const primaryRef = useRef<HTMLButtonElement>(null);
   const [failure, setFailure] = useState<{ signature: string; message: string } | null>(null);
   const [targetRoomId, setTargetRoomId] = useState<ClanShipRoomId | null>(null);
   const [operationsOpen, setOperationsOpen] = useState(false);
   const [crewFocus, setCrewFocus] = useState<ClanShipNpcId | null>(null);
+  const operationsAudioRef = useRef<ClanShipOperationsAudio | null>(null);
   const operationsInspection = inspectClanShipOperations(save.clanShipOperations, save.createdAt);
   const operations = operationsInspection.state ?? (operationsInspection.status === 'absent' ? createClanShipOperations(save.createdAt) : null);
   const operationStep = operations ? CLAN_SHIP_ONBOARDING_STEPS[operations.onboardingStep] ?? getClanShipActiveStep(operations) : null;
@@ -71,6 +77,32 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
   const personal = shipForId(personalId);
   const room = ROOMS.find((entry) => entry.id === state.roomId) ?? ROOMS[0];
   const activeStep = state.status === "free-flight" ? -1 : state.status === "approach" ? 0 : state.status === "docked" ? 1 : 2;
+
+  useEffect(() => {
+    const voice = createSceneAudio?.();
+    if (!voice) return;
+    const director = new ClanShipOperationsAudio(voice, save.createdAt);
+    operationsAudioRef.current = director;
+    const blur = () => director.suspend();
+    const visibility = () => { if (document.hidden) director.suspend(); };
+    window.addEventListener('blur', blur);
+    document.addEventListener('visibilitychange', visibility);
+    return () => {
+      window.removeEventListener('blur', blur);
+      document.removeEventListener('visibilitychange', visibility);
+      if (operationsAudioRef.current === director) operationsAudioRef.current = null;
+      director.dispose();
+    };
+  }, [createSceneAudio, save.createdAt]);
+  useEffect(() => {
+    operationsAudioRef.current?.sync(operations, aboard && !suspended && !document.hidden && document.hasFocus());
+  }, [operations, aboard, suspended]);
+  const actOperations = useCallback((action: ClanShipOperationsAction) => {
+    if (suspended || !onOperations || !operations) return false;
+    const accepted = onOperations(action);
+    operationsAudioRef.current?.issued(operations, action, accepted);
+    return accepted;
+  }, [onOperations, operations, suspended]);
 
   const act = useCallback((action: ClanShipDockingAction) => {
     if (suspended) return false;
@@ -108,13 +140,19 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
 
   const enterRoomService = useCallback(() => {
     if (suspended) return;
-    if (state.roomId === 'conseil' && onOperations && operations) { setCrewFocus(null); setOperationsOpen(true); return; }
+    if (state.roomId === 'conseil' && onOperations && operations) {
+      operationsAudioRef.current?.open(operations, !document.hidden && document.hasFocus());
+      setCrewFocus(null); setOperationsOpen(true); return;
+    }
     if (room.service) onService(room.service);
   }, [onService, onOperations, operations, room.service, state.roomId, suspended]);
   const openOperations = useCallback((npcId?: ClanShipNpcId) => {
-    if (!suspended && onOperations && operations) { setCrewFocus(npcId ?? null); setOperationsOpen(true); }
+    if (!suspended && onOperations && operations) {
+      operationsAudioRef.current?.open(operations, !document.hidden && document.hasFocus());
+      setCrewFocus(npcId ?? null); setOperationsOpen(true);
+    }
   }, [onOperations, operations, suspended]);
-  const closeOperations = useCallback(() => setOperationsOpen(false), []);
+  const closeOperations = useCallback(() => { operationsAudioRef.current?.close(); setOperationsOpen(false); }, []);
   useEffect(() => {
     if (suspended || operationsOpen || !aboard) return;
     const frame = requestAnimationFrame(() => rootRef.current?.querySelector<HTMLElement>('[data-interior-world]')?.focus({ preventScroll: true }));
@@ -178,6 +216,7 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
               save={save}
               companions={companions}
               incidents={incidents}
+              returnEscort={returnEscort}
               personalShipId={personalId}
               suspended={suspended || operationsOpen}
               onRoomChange={changeInteriorRoom}
@@ -204,9 +243,9 @@ export default function ClanShipHub({ state, save, selectedShipId, suspended, te
       <footer className={styles.footer} inert={operationsOpen || suspended}><p role="status" aria-live="polite">{error || (aboard ? `${room.detail} ${temporarySession ? 'Ta salle est conservée pendant cet essai.' : 'Ta salle est sauvegardée à chaque passage.'}` : status.label)}</p>{!aboard && <span>Tab · Naviguer <b>↵</b> Valider <b>Échap</b> Retour</span>}</footer>
       {aboard && operationsOpen && operations && onOperations && <ClanShipOperationsPanel
         state={operations} save={save} roomId={state.roomId} suspended={suspended} crewFocus={crewFocus} temporarySession={temporarySession}
-        onAction={onOperations} onClose={closeOperations}
-        onNavigate={roomId => { setOperationsOpen(false); setTargetRoomId(roomId); }}
-        onClanWar={() => { if (!suspended && state.roomId === 'conseil') { setOperationsOpen(false); onService('clan-war'); } }}
+        onAction={actOperations} onClose={closeOperations}
+        onNavigate={roomId => { closeOperations(); setTargetRoomId(roomId); }}
+        onClanWar={() => { if (!suspended && state.roomId === 'conseil') { closeOperations(); onService('clan-war'); } }}
       />}
     </section>
   );

@@ -1,0 +1,51 @@
+{
+  "scope": "Two native Chromium blank tabs; default forced focus explicitly disabled, no synthetic event or app state mutation",
+  "defaultPlaywright": {
+    "a": {
+      "hidden": false,
+      "focused": true,
+      "state": "visible"
+    },
+    "b": {
+      "hidden": false,
+      "focused": true,
+      "state": "visible"
+    }
+  },
+  "nativeAFront": {
+    "a": {
+      "hidden": false,
+      "focused": true,
+      "state": "visible"
+    },
+    "b": {
+      "hidden": false,
+      "focused": false,
+      "state": "visible"
+    }
+  },
+  "nativeBFront": {
+    "a": {
+      "hidden": false,
+      "focused": false,
+      "state": "visible"
+    },
+    "b": {
+      "hidden": false,
+      "focused": true,
+      "state": "visible"
+    }
+  },
+  "nativeAReturned": {
+    "a": {
+      "hidden": false,
+      "focused": true,
+      "state": "visible"
+    },
+    "b": {
+      "hidden": false,
+      "focused": false,
+      "state": "visible"
+    }
+  }
+}

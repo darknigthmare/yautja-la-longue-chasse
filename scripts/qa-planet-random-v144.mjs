@@ -71,7 +71,7 @@ try {
   const sizePanel = generator.locator('[data-generator-advanced-field="planetSize"]');
   const lockSize = sizePanel.getByRole("checkbox", { name: "Conserver : Rayon de la planète" });
   await lockSize.check();
-  const fixedSize = (await snapshot()).advanced.planetSize;
+  await snapshot();
   check("V144 advanced per-field random button is disabled while its setting is locked",
     await sizePanel.getByRole("button", { name: "Tirer au hasard : Rayon de la planète" }).isDisabled());
 

@@ -1,0 +1,717 @@
+✔ resume claims a fresh identity while preserving the recoverable hunt payload (7.022774ms)
+✔ a second tab holding the same old proposal cannot claim, write or clear the resumed hunt (1.335475ms)
+✔ claim compares the full normalized proposal, not just its run and sequence (0.585661ms)
+✔ quota failure during claim preserves the original candidate byte for byte (0.315624ms)
+✔ read denial, disappeared candidates and future or corrupt values are never replaced (1.328966ms)
+✔ failed claim readback remains inconclusive without deleting a successfully written identity (0.294673ms)
+✔ a same-run cleanup requires the expected autosave sequence when supplied (0.245822ms)
+✔ conditional cleanup preserves future and invalid envelopes even when ownership fields match (0.789882ms)
+✔ explicit discard can remove future or invalid values and a missing guarded key stays idempotent (0.35966ms)
+✔ claim requires a genuinely new valid run id and can transfer ownership again from a refreshed proposal (0.520155ms)
+✔ normalization returns an exact, detached JSON-safe V1 envelope (0.364677ms)
+✔ JSON safety rejects cycles, sparse arrays, accessors and non-finite numbers (0.225231ms)
+✔ JSON safety enforces collection, recursion and serialized-size budgets (18.478442ms)
+✔ envelope versions, runtime revisions and counters are validated (0.217981ms)
+✔ compatibility identifies every stale campaign/configuration dimension (0.533755ms)
+✔ write/load/clear expose successful sidecar storage statuses (0.55736ms)
+✔ a sidecar cannot overwrite the same run with a stale sequence (1.54978ms)
+✔ load reports invalid and incompatible persisted envelopes (0.324578ms)
+✔ storage failures are never mistaken for successful persistence (0.747169ms)
+✔ an old tab cannot overwrite or clear a different active run (0.720079ms)
+✔ a run identity cannot mutate even with a higher sequence (0.859234ms)
+✔ array and envelope accessors never execute during JSON validation (0.283387ms)
+✔ future hunt payloads remain untouched until an explicit discard (0.21749ms)
+✔ a silently dropped hunt write is not reported as persisted (0.232653ms)
+✔ a nearby real tree is ready exactly when the native support predicate admits it (1.23052ms)
+✔ an actual intervening wall is shown as an obstacle and never as a ready grasp (0.412728ms)
+✔ grip threshold, action lock, release cooldown and airborne exhaustion use distinct refusals (1.47464ms)
+✔ a legitimate pendulum retains its exact grasp, current charge drain and flexible controls (0.648625ms)
+✔ only a genuine grounded contact is described as recovering on an appui (0.524201ms)
+✔ rest landmarks exclude undersized, embedded and damaging reception spaces (0.402612ms)
+✔ a grounded hazard contact remains visibly dangerous rather than a safe rest claim (0.141999ms)
+✔ directional landmarks are bounded, deduplicated and never imply a successful jump (0.943328ms)
+✔ the floor alone never opens a permanent navigation HUD far from climbable geometry (5.203898ms)
+✔ navigation is deterministic and leaves all eight real mission geometries unchanged (2.323469ms)
+✔ an invalid threshold fails explicitly and non-finite stamina never grants a grasp (0.440428ms)
+✔ the actual HUD uses remapped keyboard and pad actions in its current swing cue (4.293408ms)
+✔ grasp initializes from the actual hand without changing position; rigid and short supports refuse (0.310987ms)
+✔ unpowered pendulum uses rope length and gravity, with damping rather than energy growth (69.609995ms)
+✔ pumping and length adjustment remain finite, bounded and charge stamina only for simulated time (174.582167ms)
+✔ release exports tangent velocity, including downward motion, without adding a boost (0.26448ms)
+✔ swept swing stops at a thin solid wall and releases rather than crossing or snapping to the rope (0.717396ms)
+✔ support reach checks reject remote or wall-separated grips and malformed suspended state (0.283468ms)
+✔ each authored hunt has reachable resting sequences, real end supports and an optional fallback (3.995109ms)
+✔ authoring is idempotent and excludes solid exploration rooms after replacements (1.454941ms)
+✔ actual Oseris vine lengths above 720 share the attach, simulation and snapshot domain (28.812329ms)
+✔ the shared maximum refuses an overlong grasp gracefully and caps reeling without invalid state (0.968735ms)
+✔ anatomical tables are species-specific and never invent universal human or synthetic meat (0.200796ms)
+✔ all real hits contribute deterministic damage and excessive finishing damage costs integrity (0.213194ms)
+✔ analysis must precede the irreversible finite extraction and improves its previewed quality (4.190036ms)
+✔ skin requires preparation; a full or changed pack never consumes a part (1.078717ms)
+✔ the analysis preview shares the command prerequisite before and after irreversible extraction or deposit (1.227085ms)
+✔ completed analysis remains unavailable without blocking analysis of another corpse (0.629626ms)
+✔ damage, lost tool, source or footing interrupt anatomy without a specimen (0.434158ms)
+✔ transport and attachment are separate, require real capacity and cannot occupy one hook twice (1.511644ms)
+✔ drop preserves the single original source and an unfinished hang preserves no attachment (0.457473ms)
+✔ restoration cross-checks attachment and anatomy against the real source, tool and geometry (2.263871ms)
+✔ socket authoring uses real structural geometry and excludes decoration, narrow supports and blocked space (0.345388ms)
+✔ legacy corpse anatomy is derived from its real actor rather than a universal fallback mass (0.304989ms)
+✔ deposit creates one physical position without freeing or copying the harvested anatomy (0.723414ms)
+✔ pick up returns the same item once without changing source or completion receipt (0.605921ms)
+✔ drop and take refuse airborne without altering the unique item (0.226413ms)
+✔ drop and take refuse climbing without altering the unique item (0.151823ms)
+✔ drop and take refuse dead without altering the unique item (0.133777ms)
+✔ drop and take refuse invalidhealth without altering the unique item (0.141228ms)
+✔ drop and take refuse nonfinite without altering the unique item (0.115169ms)
+✔ drop and take refuse invalidbody without altering the unique item (0.120888ms)
+✔ suspended or busy manipulation does no work: {"suspended":true} (0.1088ms)
+✔ suspended or busy manipulation does no work: {"operationActive":true} (0.069492ms)
+✔ a stash cannot manufacture an item absent from the finite source registry (0.185593ms)
+✔ pickup uses true two dimensional distance and requires a settled source (0.160937ms)
+✔ solid occlusion blocks retrieval while a one-way ledge remains traversable (0.229317ms)
+✔ mass volume and free depot slots all gate retrieval without losing the world item (0.323847ms)
+✔ paused serialization retains the same stash and rejects duplicate nonfinite or foreign positions (0.381631ms)
+✔ a deposited item stays on its authored ledge and falls when that support disappears (0.443412ms)
+✔ swept contact catches a thin ledge at high fall speed without tunneling (0.155919ms)
+✔ deposit reduces carried load without changing ownership, and retrieval restores that exact load (0.221716ms)
+✔ a field tool is purchased once with clan marks and does not use either charged gear slot (2.070427ms)
+✔ unknown tools, invalid balances and insufficient funds never grant or debit anything (0.50921ms)
+✔ save normalization preserves a purchased tool, deduplicates it, and grants none to older campaigns (13.179525ms)
+✔ the real runtime only unlocks flaying with a purchased tool and keeps suspension locked (1.987075ms)
+✔ damage or departure cancels flaying; pause preserves its exact unfinished progress (0.245371ms)
+✔ marked and flayed discoveries retain their actual different fear through checkpoint restore (1.442283ms)
+✔ legacy marks restore without a tool or invented historic corpses (0.395512ms)
+✔ an unfinished flaying gesture only resumes under the same real owner with the tool (0.290718ms)
+✔ old inventory migrates empty without granting a field tool (4.936544ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.version=2 (2.234758ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=NaN (0.365418ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=101 (0.290487ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.toolCondition=4.5 (0.424875ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),massKg:Infinity}] (0.467888ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"invented"}] (0.378026ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.specimens=[item(),item()] (0.415041ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.jobs=[{id:"invented"}] (0.370225ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.toolUseIds=["x","x"] (0.306481ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.settledEncounterRuns={"unknown":0} (0.406748ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.archive=[{speciesId:"x",partId:"bone",label:"Bone",count:0,qualityTotal:0}] (0.449051ms)
+✔ present invalid or future preservation data is refused by actual save import: x=>x.specimens=[{...item(),stage:"mounted"}] (0.425216ms)
+✔ capacity is explicit for all armor classes and rejected pickup leaves source inventory untouched (0.4217ms)
+✔ volume can fill a pack before mass, and repeated anatomical part has no second slot (0.177952ms)
+✔ load changes movement jump climb effort and noise continuously; body mass adds load (0.196319ms)
+✔ a successful extraction deposits finite specimens and records actual tool wear atomically (0.794479ms)
+✔ failed and abandoned extraction only records completed work wear, without bringing specimens home (0.173065ms)
+✔ same completed encounter cannot charge wear or restore a specimen after repair (0.251941ms)
+✔ per-mission watermark compacts usage receipts safely across later encounters (0.246913ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"other:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],0] (0.745046ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["other:0:flay:prey"],0] (0.553495ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey"],1] (1.479207ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],["jungle-vey:0:flay:prey","jungle-vey:0:flay:prey"],0] (3.115194ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: ["invalid",[],0] (0.428301ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: [[],{},0] (0.375563ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":-1,"volumeUnits":2,"stage":"raw"}],[],0] (0.335804ms)
+✔ forged, duplicated, malformed or stale mission payload is refused: [[{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"},{"id":"jungle-vey:0:prey:hide","sourceId":"jungle-vey:0:prey","speciesId":"rifle-soldier","partId":"hide","label":"Peau préparée","quality":84,"massKg":3,"volumeUnits":2,"stage":"raw"}],[],0] (0.382453ms)
+✔ tool-free campaign cannot claim wear or completed tool operations (0.180346ms)
+✔ missing encounter proof cannot grant a new specimen; legacy empty results stay compatible (0.150682ms)
+✔ start pays once, each work unit survives save roundtrip, completed step cannot repeat (3.304563ms)
+✔ all four conservation stages require paid work, preserve quality, and mount a separate physical specimen (24.425534ms)
+✔ archiving raw work is refused and insufficient marks never creates a job (0.155318ms)
+✔ queue has 16 work stations and does not charge a seventeenth item (0.862279ms)
+✔ full workbench refuses delivery as a whole, preserving every item and the terminal operation (1.143764ms)
+✔ wear is deterministic at successful completion and worn tools remain recoverable free of charge (0.155419ms)
+✔ real campaign reducer keeps specimens and tool wear through content unlocks in one result (1.915208ms)
+✔ actual failed/abandoned campaign results retain wear and no raw specimens (0.920585ms)
+✔ a worn owned field tool can be sharpened with zero clan marks without blocking the campaign (0.724526ms)
+✔ manual preservation keeps its paid partial work across a much later real save normalization (0.964639ms)
+✔ old and future profiles receive safe defaults without input latches or grants (5.498682ms)
+✔ accessibility settings survive ordinary save export/import (3.606397ms)
+✔ malformed flags and duplicate/out-of-range gamepad buttons normalize safely (0.269767ms)
+✔ every controller rebind is a permutation retaining all twelve actions (1.541548ms)
+✔ hold latches use rising edges, release cleanly and reset while a physical button remains held (2.010459ms)
+✔ standard timing is unchanged, generous timing accepts later, unlimited timing still requires correct glyph (0.439276ms)
+✔ press confirmation is one explicit event, never an automatic stream (0.299911ms)
+✔ hold confirmation needs sustained input and never carries into next glyph (0.3603ms)
+✔ toggle confirmation can disarm and requires a fresh arm on every glyph (0.126176ms)
+✔ ready phase never advances a confirmation, even when armed (0.091574ms)
+✔ production controller polling uses remapped actions and held jump/aim (1.222399ms)
+✔ real fixed-step input keeps vertical axes physical while grip and aim can latch (13.711417ms)
+✔ pause and focus loss disarm production hold toggles and pending confirmations (5.828557ms)
+✔ production snapshot uses the selected timing scale and unlimited meter stays static (3.251505ms)
+✔ real cue meter distinguishes finite progress from an explicitly unlimited static band (1.418668ms)
+✔ real settings callback preserves freshly confirmed inventory and successive preference patches before React rerenders (50.160518ms)
+✔ flaying duration preview and real menu match the timed operation for sharp, worn and blunt tools (18.775138ms)
+✔ the native score formula has no direct accessibility modifier and still counts elapsed hunt time (29.45884ms)
+✔ native down+remapped interact opens a real corpse without dropping a carried body or starting its trophy (482.071484ms)
+✔ corpse pad navigation is edge-triggered while the real rite, clock and enemy keep advancing (16.689899ms)
+✔ corpse menu close cancels safely, requires controller release and preserves ordinary trophy interaction (9.435515ms)
+✔ corpse pad suppression keeps simultaneous keyboard and touch actions, including overlapping fresh edges (33.495781ms)
+✔ opening requires a real nearby corpse and focus loss still pauses before any corpse UI action (5.814316ms)
+✔ a resumed release keeps its real reacquisition delay: keyboardHeld (38.934524ms)
+✔ a resumed release keeps its real reacquisition delay: touchHeld (20.659722ms)
+✔ a resumed release keeps its real reacquisition delay: gamepadHeld (24.000779ms)
+✔ retry retains its distinct reset instead of inheriting the suspended release (9.727915ms)
+✔ legacy checkpoints without a release delay still restore a usable finite player (10.946137ms)
+✔ shared keyboard, touch and gamepad actions activate, pump and release the real pendulum (37.320479ms)
+✔ real checkpoint cloning restores the same swing without replaying an impulse and rejects phantom anchors (8.668125ms)
+✔ remote active supports cannot attract the real player through a wall or across the world (2.161711ms)
+✔ stamina exhaustion releases the swing and requires a real landing before reacquisition (3.095985ms)
+✔ complete authored canopy rests: jungle-vey, scout, keyboardHeld (111.750597ms)
+✔ complete authored canopy rests: jungle-vey, scout, touchHeld (113.83223ms)
+✔ complete authored canopy rests: jungle-vey, scout, gamepadHeld (114.365995ms)
+✔ complete authored canopy rests: jungle-vey, hunter, keyboardHeld (102.084193ms)
+✔ complete authored canopy rests: jungle-vey, hunter, touchHeld (102.25264ms)
+✔ complete authored canopy rests: jungle-vey, hunter, gamepadHeld (102.85741ms)
+✔ complete authored canopy rests: jungle-vey, berserker, keyboardHeld (107.447925ms)
+✔ complete authored canopy rests: jungle-vey, berserker, touchHeld (108.210417ms)
+✔ complete authored canopy rests: jungle-vey, berserker, gamepadHeld (157.132263ms)
+✔ complete authored canopy rests: ice-cryostalker, scout, keyboardHeld (120.840172ms)
+✔ complete authored canopy rests: ice-cryostalker, scout, touchHeld (110.767671ms)
+✔ complete authored canopy rests: ice-cryostalker, scout, gamepadHeld (102.076741ms)
+✔ complete authored canopy rests: ice-cryostalker, hunter, keyboardHeld (110.012188ms)
+✔ complete authored canopy rests: ice-cryostalker, hunter, touchHeld (108.435067ms)
+✔ complete authored canopy rests: ice-cryostalker, hunter, gamepadHeld (114.816589ms)
+✔ complete authored canopy rests: ice-cryostalker, berserker, keyboardHeld (119.66256ms)
+✔ complete authored canopy rests: ice-cryostalker, berserker, touchHeld (113.501553ms)
+✔ complete authored canopy rests: ice-cryostalker, berserker, gamepadHeld (114.739194ms)
+✔ complete authored canopy rests: volcano-bad-blood, scout, keyboardHeld (105.828639ms)
+✔ complete authored canopy rests: volcano-bad-blood, scout, touchHeld (102.444667ms)
+✔ complete authored canopy rests: volcano-bad-blood, scout, gamepadHeld (102.626103ms)
+✔ complete authored canopy rests: volcano-bad-blood, hunter, keyboardHeld (106.094176ms)
+✔ complete authored canopy rests: volcano-bad-blood, hunter, touchHeld (108.457201ms)
+✔ complete authored canopy rests: volcano-bad-blood, hunter, gamepadHeld (105.61443ms)
+✔ complete authored canopy rests: volcano-bad-blood, berserker, keyboardHeld (133.054784ms)
+✔ complete authored canopy rests: volcano-bad-blood, berserker, touchHeld (114.104178ms)
+✔ complete authored canopy rests: volcano-bad-blood, berserker, gamepadHeld (116.771201ms)
+✔ complete authored canopy rests: swamp-hydra, scout, keyboardHeld (111.500453ms)
+✔ complete authored canopy rests: swamp-hydra, scout, touchHeld (102.677901ms)
+✔ complete authored canopy rests: swamp-hydra, scout, gamepadHeld (102.525866ms)
+✔ complete authored canopy rests: swamp-hydra, hunter, keyboardHeld (111.295666ms)
+✔ complete authored canopy rests: swamp-hydra, hunter, touchHeld (110.776163ms)
+✔ complete authored canopy rests: swamp-hydra, hunter, gamepadHeld (112.301546ms)
+✔ complete authored canopy rests: swamp-hydra, berserker, keyboardHeld (119.991078ms)
+✔ complete authored canopy rests: swamp-hydra, berserker, touchHeld (123.992764ms)
+✔ complete authored canopy rests: swamp-hydra, berserker, gamepadHeld (121.304129ms)
+✔ complete authored canopy rests: desert-sandmaw, scout, keyboardHeld (106.31479ms)
+✔ complete authored canopy rests: desert-sandmaw, scout, touchHeld (101.689095ms)
+✔ complete authored canopy rests: desert-sandmaw, scout, gamepadHeld (97.711173ms)
+✔ complete authored canopy rests: desert-sandmaw, hunter, keyboardHeld (101.826247ms)
+✔ complete authored canopy rests: desert-sandmaw, hunter, touchHeld (103.897574ms)
+✔ complete authored canopy rests: desert-sandmaw, hunter, gamepadHeld (104.930614ms)
+✔ complete authored canopy rests: desert-sandmaw, berserker, keyboardHeld (108.633977ms)
+✔ complete authored canopy rests: desert-sandmaw, berserker, touchHeld (104.353746ms)
+✔ complete authored canopy rests: desert-sandmaw, berserker, gamepadHeld (108.485233ms)
+✔ complete authored canopy rests: ocean-leviathan, scout, keyboardHeld (99.389532ms)
+✔ complete authored canopy rests: ocean-leviathan, scout, touchHeld (103.172538ms)
+✔ complete authored canopy rests: ocean-leviathan, scout, gamepadHeld (98.862057ms)
+✔ complete authored canopy rests: ocean-leviathan, hunter, keyboardHeld (101.52246ms)
+✔ complete authored canopy rests: ocean-leviathan, hunter, touchHeld (101.510953ms)
+✔ complete authored canopy rests: ocean-leviathan, hunter, gamepadHeld (102.246876ms)
+✔ complete authored canopy rests: ocean-leviathan, berserker, keyboardHeld (108.47636ms)
+✔ complete authored canopy rests: ocean-leviathan, berserker, touchHeld (111.750456ms)
+✔ complete authored canopy rests: ocean-leviathan, berserker, gamepadHeld (110.902021ms)
+✔ complete authored canopy rests: fungal-hivemind, scout, keyboardHeld (103.680381ms)
+✔ complete authored canopy rests: fungal-hivemind, scout, touchHeld (98.612012ms)
+✔ complete authored canopy rests: fungal-hivemind, scout, gamepadHeld (100.29646ms)
+✔ complete authored canopy rests: fungal-hivemind, hunter, keyboardHeld (106.225627ms)
+✔ complete authored canopy rests: fungal-hivemind, hunter, touchHeld (109.179865ms)
+✔ complete authored canopy rests: fungal-hivemind, hunter, gamepadHeld (107.926891ms)
+✔ complete authored canopy rests: fungal-hivemind, berserker, keyboardHeld (115.309847ms)
+✔ complete authored canopy rests: fungal-hivemind, berserker, touchHeld (117.94836ms)
+✔ complete authored canopy rests: fungal-hivemind, berserker, gamepadHeld (114.789521ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, scout, keyboardHeld (106.514552ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, scout, touchHeld (99.536041ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, scout, gamepadHeld (100.33687ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, hunter, keyboardHeld (104.677249ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, hunter, touchHeld (104.347012ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, hunter, gamepadHeld (105.036246ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, berserker, keyboardHeld (112.540941ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, berserker, touchHeld (111.667405ms)
+✔ complete authored canopy rests: ruins-ancient-guardian, berserker, gamepadHeld (114.045436ms)
+✔ canopy and airborne controls do not inherit mud from a distant ground surface (11.987754ms)
+✔ a pumped native pendulum releases and catches the next authored vine without a boost (45.165441ms)
+✔ real unlocked Oseris long vine jungle-vertical-vine-heart starts, resumes and releases above 720 px (14.512338ms)
+✔ real unlocked Oseris long vine jungle-vertical-vine-east starts, resumes and releases above 720 px (9.448066ms)
+✔ native damage, flay, carry, attachment and falling preserve one real collision actor (37.355938ms)
+✔ native anatomy preview, finite harvest and mission extraction produce the same source and quality (46.127328ms)
+✔ native interrupted anatomy and a full depot never consume or invent specimen stock (21.194412ms)
+✔ scout: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock) (3.672385ms)
+✔ scout: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock) (2.953487ms)
+✔ hunter: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock) (2.582982ms)
+✔ hunter: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock) (2.710359ms)
+✔ berserker: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock) (2.677771ms)
+✔ berserker: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock) (2.706653ms)
+✔ native previews distinguish a full campaign depot from a full 64-part field registry (4.089789ms)
+✔ native pickup admission and preview re-read stock and depot changes after their options were created (4.655942ms)
+✔ the native final tick still refuses a depot filled after an admissible harvest started (15.402269ms)
+✔ live source teleport across a solid obstruction cannot complete a harvest (20.748366ms)
+✔ carrying into blocked space drops the same corpse without moving it through the wall (19.020244ms)
+✔ a clear final transport point cannot teleport its source across an intervening solid wall (21.426884ms)
+✔ an authored hook cannot attach an actual wide body through a wall outside its preview icon (19.64252ms)
+✔ native suspended corpse restore admits the real source and refuses the same ledger when that actor is removed (23.212723ms)
+✔ a native carried body remains the real menu target above a nearer corpse, and its drop callback works (31.734164ms)
+✔ selection is read only for a deeply frozen corpse registry and retains its array order (25.546939ms)
+✔ carried preference preserves fallback and validity: missing carried identity (0.258631ms)
+✔ carried preference preserves fallback and validity: erased carried body (0.123611ms)
+✔ carried preference preserves fallback and validity: supported carried body (0.116001ms)
+✔ carried preference preserves fallback and validity: inconsistent hanging anchor (0.148388ms)
+✔ carried preference preserves fallback and validity: unflayed carried body (0.231431ms)
+✔ carried preference preserves fallback and validity: overweight carried body (0.15624ms)
+✔ carried preference preserves fallback and validity: nonphysical carried mass (0.141108ms)
+✔ carried preference preserves fallback and validity: nonfinite carried mass (0.155609ms)
+✔ carried preference preserves fallback and validity: nonfinite carried position (0.153256ms)
+✔ carried preference preserves fallback and validity: legacy omitted mass (0.204601ms)
+✔ carried preference preserves fallback and validity: exact native reach (0.112856ms)
+✔ carried preference preserves fallback and validity: outside native reach (0.104063ms)
+✔ carried preference preserves fallback and validity: vertical outside native reach (0.09518ms)
+✔ carried preference preserves fallback and validity: no carried body (0.095631ms)
+✔ invalid actor never obtains remote carried access: NaN (0.085856ms)
+✔ invalid actor never obtains remote carried access: Infinity (0.044786ms)
+✔ invalid actor never obtains remote carried access: 1000000000 (0.036914ms)
+✔ unavailable menu remains unavailable even while carrying (0.056102ms)
+✔ every one of the 39 documented species has its exact compatible production parts and physical values (1.082173ms)
+✔ finite anatomy, actual source restore and single campaign delivery: hell-hound-stalker (12.29173ms)
+✔ finite anatomy, actual source restore and single campaign delivery: cinder-12--hell-hound-stalker (2.910394ms)
+✔ finite anatomy, actual source restore and single campaign delivery: razorback-grazer (3.265206ms)
+✔ finite anatomy, actual source restore and single campaign delivery: nivalis-k--razorback-grazer (1.983078ms)
+✔ finite anatomy, actual source restore and single campaign delivery: oseris-iv--vineback-grazer (2.087051ms)
+✔ finite anatomy, actual source restore and single campaign delivery: oseris-iv--mist-pouncer (1.500738ms)
+✔ finite anatomy, actual source restore and single campaign delivery: oseris-iv--mirror-chameleon (1.402034ms)
+✔ finite anatomy, actual source restore and single campaign delivery: naraka-delta--reed-cat (1.461281ms)
+✔ finite anatomy, actual source restore and single campaign delivery: nivalis-k--snow-prowler (1.398928ms)
+✔ finite anatomy, actual source restore and single campaign delivery: serekh-9--dust-jackal (1.204533ms)
+✔ finite anatomy, actual source restore and single campaign delivery: nivalis-k--glacier-ram (1.122943ms)
+✔ finite anatomy, actual source restore and single campaign delivery: cinder-12--basalt-ram (1.308466ms)
+✔ finite anatomy, actual source restore and single campaign delivery: serekh-9--salt-ram (1.218814ms)
+✔ finite anatomy, actual source restore and single campaign delivery: xeno-drone (1.010517ms)
+✔ finite anatomy, actual source restore and single campaign delivery: common--wandering-xeno-drone (0.759478ms)
+✔ finite anatomy, actual source restore and single campaign delivery: oseris-iv--jungle-xeno-scout (0.932352ms)
+✔ finite anatomy, actual source restore and single campaign delivery: nivalis-k--frost-xeno (0.888247ms)
+✔ finite anatomy, actual source restore and single campaign delivery: cinder-12--scorch-xeno (0.928547ms)
+✔ finite anatomy, actual source restore and single campaign delivery: acheron-sigma--temple-xeno (1.192205ms)
+✔ finite anatomy, actual source restore and single campaign delivery: pelagos-m--swimmer-xeno (0.788831ms)
+✔ finite anatomy, actual source restore and single campaign delivery: xeno-praetorian (0.962777ms)
+✔ finite anatomy, actual source restore and single campaign delivery: oseris-iv--needle-frog (0.91047ms)
+✔ finite anatomy, actual source restore and single campaign delivery: naraka-delta--lantern-toad (0.862079ms)
+✔ finite anatomy, actual source restore and single campaign delivery: pelagos-m--storm-eel (0.783573ms)
+✔ finite anatomy, actual source restore and single campaign delivery: naraka-delta--sludge-eel (0.974304ms)
+✔ finite anatomy, actual source restore and single campaign delivery: serekh-9--dune-strider (0.853236ms)
+✔ finite anatomy, actual source restore and single campaign delivery: mycora-v--spore-hound (0.843091ms)
+✔ finite anatomy, actual source restore and single campaign delivery: mycora-v--glow-moth (0.786698ms)
+✔ finite anatomy, actual source restore and single campaign delivery: bonecrest-ravager (1.206686ms)
+✔ finite anatomy, actual source restore and single campaign delivery: naraka-delta--iron-croc (1.122312ms)
+✔ finite anatomy, actual source restore and single campaign delivery: oseris-iv--thunder-macaque (1.337178ms)
+✔ finite anatomy, actual source restore and single campaign delivery: amber-mire-lurker (1.052459ms)
+✔ finite anatomy, actual source restore and single campaign delivery: naraka-delta--bog-stalker (1.020832ms)
+✔ finite anatomy, actual source restore and single campaign delivery: naraka-delta--fen-leaper (1.057967ms)
+✔ finite anatomy, actual source restore and single campaign delivery: serekh-9--quill-lizard (0.991209ms)
+✔ finite anatomy, actual source restore and single campaign delivery: cinder-12--smoke-wyvern (0.896709ms)
+✔ finite anatomy, actual source restore and single campaign delivery: pelagos-m--hunter-manta (1.047682ms)
+✔ finite anatomy, actual source restore and single campaign delivery: nivalis-k--frost-manta (0.93776ms)
+✔ finite anatomy, actual source restore and single campaign delivery: pelagos-m--razor-shark (1.100539ms)
+✔ all 33 documented V112 parameters agree with production constants or observed boundary behavior (2.332763ms)
+✔ checkpoint captures detached discovery and saves/restores it through the real checksum schema (5.548466ms)
+✔ vertical camera position is derived from the hunter and never serialized (3.09879ms)
+✔ legacy checkpoints reveal only their actual room and foreign ids never enter the map (3.521713ms)
+✔ retry preserves knowledge found after the checkpoint without revealing skipped rooms (1.295196ms)
+✔ a newly entered sector is discovered before the checkpoint on the same simulation frame (15.285828ms)
+✔ checksum-valid but malformed combat snapshots are rejected before restoration (8.519418ms)
+✔ pilot acquisitions survive retry and resume without stacking the permanent energy bonus (4.942954ms)
+✔ legacy hunter embedded in a new floor returns safely to insertion with objectives intact (1.2437ms)
+✔ real jump handler grants one aerial pulse only and requires neutral after action locks (9.562533ms)
+✔ ice checkpoints keep campaign discoveries but cannot forge jungle acquisitions (2.367103ms)
+✔ jump buffers and coyote timers never survive checkpoint roundtrip (2.229051ms)
+✔ a confirmed unique gesture has one completion cue; interruption and a restored ledger have none (0.216388ms)
+✔ work cues follow simulation strokes without replay on pause, repaint, rollback or a long frame burst (0.097694ms)
+✔ field and canopy cues respect the existing unready audio transport and optional authored sound fallback (0.440057ms)
+✔ original cues remain quiet, short, finite and distinct on the effects clock (0.263128ms)
+✔ field stock slows native movement for every armor and the HUD exposes the same actual load (64.713897ms)
+✔ native jumps preserve assistance and pay the explicit load penalty without consuming a boost (11.491773ms)
+✔ native climbing charges the weight effort and reduces ascent speed for all armors (36.367353ms)
+✔ pack noise changes footsteps and landings while hostile or weapon signals retain their meaning (1.687023ms)
+✔ carcass is dropped before jumping and never charges the jump as if still carried (1.809844ms)
+✔ work uses the confirmed operation duration, including worn-tool time, and a saved clock replays exactly (0.449692ms)
+✔ no work pose is invented for another action, an airborne/climbing actor, or an invalid operation clock (0.208917ms)
+✔ all four real work actions are distinct and optional art bounds cannot poison a valid clock (0.189599ms)
+✔ both original feet remain planted through the working pose at real scales and both facings (6.769072ms)
+✔ arm and leg lengths stay original while a far intent point is clamped, without moving the collision data (0.460137ms)
+✔ a world-space operation snapshot reconstructs the exact original-body work frame after reload (0.448139ms)
+✔ tool admission refuses distant small bodies and keeps real contact at both facings and three hunter scales (201.994099ms)
+✔ tool contact check follows an actually moved body and does not override physical appui rules (1.164093ms)
+✔ prepared-body parts come only from the species catalogue and its exact corpse harvest identities (0.470823ms)
+✔ drawn flexible grip is the physics grip at every valid pendulum angle and length (0.744756ms)
+✔ stale or invalid suspended state never draws a false moved support; rigid geometry is left to its own renderer (0.210791ms)
+✔ native anatomy, paused deposit, resume and retrieval retain exactly one consumed body part (66.900559ms)
+✔ the actual result only delivers specimens carried to extraction and never a distant world stash (37.027686ms)
+✔ paused capture/deserialize/restore keeps canonical proof and the exact ledge deposit (48.268429ms)
+✔ forged duplicate or foreign stash identity is refused before restoring a saved hunt (54.986971ms)
+✔ native pause pack rejects not in pause without losing a specimen (39.069524ms)
+✔ native pause pack rejects dead without losing a specimen (38.029895ms)
+✔ native pause pack rejects no footing without losing a specimen (35.677525ms)
+✔ native pause pack rejects climbing without losing a specimen (36.357836ms)
+✔ native pause pack rejects active rite without losing a specimen (35.440105ms)
+✔ native pickup cannot reach through a new solid wall or succeed when capacity was filled (38.896991ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / scout (994.76019ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / hunter (1209.160646ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: jungle-vey / berserker (1530.769902ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / scout (924.067856ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / hunter (1137.419362ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ice-cryostalker / berserker (1407.889079ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / scout (1336.10678ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / hunter (1626.704657ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: volcano-bad-blood / berserker (2063.843856ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / scout (1920.156943ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / hunter (2567.781307ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: swamp-hydra / berserker (3151.818853ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / scout (894.361372ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / hunter (1222.437824ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: desert-sandmaw / berserker (1462.241016ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / scout (1080.269378ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / hunter (1363.265367ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ocean-leviathan / berserker (2445.78127ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / scout (1014.858005ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / hunter (1320.31233ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: fungal-hivemind / berserker (1598.852887ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / scout (893.803903ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / hunter (1103.493894ms)
+✔ loaded ground fallback, native pause-pack deposit and recovered jump: ruins-ancient-guardian / berserker (1617.76004ms)
+✔ a genuine canopy kill, input rite and collection keep one source and one claim (67.609835ms)
+✔ an old floor anchor is refreshed from its real source before selection (4.375598ms)
+✔ native harvest interrupts without collection when player leaves the corpse (3.091999ms)
+✔ native harvest interrupts without collection when player loses footing (2.583451ms)
+✔ native harvest interrupts without collection when player catches a climbing support (2.883963ms)
+✔ native harvest interrupts without collection when a solid wall separates the source (2.612373ms)
+✔ native harvest interrupts without collection when source moves to another level (3.268529ms)
+✔ native harvest interrupts without collection when source is no longer defeated (3.322819ms)
+✔ native harvest interrupts without collection when source becomes inactive (3.526898ms)
+✔ native harvest interrupts without collection when claim no longer matches its source (4.992174ms)
+✔ real damage interrupts the active collection and preserves the uncollected source (2.891484ms)
+✔ the final production collection rechecks its target after the last domain gesture (2.762945ms)
+✔ a real Apex death in the air falls onto its actual ledge and remains collectible there (86.383067ms)
+✔ the actual corpse menu requires ownership and completes one native flay without granting a trophy (264.24881ms)
+✔ native flay interrupts after departure without a completed event (17.875217ms)
+✔ native flay interrupts after fall without a completed event (15.93256ms)
+✔ native flay interrupts after solid obstacle without a completed event (15.5124ms)
+✔ native flay interrupts after loss of tool without a completed event (15.542235ms)
+✔ native flay interrupts after source removed without a completed event (15.051403ms)
+✔ native flay interrupts after damage followed by healing without a completed event (15.227493ms)
+✔ a flayed native checkpoint passes structural preflight but final restore still requires actual ownership (229.461974ms)
+✔ real player melee cancels flaying before executing with its ordinary costs exactly once (18.986612ms)
+✔ real player weapon trigger cancels flaying before executing with its ordinary costs exactly once (16.976836ms)
+✔ real player held weapon charge cancels flaying before executing with its ordinary costs exactly once (15.898789ms)
+✔ real player heal cancels flaying before executing with its ordinary costs exactly once (17.585812ms)
+✔ real player gear cancels flaying before executing with its ordinary costs exactly once (16.677435ms)
+✔ real player cloak cancels flaying before executing with its ordinary costs exactly once (16.130531ms)
+✔ real player mask cancels flaying before executing with its ordinary costs exactly once (17.100818ms)
+✔ real player scan cancels flaying before executing with its ordinary costs exactly once (16.207604ms)
+✔ real player interact cancels flaying before executing with its ordinary costs exactly once (15.591702ms)
+✔ real player jump cancels flaying before executing with its ordinary costs exactly once (15.201385ms)
+✔ real player movement cancels flaying before executing with its ordinary costs exactly once (15.377324ms)
+✔ a quiet production player frame preserves flaying and its following simulation tick advances the gesture (14.630952ms)
+✔ an accepted flay reveals the hunter while analysis and marking preserve their earlier cloak rules (52.302004ms)
+✔ only actual defeated proof registers; repeated callback preserves work and does not duplicate prey (0.587567ms)
+✔ a rite is timed while threats remain live; pause freezes identity and damage cancels without completion (0.682237ms)
+✔ flaying requires the acquired tool; suspension requires completed work and a real higher mass-bearing support (0.632824ms)
+✔ dishonor needs an explicit choice and negative consequence, never a rank or trophy grant (0.219584ms)
+✔ actual witnesses add terror and awareness once, rather than an invisible passive damage bonus (0.337959ms)
+✔ corpse position remains usable until erased; leave preserves the exact ledger (0.248497ms)
+✔ the complete ledger round trips; absent legacy ledger invents no past corpses and a foreign owner cannot import it (0.840931ms)
+✔ preview and admission share live footing, climb and collision refusals for each physical action (11.769408ms)
+✔ a changed worksite cancels a partly executed physical gesture without extraction or paid use (6.100457ms)
+✔ preparation and extraction require free hands, while dropping remains possible at a blocked airborne worksite (1.683916ms)
+✔ tool contact gates preparation and extraction without reducing analysis or transport reach (5.536415ms)
+✔ tool preview and remaining operation time follow actual sharp, worn and blunt work duration (14.256059ms)
+✔ analysis and suspension timers never inherit the worn-tool multiplier or consume tool uses (2.890819ms)
+✔ every species part shares its catalogue work clock across preview, saved progress and actual completion (136.229764ms)
+✔ finite anatomical stock is tied to irreversible source receipts and survives serialization (4.70003ms)
+✔ the actual menu exposes physical refusals, tool cost, stock and a named progress control (3.351669ms)
+✖ aim, targeting and projectiles use the active weapon anchor (3.873739ms)
+✔ Canvas renders registered V3 atoms through rig-relative matrices (1.254782ms)
+✔ selected loadout and extracted trophy use registered atomic layers (1.690306ms)
+✔ runtime keeps seven dreads and hides launched hand ammunition (0.796866ms)
+✔ every bind bone rotates on the exact exported sprite pivot (0.331289ms)
+✔ neutral equipment inherits the body while extraction starts at bind (0.872989ms)
+✔ the bow aim channel raises both arms to a drawable firing grip (0.363016ms)
+✔ the canonical rig remains continuous through cyclic locomotion (0.309296ms)
+✔ facing mirrors every public anchor around the canonical root (0.164242ms)
+✔ the muzzle follows exact aim and barrel recoil (0.201407ms)
+✔ remote pod events each dispatch one optional authored sound without a duplicate synthesized voice (0.255918ms)
+✔ the pod fallback produces distinct arm, cancel and blast sounds on the existing effects clock (0.355224ms)
+✔ pod synthesis stays silent when the existing audio transport is not ready (0.137644ms)
+✔ V145 wristblades follow the BACK forearm axis, top of the wrist outward, in every pose (2.342539ms)
+✔ V145 wrist computer sits on the FRONT forearm and keeps a fixed lid hinge (0.788344ms)
+✔ preview, hunt canvas, PIT and Homeworld share the same arm assignment and wrap (1.465364ms)
+✔ V145 shoulder plate is mirrored onto the front deltoid for every morph (0.282858ms)
+✔ V145 greaves cover both shins under the knee (0.188709ms)
+✔ V145 side dreadlocks exist for every style and swing with the rear springs (0.674887ms)
+✔ a stopped ambience cannot start after a delayed autoplay unlock (0.247755ms)
+✔ the latest location wins even when unlock promises resolve out of order (13.943408ms)
+✔ duplicate pending ambience requests create a single persistent voice (0.232313ms)
+✔ returning to the active location cancels an earlier pending replacement (0.18972ms)
+✔ disposing cancels a pending ambience and audio stays safe without a browser (0.27065ms)
+✔ a canopy trophy stays on the actual corpse rather than the world floor (0.258432ms)
+✔ secondary provenance requires the same defeated active non-boss actor and claim (0.218783ms)
+✔ stable footing is required throughout a field rite, including after a fall or climb (0.088441ms)
+✔ a close corpse behind a solid wall cannot be harvested; a one-way ledge is not a wall (0.211562ms)
+✔ vertical separation and drift must still satisfy the reach at the final gesture (0.121479ms)
+✔ malformed body, target or reach never grants access (0.159997ms)
+ℹ tests 455
+ℹ suites 0
+ℹ pass 454
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 54225.40186
+
+✖ failing tests:
+
+test at tests/hunter-rig-origin.test.mjs:15:1
+✖ aim, targeting and projectiles use the active weapon anchor (3.873739ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /return solveHunterRig\(\{[\s\S]*?worldX:[\s\S]*?worldY:/. Input:
+  
+  '"use client";\n' +
+    '\n' +
+    'import { huntStructuralBarrierV94 } from "./systems/huntStructuralBarrierV94";\n' +
+    'import { loadGauntletRigPartV141 } from "./systems/gauntletMissionVisualV141";\n' +
+    'import { gauntletFrontArmMatrixV145, isGauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";\n' +
+    'import { createCorpseDiscoveryV112, stepCorpseDiscoveryV112, restoreCorpseDiscoveryV112,\n' +
+    '  corpseDiscoveryReactionV112, corpseZoneFearV112, animalCorpseResponseV112,\n' +
+    '  type CorpseDiscoveryStateV112, type DiscoveryActorV112 } from "./systems/corpseDiscoveryV112";\n' +
+    'import { drawDiscoverySignalV112 } from "./discoverySignalsV112";\n' +
+    '\n' +
+    'import {\n' +
+    '  useCallback,\n' +
+    '  useEffect,\n' +
+    '  useRef,\n' +
+    '  useState,\n' +
+    '  type CSSProperties,\n' +
+    '  type ReactNode,\n' +
+    '  type KeyboardEvent as ReactKeyboardEvent,\n' +
+    '  type PointerEvent as ReactPointerEvent,\n' +
+    '} from "react";\n' +
+    'import { createPortal } from "react-dom";\n' +
+    'import {\n' +
+    '  DIFFICULTY_BY_ID,\n' +
+    '  GEAR_BY_ID,\n' +
+    '  WEAPON_BY_ID,\n' +
+    '} from "./data";\n' +
+    'import { trophyHuntVisualForDefinitionId } from "./trophyVisualRegistry";\n' +
+    'import FieldPackV112 from "./FieldPackV112";\n' +
+    'import {drawFieldStashesV112} from "./fieldStashRenderingV112";\n' +
+    'import {carriedFieldSpecimensV112,moveFieldSpecimenV112,fieldStashCanTakeV112,stepFieldStashesV112,fieldStashGeometryValidV112} from "./systems/fieldStashV112";\n' +
+    'import { ownsFieldToolV111 } from "./systems/fieldToolsV111";\n' +
+    'import { applyAnatomyDamageV112, anatomyIntegrityV112 } from "./systems/anatomyHarvestV112";\n' +
+    'import { carcassSupportsForWorldV112, carcassSupportAccessibleV112, carcassFitsSocketV112, carcassGeometryV112, CARCASS_HANG_DROP_V112 } from "./systems/carcassSupportsV112";\n' +
+    'import { fieldLoadV112, harvestInventoryForV112, tryCarrySpecimenV112, HARVEST_DEPOT_LIMIT_V112, flayingToolWorkMultiplierV112, toolConditionAfterUsesV112 } from "./systems/harvestInventoryV112";\n' +
+    'import { trophyHarvestPoint, trophyHarvestSourceForDrop, trophyHarvestInReach,\n' +
+    '  SECONDARY_TROPHY_REACH, APEX_TROPHY_REACH } from "./systems/trophyHarvestV111";\n' +
+    'import { drawEnvironmentProp } from "./environmentPropDrawing";\n' +
+    'import { ExplorationMap } from "./ExplorationMap";\n' +
+    'import FirstHuntGuide from "./FirstHuntGuide";\n' +
+    'import HuntFieldGuideV112 from "./HuntFieldGuideV112";\n' +
+    'import HuntCanopyHudV112 from "./HuntCanopyHudV112";\n' +
+    'import HuntRitualMeterV112 from "./HuntRitualMeterV112";\n' +
+    'import accessStyles from "./HuntAccessibilityV112.module.css";\n' +
+    'import {normalizeHuntAccessibilityV112,DEFAULT_HUNT_GAMEPAD_V112,stepHoldTogglesV112,stepRitualAssistV112,freshRitualAssistV112,\n' +
+    '  type HuntAccessibilityV112,type HoldToggleStateV112,type RitualAssistStateV112,type RitualAssistEventV112} from "./systems/huntAccessibilityV112";\n' +
+    'import { missionOpeningV78, missionActionTextV78 } from "./missionOpeningV78";\n' +
+    'import presentationStyles from "./HuntCanvas.module.css";\n' +
+    'import { createHuntAnnouncementQueueV78, enqueueHuntAnnouncementV78, advanceHuntAnnouncementQueueV78,\n' +
+    '  type HuntAnnouncementQueueV78, type HuntAnnouncementPriorityV78 } from "./huntAnnouncementQueueV78";\n' +
+    "import HuntRitesMenuV77 from './HuntRitesMenuV77';\n" +
+    'import {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,riteOperationSecondsV77,\n' +
+    "  type RitesOfHuntV77,type HuntRiteActionV77} from './systems/ritesOfHuntV77';\n" +
+    'import {huntRitesRunIdV77,riteRuntimeContextV77,restoreRitesRuntimeV77,followRiteCorpseAnchorsV77,\n' +
+    "  riteWitnessCanSeeV77,riteLineOfSightV77,reactToRiteWitnessV77,huntRiteMenuSnapshotV77,type HuntRiteMenuSnapshotV77} from './systems/huntRitesRuntimeV77';\n" +
+    'import { createFirstHuntLearning, observeFirstHunt, firstHuntHint, type FirstHuntObservation, type FirstHuntHint } from "./systems/firstHuntGuide";\n' +
+    'import { drawPilotBackdrop, drawPilotPlatform, drawPilotDevices } from "./pilotRendering";\n' +
+    'import { PilotExplorationMap } from "./PilotExplorationMap";\n' +
+    'import { IceExplorationMap } from "./IceExplorationMap";\n' +
+    'import { ExpansionExplorationMap } from "./ExpansionExplorationMap";\n' +
+    'import { drawExpansionRegionDevices, EXPANSION_DEVICE_TEXTURE_PATHS, type ExpansionDeviceTextures } from "./expansionExplorationRendering";\n' +
+    'import { drawIceRegionBackdrop, drawIceRegionPlatform, drawIceRegionDevices, ICE_REGION_TEXTURE_PATHS, type IceRegionTextures } from "./iceExplorationRendering";\n' +
+    'import { ICE_MISSION_ID } from "./systems/iceExplorationRegion";\n' +
+    'import { isExpansionExplorationMission } from "./systems/expansionExplorationRegions";\n' +
+    'import { applyExplorationWorld, discoverExplorationRooms, interactWithExplorationRegion, explorationRegionHint } from "./systems/explorationRegions";\n' +
+    'import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";\n' +
+    'import { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID, targetOserisCameraY } from "./systems/metroidvaniaPilot";\n' +
+    'import { resolvePlatformMotion, overlapsSolidPlatform, type PlatformMotionResult } from "./systems/platformCollision";\n' +
+    'import { attachCanopySwingV112, canopySupportReachableV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";\n' +
+    'import { canopyNavigationV112, type CanopyNavigationV112 } from "./systems/canopyNavigationV112";\n' +
+    'import { describeHuntFieldWorkV112, solveHuntFieldWorkRigV112, drawHuntFieldWorkV112,\n' +
+    '  describePreparedCorpseV112, drawPreparedCorpseV112, huntFieldWorkReachableV112 } from "./systems/huntFieldPresentationV112";\n' +
+    'import { drawFlexibleCanopySupportV112, drawCanopyRestSurfaceV112, drawCanopyNavigationMarkersV112 } from "./systems/canopySupportRendererV112";\n' +
+    'import { freshJumpAssistState, stepJumpAssist, predictLandingWithinBuffer, type JumpAssistState, type JumpAssistResult } from "./systems/jumpAssist";\n' +
+    'import { discoverWorldScreen, normalizeVisitedScreenIds } from "./systems/explorationMap";\n' +
+    'import {\n' +
+    '  HUNTER_RIG_CANVAS,\n' +
+    '  relativeBoneMatrix,\n' +
+    '  solveHunterRig,\n' +
+    '  type AffineMatrix,\n' +
+    '  type HunterRigBoneId,\n' +
+    '  type HunterRigFrame,\n' +
+    '  type HunterRigInput,\n' +
+    '  type HunterRigPose,\n' +
+    '  type RigPoint,\n' +
+    '} from "./hunterRig";\n' +
+    'import {\n' +
+    '  HUNTER_ARMOR_MODULES,\n' +
+    '  HUNTER_BODY_PART_BONES,\n' +
+    '  HUNTER_BODY_PART_IDS,\n' +
+    '  HUNTER_EQUIPMENT_V3,\n' +
+    '  HUNTER_GAUNTLET_HINGE,\n' +
+    '  hunterArmorPath,\n' +
+    '  hunterBodyPartHasNet,\n' +
+    '  hunterBodyFullPath,\n' +
+    '  hunterBodyPartPath,\n' +
+    '  hunterBodyPartPlacement,\n' +
+    '  hunterDreadPath,\n' +
+    '  hunterMaskRigPath,\n' +
+    '  hunterMaskRigPlacement,\n' +
+    '  hunterNetPartPath,\n' +
+    '  hunterWristbladeRegistrationMatrix,\n' +
+    '  hunterShoulderPlateMatrixV145,\n' +
+    '  hunterGreaveMatrixV145,\n' +
+    '  HUNTER_ARMOR_KEEP_CLIP_V145,\n' +
+    '  type HunterBodyPartId,\n' +
+    '} from "./hunterVisuals";\n' +
+    'import { hunterBodyPartColorV62, hunterBodyPartClipV62, type HunterLayerPlacement } from "./hunterHeadArtV62";\n' +
+    'import { HUNTER_DREAD_SOURCE_ROOT as HUNTER_DREAD_ROOT, solveHunterDreadsV63, solveHunterSideDreadsV145, stepHunterDreadsV63 } from "./hunterDreadsV63";\n' +
+    'import { chromaticCanvasSourceV113 } from "./hunterChromaticCanvasV113";\n' +
+    'import { decalCanvasSourceV133 } from "./decalCanvasV133.ts";\n' +
+    'import type { YautjaDecalZoneV133 } from "./yautjaDecalsV133.ts";\n' +
+    'import { maskChromaticsForAppearanceV131, type ChromaticChannelV113 } from "./hunterChromaticsV113";\n' +
+    'import {\n' +
+    '  ageTracks,\n' +
+    '  GUARDIAN_ADAPTATION,\n' +
+    '  advanceScentField,\n' +
+    '  calculateLineOfSightOcclusion,\n' +
+    '  createAiBrain,\n' +
+    '  createBossMechanicState,\n' +
+    '  createHuntTrap,\n' +
+    '  createScentNode,\n' +
+    '  createTrackMark,\n' +
+    '  perceivedNoise,\n' +
+    '  receiveAiAlert,\n' +
+    '  resolveHunterWeaponAttack,\n' +
+    '  resolveHunterSplashDamage,\n' +
+    '  resolveAiCoordinationFaction,\n' +
+    '  resolveAiMovementLeash,\n' +
+    '  sampleScentAt,\n' +
+    '  sampleTracksAt,\n' +
+    '  sampleWind,\n' +
+    '  stepAiBrain,\n' +
+    '  stepBossMechanics,\n' +
+    '  stepHuntTrap,\n' +
+    '  stepMudState,\n' +
+    '  stepRegularAttackTelegraph,\n' +
+    '  stepSmartDiscFlight,\n' +
+    '  sweptProjectileImpactTime,\n' +
+    '  hunterWeaponChargeRatio,\n' +
+    '  type AiBrain,\n' +
+    '  type AiCoordinationGroup,\n' +
+    '  type BossEffectKind,\n' +
+    '  type BossMechanicState,\n' +
+    '  type HunterProjectileRecovery,\n' +
+    '  type HuntTrap,\n' +
+    '  type MudState,\n' +
+    '  type NoiseEvent,\n' +
+    '  type ScentNode,\n' +
+    '  type TrackMark,\n' +
+    '} from "./systems/huntSystems";\n' +
+    'import {\n' +
+    '  createArsenalRuntime,\n' +
+    '  effectiveArmorStats,\n' +
+    '  effectiveWeaponStats,\n' +
+    '  removeGearEffect,\n' +
+    '  tickArsenalRuntime,\n' +
+    '  useGearSlot as activateArsenalGearSlot,\n' +
+    '  type ArsenalRuntimeState,\n' +
+    '  type GearEffectEvent,\n' +
+    '} from "./systems/arsenal";\n' +
+    'import {\n' +
+    '  HUNT_MELEE_DODGE_INVULNERABILITY_SECONDS,\n' +
+    '  HUNT_MELEE_EXECUTION_HEALTH_RATIO,\n' +
+    '  canHuntMeleeHitTarget,\n' +
+    '  canHuntMeleeParry,\n' +
+    '  cancelHuntMeleeAttack,\n' +
+    '  consumeHuntMeleeParry,\n' +
+    '  createHuntMeleeState,\n' +
+    '  currentHuntMeleeAttack,\n' +
+    '  huntMeleeDodgeVelocity,\n' +
+    '  huntMeleeHitboxOverlaps,\n' +
+    '  isHuntMeleeDodgeInvulnerable,\n' +
+    '  huntMeleeMovementMultiplier,\n' +
+    '  huntMeleePhaseLabel,\n' +
+    '  huntMeleeStaminaMultiplier,\n' +
+    '  normalizeHuntMeleeState,\n' +
+    '  registerHuntMeleeTargetHit,\n' +
+    '  requestHuntMeleeAttack,\n' +
+    '  requestHuntMeleeDodge,\n' +
+    '  requestHuntMeleeParry,\n' +
+    '  requestHuntMeleeTechniqueAttack,\n' +
+    '  resolveHuntMeleeHitbox,\n' +
+    '  stepHuntMeleeCombat,\n' +
+    '  stepHuntMeleeVerticalReaction,\n' +
+    '  type HuntMeleeActionKind,\n' +
+    '  type HuntMeleeState,\n' +
+    '} from "./systems/huntMeleeCombat";\n' +
+    'import {\n' +
+    '  createDropShipArrival,\n' +
+    '  createTrophyRitual,\n' +
+    '  createTrophyVictory,\n' +
+    '  dropShipVisual,\n' +
+    '  isTrophyExtractionProtected,\n' +
+    '  stepDropShip,\n' +
+    '  stepTrophyRitual,\n' +
+    '  stepTrophyVictory,\n' +
+    '  trophyRitualProgress,\n' +
+    '  trophyRitualMeterV112,\n' +
+    '  trophyRitualReadyRemaining,\n' +
+    '  trophyVictoryPose,\n' +
+    '  TROPHY_RITUAL_TIMING,\n' +
+    '  DROP_SHIP_TIMING,\n' +
+    '  type DropShipState,\n' +
+    '  type TrophyRitualAction,\n' +
+    '  type TrophyRitualState,\n' +
+    '  type TrophyVictoryState,\n' +
+    '} from "./systems/trophyRitual";\n' +
+    'import {\n' +
+    '  hazardPhaseAt,\n' +
+    '  isHazardActive,\n' +
+    '  resolveNearestSafeGroundX,\n' +
+    '  safeObjectiveGroundPositions,\n' +
+    '  safeCheckpointPositions,\n' +
+    '  worldBlueprintFor,\n' +
+    '  type TrackSurface,\n' +
+    '  type WorldBlueprint,\n' +
+    '  type WorldClimbable,\n' +
+    '  type WorldPlatform,\n' +
+    '} from "./systems/worldBlueprints";\n' +
+    'import {\n' +
+    '  backgroundPathForBiome,\n' +
+    '  getWorldScreenAtX,\n' +
+    '  worldScreensFor,\n' +
+    '  type WorldScreenSector,\n' +
+    '} from "./worldScreens";\n' +
+    'import {\n' +
+    '  getV6Visual,\n' +
+    '  resolveV6TrophyVisualId,\n' +
+    '  V6_MISSION_VISUALS,\n' +
+    '  type V6VisualId,\n' +
+    '} from "./v6Visuals";\n' +
+    'import {\n' +
+    '  ENEMY_V7_BY_ID,\n' +
+    '  enemyV7ForId,\n' +
+    '  enemyV7ForWave,\n' +
+    '  enemyV7IdsForMission,\n'... 460458 more characters
+  
+      at TestContext.<anonymous> (file:///workspace/yautja-reprise-20261109/tests/hunter-rig-origin.test.mjs:19:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '"use client";\n\nimport { huntStructuralBarrierV94 } from "./systems/huntStructuralBarrierV94";\nimport { loadGauntletRigPartV141 } from "./systems/gauntletMissionVisualV141";\nimport { gauntletFrontArmMatrixV145, isGauntletRigSpriteV139 } from "./systems/gauntletRigSpritesV139";\nimport { createCorpseDiscoveryV112, stepCorpseDiscoveryV112, restoreCorpseDiscoveryV112,\n  corpseDiscoveryReactionV112, corpseZoneFearV112, animalCorpseResponseV112,\n  type CorpseDiscoveryStateV112, type DiscoveryActorV112 } from "./systems/corpseDiscoveryV112";\nimport { drawDiscoverySignalV112 } from "./discoverySignalsV112";\n\n...',
+    expected: /return solveHunterRig\(\{[\s\S]*?worldX:[\s\S]*?worldY:/,
+    operator: 'match',
+    diff: 'simple'
+  }

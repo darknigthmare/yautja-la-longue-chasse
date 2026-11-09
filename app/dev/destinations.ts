@@ -40,6 +40,7 @@ interface DevDestinationDetails {
 
 export type DevDestination = DevDestinationDetails & (
   | { readonly kind: 'ship' }
+  | { readonly kind: 'warp' }
   | { readonly kind: 'cradle'; readonly checkpointId: CradleCheckpointId }
   | { readonly kind: 'clan'; readonly roomId: ClanShipRoomId; readonly status: 'free-flight' | 'aboard' }
   | { readonly kind: 'homeworld'; readonly levelId: HomeworldLevelV77; readonly point: { readonly x: number; readonly y: number } }
@@ -67,6 +68,8 @@ function cityDoorway(id: string, label: string, description: string, buildingId:
 /** Only scenes present on the current main branch are offered. Planned art or
  * unmerged destinations never become a launch button by appearing in a sheet. */
 export const DEV_DESTINATIONS: readonly DevDestination[] = [
+  { id: 'warp-module', label: 'WARP · Baie expérimentale', category: 'hubs', kind: 'warp',
+    description: 'Parcourir les salles du module pilote, manipuler le sas et approcher les consoles dans une session temporaire.' },
   { id: 'cradle-entry', label: 'Xeno Prime · Lisière du Berceau', category: 'missions', kind: 'cradle', checkpointId: '01',
     description: 'Parcourir les douze tableaux du Berceau depuis XP-Z11, avec les vrais contrôles et interactions.' },
   { id: 'cradle-descent', label: 'Xeno Prime · Faille', category: 'missions', kind: 'cradle', checkpointId: '07',

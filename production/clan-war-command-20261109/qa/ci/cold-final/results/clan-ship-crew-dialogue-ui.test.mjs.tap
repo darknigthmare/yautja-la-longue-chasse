@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: SSR: each of six real crew members has all five earned contexts, with one physical speaker
+ok 1 - SSR: each of six real crew members has all five earned contexts, with one physical speaker
+  ---
+  duration_ms: 388.859759
+  type: 'test'
+  ...
+# Subtest: SSR: remote, unfocused and suspended dossiers never attribute contextual B05 speech and retain routes
+ok 2 - SSR: remote, unfocused and suspended dossiers never attribute contextual B05 speech and retain routes
+  ---
+  duration_ms: 112.970789
+  type: 'test'
+  ...
+# Subtest: SSR: a modern recruit must be ready at the real assigned Clan room before speaking
+ok 3 - SSR: a modern recruit must be ready at the real assigned Clan room before speaking
+  ---
+  duration_ms: 29.134004
+  type: 'test'
+  ...
+# Subtest: SSR: gathered C-37 witnesses keep their own audience and do not speak from legacy dossiers
+ok 4 - SSR: gathered C-37 witnesses keep their own audience and do not speak from legacy dossiers
+  ---
+  duration_ms: 41.365158
+  type: 'test'
+  ...
+# Subtest: SSR: recruitment and circle confirmation keep their explicit actions separate from listening
+ok 5 - SSR: recruitment and circle confirmation keep their explicit actions separate from listening
+  ---
+  duration_ms: 46.830539
+  type: 'test'
+  ...
+# Subtest: SSR: invalid/future/foreign presence records expose no spoken text and never normalize the save
+ok 6 - SSR: invalid/future/foreign presence records expose no spoken text and never normalize the save
+  ---
+  duration_ms: 86.625666
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 715.265015

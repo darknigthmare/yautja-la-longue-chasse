@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "analyzedAt": "2026-11-09T06:07:11.379529+00:00",
+  "sourceCriterion": {
+    "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+    "sheet": "Tests_Parcours",
+    "row": 19,
+    "id": "T15",
+    "priority": "P1",
+    "trigger": "60min, alternance 77 mati\u00e8res",
+    "expected": "Pas de fuite m\u00e9moire GPU"
+  },
+  "status": "PARTIEL",
+  "gpuLeakCriterionQualifiedWithinObservedBackend": false,
+  "checks": {
+    "nativeInputRunPassed": true,
+    "realDurationAtLeast3600Seconds": false,
+    "visibleDurationAtLeast3600Seconds": false,
+    "all77MaterialsActuallySelected": false,
+    "sourceIdentityUnchanged": true,
+    "compiledJsCssIdentityUnchanged": false,
+    "materialAssetsUnchanged": false,
+    "gpuProcessStableInSamples": true,
+    "atLeast3DirectGpuDumpsAfterMaterialWarmup": false,
+    "endingGpuAllocatorWithinPredeclared16MiBGrowth": false,
+    "medianGpuAllocatorWithinPredeclared16MiBGrowth": false,
+    "endingGpuProcessRssWithinPredeclared64MiBGrowth": false,
+    "zeroRuntimeAndRequestErrors": true
+  },
+  "elapsedSeconds": 31.373682507999998,
+  "visibleSeconds": 31.3775,
+  "materialSelections": 14,
+  "distinctMaterials": 14,
+  "minimumSelectionsPerMaterial": 1,
+  "completedFullCycles": 0,
+  "gpuBackend": [
+    {
+      "vendorId": 65535,
+      "deviceId": 65535,
+      "vendorString": "Google Inc. (Google)",
+      "deviceString": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver-5.0.0)",
+      "driverVendor": "SwANGLE",
+      "driverVersion": "5.0.0"
+    }
+  ],
+  "softwareBackend": true,
+  "physicalGpuOrVramQualified": false,
+  "gpuCounterMeaning": "Memory-infra GPU-process root allocation size; gpu/shared_images is a child, not a second quantity to sum. Scalar strings parsed in hexadecimal. These are allocations of the observed backend, not a VRAM estimate.",
+  "gpuProcessIds": [
+    121858
+  ],
+  "gpuDumpCount": 2,
+  "postWarmupGpuDumpCount": 0,
+  "warmupBaseline": null,
+  "lastGpuCounter": {
+    "elapsedSeconds": 31.68869004299927,
+    "traceTimestampUs": 85550354935,
+    "traceEventId": "0x1",
+    "processId": 121858,
+    "levelOfDetail": "detailed",
+    "nearestRequest": "end",
+    "nearestRequestGuid": "0x3",
+    "deltaFromNearestRequestSeconds": 0.3108459999992661,
+    "gpuAllocatorBytes": 63078400,
+    "sharedImagesBytes": 63078400,
+    "glTexturesBytes": null
+  },
+  "gpuAllocatorGrowthBytes": null,
+  "gpuAllocatorMedianGrowthBytes": null,
+  "gpuAllocatorTrendBytesPerMinute": null,
+  "gpuProcessRssGrowthBytes": null,
+  "gpuCounters": [
+    {
+      "elapsedSeconds": 1.4395110429992677,
+      "traceTimestampUs": 85520105756,
+      "traceEventId": "0x0",
+      "processId": 121858,
+      "levelOfDetail": "detailed",
+      "nearestRequest": "start",
+      "nearestRequestGuid": "0x2",
+      "deltaFromNearestRequestSeconds": 0.6933465719992676,
+      "gpuAllocatorBytes": 68272128,
+      "sharedImagesBytes": 68272128,
+      "glTexturesBytes": null
+    },
+    {
+      "elapsedSeconds": 31.68869004299927,
+      "traceTimestampUs": 85550354935,
+      "traceEventId": "0x1",
+      "processId": 121858,
+      "levelOfDetail": "detailed",
+      "nearestRequest": "end",
+      "nearestRequestGuid": "0x3",
+      "deltaFromNearestRequestSeconds": 0.3108459999992661,
+      "gpuAllocatorBytes": 63078400,
+      "sharedImagesBytes": 63078400,
+      "glTexturesBytes": null
+    }
+  ],
+  "metrics": [
+    {
+      "elapsedSeconds": 0.746164471,
+      "label": "start",
+      "gpuProcessRssBytes": 115630080,
+      "jsHeapUsedBytes": 30898024,
+      "domNodes": 6429,
+      "meanWindowFps": null,
+      "windowP95FrameMsBucketLowerBound": null,
+      "longTaskCount": 0,
+      "longTaskMs": 0
+    },
+    {
+      "elapsedSeconds": 6.963328671999998,
+      "label": "minute-0",
+      "gpuProcessRssBytes": 123580416,
+      "jsHeapUsedBytes": 38213140,
+      "domNodes": 8277,
+      "meanWindowFps": 12.745238436202206,
+      "windowP95FrameMsBucketLowerBound": 250,
+      "longTaskCount": 12,
+      "longTaskMs": 4857
+    },
+    {
+      "elapsedSeconds": 12.586625009999999,
+      "label": "minute-0",
+      "gpuProcessRssBytes": 113680384,
+      "jsHeapUsedBytes": 36224416,
+      "domNodes": 11288,
+      "meanWindowFps": 4.793012852375203,
+      "windowP95FrameMsBucketLowerBound": 250,
+      "longTaskCount": 24,
+      "longTaskMs": 9790
+    },
+    {
+      "elapsedSeconds": 20.401741715999997,
+      "label": "minute-0",
+      "gpuProcessRssBytes": 122351616,
+      "jsHeapUsedBytes": 31379204,
+      "domNodes": 15743,
+      "meanWindowFps": 6.268950782339471,
+      "windowP95FrameMsBucketLowerBound": 250,
+      "longTaskCount": 36,
+      "longTaskMs": 16499
+    },
+    {
+      "elapsedSeconds": 26.158717797999998,
+      "label": "minute-0",
+      "gpuProcessRssBytes": 126918656,
+      "jsHeapUsedBytes": 32908304,
+      "domNodes": 21692,
+      "meanWindowFps": 9.73946919892866,
+      "windowP95FrameMsBucketLowerBound": 250,
+      "longTaskCount": 46,
+      "longTaskMs": 20995
+    },
+    {
+      "elapsedSeconds": 31.369879514,
+      "label": "minute-0",
+      "gpuProcessRssBytes": 126078976,
+      "jsHeapUsedBytes": 28413612,
+      "domNodes": 8264,
+      "meanWindowFps": 8.626639061421669,
+      "windowP95FrameMsBucketLowerBound": 250,
+      "longTaskCount": 57,
+      "longTaskMs": 25131
+    },
+    {
+      "elapsedSeconds": 31.377844043000003,
+      "label": "end",
+      "gpuProcessRssBytes": 126087168,
+      "jsHeapUsedBytes": 28459044,
+      "domNodes": 8264,
+      "meanWindowFps": null,
+      "windowP95FrameMsBucketLowerBound": null,
+      "longTaskCount": 57,
+      "longTaskMs": 25131
+    }
+  ],
+  "predeclaredPlan": {
+    "path": "production/p0p1-20261109/qa/phg-endurance/analysis-plan.json",
+    "bytes": 1504,
+    "sha256": "7d0cebd09ada4001fcf260223fffdec6aaefce1404c492a10cd7efa5c37bd13d"
+  },
+  "rawReport": {
+    "path": "production/p0p1-20261109/qa/phg-endurance/probe-2/report.browser-run.json",
+    "bytes": 549439,
+    "sha256": "064b413ef2e909d899b2f07fb3e46cbd52f5e954c8ab774a2cdb2ca028fdafc6"
+  },
+  "conclusion": "Some required evidence or bound is not established. See false checks; this does not certify the complete T15 criterion.",
+  "limits": [
+    "Headless managed-cloud hardware/backend only; no claim about other GPUs, VRAM unavailable to CDP, physical input devices, artistic UV fidelity or a full campaign.",
+    "The observer uses its own bounded RAF/long-task counters and memory samples. It does not change game time, force garbage collection, or patch game functions.",
+    "Shared cloud CPU load is not experimentally isolated from other agents. Frame timings are measurements of this run, not a hardware FPS guarantee."
+  ]
+}

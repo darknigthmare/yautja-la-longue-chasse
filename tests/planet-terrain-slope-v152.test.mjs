@@ -82,7 +82,7 @@ test("existing V115 war graph is preserved and every official route is classifie
   const dossier=api.samplePlanetTerrainRoutesV152(world,raster,slope);
   assert.equal(dossier.version,152);assert.equal(dossier.worldCode,world.id);
   assert.equal(dossier.routes.length,world.procedural.routes.length);
-  assert.equal(dossier.routes.reduce((n,r)=>n+1,0),
+  assert.equal(dossier.routes.reduce(n=>n+1,0),
     Object.values(dossier.classCounts).reduce((n,v)=>n+v,0));
   assert(dossier.routes.every(route=>route.lengthKm>=0&&route.samples>0&&
     route.landSamples+route.nonLandSamples===route.samples&&

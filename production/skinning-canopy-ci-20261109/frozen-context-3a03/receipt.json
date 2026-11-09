@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+  "startedAt": "2026-11-09T09:49:27.256635+00:00",
+  "endedAt": "2026-11-09T09:49:32.925806+00:00",
+  "temporaryCheckout": "/tmp/skinning-frozen-context-3a03-20261109",
+  "sharedObjectsFrom": "/workspace/yautja-reprise-20261109",
+  "sparsePaths": [
+    "docs/campagne/AVENANT_SKINNING_CANOPEE_20261109.md",
+    "docs/campagne/README.md",
+    "docs/hunt-mechanics-v112.json",
+    "docs/hunt-mechanics-v112.md",
+    "docs/qa/current-integration-20261103/README.md",
+    "production/skinning-canopy-20261109",
+    "production/skinning-canopy-20261109/qa/build-final-initial/receipt.json",
+    "production/skinning-canopy-20261109/qa/canopy-hud-preflight/report.json",
+    "production/skinning-canopy-20261109/qa/canopy-rear-hand-model/receipt.json",
+    "production/skinning-canopy-20261109/qa/document-first-export/receipt.json",
+    "production/skinning-canopy-20261109/qa/document-inputs-final/receipt.json",
+    "production/skinning-canopy-20261109/qa/document-inputs/receipt.json",
+    "production/skinning-canopy-20261109/qa/field-guide-compact/report.json",
+    "production/skinning-canopy-20261109/qa/field-visuals-model/receipt-final.json",
+    "production/skinning-canopy-20261109/qa/final-local-c23000/build-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-c23000/lint-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-c23000/native-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-ce82e2b/build-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-ce82e2b/lint-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-ce82e2b/native-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-cfa730/build-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-cfa730/lint-command.json",
+    "production/skinning-canopy-20261109/qa/final-local-cfa730/native-command.json",
+    "production/skinning-canopy-20261109/qa/ground-pilots/attempt-02/pilot-receipt.json",
+    "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/build-command.json",
+    "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/lint-command.json",
+    "production/skinning-canopy-20261109/qa/local-9c603846-before-target-fix/native-command.json",
+    "production/skinning-canopy-20261109/qa/native-09-final/report.json",
+    "production/skinning-canopy-20261109/qa/native-10-final/report.json",
+    "production/skinning-canopy-20261109/qa/rites-compact-component/receipt.json",
+    "production/skinning-canopy-20261109/qa/skinning-model-frozen/skinning-worksite-frozen-evidence-20261109.json",
+    "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-evidence-20261109.json",
+    "production/skinning-canopy-20261109/qa/skinning-model-initial/skinning-worksite-evidence-explicit-isolation-20261109.json",
+    "production/skinning-canopy-20261109/qa/source-gates-cfa730/execution.json"
+  ],
+  "setupCommands": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--shared",
+        "--no-checkout",
+        "/workspace/yautja-reprise-20261109",
+        "/tmp/skinning-frozen-context-3a03-20261109"
+      ],
+      "cwd": "/workspace/yautja-reprise-20261109",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "sparse-checkout",
+        "init",
+        "--no-cone"
+      ],
+      "cwd": "/tmp/skinning-frozen-context-3a03-20261109",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "sparse-checkout",
+        "set",
+        "--no-cone",
+        "--stdin"
+      ],
+      "cwd": "/tmp/skinning-frozen-context-3a03-20261109",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "checkout",
+        "--detach",
+        "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3"
+      ],
+      "cwd": "/tmp/skinning-frozen-context-3a03-20261109",
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/tmp/skinning-frozen-context-3a03-20261109",
+      "exitCode": 0
+    }
+  ],
+  "command": [
+    "python3",
+    "production/skinning-canopy-20261109/verify-followup.py"
+  ],
+  "cwd": "/tmp/skinning-frozen-context-3a03-20261109",
+  "exitCode": 0,
+  "log": "verify.log",
+  "bytes": 276,
+  "sha256": "1c92eff6516d38a9c9960d0670e98733a7f80895f6f6d955d49840dd1a53b5a9",
+  "mainCheckoutMutated": false,
+  "limits": [
+    "Historical packet verification executed on exact3a03, not validation of newer runtime or repinned asset index.",
+    "Temporary checkout uses shared local Git objects; no network fetch or source changes.",
+    "Native Excel was not executed."
+  ]
+}

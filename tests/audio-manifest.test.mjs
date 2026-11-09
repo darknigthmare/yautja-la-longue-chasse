@@ -12,7 +12,12 @@ async function fixture(fn) {
 }
 test("inventory covers every declared effect, biome and music context without requiring audio", async () => {
   const expected = await expectedAudioSlots();
-  assert.equal(expected.filter(slot => slot.category === "sfx").length, 21);
+  assert.deepEqual(expected.filter(slot => slot.category === "sfx").map(slot => slot.id).sort(), [
+    "ui", "select", "jump", "footstep", "slash", "plasma", "scan", "cloak-on", "cloak-off",
+    "pod-arm", "pod-cancel", "pod-detonate", "mask-on", "mask-off", "weapon-switch", "medicomp",
+    "netgun", "snare", "enemy-alert", "objective", "hit", "trophy", "field-work", "field-secure",
+    "canopy-grab", "canopy-release", "victory", "defeat",
+  ].sort(), "the declared optional slots retain every native effect, including pod and field/canopy events");
   assert.equal(expected.filter(slot => slot.category === "ambience").length, 9);
   assert.equal(expected.filter(slot => slot.category === "music").length, 7);
   await fixture(async root => {

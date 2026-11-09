@@ -1,0 +1,33 @@
+import {build} from 'esbuild';
+import {chromium} from 'playwright-core';
+import {createServer} from 'node:http';
+import {readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import path from 'node:path';
+
+const root=process.cwd(),out=path.join(root,'outputs/qa-canopy-hud-compact-20261109');
+const entry=`import React from 'react';import {createRoot} from 'react-dom/client';import Hud from './app/game/HuntCanopyHudV112';import {DEFAULT_CONTROL_BINDINGS} from './app/game/systems/controlBindings';import {canopyNavigationV112} from './app/game/systems/canopyNavigationV112';import {attachCanopySwingV112} from './app/game/systems/canopyTraversalV112';const root=createRoot(document.getElementById('root'));const p={x:286,y:508,width:76,height:116,facing:1,grounded:true,climbing:false,stamina:100,climbZoneId:null};const tree={id:'tree',x:300,y:40,width:48,height:584,kind:'tree',routeId:'canopy-transfer',climbSpeedMultiplier:1,staminaPerSecond:3,dismounts:[]};const vine={...tree,id:'vine',y:100,height:340,kind:'vine',staminaPerSecond:4};window.showCase=(kind)=>{let player={...p},support=tree;if(kind==='climbing')player={...p,y:220,grounded:false,climbing:true,climbZoneId:tree.id};if(kind==='swinging'){support=vine;player={...p,x:286,y:267.52,velocityX:0,velocityY:0,grounded:false,climbing:true,climbZoneId:vine.id};player.canopySwing=attachCanopySwingV112(player,vine);}if(kind==='exhausted')player={...p,grounded:false,climbGripExhausted:true,stamina:0};if(kind==='cooldown')player.climbReattachSeconds=.2;const navigation=canopyNavigationV112({player,climbables:[support],platforms:[],floorY:624,minimumGripStamina:8});root.render(<Hud navigation={navigation} bindings={DEFAULT_CONTROL_BINDINGS}/>)};window.showCase('swinging');`;
+const built=await build({stdin:{contents:entry,loader:'jsx',resolveDir:root},bundle:true,write:false,format:'iife',platform:'browser',jsx:'automatic',outfile:'hud.js',logLevel:'silent'});
+const js=built.outputFiles.find(f=>f.path.endsWith('.js')).contents,css=built.outputFiles.find(f=>f.path.endsWith('.css')).contents;
+const html='<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="/hud.css"><style>*{box-sizing:border-box}body{margin:16px;font-family:Arial,sans-serif;background:#090f0d}</style><div id="root"></div><script src="/hud.js"></script>';
+const server=createServer((req,res)=>{if(req.url==='/hud.js'){res.writeHead(200,{'content-type':'application/javascript'}).end(js);}else if(req.url==='/hud.css'){res.writeHead(200,{'content-type':'text/css'}).end(css);}else res.writeHead(200,{'content-type':'text/html'}).end(html);});
+await new Promise(r=>server.listen(0,'127.0.0.1',r));
+const hash=b=>createHash('sha256').update(b).digest('hex');
+const report={scope:'Standalone actual HUD component; constructed geometry and actor state; not HuntCanvas, campaign, physical-device or human qualification',baseCommit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),sourceFiles:{},entrySha256:hash(entry),cssSha256:hash(css),cases:[],captures:[],errors:[]};
+for(const file of ['app/game/HuntCanopyHudV112.tsx','app/game/HuntCanopyHudV112.module.css','app/game/systems/canopyNavigationV112.ts','app/game/systems/canopyTraversalV112.ts','app/game/systems/platformCollision.ts','app/game/controlBindingLabels.ts','app/game/systems/controlBindings.ts','app/game/systems/huntAccessibilityV112.ts'])report.sourceFiles[file]=hash(await readFile(path.join(root,file)));
+let browser;
+try{
+ browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});report.browser=browser.version();
+ const page=await browser.newPage();page.on('pageerror',e=>report.errors.push(String(e)));
+ for(const width of [390,320]){
+  await page.setViewportSize({width,height:844});await page.goto('http://127.0.0.1:'+server.address().port);
+  for(const mode of ['ready','climbing','swinging','exhausted','cooldown']){
+   await page.evaluate(mode=>window.showCase(mode),mode);await page.locator('[data-canopy-hud-v112]').waitFor();await page.evaluate(()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r))));
+   report.cases.push(await page.locator('[data-canopy-hud-v112]').evaluate((el,input)=>({viewport:input.width,requestedMode:input.mode,mode:el.dataset.canopyMode,height:el.getBoundingClientRect().height,width:el.getBoundingClientRect().width,overflow:el.scrollWidth>el.clientWidth,documentOverflow:document.documentElement.scrollWidth>innerWidth}),{width,mode}));
+   if(mode==='swinging'){const bytes=await page.screenshot({fullPage:true});const file='swinging-'+width+'.png';await writeFile(path.join(out,file),bytes);report.captures.push({file,bytes:bytes.length,sha256:hash(bytes)});}
+  }
+ }
+ report.passed=report.errors.length===0&&report.cases.every(c=>c.height<=122&&!c.overflow&&!c.documentOverflow);
+}finally{await browser?.close();await new Promise(r=>server.close(r));await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');}
+console.log(JSON.stringify({passed:report.passed,cases:report.cases,errors:report.errors}));if(!report.passed)process.exitCode=1;

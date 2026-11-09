@@ -1,0 +1,112 @@
+TAP version 13
+# Subtest: native damage, flay, carry, attachment and falling preserve one real collision actor
+ok 1 - native damage, flay, carry, attachment and falling preserve one real collision actor
+  ---
+  duration_ms: 163.243327
+  type: 'test'
+  ...
+# Subtest: native anatomy preview, finite harvest and mission extraction produce the same source and quality
+ok 2 - native anatomy preview, finite harvest and mission extraction produce the same source and quality
+  ---
+  duration_ms: 69.035057
+  type: 'test'
+  ...
+# Subtest: native interrupted anatomy and a full depot never consume or invent specimen stock
+ok 3 - native interrupted anatomy and a full depot never consume or invent specimen stock
+  ---
+  duration_ms: 29.371257
+  type: 'test'
+  ...
+# Subtest: scout: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+ok 4 - scout: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+  ---
+  duration_ms: 6.261127
+  type: 'test'
+  ...
+# Subtest: scout: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+ok 5 - scout: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+  ---
+  duration_ms: 6.422411
+  type: 'test'
+  ...
+# Subtest: hunter: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+ok 6 - hunter: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+  ---
+  duration_ms: 3.029541
+  type: 'test'
+  ...
+# Subtest: hunter: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+ok 7 - hunter: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+  ---
+  duration_ms: 3.73783
+  type: 'test'
+  ...
+# Subtest: berserker: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+ok 8 - berserker: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+  ---
+  duration_ms: 3.213679
+  type: 'test'
+  ...
+# Subtest: berserker: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+ok 9 - berserker: native harvest preview and acceptance agree on the actual limiting bag dimension (constructed stock)
+  ---
+  duration_ms: 4.309953
+  type: 'test'
+  ...
+# Subtest: native previews distinguish a full campaign depot from a full 64-part field registry
+ok 10 - native previews distinguish a full campaign depot from a full 64-part field registry
+  ---
+  duration_ms: 7.397323
+  type: 'test'
+  ...
+# Subtest: native pickup admission and preview re-read stock and depot changes after their options were created
+ok 11 - native pickup admission and preview re-read stock and depot changes after their options were created
+  ---
+  duration_ms: 6.341829
+  type: 'test'
+  ...
+# Subtest: the native final tick still refuses a depot filled after an admissible harvest started
+ok 12 - the native final tick still refuses a depot filled after an admissible harvest started
+  ---
+  duration_ms: 22.348872
+  type: 'test'
+  ...
+# Subtest: live source teleport across a solid obstruction cannot complete a harvest
+ok 13 - live source teleport across a solid obstruction cannot complete a harvest
+  ---
+  duration_ms: 26.537302
+  type: 'test'
+  ...
+# Subtest: carrying into blocked space drops the same corpse without moving it through the wall
+ok 14 - carrying into blocked space drops the same corpse without moving it through the wall
+  ---
+  duration_ms: 26.806468
+  type: 'test'
+  ...
+# Subtest: a clear final transport point cannot teleport its source across an intervening solid wall
+ok 15 - a clear final transport point cannot teleport its source across an intervening solid wall
+  ---
+  duration_ms: 24.759379
+  type: 'test'
+  ...
+# Subtest: an authored hook cannot attach an actual wide body through a wall outside its preview icon
+ok 16 - an authored hook cannot attach an actual wide body through a wall outside its preview icon
+  ---
+  duration_ms: 29.946937
+  type: 'test'
+  ...
+# Subtest: native suspended corpse restore admits the real source and refuses the same ledger when that actor is removed
+ok 17 - native suspended corpse restore admits the real source and refuses the same ledger when that actor is removed
+  ---
+  duration_ms: 38.67082
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 486.811097

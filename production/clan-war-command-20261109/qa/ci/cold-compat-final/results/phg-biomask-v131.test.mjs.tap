@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: V131: eight PHG mask-tint names, Ogre on Alpha biomask and never armor
+ok 1 - V131: eight PHG mask-tint names, Ogre on Alpha biomask and never armor
+  ---
+  duration_ms: 1.68399
+  type: 'test'
+  ...
+# Subtest: V131: save migration, explicit resets, canonical mask ids and forge-only reset
+ok 2 - V131: save migration, explicit resets, canonical mask ids and forge-only reset
+  ---
+  duration_ms: 0.849171
+  type: 'test'
+  ...
+# Subtest: V131: original Alpha ownership remains save-safe after becoming a customized hunter
+ok 3 - V131: original Alpha ownership remains save-safe after becoming a customized hunter
+  ---
+  duration_ms: 0.363438
+  type: 'test'
+  ...
+# Subtest: V131: real biomask image is source alpha and only V129 lower-right atlas tile is painted
+ok 4 - V131: real biomask image is source alpha and only V129 lower-right atlas tile is painted
+  ---
+  duration_ms: 1.919026
+  type: 'test'
+  ...
+# Subtest: V131: rendered Yautja uses independent mask channel on rig, Homeworld and hunt
+ok 5 - V131: rendered Yautja uses independent mask channel on rig, Homeworld and hunt
+  ---
+  duration_ms: 2.918493
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16.272489

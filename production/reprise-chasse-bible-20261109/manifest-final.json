@@ -1,0 +1,1871 @@
+{
+  "schemaVersion": 1,
+  "asOfDate": "2026-11-09",
+  "baseCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "reviewedCodeCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+  "files": [
+    {
+      "path": "production/reprise-chasse-bible-20261109/README.md",
+      "bytes": 6705,
+      "sha256": "967d64119dcf12f0bde53c67bbb3a537f2028de5cbb4ce457856e43671e6d452",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/Yautja_Reprise_Chasse_Bible_20261109.html",
+      "bytes": 365337,
+      "sha256": "5adcc93d7249c64d4c7763f29bfb25a672654d0fd8e2125faa6c021d6609d4a3",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/Yautja_Reprise_Chasse_Bible_20261109.xlsx",
+      "bytes": 84885,
+      "sha256": "5658ef76f73c8afb8e95ccd3e8a6f0b049db24886a1a23fce7694bcbb8e62355",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/build-followup.py",
+      "bytes": 28243,
+      "sha256": "0bf6fcd861aef7cec02151a03a8dfe80aa6153ba401c28fdbfc8379959de960a",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/historique-preserve.json",
+      "bytes": 96068,
+      "sha256": "73a86b65c6224abef2e114eea2a5f914d976798cce64b85e506fd7d259c112d9",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/current-runtime-receipt.json",
+      "bytes": 1440,
+      "sha256": "854c726df83ea932174c955cd815adfda05def42567948b000735a97f4fb8513",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/README.md",
+      "bytes": 8174,
+      "sha256": "012c03812d7bed548bcfe03b44c799cb6bad4d55ee337c7c2c515277bbfc1fe7",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/browser-verification.json",
+      "bytes": 5534,
+      "sha256": "3de4cdf35709126007ca9c875aba7380e1df73572484adb37adf94ccad35d74c",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/failure.png",
+      "bytes": 1119148,
+      "sha256": "704b3e0f82559c3062085c9901df686f4fe4f64fa03c7cfd0b529dd67a65d9f4",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/fixture-disclosure.json",
+      "bytes": 1540,
+      "sha256": "fc5b4232f5666a5db248f439d980da14d739403585770eee26edc169da211b7e",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/initial-outside-fixture.json",
+      "bytes": 16841,
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/initial-return-fixture.json",
+      "bytes": 16305,
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/initial-separated-fixture.json",
+      "bytes": 16841,
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-01/recipe-source.mjs.txt",
+      "bytes": 24402,
+      "sha256": "831521e26fa303d930903756da87545ada4ba56d66dbcf76ff90415226b8fe97",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/browser-verification.json",
+      "bytes": 107660,
+      "sha256": "3ef7c4ccc8c34ec426d5a04a66ab0823cdaa7cf242601c5fb4b7c517e2c1a422",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/desktop-accepted-visible-group.png",
+      "bytes": 1385192,
+      "sha256": "fcfc74a0f58693ff73955c648972199de0cb51edc83407900aa335940394c9c6",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/desktop-checkpoint-refused.png",
+      "bytes": 1066746,
+      "sha256": "60668278a4982587f22865b58abd09904b51e25f2742a5a52e808e5f4a84eef4",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/desktop-paused-before-reload.png",
+      "bytes": 1363987,
+      "sha256": "70f1c743b5d015cb758e8ab2bebb9c1c980dff1c037499eb906c8aabd7b019f3",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/desktop-resumed-safe-group.png",
+      "bytes": 1329472,
+      "sha256": "8651231fa0d9b0ea68dc6c0ecb32c5079065fe2db8d15030f335c062b6a9d300",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/desktop-started.png",
+      "bytes": 1420222,
+      "sha256": "c17ea0e4fe53cb2614a1d11ee468ebc1b7d1d8d9d95f6be4c3934065b19bfeb0",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/failure.png",
+      "bytes": 1359689,
+      "sha256": "75234521744e2cc887eb242236cec00b0849f9b0902f09af2fb9e8b88cc9e56e",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/fixture-disclosure.json",
+      "bytes": 1540,
+      "sha256": "fc5b4232f5666a5db248f439d980da14d739403585770eee26edc169da211b7e",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/initial-outside-fixture.json",
+      "bytes": 16841,
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/initial-return-fixture.json",
+      "bytes": 16305,
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/initial-separated-fixture.json",
+      "bytes": 16841,
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-02/recipe-source.mjs.txt",
+      "bytes": 26055,
+      "sha256": "38457060adc9a93339a2e66a96f5e0136dc6e631abc34e9b6cd137b796ac7e40",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/browser-verification.json",
+      "bytes": 135992,
+      "sha256": "748bed122f2c976679daa1b64df3266aef18b558885e2a0e9c86db70105e5969",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-accepted-visible-group.png",
+      "bytes": 1385192,
+      "sha256": "fcfc74a0f58693ff73955c648972199de0cb51edc83407900aa335940394c9c6",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-arrived-through-door.png",
+      "bytes": 1292615,
+      "sha256": "f3d0270b2b043b557733e8ace4926b3d40fd81513b5d544f2cabc3e9d1a60fdd",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-checkpoint-refused.png",
+      "bytes": 1066378,
+      "sha256": "e65039d498d1c1ca852a617846ef80e26978f40d25d675f4288958d799c2399f",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-medical-post-visible.png",
+      "bytes": 1275866,
+      "sha256": "1649c201f2cd5a63fa6995c0a129af6fac3aa01deae1288431d736d5b5d403db",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-paused-before-reload.png",
+      "bytes": 1365859,
+      "sha256": "5075146cfe15b2e0b7eafa72e6b94aca7b7c8c2915a6566b587e57500186a8a4",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-resumed-safe-group.png",
+      "bytes": 1329472,
+      "sha256": "8651231fa0d9b0ea68dc6c0ecb32c5079065fe2db8d15030f335c062b6a9d300",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/desktop-started.png",
+      "bytes": 1421309,
+      "sha256": "7e05dc7d2e3df555276b1f7163794ed354630e34d1a6403b6b538a0be4f2cd73",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/failure.png",
+      "bytes": 974848,
+      "sha256": "819b0ef07a2c0a01f8928dba20cd22cf9789a908869448856e361f6c58e64997",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/fixture-disclosure.json",
+      "bytes": 1540,
+      "sha256": "fc5b4232f5666a5db248f439d980da14d739403585770eee26edc169da211b7e",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/initial-outside-fixture.json",
+      "bytes": 16841,
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/initial-return-fixture.json",
+      "bytes": 16305,
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/initial-separated-fixture.json",
+      "bytes": 16841,
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-03/recipe-source.mjs.txt",
+      "bytes": 26854,
+      "sha256": "5ae5c22833d480cafa85c639bde97e84ae458b40ae05ea9682d857d8a9a23da3",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/browser-verification.json",
+      "bytes": 480105,
+      "sha256": "b866ac8ed69d2ccaa788fb6171a83b9d7fc8aa7bbec338cb3b801ed4cf375492",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-accepted-visible-group.png",
+      "bytes": 1385173,
+      "sha256": "56a0abb0e3ad0079149377d082d0f9de2902b2884506b4dfe451a5030dbaec18",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-arrived-through-door.png",
+      "bytes": 1292615,
+      "sha256": "f3d0270b2b043b557733e8ace4926b3d40fd81513b5d544f2cabc3e9d1a60fdd",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-checkpoint-refused.png",
+      "bytes": 1066259,
+      "sha256": "9db65626e469bb0f8e672c27f376106a283912df42f79f9d155798f1cb615ac8",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-door-write-refused.png",
+      "bytes": 1056071,
+      "sha256": "77e7bfe78154950eabc84e3eb51e6f53ec9bb5c15f7e4c07583500c849832398",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-medical-post-visible.png",
+      "bytes": 1274887,
+      "sha256": "a454c2bd51030dc23f1dab5426b1689d6da9e2abb79f97931fde1ba069a28d79",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-medical-write-refused.png",
+      "bytes": 974873,
+      "sha256": "297a40a2321c5ea14fcbd010979651c0d5e36ca2d5f8f98f8f85d745366931ea",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-paused-before-reload.png",
+      "bytes": 1363567,
+      "sha256": "4d28ce7ccf06afe1d096cdde93f14c7d3857db47c73bbc942b8405e309fa953d",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-reported-at-council.png",
+      "bytes": 1412123,
+      "sha256": "319997f653d9962bc5e761e9ae04d6c29120d0dc084bd607860b5f74c579f844",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-resumed-safe-group.png",
+      "bytes": 1329564,
+      "sha256": "6880f0a307870f5cd0448224db2fcdd8ed510625e541804a1bc8f9428793974a",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-started.png",
+      "bytes": 1421309,
+      "sha256": "7e05dc7d2e3df555276b1f7163794ed354630e34d1a6403b6b538a0be4f2cd73",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/desktop-team-remains-at-medical.png",
+      "bytes": 1258171,
+      "sha256": "4c1bce832b3907dc0305a1fc0758ad669165f7843ea274e05c28f1980eb42baf",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/fixture-disclosure.json",
+      "bytes": 1540,
+      "sha256": "fc5b4232f5666a5db248f439d980da14d739403585770eee26edc169da211b7e",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/implementation-source-receipt.json",
+      "bytes": 4085,
+      "sha256": "6374b07e85ef3842f6f2691d66302cdaf6534acd810f99d8da00e9b0afb9969c",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/initial-outside-fixture.json",
+      "bytes": 16841,
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/initial-return-fixture.json",
+      "bytes": 16305,
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/initial-separated-fixture.json",
+      "bytes": 16841,
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/recipe-source.mjs.txt",
+      "bytes": 28444,
+      "sha256": "9c485184a609eadbe260bb53771617c8b7af195835dfa4b88ce42335793ca00f",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/separated-320-medical-post-visible.png",
+      "bytes": 196856,
+      "sha256": "503d78415f176e386fbe030eccd0c32cfeb777dde362d98425ca5cb3e7519d2c",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/separated-320-rejoined-separated-group.png",
+      "bytes": 196856,
+      "sha256": "503d78415f176e386fbe030eccd0c32cfeb777dde362d98425ca5cb3e7519d2c",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/separated-320-reported-at-council.png",
+      "bytes": 217768,
+      "sha256": "6fdf73fa15990302093fc842abb0e2bd11f2b0965ece4bbaf4e37928f15d240f",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/separated-320-team-remains-at-medical.png",
+      "bytes": 215904,
+      "sha256": "a9597cbd911c873ffc8a6740f687ba6c508ff6bba1dd8a0d01f78001857abbf1",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-accepted-visible-group.png",
+      "bytes": 268781,
+      "sha256": "49f81d6f6175d117d182a06a9cd30d62ea083096830f8c17aa01bcb6a554b695",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-arrived-through-door.png",
+      "bytes": 249818,
+      "sha256": "4dde4823eb1cfc79925536785c29db5ef3a4c0f05d506470757a86b1f7228ca8",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-medical-post-visible.png",
+      "bytes": 247680,
+      "sha256": "f3271851c15e75258f2533398db04e6f8219a445536ee7de000b87cf0860ef0c",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-paused-before-reload.png",
+      "bytes": 263087,
+      "sha256": "37a96448006d7981f18c8a126a525573a8727ff2111df3f14fa5842c43e7ae6a",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-reported-at-council.png",
+      "bytes": 279112,
+      "sha256": "e2d506979ec2fc04fd8a8156918b1e2ed7fdb08af89818dbe8897ddbd109e340",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-resumed-safe-group.png",
+      "bytes": 255883,
+      "sha256": "019f32f12168debf0df57fe7931ce87725feb9c0683bd83936db703894b22d2f",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-route-prepared.png",
+      "bytes": 297131,
+      "sha256": "bf088445e45108a7c5adabacf246b18bbf5440413c2c2dcdd75f6ec2535a9486",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-started.png",
+      "bytes": 269816,
+      "sha256": "811887f8f4a276da8512e4758d13a89cae7305f0718fb650ab8ea3d3052cf14a",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-04/touch-390-team-remains-at-medical.png",
+      "bytes": 276601,
+      "sha256": "6a0072b8535d6c61a537294904f6146aac600a7678e3c43235d46ad038475e58",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/browser-verification.json",
+      "bytes": 473640,
+      "sha256": "1accbb7ccdbe9240c1707f1a39afb4911967e4769b17d31f464f256975514747",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-accepted-visible-group.png",
+      "bytes": 1385192,
+      "sha256": "fcfc74a0f58693ff73955c648972199de0cb51edc83407900aa335940394c9c6",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-arrived-through-door.png",
+      "bytes": 1292615,
+      "sha256": "f3d0270b2b043b557733e8ace4926b3d40fd81513b5d544f2cabc3e9d1a60fdd",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-checkpoint-refused.png",
+      "bytes": 1069539,
+      "sha256": "96cbf8e34f4135579f3321118aa47bbe339cbe653a19350cc58f63dc0ebdfa92",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-door-write-refused.png",
+      "bytes": 1056071,
+      "sha256": "77e7bfe78154950eabc84e3eb51e6f53ec9bb5c15f7e4c07583500c849832398",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-medical-post-visible.png",
+      "bytes": 1275006,
+      "sha256": "2b0f215ae467a20faf0f79cdbbcedd29c034c74efddeae380c93bcbaf3ead9ee",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-medical-write-refused.png",
+      "bytes": 974848,
+      "sha256": "819b0ef07a2c0a01f8928dba20cd22cf9789a908869448856e361f6c58e64997",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-paused-before-reload.png",
+      "bytes": 1362285,
+      "sha256": "d9cae99d1a9c3e5d79abaca4b4130912a66bbe464c1356106277787649413d55",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-reported-at-council.png",
+      "bytes": 1412123,
+      "sha256": "319997f653d9962bc5e761e9ae04d6c29120d0dc084bd607860b5f74c579f844",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-resumed-safe-group.png",
+      "bytes": 1329212,
+      "sha256": "18ea610ac16a18d93eb4af940acdcdeb1c532e9641df9337340d74101f174439",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-started.png",
+      "bytes": 1420317,
+      "sha256": "e387ca1fd67b6adbe0710d1402ad0e1b51e44cc72b52996ea3e6b8d6813f6ba3",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/desktop-team-remains-at-medical.png",
+      "bytes": 1329707,
+      "sha256": "973222b34ea64030705a4d9e20d9c1862e6452d202c0509d2ac4b1f02c7c4e36",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/fixture-disclosure.json",
+      "bytes": 1540,
+      "sha256": "fc5b4232f5666a5db248f439d980da14d739403585770eee26edc169da211b7e",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/implementation-source-receipt.json",
+      "bytes": 4305,
+      "sha256": "fd9908da9dd869039d93814ad83c5570e4d049614b57581dd7e2d49aa7c36666",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/initial-outside-fixture.json",
+      "bytes": 16841,
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/initial-return-fixture.json",
+      "bytes": 16305,
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/initial-separated-fixture.json",
+      "bytes": 16841,
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/recipe-source.mjs.txt",
+      "bytes": 28513,
+      "sha256": "8888870ef729c35bcfe28da0b0d225a3bca04179c0b154b368aa44c6c7c391bf",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/separated-320-medical-post-visible.png",
+      "bytes": 199142,
+      "sha256": "f162ea87ddf38b3cd265642a08e9f09d15e2ee07c89c8db773681247ad62afa5",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/separated-320-rejoined-separated-group.png",
+      "bytes": 199272,
+      "sha256": "fd91038210f4efd06d8bc3e1702531f8f4145f2554d33701a3aeb6dd1b5ef62e",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/separated-320-reported-at-council.png",
+      "bytes": 217768,
+      "sha256": "6fdf73fa15990302093fc842abb0e2bd11f2b0965ece4bbaf4e37928f15d240f",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/separated-320-team-remains-at-medical.png",
+      "bytes": 218836,
+      "sha256": "94927843c96e4a82c67a044698c30aec69a474185a3ca31ac1c574cc1ff758a1",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-accepted-visible-group.png",
+      "bytes": 268840,
+      "sha256": "e27d259467b7849beae96753d8ba64b491e479a9ee66ccc27e9cf45dd20a033d",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-arrived-through-door.png",
+      "bytes": 249818,
+      "sha256": "4dde4823eb1cfc79925536785c29db5ef3a4c0f05d506470757a86b1f7228ca8",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-medical-post-visible.png",
+      "bytes": 247680,
+      "sha256": "f3271851c15e75258f2533398db04e6f8219a445536ee7de000b87cf0860ef0c",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-paused-before-reload.png",
+      "bytes": 263084,
+      "sha256": "a84675120f4cfbecfd47a57605da428741f3f3bf5375125dcc723dbc3d7313f6",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-reported-at-council.png",
+      "bytes": 279128,
+      "sha256": "7900ef2cd409b1e5ff4a234579343bada9d4cf07cb9966550e9d7e0e9850beed",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-resumed-safe-group.png",
+      "bytes": 255883,
+      "sha256": "019f32f12168debf0df57fe7931ce87725feb9c0683bd83936db703894b22d2f",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-route-prepared.png",
+      "bytes": 297131,
+      "sha256": "bf088445e45108a7c5adabacf246b18bbf5440413c2c2dcdd75f6ec2535a9486",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-started.png",
+      "bytes": 269816,
+      "sha256": "811887f8f4a276da8512e4758d13a89cae7305f0718fb650ab8ea3d3052cf14a",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-05/touch-390-team-remains-at-medical.png",
+      "bytes": 276599,
+      "sha256": "243a05a15763559a02c61e6512fcbdebb9445f09bd0582f5832be34533afc8a2",
+      "role": "PRESERVED_INTERMEDIATE_MILESTONE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/browser-verification.json",
+      "bytes": 348231,
+      "sha256": "e429dc810dfcf0e488b7ea19b6b55817c474eaebfdb3020c72e06040a2de0a84",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-accepted-visible-group.png",
+      "bytes": 1385178,
+      "sha256": "35aed2126a439723e4698a9ade20e9a2a5407f443aae586d0ef237c96485f8c0",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-arrived-through-door.png",
+      "bytes": 1290651,
+      "sha256": "3b26d74512a36182d4d62bb3c8c38af81bc1a4fc9c6776fe9ee50615ecbde86a",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-checkpoint-refused.png",
+      "bytes": 1067232,
+      "sha256": "6b9d874b69f7ba6d975d8ba8b997a783e659151095aa247e4e5842904599150a",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-door-write-refused.png",
+      "bytes": 1051566,
+      "sha256": "1d393ed30e85df4daebb4be09b5efcc7c08d366dff91bd8e17d36776dbb004d2",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-medical-post-visible.png",
+      "bytes": 1272549,
+      "sha256": "03d008659f78f08afaff314b313a89797b657fe70382f342262442ce26265ff6",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-medical-write-refused.png",
+      "bytes": 976105,
+      "sha256": "a57e265d68d607214500a593812801aec78af12a4f8f07baea85945c5ae20baa",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-paused-before-reload.png",
+      "bytes": 1360518,
+      "sha256": "91f02a5a02d03a536a9f338dbe218ab4cb1be8da76db31f93cb424bf54caa7c5",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-reported-at-council.png",
+      "bytes": 1412123,
+      "sha256": "319997f653d9962bc5e761e9ae04d6c29120d0dc084bd607860b5f74c579f844",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-resumed-safe-group.png",
+      "bytes": 1329253,
+      "sha256": "b0f787f5fd683d4c003a8d92de84c6aaf1b8b702aec89f2a812eb6a33f528052",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-started.png",
+      "bytes": 1421653,
+      "sha256": "e2713c939e8b8a90e39e91023bb4f304996f95d3e620b8b3cd240743237ee8a8",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/desktop-team-remains-at-medical.png",
+      "bytes": 1255740,
+      "sha256": "59488242bb1cc0520a262e924262eaa48d9374487c795d52b340c81d09428fc6",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/failure.png",
+      "bytes": 358846,
+      "sha256": "3f3aa6e79964b931e37f0d66bea878261f602d74bf646fb2551e8bf4678b07af",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/fixture-disclosure.json",
+      "bytes": 1540,
+      "sha256": "fc5b4232f5666a5db248f439d980da14d739403585770eee26edc169da211b7e",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/initial-outside-fixture.json",
+      "bytes": 16841,
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/initial-return-fixture.json",
+      "bytes": 16305,
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/initial-separated-fixture.json",
+      "bytes": 16841,
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/recipe-source.mjs.txt",
+      "bytes": 28994,
+      "sha256": "e549c4c46b1d860928c08348a7f10ee7abde47ef798edcb3f45330451be1d8fd",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-accepted-visible-group.png",
+      "bytes": 268777,
+      "sha256": "0d30cccabc5bfb92cf1799896ef6223626f7f6deac56029bf371abc29377663e",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-arrived-through-door.png",
+      "bytes": 249141,
+      "sha256": "b12f510ece9b0fe008943f394742aaede0063f33c651777566621f70887e16a3",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-medical-post-visible.png",
+      "bytes": 248022,
+      "sha256": "517bd6139137355089f92ec75c35dd3515361edcb87b76b141f7763828ac2558",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-paused-before-reload.png",
+      "bytes": 261879,
+      "sha256": "ab64fff1d85b3915366d20c251febc1af41e94b24f8df1c7ba6ea912809581fc",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-reported-at-council.png",
+      "bytes": 279128,
+      "sha256": "7900ef2cd409b1e5ff4a234579343bada9d4cf07cb9966550e9d7e0e9850beed",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-resumed-safe-group.png",
+      "bytes": 255469,
+      "sha256": "b40b31e530e1bd19c2d399d8a57f2d8b536959364565c2ed3b08ee58a07dbc8b",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-route-prepared.png",
+      "bytes": 297131,
+      "sha256": "bf088445e45108a7c5adabacf246b18bbf5440413c2c2dcdd75f6ec2535a9486",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-06/touch-390-started.png",
+      "bytes": 270314,
+      "sha256": "77d72fc59a845f1a2a9d3a5c09b3790900c4da892221110f2e018bedb6c27fd3",
+      "role": "PRESERVED_FAILED_ATTEMPT"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/browser-verification.json",
+      "bytes": 499444,
+      "sha256": "39018df79cacba29e26b2f52ae003508fdae1ac406084a033f9dc46c3e7ab4c2",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-accepted-visible-group.png",
+      "bytes": 1385173,
+      "sha256": "56a0abb0e3ad0079149377d082d0f9de2902b2884506b4dfe451a5030dbaec18",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-arrived-through-door.png",
+      "bytes": 1290651,
+      "sha256": "3b26d74512a36182d4d62bb3c8c38af81bc1a4fc9c6776fe9ee50615ecbde86a",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-checkpoint-refused.png",
+      "bytes": 1067232,
+      "sha256": "b9fa6bf61c0bf9412d852795f89a830568ba9b9e9667a946f055323e61001488",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-door-write-refused.png",
+      "bytes": 1051566,
+      "sha256": "1d393ed30e85df4daebb4be09b5efcc7c08d366dff91bd8e17d36776dbb004d2",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-medical-post-visible.png",
+      "bytes": 1275815,
+      "sha256": "40469a12fddda005dbda1ea8038cbe2dfc48d9e31172d632242d8ad1c1b82fad",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-medical-write-refused.png",
+      "bytes": 976098,
+      "sha256": "cf579a4cc9fd0a5e6bf48eb41368c9d5162aeadcaddbc05c488297cc72584e81",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-paused-before-reload.png",
+      "bytes": 1358173,
+      "sha256": "4c09631baad7b95424967e4ddf29506fdcc318a4194c31f7c131f4b8d03a23e3",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-reported-at-council.png",
+      "bytes": 1412123,
+      "sha256": "319997f653d9962bc5e761e9ae04d6c29120d0dc084bd607860b5f74c579f844",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-resumed-safe-group.png",
+      "bytes": 1329058,
+      "sha256": "24767e524d252910625bc6244ef72ad8a78c4e8a4d24f9f754d1d66e5df6f7f1",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-started.png",
+      "bytes": 1421187,
+      "sha256": "5080644505975abe8c6d0793007f88405ae85f9d78b447cb56d8a6ad9dfd6fd6",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-team-remains-at-medical.png",
+      "bytes": 1255980,
+      "sha256": "d30f26b66f9e12643fac7d46d68f0c2b8fb57e4f996b5f7f5f605b067a98dd75",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/fixture-disclosure.json",
+      "bytes": 1540,
+      "sha256": "fc5b4232f5666a5db248f439d980da14d739403585770eee26edc169da211b7e",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/implementation-source-receipt.json",
+      "bytes": 4297,
+      "sha256": "3f515877d82df14cef67595a76b429cf2fe5d5956adfc477d519a1108b290b5f",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/initial-outside-fixture.json",
+      "bytes": 16841,
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/initial-return-fixture.json",
+      "bytes": 16305,
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/initial-separated-fixture.json",
+      "bytes": 16841,
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/recipe-source.mjs.txt",
+      "bytes": 29087,
+      "sha256": "cce3618f6f5dbe0ad64dd0bde6aef0ea7e1e3869563a4802ca99848ee7489145",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-medical-post-visible.png",
+      "bytes": 199471,
+      "sha256": "a4a8daa4fb8645baaca48dbed63438c902951fbdca95ac192e4d158fc14cc463",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-rejoined-separated-group.png",
+      "bytes": 199282,
+      "sha256": "c74757e7deb0eaa02a04be1d522cc427509ca3b01f4ea4d5e6fb1926eba4b066",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-reported-at-council.png",
+      "bytes": 217878,
+      "sha256": "7062a4454f1ad0fa7052580ed2dcac56c8147af09f12e13ba3dfa94514fdcfb2",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-team-remains-at-medical.png",
+      "bytes": 218975,
+      "sha256": "f3f8a99c50d03d886b380de034078e36be0cc431e0bd4b6a47ea4a35c20bb728",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-accepted-visible-group.png",
+      "bytes": 268837,
+      "sha256": "f0903742e3e60ef55eab624d3876f1fa5967d74b985e76d2e48d92f5631b1ab0",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-arrived-through-door.png",
+      "bytes": 249152,
+      "sha256": "e66dee07a948d17531aed87e58080a7e5686f465a13843a6037e81a66e07aaaa",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-medical-post-visible.png",
+      "bytes": 248024,
+      "sha256": "742088321ab34a932b4e91120d5da756ab891720a1dbfb52eeb62a39e0a96013",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-paused-before-reload.png",
+      "bytes": 261887,
+      "sha256": "1d388cf95f38d454ca10788994385980e9dd211e5a1c4ce06215efd239eb0811",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-reported-at-council.png",
+      "bytes": 279070,
+      "sha256": "ccd5478f5cb0998bf7a872e5c20878b57ac4f779321f956473a567912d3c801b",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-resumed-safe-group.png",
+      "bytes": 255474,
+      "sha256": "093ded229c6b4e1a27889cbb4ec83b497e8dfd5d46eb0c3fb78f5ec226fc8e51",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-route-prepared.png",
+      "bytes": 297131,
+      "sha256": "bf088445e45108a7c5adabacf246b18bbf5440413c2c2dcdd75f6ec2535a9486",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-started.png",
+      "bytes": 270177,
+      "sha256": "5d3ec81c5f2d5b03e0ef90e09cbaf2c3095cbf0fbb41853f75f6200a1c85b97a",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-team-remains-at-medical.png",
+      "bytes": 273297,
+      "sha256": "df0a37f27ff9321089167914a96b43c1b94f272ac5733585a2383c74b5bd604f",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-final20/model-and-save-20.log",
+      "bytes": 2565,
+      "sha256": "5a6df7d1b382e15e91e690aba1c2724b11ef26f7262f57e85e55b5f0cb7eab5e",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-final20/receipt.json",
+      "bytes": 1564,
+      "sha256": "12f0ab5d8320c0125371ef2104113030aa18d1f55fc758b7703e64d915b840ad",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/model-and-save-19.log",
+      "bytes": 2419,
+      "sha256": "0c18a1a01603a8c98575c2cd133b4628a8f0072182bce3cdbdd1b365c7e59432",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/model-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/receipt.json",
+      "bytes": 4516,
+      "sha256": "1b132071cdf3de393ab7f931f2ce502201dbdd8b3155ba2adedee78035bf03aa",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/targeted-regressions-91.log",
+      "bytes": 10247,
+      "sha256": "80a68a3605dbe876459a4148158ad5895e31b81742d864f28ae55532cd273bf7",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort-model-history/typecheck-intermediate.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/1120x1000-analysis-locked.png",
+      "bytes": 63418,
+      "sha256": "54d3d90940397ff75405dae5a3ed1d30948d1808ef1a9d86020d10bb2f971d36",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/1120x1000-available-preview.png",
+      "bytes": 56361,
+      "sha256": "98e323becb948535e75042e346f4eceddaec703bfad8e700a22f2141b7112895",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/1120x1000-capacity-before-action.png",
+      "bytes": 58931,
+      "sha256": "94cf88e21e05f1ed92c3fbf08e2282692385f55b80d2b0de9fa87db9cd4a74ca",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/1120x1000-depot-refusal.png",
+      "bytes": 56585,
+      "sha256": "8ce3c69bef1481154e5f2fe2c0258c44bdab67b49f3e658e5549aac08e39c71a",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/1120x1000-mass-refusal.png",
+      "bytes": 56428,
+      "sha256": "b0af9173e94d3fd5293ecf65eafa4c2f2b1fd23382a21763bf17264dada02ce4",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/1120x1000-volume-refusal.png",
+      "bytes": 55110,
+      "sha256": "f0dfc608685b6f842c94da0d3d56f1f4a1c5f09a3efca398a082662ab2fb8019",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/320x740-analysis-locked.png",
+      "bytes": 67990,
+      "sha256": "cfc59c6f6d7ea711f669d1a2e2165f5cbc9dc0c4c1a5634d3293880077a13482",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/320x740-available-preview.png",
+      "bytes": 65586,
+      "sha256": "458b5294075bbf9be052dd5f43871fb6ea93d5f183e7b4dfa7300d48aae23a74",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/320x740-capacity-before-action.png",
+      "bytes": 65551,
+      "sha256": "a9669d2f5395e1c77ca1771eef80f7f0172e445224e8148f3de363a784e325fa",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/320x740-depot-refusal.png",
+      "bytes": 67670,
+      "sha256": "2ef1d9f928d0654f2732142a2bf63151ebcb3f0db5e6ecb133f40c9183ae8ec5",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/320x740-mass-refusal.png",
+      "bytes": 67148,
+      "sha256": "33058c759ad1d528ba55be28dce3deeb3c6091818d992ca32278fd2dd87ce94b",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/320x740-volume-refusal.png",
+      "bytes": 69508,
+      "sha256": "ba52c9a4b8a8c2d00bd42ca3d4f7ec8636f15e07f4cb9c131977fa8d12c9f08b",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/390x844-analysis-locked.png",
+      "bytes": 69442,
+      "sha256": "b4b1b416c7e257d5464e92751139644d631a1d13b63cc0dcf3f6361d99a041b6",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/390x844-available-preview.png",
+      "bytes": 67294,
+      "sha256": "e294ca2f6455f0ffeb2a2694d177bc23b834d1a870be5e04556388e816ce73f3",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/390x844-capacity-before-action.png",
+      "bytes": 67385,
+      "sha256": "139ab170f350cbfda5e0bbe9ca5d57a87d171776197743a88d1f9a1fc343a666",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/390x844-depot-refusal.png",
+      "bytes": 71505,
+      "sha256": "f78cd23e46c139e080a97e625f16d745a757678a8b67c7761dea50f131fe9446",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/390x844-mass-refusal.png",
+      "bytes": 68819,
+      "sha256": "99e5ae3d538d9953ec4c033817191e8135eced6e248be01a097b3664562cc251",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/390x844-volume-refusal.png",
+      "bytes": 70961,
+      "sha256": "f1f37092ae6334e138ff366307b7b042a7d5be9d99c454b3307e5d43882db381",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/README.md",
+      "bytes": 4728,
+      "sha256": "1cc9361ae9fb8693f7be28243237435061e2581fe19b43371a70282a0ef0974f",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/browser-verification.json",
+      "bytes": 20173,
+      "sha256": "9b9a7d17c47a481a3317db97e0afdbef7fa90c94fa2e90e896a559e9ef6ac40c",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/1120x1000-analysis-locked.png",
+      "bytes": 63418,
+      "sha256": "54d3d90940397ff75405dae5a3ed1d30948d1808ef1a9d86020d10bb2f971d36",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/1120x1000-available-preview.png",
+      "bytes": 56361,
+      "sha256": "98e323becb948535e75042e346f4eceddaec703bfad8e700a22f2141b7112895",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/1120x1000-depot-refusal.png",
+      "bytes": 56585,
+      "sha256": "8ce3c69bef1481154e5f2fe2c0258c44bdab67b49f3e658e5549aac08e39c71a",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/1120x1000-mass-refusal.png",
+      "bytes": 56428,
+      "sha256": "b0af9173e94d3fd5293ecf65eafa4c2f2b1fd23382a21763bf17264dada02ce4",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/1120x1000-volume-refusal.png",
+      "bytes": 55110,
+      "sha256": "f0dfc608685b6f842c94da0d3d56f1f4a1c5f09a3efca398a082662ab2fb8019",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/320x740-analysis-locked.png",
+      "bytes": 67990,
+      "sha256": "cfc59c6f6d7ea711f669d1a2e2165f5cbc9dc0c4c1a5634d3293880077a13482",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/320x740-available-preview.png",
+      "bytes": 65586,
+      "sha256": "458b5294075bbf9be052dd5f43871fb6ea93d5f183e7b4dfa7300d48aae23a74",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/320x740-depot-refusal.png",
+      "bytes": 67670,
+      "sha256": "2ef1d9f928d0654f2732142a2bf63151ebcb3f0db5e6ecb133f40c9183ae8ec5",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/320x740-mass-refusal.png",
+      "bytes": 67148,
+      "sha256": "33058c759ad1d528ba55be28dce3deeb3c6091818d992ca32278fd2dd87ce94b",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/320x740-volume-refusal.png",
+      "bytes": 69508,
+      "sha256": "ba52c9a4b8a8c2d00bd42ca3d4f7ec8636f15e07f4cb9c131977fa8d12c9f08b",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/390x844-analysis-locked.png",
+      "bytes": 69442,
+      "sha256": "b4b1b416c7e257d5464e92751139644d631a1d13b63cc0dcf3f6361d99a041b6",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/390x844-available-preview.png",
+      "bytes": 67294,
+      "sha256": "e294ca2f6455f0ffeb2a2694d177bc23b834d1a870be5e04556388e816ce73f3",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/390x844-depot-refusal.png",
+      "bytes": 71505,
+      "sha256": "f78cd23e46c139e080a97e625f16d745a757678a8b67c7761dea50f131fe9446",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/390x844-mass-refusal.png",
+      "bytes": 68819,
+      "sha256": "99e5ae3d538d9953ec4c033817191e8135eced6e248be01a097b3664562cc251",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/390x844-volume-refusal.png",
+      "bytes": 70961,
+      "sha256": "f1f37092ae6334e138ff366307b7b042a7d5be9d99c454b3307e5d43882db381",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/browser-verification.json",
+      "bytes": 19571,
+      "sha256": "28d80cb4367b304c4b0c155a8b0ea6fad5343aa6af35aeb32392ca2e7f98f118",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/fixture-source.jsx.txt",
+      "bytes": 5331,
+      "sha256": "72132200bde50a9fe25d8a49fd7af70f7effcf6503f26716f89c5a9b2e1e9094",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/first-pass/recipe-source.mjs.txt",
+      "bytes": 13193,
+      "sha256": "e3db7626dfe7818c763fb017b65fd8af4ac620681da748852e3a2b1412601760",
+      "role": "PRESERVED_FIRST_PASS"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/implementation-source-receipt.json",
+      "bytes": 2599,
+      "sha256": "cbcfa78ac1f2ef55d38f0f4c9f124b19af97a2aa49ea5bc1aaa9f0c76fbc5754",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/1120x1000-analysis-locked.png",
+      "bytes": 63418,
+      "sha256": "54d3d90940397ff75405dae5a3ed1d30948d1808ef1a9d86020d10bb2f971d36",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/1120x1000-available-preview.png",
+      "bytes": 56361,
+      "sha256": "98e323becb948535e75042e346f4eceddaec703bfad8e700a22f2141b7112895",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/1120x1000-capacity-before-action.png",
+      "bytes": 58931,
+      "sha256": "94cf88e21e05f1ed92c3fbf08e2282692385f55b80d2b0de9fa87db9cd4a74ca",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/1120x1000-depot-refusal.png",
+      "bytes": 56585,
+      "sha256": "8ce3c69bef1481154e5f2fe2c0258c44bdab67b49f3e658e5549aac08e39c71a",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/1120x1000-mass-refusal.png",
+      "bytes": 56428,
+      "sha256": "b0af9173e94d3fd5293ecf65eafa4c2f2b1fd23382a21763bf17264dada02ce4",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/1120x1000-volume-refusal.png",
+      "bytes": 55110,
+      "sha256": "f0dfc608685b6f842c94da0d3d56f1f4a1c5f09a3efca398a082662ab2fb8019",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/320x740-analysis-locked.png",
+      "bytes": 67990,
+      "sha256": "cfc59c6f6d7ea711f669d1a2e2165f5cbc9dc0c4c1a5634d3293880077a13482",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/320x740-available-preview.png",
+      "bytes": 65586,
+      "sha256": "458b5294075bbf9be052dd5f43871fb6ea93d5f183e7b4dfa7300d48aae23a74",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/320x740-capacity-before-action.png",
+      "bytes": 65551,
+      "sha256": "a9669d2f5395e1c77ca1771eef80f7f0172e445224e8148f3de363a784e325fa",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/320x740-depot-refusal.png",
+      "bytes": 67670,
+      "sha256": "2ef1d9f928d0654f2732142a2bf63151ebcb3f0db5e6ecb133f40c9183ae8ec5",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/320x740-mass-refusal.png",
+      "bytes": 67148,
+      "sha256": "33058c759ad1d528ba55be28dce3deeb3c6091818d992ca32278fd2dd87ce94b",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/320x740-volume-refusal.png",
+      "bytes": 69508,
+      "sha256": "ba52c9a4b8a8c2d00bd42ca3d4f7ec8636f15e07f4cb9c131977fa8d12c9f08b",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/390x844-analysis-locked.png",
+      "bytes": 69442,
+      "sha256": "b4b1b416c7e257d5464e92751139644d631a1d13b63cc0dcf3f6361d99a041b6",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/390x844-available-preview.png",
+      "bytes": 67294,
+      "sha256": "e294ca2f6455f0ffeb2a2694d177bc23b834d1a870be5e04556388e816ce73f3",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/390x844-capacity-before-action.png",
+      "bytes": 67385,
+      "sha256": "139ab170f350cbfda5e0bbe9ca5d57a87d171776197743a88d1f9a1fc343a666",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/390x844-depot-refusal.png",
+      "bytes": 71505,
+      "sha256": "f78cd23e46c139e080a97e625f16d745a757678a8b67c7761dea50f131fe9446",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/390x844-mass-refusal.png",
+      "bytes": 68819,
+      "sha256": "99e5ae3d538d9953ec4c033817191e8135eced6e248be01a097b3664562cc251",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/390x844-volume-refusal.png",
+      "bytes": 70961,
+      "sha256": "f1f37092ae6334e138ff366307b7b042a7d5be9d99c454b3307e5d43882db381",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/browser-verification.json",
+      "bytes": 20173,
+      "sha256": "924651fa5325d1ffa33dfb46ca08eedb9d14f77ca9a7406d56c830c14e5501b9",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/fixture-source-before-react-cleanup.jsx.txt",
+      "bytes": 5331,
+      "sha256": "72132200bde50a9fe25d8a49fd7af70f7effcf6503f26716f89c5a9b2e1e9094",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-final/recipe-source.mjs.txt",
+      "bytes": 13541,
+      "sha256": "04e520628fcd325c78db9512c3a7a697197377fbc89d941852939333f42908f7",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-analysis-locked.png",
+      "bytes": 63418,
+      "sha256": "54d3d90940397ff75405dae5a3ed1d30948d1808ef1a9d86020d10bb2f971d36",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-available-preview.png",
+      "bytes": 56361,
+      "sha256": "98e323becb948535e75042e346f4eceddaec703bfad8e700a22f2141b7112895",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-capacity-before-action.png",
+      "bytes": 58931,
+      "sha256": "94cf88e21e05f1ed92c3fbf08e2282692385f55b80d2b0de9fa87db9cd4a74ca",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-depot-refusal.png",
+      "bytes": 56585,
+      "sha256": "8ce3c69bef1481154e5f2fe2c0258c44bdab67b49f3e658e5549aac08e39c71a",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-mass-refusal.png",
+      "bytes": 56428,
+      "sha256": "b0af9173e94d3fd5293ecf65eafa4c2f2b1fd23382a21763bf17264dada02ce4",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-volume-refusal.png",
+      "bytes": 55110,
+      "sha256": "f0dfc608685b6f842c94da0d3d56f1f4a1c5f09a3efca398a082662ab2fb8019",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-analysis-locked.png",
+      "bytes": 67990,
+      "sha256": "cfc59c6f6d7ea711f669d1a2e2165f5cbc9dc0c4c1a5634d3293880077a13482",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-available-preview.png",
+      "bytes": 65586,
+      "sha256": "458b5294075bbf9be052dd5f43871fb6ea93d5f183e7b4dfa7300d48aae23a74",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-capacity-before-action.png",
+      "bytes": 65551,
+      "sha256": "a9669d2f5395e1c77ca1771eef80f7f0172e445224e8148f3de363a784e325fa",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-depot-refusal.png",
+      "bytes": 67670,
+      "sha256": "2ef1d9f928d0654f2732142a2bf63151ebcb3f0db5e6ecb133f40c9183ae8ec5",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-mass-refusal.png",
+      "bytes": 67148,
+      "sha256": "33058c759ad1d528ba55be28dce3deeb3c6091818d992ca32278fd2dd87ce94b",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-volume-refusal.png",
+      "bytes": 69508,
+      "sha256": "ba52c9a4b8a8c2d00bd42ca3d4f7ec8636f15e07f4cb9c131977fa8d12c9f08b",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-analysis-locked.png",
+      "bytes": 69442,
+      "sha256": "b4b1b416c7e257d5464e92751139644d631a1d13b63cc0dcf3f6361d99a041b6",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-available-preview.png",
+      "bytes": 67294,
+      "sha256": "e294ca2f6455f0ffeb2a2694d177bc23b834d1a870be5e04556388e816ce73f3",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-capacity-before-action.png",
+      "bytes": 67385,
+      "sha256": "139ab170f350cbfda5e0bbe9ca5d57a87d171776197743a88d1f9a1fc343a666",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-depot-refusal.png",
+      "bytes": 71505,
+      "sha256": "f78cd23e46c139e080a97e625f16d745a757678a8b67c7761dea50f131fe9446",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-mass-refusal.png",
+      "bytes": 68819,
+      "sha256": "99e5ae3d538d9953ec4c033817191e8135eced6e248be01a097b3664562cc251",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-volume-refusal.png",
+      "bytes": 70961,
+      "sha256": "f1f37092ae6334e138ff366307b7b042a7d5be9d99c454b3307e5d43882db381",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/browser-verification.json",
+      "bytes": 20173,
+      "sha256": "b7ac7ce0081650f37cda2a3424c9ec951ba0660e8f66235b3664919ba1bb6050",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/implementation-source-receipt.json",
+      "bytes": 2556,
+      "sha256": "7d036370252876b9a33a2003215a457583a2d04516faf5378131bf9e08907f48",
+      "role": "ACCEPTED_FINAL_BROWSER_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/recipe-source-before-output-guard.mjs.txt",
+      "bytes": 13367,
+      "sha256": "528087ccc965b22c4fd96911cd044c2cafe29099232090053e9adf59b587d938",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-cb5c4a47/native-regressions.log",
+      "bytes": 58598,
+      "sha256": "f092e13a3b76a4148d7648cec808fa8a77530e2254b5737ca0cc72c1e89d63bc",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-cb5c4a47/next-build.log",
+      "bytes": 958,
+      "sha256": "e7b343aadbcf08381f51651a961370cd8c141391974257f7ab56ac1b81ac37c7",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-cb5c4a47/verification.json",
+      "bytes": 2616,
+      "sha256": "870bcc63b51f954eb55a84814e43eb045964b10c3719acc508df08046167e854",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/changed-source-lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "EXECUTED_FINAL_SOFTWARE_GATES"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/native-regressions.log",
+      "bytes": 58759,
+      "sha256": "d2cf4746697f3c304dccc3b8f6022179b00cefdbf744a39f1e4206b3d9475004",
+      "role": "EXECUTED_FINAL_SOFTWARE_GATES"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/next-build.log",
+      "bytes": 957,
+      "sha256": "ad434072a04d215263fdccecb48a4425fc52118ddda4f0482200571f3c090a25",
+      "role": "EXECUTED_FINAL_SOFTWARE_GATES"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/verification.json",
+      "bytes": 4064,
+      "sha256": "b856ba07c7e77120c28ee8833d13b3c87fb7e47a56a85e2e4215c12764518793",
+      "role": "EXECUTED_FINAL_SOFTWARE_GATES"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-jalon-cb5/native-regressions-538.log",
+      "bytes": 58598,
+      "sha256": "f092e13a3b76a4148d7648cec808fa8a77530e2254b5737ca0cc72c1e89d63bc",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/integration-jalon-cb5/next-build.log",
+      "bytes": 958,
+      "sha256": "e7b343aadbcf08381f51651a961370cd8c141391974257f7ab56ac1b81ac37c7",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/lint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/receipt.json",
+      "bytes": 3185,
+      "sha256": "161772d7358bdb9e8990b9e3ee5645d4d6babf34f12dac94fcd0a949fefb8ebb",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/native-harvest-ebe1718/tests.log",
+      "bytes": 17725,
+      "sha256": "dc70bf81f66f06f470ce4d0e705857baa4a85807420ef82fbbb1c5ebd3a470c5",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/native-resource-integrity.json",
+      "bytes": 222731,
+      "sha256": "161848d812921d85ce5fc9821c5cf13f1847f39537646e636d5588e9098098ad",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/qa-launchers-eslint.json",
+      "bytes": 1066,
+      "sha256": "5fb6bb78241338ed55dc5c0130fbfbed11e989b83470cd6326081f1ed5c0d985",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/qa-launchers-eslint.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qualification-reprise.json",
+      "bytes": 43755,
+      "sha256": "52204cbfcaea514444ce7c1c4bae634147020ea73fce635d019e8dbd1970a3cc",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/verification-classeur.json",
+      "bytes": 115698,
+      "sha256": "3a6dd1b3bafc19da134a9f5e2e0ff7105a737f7b06bf38f7ab5a0af172394a1b",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/verify-followup.py",
+      "bytes": 9238,
+      "sha256": "1a3a7a7924e5951445b402102caa4d0ffde3f150321142602d53ce0dac980e08",
+      "role": "DELIVERY_OR_PRESERVED_EVIDENCE"
+    }
+  ],
+  "deliveryDocuments": [
+    {
+      "path": "docs/campagne/README.md",
+      "bytes": 19280,
+      "sha256": "d9f545177889c9eac50af17fff70c5cb6f6a8673cea4ce6ebe9b2e83859246da",
+      "gitBlob": "df6b1f9a8c23c2066cd7276287147c0cc08afa9c",
+      "observation": "WORKTREE"
+    },
+    {
+      "path": "docs/campagne/AVENANT_REPRISE_CHASSE_BIBLE_20261109.md",
+      "bytes": 10441,
+      "sha256": "6c5168dca908b024bb8addab915fb3e6bcf5aabe4b71375d8728ccc070343c75",
+      "gitBlob": "58e9a2155e5dee9d06270d82db7b1bc5334c1332",
+      "observation": "WORKTREE"
+    }
+  ],
+  "fileCount": 271,
+  "bytes": 103452937,
+  "acceptedFinalCaptureIntegrity": [
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-capacity-before-action.png",
+      "bytes": 58931,
+      "sha256": "94cf88e21e05f1ed92c3fbf08e2282692385f55b80d2b0de9fa87db9cd4a74ca"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-available-preview.png",
+      "bytes": 56361,
+      "sha256": "98e323becb948535e75042e346f4eceddaec703bfad8e700a22f2141b7112895"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-analysis-locked.png",
+      "bytes": 63418,
+      "sha256": "54d3d90940397ff75405dae5a3ed1d30948d1808ef1a9d86020d10bb2f971d36"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-mass-refusal.png",
+      "bytes": 56428,
+      "sha256": "b0af9173e94d3fd5293ecf65eafa4c2f2b1fd23382a21763bf17264dada02ce4"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-volume-refusal.png",
+      "bytes": 55110,
+      "sha256": "f0dfc608685b6f842c94da0d3d56f1f4a1c5f09a3efca398a082662ab2fb8019"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/1120x1000-depot-refusal.png",
+      "bytes": 56585,
+      "sha256": "8ce3c69bef1481154e5f2fe2c0258c44bdab67b49f3e658e5549aac08e39c71a"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-capacity-before-action.png",
+      "bytes": 67385,
+      "sha256": "139ab170f350cbfda5e0bbe9ca5d57a87d171776197743a88d1f9a1fc343a666"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-available-preview.png",
+      "bytes": 67294,
+      "sha256": "e294ca2f6455f0ffeb2a2694d177bc23b834d1a870be5e04556388e816ce73f3"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-analysis-locked.png",
+      "bytes": 69442,
+      "sha256": "b4b1b416c7e257d5464e92751139644d631a1d13b63cc0dcf3f6361d99a041b6"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-mass-refusal.png",
+      "bytes": 68819,
+      "sha256": "99e5ae3d538d9953ec4c033817191e8135eced6e248be01a097b3664562cc251"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-volume-refusal.png",
+      "bytes": 70961,
+      "sha256": "f1f37092ae6334e138ff366307b7b042a7d5be9d99c454b3307e5d43882db381"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/390x844-depot-refusal.png",
+      "bytes": 71505,
+      "sha256": "f78cd23e46c139e080a97e625f16d745a757678a8b67c7761dea50f131fe9446"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-capacity-before-action.png",
+      "bytes": 65551,
+      "sha256": "a9669d2f5395e1c77ca1771eef80f7f0172e445224e8148f3de363a784e325fa"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-available-preview.png",
+      "bytes": 65586,
+      "sha256": "458b5294075bbf9be052dd5f43871fb6ea93d5f183e7b4dfa7300d48aae23a74"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-analysis-locked.png",
+      "bytes": 67990,
+      "sha256": "cfc59c6f6d7ea711f669d1a2e2165f5cbc9dc0c4c1a5634d3293880077a13482"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-mass-refusal.png",
+      "bytes": 67148,
+      "sha256": "33058c759ad1d528ba55be28dce3deeb3c6091818d992ca32278fd2dd87ce94b"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-volume-refusal.png",
+      "bytes": 69508,
+      "sha256": "ba52c9a4b8a8c2d00bd42ca3d4f7ec8636f15e07f4cb9c131977fa8d12c9f08b"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/harvest/native-lint-final/320x740-depot-refusal.png",
+      "bytes": 67670,
+      "sha256": "2ef1d9f928d0654f2732142a2bf63151ebcb3f0db5e6ecb133f40c9183ae8ec5"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-accepted-visible-group.png",
+      "bytes": 1385173,
+      "sha256": "56a0abb0e3ad0079149377d082d0f9de2902b2884506b4dfe451a5030dbaec18"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-started.png",
+      "bytes": 1421187,
+      "sha256": "5080644505975abe8c6d0793007f88405ae85f9d78b447cb56d8a6ad9dfd6fd6"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-checkpoint-refused.png",
+      "bytes": 1067232,
+      "sha256": "b9fa6bf61c0bf9412d852795f89a830568ba9b9e9667a946f055323e61001488"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-paused-before-reload.png",
+      "bytes": 1358173,
+      "sha256": "4c09631baad7b95424967e4ddf29506fdcc318a4194c31f7c131f4b8d03a23e3"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-resumed-safe-group.png",
+      "bytes": 1329058,
+      "sha256": "24767e524d252910625bc6244ef72ad8a78c4e8a4d24f9f754d1d66e5df6f7f1"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-door-write-refused.png",
+      "bytes": 1051566,
+      "sha256": "1d393ed30e85df4daebb4be09b5efcc7c08d366dff91bd8e17d36776dbb004d2"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-arrived-through-door.png",
+      "bytes": 1290651,
+      "sha256": "3b26d74512a36182d4d62bb3c8c38af81bc1a4fc9c6776fe9ee50615ecbde86a"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-medical-post-visible.png",
+      "bytes": 1275815,
+      "sha256": "40469a12fddda005dbda1ea8038cbe2dfc48d9e31172d632242d8ad1c1b82fad"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-medical-write-refused.png",
+      "bytes": 976098,
+      "sha256": "cf579a4cc9fd0a5e6bf48eb41368c9d5162aeadcaddbc05c488297cc72584e81"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-reported-at-council.png",
+      "bytes": 1412123,
+      "sha256": "319997f653d9962bc5e761e9ae04d6c29120d0dc084bd607860b5f74c579f844"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/desktop-team-remains-at-medical.png",
+      "bytes": 1255980,
+      "sha256": "d30f26b66f9e12643fac7d46d68f0c2b8fb57e4f996b5f7f5f605b067a98dd75"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-accepted-visible-group.png",
+      "bytes": 268837,
+      "sha256": "f0903742e3e60ef55eab624d3876f1fa5967d74b985e76d2e48d92f5631b1ab0"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-route-prepared.png",
+      "bytes": 297131,
+      "sha256": "bf088445e45108a7c5adabacf246b18bbf5440413c2c2dcdd75f6ec2535a9486"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-started.png",
+      "bytes": 270177,
+      "sha256": "5d3ec81c5f2d5b03e0ef90e09cbaf2c3095cbf0fbb41853f75f6200a1c85b97a"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-paused-before-reload.png",
+      "bytes": 261887,
+      "sha256": "1d388cf95f38d454ca10788994385980e9dd211e5a1c4ce06215efd239eb0811"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-resumed-safe-group.png",
+      "bytes": 255474,
+      "sha256": "093ded229c6b4e1a27889cbb4ec83b497e8dfd5d46eb0c3fb78f5ec226fc8e51"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-arrived-through-door.png",
+      "bytes": 249152,
+      "sha256": "e66dee07a948d17531aed87e58080a7e5686f465a13843a6037e81a66e07aaaa"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-medical-post-visible.png",
+      "bytes": 248024,
+      "sha256": "742088321ab34a932b4e91120d5da756ab891720a1dbfb52eeb62a39e0a96013"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-reported-at-council.png",
+      "bytes": 279070,
+      "sha256": "ccd5478f5cb0998bf7a872e5c20878b57ac4f779321f956473a567912d3c801b"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/touch-390-team-remains-at-medical.png",
+      "bytes": 273297,
+      "sha256": "df0a37f27ff9321089167914a96b43c1b94f272ac5733585a2383c74b5bd604f"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-rejoined-separated-group.png",
+      "bytes": 199282,
+      "sha256": "c74757e7deb0eaa02a04be1d522cc427509ca3b01f4ea4d5e6fb1926eba4b066"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-medical-post-visible.png",
+      "bytes": 199471,
+      "sha256": "a4a8daa4fb8645baaca48dbed63438c902951fbdca95ac192e4d158fc14cc463"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-reported-at-council.png",
+      "bytes": 217878,
+      "sha256": "7062a4454f1ad0fa7052580ed2dcac56c8147af09f12e13ba3dfa94514fdcfb2"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/qa/escort/native-07/separated-320-team-remains-at-medical.png",
+      "bytes": 218975,
+      "sha256": "f3f8a99c50d03d886b380de034078e36be0cc431e0bd4b6a47ea4a35c20bb728"
+    }
+  ],
+  "captureIntegrityScope": "43 byte-count/SHA256 checks; not 43 visual inspections or human artistic validations.",
+  "selfExcluded": "production/reprise-chasse-bible-20261109/manifest-final.json"
+}

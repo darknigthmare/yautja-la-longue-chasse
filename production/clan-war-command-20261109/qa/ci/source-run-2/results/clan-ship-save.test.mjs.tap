@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: old campaign files and exports preserve absent or explicit null visits
+ok 1 - old campaign files and exports preserve absent or explicit null visits
+  ---
+  duration_ms: 31.902485
+  type: 'test'
+  ...
+# Subtest: every docking stage and occupied room survive durable reload and portable export without rewards
+ok 2 - every docking stage and occupied room survive durable reload and portable export without rewards
+  ---
+  duration_ms: 23.491387
+  type: 'test'
+  ...
+# Subtest: future, foreign and inconsistent visit payloads cannot overwrite a confirmed campaign
+ok 3 - future, foreign and inconsistent visit payloads cannot overwrite a confirmed campaign
+  ---
+  duration_ms: 5.453327
+  type: 'test'
+  ...
+# Subtest: a future primary visit protects its bytes even beside a compatible older backup
+ok 4 - a future primary visit protects its bytes even beside a compatible older backup
+  ---
+  duration_ms: 1.188994
+  type: 'test'
+  ...
+# Subtest: quota refusal leaves the confirmed room intact and permits a later explicit retry
+ok 5 - quota refusal leaves the confirmed room intact and permits a later explicit retry
+  ---
+  duration_ms: 2.450747
+  type: 'test'
+  ...
+# Subtest: an uncertain campaign write is reconciled without replaying a room change or writing again
+ok 6 - an uncertain campaign write is reconciled without replaying a room change or writing again
+  ---
+  duration_ms: 1.505291
+  type: 'test'
+  ...
+# Subtest: complete archive export and transaction import preserve the occupied room and personal fleet
+ok 7 - complete archive export and transaction import preserve the occupied room and personal fleet
+  ---
+  duration_ms: 8.612592
+  type: 'test'
+  ...
+# Subtest: a coherent complete archive keeps a nondefault engaged hull usable after import
+ok 8 - a coherent complete archive keeps a nondefault engaged hull usable after import
+  ---
+  duration_ms: 8.441394
+  type: 'test'
+  ...
+# Subtest: complete archives reject a different selected fleet hull during an engaged visit
+ok 9 - complete archives reject a different selected fleet hull during an engaged visit
+  ---
+  duration_ms: 20.241754
+  type: 'test'
+  ...
+# Subtest: a lightweight engaged visit import cannot silently replace its omitted nondefault fleet
+ok 10 - a lightweight engaged visit import cannot silently replace its omitted nondefault fleet
+  ---
+  duration_ms: 9.878952
+  type: 'test'
+  ...
+# Subtest: complete and account archive boundaries reject nested incompatible visits without writes
+ok 11 - complete and account archive boundaries reject nested incompatible visits without writes
+  ---
+  duration_ms: 10.253237
+  type: 'test'
+  ...
+# Subtest: a separate campaign cannot inherit the previous owner visit during replacement
+ok 12 - a separate campaign cannot inherit the previous owner visit during replacement
+  ---
+  duration_ms: 1.959466
+  type: 'test'
+  ...
+# Subtest: autosave, reload and Continue prioritize an aboard or approaching visit over an older deck location
+ok 13 - autosave, reload and Continue prioritize an aboard or approaching visit over an older deck location
+  ---
+  duration_ms: 69.554665
+  type: 'test'
+  ...
+# Subtest: loading a historical deck-labelled checkpoint keeps its aboard room and Continue corrects resume metadata
+ok 14 - loading a historical deck-labelled checkpoint keeps its aboard room and Continue corrects resume metadata
+  ---
+  duration_ms: 30.534942
+  type: 'test'
+  ...
+# Subtest: return to the personal ship retains docking while an explicit deck checkpoint resumes the deck
+ok 15 - return to the personal ship retains docking while an explicit deck checkpoint resumes the deck
+  ---
+  duration_ms: 42.408824
+  type: 'test'
+  ...
+# Subtest: old absent/null visits cannot acquire a clan resume label solely from a checkpoint request
+ok 16 - old absent/null visits cannot acquire a clan resume label solely from a checkpoint request
+  ---
+  duration_ms: 25.406927
+  type: 'test'
+  ...
+# Subtest: incompatible nested visits protect existing slot and backup bytes
+ok 17 - incompatible nested visits protect existing slot and backup bytes
+  ---
+  duration_ms: 18.320036
+  type: 'test'
+  ...
+# Subtest: slot quota refusal leaves the old checkpoint and newer confirmed aboard room independently recoverable
+ok 18 - slot quota refusal leaves the old checkpoint and newer confirmed aboard room independently recoverable
+  ---
+  duration_ms: 22.718492
+  type: 'test'
+  ...
+# Subtest: uncertain slot readback never announces success and cannot create a second autosave on replay
+ok 19 - uncertain slot readback never announces success and cannot create a second autosave on replay
+  ---
+  duration_ms: 37.627511
+  type: 'test'
+  ...
+# Subtest: two campaigns retain independent clan rooms through switching and account archive roundtrip
+ok 20 - two campaigns retain independent clan rooms through switching and account archive roundtrip
+  ---
+  duration_ms: 116.511078
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 505.07549

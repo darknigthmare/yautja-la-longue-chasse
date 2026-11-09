@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "classification": "BYTE_IDENTITY_OF_TESTED_INPUTS_NOT_A_NEW_BROWSER_RUN",
+  "implementationCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+  "browserReport": "browser-verification.json",
+  "browserReportSha256": "39018df79cacba29e26b2f52ae003508fdae1ac406084a033f9dc46c3e7ab4c2",
+  "entries": [
+    {
+      "path": "app/globals.css",
+      "testedSha256": "038669d4b6af981f0d21b3fa73b5b85f04b62130f689145e6d6af3a006659317",
+      "committedSha256": "038669d4b6af981f0d21b3fa73b5b85f04b62130f689145e6d6af3a006659317",
+      "equal": true
+    },
+    {
+      "path": "app/game/GameClient.tsx",
+      "testedSha256": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+      "committedSha256": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipHub.tsx",
+      "testedSha256": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585",
+      "committedSha256": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipHub.module.css",
+      "testedSha256": "dce81e3bc9b5eca6c1c74798099fd1bd26567de2974a2aad169c38ee5229d89c",
+      "committedSha256": "dce81e3bc9b5eca6c1c74798099fd1bd26567de2974a2aad169c38ee5229d89c",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipInterior.tsx",
+      "testedSha256": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+      "committedSha256": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipInterior.module.css",
+      "testedSha256": "7fd90031c2f115a5025f0b7804e5f6f14c9f71df69ffd11d2b08d08bdafe5ad8",
+      "committedSha256": "7fd90031c2f115a5025f0b7804e5f6f14c9f71df69ffd11d2b08d08bdafe5ad8",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.tsx",
+      "testedSha256": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9",
+      "committedSha256": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.module.css",
+      "testedSha256": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273",
+      "committedSha256": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "testedSha256": "0fac9efb73358b1f744a50e3812062264286c855450461a479cb1b75c3eb76cc",
+      "committedSha256": "0fac9efb73358b1f744a50e3812062264286c855450461a479cb1b75c3eb76cc",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/clanShipInterior.ts",
+      "testedSha256": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+      "committedSha256": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+      "equal": true
+    },
+    {
+      "path": "app/game/HomeworldNpcSpriteV84.tsx",
+      "testedSha256": "e6a069be9e16f09e63c254880e4d8d529757dd0e30386781539df150b13ef8bc",
+      "committedSha256": "e6a069be9e16f09e63c254880e4d8d529757dd0e30386781539df150b13ef8bc",
+      "equal": true
+    },
+    {
+      "path": "app/game/save.ts",
+      "testedSha256": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+      "committedSha256": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+      "equal": true
+    },
+    {
+      "path": "app/game/types.ts",
+      "testedSha256": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+      "committedSha256": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+      "equal": true
+    },
+    {
+      "path": "tests/helpers/clan-ship-return-escort-fixture.mjs",
+      "testedSha256": "15103018589d12c67b3ffd28de55271923f8c530d9cfd06d802d99b57d428b5e",
+      "committedSha256": "15103018589d12c67b3ffd28de55271923f8c530d9cfd06d802d99b57d428b5e",
+      "equal": true
+    }
+  ],
+  "scope": "The fourteen application/style/committed-fixture inputs tested in native-07 have exactly the bytes in the readable-formation commit. Actual checkout and dirty-tree provenance remain in the raw report; the QA recipe has its own recorded bytes."
+}

@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "scope": "Actual Next GameClient → physical council route → War Bible V6 default rules → persisted V115 adoption, canonical orders and reload. No reducer/clock/DOM/storage reads patched.",
+  "buildId": "lSBcQd-2LuUCPafGoIZvC",
+  "browserVersion": "154.0.8037.57",
+  "checksPassed": 15,
+  "checksFailed": 0,
+  "downloads": 3,
+  "screenshotsOpened": 4,
+  "sourceBeforeAfterEqual": true,
+  "sourceSha256": {
+    "app/game/GameClient.tsx": "cb9e7b8c9ed38a5fb5c112905be169246bdef5b136408a3207fb307de32f2972",
+    "app/game/ClanWarBibleV6Panel.tsx": "f6047efe7e48568cab3fe7c9de3d1d6b5d8d37f25ccfd3117c0ab4ff109c6f57",
+    "app/game/ClanWarOperationsV115.tsx": "820e700818808b3d552cb26ee7e6d8fb74f1311411cb2f4d99962f5086fc5abb",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "app/game/systems/clanWarBibleV6.ts": "66de0c9d66d9f9fffa65fd1037b9f1b428cdbe7545211c08a9afe77162833dab",
+    "app/game/clanWarBibleV6Source.json": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d"
+  },
+  "servedNextScriptsCompared": 80,
+  "servedNextScriptsAllMatch": true,
+  "verification": {
+    "asOf": "2026-11-09",
+    "status": "PASS",
+    "checksPassed": 15,
+    "checksFailed": 0,
+    "downloadsVerified": 3,
+    "screenshotsOpened": 4,
+    "nativeNextGameClient": true,
+    "defaultWarRulesV6Persisted": true,
+    "buildId": "lSBcQd-2LuUCPafGoIZvC",
+    "sourceCount": 8,
+    "sourceBeforeAfterEqual": true,
+    "servedNextScriptsCompared": 80,
+    "servedNextUniqueScripts": 30,
+    "servedNextScriptsAllMatch": true,
+    "legacyBeforeSha256": "1f71734568e82ab41b9aa4f00793db38de1fe3ff40f75250f61a0927e9a19f89",
+    "legacyAfterSha256": "600c385d56403e970fd75a07976b4380e466411f45ae48b277e02b4d424b2631",
+    "legacyFenceAlwaysAbsent": true,
+    "canonicalAdoptionExactBytes": true,
+    "canonicalUnchangedByLaterOldByteReplay": true,
+    "ravThroughoutCanonical": 119,
+    "canonicalTicksObserved": [
+      1,
+      2,
+      3
+    ],
+    "canonicalMissionUnchanged": "W115-OPS-0001",
+    "canonicalReloadExactBytesAndFence": true,
+    "campaignRawUnchanged": true,
+    "externalLegacyWriteDisclosedAsFixture": true,
+    "oldFullBundleExecutedInThisNextRun": false,
+    "noNewAppSourceEdits": true,
+    "noCloudOrPhysicalDeviceAdmission": true,
+    "firstAttemptPreserved": "production/p0p1-20261109/qa/archive-next/attempt-1",
+    "firstAttemptIssue": "QA wait accepted a previous confirmed transaction before the asynchronous clicked order settled. attempt-2 waits expected tick plus matching confirmed fence."
+  },
+  "rawBrowserReport": {
+    "path": "production/p0p1-20261109/qa/archive-next/attempt-2/report.browser-run.json",
+    "sha256": "df3371773225733bcae3597f028c1f40540a84eb7806eaf06890ca6b1f0a1c19"
+  },
+  "finalReport": {
+    "path": "production/p0p1-20261109/qa/archive-next/attempt-2/report.json",
+    "sha256": "e0b5a4fb5f23ea09b8147bffb93d58783e2744d2e8ff8703e6a55c7b547792c8"
+  },
+  "artifacts": {
+    "production/p0p1-20261109/qa/archive-next/attempt-2/00-initial-seeded.json": {
+      "sha256": "de6d695e3c8a948131e1a5f22c4ac47b32f01404e8fcfec0fe4ca9209c778f8b",
+      "bytes": 16708
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/01-native-next-legacy-preview.png": {
+      "sha256": "5bba42041bd88df6324c3110494034aed369c6b452db710eea02a81dcfff711f",
+      "bytes": 364784
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/01-readonly-preview.json": {
+      "sha256": "184609ca480d9f42fb3bd91b94e41525a6766645a77d01c849e25d781affc6c4",
+      "bytes": 16709
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/02-adopted-exact.json": {
+      "sha256": "11d43a065db62fc664f5832aab34eaa642e513a4cea15e1606b3021d9b936222",
+      "bytes": 25699
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/02-native-next-adopted-mission.png": {
+      "sha256": "b6226733e26bb397872509d74e2028620859889a5a8619d74a6a2a4b1609120a",
+      "bytes": 192625
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/03-after-external-old-branch-write.json": {
+      "sha256": "f6b2bb7a8aed20f4176205ebae9bf41f58b4c22ccd53cba0040060ce1701572d",
+      "bytes": 25742
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/03-native-next-continues-after-old-write.png": {
+      "sha256": "0d8efad32380d98c3e45559527f773f00e44f9437bad6afc5741a6a27f41a430",
+      "bytes": 192797
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/04-continued-canonical.json": {
+      "sha256": "52e6e0e7408cb453f8e1431beabdfd04845a2a956958cc85138c921f2d20b738",
+      "bytes": 30255
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/04-native-next-reload-no-remigration.png": {
+      "sha256": "0d8efad32380d98c3e45559527f773f00e44f9437bad6afc5741a6a27f41a430",
+      "bytes": 192797
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/05-before-reload.json": {
+      "sha256": "52e6e0e7408cb453f8e1431beabdfd04845a2a956958cc85138c921f2d20b738",
+      "bytes": 30255
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/06-after-native-reload.json": {
+      "sha256": "52e6e0e7408cb453f8e1431beabdfd04845a2a956958cc85138c921f2d20b738",
+      "bytes": 30255
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/07-final-canonical-after-reload-order.json": {
+      "sha256": "b87563716b504bcf5116fdfa1968920ba59c8fb92f931cc2e41b1dd5f037558c",
+      "bytes": 30384
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/README.md": {
+      "sha256": "0b205bab618fb8b9a34924e3b4f921b22f593d3b3fcda2d48f651584f67b05cd",
+      "bytes": 3257
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/driver.executed.mjs.txt": {
+      "sha256": "1c284d90d48d7bf0548bb02fce8cdc6f4aac191ee36b7aa4875129445538405c",
+      "bytes": 19477
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/recovery-after-adoption.json": {
+      "sha256": "21b7425b6551de5f63ce1a2e375b9cc10ef1091de1c2406bb9e6c5d99820d13c",
+      "bytes": 4765
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/recovery-after-old-branch-write.json": {
+      "sha256": "b7d26278ff989771a4e17881a9117525d00fb8d18fc90dae265b5c3930002795",
+      "bytes": 4808
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/recovery-before-adoption.json": {
+      "sha256": "21b7425b6551de5f63ce1a2e375b9cc10ef1091de1c2406bb9e6c5d99820d13c",
+      "bytes": 4765
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/report.browser-run.json": {
+      "sha256": "df3371773225733bcae3597f028c1f40540a84eb7806eaf06890ca6b1f0a1c19",
+      "bytes": 35233
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/report.json": {
+      "sha256": "e0b5a4fb5f23ea09b8147bffb93d58783e2744d2e8ff8703e6a55c7b547792c8",
+      "bytes": 35558
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/run.lock": {
+      "sha256": "23d2a6a147fbb8bd503b44e246bf2c3c98911d354f0287157899cc66f4d1c533",
+      "bytes": 25
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/run.log": {
+      "sha256": "2a2e982e7e39aae048d53927d6aed3e8cc3923529fc02f9bc5553843c2307a27",
+      "bytes": 1418
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/screenshot-inspection.json": {
+      "sha256": "16ef33c2507627685f1763aaec1a6e8fb4db316890db4f36a7f972b3fc4081ef",
+      "bytes": 1218
+    },
+    "production/p0p1-20261109/qa/archive-next/attempt-2/verification.json": {
+      "sha256": "a2a9bfceab56576a0bbf06b833cddef413269ccaf6f536446cc0cf4f756a4340",
+      "bytes": 1365
+    }
+  },
+  "externalLegacyWriteIsFixture": true,
+  "physicalController": false,
+  "humanArtCertification": false,
+  "cloudAdmission": false,
+  "globalP0P1Closed": false
+}

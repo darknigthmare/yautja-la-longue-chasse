@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "criteria": [
+    "BACK144-006",
+    "BACK144-018"
+  ],
+  "changes": [
+    "Live title uses mission type and currentV126site, with exact source title retained in historical disclosure.",
+    "Current preparation uses currentV126site and secondary objective uses currentV126biome, matchingCSV; complete source remains original in JSON.",
+    "Extracted the real live detail component in the same file so SSR exercises the exact production presentation without mocked hooks."
+  ],
+  "sourceSha256": {
+    "app/game/ClanWarVariantAtlasV120.tsx": "ea0d64b23cca58b92e89ac7bf4d9c33170f0534ee5be50bdc86bb9d1be41af2e",
+    "app/game/systems/clanWarVariantExportV126.ts": "c0075ff0cef994ea1531512e002ca1f28d92e66f49954c9084a0da60e2ea132a",
+    "app/game/systems/clanWarWorldClimateV126.ts": "4e7f9ed98e4dba7322fb6bac76abfc7c1b51cbc98790eb7314e4a34263f490c2",
+    "tests/clan-war-variant-export-coherence.test.mjs": "e74b126a7b96c4af7e9999ad1b8e580a406f5745488eefddeac1524c0d01b049"
+  },
+  "verification": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "--experimental-strip-types",
+      "tests/clan-war-variant-export-coherence.test.mjs"
+    ],
+    "passed": 7,
+    "failed": 0,
+    "newSsrTestsIncluded": 2,
+    "log": "production/p0p1-20261109/qa/homeworld/ui-export-fix/ui-export-final.tap",
+    "logSha256": "c1795bc4e702994396ae0dc259dfd39a6e1b1999a405a4eb103b51189ebae6b3",
+    "lintExitCode": 0,
+    "lintLog": "production/p0p1-20261109/qa/homeworld/ui-export-fix/ui-export-lint.log"
+  },
+  "notAdditive": "Two new SSR cases added to the existing five export cases. Repeated tests from earlier receipts are not counted twice.",
+  "scope": "Real ReactSSR plus domain serialization checks; not native hydration, browser layout, playable1200missions or artistic validation. Current native recipe will qualify a fresh production build separately.",
+  "postFixNativeBrowserExecuted": false
+}

@@ -64,7 +64,7 @@ export {
   type HomeworldTrophyDisplay,
 } from "./homeworldCity";
 
-export type HomeworldService = "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "pit" | "justice" | "mausoleum";
+export type HomeworldService = "mobility" | "armory" | "customization" | "trophies" | "codex" | "medbay" | "training" | "pit" | "justice" | "mausoleum";
 export type HomeworldWitnessChoice = "protect" | "restitution" | "investigate";
 export type HomeworldEvidenceId = "suspect-trophy" | "memory-register" | "undercity-testimony";
 export type HomeworldAudienceOutcome = "protected-witness" | "ordered-restitution" | "continued-investigation";

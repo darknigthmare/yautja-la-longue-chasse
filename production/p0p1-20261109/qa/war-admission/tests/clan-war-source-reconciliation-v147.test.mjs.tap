@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: V147 hardened W133 debrief verifies the unmodified authored W3 source and never authorizes V85
+ok 1 - V147 hardened W133 debrief verifies the unmodified authored W3 source and never authorizes V85
+  ---
+  duration_ms: 17.864186
+  type: 'test'
+  ...
+# Subtest: V147 rejects a forged map even when the receipt and the state agree on all IDs
+ok 2 - V147 rejects a forged map even when the receipt and the state agree on all IDs
+  ---
+  duration_ms: 19.388705
+  type: 'test'
+  ...
+# Subtest: V147 rejects a changed mission objective geometry or invented mission source cells
+ok 3 - V147 rejects a changed mission objective geometry or invented mission source cells
+  ---
+  duration_ms: 23.430943
+  type: 'test'
+  ...
+# Subtest: V147 detects inflated W3 unit statistics and PC budget in a self-consistent client save
+ok 4 - V147 detects inflated W3 unit statistics and PC budget in a self-consistent client save
+  ---
+  duration_ms: 25.565507
+  type: 'test'
+  ...
+# Subtest: V147 rejects mutually forged victory and receipt before the 3 source objectives are done
+ok 5 - V147 rejects mutually forged victory and receipt before the 3 source objectives are done
+  ---
+  duration_ms: 8.700544
+  type: 'test'
+  ...
+# Subtest: V147 four V115 modes and one W133 study coexist in a Council without V85 conquest
+ok 6 - V147 four V115 modes and one W133 study coexist in a Council without V85 conquest
+  ---
+  duration_ms: 21.577566
+  type: 'test'
+  ...
+# Subtest: V147 source validators do not claim to authenticate arbitrary client telemetry
+ok 7 - V147 source validators do not claim to authenticate arbitrary client telemetry
+  ---
+  duration_ms: 2.911682
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 127.613764

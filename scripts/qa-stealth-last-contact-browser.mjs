@@ -46,7 +46,7 @@ for(let i=0;i<queue.length&&i<12000&&!found;i++){
  }
 }
 assert.ok(found,`No playable PR55 observed contact in ${seen.size} states`);
-const raw=JSON.stringify(found),key="yautja.clan-war.v115.operations.free.v1";
+const raw=JSON.stringify(found),key="yautja.clan-war.v115.operations.fenced.v2";
 assert.ok(api.readWarOperationsV115(raw,rules));
 const server=await createServer({configFile:false,publicDir:false,define:{"process.env":"{}"},esbuild:{jsx:"automatic"},server:{host:"127.0.0.1",port:0},appType:"spa"});
 let browser;

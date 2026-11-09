@@ -13,7 +13,7 @@ const site=rules.territories.find(t=>t.id!==base.baseId&&!api.warMissionEligible
 assert.ok(site);
 const started=api.beginWarOperationV115(base,"outer",site.id,[team.id],rules,Date.now()-1000);
 assert.equal(started.accepted,true,started.message);
-const storage="yautja.clan-war.v115.operations.free.v1",raw=JSON.stringify(started.state);
+const storage="yautja.clan-war.v115.operations.fenced.v2",raw=JSON.stringify(started.state);
 const server=await createServer({configFile:false,publicDir:false,define:{"process.env":"{}"},
  esbuild:{jsx:"automatic"},server:{host:"127.0.0.1",port:0},appType:"spa"});
 let browser;

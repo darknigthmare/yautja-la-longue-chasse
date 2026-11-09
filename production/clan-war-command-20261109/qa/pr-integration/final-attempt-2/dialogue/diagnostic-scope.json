@@ -1,0 +1,9 @@
+{
+  "qualified": false,
+  "passedBeforeInterruption": 5,
+  "naturalAutosaveRetentionPassed": true,
+  "manualTabInterruptionObserved": false,
+  "cause": "Playwright itself forces focus emulation for every Chromium page. Native blank-tab probe confirms both pages report focused by default; disabling that override restores real target focus changes.",
+  "appBugClaimedForThisFailure": false,
+  "nextCorrection": "Disable default focus emulation via CDP on both tabs, then use real Page.bringToFront. No synthetic blur or visibility events and no click deadline increase."
+}

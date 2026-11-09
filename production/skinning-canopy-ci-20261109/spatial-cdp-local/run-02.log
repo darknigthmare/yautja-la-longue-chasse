@@ -1,0 +1,14 @@
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+AssertionError [ERR_ASSERTION]: The X11 source proof is pinned to this Chromium binary.
++ actual - expected
+
++ 'Chrome/154.0.8037.57'
+- 'Chrome/153.0.8010.12'
+            ^
+
+    at startX11Capture (file:///workspace/yautja-reprise-20261109/outputs/qa-spatial-cdp-kick-preflight-20261109/driver.mjs:1035:10)
+    at async file:///workspace/yautja-reprise-20261109/outputs/qa-spatial-cdp-kick-preflight-20261109/driver.mjs:2294:3

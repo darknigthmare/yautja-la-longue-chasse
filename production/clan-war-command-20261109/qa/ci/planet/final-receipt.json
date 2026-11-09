@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09T12:34:54.197597+00:00",
+  "passed": true,
+  "nativeChecksPassed": 89,
+  "nativeChecksFailed": 0,
+  "buildId": "mdrvYovYvfvhuJqeZXn1D",
+  "url": "http://127.0.0.1:3154",
+  "scope": "Actual final pre-compatibility production Next routes: import-ordering, regional textures, V102 and V103 editors, real generated fronts and isolated browser archives. All original data assertions retained; one keyboard reachability check added. The four recipes use fresh browser contexts, deterministic generated worlds and disclosed storage/clipboard or native-file-read fixtures.",
+  "sourceIdentityAuthority": "Build mdrv and1293 app byte bookends, exact recipe copies; not Git HEAD alone or a claim about a later compatibility build.",
+  "recipes": [
+    {
+      "name": "import-order",
+      "report": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/import-race/run-BheL3Z/report.json",
+      "reportSha256": "3da923d749b485ca88c3dd133f412ca1752999d40ce97a5fa048df1f0544219e",
+      "checks": 7,
+      "passed": true
+    },
+    {
+      "name": "regional-materials",
+      "report": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/regional/regional-material-checks.json",
+      "reportSha256": "0935f2ccbb3b4ba7630616a882c7e91326b5735439b41cea67638123734d2609",
+      "checks": 10,
+      "passed": true
+    },
+    {
+      "name": "generator-v102",
+      "report": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/report.json",
+      "reportSha256": "ab7158fa142513fe3f3ddb2831acd8aa111d1d8ca418320dfd4010616a7a3521",
+      "checks": 36,
+      "passed": true
+    },
+    {
+      "name": "generator-v103",
+      "report": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/report.json",
+      "reportSha256": "fa562bd5eb5819efe138745052e36eef336e59eb1d29a5bc663f9cdaff9e8ba2",
+      "checks": 36,
+      "passed": true
+    }
+  ],
+  "sourceBeforeAfterEqual": true,
+  "appFilesCompared": 1293,
+  "sourceSha256": {
+    "scripts/qa-planet-import-race-v103.mjs": "1366731e83fecd1d4bbdaeb2fccbc87b4433a8d131dbd0cfde52878a78046e9c",
+    "scripts/qa-planet-regional-materials-v102.mjs": "022668aec0f814505e87625f4db7c8b12c19dd1888ba31c1317b7d1dedf74b84",
+    "scripts/qa-planet-generator-v102.mjs": "624f4ff157b9de9b73766bdb9ab6931e60078b1cb0e215ae632e2df7bfe41053",
+    "scripts/qa-planet-generator-v103.mjs": "8e549e19187efa2d00b20f9998029a81d18dbea708d8c8ab8a9b9dff242d6370"
+  },
+  "sourceBookend": {
+    "before": "source-before.json",
+    "beforeSha256": "b5811e035f3fb0f1474a6857e86cb0a428039c4c00354ac103075aed787b25e1",
+    "after": "source-after.json",
+    "afterSha256": "7918e404e3edbb437e2e20335cbc37905f3086c1a4bd645634719abfdfd91b18",
+    "changedPaths": []
+  },
+  "interfaceChanges": [
+    "Real native dialog close/open clicks surround map, theater, territory and end-turn interactions.",
+    "The visible theater opener receives automatic focus after a planet change, verified before any scripted keypress; Enter then Tab reaches the picker.",
+    "Native aria-expanded state and actual dialog close/show readiness avoid clicking behind pending modal effects. No force-click, DOM state/scroll mutation, state reducer substitution or longer timeout was introduced.",
+    "The route returns through the actual Quitter le conseil button."
+  ],
+  "native24UnsavedFronts": true,
+  "assertionPreservation": {
+    "v102OriginalCheckLabelsPreserved": 35,
+    "v102AdditionalKeyboardCheck": 1,
+    "v103OriginalCheckLabelsPreserved": 36,
+    "existingTimeoutsIncreased": false,
+    "independentDiffReview": "Read-only pr131_metadata_review confirmed modal navigation and original save/geometry assertions; its focus coverage concern was fixed before the final full replay."
+  },
+  "originalImagesInspected": 5,
+  "historicalFailures": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/generator-v102/report.json",
+      "sha256": "1d7ce3eb047db840b818910532f5700286fb646e408750de9f4836922102514f",
+      "checksCompleted": 17,
+      "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-war-v85=\"free-profile\"]').getByTestId('clan-war-atlas-v95').getByRole('button', { name: '▱ Planisphère', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-pressed=\"false\">▱ Planisphère</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_b_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_b_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    41 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_b_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v102.mjs:157:75",
+      "countedAsPassingEvidence": false
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-2/generator-v102/report.json",
+      "sha256": "2037914230211c7a64df149f1465f5269519761985117a20ee6da5317c9e96b5",
+      "checksCompleted": 20,
+      "failure": "AssertionError [ERR_ASSERTION]: next-world navigation uses the full dynamic catalogue and restores keyboard focus\n    at check (file:///workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v102.mjs:18:45)\n    at file:///workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v102.mjs:202:3",
+      "countedAsPassingEvidence": false
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-2/generator-v103/report.json",
+      "sha256": "9e38c3566162ffa98373c52cccb0c2c22d4a2bbef21c4b48da98bb9fe2e1cfa3",
+      "checksCompleted": 27,
+      "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-war-v85=\"free-profile\"]').getByRole('button', { name: 'Retour', exact: true })\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v103.mjs:303:74",
+      "countedAsPassingEvidence": false
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-3/generator-v102/report.json",
+      "sha256": "8a612ef332f843460dcebe57ddd710de1a0036d573e0d147bc2d86a6feef682a",
+      "checksCompleted": 32,
+      "failure": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-war-v85=\"free-profile\"]').getByTestId('war-planet-selector-v96') to be visible\u001b[22m\n\u001b[2m    46 × locator resolved to hidden <section data-landmass-count=\"5\" data-testid=\"war-planet-selector-v96\" class=\"ClanWarPlanetsV96_browser__TtxXP\" aria-labelledby=\"planet-browser-_r_23_-title\" data-active-planet=\"proc-v103-jag1-221011100011000111100-ssslr\">…</section>\u001b[22m\n\n    at /workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v102.mjs:281:30",
+      "countedAsPassingEvidence": false
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-4/generator-v102/report.json",
+      "sha256": "47062b149b719ed96dd8f79f44c7cda37cf6506297e7ff4e2aaf131dffdb7173",
+      "checksCompleted": 32,
+      "failure": "locator.click: Timeout 25000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-clan-war-v85=\"free-profile\"]').locator('[data-command-open=\"worlds\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"true\" data-command-open=\"worlds\" class=\"ClanWarPanelV85_changeTheater__36KZv\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <p class=\"ClanWarPlanetsV96_description__SYFyc\">Shaatha-JAG0 combine forêts tempérées et océans e…</p> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <div class=\"ClanWarPlanetsV96_activeWorld__N7fOS\">…</div> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <header class=\"ClanWarCommandOverlay_header__ybJvi\">…</header> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  10 × retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"ClanWarPlanetsV96_activeWorld__N7fOS\">…</div> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <div class=\"ClanWarPlanetsV96_activeWorld__N7fOS\">…</div> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <header class=\"ClanWarCommandOverlay_header__ybJvi\">…</header> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n\u001b[2m       - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <header class=\"ClanWarCommandOverlay_header__ybJvi\">…</header> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  2 × retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n\u001b[2m      - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div class=\"ClanWarPlanetsV96_activeWorld__N7fOS\">…</div> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\u001b[2m    - done scrolling\u001b[22m\n\u001b[2m    - <header class=\"ClanWarCommandOverlay_header__ybJvi\">…</header> from <dialog open=\"\" aria-modal=\"true\" aria-labelledby=\"_r_7_\" data-command-overlay=\"drawer\" class=\"ClanWarCommandOverlay_overlay__vuk9T\">…</dialog> subtree intercepts pointer events\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    - waiting 500ms\u001b[22m\n\n    at openWorlds (/workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v102.mjs:35:63)\n    at async file:///workspace/yautja-la-longue-chasse/scripts/qa-planet-generator-v102.mjs:281:5",
+      "countedAsPassingEvidence": false
+    }
+  ],
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/import-race/run-BheL3Z/recipe-used.mjs",
+      "bytes": 16558,
+      "sha256": "1366731e83fecd1d4bbdaeb2fccbc87b4433a8d131dbd0cfde52878a78046e9c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/import-race/run-BheL3Z/report.json",
+      "bytes": 12861,
+      "sha256": "3da923d749b485ca88c3dd133f412ca1752999d40ce97a5fa048df1f0544219e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/regional/generated-regional-globe.png",
+      "bytes": 884871,
+      "sha256": "fcf9b181067af7f3092bfc5635302768e28ccf8312e505e443209858eb522560"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/regional/generated-regional-map.png",
+      "bytes": 1012356,
+      "sha256": "f4febfe89fade79ddbbe763e802230379b615a427e9d92529a622f98e6d5893f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/regional/recipe-used.mjs",
+      "bytes": 14009,
+      "sha256": "022668aec0f814505e87625f4db7c8b12c19dd1888ba31c1317b7d1dedf74b84"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-1/regional/regional-material-checks.json",
+      "bytes": 2374,
+      "sha256": "0935f2ccbb3b4ba7630616a882c7e91326b5735439b41cea67638123734d2609"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/desktop-generated-front.png",
+      "bytes": 581450,
+      "sha256": "c08d801940db6173f2139fb13c10069cc162c6d367c257074ad4d884d5dfadf9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/desktop-generated-globe.png",
+      "bytes": 752779,
+      "sha256": "9842a786ed4bae9b9397db25b6766cad3bcc6b32a9e9e8b67ae3622f6b297d52"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/desktop-generated-map.png",
+      "bytes": 982131,
+      "sha256": "01a005d194ee5b3c7e655a91d2d16f8f85f02e23837e4a0deb86292a735a79bb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/desktop-generator-controls.png",
+      "bytes": 226748,
+      "sha256": "7c8a8c6dc6e4197613638be2999a4a30d94e7b4d97dd181ac7ccd0d22428f076"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/mobile-generated-map.png",
+      "bytes": 319598,
+      "sha256": "fbf9f9b5c7e7854f19f48b0ff9c9da1b546bc6f8cf2a6bfa6a4bf67b95744961"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/mobile-generator-controls.png",
+      "bytes": 42391,
+      "sha256": "cc9cb67346ec8eb538624d236e90ec0de1162bd419a4bab5b2ab3c5f69372e4c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/proc-v102-11gyrh2-2021113-yuqlv-land-map.png",
+      "bytes": 275103,
+      "sha256": "30137d77bf48909e6f77f58dd7f97e34fd5d4ae095f111d61ded8c2b61f46ea5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/proc-v102-11gyrh2-2021113-yuqlv.json",
+      "bytes": 7049,
+      "sha256": "7719384dbc7bc0d3752f103e90d437e976f15d14ddc4e34fef66482360f8497e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/recipe-used.mjs",
+      "bytes": 27639,
+      "sha256": "624f4ff157b9de9b73766bdb9ab6931e60078b1cb0e215ae632e2df7bfe41053"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v102/report.json",
+      "bytes": 3304,
+      "sha256": "ab7158fa142513fe3f3ddb2831acd8aa111d1d8ca418320dfd4010616a7a3521"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/desktop-generator.png",
+      "bytes": 313114,
+      "sha256": "f91e062a66b9827369bc33cee2cc5f1e76de5faecdb62508b6e880977fbd81e9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/large-fragmented-atlas.png",
+      "bytes": 986784,
+      "sha256": "a8f4adc9acb336c6fd7a94daaf28752dc703f71ad1c259f39cb034cabb7b5ad9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/large-world.json",
+      "bytes": 39442,
+      "sha256": "e90f14a6fe4e2cd2bedf3490a89d9a0fe8d6ba2d8a3c7b68f4524b866423ace5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/legacy-world.json",
+      "bytes": 12638,
+      "sha256": "1b23aea4bc441807c2b5605905e225b85fce53f6d7cba8280f3ade44c7a27904"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/mobile-generator.png",
+      "bytes": 126112,
+      "sha256": "910b83e8079deb97463013b4d9221945b076ba7a51883ba627630015c1e6e1c5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/mobile-large-atlas.png",
+      "bytes": 307359,
+      "sha256": "087a0ca1598718a86be0f34488e06307024c4bc792b3c70cb7162bf2e0b0724f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/recipe-used.mjs",
+      "bytes": 32319,
+      "sha256": "8e549e19187efa2d00b20f9998029a81d18dbea708d8c8ab8a9b9dff242d6370"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/report.json",
+      "bytes": 4336,
+      "sha256": "fa562bd5eb5819efe138745052e36eef336e59eb1d29a5bc663f9cdaff9e8ba2"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/small-land-verdant.png",
+      "bytes": 290986,
+      "sha256": "ba66917bb7f2908f886155863b7523d9f5fc6b4e678ee0c1b28fd861a01069e4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/small-land-violet.png",
+      "bytes": 296026,
+      "sha256": "6e423afa423da8dea31fb683557092ade09b9b24fe575a5ce396532e80e5e464"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/small-terrestrial-atlas.png",
+      "bytes": 932865,
+      "sha256": "36742fad1c00e7dbf85d7e16c80531ae26538d4eb5dd1507e191237d599bdc82"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/attempt-5/generator-v103/small-world.json",
+      "bytes": 11738,
+      "sha256": "c4393ca82fa0c3cf91c8e5f94f36ec6143a0d7b224a8c5273dd08fe2d8fea0a3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/source-before.json",
+      "bytes": 197466,
+      "sha256": "b5811e035f3fb0f1474a6857e86cb0a428039c4c00354ac103075aed787b25e1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/source-after.json",
+      "bytes": 197519,
+      "sha256": "7918e404e3edbb437e2e20335cbc37905f3086c1a4bd645634719abfdfd91b18"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet/screenshot-inspection.json",
+      "bytes": 2522,
+      "sha256": "54a9c313f63f3994812657d1a5340c8648d8bbc696b8995b2bb4addd767a95be"
+    }
+  ],
+  "allP0P1Closed": false,
+  "limitations": [
+    "Local production Next3154 testing does not prove the exact underlying assertion of the old remote failure because its Azure logs/artifact download were forbidden. It reproduces a concrete obsolete navigation defect in the same maintained workflow command.",
+    "The local routes run on build mdrv; no later app compatibility change/build is covered or relabeled by this receipt.",
+    "The earlier failed attempts and superseded V10336-check pass remain dated and are not added to89 checks. These are88 existing bounded cases plus one keyboard check, not89 newly unique tests.",
+    "Controlled quota/clipboard failures and File.text delivery delay remain explicitly bounded fixtures; no full campaign, physical hardware, lore/art approval or frame-rate claim."
+  ]
+}

@@ -13,9 +13,9 @@ import {chromium} from "playwright-core";
 
 const root=fileURLToPath(new URL("../",import.meta.url));
 const output=resolve(root,"outputs/clan-war-v152-rts-lock");
-const key="yautja.clan-war.v115.operations.free.v1";
+const key="yautja.clan-war.v115.operations.fenced.v2";
 const hunterKey="v152-unrelated-hunter-save";
-const lockName="yautja.clan-war.v115.operations.free.v1.write";
+const lockName="yautja.clan-war.v115.operations.fenced.v2.write";
 const bundle=await build({absWorkingDir:root,
   entryPoints:["tests/browser/clan-war-v151-four-modes.fixture.tsx"],
   bundle:true,platform:"browser",format:"iife",jsx:"automatic",write:false,

@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: menu entry requires neutral input and confirm fires once per press
+ok 1 - menu entry requires neutral input and confirm fires once per press
+  ---
+  duration_ms: 1.354875
+  type: 'test'
+  ...
+# Subtest: direction repeats have an initial delay and independent confirm edges
+ok 2 - direction repeats have an initial delay and independent confirm edges
+  ---
+  duration_ms: 0.381916
+  type: 'test'
+  ...
+# Subtest: spatial menu navigation handles grids, empty screens and wraparound
+ok 3 - spatial menu navigation handles grids, empty screens and wraparound
+  ---
+  duration_ms: 0.33796
+  type: 'test'
+  ...
+# Subtest: a held back input cannot cascade across opened menus
+ok 4 - a held back input cannot cascade across opened menus
+  ---
+  duration_ms: 0.138769
+  type: 'test'
+  ...
+# Subtest: the real menu control adapter clamps sliders and skips locked select options
+ok 5 - the real menu control adapter clamps sliders and skips locked select options
+  ---
+  duration_ms: 455.629461
+  type: 'test'
+  ...
+# Subtest: simultaneous navigation and confirm activates the newly focused control
+ok 6 - simultaneous navigation and confirm activates the newly focused control
+  ---
+  duration_ms: 47.4922
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 529.776457

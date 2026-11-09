@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: V54 delivered audio decodes as bounded PCM with exact source and manifest fingerprints
+ok 1 - V54 delivered audio decodes as bounded PCM with exact source and manifest fingerprints
+  ---
+  duration_ms: 80.669311
+  type: 'test'
+  ...
+# Subtest: ship overlap loop has no impulsive boundary compared with its own adjacent samples
+ok 2 - ship overlap loop has no impulsive boundary compared with its own adjacent samples
+  ---
+  duration_ms: 82.954929
+  type: 'test'
+  ...
+# Subtest: scene pause preserves preferences and does not create or resume an unactivated engine
+ok 3 - scene pause preserves preferences and does not create or resume an unactivated engine
+  ---
+  duration_ms: 1.497038
+  type: 'test'
+  ...
+# Subtest: an unactivated score request keeps its context but does not fetch the optional inventory
+ok 4 - an unactivated score request keeps its context but does not fetch the optional inventory
+  ---
+  duration_ms: 0.227042
+  type: 'test'
+  ...
+# Subtest: pause suspends an already activated context; resume preserves mute and bus levels
+ok 5 - pause suspends an already activated context; resume preserves mute and bus levels
+  ---
+  duration_ms: 2.93667
+  type: 'test'
+  ...
+# Subtest: a late browser suspend cannot override a newer resume
+ok 6 - a late browser suspend cannot override a newer resume
+  ---
+  duration_ms: 0.731423
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 178.84523

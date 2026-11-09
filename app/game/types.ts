@@ -661,6 +661,8 @@ export interface GameSettings {
 }
 
 export interface SaveGame {
+  /** Optional pedagogical workshop; never a harvested trophy or promotion. */
+  trophyTutorialV6?: import("./systems/trophyTutorialV6").TrophyTutorialStateV6 | null;
   /** Physical PLAN08 expedition, with distinct victory, crest and debrief receipts. */
   buriedCradle?: import("./systems/buriedCradleCampaign").BuriedCradleCampaign | null;
   /** Explicit residence, installed quarters and physical presence of recruited companions. */
@@ -669,6 +671,10 @@ export interface SaveGame {
   clanShipIncidents?: import("./systems/clanShipIncidents").ClanShipIncidentsState | null;
   /** Optional C-37 invitations and common hearing; historical incident receipts stay unchanged. */
   clanShipTrophyHearing?: import("./systems/clanShipTrophyHearing").ClanShipTrophyHearingState | null;
+  /** Optional physical OPS-B04 return; existing incident/audience journals keep their meaning. */
+  clanShipReturnEscort?: import("./systems/clanShipReturnEscort").ClanShipReturnEscortState | null;
+  /** Optional owner-bound mobility register; legacy saves receive no property or permit. */
+  mobilityV1?: import("./systems/mobility/ledger").MobilityLedger | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */

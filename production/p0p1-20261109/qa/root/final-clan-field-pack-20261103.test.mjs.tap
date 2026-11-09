@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: 12 independent original props, no atlas or film fidelity claim
+ok 1 - 12 independent original props, no atlas or film fidelity claim
+  ---
+  duration_ms: 1.610759
+  type: 'test'
+  ...
+# Subtest: all 12 PNG and WebP sprites retain alpha, margins and their own pixels
+ok 2 - all 12 PNG and WebP sprites retain alpha, margins and their own pixels
+  ---
+  duration_ms: 176.794953
+  type: 'test'
+  ...
+# Subtest: AZERTY/QWERTY/arrows issue exactly one safe input with no repeat
+ok 3 - AZERTY/QWERTY/arrows issue exactly one safe input with no repeat
+  ---
+  duration_ms: 0.612594
+  type: 'test'
+  ...
+# Subtest: sprite URLs cannot become external URLs or arbitrary save-controlled paths
+ok 4 - sprite URLs cannot become external URLs or arbitrary save-controlled paths
+  ---
+  duration_ms: 0.512884
+  type: 'test'
+  ...
+# Subtest: UI wiring keeps save locks, hidden actors and action preconditions
+ok 5 - UI wiring keeps save locks, hidden actors and action preconditions
+  ---
+  duration_ms: 0.541316
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 185.796782

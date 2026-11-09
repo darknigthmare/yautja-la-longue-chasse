@@ -221,3 +221,27 @@ revendiqué par leur seule présence dans cette PR. Les contrôles des archives 
 et du pack Xeno Prime vérifient les fichiers sources ; ils restent distincts d’une
 QA du jeu. Les PNG Xeno restent dans leurs archives : cette PR les référence avec
 leur statut réel, sans les importer dans `public/`.
+
+## Raccord de jeu du 9 novembre 2026 : prélèvement et retour d’équipe
+
+Le [nouvel avenant de reprise](AVENANT_REPRISE_CHASSE_BIBLE_20261109.md) et
+le [suivi Excel associé](../../production/reprise-chasse-bible-20261109/README.md)
+rapprochent les sources de la bible actuelle avec l’annonce des charges et
+prérequis de prélèvement, puis **OPS-B04**, l’accompagnement physique d’un
+groupe du hangar aux soins et son relevé au conseil. Ils distinguent les
+contrôles de modèle, les parcours navigateur et les validations encore ouvertes.
+
+Cette entrée d’index complète les photographies documentaires précédentes.
+Les décisions L, les huit chasses, les 108 classeurs sources et les trois lots
+du 8 novembre gardent leur contenu et leurs preuves datées. Le retour personnel
+**R2-M027**, la recette globale **OPS-Q26** et les huit qualifications restantes
+de la chasse ne sont pas déclarés intégralement terminés par ce raccord.
+
+## Raccord de terrain du 9 novembre 2026 : skinning et canopée
+
+L’[avenant de terrain](AVENANT_SKINNING_CANOPEE_20261109.md) et le
+[nouveau suivi](../../production/skinning-canopy-20261109/README.md) détaillent
+le contrat partagé des gestes de dépeçage/prélèvement, la navigation des arbres
+et supports flexibles, les retours procéduraux et la reprise du sidecar réel.
+Les premières passes restent datées ; la qualification finale de cette tranche
+est distincte des huit Restant V112, des anciens classeurs et des essais humains.

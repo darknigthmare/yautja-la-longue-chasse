@@ -1,0 +1,489 @@
+{
+  "startedAt": "2026-11-09T10:08:47.697Z",
+  "checkoutCommit": "d277c3cfbc9ac7db0651e192a2acadccb0e30cf6",
+  "scope": "Native GameClient on three viewport sizes, earned clan contacts, four read-only dialogue topics, one browser-played escort and reload. Not a full campaign, physical controller, native mobile or art certification.",
+  "fixture": {
+    "file": "initial-dialogue-fixture.json",
+    "sha256": "851777453df3a5f03aa4310d642a8b63ef24f9f87ffdec323a36adc5d950a8e7",
+    "browserPlayed": false,
+    "description": "Synthetic adult campaign and prerequisite hunts/interior preparations produced through production reducers. No recruitment, space victory or conversation is pre-seeded.",
+    "clanMarks": 1912,
+    "completedContracts": [
+      "welcome-aboard",
+      "ship-training-circuit",
+      "field-jungle-survey",
+      "field-ice-route",
+      "ship-seal-check",
+      "ship-armory-audit",
+      "ship-triage-route"
+    ],
+    "recruitedNpcIds": [],
+    "operation": null
+  },
+  "sourceSha256": {
+    "app/game/ClanShipCrewDialogue.tsx": "f77aa725afac32749e5ece96bd3122c3d2ae0e52a47507130934099ec241c3e4",
+    "app/game/systems/clanShipDialogue.ts": "c50e94b1c69ab90c1b57fce380bfc00d0e9ea9921448fad45dd7fdfde14516fe",
+    "app/game/ClanShipOperationsPanel.tsx": "9029b404e74f1570ce50f0bbe4cdcf33722021e934ea35652d585a32dfb6429f",
+    "app/game/ClanShipOperationsPanel.module.css": "7b9c01fda57eaf0badd4ec79ce909d5666abdac71069ffac9a9700f7b541427b",
+    "app/game/systems/clanShipOperations.ts": "6894c68f613af82c0e23aa96b4c7cccf0606dded8638d55e519d269f4a4f0746",
+    "app/game/systems/companionResidence.ts": "ed55b78c62e3c7b963a6b71f966fc3fccf126450c24ce561f540a1a563dd7d8e",
+    "app/game/systems/clanShipTrophyHearing.ts": "43012e17f797eb0d0fc63746e56678fffa05e18c68db230610de34b53b98323b",
+    "app/game/GameClient.tsx": "583bfbb6fac5e78a6fa361fc630355033e9eeebac95009aa14044788db82e0a8",
+    "app/game/save.ts": "958046d60dacddaae9f6fdacdc8aa43a64b85310117fa099270edb1028218a4e",
+    "tests/helpers/clan-ship-trophy-hearing-fixture.mjs": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772",
+    "scripts/qa-clan-dialogue-browser-20261109.mjs": "91c6613f1e1304f2c5cca65edb613a97026794da1d6c1a44e10f7103664df225"
+  },
+  "browserExecuted": true,
+  "passed": true,
+  "checks": [
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "star-watch: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "iron-claw: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "cold-trace: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "black-suture: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "threshold-guard: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "The native tactical controls complete one escort; only its normal reward is granted",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "The navigator reacts to the browser-played victory without a second reward",
+      "passed": true
+    },
+    {
+      "context": "1440x1000",
+      "label": "Reload, keyboard activation and Escape preserve the encounter, recruitment and marks",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "star-watch: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "iron-claw: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "cold-trace: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "black-suture: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "threshold-guard: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "The native tactical controls complete one escort; only its normal reward is granted",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "The navigator reacts to the browser-played victory without a second reward",
+      "passed": true
+    },
+    {
+      "context": "390x844",
+      "label": "Reload, keyboard activation and Escape preserve the encounter, recruitment and marks",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "ash-scar: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "star-watch: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "iron-claw: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "cold-trace: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "black-suture: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: greeting reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: work reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: agreement reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "threshold-guard: return reads the real context without campaign writes",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "The native tactical controls complete one escort; only its normal reward is granted",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "The navigator reacts to the browser-played victory without a second reward",
+      "passed": true
+    },
+    {
+      "context": "320x740",
+      "label": "Reload, keyboard activation and Escape preserve the encounter, recruitment and marks",
+      "passed": true
+    }
+  ],
+  "contexts": [
+    {
+      "name": "1440x1000",
+      "completed": true,
+      "checks": 27
+    },
+    {
+      "name": "390x844",
+      "completed": true,
+      "checks": 27
+    },
+    {
+      "name": "320x740",
+      "completed": true,
+      "checks": 27
+    }
+  ],
+  "errors": [],
+  "missingAssets": [],
+  "screenshots": [
+    "1440x1000-ash-scar-before-space.png",
+    "1440x1000-star-watch-before-space.png",
+    "1440x1000-iron-claw-before-space.png",
+    "1440x1000-cold-trace-before-space.png",
+    "1440x1000-black-suture-before-space.png",
+    "1440x1000-threshold-guard-before-space.png",
+    "1440x1000-star-watch-after-space.png",
+    "390x844-ash-scar-before-space.png",
+    "390x844-star-watch-before-space.png",
+    "390x844-iron-claw-before-space.png",
+    "390x844-cold-trace-before-space.png",
+    "390x844-black-suture-before-space.png",
+    "390x844-threshold-guard-before-space.png",
+    "390x844-star-watch-after-space.png",
+    "320x740-ash-scar-before-space.png",
+    "320x740-star-watch-before-space.png",
+    "320x740-iron-claw-before-space.png",
+    "320x740-cold-trace-before-space.png",
+    "320x740-black-suture-before-space.png",
+    "320x740-threshold-guard-before-space.png",
+    "320x740-star-watch-after-space.png"
+  ],
+  "browserVersion": "154.0.8037.57",
+  "completedAt": "2026-11-09T10:13:00.525Z"
+}

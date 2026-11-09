@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "browserExecuted": false,
+  "reason": "xvfb-run is absent from this executor; Python FileNotFoundError before browser launch. Root separately diagnosed unavailable package installer and denied distro snapshot. No headed run claimed.",
+  "attemptedCommand": [
+    "xvfb-run",
+    "-a",
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "scripts/qa-clan-war-browser-v94.mjs"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual production operations component and shared dialog, esbuild host with original W3 rules. Real browser events, localStorage, IDB and Web Locks. Not full GameClient, campaign, physical-controller or canonical-art certification.",
+  "checks": [
+    {
+      "name": "Mount and command desks never initialize a war archive",
+      "passed": true
+    },
+    {
+      "name": "Renforts de clan: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Triage du clan: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Comptes rendus: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Archives et règles: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Briefing steps retain native selections, and cancellation never debits RAV",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "01-command-desktop.png",
+      "sha256": "88b3e3dbc018c18e93cfa805a51a0d8c352efe5ca904b32000d55368169ce711",
+      "opened": false
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "sourceBefore": {
+    "app/game/ClanWarOperationsV115.tsx": "27c1234a59fe1cc1e326e2ad029a8999ac368d248e716daa59bbf46168dc65f9",
+    "app/game/ClanWarOperationsV115.module.css": "6bad5b7c6fa958b4e41b9b5a3209444032562dc9cc6c2b87631d33e0f883f7fa",
+    "app/game/ClanWarCommandOverlay.tsx": "57855f4a0770ce99feab221c363f3012059dcc1f6d618ec5fb4c07b7efca110a",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "scripts/qa-clan-war-command-operations-20261109.mjs": "2e89391e885e832542b59cbcf45bc90f49a2de90952a91d021149e78c716271f"
+  },
+  "canonicalKey": "yautja.clan-war.v115.operations.fenced.v2",
+  "bundle": {
+    "jsSha256": "380ee8224420deefb1634dc798e12fa31d0ffd4d5d6db1e5ea285e20f25a69a4",
+    "cssSha256": "4d7c1694141b42c8f4d8c6ca96eeadf921eeab5714a6e2006842fe2da8381108"
+  },
+  "browserVersion": "154.0.8037.57",
+  "url": "http://127.0.0.1:33361",
+  "passed": false,
+  "failure": {
+    "message": "Expected values to be strictly equal:\n\n118 !== 119\n",
+    "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n118 !== 119\n\n    at file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-war-command-operations-20261109.mjs:73:51"
+  }
+}

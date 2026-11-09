@@ -1,0 +1,36 @@
+{
+  "classification": "PASS_READ_ONLY_INDEX_REPIN_REVIEW",
+  "reviewedAt": "2026-11-09T09:42:58.798187+00:00",
+  "sourceRef": "1f9b009b20fa2e3354d4d511380e900e98e0cd4b",
+  "pathCount": 289,
+  "bytes": 91782471,
+  "workspaceFilesVerified": 289,
+  "gitBlobsVerified": 289,
+  "indexSha256": "f9dc1c6653c2d703acb787308b3b8f7d3232ab9077f087981a98d441e1580ff9",
+  "observationSourceAndTimestampPreserved": true,
+  "oldIndexSha256Verified": true,
+  "declaredRepinMatchesActualDiff": true,
+  "changedAssets": [
+    {
+      "before": {
+        "path": "public/audio/manifest.json",
+        "bytes": 11157,
+        "sha256": "33f6d2b4d2c7393343fae12732866d44a50971ce4e7094a1ec3114b8a9ce83d0",
+        "gitBlob": "d0e60887f96b9666d183cad53d7d04c66d8da054"
+      },
+      "after": {
+        "path": "public/audio/manifest.json",
+        "bytes": 11771,
+        "sha256": "35aef355056250b8ad9ec220b5d2efe3dd542549e49b5e9150226e2d65d86b78",
+        "gitBlob": "be4e8bcc62b0239d22766b9020c3fb1e66936a00"
+      }
+    }
+  ],
+  "ciMaterializer": {
+    "file": ".github/workflows/hunt-closure-v112.yml",
+    "compatible": true,
+    "basis": "schemaVersion 1 and assets contract unchanged; safe unique paths, byte counts, SHA256 and Git blobs verified; additional provenance metadata is ignored by the existing materializer",
+    "sparseCheckoutExecutedDuringReview": false
+  },
+  "scope": "Read-only review of repinned bytes; no new browser execution on this audio-contract sourceRef"
+}

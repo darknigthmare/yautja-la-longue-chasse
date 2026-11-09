@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: B01 trust is spoken at the real guard contact only after the full physical closure
+ok 1 - B01 trust is spoken at the real guard contact only after the full physical closure
+  ---
+  duration_ms: 17.198384
+  type: 'test'
+  ...
+# Subtest: B01 reply survives real export/import, keeps existing dialogue priority and pays nothing on reads
+ok 2 - B01 reply survives real export/import, keeps existing dialogue priority and pays nothing on reads
+  ---
+  duration_ms: 20.738925
+  type: 'test'
+  ...
+# Subtest: B01 never projects trust onto another speaker, unfocused contact or wrong room
+ok 3 - B01 never projects trust onto another speaker, unfocused contact or wrong room
+  ---
+  duration_ms: 4.555983
+  type: 'test'
+  ...
+# Subtest: B02 does not confer a diagnostic for a collected component, an installed relay or one restored circuit
+ok 4 - B02 does not confer a diagnostic for a collected component, an installed relay or one restored circuit
+  ---
+  duration_ms: 11.531766
+  type: 'test'
+  ...
+# Subtest: B02 is a completed-repair diagnostic at the actual council interception, never an automatic combat buff
+ok 5 - B02 is a completed-repair diagnostic at the actual council interception, never an automatic combat buff
+  ---
+  duration_ms: 14.433403
+  type: 'test'
+  ...
+# Subtest: every projected pair exactly replays the real reducer, including reaction, reserve and objective
+ok 6 - every projected pair exactly replays the real reducer, including reaction, reserve and objective
+  ---
+  duration_ms: 11.283612
+  type: 'test'
+  ...
+# Subtest: a one-order victory is reported as one turn, with no second fictitious command
+ok 7 - a one-order victory is reported as one turn, with no second fictitious command
+  ---
+  duration_ms: 5.929555
+  type: 'test'
+  ...
+# Subtest: refusal, foreign owner, skipped journal, future schema or impossible encounter cannot unlock either consequence
+ok 8 - refusal, foreign owner, skipped journal, future schema or impossible encounter cannot unlock either consequence
+  ---
+  duration_ms: 12.312763
+  type: 'test'
+  ...
+# Subtest: terminal interception and another contract retain the repair but expose no stale plan
+ok 9 - terminal interception and another contract retain the repair but expose no stale plan
+  ---
+  duration_ms: 7.001282
+  type: 'test'
+  ...
+# Subtest: the real encounter component exposes three manual first orders, pauses them and refuses a stale campaign snapshot
+ok 10 - the real encounter component exposes three manual first orders, pauses them and refuses a stale campaign snapshot
+  ---
+  duration_ms: 62.085186
+  type: 'test'
+  ...
+# Subtest: a future or malformed maintenance journal remains byte-identical when the old five-context dialogue is read
+ok 11 - a future or malformed maintenance journal remains byte-identical when the old five-context dialogue is read
+  ---
+  duration_ms: 7.497711
+  type: 'test'
+  ...
+# Subtest: valid JSON key reordering preserves a canonical diagnostic identity across export/import
+ok 12 - valid JSON key reordering preserves a canonical diagnostic identity across export/import
+  ---
+  duration_ms: 11.829976
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 216.341068

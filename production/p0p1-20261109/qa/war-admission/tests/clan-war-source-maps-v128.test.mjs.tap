@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: 12 maps preserve exact source dimensions and all authored W3 scene descriptions
+ok 1 - 12 maps preserve exact source dimensions and all authored W3 scene descriptions
+  ---
+  duration_ms: 49.88912
+  type: 'test'
+  ...
+# Subtest: every W3 world has three explicit alternatives and a physical out-and-back
+ok 2 - every W3 world has three explicit alternatives and a physical out-and-back
+  ---
+  duration_ms: 20.765263
+  type: 'test'
+  ...
+# Subtest: the sources have 12 distinct regions and do not place frozen terrain on lava/crater maps
+ok 3 - the sources have 12 distinct regions and do not place frozen terrain on lava/crater maps
+  ---
+  duration_ms: 29.236717
+  type: 'test'
+  ...
+# Subtest: a whole source-size scenario can be observed, interacted with and physically extracted without enemies
+ok 4 - a whole source-size scenario can be observed, interacted with and physically extracted without enemies
+  ---
+  duration_ms: 3.38895
+  type: 'test'
+  ...
+# Subtest: real tactical controls cannot bypass collision, range, or map geometry
+ok 5 - real tactical controls cannot bypass collision, range, or map geometry
+  ---
+  duration_ms: 3.39488
+  type: 'test'
+  ...
+# Subtest: disabling enemies does not create an occupation or trophy, but refusing reconnaissance blocks results
+ok 6 - disabling enemies does not create an occupation or trophy, but refusing reconnaissance blocks results
+  ---
+  duration_ms: 1.701246
+  type: 'test'
+  ...
+# Subtest: targeted attack is source-bounded, idempotent and consumes a turn only if valid
+ok 7 - targeted attack is source-bounded, idempotent and consumes a turn only if valid
+  ---
+  duration_ms: 2.529885
+  type: 'test'
+  ...
+# Subtest: 12 map IDs are strictly linked to W3 source, not to invented Earth or movie cities
+ok 8 - 12 map IDs are strictly linked to W3 source, not to invented Earth or movie cities
+  ---
+  duration_ms: 9.741691
+  type: 'test'
+  ...
+# Subtest: observation requires a physical vantage or direct sight of the actual W3 objective
+ok 9 - observation requires a physical vantage or direct sight of the actual W3 objective
+  ---
+  duration_ms: 1.135802
+  type: 'test'
+  ...
+# Subtest: powered doors exist on four applicable source maps, and a physical bypass survives a power failure
+ok 10 - powered doors exist on four applicable source maps, and a physical bypass survives a power failure
+  ---
+  duration_ms: 10.391871
+  type: 'test'
+  ...
+# Subtest: W3-MAP12 must stabilize its pressure before confirming the objective
+ok 11 - W3-MAP12 must stabilize its pressure before confirming the objective
+  ---
+  duration_ms: 0.873828
+  type: 'test'
+  ...
+# Subtest: source-specific ash and gust effects do not create enemies or a separate climate
+ok 12 - source-specific ash and gust effects do not create enemies or a separate climate
+  ---
+  duration_ms: 2.362873
+  type: 'test'
+  ...
+# Subtest: parent planets and strata are source-correct: ice-world galleries remain interior and ship hull stays orbital
+ok 13 - parent planets and strata are source-correct: ice-world galleries remain interior and ship hull stays orbital
+  ---
+  duration_ms: 2.593712
+  type: 'test'
+  ...
+# Subtest: three named structures per map originate in the source and occupy walkable physical tiles
+ok 14 - three named structures per map originate in the source and occupy walkable physical tiles
+  ---
+  duration_ms: 8.427899
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 164.575664

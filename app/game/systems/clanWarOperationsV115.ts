@@ -21,7 +21,12 @@ import {warAssaultContactV141} from "./clanWarAssaultContactV141";
  * adapter, a canonical clan war, a source of loot, or a hidden-enemy predictor.
  * It deliberately never changes a WarSimulationV85 or the campaign SaveGame.
  */
-export const WAR_OPERATIONS_STORAGE_V115 = "yautja.clan-war.v115.operations.free.v1";
+/** Old bundles know only this mirror. Keep it readable/exportable, never write
+ * it from the current client after adopting an exercise. */
+export const WAR_OPERATIONS_LEGACY_STORAGE_V115 = "yautja.clan-war.v115.operations.free.v1";
+/** Same V115 state schema; isolated namespace protects it from old bundles
+ * which cannot participate in the current Web Lock/IDB fence protocol. */
+export const WAR_OPERATIONS_STORAGE_V115 = "yautja.clan-war.v115.operations.fenced.v2";
 export type WarMissionModeV115 = "assault" | "outer" | "stealth" | "rts";
 export type WarMissionOutcomeV115 = "victory" | "defeat" | "retreat";
 export type OuterFocusV115 = "recon" | "intercept" | "escort";

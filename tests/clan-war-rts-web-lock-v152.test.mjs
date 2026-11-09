@@ -69,6 +69,6 @@ test("V152 the real Chromium fixture never mocks the engine or campaign storage"
   assert.doesNotMatch(script,/gamestate=\{.*fake/);
   const component=read("app/game/ClanWarOperationsV115.tsx");
   assert.match(component,/if\(state\.active\?\.mode==="rts"&&state\.active\.rts\?\.realtime\) commit\(stepWarRtsRealtimeV115\(state,rules\)\)/);
-  assert.match(component,/navigator\.locks\.request\("yautja\.clan-war\.v115\.operations\.free\.v1\.write"/);
+  assert.match(component,/navigator\.locks\.request\(`\$\{WAR_OPERATIONS_STORAGE_V115\}\.write`/);
   assert.match(component,/if\(!verifyOwnV115ArchiveV148\(\)\)return/);
 });

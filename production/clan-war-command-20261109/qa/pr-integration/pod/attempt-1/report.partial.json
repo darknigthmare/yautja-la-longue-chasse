@@ -1,0 +1,294 @@
+{
+  "schema": 1,
+  "partial": true,
+  "status": "failed",
+  "startedAt": "2026-11-09T10:05:58.992Z",
+  "updatedAt": "2026-11-09T10:06:02.296Z",
+  "sourceCommit": "d277c3cfbc9ac7db0651e192a2acadccb0e30cf6",
+  "sourceHashes": {
+    ".github/workflows/pod-systems.yml": "4070ad9da8c1e483af2c95047cb73bacb67095e2e55686751d6388e8b925b7e5",
+    "app/dev/destinations.ts": "9aaafd77cd9a6c6408a2a2224a39b1edcb9b45ae7fcb4db13504179df673fb4c",
+    "app/dev/session.tsx": "117fb92177a32e1daaab109635a9f607131495ae0f07f28c84752402b7462ddb",
+    "app/game/HuntCanvas.tsx": "f4e1d0736352256b284b4d717747add3cda055e85b62d0abcff5bb1eed7caca3",
+    "app/game/PlanetArrivalCinematic.module.css": "37aa7bb09b144de888c86cdbde731ad18aa7d3b08ab452d01e1b4d11d5380fc3",
+    "app/game/PlanetArrivalCinematic.tsx": "a8d856465380ee86678b89ce74dbe5c037764575cd4cb4f7fd5d0e79b6d0851e",
+    "app/game/sound.ts": "66bff2f3d56c3508dd6f50b7c6e4ab6449feb0bf3e6c0fa0d4e48c7de308ea65",
+    "app/game/systems/controlBindings.ts": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993",
+    "app/game/systems/huntInsertion.ts": "1244239e249fdb937422ace051d64e5227db14542f35db1743af34a38fab07e0",
+    "app/game/systems/huntPodRecovery.ts": "a6be60b6bf1eb155c2878fa90b54d6cc2ca93a86d5ecfba17a7541b81ba02332",
+    "app/game/systems/planetArrival.ts": "ee21998d76714956e10bdebc3b25c36238ee7f0e67940a032fea87eb9b799259",
+    "app/game/systems/planetArrivalPodArt.ts": "d056258f7aef9421f8a6c777e6c657c1d3917be7d691bbbfe00a97a56889f5c7",
+    "app/game/systems/planetArrivalPodFlight.ts": "991ee6e31a3b0a25e59c7e89296a69e5073159e7fa98158c777ddb2c0f77d3dd",
+    "app/game/systems/planetInsertion.ts": "d34d3cac8ddf05980d778f8f4028976b22bd846c807dfcf39457b9ec8af76b94",
+    "app/game/systems/worldBlueprints.ts": "2afc002b8d94aec6e18a6567f3127b5113a7d7b886ddcc147981f5c9e0a94f78",
+    "scripts/qa-pod-systems.mjs": "00ee2fd344bd0dfa734e46c659a3c076000160b77dc04e26b63e0132bbee0e9e"
+  },
+  "workingTreeDirty": true,
+  "workingTreeStatus": "M .github/workflows/clan-quest-dialogue.yml\n M .github/workflows/planet-arrival-spatial.yml\n M .github/workflows/pod-systems.yml\n M app/game/MobilityDrivingYard.tsx\n M app/game/MobilityGarage.module.css\n M app/game/MobilityGarage.tsx\n M app/game/systems/mobility/ledger.ts\n M public/audio/manifest.json\n M scripts/qa-clan-dialogue-browser-20261109.mjs\n M scripts/qa-clan-hunt-dialogue-browser-20261109.mjs\n M tests/mobility-controls-workshop.test.mjs\n M tests/mobility-core.test.mjs\n M tests/mobility-training-reward.test.mjs",
+  "url": "http://127.0.0.1:3150/dev",
+  "browserMode": "headless",
+  "browserVersion": "154.0.8037.57",
+  "runtime": "Production Next /dev, native arrival and HuntCanvas; no injected gameplay state or clock",
+  "scope": "Atmospheric shutters and heating, natural triad handoff, safe remote pod controls, native in-memory suspend/resume, single-pod and ship exclusions, isolated reset/reload. No campaign durability, art approval or performance qualification.",
+  "currentCheck": "Native triad arrival keeps the three shutters folded in space",
+  "destinationId": "arrival-triad-jungle-vey",
+  "latestProgress": {
+    "at": "2026-11-09T10:06:02.296Z",
+    "elapsedWallMs": 3303.861044,
+    "check": "Native triad arrival keeps the three shutters folded in space",
+    "phase": "failure",
+    "message": "The input was expected to not match the regular expression /visuels sont indisponibles|n’a pas pu être enregistrée|n’a pas été confirmé/u. Input:\n\n'TRAJECTOIRE D’INSERTION\\n' +\n  '\\n' +\n  'Oseris-IV\\n' +\n  '\\n' +\n  'Sang dans la canopée\\n' +\n  '\\n' +\n  'VAISSEAU ENGAGÉ\\n' +\n  'Vaisseau Predator classique\\n' +\n  'Système Oseris\\n' +\n  'Ka’rhek\\n' +\n  'Sa’keth\\n' +\n  '01 / 08\\n' +\n  '\\n' +\n  'Aux confins de la chasse\\n' +\n  '\\n' +\n  'Aux confins de la chasse\\n' +\n  '0 / 62 s\\n' +\n  '\\n' +\n  'Certains visuels sont indisponibles. Tu peux passer l’arrivée et rejoindre ta mission.\\n' +\n  '\\n' +\n  'Pause\\n' +\n  'Passer l’arrivée ›'\n"
+  },
+  "checks": [
+    {
+      "name": "Native triad arrival keeps the three shutters folded in space",
+      "passed": false,
+      "message": "The input was expected to not match the regular expression /visuels sont indisponibles|n’a pas pu être enregistrée|n’a pas été confirmé/u. Input:\n\n'TRAJECTOIRE D’INSERTION\\n' +\n  '\\n' +\n  'Oseris-IV\\n' +\n  '\\n' +\n  'Sang dans la canopée\\n' +\n  '\\n' +\n  'VAISSEAU ENGAGÉ\\n' +\n  'Vaisseau Predator classique\\n' +\n  'Système Oseris\\n' +\n  'Ka’rhek\\n' +\n  'Sa’keth\\n' +\n  '01 / 08\\n' +\n  '\\n' +\n  'Aux confins de la chasse\\n' +\n  '\\n' +\n  'Aux confins de la chasse\\n' +\n  '0 / 62 s\\n' +\n  '\\n' +\n  'Certains visuels sont indisponibles. Tu peux passer l’arrivée et rejoindre ta mission.\\n' +\n  '\\n' +\n  'Pause\\n' +\n  'Passer l’arrivée ›'\n"
+    }
+  ],
+  "captures": [],
+  "movement": [],
+  "armingPreparations": [],
+  "armingCommands": [],
+  "latestHuntObservation": null,
+  "latestArrivalObservation": null,
+  "errors": [],
+  "consoleErrors": [
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "check": "Native triad arrival keeps the three shutters folded in space",
+      "message": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    }
+  ],
+  "failedRequests": [],
+  "missingAssets": [
+    "/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.webp",
+    "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.webp",
+    "/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.webp",
+    "/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.webp",
+    "/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-jungle.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-ventral-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-ventral.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-engine-core.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-engine-plume.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-forward-quarter-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-forward-quarter.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-rear-quarter-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp",
+    "/game/planet-arrival/v2/impact-fragment.webp",
+    "/game/planet-arrival/v2/pod-hatch-interior.webp",
+    "/game/planet-arrival/v2/pod-hatch.webp",
+    "/game/planet-arrival/v2/vent-vapor-thin.webp",
+    "/game/planet-arrival/v2/vent-vapor.webp",
+    "/game/planet-arrival/v3/pod-entry-bow-shock.webp",
+    "/game/planet-arrival/v3/pod-entry-plasma-wake.webp",
+    "/game/planet-arrival/v3/pod-flight-core.webp"
+  ],
+  "requestedAssets": [
+    "/audio/manifest.json",
+    "/audio/sfx/jump/v54.wav",
+    "/audio/sfx/select/v54.wav",
+    "/audio/sfx/ui/v54.wav",
+    "/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg",
+    "/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/belt.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/bracer.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/chest-classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/knee.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/shin.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/shoulder-classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh-lower.webp",
+    "/game/assets/v3/actors/yautja/hunter/armor/registered/thigh.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/braided.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/ringed.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/barrel.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/blade-housing.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/blades.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/cannon.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-lower.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/caster-upper.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/laser.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/mount.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/muzzle.webp",
+    "/game/assets/v3/actors/yautja/hunter/equipment/registered/yoke.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/audio-decoy.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/motion-sensor.webp",
+    "/game/assets/v3/actors/yautja/hunter/gear/registered/snare.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-bindings.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-skull.webp",
+    "/game/assets/v3/actors/yautja/hunter/trophies/registered/trophy-spine.webp",
+    "/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp",
+    "/game/backgrounds/jungle-multiscreen-v6.png",
+    "/game/cinematics/batch-01-20261105/arrival-foot-contact-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-a.webp",
+    "/game/cinematics/batch-01-20261105/arrival-fragment-jungle-b.webp",
+    "/game/cinematics/batch-01-20261105/arrival-impact-front-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-impact-settle-jungle.webp",
+    "/game/cinematics/batch-01-20261105/arrival-pod-flight-glow-reinforcement.webp",
+    "/game/cinematics/batch-01-20261105/arrival-pod-ground-glow-reinforcement.webp",
+    "/game/cinematics/batch-01-20261105/arrival-ship-ground-wash-jungle.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-dorsal.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-ventral-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-bank-ventral.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-engine-core.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-engine-plume.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-forward-quarter-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-forward-quarter.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-rear-quarter-shallow.webp",
+    "/game/planet-arrival/ship-motion-v1/classic-rear-quarter.webp",
+    "/game/planet-arrival/v1/atmosphere-clouds.webp",
+    "/game/planet-arrival/v1/heat-trail.webp",
+    "/game/planet-arrival/v1/pod-flight.webp",
+    "/game/planet-arrival/v1/pod-ground.webp",
+    "/game/planet-arrival/v1/release-jet.webp",
+    "/game/planet-arrival/v1/space.webp",
+    "/game/planet-arrival/v2/impact-fragment.webp",
+    "/game/planet-arrival/v2/pod-hatch-interior.webp",
+    "/game/planet-arrival/v2/pod-hatch.webp",
+    "/game/planet-arrival/v2/vent-vapor-thin.webp",
+    "/game/planet-arrival/v2/vent-vapor.webp",
+    "/game/planet-arrival/v3/pod-entry-bow-shock.webp",
+    "/game/planet-arrival/v3/pod-entry-plasma-wake.webp",
+    "/game/planet-arrival/v3/pod-flight-core.webp",
+    "/game/planets/v10/planet-oseris-iv.webp",
+    "/game/ships/v12/classic-predator-spaceship.webp",
+    "/game/sprites/hunter.webp",
+    "/game/sprites/v62/heads/classic-head.png",
+    "/game/sprites/v62/masks/jungle.png"
+  ],
+  "passed": false,
+  "failure": "AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /visuels sont indisponibles|n’a pas pu être enregistrée|n’a pas été confirmé/u. Input:\n\n'TRAJECTOIRE D’INSERTION\\n' +\n  '\\n' +\n  'Oseris-IV\\n' +\n  '\\n' +\n  'Sang dans la canopée\\n' +\n  '\\n' +\n  'VAISSEAU ENGAGÉ\\n' +\n  'Vaisseau Predator classique\\n' +\n  'Système Oseris\\n' +\n  'Ka’rhek\\n' +\n  'Sa’keth\\n' +\n  '01 / 08\\n' +\n  '\\n' +\n  'Aux confins de la chasse\\n' +\n  '\\n' +\n  'Aux confins de la chasse\\n' +\n  '0 / 62 s\\n' +\n  '\\n' +\n  'Certains visuels sont indisponibles. Tu peux passer l’arrivée et rejoindre ta mission.\\n' +\n  '\\n' +\n  'Pause\\n' +\n  'Passer l’arrivée ›'\n\n    at arrivalReady (file:///workspace/yautja-main-integration-20261109/scripts/qa-pod-systems.mjs:270:10)\n    at runNextTicks (node:internal/process/task_queues:64:5)\n    at process.processImmediate (node:internal/timers:452:9)\n    at process.callbackTrampoline (node:internal/async_hooks:130:17)\n    at async file:///workspace/yautja-main-integration-20261109/scripts/qa-pod-systems.mjs:617:19\n    at async check (file:///workspace/yautja-main-integration-20261109/scripts/qa-pod-systems.mjs:231:5)\n    at async file:///workspace/yautja-main-integration-20261109/scripts/qa-pod-systems.mjs:615:3"
+}

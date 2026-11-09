@@ -1,0 +1,277 @@
+{
+  "targetContractId": "field-ruins-memory",
+  "targetMissionId": "ruins-ancient-guardian",
+  "targetInitialAttempts": 0,
+  "targetInitialCompletions": 0,
+  "targetReceiptPrepared": false,
+  "historicalPrerequisites": [
+    {
+      "missionId": "jungle-vey",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "jungle-vey",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "scan-vanguard",
+          "recover-transponder",
+          "defeat-vey",
+          "extract-jungle-trophy"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "jungle-vey-disclosed-old-prerequisite",
+            "definitionId": "trophy-vey",
+            "targetName": "Commandante Vey",
+            "targetKind": "human",
+            "partId": "insignia",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:10:00.000Z"
+      },
+      "clanContractReceipt": null
+    },
+    {
+      "missionId": "ice-cryostalker",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "ice-cryostalker",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "scan-ice-traces",
+          "hunt-cryorunners",
+          "defeat-cryostalker",
+          "extract-ice-trophy"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "ice-cryostalker-disclosed-old-prerequisite",
+            "definitionId": "trophy-cryostalker",
+            "targetName": "Cryostalker Alpha",
+            "targetKind": "beast",
+            "partId": "skull-and-spine",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:11:00.000Z"
+      },
+      "clanContractReceipt": "field-ice-route"
+    },
+    {
+      "missionId": "volcano-bad-blood",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "volcano-bad-blood",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "scan-fallen-hunters",
+          "recover-stolen-beacons",
+          "defeat-bad-blood",
+          "escape-self-destruct"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "volcano-bad-blood-disclosed-old-prerequisite",
+            "definitionId": "trophy-bad-blood",
+            "targetName": "Le Bad Blood",
+            "targetKind": "yautja",
+            "partId": "mask",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:12:00.000Z"
+      },
+      "clanContractReceipt": null
+    },
+    {
+      "missionId": "swamp-hydra",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "swamp-hydra",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "swamp-hydra-scan",
+          "swamp-hydra-hunt",
+          "swamp-hydra-recover",
+          "swamp-hydra-boss",
+          "swamp-hydra-extract"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "swamp-hydra-disclosed-old-prerequisite",
+            "definitionId": "trophy-swamp-hydra",
+            "targetName": "Hydre de vase",
+            "targetKind": "beast",
+            "partId": "skull-and-spine",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:13:00.000Z"
+      },
+      "clanContractReceipt": null
+    },
+    {
+      "missionId": "desert-sandmaw",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "desert-sandmaw",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "desert-sandmaw-scan",
+          "desert-sandmaw-hunt",
+          "desert-sandmaw-recover",
+          "desert-sandmaw-boss",
+          "desert-sandmaw-extract"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "desert-sandmaw-disclosed-old-prerequisite",
+            "definitionId": "trophy-desert-sandmaw",
+            "targetName": "Matriarche Sandmaw",
+            "targetKind": "beast",
+            "partId": "skull",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:14:00.000Z"
+      },
+      "clanContractReceipt": null
+    },
+    {
+      "missionId": "ocean-leviathan",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "ocean-leviathan",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "ocean-leviathan-scan",
+          "ocean-leviathan-hunt",
+          "ocean-leviathan-recover",
+          "ocean-leviathan-boss",
+          "ocean-leviathan-extract"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "ocean-leviathan-disclosed-old-prerequisite",
+            "definitionId": "trophy-ocean-leviathan",
+            "targetName": "Léviathan abyssal",
+            "targetKind": "beast",
+            "partId": "skull-and-spine",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:15:00.000Z"
+      },
+      "clanContractReceipt": null
+    },
+    {
+      "missionId": "fungal-hivemind",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "fungal-hivemind",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "fungal-hivemind-scan",
+          "fungal-hivemind-hunt",
+          "fungal-hivemind-recover",
+          "fungal-hivemind-boss",
+          "fungal-hivemind-extract"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "fungal-hivemind-disclosed-old-prerequisite",
+            "definitionId": "trophy-fungal-hivemind",
+            "targetName": "Cœur-Mère mycélien",
+            "targetKind": "beast",
+            "partId": "skull",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:16:00.000Z"
+      },
+      "clanContractReceipt": null
+    }
+  ],
+  "startingEquipment": {
+    "armorId": "hunter",
+    "weaponIds": [
+      "combistick",
+      "plasma-caster"
+    ],
+    "gearIds": [
+      "motion-sensor",
+      "audio-decoy"
+    ]
+  },
+  "difficulty": "young-blood",
+  "note": "Historical admission is an explicit synthetic initial assumption. Every target acceptance, binding, objective, result and new receipt must come from real mounted GameClient inputs. No full campaign playthrough is claimed.",
+  "adultInitialAccess": true,
+  "dockingAndWelcomePreparedByProductionReducers": true,
+  "huntHealthOverride": false,
+  "objectiveInjection": false,
+  "forcedResult": false,
+  "callbackInjection": false
+}

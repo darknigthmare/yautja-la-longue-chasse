@@ -1,0 +1,63 @@
+{
+  "targetContractId": "field-ice-route",
+  "targetMissionId": "ice-cryostalker",
+  "targetInitialAttempts": 0,
+  "targetInitialCompletions": 0,
+  "targetReceiptPrepared": false,
+  "historicalPrerequisites": [
+    {
+      "missionId": "jungle-vey",
+      "preparedBy": "applyMissionResult production reducer",
+      "result": {
+        "missionId": "jungle-vey",
+        "difficultyId": "young-blood",
+        "outcome": "success",
+        "score": 80,
+        "scans": 3,
+        "elapsedSeconds": 240,
+        "completedObjectiveIds": [
+          "scan-vanguard",
+          "recover-transponder",
+          "defeat-vey",
+          "extract-jungle-trophy"
+        ],
+        "honorEvents": [],
+        "trophyQuality": "elite",
+        "trophyClaims": [
+          {
+            "id": "jungle-vey-disclosed-old-prerequisite",
+            "definitionId": "trophy-vey",
+            "targetName": "Commandante Vey",
+            "targetKind": "human",
+            "partId": "insignia",
+            "condition": "pristine",
+            "quality": "elite"
+          }
+        ],
+        "kills": 3,
+        "secondWindUsed": false,
+        "completedAt": "2026-11-09T00:10:00.000Z"
+      },
+      "clanContractReceipt": null
+    }
+  ],
+  "startingEquipment": {
+    "armorId": "hunter",
+    "weaponIds": [
+      "combistick",
+      "plasma-caster"
+    ],
+    "gearIds": [
+      "motion-sensor",
+      "audio-decoy"
+    ]
+  },
+  "difficulty": "young-blood",
+  "note": "Historical admission is an explicit synthetic initial assumption. Every target acceptance, binding, objective, result and new receipt must come from real mounted GameClient inputs. No full campaign playthrough is claimed.",
+  "adultInitialAccess": true,
+  "dockingAndWelcomePreparedByProductionReducers": true,
+  "huntHealthOverride": false,
+  "objectiveInjection": false,
+  "forcedResult": false,
+  "callbackInjection": false
+}

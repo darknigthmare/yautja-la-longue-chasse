@@ -1,0 +1,757 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-09",
+  "readyForWorkbook": true,
+  "status": "Révision2 qualifiée dans sa portée — autres critères explicitement ouverts",
+  "sourceCommit": "b666504c7d7889ea4c8c083aa97c4909aab32560",
+  "scope": "Révision2 après le premier CI de la PR133 : compatibilité du tutoriel optionnel absent et raccords des recettes aux menus. Sources documentaires des cinq PR figées au commitb666504c, code corrigé au commite18602ed ; l’identité testée repose sur les empreintes des1293sources, pas sur le seul commit du build préparé avec des modifications locales. Édition1 publiée au commit1aaa388d conservée dans Git. L’intégration distante reste distincte de ces qualifications ; aucune clôture globale du jeu.",
+  "biblePaths": [
+    "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+    "docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md",
+    "docs/campagne/AVENANT_REPRISE_CHASSE_BIBLE_20261109.md",
+    "docs/campagne/AVENANT_SKINNING_CANOPEE_20261109.md",
+    "docs/campagne/QUETES_RETOURS_ET_ACCORDS_20261109.md",
+    "docs/campagne/QUETES_VIVANTES_20261109.md"
+  ],
+  "sourceDecisions": {
+    "XLSX:a66d9e3434503f46be91c867263f3c67327b42f0a4dd87deed01164fcfd5e4c6": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-001",
+      "reason": "Priorité explicite dans Reste_a_faire!B6 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:aeaa50a46592cfcd24ccdf20da9b7360d48f47c15f0367346448d096118ec662": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-002",
+      "reason": "Priorité explicite dans Reste_a_faire!B7 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:d6cf014578e90c3fbe7cee6b75ffe949211a31a114b42bde5a32834f9722024a": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-003",
+      "reason": "Priorité explicite dans Reste_a_faire!B8 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:0ea0cf5cecaa9c4d26eec1946737e8a3699d055fbb32a3edaa5e3cbbd28325a5": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-004",
+      "reason": "Priorité explicite dans Reste_a_faire!B9 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:d210b959703df11caec6391c59f5f5a2f062cff5cf8872416624e92f484b6a48": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-005",
+      "reason": "Priorité explicite dans Reste_a_faire!B10 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:5ca257b870354d6aa774dfa60c7c3dc724339fec25ba4cdf3a844bcd3bac6608": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-006",
+      "reason": "Priorité explicite dans Reste_a_faire!B11 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:10c47a08fec42751105b0d4fbf59609b10637f53e09110d9f11017822ff4ebe5": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-007",
+      "reason": "Priorité explicite dans Reste_a_faire!B12 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:decd878276848c25675a123fd03957a7e4cd87d7f247c1fb7957c0d84c55b827": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-008",
+      "reason": "Priorité explicite dans Reste_a_faire!B13 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:c48bdb7bf8bcb04a23ec67cf6460b9b8ee713a9f7db20cf8ad93963b82d30bdb": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-009",
+      "reason": "Priorité explicite dans Reste_a_faire!B14 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:a40bac9a194cfeda7062c564a3f8c6715b2f24a5a3aeee376ff938f89185d8af": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-010",
+      "reason": "Priorité explicite dans Reste_a_faire!B15 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:566e537653a1ffac6fe3e41c14f0d1c06f5218d7afced29d6a6b8c22ba3f2c82": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-011",
+      "reason": "Priorité explicite dans Reste_a_faire!B16 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:8469b7ddb687e94a82f1c6209e8572ee47eaec77eed1c086f8d980e806d6ad8a": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-012",
+      "reason": "Priorité explicite dans Reste_a_faire!B17 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:34a233f1463bafbbf5edfb3b1d7bafa77f4845ccedf6f2286b683130151adb4d": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-013",
+      "reason": "Priorité explicite dans Reste_a_faire!B18 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    },
+    "XLSX:6358ce5c9ce144ac0ccb2c697d39acabd6e60be6367f2a172be486b056723d96": {
+      "disposition": "ADD",
+      "key": "Mobilité:MOB-014",
+      "reason": "Priorité explicite dans Reste_a_faire!B19 de la PR127. Déclaration documentaire rapprochée sur le commit intégré localement ; réalisation qualifiée séparément par les reçus."
+    }
+  },
+  "additions": [
+    {
+      "key": "Mobilité:MOB-001",
+      "id": "MOB-001",
+      "priority": "P0",
+      "domain": "Mobilité",
+      "title": "Parcours campagne complet",
+      "criterion": "GameClient → Forges → magasin → aire → sortie, avec campagne réelle et échec d'écriture\nAcceptation / limite source : Pas une preuve issue de la fixture de composant",
+      "sourceDeclaration": "À faire — Pas une preuve issue de la fixture de composant",
+      "remaining": "GameClient → Forges → magasin → aire → sortie, avec campagne réelle et échec d'écriture ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-002",
+      "id": "MOB-002",
+      "priority": "P0",
+      "domain": "Mobilité",
+      "title": "Qualification globale",
+      "criterion": "Build production, lint strict et régressions hors mobilité\nAcceptation / limite source : TypeScript complet et build frontend diagnostic réussis (2fa19db1). Lint strict et ensemble des régressions hors mobilité restent à qualifier.",
+      "sourceDeclaration": "À faire — TypeScript complet et build frontend diagnostic réussis (2fa19db1). Lint strict et ensemble des régressions hors mobilité restent à qualifier.",
+      "remaining": "Build production, lint strict et régressions hors mobilité ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-003",
+      "id": "MOB-003",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Manette et tactile",
+      "criterion": "Tester manette réelle, remapping, perte de focus et tablette\nAcceptation / limite source : Multitouch et API manette contrôlés ; manette physique, tablette et parcours campagne restent à valider.",
+      "sourceDeclaration": "À faire — Multitouch et API manette contrôlés ; manette physique, tablette et parcours campagne restent à valider.",
+      "remaining": "Tester manette réelle, remapping, perte de focus et tablette ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-004",
+      "id": "MOB-004",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Vues et détourage",
+      "criterion": "Corriger écarts Kenner/Badlands ; alpha utile et silhouettes non coupées\nAcceptation / limite source : Aucune nouvelle image dans cette passe",
+      "sourceDeclaration": "À faire — Aucune nouvelle image dans cette passe",
+      "remaining": "Corriger écarts Kenner/Badlands ; alpha utile et silhouettes non coupées ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-005",
+      "id": "MOB-005",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "HD individuels 41–50",
+      "criterion": "Une image entière par sujet, pas découpe ni agrandissement de planche\nAcceptation / limite source : Pas de PNG déclaré livré sur la foi d'un prompt",
+      "sourceDeclaration": "À faire — Pas de PNG déclaré livré sur la foi d'un prompt",
+      "remaining": "Une image entière par sujet, pas découpe ni agrandissement de planche ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-006",
+      "id": "MOB-006",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Modules visuels indépendants",
+      "criterion": "408 couches machine et 48 équipements biologiques : sockets, vues, niveaux\nAcceptation / limite source : Exigences, pas fichiers déjà produits",
+      "sourceDeclaration": "À faire — Exigences, pas fichiers déjà produits",
+      "remaining": "408 couches machine et 48 équipements biologiques : sockets, vues, niveaux ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-007",
+      "id": "MOB-007",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Animations locomotion et conducteur",
+      "criterion": "Cycles uniformes ; poses montée/descente ; pilote entier et contacts corrects\nAcceptation / limite source : Ne pas faire tourner une pose statique comme une animation multi-angle",
+      "sourceDeclaration": "À faire — Ne pas faire tourner une pose statique comme une animation multi-angle",
+      "remaining": "Cycles uniformes ; poses montée/descente ; pilote entier et contacts corrects ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-008",
+      "id": "MOB-008",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Sons dédiés",
+      "criterion": "400 événements planifiés ; moteurs/pas/effort et boucles sans clic\nAcceptation / limite source : Trois sons existants réutilisés ne remplacent pas ce lot",
+      "sourceDeclaration": "À faire — Trois sons existants réutilisés ne remplacent pas ce lot",
+      "remaining": "400 événements planifiés ; moteurs/pas/effort et boucles sans clic ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-009",
+      "id": "MOB-009",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "VFX dédiés",
+      "criterion": "350 besoins ; surfaces, usure, capacité et calques d'effets indépendants\nAcceptation / limite source : Traînée procédurale actuelle distincte du sprite VFX",
+      "sourceDeclaration": "À faire — Traînée procédurale actuelle distincte du sprite VFX",
+      "remaining": "350 besoins ; surfaces, usure, capacité et calques d'effets indépendants ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-010",
+      "id": "MOB-010",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Pilotage hors aire",
+      "criterion": "Relier profils et gabarits aux zones réelles, collisions, passages FOOT/MOUNT/VEHICLE\nAcceptation / limite source : Aucune traversée globale gratuite",
+      "sourceDeclaration": "À faire — Aucune traversée globale gratuite",
+      "remaining": "Relier profils et gabarits aux zones réelles, collisions, passages FOOT/MOUNT/VEHICLE ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-011",
+      "id": "MOB-011",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Acquisitions spéciales",
+      "criterion": "Quêtes, droits Enforcer/Bad Blood, restauration Kenner, capture et élevage\nAcceptation / limite source : Ne pas rendre tout achetable",
+      "sourceDeclaration": "À faire — Ne pas rendre tout achetable",
+      "remaining": "Quêtes, droits Enforcer/Bad Blood, restauration Kenner, capture et élevage ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-012",
+      "id": "MOB-012",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Montures biologiques",
+      "criterion": "BOND, endurance, blessures, peur, soins et recrutement explicite\nAcceptation / limite source : Aucun animal attribué par défaut",
+      "sourceDeclaration": "À faire — Aucun animal attribué par défaut",
+      "remaining": "BOND, endurance, blessures, peur, soins et recrutement explicite ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-013",
+      "id": "MOB-013",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "Transport et hangar",
+      "criterion": "Chargement physique, capacité, affectation, récupération persistante\nAcceptation / limite source : Pas de téléportation ni de duplication",
+      "sourceDeclaration": "À faire — Pas de téléportation ni de duplication",
+      "remaining": "Chargement physique, capacité, affectation, récupération persistante ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    },
+    {
+      "key": "Mobilité:MOB-014",
+      "id": "MOB-014",
+      "priority": "P1",
+      "domain": "Mobilité",
+      "title": "PNJ en zones mondiales",
+      "criterion": "Raccorder routes réelles par zone, faction et densité ; évitement sans spawn incohérent\nAcceptation / limite source : Seuls deux convoyeurs de l'aire circulent actuellement",
+      "sourceDeclaration": "À faire — Seuls deux convoyeurs de l'aire circulent actuellement",
+      "remaining": "Raccorder routes réelles par zone, faction et densité ; évitement sans spawn incohérent ; préserver la distinction entre code, prototype, qualification native et ressources effectivement livrées."
+    }
+  ],
+  "updates": {
+    "Bible V5/V6 — lots de réalisation:BUILD5-09": {
+      "status": "QUALIFIE_BORNE",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/trophy-tutorial/compat-final/final-receipt.json",
+          "sha256": "7132fb95336a50e64ef5a5200c8c68a516de2b624e108783ae4627743c33d9ed",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : nouveau parcours complet de vingt contrôles et trois contrôles complémentaires séparés, dix-huit gestes,21événements, six transports, trois reprises et vrai refus de quota suivi d’un nouvel essai. Douze PNG inspectés, neuf sources ciblées et1293empreintes applicatives stables. Modèle pédagogique et prérequis historiques Young Blood déclarés ; aucune nurserie, rite actuel, manette physique ou art humain qualifié.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "TR-M01 à TR-M03, dix-huit gestes de la branche modèle pédagogique autorisée, dix-huit répliques et vrai writer SaveGame. Nouveau parcours complet sur le build de compatibilité -FZ : accès physique au Mausolée, six transports, trois reprises et refus de quota réversible ; vingt contrôles et trois contrôles complémentaires séparés réussis. Prérequis historique Young Blood déclaré, sans qualification de la nurserie ni du rite actuel. Les anciennes recettes kS et nIt restent des preuves datées de l’édition1.",
+      "remaining": "Conserver la portée du modèle pédagogique de TR-M01 à TR-M03. Objets originaux chassés, chaînes avancées, manette physique et art humain restent séparés. Les prérequis historiques Young Blood ne qualifient ni la nurserie ni le rite actuel. BUILD5-02 et BUILD5-11 ne sont pas clôturés par ce tutoriel."
+    },
+    "Mobilité:MOB-001": {
+      "status": "QUALIFIE_BORNE",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-receipt.json",
+          "sha256": "5af29c4976c6685d3b0053386be61ee9d05b4ae0755bc4854361ea402425b7d3",
+          "scope": "MOB-001 P0 dans le vrai Next nIt : 29 contrôles, dix PNG ouverts, marche extérieure, Forges, guichet, 68,398 secondes réelles dans l’aire, trois balises, charge de 25kg, permis, achat, sortie, récupération et retour. Deux vrais refus de quota et Continue retrouvant le mouvement au tick30 sans écraser l’ancien checkpoint révision2. Prérequis adultes historiques déclarés ; aucune nurserie jouée ni qualification globale MOB-002."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/final-receipt.json",
+          "sha256": "e4a32a83e0635c203b4a1038c0542543e2fd2cc13ec5fb267aee594ceeb26c16",
+          "scope": "Complément Next, build mdrv : treize contrôles et trois PNG sur le vrai résultat gagné du parcours MOB-001. Pause et notices correctes ; refus réel de quota conservé honnêtement, nouvel essai réussi publiant l’acquittement et supprimant l’alerte périmée. Le parcours complet de vingt-neuf contrôles n’est pas rejoué sur ce build ; aucun résultat nouveau fabriqué.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Parcours réel GameClient, Forges, magasin, aire, sortie, récupération puis retour. Permis gagné en 68,398 secondes réelles ; achat puis sortie du véhicule possédé, Continue restaure le mouvement au tick30, deux refus de quota suivis de reprises contrôlées. Vingt-neuf contrôles et dix PNG sur le build nIt. La fixture adulte historique initiale ne contient ni permis, ni propriété, ni résultat de mobilité. Le complément de treize contrôles sur le build mdrv qualifie ensuite les notices de pause, refus de quota et acquittement après nouvel essai, à partir du vrai résultat gagné sur nIt.",
+      "remaining": "Scénario adulte historique déclaré ; aucune campagne depuis la nurserie, manette physique, tablette ou fidélité artistique canonique déduite. Le complément de notice ne rejoue pas l’intégralité des vingt-neuf contrôles. Les autres critères de mobilité gardent leurs portées propres."
+    },
+    "Mobilité:MOB-010": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Partiel",
+      "browserTested": "Partiel",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-receipt.json",
+          "sha256": "5af29c4976c6685d3b0053386be61ee9d05b4ae0755bc4854361ea402425b7d3",
+          "scope": "MOB-001 P0 dans le vrai Next nIt : 29 contrôles, dix PNG ouverts, marche extérieure, Forges, guichet, 68,398 secondes réelles dans l’aire, trois balises, charge de 25kg, permis, achat, sortie, récupération et retour. Deux vrais refus de quota et Continue retrouvant le mouvement au tick30 sans écraser l’ancien checkpoint révision2. Prérequis adultes historiques déclarés ; aucune nurserie jouée ni qualification globale MOB-002."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/final-receipt.json",
+          "sha256": "e4a32a83e0635c203b4a1038c0542543e2fd2cc13ec5fb267aee594ceeb26c16",
+          "scope": "Complément Next, build mdrv : treize contrôles et trois PNG sur le vrai résultat gagné du parcours MOB-001. Pause et notices correctes ; refus réel de quota conservé honnêtement, nouvel essai réussi publiant l’acquittement et supprimant l’alerte périmée. Le parcours complet de vingt-neuf contrôles n’est pas rejoué sur ce build ; aucun résultat nouveau fabriqué.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Un GravSled réellement acheté et conduit en sortie extérieure, récupéré puis ramené physiquement dans le scénario MOB-001. La continuité du mouvement est vérifiée dans Continue.",
+      "remaining": "Raccorder et qualifier les autres profils, gabarits, zones, collisions et passages FOOT/MOUNT/VEHICLE des cinquante modèles. Le parcours d’un seul GravSled ne clôture pas la mobilité globale."
+    },
+    "Mobilité:MOB-013": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Partiel",
+      "browserTested": "Partiel",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-receipt.json",
+          "sha256": "5af29c4976c6685d3b0053386be61ee9d05b4ae0755bc4854361ea402425b7d3",
+          "scope": "MOB-001 P0 dans le vrai Next nIt : 29 contrôles, dix PNG ouverts, marche extérieure, Forges, guichet, 68,398 secondes réelles dans l’aire, trois balises, charge de 25kg, permis, achat, sortie, récupération et retour. Deux vrais refus de quota et Continue retrouvant le mouvement au tick30 sans écraser l’ancien checkpoint révision2. Prérequis adultes historiques déclarés ; aucune nurserie jouée ni qualification globale MOB-002."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/final-receipt.json",
+          "sha256": "e4a32a83e0635c203b4a1038c0542543e2fd2cc13ec5fb267aee594ceeb26c16",
+          "scope": "Complément Next, build mdrv : treize contrôles et trois PNG sur le vrai résultat gagné du parcours MOB-001. Pause et notices correctes ; refus réel de quota conservé honnêtement, nouvel essai réussi publiant l’acquittement et supprimant l’alerte périmée. Le parcours complet de vingt-neuf contrôles n’est pas rejoué sur ce build ; aucun résultat nouveau fabriqué.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Récupération persistante d’un véhicule possédé et retour physique vérifiés dans le parcours MOB-001. Aucun transport ou chargement physique n’est implémenté par ce reçu.",
+      "remaining": "Chargement physique, capacité du hangar, affectation et transports globaux restent à construire et qualifier. La seule récupération courante ne clôture pas le critère composite."
+    },
+    "Clan Ship:OPS-B01": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Oui",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/domain-final-receipt.json",
+          "sha256": "11ea6c2a20ae633bedd1b6bc2a2d9d2ab84175ba4b87ac012ac61204d3e1e0bd",
+          "scope": "Quatre suites de domaine et SSR : 91 tests, dont douze nouveaux, couvrant la confiance du garde après le scellé et le diagnostic de deux ordres du vrai moteur spatial après le relais final. Cette preuve précède la dernière correction du focus et ne contient aucun parcours Next. Ses répétitions ne s’ajoutent pas aux tests globaux."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/final-receipt.json",
+          "sha256": "038e15353eb4c1a2b4ebac22d2c0a23ed22315de8cf15ea919c7b9ecf0358181",
+          "scope": "Vrai Next, build mdrv : six contrôles, dix-huit interventions acquittées et dix-huit retours par Échap, sept PNG ouverts,2027positions dans sept salles. Incidents réellement joués, réplique du garde et diagnostic spatial, un seul premier ordre explicitement choisi, reprise sans nouveau tour. Profil, rang, progression et import de sauvegarde contrôlés. Les anciennes tentatives restent datées ; aucune variante future d’extraction, revue artistique ou manette physique.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Incident physique du scellé réellement joué, puis réplique de confiance accessible depuis le vrai garde disponible. Recette Next finale de six contrôles commune à B01/B02 : dix-huit interventions, dix-huit retours par Échap et sept captures inspectées. Trois autres dossiers en lecture seule et un contact du garde testent aussi le retour du focus. Aucun gain artificiel ni progression de mission annexe.",
+      "remaining": "La variante future d’extraction B01, l’équilibrage de la gratification, la manette physique et la revue artistique restent ouverts. Le sondage du focus sur un état terminé déclaré n’est pas compté comme un incident joué supplémentaire."
+    },
+    "Clan Ship:OPS-B02": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Oui",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/domain-final-receipt.json",
+          "sha256": "11ea6c2a20ae633bedd1b6bc2a2d9d2ab84175ba4b87ac012ac61204d3e1e0bd",
+          "scope": "Quatre suites de domaine et SSR : 91 tests, dont douze nouveaux, couvrant la confiance du garde après le scellé et le diagnostic de deux ordres du vrai moteur spatial après le relais final. Cette preuve précède la dernière correction du focus et ne contient aucun parcours Next. Ses répétitions ne s’ajoutent pas aux tests globaux."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/final-receipt.json",
+          "sha256": "038e15353eb4c1a2b4ebac22d2c0a23ed22315de8cf15ea919c7b9ecf0358181",
+          "scope": "Vrai Next, build mdrv : six contrôles, dix-huit interventions acquittées et dix-huit retours par Échap, sept PNG ouverts,2027positions dans sept salles. Incidents réellement joués, réplique du garde et diagnostic spatial, un seul premier ordre explicitement choisi, reprise sans nouveau tour. Profil, rang, progression et import de sauvegarde contrôlés. Les anciennes tentatives restent datées ; aucune variante future d’extraction, revue artistique ou manette physique.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Deux circuits du relais mesurés puis rétablis par leurs vraies commandes physiques. Diagnostic d’interception à deux ordres après la vérification finale, via le vrai moteur spatial et le propriétaire de sauvegarde : seul le premier ordre explicitement choisi est acquitté, puis la recharge ne rejoue aucun tour. Recette commune B01/B02 sur le vrai Next mdrv : six contrôles et dix-huit retours Échap.",
+      "remaining": "Équilibrage de la gratification, manette physique et revue artistique restent ouverts. Le diagnostic borné prévisualise deux ordres et n’acquitte que le premier explicitement choisi ; il n’accorde ni rôle, ni scan, ni énergie, ni bonus de combat."
+    },
+    "Guerre des clans:CW130-SYS-024": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Partiel",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/shell/attempt-6/final-receipt.json",
+          "sha256": "d5d92c89055240187a8a581bd895d0f455303fcdb1df2d99496db309ea8858dc",
+          "scope": "Fixture des composants réels : 25 contrôles et dix PNG. Carte dominante, rail, quatorze outils répartis en quatre groupes, modaux, focus, Échap, suspension du propriétaire et formats320/390. Ni Next complet, ni manette physique, ni art canonique. Essai V94 sans écran : huit réussites et un échec conservés, sans le déclarer vert."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/final-receipt.json",
+          "sha256": "ab80dfa18e3774279f27ee895dc98a2b864edf428f3d52d1c117321d493a7394",
+          "scope": "Treize contrôles et deux PNG avec un fournisseur navigator.getGamepads synthétique déclaré. Hook de production, DOM, focus et événements cancel natifs. Aucun matériel de manette physique, aucun Next ou parcours de campagne qualifié."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+          "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Sous-critères de clavier, focus, Échap, navigation des quatorze outils et petits écrans vérifiés dans les reçus versionnés. Le vrai Next de compatibilité -FZ mesure également le titre et Quitter hors du HUD dans trois formats, le retour réel au Clan Ship et la sauvegarde entière inchangée. Les vingt-cinq contrôles de fixture, treize contrôles d’API de manette et dix-huit contrôles Next gardent des portées distinctes.",
+      "remaining": "La manette physique, le lecteur d’écran et les autres sessions matérielles demandées ne sont pas attestés. Les essais de tiroirs, de clavier et de focus ne certifient pas toutes les boucles, toutes les configurations de contraste ou les périphériques."
+    },
+    "Guerre des clans:CW144-RTS-012": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Partiel",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/shell/attempt-6/final-receipt.json",
+          "sha256": "d5d92c89055240187a8a581bd895d0f455303fcdb1df2d99496db309ea8858dc",
+          "scope": "Fixture des composants réels : 25 contrôles et dix PNG. Carte dominante, rail, quatorze outils répartis en quatre groupes, modaux, focus, Échap, suspension du propriétaire et formats320/390. Ni Next complet, ni manette physique, ni art canonique. Essai V94 sans écran : huit réussites et un échec conservés, sans le déclarer vert."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/operations/attempt-7/final-receipt.json",
+          "sha256": "d61ba784889d481a78a692d5d85b660372309f64a6e30edc4f54dd60788c9f0c",
+          "scope": "Composant Operations réel et dialogue partagé sur un hôte esbuild : dix-neuf contrôles et huit PNG. HUD, briefing en trois étapes, tiroirs et contrats d’archiveV2/WebLocks/IDB préservés. Ni GameClient complet, ni campagne, ni manette physique."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+          "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Interface de commandement modernisée : carte dominante, sous-menus, dossiers contextuels, briefing et HUD regroupés. Le vrai Next de compatibilité -FZ vérifie le bandeau dégagé, la carte, les tiroirs et le retour Quitter dans trois formats. Les portraits et armes n’obtiennent aucune nouvelle certification artistique par ces recettes techniques.",
+      "remaining": "Portraits, armes et silhouettes fidèles aux œuvres, références par personnage, toutes les animations et revue artistique humaine restent ouverts. Les terrains RTS restent des prototypes ; la présentation ne réalise pas toutes les cartes et cinématiques source."
+    },
+    "Guerre des clans:BACK152-023": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Partiel",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/operations/attempt-7/final-receipt.json",
+          "sha256": "d61ba784889d481a78a692d5d85b660372309f64a6e30edc4f54dd60788c9f0c",
+          "scope": "Composant Operations réel et dialogue partagé sur un hôte esbuild : dix-neuf contrôles et huit PNG. HUD, briefing en trois étapes, tiroirs et contrats d’archiveV2/WebLocks/IDB préservés. Ni GameClient complet, ni campagne, ni manette physique."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/gamepad/attempt-1/final-receipt.json",
+          "sha256": "ab80dfa18e3774279f27ee895dc98a2b864edf428f3d52d1c117321d493a7394",
+          "scope": "Treize contrôles et deux PNG avec un fournisseur navigator.getGamepads synthétique déclaré. Hook de production, DOM, focus et événements cancel natifs. Aucun matériel de manette physique, aucun Next ou parcours de campagne qualifié."
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+          "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+          "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Commandes RTS accessibles dans le nouveau HUD et ses tiroirs, navigation du menu avec une API de manette synthétique contrôlée. Une équipe est réellement lancée dans le vrai Next de compatibilité -FZ avec119RAV sur le protocole canoniqueV2. Aucune victoire complète ou manette physique prétendue.",
+      "remaining": "Manette physique, remapping et parcours RTS complet avec plusieurs escouades restent à qualifier. Un fournisseur de manette synthétique ne vaut pas un essai matériel."
+    },
+    "Clan Ship:OPS-B05": {
+      "status": "PARTIEL",
+      "implementation": "Partiel",
+      "domainTested": "Partiel",
+      "browserTested": "Oui",
+      "physicalController": "À vérifier",
+      "humanArt": "À vérifier",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-4/dialogue/final-receipt.json",
+          "sha256": "afc0d5282b9b9b30b4155dd74f77210e017ca18488ebc5ee1ff311b04838792c",
+          "scope": "Vrai GameClient via Vite, pas gameplay Next :87contrôles,21PNG dont trois originaux inspectés, six interlocuteurs et quatre sujets sur trois formats. Auto-conservation naturelle de plus de30secondes et vraie perte de focus : tiroir et récit imbriqué conservés, contenus masqués/inertes et annonce live suspendue pendant pause.1293sources app inchangées, aucune erreur ou ressource manquante. Les81cas antérieurs sont rejoués ; les six contrôles de rétention s’y ajoutent sans les présenter comme87nouveaux.",
+          "kind": "boundedReceipt"
+        }
+      ],
+      "qualificationScope": "Répliques et accès contextuels des six interlocuteurs avec quatre sujets, récits et retours conditionnels dans le vrai GameClient via Vite. Les87contrôles incluent six nouveaux contrôles de rétention naturelle et de pause/focus dans trois formats. Ils ne sont pas une nouvelle preuve Next. Le résultat borné antérieur de697bd87a reste conservé comme référence datée, sans certifier toutes les réactions du nouveau suivi.",
+      "remaining": "Le nouveau suivi des quêtes garde ce chantier «Avancé — reste partiel». Étendre les réactions aux tentatives non archivées, blessures et changements de relation, avec des preuves dédiées. Aucun art humain, appareil physique ou campagne complète n’est déduit des87contrôles Vite."
+    },
+    "Mobilité:MOB-002": {
+      "status": "QUALIFIE_BORNE",
+      "implementation": "Oui",
+      "domainTested": "Oui",
+      "browserTested": "Sans objet",
+      "physicalController": "Sans objet",
+      "humanArt": "Sans objet",
+      "evidence": [
+        {
+          "path": "production/clan-war-command-20261109/qa/root/build-compat-final/receipt.json",
+          "sha256": "e11bb51f4379de1afbcb094d86a0d7bb8871da6783f7d70f6316e044c4526f7f",
+          "scope": "Vrai build Next de production -FZ et TypeScript réussis, code0,1293sources app identiques avant/après. La préparation déclarait des modifications locales à partir de1aaa ; les empreintes réelles, dont le seul helper applicatif modifié, établissent l’identité. Aucun déploiement déduit.",
+          "kind": "softwareQualificationReceipt"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/root/lint-ci-final/receipt.json",
+          "sha256": "521e89c51c3ab446fcd38b1ae9a282fa12c51f3bdf8cbffeef8e9ab9a8caae79",
+          "scope": "Lint final du dépôt configuré :2852fichiers, code0, zéro erreur et avertissement. Une recette historique gelée supplémentaire garde une exception de liaison inutilisée exactement ciblée ; règles des app/scripts/tests actifs inchangées.",
+          "kind": "softwareQualificationReceipt"
+        },
+        {
+          "path": "production/clan-war-command-20261109/qa/ci/cold-compat-final/results/report.json",
+          "sha256": "6f54f72bdaf54fb8f9b2a433e290172d78f72abebad10dca8aa18067de90c099",
+          "scope": "Nouveau checkout froid sur les sources corrigées e186 :1198tests réussis sur103fichiers, zéro échec, ignoré, annulé ou todo. Assertions de compatibilité renforcées, nombre de cas inchangé ; les31/213/280contrôles séparés et chevauchants ne sont pas ajoutés à1198. Dépendances verrouillées partagées ; aucun nouveau npmci ou GitHub Actions du head courant déduit.",
+          "kind": "softwareQualificationReceipt"
+        }
+      ],
+      "qualificationScope": "Critère logiciel MOB-002 sur les sources corrigées e186 : vrai build Next de production -FZ avec1293sources inchangées avant/après et vérification TypeScript, lint strict du dépôt configuré sur2852fichiers sans erreur ni avertissement,1198tests uniques réussis sur103fichiers dans un nouveau checkout froid. Les assertions de compatibilité sont renforcées ; le nombre de cas reste1198 et les essais séparés chevauchants ne sont pas additionnés.",
+      "remaining": "Maintenir ce résultat borné aux sources et à la sélection déclarées. Ce critère logiciel ne certifie ni la totalité du gameplay, ni tous les scénarios du dépôt, ni les appareils physiques, l’art humain ou un déploiement. Les autres MOB-003 à MOB-014 gardent leurs admissions propres."
+    }
+  },
+  "deliveries": [
+    {
+      "title": "Tutoriel de l’atelier : 18 gestes",
+      "status": "QUALIFIE_BORNE",
+      "scope": "Nouveau parcours complet sur le build de compatibilité -FZ : vingt contrôles et trois complémentaires séparés, dix-huit gestes, six transports, trois reprises, vrai refus de quota. Modèle pédagogique et prérequis historiques déclarés ; aucun rite actuel ou objet réellement chassé déduit."
+    },
+    {
+      "title": "Mobilité MOB-001",
+      "status": "QUALIFIE_BORNE",
+      "scope": "Parcours complet de vingt-neuf contrôles Next nIt,68,398secondes réelles, trois balises et charge de25kg ; deux refus de quota et Continue du véhicule possédé. Complément de treize contrôles de notice sur mdrv, sans rejouer ces vingt-neuf cas."
+    },
+    {
+      "title": "Qualification globale MOB-002",
+      "status": "QUALIFIE_BORNE",
+      "scope": "Build Next de production -FZ et TypeScript réussis ; lint final configuré sur2852fichiers sans erreur ni avertissement ; nouvelle passe froide1198/103 sur les sources e186, avec assertions de compatibilité renforcées. Ni QA intégrale du jeu ni matériel ou art humain."
+    },
+    {
+      "title": "Interface de commandement",
+      "status": "PARTIEL",
+      "scope": "Dix-huit contrôles rejoués sur le vrai Next de compatibilité -FZ, bandeau dégagé et vrai retour Quitter. Les recettes de fixture25, Operations19 et API de manette13 gardent leurs dates et portées. Aucune manette physique, revue artistique ou grande carte RTS complète."
+    },
+    {
+      "title": "Incidents B01 et B02",
+      "status": "PARTIEL",
+      "scope": "Six contrôles Next mdrv, dix-huit interventions et dix-huit retours Échap, garde et diagnostic réellement joués. Quatre suites de domaine91tests, dont douze nouveaux, ne s’ajoutent pas à la suite globale. Variante d’extraction, équilibrage, art et manette physique restent ouverts."
+    },
+    {
+      "title": "Dialogues et reprise de chasse des PR",
+      "status": "QUALIFICATION_TECHNIQUE_BORNEE",
+      "scope": "GameClient via Vite :87contrôles de dialogues et169contrôles de chasse rejoués, sans les présenter comme nouveaux cas. Les fixtures, les trois/six captures originales inspectées, l’absence de vraie chasse/boss joué et l’hébergement Vite restent déclarés. Le Pod conserve sa recette Next de dix contrôles sur le buildkS."
+    }
+  ],
+  "globalEvidence": [
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-5/final-receipt.json",
+      "sha256": "b6bf2f4f6496e4d91fc466502becb0fccd46749c03e7646446c22af5768c670a",
+      "scope": "Vrai Next sur le build de compatibilité -FZ : les mêmes dix-huit contrôles sont rejoués, sept PNG inspectés, bandeau dégagé en1440/390/320, quatorze outils, tiroirs, focus, Échap, lancement RTS et vrai Quitter vers Clan Ship. Sauvegarde entière inchangée et revalidée par la fermeture transitive de204entrées du parseur ; trente JS conformes. Aucune somme avec les anciens dix-huit contrôles ou grande carte RTS complète prétendue.",
+      "kind": "boundedReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/clan-ship-incidents/native-attempt-5/final-receipt.json",
+      "sha256": "038e15353eb4c1a2b4ebac22d2c0a23ed22315de8cf15ea919c7b9ecf0358181",
+      "scope": "Vrai Next, build mdrv : six contrôles, dix-huit interventions acquittées et dix-huit retours par Échap, sept PNG ouverts,2027positions dans sept salles. Incidents réellement joués, réplique du garde et diagnostic spatial, un seul premier ordre explicitement choisi, reprise sans nouveau tour. Profil, rang, progression et import de sauvegarde contrôlés. Les anciennes tentatives restent datées ; aucune variante future d’extraction, revue artistique ou manette physique.",
+      "kind": "boundedReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/notice-attempt-1/final-receipt.json",
+      "sha256": "e4a32a83e0635c203b4a1038c0542543e2fd2cc13ec5fb267aee594ceeb26c16",
+      "scope": "Complément Next, build mdrv : treize contrôles et trois PNG sur le vrai résultat gagné du parcours MOB-001. Pause et notices correctes ; refus réel de quota conservé honnêtement, nouvel essai réussi publiant l’acquittement et supprimant l’alerte périmée. Le parcours complet de vingt-neuf contrôles n’est pas rejoué sur ce build ; aucun résultat nouveau fabriqué.",
+      "kind": "boundedReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-4/dialogue/final-receipt.json",
+      "sha256": "afc0d5282b9b9b30b4155dd74f77210e017ca18488ebc5ee1ff311b04838792c",
+      "scope": "Vrai GameClient via Vite, pas gameplay Next :87contrôles,21PNG dont trois originaux inspectés, six interlocuteurs et quatre sujets sur trois formats. Auto-conservation naturelle de plus de30secondes et vraie perte de focus : tiroir et récit imbriqué conservés, contenus masqués/inertes et annonce live suspendue pendant pause.1293sources app inchangées, aucune erreur ou ressource manquante. Les81cas antérieurs sont rejoués ; les six contrôles de rétention s’y ajoutent sans les présenter comme87nouveaux.",
+      "kind": "boundedReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-5/hunt-dialogue/final-receipt.json",
+      "sha256": "87c8cf6bf4ae61b754eef486022b3d247947e3bdcf6fda882801310cce97bfd3",
+      "scope": "Vrai GameClient via Vite :169contrôles rejoués sur huit contextes,23PNG dont six originaux inspectés, aucune erreur ou ressource manquante ;1293sources app et quinze cibles de recette identiques. Fixtures de prérequis déclarées ; aucune chasse ni boss joué par cette recette. L’échec143et le diagnostic8 sont conservés mais non ajoutés aux passes.",
+      "kind": "boundedReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/pr-integration/final-attempt-1/pod/final-receipt.json",
+      "sha256": "cbcbe932e2482b3534da8000d9ecb2cd195ee5c6761fc9b0e7bc69fc30aef1c8",
+      "scope": "Vrai Next, build kS : dix contrôles, huit PNG ouverts, aucune erreur, ressource manquante ou écriture localStorage/IDB. Seize sources ciblées inchangées ; trois autres composants modifiés en fin de recette sont explicitement hors périmètre. Ni reprise disque de campagne ni fidélité artistique/FX1:1 certifiées.",
+      "kind": "boundedReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/native-attempt-2/final-receipt.json",
+      "sha256": "999b920aa49e2baea5b4a98607781298f2c33fa36e908d72acf0d36f4ff49aca",
+      "scope": "Historique de l’édition1aaa, remplacé pour la qualification actuelle par le nouveau parcours complet compat-final. Vrai Next, build kS : accès physique au Mausolée, 18 gestes et 21 événements, trois reprises, refus réel de quota avant écriture puis nouvel essai. Vingt contrôles et trois contrôles supplémentaires sur un checkpoint réellement gagné. Prérequis historiques Young Blood déclarés ; aucune campagne actuelle depuis la nurserie.",
+      "kind": "historicalReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/final-resume-1/final-receipt.json",
+      "sha256": "50e811beb3ff9d439e1f644419af6363b9d43d983e434da7b942aba904f40102",
+      "scope": "Historique de l’édition1aaa, remplacé pour la qualification actuelle par le nouveau parcours complet compat-final. Complément Next, build nIt : sept contrôles, quatre PNG ouverts, reprise réelle de la face à 8/18 révision9 vers 9/18 révision12, puis recharge exacte. Leçon et callback identiques au parcours des 18 gestes. Aucune nouvelle exécution intégrale, aucun nouvel essai de quota ou de flotte dans ce complément.",
+      "kind": "historicalReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-2/final-receipt.json",
+      "sha256": "5af29c4976c6685d3b0053386be61ee9d05b4ae0755bc4854361ea402425b7d3",
+      "scope": "MOB-001 P0 dans le vrai Next nIt : 29 contrôles, dix PNG ouverts, marche extérieure, Forges, guichet, 68,398 secondes réelles dans l’aire, trois balises, charge de 25kg, permis, achat, sortie, récupération et retour. Deux vrais refus de quota et Continue retrouvant le mouvement au tick30 sans écraser l’ancien checkpoint révision2. Prérequis adultes historiques déclarés ; aucune nurserie jouée ni qualification globale MOB-002."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/root/build-compat-final/receipt.json",
+      "sha256": "e11bb51f4379de1afbcb094d86a0d7bb8871da6783f7d70f6316e044c4526f7f",
+      "scope": "Vrai build Next de production -FZ et TypeScript réussis, code0,1293sources app identiques avant/après. La préparation déclarait des modifications locales à partir de1aaa ; les empreintes réelles, dont le seul helper applicatif modifié, établissent l’identité. Aucun déploiement déduit.",
+      "kind": "softwareQualificationReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/root/lint-ci-final/receipt.json",
+      "sha256": "521e89c51c3ab446fcd38b1ae9a282fa12c51f3bdf8cbffeef8e9ab9a8caae79",
+      "scope": "Lint final du dépôt configuré :2852fichiers, code0, zéro erreur et avertissement. Une recette historique gelée supplémentaire garde une exception de liaison inutilisée exactement ciblée ; règles des app/scripts/tests actifs inchangées.",
+      "kind": "softwareQualificationReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/cold-compat-final/results/report.json",
+      "sha256": "6f54f72bdaf54fb8f9b2a433e290172d78f72abebad10dca8aa18067de90c099",
+      "scope": "Nouveau checkout froid sur les sources corrigées e186 :1198tests réussis sur103fichiers, zéro échec, ignoré, annulé ou todo. Assertions de compatibilité renforcées, nombre de cas inchangé ; les31/213/280contrôles séparés et chevauchants ne sont pas ajoutés à1198. Dépendances verrouillées partagées ; aucun nouveau npmci ou GitHub Actions du head courant déduit.",
+      "kind": "softwareQualificationReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/trophy-tutorial/compat-final/final-receipt.json",
+      "sha256": "7132fb95336a50e64ef5a5200c8c68a516de2b624e108783ae4627743c33d9ed",
+      "scope": "Vrai Next sur le build de compatibilité -FZ : nouveau parcours complet de vingt contrôles et trois contrôles complémentaires séparés, dix-huit gestes,21événements, six transports, trois reprises et vrai refus de quota suivi d’un nouvel essai. Douze PNG inspectés, neuf sources ciblées et1293empreintes applicatives stables. Modèle pédagogique et prérequis historiques Young Blood déclarés ; aucune nurserie, rite actuel, manette physique ou art humain qualifié.",
+      "kind": "boundedReceipt"
+    },
+    {
+      "path": "production/clan-war-command-20261109/verification.json",
+      "sha256": "1e41b982cbce3f4018168eb2425bfd454d4d326fdefebbb46f33ae35ea0d8ba4",
+      "scope": "Globalv2 gelé après les réparations du premier CI : froid1198/103, build Next -FZ, lint2852fichiers sans erreur ni avertissement, UI18 et tutoriel20+3 rejoués. Les autres reçus conservent leurs builds et dates ; seul le helper de tutoriel change et ses liaisons historiques sont précisément bornées. Aucun total de QA complète ou fermeture globale du jeu.",
+      "kind": "finalVerification"
+    }
+  ],
+  "limits": [
+    "Un résultat antérieur ne certifie pas le code modifié par les PR suivantes.",
+    "Les essais de composants, parcours Next, CI distante, matériel physique et art humain restent distincts.",
+    "Le pilote de classeur contrôle les cellules et les pièces XML ; il n'exécute pas Excel natif et ne joue pas au jeu.",
+    "Le test T15 de soixante minutes appartient à la qualification antérieure697bd87a. Aucune nouvelle endurance de soixante minutes n’est revendiquée par cette passe."
+  ],
+  "sourceLinks": {
+    "Clan Ship:OPS-B01": [
+      {
+        "path": "production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 7,
+        "rowSha256": "a804550d3a2a089d2d7189990e040e6a83d8a8c4b5c42905f5f1ec417ebc1073",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      },
+      {
+        "path": "production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 7,
+        "rowSha256": "a804550d3a2a089d2d7189990e040e6a83d8a8c4b5c42905f5f1ec417ebc1073",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      }
+    ],
+    "Clan Ship:OPS-B02": [
+      {
+        "path": "production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 8,
+        "rowSha256": "08322d1fbb4de3507605099716b8ee43b9e2640491552cd2caec26e8d18b720e",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      },
+      {
+        "path": "production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 8,
+        "rowSha256": "08322d1fbb4de3507605099716b8ee43b9e2640491552cd2caec26e8d18b720e",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      }
+    ],
+    "Clan Ship:OPS-B05": [
+      {
+        "path": "production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 11,
+        "rowSha256": "e13cc881e3aaebc855b9b29bd28bc70f790db675c1894c68ef339f30cae1e720",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      },
+      {
+        "path": "production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 11,
+        "rowSha256": "c3650eec254ee579ee683915087a06262167b4e28bd4d1fb8e4679b2499fff66",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      }
+    ],
+    "Clan Ship:OPS-B14": [
+      {
+        "path": "production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 20,
+        "rowSha256": "3c18bfe0e2c57959bbf54fdef37e51ae560d8290d18ddb5c08d84c386400ee4d",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      },
+      {
+        "path": "production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 20,
+        "rowSha256": "3c18bfe0e2c57959bbf54fdef37e51ae560d8290d18ddb5c08d84c386400ee4d",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      }
+    ],
+    "Clan Ship:OPS-B15": [
+      {
+        "path": "production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 21,
+        "rowSha256": "654b3398afe09cab49420915ab6051eda5b35a9e4b1f1a98349b1e027d876426",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      },
+      {
+        "path": "production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx",
+        "sheet": "Chantiers",
+        "row": 21,
+        "rowSha256": "654b3398afe09cab49420915ab6051eda5b35a9e4b1f1a98349b1e027d876426",
+        "scope": "Rapprochement documentaire par ID et domaine exacts ; état de la PR daté, aucune qualification courante ajoutée par cette référence."
+      }
+    ]
+  },
+  "implementationCommit": "e18602ed22bd1e1e6b80b8b4703c88d4ef6faaa5",
+  "preIntegrationReads": {
+    "scope": "Prélectures des PR avant intégration. Les fichiers intégrés ont ensuite été confirmés par l’inventaire épinglé ; ces HEAD ne déclarent pas une fusion distante.",
+    "127": {
+      "head": "79e13f14ff728cc75cde72e026de646aa014e3c1",
+      "workbookSha256": "7eeb69fa97f276470a06d91e21ca06bd9bcaa61368e9418dc9c9e6d83f2030ad"
+    },
+    "131": {
+      "head": "3a03ca990e3c27761d411ee043eb8fdbbaffa6c3",
+      "workbookSha256": [
+        "5658ef76f73c8afb8e95ccd3e8a6f0b049db24886a1a23fce7694bcbb8e62355",
+        "fc7c871a26218fb8b09a9463a9d67884a6f29c848899171ced5c7362125abc79"
+      ]
+    },
+    "132": {
+      "head": "353a264e267837259a25ba090db7f97bf146afe7",
+      "workbookSha256": [
+        "5344019af67069a48268ae866498b4552fdad83ae996cbe002868cfefde2931c",
+        "39c2e6488d6b3362a3d575b0ff07afdb9b6bb2dfb38def857c5a2789143a34c4"
+      ]
+    }
+  },
+  "edition": 2,
+  "previousPublishedEdition": {
+    "edition": 1,
+    "commit": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+    "scope": "Édition publiée historique, conservée dans Git. Ses reçus gardent leur date et leurs builds ; aucune réattribution à la révision2.",
+    "files": [
+      {
+        "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
+        "sha256": "afa5817041cd5789a04bb06999ec6b6eeae8cce3760329c7d7af34804ffcb150",
+        "bytes": 25380150,
+        "gitBlob": "be316c97ddb20d63540a90e7299f6a6fa6c05991"
+      },
+      {
+        "path": "production/clan-war-command-20261109/suivi/final-receipt.json",
+        "sha256": "9abfabd2d6d6761f85ec84be3d9268558023667409443a1d4b7e9a9415fb92d6",
+        "bytes": 4124,
+        "gitBlob": "37c1c131f0bce4d8c9b9db979b7b8bd114e72781"
+      },
+      {
+        "path": "production/clan-war-command-20261109/verification.json",
+        "sha256": "e5e7f42ed36061511fd8039db47fb7f7083f10db430eb3334561caebd5d6e272",
+        "bytes": 2037048,
+        "gitBlob": "c7241647ee5a51a3e3f80dfe834bc4877a13bc37"
+      }
+    ]
+  },
+  "applicationCompatibility": {
+    "changedModule": "app/game/systems/trophyTutorialV6.ts",
+    "previousSha256": "65e735198930e048fcafc16ba89c8debeb9303f5d636463b62394520454cb0be",
+    "currentSha256": "749b167facdf4b4eed079d84ea8c35ad2470d5b5ab6aeb8f2e4c20e3c9f8ffc9",
+    "unchangedOtherApplicationFiles": 1292,
+    "scope": "Seule modification applicative après le buildmdrv : traiter l’absence optionnelle du tutoriel avant la validation du propriétaire. Les journaux présents et leurs propriétaires restent soumis aux mêmes gardes. Les anciens reçus conservent leurs identités ; les liaisons bornées de compatibilité sont explicites dans le globalv2."
+  }
+}

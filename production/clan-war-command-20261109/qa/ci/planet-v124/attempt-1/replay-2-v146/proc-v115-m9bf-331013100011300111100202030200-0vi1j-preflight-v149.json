@@ -1,0 +1,24 @@
+{
+  "format": "yautja-planet-preflight",
+  "version": 149,
+  "worldCode": "proc-v115-m9bf-331013100011300111100202030200-0vi1j",
+  "recipeVersion": 115,
+  "checked": {
+    "regions": 8,
+    "territories": 48,
+    "landmasses": 5,
+    "routes": 95,
+    "inlandFeatures": 16
+  },
+  "status": "no-structural-errors",
+  "errors": 0,
+  "warnings": 0,
+  "issues": [],
+  "limitations": [
+    "Contrôle structurel sur la carte jouable générée : une absence d'erreur n'est pas une preuve de fidélité artistique 1:1.",
+    "Les anomalies de biomes extraterrestres sont des avertissements à expliquer, jamais une réécriture automatique.",
+    "Les polygones sont contrôlés structurellement, pas remplacés par une nouvelle tessellation ni par une carte SIG certifiée.",
+    "La vérification ne lit ni n'écrit les sauvegardes et n'inspecte aucun stock militaire caché.",
+    "La Terre Natural Earth V147 demeure une référence externe, non une planète jouable créée par V115."
+  ]
+}

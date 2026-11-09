@@ -153,6 +153,22 @@ jobs:
         run: node node_modules/playwright-core/cli.js install --with-deps chromium
       - name: Measure real transforms, inspect every shot, and play the native sequence
         run: xvfb-run -a --server-args="-screen 0 1920x1200x24" node scripts/qa-planet-arrival-spatial.mjs
+      - name: Expose the observed failure in readable check annotations
+        if: failure()
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path('outputs/qa-planet-arrival-spatial/report.json')
+          if path.is_file():
+            report = json.loads(path.read_text())
+            failure = report.get('failure') or report.get('errors') or 'Inspect the preserved report for the failed assertion.'
+            message = json.dumps(failure, ensure_ascii=False) if not isinstance(failure, str) else failure
+          else:
+            message = 'No native spatial report was produced; inspect the preceding setup or build step.'
+          message = message[:16000].replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+          print('::error title=Native arrival spatial diagnostic::' + message)
+          PY
       - name: Preserve captures, motion measurements, video and failures
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02

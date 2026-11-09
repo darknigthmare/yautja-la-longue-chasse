@@ -1,0 +1,2078 @@
+{
+  "node": "v22.23.4",
+  "startedAt": "2026-11-09T11:52:02.392Z",
+  "selection": "production/clan-war-command-20261109/qa/ci/test-selection.json",
+  "selectionSha256": "6c4f96aaf8c590e72a328a2b328ca70b78e8756b51f8ef953d5ab4921eaa9f92",
+  "files": [
+    {
+      "file": "tests/audio-manifest.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/audio-manifest.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "8d510a69c6079e8b8bb6fe1c1fd076e93c08e5d0f56ff7629699ca72059e832d",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/audio-manifest.test.mjs.tap",
+      "logSha256": "50005547f4a4ad48d5688603eef52673344b070c9849e1891b225b1f4b6a12ef",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/audio-pack-v54.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/audio-pack-v54.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "a9a590f94b539c51611503ced46f56fa338178b0ba7035481e31a44614ca423a",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/audio-pack-v54.test.mjs.tap",
+      "logSha256": "0658668bd15678484e91a96374799f4d90e44cdad03dcb5e82fe2d0075015ef0",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/canopy-grip-presentation-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/canopy-grip-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "616b3014f6b84ce65f29ac3e6571b782732c986e074f1a3797fb7f295444a15a",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/canopy-grip-presentation-v112.test.mjs.tap",
+      "logSha256": "dc157e6fa59895a1b7ed5b0040de1025fa5a634b289208301e8a7684ab955845",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/canopy-navigation-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/canopy-navigation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "36acf9c8825bebfa62e5b060181426e34f9edbaba366f0dfc1d177ba18b20bff",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/canopy-navigation-v112.test.mjs.tap",
+      "logSha256": "5c33dd920e7aa2054e5d79f24dbd2d0a291a2ed8b8157a3774551813e0c0a4fc",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/canopy-traversal-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/canopy-traversal-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "d1080e8fb5c1242015db4a53ac28052034882395ccce616d1b386c8cfeda0081",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/canopy-traversal-v112.test.mjs.tap",
+      "logSha256": "0b37f2e2716ebe7457bdd683d90e09a13cb10f3dbf9c14d9c3154e9284e728e4",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/carcass-anatomy-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/carcass-anatomy-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "111942301d2eae657771855a2788093f5bfd12bc0ce21b29ade21949fb7a088e",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/carcass-anatomy-v112.test.mjs.tap",
+      "logSha256": "5f2bcd3474362e052235da848cc1339ef3e5edb802b12dceff3e5af5dfea2368",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-field-pack-20261103.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-field-pack-20261103.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "3d08e65f4d14ee521339e2f5b84d3866d4a1d5ca9cf3ba5c3e3d446a85d0beaa",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-field-pack-20261103.test.mjs.tap",
+      "logSha256": "929afa1505e63fce99a95a18fd2d7e39d207681c0636c4d1dea9e1081747e980",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-crew-dialogue-ui.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-crew-dialogue-ui.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6eb71abca17330ab1f06b638591ef02bc743cd3b1b196765b3e730c69d1de6ad",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-crew-dialogue-ui.test.mjs.tap",
+      "logSha256": "ecd6a57caeb2d781ab75da4c63658e30f2b648941ba19649f2faaca51e1c446d",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-crew-dialogue.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-crew-dialogue.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "7c3923370cc8c5801e0126ac0c61a3a918daf1457decbc29c6f16ca74b5efee3",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-crew-dialogue.test.mjs.tap",
+      "logSha256": "9388106d06968b16a2ddee687bfa6ef53f46b7197915cd73bc49a5ee82dba7a5",
+      "tests": 45,
+      "pass": 45,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-dialogue.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-dialogue.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "a393fda583128eed5373a3a294d88b246cd2c93aafd83887981f7a3c1fa5e7ac",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-dialogue.test.mjs.tap",
+      "logSha256": "f79efb3f61c88f56275afc355dba3d566b30a71948bf7d33c29f44e08935e69d",
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-docking.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-docking.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "235387c98942aa946b1d6c68b0a8e967a2162f477a1d2b52b332201061c78416",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-docking.test.mjs.tap",
+      "logSha256": "a752a82183e0f93c4bad9fee9c001f6f310050bbc3c87681c0813b4665234651",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-hunt-dialogue.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-hunt-dialogue.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "3e940fc292d64ffae0712ef16a6c90b1e688b2b05e65573e029191f6938f88f2",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-hunt-dialogue.test.mjs.tap",
+      "logSha256": "d4873811a32418569c66d1c9a73b79b21d1647bae10f49fe201dd6472f96306c",
+      "tests": 30,
+      "pass": 30,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-incidents.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-incidents.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2df0ab68f691ca95c8af85fc0c1f95a647d79f5cd680cb230349a3c9a5fb3314",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-incidents.test.mjs.tap",
+      "logSha256": "ebd45f861fbe0c1778a22b63964310b4f78f979c5b498ec7d40079cbd6076bdb",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-interior.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-interior.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "54899c245e1a9f9c22c67e5eb81fd78513ce6c93c7c49ac80f81795060aba241",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-interior.test.mjs.tap",
+      "logSha256": "48a1d6be6f96b374b285c778099220a6d554fb3f03c65b41686f9d66837c1fec",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-maintenance-diagnostics.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-maintenance-diagnostics.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "df41737cc2d62ececbbb07678544a6ef308f79d7943202289f2e8c92ccd02cf9",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-maintenance-diagnostics.test.mjs.tap",
+      "logSha256": "d5f61b70d02cd8bdd99db44c29f347af3a8be8453c0d23f43add4ea9e98a22b0",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-operations-audio.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-operations-audio.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "3fd98fc509db59da70d2e2252cd7e53ac81c27a4045336eda126f77ff6769994",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-operations-audio.test.mjs.tap",
+      "logSha256": "9420bab4310362ddbbbaad154095b30aee0031ccf51047698b5f4c08ba0d0285",
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-operations-save.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-operations-save.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c0328178a90868216062636c73ebe6b5696749838b8db79999e7e5bcd0c0463d",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-operations-save.test.mjs.tap",
+      "logSha256": "2df036d1d6cb4b0a1470c0f55b4dab8aa9f8af2a03b3f61c6d61f521328b1e0d",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-operations.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-operations.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5afa5380f2c6cc51a47cc57cebd48af856312e0c6684e8b04cbe6570c086b775",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-operations.test.mjs.tap",
+      "logSha256": "accbf06ef2ae4f519b54964ca3a0986d200aab663840f8faba09f1372a4bb9f4",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-return-escort-save.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-return-escort-save.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "16f6c4438eebe7ba4d222bf0caaaff451d5372bc3ff556d8f280644ad41410fa",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-return-escort-save.test.mjs.tap",
+      "logSha256": "850b4a5535f51ee2468d9b39f683340dd1e7cffcb94af326063eb7f915940d57",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-return-escort-ui.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-return-escort-ui.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5dc531abf6a3c72cbd5b8fc0372123c0a59b03b2918e0c57f3e0306400d27b01",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-return-escort-ui.test.mjs.tap",
+      "logSha256": "85c4c3db1b7388f6fbee89c904f247bb5445caf25a998d1de6d252bc231b774a",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-return-escort.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-return-escort.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5f83e827a19b7457a7cf43084e60554a22c1e71d4a4a705d098d8a825aaab464",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-return-escort.test.mjs.tap",
+      "logSha256": "856681d0c28d50e46cd728338ae8e65b89be9d9e6c210047923096c0b294d9ca",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-save.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-save.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5ced48e55a2476d872cf6dc9f46661ea4ff850aa2d80fe7f21c569cfbfab6393",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-save.test.mjs.tap",
+      "logSha256": "b4b202436f28f960fcee0387fae90a078fde227f20294913e24e5bb7bb91f772",
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-space-encounter.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-space-encounter.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "46b193115aef3ffe9a96be2e163be7261fd1a1dbc258af32d8c7cba9d9acb56a",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-space-encounter.test.mjs.tap",
+      "logSha256": "aadba202bb1ca240cd2816588399c751788c8567a9bfc5dc298a211edff81495",
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-trophy-case.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-trophy-case.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cd50309c842ef400279651c1264020425d83f15d0b2ba537f8198dc706ab4567",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-trophy-case.test.mjs.tap",
+      "logSha256": "fdfc78439828c4a28fb061898c69e0c46deea7032f71d4e7b7ff59ca2d90fbe1",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-trophy-hearing-presentation.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-trophy-hearing-presentation.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "8f590dbecabcdb235270dd09569e8d9a14cf342cd579f0a5e77a7cee5542be8f",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-trophy-hearing-presentation.test.mjs.tap",
+      "logSha256": "d8e4931802229abb76ac6a522bbafd18d721543680630230aa4b7db8ef82588b",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-trophy-hearing.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-trophy-hearing.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "140e3e2e88625f91227cd71b222af95338457bfba1af76dabd3ed2ceb1775f09",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-ship-trophy-hearing.test.mjs.tap",
+      "logSha256": "6c655d6eaad16a0d7f76294caf63cef3743d167cd2f1bfbfb90c5262609a40cf",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-climate-place-tokens.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-climate-place-tokens.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "875ab39260aee3a5ddc1fa010e21b6bbdb7f01bb623b32c2b1364f058deed29a",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-climate-place-tokens.test.mjs.tap",
+      "logSha256": "f6b07f34fff6b69c577b467b47ad90780a952c58ba472d432964b912a7095caf",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-due-events-v151.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-due-events-v151.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6d32b51e0e29b099053725daa23f1b14e2f4bacf6f80cbfaefaa1995185ae3a9",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-due-events-v151.test.mjs.tap",
+      "logSha256": "d23c8466ea7361efdf2ea2d5e6966dd09b415fd8de45528e32b18dbf310fd5b4",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-fence-v94.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-fence-v94.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9ca3670dcf64727f0050df2fa9a0060c2ad39af2dd05fa1fef9ade1776510a0b",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-fence-v94.test.mjs.tap",
+      "logSha256": "fc80235ee32f1fe54019eb27058275ee37b9bbddbe7d2cb6e2a7534799895cc4",
+      "tests": 21,
+      "pass": 21,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-pr55-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-pr55-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e72ff2a7d18d115d6919a9718ab31fd6ad211522c40e176c77673b9755cac175",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-pr55-v144.test.mjs.tap",
+      "logSha256": "30ced65cebfc0ec2ec1b85e9dc2e0ad61caf141b65350b9534e43fc8af7e114e",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-pr57-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-pr57-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "a7ba0a37a76f22264ef2c290d1bf6bac6b5f6cd696b325c9d7935e8fd61b989e",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-pr57-v144.test.mjs.tap",
+      "logSha256": "7027a5bda2b1a6a3861b8bd074c2816bfd25d907036aeb37ff66542b62f77d14",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v135.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v135.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6e59d1703f1f93463370d183c18cb7970e08b0a115ab98d6cc87f6dac1eaa3a7",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v135.test.mjs.tap",
+      "logSha256": "1ebfe99871f2d2b1978f7949ac27cd6c1847c92126c744bafaeb0fe661634f8c",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v136.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v136.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "19494119117ba7d1b547525adea5885835f34ed7c56e9c4658a764e724a2fc06",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v136.test.mjs.tap",
+      "logSha256": "ad3f3e20e89fa14f8f85a80d47839f7c557bbe0d2d619f6bf6a8a2424362dba9",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v137.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v137.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "874ba66d5a3c6c1dd4256fd3be59dc551899419154c6bb1b4f8dbe9d67535dbc",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v137.test.mjs.tap",
+      "logSha256": "32db36a1d70d7c4237a176b1eff5446f380b62e81ef986911dfdb3b63536d95e",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v138.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v138.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "fa025b94f804f16a92cc6f34f76ba6ff6458a32fec6197c891e0050a8573deba",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v138.test.mjs.tap",
+      "logSha256": "01ca2ef5ec0ffbe17a10f3e943c6f1a7fc2c82e8bb1373f50446c8bb1c351ee0",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v139.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v139.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5b8a6c875b5eeba31190eabeb415157b299bffeb708815d0b8d303a242b3b4dd",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v139.test.mjs.tap",
+      "logSha256": "c2bfdf273bcda60ef7d7867299aa9f6824f45ab896e8e207e75ab82a0cfda71b",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v140.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v140.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e7265905d99a121416967c948022d698005cdb8d81503e8244de7fc492898243",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v140.test.mjs.tap",
+      "logSha256": "da69b05cb0fdb220896f3658e46ef175f35e109eede19c117ce0d8a02ae9a3ae",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v141.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v141.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "53bb82ebf5d6976209a3b5083a681b459ad1b34bbe4c86932ecbd7d6ab116069",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v141.test.mjs.tap",
+      "logSha256": "cf516fbb9ebee68f18d9a3fa104bc72782278b68947bade7177ec0e22b87e8ed",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v142.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v142.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "adc3f663fb98204c229cae8ea2e4275a7173e2632839f6d519a16059b9d5bde4",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v142.test.mjs.tap",
+      "logSha256": "33f7f731895870c5c3da6551af516b0c25f64e2bfa67b64c015ae13385c91950",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v143.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v143.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b9a0fdb97a11f26f514ee3d219844c687dc740d0b4fb1bb8b96e8c376dc039d4",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v143.test.mjs.tap",
+      "logSha256": "d6293bff66c0660d24b17c921149b7823fc75cef03b61ac7fa212644294540c2",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "ef8565505506fa0a35f95816f84046a293ae8c856276db926392261928e0aaf8",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v144.test.mjs.tap",
+      "logSha256": "64eace0d2d9c4bf96048036d0a20cd3fad6132d8eef915e10cf028bdbb6ce1c9",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v145.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v145.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c4e0394c5350a334b2195e916465eb89076518ac5374218766298abdf6c30c39",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v145.test.mjs.tap",
+      "logSha256": "f70d0d6bad8e097fa9f25f78ee347b28bb0df26243c854f97da0b35fe5a0c3e3",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v147.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v147.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "27d1464badf5f9036f453d816d76c04661243ba11b475c62241e8a0ad5d141ce",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-four-modes-v147.test.mjs.tap",
+      "logSha256": "4332889117b2059ee02a2163497d8f6ee9dd4fb81ba2e7f7cd4cc1d998b7a1fa",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-gauntlets-v133.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-gauntlets-v133.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "4bdec9bb29e4a960e74fde1b655c08978596db2b09f885f3ae958e49c430b74e",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-gauntlets-v133.test.mjs.tap",
+      "logSha256": "b78dc87ebb4ec357f06701f6320e7465c4de8f0afff65eb230546de946611315",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-integrated-last-contact-v150.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-integrated-last-contact-v150.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bb9ee5d8237316165d249762628c9099c9314cb8e88b06a8690363892f25a257",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-integrated-last-contact-v150.test.mjs.tap",
+      "logSha256": "a1715e595785253a2f6d843de232ab5071f98d648779a94d047e16e693b2e362",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-operations-archive.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-operations-archive.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "f0563d7c4b5ae38a3f295b95a1cfe62938276fb1b2d21dedbf78877842f91513",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-operations-archive.test.mjs.tap",
+      "logSha256": "a5ef7c07f78e1a792413a229fee290f0d4fb0aecc30a428afb77121a4b3b3a53",
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-operations-v115.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-operations-v115.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9eaeee717162694cc4428acc0e8fdf346605d17cd7cf6231582c29a79dd8b82f",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-operations-v115.test.mjs.tap",
+      "logSha256": "3885fcf86d12bf49346eadcb776a0fa63d0f4a782e521c3778f33286de09f641",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-inspection-reconcile.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-inspection-reconcile.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9c47e2c1ffee18f687cf3780290d7c0c8a3f3f18520e1f93ce74281aeac28b1d",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-inspection-reconcile.test.mjs.tap",
+      "logSha256": "a49c6c698607fac17ba8ba6a9a6e263e0b02d60028e6e349f20f8aa316f4900e",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-pace-reconcile.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-pace-reconcile.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2cd975ad871b86abdf78d60580181b8601331274d1e7716a3ffe96e25895b292",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-pace-reconcile.test.mjs.tap",
+      "logSha256": "0abeca4695edb631eb87632df020d64e582151715bcc1658ae4fcb63679ae0a1",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-recall-continuity.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-recall-continuity.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "de850bd81e95583cfea0666ff39f53d4dda4fe3a5bf435b95dd96e2fc179e424",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-recall-continuity.test.mjs.tap",
+      "logSha256": "af9aac48b5393e959b705f00e13468ea807d3230614c9c2776c465de1f60a711",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-recall-v116.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-recall-v116.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "7d1256e3658185e8611d1c985421e7b9d13e2cd4bfd4e228efcaca06888ff358",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-outer-recall-v116.test.mjs.tap",
+      "logSha256": "3472a37225cc7fc4c66f2cd34719aad4555dbcd239fb13f613c503c59fda1f9f",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-planets-engine-v96.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-planets-engine-v96.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "f32cd84888f9775bef462133cb5f542877929f04d504222620cf35512a32cb5e",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-planets-engine-v96.test.mjs.tap",
+      "logSha256": "1dcf57189d563f7a5b0740dadfacd78d0feabf4437c5fcb60cab6738a111be87",
+      "tests": 49,
+      "pass": 49,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-production-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-production-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "164e27fbca8ae6f9a08efcf61bbf883b1da6c4985c85841a1367ec864a144da1",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-production-v152.test.mjs.tap",
+      "logSha256": "93993d2a1ae69184c714ba2c2e0114b6373efbb4e3e530873f0502173c60c67c",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-provenance-gate-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-provenance-gate-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "46941757a9546bddc187cdb670bec76b7875124da6281b4ae8dc074171de3e27",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-provenance-gate-v152.test.mjs.tap",
+      "logSha256": "15384393ace9cdf8597fea9cad8e1a4495e2bf570d8379248d3ea9e05a47ce1d",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-rts-web-lock-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-rts-web-lock-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b5c5e24cfcc23a13cae36be3b26dfba2be32776f7d7f9d013ff93e4fb5f6e1d7",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-rts-web-lock-v152.test.mjs.tap",
+      "logSha256": "d03a3a050bd0ba8cad321180b00e4ad0f61d2ddef1cfdfa12c97ef0963ba013f",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-session-v85.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-session-v85.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cba6c41ddb11698bc58e67862b1617b3de0530d222d5290f0754b53bc95040cc",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-session-v85.test.mjs.tap",
+      "logSha256": "dc7c05b12f23605864966baf6df9d021e4cff44df3fc8992c81de6c7e82443f0",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-v115-multitab-v148.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-v115-multitab-v148.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5b2baa05513acb579ff1092bba271b08b25d5180dbd02e62f8408f5c0dd15d7a",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-v115-multitab-v148.test.mjs.tap",
+      "logSha256": "580bb330971ab1dca6de97e5c2ea3bc68d5a02eb5caf6c50293c235d99b829dd",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-v115-multitab-v151.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-v115-multitab-v151.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "90d54a8bdaa23191c2949488d96a91ef60afddcc1d8d979c49ec92c5847d04d7",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-v115-multitab-v151.test.mjs.tap",
+      "logSha256": "93c4e83e7f99ec2e00e935d137dd8e05936ec88a458017ec6ea94a959a2991ad",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-variant-export-coherence.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-variant-export-coherence.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e74b126a7b96c4af7e9999ad1b8e580a406f5745488eefddeac1524c0d01b049",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-variant-export-coherence.test.mjs.tap",
+      "logSha256": "259e46ec96fcf5a49c0bdbf53e878c621ddfb36eac3dc0a23202b7f5d6251798",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-variants-v120.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-variants-v120.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "35bc844ac1e0ab1a893fc822ddd1f6c677c2daa7f4c882d6b2df6e9cf81a4e06",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/clan-war-variants-v120.test.mjs.tap",
+      "logSha256": "1f2f454eeb1732cee3017916371f3b765b663e7f25160ba50528671fbc90504b",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/companion-residence.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/companion-residence.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "29bd62596afa382715cd4ae856186804956a4a4074152e27458b1f7360ba2881",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/companion-residence.test.mjs.tap",
+      "logSha256": "8adebddb4f4303a1ca1edc0e3416a6b891941f2e89df18ca79fae5d5ec171a28",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/decal-placement-parity-v139.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/decal-placement-parity-v139.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "030e3ebfa2550f8eb8a3f5ddc30a67088fc274e72a7413c03fd4270a63f106ec",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/decal-placement-parity-v139.test.mjs.tap",
+      "logSha256": "252a890966816cd270657286062f539ad81fdac626ff4701b1b9c5c6a1f68fde",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/dev-travel-destinations.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/dev-travel-destinations.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "eb2d1e458b8ae69e8b981b29c56ff1dce5d4396b6d18ee13dccc596be50c26a3",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/dev-travel-destinations.test.mjs.tap",
+      "logSha256": "95b975e0c4b0fc307ef4b8f428f30f71c9f341e4521b59a4db9362ae562f7287",
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/dev-travel-session.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/dev-travel-session.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "912dd4f866624e69fba2a6e2d8cb5a939c5c2111d3cd3213fc06304e82326e37",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/dev-travel-session.test.mjs.tap",
+      "logSha256": "571e399445bb28203ff68b31b29abe7e1b73749339a94996aca7c802c8390f14",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/gauntlet-save-roundtrip-v136.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/gauntlet-save-roundtrip-v136.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "64c36439c5938b020f78c8242b08eb9b90d447e9442ffa8bb6ce37d53206adc7",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/gauntlet-save-roundtrip-v136.test.mjs.tap",
+      "logSha256": "e4223da1ccfd6eba56f0dd59bbe38a9b363c6aeb01416cdd69cc74eda204a959",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "fec8f854e0e0a917f986b30798066d988af0e6bd0a33e1de359de7d5942f5b47",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-canopy-resume-cooldown-20261109.test.mjs.tap",
+      "logSha256": "094cbb58d26fcaae92ae577530bf91a8ae34ccfc921d4ca3966a315f54f1e222",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-carcass-runtime-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-carcass-runtime-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c9457a415fd4046ece200d60e787743db20c6010b136f324a258c8b168098056",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-carcass-runtime-v112.test.mjs.tap",
+      "logSha256": "a1a7e0732c92b75994cc90211bdb49c54e2cc10aa376f4238cdc5a3ec863a1d6",
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-carried-corpse-menu-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "ba56db4ed323e1996b685a13807ab4d7140c8d929df3679b812448a7b38678f7",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-carried-corpse-menu-v112.test.mjs.tap",
+      "logSha256": "23efd301dcd64184083264c1752fa748d3a12498e845ef48ff1aea43828c686f",
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-catalogue-contract-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-catalogue-contract-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "48d18e7663875829395c68c165d9a074d516583eb5544bed66e25e7ed51a24b8",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-catalogue-contract-v112.test.mjs.tap",
+      "logSha256": "fa55863057e7fbd4440af3206774cfbd9d2ad50a759331cda960f85945019d17",
+      "tests": 41,
+      "pass": 41,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-field-feedback-20261109.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-field-feedback-20261109.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "355b6ccbcc0029ab2dc0fda2b9c65292fc5c5a649735e0940c17bc067ef60e15",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-field-feedback-20261109.test.mjs.tap",
+      "logSha256": "b3019647061240ccd0daf755d88eb6839f4f85b16b1d076f2c4c109c2d3e4ce5",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-field-guide-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-field-guide-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cf43d0f0825ef1c2e45a5a8242b698ba13b7d86b2d8fcb9d838c1b256146fac0",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-field-guide-v112.test.mjs.tap",
+      "logSha256": "218dd3ea1e494628fcc98bdfdd12feed9f6896b518d55bcb7838c221d6ce933e",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-field-presentation-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-field-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "20d5c0cf8cfc545200db643c908e9a5d17d7ff5510e72b16db9c0e5ff5dc0a21",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-field-presentation-v112.test.mjs.tap",
+      "logSha256": "1634dc2e1e391fb2327197145d52876238ababd0f1ef4e785c3632160474f09b",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-skinning-worksite-20261109.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-skinning-worksite-20261109.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e2c9063ea85f2fd0602995d2c63251849e01050e6c5ff133bb92bc34c0b58aa6",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunt-skinning-worksite-20261109.test.mjs.tap",
+      "logSha256": "34c55e50e7342ec6607562084d142ce0360ebbd436c188275039ea4c8516e51b",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-armor-chromatic-clipping.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-armor-chromatic-clipping.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cd401b994898d23380c5e3e128fea0419d8248a3db8890714f8368700b5aebaa",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-armor-chromatic-clipping.test.mjs.tap",
+      "logSha256": "68e8b9600481f1c08e99b583fa3a722df71d578cedc39f98cd6e2b7de1652747",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-chromatics-native-v114.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-chromatics-native-v114.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "d5015935c7f595d3b19bd1e7cfe62d4dff826f4e2fba47b1b7534ac1f33212f0",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-chromatics-native-v114.test.mjs.tap",
+      "logSha256": "fd36b921efa2568d666fa38b14b32622e0adc51641fb372445c1db2ef8d65e92",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-chromatics-v113.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-chromatics-v113.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6717204b4b016e43da30625e272d226d7da45405695a71bf12b884eaf98ed54c",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-chromatics-v113.test.mjs.tap",
+      "logSha256": "8f8d7394ea06d57083699231bd06090c6722eb118ee21344271c710b950e0e65",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-rig-origin.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-rig-origin.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9c6d2ca3bfb144189b93c2c00bbe78f1515436963cb0f0b382170d7fa6f9d361",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/hunter-rig-origin.test.mjs.tap",
+      "logSha256": "6d690b0345e0f5fad709a2c004020699a39b83afb2ab9d1571ebf2935b5a9ca9",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-build-boundary.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-build-boundary.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "db97c9fc3dfbdecf35036fb9f382c8afb5b2ffaef5b05d54a12bfdef7d4e2ee7",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-build-boundary.test.mjs.tap",
+      "logSha256": "f8026d264d66e7045320f10fd7b510f0e8c0b5c957188875d33e560169a58fa6",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-controls-workshop.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-controls-workshop.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "727e5bf53f370b4d543ffafdc5463fd2caa5bc5c1d439f7c1547421a38c17ad0",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-controls-workshop.test.mjs.tap",
+      "logSha256": "571634b708b22196c60ec3dd164b07d3a21ce9ecfc402f2e8e824d8f5acdd640",
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-core.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-core.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2df6b4a4d1ab4c2dbe178d802198147171bd63aca0091459266df3f8ae55abf5",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-core.test.mjs.tap",
+      "logSha256": "cdd741b56269e69fe2c5469bba34f16e2259e22591e3b2792ea0586279527d4f",
+      "tests": 79,
+      "pass": 79,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-hardening.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-hardening.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2b96474e763f8489d0d412dabd80d5342ba02a9421de0b1514ffa9369c8421c7",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-hardening.test.mjs.tap",
+      "logSha256": "8de955daf68bf2f0033cdf0eac78ef9489c9ca22beecff70702edc58e342309c",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-integration.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-integration.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "f12d82152183f85aa94cdabd808d3e4041d71b7c95822153aff56a1a5b15a01a",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-integration.test.mjs.tap",
+      "logSha256": "a6371a59cebb6cddf29dbccfd2a3b071da226cdbbb3b2b3942f9b11d9c084fd1",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-qa-driver.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-qa-driver.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "eff481157b450bb6b7780f2cfa83ae958aa7042e4bae40244f0b66f1184eb49f",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-qa-driver.test.mjs.tap",
+      "logSha256": "b2f1d346d020b32aee53618c4da452485bc05c95041bd3f300cee37985cfade9",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-training-reward.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-training-reward.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5ca1964aa613cce9ba5deb8ee6c771539eaaa6d9567bc266a34c1be79052d674",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/mobility-training-reward.test.mjs.tap",
+      "logSha256": "cf7eeb5623b6f20d0780d68dc440aae095d0a29d567d3d0278425280b37b97fc",
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-atlas-runtime-v125.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-atlas-runtime-v125.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "73f2b4358fd487df05c13597b170a9239ef9912147de9152e124ec88bcf5d44e",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-atlas-runtime-v125.test.mjs.tap",
+      "logSha256": "c1566593e55490d422a618f12da5b328332ce55ca388d99421f04c93752dda0e",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-biomask-v131.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-biomask-v131.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bd7ab8c1eb210857f5c87abd39993282052e1b94e56a69c59c3f2d69ded6c1f1",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-biomask-v131.test.mjs.tap",
+      "logSha256": "3de9822f0d1fc42d236b03f09b584bb6a374f88f1a1b4c112a0d36034698eb9a",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-biomask-v132.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-biomask-v132.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bd4a3024eb902c5ffd20393a1e388ff8f0c4d17607f18c36631f5e8f5c420aea",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-biomask-v132.test.mjs.tap",
+      "logSha256": "c151990dc27ba9398e8bf74926afb10f8b704f507c97f955cf4c88a67627226c",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-historical-v127.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-historical-v127.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b436791cda546af78a01439ff752e030a0c0cd2319b11b6bab9056faaa4422c8",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-historical-v127.test.mjs.tap",
+      "logSha256": "5ab10d20ac83b16279530d9a8ce01de358712b6d00592a5199650a8812d8d9ea",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-official-cosmetics-v141.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-official-cosmetics-v141.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "0a3919e44cd7be066a4747db0983dd07e0f3d401edd6af81fd435ab3b378650b",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-official-cosmetics-v141.test.mjs.tap",
+      "logSha256": "64de75cc6cd7f03a2e37a78b42243b999d1053a44e904d3d23ff1b7362c1416f",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-patches-v129.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-patches-v129.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "784bb33b4c2d354621b083e7c8856829a7de1ee42bfd05bf8a62f845aea943a5",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-patches-v129.test.mjs.tap",
+      "logSha256": "2bcaae92168487f24c85e02d3755cec44eef442bf056e6e05858ba0b3e02fae3",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-platform-v128.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-platform-v128.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "004240fc52cc34211f2aa694902a829f41cf10cba9893023663b0c2ce88aa170",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-platform-v128.test.mjs.tap",
+      "logSha256": "e67e6d8b3b8176ec46fcca144fd8d3beb430270103372ac26f316cfc3a0c7bb1",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-recent-materials-v126.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-recent-materials-v126.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "327219a4d93771ecba069c63d8715fee2e1505db1acaf0800c9e65d1ae8483de",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-recent-materials-v126.test.mjs.tap",
+      "logSha256": "50e5cc54aa5cf71ac0165bfdc3acf7149b2d6389cce637443a7d341b24322938",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-reference-catalog-v130.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-reference-catalog-v130.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b2c179ae515dd4fda7a3d85e36464829e56012a54d26d54b6dcb46bbdf33955b",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-reference-catalog-v130.test.mjs.tap",
+      "logSha256": "45e8e01cf918d88a44eec97f3ffdcf65a8663a1fd3941ba28ffac940843f5ab4",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-video-evidence-v123.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-video-evidence-v123.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "856e47e4b77a2b10d2d9c0b65cabb041e439b64de6258c1e518b7946ba4cf4cb",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-video-evidence-v123.test.mjs.tap",
+      "logSha256": "82a65cb6755ca9f624b800659aeda9c4a3198cf0dff6db8bc609bcc35bfdd874",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-visual-studies-v122.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-visual-studies-v122.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "104e2454c455753a81b1dc5eead6837032ba97cda39cfdacef3d0b581cdee1cd",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/phg-visual-studies-v122.test.mjs.tap",
+      "logSha256": "b53cd6d6ac6c2aa585a2a8257c5d78fffba36e4518640b4f052f53d84513701c",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/planet-generator-persistence-v102.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/planet-generator-persistence-v102.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "492da9a1fcd64f10b55461b8f4b141f482fea479f79840834a372153b00909dd",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/planet-generator-persistence-v102.test.mjs.tap",
+      "logSha256": "3a818bfb92f5206afa7e63e58fc2e7b785429232537cb62919bdd170c6b50675",
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/planet-random-generator-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/planet-random-generator-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cd2a583dd2c328c0df04b52fc53d03ee4ad357ea4aab0b7ea900b93d24f72136",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/planet-random-generator-v144.test.mjs.tap",
+      "logSha256": "1937ae31e0eb9c002ac69a6fb4bf5166361fadd2dd73ee689b822314982acffe",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/planet-terrain-slope-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/planet-terrain-slope-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bd92a8e8449209ea9b8db9c40f68cc61d78838f6455e6b0a228099afd0ed12a6",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/planet-terrain-slope-v152.test.mjs.tap",
+      "logSha256": "d69ff46d4e6e72338cb4731a491cbd5dc467ed7c2d1c839b62a8bdc28cad6374",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/scene-audio.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/scene-audio.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c1c77f051afef16e3ef7df9eef070a49bd29e795aae8e36cfc22011966f7479f",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/scene-audio.test.mjs.tap",
+      "logSha256": "cd35b935a42d7371d1187d21127235dd859256157f797e58042f8a344e0e60a3",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/trophy-tutorial-save-v6.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/trophy-tutorial-save-v6.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "15339974cb610b2da2b6c03e74a9710f6fdf61f92eae4d8922f60516d1da73c1",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/trophy-tutorial-save-v6.test.mjs.tap",
+      "logSha256": "01dc92bb47640118245a634efebd31f1ad84d7e61f20be3517b9ece86532aca0",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/trophy-tutorial-v6.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/trophy-tutorial-v6.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "ead0fefb36f07312502d9db8d53f4ad631560ea0d24b76e2912aa5d2cc89fcef",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/trophy-tutorial-v6.test.mjs.tap",
+      "logSha256": "099fefecb13afd2a3b835f8e18be67a57f0351ddd03a019c714e6b41d0ffcf83",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/warp-module-bay.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/warp-module-bay.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b6d183fb1e20868060104df6e6194bbe52a0740596026c8e26be8ccdbb5e4a29",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/warp-module-bay.test.mjs.tap",
+      "logSha256": "d44193cad69b472bfe6cf8f3e4fb3559fa0830495a7e42d04f478ffe9cdeb006",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/yautja-decals-v133.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/yautja-decals-v133.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "994307225a79cf62184f944372b16a625aa2d6cbe59802633fc257bcca503e83",
+      "sourceUnchanged": true,
+      "log": "../yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/cold-final/results/yautja-decals-v133.test.mjs.tap",
+      "logSha256": "445071383e3bcb8a780763749d52b15b0096f21c56bb5004a036aaf23b730e00",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    }
+  ],
+  "finishedAt": "2026-11-09T11:54:02.559Z",
+  "passed": true,
+  "totals": {
+    "tests": 1198,
+    "pass": 1198,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  }
+}

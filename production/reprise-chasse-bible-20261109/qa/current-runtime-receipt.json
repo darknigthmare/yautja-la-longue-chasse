@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "observedSourceCommit": "9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc",
+  "productCodeCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+  "scope": "Current-source Git integrity and official runtime snapshot generation/check; this is not gameplay, full-public-resource or artistic qualification. Historical inventories and certificates were not rewritten.",
+  "currentSourceCheck": {
+    "command": [
+      "node",
+      "scripts/check-hunt-integration-source-v112.mjs",
+      "--current"
+    ],
+    "exitCodeObserved": 0,
+    "result": "PASS_CURRENT_SOURCE_INPUTS",
+    "files": 3069,
+    "bytes": 148144202,
+    "inventorySha256": "d2f6d6322b6f8b0125c43ab71fa9d5315277263a1ce481c4586bb06a8bbe96c7",
+    "historicalInventoryRewritten": false
+  },
+  "officialRuntimeSnapshot": {
+    "path": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "writeCommand": [
+      "node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--write",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "checkCommand": [
+      "node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--check",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "writeExitCodeObserved": 0,
+    "checkExitCodeObserved": 0,
+    "files": 2207,
+    "inputBytes": 1093220902,
+    "documentBytes": 409745,
+    "sha256": "ba24a582613a6a039a04114b3fe2edb806e5ac15efba551923eb6e0c621f1554"
+  }
+}

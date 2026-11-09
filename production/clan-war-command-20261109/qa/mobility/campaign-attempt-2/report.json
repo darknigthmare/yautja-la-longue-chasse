@@ -1,0 +1,4850 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T11:02:45.630Z",
+  "url": "http://127.0.0.1:3153",
+  "probe": false,
+  "passed": true,
+  "qualification": "QUALIFIE_BORNE_MOB001",
+  "scope": "Actual Next/GameClient → exterior forge approach → interior service → garage → native training and owned sortie → homeworld. Declared initial adult checkpoint; not a complete campaign from nursery.",
+  "sourceBefore": {
+    "buildId": "nItYejsE7HSH4L0ykJM5K",
+    "sources": [
+      {
+        "file": "app/game/GameClient.tsx",
+        "sha256": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343"
+      },
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "6fd223d741945bfc0f8010053fae3e34751ccfccbc47504b33c8c4dd2935b409"
+      },
+      {
+        "file": "app/game/MobilityGarage.tsx",
+        "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76"
+      },
+      {
+        "file": "app/game/MobilityGarage.module.css",
+        "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03"
+      },
+      {
+        "file": "app/game/MobilityDrivingYard.tsx",
+        "sha256": "64c457b5515592140245a9ee550be4e362dc95250277c7a76c20fc0ff939398d"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
+      },
+      {
+        "file": "app/game/types.ts",
+        "sha256": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946"
+      },
+      {
+        "file": "app/game/systems/mobility/access.ts",
+        "sha256": "6ebd5adb3d07b3ea92fe6e2295e7ea25d130308a8e42770d18df788c44b0fc88"
+      },
+      {
+        "file": "app/game/systems/mobility/catalogue.ts",
+        "sha256": "33840ee3172cb6c087c4ff7e9786c4319cd1cf432ef53d3eae7e9b588b9f955f"
+      },
+      {
+        "file": "app/game/systems/mobility/controller.ts",
+        "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+      },
+      {
+        "file": "app/game/systems/mobility/controls.ts",
+        "sha256": "949eee61c903b18130ed5c19d6a6b9bd321337a9874ec4e38a54cf207bc6350c"
+      },
+      {
+        "file": "app/game/systems/mobility/course.ts",
+        "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+      },
+      {
+        "file": "app/game/systems/mobility/ledger.ts",
+        "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+      },
+      {
+        "file": "app/game/systems/mobility/workshop.ts",
+        "sha256": "0d8acc38e0ad8cd6ecec1addf7a04b6ac678d9bdb628c9cae8aaaf49317a2662"
+      },
+      {
+        "file": "scripts/qa-mobility-campaign-20261109.mjs",
+        "sha256": "944101a34b897416f8604d2328c3986c34627185be29a61b2c176d96c5fc9a55"
+      },
+      {
+        "file": "scripts/mobility-qa-driver.mjs",
+        "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "initial real campaign slot migrated and checkpointed before playing",
+      "passed": true
+    },
+    {
+      "name": "GameClient resumes the disclosed exterior on the actual homeworld",
+      "passed": true
+    },
+    {
+      "name": "actual forge door changes the native physical room",
+      "passed": true,
+      "detail": {
+        "outsideSamples": [
+          {
+            "x": 3080,
+            "y": 3033
+          },
+          {
+            "x": 3080,
+            "y": 3015
+          },
+          {
+            "x": 3080,
+            "y": 2950
+          },
+          {
+            "x": 3080,
+            "y": 3006
+          },
+          {
+            "x": 3080,
+            "y": 2972
+          }
+        ]
+      }
+    },
+    {
+      "name": "counter is reached by native walking inside the actual forge",
+      "passed": true,
+      "detail": {
+        "samples": [
+          {
+            "x": 269,
+            "y": 236
+          },
+          {
+            "x": 269,
+            "y": 236
+          },
+          {
+            "x": 250,
+            "y": 221
+          },
+          {
+            "x": 224,
+            "y": 218
+          },
+          {
+            "x": 218,
+            "y": 218
+          },
+          {
+            "x": 230,
+            "y": 208
+          },
+          {
+            "x": 238,
+            "y": 185
+          },
+          {
+            "x": 222,
+            "y": 168
+          },
+          {
+            "x": 222,
+            "y": 151
+          },
+          {
+            "x": 222,
+            "y": 121
+          },
+          {
+            "x": 222,
+            "y": 134
+          },
+          {
+            "x": 222,
+            "y": 142
+          },
+          {
+            "x": 222,
+            "y": 142
+          },
+          {
+            "x": 222,
+            "y": 134
+          },
+          {
+            "x": 222,
+            "y": 125
+          },
+          {
+            "x": 206,
+            "y": 125
+          },
+          {
+            "x": 178,
+            "y": 125
+          }
+        ]
+      }
+    },
+    {
+      "name": "physical counter opens the mounted campaign garage with all fifty models",
+      "passed": true
+    },
+    {
+      "name": "desktop wallet and actual garage controls remain within the GameClient station",
+      "passed": true
+    },
+    {
+      "name": "opening the actual garage grants no permit, property or free ledger",
+      "passed": true
+    },
+    {
+      "name": "counter checkpoint belongs to this campaign and remains physically in reach",
+      "passed": true
+    },
+    {
+      "name": "actual campaign loan is recorded and starts paused",
+      "passed": true
+    },
+    {
+      "name": "active native driving crosses a natural checkpoint interval without an automatic halt",
+      "passed": true
+    },
+    {
+      "name": "managed checkpoint work stays deferred while the actual drive owner is active",
+      "passed": true
+    },
+    {
+      "name": "native training crosses three ordered beacons and returns real cargo",
+      "passed": true,
+      "detail": {
+        "route": [
+          {
+            "stage": 0,
+            "x": 140,
+            "y": 490,
+            "heading": 0,
+            "speed": 0,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 1,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 152.5292,
+            "y": 490,
+            "heading": 0,
+            "speed": 48.5,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 32,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 196.0444,
+            "y": 490,
+            "heading": 0,
+            "speed": 103.467,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 66,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 251.2788,
+            "y": 490,
+            "heading": 0,
+            "speed": 106.968,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 97,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 306.5412,
+            "y": 490,
+            "heading": 0,
+            "speed": 106.952,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 128,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 361.7951,
+            "y": 490,
+            "heading": 0,
+            "speed": 106.935,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 159,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 422.3866,
+            "y": 490,
+            "heading": 0,
+            "speed": 106.917,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 193,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 481.1862,
+            "y": 490,
+            "heading": 0,
+            "speed": 106.9,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 226,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 536.4136,
+            "y": 490,
+            "heading": 0,
+            "speed": 106.884,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 257,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 589.8515,
+            "y": 490,
+            "heading": 0,
+            "speed": 106.868,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 287,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 650.0848,
+            "y": 490,
+            "heading": 0,
+            "speed": 87.456,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 322,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 685.4323,
+            "y": 490,
+            "heading": 0,
+            "speed": 58.762,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 354,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 718.7291,
+            "y": 490,
+            "heading": 0,
+            "speed": 58.756,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 388,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 755.7234,
+            "y": 490,
+            "heading": 0,
+            "speed": 91.088,
+            "checkpoint": 0,
+            "cargo": 0,
+            "tick": 420,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 787.6422,
+            "y": 490,
+            "heading": 0,
+            "speed": 20.888,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 451,
+            "paused": false
+          },
+          {
+            "stage": 0,
+            "x": 792.6525,
+            "y": 490,
+            "heading": 0,
+            "speed": 6.467,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 481,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 794.0734,
+            "y": 490,
+            "heading": -0.126,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 512,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 794.0734,
+            "y": 490,
+            "heading": -0.5985,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 542,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 794.0734,
+            "y": 490,
+            "heading": -1.14975,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 577,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 794.1306,
+            "y": 488.6303,
+            "heading": -1.3545,
+            "speed": 9.7,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 610,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 794.2258,
+            "y": 485.6089,
+            "heading": -1.68075,
+            "speed": 19.4,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 645,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 792.8264,
+            "y": 474.5933,
+            "heading": -1.69425,
+            "speed": 13.6,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 680,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 792.6324,
+            "y": 468.1904,
+            "heading": -1.5075,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 714,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 793.0403,
+            "y": 466.4915,
+            "heading": -1.68075,
+            "speed": 9.7,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 749,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 792.6221,
+            "y": 461.459,
+            "heading": -1.59975,
+            "speed": 1.867,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 779,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 794.2742,
+            "y": 453.5637,
+            "heading": -1.52775,
+            "speed": 37.183,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 815,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 795.9279,
+            "y": 440.463,
+            "heading": -1.72125,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 846,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 796.3057,
+            "y": 438.5776,
+            "heading": -1.67175,
+            "speed": 9.7,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 883,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 796.7599,
+            "y": 434.6592,
+            "heading": -1.38375,
+            "speed": 9.7,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 918,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 798.0293,
+            "y": 416.4029,
+            "heading": -1.47375,
+            "speed": 59.817,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 949,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 796.0082,
+            "y": 387.1573,
+            "heading": -1.38375,
+            "speed": 44.25,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 986,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 797.7766,
+            "y": 355.7794,
+            "heading": -1.42875,
+            "speed": 59.05,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1016,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 798.6447,
+            "y": 325.1234,
+            "heading": -1.51875,
+            "speed": 71.483,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1046,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 798.9687,
+            "y": 293.4335,
+            "heading": -1.11375,
+            "speed": 30.2,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1083,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 799.936,
+            "y": 289.7154,
+            "heading": -1.41075,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1115,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 799.9515,
+            "y": 281.433,
+            "heading": -1.44,
+            "speed": 1.95,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1145,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 802.3174,
+            "y": 273.0648,
+            "heading": -1.42425,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1181,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 803.3174,
+            "y": 267.3799,
+            "heading": -1.2375,
+            "speed": 30.717,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1216,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 805.0795,
+            "y": 259.6353,
+            "heading": -1.54125,
+            "speed": 2.733,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1252,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 805.7904,
+            "y": 255.0293,
+            "heading": -1.305,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1283,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 806.5189,
+            "y": 250.26,
+            "heading": -1.6065,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1315,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 806.6634,
+            "y": 249.1173,
+            "heading": -1.57725,
+            "speed": 0,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1345,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 807.3939,
+            "y": 245.0351,
+            "heading": -1.37025,
+            "speed": 21.017,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1380,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 809.7093,
+            "y": 222.4644,
+            "heading": -1.32525,
+            "speed": 42.3,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1412,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 811.0804,
+            "y": 213.0912,
+            "heading": -1.3365,
+            "speed": 9.7,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1443,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 812.0603,
+            "y": 207.1215,
+            "heading": -1.26,
+            "speed": 30.717,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1474,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 812.4255,
+            "y": 201.7682,
+            "heading": -1.47825,
+            "speed": 12.933,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1505,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 814.7154,
+            "y": 193.7338,
+            "heading": -1.4805,
+            "speed": 9.7,
+            "checkpoint": 1,
+            "cargo": 0,
+            "tick": 1537,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 815.4776,
+            "y": 181.1971,
+            "heading": -1.4355,
+            "speed": 23.733,
+            "checkpoint": 2,
+            "cargo": 0,
+            "tick": 1570,
+            "paused": false
+          },
+          {
+            "stage": 1,
+            "x": 817.2398,
+            "y": 160.3606,
+            "heading": -1.6605,
+            "speed": 41.767,
+            "checkpoint": 2,
+            "cargo": 0,
+            "tick": 1602,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 817.7079,
+            "y": 156.0179,
+            "heading": -1.2105,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1638,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 817.7079,
+            "y": 156.0179,
+            "heading": -1.47038,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1670,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 817.6867,
+            "y": 152.3578,
+            "heading": -1.52438,
+            "speed": 19.238,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1702,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 818.3441,
+            "y": 133.1344,
+            "heading": -1.55813,
+            "speed": 54.32,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1733,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 820.3309,
+            "y": 99.4182,
+            "heading": -1.35563,
+            "speed": 61.257,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1768,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 820.3149,
+            "y": 86.28,
+            "heading": -1.46531,
+            "speed": 6.79,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1800,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.8186,
+            "y": 81.2972,
+            "heading": -1.66275,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1836,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.6505,
+            "y": 75.6208,
+            "heading": -1.548,
+            "speed": 2.263,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1868,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.6298,
+            "y": 71.5911,
+            "heading": -1.52269,
+            "speed": 19.238,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1898,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.5287,
+            "y": 62.6321,
+            "heading": -1.548,
+            "speed": 3.395,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1930,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.7706,
+            "y": 60.1765,
+            "heading": -1.36069,
+            "speed": 3.698,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1962,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.0812,
+            "y": 57.3338,
+            "heading": -1.75556,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 1999,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.4248,
+            "y": 55.7482,
+            "heading": -1.41469,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2035,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 818.7482,
+            "y": 45.3242,
+            "heading": -1.91419,
+            "speed": 37.345,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2074,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 817.8065,
+            "y": 41.8206,
+            "heading": -1.40794,
+            "speed": 2.263,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2104,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 818.544,
+            "y": 38.8524,
+            "heading": -1.54294,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2138,
+            "paused": false
+          },
+          {
+            "stage": 2,
+            "x": 819.6277,
+            "y": 34.1428,
+            "heading": -1.39275,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2173,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 819.7002,
+            "y": 32.7231,
+            "heading": -1.33031,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2204,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 819.7002,
+            "y": 32.7231,
+            "heading": -1.64925,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2234,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 819.7002,
+            "y": 32.7231,
+            "heading": -2.02725,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2266,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 819.7002,
+            "y": 32.7231,
+            "heading": -2.39344,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2297,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 819.7002,
+            "y": 32.7231,
+            "heading": -2.75963,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2328,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 819.1734,
+            "y": 32.7436,
+            "heading": 3.03587,
+            "speed": 7.922,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2360,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 805.7784,
+            "y": 33.1146,
+            "heading": 3.10337,
+            "speed": 43.003,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2391,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 787.6599,
+            "y": 31.7449,
+            "heading": 3.10337,
+            "speed": 37.032,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2422,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 767.8355,
+            "y": 33.1932,
+            "heading": 3.10337,
+            "speed": 19.665,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2452,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 751.7436,
+            "y": 34.2513,
+            "heading": 3.10337,
+            "speed": 27.207,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2483,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 728.4352,
+            "y": 35.1322,
+            "heading": 3.06962,
+            "speed": 62.288,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2514,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 701.2489,
+            "y": 33.8394,
+            "heading": 3.03587,
+            "speed": 47.185,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2546,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 670.1257,
+            "y": 34.6373,
+            "heading": 3.13712,
+            "speed": 65.517,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2582,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 642.8925,
+            "y": 32.5477,
+            "heading": -3.11231,
+            "speed": 51.782,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2614,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 614.0512,
+            "y": 34.0222,
+            "heading": 3.06962,
+            "speed": 41.81,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2646,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 605.7472,
+            "y": 33.3801,
+            "heading": -3.07519,
+            "speed": 5.658,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2676,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 593.4999,
+            "y": 33.327,
+            "heading": -3.10894,
+            "speed": 40.74,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2707,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 573.9817,
+            "y": 33.1401,
+            "heading": 3.03925,
+            "speed": 8.597,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2738,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 565.9344,
+            "y": 32.9731,
+            "heading": 3.0055,
+            "speed": 14.02,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2770,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 558.7302,
+            "y": 32.6447,
+            "heading": -3.06169,
+            "speed": 29.423,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2802,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 540.2106,
+            "y": 32.9794,
+            "heading": 3.05275,
+            "speed": 43.978,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2833,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 506.836,
+            "y": 33.329,
+            "heading": -3.12919,
+            "speed": 79.934,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2865,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 467.0748,
+            "y": 31.74,
+            "heading": 3.12025,
+            "speed": 67.322,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2896,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 430.8181,
+            "y": 29.021,
+            "heading": -2.92669,
+            "speed": 75.765,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2927,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 408.6802,
+            "y": 29.12,
+            "heading": 3.019,
+            "speed": 38.254,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2959,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 389.9655,
+            "y": 29.1272,
+            "heading": -3.06169,
+            "speed": 27.15,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 2990,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 375.211,
+            "y": 28.4539,
+            "heading": 3.0865,
+            "speed": 35.442,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3020,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 348.4927,
+            "y": 29.3808,
+            "heading": -3.02794,
+            "speed": 49.997,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3051,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 326.0808,
+            "y": 30.4455,
+            "heading": 2.98525,
+            "speed": 41.012,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3081,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 305.8755,
+            "y": 30.2497,
+            "heading": 3.019,
+            "speed": 35.04,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3112,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 299.3316,
+            "y": 30.785,
+            "heading": 2.94644,
+            "speed": 10.185,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3147,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 293.9949,
+            "y": 30.8639,
+            "heading": 3.04262,
+            "speed": 26.028,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3180,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 272.2475,
+            "y": 31.7038,
+            "heading": -3.13931,
+            "speed": 59.978,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3210,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 251.2315,
+            "y": 30.2472,
+            "heading": -3.07181,
+            "speed": 28.585,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3240,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 227.1707,
+            "y": 30.5906,
+            "heading": 3.07637,
+            "speed": 63.667,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3271,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 191.3594,
+            "y": 30.4084,
+            "heading": 3.07637,
+            "speed": 78.222,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3302,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 153.9532,
+            "y": 29.9638,
+            "heading": 3.00887,
+            "speed": 47.858,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3332,
+            "paused": false
+          },
+          {
+            "stage": 3,
+            "x": 143.4947,
+            "y": 29.9837,
+            "heading": -3.09206,
+            "speed": 3.395,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3364,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 142.8277,
+            "y": 29.9828,
+            "heading": 2.93462,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3396,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 142.8277,
+            "y": 29.9828,
+            "heading": 2.55662,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3428,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 142.8277,
+            "y": 29.9828,
+            "heading": 2.19044,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3459,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 142.8277,
+            "y": 29.9828,
+            "heading": 1.82425,
+            "speed": 0,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3490,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 142.9651,
+            "y": 32.0258,
+            "heading": 1.61331,
+            "speed": 2.712,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3520,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 142.7774,
+            "y": 40.7827,
+            "heading": 1.6015,
+            "speed": 33.95,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3551,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 141.5434,
+            "y": 67.5769,
+            "heading": 1.56775,
+            "speed": 69.032,
+            "checkpoint": 2,
+            "cargo": 25,
+            "tick": 3582,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 140.2094,
+            "y": 97.3355,
+            "heading": 1.6015,
+            "speed": 23.764,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3615,
+            "paused": false
+          },
+          {
+            "stage": 4,
+            "x": 140.3635,
+            "y": 102.8988,
+            "heading": 1.61162,
+            "speed": 0,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3646,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.3965,
+            "y": 104.3522,
+            "heading": 1.69431,
+            "speed": 9.053,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3677,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.3997,
+            "y": 106.8852,
+            "heading": 1.62175,
+            "speed": 1.132,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3709,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.4346,
+            "y": 117.4124,
+            "heading": 1.59981,
+            "speed": 37.345,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3741,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.6969,
+            "y": 140.0075,
+            "heading": 1.63356,
+            "speed": 51.9,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3772,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.9714,
+            "y": 176.9541,
+            "heading": 1.63356,
+            "speed": 79.821,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3804,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.584,
+            "y": 218.1652,
+            "heading": 1.56606,
+            "speed": 79.812,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3835,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.7856,
+            "y": 260.7284,
+            "heading": 1.56606,
+            "speed": 79.802,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3867,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.257,
+            "y": 300.5303,
+            "heading": 1.56606,
+            "speed": 79.794,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3897,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.4649,
+            "y": 344.4135,
+            "heading": 1.56606,
+            "speed": 79.784,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3930,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.043,
+            "y": 383.5824,
+            "heading": 1.56606,
+            "speed": 56.832,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3963,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.227,
+            "y": 422.4405,
+            "heading": 1.56606,
+            "speed": 79.767,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 3995,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.4948,
+            "y": 456.076,
+            "heading": 1.59981,
+            "speed": 40.289,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 4025,
+            "paused": false
+          },
+          {
+            "stage": 5,
+            "x": 140.7187,
+            "y": 462.4779,
+            "heading": 1.669,
+            "speed": 7.909,
+            "checkpoint": 3,
+            "cargo": 25,
+            "tick": 4057,
+            "paused": false
+          }
+        ]
+      }
+    },
+    {
+      "name": "actual garage return earns only the permit and unclaimed training hand-over",
+      "passed": true
+    },
+    {
+      "name": "a native purchase quota failure preserves the exact previous campaign bytes",
+      "passed": true
+    },
+    {
+      "name": "failed purchase announces no owned vehicle and no debit",
+      "passed": true
+    },
+    {
+      "name": "retry confirms one purchase and one exact debit through the campaign owner",
+      "passed": true
+    },
+    {
+      "name": "failed owned movement pauses with the confirmed tick and revision intact",
+      "passed": true
+    },
+    {
+      "name": "same buffered movement retries once without re-simulation or skipped revision",
+      "passed": true
+    },
+    {
+      "name": "pause after successful retry preserves exact campaign mobility bytes",
+      "passed": true
+    },
+    {
+      "name": "ordinary Continue is tested against a managed checkpoint older than the live drive",
+      "passed": true
+    },
+    {
+      "name": "ordinary Continue and physical counter reopen the exact sortie paused",
+      "passed": true
+    },
+    {
+      "name": "ordinary Continue transfers the live canonical drive into the managed checkpoint",
+      "passed": true
+    },
+    {
+      "name": "native campaign driving controls and wallet fit the 390px station",
+      "passed": true
+    },
+    {
+      "name": "native campaign driving controls and wallet fit the 320px station",
+      "passed": true
+    },
+    {
+      "name": "explicit recovery closes the owned sortie once and retains consumed condition and energy",
+      "passed": true
+    },
+    {
+      "name": "actual return brings the same hunter back to the same physical forge counter",
+      "passed": true
+    },
+    {
+      "name": "final saved campaign parses with the real importer",
+      "passed": true
+    },
+    {
+      "name": "mobility preserves the hunter, rank, honor and every other profile field",
+      "passed": true
+    },
+    {
+      "name": "mobility grants no unrelated mission, trophy or inventory progress",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "01-exterior-before-forge.png",
+      "sha256": "3ad808a59b71032344e82975dd78f0530f43fdef4cfe0ddb9832ab9756a6998c",
+      "inspected": true
+    },
+    {
+      "filename": "02-physical-forge-counter.png",
+      "sha256": "33f5233feb20c9c54589b1e68df34c62c5ede0938af49a2210b2109e9df8389e",
+      "inspected": true
+    },
+    {
+      "filename": "03-campaign-garage.png",
+      "sha256": "e445720cdd2d4aa524be761c86a603f7b6973c7fc8c03334a249dfa1506ed07a",
+      "inspected": true
+    },
+    {
+      "filename": "04-training-complete-before-return.png",
+      "sha256": "98d13f57ba9ed80677ec8db3209a023446125d830ddd548e56ca3721fdc086e5",
+      "inspected": true
+    },
+    {
+      "filename": "05-purchase-refused.png",
+      "sha256": "0ddf4ce1380d30b27f2e59f051052134d12ab0cd2628d0d96991ee9ef47cb86d",
+      "inspected": true
+    },
+    {
+      "filename": "06-drive-write-refused.png",
+      "sha256": "9b3ff6092332952e32e48de0c04e2cd0aebfd01e4d27b3c6c3eb2530f42582ca",
+      "inspected": true
+    },
+    {
+      "filename": "07-drive-reconciled.png",
+      "sha256": "e64b2b04d894a335c10e4cba9eed2437c17314aad8050e73f5794729354407af",
+      "inspected": true
+    },
+    {
+      "filename": "08-paused-sortie-after-continue-mobile.png",
+      "sha256": "ace3fefeeee75f59a0944e700e309a177446ff5641002c2519c8112dd5540227",
+      "inspected": true
+    },
+    {
+      "filename": "08b-paused-sortie-after-continue-320.png",
+      "sha256": "cbf1ef3be8409133e111e1d98ae6fbe173e9978b77e31e22184156cd719a22b4",
+      "inspected": true
+    },
+    {
+      "filename": "09-returned-to-physical-forge.png",
+      "sha256": "e7221dbd15cf172dd9a2c68272918f9afa0597e17b41cc8c27a6435e3895d7ba",
+      "inspected": true
+    }
+  ],
+  "servedScripts": [
+    {
+      "pathname": "/_next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "file": ".next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "sha256": "64f034b5b3e8c43831cb6bd44a31defa73189a8b011535ffb677724b4857e8f4",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "file": ".next/static/chunks/main-app-340bf771475649a8.js",
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "file": ".next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "file": ".next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "file": ".next/static/chunks/5151-2b5acbc4e490de14.js",
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "file": ".next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "file": ".next/static/chunks/3794-6cecce02b123eb1f.js",
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "file": ".next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "file": ".next/static/chunks/8482-97fd3178822a871b.js",
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "file": ".next/static/chunks/49-2d3614459171c485.js",
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "file": ".next/static/chunks/7178-91125a118647fb13.js",
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "file": ".next/static/chunks/3013-d7dd1404155871c3.js",
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "file": ".next/static/chunks/7555-de0a1466f913dee5.js",
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "file": ".next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "file": ".next/static/chunks/2887-5349be72c36ef2d1.js",
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "file": ".next/static/chunks/9372-5a69314ee210bcac.js",
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "file": ".next/static/chunks/9548-15f6d72975d5f216.js",
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-6f685a7036f61c35.js",
+      "file": ".next/static/chunks/app/page-6f685a7036f61c35.js",
+      "sha256": "b70e79926291526747cd2ec85499ddb26259f4d4dc021669bc189b7a42e0dcb9",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "file": ".next/static/chunks/4292-68018d71f488e6b1.js",
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "file": ".next/static/chunks/84-b773dabbd6c85016.js",
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "file": ".next/static/chunks/9372-5a69314ee210bcac.js",
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "file": ".next/static/chunks/4292-68018d71f488e6b1.js",
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "file": ".next/static/chunks/9548-15f6d72975d5f216.js",
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-6f685a7036f61c35.js",
+      "file": ".next/static/chunks/app/page-6f685a7036f61c35.js",
+      "sha256": "b70e79926291526747cd2ec85499ddb26259f4d4dc021669bc189b7a42e0dcb9",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "file": ".next/static/chunks/84-b773dabbd6c85016.js",
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "file": ".next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "sha256": "64f034b5b3e8c43831cb6bd44a31defa73189a8b011535ffb677724b4857e8f4",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "file": ".next/static/chunks/main-app-340bf771475649a8.js",
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "file": ".next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "file": ".next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "file": ".next/static/chunks/5151-2b5acbc4e490de14.js",
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "file": ".next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "file": ".next/static/chunks/3794-6cecce02b123eb1f.js",
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "file": ".next/static/chunks/7178-91125a118647fb13.js",
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "file": ".next/static/chunks/3013-d7dd1404155871c3.js",
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "file": ".next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "file": ".next/static/chunks/2887-5349be72c36ef2d1.js",
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "file": ".next/static/chunks/7555-de0a1466f913dee5.js",
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "file": ".next/static/chunks/49-2d3614459171c485.js",
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "file": ".next/static/chunks/8482-97fd3178822a871b.js",
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "file": ".next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3257-c9dfc8aaa0f472e3.js",
+      "file": ".next/static/chunks/3257-c9dfc8aaa0f472e3.js",
+      "sha256": "ff54fc45d48e920c4c427aec88125630594fb677e63592b0bc08dd6254865533",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7786-66a01e803ffab2ad.js",
+      "file": ".next/static/chunks/7786-66a01e803ffab2ad.js",
+      "sha256": "5327d00f1827ecc44b4845be5e3a3f349f4a34f54d0975a92050ad100119e537",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7062.bfada75f224713ab.js",
+      "file": ".next/static/chunks/7062.bfada75f224713ab.js",
+      "sha256": "b25fc3d517f0190e2bb69dc9f57e7c1ea1868f150b3d804e031f48aef9258288",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8733.4d7889922ffb33f6.js",
+      "file": ".next/static/chunks/8733.4d7889922ffb33f6.js",
+      "sha256": "40003472d7cf9831056799b92dd1d32effef68dd402ac0801791b29d8225c841",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/1352-431744f73b4ac840.js",
+      "file": ".next/static/chunks/1352-431744f73b4ac840.js",
+      "sha256": "446ca413e10bcba9484f953a5d018d5e323b06787233081f0f69c7b2fd202e9f",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "file": ".next/static/chunks/6191-731e57ae014ed88a.js",
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7340-e05acd1833e1d9fa.js",
+      "file": ".next/static/chunks/7340-e05acd1833e1d9fa.js",
+      "sha256": "7cc69cd85e803e67d4198ce3d9a60f09b46a093c67ce5c02519c3d8ae56e60e3",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/352-57c914148026e48c.js",
+      "file": ".next/static/chunks/352-57c914148026e48c.js",
+      "sha256": "5a4f493f47ae26a1feb2957bc875b3cd9a8256ea00b487a5abd6be627dc1649b",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/564-0d46d191fe00fc55.js",
+      "file": ".next/static/chunks/564-0d46d191fe00fc55.js",
+      "sha256": "c191c10605a772df21cf1b33f08fc5f580dcc0f8712308336a27008532c3cc78",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6794.d14559868cb33736.js",
+      "file": ".next/static/chunks/6794.d14559868cb33736.js",
+      "sha256": "00a56d5e19981701cdb7e7309213191d5f718cd49c468ec23b7e793048714bb5",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4646.00452fda79d1264d.js",
+      "file": ".next/static/chunks/4646.00452fda79d1264d.js",
+      "sha256": "abad36faa010ef7d9921d82b462e1f27c7e0db72e6af287cba073c6e45625902",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "file": ".next/static/chunks/webpack-6a12bbe05b2ab53d.js",
+      "sha256": "64f034b5b3e8c43831cb6bd44a31defa73189a8b011535ffb677724b4857e8f4",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "file": ".next/static/chunks/4bd1b696-8a4ab4fdf0ae305a.js",
+      "sha256": "5cf2fcfae6b221476479e25b2883f9052b18a7eb97bd3d069f3cc44112852610",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3794-6cecce02b123eb1f.js",
+      "file": ".next/static/chunks/3794-6cecce02b123eb1f.js",
+      "sha256": "d39ac559f4774cc2556428ce8bf697328ddc72aba734108f6297f05b75038e42",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/main-app-340bf771475649a8.js",
+      "file": ".next/static/chunks/main-app-340bf771475649a8.js",
+      "sha256": "1f59bd0febb680992cf62bec6702ba6126f8a586d2512eb6d3ca2ceaa90a6591",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "file": ".next/static/chunks/6087-daabd7b2ca1dcffd.js",
+      "sha256": "fb998de1e16d514d69993ee81cb719b83d0957b70d2025dd76950816d17a4a85",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "file": ".next/static/chunks/859-7d1b8ebba0d03e8a.js",
+      "sha256": "28109f27ffbf185097ffe013563b270eeed22bf69c782ad73585983215921303",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "file": ".next/static/chunks/app/error-ea2342cfe5895ddb.js",
+      "sha256": "221f1f0ae4706ec1e8ac9408031604a32ea527ed3c7c5e96174ecd053a1d2946",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/5151-2b5acbc4e490de14.js",
+      "file": ".next/static/chunks/5151-2b5acbc4e490de14.js",
+      "sha256": "c2e643722a4b205b07050fbb8c6babf6c51fd7529addeab761a50a368dc334aa",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8482-97fd3178822a871b.js",
+      "file": ".next/static/chunks/8482-97fd3178822a871b.js",
+      "sha256": "d9724ac22f8f550d967c5d2bafca42c7bd12f85cfcc0f30e589e053af48d0b58",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/2887-5349be72c36ef2d1.js",
+      "file": ".next/static/chunks/2887-5349be72c36ef2d1.js",
+      "sha256": "1ed8d6e4dbce20598baf969254df8019b2f395dda65369d5413114ec2bc4ff71",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/49-2d3614459171c485.js",
+      "file": ".next/static/chunks/49-2d3614459171c485.js",
+      "sha256": "39bf730dd33009bfc90647f8f85fdabeaab75990e91b8f11aa5f31dcc1200801",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3013-d7dd1404155871c3.js",
+      "file": ".next/static/chunks/3013-d7dd1404155871c3.js",
+      "sha256": "fda4314f014cf5578752b6e663b34e789e28fadc9ecb75548736c0a431b3065d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7178-91125a118647fb13.js",
+      "file": ".next/static/chunks/7178-91125a118647fb13.js",
+      "sha256": "b2fe01cbc67ed6a2935bc9b02d17a27edc70e088f33f556862ae6f63b954fa60",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "file": ".next/static/chunks/8997-0d461eb6cf3c2898.js",
+      "sha256": "418166960b900807211415b4ec0e24301c5e3978e3baf19a215b22a8529b410d",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7555-de0a1466f913dee5.js",
+      "file": ".next/static/chunks/7555-de0a1466f913dee5.js",
+      "sha256": "bc8d802ff1f469f19d4deac531094ca63fd5b4795b4df5c984258b7fd213c335",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9548-15f6d72975d5f216.js",
+      "file": ".next/static/chunks/9548-15f6d72975d5f216.js",
+      "sha256": "bb05d83cd91258101f96b9c62c33f37ad5d5caf27f4669ff9bc6a9d5f8bfbf02",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/app/page-6f685a7036f61c35.js",
+      "file": ".next/static/chunks/app/page-6f685a7036f61c35.js",
+      "sha256": "b70e79926291526747cd2ec85499ddb26259f4d4dc021669bc189b7a42e0dcb9",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/9372-5a69314ee210bcac.js",
+      "file": ".next/static/chunks/9372-5a69314ee210bcac.js",
+      "sha256": "dc6270d3d5c5458d8e5b7c053a8d411a5e95bcc4cd0ba1484b18946d32ba847c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4292-68018d71f488e6b1.js",
+      "file": ".next/static/chunks/4292-68018d71f488e6b1.js",
+      "sha256": "ae429f04c182d3e73845dca81bbbc1554554649506d8e695f1d42bda7c382013",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/84-b773dabbd6c85016.js",
+      "file": ".next/static/chunks/84-b773dabbd6c85016.js",
+      "sha256": "d4e4ed4655ef37a24c740bf1133f7b0933fddd4d9df4cedc1978d89423c4e907",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/3257-c9dfc8aaa0f472e3.js",
+      "file": ".next/static/chunks/3257-c9dfc8aaa0f472e3.js",
+      "sha256": "ff54fc45d48e920c4c427aec88125630594fb677e63592b0bc08dd6254865533",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6191-731e57ae014ed88a.js",
+      "file": ".next/static/chunks/6191-731e57ae014ed88a.js",
+      "sha256": "94651958af7690f2247779cdf1e917b6fef71ef3920c229739d2784bcf20461c",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7786-66a01e803ffab2ad.js",
+      "file": ".next/static/chunks/7786-66a01e803ffab2ad.js",
+      "sha256": "5327d00f1827ecc44b4845be5e3a3f349f4a34f54d0975a92050ad100119e537",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/352-57c914148026e48c.js",
+      "file": ".next/static/chunks/352-57c914148026e48c.js",
+      "sha256": "5a4f493f47ae26a1feb2957bc875b3cd9a8256ea00b487a5abd6be627dc1649b",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/8733.4d7889922ffb33f6.js",
+      "file": ".next/static/chunks/8733.4d7889922ffb33f6.js",
+      "sha256": "40003472d7cf9831056799b92dd1d32effef68dd402ac0801791b29d8225c841",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7340-e05acd1833e1d9fa.js",
+      "file": ".next/static/chunks/7340-e05acd1833e1d9fa.js",
+      "sha256": "7cc69cd85e803e67d4198ce3d9a60f09b46a093c67ce5c02519c3d8ae56e60e3",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/1352-431744f73b4ac840.js",
+      "file": ".next/static/chunks/1352-431744f73b4ac840.js",
+      "sha256": "446ca413e10bcba9484f953a5d018d5e323b06787233081f0f69c7b2fd202e9f",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/7062.bfada75f224713ab.js",
+      "file": ".next/static/chunks/7062.bfada75f224713ab.js",
+      "sha256": "b25fc3d517f0190e2bb69dc9f57e7c1ea1868f150b3d804e031f48aef9258288",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/6794.d14559868cb33736.js",
+      "file": ".next/static/chunks/6794.d14559868cb33736.js",
+      "sha256": "00a56d5e19981701cdb7e7309213191d5f718cd49c468ec23b7e793048714bb5",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/564-0d46d191fe00fc55.js",
+      "file": ".next/static/chunks/564-0d46d191fe00fc55.js",
+      "sha256": "c191c10605a772df21cf1b33f08fc5f580dcc0f8712308336a27008532c3cc78",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/chunks/4646.00452fda79d1264d.js",
+      "file": ".next/static/chunks/4646.00452fda79d1264d.js",
+      "sha256": "abad36faa010ef7d9921d82b462e1f27c7e0db72e6af287cba073c6e45625902",
+      "matchesBuiltFile": true
+    }
+  ],
+  "servedStyles": [
+    {
+      "pathname": "/_next/static/css/37e68a663ba2fbdb.css",
+      "file": ".next/static/css/37e68a663ba2fbdb.css",
+      "sha256": "23fc88b418b819ea694fa08041e8e412e5da6cd2858d9c0d36d38851ed910fae",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d92d46d78d2045c7.css",
+      "file": ".next/static/css/d92d46d78d2045c7.css",
+      "sha256": "671b21ffa204eb007422542a8b640ebc23f5ffc4b2ce4dbd9c38000863ad3bdb",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d92d46d78d2045c7.css",
+      "file": ".next/static/css/d92d46d78d2045c7.css",
+      "sha256": "671b21ffa204eb007422542a8b640ebc23f5ffc4b2ce4dbd9c38000863ad3bdb",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/37e68a663ba2fbdb.css",
+      "file": ".next/static/css/37e68a663ba2fbdb.css",
+      "sha256": "23fc88b418b819ea694fa08041e8e412e5da6cd2858d9c0d36d38851ed910fae",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/7cc51f62e12609e8.css",
+      "file": ".next/static/css/7cc51f62e12609e8.css",
+      "sha256": "43f4d5be067f4eef7af83f8e090d32bc3c688123341436cf10f8b503769b70a1",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/42800e46f53e0d88.css",
+      "file": ".next/static/css/42800e46f53e0d88.css",
+      "sha256": "9f7d6c39c7a738d24ff9fac9f8010d0553552797945080018168403fcdc1c992",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d8452cc1d8861450.css",
+      "file": ".next/static/css/d8452cc1d8861450.css",
+      "sha256": "45ad480ce5a6ccc894da065c19759d9ce25792718d6bfc22adbf25ad927f7be4",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d92d46d78d2045c7.css",
+      "file": ".next/static/css/d92d46d78d2045c7.css",
+      "sha256": "671b21ffa204eb007422542a8b640ebc23f5ffc4b2ce4dbd9c38000863ad3bdb",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/37e68a663ba2fbdb.css",
+      "file": ".next/static/css/37e68a663ba2fbdb.css",
+      "sha256": "23fc88b418b819ea694fa08041e8e412e5da6cd2858d9c0d36d38851ed910fae",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/42800e46f53e0d88.css",
+      "file": ".next/static/css/42800e46f53e0d88.css",
+      "sha256": "9f7d6c39c7a738d24ff9fac9f8010d0553552797945080018168403fcdc1c992",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/7cc51f62e12609e8.css",
+      "file": ".next/static/css/7cc51f62e12609e8.css",
+      "sha256": "43f4d5be067f4eef7af83f8e090d32bc3c688123341436cf10f8b503769b70a1",
+      "matchesBuiltFile": true
+    },
+    {
+      "pathname": "/_next/static/css/d8452cc1d8861450.css",
+      "file": ".next/static/css/d8452cc1d8861450.css",
+      "sha256": "45ad480ce5a6ccc894da065c19759d9ce25792718d6bfc22adbf25ad927f7be4",
+      "matchesBuiltFile": true
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "assets": [
+    "/game/assets/v3/actors/yautja/hunter/body/classic/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/net/full.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/foot-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/hand-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/lower-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/pelvis.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/shin-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/thigh-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/torso.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-back.webp",
+    "/game/assets/v3/actors/yautja/hunter/body/classic/parts/upper-arm-front.webp",
+    "/game/assets/v3/actors/yautja/hunter/dreads/registered/classic.webp",
+    "/game/homeworld/v109/archive-plaque-atlas-v109.png",
+    "/game/homeworld/v111/archivist-conversation/explain.png",
+    "/game/homeworld/v111/archivist-conversation/indicate.png",
+    "/game/homeworld/v111/archivist-conversation/listen.png",
+    "/game/homeworld/v111/archivist-conversation/return.png",
+    "/game/homeworld/v64/clan-shuttle.png",
+    "/game/homeworld/v64/house-c-ribbed.png",
+    "/game/homeworld/v64/interior-panels.png",
+    "/game/homeworld/v64/landing-pad.png",
+    "/game/homeworld/v64/pavement.png",
+    "/game/homeworld/v64/props-atlas.png",
+    "/game/homeworld/v71/cinder-ground.png",
+    "/game/homeworld/v71/outskirts-kit.png",
+    "/game/homeworld/v72/civic-furniture-kit.png",
+    "/game/homeworld/v72/civic-identity-atlas.png",
+    "/game/homeworld/v72/civic-specialists-spaced-atlas.png",
+    "/game/homeworld/v72/civilian-roles-atlas.png",
+    "/game/homeworld/v74/01-chief-artisan-walk-corrected.png",
+    "/game/homeworld/v74/01-chief-artisan-walk-final.png",
+    "/game/homeworld/v74/02-healer-archivist-walk-spaced.png",
+    "/game/homeworld/v74/03-guard-courier-walk-spaced-left-fixed.png",
+    "/game/homeworld/v74/04-instructor-apprentice-walk.png",
+    "/game/homeworld/v74/05-dock-forge-walk-spaced.png",
+    "/game/homeworld/v74/06-witness-herald-walk.png",
+    "/game/homeworld/v74/07-arena-rite-walk.png",
+    "/game/homeworld/v75/architecture/market-canopy.png",
+    "/game/homeworld/v76/architecture/convoy-store.png",
+    "/game/homeworld/v76/architecture/convoy-workshop.png",
+    "/game/homeworld/v76/architecture/dock-control.png",
+    "/game/homeworld/v76/architecture/rampart-watch.png",
+    "/game/homeworld/v76/architecture/rite-sanctum.png",
+    "/game/homeworld/v76/architecture/trophy-mausoleum.png",
+    "/game/homeworld/v76/interior/bench-left.png",
+    "/game/homeworld/v76/interior/chest-diagonal.png",
+    "/game/homeworld/v76/interior/rack-lateral.png",
+    "/game/homeworld/v76/interior/worktable-right.png",
+    "/game/homeworld/v76/logistics-container-rack-native.png",
+    "/game/homeworld/v76/merchant-canopy-diagonal-native.png",
+    "/game/homeworld/v76/mineral-planter-left-native.png",
+    "/game/homeworld/v76/terrace-bench-right-native.png",
+    "/game/homeworld/v77/council-stair-native.png",
+    "/game/homeworld/v77/lava-transit-skiff.png",
+    "/game/homeworld/v77/lava-warrior-left.png",
+    "/game/homeworld/v77/lava-warrior-right.png",
+    "/game/homeworld/v78/archive-shelf-right.png",
+    "/game/homeworld/v78/civic-water-cistern-right.png",
+    "/game/homeworld/v78/clan-common-table-left.png",
+    "/game/homeworld/v78/forge-workstation-left.png",
+    "/game/homeworld/v78/market-stall-right.png",
+    "/game/homeworld/v78/port-cargo-sorting-cart.png",
+    "/game/homeworld/v78/terrace-retaining-front.png",
+    "/game/homeworld/v80/amber-lamp-post.png",
+    "/game/homeworld/v80/bench-left.png",
+    "/game/homeworld/v80/clan-banner-standard.png",
+    "/game/homeworld/v80/clan-lectern-right.png",
+    "/game/homeworld/v80/corner-wall-left.png",
+    "/game/homeworld/v80/maintenance-rack.png",
+    "/game/homeworld/v80/mineral-basin-right.png",
+    "/game/homeworld/v80/sealed-cargo-case-left.png",
+    "/game/homeworld/v81/basalt-city-foundation.png",
+    "/game/homeworld/v81/clan-residence-left.png",
+    "/game/homeworld/v81/council-hall-left.png",
+    "/game/homeworld/v81/distant-city-terraces.png",
+    "/game/homeworld/v81/industrial-residence-right.png",
+    "/game/homeworld/v81/paving-civic.png",
+    "/game/homeworld/v81/paving-council.png",
+    "/game/homeworld/v81/paving-undercity.png",
+    "/game/homeworld/v81/prime-sky.png",
+    "/game/homeworld/v81/royal-pyramid-front.png",
+    "/game/homeworld/v81/spaceport-gantry.png",
+    "/game/homeworld/v82/acropolis-stair.png",
+    "/game/homeworld/v82/clan-lift-cabin.png",
+    "/game/homeworld/v82/clan-lift-gantry-adult.png",
+    "/game/homeworld/v82/diagonal-service-ramp.png",
+    "/game/homeworld/v82/industrial-distant-quarter.png",
+    "/game/homeworld/v82/industrial-ramp.png",
+    "/game/homeworld/v82/lower-gallery-stair.png",
+    "/game/homeworld/v82/port-distant-quarter.png",
+    "/game/homeworld/v83/basalt-planter-left.png",
+    "/game/homeworld/v83/cargo-rack-right.png",
+    "/game/homeworld/v83/clan-waymarker-right.png",
+    "/game/homeworld/v83/forge-bench-right.png",
+    "/game/homeworld/v83/merchant-counter-left.png",
+    "/game/homeworld/v84/care-cabinet-left.png",
+    "/game/homeworld/v84/maintenance-console-right.png",
+    "/game/homeworld/v84/npcs/forge-master/19.png",
+    "/game/homeworld/v84/ritual-brazier-right.png",
+    "/game/homeworld/v84/training-rack-left.png",
+    "/game/mobility/v1/03_clan_hoverbike__3q_left.png",
+    "/game/mobility/v1/05_scout_grav_sled__3q_left.png",
+    "/game/mobility/v1/19_trophy_carrier__3q_left.png",
+    "/game/prologue/v47/village.png",
+    "/game/sprites/hunter.webp",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f00.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f01.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f02.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f03.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f04.png",
+    "/game/sprites/v33/pit-arenas/the-pit/p3-c-brazier-flame-f05.png",
+    "/game/sprites/v5/film-plates/jungle-hunter.png",
+    "/game/sprites/v62/heads/classic-head.png"
+  ],
+  "physicalController": false,
+  "humanArtValidated": false,
+  "browserVersion": "154.0.8037.57",
+  "forgeApproach": {
+    "nodes": [
+      {
+        "x": 269,
+        "y": 236
+      },
+      {
+        "x": 269,
+        "y": 228
+      },
+      {
+        "x": 261,
+        "y": 228
+      },
+      {
+        "x": 253,
+        "y": 228
+      },
+      {
+        "x": 245,
+        "y": 228
+      },
+      {
+        "x": 237,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 220
+      },
+      {
+        "x": 229,
+        "y": 212
+      },
+      {
+        "x": 229,
+        "y": 204
+      },
+      {
+        "x": 229,
+        "y": 196
+      },
+      {
+        "x": 229,
+        "y": 188
+      },
+      {
+        "x": 229,
+        "y": 180
+      },
+      {
+        "x": 229,
+        "y": 172
+      },
+      {
+        "x": 229,
+        "y": 164
+      },
+      {
+        "x": 229,
+        "y": 156
+      },
+      {
+        "x": 229,
+        "y": 148
+      },
+      {
+        "x": 229,
+        "y": 140
+      },
+      {
+        "x": 229,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 124
+      },
+      {
+        "x": 213,
+        "y": 124
+      },
+      {
+        "x": 205,
+        "y": 124
+      },
+      {
+        "x": 197,
+        "y": 124
+      },
+      {
+        "x": 189,
+        "y": 124
+      },
+      {
+        "x": 181,
+        "y": 124
+      }
+    ],
+    "turns": [
+      {
+        "x": 269,
+        "y": 236
+      },
+      {
+        "x": 269,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 228
+      },
+      {
+        "x": 229,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 132
+      },
+      {
+        "x": 221,
+        "y": 124
+      },
+      {
+        "x": 181,
+        "y": 124
+      }
+    ]
+  },
+  "trainingRoute": [
+    {
+      "stage": 0,
+      "x": 140,
+      "y": 490,
+      "heading": 0,
+      "speed": 0,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 1,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 152.5292,
+      "y": 490,
+      "heading": 0,
+      "speed": 48.5,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 32,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 196.0444,
+      "y": 490,
+      "heading": 0,
+      "speed": 103.467,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 66,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 251.2788,
+      "y": 490,
+      "heading": 0,
+      "speed": 106.968,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 97,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 306.5412,
+      "y": 490,
+      "heading": 0,
+      "speed": 106.952,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 128,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 361.7951,
+      "y": 490,
+      "heading": 0,
+      "speed": 106.935,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 159,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 422.3866,
+      "y": 490,
+      "heading": 0,
+      "speed": 106.917,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 193,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 481.1862,
+      "y": 490,
+      "heading": 0,
+      "speed": 106.9,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 226,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 536.4136,
+      "y": 490,
+      "heading": 0,
+      "speed": 106.884,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 257,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 589.8515,
+      "y": 490,
+      "heading": 0,
+      "speed": 106.868,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 287,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 650.0848,
+      "y": 490,
+      "heading": 0,
+      "speed": 87.456,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 322,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 685.4323,
+      "y": 490,
+      "heading": 0,
+      "speed": 58.762,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 354,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 718.7291,
+      "y": 490,
+      "heading": 0,
+      "speed": 58.756,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 388,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 755.7234,
+      "y": 490,
+      "heading": 0,
+      "speed": 91.088,
+      "checkpoint": 0,
+      "cargo": 0,
+      "tick": 420,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 787.6422,
+      "y": 490,
+      "heading": 0,
+      "speed": 20.888,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 451,
+      "paused": false
+    },
+    {
+      "stage": 0,
+      "x": 792.6525,
+      "y": 490,
+      "heading": 0,
+      "speed": 6.467,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 481,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 794.0734,
+      "y": 490,
+      "heading": -0.126,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 512,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 794.0734,
+      "y": 490,
+      "heading": -0.5985,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 542,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 794.0734,
+      "y": 490,
+      "heading": -1.14975,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 577,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 794.1306,
+      "y": 488.6303,
+      "heading": -1.3545,
+      "speed": 9.7,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 610,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 794.2258,
+      "y": 485.6089,
+      "heading": -1.68075,
+      "speed": 19.4,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 645,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 792.8264,
+      "y": 474.5933,
+      "heading": -1.69425,
+      "speed": 13.6,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 680,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 792.6324,
+      "y": 468.1904,
+      "heading": -1.5075,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 714,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 793.0403,
+      "y": 466.4915,
+      "heading": -1.68075,
+      "speed": 9.7,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 749,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 792.6221,
+      "y": 461.459,
+      "heading": -1.59975,
+      "speed": 1.867,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 779,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 794.2742,
+      "y": 453.5637,
+      "heading": -1.52775,
+      "speed": 37.183,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 815,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 795.9279,
+      "y": 440.463,
+      "heading": -1.72125,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 846,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 796.3057,
+      "y": 438.5776,
+      "heading": -1.67175,
+      "speed": 9.7,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 883,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 796.7599,
+      "y": 434.6592,
+      "heading": -1.38375,
+      "speed": 9.7,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 918,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 798.0293,
+      "y": 416.4029,
+      "heading": -1.47375,
+      "speed": 59.817,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 949,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 796.0082,
+      "y": 387.1573,
+      "heading": -1.38375,
+      "speed": 44.25,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 986,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 797.7766,
+      "y": 355.7794,
+      "heading": -1.42875,
+      "speed": 59.05,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1016,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 798.6447,
+      "y": 325.1234,
+      "heading": -1.51875,
+      "speed": 71.483,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1046,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 798.9687,
+      "y": 293.4335,
+      "heading": -1.11375,
+      "speed": 30.2,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1083,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 799.936,
+      "y": 289.7154,
+      "heading": -1.41075,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1115,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 799.9515,
+      "y": 281.433,
+      "heading": -1.44,
+      "speed": 1.95,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1145,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 802.3174,
+      "y": 273.0648,
+      "heading": -1.42425,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1181,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 803.3174,
+      "y": 267.3799,
+      "heading": -1.2375,
+      "speed": 30.717,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1216,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 805.0795,
+      "y": 259.6353,
+      "heading": -1.54125,
+      "speed": 2.733,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1252,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 805.7904,
+      "y": 255.0293,
+      "heading": -1.305,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1283,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 806.5189,
+      "y": 250.26,
+      "heading": -1.6065,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1315,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 806.6634,
+      "y": 249.1173,
+      "heading": -1.57725,
+      "speed": 0,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1345,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 807.3939,
+      "y": 245.0351,
+      "heading": -1.37025,
+      "speed": 21.017,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1380,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 809.7093,
+      "y": 222.4644,
+      "heading": -1.32525,
+      "speed": 42.3,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1412,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 811.0804,
+      "y": 213.0912,
+      "heading": -1.3365,
+      "speed": 9.7,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1443,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 812.0603,
+      "y": 207.1215,
+      "heading": -1.26,
+      "speed": 30.717,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1474,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 812.4255,
+      "y": 201.7682,
+      "heading": -1.47825,
+      "speed": 12.933,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1505,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 814.7154,
+      "y": 193.7338,
+      "heading": -1.4805,
+      "speed": 9.7,
+      "checkpoint": 1,
+      "cargo": 0,
+      "tick": 1537,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 815.4776,
+      "y": 181.1971,
+      "heading": -1.4355,
+      "speed": 23.733,
+      "checkpoint": 2,
+      "cargo": 0,
+      "tick": 1570,
+      "paused": false
+    },
+    {
+      "stage": 1,
+      "x": 817.2398,
+      "y": 160.3606,
+      "heading": -1.6605,
+      "speed": 41.767,
+      "checkpoint": 2,
+      "cargo": 0,
+      "tick": 1602,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 817.7079,
+      "y": 156.0179,
+      "heading": -1.2105,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1638,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 817.7079,
+      "y": 156.0179,
+      "heading": -1.47038,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1670,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 817.6867,
+      "y": 152.3578,
+      "heading": -1.52438,
+      "speed": 19.238,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1702,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 818.3441,
+      "y": 133.1344,
+      "heading": -1.55813,
+      "speed": 54.32,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1733,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 820.3309,
+      "y": 99.4182,
+      "heading": -1.35563,
+      "speed": 61.257,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1768,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 820.3149,
+      "y": 86.28,
+      "heading": -1.46531,
+      "speed": 6.79,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1800,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.8186,
+      "y": 81.2972,
+      "heading": -1.66275,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1836,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.6505,
+      "y": 75.6208,
+      "heading": -1.548,
+      "speed": 2.263,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1868,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.6298,
+      "y": 71.5911,
+      "heading": -1.52269,
+      "speed": 19.238,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1898,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.5287,
+      "y": 62.6321,
+      "heading": -1.548,
+      "speed": 3.395,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1930,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.7706,
+      "y": 60.1765,
+      "heading": -1.36069,
+      "speed": 3.698,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1962,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.0812,
+      "y": 57.3338,
+      "heading": -1.75556,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 1999,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.4248,
+      "y": 55.7482,
+      "heading": -1.41469,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2035,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 818.7482,
+      "y": 45.3242,
+      "heading": -1.91419,
+      "speed": 37.345,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2074,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 817.8065,
+      "y": 41.8206,
+      "heading": -1.40794,
+      "speed": 2.263,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2104,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 818.544,
+      "y": 38.8524,
+      "heading": -1.54294,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2138,
+      "paused": false
+    },
+    {
+      "stage": 2,
+      "x": 819.6277,
+      "y": 34.1428,
+      "heading": -1.39275,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2173,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 819.7002,
+      "y": 32.7231,
+      "heading": -1.33031,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2204,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 819.7002,
+      "y": 32.7231,
+      "heading": -1.64925,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2234,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 819.7002,
+      "y": 32.7231,
+      "heading": -2.02725,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2266,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 819.7002,
+      "y": 32.7231,
+      "heading": -2.39344,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2297,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 819.7002,
+      "y": 32.7231,
+      "heading": -2.75963,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2328,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 819.1734,
+      "y": 32.7436,
+      "heading": 3.03587,
+      "speed": 7.922,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2360,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 805.7784,
+      "y": 33.1146,
+      "heading": 3.10337,
+      "speed": 43.003,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2391,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 787.6599,
+      "y": 31.7449,
+      "heading": 3.10337,
+      "speed": 37.032,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2422,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 767.8355,
+      "y": 33.1932,
+      "heading": 3.10337,
+      "speed": 19.665,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2452,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 751.7436,
+      "y": 34.2513,
+      "heading": 3.10337,
+      "speed": 27.207,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2483,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 728.4352,
+      "y": 35.1322,
+      "heading": 3.06962,
+      "speed": 62.288,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2514,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 701.2489,
+      "y": 33.8394,
+      "heading": 3.03587,
+      "speed": 47.185,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2546,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 670.1257,
+      "y": 34.6373,
+      "heading": 3.13712,
+      "speed": 65.517,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2582,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 642.8925,
+      "y": 32.5477,
+      "heading": -3.11231,
+      "speed": 51.782,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2614,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 614.0512,
+      "y": 34.0222,
+      "heading": 3.06962,
+      "speed": 41.81,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2646,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 605.7472,
+      "y": 33.3801,
+      "heading": -3.07519,
+      "speed": 5.658,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2676,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 593.4999,
+      "y": 33.327,
+      "heading": -3.10894,
+      "speed": 40.74,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2707,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 573.9817,
+      "y": 33.1401,
+      "heading": 3.03925,
+      "speed": 8.597,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2738,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 565.9344,
+      "y": 32.9731,
+      "heading": 3.0055,
+      "speed": 14.02,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2770,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 558.7302,
+      "y": 32.6447,
+      "heading": -3.06169,
+      "speed": 29.423,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2802,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 540.2106,
+      "y": 32.9794,
+      "heading": 3.05275,
+      "speed": 43.978,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2833,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 506.836,
+      "y": 33.329,
+      "heading": -3.12919,
+      "speed": 79.934,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2865,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 467.0748,
+      "y": 31.74,
+      "heading": 3.12025,
+      "speed": 67.322,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2896,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 430.8181,
+      "y": 29.021,
+      "heading": -2.92669,
+      "speed": 75.765,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2927,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 408.6802,
+      "y": 29.12,
+      "heading": 3.019,
+      "speed": 38.254,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2959,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 389.9655,
+      "y": 29.1272,
+      "heading": -3.06169,
+      "speed": 27.15,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 2990,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 375.211,
+      "y": 28.4539,
+      "heading": 3.0865,
+      "speed": 35.442,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3020,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 348.4927,
+      "y": 29.3808,
+      "heading": -3.02794,
+      "speed": 49.997,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3051,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 326.0808,
+      "y": 30.4455,
+      "heading": 2.98525,
+      "speed": 41.012,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3081,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 305.8755,
+      "y": 30.2497,
+      "heading": 3.019,
+      "speed": 35.04,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3112,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 299.3316,
+      "y": 30.785,
+      "heading": 2.94644,
+      "speed": 10.185,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3147,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 293.9949,
+      "y": 30.8639,
+      "heading": 3.04262,
+      "speed": 26.028,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3180,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 272.2475,
+      "y": 31.7038,
+      "heading": -3.13931,
+      "speed": 59.978,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3210,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 251.2315,
+      "y": 30.2472,
+      "heading": -3.07181,
+      "speed": 28.585,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3240,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 227.1707,
+      "y": 30.5906,
+      "heading": 3.07637,
+      "speed": 63.667,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3271,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 191.3594,
+      "y": 30.4084,
+      "heading": 3.07637,
+      "speed": 78.222,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3302,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 153.9532,
+      "y": 29.9638,
+      "heading": 3.00887,
+      "speed": 47.858,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3332,
+      "paused": false
+    },
+    {
+      "stage": 3,
+      "x": 143.4947,
+      "y": 29.9837,
+      "heading": -3.09206,
+      "speed": 3.395,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3364,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 142.8277,
+      "y": 29.9828,
+      "heading": 2.93462,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3396,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 142.8277,
+      "y": 29.9828,
+      "heading": 2.55662,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3428,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 142.8277,
+      "y": 29.9828,
+      "heading": 2.19044,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3459,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 142.8277,
+      "y": 29.9828,
+      "heading": 1.82425,
+      "speed": 0,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3490,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 142.9651,
+      "y": 32.0258,
+      "heading": 1.61331,
+      "speed": 2.712,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3520,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 142.7774,
+      "y": 40.7827,
+      "heading": 1.6015,
+      "speed": 33.95,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3551,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 141.5434,
+      "y": 67.5769,
+      "heading": 1.56775,
+      "speed": 69.032,
+      "checkpoint": 2,
+      "cargo": 25,
+      "tick": 3582,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 140.2094,
+      "y": 97.3355,
+      "heading": 1.6015,
+      "speed": 23.764,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3615,
+      "paused": false
+    },
+    {
+      "stage": 4,
+      "x": 140.3635,
+      "y": 102.8988,
+      "heading": 1.61162,
+      "speed": 0,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3646,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.3965,
+      "y": 104.3522,
+      "heading": 1.69431,
+      "speed": 9.053,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3677,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.3997,
+      "y": 106.8852,
+      "heading": 1.62175,
+      "speed": 1.132,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3709,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.4346,
+      "y": 117.4124,
+      "heading": 1.59981,
+      "speed": 37.345,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3741,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.6969,
+      "y": 140.0075,
+      "heading": 1.63356,
+      "speed": 51.9,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3772,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.9714,
+      "y": 176.9541,
+      "heading": 1.63356,
+      "speed": 79.821,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3804,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.584,
+      "y": 218.1652,
+      "heading": 1.56606,
+      "speed": 79.812,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3835,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.7856,
+      "y": 260.7284,
+      "heading": 1.56606,
+      "speed": 79.802,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3867,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.257,
+      "y": 300.5303,
+      "heading": 1.56606,
+      "speed": 79.794,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3897,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.4649,
+      "y": 344.4135,
+      "heading": 1.56606,
+      "speed": 79.784,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3930,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.043,
+      "y": 383.5824,
+      "heading": 1.56606,
+      "speed": 56.832,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3963,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.227,
+      "y": 422.4405,
+      "heading": 1.56606,
+      "speed": 79.767,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 3995,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.4948,
+      "y": 456.076,
+      "heading": 1.59981,
+      "speed": 40.289,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 4025,
+      "paused": false
+    },
+    {
+      "stage": 5,
+      "x": 140.7187,
+      "y": 462.4779,
+      "heading": 1.669,
+      "speed": 7.909,
+      "checkpoint": 3,
+      "cargo": 25,
+      "tick": 4057,
+      "paused": false
+    }
+  ],
+  "nativeTrainingElapsedMs": 68398,
+  "managedSlotDuringTraining": {
+    "beforeRevision": 2,
+    "afterRevision": 2
+  },
+  "managedSlotBeforeContinue": {
+    "revision": 2,
+    "lastCheckpointId": "manual-1",
+    "mobility": null,
+    "liveMobility": {
+      "version": 1,
+      "ownerCreatedAt": "2026-11-08T17:00:00.000Z",
+      "revision": 142,
+      "circulationPermit": true,
+      "owned": [
+        {
+          "id": "clan_hoverbike",
+          "acquiredBy": "purchase",
+          "condition": 99.99373541666667,
+          "energy": 99.94000000000014,
+          "bond": 0,
+          "upgrades": {
+            "drive": 0,
+            "armor": 0,
+            "cargo": 0,
+            "cooling": 0
+          },
+          "distance": 12.529166666666669
+        }
+      ],
+      "active": {
+        "id": 2,
+        "modelId": "clan_hoverbike",
+        "loaned": false,
+        "course": {
+          "x": 152.52916666666667,
+          "y": 490,
+          "heading": 0,
+          "speed": 48.50000000000001,
+          "tick": 30,
+          "energy": 99.94000000000014,
+          "condition": 99.99373541666667,
+          "heat": 0,
+          "distance": 12.529166666666669,
+          "impacts": 0,
+          "hitCooldown": 0,
+          "npcTicks": [
+            30,
+            30
+          ],
+          "checkpoint": 0,
+          "cargoKg": 0,
+          "cargoDelivered": false,
+          "overheated": false
+        }
+      },
+      "nextRunId": 3,
+      "lastReport": {
+        "runId": 1,
+        "modelId": "scout_grav_sled",
+        "result": "passed",
+        "distance": 2233.3048178457652,
+        "impacts": 0,
+        "ticks": 4087
+      },
+      "spentMarks": 420,
+      "repairCount": 0,
+      "recoveryDebt": 0,
+      "recoveryCount": 0,
+      "trainingReward": {
+        "version": 1,
+        "runId": 1,
+        "status": "available",
+        "course": {
+          "x": 140.66981376862972,
+          "y": 463.62129977158645,
+          "heading": 1.6436853071795863,
+          "speed": 0,
+          "tick": 4087,
+          "energy": 93.46200000001524,
+          "condition": 98.88342780842378,
+          "heat": 0,
+          "distance": 2233.3048178457652,
+          "impacts": 0,
+          "hitCooldown": 0,
+          "npcTicks": [
+            4016,
+            4087
+          ],
+          "checkpoint": 3,
+          "cargoKg": 0,
+          "cargoDelivered": true,
+          "overheated": false
+        }
+      }
+    }
+  },
+  "finalSave": {
+    "version": 13,
+    "createdAt": "2026-11-08T17:00:00.000Z",
+    "updatedAt": "2026-11-09T11:04:20.702Z",
+    "profile": {
+      "hunterName": "QA mobilité · préconditions décl",
+      "rankId": "blooded",
+      "honor": 300,
+      "clanMarks": 9580,
+      "playTimeSeconds": 0
+    },
+    "inventory": {
+      "fieldToolIds": [],
+      "harvestV112": {
+        "version": 1,
+        "specimens": [],
+        "toolCondition": 100,
+        "toolUseIds": [],
+        "jobs": [],
+        "settledEncounterRuns": {},
+        "archive": []
+      },
+      "unlockedWeaponIds": [
+        "wristblades",
+        "combistick",
+        "plasma-caster"
+      ],
+      "unlockedGearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ],
+      "unlockedArmorIds": [
+        "hunter"
+      ],
+      "weaponUpgrades": {
+        "wristblades": 0,
+        "combistick": 0,
+        "plasma-caster": 0,
+        "smart-disc": 0,
+        "yautja-bow": 0
+      },
+      "gearUpgrades": {
+        "netgun": 0,
+        "motion-sensor": 0,
+        "audio-decoy": 0,
+        "snare": 0
+      },
+      "armorUpgrades": {
+        "scout": 0,
+        "hunter": 0,
+        "berserker": 0
+      }
+    },
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "appearance": {
+      "presetId": "jungle-hunter",
+      "bodyMorphId": "classic",
+      "headStyleId": "reference",
+      "skinId": "ochre-mottle",
+      "biomaskId": "jungle",
+      "dreadStyleId": "classic",
+      "dreadTintId": "obsidian",
+      "armorStyleId": "classic",
+      "armorTintId": "bronze",
+      "trophyAdornmentId": "skull-spine",
+      "laserColorId": "crimson",
+      "chromaticsV113": {
+        "skinHex": null,
+        "dreadHex": null,
+        "outfitHex": null,
+        "armorHex": null,
+        "maskHex": null,
+        "maskOriginId": null,
+        "maskDecalId": null,
+        "faceDecalId": null,
+        "bodyDecalId": null,
+        "armorDecalId": null,
+        "skinMaterialId": null,
+        "dreadMaterialId": null,
+        "outfitMaterialId": null,
+        "armorMaterialId": null,
+        "maskMaterialId": null
+      }
+    },
+    "missionProgress": {
+      "jungle-vey": {
+        "status": "available",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "ice-cryostalker": {
+        "status": "locked",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "volcano-bad-blood": {
+        "status": "locked",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "swamp-hydra": {
+        "status": "locked",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "desert-sandmaw": {
+        "status": "locked",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "ocean-leviathan": {
+        "status": "locked",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "fungal-hivemind": {
+        "status": "locked",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      },
+      "ruins-ancient-guardian": {
+        "status": "locked",
+        "attempts": 0,
+        "completions": 0,
+        "bestScore": 0,
+        "bestTimeSeconds": null,
+        "bestDifficultyId": null,
+        "completedObjectiveIds": [],
+        "lastPlayedAt": null
+      }
+    },
+    "trophies": [],
+    "mobilityV1": {
+      "version": 1,
+      "ownerCreatedAt": "2026-11-08T17:00:00.000Z",
+      "revision": 143,
+      "circulationPermit": true,
+      "owned": [
+        {
+          "id": "clan_hoverbike",
+          "acquiredBy": "purchase",
+          "condition": 99.99373541666667,
+          "energy": 99.94000000000014,
+          "bond": 0,
+          "upgrades": {
+            "drive": 0,
+            "armor": 0,
+            "cargo": 0,
+            "cooling": 0
+          },
+          "distance": 12.529166666666669
+        }
+      ],
+      "active": null,
+      "nextRunId": 3,
+      "lastReport": {
+        "runId": 2,
+        "modelId": "clan_hoverbike",
+        "result": "recovered",
+        "distance": 12.529166666666669,
+        "impacts": 0,
+        "ticks": 30
+      },
+      "spentMarks": 420,
+      "repairCount": 0,
+      "recoveryDebt": 21,
+      "recoveryCount": 1,
+      "trainingReward": {
+        "version": 1,
+        "runId": 1,
+        "status": "available",
+        "course": {
+          "x": 140.66981376862972,
+          "y": 463.62129977158645,
+          "heading": 1.6436853071795863,
+          "speed": 0,
+          "tick": 4087,
+          "energy": 93.46200000001524,
+          "condition": 98.88342780842378,
+          "heat": 0,
+          "distance": 2233.3048178457652,
+          "impacts": 0,
+          "hitCooldown": 0,
+          "npcTicks": [
+            4016,
+            4087
+          ],
+          "checkpoint": 3,
+          "cargoKg": 0,
+          "cargoDelivered": true,
+          "overheated": false
+        }
+      }
+    },
+    "gauntletV134": {
+      "version": 1,
+      "ownerCreatedAt": "2026-11-08T17:00:00.000Z",
+      "equippedId": "jungle-hunter",
+      "claimedStudies": []
+    },
+    "codex": {
+      "unlockedEntryIds": [
+        "yautja-honor",
+        "biomask",
+        "cloaking-device"
+      ],
+      "scanCounts": {},
+      "discoveredEnemyIds": []
+    },
+    "exploration": {
+      "abilityIds": [],
+      "openedGateIds": [],
+      "secretIds": [],
+      "discoveredRoomIds": []
+    },
+    "statistics": {
+      "missionsStarted": 0,
+      "missionsCompleted": 0,
+      "missionsFailed": 0,
+      "totalKills": 0,
+      "totalScans": 0,
+      "secondWindsUsed": 0,
+      "bestHuntStreak": 0,
+      "currentHuntStreak": 0
+    },
+    "settings": {
+      "huntAccessibility": {
+        "version": 1,
+        "ritualTiming": "normal",
+        "ritualConfirm": "press",
+        "gripInput": "hold",
+        "aimInput": "hold",
+        "fieldGuide": true,
+        "largeGlyphs": true,
+        "gamepadButtons": {
+          "jump": 0,
+          "melee": 2,
+          "weapon": 7,
+          "scan": 4,
+          "cloak": 3,
+          "heal": 5,
+          "interact": 1,
+          "weaponNext": 8,
+          "gearOne": 10,
+          "gearTwo": 11,
+          "pause": 9,
+          "aim": 6
+        }
+      },
+      "difficultyId": "hunter",
+      "masterVolume": 0,
+      "musicVolume": 0.65,
+      "effectsVolume": 0.85,
+      "screenShake": true,
+      "reducedGore": false,
+      "highContrastVision": false,
+      "controlBindings": {
+        "hunt.moveLeft": [
+          "KeyQ",
+          "ArrowLeft"
+        ],
+        "hunt.moveRight": [
+          "KeyD",
+          "ArrowRight"
+        ],
+        "hunt.moveUp": [
+          "KeyZ",
+          "ArrowUp"
+        ],
+        "hunt.moveDown": [
+          "KeyS",
+          "ArrowDown"
+        ],
+        "hunt.jump": [
+          "Space"
+        ],
+        "hunt.melee": [
+          "KeyJ"
+        ],
+        "hunt.weaponPrimary": [
+          "KeyK"
+        ],
+        "hunt.selectWeaponOne": [
+          "Digit1",
+          "Numpad1"
+        ],
+        "hunt.selectWeaponTwo": [
+          "Digit2",
+          "Numpad2"
+        ],
+        "hunt.nextWeapon": [
+          "KeyR"
+        ],
+        "hunt.aim": [
+          "ShiftLeft",
+          "ShiftRight"
+        ],
+        "hunt.toggleMask": [
+          "KeyM"
+        ],
+        "hunt.scan": [
+          "KeyV"
+        ],
+        "hunt.toggleCloak": [
+          "KeyC"
+        ],
+        "hunt.heal": [
+          "KeyH"
+        ],
+        "hunt.useGearOne": [
+          "Digit3",
+          "Numpad3"
+        ],
+        "hunt.useGearTwo": [
+          "Digit4",
+          "Numpad4"
+        ],
+        "hunt.interact": [
+          "KeyE"
+        ],
+        "hunt.podSelfDestruct": [
+          "KeyX"
+        ],
+        "hunt.pause": [
+          "Escape"
+        ],
+        "pit.p1MoveLeft": [
+          "KeyQ",
+          "ArrowLeft"
+        ],
+        "pit.p1MoveRight": [
+          "KeyD",
+          "ArrowRight"
+        ],
+        "pit.p1MoveDown": [
+          "KeyS",
+          "ArrowDown"
+        ],
+        "pit.p1Jump": [
+          "Space"
+        ],
+        "pit.p1AttackLight": [
+          "KeyJ"
+        ],
+        "pit.p1AttackMedium": [
+          "KeyK"
+        ],
+        "pit.p1AttackHeavy": [
+          "KeyL"
+        ],
+        "pit.p1AttackTechnique": [
+          "KeyU"
+        ],
+        "pit.p1GuardHigh": [
+          "KeyI"
+        ],
+        "pit.p1GuardLow": [
+          "KeyO"
+        ],
+        "pit.p1Throw": [
+          "KeyP"
+        ],
+        "pit.p1Resource": [
+          "KeyH"
+        ],
+        "pit.p2MoveLeft": [
+          "Numpad4"
+        ],
+        "pit.p2MoveRight": [
+          "Numpad6"
+        ],
+        "pit.p2MoveDown": [
+          "Numpad2"
+        ],
+        "pit.p2Jump": [
+          "Numpad8"
+        ],
+        "pit.p2AttackLight": [
+          "Numpad1"
+        ],
+        "pit.p2AttackMedium": [
+          "Numpad3"
+        ],
+        "pit.p2AttackHeavy": [
+          "Numpad5"
+        ],
+        "pit.p2AttackTechnique": [
+          "Numpad7"
+        ],
+        "pit.p2GuardHigh": [
+          "Numpad9"
+        ],
+        "pit.p2GuardLow": [
+          "Numpad0"
+        ],
+        "pit.p2Throw": [
+          "NumpadEnter"
+        ],
+        "pit.p2Resource": [
+          "NumpadSubtract"
+        ],
+        "pit.pause": [
+          "Escape"
+        ],
+        "galaxy.flyLeft": [
+          "KeyQ",
+          "ArrowLeft"
+        ],
+        "galaxy.flyRight": [
+          "KeyD",
+          "ArrowRight"
+        ],
+        "galaxy.flyUp": [
+          "KeyZ",
+          "ArrowUp"
+        ],
+        "galaxy.flyDown": [
+          "KeyS",
+          "ArrowDown"
+        ],
+        "galaxy.previousTarget": [
+          "PageUp",
+          "KeyR"
+        ],
+        "galaxy.nextTarget": [
+          "PageDown",
+          "KeyE"
+        ],
+        "galaxy.activate": [
+          "Enter",
+          "Space"
+        ],
+        "galaxy.back": [
+          "Escape",
+          "Backspace"
+        ],
+        "galaxy.returnToGalaxy": [
+          "KeyG"
+        ],
+        "shipHub.previousRoom": [
+          "KeyQ",
+          "ArrowLeft"
+        ],
+        "shipHub.nextRoom": [
+          "KeyD",
+          "ArrowRight"
+        ],
+        "shipHub.previousAction": [
+          "ArrowUp"
+        ],
+        "shipHub.nextAction": [
+          "ArrowDown"
+        ],
+        "shipHub.activate": [
+          "Enter",
+          "Space"
+        ],
+        "shipHub.returnToBridge": [
+          "Escape"
+        ],
+        "shipHub.firstRoom": [
+          "Home"
+        ],
+        "shipHub.lastRoom": [
+          "End"
+        ],
+        "training.left": [
+          "KeyQ",
+          "ArrowLeft"
+        ],
+        "training.right": [
+          "KeyD",
+          "ArrowRight"
+        ],
+        "training.primary": [
+          "Space",
+          "KeyJ",
+          "Enter"
+        ],
+        "training.secondary": [
+          "KeyE",
+          "KeyK",
+          "ShiftLeft",
+          "ShiftRight"
+        ],
+        "training.cancel": [
+          "Escape"
+        ],
+        "workshop.left": [
+          "KeyQ",
+          "ArrowLeft"
+        ],
+        "workshop.up": [
+          "KeyZ",
+          "ArrowUp"
+        ],
+        "workshop.down": [
+          "KeyS",
+          "ArrowDown"
+        ],
+        "workshop.right": [
+          "KeyD",
+          "ArrowRight"
+        ],
+        "workshop.confirm": [
+          "Enter",
+          "Space",
+          "KeyE"
+        ],
+        "workshop.restart": [
+          "KeyR"
+        ],
+        "workshop.cancel": [
+          "Escape"
+        ]
+      }
+    },
+    "storyCompleted": false,
+    "homeworld": {
+      "version": 1,
+      "cntlipV77": {
+        "version": 1,
+        "revision": 0,
+        "state": {
+          "version": 1,
+          "knownLore": false,
+          "totalServings": 0,
+          "activeDoses": 0,
+          "worldElapsedMs": 0,
+          "memories": [],
+          "pending": null
+        },
+        "invitedSiteIds": [],
+        "stock": {
+          "clan-common": 0,
+          "market-halt": 0,
+          "pit-rest": 0,
+          "council-gathering": 0
+        }
+      },
+      "contractsV68": {
+        "version": 1,
+        "serial": 0,
+        "entries": []
+      },
+      "sideStoryV66": {
+        "version": 1,
+        "accepted": false,
+        "clues": [],
+        "archiveRead": false,
+        "chronologyVerified": false,
+        "deductionVerified": false,
+        "testimonyHeard": false,
+        "resolution": null,
+        "branchVerified": false,
+        "completed": false
+      },
+      "npcMissionsV66": {
+        "version": 1,
+        "ash": {
+          "accepted": false,
+          "report": null,
+          "delivered": false
+        },
+        "glass": {
+          "accepted": false,
+          "report": null,
+          "delivered": false
+        }
+      },
+      "mausoleum": {
+        "version": 1,
+        "examinedIds": [],
+        "consultedIds": []
+      },
+      "inquiry": {
+        "version": 1,
+        "convoyReviewed": false,
+        "archiveReviewed": false,
+        "approach": null,
+        "followupVerified": false,
+        "audienceFiled": false
+      },
+      "expeditions": {
+        "ash-marches": null,
+        "glass-desert": null
+      },
+      "visitedDistrictIds": [
+        "forges"
+      ],
+      "evidenceIds": [],
+      "greetedNpcIds": [
+        "forge-artisan"
+      ],
+      "witnessChoice": null,
+      "audienceOutcome": null,
+      "relations": {
+        "first-blood-houses": 0,
+        "forge-circle": 1,
+        "reserve-keepers": 0,
+        "star-navigators": 0,
+        "throne-court": 0,
+        "exile-network": 0
+      },
+      "locationV77": {
+        "version": 1,
+        "layoutRevision": 1,
+        "ownerCreatedAt": "2026-11-08T17:00:00.000Z",
+        "levelId": "0",
+        "exterior": {
+          "x": 3080,
+          "y": 2958.8073333333305
+        },
+        "interiorId": "deep-forge",
+        "local": {
+          "x": 167.08434169196255,
+          "y": 125.04777733251875
+        }
+      }
+    },
+    "justice": {
+      "version": 1,
+      "originChoice": null,
+      "declaration": "recognized",
+      "incidents": [],
+      "evidence": [],
+      "identifications": [],
+      "warrants": [],
+      "pressure": {
+        "homeworld": 0,
+        "clan-core": 0,
+        "frontier": 0,
+        "neutral-station": 0,
+        "renegade-port": 0
+      },
+      "clandestineNotoriety": 0,
+      "detention": null,
+      "intervention": {
+        "stage": "none",
+        "jurisdictionId": null,
+        "remainingBudget": 2,
+        "cooldownTicks": 0
+      }
+    },
+    "prologue": null,
+    "youthTraining": null,
+    "soloV66": null,
+    "soloV67": null,
+    "soloV68": null,
+    "soloV69": null,
+    "soloV70": null,
+    "homeworldRegionV68": null,
+    "homeworldPassageV67": null,
+    "gameReserveV66": null
+  },
+  "sourceAfter": {
+    "buildId": "nItYejsE7HSH4L0ykJM5K",
+    "sources": [
+      {
+        "file": "app/game/GameClient.tsx",
+        "sha256": "a38ec53a9ded4d6a8f0044c92e8fff71c199acd4d53aa1f4ceabbf53f4152343"
+      },
+      {
+        "file": "app/game/HomeworldHub.tsx",
+        "sha256": "6fd223d741945bfc0f8010053fae3e34751ccfccbc47504b33c8c4dd2935b409"
+      },
+      {
+        "file": "app/game/MobilityGarage.tsx",
+        "sha256": "c2503ac079da2d3cb4bbb169aec1aa8fc189f1021af9f807393476ace5f00d76"
+      },
+      {
+        "file": "app/game/MobilityGarage.module.css",
+        "sha256": "d6a864090fbb5007ef02372dd4ca0e883bccb5d837222bdbea5b97dbcd78bf03"
+      },
+      {
+        "file": "app/game/MobilityDrivingYard.tsx",
+        "sha256": "64c457b5515592140245a9ee550be4e362dc95250277c7a76c20fc0ff939398d"
+      },
+      {
+        "file": "app/game/save.ts",
+        "sha256": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240"
+      },
+      {
+        "file": "app/game/types.ts",
+        "sha256": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946"
+      },
+      {
+        "file": "app/game/systems/mobility/access.ts",
+        "sha256": "6ebd5adb3d07b3ea92fe6e2295e7ea25d130308a8e42770d18df788c44b0fc88"
+      },
+      {
+        "file": "app/game/systems/mobility/catalogue.ts",
+        "sha256": "33840ee3172cb6c087c4ff7e9786c4319cd1cf432ef53d3eae7e9b588b9f955f"
+      },
+      {
+        "file": "app/game/systems/mobility/controller.ts",
+        "sha256": "d3fe64b0912453cb3ee0edd15f5529057cf92f83ffc4fb713f6332f1691530b4"
+      },
+      {
+        "file": "app/game/systems/mobility/controls.ts",
+        "sha256": "949eee61c903b18130ed5c19d6a6b9bd321337a9874ec4e38a54cf207bc6350c"
+      },
+      {
+        "file": "app/game/systems/mobility/course.ts",
+        "sha256": "9ea4a712ec0d1992b8a1b76a8026ae77ebb93351ad93222446b2c888888eee99"
+      },
+      {
+        "file": "app/game/systems/mobility/ledger.ts",
+        "sha256": "db8d7ed2456eabd3942f688faf1bd66df45d3975e9fd55422ff7e3a1799e2a1d"
+      },
+      {
+        "file": "app/game/systems/mobility/workshop.ts",
+        "sha256": "0d8acc38e0ad8cd6ecec1addf7a04b6ac678d9bdb628c9cae8aaaf49317a2662"
+      },
+      {
+        "file": "scripts/qa-mobility-campaign-20261109.mjs",
+        "sha256": "944101a34b897416f8604d2328c3986c34627185be29a61b2c176d96c5fc9a55"
+      },
+      {
+        "file": "scripts/mobility-qa-driver.mjs",
+        "sha256": "d866f7c99ba27a6cb48ab192e0958fb5c5fab6c62bfa7b614f76bcd54dc8fd49"
+      }
+    ]
+  },
+  "sourceBeforeAfterEqual": true,
+  "endedAt": "2026-11-09T11:04:20.959Z",
+  "screenshotInspection": "screenshot-inspection.json",
+  "screenshotsOpened": 10,
+  "remainingUI": [
+    "Secondary status text can retain an earlier active/failure message after manual pause or a successful retry; durable state and controls are correct."
+  ]
+}

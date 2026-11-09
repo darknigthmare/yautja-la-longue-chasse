@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: V115 uses only V6 units, unique people and workbook RAV; it creates no V3/campaign front
+ok 1 - V115 uses only V6 units, unique people and workbook RAV; it creates no V3/campaign front
+  ---
+  duration_ms: 1.866646
+  type: 'test'
+  ...
+# Subtest: all four operation formats are dispatchable on validated passages, with single upkeep debit
+ok 2 - all four operation formats are dispatchable on validated passages, with single upkeep debit
+  ---
+  duration_ms: 14.22566
+  type: 'test'
+  ...
+# Subtest: missing routes, duplicate people, over-command formations and own home remain blocked
+ok 3 - missing routes, duplicate people, over-command formations and own home remain blocked
+  ---
+  duration_ms: 0.423879
+  type: 'test'
+  ...
+# Subtest: assault cannot spawn an unreserved unit or spend AP twice; tick advances and produces one report
+ok 4 - assault cannot spawn an unreserved unit or spend AP twice; tick advances and produces one report
+  ---
+  duration_ms: 6.335858
+  type: 'test'
+  ...
+# Subtest: stealth is grid-based: no remote sabotage, no walking through solid walls, and patrols react
+ok 5 - stealth is grid-based: no remote sabotage, no walking through solid walls, and patrols react
+  ---
+  duration_ms: 2.973756
+  type: 'test'
+  ...
+# Subtest: an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt
+ok 6 - an actual stealth path reaches the relay, sabotages it and extracts with one unique V6 receipt
+  ---
+  duration_ms: 10.990249
+  type: 'test'
+  ...
+# Subtest: RTS movement and enemy response are simultaneous per order, with controlled occupancy
+ok 7 - RTS movement and enemy response are simultaneous per order, with controlled occupancy
+  ---
+  duration_ms: 5.474909
+  type: 'test'
+  ...
+# Subtest: Outer Ops completes only at dueAt, reconciles missing UI time, and never awards twice
+ok 8 - Outer Ops completes only at dueAt, reconciles missing UI time, and never awards twice
+  ---
+  duration_ms: 1.813837
+  type: 'test'
+  ...
+# Subtest: up to three independent Outer Ops can run; the fourth is rejected
+ok 9 - up to three independent Outer Ops can run; the fourth is rejected
+  ---
+  duration_ms: 1.559753
+  type: 'test'
+  ...
+# Subtest: manual retreat produces a unique report and frees the same identified members
+ok 10 - manual retreat produces a unique report and frees the same identified members
+  ---
+  duration_ms: 0.98117
+  type: 'test'
+  ...
+# Subtest: archive roundtrip and source pinning reject corrupt or cross-context payloads
+ok 11 - archive roundtrip and source pinning reject corrupt or cross-context payloads
+  ---
+  duration_ms: 1.997674
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 62.010464

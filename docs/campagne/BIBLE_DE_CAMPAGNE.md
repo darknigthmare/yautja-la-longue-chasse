@@ -4,6 +4,8 @@ Nov 5, 2026 · @darknigthmare
 
 ## Mode d'emploi
 
+**Avenant du 9 novembre 2026 :** [Quêtes et voix du clan](QUETES_VIVANTES_20261109.md) précise la réécriture des opérations, les conversations contextuelles OPS-B05 et leurs limites. Les fiches historiques et leurs états de production sont conservés ci-dessous.
+
 Cette bible fusionne la « Campagne commune » du classeur V6 (60 fiches R2-M001 → R2-M060) et les 8 chasses de « La Longue Chasse », insérées à R2-M024. Chaque fiche sépare ce qui est écrit dans le projet de ce qui reste à produire.
 
 **Sources lues dans le dépôt** (`main`, commit du 5 novembre 2026) :
@@ -124,7 +126,7 @@ Sources : [AVP 2004 (Wikipedia)](<https://en.wikipedia.org/wiki/Alien_vs._Predat
 
 ## Campagne révisée lore 1:1
 
-Nouvelle chaîne : Youngling → Unblooded en pack → **Young Blood** par le Quatza-Rij à trois → **Blooded** par la pyramide → droit de chasser seul par le Quatza-Rij solitaire → vaisseau et 8 chasses → **Elite** par les rites du clan et une reine → clan, navire de clan, guerre → Elder, Ancient. Cette section prime sur les fiches R2 lorsqu'elles divergent.
+Nouvelle chaîne : Youngling → Unblooded en pack → **Young Blood** par le Quatza-Rij à trois → **Blooded** par la pyramide → vaisseau personnel et 8 chasses → Quatza-Rij solitaire, rites du clan et reine avec crête rapportée → **Elite** → voie de clan, navire de clan et guerre → Elder, puis suite de l'échelle des rangs. Le Quatza-Rij solitaire intervient après les huit chasses ; il ne conditionne pas l'acquisition du vaisseau personnel à Blooded. Cette section prime sur les fiches R2 lorsqu'elles divergent ; la section « Échelle des rangs » précise les niveaux et les accès ultérieurs.
 
 | Rang ou accès | Condition de validation | Fiches R2 remplacées ou déplacées |
 | --- | --- | --- |
@@ -2936,7 +2938,7 @@ Instrumental 90-second leitmotif for a super-powered alien hunter in a comic-boo
 ## Écarts connus et chantiers ouverts
 
 1. **Deux enfances parallèles.** Les fiches M001 → M015 (cour, filet, Harek, Yena, Tov) ne correspondent pas aux chapitres joués V47 → V53 (nurserie en duel, dojo, désert, patrouille, petite Fosse). Décision à prendre : réécrire les fiches sur le joué, ou produire les fiches comme chapitres nouveaux.
-2. **Rite Blooded incomplet.** Six salles profondes du temple, reine, œufs, purge et Quatza-Rij à trois (M018 → M020) manquent ; le joueur atteint pourtant le vaisseau et les chasses.
+2. **Rites à distinguer et à compléter.** Le Quatza-Rij à trois de L-02, puis la cérémonie de L-03, reconnaissent Young Blood. Les salles profondes, la reine captive, les œufs, la purge et la marque à l'acide appartiennent au rite Blooded de L-04. Les anciennes fiches M018 → M020 ne doivent pas fusionner ces deux chasses. Leur production complète reste distincte des campagnes adultes historiques, dont l'accès existant est conservé.
 3. **Trajet R2-M023 non joué** selon les notes V89.
 4. **Chasses 4 à 8 répétitives** : même structure d'objectifs et même logique de boss (`stepExpansionBoss`, seuils 60 % / 25 %). Les textes de phases décrivent des comportements non exécutés (trois gueules, vibrations, bond entre fosses, mémoire des routes, effacement des plateformes).
 5. **Leurre audio sans effet sur les boss** : leur IA reçoit la position exacte du joueur.
@@ -2964,12 +2966,12 @@ Garder les chapitres joués et y raccrocher les fiches, plutôt que de tout refa
 
 Harek, Yena et Tov rejoignent la cohorte aux côtés de Saar et Vek, déjà établis.
 
-### 2. Terminer le rite Blooded (M017 → M020)
+### 2. Terminer le rite Blooded (L-04 ; anciennes fiches M017 → M020)
 
 - **Six salles profondes** après la Vanne de Quarantaine : Descente des Contrepoids, Galerie des Coques (œufs), Puits de Résine, Chambre de Confinement, Nef de la Reine, Sas de Purge.
-- **Quatza-Rij à trois** dans la Nef de la Reine : la cible est la reine du temple ; chaque partenaire tient un rôle de la répétition M016 (approche, ouverture, frappe).
+- **Pyramide en trio** : les partenaires appliquent leur coordination aux Kainde Amedha et ramènent leurs propres preuves. La reine captive de la Nef reste une reine Xénomorphe ; elle n'est jamais nommée Quatza-Rij. Le Quatza-Rij se chasse auparavant sur le monde natal, dans L-02, et sa cérémonie de L-03 précède cette pyramide.
 - **Purge** : 60 s pour rejoindre le Sas de Purge, avec les blessés portés.
-- **Retour et marque** joués comme décrit en M019 et M020. Musiques MUS-13, MUS-14, MUS-15, MUS-07.
+- **Retour et marque** joués comme décrit en L-04 : chaque membre a tué au moins un Xénomorphe, puis le joueur trace le symbole du clan à l'acide sur son masque et son front. La reconnaissance Blooded reste distincte de Young Blood et n'est pas accordée par une répétition d'entraînement. Musiques à raccorder au rite et au marquage ; le thème du Quatza-Rij reste réservé à L-02 et L-05.
 
 ### 3. Jouer le trajet R2-M023
 

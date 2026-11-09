@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "scope": "Actual isolated Git sparse-checkout with exactly the workflow patterns, then real inclusion and all tests. Locked dependencies are shared; remote GitHub Actions and a fresh dependency install are not claimed.",
+  "temporaryRoot": "/workspace/p0p1-ci-cold-2vm4kdf7",
+  "initialOmissionAsserted": true,
+  "workflowSha256": "aeb294186f621512dfccb178cb815eacc3c65763f4da179e5714b1927d1a8acd",
+  "manifestSha256": "e587ef758e33943558fc89d5bb43bf9915304b9a01d493e447b7cdfecdaba8a2",
+  "filesCopied": 3319,
+  "tests": {
+    "tests": 677,
+    "pass": 677,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "testFiles": 70,
+  "node": "v22.23.4"
+}

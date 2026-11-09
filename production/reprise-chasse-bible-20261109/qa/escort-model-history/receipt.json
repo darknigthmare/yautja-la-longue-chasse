@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "classification": "EXECUTED_WORKTREE_TESTS_AND_REPORTED_TOOL_RESULT_NOT_A_NEW_RUN",
+  "observedCheckout": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "implementationCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+  "executionContext": "Arbre partagé non committé lors des tests. Six fichiers modèle/save/types/tests/helper rapprochés après exécution aux octets cb5c4a47 ; aucune identité de tout l’arbre UI au moment des 91 tests n’est déduite.",
+  "modelOnly": {
+    "command": "node --experimental-strip-types --test --test-isolation=none --test-concurrency=1 tests/clan-ship-return-escort.test.mjs tests/clan-ship-return-escort-save.test.mjs",
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "exitCodeObserved": 0,
+    "log": "model-and-save-19.log",
+    "logSha256": "0c18a1a01603a8c98575c2cd133b4628a8f0072182bce3cdbdd1b365c7e59432",
+    "exitStatusProvenance": "Executing agent /root/bible_coherence_nov9, final result session68432."
+  },
+  "targetedRegressions": {
+    "command": "node --experimental-strip-types --test --test-isolation=none --test-concurrency=1 tests/clan-ship-return-escort.test.mjs tests/clan-ship-return-escort-save.test.mjs tests/clan-ship-interior.test.mjs tests/clan-ship-operations-save.test.mjs tests/clan-ship-trophy-hearing.test.mjs tests/companion-residence.test.mjs tests/save-storage-status.test.mjs",
+    "passed": 91,
+    "newTestsIncluded": 19,
+    "failed": 0,
+    "skipped": 0,
+    "exitCodeObserved": 0,
+    "log": "targeted-regressions-91.log",
+    "logSha256": "80a68a3605dbe876459a4148158ad5895e31b81742d864f28ae55532cd273bf7",
+    "exitStatusProvenance": "Executing agent /root/bible_coherence_nov9, final result session51944."
+  },
+  "uiReportedToolResult": {
+    "command": "node --experimental-strip-types --test --test-isolation=none --test-reporter=spec --test-concurrency=1 tests/clan-ship-return-escort-ui.test.mjs tests/clan-ship-interior.test.mjs tests/clan-ship-trophy-hearing-presentation.test.mjs",
+    "passed": 39,
+    "newTestsIncluded": 12,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "exitCodeObserved": 0,
+    "rawLogAvailable": false,
+    "exitStatusProvenance": "Executing agent /root/escorte_ui_nov9 reports final exec tool chunk a59941. No .log file was recorded; this object is an explicit report of that observation, not fabricated stdout.",
+    "executionContext": "Working tree based on19317af4, before cb5c4a47; not a run checking out cb5."
+  },
+  "intermediateStaticChecks": {
+    "lintCommand": "npx eslint --max-warnings 0 app/game/systems/clanShipReturnEscort.ts app/game/save.ts app/game/types.ts tests/clan-ship-return-escort.test.mjs tests/clan-ship-return-escort-save.test.mjs tests/helpers/clan-ship-return-escort-fixture.mjs",
+    "lintExitCodeObserved": 0,
+    "lintLog": "model-lint.log",
+    "typecheckCommand": "npx tsc --noEmit --pretty false",
+    "typecheckExitCodeObserved": 0,
+    "typecheckLog": "typecheck-intermediate.log",
+    "scope": "Intermediate shared-tree observations, not the final delivery gates."
+  },
+  "implementationEntries": [
+    {
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "sha256": "40af2e2c7d00bff8235071271f6cdebbae6e9902b67bc3dd45a98ec83e79bb23",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "app/game/types.ts",
+      "sha256": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "app/game/save.ts",
+      "sha256": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "tests/clan-ship-return-escort.test.mjs",
+      "sha256": "49490e1f484fee1e332e0273cf71e47f6038d6e97317699e5a38f78f3d9b470b",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "tests/clan-ship-return-escort-save.test.mjs",
+      "sha256": "16f6c4438eebe7ba4d222bf0caaaff451d5372bc3ff556d8f280644ad41410fa",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "tests/helpers/clan-ship-return-escort-fixture.mjs",
+      "sha256": "15103018589d12c67b3ffd28de55271923f8c530d9cfd06d802d99b57d428b5e",
+      "equalToCommittedBytes": true
+    }
+  ],
+  "limits": [
+    "19 tests are included within91; the39 UI tests overlap neighbors. No sum of unique tests is claimed.",
+    "Source identities were compared after execution; the91 run does not certify the final whole UI tree.",
+    "Final regression and build receipts remain separate."
+  ]
+}

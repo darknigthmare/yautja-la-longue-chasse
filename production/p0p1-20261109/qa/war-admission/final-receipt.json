@@ -1,0 +1,393 @@
+{
+  "asOf": "2026-11-09",
+  "schema": 1,
+  "scope": "588 War and107 Homeworld individual admissions, source/code/pure-test proofs. No app/old workbook mutation, no global closure.",
+  "buildId": "RYl37_8hN58IOB8jDpRj1",
+  "verification": {
+    "asOf": "2026-11-09",
+    "warSubjects": 588,
+    "homeworldSubjects": 107,
+    "sourceKeysUniqueAndComplete": true,
+    "sourceWorkbooks": 11,
+    "registeredRowHashComparisons": 1004,
+    "publishedCellComparisonsWithoutRegisteredHash": 6,
+    "sourceHashChecksDistinctPaths": 169,
+    "domainCases": 331,
+    "domainPass": 329,
+    "domainSkipped": 2,
+    "domainFail": 0,
+    "testSuites": 38,
+    "countsNotAdditiveWithRoot": true,
+    "independentFindingsResolved": true,
+    "buildId": "RYl37_8hN58IOB8jDpRj1",
+    "runtimeOrOldWorkbookModifiedByThisAudit": false,
+    "globalClosed": 0,
+    "status": "PASS"
+  },
+  "artifacts": [
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/README.md",
+      "sha256": "16f5eb934ea9cf612fb9f11bb8a9e2f2bcee6fe305f313fc6b8563059d90bad6",
+      "bytes": 8470
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/code-index.json",
+      "sha256": "36f6f0ab97dad0bd096e61073666dc9c7f203afb01e1309ac4aece243abbc133",
+      "bytes": 47169
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/counts.json",
+      "sha256": "4b3d0e8e94b5383d9efed4a04154575093ed1d8e33fefb5ec7c81db88f96c63d",
+      "bytes": 1862
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/domain-probe.json",
+      "sha256": "fc4d6c0a2bf1c0fa43ec9321c46c2b9a3a60a86c6e193289b73f9ae16415d489",
+      "bytes": 29684
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/domain-probe.log",
+      "sha256": "af478fe01ea87bc328742be0459c670d10e30f4ac90fb7d23909cd39a456cfb3",
+      "bytes": 164
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-current-targets/audit.json",
+      "sha256": "e3f2b21217f790ee94b72f0afd8f56e176cbf5d695e13d392a4bea0839066bbf",
+      "bytes": 427773
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-current-targets/audit_354.csv",
+      "sha256": "d2020dcd839579cccb27ae69bf5ce995a243b6059bb96729112f5cbecce21cd5",
+      "bytes": 58735
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-current-targets/generation-queue.json",
+      "sha256": "d2dd90484813c193f5d0148bbe833ee687acc24d9a789ef4afeb49cf7af17b54",
+      "bytes": 328
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-current-targets.log",
+      "sha256": "e426a59e09408e535dd42270bc9fab0a0b459870f6095e8cb22becd4b54fcd58",
+      "bytes": 503
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-independent-review.json",
+      "sha256": "87628dcb7310c460596ca346ccbfae9aabaf1ffff76c12799eec2db0ff16dbe7",
+      "bytes": 48000
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-inventory-updates.json",
+      "sha256": "dae32b9eb435626c5459d7509192653f2e12a6468e1fd482cbd155228c4a4e61",
+      "bytes": 584513
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-reconcile-tests.log",
+      "sha256": "9a7eb59e15ca6329d4ff7609c6eff18303610a8ed0e4446c93fb7e7d19842c69",
+      "bytes": 944
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-reconciliation.json",
+      "sha256": "5ff94f754b61a5dbaaed36063e573d9f298b278f35a68314d5ececb654b89187",
+      "bytes": 842042
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-source-rows.json",
+      "sha256": "dad220fb2ea878831dfd1606f0ba7f0b209041fa44a080801fef6ca5529963cf",
+      "bytes": 302206
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/homeworld-v162-verify.log",
+      "sha256": "4133372e2fcea50d1ec7d4608512b8c29b9352baced41b8de675c7bda1d43738",
+      "bytes": 405
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/inventory-updates.json",
+      "sha256": "b4cf8fcabdf203389bea645f15e0a385846180a51bf70a30191d6899de572d39",
+      "bytes": 1004197
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/reconcile.log",
+      "sha256": "f23241f87822f0956e113ab53714973742d59d6c9885de064e2f08d58489060d",
+      "bytes": 1506
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/reconciliation.json",
+      "sha256": "b0948edf88b893e5285905f2bd3ea9bd75e0249d531fa31829321d4fff883b75",
+      "bytes": 5632847
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/review-resolution.json",
+      "sha256": "e9cbc55ab7b26bb982360d100ecda46272fee7bf311ca6cac416666a6cdf6daa",
+      "bytes": 936
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/reviewed-group-decisions.json",
+      "sha256": "b5db39729f3422d353ef9a645ae3f53e9809240f78f026b1f12ef00f598215ae",
+      "bytes": 285396
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/source-requirement-groups.txt",
+      "sha256": "9759f94deb2116205916a882c491a6c7939d539fbbcfe1b591156316b456823d",
+      "bytes": 78027
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/source-rows.json",
+      "sha256": "96cb10b8ed7bd8bf85517c6bac4a21b4dd45d6257dc7693b555ed2a170b3ba92",
+      "bytes": 1758131
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/test-runner.log",
+      "sha256": "8edebbda944f1790274a2e1ccbd5cf5a7cd241f4c3319f4ac4ac0156e24dd1a9",
+      "bytes": 956
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-assault-special-v117.test.mjs.tap",
+      "sha256": "e2eced68c42adf988373822743cf35e94c5066005ae237ef70c6902fc6359e08",
+      "bytes": 817
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-council-v146.test.mjs.tap",
+      "sha256": "472081fa80a72498bf9f5b0779f54fa2d6d1255ba617e1abd73b7d1bfda741d4",
+      "bytes": 3832
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-council-v147-victories.test.mjs.tap",
+      "sha256": "c4012c40c566fb821525c6476ef7e78098db6c57814005e3ae604d274526d041",
+      "bytes": 350
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-council-v147.test.mjs.tap",
+      "sha256": "82ab801251400098ba52980f03e6bc18114b757289b7107359f43ecfbc3514fb",
+      "bytes": 3619
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-fence-v94.test.mjs.tap",
+      "sha256": "742a36909a442b13a93145db9033c06800c8890c97469a7d99c8025123ee3d51",
+      "bytes": 5029
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-pr55-v144.test.mjs.tap",
+      "sha256": "c1b9d0a15f6bb4d4b416ca76a65ae5656095cafa4c537378515b51b935c4b3b3",
+      "bytes": 2365
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-pr57-v144.test.mjs.tap",
+      "sha256": "28ff540214e59466aec2bcaea967a300d4120019e1decb7966075f7d53a1b3c0",
+      "bytes": 2266
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v135.test.mjs.tap",
+      "sha256": "a47cd09c62a260c273087b9d03db65ecfb8b0b85bb3ac1036db9f0cb4499c171",
+      "bytes": 1678
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v140.test.mjs.tap",
+      "sha256": "1bd85a1abe478bf258291de17ff0e31b8cf0e9ff44a8744f654779bfaa9deda2",
+      "bytes": 2570
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v141.test.mjs.tap",
+      "sha256": "cba67660276b786df597e32830d41c35935662900d50f2027cd4c1cab834c49c",
+      "bytes": 2698
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v142.test.mjs.tap",
+      "sha256": "86daa450d1d45f41f2791f899de5bb5accac8e8aeb0efebd131c57d31bd5084b",
+      "bytes": 2125
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v143.test.mjs.tap",
+      "sha256": "e4a9d11b68dab303f3b2e4e766e425c17c8b3a10f812458e5c9718a2fa5c2a6e",
+      "bytes": 2575
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v144.test.mjs.tap",
+      "sha256": "1cc962d7086de06bd82a257c86ebc96ec1385fc7f4995a582acd0a73dd3c65da",
+      "bytes": 2452
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v145.test.mjs.tap",
+      "sha256": "4d67676b807eb9b10eea0cf0d5e92dc7c9a2270c5b4c6a619ab035cde281ba13",
+      "bytes": 2946
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-four-modes-v147.test.mjs.tap",
+      "sha256": "77793a7d7961d6c3246e574745d6ce38e5dd56142e8f9fdf2f2f2384c55a8954",
+      "bytes": 850
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-geo-ai-multiplayer-v126.test.mjs.tap",
+      "sha256": "a35c3a995f2862ef446602b3396fb4a97bac599cc9bc8ae839474d4b42e72825",
+      "bytes": 1876
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-integrated-last-contact-v150.test.mjs.tap",
+      "sha256": "44e30bb92f16979d575ebf6da2157eec9d7548f5a7c9d03d4b8a556e00e534ba",
+      "bytes": 626
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-medical-v116.test.mjs.tap",
+      "sha256": "28a285369e8cf4553cb9463bd01ab5e3a5e1f670d8851c636dedf99c37084110",
+      "bytes": 1014
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-multiplayer-practice-v127.test.mjs.tap",
+      "sha256": "cc7aafc5040b7a5e56b678cd5ff48e34d5cffa37035fc14430965fcc8080db32",
+      "bytes": 1542
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-operation-cross-mode-v115.test.mjs.tap",
+      "sha256": "f964f4a1e857d1e9b53ca17d57542fdfb5045fd41c1dfb5e6464a6843ea73bd8",
+      "bytes": 349
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-operations-archive.test.mjs.tap",
+      "sha256": "dd62f8f9b028011e37e722b62f7a2e0c24a1386d98d5cc15e2e76a4b516e90af",
+      "bytes": 3282
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-outer-recall-continuity.test.mjs.tap",
+      "sha256": "d96026589fb7ec969aef270332ee0cbd7141b8c579b2f141efb4b6f364c4f26a",
+      "bytes": 2034
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-planet-level-design-v156.test.mjs.tap",
+      "sha256": "475f1519bf5042018f655ba8bdc35b7aece6c9cb28591ecf13370eafdb064e8b",
+      "bytes": 7195
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-provenance-gate-v152.test.mjs.tap",
+      "sha256": "e1c5661eefad080ee1a03857035dccd7257a1153ffdee84a1ff076e005823e9c",
+      "bytes": 2460
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-recruitment-v115.test.mjs.tap",
+      "sha256": "100b0f2009ca9cfa1bdfa8ca06255087077275c4393d1e007a1530adce4b690a",
+      "bytes": 875
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-rts-rally-v134.test.mjs.tap",
+      "sha256": "adba50d7373255dbc56595b1ba8ae52b079f666addcdb04aa9b361fe45b0d77f",
+      "bytes": 1511
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-rts-squads-v133.test.mjs.tap",
+      "sha256": "ca1e5ba73e5eeccc0b0b2975c7db35b5384c3ef2a6772826b1e5bcd19f692092",
+      "bytes": 1752
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-rts24-source-v129.test.mjs.tap",
+      "sha256": "40484f8fb6a96505a0be718f5f5ad5d6afd35d7d067d021fbc59efa8090f399e",
+      "bytes": 3316
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-source-consolidation-v147.test.mjs.tap",
+      "sha256": "bb18764c3ff68611064dd2aa332976135764fc054de25fa060b1e3d57dd40a6f",
+      "bytes": 1044
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-source-dossiers-v117.test.mjs.tap",
+      "sha256": "66e9097c1fdc49c7b3ed767b6504e068c95529155db89f040231fb512a1fde90",
+      "bytes": 1382
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-source-maps-v128.test.mjs.tap",
+      "sha256": "180f242619a75717f52f119f7486e969c55df431e62856678d4b6c8b4d77f480",
+      "bytes": 3524
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-source-reconciliation-v147.test.mjs.tap",
+      "sha256": "555174514f08c10254c89f8e6b23d222541e877c9a6e7f47548574d53c0bef2a",
+      "bytes": 1797
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-stealth-last-contact.test.mjs.tap",
+      "sha256": "0a1939f88e28bb72c4207058c824ce7324dd8bddbf45a817db43659f9392415d",
+      "bytes": 1001
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-stealth-perception.test.mjs.tap",
+      "sha256": "fcf172595a51cdb543e5145c9ba92897efc047535ce3f1f1d9dd59fbdc1423c4",
+      "bytes": 1100
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-stealth-reconciliation.test.mjs.tap",
+      "sha256": "34b0d76e51c5a0b4c6130fb0281f9f47017a68ba2f089e86ba10c8890c560018",
+      "bytes": 1234
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-structures-v89.test.mjs.tap",
+      "sha256": "fefeda71fe287227be942e3ce35b61fa3652b8e281453add5f75d20c0ee93cf5",
+      "bytes": 4083
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-terrain-v116.test.mjs.tap",
+      "sha256": "d44f316e21898283e279d013a4721d3327cbbc15cf8b6e2dd9310837423710cd",
+      "bytes": 1042
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests/clan-war-works-v6.test.mjs.tap",
+      "sha256": "3318dc4ca9638d2091044f8e1dff3e9c188471ba0872152c2ad4f58399ed3990",
+      "bytes": 4812
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tests.json",
+      "sha256": "22370439eab0794d7c00598b3dc7234ab461eee65ab923e68e7a0b4dfc170de9",
+      "bytes": 16864
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tools/extract-source-rows.py",
+      "sha256": "6750d81e6eb6637af48a3fdf1e002cf8cc3879cdb861f0a41adca3a0cbdd6e78",
+      "bytes": 2567
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tools/probe-domain.mjs",
+      "sha256": "e10057b2477d9ba12565aee16e41155c00288d75bdce3626a5a32ea5bd4670b6",
+      "bytes": 6639
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tools/reconcile-homeworld.py",
+      "sha256": "d0584cc496f303e028c478b95adea70e3f41e44281703d9b9efad56b5eb97197",
+      "bytes": 9807
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tools/reconcile-war.py",
+      "sha256": "1630fbcc028b3a3f636a32999bcd505938a54b99448bc9c5c11d6c0f14d0e9be",
+      "bytes": 48376
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tools/run-domain-tests.py",
+      "sha256": "b343522c27bc074333b67f2d291a7a479bcec842a72fc3b03148741933ec0ceb",
+      "bytes": 2445
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/tools/verify-admission.py",
+      "sha256": "07ddea750d8fb759bef74d2e682de6927c5eafb01d760e2683df2c5117ad0c95",
+      "bytes": 5153
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/verification.json",
+      "sha256": "c4cbde4ac0f38346a7b68ae62f47270728d098e6d1f17c2030118172faa8e7ed",
+      "bytes": 586
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/verify.log",
+      "sha256": "5dfc6f0bb8be26993891281bebfcdd10dc99c979239833a73f6ea4495184f6e6",
+      "bytes": 546
+    },
+    {
+      "path": "production/p0p1-20261109/qa/war-admission/war-independent-review.json",
+      "sha256": "cdfdcc4cf96c5f92522b622444dc5ecacfa73eadaf21617a5a8ca6de2a558208",
+      "bytes": 4363
+    }
+  ],
+  "warReportSha256": "b0948edf88b893e5285905f2bd3ea9bd75e0249d531fa31829321d4fff883b75",
+  "warUpdatesSha256": "b4cf8fcabdf203389bea645f15e0a385846180a51bf70a30191d6899de572d39",
+  "homeworldReportSha256": "5ff94f754b61a5dbaaed36063e573d9f298b278f35a68314d5ececb654b89187",
+  "homeworldUpdatesSha256": "dae32b9eb435626c5459d7509192653f2e12a6468e1fd482cbd155228c4a4e61",
+  "countsNotAdditiveWithRoot": true,
+  "humanArt": false,
+  "physicalController": false,
+  "remoteServer": false,
+  "globalClosed": 0
+}

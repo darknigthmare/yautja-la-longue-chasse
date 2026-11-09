@@ -1,0 +1,599 @@
+#!/usr/bin/env node
+/** Complete native GameClient, durable active-hunt sidecar and Canvas inputs.
+ * Field prey and the separate terminal segment are disclosed fixtures. The
+ * canopy starts at the canonical insertion. No whole-campaign/device claim.
+ */
+import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {createServer} from 'node:http';
+import {readFile,mkdir,writeFile} from 'node:fs/promises';
+import {createRequire} from 'node:module';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {runInNewContext} from 'node:vm';
+import {build} from 'esbuild';
+import {chromium} from 'playwright-core';
+import postcss from 'postcss';
+import tailwind from '@tailwindcss/postcss';
+
+const root=fileURLToPath(new URL('../',import.meta.url));
+const out=path.resolve(root,process.env.SKINNING_CANOPY_QA_OUTPUT??'outputs/qa-skinning-canopy-20261109');
+const only=process.env.SKINNING_CANOPY_QA_CASE??'both';
+assert.ok(['both','field','canopy'].includes(only));
+await mkdir(out,{recursive:true});
+const hash=value=>createHash('sha256').update(typeof value==='string'||Buffer.isBuffer(value)?value:JSON.stringify(value)).digest('hex');
+const revision=execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim();
+const dirty=execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);
+const source=await readFile(path.join(root,'app/game/HuntCanvas.tsx'),'utf8');
+const marker='    const fixedStep = 1 / 60;';
+assert.equal(source.split(marker).length,2,'One native lifecycle hook boundary');
+const observer='    window.__onSkinningCanopyMountV112?.({get game(){return game;},input,get alive(){return alive;},resumed:resumeSnapshot!=null,mission,encounterRun,native:{makeEnemy,damageEnemy,createDropShipArrival,canopySupportReachableV112,solvePlayerRigFrame}});\n';
+const bootstrap=await build({stdin:{contents:'export {defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
+const mod={exports:{}};
+runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url)});
+const admission=mod.exports.defaultSave('2026-11-09T00:00:00.000Z');
+admission.profile.clanMarks=100;
+admission.inventory.fieldToolIds=['flaying-tool'];
+admission.inventory.harvestV112.toolCondition=25;
+admission.settings.masterVolume=0;
+admission.settings.reducedGore=true;
+admission.settings.screenShake=false;
+const storageKey=mod.exports.SAVE_STORAGE_KEY;
+const route=mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>sector.systems.flatMap(system=>system.bodies.flatMap(body=>body.missions.map(mission=>({sector,system,body,mission}))))).find(item=>item.mission.id==='jungle-vey');
+assert.ok(route);
+const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/skinning-canopy-durable-20261109.fixture.jsx'],bundle:true,write:false,format:'iife',platform:'browser',jsx:'automatic',outfile:'fixture.js',metafile:true,logLevel:'silent',external:['/game/*'],define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'native-gameclient-and-one-declared-hook',setup(builder){
+  builder.onLoad({filter:/\/app\/globals\.css$/},async args=>({loader:'css',resolveDir:path.dirname(args.path),contents:(await postcss([tailwind({base:root})]).process(await readFile(args.path,'utf8'),{from:args.path})).css}));
+  builder.onLoad({filter:/\/HuntCanvas\.tsx$/},()=>({loader:'tsx',resolveDir:path.join(root,'app/game'),contents:source.replace(marker,observer+marker)}));
+}}]});
+const js=bundle.outputFiles.find(file=>file.path.endsWith('.js')),css=bundle.outputFiles.find(file=>file.path.endsWith('.css'));
+assert.ok(js&&css);
+const sourceHashes={};
+for(const file of Object.keys(bundle.metafile.inputs).filter(name=>name.startsWith('app/game/')&&/HuntCanvas|GameClient|HuntCanopy|HuntRites|HuntFieldGuide|HuntAccessibility|activeHuntSave|canopy|ritesOfHunt|huntRites|harvestInventory|fieldStash|huntField|hunterRig|sound\.ts/.test(name)).sort()){
+  sourceHashes[file]=hash(await readFile(path.join(root,file)));
+}
+const report={
+  schemaVersion:1,startedAt:new Date().toISOString(),sourceCommit:revision,workingTreeDirty:dirty.length>0,workingTreeOverlay:dirty,
+  classification:'IN_PROGRESS',browserExecuted:false,passed:false,checks:[],captures:[],errors:[],cases:{},admissionArrivals:[],
+  sourceHashes,hookSha256:hash(observer),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
+  inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
+  instrumentation:['One declared Canvas mount hook exposes read-only state plus the disclosed initial/terminal fixture setup','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
+  admission:{kind:'Declared production defaultSave with field tool, 100 marks and condition25',sha256:hash(admission),save:admission},
+  scope:'Complete production GameClient, its actual campaign front end, admission/claim, active-hunt serializer and localStorage writer. Mounted HuntCanvas uses the native rAF, DOM controls and keyboard listeners. One initial physical prey is created through native damage for field work. A separate declared terminal segment prepares Apex prerequisites and initial position; outcome and settlement are native. Canopy starts at the canonical insertion with original geometry, enemies and hazards.',
+  limits:['Automated desktop Chromium, not physical phone/controller or novice comprehension','No artistic or audio-listening qualification; audio is muted','No complete campaign or eight-mission ground fallback claim','The terminal extraction segment has a declared position/prerequisite fixture and does not prove intervening main-route traversal'],
+};
+const tracked=new Map(execFileSync('git',['ls-tree','-r',revision,'--','public'],{cwd:root,encoding:'utf8',maxBuffer:16*1024*1024}).trim().split('\n').filter(Boolean).map(line=>{const [meta,name]=line.split('\t');return[name,meta.split(' ')[2]];}));
+const requests=new Map(),pending=new Map();
+async function asset(pathname){
+  if(!pending.has(pathname))pending.set(pathname,(async()=>{
+    const oid=tracked.get('public'+pathname);
+    let bytes,origin='workspace';
+    try{bytes=await readFile(path.join(root,'public',pathname));}catch{
+      if(!oid)throw Error('Missing public asset '+pathname);
+      origin='exact-git-blob';bytes=execFileSync('git',['cat-file','blob',oid],{cwd:root,maxBuffer:64*1024*1024});
+    }
+    const actual=createHash(oid?.length===64?'sha256':'sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
+    requests.set(pathname,{url:pathname,status:200,origin:oid&&actual===oid?origin:'declared-workspace-overlay',gitBlob:oid??null,matchesHead:oid?actual===oid:null,bytes:bytes.length,sha256:hash(bytes)});
+    return bytes;
+  })());
+  return pending.get(pathname);
+}
+const mime={'.js':'text/javascript','.css':'text/css','.png':'image/png','.webp':'image/webp','.svg':'image/svg+xml','.json':'application/json','.ogg':'audio/ogg','.mp3':'audio/mpeg','.wav':'audio/wav','.woff2':'font/woff2'};
+const html='<!doctype html><html lang="fr"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yautja — native durable field work</title><link rel="stylesheet" href="/fixture.css"><body><div id="root"></div><script src="/fixture.js"></script></body></html>';
+const server=createServer(async(req,res)=>{try{
+  const pathname=decodeURIComponent(new URL(req.url??'/','http://localhost').pathname);
+  if(pathname==='/favicon.ico'){res.writeHead(204).end();return;}
+  if(pathname==='/'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8'}).end(html);return;}
+  if(pathname==='/fixture.js'||pathname==='/fixture.css'){res.writeHead(200,{'Content-Type':pathname.endsWith('.js')?'text/javascript':'text/css'}).end(pathname.endsWith('.js')?js.contents:css.contents);return;}
+  if(pathname.includes('..'))throw Error('Invalid public path');
+  const bytes=await asset(pathname);
+  res.writeHead(200,{'Content-Type':mime[path.extname(pathname)]??'application/octet-stream'}).end(bytes);
+}catch(error){requests.set(req.url,{url:req.url,status:404,error:String(error)});res.writeHead(404).end();}});
+let browser,context,page;
+const check=async(name,run)=>{
+  const startedAt=new Date().toISOString();
+  try{const details=await run();report.checks.push({name,status:'PASS',startedAt,details:details??null});console.log('PASS '+name);}
+  catch(error){report.checks.push({name,status:'FAIL',startedAt,error:String(error.stack??error)});throw error;}
+};
+const observation=()=>page.evaluate(()=>window.__skinningCanopyQaV112.state());
+const disk=()=>page.evaluate(()=>window.__skinningCanopyQaV112.disk());
+const campaign=()=>page.evaluate(()=>window.__skinningCanopyQaV112.campaign());
+const frame=()=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+const capture=async name=>{
+  const bytes=await page.screenshot({fullPage:true,animations:'disabled'});
+  await writeFile(path.join(out,name+'.png'),bytes);
+  report.captures.push({file:name+'.png',bytes:bytes.length,sha256:hash(bytes),width:bytes.readUInt32BE(16),height:bytes.readUInt32BE(20)});
+};
+async function openCampaign(){
+  await page.locator('[data-campaign-menu]').waitFor();
+  const section=page.locator('[data-menu-section="campaign"]');
+  if(await section.count())await section.click();
+  await page.locator('[data-menu-action="continue"]').click();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112?.runtime?.alive||document.querySelector('[data-campaign-session]'));
+}
+async function launch(){
+  await openCampaign();
+  await page.locator('[data-campaign-session][data-campaign-location="deck"]').waitFor();
+  const shortcuts=page.getByRole('button',{name:'Accès rapide aux installations',exact:true});
+  if(await shortcuts.getAttribute('aria-expanded')!=='true')await shortcuts.click();
+  const direct=page.getByText(/^Accès direct aux interfaces(?: · sans déplacement du chasseur)?$/);
+  if(await direct.locator('..').getAttribute('open')===null)await direct.click();
+  await page.getByRole('button',{name:/^NAVIGATION.*Ouvrir l’interface/}).first().click();
+  const galaxy=page.locator('.galaxy-v10-breadcrumbs button').first();
+  if(await galaxy.isEnabled())await galaxy.click();
+  for(const label of[route.sector.name,route.system.name,route.body.name]){
+    await page.locator('.galaxy-v10-spatial-map button').filter({hasText:label}).first().click();
+    await page.getByRole('button',{name:'Entrer',exact:true}).click();
+  }
+  await page.getByRole('button',{name:route.mission.title,exact:false}).first().click();
+  await page.getByRole('button',{name:/^Préparer (la chasse|cette revisite)$/}).click();
+  await page.getByRole('button',{name:'Départ rapide',exact:true}).click();
+  await page.getByRole('button',{name:/^Passer l’arrivée/}).click();
+  report.admissionArrivals.push({case:new URL(page.url()).searchParams.get('case'),control:'Native Passer l’arrivée',claim:'skipped cinematic; real campaign handoff and canonical hunt insertion'});
+  await page.getByRole('button',{name:'Commencer la chasse',exact:true}).click();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112.runtime?.alive&&window.__skinningCanopyQaV112.state().elapsed>0);
+}
+async function pause(){
+  const state=await observation();
+  if(!state.paused)await page.getByRole('button',{name:'Mettre en pause, consulter la carte et le sac',exact:true}).click();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().paused);
+  await frame();
+}
+async function resume(){
+  await page.getByRole('button',{name:'Reprendre',exact:true}).click();
+  await page.waitForFunction(()=>!window.__skinningCanopyQaV112.state().paused);
+  await page.locator('canvas').last().focus();
+}
+async function reloadHunt(label){
+  const before={documentId:await page.evaluate(()=>window.__skinningCanopyQaV112.documentId),state:await observation(),sidecar:await disk(),writes:await page.evaluate(()=>window.__skinningCanopyQaV112.writes)};
+  assert.ok(before.sidecar?.snapshot,'Native sidecar must exist before a fresh document');
+  await page.reload();
+  await openCampaign();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112?.runtime?.alive||[...document.querySelectorAll('button')].some(button=>/^Reprendre la chasse :/.test(button.getAttribute('aria-label')??'')));
+  const titleResume=page.getByRole('button',{name:/^Reprendre la chasse :/});
+  if(await titleResume.count())await titleResume.click();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112?.runtime?.alive&&window.__skinningCanopyQaV112.state().resumed&&window.__skinningCanopyQaV112.state().paused);
+  const after={documentId:await page.evaluate(()=>window.__skinningCanopyQaV112.documentId),state:await observation(),sidecar:await disk(),mounts:await page.evaluate(()=>window.__skinningCanopyQaV112.mounts)};
+  assert.notEqual(after.documentId,before.documentId,'A new document, not an in-memory remount');
+  assert.notEqual(after.sidecar.runId,before.sidecar.runId,'Native GameClient claims a new writer identity');
+  assert.equal(after.sidecar.startedAt,before.sidecar.startedAt);
+  assert.equal(after.sidecar.ownerSaveCreatedAt,before.sidecar.ownerSaveCreatedAt);
+  assert.ok(after.sidecar.sequence>=before.sidecar.sequence);
+  assert.ok(after.mounts.every(item=>item.resumed),'The resumed document must not seed another prey');
+  assert.deepEqual(after.state.rites,before.sidecar.snapshot.checkpoint.huntRites,'Physical body, finite parts, quality, stashes and operation restore from disk');
+  assert.equal(after.state.elapsed,before.sidecar.snapshot.checkpoint.elapsed,'No offline simulation progress');
+  await writeFile(path.join(out,label+'-reload.json'),JSON.stringify({before,after},null,2)+'\n');
+  return{before,after};
+}
+async function newCase(kind){
+  context=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1});
+  await context.addInitScript(({save,key})=>{if(localStorage.length===0)localStorage.setItem(key,JSON.stringify(save));},{save:admission,key:storageKey});
+  page=await context.newPage();
+  page.setDefaultTimeout(45000);
+  page.on('pageerror',error=>report.errors.push({case:kind,error:String(error)}));
+  await page.goto('http://127.0.0.1:'+server.address().port+'/?case='+kind);
+  await page.bringToFront();
+  await launch();
+  report.cases[kind]={initial:await observation()};
+}
+async function field(){
+  await newCase('field');
+  const data=report.cases.field;
+  data.setups=await page.evaluate(()=>window.__skinningCanopyQaV112.setups);
+  await check('field fixture retains the canonical insertion, authored enemies, geometry and hazards',async()=>{
+    const state=await observation(),setup=data.setups[0];
+    assert.equal(setup.originalEnemyCount+1,setup.resultingEnemyCount);
+    assert.ok(setup.originalEnemyIds.every(id=>state.enemies.some(enemy=>enemy.id===id)));
+    assert.ok(state.world.hazards.length>0);
+    assert.ok(Math.abs(state.player.x-state.world.spawn.x)<2);
+    assert.equal(state.rites.corpses.length,1);
+    assert.equal(state.rites.corpses[0].id,'qa-durable-field-prey');
+    return setup;
+  });
+  await page.getByRole('button',{name:'Examiner la proie vaincue',exact:true}).click();
+  data.worksiteApproach=[];
+  for(let attempt=0;attempt<18&&await page.locator('[data-rite-action-v112="flay"]').isDisabled();attempt++){
+    const state=await observation();
+    const target=state.rites.corpses.find(corpse=>corpse.id==='qa-durable-field-prey');
+    const action=target.x>=state.player.x+state.player.width/2?'ArrowRight':'ArrowLeft';
+    const reason=page.locator('[data-rite-worksite-v112]');
+    data.worksiteApproach.push({action,before:state.player,reason:await reason.count()?await reason.innerText():null});
+    await page.locator('canvas').last().focus();
+    await page.keyboard.down(action);await page.waitForTimeout(45);await page.keyboard.up(action);await page.waitForTimeout(120);
+  }
+  await check('native menu presents real worn-tool duration and finite stock before field work',async()=>{
+    const tool=await page.locator('[data-rite-tool-preview-v112]').innerText();
+    const stock=await page.locator('[data-rite-stock-v112]').innerText();
+    assert.match(tool,/25\s*\/\s*100/);
+    assert.match(stock,/2\s*\/\s*2/);
+    assert.equal(await page.locator('[data-rite-action-v112="flay"]').isEnabled(),true);
+    data.initialMenu={tool,stock,text:await page.locator('[data-hunt-rites-v77]').innerText()};
+    await capture('01-field-before-work');
+    return data.initialMenu;
+  });
+  await page.locator('[data-rite-action-v112="analyze"]').click();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.corpses[0]?.analyzed);
+  await check('interrupting a native started flay leaves its unique stock and tool-use ledger unchanged',async()=>{
+    await page.locator('[data-rite-action-v112="flay"]').click();
+    await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.operation?.elapsed>.65);
+    data.activeFlay={state:await observation(),progress:await page.locator('[data-rite-progress-v112] progress').getAttribute('value')};
+    assert.equal(data.activeFlay.state.paused,false);
+    await capture('01b-native-active-flay-stroke');
+    await page.getByRole('button',{name:'Interrompre le geste',exact:true}).click();
+    const state=await observation();
+    assert.equal(state.rites.operation,null);
+    assert.equal(state.rites.corpses[0].flayed,false);
+    assert.equal(state.rites.completedEventIds.filter(id=>id.startsWith('flay:')).length,0);
+    assert.equal(state.rites.specimensV112.length,0);
+  });
+  await page.getByRole('button',{name:'Examiner la proie vaincue',exact:true}).click();
+  await page.locator('[data-rite-action-v112="flay"]').click();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.operation?.elapsed>.2);
+  await check('a real in-progress flay is written, claimed and restored by GameClient in a new document',async()=>{
+    assert.equal(await page.locator('[data-rite-progress-v112] progress').getAttribute('aria-label')!==null,true);
+    await pause();
+    const saved=await disk();
+    assert.equal(saved.snapshot.checkpoint.huntRites.operation.action,'flay');
+    assert.ok(saved.snapshot.checkpoint.huntRites.operation.elapsed>0);
+    const transition=await reloadHunt('02-flay');
+    assert.equal(transition.after.state.rites.corpses[0].flayed,false);
+    assert.equal(transition.after.state.rites.completedEventIds.filter(id=>id.startsWith('flay:')).length,0);
+    await capture('02-restored-flay-paused');
+    return{elapsedBefore:transition.before.state.rites.operation.elapsed,elapsedAfter:transition.after.state.rites.operation.elapsed,runIdChanged:true};
+  });
+  await resume();
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.corpses[0]?.flayed===true);
+  await check('resumed native flay completes exactly once and the next physical part is harvested once',async()=>{
+    let state=await observation();
+    assert.equal(state.rites.completedEventIds.filter(id=>id.startsWith('flay:')).length,1);
+    const open=page.getByRole('button',{name:'Examiner la proie vaincue',exact:true});
+    if(await open.count())await open.click();
+    const tool=await page.locator('[data-rite-tool-preview-v112]').innerText();
+    assert.match(tool,/20\s*\/\s*100/);
+    // Reach the other work side through the same native movement controls.
+    // This makes the second live contact image exercise the mirrored rig,
+    // without moving the corpse or assigning actor coordinates.
+    await page.locator('canvas').last().focus();
+    await page.keyboard.down('ArrowRight');
+    await page.waitForFunction(()=>{
+      const state=window.__skinningCanopyQaV112.state();
+      return state.player.x+state.player.width/2>=state.rites.corpses[0].x+26;
+    });
+    await page.keyboard.up('ArrowRight');await page.waitForTimeout(140);
+    await page.keyboard.down('ArrowLeft');await page.waitForTimeout(45);await page.keyboard.up('ArrowLeft');await page.waitForTimeout(120);
+    data.mirroredWorkApproach={kind:'NATIVE_KEYBOARD_WALK_AROUND_SAME_BODY',state:await observation()};
+    assert.ok(data.mirroredWorkApproach.state.player.x+data.mirroredWorkApproach.state.player.width/2>data.mirroredWorkApproach.state.rites.corpses[0].x);
+    await page.setViewportSize({width:320,height:844});await frame();
+    await page.locator('[data-rite-action-v112="harvest-hide"]').click();
+    await page.waitForFunction(()=>{
+      const operation=window.__skinningCanopyQaV112.state().rites.operation;
+      return operation?.action==='harvest-hide'&&operation.elapsed>.65;
+    });
+    data.activeHarvest={state:await observation(),viewport:{width:320,height:844},progress:await page.locator('[data-rite-progress-v112] progress').getAttribute('value'),panel:await page.locator('[data-hunt-rites-v77]').boundingBox()};
+    assert.equal(data.activeHarvest.state.paused,false);
+    assert.equal(await page.locator('[data-hunt-rites-v77]').getAttribute('data-rite-compact-v112'),'true');
+    data.activeHarvest.canvas=await page.locator('canvas.hunt-canvas').boundingBox();
+    const live=data.activeHarvest.state,canvas=data.activeHarvest.canvas;
+    data.activeHarvest.projectedActorTop=canvas.y+(live.player.y-live.camera.y)*canvas.height/720;
+    assert.ok(data.activeHarvest.panel.height<=110,'Active mobile work panel stays short');
+    assert.ok(data.activeHarvest.panel.y+data.activeHarvest.panel.height<data.activeHarvest.projectedActorTop,'The live work panel leaves the actual hunter and body below it visible');
+    data.activeHarvest.targets=await page.locator('[data-hunt-rites-v77] button').evaluateAll(buttons=>buttons.map(button=>({label:button.textContent,width:button.getBoundingClientRect().width,height:button.getBoundingClientRect().height})));
+    assert.ok(data.activeHarvest.targets.every(target=>target.width>=44&&target.height>=44),'Compact operation controls have44×44px targets');
+    await capture('03a-native-active-hide-work');
+    const info=page.getByRole('button',{name:'Infos',exact:true});
+    assert.equal(await info.getAttribute('aria-expanded'),'false');
+    await info.click();
+    assert.equal(await page.locator('[data-rite-work-details-v112]').isVisible(),true,'Detailed field facts remain available during work');
+    assert.match(await page.locator('[data-rite-tool-preview-v112]').innerText(),/20\s*\/\s*100/);
+    await info.click();
+    await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().rites.specimensV112.length===1);
+    state=await observation();
+    assert.equal(state.rites.completedEventIds.filter(id=>id.startsWith('flay:')).length,1);
+    assert.equal(state.rites.completedEventIds.filter(id=>id.startsWith('harvest-')).length,1);
+    assert.equal(state.rites.specimensV112[0].stage,'raw');
+    data.specimen=state.rites.specimensV112[0];
+    assert.equal(await page.locator('[data-rite-action-v112="harvest-hide"]').isDisabled(),true);
+    assert.equal(await page.locator('[data-rite-action-v112="analyze"]').isDisabled(),true);
+    await capture('03-native-harvest-complete');
+    return{specimen:data.specimen,toolPreview:await page.locator('[data-rite-tool-preview-v112]').innerText()};
+  });
+  await pause();
+  await check('a field deposit survives durable reload and is picked up without another harvest or tool debit',async()=>{
+    await page.getByRole('button',{name:/^Déposer ·/}).click();
+    assert.equal((await observation()).rites.stashedSpecimensV112[0].specimenId,data.specimen.id);
+    await reloadHunt('04-stash');
+    await page.getByRole('button',{name:/^Reprendre ·/}).click();
+    const state=await observation();
+    assert.equal(state.rites.stashedSpecimensV112.length,0);
+    assert.deepEqual(state.rites.specimensV112,[data.specimen]);
+    assert.equal(state.rites.completedEventIds.filter(id=>id.startsWith('flay:')||id.startsWith('harvest-')).length,2);
+    await capture('04-recovered-native-field-pack');
+  });
+  await resume();
+  const open=page.getByRole('button',{name:'Examiner la proie vaincue',exact:true});
+  if(await open.count())await open.click();
+  await check('native field details stay inside 390px and 320px viewports',async()=>{
+    data.mobile=[];
+    for(const width of[390,320]){
+      await page.setViewportSize({width,height:844});await frame();
+      assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),true,'No horizontal overflow at '+width);
+      const menu=page.locator('[data-hunt-rites-v77]');
+      const rect=await menu.boundingBox();assert.ok(rect&&rect.x>=0&&rect.x+rect.width<=width+1);
+      const targets=await menu.locator('button').evaluateAll(buttons=>buttons.map(button=>({text:button.textContent,height:button.getBoundingClientRect().height,width:button.getBoundingClientRect().width})));
+      assert.ok(targets.every(target=>target.height>=44&&target.width>=24),'Native ritual targets preserve44px height and the24px minimum width');
+      const guide=page.locator('[data-field-guide-v112]');
+      const preparation=page.locator('[data-guide-preparation-details-v112]');
+      assert.equal(await preparation.getAttribute('open'),null,'Preparation is compact by default');
+      const guideRect=await guide.boundingBox();
+      assert.ok(guideRect&&guideRect.height<260,'Compact guide must leave room for the hunt at '+width);
+      await page.locator('[data-guide-preparation-summary-v112]').click();
+      assert.equal(await page.locator('[data-guide-body-access-v112]').isVisible(),true,'Full body-access instructions remain available');
+      await page.locator('[data-guide-preparation-summary-v112]').click();
+      data.mobile.push({width,rect,targets,guideRect,preparationCollapsed:true,minimumTargetHeight:Math.min(...targets.map(target=>target.height)),minimumTargetWidth:Math.min(...targets.map(target=>target.width))});
+      await capture('05-field-menu-'+width);
+    }
+    return data.mobile;
+  });
+  await page.setViewportSize({width:1280,height:900});
+  await check('declared terminal segment keeps field identity and uses native boarding, settlement and tool wear',async()=>{
+    data.terminalSegment=await page.evaluate(()=>window.__skinningCanopyQaV112.prepareTerminalSegment());
+    assert.deepEqual(data.terminalSegment.before.rites.specimensV112,data.terminalSegment.after.rites.specimensV112);
+    assert.deepEqual(data.terminalSegment.before.worldExtraction,data.terminalSegment.after.worldExtraction);
+    await page.locator('canvas').last().focus();
+    await page.keyboard.down('ArrowRight');
+    await page.waitForFunction(()=>{const state=window.__skinningCanopyQaV112.state();return Math.abs(state.player.x+state.player.width/2-state.world.extraction.x)<45;});
+    await page.keyboard.up('ArrowRight');
+    await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().ship?.phase==='hover');
+    await page.keyboard.press('KeyE');
+    await page.locator('.debrief-actions').getByRole('button',{name:'Retour au vaisseau',exact:true}).waitFor();
+    const save=await campaign();
+    assert.deepEqual(save.inventory.harvestV112.specimens,[data.specimen]);
+    assert.equal(save.inventory.harvestV112.toolCondition,15);
+    assert.equal(save.inventory.harvestV112.toolUseIds.length,2);
+    assert.equal(await disk(),null,'Terminal settlement clears the actual sidecar');
+    data.delivered={specimen:save.inventory.harvestV112.specimens[0],toolCondition:save.inventory.harvestV112.toolCondition,toolUseIds:save.inventory.harvestV112.toolUseIds};
+    await capture('06-native-field-settlement');
+    return data.delivered;
+  });
+  await page.locator('.debrief-actions').getByRole('button',{name:'Retour au vaisseau',exact:true}).click();
+  await page.locator('[data-campaign-session][data-campaign-location="deck"]').waitFor();
+  const shortcuts=page.getByRole('button',{name:'Accès rapide aux installations',exact:true});
+  if(await shortcuts.getAttribute('aria-expanded')!=='true')await shortcuts.click();
+  const direct=page.getByText(/^Accès direct aux interfaces(?: · sans déplacement du chasseur)?$/);
+  if(await direct.locator('..').getAttribute('open')===null)await direct.click();
+  await page.getByRole('button',{name:/^ARMURERIE.*Ouvrir l’interface/}).first().click();
+  await check('the real station completes conservation while preserving the same delivered identity and quality',async()=>{
+    const before=(await campaign()).profile.clanMarks;
+    for(const[label,units]of[['Nettoyer',3],['Traiter',4],['Sécher',5],['Monter',3]]){
+      await page.getByRole('button',{name:new RegExp('^'+label+' ·')}).click();
+      for(let index=0;index<units;index++)await page.getByRole('button',{name:/^Effectuer un geste ·/}).click();
+    }
+    const after=await campaign(),item=after.inventory.harvestV112.specimens[0];
+    assert.equal(after.profile.clanMarks,before-14);
+    assert.deepEqual({...item,stage:'raw'},data.specimen);
+    assert.equal(item.stage,'mounted');
+    assert.equal(after.inventory.harvestV112.toolCondition,15);
+    data.mounted=item;
+    await capture('07-native-conserved-part');
+    return{item,marksPaid:14,toolCondition:15};
+  });
+  data.finalCampaign=await campaign();
+  data.finalSidecar=await disk();
+  await context.close();context=null;
+}
+async function canopy(){
+  await newCase('canopy');
+  const data=report.cases.canopy,initial=await observation();
+  const rests=initial.world.platforms.filter(platform=>platform.id.startsWith('v112-canopy-jungle-vey-0-')).sort((a,b)=>a.x-b.x);
+  const entry=initial.world.climbables.find(support=>support.id===rests[0]?.id.replace('-rest','-grip'));
+  const flexible=initial.world.climbables.find(support=>support.id===rests[1]?.id.replace('-rest','-grip'));
+  const next=initial.world.climbables.find(support=>support.id===rests[2]?.id.replace('-rest','-grip'));
+  assert.ok(entry&&flexible&&next);
+  const held=new Set(),key={left:'ArrowLeft',right:'ArrowRight',up:'ArrowUp',down:'ArrowDown',jump:'Space'};
+  const hold=async(actions,reason,decision=null)=>{
+    const wanted=new Set(actions);
+    for(const action of held)if(!wanted.has(action)){await page.keyboard.up(key[action]);held.delete(action);}
+    for(const action of wanted)if(!held.has(action)){await page.keyboard.down(key[action]);held.add(action);}
+    data.inputs.push({elapsed:decision?.elapsed??(await observation()).elapsed,actions:[...wanted],reason});
+  };
+  const until=async(name,limit,choose)=>{
+    const started=Date.now(),initialElapsed=(await observation()).elapsed;
+    const budget={name,simulationLimitSeconds:limit/1000,wallGuardMs:Math.max(limit*6,30000),initialElapsed};
+    data.stageBudgets.push(budget);
+    let lastSample=-1,lastState;
+    while(Date.now()-started<budget.wallGuardMs){
+      const state=await observation();
+      lastState=state;
+      assert.equal(state.paused,false,name+': native pause prevents progress');
+      assert.notEqual(state.phase,'dead',name+': hunter must remain alive');
+      if(state.elapsed-initialElapsed>budget.simulationLimitSeconds)break;
+      if(Math.floor(state.elapsed*5)!==lastSample){
+        lastSample=Math.floor(state.elapsed*5);data.samples.push({stage:name,elapsed:state.elapsed,phase:state.phase,player:state.player,canopyGripContact:state.canopyGripContact});
+        await writeFile(path.join(out,'canopy-progress.json'),JSON.stringify({stage:name,elapsed:state.elapsed,wallMs:Date.now()-started,player:state.player,held:[...held]},null,2)+'\n');
+      }
+      if(state.player.grounded&&state.player.health<state.player.maxHealth*.5&&state.player.medicomps>0&&state.player.healCooldown<=0){
+        await page.keyboard.press('KeyH');
+        data.heals.push({elapsed:state.elapsed,healthBefore:state.player.health,medicompsBefore:state.player.medicomps,kind:'NATIVE_FINITE_MEDICOMP'});
+      }
+      if(await choose(state)){
+        Object.assign(budget,{nativeElapsed:state.elapsed-initialElapsed,wallElapsedMs:Date.now()-started,completed:true});
+        return state;
+      }
+      await page.waitForTimeout(20);
+    }
+    Object.assign(budget,{nativeElapsed:(lastState?.elapsed??initialElapsed)-initialElapsed,wallElapsedMs:Date.now()-started,completed:false});
+    throw Error('Timed out native canopy stage '+name+' after '+budget.nativeElapsed.toFixed(3)+' simulated seconds / '+budget.wallElapsedMs+' wall ms');
+  };
+  data.inputs=[];data.samples=[];data.heals=[];data.stageBudgets=[];data.contactMeasurements=[];data.authored={rests,entry,flexible,next};
+  const contact=(state,stage)=>{
+    assert.ok(state.canopyGripContact,'A real held pendulum must expose its rear-hand contact');
+    assert.ok(state.canopyGripContact.distancePx<=1,'Rear palm follows the real held physical point within1 world pixel');
+    data.contactMeasurements.push({stage,...state.canopyGripContact});
+    return state.canopyGripContact;
+  };
+  await page.locator('canvas').last().focus();
+  await check('canopy starts at canonical insertion with original enemies and hazards without a seeded grasp',async()=>{
+    assert.ok(Math.abs(initial.player.x-initial.world.spawn.x)<2);
+    assert.ok(initial.enemies.length>0&&initial.world.hazards.length>0);
+    assert.deepEqual(await page.evaluate(()=>window.__skinningCanopyQaV112.setups),[]);
+    await capture('08-canopy-canonical-insertion');
+    return{spawn:initial.world.spawn,enemyCount:initial.enemies.length,hazardCount:initial.world.hazards.length,initialHudVisible:await page.locator('[data-canopy-hud-v112]').count()>0};
+  });
+  await page.keyboard.press('KeyC');
+  await until('approach entry tree',20000,async state=>{
+    const dx=entry.x+entry.width/2-state.player.x-state.player.width/2;
+    if(Math.abs(dx)<10){await hold(['up'],'grasp the authored entry tree',state);return true;}
+    await hold([dx>0?'right':'left'],'walk from canonical insertion',state);return false;
+  });
+  await until('climb above first branch',18000,async state=>{
+    await hold(['up'],'native ascent',state);
+    return state.player.climbing&&state.player.climbZoneId===entry.id&&state.player.y+state.player.height<=rests[0].y-18;
+  });
+  await hold([],'release ascent while inspecting the real navigation HUD');
+  await check('near the real entry tree the compact HUD exposes its mapped controls and authored landmarks',async()=>{
+    await page.locator('[data-canopy-hud-v112]').waitFor();
+    await page.getByText('Commandes et repères de traversée',{exact:true}).click();
+    await page.locator('[data-canopy-next-v112]').waitFor({state:'visible'});
+    await page.locator('[data-canopy-rest-v112]').waitFor({state:'visible'});
+    const text=await page.locator('[data-canopy-hud-v112]').innerText();
+    assert.match(text,/Direction \+ Saut/);
+    assert.match(text,/Prise suivante/);
+    assert.match(text,/Repos repéré|Appui atteint/);
+    await page.getByText('Commandes et repères de traversée',{exact:true}).click();
+    await capture('08b-native-entry-canopy-hud');
+    await page.locator('canvas').last().focus();
+    return{text,player:(await observation()).player};
+  });
+  await hold(['right'],'directional release from rigid trunk');
+  await until('leave the rigid trunk',3000,async state=>!state.player.climbing);
+  await hold([],'settle onto the real branch');
+  await check('native entry-tree release lands on the first authored rest before exhaustion',async()=>{
+    const landed=await until('first rest contact',4000,async state=>state.player.grounded);
+    assert.ok(Math.abs(landed.player.y+landed.player.height-rests[0].y)<2);
+    assert.ok(landed.player.stamina>0);
+    await capture('09-first-native-rest');
+    return{player:landed.player,hud:await page.locator('[data-canopy-hud-v112]').innerText()};
+  });
+  await hold(['right','jump'],'jump from first branch toward the flexible support rest');
+  await until('second rest approach',4000,async state=>{
+    const center=state.player.x+state.player.width/2;
+    if(center>=rests[1].x+rests[1].width/2-20)await hold(['jump'],'release horizontal steering above the rest',state);
+    return state.player.grounded&&Math.abs(state.player.y+state.player.height-rests[1].y)<2;
+  });
+  await hold([],'acknowledge jump release at second rest');await frame();
+  await hold(['up'],'grasp and shorten the real flexible support');
+  await until('climb flexible support',15000,async state=>state.player.climbing&&state.player.climbZoneId===flexible.id&&state.player.y+state.player.height*.28-flexible.y<=120);
+  await hold(['right'],'activate the real pendulum');
+  await until('attach pendulum',3000,async state=>Boolean(state.player.canopySwing));
+  await hold([],'neutral pendulum before its durable checkpoint');
+  await check('actual pendulum snapshot survives sidecar claim and a new document without an extra impulse',async()=>{
+    await pause();
+    const transition=await reloadHunt('10-pendulum');
+    assert.deepEqual(transition.after.state.player.canopySwing,transition.before.sidecar.snapshot.checkpoint.player.canopySwing);
+    assert.equal(transition.after.state.player.velocityX,transition.before.sidecar.snapshot.checkpoint.player.velocityX);
+    assert.equal(transition.after.state.player.velocityY,transition.before.sidecar.snapshot.checkpoint.player.velocityY);
+    assert.equal(transition.after.state.player.climbZoneId,flexible.id);
+    contact(transition.after.state,'restored-pendulum-paused');
+    await capture('10-pendulum-restored-paused');
+    return{player:transition.after.state.player,runIdChanged:true};
+  });
+  await resume();await frame();
+  await check('alternating native direction pumps the restored pendulum with bounded energy and readable controls',async()=>{
+    const ready=await until('native pendulum pump',18000,async state=>{
+      const swing=state.player.canopySwing;assert.ok(swing,'The real support must remain held while pumping');
+      if(swing.angle>.5&&swing.angularVelocity>1.2)return true;
+      await hold([swing.angularVelocity>=0?'right':'left'],'pump in the actual angular direction',state);return false;
+    });
+    assert.ok(ready.player.stamina>0&&ready.player.stamina<ready.player.maxStamina);
+    contact(ready,'pumped-pendulum-before-capture');
+    data.beforeRelease=ready;
+    await capture('11-native-pumped-pendulum');
+    contact(await observation(),'pumped-pendulum-after-capture');
+    return{player:ready.player,cue:await page.locator('[data-canopy-cue-v112]').innerText()};
+  });
+  // Captures deliberately keep the simulation running. Choose a NEW physical
+  // release window afterwards, then send the trusted keydown immediately.
+  await until('choose a fresh positive release phase after capture',18000,async state=>{
+    const swing=state.player.canopySwing;
+    assert.ok(swing,'The original real support must remain held before release');
+    const tangentX=Math.cos(swing.angle)*swing.length*swing.angularVelocity;
+    const oldReachable=state.reachableSupportIds.includes(flexible.id);
+    if(swing.angle>=.15&&swing.angle<=.8&&swing.angularVelocity>0&&tangentX>=300&&held.has('right')){
+      data.actualReleaseDecision={elapsed:state.elapsed,player:state.player,tangentX,oldReachable};
+      await page.keyboard.down('Space');held.add('jump');
+      return true;
+    }
+    await hold([swing.angularVelocity>=0?'right':'left'],'pump to a fresh rightward release window after capture',state);
+    return false;
+  });
+  await page.waitForFunction(()=>{
+    const player=window.__skinningCanopyQaV112.state().player;
+    return !player.climbing&&player.climbReattachSeconds>0;
+  },null,{polling:'raf',timeout:2000});
+  await page.keyboard.down('Escape');
+  await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().paused);
+  await page.keyboard.up('Escape');
+  await hold([],'release physical keys while the free-flight checkpoint is paused');
+  await check('released free flight preserves its positive reattach grace across a new document',async()=>{
+    await page.waitForFunction(()=>window.__skinningCanopyQaV112.state().paused);
+    const before=await observation();
+    assert.equal(before.player.climbing,false);
+    assert.equal(before.player.canopySwing,null);
+    assert.ok(before.player.climbReattachSeconds>0,'Capture must be during the genuine release grace');
+    const transition=await reloadHunt('12-release-grace');
+    assert.equal(transition.after.state.player.climbReattachSeconds,transition.before.sidecar.snapshot.checkpoint.player.climbReattachSeconds);
+    assert.equal(transition.after.state.player.velocityX,transition.before.sidecar.snapshot.checkpoint.player.velocityX);
+    assert.equal(transition.after.state.player.velocityY,transition.before.sidecar.snapshot.checkpoint.player.velocityY);
+    await capture('12-release-grace-restored');
+    return{before:transition.before.state.player,after:transition.after.state.player};
+  });
+  // Escape is the actual bound pause command. Avoid slow DOM locators during
+  // a short stored flight: the native modal restores gameplay focus itself.
+  await page.keyboard.down('Escape');
+  await page.waitForFunction(()=>!window.__skinningCanopyQaV112.state().paused,null,{polling:'raf'});
+  await page.keyboard.down('ArrowRight');held.add('right');
+  await page.keyboard.up('Escape');
+  await check('resumed tangent flight catches the next authored vine through real controls without a boost',async()=>{
+    const landed=await until('next real vine catch',5000,async state=>{
+      if(state.player.climbing&&state.player.climbZoneId===next.id)return true;
+      if(!state.inputs.keyboard.includes('right')){
+        await page.keyboard.up('ArrowRight');await page.locator('canvas').last().focus();await page.keyboard.down('ArrowRight');
+        data.inputs.push({elapsed:state.elapsed,actions:['right'],reason:'acknowledge native focus restoration after the pause command'});
+      }
+      const ready=state.reachableSupportIds.includes(next.id)&&!state.reachableSupportIds.includes(flexible.id)&&state.player.climbReattachSeconds<=0;
+      await hold(ready?['right','up']:['right'],ready?'grasp only the actually reachable next vine':'keep Up released until outside the old grasp and inside the next',state);
+      return false;
+    });
+    assert.equal(landed.player.aerialBoostUsed,false);
+    assert.ok(landed.player.stamina>0);
+    contact(landed,'next-real-vine-before-capture');
+    await hold([],'stop the input after the real next-vine catch');
+    await capture('13-native-next-vine-caught');
+    contact(await observation(),'next-real-vine-after-capture');
+    return{player:landed.player,nextSupport:next.id};
+  });
+  data.final=await observation();data.finalSidecar=await disk();
+  await context.close();context=null;
+}
+try{
+  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
+  browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE??'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+  report.browserExecuted=true;report.browserVersion=browser.version();
+  if(only!=='canopy')await field();
+  if(only!=='field')await canopy();
+  report.passed=report.errors.length===0&&report.checks.every(item=>item.status==='PASS');
+  report.classification=report.passed?'BOUNDED_NATIVE_DURABLE_PASS':'FAILED_ATTEMPT';
+}catch(error){
+  report.failure=String(error.stack??error);report.classification='FAILED_ATTEMPT';
+  if(page&&!page.isClosed()){
+    try{report.failureState=await observation();report.failureSidecar=await disk();report.failureText=await page.locator('body').innerText();await capture('failure');}catch{/* preserve the original failure */}
+  }
+}finally{
+  report.assets=[...requests.values()];report.assetFailures=report.assets.filter(item=>item.status!==200);
+  if(report.assetFailures.length){report.passed=false;report.classification='FAILED_ATTEMPT';}
+  report.finishedAt=new Date().toISOString();
+  await writeFile(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');
+  await context?.close();await browser?.close();await new Promise(resolve=>server.close(resolve));
+}
+console.log(JSON.stringify({passed:report.passed,classification:report.classification,checks:report.checks.length,captures:report.captures.length,failure:report.failure??null,report:path.join(out,'report.json')}));
+if(!report.passed)process.exitCode=1;

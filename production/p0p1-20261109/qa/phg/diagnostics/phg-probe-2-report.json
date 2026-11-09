@@ -1,0 +1,134 @@
+{
+  "startedAt": "2026-11-09T05:21:17.982Z",
+  "url": "http://127.0.0.1:3121",
+  "fixture": "Initial adult defaultSave and selected class only; no palette or decal reward/result seeded.",
+  "scope": "Native Next GameClient controls and durable campaign palette; no official PHG pixel comparison, three-angle art approval, physical controller or long soak claim.",
+  "checks": [
+    {
+      "name": "alpha native customization opened",
+      "passed": true,
+      "detail": [
+        [
+          "chromatic-material-skin",
+          33
+        ],
+        [
+          "chromatic-material-dreads",
+          5
+        ],
+        [
+          "chromatic-material-outfit",
+          28
+        ],
+        [
+          "chromatic-material-armor",
+          7
+        ],
+        [
+          "chromatic-mask-material-v131",
+          9
+        ],
+        [
+          "decal-v133-biomask",
+          13
+        ],
+        [
+          "decal-v133-face",
+          13
+        ],
+        [
+          "decal-v133-body",
+          13
+        ],
+        [
+          "decal-v133-armor",
+          13
+        ],
+        [
+          "_r_4_-media",
+          13
+        ],
+        [
+          "_r_4_-kind",
+          5
+        ],
+        [
+          "_r_4_-continuity",
+          5
+        ]
+      ]
+    },
+    {
+      "name": "samurai native customization opened",
+      "passed": true,
+      "detail": [
+        [
+          "chromatic-material-skin",
+          33
+        ],
+        [
+          "chromatic-material-dreads",
+          5
+        ],
+        [
+          "chromatic-material-outfit",
+          28
+        ],
+        [
+          "chromatic-material-armor",
+          7
+        ],
+        [
+          "chromatic-mask-material-v131",
+          3
+        ],
+        [
+          "decal-v133-biomask",
+          13
+        ],
+        [
+          "decal-v133-face",
+          13
+        ],
+        [
+          "decal-v133-body",
+          13
+        ],
+        [
+          "decal-v133-armor",
+          13
+        ],
+        [
+          "_r_8_-media",
+          13
+        ],
+        [
+          "_r_8_-kind",
+          5
+        ],
+        [
+          "_r_8_-continuity",
+          5
+        ]
+      ]
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "httpErrors": [],
+  "requestFailures": [],
+  "screenshots": [],
+  "browserVersion": "154.0.8037.57",
+  "buildId": "TDA_a9vb2sdq4pe9FwXuE",
+  "limits": {
+    "nativeViewAngles": "Only the orientation actually offered by customization is exercised; no face/profile/back views are invented.",
+    "physicalController": false,
+    "longSoak60Minutes": false,
+    "officialPhgUvComparison": false,
+    "humanArtApproval": false
+  },
+  "recipeSha256": "94040ec0634c6470663cbf275a8aba8ff5d6376435f7cbcf59a1141b335749a8",
+  "saveObservations": [],
+  "passed": true,
+  "finishedAt": "2026-11-09T05:21:27.675Z"
+}

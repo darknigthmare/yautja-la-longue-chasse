@@ -1,0 +1,23 @@
+
+/workspace/yautja-main-integration-20261109/app/game/MobilityDrivingYard.tsx
+  2:1  warning  Unused eslint-disable directive (no problems were reported from '@next/next/no-img-element')
+
+/workspace/yautja-main-integration-20261109/app/game/MobilityGarage.tsx
+  38:64  warning  The attribute aria-pressed is not supported by the role listitem  jsx-a11y/role-supports-aria-props
+
+/workspace/yautja-main-integration-20261109/app/game/systems/mobility/ledger.ts
+  171:7  error  Do not assign to the variable `module`. See: https://nextjs.org/docs/messages/no-assign-module-variable  @next/next/no-assign-module-variable
+
+/workspace/yautja-main-integration-20261109/tests/mobility-controls-workshop.test.mjs
+  29:5  error  Do not assign to the variable `module`. See: https://nextjs.org/docs/messages/no-assign-module-variable  @next/next/no-assign-module-variable
+
+/workspace/yautja-main-integration-20261109/tests/mobility-core.test.mjs
+  45:5  error  Do not assign to the variable `module`. See: https://nextjs.org/docs/messages/no-assign-module-variable  @next/next/no-assign-module-variable
+
+/workspace/yautja-main-integration-20261109/tests/mobility-training-reward.test.mjs
+  40:63  warning  'a' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  40:88  warning  'b' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 7 problems (3 errors, 4 warnings)
+  0 errors and 1 warning potentially fixable with the `--fix` option.
+

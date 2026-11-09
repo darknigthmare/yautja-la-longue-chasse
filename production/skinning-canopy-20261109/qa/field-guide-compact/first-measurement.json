@@ -1,0 +1,156 @@
+{
+  "scope": "Standalone actual field guide component; constructed body/tool/pack states; not HuntCanvas, campaign, physical-device or human qualification",
+  "baseCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "sourceFiles": {
+    "app/game/HuntFieldGuideV112.tsx": "24d2ddeb801fc0afe6fd4cf9b9b4ac47bffdbdb0be65875eb08421d6c2883215",
+    "app/game/HuntAccessibilityV112.module.css": "9f4814b8e448fca0db6e9a34efa7eedd98f2f866a22982f5f17699cf0d3cadaf",
+    "app/game/controlBindingLabels.ts": "3a4ba284a71fa9f624710cd1d19a2e305953c5325035af05c23b81ad34b0a3a7",
+    "app/game/systems/controlBindings.ts": "b29d8c5022ad5413180cfc5c1d57cdf9936211571bad759c6e00620fa0517993",
+    "app/game/systems/huntAccessibilityV112.ts": "8a5268dc1d2e52451f4e9d1390d59a7f974a45c2c7425238cdf5769ff1edfac8",
+    "app/game/systems/harvestInventoryV112.ts": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1"
+  },
+  "entrySha256": "12d05140fd0859e6936f073b623cb6b0692ded13833f10d901ea5d38d4f702a0",
+  "cases": [
+    {
+      "viewport": 390,
+      "state": "missing-full",
+      "height": 127.59375,
+      "width": 358,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Flaying Tool absent · Sac plein"
+    },
+    {
+      "viewport": 390,
+      "state": "worn",
+      "height": 127.59375,
+      "width": 358,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 0/100 · Sac non plein"
+    },
+    {
+      "viewport": 390,
+      "state": "sharp",
+      "height": 127.59375,
+      "width": 358,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    },
+    {
+      "viewport": 390,
+      "state": "air",
+      "height": 147.1875,
+      "width": 358,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    },
+    {
+      "viewport": 390,
+      "state": "exhausted",
+      "height": 147.1875,
+      "width": 358,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    },
+    {
+      "viewport": 390,
+      "state": "extraction",
+      "height": 147.1875,
+      "width": 358,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    },
+    {
+      "viewport": 320,
+      "state": "missing-full",
+      "height": 162.375,
+      "width": 288,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Flaying Tool absent · Sac plein"
+    },
+    {
+      "viewport": 320,
+      "state": "worn",
+      "height": 147.1875,
+      "width": 288,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 0/100 · Sac non plein"
+    },
+    {
+      "viewport": 320,
+      "state": "sharp",
+      "height": 162.375,
+      "width": 288,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    },
+    {
+      "viewport": 320,
+      "state": "air",
+      "height": 181.96875,
+      "width": 288,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    },
+    {
+      "viewport": 320,
+      "state": "exhausted",
+      "height": 181.96875,
+      "width": 288,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    },
+    {
+      "viewport": 320,
+      "state": "extraction",
+      "height": 181.96875,
+      "width": 288,
+      "closed": true,
+      "overflow": false,
+      "documentOverflow": false,
+      "summary": "Préparer · Outil 100/100 · Sac non plein"
+    }
+  ],
+  "checks": [
+    "Native Enter opens actual detailed preparation; remapped access, both capacity dimensions and irreversible-analysis text remain visible",
+    "Native Space closes preparation without removing its critical summary",
+    "All eleven original steps remain keyboard reachable with remapped actions",
+    "Actual guide at 200% root text and 320px wraps all content without horizontal overflow"
+  ],
+  "captures": [
+    {
+      "file": "closed-missing-full-390.png",
+      "bytes": 14831,
+      "sha256": "a7d15b219857aed4820a3ecbf94892a02b7a285d44d7808aa4d04c497715b279"
+    },
+    {
+      "file": "closed-missing-full-320.png",
+      "bytes": 14604,
+      "sha256": "62b164d1e82ca3423740cfe780eec147bbd48e3f0ae08cb50312ffca6929442e"
+    }
+  ],
+  "errors": [],
+  "browser": "154.0.8037.57",
+  "passed": false
+}

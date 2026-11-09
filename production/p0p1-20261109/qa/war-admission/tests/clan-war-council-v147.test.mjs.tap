@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: Council V147: no speculative dossier before any of the four modes has finished
+ok 1 - Council V147: no speculative dossier before any of the four modes has finished
+  ---
+  duration_ms: 17.745547
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 assault yields one traceable, non-conquering audit dossier
+ok 2 - Council V147: completed V115 assault yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.587275
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 outer yields one traceable, non-conquering audit dossier
+ok 3 - Council V147: completed V115 outer yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.720565
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 stealth yields one traceable, non-conquering audit dossier
+ok 4 - Council V147: completed V115 stealth yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 1.748527
+  type: 'test'
+  ...
+# Subtest: Council V147: completed V115 rts yields one traceable, non-conquering audit dossier
+ok 5 - Council V147: completed V115 rts yields one traceable, non-conquering audit dossier
+  ---
+  duration_ms: 0.638834
+  type: 'test'
+  ...
+# Subtest: Council V147: completed W3 RTS receipt carries actual source-map, unit and task evidence
+ok 6 - Council V147: completed W3 RTS receipt carries actual source-map, unit and task evidence
+  ---
+  duration_ms: 11.430582
+  type: 'test'
+  ...
+# Subtest: Council V147: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+ok 7 - Council V147: a V115 and standalone W3 result coexist without duplicate ID or overwriting V85
+  ---
+  duration_ms: 10.925615
+  type: 'test'
+  ...
+# Subtest: Council V147: forged V115 source, missing team or duplicate report never becomes evidence
+ok 8 - Council V147: forged V115 source, missing team or duplicate report never becomes evidence
+  ---
+  duration_ms: 0.876081
+  type: 'test'
+  ...
+# Subtest: Council V147: forged W3 receipt identity, map, RAV or completed tasks is rejected
+ok 9 - Council V147: forged W3 receipt identity, map, RAV or completed tasks is rejected
+  ---
+  duration_ms: 34.212656
+  type: 'test'
+  ...
+# Subtest: Council V147: 24 source mission scripts and neutral escort provenance remain immutable
+ok 10 - Council V147: 24 source mission scripts and neutral escort provenance remain immutable
+  ---
+  duration_ms: 53.56735
+  type: 'test'
+  ...
+# Subtest: Council V147: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+ok 11 - Council V147: a self-consistent receipt cannot invent a finished phase, source mission, map or unit
+  ---
+  duration_ms: 14.103293
+  type: 'test'
+  ...
+# Subtest: Council V147 rejects source geometry, mission instructions and numeric state changed together
+ok 12 - Council V147 rejects source geometry, mission instructions and numeric state changed together
+  ---
+  duration_ms: 9.842065
+  type: 'test'
+  ...
+# Subtest: Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+ok 13 - Council accepts generated retreats and defeats across all 24 missions with casualties and evacuations
+  ---
+  duration_ms: 112.276275
+  type: 'test'
+  ...
+# Subtest: Council V147: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+ok 14 - Council V147: V6 squad identities, combat stats, PC budget and entire W3 map are source-checked
+  ---
+  duration_ms: 30.951927
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 311.381734

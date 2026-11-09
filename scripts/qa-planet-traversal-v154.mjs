@@ -43,7 +43,6 @@ try{
   const tiles=play.getByTestId("planet-traversal-tile-v154");
   check("V154 displays a real interactive and bounded 19x13 cartographic grid",
     (await tiles.count())===247 && (await play.getAttribute("data-unit-id"))==="RTS-U02");
-  const stats=play.getByTestId("planet-traversal-stats-v154");
   const findNeighbor=()=>play.evaluate(root=>{
     const [x,y]=(root.getAttribute("data-position")||"none").split(",").map(Number);
     if(!Number.isFinite(x)||!Number.isFinite(y))return null;

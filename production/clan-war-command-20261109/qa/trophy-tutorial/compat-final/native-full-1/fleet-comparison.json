@@ -1,0 +1,12 @@
+{
+  "runtimeSidecarKey": "yautja-long-hunt.ship-progression",
+  "runtimeSidecarAbsentBeforeAndAfter": true,
+  "slotFleetManifestsCompared": 4,
+  "sameBusinessStateApartFromReconstructedSnapshotTimes": true,
+  "snapshotTimeFieldsExcluded": [
+    "shipProgression.updatedAt",
+    "shipProgression.loadoutPresets[].savedAt"
+  ],
+  "shipAcquisitionRemainsAbsent": true,
+  "scope": "Actual sidecar bytes stay absent. Slot checkpoints reconstruct default fleet snapshots whose timestamps can differ; full archive byte identity is not claimed."
+}

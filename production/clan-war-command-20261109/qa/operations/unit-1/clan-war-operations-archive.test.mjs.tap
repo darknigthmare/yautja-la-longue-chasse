@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: canonical V115 is read-only on load; empty archives never write defaults or campaign bytes
+ok 1 - canonical V115 is read-only on load; empty archives never write defaults or campaign bytes
+  ---
+  duration_ms: 3.273278
+  type: 'test'
+  ...
+# Subtest: RAV and mission identity are confirmed together after a durable intent and exact readback
+ok 2 - RAV and mission identity are confirmed together after a durable intent and exact readback
+  ---
+  duration_ms: 1.764212
+  type: 'test'
+  ...
+# Subtest: two renderers with stale localStorage caches cannot both commit the same fenced predecessor
+ok 3 - two renderers with stale localStorage caches cannot both commit the same fenced predecessor
+  ---
+  duration_ms: 1.184978
+  type: 'test'
+  ...
+# Subtest: silent mirror-write failure keeps an intent and explicit repair resumes without charging twice
+ok 4 - silent mirror-write failure keeps an intent and explicit repair resumes without charging twice
+  ---
+  duration_ms: 1.277597
+  type: 'test'
+  ...
+# Subtest: a setter that persists then throws is acknowledged only after successful readback and fence confirmation
+ok 5 - a setter that persists then throws is acknowledged only after successful readback and fence confirmation
+  ---
+  duration_ms: 0.604652
+  type: 'test'
+  ...
+# Subtest: crash after mirror but before confirmation is read-only on reload, then repair does not rewrite or replay
+ok 6 - crash after mirror but before confirmation is read-only on reload, then repair does not rewrite or replay
+  ---
+  duration_ms: 0.876882
+  type: 'test'
+  ...
+# Subtest: a newer or foreign mirror is never overwritten by repair or reset
+ok 7 - a newer or foreign mirror is never overwritten by repair or reset
+  ---
+  duration_ms: 0.660266
+  type: 'test'
+  ...
+# Subtest: malformed and future V115 archives and intents are retained without writes
+ok 8 - malformed and future V115 archives and intents are retained without writes
+  ---
+  duration_ms: 0.368957
+  type: 'test'
+  ...
+# Subtest: denied IDB or denied storage fails closed instead of falling back to an unsafe mirror
+ok 9 - denied IDB or denied storage fails closed instead of falling back to an unsafe mirror
+  ---
+  duration_ms: 0.368405
+  type: 'test'
+  ...
+# Subtest: an invalid next state never reserves an intent or writes an archive
+ok 10 - an invalid next state never reserves an intent or writes an archive
+  ---
+  duration_ms: 0.388776
+  type: 'test'
+  ...
+# Subtest: changes while hydration yields are detected before adopting or announcing an archive
+ok 11 - changes while hydration yields are detected before adopting or announcing an archive
+  ---
+  duration_ms: 0.339052
+  type: 'test'
+  ...
+# Subtest: a foreign write after intent reservation or during confirmation never receives success
+ok 12 - a foreign write after intent reservation or during confirmation never receives success
+  ---
+  duration_ms: 0.850022
+  type: 'test'
+  ...
+# Subtest: repair refuses a superseded transaction token even when the visible mirror is unchanged
+ok 13 - repair refuses a superseded transaction token even when the visible mirror is unchanged
+  ---
+  duration_ms: 0.410809
+  type: 'test'
+  ...
+# Subtest: an understood legacy exercise is shown for explicit adoption without a canonical write or default reset
+ok 14 - an understood legacy exercise is shown for explicit adoption without a canonical write or default reset
+  ---
+  duration_ms: 0.472492
+  type: 'test'
+  ...
+# Subtest: explicit adoption copies the exact legacy state once and never writes or deletes its source
+ok 15 - explicit adoption copies the exact legacy state once and never writes or deletes its source
+  ---
+  duration_ms: 0.572784
+  type: 'test'
+  ...
+# Subtest: non-cooperating old writers can change their legacy key after adoption while canonical progress continues independently
+ok 16 - non-cooperating old writers can change their legacy key after adoption while canonical progress continues independently
+  ---
+  duration_ms: 2.812322
+  type: 'test'
+  ...
+# Subtest: a legacy exercise appearing after an empty load blocks the first canonical operation instead of silently forking
+ok 17 - a legacy exercise appearing after an empty load blocks the first canonical operation instead of silently forking
+  ---
+  duration_ms: 0.484722
+  type: 'test'
+  ...
+# Subtest: a stale legacy snapshot cannot be adopted after its mirror changes or another new client creates the canonical exercise
+ok 18 - a stale legacy snapshot cannot be adopted after its mirror changes or another new client creates the canonical exercise
+  ---
+  duration_ms: 0.615088
+  type: 'test'
+  ...
+# Subtest: a stable confirmed legacy fence is copied without changing that record or charging another upkeep
+ok 19 - a stable confirmed legacy fence is copied without changing that record or charging another upkeep
+  ---
+  duration_ms: 0.55033
+  type: 'test'
+  ...
+# Subtest: unconfirmed legacy intentions fail closed and export both original versions without choosing a progression
+ok 20 - unconfirmed legacy intentions fail closed and export both original versions without choosing a progression
+  ---
+  duration_ms: 0.874699
+  type: 'test'
+  ...
+# Subtest: divergent, corrupt and future legacy mirrors are preserved for recovery instead of being reset or auto-adopted
+ok 21 - divergent, corrupt and future legacy mirrors are preserved for recovery instead of being reset or auto-adopted
+  ---
+  duration_ms: 1.137706
+  type: 'test'
+  ...
+# Subtest: an established canonical exercise does not consult a broken or unavailable legacy archive
+ok 22 - an established canonical exercise does not consult a broken or unavailable legacy archive
+  ---
+  duration_ms: 0.461156
+  type: 'test'
+  ...
+# Subtest: recovery export preserves both observations when a legacy writer changes its bytes during the native fence read
+ok 23 - recovery export preserves both observations when a legacy writer changes its bytes during the native fence read
+  ---
+  duration_ms: 0.355336
+  type: 'test'
+  ...
+# Subtest: an interrupted explicit adoption keeps canonical intent and old source recoverable without replaying launch
+ok 24 - an interrupted explicit adoption keeps canonical intent and old source recoverable without replaying launch
+  ---
+  duration_ms: 0.818104
+  type: 'test'
+  ...
+# Subtest: adoption preserves the explicitly chosen snapshot and a legacy update racing the canonical reservation as separate recoverable versions
+ok 25 - adoption preserves the explicitly chosen snapshot and a legacy update racing the canonical reservation as separate recoverable versions
+  ---
+  duration_ms: 0.713136
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 35.599249

@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "bytesIdentical": true,
+  "method": "Actual parseSaveImport read-only on both original full campaign captures, including the actual exit back to Clan Ship; esbuild bundle of current production source. No sentinel-key substitute.",
+  "sourceBefore": {
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "app/game/types.ts": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946",
+    "package-lock.json": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+  },
+  "sourceAfter": {
+    "app/game/save.ts": "86bc5391515bdb37038484951d6ee1de96fa6e32534352ea70bff05325e8e240",
+    "app/game/types.ts": "cfe5a038505d33dcca949f09156d3833d1e269e8e4ed74764b7e4d3fa7fd3946",
+    "package-lock.json": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+  },
+  "checks": [
+    {
+      "name": "before",
+      "passed": true,
+      "bytes": 10767,
+      "sha256": "bd289deaf09253dbcdbe064664735b9cc17550e01fd711d18f394db8ed9934af",
+      "failure": null,
+      "ownerCreatedAt": "2026-11-09T09:00:00.000Z",
+      "sameOwnerAfterParse": true,
+      "rank": "blooded"
+    },
+    {
+      "name": "after",
+      "passed": true,
+      "bytes": 10767,
+      "sha256": "bd289deaf09253dbcdbe064664735b9cc17550e01fd711d18f394db8ed9934af",
+      "failure": null,
+      "ownerCreatedAt": "2026-11-09T09:00:00.000Z",
+      "sameOwnerAfterParse": true,
+      "rank": "blooded"
+    }
+  ]
+}

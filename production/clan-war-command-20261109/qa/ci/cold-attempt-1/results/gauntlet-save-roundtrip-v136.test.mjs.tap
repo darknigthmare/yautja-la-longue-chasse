@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: fresh V13 campaign uses an owner-scoped empty gauntlet, no fabricated study rewards
+ok 1 - fresh V13 campaign uses an owner-scoped empty gauntlet, no fabricated study rewards
+  ---
+  duration_ms: 10.311946
+  type: 'test'
+  ...
+# Subtest: legacy V12 import upgrades to V13 without gifting any of 44 studies
+ok 2 - legacy V12 import upgrades to V13 without gifting any of 44 studies
+  ---
+  duration_ms: 3.691859
+  type: 'test'
+  ...
+# Subtest: rank-unlocked equipped Wolf survives a real V13 export/import roundtrip
+ok 3 - rank-unlocked equipped Wolf survives a real V13 export/import roundtrip
+  ---
+  duration_ms: 2.450857
+  type: 'test'
+  ...
+# Subtest: foreign/future/duplicated gauntlet study receipts are rejected BEFORE import
+ok 4 - foreign/future/duplicated gauntlet study receipts are rejected BEFORE import
+  ---
+  duration_ms: 0.600215
+  type: 'test'
+  ...
+# Subtest: transactional gauntlet equip preserves the persistent primary and backup
+ok 5 - transactional gauntlet equip preserves the persistent primary and backup
+  ---
+  duration_ms: 4.28238
+  type: 'test'
+  ...
+# Subtest: changed primary between visits is a conflict and cannot silently award/equip
+ok 6 - changed primary between visits is a conflict and cannot silently award/equip
+  ---
+  duration_ms: 1.460023
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 32.259804

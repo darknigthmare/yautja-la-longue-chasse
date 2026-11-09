@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T09:59:43.249Z",
+  "scope": "Actual council, Bible navigation and original assets in the existing profile-only esbuild fixture. Real browser clicks, keys, localStorage, IDB and Web Locks. Parent suspension uses the declared fixture API; no gameplay callback or clock replaced. No Next, complete campaign, physical-controller or human artistic certification.",
+  "motion": "prefers-reduced-motion: reduce, declared before capture",
+  "checks": [],
+  "errors": [],
+  "httpErrors": [],
+  "screenshots": [],
+  "sourceBefore": {
+    "app/game/ClanWarPanelV85.tsx": "672b159fdeece8ed79be162a967623685caa28068edc146f51b7d2349cb1ebe8",
+    "app/game/ClanWarPanelV85.module.css": "4be16ab1c7e08ed7a94460953143c41335432e44b65e2240070d7638d1f9aa60",
+    "app/game/ClanWarBibleV6Panel.tsx": "53619e495f6baf31ea5dc159ca568b2d86fb1f32787039039279172d0695ee07",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/ClanWarOperationsV115.tsx": "02483125930067e9a74971f14d91ec2a2eba74b1295db9de248c935a846cf194",
+    "app/game/ClanWarOperationsV115.module.css": "410c0727f81c306c6d1afd1e406ed692d230d6e12148e3420d309a9b5d5f0463",
+    "tests/browser/clan-war-v94.fixture.tsx": "d7cdefdf5a2ae81a392b29db4272566e0a00d8e525428b6b1778628d0001ef6b",
+    "scripts/qa-clan-war-command-20261109.mjs": "a369e1559408d8730b81b9b634ea6ffd68766f00dfbc29c46869ed64e48e277b"
+  },
+  "bundle": {
+    "jsSha256": "13481330cace367822e475fc6816e7a9bccf5f556515fd5760033bd25e70e98f",
+    "cssSha256": "2854f9c5fe26cc86775bf09ac487e522c6a4d204a014fcfb7d68cd961ef12be2"
+  },
+  "browserVersion": "154.0.8037.57",
+  "pristineArchive": {},
+  "passed": false,
+  "failure": {
+    "message": "{\"height\":2566.25,\"viewport\":1000,\"visibleButtons\":35,\"atlasTop\":573.078125}",
+    "stack": "AssertionError [ERR_ASSERTION]: {\"height\":2566.25,\"viewport\":1000,\"visibleButtons\":35,\"atlasTop\":573.078125}\n    at file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-war-command-20261109.mjs:52:10"
+  }
+}

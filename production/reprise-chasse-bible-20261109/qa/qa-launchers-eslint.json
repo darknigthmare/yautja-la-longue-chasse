@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "node_modules/.bin/eslint",
+    "--max-warnings",
+    "0",
+    "scripts/qa-clan-return-escort-browser-20261109.mjs",
+    "scripts/qa-hunt-harvest-preview-browser-20261109.mjs",
+    "tests/browser/hunt-harvest-preview-20261109.fixture.jsx"
+  ],
+  "exitCode": 0,
+  "errors": 0,
+  "warnings": 0,
+  "outputLog": "qa-launchers-eslint.log",
+  "outputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sourceSha256": {
+    "scripts/qa-clan-return-escort-browser-20261109.mjs": "cce3618f6f5dbe0ad64dd0bde6aef0ea7e1e3869563a4802ca99848ee7489145",
+    "scripts/qa-hunt-harvest-preview-browser-20261109.mjs": "04e520628fcd325c78db9512c3a7a697197377fbc89d941852939333f42908f7",
+    "tests/browser/hunt-harvest-preview-20261109.fixture.jsx": "0ed2c095001fd359f275f3bfffd710bf441b9e39c412c63f21ed9dafa56e4ec8"
+  },
+  "scope": "Actual strict ESLint succeeded on the final HMR-stable escort recipe, guarded-output harvest recipe and React-clean fixture. No browser or gameplay result is inferred from lint."
+}

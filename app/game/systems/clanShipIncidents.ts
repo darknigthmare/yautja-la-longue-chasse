@@ -24,11 +24,11 @@ export interface ClanShipIncidentTarget {
 /** Interaction points are on the real authored floor, outside fixture solids.
  * The two new props replace matching terminal art; their collision stays native. */
 export const CLAN_SHIP_INCIDENT_TARGETS: Readonly<Record<ClanShipIncidentTargetId, ClanShipIncidentTarget>> = {
-  'hangar-briefing': { id: 'hangar-briefing', roomId: 'hangar', x: 820, y: 650, label: 'Dossier de Garde du Seuil' },
+  'hangar-briefing': { id: 'hangar-briefing', roomId: 'hangar', x: 820, y: 650, label: 'Garde du Seuil — lot sous scellé' },
   'seal-controls': { id: 'seal-controls', roomId: 'hangar', x: 1060, y: 620, label: 'Boîtier du lot scellé' },
   'lot-archive': { id: 'lot-archive', roomId: 'archives', x: 790, y: 645, label: 'Registre des lots' },
   'medical-pressure': { id: 'medical-pressure', roomId: 'soins', x: 1030, y: 620, label: 'Diagnostic de pression' },
-  'armory-briefing': { id: 'armory-briefing', roomId: 'armurerie', x: 700, y: 635, label: 'Dossier de Griffe de Fer' },
+  'armory-briefing': { id: 'armory-briefing', roomId: 'armurerie', x: 700, y: 635, label: 'Griffe de Fer — relais instable' },
   'relay-controls': { id: 'relay-controls', roomId: 'conseil', x: 350, y: 620, label: 'Relais à deux circuits' },
   'relay-archive': { id: 'relay-archive', roomId: 'archives', x: 390, y: 620, label: 'Cycle de référence' },
   'relay-component': { id: 'relay-component', roomId: 'armurerie', x: 1010, y: 640, label: 'Casier du composant R-2' },
@@ -42,13 +42,13 @@ export const CLAN_SHIP_INCIDENT_TARGETS: Readonly<Record<ClanShipIncidentTargetI
 export const CLAN_SHIP_INCIDENTS = [
   { id: 'sealed-lot' as const, reference: 'OPS-B01', name: 'Le scellé qui ment', npcId: 'threshold-guard' as ClanShipNpcId,
     prerequisite: 'ship-seal-check' as ClanShipContractId, start: 'hangar-briefing' as const, reward: 25,
-    briefing: 'Garde du Seuil a relevé un témoin de fermeture incompatible avec le registre. Identifie le lot avant de manipuler ses deux isolateurs, puis vérifie sa pression et sa fermeture. La coursive reste ouverte.' },
+    briefing: 'Un témoin de fermeture ne correspond pas au lot annoncé. Garde du Seuil a laissé la coursive libre, mais il refuse de toucher aux isolateurs à l’aveugle. « Retrouve ce qui a été chargé. Ensuite seulement, nous choisirons le circuit à couper. » Compare les relevés, vérifie la pression, puis referme le lot.' },
   { id: 'relay-fault' as const, reference: 'OPS-B02', name: 'Une lumière dans le relais', npcId: 'iron-claw' as ClanShipNpcId,
     prerequisite: 'ship-armory-audit' as ClanShipContractId, start: 'armory-briefing' as const, reward: 30,
-    briefing: 'Griffe de Fer signale un cycle instable dans la projection du conseil. Mesure les deux circuits, compare l’archive et remplace le composant identifié avant une remise en service progressive.' },
+    briefing: 'La projection du conseil vacille alors que les routes de chasse y sont examinées. Griffe de Fer te montre les deux circuits : « Remplacer au hasard ferait perdre le second relais. Écoute leur cadence, puis compare-la au cycle conservé. » Isole la panne, remplace la pièce et rétablis les circuits dans l’ordre.' },
   { id: 'contested-trophy' as const, reference: 'OPS-B03', name: 'La trace du véritable porteur', npcId: 'cold-trace' as ClanShipNpcId,
     prerequisite: 'field-ruins-memory' as ClanShipContractId, start: 'trophy-briefing' as const, reward: 35,
-    briefing: 'Trace Froide demande de comparer le support C-37, le rapport de chasse et le relevé du retour. Écoute Balafre de Cendre puis motive l’inscription retenue. Ce dossier du clan ne prélève aucun trophée de ta collection.' },
+    briefing: 'Le trophée du Goulet porte la marque de Balafre et la ligature de Trace. La plaque confond la prise et son retour. « Je l’ai porté, dit Trace. Cela ne fait pas de moi celui qui l’a abattu. » Examine le support C-37 et les deux relevés, puis écoute Balafre avant de retenir une inscription. Ta propre collection n’est pas en jeu.' },
 ] as const;
 export const clanShipIncidentDefinition = (id: unknown) => CLAN_SHIP_INCIDENTS.find(entry => entry.id === id);
 export interface ClanShipIncidentObservation { roomId: ClanShipRoomId; x: number; y: number }

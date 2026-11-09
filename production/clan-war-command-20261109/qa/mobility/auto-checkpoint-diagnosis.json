@@ -1,0 +1,30 @@
+{
+  "asOf": "2026-11-09T10:50:50.708543+00:00",
+  "criterion": "MOB-001",
+  "status": "REPRODUCED_PENDING_FIX",
+  "buildId": "kS-6-0gmSFRZVosfYvnq6",
+  "sourceIdentityBeforeAfterEqual": true,
+  "passedBeforeFailure": 9,
+  "originalReport": {
+    "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-1/report.browser-run.json",
+    "sha256": "e20600de85ce9f8138070f8aa48e4a078e37e58167f16c55794e1b42ee63e302"
+  },
+  "screenshot": {
+    "path": "production/clan-war-command-20261109/qa/mobility/campaign-attempt-1/failure.png",
+    "sha256": "d05b0bbcaf42726ae8c0ac101f449b445c68156b557a3d012786dfa0a4f5a5b5",
+    "opened": true
+  },
+  "observations": [
+    "No Storage fault had been armed: injection is installed only after successful training return.",
+    "Native UI was paused with a retained unconfirmed sequence and all drive actions blocked.",
+    "Exact native message: Service suspendu ou présence au comptoir non confirmée.",
+    "Zero runtime, console, HTTP or request failures; 51 served JS responses and seven styles match the built bytes."
+  ],
+  "inference": "Periodic managed-checkpoint work raises campaignSaveBusy, which suspends the driving component; its halt flush is then rejected by the same owner busy guard. All physical/owner prerequisites had already passed. The amended recipe captures the actual pause state immediately; no internal boolean was observed retroactively.",
+  "fixOwner": "Root GameClient owner; this receipt does not claim a correction or final qualification.",
+  "nextRecipe": {
+    "path": "scripts/qa-mobility-campaign-20261109.mjs",
+    "sha256": "944101a34b897416f8604d2328c3986c34627185be29a61b2c176d96c5fc9a55",
+    "checks": "Natural >=35s active drive, no unexpected pause, managed revision deferred, ordinary Continue restores live canonical drive despite older slot, refused purchase/drive writes and retries remain required."
+  }
+}

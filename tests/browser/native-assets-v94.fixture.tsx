@@ -26,7 +26,7 @@ function Probe({ sources }: { sources: NativeImageSourceV94[] }) {
 function Fixture() {
   const [sources, setSources] = useState(initial), [visible, show] = useState(true);
   const [, rerender] = useState(0);
-  useLayoutEffect(() => { audit.setSources = setSources; audit.show = show; audit.rerender = () => rerender(value => value + 1); });
+  useLayoutEffect(() => { audit.setSources = setSources; audit.show = show; audit.rerender = () => rerender(value => value + 1); }, []);
   return visible ? <Probe sources={sources}/> : <p data-unmounted>Unmounted</p>;
 }
 window.__nativeAssetsAuditV94 = audit;

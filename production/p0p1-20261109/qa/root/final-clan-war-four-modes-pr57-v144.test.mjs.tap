@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: Assault V144: actual enemy hit consumes a real 16-AP base screen, never heals or recruits
+ok 1 - Assault V144: actual enemy hit consumes a real 16-AP base screen, never heals or recruits
+  ---
+  duration_ms: 11.242865
+  type: 'test'
+  ...
+# Subtest: Assault V144: screen expires after three ticks, forged screen or no AP is rejected
+ok 2 - Assault V144: screen expires after three ticks, forged screen or no AP is rejected
+  ---
+  duration_ms: 2.713764
+  type: 'test'
+  ...
+# Subtest: Outer V144: forced pace pays 3 RAV once, advances real deadline 8s but adds +2 threat
+ok 3 - Outer V144: forced pace pays 3 RAV once, advances real deadline 8s but adds +2 threat
+  ---
+  duration_ms: 2.562767
+  type: 'test'
+  ...
+# Subtest: Outer V144: forged risk, spent funds, recall or late departure cannot be exploited
+ok 4 - Outer V144: forged risk, spent funds, recall or late departure cannot be exploited
+  ---
+  duration_ms: 1.063664
+  type: 'test'
+  ...
+# Subtest: Stealth V144: second patrol is spawned on real terrain after alert and moves one step
+ok 5 - Stealth V144: second patrol is spawned on real terrain after alert and moves one step
+  ---
+  duration_ms: 3.835326
+  type: 'test'
+  ...
+# Subtest: Stealth V144: guards use separate actual movement, no off-map or walls on source regions
+ok 6 - Stealth V144: guards use separate actual movement, no off-map or walls on source regions
+  ---
+  duration_ms: 25.122541
+  type: 'test'
+  ...
+# Subtest: RTS V144: two real adjacent squads exchange their physical cells in one enemy tick
+ok 7 - RTS V144: two real adjacent squads exchange their physical cells in one enemy tick
+  ---
+  duration_ms: 7.429068
+  type: 'test'
+  ...
+# Subtest: RTS V144: nonadjacent, carrier, held post and powered-door restrictions reject without mutation
+ok 8 - RTS V144: nonadjacent, carrier, held post and powered-door restrictions reject without mutation
+  ---
+  duration_ms: 2.073158
+  type: 'test'
+  ...
+# Subtest: Source QA: W3 missions and V85 campaign ownership remain unchanged
+ok 9 - Source QA: W3 missions and V85 campaign ownership remain unchanged
+  ---
+  duration_ms: 50.485584
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 118.15081

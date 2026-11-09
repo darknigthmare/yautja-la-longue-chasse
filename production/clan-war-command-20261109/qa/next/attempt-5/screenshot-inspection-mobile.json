@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "inspectedAt": "2026-11-09T12:41:18.492191+00:00",
+  "scope": "Inspection visuelle en lecture seule de quatre captures originales mobiles de la véritable build Next ; aucun navigateur ou test relancé.",
+  "buildId": "-FZ8BLkijX4wYooxQn-in",
+  "screenshotsOpened": 4,
+  "screenshots": [
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-5/02-next-front-390.png",
+      "sha256": "f3f8cd2807a9bc4eaf61483d00b17958be979777eed849b903ea2e3dd61a51f0",
+      "bytes": 233167,
+      "width": 390,
+      "height": 844,
+      "opened": true,
+      "viewer": "functions.view_image on original existing PNG file",
+      "note": "HUD global limité aux 62 pixels supérieurs ; titre « Guerres de territoire » et bouton « Quitter le conseil » sont séparés, en dessous. Les sous-menus tiennent dans 390 pixels ; le globe entier est visible dans le premier écran, sans devoir parcourir de longues listes. Aucun débordement horizontal apparent sur l'image."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-5/03-next-orders-390.png",
+      "sha256": "5e49eca67b8bbc41d395af78f8b760ca3f41061c4cea7af6d5cd0b81d58a74ab",
+      "bytes": 144762,
+      "width": 390,
+      "height": 844,
+      "opened": true,
+      "viewer": "functions.view_image on original existing PNG file",
+      "note": "Le tiroir d'ordres remplit le viewport mobile. Titre et fermeture « ÉCHAP » sont visibles en haut, les sélecteurs et la liste des personnes tiennent dans la largeur. Le contenu continue sous le bord inférieur : cette seule image ne prouve pas l'accès à toute la liste. Aucun anneau de focus distinct n'est visible sur la fermeture dans cet instantané."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-5/02-next-front-320.png",
+      "sha256": "d792bc49f4d569fce1dda56af4988d88ed59d3790feaf3ef0ed213aea1fbe60a",
+      "bytes": 197117,
+      "width": 320,
+      "height": 844,
+      "opened": true,
+      "viewer": "functions.view_image on original existing PNG file",
+      "note": "À 320 pixels, titre et Quitter restent séparés du HUD global et l'un de l'autre. Navigation et indicateurs se replient dans leur largeur ; le globe entier reste visible au premier écran. Les petites étiquettes géographiques sont denses et très petites à cette échelle, sans qualification de leur lisibilité exhaustive."
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/next/attempt-5/03-next-orders-320.png",
+      "sha256": "c16dccc443e3d9661bc8e62fa3250a8dc433e14b214ca1f4486be306eba88aa3",
+      "bytes": 123495,
+      "width": 320,
+      "height": 844,
+      "opened": true,
+      "viewer": "functions.view_image on original existing PNG file",
+      "note": "Tiroir plein écran de 320 pixels : titre et fermeture ÉCHAP ne se chevauchent pas, un anneau de focus doré est nettement visible autour de la fermeture. Les champs, options et cases restent dans la largeur ; le texte de région se replie. La liste continue sous le bord inférieur. Aucune activation ou fermeture n'a été exécutée pour cette lecture d'image."
+    }
+  ],
+  "overallVisualAssessment": "Les quatre images montrent le titre et Quitter sous le HUD global, un globe entièrement visible au premier écran à 390 et 320 pixels et des tiroirs tenant dans la largeur. Aucun défaut visuel bloquant évident identifié. Le focus de fermeture est clairement visible sur la capture d’ordres à 320 pixels.",
+  "behavioralEvidenceReference": {
+    "path": "production/clan-war-command-20261109/qa/next/attempt-5/report.browser-run.json",
+    "sha256": "565594faa0c74bdd87915689d815c381e5a1b8594383c8ca0c0a3f48bb9a62fb",
+    "existingChecks": 18,
+    "existingPassed": true,
+    "note": "Rapport comportemental existant, simplement lu et référencé ; les 18 contrôles ne sont pas des tests relancés par cette inspection."
+  },
+  "limits": [
+    "Une capture statique montre la présence et, à 320 pixels, le focus de la fermeture ; elle ne prouve ni confinement du focus, ni restauration du focus, ni fermeture par Escape. Ces comportements relèvent du rapport existant référencé.",
+    "Le bas des listes des tiroirs se situe hors du premier écran ; aucune interaction de défilement n’a été ajoutée ici.",
+    "Les très petites étiquettes du globe à 320 pixels ne font pas l’objet d’une qualification exhaustive de lisibilité.",
+    "Pas de validation artistique humaine AAA, de contrôle matériel manette ou tactile, ni de certification lore 1:1 à partir de ces quatre captures."
+  ],
+  "browserRerun": false,
+  "qaRerun": false,
+  "appModified": false,
+  "scriptsModified": false,
+  "buildRun": false,
+  "gitMutation": false,
+  "onlyFileCreated": "production/clan-war-command-20261109/qa/next/attempt-5/screenshot-inspection-mobile.json"
+}

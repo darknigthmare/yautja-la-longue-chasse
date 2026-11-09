@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "classification": "PRELIMINARY_NATIVE_GROUND_PILOT_NOT_A_GLOBAL_QUALIFICATION",
+  "startedAt": "2026-11-09T07:07:49.732Z",
+  "checkoutCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "node": "v24.19.0",
+  "sourceFiles": {
+    "app/game/HuntCanvas.tsx": {
+      "bytes": 471052,
+      "sha256": "8dbdc4c73c273c0407fd37b6340b70954ad0d289ab5a1f7b33af5b7b635bff96"
+    },
+    "app/game/systems/ritesOfHuntV77.ts": {
+      "bytes": 22562,
+      "sha256": "d3bded7f0b9f96b36cf31bf2dcaf78f8343e8b13b97068f0b5f597aed575dd29"
+    },
+    "app/game/systems/huntRitesRuntimeV77.ts": {
+      "bytes": 17137,
+      "sha256": "02dc653895b23fbc04e79b0b21c82d307d2ef92e018987fce1873eb23aec538d"
+    },
+    "app/game/systems/anatomyHarvestV112.ts": {
+      "bytes": 5792,
+      "sha256": "cf0e561770ff5f8878ca213997a0d0bc6a10c3dc2269685c3ec6637d177a7527"
+    },
+    "app/game/systems/harvestInventoryV112.ts": {
+      "bytes": 17889,
+      "sha256": "a36764dda125def1bec5a6326ee907428ff90d63780f648848f23d1657d359b1"
+    },
+    "scripts/qa-hunt-ground-campaign-v112.mjs": {
+      "bytes": 19916,
+      "sha256": "12b5cdb6dd2c7b03dbba4621279fcb307887e480f957d4d000d0537884e42c55"
+    },
+    "scripts/lib/qa-hunt-ground-policy-v112.mjs": {
+      "bytes": 5533,
+      "sha256": "033be399d3a4a913a119dd78bf35818a54f9eef6f4363aea7639e12bc829f6c1"
+    },
+    "scripts/qa-hunt-ground-admissible-pilot-20261109.mjs": {
+      "bytes": 7585,
+      "sha256": "33154435a9543dafb5a5b544d4904dbce3abd6800cd36b345c0e6d1e2b79e8f0"
+    }
+  },
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "scripts/qa-hunt-ground-campaign-v112.mjs",
+    "--mission=fungal-hivemind",
+    "--armor=hunter",
+    "--baseSave=docs/qa/v112-ground-campaign/campaign-origin-save.json",
+    "--harvest=true",
+    "--seconds=180",
+    "--replay=true",
+    "--output=outputs/qa-ground-admissible-pilot-20261109-01"
+  ],
+  "admission": {
+    "baseSave": {
+      "path": "docs/qa/v112-ground-campaign/campaign-origin-save.json",
+      "bytes": 19325,
+      "sha256": "72a1efee04bda609d5d74f3a9fc8e52823da9394476235a9941f759cae3ae897"
+    },
+    "provenance": {
+      "path": "docs/qa/v112-ground-campaign/campaign-origin-provenance.json",
+      "bytes": 61672,
+      "sha256": "57ecb1322bb63071db30805f51958270bd0a133f3b67abca9f21ed1082abc93c",
+      "sourceCommit": "e4a6c64a1e77edad8865aa05ca7c2901d62bfa09",
+      "nativeCampaignSuccesses": 8
+    },
+    "armor": "hunter",
+    "ownedArmorIds": [
+      "hunter",
+      "scout",
+      "berserker"
+    ],
+    "loadout": {
+      "armorId": "hunter",
+      "weaponIds": [
+        "combistick",
+        "plasma-caster"
+      ],
+      "gearIds": [
+        "motion-sensor",
+        "audio-decoy"
+      ]
+    },
+    "clanMarksBefore": 4597,
+    "toolPurchaseCost": 120,
+    "priorRunnerArmorAssignmentAddsOwnership": false,
+    "initialCarriedAnatomy": [],
+    "acquisition": "Only actual prey defeated and harvested during this attempt."
+  },
+  "rules": {
+    "teleport": false,
+    "invulnerabilityOverride": false,
+    "healthOverride": false,
+    "enemyRemoval": false,
+    "geometryOverride": false,
+    "objectiveInjection": false,
+    "phaseInjection": false,
+    "forcedResult": false,
+    "groundRouteMustNotClimbSwingOrUseCanopyRests": true
+  },
+  "scope": "Actual stepGame via existing input policy and verbatim extracted native rite callback. All world actors, dangers and objectives remain. Replay compares recorded inputs and terminal state. No browser or mounted GameClient.",
+  "qualification": "ATTEMPT_ONLY_REM112_08_STILL_OPEN"
+}

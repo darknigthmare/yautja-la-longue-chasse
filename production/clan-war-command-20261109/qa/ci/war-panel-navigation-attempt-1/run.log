@@ -1,0 +1,16 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+locator.click: Timeout 25000ms exceeded.
+Call log:
+[2m  - waiting for getByRole('button', { name: 'Vue stratégique classique' })[22m
+
+    at /tmp/yautja-gauntlet-sparse-20261109/scripts/qa-real-clan-war-v143.mjs:96:69 {
+  log: [
+    "  - waiting for getByRole('button', { name: 'Vue stratégique classique' })"
+  ],
+  name: 'TimeoutError'
+}
+
+Node.js v22.23.4

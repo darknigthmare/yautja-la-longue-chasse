@@ -1,0 +1,826 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-09T12:41:56.722120+00:00",
+  "passed": true,
+  "scope": "All eight actual planet browser recipes from the failed planet-v114 browser-modules step, on an isolated exact sparse-checkout copy with Next16.3.5 Turbopack and headless Chromium154.0.8037.57. Browser assertions and real downloaded PNG/ZIP pixels; not a full campaign, artistic or physical-controller qualification.",
+  "remoteJob": {
+    "conclusion": "failure",
+    "head_sha": "1aaa388d83b4b95b6c3d568269ea7ba8a0f4e239",
+    "id": 129152228276,
+    "name": "V124 live PNG and ZIP verification",
+    "status": "completed",
+    "steps": [
+      {
+        "conclusion": "success",
+        "name": "Set up job",
+        "number": 1,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Checkout actual game route and planetary textures",
+        "number": 2,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Node 22",
+        "number": 3,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Install exact dependencies",
+        "number": 4,
+        "status": "completed"
+      },
+      {
+        "conclusion": "failure",
+        "name": "Verify live modular PNG pixels and ZIP in Chromium",
+        "number": 5,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Upload V124 browser PNG, ZIP, screenshots and report",
+        "number": 6,
+        "status": "completed"
+      },
+      {
+        "conclusion": "skipped",
+        "name": "Post Node 22",
+        "number": 11,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Post Checkout actual game route and planetary textures",
+        "number": 12,
+        "status": "completed"
+      },
+      {
+        "conclusion": "success",
+        "name": "Complete job",
+        "number": 13,
+        "status": "completed"
+      }
+    ]
+  },
+  "server": "http://127.0.0.1:3156",
+  "serverMode": "Isolated Next dev, default Turbopack; no production .next or frozen server used. Server and its workers stopped after all recipes completed.",
+  "routeCompilationHTTP": 200,
+  "sparseManifestHypothesisRejected": true,
+  "applicationOrWorkflowModifiedByFix": false,
+  "modifiedMaintainedRecipe": "scripts/qa-planet-region-kit-v128.mjs",
+  "modifiedRecipeSha256": "5b3cfd6f25564c090a374b5553c8ed95c7ecabe22b15ea897ae558a465ba9eb3",
+  "fix": "After opening the generated front, close its actual Théâtres planétaires entry dialog using Escape; open the actual Carte et affichage drawer and use its native local-load/reset controls, then Escape. No force click, DOM mutation, mocked result or timeout increase.",
+  "originalCheckCallsVerbatim": 56,
+  "originalTimeoutLiteralsVerbatimPreserved": true,
+  "passedRecipes": 8,
+  "nativeAssertionsPassed": 197,
+  "results": [
+    {
+      "version": "v124",
+      "passed": true,
+      "checks": 37,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/report.json",
+      "sha256": "b82765cca39d32615c3b1f9757fca34f188bed6bbf9f1b5aa91eb247ab48710a"
+    },
+    {
+      "version": "v128",
+      "passed": true,
+      "checks": 65,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/result.json",
+      "sha256": "4777c6c486397b2b2285a0e4f4be34605d381824f36123715ff82c8ab0a573c1"
+    },
+    {
+      "version": "v144",
+      "passed": true,
+      "checks": 27,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v144/result.json",
+      "sha256": "4c4b3691babd5527f1e376d2b0fec684fc82c183de822f29a7da43414313c6d5"
+    },
+    {
+      "version": "v145",
+      "passed": true,
+      "checks": 17,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v145/result.json",
+      "sha256": "5f46e37268ac05666aab00201da9fcb77d91df771ee0fc964803f19a0c88781e"
+    },
+    {
+      "version": "v146",
+      "passed": true,
+      "checks": 13,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/result.json",
+      "sha256": "67ac735c41f322a0187609743bcbb796e2062334df53adb37f0e5dca739e2f13"
+    },
+    {
+      "version": "v147",
+      "passed": true,
+      "checks": 12,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147/result.json",
+      "sha256": "32a9f543c0c9467219154881b1bd04f2b3017cc3c5e93eabe18ced0bb1d658f9"
+    },
+    {
+      "version": "v150",
+      "passed": true,
+      "checks": 14,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/result.json",
+      "sha256": "944d8ac51e46acc446d88e8586604d4627c3f3eeae61c0f4e903399d770141cd"
+    },
+    {
+      "version": "v154",
+      "passed": true,
+      "checks": 12,
+      "pageErrors": 0,
+      "report": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v154/result.json",
+      "sha256": "92928dd76cc9d38f97bbc0e217f1af88a656d8a5f77434fa4c2ac05610508152"
+    }
+  ],
+  "baseline": {
+    "checksPassed": 62,
+    "cause": "The legacy driver tries to click the real local-material loader while its new drawer is closed. Native Playwright visibility wait fails after unchanged30000ms.",
+    "report": "baseline-v128/result.json"
+  },
+  "intermediateReplay": {
+    "checksPassed": 62,
+    "cause": "Native click correctly rejected behind the initial Théâtres planétaires dialog; driver updated to close that real entry dialog first. Failure preserved.",
+    "report": "replay-v128/result.json"
+  },
+  "isolatedApplicationSourcesCompared": 1293,
+  "isolatedApplicationBeforeAfterEqual": true,
+  "sourceVersionLimit": "The isolated copy was captured before root independently corrected the legacy trophy tutorial helper. The final primary build after that helper has a separate18-check actual production Next proof. No application source was modified for this planet driver adaptation.",
+  "screenshotsInspected": 25,
+  "coreScreenshotsInspected": 10,
+  "remainderScreenshotsInspected": 15,
+  "screenshotInspections": [
+    "screenshot-inspection-core.json",
+    "screenshot-inspection-remainder.json"
+  ],
+  "limitations": [
+    "Pageerror arrays are empty; known Next dev duplicate-React-key warnings and dev badges were retained in server logs/screenshots, not hidden.",
+    "V144 mobile screenshot is narrow evidence of its button only; V150 studies retain long documents.",
+    "V154 mobile tactical grid uses its existing horizontal scroll and needs clearer affordance; this driver correction does not redesign it.",
+    "The sparse export host omits non-planet background character art.",
+    "No full campaign or final geographic/art quality was certified."
+  ],
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/assertion-preservation.json",
+      "bytes": 1110,
+      "sha256": "b257fd07ea1aab9348db62528c4be669d698b7fa4bce4fd85c9141f420b4f2cb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-curl-direct-error.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-curl-error.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-next.log",
+      "bytes": 54283,
+      "sha256": "82be4519fd595903f5da9ed7f258437072ae41243083cdddf3e8121aba1c0ea3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-route-direct.html",
+      "bytes": 278013,
+      "sha256": "6b64b9a612670537ca568909ce9c37f4ef8002a6240c3468801521bbb3150bb1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-route.html",
+      "bytes": 16,
+      "sha256": "301ab39b129a9f65a8f8d7bfee350718cd0268497182e59c7ce9c036adf0a213"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-status-direct.txt",
+      "bytes": 4,
+      "sha256": "c11e3f4837efde2441e23a7b9da02131f53bf59fddeb7147c4ab81afe400460f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-status.txt",
+      "bytes": 4,
+      "sha256": "97a58cc66d1cd6b51466af8ed52d6a38053b5572fee09a0ae8859c26b82bdf67"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/after-modular-export-panel.png",
+      "bytes": 262277,
+      "sha256": "e1a4ed1a809f7a75167d2c130b7a026acd1d102f8f174293ed5432b0f480e79d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/after-v125-material-catalog.png",
+      "bytes": 97365,
+      "sha256": "3030203861c6689487545213bfe4516ee8fc99512516e30e8df100700cfefae3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/after-v125-shape-preview.png",
+      "bytes": 28049,
+      "sha256": "03a910a00d016044b9e6478738b74c9315651922652790965094e67fae8e3a50"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/land-bioceramic-normal-CON-REG01-seed2654511386.png",
+      "bytes": 621622,
+      "sha256": "73756cfcecac52d77524550b82e6b8b0150dd82ceeca5d818708fe9211d6174f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/land-bioceramic-normal-CON-REG02-seed1013001161.png",
+      "bytes": 621988,
+      "sha256": "883e58ab0b908c32eb44bfafebe503d324dc559b77478377ea389149c3bf3755"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/proc-v115-m9bf-331013100011300111100202030200-0vi1j-lake-mask-map.png",
+      "bytes": 13560,
+      "sha256": "2a8a9c67504264af695da9075d557494453020a0088fe0da5916d1387577c46d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/proc-v115-m9bf-331013100011300111100202030200-0vi1j-planet-layers-v151.zip",
+      "bytes": 6948393,
+      "sha256": "9d0fadc3f58d8449f9009e8f269d25bdab262210e1eb46aec93e036264e40f08"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/proc-v115-m9bf-331013100011300111100202030200-0vi1j-region-index-map.png",
+      "bytes": 19920,
+      "sha256": "2cc561e42ceed584993930146b86188705051df109edcbdc05e8911ab50c1617"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/proc-v115-m9bf-331013100011300111100202030200-0vi1j-regional-atlas-atlas.png",
+      "bytes": 1407631,
+      "sha256": "b851affa450fd4244368bf05930faee32493d0b77c5ff9c85cb8ef6b78640390"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/proc-v115-m9bf-331013100011300111100202030200-0vi1j-river-mask-map.png",
+      "bytes": 14970,
+      "sha256": "1afa6d43cefbf5ec3e8c4be9e24026814096f8cd3f80f3418cece817da18df27"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124/report.json",
+      "bytes": 5140,
+      "sha256": "b82765cca39d32615c3b1f9757fca34f188bed6bbf9f1b5aa91eb247ab48710a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v124.log",
+      "bytes": 153,
+      "sha256": "fe21c785afab3924856c468b4c0ed5f79d794db58eb1bd53a6f64304b76d81fe"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/after-v128-regional-kit-desktop.png",
+      "bytes": 636634,
+      "sha256": "8fdd0b8f38c34a023af4a988ce7875a24a05f923b9bd47aee63050121fb4e435"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/after-v128-regional-kit-mobile.png",
+      "bytes": 311842,
+      "sha256": "9c49a1f063505839927f0fac66f25b194cc763c8923ec2683f20ccf448bafb3f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/after-v131-pbr-coastal-map.png",
+      "bytes": 480933,
+      "sha256": "a9dcfad729d62915251c33a3497f1642bf379cbcde80794a01e8515af52bd835"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/after-v131-pbr-globe.png",
+      "bytes": 234197,
+      "sha256": "8dfedd0c13f932675f59d91747a04101169bc8919cc235ee00c5233bd270fbc6"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/after-v141-interactive-atlas-globe.png",
+      "bytes": 471011,
+      "sha256": "399b56855d6c9faf1397b6f324512c719555471e5ed6e02e4c75de82cc1dbace"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/after-v141-interactive-atlas-map.png",
+      "bytes": 681925,
+      "sha256": "88cfad2c19fa8d90e5d6fbb813338de1f7d625d1c42b4d4c7ddcb2c6a81b3fb5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/failure.png",
+      "bytes": 231148,
+      "sha256": "814f0d7615cc7cc7250ae27828838036a113c9c72d99dc39fcae3f444bc446fa"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-CON-REG01-material-kit-v128.zip",
+      "bytes": 832486,
+      "sha256": "344a61248253b4ac4a5a497c31074707a700e714d85865d09df41c6ccd75e0c4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-CON-REG02-material-kit-v128.zip",
+      "bytes": 932752,
+      "sha256": "21b43b49848d1176a755dd95e4d83001e7ea5c788f9a2c4cde3922ea6641de27"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-coast-900km-v131.png",
+      "bytes": 21807,
+      "sha256": "0ae71aef13e6dac4479098d92ee6ee7684812bd139494cd8684f38eea16e01c3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-regional-materials-v128.json",
+      "bytes": 1947,
+      "sha256": "b6b26595bcf6498ec6bfdae428626a934ff3d5681603752e7feff03aeb8552b4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-visual-v134.json",
+      "bytes": 2285,
+      "sha256": "5297e8225f92a83e989dfa81823f61f4eb59f5dbb55c280c0bfc49f5979dc98f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128/result.json",
+      "bytes": 6204,
+      "sha256": "a991e6ef997e21f672b96b9bd28feb771e265c85e6cb37310f59d627cb774cbb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/baseline-v128.log",
+      "bytes": 6368,
+      "sha256": "41388b33387bda7992cba4a4bed2a8285d6d15fefb48e0c5d1e0e57fccda0e27"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/isolated-app-after.json",
+      "bytes": 145641,
+      "sha256": "c733aa88a04f8215eda1403e87bcfe1e32c4c71ee5506a7821c92a18602b3a6d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/isolated-server-stopped-final.json",
+      "bytes": 1245,
+      "sha256": "b68f430ce2fc7fff0edd6235b04e83de5c54880d2877596236724e62b007b85b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/isolated-server-stopped.json",
+      "bytes": 66,
+      "sha256": "723a2f4d7b959de8e97924e0280b4da59cf703dcc541de5ab32394974e0e1be5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/job-progress.json",
+      "bytes": 204,
+      "sha256": "aca91057f1ded74b3f0d3aafc110ea7dd84c2f31ff9505abfda09c52a3507128"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/lint-final-v128.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/lint-v128.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipe-original-v128.mjs",
+      "bytes": 33529,
+      "sha256": "3a4606ec9554900e86a9d6dd28ac5d4446c5372e87d5692d01800551ed22bb27"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipe-replay-2-v128.mjs",
+      "bytes": 34185,
+      "sha256": "5b3cfd6f25564c090a374b5553c8ed95c7ecabe22b15ea897ae558a465ba9eb3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipe-replay-v128.mjs",
+      "bytes": 33941,
+      "sha256": "228e1c9cbfb43f279c3fb3f2994e3730f83fa1b6c8e7ca0b2382854793d4033b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-earth-v147.mjs",
+      "bytes": 7295,
+      "sha256": "08d89a34f23184e443178be45eb63bb228e7cd38826e19777eb1a7bbbb35c08e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-environment-v146.mjs",
+      "bytes": 8045,
+      "sha256": "2a24f56bfef14656a6bddd8a06306985b7967317e5a858b6b21a9032c05eb415"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-modular-export-v124.mjs",
+      "bytes": 15663,
+      "sha256": "ee0bde5f590036aa6e75a4c9ec79d3826869d5b235153d9bc6c68e8ce90e6606"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-random-v144.mjs",
+      "bytes": 11685,
+      "sha256": "9369448814a0eacd1aefcc2e31944c44fa9f2d75ac48851827a2c7fa38b28c21"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-region-kit-v128.mjs",
+      "bytes": 34185,
+      "sha256": "5b3cfd6f25564c090a374b5553c8ed95c7ecabe22b15ea897ae558a465ba9eb3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-regional-random-v145.mjs",
+      "bytes": 8490,
+      "sha256": "813a523d81ed659ec62d5849a3640b573d7e6ce36decd3387e087b9e782ae568"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-relief-v150.mjs",
+      "bytes": 9104,
+      "sha256": "ba63e805e90922c56644982fcdbeafd8911c8d8031bccebcf28ecd6779462465"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/recipes/qa-planet-traversal-v154.mjs",
+      "bytes": 8102,
+      "sha256": "d7c30f19d40fd4e10b975e9f288b4b6d9e9c935a8cb865df71409d06b8e5be27"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/remote-annotations.json",
+      "bytes": 712,
+      "sha256": "920f2cccbd98193109a699509648668f12673d9ac1f80537ced9533aff40fbcc"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/remote-job.json",
+      "bytes": 1050,
+      "sha256": "a0bc89b0cd862a68772fdf52c21f65682d58b2db29e4b9bdc9a57678d77f196b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-progress.json",
+      "bytes": 1402,
+      "sha256": "b468c6ee67a9aec79dbc8601d17d07a600dd82bfabd68ea044cfa4ec24112a2b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v128-regional-kit-desktop.png",
+      "bytes": 636634,
+      "sha256": "8fdd0b8f38c34a023af4a988ce7875a24a05f923b9bd47aee63050121fb4e435"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v128-regional-kit-mobile.png",
+      "bytes": 311842,
+      "sha256": "9c49a1f063505839927f0fac66f25b194cc763c8923ec2683f20ccf448bafb3f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v131-pbr-coastal-map.png",
+      "bytes": 480933,
+      "sha256": "a9dcfad729d62915251c33a3497f1642bf379cbcde80794a01e8515af52bd835"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v131-pbr-globe.png",
+      "bytes": 234197,
+      "sha256": "8dfedd0c13f932675f59d91747a04101169bc8919cc235ee00c5233bd270fbc6"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v141-interactive-atlas-globe.png",
+      "bytes": 471011,
+      "sha256": "399b56855d6c9faf1397b6f324512c719555471e5ed6e02e4c75de82cc1dbace"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v141-interactive-atlas-map.png",
+      "bytes": 681930,
+      "sha256": "d21c04afc995997283607449aaddc7e9b4324c0c5514ab37d031430cd41a7262"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/after-v142-local-atlas-controls.png",
+      "bytes": 106896,
+      "sha256": "ef2206221a952cd7f5446680984022ffeb9e61f3956a64512e87aab9498dedd2"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-CON-REG01-material-kit-v128.zip",
+      "bytes": 832486,
+      "sha256": "344a61248253b4ac4a5a497c31074707a700e714d85865d09df41c6ccd75e0c4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-CON-REG02-material-kit-v128.zip",
+      "bytes": 932752,
+      "sha256": "21b43b49848d1176a755dd95e4d83001e7ea5c788f9a2c4cde3922ea6641de27"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-coast-900km-v131.png",
+      "bytes": 21807,
+      "sha256": "0ae71aef13e6dac4479098d92ee6ee7684812bd139494cd8684f38eea16e01c3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-regional-materials-v128.json",
+      "bytes": 1947,
+      "sha256": "b6b26595bcf6498ec6bfdae428626a934ff3d5681603752e7feff03aeb8552b4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-visual-v134.json",
+      "bytes": 2285,
+      "sha256": "5297e8225f92a83e989dfa81823f61f4eb59f5dbb55c280c0bfc49f5979dc98f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128/result.json",
+      "bytes": 4203,
+      "sha256": "4777c6c486397b2b2285a0e4f4be34605d381824f36123715ff82c8ab0a573c1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v128.log",
+      "bytes": 42,
+      "sha256": "8ff140114b392f771e33aa6a367dc92866cad6894a93c9001951b3f3610aaa2f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v144/random-global-mobile.png",
+      "bytes": 2957,
+      "sha256": "456bb6e9b007dd30cb9aa9aca5add93f8a7a266ed4e7d547fc427b2e1fd1913a"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v144/random-v115-desktop.png",
+      "bytes": 124783,
+      "sha256": "6789e872f01c1e4a67251402e61bb5b987d772e2d400b5876c1098e85670617f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v144/result.json",
+      "bytes": 2154,
+      "sha256": "4c4b3691babd5527f1e376d2b0fec684fc82c183de822f29a7da43414313c6d5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v144.log",
+      "bytes": 43,
+      "sha256": "80d3a02f8d17383a292547a02e318ed5c2b01a1abae76f9a25a0a312fbfad7c8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v145/proc-v115-m9bf-331013100011300111100202030200-0vi1j-regional-materials-v128.json",
+      "bytes": 1976,
+      "sha256": "943d5b77f3645008d15618d9b1c435909398d42d86d5f7d0ce654f40b2be1a44"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v145/regional-random-desktop.png",
+      "bytes": 28090,
+      "sha256": "10429ddd03609bd1cd3da19a5d46583e3ebde951becd18a50e8af58cfc25b965"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v145/regional-random-mobile.png",
+      "bytes": 35611,
+      "sha256": "fd80d58fe5d4c7fb36096b0d81e3ff153215a070493642d7240b437249ec4e6c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v145/result.json",
+      "bytes": 1362,
+      "sha256": "5f46e37268ac05666aab00201da9fcb77d91df771ee0fc964803f19a0c88781e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v145.log",
+      "bytes": 49,
+      "sha256": "a50b11ed62875c518a88ba58e31db470e33680cd75e3df2db05c2e5ff7191a5c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/planet-environment-desktop.png",
+      "bytes": 153104,
+      "sha256": "19748ae9a021fbae1d1540ac132aa167f98f6934ae1c791600612d33b3d77641"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/planet-environment-mobile.png",
+      "bytes": 155897,
+      "sha256": "b01caafa063d913cd989eaf4fd194fcf6f041fdf93b2a6f6ea604029356f7bb8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/planet-preflight-mobile-v149.png",
+      "bytes": 65581,
+      "sha256": "cd0089f38936cddd3e1d024f03fc5cf523624095972199c8d1920fc42fa351c5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/proc-v115-m9bf-331013100011300111100202030200-0vi1j-biomes-map-v146.png",
+      "bytes": 6997,
+      "sha256": "caa6cf78f312e4bf10f14a622cd763672cbe97f35b2fc95b4ac26379c5f02f92"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/proc-v115-m9bf-331013100011300111100202030200-0vi1j-environment-v146.json",
+      "bytes": 4391,
+      "sha256": "d301db0f380fe207b97882450d023dcd018e605f3ca76dec0ce89687edc9e876"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/proc-v115-m9bf-331013100011300111100202030200-0vi1j-preflight-v149.json",
+      "bytes": 990,
+      "sha256": "f4bd7161f39ef98bb5d11fd3ffaad0151822935d6216dcc9d90d2dea835efe92"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146/result.json",
+      "bytes": 1119,
+      "sha256": "67ac735c41f322a0187609743bcbb796e2062334df53adb37f0e5dca739e2f13"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v146.log",
+      "bytes": 48,
+      "sha256": "c71ce64ff0bb0464db77072eb52969ac08fefaa616c78b45c7d13a9a9d95e36c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147/earth-globe-mobile.png",
+      "bytes": 156907,
+      "sha256": "9b50d314c0b7a1cfcd5b6feddf555ecffccf77d6f69fcd26b2bdfbbb256cefed"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147/earth-globe-pacific-desktop.png",
+      "bytes": 347059,
+      "sha256": "41bd1799ddf57f56086a9a50a8acc0cee24179c05a138f89cd02c0f0f27c5272"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147/earth-natural-earth-110m-globe-v148.png",
+      "bytes": 114159,
+      "sha256": "2d61d52df8276601b7ce92c1c4adf8712512eb56ab1e1eb10cfeba9edb1cd85e"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147/earth-natural-earth-110m-reference-v147.geojson",
+      "bytes": 138160,
+      "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147/earth-planisphere-desktop.png",
+      "bytes": 219351,
+      "sha256": "206b3b395583c83699c1381c1e9fcc23c3d4095f0fe5dff6ff0a0c9844f6f2ef"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147/result.json",
+      "bytes": 1118,
+      "sha256": "32a9f543c0c9467219154881b1bd04f2b3017cc3c5e93eabe18ced0bb1d658f9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v147.log",
+      "bytes": 45,
+      "sha256": "f64052fb52e8fd4e64878899b67134bf068517ddebb707333c9c266b46d406c8"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/planet-relief-desktop.png",
+      "bytes": 360925,
+      "sha256": "232dba083a7a4126db5e052a561d46942e905b65ee210bdd9c4b5db489aad02b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/planet-relief-mobile.png",
+      "bytes": 366613,
+      "sha256": "01119f0853a7b30a2d51b0360ad2c492bba0eca8d0c9391ad92053e419ed9dd0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/planet-terrain-slope-desktop.png",
+      "bytes": 336620,
+      "sha256": "1c6387973499790eaecd62b2b1bdbc1584441bbbd69a2a69502255a7a4c352ff"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/proc-v115-m9bf-331013100011300111100202030200-0vi1j-pentes-v152-map.png",
+      "bytes": 13573,
+      "sha256": "85d247680a05a45157ac8dddb5c3e332fa116cc6a21661bf407ec38e1557f439"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/proc-v115-m9bf-331013100011300111100202030200-0vi1j-relief-v150-height-rg16.png",
+      "bytes": 56063,
+      "sha256": "a44700fffa98034ad06937a1f6a9114ec65c5a315df4aa2d3bd4003b428c8caf"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/proc-v115-m9bf-331013100011300111100202030200-0vi1j-relief-v150-metadata.json",
+      "bytes": 3084,
+      "sha256": "00f51114b7a153f8bc887e7faad777964b334f4f0356f7f75cbfac859c1493b3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/proc-v115-m9bf-331013100011300111100202030200-0vi1j-relief-v150-preview.png",
+      "bytes": 49927,
+      "sha256": "4472cd7ab675259cc9b5f51eb218895b1ce8b1b08c92c69aca902869591324a7"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/proc-v115-m9bf-331013100011300111100202030200-0vi1j-route-terrain-v152.json",
+      "bytes": 35700,
+      "sha256": "9b1353aef80608296a92697ddce579445ff93ba1a36b8f188108394d2bd2125c"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150/result.json",
+      "bytes": 1205,
+      "sha256": "944d8ac51e46acc446d88e8586604d4627c3f3eeae61c0f4e903399d770141cd"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v150.log",
+      "bytes": 36,
+      "sha256": "8cf7f3236516b1bcc38f406e48b552427656dc9708a26735daf6161fc076fc83"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v154/proc-v115-m9bf-331013100011300111100202030200-0vi1j-traversal-v154.json",
+      "bytes": 2672,
+      "sha256": "d735d57676eb678aafd35a2f4653dd4eaff895a236396a193e1b84d727848dda"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v154/result.json",
+      "bytes": 1092,
+      "sha256": "92928dd76cc9d38f97bbc0e217f1af88a656d8a5f77434fa4c2ac05610508152"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v154/traversal-desktop.png",
+      "bytes": 106375,
+      "sha256": "42f11c013de47468029654c741a0dd755af5984639bdb1e812d404fdd9263044"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v154/traversal-mobile.png",
+      "bytes": 102757,
+      "sha256": "cb07a9235662655cdea37ef673f2fac78bb09ba611bc5f9ce05f7485987dba14"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-2-v154.log",
+      "bytes": 48,
+      "sha256": "a60f6e21c5b1ff92de83c48a9874123a924dbb06bb182bd27f792d1aa980dc31"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-progress.json",
+      "bytes": 204,
+      "sha256": "cd883e0d0c7ca4c9f4eb3aa176782fdc45861937edd796d384023a31aca72bcc"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/after-v128-regional-kit-desktop.png",
+      "bytes": 638620,
+      "sha256": "76ce0139d64bd3bc38a5a89d54560e0324e800441e29cc36d89c6b8620dba1e9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/after-v128-regional-kit-mobile.png",
+      "bytes": 310830,
+      "sha256": "424a53bd7141713dd34d264534f45112cd1f6a4c32b1b381fa569cecc1898679"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/after-v131-pbr-coastal-map.png",
+      "bytes": 480933,
+      "sha256": "a9dcfad729d62915251c33a3497f1642bf379cbcde80794a01e8515af52bd835"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/after-v131-pbr-globe.png",
+      "bytes": 234197,
+      "sha256": "8dfedd0c13f932675f59d91747a04101169bc8919cc235ee00c5233bd270fbc6"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/after-v141-interactive-atlas-globe.png",
+      "bytes": 471011,
+      "sha256": "399b56855d6c9faf1397b6f324512c719555471e5ed6e02e4c75de82cc1dbace"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/after-v141-interactive-atlas-map.png",
+      "bytes": 681925,
+      "sha256": "88cfad2c19fa8d90e5d6fbb813338de1f7d625d1c42b4d4c7ddcb2c6a81b3fb5"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/failure.png",
+      "bytes": 317346,
+      "sha256": "1e025b7e382584ff7357ce794c30ca2b7d727ef42fde0a02fa565d111fb2e683"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-CON-REG01-material-kit-v128.zip",
+      "bytes": 832486,
+      "sha256": "344a61248253b4ac4a5a497c31074707a700e714d85865d09df41c6ccd75e0c4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-CON-REG02-material-kit-v128.zip",
+      "bytes": 932752,
+      "sha256": "21b43b49848d1176a755dd95e4d83001e7ea5c788f9a2c4cde3922ea6641de27"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-coast-900km-v131.png",
+      "bytes": 21807,
+      "sha256": "0ae71aef13e6dac4479098d92ee6ee7684812bd139494cd8684f38eea16e01c3"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-regional-materials-v128.json",
+      "bytes": 1947,
+      "sha256": "b6b26595bcf6498ec6bfdae428626a934ff3d5681603752e7feff03aeb8552b4"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/proc-v115-m9bf-331013100011300111100202030200-0vi1j-visual-v134.json",
+      "bytes": 2285,
+      "sha256": "5297e8225f92a83e989dfa81823f61f4eb59f5dbb55c280c0bfc49f5979dc98f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128/result.json",
+      "bytes": 17018,
+      "sha256": "ba7244431c7c703124af7422ce28e3206187846f1d92bf8413e36a671697debc"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/replay-v128.log",
+      "bytes": 17516,
+      "sha256": "5b0bf7034514f407f78633f5d94e2cfa757e7c6f60ee2706a1e6d99cd84df82d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/run-job-remainder.py",
+      "bytes": 1643,
+      "sha256": "e956de8c0ddceb1fd462ecf0ba226f7ef2b8439c3ceb71486cf2e5b9bbc4103b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/run-job-replay-2.py",
+      "bytes": 1653,
+      "sha256": "3957f0e9ba3fd50b0e88f74fce3e6bff526fd0fe7c950acc6aef0a9e7fdb644b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/run-job-replay.py",
+      "bytes": 1645,
+      "sha256": "36e5ea364414a82149ce215d01268805ecccb9cf4568c9efe6a937328ba9e254"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/screenshot-inspection-core.json",
+      "bytes": 4019,
+      "sha256": "76be57fc66d870968c82c901a3ba5c82bbc012e8fe7ce764ffc44a084c2b6b22"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/screenshot-inspection-remainder.json",
+      "bytes": 18200,
+      "sha256": "578a7ca3947720c5e7096ef6928ff833f2d8ad60988a274517adf5843c41f7b1"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/setup.json",
+      "bytes": 149282,
+      "sha256": "8c7fb2dc53ebb16bbac2f6b8ff7964f611d3279eb65ed1873dc4cc0bce5650ea"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/workflow-before.yml",
+      "bytes": 10870,
+      "sha256": "43e3990c7350a1cc7fcd6bb3718ed7bb055e693618b3c7bcbf2aac601d69e167"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/ci/planet-v124/attempt-1/README.md",
+      "bytes": 2422,
+      "sha256": "e6e73b1bf535b82674730d995658789d9634a52f9977a5bc624ca294ab7cfad1"
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "asOf": "2026-11-09T12:17:34.414814+00:00",
+  "workflow": ".github/workflows/audit-v94.yml",
+  "job": 129149257820,
+  "step": 33,
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-reporter=spec",
+    "--test-concurrency=1",
+    "tests/campaign-slots.test.mjs",
+    "tests/active-hunt-save.test.mjs",
+    "tests/active-hunt-ownership.test.mjs",
+    "tests/archive-transfer-guard.test.mjs",
+    "tests/campaign-import-slot-v89.test.mjs",
+    "tests/campaign-menu-ui.test.mjs",
+    "tests/game-client-exploration-persistence.test.mjs",
+    "tests/game-client-ship-flow.test.mjs",
+    "tests/game-client-solo-v70-integration.test.mjs",
+    "tests/game-client-solo-v90-integration.test.mjs",
+    "tests/homeworld-contracts-v68-integration.test.mjs",
+    "tests/homeworld-region-return-v68.test.mjs",
+    "tests/save-social-reconciliation.test.mjs"
+  ],
+  "exitCode": 1,
+  "sources": [
+    {
+      "path": "tests/campaign-slots.test.mjs",
+      "sha256": "64005f95680f7b7cbc061b856206b1e788524910035c80137860cec149932f26",
+      "bytes": 36967
+    },
+    {
+      "path": "tests/active-hunt-save.test.mjs",
+      "sha256": "c602e20bc318f2bb7d822699a678a2dfd821367d680a3c05b14f64c6d3849114",
+      "bytes": 13385
+    },
+    {
+      "path": "tests/active-hunt-ownership.test.mjs",
+      "sha256": "19f55175b6097214079557d4e58895c45e28abe4c371a2f66fabec7855d90e3c",
+      "bytes": 9784
+    },
+    {
+      "path": "tests/archive-transfer-guard.test.mjs",
+      "sha256": "f2470e6e1bf502bde311f42bd0b662f0e4327f0ca40034c0afb5b3ff47251c58",
+      "bytes": 14786
+    },
+    {
+      "path": "tests/campaign-import-slot-v89.test.mjs",
+      "sha256": "28355a93b4d1e1e8a71c609ce04db2b790bb0af460c97e72e2273fa8dfff2203",
+      "bytes": 23692
+    },
+    {
+      "path": "tests/campaign-menu-ui.test.mjs",
+      "sha256": "ccb039f13063eb158f5e3aadcdc9a1cd55b03684f988895b0034af1a9627c071",
+      "bytes": 5358
+    },
+    {
+      "path": "tests/game-client-exploration-persistence.test.mjs",
+      "sha256": "ffde76ba753e0b0a5ec6e9d89c383eef57409068d5deed59d4bc908303ecc8f8",
+      "bytes": 20427
+    },
+    {
+      "path": "tests/game-client-ship-flow.test.mjs",
+      "sha256": "724f8c16771b2a5fa91762b949b89a00f85e4c3701968b453625b4c5d1cd3081",
+      "bytes": 82421
+    },
+    {
+      "path": "tests/game-client-solo-v70-integration.test.mjs",
+      "sha256": "cf243b06ad581ab489c656ba1bf8e2197694d3d236c3be6e5de0ce90a690f96f",
+      "bytes": 8747
+    },
+    {
+      "path": "tests/game-client-solo-v90-integration.test.mjs",
+      "sha256": "f030a47226f86888915aa9809d713028000f9becd4a748843f66e0ed245539af",
+      "bytes": 7200
+    },
+    {
+      "path": "tests/homeworld-contracts-v68-integration.test.mjs",
+      "sha256": "18ab07fd86cbd79aed9e078fe0bfcdbecd6498f3fe0bb8b49c74c35cc2a81df0",
+      "bytes": 25848
+    },
+    {
+      "path": "tests/homeworld-region-return-v68.test.mjs",
+      "sha256": "7c15fc75afc18d44a7ebed13d89668d1a010de8d1c59f1f453bd35e7ef84da41",
+      "bytes": 14174
+    },
+    {
+      "path": "tests/save-social-reconciliation.test.mjs",
+      "sha256": "8e83529b25ddd1d18086ef835e8a6161712d6d44e7a2f686158c723912f243a5",
+      "bytes": 17164
+    }
+  ],
+  "log": "before.log",
+  "logSha256": "5e629e531438096f9629dd400df1b280c38b2acc0a16b6f4e6429f75d835317b"
+}

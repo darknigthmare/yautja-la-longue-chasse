@@ -1,0 +1,118 @@
+TAP version 13
+# Subtest: loading, inspecting forecasts and synchronizing an archive are silent until an explicit table interaction
+ok 1 - loading, inspecting forecasts and synchronizing an archive are silent until an explicit table interaction
+  ---
+  duration_ms: 3.91082
+  type: 'test'
+  ...
+# Subtest: activation and closure are distinct, bounded one-shots without an ambient loop
+ok 2 - activation and closure are distinct, bounded one-shots without an ambient loop
+  ---
+  duration_ms: 0.434495
+  type: 'test'
+  ...
+# Subtest: a true callback waits for the actual changed campaign revision before playing confirmation
+ok 3 - a true callback waits for the actual changed campaign revision before playing confirmation
+  ---
+  duration_ms: 0.767127
+  type: 'test'
+  ...
+# Subtest: an unconfirmed write has only the refusal sound, leaves the campaign untouched and cannot later announce success
+ok 4 - an unconfirmed write has only the refusal sound, leaves the campaign untouched and cannot later announce success
+  ---
+  duration_ms: 0.446453
+  type: 'test'
+  ...
+# Subtest: accepting an actual space operation emits its start and contact warning once
+ok 5 - accepting an actual space operation emits its start and contact warning once
+  ---
+  duration_ms: 0.699616
+  type: 'test'
+  ...
+# Subtest: new confirmed turns sound scan, manoeuvre, defensive screen and the actual announced contact intent
+ok 6 - new confirmed turns sound scan, manoeuvre, defensive screen and the actual announced contact intent
+  ---
+  duration_ms: 1.184897
+  type: 'test'
+  ...
+# Subtest: actual extraction resolves before a victory debrief and never mixes a stale hostile alarm
+ok 7 - actual extraction resolves before a victory debrief and never mixes a stale hostile alarm
+  ---
+  duration_ms: 1.846706
+  type: 'test'
+  ...
+# Subtest: recharge, fire, neutralisation and boarding follow real orders rather than forecast reads
+ok 8 - recharge, fire, neutralisation and boarding follow real orders rather than forecast reads
+  ---
+  duration_ms: 16.83577
+  type: 'test'
+  ...
+# Subtest: a real formation-integrity defeat has its own result and suppresses order/alert/victory sounds
+ok 9 - a real formation-integrity defeat has its own result and suppresses order/alert/victory sounds
+  ---
+  duration_ms: 1.997674
+  type: 'test'
+  ...
+# Subtest: voluntary withdrawal never sounds like a victory or a destruction
+ok 10 - voluntary withdrawal never sounds like a victory or a destruction
+  ---
+  duration_ms: 0.783021
+  type: 'test'
+  ...
+# Subtest: onboarding, interior controls and closing a contract use only their changed campaign state
+ok 11 - onboarding, interior controls and closing a contract use only their changed campaign state
+  ---
+  duration_ms: 1.137446
+  type: 'test'
+  ...
+# Subtest: foreign, future or corrupt campaign state cannot play, confirm or replace a legitimate operation
+ok 12 - foreign, future or corrupt campaign state cannot play, confirm or replace a legitimate operation
+  ---
+  duration_ms: 0.539453
+  type: 'test'
+  ...
+# Subtest: another accepted order at the same revision cannot be substituted for the attempted order
+ok 13 - another accepted order at the same revision cannot be substituted for the attempted order
+  ---
+  duration_ms: 0.442447
+  type: 'test'
+  ...
+# Subtest: closing, blur/pause and resuming never queue a pending command or replay a debrief
+ok 14 - closing, blur/pause and resuming never queue a pending command or replay a debrief
+  ---
+  duration_ms: 0.826417
+  type: 'test'
+  ...
+# Subtest: autoplay-blocked or muted commands are consumed rather than played after output returns
+ok 15 - autoplay-blocked or muted commands are consumed rather than played after output returns
+  ---
+  duration_ms: 0.533815
+  type: 'test'
+  ...
+# Subtest: stale expected revisions, stale tactical turns and skipped campaign revisions are silent
+ok 16 - stale expected revisions, stale tactical turns and skipped campaign revisions are silent
+  ---
+  duration_ms: 0.545453
+  type: 'test'
+  ...
+# Subtest: disposal is final and releases the shared scene voice exactly once
+ok 17 - disposal is final and releases the shared scene voice exactly once
+  ---
+  duration_ms: 0.269878
+  type: 'test'
+  ...
+# Subtest: rendering the actual hub on the server cannot create or unlock an audio engine
+ok 18 - rendering the actual hub on the server cannot create or unlock an audio engine
+  ---
+  duration_ms: 330.617872
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 379.522834

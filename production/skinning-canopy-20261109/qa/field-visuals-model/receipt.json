@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-09T06:57:55.246964+00:00",
+  "checkoutCommit": "8a25c5cf206647c3490ac362452c2eb22584f07e",
+  "workingTreeDirty": true,
+  "classification": "BOUNDED_FIELD_PRESENTATION_MODEL_CHECKS_NOT_BROWSER_OR_ART_QUALIFICATION",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-concurrency=1",
+    "tests/hunt-field-presentation-v112.test.mjs"
+  ],
+  "testExitCode": 0,
+  "tests": 9,
+  "lintCommand": [
+    "node",
+    "node_modules/eslint/bin/eslint.js",
+    "app/game/systems/huntFieldPresentationV112.ts",
+    "app/game/systems/canopySupportRendererV112.ts",
+    "tests/hunt-field-presentation-v112.test.mjs",
+    "--max-warnings",
+    "0"
+  ],
+  "lintExitCode": 0,
+  "sandboxNetworkEnabled": true,
+  "overlays": [
+    {
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "bytes": 11931,
+      "sha256": "d9d10148cb020c654997095ab0d25926d3d16314a32491dcb5c778ff33774656"
+    },
+    {
+      "path": "app/game/systems/canopySupportRendererV112.ts",
+      "bytes": 8445,
+      "sha256": "5e4190994e7493975842481b8423d7c5beebcc557a347ed23705c09f0800cd51"
+    },
+    {
+      "path": "tests/hunt-field-presentation-v112.test.mjs",
+      "bytes": 8736,
+      "sha256": "fa24ac1dfeac9f5e5d9311fc5924cdb2a978c4fc3c3b56b1eaeb1327590209b4"
+    }
+  ],
+  "limitations": [
+    "No browser, human art approval, physical device or whole campaign validation is attributed to this receipt.",
+    "Animation uses the original articulated layers with procedural offsets; no new independently drawn sprite clip is claimed.",
+    "Source files were overlays on the recorded checkout."
+  ]
+}
