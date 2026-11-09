@@ -53,7 +53,7 @@ export default function ClanWarGauntletV131({
         </div>}
         <p className={styles.feature} data-testid="gauntlet-readout-v132"><strong>{readoutLabel}</strong> · {readoutValue}</p>
         {!compactCommand && <p className={styles.archiveState}>{pending ? "Transmission des archives…" : persisted ? "Archives locales confirmées" : "Front actif en mémoire"}</p>}
-        <p className={styles.accuracy} title={equipped.notes}>Modèle : {GAUNTLET_EVIDENCE_LABELS_V132[equipped.evidence]} · visuel prototype</p>
+        {!compactCommand && <p className={styles.accuracy} title={equipped.notes}>Modèle : {GAUNTLET_EVIDENCE_LABELS_V132[equipped.evidence]} · visuel prototype</p>}
       </div>
     </div>
     <div className={styles.mapWindow} data-testid="clan-war-shared-atlas-v131">

@@ -147,7 +147,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
         {tab === 'post' && <div className={styles.postLayout}>
           <section className={styles.introduction}>
             <span className={styles.eyebrow}>DU RITE AU MANDAT</span><h3>Une place dans le clan se gagne.</h3>
-            <p>Le rite Blooded ouvre l’accès au vaisseau pour la campagne initiatique. Le conseil te confie ensuite des opérations ; le vaisseau-mère demeure le bien collectif du clan.</p>
+            <p>Le rite Blooded ouvre les premières sorties sur un vaisseau personnel. Les mandats du conseil se préparent aux postes du Clan Ship, le bien collectif du clan.</p>
             <ol className={styles.onboarding}>
               {CLAN_SHIP_ONBOARDING_STEPS.map((step, index) => <li key={step.id} data-done={index < state.onboardingStep} aria-current={index === state.onboardingStep ? 'step' : undefined}>
                 <span>{index < state.onboardingStep ? '✓' : String(index + 1).padStart(2, '0')}</span>
