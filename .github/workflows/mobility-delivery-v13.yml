@@ -102,7 +102,18 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22.16.0'
-      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Install locked dependencies with lifecycle scripts explicitly disabled
+        env:
+          NPM_CONFIG_IGNORE_SCRIPTS: 'true'
+          npm_config_ignore_scripts: 'true'
+          NPM_CONFIG_CACHE: ${{ runner.temp }}/mobility-v13-npm-cache
+        run: |
+          node --version
+          npm --version
+          test "$(npm config get ignore-scripts)" = true
+          npm ci --ignore-scripts=true --no-audit --no-fund
+          git diff --exit-code -- package.json package-lock.json
+          node -e "const fs=require('node:fs'); const oxide=require('@tailwindcss/oxide'); const ts=require('typescript'); if(typeof oxide.Scanner!=='function'||typeof ts.transpileModule!=='function')process.exit(1); console.log('Locked TypeScript and native Tailwind modules load successfully');"
       - name: Verify canonical data, both real workbooks and full TypeScript graph
         run: |
           node scripts/sync-mobility-catalogue.mjs --check | tee outputs/mobility-v13/catalogue-report.json
