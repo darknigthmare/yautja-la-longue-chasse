@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "artifact": {
+    "path": "production/crew-dialogue-20261109/suivi/Yautja_Dialogues_Equipage_20261109.xlsx",
+    "sha256": "5d9a9b26952612437bba9d7e7397b2d5b918b0999765a650429213497b34e4fb",
+    "bytes": 387839
+  },
+  "buildCommand": [
+    "python3",
+    "-B",
+    "production/crew-dialogue-20261109/tools/build-tracker.py",
+    "--build"
+  ],
+  "verifyCommand": [
+    "python3",
+    "-B",
+    "production/crew-dialogue-20261109/tools/verify-tracker.py",
+    "--check"
+  ],
+  "buildExitCode": 0,
+  "verifyExitCode": 0,
+  "sameBuildAndIndependentCheck": true,
+  "qualificationSha256": "cdb6e5829eef2bb9989d09e37315b985609cd6a1abf7adf9f88d4c37d0e25f9f",
+  "runtimeReportSha256": "c53a3166c36d2373e09b394d91729343c7cd10480c7ac359a974e2a13b0626da",
+  "independentVerification": {
+    "passed": true,
+    "scope": "Exact source cells, ZIP/XML, original parts/styles, cache and deterministic bytes; no native Excel or gameplay executed by this verifier.",
+    "artifact": {
+      "path": "production/crew-dialogue-20261109/suivi/Yautja_Dialogues_Equipage_20261109.xlsx",
+      "sha256": "5d9a9b26952612437bba9d7e7397b2d5b918b0999765a650429213497b34e4fb",
+      "bytes": 387839
+    },
+    "cellsCompared": 2050,
+    "sourceWorkbooksUnchanged": 108,
+    "previousLotFilesUnchanged": 198,
+    "appendDependenciesUnchanged": {
+      "scripts/lib/excel_followup_append.py": "321eada2b760f5a6ec6b9d273b2abc189a829f07a67c3805a690983408160e34",
+      "scripts/build-excel-followup-v100.py": "91491b98d2576e8f3ce89067ba782629ac05675ae0541343256576749e1f8ab1"
+    },
+    "structure": {
+      "sheetNames": [
+        "Audience",
+        "Sources",
+        "SyntheseV20261109",
+        "B05V20261109",
+        "CriteresV20261109",
+        "PreuvesV20261109",
+        "SourcesV20261109"
+      ],
+      "originalSheetValuesFormulasTablesPreserved": true,
+      "originalStylePrefixPreserved": true,
+      "originalZipPartsByteIdentical": 9,
+      "xmlPartsParsed": 18,
+      "formulas": [
+        {
+          "cell": "B6",
+          "formula": "COUNTA('B05V20261109'!A5:A34)",
+          "cached": 30
+        }
+      ],
+      "activeSheet": "SyntheseV20261109",
+      "originalSheetsPreserved": 2
+    }
+  },
+  "nativeExcelExecuted": false,
+  "spreadsheetArtisticReview": false,
+  "limits": [
+    "Le vérificateur lit le ZIP/XML et reconstruit les octets avec les mêmes sources; aucun moteur Excel natif exécuté.",
+    "La revue des neuf captures concerne le jeu, pas un rendu natif Excel."
+  ]
+}

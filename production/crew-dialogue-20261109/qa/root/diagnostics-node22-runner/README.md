@@ -1,0 +1,1 @@
+Le premier lanceur utilisait --test-isolation=none, option absente de Node22.23.4. Les17 fichiers ont été refusés avant exécution : ces sorties ne sont pas des tests de jeu échoués ou réussis. Le lanceur final exécute chaque fichier directement dans un processus Node22 séparé et expose les248 vrais sous-tests ; seule cette dernière suite est qualifiée.

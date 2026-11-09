@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2204,
-  "bytes": 1093166757,
+  "files": 2209,
+  "bytes": 1093266006,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -205,18 +205,18 @@
     },
     {
       "path": "app/game/ClanShipInterior.tsx",
-      "bytes": 40517,
-      "sha256": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0"
+      "bytes": 41289,
+      "sha256": "33f539c24ee0850a465b0c75c085adfbba8f850564ddff2f9ed25a521c7cdf0f"
     },
     {
       "path": "app/game/ClanShipOperationsPanel.module.css",
-      "bytes": 8826,
-      "sha256": "2f21cf66851e43f490033e077b2d3f714255c6d803de5c23c565ab3a8013872d"
+      "bytes": 9321,
+      "sha256": "6ab6cef838fbdc5270c08f7e76c742ebcb44acd160c0e4747392437703c747bb"
     },
     {
       "path": "app/game/ClanShipOperationsPanel.tsx",
-      "bytes": 20619,
-      "sha256": "5061870449cdefc85c86757c2e1ddff03254d288bbc644620b44866f09d92bdd"
+      "bytes": 23112,
+      "sha256": "9ecc3f6f911771118c236b8c92ec2e7c472d20590110345464dabfa333a70149"
     },
     {
       "path": "app/game/ClanShipSpaceEncounter.module.css",
@@ -3464,6 +3464,11 @@
       "sha256": "164c846a0cb9c44e826309b0ffd8e4d31a5d2fefc22f17f477de6588578a44dd"
     },
     {
+      "path": "app/game/systems/clanShipCrewDialogue.ts",
+      "bytes": 14973,
+      "sha256": "b514441d7c5d23f90bdea72d8847bf68fd5615cb49e0f3c02eeea0a2233cc49f"
+    },
+    {
       "path": "app/game/systems/clanShipDocking.ts",
       "bytes": 11213,
       "sha256": "adcd1bee2a92f8893e8fb31ee1df32a2b009fbaa416db66900a868dac84076cb"
@@ -4535,8 +4540,8 @@
     },
     {
       "path": "app/game/systems/homeworldCivicNeighborhoodsV80.ts",
-      "bytes": 3690,
-      "sha256": "79c1e4d17d0d8dbdbcc7183fa18ff0c333a62fe02353c1a1cb40135ec953a950"
+      "bytes": 4129,
+      "sha256": "753d85d64753865321caec73cdd9a4ecafad54be2ddfbe3f434a3aa03ab8d760"
     },
     {
       "path": "app/game/systems/homeworldCivicPublicComplexCodexV83.ts",
@@ -10284,6 +10289,11 @@
       "sha256": "1ab7bd2c26d83b430839eb3a27747a4369da579715e6d79873441f5f70120de5"
     },
     {
+      "path": "scripts/qa-clan-ship-crew-dialogue-20261109.mjs",
+      "bytes": 39777,
+      "sha256": "e8a8e6e35d7e1c100c27af85e3cf8ffe3dece08b5df275dc7b75645bf69b09c6"
+    },
+    {
       "path": "scripts/qa-clan-supply-route-v109.mjs",
       "bytes": 32119,
       "sha256": "54bb7a9722fcfb9b8384ff64d17b34a107e7cc798efbe5c16fdca86c5513810c"
@@ -10380,8 +10390,8 @@
     },
     {
       "path": "scripts/runtime-v113-inputs.json",
-      "bytes": 6164,
-      "sha256": "c47dc8a98966ccf041a2d5f3e9f692071f8c2f75acc6765af7bb79d356b1f9ca"
+      "bytes": 6362,
+      "sha256": "f6d541f0c0d7040b877880c55e6b77e58e43bd2bfa89d46ab88dd03e775e2e79"
     },
     {
       "path": "scripts/snapshot-runtime-v107.mjs",
@@ -10447,6 +10457,16 @@
       "path": "tests/carcass-anatomy-v112.test.mjs",
       "bytes": 8945,
       "sha256": "bae476edffa54daab2169cc86b2674c1f8b428a4ade47c0f9ccdc98aff81de56"
+    },
+    {
+      "path": "tests/clan-ship-crew-dialogue-ui.test.mjs",
+      "bytes": 9970,
+      "sha256": "85c04490e85f520c610e740221a1a9341d05bc75b7a03766ba214fccbf9bcbf3"
+    },
+    {
+      "path": "tests/clan-ship-crew-dialogue.test.mjs",
+      "bytes": 20333,
+      "sha256": "7c3923370cc8c5801e0126ac0c61a3a918daf1457decbc29c6f16ca74b5efee3"
     },
     {
       "path": "tests/cloud-account-gamepad-isolation-v71.test.mjs",
@@ -10677,6 +10697,11 @@
       "path": "tests/helpers/cargo-v108-route.mjs",
       "bytes": 4633,
       "sha256": "6e696f607f0c14410c4e3c0672f28617c3cb5673eb3aa7af58ed74c5e819bde1"
+    },
+    {
+      "path": "tests/helpers/clan-ship-trophy-hearing-fixture.mjs",
+      "bytes": 9799,
+      "sha256": "0bd4652c6ef45122e49b49fb3d5398968d151422583261b84c34b95db9105772"
     },
     {
       "path": "tests/helpers/homeworld-geometry-upgrade-v112-route.mjs",

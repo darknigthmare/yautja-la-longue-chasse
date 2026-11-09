@@ -6,13 +6,13 @@ import HunterRigPreview from './HunterRigPreview';
 import HomeworldNpcSpriteV84 from './HomeworldNpcSpriteV84';
 import CompanionResidencePanel, { type CompanionResidenceControlled } from './CompanionResidencePanel';
 import CompanionQuartersScene from './CompanionQuartersScene';
-import { companionUsesLegacyClanPost, type CompanionResidenceObservation } from './systems/companionResidence';
+import { companionResidencePresence, companionUsesLegacyClanPost, type CompanionResidenceObservation } from './systems/companionResidence';
 import ClanShipIncidentPanel, { submitClanShipIncident, submitClanShipTrophyHearing, type ClanShipIncidentControlled } from './ClanShipIncidentPanel';
 import ClanShipIncidentScene from './ClanShipIncidentScene';
 import { clanShipIncidentView, inspectClanShipIncidents, type ClanShipIncidentCommand, type ClanShipIncidentObservation, type ClanShipIncidentTarget } from './systems/clanShipIncidents';
 import { CLAN_SHIP_TROPHY_WITNESSES, isClanShipTrophyWitnessGathered, type ClanShipTrophyHearingCommand } from './systems/clanShipTrophyHearing';
 import { CLAN_SHIP_CREW_ART_ROLES, clanShipCrewArtIdentity } from './clanShipCrew';
-import { CLAN_SHIP_RECRUITS, evaluateClanShipRecruit, type ClanShipNpcId } from './systems/clanShipOperations';
+import { CLAN_SHIP_RECRUITS, type ClanShipNpcId } from './systems/clanShipOperations';
 import { HUNTER_RIG_CANVAS } from './hunterRig';
 import { SHIP_LEVEL_ART } from './shipInteriorKit';
 import { SHIP_LEVEL_ART_V22 } from './shipInteriorV22';
@@ -428,8 +428,14 @@ function InteriorRoom(props: ClanShipInteriorProps & {
   const marker = presentation.waypoints.at(-1);
   const interactLabel = nearby?.type === 'door' ? `Entrer : ${ROOMS[nearby.point.targetRoomId].label}` : nearby?.type === 'service' ? room.serviceLabel : 'Approche d’une installation';
   const gatheredWitnesses = CLAN_SHIP_TROPHY_WITNESSES.filter(id => isClanShipTrophyWitnessGathered(save, id));
-  const crew = save.clanShipOperations ? CLAN_SHIP_RECRUITS.filter(npc => npc.roomId === roomId && !gatheredWitnesses.some(id => id === npc.id) && companionUsesLegacyClanPost(save, npc.id) &&
-    (save.clanShipOperations!.recruitedNpcIds.includes(npc.id) || evaluateClanShipRecruit(save.clanShipOperations!, npc.id).allowed)) : [];
+  // A specialist can explain a missing proof before a recruitment is offered.
+  // Existing residence assignments and gathered witnesses still own presence.
+  const crew = save.clanShipOperations ? CLAN_SHIP_RECRUITS.filter(npc => npc.roomId === roomId &&
+    !gatheredWitnesses.some(id => id === npc.id) && companionUsesLegacyClanPost(save, npc.id)) : [];
+  const residents = useMemo(() => companionResidencePresence(save,
+    { kind: 'clan', shipId: 'avp-predator-mothership' }), [save]);
+  const residentCrew = CLAN_SHIP_RECRUITS.filter(npc => !gatheredWitnesses.some(id => id === npc.id) &&
+    residents.some(entry => entry.id === npc.id && entry.avatarVisible && entry.serviceAvailable && entry.avatarRoomId === roomId));
 
   const pointerWalk = (event: PointerEvent<HTMLDivElement>) => {
     if (suspended || event.button !== 0 || (event.target instanceof HTMLElement && event.target.closest('button'))) return;
@@ -555,6 +561,11 @@ function InteriorRoom(props: ClanShipInteriorProps & {
             data-interior-operations-ready={serviceReady} onClick={() => commandsRef.current.operations()}>
             {serviceReady ? (roomId === 'conseil' ? 'R / X · Table holo du clan' : 'R / X · Dossier du poste') : 'R / X · Rejoindre le poste de clan'}
           </button>}
+          {props.onOperations && residentCrew.map(npc => <button key={npc.id} type="button" disabled={suspended}
+            data-clan-crew-talk={npc.id} data-clan-crew-managed-post={roomId}
+            onClick={() => commandsRef.current.operations(npc.id)}>
+            {serviceReady ? `Parler à ${npc.name}` : `Rejoindre le poste de ${npc.name}`}
+          </button>)}
           <button type="button" disabled={suspended || (!presentation.navigating && !targetRoomId)} data-interior-cancel
             onClick={() => commandsRef.current.cancel()}>Arrêter le trajet</button>
           {!serviceReady && <button type="button" disabled={suspended} data-interior-approach-service onClick={() => commandsRef.current.service()}>

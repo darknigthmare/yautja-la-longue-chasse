@@ -66,6 +66,11 @@
 .portrait > div { position: absolute; top: 162px; left: 43px; }
 .crewCard p { font-size: 12px; }
 .crewCard small { color: #98b296; font-size: 11px; }
+.crewDialogue { grid-column: 1 / -1; min-width: 0; padding: 16px; border: 1px solid #88a96d; border-radius: 6px; background: #091910; overflow-wrap: anywhere; }
+.crewDialogue blockquote { margin: 12px 0; color: #e2efcd; font-size: 15px; line-height: 1.7; }
+.dialogueFacts { margin: 12px 0; padding-left: 18px; color: #b5c7aa; font-size: 11px; line-height: 1.7; }
+.dialogueFacts li + li { margin-top: 6px; }
+.dialogueHeard { display: block; margin-top: 10px; }
 .crewEffect { padding-left: 10px; border-left: 2px solid #69885a; color: #d1dfb5 !important; }
 .joined { color: #d1e6b5 !important; }
 .receipts { list-style: none; padding: 0; margin: 20px 0; }
@@ -99,6 +104,7 @@
   .contractCard { padding: 16px; }
   .activeContract, .briefing, .lore { padding: 16px; }
   .crewCard { grid-template-columns: 60px minmax(0, 1fr); gap: 12px; padding: 15px; }
+  .crewDialogue { padding: 14px; }
   .portrait { width: 60px; }
   .portrait > div { left: 30px; }
   .footer { padding: 12px 15px; }

@@ -1,0 +1,154 @@
+TAP version 13
+# Subtest: fresh and historical campaigns stay empty; discovery does not construct a quarter or recruit
+ok 1 - fresh and historical campaigns stay empty; discovery does not construct a quarter or recruit
+  ---
+  duration_ms: 16.020658
+  type: 'test'
+  ...
+# Subtest: owner, stale revision, physical station, active scene and explicit recruitment are required
+ok 2 - owner, stale revision, physical station, active scene and explicit recruitment are required
+  ---
+  duration_ms: 7.554757
+  type: 'test'
+  ...
+# Subtest: each pilot requires a fresh bound hunt, station preparations and explicit consent into reserve
+ok 3 - each pilot requires a fresh bound hunt, station preparations and explicit consent into reserve
+  ---
+  duration_ms: 29.441673
+  type: 'test'
+  ...
+# Subtest: insufficient proof and failed hunt keep the contact optional, and a later new hunt can satisfy it
+ok 4 - insufficient proof and failed hunt keep the contact optional, and a later new hunt can satisfy it
+  ---
+  duration_ms: 4.233938
+  type: 'test'
+  ...
+# Subtest: reserving supplies and completing refit are separate durable steps with a single debit
+ok 5 - reserving supplies and completing refit are separate durable steps with a single debit
+  ---
+  duration_ms: 2.170655
+  type: 'test'
+  ...
+# Subtest: cancel after portable reload returns the escrow once, leaves the old berth and never duplicates resources
+ok 6 - cancel after portable reload returns the escrow once, leaves the old berth and never duplicates resources
+  ---
+  duration_ms: 7.814218
+  type: 'test'
+  ...
+# Subtest: personal to clan transfer commits one installation and one identity; reserve removes both hulls
+ok 7 - personal to clan transfer commits one installation and one identity; reserve removes both hulls
+  ---
+  duration_ms: 2.059938
+  type: 'test'
+  ...
+# Subtest: historical clan post survives a planned or cancelled refit, then stops lending a transferred bonus
+ok 8 - historical clan post survives a planned or cancelled refit, then stops lending a transferred bonus
+  ---
+  duration_ms: 2.510207
+  type: 'test'
+  ...
+# Subtest: a newly accepted clan recruitment enters reserve atomically instead of acquiring a legacy post
+ok 9 - a newly accepted clan recruitment enters reserve atomically instead of acquiring a legacy post
+  ---
+  duration_ms: 3.717398
+  type: 'test'
+  ...
+# Subtest: an active clan engagement freezes the crew post until return
+ok 10 - an active clan engagement freezes the crew post until return
+  ---
+  duration_ms: 1.115934
+  type: 'test'
+  ...
+# Subtest: funded slots cannot collide and incompatible craft cannot receive quarters
+ok 11 - funded slots cannot collide and incompatible craft cannot receive quarters
+  ---
+  duration_ms: 1.750711
+  type: 'test'
+  ...
+# Subtest: compatible quarters use the declared room budget; expansion adds empty capacity only
+ok 12 - compatible quarters use the declared room budget; expansion adds empty capacity only
+  ---
+  duration_ms: 26.465693
+  type: 'test'
+  ...
+# Subtest: the 19-person tier requires a real recognized circle and never automatically fills its 18 berths
+ok 13 - the 19-person tier requires a real recognized circle and never automatically fills its 18 berths
+  ---
+  duration_ms: 11.410182
+  type: 'test'
+  ...
+# Subtest: field deployment keeps the berth, suppresses aboard duplicates, and settles from the bound encounter
+ok 14 - field deployment keeps the berth, suppresses aboard duplicates, and settles from the bound encounter
+  ---
+  duration_ms: 2.396475
+  type: 'test'
+  ...
+# Subtest: a deployment is bound to its campaign attempt and source hull even after the arrival is retired
+ok 15 - a deployment is bound to its campaign attempt and source hull even after the arrival is retired
+  ---
+  duration_ms: 4.580359
+  type: 'test'
+  ...
+# Subtest: retired recovery releases its matching mission without granting proof or recruitment
+ok 16 - retired recovery releases its matching mission without granting proof or recruitment
+  ---
+  duration_ms: 3.198434
+  type: 'test'
+  ...
+# Subtest: medical, missing and suspended states cannot lend services or create duplicate actors
+ok 17 - medical, missing and suspended states cannot lend services or create duplicate actors
+  ---
+  duration_ms: 147.524533
+  type: 'test'
+  ...
+# Subtest: legacy hull suspension also blocks a triad departure before its first new installation
+ok 18 - legacy hull suspension also blocks a triad departure before its first new installation
+  ---
+  duration_ms: 0.479584
+  type: 'test'
+  ...
+# Subtest: strict portable saves reject future, foreign, malformed, impossible and unattributed residence records
+ok 19 - strict portable saves reject future, foreign, malformed, impossible and unattributed residence records
+  ---
+  duration_ms: 2.839223
+  type: 'test'
+  ...
+# Subtest: ordinary campaign write, export and reload preserve planned, funded, occupied and closed states
+ok 20 - ordinary campaign write, export and reload preserve planned, funded, occupied and closed states
+  ---
+  duration_ms: 15.710569
+  type: 'test'
+  ...
+# Subtest: an unavailable storage writer cannot replace the confirmed campaign or acknowledge a refit
+ok 21 - an unavailable storage writer cannot replace the confirmed campaign or acknowledge a refit
+  ---
+  duration_ms: 2.470507
+  type: 'test'
+  ...
+# Subtest: rendered scene draws no habitat before assignment and exactly one actor and quarter after refit
+ok 22 - rendered scene draws no habitat before assignment and exactly one actor and quarter after refit
+  ---
+  duration_ms: 6.631234
+  type: 'test'
+  ...
+# Subtest: each original pilot uses its own static native drawing only after an assigned quarter exists
+ok 23 - each original pilot uses its own static native drawing only after an assigned quarter exists
+  ---
+  duration_ms: 26.566336
+  type: 'test'
+  ...
+# Subtest: quarter sockets and medical actors stand outside walkable floor without replacing base services
+ok 24 - quarter sockets and medical actors stand outside walkable floor without replacing base services
+  ---
+  duration_ms: 0.210157
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 343.794859

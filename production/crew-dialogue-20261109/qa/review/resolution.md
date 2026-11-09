@@ -1,0 +1,1 @@
+La correction grammaticale « un repli » est appliquée sans changer le sélecteur. Les 248 tests finaux Node22.23.4 incluent les45 tests du moteur et couvrent les trois issues tactiques. Aucun blocage source n’a été identifié par la revue. Les preuves navigateur restent séparées.

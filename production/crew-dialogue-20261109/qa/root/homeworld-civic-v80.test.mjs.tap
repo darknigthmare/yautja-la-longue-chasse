@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: V80 new PNGs are independent unchanged alpha sources with painted native contacts and actual consumers
+ok 1 - V80 new PNGs are independent unchanged alpha sources with painted native contacts and actual consumers
+  ---
+  duration_ms: 258.500933
+  type: 'test'
+  ...
+# Subtest: V80 whole native solids partition the candidate set, keep all refusals and share paint/collision/codex geometry
+ok 2 - V80 whole native solids partition the candidate set, keep all refusals and share paint/collision/codex geometry
+  ---
+  duration_ms: 40.407911
+  type: 'test'
+  ...
+# Subtest: all 98 old full-body paths, 14 additional resident circuits, 43 door approaches and 14 connector landings stay clear of new solids
+ok 3 - all 98 old full-body paths, 14 additional resident circuits, 43 door approaches and 14 connector landings stay clear of new solids
+  ---
+  duration_ms: 277.446643
+  type: 'test'
+  ...
+# Subtest: actual legacy motor stops against a V80 native solid and zero elapsed time preserves the exact actor
+ok 4 - actual legacy motor stops against a V80 native solid and zero elapsed time preserves the exact actor
+  ---
+  duration_ms: 25.466807
+  type: 'test'
+  ...
+# Subtest: owner-scoped checkpoint contract stays version1/revision1 and a newly obstructed old exterior falls back without mutating the save
+ok 5 - owner-scoped checkpoint contract stays version1/revision1 and a newly obstructed old exterior falls back without mutating the save
+  ---
+  duration_ms: 4.446508
+  type: 'test'
+  ...
+# Subtest: every new native prop has a full-body reachable observation side from the real port, not a fixture teleport
+ok 6 - every new native prop has a full-body reachable observation side from the real port, not a fixture teleport
+  ---
+  duration_ms: 26492.58081
+  type: 'test'
+  ...
+# Subtest: local neighborhood captions depend on the true floor and do not add campaign discovery or fake service IDs
+ok 7 - local neighborhood captions depend on the true floor and do not add campaign discovery or fake service IDs
+  ---
+  duration_ms: 1.030965
+  type: 'test'
+  ...
+# Subtest: 43 architectural notes bind each real exterior threshold to its actual unchanged room and honestly distinguish frontal art
+ok 8 - 43 architectural notes bind each real exterior threshold to its actual unchanged room and honestly distinguish frontal art
+  ---
+  duration_ms: 5.629963
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27114.266697

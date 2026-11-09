@@ -1,0 +1,15 @@
+# OPS-B05 — sélecteur des répliques de l’équipage
+
+Deux nouveaux fichiers seulement : `app/game/systems/clanShipCrewDialogue.ts` et `tests/clan-ship-crew-dialogue.test.mjs`. Aucune mutation Git, écriture de sauvegarde ou modification d’un autre fichier source par cet agent.
+
+API : `selectClanShipCrewDialogue(save, npcId, { roomId, focusedNpcId })`. Le résultat comporte `status`, `context`, `speakerId`, `speakerName`, `line`, `facts`, `targetRoomId` et `reason`. Une citation et ses faits sont renvoyés seulement pour `status: 'spoken'`. Les autres résultats fournissent un routage ou un statut sans voix absente.
+
+Priorité explicite : cercle confirmé → dernier retour spatial terminal conservé → accord → reçus requis confirmés → preuve manquante. Le cercle conserve les faits du dernier retour en données secondaires. Un nouveau contrat efface le retour terminal dans le propriétaire existant ; le lecteur ne reconstruit pas un retour courant à partir d’anciens agrégats.
+
+Le lecteur inspecte opérations, preuves liées aux compteurs de chasse, résidence, audience C37 et amarrage avec leur propriétaire et leur version. Il utilise le poste historique disponible ou le véritable quartier de résidence prêt à bord. Réserve, suspension et autre coque ne parlent pas depuis un ancien poste. Les témoins réunis dans la galerie C37 ne parlent pas depuis leurs postes masqués. Le focus doit désigner le bon interlocuteur dans sa vraie salle ; l’interaction physique existante `ClanShipInterior.operations` contrôle la portée du service avant d’ouvrir ce focus.
+
+Les six voix suivent les préoccupations de §13.1. Victoire, défaite et repli sont distincts. Les faits reprennent les scans et scores du reçu, les intégrités de la formation et de l’objectif, l’énergie restante, le niveau d’analyse et l’ordre réel des commandes. Aucune blessure, perte de matériel, guérison, route non parcourue ou durée hors application n’est déduite. Les dates des reçus sont affichées en français UTC, sans dépendre de l’heure de lecture.
+
+Vérification finale : **45 tests réussis, 0 échec, 0 ignoré**, dont les 30 combinaisons cinq contextes × six membres ; lint strict réussi. Commandes, empreintes, périmètre et limites figurent dans `verification.json`. `--test-isolation=none` permet au reporter TAP d’exposer les 45 sous-tests ; le mode subprocess de cette installation n’affichait qu’un résultat enveloppe de fichier. Les premiers défauts étaient dans les nouvelles fixtures et assertions : navigation déjà dans la salle, recharge pleine sans changement, horodatage de l’enveloppe d’export. Ils ont été corrigés sans modifier les règles de production.
+
+Le parcours navigateur, l’intégration UI, le typecheck global et le build sont coordonnés par les autres agents. Aucun résultat navigateur, animation, audio ou certification artistique n’est revendiqué dans ce rapport. Les six spécialistes de clan ont actuellement `fieldReady: false` ; ce travail n’invente ni déploiement terrain ni état médical les concernant. Les routines et animations d’OPS-Q27 restent distinctes.

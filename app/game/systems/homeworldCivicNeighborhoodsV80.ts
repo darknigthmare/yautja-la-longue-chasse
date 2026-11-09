@@ -6,6 +6,13 @@ import './homeworldStreetCompositionMountV92';
 
 /** Local civic names describe this game's layout; they are not named official
  * Yautja settlements, new districts to unlock, or discoveries to persist. */
+const CIVIC_COURT_DESCRIPTIONS:Readonly<Record<string,string>>={
+ LOADING_BAY:'Aire de chargement', SERVICE_BAY:'Cour de service',
+ REST_POCKET:'Halte abritée', EDGE_STAGGER:'Cour échelonnée',
+ SINGLE_ANCHOR:'Cour autour d’un repère', EDGE_CLUSTER:'Cour en bordure',
+ MARKET_BAY:'Halte du marché', SOCIAL_CLUSTER:'Cour de rencontre',
+ TERRACE_EDGE:'Terrasse en bordure', WORK_POCKET:'Espace de travail',
+};
 export const HOMEWORLD_CIVIC_NEIGHBORHOODS_V80=[
  {id:'lower-exchange',levelId:'-1A' as const,x:3150,y:3130,label:'Place des échanges bas',detail:'Des cours de service bordent la rue ; les maisons fermées restent du décor.'},
  {id:'lower-maintenance',levelId:'-1A' as const,x:4150,y:3020,label:'Cours de maintenance',detail:'Les postes de travail restent en retrait des rues et des passages.'},
@@ -13,7 +20,7 @@ export const HOMEWORLD_CIVIC_NEIGHBORHOODS_V80=[
  {id:'lower-water',levelId:'-1A' as const,x:4840,y:4540,label:'Cour des citernes',detail:'La réserve d’eau civique marque l’extrémité orientale des cours.'},
  {id:'lower-forge',levelId:'-1A' as const,x:3600,y:4800,label:'Cour des artisans',detail:'Les outils de maintenance et les réserves bordent les devantures.'},
  {id:'lower-common',levelId:'-1A' as const,x:4210,y:4840,label:'Cour commune',detail:'La table et les haltes sont distinctes du passage public.'},
- ...HOMEWORLD_AUTHORED_COURTS_V81.filter(c=>c.levelId==='0').map((c,i)=>({id:'port-causeway-'+i,levelId:'0' as const,x:c.x,y:c.y,label:c.label,detail:'Cour '+c.composition.toLowerCase()+' : '+c.focus+'. L’axe piéton reste libre.'})),
+ ...HOMEWORLD_AUTHORED_COURTS_V81.filter(c=>c.levelId==='0').map((c,i)=>({id:'port-causeway-'+i,levelId:'0' as const,x:c.x,y:c.y,label:c.label,detail:(CIVIC_COURT_DESCRIPTIONS[c.composition]??'Cour aménagée')+' : '+c.focus+'. L’axe piéton reste libre.'})),
 ] as const;
 export function homeworldCivicNeighborhoodV80(levelId:HomeworldLevelV77,point:HomeworldVec2){
  const composition=homeworldStreetCompositionNeighborhoodV92(levelId,point);

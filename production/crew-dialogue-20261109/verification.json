@@ -1,0 +1,979 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-09T04:49:36.694195+00:00",
+  "baseCommit": "19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",
+  "scope": "OPS-B05 : six membres, cinq contextes de dialogue, présence réelle et dossiers à distance distincts. Q27 reste partielle; B04 reste ouverte.",
+  "tests": {
+    "exitCode": 0,
+    "passed": 248,
+    "failed": 0,
+    "skipped": 0,
+    "nodeVersion": "v22.23.4",
+    "files": 17,
+    "reportPath": "production/crew-dialogue-20261109/qa/root/tests.json",
+    "log": "production/crew-dialogue-20261109/qa/root/test-runner.log",
+    "newTargetedTestsIncluded": 51,
+    "newTestBreakdown": {
+      "domain": 45,
+      "realReactSsr": 6
+    },
+    "notAdditive": "Les51 nouveaux tests sont inclus dans248; les30 combinaisons du domaine et la matrice SSR ne sont pas ajoutées une seconde fois.",
+    "commands": [
+      {
+        "file": "tests/clan-ship-crew-dialogue-ui.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-crew-dialogue-ui.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 6,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-crew-dialogue-ui.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-crew-dialogue.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-crew-dialogue.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 45,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-crew-dialogue.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-docking.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-docking.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 16,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-docking.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-incidents.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-incidents.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 14,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-incidents.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-interior.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-interior.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 19,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-interior.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-operations-save.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-operations-save.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 11,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-operations-save.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-operations.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-operations.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 24,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-operations.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-save.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-save.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 20,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-save.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-space-encounter.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-space-encounter.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 20,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-space-encounter.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-trophy-case.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-trophy-case.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 13,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-trophy-case.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-trophy-hearing-presentation.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-trophy-hearing-presentation.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 8,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-trophy-hearing-presentation.test.mjs.tap"
+      },
+      {
+        "file": "tests/clan-ship-trophy-hearing.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/clan-ship-trophy-hearing.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 12,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/clan-ship-trophy-hearing.test.mjs.tap"
+      },
+      {
+        "file": "tests/companion-residence.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/companion-residence.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 24,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/companion-residence.test.mjs.tap"
+      },
+      {
+        "file": "tests/homeworld-civic-v80.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/homeworld-civic-v80.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 8,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/homeworld-civic-v80.test.mjs.tap"
+      },
+      {
+        "file": "tests/homeworld-civic-scene-v80.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/homeworld-civic-scene-v80.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 2,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/homeworld-civic-scene-v80.test.mjs.tap"
+      },
+      {
+        "file": "tests/homeworld-port-composition-v80.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/homeworld-port-composition-v80.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 3,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/homeworld-port-composition-v80.test.mjs.tap"
+      },
+      {
+        "file": "tests/homeworld-world-codex-v77.test.mjs",
+        "command": [
+          "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+          "--experimental-strip-types",
+          "tests/homeworld-world-codex-v77.test.mjs"
+        ],
+        "exitCode": 0,
+        "passed": 3,
+        "failed": 0,
+        "log": "production/crew-dialogue-20261109/qa/root/homeworld-world-codex-v77.test.mjs.tap"
+      }
+    ]
+  },
+  "typegen": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/next/dist/bin/next",
+      "typegen"
+    ],
+    "exitCode": 0,
+    "log": "production/crew-dialogue-20261109/qa/root/typegen.log"
+  },
+  "typecheck": {
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/typescript/bin/tsc",
+      "--noEmit"
+    ],
+    "exitCode": 0,
+    "log": "production/crew-dialogue-20261109/qa/root/typecheck.log",
+    "finalBuildAlsoTypechecks": true
+  },
+  "lint": {
+    "exitCode": 0,
+    "log": "production/crew-dialogue-20261109/qa/root/lint-final.log",
+    "warningsAllowed": 0,
+    "scope": "Fichiers modifiés et nouvelles recettes/tests; invocation finale coordonnée par root.",
+    "command": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "node_modules/eslint/bin/eslint.js",
+      "--max-warnings=0",
+      "app/game/ClanShipInterior.tsx",
+      "app/game/ClanShipOperationsPanel.tsx",
+      "app/game/systems/clanShipCrewDialogue.ts",
+      "app/game/systems/homeworldCivicNeighborhoodsV80.ts",
+      "tests/clan-ship-crew-dialogue.test.mjs",
+      "tests/clan-ship-crew-dialogue-ui.test.mjs",
+      "scripts/qa-clan-ship-crew-dialogue-20261109.mjs"
+    ],
+    "cssValidation": "CSS module compiled in actual Next production build; CSS is not passed as JavaScript to ESLint."
+  },
+  "build": {
+    "command": [
+      "npm",
+      "run",
+      "build:production"
+    ],
+    "pipeline": "scripts/build-production-v94.mjs",
+    "exitCode": 0,
+    "log": "production/crew-dialogue-20261109/qa/root/build.log",
+    "buildId": "PUL1NfHFyDlOk1yK5kC_k",
+    "productionBuildSha256": "850604bf47b641e5fe33b3ed0369721ff9e29a689816317def040228869d247d",
+    "scope": "Nextproduction inclut la compilation TypeScript après correction de grammaire; hors déploiement.",
+    "environment": {
+      "PATHPrefix": "/workspace/.cloud-tools/node22/node_modules/node/bin"
+    }
+  },
+  "browser": {
+    "executed": true,
+    "validated": true,
+    "reportPath": "production/crew-dialogue-20261109/qa/native/attempt-1/report.json",
+    "sha256": "5aa1e396155ffca01977d4c97767fc13730815fc1231e16e9f0e030ccb23984b",
+    "browserVersion": "154.0.8037.57",
+    "checksPassed": 52,
+    "checksFailed": 0,
+    "contexts": 9,
+    "matrixConversations": 30,
+    "managedConversations": 6,
+    "readOnlySavePairs": 50,
+    "screenshotsOpened": 9,
+    "inspectionPath": "production/crew-dialogue-20261109/qa/native/attempt-1/screenshot-inspection.json",
+    "inspectionSha256": "301548f9d59dc029f75ee97e90abc12948d9f3f961a2d246f96834339a0b21d5",
+    "summary": "52 contrôles natifs réussis sur le vrai GameClient Next;30 entretiens+6 résidents gérés,50 paires de sauvegarde brute inchangées et9 PNG inspectés.",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      },
+      {
+        "width": 320,
+        "height": 844
+      }
+    ],
+    "errors": [],
+    "httpErrors": [],
+    "requestFailures": [],
+    "missingAssets": [],
+    "fixtureDisclosure": "production/crew-dialogue-20261109/qa/native/attempt-1/fixture-disclosure.json",
+    "fixtureIsFullCampaignPlaythrough": false,
+    "sourceIdentitySha256": "ad5f4c4566b931fe5b994cf9e18dc7a2ca968663422fb2bb7faa2e267dd88176",
+    "sourceFilesComparedAfterBrowser": 1263,
+    "sourceIdentityBeforeAfterEqual": true,
+    "productionBuildBeforeAfterEqual": true,
+    "servedScripts": 207,
+    "walkingSamples": 3867,
+    "walkingRooms": [
+      "hangar",
+      "armurerie",
+      "entrainement",
+      "conseil",
+      "archives",
+      "trophees",
+      "soins"
+    ],
+    "scope": "Clavier, tactile émulé, focus natif, états de présence, quartiers installés et contrôleur synthétique; aucune vraie manette ni campagne intégrale."
+  },
+  "controller": {
+    "physicalDeviceValidated": false,
+    "emulatorExecuted": true,
+    "kind": "navigator.getGamepads emulator",
+    "note": "A écoute;B ferme/rend focus par navigator.getGamepads émulé. Matériel physique non utilisé."
+  },
+  "humanArtValidated": false,
+  "newRasterAssets": 0,
+  "newAnimations": 0,
+  "runtimeInputs": {
+    "manifestPath": "docs/qa/current-integration-20261103/runtime-inputs.json",
+    "sha256": "36e94438d3d508a83fedaf512b5b3c42547004ca9e74a0499c373fb6c866e59b",
+    "bytes": 410108,
+    "writeExitCode": 0,
+    "checkExitCode": 0,
+    "writeCommand": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--write",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "checkCommand": [
+      "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+      "scripts/snapshot-runtime-v113.mjs",
+      "--check",
+      "docs/qa/current-integration-20261103/runtime-inputs.json"
+    ],
+    "writeLog": "production/crew-dialogue-20261109/qa/root/runtime-write.log",
+    "checkLog": "production/crew-dialogue-20261109/qa/root/runtime-check.log"
+  },
+  "sourceSha256": {
+    "app/game/systems/clanShipCrewDialogue.ts": "b514441d7c5d23f90bdea72d8847bf68fd5615cb49e0f3c02eeea0a2233cc49f",
+    "app/game/ClanShipOperationsPanel.tsx": "9ecc3f6f911771118c236b8c92ec2e7c472d20590110345464dabfa333a70149",
+    "app/game/ClanShipOperationsPanel.module.css": "6ab6cef838fbdc5270c08f7e76c742ebcb44acd160c0e4747392437703c747bb",
+    "app/game/ClanShipInterior.tsx": "33f539c24ee0850a465b0c75c085adfbba8f850564ddff2f9ed25a521c7cdf0f",
+    "app/game/systems/homeworldCivicNeighborhoodsV80.ts": "753d85d64753865321caec73cdd9a4ecafad54be2ddfbe3f434a3aa03ab8d760",
+    "scripts/qa-clan-ship-crew-dialogue-20261109.mjs": "e8a8e6e35d7e1c100c27af85e3cf8ffe3dece08b5df275dc7b75645bf69b09c6",
+    "scripts/runtime-v113-inputs.json": "f6d541f0c0d7040b877880c55e6b77e58e43bd2bfa89d46ab88dd03e775e2e79",
+    "scripts/snapshot-runtime-v113.mjs": "6f624914c5366e40d6a83d6dd2331fb209af0ea5056f1f157a2efa281bd95188",
+    "scripts/snapshot-runtime-v112.mjs": "2034237e97d3c9a3206c57879fb9b3acb8c49f24902faaad8c0c14123429b86b",
+    "tests/clan-ship-crew-dialogue-ui.test.mjs": "85c04490e85f520c610e740221a1a9341d05bc75b7a03766ba214fccbf9bcbf3",
+    "tests/clan-ship-crew-dialogue.test.mjs": "7c3923370cc8c5801e0126ac0c61a3a918daf1457decbc29c6f16ca74b5efee3",
+    "tests/clan-ship-docking.test.mjs": "235387c98942aa946b1d6c68b0a8e967a2162f477a1d2b52b332201061c78416",
+    "tests/clan-ship-incidents.test.mjs": "2df0ab68f691ca95c8af85fc0c1f95a647d79f5cd680cb230349a3c9a5fb3314",
+    "tests/clan-ship-interior.test.mjs": "54899c245e1a9f9c22c67e5eb81fd78513ce6c93c7c49ac80f81795060aba241",
+    "tests/clan-ship-operations-save.test.mjs": "c0328178a90868216062636c73ebe6b5696749838b8db79999e7e5bcd0c0463d",
+    "tests/clan-ship-operations.test.mjs": "5afa5380f2c6cc51a47cc57cebd48af856312e0c6684e8b04cbe6570c086b775",
+    "tests/clan-ship-save.test.mjs": "5ced48e55a2476d872cf6dc9f46661ea4ff850aa2d80fe7f21c569cfbfab6393",
+    "tests/clan-ship-space-encounter.test.mjs": "46b193115aef3ffe9a96be2e163be7261fd1a1dbc258af32d8c7cba9d9acb56a",
+    "tests/clan-ship-trophy-case.test.mjs": "cd50309c842ef400279651c1264020425d83f15d0b2ba537f8198dc706ab4567",
+    "tests/clan-ship-trophy-hearing-presentation.test.mjs": "8f590dbecabcdb235270dd09569e8d9a14cf342cd579f0a5e77a7cee5542be8f",
+    "tests/clan-ship-trophy-hearing.test.mjs": "140e3e2e88625f91227cd71b222af95338457bfba1af76dabd3ed2ceb1775f09",
+    "tests/companion-residence.test.mjs": "29bd62596afa382715cd4ae856186804956a4a4074152e27458b1f7360ba2881",
+    "tests/homeworld-civic-v80.test.mjs": "ea705bae3c17ef0bc73ad05f2518b9b89d82e0625a5c1179bc75145e5d78a276",
+    "tests/homeworld-civic-scene-v80.test.mjs": "d5e7e5bdf63b083da2ff0ede0530c8ced9ef9bfb939b57d02cd1e3e848026111",
+    "tests/homeworld-port-composition-v80.test.mjs": "c34e9bf9f203ec668f71c7a2c13ac90b8ff54610a72f81f3c1a20e176948e965",
+    "tests/homeworld-world-codex-v77.test.mjs": "0b24e1659821b710b1cd26b3477fbcd73e561d905a7afa9d58e5d4b6afc65745"
+  },
+  "sourceScope": "Sources affectées, recettes/déclarations et17tests finalisés; les1263sources du rapport navigateur sont aussi comparées au checkout courant.",
+  "evidenceFingerprints": [
+    {
+      "path": "production/crew-dialogue-20261109/qa/engine/README.md",
+      "sha256": "6f432f627f5713601d6aea6c08a5c66638f0a9d7e4f7493515f2ec6c278736f8",
+      "bytes": 3182
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/engine/lint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/engine/tests-run.txt",
+      "sha256": "35db9eb6a0dd706fc0e3d6bb76cdf6fa2926f69464dbdddc9d5b074c4142633d",
+      "bytes": 9656
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/engine/verification.json",
+      "sha256": "b04627a7ed1977f06d65bf370d9a217760e83a7dade36c07372b90edeaa5fc30",
+      "bytes": 3159
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/README.md",
+      "sha256": "ceab479901b4085a557cd0a7fe569badac9acf2536c14980a5f4d6bb557662f4",
+      "bytes": 6335
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/dialogue-agreement.png",
+      "sha256": "0a3c816c2b0a3ede4afebb25142ea8a577745b1f9be666dfd513023272e0022d",
+      "bytes": 244083
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/dialogue-circle-confirmed.png",
+      "sha256": "2ffa6b21a8a81787ce72f9aead4f6a2ec7950e5ed8cdaae9923f85e408ed3c0f",
+      "bytes": 247772
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/dialogue-missing-proof.png",
+      "sha256": "3a524d53bcc9772c00605ad9dc91fdd3f96dd095f0761d15b7b6ad2699d0dbfa",
+      "bytes": 263051
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/dialogue-mobile-320.png",
+      "sha256": "8134336de871c255a6f72ca2bb27c169956157e38396f005ddef3152fd0cae20",
+      "bytes": 99874
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/dialogue-mobile-390.png",
+      "sha256": "aa9b6f3cdf2cb3bf3c9226a723adc70efb35eee4e8e24790ccb5e8351dcda296",
+      "bytes": 107220
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/dialogue-operation-return.png",
+      "sha256": "e7765f2034c8dc8350ff903df5cdb2df72f890c0396e1110b49aa7b5d9122347",
+      "bytes": 245378
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/dialogue-recent-proof.png",
+      "sha256": "bfd0c33612d5f2b8aac23faaf78cfbf1413a426f08e2ba90d96de62cbd4d778e",
+      "bytes": 248570
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/final-receipt.json",
+      "sha256": "fbe258c6e77bd54243a0b1d9bb2d0b09c36970f88f3e38081092ca6ba41f2107",
+      "bytes": 754
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/fixture-disclosure.json",
+      "sha256": "d98900f1e1400807c6ee852a28bdc2b63f7726afdd598d12e680f21f6de54089",
+      "bytes": 12121
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-active-spatial.json",
+      "sha256": "871e498b2930785e0f0679c18175f80966142ffa5702734c65a26cbdd8762031",
+      "bytes": 17417
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-agreement.json",
+      "sha256": "c29685d009e57a3d5bdc768da63cf69f668988887adaf5628288d4d8ad4b63b4",
+      "bytes": 16796
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-circle-confirmed.json",
+      "sha256": "fea67277857036fd3d9ed8daa45c74c964ece64069152210e5449ccfa56d1bb4",
+      "bytes": 18250
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-managed-aboard.json",
+      "sha256": "c1e971fee708a71b2225e10daaa50895158f8f8d14466e283ce5f376ff48d754",
+      "bytes": 19999
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-missing-proof.json",
+      "sha256": "3bd87cde4cd783b6046eaaa34badc49448d0ac81e16ebf236b6b3f904ef7820f",
+      "bytes": 13511
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-operation-return.json",
+      "sha256": "dae8ce31024ad22f6f59a3673cc236f38a05d0b965566e18c7388773859af689",
+      "bytes": 18251
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-recent-proof.json",
+      "sha256": "793dfed66d2033db2480b7e3a94ff3f7e439e40b7913a60cbb0d37f5aee584e4",
+      "bytes": 16668
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/initial-unavailable.json",
+      "sha256": "9e98d373ca853bbda8195fbbb16ee240c0d26494cd7bccd7dec468f61417d408",
+      "bytes": 17933
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/managed-dialogue-mobile-320.png",
+      "sha256": "a2673c68da25f71a2002231f96068ceb674d6c28ad8a8c48d554051163be0815",
+      "bytes": 101782
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/native-recruitment-before-after.json",
+      "sha256": "d4726efaf467d2291d432ecdf2995bff5f6a219da9f341b2fc1b278d55caa745",
+      "bytes": 36941
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-active-spatial-active-spatial.json",
+      "sha256": "7aacbf015a1221b9767eee9c238d18d74781586edba3359368eb573a0f696d6d",
+      "bytes": 25711
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-ash-scar.json",
+      "sha256": "a27eb2b1b0f519bd4581faeae9bc73ed42fc621420bc41acad979352e7724c57",
+      "bytes": 24818
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-black-suture.json",
+      "sha256": "bfb2bbef221c5dcd708bad4b4b7da6280727336427e9cb8916c56ce614f0a026",
+      "bytes": 24792
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-browser-suspended.json",
+      "sha256": "0b6fb6396a6cd2b2e5c8dd73950660fc5f0b189ea1d38c2cd8e0aa062c66f596",
+      "bytes": 24801
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-cold-trace.json",
+      "sha256": "b584a0f6081b97a0c554becbe77863c647da0d453e414cdc6436f15e774da4c4",
+      "bytes": 24802
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-gamepad-emulator.json",
+      "sha256": "07bc002e8ad524b4eb33aac9cecda165d50381d2df28d86b82b2f2a64c7ccf93",
+      "bytes": 24800
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-iron-claw.json",
+      "sha256": "0a285567edb19f630e91c8914a1a456893c1ce205a629bf9408e65f726fd7d79",
+      "bytes": 24805
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-keyboard-return.json",
+      "sha256": "c79bee84a53a1d5e5723f4435bf0e5ef595bac8e367e09741fbb85362438af6c",
+      "bytes": 24801
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-mobile-320.json",
+      "sha256": "90cdf8eacd005112b7555820a80830567403eb5e4065689292ff8b4d567d360e",
+      "bytes": 24794
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-mobile-390.json",
+      "sha256": "56a70296797ef8a062e3164fee09d9776e1be5a9a76c86d9c1b7df4697dd3b47",
+      "bytes": 24794
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-remote-dossier.json",
+      "sha256": "1a26010f78acea81d69a54f74680eff27ad1ff1f0cb4607505c3bd0807444c5c",
+      "bytes": 24798
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-star-watch.json",
+      "sha256": "46c8816da8ceb95302ca91efee5f825320ef4283b093086f50fdca2090c008c6",
+      "bytes": 24804
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-agreement-threshold-guard.json",
+      "sha256": "9de541239f6e2ef77404cae2598425d10b70158e9012eb4e087b2ce89163ed70",
+      "bytes": 24799
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-circle-confirmed-ash-scar.json",
+      "sha256": "c65b4ffeb22b1d53714d1a519b277a82b08c377c84525e21f272a0f044f8a1e5",
+      "bytes": 26567
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-circle-confirmed-black-suture.json",
+      "sha256": "adb53cd7585bcfc26039628ae4a915b54297f197b3123bebe34e6d3d35ae555e",
+      "bytes": 26541
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-circle-confirmed-cold-trace.json",
+      "sha256": "28d115ba63a9a0898e960980142d30c357cc9efa01c6569b9a48e43a13771a20",
+      "bytes": 26557
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-circle-confirmed-iron-claw.json",
+      "sha256": "29823df7dcd16645e4bbc0b4756fcbf54a1074aec0d5790500b49791e2e70121",
+      "bytes": 26554
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-circle-confirmed-remote-dossier.json",
+      "sha256": "74b1d4c66cedc6a7f2b28d609ebdc40d95a85d1bb6b9fdbc18e6caac4422ddec",
+      "bytes": 26547
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-circle-confirmed-star-watch.json",
+      "sha256": "5801c05777c56deabb8ffc575734d86da0c89b2863fb3f250d422b5c3a158caf",
+      "bytes": 26547
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-circle-confirmed-threshold-guard.json",
+      "sha256": "c3b3435a1cb093941cfd7701bf4353bdb68f00f1f1c52d05b4c0b5bc6966a457",
+      "bytes": 26548
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-managed-aboard-ash-scar.json",
+      "sha256": "de30e9600e965d79aa990f2aecdb2908f07523df9c43fb7c8d48a55898755c73",
+      "bytes": 29143
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-managed-aboard-black-suture.json",
+      "sha256": "cd8cf39e1047151550a767f4908722182a3f7f407c0662e2eb46b01f8dacf4bb",
+      "bytes": 29127
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-managed-aboard-cold-trace.json",
+      "sha256": "35a04d496483f7b1e64d747a852af001668bb4d4ede113f52238cb2b82a2622b",
+      "bytes": 29121
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-managed-aboard-iron-claw.json",
+      "sha256": "8842a206ea60db650bba3a75189dce59636918e5fd3be711b4a43365f3883e99",
+      "bytes": 29126
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-managed-aboard-star-watch.json",
+      "sha256": "d6e64ba48d3b976c4699e4cf1a827d24b56d274c142defa9c92655e9bd47d40b",
+      "bytes": 29109
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-managed-aboard-threshold-guard.json",
+      "sha256": "88f9c0195d3f61176eb7bb0e97972b59d5ee50725b3e7cac7997728f08a11c52",
+      "bytes": 29118
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-missing-proof-ash-scar.json",
+      "sha256": "20154bbd52c4aedc3f88fcbf87ac94e441b8929393e32ecc6bdaf994451622ee",
+      "bytes": 20108
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-missing-proof-black-suture.json",
+      "sha256": "7974fb871c12314de2657f6ddb71b6e9410cc6fa57a35b0f92969b99be4ad748",
+      "bytes": 20082
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-missing-proof-cold-trace.json",
+      "sha256": "e0fc15589b8bcd6e8d131a0f195d177e4cfd7c434ad318e96d9eaa5d10c279e6",
+      "bytes": 20098
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-missing-proof-iron-claw.json",
+      "sha256": "ff5cdff81ed1c0f0c8689340c9178ac3fb8d6ba184dcc6a2e6f25a2c29d0b97d",
+      "bytes": 20095
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-missing-proof-remote-dossier.json",
+      "sha256": "0a91887473e0d1fc4ab41083ffffda0ab851dc9c61ed52d74113e88edb590014",
+      "bytes": 20094
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-missing-proof-star-watch.json",
+      "sha256": "35eae95f6d8571c5179a11214410f10f3e37ba60c65d0ffa080a5a86349cdd29",
+      "bytes": 20088
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-missing-proof-threshold-guard.json",
+      "sha256": "b37c4aa23122ef2c4c1a1f0f15b88edb9d773c59e6f6796bdada3ea7adbbdc5a",
+      "bytes": 20095
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-operation-return-ash-scar.json",
+      "sha256": "4a86c5518d221316356020906dbc649fd71c8faab5718caa31361eea7df506ed",
+      "bytes": 26575
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-operation-return-black-suture.json",
+      "sha256": "88678735f49dca7b2d8faa9a459d2a4bd3d4cffe53aa9cd8009e59b7f88075cc",
+      "bytes": 26543
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-operation-return-cold-trace.json",
+      "sha256": "c53e7792eefeed4db181618e1c3cbfcba004cd57b7420b3f7547c0573cec7318",
+      "bytes": 26559
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-operation-return-iron-claw.json",
+      "sha256": "956450a4b744807265ca014f3aec8a0400ce05d9ef163a9b3def3207d6f9e33f",
+      "bytes": 26556
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-operation-return-remote-dossier.json",
+      "sha256": "5fbb96bbbb30f9aadd3411a657fbd070a14dbce1b4411ed316be47589de3859d",
+      "bytes": 26555
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-operation-return-star-watch.json",
+      "sha256": "9559e79e96e013c0b155b70bdaa7722425638148d4e4b77889386c1d34d8f6ad",
+      "bytes": 26555
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-operation-return-threshold-guard.json",
+      "sha256": "831801ad7e63a17372b90bc251eebd4f2e7bacd377d25221596fc09c90449bd4",
+      "bytes": 26556
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-recent-proof-ash-scar.json",
+      "sha256": "c3b92330ad65662c23cc1c99fbaaebe31c5d23475c998b752c0878743d6480a7",
+      "bytes": 24641
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-recent-proof-black-suture.json",
+      "sha256": "335e53f4330bc7d1252da5c5e2d7e513e0c0b96155885cc7fe5e063c4e70883e",
+      "bytes": 24609
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-recent-proof-cold-trace.json",
+      "sha256": "7ea7d65988dc87e6c58d33e985a4720e79f2a6d1bd23997e8f987a9294da3f76",
+      "bytes": 24625
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-recent-proof-iron-claw.json",
+      "sha256": "bcae17336aaa71d390d7897b0cb06221929836726931b2cb3f1e0099c6483798",
+      "bytes": 24622
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-recent-proof-remote-dossier.json",
+      "sha256": "05ce02b503639d98937cd9b94e8e37c529de84acacbe780fbda4b205ddc529a0",
+      "bytes": 24615
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-recent-proof-star-watch.json",
+      "sha256": "bff50098c7f994238c565d5176741d03bbe9751d1f0f1adabbe9ff826f0b4c98",
+      "bytes": 24615
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-recent-proof-threshold-guard.json",
+      "sha256": "9a02c67c026a7fbb0f6150cb2047f720f5e7395604a8c8497e1febfbdbb0f618",
+      "bytes": 24616
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-unavailable-iron-claw.json",
+      "sha256": "9d205a030301b60647f0ba3285fdb7864845ada7a903af97869fd53492405d7c",
+      "bytes": 26415
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-unavailable-star-watch.json",
+      "sha256": "ee35e1408808196578963045ad825a8b0f138dce70b9601e2c232730fe190c63",
+      "bytes": 26408
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/read-only-save-unavailable-threshold-guard.json",
+      "sha256": "23711768b4cd05ee3de9fcc6e0c9ae775045ef337019fc44f8adc4d4dfc825db",
+      "bytes": 26409
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/report.browser-run.json",
+      "sha256": "2b1ef790ef3bb69f9e8337e67587fb9c6a6bb039f2c182cd84e558a186f41f1b",
+      "bytes": 665539
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/report.json",
+      "sha256": "5aa1e396155ffca01977d4c97767fc13730815fc1231e16e9f0e030ccb23984b",
+      "bytes": 667547
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/screenshot-inspection.json",
+      "sha256": "301548f9d59dc029f75ee97e90abc12948d9f3f961a2d246f96834339a0b21d5",
+      "bytes": 4853
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/native/attempt-1/unavailable-crew-dossiers.png",
+      "sha256": "c0613386b5e276b33e70c0de81d04f4fd20b148bf1d81d5dae2f2f208bc1900c",
+      "bytes": 387358
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/review/independent-review.md",
+      "sha256": "43d569ee069e04901d4bb907f2703dae455457142387970948c7a66a4828e43a",
+      "bytes": 3426
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/review/resolution.md",
+      "sha256": "323be9446adda8d61856d28bf6ff53f3d43b1e8976fba75c9cc20e5763df46bc",
+      "bytes": 290
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/build.log",
+      "sha256": "4bb550c34261d4945233f84260a9c40cbe61b9873fb8b3f9e56fa7340da0c82a",
+      "bytes": 4815
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-crew-dialogue-ui.test.mjs.tap",
+      "sha256": "cf3ccfa415b426d380c57d6bbf5bb4bd75bc8d63f0a417cfd78da921c6b03a45",
+      "bytes": 1622
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-crew-dialogue.test.mjs.tap",
+      "sha256": "30936c5b6f520c7b016a0a712314a4e8142a25eebe0665737f251936c49f2ba1",
+      "bytes": 9654
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-docking.test.mjs.tap",
+      "sha256": "379f4f0f9d754163c2a9b7335ebcc50bb05647437d285d78a25f6d86069140da",
+      "bytes": 3695
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-incidents.test.mjs.tap",
+      "sha256": "ec22141027434f82b187e1fc9ec183be9fcea75e277429a912c0a2f357eb9857",
+      "bytes": 3961
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-interior.test.mjs.tap",
+      "sha256": "7127114659debbd691c2f93a61e7b249ce28928f8392db9183b1762e5e8eb0f4",
+      "bytes": 4999
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-operations-save.test.mjs.tap",
+      "sha256": "f113ad330d206f2b79e616599c8ec95731eaec9ed113c36606cbd8490cfc33c6",
+      "bytes": 2827
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-operations.test.mjs.tap",
+      "sha256": "59e24ceccf7c081ba0bfa742da31d745253004b24c4b4ba57fa15c6dd4ca0975",
+      "bytes": 5864
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-save.test.mjs.tap",
+      "sha256": "6989d4036bdc79f3d6a80e308e40094e1a9dd07ec409bdebdde380deb8814d01",
+      "bytes": 5048
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-space-encounter.test.mjs.tap",
+      "sha256": "627880fad17181cdb34d9ec9b13c5af571953e4ed994790518c88083336a5c45",
+      "bytes": 5066
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-trophy-case.test.mjs.tap",
+      "sha256": "a056ae603fb2726c995ff7cb91768d531ebf6324a182ede83cf1adeb2d2026ff",
+      "bytes": 3579
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-trophy-hearing-presentation.test.mjs.tap",
+      "sha256": "3cb8c69c2c1607286e718d392be1ef41682b8fdda0a8bd5a2bce65b853620aa0",
+      "bytes": 2170
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/clan-ship-trophy-hearing.test.mjs.tap",
+      "sha256": "397b9c1422d6e187c234a7ab2c01f54b3c282efc0b9d701e5aec656bde8119d7",
+      "bytes": 3432
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/commands.json",
+      "sha256": "b5dd342af1a683de60921d5d431bb0893821a83deab2481023e1fa3a6da32cca",
+      "bytes": 2111
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/companion-residence.test.mjs.tap",
+      "sha256": "dc6113ba5dfbf2dda613fb526f3c8ce5d8e91fb936727145bf1c1c0df900c7f5",
+      "bytes": 6219
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/diagnostics-node22-runner/README.md",
+      "sha256": "df31f98970c250921fe17f2b7cbd5f1467394d881ee2de1c34bde3504daf4bcc",
+      "bytes": 367
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/diagnostics-node22-runner/clan-ship-crew-dialogue.test.mjs.tap",
+      "sha256": "1683b01b0469b15d0ff26ca3d29f51b7176e4efc61574c27d0fd43297e850ad1",
+      "bytes": 93
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/diagnostics-node22-runner/test-runner.log",
+      "sha256": "ca0aef18c0eb0436eeabca766b42216d421a9e41b6aaa74b7a792657429ad160",
+      "bytes": 9911
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/diagnostics-node22-runner/tests.json",
+      "sha256": "a149abc8d63fa0a2591c823f70bccb63b64a620178876ae1887018fc7d344812",
+      "bytes": 12654
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/homeworld-civic-scene-v80.test.mjs.tap",
+      "sha256": "fbad4bec339952a57e33e9ae8516648312b9b4752c5338a8b417dafc4dc3e3eb",
+      "bytes": 757
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/homeworld-civic-v80.test.mjs.tap",
+      "sha256": "c4754ca127222a893c59aefb42847b4f8670821b6196cb5707e6b76faf944eab",
+      "bytes": 2514
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/homeworld-port-composition-v80.test.mjs.tap",
+      "sha256": "f4120867183dcb8bf2d39b77b97909863e9bf5cbd8656ff50b7393a4c1af8e45",
+      "bytes": 972
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/homeworld-world-codex-v77.test.mjs.tap",
+      "sha256": "a301ff5329ced320ee2876e0ae24a3ab3f34b27521f89940bbf5f64267bd6fa7",
+      "bytes": 927
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/lint-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/runtime-check.log",
+      "sha256": "dd752150f841657b187260e236a989e096eab3a29f55037d40b77fb1f62c7669",
+      "bytes": 175
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/runtime-write.log",
+      "sha256": "de0093cdea1f943e6cb054b8aa2ce87d0cd1e21d53cbec64ea0aca505dc9ee60",
+      "bytes": 187
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/test-runner.log",
+      "sha256": "f99167c149191503e2d3d6a72b03466da3088c285feb01047beca3978fdc86a8",
+      "bytes": 8989
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/test-selection.json",
+      "sha256": "147a4abf94a92cbf2f9f0f78c2357c944cd8b41615b0cf07b0db0fa624588f9a",
+      "bytes": 897
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/tests.json",
+      "sha256": "64bd8d0a94c625a93a6d27284e1e551824158ba41c7e920f7b7ccabb55e2ba19",
+      "bytes": 11302
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/root/typegen.log",
+      "sha256": "adba4af9194e10e47dda75ff0fd0f8c2b756474896d0eba5612799c527ff372a",
+      "bytes": 59
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/ui/implementation-notes.md",
+      "sha256": "376277bb544fda4adfea3af17973192bdfde24b07b737933f59f9499b25f438f",
+      "bytes": 2452
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/ui/results.json",
+      "sha256": "a541f05c03ad6c25ba8b752b80cf9b2912f147c9f39d85aa5e493798b00db197",
+      "bytes": 559
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/ui/scoped-lint.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/crew-dialogue-20261109/qa/ui/ssr-detailed.tap",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  ],
+  "historicalEvidence": "Les journaux moteur/UI préparatoires restent datés et inchangés. Le sélecteur e7ebe93f du premier rapport a reçu une correction de grammaire avant le build et la suite finale248; la qualification courante emploie les hashes ci-dessus.",
+  "remaining": [
+    "OPS-Q27 routines et gestes animésB06/B07 restent ouverts.",
+    "OPS-B04 escorte de groupe reste non implémentée.",
+    "Manette physique et revue artistique humaine restent non attestées.",
+    "Aucune campagne intégrale, jeu multijoueur, nouvelle animation ou nouvelle IAterrain n’est certifié par cette passe."
+  ],
+  "commandManifest": "production/crew-dialogue-20261109/qa/root/commands.json"
+}
