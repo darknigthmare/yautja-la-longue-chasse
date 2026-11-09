@@ -21,6 +21,32 @@ const generator = page => page.locator('[data-testid="planet-generator-v102"], [
 const preview = page => generator(page).getByTestId("clan-war-atlas-v95");
 const panel = page => page.locator('[data-clan-war-v85="free-profile"]');
 const selector = page => panel(page).getByTestId("war-planet-selector-v96");
+async function closeCommand(page) {
+  const dialog = panel(page).locator('dialog[data-command-overlay][open]');
+  if (await dialog.count()) {
+    await dialog.getByRole("button", { name: /^Fermer : / }).click();
+    await dialog.waitFor({ state: "hidden" });
+  }
+}
+async function openWorlds(page) {
+  const dialog = panel(page).getByRole("dialog", { name: "Théâtres planétaires", exact: true });
+  const opener = panel(page).locator('[data-command-open="worlds"]');
+  await opener.waitFor();
+  if (await opener.getAttribute("aria-expanded") !== "true") {
+    // A preceding selection/commit closes the native dialog in an effect.
+    // Wait for that real close before using the visible opener again.
+    await panel(page).locator('dialog[data-command-overlay][open]').waitFor({ state: "hidden" });
+    await opener.click();
+  }
+  await dialog.waitFor();
+  await selector(page).waitFor();
+}
+async function commitTurn(page) {
+  await closeCommand(page);
+  await panel(page).getByRole("button", { name: "Fin de préparation · relire avant résolution", exact: true }).click();
+  await panel(page).getByRole("dialog", { name: "Ordres et clôture du cycle", exact: true })
+    .getByRole("button", { name: "Confirmer et résoudre le tour", exact: true }).click();
+}
 const previewCode = page => generator(page).getAttribute("data-preview-planet-code");
 const geometry = page => preview(page).getByTestId("war-planet-coastlines").locator("path").evaluateAll(items => items.map(item => item.getAttribute("d")));
 const rawArchive = (page, id) => page.evaluate(key => localStorage.getItem(key), archiveKey(id));
@@ -57,14 +83,16 @@ async function importCode(page, code) {
   await generator(page).getByRole("button", { name: "Retrouver le monde", exact: true }).press("Enter");
 }
 async function resolveTurn(page, id, turn) {
-  await panel(page).getByRole("button", { name: "Fin de préparation · relire avant résolution", exact: true }).click();
-  await panel(page).getByRole("button", { name: "Confirmer et résoudre le tour", exact: true }).click();
+  await commitTurn(page);
   await page.waitForFunction(({ key, turn }) => JSON.parse(localStorage.getItem(key) ?? "null")?.turn === turn, { key: archiveKey(id), turn });
+  await openWorlds(page);
   await selector(page).getByText("Archive locale confirmée", { exact: true }).waitFor();
 }
 async function choose(page, id) {
+  await openWorlds(page);
   await selector(page).getByRole("combobox", { name: "Planète active", exact: true }).selectOption(id);
   await page.waitForFunction(value => document.querySelector('[data-clan-war-v85="free-profile"] [data-testid="war-planet-selector-v96"]')?.getAttribute("data-active-planet") === value, id);
+  await openWorlds(page);
 }
 async function download(page, buttonName, filename) {
   const waiting = page.waitForEvent("download");
@@ -153,6 +181,7 @@ try {
   check("opening uses the applied preview even when the draft has ungenerated changes", await selector(page).getAttribute("data-active-planet") === worldA);
   const activePicker = selector(page).getByRole("combobox", { name: "Planète active", exact: true });
   check("the active picker separates thirty historical worlds from two discoveries", await activePicker.locator('optgroup[label="Les 30 mondes répertoriés"] option').count() === 30 && await activePicker.locator('optgroup[label="Mondes découverts"] option').count() === 2);
+  await closeCommand(page);
   const atlas = panel(page).getByTestId("clan-war-atlas-v95");
   await atlas.getByRole("button", { name: "▱ Planisphère", exact: true }).click();
   await atlas.locator('svg g[data-territory-id="CON-T02"]').press("Enter");
@@ -172,7 +201,12 @@ try {
   const expectedNext = options[(options.indexOf(worldB) + 1) % options.length];
   await selector(page).getByRole("button", { name: "Planète suivante", exact: true }).press("Enter");
   await page.waitForFunction(value => document.querySelector('[data-clan-war-v85="free-profile"] [data-testid="war-planet-selector-v96"]')?.getAttribute("data-active-planet") === value, expectedNext);
-  check("next-world navigation uses the full dynamic catalogue and restores keyboard focus", await activePicker.evaluate(element => document.activeElement === element));
+  const theaterOpener = panel(page).locator('[data-command-open="worlds"]');
+  check("next-world navigation uses the full dynamic catalogue and restores keyboard focus", await theaterOpener.evaluate(element => document.activeElement === element));
+  await theaterOpener.press("Enter");
+  await selector(page).waitFor();
+  await page.keyboard.press("Tab");
+  check("the reopened theater drawer keeps its planet picker reachable by keyboard", await activePicker.evaluate(element => document.activeElement === element));
   await choose(page, worldA);
   await selector(page).getByRole("button", { name: "Générer un monde", exact: true }).press("Enter");
   const embeddedGenerator = panel(page).getByTestId("planet-generator-v103");
@@ -181,6 +215,7 @@ try {
   await embeddedGenerator.getByRole("button", { name: "Générer l’aperçu", exact: true }).press("Enter");
   check("the in-game generator previews a new world without switching the active war", await embeddedGenerator.getAttribute("data-preview-planet-code") !== worldA && await selector(page).getAttribute("data-active-planet") === worldA && await rawArchive(page, worldA) === rawA);
   await selector(page).getByRole("button", { name: "Fermer le générateur", exact: true }).press("Enter");
+  await closeCommand(page);
   await page.screenshot({ path: path.join(output, "desktop-generated-front.png"), fullPage: false });
   await page.reload({ waitUntil: "domcontentloaded" }); await generator(page).waitFor();
   await generator(page).locator("canvas").first().scrollIntoViewIfNeeded();
@@ -247,13 +282,14 @@ try {
     await generator(retained).getByRole("textbox", { name: "Graine du monde", exact: true }).fill(String(900000 + index));
     await apply(retained); retainedCodes.push(await previewCode(retained));
     await generator(retained).getByRole("button", { name: "Ouvrir ce front", exact: true }).click();
+    await openWorlds(retained);
     await selector(retained).waitFor();
-    await panel(retained).getByRole("button", { name: "Fin de préparation · relire avant résolution", exact: true }).click();
-    await panel(retained).getByRole("button", { name: "Confirmer et résoudre le tour", exact: true }).click();
+    await commitTurn(retained);
     await retained.waitForFunction(() => {
       const text = document.querySelector('[data-clan-war-v85="free-profile"] [data-testid="war-planet-selector-v96"]')?.textContent?.replace(/\s+/g, " ") ?? "";
       return /Tour 02/.test(text) && text.includes("Front en mémoire") && !text.includes("Enregistrement…");
     });
+    await openWorlds(retained);
     if ((index + 1) % 8 === 0) console.log(`QA generator: ${index + 1} modified unsaved fronts retained`);
   }
   await selector(retained).getByRole("button", { name: "Générer un monde", exact: true }).click();

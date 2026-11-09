@@ -70,6 +70,14 @@ test('legacy campaign import does not create an activity, object or tutorial com
     assert.deepEqual(source.profile, confirmed.profile);
     assert.deepEqual(source.trophies, confirmed.trophies);
   }
+  const futureWithoutOwner = clone(original);
+  delete futureWithoutOwner.createdAt;
+  futureWithoutOwner.gauntletV134.version = 2;
+  const raw = JSON.stringify(futureWithoutOwner);
+  const refused = saves.parseSaveImport(raw);
+  assert.equal(refused.save, null);
+  assert.equal(refused.failure, 'future-version');
+  assert.equal(JSON.stringify(futureWithoutOwner), raw);
 });
 
 test('three physically completed gestures survive the actual writer, reload and portable import without rewards', () => {

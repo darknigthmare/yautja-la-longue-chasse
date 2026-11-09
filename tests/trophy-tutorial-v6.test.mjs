@@ -74,6 +74,12 @@ test('TR-M01..03 define exactly six gestures each, with physical posts', () => {
 });
 test('old absent activity, explicit null, foreign owner and future ledgers remain distinct', () => {
   assert.equal(inspectTrophyTutorialV6(undefined, owner).status, 'absent');
+  for (const legacyOwner of ['', 'not-an-iso-owner']) {
+    assert.equal(inspectTrophyTutorialV6(undefined, legacyOwner).status, 'absent');
+    for (const raw of [null, {}, { version: 2 }, createTrophyTutorialV6(owner)]) {
+      assert.equal(inspectTrophyTutorialV6(raw, legacyOwner).status, 'invalid');
+    }
+  }
   assert.equal(inspectTrophyTutorialV6(null, owner).status, 'invalid');
   assert.equal(inspectTrophyTutorialV6(createTrophyTutorialV6(owner), '2026-11-10T12:00:00Z').status, 'invalid');
   assert.equal(inspectTrophyTutorialV6({ version: 2 }, owner).status, 'future');

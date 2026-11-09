@@ -20,6 +20,26 @@ const generator = page => page.getByTestId("planet-generator-v103").filter({ vis
 const preview = page => generator(page).getByTestId("clan-war-atlas-v95");
 const panel = page => page.locator('[data-clan-war-v85="free-profile"]');
 const selector = page => panel(page).getByTestId("war-planet-selector-v96");
+async function closeCommand(page) {
+  const dialog = panel(page).locator('dialog[data-command-overlay][open]');
+  if (await dialog.count()) {
+    await dialog.getByRole("button", { name: /^Fermer : / }).click();
+    await dialog.waitFor({ state: "hidden" });
+  }
+}
+async function openWorlds(page) {
+  const dialog = panel(page).getByRole("dialog", { name: "Théâtres planétaires", exact: true });
+  const opener = panel(page).locator('[data-command-open="worlds"]');
+  await opener.waitFor();
+  if (await opener.getAttribute("aria-expanded") !== "true") {
+    // A preceding selection/commit closes the native dialog in an effect.
+    // Wait for that real close before using the visible opener again.
+    await panel(page).locator('dialog[data-command-overlay][open]').waitFor({ state: "hidden" });
+    await opener.click();
+  }
+  await dialog.waitFor();
+  await selector(page).waitFor();
+}
 const code = page => generator(page).getAttribute("data-preview-planet-code");
 const geometry = atlas => atlas.getByTestId("war-planet-coastlines").locator("path").evaluateAll(items => items.map(item => item.getAttribute("d")));
 const rawArchive = (page, id) => page.evaluate(key => localStorage.getItem(key), archiveKey(id));
@@ -92,14 +112,19 @@ async function exportLand(page, filename) {
   return download(page, "Télécharger le PNG", filename);
 }
 async function resolveTurn(page, id, turn) {
+  await closeCommand(page);
   await panel(page).getByRole("button", { name: "Fin de préparation · relire avant résolution", exact: true }).click();
-  await panel(page).getByRole("button", { name: "Confirmer et résoudre le tour", exact: true }).click();
+  await panel(page).getByRole("dialog", { name: "Ordres et clôture du cycle", exact: true })
+    .getByRole("button", { name: "Confirmer et résoudre le tour", exact: true }).click();
   await page.waitForFunction(({ key, turn }) => JSON.parse(localStorage.getItem(key) ?? "null")?.turn === turn, { key: archiveKey(id), turn });
+  await openWorlds(page);
   await selector(page).getByText("Archive locale confirmée", { exact: true }).waitFor();
 }
 async function choose(page, id) {
+  await openWorlds(page);
   await selector(page).getByRole("combobox", { name: "Planète active", exact: true }).selectOption(id);
   await page.waitForFunction(value => document.querySelector('[data-clan-war-v85="free-profile"] [data-testid="war-planet-selector-v96"]')?.getAttribute("data-active-planet") === value, id);
+  await openWorlds(page);
 }
 async function restoredFront(page, id, raw) {
   const expected = JSON.parse(raw);
@@ -233,6 +258,7 @@ try {
   check("the live small front saves exactly 18 territory states", Object.keys(smallState.territories).length === 18 && smallState.turn === 2);
   const actor = smallState.combatants.find(item => item.factionId === "CON-F01" && !item.garrison && item.status === "fit" && item.trainingUntilTurn === null && smallState.stocks[item.territoryId].s >= 1 && smallState.stocks[item.territoryId].i >= 1);
   assert.ok(actor, "a mobile actor exists in the generated deployment");
+  await closeCommand(page);
   const liveAtlas = panel(page).getByTestId("clan-war-atlas-v95"); await map(liveAtlas);
   await liveAtlas.locator(`svg g[data-territory-id="${actor.territoryId}"]`).press("Enter");
   const command = panel(page).getByRole("complementary", { name: "Commandement du territoire", exact: true });
@@ -278,7 +304,8 @@ try {
   await generator(page).getByText("Fiche importée. Le monde conserve sa version et sa géographie d’origine.", { exact: true }).waitFor();
   await generator(page).getByRole("button", { name: "Ouvrir ce front", exact: true }).click(); await selector(page).waitFor();
   check("legacy reopening through the new editor resumes its archive byte for byte and preserves the old catalogue", await rawArchive(page, worldLegacy) === legacyRaw && await page.evaluate(key => localStorage.getItem(key), legacyKey) === legacyCatalog && /Tour 02/.test((await selector(page).innerText()).replace(/\s+/g, " ")));
-  await panel(page).getByRole("button", { name: "Retour", exact: true }).click();
+  await closeCommand(page);
+  await panel(page).getByRole("button", { name: "Quitter le conseil", exact: true }).click();
   await generator(page).getByRole("button", { name: "Préparer une variante", exact: true }).press("Enter");
   check("explicit legacy editing prepares a V103 draft while leaving the original preview and archive unchanged", await code(page) === worldLegacy && await generator(page).getAttribute("data-draft-modified") === "true" && await rawArchive(page, worldLegacy) === legacyRaw);
   await apply(page);

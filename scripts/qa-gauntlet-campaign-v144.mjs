@@ -11,7 +11,7 @@ import {build} from "esbuild";
 import {chromium} from "playwright-core";
 const root=fileURLToPath(new URL("../",import.meta.url));
 const publicRoot=resolve(root,"public");
-const output=resolve(root,"outputs/gauntlet-campaign-v144");
+const output=resolve(root,process.env.GAUNTLET_CAMPAIGN_OUTPUT||"outputs/gauntlet-campaign-v144");
 const SAVE_KEY="yautja-long-hunt.save";
 const WAR_KEY="yautja.clan-war.v85.free.v1";
 const bundle=await build({absWorkingDir:root,
@@ -59,7 +59,9 @@ try{
   await new Promise((ok,fail)=>{server.once("error",fail);server.listen(0,"127.0.0.1",ok);});
   started=true;const address=server.address();
   assert.ok(address&&typeof address==="object");
-  browser=await chromium.launch({channel:process.env.AUDIT_CHROME_CHANNEL||"chrome",headless:true});
+  browser=await chromium.launch({...(process.env.AUDIT_CHROME_EXECUTABLE
+    ? {executablePath:process.env.AUDIT_CHROME_EXECUTABLE}
+    : {channel:process.env.AUDIT_CHROME_CHANNEL||"chrome"}),headless:true});
   const ctx=await browser.newContext({viewport:{width:1366,height:900},locale:"fr-FR"});
   const page=await ctx.newPage();page.setDefaultTimeout(25000);
   page.on("pageerror",e=>errors.push(e.message));
@@ -78,7 +80,17 @@ try{
   const initialWar=await page.evaluate(key=>JSON.parse(localStorage.getItem(key)||"null")?.turn??1,WAR_KEY);
   pass("Real panel and V13 seeded test campaign mounted",{
     study,other,initialWar,simulation:"production",source:"seeded QA trophy"});
-  const locker=page.locator('[data-testid="gauntlet-locker-v132"]');
+  const initialTheater=page.getByRole("dialog",{name:"Théâtres planétaires",exact:true});
+  await initialTheater.waitFor({state:"visible"});
+  await page.keyboard.press("Escape");
+  await initialTheater.waitFor({state:"hidden"});
+  const projection=page.getByRole("dialog",{name:"Projection du commandement",exact:true});
+  async function openProjection(){
+    await panel.locator('[data-command-open="settings"]').click();
+    await projection.waitFor({state:"visible"});
+  }
+  await openProjection();
+  const locker=projection.locator('[data-testid="gauntlet-locker-v132"]');
   await locker.locator("summary").click();
   const search=locker.getByRole("searchbox",{name:"Rechercher un modèle"});
   await search.fill(other);
@@ -114,8 +126,11 @@ try{
   assert.equal(await panel.locator('[data-testid="clan-war-gauntlet-v131"]').getAttribute("data-gauntlet-model"),study);
   assert.equal(await atlas.count(),1);
   assert.equal(await page.evaluate(key=>JSON.parse(localStorage.getItem(key)||"null")?.turn??1,WAR_KEY),initialWar);
+  await page.keyboard.press("Escape");
+  await projection.waitFor({state:"hidden"});
   await page.screenshot({path:resolve(output,"02-study-equipped-shared-atlas.png"),fullPage:false});
   pass("Challenge gauntlet equips in real holographic war panel without war mutations",{model:study,warTurn:initialWar});
+  await openProjection();
   await search.fill(other);
   const stillLocked=locker.locator(`[data-gauntlet-model="${other}"]`);
   await stillLocked.waitFor({state:"visible"});
@@ -127,6 +142,9 @@ try{
   await page.reload({waitUntil:"domcontentloaded"});
   await state.waitFor();
   await panel.waitFor();
+  await initialTheater.waitFor({state:"visible"});
+  await page.keyboard.press("Escape");
+  await initialTheater.waitFor({state:"hidden"});
   await page.waitForFunction(id=>document.querySelector('[data-testid="clan-war-gauntlet-v131"]')?.getAttribute("data-gauntlet-model")===id,study);
   assert.equal(await state.getAttribute("data-claims"),"1");
   assert.equal(await state.getAttribute("data-gauntlet-save"),study);
