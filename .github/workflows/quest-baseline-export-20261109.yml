@@ -6,62 +6,34 @@ on:
 permissions:
   contents: read
 jobs:
-  snapshot:
+  toolchain:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
         with:
           ref: 19317af4f6cf05532a8ba56dbfe8f56fc4b225d9
-          fetch-depth: 1
           persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /docs/
-            /tests/
-            /scripts/
-            /.ai-tools/
-            /production/excel-bible-20261108/
-            /production/excel-bible-suite-20261108/
-            /production/excel-bible-witnesses-20261108/
-            **/*.xlsx
-            !**/*.png
-            !**/*.jpg
-            !**/*.jpeg
-            !**/*.webp
-            !**/*.mp4
-            !**/*.zip
-            !**/*.pdf
-      - name: Archive tracked source and workbook bytes without credentials
+            /package.json
+            /package-lock.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      - name: Export installed testing packages and framework guides only
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD)" = 19317af4f6cf05532a8ba56dbfe8f56fc4b225d9
-          mkdir -p "$RUNNER_TEMP/quest-baseline"
-          python3 - <<'PY'
-          import hashlib, json, os, pathlib, subprocess, tarfile
-          root=pathlib.Path.cwd()
-          out=pathlib.Path(os.environ['RUNNER_TEMP'])/'quest-baseline'
-          allowed={'.ts','.tsx','.js','.mjs','.cjs','.json','.md','.css','.html','.py','.yml','.yaml','.txt','.xlsx'}
-          entries=[]
-          with tarfile.open(out/'source.tar.gz','w:gz') as archive:
-            for raw in subprocess.check_output(['git','ls-files','-z']).split(b'\0'):
-              if not raw: continue
-              rel=raw.decode(); path=root/rel
-              if not path.is_file() or path.is_symlink() or path.suffix not in allowed: continue
-              if any(part.startswith('.env') for part in pathlib.PurePosixPath(rel).parts): continue
-              data=path.read_bytes()
-              archive.add(path,arcname=rel,recursive=False)
-              entries.append({'path':rel,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest(),'gitBlob':hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()})
-          (out/'manifest.json').write_text(json.dumps({'baseline':'19317af4f6cf05532a8ba56dbfe8f56fc4b225d9','note':'Read-only source transport, not test or gameplay evidence. No credentials, no generated files, no write permission.','files':entries},ensure_ascii=False,indent=2)+'\n')
-          print('Archived',len(entries),'tracked files; no repository write performed.')
-          PY
+          mkdir -p "$RUNNER_TEMP/quest-toolchain"
+          tar -czf "$RUNNER_TEMP/quest-toolchain/packages.tar.gz" node_modules/typescript node_modules/react node_modules/react-dom node_modules/scheduler node_modules/@types/react node_modules/@types/react-dom node_modules/@types/node node_modules/csstype node_modules/undici-types node_modules/next/dist/docs
+          node -e 'const fs=require("fs"); let x={baseline:"19317af4f6cf05532a8ba56dbfe8f56fc4b225d9",note:"Unmodified packages installed from the existing lockfile; no gameplay test result."}; for(const p of ["typescript","react","react-dom","scheduler","next"]) x[p]=require(p+"/package.json").version; fs.writeFileSync(process.env.RUNNER_TEMP+"/quest-toolchain/versions.json",JSON.stringify(x,null,2)+"\n")'
       - uses: actions/upload-artifact@v4
         with:
-          name: quest-baseline-19317af4
-          path: ${{ runner.temp }}/quest-baseline/
+          name: quest-locked-toolchain-19317af4
+          path: ${{ runner.temp }}/quest-toolchain/
           retention-days: 3
           if-no-files-found: error
