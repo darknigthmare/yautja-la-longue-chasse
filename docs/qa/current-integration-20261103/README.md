@@ -631,3 +631,41 @@ reprise de l'écriture. Les accès rapides n'accordent aucune des huit inspectio
 physiques. Le checkout et le commit synthétique affiché par le build ont le même
 arbre Git, vérifié par l'API. Cette preuve datée conserve ses propres sources et
 ne remplace pas les contrôles de la tête finale.
+
+
+## Prélèvements et escorte de retour — 9 novembre 2026
+
+La reprise part de `main` au commit `19317af4f6cf05532a8ba56dbfe8f56fc4b225d9`,
+avec la bible et les suivis du 8 novembre. Le point produit
+`85ca8099d96fffb37fbe6f46b26a76c8eaf73df1` ajoute les informations d’emport avant
+prélèvement, le prérequis commun de l’analyse et le groupe visible OPS-B04.
+Le commit `9200248c37f9e008d20cf6ebc6a684a1d1c5f9dc` conserve exactement cette
+application et ajoute les recettes natives et leurs raccords aux workflows existants.
+
+Le [reçu courant](../../../production/reprise-chasse-bible-20261109/qa/current-runtime-receipt.json)
+consigne `--current` sur ce dernier point : 3 069 sources, 148 144 202 octets.
+Le relevé officiel de ce dossier est régénéré par `snapshot-runtime-v113.mjs
+--write`, puis vérifié par `--check` : 2 207 entrées, 1 093 220 902 octets ;
+JSON de 409 745 octets, SHA-256
+`ba24a582613a6a039a04114b3fe2edb806e5ac15efba551923eb6e0c621f1554`.
+Les documents et attestations historiques gardent leurs identités.
+
+Les [journaux d’intégration finaux](../../../production/reprise-chasse-bible-20261109/qa/integration-final-85ca8099/verification.json)
+conservent 539 tests réussis dans 26 fichiers distincts, aucun ignoré, un build
+applicatif Next webpack avec TypeScript et le lint strict de 21 fichiers.
+Ces commandes sont réellement exécutées sur le point produit `85ca8099` ;
+les résultats des étapes antérieures ne leur sont pas additionnés.
+
+La [recette de prélèvement](../../../production/reprise-chasse-bible-20261109/qa/harvest/README.md)
+qualifie le composant et le callback natif sur 18 contrôles. La
+[recette d’escorte](../../../production/reprise-chasse-bible-20261109/qa/escort/README.md)
+exécute 19 contrôles dans le vrai GameClient : déplacement par les portes,
+arrêts, rechargement et refus d’écriture. Ses acteurs utilisent des sprites
+originaux statiques déplacés, sans prétendre créer des cycles de marche.
+Les prérequis construits, les essais refusés, le guidage intersalles en deux
+étapes et les limites des checkpoints sont déclarés dans les rapports.
+Aucune preuve humaine, appareil physique, performance cible ou fidélité
+artistique canonique n’en est déduite. Le
+[nouveau suivi Excel et son avenant](../../../production/reprise-chasse-bible-20261109/README.md)
+conservent les 108 classeurs d’origine, les trois lots du 8 novembre et les
+huit validations restantes V112, sans réécrire leurs anciennes qualifications.

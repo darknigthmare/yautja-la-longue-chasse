@@ -1,0 +1,4380 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-09T04:49:26.606Z",
+  "checkoutCommit": "ebe17184965307d9c636d45561a19c431802c4ab",
+  "workingTreeDirty": true,
+  "scope": "Actual GameClient, physical interior controller, B04 model and local campaign writer. Constructed prerequisites and interruption fixtures are declared. No full campaign, human understanding, physical device, new walk animation, artistic or target-performance qualification.",
+  "sourceSha256": {
+    "app/game/GameClient.tsx": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+    "app/game/ClanShipHub.tsx": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585",
+    "app/game/ClanShipInterior.tsx": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+    "app/game/ClanShipReturnEscortScene.tsx": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9",
+    "app/game/ClanShipReturnEscortScene.module.css": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273",
+    "app/game/systems/clanShipReturnEscort.ts": "40af2e2c7d00bff8235071271f6cdebbae6e9902b67bc3dd45a98ec83e79bb23",
+    "app/game/systems/clanShipInterior.ts": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+    "app/game/HomeworldNpcSpriteV84.tsx": "e6a069be9e16f09e63c254880e4d8d529757dd0e30386781539df150b13ef8bc",
+    "app/game/save.ts": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+    "app/game/types.ts": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+    "tests/helpers/clan-ship-return-escort-fixture.mjs": "15103018589d12c67b3ffd28de55271923f8c530d9cfd06d802d99b57d428b5e",
+    "scripts/qa-clan-return-escort-browser-20261109.mjs": "38457060adc9a93339a2e66a96f5e0136dc6e631abc34e9b6cd137b796ac7e40"
+  },
+  "fixtures": [
+    {
+      "id": "fresh-return",
+      "file": "initial-return-fixture.json",
+      "sha256": "e0bc2ac00e70c13deac31b7d6aa97548562e53021d9947f476812786c8658435",
+      "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+      "description": "Synthetic adult campaign. Onboarding, confinement/triage prerequisites and the actual spatial reducers prepare the completed space-recovery receipt. Those prerequisites are NOT browser-played. No B04 acceptance, movement, medical control or report is seeded.",
+      "browserPlayed": false
+    },
+    {
+      "id": "separated-return",
+      "file": "initial-separated-fixture.json",
+      "sha256": "5591322b78e5ba0896f369a149c7222bf45d5aa5226424621d53124d1b00b0e2",
+      "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+      "description": "Synthetic interruption fixture. The real escort reducer and native path solver prepare a group already across the door in soins, still escorting; the player resumes separately in hangar. Those preparatory moves are NOT browser-played.",
+      "browserPlayed": false
+    },
+    {
+      "id": "outside-return",
+      "file": "initial-outside-fixture.json",
+      "sha256": "0f132ff4a9a11ac61ce85cc334f62d4686b09ed9c892b67b9bc6cd92ced3e2ba",
+      "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+      "description": "Portable boundary fixture only: the same waiting group remains in soins while the player is in the docked personal ship. Native export/import must preserve the group; this initial version of the browser recipe does not claim a complete outside-ship route.",
+      "browserPlayed": false
+    }
+  ],
+  "browserExecuted": true,
+  "passed": false,
+  "checks": [
+    {
+      "context": "desktop",
+      "name": "a disclosed spatial receipt enables the return dossier without pre-seeding B04",
+      "passed": true,
+      "decoded": [
+        {
+          "src": "/game/homeworld/v84/npcs/hunter/17.png",
+          "native": "/game/homeworld/v84/npcs/hunter/17.png",
+          "width": 1024,
+          "height": 1536,
+          "complete": true
+        },
+        {
+          "src": "/game/homeworld/v84/npcs/hunter/11.png",
+          "native": "/game/homeworld/v84/npcs/hunter/11.png",
+          "width": 1024,
+          "height": 1536,
+          "complete": true
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "name": "the route and selected medical post are prepared at the physical hangar threshold",
+      "passed": true
+    },
+    {
+      "context": "desktop",
+      "name": "the visible team starts only after returning to the hangar service",
+      "passed": true
+    },
+    {
+      "context": "desktop",
+      "name": "a refused movement checkpoint freezes at the last confirmed group positions",
+      "passed": true
+    },
+    {
+      "context": "desktop",
+      "name": "pause, focus loss and reload keep safe positions and never advance while outside the scene",
+      "passed": true
+    },
+    {
+      "context": "desktop",
+      "name": "the physical door waits for both returnees and commits group plus docking together",
+      "passed": false,
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(before.clanShipReturnEscort.actors.every(actor=>motion.canClanShipInteriorTransition(actor.roomId,'soins',actor)))\n"
+    }
+  ],
+  "errors": [],
+  "consoleErrors": [],
+  "missingAssets": [],
+  "captures": [
+    {
+      "file": "desktop-accepted-visible-group.png",
+      "bytes": 1385192,
+      "sha256": "fcfc74a0f58693ff73955c648972199de0cb51edc83407900aa335940394c9c6",
+      "nativeFullPage": true
+    },
+    {
+      "file": "desktop-route-prepared.png",
+      "bytes": 1377517,
+      "sha256": "296e3a74dd637b92ebed459f5762073f485e15d5b7547c4b8eae41776f466ecf",
+      "nativeFullPage": true
+    },
+    {
+      "file": "desktop-started.png",
+      "bytes": 1420222,
+      "sha256": "c17ea0e4fe53cb2614a1d11ee468ebc1b7d1d8d9d95f6be4c3934065b19bfeb0",
+      "nativeFullPage": true
+    },
+    {
+      "file": "desktop-checkpoint-refused.png",
+      "bytes": 1066746,
+      "sha256": "60668278a4982587f22865b58abd09904b51e25f2742a5a52e808e5f4a84eef4",
+      "nativeFullPage": true
+    },
+    {
+      "file": "desktop-paused-before-reload.png",
+      "bytes": 1363987,
+      "sha256": "70f1c743b5d015cb758e8ab2bebb9c1c980dff1c037499eb906c8aabd7b019f3",
+      "nativeFullPage": true
+    },
+    {
+      "file": "desktop-resumed-safe-group.png",
+      "bytes": 1329472,
+      "sha256": "8651231fa0d9b0ea68dc6c0ecb32c5079065fe2db8d15030f335c062b6a9d300",
+      "nativeFullPage": true
+    }
+  ],
+  "contexts": [
+    {
+      "id": "desktop",
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "input": "mouse and keyboard",
+      "fixtureId": "fresh-return",
+      "physicalDevice": false
+    }
+  ],
+  "walking": [
+    {
+      "context": "desktop",
+      "samples": [
+        {
+          "time": 5479.899999999907,
+          "room": "hangar",
+          "x": 240,
+          "y": 645,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6059.299999999814,
+          "room": "hangar",
+          "x": 245.01,
+          "y": 645.04,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6124.5,
+          "room": "hangar",
+          "x": 260.01,
+          "y": 645.17,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6187.09999999986,
+          "room": "hangar",
+          "x": 279.99,
+          "y": 645.34,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6211.899999999907,
+          "room": "hangar",
+          "x": 290.01,
+          "y": 645.43,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6261.399999999907,
+          "room": "hangar",
+          "x": 305.01,
+          "y": 645.56,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6320,
+          "room": "hangar",
+          "x": 320.01,
+          "y": 645.69,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6358.09999999986,
+          "room": "hangar",
+          "x": 335.01,
+          "y": 645.82,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6407.799999999814,
+          "room": "hangar",
+          "x": 349.98,
+          "y": 645.95,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6443.199999999953,
+          "room": "hangar",
+          "x": 360,
+          "y": 646.03,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6495.5,
+          "room": "hangar",
+          "x": 374.99,
+          "y": 646.16,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6535.09999999986,
+          "room": "hangar",
+          "x": 385.01,
+          "y": 646.25,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6587.299999999814,
+          "room": "hangar",
+          "x": 400.01,
+          "y": 646.38,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6659.199999999721,
+          "room": "hangar",
+          "x": 415.01,
+          "y": 646.51,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6674.299999999814,
+          "room": "hangar",
+          "x": 429.98,
+          "y": 646.64,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6708.100000000093,
+          "room": "hangar",
+          "x": 440,
+          "y": 646.72,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6760.699999999721,
+          "room": "hangar",
+          "x": 455,
+          "y": 646.85,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6829.799999999814,
+          "room": "hangar",
+          "x": 470,
+          "y": 646.98,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6868,
+          "room": "hangar",
+          "x": 484.97,
+          "y": 647.11,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6906.299999999814,
+          "room": "hangar",
+          "x": 494.99,
+          "y": 647.2,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6963.399999999907,
+          "room": "hangar",
+          "x": 514.97,
+          "y": 647.37,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 6998.600000000093,
+          "room": "hangar",
+          "x": 524.99,
+          "y": 647.46,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7057.199999999721,
+          "room": "hangar",
+          "x": 539.99,
+          "y": 647.59,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7131.399999999907,
+          "room": "hangar",
+          "x": 554.99,
+          "y": 647.72,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7142.5,
+          "room": "hangar",
+          "x": 569.99,
+          "y": 647.84,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7235.5,
+          "room": "hangar",
+          "x": 584.99,
+          "y": 647.97,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7247.399999999907,
+          "room": "hangar",
+          "x": 599.99,
+          "y": 648.1,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7286,
+          "room": "hangar",
+          "x": 610.01,
+          "y": 648.19,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7341.100000000093,
+          "room": "hangar",
+          "x": 629.96,
+          "y": 648.36,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7412.5,
+          "room": "hangar",
+          "x": 644.95,
+          "y": 648.49,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7425.5,
+          "room": "hangar",
+          "x": 654.97,
+          "y": 648.58,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7496,
+          "room": "hangar",
+          "x": 669.94,
+          "y": 648.71,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7508,
+          "room": "hangar",
+          "x": 679.96,
+          "y": 648.79,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7576.899999999907,
+          "room": "hangar",
+          "x": 694.96,
+          "y": 648.92,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7614.600000000093,
+          "room": "hangar",
+          "x": 709.93,
+          "y": 649.05,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7653.299999999814,
+          "room": "hangar",
+          "x": 719.95,
+          "y": 649.14,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7710.699999999721,
+          "room": "hangar",
+          "x": 739.93,
+          "y": 649.31,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7799.600000000093,
+          "room": "hangar",
+          "x": 754.93,
+          "y": 649.44,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7813.799999999814,
+          "room": "hangar",
+          "x": 769.9,
+          "y": 649.57,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7863.399999999907,
+          "room": "hangar",
+          "x": 779.92,
+          "y": 649.65,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7937.600000000093,
+          "room": "hangar",
+          "x": 799.9,
+          "y": 649.83,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 7977.199999999721,
+          "room": "hangar",
+          "x": 814.93,
+          "y": 649.96,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 8029.799999999814,
+          "room": "hangar",
+          "x": 820,
+          "y": 650,
+          "phase": "available",
+          "frozen": "false",
+          "actors": []
+        },
+        {
+          "time": 8236.19999999972,
+          "room": "hangar",
+          "x": 820,
+          "y": 650,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "samples": [
+        {
+          "time": 8883.19999999972,
+          "room": "hangar",
+          "x": 815.02,
+          "y": 649.89,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 8936,
+          "room": "hangar",
+          "x": 805,
+          "y": 649.67,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9009.799999999814,
+          "room": "hangar",
+          "x": 785.03,
+          "y": 649.24,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9060,
+          "room": "hangar",
+          "x": 765.02,
+          "y": 648.81,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9135.399999999907,
+          "room": "hangar",
+          "x": 745.08,
+          "y": 648.38,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9183.399999999907,
+          "room": "hangar",
+          "x": 730.08,
+          "y": 648.05,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9252.399999999907,
+          "room": "hangar",
+          "x": 705.1,
+          "y": 647.51,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9291.399999999907,
+          "room": "hangar",
+          "x": 695.08,
+          "y": 647.29,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9356.5,
+          "room": "hangar",
+          "x": 675.1,
+          "y": 646.86,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9400.100000000093,
+          "room": "hangar",
+          "x": 665.09,
+          "y": 646.64,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9463.19999999972,
+          "room": "hangar",
+          "x": 645.11,
+          "y": 646.21,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9505.799999999814,
+          "room": "hangar",
+          "x": 630.11,
+          "y": 645.88,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9579.299999999814,
+          "room": "hangar",
+          "x": 610.14,
+          "y": 645.45,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9625.600000000093,
+          "room": "hangar",
+          "x": 595.17,
+          "y": 645.13,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9692.69999999972,
+          "room": "hangar",
+          "x": 575.17,
+          "y": 644.69,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9737.299999999814,
+          "room": "hangar",
+          "x": 560.17,
+          "y": 644.37,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9805.69999999972,
+          "room": "hangar",
+          "x": 540.2,
+          "y": 643.93,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9847.69999999972,
+          "room": "hangar",
+          "x": 530.15,
+          "y": 643.72,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9928.5,
+          "room": "hangar",
+          "x": 510.17,
+          "y": 643.28,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 9974.399999999907,
+          "room": "hangar",
+          "x": 495.18,
+          "y": 642.96,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10046.299999999814,
+          "room": "hangar",
+          "x": 475.2,
+          "y": 642.53,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10089.299999999814,
+          "room": "hangar",
+          "x": 465.18,
+          "y": 642.31,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10159.5,
+          "room": "hangar",
+          "x": 445.18,
+          "y": 641.88,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10205.799999999814,
+          "room": "hangar",
+          "x": 430.21,
+          "y": 641.55,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10274.899999999907,
+          "room": "hangar",
+          "x": 410.21,
+          "y": 641.12,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10318.100000000093,
+          "room": "hangar",
+          "x": 400.19,
+          "y": 640.9,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10373.100000000093,
+          "room": "hangar",
+          "x": 385.22,
+          "y": 640.58,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10412,
+          "room": "hangar",
+          "x": 375.2,
+          "y": 640.36,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10485.19999999972,
+          "room": "hangar",
+          "x": 355.23,
+          "y": 639.93,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10528.799999999814,
+          "room": "hangar",
+          "x": 340.23,
+          "y": 639.6,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10598.899999999907,
+          "room": "hangar",
+          "x": 320.23,
+          "y": 639.17,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10635.299999999814,
+          "room": "hangar",
+          "x": 305.23,
+          "y": 638.84,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10697.100000000093,
+          "room": "hangar",
+          "x": 285.26,
+          "y": 638.41,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10734.19999999972,
+          "room": "hangar",
+          "x": 275.24,
+          "y": 638.19,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10795.600000000093,
+          "room": "hangar",
+          "x": 255.23,
+          "y": 637.76,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10874.19999999972,
+          "room": "hangar",
+          "x": 240.27,
+          "y": 637.43,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10890.899999999907,
+          "room": "hangar",
+          "x": 225.27,
+          "y": 637.11,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10930.19999999972,
+          "room": "hangar",
+          "x": 215.25,
+          "y": 636.89,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 10988.799999999814,
+          "room": "hangar",
+          "x": 200.26,
+          "y": 636.57,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 11038.100000000093,
+          "room": "hangar",
+          "x": 185.29,
+          "y": 636.24,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 11094.5,
+          "room": "hangar",
+          "x": 165.28,
+          "y": 635.81,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 11140.100000000093,
+          "room": "hangar",
+          "x": 155.27,
+          "y": 635.59,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 11181.899999999907,
+          "room": "hangar",
+          "x": 140.3,
+          "y": 635.27,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 11221.600000000093,
+          "room": "hangar",
+          "x": 130.28,
+          "y": 635.05,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 11270.899999999907,
+          "room": "hangar",
+          "x": 128,
+          "y": 635,
+          "phase": "accepted",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 11537.600000000093,
+          "room": "hangar",
+          "x": 128,
+          "y": 635,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "samples": [
+        {
+          "time": 12102.5,
+          "room": "hangar",
+          "x": 132.98,
+          "y": 635.11,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12173.899999999907,
+          "room": "hangar",
+          "x": 147.98,
+          "y": 635.43,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12194.899999999907,
+          "room": "hangar",
+          "x": 157.99,
+          "y": 635.65,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12236.100000000093,
+          "room": "hangar",
+          "x": 172.96,
+          "y": 635.97,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12292.399999999907,
+          "room": "hangar",
+          "x": 187.96,
+          "y": 636.3,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12355.5,
+          "room": "hangar",
+          "x": 202.95,
+          "y": 636.62,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12383,
+          "room": "hangar",
+          "x": 217.95,
+          "y": 636.95,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12440.299999999814,
+          "room": "hangar",
+          "x": 232.95,
+          "y": 637.27,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12478.5,
+          "room": "hangar",
+          "x": 247.97,
+          "y": 637.6,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12546.69999999972,
+          "room": "hangar",
+          "x": 262.94,
+          "y": 637.92,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12586.19999999972,
+          "room": "hangar",
+          "x": 272.96,
+          "y": 638.14,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12627.899999999907,
+          "room": "hangar",
+          "x": 287.92,
+          "y": 638.47,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12691.69999999972,
+          "room": "hangar",
+          "x": 307.93,
+          "y": 638.9,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12731.899999999907,
+          "room": "hangar",
+          "x": 322.92,
+          "y": 639.23,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12791.5,
+          "room": "hangar",
+          "x": 337.92,
+          "y": 639.55,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12866.799999999814,
+          "room": "hangar",
+          "x": 352.92,
+          "y": 639.88,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12879.19999999972,
+          "room": "hangar",
+          "x": 367.91,
+          "y": 640.2,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12919.899999999907,
+          "room": "hangar",
+          "x": 377.93,
+          "y": 640.42,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 12977.799999999814,
+          "room": "hangar",
+          "x": 397.91,
+          "y": 640.85,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13047.399999999907,
+          "room": "hangar",
+          "x": 412.9,
+          "y": 641.18,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13089.100000000093,
+          "room": "hangar",
+          "x": 427.9,
+          "y": 641.5,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13162.899999999907,
+          "room": "hangar",
+          "x": 442.9,
+          "y": 641.83,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13180.100000000093,
+          "room": "hangar",
+          "x": 457.89,
+          "y": 642.15,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13249.69999999972,
+          "room": "hangar",
+          "x": 472.89,
+          "y": 642.48,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13263,
+          "room": "hangar",
+          "x": 482.91,
+          "y": 642.69,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13333.899999999907,
+          "room": "hangar",
+          "x": 497.87,
+          "y": 643.02,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13347,
+          "room": "hangar",
+          "x": 507.89,
+          "y": 643.23,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13430.19999999972,
+          "room": "hangar",
+          "x": 522.86,
+          "y": 643.56,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13441.799999999814,
+          "room": "hangar",
+          "x": 537.85,
+          "y": 643.88,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13491.399999999907,
+          "room": "hangar",
+          "x": 547.87,
+          "y": 644.1,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13555.600000000093,
+          "room": "hangar",
+          "x": 567.85,
+          "y": 644.53,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13628.799999999814,
+          "room": "hangar",
+          "x": 582.84,
+          "y": 644.86,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13645.69999999972,
+          "room": "hangar",
+          "x": 597.84,
+          "y": 645.18,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13719.299999999814,
+          "room": "hangar",
+          "x": 612.87,
+          "y": 645.51,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13758.69999999972,
+          "room": "hangar",
+          "x": 627.83,
+          "y": 645.83,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13800.799999999814,
+          "room": "hangar",
+          "x": 642.86,
+          "y": 646.16,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13861.5,
+          "room": "hangar",
+          "x": 657.83,
+          "y": 646.48,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13905,
+          "room": "hangar",
+          "x": 672.82,
+          "y": 646.81,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 13970.5,
+          "room": "hangar",
+          "x": 692.8,
+          "y": 647.24,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14014.100000000093,
+          "room": "hangar",
+          "x": 702.81,
+          "y": 647.46,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14082.100000000093,
+          "room": "hangar",
+          "x": 722.76,
+          "y": 647.89,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14128.69999999972,
+          "room": "hangar",
+          "x": 737.79,
+          "y": 648.22,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14193.600000000093,
+          "room": "hangar",
+          "x": 757.76,
+          "y": 648.65,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14233.100000000093,
+          "room": "hangar",
+          "x": 772.76,
+          "y": 648.98,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14294.899999999907,
+          "room": "hangar",
+          "x": 792.76,
+          "y": 649.41,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14334.69999999972,
+          "room": "hangar",
+          "x": 802.78,
+          "y": 649.63,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14386.799999999814,
+          "room": "hangar",
+          "x": 817.75,
+          "y": 649.95,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14414.399999999907,
+          "room": "hangar",
+          "x": 820,
+          "y": 650,
+          "phase": "prepared",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14642.899999999907,
+          "room": "hangar",
+          "x": 820,
+          "y": 650,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 14673.5,
+          "room": "hangar",
+          "x": 820,
+          "y": 650,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 865.088,
+              "y": 625.819
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 895.07,
+              "y": 665.704
+            }
+          ]
+        },
+        {
+          "time": 14726.69999999972,
+          "room": "hangar",
+          "x": 820,
+          "y": 650,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 850.292,
+              "y": 628.285
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 880.221,
+              "y": 667.826
+            }
+          ]
+        },
+        {
+          "time": 14774.19999999972,
+          "room": "hangar",
+          "x": 820,
+          "y": 650,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 840.438,
+              "y": 629.927
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 865.372,
+              "y": 669.947
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "samples": [
+        {
+          "time": 15347,
+          "room": "hangar",
+          "x": 814.99,
+          "y": 649.89,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 840.438,
+              "y": 629.927
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 865.372,
+              "y": 669.947
+            }
+          ]
+        },
+        {
+          "time": 15409.19999999972,
+          "room": "hangar",
+          "x": 800.02,
+          "y": 649.57,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 825.47,
+              "y": 629.685
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 850.404,
+              "y": 669.684
+            }
+          ]
+        },
+        {
+          "time": 15433.600000000093,
+          "room": "hangar",
+          "x": 790.01,
+          "y": 649.35,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 820.025,
+              "y": 629.567
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 845.025,
+              "y": 669.567
+            }
+          ]
+        },
+        {
+          "time": 15507.69999999972,
+          "room": "hangar",
+          "x": 775.01,
+          "y": 649.02,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 805.028,
+              "y": 629.242
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 830.028,
+              "y": 669.242
+            }
+          ]
+        },
+        {
+          "time": 15525,
+          "room": "hangar",
+          "x": 760.04,
+          "y": 648.7,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 795.011,
+              "y": 629.025
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 820.011,
+              "y": 669.025
+            }
+          ]
+        },
+        {
+          "time": 15595.899999999907,
+          "room": "hangar",
+          "x": 755.01,
+          "y": 648.59,
+          "phase": "escorting",
+          "frozen": "true",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 16173.5,
+          "room": "hangar",
+          "x": 755.01,
+          "y": 648.59,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 870,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 900,
+              "y": 665
+            }
+          ]
+        },
+        {
+          "time": 16207.899999999907,
+          "room": "hangar",
+          "x": 750,
+          "y": 648.48,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 864.994,
+              "y": 625.189
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 894.993,
+              "y": 665.18
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "samples": [
+        {
+          "time": 16272.19999999972,
+          "room": "hangar",
+          "x": 735,
+          "y": 648.16,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 850.001,
+              "y": 625.665
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 880,
+              "y": 665.635
+            }
+          ]
+        },
+        {
+          "time": 16307.600000000093,
+          "room": "hangar",
+          "x": 720,
+          "y": 647.83,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 835.006,
+              "y": 626.033
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 865.004,
+              "y": 665.99
+            }
+          ]
+        },
+        {
+          "time": 16385.19999999972,
+          "room": "hangar",
+          "x": 714.99,
+          "y": 647.72,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 829.997,
+              "y": 626.128
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 859.995,
+              "y": 666.082
+            }
+          ]
+        },
+        {
+          "time": 16485.5,
+          "room": "hangar",
+          "x": 710.02,
+          "y": 647.62,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 825.017,
+              "y": 626.212
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 855.016,
+              "y": 666.164
+            }
+          ]
+        },
+        {
+          "time": 16547.69999999972,
+          "room": "hangar",
+          "x": 694.99,
+          "y": 647.29,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 809.989,
+              "y": 626.406
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 839.987,
+              "y": 666.355
+            }
+          ]
+        },
+        {
+          "time": 16588,
+          "room": "hangar",
+          "x": 680.02,
+          "y": 646.97,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 795.019,
+              "y": 626.529
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 825.018,
+              "y": 666.48
+            }
+          ]
+        },
+        {
+          "time": 16630,
+          "room": "hangar",
+          "x": 665,
+          "y": 646.64,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 779.989,
+              "y": 626.584
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 809.988,
+              "y": 666.539
+            }
+          ]
+        },
+        {
+          "time": 16696.600000000093,
+          "room": "hangar",
+          "x": 650.03,
+          "y": 646.32,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 765.019,
+              "y": 626.581
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 795.018,
+              "y": 666.543
+            }
+          ]
+        },
+        {
+          "time": 16736.5,
+          "room": "hangar",
+          "x": 635.03,
+          "y": 645.99,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 750.019,
+              "y": 626.529
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 780.018,
+              "y": 666.499
+            }
+          ]
+        },
+        {
+          "time": 16801.19999999972,
+          "room": "hangar",
+          "x": 615.03,
+          "y": 645.56,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 730.01,
+              "y": 626.403
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 760.008,
+              "y": 666.385
+            }
+          ]
+        },
+        {
+          "time": 16880,
+          "room": "hangar",
+          "x": 600.03,
+          "y": 645.23,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 715.01,
+              "y": 626.26
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 745.009,
+              "y": 666.251
+            }
+          ]
+        },
+        {
+          "time": 16891.799999999814,
+          "room": "hangar",
+          "x": 585.04,
+          "y": 644.91,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 700.011,
+              "y": 626.097
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 730.01,
+              "y": 666.098
+            }
+          ]
+        },
+        {
+          "time": 16934.899999999907,
+          "room": "hangar",
+          "x": 575.02,
+          "y": 644.69,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 689.992,
+              "y": 625.969
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 719.99,
+              "y": 665.976
+            }
+          ]
+        },
+        {
+          "time": 17000.399999999907,
+          "room": "hangar",
+          "x": 555.07,
+          "y": 644.26,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 670.044,
+              "y": 625.694
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 700.042,
+              "y": 665.713
+            }
+          ]
+        },
+        {
+          "time": 17087.399999999907,
+          "room": "hangar",
+          "x": 540.08,
+          "y": 643.93,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 655.046,
+              "y": 625.462
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 685.044,
+              "y": 665.489
+            }
+          ]
+        },
+        {
+          "time": 17101.69999999972,
+          "room": "hangar",
+          "x": 525.08,
+          "y": 643.61,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 640.048,
+              "y": 625.221
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 670.046,
+              "y": 665.256
+            }
+          ]
+        },
+        {
+          "time": 17188,
+          "room": "hangar",
+          "x": 510.08,
+          "y": 643.28,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 625.05,
+              "y": 624.962
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 655.048,
+              "y": 665.005
+            }
+          ]
+        },
+        {
+          "time": 17200.19999999972,
+          "room": "hangar",
+          "x": 495.09,
+          "y": 642.96,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 610.052,
+              "y": 624.697
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 640.05,
+              "y": 664.746
+            }
+          ]
+        },
+        {
+          "time": 17282,
+          "room": "hangar",
+          "x": 480.09,
+          "y": 642.63,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 595.055,
+              "y": 624.419
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 625.052,
+              "y": 664.475
+            }
+          ]
+        },
+        {
+          "time": 17293.19999999972,
+          "room": "hangar",
+          "x": 465.09,
+          "y": 642.31,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 580.058,
+              "y": 624.137
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 610.055,
+              "y": 664.198
+            }
+          ]
+        },
+        {
+          "time": 17334.899999999907,
+          "room": "hangar",
+          "x": 455.08,
+          "y": 642.09,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 570.039,
+              "y": 623.943
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 600.037,
+              "y": 664.008
+            }
+          ]
+        },
+        {
+          "time": 17394.5,
+          "room": "hangar",
+          "x": 440.11,
+          "y": 641.77,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 555.072,
+              "y": 623.65
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 585.069,
+              "y": 663.72
+            }
+          ]
+        },
+        {
+          "time": 17420.19999999972,
+          "room": "hangar",
+          "x": 440.11,
+          "y": 641.77,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 550.063,
+              "y": 623.551
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 580.06,
+              "y": 663.622
+            }
+          ]
+        },
+        {
+          "time": 17448.100000000093,
+          "room": "hangar",
+          "x": 425.11,
+          "y": 641.44,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 540.075,
+              "y": 623.352
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 570.072,
+              "y": 663.425
+            }
+          ]
+        },
+        {
+          "time": 17491.899999999907,
+          "room": "hangar",
+          "x": 415.1,
+          "y": 641.22,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 530.057,
+              "y": 623.15
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 560.054,
+              "y": 663.226
+            }
+          ]
+        },
+        {
+          "time": 17507.5,
+          "room": "hangar",
+          "x": 400.13,
+          "y": 640.9,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 515.09,
+              "y": 622.846
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 545.087,
+              "y": 662.927
+            }
+          ]
+        },
+        {
+          "time": 17598.799999999814,
+          "room": "hangar",
+          "x": 390.11,
+          "y": 640.68,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 505.072,
+              "y": 622.641
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 535.069,
+              "y": 662.723
+            }
+          ]
+        },
+        {
+          "time": 17618.600000000093,
+          "room": "hangar",
+          "x": 375.11,
+          "y": 640.36,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 490.076,
+              "y": 622.331
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 520.073,
+              "y": 662.417
+            }
+          ]
+        },
+        {
+          "time": 17698.69999999972,
+          "room": "hangar",
+          "x": 355.14,
+          "y": 639.92,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 470.1,
+              "y": 621.915
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 500.097,
+              "y": 662.004
+            }
+          ]
+        },
+        {
+          "time": 17719.100000000093,
+          "room": "hangar",
+          "x": 345.12,
+          "y": 639.71,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 460.082,
+              "y": 621.705
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 490.079,
+              "y": 661.795
+            }
+          ]
+        },
+        {
+          "time": 17800.399999999907,
+          "room": "hangar",
+          "x": 325.12,
+          "y": 639.27,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 440.077,
+              "y": 621.283
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 470.073,
+              "y": 661.377
+            }
+          ]
+        },
+        {
+          "time": 17840.5,
+          "room": "hangar",
+          "x": 305.14,
+          "y": 638.84,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 420.101,
+              "y": 620.86
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 450.098,
+              "y": 660.955
+            }
+          ]
+        },
+        {
+          "time": 17900.19999999972,
+          "room": "hangar",
+          "x": 285.17,
+          "y": 638.41,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 400.126,
+              "y": 620.434
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 430.122,
+              "y": 660.532
+            }
+          ]
+        },
+        {
+          "time": 17980.5,
+          "room": "hangar",
+          "x": 265.19,
+          "y": 637.97,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 380.15,
+              "y": 620.008
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 410.147,
+              "y": 660.107
+            }
+          ]
+        },
+        {
+          "time": 18073.19999999972,
+          "room": "hangar",
+          "x": 250.19,
+          "y": 637.65,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 365.154,
+              "y": 619.686
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 395.15,
+              "y": 659.787
+            }
+          ]
+        },
+        {
+          "time": 18085.19999999972,
+          "room": "hangar",
+          "x": 235.2,
+          "y": 637.32,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 350.157,
+              "y": 619.364
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 380.154,
+              "y": 659.466
+            }
+          ]
+        },
+        {
+          "time": 18112,
+          "room": "hangar",
+          "x": 225.18,
+          "y": 637.11,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 340.139,
+              "y": 619.149
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 370.136,
+              "y": 659.251
+            }
+          ]
+        },
+        {
+          "time": 18185,
+          "room": "hangar",
+          "x": 205.2,
+          "y": 636.67,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 320.164,
+              "y": 618.719
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 350.161,
+              "y": 658.822
+            }
+          ]
+        },
+        {
+          "time": 18233.19999999972,
+          "room": "hangar",
+          "x": 195.19,
+          "y": 636.46,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 310.146,
+              "y": 618.503
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 340.143,
+              "y": 658.607
+            }
+          ]
+        },
+        {
+          "time": 18246.799999999814,
+          "room": "hangar",
+          "x": 180.22,
+          "y": 636.13,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 295.18,
+              "y": 618.181
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 325.176,
+              "y": 658.285
+            }
+          ]
+        },
+        {
+          "time": 18316.5,
+          "room": "hangar",
+          "x": 170.2,
+          "y": 635.91,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 285.162,
+              "y": 617.965
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 315.159,
+              "y": 658.069
+            }
+          ]
+        },
+        {
+          "time": 18357.600000000093,
+          "room": "hangar",
+          "x": 155.21,
+          "y": 635.59,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 270.166,
+              "y": 617.641
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 300.162,
+              "y": 657.746
+            }
+          ]
+        },
+        {
+          "time": 18427.299999999814,
+          "room": "hangar",
+          "x": 140.24,
+          "y": 635.27,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 255.199,
+              "y": 617.318
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 285.196,
+              "y": 657.423
+            }
+          ]
+        },
+        {
+          "time": 18442.5,
+          "room": "hangar",
+          "x": 130.22,
+          "y": 635.05,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 245.181,
+              "y": 617.101
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 275.178,
+              "y": 657.207
+            }
+          ]
+        },
+        {
+          "time": 18494.299999999814,
+          "room": "hangar",
+          "x": 128,
+          "y": 635,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 230.185,
+              "y": 616.777
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 260.181,
+              "y": 656.883
+            }
+          ]
+        },
+        {
+          "time": 18557,
+          "room": "hangar",
+          "x": 128,
+          "y": 635,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 210.18,
+              "y": 616.344
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 240.176,
+              "y": 656.451
+            }
+          ]
+        },
+        {
+          "time": 18607.299999999814,
+          "room": "hangar",
+          "x": 128,
+          "y": 635,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 190.204,
+              "y": 615.912
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 220.201,
+              "y": 656.019
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "samples": [
+        {
+          "time": 1877.3999999999069,
+          "room": "hangar",
+          "x": 240,
+          "y": 645,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 270.166,
+              "y": 617.641
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 300.162,
+              "y": 657.746
+            }
+          ]
+        },
+        {
+          "time": 1915.1999999997206,
+          "room": "hangar",
+          "x": 240,
+          "y": 645,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 266.132,
+              "y": 620.561
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 295.67,
+              "y": 659.895
+            }
+          ]
+        },
+        {
+          "time": 2042.5,
+          "room": "hangar",
+          "x": 240,
+          "y": 645,
+          "phase": "escorting",
+          "frozen": "false",
+          "actors": [
+            {
+              "id": "return-alpha",
+              "room": "hangar",
+              "x": 260,
+              "y": 625
+            },
+            {
+              "id": "return-beta",
+              "room": "hangar",
+              "x": 285,
+              "y": 665
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "writes": [
+    {
+      "context": "desktop",
+      "writes": [
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 1,
+            "sourceRecoveryRevision": 33,
+            "phase": "accepted",
+            "post": null,
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 870,
+                "y": 625,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 900,
+                "y": 665,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 0
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "writes": [
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 2,
+            "sourceRecoveryRevision": 33,
+            "phase": "prepared",
+            "post": "medical-bed",
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 870,
+                "y": 625,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 900,
+                "y": 665,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 0
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "writes": [
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 3,
+            "sourceRecoveryRevision": 33,
+            "phase": "escorting",
+            "post": "medical-bed",
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 870,
+                "y": 625,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 900,
+                "y": 665,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 0
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "writes": [
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 3,
+            "sourceRecoveryRevision": 33,
+            "phase": "escorting",
+            "post": "medical-bed",
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 870,
+                "y": 625,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 900,
+                "y": 665,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 0
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "writes": [
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 4,
+            "sourceRecoveryRevision": 33,
+            "phase": "escorting",
+            "post": "medical-bed",
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 825.0173039480505,
+                "y": 626.2119677195924,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 855.0158910219599,
+                "y": 666.1636194294015,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 0.1500000000000018
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        },
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 5,
+            "sourceRecoveryRevision": 33,
+            "phase": "escorting",
+            "post": "medical-bed",
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 550.0632426976601,
+                "y": 623.550779217768,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 580.0603978575509,
+                "y": 663.6217928486616,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 1.0666000000000002
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        },
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 6,
+            "sourceRecoveryRevision": 33,
+            "phase": "escorting",
+            "post": "medical-bed",
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 270.1656583680199,
+                "y": 617.6409248795475,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 300.1621069691601,
+                "y": 657.7460113386355,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 1.9998000000000054
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        }
+      ]
+    },
+    {
+      "context": "desktop",
+      "writes": [
+        {
+          "escort": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "revision": 7,
+            "sourceRecoveryRevision": 33,
+            "phase": "escorting",
+            "post": "medical-bed",
+            "actors": [
+              {
+                "id": "return-alpha",
+                "roomId": "hangar",
+                "x": 266.13171992728655,
+                "y": 620.5611544349717,
+                "facing": -1
+              },
+              {
+                "id": "return-beta",
+                "roomId": "hangar",
+                "x": 295.669772225103,
+                "y": 659.8952736649552,
+                "facing": -1
+              }
+            ],
+            "simulatedSeconds": 2.0164000000000053
+          },
+          "docking": {
+            "version": 1,
+            "ownerCreatedAt": "2026-11-09T12:00:00.000Z",
+            "clanShipId": "avp-clan-mothership",
+            "personalShipId": "classic-predator-spaceship",
+            "status": "aboard",
+            "roomId": "hangar"
+          },
+          "marks": 135
+        }
+      ]
+    }
+  ],
+  "nativeImages": [
+    {
+      "context": "desktop",
+      "path": "/game/homeworld/v84/npcs/hunter/11.png",
+      "bytes": 2181012,
+      "sha256": "1e7ab770cff8a7c19470f29fadb28d4ec9ac14b3c0cb28a4230813872e60ac1a",
+      "exact": true
+    },
+    {
+      "context": "desktop",
+      "path": "/game/homeworld/v84/npcs/hunter/17.png",
+      "bytes": 2397985,
+      "sha256": "5a6137887c71d23234bf7d1c36ba4cfc5a3d8f2b9387c4288251c6478109de02",
+      "exact": true
+    },
+    {
+      "context": "desktop",
+      "path": "/game/homeworld/v84/npcs/hunter/11.png",
+      "bytes": 2181012,
+      "sha256": "1e7ab770cff8a7c19470f29fadb28d4ec9ac14b3c0cb28a4230813872e60ac1a",
+      "exact": true
+    },
+    {
+      "context": "desktop",
+      "path": "/game/homeworld/v84/npcs/hunter/17.png",
+      "bytes": 2397985,
+      "sha256": "5a6137887c71d23234bf7d1c36ba4cfc5a3d8f2b9387c4288251c6478109de02",
+      "exact": true
+    }
+  ],
+  "browserVersion": "154.0.8037.57",
+  "failure": {
+    "context": "desktop",
+    "check": "the physical door waits for both returnees and commits group plus docking together",
+    "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(before.clanShipReturnEscort.actors.every(actor=>motion.canClanShipInteriorTransition(actor.roomId,'soins',actor)))\n\n    at file:///workspace/yautja-reprise-20261109/scripts/qa-clan-return-escort-browser-20261109.mjs:164:38\n    at async check (file:///workspace/yautja-reprise-20261109/scripts/qa-clan-return-escort-browser-20261109.mjs:114:67)\n    at async file:///workspace/yautja-reprise-20261109/scripts/qa-clan-return-escort-browser-20261109.mjs:162:4"
+  }
+}

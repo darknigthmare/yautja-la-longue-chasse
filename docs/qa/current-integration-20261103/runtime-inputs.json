@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2204,
-  "bytes": 1093166757,
+  "files": 2207,
+  "bytes": 1093220902,
   "entries": [
     {
       "path": ".openai/hosting.json",
@@ -175,8 +175,8 @@
     },
     {
       "path": "app/game/ClanShipHub.tsx",
-      "bytes": 16634,
-      "sha256": "59392b7b6dd56ba63a47f64e8cd1c97fc57bc0d75f226ced3dfe0a6f8496e36a"
+      "bytes": 16822,
+      "sha256": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585"
     },
     {
       "path": "app/game/ClanShipIncidentPanel.module.css",
@@ -205,8 +205,8 @@
     },
     {
       "path": "app/game/ClanShipInterior.tsx",
-      "bytes": 40517,
-      "sha256": "6894668bdb4bf321e04705e02c84d8c8ff12ed85570157cf0a72bc6f0abb85a0"
+      "bytes": 48424,
+      "sha256": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960"
     },
     {
       "path": "app/game/ClanShipOperationsPanel.module.css",
@@ -217,6 +217,16 @@
       "path": "app/game/ClanShipOperationsPanel.tsx",
       "bytes": 20619,
       "sha256": "5061870449cdefc85c86757c2e1ddff03254d288bbc644620b44866f09d92bdd"
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.module.css",
+      "bytes": 1405,
+      "sha256": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273"
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.tsx",
+      "bytes": 8294,
+      "sha256": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9"
     },
     {
       "path": "app/game/ClanShipSpaceEncounter.module.css",
@@ -665,8 +675,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 362372,
-      "sha256": "916cdf0773a8d26b2e26fde9d3a636aca79d900283ca05dc063c4fe42aedc8df"
+      "bytes": 365531,
+      "sha256": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1265,8 +1275,8 @@
     },
     {
       "path": "app/game/HuntCanvas.tsx",
-      "bytes": 465503,
-      "sha256": "8cb850ed2854a369f9ff11ff7a3c1ab0e62c1b323b01c9ce12ee2cbda93302a5"
+      "bytes": 466662,
+      "sha256": "4d96880d167b6eec4d725315f359bf89bf2ea02d590430d37d694eb211b08fb0"
     },
     {
       "path": "app/game/HuntFieldGuideV112.tsx",
@@ -1280,8 +1290,8 @@
     },
     {
       "path": "app/game/HuntRitesMenuV77.tsx",
-      "bytes": 4417,
-      "sha256": "fe1966bf0c96db480913db6e0b0a7973fc6b2b789e4fcd2a6f9bbcf0f89eddc8"
+      "bytes": 5920,
+      "sha256": "9bc54a051d67f1b5627f1ce0d201c374e824da04652efcfcbb37deb6a45cd610"
     },
     {
       "path": "app/game/HuntRitualMeterV112.tsx",
@@ -3270,8 +3280,8 @@
     },
     {
       "path": "app/game/save.ts",
-      "bytes": 95730,
-      "sha256": "17a5e2ccbfe9923a32a4a469ee6e5a3573eee935dbce8e7bc8572381cab75b29"
+      "bytes": 96394,
+      "sha256": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba"
     },
     {
       "path": "app/game/ship-level.css",
@@ -3482,6 +3492,11 @@
       "path": "app/game/systems/clanShipOperations.ts",
       "bytes": 49811,
       "sha256": "c066bdd255db4041f72a808800284a26bcf6c7151034c140d80dc91b4c4c82ee"
+    },
+    {
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "bytes": 21049,
+      "sha256": "0fac9efb73358b1f744a50e3812062264286c855450461a479cb1b75c3eb76cc"
     },
     {
       "path": "app/game/systems/clanShipSpaceEncounter.ts",
@@ -5235,8 +5250,8 @@
     },
     {
       "path": "app/game/systems/huntRitesRuntimeV77.ts",
-      "bytes": 13349,
-      "sha256": "fa9098ff0f1c34cfb7849e515556398564bcd5c0d7f3439f4216a0338b318ab3"
+      "bytes": 14393,
+      "sha256": "fc36cb457e81c27172840fab2f2223775016b9a5dc7dc5eb8e83f5dcbd32f6f7"
     },
     {
       "path": "app/game/systems/huntStructuralBarrierV94.ts",
@@ -5815,8 +5830,8 @@
     },
     {
       "path": "app/game/systems/ritesOfHuntV77.ts",
-      "bytes": 19219,
-      "sha256": "9142fff55727028cba870670607a0506fa42ca8303b25e0a6155481243b45e57"
+      "bytes": 19681,
+      "sha256": "de2b71f6b38a76b6cda7d9c389e345349fc0ed795d5e2e637988c7817318faba"
     },
     {
       "path": "app/game/systems/sceneAudio.ts",
@@ -5995,8 +6010,8 @@
     },
     {
       "path": "app/game/types.ts",
-      "bytes": 20597,
-      "sha256": "98678751a44f09371f82460907b24cde62ed90886cc1f98014827c25b9e99b29"
+      "bytes": 20796,
+      "sha256": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855"
     },
     {
       "path": "app/game/useGeneratedWarCatalogV102.ts",
@@ -10445,8 +10460,8 @@
     },
     {
       "path": "tests/carcass-anatomy-v112.test.mjs",
-      "bytes": 8945,
-      "sha256": "bae476edffa54daab2169cc86b2674c1f8b428a4ade47c0f9ccdc98aff81de56"
+      "bytes": 11220,
+      "sha256": "111942301d2eae657771855a2788093f5bfd12bc0ce21b29ade21949fb7a088e"
     },
     {
       "path": "tests/cloud-account-gamepad-isolation-v71.test.mjs",
@@ -10905,8 +10920,8 @@
     },
     {
       "path": "tests/hunt-carcass-runtime-v112.test.mjs",
-      "bytes": 9973,
-      "sha256": "224154ee9d446eabc3895d876bf8f8b81459cb1c936269801e2a6c1e825e1f01"
+      "bytes": 14713,
+      "sha256": "c9457a415fd4046ece200d60e787743db20c6010b136f324a258c8b168098056"
     },
     {
       "path": "tests/hunt-carried-corpse-menu-v112.test.mjs",
@@ -10915,8 +10930,8 @@
     },
     {
       "path": "tests/hunt-catalogue-contract-v112.test.mjs",
-      "bytes": 14315,
-      "sha256": "695460bdf1b91ce649be16f2ac63c6901fa21ef8b631455a18052969c9228de4"
+      "bytes": 14412,
+      "sha256": "48d18e7663875829395c68c165d9a074d516583eb5544bed66e25e7ed51a24b8"
     },
     {
       "path": "tests/hunt-field-guide-v112.test.mjs",

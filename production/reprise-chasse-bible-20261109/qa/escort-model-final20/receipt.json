@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "classification": "EXECUTED_WORKTREE_MODEL_TESTS_THEN_COMMITTED",
+  "observedCheckout": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+  "implementationCommit": "85ca8099d96fffb37fbe6f46b26a76c8eaf73df1",
+  "executionContext": "Test exécuté sur cb5 avec overlay modèle/régression, puis rapproché aux octets committés dans85ca ; aucune nouvelle exécution sur85ca n’est prétendue par ce reçu.",
+  "command": [
+    "node",
+    "--experimental-strip-types",
+    "--test",
+    "--test-isolation=none",
+    "--test-concurrency=1",
+    "tests/clan-ship-return-escort.test.mjs",
+    "tests/clan-ship-return-escort-save.test.mjs"
+  ],
+  "exitCodeObserved": 0,
+  "exitStatusProvenance": "Executing agent /root/bible_coherence_nov9, final process87473.",
+  "tests": 20,
+  "passed": 20,
+  "failed": 0,
+  "skipped": 0,
+  "log": "model-and-save-20.log",
+  "logSha256": "5a6df7d1b382e15e91e690aba1c2724b11ef26f7262f57e85e55b5f0cb7eab5e",
+  "postExecutionSourceComparison": [
+    {
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "sha256": "0fac9efb73358b1f744a50e3812062264286c855450461a479cb1b75c3eb76cc",
+      "equalToCommittedBytes": true
+    },
+    {
+      "path": "tests/clan-ship-return-escort.test.mjs",
+      "sha256": "5f83e827a19b7457a7cf43084e60554a22c1e71d4a4a705d098d8a825aaab464",
+      "equalToCommittedBytes": true
+    }
+  ],
+  "limits": [
+    "20 tests reprennent les19 antérieurs et ajoutent une régression de formation. Les suites historiques91/19 et UI39 se recouvrent avec la validation finale539."
+  ]
+}

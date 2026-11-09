@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "executedCodeCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+  "context": "Commands completed and exit0 was observed before the formation correction. Tracked application and tests matched this commit. QA recipes, workflows and documentation were still uncommitted. This receipt is retained as an earlier checkpoint, not attributed to the later formation.",
+  "nativeTests": 538,
+  "nativeFailures": 0,
+  "nativeSkipped": 0,
+  "records": [
+    {
+      "command": [
+        "node",
+        "node_modules/next/dist/bin/next",
+        "build",
+        "--webpack"
+      ],
+      "exitCodeObserved": 0,
+      "log": "next-build.log",
+      "bytes": 958,
+      "sha256": "e7b343aadbcf08381f51651a961370cd8c141391974257f7ab56ac1b81ac37c7",
+      "scope": "Application Next webpack build, not complete release packaging or a deployment."
+    },
+    {
+      "command": [
+        "node",
+        "--experimental-strip-types",
+        "--test",
+        "--test-reporter=spec",
+        "--test-concurrency=1",
+        "tests/clan-ship-docking.test.mjs",
+        "tests/clan-ship-save.test.mjs",
+        "tests/clan-ship-interior.test.mjs",
+        "tests/clan-ship-operations.test.mjs",
+        "tests/clan-ship-space-encounter.test.mjs",
+        "tests/clan-ship-operations-save.test.mjs",
+        "tests/clan-ship-incidents.test.mjs",
+        "tests/clan-ship-trophy-case.test.mjs",
+        "tests/clan-ship-trophy-hearing.test.mjs",
+        "tests/clan-ship-trophy-hearing-presentation.test.mjs",
+        "tests/clan-ship-return-escort.test.mjs",
+        "tests/clan-ship-return-escort-save.test.mjs",
+        "tests/clan-ship-return-escort-ui.test.mjs",
+        "tests/buried-cradle-return.test.mjs",
+        "tests/complete-archive.test.mjs",
+        "tests/campaign-slots.test.mjs",
+        "tests/cloud-account-archives-v71.test.mjs",
+        "tests/game-client-ship-flow.test.mjs",
+        "tests/campaign-resume-priority-v94.test.mjs",
+        "tests/ship-hub-input-runtime.test.mjs",
+        "tests/carcass-anatomy-v112.test.mjs",
+        "tests/harvest-inventory-v112.test.mjs",
+        "tests/hunt-carcass-runtime-v112.test.mjs",
+        "tests/hunt-catalogue-contract-v112.test.mjs",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs",
+        "tests/hunt-accessibility-v112.test.mjs"
+      ],
+      "exitCodeObserved": 0,
+      "log": "native-regressions.log",
+      "bytes": 58598,
+      "sha256": "f092e13a3b76a4148d7648cec808fa8a77530e2254b5737ca0cc72c1e89d63bc",
+      "scope": "26 native regression files on the earlier formation; no browser or hardware claim."
+    }
+  ]
+}

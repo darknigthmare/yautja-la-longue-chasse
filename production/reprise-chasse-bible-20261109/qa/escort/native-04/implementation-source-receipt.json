@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "classification": "BYTE_IDENTITY_OF_TESTED_PRODUCT_NOT_A_NEW_BROWSER_RUN",
+  "implementationCommit": "cb5c4a47d1313f031a1a8208a83a8578a1256d94",
+  "browserReport": "browser-verification.json",
+  "browserReportSha256": "b866ac8ed69d2ccaa788fb6171a83b9d7fc8aa7bbec338cb3b801ed4cf375492",
+  "observedCheckout": "ebe17184965307d9c636d45561a19c431802c4ab",
+  "observedWorkingTreeDirty": true,
+  "productAndFixtureEntries": [
+    {
+      "path": "app/game/GameClient.tsx",
+      "browserSourceSha256": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+      "committedSourceSha256": "3e93e9ca2791224d5653f266df7e4d625d7c88fca075da8a137391fbde39bb19",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipHub.tsx",
+      "browserSourceSha256": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585",
+      "committedSourceSha256": "766ac8283e3937b92e2ed76f67b1459e44901d1ae3dc7072ee1168cafbb9a585",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipInterior.tsx",
+      "browserSourceSha256": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+      "committedSourceSha256": "2cbcf5ddfc4ffad9fdb81a632dc950f8d636e20f49f4acbaea5af991cc19e960",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.tsx",
+      "browserSourceSha256": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9",
+      "committedSourceSha256": "1531c314f7ae61276e3269717e1b3a50e0907bf448605e5c27a11fca9753bbe9",
+      "equal": true
+    },
+    {
+      "path": "app/game/ClanShipReturnEscortScene.module.css",
+      "browserSourceSha256": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273",
+      "committedSourceSha256": "a172f0f62ed7f0a842181aaef9ecf7ae95f0f4e841c6c3c1a2ab5596b431e273",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/clanShipReturnEscort.ts",
+      "browserSourceSha256": "40af2e2c7d00bff8235071271f6cdebbae6e9902b67bc3dd45a98ec83e79bb23",
+      "committedSourceSha256": "40af2e2c7d00bff8235071271f6cdebbae6e9902b67bc3dd45a98ec83e79bb23",
+      "equal": true
+    },
+    {
+      "path": "app/game/systems/clanShipInterior.ts",
+      "browserSourceSha256": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+      "committedSourceSha256": "4f8cbf8512dd88e19d36659d73a560615ce48cb13ae2498304372305cb944096",
+      "equal": true
+    },
+    {
+      "path": "app/game/HomeworldNpcSpriteV84.tsx",
+      "browserSourceSha256": "e6a069be9e16f09e63c254880e4d8d529757dd0e30386781539df150b13ef8bc",
+      "committedSourceSha256": "e6a069be9e16f09e63c254880e4d8d529757dd0e30386781539df150b13ef8bc",
+      "equal": true
+    },
+    {
+      "path": "app/game/save.ts",
+      "browserSourceSha256": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+      "committedSourceSha256": "cbb36d075302bc3cde590755be350c2a2de9813ce1a1c584007d783a5e1b83ba",
+      "equal": true
+    },
+    {
+      "path": "app/game/types.ts",
+      "browserSourceSha256": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+      "committedSourceSha256": "3a72c34ff6857b74023e23880cdc405d6fc82161867946da529d2d5a03a76855",
+      "equal": true
+    },
+    {
+      "path": "tests/helpers/clan-ship-return-escort-fixture.mjs",
+      "browserSourceSha256": "15103018589d12c67b3ffd28de55271923f8c530d9cfd06d802d99b57d428b5e",
+      "committedSourceSha256": "15103018589d12c67b3ffd28de55271923f8c530d9cfd06d802d99b57d428b5e",
+      "equal": true
+    }
+  ],
+  "instrumentation": [
+    {
+      "path": "scripts/qa-clan-return-escort-browser-20261109.mjs",
+      "browserSourceSha256": "9c485184a609eadbe260bb53771617c8b7af195835dfa4b88ce42335793ca00f",
+      "currentSha256": "8888870ef729c35bcfe28da0b0d225a3bca04179c0b154b368aa44c6c7c391bf",
+      "currentEqualsExecutedSource": false
+    }
+  ],
+  "scope": "Ten application files and the disclosed prerequisite fixture have the bytes committed in cb5c4a47. The actual report keeps checkout ebe171849 plus a dirty tree; this comparison does not execute the browser again."
+}

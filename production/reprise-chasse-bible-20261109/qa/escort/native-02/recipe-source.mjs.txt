@@ -1,0 +1,196 @@
+#!/usr/bin/env node
+/** OPS-B04 in the actual desktop GameClient. Only initial prerequisites and
+ * deliberate storage faults are injected; actor movement and quest callbacks
+ * remain owned by the product. Native screenshots are never resized. */
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
+import {chromium} from 'playwright-core';
+import {createServer} from 'vite';
+import {fixture,started,walk,settle,act,located,saves,escort,motion,docking,clone} from '../tests/helpers/clan-ship-return-escort-fixture.mjs';
+
+const root=fileURLToPath(new URL('../',import.meta.url));
+const out=path.resolve(root,process.env.CLAN_RETURN_ESCORT_QA_OUTPUT??'production/reprise-chasse-bible-20261109/qa/escort/native-01');
+const port=Number(process.env.CLAN_RETURN_ESCORT_QA_PORT??4198),origin='http://127.0.0.1:'+port;
+const sha256=raw=>createHash('sha256').update(raw).digest('hex');
+await fs.mkdir(out,{recursive:true});
+assert.equal(await fs.access(path.join(out,'browser-verification.json')).then(()=>true,()=>false),false,'Preserve any earlier run: choose a new output directory.');
+
+function portable(save){
+ const parsed=saves.parseSaveImport(saves.exportSave(save));assert.ok(parsed.save,parsed.failure);
+ assert.deepEqual(parsed.save.clanShipReturnEscort,save.clanShipReturnEscort);return parsed.save;
+}
+const fresh=fixture();fresh.profile.hunterName='QA retour du clan';fresh.settings.masterVolume=0;
+assert.equal(fresh.clanShipReturnEscort,undefined);
+assert.equal(escort.evaluateClanShipReturnEscortOffer(fresh).allowed,true);
+let separated=started();
+const passage=walk(separated,motion.CLAN_SHIP_INTERIOR_ROOMS.hangar.servicePoint,{x:128,y:635});assert.equal(passage.arrived,true);
+separated=settle(passage.save,passage.leader);
+separated=act(separated,{type:'transfer-room',roomId:'soins'},{roomId:'hangar',x:passage.leader.x,y:passage.leader.y});
+separated=located(separated,'hangar');separated.profile.hunterName='QA retour séparé';separated.settings.masterVolume=0;
+assert.equal(separated.clanShipReturnEscort.phase,'escorting');assert.ok(separated.clanShipReturnEscort.actors.every(actor=>actor.roomId==='soins'));
+const outside=clone(separated),disembarked=docking.actClanShipDocking(outside.clanShipDocking,{type:'return-to-personal'},
+ {ownerCreatedAt:outside.createdAt,personalShipId:outside.clanShipDocking.personalShipId});
+assert.equal(disembarked.accepted,true);outside.clanShipDocking=disembarked.state;portable(outside);
+const seeds=[
+ {id:'fresh-return',file:'initial-return-fixture.json',save:portable(fresh),description:'Synthetic adult campaign. Onboarding, confinement/triage prerequisites and the actual spatial reducers prepare the completed space-recovery receipt. Those prerequisites are NOT browser-played. No B04 acceptance, movement, medical control or report is seeded.'},
+ {id:'separated-return',file:'initial-separated-fixture.json',save:portable(separated),description:'Synthetic interruption fixture. The real escort reducer and native path solver prepare a group already across the door in soins, still escorting; the player resumes separately in hangar. Those preparatory moves are NOT browser-played.'},
+ {id:'outside-return',file:'initial-outside-fixture.json',save:portable(outside),description:'Portable boundary fixture only: the same waiting group remains in soins while the player is in the docked personal ship. Native export/import must preserve the group; this initial version of the browser recipe does not claim a complete outside-ship route.'},
+];
+const disclosures=[];
+for(const seed of seeds){const raw=JSON.stringify(seed.save,null,2)+'\n';await fs.writeFile(path.join(out,seed.file),raw);disclosures.push({id:seed.id,file:seed.file,sha256:sha256(raw),ownerCreatedAt:seed.save.createdAt,description:seed.description,browserPlayed:false});}
+await fs.writeFile(path.join(out,'fixture-disclosure.json'),JSON.stringify(disclosures,null,2)+'\n');
+if(process.argv.includes('--fixtures-only')){console.log(JSON.stringify({fixtureValidationOnly:true,browserExecuted:false,disclosures},null,2));process.exit(0);}
+
+const sourceFiles=['app/game/GameClient.tsx','app/game/ClanShipHub.tsx','app/game/ClanShipInterior.tsx','app/game/ClanShipReturnEscortScene.tsx','app/game/ClanShipReturnEscortScene.module.css','app/game/systems/clanShipReturnEscort.ts','app/game/systems/clanShipInterior.ts','app/game/HomeworldNpcSpriteV84.tsx','app/game/save.ts','app/game/types.ts','tests/helpers/clan-ship-return-escort-fixture.mjs','scripts/qa-clan-return-escort-browser-20261109.mjs'];
+const fingerprints=async()=>Object.fromEntries(await Promise.all(sourceFiles.map(async file=>[file,sha256(await fs.readFile(path.join(root,file)))])));
+const report={schemaVersion:1,startedAt:new Date().toISOString(),checkoutCommit:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),
+ workingTreeDirty:execFileSync('git',['status','--porcelain'],{cwd:root,encoding:'utf8'}).trim().length>0,scope:'Actual GameClient, physical interior controller, B04 model and local campaign writer. Constructed prerequisites and interruption fixtures are declared. No full campaign, human understanding, physical device, new walk animation, artistic or target-performance qualification.',
+ sourceSha256:await fingerprints(),fixtures:disclosures,browserExecuted:false,passed:false,checks:[],errors:[],consoleErrors:[],missingAssets:[],captures:[],contexts:[],walking:[],writes:[],nativeImages:[]};
+let browser,server,page,contextId='',currentCheck='';
+const imageTasks=[];
+const nativeSources={'/game/homeworld/v84/npcs/hunter/17.png':'5a6137887c71d23234bf7d1c36ba4cfc5a3d8f2b9387c4288251c6478109de02','/game/homeworld/v84/npcs/hunter/11.png':'1e7ab770cff8a7c19470f29fadb28d4ec9ac14b3c0cb28a4230813872e60ac1a'};
+try{
+ browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE??'/usr/bin/chromium',args:['--no-sandbox','--disable-dev-shm-usage']});report.browserVersion=browser.version();
+ server=await createServer({configFile:path.join(root,'desktop/vite.config.ts'),plugins:[{name:'qa-document-without-favicon',configureServer(server){server.middlewares.use((request,response,next)=>{if(request.url==='/favicon.ico'){response.writeHead(204);response.end();}else next();});}}],server:{host:'127.0.0.1',port,strictPort:true}});await server.listen();
+ for(const run of [{id:'desktop',viewport:{width:1440,height:1000},seed:seeds[0],post:'medical-bed',faults:true},
+  {id:'touch-390',viewport:{width:390,height:844},seed:seeds[0],post:'medical-terminal',faults:false},
+  {id:'separated-320',viewport:{width:320,height:740},seed:seeds[1],post:'medical-bed',faults:false}]){
+  contextId=run.id;const context=await browser.newContext({viewport:run.viewport,hasTouch:true,reducedMotion:'reduce'});
+  await context.addInitScript(({key,save,label})=>{
+   if(!localStorage.getItem('__returnEscortQaSeeded')){localStorage.setItem(key,JSON.stringify(save));localStorage.setItem('__returnEscortQaSeeded',label);}
+   const api={refuse:null,refusals:0,writes:[],samples:[]};window.__returnEscortQa=api;
+   const original=Storage.prototype.setItem;
+   Storage.prototype.setItem=function(name,value){
+    if(this===localStorage&&name===key){
+     let parsed;try{parsed=JSON.parse(value);}catch{}
+     if(parsed?.clanShipReturnEscort){
+      let before;try{before=JSON.parse(localStorage.getItem(key));}catch{}
+      const next=parsed.clanShipReturnEscort;
+      if(api.refuse==='medical'&&next.phase==='at-medical'||api.refuse==='movement'&&next.phase==='escorting'&&before?.clanShipReturnEscort&&JSON.stringify(next.actors)!==JSON.stringify(before.clanShipReturnEscort.actors)){
+       api.refusals++;throw new DOMException('QA: return escort campaign write refused','QuotaExceededError');
+      }
+      api.writes.push({escort:next,docking:parsed.clanShipDocking,marks:parsed.profile.clanMarks});
+     }
+    }
+    return original.call(this,name,value);
+   };
+   let previous='';
+   const observe=()=>{
+    const scene=document.querySelector('[data-clan-interior]');
+    if(scene){const sample={time:performance.now(),room:scene.getAttribute('data-interior-room'),x:Number(scene.getAttribute('data-interior-actor-x')),y:Number(scene.getAttribute('data-interior-actor-y')),
+     phase:document.querySelector('[data-return-escort-panel]')?.getAttribute('data-return-escort-phase'),frozen:document.querySelector('[data-return-escort-panel]')?.getAttribute('data-return-escort-frozen'),
+     actors:Array.from(scene.querySelectorAll('[data-return-escort-actor]')).map(actor=>({id:actor.getAttribute('data-return-escort-actor'),room:actor.getAttribute('data-return-escort-room'),x:Number(actor.getAttribute('data-return-escort-x')),y:Number(actor.getAttribute('data-return-escort-y'))}))};
+     const signature=JSON.stringify({...sample,time:0});if(signature!==previous){api.samples.push(sample);previous=signature;}
+    }else previous='';requestAnimationFrame(observe);
+   };requestAnimationFrame(observe);
+  },{key:saves.SAVE_STORAGE_KEY,save:clone(run.seed.save),label:run.id});
+  page=await context.newPage();page.setDefaultTimeout(25000);
+  page.on('pageerror',error=>report.errors.push({context:run.id,message:error.message}));
+  page.on('console',message=>{if(message.type()==='error')report.consoleErrors.push({context:run.id,message:message.text(),location:message.location()});});
+  page.on('response',response=>{
+   const url=new URL(response.url());if(response.status()>=400||response.request().resourceType()==='image'&&response.headers()['content-type']?.includes('text/html'))report.missingAssets.push({context:run.id,status:response.status(),url:response.url()});
+   if(Object.hasOwn(nativeSources,url.pathname)&&response.status()===200)imageTasks.push(response.body().then(raw=>{const hash=sha256(raw);assert.equal(hash,nativeSources[url.pathname]);report.nativeImages.push({context:run.id,path:url.pathname,bytes:raw.length,sha256:hash,exact:true});}));
+  });
+  const read=()=>page.evaluate(key=>JSON.parse(localStorage.getItem(key)),saves.SAVE_STORAGE_KEY);
+  const panel=()=>page.locator('[data-return-escort-panel]'),interior=()=>page.locator('[data-clan-interior]');
+  const activate=control=>run.viewport.width<600?control.tap():control.click();
+  const frames=()=>page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+  const waitStopped=()=>page.waitForFunction(()=>document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-moving')==='false',null,{timeout:60000});
+  const openPanel=async()=>{if(await panel().getAttribute('open')===null)await activate(panel().locator(':scope > summary'));await frames();};
+  const closePanel=async()=>{if(await panel().getAttribute('open')!==null)await activate(panel().locator('[data-return-escort-close]'));await frames();};
+  const capture=async(label)=>{await page.locator('[data-interior-viewport]').scrollIntoViewIfNeeded();const file=run.id+'-'+label+'.png';await page.screenshot({path:path.join(out,file),fullPage:true});const raw=await fs.readFile(path.join(out,file));report.captures.push({file,bytes:raw.length,sha256:sha256(raw),nativeFullPage:true});};
+  const collect=async()=>{
+   const observed=await page.evaluate(()=>({samples:window.__returnEscortQa.samples.splice(0),writes:window.__returnEscortQa.writes.splice(0)}));
+   for(const sample of observed.samples){
+    assert.ok([0,-.02,.02].some(dx=>[0,-.02,.02].some(dy=>motion.isClanShipInteriorWalkable(sample.room,{x:sample.x+dx,y:sample.y+dy}))),JSON.stringify(sample));
+    for(const actor of sample.actors)assert.ok([0,-.002,.002].some(dx=>[0,-.002,.002].some(dy=>motion.isClanShipInteriorWalkable(actor.room,{x:actor.x+dx,y:actor.y+dy}))),JSON.stringify(actor));
+   }
+   report.walking.push({context:run.id,samples:observed.samples});report.writes.push({context:run.id,writes:observed.writes});return observed;
+  };
+  const check=async(name,fn)=>{currentCheck=name;try{const detail=await fn();await collect();report.checks.push({context:run.id,name,passed:true,...detail});console.log('PASS',run.id,name);}catch(error){report.checks.push({context:run.id,name,passed:false,error:error.message});throw error;}};
+  const openCampaign=async()=>{
+   await page.locator('[data-campaign-menu]').waitFor({timeout:90000});const campaign=page.locator('[data-menu-section="campaign"]');if(await campaign.isVisible())await campaign.click();await page.locator('[data-menu-action="continue"]').click();await interior().waitFor({timeout:90000});await page.bringToFront();await waitStopped();
+  };
+  const guide=async()=>{
+   for(let attempt=0;attempt<3;attempt++){
+    await openPanel();const button=panel().locator('[data-return-escort-guide]'),regroup=await button.getAttribute('data-return-escort-guide-target')==='regroup',save=await read();
+    const first=await panel().locator('[data-return-escort-command]').first().getAttribute('data-return-escort-command');
+    const command=first==='transfer-room'?{type:'transfer-room',roomId:'soins'}:first?.startsWith('prepare-route:')?{type:'prepare-route',post:first.split(':')[1]}:{type:first};
+    const displayed=await page.locator('[data-return-escort-actor="return-alpha"]').evaluateAll(nodes=>nodes[0]?{roomId:nodes[0].getAttribute('data-return-escort-room'),x:Number(nodes[0].getAttribute('data-return-escort-x')),y:Number(nodes[0].getAttribute('data-return-escort-y'))}:null);
+    const target=regroup?(displayed??save.clanShipReturnEscort.actors[0]):escort.clanShipReturnEscortTarget(save,command);
+    const from=await interior().getAttribute('data-interior-room'),arrival=target.roomId===from?target:{roomId:target.roomId,...motion.CLAN_SHIP_INTERIOR_ROOMS[target.roomId].servicePoint};
+    await activate(button);
+    await page.waitForFunction(target=>{const scene=document.querySelector('[data-clan-interior]');return scene?.getAttribute('data-interior-room')===target.roomId&&scene.getAttribute('data-interior-moving')==='false'&&Math.hypot(Number(scene.getAttribute('data-interior-actor-x'))-target.x,Number(scene.getAttribute('data-interior-actor-y'))-target.y)<2;},arrival,{timeout:60000});
+    await frames();if(!regroup)return;
+   }
+   throw Error('The visible regroup guide did not reach its next stage.');
+  };
+  const command=async(type)=>{
+   await openPanel();const button=panel().locator('[data-return-escort-command="'+type+'"]');assert.equal(await button.isEnabled(),true,type+' requires a real in-reach action');const revision=(await read()).clanShipReturnEscort?.revision??0;await activate(button);
+   await page.waitForFunction(({key,revision})=>(JSON.parse(localStorage.getItem(key))?.clanShipReturnEscort?.revision??0)>revision,{key:saves.SAVE_STORAGE_KEY,revision});await frames();return read();
+  };
+  const decodedActors=async()=>{
+   assert.equal(await page.locator('[data-return-escort-actor]').count(),2);const decoded=[];
+   for(const id of ['return-alpha','return-beta']){const image=page.locator('[data-return-escort-actor="'+id+'"] img[data-native-source]');assert.equal(await image.count(),1);await image.waitFor({state:'visible'});decoded.push(await image.evaluate(async node=>{await node.decode();return{src:node.getAttribute('src'),native:node.getAttribute('data-native-source'),width:node.naturalWidth,height:node.naturalHeight,complete:node.complete};}));}
+   for(const row of decoded){assert.equal(row.src,row.native);assert.ok(Object.hasOwn(nativeSources,row.src)&&row.complete&&row.width>0&&row.height>0);}return decoded;
+  };
+  await page.goto(origin,{waitUntil:'networkidle',timeout:120000});await openCampaign();report.browserExecuted=true;
+  report.contexts.push({id:run.id,viewport:run.viewport,input:run.viewport.width<600?'emulated touch':'mouse and keyboard',fixtureId:run.seed.id,physicalDevice:false});
+  if(run.seed.id==='fresh-return'){
+   await check('a disclosed spatial receipt enables the return dossier without pre-seeding B04',async()=>{assert.equal((await read()).clanShipReturnEscort,undefined);await guide();await command('accept');assert.equal((await read()).clanShipReturnEscort.phase,'accepted');const decoded=await decodedActors();await capture('accepted-visible-group');return{decoded};});
+   await check('the route and selected medical post are prepared at the physical hangar threshold',async()=>{await guide();const before=(await read()).clanShipReturnEscort;assert.equal(before.phase,'accepted');await command('prepare-route:'+run.post);assert.equal((await read()).clanShipReturnEscort.post,run.post);await capture('route-prepared');});
+   await check('the visible team starts only after returning to the hangar service',async()=>{await guide();await command('start');assert.equal((await read()).clanShipReturnEscort.phase,'escorting');assert.equal(await panel().locator('[data-return-escort-command="transfer-room"]').isDisabled(),true);await closePanel();await decodedActors();await capture('started');});
+   if(run.faults)await check('a refused movement checkpoint freezes at the last confirmed group positions',async()=>{
+    await openPanel();const before=await read();await page.evaluate(()=>{window.__returnEscortQa.refuse='movement';});await activate(panel().locator('[data-return-escort-guide]'));
+    await page.waitForFunction(()=>window.__returnEscortQa.refusals>0&&document.querySelector('[data-return-escort-panel]')?.getAttribute('data-return-escort-frozen')==='true',null,{timeout:15000});
+    assert.deepEqual((await read()).clanShipReturnEscort,before.clanShipReturnEscort);await frames();await openPanel();await capture('checkpoint-refused');await page.evaluate(()=>{window.__returnEscortQa.refuse=null;});await activate(panel().locator('[data-return-escort-retry]'));
+    await page.waitForFunction(()=>document.querySelector('[data-return-escort-panel]')?.getAttribute('data-return-escort-frozen')==='false');await closePanel();
+   });
+   await check('pause, focus loss and reload keep safe positions and never advance while outside the scene',async()=>{
+    await guide(); // Approaches the door but does not issue its transfer action.
+    await openPanel();const before=await read();assert.equal(before.clanShipDocking.roomId,'hangar');assert.ok(before.clanShipReturnEscort.actors.some(actor=>actor.x<800),'At least one real movement must have happened.');
+    const observed=await page.locator('[data-return-escort-actor]').evaluateAll(nodes=>nodes.map(node=>({id:node.getAttribute('data-return-escort-actor'),x:node.getAttribute('data-return-escort-x'),y:node.getAttribute('data-return-escort-y')})));
+    await page.waitForTimeout(220);assert.deepEqual(await page.locator('[data-return-escort-actor]').evaluateAll(nodes=>nodes.map(node=>({id:node.getAttribute('data-return-escort-actor'),x:node.getAttribute('data-return-escort-x'),y:node.getAttribute('data-return-escort-y')}))),observed);
+    const other=await context.newPage();await other.goto('about:blank');await other.bringToFront();await page.waitForTimeout(220);await page.bringToFront();await other.close();assert.deepEqual((await read()).clanShipReturnEscort,before.clanShipReturnEscort);
+    await capture('paused-before-reload');await collect();await page.reload({waitUntil:'networkidle'});await page.locator('[data-campaign-menu]').waitFor({timeout:90000});assert.deepEqual((await read()).clanShipReturnEscort,before.clanShipReturnEscort);
+    await page.waitForTimeout(220);assert.deepEqual((await read()).clanShipReturnEscort,before.clanShipReturnEscort);await openCampaign();await openPanel();assert.equal((await read()).clanShipReturnEscort.phase,'escorting');await capture('resumed-safe-group');
+   });
+   await check('the physical door waits for both returnees and commits group plus docking together',async()=>{
+    await guide();await openPanel();await page.waitForFunction(()=>{const nodes=Array.from(document.querySelectorAll('[data-return-escort-actor]'));return nodes.length===2&&nodes.every(node=>Math.hypot(Number(node.getAttribute('data-return-escort-x'))-128,Number(node.getAttribute('data-return-escort-y'))-635)<=64);},null,{timeout:15000});
+    const before=await read();assert.ok(before.clanShipReturnEscort.actors.every(actor=>motion.canClanShipInteriorTransition(actor.roomId,'soins',actor)));await command('transfer-room');await page.waitForFunction(()=>document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-room')==='soins');
+    const after=await read();assert.equal(after.clanShipDocking.roomId,'soins');assert.ok(after.clanShipReturnEscort.actors.every(actor=>actor.roomId==='soins'));await decodedActors();await capture('arrived-through-door');
+   });
+  }else{
+   await check('a valid resumed group in another room remains stopped while its owner walks back',async()=>{
+    const before=await read();assert.equal(before.clanShipDocking.roomId,'hangar');assert.ok(before.clanShipReturnEscort.actors.every(actor=>actor.roomId==='soins'));assert.equal(await page.locator('[data-return-escort-actor]').count(),0);await page.waitForTimeout(220);assert.deepEqual((await read()).clanShipReturnEscort,before.clanShipReturnEscort);
+    await closePanel();await activate(page.locator('[data-clan-ship-room-target="soins"]'));await page.waitForFunction(()=>document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-room')==='soins',null,{timeout:60000});
+    await waitStopped();await guide();await openPanel();const decoded=await decodedActors();assert.equal((await read()).clanShipReturnEscort.phase,'escorting');await capture('rejoined-separated-group');return{decoded};
+   });
+  }
+  await check('both real returnees reach the selected medical post before confirmation',async()=>{
+   await guide();const target=escort.CLAN_SHIP_RETURN_ESCORT_POSTS[run.post];
+   await page.locator('[data-interior-world]').focus();await page.waitForFunction(({target})=>Array.from(document.querySelectorAll('[data-return-escort-actor]')).length===2&&Array.from(document.querySelectorAll('[data-return-escort-actor]')).every(node=>Math.hypot(Number(node.getAttribute('data-return-escort-x'))-target.x,Number(node.getAttribute('data-return-escort-y'))-target.y)<=64),{target},{timeout:15000});
+   await openPanel();await decodedActors();await capture('medical-post-visible');
+  });
+  if(run.faults)await check('a refused medical write cannot confirm the transfer or award a benefit',async()=>{
+   const before=await read();await page.evaluate(()=>{window.__returnEscortQa.refuse='medical';});await activate(panel().locator('[data-return-escort-command="confirm-medical"]'));
+   await page.waitForFunction(()=>window.__returnEscortQa.refusals>0&&document.querySelector('[data-return-escort-panel]')?.getAttribute('data-return-escort-frozen')==='true');assert.deepEqual((await read()).clanShipReturnEscort,before.clanShipReturnEscort);assert.deepEqual((await read()).profile,before.profile);await capture('medical-write-refused');
+   await page.evaluate(()=>{window.__returnEscortQa.refuse=null;});await activate(panel().locator('[data-return-escort-retry]'));await page.waitForFunction(()=>document.querySelector('[data-return-escort-panel]')?.getAttribute('data-return-escort-frozen')==='false');
+  });
+  await check('medical confirmation and the council report preserve health, stock, marks and companion ownership',async()=>{
+   await command('confirm-medical');const medical=await read();assert.equal(medical.clanShipReturnEscort.phase,'at-medical');const positions=clone(medical.clanShipReturnEscort.actors);
+   await guide();await page.waitForFunction(()=>document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-room')==='conseil',null,{timeout:60000});await waitStopped();await command('report');const after=await read();assert.equal(after.clanShipReturnEscort.phase,'reported');assert.deepEqual(after.clanShipReturnEscort.actors,positions);
+   for(const field of ['profile','inventory','expeditionRoster','companionResidence','clanShipOperations','clanShipIncidents','clanShipTrophyHearing'])assert.deepEqual(after[field],run.seed.save[field],field+' is not an escort reward or roster mutation');
+   assert.ok(saves.parseSaveImport(JSON.stringify(after)).save,'Final real stored campaign must remain portable');await capture('reported-at-council');
+   await page.reload({waitUntil:'networkidle'});await openCampaign();await openPanel();assert.equal((await read()).clanShipReturnEscort.phase,'reported');assert.equal(await panel().locator('[data-return-escort-command="report"]').count(),0);assert.deepEqual((await read()).clanShipReturnEscort.actors,positions);
+   await closePanel();await activate(page.locator('[data-clan-ship-room-target="soins"]'));await page.waitForFunction(()=>document.querySelector('[data-clan-interior]')?.getAttribute('data-interior-room')==='soins',null,{timeout:60000});await waitStopped();await decodedActors();assert.deepEqual((await read()).clanShipReturnEscort.actors,positions);await capture('team-remains-at-medical');
+  });
+  await collect();await context.close();page=null;
+ }
+ await Promise.all(imageTasks);assert.deepEqual(report.errors,[]);assert.deepEqual(report.consoleErrors,[]);assert.deepEqual(report.missingAssets,[]);assert.ok(Object.keys(nativeSources).every(source=>report.nativeImages.some(item=>item.path===source&&item.exact)));assert.deepEqual(await fingerprints(),report.sourceSha256,'Sources changed while the browser was running.');report.passed=true;
+}catch(error){report.failure={context:contextId,check:currentCheck,stack:error.stack??String(error)};if(page)try{await page.screenshot({path:path.join(out,'failure.png'),fullPage:true});}catch{}process.exitCode=1;}
+finally{await browser?.close();await server?.close();await fs.writeFile(path.join(out,'browser-verification.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({passed:report.passed,browserExecuted:report.browserExecuted,checks:report.checks.length,captures:report.captures.length,failure:report.failure,output:out},null,2));}
