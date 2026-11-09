@@ -168,8 +168,8 @@
   },
   "previous_sha256": "b87a09ce8a683e7c024600933e0ce69363e62b7d6c9dd2d78b87fc2f7a0e9a89",
   "previous_bytes": 332203,
-  "git_blob_sha1": "39e8f813887f68cbf69a79786f1afab52eeaa362",
-  "revision": "V1.1",
+  "git_blob_sha1": "6a8e5bd53539584586d526e2bafbaf6da2d35e30",
+  "revision": "V1.2",
   "qualification": {
     "targeted_tests": 161,
     "qa_driver_tests": 6,
@@ -181,5 +181,19 @@
     "full_build_run": 42498298048,
     "full_build_scope": "Full repository TypeScript and frontend diagnostic build, not a deployment or universal gameplay validation."
   },
-  "v1_2_note": "33 nouveaux tests locaux ; preuves CI natives séparées. Anciens tableaux et reçus V1.1 conservés."
+  "v1_2_note": "33 nouveaux tests locaux ; preuves CI natives séparées. Anciens tableaux et reçus V1.1 conservés.",
+  "previous_git_blob_sha1": "39e8f813887f68cbf69a79786f1afab52eeaa362",
+  "previous_revision": "V1.1",
+  "historical_root_evidence_note": "Les champs source_commit, source_check_url, targeted_tests, native_browser_checks et qualification conservent les reçus historiques V1/V1.1 ; ils ne décrivent pas la qualification V1.2.",
+  "qualification_v1_2": {
+    "source_commit": "b5ba1086ba532389d9efa74b3df0108dcf6de3e6",
+    "result_file": "production/mobility-20261108/qa/native-v12/RESULT.json",
+    "workflow_run": 42504476009,
+    "targeted_tests": 200,
+    "native_driving_checks": 29,
+    "control_checks": 12,
+    "full_typecheck_passed": true,
+    "physical_gamepad_tested": false,
+    "full_campaign_journey_tested": false
+  }
 }
