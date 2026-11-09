@@ -4,7 +4,7 @@ Base de travail : `19317af4f6cf05532a8ba56dbfe8f56fc4b225d9`, après les PR 128,
 
 ## Ce qui change réellement dans ce lot
 
-Les douze opérations du Clan Ship gardent leurs identifiants, conditions, lieux, séquences d’actions, scores, scans et récompenses. Leurs briefings, plusieurs objectifs et les présentations des six contacts sont réécrits. Les trois incidents et le retour du Berceau reçoivent la même passe. Le relevé exact avant/après est dans `production/quetes-vivantes-20261109/reecritures.json`.
+Les douze opérations du Clan Ship gardent leurs identifiants, conditions, lieux, séquences d’actions, scores, scans et récompenses. Leurs briefings, plusieurs objectifs et les présentations des six contacts sont réécrits. Les trois incidents et le retour du Berceau reçoivent la même passe. Le relevé exact avant/après est dans la feuille **Reecritures** du [classeur publié](../../production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx).
 
 OPS-B05 reçoit un premier système de conversation dans le panneau natif d’équipage : quatre sujets, six interlocuteurs et cinquante répliques écrites. Il lit les opérations et les affectations existantes ; il ne crée ni progression de relation ni deuxième sauvegarde. Le sujet choisi est local à l’interface. Aucun dialogue ne donne de preuve, de marques, de rang, de recrue ou de quartier.
 
