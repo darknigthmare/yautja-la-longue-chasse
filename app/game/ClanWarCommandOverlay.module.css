@@ -1,0 +1,15 @@
+.overlay{--command-amber:#e8c07c;--command-ink:#071212;box-sizing:border-box;color:#e0e9df;background:linear-gradient(145deg,#142623,#081313 78%);border:1px solid #69816e;box-shadow:0 30px 100px #000b,0 0 60px #6e9f7c14;padding:0;width:min(590px,calc(100vw - 28px));max-width:none;max-height:calc(100dvh - 28px);overflow:hidden;overscroll-behavior:contain}
+.overlay[data-command-overlay=drawer]{margin:14px 14px 14px auto;height:calc(100dvh - 28px)}
+.overlay[data-command-overlay=dialog]{margin:auto;width:min(760px,calc(100vw - 28px))}
+.overlay[open]{display:flex;flex-direction:column;animation:reveal .18s ease-out}
+.overlay::backdrop{background:#020909c9;backdrop-filter:blur(4px)}
+.header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:22px 24px;border-bottom:1px solid #58715a66;flex:none;background:linear-gradient(100deg,#20392c99,transparent)}
+.header p{font:10px/1.5 ui-monospace,monospace;letter-spacing:.18em;color:var(--command-amber);margin:0 0 7px}
+.header h3{font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:500;line-height:1.2;margin:0;color:#f0ecd5}
+.header .close{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:none;min-width:44px;min-height:44px;padding:2px 6px;background:#06100db3;border:1px solid #8c9d7c;color:#e5d5ad;cursor:pointer;border-radius:2px}
+.close span{font:28px/1 system-ui,sans-serif}.close small{font:8px/1.7 ui-monospace,monospace;letter-spacing:.08em}
+.content{padding:22px 24px;overflow:auto;overscroll-behavior:contain;min-height:0;scrollbar-color:#7a9173 #0c1713}
+.overlay button:focus-visible,.overlay input:focus-visible,.overlay select:focus-visible,.overlay summary:focus-visible,.overlay a:focus-visible{outline:3px solid #f3ce89;outline-offset:3px}
+@keyframes reveal{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:600px){.overlay[data-command-overlay=drawer],.overlay[data-command-overlay=dialog]{width:100%;height:100dvh;max-height:100dvh;margin:0;border-width:1px 0}.header{padding:18px 16px;gap:10px}.content{padding:18px 16px}.header h3{overflow-wrap:anywhere}.header p{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.overlay[open]{animation:none}.overlay::backdrop{backdrop-filter:none}}

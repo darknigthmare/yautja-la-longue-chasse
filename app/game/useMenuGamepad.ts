@@ -73,16 +73,31 @@ export function useMenuGamepad(rootRef: RefObject<HTMLElement | null>, enabled: 
       const result = menuPadStep(state, { direction, confirm: pressed(confirmButton), back: pressed(backButton) }, now);
       state = result.state;
       if (!result.direction && !result.confirm && !result.back) return;
+      const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      const nativeDialogs = Array.from(root.querySelectorAll<HTMLDialogElement>('dialog[open]'))
+        .filter(element => element.matches(":modal") && element.getClientRects().length > 0);
+      // Opening order can differ from DOM order. Native modal focus identifies
+      // the top layer, including a nested dialog opened from an earlier sibling.
+      const nativeDialog = nativeDialogs.filter(element => active && element.contains(active)).at(-1)
+        ?? nativeDialogs.at(-1);
       const dialogs = Array.from(root.querySelectorAll<HTMLElement>('[role="dialog"][aria-modal="true"]'))
         .filter(element => !element.closest('[inert]') && element.getClientRects().length > 0);
-      const scope = dialogs.at(-1) ?? root;
+      const scope = nativeDialog ?? dialogs.at(-1) ?? root;
       // A disabled modal still owns input; never send Back to the menu behind it.
-      if (scope.closest('[aria-disabled="true"],[hidden]')) { state = freshMenuPadState(); return; }
+      // A native modal can escape an inert ancestor, so check its owner too.
+      if (scope.closest('[inert],[aria-disabled="true"],[aria-hidden="true"],[hidden]')) { state = freshMenuPadState(); return; }
       const controls = Array.from(scope.querySelectorAll<HTMLElement>(FOCUSABLE))
         .filter(element => !element.matches(":disabled") &&
           !element.closest('[inert],[aria-hidden="true"],[aria-disabled="true"],[hidden]') && element.getClientRects().length > 0);
-      const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-      if (result.back) { onBackRef.current(); return; }
+      if (result.back) {
+        if (nativeDialog) {
+          // requestClose preserves cancel vetoes and React's onCancel owner.
+          // Older dialog implementations still receive a cancellable close request.
+          if (typeof nativeDialog.requestClose === "function") nativeDialog.requestClose();
+          else if (nativeDialog.dispatchEvent(new Event("cancel", { cancelable: true }))) nativeDialog.close();
+        } else onBackRef.current();
+        return;
+      }
       if (result.direction && !adjustControl(active && controls.includes(active) ? active : null, result.direction)) {
         const index = menuFocusIndex(controls.map(element => {
           const rect = element.getBoundingClientRect();

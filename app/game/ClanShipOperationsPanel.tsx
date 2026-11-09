@@ -114,7 +114,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
       <p>Rejoins le hangar, embarque sur ton vaisseau puis désamarre. Le bouton « Contrat du clan » du pont ouvre le briefing de la chasse. Le rapport sera reconnu après une réussite répondant aux objectifs.</p>
       {routeButton('hangar', 'Rejoindre le hangar pour préparer le départ')}
     </div>}
-    {state.spaceEncounter && (atCouncil ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended}
+    {state.spaceEncounter && (atCouncil ? <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
       : <div className={styles.step}><p>L’engagement reste à son dernier ordre enregistré. Reprends son commandement à la table du conseil.</p>{routeButton('conseil')}</div>)}
     {atCouncil && <button type="button" className={styles.quiet} disabled={suspended}
@@ -124,7 +124,7 @@ export default function ClanShipOperationsPanel({ state, save, roomId, suspended
   </article>;
   const spaceReport = !activeContract && state.spaceEncounter && atCouncil && <article className={styles.activeContract} data-clan-space-report>
     <span className={styles.eyebrow}>DERNIER RAPPORT TACTIQUE</span>
-    <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended}
+    <ClanShipSpaceEncounter encounter={state.spaceEncounter} suspended={suspended} campaign={save}
       onCommand={command => act({ type: 'space-command', command, expectedRevision: state.revision })} />
   </article>;
 

@@ -1,0 +1,54 @@
+{
+  "command": [
+    "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+    "scripts/qa-clan-war-browser-v94.mjs"
+  ],
+  "exitCode": 1,
+  "recipeSha256": "7f0ddff8d091b6da5becc27583c9a472e187847389f3c4b0f06a7d21be17ea42",
+  "recipeUnchanged": true,
+  "headless": true,
+  "headedNativeFocusQualified": false,
+  "scope": "Existing browser regression under headless Chromium. The native headed-focus case is expected to remain unqualified locally because Xvfb is unavailable; its assertion is preserved unchanged. CI must execute the declared headed command.",
+  "passed": false,
+  "checks": 9,
+  "results": [
+    {
+      "name": "played preparation writes the canyon and survives reload without touching campaign bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "parent suspension and an inert settings overlay stop the actual tactical clock",
+      "status": "PASS"
+    },
+    {
+      "name": "focus loss stops the clock before React cleanup; focus return resumes without catch-up",
+      "status": "FAIL",
+      "error": "Native focus scenario requires headed Chrome; run under xvfb-run in CI.\n\n'0' !== '1'\n"
+    },
+    {
+      "name": "a returned formation is replaced by an available selection instead of blocking orders",
+      "status": "PASS"
+    },
+    {
+      "name": "dropped archive writes show an unconfirmed result and retry saves it without duplicate rewards",
+      "status": "PASS"
+    },
+    {
+      "name": "two live stores use native locks and cannot overwrite one another from a stale snapshot",
+      "status": "PASS"
+    },
+    {
+      "name": "new bytes arriving while a native lock is held are refused before a delayed write",
+      "status": "PASS"
+    },
+    {
+      "name": "unmount cancels the tactical timer rather than advancing an invisible battle",
+      "status": "PASS"
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "status": "PASS",
+      "errors": []
+    }
+  ]
+}

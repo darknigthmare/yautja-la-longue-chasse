@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual production operations component and shared dialog, esbuild host with original W3 rules. Real browser events, localStorage, IDB and Web Locks. Not full GameClient, campaign, physical-controller or canonical-art certification.",
+  "checks": [
+    {
+      "name": "Mount and command desks never initialize a war archive",
+      "passed": true
+    },
+    {
+      "name": "Renforts de clan: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Triage du clan: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Comptes rendus: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Archives et règles: native focus is confined, Escape restores trigger and no model is written",
+      "passed": true
+    },
+    {
+      "name": "Briefing steps retain native selections, and cancellation never debits RAV",
+      "passed": true
+    },
+    {
+      "name": "Briefing launches through the real V2 archive, spends exactly the selected unit’s source upkeep and reveals actual RTS terrain",
+      "passed": true,
+      "missionId": "W115-OPS-0001",
+      "rav": 119,
+      "sourceUpkeepRav": 1
+    }
+  ],
+  "screenshots": [
+    {
+      "filename": "01-command-desktop.png",
+      "sha256": "f7fc1ff0a4fa3b32061e0c212466df8c1a8bf4f4974cc2d52276b1ef3ec36e74",
+      "opened": false
+    },
+    {
+      "filename": "02-rts-field-desktop.png",
+      "sha256": "2c345f3f0b9f7c0d4320d107ffe62373c7062824708c0983dd6f7b89bc79d03d",
+      "opened": false
+    }
+  ],
+  "errors": [],
+  "httpErrors": [],
+  "sourceBefore": {
+    "app/game/ClanWarOperationsV115.tsx": "dc749cd53d463bec3a16af061c1d829d81f05ab48dad235fbdcf79b975508985",
+    "app/game/ClanWarOperationsV115.module.css": "9beac9980e2756aca1c21dae31187bfbe364ea08c0e4dd68c729558363e95140",
+    "app/game/ClanWarCommandOverlay.tsx": "57855f4a0770ce99feab221c363f3012059dcc1f6d618ec5fb4c07b7efca110a",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "scripts/qa-clan-war-command-operations-20261109.mjs": "dae843f782422c6501fd6092746068c0d04eb063653018053e149015c30dc0c3"
+  },
+  "canonicalKey": "yautja.clan-war.v115.operations.fenced.v2",
+  "bundle": {
+    "jsSha256": "d0fd2dfede356068f60496ff915fff41b3f3a01c4e2a2c28e3459f8f0a7853aa",
+    "cssSha256": "2bb08bd115670408cd131658b2d2efd191e9240630bbaf8a37d8a007f88f9a67"
+  },
+  "browserVersion": "154.0.8037.57",
+  "url": "http://127.0.0.1:39127",
+  "passed": false,
+  "failure": {
+    "message": "The expression evaluated to a falsy value:\n\n  assert.ok(bounds.x>=-1&&bounds.x+bounds.width<=width+1)\n",
+    "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(bounds.x>=-1&&bounds.x+bounds.width<=width+1)\n\n    at file:///workspace/yautja-la-longue-chasse/scripts/qa-clan-war-command-operations-20261109.mjs:88:50"
+  }
+}

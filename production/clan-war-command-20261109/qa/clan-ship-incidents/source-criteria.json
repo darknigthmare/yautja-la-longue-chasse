@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "rows": [
+    {
+      "id": "OPS-B01",
+      "priority": "P1",
+      "source": {
+        "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+        "sha256": "e14179938e249f13057fc988b691d6de2eb6a54d2489eafd88d208fef62de017",
+        "sheet": "Opérations",
+        "row": 58,
+        "criterion": "Ajouter indices visibles, isolateurs réellement manipulables et remise en service progressive."
+      },
+      "reference": {
+        "path": "production/clan-ship-20261104/operations-spec.md",
+        "sha256": "d1d0a2d1a77a851f33657bdffbd5ec9c365eae2d4ce74bcaaf9020588950a394",
+        "section": "12.1"
+      }
+    },
+    {
+      "id": "OPS-B02",
+      "priority": "P1",
+      "source": {
+        "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+        "sha256": "e14179938e249f13057fc988b691d6de2eb6a54d2489eafd88d208fef62de017",
+        "sheet": "Opérations",
+        "row": 59,
+        "criterion": "Mesurer puis rétablir deux circuits en conservant un chemin praticable et un retour sûr."
+      },
+      "reference": {
+        "path": "production/clan-ship-20261104/operations-spec.md",
+        "sha256": "d1d0a2d1a77a851f33657bdffbd5ec9c365eae2d4ce74bcaaf9020588950a394",
+        "section": "12.2"
+      }
+    }
+  ],
+  "scope": "Original workbook cells and proposed consequences of existing incident scenarios. Historical source declaration is preserved, not relabeled."
+}

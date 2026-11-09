@@ -11,6 +11,7 @@ import {
   type WarAtlasPointV95,
 } from "./systems/clanWarAtlasV95";
 import styles from "./ClanWarAtlasV95.module.css";
+import ClanWarCommandOverlay from "./ClanWarCommandOverlay";
 import PlanetMaterialCanvasV101 from "./PlanetMaterialCanvasV101";
 import { readPlanetVisualProfileV134 } from "./systems/clanWarPlanetVisualProfileV134";
 import { resolveWarAtlasVisualV142 } from "./systems/clanWarAtlasVisualV142";
@@ -27,6 +28,8 @@ interface ClanWarAtlasV95Props {
   onSelectTarget: (id: string) => void;
   /** Optional unsaved appearance for the generator preview only. */
   visualProfile?: PlanetVisualProfileV134 | null;
+  /** Council layout only; rendering preferences never enter the simulation. */
+  compactCommand?: boolean;
 }
 
 const PLAYER: WarFactionIdV85 = "CON-F01";
@@ -119,8 +122,8 @@ function PlanetSurfaceDefinitions({ planet, unique }: { planet: WarPlanetV96; un
 
 /** Geography, names and routes follow the active planet; only faction control colors are shared. */
 export default function ClanWarAtlasV95({
-  simulation, selectedTerritoryId, targetTerritoryId, onSelectTerritory, onSelectTarget,
-  visualProfile,
+  simulation, selectedTerritoryId, targetTerritoryId, onSelectTerritory: selectOrigin, onSelectTarget: selectDestination,
+  visualProfile, compactCommand = false,
 }: ClanWarAtlasV95Props) {
   const unique = `war-atlas-${useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
   const planet = warPlanetV96(simulation.planetId) ?? warPlanetV96()!;
@@ -130,6 +133,9 @@ export default function ClanWarAtlasV95({
   const definitions = planet.definitions;
   const territory = (id: string) => definitions.find(item => item.id === id);
   const initial = territories.find(item => item.id === selectedTerritoryId) ?? territories[0];
+  const [commandLayer, setCommandLayer] = useState<"display" | "intel" | null>(null);
+  const onSelectTerritory = (id: string) => { setCommandLayer(null); selectOrigin(id); };
+  const onSelectTarget = (id: string) => { setCommandLayer(null); selectDestination(id); };
   const [projection, setProjection] = useState<"globe" | "map">("globe");
   const [longitude, setLongitude] = useState(initial.longitude);
   const [latitude, setLatitude] = useState(initial.latitude);
@@ -268,10 +274,7 @@ export default function ClanWarAtlasV95({
   const connections = source.neighbors.map(id => ({ fromId: source.id, targetId: id }));
   const statusLabel = (id: string) => id === source.id ? "Départ / sélection" : id === targetTerritoryId ? "Cible" : source.neighbors.includes(id) ? "Voisin accessible" : "";
 
-  return <section className={styles.atlas} aria-labelledby={`${unique}-heading`} data-testid="clan-war-atlas-v95" data-planet-id={planet.id} data-planet-style={planet.style} data-surface-kind={planet.surface.kind} data-landmass-count={landmasses.length}
-      data-regional-profile-active={Boolean(appearanceV142)}
-      data-regional-profile-code={appearanceV142?.worldCode ?? ""}
-      data-regional-profile-source={visualSelectionV142.source}>
+  const metadata = <>
     <header className={styles.header}>
       <div><p className={styles.eyebrow}>THÉÂTRE PLANÉTAIRE / {planet.subtitle}</p><h4 id={`${unique}-heading`}>{planet.name}<span>Atlas des territoires</span></h4></div>
       <div className={styles.turn}><span className={styles.signal} aria-hidden="true"/>Tour <strong>{String(simulation.turn).padStart(2, "0")}</strong><small>{territories.length} territoires · {regions.length} régions</small><small>{landmassLabel}</small></div>
@@ -289,6 +292,8 @@ export default function ClanWarAtlasV95({
       </div>)}
     </div>
 
+  </>;
+  const toolbar = <>
     <div className={styles.toolbar}>
       <div className={styles.segmented} aria-label="Projection de l’atlas">
         <button type="button" aria-pressed={projection === "globe"} onClick={() => setProjection("globe")}>◎ Globe</button>
@@ -313,8 +318,73 @@ export default function ClanWarAtlasV95({
     {manuallyControlledV142 && visualNoticeV142 && <p className={styles.mapNote}
       data-testid="war-atlas-visual-status-v142" role="status">{visualNoticeV142}</p>}
 
-    <div className={styles.workspace}>
-      <div className={styles.cartography}>
+  </>;
+  const displayControls = <>
+        <div className={styles.mapControls}>
+          {projection === "globe" && <><div className={styles.rotationButtons} aria-label="Rotation de la planète"><button type="button" aria-label="Tourner vers l’ouest" onClick={() => setLongitude(value => wrapLongitude(value - 30))}>←</button><button type="button" aria-label="Incliner vers le nord" onClick={() => setLatitude(value => Math.min(65, value + 15))}>↑</button><button type="button" aria-label="Incliner vers le sud" onClick={() => setLatitude(value => Math.max(-65, value - 15))}>↓</button><button type="button" aria-label="Tourner vers l’est" onClick={() => setLongitude(value => wrapLongitude(value + 30))}>→</button></div><label className={styles.rotationSlider}>Rotation<input aria-label="Longitude du globe" type="range" min="-180" max="180" value={longitude} onChange={event => setLongitude(Number(event.target.value))}/></label><label className={styles.zoomControl}>Zoom<select aria-label="Zoom du globe" value={zoom} onChange={event => setZoom(Number(event.target.value))}><option value="1">100 %</option><option value="1.1">110 %</option><option value="1.2">120 %</option></select></label></>}
+          <label className={styles.toggle}><input type="checkbox" checked={showRoutes} onChange={event => setShowRoutes(event.target.checked)}/>Routes</label>
+          <label className={styles.toggle}><input type="checkbox" checked={showNames} onChange={event => setShowNames(event.target.checked)}/>Noms</label>
+          <label className={styles.toggle}><input type="checkbox" checked={showIntelligence} onChange={event => setShowIntelligence(event.target.checked)}/>Renseignement daté</label>
+          <label className={styles.zoomControl}>Couleurs<select aria-label="Couleurs de la carte" value={mapColors} disabled={!materialReady} onChange={event => setMapColors(event.target.value as "terrain" | "control")}><option value="terrain">Relief naturel</option><option value="control">Contrôle des clans</option></select></label>
+        </div>
+        <fieldset className={styles.appearanceControls} disabled={!materialReady}><legend>Affichage planétaire</legend>
+          <label><input type="checkbox" checked={materialSettings.atmosphere} onChange={event => setMaterialSettings(value => ({ ...value, atmosphere: event.target.checked }))}/>Atmosphère</label>
+          <label><input type="checkbox" checked={materialSettings.clouds} onChange={event => setMaterialSettings(value => ({ ...value, clouds: event.target.checked }))}/>Nuages</label>
+          <label><input type="checkbox" checked={materialSettings.weather} onChange={event => setMaterialSettings(value => ({ ...value, weather: event.target.checked }))}/>Brumes et météo</label>
+          <label><input type="checkbox" checked={materialSettings.aurora} onChange={event => setMaterialSettings(value => ({ ...value, aurora: event.target.checked }))}/>Aurores</label>
+          <label><input type="checkbox" checked={materialSettings.lighting} onChange={event => setMaterialSettings(value => ({ ...value, lighting: event.target.checked }))}/>Éclairage</label>
+        </fieldset>
+        <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ ; tirets clairs : traversées balisées. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.{hydrology.length > 0 && ` ${hydrology.length} bassins et chenaux utilisent la même matière que la surface entre les terres.`}{territories.length > 48 && " Sur ce grand front, les repères montrent la sélection et ses voisins. Filtrez une région ou survolez une zone pour afficher les autres repères."}</p>
+        {showIntelligence && <p className={styles.intelligenceLegend} data-testid="war-intel-legend-v106"><span>● Aptes : personnes connues de votre détachement</span><span>◷ Intervalle et tour : dernier rapport, pas un effectif en direct</span><span>? Effectif inconnu</span><span>Ambre : rapport ancien, à renouveler</span>Les couleurs de contrôle et les surfaces naturelles restent visibles.</p>}
+        {convoy && <p className={styles.convoyLegend} data-testid="war-convoy-atlas-legend-v105"><span data-stage="delivered">━ Étapes livrées</span><span data-stage="next">┅ Prochaine étape</span><span data-stage="planned">┄ Trajet prévu</span><span data-stage="blocked">┅ Liaison bloquée</span>Les étapes détaillées et leur inspection sont disponibles dans « Acheminer un convoi ».</p>}
+  </>;
+  const intelligence = <>
+      <aside className={styles.intelPanel} aria-label="Renseignement territorial">
+        <p className={styles.eyebrow}>TERRITOIRE {shortId(inspected.id)}<span>{selectionMode === "target" ? "CIBLE" : "SÉLECTION"}</span></p>
+        <h5>{inspected.name}</h5>
+        <p className={styles.regionCaption}>{inspectedRegion?.name}</p>
+        <div className={styles.controller}><FactionSymbol faction={inspectedState.controller}/><span>{WAR_FACTIONS_V85[inspectedState.controller]}<small>Contrôle territorial</small></span></div>
+        <dl className={styles.intelFacts}>
+          <div><dt>Ravitaillement</dt><dd>{inspectedState.controller === PLAYER ? supplied.has(inspected.id) ? "Relié au réseau" : "Isolé du réseau" : "Liaison non observée"}</dd></div>
+          <div><dt>{intel.kind === "own" ? "Personnes présentes" : "Reconnaissance"}</dt><dd>{intel.label}</dd></div>
+          {intel.kind === "observed" && <div><dt>Date du relevé</dt><dd>Tour {intel.turn} · {intel.stale ? "ancien, à renouveler" : "estimation"}</dd></div>}
+          {inspectedState.controller === PLAYER && <><div><dt>Installation</dt><dd>{inspectedState.installationIntact ? "Opérationnelle" : "Endommagée"}</dd></div><div><dt>Stocks locaux</dt><dd>S {simulation.stocks[inspected.id].s} · M {simulation.stocks[inspected.id].m} · I {simulation.stocks[inspected.id].i}</dd></div></>}
+          <div><dt>Routes voisines</dt><dd>{inspected.neighbors.length}</dd></div>
+        </dl>
+        {inspectedState.controller === PLAYER && <section className={styles.supplyTrace} aria-label="Liaison du territoire" data-testid="war-supply-path-v106"><strong>Liaison depuis la base</strong>{supplyPath ? <><p>{supplyPath.length - 1} route{supplyPath.length > 2 ? "s" : ""} praticable{supplyPath.length > 2 ? "s" : ""} dans le réseau actuel.</p><div>{supplyPath.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("origin"); onSelectTerritory(id); centerOn(id); setAnnouncement(`Inspection du maillon ${territory(id)?.name}.`); }}>{shortId(id)} · {territory(id)?.name}</button>)}</div><small>Cette liaison décrit l’accès au réseau. Le transit ne donne pas la propriété d’un dépôt ; les convois ne déposent que dans vos magasins.</small></> : <p>Pas de liaison praticable depuis une base intacte. Inspectez les contrôles et les transits des routes voisines.</p>}</section>}
+        <div className={styles.routeSelection}><div><span>01 / DÉPART</span><strong>{shortId(source.id)} · {source.name}</strong></div><span className={styles.routeArrow} aria-hidden="true">↓</span><div><span>02 / CIBLE</span><strong>{target ? `${shortId(target.id)} · ${target.name}` : "À choisir"}</strong></div></div>
+        <details className={styles.neighborDirectory}><summary>{source.neighbors.length} destinations accessibles du départ</summary><div>{source.neighbors.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("target"); onSelectTarget(id); centerOn(id); setAnnouncement(`Cible : ${territory(id)?.name}. Destination voisine de ${source.name}.`); }} aria-pressed={targetTerritoryId === id}>{shortId(id)} · {territory(id)?.name}{routeDescription(source.id, id)?.kind === "crossing" && " · traversée balisée"}</button>)}</div></details>
+        <button type="button" className={styles.targetAction} onClick={() => {
+          if (compactCommand) setCommandLayer(null);
+          setSelectionMode(selectionMode === "origin" ? "target" : "origin");
+          setAnnouncement(selectionMode === "origin" ? `Choisissez une cible parmi les voisins de ${source.name}.` : "Choisissez un territoire à inspecter ou un nouveau départ.");
+        }}>{selectionMode === "origin" ? "Choisir une cible sur la carte →" : "← Revenir au départ / inspection"}</button>
+        {selectionMode === "target" && <p className={styles.hint}>Seuls les voisins du départ sont sélectionnables comme cible. Les soins utilisent le territoire de départ.</p>}
+        <details className={styles.terrain}><summary>Terrain et sites</summary><p>{inspected.terrain}</p><p>{inspected.sites}</p></details>
+        {regionalDescription && <details className={styles.terrain}><summary>Particularités de la région</summary><p>{regionalDescription.description}</p><p>{regionalDescription.climate}</p><ul>{regionalDescription.features.map(feature => <li key={feature}>{feature}</li>)}</ul></details>}
+        {inspectedHydrology.length > 0 && <details className={styles.terrain}><summary>Bassins et chenaux de la région</summary>{inspectedHydrology.map(feature => <p key={feature.id}><strong>{feature.name}</strong> · {feature.description}</p>)}</details>}
+        <p className={styles.hint}>Les ordres se préparent depuis « Commander ce site » ou en sélectionnant un territoire. Les effectifs adverses restent inconnus sans reconnaissance.</p>
+        {projection === "globe" && selectedGeo && !projectWarAtlasGlobeV95(selectedGeo.longitude, selectedGeo.latitude, view).visible && <button type="button" className={styles.hiddenSelection} onClick={() => centerOn(inspected.id)}>La sélection est sur l’autre face · la montrer</button>}
+      </aside>
+  </>;
+  const territoryDirectory = <>
+    <div className={styles.regionStrip} style={{ "--atlas-region-columns": Math.min(6, regions.length) } as CSSProperties} aria-label={`Contrôle des ${regions.length} régions`}>{regionMetrics.map(region => <button type="button" key={region.id} aria-pressed={regionFilter === region.id} onClick={() => {
+      const geography = regions.find(item => item.id === region.id)!;
+      setRegionFilter(regionFilter === region.id ? "" : region.id); setLongitude(geography.longitude); setLatitude(geography.latitude);
+    }}><span>{region.name}</span><strong>{region.playerCount}<small>/{region.territoryCount} Haltes</small></strong><span className={styles.regionTrack} aria-hidden="true">{factionMetrics.map(faction => <i key={faction.id} style={{ width: `${region.factions[faction.id] / region.territoryCount * 100}%`, background: faction.color }}/>)}</span></button>)}</div>
+
+    <details className={styles.territoryDirectory}><summary>Liste des territoires · {filteredTerritories.length} zones{regionFilter ? " dans cette région" : " sur les deux hémisphères"}</summary><div className={styles.directoryGrid}>{filteredTerritories.map(geography => {
+      const definition = territory(geography.id)!;
+      const faction = simulation.territories[geography.id].controller;
+      return <button type="button" key={geography.id} aria-pressed={selectionMode === "origin" ? geography.id === source.id : geography.id === targetTerritoryId} onClick={() => { choose(geography.id); centerOn(geography.id); }}><FactionSymbol faction={faction}/><span><small>{shortId(geography.id)} · {WAR_ATLAS_FACTIONS_V95[faction].shortName}</small>{definition.name}</span>{statusLabel(geography.id) && <em>{statusLabel(geography.id)}</em>}</button>;
+    })}</div></details>
+
+  </>;
+  const provenance = <>
+    <p className={styles.provenance}>{planet.name} · {landmassLabel} · {regions.length} régions administratives · {Math.round(planet.landFraction * 100)} % de terres cartographiées. Les liaisons indiquées permettent de franchir les détroits ; les surfaces entre les territoires sont non jouables.</p>
+  </>;
+
+  const selectionControls = <>
         <div className={styles.selectionBar}>
           <div className={styles.segmented} aria-label="Choisir le rôle du territoire sélectionné">
             <button type="button" aria-pressed={selectionMode === "origin"} onClick={() => setSelectionMode("origin")}>1 · Départ / inspection</button>
@@ -322,6 +392,17 @@ export default function ClanWarAtlasV95({
           </div>
           <button type="button" className={styles.centerButton} onClick={() => centerOn(inspected.id)}>Centrer la sélection</button>
         </div>
+  </>;
+
+  return <section className={styles.atlas} aria-labelledby={`${unique}-heading`} data-testid="clan-war-atlas-v95" data-command-layout={compactCommand} data-planet-id={planet.id} data-planet-style={planet.style} data-surface-kind={planet.surface.kind} data-landmass-count={landmasses.length}
+      data-regional-profile-active={Boolean(appearanceV142)}
+      data-regional-profile-code={appearanceV142?.worldCode ?? ""}
+      data-regional-profile-source={visualSelectionV142.source}>
+    {!compactCommand && metadata}
+    {!compactCommand && toolbar}
+    <div className={styles.workspace}>
+      <div className={styles.cartography}>
+        {!compactCommand && selectionControls}
         <div className={styles.viewport} data-projection={projection}>
           <svg className={styles.world} viewBox="0 0 960 620" role="group" aria-labelledby={`${unique}-map-title ${unique}-map-description`} data-material-ready={materialReady} data-map-colors={mapColors}>
             <title id={`${unique}-map-title`}>{`${planet.name}, ${projection === "globe" ? "globe interactif" : `carte des ${territories.length} territoires`}`}</title>
@@ -409,66 +490,34 @@ export default function ClanWarAtlasV95({
             <g className={styles.chartLabels} aria-hidden="true"><text x="26" y="592">{hovered ? `${shortId(hovered.id)} / ${hovered.name.toLocaleUpperCase("fr")}` : "SÉLECTIONNEZ UN TERRITOIRE"}</text><text x="934" y="592" textAnchor="end">{projection === "globe" ? "HÉMISPHÈRE VISIBLE" : "ENSEMBLE DU THÉÂTRE"}</text></g>
           </svg>
         </div>
-        <div className={styles.mapControls}>
-          {projection === "globe" && <><div className={styles.rotationButtons} aria-label="Rotation de la planète"><button type="button" aria-label="Tourner vers l’ouest" onClick={() => setLongitude(value => wrapLongitude(value - 30))}>←</button><button type="button" aria-label="Incliner vers le nord" onClick={() => setLatitude(value => Math.min(65, value + 15))}>↑</button><button type="button" aria-label="Incliner vers le sud" onClick={() => setLatitude(value => Math.max(-65, value - 15))}>↓</button><button type="button" aria-label="Tourner vers l’est" onClick={() => setLongitude(value => wrapLongitude(value + 30))}>→</button></div><label className={styles.rotationSlider}>Rotation<input aria-label="Longitude du globe" type="range" min="-180" max="180" value={longitude} onChange={event => setLongitude(Number(event.target.value))}/></label><label className={styles.zoomControl}>Zoom<select aria-label="Zoom du globe" value={zoom} onChange={event => setZoom(Number(event.target.value))}><option value="1">100 %</option><option value="1.1">110 %</option><option value="1.2">120 %</option></select></label></>}
-          <label className={styles.toggle}><input type="checkbox" checked={showRoutes} onChange={event => setShowRoutes(event.target.checked)}/>Routes</label>
-          <label className={styles.toggle}><input type="checkbox" checked={showNames} onChange={event => setShowNames(event.target.checked)}/>Noms</label>
-          <label className={styles.toggle}><input type="checkbox" checked={showIntelligence} onChange={event => setShowIntelligence(event.target.checked)}/>Renseignement daté</label>
-          <label className={styles.zoomControl}>Couleurs<select aria-label="Couleurs de la carte" value={mapColors} disabled={!materialReady} onChange={event => setMapColors(event.target.value as "terrain" | "control")}><option value="terrain">Relief naturel</option><option value="control">Contrôle des clans</option></select></label>
-        </div>
-        <fieldset className={styles.appearanceControls} disabled={!materialReady}><legend>Affichage planétaire</legend>
-          <label><input type="checkbox" checked={materialSettings.atmosphere} onChange={event => setMaterialSettings(value => ({ ...value, atmosphere: event.target.checked }))}/>Atmosphère</label>
-          <label><input type="checkbox" checked={materialSettings.clouds} onChange={event => setMaterialSettings(value => ({ ...value, clouds: event.target.checked }))}/>Nuages</label>
-          <label><input type="checkbox" checked={materialSettings.weather} onChange={event => setMaterialSettings(value => ({ ...value, weather: event.target.checked }))}/>Brumes et météo</label>
-          <label><input type="checkbox" checked={materialSettings.aurora} onChange={event => setMaterialSettings(value => ({ ...value, aurora: event.target.checked }))}/>Aurores</label>
-          <label><input type="checkbox" checked={materialSettings.lighting} onChange={event => setMaterialSettings(value => ({ ...value, lighting: event.target.checked }))}/>Éclairage</label>
-        </fieldset>
-        <p className={styles.mapNote}>Les couleurs, motifs et symboles indiquent le contrôle. Routes claires : voisins du départ ; tirets clairs : traversées balisées. Pointillés ambre : ordres réservés. Le fond texturé est non jouable.{hydrology.length > 0 && ` ${hydrology.length} bassins et chenaux utilisent la même matière que la surface entre les terres.`}{territories.length > 48 && " Sur ce grand front, les repères montrent la sélection et ses voisins. Filtrez une région ou survolez une zone pour afficher les autres repères."}</p>
-        {showIntelligence && <p className={styles.intelligenceLegend} data-testid="war-intel-legend-v106"><span>● Aptes : personnes connues de votre détachement</span><span>◷ Intervalle et tour : dernier rapport, pas un effectif en direct</span><span>? Effectif inconnu</span><span>Ambre : rapport ancien, à renouveler</span>Les couleurs de contrôle et les surfaces naturelles restent visibles.</p>}
-        {convoy && <p className={styles.convoyLegend} data-testid="war-convoy-atlas-legend-v105"><span data-stage="delivered">━ Étapes livrées</span><span data-stage="next">┅ Prochaine étape</span><span data-stage="planned">┄ Trajet prévu</span><span data-stage="blocked">┅ Liaison bloquée</span>Les étapes détaillées et leur inspection sont disponibles dans « Acheminer un convoi ».</p>}
+        {compactCommand && selectionControls}
+        {!compactCommand && displayControls}
       </div>
 
-      <aside className={styles.intelPanel} aria-label="Renseignement territorial">
-        <p className={styles.eyebrow}>TERRITOIRE {shortId(inspected.id)}<span>{selectionMode === "target" ? "CIBLE" : "SÉLECTION"}</span></p>
-        <h5>{inspected.name}</h5>
-        <p className={styles.regionCaption}>{inspectedRegion?.name}</p>
-        <div className={styles.controller}><FactionSymbol faction={inspectedState.controller}/><span>{WAR_FACTIONS_V85[inspectedState.controller]}<small>Contrôle territorial</small></span></div>
-        <dl className={styles.intelFacts}>
-          <div><dt>Ravitaillement</dt><dd>{inspectedState.controller === PLAYER ? supplied.has(inspected.id) ? "Relié au réseau" : "Isolé du réseau" : "Liaison non observée"}</dd></div>
-          <div><dt>{intel.kind === "own" ? "Personnes présentes" : "Reconnaissance"}</dt><dd>{intel.label}</dd></div>
-          {intel.kind === "observed" && <div><dt>Date du relevé</dt><dd>Tour {intel.turn} · {intel.stale ? "ancien, à renouveler" : "estimation"}</dd></div>}
-          {inspectedState.controller === PLAYER && <><div><dt>Installation</dt><dd>{inspectedState.installationIntact ? "Opérationnelle" : "Endommagée"}</dd></div><div><dt>Stocks locaux</dt><dd>S {simulation.stocks[inspected.id].s} · M {simulation.stocks[inspected.id].m} · I {simulation.stocks[inspected.id].i}</dd></div></>}
-          <div><dt>Routes voisines</dt><dd>{inspected.neighbors.length}</dd></div>
-        </dl>
-        {inspectedState.controller === PLAYER && <section className={styles.supplyTrace} aria-label="Liaison du territoire" data-testid="war-supply-path-v106"><strong>Liaison depuis la base</strong>{supplyPath ? <><p>{supplyPath.length - 1} route{supplyPath.length > 2 ? "s" : ""} praticable{supplyPath.length > 2 ? "s" : ""} dans le réseau actuel.</p><div>{supplyPath.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("origin"); onSelectTerritory(id); centerOn(id); setAnnouncement(`Inspection du maillon ${territory(id)?.name}.`); }}>{shortId(id)} · {territory(id)?.name}</button>)}</div><small>Cette liaison décrit l’accès au réseau. Le transit ne donne pas la propriété d’un dépôt ; les convois ne déposent que dans vos magasins.</small></> : <p>Pas de liaison praticable depuis une base intacte. Inspectez les contrôles et les transits des routes voisines.</p>}</section>}
-        <div className={styles.routeSelection}><div><span>01 / DÉPART</span><strong>{shortId(source.id)} · {source.name}</strong></div><span className={styles.routeArrow} aria-hidden="true">↓</span><div><span>02 / CIBLE</span><strong>{target ? `${shortId(target.id)} · ${target.name}` : "À choisir"}</strong></div></div>
-        <details className={styles.neighborDirectory}><summary>{source.neighbors.length} destinations accessibles du départ</summary><div>{source.neighbors.map(id => <button key={id} type="button" onClick={() => { setSelectionMode("target"); onSelectTarget(id); centerOn(id); setAnnouncement(`Cible : ${territory(id)?.name}. Destination voisine de ${source.name}.`); }} aria-pressed={targetTerritoryId === id}>{shortId(id)} · {territory(id)?.name}{routeDescription(source.id, id)?.kind === "crossing" && " · traversée balisée"}</button>)}</div></details>
-        <button type="button" className={styles.targetAction} onClick={() => {
-          setSelectionMode(selectionMode === "origin" ? "target" : "origin");
-          setAnnouncement(selectionMode === "origin" ? `Choisissez une cible parmi les voisins de ${source.name}.` : "Choisissez un territoire à inspecter ou un nouveau départ.");
-        }}>{selectionMode === "origin" ? "Choisir une cible sur la carte →" : "← Revenir au départ / inspection"}</button>
-        {selectionMode === "target" && <p className={styles.hint}>Seuls les voisins du départ sont sélectionnables comme cible. Les soins utilisent le territoire de départ.</p>}
-        <details className={styles.terrain}><summary>Terrain et sites</summary><p>{inspected.terrain}</p><p>{inspected.sites}</p></details>
-        {regionalDescription && <details className={styles.terrain}><summary>Particularités de la région</summary><p>{regionalDescription.description}</p><p>{regionalDescription.climate}</p><ul>{regionalDescription.features.map(feature => <li key={feature}>{feature}</li>)}</ul></details>}
-        {inspectedHydrology.length > 0 && <details className={styles.terrain}><summary>Bassins et chenaux de la région</summary>{inspectedHydrology.map(feature => <p key={feature.id}><strong>{feature.name}</strong> · {feature.description}</p>)}</details>}
-        <p className={styles.hint}>Les ordres se préparent dans le panneau stratégique ci-dessous. Les effectifs adverses restent inconnus sans reconnaissance.</p>
-        {projection === "globe" && selectedGeo && !projectWarAtlasGlobeV95(selectedGeo.longitude, selectedGeo.latitude, view).visible && <button type="button" className={styles.hiddenSelection} onClick={() => centerOn(inspected.id)}>La sélection est sur l’autre face · la montrer</button>}
-      </aside>
+      {!compactCommand && intelligence}
     </div>
 
-    <div className={styles.regionStrip} style={{ "--atlas-region-columns": Math.min(6, regions.length) } as CSSProperties} aria-label={`Contrôle des ${regions.length} régions`}>{regionMetrics.map(region => <button type="button" key={region.id} aria-pressed={regionFilter === region.id} onClick={() => {
-      const geography = regions.find(item => item.id === region.id)!;
-      setRegionFilter(regionFilter === region.id ? "" : region.id); setLongitude(geography.longitude); setLatitude(geography.latitude);
-    }}><span>{region.name}</span><strong>{region.playerCount}<small>/{region.territoryCount} Haltes</small></strong><span className={styles.regionTrack} aria-hidden="true">{factionMetrics.map(faction => <i key={faction.id} style={{ width: `${region.factions[faction.id] / region.territoryCount * 100}%`, background: faction.color }}/>)}</span></button>)}</div>
-
-    <details className={styles.territoryDirectory}><summary>Liste des territoires · {filteredTerritories.length} zones{regionFilter ? " dans cette région" : " sur les deux hémisphères"}</summary><div className={styles.directoryGrid}>{filteredTerritories.map(geography => {
-      const definition = territory(geography.id)!;
-      const faction = simulation.territories[geography.id].controller;
-      return <button type="button" key={geography.id} aria-pressed={selectionMode === "origin" ? geography.id === source.id : geography.id === targetTerritoryId} onClick={() => { choose(geography.id); centerOn(geography.id); }}><FactionSymbol faction={faction}/><span><small>{shortId(geography.id)} · {WAR_ATLAS_FACTIONS_V95[faction].shortName}</small>{definition.name}</span>{statusLabel(geography.id) && <em>{statusLabel(geography.id)}</em>}</button>;
-    })}</div></details>
-
+    {compactCommand && <div className={styles.commandToolbar}>
+      <div className={styles.segmented} aria-label="Projection de l’atlas">
+        <button type="button" aria-pressed={projection === "globe"} onClick={() => setProjection("globe")}>◎ Globe</button>
+        <button type="button" aria-pressed={projection === "map"} onClick={() => setProjection("map")}>▱ Planisphère</button>
+      </div>
+      <div className={styles.commandTools}>
+        <button type="button" data-atlas-command="display" aria-expanded={commandLayer === "display"} onClick={() => setCommandLayer("display")}>Carte et affichage <span aria-hidden="true">◈</span></button>
+        <button type="button" data-atlas-command="intel" aria-expanded={commandLayer === "intel"} onClick={() => setCommandLayer("intel")}>Renseignement <span aria-hidden="true">+</span></button>
+      </div>
+    </div>}
+    {!compactCommand && territoryDirectory}
     {playerOrders.length > 0 && <div className={styles.pendingOrders}><p className={styles.eyebrow}>TRAJECTOIRES RÉSERVÉES / {playerOrders.length}</p><ul>{playerOrders.map(order => <li key={order.id}><span aria-hidden="true">↗</span><strong>{orderNames[order.kind]}</strong><span>{shortId(order.fromId)} → {shortId(order.targetId)}</span><button type="button" onClick={() => { centerOn(order.targetId); setAnnouncement(`${orderNames[order.kind]} : ${territory(order.fromId)?.name} vers ${territory(order.targetId)?.name}.`); }}>Localiser<span className={styles.srOnly}> l’ordre {order.id}</span></button></li>)}</ul></div>}
     <p className={styles.announcement} role="status" aria-live="polite">{announcement || (selectionMode === "origin" ? "Sélectionnez un territoire pour l’inspecter et préparer votre départ." : `Sélectionnez une cible voisine de ${source.name}.`)}</p>
-    <p className={styles.provenance}>{planet.name} · {landmassLabel} · {regions.length} régions administratives · {Math.round(planet.landFraction * 100)} % de terres cartographiées. Les liaisons indiquées permettent de franchir les détroits ; les surfaces entre les territoires sont non jouables.</p>
+    {!compactCommand && provenance}
+    {compactCommand && <>
+      <ClanWarCommandOverlay open={commandLayer === "display"} onClose={() => setCommandLayer(null)} title="Carte et affichage" eyebrow={`${planet.name} · THÉÂTRE PLANÉTAIRE`}>
+        {metadata}{toolbar}{displayControls}{territoryDirectory}{provenance}
+      </ClanWarCommandOverlay>
+      <ClanWarCommandOverlay open={commandLayer === "intel"} onClose={() => setCommandLayer(null)} title="Renseignement territorial" eyebrow={`${planet.name} · ${shortId(inspected.id)}`}>
+        {intelligence}
+      </ClanWarCommandOverlay>
+    </>}
   </section>;
 }

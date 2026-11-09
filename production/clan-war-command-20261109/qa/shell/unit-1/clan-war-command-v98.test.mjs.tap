@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: all thirty command views retain exact state bytes and expose only controlled sites
+ok 1 - all thirty command views retain exact state bytes and expose only controlled sites
+  ---
+  duration_ms: 18.355737
+  type: 'test'
+  ...
+# Subtest: preview acceptance is the real validator for seven order types, thirty worlds and current reservations
+ok 2 - preview acceptance is the real validator for seven order types, thirty worlds and current reservations
+  ---
+  duration_ms: 118.706243
+  type: 'test'
+  ...
+# Subtest: hidden enemy stocks and identities cannot alter command or assault advice
+ok 3 - hidden enemy stocks and identities cannot alter command or assault advice
+  ---
+  duration_ms: 2.091958
+  type: 'test'
+  ...
+# Subtest: local stock reservations and operation slots are released by cancellation
+ok 4 - local stock reservations and operation slots are released by cancellation
+  ---
+  duration_ms: 1.42461
+  type: 'test'
+  ...
+# Subtest: convoys reserve local stock while preserving consolidated upkeep funds
+ok 5 - convoys reserve local stock while preserving consolidated upkeep funds
+  ---
+  duration_ms: 0.811545
+  type: 'test'
+  ...
+# Subtest: departure guards, isolated occupation and unpaid upkeep produce actionable warnings
+ok 6 - departure guards, isolated occupation and unpaid upkeep produce actionable warnings
+  ---
+  duration_ms: 0.708189
+  type: 'test'
+  ...
+# Subtest: assault advice retains dated estimates without computing a hidden battle outcome
+ok 7 - assault advice retains dated estimates without computing a hidden battle outcome
+  ---
+  duration_ms: 0.463219
+  type: 'test'
+  ...
+# Subtest: objective diagnostics distinguish regional coverage from every-site occupation and track transit expiry
+ok 8 - objective diagnostics distinguish regional coverage from every-site occupation and track transit expiry
+  ---
+  duration_ms: 37.601467
+  type: 'test'
+  ...
+# Subtest: actual command markup renders each world with real own sites and safe diagnostics
+ok 9 - actual command markup renders each world with real own sites and safe diagnostics
+  ---
+  duration_ms: 2561.865927
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2752.95642

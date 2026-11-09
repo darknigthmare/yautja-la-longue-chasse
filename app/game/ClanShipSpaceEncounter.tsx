@@ -1,6 +1,10 @@
 'use client';
 
-import { useId, useRef, useState } from 'react';
+import { useId, useMemo, useRef, useState } from 'react';
+import {
+  clanShipRelayDiagnosticMatches, readClanShipRelayDiagnostic,
+  type ClanShipMaintenanceCampaign,
+} from './systems/clanShipMaintenanceDiagnostics';
 import {
   CLAN_SHIP_SPACE_CREW_EFFECTS,
   CLAN_SHIP_SPACE_MAX_ENERGY,
@@ -23,6 +27,7 @@ export interface ClanShipSpaceEncounterProps {
   onCommand: (command: ClanShipSpaceCommand) => boolean;
   suspended?: boolean;
   onClose?: () => void;
+  campaign?: ClanShipMaintenanceCampaign;
 }
 
 const STATUS_LABELS = { active: 'Liaison tactique', victory: 'Opération réussie', defeat: 'Opération interrompue', withdrawn: 'Contact rompu' } as const;
@@ -102,7 +107,7 @@ function TacticalProjection({ encounter }: { encounter: Encounter }) {
 }
 
 /** Controlled view only: the owning campaign confirms every accepted turn. */
-export default function ClanShipSpaceEncounter({ encounter, onCommand, suspended = false, onClose }: ClanShipSpaceEncounterProps) {
+export default function ClanShipSpaceEncounter({ encounter, onCommand, suspended = false, onClose, campaign }: ClanShipSpaceEncounterProps) {
   const headingId = useId();
   const [failedCommand, setFailedCommand] = useState(false);
   const issuedSnapshot = useRef<Encounter | null>(null);
@@ -111,6 +116,8 @@ export default function ClanShipSpaceEncounter({ encounter, onCommand, suspended
   const reports = clanShipSpaceReports(encounter);
   const lastReport = reports.at(-1);
   const active = encounter.status === 'active';
+  const relay = useMemo(() => campaign ? readClanShipRelayDiagnostic(campaign) : null, [campaign]);
+  const currentRelay = clanShipRelayDiagnosticMatches(relay, encounter) ? relay : null;
   const issue = (order: ClanShipSpaceOrder) => {
     if (suspended || !active || issuedSnapshot.current === encounter) return;
     const accepted = onCommand({ type: order, expectedTurn: encounter.turn });
@@ -156,6 +163,22 @@ export default function ClanShipSpaceEncounter({ encounter, onCommand, suspended
       <span className={styles.reportMarker} aria-hidden="true" />
       <p>{failedCommand ? 'Ordre non confirmé. La table conserve le dernier état confirmé ; vérifie la sauvegarde puis réessaie.' : suspended ? 'Liaison suspendue. Les ordres reprendront après fermeture de la pause.' : lastReport?.message ?? 'La formation attend ton premier ordre. Analyse le contact pour préparer l’opération.'}</p>
     </div>
+    {currentRelay && <details className={styles.relayDiagnostic} open data-clan-relay-diagnostic
+      data-relay-source-turn={currentRelay.sourceTurn} data-relay-completed-revision={currentRelay.completedIncidentRevision}>
+      <summary>Relais R-2 · diagnostic rapproché <span>Deux ordres comparés</span></summary>
+      <p>Le circuit témoin {currentRelay.referenceBranch} et la branche réparée {currentRelay.repairedBranch} concordent.
+        Choisis un premier ordre ; la seconde action reste à confirmer au tour suivant.</p>
+      {currentRelay.forecasts.length ? <div className={styles.relayForecasts}>
+        {currentRelay.forecasts.map(forecast => <article key={forecast.first} data-relay-forecast={forecast.first}>
+          <strong>{forecast.labels.join(' → ')}</strong>
+          <span>{forecast.outcome === 'victory' ? 'Objectif sécurisé' : `${forecast.turns} ordres · contact ${forecast.hostileIntegrity}/100 · propulsion ${forecast.hostileDrive}/100`}</span>
+          <span>Formation {forecast.formation}/100 · énergie {forecast.energy}/{CLAN_SHIP_SPACE_MAX_ENERGY}</span>
+          <button type="button" disabled={suspended} data-clan-relay-order={forecast.first} onClick={() => issue(forecast.first)}>
+            Donner l’ordre : {forecast.labels[0]}
+          </button>
+        </article>)}
+      </div> : <p>Aucune suite de deux ordres sans interruption de l’opération n’est disponible. Consulte les ordres individuels et le repli.</p>}
+    </details>}
     {active ? <fieldset className={styles.commands} disabled={suspended}>
       <legend>Ordres tactiques</legend>
       {CLAN_SHIP_SPACE_ORDERS.map(order => {

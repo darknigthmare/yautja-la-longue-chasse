@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: published V6 source is active and complete; historical IDs never alias the new design
+ok 1 - published V6 source is active and complete; historical IDs never alias the new design
+  ---
+  duration_ms: 20.579291
+  type: 'test'
+  ...
+# Subtest: Excel Simuler Une équipe defaults give 12 attack, 9 defense and 48 XP
+ok 2 - Excel Simuler Une équipe defaults give 12 attack, 9 defense and 48 XP
+  ---
+  duration_ms: 0.370059
+  type: 'test'
+  ...
+# Subtest: rationing, missing members, fatigue floor, terrain cap and XP cap match workbook values
+ok 3 - rationing, missing members, fatigue floor, terrain cap and XP cap match workbook values
+  ---
+  duration_ms: 0.441787
+  type: 'test'
+  ...
+# Subtest: invalid hypotheses cannot calculate power or award XP
+ok 4 - invalid hypotheses cannot calculate power or award XP
+  ---
+  duration_ms: 0.412292
+  type: 'test'
+  ...
+# Subtest: local parser rejects forged metadata, truncated core, duplicate identities and bad cell provenance
+ok 5 - local parser rejects forged metadata, truncated core, duplicate identities and bad cell provenance
+  ---
+  duration_ms: 112.333227
+  type: 'test'
+  ...
+# Subtest: numeric formulas, nonfinite values, broken graph and string booleans are refused
+ok 6 - numeric formulas, nonfinite values, broken graph and string booleans are refused
+  ---
+  duration_ms: 173.103591
+  type: 'test'
+  ...
+# Subtest: formulas and scripts in prose stay inert text; unknown properties are discarded
+ok 7 - formulas and scripts in prose stay inert text; unknown properties are discarded
+  ---
+  duration_ms: 26.125126
+  type: 'test'
+  ...
+# Subtest: each import owns its rules, calculator, route graph and field arrays
+ok 8 - each import owns its rules, calculator, route graph and field arrays
+  ---
+  duration_ms: 28.008429
+  type: 'test'
+  ...
+# Subtest: actual passage W3-L01 costs one, and closed or oversized columns cannot use it
+ok 9 - actual passage W3-L01 costs one, and closed or oversized columns cannot use it
+  ---
+  duration_ms: 23.4392
+  type: 'test'
+  ...
+# Subtest: directions and RAV permission are respected without changing the default graph
+ok 10 - directions and RAV permission are respected without changing the default graph
+  ---
+  duration_ms: 2.627717
+  type: 'test'
+  ...
+# Subtest: every source route agrees with an independent all-pairs shortest-distance oracle
+ok 11 - every source route agrees with an independent all-pairs shortest-distance oracle
+  ---
+  duration_ms: 816.837898
+  type: 'test'
+  ...
+# Subtest: a result credits present members only, caps XP and is idempotent across modes and operation IDs
+ok 12 - a result credits present members only, caps XP and is idempotent across modes and operation IDs
+  ---
+  duration_ms: 1.01298
+  type: 'test'
+  ...
+# Subtest: invalid participants, unfinished results, campaign context and corrupted XP cannot grant a result
+ok 13 - invalid participants, unfinished results, campaign context and corrupted XP cannot grant a result
+  ---
+  duration_ms: 0.309658
+  type: 'test'
+  ...
+# Subtest: death and a zero-XP replacement preserve the locked specialization but never copy mastery
+ok 14 - death and a zero-XP replacement preserve the locked specialization but never copy mastery
+  ---
+  duration_ms: 0.433454
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1221.906558

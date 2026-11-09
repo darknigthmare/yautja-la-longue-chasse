@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "nativeChecksPassed": 19,
+  "nativeChecksFailed": 0,
+  "originalScreenshotsOpened": 8,
+  "sourceBeforeAfterEqual": true,
+  "sourceSha256": {
+    "app/game/ClanWarOperationsV115.tsx": "d8ec15757f23cbd0e468fa3720c2a9989b2d4d810b6e93a5fb5453cadcfbd11f",
+    "app/game/ClanWarOperationsV115.module.css": "072f60b66297fce0a33ca144bd96de708f5c2a724b8d4cd4f9e4a6d958ac2727",
+    "app/game/ClanWarCommandOverlay.tsx": "63c97a4f1f77a10219be5e5e18836859d65a6a1463d4b50f6f786d3f83631cd4",
+    "app/game/ClanWarCommandOverlay.module.css": "7115541b23bec445c3e3a946255dd3a5bb0f08353e303b3fb4281e4fe5fff22e",
+    "app/game/systems/clanWarOperationsArchive.ts": "70c08ad2f6b6136a6c5d0f35d432e4a8c3c379a59defb2fd8a6d5ad269e01814",
+    "app/game/systems/clanWarOperationsV115.ts": "c10c4c95994e517246812a89e4af6fc5264eb73f31b846ff586ea47a715d049b",
+    "app/game/systems/clanWarFenceV94.ts": "959724666965ddb46b4a0ce28973145d365d35b7af67d0331590b1fbcf9a6092",
+    "scripts/qa-clan-war-command-operations-20261109.mjs": "60d0487466b8827693683402f3d6c27d0379d57ed7a15a50abdcf0e43562c0cc"
+  },
+  "domainRegressionTestsPassed": 45,
+  "domainRegressionReport": "production/clan-war-command-20261109/qa/operations/unit-1/report.json",
+  "unitScope": "Existing archive/domain/source regressions; not additional new test cases. Final integration suite is owned by root.",
+  "scope": "Actual production operations component and shared dialog, esbuild host with original W3 rules. Real browser events, localStorage, IDB and Web Locks. Not full GameClient, campaign, physical-controller or canonical-art certification.",
+  "preservedContracts": [
+    "V115 fenced.v2 and legacy-free.v1 namespaces",
+    "Real Web Locks, IDB intent confirmation and exact readback",
+    "Original four mode callbacks, RAV costs and source rules",
+    "Campaign save stays separate"
+  ],
+  "notQualified": [
+    "Full Next/GameClient integration",
+    "Native physical gamepad",
+    "AAA human artistic review",
+    "Complete campaign or remote War server"
+  ],
+  "files": [
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/report.browser-run.json",
+      "bytes": 6455,
+      "sha256": "c86f689ce32f29fff729738fd40fc9986322b9620168ce7da196d83f22613f1b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/report.json",
+      "bytes": 6839,
+      "sha256": "595e368696c79b23d9bc9e034f53b02b8ecb445771a6bdd918d45ed2644a5b26"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/screenshot-inspection.json",
+      "bytes": 3004,
+      "sha256": "b1b0f0dd1f3cb6b15d5cb1dbd62c0e48f2992126c76dd879154d60b3bb01755f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/recipe-used.mjs",
+      "bytes": 15242,
+      "sha256": "60d0487466b8827693683402f3d6c27d0379d57ed7a15a50abdcf0e43562c0cc"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/lint-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/lint-final.json",
+      "bytes": 1319,
+      "sha256": "d001c8a823106ce58ca484fe77012fd952bcab3743a12866a90e7fa4a20267a9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/01-command-desktop.png",
+      "bytes": 417706,
+      "sha256": "a8168d417e5a63baa521d40e86d0759541415d281ff00dfd10adf24198140caf"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/01b-briefing-teams-desktop.png",
+      "bytes": 297674,
+      "sha256": "055a86712bdd186b384817bb288300466d1edba42d44bd7880a01ad29eb124d0"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/02-rts-field-desktop.png",
+      "bytes": 145467,
+      "sha256": "ef867f20be3e566115c0f2ff2d8495c23811f0c310f84fc9d9f8a9ffca2875cb"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/03-triage-390.png",
+      "bytes": 165629,
+      "sha256": "69a4d6a6e4b9be0fc926d2c255bc73c1756e6738e8c4bfd54f9d2f4808e5a91f"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/05-briefing-390.png",
+      "bytes": 130568,
+      "sha256": "ef14bc26882d84fd85234d74be094fa65a24da5f3055be239e6a125b620607e9"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/03-triage-320.png",
+      "bytes": 145682,
+      "sha256": "9983ac1ff6efd644608c9d124002e0cbf6d87f23c730e599e1ac41e6de02ba32"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/05-briefing-320.png",
+      "bytes": 117766,
+      "sha256": "48cb165d0a4a950d0df14ef851c12698d1238fceceba52bdb80193683db572df"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/attempt-7/04-stealth-field-desktop.png",
+      "bytes": 142890,
+      "sha256": "ceeb0f686239b47f63d717d260685eae1a39fe1f7a45d233dfc910bfe0765849"
+    },
+    {
+      "path": "production/clan-war-command-20261109/qa/operations/unit-1/report.json",
+      "bytes": 1278,
+      "sha256": "d678c09c6e09d5534123fcf0b13f74a6e4e34db5bbbb261c9d8ce800eea4706e"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual production useMenuGamepad hook, React callbacks and browser-native dialog focus/cancel. navigator.getGamepads is a declared synthetic input provider; native RAF, focus, requestClose, cancel and DOM results are not mocked. No gameplay, saves, Next integration or physical-controller qualification.",
+  "checks": [
+    {
+      "name": "Two actual native modal dialogs open in reverse DOM order",
+      "passed": true
+    },
+    {
+      "name": "Direction and confirm target only the focused native top layer",
+      "passed": true
+    },
+    {
+      "name": "Back requests cancellation of Alpha, restores Beta focus and held input never cascades",
+      "passed": true
+    },
+    {
+      "name": "Next distinct Back closes Beta through its real React cancel owner",
+      "passed": true
+    },
+    {
+      "name": "Only a subsequent root Back invokes the existing menu callback",
+      "passed": true
+    },
+    {
+      "name": "Native cancellation veto is respected without falling through to root Back",
+      "passed": true
+    },
+    {
+      "name": "Removing the veto lets the native owner close and keeps the root untouched",
+      "passed": true
+    },
+    {
+      "name": "Inert owner blocks confirm/Back and held Back cannot leak on resume",
+      "passed": true
+    },
+    {
+      "name": "Inert root blocks confirm/Back and held Back cannot leak on resume",
+      "passed": true
+    },
+    {
+      "name": "Legacy role/aria-modal controls and their original Back callback remain compatible",
+      "passed": true
+    },
+    {
+      "name": "Native keyboard Escape still follows React cancellation and preserves root",
+      "passed": true
+    },
+    {
+      "name": "No browser page errors",
+      "passed": true
+    },
+    {
+      "name": "Hook, navigation input contract, fixture and recipe remain byte-identical during run",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "sourceBefore": {
+    "app/game/useMenuGamepad.ts": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35",
+    "app/game/systems/menuNavigation.ts": "0b51fd81acffe645a799a6247a0192a760b111e813733bfc38dc905a66a140cf",
+    "tests/browser/menu-native-dialog-20261109.fixture.tsx": "60c7bfd0985cb7b2c4ff70fdb163265a6b70e74e946ae2d1c7c7b10314644eb0",
+    "scripts/qa-menu-native-dialog-20261109.mjs": "b5eb3576acd9cce19a96d08e3bcce8657b6ed9811cb3d9075b6dcd82080a52a4"
+  },
+  "screenshots": [
+    {
+      "filename": "01-native-top-layer.png",
+      "sha256": "2682f819d57d7a621fdab4261fcea8d6a678e73678a1546944eeacde183736de",
+      "opened": false
+    },
+    {
+      "filename": "02-menu-restored.png",
+      "sha256": "4ed338cf970ab5aaf79f0ec87ac347e04a63dcc5de7a4e098df6481381d682f9",
+      "opened": false
+    }
+  ],
+  "bundleSha256": "c72c4cf807682f92a88f6fce38f11c64d8a9c770c0dd2077f882370ea60adb88",
+  "browserVersion": "154.0.8037.57",
+  "url": "http://127.0.0.1:44697",
+  "sourceAfter": {
+    "app/game/useMenuGamepad.ts": "602879e33e5c0ecd1ceba063e28ce9c7c82e8a36e54d9d87f7f0e2f7d589cd35",
+    "app/game/systems/menuNavigation.ts": "0b51fd81acffe645a799a6247a0192a760b111e813733bfc38dc905a66a140cf",
+    "tests/browser/menu-native-dialog-20261109.fixture.tsx": "60c7bfd0985cb7b2c4ff70fdb163265a6b70e74e946ae2d1c7c7b10314644eb0",
+    "scripts/qa-menu-native-dialog-20261109.mjs": "b5eb3576acd9cce19a96d08e3bcce8657b6ed9811cb3d9075b6dcd82080a52a4"
+  },
+  "passed": true,
+  "screenshotInspection": {
+    "path": "screenshot-inspection.json",
+    "sha256": "c7a1080b05ba1f867f0475aec0f9359e638ee1b17cb7f3f66e6fe477d972d283",
+    "originalsOpened": 2
+  },
+  "rawBrowserReport": {
+    "path": "report.browser-run.json",
+    "sha256": "5fce7580d136884ef6f37f5a9224ee894e908ae4615110d2d0a2b9d3dd4c1b61"
+  },
+  "limits": [
+    "Synthetic Gamepad provider only; no physical controller",
+    "Fixture hosting actual hook and real native modal/cancel APIs, not full GameClient",
+    "requestClose unavailable fallback implemented but not exercised by the observed Chromium version"
+  ]
+}

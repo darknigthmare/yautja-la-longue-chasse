@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: every planetary atlas renders its own geography, names, surface and keyboard destinations
+ok 1 - every planetary atlas renders its own geography, names, surface and keyboard destinations
+  ---
+  duration_ms: 3349.87496
+  type: 'test'
+  ...
+# Subtest: alien surfaces use ten structural textures while faction control retains its three canonical colors
+ok 2 - alien surfaces use ten structural textures while faction control retains its three canonical colors
+  ---
+  duration_ms: 2038.791362
+  type: 'test'
+  ...
+# Subtest: natural jungles, tundra, snow and desert also texture the playable land beneath faction patterns
+ok 3 - natural jungles, tundra, snow and desert also texture the playable land beneath faction patterns
+  ---
+  duration_ms: 1886.03931
+  type: 'test'
+  ...
+# Subtest: planetary metrics use the active regions and exposing a foreign atlas never reveals hidden stocks
+ok 4 - planetary metrics use the active regions and exposing a foreign atlas never reveals hidden stocks
+  ---
+  duration_ms: 1676.911088
+  type: 'test'
+  ...
+# Subtest: real continents are counted separately from administrative regions and their coastlines remain noninteractive
+ok 5 - real continents are counted separately from administrative regions and their coastlines remain noninteractive
+  ---
+  duration_ms: 5159.830741
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 14125.846185

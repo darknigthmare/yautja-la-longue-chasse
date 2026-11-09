@@ -1,0 +1,68 @@
+{
+  "asOf": "2026-11-09T10:03:34.289567+00:00",
+  "passed": true,
+  "domainTests": 24,
+  "commands": [
+    {
+      "name": "domain",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/trophy-tutorial-v6.test.mjs"
+      ],
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/trophy-tutorial/domain.tap",
+      "sha256": "69dd1c77d0d51f978ac7d742729ab4b553d390f3c6e337b34023559b49fac491"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "node_modules/eslint/bin/eslint.js",
+        "app/game/TrophyTutorialBay.tsx",
+        "app/game/systems/trophyTutorialV6.ts",
+        "tests/trophy-tutorial-v6.test.mjs",
+        "--max-warnings",
+        "0"
+      ],
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/trophy-tutorial/lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "types",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--pretty",
+        "false",
+        "--strict",
+        "--target",
+        "ES2017",
+        "--lib",
+        "dom,dom.iterable,esnext",
+        "--module",
+        "esnext",
+        "--moduleResolution",
+        "bundler",
+        "--jsx",
+        "react-jsx",
+        "--esModuleInterop",
+        "--skipLibCheck",
+        "--allowImportingTsExtensions",
+        "--resolveJsonModule",
+        "next-env.d.ts",
+        "app/game/TrophyTutorialBay.tsx",
+        "app/game/systems/trophyTutorialV6.ts"
+      ],
+      "exitCode": 0,
+      "log": "production/clan-war-command-20261109/qa/trophy-tutorial/types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limits": [
+    "Domain simulation and targeted type/lint checks only. Actual component browser recipe has a controlled fixture writer, not the full GameClient. Full Next integration remains with parent.",
+    "The first ad-hoc standalone tsc invocation omitted project strict/type resolution flags and failed on existing transitive files; it is not used as a passing receipt."
+  ]
+}
