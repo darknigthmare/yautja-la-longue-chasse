@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-branch-draft-v2",
+  "characterId": "reference-yautja",
+  "variantId": "branch-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "branch_enter",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/branch_enter.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "branch_idle",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/branch_idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "branch_exit",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/branch_exit.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "branch_enter",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            309
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "branch_idle",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "branch_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            310
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "branch_exit",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            287
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            287
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            296
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            296
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "branch_exit",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            297
+          ],
+          "durationTicks": 5
+        }
+      ]
+    }
+  ]
+}

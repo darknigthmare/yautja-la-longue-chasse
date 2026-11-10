@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-roar-draft-v2",
+  "characterId": "reference-yautja",
+  "variantId": "roar-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "roar_enter",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/roar_enter.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "roar_idle",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/roar_idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "roar_exit",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/roar_exit.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "roar_enter",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            306
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "roar_idle",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "roar_exit",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304
+          ],
+          "durationTicks": 5
+        }
+      ]
+    }
+  ]
+}

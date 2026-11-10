@@ -1,65 +1,83 @@
-# Yautja — The Long Hunt : postures arboricoles
+# Yautja — Postures, respirations et célébrations · V2
 
-**Statut : draft — revue artistique et intégration au jeu en attente.**
+**Statut de production : draft — revue artistique et intégration au jeu en attente.**
 
-Pack de sprites créé à partir des trois références fournies. Les trois postures sont l’accroupissement sur une branche, l’affût resserré contre le tronc et l’appui ouvert avec une jambe dépliée.
+Six actions avec une entrée, un maintien animé et une sortie dédiée. Les dessins proviennent des références fournies et des postures du même héros. Le rugissement utilise sa variante sans masque ; les deux victoires emploient la lance et le trophée demandés.
 
-## Contenu livré
+## Contenu du pack complet
 
-| Posture | Entrée | Sortie dédiée | Posture fixe |
+| Action | Entrée | Maintien animé | Sortie dédiée |
 | --- | ---: | ---: | ---: |
-| Accroupi sur branche | 16 dessins | 16 dessins | Copie du dernier dessin d’entrée |
-| Affût serré contre le tronc | 16 dessins | 16 dessins | Copie du dernier dessin d’entrée |
-| Appui ouvert sur le tronc | 16 dessins | 16 dessins | Copie du dernier dessin d’entrée |
+| Accroupi sur une branche | 16 | 16 | 16 |
+| Embuscade contre le tronc | 16 | 16 | 16 |
+| Affût ouvert sur le tronc | 16 | 16 | 16 |
+| Provocation — rugissement | 16 | 16 | 16 |
+| Victoire — lance dressée | 16 | 16 | 16 |
+| Victoire — trophée brandi | 16 | 16 | 16 |
 
-- **96 PNG individuels de transition**, dans `frames/`, répartis en six séquences de 16 images.
-- **6 planches source** dans `atlases/`, de 1 254 × 1 254 pixels, en grille 4 × 4.
-- **3 PNG de posture fixe** dans `stances/`. Ce sont des copies des dernières entrées, pas trois dessins supplémentaires.
-- **Yautja_Postures_Animation.mp4** : aperçu de 7 secondes des trois entrées, du maintien et des sorties réversibles. La même boucle est montrée deux fois. Les sprites y sont simplement composés sur un fond de présentation ; les PNG conservent leur transparence.
-- **preview.html** : lecteur léger qui charge les six planches PNG voisines. Choix de posture, entrée, maintien, sortie, cadence, fond et inspection image par image.
-- **animations.json** : rectangles source, durées, pivots mesurés, décalages de lecture, propriétés alpha et chemins des PNG.
-- **anchor_measurements.json** : détail des mesures d’appui. Les consignes et la provenance se trouvent dans `art-source/hunter-postures-emotes/v1/` à la racine du dépôt.
-- Le script et les fichiers de réexport se trouvent dans `art-source/hunter-postures-emotes/v1/`. Le lecteur est accessible via `/game/sprites/hunter-postures-emotes/v1/preview.html` lorsque le projet est servi.
+**288 dessins source** répartis en **18 planches**, dont les **96 dessins de transition V1 conservés** et **192 nouveaux dessins**. Les copies de posture fixe, la lecture inversée et les répétitions de lecture n’augmentent pas ce total. Les nombres effectivement exportés figurent dans `animations.json`.
 
-## Animation et fluidité
+- `frames/<action>_<phase>/001.png` à `016.png` : PNG individuels avec leur alpha source.
+- `atlases/` : planches originales, copiées sans modification.
+- `import_atlases/` et `import_atlases.json` : variantes techniques avec deux pixels transparents autour de chaque cellule, sans retoucher les dessins. Elles ne comptent pas comme de nouveaux sprites.
+- `stances/` : copies de la dernière image de chaque entrée.
+- `preview.html` : lecteur léger, à garder à côté du dossier `atlases/`.
+- `Yautja_Postures_V2_Apercu.mp4` : vidéo de contrôle, trois actions par page ; détails dans `video_preview.json`.
+- `animations.json` : dimensions, rectangles source, alpha, pivots et décalages de lecture.
+- `playback.json` : ordres et durées de lecture externes, réutilisables dans le moteur.
+- `v1_baseline.json` : empreintes des planches V1 et références des PNG conservés.
 
-Cadence de départ : **16 images par seconde**, soit une seconde pour une transition de 16 dessins. Les images sont ordonnées de gauche à droite, puis de haut en bas sur les planches ; les PNG individuels sont numérotés `001.png` à `016.png`.
+## Lecture
 
-Le mode conseillé pour les raccords est **Sortie réversible** : l’entrée est jouée de 1 à 16, la dernière image est tenue, puis les mêmes dessins sont relus de 16 à 1. Les images de raccord sont donc exactement identiques. Cette lecture réutilise les dessins existants ; elle ne produit pas d’images supplémentaires.
+Les transitions utilisent **16 i/s**, soit une seconde pour 16 dessins. Le maintien utilise **10 i/s**. La lecture de maintien conseillée est **1 → 16 → 2**, puis retour à 1 : elle emploie les mêmes 16 dessins sur 30 positions de lecture, pour un cycle de **3 secondes**. Le lecteur propose également le sens direct 1 → 16, dont le raccord de fin peut être visible.
 
-Le mode **Sortie dédiée** utilise les 16 dessins de sortie générés séparément pour chaque posture. Ces dessins sont tous livrés, mais leurs raccords conservent des variations de proportions et de pose. Les décalages corrigent le placement, pas ces différences anatomiques. La vidéo utilise la sortie réversible ; les sorties dédiées sont accessibles dans le lecteur et dans les dossiers de PNG.
+Le cycle complet peut utiliser une **sortie réversible**, qui relit l’entrée de 16 à 1, ou la **sortie dédiée**, dessinée séparément. Le maintien fixe reste sélectionnable : associé à la sortie réversible, il retrouve les mêmes images aux raccords que la lecture V1. Avec le maintien animé, les liaisons entre atlas peuvent garder des variations de pose ou de proportions. Les pivots corrigent le placement, pas ces différences de dessin.
 
-Le maintien est une pose fixe. Il n’y a pas de boucle de respiration séparée, d’interpolation artificielle, de fondu ou de flou de mouvement.
+La sortie réversible est sélectionnée par défaut. La sortie dédiée de la victoire à la lance conserve notamment un déplacement horizontal des appuis à reprendre lors de la revue artistique ; tous ses dessins restent fournis pour cette revue.
 
-## Taille, alpha et découpe
+Le lecteur offre pause, vitesse, choix de fond, inspection image par image et réglage du nombre de boucles de maintien. Aucun fondu, flou de mouvement, miroir automatique, interpolation ou image calculée n’est ajouté.
 
-Chaque PNG individuel possède un canevas **314 × 314 pixels**, avec un canal alpha réel. Le tronc, la branche et le décor ne sont pas dessinés dans les sprites : ils doivent être placés sur des couches de décor indépendantes.
+La vidéo montre par défaut les **sorties dédiées**, afin de présenter l’ensemble des dessins source. Son conteneur à 80 i/s représente exactement les durées des transitions à 16 i/s et des maintiens à 10 i/s en répétant les images affichées. Ces répétitions ne sont pas de nouveaux sprites. Les PNG transparents restent les fichiers de référence ; la vidéo est un aperçu compressé.
 
-Les planches natives font 1 254 pixels de côté. Les limites de découpe sont `0, 314, 627, 941, 1254` ; les cellules sources font donc 313 ou 314 pixels. Les petites cellules reçoivent seulement un pixel transparent à droite et/ou en bas pour uniformiser les canevas. Les pixels des personnages ne sont ni redimensionnés, ni recentrés, ni retouchés par l’export.
+## Dimensions et ancrages
 
-Les planches sources originales sont conservées. Pour un import simple, utiliser les PNG individuels ; pour exploiter les planches, utiliser les rectangles réels de `animations.json` plutôt qu’une grille entière de 314 pixels.
+Les cellules sont extraites mécaniquement de chaque grille 4 × 4, aux limites `round(i × taille / 4)`. Pour une planche de **1254×1254**, les limites sont **0,314,627,941,1254**. Les PNG ont alors un canevas de **314×314**, avec au plus **un pixel transparent à droite et/ou en bas**. Aucun pixel du personnage n’est redimensionné, recentré, recoloré ou nettoyé. Les dimensions exactes de chaque atlas figurent dans le JSON.
 
-## Ancrages
+Les décalages suivent `drawOffset = anchorTarget - pivot` et ne sont appliqués qu’à l’affichage. Les PNG conservent leurs coordonnées d’origine. Les ancrages de main sont approximatifs ; contrôler les contacts avec le tronc, les branches ou le sol dans le moteur cible, ainsi que les accessoires et les masques d’occlusion.
 
-La règle de placement est `drawOffset = anchorTarget - pivot`. Ces décalages sont appliqués pendant la lecture et ne sont pas inscrits dans les PNG.
+Le contrôle de bord signale les pixels d’alpha **≥16/255**. Les traces d’alpha de 1 à 15 sont conservées et comptées séparément. Ce seuil sert au contrôle visuel ; il ne remplace pas la règle d’import du moteur qui exige des bords d’alpha strictement nul. Le pack reste un brouillon pour revue visuelle et ne revendique aucune validation moteur. L’intégration, les raccords avec les animations existantes et la fluidité dans le moteur cible restent à vérifier.
 
-- Sur la branche : cible `(157, 308)`, position horizontale fixe et correction verticale selon la ligne d’appui des pieds.
-- Sur le tronc : cible `(100, 80)` sur la main porteuse à gauche de l’image. Ces mesures sont approximatives et doivent être adaptées à la géométrie du tronc.
+## Planches préparées pour l’import
 
-Le lecteur utilise un espace logique de 420 × 420 pixels et une marge de 50 pixels afin de conserver la place nécessaire aux décalages. Vérifier les appuis, les masques d’occlusion du tronc et les raccords avec les animations existantes dans le moteur cible. L’armure est asymétrique : un miroir automatique inverse aussi les équipements.
+Les variantes `import_atlases/` ajoutent uniquement une **garde transparente de deux pixels sur les quatre côtés** de chaque PNG. Pour un PNG de 314 × 314 pixels, la cellule devient **318 × 318**, et la planche 4 × 4 devient **1272 × 1272**. Tous les octets RGBA d’origine, y compris les traces d’alpha, sont recopiés dans l’intérieur de la cellule. Aucun fond n’est nettoyé et aucun dessin n’est redimensionné.
 
-## Vérifications réalisées
+Le pivot d’import vaut `pivotOriginal + (2,2)`. Pour retrouver le même ancrage, le décalage d’import vaut `anchorTargetOriginal - pivotImport`. `import_atlases.json` contient les rectangles complets, les rectangles intérieurs et ces coordonnées. Utiliser ces rectangles de 318 pixels avec les variantes d’import ; garder les rectangles source pour les planches originales.
 
-Les six planches contiennent 96 cellules non vides. Les 96 images possèdent leur transparence et leurs mesures d’ancrage. Aucun pixel d’alpha supérieur ou égal à 16/255 ne touche une limite de cellule dans la mesure effectuée. Des traces d’alpha de 1 à 7/255 subsistent aux limites des sources et sont conservées. Le rendu du jeu exige des limites entièrement transparentes : ce contrôle ne constitue donc pas une validation du contrat de rendu.
-
-La vidéo a été encodée en H.264, 1 260 × 590 pixels, 16 images par seconde, 112 images, et ses images de début et de maintien ont été contrôlées visuellement. Le fichier HTML et ses scripts ont été contrôlés statiquement ; sa lecture interactive n’a pas pu être validée ici, la politique du navigateur bloquant l’ouverture des fichiers locaux. Ces assets ne sont pas encore intégrés ni validés dans le jeu.
+Après encodage, l’export vérifie les octets RGBA décodés et l’alpha exactement nul sur les limites de chaque cellule. Ce contrôle satisfait la contrainte de bord de ces variantes techniques ; il ne constitue ni une validation artistique humaine ni une intégration vérifiée dans le moteur. Les planches originales et les PNG individuels sont conservés sans changement.
 
 ## Réexport
 
-Depuis la racine du dépôt, avec les dépendances Node.js et `sharp` du projet disponibles :
+Depuis la racine du dépôt, avec Node.js, `sharp`, `ffmpeg` et `ffprobe` disponibles :
 
 ```bash
-node art-source/hunter-postures-emotes/v1/export_sprites.cjs
+node art-source/hunter-postures-emotes/v1/export_sprites.cjs --import-guards
+node art-source/hunter-postures-emotes/v1/render_preview.cjs
 ```
 
-Les chemins de `sources.json` sont relatifs à ce fichier. Le script découpe les PNG, met à jour les métadonnées et reconstruit `preview.html` sans embarquer une seconde copie base64 des atlas. Il ne régénère pas la vidéo et ne modifie pas les dessins. Les empreintes SHA-256 de la livraison sont enregistrées dans `intake-manifest.json`.
+Le premier script accepte une liste `clips` organisée en groupes complets `<action>_enter`, `<action>_idle`, `<action>_exit`, chacun pointant vers sa planche PNG. `expectedClipCount:18` peut imposer le pack complet. Le champ `anchorMeasurementsPath` désigne les mesures d’ancrage. Les empreintes V1 empêchent de remplacer accidentellement les anciennes planches ; leurs 96 PNG sont copiés sans réencodage.
+
+Les variantes d’import sont optionnelles dans l’outil : utiliser `--import-guards` ou `buildImportAtlases:true` dans `sources.json` pour les reconstruire.
+
+Le second script compose la vidéo à partir des PNG exportés et de `playback.json`. Ajouter `--reversible` pour une vidéo utilisant les sorties réversibles. Les deux scripts ne régénèrent ni ne retouchent les dessins source.
+
+## Organisation dans le dépôt
+
+Le lecteur est servi à `/game/sprites/hunter-postures-emotes/v1/preview.html`. Les scripts, les consignes, les chemins sources portables et les empreintes SHA-256 se trouvent dans `art-source/hunter-postures-emotes/v1/`. Le chemin de livraison est conservé entre les deux commits de la PR ; les métadonnées décrivent maintenant la révision V2.
+
+Les six manifestes `runtime_atlases/*.draft.json` suivent la structure `HunterSpriteAtlas` du dépôt et référencent les atlas à garde transparente. Tous les statuts restent `draft`. `reference-yautja` et les variantes de revue ne sont pas liés au roster ; `facing: right` est une affectation technique provisoire à confirmer par revue visuelle. La cadence utilise 80 ticks/s : 5 ticks par dessin de transition et 8 par dessin de maintien. Chaque maintien ping-pong contient 30 références aux 16 dessins existants.
+
+Pour régénérer ces manifestes après l’export :
+
+```bash
+node art-source/hunter-postures-emotes/v1/build_runtime_manifests.cjs
+```

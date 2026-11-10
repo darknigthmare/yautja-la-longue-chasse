@@ -1,0 +1,47 @@
+{
+  "filename": "Yautja_Postures_V2_Apercu.mp4",
+  "durationMs": 11000,
+  "sourceDrawingsShown": 288,
+  "composition": "Original exported PNGs at native size, measured translation offsets, neutral background and titles only. Source files unchanged.",
+  "timing": "80fps video container represents 16fps transitions and10fps idle steps exactly through repeated displayed frames, without interpolation.",
+  "note": "The MP4 is a compressed review preview. The transparent PNGs are the authoritative image assets.",
+  "segments": [
+    {
+      "page": 1,
+      "actions": [
+        "branch",
+        "trunk_close",
+        "trunk_open"
+      ],
+      "startMs": 0,
+      "durationMs": 5500,
+      "exitMode": "dedicated"
+    },
+    {
+      "page": 2,
+      "actions": [
+        "roar",
+        "victory_spear",
+        "victory_trophy"
+      ],
+      "startMs": 5500,
+      "durationMs": 5500,
+      "exitMode": "dedicated"
+    }
+  ],
+  "expectedVideoFrames": 880,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1260,
+        "height": 600,
+        "avg_frame_rate": "80/1",
+        "duration": "11.000000",
+        "nb_read_frames": "880"
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "productionStatus": "draft",
+  "schema": "app/game/hunterSpriteAtlas.ts#HunterSpriteAtlas",
+  "characterId": "reference-yautja",
+  "rosterBinding": null,
+  "facing": "right",
+  "facingReview": "Provisional schema routing value; source orientation must be confirmed by human art review before roster binding.",
+  "timing": {
+    "ticksPerSecond": 80,
+    "transitionDurationTicks": 5,
+    "idleDurationTicks": 8
+  },
+  "sourceDrawings": 288,
+  "drawingCountNote": "Ping-pong frame references reuse the sixteen source drawings of each idle clip.",
+  "manifests": [
+    {
+      "action": "branch",
+      "label": "Accroupi sur une branche",
+      "file": "branch.draft.json",
+      "atlasId": "reference-yautja-branch-draft-v2",
+      "variantId": "branch-reference-review"
+    },
+    {
+      "action": "trunk_close",
+      "label": "Embuscade contre le tronc",
+      "file": "trunk_close.draft.json",
+      "atlasId": "reference-yautja-trunk_close-draft-v2",
+      "variantId": "trunk_close-reference-review"
+    },
+    {
+      "action": "trunk_open",
+      "label": "Affût ouvert sur le tronc",
+      "file": "trunk_open.draft.json",
+      "atlasId": "reference-yautja-trunk_open-draft-v2",
+      "variantId": "trunk_open-reference-review"
+    },
+    {
+      "action": "roar",
+      "label": "Provocation — rugissement",
+      "file": "roar.draft.json",
+      "atlasId": "reference-yautja-roar-draft-v2",
+      "variantId": "roar-reference-review"
+    },
+    {
+      "action": "victory_spear",
+      "label": "Victoire — lance dressée",
+      "file": "victory_spear.draft.json",
+      "atlasId": "reference-yautja-victory_spear-draft-v2",
+      "variantId": "victory_spear-reference-review"
+    },
+    {
+      "action": "victory_trophy",
+      "label": "Victoire — trophée brandi",
+      "file": "victory_trophy.draft.json",
+      "atlasId": "reference-yautja-victory_trophy-draft-v2",
+      "variantId": "victory_trophy-reference-review"
+    }
+  ],
+  "frameReferences": 372
+}

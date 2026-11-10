@@ -1,0 +1,949 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-victory_spear-draft-v2",
+  "characterId": "reference-yautja",
+  "variantId": "victory_spear-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "victory_spear_enter",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_spear_enter.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "victory_spear_idle",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_spear_idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "victory_spear_exit",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_spear_exit.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "victory_spear_enter",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "victory_spear_idle",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "victory_spear_exit",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            287
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            286
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            286
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            286
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            279
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            279
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            279
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            279
+          ],
+          "durationTicks": 5
+        }
+      ]
+    }
+  ]
+}

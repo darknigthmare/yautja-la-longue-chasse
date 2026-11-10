@@ -1,36 +1,63 @@
-# Postures arboricoles et emotes du Yautja — livraison en revue
+# Postures, rugissement et victoires du Yautja — livraison V2
 
-## Portée de la première livraison
+## Contenu livré
 
-Ce lot apporte les sprites demandés pour trois postures : accroupi sur une branche, affût serré au tronc et appui ouvert sur le tronc. Chacune possède 16 dessins d’entrée, 16 dessins de sortie dédiée et une copie de sa posture terminale, soit 96 dessins de transition au total. La cadence proposée est de 16 images par seconde.
+La deuxième livraison complète les postures arboricoles avec leurs maintiens animés, la provocation par rugissement et deux poses de victoire. Chaque action comporte 16 dessins d’entrée, 16 de maintien et 16 de sortie dédiée : **288 dessins source dans 18 atlas**, dont les 96 transitions V1 conservées à l’identique.
 
-Les assets restent **draft**, sans association automatique à une variante existante du roster. Ils sont issus des références fournies par l’utilisateur et constituent une adaptation pour le projet. Les boucles de maintien, la provocation par rugissement et les deux poses de victoire sont prévues dans la suite de la même PR ; elles ne sont pas incluses dans cette première livraison.
+| Action | Entrée | Maintien | Sortie dédiée |
+| --- | ---: | ---: | ---: |
+| Accroupi sur une branche | 16 | 16 | 16 |
+| Embuscade contre le tronc | 16 | 16 | 16 |
+| Affût ouvert sur le tronc | 16 | 16 | 16 |
+| Provocation — rugissement | 16 | 16 | 16 |
+| Victoire — lance dressée | 16 | 16 | 16 |
+| Victoire — trophée brandi | 16 | 16 | 16 |
+
+Le rugissement montre la variante sans masque ; les victoires utilisent la lance dressée et le trophée brandi. Ces interprétations des références fournies restent **draft**, sans association automatique à une variante existante du roster.
 
 ## Fichiers et aperçu
 
-- Assets et métadonnées : `public/game/sprites/hunter-postures-emotes/v1/`.
+- Assets, métadonnées, séquences et vidéo : `public/game/sprites/hunter-postures-emotes/v1/`.
 - Provenance, empreintes, consignes et réexport : `art-source/hunter-postures-emotes/v1/`.
 - Lecteur : `/game/sprites/hunter-postures-emotes/v1/preview.html` lorsque l’application sert les fichiers publics.
-- Vidéo : `Yautja_Postures_Animation.mp4`, aperçu de 7 secondes des trois entrées, du maintien fixe et des sorties réversibles.
+- Vidéo : `Yautja_Postures_V2_Apercu.mp4`, 11 secondes et deux pages de trois actions, avec toutes les entrées, les maintiens et les sorties dédiées.
 
-Le lecteur charge les PNG voisins ; le dépôt ne contient ni ZIP dupliqué ni copie base64 complète des atlas. Les 96 PNG individuels et les six atlas sont conservés à l’identique. Les trois poses fixes du dossier `stances/` sont des copies, pas des dessins supplémentaires.
+Le chemin de livraison reste stable dans cette PR ; les métadonnées portent la révision V2. Le lecteur charge les PNG voisins. Les six copies de pose fixe ne sont pas des dessins supplémentaires.
+
+## Cadence et continuité
+
+Les transitions jouent à 16 i/s ; les maintiens à 10 i/s. Le maintien conseillé suit 1 → 16 → 2 puis reprend à 1 : 16 dessins sur 30 positions de lecture, soit 3 secondes. Le lecteur offre aussi le maintien fixe, le sens direct et la sortie réversible par relecture de l’entrée. `playback.json` contient les références et durées des séquences.
+
+La vidéo montre les sorties dédiées pour présenter les 288 dessins source. Son conteneur à 80 i/s représente exactement les deux cadences en répétant les images, sans interpolation. Elle contient 880 images encodées ; cela ne change pas le nombre de sprites source.
 
 ## Vérifications techniques
 
-Les six planches RGBA font 1 254 × 1 254 pixels. Une division 4 × 4 uniforme en cellules entières est impossible : les métadonnées donnent les limites réelles `0, 314, 627, 941, 1254`. Les exports font 314 × 314 pixels, avec au maximum un pixel de remplissage transparent à droite ou en bas. Le réexport n’interpole pas les dessins.
+Les 288 PNG individuels sont distincts. Chaque image est vérifiée pixel par pixel contre sa cellule source, avec uniquement le remplissage transparent prévu. Les six atlas V1 et leurs 96 PNG n’ont pas changé. Les chemins, les empreintes et les pivots des 288 frames sont contrôlés.
 
-Les copies sont vérifiées par SHA-256 contre le lot source. Les 96 fichiers de transition sont distincts et les chemins des métadonnées sont vérifiés. Aucun pixel d’alpha supérieur ou égal à 16 ne touche les bords des cellules inspectées ; des traces de 1 à 7 restent présentes. Le module `app/game/hunterSpriteAtlas.ts` exige des bords d’alpha exactement nul : ces assets ne satisfont donc pas encore ce contrôle de production. Ses règles et ses statuts n’ont pas été modifiés.
+Les rectangles utilisent `round(i × taille / 4)`. Pour 1 254 pixels, les limites sont `0, 314, 627, 941, 1254` ; les cellules de 313 pixels reçoivent un pixel transparent à droite ou en bas pour produire des canevas de 314 pixels, sans redimensionnement.
+
+Le maximum d’alpha observé aux bords des sources est 7/255 ; 277 cellules gardent des traces non nulles et aucune n’atteint le seuil visuel 16. Les 18 variantes `import_atlases/` ajoutent une garde transparente de 2 pixels autour de chaque PNG. Elles font 1 272 × 1 272 pixels avec des cellules de 318 × 318. Le contenu RGBA intérieur reste exactement identique, les pivots gagnent 2 pixels sur chaque axe et les bords des cellules ont un alpha strictement nul. Les sources originales sont conservées.
+
+## Métadonnées natives du moteur
+
+Les six fichiers `runtime_atlases/*.draft.json` suivent la structure `HunterSpriteAtlas` et référencent les variantes à garde transparente. Ils emploient 80 ticks/s : 5 ticks par dessin de transition et 8 par dessin de maintien. Les maintiens utilisent 30 références ping-pong pour leurs 16 dessins source. Le fichier `runtime_atlases/index.json` liste ces six manifestes.
+
+Le personnage `reference-yautja` et les variantes de revue ne sont pas liés au roster. L’affectation `facing: right` sert uniquement au champ d’orientation exigé par le schéma et doit être confirmée par revue artistique. Tous les statuts d’atlas, de page et de clip restent `draft`. Aucune règle du renderer n’est changée et ces manifestes ne sont pas chargés automatiquement par le jeu.
 
 ## Revue artistique et intégration à poursuivre
 
-Le lecteur propose la sortie dédiée et la lecture de l’entrée en sens inverse. La lecture réversible garantit des images identiques aux raccords en réutilisant les dessins existants. Les sorties dédiées conservent des différences de proportions et de pose entre planches. Les décalages d’ancrage règlent le placement des appuis, sans corriger ces différences.
+La génération séparée des atlas peut modifier la pose, les proportions et les équipements aux raccords. Les décalages d’ancrage règlent le placement, sans corriger le dessin. Le maintien fixe avec sortie réversible garantit les mêmes images aux raccords entrée/sortie ; les liaisons avec un maintien animé séparé restent à examiner.
 
-Il reste à revoir la continuité des silhouettes, des équipements, des pieds et de la main porteuse ; à choisir la variante de personnage et l’orientation cible ; à régler le traitement des traces alpha ; et à vérifier les occlusions, l’échelle et les raccords dans une scène réelle. La transparence et le nombre de frames ne valent pas approbation artistique. Aucun contrôle de jeu, de navigateur, de performance ou de combat n’est revendiqué pour cette livraison.
+La sortie dédiée de la victoire à la lance conserve environ 8 à 10 pixels de dérive horizontale des appuis après leur correction verticale par les pivots. Elle reste une alternative en revue ; la sortie réversible est proposée par défaut.
+
+Il reste à revoir les silhouettes, les appuis, les accessoires, la variante et l’orientation cible, le traitement des traces alpha, les occlusions et l’échelle dans une scène réelle. La transparence et le nombre de frames ne valent pas approbation artistique. Aucun contrôle de jeu, de navigateur, de performance ou de combat n’est revendiqué.
 
 ## Réexport
 
 ```bash
 node art-source/hunter-postures-emotes/v1/export_sprites.cjs
+node art-source/hunter-postures-emotes/v1/build_runtime_manifests.cjs
+node art-source/hunter-postures-emotes/v1/render_preview.cjs
 ```
 
-Le script utilise `sharp` déjà déclaré par le projet. Il régénère les PNG, les métadonnées et le lecteur léger à partir des planches conservées ; la vidéo et le manifeste d’intake sont des éléments de la livraison révisée séparément.
+Le premier script utilise `sharp`, préserve les PNG V1 et reconstruit les exports, les séquences, les variantes avec garde et le lecteur léger. Le deuxième reconstruit les six manifestes natifs en statut `draft`. Le troisième utilise aussi `ffmpeg` et `ffprobe` pour recomposer la vidéo. Les scripts ne régénèrent ni ne retouchent les dessins. Le manifeste d’intake reste un enregistrement de la livraison révisé séparément.
