@@ -1,0 +1,6317 @@
+{
+  "schemaVersion": 1,
+  "packId": "hunter-support-actions",
+  "artisticStatus": "draft",
+  "artisticApproval": false,
+  "runtimeBinding": null,
+  "gameplayChanged": false,
+  "browserInteraction": false,
+  "inGameValidation": false,
+  "execution": {
+    "node": "v24.22.1",
+    "moduleScope": "commonjs for local tool files; the real TypeScript contract is imported as an ES module",
+    "sharp": "0.35.5",
+    "rebuildWithoutGenerationRegistry": true,
+    "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "ffprobe": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers"
+  },
+  "gripRegistration": {
+    "method": "two-fist silhouette proxy",
+    "sourcePages": 4,
+    "perFrameRegisteredPages": 2,
+    "constantEndpointRegisteredPages": 2,
+    "candidateReceiptSha256": "14e3ae266223fe3cf24c87c6039fd3d99dfb68db0e21e292f44948edb34f85be",
+    "sourcePixelsChanged": false,
+    "otherBodyPartsPinnedByThisOperation": false,
+    "gameplayBinding": null,
+    "artisticStatus": "draft",
+    "humanArtisticApproval": false,
+    "targets": [
+      {
+        "id": "canopy_attach",
+        "target": {
+          "x": 157,
+          "y": 50
+        }
+      },
+      {
+        "id": "canopy_hold",
+        "target": {
+          "x": 157,
+          "y": 50
+        }
+      },
+      {
+        "id": "canopy_swing",
+        "target": {
+          "x": 157,
+          "y": 50
+        }
+      },
+      {
+        "id": "canopy_release",
+        "target": {
+          "x": 157,
+          "y": 50
+        }
+      }
+    ]
+  },
+  "floorRegistration": {
+    "method": "bottom-support silhouette row",
+    "pages": 14,
+    "frames": 224,
+    "targetY": 302.5,
+    "axis": "Y only",
+    "horizontalOffsetChanged": false,
+    "sourcePixelsChanged": false,
+    "scaleChanged": false,
+    "artisticStatus": "draft",
+    "humanArtisticApproval": false,
+    "gameplayBinding": null,
+    "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70"
+  },
+  "export": {
+    "sourceClips": 19,
+    "sourceDrawings": 304,
+    "actions": 16,
+    "guardAtlases": 19,
+    "warnings": 288,
+    "reviewTicksPerSecond": 16,
+    "status": "draft"
+  },
+  "runtimeManifests": {
+    "manifests": 16,
+    "sourceDrawings": 304,
+    "frameReferences": 304,
+    "reviewTicksPerSecond": 16,
+    "status": "draft",
+    "gameplayTiming": "unretimed"
+  },
+  "pixelChecks": {
+    "status": "passed",
+    "sourceAtlases": 19,
+    "frames": 304,
+    "uniqueDecodedRgbaFrames": 304,
+    "uniqueDecodedRgbaHashes": 304,
+    "duplicateDecodedRgbaGroups": [],
+    "exactRgbaPixels": 29973184,
+    "transparentGuardPixels": 768512,
+    "sourceCellEdges": {
+      "scope": "Actual source rectangles before transparent padding",
+      "visibleAtAlpha16Cells": 0,
+      "visibleAtAlpha16Pixels": 0,
+      "aboveAlpha2Cells": 40,
+      "aboveAlpha2Pages": 9
+    },
+    "playbackRegistry": true,
+    "artisticApproval": false
+  },
+  "gripRegistrationChecks": {
+    "schemaVersion": 1,
+    "status": "passed",
+    "method": "two-fist silhouette proxy",
+    "checkedPages": 4,
+    "checkedPivots": 64,
+    "guardPivotChecks": 64,
+    "translationChecks": 64,
+    "pages": [
+      {
+        "id": "canopy_attach",
+        "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab",
+        "mode": "constant-endpoint-frame-16",
+        "target": {
+          "x": 157,
+          "y": 50
+        },
+        "measuredFrames": 1,
+        "checkedFramePivots": 16,
+        "gripRangeBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "gripRangeAfter": {
+          "x": 0,
+          "y": 0
+        },
+        "gripRangeAfterPixelRounding": {
+          "x": 0,
+          "y": 0
+        },
+        "relativeLowerBodyXRangeBefore": 0,
+        "relativeLowerBodyXRangeAfter": 0,
+        "maxRelativeMotionError": 0,
+        "individualHandSpacingCorrection": false,
+        "records": [
+          {
+            "number": 16,
+            "sourceGrip": [
+              158.24889770723104,
+              51.71876837154615
+            ],
+            "sourceFootProxyX": 145.65243243243242,
+            "drawOffset": {
+              "x": -1.2488977072310377,
+              "y": -1.7187683715461475
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.24889770723104,
+              49.71876837154615
+            ],
+            "relativeFootProxyXBefore": -12.596465274798618,
+            "relativeFootProxyXAfter": -12.596465274798618,
+            "absoluteRelativeMotionError": 0
+          }
+        ]
+      },
+      {
+        "id": "canopy_hold",
+        "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148",
+        "mode": "per-frame",
+        "target": {
+          "x": 157,
+          "y": 50
+        },
+        "measuredFrames": 16,
+        "checkedFramePivots": 16,
+        "gripRangeBefore": {
+          "x": 3.74966969452845,
+          "y": 5.982286441948368
+        },
+        "gripRangeAfter": {
+          "x": 0,
+          "y": 0
+        },
+        "gripRangeAfterPixelRounding": {
+          "x": 0.7597070346730561,
+          "y": 0.43372617925889045
+        },
+        "relativeLowerBodyXRangeBefore": 17.71290642065773,
+        "relativeLowerBodyXRangeAfter": 17.71290642065773,
+        "maxRelativeMotionError": 0,
+        "individualHandSpacingCorrection": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceGrip": [
+              164.36034255599475,
+              49.1477016542234
+            ],
+            "sourceFootProxyX": 156.3088930936613,
+            "drawOffset": {
+              "x": -7.360342555994748,
+              "y": 0.8522983457766031
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.36034255599475,
+              50.1477016542234
+            ],
+            "relativeFootProxyXBefore": -8.051449462333437,
+            "relativeFootProxyXAfter": -8.051449462333437,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 2,
+            "sourceGrip": [
+              164.36520575590066,
+              47.247484718200695
+            ],
+            "sourceFootProxyX": 154.27467411545624,
+            "drawOffset": {
+              "x": -7.365205755900661,
+              "y": 2.7525152817993046
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.36520575590066,
+              50.247484718200695
+            ],
+            "relativeFootProxyXBefore": -10.090531640444425,
+            "relativeFootProxyXAfter": -10.090531640444425,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 3,
+            "sourceGrip": [
+              166.23136068001804,
+              45.92185588254234
+            ],
+            "sourceFootProxyX": 154.0234375,
+            "drawOffset": {
+              "x": -9.231360680018042,
+              "y": 4.078144117457661
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.23136068001804,
+              49.92185588254234
+            ],
+            "relativeFootProxyXBefore": -12.207923180018042,
+            "relativeFootProxyXAfter": -12.207923180018042,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 4,
+            "sourceGrip": [
+              167.13579963855096,
+              44.0362258247242
+            ],
+            "sourceFootProxyX": 151.33757575757576,
+            "drawOffset": {
+              "x": -10.135799638550964,
+              "y": 5.963774175275802
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.13579963855096,
+              50.0362258247242
+            ],
+            "relativeFootProxyXBefore": -15.7982238809752,
+            "relativeFootProxyXAfter": -15.7982238809752,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 5,
+            "sourceGrip": [
+              168.1100122505232,
+              43.93637384513297
+            ],
+            "sourceFootProxyX": 153.25955056179777,
+            "drawOffset": {
+              "x": -11.110012250523198,
+              "y": 6.0636261548670305
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.1100122505232,
+              49.93637384513297
+            ],
+            "relativeFootProxyXBefore": -14.850461688725431,
+            "relativeFootProxyXAfter": -14.850461688725431,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 6,
+            "sourceGrip": [
+              166.33972431077694,
+              45.91525689223057
+            ],
+            "sourceFootProxyX": 153.03030303030303,
+            "drawOffset": {
+              "x": -9.339724310776944,
+              "y": 4.084743107769427
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.33972431077694,
+              49.91525689223057
+            ],
+            "relativeFootProxyXBefore": -13.309421280473913,
+            "relativeFootProxyXAfter": -13.309421280473913,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 7,
+            "sourceGrip": [
+              166.6535088858865,
+              48.93642174184161
+            ],
+            "sourceFootProxyX": 155.64670658682635,
+            "drawOffset": {
+              "x": -9.65350888588651,
+              "y": 1.0635782581583868
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.6535088858865,
+              49.93642174184161
+            ],
+            "relativeFootProxyXBefore": -11.006802299060155,
+            "relativeFootProxyXAfter": -11.006802299060155,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 8,
+            "sourceGrip": [
+              166.17004132231403,
+              49.34758423394787
+            ],
+            "sourceFootProxyX": 154.9922928709056,
+            "drawOffset": {
+              "x": -9.170041322314034,
+              "y": 0.6524157660521297
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.17004132231403,
+              50.34758423394787
+            ],
+            "relativeFootProxyXBefore": -11.177748451408434,
+            "relativeFootProxyXAfter": -11.177748451408434,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 9,
+            "sourceGrip": [
+              166.04309713983216,
+              48.32921512759431
+            ],
+            "sourceFootProxyX": 157.05147717099373,
+            "drawOffset": {
+              "x": -9.043097139832156,
+              "y": 1.6707848724056902
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.04309713983216,
+              50.32921512759431
+            ],
+            "relativeFootProxyXBefore": -8.991619968838421,
+            "relativeFootProxyXAfter": -8.991619968838421,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 10,
+            "sourceGrip": [
+              164.6054987212276,
+              47.348983071489464
+            ],
+            "sourceFootProxyX": 156.68071065989847,
+            "drawOffset": {
+              "x": -7.605498721227605,
+              "y": 2.6510169285105363
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.6054987212276,
+              50.348983071489464
+            ],
+            "relativeFootProxyXBefore": -7.924788061329139,
+            "relativeFootProxyXAfter": -7.924788061329139,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 11,
+            "sourceGrip": [
+              165.12133959790208,
+              46.12961647727273
+            ],
+            "sourceFootProxyX": 159.34824462061155,
+            "drawOffset": {
+              "x": -8.121339597902079,
+              "y": 3.8703835227272734
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.12133959790208,
+              50.12961647727273
+            ],
+            "relativeFootProxyXBefore": -5.773094977290526,
+            "relativeFootProxyXAfter": -5.773094977290526,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 12,
+            "sourceGrip": [
+              165.32358723664285,
+              44.07475623688196
+            ],
+            "sourceFootProxyX": 163.48241758241758,
+            "drawOffset": {
+              "x": -8.323587236642851,
+              "y": 5.92524376311804
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.32358723664285,
+              50.07475623688196
+            ],
+            "relativeFootProxyXBefore": -1.8411696542252685,
+            "relativeFootProxyXAfter": -1.8411696542252685,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 13,
+            "sourceGrip": [
+              164.90262515262515,
+              45.13880748880749
+            ],
+            "sourceFootProxyX": 166.81730769230768,
+            "drawOffset": {
+              "x": -7.9026251526251485,
+              "y": 4.861192511192513
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.90262515262515,
+              50.13880748880749
+            ],
+            "relativeFootProxyXBefore": 1.9146825396825307,
+            "relativeFootProxyXAfter": 1.9146825396825307,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 14,
+            "sourceGrip": [
+              164.93259849164073,
+              47.00127894098412
+            ],
+            "sourceFootProxyX": 161.96754468485418,
+            "drawOffset": {
+              "x": -7.932598491640732,
+              "y": 2.998721059015878
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.93259849164073,
+              50.00127894098412
+            ],
+            "relativeFootProxyXBefore": -2.965053806786557,
+            "relativeFootProxyXAfter": -2.965053806786557,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 15,
+            "sourceGrip": [
+              165.27972963203933,
+              49.21046049302393
+            ],
+            "sourceFootProxyX": 157.95996275605214,
+            "drawOffset": {
+              "x": -8.279729632039334,
+              "y": 0.7895395069760696
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.27972963203933,
+              50.21046049302393
+            ],
+            "relativeFootProxyXBefore": -7.319766875987199,
+            "relativeFootProxyXAfter": -7.319766875987199,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 16,
+            "sourceGrip": [
+              165.20185007974482,
+              49.91866028708134
+            ],
+            "sourceFootProxyX": 157.28912839737583,
+            "drawOffset": {
+              "x": -8.201850079744816,
+              "y": 0.0813397129186626
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.20185007974482,
+              49.91866028708134
+            ],
+            "relativeFootProxyXBefore": -7.912721682368982,
+            "relativeFootProxyXAfter": -7.912721682368982,
+            "absoluteRelativeMotionError": 0
+          }
+        ]
+      },
+      {
+        "id": "canopy_swing",
+        "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46",
+        "mode": "per-frame",
+        "target": {
+          "x": 157,
+          "y": 50
+        },
+        "measuredFrames": 16,
+        "checkedFramePivots": 16,
+        "gripRangeBefore": {
+          "x": 29.74480031945953,
+          "y": 3.869998404659114
+        },
+        "gripRangeAfter": {
+          "x": 0,
+          "y": 0
+        },
+        "gripRangeAfterPixelRounding": {
+          "x": 0.9019744079428449,
+          "y": 0.869998404659114
+        },
+        "relativeLowerBodyXRangeBefore": 181.97939521874667,
+        "relativeLowerBodyXRangeAfter": 181.97939521874667,
+        "maxRelativeMotionError": 0,
+        "individualHandSpacingCorrection": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceGrip": [
+              185.19262388154607,
+              45.72948176409138
+            ],
+            "sourceFootProxyX": 97.70408163265306,
+            "drawOffset": {
+              "x": -28.19262388154607,
+              "y": 4.270518235908618
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.19262388154607,
+              49.72948176409138
+            ],
+            "relativeFootProxyXBefore": -87.48854224889301,
+            "relativeFootProxyXAfter": -87.48854224889301,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 2,
+            "sourceGrip": [
+              180.5458491541437,
+              46.38287252437742
+            ],
+            "sourceFootProxyX": 100.58255159474672,
+            "drawOffset": {
+              "x": -23.545849154143696,
+              "y": 3.6171274756225813
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.5458491541437,
+              50.38287252437742
+            ],
+            "relativeFootProxyXBefore": -79.96329755939698,
+            "relativeFootProxyXAfter": -79.96329755939698,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 3,
+            "sourceGrip": [
+              177.84291187739464,
+              46.32136671390332
+            ],
+            "sourceFootProxyX": 123.43469785575049,
+            "drawOffset": {
+              "x": -20.84291187739464,
+              "y": 3.6786332860966766
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.84291187739464,
+              50.32136671390332
+            ],
+            "relativeFootProxyXBefore": -54.408214021644156,
+            "relativeFootProxyXAfter": -54.408214021644156,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 4,
+            "sourceGrip": [
+              176.5780554162297,
+              46.02816409040476
+            ],
+            "sourceFootProxyX": 143.98633364750236,
+            "drawOffset": {
+              "x": -19.578055416229688,
+              "y": 3.9718359095952422
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.5780554162297,
+              50.02816409040476
+            ],
+            "relativeFootProxyXBefore": -32.591721768727325,
+            "relativeFootProxyXAfter": -32.591721768727325,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 5,
+            "sourceGrip": [
+              177.02975731895225,
+              45.276771956856706
+            ],
+            "sourceFootProxyX": 158.79509713228492,
+            "drawOffset": {
+              "x": -20.02975731895225,
+              "y": 4.723228043143294
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.02975731895225,
+              50.276771956856706
+            ],
+            "relativeFootProxyXBefore": -18.234660186667327,
+            "relativeFootProxyXAfter": -18.234660186667327,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 6,
+            "sourceGrip": [
+              170.94783882783884,
+              44.89776223776224
+            ],
+            "sourceFootProxyX": 161.37753134040503,
+            "drawOffset": {
+              "x": -13.947838827838837,
+              "y": 5.102237762237763
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.94783882783884,
+              49.89776223776224
+            ],
+            "relativeFootProxyXBefore": -9.570307487433809,
+            "relativeFootProxyXAfter": -9.570307487433809,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 7,
+            "sourceGrip": [
+              165.91666170693964,
+              45.00479853588858
+            ],
+            "sourceFootProxyX": 149.02028397565923,
+            "drawOffset": {
+              "x": -8.916661706939635,
+              "y": 4.9952014641114175
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.91666170693964,
+              50.00479853588858
+            ],
+            "relativeFootProxyXBefore": -16.89637773128041,
+            "relativeFootProxyXAfter": -16.89637773128041,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 8,
+            "sourceGrip": [
+              161.44668623135243,
+              44.87431727398712
+            ],
+            "sourceFootProxyX": 142.80460921843687,
+            "drawOffset": {
+              "x": -4.44668623135243,
+              "y": 5.125682726012883
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.44668623135243,
+              49.87431727398712
+            ],
+            "relativeFootProxyXBefore": -18.642077012915564,
+            "relativeFootProxyXAfter": -18.642077012915564,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 9,
+            "sourceGrip": [
+              160.2255970067129,
+              44.28463739407945
+            ],
+            "sourceFootProxyX": 177.13751214771622,
+            "drawOffset": {
+              "x": -3.2255970067128885,
+              "y": 5.7153626059205465
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.2255970067129,
+              50.28463739407945
+            ],
+            "relativeFootProxyXBefore": 16.911915141003334,
+            "relativeFootProxyXAfter": 16.911915141003334,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 10,
+            "sourceGrip": [
+              158.94888638920133,
+              42.81883014623172
+            ],
+            "sourceFootProxyX": 223.25549188156637,
+            "drawOffset": {
+              "x": -1.9488863892013342,
+              "y": 7.1811698537682815
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.94888638920133,
+              49.81883014623172
+            ],
+            "relativeFootProxyXBefore": 64.30660549236504,
+            "relativeFootProxyXAfter": 64.30660549236504,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 11,
+            "sourceGrip": [
+              156.71266461808602,
+              42.8
+            ],
+            "sourceFootProxyX": 251.2035175879397,
+            "drawOffset": {
+              "x": 0.28733538191397656,
+              "y": 7.200000000000003
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              156.71266461808602,
+              49.8
+            ],
+            "relativeFootProxyXBefore": 94.49085296985368,
+            "relativeFootProxyXAfter": 94.49085296985368,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 12,
+            "sourceGrip": [
+              155.44782356208654,
+              42.99267787708933
+            ],
+            "sourceFootProxyX": 219.84697855750488,
+            "drawOffset": {
+              "x": 1.5521764379134595,
+              "y": 7.007322122910672
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.44782356208654,
+              49.99267787708933
+            ],
+            "relativeFootProxyXBefore": 64.39915499541834,
+            "relativeFootProxyXAfter": 64.39915499541834,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 13,
+            "sourceGrip": [
+              157.34936179577466,
+              42.512874119718305
+            ],
+            "sourceFootProxyX": 184.16322701688554,
+            "drawOffset": {
+              "x": -0.3493617957746551,
+              "y": 7.487125880281695
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.34936179577466,
+              49.512874119718305
+            ],
+            "relativeFootProxyXBefore": 26.813865221110888,
+            "relativeFootProxyXAfter": 26.813865221110888,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 14,
+            "sourceGrip": [
+              159.2162263776176,
+              43.99215424777255
+            ],
+            "sourceFootProxyX": 149.2361530715005,
+            "drawOffset": {
+              "x": -2.216226377617602,
+              "y": 6.007845752227453
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.2162263776176,
+              49.99215424777255
+            ],
+            "relativeFootProxyXBefore": -9.980073306117106,
+            "relativeFootProxyXAfter": -9.980073306117106,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 15,
+            "sourceGrip": [
+              160.28488408521304,
+              44.16383145363409
+            ],
+            "sourceFootProxyX": 109.10832544938505,
+            "drawOffset": {
+              "x": -3.2848840852130365,
+              "y": 5.836168546365911
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.28488408521304,
+              50.16383145363409
+            ],
+            "relativeFootProxyXBefore": -51.17655863582799,
+            "relativeFootProxyXAfter": -51.17655863582799,
+            "absoluteRelativeMotionError": 0
+          },
+          {
+            "number": 16,
+            "sourceGrip": [
+              161.35647081413208,
+              43.88565668202765
+            ],
+            "sourceFootProxyX": 86.9877529286475,
+            "drawOffset": {
+              "x": -4.356470814132081,
+              "y": 6.114343317972349
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.35647081413208,
+              49.88565668202765
+            ],
+            "relativeFootProxyXBefore": -74.36871788548459,
+            "relativeFootProxyXAfter": -74.36871788548459,
+            "absoluteRelativeMotionError": 0
+          }
+        ]
+      },
+      {
+        "id": "canopy_release",
+        "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6",
+        "mode": "constant-endpoint-frame-1",
+        "target": {
+          "x": 157,
+          "y": 50
+        },
+        "measuredFrames": 1,
+        "checkedFramePivots": 16,
+        "gripRangeBefore": {
+          "x": 0,
+          "y": 0
+        },
+        "gripRangeAfter": {
+          "x": 0,
+          "y": 0
+        },
+        "gripRangeAfterPixelRounding": {
+          "x": 0,
+          "y": 0
+        },
+        "relativeLowerBodyXRangeBefore": 0,
+        "relativeLowerBodyXRangeAfter": 0,
+        "maxRelativeMotionError": 0,
+        "individualHandSpacingCorrection": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceGrip": [
+              163.16111144871172,
+              41.10095102090423
+            ],
+            "sourceFootProxyX": 155.08467360454117,
+            "drawOffset": {
+              "x": -6.161111448711722,
+              "y": 8.899048979095767
+            },
+            "displayedGrip": [
+              157,
+              50
+            ],
+            "displayedGripAfterPixelRounding": [
+              157.16111144871172,
+              50.10095102090423
+            ],
+            "relativeFootProxyXBefore": -8.076437844170556,
+            "relativeFootProxyXAfter": -8.076437844170556,
+            "absoluteRelativeMotionError": 0
+          }
+        ]
+      }
+    ],
+    "sourcePixelsChanged": false,
+    "relativeLowerBodyMotionPreserved": true,
+    "otherBodyPartsPinnedByGripRegistration": false,
+    "artisticApproval": false,
+    "humanAnatomicalApproval": false,
+    "gameplayBinding": null,
+    "limits": "The graphical midpoint is stabilized; separate hand contact, fist spacing, body size/pose joins, actual support and physical pendulum phase remain unvalidated."
+  },
+  "floorRegistrationChecks": {
+    "schemaVersion": 1,
+    "status": "passed",
+    "method": "bottom-support silhouette row",
+    "pages": 14,
+    "frames": 224,
+    "pivotChecks": 224,
+    "guardPivotChecks": 224,
+    "translationChecks": 224,
+    "targetY": 302.5,
+    "horizontalOffsetChanged": false,
+    "sourcePixelsChanged": false,
+    "integerTranslationsOnly": true,
+    "relativeShapeMotionPreserved": true,
+    "bodyScaleOrAnatomyCorrection": false,
+    "artisticApproval": false,
+    "humanAnatomicalApproval": false,
+    "gameplayBinding": null,
+    "excludedChecks": [
+      {
+        "id": "canopy_attach",
+        "anchorMethod": "two-fist silhouette proxy",
+        "preserved": true
+      },
+      {
+        "id": "canopy_hold",
+        "anchorMethod": "two-fist silhouette proxy",
+        "preserved": true
+      },
+      {
+        "id": "canopy_release",
+        "anchorMethod": "two-fist silhouette proxy",
+        "preserved": true
+      },
+      {
+        "id": "canopy_swing",
+        "anchorMethod": "two-fist silhouette proxy",
+        "preserved": true
+      },
+      {
+        "id": "aerial_boost",
+        "anchorMethod": "fixed-cell-root-assumption",
+        "preserved": true
+      }
+    ],
+    "results": [
+      {
+        "id": "idle",
+        "sourceSha256": "fd062eb0c7a680e8305030f51f258923c974a3a030aa1022e64c5c8642de054f",
+        "frames": 16,
+        "sourceFloorRange": 2,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          1,
+          3
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 23,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 16,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 19,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -287.5,
+            "bodyTopRelativeToFloorAfter": -287.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 36,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -287.5,
+            "bodyTopRelativeToFloorAfter": -287.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 29,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -287.5,
+            "bodyTopRelativeToFloorAfter": -287.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 299.5,
+            "sourceRowIndex": 299,
+            "rowPixelCount": 47,
+            "pivot": {
+              "x": 157,
+              "y": 299.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 299.5,
+            "sourceRowIndex": 299,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 299.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 299.5,
+            "sourceRowIndex": 299,
+            "rowPixelCount": 46,
+            "pivot": {
+              "x": 157,
+              "y": 299.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 299.5,
+            "sourceRowIndex": 299,
+            "rowPixelCount": 50,
+            "pivot": {
+              "x": 157,
+              "y": 299.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "aim_enter",
+        "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86",
+        "frames": 16,
+        "sourceFloorRange": 2,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          0,
+          2
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 23,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 22,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -283.5,
+            "bodyTopRelativeToFloorAfter": -283.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 22,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -271.5,
+            "bodyTopRelativeToFloorAfter": -271.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 22,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -264.5,
+            "bodyTopRelativeToFloorAfter": -264.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 56,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -274.5,
+            "bodyTopRelativeToFloorAfter": -274.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 54,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -273.5,
+            "bodyTopRelativeToFloorAfter": -273.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 57,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -274.5,
+            "bodyTopRelativeToFloorAfter": -274.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 10,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -275.5,
+            "bodyTopRelativeToFloorAfter": -275.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 32,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -275.5,
+            "bodyTopRelativeToFloorAfter": -275.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -275.5,
+            "bodyTopRelativeToFloorAfter": -275.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 49,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -275.5,
+            "bodyTopRelativeToFloorAfter": -275.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 56,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -274.5,
+            "bodyTopRelativeToFloorAfter": -274.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 15,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -274.5,
+            "bodyTopRelativeToFloorAfter": -274.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 22,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -272.5,
+            "bodyTopRelativeToFloorAfter": -272.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -271.5,
+            "bodyTopRelativeToFloorAfter": -271.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -271.5,
+            "bodyTopRelativeToFloorAfter": -271.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "aim_hold",
+        "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302",
+        "frames": 16,
+        "sourceFloorRange": 1,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          -4,
+          -3
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 43,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -270.5,
+            "bodyTopRelativeToFloorAfter": -270.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 42,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -271.5,
+            "bodyTopRelativeToFloorAfter": -271.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 45,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -274.5,
+            "bodyTopRelativeToFloorAfter": -274.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 45,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -274.5,
+            "bodyTopRelativeToFloorAfter": -274.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -274.5,
+            "bodyTopRelativeToFloorAfter": -274.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -271.5,
+            "bodyTopRelativeToFloorAfter": -271.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 74,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -269.5,
+            "bodyTopRelativeToFloorAfter": -269.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 11,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -269.5,
+            "bodyTopRelativeToFloorAfter": -269.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 32,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -267.5,
+            "bodyTopRelativeToFloorAfter": -267.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 32,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -267.5,
+            "bodyTopRelativeToFloorAfter": -267.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 23,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -270.5,
+            "bodyTopRelativeToFloorAfter": -270.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 30,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -271.5,
+            "bodyTopRelativeToFloorAfter": -271.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 62,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -271.5,
+            "bodyTopRelativeToFloorAfter": -271.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 50,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -269.5,
+            "bodyTopRelativeToFloorAfter": -269.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 54,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -267.5,
+            "bodyTopRelativeToFloorAfter": -267.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 59,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -267.5,
+            "bodyTopRelativeToFloorAfter": -267.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "aim_exit",
+        "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55",
+        "frames": 16,
+        "sourceFloorRange": 2,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          0,
+          2
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 40,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -257.5,
+            "bodyTopRelativeToFloorAfter": -257.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 42,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -266.5,
+            "bodyTopRelativeToFloorAfter": -266.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 48,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -272.5,
+            "bodyTopRelativeToFloorAfter": -272.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 41,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -277.5,
+            "bodyTopRelativeToFloorAfter": -277.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 45,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -276.5,
+            "bodyTopRelativeToFloorAfter": -276.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 42,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -280.5,
+            "bodyTopRelativeToFloorAfter": -280.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -281.5,
+            "bodyTopRelativeToFloorAfter": -281.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 48,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -284.5,
+            "bodyTopRelativeToFloorAfter": -284.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 53,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 52,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 13,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 20,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -285.5,
+            "bodyTopRelativeToFloorAfter": -285.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 17,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -285.5,
+            "bodyTopRelativeToFloorAfter": -285.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "hurt",
+        "sourceSha256": "c202b4a78ae0f10d706ff23957fc215cdcc75025cdeb1a50173f5651abd3a1db",
+        "frames": 16,
+        "sourceFloorRange": 1,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          1,
+          2
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -287.5,
+            "bodyTopRelativeToFloorAfter": -287.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -282.5,
+            "bodyTopRelativeToFloorAfter": -282.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 13,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -267.5,
+            "bodyTopRelativeToFloorAfter": -267.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -257.5,
+            "bodyTopRelativeToFloorAfter": -257.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 50,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -262.5,
+            "bodyTopRelativeToFloorAfter": -262.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 45,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -270.5,
+            "bodyTopRelativeToFloorAfter": -270.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 52,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -276.5,
+            "bodyTopRelativeToFloorAfter": -276.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 21,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -279.5,
+            "bodyTopRelativeToFloorAfter": -279.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 27,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -284.5,
+            "bodyTopRelativeToFloorAfter": -284.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 22,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -286.5,
+            "bodyTopRelativeToFloorAfter": -286.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 30,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 39,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 41,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 40,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "scan",
+        "sourceSha256": "7eaab576eba5f9a02760e31474fac981869f00cd1a25a57b038f71be939b3887",
+        "frames": 16,
+        "sourceFloorRange": 2,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          -1,
+          1
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 19,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -294.5,
+            "bodyTopRelativeToFloorAfter": -294.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -294.5,
+            "bodyTopRelativeToFloorAfter": -294.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -294.5,
+            "bodyTopRelativeToFloorAfter": -294.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -292.5,
+            "bodyTopRelativeToFloorAfter": -292.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 16,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 24,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 15,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -292.5,
+            "bodyTopRelativeToFloorAfter": -292.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 19,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -293.5,
+            "bodyTopRelativeToFloorAfter": -293.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 22,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -293.5,
+            "bodyTopRelativeToFloorAfter": -293.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -293.5,
+            "bodyTopRelativeToFloorAfter": -293.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 25,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -295.5,
+            "bodyTopRelativeToFloorAfter": -295.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 56,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 29,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 27,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "cloak_on",
+        "sourceSha256": "8c5645194a12137c1c46815e3ccc076aab8acdaf3b5d90de28a4e7817949ae6f",
+        "frames": 16,
+        "sourceFloorRange": 2,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          -1,
+          1
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -294.5,
+            "bodyTopRelativeToFloorAfter": -294.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 10,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -294.5,
+            "bodyTopRelativeToFloorAfter": -294.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -294.5,
+            "bodyTopRelativeToFloorAfter": -294.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -294.5,
+            "bodyTopRelativeToFloorAfter": -294.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 47,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 42,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -292.5,
+            "bodyTopRelativeToFloorAfter": -292.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 49,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 44,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 37,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -293.5,
+            "bodyTopRelativeToFloorAfter": -293.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 36,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -292.5,
+            "bodyTopRelativeToFloorAfter": -292.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 38,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 36,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -292.5,
+            "bodyTopRelativeToFloorAfter": -292.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 50,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 49,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 45,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "cloak_off",
+        "sourceSha256": "fadfd4a17e3d5d9482e8cb92261d83c2da960deab08636e0fc62dca6b6cd99f8",
+        "frames": 16,
+        "sourceFloorRange": 2,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          0,
+          2
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 11,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 14,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 56,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 53,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 14,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 56,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 48,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 55,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 58,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 58,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 58,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "heal_a",
+        "sourceSha256": "dcb1b881b2d76ac31d3c182e49aa97ceb504e5099d1af7e66a4f24d7072b8d04",
+        "frames": 16,
+        "sourceFloorRange": 2,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          0,
+          2
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 36,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 50,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -289.5,
+            "bodyTopRelativeToFloorAfter": -289.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 40,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -283.5,
+            "bodyTopRelativeToFloorAfter": -283.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -273.5,
+            "bodyTopRelativeToFloorAfter": -273.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 38,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -270.5,
+            "bodyTopRelativeToFloorAfter": -270.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -266.5,
+            "bodyTopRelativeToFloorAfter": -266.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -259.5,
+            "bodyTopRelativeToFloorAfter": -259.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 35,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -244.5,
+            "bodyTopRelativeToFloorAfter": -244.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 25,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -240.5,
+            "bodyTopRelativeToFloorAfter": -240.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 25,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -237.5,
+            "bodyTopRelativeToFloorAfter": -237.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 24,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -230.5,
+            "bodyTopRelativeToFloorAfter": -230.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 33,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -226.5,
+            "bodyTopRelativeToFloorAfter": -226.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 11,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -221.5,
+            "bodyTopRelativeToFloorAfter": -221.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 39,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -216.5,
+            "bodyTopRelativeToFloorAfter": -216.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 39,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -211.5,
+            "bodyTopRelativeToFloorAfter": -211.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -211.5,
+            "bodyTopRelativeToFloorAfter": -211.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "heal_b",
+        "sourceSha256": "c5c921a00c98eda2cbacb7ef33c0a905ffee44a26070d3d38c4922c0fb0c74c0",
+        "frames": 16,
+        "sourceFloorRange": 4,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          -2,
+          2
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -225.5,
+            "bodyTopRelativeToFloorAfter": -225.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 17,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -230.5,
+            "bodyTopRelativeToFloorAfter": -230.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -231.5,
+            "bodyTopRelativeToFloorAfter": -231.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 60,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -232.5,
+            "bodyTopRelativeToFloorAfter": -232.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 41,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -233.5,
+            "bodyTopRelativeToFloorAfter": -233.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 49,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -235.5,
+            "bodyTopRelativeToFloorAfter": -235.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 47,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -240.5,
+            "bodyTopRelativeToFloorAfter": -240.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 33,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -244.5,
+            "bodyTopRelativeToFloorAfter": -244.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 24,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -245.5,
+            "bodyTopRelativeToFloorAfter": -245.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 24,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -249.5,
+            "bodyTopRelativeToFloorAfter": -249.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 21,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -259.5,
+            "bodyTopRelativeToFloorAfter": -259.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 21,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -267.5,
+            "bodyTopRelativeToFloorAfter": -267.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 29,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -272.5,
+            "bodyTopRelativeToFloorAfter": -272.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 39,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -277.5,
+            "bodyTopRelativeToFloorAfter": -277.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -281.5,
+            "bodyTopRelativeToFloorAfter": -281.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 304.5,
+            "sourceRowIndex": 304,
+            "rowPixelCount": 8,
+            "pivot": {
+              "x": 157,
+              "y": 304.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -288.5,
+            "bodyTopRelativeToFloorAfter": -288.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "second_wind_a",
+        "sourceSha256": "f9ec1224681d88cc4bc7da0724c3fac215686ebe911f4070ba7ac3fcd1657162",
+        "frames": 16,
+        "sourceFloorRange": 3,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          -2,
+          1
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 304.5,
+            "sourceRowIndex": 304,
+            "rowPixelCount": 16,
+            "pivot": {
+              "x": 157,
+              "y": 304.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -300.5,
+            "bodyTopRelativeToFloorAfter": -300.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 304.5,
+            "sourceRowIndex": 304,
+            "rowPixelCount": 19,
+            "pivot": {
+              "x": 157,
+              "y": 304.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -290.5,
+            "bodyTopRelativeToFloorAfter": -290.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 304.5,
+            "sourceRowIndex": 304,
+            "rowPixelCount": 15,
+            "pivot": {
+              "x": 157,
+              "y": 304.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -282.5,
+            "bodyTopRelativeToFloorAfter": -282.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 54,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -264.5,
+            "bodyTopRelativeToFloorAfter": -264.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 303.5,
+            "sourceRowIndex": 303,
+            "rowPixelCount": 14,
+            "pivot": {
+              "x": 157,
+              "y": 303.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -260.5,
+            "bodyTopRelativeToFloorAfter": -260.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 31,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -241.5,
+            "bodyTopRelativeToFloorAfter": -241.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -222.5,
+            "bodyTopRelativeToFloorAfter": -222.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -202.5,
+            "bodyTopRelativeToFloorAfter": -202.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 16,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -196.5,
+            "bodyTopRelativeToFloorAfter": -196.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 20,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -190.5,
+            "bodyTopRelativeToFloorAfter": -190.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 23,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -184.5,
+            "bodyTopRelativeToFloorAfter": -184.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 302.5,
+            "sourceRowIndex": 302,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 302.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 0
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -179.5,
+            "bodyTopRelativeToFloorAfter": -179.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 39,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -184.5,
+            "bodyTopRelativeToFloorAfter": -184.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 24,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -190.5,
+            "bodyTopRelativeToFloorAfter": -190.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 40,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -199.5,
+            "bodyTopRelativeToFloorAfter": -199.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 301.5,
+            "sourceRowIndex": 301,
+            "rowPixelCount": 30,
+            "pivot": {
+              "x": 157,
+              "y": 301.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 1
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -213.5,
+            "bodyTopRelativeToFloorAfter": -213.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "second_wind_b",
+        "sourceSha256": "513664779cad09a3e82aa2b905d08b454b9938a95a3a7f02253ccf1287248be8",
+        "frames": 16,
+        "sourceFloorRange": 21,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          -4,
+          17
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 286.5,
+            "sourceRowIndex": 286,
+            "rowPixelCount": 35,
+            "pivot": {
+              "x": 157,
+              "y": 286.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 16
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -199.5,
+            "bodyTopRelativeToFloorAfter": -199.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 286.5,
+            "sourceRowIndex": 286,
+            "rowPixelCount": 29,
+            "pivot": {
+              "x": 157,
+              "y": 286.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 16
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -207.5,
+            "bodyTopRelativeToFloorAfter": -207.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 286.5,
+            "sourceRowIndex": 286,
+            "rowPixelCount": 25,
+            "pivot": {
+              "x": 157,
+              "y": 286.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 16
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -215.5,
+            "bodyTopRelativeToFloorAfter": -215.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 286.5,
+            "sourceRowIndex": 286,
+            "rowPixelCount": 25,
+            "pivot": {
+              "x": 157,
+              "y": 286.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 16
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -227.5,
+            "bodyTopRelativeToFloorAfter": -227.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 285.5,
+            "sourceRowIndex": 285,
+            "rowPixelCount": 35,
+            "pivot": {
+              "x": 157,
+              "y": 285.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 17
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -230.5,
+            "bodyTopRelativeToFloorAfter": -230.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 285.5,
+            "sourceRowIndex": 285,
+            "rowPixelCount": 22,
+            "pivot": {
+              "x": 157,
+              "y": 285.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 17
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -239.5,
+            "bodyTopRelativeToFloorAfter": -239.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 285.5,
+            "sourceRowIndex": 285,
+            "rowPixelCount": 23,
+            "pivot": {
+              "x": 157,
+              "y": 285.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 17
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -245.5,
+            "bodyTopRelativeToFloorAfter": -245.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 285.5,
+            "sourceRowIndex": 285,
+            "rowPixelCount": 23,
+            "pivot": {
+              "x": 157,
+              "y": 285.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 17
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -255.5,
+            "bodyTopRelativeToFloorAfter": -255.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 286.5,
+            "sourceRowIndex": 286,
+            "rowPixelCount": 26,
+            "pivot": {
+              "x": 157,
+              "y": 286.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 16
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -257.5,
+            "bodyTopRelativeToFloorAfter": -257.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 287.5,
+            "sourceRowIndex": 287,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 287.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 15
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -254.5,
+            "bodyTopRelativeToFloorAfter": -254.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 286.5,
+            "sourceRowIndex": 286,
+            "rowPixelCount": 46,
+            "pivot": {
+              "x": 157,
+              "y": 286.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 16
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -253.5,
+            "bodyTopRelativeToFloorAfter": -253.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 287.5,
+            "sourceRowIndex": 287,
+            "rowPixelCount": 16,
+            "pivot": {
+              "x": 157,
+              "y": 287.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 15
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -265.5,
+            "bodyTopRelativeToFloorAfter": -265.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 16,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -280.5,
+            "bodyTopRelativeToFloorAfter": -280.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -283.5,
+            "bodyTopRelativeToFloorAfter": -283.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 54,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -285.5,
+            "bodyTopRelativeToFloorAfter": -285.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 48,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -291.5,
+            "bodyTopRelativeToFloorAfter": -291.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "death_a",
+        "sourceSha256": "7ffad389391a316f5e223024d750eef1ccc32f3cfe32a85c7eee39cd10cc2bde",
+        "frames": 16,
+        "sourceFloorRange": 12,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          -9,
+          3
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 311.5,
+            "sourceRowIndex": 311,
+            "rowPixelCount": 56,
+            "pivot": {
+              "x": 157,
+              "y": 311.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -9
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -279.5,
+            "bodyTopRelativeToFloorAfter": -279.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 311.5,
+            "sourceRowIndex": 311,
+            "rowPixelCount": 53,
+            "pivot": {
+              "x": 157,
+              "y": 311.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -9
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -268.5,
+            "bodyTopRelativeToFloorAfter": -268.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 311.5,
+            "sourceRowIndex": 311,
+            "rowPixelCount": 52,
+            "pivot": {
+              "x": 157,
+              "y": 311.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -9
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -251.5,
+            "bodyTopRelativeToFloorAfter": -251.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 311.5,
+            "sourceRowIndex": 311,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 311.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -9
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -234.5,
+            "bodyTopRelativeToFloorAfter": -234.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 309.5,
+            "sourceRowIndex": 309,
+            "rowPixelCount": 52,
+            "pivot": {
+              "x": 157,
+              "y": 309.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -7
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -231.5,
+            "bodyTopRelativeToFloorAfter": -231.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 309.5,
+            "sourceRowIndex": 309,
+            "rowPixelCount": 51,
+            "pivot": {
+              "x": 157,
+              "y": 309.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -7
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -218.5,
+            "bodyTopRelativeToFloorAfter": -218.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 309.5,
+            "sourceRowIndex": 309,
+            "rowPixelCount": 60,
+            "pivot": {
+              "x": 157,
+              "y": 309.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -7
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -200.5,
+            "bodyTopRelativeToFloorAfter": -200.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 309.5,
+            "sourceRowIndex": 309,
+            "rowPixelCount": 54,
+            "pivot": {
+              "x": 157,
+              "y": 309.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -7
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -184.5,
+            "bodyTopRelativeToFloorAfter": -184.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 47,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -198.5,
+            "bodyTopRelativeToFloorAfter": -198.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 47,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -192.5,
+            "bodyTopRelativeToFloorAfter": -192.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 305.5,
+            "sourceRowIndex": 305,
+            "rowPixelCount": 59,
+            "pivot": {
+              "x": 157,
+              "y": 305.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -186.5,
+            "bodyTopRelativeToFloorAfter": -186.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 306.5,
+            "sourceRowIndex": 306,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 306.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": -4
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -182.5,
+            "bodyTopRelativeToFloorAfter": -182.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 299.5,
+            "sourceRowIndex": 299,
+            "rowPixelCount": 33,
+            "pivot": {
+              "x": 157,
+              "y": 299.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 3
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -175.5,
+            "bodyTopRelativeToFloorAfter": -175.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -163.5,
+            "bodyTopRelativeToFloorAfter": -163.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -151.5,
+            "bodyTopRelativeToFloorAfter": -151.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 300.5,
+            "sourceRowIndex": 300,
+            "rowPixelCount": 14,
+            "pivot": {
+              "x": 157,
+              "y": 300.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 2
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -135.5,
+            "bodyTopRelativeToFloorAfter": -135.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      },
+      {
+        "id": "death_b",
+        "sourceSha256": "eef4bf450fb6f4ad14f4a53924450638015a7439df7c65539daf56f92c41903a",
+        "frames": 16,
+        "sourceFloorRange": 13,
+        "displayedFloorRange": 0,
+        "drawOffsetYRange": [
+          11,
+          24
+        ],
+        "maxRelativeShapePositionError": 0,
+        "horizontalOffsetChanged": false,
+        "records": [
+          {
+            "number": 1,
+            "sourceFloorY": 278.5,
+            "sourceRowIndex": 278,
+            "rowPixelCount": 24,
+            "pivot": {
+              "x": 157,
+              "y": 278.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 24
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -152.5,
+            "bodyTopRelativeToFloorAfter": -152.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 2,
+            "sourceFloorY": 278.5,
+            "sourceRowIndex": 278,
+            "rowPixelCount": 34,
+            "pivot": {
+              "x": 157,
+              "y": 278.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 24
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -144.5,
+            "bodyTopRelativeToFloorAfter": -144.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 3,
+            "sourceFloorY": 280.5,
+            "sourceRowIndex": 280,
+            "rowPixelCount": 10,
+            "pivot": {
+              "x": 157,
+              "y": 280.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 22
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -140.5,
+            "bodyTopRelativeToFloorAfter": -140.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 4,
+            "sourceFloorY": 278.5,
+            "sourceRowIndex": 278,
+            "rowPixelCount": 19,
+            "pivot": {
+              "x": 157,
+              "y": 278.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 24
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -131.5,
+            "bodyTopRelativeToFloorAfter": -131.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 5,
+            "sourceFloorY": 287.5,
+            "sourceRowIndex": 287,
+            "rowPixelCount": 54,
+            "pivot": {
+              "x": 157,
+              "y": 287.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 15
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -132.5,
+            "bodyTopRelativeToFloorAfter": -132.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 6,
+            "sourceFloorY": 288.5,
+            "sourceRowIndex": 288,
+            "rowPixelCount": 9,
+            "pivot": {
+              "x": 157,
+              "y": 288.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 14
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -128.5,
+            "bodyTopRelativeToFloorAfter": -128.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 7,
+            "sourceFloorY": 288.5,
+            "sourceRowIndex": 288,
+            "rowPixelCount": 29,
+            "pivot": {
+              "x": 157,
+              "y": 288.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 14
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -124.5,
+            "bodyTopRelativeToFloorAfter": -124.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 8,
+            "sourceFloorY": 288.5,
+            "sourceRowIndex": 288,
+            "rowPixelCount": 42,
+            "pivot": {
+              "x": 157,
+              "y": 288.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 14
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -123.5,
+            "bodyTopRelativeToFloorAfter": -123.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 9,
+            "sourceFloorY": 291.5,
+            "sourceRowIndex": 291,
+            "rowPixelCount": 12,
+            "pivot": {
+              "x": 157,
+              "y": 291.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 11
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -119.5,
+            "bodyTopRelativeToFloorAfter": -119.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 10,
+            "sourceFloorY": 291.5,
+            "sourceRowIndex": 291,
+            "rowPixelCount": 38,
+            "pivot": {
+              "x": 157,
+              "y": 291.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 11
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -111.5,
+            "bodyTopRelativeToFloorAfter": -111.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 11,
+            "sourceFloorY": 290.5,
+            "sourceRowIndex": 290,
+            "rowPixelCount": 72,
+            "pivot": {
+              "x": 157,
+              "y": 290.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 12
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -101.5,
+            "bodyTopRelativeToFloorAfter": -101.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 12,
+            "sourceFloorY": 291.5,
+            "sourceRowIndex": 291,
+            "rowPixelCount": 18,
+            "pivot": {
+              "x": 157,
+              "y": 291.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 11
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -97.5,
+            "bodyTopRelativeToFloorAfter": -97.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 13,
+            "sourceFloorY": 291.5,
+            "sourceRowIndex": 291,
+            "rowPixelCount": 49,
+            "pivot": {
+              "x": 157,
+              "y": 291.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 11
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -91.5,
+            "bodyTopRelativeToFloorAfter": -91.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 14,
+            "sourceFloorY": 291.5,
+            "sourceRowIndex": 291,
+            "rowPixelCount": 63,
+            "pivot": {
+              "x": 157,
+              "y": 291.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 11
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -87.5,
+            "bodyTopRelativeToFloorAfter": -87.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 15,
+            "sourceFloorY": 291.5,
+            "sourceRowIndex": 291,
+            "rowPixelCount": 57,
+            "pivot": {
+              "x": 157,
+              "y": 291.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 11
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -84.5,
+            "bodyTopRelativeToFloorAfter": -84.5,
+            "relativeShapePositionError": 0
+          },
+          {
+            "number": 16,
+            "sourceFloorY": 291.5,
+            "sourceRowIndex": 291,
+            "rowPixelCount": 26,
+            "pivot": {
+              "x": 157,
+              "y": 291.5
+            },
+            "drawOffset": {
+              "x": 0,
+              "y": 11
+            },
+            "displayedFloorY": 302.5,
+            "bodyTopRelativeToFloorBefore": -84.5,
+            "bodyTopRelativeToFloorAfter": -84.5,
+            "relativeShapePositionError": 0
+          }
+        ]
+      }
+    ],
+    "limits": "A stable graphical floor does not validate anatomy, separate foot contacts, body scale, horizontal pose seams, gameplay collision or action-phase compatibility."
+  },
+  "pngFreezePreservation": {
+    "status": "passed",
+    "pngFiles": 342,
+    "sourceAtlases": 19,
+    "individualSprites": 304,
+    "guardedImportAtlases": 19,
+    "byteForByteUnchanged": true,
+    "comparedWith": "png_freeze_receipt.json"
+  },
+  "nativeContract": {
+    "status": "passed",
+    "actions": 16,
+    "nativeClips": 16,
+    "frameReferences": 304,
+    "sourceDrawings": 304,
+    "actualGameContract": true,
+    "draftResolutionBlocked": true,
+    "artisticApproval": false,
+    "inGameValidation": false
+  },
+  "relativePreview": {
+    "status": "passed",
+    "actions": 16,
+    "terminalOneShots": 12,
+    "loops": 4,
+    "multiPageActions": 3,
+    "sustained": 0,
+    "drawOffsetChecks": 319,
+    "registeredFrameChecks": 288,
+    "embeddedAtlasImages": 0,
+    "externalImageRequests": 304,
+    "source": "Actual preview JavaScript executed in Node VM",
+    "browserInteraction": false,
+    "artisticApproval": false
+  },
+  "standalone": {
+    "schemaVersion": 1,
+    "file": "Yautja_Survie_Equipement_Canopee_V1_Apercu.html",
+    "sourceAtlases": 19,
+    "sourceDrawings": 304,
+    "embeddedImages": 19,
+    "bytes": 35488030,
+    "externalImageRequests": 0,
+    "externalScripts": 0,
+    "externalStyles": 0,
+    "rendering": "Exact native-size crops from the original embedded atlas bytes; same frame offsets as relative preview.",
+    "artisticStatus": "draft",
+    "browserValidation": false
+  },
+  "standalonePreview": {
+    "status": "passed",
+    "actions": 16,
+    "terminalOneShots": 12,
+    "loops": 4,
+    "multiPageActions": 3,
+    "sustained": 0,
+    "drawOffsetChecks": 319,
+    "registeredFrameChecks": 288,
+    "embeddedAtlasImages": 19,
+    "externalImageRequests": 0,
+    "source": "Actual preview JavaScript executed in Node VM",
+    "browserInteraction": false,
+    "artisticApproval": false
+  },
+  "video": {
+    "schemaVersion": 1,
+    "file": "Yautja_Survie_Equipement_Canopee_V1.mp4",
+    "width": 1260,
+    "height": 562,
+    "containerFps": 16,
+    "videoFrames": 224,
+    "durationSeconds": 14,
+    "uniqueSourceDrawingsShown": 304,
+    "expectedSourceDrawings": 304,
+    "pages": [
+      {
+        "actions": [
+          "idle",
+          "aim_enter",
+          "aim_hold"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "aim_exit",
+          "canopy_attach",
+          "canopy_hold"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "canopy_release",
+          "canopy_swing",
+          "aerial_boost"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "scan",
+          "cloak_on",
+          "cloak_off"
+        ],
+        "durationTicks": 24,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "heal",
+          "second_wind",
+          "hurt"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "death"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      }
+    ],
+    "composition": "Read-only source PNGs at native size; fractional preview offsets rounded for video placement. Terminal cells are held after shorter actions finish; no invented idle phase.",
+    "registrationApplied": [
+      {
+        "clip": "idle",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "fd062eb0c7a680e8305030f51f258923c974a3a030aa1022e64c5c8642de054f",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 3
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "aim_enter",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "aim_hold",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": -4
+          },
+          {
+            "x": 0,
+            "y": -3
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "aim_exit",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "canopy_attach",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab",
+        "sourceDrawOffsets": [
+          {
+            "x": -1.2488977072310377,
+            "y": -1.7187683715461475
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "canopy_hold",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148",
+        "sourceDrawOffsets": [
+          {
+            "x": -7.360342555994748,
+            "y": 0.8522983457766031
+          },
+          {
+            "x": -7.365205755900661,
+            "y": 2.7525152817993046
+          },
+          {
+            "x": -9.231360680018042,
+            "y": 4.078144117457661
+          },
+          {
+            "x": -10.135799638550964,
+            "y": 5.963774175275802
+          },
+          {
+            "x": -11.110012250523198,
+            "y": 6.0636261548670305
+          },
+          {
+            "x": -9.339724310776944,
+            "y": 4.084743107769427
+          },
+          {
+            "x": -9.65350888588651,
+            "y": 1.0635782581583868
+          },
+          {
+            "x": -9.170041322314034,
+            "y": 0.6524157660521297
+          },
+          {
+            "x": -9.043097139832156,
+            "y": 1.6707848724056902
+          },
+          {
+            "x": -7.605498721227605,
+            "y": 2.6510169285105363
+          },
+          {
+            "x": -8.121339597902079,
+            "y": 3.8703835227272734
+          },
+          {
+            "x": -8.323587236642851,
+            "y": 5.92524376311804
+          },
+          {
+            "x": -7.9026251526251485,
+            "y": 4.861192511192513
+          },
+          {
+            "x": -7.932598491640732,
+            "y": 2.998721059015878
+          },
+          {
+            "x": -8.279729632039334,
+            "y": 0.7895395069760696
+          },
+          {
+            "x": -8.201850079744816,
+            "y": 0.0813397129186626
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "canopy_release",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6",
+        "sourceDrawOffsets": [
+          {
+            "x": -6.161111448711722,
+            "y": 8.899048979095767
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "canopy_swing",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46",
+        "sourceDrawOffsets": [
+          {
+            "x": -28.19262388154607,
+            "y": 4.270518235908618
+          },
+          {
+            "x": -23.545849154143696,
+            "y": 3.6171274756225813
+          },
+          {
+            "x": -20.84291187739464,
+            "y": 3.6786332860966766
+          },
+          {
+            "x": -19.578055416229688,
+            "y": 3.9718359095952422
+          },
+          {
+            "x": -20.02975731895225,
+            "y": 4.723228043143294
+          },
+          {
+            "x": -13.947838827838837,
+            "y": 5.102237762237763
+          },
+          {
+            "x": -8.916661706939635,
+            "y": 4.9952014641114175
+          },
+          {
+            "x": -4.44668623135243,
+            "y": 5.125682726012883
+          },
+          {
+            "x": -3.2255970067128885,
+            "y": 5.7153626059205465
+          },
+          {
+            "x": -1.9488863892013342,
+            "y": 7.1811698537682815
+          },
+          {
+            "x": 0.28733538191397656,
+            "y": 7.200000000000003
+          },
+          {
+            "x": 1.5521764379134595,
+            "y": 7.007322122910672
+          },
+          {
+            "x": -0.3493617957746551,
+            "y": 7.487125880281695
+          },
+          {
+            "x": -2.216226377617602,
+            "y": 6.007845752227453
+          },
+          {
+            "x": -3.2848840852130365,
+            "y": 5.836168546365911
+          },
+          {
+            "x": -4.356470814132081,
+            "y": 6.114343317972349
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "scan",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "7eaab576eba5f9a02760e31474fac981869f00cd1a25a57b038f71be939b3887",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": -1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 1
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "cloak_on",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "8c5645194a12137c1c46815e3ccc076aab8acdaf3b5d90de28a4e7817949ae6f",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": -1
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "cloak_off",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "fadfd4a17e3d5d9482e8cb92261d83c2da960deab08636e0fc62dca6b6cd99f8",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 2
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "heal_a",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "dcb1b881b2d76ac31d3c182e49aa97ceb504e5099d1af7e66a4f24d7072b8d04",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 2
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "heal_b",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "c5c921a00c98eda2cbacb7ef33c0a905ffee44a26070d3d38c4922c0fb0c74c0",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 2
+          },
+          {
+            "x": 0,
+            "y": -1
+          },
+          {
+            "x": 0,
+            "y": -2
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "second_wind_a",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "f9ec1224681d88cc4bc7da0724c3fac215686ebe911f4070ba7ac3fcd1657162",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": -2
+          },
+          {
+            "x": 0,
+            "y": -1
+          },
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 0
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "second_wind_b",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "513664779cad09a3e82aa2b905d08b454b9938a95a3a7f02253ccf1287248be8",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 16
+          },
+          {
+            "x": 0,
+            "y": 17
+          },
+          {
+            "x": 0,
+            "y": 15
+          },
+          {
+            "x": 0,
+            "y": -4
+          },
+          {
+            "x": 0,
+            "y": -3
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "hurt",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "c202b4a78ae0f10d706ff23957fc215cdcc75025cdeb1a50173f5651abd3a1db",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 1
+          },
+          {
+            "x": 0,
+            "y": 2
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "death_a",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "7ffad389391a316f5e223024d750eef1ccc32f3cfe32a85c7eee39cd10cc2bde",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": -9
+          },
+          {
+            "x": 0,
+            "y": -7
+          },
+          {
+            "x": 0,
+            "y": -3
+          },
+          {
+            "x": 0,
+            "y": -4
+          },
+          {
+            "x": 0,
+            "y": 3
+          },
+          {
+            "x": 0,
+            "y": 2
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "death_b",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "eef4bf450fb6f4ad14f4a53924450638015a7439df7c65539daf56f92c41903a",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": 24
+          },
+          {
+            "x": 0,
+            "y": 22
+          },
+          {
+            "x": 0,
+            "y": 15
+          },
+          {
+            "x": 0,
+            "y": 14
+          },
+          {
+            "x": 0,
+            "y": 11
+          },
+          {
+            "x": 0,
+            "y": 12
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      }
+    ],
+    "timingPurpose": "Art review only; gameplay timings in seconds are not retimed.",
+    "browserValidation": false,
+    "artisticStatus": "draft",
+    "ffprobe": {
+      "width": 1260,
+      "height": 562,
+      "r_frame_rate": "16/1",
+      "duration": "14.000000",
+      "nb_frames": "224"
+    }
+  },
+  "continuityVideo": {
+    "schemaVersion": 1,
+    "file": "Yautja_Survie_Equipement_Canopee_V1_Raccords.mp4",
+    "purpose": "Cross-action seam inspection, with no gap, interpolation, extra registration or concealed transition.",
+    "width": 840,
+    "height": 584,
+    "containerFps": 16,
+    "videoFrames": 104,
+    "durationSeconds": 6.5,
+    "terminalHoldTicks": 8,
+    "uniqueSourceDrawingsShown": 112,
+    "additionalSourceDrawings": 0,
+    "playbackReferencesAcrossGroups": 160,
+    "groups": [
+      {
+        "id": "aim_continuity",
+        "label": "Visée — entrée, maintien, sortie",
+        "durationTicks": 64,
+        "segments": [
+          {
+            "action": "aim_enter",
+            "label": "Mise en visée",
+            "kind": "one-shot",
+            "repeat": 1,
+            "startTick": 0,
+            "endTick": 16,
+            "startSeconds": 0,
+            "endSeconds": 1,
+            "playbackReferences": 16,
+            "uniqueSourceDrawings": 16,
+            "first": {
+              "clip": "aim_enter",
+              "number": 1
+            },
+            "last": {
+              "clip": "aim_enter",
+              "number": 16
+            }
+          },
+          {
+            "action": "aim_hold",
+            "label": "Visée maintenue",
+            "kind": "loop",
+            "repeat": 2,
+            "startTick": 16,
+            "endTick": 48,
+            "startSeconds": 1,
+            "endSeconds": 3,
+            "playbackReferences": 32,
+            "uniqueSourceDrawings": 16,
+            "first": {
+              "clip": "aim_hold",
+              "number": 1
+            },
+            "last": {
+              "clip": "aim_hold",
+              "number": 16
+            }
+          },
+          {
+            "action": "aim_exit",
+            "label": "Fin de visée",
+            "kind": "one-shot",
+            "repeat": 1,
+            "startTick": 48,
+            "endTick": 64,
+            "startSeconds": 3,
+            "endSeconds": 4,
+            "playbackReferences": 16,
+            "uniqueSourceDrawings": 16,
+            "first": {
+              "clip": "aim_exit",
+              "number": 1
+            },
+            "last": {
+              "clip": "aim_exit",
+              "number": 16
+            }
+          }
+        ],
+        "junctions": [
+          {
+            "tick": 16,
+            "seconds": 1,
+            "from": {
+              "action": "aim_enter",
+              "clip": "aim_enter",
+              "number": 16
+            },
+            "to": {
+              "action": "aim_hold",
+              "clip": "aim_hold",
+              "number": 1
+            }
+          },
+          {
+            "tick": 48,
+            "seconds": 3,
+            "from": {
+              "action": "aim_hold",
+              "clip": "aim_hold",
+              "number": 16
+            },
+            "to": {
+              "action": "aim_exit",
+              "clip": "aim_exit",
+              "number": 1
+            }
+          }
+        ],
+        "loopSeams": [
+          {
+            "tick": 32,
+            "seconds": 2,
+            "action": "aim_hold",
+            "from": {
+              "clip": "aim_hold",
+              "number": 16
+            },
+            "to": {
+              "clip": "aim_hold",
+              "number": 1
+            }
+          }
+        ],
+        "playbackReferences": 64
+      },
+      {
+        "id": "canopy_continuity",
+        "label": "Canopée — accroche et lâcher",
+        "durationTicks": 96,
+        "segments": [
+          {
+            "action": "canopy_attach",
+            "label": "Accroche en canopée",
+            "kind": "one-shot",
+            "repeat": 1,
+            "startTick": 0,
+            "endTick": 16,
+            "startSeconds": 0,
+            "endSeconds": 1,
+            "playbackReferences": 16,
+            "uniqueSourceDrawings": 16,
+            "first": {
+              "clip": "canopy_attach",
+              "number": 1
+            },
+            "last": {
+              "clip": "canopy_attach",
+              "number": 16
+            }
+          },
+          {
+            "action": "canopy_hold",
+            "label": "Suspension en canopée",
+            "kind": "loop",
+            "repeat": 2,
+            "startTick": 16,
+            "endTick": 48,
+            "startSeconds": 1,
+            "endSeconds": 3,
+            "playbackReferences": 32,
+            "uniqueSourceDrawings": 16,
+            "first": {
+              "clip": "canopy_hold",
+              "number": 1
+            },
+            "last": {
+              "clip": "canopy_hold",
+              "number": 16
+            }
+          },
+          {
+            "action": "canopy_swing",
+            "label": "Balancement en canopée",
+            "kind": "loop",
+            "repeat": 2,
+            "startTick": 48,
+            "endTick": 80,
+            "startSeconds": 3,
+            "endSeconds": 5,
+            "playbackReferences": 32,
+            "uniqueSourceDrawings": 16,
+            "first": {
+              "clip": "canopy_swing",
+              "number": 1
+            },
+            "last": {
+              "clip": "canopy_swing",
+              "number": 16
+            }
+          },
+          {
+            "action": "canopy_release",
+            "label": "Lâcher de canopée",
+            "kind": "one-shot",
+            "repeat": 1,
+            "startTick": 80,
+            "endTick": 96,
+            "startSeconds": 5,
+            "endSeconds": 6,
+            "playbackReferences": 16,
+            "uniqueSourceDrawings": 16,
+            "first": {
+              "clip": "canopy_release",
+              "number": 1
+            },
+            "last": {
+              "clip": "canopy_release",
+              "number": 16
+            }
+          }
+        ],
+        "junctions": [
+          {
+            "tick": 16,
+            "seconds": 1,
+            "from": {
+              "action": "canopy_attach",
+              "clip": "canopy_attach",
+              "number": 16
+            },
+            "to": {
+              "action": "canopy_hold",
+              "clip": "canopy_hold",
+              "number": 1
+            }
+          },
+          {
+            "tick": 48,
+            "seconds": 3,
+            "from": {
+              "action": "canopy_hold",
+              "clip": "canopy_hold",
+              "number": 16
+            },
+            "to": {
+              "action": "canopy_swing",
+              "clip": "canopy_swing",
+              "number": 1
+            }
+          },
+          {
+            "tick": 80,
+            "seconds": 5,
+            "from": {
+              "action": "canopy_swing",
+              "clip": "canopy_swing",
+              "number": 16
+            },
+            "to": {
+              "action": "canopy_release",
+              "clip": "canopy_release",
+              "number": 1
+            }
+          }
+        ],
+        "loopSeams": [
+          {
+            "tick": 32,
+            "seconds": 2,
+            "action": "canopy_hold",
+            "from": {
+              "clip": "canopy_hold",
+              "number": 16
+            },
+            "to": {
+              "clip": "canopy_hold",
+              "number": 1
+            }
+          },
+          {
+            "tick": 64,
+            "seconds": 4,
+            "action": "canopy_swing",
+            "from": {
+              "clip": "canopy_swing",
+              "number": 16
+            },
+            "to": {
+              "clip": "canopy_swing",
+              "number": 1
+            }
+          }
+        ],
+        "playbackReferences": 96
+      }
+    ],
+    "sampler": "playback_core.js resolve; canonical playback.json phase steps; one padding + drawOffset application then Math.round for offline video placement.",
+    "rootPolicy": "Canonical SHA-bound floor and grip metadata from the manifest are applied once. These graphical proxies remain draft-only; anatomy, separate contacts and physical pendulum phase remain pending.",
+    "registrationApplied": [
+      {
+        "clip": "aim_enter",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86"
+      },
+      {
+        "clip": "aim_hold",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302"
+      },
+      {
+        "clip": "aim_exit",
+        "method": "bottom-support silhouette row",
+        "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55"
+      },
+      {
+        "clip": "canopy_attach",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab"
+      },
+      {
+        "clip": "canopy_hold",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148"
+      },
+      {
+        "clip": "canopy_release",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6"
+      },
+      {
+        "clip": "canopy_swing",
+        "method": "two-fist silhouette proxy",
+        "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46"
+      }
+    ],
+    "browserValidation": false,
+    "inGameValidation": false,
+    "artisticStatus": "draft",
+    "artisticApproval": false,
+    "ffprobe": {
+      "width": 840,
+      "height": 584,
+      "r_frame_rate": "16/1",
+      "duration": "6.500000",
+      "nb_frames": "104"
+    }
+  },
+  "contactSheet": {
+    "file": "Yautja_Survie_Equipement_Canopee_V1_Contact.png",
+    "width": 1782,
+    "height": 2170,
+    "actions": 16,
+    "sourceDrawings": 304,
+    "shownDrawings": 16,
+    "artisticStatus": "draft",
+    "selectedLaterPagePoses": {
+      "second_wind": {
+        "clip": "second_wind_b",
+        "number": 12
+      },
+      "death": {
+        "clip": "death_b",
+        "number": 16
+      }
+    }
+  },
+  "delivery": {
+    "actions": 16,
+    "sourceAtlases": 19,
+    "individualSprites": 304,
+    "guardedImportAtlases": 19,
+    "artPngFiles": 342,
+    "contactSheetsCountedAsArt": false,
+    "reviewFps": 16
+  },
+  "limitations": [
+    "All source drawings and runtime manifests remain draft; technical checks do not confer human artistic approval.",
+    "The relative and standalone preview scripts are executed with a simulated DOM, Image, Canvas and RAF in Node; no browser interaction is claimed.",
+    "MP4 coverage and raster placement checks are offline review only, not gameplay validation.",
+    "Whole-body equipped right-facing reference art does not implement modular gear or left-facing variants.",
+    "Review cadence does not modify cooldowns, health, energy, action windows, control availability or the death simulation pause."
+  ]
+}

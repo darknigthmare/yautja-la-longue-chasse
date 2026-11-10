@@ -1,0 +1,436 @@
+{
+  "version": 1,
+  "date": "2026-11-10",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+  "previousSourceDrawings": 592,
+  "proposedSourceDrawings": 304,
+  "selectedActions": 16,
+  "sourceAtlases": 19,
+  "productionStatus": "planned",
+  "runtimeBindingAdded": false,
+  "artisticStatus": "draft_requires_human_review",
+  "identity": {
+    "characterId": "reference-yautja",
+    "facing": "right",
+    "scope": "equipped reference hero; not modular gear runtime replacement"
+  },
+  "evidence": {
+    "rig": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 1093,
+      "endLine": 1158,
+      "claim": "Existing render chooses extract/climb/jump/fall/run/idle and passes aimAngle and recoil into generic joint rig; no selected whole-body source clips.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158"
+    },
+    "aim": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8135,
+      "endLine": 8213,
+      "claim": "Aiming is held input; weapon charge and aimAngle are independent real state, no aim entry/exit timer.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8135-L8213"
+    },
+    "canopyAttach": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8544,
+      "endLine": 8591,
+      "claim": "Grip attaches to reachable support and may enter swing. Accepted support/climbing transition is the actual event.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8544-L8591"
+    },
+    "canopyRelease": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8554,
+      "endLine": 8570,
+      "claim": "Manual grip release, invalid support or exhausted stamina clears climb state; only manual release inherits explicit swing velocity branch here.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8554-L8570"
+    },
+    "canopyJumpRelease": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8235,
+      "endLine": 8266,
+      "claim": "Climb jump releases support and inherits swing velocity or rigid/flexible launch velocity; boosted jump is an accepted event.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8235-L8266"
+    },
+    "canopyMotion": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8733,
+      "endLine": 8779,
+      "claim": "Swing updates real physics; otherwise vertical climb and stamina update independently.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8733-L8779"
+    },
+    "canopyFlexible": {
+      "path": "app/game/systems/canopyTraversalV112.ts",
+      "startLine": 23,
+      "endLine": 24,
+      "claim": "Swing supports are vine, rope or chain.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L23-L24"
+    },
+    "canopySwing": {
+      "path": "app/game/systems/canopyTraversalV112.ts",
+      "startLine": 73,
+      "endLine": 142,
+      "claim": "Swing grip point, angle, length and angular velocity own world motion. Art must not bake a fixed branch/rope or double world translation.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L73-L142"
+    },
+    "scan": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 7624,
+      "endLine": 7630,
+      "claim": "Accepted scan immediately costs 8 energy, sets .7 cooldown, .55 pulse; rejected input does not trigger accepted event.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L7624-L7630"
+    },
+    "manualCloak": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8714,
+      "endLine": 8724,
+      "claim": "Manual cloak toggle: immediately disable if active; enable only energy>=20.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8714-L8724"
+    },
+    "forcedDecloak": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 2893,
+      "endLine": 2897,
+      "claim": "forceDecloak clears boolean and queues cloak-off; not necessarily a voluntary wrist gesture.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L2893-L2897"
+    },
+    "cloakPresentation": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 5939,
+      "endLine": 5941,
+      "claim": "Cloak alpha applied by rendering; keep separate from authored gesture pixels.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L5939-L5941"
+    },
+    "energyCloak": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8857,
+      "endLine": 8862,
+      "claim": "Energy exhaustion forces decloak; do not play voluntary off gesture on every false transition.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8857-L8862"
+    },
+    "heal": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 7693,
+      "endLine": 7715,
+      "claim": "Accepted Medicomp consumes one, heals .46 maxHP immediately, cooldown 2, decloaks; no treatment simulation phase.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L7693-L7715"
+    },
+    "damage": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 6600,
+      "endLine": 6630,
+      "claim": "Accepted damage after guard conditions reduces HP, sets .55 invulnerability, decloaks; no existing stagger timer.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6600-L6630"
+    },
+    "secondWind": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 6630,
+      "endLine": 6645,
+      "claim": "First lethal hit with Medicomp consumes one, sets secondWindUsed, restores .30 maxHP, energy floor .20 max, invulnerability 2 instantly.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6630-L6645"
+    },
+    "death": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 6648,
+      "endLine": 6652,
+      "claim": "Death sets HP0, phase dead, paused true immediately. Animation cannot rely on advancing simulation elapsed.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6648-L6652"
+    },
+    "modularContract": {
+      "path": "docs/expedition-animation-contract-v36.md",
+      "startLine": 1,
+      "endLine": 60,
+      "claim": "Complete anatomy and separated customizable equipment required; fullbody draft studies cannot claim this contract by metadata.",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/docs/expedition-animation-contract-v36.md#L1-L60"
+    }
+  },
+  "actions": [
+    {
+      "artActionId": "idle",
+      "label": "Attente respirante",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "loop",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "rig"
+      ],
+      "trigger": "grounded && !climbing && abs(velocityX)<=24, with higher priority actions absent",
+      "notes": "Hold baseline and body volume; no extra gameplay state."
+    },
+    {
+      "artActionId": "aim_enter",
+      "label": "Entrée en visée du canon d’épaule",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "aim",
+        "rig"
+      ],
+      "trigger": "accepted false→true aiming transition, appropriate caster equipped",
+      "notes": "Native right-facing horizontal caster study; hands empty, blades retracted. Do not delay firing or cover bow/other weapons."
+    },
+    {
+      "artActionId": "aim_hold",
+      "label": "Maintien de visée du canon d’épaule",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "loop",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "aim",
+        "rig"
+      ],
+      "trigger": "aiming true with appropriate caster equipped",
+      "notes": "Independent body breathing; real aimAngle/cannon orientation and charge remain authoritative. This horizontal study does not cover all aim angles."
+    },
+    {
+      "artActionId": "aim_exit",
+      "label": "Sortie de visée du canon d’épaule",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "aim",
+        "rig"
+      ],
+      "trigger": "true→false aiming transition",
+      "notes": "Presentation can be interrupted by movement, firing, aim reentry; no simulation exit lock."
+    },
+    {
+      "artActionId": "canopy_attach",
+      "label": "Accrochage à la prise",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "canopyAttach",
+        "canopyFlexible"
+      ],
+      "trigger": "false→true player.climbing with reachable support, flexible-support study",
+      "notes": "Hands target world grip; no trunk/rope pixels baked into hero sheet."
+    },
+    {
+      "artActionId": "canopy_hold",
+      "label": "Maintien suspendu",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "loop",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "canopyAttach",
+        "canopyMotion"
+      ],
+      "trigger": "climbing && valid support && !canopySwing && near-zero vertical velocity",
+      "notes": "Sustained grip study, not climbing up/down replacement. World support and grip alignment remain external."
+    },
+    {
+      "artActionId": "canopy_release",
+      "label": "Lâcher de prise",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "canopyRelease",
+        "canopyJumpRelease"
+      ],
+      "trigger": "deliberate grip-release or accepted climb-jump presentation event",
+      "notes": "Forced exhaustion/fall may need abrupt release and should not wait for voluntary reach gesture."
+    },
+    {
+      "artActionId": "canopy_swing",
+      "label": "Balancement suspendu",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "loop",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "canopyFlexible",
+        "canopySwing",
+        "canopyMotion"
+      ],
+      "trigger": "player.climbing && player.canopySwing",
+      "notes": "Phase must derive from actual pendulum state, not independent free-run gameplay loop; review cycle does not move world actor."
+    },
+    {
+      "artActionId": "aerial_boost",
+      "label": "Impulsion aérienne",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "canopyJumpRelease"
+      ],
+      "trigger": "applyPlayerJump accepted result.jump==='boost'",
+      "notes": "aerialBoostUsed is persistent until reset; trigger accepted event, not boolean true every frame. No jetpack invented."
+    },
+    {
+      "artActionId": "scan",
+      "label": "Balayage au biomask",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "scan"
+      ],
+      "trigger": "playerScan accepted after cooldown/energy gates",
+      "notes": "Gesture is artistic supporting cue; existing pulse and resource effects occur immediately."
+    },
+    {
+      "artActionId": "cloak_on",
+      "label": "Activation du camouflage",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "manualCloak",
+        "cloakPresentation"
+      ],
+      "trigger": "accepted manual cloak activation with energy>=20",
+      "notes": "No transparent fade burned into source hero; compositor controls effect. Do not wait for gesture to change cloaked."
+    },
+    {
+      "artActionId": "cloak_off",
+      "label": "Désactivation volontaire du camouflage",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "manualCloak",
+        "forcedDecloak",
+        "energyCloak"
+      ],
+      "trigger": "accepted manual cloak deactivation only",
+      "notes": "Do not bind this voluntary wrist-button gesture to every forceDecloak caused by damage/heal/exhaustion."
+    },
+    {
+      "artActionId": "heal",
+      "label": "Soin au Medicomp",
+      "plannedDrawings": 32,
+      "sourceAtlases": 2,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "heal"
+      ],
+      "trigger": "playerHeal accepted after nonfull HP, charge, cooldown gates",
+      "notes": "Authored preparation/treatment/return is presentation only; recovery already immediate, no root/input lock."
+    },
+    {
+      "artActionId": "second_wind",
+      "label": "Reprise d’urgence — Second Wind",
+      "plannedDrawings": 32,
+      "sourceAtlases": 2,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "secondWind"
+      ],
+      "trigger": "hurtPlayer enters !secondWindUsed && medicomps>0 lethal branch",
+      "notes": "Use accepted emergency event; HP and invulnerability immediate. Kneel/rise study must yield to locomotion; no new incapacitation time."
+    },
+    {
+      "artActionId": "hurt",
+      "label": "Réaction à l’impact",
+      "plannedDrawings": 16,
+      "sourceAtlases": 1,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "damage"
+      ],
+      "trigger": "accepted nonlethal hurtPlayer damage after guards",
+      "notes": "Do not turn .55 invulnerability into .55 hitstun or change control timing; short optional presentation cue."
+    },
+    {
+      "artActionId": "death",
+      "label": "Chute et mort",
+      "plannedDrawings": 32,
+      "sourceAtlases": 2,
+      "playback": "one-shot",
+      "engineEnumAdded": false,
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "presentationClock": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+      "evidenceKeys": [
+        "death"
+      ],
+      "trigger": "transition to phase==='dead' without Second Wind",
+      "notes": "Death pauses simulation immediately. Future playback requires separate presentation clock; hold last prone pose, never loop or revive through clip."
+    }
+  ],
+  "constraints": [
+    "These labels are art action IDs, not existing engine enum names.",
+    "304 planned new source drawings; duplicates, repeated playback and reversed frames are not new drawings.",
+    "Remain draft with no automatic roster or gameplay binding.",
+    "No changes to simulation, health/energy/cooldowns, input locks or death pause.",
+    "Whole-body equipped reference is not customizable modular anatomy/gear implementation.",
+    "No left-facing coverage claim and no silent mirror of asymmetrical armor.",
+    "No invulnerable/mandatory treatment durations inferred from 16fps review.",
+    "Selected sources cover portions of seven prior remaining families; all 16 families still have integration or source scope. Do not claim all game animations finished."
+  ],
+  "sources": [
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "gitBlob": "fad1d809852c32052ac22106e534363d13df076a",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx"
+    },
+    {
+      "path": "app/game/systems/huntSystems.ts",
+      "gitBlob": "ae6b7b323e1e5b6a5f37b8a25de0330bff2dcda3",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/huntSystems.ts"
+    },
+    {
+      "path": "app/game/systems/canopyTraversalV112.ts",
+      "gitBlob": "b583111f659ad2fe31b16fcc78c45dc23d4eac0f",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts"
+    },
+    {
+      "path": "app/game/hunterSpriteAtlas.ts",
+      "gitBlob": "c0bb6bac7b0e1b17dde7229cd8a88642f6a2544e",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/hunterSpriteAtlas.ts"
+    },
+    {
+      "path": "docs/expedition-animation-contract-v36.md",
+      "gitBlob": "635f8211c38252acbc7e146320282229702efabf",
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/docs/expedition-animation-contract-v36.md"
+    }
+  ]
+}

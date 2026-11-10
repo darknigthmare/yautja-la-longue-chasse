@@ -1,0 +1,497 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-heal-support-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "heal-support-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "heal_a",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/heal_a.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "heal_b",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/heal_b.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "heal_action",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "heal_a",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_a",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "heal_b",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            306.5
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

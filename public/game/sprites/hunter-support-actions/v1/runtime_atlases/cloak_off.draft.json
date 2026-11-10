@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-cloak_off-support-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "cloak_off-support-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "cloak_off",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/cloak_off.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "cloak_off_action",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "cloak_off",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

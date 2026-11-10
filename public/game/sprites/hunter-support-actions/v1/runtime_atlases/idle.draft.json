@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-idle-support-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "idle-support-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "idle",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "idle_loop",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            301.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            301.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            301.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            301.5
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

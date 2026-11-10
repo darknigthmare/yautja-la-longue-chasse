@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-aim_hold-support-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "aim_hold-support-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "aim_hold",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/aim_hold.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "aim_hold_loop",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "aim_hold",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

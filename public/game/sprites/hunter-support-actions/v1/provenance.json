@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "artisticStatus": "draft",
+  "sourceDrawingCount": 304,
+  "sourceAtlases": [
+    {
+      "id": "idle",
+      "sourceSha256": "fd062eb0c7a680e8305030f51f258923c974a3a030aa1022e64c5c8642de054f",
+      "generationFilename": "exec-f61ad8a5-bfbc-49f6-8bac-5be68b78fdcd.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/idle"
+    },
+    {
+      "id": "aim_enter",
+      "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86",
+      "generationFilename": "exec-1b39707e-1aa8-409d-af27-ec79ec6a6174.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/aim_enter"
+    },
+    {
+      "id": "aim_hold",
+      "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302",
+      "generationFilename": "exec-8fdeb4ff-9820-451a-9f44-c530c9007907.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/aim_hold"
+    },
+    {
+      "id": "aim_exit",
+      "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55",
+      "generationFilename": "exec-e740c02d-58e2-4853-8380-4458200eb385.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/aim_exit"
+    },
+    {
+      "id": "canopy_attach",
+      "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab",
+      "generationFilename": "exec-08b5db4c-9ea3-4dfe-8f1b-6ac47ae9c770.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/canopy_attach"
+    },
+    {
+      "id": "canopy_hold",
+      "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148",
+      "generationFilename": "exec-cfe8ee9d-425a-48d8-91c8-5a515a611f1c.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/canopy_hold"
+    },
+    {
+      "id": "canopy_release",
+      "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6",
+      "generationFilename": "exec-33b6dcb7-c7a0-4e61-be4b-b23727699680.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/canopy_release"
+    },
+    {
+      "id": "canopy_swing",
+      "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46",
+      "generationFilename": "exec-5608c639-aae0-4e95-93b8-06f033e756f9.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/canopy_swing"
+    },
+    {
+      "id": "aerial_boost",
+      "sourceSha256": "c870f43aaaf45ffea681297b653563890658946bc04d5642e100a8dac690de3d",
+      "generationFilename": "exec-af4d0d8d-7024-4e09-b6db-91a3504947d9.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/aerial_boost"
+    },
+    {
+      "id": "scan",
+      "sourceSha256": "7eaab576eba5f9a02760e31474fac981869f00cd1a25a57b038f71be939b3887",
+      "generationFilename": "exec-84470f84-afe4-48a3-839b-677bd3f17ca9.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/scan"
+    },
+    {
+      "id": "cloak_on",
+      "sourceSha256": "8c5645194a12137c1c46815e3ccc076aab8acdaf3b5d90de28a4e7817949ae6f",
+      "generationFilename": "exec-832e4321-0376-47b7-924a-34d876c5fa33.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/cloak_on"
+    },
+    {
+      "id": "cloak_off",
+      "sourceSha256": "fadfd4a17e3d5d9482e8cb92261d83c2da960deab08636e0fc62dca6b6cd99f8",
+      "generationFilename": "exec-335de679-63a6-4e14-b308-7722dc0b3164.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/cloak_off"
+    },
+    {
+      "id": "heal_a",
+      "sourceSha256": "dcb1b881b2d76ac31d3c182e49aa97ceb504e5099d1af7e66a4f24d7072b8d04",
+      "generationFilename": "exec-02c595a0-9c15-4943-a42c-b83bd79cf1a5.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/heal_a"
+    },
+    {
+      "id": "heal_b",
+      "sourceSha256": "c5c921a00c98eda2cbacb7ef33c0a905ffee44a26070d3d38c4922c0fb0c74c0",
+      "generationFilename": "exec-0326c80e-d834-4a6a-abfd-8d82fd7bf59e.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/heal_b"
+    },
+    {
+      "id": "second_wind_a",
+      "sourceSha256": "f9ec1224681d88cc4bc7da0724c3fac215686ebe911f4070ba7ac3fcd1657162",
+      "generationFilename": "exec-0715a860-669a-4d6c-ac18-33b4c80f0070.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/second_wind_a"
+    },
+    {
+      "id": "second_wind_b",
+      "sourceSha256": "513664779cad09a3e82aa2b905d08b454b9938a95a3a7f02253ccf1287248be8",
+      "generationFilename": "exec-4868a293-75e9-4dfa-8561-a8a050b56f94.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/second_wind_b"
+    },
+    {
+      "id": "hurt",
+      "sourceSha256": "c202b4a78ae0f10d706ff23957fc215cdcc75025cdeb1a50173f5651abd3a1db",
+      "generationFilename": "exec-ef9c593e-d8bc-4550-a092-e0314e8362fe.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/hurt"
+    },
+    {
+      "id": "death_a",
+      "sourceSha256": "7ffad389391a316f5e223024d750eef1ccc32f3cfe32a85c7eee39cd10cc2bde",
+      "generationFilename": "exec-8642ddb1-6ed5-4dfa-9f39-3b85aaf322c0.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/death_a"
+    },
+    {
+      "id": "death_b",
+      "sourceSha256": "eef4bf450fb6f4ad14f4a53924450638015a7439df7c65539daf56f92c41903a",
+      "generationFilename": "exec-e5169717-774a-4ba0-b167-5f454b796fdc.png",
+      "generator": "image_gen",
+      "promptRef": "prompts.json#/clips/death_b"
+    }
+  ],
+  "operations": [
+    "4x4 row-major exact RGBA cropping",
+    "Transparent right/bottom padding where rounded source grid widths differ",
+    "Exact RGBA copy into atlas with 2px transparent guards"
+  ],
+  "sourceReadOnly": true
+}

@@ -1,0 +1,1410 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0",
+  "packId": "hunter-support-actions",
+  "title": "Survie, équipement et canopée",
+  "characterId": "reference-yautja",
+  "publicBase": "/game/sprites/hunter-support-actions/v1",
+  "artisticStatus": "draft",
+  "facing": "right",
+  "facingNotes": "Sources orientées vers la droite. L’équipement asymétrique demande une production et une revue propres pour le côté gauche.",
+  "generator": "image_gen",
+  "framesPerClip": 16,
+  "expectedClipCount": 19,
+  "expectedSourceFrameCount": 304,
+  "preview": {
+    "previewLoopRepeats": 2
+  },
+  "actions": [
+    {
+      "id": "idle",
+      "label": "Repos vigilant",
+      "kind": "loop",
+      "category": "survie",
+      "variant": "masked-reference",
+      "phases": {
+        "loop": {
+          "clips": [
+            "idle"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "rig",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 1093,
+            "endLine": 1158,
+            "claim": "Existing render chooses extract/climb/jump/fall/run/idle and passes aimAngle and recoil into generic joint rig; no selected whole-body source clips.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158"
+          }
+        ],
+        "enginePredicate": "grounded && !climbing && abs(velocityX)<=24, with higher priority actions absent",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Hold baseline and body volume; no extra gameplay state.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "aim_enter",
+      "label": "Mise en visée",
+      "kind": "one-shot",
+      "category": "equipement",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "aim_enter"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "aim",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8135,
+            "endLine": 8213,
+            "claim": "Aiming is held input; weapon charge and aimAngle are independent real state, no aim entry/exit timer.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8135-L8213"
+          },
+          {
+            "key": "rig",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 1093,
+            "endLine": 1158,
+            "claim": "Existing render chooses extract/climb/jump/fall/run/idle and passes aimAngle and recoil into generic joint rig; no selected whole-body source clips.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158"
+          }
+        ],
+        "enginePredicate": "accepted false→true aiming transition, appropriate caster equipped",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Native right-facing horizontal caster study; hands empty, blades retracted. Do not delay firing or cover bow/other weapons.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8135-L8213",
+            "startLine": 8135,
+            "endLine": 8213
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "aim_hold",
+      "label": "Visée maintenue",
+      "kind": "loop",
+      "category": "equipement",
+      "variant": "masked-reference",
+      "phases": {
+        "loop": {
+          "clips": [
+            "aim_hold"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "aim",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8135,
+            "endLine": 8213,
+            "claim": "Aiming is held input; weapon charge and aimAngle are independent real state, no aim entry/exit timer.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8135-L8213"
+          },
+          {
+            "key": "rig",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 1093,
+            "endLine": 1158,
+            "claim": "Existing render chooses extract/climb/jump/fall/run/idle and passes aimAngle and recoil into generic joint rig; no selected whole-body source clips.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158"
+          }
+        ],
+        "enginePredicate": "aiming true with appropriate caster equipped",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Independent body breathing; real aimAngle/cannon orientation and charge remain authoritative. This horizontal study does not cover all aim angles.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8135-L8213",
+            "startLine": 8135,
+            "endLine": 8213
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "aim_exit",
+      "label": "Fin de visée",
+      "kind": "one-shot",
+      "category": "equipement",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "aim_exit"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "aim",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8135,
+            "endLine": 8213,
+            "claim": "Aiming is held input; weapon charge and aimAngle are independent real state, no aim entry/exit timer.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8135-L8213"
+          },
+          {
+            "key": "rig",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 1093,
+            "endLine": 1158,
+            "claim": "Existing render chooses extract/climb/jump/fall/run/idle and passes aimAngle and recoil into generic joint rig; no selected whole-body source clips.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158"
+          }
+        ],
+        "enginePredicate": "true→false aiming transition",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Presentation can be interrupted by movement, firing, aim reentry; no simulation exit lock.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8135-L8213",
+            "startLine": 8135,
+            "endLine": 8213
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "canopy_attach",
+      "label": "Accroche en canopée",
+      "kind": "one-shot",
+      "category": "canopee",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "canopy_attach"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "canopyAttach",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8544,
+            "endLine": 8591,
+            "claim": "Grip attaches to reachable support and may enter swing. Accepted support/climbing transition is the actual event.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8544-L8591"
+          },
+          {
+            "key": "canopyFlexible",
+            "path": "app/game/systems/canopyTraversalV112.ts",
+            "startLine": 23,
+            "endLine": 24,
+            "claim": "Swing supports are vine, rope or chain.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L23-L24"
+          }
+        ],
+        "enginePredicate": "false→true player.climbing with reachable support, flexible-support study",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Hands target world grip; no trunk/rope pixels baked into hero sheet.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8544-L8591",
+            "startLine": 8544,
+            "endLine": 8591
+          },
+          {
+            "path": "app/game/systems/canopyTraversalV112.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L23-L24",
+            "startLine": 23,
+            "endLine": 24
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "canopy_hold",
+      "label": "Suspension en canopée",
+      "kind": "loop",
+      "category": "canopee",
+      "variant": "masked-reference",
+      "phases": {
+        "loop": {
+          "clips": [
+            "canopy_hold"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "canopyAttach",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8544,
+            "endLine": 8591,
+            "claim": "Grip attaches to reachable support and may enter swing. Accepted support/climbing transition is the actual event.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8544-L8591"
+          },
+          {
+            "key": "canopyMotion",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8733,
+            "endLine": 8779,
+            "claim": "Swing updates real physics; otherwise vertical climb and stamina update independently.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8733-L8779"
+          }
+        ],
+        "enginePredicate": "climbing && valid support && !canopySwing && near-zero vertical velocity",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Sustained grip study, not climbing up/down replacement. World support and grip alignment remain external.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8544-L8591",
+            "startLine": 8544,
+            "endLine": 8591
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8733-L8779",
+            "startLine": 8733,
+            "endLine": 8779
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "canopy_release",
+      "label": "Lâcher de canopée",
+      "kind": "one-shot",
+      "category": "canopee",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "canopy_release"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "canopyRelease",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8554,
+            "endLine": 8570,
+            "claim": "Manual grip release, invalid support or exhausted stamina clears climb state; only manual release inherits explicit swing velocity branch here.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8554-L8570"
+          },
+          {
+            "key": "canopyJumpRelease",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8235,
+            "endLine": 8266,
+            "claim": "Climb jump releases support and inherits swing velocity or rigid/flexible launch velocity; boosted jump is an accepted event.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8235-L8266"
+          }
+        ],
+        "enginePredicate": "deliberate grip-release or accepted climb-jump presentation event",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Forced exhaustion/fall may need abrupt release and should not wait for voluntary reach gesture.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8554-L8570",
+            "startLine": 8554,
+            "endLine": 8570
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8235-L8266",
+            "startLine": 8235,
+            "endLine": 8266
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "canopy_swing",
+      "label": "Balancement en canopée",
+      "kind": "loop",
+      "category": "canopee",
+      "variant": "masked-reference",
+      "phases": {
+        "loop": {
+          "clips": [
+            "canopy_swing"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "canopyFlexible",
+            "path": "app/game/systems/canopyTraversalV112.ts",
+            "startLine": 23,
+            "endLine": 24,
+            "claim": "Swing supports are vine, rope or chain.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L23-L24"
+          },
+          {
+            "key": "canopySwing",
+            "path": "app/game/systems/canopyTraversalV112.ts",
+            "startLine": 73,
+            "endLine": 142,
+            "claim": "Swing grip point, angle, length and angular velocity own world motion. Art must not bake a fixed branch/rope or double world translation.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L73-L142"
+          },
+          {
+            "key": "canopyMotion",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8733,
+            "endLine": 8779,
+            "claim": "Swing updates real physics; otherwise vertical climb and stamina update independently.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8733-L8779"
+          }
+        ],
+        "enginePredicate": "player.climbing && player.canopySwing",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Phase must derive from actual pendulum state, not independent free-run gameplay loop; review cycle does not move world actor.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/systems/canopyTraversalV112.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L23-L24",
+            "startLine": 23,
+            "endLine": 24
+          },
+          {
+            "path": "app/game/systems/canopyTraversalV112.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/systems/canopyTraversalV112.ts#L73-L142",
+            "startLine": 73,
+            "endLine": 142
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8733-L8779",
+            "startLine": 8733,
+            "endLine": 8779
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "aerial_boost",
+      "label": "Impulsion aérienne",
+      "kind": "one-shot",
+      "category": "canopee",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "aerial_boost"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "canopyJumpRelease",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8235,
+            "endLine": 8266,
+            "claim": "Climb jump releases support and inherits swing velocity or rigid/flexible launch velocity; boosted jump is an accepted event.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8235-L8266"
+          }
+        ],
+        "enginePredicate": "applyPlayerJump accepted result.jump==='boost'",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "aerialBoostUsed is persistent until reset; trigger accepted event, not boolean true every frame. No jetpack invented.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8235-L8266",
+            "startLine": 8235,
+            "endLine": 8266
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "scan",
+      "label": "Analyse du terrain",
+      "kind": "one-shot",
+      "category": "equipement",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "scan"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "scan",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 7624,
+            "endLine": 7630,
+            "claim": "Accepted scan immediately costs 8 energy, sets .7 cooldown, .55 pulse; rejected input does not trigger accepted event.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L7624-L7630"
+          }
+        ],
+        "enginePredicate": "playerScan accepted after cooldown/energy gates",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Gesture is artistic supporting cue; existing pulse and resource effects occur immediately.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L7624-L7630",
+            "startLine": 7624,
+            "endLine": 7630
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "cloak_on",
+      "label": "Activation du camouflage",
+      "kind": "one-shot",
+      "category": "equipement",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "cloak_on"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "manualCloak",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8714,
+            "endLine": 8724,
+            "claim": "Manual cloak toggle: immediately disable if active; enable only energy>=20.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8714-L8724"
+          },
+          {
+            "key": "cloakPresentation",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 5939,
+            "endLine": 5941,
+            "claim": "Cloak alpha applied by rendering; keep separate from authored gesture pixels.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L5939-L5941"
+          }
+        ],
+        "enginePredicate": "accepted manual cloak activation with energy>=20",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "No transparent fade burned into source hero; compositor controls effect. Do not wait for gesture to change cloaked.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8714-L8724",
+            "startLine": 8714,
+            "endLine": 8724
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L5939-L5941",
+            "startLine": 5939,
+            "endLine": 5941
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "cloak_off",
+      "label": "Désactivation du camouflage",
+      "kind": "one-shot",
+      "category": "equipement",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "cloak_off"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "manualCloak",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8714,
+            "endLine": 8724,
+            "claim": "Manual cloak toggle: immediately disable if active; enable only energy>=20.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8714-L8724"
+          },
+          {
+            "key": "forcedDecloak",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 2893,
+            "endLine": 2897,
+            "claim": "forceDecloak clears boolean and queues cloak-off; not necessarily a voluntary wrist gesture.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L2893-L2897"
+          },
+          {
+            "key": "energyCloak",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 8857,
+            "endLine": 8862,
+            "claim": "Energy exhaustion forces decloak; do not play voluntary off gesture on every false transition.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8857-L8862"
+          }
+        ],
+        "enginePredicate": "accepted manual cloak deactivation only",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Do not bind this voluntary wrist-button gesture to every forceDecloak caused by damage/heal/exhaustion.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8714-L8724",
+            "startLine": 8714,
+            "endLine": 8724
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L2893-L2897",
+            "startLine": 2893,
+            "endLine": 2897
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L8857-L8862",
+            "startLine": 8857,
+            "endLine": 8862
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "heal",
+      "label": "Soin de terrain",
+      "kind": "one-shot",
+      "category": "survie",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "heal_a",
+            "heal_b"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "heal",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 7693,
+            "endLine": 7715,
+            "claim": "Accepted Medicomp consumes one, heals .46 maxHP immediately, cooldown 2, decloaks; no treatment simulation phase.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L7693-L7715"
+          }
+        ],
+        "enginePredicate": "playerHeal accepted after nonfull HP, charge, cooldown gates",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Authored preparation/treatment/return is presentation only; recovery already immediate, no root/input lock.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L7693-L7715",
+            "startLine": 7693,
+            "endLine": 7715
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "second_wind",
+      "label": "Second souffle",
+      "kind": "one-shot",
+      "category": "survie",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "second_wind_a",
+            "second_wind_b"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "secondWind",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 6630,
+            "endLine": 6645,
+            "claim": "First lethal hit with Medicomp consumes one, sets secondWindUsed, restores .30 maxHP, energy floor .20 max, invulnerability 2 instantly.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6630-L6645"
+          }
+        ],
+        "enginePredicate": "hurtPlayer enters !secondWindUsed && medicomps>0 lethal branch",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Use accepted emergency event; HP and invulnerability immediate. Kneel/rise study must yield to locomotion; no new incapacitation time.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6630-L6645",
+            "startLine": 6630,
+            "endLine": 6645
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "hurt",
+      "label": "Réaction à un impact",
+      "kind": "one-shot",
+      "category": "survie",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "hurt"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "damage",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 6600,
+            "endLine": 6630,
+            "claim": "Accepted damage after guard conditions reduces HP, sets .55 invulnerability, decloaks; no existing stagger timer.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6600-L6630"
+          }
+        ],
+        "enginePredicate": "accepted nonlethal hurtPlayer damage after guards",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Do not turn .55 invulnerability into .55 hitstun or change control timing; short optional presentation cue.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6600-L6630",
+            "startLine": 6600,
+            "endLine": 6630
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    },
+    {
+      "id": "death",
+      "label": "Chute mortelle",
+      "kind": "one-shot",
+      "category": "survie",
+      "variant": "masked-reference",
+      "phases": {
+        "action": {
+          "clips": [
+            "death_a",
+            "death_b"
+          ],
+          "order": "forward"
+        }
+      },
+      "previewLoopRepeats": 2,
+      "gameCoverage": {
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": "hunt_support_state_map.json",
+        "evidence": [
+          {
+            "key": "death",
+            "path": "app/game/HuntCanvas.tsx",
+            "startLine": 6648,
+            "endLine": 6652,
+            "claim": "Death sets HP0, phase dead, paused true immediately. Animation cannot rely on advancing simulation elapsed.",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6648-L6652"
+          }
+        ],
+        "enginePredicate": "transition to phase==='dead' without Second Wind",
+        "artIdIsNewEngineEnum": false,
+        "engineEnumAdded": false,
+        "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+        "currentPresentation": "generic-layered-rig; no selected action-specific whole-body source clip",
+        "presentationClockNote": "new presentation-only cursor or actual state phase; preview FPS is not simulation time",
+        "notes": "Death pauses simulation immediately. Future playback requires separate presentation clock; hold last prone pose, never loop or revive through clip.",
+        "anchor": "Fixed source-cell root is a layout assumption; authored motion is retained.",
+        "hookStatus": "draft-art-only",
+        "runtimeBinding": null
+      },
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/app/game/HuntCanvas.tsx#L6648-L6652",
+            "startLine": 6648,
+            "endLine": 6652
+          }
+        ],
+        "parameters": null,
+        "retimingApplied": false,
+        "reviewFpsIsGameplayDuration": false
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "idle",
+      "label": "Repos vigilant",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/idle.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-f61ad8a5-bfbc-49f6-8bac-5be68b78fdcd.png",
+      "promptRef": "prompts.json#/clips/idle",
+      "sourceSha256": "fd062eb0c7a680e8305030f51f258923c974a3a030aa1022e64c5c8642de054f"
+    },
+    {
+      "id": "aim_enter",
+      "label": "Mise en visée",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/aim_enter.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-1b39707e-1aa8-409d-af27-ec79ec6a6174.png",
+      "promptRef": "prompts.json#/clips/aim_enter",
+      "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86"
+    },
+    {
+      "id": "aim_hold",
+      "label": "Visée maintenue",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/aim_hold.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-8fdeb4ff-9820-451a-9f44-c530c9007907.png",
+      "promptRef": "prompts.json#/clips/aim_hold",
+      "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302"
+    },
+    {
+      "id": "aim_exit",
+      "label": "Fin de visée",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/aim_exit.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-e740c02d-58e2-4853-8380-4458200eb385.png",
+      "promptRef": "prompts.json#/clips/aim_exit",
+      "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55"
+    },
+    {
+      "id": "canopy_attach",
+      "label": "Accroche en canopée",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/canopy_attach.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.55
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-08b5db4c-9ea3-4dfe-8f1b-6ac47ae9c770.png",
+      "promptRef": "prompts.json#/clips/canopy_attach",
+      "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab"
+    },
+    {
+      "id": "canopy_hold",
+      "label": "Suspension en canopée",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/canopy_hold.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.55
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-cfe8ee9d-425a-48d8-91c8-5a515a611f1c.png",
+      "promptRef": "prompts.json#/clips/canopy_hold",
+      "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148"
+    },
+    {
+      "id": "canopy_release",
+      "label": "Lâcher de canopée",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/canopy_release.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.55
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-33b6dcb7-c7a0-4e61-be4b-b23727699680.png",
+      "promptRef": "prompts.json#/clips/canopy_release",
+      "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6"
+    },
+    {
+      "id": "canopy_swing",
+      "label": "Balancement en canopée",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/canopy_swing.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.55
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-5608c639-aae0-4e95-93b8-06f033e756f9.png",
+      "promptRef": "prompts.json#/clips/canopy_swing",
+      "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46"
+    },
+    {
+      "id": "aerial_boost",
+      "label": "Impulsion aérienne",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/aerial_boost.png",
+      "fps": 16,
+      "anchorPolicy": "fixed-root",
+      "anchorNormalized": [
+        0.5,
+        0.55
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-af4d0d8d-7024-4e09-b6db-91a3504947d9.png",
+      "promptRef": "prompts.json#/clips/aerial_boost",
+      "sourceSha256": "c870f43aaaf45ffea681297b653563890658946bc04d5642e100a8dac690de3d"
+    },
+    {
+      "id": "scan",
+      "label": "Analyse du terrain",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/scan.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-84470f84-afe4-48a3-839b-677bd3f17ca9.png",
+      "promptRef": "prompts.json#/clips/scan",
+      "sourceSha256": "7eaab576eba5f9a02760e31474fac981869f00cd1a25a57b038f71be939b3887"
+    },
+    {
+      "id": "cloak_on",
+      "label": "Activation du camouflage",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/cloak_on.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-832e4321-0376-47b7-924a-34d876c5fa33.png",
+      "promptRef": "prompts.json#/clips/cloak_on",
+      "sourceSha256": "8c5645194a12137c1c46815e3ccc076aab8acdaf3b5d90de28a4e7817949ae6f"
+    },
+    {
+      "id": "cloak_off",
+      "label": "Désactivation du camouflage",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/cloak_off.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-335de679-63a6-4e14-b308-7722dc0b3164.png",
+      "promptRef": "prompts.json#/clips/cloak_off",
+      "sourceSha256": "fadfd4a17e3d5d9482e8cb92261d83c2da960deab08636e0fc62dca6b6cd99f8"
+    },
+    {
+      "id": "heal_a",
+      "label": "Soin de terrain — A",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/heal_a.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-02c595a0-9c15-4943-a42c-b83bd79cf1a5.png",
+      "promptRef": "prompts.json#/clips/heal_a",
+      "sourceSha256": "dcb1b881b2d76ac31d3c182e49aa97ceb504e5099d1af7e66a4f24d7072b8d04"
+    },
+    {
+      "id": "heal_b",
+      "label": "Soin de terrain — B",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/heal_b.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-0326c80e-d834-4a6a-abfd-8d82fd7bf59e.png",
+      "promptRef": "prompts.json#/clips/heal_b",
+      "sourceSha256": "c5c921a00c98eda2cbacb7ef33c0a905ffee44a26070d3d38c4922c0fb0c74c0"
+    },
+    {
+      "id": "second_wind_a",
+      "label": "Second souffle — A",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/second_wind_a.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-0715a860-669a-4d6c-ac18-33b4c80f0070.png",
+      "promptRef": "prompts.json#/clips/second_wind_a",
+      "sourceSha256": "f9ec1224681d88cc4bc7da0724c3fac215686ebe911f4070ba7ac3fcd1657162"
+    },
+    {
+      "id": "second_wind_b",
+      "label": "Second souffle — B",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/second_wind_b.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-4868a293-75e9-4dfa-8561-a8a050b56f94.png",
+      "promptRef": "prompts.json#/clips/second_wind_b",
+      "sourceSha256": "513664779cad09a3e82aa2b905d08b454b9938a95a3a7f02253ccf1287248be8"
+    },
+    {
+      "id": "hurt",
+      "label": "Réaction à un impact",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/hurt.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-ef9c593e-d8bc-4550-a092-e0314e8362fe.png",
+      "promptRef": "prompts.json#/clips/hurt",
+      "sourceSha256": "c202b4a78ae0f10d706ff23957fc215cdcc75025cdeb1a50173f5651abd3a1db"
+    },
+    {
+      "id": "death_a",
+      "label": "Chute mortelle — A",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/death_a.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-8642ddb1-6ed5-4dfa-9f39-3b85aaf322c0.png",
+      "promptRef": "prompts.json#/clips/death_a",
+      "sourceSha256": "7ffad389391a316f5e223024d750eef1ccc32f3cfe32a85c7eee39cd10cc2bde"
+    },
+    {
+      "id": "death_b",
+      "label": "Chute mortelle — B",
+      "path": "../../../public/game/sprites/hunter-support-actions/v1/atlases/death_b.png",
+      "fps": 16,
+      "anchorPolicy": "measured",
+      "anchorNormalized": [
+        0.5,
+        0.9
+      ],
+      "generator": "image_gen",
+      "generationStatus": "generated-awaiting-art-review",
+      "generationFilename": "exec-e5169717-774a-4ba0-b167-5f454b796fdc.png",
+      "promptRef": "prompts.json#/clips/death_b",
+      "sourceSha256": "eef4bf450fb6f4ad14f4a53924450638015a7439df7c65539daf56f92c41903a"
+    }
+  ],
+  "coverageAudit": {
+    "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+    "source": "hunt_support_state_map.json",
+    "runtimeBinding": null,
+    "gameplayChanged": false
+  },
+  "anchorMeasurementsPath": "../../../public/game/sprites/hunter-support-actions/v1/anchor_measurements.json",
+  "floorRegistration": {
+    "status": "adopted-for-draft-review",
+    "candidateFile": "floor_anchor_candidates.json",
+    "adoptedCandidateSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+    "targetY": 302.5,
+    "decision": "Root inspected floor-contact-samples.png and ab-seams-floor-review.png; approved metadata-only Y registration of fourteen grounded pages.",
+    "humanArtisticApproval": false
+  }
+}
