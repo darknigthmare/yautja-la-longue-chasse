@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "artisticStatus": "draft",
+  "clips": {
+    "combo_finisher_b": {
+      "sourceSha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62",
+      "method": "constant-page-calibration",
+      "target": {
+        "x": 157,
+        "y": 282.6
+      },
+      "notes": "A single page-origin translation derived from an inspected A16/B01 boundary. This is a constant page calibration, not an anatomical or per-frame foot measurement. All authored internal movement, source pixels and scale are preserved.",
+      "registration": {
+        "method": "constant-page-calibration",
+        "drawOffset": {
+          "x": 20.861091636008922,
+          "y": 4
+        },
+        "applyTo": "All 16 frames once",
+        "referenceSource": {
+          "clip": "combo_finisher_a",
+          "number": 16,
+          "sourceSha256": "fbcd7a34e252654e4ea771c2242cadf7bdd3c0495cede63f826cba38fb1053b3"
+        },
+        "sourceFrame": 1,
+        "basis": "Raw-cell coordinates, alpha>=128, bottom8-row two-foot candidate centroids; compare A16 to B01",
+        "observations": {
+          "A16": {
+            "midpointX": 156.4098473963776,
+            "floorY": 303
+          },
+          "B01": {
+            "midpointX": 135.54875576036866,
+            "floorY": 299
+          }
+        },
+        "evidence": "combo-finisher-b-corrected-qa.json",
+        "review": "combo-finisher-b-corrected-review.md",
+        "residualSeam": null,
+        "sourcePixelsChanged": false,
+        "individualFrameMovementChanged": false,
+        "scaleChanged": false,
+        "artisticStatus": "draft"
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 136.13890836399108,
+            "y": 278.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        }
+      ]
+    },
+    "heavy_strike_b": {
+      "sourceSha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3",
+      "method": "constant-page-calibration",
+      "target": {
+        "x": 157,
+        "y": 282.6
+      },
+      "notes": "A single page-origin translation derived from an inspected A16/B01 boundary. This is a constant page calibration, not an anatomical or per-frame foot measurement. All authored internal movement, source pixels and scale are preserved.",
+      "registration": {
+        "method": "constant-page-calibration",
+        "drawOffset": {
+          "x": 0,
+          "y": -6
+        },
+        "applyTo": "All 16 frames once",
+        "referenceSource": {
+          "clip": "heavy_strike_a",
+          "number": 16,
+          "sourceSha256": "ab63427c92184a82acb2f6a0f0ec0931585133655d0940c76ab50ad958a6cdb9"
+        },
+        "sourceFrame": 1,
+        "basis": "A16 and corrected B01 boot contact regions at alpha>=128; exclude blade tip below footline. Back foot y292->298 and front foot y291->297.",
+        "observations": null,
+        "evidence": "batch-03-heavy-guard-qa.json",
+        "review": "batch-03-heavy-guard-review.md",
+        "residualSeam": "B has a more open stance and the rear boot flattens; no horizontal or scale correction is applied to conceal this visible pose change. Junction is not certified seamless.",
+        "sourcePixelsChanged": false,
+        "individualFrameMovementChanged": false,
+        "scaleChanged": false,
+        "artisticStatus": "draft"
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 288.6
+          },
+          "confidence": "page-origin-calibration-only-not-anatomical-registration"
+        }
+      ]
+    }
+  }
+}

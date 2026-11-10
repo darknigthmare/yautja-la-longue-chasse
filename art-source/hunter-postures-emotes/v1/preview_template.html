@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yautja · Postures, respirations et célébrations · V2.1</title>
+<style>
+:root{color-scheme:dark;font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0a100d;color:#e9efe6}*{box-sizing:border-box}body{margin:0}main{max-width:1240px;margin:auto;padding:28px 22px 40px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.17em;color:#b7cf7e;margin:0 0 10px}h1{font-size:clamp(26px,4vw,40px);line-height:1.13;letter-spacing:-.035em;margin:0 0 12px}.intro{max-width:880px;color:#aebcab;margin:0 0 22px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:20px;align-items:start}.panel{border:1px solid #364537;border-radius:16px;background:#121c15;overflow:hidden}.viewer{position:sticky;top:18px}.stage{min-height:540px;display:grid;place-items:center;padding:20px;background-color:#202a22;background-image:linear-gradient(45deg,#2a362d 25%,transparent 25%),linear-gradient(-45deg,#2a362d 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#2a362d 75%),linear-gradient(-45deg,transparent 75%,#2a362d 75%);background-size:32px 32px;background-position:0 0,0 16px,16px -16px,-16px 0}.stage[data-bg="dark"]{background:#09110b}.stage[data-bg="light"]{background:#e9ebe3}.stage[data-bg="green"]{background:#27432d}canvas{display:block;max-width:100%;max-height:540px;width:auto;height:auto}.caption{border-top:1px solid #364537;padding:14px 18px;display:grid;gap:5px}.caption span{font-size:12px;color:#aebcab}.controls{padding:20px}.selectors{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}label{display:block;font-size:12px;color:#b7c7b2;margin-bottom:6px}select,button,input{font:inherit}select{width:100%;border:1px solid #425440;border-radius:8px;background:#0b140d;color:#eaf1e6;padding:9px 10px;margin-bottom:15px;font-size:13px}button{border:1px solid #536845;border-radius:8px;background:#293d22;color:#eaf1e6;padding:9px 12px;cursor:pointer}button:hover{background:#3c552e}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #bedb8f;outline-offset:3px}.primary{background:#b8d48a;color:#14200e;font-weight:700}.primary:hover{background:#cce3a6}.buttons{display:flex;gap:8px;margin-bottom:16px}.buttons button:first-child{flex:1}.step-buttons{display:flex;gap:8px;margin:0 0 15px}.step-buttons button{flex:1}.range-label{display:flex;justify-content:space-between;gap:10px}input[type=range]{width:100%;accent-color:#bdd88d;margin:6px 0 14px}.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fact{background:#0b140d;border-radius:8px;padding:9px 12px}.fact small{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#92a58d;display:block}.fact strong{font-size:15px}.note,.footer{font-size:12px;color:#9aaf92}.note{margin:16px 0 0}.footer{margin:20px 0 0;max-width:1000px}.status{min-height:18px;font-size:12px;color:#bddb98}.error{color:#ffb69d}.kbd{font-family:monospace;background:#29392a;padding:1px 5px;border-radius:4px}details{margin-top:18px;font-size:12px;color:#9aaf92}summary{cursor:pointer}ul{padding-left:20px}@media(max-width:900px){.layout{grid-template-columns:1fr}.viewer{position:static}.stage{min-height:440px}.facts{grid-template-columns:repeat(4,1fr)}}@media(max-width:520px){main{padding:22px 13px}.stage{padding:12px;min-height:350px}.selectors{gap:0 10px}.controls{padding:16px}.facts{grid-template-columns:1fr 1fr}}
+.check-control{display:flex;align-items:center;gap:9px;margin:0 0 15px;font-size:13px;color:#eaf1e6}.check-control input{accent-color:#bdd88d}
+</style>
+</head>
+<body>
+<main>
+<p class="eyebrow">Yautja · The Long Hunt · V2.1</p>
+<h1>Postures, respirations & célébrations</h1>
+<p class="intro">Entrer dans une posture, tenir l’affût ou le geste, puis revenir. Le lecteur montre les dessins source et permet de contrôler chaque mouvement image par image, avec les maintiens animés et les sorties dédiées ou réversibles.</p>
+<div class="layout">
+<section class="panel viewer" aria-label="Aperçu de l’animation">
+<div class="stage" id="stage" data-bg="checker"><canvas id="sprite" width="420" height="420" aria-label="Animation de sprite Yautja"></canvas></div>
+<div class="caption"><strong id="clip-label">Chargement…</strong><span id="frame-label"></span></div>
+</section>
+<section class="panel controls" aria-label="Commandes de lecture">
+<div class="selectors">
+<div class="full"><label for="stance">Posture ou action</label><select id="stance"></select></div>
+<div class="full"><label for="mode">Séquence à inspecter</label><select id="mode"><option value="cycle">Entrée → maintien → sortie</option><option value="enter">Entrée uniquement</option><option value="idle">Maintien animé uniquement</option><option value="exit">Sortie uniquement</option><option value="stance">Posture fixe</option></select></div>
+<div><label for="hold-mode">Maintien</label><select id="hold-mode"><option value="idle">Animé</option><option value="fixed">Fixe — lecture V1</option></select></div>
+<div><label for="exit-mode">Sortie</label><select id="exit-mode"><option value="reversible">Réversible</option><option value="dedicated">Dédiée</option></select></div>
+<div class="full"><label for="idle-mode">Lecture du maintien animé</label><select id="idle-mode"><option value="pingpong">Aller-retour : 1 → 16 → 2</option><option value="forward">Sens direct : 1 → 16</option></select></div>
+</div>
+<div class="buttons"><button id="play" type="button" class="primary">Pause</button><button id="restart" type="button">Recommencer</button></div>
+<label class="range-label" for="position"><span>Position de lecture</span><span id="position-label"></span></label>
+<input id="position" type="range" min="0" max="0" value="0" step="1">
+<div class="step-buttons"><button id="previous" type="button">← Image</button><button id="next" type="button">Image →</button></div>
+<label class="range-label" for="speed"><span>Vitesse</span><span id="speed-label">1× · 16 / 10 i/s</span></label>
+<input id="speed" type="range" min="0.25" max="2" value="1" step="0.25">
+<label class="range-label" for="hold"><span>Boucles de maintien</span><span id="hold-label">1 boucle</span></label>
+<input id="hold" type="range" min="1" max="4" value="1" step="1">
+<label for="background">Fond de contrôle</label><select id="background"><option value="checker">Damier — transparence</option><option value="dark">Sombre</option><option value="light">Clair</option><option value="green">Vert forêt</option></select>
+<label class="check-control" for="stabilize"><input id="stabilize" type="checkbox" checked>Stabiliser les appuis</label>
+<div class="facts"><div class="fact"><small>Dessins du clip</small><strong id="count">—</strong></div><div class="fact"><small>PNG exporté</small><strong id="dimensions">—</strong></div><div class="fact"><small>Cadence source</small><strong id="clip-fps">—</strong></div><div class="fact"><small>Canal alpha</small><strong id="alpha">—</strong></div></div>
+<p class="note" id="join-note"></p>
+<p class="note">L’aller-retour utilise les mêmes 16 dessins : 30 positions de lecture en 3 secondes à 10 i/s. Les répétitions ne créent pas de nouveaux sprites. Aucun fondu ni interpolation de mouvement.</p>
+<p class="note"><span class="kbd">Espace</span> lecture / pause · <span class="kbd">←</span> <span class="kbd">→</span> inspection</p>
+<p class="status" id="status" role="status"></p>
+</section>
+</div>
+<p class="footer" id="summary"></p>
+<p class="footer">Les atlas générés séparément peuvent conserver des écarts de pose ou de proportions aux raccords. L’aller-retour évite la remise à zéro du maintien ; il ne corrige pas les différences entre atlas. Les décalages de lecture ajustent le placement, sans retoucher les PNG. L’intégration et la fluidité dans le jeu ne sont pas vérifiées : contrôler les appuis, les accessoires, les masques d’occlusion et les raccords dans le moteur cible.</p>
+<details><summary>Découpage et provenance</summary><p>Les planches source sont lues de gauche à droite puis de haut en bas, en grille 4 × 4. Les limites sont arrondies au pixel entier. Une marge transparente de zéro ou un pixel à droite/en bas uniformise les canevas ; les personnages ne sont pas agrandis. Les points d’ancrage n’affectent que la position d’affichage.</p><ul id="warnings"></ul></details>
+</main>
+<script id="sprite-data" type="application/json">__SPRITE_DATA__</script>
+<script>
+'use strict';
+const data = JSON.parse(document.getElementById('sprite-data').textContent);
+const $ = id => document.getElementById(id);
+const canvas = $('sprite'), context = canvas.getContext('2d');
+const clips = Object.fromEntries(data.clips.map(clip => [clip.id, clip]));
+const images = new Map();
+let sequence = [], index = 0, playing = true, accumulator = 0, lastTime = null;
+const speed = () => Number($('speed').value);
+const isOneShot = () => ['enter','exit'].includes($('mode').value);
+for (const action of data.actions) {const option = document.createElement('option'); option.value = action.id; option.textContent = action.label; $('stance').append(option);}
+function updateSequence() {
+  const stance = $('stance').value, mode = $('mode').value;
+  const plan = data.playbackSequences.stances[stance];
+  const reversible = $('exit-mode').value === 'reversible';
+  const repeats = Number($('hold').value);
+  const idle = $('idle-mode').value === 'pingpong' ? plan.idlePingPong : plan.idleForward;
+  const exit = reversible ? plan.exitReversible : plan.exitDedicated;
+  let selected;
+  if (mode === 'cycle') {
+    const holding = $('hold-mode').value === 'idle' ? Array.from({length: repeats}, () => idle).flat() : [{...plan.fixedHold[0], durationMs: 3000 * repeats}];
+    const rest = {clipId: `${stance}_${reversible ? 'enter' : 'exit'}`, index: reversible ? 0 : 15, durationMs: 500, role: 'rest'};
+    selected = [...plan.entry, ...holding, ...exit, rest];
+  } else if (mode === 'idle') selected = idle;
+  else if (mode === 'stance') selected = plan.fixedHold;
+  else selected = mode === 'enter' ? plan.entry : exit;
+  sequence = selected.map(step => ({...step, clip: clips[step.clipId]}));
+  index = 0; accumulator = 0; lastTime = null; $('position').max = sequence.length - 1;
+  $('join-note').textContent = reversible
+    ? ($('hold-mode').value === 'fixed' ? 'Avec le maintien fixe, la sortie réversible reprend les images d’entrée à l’envers : les dessins aux raccords sont identiques.' : 'La sortie réversible reprend l’entrée à l’envers. Les raccords avec le maintien animé, dessiné séparément, peuvent encore varier.')
+    : 'La sortie dédiée emploie 16 dessins distincts. Les décalages d’ancrage corrigent le placement, pas les différences de proportions ou de pose entre atlas.';
+  render();
+}
+function render() {
+  const step = sequence[index]; if (!step) return;
+  const clip = step.clip, image = images.get(clip.id); if (!image) return;
+  const w = data.preview.canvasWidth, h = data.preview.canvasHeight, p = data.preview.padding;
+  if (canvas.width !== w || canvas.height !== h) {canvas.width = w; canvas.height = h;}
+  context.clearRect(0, 0, w, h); context.imageSmoothingEnabled = false;
+  const frame = clip.frames[step.index], rect = frame.atlasRect;
+  const currentOffset = frame.drawOffset || {x:0,y:0};
+  const offset = $('stabilize').checked ? currentOffset : (frame.registration?.previousDrawOffset || currentOffset);
+  context.drawImage(image, rect.x, rect.y, rect.width, rect.height, p + offset.x, p + offset.y, rect.width, rect.height);
+  $('clip-label').textContent = step.role === 'fixed_hold' ? 'Posture fixe — dernière image d’entrée' : step.role === 'rest' ? 'Retour au départ' : step.role === 'exit_reversible' ? 'Sortie réversible — entrée relue à l’envers' : clip.label;
+  $('frame-label').textContent = `Image source ${String(step.index + 1).padStart(2,'0')} / ${clip.frameCount} · ligne ${Math.floor(step.index / 4) + 1}, colonne ${step.index % 4 + 1}`;
+  $('position').value = index; $('position-label').textContent = `${index + 1} / ${sequence.length}`;
+  $('count').textContent = clip.frameCount; $('dimensions').textContent = `${clip.frameWidth} × ${clip.frameHeight}`;
+  $('clip-fps').textContent = `${clip.fps} i/s`; $('alpha').textContent = clip.hasAlpha ? 'Présent' : 'Absent';
+  $('play').textContent = playing ? 'Pause' : (isOneShot() && index === sequence.length - 1 ? 'Rejouer' : 'Lecture');
+}
+function togglePlayback() {
+  if (!sequence.length) return;
+  if (!playing && isOneShot() && index === sequence.length - 1) index = 0;
+  playing = !playing; accumulator = 0; lastTime = null; render();
+}
+function restartPlayback() {index = 0; playing = true; accumulator = 0; lastTime = null; render();}
+function step(delta) {
+  playing = false; accumulator = 0; lastTime = null;
+  index = isOneShot() ? Math.max(0, Math.min(sequence.length - 1, index + delta)) : (index + delta + sequence.length) % sequence.length;
+  render();
+}
+function tick(time) {
+  if (lastTime === null) lastTime = time;
+  const elapsed = Math.min(time - lastTime, 250); lastTime = time;
+  if (playing && sequence.length > 1) {
+    accumulator += elapsed * speed(); let changed = false;
+    while (playing && accumulator >= sequence[index].durationMs) {
+      accumulator -= sequence[index].durationMs;
+      if (isOneShot() && index === sequence.length - 1) {playing = false; accumulator = 0; changed = true; break;}
+      index = (index + 1) % sequence.length; changed = true;
+    }
+    if (changed) render();
+  }
+  requestAnimationFrame(tick);
+}
+for (const id of ['stance','mode','hold-mode','exit-mode','idle-mode']) $(id).addEventListener('change', updateSequence);
+$('play').addEventListener('click', togglePlayback);
+$('restart').addEventListener('click', restartPlayback);
+$('previous').addEventListener('click', () => step(-1)); $('next').addEventListener('click', () => step(1));
+$('position').addEventListener('input', () => {playing = false; index = Number($('position').value); accumulator = 0; render();});
+$('speed').addEventListener('input', () => {$('speed-label').textContent = `${speed().toLocaleString('fr-FR')}× · ${data.recommendedFps * speed()} / ${data.recommendedIdleFps * speed()} i/s`;});
+$('hold').addEventListener('input', () => {$('hold-label').textContent = `${$('hold').value} boucle${Number($('hold').value) > 1 ? 's' : ''}`; updateSequence();});
+$('background').addEventListener('change', () => {$('stage').dataset.bg = $('background').value;});
+$('stabilize').addEventListener('change', render);
+window.addEventListener('keydown', event => {
+  if (['INPUT','SELECT','BUTTON'].includes(document.activeElement.tagName) || !sequence.length) return;
+  if (event.code === 'Space') {event.preventDefault(); togglePlayback();}
+  else if (event.code === 'ArrowLeft') {event.preventDefault(); step(-1);}
+  else if (event.code === 'ArrowRight') {event.preventDefault(); step(1);}
+});
+document.addEventListener('visibilitychange', () => {lastTime = null; accumulator = 0;});
+$('summary').textContent = `${data.actions.length} actions · ${data.clips.length} planches · ${data.frameCount} dessins source, dont ${data.preservedV1Frames} conservés de la V1 et ${data.newSourceFrameCount} nouveaux. Les ${data.staticStanceCount} copies de posture fixe et les répétitions de lecture ne s’ajoutent pas au nombre de dessins.`;
+for (const message of data.warnings || []) {const item = document.createElement('li'); item.textContent = message; $('warnings').append(item);}
+if (!(data.warnings || []).length) {const item = document.createElement('li'); item.textContent = 'Aucune cellule vide ni présence de pixels alpha ≥16 au bord signalée par les mesures. Les traces alpha de 1 à15 restent intactes. La cohérence visuelle nécessite aussi un contrôle des poses.'; $('warnings').append(item);}
+Promise.all(data.clips.map(clip => new Promise((resolve, reject) => {
+  const image = new Image(); image.onload = () => {images.set(clip.id, image); resolve();};
+  image.onerror = () => reject(new Error(`Planche introuvable : ${clip.atlas}. Garder le lecteur relatif à côté du dossier atlases, ou utiliser l’aperçu autonome.`));
+  image.src = clip.dataUrl || clip.atlas;
+}))).then(() => {updateSequence(); $('status').textContent = 'Toutes les planches sont chargées.'; requestAnimationFrame(tick);}).catch(error => {$('status').classList.add('error'); $('status').textContent = error.message;});
+</script>
+</body>
+</html>

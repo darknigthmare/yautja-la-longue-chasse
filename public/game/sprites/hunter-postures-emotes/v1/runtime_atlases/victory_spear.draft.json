@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-victory_spear-draft-v2",
+  "characterId": "reference-yautja",
+  "variantId": "victory_spear-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "victory_spear_enter",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_spear_enter.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "victory_spear_idle",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_spear_idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "victory_spear_exit",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_spear_exit.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "victory_spear_enter",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.767795,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.811397,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.292638,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.043631,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.862731,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.139834,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.532821,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.931195,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.584054,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.235806,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.433645,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.706866,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.414102,
+            284
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.143081,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            157.646801,
+            285
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "victory_spear_idle",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.849401,
+            285
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.695194,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.520754,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.140415,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.521982,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.983778,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.464054,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.955107,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.298674,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.028303,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.529714,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.393816,
+            285
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.408449,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            157.884656,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.27454,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.180989,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.27454,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            157.884656,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.408449,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.393816,
+            285
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.529714,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.028303,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.298674,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.955107,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.464054,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.983778,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.521982,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.140415,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.520754,
+            284
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_spear_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.695194,
+            284
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "victory_spear_exit",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            166.534046,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            161.781797,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            160.606526,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.563491,
+            297
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            166.938574,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            161.903876,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.415695,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.015813,
+            290
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            167.861614,
+            287
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            162.940805,
+            286
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            161.049797,
+            286
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.492475,
+            286
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            167.204799,
+            279
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            161.766029,
+            279
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.659906,
+            279
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_exit",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            154.209116,
+            279
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "victory_spear_exit_reversible",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            157.646801,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.143081,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.414102,
+            284
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.706866,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.433645,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.235806,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.584054,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.931195,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.532821,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.139834,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.862731,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.043631,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.292638,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.811397,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.767795,
+            285
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_spear_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            285
+          ],
+          "durationTicks": 5
+        }
+      ]
+    }
+  ]
+}

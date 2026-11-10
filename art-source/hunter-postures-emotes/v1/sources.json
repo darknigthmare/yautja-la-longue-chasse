@@ -1,0 +1,132 @@
+{
+  "expectedClipCount": 18,
+  "buildImportAtlases": true,
+  "baseManifestPath": "../../../public/game/sprites/hunter-postures-emotes/v1/v1_baseline.json",
+  "anchorMeasurementsPath": "../../../public/game/sprites/hunter-postures-emotes/v1/anchor_measurements.json",
+  "actionLabels": {
+    "branch": "Accroupi sur une branche",
+    "trunk_close": "Embuscade contre le tronc",
+    "trunk_open": "Affût ouvert sur le tronc",
+    "roar": "Provocation — rugissement",
+    "victory_spear": "Victoire — lance dressée",
+    "victory_trophy": "Victoire — trophée brandi"
+  },
+  "clips": [
+    {
+      "id": "branch_enter",
+      "label": "Accroupi sur branche — entrée",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/branch_enter.png",
+      "generationFilename": "branch_enter.png"
+    },
+    {
+      "id": "branch_idle",
+      "label": "Accroupi sur branche — maintien animé",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/branch_idle.png",
+      "generationFilename": "exec-1d981e9b-e953-4fd3-b5f4-ea9d2b376581.png"
+    },
+    {
+      "id": "branch_exit",
+      "label": "Accroupi sur branche — sortie",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/branch_exit.png",
+      "generationFilename": "branch_exit.png"
+    },
+    {
+      "id": "trunk_close_enter",
+      "label": "Affût serré au tronc — entrée",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/trunk_close_enter.png",
+      "generationFilename": "trunk_close_enter.png"
+    },
+    {
+      "id": "trunk_close_idle",
+      "label": "Affût serré au tronc — maintien animé",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/trunk_close_idle.png",
+      "generationFilename": "exec-cfe584de-4e08-4de2-9bfa-93ba200915e1.png"
+    },
+    {
+      "id": "trunk_close_exit",
+      "label": "Affût serré au tronc — sortie",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/trunk_close_exit.png",
+      "generationFilename": "trunk_close_exit.png"
+    },
+    {
+      "id": "trunk_open_enter",
+      "label": "Appui ouvert sur tronc — entrée",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/trunk_open_enter.png",
+      "generationFilename": "trunk_open_enter.png"
+    },
+    {
+      "id": "trunk_open_idle",
+      "label": "Appui ouvert sur tronc — maintien animé",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/trunk_open_idle.png",
+      "generationFilename": "exec-18343e7f-f0af-45f4-9d4a-dd5adb9dda12.png"
+    },
+    {
+      "id": "trunk_open_exit",
+      "label": "Appui ouvert sur tronc — sortie",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/trunk_open_exit.png",
+      "generationFilename": "trunk_open_exit.png"
+    },
+    {
+      "id": "roar_enter",
+      "label": "Provocation — rugissement — entrée",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/roar_enter.png",
+      "generationFilename": "exec-e82f8e12-e117-4ad5-8b34-3cfdd5a23585.png"
+    },
+    {
+      "id": "roar_idle",
+      "label": "Provocation — rugissement — maintien animé",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/roar_idle.png",
+      "generationFilename": "exec-e7b415bd-3553-4bb7-b6ef-9eb2685445b7.png"
+    },
+    {
+      "id": "roar_exit",
+      "label": "Provocation — rugissement — sortie",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/roar_exit.png",
+      "generationFilename": "exec-61a90165-8b61-4329-98fb-1c80ec267758.png"
+    },
+    {
+      "id": "victory_spear_enter",
+      "label": "Victoire — combistick levé — entrée",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/victory_spear_enter.png",
+      "generationFilename": "exec-13b4b358-e891-4d23-84d7-b42b919e9177.png"
+    },
+    {
+      "id": "victory_spear_idle",
+      "label": "Victoire — combistick levé — maintien animé",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/victory_spear_idle.png",
+      "generationFilename": "exec-aeecd4df-3dbe-421d-b41e-fac779d03ce4.png"
+    },
+    {
+      "id": "victory_spear_exit",
+      "label": "Victoire — combistick levé — sortie",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/victory_spear_exit.png",
+      "generationFilename": "exec-49b9efdf-d3e6-425a-b175-3e0fe887ac68.png"
+    },
+    {
+      "id": "victory_trophy_enter",
+      "label": "Victoire — présentation du trophée — entrée",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/victory_trophy_enter.png",
+      "generationFilename": "exec-759c3dc2-8e6e-4424-80fb-aa29bd4f0436.png"
+    },
+    {
+      "id": "victory_trophy_idle",
+      "label": "Victoire — présentation du trophée — maintien animé",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/victory_trophy_idle.png",
+      "generationFilename": "exec-70a6f321-89cb-4ec9-b909-6fa4443ae342.png"
+    },
+    {
+      "id": "victory_trophy_exit",
+      "label": "Victoire — présentation du trophée — sortie",
+      "path": "../../../public/game/sprites/hunter-postures-emotes/v1/atlases/victory_trophy_exit.png",
+      "generationFilename": "exec-c79d9dd1-a454-4141-9c8c-bd6c6f687f9f.png"
+    }
+  ],
+  "contactRegistration": {
+    "report": "contact_registration.json",
+    "correctedClips": 9,
+    "correctedFrames": 144,
+    "sourcePixelsUnchanged": true,
+    "verticalPivotsUnchanged": true,
+    "canonicalReference": "first entry frame per action"
+  }
+}

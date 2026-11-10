@@ -1,0 +1,103 @@
+{
+  "method": "Exact zero-based frames decoded from final encoded MP4s with ffmpeg; no re-render from sources or retiming.",
+  "files": [
+    {
+      "file": "Yautja_Survie_Equipement_Canopee_V1.mp4",
+      "sha256": "60e94eaf321c693d00b4767884a018c4068964562121d43d544de0100a31b512",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 1260,
+            "height": 562,
+            "r_frame_rate": "16/1",
+            "duration": "14.000000",
+            "nb_frames": "224"
+          }
+        ]
+      },
+      "extractedFrames": [
+        {
+          "zeroBasedFrame": 159,
+          "output": "main_01.png"
+        },
+        {
+          "zeroBasedFrame": 160,
+          "output": "main_02.png"
+        },
+        {
+          "zeroBasedFrame": 199,
+          "output": "main_03.png"
+        },
+        {
+          "zeroBasedFrame": 200,
+          "output": "main_04.png"
+        },
+        {
+          "zeroBasedFrame": 215,
+          "output": "main_05.png"
+        },
+        {
+          "zeroBasedFrame": 223,
+          "output": "main_06.png"
+        }
+      ],
+      "bytes": 2051839
+    },
+    {
+      "file": "Yautja_Survie_Equipement_Canopee_V1_Raccords.mp4",
+      "sha256": "af12be014483d968585e2437a8e99eeb719e71d542124e878f1a73cdea23a24e",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "width": 840,
+            "height": 584,
+            "r_frame_rate": "16/1",
+            "duration": "6.500000",
+            "nb_frames": "104"
+          }
+        ]
+      },
+      "extractedFrames": [
+        {
+          "zeroBasedFrame": 15,
+          "output": "raccord_01.png"
+        },
+        {
+          "zeroBasedFrame": 16,
+          "output": "raccord_02.png"
+        },
+        {
+          "zeroBasedFrame": 47,
+          "output": "raccord_03.png"
+        },
+        {
+          "zeroBasedFrame": 48,
+          "output": "raccord_04.png"
+        },
+        {
+          "zeroBasedFrame": 79,
+          "output": "raccord_05.png"
+        },
+        {
+          "zeroBasedFrame": 80,
+          "output": "raccord_06.png"
+        }
+      ],
+      "bytes": 761324
+    }
+  ],
+  "visualReview": {
+    "inspectedFrames": 12,
+    "noVisibleBodyClipping": true,
+    "labelsLegible": true,
+    "groundRegistrationVisible": true,
+    "gripRegistrationVisible": true,
+    "terminalDeathPoseHeld": true,
+    "remainingArtisticIssues": "Volume and posture changes in A/B seams and body angle at swing16 to release01 remain visible.",
+    "doesNotEstablish": "Browser gameplay, performance, human artistic validation, or seamless animation."
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "status": "passed",
+  "scope": "independent source-byte, decoded-pixel and mathematical pivot verification; not human anatomical review or gameplay proof",
+  "pack": "yautja_next_actions_v1",
+  "candidateReceiptSha256": "14e3ae266223fe3cf24c87c6039fd3d99dfb68db0e21e292f44948edb34f85be",
+  "pages": [
+    {
+      "id": "canopy_attach",
+      "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab",
+      "checkedPivots": 16,
+      "sourceCellsEqualExports": 16,
+      "guardedCellsExact": 16,
+      "nativePivotGuardOffset": 2,
+      "comparedRgbaPixels": 1577536,
+      "measuredContactFrames": 1,
+      "projectedGripRange": [
+        0.0,
+        0.0
+      ],
+      "roundedGripRange": [
+        0.0,
+        0.0
+      ],
+      "relativeFootRangeBefore": 0.0,
+      "relativeFootRangeAfter": 0.0,
+      "maximumRelativeFootError": 0.0
+    },
+    {
+      "id": "canopy_hold",
+      "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148",
+      "checkedPivots": 16,
+      "sourceCellsEqualExports": 16,
+      "guardedCellsExact": 16,
+      "nativePivotGuardOffset": 2,
+      "comparedRgbaPixels": 1577536,
+      "measuredContactFrames": 16,
+      "projectedGripRange": [
+        0.0,
+        0.0
+      ],
+      "roundedGripRange": [
+        0.7597070346730561,
+        0.43372617925889045
+      ],
+      "relativeFootRangeBefore": 17.71290642065773,
+      "relativeFootRangeAfter": 17.71290642065773,
+      "maximumRelativeFootError": 0.0
+    },
+    {
+      "id": "canopy_swing",
+      "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46",
+      "checkedPivots": 16,
+      "sourceCellsEqualExports": 16,
+      "guardedCellsExact": 16,
+      "nativePivotGuardOffset": 2,
+      "comparedRgbaPixels": 1577536,
+      "measuredContactFrames": 16,
+      "projectedGripRange": [
+        0.0,
+        0.0
+      ],
+      "roundedGripRange": [
+        0.9019744079428449,
+        0.869998404659114
+      ],
+      "relativeFootRangeBefore": 181.97939521874667,
+      "relativeFootRangeAfter": 181.97939521874667,
+      "maximumRelativeFootError": 0.0
+    },
+    {
+      "id": "canopy_release",
+      "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6",
+      "checkedPivots": 16,
+      "sourceCellsEqualExports": 16,
+      "guardedCellsExact": 16,
+      "nativePivotGuardOffset": 2,
+      "comparedRgbaPixels": 1577536,
+      "measuredContactFrames": 1,
+      "projectedGripRange": [
+        0.0,
+        0.0
+      ],
+      "roundedGripRange": [
+        0.0,
+        0.0
+      ],
+      "relativeFootRangeBefore": 0.0,
+      "relativeFootRangeAfter": 0.0,
+      "maximumRelativeFootError": 0.0
+    }
+  ],
+  "checkedPivots": 64,
+  "comparedRgbaPixels": 6310144
+}

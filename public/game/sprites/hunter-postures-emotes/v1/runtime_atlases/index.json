@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "deliveryRevision": "2.1",
+  "productionStatus": "draft",
+  "schema": "app/game/hunterSpriteAtlas.ts#HunterSpriteAtlas",
+  "characterId": "reference-yautja",
+  "rosterBinding": null,
+  "facing": "right",
+  "facingReview": "Provisional schema routing value; source orientation must be confirmed by human art review before roster binding.",
+  "timing": {
+    "ticksPerSecond": 80,
+    "transitionDurationTicks": 5,
+    "idleDurationTicks": 8
+  },
+  "sourceDrawings": 288,
+  "drawingCountNote": "Ping-pong idle and reversible-exit references reuse existing source drawings; neither increases the source count.",
+  "defaultPlayback": {
+    "branch": {
+      "entry": "branch_enter",
+      "idle": "branch_idle",
+      "exit": "branch_exit_reversible",
+      "dedicatedExit": "branch_exit"
+    },
+    "trunk_close": {
+      "entry": "trunk_close_enter",
+      "idle": "trunk_close_idle",
+      "exit": "trunk_close_exit_reversible",
+      "dedicatedExit": "trunk_close_exit"
+    },
+    "trunk_open": {
+      "entry": "trunk_open_enter",
+      "idle": "trunk_open_idle",
+      "exit": "trunk_open_exit_reversible",
+      "dedicatedExit": "trunk_open_exit"
+    },
+    "roar": {
+      "entry": "roar_enter",
+      "idle": "roar_idle",
+      "exit": "roar_exit_reversible",
+      "dedicatedExit": "roar_exit"
+    },
+    "victory_spear": {
+      "entry": "victory_spear_enter",
+      "idle": "victory_spear_idle",
+      "exit": "victory_spear_exit_reversible",
+      "dedicatedExit": "victory_spear_exit"
+    },
+    "victory_trophy": {
+      "entry": "victory_trophy_enter",
+      "idle": "victory_trophy_idle",
+      "exit": "victory_trophy_exit_reversible",
+      "dedicatedExit": "victory_trophy_exit"
+    }
+  },
+  "manifests": [
+    {
+      "action": "branch",
+      "label": "Accroupi sur une branche",
+      "file": "branch.draft.json",
+      "atlasId": "reference-yautja-branch-draft-v2",
+      "variantId": "branch-reference-review"
+    },
+    {
+      "action": "trunk_close",
+      "label": "Embuscade contre le tronc",
+      "file": "trunk_close.draft.json",
+      "atlasId": "reference-yautja-trunk_close-draft-v2",
+      "variantId": "trunk_close-reference-review"
+    },
+    {
+      "action": "trunk_open",
+      "label": "Affût ouvert sur le tronc",
+      "file": "trunk_open.draft.json",
+      "atlasId": "reference-yautja-trunk_open-draft-v2",
+      "variantId": "trunk_open-reference-review"
+    },
+    {
+      "action": "roar",
+      "label": "Provocation — rugissement",
+      "file": "roar.draft.json",
+      "atlasId": "reference-yautja-roar-draft-v2",
+      "variantId": "roar-reference-review"
+    },
+    {
+      "action": "victory_spear",
+      "label": "Victoire — lance dressée",
+      "file": "victory_spear.draft.json",
+      "atlasId": "reference-yautja-victory_spear-draft-v2",
+      "variantId": "victory_spear-reference-review"
+    },
+    {
+      "action": "victory_trophy",
+      "label": "Victoire — trophée brandi",
+      "file": "victory_trophy.draft.json",
+      "atlasId": "reference-yautja-victory_trophy-draft-v2",
+      "variantId": "victory_trophy-reference-review"
+    }
+  ],
+  "frameReferences": 468
+}
