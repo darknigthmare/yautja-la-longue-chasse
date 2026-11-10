@@ -1,0 +1,2022 @@
+{
+  "schemaVersion": 1,
+  "method": "Raw RGBA analysis, threshold alpha>=128. Native frame coordinates in314px export canvas. Branch x remains fixed157; only foot baseline registered. Trunk pivots approximate screen-left main grip from a restricted hand ROI, center of first25 opaque rows and yTop+20. Default ROI x65..117,y0..129; trunk_open_exit uses its recorded anchorROI because main grip is farther left. No artwork changes.",
+  "clips": {
+    "branch_enter": {
+      "anchorType": "foot_baseline",
+      "target": {
+        "x": 157,
+        "y": 308
+      },
+      "source": "exec-d9a3982a-0d5a-4776-959e-bdddc137fd25.png",
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 11,
+            "width": 149,
+            "height": 298
+          },
+          "opaquePixels": 24739,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 4
+          }
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 80,
+            "y": 18,
+            "width": 152,
+            "height": 290
+          },
+          "opaquePixels": 25253,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 28,
+            "width": 154,
+            "height": 281
+          },
+          "opaquePixels": 25845,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 3
+          }
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 76,
+            "y": 38,
+            "width": 162,
+            "height": 271
+          },
+          "opaquePixels": 25690,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 3
+          }
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 75,
+            "y": 41,
+            "width": 165,
+            "height": 267
+          },
+          "opaquePixels": 26234,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 4
+          }
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 74,
+            "y": 51,
+            "width": 168,
+            "height": 257
+          },
+          "opaquePixels": 25679,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 69,
+            "y": 61,
+            "width": 174,
+            "height": 247
+          },
+          "opaquePixels": 24904,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 3
+          }
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 72,
+            "y": 69,
+            "width": 168,
+            "height": 239
+          },
+          "opaquePixels": 24171,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 3
+          }
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 74,
+            "y": 74,
+            "width": 166,
+            "height": 235
+          },
+          "opaquePixels": 23911,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 70,
+            "y": 79,
+            "width": 170,
+            "height": 229
+          },
+          "opaquePixels": 24156,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 70,
+            "y": 81,
+            "width": 170,
+            "height": 227
+          },
+          "opaquePixels": 24320,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 62,
+            "y": 87,
+            "width": 179,
+            "height": 222
+          },
+          "opaquePixels": 24949,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 64,
+            "y": 90,
+            "width": 173,
+            "height": 218
+          },
+          "opaquePixels": 24636,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 3
+          }
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 67,
+            "y": 91,
+            "width": 164,
+            "height": 218
+          },
+          "opaquePixels": 24363,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 4
+          }
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 70,
+            "y": 94,
+            "width": 157,
+            "height": 214
+          },
+          "opaquePixels": 24518,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 4
+          }
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 73,
+            "y": 96,
+            "width": 151,
+            "height": 212
+          },
+          "opaquePixels": 24105,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 5
+          }
+        }
+      ],
+      "notes": [
+        "Ground anchor is the lowest alpha>=128 pixel; no automatic horizontal recentering.",
+        "This corrects image placement, not anatomical differences."
+      ]
+    },
+    "branch_exit": {
+      "anchorType": "foot_baseline",
+      "target": {
+        "x": 157,
+        "y": 308
+      },
+      "source": "exec-be2e87a9-bbce-458a-adc5-6449bf80a2a7.png",
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 77,
+            "y": 73,
+            "width": 160,
+            "height": 214
+          },
+          "opaquePixels": 26631,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 75,
+            "y": 70,
+            "width": 165,
+            "height": 217
+          },
+          "opaquePixels": 26918,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 71,
+            "y": 66,
+            "width": 175,
+            "height": 221
+          },
+          "opaquePixels": 27122,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 73,
+            "y": 62,
+            "width": 175,
+            "height": 225
+          },
+          "opaquePixels": 27125,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 0
+          }
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 74,
+            "y": 60,
+            "width": 181,
+            "height": 227
+          },
+          "opaquePixels": 26891,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 0
+          }
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 72,
+            "y": 52,
+            "width": 184,
+            "height": 235
+          },
+          "opaquePixels": 27343,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 285
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 69,
+            "y": 44,
+            "width": 187,
+            "height": 242
+          },
+          "opaquePixels": 27764,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 285
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 68,
+            "y": 36,
+            "width": 185,
+            "height": 250
+          },
+          "opaquePixels": 28040,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 68,
+            "y": 33,
+            "width": 187,
+            "height": 254
+          },
+          "opaquePixels": 28237,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 67,
+            "y": 28,
+            "width": 187,
+            "height": 259
+          },
+          "opaquePixels": 28589,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 67,
+            "y": 21,
+            "width": 184,
+            "height": 266
+          },
+          "opaquePixels": 28863,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 68,
+            "y": 16,
+            "width": 179,
+            "height": 271
+          },
+          "opaquePixels": 28614,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 294
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 69,
+            "y": 16,
+            "width": 175,
+            "height": 279
+          },
+          "opaquePixels": 29357,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 294
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 72,
+            "y": 10,
+            "width": 168,
+            "height": 285
+          },
+          "opaquePixels": 29358,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 295
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 73,
+            "y": 8,
+            "width": 165,
+            "height": 288
+          },
+          "opaquePixels": 28993,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 295
+          },
+          "confidence": "high",
+          "opaqueBounds": {
+            "x": 73,
+            "y": 6,
+            "width": 163,
+            "height": 290
+          },
+          "opaquePixels": 28917,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        }
+      ],
+      "notes": [
+        "Ground anchor is the lowest alpha>=128 pixel; no automatic horizontal recentering.",
+        "This corrects image placement, not anatomical differences."
+      ]
+    },
+    "trunk_close_enter": {
+      "anchorType": "main_grip",
+      "target": {
+        "x": 100,
+        "y": 80
+      },
+      "source": "exec-7cdf2784-4396-44bd-b2c5-76b532e0dd7f.png",
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 103,
+            "y": 90
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 87,
+            "y": 14,
+            "width": 161,
+            "height": 291
+          },
+          "opaquePixels": 28131,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 103,
+            "y": 87
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 88,
+            "y": 18,
+            "width": 159,
+            "height": 287
+          },
+          "opaquePixels": 27822,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 103,
+            "y": 87
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 88,
+            "y": 23,
+            "width": 160,
+            "height": 282
+          },
+          "opaquePixels": 27824,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 103,
+            "y": 86
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 87,
+            "y": 32,
+            "width": 161,
+            "height": 273
+          },
+          "opaquePixels": 27767,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 103,
+            "y": 86
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 88,
+            "y": 34,
+            "width": 161,
+            "height": 272
+          },
+          "opaquePixels": 27789,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 103,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 88,
+            "y": 38,
+            "width": 161,
+            "height": 268
+          },
+          "opaquePixels": 27498,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 103,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 88,
+            "y": 42,
+            "width": 161,
+            "height": 265
+          },
+          "opaquePixels": 27056,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 87,
+            "y": 48,
+            "width": 162,
+            "height": 259
+          },
+          "opaquePixels": 27230,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 87,
+            "y": 51,
+            "width": 163,
+            "height": 256
+          },
+          "opaquePixels": 27938,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 87,
+            "y": 56,
+            "width": 168,
+            "height": 251
+          },
+          "opaquePixels": 27664,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 86,
+            "y": 59,
+            "width": 169,
+            "height": 248
+          },
+          "opaquePixels": 27533,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 84,
+            "y": 65,
+            "width": 165,
+            "height": 242
+          },
+          "opaquePixels": 27158,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 84,
+            "y": 64,
+            "width": 163,
+            "height": 243
+          },
+          "opaquePixels": 27278,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 7
+          }
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 82,
+            "y": 65,
+            "width": 163,
+            "height": 242
+          },
+          "opaquePixels": 26663,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 4
+          }
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 65,
+            "width": 163,
+            "height": 242
+          },
+          "opaquePixels": 26076,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 4
+          }
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 80,
+            "y": 65,
+            "width": 165,
+            "height": 242
+          },
+          "opaquePixels": 25716,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 5
+          }
+        }
+      ],
+      "notes": [
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation."
+      ]
+    },
+    "trunk_close_exit": {
+      "anchorType": "main_grip",
+      "target": {
+        "x": 100,
+        "y": 80
+      },
+      "source": "exec-4b4ab3ae-3edd-440a-bf8c-698219781361.png",
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 37,
+            "width": 168,
+            "height": 254
+          },
+          "opaquePixels": 31155,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 98,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 77,
+            "y": 36,
+            "width": 168,
+            "height": 254
+          },
+          "opaquePixels": 31178,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 36,
+            "width": 168,
+            "height": 255
+          },
+          "opaquePixels": 30401,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 36,
+            "width": 171,
+            "height": 255
+          },
+          "opaquePixels": 29492,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 36,
+            "width": 167,
+            "height": 254
+          },
+          "opaquePixels": 28834,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 98,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 77,
+            "y": 35,
+            "width": 167,
+            "height": 255
+          },
+          "opaquePixels": 28176,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 36,
+            "width": 167,
+            "height": 254
+          },
+          "opaquePixels": 28277,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 99,
+            "y": 66
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 33,
+            "width": 168,
+            "height": 258
+          },
+          "opaquePixels": 29085,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 32,
+            "width": 166,
+            "height": 259
+          },
+          "opaquePixels": 29493,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 30,
+            "width": 165,
+            "height": 261
+          },
+          "opaquePixels": 29928,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 28,
+            "width": 164,
+            "height": 266
+          },
+          "opaquePixels": 29733,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 25,
+            "width": 164,
+            "height": 275
+          },
+          "opaquePixels": 29447,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 98,
+            "y": 65
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 25,
+            "width": 165,
+            "height": 274
+          },
+          "opaquePixels": 29318,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 99,
+            "y": 66
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 77,
+            "y": 24,
+            "width": 165,
+            "height": 276
+          },
+          "opaquePixels": 29455,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 99,
+            "y": 66
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 78,
+            "y": 25,
+            "width": 167,
+            "height": 272
+          },
+          "opaquePixels": 29926,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 99,
+            "y": 65
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 79,
+            "y": 27,
+            "width": 168,
+            "height": 271
+          },
+          "opaquePixels": 29726,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        }
+      ],
+      "notes": [
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation."
+      ]
+    },
+    "trunk_open_enter": {
+      "anchorType": "main_grip",
+      "target": {
+        "x": 100,
+        "y": 80
+      },
+      "source": "exec-b94954cf-8231-4208-b33b-c84e590f2ca5.png",
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 101,
+            "y": 87
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 85,
+            "y": 17,
+            "width": 158,
+            "height": 281
+          },
+          "opaquePixels": 28495,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 84,
+            "y": 17,
+            "width": 159,
+            "height": 280
+          },
+          "opaquePixels": 27923,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 100,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 82,
+            "y": 17,
+            "width": 161,
+            "height": 279
+          },
+          "opaquePixels": 27116,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 83,
+            "y": 18,
+            "width": 163,
+            "height": 279
+          },
+          "opaquePixels": 27705,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 100,
+            "y": 83
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 83,
+            "y": 19,
+            "width": 168,
+            "height": 279
+          },
+          "opaquePixels": 27623,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 100,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 82,
+            "y": 22,
+            "width": 176,
+            "height": 282
+          },
+          "opaquePixels": 29044,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 100,
+            "y": 83
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 82,
+            "y": 24,
+            "width": 182,
+            "height": 281
+          },
+          "opaquePixels": 28938,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 99,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 29,
+            "width": 194,
+            "height": 276
+          },
+          "opaquePixels": 28713,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 99,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 31,
+            "width": 199,
+            "height": 277
+          },
+          "opaquePixels": 28350,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 99,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 30,
+            "width": 203,
+            "height": 277
+          },
+          "opaquePixels": 28165,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 99,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 26,
+            "width": 201,
+            "height": 281
+          },
+          "opaquePixels": 28468,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 99,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 22,
+            "width": 187,
+            "height": 285
+          },
+          "opaquePixels": 28045,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 99,
+            "y": 84
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 81,
+            "y": 20,
+            "width": 185,
+            "height": 286
+          },
+          "opaquePixels": 26723,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 5
+          }
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 82,
+            "y": 17,
+            "width": 182,
+            "height": 289
+          },
+          "opaquePixels": 26317,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 5
+          }
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 82,
+            "y": 15,
+            "width": 180,
+            "height": 292
+          },
+          "opaquePixels": 25796,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 4
+          }
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 82,
+            "y": 15,
+            "width": 179,
+            "height": 291
+          },
+          "opaquePixels": 25486,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 5
+          }
+        }
+      ],
+      "notes": [
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation."
+      ]
+    },
+    "trunk_open_exit": {
+      "anchorType": "main_grip",
+      "target": {
+        "x": 100,
+        "y": 80
+      },
+      "source": "exec-9594be0f-afdd-4f90-aaa0-559696274eb0.png",
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 74,
+            "y": 95
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 53,
+            "y": 23,
+            "width": 216,
+            "height": 286
+          },
+          "opaquePixels": 32093,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 73,
+            "y": 95
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 52,
+            "y": 23,
+            "width": 212,
+            "height": 286
+          },
+          "opaquePixels": 31456,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 74,
+            "y": 95
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 54,
+            "y": 22,
+            "width": 204,
+            "height": 287
+          },
+          "opaquePixels": 29938,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 74,
+            "y": 95
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 53,
+            "y": 23,
+            "width": 205,
+            "height": 285
+          },
+          "opaquePixels": 28583,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 74,
+            "y": 94
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 53,
+            "y": 25,
+            "width": 205,
+            "height": 283
+          },
+          "opaquePixels": 28019,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 74,
+            "y": 94
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 54,
+            "y": 25,
+            "width": 204,
+            "height": 285
+          },
+          "opaquePixels": 27906,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 75,
+            "y": 93
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 55,
+            "y": 25,
+            "width": 202,
+            "height": 286
+          },
+          "opaquePixels": 27877,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 2
+          }
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 76,
+            "y": 93
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 57,
+            "y": 25,
+            "width": 197,
+            "height": 275
+          },
+          "opaquePixels": 28075,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 76,
+            "y": 92
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 57,
+            "y": 27,
+            "width": 193,
+            "height": 262
+          },
+          "opaquePixels": 27866,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 76,
+            "y": 89
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 57,
+            "y": 28,
+            "width": 188,
+            "height": 252
+          },
+          "opaquePixels": 27592,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 77,
+            "y": 88
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 59,
+            "y": 27,
+            "width": 183,
+            "height": 244
+          },
+          "opaquePixels": 27521,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 77,
+            "y": 88
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 59,
+            "y": 25,
+            "width": 180,
+            "height": 270
+          },
+          "opaquePixels": 28497,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 77,
+            "y": 90
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 59,
+            "y": 25,
+            "width": 182,
+            "height": 267
+          },
+          "opaquePixels": 29003,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 76,
+            "y": 89
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 58,
+            "y": 22,
+            "width": 182,
+            "height": 266
+          },
+          "opaquePixels": 29401,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 76,
+            "y": 90
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 58,
+            "y": 22,
+            "width": 182,
+            "height": 270
+          },
+          "opaquePixels": 29697,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 76,
+            "y": 89
+          },
+          "confidence": "approximate",
+          "opaqueBounds": {
+            "x": 57,
+            "y": 22,
+            "width": 181,
+            "height": 272
+          },
+          "opaquePixels": 29992,
+          "border": {
+            "alpha128Pixels": 0,
+            "alpha16Pixels": 0,
+            "maxAlpha": 1
+          }
+        }
+      ],
+      "notes": [
+        "This source places the main fist farther left than other atlases; use hand-only ROI x40..94,y45..129 to exclude helmet and forearm.",
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation.",
+        "Default preview reversible exit avoids cross-atlas endpoint shape mismatches; this dedicated exit remains an alternate drawing sequence."
+      ],
+      "anchorROI": {
+        "x": 40,
+        "y": 45,
+        "width": 55,
+        "height": 85
+      }
+    }
+  }
+}
