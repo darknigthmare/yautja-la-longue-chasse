@@ -17,6 +17,7 @@ async function main() {
   const pagesById = new Map(imports.atlases.map(page => [page.id, page]));
   const index = {
     schemaVersion: 1,
+    deliveryRevision: manifest.version,
     productionStatus: 'draft',
     schema: 'app/game/hunterSpriteAtlas.ts#HunterSpriteAtlas',
     characterId: 'reference-yautja',
@@ -25,7 +26,8 @@ async function main() {
     facingReview: 'Provisional schema routing value; source orientation must be confirmed by human art review before roster binding.',
     timing: {ticksPerSecond: TIMEBASE, transitionDurationTicks: 5, idleDurationTicks: 8},
     sourceDrawings: manifest.frameCount,
-    drawingCountNote: 'Ping-pong frame references reuse the sixteen source drawings of each idle clip.',
+    drawingCountNote: 'Ping-pong idle and reversible-exit references reuse existing source drawings; neither increases the source count.',
+    defaultPlayback: {},
     manifests: [],
   };
   if (pagesById.size !== sourceClips.size) throw new Error('Guarded and source clip counts differ.');
@@ -75,6 +77,21 @@ async function main() {
       });
       atlas.clips.push({id, facing: 'right', status: 'draft', loop: phase === 'idle', ticksPerSecond: TIMEBASE, frames});
     }
+    const entry = atlas.clips.find(clip => clip.id === `${action.id}_enter`);
+    const reversibleExitId = `${action.id}_exit_reversible`;
+    atlas.clips.push({
+      id: reversibleExitId, facing: 'right', status: 'draft', loop: false,
+      ticksPerSecond: TIMEBASE,
+      frames: [...entry.frames].reverse().map(frame => ({
+        ...frame, rect: [...frame.rect], pivot: [...frame.pivot],
+      })),
+    });
+    index.defaultPlayback[action.id] = {
+      entry: `${action.id}_enter`,
+      idle: `${action.id}_idle`,
+      exit: reversibleExitId,
+      dedicatedExit: `${action.id}_exit`,
+    };
     const filename = `${action.id}.draft.json`;
     await fs.writeFile(path.join(output, filename), JSON.stringify(atlas, null, 2) + '\n');
     index.manifests.push({action: action.id, label: action.label, file: filename, atlasId: atlas.id, variantId: atlas.variantId});

@@ -1,0 +1,116 @@
+{
+  "status": "passed",
+  "scope": "Independent V2.1 data, PNG preservation and calculated render-bounds verification. No browser or game interaction.",
+  "sourcePack": "V2 — PR #134 commit a444e2e0dd55f0e837165b2d7b163f50ae2aeda0",
+  "candidatePack": "V2.1 export — public/game/sprites/hunter-postures-emotes/v1",
+  "artisticStatus": "draft",
+  "counts": {
+    "pngFilesExpected": 330,
+    "pngFilesCompared": 330,
+    "pngHashesIdentical": 330,
+    "gesturePivotsMatchingProposal": 144,
+    "arborealPivotsUnchanged": 144,
+    "sourceOffsetRelationsChecked": 288,
+    "guardedPivotOffsetRelationsChecked": 288,
+    "meaningfulSpriteBoundsChecked": 288
+  },
+  "pngInventorySha256": "9a6cb531e16602607796805b834332c1a6092d727ffb3fdc00b9afb5526cf36a",
+  "renderBounds": {
+    "canvas": {
+      "width": 420,
+      "height": 420,
+      "padding": 50
+    },
+    "meaningfulAlphaThreshold": 16,
+    "clippedFrames": 0,
+    "minimumMeaningfulMargin": {
+      "float": {
+        "pixels": 45.0,
+        "clip": "trunk_close_idle",
+        "frame": 1,
+        "side": "bottom"
+      },
+      "integer": {
+        "pixels": 45.0,
+        "clip": "trunk_close_idle",
+        "frame": 1,
+        "side": "bottom"
+      }
+    }
+  },
+  "criticalContactMetrics": {
+    "victory_trophy_enter": {
+      "roundingRule": "Math.round(padding + drawOffset.x), padding=50; panel origins are integral.",
+      "beforeFullWidthContacts": {
+        "left": 26.162843,
+        "right": 26.831305,
+        "midpoint": 26.248015
+      },
+      "afterVideoIntegerPlacement": {
+        "left": {
+          "range": 1.0,
+          "maxAdjacentDelta": 1.0
+        },
+        "right": {
+          "range": 1.335379,
+          "maxAdjacentDelta": 1.14852
+        },
+        "midpoint": {
+          "range": 0.948345,
+          "maxAdjacentDelta": 0.871077
+        }
+      }
+    },
+    "victory_trophy_exit": {
+      "roundingRule": "Math.round(padding + drawOffset.x), padding=50; panel origins are integral.",
+      "beforeFullWidthContacts": {
+        "left": 26.963985,
+        "right": 27.921747,
+        "midpoint": 27.228824
+      },
+      "afterVideoIntegerPlacement": {
+        "left": {
+          "range": 0.994049,
+          "maxAdjacentDelta": 0.890253
+        },
+        "right": {
+          "range": 1.07181,
+          "maxAdjacentDelta": 0.75083
+        },
+        "midpoint": {
+          "range": 0.881609,
+          "maxAdjacentDelta": 0.673563
+        }
+      }
+    },
+    "victory_spear_exit": {
+      "roundingRule": "Math.round(padding + drawOffset.x), padding=50; panel origins are integral.",
+      "beforeFullWidthContacts": {
+        "left": 13.185629,
+        "right": 14.119368,
+        "midpoint": 13.652498
+      },
+      "afterVideoIntegerPlacement": {
+        "left": {
+          "range": 0.984976,
+          "maxAdjacentDelta": 0.779951
+        },
+        "right": {
+          "range": 1.054201,
+          "maxAdjacentDelta": 1.000423
+        },
+        "midpoint": {
+          "range": 0.958429,
+          "maxAdjacentDelta": 0.54921
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Contact ranges describe measured lower-foot alpha components and whole-sprite integer translation.",
+    "Body shape, weapon pose, scale and inter-phase anatomy differences are not corrected or artistically approved by these checks.",
+    "No source PNG or atlas was modified by this reviewer; no production runtime or browser was exercised."
+  ],
+  "errors": [],
+  "reportPublicationNote": "Only transient workspace paths have been replaced with delivery identifiers; measurements and checks are unchanged."
+}

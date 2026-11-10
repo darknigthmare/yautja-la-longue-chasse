@@ -1,5 +1,6 @@
 {
   "schemaVersion": 1,
+  "deliveryRevision": "2.1",
   "productionStatus": "draft",
   "schema": "app/game/hunterSpriteAtlas.ts#HunterSpriteAtlas",
   "characterId": "reference-yautja",
@@ -12,7 +13,45 @@
     "idleDurationTicks": 8
   },
   "sourceDrawings": 288,
-  "drawingCountNote": "Ping-pong frame references reuse the sixteen source drawings of each idle clip.",
+  "drawingCountNote": "Ping-pong idle and reversible-exit references reuse existing source drawings; neither increases the source count.",
+  "defaultPlayback": {
+    "branch": {
+      "entry": "branch_enter",
+      "idle": "branch_idle",
+      "exit": "branch_exit_reversible",
+      "dedicatedExit": "branch_exit"
+    },
+    "trunk_close": {
+      "entry": "trunk_close_enter",
+      "idle": "trunk_close_idle",
+      "exit": "trunk_close_exit_reversible",
+      "dedicatedExit": "trunk_close_exit"
+    },
+    "trunk_open": {
+      "entry": "trunk_open_enter",
+      "idle": "trunk_open_idle",
+      "exit": "trunk_open_exit_reversible",
+      "dedicatedExit": "trunk_open_exit"
+    },
+    "roar": {
+      "entry": "roar_enter",
+      "idle": "roar_idle",
+      "exit": "roar_exit_reversible",
+      "dedicatedExit": "roar_exit"
+    },
+    "victory_spear": {
+      "entry": "victory_spear_enter",
+      "idle": "victory_spear_idle",
+      "exit": "victory_spear_exit_reversible",
+      "dedicatedExit": "victory_spear_exit"
+    },
+    "victory_trophy": {
+      "entry": "victory_trophy_enter",
+      "idle": "victory_trophy_idle",
+      "exit": "victory_trophy_exit_reversible",
+      "dedicatedExit": "victory_trophy_exit"
+    }
+  },
   "manifests": [
     {
       "action": "branch",
@@ -57,5 +96,5 @@
       "variantId": "victory_trophy-reference-review"
     }
   ],
-  "frameReferences": 372
+  "frameReferences": 468
 }

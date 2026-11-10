@@ -74,7 +74,7 @@ function buildPlayback(clips, actions) {
     };
   }
   return {
-    version: '2.0', transitionFps: TRANSITION_FPS, idleFps: IDLE_FPS,
+    version: '2.1', transitionFps: TRANSITION_FPS, idleFps: IDLE_FPS,
     idleOrderOneBased: pingPong.map(i => i + 1), idleCycleMs: 3000,
     sourceDrawings: clips.reduce((sum, clip) => sum + clip.frameCount, 0),
     timingNote: 'L’aller-retour, les poses tenues et les sorties réversibles réutilisent les dessins source; ils ne comptent pas comme de nouveaux sprites.',
@@ -213,6 +213,7 @@ async function main() {
         atlasRect, exportedFrameSize: {width: frameWidth, height: frameHeight}, transparentPadding,
         pivot, anchorTarget, drawOffset: pivot && anchorTarget ? {x: anchorTarget.x - pivot.x, y: anchorTarget.y - pivot.y} : {x: 0, y: 0},
         anchorConfidence: measured?.confidence || oldFrame?.anchorConfidence || 'unmeasured', durationMs: 1000 / fps,
+        registration: measured?.registration || null,
         provenance: oldFrame ? 'V1 PNG copied byte-for-byte; original atlas hash verified.' : 'Native cell mechanically extracted from a newly generated atlas.',
         alphaInspection: inspectCell(raw, info.channels, meta.width, atlasRect, !!meta.hasAlpha),
       });
@@ -259,7 +260,7 @@ async function main() {
   await fs.writeFile(path.join(outputDir, 'playback.json'), JSON.stringify(playbackSequences, null, 2) + '\n');
   if (baseline) await fs.writeFile(path.join(outputDir, 'v1_baseline.json'), JSON.stringify({version: '1.0', purpose: 'Original V1 atlas hashes and frame references for preservation during V2 re-export.', clips: baseline.data.clips.filter(clip => !clip.id.endsWith('_idle'))}, null, 2) + '\n');
   if (buildImportAtlases) await fs.writeFile(path.join(outputDir, 'import_atlases.json'), JSON.stringify({
-    version: '2.0', purpose: 'Optional mechanical import packing with exactly transparent cell borders.',
+    version: '2.1', purpose: 'Optional mechanical import packing with exactly transparent cell borders.',
     originalArtworkUnchanged: true, guardPixels: 2, order: 'row-major',
     pivotRule: 'guardedPivot = originalPivot + (2,2); drawOffset = originalAnchorTarget - guardedPivot',
     countNote: 'Guarded atlases reuse the original drawings and do not add new source sprites.',
@@ -268,7 +269,7 @@ async function main() {
   }, null, 2) + '\n');
   const total = clips.reduce((sum, clip) => sum + clip.frameCount, 0);
   const manifest = {
-    title: 'Yautja — Postures, respirations et célébrations', version: '2.0', generatedOn: new Date().toISOString(),
+    title: 'Yautja — Postures, respirations et célébrations', version: '2.1', generatedOn: new Date().toISOString(),
     productionStatus: 'draft',
     runtimeIntegration: {integrated: false, characterBinding: null, artisticApproval: false, reason: 'Reference-derived asset pack; source border alpha traces and cross-atlas joins require review before use in the game renderer.'},
     provenance: `${preservedV1Frames} dessins V1 conservés; ${total - preservedV1Frames} nouveaux dessins générés.`,
@@ -281,6 +282,7 @@ async function main() {
     importAtlasManifest: buildImportAtlases ? 'import_atlases.json' : null, importAtlasCount: importAtlases.length,
     recommendedFps: TRANSITION_FPS, recommendedIdleFps: IDLE_FPS,
     anchorMeasurementMethod: anchors?.data.method || null,
+    contactRegistration: source.contactRegistration || null,
     preview: {canvasWidth: Math.max(420, ...clips.map(clip => clip.frameWidth + 106)), canvasHeight: Math.max(420, ...clips.map(clip => clip.frameHeight + 106)), padding: 50, defaultExit: 'reversed-entry', defaultHold: 'idle-ping-pong', drawOffsetRule: 'anchorTarget − pivot, applied only at playback'},
     playback: {file: 'playback.json', default: 'Entry1→16 at16fps; idle1→16→2 at10fps; reversed entry16→1 at16fps; rest0.5s.', fixedHold: 'Fixed hold + reversed entry preserves identical V1 endpoint drawings.', sourceCountNote: 'Playback reuse does not add drawings.', joins: 'Cross-atlas pose/proportion drift can remain; offset registration only changes placement.'},
     clips, warnings,

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "hunter-postures-emotes-reference-pack",
   "productionStatus": "draft",
-  "deliveryRevision": 2,
+  "deliveryRevision": 2.1,
   "project": "Yautja The Long Hunt",
   "character": "User reference Yautja; no existing roster character binding",
   "variant": "Reference jungle hunter; unmasked roar, spear and trophy victory variants",
@@ -32,9 +32,18 @@
     "sourceFramesWithBorderAlpha16": 0,
     "guardedImportRgbaBytesPreserved": true,
     "guardedImportBorderAlphaMax": 0,
-    "videoSourceDrawingsShown": 288,
+    "videoSourceDrawingsShown": 192,
     "videoDurationMs": 11000,
-    "videoContainerFrames": 880
+    "videoContainerFrames": 880,
+    "pngHashesUnchangedSinceV2": 330,
+    "gesturePivotsRecalibrated": 144,
+    "verticalPivotsUnchanged": true,
+    "arborealPivotsUnchanged": 144,
+    "nativeManifestSchemaValid": 6,
+    "defaultReversibleExits": 6,
+    "previewBehavior": "Actual inline JavaScript checked with simulated DOM/RAF/Image; no browser interaction claimed.",
+    "dedicatedVideoSourceDrawingsShown": 288,
+    "contactReport": "contact_registration.json"
   },
   "nativeAtlasReview": {
     "manifests": "runtime_atlases/index.json",
@@ -46,15 +55,20 @@
     "transitionDurationTicks": 5,
     "idleDurationTicks": 8,
     "idleFrameReferences": 30,
-    "idleDistinctSourceFrames": 16
+    "idleDistinctSourceFrames": 16,
+    "totalClips": 24,
+    "totalPlaybackReferences": 468,
+    "defaultPlayback": "runtime_atlases/index.json#defaultPlayback",
+    "defaultExit": "<action>_exit_reversible",
+    "dedicatedExit": "<action>_exit"
   },
   "reviewLimits": [
-    "Separate atlas generation can change anatomy, equipment and endpoint pose; anchor offsets only align positions.",
-    "The dedicated spear-victory exit retains approximately 8–10 pixels of horizontal foot drift after vertical anchor registration; reversed-entry exit remains the default review playback.",
-    "Idle ping-pong and reversible exits reuse source drawings and are not counted as extra sprites.",
-    "Source border alpha traces remain. Import variants add a two-pixel transparent guard without changing source RGBA bytes; this resolves the border geometry but does not grant artistic approval.",
+    "Separate atlas generation can change anatomy, equipment, scale and endpoint pose; contact registration changes position only.",
+    "V2.1 corrects common horizontal foot displacement for all144 gesture frames. With integer video placement, measured per-foot residual ranges are at most1.34px for trophy entry/exit and spear exit. Roar foot-spacing changes remain.",
+    "Idle ping-pong and reversible exits reuse source drawings and are not counted as extra sprites. The default video shows192 unique drawings; the dedicated-exit video shows288.",
+    "Source border alpha traces remain. Import variants add a two-pixel transparent guard without changing source RGBA bytes; this does not grant artistic approval.",
     "No in-engine placement, gameplay, performance or human artistic approval has been performed.",
-    "Preview scripts were checked statically; browser interaction has not been observed."
+    "The real preview JavaScript was behaviorally tested with mocked DOM, RAF and Image. Browser interaction has not been observed."
   ],
   "files": [
     {
@@ -1707,5 +1721,25 @@
       "bytes": 97524,
       "sha256": "b9e1533a19046a2da2934df23714f479953644d339035e1957ba8b45cc1a5af7"
     }
-  ]
+  ],
+  "changeSinceV2": {
+    "newSourceDrawings": 0,
+    "gestureFramesWithHorizontalRegistration": 144,
+    "sourcePngFilesPreserved": 330,
+    "newReversiblePlaybackClips": 6,
+    "previewOneShotBehavior": "terminal hold and clean replay"
+  },
+  "previews": {
+    "default": {
+      "file": "Yautja_Postures_V2_1_Apercu.mp4",
+      "sourceDrawingsShown": 192,
+      "exitMode": "reversible"
+    },
+    "dedicated": {
+      "file": "Yautja_Postures_V2_1_Sorties_Dediees.mp4",
+      "sourceDrawingsShown": 288,
+      "exitMode": "dedicated"
+    },
+    "legacy": "Yautja_Postures_V2_Apercu.mp4"
+  }
 }

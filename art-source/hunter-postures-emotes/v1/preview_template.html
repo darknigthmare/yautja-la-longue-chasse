@@ -3,14 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Yautja · Postures, respirations et célébrations</title>
+<title>Yautja · Postures, respirations et célébrations · V2.1</title>
 <style>
 :root{color-scheme:dark;font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0a100d;color:#e9efe6}*{box-sizing:border-box}body{margin:0}main{max-width:1240px;margin:auto;padding:28px 22px 40px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.17em;color:#b7cf7e;margin:0 0 10px}h1{font-size:clamp(26px,4vw,40px);line-height:1.13;letter-spacing:-.035em;margin:0 0 12px}.intro{max-width:880px;color:#aebcab;margin:0 0 22px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:20px;align-items:start}.panel{border:1px solid #364537;border-radius:16px;background:#121c15;overflow:hidden}.viewer{position:sticky;top:18px}.stage{min-height:540px;display:grid;place-items:center;padding:20px;background-color:#202a22;background-image:linear-gradient(45deg,#2a362d 25%,transparent 25%),linear-gradient(-45deg,#2a362d 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#2a362d 75%),linear-gradient(-45deg,transparent 75%,#2a362d 75%);background-size:32px 32px;background-position:0 0,0 16px,16px -16px,-16px 0}.stage[data-bg="dark"]{background:#09110b}.stage[data-bg="light"]{background:#e9ebe3}.stage[data-bg="green"]{background:#27432d}canvas{display:block;max-width:100%;max-height:540px;width:auto;height:auto}.caption{border-top:1px solid #364537;padding:14px 18px;display:grid;gap:5px}.caption span{font-size:12px;color:#aebcab}.controls{padding:20px}.selectors{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.full{grid-column:1/-1}label{display:block;font-size:12px;color:#b7c7b2;margin-bottom:6px}select,button,input{font:inherit}select{width:100%;border:1px solid #425440;border-radius:8px;background:#0b140d;color:#eaf1e6;padding:9px 10px;margin-bottom:15px;font-size:13px}button{border:1px solid #536845;border-radius:8px;background:#293d22;color:#eaf1e6;padding:9px 12px;cursor:pointer}button:hover{background:#3c552e}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #bedb8f;outline-offset:3px}.primary{background:#b8d48a;color:#14200e;font-weight:700}.primary:hover{background:#cce3a6}.buttons{display:flex;gap:8px;margin-bottom:16px}.buttons button:first-child{flex:1}.step-buttons{display:flex;gap:8px;margin:0 0 15px}.step-buttons button{flex:1}.range-label{display:flex;justify-content:space-between;gap:10px}input[type=range]{width:100%;accent-color:#bdd88d;margin:6px 0 14px}.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px}.fact{background:#0b140d;border-radius:8px;padding:9px 12px}.fact small{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:#92a58d;display:block}.fact strong{font-size:15px}.note,.footer{font-size:12px;color:#9aaf92}.note{margin:16px 0 0}.footer{margin:20px 0 0;max-width:1000px}.status{min-height:18px;font-size:12px;color:#bddb98}.error{color:#ffb69d}.kbd{font-family:monospace;background:#29392a;padding:1px 5px;border-radius:4px}details{margin-top:18px;font-size:12px;color:#9aaf92}summary{cursor:pointer}ul{padding-left:20px}@media(max-width:900px){.layout{grid-template-columns:1fr}.viewer{position:static}.stage{min-height:440px}.facts{grid-template-columns:repeat(4,1fr)}}@media(max-width:520px){main{padding:22px 13px}.stage{padding:12px;min-height:350px}.selectors{gap:0 10px}.controls{padding:16px}.facts{grid-template-columns:1fr 1fr}}
+.check-control{display:flex;align-items:center;gap:9px;margin:0 0 15px;font-size:13px;color:#eaf1e6}.check-control input{accent-color:#bdd88d}
 </style>
 </head>
 <body>
 <main>
-<p class="eyebrow">Yautja · The Long Hunt · V2</p>
+<p class="eyebrow">Yautja · The Long Hunt · V2.1</p>
 <h1>Postures, respirations & célébrations</h1>
 <p class="intro">Entrer dans une posture, tenir l’affût ou le geste, puis revenir. Le lecteur montre les dessins source et permet de contrôler chaque mouvement image par image, avec les maintiens animés et les sorties dédiées ou réversibles.</p>
 <div class="layout">
@@ -35,6 +36,7 @@
 <label class="range-label" for="hold"><span>Boucles de maintien</span><span id="hold-label">1 boucle</span></label>
 <input id="hold" type="range" min="1" max="4" value="1" step="1">
 <label for="background">Fond de contrôle</label><select id="background"><option value="checker">Damier — transparence</option><option value="dark">Sombre</option><option value="light">Clair</option><option value="green">Vert forêt</option></select>
+<label class="check-control" for="stabilize"><input id="stabilize" type="checkbox" checked>Stabiliser les appuis</label>
 <div class="facts"><div class="fact"><small>Dessins du clip</small><strong id="count">—</strong></div><div class="fact"><small>PNG exporté</small><strong id="dimensions">—</strong></div><div class="fact"><small>Cadence source</small><strong id="clip-fps">—</strong></div><div class="fact"><small>Canal alpha</small><strong id="alpha">—</strong></div></div>
 <p class="note" id="join-note"></p>
 <p class="note">L’aller-retour utilise les mêmes 16 dessins : 30 positions de lecture en 3 secondes à 10 i/s. Les répétitions ne créent pas de nouveaux sprites. Aucun fondu ni interpolation de mouvement.</p>
@@ -56,6 +58,7 @@ const clips = Object.fromEntries(data.clips.map(clip => [clip.id, clip]));
 const images = new Map();
 let sequence = [], index = 0, playing = true, accumulator = 0, lastTime = null;
 const speed = () => Number($('speed').value);
+const isOneShot = () => ['enter','exit'].includes($('mode').value);
 for (const action of data.actions) {const option = document.createElement('option'); option.value = action.id; option.textContent = action.label; $('stance').append(option);}
 function updateSequence() {
   const stance = $('stance').value, mode = $('mode').value;
@@ -85,37 +88,54 @@ function render() {
   const w = data.preview.canvasWidth, h = data.preview.canvasHeight, p = data.preview.padding;
   if (canvas.width !== w || canvas.height !== h) {canvas.width = w; canvas.height = h;}
   context.clearRect(0, 0, w, h); context.imageSmoothingEnabled = false;
-  const frame = clip.frames[step.index], rect = frame.atlasRect, offset = frame.drawOffset || {x:0,y:0};
+  const frame = clip.frames[step.index], rect = frame.atlasRect;
+  const currentOffset = frame.drawOffset || {x:0,y:0};
+  const offset = $('stabilize').checked ? currentOffset : (frame.registration?.previousDrawOffset || currentOffset);
   context.drawImage(image, rect.x, rect.y, rect.width, rect.height, p + offset.x, p + offset.y, rect.width, rect.height);
   $('clip-label').textContent = step.role === 'fixed_hold' ? 'Posture fixe — dernière image d’entrée' : step.role === 'rest' ? 'Retour au départ' : step.role === 'exit_reversible' ? 'Sortie réversible — entrée relue à l’envers' : clip.label;
   $('frame-label').textContent = `Image source ${String(step.index + 1).padStart(2,'0')} / ${clip.frameCount} · ligne ${Math.floor(step.index / 4) + 1}, colonne ${step.index % 4 + 1}`;
   $('position').value = index; $('position-label').textContent = `${index + 1} / ${sequence.length}`;
   $('count').textContent = clip.frameCount; $('dimensions').textContent = `${clip.frameWidth} × ${clip.frameHeight}`;
   $('clip-fps').textContent = `${clip.fps} i/s`; $('alpha').textContent = clip.hasAlpha ? 'Présent' : 'Absent';
-  $('play').textContent = playing ? 'Pause' : 'Lecture';
+  $('play').textContent = playing ? 'Pause' : (isOneShot() && index === sequence.length - 1 ? 'Rejouer' : 'Lecture');
 }
-function step(delta) {playing = false; accumulator = 0; index = (index + delta + sequence.length) % sequence.length; render();}
+function togglePlayback() {
+  if (!sequence.length) return;
+  if (!playing && isOneShot() && index === sequence.length - 1) index = 0;
+  playing = !playing; accumulator = 0; lastTime = null; render();
+}
+function restartPlayback() {index = 0; playing = true; accumulator = 0; lastTime = null; render();}
+function step(delta) {
+  playing = false; accumulator = 0; lastTime = null;
+  index = isOneShot() ? Math.max(0, Math.min(sequence.length - 1, index + delta)) : (index + delta + sequence.length) % sequence.length;
+  render();
+}
 function tick(time) {
   if (lastTime === null) lastTime = time;
   const elapsed = Math.min(time - lastTime, 250); lastTime = time;
   if (playing && sequence.length > 1) {
     accumulator += elapsed * speed(); let changed = false;
-    while (accumulator >= sequence[index].durationMs) {accumulator -= sequence[index].durationMs; index = (index + 1) % sequence.length; changed = true;}
+    while (playing && accumulator >= sequence[index].durationMs) {
+      accumulator -= sequence[index].durationMs;
+      if (isOneShot() && index === sequence.length - 1) {playing = false; accumulator = 0; changed = true; break;}
+      index = (index + 1) % sequence.length; changed = true;
+    }
     if (changed) render();
   }
   requestAnimationFrame(tick);
 }
 for (const id of ['stance','mode','hold-mode','exit-mode','idle-mode']) $(id).addEventListener('change', updateSequence);
-$('play').addEventListener('click', () => {playing = !playing; accumulator = 0; lastTime = null; render();});
-$('restart').addEventListener('click', () => {index = 0; accumulator = 0; lastTime = null; render();});
+$('play').addEventListener('click', togglePlayback);
+$('restart').addEventListener('click', restartPlayback);
 $('previous').addEventListener('click', () => step(-1)); $('next').addEventListener('click', () => step(1));
 $('position').addEventListener('input', () => {playing = false; index = Number($('position').value); accumulator = 0; render();});
 $('speed').addEventListener('input', () => {$('speed-label').textContent = `${speed().toLocaleString('fr-FR')}× · ${data.recommendedFps * speed()} / ${data.recommendedIdleFps * speed()} i/s`;});
 $('hold').addEventListener('input', () => {$('hold-label').textContent = `${$('hold').value} boucle${Number($('hold').value) > 1 ? 's' : ''}`; updateSequence();});
 $('background').addEventListener('change', () => {$('stage').dataset.bg = $('background').value;});
+$('stabilize').addEventListener('change', render);
 window.addEventListener('keydown', event => {
   if (['INPUT','SELECT','BUTTON'].includes(document.activeElement.tagName) || !sequence.length) return;
-  if (event.code === 'Space') {event.preventDefault(); playing = !playing; accumulator = 0; render();}
+  if (event.code === 'Space') {event.preventDefault(); togglePlayback();}
   else if (event.code === 'ArrowLeft') {event.preventDefault(); step(-1);}
   else if (event.code === 'ArrowRight') {event.preventDefault(); step(1);}
 });

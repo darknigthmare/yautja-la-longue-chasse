@@ -1,8 +1,10 @@
 {
-  "filename": "Yautja_Postures_V2_Apercu.mp4",
+  "filename": "Yautja_Postures_V2_1_Apercu.mp4",
+  "revision": "2.1",
+  "exitMode": "reversible",
   "durationMs": 11000,
-  "sourceDrawingsShown": 288,
-  "composition": "Original exported PNGs at native size, measured translation offsets, neutral background and titles only. Source files unchanged.",
+  "sourceDrawingsShown": 192,
+  "composition": "Original exported PNGs at native size, integer-rounded measured translation offsets, neutral background and titles only. Source files unchanged.",
   "timing": "80fps video container represents 16fps transitions and10fps idle steps exactly through repeated displayed frames, without interpolation.",
   "note": "The MP4 is a compressed review preview. The transparent PNGs are the authoritative image assets.",
   "segments": [
@@ -15,7 +17,7 @@
       ],
       "startMs": 0,
       "durationMs": 5500,
-      "exitMode": "dedicated"
+      "exitMode": "reversible"
     },
     {
       "page": 2,
@@ -26,7 +28,7 @@
       ],
       "startMs": 5500,
       "durationMs": 5500,
-      "exitMode": "dedicated"
+      "exitMode": "reversible"
     }
   ],
   "expectedVideoFrames": 880,

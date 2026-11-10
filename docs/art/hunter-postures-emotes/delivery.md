@@ -1,56 +1,70 @@
-# Postures, rugissement et victoires du Yautja — livraison V2
+# Postures, rugissement et victoires — livraison V2.1
 
-## Contenu livré
+## Résultat
 
-La deuxième livraison complète les postures arboricoles avec leurs maintiens animés, la provocation par rugissement et deux poses de victoire. Chaque action comporte 16 dessins d’entrée, 16 de maintien et 16 de sortie dédiée : **288 dessins source dans 18 atlas**, dont les 96 transitions V1 conservées à l’identique.
+La V2.1 conserve les **288 PNG source**, les 18 atlas originaux, les 18 atlas d’import et les six poses fixes de V2. Elle corrige le placement horizontal des 144 images du rugissement et des deux victoires, harmonise le choix de sortie entre le lecteur et les manifestes natifs, et termine le comportement des séquences à lecture unique.
 
-| Action | Entrée | Maintien | Sortie dédiée |
+| Action | Entrée | Maintien animé | Sortie dédiée |
 | --- | ---: | ---: | ---: |
 | Accroupi sur une branche | 16 | 16 | 16 |
 | Embuscade contre le tronc | 16 | 16 | 16 |
 | Affût ouvert sur le tronc | 16 | 16 | 16 |
-| Provocation — rugissement | 16 | 16 | 16 |
-| Victoire — lance dressée | 16 | 16 | 16 |
-| Victoire — trophée brandi | 16 | 16 | 16 |
+| Provocation — rugissement sans masque | 16 | 16 | 16 |
+| Victoire — combistick et trophée levés | 16 | 16 | 16 |
+| Victoire — trophée présenté près du visage | 16 | 16 | 16 |
 
-Le rugissement montre la variante sans masque ; les victoires utilisent la lance dressée et le trophée brandi. Ces interprétations des références fournies restent **draft**, sans association automatique à une variante existante du roster.
+Les 96 transitions V1 restent intactes. Aucun nouveau dessin n’est revendiqué pour V2.1 : les corrections concernent le placement et la lecture. Les identifiants des atlas, pages et clips existants restent stables.
 
-## Fichiers et aperçu
+## Correction des appuis
 
-- Assets, métadonnées, séquences et vidéo : `public/game/sprites/hunter-postures-emotes/v1/`.
-- Provenance, empreintes, consignes et réexport : `art-source/hunter-postures-emotes/v1/`.
-- Lecteur : `/game/sprites/hunter-postures-emotes/v1/preview.html` lorsque l’application sert les fichiers publics.
-- Vidéo : `Yautja_Postures_V2_Apercu.mp4`, 11 secondes et deux pages de trois actions, avec toutes les entrées, les maintiens et les sorties dédiées.
+Les mesures précédentes utilisaient une zone horizontale limitée qui masquait une partie du déplacement des pieds. La nouvelle mesure considère toute la largeur du PNG et les huit rangées terminant à la ligne d’appui existante, au seuil alpha 128/255. Les 144 images présentent deux composantes de pieds identifiables selon ce critère.
 
-Le chemin de livraison reste stable dans cette PR ; les métadonnées portent la révision V2. Le lecteur charge les PNG voisins. Les six copies de pose fixe ne sont pas des dessins supplémentaires.
+Le milieu des deux appuis est aligné sur celui de la première entrée de la même action, en modifiant uniquement `pivot.x`. Les pivots verticaux, l’échelle et les pixels source restent identiques. `contact_registration.json` conserve les empreintes, les mesures, la formule, les valeurs antérieures et les limites.
 
-## Cadence et continuité
+| Séquence | Étendue de déplacement par pied avant | Après, pivots fractionnaires | Après arrondi au pixel, maximum |
+| --- | ---: | ---: | ---: |
+| Victoire au trophée — entrée | 26,16–26,83 px | 0,58 px | 1,34 px |
+| Victoire au trophée — sortie | 26,96–27,92 px | 0,91 px | 1,08 px |
+| Victoire au combistick — sortie | 13,19–14,12 px | 0,66 px | 1,06 px |
 
-Les transitions jouent à 16 i/s ; les maintiens à 10 i/s. Le maintien conseillé suit 1 → 16 → 2 puis reprend à 1 : 16 dessins sur 30 positions de lecture, soit 3 secondes. Le lecteur offre aussi le maintien fixe, le sens direct et la sortie réversible par relecture de l’entrée. `playback.json` contient les références et durées des séquences.
+Ces valeurs concernent les centroïdes de silhouettes de pieds, pas une approbation anatomique humaine. Les écarts d’écartement, de pose, de proportions et d’équipement demeurent distincts de la translation corrigée. Le rugissement change notamment l’écartement de ses pieds.
 
-La vidéo montre les sorties dédiées pour présenter les 288 dessins source. Son conteneur à 80 i/s représente exactement les deux cadences en répétant les images, sans interpolation. Elle contient 880 images encodées ; cela ne change pas le nombre de sprites source.
+![Comparaison avant et après recalage des appuis](contact-registration-v2_1.png)
 
-## Vérifications techniques
+## Lecture et manifestes natifs
 
-Les 288 PNG individuels sont distincts. Chaque image est vérifiée pixel par pixel contre sa cellule source, avec uniquement le remplissage transparent prévu. Les six atlas V1 et leurs 96 PNG n’ont pas changé. Les chemins, les empreintes et les pivots des 288 frames sont contrôlés.
+Les transitions jouent à **16 i/s** et les maintiens à **10 i/s**. Le maintien en aller-retour suit 1 → 16 → 2, soit 30 positions de lecture et trois secondes pour 16 dessins.
 
-Les rectangles utilisent `round(i × taille / 4)`. Pour 1 254 pixels, les limites sont `0, 314, 627, 941, 1254` ; les cellules de 313 pixels reçoivent un pixel transparent à droite ou en bas pour produire des canevas de 314 pixels, sans redimensionnement.
+Le lecteur expose une case **Stabiliser les appuis**, activée par défaut, permettant la comparaison avec le placement V2. Les modes **Entrée uniquement** et **Sortie uniquement** terminent après leur dernière image et la maintiennent à l’écran. Le bouton, la barre d’espace et Recommencer relancent correctement une séquence terminée. Les cycles et les maintiens restent bouclés ; l’inspection manuelle des séquences seules ne reboucle pas aux extrémités.
 
-Le maximum d’alpha observé aux bords des sources est 7/255 ; 277 cellules gardent des traces non nulles et aucune n’atteint le seuil visuel 16. Les 18 variantes `import_atlases/` ajoutent une garde transparente de 2 pixels autour de chaque PNG. Elles font 1 272 × 1 272 pixels avec des cellules de 318 × 318. Le contenu RGBA intérieur reste exactement identique, les pivots gagnent 2 pixels sur chaque axe et les bords des cellules ont un alpha strictement nul. Les sources originales sont conservées.
+Chaque manifeste natif conserve son clip de sortie dédiée `<action>_exit` et ajoute `<action>_exit_reversible`, constitué des mêmes rectangles, pivots et durées que l’entrée dans l’ordre inverse. `runtime_atlases/index.json` contient `defaultPlayback` : entrée, maintien, sortie réversible conseillée et sortie dédiée alternative. Les six manifestes contiennent **18 pages, 24 clips et 468 références de lecture pour 288 dessins source**.
 
-## Métadonnées natives du moteur
+Les 18 planches d’import conservent leurs cellules de 318 × 318, leur garde transparente de deux pixels et leurs 1272 × 1272 pixels. Le pivot natif vaut le nouveau pivot source plus `(2,2)`. Aucun champ d’échelle non pris en charge n’est ajouté au schéma.
 
-Les six fichiers `runtime_atlases/*.draft.json` suivent la structure `HunterSpriteAtlas` et référencent les variantes à garde transparente. Ils emploient 80 ticks/s : 5 ticks par dessin de transition et 8 par dessin de maintien. Les maintiens utilisent 30 références ping-pong pour leurs 16 dessins source. Le fichier `runtime_atlases/index.json` liste ces six manifestes.
+## Fichiers et aperçus
 
-Le personnage `reference-yautja` et les variantes de revue ne sont pas liés au roster. L’affectation `facing: right` sert uniquement au champ d’orientation exigé par le schéma et doit être confirmée par revue artistique. Tous les statuts d’atlas, de page et de clip restent `draft`. Aucune règle du renderer n’est changée et ces manifestes ne sont pas chargés automatiquement par le jeu.
+- Ressources, lecteur et vidéos : `public/game/sprites/hunter-postures-emotes/v1/`.
+- Provenance et outils : `art-source/hunter-postures-emotes/v1/`.
+- Lecteur servi : `/game/sprites/hunter-postures-emotes/v1/preview.html`.
+- Réglage conseillé : `Yautja_Postures_V2_1_Apercu.mp4`, 11 secondes, **192 dessins distincts** puisque la sortie réutilise l’entrée.
+- Revue de toutes les sources : `Yautja_Postures_V2_1_Sorties_Dediees.mp4`, 11 secondes, **288 dessins distincts**.
+- Rapports vidéo : `video_preview.json` et `video_preview_dedicated.json`.
 
-## Revue artistique et intégration à poursuivre
+L’ancienne vidéo V2 est conservée comme référence de la livraison précédente. Les nouveaux aperçus répètent les images dans un conteneur à 80 i/s afin de représenter exactement les cadences 16/10 ; leurs 880 images encodées ne constituent pas de nouveaux sprites.
 
-La génération séparée des atlas peut modifier la pose, les proportions et les équipements aux raccords. Les décalages d’ancrage règlent le placement, sans corriger le dessin. Le maintien fixe avec sortie réversible garantit les mêmes images aux raccords entrée/sortie ; les liaisons avec un maintien animé séparé restent à examiner.
+## Vérification ciblée
 
-La sortie dédiée de la victoire à la lance conserve environ 8 à 10 pixels de dérive horizontale des appuis après leur correction verticale par les pivots. Elle reste une alternative en revue ; la sortie réversible est proposée par défaut.
+```bash
+node --experimental-strip-types art-source/hunter-postures-emotes/v1/check_runtime_manifests.mjs
+node art-source/hunter-postures-emotes/v1/check_preview_behavior.mjs public/game/sprites/hunter-postures-emotes/v1/preview.html
+git diff --check
+```
 
-Il reste à revoir les silhouettes, les appuis, les accessoires, la variante et l’orientation cible, le traitement des traces alpha, les occlusions et l’échelle dans une scène réelle. La transparence et le nombre de frames ne valent pas approbation artistique. Aucun contrôle de jeu, de navigateur, de performance ou de combat n’est revendiqué.
+Le premier contrôle valide les six manifestes avec le contrat du dépôt, les inversions, le choix par défaut, les durées et la conservation des sorties dédiées. Il vérifie que la résolution des brouillons reste refusée.
+
+Le second exécute le JavaScript réel du lecteur avec un DOM, des images et une horloge simulés. Il vérifie les fins de séquence, les reprises, la pause, les boucles, la vitesse et les placements avant/après. Ce contrôle n’est pas un essai navigateur. Les vidéos sont composées hors navigateur.
+
+La comparaison indépendante vérifie les 330 PNG V2, les 144 nouveaux pivots horizontaux, les pivots verticaux conservés, les 144 pivots arboricoles inchangés et la garde des atlas. Les résultats sont consignés dans `contact-registration-verification-v2_1.json`.
 
 ## Réexport
 
@@ -58,6 +72,13 @@ Il reste à revoir les silhouettes, les appuis, les accessoires, la variante et 
 node art-source/hunter-postures-emotes/v1/export_sprites.cjs
 node art-source/hunter-postures-emotes/v1/build_runtime_manifests.cjs
 node art-source/hunter-postures-emotes/v1/render_preview.cjs
+node art-source/hunter-postures-emotes/v1/render_preview.cjs --dedicated
 ```
 
-Le premier script utilise `sharp`, préserve les PNG V1 et reconstruit les exports, les séquences, les variantes avec garde et le lecteur léger. Le deuxième reconstruit les six manifestes natifs en statut `draft`. Le troisième utilise aussi `ffmpeg` et `ffprobe` pour recomposer la vidéo. Les scripts ne régénèrent ni ne retouchent les dessins. Le manifeste d’intake reste un enregistrement de la livraison révisé séparément.
+Le dossier public est déduit de l’emplacement des scripts ; un autre dossier peut être passé explicitement avant les options. Les scripts utilisent Node.js, `sharp`, `ffmpeg` et `ffprobe`, sans génération ou retouche des images.
+
+## Statut artistique
+
+Les atlas, pages et clips restent **draft**. Le contrat de `hunterSpriteAtlas.ts` réserve `validated` à une revue artistique humaine. Le personnage `reference-yautja`, ses variantes de revue et l’orientation provisoire `right` ne sont pas associés automatiquement au roster.
+
+Le recalage retire les translations communes des appuis ; il ne garantit pas les raccords d’anatomie, de pose, d’équipement ou d’échelle entre les planches générées séparément. Ces points, les occlusions et l’apparence dans une scène réelle restent à examiner. Aucun parcours navigateur, test de combat ou relevé de performance en jeu n’est revendiqué.

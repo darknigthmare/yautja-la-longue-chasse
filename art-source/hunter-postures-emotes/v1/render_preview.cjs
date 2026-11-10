@@ -34,8 +34,9 @@ async function ffmpeg(args, timeline) {
   } catch(error) {process.stdin.destroy();process.kill();await completion.catch(()=>{});throw error;}
 }
 async function main() {
-  const folder = path.resolve(process.argv[2] || path.join(__dirname, '../../../public/game/sprites/hunter-postures-emotes/v1'));
-  const variant = process.argv.includes('--reversible') ? 'reversible' : 'dedicated';
+  const args = process.argv.slice(2);
+  const folder = path.resolve(args.find(argument => !argument.startsWith('--')) || path.join(__dirname, '../../../public/game/sprites/hunter-postures-emotes/v1'));
+  const variant = args.includes('--dedicated') ? 'dedicated' : 'reversible';
   const manifest = JSON.parse(await fs.readFile(path.join(folder,'animations.json'),'utf8'));
   const playback = JSON.parse(await fs.readFile(path.join(folder,'playback.json'),'utf8'));
   const clips = Object.fromEntries(manifest.clips.map(clip => [clip.id,clip]));
@@ -47,7 +48,8 @@ async function main() {
   const temporary = await fs.mkdtemp(path.join(os.tmpdir(),'yautja-v2-video-'));
   const timeline = [], cache = new Map(), usedDrawings = new Set(), segments = [];
   let serial = 0, totalMs = 0;
-  const output = path.join(folder,'Yautja_Postures_V2_Apercu.mp4');
+  const revision = String(manifest.version).replace(/[^0-9]+/g, '_');
+  const output = path.join(folder,`Yautja_Postures_V${revision}_${variant === 'dedicated' ? 'Sorties_Dediees' : 'Apercu'}.mp4`);
   try {
     for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
       const actions = pages[pageIndex];
@@ -64,7 +66,7 @@ async function main() {
           filename = path.join(temporary,`${String(serial++).padStart(4,'0')}.png`);
           const panelTitles = actions.map((action,column) => `<text x="${column*panelWidth+panelWidth/2}" y="86" text-anchor="middle" font-size="18" fill="#eaf0e4">${xml(action.label)}</text>`).join('');
           const dividers = [1,2].map(column => `<line x1="${column*panelWidth}" y1="70" x2="${column*panelWidth}" y2="${height-63}" stroke="#354537"/>`).join('');
-          const header = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111b14"/><g font-family="DejaVu Sans,sans-serif"><text x="24" y="31" font-size="23" fill="#eaf0e4">YAUTJA — POSTURES ET CÉLÉBRATIONS</text><text x="24" y="54" font-size="12" fill="#a4ba93">V2 · page ${pageIndex+1}/${pages.length} · sprites à leur taille native · transitions 16 i/s · maintien 10 i/s</text>${panelTitles}${dividers}<text x="${width/2}" y="${height-39}" text-anchor="middle" font-size="16" fill="#bfd99a">${xml(ROLE_LABELS[steps[0].role] || steps[0].role)}</text><text x="${width/2}" y="${height-16}" text-anchor="middle" font-size="11" fill="#9aae90">Maintien en aller-retour · sortie ${variant === 'dedicated' ? 'dédiée' : 'réversible'} · raccords entre atlas à contrôler en jeu</text></g></svg>`;
+          const header = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#111b14"/><g font-family="DejaVu Sans,sans-serif"><text x="24" y="31" font-size="23" fill="#eaf0e4">YAUTJA — POSTURES ET CÉLÉBRATIONS</text><text x="24" y="54" font-size="12" fill="#a4ba93">V${xml(manifest.version)} · page ${pageIndex+1}/${pages.length} · sprites à leur taille native · transitions 16 i/s · maintien 10 i/s</text>${panelTitles}${dividers}<text x="${width/2}" y="${height-39}" text-anchor="middle" font-size="16" fill="#bfd99a">${xml(ROLE_LABELS[steps[0].role] || steps[0].role)}</text><text x="${width/2}" y="${height-16}" text-anchor="middle" font-size="11" fill="#9aae90">Maintien en aller-retour · sortie ${variant === 'dedicated' ? 'dédiée' : 'réversible'} · raccords entre atlas à contrôler en jeu</text></g></svg>`;
           const overlays = [];
           for (let column = 0; column < steps.length; column++) {
             const step = steps[column], clip = clips[step.clipId], frame = clip.frames[step.index];
@@ -91,13 +93,13 @@ async function main() {
     const expectedFrames = Math.round(totalMs / 1000 * outputFps);
     if (!stream || Number(stream.nb_read_frames) !== expectedFrames || Math.abs(Number(stream.duration) * 1000 - totalMs) > 1) throw new Error(`Video timing mismatch: expected ${expectedFrames} frames/${totalMs}ms, received ${stream?.nb_read_frames}/${stream?.duration}s.`);
     const metadata = {
-      filename:path.basename(output),durationMs:totalMs,sourceDrawingsShown:usedDrawings.size,
-      composition:'Original exported PNGs at native size, measured translation offsets, neutral background and titles only. Source files unchanged.',
+      filename:path.basename(output),revision:manifest.version,exitMode:variant,durationMs:totalMs,sourceDrawingsShown:usedDrawings.size,
+      composition:'Original exported PNGs at native size, integer-rounded measured translation offsets, neutral background and titles only. Source files unchanged.',
       timing:'80fps video container represents 16fps transitions and10fps idle steps exactly through repeated displayed frames, without interpolation.',
       note:'The MP4 is a compressed review preview. The transparent PNGs are the authoritative image assets.',
       segments,expectedVideoFrames:expectedFrames,probe:probeData,
     };
-    await fs.writeFile(path.join(folder,'video_preview.json'),JSON.stringify(metadata,null,2)+'\n');
+    await fs.writeFile(path.join(folder,variant === 'dedicated' ? 'video_preview_dedicated.json' : 'video_preview.json'),JSON.stringify(metadata,null,2)+'\n');
     console.log(JSON.stringify(metadata,null,2));
   } finally {await fs.rm(temporary,{recursive:true,force:true});}
 }
