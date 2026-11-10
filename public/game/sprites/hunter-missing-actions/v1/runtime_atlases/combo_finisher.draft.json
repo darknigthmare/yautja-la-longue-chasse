@@ -1,0 +1,497 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-combo_finisher-missing-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "combo_finisher-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "combo_finisher_a",
+      "src": "/game/sprites/hunter-missing-actions/v1/import_atlases/combo_finisher_a.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "combo_finisher_b",
+      "src": "/game/sprites/hunter-missing-actions/v1/import_atlases/combo_finisher_b.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "combo_finisher_action",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_a",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "combo_finisher_b",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            138.13890836399108,
+            280.6
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

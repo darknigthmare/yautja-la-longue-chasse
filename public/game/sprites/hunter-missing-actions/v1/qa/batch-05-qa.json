@@ -1,0 +1,6891 @@
+{
+  "schemaVersion": 1,
+  "artisticStatus": "draft_requires_human_review",
+  "readOnly": true,
+  "sourceCount": 3,
+  "sheets": [
+    {
+      "action": "guard_break_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-b66de90d-1694-4afd-b908-311119af5ea0.png",
+      "sha256": "7e6f4774e9291683ae8de2dbb995276453b13e73b2f18ccdcbd0dedfabe7f6ef",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "opaqueFraction": 0.0014231969658814283,
+      "transparentFraction": 0.6664142050064992,
+      "gridRounding": "Math.round-compatible: floor(k*extent/count+0.5)",
+      "gridBoundariesX": [
+        0,
+        314,
+        627,
+        941,
+        1254
+      ],
+      "gridBoundariesY": [
+        0,
+        314,
+        627,
+        941,
+        1254
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "cellRect": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "rgbaSha256": "a5dbc7a56ad39431b12ac1814de21d17a70145176a8e680b63b98b76b3ebc06c",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                17,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                17,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 12,
+                "right": 15,
+                "top": 0,
+                "bottom": 18
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                29,
+                60,
+                282,
+                307
+              ],
+              "marginsLTRB": [
+                29,
+                60,
+                32,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                31,
+                62,
+                280,
+                305
+              ],
+              "marginsLTRB": [
+                31,
+                62,
+                34,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                31,
+                62,
+                280,
+                305
+              ],
+              "marginsLTRB": [
+                31,
+                62,
+                34,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                31,
+                63,
+                279,
+                304
+              ],
+              "marginsLTRB": [
+                31,
+                63,
+                35,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 43,
+                "x1": 86,
+                "area": 297,
+                "centroidX": 64.55555555555556
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 321,
+                "centroidX": 194.62305295950156
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 43,
+                "x1": 86,
+                "area": 297,
+                "centroidX": 64.55555555555556
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 321,
+                "centroidX": 194.62305295950156
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 129.58930425752857,
+            "candidateFootSeparationX": 130.067497403946
+          }
+        },
+        {
+          "index": 2,
+          "cellRect": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "rgbaSha256": "8917035913585cfcc2ce7fc546830c2e86bac2b32aef9e0a96c5b2c86d8efb97",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                23,
+                313,
+                308
+              ],
+              "marginsLTRB": [
+                0,
+                23,
+                0,
+                6
+              ],
+              "borderPixelCounts": {
+                "left": 9,
+                "right": 2,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                30,
+                63,
+                273,
+                307
+              ],
+              "marginsLTRB": [
+                30,
+                63,
+                40,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                33,
+                65,
+                271,
+                305
+              ],
+              "marginsLTRB": [
+                33,
+                65,
+                42,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                33,
+                65,
+                271,
+                305
+              ],
+              "marginsLTRB": [
+                33,
+                65,
+                42,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                34,
+                66,
+                270,
+                304
+              ],
+              "marginsLTRB": [
+                34,
+                66,
+                43,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 44,
+                "x1": 87,
+                "area": 298,
+                "centroidX": 65.31208053691275
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 324,
+                "centroidX": 194.13888888888889
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 44,
+                "x1": 87,
+                "area": 298,
+                "centroidX": 65.31208053691275
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 324,
+                "centroidX": 194.13888888888889
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 129.72548471290082,
+            "candidateFootSeparationX": 128.82680835197613
+          }
+        },
+        {
+          "index": 3,
+          "cellRect": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "rgbaSha256": "fa9ff6e65cc6e7067b375bcd6562f0c4e6106ffa203b7911b4b1b7a196e9193d",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                1,
+                27,
+                314,
+                308
+              ],
+              "marginsLTRB": [
+                1,
+                27,
+                0,
+                6
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 6,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                37,
+                63,
+                254,
+                307
+              ],
+              "marginsLTRB": [
+                37,
+                63,
+                60,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                40,
+                65,
+                251,
+                305
+              ],
+              "marginsLTRB": [
+                40,
+                65,
+                63,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                40,
+                65,
+                251,
+                305
+              ],
+              "marginsLTRB": [
+                40,
+                65,
+                63,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                40,
+                66,
+                250,
+                304
+              ],
+              "marginsLTRB": [
+                40,
+                66,
+                64,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 45,
+                "x1": 87,
+                "area": 289,
+                "centroidX": 65.69204152249135
+              },
+              {
+                "x0": 161,
+                "x1": 222,
+                "area": 325,
+                "centroidX": 193.91384615384615
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 45,
+                "x1": 87,
+                "area": 289,
+                "centroidX": 65.69204152249135
+              },
+              {
+                "x0": 161,
+                "x1": 222,
+                "area": 325,
+                "centroidX": 193.91384615384615
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 129.80294383816874,
+            "candidateFootSeparationX": 128.22180463135481
+          }
+        },
+        {
+          "index": 4,
+          "cellRect": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "rgbaSha256": "16a77aa9ddb14f0c9eabf91c920af7a04ceec2f01c66a176c939e311a8af64f1",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                23,
+                289,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                23,
+                24,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 13,
+                "right": 0,
+                "top": 0,
+                "bottom": 5
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                41,
+                63,
+                231,
+                307
+              ],
+              "marginsLTRB": [
+                41,
+                63,
+                82,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                43,
+                65,
+                229,
+                305
+              ],
+              "marginsLTRB": [
+                43,
+                65,
+                84,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                43,
+                65,
+                229,
+                305
+              ],
+              "marginsLTRB": [
+                43,
+                65,
+                84,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                44,
+                66,
+                228,
+                304
+              ],
+              "marginsLTRB": [
+                44,
+                66,
+                85,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 44,
+                "x1": 86,
+                "area": 285,
+                "centroidX": 65.16140350877193
+              },
+              {
+                "x0": 161,
+                "x1": 222,
+                "area": 320,
+                "centroidX": 193.559375
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 44,
+                "x1": 86,
+                "area": 285,
+                "centroidX": 65.16140350877193
+              },
+              {
+                "x0": 161,
+                "x1": 222,
+                "area": 320,
+                "centroidX": 193.559375
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 129.36038925438595,
+            "candidateFootSeparationX": 128.39797149122808
+          }
+        },
+        {
+          "index": 5,
+          "cellRect": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "rgbaSha256": "0a8868e50ca144dacdbb24fdb02f2d62bb3c201ba0632ff47a0107f270b86d05",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                314,
+                313
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 63,
+                "right": 1,
+                "top": 17,
+                "bottom": 25
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                42,
+                60,
+                224,
+                306
+              ],
+              "marginsLTRB": [
+                42,
+                60,
+                90,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                44,
+                63,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                44,
+                63,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                44,
+                63,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                44,
+                63,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                45,
+                64,
+                223,
+                303
+              ],
+              "marginsLTRB": [
+                45,
+                64,
+                91,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 302,
+            "candidates": [
+              {
+                "x0": 45,
+                "x1": 86,
+                "area": 280,
+                "centroidX": 65.325
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 362,
+                "centroidX": 193.55248618784532
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 45,
+                "x1": 86,
+                "area": 280,
+                "centroidX": 65.325
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 362,
+                "centroidX": 193.55248618784532
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 129.43874309392265,
+            "candidateFootSeparationX": 128.22748618784533
+          }
+        },
+        {
+          "index": 6,
+          "cellRect": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "rgbaSha256": "ef2c75e79818cd4024dd0b3fa94ee2d12005a5f9a34605af8a6be04b36c8f616",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                14,
+                305,
+                313
+              ],
+              "marginsLTRB": [
+                0,
+                14,
+                8,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 10,
+                "right": 0,
+                "top": 0,
+                "bottom": 2
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                45,
+                58,
+                225,
+                306
+              ],
+              "marginsLTRB": [
+                45,
+                58,
+                88,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                47,
+                60,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                47,
+                60,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                47,
+                60,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                47,
+                60,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                48,
+                61,
+                223,
+                303
+              ],
+              "marginsLTRB": [
+                48,
+                61,
+                90,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 302,
+            "candidates": [
+              {
+                "x0": 48,
+                "x1": 88,
+                "area": 270,
+                "centroidX": 68.34074074074074
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 365,
+                "centroidX": 193.15616438356165
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 48,
+                "x1": 88,
+                "area": 270,
+                "centroidX": 68.34074074074074
+              },
+              {
+                "x0": 161,
+                "x1": 223,
+                "area": 365,
+                "centroidX": 193.15616438356165
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 130.7484525621512,
+            "candidateFootSeparationX": 124.8154236428209
+          }
+        },
+        {
+          "index": 7,
+          "cellRect": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "rgbaSha256": "b347832a2317f8054f81bdab05bd7337f6b19bd0079a66a4fff52e9f5808ada0",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                9,
+                10,
+                314,
+                313
+              ],
+              "marginsLTRB": [
+                9,
+                10,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 3,
+                "top": 0,
+                "bottom": 28
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                50,
+                56,
+                224,
+                306
+              ],
+              "marginsLTRB": [
+                50,
+                56,
+                90,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                53,
+                57,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                53,
+                57,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                53,
+                57,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                53,
+                57,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                53,
+                58,
+                223,
+                303
+              ],
+              "marginsLTRB": [
+                53,
+                58,
+                91,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 302,
+            "candidates": [
+              {
+                "x0": 53,
+                "x1": 93,
+                "area": 271,
+                "centroidX": 73.31734317343174
+              },
+              {
+                "x0": 163,
+                "x1": 223,
+                "area": 369,
+                "centroidX": 194.62330623306232
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 53,
+                "x1": 93,
+                "area": 271,
+                "centroidX": 73.31734317343174
+              },
+              {
+                "x0": 163,
+                "x1": 223,
+                "area": 369,
+                "centroidX": 194.62330623306232
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 133.97032470324703,
+            "candidateFootSeparationX": 121.30596305963059
+          }
+        },
+        {
+          "index": 8,
+          "cellRect": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "rgbaSha256": "b3a0b8a172e1b489a3b3baece3f354a1c63b6f1b195c5faa2b0bb139825863d1",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                307,
+                313
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                6,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 9,
+                "right": 0,
+                "top": 2,
+                "bottom": 23
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                56,
+                50,
+                225,
+                306
+              ],
+              "marginsLTRB": [
+                56,
+                50,
+                88,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                58,
+                51,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                58,
+                51,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                58,
+                51,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                58,
+                51,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                59,
+                52,
+                222,
+                303
+              ],
+              "marginsLTRB": [
+                59,
+                52,
+                91,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 302,
+            "candidates": [
+              {
+                "x0": 59,
+                "x1": 98,
+                "area": 260,
+                "centroidX": 78.29230769230769
+              },
+              {
+                "x0": 162,
+                "x1": 222,
+                "area": 366,
+                "centroidX": 193.31420765027323
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 59,
+                "x1": 98,
+                "area": 260,
+                "centroidX": 78.29230769230769
+              },
+              {
+                "x0": 162,
+                "x1": 222,
+                "area": 366,
+                "centroidX": 193.31420765027323
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 135.80325767129045,
+            "candidateFootSeparationX": 115.02189995796554
+          }
+        },
+        {
+          "index": 9,
+          "cellRect": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "rgbaSha256": "f1dc4fe5419f071e49b6c64becd26f27acb060f2911ac5857a84fbced0e830ee",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 11,
+                "right": 1,
+                "top": 9,
+                "bottom": 2
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                62,
+                48,
+                224,
+                307
+              ],
+              "marginsLTRB": [
+                62,
+                48,
+                90,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                64,
+                50,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                64,
+                50,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                64,
+                50,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                64,
+                50,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                64,
+                51,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                64,
+                51,
+                91,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 64,
+                "x1": 105,
+                "area": 282,
+                "centroidX": 84.62765957446808
+              },
+              {
+                "x0": 163,
+                "x1": 223,
+                "area": 357,
+                "centroidX": 194.40056022408965
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 64,
+                "x1": 105,
+                "area": 282,
+                "centroidX": 84.62765957446808
+              },
+              {
+                "x0": 163,
+                "x1": 223,
+                "area": 357,
+                "centroidX": 194.40056022408965
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 139.51410989927888,
+            "candidateFootSeparationX": 109.77290064962156
+          }
+        },
+        {
+          "index": 10,
+          "cellRect": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "rgbaSha256": "d8b291d2809c211c4a787a1f570ae085e46ba490ec38a5f502264c89d26b921c",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                17,
+                313,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                17,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 5,
+                "right": 19,
+                "top": 0,
+                "bottom": 14
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                64,
+                42,
+                226,
+                307
+              ],
+              "marginsLTRB": [
+                64,
+                42,
+                87,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                66,
+                44,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                66,
+                44,
+                89,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                66,
+                44,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                66,
+                44,
+                89,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                67,
+                44,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                67,
+                44,
+                90,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 67,
+                "x1": 107,
+                "area": 272,
+                "centroidX": 87.01102941176471
+              },
+              {
+                "x0": 163,
+                "x1": 223,
+                "area": 355,
+                "centroidX": 194.27605633802816
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 67,
+                "x1": 107,
+                "area": 272,
+                "centroidX": 87.01102941176471
+              },
+              {
+                "x0": 163,
+                "x1": 223,
+                "area": 355,
+                "centroidX": 194.27605633802816
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 140.64354287489644,
+            "candidateFootSeparationX": 107.26502692626345
+          }
+        },
+        {
+          "index": 11,
+          "cellRect": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "rgbaSha256": "15fcd960195a18ef6931169ea2d72fcf0bffbd8f05984738776a36dc8798b1f1",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 1,
+                "right": 16,
+                "top": 18,
+                "bottom": 3
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                67,
+                37,
+                224,
+                307
+              ],
+              "marginsLTRB": [
+                67,
+                37,
+                90,
+                7
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                69,
+                39,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                69,
+                39,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                69,
+                39,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                69,
+                39,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                70,
+                40,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                70,
+                40,
+                91,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 70,
+                "x1": 110,
+                "area": 283,
+                "centroidX": 89.96113074204948
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 360,
+                "centroidX": 195.15833333333333
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 70,
+                "x1": 110,
+                "area": 283,
+                "centroidX": 89.96113074204948
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 360,
+                "centroidX": 195.15833333333333
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 142.5597320376914,
+            "candidateFootSeparationX": 105.19720259128385
+          }
+        },
+        {
+          "index": 12,
+          "cellRect": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "rgbaSha256": "dab5c958c76f13f1f86d448b5c7b5cdb8df8f5eddf5ad89995d4befa154816d6",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                299,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                14,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 6,
+                "right": 0,
+                "top": 5,
+                "bottom": 13
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                68,
+                32,
+                226,
+                308
+              ],
+              "marginsLTRB": [
+                68,
+                32,
+                87,
+                6
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                69,
+                34,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                69,
+                34,
+                89,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                69,
+                34,
+                224,
+                305
+              ],
+              "marginsLTRB": [
+                69,
+                34,
+                89,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                70,
+                35,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                70,
+                35,
+                90,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 72,
+                "x1": 111,
+                "area": 274,
+                "centroidX": 90.77007299270073
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 374,
+                "centroidX": 194.52673796791444
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 72,
+                "x1": 111,
+                "area": 274,
+                "centroidX": 90.77007299270073
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 374,
+                "centroidX": 194.52673796791444
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 142.6484054803076,
+            "candidateFootSeparationX": 103.75666497521371
+          }
+        },
+        {
+          "index": 13,
+          "cellRect": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "rgbaSha256": "4bdfc96706b399b67ae0d30f2091b5dc228d15f39275d9f949523ee527744c99",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                17,
+                6,
+                306,
+                313
+              ],
+              "marginsLTRB": [
+                17,
+                6,
+                8,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 126
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                66,
+                29,
+                224,
+                313
+              ],
+              "marginsLTRB": [
+                66,
+                29,
+                90,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 2
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                69,
+                31,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                69,
+                31,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                69,
+                31,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                69,
+                31,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                69,
+                32,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                69,
+                32,
+                91,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 74,
+                "x1": 114,
+                "area": 263,
+                "centroidX": 93.50190114068441
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 319,
+                "centroidX": 195.09404388714734
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 74,
+                "x1": 114,
+                "area": 263,
+                "centroidX": 93.50190114068441
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 319,
+                "centroidX": 195.09404388714734
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 144.29797251391588,
+            "candidateFootSeparationX": 101.59214274646293
+          }
+        },
+        {
+          "index": 14,
+          "cellRect": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "rgbaSha256": "d88d629a2613b185b1ba8412cf91b68644374a737f0f372c5ece72effdddfae2",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                4,
+                0,
+                313,
+                313
+              ],
+              "marginsLTRB": [
+                4,
+                0,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 6,
+                "top": 9,
+                "bottom": 109
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                68,
+                26,
+                226,
+                313
+              ],
+              "marginsLTRB": [
+                68,
+                26,
+                87,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 27
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                70,
+                30,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                70,
+                30,
+                89,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                70,
+                30,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                70,
+                30,
+                89,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                71,
+                31,
+                223,
+                304
+              ],
+              "marginsLTRB": [
+                71,
+                31,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 79,
+                "x1": 119,
+                "area": 258,
+                "centroidX": 98.73255813953489
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 322,
+                "centroidX": 194.5248447204969
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 79,
+                "x1": 119,
+                "area": 258,
+                "centroidX": 98.73255813953489
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 322,
+                "centroidX": 194.5248447204969
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 146.6287014300159,
+            "candidateFootSeparationX": 95.79228658096201
+          }
+        },
+        {
+          "index": 15,
+          "cellRect": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "rgbaSha256": "d1c28a645768ee006e6457c69541c5a8070f028f41ce76cdce3029ea27f64dbd",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                1,
+                0,
+                302,
+                313
+              ],
+              "marginsLTRB": [
+                1,
+                0,
+                12,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 1,
+                "bottom": 111
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                66,
+                27,
+                224,
+                313
+              ],
+              "marginsLTRB": [
+                66,
+                27,
+                90,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 6
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                69,
+                30,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                69,
+                30,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                69,
+                30,
+                224,
+                304
+              ],
+              "marginsLTRB": [
+                69,
+                30,
+                90,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                70,
+                31,
+                223,
+                303
+              ],
+              "marginsLTRB": [
+                70,
+                31,
+                91,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 302,
+            "candidates": [
+              {
+                "x0": 81,
+                "x1": 121,
+                "area": 301,
+                "centroidX": 100.72757475083057
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 371,
+                "centroidX": 194.84636118598382
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 81,
+                "x1": 121,
+                "area": 301,
+                "centroidX": 100.72757475083057
+              },
+              {
+                "x0": 164,
+                "x1": 223,
+                "area": 371,
+                "centroidX": 194.84636118598382
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 147.7869679684072,
+            "candidateFootSeparationX": 94.11878643515325
+          }
+        },
+        {
+          "index": 16,
+          "cellRect": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "rgbaSha256": "2fba84332cad7c7f3f1f3804c874c84ba1f780791ed91396fb718fb3dafcb3ff",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                4,
+                0,
+                295,
+                313
+              ],
+              "marginsLTRB": [
+                4,
+                0,
+                18,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 11,
+                "bottom": 99
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                66,
+                27,
+                224,
+                313
+              ],
+              "marginsLTRB": [
+                66,
+                27,
+                89,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 14
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                68,
+                31,
+                222,
+                304
+              ],
+              "marginsLTRB": [
+                68,
+                31,
+                91,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                68,
+                31,
+                222,
+                304
+              ],
+              "marginsLTRB": [
+                68,
+                31,
+                91,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                69,
+                32,
+                221,
+                304
+              ],
+              "marginsLTRB": [
+                69,
+                32,
+                92,
+                9
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 303,
+            "candidates": [
+              {
+                "x0": 82,
+                "x1": 123,
+                "area": 267,
+                "centroidX": 102.0187265917603
+              },
+              {
+                "x0": 161,
+                "x1": 221,
+                "area": 325,
+                "centroidX": 192.51692307692306
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 82,
+                "x1": 123,
+                "area": 267,
+                "centroidX": 102.0187265917603
+              },
+              {
+                "x0": 161,
+                "x1": 221,
+                "area": 325,
+                "centroidX": 192.51692307692306
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 147.2678248343417,
+            "candidateFootSeparationX": 90.49819648516277
+          }
+        }
+      ],
+      "artisticStatus": "draft_requires_human_review",
+      "borderPolicy": {
+        "alphaGte16": "thresholds.15 is alpha >15, exactly alpha>=16",
+        "runtimeVisibilityThreshold": "alpha>2; record low-alpha edge noise independently"
+      },
+      "footRegistrationEligibleForReview": true,
+      "summary": {
+        "borderFramesAlphaGte16": [],
+        "borderFramesAlphaGt2": [
+          13,
+          14,
+          15,
+          16
+        ],
+        "visibleMarginsMinimumLTRB": [
+          31,
+          30,
+          34,
+          9
+        ],
+        "footCandidates": {
+          "framesWithTwoCandidates": 16,
+          "candidateMidpointX": {
+            "min": 129.36,
+            "max": 147.787,
+            "range": 18.427
+          },
+          "candidateFootSeparationX": {
+            "min": 90.498,
+            "max": 130.067,
+            "range": 39.569
+          },
+          "floorY": {
+            "min": 302,
+            "max": 303,
+            "range": 1
+          },
+          "note": "Candidate measurements only. Inspect hand/weapon overlap and intentional steps before translating any pose."
+        }
+      }
+    },
+    {
+      "action": "run_backward",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-0bfdcb13-2cca-434f-8fdf-4a049357209e.png",
+      "sha256": "2605f3cbcee3e5c9857c221275e2707623813e4ea44a7b5e9b29cc6cb8db8868",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "opaqueFraction": 0.0008699434536755111,
+      "transparentFraction": 0.7375352619623584,
+      "gridRounding": "Math.round-compatible: floor(k*extent/count+0.5)",
+      "gridBoundariesX": [
+        0,
+        314,
+        627,
+        941,
+        1254
+      ],
+      "gridBoundariesY": [
+        0,
+        314,
+        627,
+        941,
+        1254
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "cellRect": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "rgbaSha256": "21576bbd28c38fc86763f78f6312b089fc0d0347e4bd7718cd508bd762e330bc",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                31,
+                16,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                31,
+                16,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 2,
+                "top": 0,
+                "bottom": 6
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                60,
+                17,
+                231,
+                299
+              ],
+              "marginsLTRB": [
+                60,
+                17,
+                83,
+                15
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                62,
+                19,
+                229,
+                296
+              ],
+              "marginsLTRB": [
+                62,
+                19,
+                85,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                62,
+                19,
+                229,
+                296
+              ],
+              "marginsLTRB": [
+                62,
+                19,
+                85,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                63,
+                20,
+                228,
+                295
+              ],
+              "marginsLTRB": [
+                63,
+                20,
+                86,
+                19
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 294,
+            "candidates": [
+              {
+                "x0": 64,
+                "x1": 97,
+                "area": 189,
+                "centroidX": 81.64021164021165
+              },
+              {
+                "x0": 172,
+                "x1": 225,
+                "area": 319,
+                "centroidX": 201.56112852664577
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 64,
+                "x1": 97,
+                "area": 189,
+                "centroidX": 81.64021164021165
+              },
+              {
+                "x0": 172,
+                "x1": 225,
+                "area": 319,
+                "centroidX": 201.56112852664577
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 141.60067008342872,
+            "candidateFootSeparationX": 119.92091688643413
+          }
+        },
+        {
+          "index": 2,
+          "cellRect": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "rgbaSha256": "62ab2c568d3fc0d823ba01cc33efb6da5963c35269226d782295a22776340bd2",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                14,
+                313,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                14,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 14,
+                "right": 38,
+                "top": 0,
+                "bottom": 9
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                89,
+                16,
+                227,
+                299
+              ],
+              "marginsLTRB": [
+                89,
+                16,
+                86,
+                15
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                90,
+                18,
+                224,
+                297
+              ],
+              "marginsLTRB": [
+                90,
+                18,
+                89,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                90,
+                18,
+                224,
+                297
+              ],
+              "marginsLTRB": [
+                90,
+                18,
+                89,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                90,
+                19,
+                223,
+                296
+              ],
+              "marginsLTRB": [
+                90,
+                19,
+                90,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 295,
+            "candidates": [
+              {
+                "x0": 93,
+                "x1": 126,
+                "area": 177,
+                "centroidX": 110.29943502824858
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 93,
+                "x1": 126,
+                "area": 177,
+                "centroidX": 110.29943502824858
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 3,
+          "cellRect": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "rgbaSha256": "59285b9d361e7961ca74f9e58bfbffe5553138075785c56995f798224395f224",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                14,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                14,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 11,
+                "right": 6,
+                "top": 0,
+                "bottom": 7
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                96,
+                15,
+                226,
+                301
+              ],
+              "marginsLTRB": [
+                96,
+                15,
+                88,
+                13
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                98,
+                17,
+                225,
+                298
+              ],
+              "marginsLTRB": [
+                98,
+                17,
+                89,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                98,
+                17,
+                225,
+                298
+              ],
+              "marginsLTRB": [
+                98,
+                17,
+                89,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                99,
+                17,
+                225,
+                298
+              ],
+              "marginsLTRB": [
+                99,
+                17,
+                89,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 297,
+            "candidates": [
+              {
+                "x0": 127,
+                "x1": 172,
+                "area": 270,
+                "centroidX": 149.1259259259259
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 127,
+                "x1": 172,
+                "area": 270,
+                "centroidX": 149.1259259259259
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 4,
+          "cellRect": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "rgbaSha256": "9748d7d0aae33d40ce62784794d428fdf360f89e85b6ddf5a949259f80ee9c10",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                14,
+                277,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                14,
+                36,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 7,
+                "right": 0,
+                "top": 0,
+                "bottom": 10
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                93,
+                14,
+                222,
+                298
+              ],
+              "marginsLTRB": [
+                93,
+                14,
+                91,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                96,
+                16,
+                219,
+                296
+              ],
+              "marginsLTRB": [
+                96,
+                16,
+                94,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                96,
+                16,
+                219,
+                296
+              ],
+              "marginsLTRB": [
+                96,
+                16,
+                94,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                96,
+                16,
+                219,
+                295
+              ],
+              "marginsLTRB": [
+                96,
+                16,
+                94,
+                19
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 294,
+            "candidates": [
+              {
+                "x0": 153,
+                "x1": 172,
+                "area": 73,
+                "centroidX": 164.45205479452054
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 153,
+                "x1": 172,
+                "area": 73,
+                "centroidX": 164.45205479452054
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 5,
+          "cellRect": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "rgbaSha256": "e5c1aa1555d0da8c37d27f6d73d4b3c2a0a3776acd537f90aaa75fff19a7b97f",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                25,
+                0,
+                314,
+                307
+              ],
+              "marginsLTRB": [
+                25,
+                0,
+                0,
+                6
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 6,
+                "top": 3,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                97,
+                14,
+                226,
+                291
+              ],
+              "marginsLTRB": [
+                97,
+                14,
+                88,
+                22
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                99,
+                16,
+                226,
+                289
+              ],
+              "marginsLTRB": [
+                99,
+                16,
+                88,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                99,
+                16,
+                226,
+                289
+              ],
+              "marginsLTRB": [
+                99,
+                16,
+                88,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                100,
+                17,
+                225,
+                287
+              ],
+              "marginsLTRB": [
+                100,
+                17,
+                89,
+                26
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 286,
+            "candidates": [
+              {
+                "x0": 167,
+                "x1": 199,
+                "area": 171,
+                "centroidX": 185.26315789473685
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 167,
+                "x1": 199,
+                "area": 171,
+                "centroidX": 185.26315789473685
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 6,
+          "cellRect": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "rgbaSha256": "d899db11dc7785b081af2f0e008e0ba11cf7462684e55aee3a150ea914f3e133",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                313,
+                305
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                8
+              ],
+              "borderPixelCounts": {
+                "left": 7,
+                "right": 10,
+                "top": 7,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                93,
+                14,
+                227,
+                298
+              ],
+              "marginsLTRB": [
+                93,
+                14,
+                86,
+                15
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                95,
+                17,
+                225,
+                296
+              ],
+              "marginsLTRB": [
+                95,
+                17,
+                88,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                95,
+                17,
+                225,
+                296
+              ],
+              "marginsLTRB": [
+                95,
+                17,
+                88,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                96,
+                18,
+                224,
+                295
+              ],
+              "marginsLTRB": [
+                96,
+                18,
+                89,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 294,
+            "candidates": [
+              {
+                "x0": 134,
+                "x1": 180,
+                "area": 305,
+                "centroidX": 157.84590163934425
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 134,
+                "x1": 180,
+                "area": 305,
+                "centroidX": 157.84590163934425
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 7,
+          "cellRect": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "rgbaSha256": "a43c760a96e4f3b0c9717dac33af6bd105df3b72c923003c9e42dbd7f705d758",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                314,
+                307
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                6
+              ],
+              "borderPixelCounts": {
+                "left": 4,
+                "right": 5,
+                "top": 3,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                95,
+                14,
+                226,
+                297
+              ],
+              "marginsLTRB": [
+                95,
+                14,
+                88,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                98,
+                17,
+                226,
+                295
+              ],
+              "marginsLTRB": [
+                98,
+                17,
+                88,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                98,
+                17,
+                226,
+                295
+              ],
+              "marginsLTRB": [
+                98,
+                17,
+                88,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                98,
+                18,
+                225,
+                294
+              ],
+              "marginsLTRB": [
+                98,
+                18,
+                89,
+                19
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 293,
+            "candidates": [
+              {
+                "x0": 126,
+                "x1": 160,
+                "area": 211,
+                "centroidX": 143.75355450236967
+              },
+              {
+                "x0": 176,
+                "x1": 200,
+                "area": 39,
+                "centroidX": 188.6153846153846
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 126,
+                "x1": 160,
+                "area": 211,
+                "centroidX": 143.75355450236967
+              },
+              {
+                "x0": 176,
+                "x1": 200,
+                "area": 39,
+                "centroidX": 188.6153846153846
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 166.18446955887714,
+            "candidateFootSeparationX": 44.861830113014946
+          }
+        },
+        {
+          "index": 8,
+          "cellRect": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "rgbaSha256": "490af34920ee71a5b3610b80dd5128d513f44f9f97ed17653cafe9874c45a057",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                301,
+                313
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                12,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 5,
+                "right": 0,
+                "top": 3,
+                "bottom": 4
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                93,
+                15,
+                227,
+                295
+              ],
+              "marginsLTRB": [
+                93,
+                15,
+                86,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                96,
+                17,
+                224,
+                292
+              ],
+              "marginsLTRB": [
+                96,
+                17,
+                89,
+                21
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                96,
+                17,
+                224,
+                292
+              ],
+              "marginsLTRB": [
+                96,
+                17,
+                89,
+                21
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                96,
+                18,
+                223,
+                291
+              ],
+              "marginsLTRB": [
+                96,
+                18,
+                90,
+                22
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 290,
+            "candidates": [
+              {
+                "x0": 134,
+                "x1": 190,
+                "area": 342,
+                "centroidX": 163.0701754385965
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 134,
+                "x1": 190,
+                "area": 342,
+                "centroidX": 163.0701754385965
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 9,
+          "cellRect": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "rgbaSha256": "28a515ef6cd2851368d5d85f42203e93cb8fe64a374c326587d1373610b8a070",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                37,
+                1,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                37,
+                1,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 24,
+                "top": 0,
+                "bottom": 4
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                93,
+                17,
+                230,
+                295
+              ],
+              "marginsLTRB": [
+                93,
+                17,
+                84,
+                19
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                95,
+                19,
+                229,
+                293
+              ],
+              "marginsLTRB": [
+                95,
+                19,
+                85,
+                21
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                95,
+                19,
+                229,
+                293
+              ],
+              "marginsLTRB": [
+                95,
+                19,
+                85,
+                21
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                96,
+                19,
+                229,
+                292
+              ],
+              "marginsLTRB": [
+                96,
+                19,
+                85,
+                22
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 291,
+            "candidates": [
+              {
+                "x0": 131,
+                "x1": 189,
+                "area": 376,
+                "centroidX": 159.86170212765958
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 131,
+                "x1": 189,
+                "area": 376,
+                "centroidX": 159.86170212765958
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 10,
+          "cellRect": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "rgbaSha256": "72ff79e7d66ebb5de7800eb290afc933d37a020f2171cfaf2b2a6f793d5109b5",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                13,
+                313,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                13,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 37,
+                "right": 10,
+                "top": 0,
+                "bottom": 5
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                90,
+                17,
+                229,
+                292
+              ],
+              "marginsLTRB": [
+                90,
+                17,
+                84,
+                22
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                92,
+                19,
+                227,
+                290
+              ],
+              "marginsLTRB": [
+                92,
+                19,
+                86,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                92,
+                19,
+                227,
+                290
+              ],
+              "marginsLTRB": [
+                92,
+                19,
+                86,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                93,
+                20,
+                226,
+                289
+              ],
+              "marginsLTRB": [
+                93,
+                20,
+                87,
+                25
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 288,
+            "candidates": [
+              {
+                "x0": 151,
+                "x1": 201,
+                "area": 302,
+                "centroidX": 178.53973509933775
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 151,
+                "x1": 201,
+                "area": 302,
+                "centroidX": 178.53973509933775
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 11,
+          "cellRect": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "rgbaSha256": "033b730073094b15163af9e83158c5ce661f5dad6230a1510e1516eaffc65613",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                3,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                3,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 2,
+                "right": 15,
+                "top": 0,
+                "bottom": 9
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                87,
+                17,
+                234,
+                296
+              ],
+              "marginsLTRB": [
+                87,
+                17,
+                80,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                89,
+                19,
+                232,
+                294
+              ],
+              "marginsLTRB": [
+                89,
+                19,
+                82,
+                20
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                89,
+                19,
+                232,
+                294
+              ],
+              "marginsLTRB": [
+                89,
+                19,
+                82,
+                20
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                90,
+                20,
+                231,
+                293
+              ],
+              "marginsLTRB": [
+                90,
+                20,
+                83,
+                21
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 292,
+            "candidates": [
+              {
+                "x0": 163,
+                "x1": 218,
+                "area": 332,
+                "centroidX": 191.40361445783134
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 163,
+                "x1": 218,
+                "area": 332,
+                "centroidX": 191.40361445783134
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 12,
+          "cellRect": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "rgbaSha256": "154c472c4de995cdac02fa4b6e5443b21d04d3803e0045e8623d80acdacf17c9",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                307,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                6,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 21,
+                "right": 0,
+                "top": 5,
+                "bottom": 15
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                89,
+                17,
+                234,
+                296
+              ],
+              "marginsLTRB": [
+                89,
+                17,
+                79,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                90,
+                19,
+                232,
+                294
+              ],
+              "marginsLTRB": [
+                90,
+                19,
+                81,
+                20
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                90,
+                19,
+                232,
+                294
+              ],
+              "marginsLTRB": [
+                90,
+                19,
+                81,
+                20
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                90,
+                20,
+                231,
+                293
+              ],
+              "marginsLTRB": [
+                90,
+                20,
+                82,
+                21
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 292,
+            "candidates": [
+              {
+                "x0": 109,
+                "x1": 131,
+                "area": 72,
+                "centroidX": 120.81944444444444
+              },
+              {
+                "x0": 158,
+                "x1": 213,
+                "area": 356,
+                "centroidX": 186.3061797752809
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 109,
+                "x1": 131,
+                "area": 72,
+                "centroidX": 120.81944444444444
+              },
+              {
+                "x0": 158,
+                "x1": 213,
+                "area": 356,
+                "centroidX": 186.3061797752809
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 153.56281210986268,
+            "candidateFootSeparationX": 65.48673533083645
+          }
+        },
+        {
+          "index": 13,
+          "cellRect": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "rgbaSha256": "3f698a71dded200c4fbc32e29e813fca41a6090de55b611a554f6af4b8e2ab1e",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                25,
+                0,
+                314,
+                299
+              ],
+              "marginsLTRB": [
+                25,
+                0,
+                0,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 1,
+                "top": 3,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                92,
+                19,
+                236,
+                299
+              ],
+              "marginsLTRB": [
+                92,
+                19,
+                78,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                94,
+                22,
+                233,
+                297
+              ],
+              "marginsLTRB": [
+                94,
+                22,
+                81,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                94,
+                22,
+                233,
+                297
+              ],
+              "marginsLTRB": [
+                94,
+                22,
+                81,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                95,
+                22,
+                232,
+                296
+              ],
+              "marginsLTRB": [
+                95,
+                22,
+                82,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 295,
+            "candidates": [
+              {
+                "x0": 142,
+                "x1": 198,
+                "area": 357,
+                "centroidX": 170.93837535014006
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 142,
+                "x1": 198,
+                "area": 357,
+                "centroidX": 170.93837535014006
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 14,
+          "cellRect": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "rgbaSha256": "660217474d682f3ea29efd8cd0d3e4c7416fb9d0d60a461acf84faf36e076c50",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                313,
+                299
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 8,
+                "right": 25,
+                "top": 10,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                91,
+                20,
+                230,
+                299
+              ],
+              "marginsLTRB": [
+                91,
+                20,
+                83,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                95,
+                22,
+                228,
+                297
+              ],
+              "marginsLTRB": [
+                95,
+                22,
+                85,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                95,
+                22,
+                228,
+                297
+              ],
+              "marginsLTRB": [
+                95,
+                22,
+                85,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                96,
+                23,
+                227,
+                296
+              ],
+              "marginsLTRB": [
+                96,
+                23,
+                86,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 295,
+            "candidates": [
+              {
+                "x0": 123,
+                "x1": 170,
+                "area": 318,
+                "centroidX": 146.29245283018867
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 123,
+                "x1": 170,
+                "area": 318,
+                "centroidX": 146.29245283018867
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 15,
+          "cellRect": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "rgbaSha256": "8dca0f00ec2cb5e4ea1aaf6fbbc7e525b88a54b9051b4e95165edf7776fed46c",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                314,
+                299
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 1,
+                "right": 17,
+                "top": 9,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                94,
+                20,
+                223,
+                299
+              ],
+              "marginsLTRB": [
+                94,
+                20,
+                91,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                97,
+                22,
+                223,
+                297
+              ],
+              "marginsLTRB": [
+                97,
+                22,
+                91,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                97,
+                22,
+                223,
+                297
+              ],
+              "marginsLTRB": [
+                97,
+                22,
+                91,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                97,
+                23,
+                222,
+                296
+              ],
+              "marginsLTRB": [
+                97,
+                23,
+                92,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 295,
+            "candidates": [
+              {
+                "x0": 107,
+                "x1": 147,
+                "area": 272,
+                "centroidX": 127.01102941176471
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 107,
+                "x1": 147,
+                "area": 272,
+                "centroidX": 127.01102941176471
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 16,
+          "cellRect": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "rgbaSha256": "f90c0ba50162a5c4fda0123a54b61b2179439210480e5545e523371337e0a9a1",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                299,
+                299
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                14,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 18,
+                "right": 0,
+                "top": 13,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                79,
+                19,
+                223,
+                299
+              ],
+              "marginsLTRB": [
+                79,
+                19,
+                90,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                80,
+                22,
+                221,
+                297
+              ],
+              "marginsLTRB": [
+                80,
+                22,
+                92,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                80,
+                22,
+                221,
+                297
+              ],
+              "marginsLTRB": [
+                80,
+                22,
+                92,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                80,
+                22,
+                220,
+                296
+              ],
+              "marginsLTRB": [
+                80,
+                22,
+                93,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 295,
+            "candidates": [
+              {
+                "x0": 88,
+                "x1": 107,
+                "area": 112,
+                "centroidX": 97.35714285714286
+              },
+              {
+                "x0": 140,
+                "x1": 200,
+                "area": 315,
+                "centroidX": 171.0984126984127
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 88,
+                "x1": 107,
+                "area": 112,
+                "centroidX": 97.35714285714286
+              },
+              {
+                "x0": 140,
+                "x1": 200,
+                "area": 315,
+                "centroidX": 171.0984126984127
+              }
+            ],
+            "isAutomaticallyTrusted": false,
+            "candidateMidpointX": 134.22777777777776,
+            "candidateFootSeparationX": 73.74126984126983
+          }
+        }
+      ],
+      "artisticStatus": "draft_requires_human_review",
+      "borderPolicy": {
+        "alphaGte16": "thresholds.15 is alpha >15, exactly alpha>=16",
+        "runtimeVisibilityThreshold": "alpha>2; record low-alpha edge noise independently"
+      },
+      "footRegistrationEligibleForReview": false,
+      "summary": {
+        "borderFramesAlphaGte16": [],
+        "borderFramesAlphaGt2": [],
+        "visibleMarginsMinimumLTRB": [
+          62,
+          16,
+          81,
+          16
+        ]
+      }
+    },
+    {
+      "action": "climb_up",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-a91fbfe3-cceb-4e9d-8c7e-8f0d66051185.png",
+      "sha256": "26b5af44f2af861574c5a215d086346716d7591a00a6744cd2f58043e4c93b02",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "opaqueFraction": 0.0011033274065255934,
+      "transparentFraction": 0.7578695542684463,
+      "gridRounding": "Math.round-compatible: floor(k*extent/count+0.5)",
+      "gridBoundariesX": [
+        0,
+        314,
+        627,
+        941,
+        1254
+      ],
+      "gridBoundariesY": [
+        0,
+        314,
+        627,
+        941,
+        1254
+      ],
+      "frames": [
+        {
+          "index": 1,
+          "cellRect": [
+            0,
+            0,
+            314,
+            314
+          ],
+          "rgbaSha256": "792a79bf7f358e8fee4bfe20af769af5df2a54c15422eb8ca0f6aeb814b90691",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                31,
+                9,
+                314,
+                314
+              ],
+              "marginsLTRB": [
+                31,
+                9,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 5,
+                "top": 0,
+                "bottom": 2
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                105,
+                14,
+                259,
+                304
+              ],
+              "marginsLTRB": [
+                105,
+                14,
+                55,
+                10
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                107,
+                15,
+                258,
+                301
+              ],
+              "marginsLTRB": [
+                107,
+                15,
+                56,
+                13
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                107,
+                15,
+                258,
+                301
+              ],
+              "marginsLTRB": [
+                107,
+                15,
+                56,
+                13
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                108,
+                16,
+                257,
+                300
+              ],
+              "marginsLTRB": [
+                108,
+                16,
+                57,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 299,
+            "candidates": [
+              {
+                "x0": 109,
+                "x1": 143,
+                "area": 182,
+                "centroidX": 125.9065934065934
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 109,
+                "x1": 143,
+                "area": 182,
+                "centroidX": 125.9065934065934
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 2,
+          "cellRect": [
+            314,
+            0,
+            313,
+            314
+          ],
+          "rgbaSha256": "1454ec98614f6a0e07d7e37b420667b742dfa93aa6f40bfa7b34a2104c50764c",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                14,
+                309,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                14,
+                4,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 10,
+                "right": 0,
+                "top": 0,
+                "bottom": 16
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                108,
+                16,
+                253,
+                300
+              ],
+              "marginsLTRB": [
+                108,
+                16,
+                60,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                110,
+                18,
+                251,
+                298
+              ],
+              "marginsLTRB": [
+                110,
+                18,
+                62,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                110,
+                18,
+                251,
+                298
+              ],
+              "marginsLTRB": [
+                110,
+                18,
+                62,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                111,
+                19,
+                250,
+                297
+              ],
+              "marginsLTRB": [
+                111,
+                19,
+                63,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 296,
+            "candidates": [
+              {
+                "x0": 122,
+                "x1": 147,
+                "area": 117,
+                "centroidX": 135.52136752136752
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 122,
+                "x1": 147,
+                "area": 117,
+                "centroidX": 135.52136752136752
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 3,
+          "cellRect": [
+            627,
+            0,
+            314,
+            314
+          ],
+          "rgbaSha256": "5fcc60f1f78e2160eb012e641df3fbba04204f823bb0e69277ddfbc8fe338f1d",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                7,
+                16,
+                308,
+                314
+              ],
+              "marginsLTRB": [
+                7,
+                16,
+                6,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 2
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                111,
+                19,
+                252,
+                290
+              ],
+              "marginsLTRB": [
+                111,
+                19,
+                62,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                113,
+                21,
+                251,
+                287
+              ],
+              "marginsLTRB": [
+                113,
+                21,
+                63,
+                27
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                113,
+                21,
+                251,
+                287
+              ],
+              "marginsLTRB": [
+                113,
+                21,
+                63,
+                27
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                115,
+                22,
+                250,
+                286
+              ],
+              "marginsLTRB": [
+                115,
+                22,
+                64,
+                28
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 285,
+            "candidates": [
+              {
+                "x0": 146,
+                "x1": 158,
+                "area": 63,
+                "centroidX": 151.9047619047619
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 146,
+                "x1": 158,
+                "area": 63,
+                "centroidX": 151.9047619047619
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 4,
+          "cellRect": [
+            941,
+            0,
+            313,
+            314
+          ],
+          "rgbaSha256": "c47db3d0346b0bb90493f8d92e51da8fa818b74768bb7a73d9bf4b5b8eb0f595",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                16,
+                13,
+                297,
+                314
+              ],
+              "marginsLTRB": [
+                16,
+                13,
+                16,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 2
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                115,
+                18,
+                252,
+                269
+              ],
+              "marginsLTRB": [
+                115,
+                18,
+                61,
+                45
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                117,
+                20,
+                250,
+                266
+              ],
+              "marginsLTRB": [
+                117,
+                20,
+                63,
+                48
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                117,
+                20,
+                250,
+                266
+              ],
+              "marginsLTRB": [
+                117,
+                20,
+                63,
+                48
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                118,
+                20,
+                249,
+                265
+              ],
+              "marginsLTRB": [
+                118,
+                20,
+                64,
+                49
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 264,
+            "candidates": [
+              {
+                "x0": 151,
+                "x1": 166,
+                "area": 67,
+                "centroidX": 158.62686567164178
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 151,
+                "x1": 166,
+                "area": 67,
+                "centroidX": 158.62686567164178
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 5,
+          "cellRect": [
+            0,
+            314,
+            314,
+            313
+          ],
+          "rgbaSha256": "6dc9fff372d784fdde32952639329c6ec41f3f9355dc3a493b7770d88153ec1d",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                25,
+                6,
+                312,
+                305
+              ],
+              "marginsLTRB": [
+                25,
+                6,
+                2,
+                8
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                118,
+                16,
+                253,
+                262
+              ],
+              "marginsLTRB": [
+                118,
+                16,
+                61,
+                51
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                120,
+                18,
+                249,
+                260
+              ],
+              "marginsLTRB": [
+                120,
+                18,
+                65,
+                53
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                120,
+                18,
+                249,
+                260
+              ],
+              "marginsLTRB": [
+                120,
+                18,
+                65,
+                53
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                121,
+                19,
+                249,
+                259
+              ],
+              "marginsLTRB": [
+                121,
+                19,
+                65,
+                54
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 258,
+            "candidates": [
+              {
+                "x0": 162,
+                "x1": 175,
+                "area": 63,
+                "centroidX": 168.47619047619048
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 162,
+                "x1": 175,
+                "area": 63,
+                "centroidX": 168.47619047619048
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 6,
+          "cellRect": [
+            314,
+            314,
+            313,
+            313
+          ],
+          "rgbaSha256": "3ab3491fbc9a421dbc641115a097ea6054dbbfb31347a94facf8804095960219",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                313,
+                313
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 1,
+                "right": 5,
+                "top": 11,
+                "bottom": 2
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                114,
+                15,
+                251,
+                277
+              ],
+              "marginsLTRB": [
+                114,
+                15,
+                62,
+                36
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                116,
+                18,
+                248,
+                275
+              ],
+              "marginsLTRB": [
+                116,
+                18,
+                65,
+                38
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                116,
+                18,
+                248,
+                275
+              ],
+              "marginsLTRB": [
+                116,
+                18,
+                65,
+                38
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                117,
+                19,
+                248,
+                274
+              ],
+              "marginsLTRB": [
+                117,
+                19,
+                65,
+                39
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 273,
+            "candidates": [
+              {
+                "x0": 158,
+                "x1": 172,
+                "area": 67,
+                "centroidX": 165.7910447761194
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 158,
+                "x1": 172,
+                "area": 67,
+                "centroidX": 165.7910447761194
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 7,
+          "cellRect": [
+            627,
+            314,
+            314,
+            313
+          ],
+          "rgbaSha256": "d74d8bf7288d710f35750e72789adbd313e3c48ff33c293d33bd86061db1df45",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                1,
+                5,
+                291,
+                313
+              ],
+              "marginsLTRB": [
+                1,
+                5,
+                23,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 9
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                109,
+                5,
+                244,
+                284
+              ],
+              "marginsLTRB": [
+                109,
+                5,
+                70,
+                29
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                111,
+                7,
+                244,
+                282
+              ],
+              "marginsLTRB": [
+                111,
+                7,
+                70,
+                31
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                111,
+                7,
+                244,
+                282
+              ],
+              "marginsLTRB": [
+                111,
+                7,
+                70,
+                31
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                112,
+                8,
+                243,
+                281
+              ],
+              "marginsLTRB": [
+                112,
+                8,
+                71,
+                32
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 280,
+            "candidates": [
+              {
+                "x0": 153,
+                "x1": 174,
+                "area": 105,
+                "centroidX": 165.32380952380953
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 153,
+                "x1": 174,
+                "area": 105,
+                "centroidX": 165.32380952380953
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 8,
+          "cellRect": [
+            941,
+            314,
+            313,
+            313
+          ],
+          "rgbaSha256": "f6712ee42fb2d612929cbe9544ffe9767e7ec52afcf6614c7d5fda50b48e3b28",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                2,
+                6,
+                289,
+                313
+              ],
+              "marginsLTRB": [
+                2,
+                6,
+                24,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 7
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                106,
+                7,
+                250,
+                283
+              ],
+              "marginsLTRB": [
+                106,
+                7,
+                63,
+                30
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                108,
+                10,
+                248,
+                281
+              ],
+              "marginsLTRB": [
+                108,
+                10,
+                65,
+                32
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                108,
+                10,
+                248,
+                281
+              ],
+              "marginsLTRB": [
+                108,
+                10,
+                65,
+                32
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                109,
+                11,
+                247,
+                280
+              ],
+              "marginsLTRB": [
+                109,
+                11,
+                66,
+                33
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 279,
+            "candidates": [
+              {
+                "x0": 140,
+                "x1": 169,
+                "area": 136,
+                "centroidX": 156.75
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 140,
+                "x1": 169,
+                "area": 136,
+                "centroidX": 156.75
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 9,
+          "cellRect": [
+            0,
+            627,
+            314,
+            314
+          ],
+          "rgbaSha256": "1c4fb2a9c8353eca61e351e5c9b6db679153911841edabe0a15c7deb526767b5",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                23,
+                6,
+                312,
+                314
+              ],
+              "marginsLTRB": [
+                23,
+                6,
+                2,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 26
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                104,
+                10,
+                250,
+                288
+              ],
+              "marginsLTRB": [
+                104,
+                10,
+                64,
+                26
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                106,
+                11,
+                250,
+                285
+              ],
+              "marginsLTRB": [
+                106,
+                11,
+                64,
+                29
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                106,
+                11,
+                250,
+                285
+              ],
+              "marginsLTRB": [
+                106,
+                11,
+                64,
+                29
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                108,
+                12,
+                249,
+                284
+              ],
+              "marginsLTRB": [
+                108,
+                12,
+                65,
+                30
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 283,
+            "candidates": [
+              {
+                "x0": 136,
+                "x1": 167,
+                "area": 168,
+                "centroidX": 152.70238095238096
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 136,
+                "x1": 167,
+                "area": 168,
+                "centroidX": 152.70238095238096
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 10,
+          "cellRect": [
+            314,
+            627,
+            313,
+            314
+          ],
+          "rgbaSha256": "c668fd05ec3206d13bc313ef5834262d587ba40c4d7a9a1ed546810b64aef799",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                313,
+                314
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 10,
+                "right": 6,
+                "top": 1,
+                "bottom": 6
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                109,
+                11,
+                252,
+                291
+              ],
+              "marginsLTRB": [
+                109,
+                11,
+                61,
+                23
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                111,
+                13,
+                250,
+                290
+              ],
+              "marginsLTRB": [
+                111,
+                13,
+                63,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                111,
+                13,
+                250,
+                290
+              ],
+              "marginsLTRB": [
+                111,
+                13,
+                63,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                112,
+                13,
+                249,
+                289
+              ],
+              "marginsLTRB": [
+                112,
+                13,
+                64,
+                25
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 288,
+            "candidates": [
+              {
+                "x0": 132,
+                "x1": 163,
+                "area": 158,
+                "centroidX": 148.8987341772152
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 132,
+                "x1": 163,
+                "area": 158,
+                "centroidX": 148.8987341772152
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 11,
+          "cellRect": [
+            627,
+            627,
+            314,
+            314
+          ],
+          "rgbaSha256": "6b945653203bb8b03aec1f670f135ba3e09ffbad8a7b8ed54c897048ef27ef80",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                1,
+                0,
+                310,
+                314
+              ],
+              "marginsLTRB": [
+                1,
+                0,
+                4,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 1,
+                "bottom": 13
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                109,
+                13,
+                253,
+                290
+              ],
+              "marginsLTRB": [
+                109,
+                13,
+                61,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                111,
+                15,
+                250,
+                290
+              ],
+              "marginsLTRB": [
+                111,
+                15,
+                64,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                111,
+                15,
+                250,
+                290
+              ],
+              "marginsLTRB": [
+                111,
+                15,
+                64,
+                24
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                112,
+                16,
+                250,
+                289
+              ],
+              "marginsLTRB": [
+                112,
+                16,
+                64,
+                25
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 288,
+            "candidates": [
+              {
+                "x0": 132,
+                "x1": 160,
+                "area": 138,
+                "centroidX": 146.84782608695653
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 132,
+                "x1": 160,
+                "area": 138,
+                "centroidX": 146.84782608695653
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 12,
+          "cellRect": [
+            941,
+            627,
+            313,
+            314
+          ],
+          "rgbaSha256": "13fe0a3489437b2835ac94b40a49b9097169cc716ea507bcb05bf26bdc217a2a",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                10,
+                0,
+                293,
+                314
+              ],
+              "marginsLTRB": [
+                10,
+                0,
+                20,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 1,
+                "bottom": 2
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                112,
+                16,
+                252,
+                279
+              ],
+              "marginsLTRB": [
+                112,
+                16,
+                61,
+                35
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                114,
+                18,
+                249,
+                279
+              ],
+              "marginsLTRB": [
+                114,
+                18,
+                64,
+                35
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                114,
+                18,
+                249,
+                279
+              ],
+              "marginsLTRB": [
+                114,
+                18,
+                64,
+                35
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                115,
+                19,
+                249,
+                278
+              ],
+              "marginsLTRB": [
+                115,
+                19,
+                64,
+                36
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 277,
+            "candidates": [
+              {
+                "x0": 152,
+                "x1": 165,
+                "area": 58,
+                "centroidX": 158.51724137931035
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 152,
+                "x1": 165,
+                "area": 58,
+                "centroidX": 158.51724137931035
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 13,
+          "cellRect": [
+            0,
+            941,
+            314,
+            313
+          ],
+          "rgbaSha256": "8da31b28150a278cb5c301739024ab040dd69e47107d11a52735597d493db8e7",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                314,
+                297
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                0,
+                16
+              ],
+              "borderPixelCounts": {
+                "left": 7,
+                "right": 3,
+                "top": 14,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                110,
+                17,
+                252,
+                296
+              ],
+              "marginsLTRB": [
+                110,
+                17,
+                62,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                112,
+                19,
+                250,
+                294
+              ],
+              "marginsLTRB": [
+                112,
+                19,
+                64,
+                19
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                112,
+                19,
+                250,
+                294
+              ],
+              "marginsLTRB": [
+                112,
+                19,
+                64,
+                19
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                113,
+                20,
+                249,
+                293
+              ],
+              "marginsLTRB": [
+                113,
+                20,
+                65,
+                20
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 292,
+            "candidates": [
+              {
+                "x0": 140,
+                "x1": 154,
+                "area": 65,
+                "centroidX": 147.63076923076923
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 140,
+                "x1": 154,
+                "area": 65,
+                "centroidX": 147.63076923076923
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 14,
+          "cellRect": [
+            314,
+            941,
+            313,
+            313
+          ],
+          "rgbaSha256": "a9ef907dc4d0a384771431f600e384aade9501891897a0f4021425dfaa8dc5ce",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                311,
+                313
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                2,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 5,
+                "right": 0,
+                "top": 6,
+                "bottom": 14
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                109,
+                14,
+                252,
+                296
+              ],
+              "marginsLTRB": [
+                109,
+                14,
+                61,
+                17
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                111,
+                16,
+                250,
+                295
+              ],
+              "marginsLTRB": [
+                111,
+                16,
+                63,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                111,
+                16,
+                250,
+                295
+              ],
+              "marginsLTRB": [
+                111,
+                16,
+                63,
+                18
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                112,
+                17,
+                249,
+                294
+              ],
+              "marginsLTRB": [
+                112,
+                17,
+                64,
+                19
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 293,
+            "candidates": [
+              {
+                "x0": 135,
+                "x1": 155,
+                "area": 102,
+                "centroidX": 146.27450980392157
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 135,
+                "x1": 155,
+                "area": 102,
+                "centroidX": 146.27450980392157
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 15,
+          "cellRect": [
+            627,
+            941,
+            314,
+            313
+          ],
+          "rgbaSha256": "b6fe7b4158e10bd0823b716ea3615617b10bd528ca77945b316266ec2b4220f6",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                15,
+                0,
+                314,
+                301
+              ],
+              "marginsLTRB": [
+                15,
+                0,
+                0,
+                12
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 1,
+                "top": 11,
+                "bottom": 0
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                105,
+                13,
+                252,
+                299
+              ],
+              "marginsLTRB": [
+                105,
+                13,
+                62,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                107,
+                15,
+                252,
+                299
+              ],
+              "marginsLTRB": [
+                107,
+                15,
+                62,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                107,
+                15,
+                252,
+                299
+              ],
+              "marginsLTRB": [
+                107,
+                15,
+                62,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                108,
+                16,
+                251,
+                298
+              ],
+              "marginsLTRB": [
+                108,
+                16,
+                63,
+                15
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 297,
+            "candidates": [
+              {
+                "x0": 112,
+                "x1": 145,
+                "area": 190,
+                "centroidX": 129.03684210526316
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 112,
+                "x1": 145,
+                "area": 190,
+                "centroidX": 129.03684210526316
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        },
+        {
+          "index": 16,
+          "cellRect": [
+            941,
+            941,
+            313,
+            313
+          ],
+          "rgbaSha256": "1543d0275fa45d7d3c857e08bca9a4a23b50a700b0258a5f98de06941e50018c",
+          "thresholds": {
+            "0": {
+              "alphaBounds": [
+                0,
+                0,
+                297,
+                313
+              ],
+              "marginsLTRB": [
+                0,
+                0,
+                16,
+                0
+              ],
+              "borderPixelCounts": {
+                "left": 1,
+                "right": 0,
+                "top": 3,
+                "bottom": 25
+              }
+            },
+            "2": {
+              "alphaBounds": [
+                107,
+                10,
+                260,
+                301
+              ],
+              "marginsLTRB": [
+                107,
+                10,
+                53,
+                12
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "15": {
+              "alphaBounds": [
+                110,
+                12,
+                257,
+                299
+              ],
+              "marginsLTRB": [
+                110,
+                12,
+                56,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "16": {
+              "alphaBounds": [
+                110,
+                13,
+                257,
+                299
+              ],
+              "marginsLTRB": [
+                110,
+                13,
+                56,
+                14
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            },
+            "128": {
+              "alphaBounds": [
+                110,
+                13,
+                256,
+                298
+              ],
+              "marginsLTRB": [
+                110,
+                13,
+                57,
+                15
+              ],
+              "borderPixelCounts": {
+                "left": 0,
+                "right": 0,
+                "top": 0,
+                "bottom": 0
+              }
+            }
+          },
+          "bottomBand": {
+            "alphaAtLeast": 128,
+            "height": 8,
+            "floorY": 297,
+            "candidates": [
+              {
+                "x0": 110,
+                "x1": 143,
+                "area": 189,
+                "centroidX": 126.19576719576719
+              }
+            ],
+            "candidateFeet": [
+              {
+                "x0": 110,
+                "x1": 143,
+                "area": 189,
+                "centroidX": 126.19576719576719
+              }
+            ],
+            "isAutomaticallyTrusted": false
+          }
+        }
+      ],
+      "artisticStatus": "draft_requires_human_review",
+      "borderPolicy": {
+        "alphaGte16": "thresholds.15 is alpha >15, exactly alpha>=16",
+        "runtimeVisibilityThreshold": "alpha>2; record low-alpha edge noise independently"
+      },
+      "footRegistrationEligibleForReview": false,
+      "summary": {
+        "borderFramesAlphaGte16": [],
+        "borderFramesAlphaGt2": [],
+        "visibleMarginsMinimumLTRB": [
+          106,
+          7,
+          56,
+          13
+        ]
+      }
+    }
+  ]
+}

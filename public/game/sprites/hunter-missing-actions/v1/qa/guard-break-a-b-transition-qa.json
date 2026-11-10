@@ -1,0 +1,56 @@
+{
+  "readOnly": true,
+  "endpoints": [
+    {
+      "sheet": "guard_break_a",
+      "frame": 16,
+      "bounds": [
+        38,
+        67,
+        289,
+        304
+      ],
+      "floorY": 303,
+      "footCandidates": [
+        {
+          "x0": 38,
+          "x1": 76,
+          "area": 249,
+          "centroidX": 56.373493975903614
+        },
+        {
+          "x0": 172,
+          "x1": 228,
+          "area": 172,
+          "centroidX": 203.21511627906978
+        }
+      ]
+    },
+    {
+      "sheet": "guard_break_b",
+      "frame": 1,
+      "bounds": [
+        31,
+        63,
+        279,
+        304
+      ],
+      "floorY": 303,
+      "footCandidates": [
+        {
+          "x0": 43,
+          "x1": 86,
+          "area": 297,
+          "centroidX": 64.55555555555556
+        },
+        {
+          "x0": 161,
+          "x1": 223,
+          "area": 321,
+          "centroidX": 194.62305295950156
+        }
+      ]
+    }
+  ],
+  "status": "draft"
+}

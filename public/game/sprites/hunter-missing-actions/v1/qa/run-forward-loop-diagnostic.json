@@ -1,0 +1,105 @@
+{
+  "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-efc3ced9-9248-4ac4-a073-e05110bee0d6.png",
+  "method": "Raw cell aligned silhouettes alpha>=128, transparent padding to314; diagnostic only, no image edits or automatic continuity certification",
+  "pairs": [
+    {
+      "from": 1,
+      "to": 2,
+      "silhouetteIoU": 0.5123539680408218,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "silhouetteIoU": 0.5973135964912281,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "silhouetteIoU": 0.6877427708243419,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "silhouetteIoU": 0.5748918095848694,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "silhouetteIoU": 0.6211355829460498,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "silhouetteIoU": 0.6508825319537431,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "silhouetteIoU": 0.7130748039838949,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "silhouetteIoU": 0.7035434693036671,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "silhouetteIoU": 0.6629918788496999,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "silhouetteIoU": 0.7486193668057839,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 11,
+      "to": 12,
+      "silhouetteIoU": 0.6919998332430066,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "silhouetteIoU": 0.6834035245532977,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 13,
+      "to": 14,
+      "silhouetteIoU": 0.6267172323052513,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 14,
+      "to": 15,
+      "silhouetteIoU": 0.6959456728242855,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 15,
+      "to": 16,
+      "silhouetteIoU": 0.8024717484234138,
+      "identicalSilhouette": false
+    },
+    {
+      "from": 16,
+      "to": 1,
+      "silhouetteIoU": 0.4857161492303679,
+      "identicalSilhouette": false
+    }
+  ],
+  "medianAdjacentIoU": 0.6834035245532977,
+  "boundaryIoU": 0.4857161492303679,
+  "note": "A lower overlap can be intended stride motion. This measures whether last frames hold an identical silhouette, not anatomical quality."
+}

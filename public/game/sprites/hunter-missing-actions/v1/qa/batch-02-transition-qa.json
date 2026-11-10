@@ -1,0 +1,437 @@
+{
+  "version": 1,
+  "readOnly": true,
+  "artisticStatus": "draft",
+  "transitions": [
+    {
+      "action": "combo_finisher",
+      "sourceAEndpoint": "/workspace/scratch/85eadbd0ff6f/missing_animation_reference_frames/combo_finisher_a_last.png",
+      "sourceB": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-2e636ad6-b0cf-41e8-bfcd-95b01953eb7e.png",
+      "artisticStatus": "draft",
+      "notes": "Visible silhouette envelopes and alpha area are diagnostic, not certified anatomical calibration. Air feet are never used as ground anchors.",
+      "endpoints": [
+        {
+          "id": "A16",
+          "canvasSize": [
+            314,
+            314
+          ],
+          "thresholds": {
+            "15": {
+              "visibleBounds": [
+                73,
+                80,
+                300,
+                305
+              ],
+              "visibleWidth": 227,
+              "visibleHeight": 225,
+              "visiblePixelCount": 18373,
+              "visibleCentroid": [
+                174.0048984923529,
+                192.03875251728078
+              ],
+              "floorY": 304,
+              "footCandidates": [
+                {
+                  "x0": 73,
+                  "x1": 119,
+                  "area": 316,
+                  "centroidX": 96.3132911392405
+                },
+                {
+                  "x0": 188,
+                  "x1": 243,
+                  "area": 270,
+                  "centroidX": 217.5185185185185
+                }
+              ],
+              "footMidpointX": 156.9159048288795,
+              "footSeparationX": 121.205227379278
+            },
+            "127": {
+              "visibleBounds": [
+                74,
+                81,
+                297,
+                304
+              ],
+              "visibleWidth": 223,
+              "visibleHeight": 223,
+              "visiblePixelCount": 17326,
+              "visibleCentroid": [
+                173.38572088191157,
+                192.30774558467044
+              ],
+              "floorY": 303,
+              "footCandidates": [
+                {
+                  "x0": 74,
+                  "x1": 119,
+                  "area": 319,
+                  "centroidX": 96.19122257053291
+                },
+                {
+                  "x0": 189,
+                  "x1": 242,
+                  "area": 288,
+                  "centroidX": 216.62847222222223
+                }
+              ],
+              "footMidpointX": 156.4098473963776,
+              "footSeparationX": 120.43724965168931
+            }
+          }
+        },
+        {
+          "id": "B01",
+          "canvasSize": [
+            314,
+            314
+          ],
+          "thresholds": {
+            "15": {
+              "visibleBounds": [
+                39,
+                40,
+                301,
+                286
+              ],
+              "visibleWidth": 262,
+              "visibleHeight": 246,
+              "visiblePixelCount": 24363,
+              "visibleCentroid": [
+                151.89689282929032,
+                161.71288429175388
+              ],
+              "floorY": 285,
+              "footCandidates": [
+                {
+                  "x0": 39,
+                  "x1": 92,
+                  "area": 364,
+                  "centroidX": 66.43131868131869
+                },
+                {
+                  "x0": 164,
+                  "x1": 226,
+                  "area": 355,
+                  "centroidX": 197.08732394366197
+                }
+              ],
+              "footMidpointX": 131.75932131249033,
+              "footSeparationX": 130.65600526234329
+            },
+            "127": {
+              "visibleBounds": [
+                40,
+                40,
+                300,
+                285
+              ],
+              "visibleWidth": 260,
+              "visibleHeight": 245,
+              "visiblePixelCount": 22960,
+              "visibleCentroid": [
+                151.3175087108014,
+                161.88919860627178
+              ],
+              "floorY": 284,
+              "footCandidates": [
+                {
+                  "x0": 40,
+                  "x1": 91,
+                  "area": 359,
+                  "centroidX": 66.3008356545961
+                },
+                {
+                  "x0": 165,
+                  "x1": 226,
+                  "area": 350,
+                  "centroidX": 196.86857142857144
+                }
+              ],
+              "footMidpointX": 131.58470354158376,
+              "footSeparationX": 130.56773577397536
+            }
+          }
+        }
+      ],
+      "diagnosticBRelativeToAAlphaGte128": {
+        "heightRatio": 1.0986547085201794,
+        "widthRatio": 1.1659192825112108,
+        "areaEquivalentScale": 1.1511629059413082,
+        "floorShift": -19,
+        "footMidpointShiftX": -24.825143854793822,
+        "footSeparationRatio": 1.0841142267162687
+      },
+      "sheetBorderSummary": {
+        "alphaGte16": [],
+        "alphaGt2": []
+      }
+    },
+    {
+      "action": "heavy_strike",
+      "sourceAEndpoint": "/workspace/scratch/85eadbd0ff6f/missing_animation_reference_frames/heavy_strike_a_last.png",
+      "sourceB": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-37c186e4-be83-4287-b082-0c6eee7306a2.png",
+      "artisticStatus": "draft",
+      "notes": "Visible silhouette envelopes and alpha area are diagnostic, not certified anatomical calibration. Air feet are never used as ground anchors.",
+      "endpoints": [
+        {
+          "id": "A16",
+          "canvasSize": [
+            314,
+            314
+          ],
+          "thresholds": {
+            "15": {
+              "visibleBounds": [
+                63,
+                95,
+                246,
+                294
+              ],
+              "visibleWidth": 183,
+              "visibleHeight": 199,
+              "visiblePixelCount": 17846,
+              "visibleCentroid": [
+                161.45152975456685,
+                196.83318390675782
+              ],
+              "floorY": 293,
+              "footCandidates": [
+                {
+                  "x0": 64,
+                  "x1": 97,
+                  "area": 212,
+                  "centroidX": 80.20283018867924
+                },
+                {
+                  "x0": 180,
+                  "x1": 237,
+                  "area": 306,
+                  "centroidX": 209.29738562091504
+                }
+              ],
+              "footMidpointX": 144.75010790479715,
+              "footSeparationX": 129.09455543223578
+            },
+            "127": {
+              "visibleBounds": [
+                64,
+                96,
+                245,
+                293
+              ],
+              "visibleWidth": 181,
+              "visibleHeight": 197,
+              "visiblePixelCount": 16922,
+              "visibleCentroid": [
+                161.29257770949062,
+                196.34280817870228
+              ],
+              "floorY": 292,
+              "footCandidates": [
+                {
+                  "x0": 64,
+                  "x1": 96,
+                  "area": 204,
+                  "centroidX": 79.62745098039215
+                },
+                {
+                  "x0": 180,
+                  "x1": 237,
+                  "area": 313,
+                  "centroidX": 208.59744408945687
+                }
+              ],
+              "footMidpointX": 144.1124475349245,
+              "footSeparationX": 128.96999310906472
+            }
+          }
+        },
+        {
+          "id": "B01",
+          "canvasSize": [
+            314,
+            314
+          ],
+          "thresholds": {
+            "15": {
+              "visibleBounds": [
+                50,
+                70,
+                295,
+                300
+              ],
+              "visibleWidth": 245,
+              "visibleHeight": 230,
+              "visiblePixelCount": 27279,
+              "visibleCentroid": [
+                182.997580556472,
+                191.5163312438139
+              ],
+              "floorY": 299,
+              "footCandidates": [
+                {
+                  "x0": 50,
+                  "x1": 94,
+                  "area": 302,
+                  "centroidX": 72.28807947019868
+                },
+                {
+                  "x0": 203,
+                  "x1": 271,
+                  "area": 280,
+                  "centroidX": 237.28571428571428
+                }
+              ],
+              "footMidpointX": 154.78689687795648,
+              "footSeparationX": 164.9976348155156
+            },
+            "127": {
+              "visibleBounds": [
+                51,
+                71,
+                294,
+                299
+              ],
+              "visibleWidth": 243,
+              "visibleHeight": 228,
+              "visiblePixelCount": 25997,
+              "visibleCentroid": [
+                182.78789860368505,
+                191.1191675962611
+              ],
+              "floorY": 298,
+              "footCandidates": [
+                {
+                  "x0": 51,
+                  "x1": 94,
+                  "area": 305,
+                  "centroidX": 71.92459016393443
+                },
+                {
+                  "x0": 203,
+                  "x1": 270,
+                  "area": 279,
+                  "centroidX": 236.84587813620072
+                }
+              ],
+              "footMidpointX": 154.38523415006756,
+              "footSeparationX": 164.9212879722663
+            }
+          }
+        }
+      ],
+      "diagnosticBRelativeToAAlphaGte128": {
+        "heightRatio": 1.1573604060913705,
+        "widthRatio": 1.3425414364640884,
+        "areaEquivalentScale": 1.2394692925489237,
+        "floorShift": 6,
+        "footMidpointShiftX": 10.272786615143048,
+        "footSeparationRatio": 1.278757050353558
+      },
+      "sheetBorderSummary": {
+        "alphaGte16": [],
+        "alphaGt2": []
+      }
+    },
+    {
+      "action": "air_strike",
+      "sourceAEndpoint": "/workspace/scratch/85eadbd0ff6f/missing_animation_reference_frames/air_strike_a_last.png",
+      "sourceB": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-5e69702f-39b4-4027-b454-5e654940509e.png",
+      "artisticStatus": "draft",
+      "notes": "Visible silhouette envelopes and alpha area are diagnostic, not certified anatomical calibration. Air feet are never used as ground anchors.",
+      "endpoints": [
+        {
+          "id": "A16",
+          "canvasSize": [
+            314,
+            314
+          ],
+          "thresholds": {
+            "15": {
+              "visibleBounds": [
+                73,
+                54,
+                276,
+                289
+              ],
+              "visibleWidth": 203,
+              "visibleHeight": 235,
+              "visiblePixelCount": 22456,
+              "visibleCentroid": [
+                153.55922693266834,
+                170.89303526897044
+              ]
+            },
+            "127": {
+              "visibleBounds": [
+                74,
+                56,
+                276,
+                287
+              ],
+              "visibleWidth": 202,
+              "visibleHeight": 231,
+              "visiblePixelCount": 21003,
+              "visibleCentroid": [
+                154.12502975765366,
+                172.50645145931534
+              ]
+            }
+          }
+        },
+        {
+          "id": "B01",
+          "canvasSize": [
+            314,
+            314
+          ],
+          "thresholds": {
+            "15": {
+              "visibleBounds": [
+                69,
+                43,
+                285,
+                304
+              ],
+              "visibleWidth": 216,
+              "visibleHeight": 261,
+              "visiblePixelCount": 26982,
+              "visibleCentroid": [
+                157.59239492995331,
+                171.25524423689868
+              ]
+            },
+            "127": {
+              "visibleBounds": [
+                70,
+                45,
+                284,
+                303
+              ],
+              "visibleWidth": 214,
+              "visibleHeight": 258,
+              "visiblePixelCount": 25497,
+              "visibleCentroid": [
+                158.14668392359886,
+                172.53347452641486
+              ]
+            }
+          }
+        }
+      ],
+      "diagnosticBRelativeToAAlphaGte128": {
+        "heightRatio": 1.1168831168831168,
+        "widthRatio": 1.0594059405940595,
+        "areaEquivalentScale": 1.1018028103695106
+      },
+      "sheetBorderSummary": {
+        "alphaGte16": [],
+        "alphaGt2": []
+      }
+    }
+  ]
+}

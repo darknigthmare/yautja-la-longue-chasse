@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-run_backward-missing-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "run_backward-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "run_backward",
+      "src": "/game/sprites/hunter-missing-actions/v1/import_atlases/run_backward.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "run_backward_loop",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "run_backward",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "run_backward",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            284.6
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}
