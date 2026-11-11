@@ -24,8 +24,15 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
+import HunterPieceForgeV146, { type CustomizationApplyV146 } from "./HunterPieceForgeV146";
+import { emptyCustomizationV146, outfitForModeV146 } from "./systems/hunterCustomizationV146";
+import { appearanceForModeV147 } from "./systems/hunterModeAppearanceV147";
+import { createPitPersonalFighterV147 } from "./systems/pitPersonalFighterV147";
+import type { PitPersonalFighterPropV147 } from "./PitPersonalFighterCardV147";
+import { ClanPaletteContextV146 } from "./clanPaletteContextV146";
 import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
+import { commitHunterCustomizationV146 } from "./systems/hunterCustomizationPersistenceV146";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -227,6 +234,7 @@ import {
   normalizeSave,
   reconcileSaveWrite,
   writeSaveWithStatus,
+  normalizeHunterAppearanceV146,
 } from "./save";
 import {
   GameAudio,
@@ -334,6 +342,7 @@ const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
 const TrophyTutorialBay = React.lazy(() => import("./TrophyTutorialBay"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
+const YautjaGlossaryV147 = React.lazy(() => import("./YautjaGlossaryV147"));
 const CatalogueHunterBrowser = React.lazy(() =>
   import("./CatalogueHunterBrowser").then((module) => ({
     default: module.CatalogueHunterBrowser,
@@ -1059,6 +1068,27 @@ function withPitWriteLock({
   });
 }
 
+/** V146: the outfit assigned to campaign hunts, else the current appearance. */
+function campaignAppearanceV146(save: SaveGame): HunterAppearance {
+  const outfit = outfitForModeV146(save.customizationV146 ?? emptyCustomizationV146(), "campaign");
+  return outfit ? normalizeHunterAppearanceV146(outfit.appearance) : save.appearance;
+}
+
+/**
+ * V147: the campaign Yautja for THE PIT personal slot: its name, the outfit
+ * assigned to the Pit (else the campaign look) and its equipment. Read only.
+ */
+function pitPersonalFighterV147(save: SaveGame): PitPersonalFighterPropV147 {
+  const worn = appearanceForModeV147(save, "pit", normalizeHunterAppearanceV146);
+  return createPitPersonalFighterV147({
+    hunterName: save.profile.hunterName,
+    appearance: worn.appearance,
+    appearanceSource: worn.source,
+    outfitName: worn.outfitName,
+    loadout: save.loadout,
+  });
+}
+
 export default function GameClient() {
   return <CloudAccountV71><CampaignFrontEnd SessionComponent={GameSession} /></CloudAccountV71>;
 }
@@ -1142,6 +1172,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const [pendingHuntResult, setPendingHuntResult] = useState<{ result: MissionResult; returnToDeck: boolean } | null>(null);
   const [previewMaskWorn, setPreviewMaskWorn] = useState(true);
   const [draftChromaticsV114, setDraftChromaticsV114] = useState<HunterChromaticsV113 | null>(null);
+  const [draftAppearanceV146, setDraftAppearanceV146] = useState<HunterAppearance | null>(null);
   const [previewGauntletOpen, setPreviewGauntletOpen] = useState(false);
   const [previewBladesExtended, setPreviewBladesExtended] = useState(false);
   const [previewAiming, setPreviewAiming] = useState(false);
@@ -3802,6 +3833,35 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
       entry.ownerCreatedAt, playSound]);
 
+  /** V146: per-piece colours, outfits, clan palette and repairs share one durable write path. */
+  const commitCustomizationV146 = useCallback((apply: CustomizationApplyV146, confirmation: string): boolean => {
+    if (!sessionAliveRef.current || screen !== "customization" || settingsOpen ||
+      campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue ||
+      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current ||
+      !!pendingTerminalRunRef.current) return false;
+    const result = commitHunterCustomizationV146({
+      current: saveRef.current,
+      expectedOwnerCreatedAt: entry.ownerCreatedAt,
+      apply,
+      write: next => writeSaveWithStatus(next),
+      reconcile: (attempt, owner) => reconcileSaveWrite(attempt, owner),
+    });
+    if (!result.ok) {
+      if (result.failure !== "refused") setSaveFailure(result.failure);
+      setToast(result.failure === "refused"
+        ? "Changement refusé (matériaux insuffisants ou tenue invalide)."
+        : "Personnalisation non confirmée (" + result.failure + "). Aucun changement permanent annoncé.");
+      return false;
+    }
+    saveRef.current = result.save;
+    setSave(result.save);
+    setSaveFailure(null);
+    setToast(confirmation);
+    void playSound("select");
+    return true;
+  }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
+      entry.ownerCreatedAt, playSound]);
+
 
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
@@ -4272,6 +4332,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const activeHunterKit = activeHunterPreset
     ? playableKitForPreset(activeHunterPreset.id)
     : null;
+  const pitPersonalV147 = useMemo(() => pitPersonalFighterV147(save), [save]);
   const trophyRecords = useMemo(
     () =>
       [...save.trophies].sort(
@@ -4541,6 +4602,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen" hidden={screen !== "homeworld"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
+              <ClanPaletteContextV146.Provider value={save.customizationV146?.clanPalette ?? null}>
               <HomeworldHub key={save.createdAt} save={save} selectedShipId={selectedShipId} arrivalV67={homeworldArrivalV67}
                 navigation={<>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
@@ -4561,6 +4623,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
                 onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
+              </ClanPaletteContextV146.Provider>
             </div>
           </section>
         </Suspense>
@@ -5439,12 +5502,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
               onCommit={commitChromaticsV113}
             />
+            <HunterPieceForgeV146
+              key={save.createdAt + ":pieces:" + JSON.stringify([save.appearance.piecesV146 ?? null, save.appearance.lightsV146 ?? null, save.appearance.marksV146 ?? null, save.appearance.skinPatternIdV146 ?? null])}
+              save={save}
+              onPreview={setDraftAppearanceV146}
+              disabled={settingsOpen || campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue}
+              onCommit={commitCustomizationV146}
+            />
             <div className="customization-layout">
               <aside className="customization-preview">
                 <div className="customization-rig-stage">
                   <HunterRigPreview
                     className="customization-rig"
-                    appearance={draftChromaticsV114 ? { ...save.appearance, chromaticsV113: draftChromaticsV114 } : save.appearance}
+                    appearance={{ ...(draftAppearanceV146 ?? save.appearance), ...(draftChromaticsV114 ? { chromaticsV113: draftChromaticsV114 } : {}) }}
                     armorId={save.loadout.armorId}
                     weaponIds={save.loadout.weaponIds}
                     gearIds={save.loadout.gearIds}
@@ -6138,6 +6208,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </div>
               </article>
             </section>
+            <YautjaGlossaryV147 />
             <div className="codex-grid">
               {CODEX_ENTRIES.map((entry) => {
                 const unlocked =
@@ -6177,6 +6248,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             controlBindings={save.settings.controlBindings}
             highContrast={save.settings.highContrastVision}
             lastReplay={lastPitReplay}
+            personalFighterV147={pitPersonalV147}
             reducedGore={save.settings.reducedGore}
             screenShake={save.settings.screenShake}
             unlockedCosmeticIds={pitUnlockedCosmeticIds}
@@ -6211,7 +6283,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             inventory={activeMissionSave.inventory}
             explorationProgress={activeMissionSave.exploration}
             onExplorationProgress={persistExplorationProgress}
-            appearance={activeMissionSave.appearance}
+            appearance={campaignAppearanceV146(activeMissionSave)}
             gauntletVariantId={huntResumePayload?.gauntletVariantId ?? hunterGauntlet.equippedId}
             difficulty={activeMissionSave.settings.difficultyId}
             controlBindings={activeMissionSave.settings.controlBindings}

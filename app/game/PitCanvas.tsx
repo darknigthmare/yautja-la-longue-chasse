@@ -189,6 +189,13 @@ import { PIT_FALCONER_RECON_DRONE } from './systems/pitFalconerDrone';
 import type { PitNarrativeResultInput } from './systems/pitNarrativeTrialsV57';
 import jungleFinalArt from './data/pitJungleFinalArtV57.json';
 import PitSelectionFlow, { type PitSelectionFlowHandle } from "./PitSelectionFlow";
+import PitPersonalFighterCardV147, { type PitPersonalFighterPropV147 } from "./PitPersonalFighterCardV147";
+import { drawPitPersonalFighterV147, isPitPersonalFighterArtReadyV147, loadPitPersonalFighterArtV147 } from "./pitPersonalFighterRenderingV147";
+import type { PitFighterArtBank } from "./pitFighterRendering";
+import {
+  PIT_PERSONAL_FIGHTER_BASE_V147, canPitPersonalFighterEnterModeV147, cyclePitPersonalModeV147,
+  isPitPersonalFighterLiveV147, pitSlotDisplayNameV147,
+} from "./systems/pitPersonalFighterV147";
 import { usePitCombatViewport } from "./usePitCombatViewport";
 import styles from "./PitCanvas.module.css";
 
@@ -315,6 +322,14 @@ interface PitCanvasProps {
   onMatchComplete?: PitMatchCompleteHandler;
   onRunTransition?: PitRunTransitionHandler;
   lastReplay?: PitReplay | null;
+  /** V147: the campaign Yautja (name, Pit outfit or campaign look, equipment). */
+  personalFighterV147?: PitPersonalFighterPropV147 | null;
+}
+
+/** V147: what drawArena needs to paint the personal slot instead of the base art. */
+interface PitPersonalDrawV147 {
+  readonly appearance: PitPersonalFighterPropV147["appearance"];
+  readonly bank: PitFighterArtBank | null;
 }
 
 type ImpactFlash = PitImpactFlash;
@@ -705,6 +720,7 @@ function drawArena(
   workbookConclusionArtV107: PitSpriteSheetAnimationBank | null = null,
   objectiveSessionV107: PitWorkbookConclusionSessionV107 | null = null,
   workbookDeviceArtV107: PitWorkbookDeviceArtV107 | null = null,
+  personalV147: PitPersonalDrawV147 | null = null,
 ): void {
   const context = canvas.getContext("2d");
   if (!context) return;
@@ -867,7 +883,12 @@ function drawArena(
 
     // These are the delivered, character-specific PNG plates. They remain fixed
     // poses, never promoted to complete animation clips or used as hitboxes.
-    const bitmapDrawn = drawPitWorkbookDeviceBodyV107(context, fighterArt, fighter, groundY, {highContrast, accent, ...fighterArtOptions}) || drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, ...fighterArtOptions });
+    // V147: the personal slot paints the campaign rig; the base fighter's
+    // published art stays the fallback while the rig is incomplete.
+    const personalDrawn = Boolean(personalV147) && fighter.slot === 0 &&
+      drawPitPersonalFighterV147(context, personalV147!.bank, fighter, state.frame, groundY, personalV147!.appearance, { highContrast, accent });
+    if (fighter.slot === 0) canvas.dataset.pitPersonalFighterV147 = !personalV147 ? "" : personalDrawn ? "campaign-rig-tinted" : "base-art-fallback";
+    const bitmapDrawn = personalDrawn || drawPitWorkbookDeviceBodyV107(context, fighterArt, fighter, groundY, {highContrast, accent, ...fighterArtOptions}) || drawPitCombatBitmapFighter(context, fighterArt, fighter, groundY, { highContrast, accent, ...fighterArtOptions });
     const humanCombatant = fighter.definitionId === "theta" || fighter.definitionId === "machiko-noguchi" || Boolean(fighter.variantId) || fighter.definitionId.startsWith("user-") || isPitOriginalFighterIdV56(fighter.definitionId);
     canvas.dataset[fighter.slot === 0 ? "pitPresentationArtP1" : "pitPresentationArtP2"] = getPitFighterPresentationVisualStatus(fighterArt, fighter, fighterArtOptions);
     if (!bitmapDrawn && !humanCombatant && presentation.phase === "fight") {
@@ -1178,13 +1199,15 @@ function nativeWorkbookPresentationClockV105(view: PitRoundPresentationView, com
   return applyPitWorkbookPresentationClockV105(view, combat, duration);
 }
 
-function roundPresentationAnnouncement(presentation: PitRoundPresentationView, combat: PitCombatState | null): string {
+function roundPresentationAnnouncement(presentation: PitRoundPresentationView, combat: PitCombatState | null, personalNameV147: string | null = null): string {
   if (!combat || combat.rules.mode === "training") return "";
-  if (presentation.phase === "intro-left" || presentation.phase === "intro-right") return `Entrée de ${PIT_FIGHTERS[combat.fighters[presentation.fighterSlot ?? 0].definitionId].name}. Commandes bloquées.`;
+  const slotName = (slot: number) => pitSlotDisplayNameV147(slot, PIT_FIGHTERS[combat.fighters[slot].definitionId].name,
+    personalNameV147 ? { name: personalNameV147 } : null, combat.fighters[0].definitionId === PIT_PERSONAL_FIGHTER_BASE_V147);
+  if (presentation.phase === "intro-left" || presentation.phase === "intro-right") return `Entrée de ${slotName(presentation.fighterSlot ?? 0)}. Commandes bloquées.`;
   if (presentation.phase === "countdown") return `Manche ${presentation.round}. ${presentation.countdown}. Relâchez les commandes.`;
   if (presentation.phase === "fight") return `Manche ${presentation.round}. Combat.`;
   if (presentation.phase === "round-result" || presentation.phase === "match-result") return presentation.winnerSlot === null ? `Manche ${presentation.round}. Égalité.`
-    : `${PIT_FIGHTERS[combat.fighters[presentation.winnerSlot ?? 0].definitionId].name} remporte ${presentation.phase === "match-result" ? "le duel" : "la manche"}.`;
+    : `${slotName(presentation.winnerSlot ?? 0)} remporte ${presentation.phase === "match-result" ? "le duel" : "la manche"}.`;
   return "";
 }
 
@@ -1208,6 +1231,7 @@ export default function PitCanvas({
   onMatchComplete,
   onRunTransition,
   lastReplay = null,
+  personalFighterV147 = null,
 }: PitCanvasProps) {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   useEffect(() => {
@@ -1225,6 +1249,10 @@ export default function PitCanvas({
   const [rightId, setRightId] = useState<PitVersusFighterId>(narrativeEncounter?.rightId ?? (initialLeftId === "berserker" ? "jungle-hunter" : "berserker"));
   const [leftVariantId, setLeftVariantId] = useState<string | null>(null);
   const [rightVariantId, setRightVariantId] = useState<string | null>(null);
+  // V147: J1 plays the campaign Yautja over the base fighter (presentation only).
+  const [personalSelectedV147, setPersonalSelectedV147] = useState(false);
+  const [personalArtV147, setPersonalArtV147] = useState<PitFighterArtBank | null>(null);
+  const personalNameRefV147 = useRef<string | null>(null);
   const [arenaId, setArenaId] = useState<PitArenaId>(narrativeEncounter?.arenaId ?? "the-pit");
   const [arcadeRun, setArcadeRun] = useState<PitArcadeRun | null>(null);
   const [circuitRun, setCircuitRun] = useState<PitCircuitRun | null>(null);
@@ -1455,6 +1483,33 @@ export default function PitCanvas({
     selectedArcadeCosmetic && selectedCosmeticUnlocked && equippedCosmeticId === selectedArcadeCosmetic.id
       ? selectedArcadeCosmetic
       : null;
+  const personalAvailableV147 = Boolean(personalFighterV147) && !narrativeEncounter;
+  const personalChosenV147 = personalSelectedV147 && personalAvailableV147 && leftId === PIT_PERSONAL_FIGHTER_BASE_V147;
+  const personalLiveV147 = Boolean(combat) && isPitPersonalFighterLiveV147({
+    selected: personalChosenV147, available: personalAvailableV147, playback: Boolean(playbackReplay),
+    slotFighterId: combat?.fighters[0]?.definitionId,
+  });
+  personalNameRefV147.current = personalChosenV147 && !playbackReplay ? personalFighterV147?.name ?? null : null;
+  const personalDrawV147 = useMemo<PitPersonalDrawV147 | null>(() => personalLiveV147 && personalFighterV147
+    ? { appearance: personalFighterV147.appearance, bank: personalArtV147 } : null,
+  [personalLiveV147, personalFighterV147, personalArtV147]);
+  useEffect(() => {
+    if (!personalChosenV147 || isPitPersonalFighterArtReadyV147(personalArtV147)) return;
+    let cancelled = false;
+    void loadPitPersonalFighterArtV147().then(bank => { if (!cancelled) setPersonalArtV147(bank); });
+    return () => { cancelled = true; };
+  }, [personalChosenV147, personalArtV147]);
+  const choosePersonalFighterV147 = useCallback(() => {
+    if (!personalAvailableV147 || !canPitPersonalFighterEnterModeV147(mode)) return;
+    setPersonalSelectedV147(true);
+    setLeftId(PIT_PERSONAL_FIGHTER_BASE_V147);
+    setLeftVariantId(null);
+    setReplayNotice("");
+    if (rightId === PIT_PERSONAL_FIGHTER_BASE_V147) {
+      setRightId(PIT_VERSUS_FIGHTER_IDS.find(id => id !== PIT_PERSONAL_FIGHTER_BASE_V147) ?? "berserker");
+      setRightVariantId(null);
+    }
+  }, [mode, personalAvailableV147, rightId]);
   const gameplayKeyCodes = useMemo(() => {
     const actionIds = mode === "local"
       ? [...PIT_PLAYER_ONE_ACTION_IDS, ...PIT_PLAYER_TWO_ACTION_IDS]
@@ -1521,7 +1576,7 @@ export default function PitCanvas({
     const presentation = createPitRoundPresentation(next);
     roundPresentationRef.current = presentation;
     setRoundPresentation(presentation);
-    const label = roundPresentationAnnouncement(presentation, next);
+    const label = roundPresentationAnnouncement(presentation, next, personalNameRefV147.current);
     if (label) setAriaAnnouncement(label);
     setCombat(next);
   }, []);
@@ -1536,6 +1591,10 @@ export default function PitCanvas({
   const changePitMode = useCallback((nextMode: PitMode) => {
     if (narrativeEncounter || runTransitionSelectionLocked) return;
     if (!canPitFighterEnterMode(leftId, nextMode)) { setReplayNotice("Chronique de ce chasseur non produite : choisissez Duel CPU, Versus local ou Entraînement."); return; }
+    if (personalSelectedV147 && leftId === PIT_PERSONAL_FIGHTER_BASE_V147 && !canPitPersonalFighterEnterModeV147(nextMode)) {
+      setReplayNotice("Ton Yautja combat en Duel CPU, Versus local et Entraînement : Arcade, Circuit et Descente gardent les chroniques du roster.");
+      return;
+    }
     setMode(nextMode);
     if (
       nextMode === "descent" &&
@@ -1544,7 +1603,7 @@ export default function PitCanvas({
     ) {
       setDescentDraftSeed(createPitDescentSeed());
     }
-  }, [leftId, narrativeEncounter, runTransitionSelectionLocked, savedDescentRuns]);
+  }, [leftId, narrativeEncounter, runTransitionSelectionLocked, savedDescentRuns, personalSelectedV147]);
 
   const resetLiveInputs = useCallback(() => {
     pressedKeysRef.current.clear();
@@ -1561,7 +1620,7 @@ export default function PitCanvas({
     if (next === previous) return;
     if (next.phase !== previous.phase || next.round !== previous.round) resetLiveInputs();
     if (next.phase !== previous.phase || next.countdown !== previous.countdown || next.round !== previous.round) {
-      const label = roundPresentationAnnouncement(next, combatRef.current);
+      const label = roundPresentationAnnouncement(next, combatRef.current, personalNameRefV147.current);
       if (label) setAriaAnnouncement(label);
     }
     roundPresentationRef.current = next;
@@ -2237,6 +2296,7 @@ export default function PitCanvas({
     if (narrativeEncounter) return;
     selectionFlowRef.current?.reset(rightId);
     if (!canPitFighterEnterMode(rightId, mode)) setMode("cpu");
+    setPersonalSelectedV147(false);
     setLeftId(rightId);
     setRightId(leftId);
     setLeftVariantId(rightVariantId);
@@ -2478,6 +2538,9 @@ export default function PitCanvas({
       if (!replay) throw new Error("invalid replay");
       const reader = createPitReplayReader(replay);
       if (!canPitFighterEnterMode(replay.fighters[0], mode)) setMode("cpu");
+      // A replay carries no presentation data: it shows the recorded fighters.
+      personalNameRefV147.current = null;
+      setPersonalSelectedV147(false);
       const next = createPitReplayCombatState(replay);
       recorderRef.current = null;
       replayReaderRef.current = reader;
@@ -2582,7 +2645,7 @@ export default function PitCanvas({
     setTauntVariantsV105(current => slot === 0 ? [variant, current[1]] : [current[0], variant]);
     nextTauntVariantsRefV105.current[slot] = variant === 1 ? 2 : 1;
     lifecycleRefV93.current = next; setLifecycleV93(next);
-    setAriaAnnouncement(`${PIT_FIGHTERS[currentCombat.fighters[slot].definitionId].name} · provocation${finisherRefV80.current.phase === 'window' ? ' avant la conclusion.' : '. Le combat continue.'}`);
+    setAriaAnnouncement(`${pitSlotDisplayNameV147(slot, PIT_FIGHTERS[currentCombat.fighters[slot].definitionId].name, personalNameRefV147.current ? { name: personalNameRefV147.current } : null, currentCombat.fighters[0].definitionId === PIT_PERSONAL_FIGHTER_BASE_V147)} · provocation${finisherRefV80.current.phase === 'window' ? ' avant la conclusion.' : '. Le combat continue.'}`);
     rootRef.current?.focus({ preventScroll: true });
   }, [controlBindings, fighterArt, mode, pausedRef, playbackReplay, readAssignedGamepads]);
 
@@ -2771,8 +2834,8 @@ export default function PitCanvas({
             if (current[5] && !previous[5]) selectionFlowRef.current?.command("back");
             if (!runTransitionSelectionLocked && current[6] && !previous[6]) swapSides();
             if (current[7] && !previous[7] && availableReplay) startReplay(availableReplay);
-            if (current[8] && !previous[8]) changePitMode(cyclePitMode(mode, -1, leftId));
-            if (current[9] && !previous[9]) changePitMode(cyclePitMode(mode, 1, leftId));
+            if (current[8] && !previous[8]) { if (personalChosenV147) changePitMode(cyclePitPersonalModeV147(mode, -1)); else changePitMode(cyclePitMode(mode, -1, leftId)); }
+            if (current[9] && !previous[9]) { if (personalChosenV147) changePitMode(cyclePitPersonalModeV147(mode, 1)); else changePitMode(cyclePitMode(mode, 1, leftId)); }
             if (current[10] && !previous[10]) selectionFlowRef.current?.command("variant-prev");
             if (current[11] && !previous[11]) selectionFlowRef.current?.command("variant-next");
           }
@@ -2805,7 +2868,7 @@ export default function PitCanvas({
     };
     requestId = window.requestAnimationFrame(pollMenuGamepad);
     return () => window.cancelAnimationFrame(requestId);
-  }, [arcadePersistence.status, availableReplay, changePitMode, closeSelectionOptions, openSelectionOptions, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase, narrativeEncounter]);
+  }, [arcadePersistence.status, availableReplay, changePitMode, closeSelectionOptions, openSelectionOptions, circuitPersistence.status, continueArcade, continueCircuit, continueDescent, leftId, mode, onExit, playbackReplay, readAssignedGamepads, restartDescent, retryArcadeSettlement, retryCircuitSettlement, retryRunTransition, runTransitionPersistence.status, runTransitionSelectionLocked, savedDescentRuns, startMatch, startRematch, startReplay, swapSides, viewPhase, narrativeEncounter, personalChosenV147]);
 
   const wantsHoundArt = (renderedLeftId === 'tracker' || renderedRightId === 'tracker') && (!playbackReplay || playbackReplay.engineVersion >= 7);
   const renderedHoundVariantId = combat ? combat.houndVariantId ?? 'tracker-hound' : houndVariantId;
@@ -3238,7 +3301,7 @@ export default function PitCanvas({
       reducedGore,
       combat.rules.mode === "training" && trainingSettings.showHitboxes,
       impact,
-      equippedArcadeCosmetic?.palette ?? null,
+      personalDrawV147 ? null : equippedArcadeCosmetic?.palette ?? null,
       fighterArt,
       arenaArt,
       reducedCameraMotion,
@@ -3255,8 +3318,9 @@ export default function PitCanvas({
       workbookConclusionArtV107,
       objectiveSessionV107,
       workbookDeviceArtV107,
+      personalDrawV147,
     );
-  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, lifecyclePresentationV93, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80, workbookConclusionV107, workbookConclusionArtV107, objectiveSessionV107, workbookDeviceArtV107]);
+  }, [arenaArt, combat, equippedArcadeCosmetic, fighterArt, highContrast, impact, reducedCameraMotion, prefersReducedMotion, reducedGore, lifecyclePresentationV93, trainingSettings.showHitboxes, companionArt, falconerArt, playbackReplay, narrativeEncounter, narrativeStageCues, finisherV80, workbookConclusionV107, workbookConclusionArtV107, objectiveSessionV107, workbookDeviceArtV107, personalDrawV147]);
 
   useEffect(() => {
     if (!combat || playbackReplay || combat.phase !== "match-over" ||
@@ -3606,9 +3670,11 @@ export default function PitCanvas({
           onPlayerVariantChange={setLeftVariantId} onOpponentVariantChange={setRightVariantId}
           locked={runTransitionSelectionLocked} imposed={mode === "arcade" || mode === "circuit" || mode === "descent"}
           eventOnly={Boolean(mode === "descent" && previewDescentNode && !previewDescentNode.opponentId)}
-          playerPreview={<FighterCard fighterId={leftId} variantId={leftVariantId} side="GAUCHE" paletteOverride={equippedArcadeCosmetic?.palette} />}
+          playerPreview={personalChosenV147 && personalFighterV147 ? <PitPersonalFighterCardV147 personal={personalFighterV147} /> : <FighterCard fighterId={leftId} variantId={leftVariantId} side="GAUCHE" paletteOverride={equippedArcadeCosmetic?.palette} />}
+          personalOption={personalAvailableV147 && personalFighterV147 ? { name: personalFighterV147.name, selected: personalChosenV147, available: canPitPersonalFighterEnterModeV147(mode) } : null}
+          onPersonalSelect={choosePersonalFighterV147}
           opponentPreview={mode === "descent" && previewDescentNode && !previewDescentNode.opponentId ? <article className={styles.descentEventCard}><span className={styles.sideLabel}>BRANCHE</span><strong>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].name : "Récupération rituelle"}</strong><p>{previewDescentNode.relicId ? PIT_DESCENT_RELICS[previewDescentNode.relicId].description : "+" + previewDescentNode.recoveryHealth + " santé de Descente"}</p><small>Aucun résultat de combat n’est forgé pour cet étage.</small></article> : <FighterCard fighterId={previewRightId} variantId={previewRightId === rightId ? rightVariantId : null} side="DROITE" />}
-          onPlayerChange={selected => { if (!isPitVersusFighterId(selected)) return; setLeftId(selected); setLeftVariantId(null); setReplayNotice(""); if (selected === rightId) { setRightId(PIT_VERSUS_FIGHTER_IDS.find(id => id !== selected) ?? "berserker"); setRightVariantId(null); } }}
+          onPlayerChange={selected => { if (!isPitVersusFighterId(selected)) return; setPersonalSelectedV147(false); setLeftId(selected); setLeftVariantId(null); setReplayNotice(""); if (selected === rightId) { setRightId(PIT_VERSUS_FIGHTER_IDS.find(id => id !== selected) ?? "berserker"); setRightVariantId(null); } }}
           onOpponentChange={selected => { if (selected !== leftId) { setRightId(selected); setRightVariantId(null); setReplayNotice(""); } }}
           onArenaChange={selected => { setArenaId(selected); setStageJourneyEnabled(false); }}
           onImposedNavigate={mode === "descent" && !previewDescentRun?.selectedNodeId ? direction => setDescentOptionIndex(index => Math.max(0, Math.min((previewDescentFloor?.options.length ?? 1) - 1, index + direction))) : undefined}
@@ -4005,7 +4071,9 @@ export default function PitCanvas({
   }
 
   const [left, right] = combat.fighters;
-  const leftDefinition = getPitCombatFighterDefinition(left);
+  const leftCombatDefinition = getPitCombatFighterDefinition(left);
+  // V147: only the displayed name changes; rules come from the base fighter.
+  const leftDefinition = personalLiveV147 && personalFighterV147 ? { ...leftCombatDefinition, name: personalFighterV147.name } : leftCombatDefinition;
   const rightDefinition = getPitCombatFighterDefinition(right);
   const arenaDefinition = PIT_ARENAS[combat.arenaId];
   const activeJourneyDefinition = getPitStageJourneyDefinition(combat.stageJourney?.id);
@@ -4026,7 +4094,9 @@ export default function PitCanvas({
   const rightDescentResourcePulse =
     descentResourceFeedbackActive &&
     Boolean(descentResourceFeedback?.fighterIds.includes(right.definitionId));
-  const winner = combat.matchWinnerId ? PIT_FIGHTERS[combat.matchWinnerId] : null;
+  const winner = combat.matchWinnerId
+    ? combat.matchWinnerId === left.definitionId ? leftDefinition : PIT_FIGHTERS[combat.matchWinnerId]
+    : null;
   const terminal = terminalPresentationReady || replayEnded;
   const trainingRules = combat.rules.mode === "training";
   const terminalArcadeRun = mode === "arcade" && !playbackReplay ? arcadeRun : null;
