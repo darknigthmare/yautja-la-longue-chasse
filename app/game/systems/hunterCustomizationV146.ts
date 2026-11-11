@@ -139,7 +139,8 @@ export const CUSTOMIZATION_MODES_V146 = ["campaign", "multiplayer", "pit"] as co
 export type CustomizationModeV146 = (typeof CUSTOMIZATION_MODES_V146)[number];
 
 /** Appearance snapshot stored in an outfit; normalised by save.ts on read. */
-export type OutfitAppearanceV146 = Record<string, unknown>;
+/** Any plain object: interfaces such as HunterAppearance have no index signature. */
+export type OutfitAppearanceV146 = object;
 export interface OutfitV146 {
   name: string;
   savedAt: string;

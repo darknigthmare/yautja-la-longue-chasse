@@ -21,6 +21,7 @@ import {
   type CustomizationModeV146, type CustomizationV146, type HunterMarkIdV146, type SkinPatternIdV146,
 } from "./systems/hunterCustomizationV146";
 import { normalizeHunterAppearanceV146 } from "./save";
+import { harvestInventoryForV112 } from "./systems/harvestInventoryV112";
 import styles from "./HunterPieceForgeV146.module.css";
 
 type Tab = "pieces" | "lights" | "body" | "outfits" | "clan" | "forge";
@@ -223,12 +224,12 @@ export default function HunterPieceForgeV146({
       </fieldset>
       <fieldset className={styles.group}>
         <legend>Code de partage</legend>
-        <textarea readOnly rows={3} value={encodeOutfitShareCodeV146(normalizeHunterAppearanceV146(draft) as unknown as Record<string, unknown>)} />
+        <textarea readOnly rows={3} value={encodeOutfitShareCodeV146(normalizeHunterAppearanceV146(draft))} />
         <textarea rows={3} placeholder="Coller un code YLC1..." value={shareInput}
           onChange={event => setShareInput(event.target.value)} />
         <button type="button" disabled={disabled || !shareInput.trim()} onClick={() => {
           const decoded = decodeOutfitShareCodeV146(shareInput, raw =>
-            normalizeHunterAppearanceV146(raw) as unknown as Record<string, unknown>, earned);
+            normalizeHunterAppearanceV146(raw), earned);
           if (!decoded.ok) { setMessage(decoded.reason === "version" ? "Code d'une version plus récente." : "Code illisible."); return; }
           setDraft(normalizeHunterAppearanceV146(decoded.appearance));
           setMessage(decoded.replaced.length
@@ -250,11 +251,12 @@ export default function HunterPieceForgeV146({
             return <li key={id}>
               <strong>{HUNTER_PIECES_V146.find(p => p.id === id)?.label} : usure {level}/3</strong>
               <button type="button" disabled={disabled} onClick={() => commit(current => {
-                const archive = payRepairFromArchiveV146(current.inventory.harvestV112.archive, cost);
+                const harvest = harvestInventoryForV112(current.inventory);
+                const archive = payRepairFromArchiveV146(harvest.archive, cost);
                 if (!archive) return null;
                 return {
                   ...current,
-                  inventory: { ...current.inventory, harvestV112: { ...current.inventory.harvestV112, archive } },
+                  inventory: { ...current.inventory, harvestV112: { ...harvest, archive } },
                   customizationV146: repairPieceV146(current.customizationV146 ?? emptyCustomizationV146(), id),
                 };
               }, "Pièce réparée à la forge.")}>Réparer ({cost} matériaux)</button>
