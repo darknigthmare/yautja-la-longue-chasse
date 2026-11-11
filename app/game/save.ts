@@ -68,6 +68,8 @@ import { HUNTER_PIECE_IDS_V146, hasCustomPiecesV146, normalizeLightsV146,
   normalizePieceColorsV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
 import { SKIN_PATTERN_IDS_V146, applyHeavyWearV146, earnedCosmeticsV146,
   emptyCustomizationV146, normalizeCustomizationV146, normalizeMarksDisplayV146 } from "./systems/hunterCustomizationV146";
+import { applyHoundHuntReportV147, huntSessionIdV147, isFutureHuntingHoundsV147,
+  normalizeHoundHuntReportV147, normalizeHuntingHoundsV147 } from "./systems/huntingHoundsV147";
 import {
   ECOLOGY_V8_BOSS_ENEMY_IDS,
   ECOLOGY_V8_ENEMIES,
@@ -1288,6 +1290,10 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.customizationV146 === undefined || source.customizationV146 === null ? {} : {
       customizationV146: normalizeCustomizationV146(source.customizationV146, raw => ({ ...normalizeAppearance(raw) })),
     }),
+    // V147: written only when present so older saves keep their exact shape.
+    ...(source.houndsV147 === undefined || source.houndsV147 === null ? {} : {
+      houndsV147: normalizeHuntingHoundsV147(source.houndsV147),
+    }),
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
@@ -1618,6 +1624,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // player's checkpoint during import, archive export or account transfer.
   // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
   if (isRecord(value.customizationV146) && Number(value.customizationV146.version) > 1)
+    return { save: null, failure: "future-version" };
+  if (isFutureHuntingHoundsV147(value.houndsV147))
     return { save: null, failure: "future-version" };
   if (value.gauntletV134 !== undefined && value.gauntletV134 !== null) {
     if (isRecord(value.gauntletV134) && Number(value.gauntletV134.version) > 1)
@@ -2339,7 +2347,7 @@ export function applyMissionResult(
   };
 
   if (result.outcome !== "success") {
-    return withCustomizationAfterMissionV146({
+    return withHoundAfterMissionV147(withCustomizationAfterMissionV146({
       ...save,
       updatedAt: now,
       exploration,
@@ -2363,7 +2371,7 @@ export function applyMissionResult(
           (result.outcome === "failed" ? 1 : 0),
         currentHuntStreak: 0,
       },
-    }, rawResult);
+    }, rawResult), rawResult);
   }
 
   const firstCompletion = previous.completions === 0;
@@ -2497,14 +2505,26 @@ export function applyMissionResult(
       save.storyCompleted || mission.id === FINAL_STORY_MISSION_ID,
   };
 
-  return withCustomizationAfterMissionV146({
+  return withHoundAfterMissionV147(withCustomizationAfterMissionV146({
     ...progressedSave,
     inventory: unlockContent(
       progressedSave,
       nextHonor,
       missionProgress,
     ),
-  }, rawResult);
+  }, rawResult), rawResult);
+}
+
+/**
+ * V147: the hound that joined this hunt gains bond (at most 5 for this hunt),
+ * and its wound or permanent death is recorded once, whatever the outcome.
+ */
+function withHoundAfterMissionV147(next: SaveGame, raw: MissionResultInput): SaveGame {
+  const report = normalizeHoundHuntReportV147(raw.houndV147);
+  if (!report || !next.houndsV147) return next;
+  const at = validIsoDate(raw.completedAt, next.updatedAt);
+  const hounds = applyHoundHuntReportV147(next.houndsV147, report, huntSessionIdV147(raw.missionId, at), at);
+  return hounds === next.houndsV147 ? next : { ...next, houndsV147: hounds };
 }
 
 /**

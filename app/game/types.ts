@@ -3,6 +3,7 @@ import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 import type { HunterChromaticsV113 } from "./hunterChromaticsV113";
 import type { HunterPieceColorsV146, HunterLightsV146, HunterPieceIdV146 } from "./hunterPiecesV146";
 import type { HunterMarksDisplayV146, SkinPatternIdV146, CustomizationV146 } from "./systems/hunterCustomizationV146";
+import type { HoundHuntReportV147, HuntingHoundsV147 } from "./systems/huntingHoundsV147";
 /**
  * Shared game contracts.
  *
@@ -589,6 +590,8 @@ export interface MissionResult {
   secondWindUsed: boolean;
   /** V146: armour pieces cracked by heavy hits; applied once to the campaign. */
   wearV146?: { heavyPieces: HunterPieceIdV146[] };
+  /** V147: the hound that joined this hunt (orders carried out, wound, death). */
+  houndV147?: HoundHuntReportV147;
   completedAt: string;
 }
 
@@ -724,6 +727,8 @@ export interface SaveGame {
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   /** V146: outfits, mode outfits, clan palette, earned cosmetics, heavy wear. */
   customizationV146?: CustomizationV146 | null;
+  /** V147: recruited hunting hounds, bond, wounds and permanent deaths. */
+  houndsV147?: HuntingHoundsV147 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
