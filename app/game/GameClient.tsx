@@ -33,6 +33,8 @@ import { ClanPaletteContextV146 } from "./clanPaletteContextV146";
 import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type HunterChromaticsV113, type ChromaticFacilityV115 } from "./hunterChromaticsV113";
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
 import { commitHunterCustomizationV146 } from "./systems/hunterCustomizationPersistenceV146";
+import { TrophyUsageControlsV147, TrophyUsageSummaryV147 } from "./TrophyUsagesV147";
+import { applyTrophyUsageV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -3863,6 +3865,35 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       entry.ownerCreatedAt, playSound]);
 
 
+  /** V147: trophy usages reuse the owner-bound durable write of V146 (nothing is announced before it is confirmed). */
+  const commitTrophyUsageV147 = useCallback((action: TrophyUsageActionV147, confirmation: string): boolean => {
+    if (!sessionAliveRef.current || screen !== "trophies" || settingsOpen ||
+      campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue ||
+      !!pendingTrophyCommitRef.current || !!pendingSocialWriteRef.current ||
+      !!pendingTerminalRunRef.current) return false;
+    const result = commitHunterCustomizationV146({
+      current: saveRef.current,
+      expectedOwnerCreatedAt: entry.ownerCreatedAt,
+      apply: current => applyTrophyUsageV147(current, action),
+      write: next => writeSaveWithStatus(next),
+      reconcile: (attempt, owner) => reconcileSaveWrite(attempt, owner),
+    });
+    if (!result.ok) {
+      if (result.failure !== "refused") setSaveFailure(result.failure);
+      setToast(result.failure === "refused"
+        ? "Usage refusé : vérifiez l’état du trophée."
+        : "Usage du trophée non confirmé (" + result.failure + "). Aucun changement permanent annoncé.");
+      return false;
+    }
+    saveRef.current = result.save;
+    setSave(result.save);
+    setSaveFailure(null);
+    setToast(confirmation);
+    void playSound("select");
+    return true;
+  }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
+      entry.ownerCreatedAt, playSound]);
+
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
       setSelectedCatalogueEntryId(null);
@@ -5949,6 +5980,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <ConservationPanelV112 inventory={save.inventory} clanMarks={save.profile.clanMarks}
               gamepadButtons={conservationPadButtonsV112} onClose={menuBack}
               disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
+            <TrophyUsageSummaryV147 save={save} />
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">
                 <summary>
@@ -6140,6 +6172,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                           );
                         })}
                       </div>
+                      <TrophyUsageControlsV147
+                        save={save}
+                        trophy={trophy}
+                        disabled={pendingTrophyCommit !== null || settingsOpen || campaignSaveBusy ||
+                          archiveTransferBusy || !!archiveRecoveryIssue}
+                        onApply={commitTrophyUsageV147}
+                      />
                     </article>
                   );
                 })
