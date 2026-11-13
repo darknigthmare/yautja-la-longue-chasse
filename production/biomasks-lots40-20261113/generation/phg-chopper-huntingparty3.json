@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG source-view edition studies; each entry retains its exact identity qualification. Native ImageGen A/B, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-chopper-huntingparty3",
+      "name": "Chopper — PHG HuntingParty3 publisher view (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-A-corrected-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-chopper-huntingparty3.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-chopper-huntingparty3.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png"
+      ],
+      "publisherLinkedURL": null,
+      "derivedSizeVariantURL": null,
+      "sizeVariantDerivation": null,
+      "canonicalIdentityUnmapped": false,
+      "previewEdition": false,
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,HuntingParty3 publisher group-render,rightfigure",
+      "canonicalInventoryId": "mk-05-chopper",
+      "maskFamily": "chopper",
+      "representationOf": "mk-05-chopper",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "position": "right",
+        "counting": "image-left-to-image-right"
+      },
+      "identityQualification": "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Chopper",
+        "dataId": "CD_Predator_Chopper",
+        "iconPath": "/icons/characters/predator/chopper.png",
+        "qualification": "Community data proves class name/icon mapping; V87 maps source position. Neither alone certifies exact franchise identity or depth. Official image is visible geometry authority.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "Correct ONLY the temple lens fitting of the SECOND isolated Chopper PHG HuntingParty3 mask,using the FIRST official group render as source authority: relevant character is the RIGHT figure. SECOND correctly has three red points but its invented bulky raised rectangular mounting plate and separate projecting wing are not supported by the source. Replace only that oversized elevated fitting with the actual small,compact,dark,low-profile fitting snug/flush against the source image-LEFT temple. Keep exactly THREE TINY physical red points in the source compact triangle: two at image-right superposed,one at image-left in this projection. The three points share one discreet compact dark fitting,not a large detached rectangular plate,a standoff,or an extra red point on a broad separate wing. No invented screws/bracket/bolts or hidden mounting details. Follow FIRST source apparent size and placement relative to brow and eye; do not enlarge tiny points into big bulbs. Keep every other part of SECOND unchanged: exact source oblique camera/tilt,projected proportions,whole crown contour,three curved forehead bands,existing circular source indentations,black eye inserts,stacked wavy horizontal cheeks,long central nose plate,wear and original red local lighting. No new view,symmetry,hidden geometry or redesign. Exclude biological skin/eyes/mandibles,dreads,hair rings,neck,body/armor,weapons,both skull trophies and neck-bone necklace,other figures and scene. Exactly one complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margin around whole crown/chin,longest axis78-80percent canvas,no background,floor,shadow plane,glow,text or UI. This is a local fitting size/profile correction only; fine construction remains limited by the small source.",
+      "promptSha256": "10993d8c5e6c8b81789af8c7dab4a0ff9a7cd74cf904b972046d820c4d37324a",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png",
+        "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-A-native.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Dark gunmetal rounded crown with curved panel outlines,heavy brow and narrow black opaque eye inserts,long broad central nose plate,and existing stacked wavy horizontal cheek ridges. Keep their source-visible count and exact placement,not added tubes. The source is lit RED on this figure; preserve apparent illumination in A,not new invented red paint. Keep source-visible tiny temple lenses without emitted halo. Exclude BOTH skull trophies mounted behind/above the head,the neck-bone necklace,shoulder equipment and all other figures.",
+        "exclusions": "All wearer biology,dreads,hair rings,neck,body/armor/weapons,separate skull/neck-bone trophies,other figures and scene.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            39,
+            1226,
+            1206
+          ],
+          "8": [
+            257,
+            119,
+            1033,
+            1164
+          ],
+          "16": [
+            257,
+            119,
+            1033,
+            1164
+          ],
+          "128": [
+            258,
+            120,
+            1032,
+            1163
+          ],
+          "240": [
+            259,
+            121,
+            1031,
+            1162
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          257,
+          119,
+          221,
+          90
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.7425837320574162
+      },
+      "limitations": [
+        "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+        "Same mask family as existing project film reconstruction; this separately documented game edition is not new canonical geometry.",
+        "Blue/red illumination does not establish intrinsic paint or original UV; Bneutral illumination remains an adaptation.",
+        "Small source head region limits fine relief,exact forehead marks/optics and hidden views.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B is rendering-only adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded.",
+        "Initial A overlarge/elevated lens fitting rejected; selected A ImageGen correction keeps3tiny points on compact source-like dark fitting. Microconstruction remains unknown."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-A-corrected-native.png",
+          "sha256": "bae3f00a745a3ab0a84935da9651f1b4784b904c12dc4dca61672133e9c2c562",
+          "prompt": "Correct ONLY the temple lens fitting of the SECOND isolated Chopper PHG HuntingParty3 mask,using the FIRST official group render as source authority: relevant character is the RIGHT figure. SECOND correctly has three red points but its invented bulky raised rectangular mounting plate and separate projecting wing are not supported by the source. Replace only that oversized elevated fitting with the actual small,compact,dark,low-profile fitting snug/flush against the source image-LEFT temple. Keep exactly THREE TINY physical red points in the source compact triangle: two at image-right superposed,one at image-left in this projection. The three points share one discreet compact dark fitting,not a large detached rectangular plate,a standoff,or an extra red point on a broad separate wing. No invented screws/bracket/bolts or hidden mounting details. Follow FIRST source apparent size and placement relative to brow and eye; do not enlarge tiny points into big bulbs. Keep every other part of SECOND unchanged: exact source oblique camera/tilt,projected proportions,whole crown contour,three curved forehead bands,existing circular source indentations,black eye inserts,stacked wavy horizontal cheeks,long central nose plate,wear and original red local lighting. No new view,symmetry,hidden geometry or redesign. Exclude biological skin/eyes/mandibles,dreads,hair rings,neck,body/armor,weapons,both skull trophies and neck-bone necklace,other figures and scene. Exactly one complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margin around whole crown/chin,longest axis78-80percent canvas,no background,floor,shadow plane,glow,text or UI. This is a local fitting size/profile correction only; fine construction remains limited by the small source.",
+          "referencedImagePaths": [
+            "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png",
+            "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-A-native.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "bae3f00a745a3ab0a84935da9651f1b4784b904c12dc4dca61672133e9c2c562",
+      "bytes": 1307217,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        257,
+        119,
+        1033,
+        1164
+      ],
+      "transparentPixels": 968968,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+      "referenceSourceSha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5"
+    },
+    {
+      "id": "phg-chopper-huntingparty3",
+      "name": "Chopper — PHG HuntingParty3 publisher view (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-B-corrected-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-chopper-huntingparty3.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-chopper-huntingparty3.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png"
+      ],
+      "publisherLinkedURL": null,
+      "derivedSizeVariantURL": null,
+      "sizeVariantDerivation": null,
+      "canonicalIdentityUnmapped": false,
+      "previewEdition": false,
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,HuntingParty3 publisher group-render,rightfigure",
+      "canonicalInventoryId": "mk-05-chopper",
+      "maskFamily": "chopper",
+      "representationOf": "mk-05-chopper",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "position": "right",
+        "counting": "image-left-to-image-right"
+      },
+      "identityQualification": "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Chopper",
+        "dataId": "CD_Predator_Chopper",
+        "iconPath": "/icons/characters/predator/chopper.png",
+        "qualification": "Community data proves class name/icon mapping; V87 maps source position. Neither alone certifies exact franchise identity or depth. Official image is visible geometry authority.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "Correct ONLY the invented pale/white Scar glyph on the forehead of the SECOND Chopper mask render. FIRST isolated Chopper A2 is the PRIMARY geometry/marking authority: its forehead has NO WHITE GLYPH,NO PAINTED SYMBOL and NO ENGRAVED SCAR MARK. SECOND B1 accidentally copied another character's white glyph; remove that erroneous white mark entirely and restore the ordinary continuous same rough silver/gunmetal metal in that tiny region,following FIRST. Do not replace it with another mark,scar,rune,decal or new surface damage. Preserve the genuine three curved crown bands and existing two circular physical source indentations. Keep SECOND neutral PHG PBR light/material and all FIRST design/camera: same oblique angle,projected proportions,whole contour,black eyes,stacked wavy cheeks,long central nose plate and the compact flush dark image-LEFT temple fitting with EXACTLY THREE tiny red points in its same triangle. No bigger lens plate,wing,standoff or opposite-side lenses. Nothing else changes. No rotation,new view,hidden geometry,extra fittings or colored paint. Exactly ONE complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margins,whole crown/chin visible,longest axis78-80percent canvas. No body,skin,mandibles,dreads,neck,bone necklace,skull trophies,weapons,background,floor,shadow plane,glow,UI or text. FIRST sets all geometry and absence of markings; SECOND supplies only the existing neutral light/rough metal. Remove only the false white glyph.",
+      "promptSha256": "f63b4055c348c20ab323ebb04807270c0876767b106178629ea1f18ba5bdaa1a",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-chopper-huntingparty3.png",
+        "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-B-native.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Dark gunmetal rounded crown with curved panel outlines,heavy brow and narrow black opaque eye inserts,long broad central nose plate,and existing stacked wavy horizontal cheek ridges. Keep their source-visible count and exact placement,not added tubes. The source is lit RED on this figure; preserve apparent illumination in A,not new invented red paint. Keep source-visible tiny temple lenses without emitted halo. Exclude BOTH skull trophies mounted behind/above the head,the neck-bone necklace,shoulder equipment and all other figures.",
+        "exclusions": "All wearer biology,dreads,hair rings,neck,body/armor/weapons,separate skull/neck-bone trophies,other figures and scene.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            146,
+            116,
+            1208,
+            1172
+          ],
+          "8": [
+            256,
+            119,
+            1038,
+            1167
+          ],
+          "16": [
+            256,
+            119,
+            1038,
+            1166
+          ],
+          "128": [
+            256,
+            120,
+            1037,
+            1165
+          ],
+          "240": [
+            257,
+            121,
+            1036,
+            1164
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          256,
+          119,
+          216,
+          88
+        ],
+        "maximumBorderAlpha": 0,
+        "visibleWidthHeightRatio": 0.7468958930276982
+      },
+      "limitations": [
+        "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+        "Same mask family as existing project film reconstruction; this separately documented game edition is not new canonical geometry.",
+        "Blue/red illumination does not establish intrinsic paint or original UV; Bneutral illumination remains an adaptation.",
+        "Small source head region limits fine relief,exact forehead marks/optics and hidden views.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B is rendering-only adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Initial B cross-character white Scar glyph rejected. Selected B corrected with isolated Chopper A2 primary/B1 secondary,no multi-character R submitted in correction. Original official R provenance retained."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-B-corrected-native.png",
+          "sha256": "a3fed5500e3e8b2d60b3ac868814147c6563621428289d5a2a54005503099904",
+          "prompt": "Correct ONLY the invented pale/white Scar glyph on the forehead of the SECOND Chopper mask render. FIRST isolated Chopper A2 is the PRIMARY geometry/marking authority: its forehead has NO WHITE GLYPH,NO PAINTED SYMBOL and NO ENGRAVED SCAR MARK. SECOND B1 accidentally copied another character's white glyph; remove that erroneous white mark entirely and restore the ordinary continuous same rough silver/gunmetal metal in that tiny region,following FIRST. Do not replace it with another mark,scar,rune,decal or new surface damage. Preserve the genuine three curved crown bands and existing two circular physical source indentations. Keep SECOND neutral PHG PBR light/material and all FIRST design/camera: same oblique angle,projected proportions,whole contour,black eyes,stacked wavy cheeks,long central nose plate and the compact flush dark image-LEFT temple fitting with EXACTLY THREE tiny red points in its same triangle. No bigger lens plate,wing,standoff or opposite-side lenses. Nothing else changes. No rotation,new view,hidden geometry,extra fittings or colored paint. Exactly ONE complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margins,whole crown/chin visible,longest axis78-80percent canvas. No body,skin,mandibles,dreads,neck,bone necklace,skull trophies,weapons,background,floor,shadow plane,glow,UI or text. FIRST sets all geometry and absence of markings; SECOND supplies only the existing neutral light/rough metal. Remove only the false white glyph.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-chopper-huntingparty3.png",
+            "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-B-native.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-chopper-huntingparty3.png",
+      "sourceASha256": "bae3f00a745a3ab0a84935da9651f1b4784b904c12dc4dca61672133e9c2c562",
+      "sha256": "a3fed5500e3e8b2d60b3ac868814147c6563621428289d5a2a54005503099904",
+      "bytes": 1413114,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        256,
+        119,
+        1038,
+        1166
+      ],
+      "transparentPixels": 960708,
+      "nativeCopyIdentical": true
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "phg-chopper-huntingparty3",
+      "version": "A",
+      "attempt": 1,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-A-native.png",
+      "sha256": "388c4c4d43e94b4f8de6b7c2d27be5fcee739e2cfa40c18d8cce795cd6c5eec2",
+      "bytes": 1305998,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "From the attached official PHG HuntingParty3 group render,isolate ONLY the rigid metallic mask worn by the RIGHT figure (Chopper,secondary-corroborated identity). Ignore both other figures. Preserve its exact observed source camera,yaw,pitch,roll,projected asymmetry,visible proportions,whole contour and source-visible panel relief. Do not invent a centered straight front,new profile,hidden back/interior or a different film/NECA design. Preserve this exact game-edition source view. SUBJECT FEATURES: Dark gunmetal rounded crown with curved panel outlines,heavy brow and narrow black opaque eye inserts,long broad central nose plate,and existing stacked wavy horizontal cheek ridges. Keep their source-visible count and exact placement,not added tubes. The source is lit RED on this figure; preserve apparent illumination in A,not new invented red paint. Keep exactly THREE small physical red lenses in the source image-LEFT temple triangle (two at right superposed,one at left in this projection),without emitted halo. Do not add lenses to the hidden/opposite temple. Exclude BOTH skull trophies mounted behind/above the head,the neck-bone necklace,shoulder equipment and all other figures. All biology/living eyes/skin/mandibles,dreadlocks,hair rings,neck,body/armor/weapons,scene and separate costume trophies are excluded. Only the rigid mask and fittings demonstrably attached to it remain. Preserve source opaque dark eye inserts versus actual open apertures. No invented holes,vents,runes,ornaments,hardware,paint scheme or speculative microdetails. A follows the actual published render and local lighting; colored source illumination is not proof of intrinsic paint. Exactly ONE complete isolated mask,genuine transparent RGBA,centered with10percent clear transparent margin all around,crown and chin entirely visible,longest axis78-80percent canvas. No background,floor,shadow plane,glow halo,UI,text or alternate view. Small group-render mask resolution limits fine relief; no automatic exact canon certification.",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "Independent source review: lens count3correct,but fitting too large/elevated with invented rectangular plate and wing. Targeted ImageGen A2 compacts/lays only this fitting against temple.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-chopper-huntingparty3",
+      "version": "B",
+      "attempt": 1,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-chopper-huntingparty3-B-native.png",
+      "sha256": "824e1067661f5d18ebcc4162216c1a1922b5b421dbde4ab1d32aa909999916ba",
+      "bytes": 1485187,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "Make version B of the FIRST isolated PHG HuntingParty3 Chopper mask. SECOND image is the official group render; its source subject is the RIGHT figure only. Lock FIRST visible geometry,exact camera/tilt,projected proportions,whole contour,existing panel/cheek/muzzle/crown relief,EXACTLY THREE TINY physical red lenses in ONE compact dark low-profile fitting snug/flush against image-LEFT temple in the same source triangle,with NO large rectangular plate,projecting wing or standoff,and no invented opposite-temple lenses,source eye inserts,and all source-visible marks or wear. Never swap in another movie/project mask or another figure. Change ONLY material/light presentation to coherent PHG PBR: same actually observed gunmetal/silver mask material and worn roughness,controlled texture grain,readable relief,neutral soft key from image-upper-left/front and gentle fill. The group render uses strong red/blue LIGHTING: neutralize illumination without inventing a blue/red painted colorway or claiming unknown intrinsic albedo. Preserve the source pale forehead mark if this mask has it; do not add/remove/change its shape. Do not create universal mirror chrome,new vents,holes,runes,ornaments,hardware,hidden side/back/interior or new lenses. Keep actual small physical red lenses without glow and dark opaque eye inserts without living eyes. Exclude all wearer skin/mandibles,dreads,neck,body/armor,weapons,skull trophies,neck-bone jewelry and other figures. Exactly one complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margins,longest complete axis78-80percent canvas,no crown/chin clipping,no background/floor/shadow plane/UI/text/alternate views. Same geometry and camera; only rendering standardization. This is an edition study with qualified original color/identity,not new canonical geometry.",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-chopper-huntingparty3.png",
+        "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "B1 imported the neighboring Scar white forehead glyph from group R; absent from Chopper A2 and source. B2 uses isolated A2+B1 only and removes false glyph. Root expressly authorized targeted correction.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ]
+}

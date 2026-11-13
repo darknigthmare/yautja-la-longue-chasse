@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-elder-avp-series-17-2016",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-elder-avp-series-17-2016",
+      "label": "Elder AVP · NECA Series17 2016",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-elder-avp-series-17-2016.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-A-attempt2-native.png",
+      "sha256": "e93c6aaa1c7d92dc48da0e5418260d30dafca735183a20277e0145bf6c4badf5",
+      "bytes": 1567247,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-elder-avp-series-17-2016.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA2016 AVP Elder Series17 licensed toy edition; not automatic original-film geometry certification",
+      "relatedCanonicalTargetId": "mk-15-elder",
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+      "referenceSourceSha256": "b4a532597c6f579cb886a57f7736c0e336f84742bcedafad23b60a59df55dc83",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+          "sha256": "b4a532597c6f579cb886a57f7736c0e336f84742bcedafad23b60a59df55dc83"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/elder-avp-att58247-photo.jpg",
+          "sha256": "4ca5903a5957437fda13a1ed620e4bcb4624950f6fa4e40a1c7c04efacc2014a"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-Elder-.jpg",
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-Elder1-.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/"
+      ],
+      "submittedReferencePaths": [
+        "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-A-native.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58247-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Make one narrowly targeted correction to the FIRST image, the isolated A candidate. The SECOND and THIRD images are the official NECA AVP Elder2016photographs; their masks corroborate the actual shell. In the first candidate REMOVE the tall grey bumpy central ridge protruding ABOVE and BEHIND the gold forehead crown. That grey ridged peak belongs to the wearer's organic cranium visible behind the mask in the official photos, not to the detachable hard shell. Delete it to genuine transparency. Keep the existing gold crown edges and their actual shallow center cutout; do not fill the deleted region with a new panel, bridge, spike or hidden helmet surface. The tiny gold nodes on the crown are hard mask parts and remain.\n\nPreserve every other first-image visible mask contour, camera, shape proportion, mouth opening, bright silver-white narrow lenses, cheek relief, gold/bronze-grey patinated palette and actual black forehead mark layout, including the small white T-like painted mark. Do not redraw the inscriptions into different glyphs or add strokes. The central open-bottom mouth arch remains transparent and empty: no organic skin, mouth, teeth, mandibles or head behind it. No dreadlocks, collar, skull jewellery, background, stand, text, additional mask, horns or new mechanical parts. Only the grey organic crest is removed.\n\nKeep a genuine transparent alpha canvas. Request1254x1254square; preserve the same camera and source proportions, but center the entire remaining mask at about78–80percent of the largest axis with at least110pixels of transparent margin above and below. No crop, rotation, stretching, redesign or new hidden geometry. This remains an isolated source-view candidate of a photographed NECA toy edition, not certified original film geometry or certified high-resolution glyph reproduction.",
+      "promptSha256": "22c743683d1e4fc212b7a87c6247e32635ce4696429028b33186240ffe60996d",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          254,
+          101,
+          994,
+          1172
+        ],
+        "marginsPixels16": [
+          254,
+          101,
+          260,
+          82
+        ],
+        "minimumMarginFraction": 0.06539,
+        "transparentPixels": 993549,
+        "opaquePixels": 969
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Whole rigid crown/cheek shell and open lower central arch retained; silver-white optics and bronze palette visible.",
+          "One ImageGen correction removed the grey organic cranial ridge behind the top rim; the rejected original is retained.",
+          "Forehead visual mark arrangement remains a source-resolution interpretation; no exact glyph-stroke certification.",
+          "No mouth/mandibles, dreads, necklace or wearer remains; actual transparency observed."
+        ]
+      },
+      "limitations": [
+        "The main mask view is a close-up inset inside a960x1200 catalogue sheet; exact high-resolution glyph strokes, hidden geometry and material albedo cannot be certified.",
+        "The brown mouth/mandibles in the central arch, upper biological head and all dreadlocks/collar are wearer elements.",
+        "Separate from PHG Elder, V3 Elder and Greyback1718 mask sculpts.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-A-native.png",
+          "sha256": "c1205b0eb82271ede07a9f087dc85cc659fa544b2b21b30114563c86c776e731",
+          "bytes": 1567834,
+          "prompt": "Create ONE isolated rigid detachable biomask, faithfully following the official NECA AVP Elder Series17(2016) edition shown in the TOP-RIGHT FRAMED CLOSE-UP INSET of the FIRST photograph. This inset, not the large unmasked body or the mask held in its hand, controls the one mask's near-front source camera. The SECOND photograph corroborates the same worn mask from another angle, but must NOT change the inset camera or invent hidden surfaces. This is an edition-bound toy-sculpt adaptation, not certification of original film geometry.\n\nPreserve that inset's actual whole shell contour, proportions, inclination, view, gold/bronze and grey patinated paint, and asymmetric visible details. Keep the broad tall forehead crown, flared upper corners, the central shallow V/triangle top panel, small gold nodes along the visible crown edges, the two bright opaque silver/white narrow eye lenses, the incised cheek panels and long open-bottom central arch framed by two gold-bronze vertical side pieces. The center lower arch is an opening in the hard mask: remove the brown organic mouth, mandibles and teeth seen through/below it, and leave that mouth opening transparent. Do not cover the opening with a new plate or add artificial teeth. Preserve only the actual hard shell and its integral fittings.\n\nMaintain the black narrow glyph-like marks on the forehead rim and the small white central T-like brush mark in their source-relative positions and overall traced shapes. They are visual marks, not new readable letters: do not translate, replace, add extra runes or invent high-resolution inscriptions. Keep unresolved fine strokes subdued rather than fabricate exact details from this modest inset.\n\nREMOVE all biological head/cranium peaks behind the top rim, skin, mouth/mandibles/teeth within the center arch, black/blue dreadlocks, dreadlock bands, collar, necklaces, skull trophies, red cape, body armour, arm/hand, weapons, shoulder cannon, the inset frame and both photo backgrounds. No wearer or hanging jewellery belongs in this mask render. Do not add hidden back/interior geometry, new horns, tubes, vents, emitters, letters, damage or ornaments. Preserve the photographed muted metal/paint and soft source lighting for A, without chrome polish or glow.\n\nExactly one complete mask, centered on a genuine transparent alpha background. No collage, duplicate, text, labels, stand, floor or shadow plane. Request1254x1254square if supported; full visible mask occupies about78–80percent of the largest canvas axis, leaving8–12percent transparent margin all around. No clipping, crop, shape stretching or forced symmetrical frontal redesign.",
+          "promptSha256": "44c4be3a27d11e3b004519c1e0f8674c67ff60193c6b46038407f3e54a3b04ea",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58247-photo.jpg"
+          ],
+          "rejectionReason": "Retained grey organic cranial ridge behind top crown; biological wearer element must be excluded."
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-A-attempt2-native.png",
+          "sha256": "e93c6aaa1c7d92dc48da0e5418260d30dafca735183a20277e0145bf6c4badf5",
+          "bytes": 1567247,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Make one narrowly targeted correction to the FIRST image, the isolated A candidate. The SECOND and THIRD images are the official NECA AVP Elder2016photographs; their masks corroborate the actual shell. In the first candidate REMOVE the tall grey bumpy central ridge protruding ABOVE and BEHIND the gold forehead crown. That grey ridged peak belongs to the wearer's organic cranium visible behind the mask in the official photos, not to the detachable hard shell. Delete it to genuine transparency. Keep the existing gold crown edges and their actual shallow center cutout; do not fill the deleted region with a new panel, bridge, spike or hidden helmet surface. The tiny gold nodes on the crown are hard mask parts and remain.\n\nPreserve every other first-image visible mask contour, camera, shape proportion, mouth opening, bright silver-white narrow lenses, cheek relief, gold/bronze-grey patinated palette and actual black forehead mark layout, including the small white T-like painted mark. Do not redraw the inscriptions into different glyphs or add strokes. The central open-bottom mouth arch remains transparent and empty: no organic skin, mouth, teeth, mandibles or head behind it. No dreadlocks, collar, skull jewellery, background, stand, text, additional mask, horns or new mechanical parts. Only the grey organic crest is removed.\n\nKeep a genuine transparent alpha canvas. Request1254x1254square; preserve the same camera and source proportions, but center the entire remaining mask at about78–80percent of the largest axis with at least110pixels of transparent margin above and below. No crop, rotation, stretching, redesign or new hidden geometry. This remains an isolated source-view candidate of a photographed NECA toy edition, not certified original film geometry or certified high-resolution glyph reproduction.",
+          "promptSha256": "22c743683d1e4fc212b7a87c6247e32635ce4696429028b33186240ffe60996d",
+          "submittedReferencePaths": [
+            "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-A-native.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58247-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "avp-elder",
+      "representationOf": "NECA Elder AVP Series17 2016 photographed edition",
+      "newCanonicalGeometry": false
+    },
+    {
+      "id": "neca-elder-avp-series-17-2016",
+      "label": "Elder AVP · NECA Series17 2016",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-elder-avp-series-17-2016.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-B-native.png",
+      "sha256": "4f6aa7c6b26cc55141bf718009eab45b8f2ac99fa628c1d919bd1ba1cc176d42",
+      "bytes": 1511349,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-elder-avp-series-17-2016.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA2016 AVP Elder Series17 licensed toy edition; not automatic original-film geometry certification",
+      "relatedCanonicalTargetId": "mk-15-elder",
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+      "referenceSourceSha256": "b4a532597c6f579cb886a57f7736c0e336f84742bcedafad23b60a59df55dc83",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+          "sha256": "b4a532597c6f579cb886a57f7736c0e336f84742bcedafad23b60a59df55dc83"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/elder-avp-att58247-photo.jpg",
+          "sha256": "4ca5903a5957437fda13a1ed620e4bcb4624950f6fa4e40a1c7c04efacc2014a"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-Elder-.jpg",
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-Elder1-.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-elder-avp-series-17-2016.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58247-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Restage the FIRST reference, the isolated A mask, as a distinct PHG-quality game-prop rendering B of precisely the SAME photographed NECA AVP Elder Series17(2016) sculpture. The SECOND image's top-right framed inset and the THIRD image corroborate the actual toy edition; A controls this one near-front camera, contour and visible glyph-like mark arrangement. Do not switch viewpoints or substitute PHG Elder, Greyback or another Elder design.\n\nKeep every visible mask boundary, width/height proportion, current yaw/pitch/roll, gold nodes, incised cheek relief, silver-white narrow lenses, long lower central open arch, the crown's central notch and bronze-grey patinated paint palette. The top grey biological ridge has already been removed from A; do NOT restore it. The lower arch remains genuinely transparent and empty, with no wearer mouth, mandibles, skin or teeth. No dreadlocks, collar, necklace, skull jewellery or biological head.\n\nPreserve the existing black forehead mark shapes, spacing, number and source-relative positions as closely as possible, including the central white T-like painted stroke. Do not add new runes, replace them with different letters, translate them, sharpen unresolved marks into invented inscriptions or redistribute the marks to fill a panel. Glyph accuracy from a modest photo inset is not certified.\n\nChange only physical rendering staging: gentle neutral upper-left/front key and soft opposite frontal fill, coherent rough bronze/grey metal paint response, restrained specular highlights and slightly calmer micrograin while retaining the edition's broad worn patina. A is already a coherent render, so use subtle restaging rather than redesign to force a difference. No all-over chrome, eye glow, new scratches, pipes, vents, teeth, horns or hidden back/interior geometry. One complete mask only on true transparent alpha, no text, labels, inset, stand, floor, shadow plane or scene. Request1254x1254square; keep original proportions and about100–125pixels transparent margin above and below. No post-crop, stretching, rotation or clipping. This remains a rendering candidate of the photographed licensed toy edition, not automatic original-film1:1 certification.",
+      "promptSha256": "a409af9d60afe9a6b85bee447d9028eea31925d3437d78cf7938d2effdba35b8",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          254,
+          98,
+          994,
+          1173
+        ],
+        "marginsPixels16": [
+          254,
+          98,
+          260,
+          81
+        ],
+        "minimumMarginFraction": 0.06459,
+        "transparentPixels": 992237,
+        "opaquePixels": 877
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Same isolated shell, view, palette and open arch as corrected A; PHG restaging is intentionally subtle.",
+          "No biological crest or lower organic mouth restored.",
+          "No stroke-by-stroke glyph equivalence or film geometry certification is claimed."
+        ]
+      },
+      "limitations": [
+        "The main mask view is a close-up inset inside a960x1200 catalogue sheet; exact high-resolution glyph strokes, hidden geometry and material albedo cannot be certified.",
+        "The brown mouth/mandibles in the central arch, upper biological head and all dreadlocks/collar are wearer elements.",
+        "Separate from PHG Elder, V3 Elder and Greyback1718 mask sculpts.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-B-native.png",
+          "sha256": "4f6aa7c6b26cc55141bf718009eab45b8f2ac99fa628c1d919bd1ba1cc176d42",
+          "bytes": 1511349,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Restage the FIRST reference, the isolated A mask, as a distinct PHG-quality game-prop rendering B of precisely the SAME photographed NECA AVP Elder Series17(2016) sculpture. The SECOND image's top-right framed inset and the THIRD image corroborate the actual toy edition; A controls this one near-front camera, contour and visible glyph-like mark arrangement. Do not switch viewpoints or substitute PHG Elder, Greyback or another Elder design.\n\nKeep every visible mask boundary, width/height proportion, current yaw/pitch/roll, gold nodes, incised cheek relief, silver-white narrow lenses, long lower central open arch, the crown's central notch and bronze-grey patinated paint palette. The top grey biological ridge has already been removed from A; do NOT restore it. The lower arch remains genuinely transparent and empty, with no wearer mouth, mandibles, skin or teeth. No dreadlocks, collar, necklace, skull jewellery or biological head.\n\nPreserve the existing black forehead mark shapes, spacing, number and source-relative positions as closely as possible, including the central white T-like painted stroke. Do not add new runes, replace them with different letters, translate them, sharpen unresolved marks into invented inscriptions or redistribute the marks to fill a panel. Glyph accuracy from a modest photo inset is not certified.\n\nChange only physical rendering staging: gentle neutral upper-left/front key and soft opposite frontal fill, coherent rough bronze/grey metal paint response, restrained specular highlights and slightly calmer micrograin while retaining the edition's broad worn patina. A is already a coherent render, so use subtle restaging rather than redesign to force a difference. No all-over chrome, eye glow, new scratches, pipes, vents, teeth, horns or hidden back/interior geometry. One complete mask only on true transparent alpha, no text, labels, inset, stand, floor, shadow plane or scene. Request1254x1254square; keep original proportions and about100–125pixels transparent margin above and below. No post-crop, stretching, rotation or clipping. This remains a rendering candidate of the photographed licensed toy edition, not automatic original-film1:1 certification.",
+          "promptSha256": "a409af9d60afe9a6b85bee447d9028eea31925d3437d78cf7938d2effdba35b8",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-elder-avp-series-17-2016.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58246-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/elder-avp-att58247-photo.jpg"
+          ]
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-elder-avp-series-17-2016.png",
+      "sourceASha256": "e93c6aaa1c7d92dc48da0e5418260d30dafca735183a20277e0145bf6c4badf5",
+      "maskFamily": "avp-elder",
+      "representationOf": "NECA Elder AVP Series17 2016 photographed edition",
+      "newCanonicalGeometry": false
+    }
+  ],
+  "asOfUtc": "2026-11-13T14:19:55.414011+00:00"
+}

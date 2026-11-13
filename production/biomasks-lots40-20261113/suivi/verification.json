@@ -1,0 +1,89 @@
+{
+  "passed": true,
+  "manifestSha256": "6f8b937269ec36fa6f92c0ff490d733f4d3c7ad03809ba717313dec72bd3c366",
+  "counts": {
+    "domainCapacity": 160,
+    "domains": 4,
+    "candidateRecords": 161,
+    "acceptedABPairs": 46,
+    "completeABC": 46,
+    "newABImageGenPngs": 92,
+    "newDerivedC": 46,
+    "sourceReuseC": 0,
+    "newCImageGenPngs": 0,
+    "exactReferenceCopies": 77,
+    "blockedCandidates": 99,
+    "duplicateRecords": 16,
+    "aliasRecords": 0,
+    "qualifiedNotProduced": 0,
+    "provisionalProduced": 46,
+    "partialProduced": 0,
+    "hybridProduced": 0,
+    "revisedRepresentations": 0,
+    "editionStudies": 46,
+    "sharedGeometryStudies": 0,
+    "canonicalGeometryCertified": 0,
+    "historicalCanonicalRequirementsStillOpen": 46,
+    "canonicalClosures": 0,
+    "runtimeIntegrations": 0
+  },
+  "batches": [
+    {
+      "id": "films",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 15,
+        "duplicate": 11,
+        "provisional": 14
+      },
+      "acceptedAB": 14,
+      "completeABC": 14,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "games",
+      "capacity": 40,
+      "candidateRecords": 41,
+      "statusCounts": {
+        "blocked": 25,
+        "provisional": 16
+      },
+      "acceptedAB": 16,
+      "completeABC": 16,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "comics-novels",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 34,
+        "provisional": 6
+      },
+      "acceptedAB": 6,
+      "completeABC": 6,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "licensed",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 25,
+        "duplicate": 5,
+        "provisional": 10
+      },
+      "acceptedAB": 10,
+      "completeABC": 10,
+      "capacityIsProduction": false
+    }
+  ],
+  "workbookSha256": "c0f1c271964efc20230597af68022264ebf7edc55adf46bc4f116207c3d0bfb1",
+  "gallerySha256": "0245efbb6881fb6268d38609a0c6ab7f861f1d6be97c6bcb1fbcfa47ef80fb0a",
+  "cellsCompared": 4989,
+  "protectedWorkbooks": 127,
+  "protectedNativeImageGenPngs": 151,
+  "protectedNeutralC": 69,
+  "scope": "Deterministic package,source pins,alpha and monochrome; independent pixels verifier checks exact C formula."
+}

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "amendment": "Preserve archived TSV bytes with pack-scoped -text attributes in initial sparse checkout; remove two trailing LF bytes from pixel verifier with identical AST.",
+  "oldManifest": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/manifest-before-publication-attributes-amendment.json",
+    "sha256": "91d3fc7238d76bb3060619a28778cc7af21dd5a93edd59a9eb576c72d63ab399",
+    "bytes": 1689117
+  },
+  "newManifest": {
+    "path": "public/game/biomasks-lots40-20261113/manifest.json",
+    "sha256": "6f8b937269ec36fa6f92c0ff490d733f4d3c7ad03809ba717313dec72bd3c366",
+    "bytes": 1689117
+  },
+  "changedInputPins": [
+    {
+      "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+      "before": {
+        "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+        "bytes": 11319,
+        "sha256": "eadcd16a221529f18d53c2ab9b24a2e4ca9e5f3ec63041ed9432226a15cb7728"
+      },
+      "after": {
+        "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+        "bytes": 11349,
+        "sha256": "d589360af9caa211463c6cb823d78ada8491e0c7ffafd16386e9129cd31e1f79"
+      }
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/tools/verify-neutral-pixels.py",
+      "before": {
+        "path": "production/biomasks-lots40-20261113/tools/verify-neutral-pixels.py",
+        "bytes": 21227,
+        "sha256": "9574681529722a08a006be2c1699294aedd6f19072f20eace79e70ba9373356f"
+      },
+      "after": {
+        "path": "production/biomasks-lots40-20261113/tools/verify-neutral-pixels.py",
+        "bytes": 21225,
+        "sha256": "42fa4b82447f59d88dc91b392307e77793a2ecb276881598b3b5c760d8dc1746"
+      }
+    }
+  ],
+  "allOtherManifestJsonIdentical": true,
+  "allPairsA_B_C_ReferenceSourcesAndQualificationsIdentical": true,
+  "allNativeDerivedAndSourceCopyPinsIdentical": true,
+  "selectorPatchOnlyAddsLiteralAttributesBootstrap": true,
+  "selectorPreimage": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/ci-mask-lots40-inputs-before-bootstrap-attributes.py",
+    "sha256": "eadcd16a221529f18d53c2ab9b24a2e4ca9e5f3ec63041ed9432226a15cb7728",
+    "bytes": 11319
+  },
+  "pixelVerifierPreimage": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/verify-neutral-pixels-before-eof-cleanup.py",
+    "sha256": "9574681529722a08a006be2c1699294aedd6f19072f20eace79e70ba9373356f",
+    "bytes": 21227
+  },
+  "pixelVerifierAstIdentical": true,
+  "pixelVerifierRemovedBytes": 2,
+  "attributes": {
+    "path": "production/biomasks-lots40-20261113/.gitattributes",
+    "sha256": "1d06e3222bbaf474a1c2d0ba74f104eb1a041defedd2361a270201104511f20e",
+    "bytes": 118
+  },
+  "attributeRules": [
+    "inputs/research/inventory/*.tsv -text"
+  ],
+  "attributesAreLiteralBootstrapNotManifestInput": true,
+  "workflow": {
+    "path": ".github/workflows/biomask-lots40-candidates.yml",
+    "sha256": "905cd3615428855182d6c7bb044d29f99bf92073fa0870f20eb4879afede3419",
+    "bytes": 4660
+  },
+  "workflowPreimageReconstructedByExactInversePatch": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/biomask-lots40-candidates-before-attributes.yml",
+    "sha256": "9e6bb4a7b689fba921bcbb5b0fd3fe9dcb1b5f037ac8485649cd0d1bc937226b",
+    "bytes": 4597
+  },
+  "workflowInitialSparseBootstrapFiles": 6,
+  "originalEvidenceRetained": {
+    "exhaustivePixelReport": {
+      "path": "production/biomasks-lots40-20261113/qa/independent-pixels.json",
+      "sha256": "3b6ea0cb42325411e978ddcfff4ddd5c79a91d65c0a5cd6b54d830e3a53ccbb5",
+      "bytes": 93675
+    },
+    "browserReport": {
+      "path": "production/biomasks-lots40-20261113/qa/browser/verification.json",
+      "sha256": "5291264d17e877f2e869d951d5ebfa6533833dbc1fb3d45bb4f832d389a7842b",
+      "bytes": 3865
+    },
+    "portableReport": {
+      "path": "production/biomasks-lots40-20261113/qa/portability.json",
+      "sha256": "23375d01a2374c9c00caaaa46b1900606e6777146cb674443f7254c8391d9b81",
+      "bytes": 7664
+    },
+    "previousBinding": {
+      "path": "production/biomasks-lots40-20261113/qa/selector-empty-documents-binding.json",
+      "sha256": "82b8e6ec04b4dcb0ed90e18f187afff4274fbe729ab7c7330eca0aaa05a1debc",
+      "bytes": 2673
+    }
+  },
+  "newExhaustivePixelScan": false,
+  "newBrowserPass": false,
+  "newPortableSuite": false,
+  "sourceImageBytesChanged": false,
+  "scope": "Metadata-only publication binding; all prior QA retained byte-identically, no new canon,human,runtime or geometry certification."
+}

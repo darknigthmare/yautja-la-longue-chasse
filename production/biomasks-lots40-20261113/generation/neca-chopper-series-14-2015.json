@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-chopper-series-14-2015",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-chopper-series-14-2015",
+      "label": "Chopper · NECA Series14 2015",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-chopper-series-14-2015.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-chopper-series-14-2015-A-native.png",
+      "sha256": "fb775cc976ead9c4f2a3817edce0d168320fd78b702c4e3f8b8b9186287176a0",
+      "bytes": 1778371,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-chopper-series-14-2015.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg",
+      "referenceSourceSha256": "cb1d5f221ef6729d6e5901babcd4de7d6f06c84940cf64a844ccf5ab715b25cf",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg",
+          "sha256": "cb1d5f221ef6729d6e5901babcd4de7d6f06c84940cf64a844ccf5ab715b25cf"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2015/12/1300x-Chopper.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2015/12/closer-look-predators-series-14-action-figures-final/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the silver-grey mask WORN BY THE MAIN FIGURE, keeping the actual near-front source view and slight tilt. Preserve the tall broad oval crown with its actual stacked nested angular V/arched engraved seam lines, source central upper metal crest/ridge only, broad brow over two pale cool-grey solid lenses, layered horizontal cheek ribs, and the single elongated rounded smooth silver nose/snout plate. Keep the heavily stippled silver/dark-grey toy paint and actual contours without adding new engravings. TWO HUMAN SKULLS ON TALL BACK-MOUNTED POLES ABOVE/BEHIND the head are TROPHIES, NOT MASK HORNS: remove the skulls and entire poles. Do not place a human skull or new horn on the mask crown. Remove dreadlocks, living head/neck, shoulder cannon, tubes/collar, body armor and bone necklace. Do not invent vents, glyphs, biological teeth or emitter lights.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+      "promptSha256": "396dd79604cb971315b24135561afb7f28b4c7f685d6216a61a639692033c67a",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          252,
+          63,
+          999,
+          1197
+        ],
+        "marginsPixels16": [
+          252,
+          63,
+          255,
+          57
+        ],
+        "minimumMarginFraction": 0.04545,
+        "transparentPixels": 928379,
+        "opaquePixels": 614
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Only the real rigid shell retained, wearer and body removed.",
+          "Source camera, proportions, colour accents and visible sculpture kept; fine source details remain unvalidated."
+        ]
+      },
+      "limitations": [
+        "1300px-tall official final-production photograph, complete near-front rigid mask visible; micro-stippling and engraved stroke exactness not certified.",
+        "Backpack skull trophies/poles are excluded from mask geometry.",
+        "Existing69include mk-05-chopper in another representation; this is NECA Series14final-production2015edition, not new canonical geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-chopper-series-14-2015-A-native.png",
+          "sha256": "fb775cc976ead9c4f2a3817edce0d168320fd78b702c4e3f8b8b9186287176a0",
+          "bytes": 1778371,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the silver-grey mask WORN BY THE MAIN FIGURE, keeping the actual near-front source view and slight tilt. Preserve the tall broad oval crown with its actual stacked nested angular V/arched engraved seam lines, source central upper metal crest/ridge only, broad brow over two pale cool-grey solid lenses, layered horizontal cheek ribs, and the single elongated rounded smooth silver nose/snout plate. Keep the heavily stippled silver/dark-grey toy paint and actual contours without adding new engravings. TWO HUMAN SKULLS ON TALL BACK-MOUNTED POLES ABOVE/BEHIND the head are TROPHIES, NOT MASK HORNS: remove the skulls and entire poles. Do not place a human skull or new horn on the mask crown. Remove dreadlocks, living head/neck, shoulder cannon, tubes/collar, body armor and bone necklace. Do not invent vents, glyphs, biological teeth or emitter lights.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+          "promptSha256": "396dd79604cb971315b24135561afb7f28b4c7f685d6216a61a639692033c67a",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "chopper",
+      "representationOf": "NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition",
+      "newCanonicalGeometry": false
+    },
+    {
+      "id": "neca-chopper-series-14-2015",
+      "label": "Chopper · NECA Series14 2015",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-chopper-series-14-2015.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-chopper-series-14-2015-B-native.png",
+      "sha256": "1a46025226881aa891cb40bb775f44215bc243fb7f23666e7b43b0a1a7c62790",
+      "bytes": 1817575,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-chopper-series-14-2015.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg",
+      "referenceSourceSha256": "cb1d5f221ef6729d6e5901babcd4de7d6f06c84940cf64a844ccf5ab715b25cf",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg",
+          "sha256": "cb1d5f221ef6729d6e5901babcd4de7d6f06c84940cf64a844ccf5ab715b25cf"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2015/12/1300x-Chopper.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2015/12/closer-look-predators-series-14-action-figures-final/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-chopper-series-14-2015.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Tall broad rounded silver-grey oval crown, every existing nested V/arched seam line kept in count/position; two pale cool-grey solid eye lenses under true brow, horizontal cheek ribs and the single long rounded smooth snout plate. No human skull, poles, bone trophy, new horn, extra crest, new vent or rune; all back-mounted trophies remain absent. Same near-front source camera, stippled metal paint retained but grain controlled.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+      "promptSha256": "e692a50e8660075d55914f29783bfaeeaf5ee30d101d838d5c51419b2fd9f9b0",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          251,
+          62,
+          1002,
+          1200
+        ],
+        "marginsPixels16": [
+          251,
+          62,
+          252,
+          54
+        ],
+        "minimumMarginFraction": 0.04306,
+        "transparentPixels": 927123,
+        "opaquePixels": 794
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Source A camera, contour and photographed edition palette retained; only neutral PBR light/material restaging.",
+          "Visible feature arrangement retained at macro inspection; no wearer restored or hidden geometry invented."
+        ]
+      },
+      "limitations": [
+        "1300px-tall official final-production photograph, complete near-front rigid mask visible; micro-stippling and engraved stroke exactness not certified.",
+        "Backpack skull trophies/poles are excluded from mask geometry.",
+        "Existing69include mk-05-chopper in another representation; this is NECA Series14final-production2015edition, not new canonical geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-chopper-series-14-2015-B-native.png",
+          "sha256": "1a46025226881aa891cb40bb775f44215bc243fb7f23666e7b43b0a1a7c62790",
+          "bytes": 1817575,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Tall broad rounded silver-grey oval crown, every existing nested V/arched seam line kept in count/position; two pale cool-grey solid eye lenses under true brow, horizontal cheek ribs and the single long rounded smooth snout plate. No human skull, poles, bone trophy, new horn, extra crest, new vent or rune; all back-mounted trophies remain absent. Same near-front source camera, stippled metal paint retained but grain controlled.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+          "promptSha256": "e692a50e8660075d55914f29783bfaeeaf5ee30d101d838d5c51419b2fd9f9b0",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-chopper-series-14-2015.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-54457-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "chopper",
+      "representationOf": "NECA Chopper Series14 final production2015, licensed Alien vs. Predator2004 toy edition",
+      "newCanonicalGeometry": false,
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-chopper-series-14-2015.png",
+      "sourceASha256": "fb775cc976ead9c4f2a3817edce0d168320fd78b702c4e3f8b8b9186287176a0"
+    }
+  ],
+  "asOfUtc": "2026-11-13T15:21:33.925719+00:00"
+}

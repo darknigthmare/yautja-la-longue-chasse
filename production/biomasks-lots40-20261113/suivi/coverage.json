@@ -1,0 +1,81 @@
+{
+  "counts": {
+    "domainCapacity": 160,
+    "domains": 4,
+    "candidateRecords": 161,
+    "acceptedABPairs": 46,
+    "completeABC": 46,
+    "newABImageGenPngs": 92,
+    "newDerivedC": 46,
+    "sourceReuseC": 0,
+    "newCImageGenPngs": 0,
+    "exactReferenceCopies": 77,
+    "blockedCandidates": 99,
+    "duplicateRecords": 16,
+    "aliasRecords": 0,
+    "qualifiedNotProduced": 0,
+    "provisionalProduced": 46,
+    "partialProduced": 0,
+    "hybridProduced": 0,
+    "revisedRepresentations": 0,
+    "editionStudies": 46,
+    "sharedGeometryStudies": 0,
+    "canonicalGeometryCertified": 0,
+    "historicalCanonicalRequirementsStillOpen": 46,
+    "canonicalClosures": 0,
+    "runtimeIntegrations": 0
+  },
+  "batches": [
+    {
+      "id": "films",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 15,
+        "duplicate": 11,
+        "provisional": 14
+      },
+      "acceptedAB": 14,
+      "completeABC": 14,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "games",
+      "capacity": 40,
+      "candidateRecords": 41,
+      "statusCounts": {
+        "blocked": 25,
+        "provisional": 16
+      },
+      "acceptedAB": 16,
+      "completeABC": 16,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "comics-novels",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 34,
+        "provisional": 6
+      },
+      "acceptedAB": 6,
+      "completeABC": 6,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "licensed",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 25,
+        "duplicate": 5,
+        "provisional": 10
+      },
+      "acceptedAB": 10,
+      "completeABC": 10,
+      "capacityIsProduction": false
+    }
+  ],
+  "canonicalClosures": 0
+}

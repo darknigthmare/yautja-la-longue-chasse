@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG source-view edition studies; each entry retains its exact identity qualification. Native ImageGen A/B, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-scar-huntingparty3",
+      "name": "Scar — PHG HuntingParty3 publisher view (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-A-notch-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-scar-huntingparty3.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png"
+      ],
+      "publisherLinkedURL": null,
+      "derivedSizeVariantURL": null,
+      "sizeVariantDerivation": null,
+      "canonicalIdentityUnmapped": false,
+      "previewEdition": false,
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,HuntingParty3 publisher group-render,centerfigure",
+      "canonicalInventoryId": "mk-03-scar",
+      "maskFamily": "scar",
+      "representationOf": "mk-03-scar",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "position": "center",
+        "counting": "image-left-to-image-right"
+      },
+      "identityQualification": "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Scar",
+        "dataId": "CD_Predator_Bloody",
+        "iconPath": "/icons/characters/predator/scar.png",
+        "qualification": "Community data proves class name/icon mapping; V87 maps source position. Neither alone certifies exact franchise identity or depth. Official image is visible geometry authority.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "Correct ONLY the tiny upper-center crown silhouette of the SECOND isolated Scar PHG HuntingParty3 mask. FIRST official group render is source authority; relevant character is CENTER only. The actual source crown has TWO SHORT blunt upper rim tips with a SMALL SHALLOW U-shaped depression between them. It is NOT one continuous round closed top. Restore that true source upper outline: small gap/dip about2–3percent of total visible mask height,roughly20–25percent of crown width between the tiny tips,as seen in FIRST. This is a shallow rim termination/notch at the very TOP,not a deep opening through the forehead and not tall horns. Preserve the central dome just below the shallow source notch; invent no rear shell/interior or hidden depth. Do not make a flat crop across the full top. Keep every other part of SECOND unchanged: exact source downward-inclined near-front camera and projected asymmetry,whole sides/eyes/cheeks/muzzle/chin,the SAME source pale two-stroke forehead scar-mark in its exact location and shape,EXACTLY THREE small red temple lenses in the same image-left triangle,black opaque eye inserts,original silver/gray material,wear,and source blue/red local lighting. Do not introduce another character's design,new marks,vents,runes,LEDs or hardware. No symmetry/new front/profile/back or geometry redesign. Exclude biology/living eyes/mandibles,dreads/hair rings,neck,body/armor,weapons,other figures and scene. Exactly one complete isolated hard mask,genuine transparent RGBA,10percent clear transparent margins,whole crown tips and chin unclipped,longest axis78-80percent canvas,no background,floor,shadow plane,emitted glow,UI or text. Only restore the small real shallow U and two tiny upper rim endpoints; leave glyph and lens triplet untouched.",
+      "promptSha256": "2690d8504a6924038ede1cd1beab25edb8e49b09a26fd13062353c5e4fdc602f",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png",
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "generationInputPins": [
+        {
+          "submittedPath": "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5"
+        },
+        {
+          "submittedPath": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png",
+          "sha256": "138a1e4b8597eee37f388227d2e39d09598692d40c67abce348932c5eb7f46ce",
+          "archivedNativePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-A-corrected-native.png",
+          "note": "Public A2 bytes actually submitted before public path was replaced by correctedA3."
+        }
+      ],
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Broad smooth silver-gray domed crown,thick rounded surrounding rim,source small pale/white forehead scar-mark exactly as it is visibly shaped,black opaque eye inserts,and wide long trapezoidal central nose/muzzle plate with rounded darker lower jaw border. Do not invent new runes or replace the source mark with another glyph. Keep source-visible tiny physical red temple lenses without emitted halo. Exclude the armor and upright shoulder weapon behind the head.",
+        "exclusions": "All wearer biology,dreads,hair rings,neck,body/armor/weapons,separate skull/neck-bone trophies,other figures and scene.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified.",
+        "correctedSourceAnchors": "Actual shallowU upper-rim depression,two short endpoints,pale two-stroke forehead mark and three-lens source triangle retained in selected A3/B2."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            81,
+            1214,
+            1238
+          ],
+          "8": [
+            269,
+            84,
+            984,
+            1184
+          ],
+          "16": [
+            269,
+            86,
+            984,
+            1183
+          ],
+          "128": [
+            270,
+            87,
+            984,
+            1182
+          ],
+          "240": [
+            271,
+            88,
+            983,
+            1181
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          269,
+          86,
+          270,
+          71
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.6517775752051048
+      },
+      "limitations": [
+        "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+        "Same mask family as existing project film reconstruction; this separately documented game edition is not new canonical geometry.",
+        "Blue/red illumination does not establish intrinsic paint or original UV; Bneutral illumination remains an adaptation.",
+        "Small source head region limits fine relief,exact forehead marks/optics and hidden views.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B is rendering-only adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded.",
+        "SelectedA3 restores the actual shallowU upper crown; source glyph and three-lens triangle retained. EarlierA1 lens-count andA2 crown-closure attempts are rejected."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 3,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-A-notch-native.png",
+          "sha256": "8664685ba3c6db842929b436cfe0dc82e6234d1e1738fa161506930aa083606d",
+          "prompt": "Correct ONLY the tiny upper-center crown silhouette of the SECOND isolated Scar PHG HuntingParty3 mask. FIRST official group render is source authority; relevant character is CENTER only. The actual source crown has TWO SHORT blunt upper rim tips with a SMALL SHALLOW U-shaped depression between them. It is NOT one continuous round closed top. Restore that true source upper outline: small gap/dip about2–3percent of total visible mask height,roughly20–25percent of crown width between the tiny tips,as seen in FIRST. This is a shallow rim termination/notch at the very TOP,not a deep opening through the forehead and not tall horns. Preserve the central dome just below the shallow source notch; invent no rear shell/interior or hidden depth. Do not make a flat crop across the full top. Keep every other part of SECOND unchanged: exact source downward-inclined near-front camera and projected asymmetry,whole sides/eyes/cheeks/muzzle/chin,the SAME source pale two-stroke forehead scar-mark in its exact location and shape,EXACTLY THREE small red temple lenses in the same image-left triangle,black opaque eye inserts,original silver/gray material,wear,and source blue/red local lighting. Do not introduce another character's design,new marks,vents,runes,LEDs or hardware. No symmetry/new front/profile/back or geometry redesign. Exclude biology/living eyes/mandibles,dreads/hair rings,neck,body/armor,weapons,other figures and scene. Exactly one complete isolated hard mask,genuine transparent RGBA,10percent clear transparent margins,whole crown tips and chin unclipped,longest axis78-80percent canvas,no background,floor,shadow plane,emitted glow,UI or text. Only restore the small real shallow U and two tiny upper rim endpoints; leave glyph and lens triplet untouched.",
+          "referencedImagePaths": [
+            "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png",
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "8664685ba3c6db842929b436cfe0dc82e6234d1e1738fa161506930aa083606d",
+      "bytes": 1270811,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        269,
+        86,
+        984,
+        1183
+      ],
+      "transparentPixels": 983146,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+      "referenceSourceSha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5"
+    },
+    {
+      "id": "phg-scar-huntingparty3",
+      "name": "Scar — PHG HuntingParty3 publisher view (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-B-notch-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-scar-huntingparty3.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-scar-huntingparty3.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png"
+      ],
+      "publisherLinkedURL": null,
+      "derivedSizeVariantURL": null,
+      "sizeVariantDerivation": null,
+      "canonicalIdentityUnmapped": false,
+      "previewEdition": false,
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,HuntingParty3 publisher group-render,centerfigure",
+      "canonicalInventoryId": "mk-03-scar",
+      "maskFamily": "scar",
+      "representationOf": "mk-03-scar",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "position": "center",
+        "counting": "image-left-to-image-right"
+      },
+      "identityQualification": "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Scar",
+        "dataId": "CD_Predator_Bloody",
+        "iconPath": "/icons/characters/predator/scar.png",
+        "qualification": "Community data proves class name/icon mapping; V87 maps source position. Neither alone certifies exact franchise identity or depth. Official image is visible geometry authority.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "Make version B of the FIRST isolated PHG HuntingParty3 Scar mask. The single isolated FIRST image is the sole geometry/marking authority; original official group-render provenance is retained separately. Lock FIRST visible geometry,exact camera/tilt,projected proportions,whole contour including the SMALL SHALLOW U notch between two tiny upper rim endpoints: preserve this source-visible top depression exactly,do not close it into a round top,do not make tall horns or a deep forehead cut,existing panel/cheek/muzzle/crown relief,EXACTLY THREE small physical red lenses in image-LEFT temple triangle,two above and one below,and no invented opposite-temple lens module,source eye inserts,and all source-visible marks or wear. Never swap in another movie/project mask or another figure. Change ONLY material/light presentation to coherent PHG PBR: same actually observed gunmetal/silver mask material and worn roughness,controlled texture grain,readable relief,neutral soft key from image-upper-left/front and gentle fill. The group render uses strong red/blue LIGHTING: neutralize illumination without inventing a blue/red painted colorway or claiming unknown intrinsic albedo. Preserve the source pale forehead mark if this mask has it; do not add/remove/change its shape. Do not create universal mirror chrome,new vents,holes,runes,ornaments,hardware,hidden side/back/interior or new lenses. Keep actual small physical red lenses without glow and dark opaque eye inserts without living eyes. Exclude all wearer skin/mandibles,dreads,neck,body/armor,weapons,skull trophies,neck-bone jewelry and other figures. Exactly one complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margins,longest complete axis78-80percent canvas,no crown/chin clipping,no background/floor/shadow plane/UI/text/alternate views. Same geometry and camera; only rendering standardization. This is an edition study with qualified original color/identity,not new canonical geometry.",
+      "promptSha256": "ed6c03cb442144b909fc8e475803ff0ae89408702f3c10b29bad9b33b6b4c6fc",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "generationInputPins": null,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Broad smooth silver-gray domed crown,thick rounded surrounding rim,source small pale/white forehead scar-mark exactly as it is visibly shaped,black opaque eye inserts,and wide long trapezoidal central nose/muzzle plate with rounded darker lower jaw border. Do not invent new runes or replace the source mark with another glyph. Keep source-visible tiny physical red temple lenses without emitted halo. Exclude the armor and upright shoulder weapon behind the head.",
+        "exclusions": "All wearer biology,dreads,hair rings,neck,body/armor/weapons,separate skull/neck-bone trophies,other figures and scene.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified.",
+        "correctedSourceAnchors": "Actual shallowU upper-rim depression,two short endpoints,pale two-stroke forehead mark and three-lens source triangle retained in selected A3/B2."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            81,
+            995,
+            1188
+          ],
+          "8": [
+            266,
+            84,
+            990,
+            1183
+          ],
+          "16": [
+            266,
+            84,
+            988,
+            1183
+          ],
+          "128": [
+            267,
+            85,
+            987,
+            1182
+          ],
+          "240": [
+            268,
+            86,
+            986,
+            1181
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          266,
+          84,
+          266,
+          71
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.6569608735213831
+      },
+      "limitations": [
+        "Official publisher-CDN group-render source view; character name is secondary-corroborated by V87 mapping and pinned FairYautja class data,not individual publisher-caption/menu certification.",
+        "Same mask family as existing project film reconstruction; this separately documented game edition is not new canonical geometry.",
+        "Blue/red illumination does not establish intrinsic paint or original UV; Bneutral illumination remains an adaptation.",
+        "Small source head region limits fine relief,exact forehead marks/optics and hidden views.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B is rendering-only adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded.",
+        "SelectedB2 preserves correctedA3 shallowU rim opening,source pale glyph and three lenses; old rounded-crownB1 rejected."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-B-notch-native.png",
+          "sha256": "c111f2ace0938c5d2a05f38fed1ea038ecd85d71effecfab517e395f103e9c7c",
+          "prompt": "Make version B of the FIRST isolated PHG HuntingParty3 Scar mask. The single isolated FIRST image is the sole geometry/marking authority; original official group-render provenance is retained separately. Lock FIRST visible geometry,exact camera/tilt,projected proportions,whole contour including the SMALL SHALLOW U notch between two tiny upper rim endpoints: preserve this source-visible top depression exactly,do not close it into a round top,do not make tall horns or a deep forehead cut,existing panel/cheek/muzzle/crown relief,EXACTLY THREE small physical red lenses in image-LEFT temple triangle,two above and one below,and no invented opposite-temple lens module,source eye inserts,and all source-visible marks or wear. Never swap in another movie/project mask or another figure. Change ONLY material/light presentation to coherent PHG PBR: same actually observed gunmetal/silver mask material and worn roughness,controlled texture grain,readable relief,neutral soft key from image-upper-left/front and gentle fill. The group render uses strong red/blue LIGHTING: neutralize illumination without inventing a blue/red painted colorway or claiming unknown intrinsic albedo. Preserve the source pale forehead mark if this mask has it; do not add/remove/change its shape. Do not create universal mirror chrome,new vents,holes,runes,ornaments,hardware,hidden side/back/interior or new lenses. Keep actual small physical red lenses without glow and dark opaque eye inserts without living eyes. Exclude all wearer skin/mandibles,dreads,neck,body/armor,weapons,skull trophies,neck-bone jewelry and other figures. Exactly one complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margins,longest complete axis78-80percent canvas,no crown/chin clipping,no background/floor/shadow plane/UI/text/alternate views. Same geometry and camera; only rendering standardization. This is an edition study with qualified original color/identity,not new canonical geometry.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png",
+      "sourceASha256": "8664685ba3c6db842929b436cfe0dc82e6234d1e1738fa161506930aa083606d",
+      "sha256": "c111f2ace0938c5d2a05f38fed1ea038ecd85d71effecfab517e395f103e9c7c",
+      "bytes": 1350679,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        266,
+        84,
+        988,
+        1183
+      ],
+      "transparentPixels": 974678,
+      "nativeCopyIdentical": true
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "phg-scar-huntingparty3",
+      "version": "A",
+      "attempt": 1,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-A-native.png",
+      "sha256": "56e250a6dd96e19b469bb6bbc62f8ab1be5d70458b2fc8ca28b2e198597e1a16",
+      "bytes": 1391744,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "From the attached official PHG HuntingParty3 group render,isolate ONLY the rigid metallic mask worn by the CENTER figure (Scar,secondary-corroborated identity). Ignore both other figures. Preserve its exact observed source camera,yaw,pitch,roll,projected asymmetry,visible proportions,whole contour and source-visible panel relief. Do not invent a centered straight front,new profile,hidden back/interior or a different film/NECA design. Preserve this exact game-edition source view. SUBJECT FEATURES: Broad smooth silver-gray domed crown,thick rounded surrounding rim,source small pale/white forehead scar-mark exactly as it is visibly shaped,black opaque eye inserts,and wide long trapezoidal central nose/muzzle plate with rounded darker lower jaw border. Do not invent new runes or replace the source mark with another glyph. Keep source-visible tiny physical red temple lenses without emitted halo. Exclude the armor and upright shoulder weapon behind the head. All biology/living eyes/skin/mandibles,dreadlocks,hair rings,neck,body/armor/weapons,scene and separate costume trophies are excluded. Only the rigid mask and fittings demonstrably attached to it remain. Preserve source opaque dark eye inserts versus actual open apertures. No invented holes,vents,runes,ornaments,hardware,paint scheme or speculative microdetails. A follows the actual published render and local lighting; colored source illumination is not proof of intrinsic paint. Exactly ONE complete isolated mask,genuine transparent RGBA,centered with10percent clear transparent margin all around,crown and chin entirely visible,longest axis78-80percent canvas. No background,floor,shadow plane,glow halo,UI,text or alternate view. Small group-render mask resolution limits fine relief; no automatic exact canon certification.",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "Independent source zoom establishes3visible red lenses; initial A had2. Targeted ImageGen A2 corrects only this fitting.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-scar-huntingparty3",
+      "version": "A",
+      "attempt": 2,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-A-corrected-native.png",
+      "sha256": "138a1e4b8597eee37f388227d2e39d09598692d40c67abce348932c5eb7f46ce",
+      "bytes": 1358265,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "Correct ONLY the red-lens fitting of the SECOND isolated Scar PHG HuntingParty3 mask,using the FIRST official group render as source authority: relevant character is the CENTER figure. SECOND has only two oversized red points. The actual source image-LEFT temple module shows exactly THREE small physical red lenses in a compact TRIANGLE,two above and one below in this source projection. Replace only the incorrect two-lens arrangement with exactly this source three-lens triangle in the same housing/location/angle. No fourth lens,no added opposite-temple module,no emitted glow and no new hardware. Keep every other part of SECOND unchanged: actual source downward-inclined camera,projected proportions,whole rounded silver dome and border,source pale forehead scar-mark of the exact same shape,black eye inserts,broad long trapezoidal nose panel,rounded dark lower chin,wear and original blue/red lighting. Do not turn lighting into painted color or redesign the glyph. Do not symmetrize/reconstruct a new front,hidden side/back/interior. Exclude all wearer skin,living eyes,mandibles,dreads,hair rings,neck,body/armor,weapons,other figures and scene. Exactly one complete isolated hard mask,genuine transparent RGBA,10percent clear transparent margins,crown/chin unclipped,longest axis78-80percent canvas,no background,floor,shadow plane,glow halo,text or UI. This is only a targeted correction of the source-visible three-lens fitting.",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-3.png",
+        "/workspace/generated_images/imagegen-phg-scar-huntingparty3-A-native.png"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "SelectedA2 fixed lens count but closed the small true source U-shaped upper-crown notch.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-scar-huntingparty3",
+      "version": "B",
+      "attempt": 1,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-scar-huntingparty3-B-native.png",
+      "sha256": "6b0b215dcd4c617ecd808f7ba9e6633305dea35e8446a40b59829c7d36d9ef81",
+      "bytes": 1529795,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "prompt": "Make version B of the FIRST isolated PHG HuntingParty3 Scar mask. SECOND image is the official group render; its source subject is the CENTER figure only. Lock FIRST visible geometry,exact camera/tilt,projected proportions,whole contour,existing panel/cheek/muzzle/crown relief,EXACTLY THREE small physical red lenses in image-LEFT temple triangle,two above and one below,and no invented opposite-temple lens module,source eye inserts,and all source-visible marks or wear. Never swap in another movie/project mask or another figure. Change ONLY material/light presentation to coherent PHG PBR: same actually observed gunmetal/silver mask material and worn roughness,controlled texture grain,readable relief,neutral soft key from image-upper-left/front and gentle fill. The group render uses strong red/blue LIGHTING: neutralize illumination without inventing a blue/red painted colorway or claiming unknown intrinsic albedo. Preserve the source pale forehead mark if this mask has it; do not add/remove/change its shape. Do not create universal mirror chrome,new vents,holes,runes,ornaments,hardware,hidden side/back/interior or new lenses. Keep actual small physical red lenses without glow and dark opaque eye inserts without living eyes. Exclude all wearer skin/mandibles,dreads,neck,body/armor,weapons,skull trophies,neck-bone jewelry and other figures. Exactly one complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margins,longest complete axis78-80percent canvas,no crown/chin clipping,no background/floor/shadow plane/UI/text/alternate views. Same geometry and camera; only rendering standardization. This is an edition study with qualified original color/identity,not new canonical geometry.",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "B1 inherited the closed round crown and omitted the true shallow U between two short rim endpoints.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ]
+}

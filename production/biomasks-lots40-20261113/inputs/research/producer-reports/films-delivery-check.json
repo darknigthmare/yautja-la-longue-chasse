@@ -1,0 +1,406 @@
+{
+  "schemaVersion": 1,
+  "filmCandidatesPath": "/tmp/mask-lots40-20261113/films/candidates.json",
+  "filmCandidatesSha256": "9aeb2ed54c07c6e7cff27ed2c34f0c344b813381d2644b12058246ad55525ff7",
+  "counts": {
+    "auditRecords": 40,
+    "recordKinds": {
+      "documented-edition-source-study": 18,
+      "canonical-Bible-target": 11,
+      "exact-existing69-representation": 11
+    },
+    "decisions": {
+      "generated-A-B-candidate": 14,
+      "blocked-source-projection-mismatch": 1,
+      "insufficient-reference-detail": 2,
+      "insufficient-no-mask-in-catalogue-photo": 1,
+      "edition-study-generated-canonical-requirement-open": 1,
+      "edition-study-rejected-canonical-requirement-open": 1,
+      "insufficient-source-or-identity-canonical-open": 8,
+      "excluded-head-without-rigid-mask": 1,
+      "covered-exact-existing69-representation-no-regeneration": 11
+    },
+    "newCanonicalGeometriesCertified": 0,
+    "newOutputsMeaning": "Generated study pairs are counted from production receipts/accepted outputs, never inferred from these40records.",
+    "generatedCandidatePairs": 14,
+    "generatedSelectedPngs": 28,
+    "retainedDistinctNativePngsForCandidatePairs": 36,
+    "nonselectedDistinctNativePngsForCandidatePairs": 8,
+    "sourcePhotoPinsForCandidatePairs": 21,
+    "blockedGreybackStudyPublicPngs": 0
+  },
+  "candidateOutputPins": [
+    {
+      "id": "neca-ancient-warrior-series-15-2016",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-ancient-warrior-series-15-2016.png",
+      "sha256": "0d413c50784b39b80707788e77553f9889f1305f12ba281f73f23367dfc24a4e",
+      "bytes": 1582205,
+      "receiptSha256": "35505cc31504087000b4f3db3407b1bb83bd00517b38442ed33f8b9855de61f2"
+    },
+    {
+      "id": "neca-ancient-warrior-series-15-2016",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-ancient-warrior-series-15-2016.png",
+      "sha256": "a25abd00bb805c1fa8b76270ebdc81f5e93a80708e74b565fd8f495b70999e3a",
+      "bytes": 1671265,
+      "receiptSha256": "35505cc31504087000b4f3db3407b1bb83bd00517b38442ed33f8b9855de61f2"
+    },
+    {
+      "id": "neca-armored-lost-ultimate-2020",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-armored-lost-ultimate-2020.png",
+      "sha256": "b8adbf8a591ac373a36940e53ff2d9b8f25bc773a5de38ed0388b2a5a11ff98d",
+      "bytes": 1972756,
+      "receiptSha256": "7eea82d4086c232f57b72bf7634bb3ce7af6ad87907e3198e235f783a31db2e8"
+    },
+    {
+      "id": "neca-armored-lost-ultimate-2020",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-armored-lost-ultimate-2020.png",
+      "sha256": "8db345504bc3ccb39a34b8e6dbe9b1163b1d2bcd57ac0e2f475de134bc82be34",
+      "bytes": 1858054,
+      "receiptSha256": "7eea82d4086c232f57b72bf7634bb3ce7af6ad87907e3198e235f783a31db2e8"
+    },
+    {
+      "id": "neca-big-red-series-7-2012",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-big-red-series-7-2012.png",
+      "sha256": "3e4e2a9a50df56814efc12134d8c550144153eefc6fcd89c0506c133d1db46d4",
+      "bytes": 1179945,
+      "receiptSha256": "720a7331c1783cba21e6d68e6e767779b67faaa6a6ab01f03d7386d2b8ef8553"
+    },
+    {
+      "id": "neca-big-red-series-7-2012",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-big-red-series-7-2012.png",
+      "sha256": "9207238f2087a8543869956296d9c000b9f613bf3f27bd71c25cfcb7958a2620",
+      "bytes": 1313831,
+      "receiptSha256": "720a7331c1783cba21e6d68e6e767779b67faaa6a6ab01f03d7386d2b8ef8553"
+    },
+    {
+      "id": "neca-boar-ultimate-2022",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-boar-ultimate-2022.png",
+      "sha256": "2ed43fbe42e76543e32181ddc0ef12884dfed3b56b7e8f9e33d89089193c1aa2",
+      "bytes": 1925231,
+      "receiptSha256": "6838fb78453a207f13ccbc343e3aae6429f4741ab8127ac60d4028d2ec10e0a5"
+    },
+    {
+      "id": "neca-boar-ultimate-2022",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-boar-ultimate-2022.png",
+      "sha256": "5918f1cbfef5acc1d5c9d5ef3bd1ebac4887a5dc68e5caa1bf80e9ea9ef112e3",
+      "bytes": 1958359,
+      "receiptSha256": "6838fb78453a207f13ccbc343e3aae6429f4741ab8127ac60d4028d2ec10e0a5"
+    },
+    {
+      "id": "neca-celtic-series-14-2015",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-celtic-series-14-2015.png",
+      "sha256": "a71c36604541810d6ed6634e93e60d5a35fbfcb7469e464686cddf468f57591a",
+      "bytes": 1913349,
+      "receiptSha256": "75fca7fc6f0f6038fda9b553ef548af33c5d986e31cb38dc0c14e4bbd3650e80"
+    },
+    {
+      "id": "neca-celtic-series-14-2015",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-celtic-series-14-2015.png",
+      "sha256": "825b5a83425b6c34fb55e62e6aa554f4b05135f710c10caf21990040a92334b6",
+      "bytes": 1861933,
+      "receiptSha256": "75fca7fc6f0f6038fda9b553ef548af33c5d986e31cb38dc0c14e4bbd3650e80"
+    },
+    {
+      "id": "neca-chopper-series-14-2015",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-chopper-series-14-2015.png",
+      "sha256": "fb775cc976ead9c4f2a3817edce0d168320fd78b702c4e3f8b8b9186287176a0",
+      "bytes": 1778371,
+      "receiptSha256": "987adf9641fbb859eab9ae781a3dd700883a465dcaf1274a1a91e72d16335fc0"
+    },
+    {
+      "id": "neca-chopper-series-14-2015",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-chopper-series-14-2015.png",
+      "sha256": "1a46025226881aa891cb40bb775f44215bc243fb7f23666e7b43b0a1a7c62790",
+      "bytes": 1817575,
+      "receiptSha256": "987adf9641fbb859eab9ae781a3dd700883a465dcaf1274a1a91e72d16335fc0"
+    },
+    {
+      "id": "neca-elder-avp-series-17-2016",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-elder-avp-series-17-2016.png",
+      "sha256": "e93c6aaa1c7d92dc48da0e5418260d30dafca735183a20277e0145bf6c4badf5",
+      "bytes": 1567247,
+      "receiptSha256": "1ffe4644138968a7ea931077cb06f6c1d5799464d53847d65adb35411ee0e8c6"
+    },
+    {
+      "id": "neca-elder-avp-series-17-2016",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-elder-avp-series-17-2016.png",
+      "sha256": "4f6aa7c6b26cc55141bf718009eab45b8f2ac99fa628c1d919bd1ba1cc176d42",
+      "bytes": 1511349,
+      "receiptSha256": "1ffe4644138968a7ea931077cb06f6c1d5799464d53847d65adb35411ee0e8c6"
+    },
+    {
+      "id": "neca-fugitive-ultimate-2018",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-fugitive-ultimate-2018.png",
+      "sha256": "0ab4e5b529dc781efbfae8237e026dbec57c562495cb5a477382bc926a17cdd3",
+      "bytes": 1412371,
+      "receiptSha256": "e291796d11a4d01502a39d2ab2e9a92f91e821aa8408a5fc17e5870481c04f5a"
+    },
+    {
+      "id": "neca-fugitive-ultimate-2018",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-fugitive-ultimate-2018.png",
+      "sha256": "18beb09fe45f1b1a8f2d3bb44b54f5ed7c2631fba742dd8fdbf584772829b3e4",
+      "bytes": 1495084,
+      "receiptSha256": "e291796d11a4d01502a39d2ab2e9a92f91e821aa8408a5fc17e5870481c04f5a"
+    },
+    {
+      "id": "neca-guardian-lost-tribe-ultimate-2021",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-guardian-lost-tribe-ultimate-2021.png",
+      "sha256": "9103f373c726976f6af44412f753a1d2b9acea0d9afb54cc49544e0234255775",
+      "bytes": 1344932,
+      "receiptSha256": "1802c36eadbf15d6de6000d4f0a0316fc9b806d53db574dded4aba2a8d48b4a9"
+    },
+    {
+      "id": "neca-guardian-lost-tribe-ultimate-2021",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-guardian-lost-tribe-ultimate-2021.png",
+      "sha256": "6eca7618de50be9a587f81cddc7d6ac2efa939ac5600aa85e01d01cf6f5c5402",
+      "bytes": 1570033,
+      "receiptSha256": "1802c36eadbf15d6de6000d4f0a0316fc9b806d53db574dded4aba2a8d48b4a9"
+    },
+    {
+      "id": "neca-scar-masked-series-15-2016",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-scar-masked-series-15-2016.png",
+      "sha256": "648b65da64cb268e0b254ac3ee2319ae73ffea23232de9dc7e706c67a68c562c",
+      "bytes": 1917066,
+      "receiptSha256": "aa2e3f53e9a8edaf1a73ea1d5d8ffdcace4b29185a1c16bafa52563a921e7f48"
+    },
+    {
+      "id": "neca-scar-masked-series-15-2016",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-scar-masked-series-15-2016.png",
+      "sha256": "547e3b2632c91d61c7a07a69e69bb88d587226a72fdf1e7b8d03f0fb53310ef8",
+      "bytes": 1993003,
+      "receiptSha256": "aa2e3f53e9a8edaf1a73ea1d5d8ffdcace4b29185a1c16bafa52563a921e7f48"
+    },
+    {
+      "id": "neca-shaman-ultimate-2022",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-shaman-ultimate-2022.png",
+      "sha256": "0b529c959c1fee8d704aeb9293e7f6fc94d280549958e73a237bb52e436b6193",
+      "bytes": 1250349,
+      "receiptSha256": "edbff063f36841af7247efe13bc0a523ddd104e8ff4c99bd3d91fa0380af391d"
+    },
+    {
+      "id": "neca-shaman-ultimate-2022",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-shaman-ultimate-2022.png",
+      "sha256": "fe700a43414b343bf545802e33fd99d196f9b5f18738337978a658bea38f43a7",
+      "bytes": 1280800,
+      "receiptSha256": "edbff063f36841af7247efe13bc0a523ddd104e8ff4c99bd3d91fa0380af391d"
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-snake-ultimate-2022.png",
+      "sha256": "3856ad3b763d9d1f8ab96231759b6d1b3dd19a27decc06b0d3ceb1f44293bd76",
+      "bytes": 1828058,
+      "receiptSha256": "3fe8e0503ba633cb08eea130f402b0edec137012625b1ca790679a81271bd9a1"
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-snake-ultimate-2022.png",
+      "sha256": "798da88bbbe29995c599d1b0b58e50918ed6f3284af7830abe27e94a4a4c65bf",
+      "bytes": 2011229,
+      "receiptSha256": "3fe8e0503ba633cb08eea130f402b0edec137012625b1ca790679a81271bd9a1"
+    },
+    {
+      "id": "neca-stalker-lost-tribe-ultimate-2021",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-stalker-lost-tribe-ultimate-2021.png",
+      "sha256": "40d5be98b11fc5d74d3610b556dda3d48df4766fec31ccdd0d3d655766ade31b",
+      "bytes": 1699315,
+      "receiptSha256": "db5e9dc09f45a00e969417da8aad428101f0db6167e4d2785c85cfef4191e6c0"
+    },
+    {
+      "id": "neca-stalker-lost-tribe-ultimate-2021",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-stalker-lost-tribe-ultimate-2021.png",
+      "sha256": "29f3626f529138568147c4a247888b7ac47963176641497bdfab8ac9f6254391",
+      "bytes": 1763725,
+      "receiptSha256": "db5e9dc09f45a00e969417da8aad428101f0db6167e4d2785c85cfef4191e6c0"
+    },
+    {
+      "id": "neca-temple-guard-series-15-2016",
+      "version": "A",
+      "path": "public/game/biomasks-lots40-20261113/originals/neca-temple-guard-series-15-2016.png",
+      "sha256": "7487c490cd4292b197cc04c92eca97589954c21a3f246781640fefb8394dc9ca",
+      "bytes": 1609412,
+      "receiptSha256": "b85a92c9b9aefbaa12ef3a1cf6f9186910481c600569980e5430f196b2a0ef4f"
+    },
+    {
+      "id": "neca-temple-guard-series-15-2016",
+      "version": "B",
+      "path": "public/game/biomasks-lots40-20261113/phg/neca-temple-guard-series-15-2016.png",
+      "sha256": "4967f43ceaa95e5d6af390a3f7a7beb825dadcb8500e191bb05208504e31a3cb",
+      "bytes": 1655541,
+      "receiptSha256": "b85a92c9b9aefbaa12ef3a1cf6f9186910481c600569980e5430f196b2a0ef4f"
+    }
+  ],
+  "generationReceiptPins": [
+    {
+      "id": "neca-ancient-warrior-series-15-2016",
+      "path": "production/biomasks-lots40-20261113/generation/neca-ancient-warrior-series-15-2016.json",
+      "sha256": "35505cc31504087000b4f3db3407b1bb83bd00517b38442ed33f8b9855de61f2"
+    },
+    {
+      "id": "neca-armored-lost-ultimate-2020",
+      "path": "production/biomasks-lots40-20261113/generation/neca-armored-lost-ultimate-2020.json",
+      "sha256": "7eea82d4086c232f57b72bf7634bb3ce7af6ad87907e3198e235f783a31db2e8"
+    },
+    {
+      "id": "neca-big-red-series-7-2012",
+      "path": "production/biomasks-lots40-20261113/generation/neca-big-red-series-7-2012.json",
+      "sha256": "720a7331c1783cba21e6d68e6e767779b67faaa6a6ab01f03d7386d2b8ef8553"
+    },
+    {
+      "id": "neca-boar-ultimate-2022",
+      "path": "production/biomasks-lots40-20261113/generation/neca-boar-ultimate-2022.json",
+      "sha256": "6838fb78453a207f13ccbc343e3aae6429f4741ab8127ac60d4028d2ec10e0a5"
+    },
+    {
+      "id": "neca-celtic-series-14-2015",
+      "path": "production/biomasks-lots40-20261113/generation/neca-celtic-series-14-2015.json",
+      "sha256": "75fca7fc6f0f6038fda9b553ef548af33c5d986e31cb38dc0c14e4bbd3650e80"
+    },
+    {
+      "id": "neca-chopper-series-14-2015",
+      "path": "production/biomasks-lots40-20261113/generation/neca-chopper-series-14-2015.json",
+      "sha256": "987adf9641fbb859eab9ae781a3dd700883a465dcaf1274a1a91e72d16335fc0"
+    },
+    {
+      "id": "neca-elder-avp-series-17-2016",
+      "path": "production/biomasks-lots40-20261113/generation/neca-elder-avp-series-17-2016.json",
+      "sha256": "1ffe4644138968a7ea931077cb06f6c1d5799464d53847d65adb35411ee0e8c6"
+    },
+    {
+      "id": "neca-fugitive-ultimate-2018",
+      "path": "production/biomasks-lots40-20261113/generation/neca-fugitive-ultimate-2018.json",
+      "sha256": "e291796d11a4d01502a39d2ab2e9a92f91e821aa8408a5fc17e5870481c04f5a"
+    },
+    {
+      "id": "neca-guardian-lost-tribe-ultimate-2021",
+      "path": "production/biomasks-lots40-20261113/generation/neca-guardian-lost-tribe-ultimate-2021.json",
+      "sha256": "1802c36eadbf15d6de6000d4f0a0316fc9b806d53db574dded4aba2a8d48b4a9"
+    },
+    {
+      "id": "neca-scar-masked-series-15-2016",
+      "path": "production/biomasks-lots40-20261113/generation/neca-scar-masked-series-15-2016.json",
+      "sha256": "aa2e3f53e9a8edaf1a73ea1d5d8ffdcace4b29185a1c16bafa52563a921e7f48"
+    },
+    {
+      "id": "neca-shaman-ultimate-2022",
+      "path": "production/biomasks-lots40-20261113/generation/neca-shaman-ultimate-2022.json",
+      "sha256": "edbff063f36841af7247efe13bc0a523ddd104e8ff4c99bd3d91fa0380af391d"
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "path": "production/biomasks-lots40-20261113/generation/neca-snake-ultimate-2022.json",
+      "sha256": "3fe8e0503ba633cb08eea130f402b0edec137012625b1ca790679a81271bd9a1"
+    },
+    {
+      "id": "neca-stalker-lost-tribe-ultimate-2021",
+      "path": "production/biomasks-lots40-20261113/generation/neca-stalker-lost-tribe-ultimate-2021.json",
+      "sha256": "db5e9dc09f45a00e969417da8aad428101f0db6167e4d2785c85cfef4191e6c0"
+    },
+    {
+      "id": "neca-temple-guard-series-15-2016",
+      "path": "production/biomasks-lots40-20261113/generation/neca-temple-guard-series-15-2016.json",
+      "sha256": "b85a92c9b9aefbaa12ef3a1cf6f9186910481c600569980e5430f196b2a0ef4f"
+    }
+  ],
+  "nonselectedNativeAttempts": [
+    {
+      "id": "neca-armored-lost-ultimate-2020",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-armored-lost-ultimate-2020-A-native.png",
+      "sha256": "969f710a5e17f3d3ff12cfdbf24b60ead65b6d2ee082a1ed1163852ab16d8240",
+      "reason": "Independent review found about8percent too narrow/tall; A2 selected after source-view proportion correction.",
+      "selected": false
+    },
+    {
+      "id": "neca-boar-ultimate-2022",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-A-native.png",
+      "sha256": "0c53f2c3009d220336429447a4f38aa8228771b937a35eeda508e62bfd3e5f50",
+      "reason": "Small dark dentated biological cap behind the actual upper metal rim was retained as if part of shell; independently confirmed. Requires targeted exclusion.",
+      "selected": false
+    },
+    {
+      "id": "neca-celtic-series-14-2015",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-celtic-series-14-2015-A-native.png",
+      "sha256": "1644a3a0179cb4bd63799a9580071a7f7a37863c2a9636b7c61a3f7df8c41bf5",
+      "reason": "Invented copper louvers filled real cheek/central/lower apertures containing wearer flesh/teeth in source; lower oval aperture omitted. More official views prove ownership.",
+      "selected": false
+    },
+    {
+      "id": "neca-celtic-series-14-2015",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-celtic-series-14-2015-B-native.png",
+      "sha256": "f8ed0ea09c195f34e16525afd5a48d0e44f0807783de48759fa1e0c9a227be9c",
+      "reason": "Follows firstA invented copper louvers and missed lower aperture; superseded by new source-backed aperture/bio correction.",
+      "selected": false
+    },
+    {
+      "id": "neca-elder-avp-series-17-2016",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-elder-avp-series-17-2016-A-native.png",
+      "sha256": "c1205b0eb82271ede07a9f087dc85cc659fa544b2b21b30114563c86c776e731",
+      "reason": "Retained grey organic cranial ridge behind top crown; biological wearer element must be excluded.",
+      "selected": false
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-native.png",
+      "sha256": "74fb7acbb88055887c539646eabca004e749b4ba9d238a86b5696433764428de",
+      "reason": "Rigid mask silhouette too narrow against primary catalogue accessory (~0.723aspect vs~0.79–0.81source excluding dreads), targeted ImageGen correction requested.",
+      "selected": false
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-B-native.png",
+      "sha256": "e3819acdf5ebdd8853810a9b1ad63826c57eeb50786de00ed86b4b7381bc10e6",
+      "reason": "Follows firstA too-narrow silhouette; superseded with primary-source projection correction.",
+      "selected": false
+    },
+    {
+      "id": "neca-temple-guard-series-15-2016",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-temple-guard-series-15-2016-A-attempt1-native.png",
+      "sha256": "8069be32762fcc4779940c99c6c57bb5118f0c83a13058ef709e73cf6646e4cd",
+      "reason": "Initial native top/bottom framing around5%/3%; ImageGen-only framing correction selected.",
+      "selected": false
+    }
+  ],
+  "blockedGreyback": {
+    "receipt": "production/biomasks-lots40-20261113/generation/neca-greyback-ultimate-2022-horned.json",
+    "status": "rejected-study-blocked",
+    "derivedCAllowed": false,
+    "publicAssetsRemoved": true,
+    "allNativeAttemptHashesVerified": true
+  },
+  "metadataRefresh": {
+    "scope": "Only11documentary-target provenance scopes and Celtic primary/supportingRroles corrected; no image or exact-prompt mutation.",
+    "celticReceiptSha256": "75fca7fc6f0f6038fda9b553ef548af33c5d986e31cb38dc0c14e4bbd3650e80",
+    "unchangedSelectedPixelPins": {
+      "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-celtic-series-14-2015.png": "a71c36604541810d6ed6634e93e60d5a35fbfcb7469e464686cddf468f57591a",
+      "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/phg/neca-celtic-series-14-2015.png": "825b5a83425b6c34fb55e62e6aa554f4b05135f710c10caf21990040a92334b6",
+      "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-54450-photo.jpg": "ee9bec8f1036cd9156907addea37ed0e4ba1faa0a31393d2b7ead42dfa9a4366",
+      "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/celtic-detail-54452-photo.jpg": "fa932b337b2f00b0e70520d913488ce049d7e9cad401b72bc16b60910b429d4b",
+      "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/celtic-detail-54453-photo.jpg": "4e99483d6d871a849c6e14f7967832f9d089dc1415299ce4328e2bb7480fc257"
+    }
+  }
+}

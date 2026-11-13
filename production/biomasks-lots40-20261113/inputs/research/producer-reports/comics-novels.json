@@ -1,0 +1,3144 @@
+{
+  "schemaVersion": 2,
+  "asOf": "2026-11-13",
+  "scope": "Comics/novels and their exactly identified licensed physical edition adaptations; up to40real documentary targets, no invented fill images",
+  "baselineCommitRequested": "2b968494",
+  "baseline69Manifest": {
+    "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/manifest.json",
+    "sha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+    "bytes": 1127260
+  },
+  "counts": {
+    "documentaryTargetsReviewed": 40,
+    "generatedPhysicalEditionPairs": 6,
+    "selectedNativePNGs": 12,
+    "ImageGenNativeAttempts": 16,
+    "rejectedNativeAttemptsRetained": 4,
+    "newCanonicalGeometriesClaimed": 0,
+    "fineFidelityRequirementsClosed": 0,
+    "insufficientTargets": 34,
+    "catalogueComicsNovelsRowsCovered": 123,
+    "actualOriginalComicPanelsQualified": 0,
+    "novelTextOnlyNamesConvertedToMasks": 0
+  },
+  "countingBoundary": "A documentary name, alias, group or prose description is not a new observed mask geometry. Six generated items are exact named NECA physical source edition representations with source limitations, not40invented masks.",
+  "candidates": [
+    {
+      "id": "comics-big-mama",
+      "name": "Big Mama",
+      "work": "Aliens vs. Predator: Deadliest of the Species",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 497,
+          "text": "Styles historiques (Samurai, Viking, Pirate, Valkyrie, Anubis, Cleopatra, *Hunting Grounds*) : apparences et armures, pas des races. Une femelle de grande taille (« Big Mama », comics) est couverte par l'éditeur."
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 28,
+          "cells": {
+            "A28": "Y-027",
+            "B28": "Big Mama",
+            "D28": "Individu nommé ou surnommé",
+            "E28": "Comics",
+            "F28": "Aliens vs. Predator: Deadliest of the Species",
+            "G28": "Univers étendu licencié / catalogué",
+            "J28": "Oui",
+            "K28": "https://avp.fandom.com/wiki/Big_Mama",
+            "L28": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 14,
+          "cells": {
+            "A14": "Big Mama",
+            "B14": "Comics",
+            "C14": "Aliens vs. Predator: Deadliest of the Species",
+            "D14": "Individu nommé ou surnommé",
+            "E14": "Oui",
+            "G14": "https://avp.fandom.com/wiki/Big_Mama"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/04180359dafdd9b8abd750c03bbffa28601c5d9abca01dc5bb535b2ff64bba77.png",
+          "sha256": "04180359dafdd9b8abd750c03bbffa28601c5d9abca01dc5bb535b2ff64bba77",
+          "bytes": 2340039,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/big_mama/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "Prior visual audit found a broad dark-grey illustrated costume mask; no comic panel or licensed source establishes it as exact Big Mama geometry.",
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-no-primary-mask-image"
+    },
+    {
+      "id": "comics-shorty",
+      "name": "Shorty",
+      "work": "Comics catalogue; individual work not specified by the local workbook",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 191,
+          "cells": {
+            "A191": "Y-190",
+            "B191": "Shorty",
+            "D191": "Individu nommé ou surnommé",
+            "E191": "Comics",
+            "F191": "Voir la source individuelle",
+            "G191": "Univers étendu licencié / catalogué",
+            "J191": "Oui",
+            "K191": "https://avp.fandom.com/wiki/Shorty",
+            "L191": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 95,
+          "cells": {
+            "A95": "Shorty",
+            "B95": "Comics",
+            "C95": "Voir la source individuelle",
+            "D95": "Individu nommé ou surnommé",
+            "E95": "Oui",
+            "G95": "https://avp.fandom.com/wiki/Shorty"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/f45f73b1289fe2f7f38d261cbd00d048b8145878557c8e3d33c735f9d348870b.png",
+          "sha256": "f45f73b1289fe2f7f38d261cbd00d048b8145878557c8e3d33c735f9d348870b",
+          "bytes": 2382489,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/shorty/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first.",
+        "The local workbook says Voir la source individuelle; a precise published work/issue must be established before attributing a mask."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-work-and-mask-proof"
+    },
+    {
+      "id": "comics-top-knot",
+      "name": "Top-Knot",
+      "work": "Aliens vs. Predator: War / Hunter’s Planet",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 522,
+          "text": "- **Proies du pack Unblooded :** selon la planète d'entraînement, soit la faune locale, soit des drones Xénomorphes sans reine élevés par le clan (précédent canon : le clan de Top-Knot captive une reine, *Aliens vs. Predator: War*). Tuer ces drones ne donne pas le rang Blooded : seule la pyramide le donne."
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1235,
+          "text": "| DR-09 top-knot | Top-Knot Predator (chef de clan) | vérifié | Part of the dreads tied in a high top knot bound by a bronze clasp, the rest hanging at the sides. |"
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1378,
+          "text": "| AR-04 heavy | Top Knot clan | vérifié | Covers most of the body, some arm and leg skin visible, clan colour scheme. |"
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 221,
+          "cells": {
+            "A221": "Y-220",
+            "B221": "Top-Knot",
+            "D221": "Individu nommé ou surnommé",
+            "E221": "Comics • Roman / prose",
+            "F221": "Aliens vs. Predator: War / Hunter's Planet",
+            "G221": "Univers étendu licencié / catalogué",
+            "J221": "Oui",
+            "K221": "https://avp.fandom.com/wiki/Top-Knot",
+            "L221": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 113,
+          "cells": {
+            "A113": "Top-Knot",
+            "B113": "Comics • Roman / prose",
+            "C113": "Aliens vs. Predator: War / Hunter's Planet",
+            "D113": "Individu nommé ou surnommé",
+            "E113": "Oui",
+            "G113": "https://avp.fandom.com/wiki/Top-Knot"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/c52e2d9360c5b1506556164bfbf25d72e4de153119c72796082e1bba5974c321.png",
+          "sha256": "c52e2d9360c5b1506556164bfbf25d72e4de153119c72796082e1bba5974c321",
+          "bytes": 2239378,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/topknot/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "DR-09 is a dreadlock style and AR-04 is armour; neither is evidence for a separate mask.",
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-no-primary-mask-image"
+    },
+    {
+      "id": "comics-smiley",
+      "name": "Smiley",
+      "work": "Comics / prose catalogue; individual work not specified by the local workbook",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 199,
+          "cells": {
+            "A199": "Y-198",
+            "B199": "Smiley",
+            "D199": "Individu nommé ou surnommé",
+            "E199": "Comics • Roman / prose",
+            "F199": "Voir la source individuelle",
+            "G199": "Univers étendu licencié / catalogué",
+            "J199": "Oui",
+            "K199": "https://avp.fandom.com/wiki/Smiley",
+            "L199": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 103,
+          "cells": {
+            "A103": "Smiley",
+            "B103": "Comics • Roman / prose",
+            "C103": "Voir la source individuelle",
+            "D103": "Individu nommé ou surnommé",
+            "E103": "Oui",
+            "G103": "https://avp.fandom.com/wiki/Smiley"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/2186dd14c94b685464bbbcf70dfa7ecec03f87aca71fa7343e428f479a5cfce0.png",
+          "sha256": "2186dd14c94b685464bbbcf70dfa7ecec03f87aca71fa7343e428f479a5cfce0",
+          "bytes": 2437139,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/smiley/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first.",
+        "Precise illustrated work and identity of the visible mask still required."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-work-and-mask-proof"
+    },
+    {
+      "id": "mk-61-hornhead",
+      "name": "Hornhead",
+      "work": "AvP: Life and Death (Bible); NECA Series18 2017",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1649,
+          "text": "| MK-61 hornhead | *AvP: Life and Death* (comic) ; NECA | vérifié | Small horns growing from the head itself; removable bio-mask. |"
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 111,
+          "cells": {
+            "A111": "Y-110",
+            "B111": "Hornhead",
+            "D111": "Individu nommé ou surnommé",
+            "E111": "Comics",
+            "F111": "Voir la source individuelle",
+            "G111": "Univers étendu licencié / catalogué",
+            "J111": "Oui",
+            "K111": "https://avp.fandom.com/wiki/Hornhead",
+            "L111": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 54,
+          "cells": {
+            "A54": "Hornhead",
+            "B54": "Comics",
+            "C54": "Voir la source individuelle",
+            "D54": "Individu nommé ou surnommé",
+            "E54": "Oui",
+            "G54": "https://avp.fandom.com/wiki/Hornhead"
+          }
+        }
+      ],
+      "officialLeadURLs": [
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/"
+      ],
+      "availableLicensedReferences": [
+        {
+          "id": "att-51545-horn-head-pkg1-photo",
+          "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg1-photo.jpg",
+          "sha256": "e0d1f884b6d11c32264a4aa558c51df487d0f5b2b2af685ff88093da5d2d9f93",
+          "bytes": 671859,
+          "dimensions": [
+            1040,
+            1300
+          ],
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg1.jpg",
+          "referenceStatus": "partial-removable-mask-accessory",
+          "observation": "Blister front with bare organic head; silver detachable mask accessory lower-left shows upper cap/cutouts/eyes, but lower mask is covered by label/plastic. Large illustrated mask on cardboard is artwork, not a complete sculpt photograph."
+        },
+        {
+          "id": "att-51545-horn-head-pkg2-photo",
+          "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg2-photo.jpg",
+          "sha256": "6b95f14e8e611eab03af9d707da9d01d0c5d248f38d78d7abe06f812dc376b03",
+          "bytes": 792751,
+          "dimensions": [
+            1040,
+            1300
+          ],
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg2.jpg",
+          "referenceStatus": "packaging-art-small-reference",
+          "observation": "Blister back: comic artwork and small printed photograph of worn Hornhead shell, plus other figures. Insufficient full-sculpt pixels; do not derive detailed geometry from print/thumbnail."
+        },
+        {
+          "id": "primary-hornhead-photo",
+          "path": "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg",
+          "sha256": "2ebca53b05b9cdf5007e01f363d20677d79a1943180000730f6f2dc69713de32",
+          "bytes": 119828,
+          "dimensions": [
+            590,
+            472
+          ],
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+          "referenceStatus": "small-catalog-mask-only",
+          "observation": "NECASeries18 group photo. Hornhead at right wears silver mask; named identity is supported, full-mask pixels too small for reliable high-resolution fidelity. Other two figures are BrokenTusk and Machiko; never substitute them."
+        }
+      ],
+      "limitations": [
+        "Biological cranial horns are not part of the removable mask unless the image proves otherwise.",
+        "Packaging front accessory lower portion is obstructed; packaging back is small print; group photo has too few mask pixels."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "Official590x472group has tiny whole worn mask; high-resolution blister accessory lower contour is hidden by label. No larger literal publisher image URL acquired in accessible pages; refused CDN not retried.",
+      "referenceSources": [
+        {
+          "id": "primary-hornhead-photo",
+          "sourcePagePath": "/tmp/primary-masks-20261113/film/hornhead.html",
+          "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F&description=NECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%20with%20an%20entire%20series%20dedicated%20to%20Dark%20Horse%20Comics%20Predators%21%20Series%2018%20features%20three%20action%20figure%20debuts%20that%20are%20some%20of%20the%20most%20requested%20by%20fans%3A%20Hornhead%2C%20Broken%20Tusk%20and%20our%20first%20female%20Predator%2C%20Machiko%21Hornhead%20made%20his%20first%20appearance%20in%20Predator%3A%20Life%20%26%20Death%2C%20and%20is%20a%20great&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2FSeries-18-Group590.jpg",
+          "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F&#038;description=NECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%20with%20an%20entire%20series%20dedicated%20to%20Dark%20Horse%20Comics%20Predators%21%20Series%2018%20features%20three%20action%20figure%20debuts%20that%20are%20some%20of%20the%20most%20requested%20by%20fans%3A%20Hornhead%2C%20Broken%20Tusk%20and%20our%20first%20female%20Predator%2C%20Machiko%21Hornhead%20made%20his%20first%20appearance%20in%20Predator%3A%20Life%20%26%20Death%2C%20and%20is%20a%20great&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2FSeries-18-Group590.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+          "CDNHostRewritePerformed": false,
+          "shareServiceRequested": false,
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/background-evidence/primary-hornhead-photo.jpg",
+          "bytes": 119828,
+          "sha256": "2ebca53b05b9cdf5007e01f363d20677d79a1943180000730f6f2dc69713de32",
+          "dimensions": [
+            590,
+            472
+          ],
+          "format": "JPEG",
+          "mode": "RGB",
+          "httpStatus": 200,
+          "imageRedirectsFollowed": 0,
+          "downloadedUnchanged": true,
+          "actuallyInspectedWith": "tools.view_image",
+          "referenceStatus": "small-catalog-mask-only",
+          "observation": "NECASeries18 group photo. Hornhead at right wears silver mask; named identity is supported, full-mask pixels too small for reliable high-resolution fidelity. Other two figures are BrokenTusk and Machiko; never substitute them.",
+          "publisherMediaProofVerified": true,
+          "pixelEditingPerformed": false,
+          "canonCertified": false,
+          "humanArtValidated": false,
+          "privateAcquisitionPath": "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/series18-official-product.html",
+            "sha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+            "bytes": 145003
+          },
+          "sourceViewOnly": true,
+          "exploitableForFineFidelity": false
+        }
+      ]
+    },
+    {
+      "id": "mk-19-afghanistan-intact",
+      "name": "Afghanistan Hunter — intact",
+      "work": "Predator: Hunters II",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1361,
+          "text": "| MK-19 afghanistan | *Predator: Hunters II* (comic) | vérifié | Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off. |"
+        }
+      ],
+      "requiredState": "Intact mask with blue optics",
+      "limitations": [
+        "The Bible description is not image proof; native publisher panel and issue/page are required."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-text-only-no-publisher-panel"
+    },
+    {
+      "id": "mk-19-afghanistan-half-destroyed",
+      "name": "Afghanistan Hunter — half-destroyed",
+      "work": "Predator: Hunters II",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1361,
+          "text": "| MK-19 afghanistan | *Predator: Hunters II* (comic) | vérifié | Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off. |"
+        }
+      ],
+      "requiredState": "Half the mask structure blown off",
+      "limitations": [
+        "Distinct damaged state is requested by the Bible; no local qualified panel establishes the missing edge, injury or orientation.",
+        "Do not invent the missing half or use intact Jungle Hunter."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-text-only-no-publisher-panel"
+    },
+    {
+      "id": "mk-22-race-war",
+      "name": "Race War Predator",
+      "work": "Race War Predator — precise work/edition unresolved locally",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1364,
+          "text": "| MK-22 race war | Race War Predator | vérifié | Brownish-gold mask with a double set of rectangular eye slits. |"
+        }
+      ],
+      "limitations": [
+        "Brown-gold and double rectangular eye slits are descriptive text only.",
+        "Do not equate the Bible label Race War with the Rage War novels or their vacuum suit AR-11 without source proof."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-identity-and-visual-proof"
+    },
+    {
+      "id": "comics-prose-tichinde",
+      "name": "Tichinde",
+      "work": "Aliens vs. Predator: Prey (local catalogue)",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 219,
+          "cells": {
+            "A219": "Y-218",
+            "B219": "Tichinde",
+            "D219": "Individu nommé ou surnommé",
+            "E219": "Comics • Roman / prose",
+            "F219": "Aliens vs. Predator: Prey",
+            "G219": "Univers étendu licencié / catalogué",
+            "J219": "Oui",
+            "K219": "https://avp.fandom.com/wiki/Tichinde",
+            "L219": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 111,
+          "cells": {
+            "A111": "Tichinde",
+            "B111": "Comics • Roman / prose",
+            "C111": "Aliens vs. Predator: Prey",
+            "D111": "Individu nommé ou surnommé",
+            "E111": "Oui",
+            "G111": "https://avp.fandom.com/wiki/Tichinde"
+          }
+        }
+      ],
+      "limitations": [
+        "Named character only; the local catalogue does not supply an illustration or separate biomask.",
+        "A novel without official illustration cannot establish a sculpt."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-name-no-observed-mask"
+    },
+    {
+      "id": "comics-prose-yeyinde",
+      "name": "Yeyinde",
+      "work": "Comics / prose catalogue; precise work unresolved locally",
+      "status": "insufficient",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 255,
+          "cells": {
+            "A255": "Y-254",
+            "B255": "Yeyinde",
+            "D255": "Individu nommé ou surnommé",
+            "E255": "Comics • Roman / prose",
+            "F255": "Voir la source individuelle",
+            "G255": "Univers étendu licencié / catalogué",
+            "J255": "Oui",
+            "K255": "https://avp.fandom.com/wiki/Yeyinde",
+            "L255": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 124,
+          "cells": {
+            "A124": "Yeyinde",
+            "B124": "Comics • Roman / prose",
+            "C124": "Voir la source individuelle",
+            "D124": "Individu nommé ou surnommé",
+            "E124": "Oui",
+            "G124": "https://avp.fandom.com/wiki/Yeyinde"
+          }
+        }
+      ],
+      "limitations": [
+        "No observed canonical mask is attached to this entry. Alias relation and precise work must be established before counting any new geometry."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "reason": "insufficient-name-and-alias-identity"
+    },
+    {
+      "id": "neca-broken-tusk-series-18-2017",
+      "name": "NECA Predator Series18 Broken Tusk 2017; licensed comic adaptation, not original panel proof",
+      "work": "NECA Predator Series18 Broken Tusk 2017; licensed comic adaptation, not original panel proof",
+      "sourceEdition": "NECA Predator Series18 Broken Tusk 2017; licensed comic adaptation, not original panel proof",
+      "status": "exploitable-provisional-sourceLimited",
+      "generationReady": true,
+      "representationOf": "NECA Predator Series18 Broken Tusk 2017; licensed comic adaptation, not original panel proof",
+      "maskFamily": "Broken Tusk",
+      "newRepresentationEdition": true,
+      "newCanonicalGeometry": false,
+      "sourceLimited": true,
+      "fineFidelityOpen": true,
+      "productionReady": false,
+      "canonicalRequirementClosed": false,
+      "maskGeometryEstablished": "Visible licensed physical-source projection only; not certified canonical geometry",
+      "view": "Actual photographed source camera, approximate projected proportions",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg-photo.jpg",
+          "sha256": "34e49a8d7971bc40e137b4ab89f520b6d94e541cdbba254c2ed8dce13a08ee81",
+          "bytes": 670218,
+          "nativeDimensions": [
+            1040,
+            1300
+          ],
+          "mode": "RGB",
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51543-broken-tusk-pkg1/",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51543-broken-tusk-pkg1%2F&description=51543%20Broken%20Tusk%20pkg1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51543-Broken-Tusk-pkg1.jpg",
+          "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51543-broken-tusk-pkg1%2F&#038;description=51543%20Broken%20Tusk%20pkg1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51543-Broken-Tusk-pkg1.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2017/06/51543-Broken-Tusk-pkg1.jpg",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg1.html",
+            "sha256": "16b71ddeea0ed4947c062a0bcb88f4053c85a380d7482009bec4e5196345210d",
+            "bytes": 117604,
+            "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/broken-pkg1.html"
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg-photo.jpg",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/broken-pkg-photo.jpg"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2-photo.jpg",
+          "sha256": "ef059cd96fdca0f009e3db636ca79a41994800d215b17ab213f0ccbea413cf7c",
+          "bytes": 804543,
+          "nativeDimensions": [
+            1040,
+            1300
+          ],
+          "mode": "RGB",
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51543-broken-tusk-pkg2/",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51543-broken-tusk-pkg2%2F&description=51543%20Broken%20Tusk%20pkg2&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51543-Broken-Tusk-pkg2.jpg",
+          "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51543-broken-tusk-pkg2%2F&#038;description=51543%20Broken%20Tusk%20pkg2&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51543-Broken-Tusk-pkg2.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2017/06/51543-Broken-Tusk-pkg2.jpg",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2.html",
+            "sha256": "58a2ae17ce8491f202831a18e5ced679bf3ad392d10dc6c857a3a7f57bc2672b",
+            "bytes": 117226,
+            "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/broken-pkg2.html"
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2-photo.jpg",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/broken-pkg2-photo.jpg"
+        }
+      ],
+      "nativeOutputs": [
+        {
+          "id": "neca-broken-tusk-series-18-2017",
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-broken-tusk-series-18-2017.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/broken-A2.png",
+          "sha256": "770c818df8175734b8bd4faecfb97f892cfae29240920315789fe9a21771d8af",
+          "bytes": 1196379,
+          "nativeDimensions": [
+            1122,
+            1402
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        },
+        {
+          "id": "neca-broken-tusk-series-18-2017",
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-broken-tusk-series-18-2017.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/broken-B.png",
+          "sha256": "146f60f390a83c44f1996b54e81ae0c2a0930b1a8a4e062d28f674c33667b86e",
+          "bytes": 1381375,
+          "nativeDimensions": [
+            1122,
+            1402
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        }
+      ],
+      "generationReceipt": {
+        "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-broken-tusk-series-18-2017.json",
+        "sha256": "f647b7fb50bde877778bb408a1565807fdf1e3dd196f0e3ea2daba216b367e2a",
+        "bytes": 26910
+      },
+      "limitations": [
+        "Only roughly 8–14 thousand source pixels describe the mask; fine sculpt and exact glyph curve cannot be certified.",
+        "Clear blister introduces reflections; fine material response is interpreted.",
+        "This is the named licensed NECA2017 edition, not a certified 1:1 comics-panel reconstruction.",
+        "Only the photographed projected view is supported; no invented reverse construction.",
+        "Human art validation, canonical fidelity and runtime integration remain open.",
+        "Broad circular-and-stroke mark is attested; its exact small contour remains unresolved.",
+        "Small side fitting details are not independently proven at this resolution; inspect as a provisional study.",
+        "Corrected A visible occupancy is about71% of longest canvas axis; margins exceed8–12% target without clipping.",
+        "Only roughly 8–14 thousand source pixels describe the mask; fine sculpt and exact glyph curve cannot be certified.",
+        "Clear blister introduces reflections; fine material response is interpreted.",
+        "This is the named licensed NECA2017 edition, not a certified 1:1 comics-panel reconstruction.",
+        "Only the photographed projected view is supported; no invented reverse construction.",
+        "Human art validation, canonical fidelity and runtime integration remain open.",
+        "Broad circular-and-stroke mark is attested; its exact small contour remains unresolved.",
+        "Small side fitting details are not independently proven at this resolution; inspect as a provisional study.",
+        "B mask-only bbox ratio0.7979 versus selected A0.8208, about2.8% narrower; recorded as minor projected-proportion uncertainty."
+      ],
+      "sourceProductStatus": "Named licensed NECA physical edition photograph; no canonical certification inferred",
+      "selfReviewCaptures": [
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-broken-tusk-series-18-2017-source.png",
+          "sha256": "c1d4edd9bc4e34498d444546010a527073dc8b82d0c0ff05164f6a1f55be351c",
+          "bytes": 541238,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-broken-tusk-series-18-2017-alpha.png",
+          "sha256": "dbc6bff53d68efda6f76fcb83605eb394480e311e3ac08c40646131248742996",
+          "bytes": 534672,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "independentReviewState": "gen5 final no major macro defect observed",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "neca-machiko-series-18-2017",
+      "name": "NECA Predator Series18 Machiko 2017; licensed comic adaptation, not original panel proof",
+      "work": "NECA Predator Series18 Machiko 2017; licensed comic adaptation, not original panel proof",
+      "sourceEdition": "NECA Predator Series18 Machiko 2017; licensed comic adaptation, not original panel proof",
+      "status": "exploitable-provisional-sourceLimited",
+      "generationReady": true,
+      "representationOf": "NECA Predator Series18 Machiko 2017; licensed comic adaptation, not original panel proof",
+      "maskFamily": "Machiko",
+      "newRepresentationEdition": true,
+      "newCanonicalGeometry": false,
+      "sourceLimited": true,
+      "fineFidelityOpen": true,
+      "productionReady": false,
+      "canonicalRequirementClosed": false,
+      "maskGeometryEstablished": "Visible licensed physical-source projection only; not certified canonical geometry",
+      "view": "Actual photographed source camera, approximate projected proportions",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg-photo.jpg",
+          "sha256": "fb1eb87d6911f50aaba3e27b942fb626a4fd740ff6343006df131e9a4bc98526",
+          "bytes": 710818,
+          "nativeDimensions": [
+            1040,
+            1300
+          ],
+          "mode": "RGB",
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51544-machiko-pkg1/",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51544-machiko-pkg1%2F&description=51544%20Machiko%20pkg1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51544-Machiko-pkg1.jpg",
+          "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51544-machiko-pkg1%2F&#038;description=51544%20Machiko%20pkg1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51544-Machiko-pkg1.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2017/06/51544-Machiko-pkg1.jpg",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg1.html",
+            "sha256": "3aabe8cb0979c936141d3fc2da6ef3f81f382439c686ef28b30d5220250d48ad",
+            "bytes": 117046,
+            "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/machiko-pkg1.html"
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg-photo.jpg",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/machiko-pkg-photo.jpg"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2-photo.jpg",
+          "sha256": "5a4185c2fb22e6cac52810cdb202a22bb470c07b5222ab7d70c07c6a74e96ba2",
+          "bytes": 835837,
+          "nativeDimensions": [
+            1040,
+            1300
+          ],
+          "mode": "RGB",
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51544-machiko-pkg2/",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51544-machiko-pkg2%2F&description=51544%20Machiko%20pkg2&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51544-Machiko-pkg2.jpg",
+          "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51544-machiko-pkg2%2F&#038;description=51544%20Machiko%20pkg2&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51544-Machiko-pkg2.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2017/06/51544-Machiko-pkg2.jpg",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2.html",
+            "sha256": "472443d628425101bfb34a709ad6dd380341559de17a27e61e4ef3d39e5848f4",
+            "bytes": 117046,
+            "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/machiko-pkg2.html"
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2-photo.jpg",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/machiko-pkg2-photo.jpg"
+        }
+      ],
+      "nativeOutputs": [
+        {
+          "id": "neca-machiko-series-18-2017",
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-machiko-series-18-2017.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/machiko-A.png",
+          "sha256": "d07f4d862ad7bed169d055fadb2f3b3416c9be4e170bbf4b1066a8b8230e2e32",
+          "bytes": 1146542,
+          "nativeDimensions": [
+            1264,
+            1244
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        },
+        {
+          "id": "neca-machiko-series-18-2017",
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-machiko-series-18-2017.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/machiko-B.png",
+          "sha256": "05f5a8cefda17ad15decb86477891d65c14c3a42137d43b2739d09fdddda54c0",
+          "bytes": 1195278,
+          "nativeDimensions": [
+            1265,
+            1244
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        }
+      ],
+      "generationReceipt": {
+        "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-machiko-series-18-2017.json",
+        "sha256": "9adaa2d0f6933b6d2846816ec637ef4424531ee393c31edc63b5cbb4f03b0c89",
+        "bytes": 21041
+      },
+      "limitations": [
+        "Only roughly 8–14 thousand source pixels describe the mask; fine sculpt and exact glyph curve cannot be certified.",
+        "Clear blister introduces reflections; fine material response is interpreted.",
+        "This is the named licensed NECA2017 edition, not a certified 1:1 comics-panel reconstruction.",
+        "Only the photographed projected view is supported; no invented reverse construction.",
+        "Human art validation, canonical fidelity and runtime integration remain open.",
+        "Only roughly 8–14 thousand source pixels describe the mask; fine sculpt and exact glyph curve cannot be certified.",
+        "Clear blister introduces reflections; fine material response is interpreted.",
+        "This is the named licensed NECA2017 edition, not a certified 1:1 comics-panel reconstruction.",
+        "Only the photographed projected view is supported; no invented reverse construction.",
+        "Human art validation, canonical fidelity and runtime integration remain open."
+      ],
+      "sourceProductStatus": "Named licensed NECA physical edition photograph; no canonical certification inferred",
+      "selfReviewCaptures": [
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-machiko-series-18-2017-source.png",
+          "sha256": "1fe4049321ee435405c27b5f2f31967bbb554f69f3d8e50ce3c39d3db9bdb179",
+          "bytes": 514169,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-machiko-series-18-2017-alpha.png",
+          "sha256": "895d933bdae2a50e920f30c0746fa4d1ebb6f1efb769ea5d6a1dc3ae6b235d4a",
+          "bytes": 507875,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "independentReviewState": "gen5 final no major macro defect observed",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "neca-dark-horse-25th-anniversary-2015",
+      "name": "NECA 25th Anniversary Dark Horse Comic Book Predator2015",
+      "work": "NECA 25th Anniversary Dark Horse Comic Book Predator2015",
+      "sourceEdition": "NECA 25th Anniversary Dark Horse Comic Book Predator2015",
+      "status": "exploitable-provisional-sourceLimited",
+      "generationReady": true,
+      "representationOf": "Jungle Hunter mask family; exact licensed blue-painted Dark Horse NECA2015 edition",
+      "maskFamily": "Jungle Hunter",
+      "newRepresentationEdition": true,
+      "newCanonicalGeometry": false,
+      "sourceLimited": true,
+      "fineFidelityOpen": true,
+      "productionReady": false,
+      "canonicalRequirementClosed": false,
+      "maskGeometryEstablished": "Visible licensed physical-source projection only; not certified canonical geometry",
+      "view": "Nearly frontal photographed catalogue projection",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-book-photo.jpg",
+          "sha256": "4f5a0cab842b10baf8ad923928b3076eb2daa1dc54713e6b864dfa5a8cb26b6d",
+          "bytes": 174856,
+          "nativeDimensions": [
+            989,
+            1300
+          ],
+          "mode": "RGB",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/comic25-book-photo.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-this-week-25th-anniversary-dark-horse-predator-and-pacific-rim-flying-otachi-figures-1",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2015/07/1300x-Dark-Horse-Comic_Book.jpg",
+          "rawPublisherAnchorTag": "<a href=\"https://necaonline.com/wp-content/uploads/2015/07/1300x-Dark-Horse-Comic_Book.jpg\">",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-store.html",
+            "sha256": "2f380302bfdd4446259790fdc365d0152fe53bac6d52cf1b5baeff5254796ac5",
+            "bytes": 376812
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/comic25-book-photo.jpg"
+        }
+      ],
+      "nativeOutputs": [
+        {
+          "id": "neca-dark-horse-25th-anniversary-2015",
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-dark-horse-25th-anniversary-2015.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/comic25-A3.png",
+          "sha256": "8185b65cc26cf9403ccec4aba1e04cf6abb3572562272b9c37d0a4904a002d0d",
+          "bytes": 1717161,
+          "nativeDimensions": [
+            1303,
+            1207
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        },
+        {
+          "id": "neca-dark-horse-25th-anniversary-2015",
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-dark-horse-25th-anniversary-2015.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/comic25-B.png",
+          "sha256": "f7755348f4f06233648884b200baa633b15c397114637a2af3de06538a6ae418",
+          "bytes": 1817274,
+          "nativeDimensions": [
+            1303,
+            1207
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        }
+      ],
+      "generationReceipt": {
+        "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-dark-horse-25th-anniversary-2015.json",
+        "sha256": "4f97f2849ea5e880a399240a49df3a9529535822a25ec11c3247205197dbff29",
+        "bytes": 23280
+      },
+      "limitations": [
+        "The figure is a licensed comics-painted adaptation, not proof of an original drawn comic panel.",
+        "Photographed rigid shell roughly134x129px; exact small temple fitting recesses and drybrush edges remain unresolved.",
+        "Selected A3 bbox ratio0.985 and B0.984; manual source mask-only window suggests about1.04 with uncertain edges/perspective, so fine proportions remain provisional.",
+        "Top margin about6% is below8–12% target without clipping; no raster canvas adjustment.",
+        "Canon certification, human art validation and runtime integration remain open.",
+        "The figure is a licensed comics-painted adaptation, not proof of an original drawn comic panel.",
+        "Photographed rigid shell roughly134x129px; exact small temple fitting recesses and drybrush edges remain unresolved.",
+        "Selected A3 bbox ratio0.985 and B0.984; manual source mask-only window suggests about1.04 with uncertain edges/perspective, so fine proportions remain provisional.",
+        "Top margin about6% is below8–12% target without clipping; no raster canvas adjustment.",
+        "Canon certification, human art validation and runtime integration remain open."
+      ],
+      "sourceProductStatus": "Named licensed NECA physical edition photograph; no canonical certification inferred",
+      "selfReviewCaptures": [
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-dark-horse-25th-anniversary-2015-source.png",
+          "sha256": "8047aaab96874e2f5607a7c9ac851d1962dd9e469b65fd876ac5079917f6babe",
+          "bytes": 665440,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-dark-horse-25th-anniversary-2015-alpha.png",
+          "sha256": "4c5ac5de4c0b9600137797797431ced229cef213a0263b668c6c548eb795c1d6",
+          "bytes": 753690,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "independentReviewState": "gen5 final no major macro defect observed",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "neca-bad-blood-ultimate-2018",
+      "name": "NECA Ultimate Bad Blood vs Enforcer2-pack2018; newly masked Bad Blood head",
+      "work": "NECA Ultimate Bad Blood vs Enforcer2-pack2018; newly masked Bad Blood head",
+      "sourceEdition": "NECA Ultimate Bad Blood vs Enforcer2-pack2018; newly masked Bad Blood head",
+      "status": "exploitable-provisional-sourceLimited",
+      "generationReady": true,
+      "representationOf": "Bad Blood: licensed NECA2018 masked-head edition, source-view study",
+      "maskFamily": "Bad Blood",
+      "newRepresentationEdition": true,
+      "newCanonicalGeometry": false,
+      "sourceLimited": true,
+      "fineFidelityOpen": true,
+      "productionReady": false,
+      "canonicalRequirementClosed": false,
+      "maskGeometryEstablished": "Visible licensed physical-source projection only; not certified canonical geometry",
+      "view": "Actual left-facing profile/three-quarter source-view; no frontal or hidden-side reconstruction",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-profile.jpg",
+          "sha256": "08498b8d489f53e3584a2f64629ce5a9163230dc48b4f889bf1ed349be8fb175",
+          "bytes": 1037096,
+          "nativeDimensions": [
+            1299,
+            867
+          ],
+          "mode": "RGB",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/badblood-profile.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-arcade-more",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2018/02/Both4.jpg",
+          "rawPublisherAnchorTag": "<a data-rel=\"iLightbox[postimages]\" data-title=\"both4\" data-caption=\"\" href=\"https://necaonline.com/wp-content/uploads/2018/02/Both4.jpg\">",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/article-golden-toyfair2018.html",
+            "sha256": "d110fe4c3cf707aa9a05c4d4199f266b4061271131bf76156d8cd933991c2b1a",
+            "bytes": 393727
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/badblood-profile.jpg"
+        }
+      ],
+      "nativeOutputs": [
+        {
+          "id": "neca-bad-blood-ultimate-2018",
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-bad-blood-ultimate-2018.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/badblood-A2.png",
+          "sha256": "e1bb4f93fa18c48d6102b9a60857be1b637d595e6bf5215c0ca2f7bdc5998e27",
+          "bytes": 1200819,
+          "nativeDimensions": [
+            1131,
+            1391
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        },
+        {
+          "id": "neca-bad-blood-ultimate-2018",
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-bad-blood-ultimate-2018.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/badblood-B.png",
+          "sha256": "081975b86f7c068d5de5cd4e26e6c3e2815d3f93a2adc863cb87a3374c90973c",
+          "bytes": 1229441,
+          "nativeDimensions": [
+            1131,
+            1391
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        }
+      ],
+      "generationReceipt": {
+        "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-bad-blood-ultimate-2018.json",
+        "sha256": "6c1d192f70aaa1b789e866c70bd0a9a4261805af9ebf35c78954f8c542e81675",
+        "bytes": 21472
+      },
+      "limitations": [
+        "This is the licensed NECA2018 sculpture, not a certified original Bad Blood comic drawing.",
+        "Only the photographed source-profile exterior is supported; opposite side/back are invisible and remain unconstructed.",
+        "Gold shell is roughly110x200px; exact pitting, tiny serration edges and aperture rim curve are interpreted within source limitations.",
+        "A1 incorrectly filled a side aperture; selected A2 restores the attested small passage as true alpha and keeps the front optic opaque.",
+        "Neutral lighting replaces scene-green reflections without changing the attested gold/black paint.",
+        "Canon certification, human art validation and runtime integration remain open.",
+        "This is the licensed NECA2018 sculpture, not a certified original Bad Blood comic drawing.",
+        "Only the photographed source-profile exterior is supported; opposite side/back are invisible and remain unconstructed.",
+        "Gold shell is roughly110x200px; exact pitting, tiny serration edges and aperture rim curve are interpreted within source limitations.",
+        "A1 incorrectly filled a side aperture; selected A2 restores the attested small passage as true alpha and keeps the front optic opaque.",
+        "Neutral lighting replaces scene-green reflections without changing the attested gold/black paint.",
+        "Canon certification, human art validation and runtime integration remain open."
+      ],
+      "sourceProductStatus": "Named licensed NECA physical edition photograph; no canonical certification inferred",
+      "selfReviewCaptures": [
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-bad-blood-ultimate-2018-source.png",
+          "sha256": "1126176db4171833c2239334631c4ec3770e90be5d4d4c0b3c7dd9aec5fa6a72",
+          "bytes": 501573,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-bad-blood-ultimate-2018-alpha.png",
+          "sha256": "d9a719b9a5bceeb9c5ad8c060161145596467a031fe728a9806960e5f408e364",
+          "bytes": 395958,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "independentReviewState": "gen5 final no major macro defect observed",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "neca-enforcer-ultimate-2018",
+      "name": "NECA Ultimate Bad Blood vs Enforcer2-pack2018; masked Enforcer sculpture",
+      "work": "NECA Ultimate Bad Blood vs Enforcer2-pack2018; masked Enforcer sculpture",
+      "sourceEdition": "NECA Ultimate Bad Blood vs Enforcer2-pack2018; masked Enforcer sculpture",
+      "status": "exploitable-provisional-sourceLimited",
+      "generationReady": true,
+      "representationOf": "Enforcer mask family; exact licensed NECA2018 edition, separate from project V62 reconstruction mk14",
+      "maskFamily": "Enforcer",
+      "newRepresentationEdition": true,
+      "newCanonicalGeometry": false,
+      "sourceLimited": true,
+      "fineFidelityOpen": true,
+      "productionReady": false,
+      "canonicalRequirementClosed": false,
+      "maskGeometryEstablished": "Visible licensed physical-source projection only; not certified canonical geometry",
+      "view": "Actual three-quarter source-view towards viewer-left with complete tall central fin",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/enforcer-profile.jpg",
+          "sha256": "e5cb60fa1886c602b6894d67304859994d0e4da6dd7b7818d29a78bb144a673c",
+          "bytes": 979277,
+          "nativeDimensions": [
+            867,
+            1299
+          ],
+          "mode": "RGB",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/enforcer-profile.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-arcade-more",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2018/02/Enforcer3.jpg",
+          "rawPublisherAnchorTag": "<a data-rel=\"iLightbox[postimages]\" data-title=\"enforcer3\" data-caption=\"\" href=\"https://necaonline.com/wp-content/uploads/2018/02/Enforcer3.jpg\">",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/article-golden-toyfair2018.html",
+            "sha256": "d110fe4c3cf707aa9a05c4d4199f266b4061271131bf76156d8cd933991c2b1a",
+            "bytes": 393727
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/enforcer-profile.jpg"
+        }
+      ],
+      "nativeOutputs": [
+        {
+          "id": "neca-enforcer-ultimate-2018",
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-enforcer-ultimate-2018.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/enforcer-A.png",
+          "sha256": "b9dd445a5d61758498062ec37d40b32235ab4748632e4037d91e5a3da18b158e",
+          "bytes": 1017784,
+          "nativeDimensions": [
+            1263,
+            1246
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        },
+        {
+          "id": "neca-enforcer-ultimate-2018",
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-enforcer-ultimate-2018.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/enforcer-B.png",
+          "sha256": "25a1c62e183d18a28c3beb93deed90c1955261eb1a19d653a7fc843fc14f8bbb",
+          "bytes": 943655,
+          "nativeDimensions": [
+            1122,
+            1402
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        }
+      ],
+      "generationReceipt": {
+        "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-enforcer-ultimate-2018.json",
+        "sha256": "b1f79e3ffedfbdee246f259fdfd54e9522b0b5faa10f2687c10aa74549728fdc",
+        "bytes": 19476
+      },
+      "limitations": [
+        "Licensed NECA2018 sculpture photograph, not certification of an original drawn Bad Blood comic panel.",
+        "Only the photographed exterior/angle and hard side fitting are supported; no new reverse construction.",
+        "Small blue block-like forehead mark is attested; tiny edge chips/curves remain interpreted at source resolution.",
+        "Native A top/bottom margins about3% fall below8–12% target without clipping the complete fin; no raster canvas adjustment.",
+        "Neutral light removes scene-purple reflections without inventing purple albedo.",
+        "Canon certification, human art validation and runtime integration remain open.",
+        "Licensed NECA2018 sculpture photograph, not certification of an original drawn Bad Blood comic panel.",
+        "Only the photographed exterior/angle and hard side fitting are supported; no new reverse construction.",
+        "Small blue block-like forehead mark is attested; tiny edge chips/curves remain interpreted at source resolution.",
+        "Native A top/bottom margins about3% fall below8–12% target without clipping the complete fin; no raster canvas adjustment.",
+        "Neutral light removes scene-purple reflections without inventing purple albedo.",
+        "Canon certification, human art validation and runtime integration remain open."
+      ],
+      "sourceProductStatus": "Named licensed NECA physical edition photograph; no canonical certification inferred",
+      "selfReviewCaptures": [
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-enforcer-ultimate-2018-source.png",
+          "sha256": "b898e34b8934a386f07d1fe812de43c16bb11e95695b3dd2e5407701b1242780",
+          "bytes": 460570,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-enforcer-ultimate-2018-alpha.png",
+          "sha256": "e99fc587646ee419a4971bfe4151c87f0e1d52fd88a1452696fe8669227e51c1",
+          "bytes": 333095,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "independentReviewState": "gen4 preflight no major macro; gen5 final pending",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "neca-batman-vs-predator-2019",
+      "name": "Announced NECA DC/Dark Horse Batman vs Predator SDCC2019 publisher preview, May2019 pre-sale article",
+      "work": "Batman Versus Predator1991 DC/Dark Horse mini-series, explicitly named by publisher",
+      "sourceEdition": "Announced NECA DC/Dark Horse Batman vs Predator SDCC2019 publisher preview, May2019 pre-sale article",
+      "status": "exploitable-provisional-sourceLimited",
+      "generationReady": true,
+      "representationOf": "Predator from Batman Versus Predator1991, as physically depicted in announced NECA SDCC2019 DC/Dark Horse2-pack",
+      "maskFamily": "Batman vs Predator licensed NECA depiction",
+      "newRepresentationEdition": true,
+      "newCanonicalGeometry": false,
+      "sourceLimited": true,
+      "fineFidelityOpen": true,
+      "productionReady": false,
+      "canonicalRequirementClosed": false,
+      "maskGeometryEstablished": "Visible licensed physical-source projection only; not certified canonical geometry",
+      "view": "Downward-bowed nearly frontal/three-quarter publisher scene view; source has a little more roll than generated A",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-18.jpg",
+          "sha256": "b69ddb98da548a3c89071ec2b91b8310d216676f509bcba9a0f7ba3493ce761b",
+          "bytes": 707946,
+          "nativeDimensions": [
+            1300,
+            867
+          ],
+          "mode": "RGB",
+          "privateAcquisitionPath": "/tmp/mask-lots40-20261113/comics-novels/batman-predator-18.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/san-diego-comic-con/2019-convention-exclusives-complete-roundup-and-pre-sale-details",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2019/05/5156518.jpg",
+          "rawPublisherAnchorTag": "<a href=\"https://necaonline.com/wp-content/uploads/2019/05/5156518.jpg\">",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/sdcc2019-roundup.html",
+            "sha256": "66158609b0df76fd2cd90262c43ea9544dc9f97208035a15427dd2568ff52bc0",
+            "bytes": 409837
+          },
+          "repositoryReferencePath": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-18.jpg",
+          "role": "primary large source camera and sculpture"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-1.jpg",
+          "sha256": "8a48be54d1295f702e0437c53becfbdf269a6962bf7e0def67d1b046632e18d0",
+          "bytes": 500300,
+          "nativeDimensions": [
+            1300,
+            1040
+          ],
+          "mode": "RGB",
+          "imageURL": "https://necaonline.com/wp-content/uploads/2019/05/515651.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/san-diego-comic-con/2019-convention-exclusives-complete-roundup-and-pre-sale-details",
+          "rawPublisherAnchorTag": "<a href=\"https://necaonline.com/wp-content/uploads/2019/05/515651.jpg\">",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/sdcc2019-roundup.html",
+            "sha256": "66158609b0df76fd2cd90262c43ea9544dc9f97208035a15427dd2568ff52bc0",
+            "bytes": 409837
+          },
+          "role": "supporting exact edition palette and identity; no camera substitution"
+        }
+      ],
+      "nativeOutputs": [
+        {
+          "id": "neca-batman-vs-predator-2019",
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-batman-vs-predator-2019.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/batman-A.png",
+          "sha256": "93c0d2f2c0be694eedce7f7e58c60fafb85b0bdc1ba0b6da3212df871d85d8d2",
+          "bytes": 1538571,
+          "nativeDimensions": [
+            1263,
+            1246
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        },
+        {
+          "id": "neca-batman-vs-predator-2019",
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-batman-vs-predator-2019.png",
+          "nativeSourcePath": "/tmp/mask-lots40-20261113/comics-novels/native/batman-B.png",
+          "sha256": "7c4275cef489bf5deee3c2dda40fdc693a8f8303e3991734f03e9ffb1c41ea51",
+          "bytes": 1499468,
+          "nativeDimensions": [
+            1059,
+            1485
+          ],
+          "mode": "RGBA",
+          "nativeCopyIdentical": true
+        }
+      ],
+      "generationReceipt": {
+        "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-batman-vs-predator-2019.json",
+        "sha256": "a7029a26f81401b54e9aed682a694ffd795f755fe4bf379c1df7b57bec9a770b",
+        "bytes": 24574
+      },
+      "limitations": [
+        "Publication is an official pre-sale announcement/physical figure preview, not proof of final retail approval or canonical comics geometry.",
+        "No actual drawn comic panel used; licensed figure appearance must remain separate from original comic drawing.",
+        "Source R18 and catalogue R1 support silver-grey paint/yellow optics; cyan scene rimlight is not blue material.",
+        "Independent preflight gen4 found no major macro defect; source R18 retains a few more degrees of roll than A, a mild camera uncertainty.",
+        "Tiny side-fitting recesses, roughness and exact paint edges remain interpreted; no newly legible glyph.",
+        "A top/bottom margins about4–5% are below8–12%target but no rigid outline is clipped; B requests more breathing room.",
+        "Canon certification, human art validation and runtime integration remain open.",
+        "B bbox ratio0.6898 versus A0.7032, about1.9% narrower; minor projected-proportion uncertainty, no major macro defect observed.",
+        "Publication is an official pre-sale announcement/physical figure preview, not proof of final retail approval or canonical comics geometry.",
+        "No actual drawn comic panel used; licensed figure appearance must remain separate from original comic drawing.",
+        "Source R18 and catalogue R1 support silver-grey paint/yellow optics; cyan scene rimlight is not blue material.",
+        "Independent preflight gen4 found no major macro defect; source R18 retains a few more degrees of roll than A, a mild camera uncertainty.",
+        "Tiny side-fitting recesses, roughness and exact paint edges remain interpreted; no newly legible glyph.",
+        "A top/bottom margins about4–5% are below8–12%target but no rigid outline is clipped; B requests more breathing room.",
+        "Canon certification, human art validation and runtime integration remain open.",
+        "B bbox ratio0.6898 versus A0.7032, about1.9% narrower; minor projected-proportion uncertainty, no major macro defect observed."
+      ],
+      "sourceProductStatus": "Official publisher pre-sale announcement and physical figure photographs; final retail match/approval unestablished",
+      "selfReviewCaptures": [
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-batman-vs-predator-2019-source.png",
+          "sha256": "63fb156a59f60c751b4bd54633daa689ffe4e3c658ad29f65bd0a8eb7cc1c6ae",
+          "bytes": 584487,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        },
+        {
+          "path": "/tmp/mask-lots40-20261113/comics-novels/neca-batman-vs-predator-2019-alpha.png",
+          "sha256": "188dc5ccca498cb9795dd7258ca685d87ce140a5006b15897a5a2af2dfabcdd3",
+          "bytes": 501007,
+          "nativeDimensions": [
+            1600,
+            1120
+          ],
+          "mode": "RGB"
+        }
+      ],
+      "independentReviewState": "gen4 preflight no major macro; gen5 final pending",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "publisherPublicationDate": "2019-05-23",
+      "sourceWork": "Batman Versus Predator1991 DC/Dark Horse mini-series, publisher-named",
+      "finalRetailCertified": false,
+      "sourceApprovalMarkObserved": false
+    },
+    {
+      "id": "mk-56-serpent-hunter-neca-series17",
+      "name": "Serpent Hunter / Alien Head",
+      "work": "Aliens vs Predator2010 game; licensed NECA Series17 2016/2017 adaptation",
+      "sourceEdition": "NECA Series17 official group photograph",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Only tiny whole mask in official590x364group. Native/store searches gave no larger literal published attachment. Full gallery links use explicitly refused CDN; no host substitution or retry. No unseen Alien-head details invented.",
+      "referenceSources": [
+        {
+          "id": "primary-elder-avp-photo",
+          "sourcePagePath": "/tmp/primary-masks-20261113/film/elder-avp.html",
+          "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fpredator-7-scale-action-figures-series-17-assortment%2F&description=%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2ANECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%21%20Series%2017%20features%20even%20more%20action%20figure%20debuts%20from%20the%20Alien%20vs.%20Predator%20movie%20and%20video%20game.%20The%20assortment%20includes%20Youngblood%20and%20Elder%20from%20the%202004%20movie%2C%20and%20Serpent%20Hunter%20from%20the%202010%20video%20game.%20Elder%20Predator%20wears%20a%20regal%20soft%20goods%20cape%20with&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590w-series-17.jpg",
+          "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fpredator-7-scale-action-figures-series-17-assortment%2F&#038;description=%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2ANECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%21%20Series%2017%20features%20even%20more%20action%20figure%20debuts%20from%20the%20Alien%20vs.%20Predator%20movie%20and%20video%20game.%20The%20assortment%20includes%20Youngblood%20and%20Elder%20from%20the%202004%20movie%2C%20and%20Serpent%20Hunter%20from%20the%202010%20video%20game.%20Elder%20Predator%20wears%20a%20regal%20soft%20goods%20cape%20with&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590w-series-17.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/590w-series-17.jpg",
+          "CDNHostRewritePerformed": false,
+          "shareServiceRequested": false,
+          "sourcePageURL": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+          "path": "production/biomasks-lots40-20261113/references/comics-novels/background-evidence/primary-elder-avp-photo.jpg",
+          "bytes": 131582,
+          "sha256": "341e11d48b97c058a0d2d7d65744f6ff19297a053e68e6e0f79087f06c54a79a",
+          "dimensions": [
+            590,
+            364
+          ],
+          "format": "JPEG",
+          "mode": "RGB",
+          "httpStatus": 200,
+          "imageRedirectsFollowed": 0,
+          "downloadedUnchanged": true,
+          "actuallyInspectedWith": "tools.view_image",
+          "referenceStatus": "small-catalog-group-limited",
+          "observation": "NECASeries17 group photo: SerpentHunter at left, AVPElder center unmasked, Youngblood right. Left mask readable only at tiny size; center organic head does not establish AVPElder removable shell. Do not substitute right Youngblood mask for Elder.",
+          "publisherMediaProofVerified": true,
+          "pixelEditingPerformed": false,
+          "canonCertified": false,
+          "humanArtValidated": false,
+          "privateAcquisitionPath": "/tmp/mask-neutral-20261113/primary-elder-avp-photo.jpg",
+          "sourceHTML": {
+            "path": "production/biomasks-lots40-20261113/references/comics-novels/series17-official-product.html",
+            "sha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+            "bytes": 166818
+          },
+          "sourceViewOnly": true,
+          "exploitableForFineFidelity": false
+        }
+      ],
+      "crossLotCoordination": "Gen2 left Serpent Hunter to this source pass; no duplicate production. Distinct from AVP2010 Lord mk17.",
+      "newCanonicalGeometry": false,
+      "maskGeometryEstablished": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-adilgashii",
+      "name": "Adilgashii",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 4,
+        "values": {
+          "Yautja": "Adilgashii",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Adilgashii"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Adilgashii",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-bad-blood-gotham-city",
+      "name": "Bad Blood (Gotham City)",
+      "work": "Batman versus Predator II: Bloodmatch",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. The listed work is documentary context, not a shape image. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 8,
+        "values": {
+          "Yautja": "Bad Blood (Gotham City)",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Batman versus Predator II: Bloodmatch",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Bad_Blood_%28Gotham_City%29"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Bad_Blood_%28Gotham_City%29",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-bosu",
+      "name": "Bosu",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 17,
+        "values": {
+          "Yautja": "Bosu",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Bosu"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Bosu",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-captive-predator",
+      "name": "Captive Predator",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 19,
+        "values": {
+          "Yautja": "Captive Predator",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Captive_Predator"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Captive_Predator",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-clan-leader-lv-797",
+      "name": "Clan Leader (LV-797)",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 22,
+        "values": {
+          "Yautja": "Clan Leader (LV-797)",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Clan_Leader_%28LV-797%29"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Clan_Leader_%28LV-797%29",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-devil",
+      "name": "Devil",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 29,
+        "values": {
+          "Yautja": "Devil",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Devil"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Devil",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-djinn",
+      "name": "Djinn",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 31,
+        "values": {
+          "Yautja": "Djinn",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Djinn"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Djinn",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-dragon-yautja",
+      "name": "Dragon (Yautja)",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 33,
+        "values": {
+          "Yautja": "Dragon (Yautja)",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Dragon_%28Yautja%29"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Dragon_%28Yautja%29",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-forest-devil",
+      "name": "Forest Devil",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 41,
+        "values": {
+          "Yautja": "Forest Devil",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Forest_Devil"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Forest_Devil",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-four-armed-predator",
+      "name": "Four-armed Predator",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 42,
+        "values": {
+          "Yautja": "Four-armed Predator",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu / hybride ou mutation",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Four-armed_Predator"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Four-armed_Predator",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-gollywomp",
+      "name": "Gollywomp",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 47,
+        "values": {
+          "Yautja": "Gollywomp",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Gollywomp"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Gollywomp",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-hook",
+      "name": "Hook",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 53,
+        "values": {
+          "Yautja": "Hook",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Hook"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Hook",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-light-stepper",
+      "name": "Light-Stepper",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 64,
+        "values": {
+          "Yautja": "Light-Stepper",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Light-Stepper"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Light-Stepper",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-mystery-competitor",
+      "name": "Mystery Competitor",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 70,
+        "values": {
+          "Yautja": "Mystery Competitor",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Mystery_Competitor"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Mystery_Competitor",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-ozarks-hunter",
+      "name": "Ozarks Hunter",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 77,
+        "values": {
+          "Yautja": "Ozarks Hunter",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Ozarks_Hunter"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Ozarks_Hunter",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-pig-iron",
+      "name": "Pig Iron",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 78,
+        "values": {
+          "Yautja": "Pig Iron",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Pig_Iron"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Pig_Iron",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-predator-mega-city-one",
+      "name": "Predator (Mega-City One)",
+      "work": "Predator vs. Judge Dredd",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. The listed work is documentary context, not a shape image. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 79,
+        "values": {
+          "Yautja": "Predator (Mega-City One)",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Predator vs. Judge Dredd",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Predator_%28Mega-City_One%29"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Predator_%28Mega-City_One%29",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-predator-rite-of-passage",
+      "name": "Predator (Rite of Passage)",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 80,
+        "values": {
+          "Yautja": "Predator (Rite of Passage)",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Predator_%28Rite_of_Passage%29"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Predator_%28Rite_of_Passage%29",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-prient-de",
+      "name": "Prient'de",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 82,
+        "values": {
+          "Yautja": "Prient'de",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Prient'de"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Prient'de",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-rakshasa",
+      "name": "Rakshasa",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 84,
+        "values": {
+          "Yautja": "Rakshasa",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Rakshasa"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Rakshasa",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-splitter",
+      "name": "Splitter",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 104,
+        "values": {
+          "Yautja": "Splitter",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Splitter"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Splitter",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-three-mandibled-predator",
+      "name": "Three-mandibled Predator",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 109,
+        "values": {
+          "Yautja": "Three-mandibled Predator",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Three-mandibled_Predator"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Three-mandibled_Predator",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "comics-three-spot",
+      "name": "Three-Spot",
+      "work": "Precise work unresolved by the local catalogue; no inferred bibliography",
+      "media": "Comics",
+      "status": "insufficient",
+      "generationReady": false,
+      "reason": "Local catalogue names a real individual discovery lead but provides no reviewed primary mask image. Precise work/edition unresolved. Available official NECA comics/publisher galleries did not supply an identified full shell for this individual; original Dark Horse/Marvel publisher hosts are outside current declared network policy.",
+      "catalogueCitation": {
+        "workbook": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+        "workbookSha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+        "sheet": "Comics & romans",
+        "row": 110,
+        "values": {
+          "Yautja": "Three-Spot",
+          "Média(x)": "Comics",
+          "Œuvre principale connue": "Voir la source individuelle",
+          "Type": "Individu nommé ou surnommé",
+          "Identité distincte ?": "Oui",
+          "Source URL": "https://avp.fandom.com/wiki/Three-Spot"
+        }
+      },
+      "secondaryDiscoveryURL": "https://avp.fandom.com/wiki/Three-Spot",
+      "secondaryURLFetched": false,
+      "sourceImages": [],
+      "maskGeometryEstablished": false,
+      "newCanonicalGeometry": false,
+      "canonicalRequirementClosed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    }
+  ],
+  "alreadyCoveredGeometryFamilies": [
+    {
+      "identity": "Ahab",
+      "existingManifestIds": [
+        "neca-ahab-sdcc-2014",
+        "neca-ahab-ultimate-2017"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-ahab-sdcc-2014",
+          "label": "Ahab · NECA SDCC2014",
+          "sourceClass": "official-photo"
+        },
+        {
+          "id": "neca-ahab-ultimate-2017",
+          "label": "Ahab · NECA Ultimate2017",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Two existing licensed edition studies. Bible mk18 comic geometry is not automatically closed; add only genuinely observed distinct mask state."
+    },
+    {
+      "identity": "Golden Angel / younger Greyback",
+      "existingManifestIds": [
+        "neca-golden-angel-horned-2018",
+        "neca-golden-angel-smooth-2018"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-golden-angel-horned-2018",
+          "label": "Golden Angel · NECA2018 · coque cornue",
+          "sourceClass": "official-photo"
+        },
+        {
+          "id": "neca-golden-angel-smooth-2018",
+          "label": "Golden Angel · NECA2018 · coque lisse",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Two observed separate masks already included; Greyback2022 additional horned edition photo is not a new geometry by itself."
+    },
+    {
+      "identity": "Enforcer",
+      "existingManifestIds": [
+        "mk-14-enforcer"
+      ],
+      "manifestMatches": [
+        {
+          "id": "mk-14-enforcer",
+          "label": "enforcer",
+          "sourceClass": "existing-project-V62-reference-reconstruction"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Existing project V62 reconstruction is covered in69; not human/canon-certified."
+    },
+    {
+      "identity": "Hive Wars",
+      "existingManifestIds": [
+        "neca-hive-wars-series-10"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-hive-wars-series-10",
+          "label": "Hive Wars · NECA Series10",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Licensed NECA edition already included."
+    },
+    {
+      "identity": "Scout Lost Tribe",
+      "existingManifestIds": [
+        "neca-scout-lost-tribe-series-6"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-scout-lost-tribe-series-6",
+          "label": "Scout · NECA Lost Tribe Series6",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Covered NECA edition; do not conflate PHG Scout."
+    }
+  ],
+  "excludedFromNewGeometryCount": [
+    {
+      "name": "Serpent Hunter / Alien Head",
+      "id": "mk-56-alien-head",
+      "status": "out-of-this-comics-prose-lot",
+      "reason": "AvP2010 game identity / licensed NECA Series17, not a proven new comics/novel mask; not Lord mk17."
+    },
+    {
+      "name": "Dachande’s Clan / Top-Knot’s Clan / Killers Clan",
+      "status": "group-not-individual-mask",
+      "reason": "Clan entries do not prove one unique mask per member."
+    },
+    {
+      "name": "Bad Blood (Yautja)",
+      "status": "rank-not-individual-mask",
+      "reason": "Catalogue explicitly classifies it as a rank/category."
+    },
+    {
+      "name": "Prey novel-only named hunters",
+      "examples": [
+        "’Aseigan",
+        "A’ni-de",
+        "Chulonte",
+        "Ci’tde",
+        "Da-ec’te",
+        "Etah’-dte"
+      ],
+      "status": "prose-character-names-no-local-illustration",
+      "reason": "No invented mask is generated solely to fill40."
+    }
+  ],
+  "novelIllustrationBoundary": {
+    "catalogueSheet": "Comics & romans",
+    "embeddedMediaCountFromPriorAudit": 0,
+    "finding": "Workbook is a textual character catalogue with fan-index URLs; entries do not supply native publisher/licensed illustrations. Novels supply no observed shell by mere character name."
+  },
+  "nativeBackgroundReferences": [
+    {
+      "id": "primary-hornhead-photo",
+      "sourcePagePath": "/tmp/primary-masks-20261113/film/hornhead.html",
+      "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F&description=NECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%20with%20an%20entire%20series%20dedicated%20to%20Dark%20Horse%20Comics%20Predators%21%20Series%2018%20features%20three%20action%20figure%20debuts%20that%20are%20some%20of%20the%20most%20requested%20by%20fans%3A%20Hornhead%2C%20Broken%20Tusk%20and%20our%20first%20female%20Predator%2C%20Machiko%21Hornhead%20made%20his%20first%20appearance%20in%20Predator%3A%20Life%20%26%20Death%2C%20and%20is%20a%20great&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2FSeries-18-Group590.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F&#038;description=NECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%20with%20an%20entire%20series%20dedicated%20to%20Dark%20Horse%20Comics%20Predators%21%20Series%2018%20features%20three%20action%20figure%20debuts%20that%20are%20some%20of%20the%20most%20requested%20by%20fans%3A%20Hornhead%2C%20Broken%20Tusk%20and%20our%20first%20female%20Predator%2C%20Machiko%21Hornhead%20made%20his%20first%20appearance%20in%20Predator%3A%20Life%20%26%20Death%2C%20and%20is%20a%20great&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2FSeries-18-Group590.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/background-evidence/primary-hornhead-photo.jpg",
+      "bytes": 119828,
+      "sha256": "2ebca53b05b9cdf5007e01f363d20677d79a1943180000730f6f2dc69713de32",
+      "dimensions": [
+        590,
+        472
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "small-catalog-mask-only",
+      "observation": "NECASeries18 group photo. Hornhead at right wears silver mask; named identity is supported, full-mask pixels too small for reliable high-resolution fidelity. Other two figures are BrokenTusk and Machiko; never substitute them.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "privateAcquisitionPath": "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg",
+      "sourceHTML": {
+        "path": "production/biomasks-lots40-20261113/references/comics-novels/series18-official-product.html",
+        "sha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "bytes": 145003
+      },
+      "sourceViewOnly": true,
+      "exploitableForFineFidelity": false
+    },
+    {
+      "id": "primary-elder-avp-photo",
+      "sourcePagePath": "/tmp/primary-masks-20261113/film/elder-avp.html",
+      "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fpredator-7-scale-action-figures-series-17-assortment%2F&description=%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2ANECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%21%20Series%2017%20features%20even%20more%20action%20figure%20debuts%20from%20the%20Alien%20vs.%20Predator%20movie%20and%20video%20game.%20The%20assortment%20includes%20Youngblood%20and%20Elder%20from%20the%202004%20movie%2C%20and%20Serpent%20Hunter%20from%20the%202010%20video%20game.%20Elder%20Predator%20wears%20a%20regal%20soft%20goods%20cape%20with&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590w-series-17.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fpredator-7-scale-action-figures-series-17-assortment%2F&#038;description=%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2ANECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%21%20Series%2017%20features%20even%20more%20action%20figure%20debuts%20from%20the%20Alien%20vs.%20Predator%20movie%20and%20video%20game.%20The%20assortment%20includes%20Youngblood%20and%20Elder%20from%20the%202004%20movie%2C%20and%20Serpent%20Hunter%20from%20the%202010%20video%20game.%20Elder%20Predator%20wears%20a%20regal%20soft%20goods%20cape%20with&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590w-series-17.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/590w-series-17.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/background-evidence/primary-elder-avp-photo.jpg",
+      "bytes": 131582,
+      "sha256": "341e11d48b97c058a0d2d7d65744f6ff19297a053e68e6e0f79087f06c54a79a",
+      "dimensions": [
+        590,
+        364
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "small-catalog-group-limited",
+      "observation": "NECASeries17 group photo: SerpentHunter at left, AVPElder center unmasked, Youngblood right. Left mask readable only at tiny size; center organic head does not establish AVPElder removable shell. Do not substitute right Youngblood mask for Elder.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "privateAcquisitionPath": "/tmp/mask-neutral-20261113/primary-elder-avp-photo.jpg",
+      "sourceHTML": {
+        "path": "production/biomasks-lots40-20261113/references/comics-novels/series17-official-product.html",
+        "sha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "bytes": 166818
+      },
+      "sourceViewOnly": true,
+      "exploitableForFineFidelity": false
+    }
+  ],
+  "publisherEvidencePages": [
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/article-golden-toyfair2018.html.links.json",
+      "sha256": "0c7a0e2714b8176a08129f1868625c0aeb3e0961ae20e4b52ac5ff1bf9012037",
+      "bytes": 834
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/article-hornhead-series18.html.links.json",
+      "sha256": "6ef669807bfd635eef5a558938b16c70bc49ac75b67309e3e64d97b60303c0a0",
+      "bytes": 1394
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-preorder.headers",
+      "sha256": "95733434beea4f866318ae744e1c1375be884747288bf649ce64e3929704c14d",
+      "bytes": 3006
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-preorder.html",
+      "sha256": "397af52892ff83164b0763edb130416e772b4e055ceeb49444912f25db3f2116",
+      "bytes": 369953
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-preorder.links.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "bytes": 2
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-store.headers",
+      "sha256": "5599b055610aea433f752bdae4d46e37c8990145510017107f2b53b2b4a9b72e",
+      "bytes": 3007
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-store.html",
+      "sha256": "bbfa707f7efd5f38f98960965d257c12977dd403cc5356d1e6419ec33913c6da",
+      "bytes": 374185
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-store.links.json",
+      "sha256": "18ea616d9b6d46ec00feefaeef19f76898973812f9665cf681603e458bfe90f5",
+      "bytes": 2914
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic.headers",
+      "sha256": "90928a669ed56d4049f7fa80dbae8649bae6f7dd867cbda9eea92db5ead1ddb7",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic.html",
+      "sha256": "6b2270628fa9f2e7baf6e3e5fd81e508948aefb82d182402d5c4bab5c56f07b6",
+      "bytes": 137880
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-page1-http.headers",
+      "sha256": "2d5bd96a47b8455c4de514bcc65c481634c7927a66bf392aecfc5d50883fd45b",
+      "bytes": 394
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-page7-http.headers",
+      "sha256": "6d112e9934e40a2ff8e6f65e9be21a92443d3b327cc11f73040d3e45645ab005",
+      "bytes": 394
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-closer-store.headers",
+      "sha256": "9b8c42cb9e0439ce1a72df967293083ccf82f41ff9e592b66463f78ffe5fd7d6",
+      "bytes": 3014
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-closer-store.html",
+      "sha256": "f73ecc1bed0e9ca217779ca6c6b8bef709e180f4de9c644a868652dc6fd8118a",
+      "bytes": 372161
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-closer-store.links.json",
+      "sha256": "ff946ae592f09281f990f2acd65e7b8f8c6539591eb00b316d45099aeaed2bff",
+      "bytes": 9783
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-closer2014.headers",
+      "sha256": "54066f687d24311182ca4287c752b8121b79f6321e87b6f2d0e11a3df1b82a31",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-closer2014.html",
+      "sha256": "a3f660b7a338538f6444f447b94de088572105351f2627c7dc9643e85f26637e",
+      "bytes": 135543
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-closer2014.media.json",
+      "sha256": "0280caa9db0833b666b17b5d8f46d2ea3c0860c2e6c7efc7da3a5bc5b1a3f741",
+      "bytes": 1879
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-product.headers",
+      "sha256": "db2f743b83eab832c5f1a63a4a4b907b4fe8989f3cada9bbfa9a18195a425a85",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-product.html",
+      "sha256": "7813c697cc87909d0488aaef74dbaf4a982aa283b64557f19f74c2268c3b06d9",
+      "bytes": 139767
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-shipping.headers",
+      "sha256": "1f8dd489abc7311629a81c94c7d4dc3a98b70f500861919f74143806abba8fcb",
+      "bytes": 3025
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-shipping.html",
+      "sha256": "2bdd95ce74b80e6a9766b2a10772b71db06c723cbd686e8bec55a1b1df531310",
+      "bytes": 379757
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-shipping.links.json",
+      "sha256": "3c6815abaa3cbaa2cd48401aee1c42a83dca5237674e8547100d730dfb80104e",
+      "bytes": 16553
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-1.headers",
+      "sha256": "9b57a89f61b1d21564985f17f556e21f2bc75ef7ce44cfd892dad12bc7a3a5bc",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-17.headers",
+      "sha256": "0575cc2aeb530e2191e35794cf234fe11b3143eb8edc13f97df3c0cbf4f6e561",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-18.headers",
+      "sha256": "a8f24d5b9752c8627827510d9ba4a1a1fd026a29be558774f3626fa6ba44976a",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-2.headers",
+      "sha256": "a2f4ed4de1d8a95649c6d1ff34a6b09a196f49fdc6962fe3e75e9d3378160582",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-3.headers",
+      "sha256": "8dcb62437e2ee7509a4ed03f85d4845fc9f9585992de789619874c39f425372c",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-4.headers",
+      "sha256": "c8ff88f57b2d808aae100366821eb5b371fbb020a06236fbde73b88129e23fab",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-5.headers",
+      "sha256": "4447dfd2b61dfc7eb8b01e38697821731af978531a1ea7caabc9ce192bb7385f",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/batman-predator-6.headers",
+      "sha256": "66ac4a90a244f0a3fd2608268ed38cfaf7ce1d887f1a85f7828118713c5de352",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg-photo.headers",
+      "sha256": "ab724997bc4982bd4be13898add853e588ddd8f236fd31c70a4cb27e3fa444b7",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg1-http.headers",
+      "sha256": "fcefb9cbec8e5091eaa3ad43a183d4b7b8791e898d4c04276df614facd1eb324",
+      "bytes": 573
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg1-http.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg1.headers",
+      "sha256": "341ba51e0c77cab61dc0dba24caac3357d0c98a912ff9b1d17dc37a17704a945",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg1.html",
+      "sha256": "16b71ddeea0ed4947c062a0bcb88f4053c85a380d7482009bec4e5196345210d",
+      "bytes": 117604
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg1.media.json",
+      "sha256": "5a4b9642d4296cbea7011e4c9b8b6441715df65e2644ee64213c93f0ae950afa",
+      "bytes": 1059
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2-http.headers",
+      "sha256": "aab2a420fcb72182dfcd80474e6832d81c3f73f1501375643fc9b841abbfabbe",
+      "bytes": 573
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2-http.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2-photo.headers",
+      "sha256": "d63d112e7bc44b3e0806200159d162d04230cefa35ca70d990d38089bbb47dea",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2.headers",
+      "sha256": "0a1fc55f95cd00e609e75b8fb37b1c8a2efb31f4024cb30295aa5151d8ac7850",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2.html",
+      "sha256": "58a2ae17ce8491f202831a18e5ced679bf3ad392d10dc6c857a3a7f57bc2672b",
+      "bytes": 117226
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/broken-pkg2.media.json",
+      "sha256": "80908838ed97b4cf45cc7e48b778318917f29b708d0eb10cb34f6f45dd2b51b7",
+      "bytes": 1059
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/catalogue-research-coverage.json",
+      "sha256": "9ac13830a6e2686b82f6f76ff2bcbdab8323c8fa6208595e05e0f892e15041ab",
+      "bytes": 75055
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-book-photo.headers",
+      "sha256": "af7d6dc84cc648eec3e98ade8c9f09d90905541251578d7ec31f4b9b45dbacdb",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-photo.headers",
+      "sha256": "5da13afcf24d985075bac56ce9b530435aff578229c7560ac0fc9d777bcd91af",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-product.headers",
+      "sha256": "8048fb154d89566d38280f5ed6eb57a31242b34b96a8f898af157f1cb59fe745",
+      "bytes": 488
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-product.html",
+      "sha256": "a484b27b3565ec927052a0695da1f4842e7af739503e2f9d0f7070b90fc74169",
+      "bytes": 130770
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-shipping.headers",
+      "sha256": "6223b44c3b8f7496aa9ae96e481118fa9922df191165431df4ccb3a2a9f154bc",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-shipping.html",
+      "sha256": "bbe4cbfec319cd94d273f4a26fd96392c8a0f5ed0a3bb5a73f4ef0d249fbf679",
+      "bytes": 138954
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-store.headers",
+      "sha256": "d16e122d86a2b24c6e5a6d5b5da1c0168af167e787fa3ff91dd402ae014ce8ce",
+      "bytes": 3031
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-store.html",
+      "sha256": "2f380302bfdd4446259790fdc365d0152fe53bac6d52cf1b5baeff5254796ac5",
+      "bytes": 376812
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-toyfair-photo.headers",
+      "sha256": "023a2b90d0eea97c1de884ad01e3214cb8c888841e3e4e0d133f3a6257d31d8f",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/dc-comic-search-results.json",
+      "sha256": "1bde2af81d3c28ae0029f7cc69244e4df28200a55dacfec12aba0fd763bc0511",
+      "bytes": 1835
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/expanded-search-results.json",
+      "sha256": "024fe820e58a0ddffae2383e91dacc27518cb2dc6274a1b041c3847a1cb82cba",
+      "bytes": 9158
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg-photo.headers",
+      "sha256": "713dd9f1094c04f6255586433db161fbcbf66971dbd61543c5ce93c9c1ef3b7b",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg1-http.headers",
+      "sha256": "7744d709f3c1e3fccfa3a2c9b220669a2b447e17f51bd33459fc8dfdfee358b0",
+      "bytes": 569
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg1-http.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg1.headers",
+      "sha256": "9f96c8156a5f3bf2fed29ffe1ccd9acacc7cd694163882036fc2c330f1d8e48f",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg1.html",
+      "sha256": "3aabe8cb0979c936141d3fc2da6ef3f81f382439c686ef28b30d5220250d48ad",
+      "bytes": 117046
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg1.media.json",
+      "sha256": "2ef450f95c758515a33bb8b533b139956f4223a8ae3c403d3d87b54dbefc5198",
+      "bytes": 1027
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2-http.headers",
+      "sha256": "acee152171a26fe8eecb78707ccf54c2f820057955fdd906026b8c70109c4bd6",
+      "bytes": 569
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2-http.html",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2-photo.headers",
+      "sha256": "0b7ce8eb9c89b506c7e525271c965a6051ba1141ca5e671a3d6b2f2fc14d97b9",
+      "bytes": 484
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2.headers",
+      "sha256": "7f29f01acd93c0f692241200e291302fe932b9e18b6e5833c48c9aeeabeb290c",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2.html",
+      "sha256": "472443d628425101bfb34a709ad6dd380341559de17a27e61e4ef3d39e5848f4",
+      "bytes": 117046
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/machiko-pkg2.media.json",
+      "sha256": "8bab9099f0b83d588341bce2c2363f7b15f4c966dc1f690ae668ddcdd60aa30c",
+      "bytes": 1027
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-armored.headers",
+      "sha256": "d67f2ee9b7c85817cd39d4bdd5ab7b96c3b07235deb947a9567c5f3f9cf70fa0",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-armored.html",
+      "sha256": "379db8c550a635fc337a7d1d3ccb1d3338c178dd2098e0af0d29e870b48f1467",
+      "bytes": 124538
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-batman-predator.headers",
+      "sha256": "599f13178326c4d1ab7bd6954b34a71bff46ddf04b889df8f982acae1d0cc586",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-batman-predator.html",
+      "sha256": "67f72c8ca6f57ed86f8fd31595284e3a27e4c2fe86add8f0cfc45bcdbcb1cd96",
+      "bytes": 118954
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-comics.headers",
+      "sha256": "6d64a8781786283e6d22ed3892ac97becc3768bb8ec0e6b9e4fc77e3a2e1359c",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-comics.html",
+      "sha256": "8bd544aa08c0dbb07db164f9a8eda9342b0e1402450fc0a6a484c663437cc88b",
+      "bytes": 126745
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-dark-horse.headers",
+      "sha256": "20aae9306cf88880c2888538ee08a6a2fd2ea20b19fe98c76cb2a23e8d101832",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-dark-horse.html",
+      "sha256": "d8c58739d9e6549e8a0ddd80cf980f383921466670b3492f15a35e5ee870cb43",
+      "bytes": 126958
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-superman-predator.headers",
+      "sha256": "4f478221a0158b657ca0a84603aaf88b0cb7296428636de553aec51f0c1cd0c5",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/neca-search-superman-predator.html",
+      "sha256": "94f26bb7782b2611b4bdd4f1a4104e4d3ed339e4933b933230808a48d05bddbb",
+      "bytes": 96032
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/negative-search-results.json",
+      "sha256": "8a773a26fefeb841abf0dd0ef07e15f95c8b648068b90f9d9c80e43f41c7a52e",
+      "bytes": 1414
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/new-comic-publisher-links.json",
+      "sha256": "feb66c2e21c4c4ba06f08dfc49f2029dccf7aff690548b425d96a3f719268bf1",
+      "bytes": 12763
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/sdcc2019-predator-published-links.json",
+      "sha256": "2854e6aa661f8c69d032cff64f4959efb5a35b3a143f88fd17ced854a617ab52",
+      "bytes": 4916
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/sdcc2019-roundup.headers",
+      "sha256": "11575838af284567fe47198c8d8f01b38b199cb0d65ec89df3772e955887da42",
+      "bytes": 3008
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/sdcc2019-roundup.html",
+      "sha256": "66158609b0df76fd2cd90262c43ea9544dc9f97208035a15427dd2568ff52bc0",
+      "bytes": 409837
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-badblood-masked.headers",
+      "sha256": "9fd1d2ee7d3689b7e8bdf687796dab0fa5313670c889313e840d3f1602ecd464",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-badblood-masked.html",
+      "sha256": "ebc220864361f7de8918869ba81039e48fddb962b759995f77cebac9448b634b",
+      "bytes": 104520
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-badblood.headers",
+      "sha256": "dd60ac70fe843fc6543989c0ce3492769a567a917016699e8f0c6e2857d3c080",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-badblood.html",
+      "sha256": "f79091d46df6bae674a49fb82406ef66969fc662518775db105d703af7aff82b",
+      "bytes": 125357
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-big-mama.headers",
+      "sha256": "2a00c45514e04bb11b5d6293ec20b54a5656f1238e1a8b424792152a05792986",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-big-mama.html",
+      "sha256": "f6c013ef57e4079fdc150231e85c3dd39ee2a9f69928922b34c2346a3174570f",
+      "bytes": 97277
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-broken-tusk.headers",
+      "sha256": "82ffe3dea23fb0543fe9ba4734978052a42d038d066c8f767f1aed2ebf240448",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-broken-tusk.html",
+      "sha256": "402d6a368368f3137188b6a95b698220ea91c163571bde06cbf64e0f9819a5a1",
+      "bytes": 97519
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-cracked-tusk.headers",
+      "sha256": "53f49ccf4ff2eec030292b2313634ad976e240ada642bbcd9ca04ee03cb772ac",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-cracked-tusk.html",
+      "sha256": "365b3a3d942b2306f6a76f90f5e0fc2319bfff93b71b8a9629e30df8e65f89be",
+      "bytes": 100494
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-life-death.headers",
+      "sha256": "f0e2551efbbdcc808935a94317a20eb1f094459c39ff8ade9c66cb96a53a7c49",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-life-death.html",
+      "sha256": "30f2ff65df673c38f926d85611e1df1bc5f9585b01a5ad46c545e2a5e327a7bc",
+      "bytes": 114387
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-machiko.headers",
+      "sha256": "11f2906024aab98508cd5a63f4bc5b664da2ec94f843003312f6180bf4df6c83",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-machiko.html",
+      "sha256": "878e483785f9b1aa92700382a1f4ba8881a225c98c98b070aa08b6c18216bdaa",
+      "bytes": 97495
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-shorty.headers",
+      "sha256": "76d6dea3e9eddb3ee99e9bef0b8056869d0d4ba69109ad41155634972e6ee209",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-shorty.html",
+      "sha256": "803db1448540467dd821d73cb6d34e1946bb6a23d5b084bc5e56c29425242478",
+      "bytes": 98503
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-smiley.headers",
+      "sha256": "1646fb2f5ce21202d707c60fd052df8306e65a6d965259b4357eb70ed9ceb79e",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-smiley.html",
+      "sha256": "2e63d9b4f679720b49db9dbfe52d6b06cd6eb2ed2580897bf3f6ad7974d92baa",
+      "bytes": 95544
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-top-knot.headers",
+      "sha256": "808f0e54d3ba730222406ff189c481692f3aa93dce01ae1f7829d04dff94c7d6",
+      "bytes": 499
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/search-top-knot.html",
+      "sha256": "6518c9984dde52be397ef338f3fba6278e58d11055cc29beb7250f864a4e3530",
+      "bytes": 95937
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-armored-predator.headers",
+      "sha256": "dd3dd254f7369ddc0902873b40004bc16f80329a9390beee8d75435e785033fe",
+      "bytes": 3090
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-armored-predator.html",
+      "sha256": "4238355461283103a475bf5f5164ab49a26390e0819512df5d004ba9603550b5",
+      "bytes": 370321
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-badblood.headers",
+      "sha256": "71d8539defb251dea5b9ba716111da474ac6de96b5b78476bd04b08e2d1467b6",
+      "bytes": 3095
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-badblood.html",
+      "sha256": "b67e365c179c7f8b9900b9789184eba43467929d2490e6ed9949e351f78d1f9b",
+      "bytes": 369741
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-badtwo.headers",
+      "sha256": "55f68d829ecce82746028e9742434ce047b0164c295baf34bf3049d9e9ea1cc3",
+      "bytes": 3070
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-badtwo.html",
+      "sha256": "323c69c75b508a7ca8de1082b3744be1019623e678377e1db2f6b9c417db6016",
+      "bytes": 363132
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-broken.headers",
+      "sha256": "3ae53f9b6c1a3674e9ba8100b0f46eddd98491f123c78b6c23857b4e9ac37aa3",
+      "bytes": 3093
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-broken.html",
+      "sha256": "a1d8aac3909ea34be701e390c2d505dad7880c16b56baf355149fab0a1928223",
+      "bytes": 350363
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-darkhorse.headers",
+      "sha256": "cdd59c5d4ece7f6ffbaae780fbe73dea0a5e33d55e5721732aed8a93a40f2db6",
+      "bytes": 3088
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-darkhorse.html",
+      "sha256": "7e8c37abaf27b828f7b611ed498b64e71436e98fcf3f73e252d757c01f0d74f3",
+      "bytes": 370354
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-hornhead-more.headers",
+      "sha256": "c219f4f5b7afad3799728d071a5c15b4aaed6878753bb0883c1ad88554d3fce5",
+      "bytes": 3090
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-hornhead-more.html",
+      "sha256": "7fc58050bac395a9cff31636ccf4ea95b206a668d4a329a3091e284384264bcd",
+      "bytes": 362085
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-machiko.headers",
+      "sha256": "1de507b0c3b40aefe896807e98ba48153e6156339ac62f50c10bc41d4155c59f",
+      "bytes": 3085
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-machiko.html",
+      "sha256": "56a9cfd1879af92d3deb07efc00400a73dffe15845d04f6e81a4c90a3711d06a",
+      "bytes": 350315
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-minicomic.headers",
+      "sha256": "0c3f20239ad6317305326a23830b2a2f4e2c20aefaa137d2e921dfbe3a33ad32",
+      "bytes": 3092
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-minicomic.html",
+      "sha256": "f044f43ff76d16c0c7d71b6750df09f2d551e26c15c4ccdb158c69aa9b881687",
+      "bytes": 370251
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-predseries17.headers",
+      "sha256": "230f68b291d1d1bdbcdef192beb6a97aa6ab98e8573900388badc8219870837c",
+      "bytes": 3083
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-predseries17.html",
+      "sha256": "db63a4573e01bc86c3bd63b274f08ba60254d674b6f77b59c711e097d6a34dec",
+      "bytes": 360653
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-series18.headers",
+      "sha256": "eaedddb58758a2a910836ff58658ffdb73ffabc1b754850e3c1fe0351398cc1e",
+      "bytes": 3089
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-series18.html",
+      "sha256": "4acf6da611e37ef081019ad8aa27d05a25542219caa8cde2266a4b0a62c146ee",
+      "bytes": 370323
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-serpent-only.headers",
+      "sha256": "b95f13b170ae34b90657923a2a9e8437d2ef3dd67dd652f331d7f1af3a838a62",
+      "bytes": 3075
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-serpent-only.html",
+      "sha256": "8ad47cf23e48273aa9d56568757c892343aa7252b9716e46629fdf1c4d853a14",
+      "bytes": 353452
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-superman-predator.headers",
+      "sha256": "05cd4fdc8d9b13c640160dc464e9ffb0b864bffd67d4ce9547219006528116c1",
+      "bytes": 3084
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-superman-predator.html",
+      "sha256": "76c5c7362c09fb67c708ed21fbbd580e66b65ae3c5f7ae624dc61c4ec62203ca",
+      "bytes": 350396
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/toyfair2015-store.headers",
+      "sha256": "b439210c0e1f5a2a2659d114984886e6662795904fb7d818683cd264324a7440",
+      "bytes": 3013
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/toyfair2015-store.html",
+      "sha256": "aefe02cbc6e5564e9623a454ce775ca675ae2a3a06f805ca5f331e25ec538c96",
+      "bytes": 375890
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/toyfair2020-day1.headers",
+      "sha256": "dd41392571048ec3bf3dedd3fd4289f1056f324a2198b38ff9792780fd6514b5",
+      "bytes": 809
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/toyfair2020-day1.html",
+      "sha256": "0ea54f0961572a0338676ee8d6c0d3a63d263fa36393f379df2f4357074ed3ff",
+      "bytes": 140253
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/toyfair2020-dc-check.json",
+      "sha256": "442d571d07c99743ff5f9cff8d1e44779f701bf51da679db55b5ad239d76c461",
+      "bytes": 2682
+    }
+  ],
+  "catalogueCoverage": {
+    "path": "/tmp/mask-lots40-20261113/comics-novels/catalogue-research-coverage.json",
+    "sha256": "9ac13830a6e2686b82f6f76ff2bcbdab8323c8fa6208595e05e0f892e15041ab",
+    "bytes": 75055
+  },
+  "initialLocalInventory": {
+    "path": "/tmp/mask-lots40-20261113/comics-novels/novel-local-inventory.json",
+    "sha256": "0a68a0394f35e183f82bc1ea7e1116b6d609497172dcde3d5d81f33feff10c66",
+    "bytes": 41582
+  },
+  "networkScope": {
+    "observedSpecRevision": "5",
+    "relevantAllowedHosts": [
+      "necaonline.com",
+      "store.necaonline.com"
+    ],
+    "originalComicPublisherHostsNotInDeclaredPolicy": [
+      "darkhorse.com",
+      "marvel.com"
+    ],
+    "refusedCDNNotRetried": "eadn-wc04-13179453.nxedge.io",
+    "CDNHostRewritePerformed": false,
+    "proxyOrRelayUsedToBypassPolicy": false,
+    "limits": "No claim that inaccessible publishers lack drawings. Findings mean no suitable primary drawing was acquired in this accessible-source pass."
+  },
+  "newLeadsBoundaries": [
+    "Official2015 AVP mini-comic gallery files AVP_Page*.jpg are PHOTOGRAPHIC re-enactments with NECA toys, not original drawn panels. Page7 explicitly names Renegade; passed to gen4/root, no duplicate generated here.",
+    "Official2019 SDCC Batman/Predator images belong to pre-sale publisher preview. No final retail/canon approval inferred; inspected photos/text showed no visible NotFinal/PendingApproval mark, which is not approval.",
+    "Superman/ArmoredPredator was not established by2019roundup: that set was Superman vs Aliens; ToyFair2020Day1 did not provide the hoped-for DC source. No edition/date substitution.",
+    "CrackedTusk,Scavage,Renegade Series13 sources assigned to gen4/root; no duplicate production here.",
+    "Source-view/profile BadBlood allowed only after complete rigid visible profile established; small rear-cheek opening restored via ImageGen, no hidden opposite side invented."
+  ],
+  "verification": {
+    "selectedPNGBytesIdenticalToNativeImageGenTransport": true,
+    "imageProcessing": "Pillow read-only analysis and byte-identical copies; no generated PNG raster editing/re-encoding",
+    "browserDisplay": "Chromium CSS-only source windows,360/96px on white/black/checker; no source-image pixel edits",
+    "independentPreflights": "Gen4/Gen5 reviewed selected source boundaries and macros; human/canon signoff remain false",
+    "oldPacksMutated": false
+  },
+  "crossAgentIndependentReviews": [
+    {
+      "id": "neca-chopper-series-14-2015",
+      "path": "/tmp/mask-lots40-20261113/reviews/chopper-neca-independent-gen3.json",
+      "status": "no major macro observed, source-limited"
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "path": "/tmp/mask-lots40-20261113/reviews/snake-independent-gen3.json",
+      "status": "pending width review by gen1/root"
+    }
+  ],
+  "allMasksGenerated": false,
+  "allP0Closed": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "pixelEditingPerformed": false
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/dual_generate_5",
+  "passed": true,
+  "scope": "Independent metadata-only semantic review of the post-pixel selector amendment. No images or image pixels reread, no exhaustive scan repeated, no repository/QA index edited.",
+  "binding": {
+    "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/qa/selector-empty-documents-binding.json",
+    "sha256": "82b8e6ec04b4dcb0ed90e18f187afff4274fbe729ab7c7330eca0aaa05a1debc",
+    "bytes": 2673
+  },
+  "oldManifest": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/manifest-before-selector-empty-document-amendment.json",
+    "sha256": "b77096e449b1224783b5cc826baad5432be4a72429899f5afb913f2521b093e7",
+    "bytes": 1689117
+  },
+  "newManifest": {
+    "path": "public/game/biomasks-lots40-20261113/manifest.json",
+    "sha256": "91d3fc7238d76bb3060619a28778cc7af21dd5a93edd59a9eb576c72d63ab399",
+    "bytes": 1689117
+  },
+  "originalIndependentPixelReport": {
+    "path": "production/biomasks-lots40-20261113/qa/independent-pixels.json",
+    "sha256": "3b6ea0cb42325411e978ddcfff4ddd5c79a91d65c0a5cd6b54d830e3a53ccbb5",
+    "bytes": 93675
+  },
+  "originalPixelReportPreservedByteIdentical": true,
+  "originalPixelReportPass": true,
+  "originalPixelReportCounts": {
+    "expectedRepresentations": 46,
+    "verifiedRepresentations": 46,
+    "failedRepresentations": 0,
+    "pixelsCompared": 72346794
+  },
+  "originalReportBindsToOldManifest": true,
+  "newManifestBindsThroughOnlySelectorDelta": true,
+  "changedInputPinRecordCount": 1,
+  "changedLeafPaths": [
+    "/inputPins/318/bytes",
+    "/inputPins/318/sha256"
+  ],
+  "selectorChange": {
+    "before": {
+      "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+      "bytes": 11110,
+      "sha256": "6dbd8b3f02312630f28a09ebf2d1bad7edf6b8d0f6bee61b255cb6470b1ac67a"
+    },
+    "after": {
+      "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+      "bytes": 11319,
+      "sha256": "eadcd16a221529f18d53c2ab9b24a2e4ca9e5f3ec63041ed9432226a15cb7728"
+    },
+    "exactInverseReconstructsPinnedOriginalCode": true,
+    "onlySourceCodeChangeIsSuppliedDocumentaryException": true,
+    "zeroByteAllowedOnlyUnder": "production/biomasks-lots40-20261113/references/",
+    "zeroByteAllowedSuffixes": [
+      ".html",
+      ".headers",
+      ".txt"
+    ],
+    "negativeAndNonIntegerSizesStillRejected": true,
+    "emptyImagesAndOtherAssetsStillRejected": true
+  },
+  "allOtherManifestContentIdentical": true,
+  "all46PairsAssetReferenceLineageAndQualificationMetadataIdentical": true,
+  "nativeDerivedSourceCopyAndWorkbookPinsIdentical": true,
+  "imageFileBytesReread": false,
+  "pixelScansRepeated": 0,
+  "pixelAssetsModified": false,
+  "repositoryFilesModified": false,
+  "qaIndexModified": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "productionReady": false,
+  "limitations": [
+    "This follow-up establishes exact code/manifest/provenance metadata equivalence. Pixel authority remains the one immutable 46-C exhaustive report, rather than a repeated image read."
+  ]
+}

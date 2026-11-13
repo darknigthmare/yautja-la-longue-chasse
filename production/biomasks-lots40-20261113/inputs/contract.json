@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "domains": [
+    {
+      "id": "films",
+      "capacity": 40
+    },
+    {
+      "id": "games",
+      "capacity": 40
+    },
+    {
+      "id": "comics-novels",
+      "capacity": 40
+    },
+    {
+      "id": "licensed",
+      "capacity": 40
+    }
+  ],
+  "capacityIsNotProduction": true,
+  "inventoryFile": "inputs/candidate-inventory.json",
+  "inventoryRootOwned": true,
+  "candidateRequiredFields": [
+    "id",
+    "domain",
+    "label",
+    "status",
+    "sourceClass",
+    "sourceScope",
+    "referenceSources",
+    "sourceStatus",
+    "limitations"
+  ],
+  "eligibleAcceptedStatuses": [
+    "qualified",
+    "produced",
+    "provisional"
+  ],
+  "nonProducingStatuses": [
+    "blocked",
+    "duplicate",
+    "alias",
+    "pending-reference",
+    "pending-production"
+  ],
+  "candidateOptionalFields": [
+    "sourcePath",
+    "sourceSha256",
+    "camera",
+    "relatedCanonicalTargetId",
+    "duplicateOf",
+    "aliasOf",
+    "blocker",
+    "identityAnchors",
+    "relationToBaseline",
+    "maskFamily",
+    "representationOf",
+    "revisesPair",
+    "newCanonicalGeometry",
+    "sourceLimited",
+    "editionStudy",
+    "sharedGeometryStudy",
+    "representationKind"
+  ],
+  "acceptanceFile": "inputs/accepted-new-masks.json",
+  "acceptanceRootOwned": true,
+  "acceptedSchema": {
+    "entries": "Version B rows with explicit version B and A lineage",
+    "originalGenerations": "Version A rows with explicit version A and primary R lineage"
+  },
+  "generationReceipt": "generation/{id}.json; entries with explicit A/B versions,renderMode imagegen,generatedNew true,prompt,nativeSourcePath,assetPath,sha256,bytes,nativeDimensions,referenceSources",
+  "outputs": {
+    "A": "public/game/biomasks-lots40-20261113/originals/{id}.png",
+    "B": "public/game/biomasks-lots40-20261113/phg/{id}.png",
+    "C": "public/game/biomasks-lots40-20261113/neutral/{id}.png"
+  },
+  "neutralInventory": "inputs/production-inventory.json built only from explicitly accepted A/B",
+  "Cmethod": "srgb8-rec709-luma-v1",
+  "Cformula": "Y=floor((2126R+7152G+722B+5000)/10000); RGBA=(Y,Y,Y,B.alpha)",
+  "CderivedNotImageGen": true,
+  "noOverwrites": true,
+  "noCanonHumanRuntimeApproval": true,
+  "oldCanonicalRequirementsStayOpen": 46,
+  "batchesCanRemainBelow40": true,
+  "sharedFamilyDoesNotMakeDuplicate": true,
+  "strictAliasesDoNotProduceNewTriplets": true,
+  "nativeMaskMaxPixels": 16777216,
+  "referencePhotoMaxPixels": 67108864,
+  "checkDimensionsBeforeRasterDecode": true,
+  "referencePhotosDecodedSequentially": true,
+  "referencePhotoResampling": false
+}

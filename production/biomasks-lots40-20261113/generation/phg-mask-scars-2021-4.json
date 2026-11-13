@@ -1,0 +1,297 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG source-view edition studies; each entry retains its exact identity qualification. Native ImageGen A/B, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-mask-scars-2021-4",
+      "name": "PHG Mask Scars2021 — row1,column4 (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mask-scars-2021-4-A-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-4.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-4.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg"
+      ],
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column4",
+      "canonicalInventoryId": "phg-mask-scars-publisher-2021",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 4,
+        "counting": "left-to-right"
+      },
+      "identityQualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column4,no catalogue name claimed.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column4,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 4,
+          "counting": "left-to-right"
+        }
+      },
+      "prompt": "The attached official PHG 2021 screenshot shows SIX detached masks in one horizontal row. Isolate ONLY mask number 4 counting from image-LEFT to image-RIGHT (row1,column4). Ignore all five other masks. This exact positional screenshot edition is the identity: do not assign an invented catalogue cosmetic name. Preserve its actual near-frontal source camera, slight asymmetry, projected proportions and contour. Keep the broad smooth dark metallic rounded crown, curved panel boundaries, existing side module and tiny physical red lenses, existing patterned pale/silver eye inserts, and tapered long central lower plate with its two narrow vertical lower edge details. Most importantly preserve the precise source-visible damage pattern of THIS column: The large shattered/rough abrasion field covers the image-left forehead/brow/cheek down toward lower face; preserve which regions remain intact versus damaged. Do not average the six masks, combine their injuries, beautify away damage or create new scars, runes, glyphs, vents, horns or hardware. Keep actual source bluish dark gunmetal/silver palette and local game lighting; scratches are physical surface wear, not new colored paint. Do not recover hidden side/back or imaginary intact shapes behind damage. Exactly one complete isolated rigid mask on genuine transparent RGBA, 10 percent clear transparent margin on all sides, crown and chin entirely visible, longest axis at78-80percent canvas. No other masks, background, purple scene glow, floor, shadow plane, text, logo, UI, wearer tissue, hair/dreadlocks, neck or body. A is a new source-view isolation faithful to this screenshot, not a new mesh or certified exact game file; fine damage relief remains limited by roughly200x280source pixels.",
+      "promptSha256": "87cad5bbc8f34da9eb4bf8315357028028205a8b394c6ddd8508ae4abfe8e0c9",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "The large shattered/rough abrasion field covers the image-left forehead/brow/cheek down toward lower face; preserve which regions remain intact versus damaged.",
+        "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            17,
+            1034,
+            1470
+          ],
+          "8": [
+            136,
+            207,
+            928,
+            1304
+          ],
+          "16": [
+            136,
+            207,
+            928,
+            1304
+          ],
+          "128": [
+            137,
+            208,
+            927,
+            1303
+          ],
+          "240": [
+            138,
+            209,
+            926,
+            1302
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          136,
+          207,
+          142,
+          166
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.7219690063810392
+      },
+      "limitations": [
+        "Official publisher screenshot edition identified only by exact source position; no individual cosmetic name invented.",
+        "Mask family already exists; this is a documented damage-state representation,not new canonical geometry.",
+        "One small near-front screenshot region limits fine relief,exact UV,intrinsic albedo and hidden views.",
+        "A is ImageGen source-view isolation,not source-pixel cutout; B only standardizes material/light.",
+        "No automatic canon,human art or runtime validation.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mask-scars-2021-4-A-native.png",
+          "sha256": "9f71ac0f86375eeede1a8c8480c22527b0a9d64ad0118a2edf9e3efdf73b12f9",
+          "prompt": "The attached official PHG 2021 screenshot shows SIX detached masks in one horizontal row. Isolate ONLY mask number 4 counting from image-LEFT to image-RIGHT (row1,column4). Ignore all five other masks. This exact positional screenshot edition is the identity: do not assign an invented catalogue cosmetic name. Preserve its actual near-frontal source camera, slight asymmetry, projected proportions and contour. Keep the broad smooth dark metallic rounded crown, curved panel boundaries, existing side module and tiny physical red lenses, existing patterned pale/silver eye inserts, and tapered long central lower plate with its two narrow vertical lower edge details. Most importantly preserve the precise source-visible damage pattern of THIS column: The large shattered/rough abrasion field covers the image-left forehead/brow/cheek down toward lower face; preserve which regions remain intact versus damaged. Do not average the six masks, combine their injuries, beautify away damage or create new scars, runes, glyphs, vents, horns or hardware. Keep actual source bluish dark gunmetal/silver palette and local game lighting; scratches are physical surface wear, not new colored paint. Do not recover hidden side/back or imaginary intact shapes behind damage. Exactly one complete isolated rigid mask on genuine transparent RGBA, 10 percent clear transparent margin on all sides, crown and chin entirely visible, longest axis at78-80percent canvas. No other masks, background, purple scene glow, floor, shadow plane, text, logo, UI, wearer tissue, hair/dreadlocks, neck or body. A is a new source-view isolation faithful to this screenshot, not a new mesh or certified exact game file; fine damage relief remains limited by roughly200x280source pixels.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "9f71ac0f86375eeede1a8c8480c22527b0a9d64ad0118a2edf9e3efdf73b12f9",
+      "bytes": 1610570,
+      "nativeDimensions": [
+        1070,
+        1470
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        136,
+        207,
+        928,
+        1304
+      ],
+      "transparentPixels": 874880,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+      "referenceSourceSha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112"
+    },
+    {
+      "id": "phg-mask-scars-2021-4",
+      "name": "PHG Mask Scars2021 — row1,column4 (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mask-scars-2021-4-B-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-4.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-4.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg"
+      ],
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column4",
+      "canonicalInventoryId": "phg-mask-scars-publisher-2021",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 4,
+        "counting": "left-to-right"
+      },
+      "identityQualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column4,no catalogue name claimed.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column4,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 4,
+          "counting": "left-to-right"
+        }
+      },
+      "prompt": "Make version B of the FIRST isolated PHG MaskScars2021 mask. SECOND official screenshot has SIX masks; the FIRST corresponds ONLY to source row1,column4 counting image-left to image-right. Lock the FIRST image visible geometry,near-front camera,tilt,projected proportions,outer contour,forehead/eye/cheek/muzzle panel boundaries,opaque patterned silver eye inserts,small existing side lens module,and EACH source-visible damage/scar/impact route and its physical position. Cross-check that same column only; never mix scars from other columns. Change ONLY rendering to consistent clean PHG PBR: preserve actual bluish dark gunmetal/silver and physical wear,controlled metal roughness,readable relief,restrained fine grain,neutral soft image-upper-left/front key and gentle fill. Do not smooth away or redesign the damage,move its edges,add cracks,vents,runes,symbols,horns,holes,hardware or a new paint scheme. Small red physical lens dots remain without emitted glow. No hidden back/side reconstruction. Exactly one complete detached mask on genuine transparent RGBA,all crown/chin/damaged edges visible,10percent clear transparent margins around entire mask,longest complete axis78-80percent canvas. No other masks,body,skin,hair,dreads,scene,background,floor,shadow plane,text or UI. This is a source-position damage-state edition study,not a named cosmetic or new canonical geometry. Preserve geometry/camera/colors/damage; only material/light standardization.",
+      "promptSha256": "bcedcb59d08adf555c062a480797827ec868463e8ef5e55c16b1fa91ba250de3",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-4.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "The large shattered/rough abrasion field covers the image-left forehead/brow/cheek down toward lower face; preserve which regions remain intact versus damaged.",
+        "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            64,
+            23,
+            1034,
+            1470
+          ],
+          "8": [
+            109,
+            149,
+            958,
+            1304
+          ],
+          "16": [
+            109,
+            151,
+            958,
+            1304
+          ],
+          "128": [
+            110,
+            152,
+            958,
+            1303
+          ],
+          "240": [
+            111,
+            153,
+            957,
+            1302
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          109,
+          151,
+          112,
+          166
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.7363399826539462
+      },
+      "limitations": [
+        "Official publisher screenshot edition identified only by exact source position; no individual cosmetic name invented.",
+        "Mask family already exists; this is a documented damage-state representation,not new canonical geometry.",
+        "One small near-front screenshot region limits fine relief,exact UV,intrinsic albedo and hidden views.",
+        "A is ImageGen source-view isolation,not source-pixel cutout; B only standardizes material/light.",
+        "No automatic canon,human art or runtime validation.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mask-scars-2021-4-B-native.png",
+          "sha256": "a86b93d7a22ebc6f2fabac7352b10d55f4e8cb5da56fc0826782fe201888f911",
+          "prompt": "Make version B of the FIRST isolated PHG MaskScars2021 mask. SECOND official screenshot has SIX masks; the FIRST corresponds ONLY to source row1,column4 counting image-left to image-right. Lock the FIRST image visible geometry,near-front camera,tilt,projected proportions,outer contour,forehead/eye/cheek/muzzle panel boundaries,opaque patterned silver eye inserts,small existing side lens module,and EACH source-visible damage/scar/impact route and its physical position. Cross-check that same column only; never mix scars from other columns. Change ONLY rendering to consistent clean PHG PBR: preserve actual bluish dark gunmetal/silver and physical wear,controlled metal roughness,readable relief,restrained fine grain,neutral soft image-upper-left/front key and gentle fill. Do not smooth away or redesign the damage,move its edges,add cracks,vents,runes,symbols,horns,holes,hardware or a new paint scheme. Small red physical lens dots remain without emitted glow. No hidden back/side reconstruction. Exactly one complete detached mask on genuine transparent RGBA,all crown/chin/damaged edges visible,10percent clear transparent margins around entire mask,longest complete axis78-80percent canvas. No other masks,body,skin,hair,dreads,scene,background,floor,shadow plane,text or UI. This is a source-position damage-state edition study,not a named cosmetic or new canonical geometry. Preserve geometry/camera/colors/damage; only material/light standardization.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-4.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-4.png",
+      "sourceASha256": "9f71ac0f86375eeede1a8c8480c22527b0a9d64ad0118a2edf9e3efdf73b12f9",
+      "sha256": "a86b93d7a22ebc6f2fabac7352b10d55f4e8cb5da56fc0826782fe201888f911",
+      "bytes": 1790381,
+      "nativeDimensions": [
+        1070,
+        1470
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        109,
+        151,
+        958,
+        1304
+      ],
+      "transparentPixels": 800057,
+      "nativeCopyIdentical": true
+    }
+  ],
+  "rejectedAttempts": []
+}

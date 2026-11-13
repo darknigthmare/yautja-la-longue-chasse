@@ -1,0 +1,3772 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13T16:22:22.987726+00:00",
+  "scope": "Documentary audit of40 real cited rows: all18Kenner rows and22targeted NECA rows. This is not40 newly generated masks. No names or images fabricated to reach a quota.",
+  "catalogueAuthority": {
+    "path": "/tmp/mask-lots40-20261113/inventory/catalogues-cited.json",
+    "sha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+    "bytes": 454604,
+    "xlsxSource": {
+      "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+      "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+      "bytes": 62111
+    },
+    "totalKennerRows": 18,
+    "totalNECARows": 93
+  },
+  "previous69Manifest": {
+    "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/manifest.json",
+    "sha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+    "bytes": 1127260
+  },
+  "selection": {
+    "KennerRows": "all2–19",
+    "NECARows": [
+      2,
+      5,
+      6,
+      7,
+      29,
+      30,
+      31,
+      32,
+      33,
+      35,
+      37,
+      38,
+      39,
+      40,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      71,
+      82
+    ],
+    "reason": "Prioritize Kenner-original versus modern tribute edition fidelity, removable-mask boundaries, missing named shells and relevant alias/head/reissue guardrails."
+  },
+  "rows": [
+    {
+      "auditIndex": 1,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 2,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Cracked Tusk Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Cracked Tusk Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Cracked_Tusk_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-cracked-tusk-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-cracked-tusk-series-13-2015.json",
+            "sha256": "cf36369e9fe5bc3bd66514eaa6da7f2f1fe63f3dd62e6bfab3a88a9e1a1808c9",
+            "bytes": 19904
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-cracked-tusk-series-13-2015.png",
+            "sha256": "94665f775797333a1ac64fd068b371971e42f271b3834b475f3863d486955aeb",
+            "nativeDimensions": [
+              1426,
+              1103
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-cracked-tusk-series-13-2015.png",
+            "sha256": "0919387e4060ac10deac80042669094c331840093dd519207a5c1fdd9138b59f",
+            "nativeDimensions": [
+              1426,
+              1103
+            ]
+          },
+          "sourceEdition": "NECA Predator Series13 Cracked Tusk,2015,7-inch-scale",
+          "limitations": [
+            "Native visible helmet is about210x240px; fine sculpt/paint remains limited by product photo resolution.",
+            "Same sculpt family as already delivered Lava Planet Series10, with a real different paint/edition. It is not a new geometry.",
+            "Only the visible frontal shell is supported; no profile/back/UV/complete3D fit is certified."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Cracked_Tusk_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 2,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 3,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Lava Planet Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Lava Planet Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Lava_Planet_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-lava-planet-series-10",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+            "bytes": 1405747,
+            "sha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1266,
+            "height": 1243,
+            "nativeDimensions": [
+              1266,
+              1243
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "2b56655f32b1a6748c72133de05a32ffb477ee8a7bdddf63397a090f70bf6348",
+              "bounds16": [
+                244,
+                143,
+                1021,
+                1063
+              ],
+              "threshold": 16,
+              "transparentPixels": 985734,
+              "solidPixels240": 574765,
+              "marginsPixels": [
+                244,
+                143,
+                245,
+                180
+              ]
+            },
+            "displayBounds": [
+              244,
+              143,
+              1021,
+              1063
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+            "bytes": 1489390,
+            "sha256": "6b9669d9c04961cb70607957e31668872b2b0ef3084e5305a8e2c91626678f47",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1266,
+            "height": 1243,
+            "nativeDimensions": [
+              1266,
+              1243
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "b7b272677c04eb152482d5570eade947979a9bd89627e170d062aa7add5f0b20",
+              "bounds16": [
+                241,
+                143,
+                1022,
+                1065
+              ],
+              "threshold": 16,
+              "transparentPixels": 985134,
+              "solidPixels240": 577425,
+              "marginsPixels": [
+                241,
+                143,
+                244,
+                178
+              ]
+            },
+            "displayBounds": [
+              241,
+              143,
+              1022,
+              1065
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA Predators Series10, 7-inch,2013, modern sculpt adaptation of Kenner Expanded Universe design.",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "Orange/red setting casts strong colored light; retain restrained uncertainty in surface albedo.",
+            "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+            "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+            "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+            "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+            "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Lava_Planet_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 3,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 4,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Nightstorm Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Nightstorm Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Nightstorm_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-nightstorm-series-10",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+            "bytes": 1228291,
+            "sha256": "1d9016e4e45c733cd9379212f052392c1b0e838cb39b65286044d24c54cc1773",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "b0fa576591589f63aff008394cd76a40424145aa737ba2deb4904d728f01be29",
+              "bounds16": [
+                235,
+                55,
+                1011,
+                1018
+              ],
+              "threshold": 16,
+              "transparentPixels": 1112571,
+              "solidPixels240": 443283,
+              "marginsPixels": [
+                235,
+                55,
+                243,
+                236
+              ]
+            },
+            "displayBounds": [
+              235,
+              55,
+              1011,
+              1018
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+            "bytes": 1223247,
+            "sha256": "7ed4e12aa44e96421b7867ac14fe43b2c8ca9460b3b966402943c1b064593bf3",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "06ea5b361334c8e9d3f7e16e93fb370becc5bfae0c0ad1e9c29eb2b9679c8880",
+              "bounds16": [
+                229,
+                60,
+                1011,
+                1028
+              ],
+              "threshold": 16,
+              "transparentPixels": 1106591,
+              "solidPixels240": 451576,
+              "marginsPixels": [
+                229,
+                60,
+                243,
+                226
+              ]
+            },
+            "displayBounds": [
+              229,
+              60,
+              1011,
+              1028
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA Predators Series10,7-inch,2013, Kenner tribute. ; masque rigide visible partiel seulement.",
+          "sourceStatus": {
+            "reviewStatus": "partial-visible-rigid-mask",
+            "portableMaskUse": "partial-study-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": true,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": [
+              "Only visible rigid shell is represented; hidden lower-side shell/rear/interior are unestablished. Neutral C must not complete missing geometry."
+            ]
+          },
+          "limitations": [
+            "NS2–4 are unmasked biological head; do not label their cranial texture as a mask.",
+            "Only one substantial mask view, plus tiny catalog inset; fine relief remains interpretive.",
+            "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+            "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+            "Partie basse occluse : étude de masque rigide partiel,aucune forme cachée ou menton fermé reconstitué.",
+            "Les membranes violettes et grandes défenses ivoire appartiennent au visage biologique,pas au masque.",
+            "Le minuscule accessoire ToyFair ne qualifie pas la bordure basse,son attribution et sa forme restent incertaines.",
+            "L’état canonique/humain/runtime et la tâche mk-59-nightstorm restent ouverts.",
+            "La caméra A/B a été redressée d’environ4–5° par rapport à NS1 ; acceptable comme candidate partielle, pas comme correspondance1:1 certifiée."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Nightstorm_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 4,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 5,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Scavage Predator – vert clair",
+        "Nature": "Variante couleur",
+        "Nouvelle identité ?": "Non",
+        "Identité canonique / remarque": "Scavage Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Scavage_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-scavage-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-scavage-series-13-2015.json",
+            "sha256": "a2e167fa190a9d487571be084dad7e33b1cccea56d38533e20917f9e7ec3e24a",
+            "bytes": 24207
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-scavage-series-13-2015.png",
+            "sha256": "d4a4615e95a0ce47f9cc04ed77ac14c3a96be1cb8665abaa3f833372770df7f5",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-scavage-series-13-2015.png",
+            "sha256": "36cf2b787a923dd5d2642a3c4e85a45098efd9bceaf19f8f10ac72ebb68218e4",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Predator Series13,2015,7-inch-scale Scavage",
+          "limitations": [
+            "Primary masked inset is approximately190x240px; fine sculpt and hand-painted texture cannot be recovered exactly.",
+            "Visible-front sculpture/paint study only. Hidden rear/interior and 3D fit are not established.",
+            "Organic mouth/tusks are proven on the unmasked main figure and must remain excluded from the isolated metal mask.",
+            "No automatic canon, human-art validation or runtime integration; this is an identified edition candidate.",
+            "Native PNGs remain untouched after generation; faint low-alpha fringe is measured, not scrubbed."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint. The two green Scavage colourways are two real catalogue colour records of one identity; neither is a new geometry by its name.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Scavage_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 5,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 6,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Scavage Predator – vert foncé",
+        "Nature": "Variante couleur",
+        "Nouvelle identité ?": "Non",
+        "Identité canonique / remarque": "Scavage Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Scavage_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-scavage-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-scavage-series-13-2015.json",
+            "sha256": "a2e167fa190a9d487571be084dad7e33b1cccea56d38533e20917f9e7ec3e24a",
+            "bytes": 24207
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-scavage-series-13-2015.png",
+            "sha256": "d4a4615e95a0ce47f9cc04ed77ac14c3a96be1cb8665abaa3f833372770df7f5",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-scavage-series-13-2015.png",
+            "sha256": "36cf2b787a923dd5d2642a3c4e85a45098efd9bceaf19f8f10ac72ebb68218e4",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Predator Series13,2015,7-inch-scale Scavage",
+          "limitations": [
+            "Primary masked inset is approximately190x240px; fine sculpt and hand-painted texture cannot be recovered exactly.",
+            "Visible-front sculpture/paint study only. Hidden rear/interior and 3D fit are not established.",
+            "Organic mouth/tusks are proven on the unmasked main figure and must remain excluded from the isolated metal mask.",
+            "No automatic canon, human-art validation or runtime integration; this is an identified edition candidate.",
+            "Native PNGs remain untouched after generation; faint low-alpha fringe is measured, not scrubbed."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint. The two green Scavage colourways are two real catalogue colour records of one identity; neither is a new geometry by its name.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Scavage_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 6,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 7,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Clan Leader Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Clan Leader (Predator)",
+        "Source URL": "https://avp.fandom.com/wiki/Clan_Leader_%28Predator%29"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-clan-leader-toyfair-2016",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-clan-leader-toyfair-2016.png",
+            "bytes": 643382,
+            "sha256": "0bf93e65512fcbe4b299496a154b7a8d17b8ea959f73070a9cbebeb407d6d8de",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1448,
+            "height": 1086,
+            "nativeDimensions": [
+              1448,
+              1086
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "c7fd08d73ea73258e336cea54e8c9ad666f869cf8a5b6763012e52cda360341d",
+              "bounds16": [
+                486,
+                101,
+                955,
+                972
+              ],
+              "threshold": 16,
+              "transparentPixels": 1343513,
+              "solidPixels240": 217410,
+              "marginsPixels": [
+                486,
+                101,
+                493,
+                114
+              ]
+            },
+            "displayBounds": [
+              486,
+              101,
+              955,
+              972
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-clan-leader-toyfair-2016.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-clan-leader-toyfair-2016.png",
+            "bytes": 612812,
+            "sha256": "fa2f508a297dd72d62e7905e069777b71ac892b95e1b6b4b3e9b6bf0451c5c4d",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1448,
+            "height": 1086,
+            "nativeDimensions": [
+              1448,
+              1086
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "4885f81256e73fe1735b69823c1b83ab62ef8de1802ace4cd459367fbe94a465",
+              "bounds16": [
+                478,
+                105,
+                965,
+                981
+              ],
+              "threshold": 16,
+              "transparentPixels": 1328027,
+              "solidPixels240": 230250,
+              "marginsPixels": [
+                478,
+                105,
+                483,
+                105
+              ]
+            },
+            "displayBounds": [
+              478,
+              105,
+              965,
+              981
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-clan-leader-toyfair-2016.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA ToyFair2016 ClanLeader,photographie de cette édition.",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "A/B sont deux nouvelles études ImageGen liées aux seules formes et couleurs visibles de la source R.",
+            "Aucune reconstitution du dos,de l’intérieur ni des formes cachées.",
+            "Édition photographiée précise ; aucune fidélité film/comics générale ou validation canon/humaine/runtime certifiée.",
+            "Conserver les deux immenses cornes et la coque rigide visibles dans la photo principale.",
+            "La peau,les dreads et les mandibules du porteur restent exclus.",
+            "La petite crête rouge visible entre les cornes dans la source est probablement organique et a été exclue ; sa propriété locale demeure INCERTAINE dans cette photographie.",
+            "Le rapport largeur/hauteur visible de B diffère d’environ+3,245% par rapport à A ; limite mineure de présentation,aucune équivalence géométrique1:1 certifiée."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Clan_Leader_%28Predator%29",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 7,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 8,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Spiked Tail Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Spiked Tail Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Spiked_Tail_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-spiked-tail-series-16-2016",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-spiked-tail-series-16-2016.json",
+            "sha256": "8e383a15011b1d22cf078f282909e795c126cafb8dd63ae452cbc5bc9979a963",
+            "bytes": 42617
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-spiked-tail-series-16-2016.png",
+            "sha256": "3598223380946711a19f352577a953c6365c9638b21cff1953d6beb5012aeeb1",
+            "nativeDimensions": [
+              1129,
+              1393
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-spiked-tail-series-16-2016.png",
+            "sha256": "de2f75ff8456aada53a0f7cd0af67ffb5ff0e59dccb97b2f81968b43a1264625",
+            "nativeDimensions": [
+              1129,
+              1393
+            ]
+          },
+          "sourceEdition": "NECA Predator Series16,2016,7-inch-scale Spiked Tail",
+          "limitations": [
+            "The catalog inset is approximately240x330px. Small engraved details and the hidden rear/interior cannot be recovered exactly.",
+            "Only the bronze removable shell is isolated. The unmasked photos prove the large ivory horned frill and silver respirator belong to the wearer and remain excluded.",
+            "The exact tiny gold eye/brow strip is constrained by source resolution and may include reflected light; no invented emissive light or new pigment is claimed.",
+            "Visible-source sculpt/paint study of the named licensed edition only; neither film canon certification nor a new canonical geometry.",
+            "A retains generous native transparent framing (substantive alpha bounds about72% of canvas height,12% top/16% bottom). No CPU resizing/cropping; tighter framing attempts were rejected for surface drift.",
+            "Surface microtexture is generative and is not a recovered scan of the small photographed toy paint."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Spiked_Tail_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 8,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 9,
+      "catalogueValues": {
+        "Période": "1993",
+        "Gamme": "Series 1",
+        "Nom sur emballage / sortie": "Stalker Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Stalker (Night Hunter Clan)",
+        "Source URL": "https://avp.fandom.com/wiki/Stalker_%28Night_Hunter_Clan%29"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-stalker-kenner-series-16",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+            "bytes": 1157725,
+            "sha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1275,
+            "height": 1234,
+            "nativeDimensions": [
+              1275,
+              1234
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "0acc77714881e820b37f244833d52c6967a0b871ce09d5106498715a81769901",
+              "bounds16": [
+                312,
+                73,
+                954,
+                1105
+              ],
+              "threshold": 16,
+              "transparentPixels": 1060518,
+              "solidPixels240": 498300,
+              "marginsPixels": [
+                312,
+                73,
+                321,
+                129
+              ]
+            },
+            "displayBounds": [
+              312,
+              73,
+              954,
+              1105
+            ],
+            "url": "/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+            "label": "A · Étude de l’édition photographiée — ImageGen",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+            "bytes": 1232876,
+            "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1275,
+            "height": 1233,
+            "nativeDimensions": [
+              1275,
+              1233
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "3fa6ef4c16b58b2d6edfaa8cdf2712fad5bf228c72230f0f6293f5ba556291e1",
+              "bounds16": [
+                309,
+                68,
+                960,
+                1105
+              ],
+              "threshold": 16,
+              "transparentPixels": 1047923,
+              "solidPixels240": 507502,
+              "marginsPixels": [
+                309,
+                68,
+                315,
+                128
+              ]
+            },
+            "displayBounds": [
+              309,
+              68,
+              960,
+              1105
+            ],
+            "url": "/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "Photographies officielles de cette édition NECA,vue source uniquement.",
+          "sourceStatus": {
+            "reviewStatus": "edition-candidate-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": [
+              "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure."
+            ]
+          },
+          "limitations": [
+            "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+            "C est une dérivée technique monochrome de B ; elle ne corrige pas les incertitudes artistiques,ne crée pas un albédo3D et ne valide pas le canon.",
+            "Specific NECA2016 Series16 Stalker Kenner tribute toy edition, not LostTribeStalker or a certified original film mask.",
+            "Only primary photograph shows a complete worn mask; support blister partly hides the accessory bottom and cannot establish another full camera.",
+            "Small source mask region about200px tall; fine relief, exact UV/albedo, hidden sides/back/interior are not established.",
+            "Translucent ivory material belongs to the biological wearer/dreadlocks; no sufficient evidence that opaque bronze shell is translucent.",
+            "A is a new ImageGen isolation, not exact photo pixels or a manual alpha cutout; B is a separate rendering adaptation, not certified PHG mesh/material.",
+            "Very low-alpha native edge pixels are preserved without CPU cleaning; maximum border alpha is recorded.",
+            "Native transparent margins are slightly tighter than the requested8-12percent at one edge; the complete solid mask remains unclipped and exact bounds are recorded."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Stalker_%28Night_Hunter_Clan%29",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 9,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 10,
+      "catalogueValues": {
+        "Période": "1994",
+        "Gamme": "Series 2",
+        "Nom sur emballage / sortie": "Lasershot Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Lasershot Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Lasershot_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-lasershot-ultimate-2019",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-lasershot-ultimate-2019.json",
+            "sha256": "7472b15de551fb6afcb056e89fa1d4576a6dcb71897b41c5a9ee92ed1c3f5325",
+            "bytes": 24536
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-lasershot-ultimate-2019.png",
+            "sha256": "d150f42aab8035d99bd6ebeb76fcdd985020712caf49e60050834932770c9ac7",
+            "nativeDimensions": [
+              1278,
+              1230
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-lasershot-ultimate-2019.png",
+            "sha256": "4e89e0566d59466f62988145a8ea809adf07ff5d074eab90fbd4844eba656f1c",
+            "nativeDimensions": [
+              1278,
+              1230
+            ]
+          },
+          "sourceEdition": "NECA Ultimate Lasershot Predator,2019,7-inch-scale modern Kenner tribute",
+          "limitations": [
+            "Only the approximately148x163px mask in the catalog inset is available; fine sculpt, paint chips and exact rear/interior cannot be recovered. No hidden surfaces are invented.",
+            "The central dark repeated grille appears seated in the bronze mask frame and is absent from the unmasked violet mouth; retained as rigid grille after independent source preflight. The precise tiny grille-to-frame junction remains uncertain.",
+            "Eyes and red cybernetic implant of the wearer are excluded, leaving genuinely transparent eye/temple apertures. Small local shell boundaries are limited by source resolution.",
+            "The exact source camera is uncalibrated; this is a visible-source study of the named licensed edition, not automatic film/canon or human art validation.",
+            "Independent preflight preferred A3 to over-wide A2. Rigid-shell silhouette is approximately0.82–0.86 with source uncertainty; A3 is approximately0.80. No exact perspective or photogrammetric fit is claimed.",
+            "Native framing retained without crop/resize; substantive upper margin is approximately6.8% and lower9.4%, all contours uncut.",
+            "Fine generated material grain is interpreted, not a scan of the modest-resolution toy paint."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Lasershot_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 10,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 11,
+      "catalogueValues": {
+        "Période": "1994–1995",
+        "Gamme": "Series 3",
+        "Nom sur emballage / sortie": "Renegade Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Renegade Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Renegade_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-renegade-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-renegade-series-13-2015.json",
+            "sha256": "5b4395e8f9eb1873eeea3d74852aa4530030c7cc9279ed44b1d477ee4f0ae5d9",
+            "bytes": 12876
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-renegade-series-13-2015.png",
+            "sha256": "ae48fdc3bca0998d51dbb4357b8b7955082e203c45870bf445b78be99ab1de52",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-renegade-series-13-2015.png",
+            "sha256": "96dcaeaeb0c62e518348d0422eab636feedb52398dd64475fa1c7a27562588aa",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Series13 Renegade2015 retail catalogue edition, source-view only",
+          "limitations": [
+            "Specific2015 retail edition, not automatic film prop or original Kenner mesh certification.",
+            "Mask occupies roughly133x147 pixels in the992x1300 catalogue photo; fine paint pores, tiny lens spacing and edges remain interpreted.",
+            "Slight frontal balancing and material lighting are uncalibrated; hidden back, inside and other viewpoints are not provided.",
+            "Brown/white depiction from the separate photographic mini-comic is not used as this retail palette."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Renegade_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 11,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 12,
+      "catalogueValues": {
+        "Période": "1994–1995",
+        "Gamme": "Series 3",
+        "Nom sur emballage / sortie": "Scavage Predator",
+        "Nature": "Réédition",
+        "Nouvelle identité ?": "Non",
+        "Identité canonique / remarque": "Scavage Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Scavage_Predator"
+      },
+      "status": "catalogued-reissue-not-new-mask",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [
+        5,
+        6
+      ],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-scavage-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-scavage-series-13-2015.json",
+            "sha256": "a2e167fa190a9d487571be084dad7e33b1cccea56d38533e20917f9e7ec3e24a",
+            "bytes": 24207
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-scavage-series-13-2015.png",
+            "sha256": "d4a4615e95a0ce47f9cc04ed77ac14c3a96be1cb8665abaa3f833372770df7f5",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-scavage-series-13-2015.png",
+            "sha256": "36cf2b787a923dd5d2642a3c4e85a45098efd9bceaf19f8f10ac72ebb68218e4",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Predator Series13,2015,7-inch-scale Scavage",
+          "limitations": [
+            "Primary masked inset is approximately190x240px; fine sculpt and hand-painted texture cannot be recovered exactly.",
+            "Visible-front sculpture/paint study only. Hidden rear/interior and 3D fit are not established.",
+            "Organic mouth/tusks are proven on the unmasked main figure and must remain excluded from the isolated metal mask.",
+            "No automatic canon, human-art validation or runtime integration; this is an identified edition candidate.",
+            "Native PNGs remain untouched after generation; faint low-alpha fringe is measured, not scrubbed."
+          ]
+        }
+      ],
+      "sourceReason": "The catalogue explicitly calls this a reissue of the listed Kenner identity. No new mask geometry or independent paint is established by that label; exact colour/SKU equivalence remains unreviewed.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Scavage_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 12,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 13,
+      "catalogueValues": {
+        "Période": "1994–1995",
+        "Gamme": "Series 3",
+        "Nom sur emballage / sortie": "Spiked Tail Predator",
+        "Nature": "Réédition",
+        "Nouvelle identité ?": "Non",
+        "Identité canonique / remarque": "Spiked Tail Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Spiked_Tail_Predator"
+      },
+      "status": "catalogued-reissue-not-new-mask",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [
+        8
+      ],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-spiked-tail-series-16-2016",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-spiked-tail-series-16-2016.json",
+            "sha256": "8e383a15011b1d22cf078f282909e795c126cafb8dd63ae452cbc5bc9979a963",
+            "bytes": 42617
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-spiked-tail-series-16-2016.png",
+            "sha256": "3598223380946711a19f352577a953c6365c9638b21cff1953d6beb5012aeeb1",
+            "nativeDimensions": [
+              1129,
+              1393
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-spiked-tail-series-16-2016.png",
+            "sha256": "de2f75ff8456aada53a0f7cd0af67ffb5ff0e59dccb97b2f81968b43a1264625",
+            "nativeDimensions": [
+              1129,
+              1393
+            ]
+          },
+          "sourceEdition": "NECA Predator Series16,2016,7-inch-scale Spiked Tail",
+          "limitations": [
+            "The catalog inset is approximately240x330px. Small engraved details and the hidden rear/interior cannot be recovered exactly.",
+            "Only the bronze removable shell is isolated. The unmasked photos prove the large ivory horned frill and silver respirator belong to the wearer and remain excluded.",
+            "The exact tiny gold eye/brow strip is constrained by source resolution and may include reflected light; no invented emissive light or new pigment is claimed.",
+            "Visible-source sculpt/paint study of the named licensed edition only; neither film canon certification nor a new canonical geometry.",
+            "A retains generous native transparent framing (substantive alpha bounds about72% of canvas height,12% top/16% bottom). No CPU resizing/cropping; tighter framing attempts were rejected for surface drift.",
+            "Surface microtexture is generative and is not a recovered scan of the small photographed toy paint."
+          ]
+        }
+      ],
+      "sourceReason": "The catalogue explicitly calls this a reissue of the listed Kenner identity. No new mask geometry or independent paint is established by that label; exact colour/SKU equivalence remains unreviewed.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Spiked_Tail_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 13,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 14,
+      "catalogueValues": {
+        "Période": "1994–1995",
+        "Gamme": "Series 3",
+        "Nom sur emballage / sortie": "Stalker Predator",
+        "Nature": "Réédition",
+        "Nouvelle identité ?": "Non",
+        "Identité canonique / remarque": "Stalker (Night Hunter Clan)",
+        "Source URL": "https://avp.fandom.com/wiki/Stalker_%28Night_Hunter_Clan%29"
+      },
+      "status": "catalogued-reissue-not-new-mask",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [
+        9
+      ],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-stalker-kenner-series-16",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+            "bytes": 1157725,
+            "sha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1275,
+            "height": 1234,
+            "nativeDimensions": [
+              1275,
+              1234
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "0acc77714881e820b37f244833d52c6967a0b871ce09d5106498715a81769901",
+              "bounds16": [
+                312,
+                73,
+                954,
+                1105
+              ],
+              "threshold": 16,
+              "transparentPixels": 1060518,
+              "solidPixels240": 498300,
+              "marginsPixels": [
+                312,
+                73,
+                321,
+                129
+              ]
+            },
+            "displayBounds": [
+              312,
+              73,
+              954,
+              1105
+            ],
+            "url": "/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+            "label": "A · Étude de l’édition photographiée — ImageGen",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+            "bytes": 1232876,
+            "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1275,
+            "height": 1233,
+            "nativeDimensions": [
+              1275,
+              1233
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "3fa6ef4c16b58b2d6edfaa8cdf2712fad5bf228c72230f0f6293f5ba556291e1",
+              "bounds16": [
+                309,
+                68,
+                960,
+                1105
+              ],
+              "threshold": 16,
+              "transparentPixels": 1047923,
+              "solidPixels240": 507502,
+              "marginsPixels": [
+                309,
+                68,
+                315,
+                128
+              ]
+            },
+            "displayBounds": [
+              309,
+              68,
+              960,
+              1105
+            ],
+            "url": "/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "Photographies officielles de cette édition NECA,vue source uniquement.",
+          "sourceStatus": {
+            "reviewStatus": "edition-candidate-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": [
+              "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure."
+            ]
+          },
+          "limitations": [
+            "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+            "C est une dérivée technique monochrome de B ; elle ne corrige pas les incertitudes artistiques,ne crée pas un albédo3D et ne valide pas le canon.",
+            "Specific NECA2016 Series16 Stalker Kenner tribute toy edition, not LostTribeStalker or a certified original film mask.",
+            "Only primary photograph shows a complete worn mask; support blister partly hides the accessory bottom and cannot establish another full camera.",
+            "Small source mask region about200px tall; fine relief, exact UV/albedo, hidden sides/back/interior are not established.",
+            "Translucent ivory material belongs to the biological wearer/dreadlocks; no sufficient evidence that opaque bronze shell is translucent.",
+            "A is a new ImageGen isolation, not exact photo pixels or a manual alpha cutout; B is a separate rendering adaptation, not certified PHG mesh/material.",
+            "Very low-alpha native edge pixels are preserved without CPU cleaning; maximum border alpha is recorded.",
+            "Native transparent margins are slightly tighter than the requested8-12percent at one edge; the complete solid mask remains unclipped and exact bounds are recorded."
+          ]
+        }
+      ],
+      "sourceReason": "The catalogue explicitly calls this a reissue of the listed Kenner identity. No new mask geometry or independent paint is established by that label; exact colour/SKU equivalence remains unreviewed.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Stalker_%28Night_Hunter_Clan%29",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 14,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 15,
+      "catalogueValues": {
+        "Période": "Années 1990",
+        "Gamme": "Mail-away",
+        "Nom sur emballage / sortie": "Ambush Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Ambush Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Ambush_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-ambush-convention-exclusive-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-ambush-convention-exclusive-2015.json",
+            "sha256": "7771d2a26cafacc6fab5220f2f65eb22eb81b62fb0da2d26699f5730fef73c26",
+            "bytes": 23475
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-ambush-convention-exclusive-2015.png",
+            "sha256": "952e4485f1fca498fedf1f3d48a3459b044b5259ff3a69e234db06df119c68fb",
+            "nativeDimensions": [
+              1122,
+              1402
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-ambush-convention-exclusive-2015.png",
+            "sha256": "e7704e29d203f30eeb270deba49fda416d0d836d66767a58e49c3114e951db13",
+            "nativeDimensions": [
+              1122,
+              1402
+            ]
+          },
+          "sourceEdition": "NECA Ambush Predator2015 Convention Exclusive,7-inch-scale silver/chrome removable mask edition",
+          "limitations": [
+            "Complete visible shell in neutral catalog is about158x246px, larger dramatic macro supports the sculpt only. Hidden rear/interior and exact microfinish cannot be recovered.",
+            "Silver/chrome finish reflects scene light; green spill on metal in dramatic photos is excluded from pigment. Only one photographed finish edition is claimed.",
+            "Wearer eyes versus mask optic treatment is qualified from masked/unmasked/package source set; any uncertain boundary is documented, not invented.",
+            "This NECA2015 edition does not prove the exact original Kenner1990s mail-away mask; no new geometry or canonical validation is claimed.",
+            "Independent source qualification compared four native photos: green bare-head eyes have the same appearance as through-mask eyes, while the detached accessory has no established green inserts. Wearer eyes removed, real orbit rims retained with transparent apertures; fine junction remains qualified.",
+            "Photographed silver/chrome appearance is retained without baking green scene reflections as paint. Exact measured BRDF and microfinish are not established.",
+            "Native framing retained without CPU correction, approximately5.8% upper/5.1% lower substantive alpha margin; complete corners and prongs are uncut."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint. A complete NECA2015 Ambush tribute was produced from this lead, but it is a different photographed edition, not retroactive proof of the Kenner mail-away accessory.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Ambush_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 15,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 16,
+      "catalogueValues": {
+        "Période": "Années 1990",
+        "Gamme": "10-inch",
+        "Nom sur emballage / sortie": "Ultimate Predator",
+        "Nature": "Identité propre Kenner",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Ultimate Predator (Kenner)",
+        "Source URL": "https://avp.fandom.com/wiki/Ultimate_Predator_%28Kenner%29"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint. The generic word Ultimate here means the vintage10-inch Kenner entry; it is not an alias authorizing substitution of any modern NECA Ultimate figure.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Ultimate_Predator_%28Kenner%29",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 16,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 17,
+      "catalogueValues": {
+        "Période": "Années 1990",
+        "Gamme": "2-pack Alien vs Predator",
+        "Nom sur emballage / sortie": "Renegade Predator",
+        "Nature": "Réédition avec Warrior Alien",
+        "Nouvelle identité ?": "Non",
+        "Identité canonique / remarque": "Renegade Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Renegade_Predator"
+      },
+      "status": "catalogued-reissue-not-new-mask",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [
+        11
+      ],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-renegade-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-renegade-series-13-2015.json",
+            "sha256": "5b4395e8f9eb1873eeea3d74852aa4530030c7cc9279ed44b1d477ee4f0ae5d9",
+            "bytes": 12876
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-renegade-series-13-2015.png",
+            "sha256": "ae48fdc3bca0998d51dbb4357b8b7955082e203c45870bf445b78be99ab1de52",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-renegade-series-13-2015.png",
+            "sha256": "96dcaeaeb0c62e518348d0422eab636feedb52398dd64475fa1c7a27562588aa",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Series13 Renegade2015 retail catalogue edition, source-view only",
+          "limitations": [
+            "Specific2015 retail edition, not automatic film prop or original Kenner mesh certification.",
+            "Mask occupies roughly133x147 pixels in the992x1300 catalogue photo; fine paint pores, tiny lens spacing and edges remain interpreted.",
+            "Slight frontal balancing and material lighting are uncalibrated; hidden back, inside and other viewpoints are not provided.",
+            "Brown/white depiction from the separate photographic mini-comic is not used as this retail palette."
+          ]
+        }
+      ],
+      "sourceReason": "The catalogue explicitly calls this a reissue of the listed Kenner identity. No new mask geometry or independent paint is established by that label; exact colour/SKU equivalence remains unreviewed.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Renegade_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 17,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 18,
+      "catalogueValues": {
+        "Période": "1998",
+        "Gamme": "Aliens: Hive Wars",
+        "Nom sur emballage / sortie": "Warrior Predator",
+        "Nature": "Identité/design de ligne",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Warrior (Yautja)",
+        "Source URL": "https://avp.fandom.com/wiki/Warrior_%28Yautja%29"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [
+        {
+          "id": "neca-hive-wars-series-10",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+            "bytes": 1332584,
+            "sha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1262,
+            "height": 1246,
+            "nativeDimensions": [
+              1262,
+              1246
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "69d07318a7045cb5a54f43e2a7707714bc9c1029b0aea1de537e30c8d02d4516",
+              "bounds16": [
+                285,
+                138,
+                977,
+                1085
+              ],
+              "threshold": 16,
+              "transparentPixels": 1066168,
+              "solidPixels240": 494682,
+              "marginsPixels": [
+                285,
+                138,
+                285,
+                161
+              ]
+            },
+            "displayBounds": [
+              285,
+              138,
+              977,
+              1085
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+            "bytes": 1204926,
+            "sha256": "736c6ba757218754c93dbf60de33d711ca575e5be859a859aa60f3512daef195",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1262,
+            "height": 1246,
+            "nativeDimensions": [
+              1262,
+              1246
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "966b322873e0bb8d9f028b56df8d7e5e09e5161985800208af215d292993f7dd",
+              "bounds16": [
+                280,
+                143,
+                968,
+                1089
+              ],
+              "threshold": 16,
+              "transparentPixels": 1071424,
+              "solidPixels240": 491279,
+              "marginsPixels": [
+                280,
+                143,
+                294,
+                157
+              ]
+            },
+            "displayBounds": [
+              280,
+              143,
+              968,
+              1089
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA Predators Series10,7-inch,2013, Kenner Expanded Universe tribute.",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+            "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+            "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+            "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+            "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu."
+          ]
+        }
+      ],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint. Hive Wars Warrior must not be collapsed into the Lost Tribe Warrior or AVP Ancient Warrior solely by the word Warrior.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Warrior_%28Yautja%29",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 18,
+      "catalogueSheet": "Kenner",
+      "catalogueRow": 19,
+      "catalogueValues": {
+        "Période": "1998",
+        "Gamme": "Aliens: Hive Wars",
+        "Nom sur emballage / sortie": "Night Recon Predator",
+        "Nature": "Identité propre",
+        "Nouvelle identité ?": "Oui",
+        "Identité canonique / remarque": "Night Recon Predator",
+        "Source URL": "https://avp.fandom.com/wiki/Night_Recon_Predator"
+      },
+      "status": "missing-exact-vintage-publisher-mask-reference",
+      "exactEditionCovered": false,
+      "completeNewGenerationSource": false,
+      "newGeometryEstablished": false,
+      "duplicateCatalogueRows": [],
+      "relatedOtherEditionCoverage": [],
+      "sourceReason": "This is an original Kenner-era edition/colourway. The supplied catalogue cites a Fandom discovery page, not a reviewed publisher mask photograph. No complete native primary image for this exact vintage edition is present in the current audited source set. Modern NECA tributes below are related editions and cannot certify a1:1 Kenner sculpt/paint. NECA public search returned prize-announcement hits, without an identified native Night Recon mask image; no shape is inferred from the name.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Night_Recon_Predator",
+      "citationIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 19,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 2,
+      "catalogueValues": {
+        "Gamme / série": "Series 1",
+        "Nom de la figurine": "Classic Predator",
+        "Identité correspondante": "Jungle Hunter / Classic 2010 selon édition",
+        "Nature": "Alias/variante",
+        "Yautja ?": "Oui",
+        "Source URL": "https://necaonline.com/?s=predator"
+      },
+      "status": "ambiguous-classic-alias-exact-edition-unqualified",
+      "exactEditionCovered": false,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "mk-01-jungle",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-dual-20261113/originals/mk-01-jungle.png",
+            "bytes": 2624929,
+            "sha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "d5cc2236133aa01451d48503838ff5de76a778556abda72af51b9ecd0edbcb8d",
+              "bounds16": [
+                75,
+                45,
+                1168,
+                1214
+              ],
+              "threshold": 16,
+              "transparentPixels": 596513,
+              "solidPixels240": 960616,
+              "marginsPixels": [
+                75,
+                45,
+                86,
+                40
+              ]
+            },
+            "displayBounds": [
+              75,
+              45,
+              1168,
+              1214
+            ],
+            "url": "/game/biomasks-dual-20261113/originals/mk-01-jungle.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-dual-20261113/phg/mk-01-jungle.png",
+            "bytes": 2345073,
+            "sha256": "6440f135b78b050c6a065b40c7829703e047eb6b65f08951fb57fc74c72158ea",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "4338df338969a936af2f4b0c8129a910fd304304496167ad57e6bb8f7b69ca11",
+              "bounds16": [
+                82,
+                51,
+                1149,
+                1217
+              ],
+              "threshold": 16,
+              "transparentPixels": 608802,
+              "solidPixels240": 947731,
+              "marginsPixels": [
+                82,
+                51,
+                105,
+                37
+              ]
+            },
+            "displayBounds": [
+              82,
+              51,
+              1149,
+              1217
+            ],
+            "url": "/game/biomasks-dual-20261113/phg/mk-01-jungle.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "existing-project-V62-reference-reconstruction",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "Version A means byte-identical existing project file, not a newly certified franchise original.",
+            "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+            "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+            "The project V62 representation remains a generated reconstruction; its named film/licensed provenance is not equivalent to canonical fidelity certification.",
+            "Source A was already a PBR reconstruction; B is a restrained restaging with calmer grain/reflections rather than a different mask design.",
+            "Independent seed review finds about2percent narrower normalized silhouette, fine detail recalculated, and a37px minimum margin warning; no core clipping observed."
+          ]
+        }
+      ],
+      "sourceReason": "The catalogue itself says JungleHunter/Classic2010 depending on edition. Those are not interchangeable photographed releases. Prior69 carries a project JungleHunter representation, not proof of this unspecified Series1 toy paint/camera.",
+      "sourceCitationURL": "https://necaonline.com/?s=predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 20,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 5,
+      "catalogueValues": {
+        "Gamme / série": "Series 2",
+        "Nom de la figurine": "Battle-Damaged Classic Predator",
+        "Identité correspondante": "Crucified Predator",
+        "Nature": "Variante",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Crucified_Predator"
+      },
+      "status": "tiny-publisher-source-insufficient",
+      "exactEditionCovered": false,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "mk-01-jungle",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-dual-20261113/originals/mk-01-jungle.png",
+            "bytes": 2624929,
+            "sha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "d5cc2236133aa01451d48503838ff5de76a778556abda72af51b9ecd0edbcb8d",
+              "bounds16": [
+                75,
+                45,
+                1168,
+                1214
+              ],
+              "threshold": 16,
+              "transparentPixels": 596513,
+              "solidPixels240": 960616,
+              "marginsPixels": [
+                75,
+                45,
+                86,
+                40
+              ]
+            },
+            "displayBounds": [
+              75,
+              45,
+              1168,
+              1214
+            ],
+            "url": "/game/biomasks-dual-20261113/originals/mk-01-jungle.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-dual-20261113/phg/mk-01-jungle.png",
+            "bytes": 2345073,
+            "sha256": "6440f135b78b050c6a065b40c7829703e047eb6b65f08951fb57fc74c72158ea",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "4338df338969a936af2f4b0c8129a910fd304304496167ad57e6bb8f7b69ca11",
+              "bounds16": [
+                82,
+                51,
+                1149,
+                1217
+              ],
+              "threshold": 16,
+              "transparentPixels": 608802,
+              "solidPixels240": 947731,
+              "marginsPixels": [
+                82,
+                51,
+                105,
+                37
+              ]
+            },
+            "displayBounds": [
+              82,
+              51,
+              1149,
+              1217
+            ],
+            "url": "/game/biomasks-dual-20261113/phg/mk-01-jungle.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "existing-project-V62-reference-reconstruction",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "Version A means byte-identical existing project file, not a newly certified franchise original.",
+            "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+            "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+            "The project V62 representation remains a generated reconstruction; its named film/licensed provenance is not equivalent to canonical fidelity certification.",
+            "Source A was already a PBR reconstruction; B is a restrained restaging with calmer grain/reflections rather than a different mask design.",
+            "Independent seed review finds about2percent narrower normalized silhouette, fine detail recalculated, and a37px minimum margin warning; no core clipping observed."
+          ]
+        }
+      ],
+      "sourceReason": "The official Series2 group photo shows the right-hand Classic figure in a mask, but the area is small and the exact battle-damaged mask paint/edition cannot be resolved. Body damage does not establish a new mask variant.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Crucified_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "reviewedPublisherGroupImage": {
+        "path": "/tmp/mask-lots40-20261113/films/references/tracker-series2.jpg",
+        "sha256": "7bf3f5b5aa73f5333c88fcbf2a45faf95e644fc951ab5dca9fcb5293a79192fd",
+        "bytes": 308204
+      },
+      "reviewedImageDimensions": [
+        667,
+        500
+      ]
+    },
+    {
+      "auditIndex": 21,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 6,
+      "catalogueValues": {
+        "Gamme / série": "Series 2",
+        "Nom de la figurine": "Unmasked Berserker Predator",
+        "Identité correspondante": "Berserker (Game Preserve Planet)",
+        "Nature": "Variante",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Berserker_%28Game_Preserve_Planet%29"
+      },
+      "status": "unmasked-head-no-new-mask-established",
+      "exactEditionCovered": false,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "mk-11-berserker",
+          "pack": "previous69",
+          "exactPhotographedEdition": false,
+          "versionA": {
+            "path": "public/game/biomasks-dual-20261113/originals/mk-11-berserker.png",
+            "bytes": 2322146,
+            "sha256": "6764f7596d6443f4657340728f316d111a50ba6d662d270e5189bc4c2312f087",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "33e10c11d4a6d37b4e125691c8aac488df99ebc4771b39039f41d6d38dc30508",
+              "bounds16": [
+                208,
+                38,
+                1156,
+                1238
+              ],
+              "threshold": 16,
+              "transparentPixels": 690944,
+              "solidPixels240": 865405,
+              "marginsPixels": [
+                208,
+                38,
+                98,
+                16
+              ]
+            },
+            "displayBounds": [
+              208,
+              38,
+              1156,
+              1238
+            ],
+            "url": "/game/biomasks-dual-20261113/originals/mk-11-berserker.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-dual-20261113/phg/mk-11-berserker.png",
+            "bytes": 2216169,
+            "sha256": "030990c223881ec4a646bc9b0202adeb7b989ca5543121c0883b3af9cb4b7b67",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "2ac28f4d77dca7f3f783108b8006467ea4aef10e5e3ec72a5d1bbb5199fd8c60",
+              "bounds16": [
+                201,
+                45,
+                1115,
+                1231
+              ],
+              "threshold": 16,
+              "transparentPixels": 725930,
+              "solidPixels240": 831674,
+              "marginsPixels": [
+                201,
+                45,
+                139,
+                23
+              ]
+            },
+            "displayBounds": [
+              201,
+              45,
+              1115,
+              1231
+            ],
+            "url": "/game/biomasks-dual-20261113/phg/mk-11-berserker.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "existing-project-V62-reference-reconstruction",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "Version A means byte-identical existing project file, not a newly certified franchise original.",
+            "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+            "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+            "The project V62 representation remains a generated reconstruction; its named film/licensed provenance is not equivalent to canonical fidelity certification.",
+            "Source A was already a high-resolution PBR-like project reconstruction; B intentionally remains close, restaging light/grain without new geometry.",
+            "Fine pits, scratches and optical meshes are regenerated interpretation; exact microdetail is not certified."
+          ]
+        }
+      ],
+      "sourceReason": "Official Series2 group photo shows the left-hand Berserker biological head without a mask. No separate rigid accessory is established in that source. A bare head must not be generated as a new mask; the related prior Berserker design is a different representation.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Berserker_%28Game_Preserve_Planet%29",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "reviewedPublisherGroupImage": {
+        "path": "/tmp/mask-lots40-20261113/films/references/tracker-series2.jpg",
+        "sha256": "7bf3f5b5aa73f5333c88fcbf2a45faf95e644fc951ab5dca9fcb5293a79192fd",
+        "bytes": 308204
+      },
+      "reviewedImageDimensions": [
+        667,
+        500
+      ]
+    },
+    {
+      "auditIndex": 22,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 7,
+      "catalogueValues": {
+        "Gamme / série": "Series 2",
+        "Nom de la figurine": "Tracker Predator",
+        "Identité correspondante": "Tracker",
+        "Nature": "Existant",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Tracker"
+      },
+      "status": "tiny-publisher-source-insufficient",
+      "exactEditionCovered": false,
+      "newGeometryEstablished": false,
+      "coverage": [],
+      "sourceReason": "Tracker is the center masked figure in the official667x500 group photo. Mask area approximately50x85px is insufficient to recover small contours, lenses, tusk attachment and paint1:1. No larger native detailed mask source was found in the public manufacturer article; no body/head anatomy is promoted to mask.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Tracker",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "reviewedPublisherGroupImage": {
+        "path": "/tmp/mask-lots40-20261113/films/references/tracker-series2.jpg",
+        "sha256": "7bf3f5b5aa73f5333c88fcbf2a45faf95e644fc951ab5dca9fcb5293a79192fd",
+        "bytes": 308204
+      },
+      "reviewedImageDimensions": [
+        667,
+        500
+      ]
+    },
+    {
+      "auditIndex": 23,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 29,
+      "catalogueValues": {
+        "Gamme / série": "Series 10",
+        "Nom de la figurine": "Nightstorm Predator",
+        "Identité correspondante": "Nightstorm Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Nightstorm_Predator"
+      },
+      "status": "covered-existing69-partial-source-limit-preserved",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-nightstorm-series-10",
+          "pack": "previous69",
+          "exactPhotographedEdition": true,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+            "bytes": 1228291,
+            "sha256": "1d9016e4e45c733cd9379212f052392c1b0e838cb39b65286044d24c54cc1773",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "b0fa576591589f63aff008394cd76a40424145aa737ba2deb4904d728f01be29",
+              "bounds16": [
+                235,
+                55,
+                1011,
+                1018
+              ],
+              "threshold": 16,
+              "transparentPixels": 1112571,
+              "solidPixels240": 443283,
+              "marginsPixels": [
+                235,
+                55,
+                243,
+                236
+              ]
+            },
+            "displayBounds": [
+              235,
+              55,
+              1011,
+              1018
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+            "bytes": 1223247,
+            "sha256": "7ed4e12aa44e96421b7867ac14fe43b2c8ca9460b3b966402943c1b064593bf3",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1254,
+            "height": 1254,
+            "nativeDimensions": [
+              1254,
+              1254
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "06ea5b361334c8e9d3f7e16e93fb370becc5bfae0c0ad1e9c29eb2b9679c8880",
+              "bounds16": [
+                229,
+                60,
+                1011,
+                1028
+              ],
+              "threshold": 16,
+              "transparentPixels": 1106591,
+              "solidPixels240": 451576,
+              "marginsPixels": [
+                229,
+                60,
+                243,
+                226
+              ]
+            },
+            "displayBounds": [
+              229,
+              60,
+              1011,
+              1028
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA Predators Series10,7-inch,2013, Kenner tribute. ; masque rigide visible partiel seulement.",
+          "sourceStatus": {
+            "reviewStatus": "partial-visible-rigid-mask",
+            "portableMaskUse": "partial-study-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": true,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": [
+              "Only visible rigid shell is represented; hidden lower-side shell/rear/interior are unestablished. Neutral C must not complete missing geometry."
+            ]
+          },
+          "limitations": [
+            "NS2–4 are unmasked biological head; do not label their cranial texture as a mask.",
+            "Only one substantial mask view, plus tiny catalog inset; fine relief remains interpretive.",
+            "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+            "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+            "Partie basse occluse : étude de masque rigide partiel,aucune forme cachée ou menton fermé reconstitué.",
+            "Les membranes violettes et grandes défenses ivoire appartiennent au visage biologique,pas au masque.",
+            "Le minuscule accessoire ToyFair ne qualifie pas la bordure basse,son attribution et sa forme restent incertaines.",
+            "L’état canonique/humain/runtime et la tâche mk-59-nightstorm restent ouverts.",
+            "La caméra A/B a été redressée d’environ4–5° par rapport à NS1 ; acceptable comme candidate partielle, pas comme correspondance1:1 certifiée."
+          ]
+        }
+      ],
+      "sourceReason": "Exact NECA Series10 edition already has A/B in prior69, but only the visibly rigid partial mask is supported. Its partial status and camera limit remain open; no full rear/crown is inferred.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Nightstorm_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 24,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 30,
+      "catalogueValues": {
+        "Gamme / série": "Series 10",
+        "Nom de la figurine": "Hive Wars Predator",
+        "Identité correspondante": "Hive Wars Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Hive_Wars_Predator"
+      },
+      "status": "covered-existing69-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-hive-wars-series-10",
+          "pack": "previous69",
+          "exactPhotographedEdition": true,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+            "bytes": 1332584,
+            "sha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1262,
+            "height": 1246,
+            "nativeDimensions": [
+              1262,
+              1246
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "69d07318a7045cb5a54f43e2a7707714bc9c1029b0aea1de537e30c8d02d4516",
+              "bounds16": [
+                285,
+                138,
+                977,
+                1085
+              ],
+              "threshold": 16,
+              "transparentPixels": 1066168,
+              "solidPixels240": 494682,
+              "marginsPixels": [
+                285,
+                138,
+                285,
+                161
+              ]
+            },
+            "displayBounds": [
+              285,
+              138,
+              977,
+              1085
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+            "bytes": 1204926,
+            "sha256": "736c6ba757218754c93dbf60de33d711ca575e5be859a859aa60f3512daef195",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1262,
+            "height": 1246,
+            "nativeDimensions": [
+              1262,
+              1246
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "966b322873e0bb8d9f028b56df8d7e5e09e5161985800208af215d292993f7dd",
+              "bounds16": [
+                280,
+                143,
+                968,
+                1089
+              ],
+              "threshold": 16,
+              "transparentPixels": 1071424,
+              "solidPixels240": 491279,
+              "marginsPixels": [
+                280,
+                143,
+                294,
+                157
+              ]
+            },
+            "displayBounds": [
+              280,
+              143,
+              968,
+              1089
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA Predators Series10,7-inch,2013, Kenner Expanded Universe tribute.",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+            "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+            "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+            "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+            "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu."
+          ]
+        }
+      ],
+      "sourceReason": "Exact named NECA Series10 HiveWars photographed edition is already represented in prior69; no additional identical rendering is warranted.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Hive_Wars_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 25,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 31,
+      "catalogueValues": {
+        "Gamme / série": "Series 10",
+        "Nom de la figurine": "Lava Planet Predator",
+        "Identité correspondante": "Lava Planet Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Lava_Planet_Predator"
+      },
+      "status": "covered-existing69-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-lava-planet-series-10",
+          "pack": "previous69",
+          "exactPhotographedEdition": true,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+            "bytes": 1405747,
+            "sha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1266,
+            "height": 1243,
+            "nativeDimensions": [
+              1266,
+              1243
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "2b56655f32b1a6748c72133de05a32ffb477ee8a7bdddf63397a090f70bf6348",
+              "bounds16": [
+                244,
+                143,
+                1021,
+                1063
+              ],
+              "threshold": 16,
+              "transparentPixels": 985734,
+              "solidPixels240": 574765,
+              "marginsPixels": [
+                244,
+                143,
+                245,
+                180
+              ]
+            },
+            "displayBounds": [
+              244,
+              143,
+              1021,
+              1063
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+            "bytes": 1489390,
+            "sha256": "6b9669d9c04961cb70607957e31668872b2b0ef3084e5305a8e2c91626678f47",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1266,
+            "height": 1243,
+            "nativeDimensions": [
+              1266,
+              1243
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "b7b272677c04eb152482d5570eade947979a9bd89627e170d062aa7add5f0b20",
+              "bounds16": [
+                241,
+                143,
+                1022,
+                1065
+              ],
+              "threshold": 16,
+              "transparentPixels": 985134,
+              "solidPixels240": 577425,
+              "marginsPixels": [
+                241,
+                143,
+                244,
+                178
+              ]
+            },
+            "displayBounds": [
+              241,
+              143,
+              1022,
+              1065
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA Predators Series10, 7-inch,2013, modern sculpt adaptation of Kenner Expanded Universe design.",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "Orange/red setting casts strong colored light; retain restrained uncertainty in surface albedo.",
+            "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+            "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+            "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+            "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+            "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu."
+          ]
+        }
+      ],
+      "sourceReason": "Exact named NECA Series10 LavaPlanet photographed edition is already represented in prior69. CrackedTusk Series13 is separately preserved as a real paint edition of a shared family.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Lava_Planet_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 26,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 32,
+      "catalogueValues": {
+        "Gamme / série": "Series 11",
+        "Nom de la figurine": "Wasp Predator",
+        "Identité correspondante": "Wasp Predator",
+        "Nature": "Fan-made puis licencié",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Wasp_Predator"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-wasp-dead-end-series-11-2013",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-wasp-dead-end-series-11-2013.json",
+            "sha256": "3ad3a648f4a3a79a53c773fa2af7dfee28e4659418b3b37300f4ec0f68a7a8a2",
+            "bytes": 36828
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-wasp-dead-end-series-11-2013.png",
+            "sha256": "fd9efc74fb8a0a468424df32c1d3ae86ffcd74e80b3ca6972148427cd2413a4c",
+            "nativeDimensions": [
+              1312,
+              1199
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-wasp-dead-end-series-11-2013.png",
+            "sha256": "5cf2d5a856ff2091847bc49d7ea3b8db8363957e553e6bd05d0f26bb9e0f4453",
+            "nativeDimensions": [
+              1312,
+              1199
+            ]
+          },
+          "sourceEdition": "NECA Predators Series11 Wasp,2013/2014 official DeadEnd toy edition",
+          "limitations": [
+            "Native mask area is about150x160px; fine paint-chip locations, original material calibration and hidden side/back are not recovered.",
+            "A real photographed paint/edition variant; not counted as a new mask geometry or newly canonical design.",
+            "Neutral white catalog supports yellow/black paint; orange theatrical background is not orange mask pigment.",
+            "Independent review found the first A/B overly frontal and elongated; corrected A restores source roll/downward pitch and shorter lower face, without CPU geometric edits. Exact source camera remains uncalibrated.",
+            "Microtexture/wear are generative interpretations of modest-resolution photographs, not recovered exact sculpt/paint pixels."
+          ]
+        }
+      ],
+      "sourceReason": "Exact DeadEnd Wasp Series11 edition delivered in current lot; source roll/projection corrected after independent review. It is a real yellow/black paint representation, not a new JungleHunter geometry.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Wasp_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 27,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 33,
+      "catalogueValues": {
+        "Gamme / série": "Series 11",
+        "Nom de la figurine": "Armored Lost Predator",
+        "Identité correspondante": "Borg",
+        "Nature": "Variante",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Borg"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-armored-combat-lost-series-11-2013",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-armored-combat-lost-series-11-2013.json",
+            "sha256": "e9321a3d499853e44a53bc415a19ad1b066799d882a19b79c4e3482599c1d233",
+            "bytes": 28416
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-armored-combat-lost-series-11-2013.png",
+            "sha256": "64382e07a4a51b9ff408a58b48a754fc9d770eadb0ab4b7dd2926bd4d217dd1f",
+            "nativeDimensions": [
+              1388,
+              1133
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-armored-combat-lost-series-11-2013.png",
+            "sha256": "042e6c31e8519f60d291a6995d9f7894fa1be29d5e2bf28aba95a792ae9507cf",
+            "nativeDimensions": [
+              1388,
+              1133
+            ]
+          },
+          "sourceEdition": "NECA Predators Series11,retail2013,official detail photographs2014",
+          "limitations": [
+            "Worn mask is about175x230px; deep shadows hide fine grooves and exact roughness calibration.",
+            "Neutral catalog confirms cool blue-gray family but the larger scene photo has colored studio lighting. Preserve observed paint, do not convert the green scene cast into green mask paint.",
+            "Source explicitly calls this a new mask; it is not the Lost Tribe organic head or an automatically certified film prop.",
+            "No automatic canon, human-art validation or runtime integration; this is an identified edition candidate.",
+            "Native PNGs remain untouched after generation; faint low-alpha fringe is measured, not scrubbed."
+          ]
+        }
+      ],
+      "sourceReason": "Official manufacturer text says ArmoredCombatLost has a new mask; current Series11 A/B retains it. Slight frontality versus Lost4 remains declared, so coverage is not a calibrated camera certification.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Borg",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 28,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 35,
+      "catalogueValues": {
+        "Gamme / série": "Series 12",
+        "Nom de la figurine": "Enforcer Predator",
+        "Identité correspondante": "Enforcer Predator",
+        "Nature": "Existant",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Enforcer_Predator"
+      },
+      "status": "related-design-covered-other-edition",
+      "exactEditionCovered": false,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-enforcer-ultimate-2018",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-enforcer-ultimate-2018.json",
+            "sha256": "b1f79e3ffedfbdee246f259fdfd54e9522b0b5faa10f2687c10aa74549728fdc",
+            "bytes": 19476
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-enforcer-ultimate-2018.png",
+            "sha256": "b9dd445a5d61758498062ec37d40b32235ab4748632e4037d91e5a3da18b158e",
+            "nativeDimensions": [
+              1263,
+              1246
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-enforcer-ultimate-2018.png",
+            "sha256": "25a1c62e183d18a28c3beb93deed90c1955261eb1a19d653a7fc843fc14f8bbb",
+            "nativeDimensions": [
+              1122,
+              1402
+            ]
+          },
+          "sourceEdition": "NECA Ultimate Bad Blood vs Enforcer2-pack2018; masked Enforcer sculpture",
+          "limitations": [
+            "Licensed NECA2018 sculpture photograph, not certification of an original drawn Bad Blood comic panel.",
+            "Only the photographed exterior/angle and hard side fitting are supported; no new reverse construction.",
+            "Small blue block-like forehead mark is attested; tiny edge chips/curves remain interpreted at source resolution.",
+            "Native A top/bottom margins about3% fall below8–12% target without clipping the complete fin; no raster canvas adjustment.",
+            "Neutral light removes scene-purple reflections without inventing purple albedo.",
+            "Canon certification, human art validation and runtime integration remain open."
+          ]
+        }
+      ],
+      "sourceReason": "Current lot has the source-proven Ultimate2018 Enforcer edition. The catalogue row is Series12, so exact paint/sculpt equality of that earlier release is not assumed. No separate complete source comparison proves a meaningfully different Series12 shell/finish here; do not invent one merely from the reissue date.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Enforcer_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 29,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 37,
+      "catalogueValues": {
+        "Gamme / série": "Series 12",
+        "Nom de la figurine": "Viper Predator",
+        "Identité correspondante": "Viper Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Viper_Predator"
+      },
+      "status": "covered-existing69-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-viper-series-12",
+          "pack": "previous69",
+          "exactPhotographedEdition": true,
+          "versionA": {
+            "path": "public/game/biomasks-expansion-20261113/originals/neca-viper-series-12.png",
+            "bytes": 1327509,
+            "sha256": "3cf6348f99e19d848d847a254d4785ad685c469540a7a72e8b124bfdb9398ca4",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1122,
+            "height": 1402,
+            "nativeDimensions": [
+              1122,
+              1402
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "2a061044e04f76b3e5334b6c5eed8c7c3e87402641b389c29b7a4516b4afde6e",
+              "bounds16": [
+                189,
+                157,
+                939,
+                1244
+              ],
+              "threshold": 16,
+              "transparentPixels": 1003009,
+              "solidPixels240": 558833,
+              "marginsPixels": [
+                189,
+                157,
+                183,
+                158
+              ]
+            },
+            "displayBounds": [
+              189,
+              157,
+              939,
+              1244
+            ],
+            "url": "/game/biomasks-expansion-20261113/originals/neca-viper-series-12.png",
+            "label": "A · Source de la paire antérieure",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-expansion-20261113/phg/neca-viper-series-12.png",
+            "bytes": 1409710,
+            "sha256": "35b5d83fad1ab53ee3fe87a56abcea05626b61e3cbeb8bc35f96e4184d729880",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1122,
+            "height": 1402,
+            "nativeDimensions": [
+              1122,
+              1402
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "bf8abfe921e3d110538422214a16809d2589d15342ac8cdfe3b901d0cb0a4908",
+              "bounds16": [
+                178,
+                160,
+                928,
+                1244
+              ],
+              "threshold": 16,
+              "transparentPixels": 1002185,
+              "solidPixels240": 557188,
+              "marginsPixels": [
+                178,
+                160,
+                194,
+                158
+              ]
+            },
+            "displayBounds": [
+              178,
+              160,
+              928,
+              1244
+            ],
+            "url": "/game/biomasks-expansion-20261113/phg/neca-viper-series-12.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "NECA Predators Series12 Viper,création originale NECA ; référence de catalogue de cette édition.",
+          "sourceStatus": {
+            "reviewStatus": "candidate-representation-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": []
+          },
+          "limitations": [
+            "A/B sont deux nouvelles études ImageGen liées aux seules formes et couleurs visibles de la source R.",
+            "Aucune reconstitution du dos,de l’intérieur ni des formes cachées.",
+            "Édition photographiée précise ; aucune fidélité film/comics générale ou validation canon/humaine/runtime certifiée.",
+            "Le catalogue neutre fait foi pour la palette ; viper7/1 soutiennent les seuls bords et silhouette.",
+            "Ne pas reporter la dominante d’éclairage orange des photos de soutien sur le masque.",
+            "Viper Series12 ne devient pas Scout PHG ou une autre identité LostTribe.",
+            "Viper est une création originale NECA, pas un hommage Kenner ; aucune équivalence de géométrie héritée n’est affirmée."
+          ]
+        }
+      ],
+      "sourceReason": "Exact NECA Viper Series12 masked catalog inset is represented in prior69. It is distinct from LostTribe Scout; newly found Ambush2015 is a different real silver/chrome edition of a related shell family.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Viper_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 30,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 38,
+      "catalogueValues": {
+        "Gamme / série": "Series 13",
+        "Nom de la figurine": "Cracked Tusk Predator",
+        "Identité correspondante": "Cracked Tusk Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Cracked_Tusk_Predator"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-cracked-tusk-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-cracked-tusk-series-13-2015.json",
+            "sha256": "cf36369e9fe5bc3bd66514eaa6da7f2f1fe63f3dd62e6bfab3a88a9e1a1808c9",
+            "bytes": 19904
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-cracked-tusk-series-13-2015.png",
+            "sha256": "94665f775797333a1ac64fd068b371971e42f271b3834b475f3863d486955aeb",
+            "nativeDimensions": [
+              1426,
+              1103
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-cracked-tusk-series-13-2015.png",
+            "sha256": "0919387e4060ac10deac80042669094c331840093dd519207a5c1fdd9138b59f",
+            "nativeDimensions": [
+              1426,
+              1103
+            ]
+          },
+          "sourceEdition": "NECA Predator Series13 Cracked Tusk,2015,7-inch-scale",
+          "limitations": [
+            "Native visible helmet is about210x240px; fine sculpt/paint remains limited by product photo resolution.",
+            "Same sculpt family as already delivered Lava Planet Series10, with a real different paint/edition. It is not a new geometry.",
+            "Only the visible frontal shell is supported; no profile/back/UV/complete3D fit is certified."
+          ]
+        }
+      ],
+      "sourceReason": "Exact CrackedTusk Series13 photographed paint edition delivered, keeping silver/gold/red source details; it is not claimed as new geometry relative to LavaPlanet family.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Cracked_Tusk_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 31,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 39,
+      "catalogueValues": {
+        "Gamme / série": "Series 13",
+        "Nom de la figurine": "Renegade Predator",
+        "Identité correspondante": "Renegade Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Renegade_Predator"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-renegade-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-renegade-series-13-2015.json",
+            "sha256": "5b4395e8f9eb1873eeea3d74852aa4530030c7cc9279ed44b1d477ee4f0ae5d9",
+            "bytes": 12876
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-renegade-series-13-2015.png",
+            "sha256": "ae48fdc3bca0998d51dbb4357b8b7955082e203c45870bf445b78be99ab1de52",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-renegade-series-13-2015.png",
+            "sha256": "96dcaeaeb0c62e518348d0422eab636feedb52398dd64475fa1c7a27562588aa",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Series13 Renegade2015 retail catalogue edition, source-view only",
+          "limitations": [
+            "Specific2015 retail edition, not automatic film prop or original Kenner mesh certification.",
+            "Mask occupies roughly133x147 pixels in the992x1300 catalogue photo; fine paint pores, tiny lens spacing and edges remain interpreted.",
+            "Slight frontal balancing and material lighting are uncalibrated; hidden back, inside and other viewpoints are not provided.",
+            "Brown/white depiction from the separate photographic mini-comic is not used as this retail palette."
+          ]
+        }
+      ],
+      "sourceReason": "Root delivered the exact retail Series13 Renegade source. The brown/white photo-comic depiction remains separate; lighting or a caption alone does not authorize a fabricated retail paint variant.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Renegade_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 32,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 40,
+      "catalogueValues": {
+        "Gamme / série": "Series 13",
+        "Nom de la figurine": "Scavage Predator",
+        "Identité correspondante": "Scavage Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Scavage_Predator"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-scavage-series-13-2015",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-scavage-series-13-2015.json",
+            "sha256": "a2e167fa190a9d487571be084dad7e33b1cccea56d38533e20917f9e7ec3e24a",
+            "bytes": 24207
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-scavage-series-13-2015.png",
+            "sha256": "d4a4615e95a0ce47f9cc04ed77ac14c3a96be1cb8665abaa3f833372770df7f5",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-scavage-series-13-2015.png",
+            "sha256": "36cf2b787a923dd5d2642a3c4e85a45098efd9bceaf19f8f10ac72ebb68218e4",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Predator Series13,2015,7-inch-scale Scavage",
+          "limitations": [
+            "Primary masked inset is approximately190x240px; fine sculpt and hand-painted texture cannot be recovered exactly.",
+            "Visible-front sculpture/paint study only. Hidden rear/interior and 3D fit are not established.",
+            "Organic mouth/tusks are proven on the unmasked main figure and must remain excluded from the isolated metal mask.",
+            "No automatic canon, human-art validation or runtime integration; this is an identified edition candidate.",
+            "Native PNGs remain untouched after generation; faint low-alpha fringe is measured, not scrubbed."
+          ]
+        }
+      ],
+      "sourceReason": "Exact Series13 Scavage delivered from masked catalog inset; the main unmasked head and organic mandible tusks were excluded.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Scavage_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 33,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 45,
+      "catalogueValues": {
+        "Gamme / série": "Series 15",
+        "Nom de la figurine": "Warrior Predator",
+        "Identité correspondante": "Warrior (Yautja)",
+        "Nature": "Existant",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Warrior_%28Yautja%29"
+      },
+      "status": "covered-current-lot-catalogue-identity-corrected",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-ancient-warrior-series-15-2016",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-ancient-warrior-series-15-2016.json",
+            "sha256": "35505cc31504087000b4f3db3407b1bb83bd00517b38442ed33f8b9855de61f2",
+            "bytes": 17290
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-ancient-warrior-series-15-2016.png",
+            "sha256": "0d413c50784b39b80707788e77553f9889f1305f12ba281f73f23367dfc24a4e",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-ancient-warrior-series-15-2016.png",
+            "sha256": "a25abd00bb805c1fa8b76270ebdc81f5e93a80708e74b565fd8f495b70999e3a",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Ancient Warrior Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition",
+          "limitations": [
+            "Exact publisher-linked final catalogue1300px tall; whole rigid shell with shallow top notch and side relief visible, hidden rear shape not known.",
+            "Ancient Warrior named edition is distinct from Temple Guard and NECA ElderAVPSeries17; no certification of original film-prop microgeometry.",
+            "The visible source mask is only roughly151px wide in the full1300px catalogue photo; exact microscopic surface grain and hidden back/interior remain unestablished.",
+            "A preflight review found no obvious macro defect; a small frontal rebalance and interpreted material grain remain fine presentation limitations.",
+            "Top-notch brown biological cranium, skin, mandibles, dreadlocks, necklaces and body are excluded; no hidden rigid geometry is reconstructed.",
+            "Native complete mask margins are tighter than the requested8–12percent at top/bottom; no solid clipping observed and no CPU raster crop/resize/warp performed."
+          ]
+        }
+      ],
+      "sourceReason": "The local row generic Warrior identity is ambiguous across media. The actual NECA Series15 photographed release is AncientWarrior of AVP, delivered under its exact edition ID; it must not be merged with NECA Series6 LostTribe Warrior.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Warrior_%28Yautja%29",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 34,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 46,
+      "catalogueValues": {
+        "Gamme / série": "Series 15",
+        "Nom de la figurine": "Temple Guard Predator",
+        "Identité correspondante": "Temple Guard Predator",
+        "Nature": "Identité/désignation",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Temple_Guard_Predator"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-temple-guard-series-15-2016",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-temple-guard-series-15-2016.json",
+            "sha256": "b85a92c9b9aefbaa12ef3a1cf6f9186910481c600569980e5430f196b2a0ef4f",
+            "bytes": 21230
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-temple-guard-series-15-2016.png",
+            "sha256": "7487c490cd4292b197cc04c92eca97589954c21a3f246781640fefb8394dc9ca",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-temple-guard-series-15-2016.png",
+            "sha256": "4967f43ceaa95e5d6af390a3f7a7beb825dadcb8500e191bb05208504e31a3cb",
+            "nativeDimensions": [
+              1254,
+              1254
+            ]
+          },
+          "sourceEdition": "NECA Temple Guard Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition",
+          "limitations": [
+            "Exact published final catalogue1300px tall shows the complete rigid front with real radial upper-rim ornament at modest mask-area resolution.",
+            "Hard rim ornament versus wearer boundary remains a source-resolution qualification; no invented hidden back/interior or canonical certification.",
+            "Modest mask-area resolution (about142x181px). Fine texture/wear are generative source studies, not exact recovery or film-prop certification.",
+            "Native framing retained without CPU correction; substantive upper margin is approximately7.7% and lower8.4%, full rim and muzzle uncut."
+          ]
+        }
+      ],
+      "sourceReason": "Exact final Series15 TempleGuard catalog edition delivered with the real radial hard rim and two forehead dots, wearer/dreads removed; source-resolution boundary limit preserved.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Temple_Guard_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 35,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 47,
+      "catalogueValues": {
+        "Gamme / série": "Series 16",
+        "Nom de la figurine": "Spiked Tail Predator",
+        "Identité correspondante": "Spiked Tail Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Spiked_Tail_Predator"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-spiked-tail-series-16-2016",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-spiked-tail-series-16-2016.json",
+            "sha256": "8e383a15011b1d22cf078f282909e795c126cafb8dd63ae452cbc5bc9979a963",
+            "bytes": 42617
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-spiked-tail-series-16-2016.png",
+            "sha256": "3598223380946711a19f352577a953c6365c9638b21cff1953d6beb5012aeeb1",
+            "nativeDimensions": [
+              1129,
+              1393
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-spiked-tail-series-16-2016.png",
+            "sha256": "de2f75ff8456aada53a0f7cd0af67ffb5ff0e59dccb97b2f81968b43a1264625",
+            "nativeDimensions": [
+              1129,
+              1393
+            ]
+          },
+          "sourceEdition": "NECA Predator Series16,2016,7-inch-scale Spiked Tail",
+          "limitations": [
+            "The catalog inset is approximately240x330px. Small engraved details and the hidden rear/interior cannot be recovered exactly.",
+            "Only the bronze removable shell is isolated. The unmasked photos prove the large ivory horned frill and silver respirator belong to the wearer and remain excluded.",
+            "The exact tiny gold eye/brow strip is constrained by source resolution and may include reflected light; no invented emissive light or new pigment is claimed.",
+            "Visible-source sculpt/paint study of the named licensed edition only; neither film canon certification nor a new canonical geometry.",
+            "A retains generous native transparent framing (substantive alpha bounds about72% of canvas height,12% top/16% bottom). No CPU resizing/cropping; tighter framing attempts were rejected for surface drift.",
+            "Surface microtexture is generative and is not a recovered scan of the small photographed toy paint."
+          ]
+        }
+      ],
+      "sourceReason": "Exact Series16 bronze removable shell delivered. Package/held accessory/unmasked views prove the large ivory frill and silver respirator belong to the wearer and were excluded.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Spiked_Tail_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 36,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 48,
+      "catalogueValues": {
+        "Gamme / série": "Series 16",
+        "Nom de la figurine": "Stalker Predator",
+        "Identité correspondante": "Stalker (Night Hunter Clan)",
+        "Nature": "Identité Kenner",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Stalker_%28Night_Hunter_Clan%29"
+      },
+      "status": "covered-existing69-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-stalker-kenner-series-16",
+          "pack": "previous69",
+          "exactPhotographedEdition": true,
+          "versionA": {
+            "path": "public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+            "bytes": 1157725,
+            "sha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1275,
+            "height": 1234,
+            "nativeDimensions": [
+              1275,
+              1234
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "0acc77714881e820b37f244833d52c6967a0b871ce09d5106498715a81769901",
+              "bounds16": [
+                312,
+                73,
+                954,
+                1105
+              ],
+              "threshold": 16,
+              "transparentPixels": 1060518,
+              "solidPixels240": 498300,
+              "marginsPixels": [
+                312,
+                73,
+                321,
+                129
+              ]
+            },
+            "displayBounds": [
+              312,
+              73,
+              954,
+              1105
+            ],
+            "url": "/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+            "label": "A · Étude de l’édition photographiée — ImageGen",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "versionB": {
+            "path": "public/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+            "bytes": 1232876,
+            "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+            "format": "PNG",
+            "mode": "RGBA",
+            "width": 1275,
+            "height": 1233,
+            "nativeDimensions": [
+              1275,
+              1233
+            ],
+            "alpha": {
+              "available": true,
+              "sha256": "3fa6ef4c16b58b2d6edfaa8cdf2712fad5bf228c72230f0f6293f5ba556291e1",
+              "bounds16": [
+                309,
+                68,
+                960,
+                1105
+              ],
+              "threshold": 16,
+              "transparentPixels": 1047923,
+              "solidPixels240": 507502,
+              "marginsPixels": [
+                309,
+                68,
+                315,
+                128
+              ]
+            },
+            "displayBounds": [
+              309,
+              68,
+              960,
+              1105
+            ],
+            "url": "/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+            "label": "B · Rendu source conservé",
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false
+          },
+          "sourceScope": "Photographies officielles de cette édition NECA,vue source uniquement.",
+          "sourceStatus": {
+            "reviewStatus": "edition-candidate-unvalidated",
+            "portableMaskUse": "candidate-only",
+            "provisionalReviewOnly": false,
+            "partialReferenceView": false,
+            "hybridStudy": false,
+            "canonicalCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "newBGeneration": true,
+            "sourceBRenderMode": "imagegen",
+            "specialNotes": [
+              "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure."
+            ]
+          },
+          "limitations": [
+            "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+            "C est une dérivée technique monochrome de B ; elle ne corrige pas les incertitudes artistiques,ne crée pas un albédo3D et ne valide pas le canon.",
+            "Specific NECA2016 Series16 Stalker Kenner tribute toy edition, not LostTribeStalker or a certified original film mask.",
+            "Only primary photograph shows a complete worn mask; support blister partly hides the accessory bottom and cannot establish another full camera.",
+            "Small source mask region about200px tall; fine relief, exact UV/albedo, hidden sides/back/interior are not established.",
+            "Translucent ivory material belongs to the biological wearer/dreadlocks; no sufficient evidence that opaque bronze shell is translucent.",
+            "A is a new ImageGen isolation, not exact photo pixels or a manual alpha cutout; B is a separate rendering adaptation, not certified PHG mesh/material.",
+            "Very low-alpha native edge pixels are preserved without CPU cleaning; maximum border alpha is recorded.",
+            "Native transparent margins are slightly tighter than the requested8-12percent at one edge; the complete solid mask remains unclipped and exact bounds are recorded."
+          ]
+        }
+      ],
+      "sourceReason": "Exact NECA KennerSeries16 Stalker is already in prior69. This identity is not LostTribe Stalker and is not automatically the original Kenner1993 toy sculpt/paint.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Stalker_%28Night_Hunter_Clan%29",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 37,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 49,
+      "catalogueValues": {
+        "Gamme / série": "Series 16",
+        "Nom de la figurine": "Ghost Predator",
+        "Identité correspondante": "Ghost Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Ghost_Predator"
+      },
+      "status": "new-source-produced-source-study-only",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-ghost-series-16-2016",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-ghost-series-16-2016.json",
+            "sha256": "c74a0daefe5671249c547e65dcf5cb9a60357ee5b024fbc2f36367a4b5db1bc6",
+            "bytes": 39799
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-ghost-series-16-2016.png",
+            "sha256": "033674223967c3b0c9aaff81ede84ca414ea7519aee46f23d860f95eaa8992a1",
+            "nativeDimensions": [
+              1024,
+              1536
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-ghost-series-16-2016.png",
+            "sha256": "817e584f235b1b997c1703bd864c1ef210c66c91745568c20a6e4799804e1912",
+            "nativeDimensions": [
+              1312,
+              1199
+            ]
+          },
+          "sourceEdition": "NECA Predator Series16 Ghost,2016,7-inch-scale licensed edition",
+          "limitations": [
+            "Complete visible mask is about177x271px in the neutral catalog, with larger dramatic-lit photo8 support. Fine grain/wear and hidden rear/interior cannot be recovered exactly.",
+            "The catalog view and neutral gray/brown paint are primary; blue photography light from photo8 is excluded from the albedo. Exact calibrated camera is not established.",
+            "Package accessory and the held detached mask establish isolation boundaries; tiny lateral copper fittings are retained only as visibly photographed.",
+            "No film-prop/canonical or human-art validation follows from this manufacturer reference. No new canonical/shared-family geometry is claimed.",
+            "Source projection corrected after independent preflight: slightly broader/rounder, shorter forehead oval matches the primary white catalog; exact camera calibration remains unproven."
+          ]
+        }
+      ],
+      "sourceReason": "Audit discovered13 native publisher images. Main neutral catalog and separate accessory prove complete rigid shell; A/B produced and source projection corrected after preflight. No exact shared-sculpt family or new canonical geometry is asserted.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Ghost_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "reviewedPrimaryReferences": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/licensed/neca-ghost-series-16-2016/1200x-51535_Ghost_Predator1-.jpg",
+          "sha256": "5c89cd002d5989cb71e3e883918593abe97c507180184412a3f69439fcd6f75b",
+          "bytes": 198201,
+          "nativeDimensions": [
+            888,
+            1200
+          ],
+          "sourceURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-51535_Ghost_Predator1-.jpg",
+          "publisherPageURL": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51535_ghost_predator1/",
+          "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/1200x-51535_ghost_predator1.html",
+          "publisherPageSha256": "7e08f009da5dd583acd726896815c5c9cbd75124f6218602e4bc91441009a89c",
+          "rawPublisherTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51535_ghost_predator1%2F&#038;description=1200x%2051535%20Ghost%20Predator1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51535_Ghost_Predator1-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51535_ghost_predator1%2F&description=1200x%2051535%20Ghost%20Predator1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51535_Ghost_Predator1-.jpg",
+          "decodedMediaParameter": true,
+          "byteExactSourceCopy": true
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/licensed/neca-ghost-series-16-2016/1200x-Ghost8-.jpg",
+          "sha256": "f27b38a5dfa70d3a26a940d01e658f1b25bdb3c4feb4a92499fbf3c6d180bf1c",
+          "bytes": 288007,
+          "nativeDimensions": [
+            795,
+            1200
+          ],
+          "sourceURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Ghost8-.jpg",
+          "publisherPageURL": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-ghost8/",
+          "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/1200x-ghost8.html",
+          "publisherPageSha256": "13f898d4a5b0b63c7d72b9fa2b7b926451d662a9e2a670a97bcb97fd68e58c2a",
+          "rawPublisherTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-ghost8%2F&#038;description=1200x%20Ghost8&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Ghost8-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-ghost8%2F&description=1200x%20Ghost8&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Ghost8-.jpg",
+          "decodedMediaParameter": true,
+          "byteExactSourceCopy": true
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/licensed/neca-ghost-series-16-2016/1200x-51535_Ghost_Predator2-.jpg",
+          "sha256": "ec729618f8c88197db0828de32c066b7a3d1cbac4b841c4209122dbd0f82ec2d",
+          "bytes": 227984,
+          "nativeDimensions": [
+            960,
+            1200
+          ],
+          "sourceURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-51535_Ghost_Predator2-.jpg",
+          "publisherPageURL": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51535_ghost_predator2/",
+          "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/1200x-51535_ghost_predator2.html",
+          "publisherPageSha256": "eacc0a7e3950392b422245532e1576f960a197958f9be4a953bcfa54300d8a89",
+          "rawPublisherTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51535_ghost_predator2%2F&#038;description=1200x%2051535%20Ghost%20Predator2&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51535_Ghost_Predator2-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51535_ghost_predator2%2F&description=1200x%2051535%20Ghost%20Predator2&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51535_Ghost_Predator2-.jpg",
+          "decodedMediaParameter": true,
+          "byteExactSourceCopy": true
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/licensed/neca-ghost-series-16-2016/1200x-Ghost6-.jpg",
+          "sha256": "2813f6b6e76ddd5c6aac9d15a6428e26e9a72293953c2728dcae7d0fe67b4232",
+          "bytes": 243777,
+          "nativeDimensions": [
+            795,
+            1200
+          ],
+          "sourceURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Ghost6-.jpg",
+          "publisherPageURL": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-ghost6/",
+          "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/1200x-ghost6.html",
+          "publisherPageSha256": "bfe68826ec88e99ceedbbaca7e2072f14f192308468d2d6472e55ec261aaa7e1",
+          "rawPublisherTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-ghost6%2F&#038;description=1200x%20Ghost6&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Ghost6-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-ghost6%2F&description=1200x%20Ghost6&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Ghost6-.jpg",
+          "decodedMediaParameter": true,
+          "byteExactSourceCopy": true
+        }
+      ],
+      "sourceEditionExplicit": "NECA Predator Series16 Ghost,2016,7-inch-scale licensed edition"
+    },
+    {
+      "auditIndex": 38,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 50,
+      "catalogueValues": {
+        "Gamme / série": "Series 17",
+        "Nom de la figurine": "Youngblood Predator",
+        "Identité correspondante": "Youngblood Predator",
+        "Nature": "Identité/désignation",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Youngblood_Predator"
+      },
+      "status": "small-group-only-and-gallery-source-unavailable",
+      "exactEditionCovered": false,
+      "newGeometryEstablished": false,
+      "coverage": [],
+      "sourceReason": "Exact Series17 identity is documented by publisher group image; individual mask is too small for the requested fidelity. Local product gallery lists individual detail images only on the explicitly refused CDN, which was neither requested nor rewritten. Public Youngblood searches yielded no complete independent native detail image. Do not substitute Elder/SerpentHunter or invent a youngblood mask from rank/name.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Youngblood_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "availableGroupImage": {
+        "path": "/tmp/mask-neutral-20261113/primary-elder-avp-photo.jpg",
+        "sha256": "341e11d48b97c058a0d2d7d65744f6ff19297a053e68e6e0f79087f06c54a79a",
+        "bytes": 131582
+      }
+    },
+    {
+      "auditIndex": 39,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 71,
+      "catalogueValues": {
+        "Gamme / série": "Kenner Tribute",
+        "Nom de la figurine": "Lasershot Predator",
+        "Identité correspondante": "Lasershot Predator",
+        "Nature": "Identité",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Lasershot_Predator"
+      },
+      "status": "covered-current-lot-exact-edition",
+      "exactEditionCovered": true,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-lasershot-ultimate-2019",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": true,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-lasershot-ultimate-2019.json",
+            "sha256": "7472b15de551fb6afcb056e89fa1d4576a6dcb71897b41c5a9ee92ed1c3f5325",
+            "bytes": 24536
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-lasershot-ultimate-2019.png",
+            "sha256": "d150f42aab8035d99bd6ebeb76fcdd985020712caf49e60050834932770c9ac7",
+            "nativeDimensions": [
+              1278,
+              1230
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-lasershot-ultimate-2019.png",
+            "sha256": "4e89e0566d59466f62988145a8ea809adf07ff5d074eab90fbd4844eba656f1c",
+            "nativeDimensions": [
+              1278,
+              1230
+            ]
+          },
+          "sourceEdition": "NECA Ultimate Lasershot Predator,2019,7-inch-scale modern Kenner tribute",
+          "limitations": [
+            "Only the approximately148x163px mask in the catalog inset is available; fine sculpt, paint chips and exact rear/interior cannot be recovered. No hidden surfaces are invented.",
+            "The central dark repeated grille appears seated in the bronze mask frame and is absent from the unmasked violet mouth; retained as rigid grille after independent source preflight. The precise tiny grille-to-frame junction remains uncertain.",
+            "Eyes and red cybernetic implant of the wearer are excluded, leaving genuinely transparent eye/temple apertures. Small local shell boundaries are limited by source resolution.",
+            "The exact source camera is uncalibrated; this is a visible-source study of the named licensed edition, not automatic film/canon or human art validation.",
+            "Independent preflight preferred A3 to over-wide A2. Rigid-shell silhouette is approximately0.82–0.86 with source uncertainty; A3 is approximately0.80. No exact perspective or photogrammetric fit is claimed.",
+            "Native framing retained without crop/resize; substantive upper margin is approximately6.8% and lower9.4%, all contours uncut.",
+            "Fine generated material grain is interpreted, not a scan of the modest-resolution toy paint."
+          ]
+        }
+      ],
+      "sourceReason": "Exact Ultimate2019 Lasershot delivered from the real masked inset. Dark grille retained as material; biological eyes/red implant removed from apertures. Small-source camera/proportion and local grille-junction limits remain declared.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Lasershot_Predator",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "auditIndex": 40,
+      "catalogueSheet": "NECA",
+      "catalogueRow": 82,
+      "catalogueValues": {
+        "Gamme / série": "Kenner Tribute",
+        "Nom de la figurine": "Jungle Demon Predator",
+        "Identité correspondante": "Jungle Hunter",
+        "Nature": "Alias/variante",
+        "Yautja ?": "Oui",
+        "Source URL": "https://avp.fandom.com/wiki/Jungle_Hunter"
+      },
+      "status": "related-specific-edition-produced-not-exact-catalogue-closure",
+      "exactEditionCovered": false,
+      "newGeometryEstablished": false,
+      "coverage": [
+        {
+          "id": "neca-jungle-demon-quarter-scale-2017",
+          "pack": "current-lots40",
+          "exactPhotographedEdition": false,
+          "generationReceipt": {
+            "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/generation/neca-jungle-demon-quarter-scale-2017.json",
+            "sha256": "6c764188e1cd7a152d35c051acb32eac54eb2730529787ce24bc139614da0585",
+            "bytes": 26813
+          },
+          "versionA": {
+            "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-jungle-demon-quarter-scale-2017.png",
+            "sha256": "113d3be246e575f9e3dfbb25f57c4ad599176ff498dba69d8ff1c696d70b9ca5",
+            "nativeDimensions": [
+              1261,
+              1247
+            ]
+          },
+          "versionB": {
+            "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-jungle-demon-quarter-scale-2017.png",
+            "sha256": "00090822ee3015e32ad3415158e3188811002d904e8f76927dfcbaca9e74ca52",
+            "nativeDimensions": [
+              1261,
+              1247
+            ]
+          },
+          "sourceEdition": "NECA Jungle Demon30th Anniversary2017,1/4-scale,camouflage/phase finish with published LED eyes",
+          "limitations": [
+            "Mask area in the neutral primary is about156x203px. Irregular camouflage placement and lit yellow eye state are visible; microscopic finish cannot be recovered exactly.",
+            "Clear/frosted portions are photographed against a white background; precise transmission/refraction and hidden rear are not recoverable. Preserve visible shell contour, without treating backdrop as white paint.",
+            "Manufacturer explicitly describes clear plastic, camouflage accents and yellow/red LED effects. Retain the yellow lit eyes visible in the primary, but do not invent red targeting glow that is not visibly lit there.",
+            "The local catalogue calls Jungle Demon a KennerTribute alias; this source proves specifically the1/4-scale30th2017 film edition. Do not substitute another size/edition or count new geometry.",
+            "Independent source preflight opened primary, black-background side photo and package: the frosted/milky upper mask appears white on both white and black backgrounds. Near-opaque photographed appearance retained; physical transmission/refraction and reusable glass-material behavior are NOT validated.",
+            "Upper milky material is almost opaque in the generated alpha (sample alpha about253); do not mistake this source-view appearance study for physically accurate transparency.",
+            "Native framing retained unedited; substantive alpha16 upper margin9.2% and lower3.8%, contour whole. Exact notch/camouflage boundaries remain limited by source resolution."
+          ]
+        }
+      ],
+      "sourceReason": "The row labels JungleDemon KennerTribute, but the accessible publisher source establishes specifically a1/4-scale30thAnniversary2017 clear/camouflage film edition with LED eyes. That real finish was produced as a meaningfully distinct edition, not a new JungleHunter shape. Only this sourced size/edition is represented; no invented Kenner attribution or cross-size equality.",
+      "sourceCitationURL": "https://avp.fandom.com/wiki/Jungle_Hunter",
+      "catalogueCitationAloneIsVisualAuthority": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "reviewedPrimaryReferences": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/licensed/neca-jungle-demon-quarter-scale-2017/51568-Jungle-Demon1.jpg",
+          "sha256": "a44a997cdf6cbd4b1e1533688f4bea52b63edab9a621fc20c908248a2589ef58",
+          "bytes": 227268,
+          "nativeDimensions": [
+            867,
+            1300
+          ],
+          "sourceURL": "https://necaonline.com/wp-content/uploads/2017/05/51568-Jungle-Demon1.jpg",
+          "publisherPageURL": "http://necaonline.com/2017/05/predator-14-scale-action-figure-jungle-demon-30th-anniversary/51568-jungle-demon1/",
+          "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/51568-jungle-demon1.html",
+          "publisherPageSha256": "f3705bdb53de64b3ebf29bddafb34b458c23e24d0a37793002f7d0e83465858d",
+          "rawPublisherTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-14-scale-action-figure-jungle-demon-30th-anniversary%2F51568-jungle-demon1%2F&#038;description=51568%20Jungle%20Demon1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51568-Jungle-Demon1.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "decodedMediaParameter": true,
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-14-scale-action-figure-jungle-demon-30th-anniversary%2F51568-jungle-demon1%2F&description=51568%20Jungle%20Demon1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51568-Jungle-Demon1.jpg",
+          "byteExactSourceCopy": true
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/licensed/neca-jungle-demon-quarter-scale-2017/51568-Jungle-Demon5.jpg",
+          "sha256": "e9edb903eb908e37bf4b6f5b6f3011d40954b33c70b382bf30e5ca387258bd66",
+          "bytes": 335627,
+          "nativeDimensions": [
+            932,
+            1300
+          ],
+          "sourceURL": "https://necaonline.com/wp-content/uploads/2017/05/51568-Jungle-Demon5.jpg",
+          "publisherPageURL": "http://necaonline.com/2017/05/predator-14-scale-action-figure-jungle-demon-30th-anniversary/51568-jungle-demon5/",
+          "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/51568-jungle-demon5.html",
+          "publisherPageSha256": "5870aef55b2eae74a0c43310268e088f07f3be24376cf6743a76a71db1e77cf4",
+          "rawPublisherTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-14-scale-action-figure-jungle-demon-30th-anniversary%2F51568-jungle-demon5%2F&#038;description=51568%20Jungle%20Demon5&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51568-Jungle-Demon5.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "decodedMediaParameter": true,
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-14-scale-action-figure-jungle-demon-30th-anniversary%2F51568-jungle-demon5%2F&description=51568%20Jungle%20Demon5&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51568-Jungle-Demon5.jpg",
+          "byteExactSourceCopy": true
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/licensed/neca-jungle-demon-quarter-scale-2017/51568-Jungle-Demon-pkg2.jpg",
+          "sha256": "ea11eb11e3f587faaa7ad1418e899a915ee614607ff77c99fb138c7f44e378c2",
+          "bytes": 299938,
+          "nativeDimensions": [
+            1040,
+            1300
+          ],
+          "sourceURL": "https://necaonline.com/wp-content/uploads/2017/05/51568-Jungle-Demon-pkg2.jpg",
+          "publisherPageURL": "http://necaonline.com/2017/05/predator-14-scale-action-figure-jungle-demon-30th-anniversary/51568-jungle-demon-pkg2/",
+          "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/51568-jungle-demon-pkg2.html",
+          "publisherPageSha256": "12092b4605f187618a6ac6745618a88d99fbb345e4de1044f1d9ab1221385cdb",
+          "rawPublisherTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-14-scale-action-figure-jungle-demon-30th-anniversary%2F51568-jungle-demon-pkg2%2F&#038;description=51568%20Jungle%20Demon%20pkg2&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51568-Jungle-Demon-pkg2.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+          "decodedMediaParameter": true,
+          "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-14-scale-action-figure-jungle-demon-30th-anniversary%2F51568-jungle-demon-pkg2%2F&description=51568%20Jungle%20Demon%20pkg2&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51568-Jungle-Demon-pkg2.jpg",
+          "byteExactSourceCopy": true
+        }
+      ],
+      "sourceEditionExplicit": "NECA Jungle Demon30th Anniversary2017,1/4-scale,camouflage/phase finish with published LED eyes",
+      "catalogueClassificationConflict": "Published1/4-scale film30th edition, not proof of KennerTribute classification."
+    }
+  ],
+  "counts": {
+    "auditedRows": 40,
+    "originalKennerRows": 18,
+    "selectedNECARows": 22,
+    "explicitCatalogueReissueRows": 4,
+    "catalogueRowsExcludingExplicitReissues": 36,
+    "exactEditionAlreadyCoveredOrNewlyProducedRows": 15,
+    "statusCounts": {
+      "missing-exact-vintage-publisher-mask-reference": 14,
+      "catalogued-reissue-not-new-mask": 4,
+      "ambiguous-classic-alias-exact-edition-unqualified": 1,
+      "tiny-publisher-source-insufficient": 2,
+      "unmasked-head-no-new-mask-established": 1,
+      "covered-existing69-partial-source-limit-preserved": 1,
+      "covered-existing69-exact-edition": 4,
+      "covered-current-lot-exact-edition": 8,
+      "related-design-covered-other-edition": 1,
+      "covered-current-lot-catalogue-identity-corrected": 1,
+      "new-source-produced-source-study-only": 1,
+      "small-group-only-and-gallery-source-unavailable": 1,
+      "related-specific-edition-produced-not-exact-catalogue-closure": 1
+    },
+    "newCanonicalGeometryClaims": 0
+  },
+  "whyNot40NewMasks": "The40 cited rows are not40 missing, independently supported rigid masks. Four vintage rows are explicit reissues; fourteen vintage colour/edition rows lack reviewed exact original Kenner publisher mask photographs; several modern rows are already in the previous69/current lot; unmasked/ambiguous/tiny-reference rows cannot establish a new full shape. Related modern tributes do not close the original Kenner edition rows. Only genuinely complete distinct publisher editions are produced.",
+  "additionalPublisherEditionDiscoveredFromKennerLead": {
+    "id": "neca-ambush-convention-exclusive-2015",
+    "name": "Ambush",
+    "work": "NECA licensed Kenner mail-away tribute",
+    "edition": "NECA Ambush Predator2015 Convention Exclusive,7-inch-scale silver/chrome removable mask edition",
+    "files": [
+      "1300x-Ambush1.jpg",
+      "1300x-Ambush6.jpg",
+      "1300x-Ambush2.jpg",
+      "1300x-Ambush_pkg.jpg"
+    ],
+    "camera": "Near-front mask worn by the MAIN figure in the neutral white catalog; top-right head inset is unmasked, lower-right side inset is supplementary reflection/sculpt only.",
+    "visibleMaskBoundsApproximate": [
+      209,
+      170,
+      367,
+      416
+    ],
+    "design": "Silver/dark silver Viper-family hard shell with two short swept upper corners, center ridge, paired inset forehead lobes, angular open brow/eye areas, small ridged nasal bridge, dark repeated respirator and two long silver down-curved cheek prongs.",
+    "exclusions": "Transparent wearer/body/dreads/eyes/skull, black discolored biological eye surround, armor/weapons/cannon, backdrop. Green scene spill is light, not new pigment. Do not assume two different chrome paint editions from angle/reflection alone.",
+    "maskFamily": "Viper NECA shell family, Ambush silver/chrome edition",
+    "representationOf": "Real NECA Ambush2015 convention edition; same Viper-family geometry, distinct photographed silver/chrome finish",
+    "relatedCanonicalId": "neca-viper-series-12",
+    "limitations": [
+      "Complete visible shell in neutral catalog is about158x246px, larger dramatic macro supports the sculpt only. Hidden rear/interior and exact microfinish cannot be recovered.",
+      "Silver/chrome finish reflects scene light; green spill on metal in dramatic photos is excluded from pigment. Only one photographed finish edition is claimed.",
+      "Wearer eyes versus mask optic treatment is qualified from masked/unmasked/package source set; any uncertain boundary is documented, not invented.",
+      "This NECA2015 edition does not prove the exact original Kenner1990s mail-away mask; no new geometry or canonical validation is claimed."
+    ],
+    "status": "qualified-real-edition-shell-optical-boundaries-under-review",
+    "references": [
+      {
+        "path": "production/biomasks-lots40-20261113/references/licensed/neca-ambush-convention-exclusive-2015/1300x-Ambush1.jpg",
+        "sha256": "5b5c22d84d9748171291602c9a6bf3713bf226eb0e04d842d7a969c9f7026231",
+        "bytes": 168165,
+        "nativeDimensions": [
+          1040,
+          1300
+        ],
+        "sourceURL": "https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush1.jpg",
+        "publisherPageURL": "https://store.necaonline.com/blogs/news/2015-summer-convention-and-retail-exclusives-roundup-1?_pos=1&_sid=98cb25021&_ss=r",
+        "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/audit-article-2015-summer-convention-and-retail-exclusives-roundup-1.html",
+        "publisherPageSha256": "d4deab27e607e91ca3360b5c78c059c90c4aa02c4c4af72257a4c2e009e8bd00",
+        "rawPublisherTag": "<a href=\"https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush1.jpg\">",
+        "decodedMediaParameter": false,
+        "publisherShareHref": null,
+        "byteExactSourceCopy": true
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/references/licensed/neca-ambush-convention-exclusive-2015/1300x-Ambush6.jpg",
+        "sha256": "20ead18bfb7334231ed39b3a0cc24c2df0253f71170e5fb0855a76fb95e71def",
+        "bytes": 258370,
+        "nativeDimensions": [
+          861,
+          1300
+        ],
+        "sourceURL": "https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush6.jpg",
+        "publisherPageURL": "https://store.necaonline.com/blogs/news/2015-summer-convention-and-retail-exclusives-roundup-1?_pos=1&_sid=98cb25021&_ss=r",
+        "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/audit-article-2015-summer-convention-and-retail-exclusives-roundup-1.html",
+        "publisherPageSha256": "d4deab27e607e91ca3360b5c78c059c90c4aa02c4c4af72257a4c2e009e8bd00",
+        "rawPublisherTag": "<a href=\"https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush6.jpg\">",
+        "decodedMediaParameter": false,
+        "publisherShareHref": null,
+        "byteExactSourceCopy": true
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/references/licensed/neca-ambush-convention-exclusive-2015/1300x-Ambush2.jpg",
+        "sha256": "e4585d20180b355217b42c8406447a9ca3a874950fba7a8bf77fc8f8f85893f6",
+        "bytes": 277180,
+        "nativeDimensions": [
+          861,
+          1300
+        ],
+        "sourceURL": "https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush2.jpg",
+        "publisherPageURL": "https://store.necaonline.com/blogs/news/2015-summer-convention-and-retail-exclusives-roundup-1?_pos=1&_sid=98cb25021&_ss=r",
+        "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/audit-article-2015-summer-convention-and-retail-exclusives-roundup-1.html",
+        "publisherPageSha256": "d4deab27e607e91ca3360b5c78c059c90c4aa02c4c4af72257a4c2e009e8bd00",
+        "rawPublisherTag": "<a href=\"https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush2.jpg\">",
+        "decodedMediaParameter": false,
+        "publisherShareHref": null,
+        "byteExactSourceCopy": true
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/references/licensed/neca-ambush-convention-exclusive-2015/1300x-Ambush_pkg.jpg",
+        "sha256": "bd2c21653eb29bb7197c94bd26d16404ff6d375fd1b4b844ffc7dfe2cfde17d4",
+        "bytes": 227295,
+        "nativeDimensions": [
+          1040,
+          1300
+        ],
+        "sourceURL": "https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush_pkg.jpg",
+        "publisherPageURL": "https://store.necaonline.com/blogs/news/2015-summer-convention-and-retail-exclusives-roundup-1?_pos=1&_sid=98cb25021&_ss=r",
+        "publisherPagePath": "/tmp/mask-lots40-20261113/licensed/audit-article-2015-summer-convention-and-retail-exclusives-roundup-1.html",
+        "publisherPageSha256": "d4deab27e607e91ca3360b5c78c059c90c4aa02c4c4af72257a4c2e009e8bd00",
+        "rawPublisherTag": "<a href=\"https://necaonline.com/wp-content/uploads/2015/06/1300x-Ambush_pkg.jpg\">",
+        "decodedMediaParameter": false,
+        "publisherShareHref": null,
+        "byteExactSourceCopy": true
+      }
+    ],
+    "primaryReferencePath": "production/biomasks-lots40-20261113/references/licensed/neca-ambush-convention-exclusive-2015/1300x-Ambush1.jpg",
+    "primaryReferenceSha256": "5b5c22d84d9748171291602c9a6bf3713bf226eb0e04d842d7a969c9f7026231",
+    "newRepresentation": true,
+    "newGeometryRelativeToPrior69": false,
+    "newCanonicalGeometry": false,
+    "deduplicatedAgainst69": true,
+    "newDistinctShellRepresentation": true,
+    "canonCertified": false,
+    "humanArtValidated": false,
+    "runtimeIntegrated": false
+  },
+  "preservedQualifiers": [
+    "Nightstorm Series10 remains partial and source-limited.",
+    "Original Kenner editions remain uncovered when only a NECA reinterpretation exists.",
+    "Scavage green colourways/reissues do not become new geometries.",
+    "Classic/JungleHunter, Warrior across media, Stalker across clans, and SerpentHunter/AlienHead aliases are not exact-shape proof.",
+    "Human art validation and canonical certification remain false."
+  ],
+  "networkEvidence": {
+    "auditSearches": {
+      "path": "/tmp/mask-lots40-20261113/licensed/audit-searches.json",
+      "sha256": "461d37ed1526709c66d6126057b52a20cf5601e1c24d4825e699cbdc58e370cf",
+      "bytes": 6944
+    },
+    "youngbloodSearches": {
+      "path": "/tmp/mask-lots40-20261113/licensed/youngblood-searches.json",
+      "sha256": "2bbeb0cab6f029cd3ee90fe35bd7070db1c542431b55fbb4278a530441b11fed",
+      "bytes": 7228
+    },
+    "publisherAuditArticles": {
+      "path": "/tmp/mask-lots40-20261113/licensed/audit-articles.json",
+      "sha256": "9155dba1b8874bf75790b50a985f6dc1b62fb68946e8362ea48610660b300878",
+      "bytes": 217171
+    },
+    "ghostNativePhotos": {
+      "path": "/tmp/mask-lots40-20261113/licensed/ghost-images.json",
+      "sha256": "433a6ad0e27c8c029f44a06fceb1ea0a53ee47363dee35ae7f2a99838876decd",
+      "bytes": 23680
+    },
+    "ambushJungleDemonPhotos": {
+      "path": "/tmp/mask-lots40-20261113/licensed/audit-extra-images.json",
+      "sha256": "df64b6db557193940261da5e1b0986373c534bc146b0b97444cd04a9de3ef69e",
+      "bytes": 9827
+    },
+    "ambushNeutralPhotos": {
+      "path": "/tmp/mask-lots40-20261113/licensed/ambush-neutral-images.json",
+      "sha256": "0bb4aa061c700b779997da4fb6ac52f37410204e4a0ea9aa4aaa215ad1884778",
+      "bytes": 3124
+    },
+    "inheritedProxyAndCATrustUsed": true,
+    "deniedCDNRequested": false,
+    "hostRewritten": false,
+    "PinterestRequested": false
+  },
+  "repositoryPixelsOrOldPacksModifiedByAudit": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false
+}

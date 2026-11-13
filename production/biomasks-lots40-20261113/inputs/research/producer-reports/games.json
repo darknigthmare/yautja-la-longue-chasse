@@ -1,0 +1,3380 @@
+{
+  "schemaVersion": 1,
+  "scope": "Forty relevant real games targets/editions:16qualified publisher source studies plus24actual missing named catalogue/bible targets. No fabricated names,outputs or automatic canonical closure.",
+  "asOf": "2026-11-13",
+  "repositoryBaseRequested": "main2b968494...",
+  "localNeutralCheckoutObservedCommit": "a020d79d5c325b280c4c102fd2dc028ff15d2d04",
+  "status": "bounded-40-target-audit-frozen",
+  "limit": 40,
+  "baselinePairs": 69,
+  "candidates": [
+    {
+      "id": "phg-amazon",
+      "name": "Amazon",
+      "work": "Predator:HuntingGrounds",
+      "edition": "HuntingParty2 publisher group-render view",
+      "rigidIdentity": "Visible hard mask only, same observed source camera",
+      "candidateClass": "primary-visible-geometry-with-secondary-identity",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+          "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43",
+          "bytes": 1231313,
+          "dimensions": [
+            995,
+            1101
+          ],
+          "sourceURL": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png",
+          "sourceClass": "official-publisher-CDN-group-render",
+          "sourceOriginCaution": "Native image retrieved previously from publisher Storyblok CDN; individual class identity has not been freshly captioned by publisher. Keep secondary identification explicit."
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/fairyautja-amazon-symbol.png",
+          "sha256": "d3ce59420ef472b51d895098beed5ee6c5ed61b4353480061c1e1d682f7ddac7",
+          "bytes": 31545,
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "sourceClass": "flat-community-class-symbol",
+          "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/amazon.png",
+          "usage": "Identity/silhouette corroboration only; no depth,material or unseen geometry authority."
+        }
+      ],
+      "sourceSubject": "left figure",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "/tmp/mask-lots40-20261113/games/references/fairyautja-data.json",
+        "dataName": "Amazon",
+        "dataId": "CD_Predator_Amazon",
+        "iconPath": "/icons/characters/predator/amazon.png",
+        "qualification": "Community data explicitly maps class name to symbol; symbolic shape corroborates the respective group-render mask. Fresh publisher individual caption not found."
+      },
+      "visualObservations": "Feline/jaguar skull-shaped hard faceplate, dark eye apertures, small paired nasal opening, long canine fangs and worn bone palette. Three-quarter source camera and band/edge treatment must remain as photographed; do not turn it into Feral or another skull helmet.",
+      "exclusions": "Biological lower face, wearer, dreadlocks, body/gear and red targeting glow are excluded; any separate forehead strap ownership must be qualified.",
+      "deduplication": {
+        "manifestPath": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/manifest.json",
+        "manifestSha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+        "baselinePairCount": 69,
+        "exactIdAlreadyPresent": false,
+        "decision": "new visible geometry relative to69 selected pairs, not a mere color variant",
+        "relatedButDistinct": [
+          "mk-07-feral",
+          "mk-30-emissary"
+        ],
+        "caution": "Dedup checks supplied current69; it is not global franchise mesh certification."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-only-candidate",
+        "identity": "secondary-corroborated-not-publisher-caption-certified",
+        "hiddenSidesBack": "insufficient",
+        "fineRelief": "limited by small head region",
+        "generationReady": "root-authorized-source-view-candidate-with-secondary-identity-explicit"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "generationPerformed": true,
+      "canonicalInventoryId": "mk-28-amazon",
+      "generationStatus": "A/Bnative-candidates-generated",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-amazon.json",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-amazon.png",
+          "sha256": "f5a74e9b8539c378e311b7864929a071aec6a617bfc7d0c651ea53f3cea842a8",
+          "bytes": 1576875,
+          "nativeDimensions": [
+            1200,
+            1311
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-amazon.png",
+          "sha256": "19e9c60d46e330940664033f43b8974ec77467aedcf28bc899b967ec0fbe7455",
+          "bytes": 1502536,
+          "nativeDimensions": [
+            1200,
+            1311
+          ]
+        }
+      ],
+      "maskFamily": "phg-amazon",
+      "newCanonicalGeometry": false,
+      "geometryNovelty": "Visibly distinct from baseline69, not canonical mesh certification",
+      "productionReady": false,
+      "generationReceiptSha256": "dc93e3e3a5783ab0500624e63742e64366d9720db59e19dd00783a8bbd2abf1b",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "f5a74e9b8539c378e311b7864929a071aec6a617bfc7d0c651ea53f3cea842a8",
+          "B": "19e9c60d46e330940664033f43b8974ec77467aedcf28bc899b967ec0fbe7455"
+        },
+        "verdict": "source-view-candidate-with-fine-resolution-limitations-no-major-visible-defect",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-pirate",
+      "name": "Pirate",
+      "work": "Predator:HuntingGrounds",
+      "edition": "HuntingParty2 publisher group-render view",
+      "rigidIdentity": "Visible hard mask only, same observed source camera",
+      "candidateClass": "primary-visible-geometry-with-secondary-identity",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+          "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43",
+          "bytes": 1231313,
+          "dimensions": [
+            995,
+            1101
+          ],
+          "sourceURL": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png",
+          "sourceClass": "official-publisher-CDN-group-render",
+          "sourceOriginCaution": "Native image retrieved previously from publisher Storyblok CDN; individual class identity has not been freshly captioned by publisher. Keep secondary identification explicit."
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/fairyautja-pirate-symbol.png",
+          "sha256": "6e8e7c3edaa1dcc7785fdf6d65aa144366ac09f9ff5e4ea3addc3b2d18e3f5cf",
+          "bytes": 82154,
+          "dimensions": [
+            1024,
+            1024
+          ],
+          "sourceClass": "flat-community-class-symbol",
+          "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/pirate.png",
+          "usage": "Identity/silhouette corroboration only; no depth,material or unseen geometry authority."
+        }
+      ],
+      "sourceSubject": "right figure",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "/tmp/mask-lots40-20261113/games/references/fairyautja-data.json",
+        "dataName": "Pirate",
+        "dataId": "CD_Predator_Pirate",
+        "iconPath": "/icons/characters/predator/pirate.png",
+        "qualification": "Community data explicitly maps class name to symbol; symbolic shape corroborates the respective group-render mask. Fresh publisher individual caption not found."
+      },
+      "visualObservations": "Metal lower-face half-mask with long central nose/muzzle shield, curved cheek guards and visible lower circular ring feature. Exposed scalp/head and leather eyepatch are distinct wearer/accessory elements, not a complete metal helmet.",
+      "exclusions": "Organic forehead/scalp, upper face, dreadlocks and separate leather eyepatch are not rigid mask shell. Do not infer a top/back helmet or combine eyepatch into a single fabricated rigid shell.",
+      "deduplication": {
+        "manifestPath": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/manifest.json",
+        "manifestSha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+        "baselinePairCount": 69,
+        "exactIdAlreadyPresent": false,
+        "decision": "new visible geometry relative to69 selected pairs, not a mere color variant",
+        "relatedButDistinct": [
+          "mk-30-emissary"
+        ],
+        "caution": "Dedup checks supplied current69; it is not global franchise mesh certification."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-only-candidate",
+        "identity": "secondary-corroborated-not-publisher-caption-certified",
+        "hiddenSidesBack": "insufficient",
+        "fineRelief": "limited by small head region",
+        "generationReady": "root-authorized-source-view-candidate-with-secondary-identity-explicit"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "generationPerformed": true,
+      "canonicalInventoryId": "mk-29-pirate",
+      "generationStatus": "A/Bnative-candidates-generated",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-pirate.json",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-pirate.png",
+          "sha256": "a2365b70c898c930ef2520c2d5903689e1dd102c0382c7d46479a2e389a987c0",
+          "bytes": 1433209,
+          "nativeDimensions": [
+            1312,
+            1199
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-pirate.png",
+          "sha256": "6270f8520ed4ec28c307c1f8d9a1dd60e073d246c3c74e3e1127f41719c79020",
+          "bytes": 1247934,
+          "nativeDimensions": [
+            1312,
+            1199
+          ]
+        }
+      ],
+      "maskFamily": "phg-pirate",
+      "newCanonicalGeometry": false,
+      "geometryNovelty": "Visibly distinct from baseline69, not canonical mesh certification",
+      "productionReady": false,
+      "geometryDeviationOpen": true,
+      "generationReceiptSha256": "cc85d83a63a21bba662d42340a637165ba5c12fc4a0d38d5f58f129b95fad297",
+      "rejectedAttemptCount": 1,
+      "auditStatus": "reviewed-study-with-open-ring-orientation-reserve",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "a2365b70c898c930ef2520c2d5903689e1dd102c0382c7d46479a2e389a987c0",
+          "B": "6270f8520ed4ec28c307c1f8d9a1dd60e073d246c3c74e3e1127f41719c79020"
+        },
+        "verdict": "source-view-study-with-documented-ring-orientation-reservation",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-falconer-2021",
+      "name": "Falconer",
+      "work": "Predator:HuntingGrounds",
+      "edition": "PS4Pro publisher screenshot,15December2021",
+      "maskFamily": "falconer",
+      "representationOf": "mk-10-falconer",
+      "newCanonicalGeometry": false,
+      "rigidIdentity": "Rigid worn mask, same actual source view",
+      "candidateClass": "official-edition-with-contextual-individual-identity",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-falconer-2021-publisher.jpg",
+          "sha256": "c81e57f0d7a4df613fd74662ba4131d1c3b4d7fbeb1f346cfc788e93756ef6d1",
+          "bytes": 152243,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51736495745_524d30807c_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article identifies the Falconer/Captured/MrBlack trio; individual image identity is contextual and corroborated by V87 mapping, not a printed menu selection.",
+        "publisherText": "The Hunting Party includes Falconer,Captured,and Mr.Black Predators.",
+        "archiveMapping": "V87 links this exact screenshot to Falconer; corroboration only."
+      },
+      "visualObservations": "Bronze/dark gunmetal oval crown, small upper edge points, black eye treatment, long narrow ridged central beak and existing temple lens module. Inclined source perspective preserved.",
+      "exclusions": "Biology,dreads,dread rings,neck,armor,body,shoulder weapon and scene are excluded.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameFamilyAlreadyPresent": [
+          "mk-10-falconer"
+        ],
+        "sameEditionDelivered": false,
+        "reason": "Baseline mk10 source is V62 reconstruction with no primary R; this is a separately documented publisher game-edition camera, not a new geometry."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-candidate",
+        "identity": "editorial-context-plus-archive-corroboration",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-falconer-2021.json",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-falconer-2021.png",
+          "sha256": "a1a2ea1f03bd24877fcec74b9dbab9f0ad1bd2fcec12bf85ca4659899dd5ce50",
+          "bytes": 1488055,
+          "nativeDimensions": [
+            1199,
+            1312
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-falconer-2021.png",
+          "sha256": "f0f0399117a75069aa7020b550fb0e9a9d7e4f561c252ccb0c1d1c2c04449c98",
+          "bytes": 1443424,
+          "nativeDimensions": [
+            1199,
+            1312
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "generationReceiptSha256": "8b3cc39c0513b0e9ad1778f17ffd4e1a07b587ea0bbf7bc5503785df349e2c5e",
+      "rejectedAttemptCount": 1,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "a1a2ea1f03bd24877fcec74b9dbab9f0ad1bd2fcec12bf85ca4659899dd5ce50",
+          "B": "f0f0399117a75069aa7020b550fb0e9a9d7e4f561c252ccb0c1d1c2c04449c98"
+        },
+        "verdict": "corrected-source-view-study-no-major-visible-defect",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-1",
+      "name": "PHG Mask Scars2021 — row1,column1",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column1",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 1,
+        "counting": "left-to-right"
+      },
+      "rigidIdentity": "Detached rigid mask at exact source row1/column1",
+      "candidateClass": "official-positional-damage-state-edition",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112",
+          "bytes": 137273,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column1,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 1,
+          "counting": "left-to-right"
+        }
+      },
+      "visualObservations": "The long rough diagonal slash runs from high image-left forehead toward the lower image-right brow/cheek; preserve its existing split, ragged raised edges and smaller adjacent cuts.",
+      "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this exact publisher screenshot or its source-position scar state; similar project reconstructions do not establish identical edition."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "source-position-only,category-publisher-named",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-1.json",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-1.png",
+          "sha256": "91665dab46e1135bb9bf6842d1f80b3af87627173934e63667b391b0d4635077",
+          "bytes": 1719694,
+          "nativeDimensions": [
+            1145,
+            1374
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-1.png",
+          "sha256": "f884c08d0ead92db266dbcedea7eec8ee022081f9d74b8b5bb7df04a80410bbe",
+          "bytes": 1885073,
+          "nativeDimensions": [
+            1145,
+            1374
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "generationReceiptSha256": "5a0973e5916b88d2fadb80ec3bd0cd33b5f0e9490180f2dc37087a4b59b3553f",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "91665dab46e1135bb9bf6842d1f80b3af87627173934e63667b391b0d4635077",
+          "B": "f884c08d0ead92db266dbcedea7eec8ee022081f9d74b8b5bb7df04a80410bbe"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-2",
+      "name": "PHG Mask Scars2021 — row1,column2",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column2",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 2,
+        "counting": "left-to-right"
+      },
+      "rigidIdentity": "Detached rigid mask at exact source row1/column2",
+      "candidateClass": "official-positional-damage-state-edition",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112",
+          "bytes": 137273,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column2,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 2,
+          "counting": "left-to-right"
+        }
+      },
+      "visualObservations": "The broad rough abraded/gouged band follows the image-right crown and cheek toward the muzzle; preserve the exact torn grain and its boundaries.",
+      "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this exact publisher screenshot or its source-position scar state; similar project reconstructions do not establish identical edition."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "source-position-only,category-publisher-named",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-2.json",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-2.png",
+          "sha256": "e08340405bcc9be7d773a6ae6b96e397cbc8366963cdad19bf38a4e9afc8e6f3",
+          "bytes": 1866290,
+          "nativeDimensions": [
+            1060,
+            1484
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-2.png",
+          "sha256": "8b3ae903059102ec7d34ceba3d7aa63116fda9735ac45af564fd394b2af57ba7",
+          "bytes": 2050515,
+          "nativeDimensions": [
+            1060,
+            1484
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "generationReceiptSha256": "292c9bf4132082e6dac855a48d25aa43a6a7d2544344fe84a552b7744e9b3df2",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "e08340405bcc9be7d773a6ae6b96e397cbc8366963cdad19bf38a4e9afc8e6f3",
+          "B": "8b3ae903059102ec7d34ceba3d7aa63116fda9735ac45af564fd394b2af57ba7"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-3",
+      "name": "PHG Mask Scars2021 — row1,column3",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column3",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 3,
+        "counting": "left-to-right"
+      },
+      "rigidIdentity": "Detached rigid mask at exact source row1/column3",
+      "candidateClass": "official-positional-damage-state-edition",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112",
+          "bytes": 137273,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column3,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 3,
+          "counting": "left-to-right"
+        }
+      },
+      "visualObservations": "The prominent diagonal torn crack traverses from upper image-left forehead to lower central face, with its source crossing finer forehead lines; preserve all visible break routes.",
+      "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this exact publisher screenshot or its source-position scar state; similar project reconstructions do not establish identical edition."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "source-position-only,category-publisher-named",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-3.json",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-3.png",
+          "sha256": "7521f81602ab12d4b0e01cf2753bd0d06ce020442b1e24995b14f0eb23544111",
+          "bytes": 1652040,
+          "nativeDimensions": [
+            1060,
+            1484
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-3.png",
+          "sha256": "e70e7ea75574a63d9d2db902e2f29d2a9b50af9746b37e6d1a05bf644b2d716a",
+          "bytes": 1727266,
+          "nativeDimensions": [
+            1060,
+            1484
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "generationReceiptSha256": "c8f9be844224051052b7254a0863fe18aab63409e768be9f44ef9adb6ffb8e76",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "7521f81602ab12d4b0e01cf2753bd0d06ce020442b1e24995b14f0eb23544111",
+          "B": "e70e7ea75574a63d9d2db902e2f29d2a9b50af9746b37e6d1a05bf644b2d716a"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-4",
+      "name": "PHG Mask Scars2021 — row1,column4",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column4",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 4,
+        "counting": "left-to-right"
+      },
+      "rigidIdentity": "Detached rigid mask at exact source row1/column4",
+      "candidateClass": "official-positional-damage-state-edition",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112",
+          "bytes": 137273,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column4,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 4,
+          "counting": "left-to-right"
+        }
+      },
+      "visualObservations": "The large shattered/rough abrasion field covers the image-left forehead/brow/cheek down toward lower face; preserve which regions remain intact versus damaged.",
+      "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this exact publisher screenshot or its source-position scar state; similar project reconstructions do not establish identical edition."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "source-position-only,category-publisher-named",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-4.json",
+      "generationReceiptSha256": "529748e9de1640a1ef12906206dc8cdf63ee7cf11d668428957ecc1bd5f1ab70",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-4.png",
+          "sha256": "9f71ac0f86375eeede1a8c8480c22527b0a9d64ad0118a2edf9e3efdf73b12f9",
+          "bytes": 1610570,
+          "nativeDimensions": [
+            1070,
+            1470
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-4.png",
+          "sha256": "a86b93d7a22ebc6f2fabac7352b10d55f4e8cb5da56fc0826782fe201888f911",
+          "bytes": 1790381,
+          "nativeDimensions": [
+            1070,
+            1470
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "9f71ac0f86375eeede1a8c8480c22527b0a9d64ad0118a2edf9e3efdf73b12f9",
+          "B": "a86b93d7a22ebc6f2fabac7352b10d55f4e8cb5da56fc0826782fe201888f911"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-5",
+      "name": "PHG Mask Scars2021 — row1,column5",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column5",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 5,
+        "counting": "left-to-right"
+      },
+      "rigidIdentity": "Detached rigid mask at exact source row1/column5",
+      "candidateClass": "official-positional-damage-state-edition",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112",
+          "bytes": 137273,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column5,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 5,
+          "counting": "left-to-right"
+        }
+      },
+      "visualObservations": "The round impact marks occur on image-right forehead and lower image-right cheek; preserve their actual number, sizes and positions without adding extra impacts.",
+      "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this exact publisher screenshot or its source-position scar state; similar project reconstructions do not establish identical edition."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "source-position-only,category-publisher-named",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-5.json",
+      "generationReceiptSha256": "38dd3d9a9142b88567753275c75ed1c17be8fe2e0f6d0f9adacbea31b868ffc7",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-5.png",
+          "sha256": "e82eee7f2a62d5770a9ebd4778da981582b4a6a9fe9331592ed14c742d948700",
+          "bytes": 1661005,
+          "nativeDimensions": [
+            1086,
+            1448
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-5.png",
+          "sha256": "a94497184034fb31125ef56235fe2b7825ceac3915996e09281edc87a1578360",
+          "bytes": 1758963,
+          "nativeDimensions": [
+            1086,
+            1448
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "e82eee7f2a62d5770a9ebd4778da981582b4a6a9fe9331592ed14c742d948700",
+          "B": "a94497184034fb31125ef56235fe2b7825ceac3915996e09281edc87a1578360"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-6",
+      "name": "PHG Mask Scars2021 — row1,column6",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021,PredatorMaskScars,row1,column6",
+      "maskFamily": "phg-hunter",
+      "representationOf": "phg-mask-scars-publisher-2021",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "row": 1,
+        "column": 6,
+        "counting": "left-to-right"
+      },
+      "rigidIdentity": "Detached rigid mask at exact source row1/column6",
+      "candidateClass": "official-positional-damage-state-edition",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mask-scars-2021-publisher.jpg",
+          "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112",
+          "bytes": 137273,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names PredatorMaskScars category; individual identity is source row1/column6,no catalogue name claimed.",
+        "publisherText": "This update also contains the Predator Mask Scars cosmetics.",
+        "sourcePosition": {
+          "row": 1,
+          "column": 6,
+          "counting": "left-to-right"
+        }
+      },
+      "visualObservations": "The crossing long cuts run across the lower forehead and image-right side, with small image-left pits/dents; preserve these exact crossings and the source rim damage.",
+      "exclusions": "All five other masks,scene/background,text/logos; no wearer exists in this detached source.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this exact publisher screenshot or its source-position scar state; similar project reconstructions do not establish identical edition."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "source-position-only,category-publisher-named",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mask-scars-2021-6.json",
+      "generationReceiptSha256": "23f06289a6768b9f8d323560cf0dde85f6100d5832b892314665b07d6e72efe2",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mask-scars-2021-6.png",
+          "sha256": "e001f3a91a7a011a0efa6389224b4f5d467d6775f5beafe2387f54d4d26103e9",
+          "bytes": 1785840,
+          "nativeDimensions": [
+            1060,
+            1484
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-6.png",
+          "sha256": "fbfa5e6492bb8c0f36eb00b9724df9348c97a1e60d446b9038a36aa3125c3b2f",
+          "bytes": 2015556,
+          "nativeDimensions": [
+            1060,
+            1484
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "e001f3a91a7a011a0efa6389224b4f5d467d6775f5beafe2387f54d4d26103e9",
+          "B": "fbfa5e6492bb8c0f36eb00b9724df9348c97a1e60d446b9038a36aa3125c3b2f"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-mr-black-2021",
+      "name": "Mr.Black",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021",
+      "maskFamily": "berserker-mr-black",
+      "representationOf": "mk-35-mr-black",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "rigidIdentity": "Rigid mask with attached bone jaw trophy,actual source camera",
+      "candidateClass": "official-edition-with-contextual-individual-identity",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg",
+          "sha256": "c9c74ec6c6305b81c8e02a280db9de63ebe462f6813757a6c8cedfa00112ef13",
+          "bytes": 139500,
+          "dimensions": [
+            1600,
+            900
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/51736253084_0b31aa452f_h.jpg",
+          "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+          "sourceClass": "official-publisher-screenshot"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names Mr.Black as HuntingParty member and describes super/berserker; exact individual screenshot association is editorial-context plus V87 mapping,not printed menu name.",
+        "publisherText": "The Hunting Party includes Falconer,Captured,and Mr.Black Predators.",
+        "archiveMapping": "V87 links this exact screenshot to MrBlack; corroboration only."
+      },
+      "visualObservations": "Dark purple-gray/gunmetal oval crown with raised arch,black eye inserts,three red physical lenses and attached pale bone jaw trophy. Preserve whole trophy and source camera.",
+      "exclusions": "Living wearer skin/mandibles,neck,dreads,hair rings,body,armor,shoulder weapon and background.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameFamilyAlreadyPresent": [
+          "mk-35-mr-black",
+          "mk-11-berserker"
+        ],
+        "sameEditionDelivered": false,
+        "reason": "Baseline mrblack is secondary monochrome project candidate without native official R; this exact publisher2021 edition is separately documented."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "editorial-context-plus-archive-corroboration",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mr-black-2021.json",
+      "generationReceiptSha256": "95f3ca1ffa8195f9134fe751d63b11f47e9115cfa4596b85748592ae29e1a0b0",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mr-black-2021.png",
+          "sha256": "10db05d06d46866115255a5f703d0257b31a4161994b823f658ad471eebb5e42",
+          "bytes": 1559909,
+          "nativeDimensions": [
+            1266,
+            1242
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mr-black-2021.png",
+          "sha256": "f3baf12b601e2c78df295d5b1f899cfdc13e149ad51ec4877994477a537fffa5",
+          "bytes": 1487048,
+          "nativeDimensions": [
+            1266,
+            1243
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "10db05d06d46866115255a5f703d0257b31a4161994b823f658ad471eebb5e42",
+          "B": "f3baf12b601e2c78df295d5b1f899cfdc13e149ad51ec4877994477a537fffa5"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-celtic-huntingparty3",
+      "name": "Celtic",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,HuntingParty3 publisher group-render,leftfigure",
+      "maskFamily": "celtic",
+      "representationOf": "mk-04-celtic",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "position": "left",
+        "counting": "image-left-to-image-right"
+      },
+      "rigidIdentity": "Rigid worn mask of leftfigure,same source camera",
+      "candidateClass": "official-game-edition-with-secondary-positional-identity",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5",
+          "bytes": 1488048,
+          "dimensions": [
+            995,
+            1101
+          ],
+          "sourceURL": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png",
+          "sourceClass": "official-publisher-CDN-group-render"
+        }
+      ],
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "/tmp/mask-lots40-20261113/games/references/fairyautja-data.json",
+        "dataName": "Celtic",
+        "dataId": "CD_Predator_Celtic",
+        "iconPath": "/icons/characters/predator/celtic.png",
+        "qualification": "Community data proves class name/icon mapping; V87 maps source position. Neither alone certifies exact franchise identity or depth. Official image is visible geometry authority."
+      },
+      "visualObservations": "Rounded dark gunmetal crown,thick curved eye borders and the source long narrow vertical ribbed/channeled muzzle; keep each visible raised lateral cheek loop/ridge and black opaque eye inserts. The source is lit BLUE on this figure; preserve that apparent illumination in A,not new invented blue paint. Keep source-visible tiny physical red temple lenses without emitted halo. Exclude shoulder weapon and other figures.",
+      "exclusions": "All wearer biology,dreads,hair rings,neck,body/armor/weapons,separate skull/neck-bone trophies,other figures and scene.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameFamilyAlreadyPresent": [
+          "mk-04-celtic"
+        ],
+        "sameEditionDelivered": false,
+        "reason": "Baseline family is prior project V62 reconstruction without this native publisher R; game edition/camera is separately documented."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "secondary-corroborated-source-position",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-celtic-huntingparty3.json",
+      "generationReceiptSha256": "44e1854f0387e58846f53570a4e62e706cdf2a5c65950a00ee22c327539a43c2",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-celtic-huntingparty3.png",
+          "sha256": "3cb9d59f8a7e753d9bea4c1fc6a6ff9467166b92f4e657fec4d2de463cf007f4",
+          "bytes": 1259855,
+          "nativeDimensions": [
+            1254,
+            1254
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-celtic-huntingparty3.png",
+          "sha256": "269ee92325c6f772e7c85d0321fbe2bbf34cb6c1fc08daa120a3caea037be090",
+          "bytes": 1361979,
+          "nativeDimensions": [
+            1254,
+            1254
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 1,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "3cb9d59f8a7e753d9bea4c1fc6a6ff9467166b92f4e657fec4d2de463cf007f4",
+          "B": "269ee92325c6f772e7c85d0321fbe2bbf34cb6c1fc08daa120a3caea037be090"
+        },
+        "verdict": "corrected-source-view-study-no-major-visible-defect",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-scar-huntingparty3",
+      "name": "Scar",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,HuntingParty3 publisher group-render,centerfigure",
+      "maskFamily": "scar",
+      "representationOf": "mk-03-scar",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "position": "center",
+        "counting": "image-left-to-image-right"
+      },
+      "rigidIdentity": "Rigid worn mask of centerfigure,same source camera",
+      "candidateClass": "official-game-edition-with-secondary-positional-identity",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5",
+          "bytes": 1488048,
+          "dimensions": [
+            995,
+            1101
+          ],
+          "sourceURL": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png",
+          "sourceClass": "official-publisher-CDN-group-render"
+        }
+      ],
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "/tmp/mask-lots40-20261113/games/references/fairyautja-data.json",
+        "dataName": "Scar",
+        "dataId": "CD_Predator_Bloody",
+        "iconPath": "/icons/characters/predator/scar.png",
+        "qualification": "Community data proves class name/icon mapping; V87 maps source position. Neither alone certifies exact franchise identity or depth. Official image is visible geometry authority."
+      },
+      "visualObservations": "Broad smooth silver-gray domed crown,thick rounded surrounding rim,source small pale/white forehead scar-mark exactly as it is visibly shaped,black opaque eye inserts,and wide long trapezoidal central nose/muzzle plate with rounded darker lower jaw border. Do not invent new runes or replace the source mark with another glyph. Keep source-visible tiny physical red temple lenses without emitted halo. Exclude the armor and upright shoulder weapon behind the head.",
+      "exclusions": "All wearer biology,dreads,hair rings,neck,body/armor/weapons,separate skull/neck-bone trophies,other figures and scene.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameFamilyAlreadyPresent": [
+          "mk-03-scar"
+        ],
+        "sameEditionDelivered": false,
+        "reason": "Baseline family is prior project V62 reconstruction without this native publisher R; game edition/camera is separately documented."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "secondary-corroborated-source-position",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-scar-huntingparty3.json",
+      "generationReceiptSha256": "afa45c26791031490f4d71265f901222c0af197e139249914c3ade177528ef93",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-scar-huntingparty3.png",
+          "sha256": "8664685ba3c6db842929b436cfe0dc82e6234d1e1738fa161506930aa083606d",
+          "bytes": 1270811,
+          "nativeDimensions": [
+            1254,
+            1254
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-scar-huntingparty3.png",
+          "sha256": "c111f2ace0938c5d2a05f38fed1ea038ecd85d71effecfab517e395f103e9c7c",
+          "bytes": 1350679,
+          "nativeDimensions": [
+            1254,
+            1254
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 3,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "8664685ba3c6db842929b436cfe0dc82e6234d1e1738fa161506930aa083606d",
+          "B": "c111f2ace0938c5d2a05f38fed1ea038ecd85d71effecfab517e395f103e9c7c"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-chopper-huntingparty3",
+      "name": "Chopper",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,HuntingParty3 publisher group-render,rightfigure",
+      "maskFamily": "chopper",
+      "representationOf": "mk-05-chopper",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "position": "right",
+        "counting": "image-left-to-image-right"
+      },
+      "rigidIdentity": "Rigid worn mask of rightfigure,same source camera",
+      "candidateClass": "official-game-edition-with-secondary-positional-identity",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-3.png",
+          "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5",
+          "bytes": 1488048,
+          "dimensions": [
+            995,
+            1101
+          ],
+          "sourceURL": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png",
+          "sourceClass": "official-publisher-CDN-group-render"
+        }
+      ],
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "/tmp/mask-lots40-20261113/games/references/fairyautja-data.json",
+        "dataName": "Chopper",
+        "dataId": "CD_Predator_Chopper",
+        "iconPath": "/icons/characters/predator/chopper.png",
+        "qualification": "Community data proves class name/icon mapping; V87 maps source position. Neither alone certifies exact franchise identity or depth. Official image is visible geometry authority."
+      },
+      "visualObservations": "Dark gunmetal rounded crown with curved panel outlines,heavy brow and narrow black opaque eye inserts,long broad central nose plate,and existing stacked wavy horizontal cheek ridges. Keep their source-visible count and exact placement,not added tubes. The source is lit RED on this figure; preserve apparent illumination in A,not new invented red paint. Keep source-visible tiny temple lenses without emitted halo. Exclude BOTH skull trophies mounted behind/above the head,the neck-bone necklace,shoulder equipment and all other figures.",
+      "exclusions": "All wearer biology,dreads,hair rings,neck,body/armor/weapons,separate skull/neck-bone trophies,other figures and scene.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameFamilyAlreadyPresent": [
+          "mk-05-chopper"
+        ],
+        "sameEditionDelivered": false,
+        "reason": "Baseline family is prior project V62 reconstruction without this native publisher R; game edition/camera is separately documented."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-source-view-study",
+        "identity": "secondary-corroborated-source-position",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-chopper-huntingparty3.json",
+      "generationReceiptSha256": "02572c7bd606f7b50d6d7e6f54d5a6abbe8f1c679ebfacf7979ee4c1aed7c01f",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-chopper-huntingparty3.png",
+          "sha256": "bae3f00a745a3ab0a84935da9651f1b4784b904c12dc4dca61672133e9c2c562",
+          "bytes": 1307217,
+          "nativeDimensions": [
+            1254,
+            1254
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-chopper-huntingparty3.png",
+          "sha256": "a3fed5500e3e8b2d60b3ac868814147c6563621428289d5a2a54005503099904",
+          "bytes": 1413114,
+          "nativeDimensions": [
+            1254,
+            1254
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 2,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "bae3f00a745a3ab0a84935da9651f1b4784b904c12dc4dca61672133e9c2c562",
+          "B": "a3fed5500e3e8b2d60b3ac868814147c6563621428289d5a2a54005503099904"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-launch-portrait-04",
+      "name": "PHG2019preview — published photo04",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,10December2019 pre-release preview,publisher photo04",
+      "maskFamily": "unmapped-phg-preview-2019",
+      "representationOf": "publisher-photo-49199095857-preview-mask",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "previewEdition": true,
+      "canonicalIdentityUnmapped": true,
+      "targetClosureEligible": false,
+      "rigidIdentity": "Actual complete rigid mask of source photograph04,same camera",
+      "candidateClass": "official-source-numbered-preview-study",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-b.jpg",
+          "sha256": "5ba1d56d458960664205cd3fb9a52bad7d77b492ae5379b2cbf1b74cd260f8a1",
+          "bytes": 155015,
+          "dimensions": [
+            615,
+            1000
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_b.jpg",
+          "publisherLinkedURL": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_z.jpg",
+          "sourceClass": "official-publisher-same-photo-public-size-variant",
+          "derivation": "Documented public Flickr b=1024size suffix replacing published z=640; same host,photoID and published secret unchanged. No original-secret guess or access bypass."
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-z.jpg",
+          "sha256": "59b86d1b0fbf26fc8d78c1b9283452944481e0d53cf9a38403a670330af2fb7e",
+          "bytes": 72054,
+          "dimensions": [
+            394,
+            640
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_z.jpg",
+          "sourceClass": "publisher-linked-native-original-size"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "publisherAltText": "Predator Hunting Grounds - 04",
+        "photoId": "49199095857",
+        "qualification": "Official preview groups Hunter/Scout/Berserker classes without individually mapping portraits. Exact source photo number is sole individual identity; no class/cosmetic name inferred."
+      },
+      "visualObservations": "The distinctive broad swept horizontal brow/crown rim and its raised geometric open/lattice crown structure must remain with their actual source outline; lower face has source triangular/angular openings and inset patterns. Preserve every coarse visible opening and panel as shown,without inventing full hidden mesh. Source head is tilted upward and turned slightly toward image-right; keep exact projected silhouette. Exclude the raised organic hand and separate thrown disk above/right of the head,including any disk/hardware that is not attached to the mask. Preserve only actually visible small physical red lens point(s) under the brow at image-left; do not infer an unseen triangle or a second module.",
+      "exclusions": "All wearer biology,hair/dreads,hair rings,neck,body/armor,weapons,held hand/disk and scene.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this publisher2019photo. Similar community-project cosmetics do not prove the same preview edition; class names remain unassigned."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-coarse-source-view-preview-study",
+        "identity": "official-photo-number-only",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-launch-portrait-04.json",
+      "generationReceiptSha256": "c3d9bec69a6f03239d6291888273eca2c6027eb85e1573107c86b843b91635f9",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-launch-portrait-04.png",
+          "sha256": "026034de6e0ff669cf0ad36864f9963f7e3c44fb52a44af37192cbe9712db73f",
+          "bytes": 1268802,
+          "nativeDimensions": [
+            1312,
+            1199
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-launch-portrait-04.png",
+          "sha256": "8856b9b246191e89fec74fe6b63d7114f792df5a22f6a80300b26fb094d4cb4f",
+          "bytes": 1344814,
+          "nativeDimensions": [
+            1312,
+            1199
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 1,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "026034de6e0ff669cf0ad36864f9963f7e3c44fb52a44af37192cbe9712db73f",
+          "B": "8856b9b246191e89fec74fe6b63d7114f792df5a22f6a80300b26fb094d4cb4f"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-launch-portrait-05",
+      "name": "PHG2019preview — published photo05",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,10December2019 pre-release preview,publisher photo05",
+      "maskFamily": "unmapped-phg-preview-2019",
+      "representationOf": "publisher-photo-49199095822-preview-mask",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "previewEdition": true,
+      "canonicalIdentityUnmapped": true,
+      "targetClosureEligible": false,
+      "rigidIdentity": "Actual complete rigid mask of source photograph05,same camera",
+      "candidateClass": "official-source-numbered-preview-study",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-05-publisher-b.jpg",
+          "sha256": "85c3a36cd81844c7757dd00ad9430164ef8ebb02176a0d1892df57500dc6aa66",
+          "bytes": 108561,
+          "dimensions": [
+            615,
+            1000
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/49199095822_f0083b004b_b.jpg",
+          "publisherLinkedURL": "https://live.staticflickr.com/65535/49199095822_f0083b004b_z.jpg",
+          "sourceClass": "official-publisher-same-photo-public-size-variant",
+          "derivation": "Documented public Flickr b=1024size suffix replacing published z=640; same host,photoID and published secret unchanged. No original-secret guess or access bypass."
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-05-publisher-z.jpg",
+          "sha256": "56fb81e680a27486c4b4c2ada812b11164550bc0e6c91147c620172864ca3638",
+          "bytes": 52583,
+          "dimensions": [
+            394,
+            640
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/49199095822_f0083b004b_z.jpg",
+          "sourceClass": "publisher-linked-native-original-size"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "publisherAltText": "Predator Hunting Grounds - 05",
+        "photoId": "49199095822",
+        "qualification": "Official preview groups Hunter/Scout/Berserker classes without individually mapping portraits. Exact source photo number is sole individual identity; no class/cosmetic name inferred."
+      },
+      "visualObservations": "Preserve the smooth elongated dark gunmetal crown with its source sweeping curved segmented forehead panel lines,lower narrow brow and dark patterned optical/eye insert,the angular tapered central lower face and the existing swept lateral cheek blades/curves. Keep source head pitched down and turned toward image-right,with asymmetrical projected cheek widths. The raised biological hand and separate smart-disk held to image-right are NOT mask pieces,exclude them entirely. Do not invent a new bright red temple-lens module absent from this source view.",
+      "exclusions": "All wearer biology,hair/dreads,hair rings,neck,body/armor,weapons,held hand/disk and scene.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this publisher2019photo. Similar community-project cosmetics do not prove the same preview edition; class names remain unassigned."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-coarse-source-view-preview-study",
+        "identity": "official-photo-number-only",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-launch-portrait-05.json",
+      "generationReceiptSha256": "1c3322ccd8da60990913c49c121e2723f56f6502007ae100cfb893cf605184e5",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-launch-portrait-05.png",
+          "sha256": "295dc626b402c62d026e446811d337afcf80aa36f9fc605d780e0f76eedbd5d6",
+          "bytes": 1268933,
+          "nativeDimensions": [
+            1137,
+            1383
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-launch-portrait-05.png",
+          "sha256": "5ee1eaffb63472216119c2069c8440af27152d99241eae1f1018dcea5c706415",
+          "bytes": 1303466,
+          "nativeDimensions": [
+            1137,
+            1383
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 0,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "295dc626b402c62d026e446811d337afcf80aa36f9fc605d780e0f76eedbd5d6",
+          "B": "5ee1eaffb63472216119c2069c8440af27152d99241eae1f1018dcea5c706415"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "phg-launch-portrait-06",
+      "name": "PHG2019preview — published photo06",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Predator:HuntingGrounds,10December2019 pre-release preview,publisher photo06",
+      "maskFamily": "unmapped-phg-preview-2019",
+      "representationOf": "publisher-photo-49198892311-preview-mask",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "previewEdition": true,
+      "canonicalIdentityUnmapped": true,
+      "targetClosureEligible": false,
+      "rigidIdentity": "Actual complete rigid mask of source photograph06,same camera",
+      "candidateClass": "official-source-numbered-preview-study",
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-06-publisher-b.jpg",
+          "sha256": "6793ce5bd93ab4c2edd2d3c6a5f8708f7cf1228b9a238be9db63be71fa44b217",
+          "bytes": 140616,
+          "dimensions": [
+            615,
+            1000
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/49198892311_6fa7226f69_b.jpg",
+          "publisherLinkedURL": "https://live.staticflickr.com/65535/49198892311_6fa7226f69_z.jpg",
+          "sourceClass": "official-publisher-same-photo-public-size-variant",
+          "derivation": "Documented public Flickr b=1024size suffix replacing published z=640; same host,photoID and published secret unchanged. No original-secret guess or access bypass."
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-06-publisher-z.jpg",
+          "sha256": "b68fe23e4ab256759e6bda2e86c060ae748ab088592675526e5bc88dac02da91",
+          "bytes": 65601,
+          "dimensions": [
+            394,
+            640
+          ],
+          "sourceURL": "https://live.staticflickr.com/65535/49198892311_6fa7226f69_z.jpg",
+          "sourceClass": "publisher-linked-native-original-size"
+        }
+      ],
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "publisherAltText": "Predator Hunting Grounds - 06",
+        "photoId": "49198892311",
+        "qualification": "Official preview groups Hunter/Scout/Berserker classes without individually mapping portraits. Exact source photo number is sole individual identity; no class/cosmetic name inferred."
+      },
+      "visualObservations": "Preserve the tall rounded silver/green-gray metallic crown with its distinctive upper three-lobed/curved rising rim and dark rounded recessed panel areas,existing source seams,the dark narrow eye region and long angular central nose/muzzle with its source forked/segmented lower ridges. Keep exact downward-inclined near-front source camera and projected asymmetry. Image-LEFT temple has exactly THREE small physical red lens points visible in its compact source triangle; keep only that actual module and do not invent opposite-side lenses. Do not remove the true rigid upper rim as hair or biological head.",
+      "exclusions": "All wearer biology,hair/dreads,hair rings,neck,body/armor,weapons,held hand/disk and scene.",
+      "deduplication": {
+        "baselinePairs": 69,
+        "sameEditionDelivered": false,
+        "reason": "No baseline pair uses this publisher2019photo. Similar community-project cosmetics do not prove the same preview edition; class names remain unassigned."
+      },
+      "sufficiency": {
+        "visibleView": "sufficient-for-coarse-source-view-preview-study",
+        "identity": "official-photo-number-only",
+        "hiddenViews": "insufficient"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "productionReady": false,
+      "generationPerformed": true,
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-launch-portrait-06.json",
+      "generationReceiptSha256": "b2122e7d4cefa1d1df927c6ca1b724b985b7bcdd30332ca0689dcb989166bbb6",
+      "generatedAssets": [
+        {
+          "version": "A",
+          "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-launch-portrait-06.png",
+          "sha256": "220561668d9f3684a9b0df4bb42e02c6960ee7f4d5dba9bb47792f07fb8e0c31",
+          "bytes": 1349461,
+          "nativeDimensions": [
+            1086,
+            1448
+          ]
+        },
+        {
+          "version": "B",
+          "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-launch-portrait-06.png",
+          "sha256": "afe2b3a83302437a58c9f7c33d16f8f6eaea2991583fabb09a42fa473e3d5d69",
+          "bytes": 1463610,
+          "nativeDimensions": [
+            1086,
+            1448
+          ]
+        }
+      ],
+      "generationStatus": "A/Bnative-candidates-generated",
+      "rejectedAttemptCount": 1,
+      "auditStatus": "independently-reviewed-source-edition-study",
+      "canonicalRequirementClosed": false,
+      "independentReview": {
+        "snapshotPath": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+        "snapshotSha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+        "reviewedAssetPins": {
+          "A": "220561668d9f3684a9b0df4bb42e02c6960ee7f4d5dba9bb47792f07fb8e0c31",
+          "B": "afe2b3a83302437a58c9f7c33d16f8f6eaea2991583fabb09a42fa473e3d5d69"
+        },
+        "verdict": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "sourceLimited": true,
+        "humanArtValidated": false,
+        "canonCertified": false,
+        "runtimeIntegrated": false
+      }
+    },
+    {
+      "id": "mk-31-bionic",
+      "name": "Bionic",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [
+          "Bionic Predator"
+        ],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Bionic_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": "Separate head layer: glowing red cybernetic implant in place of the RIGHT eye, metal plates bolted onto skull and face.",
+        "bibleWork": "Bionic, PHG"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 12,
+          "values": {
+            "Yautja / classe": "Bionic Predator",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Predator: Hunting Grounds",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Bionic_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "/tmp/mask-lots40-20261113/games/references/phg-bionic-publisher.png",
+          "sha256": "0228497c95cf187ed21a9851b46aa834d0c192a62df2d9b426ef8f213c7de007",
+          "bytes": 1070761,
+          "dimensions": [
+            995,
+            1101
+          ],
+          "sourceURL": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/8449c6f835/bionic.png",
+          "sourceClass": "official-publisher-CDN-render",
+          "usage": "Bare cybernetic wearer head and partly occluded held mask; insufficient whole rigid mask."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Publisher Bionic head is bare/cybernetic: the bible itself requires a separate head/implant layer,not an assumed complete helmet. The actual held rigid mask is partly covered by fingers/equipment; no whole boundary or named cosmetic identity is established.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [
+          "Bionic Predator"
+        ],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-hunter",
+      "name": "Hunter(PHG)",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-hunter-flat-symbol.png",
+          "sha256": "ec12127617a4c9d46f01d1180bb4ef57668bfd36abdda31b179db9b7553ec701",
+          "bytes": 2867,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/hunter.png",
+          "sourceClass": "class-emblem",
+          "visualObservations": "Three separate abstract white curved strokes. Not a mask or a character portrait.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "The class icon is three abstract white strokes,not a helmet. The official2019article groups Hunter/Scout/Berserker but labels portraits04/05/06 only by image number; neither order nor body build maps a default Hunter mask. The new source-numbered previews cannot close this name.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-scout",
+      "name": "Scout(PHG)",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-scout-flat-symbol.png",
+          "sha256": "769776e8c18e4b6dbe1b6f79024f55cc3ce4739244f2e7873c602301d8460d08",
+          "bytes": 2482,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/scout.png",
+          "sourceClass": "class-emblem",
+          "visualObservations": "Abstract swept star/bird-like class mark. Not a mask or a character portrait; no relation proved to Lost/Scout NECA.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "The class icon is an abstract swept mark,not sculpted helmet depth. The three official launch portraits are individually unmapped. Lost/Scout NECA is a different named edition and must not be renamed PHGScout.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-berserker",
+      "name": "Berserker(PHG class)",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-berserker-flat-symbol.png",
+          "sha256": "7c6166d19cbdfce21bbabafbbb281e1986138cda1501d4c6186efe02e2bccedc",
+          "bytes": 3037,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/berserker.png",
+          "sourceClass": "class-emblem",
+          "visualObservations": "Three ascending curved claw/flame strokes. Not a mask or a character portrait.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "The class symbol consists of curved claw/flame strokes,not a mask. No individual class-to-portrait/default-mask mapping is proved; film Berserker/Mr.Black and the2021publisher Mr.Black edition do not automatically establish the distinct PHGclass default.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "mk-26-anubis",
+      "name": "Anubis",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Anubis_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": "Elongated jackal-like mask with tall ears and long snout, dark metal with gold plating, glowing eyes.",
+        "bibleWork": "Anubis, PHG"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 7,
+          "values": {
+            "Yautja / classe": "Anubis Predator",
+            "Type": "Individu jouable",
+            "Jeu principal": "Predator: Hunting Grounds",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Anubis_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-anubis-flat-symbol.png",
+          "sha256": "6605d67bb54452967c72a90e9311681528274ca9adb3322074b304c40f028fe0",
+          "bytes": 5202,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/anubis.png",
+          "sourceClass": "mask-line-symbol",
+          "visualObservations": "Long jackal ears above thin pointed oval brow, central small oval crest, diagonal eye cuts and narrow tapered lower muzzle. 128px line art, hidden shape/material unknown.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Only a flat named class/mask line symbol and textual jackal/ears description are available. They do not establish depth,material,camera or hidden muzzle/ear construction; no actual whole publisher mask photograph was acquired in bounded searches.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "mk-27-witch",
+      "name": "Witch",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Witch_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": "Skull-like bone mask with ornamental antlers, tusks and feathers, tribal look.",
+        "bibleWork": "Witch, PHG"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 68,
+          "values": {
+            "Yautja / classe": "Witch Predator",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Predator: Hunting Grounds",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Witch_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-witch-flat-symbol.png",
+          "sha256": "c1cc3e265393d9fe788d64d2a91505d77cf249cb5452364a40ea7dffb3233232",
+          "bytes": 4423,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/witch.png",
+          "sourceClass": "class-emblem",
+          "visualObservations": "Three lashed sticks form a triangle with three dots inside. Does not depict a biomask.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Named icon is a class emblem rather than a complete shaded sculpture. Text/filenames describing bone,antlers or feathers cannot determine actual rigid-shell boundaries or attachment ownership; no qualified whole source view.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-exalted",
+      "name": "Exalted",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Exalted_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 27,
+          "values": {
+            "Yautja / classe": "Exalted Predator",
+            "Type": "Individu jouable",
+            "Jeu principal": "Predator: Hunting Grounds",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Exalted_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-exalted-flat-symbol.png",
+          "sha256": "69e785244c0183edd7b405b9a4a76b852cd889df25e09569279b853f0eeb5424",
+          "bytes": 5518,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/exalted.png",
+          "sourceClass": "mask-line-symbol",
+          "visualObservations": "Wide high domed brow with short top stem, large black eye openings, ornate curving cheek/mouth forms. 128px graphic, no material/depth proof.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Small flat class/mask line symbol has no shaded geometry or material. Local V85 reconstructed armor/dread texture labels are not an original worn-mask screenshot; no reliable whole source-view relief.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-gladiator",
+      "name": "Gladiator",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Gladiator_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 32,
+          "values": {
+            "Yautja / classe": "Gladiator Predator",
+            "Type": "Individu jouable",
+            "Jeu principal": "Predator: Hunting Grounds",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Gladiator_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-gladiator-flat-symbol.png",
+          "sha256": "eb7f18c0867b33e0e6cda2ce40cda321dd60f686dac4730318e90a610ad9f876",
+          "bytes": 7524,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/gladiator.png",
+          "sourceClass": "mask-line-symbol",
+          "visualObservations": "Roman gladiator-inspired helmet with tall thin central fin, arched brow, patterned/perforated eye zones and central lower vertical plate. 128px line art.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Named flat symbol and generated armor/costume labels do not establish a shaded physical mask. Official-site/PSBlog bounded search did not provide an individually identified whole helmet view.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-oni",
+      "name": "Oni(PHG)",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Oni_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 42,
+          "values": {
+            "Yautja / classe": "Oni Predator",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Predator: Killer of Killers (2025)",
+            "Identité distincte ?": "Oui",
+            "Notes": "Aussi catalogué comme Predator (Feudal Era).",
+            "Source URL": "https://avp.fandom.com/wiki/Oni_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-oni-flat-symbol.png",
+          "sha256": "3b555a6a8b9fbacf9805a278eaeb64d5cb37b847211190dc8cb44bc342544d12",
+          "bytes": 5155,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/oni.png",
+          "sourceClass": "mask-line-symbol",
+          "visualObservations": "High rounded tapered forehead, V seam, deep angled eye strips/cheek vents and narrow projecting central lower wedge. 128px line art.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Only a flat game class symbol is available. The catalogue rowOni also points to KillerOfKillers2025; the PHGclass must remain distinct from that film character. No game mask source is proved by the shared name.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-jotun",
+      "name": "Grendel/Jotun(PHG)",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [
+          "Grendel(Yautja)",
+          "Jotun Predator"
+        ],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Jotun_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 36,
+          "values": {
+            "Yautja / classe": "Jotun Predator",
+            "Type": "Alias",
+            "Jeu principal": "Predator: Hunting Grounds (alias de Grendel)",
+            "Identité distincte ?": "Alias",
+            "Nom canonique": "Grendel (Yautja)",
+            "Source URL": "https://avp.fandom.com/wiki/Jotun_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-jotun-flat-symbol.png",
+          "sha256": "4b76b0c70c60bde570f5474a27730571b58b566744f8515dbd524fe19fda01b7",
+          "bytes": 4862,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/jotun.png",
+          "sourceClass": "mask-line-symbol",
+          "visualObservations": "High shield-shaped forehead with two pointed outer upper edges, narrow angled eyes and divided long lower sides around open central shape. 128px line art.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Jotun is catalogued as an alias of Grendel; merged as one target. A small flat symbol and reconstructed strap/armor names do not establish this game mask's depth or exact sculpture.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [
+          "Grendel(Yautja)",
+          "Jotun Predator"
+        ],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "phg-father",
+      "name": "Njohrr/Father(PHG)",
+      "work": "Predator:HuntingGrounds",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [
+          "Njohrr",
+          "Father Predator"
+        ],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Father_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": null,
+        "bibleWork": "Predator: Hunting Grounds"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 30,
+          "values": {
+            "Yautja / classe": "Father Predator",
+            "Type": "Alias",
+            "Jeu principal": "Predator: Hunting Grounds (alias de Njohrr)",
+            "Identité distincte ?": "Alias",
+            "Nom canonique": "Njohrr",
+            "Source URL": "https://avp.fandom.com/wiki/Father_Predator"
+          }
+        }
+      ],
+      "references": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/blocked-father-flat-symbol.png",
+          "sha256": "e1b269c11beb1367a4cc599fdb5ca67ba1c6e27ad9590dc1d3a6e35d48ff20de",
+          "bytes": 3058,
+          "dimensions": [
+            128,
+            128
+          ],
+          "sourceURL": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/father.png",
+          "sourceClass": "mask-symbol",
+          "visualObservations": "Wide antler-like branching upper silhouette with low eye slots and two lower dark openings. 128px silhouette, no material/depth proof.",
+          "usage": "Identity/flat symbol only; no depth/material/unseen geometry authority."
+        }
+      ],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Father is an alias of Njohrr and is not counted twice. The named flat icon and generated beige-mask texture do not establish an original full helmet; no new canonical facial construction inferred from the alias.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [
+          "Njohrr",
+          "Father Predator"
+        ],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "mk-54-claw",
+      "name": "Claw",
+      "work": "AliensvsPredator2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Claw",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": "Jungle Hunter based helmet with four vertical red stripes and blood streaks on the front.",
+        "bibleWork": "Claw, *AvP* (2010)"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 19,
+          "values": {
+            "Yautja / classe": "Claw",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Voir la source individuelle",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Claw"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Bible text specifies four red stripes/blood on a JungleHunter-like base,but no actual identified original game mask image has been acquired. Recoloring a generic JungleHunter or copying Dark would invent the exact edition/pattern/camera.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "mk-55-dark",
+      "name": "Dark",
+      "work": "AliensvsPredator2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Dark",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": "Jungle Hunter based helmet (same base as Claw, without the stripes).",
+        "bibleWork": "Dark, *AvP* (2010)"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 21,
+          "values": {
+            "Yautja / classe": "Dark",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Aliens vs. Predator (2010)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Dark"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Local V44 costume is supplied illustrated reconstruction with filename-only identity,not original game screenshot/mesh. A JungleHunter-based textual description does not prove the game helmet geometry,UV or camera.",
+      "excludedReconstruction": {
+        "path": "public/game/sprites/v44/user-hunters/422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff.png",
+        "sha256": "422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff",
+        "bytes": 2293547,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "dark",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/dark/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: worn silver/gray rounded dome with panel outlines, black narrow eye apertures, broad angular vertical muzzle and circular temple fitting. No original game screenshot provenance.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "avp2010-spartan",
+      "name": "Spartan",
+      "work": "AliensvsPredator2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Spartan",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 48,
+          "values": {
+            "Yautja / classe": "Spartan",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Aliens vs. Predator (2010)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Spartan"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Catalogue proves a game identity lead but supplies only a secondary URL,not photographed/selected mask pixels. PSBlog2010material found in this pass is mostly video/context,not a useful identified full mask view.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "avp2010-wolf-elite",
+      "name": "Wolf(EliteClan)",
+      "work": "AliensvsPredator2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Wolf_%28Elite_Clan%29",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 70,
+          "values": {
+            "Yautja / classe": "Wolf (Elite Clan)",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Aliens vs. Predator (2010)",
+            "Identité distincte ?": "Oui",
+            "Notes": "Individu du jeu AVP (2010), distinct du Wolf d'AVPR malgré le nom et une inspiration visuelle communes.",
+            "Source URL": "https://avp.fandom.com/wiki/Wolf_%28Elite_Clan%29"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "The catalogue explicitly distinguishes this game individual from Wolf(Earth/AVPR). Supplied V44 costume by filename is not game-source geometry; existing movieWolf does not close this edition.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "avp2010-stalker-elite",
+      "name": "Stalker(EliteClan)",
+      "work": "AliensvsPredator2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Stalker_%28Elite_Clan%29",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 50,
+          "values": {
+            "Yautja / classe": "Stalker (Elite Clan)",
+            "Type": "Individu / skin de jeu",
+            "Jeu principal": "Aliens vs. Predator (2010)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Stalker_%28Elite_Clan%29"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Stalker(title),LostTribeStalker and KennerStalker are not the same game skin. The catalogue names this AVP2010skin but no identified original whole mask screenshot was acquired; no named-to-shape mapping by similarity.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "avp2010-unnamed-elite-bg386",
+      "name": "UnnamedElitePredator(BG-386)",
+      "work": "AliensvsPredator2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Unnamed_Elite_Predator_%28BG-386%29",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 56,
+          "values": {
+            "Yautja / classe": "Unnamed Elite Predator (BG-386)",
+            "Type": "Individu anonyme désigné",
+            "Jeu principal": "Aliens vs. Predator (2010)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Unnamed_Elite_Predator_%28BG-386%29"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "An unnamed game individual is a real catalogue lead,not a new proved mask family. No original selected screenshot identifies its whole rigid mask distinctly from other EliteClan characters; group/rank alone is insufficient.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "mk-17-lord",
+      "name": "Lord",
+      "work": "UNRESOLVED:PrimalHunt2002 versus AVP2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Lord",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": "Ornate high-rank mask (the source gives no visual detail).",
+        "bibleWork": "Lord, *Aliens vs. Predator* (2010)"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 39,
+          "values": {
+            "Yautja / classe": "Lord",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Aliens versus Predator 2: Primal Hunt (2002)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Lord"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "work-conflict"
+      },
+      "blockedReason": "Concrete work conflict: catalogue Jeuxvideo row39 attributes Lord to PrimalHunt2002; bibleMK17 attributes Lord to AVP2010. Both point only to secondary text; supplied tall bronze V44 illustration cannot resolve work or mask identity. No edition chosen.",
+      "excludedReconstruction": {
+        "path": "public/game/sprites/v44/user-hunters/41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44.png",
+        "sha256": "41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44",
+        "bytes": 2524606,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "lord",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/lord/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: tall bronze/gold crown-like crest with horizontal and vertical ribs and leaf/stud fringe; long central nose structure, organic lower mandibles, pale dreadlocks and red cape. No original game screenshot provenance. Distinct from the supplied Serpent Hunter drawing.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "mk-56-alien-head",
+      "name": "AlienHead/SerpentHunter",
+      "work": "AliensvsPredator2010",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [
+          "Serpent Hunter Predator",
+          "Alien Head Predator"
+        ],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Alien_Head_Predator",
+        "secondaryCitationFetchedThisPass": false,
+        "bibleDescription": "Bio-helmet shaped like a Xenomorph's head.",
+        "bibleWork": "Alien Head, *AvP* (2010)"
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 2,
+          "values": {
+            "Yautja / classe": "Alien Head Predator",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Voir la source individuelle",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Alien_Head_Predator"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Alias names are merged into one game target. V44 SerpentHunter illustration is not original AVP2010geometry. Any separately produced NECA Series17study is a licensed toy edition and must not be counted as an exact game screenshot/mesh or a second alias target.",
+      "excludedReconstruction": {
+        "path": "public/game/sprites/v44/user-hunters/50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b.png",
+        "sha256": "50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b",
+        "bytes": 2445222,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "serpent_hunter",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/03_AVP/serpent_hunter/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: long swept-back alien-like rear dome, large raised silver forehead panel, narrow snout and vertical teeth-like front slots. Underlying wearer and gear visible. Filename grouping supports only the supplied illustration; canonical AVP2010 model not acquired.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [
+          "Serpent Hunter Predator",
+          "Alien Head Predator"
+        ],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "avp2-prince",
+      "name": "Prince",
+      "work": "AliensversusPredator2,2001",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Prince",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 44,
+          "values": {
+            "Yautja / classe": "Prince",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Aliens versus Predator 2 (2001)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Prince"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "A named V44 costume reconstruction exists but has no original game/manual/model provenance. The catalogue identifies Prince,not an exact removable mask contour; no qualified whole original view found.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "primalhunt-ancient-lv1201",
+      "name": "AncientPredator(LV-1201)",
+      "work": "AliensversusPredator2:PrimalHunt,2002",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Ancient_Predator_%28LV-1201%29",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 6,
+          "values": {
+            "Yautja / classe": "Ancient Predator (LV-1201)",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Aliens versus Predator 2: Primal Hunt (2002)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Ancient_Predator_%28LV-1201%29"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "The named supplied costume/title does not establish original game mask topology. PrimalHuntAncient must not be merged with the conflicting Lord label or an ExtinctionAncient filename; no identified whole source view.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "concretejungle-elder-new-way-city",
+      "name": "Elder(NewWayCity)",
+      "work": "Predator:ConcreteJungle2005",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Elder_%28New_Way_City%29",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 23,
+          "values": {
+            "Yautja / classe": "Elder (New Way City)",
+            "Type": "Individu de jeu vidéo",
+            "Jeu principal": "Predator: Concrete Jungle",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Elder_%28New_Way_City%29"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "A catalogue character lead is not a rigid mask image. The inspected public recompilation repository deliberately excludes game code/data and its22PNGfiles are UI/controller/radar art; no Elder helmet geometry/render supplied.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "concretejungle-long-spear",
+      "name": "LongSpear",
+      "work": "Predator:ConcreteJungle2005",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Long_Spear",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 38,
+          "values": {
+            "Yautja / classe": "Long Spear",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Predator: Concrete Jungle (2005)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Long_Spear"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Supplied V44 LongSpear costume filename has no original game provenance. No whole rigid mask source was obtained; public recompilation repository contains UI replacements rather than character masks.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "concretejungle-swift-knife",
+      "name": "SwiftKnife",
+      "work": "Predator:ConcreteJungle2005",
+      "candidateClass": "named-game-target-blocked-source",
+      "auditStatus": "blocked-no-qualified-native-mask-source",
+      "generationPerformed": false,
+      "generationReady": false,
+      "generationStatus": "not-generated",
+      "rigidIdentity": "Not established from a qualified whole visual source for this exact game edition.",
+      "identityEvidence": {
+        "kind": "catalogue/bible identity pointer only,not image authority",
+        "aliasesMerged": [],
+        "secondaryCitationURL": "https://avp.fandom.com/wiki/Swift_Knife",
+        "secondaryCitationFetchedThisPass": false
+      },
+      "sourceLocations": [
+        {
+          "catalogueAuditPath": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+          "catalogueAuditSha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+          "originalWorkbook": {
+            "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+            "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+            "bytes": 62111
+          },
+          "sheet": "Jeux vidéo",
+          "row": 54,
+          "values": {
+            "Yautja / classe": "Swift Knife",
+            "Type": "Individu nommé ou surnommé",
+            "Jeu principal": "Predator: Concrete Jungle (2005)",
+            "Identité distincte ?": "Oui",
+            "Source URL": "https://avp.fandom.com/wiki/Swift_Knife"
+          }
+        }
+      ],
+      "references": [],
+      "sourceSufficiency": {
+        "visibleGeometry": "insufficient",
+        "material": "insufficient",
+        "camera": "unestablished for named exact edition",
+        "identity": "catalogue/bible lead only; actual shape-source mapping absent"
+      },
+      "blockedReason": "Supplied V44 SwiftKnife illustration establishes intended filename only,not the original mask. No identified game screenshot or mesh/material pair establishes its full rigid faceplate; UI-only repository images cannot fill this gap.",
+      "excludedReconstruction": null,
+      "deduplication": {
+        "baselinePairCount": 69,
+        "aliasMerged": [],
+        "strictSourceDuplicateGenerated": false,
+        "newCanonicalGeometry": false,
+        "warning": "Character/rank/class names and alternate aliases are not new mask geometries."
+      },
+      "neededNext": "An actually observed identified original-work mask screenshot/render or qualified licensed edition view with whole rigid silhouette,camera and source provenance; no name-only generation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "canonicalRequirementClosed": false,
+      "pixelEditingPerformed": false
+    }
+  ],
+  "excludedLeads": [
+    {
+      "name": "Bionic held mask",
+      "work": "Predator:HuntingGrounds",
+      "edition": "Bionic publisher render",
+      "referencePath": "/tmp/mask-lots40-20261113/games/references/phg-bionic-publisher.png",
+      "sourceURL": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/8449c6f835/bionic.png",
+      "sha256": "0228497c95cf187ed21a9851b46aa834d0c192a62df2d9b426ef8f213c7de007",
+      "dimensions": [
+        995,
+        1101
+      ],
+      "bytes": 1070761,
+      "decision": "insufficient-for-complete-mask",
+      "reason": "Wearer head is biological/cybernetic and unmasked. Actual held rigid shell is partly hidden by fingers/equipment; precise lower contours and cosmetic identity need another source. No hidden shape reconstruction.",
+      "generated": false
+    }
+  ],
+  "networkPolicy": "Unchanged custom9hosts; no repeat known CONNECT403, no host rewriting or restriction bypass.",
+  "imageGenerationPerformed": true,
+  "newPackFilesWritten": true,
+  "counts": {
+    "targetAuditRecords": 40,
+    "qualifiedPublishedEditionStudies": 16,
+    "blockedNamedGameTargets": 24,
+    "qualifiedStudiesWithAandB": 16,
+    "selectedNativeImages": 32,
+    "sourceNumbered2019PreviewStudies": 3,
+    "positional2021DamageStateStudies": 6,
+    "newCanonicalGeometriesCertified": 0,
+    "canonicalRequirementsClosed": 0,
+    "inventedFillerRecords": 0,
+    "independentlyReviewedEditionStudies": 16,
+    "openNamedSourceDependencies": 24
+  },
+  "all40Generated": false,
+  "allCanonicalRequirementsClosed": false,
+  "sourcePins": [
+    {
+      "path": "production/biomasks-lots40-20261113/references/games/catalogue-citations-audit.json",
+      "sha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+      "bytes": 454604
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+      "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de",
+      "bytes": 361243
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/games/prior-phg-reference-audit.json",
+      "sha256": "3d6d957daf9eef90d68e2762999279069a90a4b27e671f72b56199d0bb2051b6",
+      "bytes": 22181
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/games/prior-games-reference-audit.json",
+      "sha256": "a0a2cd59974fb9829be4e4ca4be9191b3738b40e8ca55c3ca16041470fd8730e",
+      "bytes": 64346
+    },
+    {
+      "path": "public/game/biomasks-neutral-20261113/manifest.json",
+      "sha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+      "bytes": 1127260
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/games/games-independent-review-snapshot.json",
+      "sha256": "2b9d7888dbcbdb367013102b893baf8f861806d66e611aed4ca6de8f734d8d2e",
+      "bytes": 314593,
+      "role": "Documentary independent-agent review snapshot,not an image input or human/canonical approval."
+    }
+  ],
+  "dedupRules": [
+    "Father/Njohrr merged; Jotun/Grendel merged; AlienHead/SerpentHunter merged.",
+    "PHGOni kept distinct from KillerOfKillersOni; WolfEliteClan distinct from AVPRWolf; Lost/ScoutNECA never relabeled PHGScout.",
+    "2019numbered previews are not Hunter/Scout/Berserker default-mask identifications.",
+    "Documented game editions/states may share a known mask family; no new canonical geometry claimed.",
+    "SixMaskScars remain exact row1/column1..6,not invented cosmetic names."
+  ],
+  "sourceAndNetworkLimits": [
+    "Only actually retrieved publisher native images or explicitly qualified community evidence are shape inputs.",
+    "Unchanged configured network policy,no denied-host retries,no host rewriting/auth bypass,no guessed original-photo secrets.",
+    "Flickr_b variants retain publisherLinkedURL_z separately; same host/ID/secret and actual native size615x1000verified.",
+    "PSBlogAVP2010articles found mostly video/context; no usable named full-mask original captured.",
+    "GitHubConcreteJungle port excludes game data;22UI PNGs do not establish character mask geometry."
+  ],
+  "deferredBeyondBounded40": [
+    {
+      "name": "Stone Heart",
+      "catalogueRow": 52,
+      "work": "Concrete Jungle2005",
+      "reason": "Real character lead,but mutated/cyborg anatomy is not automatically a removable mask. No qualified original rigid-mask view; retain for next bounded audit."
+    },
+    {
+      "name": "Scarface game-original edition",
+      "canonicalTargetId": "mk-57-scarface",
+      "reason": "NECA2016edition already delivered; original game pixels still need a qualified source,not a filename costume or UI-only port."
+    },
+    {
+      "names": [
+        "Ritual",
+        "Alien",
+        "BadBlood"
+      ],
+      "reason": "Requested possible ConcreteJungle skin labels are not proved as distinct rigid mask editions by the inspected catalogue/source images; require an actual named unlock/menu/screenshot before promoting to mask targets."
+    }
+  ],
+  "nativeIntegrity": {
+    "path": "production/biomasks-lots40-20261113/references/games/games-native-integrity.json",
+    "sha256": "7c01dd065c05c70de29806f771b633be2d13f4bf954eae244697938bd374db21",
+    "pairs": 16,
+    "selectedNativeImages": 32,
+    "rejectedNativeImagesRetained": 10
+  },
+  "qualifiedPublishedStudiesAandBComplete": true,
+  "historicalFilesPresentBeforeTaskModified": false,
+  "allRejectedNativePNGsRetained": true,
+  "portableSourceNotes": "Selected PNGs and exact R natives are repository-relative and sufficient for pack construction; ImageGen private native paths in receipts and scratch paths inside exact prior documentary snapshots are provenance only,not required build origins.",
+  "neutralCHandledSeparately": "Technical B→C recipe and alpha-preserving derivation are owned by central pack builder; this report counts ImageGen A/B only.",
+  "sourceViewReservations": [
+    {
+      "id": "phg-pirate",
+      "reason": "A/B1 ring remains more front-facing than source; over-flatA2rejected. Retained as source-view study with explicit orientation reserve,no canonical/production closure."
+    }
+  ],
+  "canonicalClosureCount": 0
+}

@@ -1,0 +1,2695 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13T16:48:20.888405+00:00",
+  "allChecksPassed": true,
+  "verification": "independent-python-pillow-every-pixel",
+  "fullProductionVerification": true,
+  "partialVerifiedOnly": false,
+  "manifest": {
+    "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/manifest.json",
+    "sha256": "b77096e449b1224783b5cc826baad5432be4a72429899f5afb913f2521b093e7",
+    "bytes": 1689117
+  },
+  "counts": {
+    "expectedRepresentations": 46,
+    "verifiedRepresentations": 46,
+    "failedRepresentations": 0,
+    "pixelsCompared": 72346794
+  },
+  "verifier": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "methodId": "srgb8-rec709-luma-v1",
+    "importsConverterImplementation": false,
+    "writesImages": false
+  },
+  "issues": [],
+  "entries": [
+    {
+      "id": "neca-ambush-convention-exclusive-2015",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-ambush-convention-exclusive-2015.png",
+        "sha256": "e7704e29d203f30eeb270deba49fda416d0d836d66767a58e49c3114e951db13",
+        "bytes": 1964683
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-ambush-convention-exclusive-2015.png",
+        "sha256": "35583a201160035f7fe7ba7bb3f64ee104a2a2256b4143d276f48b07ab6fc53b",
+        "bytes": 1095096
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573044,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "036c81f0a7c06ba77d96f2f2dc0435adbb717d1a6650934ed8c1240d46d6dcc8",
+        "outputAlphaSha256": "036c81f0a7c06ba77d96f2f2dc0435adbb717d1a6650934ed8c1240d46d6dcc8",
+        "sourceNonzeroAlphaPixels": 733423,
+        "outputNonzeroAlphaPixels": 733423,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-ancient-warrior-series-15-2016",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-ancient-warrior-series-15-2016.png",
+        "sha256": "a25abd00bb805c1fa8b76270ebdc81f5e93a80708e74b565fd8f495b70999e3a",
+        "bytes": 1671265
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-ancient-warrior-series-15-2016.png",
+        "sha256": "cf54df0dc5b80706962a1f3638a165334c30da548533d4c4406cc851508fb21c",
+        "bytes": 891749
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "075dd85010303f101a7f09e6b6de545cffd96032ad9f60b5936b0682bbb742c4",
+        "outputAlphaSha256": "075dd85010303f101a7f09e6b6de545cffd96032ad9f60b5936b0682bbb742c4",
+        "sourceNonzeroAlphaPixels": 619774,
+        "outputNonzeroAlphaPixels": 619774,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-armored-combat-lost-series-11-2013",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-armored-combat-lost-series-11-2013.png",
+        "sha256": "042e6c31e8519f60d291a6995d9f7894fa1be29d5e2bf28aba95a792ae9507cf",
+        "bytes": 1189137
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-armored-combat-lost-series-11-2013.png",
+        "sha256": "813e8aca2a15743f3d421a6cccad24339870869a1106d29e8839ad514f39fcca",
+        "bytes": 699828
+      },
+      "dimensions": [
+        1388,
+        1133
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572604,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "dca4d45d2b08b4956174855bf1333240ae1d6211bf20de9b25d4c4e0d6a6916e",
+        "outputAlphaSha256": "dca4d45d2b08b4956174855bf1333240ae1d6211bf20de9b25d4c4e0d6a6916e",
+        "sourceNonzeroAlphaPixels": 482762,
+        "outputNonzeroAlphaPixels": 482762,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-armored-lost-ultimate-2020",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-armored-lost-ultimate-2020.png",
+        "sha256": "8db345504bc3ccb39a34b8e6dbe9b1163b1d2bcd57ac0e2f475de134bc82be34",
+        "bytes": 1858054
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-armored-lost-ultimate-2020.png",
+        "sha256": "9d800cb8c46662938ec06aae2ef92f962e02a6161f50a3e8db62bc9730d6b9c9",
+        "bytes": 1013409
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "no-major-macro-defect-observed-sourceLimited",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "a989e170fe53ab64a742dc2cd34ddab20499438eb8da0a5e2b24acb2ccbf4cb5",
+        "outputAlphaSha256": "a989e170fe53ab64a742dc2cd34ddab20499438eb8da0a5e2b24acb2ccbf4cb5",
+        "sourceNonzeroAlphaPixels": 828949,
+        "outputNonzeroAlphaPixels": 828949,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-bad-blood-ultimate-2018",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-bad-blood-ultimate-2018.png",
+        "sha256": "081975b86f7c068d5de5cd4e26e6c3e2815d3f93a2adc863cb87a3374c90973c",
+        "bytes": 1229441
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-bad-blood-ultimate-2018.png",
+        "sha256": "93fc24114203a75f57779107bfcb6d540314c917359d66f8939cc254c801520e",
+        "bytes": 731384
+      },
+      "dimensions": [
+        1131,
+        1391
+      ],
+      "sourceStatus": {
+        "reviewStatus": "corrected-source-profile-study-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573221,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "07fe9dd9e60576c21f88d1fdb5e4cc754b52b05c689c5a34f1c34ee31df1703e",
+        "outputAlphaSha256": "07fe9dd9e60576c21f88d1fdb5e4cc754b52b05c689c5a34f1c34ee31df1703e",
+        "sourceNonzeroAlphaPixels": 454595,
+        "outputNonzeroAlphaPixels": 454595,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-batman-vs-predator-2019",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-batman-vs-predator-2019.png",
+        "sha256": "7c4275cef489bf5deee3c2dda40fdc693a8f8303e3991734f03e9ffb1c41ea51",
+        "bytes": 1499468
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-batman-vs-predator-2019.png",
+        "sha256": "be5474f3d4fdf739bbf2a4966326c3dc3d6a53d1b950803adc81fb1cc5990c9f",
+        "bytes": 796676
+      },
+      "dimensions": [
+        1059,
+        1485
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572615,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "a0301105e4b4d51d76e5b8e50a9b9d9d1b8adda3110c1f5fbc8b44d7d759dd2a",
+        "outputAlphaSha256": "a0301105e4b4d51d76e5b8e50a9b9d9d1b8adda3110c1f5fbc8b44d7d759dd2a",
+        "sourceNonzeroAlphaPixels": 614308,
+        "outputNonzeroAlphaPixels": 614308,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-big-red-series-7-2012",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-big-red-series-7-2012.png",
+        "sha256": "9207238f2087a8543869956296d9c000b9f613bf3f27bd71c25cfcb7958a2620",
+        "bytes": 1313831
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-big-red-series-7-2012.png",
+        "sha256": "07a2c1b5860a4fe1665c82f659084982428ce804b4f06297a0ca615c8a4bbadb",
+        "bytes": 737267
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "20eeab7de25893d274594861e9c726dd0fb2dea4c900e86ed0ed64278f33d6d8",
+        "outputAlphaSha256": "20eeab7de25893d274594861e9c726dd0fb2dea4c900e86ed0ed64278f33d6d8",
+        "sourceNonzeroAlphaPixels": 581348,
+        "outputNonzeroAlphaPixels": 581348,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-boar-ultimate-2022",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-boar-ultimate-2022.png",
+        "sha256": "5918f1cbfef5acc1d5c9d5ef3bd1ebac4887a5dc68e5caa1bf80e9ea9ef112e3",
+        "bytes": 1958359
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-boar-ultimate-2022.png",
+        "sha256": "72b2d9ded3a976502934e4baeead5bbcfd46a7769cc9360f8fd29bf50c0e66ee",
+        "bytes": 1002196
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "corrected-edition-study-with-source-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "a25b85729d6ffa20e697594b95d82f8d78e4b8e160c45219106d89b0e16f2a54",
+        "outputAlphaSha256": "a25b85729d6ffa20e697594b95d82f8d78e4b8e160c45219106d89b0e16f2a54",
+        "sourceNonzeroAlphaPixels": 645830,
+        "outputNonzeroAlphaPixels": 645830,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-broken-tusk-series-18-2017",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-broken-tusk-series-18-2017.png",
+        "sha256": "146f60f390a83c44f1996b54e81ae0c2a0930b1a8a4e062d28f674c33667b86e",
+        "bytes": 1381375
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-broken-tusk-series-18-2017.png",
+        "sha256": "65b3612c2c5295799dc9e9d5e3d73b8723ed2e02fa7c5f6ab5fab9848b7ba5e6",
+        "bytes": 770088
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-limited-provisional-edition-study-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573044,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "ebd19be19a61f7b01b4144107ff3fc8ee9eb1d0dd8614769cbb5755909fe21a7",
+        "outputAlphaSha256": "ebd19be19a61f7b01b4144107ff3fc8ee9eb1d0dd8614769cbb5755909fe21a7",
+        "sourceNonzeroAlphaPixels": 680018,
+        "outputNonzeroAlphaPixels": 680018,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-celtic-series-14-2015",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-celtic-series-14-2015.png",
+        "sha256": "825b5a83425b6c34fb55e62e6aa554f4b05135f710c10caf21990040a92334b6",
+        "bytes": 1861933
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-celtic-series-14-2015.png",
+        "sha256": "d249d3fe0e09506c83d440912a0430a27b0c413a9c692e7cd22a61afb1023f7b",
+        "bytes": 1003993
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "corrected-pair-macro-review-passed-with-source-resolution-limits",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "geometryDeviationOpen": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "573d5dc34958e71bd69615ae85639868f8904a958fe8f1f6f6afa1fc69b48c64",
+        "outputAlphaSha256": "573d5dc34958e71bd69615ae85639868f8904a958fe8f1f6f6afa1fc69b48c64",
+        "sourceNonzeroAlphaPixels": 685149,
+        "outputNonzeroAlphaPixels": 685149,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-chopper-series-14-2015",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-chopper-series-14-2015.png",
+        "sha256": "1a46025226881aa891cb40bb775f44215bc243fb7f23666e7b43b0a1a7c62790",
+        "bytes": 1817575
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-chopper-series-14-2015.png",
+        "sha256": "43d0990399b767d6af4ea9752bca331b16f12d4862c5bcd0d2a84713e234530d",
+        "bytes": 951807
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "no-major-macro-defect-observed-sourceLimited",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "da94a5e0dc65d5f12c2ad3fc0f1530c5855a3717cbe2bb8739c415e60c81390c",
+        "outputAlphaSha256": "da94a5e0dc65d5f12c2ad3fc0f1530c5855a3717cbe2bb8739c415e60c81390c",
+        "sourceNonzeroAlphaPixels": 645393,
+        "outputNonzeroAlphaPixels": 645393,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-cracked-tusk-series-13-2015",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-cracked-tusk-series-13-2015.png",
+        "sha256": "0919387e4060ac10deac80042669094c331840093dd519207a5c1fdd9138b59f",
+        "bytes": 1271003
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-cracked-tusk-series-13-2015.png",
+        "sha256": "418e72204a42cdd9abdc0f70208c86597cd932fe4e03dafb9b13a8a8ec4c5db6",
+        "bytes": 719182
+      },
+      "dimensions": [
+        1426,
+        1103
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572878,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "0e7854c32c0713db5331151bd2369fe6fb6bae524ee58a25bf80a75e321e3ca2",
+        "outputAlphaSha256": "0e7854c32c0713db5331151bd2369fe6fb6bae524ee58a25bf80a75e321e3ca2",
+        "sourceNonzeroAlphaPixels": 443717,
+        "outputNonzeroAlphaPixels": 443717,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-dark-horse-25th-anniversary-2015",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-dark-horse-25th-anniversary-2015.png",
+        "sha256": "f7755348f4f06233648884b200baa633b15c397114637a2af3de06538a6ae418",
+        "bytes": 1817274
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-dark-horse-25th-anniversary-2015.png",
+        "sha256": "06f6e4e0b4aa64cdb685a80a803be11cebc3d1e31ede43de5f92f3ac8572a06c",
+        "bytes": 964861
+      },
+      "dimensions": [
+        1303,
+        1207
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572721,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "20a9e05f50aa72b9be9713b81b7c718a7c29abffddf9b9c329e59bae05c25c60",
+        "outputAlphaSha256": "20a9e05f50aa72b9be9713b81b7c718a7c29abffddf9b9c329e59bae05c25c60",
+        "sourceNonzeroAlphaPixels": 852763,
+        "outputNonzeroAlphaPixels": 852763,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-elder-avp-series-17-2016",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-elder-avp-series-17-2016.png",
+        "sha256": "4f6aa7c6b26cc55141bf718009eab45b8f2ac99fa628c1d919bd1ba1cc176d42",
+        "bytes": 1511349
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-elder-avp-series-17-2016.png",
+        "sha256": "ce91f97fd273e065f514b9fef8a0fc22acbe58e7c583bd7e5239b1b11d5f0bbc",
+        "bytes": 850587
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-limited-edition-candidate-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "3b9542c1fa61f4672815095bc95c2d42dd8b7abfa601d3102257e94760ff7c32",
+        "outputAlphaSha256": "3b9542c1fa61f4672815095bc95c2d42dd8b7abfa601d3102257e94760ff7c32",
+        "sourceNonzeroAlphaPixels": 580279,
+        "outputNonzeroAlphaPixels": 580279,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-enforcer-ultimate-2018",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-enforcer-ultimate-2018.png",
+        "sha256": "25a1c62e183d18a28c3beb93deed90c1955261eb1a19d653a7fc843fc14f8bbb",
+        "bytes": 943655
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-enforcer-ultimate-2018.png",
+        "sha256": "66fa1f3d9248c5face1732ecbe8c25d9a2db4bbc8915173c63bb5698c4b3e1d6",
+        "bytes": 555647
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573044,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4dbbde0284acf97b084d67750203b3f5efed221ae2fe3f0595b72b39febce82a",
+        "outputAlphaSha256": "4dbbde0284acf97b084d67750203b3f5efed221ae2fe3f0595b72b39febce82a",
+        "sourceNonzeroAlphaPixels": 378953,
+        "outputNonzeroAlphaPixels": 378953,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-fugitive-ultimate-2018",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-fugitive-ultimate-2018.png",
+        "sha256": "18beb09fe45f1b1a8f2d3bb44b54f5ed7c2631fba742dd8fdbf584772829b3e4",
+        "bytes": 1495084
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-fugitive-ultimate-2018.png",
+        "sha256": "b498190724f180a4fc48a9e03143ff5ef6d606bba2a70ed9b91e178f9eaedfbb",
+        "bytes": 827292
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "2d23c058fde054d60fd87aca8f66e51da8f91b471e5a74a88a797cd89f71802a",
+        "outputAlphaSha256": "2d23c058fde054d60fd87aca8f66e51da8f91b471e5a74a88a797cd89f71802a",
+        "sourceNonzeroAlphaPixels": 665292,
+        "outputNonzeroAlphaPixels": 665292,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-ghost-series-16-2016",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-ghost-series-16-2016.png",
+        "sha256": "817e584f235b1b997c1703bd864c1ef210c66c91745568c20a6e4799804e1912",
+        "bytes": 1676621
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-ghost-series-16-2016.png",
+        "sha256": "2b280ff62b6ae0df062657d6d8eaedfc6a65581ebc0df5ce89c286267a6f5e27",
+        "bytes": 896287
+      },
+      "dimensions": [
+        1312,
+        1199
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573088,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "0e0dfaab5fc5579a64e2d51253146ab4c9f256a7348cee5291320e8de99a41da",
+        "outputAlphaSha256": "0e0dfaab5fc5579a64e2d51253146ab4c9f256a7348cee5291320e8de99a41da",
+        "sourceNonzeroAlphaPixels": 633195,
+        "outputNonzeroAlphaPixels": 633195,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-guardian-lost-tribe-ultimate-2021",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-guardian-lost-tribe-ultimate-2021.png",
+        "sha256": "6eca7618de50be9a587f81cddc7d6ac2efa939ac5600aa85e01d01cf6f5c5402",
+        "bytes": 1570033
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-guardian-lost-tribe-ultimate-2021.png",
+        "sha256": "a4af50d7a81a367cc47c1065f69b644ea8dbc97cd212893d210d9a2cc40e2da2",
+        "bytes": 856457
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "edition-study-with-source-resolution-limitations-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "bea0d29590904755a56bc283ee52a3e2d30e23ad803ffd26ce04988027570eff",
+        "outputAlphaSha256": "bea0d29590904755a56bc283ee52a3e2d30e23ad803ffd26ce04988027570eff",
+        "sourceNonzeroAlphaPixels": 564524,
+        "outputNonzeroAlphaPixels": 564524,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-jungle-demon-quarter-scale-2017",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-jungle-demon-quarter-scale-2017.png",
+        "sha256": "00090822ee3015e32ad3415158e3188811002d904e8f76927dfcbaca9e74ca52",
+        "bytes": 1288075
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-jungle-demon-quarter-scale-2017.png",
+        "sha256": "80a3e8adcaf77706b0a18f381202770e839015ab3c0ba1bee82e8bb95fdd49e3",
+        "bytes": 722292
+      },
+      "dimensions": [
+        1261,
+        1247
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "no-major-macro-defect-observed-sourceLimited",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572467,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "734162ed111d6e5588554869be13f24eb28254e93d2f9748d1225e4e36d5c0db",
+        "outputAlphaSha256": "734162ed111d6e5588554869be13f24eb28254e93d2f9748d1225e4e36d5c0db",
+        "sourceNonzeroAlphaPixels": 664872,
+        "outputNonzeroAlphaPixels": 664872,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-lasershot-ultimate-2019",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-lasershot-ultimate-2019.png",
+        "sha256": "4e89e0566d59466f62988145a8ea809adf07ff5d074eab90fbd4844eba656f1c",
+        "bytes": 1619319
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-lasershot-ultimate-2019.png",
+        "sha256": "c7328a522ad15d54c9cbf48cd8401aa47c323ad1bb71fc3b66224abee464f680",
+        "bytes": 947832
+      },
+      "dimensions": [
+        1278,
+        1230
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1571940,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "80e330cd4547cb7a56831052e0d2d2c10b66ad2dc5be2429ffa7c3c2fd359964",
+        "outputAlphaSha256": "80e330cd4547cb7a56831052e0d2d2c10b66ad2dc5be2429ffa7c3c2fd359964",
+        "sourceNonzeroAlphaPixels": 650154,
+        "outputNonzeroAlphaPixels": 650154,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-machiko-series-18-2017",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-machiko-series-18-2017.png",
+        "sha256": "05f5a8cefda17ad15decb86477891d65c14c3a42137d43b2739d09fdddda54c0",
+        "bytes": 1195278
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-machiko-series-18-2017.png",
+        "sha256": "62cfbcda8ea97c94ec21fb5229c528f1268baa611af0470e29f36574c88a2602",
+        "bytes": 684211
+      },
+      "dimensions": [
+        1265,
+        1244
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-limited-provisional-edition-study-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573660,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "8bff1b3b37e0f4529c41c087af85580fa7c8d2ff3db02d475e8638ddb71e2004",
+        "outputAlphaSha256": "8bff1b3b37e0f4529c41c087af85580fa7c8d2ff3db02d475e8638ddb71e2004",
+        "sourceNonzeroAlphaPixels": 541490,
+        "outputNonzeroAlphaPixels": 541490,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-renegade-series-13-2015",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-renegade-series-13-2015.png",
+        "sha256": "96dcaeaeb0c62e518348d0422eab636feedb52398dd64475fa1c7a27562588aa",
+        "bytes": 1449325
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-renegade-series-13-2015.png",
+        "sha256": "2b24f0d03f0b73fecdca2cd405f249e56fb902cc89b81c14c2675da8854228a3",
+        "bytes": 780247
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "status": "covered-current-lot-exact-edition",
+        "documentaryAuditOnly": true,
+        "exactEditionCovered": true,
+        "originalVintageSourceMissing": false,
+        "partialSourceLimitPreserved": false,
+        "completeMaskGeometryProvenByCatalogueName": false,
+        "canonicalCertified": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4ca73734dd109b234d2eb8c83fa9849a1f0e420be2fe5691e226406809aa2960",
+        "outputAlphaSha256": "4ca73734dd109b234d2eb8c83fa9849a1f0e420be2fe5691e226406809aa2960",
+        "sourceNonzeroAlphaPixels": 648097,
+        "outputNonzeroAlphaPixels": 648097,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-scar-masked-series-15-2016",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-scar-masked-series-15-2016.png",
+        "sha256": "547e3b2632c91d61c7a07a69e69bb88d587226a72fdf1e7b8d03f0fb53310ef8",
+        "bytes": 1993003
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-scar-masked-series-15-2016.png",
+        "sha256": "1b6e23e43a25f4f4a664350eaeb72d996ff2ee9b1fd0a5abc0a02191b6e0a1d5",
+        "bytes": 1038859
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "eea588e5c673d5b47a0244d14cf457c732c8801e15021efe5680aaf16e01c03b",
+        "outputAlphaSha256": "eea588e5c673d5b47a0244d14cf457c732c8801e15021efe5680aaf16e01c03b",
+        "sourceNonzeroAlphaPixels": 734959,
+        "outputNonzeroAlphaPixels": 734959,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-scavage-series-13-2015",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-scavage-series-13-2015.png",
+        "sha256": "36cf2b787a923dd5d2642a3c4e85a45098efd9bceaf19f8f10ac72ebb68218e4",
+        "bytes": 1118260
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-scavage-series-13-2015.png",
+        "sha256": "614042db91cbfb1643ab035fd1d1fd6a2410c654014af1d6dfd1ca38d3c0e83b",
+        "bytes": 672015
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4724009b7d70d728e4f8ebf7807c920bd146f0c34cb781a0339836a5a083ade6",
+        "outputAlphaSha256": "4724009b7d70d728e4f8ebf7807c920bd146f0c34cb781a0339836a5a083ade6",
+        "sourceNonzeroAlphaPixels": 424459,
+        "outputNonzeroAlphaPixels": 424459,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-shaman-ultimate-2022",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-shaman-ultimate-2022.png",
+        "sha256": "fe700a43414b343bf545802e33fd99d196f9b5f18738337978a658bea38f43a7",
+        "bytes": 1280800
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-shaman-ultimate-2022.png",
+        "sha256": "32d61b08f6ba6a0180d670eef6e2452fb38d787a2d0dae43392161371f116a3e",
+        "bytes": 773436
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "edition-study-with-source-resolution-limitations-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "e61fad0b59f82f8eca8c8c964eef197ec411b4e3436abc59061c7a8a81a4c904",
+        "outputAlphaSha256": "e61fad0b59f82f8eca8c8c964eef197ec411b4e3436abc59061c7a8a81a4c904",
+        "sourceNonzeroAlphaPixels": 502684,
+        "outputNonzeroAlphaPixels": 502684,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-snake-ultimate-2022.png",
+        "sha256": "798da88bbbe29995c599d1b0b58e50918ed6f3284af7830abe27e94a4a4c65bf",
+        "bytes": 2011229
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-snake-ultimate-2022.png",
+        "sha256": "0b138564f319632972de365b4e545d3fe993a7e0c95807c3b65e3033f10fb440",
+        "bytes": 1074956
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "no-major-macro-defect-observed-sourceLimited",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "geometryDeviationOpen": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "bafcb95eeee90f67fa9f826cdd8bc46ca2a3827400f4509fd48298ffbd34cf58",
+        "outputAlphaSha256": "bafcb95eeee90f67fa9f826cdd8bc46ca2a3827400f4509fd48298ffbd34cf58",
+        "sourceNonzeroAlphaPixels": 744757,
+        "outputNonzeroAlphaPixels": 744757,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-spiked-tail-series-16-2016",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-spiked-tail-series-16-2016.png",
+        "sha256": "de2f75ff8456aada53a0f7cd0af67ffb5ff0e59dccb97b2f81968b43a1264625",
+        "bytes": 1089973
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-spiked-tail-series-16-2016.png",
+        "sha256": "ee51faa3d071500c4e4846ec68e3f4edf868b5f57e644c78b675fbe82548ffde",
+        "bytes": 662153
+      },
+      "dimensions": [
+        1129,
+        1393
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572697,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "12c8c3bb151eb48b1f5a3546bf96a2e0abe3b1a18766da10f662eba2b3f3b43d",
+        "outputAlphaSha256": "12c8c3bb151eb48b1f5a3546bf96a2e0abe3b1a18766da10f662eba2b3f3b43d",
+        "sourceNonzeroAlphaPixels": 410757,
+        "outputNonzeroAlphaPixels": 410757,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-stalker-lost-tribe-ultimate-2021",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-stalker-lost-tribe-ultimate-2021.png",
+        "sha256": "29f3626f529138568147c4a247888b7ac47963176641497bdfab8ac9f6254391",
+        "bytes": 1763725
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-stalker-lost-tribe-ultimate-2021.png",
+        "sha256": "ea405f0f902ea9a9579217cf9577931cf8664ea4e4e5aadacd67b800ee2d611c",
+        "bytes": 930960
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "no-major-macro-defect-observed-sourceLimited",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "6ed36b35e8f66d350c2631a855c5215d2136ea8d2ef0fdc458dd476513072a62",
+        "outputAlphaSha256": "6ed36b35e8f66d350c2631a855c5215d2136ea8d2ef0fdc458dd476513072a62",
+        "sourceNonzeroAlphaPixels": 668236,
+        "outputNonzeroAlphaPixels": 668236,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-temple-guard-series-15-2016",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-temple-guard-series-15-2016.png",
+        "sha256": "4967f43ceaa95e5d6af390a3f7a7beb825dadcb8500e191bb05208504e31a3cb",
+        "bytes": 1655541
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-temple-guard-series-15-2016.png",
+        "sha256": "6d7086cfd1164e4e5109e3c1ea4d65fa78f6694c5dd1319b2af9ab5c6c29952b",
+        "bytes": 874368
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "287ec049413fb68afe87ea07adb1fa82d9027c9e7f9ba3b19952aa724df457a6",
+        "outputAlphaSha256": "287ec049413fb68afe87ea07adb1fa82d9027c9e7f9ba3b19952aa724df457a6",
+        "sourceNonzeroAlphaPixels": 699957,
+        "outputNonzeroAlphaPixels": 699957,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "neca-wasp-dead-end-series-11-2013",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/neca-wasp-dead-end-series-11-2013.png",
+        "sha256": "5cf2d5a856ff2091847bc49d7ea3b8db8363957e553e6bd05d0f26bb9e0f4453",
+        "bytes": 1451803
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/neca-wasp-dead-end-series-11-2013.png",
+        "sha256": "528312aaea888cdedb72580a445f4db2e7e3c7beab2ec3353391fccb297d3855",
+        "bytes": 814388
+      },
+      "dimensions": [
+        1312,
+        1199
+      ],
+      "sourceStatus": {
+        "classification": "photographed-edition-visible-source-study",
+        "status": "paired-source-study-independently-reviewed",
+        "sourceViewOnly": true,
+        "independentAgentFinalReviewed": true,
+        "physicalTransmissionCertified": false,
+        "exactHiddenGeometryEstablished": false,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "reviewStatus": "corrected-source-camera-study-no-major-visible-defect",
+        "provisionalReviewOnly": true
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573088,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "920f3d601b30f174224f88019fdde361f16f62517743530fa61384fb104955f9",
+        "outputAlphaSha256": "920f3d601b30f174224f88019fdde361f16f62517743530fa61384fb104955f9",
+        "sourceNonzeroAlphaPixels": 621476,
+        "outputNonzeroAlphaPixels": 621476,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-amazon",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-amazon.png",
+        "sha256": "19e9c60d46e330940664033f43b8974ec77467aedcf28bc899b967ec0fbe7455",
+        "bytes": 1502536
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-amazon.png",
+        "sha256": "24ae34f7d8df6994e02da869557d6a47bbb67794948672c73adde4d3e200ba9b",
+        "bytes": 853841
+      },
+      "dimensions": [
+        1200,
+        1311
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-view-candidate-with-fine-resolution-limitations-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573200,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4b3025d36cd0420ad4289301f8b7b3699a0b9b5ea161f6f67fbafd1847b7cc36",
+        "outputAlphaSha256": "4b3025d36cd0420ad4289301f8b7b3699a0b9b5ea161f6f67fbafd1847b7cc36",
+        "sourceNonzeroAlphaPixels": 577044,
+        "outputNonzeroAlphaPixels": 577044,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-celtic-huntingparty3",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-celtic-huntingparty3.png",
+        "sha256": "269ee92325c6f772e7c85d0321fbe2bbf34cb6c1fc08daa120a3caea037be090",
+        "bytes": 1361979
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-celtic-huntingparty3.png",
+        "sha256": "6329b8269cb88cd72b3ff6e3456da944c1f42246607485c9617fb84b3d4268e1",
+        "bytes": 793139
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "corrected-source-view-study-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "6aa2137763d9ba5c900e086621b41369a5e54a81380496f7f149579c9c22a8de",
+        "outputAlphaSha256": "6aa2137763d9ba5c900e086621b41369a5e54a81380496f7f149579c9c22a8de",
+        "sourceNonzeroAlphaPixels": 576615,
+        "outputNonzeroAlphaPixels": 576615,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-chopper-huntingparty3",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-chopper-huntingparty3.png",
+        "sha256": "a3fed5500e3e8b2d60b3ac868814147c6563621428289d5a2a54005503099904",
+        "bytes": 1413114
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-chopper-huntingparty3.png",
+        "sha256": "95b91494f81ed8067af7070cef0b488da7523b3b04048aef3383df032108e3d9",
+        "bytes": 797783
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "canonicalIdentityUnmapped": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "959ce5c2a9dce43867dd5763dcb5eedc9dc1796b1bb4a1c461a7be6f50dd4139",
+        "outputAlphaSha256": "959ce5c2a9dce43867dd5763dcb5eedc9dc1796b1bb4a1c461a7be6f50dd4139",
+        "sourceNonzeroAlphaPixels": 611808,
+        "outputNonzeroAlphaPixels": 611808,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-falconer-2021",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-falconer-2021.png",
+        "sha256": "f0f0399117a75069aa7020b550fb0e9a9d7e4f561c252ccb0c1d1c2c04449c98",
+        "bytes": 1443424
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-falconer-2021.png",
+        "sha256": "c067402646b3276dc9b74e13075221f374baa9ce4b0cb8ea02304e033481e566",
+        "bytes": 822178
+      },
+      "dimensions": [
+        1199,
+        1312
+      ],
+      "sourceStatus": {
+        "reviewStatus": "corrected-source-view-study-no-major-visible-defect",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573088,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "a096b48bb13455fef14504d43f74a03e34a38542936702b70533db9757b66c10",
+        "outputAlphaSha256": "a096b48bb13455fef14504d43f74a03e34a38542936702b70533db9757b66c10",
+        "sourceNonzeroAlphaPixels": 620455,
+        "outputNonzeroAlphaPixels": 620455,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-launch-portrait-04",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-launch-portrait-04.png",
+        "sha256": "8856b9b246191e89fec74fe6b63d7114f792df5a22f6a80300b26fb094d4cb4f",
+        "bytes": 1344814
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-launch-portrait-04.png",
+        "sha256": "f21cc77d67fc88759f9775e198c1ab4697a3a41fe54de1dba4b82c0c4fb37c09",
+        "bytes": 755770
+      },
+      "dimensions": [
+        1312,
+        1199
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "canonicalIdentityUnmapped": true,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573088,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "e3134cacb3641e5114dcd896744b480cd491015567856b7842f3ac42125d524a",
+        "outputAlphaSha256": "e3134cacb3641e5114dcd896744b480cd491015567856b7842f3ac42125d524a",
+        "sourceNonzeroAlphaPixels": 565029,
+        "outputNonzeroAlphaPixels": 565029,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-launch-portrait-05",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-launch-portrait-05.png",
+        "sha256": "5ee1eaffb63472216119c2069c8440af27152d99241eae1f1018dcea5c706415",
+        "bytes": 1303466
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-launch-portrait-05.png",
+        "sha256": "a32e96c3b473205f715f4a8e11c60964383310316ab2fcb21191c3eb2b9d2b50",
+        "bytes": 760684
+      },
+      "dimensions": [
+        1137,
+        1383
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "canonicalIdentityUnmapped": true,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572471,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "81ed1e4db5e62214897a8ee8f9be5537e37c5d568ddb0a51a4081bf0770b7d8c",
+        "outputAlphaSha256": "81ed1e4db5e62214897a8ee8f9be5537e37c5d568ddb0a51a4081bf0770b7d8c",
+        "sourceNonzeroAlphaPixels": 645184,
+        "outputNonzeroAlphaPixels": 645184,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-launch-portrait-06",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-launch-portrait-06.png",
+        "sha256": "afe2b3a83302437a58c9f7c33d16f8f6eaea2991583fabb09a42fa473e3d5d69",
+        "bytes": 1463610
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-launch-portrait-06.png",
+        "sha256": "9d5f5b3dbafd668d74e34036278790edc5f00eb54edc09eab3e94bdd288d96d1",
+        "bytes": 862944
+      },
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "canonicalIdentityUnmapped": true,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572528,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4a061646f2a9fd1467dfe59dc637ede491136a87e498b159b104db6c06215c82",
+        "outputAlphaSha256": "4a061646f2a9fd1467dfe59dc637ede491136a87e498b159b104db6c06215c82",
+        "sourceNonzeroAlphaPixels": 671308,
+        "outputNonzeroAlphaPixels": 671308,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-1",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-1.png",
+        "sha256": "f884c08d0ead92db266dbcedea7eec8ee022081f9d74b8b5bb7df04a80410bbe",
+        "bytes": 1885073
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-mask-scars-2021-1.png",
+        "sha256": "61b563265358df0c0db061aaaf0a738c0194531d841983eafff7417322f7cb4e",
+        "bytes": 1019229
+      },
+      "dimensions": [
+        1145,
+        1374
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573230,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "a877647d44780ba188152ded052059483dece4579ae5618a8f421282cd7a0959",
+        "outputAlphaSha256": "a877647d44780ba188152ded052059483dece4579ae5618a8f421282cd7a0959",
+        "sourceNonzeroAlphaPixels": 762002,
+        "outputNonzeroAlphaPixels": 762002,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-2",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-2.png",
+        "sha256": "8b3ae903059102ec7d34ceba3d7aa63116fda9735ac45af564fd394b2af57ba7",
+        "bytes": 2050515
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-mask-scars-2021-2.png",
+        "sha256": "9bb7c6c98208d573528892eaffd46561bb0264aabbdbad588840b830bbeedcba",
+        "bytes": 1100770
+      },
+      "dimensions": [
+        1060,
+        1484
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573040,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "85bf856625a28a7804d04aa7f26eb86862fca99606c091bbc6c816292f6b81e4",
+        "outputAlphaSha256": "85bf856625a28a7804d04aa7f26eb86862fca99606c091bbc6c816292f6b81e4",
+        "sourceNonzeroAlphaPixels": 888720,
+        "outputNonzeroAlphaPixels": 888720,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-3",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-3.png",
+        "sha256": "e70e7ea75574a63d9d2db902e2f29d2a9b50af9746b37e6d1a05bf644b2d716a",
+        "bytes": 1727266
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-mask-scars-2021-3.png",
+        "sha256": "57e65175d85116dc66275117256a180db16fce663103602b19b3fe829012f7ed",
+        "bytes": 959066
+      },
+      "dimensions": [
+        1060,
+        1484
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573040,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "d00068a9d056881d6e0c930675906d362c0fe84ff16194562448a20bd64a30a7",
+        "outputAlphaSha256": "d00068a9d056881d6e0c930675906d362c0fe84ff16194562448a20bd64a30a7",
+        "sourceNonzeroAlphaPixels": 727357,
+        "outputNonzeroAlphaPixels": 727357,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-4",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-4.png",
+        "sha256": "a86b93d7a22ebc6f2fabac7352b10d55f4e8cb5da56fc0826782fe201888f911",
+        "bytes": 1790381
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-mask-scars-2021-4.png",
+        "sha256": "082195835237dbd967dd755003391bd0117d03756f4591ca3970023723304126",
+        "bytes": 1004779
+      },
+      "dimensions": [
+        1070,
+        1470
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572900,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "f84fa2614ab9f98caa8d557e2b9ca85679007f911c0daa3d67ec05fad5b62643",
+        "outputAlphaSha256": "f84fa2614ab9f98caa8d557e2b9ca85679007f911c0daa3d67ec05fad5b62643",
+        "sourceNonzeroAlphaPixels": 772843,
+        "outputNonzeroAlphaPixels": 772843,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-5",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-5.png",
+        "sha256": "a94497184034fb31125ef56235fe2b7825ceac3915996e09281edc87a1578360",
+        "bytes": 1758963
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-mask-scars-2021-5.png",
+        "sha256": "6699015213245b2afcad6944e97d838bd4d79b02caa8cb5f76897fe4caa4994e",
+        "bytes": 964659
+      },
+      "dimensions": [
+        1086,
+        1448
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572528,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4cf3005d8e005c56db4b869099b158f5347c26a1ba4dc0c4632f96dd5c4bc921",
+        "outputAlphaSha256": "4cf3005d8e005c56db4b869099b158f5347c26a1ba4dc0c4632f96dd5c4bc921",
+        "sourceNonzeroAlphaPixels": 749952,
+        "outputNonzeroAlphaPixels": 749952,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-mask-scars-2021-6",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-mask-scars-2021-6.png",
+        "sha256": "fbfa5e6492bb8c0f36eb00b9724df9348c97a1e60d446b9038a36aa3125c3b2f",
+        "bytes": 2015556
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-mask-scars-2021-6.png",
+        "sha256": "2d109836244eb7357395d035ee89a1915eb304294dbe84f5dea59354689bc48c",
+        "bytes": 1078501
+      },
+      "dimensions": [
+        1060,
+        1484
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573040,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "5bbdd21f9796329906448670970b4055544badb497efa1ea7667839e45e7a919",
+        "outputAlphaSha256": "5bbdd21f9796329906448670970b4055544badb497efa1ea7667839e45e7a919",
+        "sourceNonzeroAlphaPixels": 831136,
+        "outputNonzeroAlphaPixels": 831136,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-mr-black-2021",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-mr-black-2021.png",
+        "sha256": "f3baf12b601e2c78df295d5b1f899cfdc13e149ad51ec4877994477a537fffa5",
+        "bytes": 1487048
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-mr-black-2021.png",
+        "sha256": "5b9697ae67fd1cdf88bdfd9784cd6514be4455c9fa86bcb51b9dc88e5df666cd",
+        "bytes": 855455
+      },
+      "dimensions": [
+        1266,
+        1243
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573638,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "0cbab4456ba1265ebf31721c23cb7677ce754e5940987fc211a0541d377bf30f",
+        "outputAlphaSha256": "0cbab4456ba1265ebf31721c23cb7677ce754e5940987fc211a0541d377bf30f",
+        "sourceNonzeroAlphaPixels": 620220,
+        "outputNonzeroAlphaPixels": 620220,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-pirate",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-pirate.png",
+        "sha256": "6270f8520ed4ec28c307c1f8d9a1dd60e073d246c3c74e3e1127f41719c79020",
+        "bytes": 1247934
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-pirate.png",
+        "sha256": "6e2fe4128024491e46faf6e28e8419a168a1bcf8466b6c3f8d606f813ba07892",
+        "bytes": 719246
+      },
+      "dimensions": [
+        1312,
+        1199
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-view-study-with-documented-ring-orientation-reservation",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "geometryDeviationOpen": true,
+        "selectionStatus": "source-view-study-with-ring-orientation-reserve"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573088,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "700d1d40cf82324f6260cba3bf829f9fd63539bed61193b691740b9ec21217fe",
+        "outputAlphaSha256": "700d1d40cf82324f6260cba3bf829f9fd63539bed61193b691740b9ec21217fe",
+        "sourceNonzeroAlphaPixels": 477548,
+        "outputNonzeroAlphaPixels": 477548,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    },
+    {
+      "id": "phg-scar-huntingparty3",
+      "errors": [],
+      "passed": true,
+      "sourceB": {
+        "path": "public/game/biomasks-lots40-20261113/phg/phg-scar-huntingparty3.png",
+        "sha256": "c111f2ace0938c5d2a05f38fed1ea038ecd85d71effecfab517e395f103e9c7c",
+        "bytes": 1350679
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-lots40-20261113/neutral/phg-scar-huntingparty3.png",
+        "sha256": "09071f8a93c3e98e930289f49be2eca040f1175e1bf878b8364fd8f6bc8b910d",
+        "bytes": 788079
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "source-qualified-edition-study-with-fine-resolution-limitations",
+        "provisionalReviewOnly": true,
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "canonicalIdentityUnmapped": false,
+        "selectionStatus": "source-view-candidate-review-required"
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "b21aca134e9f8d9754880a08db98715a4e7d0daa8b1cff50b87287c1d7ae354d",
+        "outputAlphaSha256": "b21aca134e9f8d9754880a08db98715a4e7d0daa8b1cff50b87287c1d7ae354d",
+        "sourceNonzeroAlphaPixels": 597838,
+        "outputNonzeroAlphaPixels": 597838,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": []
+      }
+    }
+  ],
+  "imagesWritten": 0,
+  "pixelsModifiedByVerifier": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false
+}

@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG source-view edition studies; each entry retains its exact identity qualification. Native ImageGen A/B, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-falconer-2021",
+      "name": "Falconer — PHG2021 publisher view (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-falconer-2021-A-corrected-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-falconer-2021.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-falconer-2021.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/51736495745_524d30807c_h.jpg"
+      ],
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds, PS4Pro publisher screenshot,15December2021",
+      "canonicalInventoryId": "mk-10-falconer",
+      "maskFamily": "falconer",
+      "representationOf": "mk-10-falconer",
+      "newCanonicalGeometry": false,
+      "editionStudy": false,
+      "sourcePosition": null,
+      "identityQualification": "Publisher article identifies the Falconer/Captured/MrBlack trio; individual image identity is contextual and corroborated by V87 mapping, not a printed menu selection.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article identifies the Falconer/Captured/MrBlack trio; individual image identity is contextual and corroborated by V87 mapping, not a printed menu selection.",
+        "publisherText": "The Hunting Party includes Falconer,Captured,and Mr.Black Predators.",
+        "archiveMapping": "V87 links this exact screenshot to Falconer; corroboration only."
+      },
+      "prompt": "Correct ONLY the small red-lens temple module of the SECOND isolated bronze PHG2021 Falconer mask, using the FIRST official publisher screenshot as the authority. The existing candidate erroneously has FIVE red lenses. The actual source has exactly THREE small red lenses arranged in a compact TRIANGLE inside the same source module on image-left. Replace the five-dot arrangement with exactly three physical lens dots in that source triangle. Do not add a fourth/fifth lens,extra holes,glow,emitter or new hardware. Keep the existing housing,its placement,angle,size and silhouette unchanged. Preserve all other mask geometry,exact near-front inclined source camera,projected proportions,crown points,dark bronze/copper/gunmetal palette,eye inserts,beak ridges,cheeks,wear and source lighting exactly as SECOND. No other redesign,texture repair or geometry adjustment. Exclude wearer biology,dreads,neck,body,armor,shoulder weapon and scene. Exactly one complete isolated rigid mask,genuine transparent RGBA,whole crown/chin visible,10percent clear transparent margins,largest axis78-80percent canvas. No background,floor,shadow plane,text or UI. This is only a precise count/placement correction of the source-visible three physical red lenses.",
+      "promptSha256": "6ad086012c9e59f1fca3f5d43f6935936b5dfa38d5e9ebec07e06e8addc97c6f",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-falconer-2021-publisher.jpg",
+        "/workspace/generated_images/imagegen-phg-falconer-2021-A-native.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Bronze/dark gunmetal oval crown, small upper edge points, black eye treatment, long narrow ridged central beak and existing temple lens module. Inclined source perspective preserved.",
+        "exclusions": "Biology,dreads,dread rings,neck,armor,body,shoulder weapon and scene are excluded.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            71,
+            1011,
+            1290
+          ],
+          "8": [
+            197,
+            91,
+            1010,
+            1237
+          ],
+          "16": [
+            199,
+            91,
+            1008,
+            1237
+          ],
+          "128": [
+            199,
+            92,
+            1007,
+            1237
+          ],
+          "240": [
+            200,
+            93,
+            1006,
+            1236
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          199,
+          91,
+          191,
+          75
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.705933682373473
+      },
+      "limitations": [
+        "Game-edition publisher screenshot source view only; same family as Falconer, no new canonical geometry claimed.",
+        "Individual image identity is official editorial-context and archive-corroborated; no selected menu name printed in image.",
+        "Source head is a small part of1600x900 screenshot; tiny relief/UV/intrinsic albedo and hidden views remain unknown.",
+        "A is new ImageGen source-view isolation,not source pixel cutout; B is rendering adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded.",
+        "Initial A five-lens error rejected; selected A corrected to source three-lens triangle through ImageGen only."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-falconer-2021-A-corrected-native.png",
+          "sha256": "a1a2ea1f03bd24877fcec74b9dbab9f0ad1bd2fcec12bf85ca4659899dd5ce50",
+          "prompt": "Correct ONLY the small red-lens temple module of the SECOND isolated bronze PHG2021 Falconer mask, using the FIRST official publisher screenshot as the authority. The existing candidate erroneously has FIVE red lenses. The actual source has exactly THREE small red lenses arranged in a compact TRIANGLE inside the same source module on image-left. Replace the five-dot arrangement with exactly three physical lens dots in that source triangle. Do not add a fourth/fifth lens,extra holes,glow,emitter or new hardware. Keep the existing housing,its placement,angle,size and silhouette unchanged. Preserve all other mask geometry,exact near-front inclined source camera,projected proportions,crown points,dark bronze/copper/gunmetal palette,eye inserts,beak ridges,cheeks,wear and source lighting exactly as SECOND. No other redesign,texture repair or geometry adjustment. Exclude wearer biology,dreads,neck,body,armor,shoulder weapon and scene. Exactly one complete isolated rigid mask,genuine transparent RGBA,whole crown/chin visible,10percent clear transparent margins,largest axis78-80percent canvas. No background,floor,shadow plane,text or UI. This is only a precise count/placement correction of the source-visible three physical red lenses.",
+          "referencedImagePaths": [
+            "/tmp/mask-lots40-20261113/games/references/phg-falconer-2021-publisher.jpg",
+            "/workspace/generated_images/imagegen-phg-falconer-2021-A-native.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "a1a2ea1f03bd24877fcec74b9dbab9f0ad1bd2fcec12bf85ca4659899dd5ce50",
+      "bytes": 1488055,
+      "nativeDimensions": [
+        1199,
+        1312
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-falconer-2021-publisher.jpg",
+          "sha256": "c81e57f0d7a4df613fd74662ba4131d1c3b4d7fbeb1f346cfc788e93756ef6d1"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        199,
+        91,
+        1008,
+        1237
+      ],
+      "transparentPixels": 942776,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-falconer-2021-publisher.jpg",
+      "referenceSourceSha256": "c81e57f0d7a4df613fd74662ba4131d1c3b4d7fbeb1f346cfc788e93756ef6d1"
+    },
+    {
+      "id": "phg-falconer-2021",
+      "name": "Falconer — PHG2021 publisher view (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-falconer-2021-B-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-falconer-2021.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-falconer-2021.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/51736495745_524d30807c_h.jpg"
+      ],
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds, PS4Pro publisher screenshot,15December2021",
+      "canonicalInventoryId": "mk-10-falconer",
+      "maskFamily": "falconer",
+      "representationOf": "mk-10-falconer",
+      "newCanonicalGeometry": false,
+      "editionStudy": false,
+      "sourcePosition": null,
+      "identityQualification": "Publisher article identifies the Falconer/Captured/MrBlack trio; individual image identity is contextual and corroborated by V87 mapping, not a printed menu selection.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article identifies the Falconer/Captured/MrBlack trio; individual image identity is contextual and corroborated by V87 mapping, not a printed menu selection.",
+        "publisherText": "The Hunting Party includes Falconer,Captured,and Mr.Black Predators.",
+        "archiveMapping": "V87 links this exact screenshot to Falconer; corroboration only."
+      },
+      "prompt": "Make version B of the FIRST isolated 2021 PHG Falconer mask. SECOND image is the official publisher screenshot for source cross-check only. Lock the FIRST image exact visible geometry,camera,tilt,projected proportions,whole contour,crown points,black eye treatment,central pointed ridged beak,cheek boundaries and existing small temple lens module with EXACTLY THREE red lenses in the same compact TRIANGLE. No new front/profile/back or hidden surfaces. Change ONLY material/light to coherent PHG PBR: preserve the actual dark bronze/copper/gunmetal palette and visible wear,controlled realistic roughness,restrained high-frequency grain,clear relief,neutral soft image-upper-left/front key and gentle fill. Keep dark lens inserts rather than biological eyes; exactly three small physical red lenses remain without emitted halo. No extra vents,runes,ornaments,hardware,painted scheme or universal chrome. No wearer skin/mandibles,dreads,neck,body,armor,shoulder weapon or scene. Exactly one complete isolated mask,genuine transparent RGBA,at least10percent clear transparent margin around crown and pointed chin,longest axis78-80percent canvas. No floor,shadow plane,background,UI,text or glow. Preserve source-view edition; B standardizes only material/light and is not new canonical geometry.",
+      "promptSha256": "363e439c30e4e9e4421cf2df436b2a95b01631c535385879295569999187d709",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-falconer-2021.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-falconer-2021-publisher.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Bronze/dark gunmetal oval crown, small upper edge points, black eye treatment, long narrow ridged central beak and existing temple lens module. Inclined source perspective preserved.",
+        "exclusions": "Biology,dreads,dread rings,neck,armor,body,shoulder weapon and scene are excluded.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            23,
+            1169,
+            1240
+          ],
+          "8": [
+            194,
+            91,
+            993,
+            1237
+          ],
+          "16": [
+            194,
+            91,
+            993,
+            1237
+          ],
+          "128": [
+            195,
+            92,
+            992,
+            1236
+          ],
+          "240": [
+            196,
+            93,
+            991,
+            1235
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          194,
+          91,
+          206,
+          75
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.6972076788830716
+      },
+      "limitations": [
+        "Game-edition publisher screenshot source view only; same family as Falconer, no new canonical geometry claimed.",
+        "Individual image identity is official editorial-context and archive-corroborated; no selected menu name printed in image.",
+        "Source head is a small part of1600x900 screenshot; tiny relief/UV/intrinsic albedo and hidden views remain unknown.",
+        "A is new ImageGen source-view isolation,not source pixel cutout; B is rendering adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-falconer-2021-B-native.png",
+          "sha256": "f0f0399117a75069aa7020b550fb0e9a9d7e4f561c252ccb0c1d1c2c04449c98",
+          "prompt": "Make version B of the FIRST isolated 2021 PHG Falconer mask. SECOND image is the official publisher screenshot for source cross-check only. Lock the FIRST image exact visible geometry,camera,tilt,projected proportions,whole contour,crown points,black eye treatment,central pointed ridged beak,cheek boundaries and existing small temple lens module with EXACTLY THREE red lenses in the same compact TRIANGLE. No new front/profile/back or hidden surfaces. Change ONLY material/light to coherent PHG PBR: preserve the actual dark bronze/copper/gunmetal palette and visible wear,controlled realistic roughness,restrained high-frequency grain,clear relief,neutral soft image-upper-left/front key and gentle fill. Keep dark lens inserts rather than biological eyes; exactly three small physical red lenses remain without emitted halo. No extra vents,runes,ornaments,hardware,painted scheme or universal chrome. No wearer skin/mandibles,dreads,neck,body,armor,shoulder weapon or scene. Exactly one complete isolated mask,genuine transparent RGBA,at least10percent clear transparent margin around crown and pointed chin,longest axis78-80percent canvas. No floor,shadow plane,background,UI,text or glow. Preserve source-view edition; B standardizes only material/light and is not new canonical geometry.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-falconer-2021.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-falconer-2021-publisher.jpg"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-falconer-2021.png",
+      "sourceASha256": "a1a2ea1f03bd24877fcec74b9dbab9f0ad1bd2fcec12bf85ca4659899dd5ce50",
+      "sha256": "f0f0399117a75069aa7020b550fb0e9a9d7e4f561c252ccb0c1d1c2c04449c98",
+      "bytes": 1443424,
+      "nativeDimensions": [
+        1199,
+        1312
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-falconer-2021-publisher.jpg",
+          "sha256": "c81e57f0d7a4df613fd74662ba4131d1c3b4d7fbeb1f346cfc788e93756ef6d1"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        194,
+        91,
+        993,
+        1237
+      ],
+      "transparentPixels": 952633,
+      "nativeCopyIdentical": true
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "phg-falconer-2021",
+      "version": "A",
+      "attempt": 1,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-falconer-2021-A-native.png",
+      "sha256": "18e8d8b25fbb60900e3e921fbc93b5fa6385d25fa762b74b1343d3a2413ce903",
+      "bytes": 1251806,
+      "nativeDimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "prompt": "Isolate ONLY the rigid metallic mask worn by the SINGLE character in this official PHG publisher screenshot, keeping the same exact slightly inclined, near-frontal three-quarter camera and projected proportions. This is the source-visible 2021 game edition, not a reconstruction from a film or another existing project mask. Keep the whole source mask: broad rounded slightly oval bronze/dark gunmetal crown, the existing two small raised crown edge points/notches, the same dark eye lens inserts/apertures, the long narrow pointed central beak/muzzle with its existing raised grooves, tapered cheek plates, and the small physical temple module with its visible red lens dots on image-left. Keep the actual asymmetric source widths and downward pitch; do not invent a symmetrical straight front, side/back/interior or turn it into another Falconer design. All surface scars, panel lines, copper/bronze palette and source local light must follow the visible screenshot, with no new symbols, vents, fittings or speculative microdetail. Exclude all biological face/skin/mandibles below the rigid shell, dreadlocks, metal dread rings, neck, body/armor, shoulder weapon on image-right and any scene. Only mask-attached parts as source visible; do not attach the shoulder weapon to the mask. Preserve dark opaque lens/eye treatment versus true source openings; no living eyes. Exactly one complete isolated mask, genuine transparent RGBA, centered with 10 percent clear transparent margin on every side, longest axis only 78-80 percent of canvas. Whole crown and pointed muzzle unclipped. No shadow plane, floor, background, glow halo, UI, text or duplicate views. Preserve source game palette/rendering, no new artistic redesign. This is a camera-specific source-view candidate with fine relief limited by screenshot resolution, never automatic exact canon certification.",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-falconer-2021-publisher.jpg"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "Independent review establishes3red lenses in source; candidate had5. Targeted ImageGen correction selected instead.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ]
+}
