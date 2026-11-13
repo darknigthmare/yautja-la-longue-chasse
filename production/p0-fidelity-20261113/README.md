@@ -76,6 +76,28 @@ revue ; il n'affirme pas que les cinq cibles source sont achevées. La cible
 technique passant. Tous les 775 P0, les animations et les cartes multicouches ne
 sont pas terminés par cet addendum.
 
+### Vérification depuis un autre répertoire
+
+Certains reçus publiés contiennent le préfixe absolu historique
+`/workspace/yautja-la-longue-chasse/`. Les vérificateurs épinglés interprètent ces
+références comme privées si le clone se trouve ailleurs, ce qui change leur
+reconstruction. L'adaptateur ci-dessous remappe uniquement ce préfixe exact vers
+le clone courant, puis appelle les gardes de chemins et tous les contrôles
+d'origine. Il n'altère aucun des 90 fichiers du lot précédent, des 216 sources
+protégées ou des outils épinglés de l'addendum.
+
+```sh
+python3 production/p0-fidelity-20261113/tools/verify-archived-pack.py --check --require-complete
+python3 production/p0-sprites-20261113/tools/verify-workbook.py --check --require-complete
+python3 production/p0-fidelity-20261113/tools/verify-archived-pack.py --pack addendum --check --require-complete
+```
+
+Le CI utilise ces commandes portables. Elles exigent toujours des manifestes,
+galeries et classeurs reconstruits identiques octet pour octet, avec les mêmes
+empreintes et politiques alpha. L'adaptateur refuse les options d'écriture et
+émet une annotation GitHub `::error::` contenant le type d'exception en cas
+d'échec ; il ne certifie ni le navigateur ni la fidélité canonique.
+
 ## Suivi Excel séparé
 
 `suivi/Yautja_Fidelite_P0_Addendum_20261113.xlsx` comporte cinq feuilles :

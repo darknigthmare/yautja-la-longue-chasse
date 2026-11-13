@@ -84,8 +84,8 @@ jobs:
       - name: Install the pinned native PNG reader
         run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
       - name: Verify unchanged native candidate pixels and manifest
-        run: python3 production/p0-sprites-20261113/tools/verify-pack.py --require-complete
+        run: python3 production/p0-fidelity-20261113/tools/verify-archived-pack.py --check --require-complete
       - name: Verify deterministic follow-up and protected historical workbooks
         run: python3 production/p0-sprites-20261113/tools/verify-workbook.py --check --require-complete
       - name: Verify native fidelity addendum candidates and source pins
-        run: python3 production/p0-fidelity-20261113/tools/verify-addendum.py --check --require-complete
+        run: python3 production/p0-fidelity-20261113/tools/verify-archived-pack.py --pack addendum --check --require-complete
