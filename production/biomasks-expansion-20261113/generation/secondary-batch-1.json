@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "batch": "secondary-batch-1",
+  "tool": "image_gen.imagegen",
+  "scope": "PHG-quality grayscale isolated candidates from existing community RGB front screenshots; no named franchise original geometry certification. A references remain unchanged.",
+  "entries": [
+    {
+      "id": "predator_11",
+      "label": "Modern Predator",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_11.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-1e87d8a3-1bb3-4d53-9965-2ec44c885738.png",
+      "sha256": "d373fcda9d0395e237e89aa52500f64e2769547d10a328f545613d569d9b9336",
+      "bytes": 1741313,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_11.png",
+      "sourceASha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a",
+      "sourceADimensions": [
+        256,
+        257
+      ],
+      "sourceAMode": "RGB",
+      "sourceScope": "secondary-unofficial-community-PAYDAY2-HUD-reference-screenshot",
+      "sourceMaskIsolationConfirmed": false,
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "generatedNew": true,
+      "newlyGenerated": true,
+      "versionKind": "PHG-graphics-adaptation-candidate",
+      "prompt": "Create ONE isolated biomask in the exact same visible design and near-front camera as the attached RGB reference. This 256x257 screenshot of an unofficial community game-port HUD icon is the only authority for the visible design; do not claim canonical franchise accuracy. Make a source-bound PHG-quality game-prop render, preserving the original whole mask contour, width-to-height proportion, current yaw/pitch/roll, panel boundaries, apertures and recognizable source marks. Keep only the hard mask shell in the image: REMOVE all external hanging white/grey dreadlocks, hair strands, bands on those dreadlocks, wearer anatomy, neck, body and black background. Those bright peripheral strands belong to the wearer, NOT to the mask. Do not replace removed hair with new mask appendages or complete any hidden back or side geometry.\n\nImprove rendering quality through coherent physical surfaces, soft neutral upper-left/front key light and restrained opposite frontal fill, controlled roughness differences, gentle metal reflections, dark cavity readability and restrained fine grain. Preserve the source's neutral grayscale: grey metal, silvery highlights, dark recesses. Do not invent bronze/gold, colored enamel, glowing color, blue tint or radioactive palette. Existing dark/light regions remain in their respective locations. Do not turn all materials into mirror chrome or a plastic toy. Resolve only source-visible broad construction; any tiny uncertain mark stays restrained. No newly invented horns, spikes, crests, runes, symbols, fasteners, vents, teeth, filigree or damage.\n\nOutput a single empty hard mask, no interior face/iris/flesh and no extra object, on native true transparent alpha. Same source camera, not a redesigned frontal or side view. Center the entire mask with 8–12 percent clear native margins on all sides and no clipped tips, object around78 percent of the longest canvas axis. Native high-resolution square PNG. No backdrop, cast floor shadow, black rectangle, halo, fake checkerboard, label, text, border, watermark or duplicate mask.\n\nDESIGN LOCK: The mask itself has a wide smooth softly rounded crown with shallow twin upper lobes, nested arched/teardrop panels tapering toward the nose, and the two small source-visible round features on the center line of these arches. Preserve their locations and the visibly existing short source lines only. The angular eye inserts are light silver with fine dark diagonal slots; preserve this optical/grille treatment without adding colored glow or biological eyes. Keep the short squared central lower shield with its few slender vertical recessed marks, pronounced angular cheek edges and source-visible lateral hard panels. The lower shell is squared off as in the source, not an elongated pointed chin. Exclude every long pale strand below and beside it.",
+      "promptSha256": "3ce47c66d3baecaa9676eeb6ff0a2904514f293e5d33237b05c0d5140f2a03cf",
+      "referencedImagePaths": [
+        "/tmp/all-masks-20261113/web-references/fronts/predator_11.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "nativeCopyIdentical": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "originalGamePixelsVerified": false,
+      "paletteProven": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "zeroPixels": 851249,
+        "noisePixels1to9": 14398,
+        "visiblePixels16": 706528,
+        "nearOpaquePixels240": 701065,
+        "visibleBounds16": [
+          202,
+          102,
+          1053,
+          1141
+        ],
+        "margins16": [
+          202,
+          102,
+          201,
+          113
+        ],
+        "edgeVisible16": 0
+      },
+      "visualCandidateReview": {
+        "status": "candidate-with-source-limitations",
+        "sourceDesignAnchors": "DESIGN LOCK: The mask itself has a wide smooth softly rounded crown with shallow twin upper lobes, nested arched/teardrop panels tapering toward the nose, and the two small source-visible round features on the center line of these arches. Preserve their locations and the visibly existing short source lines only. The angular eye inserts are light silver with fine dark diagonal slots; preserve this optical/grille treatment without adding colored glow or biological eyes. Keep the short squared central lower shield with its few slender vertical recessed marks, pronounced angular cheek edges and source-visible lateral hard panels. The lower shell is squared off as in the source, not an elongated pointed chin. Exclude every long pale strand below and beside it.",
+        "observations": [
+          "Smooth nested twin-lobed crown, two centerline round features, diagonal silver eye grilles and short squared lower shield retained; no hanging wearer strands or color invented.",
+          "Lower-front micro-slots are rendered more sharply than the256px source supports; no exact source UV/detail-count claim."
+        ],
+        "scope": "Model art comparison only; not a human validation or canonical admission."
+      },
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-1e87d8a3-1bb3-4d53-9965-2ec44c885738.png",
+          "sha256": "d373fcda9d0395e237e89aa52500f64e2769547d10a328f545613d569d9b9336",
+          "selected": true,
+          "prompt": "Create ONE isolated biomask in the exact same visible design and near-front camera as the attached RGB reference. This 256x257 screenshot of an unofficial community game-port HUD icon is the only authority for the visible design; do not claim canonical franchise accuracy. Make a source-bound PHG-quality game-prop render, preserving the original whole mask contour, width-to-height proportion, current yaw/pitch/roll, panel boundaries, apertures and recognizable source marks. Keep only the hard mask shell in the image: REMOVE all external hanging white/grey dreadlocks, hair strands, bands on those dreadlocks, wearer anatomy, neck, body and black background. Those bright peripheral strands belong to the wearer, NOT to the mask. Do not replace removed hair with new mask appendages or complete any hidden back or side geometry.\n\nImprove rendering quality through coherent physical surfaces, soft neutral upper-left/front key light and restrained opposite frontal fill, controlled roughness differences, gentle metal reflections, dark cavity readability and restrained fine grain. Preserve the source's neutral grayscale: grey metal, silvery highlights, dark recesses. Do not invent bronze/gold, colored enamel, glowing color, blue tint or radioactive palette. Existing dark/light regions remain in their respective locations. Do not turn all materials into mirror chrome or a plastic toy. Resolve only source-visible broad construction; any tiny uncertain mark stays restrained. No newly invented horns, spikes, crests, runes, symbols, fasteners, vents, teeth, filigree or damage.\n\nOutput a single empty hard mask, no interior face/iris/flesh and no extra object, on native true transparent alpha. Same source camera, not a redesigned frontal or side view. Center the entire mask with 8–12 percent clear native margins on all sides and no clipped tips, object around78 percent of the longest canvas axis. Native high-resolution square PNG. No backdrop, cast floor shadow, black rectangle, halo, fake checkerboard, label, text, border, watermark or duplicate mask.\n\nDESIGN LOCK: The mask itself has a wide smooth softly rounded crown with shallow twin upper lobes, nested arched/teardrop panels tapering toward the nose, and the two small source-visible round features on the center line of these arches. Preserve their locations and the visibly existing short source lines only. The angular eye inserts are light silver with fine dark diagonal slots; preserve this optical/grille treatment without adding colored glow or biological eyes. Keep the short squared central lower shield with its few slender vertical recessed marks, pronounced angular cheek edges and source-visible lateral hard panels. The lower shell is squared off as in the source, not an elongated pointed chin. Exclude every long pale strand below and beside it.",
+          "reason": "First ImageGen candidate retained after source-visible shape/material/alpha review."
+        }
+      ],
+      "limitations": [
+        "Source is an unofficial community HUD screenshot at256x257 pixels and not a detached official mask image.",
+        "B removes wearer dreadlocks/background by ImageGen; fine perimeter ownership remains limited by the small source.",
+        "Neutral grayscale retained because original color palette is not established.",
+        "Fine ornament/bevel details are interpretations of the visible small reference; hidden back/profile/interior/UV geometry is not established.",
+        "This is a static generated candidate, not a new animation, runtime integration, canon certification or human artistic validation."
+      ],
+      "version": "B",
+      "renderMode": "imagegen",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-1.json",
+      "sourceReferenceInputPath": "/tmp/all-masks-20261113/web-references/fronts/predator_11.png",
+      "animated": false,
+      "browserArtReview": {
+        "performed": true,
+        "scope": "Native public PNG displayed with CSS object-fit on white/black at340px and checker at96px beside unchanged256px RGB source. Screenshot is observational QA, never a game asset or image-pixel edit.",
+        "screenshotPath": "/tmp/mask-expansion-20261113/secondary-batch-1-composite.png",
+        "screenshotSha256": "63055e95d15392e0b860dd5a2a8a13adf0193411547a15a24a8e438eff2cdc60",
+        "observations": [
+          "No black rectangular source background, external wearer strands or major visible halo on inspected backgrounds.",
+          "Whole mask margins and grayscale regions remain readable at340px and96px.",
+          "Near-front visible design retained; small source limits exact fine ornament and source-original material claims."
+        ],
+        "humanArtValidated": false,
+        "canonCertified": false
+      }
+    },
+    {
+      "id": "predator_12",
+      "label": "Abyss",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_12.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-d9fd79bd-a80c-4d79-a387-eaa7fa65a42b.png",
+      "sha256": "09ccf409a0ea9a1db3aad1ba32e7b3a7b5cc7b145a343d6a6b2ba26bc397b40f",
+      "bytes": 1392134,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_12.png",
+      "sourceASha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d",
+      "sourceADimensions": [
+        256,
+        257
+      ],
+      "sourceAMode": "RGB",
+      "sourceScope": "secondary-unofficial-community-PAYDAY2-HUD-reference-screenshot",
+      "sourceMaskIsolationConfirmed": false,
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "generatedNew": true,
+      "newlyGenerated": true,
+      "versionKind": "PHG-graphics-adaptation-candidate",
+      "prompt": "Create ONE isolated biomask in the exact same visible design and near-front camera as the attached RGB reference. This 256x257 screenshot of an unofficial community game-port HUD icon is the only authority for the visible design; do not claim canonical franchise accuracy. Make a source-bound PHG-quality game-prop render, preserving the original whole mask contour, width-to-height proportion, current yaw/pitch/roll, panel boundaries, apertures and recognizable source marks. Keep only the hard mask shell in the image: REMOVE all external hanging white/grey dreadlocks, hair strands, bands on those dreadlocks, wearer anatomy, neck, body and black background. Those bright peripheral strands belong to the wearer, NOT to the mask. Do not replace removed hair with new mask appendages or complete any hidden back or side geometry.\n\nImprove rendering quality through coherent physical surfaces, soft neutral upper-left/front key light and restrained opposite frontal fill, controlled roughness differences, gentle metal reflections, dark cavity readability and restrained fine grain. Preserve the source's neutral grayscale: grey metal, silvery highlights, dark recesses. Do not invent bronze/gold, colored enamel, glowing color, blue tint or radioactive palette. Existing dark/light regions remain in their respective locations. Do not turn all materials into mirror chrome or a plastic toy. Resolve only source-visible broad construction; any tiny uncertain mark stays restrained. No newly invented horns, spikes, crests, runes, symbols, fasteners, vents, teeth, filigree or damage.\n\nOutput a single empty hard mask, no interior face/iris/flesh and no extra object, on native true transparent alpha. Same source camera, not a redesigned frontal or side view. Center the entire mask with 8–12 percent clear native margins on all sides and no clipped tips, object around78 percent of the longest canvas axis. Native high-resolution square PNG. No backdrop, cast floor shadow, black rectangle, halo, fake checkerboard, label, text, border, watermark or duplicate mask.\n\nDESIGN LOCK: Preserve the broad fan-like ridged upper crown: central raised spine with a small high tip, paired sweeping elongated raised panels and angular outer wings. Keep the tiny grouped diamond-like source marks in the lower forehead, the deep dark oblique eye apertures, the angular silver cheek facets beside them, and the long narrow central pointed lower shield with the short engraved curling source marks already visible there. Reproduce that existing restrained lower ornament only, no additional runic writing. The mask's cheek surfaces are hard solid grey/silver; the pale numerous narrow dangling strands behind the cheeks are dreadlocks and must be removed. Do not simplify the fan crown into a smooth dome or invent new antlers.",
+      "promptSha256": "6e47e9d9b431d2160ea25decce853928be1109f41651f45e01022111ff0b1798",
+      "referencedImagePaths": [
+        "/tmp/all-masks-20261113/web-references/fronts/predator_12.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "nativeCopyIdentical": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "originalGamePixelsVerified": false,
+      "paletteProven": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "zeroPixels": 978495,
+        "noisePixels1to9": 8605,
+        "visiblePixels16": 585126,
+        "nearOpaquePixels240": 580513,
+        "visibleBounds16": [
+          220,
+          95,
+          1034,
+          1160
+        ],
+        "margins16": [
+          220,
+          95,
+          220,
+          94
+        ],
+        "edgeVisible16": 0
+      },
+      "visualCandidateReview": {
+        "status": "candidate-with-source-limitations",
+        "sourceDesignAnchors": "DESIGN LOCK: Preserve the broad fan-like ridged upper crown: central raised spine with a small high tip, paired sweeping elongated raised panels and angular outer wings. Keep the tiny grouped diamond-like source marks in the lower forehead, the deep dark oblique eye apertures, the angular silver cheek facets beside them, and the long narrow central pointed lower shield with the short engraved curling source marks already visible there. Reproduce that existing restrained lower ornament only, no additional runic writing. The mask's cheek surfaces are hard solid grey/silver; the pale numerous narrow dangling strands behind the cheeks are dreadlocks and must be removed. Do not simplify the fan crown into a smooth dome or invent new antlers.",
+        "observations": [
+          "Fan crown and source-visible angular wings retained; source dark eye cavities, cheek facets and narrow lower center panel remain. Dreadlocks removed, neutral grayscale only.",
+          "Tiny lower curled marks and forehead marks are high-resolution interpretations of a256px source; exact symbol counts and original UV are unproven."
+        ],
+        "scope": "Model art comparison only; not a human validation or canonical admission."
+      },
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-d9fd79bd-a80c-4d79-a387-eaa7fa65a42b.png",
+          "sha256": "09ccf409a0ea9a1db3aad1ba32e7b3a7b5cc7b145a343d6a6b2ba26bc397b40f",
+          "selected": true,
+          "prompt": "Create ONE isolated biomask in the exact same visible design and near-front camera as the attached RGB reference. This 256x257 screenshot of an unofficial community game-port HUD icon is the only authority for the visible design; do not claim canonical franchise accuracy. Make a source-bound PHG-quality game-prop render, preserving the original whole mask contour, width-to-height proportion, current yaw/pitch/roll, panel boundaries, apertures and recognizable source marks. Keep only the hard mask shell in the image: REMOVE all external hanging white/grey dreadlocks, hair strands, bands on those dreadlocks, wearer anatomy, neck, body and black background. Those bright peripheral strands belong to the wearer, NOT to the mask. Do not replace removed hair with new mask appendages or complete any hidden back or side geometry.\n\nImprove rendering quality through coherent physical surfaces, soft neutral upper-left/front key light and restrained opposite frontal fill, controlled roughness differences, gentle metal reflections, dark cavity readability and restrained fine grain. Preserve the source's neutral grayscale: grey metal, silvery highlights, dark recesses. Do not invent bronze/gold, colored enamel, glowing color, blue tint or radioactive palette. Existing dark/light regions remain in their respective locations. Do not turn all materials into mirror chrome or a plastic toy. Resolve only source-visible broad construction; any tiny uncertain mark stays restrained. No newly invented horns, spikes, crests, runes, symbols, fasteners, vents, teeth, filigree or damage.\n\nOutput a single empty hard mask, no interior face/iris/flesh and no extra object, on native true transparent alpha. Same source camera, not a redesigned frontal or side view. Center the entire mask with 8–12 percent clear native margins on all sides and no clipped tips, object around78 percent of the longest canvas axis. Native high-resolution square PNG. No backdrop, cast floor shadow, black rectangle, halo, fake checkerboard, label, text, border, watermark or duplicate mask.\n\nDESIGN LOCK: Preserve the broad fan-like ridged upper crown: central raised spine with a small high tip, paired sweeping elongated raised panels and angular outer wings. Keep the tiny grouped diamond-like source marks in the lower forehead, the deep dark oblique eye apertures, the angular silver cheek facets beside them, and the long narrow central pointed lower shield with the short engraved curling source marks already visible there. Reproduce that existing restrained lower ornament only, no additional runic writing. The mask's cheek surfaces are hard solid grey/silver; the pale numerous narrow dangling strands behind the cheeks are dreadlocks and must be removed. Do not simplify the fan crown into a smooth dome or invent new antlers.",
+          "reason": "First ImageGen candidate retained after source-visible shape/material/alpha review."
+        }
+      ],
+      "limitations": [
+        "Source is an unofficial community HUD screenshot at256x257 pixels and not a detached official mask image.",
+        "B removes wearer dreadlocks/background by ImageGen; fine perimeter ownership remains limited by the small source.",
+        "Neutral grayscale retained because original color palette is not established.",
+        "Fine ornament/bevel details are interpretations of the visible small reference; hidden back/profile/interior/UV geometry is not established.",
+        "This is a static generated candidate, not a new animation, runtime integration, canon certification or human artistic validation."
+      ],
+      "version": "B",
+      "renderMode": "imagegen",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-1.json",
+      "sourceReferenceInputPath": "/tmp/all-masks-20261113/web-references/fronts/predator_12.png",
+      "animated": false,
+      "browserArtReview": {
+        "performed": true,
+        "scope": "Native public PNG displayed with CSS object-fit on white/black at340px and checker at96px beside unchanged256px RGB source. Screenshot is observational QA, never a game asset or image-pixel edit.",
+        "screenshotPath": "/tmp/mask-expansion-20261113/secondary-batch-1-composite.png",
+        "screenshotSha256": "63055e95d15392e0b860dd5a2a8a13adf0193411547a15a24a8e438eff2cdc60",
+        "observations": [
+          "No black rectangular source background, external wearer strands or major visible halo on inspected backgrounds.",
+          "Whole mask margins and grayscale regions remain readable at340px and96px.",
+          "Near-front visible design retained; small source limits exact fine ornament and source-original material claims."
+        ],
+        "humanArtValidated": false,
+        "canonCertified": false
+      }
+    },
+    {
+      "id": "predator_16",
+      "label": "Cyclone",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_16.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-de0784fc-fb91-45cf-afd9-3d0e0147caa4.png",
+      "sha256": "b62a7e01e6a2b86007e82bdebd695a6e2747c5d2d0126b0297211c60d7a9e7c2",
+      "bytes": 1482547,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_16.png",
+      "sourceASha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a",
+      "sourceADimensions": [
+        256,
+        257
+      ],
+      "sourceAMode": "RGB",
+      "sourceScope": "secondary-unofficial-community-PAYDAY2-HUD-reference-screenshot",
+      "sourceMaskIsolationConfirmed": false,
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "generatedNew": true,
+      "newlyGenerated": true,
+      "versionKind": "PHG-graphics-adaptation-candidate",
+      "prompt": "Create ONE isolated biomask in the exact same visible design and near-front camera as the attached RGB reference. This 256x257 screenshot of an unofficial community game-port HUD icon is the only authority for the visible design; do not claim canonical franchise accuracy. Make a source-bound PHG-quality game-prop render, preserving the original whole mask contour, width-to-height proportion, current yaw/pitch/roll, panel boundaries, apertures and recognizable source marks. Keep only the hard mask shell in the image: REMOVE all external hanging white/grey dreadlocks, hair strands, bands on those dreadlocks, wearer anatomy, neck, body and black background. Those bright peripheral strands belong to the wearer, NOT to the mask. Do not replace removed hair with new mask appendages or complete any hidden back or side geometry.\n\nImprove rendering quality through coherent physical surfaces, soft neutral upper-left/front key light and restrained opposite frontal fill, controlled roughness differences, gentle metal reflections, dark cavity readability and restrained fine grain. Preserve the source's neutral grayscale: grey metal, silvery highlights, dark recesses. Do not invent bronze/gold, colored enamel, glowing color, blue tint or radioactive palette. Existing dark/light regions remain in their respective locations. Do not turn all materials into mirror chrome or a plastic toy. Resolve only source-visible broad construction; any tiny uncertain mark stays restrained. No newly invented horns, spikes, crests, runes, symbols, fasteners, vents, teeth, filigree or damage.\n\nOutput a single empty hard mask, no interior face/iris/flesh and no extra object, on native true transparent alpha. Same source camera, not a redesigned frontal or side view. Center the entire mask with 8–12 percent clear native margins on all sides and no clipped tips, object around78 percent of the longest canvas axis. Native high-resolution square PNG. No backdrop, cast floor shadow, black rectangle, halo, fake checkerboard, label, text, border, watermark or duplicate mask.\n\nDESIGN LOCK: Broad faceted upper shell with source-visible center raised strip and short dark U-shaped notch right at its top edge, not a new protruding crest. Keep the dark paired upper side plates with the few existing circular bright marks and short curled engraved marks in their exact source regions; do not add rows of screws or new writing. Preserve the broad continuous narrow light-grey eye band bounded by a dark crease, dark outer eye recesses, small dark central triangular recess, and the compact split blocky lower mouth shield with a center seam and paired lower side recesses. Retain the squared/trapezoidal lower shell and its original height. Remove the long white/grey hanging dreadlocks and their exterior bands; retain hard shell edges only.",
+      "promptSha256": "396e0293c8d46a7dd52c8183d9d39e4a9e6dd56a51cce509f158611f09343619",
+      "referencedImagePaths": [
+        "/tmp/all-masks-20261113/web-references/fronts/predator_16.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "nativeCopyIdentical": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "originalGamePixelsVerified": false,
+      "paletteProven": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "zeroPixels": 946245,
+        "noisePixels1to9": 9631,
+        "visiblePixels16": 616377,
+        "nearOpaquePixels240": 611896,
+        "visibleBounds16": [
+          224,
+          119,
+          1031,
+          1117
+        ],
+        "margins16": [
+          224,
+          119,
+          223,
+          137
+        ],
+        "edgeVisible16": 0
+      },
+      "visualCandidateReview": {
+        "status": "candidate-with-source-limitations",
+        "sourceDesignAnchors": "DESIGN LOCK: Broad faceted upper shell with source-visible center raised strip and short dark U-shaped notch right at its top edge, not a new protruding crest. Keep the dark paired upper side plates with the few existing circular bright marks and short curled engraved marks in their exact source regions; do not add rows of screws or new writing. Preserve the broad continuous narrow light-grey eye band bounded by a dark crease, dark outer eye recesses, small dark central triangular recess, and the compact split blocky lower mouth shield with a center seam and paired lower side recesses. Retain the squared/trapezoidal lower shell and its original height. Remove the long white/grey hanging dreadlocks and their exterior bands; retain hard shell edges only.",
+        "observations": [
+          "Faceted crown, top U notch, paired circular curled source ornaments, narrow continuous eye band and split squared lower shield retained. Neutral grey metal/darker upper panels, no wearer dreads.",
+          "Raised rings/curls and lower cavity depths are interpretations of the visible source, not a claim of exact original sculpture or material."
+        ],
+        "scope": "Model art comparison only; not a human validation or canonical admission."
+      },
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-de0784fc-fb91-45cf-afd9-3d0e0147caa4.png",
+          "sha256": "b62a7e01e6a2b86007e82bdebd695a6e2747c5d2d0126b0297211c60d7a9e7c2",
+          "selected": true,
+          "prompt": "Create ONE isolated biomask in the exact same visible design and near-front camera as the attached RGB reference. This 256x257 screenshot of an unofficial community game-port HUD icon is the only authority for the visible design; do not claim canonical franchise accuracy. Make a source-bound PHG-quality game-prop render, preserving the original whole mask contour, width-to-height proportion, current yaw/pitch/roll, panel boundaries, apertures and recognizable source marks. Keep only the hard mask shell in the image: REMOVE all external hanging white/grey dreadlocks, hair strands, bands on those dreadlocks, wearer anatomy, neck, body and black background. Those bright peripheral strands belong to the wearer, NOT to the mask. Do not replace removed hair with new mask appendages or complete any hidden back or side geometry.\n\nImprove rendering quality through coherent physical surfaces, soft neutral upper-left/front key light and restrained opposite frontal fill, controlled roughness differences, gentle metal reflections, dark cavity readability and restrained fine grain. Preserve the source's neutral grayscale: grey metal, silvery highlights, dark recesses. Do not invent bronze/gold, colored enamel, glowing color, blue tint or radioactive palette. Existing dark/light regions remain in their respective locations. Do not turn all materials into mirror chrome or a plastic toy. Resolve only source-visible broad construction; any tiny uncertain mark stays restrained. No newly invented horns, spikes, crests, runes, symbols, fasteners, vents, teeth, filigree or damage.\n\nOutput a single empty hard mask, no interior face/iris/flesh and no extra object, on native true transparent alpha. Same source camera, not a redesigned frontal or side view. Center the entire mask with 8–12 percent clear native margins on all sides and no clipped tips, object around78 percent of the longest canvas axis. Native high-resolution square PNG. No backdrop, cast floor shadow, black rectangle, halo, fake checkerboard, label, text, border, watermark or duplicate mask.\n\nDESIGN LOCK: Broad faceted upper shell with source-visible center raised strip and short dark U-shaped notch right at its top edge, not a new protruding crest. Keep the dark paired upper side plates with the few existing circular bright marks and short curled engraved marks in their exact source regions; do not add rows of screws or new writing. Preserve the broad continuous narrow light-grey eye band bounded by a dark crease, dark outer eye recesses, small dark central triangular recess, and the compact split blocky lower mouth shield with a center seam and paired lower side recesses. Retain the squared/trapezoidal lower shell and its original height. Remove the long white/grey hanging dreadlocks and their exterior bands; retain hard shell edges only.",
+          "reason": "First ImageGen candidate retained after source-visible shape/material/alpha review."
+        }
+      ],
+      "limitations": [
+        "Source is an unofficial community HUD screenshot at256x257 pixels and not a detached official mask image.",
+        "B removes wearer dreadlocks/background by ImageGen; fine perimeter ownership remains limited by the small source.",
+        "Neutral grayscale retained because original color palette is not established.",
+        "Fine ornament/bevel details are interpretations of the visible small reference; hidden back/profile/interior/UV geometry is not established.",
+        "This is a static generated candidate, not a new animation, runtime integration, canon certification or human artistic validation."
+      ],
+      "version": "B",
+      "renderMode": "imagegen",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-1.json",
+      "sourceReferenceInputPath": "/tmp/all-masks-20261113/web-references/fronts/predator_16.png",
+      "animated": false,
+      "browserArtReview": {
+        "performed": true,
+        "scope": "Native public PNG displayed with CSS object-fit on white/black at340px and checker at96px beside unchanged256px RGB source. Screenshot is observational QA, never a game asset or image-pixel edit.",
+        "screenshotPath": "/tmp/mask-expansion-20261113/secondary-batch-1-composite.png",
+        "screenshotSha256": "63055e95d15392e0b860dd5a2a8a13adf0193411547a15a24a8e438eff2cdc60",
+        "observations": [
+          "No black rectangular source background, external wearer strands or major visible halo on inspected backgrounds.",
+          "Whole mask margins and grayscale regions remain readable at340px and96px.",
+          "Near-front visible design retained; small source limits exact fine ornament and source-original material claims."
+        ],
+        "humanArtValidated": false,
+        "canonCertified": false
+      }
+    }
+  ],
+  "asOfUtc": "2026-11-13T10:29:30.360226+00:00",
+  "sourceAPathsNormalizedToContract": true,
+  "counts": {
+    "generatedNewB": 3,
+    "initialAttempts": 3,
+    "corrections": 0,
+    "pixelEdits": 0,
+    "canonCertified": 0,
+    "humanArtValidated": 0,
+    "runtimeIntegrated": 0
+  }
+}

@@ -1,0 +1,628 @@
+{
+  "scope": "Static A/B review gallery only; not canonical, human-art, runtime or animation approval",
+  "manifestSha256": "b1fa346f649cd5a1edb5f33f5dedb4132d9074b9628a028e3c12f6de4ef8542d",
+  "browser": "154.0.8037.57",
+  "counts": {
+    "sourceDesignRecords": 46,
+    "versionACopies": 46,
+    "newImageGenPngs": 45,
+    "completeCandidatePairs": 46,
+    "reusedBRepresentations": 1,
+    "representations": 92,
+    "availableMaskDesignSources": 45,
+    "hybridProjectStudies": 1,
+    "partialReferenceSources": 1,
+    "aliasesReusingPairs": 13,
+    "canonicalNamesStillWithoutCutout": 46,
+    "originalStoryTrophiesWithoutSource": 2,
+    "newlyCoveredCanonicalNames": 0,
+    "canonCertifiedAssets": 0,
+    "humanArtValidatedAssets": 0,
+    "runtimeIntegratedAssets": 0,
+    "animationClips": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "name": "Embedded manifest separates original A copies, B generations, aliases and remaining identities",
+      "passed": true,
+      "availableSourceRecords": 46,
+      "candidatePairs": 46,
+      "reusedA": 46,
+      "newB": 45,
+      "reusedB": 1,
+      "aliases": 13,
+      "remainingCanonicalNames": 46,
+      "unreferencedOriginalTrophies": 2
+    },
+    {
+      "name": "All paginated images decode with native dimensions, genuine alpha and exact HTTP byte pins",
+      "passed": true,
+      "pairsVisited": 46,
+      "representationsDecoded": 92,
+      "samples": [
+        {
+          "id": "concept-v133-glypic",
+          "version": "A",
+          "transparent": 93236,
+          "solid": 4403
+        },
+        {
+          "id": "concept-v133-glypic",
+          "version": "B",
+          "transparent": 800278,
+          "solid": 749312
+        },
+        {
+          "id": "concept-v133-instinct",
+          "version": "A",
+          "transparent": 93778,
+          "solid": 4029
+        },
+        {
+          "id": "concept-v133-instinct",
+          "version": "B",
+          "transparent": 903580,
+          "solid": 655384
+        },
+        {
+          "id": "concept-v133-nova",
+          "version": "A",
+          "transparent": 93659,
+          "solid": 4122
+        },
+        {
+          "id": "concept-v133-nova",
+          "version": "B",
+          "transparent": 996386,
+          "solid": 564418
+        },
+        {
+          "id": "concept-v133-paroxysm",
+          "version": "A",
+          "transparent": 93544,
+          "solid": 4176
+        },
+        {
+          "id": "concept-v133-paroxysm",
+          "version": "B",
+          "transparent": 925713,
+          "solid": 631557
+        },
+        {
+          "id": "concept-v133-requiem",
+          "version": "A",
+          "transparent": 93583,
+          "solid": 4173
+        },
+        {
+          "id": "concept-v133-requiem",
+          "version": "B",
+          "transparent": 888046,
+          "solid": 668368
+        },
+        {
+          "id": "concept-v133-tyrant",
+          "version": "A",
+          "transparent": 93302,
+          "solid": 4480
+        },
+        {
+          "id": "concept-v133-tyrant",
+          "version": "B",
+          "transparent": 1079695,
+          "solid": 481766
+        },
+        {
+          "id": "concept-v133-warlord",
+          "version": "A",
+          "transparent": 93605,
+          "solid": 4194
+        },
+        {
+          "id": "concept-v133-warlord",
+          "version": "B",
+          "transparent": 979826,
+          "solid": 579613
+        },
+        {
+          "id": "legacy-elder-project",
+          "version": "A",
+          "transparent": 94793,
+          "solid": 3224
+        },
+        {
+          "id": "legacy-elder-project",
+          "version": "B",
+          "transparent": 1130075,
+          "solid": 432212
+        },
+        {
+          "id": "mask-feral-screen-original",
+          "version": "A",
+          "transparent": 1112107,
+          "solid": 456370
+        },
+        {
+          "id": "mask-feral-screen-original",
+          "version": "B",
+          "transparent": 1090948,
+          "solid": 468518
+        },
+        {
+          "id": "mk-01-jungle",
+          "version": "A",
+          "transparent": 596513,
+          "solid": 960616
+        },
+        {
+          "id": "mk-01-jungle",
+          "version": "B",
+          "transparent": 608802,
+          "solid": 947731
+        },
+        {
+          "id": "mk-02-city",
+          "version": "A",
+          "transparent": 867232,
+          "solid": 691742
+        },
+        {
+          "id": "mk-02-city",
+          "version": "B",
+          "transparent": 863454,
+          "solid": 696513
+        },
+        {
+          "id": "mk-03-scar",
+          "version": "A",
+          "transparent": 809845,
+          "solid": 745766
+        },
+        {
+          "id": "mk-03-scar",
+          "version": "B",
+          "transparent": 803937,
+          "solid": 752091
+        },
+        {
+          "id": "mk-04-celtic",
+          "version": "A",
+          "transparent": 790390,
+          "solid": 767976
+        },
+        {
+          "id": "mk-04-celtic",
+          "version": "B",
+          "transparent": 795095,
+          "solid": 763810
+        },
+        {
+          "id": "mk-05-chopper",
+          "version": "A",
+          "transparent": 748640,
+          "solid": 808834
+        },
+        {
+          "id": "mk-05-chopper",
+          "version": "B",
+          "transparent": 824362,
+          "solid": 734234
+        },
+        {
+          "id": "mk-06-wolf",
+          "version": "A",
+          "transparent": 855148,
+          "solid": 700891
+        },
+        {
+          "id": "mk-06-wolf",
+          "version": "B",
+          "transparent": 855148,
+          "solid": 700891
+        },
+        {
+          "id": "mk-07-feral",
+          "version": "A",
+          "transparent": 997669,
+          "solid": 553628
+        },
+        {
+          "id": "mk-07-feral",
+          "version": "B",
+          "transparent": 1001197,
+          "solid": 556403
+        },
+        {
+          "id": "mk-08-boar",
+          "version": "A",
+          "transparent": 838314,
+          "solid": 718729
+        },
+        {
+          "id": "mk-08-boar",
+          "version": "B",
+          "transparent": 841569,
+          "solid": 718169
+        },
+        {
+          "id": "mk-09-snake",
+          "version": "A",
+          "transparent": 830109,
+          "solid": 729282
+        },
+        {
+          "id": "mk-09-snake",
+          "version": "B",
+          "transparent": 824440,
+          "solid": 733449
+        },
+        {
+          "id": "mk-10-falconer",
+          "version": "A",
+          "transparent": 826732,
+          "solid": 732369
+        },
+        {
+          "id": "mk-10-falconer",
+          "version": "B",
+          "transparent": 849065,
+          "solid": 711855
+        },
+        {
+          "id": "mk-11-berserker",
+          "version": "A",
+          "transparent": 690944,
+          "solid": 865405
+        },
+        {
+          "id": "mk-11-berserker",
+          "version": "B",
+          "transparent": 725930,
+          "solid": 831674
+        },
+        {
+          "id": "mk-12-fugitive",
+          "version": "A",
+          "transparent": 839003,
+          "solid": 721313
+        },
+        {
+          "id": "mk-12-fugitive",
+          "version": "B",
+          "transparent": 840083,
+          "solid": 720521
+        },
+        {
+          "id": "mk-13-dek",
+          "version": "A",
+          "transparent": 944377,
+          "solid": 616328
+        },
+        {
+          "id": "mk-13-dek",
+          "version": "B",
+          "transparent": 940483,
+          "solid": 620375
+        },
+        {
+          "id": "mk-14-enforcer",
+          "version": "A",
+          "transparent": 1011667,
+          "solid": 542036
+        },
+        {
+          "id": "mk-14-enforcer",
+          "version": "B",
+          "transparent": 1019588,
+          "solid": 534546
+        },
+        {
+          "id": "mk-23-samurai",
+          "version": "A",
+          "transparent": 819467,
+          "solid": 727967
+        },
+        {
+          "id": "mk-23-samurai",
+          "version": "B",
+          "transparent": 895269,
+          "solid": 658291
+        },
+        {
+          "id": "mk-24-viking",
+          "version": "A",
+          "transparent": 970730,
+          "solid": 567579
+        },
+        {
+          "id": "mk-24-viking",
+          "version": "B",
+          "transparent": 921100,
+          "solid": 574016
+        },
+        {
+          "id": "mk-25-valkyrie",
+          "version": "A",
+          "transparent": 1141897,
+          "solid": 397910
+        },
+        {
+          "id": "mk-25-valkyrie",
+          "version": "B",
+          "transparent": 1151478,
+          "solid": 384701
+        },
+        {
+          "id": "mk-30-emissary",
+          "version": "A",
+          "transparent": 936778,
+          "solid": 619342
+        },
+        {
+          "id": "mk-30-emissary",
+          "version": "B",
+          "transparent": 941715,
+          "solid": 615705
+        },
+        {
+          "id": "mk-35-mr-black",
+          "version": "A",
+          "transparent": 1235236,
+          "solid": 327458
+        },
+        {
+          "id": "mk-35-mr-black",
+          "version": "B",
+          "transparent": 965009,
+          "solid": 593158
+        },
+        {
+          "id": "phg-alpha",
+          "version": "A",
+          "transparent": 1009308,
+          "solid": 516943
+        },
+        {
+          "id": "phg-alpha",
+          "version": "B",
+          "transparent": 1024905,
+          "solid": 523241
+        },
+        {
+          "id": "phg-captured",
+          "version": "A",
+          "transparent": 967658,
+          "solid": 587072
+        },
+        {
+          "id": "phg-captured",
+          "version": "B",
+          "transparent": 980083,
+          "solid": 574769
+        },
+        {
+          "id": "phg-cleopatra",
+          "version": "A",
+          "transparent": 888484,
+          "solid": 651188
+        },
+        {
+          "id": "phg-cleopatra",
+          "version": "B",
+          "transparent": 973876,
+          "solid": 573258
+        },
+        {
+          "id": "phg-cosmetic-arthos",
+          "version": "A",
+          "transparent": 1028295,
+          "solid": 525203
+        },
+        {
+          "id": "phg-cosmetic-arthos",
+          "version": "B",
+          "transparent": 1028531,
+          "solid": 529499
+        },
+        {
+          "id": "phg-cosmetic-eclipse",
+          "version": "A",
+          "transparent": 1027846,
+          "solid": 528463
+        },
+        {
+          "id": "phg-cosmetic-eclipse",
+          "version": "B",
+          "transparent": 1026961,
+          "solid": 533222
+        },
+        {
+          "id": "phg-cosmetic-immortal",
+          "version": "A",
+          "transparent": 915333,
+          "solid": 636856
+        },
+        {
+          "id": "phg-cosmetic-immortal",
+          "version": "B",
+          "transparent": 911671,
+          "solid": 642998
+        },
+        {
+          "id": "phg-cosmetic-inferno",
+          "version": "A",
+          "transparent": 1027467,
+          "solid": 519969
+        },
+        {
+          "id": "phg-cosmetic-inferno",
+          "version": "B",
+          "transparent": 1029512,
+          "solid": 527188
+        },
+        {
+          "id": "phg-cosmetic-journeyman",
+          "version": "A",
+          "transparent": 1021075,
+          "solid": 534573
+        },
+        {
+          "id": "phg-cosmetic-journeyman",
+          "version": "B",
+          "transparent": 848918,
+          "solid": 709279
+        },
+        {
+          "id": "phg-cosmetic-nocturne",
+          "version": "A",
+          "transparent": 1021751,
+          "solid": 534633
+        },
+        {
+          "id": "phg-cosmetic-nocturne",
+          "version": "B",
+          "transparent": 939886,
+          "solid": 613574
+        },
+        {
+          "id": "phg-cosmetic-phalanx",
+          "version": "A",
+          "transparent": 1027199,
+          "solid": 530642
+        },
+        {
+          "id": "phg-cosmetic-phalanx",
+          "version": "B",
+          "transparent": 1026369,
+          "solid": 533430
+        },
+        {
+          "id": "phg-cosmetic-phoenix",
+          "version": "A",
+          "transparent": 1047696,
+          "solid": 500550
+        },
+        {
+          "id": "phg-cosmetic-phoenix",
+          "version": "B",
+          "transparent": 1040722,
+          "solid": 512607
+        },
+        {
+          "id": "phg-cosmetic-plague",
+          "version": "A",
+          "transparent": 1096336,
+          "solid": 444077
+        },
+        {
+          "id": "phg-cosmetic-plague",
+          "version": "B",
+          "transparent": 973353,
+          "solid": 555337
+        },
+        {
+          "id": "phg-cosmetic-prophet",
+          "version": "A",
+          "transparent": 1081822,
+          "solid": 474569
+        },
+        {
+          "id": "phg-cosmetic-prophet",
+          "version": "B",
+          "transparent": 957829,
+          "solid": 603240
+        },
+        {
+          "id": "phg-cosmetic-ravager",
+          "version": "A",
+          "transparent": 1110242,
+          "solid": 449206
+        },
+        {
+          "id": "phg-cosmetic-ravager",
+          "version": "B",
+          "transparent": 906253,
+          "solid": 649595
+        },
+        {
+          "id": "phg-cosmetic-vex",
+          "version": "A",
+          "transparent": 922150,
+          "solid": 637027
+        },
+        {
+          "id": "phg-cosmetic-vex",
+          "version": "B",
+          "transparent": 917208,
+          "solid": 642256
+        },
+        {
+          "id": "phg-cosmetic-wretch",
+          "version": "A",
+          "transparent": 1107664,
+          "solid": 442608
+        },
+        {
+          "id": "phg-cosmetic-wretch",
+          "version": "B",
+          "transparent": 924482,
+          "solid": 631419
+        },
+        {
+          "id": "phg-elder",
+          "version": "A",
+          "transparent": 911869,
+          "solid": 617295
+        },
+        {
+          "id": "phg-elder",
+          "version": "B",
+          "transparent": 878242,
+          "solid": 679139
+        },
+        {
+          "id": "phg-exiled",
+          "version": "A",
+          "transparent": 819421,
+          "solid": 724716
+        },
+        {
+          "id": "phg-exiled",
+          "version": "B",
+          "transparent": 949149,
+          "solid": 602018
+        }
+      ]
+    },
+    {
+      "name": "Family, every identity and all aliases select their actual existing A/B pair",
+      "passed": true,
+      "families": 4,
+      "identities": 46,
+      "aliases": 13
+    },
+    {
+      "name": "Visible alpha-bounds scale normalizes tiny A sources with B using CSS only",
+      "passed": true
+    },
+    {
+      "name": "Keyboard opens source details and Escape restores focus without changing data",
+      "passed": true
+    },
+    {
+      "name": "Partial and hybrid source qualifications stay visible alongside original project scopes",
+      "passed": true
+    },
+    {
+      "name": "320 and 390 pixel screens keep controls, pairs, drawer and expanded tables inside the viewport",
+      "passed": true
+    },
+    {
+      "name": "No missing files, JavaScript exceptions, external images or game-storage writes occur",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

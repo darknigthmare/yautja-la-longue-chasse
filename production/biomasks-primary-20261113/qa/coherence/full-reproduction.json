@@ -1,0 +1,2078 @@
+{
+  "node": "v22.23.4",
+  "startedAt": "2026-11-13T07:03:21.599Z",
+  "selection": "production/clan-war-command-20261109/qa/ci/test-selection.json",
+  "selectionSha256": "6c4f96aaf8c590e72a328a2b328ca70b78e8756b51f8ef953d5ab4921eaa9f92",
+  "files": [
+    {
+      "file": "tests/audio-manifest.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/audio-manifest.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "8d510a69c6079e8b8bb6fe1c1fd076e93c08e5d0f56ff7629699ca72059e832d",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/audio-manifest.test.mjs.tap",
+      "logSha256": "ed7eddaeae5ff07d86b156955008710a3070173ca3d64ec0f5dccc8e6d026a17",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/audio-pack-v54.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/audio-pack-v54.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "a9a590f94b539c51611503ced46f56fa338178b0ba7035481e31a44614ca423a",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/audio-pack-v54.test.mjs.tap",
+      "logSha256": "2235b2386f9d5c0c66cc9aa26d43e664ae31255796f3c51c22a0d9c413340f0f",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/canopy-grip-presentation-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/canopy-grip-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "616b3014f6b84ce65f29ac3e6571b782732c986e074f1a3797fb7f295444a15a",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/canopy-grip-presentation-v112.test.mjs.tap",
+      "logSha256": "3add70d06dcb38e3c678a962f6a4790124ffa5d49f05cb0ed84e0eb12ef03372",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/canopy-navigation-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/canopy-navigation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "36acf9c8825bebfa62e5b060181426e34f9edbaba366f0dfc1d177ba18b20bff",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/canopy-navigation-v112.test.mjs.tap",
+      "logSha256": "2272c77a274209eed157c42762148a32736f47eac9d2d6697c4745d235452f8d",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/canopy-traversal-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/canopy-traversal-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "d1080e8fb5c1242015db4a53ac28052034882395ccce616d1b386c8cfeda0081",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/canopy-traversal-v112.test.mjs.tap",
+      "logSha256": "44ea2d9dfae44c4542e75bd56cc0d0d018dd2e89b1d5b845610a0c0d03eeec05",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/carcass-anatomy-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/carcass-anatomy-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "111942301d2eae657771855a2788093f5bfd12bc0ce21b29ade21949fb7a088e",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/carcass-anatomy-v112.test.mjs.tap",
+      "logSha256": "668cdc142a9bce0aa4ecce168aba175d6605ba583755a84875877caed71cc1df",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-field-pack-20261103.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-field-pack-20261103.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "3d08e65f4d14ee521339e2f5b84d3866d4a1d5ca9cf3ba5c3e3d446a85d0beaa",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-field-pack-20261103.test.mjs.tap",
+      "logSha256": "2b234924957c1f9a23d4d347290283786d7c3ad372e0f6bb3c1016fb3d0810e4",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-crew-dialogue-ui.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-crew-dialogue-ui.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6eb71abca17330ab1f06b638591ef02bc743cd3b1b196765b3e730c69d1de6ad",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-crew-dialogue-ui.test.mjs.tap",
+      "logSha256": "4cb69b06f862d41e44c19e8c4398048569650ce883d742f3531bc363e01360cd",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-crew-dialogue.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-crew-dialogue.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "7c3923370cc8c5801e0126ac0c61a3a918daf1457decbc29c6f16ca74b5efee3",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-crew-dialogue.test.mjs.tap",
+      "logSha256": "62e44609ee21558d26bbff071511672230f2596a036bafc0fab3bbdd8bf1503b",
+      "tests": 45,
+      "pass": 45,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-dialogue.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-dialogue.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "a393fda583128eed5373a3a294d88b246cd2c93aafd83887981f7a3c1fa5e7ac",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-dialogue.test.mjs.tap",
+      "logSha256": "a0f6bc7036c866c339498d79c1080299f09c7be7d73da7ef92e4e890d32c704e",
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-docking.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-docking.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "235387c98942aa946b1d6c68b0a8e967a2162f477a1d2b52b332201061c78416",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-docking.test.mjs.tap",
+      "logSha256": "e18c220f9017d6281d3887c0fc5e1a242b72fda70eba7defbb27c739ed626fa7",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-hunt-dialogue.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-hunt-dialogue.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "3e940fc292d64ffae0712ef16a6c90b1e688b2b05e65573e029191f6938f88f2",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-hunt-dialogue.test.mjs.tap",
+      "logSha256": "4bc42bb49c88b106b8abedb263d682deffb42bb896a8e6cff9428ff365fd3c31",
+      "tests": 30,
+      "pass": 30,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-incidents.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-incidents.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2df0ab68f691ca95c8af85fc0c1f95a647d79f5cd680cb230349a3c9a5fb3314",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-incidents.test.mjs.tap",
+      "logSha256": "6bb5cbc233e7ebbc25f4c67d4cec63f5f387a1f3208f926dac0982ea53d09804",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-interior.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-interior.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "54899c245e1a9f9c22c67e5eb81fd78513ce6c93c7c49ac80f81795060aba241",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-interior.test.mjs.tap",
+      "logSha256": "e1d42ecf8307f3652a737ffa5b6546ebf68590ed9aea5bb3075b6da7ba218fad",
+      "tests": 19,
+      "pass": 19,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-maintenance-diagnostics.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-maintenance-diagnostics.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "df41737cc2d62ececbbb07678544a6ef308f79d7943202289f2e8c92ccd02cf9",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-maintenance-diagnostics.test.mjs.tap",
+      "logSha256": "9b686fe2b01b7caedfa3496208e897f35433bc09fdd919aef9e762888351e331",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-operations-audio.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-operations-audio.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "3fd98fc509db59da70d2e2252cd7e53ac81c27a4045336eda126f77ff6769994",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-operations-audio.test.mjs.tap",
+      "logSha256": "b305a1bdf76dfb57af4eef79787a751b052a91679141ed0775a6956fb4ecd215",
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-operations-save.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-operations-save.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c0328178a90868216062636c73ebe6b5696749838b8db79999e7e5bcd0c0463d",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-operations-save.test.mjs.tap",
+      "logSha256": "6d87466d492a4669a62bb48622ca03afbfb6fcc30155c7aaee783b6523afce93",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-operations.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-operations.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5afa5380f2c6cc51a47cc57cebd48af856312e0c6684e8b04cbe6570c086b775",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-operations.test.mjs.tap",
+      "logSha256": "3e05f1dcdfd795a48bcbf05e94aab42bd8586c5d0980cf0a7c3613edf66d5761",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-return-escort-save.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-return-escort-save.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "16f6c4438eebe7ba4d222bf0caaaff451d5372bc3ff556d8f280644ad41410fa",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-return-escort-save.test.mjs.tap",
+      "logSha256": "6478c0cc24b9a281b12396ea2d6ca49ff8dea44fbdfa275ccbd0184a94d9b2b7",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-return-escort-ui.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-return-escort-ui.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5dc531abf6a3c72cbd5b8fc0372123c0a59b03b2918e0c57f3e0306400d27b01",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-return-escort-ui.test.mjs.tap",
+      "logSha256": "2f578f2a95adde2f066079a61369cd3f0e1e763d4395aeb9eeb16f5a67e445f9",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-return-escort.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-return-escort.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5f83e827a19b7457a7cf43084e60554a22c1e71d4a4a705d098d8a825aaab464",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-return-escort.test.mjs.tap",
+      "logSha256": "f71936d3d575c4440abd2b83dbba0b66ee5dc234bcf2abf2e0b50a70ceeb4156",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-save.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-save.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5ced48e55a2476d872cf6dc9f46661ea4ff850aa2d80fe7f21c569cfbfab6393",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-save.test.mjs.tap",
+      "logSha256": "5cf66dba33d2e47d5b5898f61edb329ffc022a9af5388c138530907eaf888309",
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-space-encounter.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-space-encounter.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "46b193115aef3ffe9a96be2e163be7261fd1a1dbc258af32d8c7cba9d9acb56a",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-space-encounter.test.mjs.tap",
+      "logSha256": "5410d81adb3681c70b3d748921ef545b47b33de31f8aed856b3ca6e9fc690090",
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-trophy-case.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-trophy-case.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cd50309c842ef400279651c1264020425d83f15d0b2ba537f8198dc706ab4567",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-trophy-case.test.mjs.tap",
+      "logSha256": "2f7fc44d66768e429d5c20c77a0014f0289f1da4f297a678761e8ab2fbd037a7",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-trophy-hearing-presentation.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-trophy-hearing-presentation.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "8f590dbecabcdb235270dd09569e8d9a14cf342cd579f0a5e77a7cee5542be8f",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-trophy-hearing-presentation.test.mjs.tap",
+      "logSha256": "2e2c6ab367d9e4b98eaff081508d58f5deb531dc6dccc8673a3a12343baf93a9",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-ship-trophy-hearing.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-ship-trophy-hearing.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "140e3e2e88625f91227cd71b222af95338457bfba1af76dabd3ed2ceb1775f09",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-ship-trophy-hearing.test.mjs.tap",
+      "logSha256": "86e1b319ecc237a5b3aa77ad1071b4060ff614d7f8c214476b40dbb1880da416",
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-climate-place-tokens.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-climate-place-tokens.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "875ab39260aee3a5ddc1fa010e21b6bbdb7f01bb623b32c2b1364f058deed29a",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-climate-place-tokens.test.mjs.tap",
+      "logSha256": "b8719231c6e1742d0b43f4d9714e20064e9b0b7df9b8f4322f2212e3cdf3edd9",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-due-events-v151.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-due-events-v151.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6d32b51e0e29b099053725daa23f1b14e2f4bacf6f80cbfaefaa1995185ae3a9",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-due-events-v151.test.mjs.tap",
+      "logSha256": "eedb88ad9b963d850bf661e7b3b34dae5d0ee505c7171e8d136e665c87727eb9",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-fence-v94.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-fence-v94.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9ca3670dcf64727f0050df2fa9a0060c2ad39af2dd05fa1fef9ade1776510a0b",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-fence-v94.test.mjs.tap",
+      "logSha256": "b175b53d422c372c9e8cc3b84544d14dbdd64b111f69cbe5f6e9d7f006143973",
+      "tests": 21,
+      "pass": 21,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-pr55-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-pr55-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e72ff2a7d18d115d6919a9718ab31fd6ad211522c40e176c77673b9755cac175",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-pr55-v144.test.mjs.tap",
+      "logSha256": "0e4a089fd932a1d2cdc33aec5bd0441a7f7d9952fd95dd25aac5bbf52b4e8960",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-pr57-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-pr57-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "a7ba0a37a76f22264ef2c290d1bf6bac6b5f6cd696b325c9d7935e8fd61b989e",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-pr57-v144.test.mjs.tap",
+      "logSha256": "8bb373acf2ad6f47e93684bd16c8d470a85afe978f7b8a3964877cdb9b4d6412",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v135.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v135.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6e59d1703f1f93463370d183c18cb7970e08b0a115ab98d6cc87f6dac1eaa3a7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v135.test.mjs.tap",
+      "logSha256": "8b028bbe891dd07f92e390762c0aace607472a2638d257af7922a098e6c16616",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v136.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v136.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "19494119117ba7d1b547525adea5885835f34ed7c56e9c4658a764e724a2fc06",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v136.test.mjs.tap",
+      "logSha256": "2863e2d246c71f22582b42a46fbde93fba0cffd44989bed84e956904bba1a8f3",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v137.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v137.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "874ba66d5a3c6c1dd4256fd3be59dc551899419154c6bb1b4f8dbe9d67535dbc",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v137.test.mjs.tap",
+      "logSha256": "c530368837f85c2e3eaf7872003a99a23123a345f613dd7e27cc08596cd4cf19",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v138.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v138.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "fa025b94f804f16a92cc6f34f76ba6ff6458a32fec6197c891e0050a8573deba",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v138.test.mjs.tap",
+      "logSha256": "41af9661977305b03c065e23065eefd9f386b4f5fdc35d9414d23630a4b1addd",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v139.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v139.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5b8a6c875b5eeba31190eabeb415157b299bffeb708815d0b8d303a242b3b4dd",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v139.test.mjs.tap",
+      "logSha256": "523e50f005bc989509b2785090462190cd8e7d056c324446d6b240f940a8c396",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v140.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v140.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e7265905d99a121416967c948022d698005cdb8d81503e8244de7fc492898243",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v140.test.mjs.tap",
+      "logSha256": "4818da831fc576fd8b2f9aaa0c9f6d63dbae9ae818ed044b5c842d0a4baf640b",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v141.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v141.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "53bb82ebf5d6976209a3b5083a681b459ad1b34bbe4c86932ecbd7d6ab116069",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v141.test.mjs.tap",
+      "logSha256": "f25505cf056fd3ea31da2894dc164c6acc78fcc96b42f175f85b24097f7c4770",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v142.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v142.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "adc3f663fb98204c229cae8ea2e4275a7173e2632839f6d519a16059b9d5bde4",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v142.test.mjs.tap",
+      "logSha256": "0625455e63c9dbf52923a04b4cc63b25ad852cfbcca1d3d0ea45582dd9437540",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v143.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v143.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b9a0fdb97a11f26f514ee3d219844c687dc740d0b4fb1bb8b96e8c376dc039d4",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v143.test.mjs.tap",
+      "logSha256": "bfd070c67b8d755f51ed1e676957a5342023184728e51b961d96818e35c0f967",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "ef8565505506fa0a35f95816f84046a293ae8c856276db926392261928e0aaf8",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v144.test.mjs.tap",
+      "logSha256": "d39dcbbb3b2461ccfffeb285e240ca6737f1f156cb1ec9c92c4eca4b32c22789",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v145.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v145.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c4e0394c5350a334b2195e916465eb89076518ac5374218766298abdf6c30c39",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v145.test.mjs.tap",
+      "logSha256": "68487340dd3f810786e94f8195dc8329d16983672565afeda062c3783e45aff1",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-four-modes-v147.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-four-modes-v147.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "27d1464badf5f9036f453d816d76c04661243ba11b475c62241e8a0ad5d141ce",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-four-modes-v147.test.mjs.tap",
+      "logSha256": "8e9a9fadf0191c288aee555b41dc6e94d1696be8d34a44bcde08c315ab62c469",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-gauntlets-v133.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-gauntlets-v133.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "4bdec9bb29e4a960e74fde1b655c08978596db2b09f885f3ae958e49c430b74e",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-gauntlets-v133.test.mjs.tap",
+      "logSha256": "69485b0104cfa56ee65b642d98f5c49f973a99568f62c8a97fe24bdefb2a2b9c",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-integrated-last-contact-v150.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-integrated-last-contact-v150.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bb9ee5d8237316165d249762628c9099c9314cb8e88b06a8690363892f25a257",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-integrated-last-contact-v150.test.mjs.tap",
+      "logSha256": "81ecd60dad84bd9c482ae2d14a8568fe193248e06fb3adee281e4838158036f6",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-operations-archive.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-operations-archive.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "f0563d7c4b5ae38a3f295b95a1cfe62938276fb1b2d21dedbf78877842f91513",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-operations-archive.test.mjs.tap",
+      "logSha256": "15ab8b68bb23c93ea5303e932260516a78330f3f1f3e5c3c48d81caccd8c3622",
+      "tests": 25,
+      "pass": 25,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-operations-v115.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-operations-v115.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9eaeee717162694cc4428acc0e8fdf346605d17cd7cf6231582c29a79dd8b82f",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-operations-v115.test.mjs.tap",
+      "logSha256": "90e90cfc322b79152178e1f36730cdafc5a613b7515715fdc0b341b89c8b6d96",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-inspection-reconcile.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-inspection-reconcile.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9c47e2c1ffee18f687cf3780290d7c0c8a3f3f18520e1f93ce74281aeac28b1d",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-outer-inspection-reconcile.test.mjs.tap",
+      "logSha256": "104ec10d9e64969e9d502548be09b9171b53d796258ffc642b02e8d87d57e1ad",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-pace-reconcile.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-pace-reconcile.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2cd975ad871b86abdf78d60580181b8601331274d1e7716a3ffe96e25895b292",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-outer-pace-reconcile.test.mjs.tap",
+      "logSha256": "4226c3bf1d59d8f8f1d3f45bc1b27d45fc4bd05eaebeb65ac48ed417ac1bccea",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-recall-continuity.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-recall-continuity.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "de850bd81e95583cfea0666ff39f53d4dda4fe3a5bf435b95dd96e2fc179e424",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-outer-recall-continuity.test.mjs.tap",
+      "logSha256": "33f59ed4b27e8737f6b63538d3bfc63ca881c333e5ff3222f78b0be0b94b6312",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-outer-recall-v116.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-outer-recall-v116.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "7d1256e3658185e8611d1c985421e7b9d13e2cd4bfd4e228efcaca06888ff358",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-outer-recall-v116.test.mjs.tap",
+      "logSha256": "1bdc55b334ff2c8fc7be6d9d7a93d82d118523fea33d26f2c87dab6ebf5cc8ba",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-planets-engine-v96.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-planets-engine-v96.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "f32cd84888f9775bef462133cb5f542877929f04d504222620cf35512a32cb5e",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-planets-engine-v96.test.mjs.tap",
+      "logSha256": "1b27190a964a6d751c6daa2bf07c9037bed798854549abc64bc5b3200704bc34",
+      "tests": 49,
+      "pass": 49,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-production-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-production-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "164e27fbca8ae6f9a08efcf61bbf883b1da6c4985c85841a1367ec864a144da1",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-production-v152.test.mjs.tap",
+      "logSha256": "456f5f1ffaa6494af86dfdffc51b9ba960a2b99f2e1e79aa5ab6380a13a0ff87",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-provenance-gate-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-provenance-gate-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "46941757a9546bddc187cdb670bec76b7875124da6281b4ae8dc074171de3e27",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-provenance-gate-v152.test.mjs.tap",
+      "logSha256": "cd13ff93bc610f7d95d4d1701ece92b5e60a0d0a520c3cd3cbf1422be1af9e38",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-rts-web-lock-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-rts-web-lock-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b5c5e24cfcc23a13cae36be3b26dfba2be32776f7d7f9d013ff93e4fb5f6e1d7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-rts-web-lock-v152.test.mjs.tap",
+      "logSha256": "dfaf8436a1b1576afaebfc87e8a86c116989f6637f9f1aee5aafd0fdde46280c",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-session-v85.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-session-v85.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cba6c41ddb11698bc58e67862b1617b3de0530d222d5290f0754b53bc95040cc",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-session-v85.test.mjs.tap",
+      "logSha256": "e2bb36b1ed4e9ba69ac2bd125d56afd5320d31f3ea560c936069772051caeb90",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-v115-multitab-v148.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-v115-multitab-v148.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5b2baa05513acb579ff1092bba271b08b25d5180dbd02e62f8408f5c0dd15d7a",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-v115-multitab-v148.test.mjs.tap",
+      "logSha256": "eafc5ad090f776abdd3d14f3c13a1ee90af34f62536d96f90f6685fd15f4aec5",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-v115-multitab-v151.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-v115-multitab-v151.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "90d54a8bdaa23191c2949488d96a91ef60afddcc1d8d979c49ec92c5847d04d7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-v115-multitab-v151.test.mjs.tap",
+      "logSha256": "3315e7df41b87276d7e24dcc8433a5741a11769feb9cb80e63af68999916fed5",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-variant-export-coherence.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-variant-export-coherence.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e74b126a7b96c4af7e9999ad1b8e580a406f5745488eefddeac1524c0d01b049",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-variant-export-coherence.test.mjs.tap",
+      "logSha256": "429ef5a28df55689bef20717f55c94a32be74d907375c3a3d66dd57ec2f395cc",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/clan-war-variants-v120.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/clan-war-variants-v120.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "35bc844ac1e0ab1a893fc822ddd1f6c677c2daa7f4c882d6b2df6e9cf81a4e06",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/clan-war-variants-v120.test.mjs.tap",
+      "logSha256": "0c3a85438d5133d62518d2ca94e32e915041b1a62303d3a0012230d3cc63079e",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/companion-residence.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/companion-residence.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "29bd62596afa382715cd4ae856186804956a4a4074152e27458b1f7360ba2881",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/companion-residence.test.mjs.tap",
+      "logSha256": "4d04c482ebc52f80acd8675ca366558f9357f16547722b7f0302c84e009362da",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/decal-placement-parity-v139.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/decal-placement-parity-v139.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "030e3ebfa2550f8eb8a3f5ddc30a67088fc274e72a7413c03fd4270a63f106ec",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/decal-placement-parity-v139.test.mjs.tap",
+      "logSha256": "ab4e3b996a5f93bf7937324d437b892ddb3e001ead4ef7b458dff6f522075d46",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/dev-travel-destinations.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/dev-travel-destinations.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "eb2d1e458b8ae69e8b981b29c56ff1dce5d4396b6d18ee13dccc596be50c26a3",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/dev-travel-destinations.test.mjs.tap",
+      "logSha256": "9ea268c1696042a11ac9f5a99f5bb8c1be1658e73ac35d81d15e50d9bb4ef03f",
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/dev-travel-session.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/dev-travel-session.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "912dd4f866624e69fba2a6e2d8cb5a939c5c2111d3cd3213fc06304e82326e37",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/dev-travel-session.test.mjs.tap",
+      "logSha256": "e7d6dc75577bbb9f5732edb11e31f6e873f505476b654a4eaf39dc86bf401eee",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/gauntlet-save-roundtrip-v136.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/gauntlet-save-roundtrip-v136.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "64c36439c5938b020f78c8242b08eb9b90d447e9442ffa8bb6ce37d53206adc7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/gauntlet-save-roundtrip-v136.test.mjs.tap",
+      "logSha256": "8adb976d53caa9395dcca59184d63ba9b86f7a8dec6d0d31130ad98c485f3854",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-canopy-resume-cooldown-20261109.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-canopy-resume-cooldown-20261109.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "fec8f854e0e0a917f986b30798066d988af0e6bd0a33e1de359de7d5942f5b47",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-canopy-resume-cooldown-20261109.test.mjs.tap",
+      "logSha256": "3d3a153a7dd8a6f50a0819ecfb1b9ee0d55953f100c67b2322f3504ae4cd3b73",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-carcass-runtime-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-carcass-runtime-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c9457a415fd4046ece200d60e787743db20c6010b136f324a258c8b168098056",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-carcass-runtime-v112.test.mjs.tap",
+      "logSha256": "5844350c769524e69d7395733e6912c5ce0b00e5f563b1e1c623951f8d9224a6",
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-carried-corpse-menu-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-carried-corpse-menu-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "ba56db4ed323e1996b685a13807ab4d7140c8d929df3679b812448a7b38678f7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-carried-corpse-menu-v112.test.mjs.tap",
+      "logSha256": "d6dbf727cb104d5b1f13b39915181dfad6092c892eb3aa611f63046e6ccd846d",
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-catalogue-contract-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-catalogue-contract-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "48d18e7663875829395c68c165d9a074d516583eb5544bed66e25e7ed51a24b8",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-catalogue-contract-v112.test.mjs.tap",
+      "logSha256": "2b25c404242d2913ce5ce045592741843f29fa9d6f4c5052d978053e5aa41d53",
+      "tests": 41,
+      "pass": 41,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-field-feedback-20261109.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-field-feedback-20261109.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "355b6ccbcc0029ab2dc0fda2b9c65292fc5c5a649735e0940c17bc067ef60e15",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-field-feedback-20261109.test.mjs.tap",
+      "logSha256": "abe9d9b557db4dffe2116b81798eb406b779fbb215d2e74ce17ab0597dfe20c8",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-field-guide-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-field-guide-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cf43d0f0825ef1c2e45a5a8242b698ba13b7d86b2d8fcb9d838c1b256146fac0",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-field-guide-v112.test.mjs.tap",
+      "logSha256": "e7358a66f6ceffb587e680a1ba538d41b7d982ba07511a924e3e9b48980ef62f",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-field-presentation-v112.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-field-presentation-v112.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "20d5c0cf8cfc545200db643c908e9a5d17d7ff5510e72b16db9c0e5ff5dc0a21",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-field-presentation-v112.test.mjs.tap",
+      "logSha256": "761b2f4aa710b08b3718c63c6e79777d405c0eaa7c11773454ddcb588488e460",
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunt-skinning-worksite-20261109.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunt-skinning-worksite-20261109.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "e2c9063ea85f2fd0602995d2c63251849e01050e6c5ff133bb92bc34c0b58aa6",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunt-skinning-worksite-20261109.test.mjs.tap",
+      "logSha256": "7a6deaf319bd17ce298d132a56073e3d4aaf0238455904f99ab5aa00f836e7fc",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-armor-chromatic-clipping.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-armor-chromatic-clipping.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cd401b994898d23380c5e3e128fea0419d8248a3db8890714f8368700b5aebaa",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunter-armor-chromatic-clipping.test.mjs.tap",
+      "logSha256": "20bd9ea5f259a9e5319c24f5a124151e10cc3c0703b3b27c3ea4009da377c926",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-chromatics-native-v114.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-chromatics-native-v114.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "d5015935c7f595d3b19bd1e7cfe62d4dff826f4e2fba47b1b7534ac1f33212f0",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunter-chromatics-native-v114.test.mjs.tap",
+      "logSha256": "1c1855e904847294fce42080c9b54c8f3073c485881553a1452729052034ff04",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-chromatics-v113.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-chromatics-v113.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "6717204b4b016e43da30625e272d226d7da45405695a71bf12b884eaf98ed54c",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunter-chromatics-v113.test.mjs.tap",
+      "logSha256": "d2b59a1e28989cde035ea6be3d22c614be49b9af4c0728ba6cb6bc5322e26f11",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/hunter-rig-origin.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/hunter-rig-origin.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "9c6d2ca3bfb144189b93c2c00bbe78f1515436963cb0f0b382170d7fa6f9d361",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/hunter-rig-origin.test.mjs.tap",
+      "logSha256": "8a49e43009bb8dfadf3ddfe21c2940b1139e83ea7432866f27ecd3856fade937",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-build-boundary.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-build-boundary.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "db97c9fc3dfbdecf35036fb9f382c8afb5b2ffaef5b05d54a12bfdef7d4e2ee7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/mobility-build-boundary.test.mjs.tap",
+      "logSha256": "e2166b5f1f4f6ed541e0553c02657d3cc7b179033ed9f8a857bd149c144ad0ef",
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-controls-workshop.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-controls-workshop.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "727e5bf53f370b4d543ffafdc5463fd2caa5bc5c1d439f7c1547421a38c17ad0",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/mobility-controls-workshop.test.mjs.tap",
+      "logSha256": "db1bc912da1bd1ed975952d6a16648612804dc8db08c0b204a41e80db7f6df55",
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-core.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-core.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2df6b4a4d1ab4c2dbe178d802198147171bd63aca0091459266df3f8ae55abf5",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/mobility-core.test.mjs.tap",
+      "logSha256": "ef493b06e728c8e4a0590c3e29bcc7674f75008bb7eba4fb8023a78f3b93f2d8",
+      "tests": 79,
+      "pass": 79,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-hardening.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-hardening.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "2b96474e763f8489d0d412dabd80d5342ba02a9421de0b1514ffa9369c8421c7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/mobility-hardening.test.mjs.tap",
+      "logSha256": "64a23d566aec5c6ed203cf2b9f97b35d984a55493b1728b8fd3fe57781928bfc",
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-integration.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-integration.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "f12d82152183f85aa94cdabd808d3e4041d71b7c95822153aff56a1a5b15a01a",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/mobility-integration.test.mjs.tap",
+      "logSha256": "5952905e99b7f979a7fe049d771720e388086c27c1762663d26952a00d63b45c",
+      "tests": 16,
+      "pass": 16,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-qa-driver.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-qa-driver.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "eff481157b450bb6b7780f2cfa83ae958aa7042e4bae40244f0b66f1184eb49f",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/mobility-qa-driver.test.mjs.tap",
+      "logSha256": "30a5967ca32ca33955ab4602cf433625da555474868f90b928ab9af8adb337f5",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/mobility-training-reward.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/mobility-training-reward.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5ca1964aa613cce9ba5deb8ee6c771539eaaa6d9567bc266a34c1be79052d674",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/mobility-training-reward.test.mjs.tap",
+      "logSha256": "68c8111d13636573e1ee6533375240c86d89ffefff5b84396ade81e53d49ff86",
+      "tests": 33,
+      "pass": 33,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-atlas-runtime-v125.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-atlas-runtime-v125.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "73f2b4358fd487df05c13597b170a9239ef9912147de9152e124ec88bcf5d44e",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-atlas-runtime-v125.test.mjs.tap",
+      "logSha256": "652ced88da3f1679fa9251a48c97e8fe975ed549b5691dbcd083aca95aa8a982",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-biomask-v131.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-biomask-v131.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bd7ab8c1eb210857f5c87abd39993282052e1b94e56a69c59c3f2d69ded6c1f1",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-biomask-v131.test.mjs.tap",
+      "logSha256": "5bb31fbd9c5b411bf44a7aa6a4e588837937cefab0ea66a30eccca9a6a1b376b",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-biomask-v132.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-biomask-v132.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bd4a3024eb902c5ffd20393a1e388ff8f0c4d17607f18c36631f5e8f5c420aea",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-biomask-v132.test.mjs.tap",
+      "logSha256": "05c296083546c9be30e4f7f09bb30608fba1609cc2fba34b7d672ee05ae26743",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-historical-v127.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-historical-v127.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b436791cda546af78a01439ff752e030a0c0cd2319b11b6bab9056faaa4422c8",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-historical-v127.test.mjs.tap",
+      "logSha256": "3bc38d35b8a09ec8a02221d694f706de702a8423c8f76807967da4e07a17c161",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-official-cosmetics-v141.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-official-cosmetics-v141.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "0a3919e44cd7be066a4747db0983dd07e0f3d401edd6af81fd435ab3b378650b",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-official-cosmetics-v141.test.mjs.tap",
+      "logSha256": "5db1e329d9b792cee2ced15d703826652e38bc5be347d71e6f69406fb91b844e",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-patches-v129.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-patches-v129.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "784bb33b4c2d354621b083e7c8856829a7de1ee42bfd05bf8a62f845aea943a5",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-patches-v129.test.mjs.tap",
+      "logSha256": "1f71c362eb756d50fd4c86e0e5f20637b18c03276577c7f670730ad031d58194",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-platform-v128.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-platform-v128.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "004240fc52cc34211f2aa694902a829f41cf10cba9893023663b0c2ce88aa170",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-platform-v128.test.mjs.tap",
+      "logSha256": "e0658c840b57f90ad1c84ac00e4249b4d6e8f38a9d2064d597a593e871af6449",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-recent-materials-v126.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-recent-materials-v126.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "327219a4d93771ecba069c63d8715fee2e1505db1acaf0800c9e65d1ae8483de",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-recent-materials-v126.test.mjs.tap",
+      "logSha256": "3d215b01d7902e8a66b6a140b3538c4ee4720b5bcc3dfdbf556128cbd38e2418",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-reference-catalog-v130.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-reference-catalog-v130.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b2c179ae515dd4fda7a3d85e36464829e56012a54d26d54b6dcb46bbdf33955b",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-reference-catalog-v130.test.mjs.tap",
+      "logSha256": "046706785afae0cb64c218a66216b32cf981c1882b16fb0118cd696f01e3abec",
+      "tests": 3,
+      "pass": 3,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-video-evidence-v123.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-video-evidence-v123.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "856e47e4b77a2b10d2d9c0b65cabb041e439b64de6258c1e518b7946ba4cf4cb",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-video-evidence-v123.test.mjs.tap",
+      "logSha256": "82afb2333d1ad78a16e01f28bd560a3bf4eb799a984df683f5ff5b52982105aa",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/phg-visual-studies-v122.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/phg-visual-studies-v122.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "104e2454c455753a81b1dc5eead6837032ba97cda39cfdacef3d0b581cdee1cd",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/phg-visual-studies-v122.test.mjs.tap",
+      "logSha256": "641b7f62242475ed3778287de96dd1b827c9030ce25eb25a2b3338b452046978",
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/planet-generator-persistence-v102.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/planet-generator-persistence-v102.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "492da9a1fcd64f10b55461b8f4b141f482fea479f79840834a372153b00909dd",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/planet-generator-persistence-v102.test.mjs.tap",
+      "logSha256": "9a5a2136c5d2bd54b7a5f7227957eb352fbb85b4d7fc585aae8e6d1ad2e05818",
+      "tests": 15,
+      "pass": 15,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/planet-random-generator-v144.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/planet-random-generator-v144.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "cd2a583dd2c328c0df04b52fc53d03ee4ad357ea4aab0b7ea900b93d24f72136",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/planet-random-generator-v144.test.mjs.tap",
+      "logSha256": "eb4c5588a97f6f5e2f9286681784fe6e5e6273817eb340c794c72535f2cec166",
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/planet-terrain-slope-v152.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/planet-terrain-slope-v152.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "bd92a8e8449209ea9b8db9c40f68cc61d78838f6455e6b0a228099afd0ed12a6",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/planet-terrain-slope-v152.test.mjs.tap",
+      "logSha256": "29de11d1428b174e15250f5b183e8b32756177b8738851d4629e74ab459f6aab",
+      "tests": 6,
+      "pass": 6,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/scene-audio.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/scene-audio.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "c1c77f051afef16e3ef7df9eef070a49bd29e795aae8e36cfc22011966f7479f",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/scene-audio.test.mjs.tap",
+      "logSha256": "e1d3e9371a848f9d80f9683d7c415c56feadb858bc8ce59ccb1ff40a4717b0f0",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/trophy-tutorial-save-v6.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/trophy-tutorial-save-v6.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "5419e527bdaf6490a5a587f3382f09dbb4a188083d5a4ce9289a8225e46daab6",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/trophy-tutorial-save-v6.test.mjs.tap",
+      "logSha256": "43cbd2f69a8f5f633ba41fe0df95a7b192228b4d577ac2a1bdb43ee5f4a7cdbd",
+      "tests": 7,
+      "pass": 7,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/trophy-tutorial-v6.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/trophy-tutorial-v6.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "ced00a008a724e91abe2d8d7629edc1ab65969ecfd031767d204b1bc859402b7",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/trophy-tutorial-v6.test.mjs.tap",
+      "logSha256": "97bb909fd83ab49179bcf16c64dd74a888805f2f9bc525417ec344a16bfa65ff",
+      "tests": 24,
+      "pass": 24,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/warp-module-bay.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/warp-module-bay.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "b6d183fb1e20868060104df6e6194bbe52a0740596026c8e26be8ccdbb5e4a29",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/warp-module-bay.test.mjs.tap",
+      "logSha256": "31cf6ab3346479d317b72c8cd6e90a863362607579bd92857fee89da87b21520",
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    {
+      "file": "tests/yautja-decals-v133.test.mjs",
+      "command": [
+        "/workspace/.cloud-tools/node22/node_modules/node/bin/node",
+        "--experimental-strip-types",
+        "tests/yautja-decals-v133.test.mjs"
+      ],
+      "exitCode": 0,
+      "spawnError": null,
+      "sourceSha256": "994307225a79cf62184f944372b16a625aa2d6cbe59802633fc257bcca503e83",
+      "sourceUnchanged": true,
+      "log": "../../tmp/primary-masks-20261113/coherence-repro/yautja-decals-v133.test.mjs.tap",
+      "logSha256": "950474616da462ba1434e6a4355bf36704bfd5d57e4e7e7a5d79b6cddc2b3903",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    }
+  ],
+  "finishedAt": "2026-11-13T07:05:11.867Z",
+  "passed": true,
+  "totals": {
+    "tests": 1198,
+    "pass": 1198,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  }
+}

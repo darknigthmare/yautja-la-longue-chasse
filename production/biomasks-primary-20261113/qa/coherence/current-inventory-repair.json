@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "171394169de4c9fc75a57b24247df243b3efbdb2",
+  "remoteFailure": {
+    "job": 131752639463,
+    "step": "Verify the consolidated runtime inventory and every current V113 model"
+  },
+  "cause": "Current consolidated runtime inventory still pinned the earlier P0/P1 coherence runner before failure annotations. The strict check correctly rejected the stale size and SHA-256.",
+  "reproducedBeforeFix": true,
+  "beforeCheck": {
+    "path": "/tmp/primary-masks-20261113/current-runtime-inventory-repair/before-check.json",
+    "sha256": "9c5a9f519d484cd3cfcbcb57c6528b9b9bb075a6e50b1b76d8621fd366a140e5"
+  },
+  "changedRepositoryFiles": [
+    "docs/qa/current-integration-20261103/runtime-inputs.json"
+  ],
+  "generatorCommand": "node scripts/snapshot-runtime-v113.mjs --write docs/qa/current-integration-20261103/runtime-inputs.json",
+  "inventoryDelta": {
+    "filesBefore": 2308,
+    "filesAfter": 2308,
+    "totalBytesBefore": 1106384408,
+    "totalBytesAfter": 1106385161,
+    "deltaBytes": 753,
+    "changes": [
+      {
+        "path": "scripts/check-p0p1-coherence-20261109.mjs",
+        "before": {
+          "path": "scripts/check-p0p1-coherence-20261109.mjs",
+          "bytes": 3650,
+          "sha256": "71d76479750211e74ffe430a40876cb81985da9f46e36c215a9254f3a6f351c7"
+        },
+        "after": {
+          "path": "scripts/check-p0p1-coherence-20261109.mjs",
+          "bytes": 4403,
+          "sha256": "7bf40c64c573d29ff781cc9b3a1e397bb28b448e0ffc6cf1272841ea2d8b6e1a"
+        }
+      }
+    ],
+    "historicalBaselineUnchanged": true,
+    "inventorySha256": "ee6c8f9a4cc0f7463150df0c867c93b1662b35c4eccd1ecf37c0defe2ba77e17"
+  },
+  "strictCheckAfterFix": {
+    "command": "node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json",
+    "observedExitCode": 0,
+    "observedStatus": "PASS",
+    "inventoryBytes": 427826,
+    "inventorySha256": "ee6c8f9a4cc0f7463150df0c867c93b1662b35c4eccd1ecf37c0defe2ba77e17",
+    "sourceOfResult": "Completed tool session55385; independently generated --check result after official --write."
+  },
+  "exactCurrentV113ModelSelection": {
+    "files": 17,
+    "sourcePins": {
+      "path": "/tmp/primary-masks-20261113/current-runtime-inventory-repair/model-input-pins.json",
+      "sha256": "1047ae3d17d5fe71bf8d9c4021d9ff7c2b29774f70bdf5946f9a8ecf1e3dc13a"
+    },
+    "sourcesUnchanged": true,
+    "result": {
+      "exitCode": 0,
+      "stdoutSha256": "f657109a950eb08cd3240ea5fdccd77dde0a199c34c7519b7c4734d8cc2cd331",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "counts": {
+        "tests": 75,
+        "suites": 0,
+        "pass": 75,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exactWorkflowCommandExtracted": true
+    },
+    "stdout": {
+      "path": "/tmp/primary-masks-20261113/current-runtime-inventory-repair/models.stdout",
+      "sha256": "f657109a950eb08cd3240ea5fdccd77dde0a199c34c7519b7c4734d8cc2cd331"
+    },
+    "stderr": {
+      "path": "/tmp/primary-masks-20261113/current-runtime-inventory-repair/models.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "preservation": {
+    "historicalFiles": [
+      {
+        "path": "docs/v111-runtime-freeze.json",
+        "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138",
+        "unchangedFromHead": true
+      },
+      {
+        "path": "docs/v112-runtime-freeze.json",
+        "sha256": "c35f8b454ec26d1b05852cabbe4f6ee111d71e7413aef80282582d3ca5ee6a3e",
+        "unchangedFromHead": true
+      },
+      {
+        "path": "docs/v113-runtime-freeze.json",
+        "sha256": "80f5beb7d633c3ee4851ec70da013344521b37b352ce1238afcd0b94d974e74e",
+        "unchangedFromHead": true
+      },
+      {
+        "path": "docs/v113-homeworld-validation.json",
+        "sha256": "7d42b5a70705d8720fca2a50818554b6e9973db988645d1b687d8862c8c61a66",
+        "unchangedFromHead": true
+      },
+      {
+        "path": "docs/v113-pit-validation.json",
+        "sha256": "e2440ed86acfdb81a1f5d68147e92993fa4636939586666d078055d6eb1eff6c",
+        "unchangedFromHead": true
+      }
+    ],
+    "primaryMaskPackChanges": [],
+    "primaryMaskPackUntouched": true
+  },
+  "scope": "This repairs and reproduces only the failed consolidated-inventory/current-model CI step. It does not certify the entire audit models job or a new gameplay/art publication.",
+  "previousP0P1RemoteFailure": "Separate earlier P0/P1 coherence failure remains non reproduced / cause unknown; both complete1198-test reproductions passed.",
+  "assertionsSelectionsScriptsOrHistoricalArtifactsChanged": false,
+  "commitOrPushPerformed": false,
+  "networkLogsRetried": false
+}

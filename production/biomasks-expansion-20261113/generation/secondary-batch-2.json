@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "scope": "Three secondary community references Vapor, Fray, Remnant translated to mask-only PHG rendering candidates",
+  "entries": [
+    {
+      "id": "predator_17",
+      "name": "Vapor",
+      "version": "B",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-bf698384-8bb3-4df1-9901-7bd87e862430.png",
+      "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+      "bytes": 1634260,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-2.json",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+      "sourceASha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693",
+      "referenceViewedBeforeGeneration": true,
+      "prompt": "Correct the SECOND image, the generated Vapor biomask, using the FIRST image (the original community RGB256x257 screenshot) as the geometry authority. Keep the second image's neutral PHG PBR quality, grayscale/silver/charcoal paint, controlled metal roughness, upper-left/front soft key/fill, same near-front camera and exact existing macro panels/eye inserts/ridges. The current second image's shell is too narrow by about8-10percent and the lower muzzle/chin is too elongated and pointed. Restore the actual broader helmet proportions of the FIRST image: its visible rigid shell fits approximately source pixel rectangle[63,22,194,188], only a manual review guide, NOT a crop or certified segmentation. The true hard bottom ends around source y183-186 with a short flattened/bluntly rounded termination under the central vertical plates. The longer thin white strands descending to y210 and below are DREADLOCKS, not a long chin. Shorten and blunt the generated central lower face to that reference termination, including its flanking cheek lower edges, rather than retaining a dagger point. Make the rounded upper crown modestly broader at the same whole-mask height to match the first image; width/height of the solid mask about0.79 instead of0.71. This is a sculptural proportion correction using the reference, not a simple global stretch. Preserve the same four long arched charcoal upper leaf panels with raised silver borders, shallow central top notch/forked spine, pale non-glowing narrow eye inserts, small central bridge and existing long parallel lower raised channels. Keep all panel line positions/relationships and coarse relief recognizable; no extra vent, grille, new gap, rune, letter, ornament, screw, horn or hidden side/back surface. The source is low resolution, so no invented tiny details. Remove every wearer/head/hair/dreadlock/bead/body/armor and black source background. Only one complete isolated rigid mask on TRUE transparent RGBA. No background rectangle, floor, shadow plane, halo, text or UI. Center the whole corrected solid shell at about78-80percent of canvas longest axis, with at least10percent transparent empty margin above and below and on both sides. Keep a front view consistent with the original screenshot, not a new angle.",
+      "promptSha256": "ad2fb0237b18360edf726df3bb840c85c7d7cfbf9598356fbf3130df20c2c949",
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            55,
+            1184,
+            1254
+          ],
+          "8": [
+            193,
+            113,
+            1061,
+            1100
+          ],
+          "32": [
+            194,
+            113,
+            1061,
+            1100
+          ],
+          "128": [
+            194,
+            114,
+            1060,
+            1099
+          ],
+          "254": [
+            195,
+            115,
+            1060,
+            1096
+          ]
+        },
+        "occupiedBorderPixels": 42,
+        "maximumBorderAlpha": 1,
+        "strongVisibleAxisFraction": 0.7855,
+        "visibleWidthHeightRatio": 0.8792,
+        "strongMarginsPixels": [
+          194,
+          114,
+          194,
+          155
+        ]
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Automated agent visual inspection after independent request, not human art validation",
+        "observations": "Public bytes are candidate2 with short blunt chin and overbroad0.879 silhouette. This is a provisional comparison display, not a finalized faithful candidate. The other native candidates and output-moderation failure remain preserved. No1:1 fidelity claim.",
+        "sourceReviewWindow": [
+          63,
+          22,
+          194,
+          188
+        ],
+        "sourceReviewWindowQualification": "Manual display-only review bounds, not certified segmentation; actual shell bottom aroundsource y183-186, longer white strands are dreadlocks.",
+        "independentReReviewPending": false,
+        "independentReviewOutcome": "Root selected candidate2 solely for provisional comparison. Its approximately11percent overbroad silhouette remains a major open reservation. None of the three native candidates meets the faithful-release proportion objective; attempt4 produced no PNG due to ImageGen output moderation. No task, canon, human-art or runtime requirement is closed.",
+        "provisionalPublicAssetOnly": true
+      },
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details.",
+        "Version B is a new ImageGen adaptation of a secondary port/HUD capture, not exact original game pixels or a certified original PHG asset.",
+        "Uncertain fine relief and unknown physical material remain interpretive.",
+        "Independent comparison corrected the former narrow silhouette and long pointed chin using one ImageGen edit; source remains a low-resolution secondary port capture, no canonical or hidden-geometry certification.",
+        "Width remains approximately11percent too broad (visible silhouette ratio0.879 versus manual source review target about0.79). Geometry/proportion correction remains OPEN. Candidate2 is displayed only for provisional comparison, rejected for faithful release, not production-ready and does not close any task."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-3a605f3d-a5a1-4e92-9bcb-b24e819aae0c.png",
+          "sha256": "b87816bf0e7cc751eba38dd559c9be9e9439de6c30bd0828b77a3fcd25389753",
+          "selected": false,
+          "prompt": "Edit the attached reference into ONE isolated detachable biomask asset only. This is a 256x257 grayscale secondary community reference, not certified original PHG art. Preserve THIS visible design strictly, same straight near-front camera and perspective, same silhouette, width-height proportions, existing panel boundaries, eye shape, visible engravings and wear distribution. Translate only the rendering into a polished realistic PBR asset consistent with Predator: Hunting Grounds: neutral soft studio key from image upper left and front, gentle fill revealing structure, clear controlled rough metal surfaces, restrained highlights, low grain, no universal mirror chrome. Preserve grayscale/silver/charcoal tonal organization; source color/albedo is unknown, so introduce no color. Treat fine microdetail as uncertain and do not manufacture runes, text, glyphs, holes, vents, horns, extra trim, fittings or new seams. Do not reconstruct invisible profile/back geometry. Keep the camera view fixed; no invented three-quarter angle. Remove all surrounding white and grey hanging dreadlocks, wearer skin/head, hair, body, armor below the mask and every black background pixel. Those long thin strands belong to the wearer and are NOT part of the biomask. Keep ONLY the visible detached solid face shell, existing small mask side plates and lower face plate. True transparent RGBA background, no ground, shadow plane, halo, vignette, UI, caption or text. Center the complete mask with 8-12 percent empty transparent margin on every edge, largest visible mask axis about 78-82 percent of the canvas. Do not clip the top or chin. Exactly one mask, no side views or duplicates.\n\nDESIGN VAPOR: The reference mask has a tall rounded domed crown. A narrow charcoal central spine forks into a shallow V at its top; the upper crown is divided into four long curved dark leaf-shaped panels bounded by bright raised silver edges. Preserve these four elongated panels, their taper toward the central bridge, and the dark central top channel. Broad silver brow sweeps into two narrow long diagonal eye slits. The source eye inserts are pale bright grey/white, so retain pale non-glowing reflective inserts rather than invent dark or colored eyes. Preserve the little central bridge ridge and long silver split/tapered lower mouth shield with parallel vertical raised channels. Keep the restrained silver lateral cheeks and the original lower-point termination. The many long white strands outside and below the shell are entirely removed as dreadlocks. Do not shorten the tall forehead or broaden the lower face.",
+          "rejectionReason": "Independent source-framed review confirmed shell8-10percent too narrow and lower muzzle/chin too long and pointed; superseded by one ImageGen correction using A primary.",
+          "selectedForFaithfulRelease": false,
+          "productionReady": false,
+          "rejectedForFaithfulRelease": true,
+          "displayedForReview": false,
+          "selectedForReview": false,
+          "selectionStatus": "rejected-for-faithful-release",
+          "geometryDeviationOpen": true,
+          "displayStatus": "not-displayed"
+        },
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/exec-bf698384-8bb3-4df1-9901-7bd87e862430.png",
+          "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+          "selected": false,
+          "prompt": "Correct the SECOND image, the generated Vapor biomask, using the FIRST image (the original community RGB256x257 screenshot) as the geometry authority. Keep the second image's neutral PHG PBR quality, grayscale/silver/charcoal paint, controlled metal roughness, upper-left/front soft key/fill, same near-front camera and exact existing macro panels/eye inserts/ridges. The current second image's shell is too narrow by about8-10percent and the lower muzzle/chin is too elongated and pointed. Restore the actual broader helmet proportions of the FIRST image: its visible rigid shell fits approximately source pixel rectangle[63,22,194,188], only a manual review guide, NOT a crop or certified segmentation. The true hard bottom ends around source y183-186 with a short flattened/bluntly rounded termination under the central vertical plates. The longer thin white strands descending to y210 and below are DREADLOCKS, not a long chin. Shorten and blunt the generated central lower face to that reference termination, including its flanking cheek lower edges, rather than retaining a dagger point. Make the rounded upper crown modestly broader at the same whole-mask height to match the first image; width/height of the solid mask about0.79 instead of0.71. This is a sculptural proportion correction using the reference, not a simple global stretch. Preserve the same four long arched charcoal upper leaf panels with raised silver borders, shallow central top notch/forked spine, pale non-glowing narrow eye inserts, small central bridge and existing long parallel lower raised channels. Keep all panel line positions/relationships and coarse relief recognizable; no extra vent, grille, new gap, rune, letter, ornament, screw, horn or hidden side/back surface. The source is low resolution, so no invented tiny details. Remove every wearer/head/hair/dreadlock/bead/body/armor and black source background. Only one complete isolated rigid mask on TRUE transparent RGBA. No background rectangle, floor, shadow plane, halo, text or UI. Center the whole corrected solid shell at about78-80percent of canvas longest axis, with at least10percent transparent empty margin above and below and on both sides. Keep a front view consistent with the original screenshot, not a new angle.",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/community/predator_17.png",
+            "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/phg/predator_17.png"
+          ],
+          "transparentBackgroundRequested": true,
+          "correctionScope": "Visible proportions and short blunt chin only; source pixels unchanged.",
+          "inputSnapshots": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+              "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+            },
+            {
+              "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+              "sha256AtCall": "b87816bf0e7cc751eba38dd559c9be9e9439de6c30bd0828b77a3fcd25389753",
+              "immutableNativeSnapshotPath": "/workspace/generated_images/exec-3a605f3d-a5a1-4e92-9bcb-b24e819aae0c.png"
+            }
+          ],
+          "rejectionReason": "Second candidate preserved short blunt chin but overbroadened shell to0.879, roughly11percent beyond source ratio; rejected by independent review/root.",
+          "selectedForFaithfulRelease": false,
+          "productionReady": false,
+          "rejectedForFaithfulRelease": true,
+          "displayedForReview": true,
+          "selectedForReview": true,
+          "selectionStatus": "provisional-review-only",
+          "geometryDeviationOpen": true,
+          "displayStatus": "provisional-review-only",
+          "limitations": [
+            "Width remains approximately11percent too broad (visible silhouette ratio0.879 versus manual source review target about0.79). Geometry/proportion correction remains OPEN. Candidate2 is displayed only for provisional comparison, rejected for faithful release, not production-ready and does not close any task."
+          ]
+        },
+        {
+          "number": 3,
+          "nativeSourcePath": "/workspace/generated_images/exec-39f85db9-8b7a-417b-9e99-cb215b457055.png",
+          "sha256": "9a8c7fa4afe388d9a4bb0b654378b606209b6acabe46b3785b5dc3f8ca40c8a3",
+          "bytes": 1234536,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "alphaBounds128": [
+            283,
+            111,
+            969,
+            1098
+          ],
+          "widthHeightRatio": 0.6950354609929078,
+          "selected": false,
+          "rejectionReason": "Third candidate reduced width too far (native silhouette0.695 outside0.77–0.81); rejected by independent review/root. Short blunt chin remained correct.",
+          "prompt": "Make ONE precise proportion correction to the SECOND image (current generated Vapor biomask), using the FIRST original RGB screenshot only as the authoritative design check. The second image already has the correct short, blunt/flattened rounded lower muzzle instead of the old long pointed chin; KEEP that corrected bottom shape exactly. Its overall width is now about11percent too broad. REDUCE ONLY the whole rigid shell's width by about10percent relative to its unchanged height, to a solid visible shell width/height ratio around0.79 (acceptable0.77-0.81), instead of the current0.879. For scale, if the mask's visible height were1000units its whole width should be790units. Apply this as an ImageGen image correction, not a redesign. Height and the relative vertical positions of forehead, eyes, bridge, short lower muzzle and blunt bottom stay fixed. Preserve the same near-front camera, neutral PHG PBR lighting/material quality, grayscale/silver/charcoal organization, exactly the existing four long curved charcoal crown panels and bright raised borders, shallow top fork/notch, pale non-emissive eyes, existing center bridge and parallel long silver channels. No new vents, symbols, seams, holes, runes, screws, horns, grille or other pieces. Do NOT sharpen or lengthen the chin again. The FIRST source rigid shell ends around y183-186 and the thin white lines lower than that are dreadlocks, not a point. Keep hair/dreadlocks/beads/head/wearer/body/armor completely excluded. No new hidden profile/back, no different view or recolor. True transparent RGBA background, no floor/shadow plane/background/glow/text/UI. Center the complete mask with10-12percent transparent margins above and below, longest visible axis about78-80percent of canvas; left/right margins may be larger because the mask is narrower than the square. Exactly one mask. The only intended change from SECOND image is10percent less width, with its short blunt chin and height retained.",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/community/predator_17.png",
+            "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/phg/predator_17.png"
+          ],
+          "inputSnapshots": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+              "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+            },
+            {
+              "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+              "sha256AtCall": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+              "immutableNativeSnapshotPath": "/workspace/generated_images/exec-bf698384-8bb3-4df1-9901-7bd87e862430.png"
+            }
+          ],
+          "transparentBackgroundRequested": true,
+          "selectedForFaithfulRelease": false,
+          "productionReady": false,
+          "rejectedForFaithfulRelease": true,
+          "displayedForReview": false,
+          "selectedForReview": false,
+          "selectionStatus": "rejected-for-faithful-release",
+          "geometryDeviationOpen": true,
+          "displayStatus": "not-displayed"
+        },
+        {
+          "number": 4,
+          "selected": false,
+          "generatedNew": false,
+          "generationFailed": true,
+          "nativeSourcePath": null,
+          "sha256": null,
+          "prompt": "From this ONE attached source screenshot, extract a faithful isolated rigid biomask as a modern realistic PHG-style game asset. Follow ONLY the actual visible mask sculpture and the same near-front camera. The screenshot is a small grayscale community reference, so keep visible coarse relief faithful and leave unknown hidden/back surfaces and unreadable microdetails unspecified. The solid mask has a BROAD ROUNDED CIRCULAR upper forehead/crown, with the existing four curved dark leaf-like panels and their raised silver boundaries, a shallow fork/notch at the top center, a thin center spine, two narrow pale reflective NON-GLOWING eye inserts, silver cheek plates and the existing parallel center lower ridges. Crucial lower silhouette: the muzzle is SHORT and ends in a TRUNCATED, BLUNT, gently flattened bottom, as visible just beneath the solid lower plates. It is NOT a long point, dagger chin or triangular beak. Thin white strands that descend below the hard shell are dreadlocks belonging to the wearer and must be excluded entirely. As a rough silhouette check, the whole solid mask's width/height is about0.79. This ratio is only a guide to the source-visible proportions, not authority to redesign. Preserve all actual panels and proportions together. Do not add any vent, grille, glyph, symbol, screw, rivet, horn, ornament, new seam or hole. Remove wearer skin/head, every hair/dreadlock/bead, body, neck, armor and the black background; preserve only the solid detached face shell. Keep the source's GRAYSCALE material organization: charcoal crown panels, restrained silver borders/face plates, pale silver-white eye inserts. Standardize only rendering to clean readable realistic PBR painted/worn metal, neutral soft key from image-upper-left/front with gentle front fill, controlled roughness and restrained fine grain, not universal chrome or new paint colors. One complete isolated mask centered on TRUE TRANSPARENT RGBA, ample clear margins around every edge, no clipping. No background, floor, cast shadow plane, halo, glow, UI, text, multiple views or duplicates.",
+          "promptSha256": "a3dfc1f6ea5b1dad79f64319a0f9f0ccb54a75828e145a7ee5a6c2a50e4a902a",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/community/predator_17.png"
+          ],
+          "inputSnapshots": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+              "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+            }
+          ],
+          "transparentBackgroundRequested": true,
+          "error": {
+            "httpStatus": 400,
+            "code": "moderation_blocked",
+            "moderationStage": "output",
+            "categories": [
+              "other"
+            ],
+            "requestId": "64870b5a-c292-46c0-84a3-cc983aa4bdf2",
+            "message": "The image generation safety system rejected the output; no native PNG returned."
+          },
+          "rejectionReason": "Final fresh generation from A failed at tool output moderation; no image exists and no retry performed.",
+          "selectedForFaithfulRelease": false,
+          "productionReady": false,
+          "rejectedForFaithfulRelease": true,
+          "displayedForReview": false,
+          "selectedForReview": false,
+          "selectionStatus": "generation-failed-no-image",
+          "displayStatus": "not-displayed"
+        }
+      ],
+      "selectionStatus": "provisional-review-only",
+      "geometryDeviationOpen": true,
+      "productionReady": false,
+      "rejectedForFaithfulRelease": true,
+      "displayedForReview": true,
+      "selectedForReview": true,
+      "selectedForFaithfulRelease": false,
+      "displayStatus": "provisional-review-only",
+      "publicSelection": {
+        "attemptNumber": 2,
+        "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+        "nativeSourcePath": "/workspace/generated_images/exec-bf698384-8bb3-4df1-9901-7bd87e862430.png",
+        "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+        "purpose": "comparison-only",
+        "selectionStatus": "provisional-review-only",
+        "geometryDeviationOpen": true,
+        "productionReady": false,
+        "rejectedForFaithfulRelease": true,
+        "selectedForFaithfulRelease": false
+      }
+    },
+    {
+      "id": "predator_21",
+      "name": "Fray",
+      "version": "B",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_21.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-325aa388-7c0a-40f3-b0a9-574345e3ac8f.png",
+      "sha256": "f00ab163c53d9ecaa36eeed008ac66db7fdddfe419d8324c294703104714426a",
+      "bytes": 1394365,
+      "nativeDimensions": [
+        1246,
+        1262
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-2.json",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_21.png",
+      "sourceASha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1",
+      "referenceViewedBeforeGeneration": true,
+      "prompt": "Edit the attached reference into ONE isolated detachable biomask asset only. This is a 256x257 grayscale secondary community reference, not certified original PHG art. Preserve THIS visible design strictly, same straight near-front camera and perspective, same silhouette, width-height proportions, existing panel boundaries, eye shape, visible engravings and wear distribution. Translate only the rendering into a polished realistic PBR asset consistent with Predator: Hunting Grounds: neutral soft studio key from image upper left and front, gentle fill revealing structure, clear controlled rough metal surfaces, restrained highlights, low grain, no universal mirror chrome. Preserve grayscale/silver/charcoal tonal organization; source color/albedo is unknown, so introduce no color. Treat fine microdetail as uncertain and do not manufacture runes, text, glyphs, holes, vents, horns, extra trim, fittings or new seams. Do not reconstruct invisible profile/back geometry. Keep the camera view fixed; no invented three-quarter angle. Remove all surrounding white and grey hanging dreadlocks, wearer skin/head, hair, body, armor below the mask and every black background pixel. Those long thin strands belong to the wearer and are NOT part of the biomask. Keep ONLY the visible detached solid face shell, existing small mask side plates and lower face plate. True transparent RGBA background, no ground, shadow plane, halo, vignette, UI, caption or text. Center the complete mask with 8-12 percent empty transparent margin on every edge, largest visible mask axis about 78-82 percent of the canvas. Do not clip the top or chin. Exactly one mask, no side views or duplicates.\n\nDESIGN FRAY: Preserve the broad very dark oval domed crown, its dark thin central vertical ridge, and the two symmetrical existing curved double rows of tiny pale rectangular marks along the upper left and right crown panels. Keep these as the same simple small rectangular worn marks, not new glyphs or more decoration. The dome is charcoal rather than bright silver. Preserve the narrow sharply angled black eye recesses beneath the sweeping brow and the silver diagonal cheek facets. The lower center has the existing projecting narrow mechanical respirator/grille: twin vertical ribbed channel shapes with the small square/rectangular worn features already visible around their lower termination. Preserve its actual reference proportions; no added hoses, tusks, teeth, antennae or filter canisters. External hanging pale dreadlocks and wearer side-head are fully excluded. Same straight near-front view.",
+      "promptSha256": "190279c775f13faa23e7452417544a81f14b42cbdc1274a182e70ea52b8bcd38",
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            0,
+            1208,
+            1238
+          ],
+          "8": [
+            207,
+            79,
+            1030,
+            1159
+          ],
+          "32": [
+            208,
+            79,
+            1028,
+            1157
+          ],
+          "128": [
+            208,
+            80,
+            1028,
+            1157
+          ],
+          "254": [
+            210,
+            81,
+            1026,
+            1155
+          ]
+        },
+        "occupiedBorderPixels": 47,
+        "maximumBorderAlpha": 1,
+        "strongVisibleAxisFraction": 0.8534
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Automated agent visual inspection of the native ImageGen result; not human art validation",
+        "observations": "Native visual review retains the very dark oval dome, two curved pairs of light rectangular forehead marks, black angled eyes and projecting mechanical lower grille in the same near-front view. External dreadlocks/wearer/background excluded. Fine relief and grille engraving are interpretation of the 256px community capture. Browser composites on white, black and checker at360px and96px show a clean isolated shell with no visible background rectangle, dreadlocks, wearer or clipped solid border.",
+        "browserComposites": [
+          "/tmp/mask-expansion-20261113/secondary-batch-2-review-white.png",
+          "/tmp/mask-expansion-20261113/secondary-batch-2-review-black.png",
+          "/tmp/mask-expansion-20261113/secondary-batch-2-review-checker.png"
+        ],
+        "browserCompositesInspected": true,
+        "nativeCopiedPngOpenedWithViewImage": true
+      },
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details.",
+        "Version B is a new ImageGen adaptation of a secondary port/HUD capture, not exact original game pixels or a certified original PHG asset.",
+        "Uncertain fine relief and unknown physical material remain interpretive.",
+        "Native visible framing is slightly tighter than the requested 78-82 percent longest-axis target (about85-86 percent); the whole solid mask remains inside transparent margins without clipping.",
+        "A few native alpha1-2 border pixels exist; they are invisible in browser composites and preserved byte-exactly, without CPU cleanup."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-325aa388-7c0a-40f3-b0a9-574345e3ac8f.png",
+          "sha256": "f00ab163c53d9ecaa36eeed008ac66db7fdddfe419d8324c294703104714426a",
+          "selected": true,
+          "prompt": "Edit the attached reference into ONE isolated detachable biomask asset only. This is a 256x257 grayscale secondary community reference, not certified original PHG art. Preserve THIS visible design strictly, same straight near-front camera and perspective, same silhouette, width-height proportions, existing panel boundaries, eye shape, visible engravings and wear distribution. Translate only the rendering into a polished realistic PBR asset consistent with Predator: Hunting Grounds: neutral soft studio key from image upper left and front, gentle fill revealing structure, clear controlled rough metal surfaces, restrained highlights, low grain, no universal mirror chrome. Preserve grayscale/silver/charcoal tonal organization; source color/albedo is unknown, so introduce no color. Treat fine microdetail as uncertain and do not manufacture runes, text, glyphs, holes, vents, horns, extra trim, fittings or new seams. Do not reconstruct invisible profile/back geometry. Keep the camera view fixed; no invented three-quarter angle. Remove all surrounding white and grey hanging dreadlocks, wearer skin/head, hair, body, armor below the mask and every black background pixel. Those long thin strands belong to the wearer and are NOT part of the biomask. Keep ONLY the visible detached solid face shell, existing small mask side plates and lower face plate. True transparent RGBA background, no ground, shadow plane, halo, vignette, UI, caption or text. Center the complete mask with 8-12 percent empty transparent margin on every edge, largest visible mask axis about 78-82 percent of the canvas. Do not clip the top or chin. Exactly one mask, no side views or duplicates.\n\nDESIGN FRAY: Preserve the broad very dark oval domed crown, its dark thin central vertical ridge, and the two symmetrical existing curved double rows of tiny pale rectangular marks along the upper left and right crown panels. Keep these as the same simple small rectangular worn marks, not new glyphs or more decoration. The dome is charcoal rather than bright silver. Preserve the narrow sharply angled black eye recesses beneath the sweeping brow and the silver diagonal cheek facets. The lower center has the existing projecting narrow mechanical respirator/grille: twin vertical ribbed channel shapes with the small square/rectangular worn features already visible around their lower termination. Preserve its actual reference proportions; no added hoses, tusks, teeth, antennae or filter canisters. External hanging pale dreadlocks and wearer side-head are fully excluded. Same straight near-front view."
+        }
+      ]
+    },
+    {
+      "id": "predator_23",
+      "name": "Remnant",
+      "version": "B",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_23.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-aa6eb77d-0318-4a2d-ac7f-dbec7e59cb94.png",
+      "sha256": "a10334918a91f6a747673a3a4c99af71976731805543d02b62af720979319b66",
+      "bytes": 1737498,
+      "nativeDimensions": [
+        1247,
+        1261
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-2.json",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_23.png",
+      "sourceASha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88",
+      "referenceViewedBeforeGeneration": true,
+      "prompt": "Edit the attached reference into ONE isolated detachable biomask asset only. This is a 256x257 grayscale secondary community reference, not certified original PHG art. Preserve THIS visible design strictly, same straight near-front camera and perspective, same silhouette, width-height proportions, existing panel boundaries, eye shape, visible engravings and wear distribution. Translate only the rendering into a polished realistic PBR asset consistent with Predator: Hunting Grounds: neutral soft studio key from image upper left and front, gentle fill revealing structure, clear controlled rough metal surfaces, restrained highlights, low grain, no universal mirror chrome. Preserve grayscale/silver/charcoal tonal organization; source color/albedo is unknown, so introduce no color. Treat fine microdetail as uncertain and do not manufacture runes, text, glyphs, holes, vents, horns, extra trim, fittings or new seams. Do not reconstruct invisible profile/back geometry. Keep the camera view fixed; no invented three-quarter angle. Remove all surrounding white and grey hanging dreadlocks, wearer skin/head, hair, body, armor below the mask and every black background pixel. Those long thin strands belong to the wearer and are NOT part of the biomask. Keep ONLY the visible detached solid face shell, existing small mask side plates and lower face plate. True transparent RGBA background, no ground, shadow plane, halo, vignette, UI, caption or text. Center the complete mask with 8-12 percent empty transparent margin on every edge, largest visible mask axis about 78-82 percent of the canvas. Do not clip the top or chin. Exactly one mask, no side views or duplicates.\n\nDESIGN REMNANT: Preserve the distinctive tall narrow pair of central crown towers, separated by the slim vertical gap, with one round recessed circular feature at the top of each tower. The upper crown is angular and ribbed, with the same diagonal stratified ridges fanning outward from the central tall spine and the same rough jagged outer shoulders. Preserve the elongated small oval recess midway down the central forehead, the two black slanted eye apertures and the silver lower cheek plates. Preserve the visible irregular worn lower rim and coarse diagonal cross-engraved strokes in the lower face region. Do not convert the two top towers to round horns or smooth them into a conventional dome. Keep existing visible roughness but avoid making up new runic characters, ornate geometric engravings or a new grille. External long pale strands below and to the sides are dreadlocks and must be entirely removed; the solid biomask ends at the irregular metal face rim. No skull teeth or added spikes. Same straight near-front view.",
+      "promptSha256": "6f52793170aa0f25b95121e14d5490a78d98397e0831a19ab3167fcb83c663eb",
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            39,
+            1192,
+            1261
+          ],
+          "8": [
+            210,
+            73,
+            1036,
+            1165
+          ],
+          "32": [
+            211,
+            74,
+            1036,
+            1164
+          ],
+          "128": [
+            211,
+            75,
+            1035,
+            1164
+          ],
+          "254": [
+            212,
+            76,
+            1034,
+            1163
+          ]
+        },
+        "occupiedBorderPixels": 16,
+        "maximumBorderAlpha": 1,
+        "strongVisibleAxisFraction": 0.8636
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Automated agent visual inspection of the native ImageGen result; not human art validation",
+        "observations": "Native visual review retains paired central top towers with circular recesses, stratified diagonal crown ribs, central oval forehead recess, black slanted eyes, worn cross-engraved cheek plates and irregular lower rim. External dreadlocks/wearer/background excluded. Fine relief is interpretation of the 256px community capture. Browser composites on white, black and checker at360px and96px show a clean isolated shell with no visible background rectangle, dreadlocks, wearer or clipped solid border.",
+        "browserComposites": [
+          "/tmp/mask-expansion-20261113/secondary-batch-2-review-white.png",
+          "/tmp/mask-expansion-20261113/secondary-batch-2-review-black.png",
+          "/tmp/mask-expansion-20261113/secondary-batch-2-review-checker.png"
+        ],
+        "browserCompositesInspected": true,
+        "nativeCopiedPngOpenedWithViewImage": true
+      },
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details.",
+        "Version B is a new ImageGen adaptation of a secondary port/HUD capture, not exact original game pixels or a certified original PHG asset.",
+        "Uncertain fine relief and unknown physical material remain interpretive.",
+        "Native visible framing is slightly tighter than the requested 78-82 percent longest-axis target (about85-86 percent); the whole solid mask remains inside transparent margins without clipping.",
+        "A few native alpha1-2 border pixels exist; they are invisible in browser composites and preserved byte-exactly, without CPU cleanup."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-aa6eb77d-0318-4a2d-ac7f-dbec7e59cb94.png",
+          "sha256": "a10334918a91f6a747673a3a4c99af71976731805543d02b62af720979319b66",
+          "selected": true,
+          "prompt": "Edit the attached reference into ONE isolated detachable biomask asset only. This is a 256x257 grayscale secondary community reference, not certified original PHG art. Preserve THIS visible design strictly, same straight near-front camera and perspective, same silhouette, width-height proportions, existing panel boundaries, eye shape, visible engravings and wear distribution. Translate only the rendering into a polished realistic PBR asset consistent with Predator: Hunting Grounds: neutral soft studio key from image upper left and front, gentle fill revealing structure, clear controlled rough metal surfaces, restrained highlights, low grain, no universal mirror chrome. Preserve grayscale/silver/charcoal tonal organization; source color/albedo is unknown, so introduce no color. Treat fine microdetail as uncertain and do not manufacture runes, text, glyphs, holes, vents, horns, extra trim, fittings or new seams. Do not reconstruct invisible profile/back geometry. Keep the camera view fixed; no invented three-quarter angle. Remove all surrounding white and grey hanging dreadlocks, wearer skin/head, hair, body, armor below the mask and every black background pixel. Those long thin strands belong to the wearer and are NOT part of the biomask. Keep ONLY the visible detached solid face shell, existing small mask side plates and lower face plate. True transparent RGBA background, no ground, shadow plane, halo, vignette, UI, caption or text. Center the complete mask with 8-12 percent empty transparent margin on every edge, largest visible mask axis about 78-82 percent of the canvas. Do not clip the top or chin. Exactly one mask, no side views or duplicates.\n\nDESIGN REMNANT: Preserve the distinctive tall narrow pair of central crown towers, separated by the slim vertical gap, with one round recessed circular feature at the top of each tower. The upper crown is angular and ribbed, with the same diagonal stratified ridges fanning outward from the central tall spine and the same rough jagged outer shoulders. Preserve the elongated small oval recess midway down the central forehead, the two black slanted eye apertures and the silver lower cheek plates. Preserve the visible irregular worn lower rim and coarse diagonal cross-engraved strokes in the lower face region. Do not convert the two top towers to round horns or smooth them into a conventional dome. Keep existing visible roughness but avoid making up new runic characters, ornate geometric engravings or a new grille. External long pale strands below and to the sides are dreadlocks and must be entirely removed; the solid biomask ends at the irregular metal face rim. No skull teeth or added spikes. Same straight near-front view."
+        }
+      ]
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "number": 1,
+      "nativeSourcePath": "/workspace/generated_images/exec-3a605f3d-a5a1-4e92-9bcb-b24e819aae0c.png",
+      "sha256": "b87816bf0e7cc751eba38dd559c9be9e9439de6c30bd0828b77a3fcd25389753",
+      "selected": false,
+      "prompt": "Edit the attached reference into ONE isolated detachable biomask asset only. This is a 256x257 grayscale secondary community reference, not certified original PHG art. Preserve THIS visible design strictly, same straight near-front camera and perspective, same silhouette, width-height proportions, existing panel boundaries, eye shape, visible engravings and wear distribution. Translate only the rendering into a polished realistic PBR asset consistent with Predator: Hunting Grounds: neutral soft studio key from image upper left and front, gentle fill revealing structure, clear controlled rough metal surfaces, restrained highlights, low grain, no universal mirror chrome. Preserve grayscale/silver/charcoal tonal organization; source color/albedo is unknown, so introduce no color. Treat fine microdetail as uncertain and do not manufacture runes, text, glyphs, holes, vents, horns, extra trim, fittings or new seams. Do not reconstruct invisible profile/back geometry. Keep the camera view fixed; no invented three-quarter angle. Remove all surrounding white and grey hanging dreadlocks, wearer skin/head, hair, body, armor below the mask and every black background pixel. Those long thin strands belong to the wearer and are NOT part of the biomask. Keep ONLY the visible detached solid face shell, existing small mask side plates and lower face plate. True transparent RGBA background, no ground, shadow plane, halo, vignette, UI, caption or text. Center the complete mask with 8-12 percent empty transparent margin on every edge, largest visible mask axis about 78-82 percent of the canvas. Do not clip the top or chin. Exactly one mask, no side views or duplicates.\n\nDESIGN VAPOR: The reference mask has a tall rounded domed crown. A narrow charcoal central spine forks into a shallow V at its top; the upper crown is divided into four long curved dark leaf-shaped panels bounded by bright raised silver edges. Preserve these four elongated panels, their taper toward the central bridge, and the dark central top channel. Broad silver brow sweeps into two narrow long diagonal eye slits. The source eye inserts are pale bright grey/white, so retain pale non-glowing reflective inserts rather than invent dark or colored eyes. Preserve the little central bridge ridge and long silver split/tapered lower mouth shield with parallel vertical raised channels. Keep the restrained silver lateral cheeks and the original lower-point termination. The many long white strands outside and below the shell are entirely removed as dreadlocks. Do not shorten the tall forehead or broaden the lower face.",
+      "rejectionReason": "Independent source-framed review confirmed shell8-10percent too narrow and lower muzzle/chin too long and pointed; superseded by one ImageGen correction using A primary.",
+      "selectedForFaithfulRelease": false,
+      "productionReady": false,
+      "rejectedForFaithfulRelease": true,
+      "displayedForReview": false,
+      "selectedForReview": false,
+      "selectionStatus": "rejected-for-faithful-release",
+      "geometryDeviationOpen": true,
+      "displayStatus": "not-displayed",
+      "id": "predator_17",
+      "version": "B"
+    },
+    {
+      "number": 2,
+      "nativeSourcePath": "/workspace/generated_images/exec-bf698384-8bb3-4df1-9901-7bd87e862430.png",
+      "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+      "selected": false,
+      "prompt": "Correct the SECOND image, the generated Vapor biomask, using the FIRST image (the original community RGB256x257 screenshot) as the geometry authority. Keep the second image's neutral PHG PBR quality, grayscale/silver/charcoal paint, controlled metal roughness, upper-left/front soft key/fill, same near-front camera and exact existing macro panels/eye inserts/ridges. The current second image's shell is too narrow by about8-10percent and the lower muzzle/chin is too elongated and pointed. Restore the actual broader helmet proportions of the FIRST image: its visible rigid shell fits approximately source pixel rectangle[63,22,194,188], only a manual review guide, NOT a crop or certified segmentation. The true hard bottom ends around source y183-186 with a short flattened/bluntly rounded termination under the central vertical plates. The longer thin white strands descending to y210 and below are DREADLOCKS, not a long chin. Shorten and blunt the generated central lower face to that reference termination, including its flanking cheek lower edges, rather than retaining a dagger point. Make the rounded upper crown modestly broader at the same whole-mask height to match the first image; width/height of the solid mask about0.79 instead of0.71. This is a sculptural proportion correction using the reference, not a simple global stretch. Preserve the same four long arched charcoal upper leaf panels with raised silver borders, shallow central top notch/forked spine, pale non-glowing narrow eye inserts, small central bridge and existing long parallel lower raised channels. Keep all panel line positions/relationships and coarse relief recognizable; no extra vent, grille, new gap, rune, letter, ornament, screw, horn or hidden side/back surface. The source is low resolution, so no invented tiny details. Remove every wearer/head/hair/dreadlock/bead/body/armor and black source background. Only one complete isolated rigid mask on TRUE transparent RGBA. No background rectangle, floor, shadow plane, halo, text or UI. Center the whole corrected solid shell at about78-80percent of canvas longest axis, with at least10percent transparent empty margin above and below and on both sides. Keep a front view consistent with the original screenshot, not a new angle.",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/community/predator_17.png",
+        "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/phg/predator_17.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "correctionScope": "Visible proportions and short blunt chin only; source pixels unchanged.",
+      "inputSnapshots": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+          "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+        },
+        {
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+          "sha256AtCall": "b87816bf0e7cc751eba38dd559c9be9e9439de6c30bd0828b77a3fcd25389753",
+          "immutableNativeSnapshotPath": "/workspace/generated_images/exec-3a605f3d-a5a1-4e92-9bcb-b24e819aae0c.png"
+        }
+      ],
+      "rejectionReason": "Second candidate preserved short blunt chin but overbroadened shell to0.879, roughly11percent beyond source ratio; rejected by independent review/root.",
+      "selectedForFaithfulRelease": false,
+      "productionReady": false,
+      "rejectedForFaithfulRelease": true,
+      "displayedForReview": true,
+      "selectedForReview": true,
+      "selectionStatus": "provisional-review-only",
+      "geometryDeviationOpen": true,
+      "displayStatus": "provisional-review-only",
+      "limitations": [
+        "Width remains approximately11percent too broad (visible silhouette ratio0.879 versus manual source review target about0.79). Geometry/proportion correction remains OPEN. Candidate2 is displayed only for provisional comparison, rejected for faithful release, not production-ready and does not close any task."
+      ],
+      "id": "predator_17",
+      "version": "B"
+    },
+    {
+      "number": 3,
+      "nativeSourcePath": "/workspace/generated_images/exec-39f85db9-8b7a-417b-9e99-cb215b457055.png",
+      "sha256": "9a8c7fa4afe388d9a4bb0b654378b606209b6acabe46b3785b5dc3f8ca40c8a3",
+      "bytes": 1234536,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "alphaBounds128": [
+        283,
+        111,
+        969,
+        1098
+      ],
+      "widthHeightRatio": 0.6950354609929078,
+      "selected": false,
+      "rejectionReason": "Third candidate reduced width too far (native silhouette0.695 outside0.77–0.81); rejected by independent review/root. Short blunt chin remained correct.",
+      "prompt": "Make ONE precise proportion correction to the SECOND image (current generated Vapor biomask), using the FIRST original RGB screenshot only as the authoritative design check. The second image already has the correct short, blunt/flattened rounded lower muzzle instead of the old long pointed chin; KEEP that corrected bottom shape exactly. Its overall width is now about11percent too broad. REDUCE ONLY the whole rigid shell's width by about10percent relative to its unchanged height, to a solid visible shell width/height ratio around0.79 (acceptable0.77-0.81), instead of the current0.879. For scale, if the mask's visible height were1000units its whole width should be790units. Apply this as an ImageGen image correction, not a redesign. Height and the relative vertical positions of forehead, eyes, bridge, short lower muzzle and blunt bottom stay fixed. Preserve the same near-front camera, neutral PHG PBR lighting/material quality, grayscale/silver/charcoal organization, exactly the existing four long curved charcoal crown panels and bright raised borders, shallow top fork/notch, pale non-emissive eyes, existing center bridge and parallel long silver channels. No new vents, symbols, seams, holes, runes, screws, horns, grille or other pieces. Do NOT sharpen or lengthen the chin again. The FIRST source rigid shell ends around y183-186 and the thin white lines lower than that are dreadlocks, not a point. Keep hair/dreadlocks/beads/head/wearer/body/armor completely excluded. No new hidden profile/back, no different view or recolor. True transparent RGBA background, no floor/shadow plane/background/glow/text/UI. Center the complete mask with10-12percent transparent margins above and below, longest visible axis about78-80percent of canvas; left/right margins may be larger because the mask is narrower than the square. Exactly one mask. The only intended change from SECOND image is10percent less width, with its short blunt chin and height retained.",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/community/predator_17.png",
+        "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/phg/predator_17.png"
+      ],
+      "inputSnapshots": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+          "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+        },
+        {
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+          "sha256AtCall": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+          "immutableNativeSnapshotPath": "/workspace/generated_images/exec-bf698384-8bb3-4df1-9901-7bd87e862430.png"
+        }
+      ],
+      "transparentBackgroundRequested": true,
+      "selectedForFaithfulRelease": false,
+      "productionReady": false,
+      "rejectedForFaithfulRelease": true,
+      "displayedForReview": false,
+      "selectedForReview": false,
+      "selectionStatus": "rejected-for-faithful-release",
+      "geometryDeviationOpen": true,
+      "displayStatus": "not-displayed",
+      "id": "predator_17",
+      "version": "B"
+    },
+    {
+      "number": 4,
+      "selected": false,
+      "generatedNew": false,
+      "generationFailed": true,
+      "nativeSourcePath": null,
+      "sha256": null,
+      "prompt": "From this ONE attached source screenshot, extract a faithful isolated rigid biomask as a modern realistic PHG-style game asset. Follow ONLY the actual visible mask sculpture and the same near-front camera. The screenshot is a small grayscale community reference, so keep visible coarse relief faithful and leave unknown hidden/back surfaces and unreadable microdetails unspecified. The solid mask has a BROAD ROUNDED CIRCULAR upper forehead/crown, with the existing four curved dark leaf-like panels and their raised silver boundaries, a shallow fork/notch at the top center, a thin center spine, two narrow pale reflective NON-GLOWING eye inserts, silver cheek plates and the existing parallel center lower ridges. Crucial lower silhouette: the muzzle is SHORT and ends in a TRUNCATED, BLUNT, gently flattened bottom, as visible just beneath the solid lower plates. It is NOT a long point, dagger chin or triangular beak. Thin white strands that descend below the hard shell are dreadlocks belonging to the wearer and must be excluded entirely. As a rough silhouette check, the whole solid mask's width/height is about0.79. This ratio is only a guide to the source-visible proportions, not authority to redesign. Preserve all actual panels and proportions together. Do not add any vent, grille, glyph, symbol, screw, rivet, horn, ornament, new seam or hole. Remove wearer skin/head, every hair/dreadlock/bead, body, neck, armor and the black background; preserve only the solid detached face shell. Keep the source's GRAYSCALE material organization: charcoal crown panels, restrained silver borders/face plates, pale silver-white eye inserts. Standardize only rendering to clean readable realistic PBR painted/worn metal, neutral soft key from image-upper-left/front with gentle front fill, controlled roughness and restrained fine grain, not universal chrome or new paint colors. One complete isolated mask centered on TRUE TRANSPARENT RGBA, ample clear margins around every edge, no clipping. No background, floor, cast shadow plane, halo, glow, UI, text, multiple views or duplicates.",
+      "promptSha256": "a3dfc1f6ea5b1dad79f64319a0f9f0ccb54a75828e145a7ee5a6c2a50e4a902a",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/community/predator_17.png"
+      ],
+      "inputSnapshots": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+          "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+        }
+      ],
+      "transparentBackgroundRequested": true,
+      "error": {
+        "httpStatus": 400,
+        "code": "moderation_blocked",
+        "moderationStage": "output",
+        "categories": [
+          "other"
+        ],
+        "requestId": "64870b5a-c292-46c0-84a3-cc983aa4bdf2",
+        "message": "The image generation safety system rejected the output; no native PNG returned."
+      },
+      "rejectionReason": "Final fresh generation from A failed at tool output moderation; no image exists and no retry performed.",
+      "selectedForFaithfulRelease": false,
+      "productionReady": false,
+      "rejectedForFaithfulRelease": true,
+      "displayedForReview": false,
+      "selectedForReview": false,
+      "selectionStatus": "generation-failed-no-image",
+      "displayStatus": "not-displayed",
+      "id": "predator_17",
+      "version": "B"
+    }
+  ]
+}

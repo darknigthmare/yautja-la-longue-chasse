@@ -1,0 +1,642 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "dd7c08cea4934de5dfb61c27447a8808d1b87765",
+  "scope": "HWA160-052 original-project source layer separation for the open Homeworld QA-007 P0; not new pylon identity, camera or animation.",
+  "method": "ImageGen native edits, copied unchanged; Pillow used only to read pixels and alpha.",
+  "counts": {
+    "sourceDesignIdentities": 1,
+    "staticLayers": 2,
+    "nativePngFiles": 2,
+    "animationClips": 0,
+    "humanValidated": 0,
+    "canonCertified": 0,
+    "newlyClosedP0": 0
+  },
+  "sourceReference": {
+    "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+    "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+    "width": 1254,
+    "height": 1254,
+    "scope": "Original project image, not canonical film proof",
+    "sourceWorkbook": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+    "sheet": "Fichiers_PNG",
+    "row": 57
+  },
+  "originalSourceAlphaProfile": {
+    "730": 253,
+    "750": 253,
+    "780": 250,
+    "800": 247,
+    "850": 212,
+    "900": 139,
+    "950": 80,
+    "1000": 43,
+    "1050": 23,
+    "1100": 12,
+    "1150": 4,
+    "1200": 0
+  },
+  "entries": [
+    {
+      "id": "HWA160-052-pylon",
+      "sourceId": "HWA160-052",
+      "sourceDesignId": "HWA160-052",
+      "assetPath": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-pylon-v2.png",
+      "assetKind": "prop",
+      "componentRole": "pylon",
+      "compositionGroup": "HWA160-052-laser-separation",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "newlyClosedP0": 0,
+      "nativeSourcePath": "/workspace/generated_images/exec-017e45ef-cf10-4dc8-b022-eebdb3bbef5f.png",
+      "generatedNativePath": "/workspace/generated_images/exec-017e45ef-cf10-4dc8-b022-eebdb3bbef5f.png",
+      "sourceReference": {
+        "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+        "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+        "width": 1254,
+        "height": 1254,
+        "scope": "Original project image, not canonical film proof",
+        "sourceWorkbook": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+        "sheet": "Fichiers_PNG",
+        "row": 57
+      },
+      "sourceRows": [
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "Fichiers_PNG",
+          "row": 57,
+          "sourceId": "HWA160-052"
+        },
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "QA_et_Suite",
+          "row": 12,
+          "id": "QA-007",
+          "priority": "P0",
+          "criterion": "Séparer eau/roche, laser/pylône, statue/base",
+          "status": "À faire"
+        }
+      ],
+      "priorityLinks": [
+        "Homeworld et habitats:QA-007"
+      ],
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        596.5,
+        1195
+      ],
+      "pivotStatus": "proposal only; not physically or artistically qualified",
+      "proposedPlacement": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "proposedPlacementStatus": "Full source-coordinate canvas requested; not verified as pixel-exact alignment",
+      "sourceEmissionSocketProposal": [
+        733,
+        323
+      ],
+      "sourceEmissionSocketStatus": "Approximate source visual coordinate, not a measured rig joint",
+      "camera": "Original HWA160-052 three-quarter camera requested; no new angle invented; yaw/pitch unmeasured",
+      "animated": false,
+      "frames": 1,
+      "pixelEditingPerformed": false,
+      "prompt": "One tiny source-fidelity correction ONLY to the optical aperture center of image1. Image1 is the already separated complete pylon layer; image2 is its ORIGINAL HWA160-052 source authority. Image1 incorrectly invented a yellow spiral/turbine pattern inside the circular lens. That pattern is NOT established by image2. Remove that invented spiral and restore ONLY the plain saturated white-hot incandescent emission core visibly established in image2: a smooth almost featureless warm white/yellow luminous center, with a small orange edge inside the SAME original circular metal rim. Do NOT reveal an unlit lens or new optics, iris, turbine, concentric carving, grille or mechanism. Keep the physical outer ring, bolts/stone/bronze edging, and EVERY OTHER visible pylon pixel/design as close to image1 as possible: exact silhouette, proportions, camera, original screen position and scale, glyphs, three glowing slits, cracks, inclined top fin, vents, stairs, pedestal and full positive margins. Do not change the body/canvas framing, do not recenter/enlarge, do not redesign material or color. Same1254x1254 square full canvas. No outward laser/cone/haze: this remains the BODY-ONLY layer, with the small intrinsic incandescent aperture core retained. True alpha-zero background and fully opaque pylon. No new object, floor, text, labels, frame or checkerboard. This change is limited to replacing the unproven internal spiral with the source-supported overexposed incandescent core.",
+      "references": [
+        {
+          "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+          "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+          "role": "original-project-image"
+        },
+        {
+          "path": "/workspace/generated_images/exec-4ab631ca-7aec-47f9-b861-48195f04b352.png",
+          "sha256": "4f5536f6acba8d2af4c349abb6ad8d0457bae82e25b594ecd2818d205bff264f",
+          "role": "prior-separated-candidate-for-local-incandescent-core-correction",
+          "privateReferenceNotPublished": true
+        }
+      ],
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaZeroPixels": 1160012,
+        "alphaNoisePixels1or2": 8537,
+        "softAlphaPixels3to239": 9778,
+        "nearOpaquePixels240": 394189,
+        "visiblePixels16": 400178,
+        "visibleBounds16": [
+          266,
+          32,
+          927,
+          1195
+        ],
+        "marginsPixels16": [
+          266,
+          32,
+          327,
+          59
+        ],
+        "sourceRect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "bytes": 987501,
+        "sha256": "de2eb32e078af6964a5e7e98dc671c33940d0e59644e8d22117abf069c16e361",
+        "centerlineAlphaY323": {
+          "730": 253,
+          "750": 253,
+          "780": 0,
+          "800": 0,
+          "850": 0,
+          "900": 0,
+          "950": 0,
+          "1000": 0,
+          "1050": 0,
+          "1100": 0,
+          "1150": 0,
+          "1200": 0
+        }
+      },
+      "sha256": "de2eb32e078af6964a5e7e98dc671c33940d0e59644e8d22117abf069c16e361",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "bytes": 987501,
+      "nativeCopyByteIdentical": true,
+      "limitations": [
+        "Generated source-preserving candidate; exact pixel reproduction and canonical one-to-one fidelity are not certified.",
+        "Same source camera and placement requested; socket alignment, physical dimensions and the Homeworld 35-degree projection need review.",
+        "No runtime, collision, animation or human artistic admission performed.",
+        "The original source hides internal optics behind incandescent emission. Removing the invented spiral does not establish the geometry of an unlit lens; sourceComponentCompleted remains false.",
+        "The current candidate preserves broad silhouette and framing (alpha16 IoU 0.995128 against the preceding version), but small color/detail differences outside the aperture still require source comparison."
+      ],
+      "revision": 2,
+      "sourceComponentCompleted": false,
+      "sourceVisibilityConstraint": "The original establishes a saturated incandescent core only. The hidden/unlit optical interior is unknown; no spiral, iris or turbine detail is asserted.",
+      "fidelityCorrection": {
+        "issue": "Unproven spiral pattern exposed inside the first generated optical aperture",
+        "change": "Replaced the invented internal spiral with a plain overexposed warm-white/yellow incandescent core, keeping the physical outer rim",
+        "visualInspection": "Spiral no longer visible; no outward laser introduced; broad architecture, glyph layout, camera and full-canvas framing retained as source anchors",
+        "scopeOfClaim": "Candidate visual correction only, not pixel-exact source reproduction or canonical admission",
+        "priorToCurrentAlpha16SilhouetteIoU": 0.9951281292065917,
+        "bodyBounds16Prior": [
+          265,
+          31,
+          928,
+          1196
+        ],
+        "bodyBounds16Current": [
+          266,
+          32,
+          927,
+          1195
+        ],
+        "coreSamplePixel736x323": [
+          255,
+          255,
+          253,
+          253
+        ],
+        "pixelEditingPerformed": false
+      }
+    },
+    {
+      "id": "HWA160-052-emission",
+      "sourceId": "HWA160-052",
+      "sourceDesignId": "HWA160-052",
+      "assetPath": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-emission.png",
+      "assetKind": "effect",
+      "componentRole": "emission",
+      "compositionGroup": "HWA160-052-laser-separation",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "newlyClosedP0": 0,
+      "nativeSourcePath": "/workspace/generated_images/exec-9b413eb2-165e-4ca2-8bdf-3bca161286f1.png",
+      "generatedNativePath": "/workspace/generated_images/exec-9b413eb2-165e-4ca2-8bdf-3bca161286f1.png",
+      "sourceReference": {
+        "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+        "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+        "width": 1254,
+        "height": 1254,
+        "scope": "Original project image, not canonical film proof",
+        "sourceWorkbook": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+        "sheet": "Fichiers_PNG",
+        "row": 57
+      },
+      "sourceRows": [
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "Fichiers_PNG",
+          "row": 57,
+          "sourceId": "HWA160-052"
+        },
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "QA_et_Suite",
+          "row": 12,
+          "id": "QA-007",
+          "priority": "P0",
+          "criterion": "Séparer eau/roche, laser/pylône, statue/base",
+          "status": "À faire"
+        }
+      ],
+      "priorityLinks": [
+        "Homeworld et habitats:QA-007"
+      ],
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        733,
+        323
+      ],
+      "pivotStatus": "proposal only; not physically or artistically qualified",
+      "proposedPlacement": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "proposedPlacementStatus": "Full source-coordinate canvas requested; not verified as pixel-exact alignment",
+      "sourceEmissionSocketProposal": [
+        733,
+        323
+      ],
+      "sourceEmissionSocketStatus": "Approximate source visual coordinate, not a measured rig joint",
+      "camera": "Original HWA160-052 three-quarter camera requested; no new angle invented; yaw/pitch unmeasured",
+      "animated": false,
+      "frames": 1,
+      "pixelEditingPerformed": false,
+      "prompt": "Correct only this source-derived VFX layer, preserving the original project image's visible optical cone. Image1 is the ORIGINAL HWA160-052 source and authority; image2 is the previously extracted candidate which is TOO OPAQUE AND TOO LARGE and must be corrected. Deliver only one projected cone, no pylon/housing/stone. Use the same1254by1254 square full-source framing. Cone apex/source emission point approximately x733,y323; do not shift it toward the center. The cone's visible light must FADE along its length exactly like original source image1, rather than an opaque orange megaphone/capsule. Native light alpha should be approximately full at the small origin, then about83percent atx850,55percent atx900,31percent atx950,17percent atx1000,9percent atx1050,5percent atx1100,2percent atx1150,zero nearx1200 along the beam center. Soft edges should be still weaker. These are translucent LIGHT values, not gray/orange RGB painted at full opacity. In source image1 the outercone with alpha>=16 ends aroundx1097 and y449, notx1189/y501 as the rejected image2. Keep source original shape/camera/direction and saturated orange-red palette with tiny warm yellow-white origin; make the visible cone smaller/softer according to source, with a smooth transparent falloff outward. Leave native alpha zero everywhere else, all of the physical pylon absent, no new flares/rays/text/frame/checkerboard/backdrop. Do not create another pose, add a second cone, recenter, stretch, rotate, or fill unused canvas. This is one soft optical effect layer aligned to the original source, not an opaque object.",
+      "references": [
+        {
+          "path": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+          "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+          "role": "original-project-image",
+          "privateReferenceNotPublished": false
+        },
+        {
+          "path": "/workspace/generated_images/exec-bdd40638-1612-49db-b79c-64f518820ff7.png",
+          "sha256": "88cd736e8f50f05dc747133cf5fb145d15ddcdf35ad64158643b7dd848d9ebc6",
+          "role": "rejected-first-emission-used-for-alpha-correction",
+          "privateReferenceNotPublished": true
+        }
+      ],
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          251
+        ],
+        "alphaZeroPixels": 1458892,
+        "alphaNoisePixels1or2": 15601,
+        "softAlphaPixels3to239": 93414,
+        "nearOpaquePixels240": 4609,
+        "visiblePixels16": 69544,
+        "visibleBounds16": [
+          702,
+          227,
+          1133,
+          468
+        ],
+        "marginsPixels16": [
+          702,
+          227,
+          121,
+          786
+        ],
+        "sourceRect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "bytes": 231650,
+        "sha256": "c62dfd7c1999d6ecbc73cdd9270a443761278b3f79302f7d09a2a70b0e14529d",
+        "centerlineAlphaY323": {
+          "730": 251,
+          "750": 249,
+          "780": 245,
+          "800": 240,
+          "850": 221,
+          "900": 196,
+          "950": 148,
+          "1000": 91,
+          "1050": 53,
+          "1100": 25,
+          "1150": 8,
+          "1200": 0
+        }
+      },
+      "sha256": "c62dfd7c1999d6ecbc73cdd9270a443761278b3f79302f7d09a2a70b0e14529d",
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "bytes": 231650,
+      "nativeCopyByteIdentical": true,
+      "limitations": [
+        "Generated source-preserving candidate; exact pixel reproduction and canonical one-to-one fidelity are not certified.",
+        "Same source camera and placement requested; socket alignment, physical dimensions and the Homeworld 35-degree projection need review.",
+        "No runtime, collision, animation or human artistic admission performed.",
+        "The native soft-alpha falloff is substantially closer than the rejected first attempt but is still denser than the original at x900–1100; original and generated alpha profiles are recorded. Do not label this effect 1:1 or replace the source without review.",
+        "The physical pylon is absent. Soft-alpha is intentional; no solid-core requirement should be imposed on the effect."
+      ]
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "nativePath": "/workspace/generated_images/exec-bdd40638-1612-49db-b79c-64f518820ff7.png",
+      "sha256": "88cd736e8f50f05dc747133cf5fb145d15ddcdf35ad64158643b7dd848d9ebc6",
+      "metrics": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          253
+        ],
+        "alphaZeroPixels": 1451481,
+        "alphaNoisePixels1or2": 5747,
+        "softAlphaPixels3to239": 80170,
+        "nearOpaquePixels240": 35118,
+        "visiblePixels16": 107041,
+        "visibleBounds16": [
+          699,
+          167,
+          1189,
+          501
+        ],
+        "marginsPixels16": [
+          699,
+          167,
+          65,
+          753
+        ],
+        "sourceRect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "bytes": 247969,
+        "sha256": "88cd736e8f50f05dc747133cf5fb145d15ddcdf35ad64158643b7dd848d9ebc6",
+        "centerlineAlphaY323": {
+          "730": 252,
+          "750": 253,
+          "780": 253,
+          "800": 253,
+          "850": 252,
+          "900": 253,
+          "950": 253,
+          "1000": 250,
+          "1050": 215,
+          "1100": 172,
+          "1150": 128,
+          "1200": 0
+        }
+      },
+      "reason": "Emission too long and opaque compared with the source alpha profile.",
+      "prompt": "Controlled source-preserving layer separation. The attached HWA160-052 original image is the sole visual authority. Produce ONE transparent PNG containing ONLY the existing projected orange-red optical cone/beam emerging toward screen-right from the circular lens, with its soft luminous glow and the same visible shape/length/spread/color falloff. OMIT the ENTIRE physical pylon, all stone/metal, pedestal, lens housing, stairs, glyphs and intrinsic body vents. Keep the cone's origin and its full projected screen position exactly as in the source square; do not center, stretch, rotate or enlarge the cone to fill the canvas. Original source square is1254by1254; the source lens center is approximately x733,y323. Leave empty native alpha where the pylon stood. The cone extends right/up only as shown, with warm yellow-white very small origin, saturated orange center and red/orange feathered edges; preserve the source outline and make the glow natively semi-transparent rather than painting any dark background. This soft VFX layer is intentionally not an opaque solid object. Keep clear alpha-zero surroundings and full end margins; no checkerboard baked into image, no pylon fragments, no new flares, no extra rays, no scenery/text/border/watermark. Do not invent another direction or animation; this is exactly the visible emission layer of the attached original, one static frame.",
+      "distributed": false
+    },
+    {
+      "nativePath": "/workspace/generated_images/exec-b3f8fed9-73e5-49c5-b43a-618769b25bb4.png",
+      "sha256": "75f0ffe749c09a2b87cd392dc58ac7c9fd6aa36da5494904320ac0d0420bb7b5",
+      "metrics": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          249
+        ],
+        "alphaZeroPixels": 1447855,
+        "alphaNoisePixels1or2": 21613,
+        "softAlphaPixels3to239": 100399,
+        "nearOpaquePixels240": 2649,
+        "visiblePixels16": 81993,
+        "visibleBounds16": [
+          702,
+          218,
+          1175,
+          465
+        ],
+        "marginsPixels16": [
+          702,
+          218,
+          79,
+          789
+        ],
+        "sourceRect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "bytes": 214861,
+        "sha256": "75f0ffe749c09a2b87cd392dc58ac7c9fd6aa36da5494904320ac0d0420bb7b5",
+        "centerlineAlphaY323": {
+          "730": 242,
+          "750": 241,
+          "780": 238,
+          "800": 232,
+          "850": 216,
+          "900": 220,
+          "950": 210,
+          "1000": 202,
+          "1050": 173,
+          "1100": 133,
+          "1150": 65,
+          "1200": 1
+        }
+      },
+      "reason": "Correction darkened RGB instead of sufficiently reducing alpha; rejected in favour of the preceding genuine soft-alpha candidate.",
+      "prompt": "Final source-fidelity correction of the soft emission layer. Image1 is the current extracted transparent cone; image2 is the ORIGINAL HWA160-052 authority. Keep the same1254x1254 square full-canvas frame and the same one cone's position, camera, hue, orange-red light colors, small yellow-white apex around(733,323), outline and direction. Change ONLY its outward transparency falloff to match image2. The existing apex and near field up to x850 are sufficiently bright and must stay. Beyond x850 the light in image1 is too opaque: make it noticeably WEAKER and more transparent, without darkening the RGB orange into a dark shape. At the beam center y323, use alpha about139/255 atx900,80/255 atx950,43/255 atx1000,23/255 atx1050,12/255 atx1100,4/255 atx1150,zero atx1200. This must be real smoothly feathered alpha, not an orange solid with opacity only at the edges. Source alpha>=16 should terminate aroundx1097, not1133. The final distant end is very faint light; retain source proportions and glow falloff without painting a flat opaque orange wedge. Outer feather edges are still weaker than centerline. Leave source canvas empty elsewhere, zero alpha, no physical pylon/body/housing/pedestal, no new streaks, no text/checkerboard/backdrop/border. Exactly one static effect layer, no resize/recenter/extra view.",
+      "distributed": false
+    }
+  ],
+  "sourceUnchanged": true,
+  "supersededCandidates": [
+    {
+      "id": "HWA160-052-pylon",
+      "revision": 1,
+      "reason": "Unproven spiral/turbine motif in the optical aperture; superseded by source-supported incandescent core",
+      "formerPublicPath": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-pylon.png",
+      "publicBinaryRemoved": true,
+      "archivedCandidatePath": "/tmp/p0-sprites-20261113-followup/superseded/HWA160-052-pylon-v1.png",
+      "originalNativePath": "/workspace/generated_images/exec-4ab631ca-7aec-47f9-b861-48195f04b352.png",
+      "sha256": "4f5536f6acba8d2af4c349abb6ad8d0457bae82e25b594ecd2818d205bff264f",
+      "entry": {
+        "id": "HWA160-052-pylon",
+        "sourceId": "HWA160-052",
+        "sourceDesignId": "HWA160-052",
+        "assetPath": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-pylon.png",
+        "assetKind": "prop",
+        "componentRole": "pylon",
+        "compositionGroup": "HWA160-052-laser-separation",
+        "status": "generated-candidate",
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newlyClosedP0": 0,
+        "nativeSourcePath": "/workspace/generated_images/exec-4ab631ca-7aec-47f9-b861-48195f04b352.png",
+        "generatedNativePath": "/workspace/generated_images/exec-4ab631ca-7aec-47f9-b861-48195f04b352.png",
+        "sourceReference": {
+          "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+          "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+          "width": 1254,
+          "height": 1254,
+          "scope": "Original project image, not canonical film proof",
+          "sourceWorkbook": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "Fichiers_PNG",
+          "row": 57
+        },
+        "sourceRows": [
+          {
+            "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+            "sheet": "Fichiers_PNG",
+            "row": 57,
+            "sourceId": "HWA160-052"
+          },
+          {
+            "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+            "sheet": "QA_et_Suite",
+            "row": 12,
+            "id": "QA-007",
+            "priority": "P0",
+            "criterion": "Séparer eau/roche, laser/pylône, statue/base",
+            "status": "À faire"
+          }
+        ],
+        "priorityLinks": [
+          "Homeworld et habitats:QA-007"
+        ],
+        "sourceRect": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "pivot": [
+          596.5,
+          1195
+        ],
+        "pivotStatus": "proposal only; not physically or artistically qualified",
+        "proposedPlacement": [
+          0,
+          0,
+          1254,
+          1254
+        ],
+        "proposedPlacementStatus": "Full source-coordinate canvas requested; not verified as pixel-exact alignment",
+        "sourceEmissionSocketProposal": [
+          733,
+          323
+        ],
+        "sourceEmissionSocketStatus": "Approximate source visual coordinate, not a measured rig joint",
+        "camera": "Original HWA160-052 three-quarter camera requested; no new angle invented; yaw/pitch unmeasured",
+        "animated": false,
+        "frames": 1,
+        "pixelEditingPerformed": false,
+        "prompt": "Controlled source-preserving layer separation, not a redesign. Use the attached original project image HWA160-052 as the sole geometry and material authority. Produce ONE native transparent PNG layer containing ONLY the complete existing basalt-and-bronze laser pylon, WITHOUT the orange/red cone that protrudes from its circular optical aperture. Remove only the outward projected beam/cone and its floating haze; retain the circular aperture itself and its intrinsic small orange luminous lens, all glowing vents, the exact three-quarter camera, body silhouette, bronze plate edges, fissures, glyph shapes/count/positions, circular lens geometry, sloped top fin, front stairs and wide polygonal foot. Every visible feature of the pylon must stay as close to the source as possible, no newly exposed sides, no invented mechanism, no new geometry. Preserve the entire SOURCE SQUARE composition, same source object scale and screen position rather than recentering or enlarging the body. Source canvas is 1254 by1254; preserve that square framing, pylon roughly x265..925,y32..1195, aperture center approximately x733,y323 in source coordinates. Do not move the aperture, feet or top. Keep full positive transparent margins and complete silhouette; do not crop. No floor/background/shadow disk, no people, no second object, no text/labels/frame/checkerboard. True native alpha-zero background, fully opaque solid pylon with antialiased edges. This is the independent body layer of the EXISTING same pylon, not a different model or another view.",
+        "references": [
+          {
+            "path": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+            "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+            "role": "original-project-image",
+            "privateReferenceNotPublished": false
+          }
+        ],
+        "alpha": {
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZeroPixels": 1163414,
+          "alphaNoisePixels1or2": 4511,
+          "softAlphaPixels3to239": 7863,
+          "nearOpaquePixels240": 396728,
+          "visiblePixels16": 401662,
+          "visibleBounds16": [
+            265,
+            31,
+            928,
+            1196
+          ],
+          "marginsPixels16": [
+            265,
+            31,
+            326,
+            58
+          ],
+          "sourceRect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "bytes": 984975,
+          "sha256": "4f5536f6acba8d2af4c349abb6ad8d0457bae82e25b594ecd2818d205bff264f",
+          "centerlineAlphaY323": {
+            "730": 253,
+            "750": 253,
+            "780": 0,
+            "800": 0,
+            "850": 0,
+            "900": 0,
+            "950": 0,
+            "1000": 0,
+            "1050": 0,
+            "1100": 0,
+            "1150": 0,
+            "1200": 0
+          }
+        },
+        "sha256": "4f5536f6acba8d2af4c349abb6ad8d0457bae82e25b594ecd2818d205bff264f",
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "nativeMode": "RGBA",
+        "bytes": 984975,
+        "nativeCopyByteIdentical": true,
+        "limitations": [
+          "Generated source-preserving candidate; exact pixel reproduction and canonical one-to-one fidelity are not certified.",
+          "Same source camera and placement requested; socket alignment, physical dimensions and the Homeworld 35-degree projection need review.",
+          "No runtime, collision, animation or human artistic admission performed."
+        ]
+      },
+      "distributed": false
+    }
+  ],
+  "revisionNote": "Pylon revision2 removes unproven optical spiral. Emission layer unchanged, with its original alpha-falloff limitation retained. No source component or canonical fidelity certified."
+}

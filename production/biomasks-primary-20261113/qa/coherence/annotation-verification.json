@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "setup": {
+    "originalRunnerSha256": "71d76479750211e74ffe430a40876cb81985da9f46e36c215a9254f3a6f351c7",
+    "modifiedRunnerSha256": "7bf40c64c573d29ff781cc9b3a1e397bb28b448e0ffc6cf1272841ea2d8b6e1a",
+    "predicateTextIdentical": true,
+    "predicateSha256": "0612acb2bb0926282d9f341ffdab09f3d3fc084f08bc8876b347bef8f183cf1a",
+    "fixtureRoot": "/tmp/primary-masks-20261113/annotation-verification/fixture",
+    "repositorySelectionModified": false
+  },
+  "cases": [
+    {
+      "name": "positive",
+      "githubActions": true,
+      "exitCode": 0,
+      "passed": true,
+      "totals": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "annotations": [],
+      "stdoutSha256": "e6aae1928e25f69b88637c964e9deb4025e889c4b496d674aadc83318fa76002",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tapSha256": "e67bef66c9d2e46ac9e444f4bd110ab4230a87efc4950a13f30c21b98b709672",
+      "sourceUnchanged": true,
+      "stdoutMarkerDisclosed": false
+    },
+    {
+      "name": "negative",
+      "githubActions": true,
+      "exitCode": 1,
+      "passed": false,
+      "totals": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "annotations": [
+        "::error file=tests/controlled.test.mjs,title=P0/P1 regression failed::file=tests/controlled.test.mjs; exit=1; tests=1; pass=0; fail=1; skipped=0; cancelled=0; todo=0; sourceUnchanged=true; spawnError=none; TAP=../negative-output/controlled.test.mjs.tap"
+      ],
+      "stdoutSha256": "28a43ea13ff63821f8ff7c4409a917b0d64a454bf5881e2caca91f631edf7b45",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tapSha256": "2730e79cf950984ac6c3e5f51656be6233358664c0f1fde18d1802991632168e",
+      "sourceUnchanged": true,
+      "stdoutMarkerDisclosed": false
+    },
+    {
+      "name": "injection",
+      "githubActions": true,
+      "exitCode": 1,
+      "passed": false,
+      "totals": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "annotations": [
+        "::error file=tests/controlled.test.mjs,title=P0/P1 regression failed::file=tests/controlled.test.mjs; exit=1; tests=1; pass=0; fail=1; skipped=0; cancelled=0; todo=0; sourceUnchanged=true; spawnError=none; TAP=../injection-%25%0D%0A::error title=INJECTED::ignored/controlled.test.mjs.tap"
+      ],
+      "stdoutSha256": "4da6d84a0bb226351c0e0f0787055c1f9f54fb2f0a5d9251269fd10bbcd2491d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tapSha256": "32c6bf2b0f9499d569d2e67f0167dd871aa23a92ac475c2e3eafb7093c089e57",
+      "sourceUnchanged": true,
+      "stdoutMarkerDisclosed": false
+    },
+    {
+      "name": "negative-without-github",
+      "githubActions": false,
+      "exitCode": 1,
+      "passed": false,
+      "totals": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "skipped": 0,
+        "cancelled": 0,
+        "todo": 0
+      },
+      "annotations": [],
+      "stdoutSha256": "ef7ffd9f55fc7d3ebb857c7bcbabe15a41e9b618aeee7c971aac74575d47cc3d",
+      "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tapSha256": "151681f79c35a8488a552722c3f6ec56b74c682ca01d4e2d8333df8a66479a96",
+      "sourceUnchanged": true,
+      "stdoutMarkerDisclosed": false
+    }
+  ],
+  "escaping": {
+    "data": "%25%0D%0A::warning::injected",
+    "property": "tests/a%25%2Cb%3Ac%0D%0A.test.mjs"
+  },
+  "allChecksPassed": true,
+  "repositorySourcesOrSelectionChangedForCases": false,
+  "fullRegressionSuiteRepeated": false,
+  "remoteFailureStatus": "not reproduced; cause unknown",
+  "historicalArtifactsModified": false
+}

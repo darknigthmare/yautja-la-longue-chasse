@@ -1,0 +1,400 @@
+{
+  "passed": true,
+  "batchGenerated": true,
+  "allP0Closed": false,
+  "counts": {
+    "assets": 110,
+    "nativeFiles": 45,
+    "byCategory": {
+      "homeworld": 13,
+      "masks": 6,
+      "props": 12,
+      "structures": 18,
+      "units": 60,
+      "warp": 1
+    },
+    "spriteFrames": 109,
+    "opaqueBackgrounds": 1,
+    "designIdentities": 80,
+    "designIdentitiesByCategory": {
+      "homeworld": 13,
+      "masks": 6,
+      "props": 12,
+      "structures": 18,
+      "units": 30,
+      "warp": 1
+    },
+    "sourceP0Subjects": 775,
+    "animationClips": 0,
+    "humanValidatedAssets": 0,
+    "canonCertifiedAssets": 0
+  },
+  "manifest": {
+    "path": "public/game/p0-sprites-20261113/manifest.json",
+    "sha256": "f11cb10dae09c43d939ba4711ae08cc2ab6cde5d0f7e98dac40793e57e712a59"
+  },
+  "gallery": {
+    "path": "public/game/p0-sprites-20261113/review.html",
+    "sha256": "74456c421f68d166e2694cef73d64fb17a95b023e73fafa15e60a4ceb8da4c3a"
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "id": "W3-U01",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U02",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U02",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U03",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U03",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U04",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U05",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U06",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U07",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U07",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U08",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U08",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U09",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U10",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U10",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U11",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U12",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U13",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U14",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U14",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U15",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U16",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U17",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U18",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U19",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U19",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U20",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U20",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U21",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U21",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U22",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U23",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U24",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U24",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U25",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U25",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U26",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U26",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U27",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U27",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U28",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U28",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U29",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U30",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U30",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U01-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U01-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U02-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U02-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U03-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U03-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U04-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U05-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U06-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U06-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U07-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U07-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U08-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U09-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U10-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U11-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U11-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U12-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U13-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U13-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U14-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U14-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U15-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U16-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U16-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U17-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U17-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U18-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U18-left",
+      "message": "Au moins une marge mesurée est inférieure à 2 % ; examiner la silhouette à sa résolution native."
+    },
+    {
+      "id": "W3-U19-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U20-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U21-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U22-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U23-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U24-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U25-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U26-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U27-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U29-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-U30-left",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-S12",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-S15",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-S16",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    },
+    {
+      "id": "W3-S17",
+      "message": "Marge mesurée inférieure à 5 % ; pixels natifs conservés. Le cadrage reste à examiner."
+    }
+  ],
+  "scope": "Native pixels, declared byte identity, source mapping and deterministic pack integrity only. Browser and human art are separate."
+}

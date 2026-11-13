@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Independent-agent comparison of existing project design A versus styled B only; no canonical/human/runtime validation.",
+  "receipt": {
+    "path": "production/biomasks-dual-20261113/generation/batch-5.json",
+    "sha256": "154cbe85dde4016a289bf5bf5dff4d1711df15772c03fd0d7f97413c4d08b2f3"
+  },
+  "entries": [
+    {
+      "id": "phg-cosmetic-wretch",
+      "sourceA": {
+        "path": "public/game/p0-sprites-20261113/masks/wretch-front.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          255,
+          206,
+          1000,
+          1083
+        ],
+        "sha256": "ffd3ad1a8060cad2ab2b84e39fdeb727ac71c7db19b1c1523f4889cba2782213",
+        "bytes": 1361371
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-wretch.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          175,
+          118,
+          1079,
+          1149
+        ],
+        "sha256": "e2433a5ce815a7764e8f8ee8a8e14016f1b6306902d39457edff2342e94f93f4",
+        "bytes": 1792341
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Near-front ribbed crown/cheeks, upper tips, dark eyes and central spine silhouette preserved.",
+        "Monochrome A remains monochrome B; both recognizable at96px."
+      ],
+      "limitations": [
+        "Fine rib spacing and surface chip topology are interpreted."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-elder",
+      "sourceA": {
+        "path": "public/game/biomasks-20261113/masks/elder-phg-reference-view.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          211,
+          145,
+          1043,
+          1124
+        ],
+        "sha256": "71363050d043ef9cdb200de1a55314cec2aeb555ee617076f81cdefe0bfe26c4",
+        "bytes": 1464006
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-elder.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          192,
+          113,
+          1058,
+          1154
+        ],
+        "sha256": "ff2ff8c4b690d0b1896cebdc3f3b6fd5109b423db2737ce49f4533cb6b26dfd2",
+        "bytes": 1617875
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Round capped crown, existing central/side damage marks, lower small studs, dark eye band and lower plate preserved.",
+        "Source near-front pitch and grayscale palette retained."
+      ],
+      "limitations": [
+        "Slight crown/face proportion and fine scuff differences; not pixel or canon approval."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-23-samurai",
+      "sourceA": {
+        "path": "public/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+        "width": 1312,
+        "height": 1199,
+        "bounds": [
+          90,
+          12,
+          1154,
+          1183
+        ],
+        "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715",
+        "bytes": 1637768
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-23-samurai.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          103,
+          48,
+          1101,
+          1168
+        ],
+        "sha256": "97b4cff30423b91bc50562ded3263501a0d0a53665ac44bece193865bb623acf",
+        "bytes": 1598081
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Red menpo, gold curls/trim and dark helmet remain separated.",
+        "Existing helmet side lames, two gold brow branches and image-left emitter retained; ambiguous rear tuft remains absent."
+      ],
+      "limitations": [
+        "Fine scroll and vent relief not checked stroke-by-stroke; no full hidden crest geometry established."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-24-viking",
+      "sourceA": {
+        "path": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          197,
+          68,
+          1053,
+          1170
+        ],
+        "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749",
+        "bytes": 1767889
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-24-viking.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          195,
+          68,
+          1056,
+          1173
+        ],
+        "sha256": "4724a14b9b6c42f82cf023128a00845ab6b1ed5ff0cda5f5170a53b2700264b1",
+        "bytes": 1757121
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Image-left/anatomical-right engraved ocular cover, opposite dark eye aperture retained.",
+        "Two tall gold/grey horn assemblies, dark blue/grey engraved crown, silver cheek and gold nose plate preserved."
+      ],
+      "limitations": [
+        "Fine ring lettering, horn ridges and ornamental strokes are interpreted, not a one-to-one glyph transfer or original shader proof."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-25-valkyrie",
+      "sourceA": {
+        "path": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+        "width": 1309,
+        "height": 1201,
+        "bounds": [
+          200,
+          30,
+          1182,
+          1101
+        ],
+        "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e",
+        "bytes": 1355325
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-25-valkyrie.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          178,
+          74,
+          1122,
+          1126
+        ],
+        "sha256": "3c111defa672ffdecdc1950f2712936660b35318a2b12e3cd6b4d2134d359e9b",
+        "bytes": 1321413
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Wing branches, central helmet band, gold eye borders and silver lower structures retained.",
+        "Source inclined near-front camera and gray/gold color regions coherent at360/96px."
+      ],
+      "limitations": [
+        "Small interlace, rivet and rib counts are not exactly verified."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-30-emissary",
+      "sourceA": {
+        "path": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+        "width": 1192,
+        "height": 1319,
+        "bounds": [
+          209,
+          82,
+          972,
+          1219
+        ],
+        "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+        "bytes": 1247126
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-30-emissary.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          241,
+          64,
+          1009,
+          1190
+        ],
+        "sha256": "5980ae75824563137eb8f5378b643bbe8da330d82162dc41b93f65380b1d76d7",
+        "bytes": 1301386
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Broad glossy black dome, silver rim/brows, dark eye apertures, image-left ports and bronze lower grille retained.",
+        "No reconstruction of the source-truncated upper appendages; both views remain partial."
+      ],
+      "limitations": [
+        "Reflection/cavity/pore details restaged; no neutral-albedo, unseen appendage or full helmet claim."
+      ],
+      "partialMask": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-captured",
+      "sourceA": {
+        "path": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+        "width": 1199,
+        "height": 1312,
+        "bounds": [
+          225,
+          96,
+          973,
+          1213
+        ],
+        "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+        "bytes": 1321450
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-captured.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          253,
+          71,
+          995,
+          1167
+        ],
+        "sha256": "f3b229d194ce266b1f4b1bad8e2341af6e08f14cc88a9e69291cf3635ca765b8",
+        "bytes": 1323162
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Damaged upper rim and image-right missing eye protection preserved.",
+        "Image-right opening is visibly transparent on white/checker and native alpha probes confirm0; image-left lens remains dark and near-opaque.",
+        "No wearer flesh or iris included."
+      ],
+      "limitations": [
+        "Fine chips and cap/cheek proportions are re-rendered, not an exact damage map."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-cleopatra",
+      "sourceA": {
+        "path": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+        "width": 1192,
+        "height": 1319,
+        "bounds": [
+          170,
+          69,
+          1020,
+          1231
+        ],
+        "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4",
+        "bytes": 1618663
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cleopatra.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          227,
+          58,
+          1027,
+          1153
+        ],
+        "sha256": "14c38b01162d37d6960de9ae18c19bdaad9745e62112a00a226188d2327c98f0",
+        "bytes": 1520723
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Blue dark face shield, gold medallion, paired outer ribbed fins and paired thin inner prongs retained.",
+        "Dark optical openings, image-left targeting cluster and long tapered lower face stay in source view."
+      ],
+      "limitations": [
+        "Fine medallion/flute and little fitting patterns remain interpreted; source canonical identity is not re-certified."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-exiled",
+      "sourceA": {
+        "path": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+        "width": 1069,
+        "height": 1472,
+        "bounds": [
+          130,
+          41,
+          946,
+          1291
+        ],
+        "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee",
+        "bytes": 1965781
+      },
+      "versionB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-exiled.png",
+        "width": 1254,
+        "height": 1254,
+        "bounds": [
+          250,
+          37,
+          986,
+          1165
+        ],
+        "sha256": "c7522dfaf23b478cb17c4ea1664c5eb4b0093709cccc0941ef8cb5e16d20687c",
+        "bytes": 1669822
+      },
+      "decision": "candidate-with-limitations",
+      "majorDeviationObserved": false,
+      "observations": [
+        "Split paired upper pillars, scrolls, central loop relief, brown source palette and black eyes retained.",
+        "Existing upward side hooks stay; no additional downward neck-adjacent tusks, wearer or hair were added."
+      ],
+      "limitations": [
+        "Fine carving and grain spacing are re-rendered; material chemistry and hidden attachments remain unknown."
+      ],
+      "partialMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ],
+  "browserEvidence": {
+    "browser": "Chromium via Playwright-core",
+    "viewport": [
+      1160,
+      1820
+    ],
+    "displaySizes": [
+      360,
+      96
+    ],
+    "backgrounds": [
+      "white",
+      "black",
+      "checker"
+    ],
+    "screenshots": [
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-01.png",
+        "sha256": "ae4d4a0f41df49c6512fdeb4d576604ad49fce41ceb9766179542bccd70ad5c3",
+        "bytes": 1321466,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-02.png",
+        "sha256": "8ed2a81ae618f4aca4b909adaaedcb7adb543ea0cbc86b4af204a4bd0b1298df",
+        "bytes": 1075195,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-03.png",
+        "sha256": "cd57037fc4657cab3693e9804d123d03648b4c5f48711716f925e8fd6cfbe151",
+        "bytes": 307587,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-01.png",
+        "sha256": "2ce46a1d1ee307ff3279bc78dfc44a427a4b26526fd4bfb2c32875cac0239eba",
+        "bytes": 1355503,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-02.png",
+        "sha256": "8b281529de5104c66cb1a8d6e0c0bc66220424415d0c74cdf35c308aacf0ff59",
+        "bytes": 1110199,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-03.png",
+        "sha256": "35b35bc7dc07433038a264c83aed25229f708302737955042f3f9dc10aaea5a5",
+        "bytes": 315934,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-01.png",
+        "sha256": "b407881af7caf32efdf040ff227c33ef05cbd383d8ff574ff90f0bc5cb704f51",
+        "bytes": 1346162,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-02.png",
+        "sha256": "ccc9de11fe20c85d9d0aa98d989a6205db98ae14938948dfdfa90e8276f37b29",
+        "bytes": 1103077,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      },
+      {
+        "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-03.png",
+        "sha256": "76b67aa8648bac54ed683d5cb2fb6caf17e3d5c56d4fda75c4b8674f15b42051",
+        "bytes": 314643,
+        "dimensions": [
+          1160,
+          1820
+        ]
+      }
+    ],
+    "normalization": "Read-only CSS transforms from alpha>=16 bounds. No raster source/game image edited or reencoded.",
+    "observedPairCompositions": 108,
+    "compositionsAreNotIndependentTests": true
+  },
+  "capturedAlphaProbe": {
+    "sourceA": {
+      "holeRect": [
+        760,
+        720,
+        786,
+        736
+      ],
+      "holePixels": 416,
+      "holeAlpha0Pixels": 416,
+      "holeAlphaExtrema": [
+        0,
+        0
+      ],
+      "lensRect": [
+        449,
+        722,
+        479,
+        744
+      ],
+      "lensAlphaExtrema": [
+        252,
+        253
+      ]
+    },
+    "versionB": {
+      "holeRect": [
+        784,
+        684,
+        810,
+        699
+      ],
+      "holePixels": 390,
+      "holeAlpha0Pixels": 390,
+      "holeAlphaExtrema": [
+        0,
+        0
+      ],
+      "lensRect": [
+        476,
+        685,
+        505,
+        707
+      ],
+      "lensAlphaExtrema": [
+        252,
+        253
+      ]
+    }
+  },
+  "majorDeviationCount": 0,
+  "candidateCount": 9,
+  "humanValidationCount": 0,
+  "canonCertificationCount": 0,
+  "runtimeIntegrationCount": 0,
+  "repoFilesModified": false,
+  "imagePixelsEdited": false,
+  "archivedOriginalReportSha256": "d53873f376c2c1f11b47736edefc9ad320a2a137edf74f951a738b6c7fd47fcf",
+  "archivalNote": "Only metadata paths adapted to byte-identical copied browser captures; no raster asset or screenshot editing."
+}

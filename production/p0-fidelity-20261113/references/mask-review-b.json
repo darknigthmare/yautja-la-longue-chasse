@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "AI visual fidelity review, read-only, of three native generated candidates against their frozen secondary front icons. No raster mutation, generation, artistic approval or canonical certification.",
+  "sourceCommit": "dd7c08cea4934de5dfb61c27447a8808d1b87765",
+  "viewedImageCount": 6,
+  "method": [
+    "view_image(detail=original) for each native reference and each candidate PNG.",
+    "Additional Chromium display of the three native references at CSS300% with pixelated sampling; diagnostic screenshot only, no rewritten sprite."
+  ],
+  "diagnosticScreenshot": "/tmp/p0-sprites-20261113-followup/review/source-zoom.png",
+  "canonicalOneToOneCertified": false,
+  "humanArtValidated": false,
+  "entries": [
+    {
+      "id": "mr-black-front",
+      "reference": {
+        "path": "/tmp/p0-sprites-20261113/web-references/native-reference-4.png",
+        "bytes": 24490,
+        "sha256": "f40ed47502a26c384c506abfb11d3226a6c12d64290d98d496284b9b76127ef3",
+        "pngDimensions": [
+          256,
+          257
+        ],
+        "actuallyViewed": true
+      },
+      "candidate": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/p0-sprites-20261113/masks/mr-black-front.png",
+        "bytes": 916066,
+        "sha256": "eac1bb5d969c2a2421b7064bcbe2d0d84c30d16db7768cbb883b1f8708a1f52b",
+        "pngDimensions": [
+          1254,
+          1254
+        ],
+        "actuallyViewed": true
+      },
+      "review": {
+        "macroAssessment": "Pas de dérive macro certaine nécessitant une régénération aveugle.",
+        "retainedFeatures": [
+          "Large calotte arrondie bordée, encoche centrale haute et pointe descendante entre les yeux.",
+          "Deux fentes oculaires inclinées, plaque perforée sur le côté gauche de l’image et plaques temporales latérales.",
+          "Mâchoire osseuse rapportée et petite grille verticale au centre ; cheveux détachés volontairement omis."
+        ],
+        "countsAndAsymmetry": {
+          "candidatePerforations": 6,
+          "referencePerforationCount": "Petit groupe triangulaire visible ; le nombre exact n’est pas qualifié indépendamment à 256px. Ne pas remplacer ce groupe par le système à trois LED du masque Berserker film.",
+          "eyeSlots": 2,
+          "horns": 0,
+          "jawTeethCount": "Non certifié à partir de cette icône."
+        },
+        "verifiedIssues": [],
+        "unresolvedDetails": [
+          "Nombre exact des trous/vents et denticules osseux à confirmer avec un rendu plus net.",
+          "Le candidat révèle une rayure et des rugosités à haute définition qui ne peuvent pas être déclarées pixel-identiques à l’icône."
+        ],
+        "recommendedAction": {
+          "type": "retain-candidate-await-clearer-reference",
+          "reason": "La forme globale observée est déjà proche ; une nouvelle génération sans meilleure source risquerait de déplacer des traits qui correspondent."
+        }
+      },
+      "limitations": [
+        "Icône frontale 256×256 issue du port communautaire PAYDAY2 ; aucune certification de pixels PHG originaux.",
+        "La référence comprend des dreadlocks et accessoires du porteur ; seuls les éléments clairement attribuables au biomask doivent être reproduits.",
+        "Les scratches, rugosités et microgravures ne sont pas établissables exactement à cette définition.",
+        "Aucune qualification de couleur PHG originale, profil/dos, UV, proportions du porteur ou validation artistique humaine."
+      ]
+    },
+    {
+      "id": "wretch-front",
+      "reference": {
+        "path": "/tmp/p0-sprites-20261113/web-references/native-reference-5.png",
+        "bytes": 33843,
+        "sha256": "2f35ff4c715b1b7b009d8ea23ee763e0d7077e4ad804b2941fb64019e61ae89c",
+        "pngDimensions": [
+          256,
+          257
+        ],
+        "actuallyViewed": true
+      },
+      "candidate": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/p0-sprites-20261113/masks/wretch-front.png",
+        "bytes": 1361371,
+        "sha256": "ffd3ad1a8060cad2ab2b84e39fdeb727ac71c7db19b1c1523f4889cba2782213",
+        "pngDimensions": [
+          1254,
+          1254
+        ],
+        "actuallyViewed": true
+      },
+      "review": {
+        "macroAssessment": "Front élargi côtelé, deux pointes supérieures, petits yeux inclinés et visage effilé présents. La bande segmentée centrale mérite un ajustement ciblé.",
+        "retainedFeatures": [
+          "Deux pointes distinctes en haut du crâne et large éventail de côtes latérales.",
+          "Deux fentes oculaires étroites sous la bordure du front.",
+          "Bande vertébrale/respiratoire centrale descendant du front jusqu’au menton."
+        ],
+        "countsAndAsymmetry": {
+          "upperSpikes": 2,
+          "eyeSlots": 2,
+          "lateralRibsCount": "Non qualifié exactement à cette résolution.",
+          "centralSegmentCount": "Ne pas fixer un total exact par interprétation des pixels."
+        },
+        "verifiedIssues": [
+          {
+            "id": "WRETCH-CENTRAL-LAMELLAE",
+            "reviewPriority": "medium",
+            "confidence": "medium",
+            "observation": "Dans le candidat, les grandes pièces centrales du front et du museau sont plus larges, lisses et régulièrement rectangulaires. L’icône montre des segments plus fins, serrés et irréguliers, notamment dans la bande respiratoire sous les yeux.",
+            "editTarget": "Reprendre uniquement la bande centrale : amincir les lamelles trop massives et réduire leur régularité de grille, en suivant la référence ; conserver contour global, deux pointes, petits yeux, côtes latérales et plaques temporales.",
+            "doNotInvent": "Ne pas imposer de nombre de lamelles, de marquages ou de gravures supplémentaires non lisibles.",
+            "acceptance": "Comparaison frontale côte à côte au cadrage du masque ; les segments doivent retrouver la finesse et les ruptures visibles de la référence sans modifier les autres traits."
+          }
+        ],
+        "unresolvedDetails": [
+          "Le nombre exact des côtes et leurs arêtes fines reste indéterminé.",
+          "La forte rugosité photographique du candidat ne prouve pas le matériau original PHG."
+        ],
+        "recommendedAction": {
+          "type": "conditional-targeted-imagegen-edit",
+          "reason": "Meilleure cible d’amélioration concrète de ce sous-lot ; garder le résultat candidat même si le motif central paraît plus proche."
+        }
+      },
+      "limitations": [
+        "Icône frontale 256×256 issue du port communautaire PAYDAY2 ; aucune certification de pixels PHG originaux.",
+        "La référence comprend des dreadlocks et accessoires du porteur ; seuls les éléments clairement attribuables au biomask doivent être reproduits.",
+        "Les scratches, rugosités et microgravures ne sont pas établissables exactement à cette définition.",
+        "Aucune qualification de couleur PHG originale, profil/dos, UV, proportions du porteur ou validation artistique humaine."
+      ]
+    },
+    {
+      "id": "viking-front",
+      "reference": {
+        "path": "/tmp/p0-sprites-20261113/web-references/native-reference-6.png",
+        "bytes": 56693,
+        "sha256": "65cdce5a5fd32cd921c4d28521696262665b4e41f39498c33b2affe0512f6768",
+        "pngDimensions": [
+          256,
+          257
+        ],
+        "actuallyViewed": true
+      },
+      "candidate": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/p0-sprites-20261113/masks/viking-front.png",
+        "bytes": 1537978,
+        "sha256": "1b4403348b632f1fadd9f4b0b737d87a32512835602ba7ca82578a2426dd22d9",
+        "pngDimensions": [
+          1254,
+          1254
+        ],
+        "actuallyViewed": true
+      },
+      "review": {
+        "macroAssessment": "Silhouette et asymétrie principales proches : pas de correction macro certaine.",
+        "retainedFeatures": [
+          "Deux longues cornes extérieures et deux petites pointes intérieures avec échancrures aux extrémités.",
+          "Plaque couvrant l’œil à gauche de l’image ; fente oculaire ouverte à droite de l’image.",
+          "Médaillon frontal circulaire avec nœud entrelacé et couronne de signes, large arcade et bande centrale décorée jusqu’au menton."
+        ],
+        "countsAndAsymmetry": {
+          "largeOuterHorns": 2,
+          "innerSpikes": 2,
+          "coveredEye": "viewer-left",
+          "openEye": "viewer-right",
+          "foreheadRuneCount": "Non qualifié ; le candidat ne doit pas être présenté comme reproduisant exactement l’inscription.",
+          "interlaceTopology": "Nœud entrelacé reconnaissable au niveau macro, pas de certification du trajet exact des brins."
+        },
+        "verifiedIssues": [],
+        "unresolvedDetails": [
+          "Topologie exacte des entrelacs, nombre et forme des signes/runes non certifiables depuis l’icône.",
+          "Petites formes rectangulaires sous le menton dans le port communautaire : attribution biomask versus accessoires du porteur indéterminée ; ne pas les réintroduire arbitrairement."
+        ],
+        "recommendedAction": {
+          "type": "retain-candidate-await-clearer-reference",
+          "reason": "Les traits distinctifs lisibles sont déjà représentés ; obtenir une source officielle plus nette avant de refaire les microgravures."
+        }
+      },
+      "limitations": [
+        "Icône frontale 256×256 issue du port communautaire PAYDAY2 ; aucune certification de pixels PHG originaux.",
+        "La référence comprend des dreadlocks et accessoires du porteur ; seuls les éléments clairement attribuables au biomask doivent être reproduits.",
+        "Les scratches, rugosités et microgravures ne sont pas établissables exactement à cette définition.",
+        "Aucune qualification de couleur PHG originale, profil/dos, UV, proportions du porteur ou validation artistique humaine."
+      ]
+    }
+  ],
+  "summary": {
+    "certainMacroReplacementNeeds": 0,
+    "targetedImprovementCandidates": [
+      "WRETCH-CENTRAL-LAMELLAE"
+    ],
+    "doNotRegenerateBlindly": [
+      "mr-black-front",
+      "viking-front"
+    ]
+  }
+}

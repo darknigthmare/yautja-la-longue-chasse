@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "reviewer": "mask_fidelity_review_a",
+  "scope": "Visual comparison of three existing front candidates against the pinned secondary community front icons. Read-only review; six images actually inspected with view_image. No generation, raster editing, source registration or quantitative silhouette segmentation performed.",
+  "sourceType": "Community PAYDAY2 port icon attributed to PHG, not a publisher-certified original PHG view",
+  "sourceRepository": "Matthelzor/pd2-predator-pack",
+  "sourceCommit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "pixelsEdited": false,
+  "imagesViewed": 6,
+  "globalLimits": [
+    "The 256-pixel references cannot establish exact micro-engravings, fine vent counts, original PHG palette/materials, UV fit or side/rear geometry.",
+    "Black background and dark material are not a clean shell alpha mask. This review does not infer an exact silhouette from RGB thresholds.",
+    "The long white dangling elements around Alpha and Vex have the same common arrangement in both icons. They are not established as intrinsic biomask geometry. Do not add them to a mask-only cutout merely to reproduce the whole wearer icon.",
+    "A proposed visual correction remains a candidate and requires comparison after generation; no existing asset should be overwritten or marked validated by this review."
+  ],
+  "reviews": [
+    {
+      "maskId": "samurai",
+      "files": {
+        "reference": {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-3.png",
+          "sha256": "13af8242e1acecc96cc428d09c05376fc138cdd2dfd1afbaef6a7a3123ca63eb",
+          "bytes": 38846,
+          "width": 256,
+          "height": 257,
+          "mode": "RGB",
+          "actuallyViewed": true
+        },
+        "candidate": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/p0-sprites-20261113/masks/samurai-front.png",
+          "sha256": "aeb8ab54027047c31316d20c7a3497265f7d3806351bc0abe46b94f23b91f232",
+          "bytes": 844670,
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "actuallyViewed": true
+        }
+      },
+      "macroFeaturesPreserved": [
+        "Front camera; asymmetric radiating spike crest",
+        "Paired high lateral horn shapes",
+        "Central dark bilobed forehead plate with a vertical seam",
+        "Layered cheek guards and two narrow eye apertures",
+        "Paired spiral reliefs around the lower central grille"
+      ],
+      "assessableDifferences": [],
+      "uncertainties": [
+        "Some thin crest tips and lower-grille lines differ in the enlarged reconstruction; the reference cannot establish an exact count or topology confidently.",
+        "Surface scratches, embossed edges and tiny perforations are reconstructed detail, not demonstrated exact PHG features."
+      ],
+      "recommendedAction": "Retain as an explicitly secondary-reference candidate. No high-confidence macro error justifies another speculative redraw from this icon alone; obtain a larger primary front/mask-only reference before changing fine topology.",
+      "generationRecommendedNow": false,
+      "priority": "reference-needed-for-exact-detail"
+    },
+    {
+      "maskId": "alpha",
+      "files": {
+        "reference": {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-7.png",
+          "sha256": "b1172277bea267b53f885f8167cd56cb4a3ccb628a8a45f34d36d8d01ef83042",
+          "bytes": 51921,
+          "width": 256,
+          "height": 257,
+          "mode": "RGB",
+          "actuallyViewed": true
+        },
+        "candidate": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/p0-sprites-20261113/masks/alpha-front.png",
+          "sha256": "7d50dab62213520dbe50f126d4af03405e4b30f3dfdc903cf5a11dcb9d1d57e9",
+          "bytes": 1591809,
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "actuallyViewed": true
+        }
+      },
+      "macroFeaturesPreserved": [
+        "Bone/skull-like shell and two tall teardrop eye cavities",
+        "Raised vertical central bridge/ridges",
+        "Open lower lateral bone loops",
+        "Pointed lower tooth/fang forms"
+      ],
+      "assessableDifferences": [],
+      "uncertainties": [
+        "The candidate turns thumbnail-scale bone surface into very explicit pitting and ridge detail; that detail is not independently verified.",
+        "The white hanging common fringe overlaps lower mask forms in the reference, so the exact intrinsic fang count/length cannot be separated reliably. Do not prescribe a new count from this image.",
+        "The lower cavity proportions merit a better source, but the current thumbnail does not support a precise corrective measurement."
+      ],
+      "recommendedAction": "Keep the mask-only scope and preserve the pinned reference. Do not add the shared wearer fringe. Obtain an unoccluded mask-only view before changing teeth, loop thickness or fine skull texture.",
+      "generationRecommendedNow": false,
+      "priority": "unoccluded-mask-reference-needed"
+    },
+    {
+      "maskId": "vex",
+      "files": {
+        "reference": {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-8.png",
+          "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137",
+          "bytes": 42406,
+          "width": 256,
+          "height": 257,
+          "mode": "RGB",
+          "actuallyViewed": true
+        },
+        "candidate": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/p0-sprites-20261113/masks/vex-front.png",
+          "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516",
+          "bytes": 1437392,
+          "width": 1254,
+          "height": 1254,
+          "mode": "RGBA",
+          "actuallyViewed": true
+        }
+      },
+      "macroFeaturesPreserved": [
+        "Broad dark domed forehead with a paired central channel",
+        "Bright lateral cheek/temple guards",
+        "Two small dark rectangular brow vents and two slanted eye slits",
+        "Central vertical ridge down the lower face"
+      ],
+      "assessableDifferences": [
+        {
+          "feature": "Terminal chin silhouette",
+          "observation": "The reference lower face converges into a narrow, visibly pointed V. The candidate terminates in a broader rounded U/flat arc, reducing that sharp lower central point.",
+          "confidence": "high for the broad contour, not for sub-pixel edge/topology",
+          "correctionScope": "Reshape only the terminal lower central chin to the narrower pointed V of the reference. Preserve the dome, cheek guards, channel, apertures and front camera. Do not add the common white wearer fringe."
+        }
+      ],
+      "uncertainties": [
+        "The bright reference eye region may include lighting or wearer effects. It does not prove that the isolated shell should receive emissive white eyes.",
+        "Extra fine seams, rivets and scratches are larger than what the 256-pixel source can establish."
+      ],
+      "recommendedAction": "A tightly scoped ImageGen correction of the lower chin contour is defensible against the observed front reference. Compare the new candidate to both the current shell and the reference before admission; retain existing file as history.",
+      "generationRecommendedNow": true,
+      "priority": "first-correctable-macro-contour-in-this-review"
+    }
+  ],
+  "summary": {
+    "highConfidenceCorrectionTargets": 1,
+    "masksWithNoJustifiedSpeculativeRedraw": 2,
+    "newCanonicalCertifications": 0
+  }
+}

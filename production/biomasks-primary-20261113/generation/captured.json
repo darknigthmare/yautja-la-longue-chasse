@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "fad5c4b76dc1d3fe159509903c3be0844b8607d8",
+  "tool": "image_gen.imagegen",
+  "status": "generated-candidate",
+  "reviewStatus": "root-and-independent-damaged-candidate-review-complete",
+  "entries": [
+    {
+      "id": "captured",
+      "prompt": "Create ONE faithful reference-bound transparent cutout of the CAPTURED Predator Hunting Grounds biomask, in the exact damaged/tarnished state visible in the FIRST official individual screenshot. FIRST IMAGE is authoritative for mask shape, damage, camera, material and side of missing eye protection. SECOND IMAGE is only a matching identity reference: Captured is the FAR RIGHT character, ignore the two other masks entirely and do not mix their shapes. Keep the first screenshot's near-front slight three-quarter downward head pitch, no new angle, no redesign. ONLY the separate empty rigid metal mask, no wearer, skin, flesh, alien iris, eyes of a wearer, dreadlocks, necklace, neck covering, shoulders, cannon, body armor or background. Preserve the broad slightly flattened dark steel-grey oval forehead cap, raised round forehead border with irregular damaged/chipped jagged upper rim, the small central brow bridge, the visible red three-dot targeting emitter at image LEFT temple, heavy angled brow, broad indented cheek panels and long rounded-rectangular raised central lower face plate. Important defining asymmetry: the image LEFT eye has a dark intact optical lens; the image RIGHT eye area (wearer's anatomical LEFT) is damaged/open, exposing flesh/eye in the screenshot. REMOVE that flesh and eye, leave the missing right-side protection area as an EMPTY TRANSPARENT OPENING bounded by the actual uneven remaining metal edges. Do not repair this damage into a symmetrical second lens, do not draw a yellow iris, eyelashes or human/alien face. Keep precisely the worn irregular source metal silhouette and panel boundaries, subtle pitting, scratches and grey patina. Do not add fangs, teeth, skull nostrils, extra horns, vents, ornaments, painted symbols, or speculative internal mechanics. No new intact version or new Mask Scars variant. Fine scratch and chip details beyond source resolution are interpreted, not new decorative motifs. Single mask only centered, entire visible damaged silhouette with large clear transparent margins at least60px on every side, about75percent canvas height, opaque rigid metal with true native surrounding alpha and true alpha in the damaged right eye opening. Soft neutral game-prop lighting, not the strong blue/red lights of the group render. No floor shadow, scenery, text, logo, UI, checkerboard, border or watermark.",
+      "nativeSourcePath": "/workspace/generated_images/exec-c7514f42-84d8-4894-abd9-ad16c284f608.png",
+      "sourceIds": [
+        "captured-official-closeup",
+        "captured-official-render"
+      ],
+      "label": "Captured · PHG · masque abîmé, vue officielle",
+      "view": "Near-front slight three-quarter pitch of the individually published Captured screenshot; same damaged state, no intact alternative or new camera.",
+      "limitations": [
+        "Identity follows the immediate publisher paragraph naming Captured and its tarnished mask, corroborated by the far-right figure in the matching bundle; no character name is printed in the image.",
+        "The anatomical left eye area (image right) is exposed/damaged in the screenshot. The cutout removes wearer flesh and iris and keeps the missing protection as transparent space.",
+        "Fine chip placement, scratch patterns and metal thickness are generated interpretation, not a certified exact damage map.",
+        "No backside, original UVs, full variant set, human art approval, canonical fidelity certification or runtime integration is established.",
+        "Independent comparison finds slightly amplified upper tab/rim chips and a more dominant dome; candidate geometry remains subject to artistic review."
+      ],
+      "assetPath": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+      "bytes": 1321450,
+      "nativeDimensions": [
+        1199,
+        1312
+      ],
+      "width": 1199,
+      "height": 1312,
+      "nativeMode": "RGBA",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "partialMask": false,
+      "damagedVariant": true,
+      "transparentBackgroundRequested": true,
+      "sourceRect": [
+        0,
+        0,
+        1199,
+        1312
+      ],
+      "pivot": [
+        599.5,
+        656.0
+      ],
+      "pivotStatus": "review proposal, not fitted to wearer rig",
+      "sourceReferences": [
+        {
+          "id": "captured-official-closeup",
+          "url": "https://live.staticflickr.com/65535/51736253154_04460b2d51_h.jpg",
+          "sha256": "2607972229abfcbef292cc35977bede436851c50f399c853bed0a55f6e9a94e8",
+          "width": 1600,
+          "height": 900
+        },
+        {
+          "id": "captured-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1105/24ae4846d9/phg-dlc-hunting-party_fixed_v1.png",
+          "sha256": "0168b660c79958693d20f57a51c5284ebb6fb79d2cce795ff471f29d1f39838b",
+          "width": 991,
+          "height": 1101
+        }
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          225,
+          96,
+          973,
+          1213
+        ],
+        "marginsPixels16": [
+          225,
+          96,
+          226,
+          99
+        ],
+        "transparentPixels": 967658,
+        "visiblePixels16": 593225
+      }
+    }
+  ]
+}

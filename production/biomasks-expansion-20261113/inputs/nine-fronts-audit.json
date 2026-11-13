@@ -1,0 +1,620 @@
+{
+  "schemaVersion": 1,
+  "scope": "Nine locally present secondary community visual references, seven additional named designs and two variants; no new canonical coverage certified",
+  "repositoryHead": "065f3cd9f810c0d704ba4fc29323fc8a33c4c152",
+  "sourceReport": {
+    "path": "/workspace/yautja-la-longue-chasse/production/biomasks-20261113/inputs/named-front-reference-report.json",
+    "sha256": "d11e295ab4dbfc7389bfc589759fcb4da9bff126a5e3f624cfafa52e947d511b"
+  },
+  "communitySource": {
+    "repository": "Matthelzor/pd2-predator-pack",
+    "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+    "readmeUrl": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+    "localReadmePath": "/tmp/all-masks-20261113/web-references/community-README.md",
+    "readmeSha256": "ae22700e1f4e08b055759fb8882b3f6c395d6632d35644f4d8b02130812c561a",
+    "sourceAttributionLines": [
+      25,
+      30,
+      31,
+      35,
+      52
+    ]
+  },
+  "sourceREADME": {
+    "path": "/tmp/all-masks-20261113/web-references/community-README.md",
+    "sha256": "ae22700e1f4e08b055759fb8882b3f6c395d6632d35644f4d8b02130812c561a",
+    "attributionLines": [
+      25,
+      30,
+      31,
+      35,
+      52
+    ],
+    "creditedAuthors": [
+      "Matthelzor (masks,outfits,gloves,icons)",
+      "KillerKrayola (project lead)",
+      "IllFonic (Predator:Hunting Grounds)",
+      "SEGA/Rebellion (Aliens vs Predator)",
+      "Cold Iron Studios/Focus (Aliens:Fireteam Elite)"
+    ],
+    "perMaskOriginCertified": false,
+    "licenseGrantInREADMEFound": false
+  },
+  "nonCoverageEvidence": {
+    "priorPacks": [
+      "p0-sprites-20261113",
+      "p0-fidelity-20261113",
+      "biomasks-20261113",
+      "biomasks-primary-20261113"
+    ],
+    "priorNativePngs": 69,
+    "dualCandidatePairs": 46,
+    "noNewCanonicalIdentitiesClaimed": true,
+    "allNineReferencePngHashesAbsentFromPriorOutputs": true,
+    "semantics": "Hash noncoverage proves these exact supplied reference images have not been delivered as prior A/B pairs. It does not prove nine distinct canonical PHG geometries; City97 and KawaiiPhoenix are explicitly variants.",
+    "dualManifestSha256": "b1fa346f649cd5a1edb5f33f5dedb4132d9074b9628a028e3c12f6de4ef8542d"
+  },
+  "entries": [
+    {
+      "id": "predator_11",
+      "name": "Modern Predator",
+      "classification": "additional-supplied-community-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_11.png",
+        "bytes": 34341,
+        "sha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_11.texture",
+        "bytes": 65664,
+        "sha256": "417b3a6d502edabb8490e72a2956600c85fdc57603e4e3856e7fe7b89bc1310e",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_11.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 55,
+        "key": "bm_msk_predator_11",
+        "value": "Modern Predator"
+      },
+      "visibleDesignAnchors": [
+        "Wide smooth rounded crown with concentric nested arched teardrop panels",
+        "Narrow bright slotted eyes and long squared nose/lower panel",
+        "Small round central upper and midline features; lateral metallic panels"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": null,
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_12",
+      "name": "Abyss",
+      "classification": "additional-supplied-community-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_12.png",
+        "bytes": 33677,
+        "sha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_12.texture",
+        "bytes": 65664,
+        "sha256": "3c4581d23457a24fff323960e6c06168b401ca25c3332f3ce34defc3a52b07b4",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_12.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 58,
+        "key": "bm_msk_predator_12",
+        "value": "Abyss"
+      },
+      "visibleDesignAnchors": [
+        "Fan-like ridged crown with central spine and angular wings",
+        "Deep black eye apertures, sharp cheek facets and long narrow pointed center",
+        "Small diamond/grouped marks on lower forehead"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": null,
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_16",
+      "name": "Cyclone",
+      "classification": "additional-supplied-community-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_16.png",
+        "bytes": 46738,
+        "sha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_16.texture",
+        "bytes": 65664,
+        "sha256": "d543186f027bcd0259e4ff919f635c6ec7dc3fcbef68791bf91969c70081a953",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_16.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 70,
+        "key": "bm_msk_predator_16",
+        "value": "Cyclone"
+      },
+      "visibleDesignAnchors": [
+        "Broad flat faceted crown with central raised strip and short top notch",
+        "Mirrored circular fasteners and curled engraved marks on crown sides",
+        "Broad continuous narrow eye band and split blocky lower mouth shield"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": null,
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_17",
+      "name": "Vapor",
+      "classification": "additional-supplied-community-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_17.png",
+        "bytes": 47282,
+        "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_17.texture",
+        "bytes": 65664,
+        "sha256": "ea600bbd34ed5f174ec32ab734e7d21a58ad173af54832e15668a91b61a523d0",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_17.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 73,
+        "key": "bm_msk_predator_17",
+        "value": "Vapor"
+      },
+      "visibleDesignAnchors": [
+        "Domed crown with dark raised central spine and four long arched upper panels",
+        "Narrow diagonal eyes, short ridged bridge and elongated split central mouth plate",
+        "No visible color information beyond grayscale"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": null,
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_21",
+      "name": "Fray",
+      "classification": "additional-supplied-community-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_21.png",
+        "bytes": 50901,
+        "sha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_21.texture",
+        "bytes": 65664,
+        "sha256": "6ca377f1a5602235f0be1e3cf5b565ad511f64b45d2f287f4b33e7a302ba0bbb",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_21.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 85,
+        "key": "bm_msk_predator_21",
+        "value": "Fray"
+      },
+      "visibleDesignAnchors": [
+        "Very dark broad oval dome with narrow central ridge",
+        "Paired rows of light small rectangular crown marks",
+        "Narrow angled eyes and projecting mechanical lower respirator/grille"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": null,
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_23",
+      "name": "Remnant",
+      "classification": "additional-supplied-community-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_23.png",
+        "bytes": 47246,
+        "sha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_23.texture",
+        "bytes": 65664,
+        "sha256": "599d93cbde8563cfb862b49671ad8f681ea4a306c4311f8e548f71e8b56052ec",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_23.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 94,
+        "key": "bm_msk_predator_23",
+        "value": "Remnant"
+      },
+      "visibleDesignAnchors": [
+        "Angular tall paired central towers with circular top recesses",
+        "Diagonal stratified ribbed crown and lower cross-engraved texture",
+        "Dark eyes and irregular lower rim; exact fine ribs remain limited by source resolution"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": null,
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_detox",
+      "name": "Detox",
+      "classification": "additional-supplied-community-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_detox.png",
+        "bytes": 25760,
+        "sha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_detox.texture",
+        "bytes": 65664,
+        "sha256": "8956cc628a2d50121b2bfe26366b7cf583883043a0ff2520a120a2d8b14ae5d3",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_detox.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 10,
+        "key": "bm_msk_predator_detox",
+        "value": "Detox"
+      },
+      "visibleDesignAnchors": [
+        "Short curved horseshoe crown with deep center U notch",
+        "Two large round dark goggle-like eye openings",
+        "Small round center nose and external clustered breathing tubes/round filters"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": null,
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_14",
+      "name": "City Hunter of 97",
+      "classification": "additional-community-variant-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_14.png",
+        "bytes": 42498,
+        "sha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_14.texture",
+        "bytes": 65664,
+        "sha256": "37bc61d95c9c6c42caeb70e799f25ed87736b7cc1e96624444322b70ffbf767b",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_14.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 64,
+        "key": "bm_msk_predator_14",
+        "value": "City Hunter of 97"
+      },
+      "visibleDesignAnchors": [
+        "Worn pitted rounded crown and broad near-horizontal brow",
+        "Dark narrow eyes and long smooth rectangular central lower shield",
+        "Variant source cannot establish equivalence to every City Hunter film or PHG mesh"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": "mk-02-city",
+      "originalScopeExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    },
+    {
+      "id": "predator_kawaii",
+      "name": "Kawaii Phoenix",
+      "classification": "additional-community-variant-reference",
+      "referencePng": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_kawaii.png",
+        "bytes": 39944,
+        "sha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea",
+        "format": "PNG",
+        "mode": "RGB",
+        "dimensions": [
+          256,
+          257
+        ],
+        "hasAlpha": false
+      },
+      "nativeTexture": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_kawaii.texture",
+        "bytes": 65664,
+        "sha256": "39cbac6b5f3aeb1c0c0e048691ee4a370d952782230cc3871f874a7a775068a4",
+        "format": "DDS",
+        "mode": "RGBA",
+        "dimensions": [
+          256,
+          256
+        ],
+        "hasAlpha": true
+      },
+      "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_kawaii.texture",
+      "localizationEvidence": {
+        "path": "/tmp/all-masks-20261113/web-references/english.json",
+        "line": 16,
+        "key": "bm_msk_predator_kawaii",
+        "value": "Kawaii Phoenix"
+      },
+      "visibleDesignAnchors": [
+        "Wide outward crown side points around nested curved central ribs",
+        "Two large black almond eye apertures and long pointed central lower plate",
+        "Thin pale looping line motifs; community nickname does not establish a canonical Phoenix colorway"
+      ],
+      "visibleReviewPerformed": true,
+      "sourceIncludesExternalDreadlocks": true,
+      "maskDetachedInReference": false,
+      "versionARecommendation": "Byte-identical RGB PNG reference screenshot on black; do not claim native DDS pixels, alpha cutout or franchise original.",
+      "versionBRecommendation": "ImageGen transparent mask-only candidate retaining current near-front view, visible silhouette and grayscale. Exclude external white/grey dreadlocks, wearer, background and floor. Do not invent hidden rear/side geometry.",
+      "newPairBytesNotPreviouslyDelivered": true,
+      "nativeTextureBytesNotPreviouslyDelivered": true,
+      "basePairAlreadyPresent": "phg-cosmetic-phoenix",
+      "originalScopeExclusion": "NamedcommunityKawaiiPhoenixmodification not bound to the requested Bible mask.",
+      "currentScopeChange": "User explicitly expanded to all still-unmade PHG/comics/NECA/game masks; prior no-bible-scope exclusion is not canonical proof or a production approval gate.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ]
+    }
+  ],
+  "repoFilesModified": false,
+  "imagePixelsEdited": false,
+  "networkRequestsMade": 0
+}

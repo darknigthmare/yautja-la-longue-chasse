@@ -1,0 +1,718 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "batch": 4,
+  "status": "generated-candidates-complete",
+  "scope": "PHG-style restaging of nine existing grayscale secondary-reference project candidates; no canonical fidelity certificate.",
+  "entries": [
+    {
+      "id": "phg-cosmetic-vex",
+      "label": "Vex",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-vex.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-876d4650-e93d-4156-8bfc-9614fe5f508a.png",
+      "sha256": "de77d6fa149fecfdacdab9d37461e178049c5dd6760fabb85e2592650a10582b",
+      "bytes": 1357598,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          181,
+          116,
+          1074,
+          1158
+        ],
+        "marginsPixels16": [
+          181,
+          116,
+          180,
+          96
+        ],
+        "transparentPixels": 917208,
+        "visiblePixels16": 646691,
+        "opaquePixels240": 642256
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/p0-fidelity-20261113/masks/vex-front-v2.png",
+      "sourceASha256": "f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE A: public/game/p0-fidelity-20261113/masks/vex-front-v2.png SHA256 f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb. Existing project grayscale secondary-reference candidate. The specific visible drawing is authoritative, not a franchise name or new mask memory. Vex: preserve the broad smoothly rounded DARK forehead cap with its existing long thin curved vertical seams and two tiny top-center hanging metal tabs, the two small dark rectangular eyebrow slots, two sharply slanted dark eye apertures, flat silver side/cheek plates and the LONG NARROW POINTED CHIN with a thin raised vertical center ridge. Do not widen the bottom into a squared jaw, do not shorten the chin, do not add horns, mouth vents, circular laser module, extra rivets or colored lights. Keep exact near-front source camera and source relative grey values.\nKeep the source view and grayscale palette, no unverified original PHG albedo. Broad neutral upper-left key and soft fill, restrained fine grain with clear plane transitions, not polished chrome. Object75–80percent of largest canvas axis, at least60px margins requested, only one complete visible detached mask. Fine topology, tiny ornament counts and internal optics remain unverified.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Broad dark cap, thin curved seams, small eyebrow slots and long narrow pointed chin retained without extra optic module.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "B is a controlled common-light/material restaging of an existing candidate. No original PHG colorway, source UV or exact microscopic detail is established."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-876d4650-e93d-4156-8bfc-9614fe5f508a.png",
+          "sha256": "de77d6fa149fecfdacdab9d37461e178049c5dd6760fabb85e2592650a10582b",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE A: public/game/p0-fidelity-20261113/masks/vex-front-v2.png SHA256 f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb. Existing project grayscale secondary-reference candidate. The specific visible drawing is authoritative, not a franchise name or new mask memory. Vex: preserve the broad smoothly rounded DARK forehead cap with its existing long thin curved vertical seams and two tiny top-center hanging metal tabs, the two small dark rectangular eyebrow slots, two sharply slanted dark eye apertures, flat silver side/cheek plates and the LONG NARROW POINTED CHIN with a thin raised vertical center ridge. Do not widen the bottom into a squared jaw, do not shorten the chin, do not add horns, mouth vents, circular laser module, extra rivets or colored lights. Keep exact near-front source camera and source relative grey values.\nKeep the source view and grayscale palette, no unverified original PHG albedo. Broad neutral upper-left key and soft fill, restrained fine grain with clear plane transitions, not polished chrome. Object75–80percent of largest canvas axis, at least60px margins requested, only one complete visible detached mask. Fine topology, tiny ornament counts and internal optics remain unverified.",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-ravager",
+      "label": "Ravager",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-ravager.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-7c7957a3-5228-456e-9165-483eea105712.png",
+      "sha256": "2f9af33929bf60b383cc3af8cfe41842928d672bee1e9258952952c72aaf5c42",
+      "bytes": 1421637,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          238,
+          62,
+          1017,
+          1150
+        ],
+        "marginsPixels16": [
+          238,
+          62,
+          237,
+          104
+        ],
+        "transparentPixels": 906253,
+        "visiblePixels16": 654858,
+        "opaquePixels240": 649595
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/ravager-reference-view-v2.png",
+      "sourceASha256": "b5f223d0ae98bd23847359520edcc1279d5cf390bc53817d134f064d1e534518",
+      "prompt": "Make ONE strictly localized correction to the FIRST image (the already generated grayscale PHG-style Ravager mask). SECOND image is the unchanged project source A and is the authority for this correction. At the VERY BOTTOM CENTER CHIN EDGE, just below the long rounded rectangular front plate, the first image has added a small HORIZONTAL BLACK CAPSULE-SHAPED VENT. That vent is NOT present in source A. REMOVE ONLY that unwanted dark slot and replace its opening with the continuous solid grey metal surface matching source A's lower chin. Do not introduce any new hole or grille. Preserve all other design and rendering of image1: same near-front camera, full crown contour, source-grey palette, diffuse/roughness hierarchy, dark eyes, left small oval optic, central mechanical channel, cheek circles and geometric relief. Especially preserve the THREE asymmetric dark damaged/notch shapes on the IMAGE LEFT forehead lobe; the IMAGE RIGHT lobe remains smooth. Keep the existing source panel layout, silhouette and proportions, do not symmetrize or redesign any part, no new glyphs/vents/screws/optics. Keep the entire mask and native transparent background, generous frame margins, no body, flesh, hair, weapon, scene, floor shadow, text, label or UI. This is a correction of an invented feature, not a new mask variant.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Dark damaged notches remain on image-left forehead lobe only; lower chin is solid after removing the invented vent from the first attempt.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Secondary community port icon at256x256; source is not publisher-certified original PHG pixels.",
+        "Visible source macro geometry guides this candidate. Original PHG colors/material UVs, side/back views, exact microdetail counts and publisher fidelity remain unverified.",
+        "Generic long pale wearer predlocks/strands in the shared icon render are omitted; they are not established as biomask teeth or hanging metal.",
+        "One static source-limited near-front study; no rig fit, morphology validation, complete body, gameplay integration or animation is declared.",
+        "Fine reconstructed grilles, surface highlights and panel subdivisions require human comparison; pixel-level 1:1 fidelity is not established.",
+        "Localized ImageGen correction restores a source-visible asymmetry; it does not establish exact notch microgeometry, original PHG colors/UVs or pixel-identical preservation outside the intended edit region.",
+        "Une revue épinglée concerne un candidat antérieur de cette identité ; sa correction ultérieure est consignée dans le reçu de génération. Elle ne valide pas automatiquement le PNG courant.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "B is a controlled common-light/material restaging of an existing candidate. No original PHG colorway, source UV or exact microscopic detail is established.",
+        "A first attempted B added a lower-chin vent; it was not published. The selected PNG is an ImageGen correction, whose fine highlights and texture may have been recomputed outside the localized correction."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-c0b72c52-860d-4909-95ab-216d0233cf30.png",
+          "sha256": "5f1efeb759a555193401e2afbb28bb3156d6256793efced359a6f88ce320d5cf",
+          "bytes": 1547199,
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE A: public/game/biomasks-20261113/masks/ravager-reference-view-v2.png SHA256 b5f223d0ae98bd23847359520edcc1279d5cf390bc53817d134f064d1e534518. Existing project grayscale secondary-reference candidate. The specific visible drawing is authoritative, not a franchise name or new mask memory. Ravager: preserve its defining ASYMMETRY: the oval forehead lobe on IMAGE LEFT has the source-visible small dark diamond/notch and the deeper dark triangular edge notches lower down; IMAGE RIGHT lobe is smooth. DO NOT mirror the notches or repair/symmetrize the left lobe. Keep the two large inward-pointing silver forehead wedges separated by the dark central vertical channel/mechanical strip, the dark slanted eyes, existing pale small oval optic on image-left temple, angular cheek structure, long rectangular lower-center panel with source geometric hexagonal/Y-like relief, and the two circular three-branch lower cheek discs. These existing geometric motifs are retained, no additional glyphs or mechanisms. No colored glow.\nKeep the source view and grayscale palette, no unverified original PHG albedo. Broad neutral upper-left key and soft fill, restrained fine grain with clear plane transitions, not polished chrome. Object75–80percent of largest canvas axis, at least60px margins requested, only one complete visible detached mask. Fine topology, tiny ornament counts and internal optics remain unverified.",
+          "selected": false,
+          "reason": "First B invented a small horizontal dark vent at the very bottom center chin, absent from A; retained privately as a nonselected attempt."
+        },
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-7c7957a3-5228-456e-9165-483eea105712.png",
+          "sha256": "2f9af33929bf60b383cc3af8cfe41842928d672bee1e9258952952c72aaf5c42",
+          "prompt": "Make ONE strictly localized correction to the FIRST image (the already generated grayscale PHG-style Ravager mask). SECOND image is the unchanged project source A and is the authority for this correction. At the VERY BOTTOM CENTER CHIN EDGE, just below the long rounded rectangular front plate, the first image has added a small HORIZONTAL BLACK CAPSULE-SHAPED VENT. That vent is NOT present in source A. REMOVE ONLY that unwanted dark slot and replace its opening with the continuous solid grey metal surface matching source A's lower chin. Do not introduce any new hole or grille. Preserve all other design and rendering of image1: same near-front camera, full crown contour, source-grey palette, diffuse/roughness hierarchy, dark eyes, left small oval optic, central mechanical channel, cheek circles and geometric relief. Especially preserve the THREE asymmetric dark damaged/notch shapes on the IMAGE LEFT forehead lobe; the IMAGE RIGHT lobe remains smooth. Keep the existing source panel layout, silhouette and proportions, do not symmetrize or redesign any part, no new glyphs/vents/screws/optics. Keep the entire mask and native transparent background, generous frame margins, no body, flesh, hair, weapon, scene, floor shadow, text, label or UI. This is a correction of an invented feature, not a new mask variant.",
+          "selected": true,
+          "reason": "Localized ImageGen correction removes the invented bottom chin slot while preserving image-left asymmetric notches."
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-prophet",
+      "label": "Prophet",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-prophet.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-cabb61c6-c345-4f21-b944-3e2e22817991.png",
+      "sha256": "c1ac446644a772dd9177bcad0f0cebf1c3e8c000d7ca1fa5e7920a3662d3d283",
+      "bytes": 1492440,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          251,
+          88,
+          1002,
+          1166
+        ],
+        "marginsPixels16": [
+          251,
+          88,
+          252,
+          88
+        ],
+        "transparentPixels": 957829,
+        "visiblePixels16": 607750,
+        "opaquePixels240": 603240
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/prophet-reference-view.png",
+      "sourceASha256": "42011ddd850c0a4cc91c09c840f946aa9105cfd99d17e316b7bdaa8c71b115a3",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE A: public/game/biomasks-20261113/masks/prophet-reference-view.png SHA256 42011ddd850c0a4cc91c09c840f946aa9105cfd99d17e316b7bdaa8c71b115a3. Existing project grayscale secondary-reference candidate. The specific visible drawing is authoritative, not a franchise name or new mask memory. Prophet: keep the layered rising curved crown plates and the tall central teardrop forehead panel, small existing polygon at the top behind it, very thin straight center ridge from crown down to the oval pointed louvered mouth grille, and the long narrow lower center strip. Source eye regions are intact opaque dark-grey optics, not empty missing eye holes: preserve them as shown, no iris. Emitter/port asymmetry is important: THREE dark circular ports at IMAGE LEFT temple and ONE dark circular port at IMAGE RIGHT temple. Keep curved/angular cheek panels, no extra spikes, optical modules or new runes.\nKeep the source view and grayscale palette, no unverified original PHG albedo. Broad neutral upper-left key and soft fill, restrained fine grain with clear plane transitions, not polished chrome. Object75–80percent of largest canvas axis, at least60px margins requested, only one complete visible detached mask. Fine topology, tiny ornament counts and internal optics remain unverified.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Three image-left ports and one image-right port, intact dark-grey optical lenses, nested crown and narrow central louvered panel retained.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed.",
+        "Revue visuelle d’agent, sans validation humaine : Microgrille density, panel edge widths and exact original PHG material/eye geometry remain unverified.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "B is a controlled common-light/material restaging of an existing candidate. No original PHG colorway, source UV or exact microscopic detail is established."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-cabb61c6-c345-4f21-b944-3e2e22817991.png",
+          "sha256": "c1ac446644a772dd9177bcad0f0cebf1c3e8c000d7ca1fa5e7920a3662d3d283",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE A: public/game/biomasks-20261113/masks/prophet-reference-view.png SHA256 42011ddd850c0a4cc91c09c840f946aa9105cfd99d17e316b7bdaa8c71b115a3. Existing project grayscale secondary-reference candidate. The specific visible drawing is authoritative, not a franchise name or new mask memory. Prophet: keep the layered rising curved crown plates and the tall central teardrop forehead panel, small existing polygon at the top behind it, very thin straight center ridge from crown down to the oval pointed louvered mouth grille, and the long narrow lower center strip. Source eye regions are intact opaque dark-grey optics, not empty missing eye holes: preserve them as shown, no iris. Emitter/port asymmetry is important: THREE dark circular ports at IMAGE LEFT temple and ONE dark circular port at IMAGE RIGHT temple. Keep curved/angular cheek panels, no extra spikes, optical modules or new runes.\nKeep the source view and grayscale palette, no unverified original PHG albedo. Broad neutral upper-left key and soft fill, restrained fine grain with clear plane transitions, not polished chrome. Object75–80percent of largest canvas axis, at least60px margins requested, only one complete visible detached mask. Fine topology, tiny ornament counts and internal optics remain unverified.",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-plague",
+      "label": "Plague",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-plague.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-702faf9e-d662-431e-b989-5ef746dca48a.png",
+      "sha256": "a32bb00bf480633d0125923c33c25b08085fc55d47e6f136f331c9e970961c70",
+      "bytes": 1477419,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          225,
+          94,
+          1023,
+          1163
+        ],
+        "marginsPixels16": [
+          225,
+          94,
+          231,
+          91
+        ],
+        "transparentPixels": 973353,
+        "visiblePixels16": 571455,
+        "opaquePixels240": 555337
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/plague-reference-view.png",
+      "sourceASha256": "aa94cfa17660cb0a538da184936b43c6cfdbb6e9cd4dd89dd26d6dfeb4ffa96f",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/plague-reference-view.png SHA256 aa94cfa17660cb0a538da184936b43c6cfdbb6e9cd4dd89dd26d6dfeb4ffa96f. Existing project grayscale secondary-reference candidate, not certified PHG original. Same source near-front camera; grayscale value regions must stay grayscale. Plague: the crown MUST BE CLOSED, a smooth continuous oval outer ring without upward horn points. Keep the asymmetrical open branching lattice inside the oval, the central vertical spine and all visible NEGATIVE-SPACE cutouts transparent, two slanted empty eye openings, angular cut-out lower cheek lattice, long unperforated central nose strip, and the three small rectangular lower-center vents. No new horns, two spikes, fangs, eyes, extra lattice branches, grille fill or repaired openings.\nAsk at least60px clear native transparent margins, entire silhouette, one object only. Game-prop quality comes from coherent neutral light and restrained grain; do not reinterpret the design from its name. Exact microtopology remains unverified.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Closed oval crown without horns and asymmetrical open crown/cheek lattice retained; no invented upper points.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed.",
+        "Revue visuelle d’agent, sans validation humaine : The dark spaces between crown ribs have been interpreted as transparent apertures in the output. Whether these are physical openings is NOT established by the secondary HUD icon. This is an interpretation to keep open, not a proven geometry fact.",
+        "Revue visuelle d’agent, sans validation humaine : Native DDS stores white RGB with varying alpha: the alpha channel encodes HUD brightness/shading, so low DDS alpha does not by itself prove a physical hole.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "A was already a detailed project rendering. B is a controlled common-light/material restaging, not a new certified original PHG reconstruction."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-702faf9e-d662-431e-b989-5ef746dca48a.png",
+          "sha256": "a32bb00bf480633d0125923c33c25b08085fc55d47e6f136f331c9e970961c70",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/plague-reference-view.png SHA256 aa94cfa17660cb0a538da184936b43c6cfdbb6e9cd4dd89dd26d6dfeb4ffa96f. Existing project grayscale secondary-reference candidate, not certified PHG original. Same source near-front camera; grayscale value regions must stay grayscale. Plague: the crown MUST BE CLOSED, a smooth continuous oval outer ring without upward horn points. Keep the asymmetrical open branching lattice inside the oval, the central vertical spine and all visible NEGATIVE-SPACE cutouts transparent, two slanted empty eye openings, angular cut-out lower cheek lattice, long unperforated central nose strip, and the three small rectangular lower-center vents. No new horns, two spikes, fangs, eyes, extra lattice branches, grille fill or repaired openings.\nAsk at least60px clear native transparent margins, entire silhouette, one object only. Game-prop quality comes from coherent neutral light and restrained grain; do not reinterpret the design from its name. Exact microtopology remains unverified.",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-phoenix",
+      "label": "Phoenix",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-phoenix.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-39f30e9c-6793-499b-ab3b-674216773cb0.png",
+      "sha256": "72bb9af2d8d6d80c66a1f0991498175b669e8e50f5e3e16e95712f0bf5361d30",
+      "bytes": 1379343,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          216,
+          145,
+          1038,
+          1109
+        ],
+        "marginsPixels16": [
+          216,
+          145,
+          216,
+          145
+        ],
+        "transparentPixels": 1040722,
+        "visiblePixels16": 519433,
+        "opaquePixels240": 512607
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/phoenix-reference-view.png",
+      "sourceASha256": "b7b7164691740e33398152f65e0f9c62c26dfef8dbc6d052243d0c20894fd804",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/phoenix-reference-view.png SHA256 b7b7164691740e33398152f65e0f9c62c26dfef8dbc6d052243d0c20894fd804. Existing project grayscale secondary-reference candidate, not certified PHG original. Same source near-front camera; grayscale value regions must stay grayscale. Phoenix: preserve the source's layered feather/flame-like crown silhouette and all existing curved pointed plate ends exactly; do not add wings or feather points. Keep the broad oval upper inset, large smooth central teardrop/shield plate, two elongated EMPTY eye openings and the small horizontal oval opening between them. The source has no separate round laser emitter: do not add one. Preserve tapered silver lower cheek panels and the broad flat lower-center strip. Remain GREY, no fire/orange or bird face despite the name.\nAsk at least60px clear native transparent margins, entire silhouette, one object only. Game-prop quality comes from coherent neutral light and restrained grain; do not reinterpret the design from its name. Exact microtopology remains unverified.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Existing nested pointed crown plates, two elongated empty eye openings, small center oval opening and tapered lower panels retained.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed.",
+        "Revue visuelle d’agent, sans validation humaine : Fine crown-tip/ridge spacing and aperture material cannot be certified at this source resolution.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "A was already a detailed project rendering. B is a controlled common-light/material restaging, not a new certified original PHG reconstruction."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-39f30e9c-6793-499b-ab3b-674216773cb0.png",
+          "sha256": "72bb9af2d8d6d80c66a1f0991498175b669e8e50f5e3e16e95712f0bf5361d30",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/phoenix-reference-view.png SHA256 b7b7164691740e33398152f65e0f9c62c26dfef8dbc6d052243d0c20894fd804. Existing project grayscale secondary-reference candidate, not certified PHG original. Same source near-front camera; grayscale value regions must stay grayscale. Phoenix: preserve the source's layered feather/flame-like crown silhouette and all existing curved pointed plate ends exactly; do not add wings or feather points. Keep the broad oval upper inset, large smooth central teardrop/shield plate, two elongated EMPTY eye openings and the small horizontal oval opening between them. The source has no separate round laser emitter: do not add one. Preserve tapered silver lower cheek panels and the broad flat lower-center strip. Remain GREY, no fire/orange or bird face despite the name.\nAsk at least60px clear native transparent margins, entire silhouette, one object only. Game-prop quality comes from coherent neutral light and restrained grain; do not reinterpret the design from its name. Exact microtopology remains unverified.",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-phalanx",
+      "label": "Phalanx",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-phalanx.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-b711d328-0faa-4593-88c5-f4e09a73b5dc.png",
+      "sha256": "a5e3213b1722de0ef6e620588c26bf7574ca530747aa68ea33cdeabf9bd88b4f",
+      "bytes": 1313831,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          235,
+          136,
+          1018,
+          1117
+        ],
+        "marginsPixels16": [
+          235,
+          136,
+          236,
+          137
+        ],
+        "transparentPixels": 1026369,
+        "visiblePixels16": 537806,
+        "opaquePixels240": 533430
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/phalanx-reference-view.png",
+      "sourceASha256": "e2faa039d11f9438195d56278341f992f8df7d626a53721cba6efffed0643ae3",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/phalanx-reference-view.png SHA256 e2faa039d11f9438195d56278341f992f8df7d626a53721cba6efffed0643ae3. Existing project grayscale secondary-reference candidate, not certified PHG original. Same source near-front camera; grayscale value regions must stay grayscale. Phalanx: keep the broad rounded dark-grey forehead cap, its two shallow oval upper pads, central V and two curved leaf-like panel grooves, dark optical eye regions, the central top-wide/narrow-waist nose bridge and the long tapered lower center plate with its small horizontal bridge slot. Preserve the wide layered silver cheek ribs and all source side panels. No horns, pointed crown, emitter module, new screws or grille not in A. Keep the exact source near-front view and upper/lower relative values.\nAsk at least60px clear native transparent margins, entire silhouette, one object only. Game-prop quality comes from coherent neutral light and restrained grain; do not reinterpret the design from its name. Exact microtopology remains unverified.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Rounded crown with two shallow top pads, central V/leaf panel grooves, dark optical regions and layered cheek ribs retained.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Named256px community port HUD reference, not publisher-certified original PHG pixels.",
+        "Only the visible near-frontal source icon view is represented; no profile/back view or hidden geometry is established.",
+        "Grayscale reference appearance only: original game colors, material UVs and six-morphology rig fit are not verified.",
+        "High-resolution surface detail and fine aperture/emblem/rivet counts remain an interpretation of limited-resolution evidence; no pixel-level1:1 certification.",
+        "Generic pale hanging wearer strands omitted; faint edge/hair boundaries need human review on dark/checkerboard backgrounds.",
+        "Read-only reference screenshot measures256x257 for256x256 DDS; its exact input bytes and dimensions are recorded, without CPU normalization.",
+        "Centered preview pivot only; no rig fitting, physical scale, runtime admission or animation.",
+        "Revue visuelle d’agent, sans validation humaine : The layered upper crest, broad divided forehead panel, central vertical lower strip and two sweeping cheek bands are preserved.",
+        "Revue visuelle d’agent, sans validation humaine : The image-native near-front view and lower pointed outline remain coherent with the icon; no new fangs/dreads are present.",
+        "Revue visuelle d’agent, sans validation humaine : Exact groove depth, slot count on the small central strip and small surface scars remain unqualified.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "A was already a detailed project rendering. B is a controlled common-light/material restaging, not a new certified original PHG reconstruction."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-b711d328-0faa-4593-88c5-f4e09a73b5dc.png",
+          "sha256": "a5e3213b1722de0ef6e620588c26bf7574ca530747aa68ea33cdeabf9bd88b4f",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/phalanx-reference-view.png SHA256 e2faa039d11f9438195d56278341f992f8df7d626a53721cba6efffed0643ae3. Existing project grayscale secondary-reference candidate, not certified PHG original. Same source near-front camera; grayscale value regions must stay grayscale. Phalanx: keep the broad rounded dark-grey forehead cap, its two shallow oval upper pads, central V and two curved leaf-like panel grooves, dark optical eye regions, the central top-wide/narrow-waist nose bridge and the long tapered lower center plate with its small horizontal bridge slot. Preserve the wide layered silver cheek ribs and all source side panels. No horns, pointed crown, emitter module, new screws or grille not in A. Keep the exact source near-front view and upper/lower relative values.\nAsk at least60px clear native transparent margins, entire silhouette, one object only. Game-prop quality comes from coherent neutral light and restrained grain; do not reinterpret the design from its name. Exact microtopology remains unverified.",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-inferno",
+      "label": "Inferno",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-inferno.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-de8a70df-e92f-40b0-8e46-eeeefd7751aa.png",
+      "sha256": "5e2b8ed759a86e39b9b6e8e2ad73d7f12c743f7e5547d96cac06755395d10b73",
+      "bytes": 1357279,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          276,
+          129,
+          978,
+          1129
+        ],
+        "marginsPixels16": [
+          276,
+          129,
+          276,
+          125
+        ],
+        "transparentPixels": 1029512,
+        "visiblePixels16": 532843,
+        "opaquePixels240": 527188
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/inferno-reference-view.png",
+      "sourceASha256": "083f948f390e33f8c1471af257a643846bdfaec8e909831aa81afa8942f4f432",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nIDENTITY-LOCKED SOURCE: public/game/biomasks-20261113/masks/inferno-reference-view.png SHA256 083f948f390e33f8c1471af257a643846bdfaec8e909831aa81afa8942f4f432.\nInferno existing project mask: near-front same view, broad overlapping shield-like crown plates with FOUR actual pointed upper lobes (two inner high points and two outer points), central stacked plate/ridge layout and curved layered cheek ribs. Preserve the three dark unlit holes in the small round emitter disc at image LEFT temple, two narrow empty dark eye openings, and the stacked rectangular central nose pieces. Keep exactly the grey/silver value regions, no orange/fire or red glow from the name Inferno. Do not add extra horns or repair gaps.\nThis A is an existing generated secondary-reference project candidate; B preserves that drawing, does not certify the original PHG design. Grey stays grey. Ask at least60px clear transparent margin around all points; only one mask. Exact fine scratch/engraving topology remains unverified.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Four existing upper points, overlapping shield plates, image-left dark three-port disc, narrow eye openings and stacked center pieces retained.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed.",
+        "Revue visuelle d’agent, sans validation humaine : Do not certify exact small ridge/side-tip count or vent topology from the256px icon.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "A was already a detailed project rendering. The B difference is deliberately controlled lighting/material restaging, not a redesign or certified recovery of original game geometry."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-de8a70df-e92f-40b0-8e46-eeeefd7751aa.png",
+          "sha256": "5e2b8ed759a86e39b9b6e8e2ad73d7f12c743f7e5547d96cac06755395d10b73",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nIDENTITY-LOCKED SOURCE: public/game/biomasks-20261113/masks/inferno-reference-view.png SHA256 083f948f390e33f8c1471af257a643846bdfaec8e909831aa81afa8942f4f432.\nInferno existing project mask: near-front same view, broad overlapping shield-like crown plates with FOUR actual pointed upper lobes (two inner high points and two outer points), central stacked plate/ridge layout and curved layered cheek ribs. Preserve the three dark unlit holes in the small round emitter disc at image LEFT temple, two narrow empty dark eye openings, and the stacked rectangular central nose pieces. Keep exactly the grey/silver value regions, no orange/fire or red glow from the name Inferno. Do not add extra horns or repair gaps.\nThis A is an existing generated secondary-reference project candidate; B preserves that drawing, does not certify the original PHG design. Grey stays grey. Ask at least60px clear transparent margin around all points; only one mask. Exact fine scratch/engraving topology remains unverified.",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-journeyman",
+      "label": "Journeyman",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-journeyman.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-7d3af8ec-009d-4d08-8427-decf01850a93.png",
+      "sha256": "9eb8a58f1ac38eb59cd47f058b39c86070628320565e9bbafac612ead41fccbf",
+      "bytes": 1719834,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          175,
+          91,
+          1076,
+          1158
+        ],
+        "marginsPixels16": [
+          175,
+          91,
+          178,
+          96
+        ],
+        "transparentPixels": 848918,
+        "visiblePixels16": 714202,
+        "opaquePixels240": 709279
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/journeyman-reference-view.png",
+      "sourceASha256": "3810731b8786b47466dff9a6c3b736d3a4bd052f0a6f6dcab12cfc6c4e7c120c",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/journeyman-reference-view.png SHA256 3810731b8786b47466dff9a6c3b736d3a4bd052f0a6f6dcab12cfc6c4e7c120c. Existing project grayscale secondary-reference candidate, not certified original PHG pixels. Keep the SAME grayscale palette and source front camera; no original colorway is known. Journeyman: preserve the large dark central flat forehead field enclosed in the angular double-edged U-shaped silver surround, the squared upper opening, two existing small inset slash-and-round-stud shapes near upper inner corners, diagonal ribbed strips on the surrounding side bars, broad projecting side cheek panels, triangular dark eye recesses, and the central rectangular gridded breathing panel over the long flat lower strip. Preserve the small image-left circular three-hole emitter and source-visible dark circular ports on image-right cheek. No horns or new visor shape, no extra readable glyphs.\nAsk at least60px clear margin on all sides, one object only. Fine microdetail remains interpreted; no new decorative mechanisms.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Dark U-framed forehead field, existing inset upper slash/stud shapes, side ribs and rectangular lower grille retained.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Secondary community port icon at256x256; source is not publisher-certified original PHG pixels.",
+        "Visible source macro geometry guides this candidate. Original PHG colors/material UVs, side/back views, exact microdetail counts and publisher fidelity remain unverified.",
+        "Generic long pale wearer predlocks/strands in the shared icon render are omitted; they are not established as biomask teeth or hanging metal.",
+        "One static source-limited near-front study; no rig fit, morphology validation, complete body, gameplay integration or animation is declared.",
+        "Fine reconstructed grilles, surface highlights and panel subdivisions require human comparison; pixel-level 1:1 fidelity is not established.",
+        "Revue visuelle d’agent, sans validation humaine : 256x256 DDS identity reference rendered in a256x257 browser screenshot; source texture is a secondary community port icon.",
+        "Revue visuelle d’agent, sans validation humaine : No claim of original PHG color, UVs, profile/back views, hidden geometry or microdetail counts.",
+        "Revue visuelle d’agent, sans validation humaine : Generic pale hanging wearer hair strands are omitted in these detached mask candidates.",
+        "Revue visuelle d’agent, sans validation humaine : Positive image margins do not certify the underlying canonical identity or hidden surfaces.",
+        "Revue visuelle d’agent, sans validation humaine : Tall U-shaped forehead panel with broad stepped side borders, open top notch, asymmetric lateral modules, narrow eye apertures and lower central grille follow the reference. Fine port/grille counts cannot be certified at this resolution.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "A was already a detailed project rendering. The B difference is deliberately controlled lighting/material restaging, not a redesign or certified recovery of original game geometry."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-7d3af8ec-009d-4d08-8427-decf01850a93.png",
+          "sha256": "9eb8a58f1ac38eb59cd47f058b39c86070628320565e9bbafac612ead41fccbf",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/journeyman-reference-view.png SHA256 3810731b8786b47466dff9a6c3b736d3a4bd052f0a6f6dcab12cfc6c4e7c120c. Existing project grayscale secondary-reference candidate, not certified original PHG pixels. Keep the SAME grayscale palette and source front camera; no original colorway is known. Journeyman: preserve the large dark central flat forehead field enclosed in the angular double-edged U-shaped silver surround, the squared upper opening, two existing small inset slash-and-round-stud shapes near upper inner corners, diagonal ribbed strips on the surrounding side bars, broad projecting side cheek panels, triangular dark eye recesses, and the central rectangular gridded breathing panel over the long flat lower strip. Preserve the small image-left circular three-hole emitter and source-visible dark circular ports on image-right cheek. No horns or new visor shape, no extra readable glyphs.\nAsk at least60px clear margin on all sides, one object only. Fine microdetail remains interpreted; no new decorative mechanisms.",
+          "selected": true
+        }
+      ]
+    },
+    {
+      "id": "phg-cosmetic-nocturne",
+      "label": "Nocturne",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-nocturne.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-97701894-ef75-4b7c-a0e5-62dbfae85534.png",
+      "sha256": "668e9418eb92ac76cec9636aa325463f76566b7c0c3cee04943b2db1d3eb4718",
+      "bytes": 1437481,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          199,
+          141,
+          1057,
+          1124
+        ],
+        "marginsPixels16": [
+          199,
+          141,
+          197,
+          130
+        ],
+        "transparentPixels": 939886,
+        "visiblePixels16": 618406,
+        "opaquePixels240": 613574
+      },
+      "nativeCopyIdentical": true,
+      "sourceAPath": "public/game/biomasks-20261113/masks/nocturne-reference-view.png",
+      "sourceASha256": "95adc807424703a7f5ddb99549ccb81f579ae54023da7806871321271e2400ef",
+      "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/nocturne-reference-view.png SHA256 95adc807424703a7f5ddb99549ccb81f579ae54023da7806871321271e2400ef. Existing project grayscale secondary-reference candidate, not certified original PHG pixels. Keep the SAME grayscale palette and source front camera; no original colorway is known. Nocturne: keep the two tall curved metal upper side risers with their EXISTING eye-shaped linear relief motifs, the SOLID dark oval center forehead inset (not a hole), large dark-grey broad cap with its two long shallow converging curved grooves, silver lower cheek/nose forms, narrow dark eye slits and long nested Y-shaped lower center ridges. Preserve the source's two small groups of dark pinholes on IMAGE LEFT only and the faint dark wear streak in the upper center-right forehead. Do not turn this into animal ears, fur, a feline head, a new face, or a pierced forehead.\nAsk at least60px clear margin on all sides, one object only. Fine microdetail remains interpreted; no new decorative mechanisms.",
+      "versionKind": "phg-standardized",
+      "generationTool": "image_gen.imagegen",
+      "transparentBackgroundRequested": true,
+      "sourceAUnchanged": true,
+      "status": "generated-candidate",
+      "agentVisualCandidateAccepted": true,
+      "reviewNotes": [
+        "Source A and generated B were actually viewed; same source camera, macro silhouette and grayscale regions retained.",
+        "Solid oval forehead inset, two curved upper risers with eye-shaped reliefs, image-left pinhole groups and narrow eye slits retained.",
+        "Common neutral light/material restaging only; fine relief, micrograin, exact source topology and small proportional/reflection differences remain unverified."
+      ],
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "Named256px community port HUD reference, not publisher-certified original PHG pixels.",
+        "Only the visible near-frontal source icon view is represented; no profile/back view or hidden geometry is established.",
+        "Grayscale reference appearance only: original game colors, material UVs and six-morphology rig fit are not verified.",
+        "High-resolution surface detail and fine aperture/emblem/rivet counts remain an interpretation of limited-resolution evidence; no pixel-level1:1 certification.",
+        "Generic pale hanging wearer strands omitted; faint edge/hair boundaries need human review on dark/checkerboard backgrounds.",
+        "Read-only reference screenshot measures256x257 for256x256 DDS; its exact input bytes and dimensions are recorded, without CPU normalization.",
+        "Centered preview pivot only; no rig fitting, physical scale, runtime admission or animation.",
+        "Revue visuelle d’agent, sans validation humaine : The split upper crown, central round/oval inset, paired pointed inner rim and decorated upper lateral lobes are preserved.",
+        "Revue visuelle d’agent, sans validation humaine : The dark forehead mark, narrowing brow, pointed cheek panels and central ridged lower shape remain coherent with the source.",
+        "Revue visuelle d’agent, sans validation humaine : Generic long white dreads are omitted.",
+        "Revue visuelle d’agent, sans validation humaine : Small temple perforations and upper decorative line counts cannot be established exactly from the source resolution.",
+        "Secondary community reference; original PHG pixels, colors, UVs and profiles/back are not certified.",
+        "DDS and viewer canvas are256×256; actual browser capture is256×257. Fractional capture alignment prevents a raw DDS pixel-copy claim.",
+        "One static reference view, not an animation or six-morphology equipment fit.",
+        "The named secondary PHG/community reference is monochrome; do not invent an original PHG colorway or claim publisher-authentic UVs.",
+        "A was already a detailed project rendering. The B difference is deliberately controlled lighting/material restaging, not a redesign or certified recovery of original game geometry."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-97701894-ef75-4b7c-a0e5-62dbfae85534.png",
+          "sha256": "668e9418eb92ac76cec9636aa325463f76566b7c0c3cee04943b2db1d3eb4718",
+          "prompt": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent of the largest canvas axis, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: .\n\nSOURCE: public/game/biomasks-20261113/masks/nocturne-reference-view.png SHA256 95adc807424703a7f5ddb99549ccb81f579ae54023da7806871321271e2400ef. Existing project grayscale secondary-reference candidate, not certified original PHG pixels. Keep the SAME grayscale palette and source front camera; no original colorway is known. Nocturne: keep the two tall curved metal upper side risers with their EXISTING eye-shaped linear relief motifs, the SOLID dark oval center forehead inset (not a hole), large dark-grey broad cap with its two long shallow converging curved grooves, silver lower cheek/nose forms, narrow dark eye slits and long nested Y-shaped lower center ridges. Preserve the source's two small groups of dark pinholes on IMAGE LEFT only and the faint dark wear streak in the upper center-right forehead. Do not turn this into animal ears, fur, a feline head, a new face, or a pierced forehead.\nAsk at least60px clear margin on all sides, one object only. Fine microdetail remains interpreted; no new decorative mechanisms.",
+          "selected": true
+        }
+      ]
+    }
+  ]
+}

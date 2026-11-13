@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "purpose": "Retrieve the full photographs actually linked by the official NECA product galleries; preserve the existing custom domains.",
+  "savedToEnvironmentDraft": false,
+  "appliedToRuntime": false,
+  "saveFailure": "draft_not_editable",
+  "requiredAddition": "eadn-wc04-13179453.nxedge.io",
+  "observedRequest": {
+    "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/NEW-51569-Ultimate-Ahab-Predator1.jpg",
+    "result": "CONNECT 403; zero photo bytes received"
+  },
+  "proposedPartialConfiguration": {
+    "network": {
+      "type": "restricted",
+      "allowed_domains": [
+        "api.github.com",
+        "blog.playstation.com",
+        "eadn-wc04-13179453.nxedge.io",
+        "forum.predator.illfonic.com",
+        "img2.storyblok.com",
+        "live.staticflickr.com",
+        "necaonline.com",
+        "predator.illfonic.com",
+        "store.necaonline.com",
+        "www.sideshow.com"
+      ]
+    }
+  },
+  "reviewAction": "In environment settings, add only the required NECA CDN domain while preserving the existing domains and package-manager preset; save and publish the configuration. This file is a transferable proposal and does not apply configuration.",
+  "existingDomainFailures": "The PHG forum, PHG homepage and Sideshow remain refused despite appearing in the current declared domain list; adding them again has not been established as a fix.",
+  "retryRule": "Retry a refused operation after a relevant configuration or diagnostic change; do not rewrite image hosts or bypass the network policy."
+}

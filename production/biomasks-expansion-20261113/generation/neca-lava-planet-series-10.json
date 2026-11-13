@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-lava-planet-series-10",
+  "sourceClass": "official-photo",
+  "edition": "NECA Series10, 2013",
+  "entries": [
+    {
+      "id": "neca-lava-planet-series-10",
+      "version": "A",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-726776de-77f1-49af-b41c-0f116b762c11.png",
+      "sha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851",
+      "bytes": 1405747,
+      "nativeDimensions": [
+        1266,
+        1243
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-lava-planet-series-10.json",
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+      "referenceSourceSha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "referenceSourceDetails": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/LP-pred-1.jpg",
+          "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+          "url": "http://necaonline.com/wp-content/uploads/2013/09/LP-pred-1.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+          "dimensions": [
+            570,
+            861
+          ]
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+          "url": "https://necaonline.com/wp-content/uploads/2013/10/51487-Predator-Series10Asst.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-predators-series-10-action-figures",
+          "dimensions": [
+            800,
+            600
+          ]
+        }
+      ],
+      "prompt": "Correct the FIRST generated Lava Planet mask using the SECOND image, the actual NECA LP-pred-1 photograph, as geometry/camera authority and THIRD official white catalog as coarse paint-color support (red figure far right). Keep the first image's existing recognizable burgundy face ribs, central segmented spine, dark wine eye inserts, lower sweeping cheek ridges, oval vertical-slot grille and two small pale dots. Do NOT redesign, add panels, change marks or add details. The first candidate is visibly too narrow/long compared to the photographed rigid shell and too close to the top edge. Make the whole shell broader and slightly shorter to restore the reference solid mask width-to-height ratio about0.80-0.84 (measure rigid shell only, no dreadlocks). Keep the forehead dome broad and rounded, same source photo's slight true oblique perspective, not an invented straight front or a new side. Preserve relative positions of original ribs, eyes and grille; don't stretch only the eye spacing. The lower cheek ridges end in the same real scalloped hard mask edges, no tentacles, teeth, tubes or wearer. Preserve apparent dark metallic wine/burgundy paint and restrained photo grain, slight orange light on image-left is lighting only, no orange painted stripe. No certification of unknown microdetail: keep fine relief restrained, no new glyphs or ornaments. Entire mask ONLY, on TRUE transparent RGBA, no dreadlocks/beads/head/body/neck/armor/cannon/background/scene/UI. IMPORTANT framing: center the entire solid mask at only78-80 percent of the canvas's largest axis, leaving at least10 percent fully transparent space above the highest top nub and below the lowest grille, and at least10 percent on both sides. Do not use almost-full-height framing. Exactly one mask.",
+      "promptSha256": "30b242b863b294cf1e7ec295400c0b21bc157f68c2a1b7abd79eb41050a48e20",
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "sourcePhotosViewedBeforeGeneration": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            41,
+            29,
+            1202,
+            1243
+          ],
+          "8": [
+            244,
+            143,
+            1021,
+            1063
+          ],
+          "32": [
+            244,
+            143,
+            1020,
+            1062
+          ],
+          "128": [
+            245,
+            144,
+            1020,
+            1062
+          ],
+          "254": [
+            246,
+            145,
+            1017,
+            1060
+          ]
+        },
+        "maximumBorderAlpha": 1,
+        "occupiedBorderPixels": 15,
+        "strongVisibleAxisFraction": 0.7385,
+        "strongMarginsPixels": [
+          245,
+          144,
+          246,
+          181
+        ]
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Automated agent visual review, not human art validation",
+        "observations": "Lava Planet: broad segmented burgundy crown and central spine, narrow dark wine eyes, sweeping ridged cheeks and long vertical-slotted muzzle with pale side dots. Retained slight photo perspective; entire wearer/dreads/neck/armor/cannon excluded. Native browser composites show the complete solid shell cleanly against all three backgrounds, no visible rectangular background, dreadlocks, beads, body, tube or clipped mask.",
+        "browserCompositePath": "/tmp/mask-expansion-20261113/neca-lava-hive-composites.png",
+        "browserCompositeInspected": true,
+        "browserBackgrounds": [
+          "black",
+          "white",
+          "checker"
+        ]
+      },
+      "limitations": [
+        "Official NECA Series10 photographed toy edition; not a certified film/comic equivalent or final franchise master.",
+        "Source photographs have mask regions only about100-180px tall; fine relief, exact texture, hidden profile/back and UV/albedo remain unknown.",
+        "Version A is a new ImageGen isolation from official photos, not a pixel cutout or source original.",
+        "Apparent dark burgundy or blue-silver palette checked against official white-background catalog; exact lighting-independent pigment is not established.",
+        "Photographic grain/rough toy surface in A and PHG material response in B remain rendering interpretations; no canonical or human art certification.",
+        "Very faint native alpha pixels may reach the canvas edge; their maximum alpha is documented and no CPU cleaning was performed.",
+        "Native complete mask occupies about74-76percent of the longest canvas axis after framing correction, with actual strong-alpha bounds/margins recorded; margins are slightly more generous than target78-80percent. No CPU reframing was performed."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-dd75bbb1-a545-4043-8305-9f0d10d8671e.png",
+          "sha256": "07fc2ef98856d7b02895ace916f557c6769e425b0df7dcfa4cea4409c7452965",
+          "selected": false,
+          "prompt": "Use the FIRST photograph as the exact visible sculpture and camera reference. The SECOND image is an official Series 10 catalog composite used ONLY to cross-check apparent paint colors. Make ONE isolated rigid detachable BIOMASK ONLY on a genuinely transparent RGBA background. This is the specified NECA Series 10 toy edition, not a different film, comic, modern Ultimate, or imagined franchise variant. Match the mask's visible silhouette, proportions, camera yaw/pitch/roll, lens shapes, existing raised edges, ribs, panel boundaries and coarse wear. Keep the same slight real photo perspective; do not invent a straight symmetrical front, rotate the head or reveal hidden surfaces. The mask in the source is only about100-180px tall, so retain coarse visible form and do not invent fine runic letters, additional markings, microvents, screws, decorative panels, horns or unseen rear geometry. Extract visually using image generation: remove the whole wearer, skin, dreadlocks, beads, body, armor, neck ring, shoulder equipment, targeting/plasma weapon, handheld weapons and scenic background. No hair, dangling strands, tubes or supporting head. Preserve photographic grain and the apparent rough painted toy surface, with the primary photo's subdued local highlights; no PHG style redesign in this A version. Remove strong environmental color cast rather than turn it into new painted stripes; the catalog confirms the coarse paint family but does not establish exact albedo. No scene, cast floor shadow, glow, vignette, frame, label or UI. Entire mask visible and centered, largest visible axis about78-80 percent of the canvas, leave at least10 percent genuinely transparent margin all around. Exactly one mask, no alternate views.\n\nLAVA PLANET Series10: Use LP-pred-1 as primary; in the white catalog this is the RED figure on the far RIGHT, never the blue figure or gold inset. Keep the same nearly frontal but slightly oblique camera and the complete mask shell from the rounded top center nub down to the scalloped lower cheek/respirator edges. The dark burgundy/oxidized wine-red metal crown has its existing narrow central vertical spine and many broad horizontal curved segmented ribs descending toward the bridge. Preserve the thick ridged outer brow edges and the narrow angular dark wine/black eye inserts. Preserve the existing sweeping hard cheek ridges and the small elongated central oval/trapezoid muzzle grille with its parallel vertical narrow slots and thick rim. Preserve the two small pale circular fastener-like dots next to the muzzle only where visible. The forehead and lower facial shell are dark metallic burgundy with subdued worn silver edges; keep that real apparent paint, not a bright red/orange emissive lava material. The orange light on image-left is illumination, not an orange painted panel. Preserve existing facial ridges and grille, no added teeth, tusks, tribal glyphs or new ornaments. The red translucent organic head, bead-covered dreadlocks, side cannon and neck loops are NOT part of the rigid mask and must be fully excluded.",
+          "rejectionReason": "Mask narrowed/elongated relative to primary visible sculpture, top transparent margin too small.",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        },
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/exec-726776de-77f1-49af-b41c-0f116b762c11.png",
+          "sha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851",
+          "selected": true,
+          "prompt": "Correct the FIRST generated Lava Planet mask using the SECOND image, the actual NECA LP-pred-1 photograph, as geometry/camera authority and THIRD official white catalog as coarse paint-color support (red figure far right). Keep the first image's existing recognizable burgundy face ribs, central segmented spine, dark wine eye inserts, lower sweeping cheek ridges, oval vertical-slot grille and two small pale dots. Do NOT redesign, add panels, change marks or add details. The first candidate is visibly too narrow/long compared to the photographed rigid shell and too close to the top edge. Make the whole shell broader and slightly shorter to restore the reference solid mask width-to-height ratio about0.80-0.84 (measure rigid shell only, no dreadlocks). Keep the forehead dome broad and rounded, same source photo's slight true oblique perspective, not an invented straight front or a new side. Preserve relative positions of original ribs, eyes and grille; don't stretch only the eye spacing. The lower cheek ridges end in the same real scalloped hard mask edges, no tentacles, teeth, tubes or wearer. Preserve apparent dark metallic wine/burgundy paint and restrained photo grain, slight orange light on image-left is lighting only, no orange painted stripe. No certification of unknown microdetail: keep fine relief restrained, no new glyphs or ornaments. Entire mask ONLY, on TRUE transparent RGBA, no dreadlocks/beads/head/body/neck/armor/cannon/background/scene/UI. IMPORTANT framing: center the entire solid mask at only78-80 percent of the canvas's largest axis, leaving at least10 percent fully transparent space above the highest top nub and below the lowest grille, and at least10 percent on both sides. Do not use almost-full-height framing. Exactly one mask.",
+          "referencedImagePaths": [
+            "/workspace/generated_images/exec-dd75bbb1-a545-4043-8305-9f0d10d8671e.png",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        }
+      ],
+      "referencedImagePaths": [
+        "/workspace/generated_images/exec-dd75bbb1-a545-4043-8305-9f0d10d8671e.png",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+      ]
+    },
+    {
+      "id": "neca-lava-planet-series-10",
+      "version": "B",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-f3feaecc-56f9-4384-8de8-c88ac24e5319.png",
+      "sha256": "6b9669d9c04961cb70607957e31668872b2b0ef3084e5305a8e2c91626678f47",
+      "bytes": 1489390,
+      "nativeDimensions": [
+        1266,
+        1243
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-lava-planet-series-10.json",
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+      "referenceSourceSha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "referenceSourceDetails": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/LP-pred-1.jpg",
+          "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+          "url": "http://necaonline.com/wp-content/uploads/2013/09/LP-pred-1.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+          "dimensions": [
+            570,
+            861
+          ]
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+          "url": "https://necaonline.com/wp-content/uploads/2013/10/51487-Predator-Series10Asst.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-predators-series-10-action-figures",
+          "dimensions": [
+            800,
+            600
+          ]
+        }
+      ],
+      "prompt": "Create versionB of the FIRST image: ONE detached NECA Lava Planet Series10 biomask in polished realistic Predator:HuntingGrounds-consistent PBR rendering. Preserve exactly the first image's visible sculpture, broad proportions, actual slightly oblique camera, silhouette, rib placement/count at coarse scale, eye insert shapes and dark wine color, cheek ridges, elongated grille with its existing vertical slots and pale side fastener dots. SECOND image is the actual NECA LP-pred-1 photograph and THIRD is official catalog (red figure far RIGHT): use them as cross-checks, not an excuse to replace this edition by a different mask or reveal a new view. The generatedA's burgundy/wine metal paint is retained; the orange image-left reflection is environmental lighting and must be removed as lighting only, not turned into orange paint. Replace photographic high grain with controlled rough burgundy painted metal, subtle restrained wear and readable relief. Neutral soft key from image upper-left/front, gentle fill, no orange/blue scene illumination, no all-over chrome or black crush. Match the same apparent color family; exact physical albedo is unknown. Do NOT add any horns, teeth, glyphs, ornament, vents, screws, trim, extra grille slots or invisible side/back geometry. Source mask is only about150px tall, so fine relief remains restrained interpretation, not invented intricate detail. Keep all existing rigid mask edges and no wearer anatomy. True transparent RGBA, mask ONLY, no dreadlocks/beads/neck/head/body/armor/cannon/tube/background/floor/shadow plane/glow/text/UI. IMPORTANT center the complete mask with10-12percent fully transparent margin above, below and at both sides. Longest visible axis only78-80percent of canvas. Same camera and geometry, exactly one mask.",
+      "promptSha256": "3377d571bcb1c76bc43105d7a5a22fb1a06e62dbecda0bb7bd6ded17e28883c3",
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "sourcePhotosViewedBeforeGeneration": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            19,
+            1220,
+            1243
+          ],
+          "8": [
+            241,
+            143,
+            1022,
+            1065
+          ],
+          "32": [
+            241,
+            143,
+            1022,
+            1065
+          ],
+          "128": [
+            242,
+            144,
+            1021,
+            1064
+          ],
+          "254": [
+            243,
+            145,
+            1020,
+            1063
+          ]
+        },
+        "maximumBorderAlpha": 1,
+        "occupiedBorderPixels": 35,
+        "strongVisibleAxisFraction": 0.7401,
+        "strongMarginsPixels": [
+          242,
+          144,
+          245,
+          179
+        ]
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Automated agent visual review, not human art validation",
+        "observations": "Lava Planet: broad segmented burgundy crown and central spine, narrow dark wine eyes, sweeping ridged cheeks and long vertical-slotted muzzle with pale side dots. Retained slight photo perspective; entire wearer/dreads/neck/armor/cannon excluded. Native browser composites show the complete solid shell cleanly against all three backgrounds, no visible rectangular background, dreadlocks, beads, body, tube or clipped mask.",
+        "browserCompositePath": "/tmp/mask-expansion-20261113/neca-lava-hive-composites.png",
+        "browserCompositeInspected": true,
+        "browserBackgrounds": [
+          "black",
+          "white",
+          "checker"
+        ]
+      },
+      "limitations": [
+        "Official NECA Series10 photographed toy edition; not a certified film/comic equivalent or final franchise master.",
+        "Source photographs have mask regions only about100-180px tall; fine relief, exact texture, hidden profile/back and UV/albedo remain unknown.",
+        "Version A is a new ImageGen isolation from official photos, not a pixel cutout or source original.",
+        "Apparent dark burgundy or blue-silver palette checked against official white-background catalog; exact lighting-independent pigment is not established.",
+        "Photographic grain/rough toy surface in A and PHG material response in B remain rendering interpretations; no canonical or human art certification.",
+        "VersionB translates material response and neutral lighting from generatedA with official photo cross-check; it does not establish original PHG mesh/UV or film equivalence.",
+        "Very faint native alpha pixels may reach the canvas edge; their maximum alpha is documented and no CPU cleaning was performed.",
+        "Native complete mask occupies about74-76percent of the longest canvas axis after framing correction, with actual strong-alpha bounds/margins recorded; margins are slightly more generous than target78-80percent. No CPU reframing was performed."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-f3feaecc-56f9-4384-8de8-c88ac24e5319.png",
+          "sha256": "6b9669d9c04961cb70607957e31668872b2b0ef3084e5305a8e2c91626678f47",
+          "selected": true,
+          "prompt": "Create versionB of the FIRST image: ONE detached NECA Lava Planet Series10 biomask in polished realistic Predator:HuntingGrounds-consistent PBR rendering. Preserve exactly the first image's visible sculpture, broad proportions, actual slightly oblique camera, silhouette, rib placement/count at coarse scale, eye insert shapes and dark wine color, cheek ridges, elongated grille with its existing vertical slots and pale side fastener dots. SECOND image is the actual NECA LP-pred-1 photograph and THIRD is official catalog (red figure far RIGHT): use them as cross-checks, not an excuse to replace this edition by a different mask or reveal a new view. The generatedA's burgundy/wine metal paint is retained; the orange image-left reflection is environmental lighting and must be removed as lighting only, not turned into orange paint. Replace photographic high grain with controlled rough burgundy painted metal, subtle restrained wear and readable relief. Neutral soft key from image upper-left/front, gentle fill, no orange/blue scene illumination, no all-over chrome or black crush. Match the same apparent color family; exact physical albedo is unknown. Do NOT add any horns, teeth, glyphs, ornament, vents, screws, trim, extra grille slots or invisible side/back geometry. Source mask is only about150px tall, so fine relief remains restrained interpretation, not invented intricate detail. Keep all existing rigid mask edges and no wearer anatomy. True transparent RGBA, mask ONLY, no dreadlocks/beads/neck/head/body/armor/cannon/tube/background/floor/shadow plane/glow/text/UI. IMPORTANT center the complete mask with10-12percent fully transparent margin above, below and at both sides. Longest visible axis only78-80percent of canvas. Same camera and geometry, exactly one mask.",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+      "sourceASha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+      ]
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "number": 1,
+      "nativeSourcePath": "/workspace/generated_images/exec-dd75bbb1-a545-4043-8305-9f0d10d8671e.png",
+      "sha256": "07fc2ef98856d7b02895ace916f557c6769e425b0df7dcfa4cea4409c7452965",
+      "selected": false,
+      "prompt": "Use the FIRST photograph as the exact visible sculpture and camera reference. The SECOND image is an official Series 10 catalog composite used ONLY to cross-check apparent paint colors. Make ONE isolated rigid detachable BIOMASK ONLY on a genuinely transparent RGBA background. This is the specified NECA Series 10 toy edition, not a different film, comic, modern Ultimate, or imagined franchise variant. Match the mask's visible silhouette, proportions, camera yaw/pitch/roll, lens shapes, existing raised edges, ribs, panel boundaries and coarse wear. Keep the same slight real photo perspective; do not invent a straight symmetrical front, rotate the head or reveal hidden surfaces. The mask in the source is only about100-180px tall, so retain coarse visible form and do not invent fine runic letters, additional markings, microvents, screws, decorative panels, horns or unseen rear geometry. Extract visually using image generation: remove the whole wearer, skin, dreadlocks, beads, body, armor, neck ring, shoulder equipment, targeting/plasma weapon, handheld weapons and scenic background. No hair, dangling strands, tubes or supporting head. Preserve photographic grain and the apparent rough painted toy surface, with the primary photo's subdued local highlights; no PHG style redesign in this A version. Remove strong environmental color cast rather than turn it into new painted stripes; the catalog confirms the coarse paint family but does not establish exact albedo. No scene, cast floor shadow, glow, vignette, frame, label or UI. Entire mask visible and centered, largest visible axis about78-80 percent of the canvas, leave at least10 percent genuinely transparent margin all around. Exactly one mask, no alternate views.\n\nLAVA PLANET Series10: Use LP-pred-1 as primary; in the white catalog this is the RED figure on the far RIGHT, never the blue figure or gold inset. Keep the same nearly frontal but slightly oblique camera and the complete mask shell from the rounded top center nub down to the scalloped lower cheek/respirator edges. The dark burgundy/oxidized wine-red metal crown has its existing narrow central vertical spine and many broad horizontal curved segmented ribs descending toward the bridge. Preserve the thick ridged outer brow edges and the narrow angular dark wine/black eye inserts. Preserve the existing sweeping hard cheek ridges and the small elongated central oval/trapezoid muzzle grille with its parallel vertical narrow slots and thick rim. Preserve the two small pale circular fastener-like dots next to the muzzle only where visible. The forehead and lower facial shell are dark metallic burgundy with subdued worn silver edges; keep that real apparent paint, not a bright red/orange emissive lava material. The orange light on image-left is illumination, not an orange painted panel. Preserve existing facial ridges and grille, no added teeth, tusks, tribal glyphs or new ornaments. The red translucent organic head, bead-covered dreadlocks, side cannon and neck loops are NOT part of the rigid mask and must be fully excluded.",
+      "rejectionReason": "Mask narrowed/elongated relative to primary visible sculpture, top transparent margin too small.",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "version": "A"
+    }
+  ]
+}

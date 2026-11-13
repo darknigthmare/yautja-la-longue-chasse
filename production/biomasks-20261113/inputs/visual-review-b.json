@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Independent read-only native visual comparison of batchB; no generation, pixel editing, canon or human artistic approval",
+  "status": "macro-review-no-certain-blocking-identity-error-found",
+  "images": [
+    {
+      "id": "phg-phoenix",
+      "sourcePath": "/tmp/all-masks-20261113/web-references/fronts/predator_05.png",
+      "sourceSha256": "98420c73ca70e77d67225f37af2a408cf0c59ee4d71bbd8d9a9db764d77fca8a",
+      "sourceCaptureDimensions": [
+        256,
+        257
+      ],
+      "nativeDDSDimensions": [
+        256,
+        256
+      ],
+      "candidatePath": "public/game/biomasks-20261113/masks/phoenix-reference-view.png",
+      "candidateSha256": "b7b7164691740e33398152f65e0f9c62c26dfef8dbc6d052243d0c20894fd804",
+      "candidateDimensions": [
+        1254,
+        1254
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "id": "phg-plague",
+      "sourcePath": "/tmp/all-masks-20261113/web-references/fronts/predator_06.png",
+      "sourceSha256": "6b5fa4769e7a5f4200e94ce8c75f41cea015818610584ab889dab53adba72776",
+      "sourceCaptureDimensions": [
+        256,
+        257
+      ],
+      "nativeDDSDimensions": [
+        256,
+        256
+      ],
+      "candidatePath": "public/game/biomasks-20261113/masks/plague-reference-view.png",
+      "candidateSha256": "aa94cfa17660cb0a538da184936b43c6cfdbb6e9cd4dd89dd26d6dfeb4ffa96f",
+      "candidateDimensions": [
+        1254,
+        1254
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "id": "phg-inferno",
+      "sourcePath": "/tmp/all-masks-20261113/web-references/fronts/predator_07.png",
+      "sourceSha256": "7ac34449e31c73243695853d62218e3ea89b77f4ce0fbdc0694d756cc1ea1fec",
+      "sourceCaptureDimensions": [
+        256,
+        257
+      ],
+      "nativeDDSDimensions": [
+        256,
+        256
+      ],
+      "candidatePath": "public/game/biomasks-20261113/masks/inferno-reference-view.png",
+      "candidateSha256": "083f948f390e33f8c1471af257a643846bdfaec8e909831aa81afa8942f4f432",
+      "candidateDimensions": [
+        1254,
+        1254
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "id": "phg-prophet",
+      "sourcePath": "/tmp/all-masks-20261113/web-references/fronts/predator_08.png",
+      "sourceSha256": "173dca27006bb9b0be1c4450fbb83bf70bbb181890dc39f792e6accb27a90cf7",
+      "sourceCaptureDimensions": [
+        256,
+        257
+      ],
+      "nativeDDSDimensions": [
+        256,
+        256
+      ],
+      "candidatePath": "public/game/biomasks-20261113/masks/prophet-reference-view.png",
+      "candidateSha256": "42011ddd850c0a4cc91c09c840f946aa9105cfd99d17e316b7bdaa8c71b115a3",
+      "candidateDimensions": [
+        1254,
+        1254
+      ],
+      "visuallyInspected": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "phg-phoenix",
+      "macro": "Broad fan/feather crown, paired swept side points, central tapered forehead plate, slanted eye region and light flanking lower cheek panels correspond to the visible icon. No generic white predlock fringe has been turned into hanging teeth.",
+      "limitations": "Fine crown-tip/ridge spacing and aperture material cannot be certified at this source resolution."
+    },
+    {
+      "id": "phg-plague",
+      "macro": "The current candidate has a closed circular outer crown ring and the asymmetric internal rib arrangement, including the large diagonal on image-left. This matches the observed broad source design; there is no invented tall crown loop/spike beyond the ring. The long central lower plate and angular cheek cutouts remain recognizable.",
+      "qualification": "The dark spaces between crown ribs have been interpreted as transparent apertures in the output. Whether these are physical openings is NOT established by the secondary HUD icon. This is an interpretation to keep open, not a proven geometry fact.",
+      "sourceAlphaCaution": "Native DDS stores white RGB with varying alpha: the alpha channel encodes HUD brightness/shading, so low DDS alpha does not by itself prove a physical hole."
+    },
+    {
+      "id": "phg-inferno",
+      "macro": "The stacked central shield and paired upward crown points, left-side circular accent, narrow eye region and wavy lower cheek ridges correspond in broad topology. No independent hair strands, extra wearable or new tall crown silhouette found.",
+      "limitations": "Do not certify exact small ridge/side-tip count or vent topology from the256px icon."
+    },
+    {
+      "id": "phg-prophet",
+      "macro": "The concentric swept forehead arcs and innerU field, slim central vertical bridge, asymmetrical left-side three-port accent and central mouth grille correspond in broad arrangement. No independent dread fringe or new horns introduced.",
+      "limitations": "Microgrille density, panel edge widths and exact original PHG material/eye geometry remain unverified."
+    }
+  ],
+  "metadataFindings": [
+    {
+      "severity": "note",
+      "message": "All four diagnostic PNG captures measure256x257, while the underlying DDS is256x256. Their SHA matches each entry. Keep these dimensions separate; do not crop or resize the PNG to force a square metadata value."
+    }
+  ],
+  "globalLimitations": [
+    "Secondary named community-port front icons are not original publisher-certified PHG source materials.",
+    "The review can compare visible macro shapes only; it is not a certification of exact PHG pixel geometry, UVs, colors, profile/back, rig fit or six morphologies."
+  ],
+  "requiresCertainMacroRegeneration": [],
+  "canonCertified": false,
+  "humanArtValidated": false
+}
