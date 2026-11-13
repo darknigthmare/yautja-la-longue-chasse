@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Bounded inspection of two previously undownloaded images in an already-known public corpus; no new search or denied-host retry.",
+  "repository": "FairYautja/HG",
+  "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+  "entries": [
+    {
+      "name": "bionic",
+      "path": "/tmp/all-masks-20261113/web-references/hg-additional/bionic.png",
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/bionic.png",
+      "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/bionic.png",
+      "gitBlobSha": "bc8a016287e2616d0cc6b7441b7222ed9407f972",
+      "sha256": "760e915bfb003ac6ccffb457ee16051f611d2ac1f5858b704048e641143afbb0",
+      "bytes": 165677,
+      "targetId": "mk-31-bionic",
+      "sourceId": "MK-31",
+      "kind": "head-layer-not-detachable-biomask",
+      "referenceKind": "flat-two-tone-UI-symbol",
+      "nativeDimensions": [
+        1024,
+        1024
+      ],
+      "visuallyInspectedOnBlack": true,
+      "candidatePhotorealGenerationSupported": false,
+      "symbolicUIOutlineReferenceUsable": true,
+      "publisherCertified": false,
+      "canonicalOneToOneSupported": false,
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1529,
+          "text": "| MK-31 bionic | Bionic, PHG | vérifié (tête) | Separate head layer: glowing red cybernetic implant in place of the RIGHT eye, metal plates bolted onto skull and face. |"
+        }
+      ],
+      "diagnosticOnBlack": {
+        "path": "/tmp/all-masks-20261113/web-references/hg-additional/bionic-on-black.png",
+        "sha256": "373e66844420029a078a25fd003099f97cffcbb7a2ed7362ed5e7d14df28c762",
+        "scope": "Browser display of original PNG on CSS black, not an edited asset."
+      },
+      "observations": [
+        "Two-tone stylized mechanical head graphic with no calibrated lighting/material volumes.",
+        "Bible explicitly requires a separate head layer with cybernetic right eye and implanted plates, not a detachable biomask."
+      ]
+    },
+    {
+      "name": "pirate",
+      "path": "/tmp/all-masks-20261113/web-references/hg-additional/pirate.png",
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/pirate.png",
+      "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/pirate.png",
+      "gitBlobSha": "6bf822e9c9d735a44d3f65136444dae0e97d322a",
+      "sha256": "6e8e7c3edaa1dcc7785fdf6d65aa144366ac09f9ff5e4ea3addc3b2d18e3f5cf",
+      "bytes": 82154,
+      "targetId": "mk-29-pirate",
+      "sourceId": "MK-29",
+      "kind": "biomask-and-separate-eyepatch",
+      "referenceKind": "flat-two-tone-UI-symbol",
+      "nativeDimensions": [
+        1024,
+        1024
+      ],
+      "visuallyInspectedOnBlack": true,
+      "candidatePhotorealGenerationSupported": false,
+      "symbolicUIOutlineReferenceUsable": true,
+      "publisherCertified": false,
+      "canonicalOneToOneSupported": false,
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1527,
+          "text": "| MK-29 pirate | Pirate, PHG | vérifié | Half mask covering only the lower face (mouth and mandibles); separate layer: simple leather eyepatch over a clouded, scarred LEFT eye. |"
+        }
+      ],
+      "diagnosticOnBlack": {
+        "path": "/tmp/all-masks-20261113/web-references/hg-additional/pirate-on-black.png",
+        "sha256": "23febc01c452a779efd25c918ae3ca7b2f4b06a7982721004866bea14e349205",
+        "scope": "Browser display of original PNG on CSS black, not an edited asset."
+      },
+      "observations": [
+        "A flat lower-face mask graphic with a separate eye patch at image-right/anatomical-left and upper hair/scalp silhouette.",
+        "The icon does not establish camouflage, leather/metal material, physical depth or hidden surfaces.",
+        "Do not convert its scalp/hair silhouette into a full biomask; the Bible specifies a lower-face half-mask."
+      ]
+    }
+  ],
+  "decision": "Do not expand the13rendered-mask batch from these UI symbols. Pirate remains insufficient for a faithful material sprite; Bionic is not a detachable mask.",
+  "sourceImagesChanged": false,
+  "networkBypassUsed": false
+}

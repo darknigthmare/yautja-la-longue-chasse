@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "counts": {
+    "assets": 4,
+    "nativeFiles": 4,
+    "byKind": {
+      "effect": 1,
+      "mask": 1,
+      "prop": 2
+    },
+    "componentLayers": 3,
+    "sourceAssemblies": 2,
+    "correctedMaskIdentities": 1,
+    "referenceCopiesExcluded": 2,
+    "newCharacters": 0,
+    "animationClips": 0,
+    "sourceP0Subjects": 775,
+    "sourceP0SubjectsLinked": 2,
+    "newlyClosedP0": 0
+  },
+  "reviewBatchComplete": true,
+  "sourceTargetsComplete": false,
+  "unresolvedSourceComponentIds": [
+    "HWA160-010-water"
+  ],
+  "manifest": {
+    "path": "public/game/p0-fidelity-20261113/manifest.json",
+    "sha256": "d9a2e23591c948e08e484a82965e74868f9a473fedffc2176509e8bbc4572dcf",
+    "bytes": 46617
+  },
+  "gallery": {
+    "path": "public/game/p0-fidelity-20261113/review.html",
+    "sha256": "87023b2c3e8d94cc5aa000dc96bd4ada658dd27c33ddc93d60fef90deac0d4b2",
+    "bytes": 61908
+  },
+  "workbook": {
+    "path": "production/p0-fidelity-20261113/suivi/Yautja_Fidelite_P0_Addendum_20261113.xlsx",
+    "sha256": "54051d54618e32285e8ba56ec484ce378cca03ea94e638ad84f787f5ac4278ab",
+    "bytes": 32530
+  },
+  "sheets": [
+    "Synthèse",
+    "Couches",
+    "Références",
+    "Limites",
+    "Sources protégées"
+  ],
+  "cellsCompared": 1286,
+  "protectedFiles": 216,
+  "deterministicReconstructionIdentical": true,
+  "allP0Closed": false,
+  "scope": "Native bytes, alpha-policy distinction, exact source pins and OpenXML/cells only; browser/human/canon/runtime separate"
+}

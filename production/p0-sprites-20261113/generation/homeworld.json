@@ -1,0 +1,1001 @@
+{
+  "schemaVersion": 1,
+  "lot": "p0-sprites-20261113",
+  "family": "homeworld",
+  "sourceCommit": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "scope": "Native transparent sprite candidates addressing P0 alpha/independence gates. Original opaque images preserved. No runtime integration, physical scale, canonical fidelity or human approval is inferred.",
+  "sourceWorkbook": "production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx",
+  "sourceP0Gate": {
+    "sheet": "QA_et_Suite",
+    "row": 7,
+    "id": "QA-002",
+    "criterion": "Alpha présent et au moins un pixel transparent; opaque conservé en archive"
+  },
+  "relatedPriorityLinks": [
+    "Homeworld et habitats:QA-004",
+    "Homeworld et habitats:QA-005",
+    "Homeworld et habitats:QA-007"
+  ],
+  "entries": [
+    {
+      "id": "p0-20261113-homeworld-HWA160-001",
+      "sourceId": "HWA160-001",
+      "moduleId": "HWA160-001",
+      "label": "arche yautja cérémonielle aux trophées anciens",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-001.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-001.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-001_arche-yautja-ceremonielle-aux-trophees-anciens.png",
+        "sha256": "ffe0f4c2379e3057d229bae9157a49df53528014063f24cbfdddc7c6aae73558",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-64ad9a27-2b30-4741-9bb9-f39cf077c1c4.png",
+      "sha256": "fe7417b98b81a9416b2023363bbba2d70f45fcc730671134d051d420f89058e1",
+      "bytes": 970830,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1249762,
+        "nearOpaquePixelsAlpha240": 284503,
+        "partialAlphaPixels": 321323,
+        "visibleBoundsAlpha16": [
+          219,
+          265,
+          902,
+          1072
+        ],
+        "marginsFractionAlpha16": [
+          0.19518716577540107,
+          0.1890156918687589,
+          0.19607843137254902,
+          0.23537803138373753
+        ],
+        "transparentFraction": 0.7944863589321087,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          560.5,
+          1071
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-9d66d931-9481-4dd6-9a04-72d4d58299ab.png",
+          "sha256": "749cbc13010902b0ae2b44bdd096c22486711acf1a690d4ccbaa3a9657d0b6c6",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-001_arche-yautja-ceremonielle-aux-trophees-anciens.png",
+          "prompt": "Edit this exact original-project reference into ONE isolated game sprite. Preserve one-to-one the visible structure design, camera angle, perspective, silhouette, relative proportions, engraved shapes, volcanic dark-stone and worn bronze materials, ivory trophies, red cloth, original lighting and orange architectural lights. Extract the freestanding ceremonial arch, including both pillars, the entire three-spire crest, the two large ivory tusks, suspended skulls/trophy cords, all three red banners, attached braziers/flames, every base block, and the empty opening. Do not redesign it, do not turn it to another angle, and do not add architecture, embellishments, people or characters. Remove the entire pale/grey photographic backdrop and floor, every backdrop/floor cast shadow and any ambient haze outside the object. Behind an arch/open gap, retain true transparency instead of the old background; retain real recesses of the building as dark architectural surfaces. Keep the original attached foundation/stairs as object geometry. Reframe to show the COMPLETE object including the highest tip and every bottom corner, with at least5percent genuinely transparent margin on every edge. It must be exactly one independent object, not a diorama. Native RGBA PNG with true transparent alpha outside the object; solid stone/metal/cloth remain opaque, attached flame may have natural partial alpha only locally. No checkerboard baked in, no ground/base plane beyond the architecture, no floating particles, no new text/labels/UI/watermark. Preserve all existing project marks without translating them into human lettering. High-detail2.5D asset; preserve the source rendering rather than restyling. This is a faithful adaptation of this project design, not an official franchise-certified replica.",
+          "selected": false,
+          "note": "Earlier generation retained; framing or source-fidelity revision required"
+        },
+        {
+          "nativePath": "/workspace/generated_images/exec-64ad9a27-2b30-4741-9bb9-f39cf077c1c4.png",
+          "sha256": "fe7417b98b81a9416b2023363bbba2d70f45fcc730671134d051d420f89058e1",
+          "referencePath": "/workspace/generated_images/exec-9d66d931-9481-4dd6-9a04-72d4d58299ab.png",
+          "prompt": "REFRAME THIS EXACT TRANSPARENT SPRITE ONLY. Keep the object itself, all its details, construction, materials, perspective and angle exactly unchanged. Zoom out substantially WITHOUT changing the camera: place the ENTIRE object inside the central75percent of a portrait canvas, with at least10percent EMPTY TRANSPARENT SPACE on the left, right, above the very highest spire and below the lowest base corner. The object must be clearly smaller in the frame than the input. Do not extend stone/floor at the bottom or crop any corner. No new drawing or additional architecture. Remove any remaining ground cast shadow. Preserve the original transparent holes/openings and solid architecture; native RGBA true alpha0 outside, solid materials near-opaque, same attached flames only. No visible background, checkerboard, vignette or glow. Output one isolated object with complete generous transparent breathing room on ALL FOUR edges. This is only a canvas-framing correction, not a redesign.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-019",
+      "sourceId": "HWA160-019",
+      "moduleId": "HWA160-019",
+      "label": "grand hall alien aux glyphes sacrés",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-019.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-019.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-019_grand-hall-alien-aux-glyphes-sacres.png",
+        "sha256": "f43ab9fdd9cff71f372dbf6bba73e027f68200f8fe6b0e53235c95925e584038",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-2d4ac8d8-ec02-4c1e-baaa-6fae737934ac.png",
+      "sha256": "6fdee997e1183142ef9528693335a8d4ade41009c127eb077e37b2befccbd1d9",
+      "bytes": 1199346,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1116655,
+        "nearOpaquePixelsAlpha240": 429200,
+        "partialAlphaPixels": 454880,
+        "visibleBoundsAlpha16": [
+          200,
+          280,
+          929,
+          1119
+        ],
+        "marginsFractionAlpha16": [
+          0.17825311942959002,
+          0.19971469329529243,
+          0.17201426024955438,
+          0.20185449358059915
+        ],
+        "transparentFraction": 0.7098688911435408,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          564.5,
+          1118
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-f8e8c7a3-9f51-4e1f-9d23-701c21e01b11.png",
+          "sha256": "60a8a58523f5580f3304459b17c39578aca6db592f94cbdefdac460b74dc8d25",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-019_grand-hall-alien-aux-glyphes-sacres.png",
+          "prompt": "Edit this exact original-project reference into ONE isolated game sprite. Preserve one-to-one the visible structure design, camera angle, perspective, silhouette, relative proportions, engraved shapes, volcanic dark-stone and worn bronze materials, ivory trophies, red cloth, original lighting and orange architectural lights. Extract the entire freestanding grand hall, including its original roof/spires, all ivory tusks and trophies, red banners, glowing architectural slots, intact side wall, open doorway and inner darkness, attached braziers and flame, stairway and complete foundation. Do not redesign it, do not turn it to another angle, and do not add architecture, embellishments, people or characters. Remove the entire pale/grey photographic backdrop and floor, every backdrop/floor cast shadow and any ambient haze outside the object. Behind an arch/open gap, retain true transparency instead of the old background; retain real recesses of the building as dark architectural surfaces. Keep the original attached foundation/stairs as object geometry. Reframe to show the COMPLETE object including the highest tip and every bottom corner, with at least5percent genuinely transparent margin on every edge. It must be exactly one independent object, not a diorama. Native RGBA PNG with true transparent alpha outside the object; solid stone/metal/cloth remain opaque, attached flame may have natural partial alpha only locally. No checkerboard baked in, no ground/base plane beyond the architecture, no floating particles, no new text/labels/UI/watermark. Preserve all existing project marks without translating them into human lettering. High-detail2.5D asset; preserve the source rendering rather than restyling. This is a faithful adaptation of this project design, not an official franchise-certified replica.",
+          "selected": false,
+          "note": "Earlier generation retained; framing or source-fidelity revision required"
+        },
+        {
+          "nativePath": "/workspace/generated_images/exec-2d4ac8d8-ec02-4c1e-baaa-6fae737934ac.png",
+          "sha256": "6fdee997e1183142ef9528693335a8d4ade41009c127eb077e37b2befccbd1d9",
+          "referencePath": "/workspace/generated_images/exec-f8e8c7a3-9f51-4e1f-9d23-701c21e01b11.png",
+          "prompt": "REFRAME THIS EXACT TRANSPARENT SPRITE ONLY. Keep the object itself, all its details, construction, materials, perspective and angle exactly unchanged. Zoom out substantially WITHOUT changing the camera: place the ENTIRE object inside the central75percent of a portrait canvas, with at least10percent EMPTY TRANSPARENT SPACE on the left, right, above the very highest spire and below the lowest base corner. The object must be clearly smaller in the frame than the input. Do not extend stone/floor at the bottom or crop any corner. No new drawing or additional architecture. Remove any remaining ground cast shadow. Preserve the original transparent holes/openings and solid architecture; native RGBA true alpha0 outside, solid materials near-opaque, same attached flames only. No visible background, checkerboard, vignette or glow. Output one isolated object with complete generous transparent breathing room on ALL FOUR edges. This is only a canvas-framing correction, not a redesign.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-032",
+      "sourceId": "HWA160-032",
+      "moduleId": "HWA160-032",
+      "label": "monument cérémoniel yautja aux braises ardentes",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-032.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-032.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-032_monument-ceremoniel-yautja-aux-braises-ardentes.png",
+        "sha256": "69aa6d5b9df0252aeca9a559cb351feb388fda4a8a98c750021869ec463134f3",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-f2dd9913-5baa-4699-90bf-1f4f79d38159.png",
+      "sha256": "813ff1d2079fb280715dbb30c0896dc8a2b26c6618898c7fe9efaec2dcd4b0f8",
+      "bytes": 1759850,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 942437,
+        "nearOpaquePixelsAlpha240": 552964,
+        "partialAlphaPixels": 628372,
+        "visibleBoundsAlpha16": [
+          131,
+          166,
+          991,
+          1220
+        ],
+        "marginsFractionAlpha16": [
+          0.11675579322638147,
+          0.11840228245363767,
+          0.11675579322638147,
+          0.12981455064194009
+        ],
+        "transparentFraction": 0.5991167443504442,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          561.0,
+          1219
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-f2dd9913-5baa-4699-90bf-1f4f79d38159.png",
+          "sha256": "813ff1d2079fb280715dbb30c0896dc8a2b26c6618898c7fe9efaec2dcd4b0f8",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-032_monument-ceremoniel-yautja-aux-braises-ardentes.png",
+          "prompt": "Create a transparent game sprite by editing the exact provided project reference. Preserve the object design one-to-one: all geometry and visible structural components, the source camera angle and perspective, dark volcanic stone, worn bronze trim, red banners, ivory tusks/trophies, orange inset architectural lights, original texture/rendering. SUBJECT to isolate: the entire freestanding ceremonial monument, including its two tall side pillars, tall ivory tusks and crest, suspended trophies and banners, central independent-looking brazier on its attached pedestal, front stair and complete common architectural foundation. CRITICAL CANVAS CHANGE: zoom out/reframe the SAME object to occupy only the central70percent of a portrait canvas; leave at least10percent EMPTY TRANSPARENT MARGIN on every side, above highest tip and below lowest base corner. Do not simply keep the source framing because it is too close to edges. Preserve every component's relative proportions and the source orientation, not an invented 35degree view. Remove the entire pale grey backdrop, floor plane, floor shadows and exterior haze; retain ONLY architecture and its attached base/stairs, cloth, trophies and local flames. No added people, objects, invented ornaments, text, labels, UI or watermark. One independent object, never a landscape or full village. Native RGBA transparent alpha0 outside, near-opaque solid object interior, no checkerboard/baked vignette/glow. Attached flames may stay locally translucent. The entire object must fit and no edge may be clipped. Treat as an original-project adaptation, not a canonical franchise-certified building.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-040",
+      "sourceId": "HWA160-040",
+      "moduleId": "HWA160-040",
+      "label": "pavillon de chasse yautja aux lueurs ambrées",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-040.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-040.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-040_pavillon-de-chasse-yautja-aux-lueurs-ambrees.png",
+        "sha256": "b0de4960609699c977e49d4deeaa0908392d27b881257e16af6a0d665b9630bb",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-cff0e7d6-dd65-43f4-894f-cc4f32b52f37.png",
+      "sha256": "548d7f226bc7603eee260cc5a391ce7da386a554085ae64f58aa2e4565ec5cea",
+      "bytes": 1494348,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1014550,
+        "nearOpaquePixelsAlpha240": 514331,
+        "partialAlphaPixels": 556930,
+        "visibleBoundsAlpha16": [
+          71,
+          284,
+          1055,
+          1097
+        ],
+        "marginsFractionAlpha16": [
+          0.06327985739750445,
+          0.20256776034236804,
+          0.059714795008912656,
+          0.21754636233951496
+        ],
+        "transparentFraction": 0.6449597086921917,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          563.0,
+          1096
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-cff0e7d6-dd65-43f4-894f-cc4f32b52f37.png",
+          "sha256": "548d7f226bc7603eee260cc5a391ce7da386a554085ae64f58aa2e4565ec5cea",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-040_pavillon-de-chasse-yautja-aux-lueurs-ambrees.png",
+          "prompt": "Create a transparent game sprite by editing the exact provided project reference. Preserve the object design one-to-one: all geometry and visible structural components, the source camera angle and perspective, dark volcanic stone, worn bronze trim, red banners, ivory tusks/trophies, orange inset architectural lights, original texture/rendering. SUBJECT to isolate: the entire freestanding hunting pavilion, preserving its asymmetrical long low roof, two ivory tusks, three roof spires, hide covers, engraved side wall, hanging trophies and banners, entrance, front stairway and complete architectural footing. CRITICAL CANVAS CHANGE: zoom out/reframe the SAME object to occupy only the central70percent of a portrait canvas; leave at least10percent EMPTY TRANSPARENT MARGIN on every side, above highest tip and below lowest base corner. Do not simply keep the source framing because it is too close to edges. Preserve every component's relative proportions and the source orientation, not an invented 35degree view. Remove the entire pale grey backdrop, floor plane, floor shadows and exterior haze; retain ONLY architecture and its attached base/stairs, cloth, trophies and local flames. No added people, objects, invented ornaments, text, labels, UI or watermark. One independent object, never a landscape or full village. Native RGBA transparent alpha0 outside, near-opaque solid object interior, no checkerboard/baked vignette/glow. Attached flames may stay locally translucent. The entire object must fit and no edge may be clipped. Treat as an original-project adaptation, not a canonical franchise-certified building.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-064",
+      "sourceId": "HWA160-064",
+      "moduleId": "HWA160-064",
+      "label": "Résidence noble Yautja aux lueurs d’ambre",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-064.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-064.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-064_residence-noble-yautja-aux-lueurs-d-ambre.png",
+        "sha256": "ce3619123638aac7228d372758556b023d95feac9dffb99d70fd3acfea1a7d80",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-12540664-b014-46b0-a78c-2b8f8119cffe.png",
+      "sha256": "63fb0c824ab9a8da63a5bb73cb767f41abc3fa084f7435b6f0451ed990a4bc84",
+      "bytes": 1560929,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1030744,
+        "nearOpaquePixelsAlpha240": 507829,
+        "partialAlphaPixels": 540174,
+        "visibleBoundsAlpha16": [
+          139,
+          215,
+          979,
+          1137
+        ],
+        "marginsFractionAlpha16": [
+          0.12388591800356506,
+          0.15335235378031384,
+          0.12745098039215685,
+          0.1890156918687589
+        ],
+        "transparentFraction": 0.6552543984783642,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          559.0,
+          1136
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-12540664-b014-46b0-a78c-2b8f8119cffe.png",
+          "sha256": "63fb0c824ab9a8da63a5bb73cb767f41abc3fa084f7435b6f0451ed990a4bc84",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-064_residence-noble-yautja-aux-lueurs-d-ambre.png",
+          "prompt": "Edit the exact supplied project reference into a single transparent game sprite. Faithfully preserve the source design one-to-one: same geometry, silhouette, component counts, scale relationships, engraved forms, materials, bronze/basalt/ivory colors, cloth wear, orange architectural lights and local flames. SUBJECT TO ISOLATE: The entire single tall noble residence, including its three uneven black/bronze crown spires, ivory tusk buttresses, dark trapezoidal walls, recessed orange light slits, projecting right-side two balcony levels with bone railings and red awnings/banners, small bone trophies, triangular front stone door relief, attached foundation and entry steps. Preserve all sides that are already visible at precisely the same source perspective. CRITICAL CANVAS CHANGE: zoom out/reframe the SAME whole object to occupy only the central 70 percent of the portrait canvas. Leave at least TEN percent EMPTY TRANSPARENT MARGIN on all FOUR sides, including above the tallest spike and beneath the lowest attached foundation. The object must be visibly smaller than in the reference; do not keep source framing. Remove the whole pale-grey backdrop, floor plane, floor cast shadow, smoke cloud and detached haze. Retain only the object, its physically attached architecture, trophies and short local flames. Outside the silhouette alpha must be zero. Solid building/bones/cloth must be near-opaque. Preserve source lighting on materials without adding a background glow. No new objects, new ornament, people, text labels, painted background, floor, island, terrain patch, camera change or redesign. Output clean native RGBA transparent sprite, not a concept scene. This is a project-reference adaptation, not a claim of official canon certification.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-068",
+      "sourceId": "HWA160-068",
+      "moduleId": "HWA160-068",
+      "label": "Sanctuaire Yautja aux cristaux flamboyants",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-068.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-068.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-068_sanctuaire-yautja-aux-cristaux-flamboyants.png",
+        "sha256": "f69f87b0dfbd6231a9a625b2c082af51bf1a26ac009e3d72c911c646fe6bfd17",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-63405bc8-c401-48ce-b031-11dd18aad190.png",
+      "sha256": "8aa5e5e9d8e50d33026609d44f3f64cc9fd4902715973ae94def6e9caa5bdadd",
+      "bytes": 1526929,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1005669,
+        "nearOpaquePixelsAlpha240": 525042,
+        "partialAlphaPixels": 565982,
+        "visibleBoundsAlpha16": [
+          142,
+          202,
+          981,
+          1174
+        ],
+        "marginsFractionAlpha16": [
+          0.1265597147950089,
+          0.14407988587731813,
+          0.12566844919786097,
+          0.16262482168330955
+        ],
+        "transparentFraction": 0.6393139670600441,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          561.5,
+          1173
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-63405bc8-c401-48ce-b031-11dd18aad190.png",
+          "sha256": "8aa5e5e9d8e50d33026609d44f3f64cc9fd4902715973ae94def6e9caa5bdadd",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-068_sanctuaire-yautja-aux-cristaux-flamboyants.png",
+          "prompt": "Edit the exact supplied project reference into a single transparent game sprite. Faithfully preserve the source design one-to-one: same geometry, silhouette, component counts, scale relationships, engraved forms, materials, bronze/basalt/ivory colors, cloth wear, orange architectural lights and local flames. SUBJECT TO ISOLATE: The entire one shrine including two tall black central spires, two huge ivory outer curved tusks with hanging skull/bone trophies, two red side banners, central helmet relief inside pointed niche, dark bronze basalt shrine and common stone stair foundation, central orange crystal bowl pedestal and the two attached side braziers. Keep these local flames tight around their existing bowls. Preserve exactly the source camera and its near-frontal slight angled view. CRITICAL CANVAS CHANGE: zoom out/reframe the SAME whole object to occupy only the central 70 percent of the portrait canvas. Leave at least TEN percent EMPTY TRANSPARENT MARGIN on all FOUR sides, including above the tallest spike and beneath the lowest attached foundation. The object must be visibly smaller than in the reference; do not keep source framing. Remove the whole pale-grey backdrop, floor plane, floor cast shadow, smoke cloud and detached haze. Retain only the object, its physically attached architecture, trophies and short local flames. Outside the silhouette alpha must be zero. Solid building/bones/cloth must be near-opaque. Preserve source lighting on materials without adding a background glow. No new objects, new ornament, people, text labels, painted background, floor, island, terrain patch, camera change or redesign. Output clean native RGBA transparent sprite, not a concept scene. This is a project-reference adaptation, not a claim of official canon certification.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-073",
+      "sourceId": "HWA160-073",
+      "moduleId": "HWA160-073",
+      "label": "Statue ancestrale Yautja monumentale",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-073.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-073.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-073_statue-ancestrale-yautja-monumentale.png",
+        "sha256": "f280cefd30019f10d907dda0275354946e77488e1eea045528add7b58b8213bc",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-ab5a175a-bd50-4428-b0e8-2d9159642554.png",
+      "sha256": "ff322ff76849cd1e6361feec51d56c915239c49916464879920e5a968eb2ea22",
+      "bytes": 1560197,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 977523,
+        "nearOpaquePixelsAlpha240": 551976,
+        "partialAlphaPixels": 593845,
+        "visibleBoundsAlpha16": [
+          182,
+          155,
+          941,
+          1217
+        ],
+        "marginsFractionAlpha16": [
+          0.1622103386809269,
+          0.11055634807417974,
+          0.16131907308377896,
+          0.13195435092724678
+        ],
+        "transparentFraction": 0.6214212698436916,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          561.5,
+          1216
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-ab5a175a-bd50-4428-b0e8-2d9159642554.png",
+          "sha256": "ff322ff76849cd1e6361feec51d56c915239c49916464879920e5a968eb2ea22",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-073_statue-ancestrale-yautja-monumentale.png",
+          "prompt": "Edit the exact supplied project reference into a single transparent game sprite. Faithfully preserve the source design one-to-one: same geometry, silhouette, component counts, scale relationships, engraved forms, materials, bronze/basalt/ivory colors, cloth wear, orange architectural lights and local flames. SUBJECT TO ISOLATE: The complete single ancestral warrior statue monument as one attached structure. Preserve its central muscular armored helmeted Yautja stone/bronze figure with lowered left fist, raised right hand holding the tall three-point spear, long front dark red loin-banner, front large long alien skull under left foot, three rear dark spires, ivory tusk posts, two large red side banners, attached rear trophies and front side skull ornaments, two local braziers, common dark stepped plinth and tiny central front steps. Retain exact original frontal camera, proportions, pose and attached details. CRITICAL CANVAS CHANGE: zoom out/reframe the SAME whole object to occupy only the central 70 percent of the portrait canvas. Leave at least TEN percent EMPTY TRANSPARENT MARGIN on all FOUR sides, including above the tallest spike and beneath the lowest attached foundation. The object must be visibly smaller than in the reference; do not keep source framing. Remove the whole pale-grey backdrop, floor plane, floor cast shadow, smoke cloud and detached haze. Retain only the object, its physically attached architecture, trophies and short local flames. Outside the silhouette alpha must be zero. Solid building/bones/cloth must be near-opaque. Preserve source lighting on materials without adding a background glow. No new objects, new ornament, people, text labels, painted background, floor, island, terrain patch, camera change or redesign. Output clean native RGBA transparent sprite, not a concept scene. This is a project-reference adaptation, not a claim of official canon certification.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-081",
+      "sourceId": "HWA160-081",
+      "moduleId": "HWA160-081",
+      "label": "Totem Yautja aux trophées ancestraux",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-081.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-081.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-081_totem-yautja-aux-trophees-ancestraux.png",
+        "sha256": "1b6e49283a4a22836a431ecdcfbdd57290c67198ab3e295abae235e437850bab",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-f153beb5-92d9-4e72-83bc-d0fe16703f87.png",
+      "sha256": "d86b19f99988ab26250c1db3277b8c092f68383c5abbb13f6907c28188f9ce1f",
+      "bytes": 1248600,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1129049,
+        "nearOpaquePixelsAlpha240": 401271,
+        "partialAlphaPixels": 442402,
+        "visibleBoundsAlpha16": [
+          233,
+          165,
+          894,
+          1233
+        ],
+        "marginsFractionAlpha16": [
+          0.20766488413547238,
+          0.11768901569186876,
+          0.20320855614973263,
+          0.12054208273894436
+        ],
+        "transparentFraction": 0.7177478824495691,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          563.5,
+          1232
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-f153beb5-92d9-4e72-83bc-d0fe16703f87.png",
+          "sha256": "d86b19f99988ab26250c1db3277b8c092f68383c5abbb13f6907c28188f9ce1f",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-081_totem-yautja-aux-trophees-ancestraux.png",
+          "prompt": "Edit the exact supplied project reference into a single transparent game sprite. Faithfully preserve the source design one-to-one: same geometry, silhouette, component counts, scale relationships, engraved forms, materials, bronze/basalt/ivory colors, cloth wear, orange architectural lights and local flames. SUBJECT TO ISOLATE: The complete single tall angular trophy totem. Preserve the same sloped dark basalt/bronze column, three unequal top spires with orange slits, raised top plaque, central hanging vertebral spine, four ivory tusks at differing heights, side hanging alien skulls and bone strings, three red banners at different heights, helmet relief near lower front, three attached small braziers and common stepped splayed stone base. Retain exactly the source three-quarter camera with its visible left side, tall proportions and attached details. CRITICAL CANVAS CHANGE: zoom out/reframe the SAME whole object to occupy only the central 70 percent of the portrait canvas. Leave at least TEN percent EMPTY TRANSPARENT MARGIN on all FOUR sides, including above the tallest spike and beneath the lowest attached foundation. The object must be visibly smaller than in the reference; do not keep source framing. Remove the whole pale-grey backdrop, floor plane, floor cast shadow, smoke cloud and detached haze. Retain only the object, its physically attached architecture, trophies and short local flames. Outside the silhouette alpha must be zero. Solid building/bones/cloth must be near-opaque. Preserve source lighting on materials without adding a background glow. No new objects, new ornament, people, text labels, painted background, floor, island, terrain patch, camera change or redesign. Output clean native RGBA transparent sprite, not a concept scene. This is a project-reference adaptation, not a claim of official canon certification.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-084",
+      "sourceId": "HWA160-084",
+      "moduleId": "HWA160-084",
+      "label": "Tour de guet Yautja monumentale",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-084.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-084.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-084_tour-de-guet-yautja-monumentale.png",
+        "sha256": "2110038942bcc29cbf01cb583f1c6afbee16eb7fb3f48ee3c2426421ca3e152a",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": null,
+        "moduleExtraction": false
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-a267fa9c-bfd3-488e-b6c8-401ea5eff95e.png",
+      "sha256": "a1ab78645450e0a1f38cb1b6add417d6427c49d2dd8f9a53eba82b5391440a7e",
+      "bytes": 1992929,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 803229,
+        "nearOpaquePixelsAlpha240": 698746,
+        "partialAlphaPixels": 767997,
+        "visibleBoundsAlpha16": [
+          117,
+          86,
+          1006,
+          1312
+        ],
+        "marginsFractionAlpha16": [
+          0.10427807486631016,
+          0.06134094151212553,
+          0.10338680926916222,
+          0.06419400855920114
+        ],
+        "transparentFraction": 0.510620809080992,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          561.5,
+          1311
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Original silhouette, architectural components, materials and source camera used as design anchors; environment/floor removal inspected. Exact artistic fidelity remains open for human review."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-a267fa9c-bfd3-488e-b6c8-401ea5eff95e.png",
+          "sha256": "a1ab78645450e0a1f38cb1b6add417d6427c49d2dd8f9a53eba82b5391440a7e",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-084_tour-de-guet-yautja-monumentale.png",
+          "prompt": "Edit the exact supplied project reference into one transparent game sprite of the selected single independent object. Faithfully preserve the project design one-to-one at the visible reference level: same geometry, silhouette, arrangement, visible components, proportions, dark basalt/bronze/ivory materials, engraved shapes, colors and attached details. SUBJECT TO ISOLATE: The entire single watchtower, with three dark top spires and plaque on its broad polygonal roof, ivory tusks curving around the upper roof corners, open-sided upper guard balcony with its bone trophies and railing, three red banners hanging around the gallery, splayed stone tapered tower base, the attached diagonal staircase climbing the visible right side, helmet relief near the lower front and two attached flame bowls. Preserve precisely this source three-quarter camera, same architecture and asymmetry. CRITICAL CANVAS: reframe that SAME selected complete object in the central 70 percent of the canvas, with at least TEN percent EMPTY TRANSPARENT MARGIN on ALL FOUR SIDES. For a source scene, output ONLY the named isolated module, never the scene or several buildings. Remove floor plane, floor cast shadows, background, detached haze and smoke. Only the object's physical architecture and tight existing local flame remain. Outside the silhouette alpha zero; solid parts near-opaque. Preserve source lighting but no background glow. No invented objects, ornament, people, text, new camera, new terrain or redesign. Native RGBA sprite, faithful project-reference candidate, not official canon certification.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-014-module-ritual-circle",
+      "sourceId": "HWA160-014",
+      "moduleId": "HWA160-014-module-ritual-circle",
+      "label": "Enclave volcanique — cercle rituel à défenses",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-014-module-ritual-circle.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-014-module-ritual-circle.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-014_enclave-yautja-sous-les-volcans.png",
+        "sha256": "13e88102ee07de886839a3629374bb512aee539586cb5b56fe83e861683ea18f",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "scope": "COMPOSITE_A_DECOMPOSER",
+        "moduleRegionPixels": [
+          870,
+          430,
+          1115,
+          574
+        ],
+        "moduleExtraction": true
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-e2d540b3-8d36-4b8e-8e54-f570ded68b67.png",
+      "sha256": "c892cb05b3f4ef04d1796f96228c83052bef85cf49947e5caa419e0c1a3bdc82",
+      "bytes": 1702861,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1144572,
+        "nearOpaquePixelsAlpha240": 375608,
+        "partialAlphaPixels": 428292,
+        "visibleBoundsAlpha16": [
+          180,
+          191,
+          1356,
+          872
+        ],
+        "marginsFractionAlpha16": [
+          0.1171875,
+          0.1865234375,
+          0.1171875,
+          0.1484375
+        ],
+        "transparentFraction": 0.7276992797851562,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          768.0,
+          871
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Composite-source module isolated from a small scene region. Fine surface details are not established by this low-resolution source; exact component count/silhouette and material fidelity require human review. Source scene is not admitted as a complete sprite."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-ac01ee5f-9ee0-4203-af46-26e8c19e54ab.png",
+          "sha256": "30d10df23213e5896bd0042e161a8c54aeb7048704d700cfdc32c99a9c2b2e7a",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-014_enclave-yautja-sous-les-volcans.png",
+          "prompt": "Edit the exact supplied project reference into one transparent game sprite of the selected single independent object. Faithfully preserve the project design one-to-one at the visible reference level: same geometry, silhouette, arrangement, visible components, proportions, dark basalt/bronze/ivory materials, engraved shapes, colors and attached details. SUBJECT TO ISOLATE: Only the clearly visible CENTRAL RITUAL TUSK CIRCLE, in the middle of the settlement at source pixel rectangle approximately x865..1120,y430..574 in the 1672x941 image. Isolate the group of curved huge dark ivory/basalt tusk ribs leaning inward around the small central ritual flame, including only the narrow attached circular stone footing that directly belongs to this object. Preserve the exact visible rib shapes/count/arrangement and source elevated oblique camera. Remove all surrounding plaza, roads, people, buildings, lava, volcanoes, smoke, sky and background. Do not include an island or ground disc beyond the narrow architectural footing. Do not add rib detail or architecture that the reference does not show. CRITICAL CANVAS: reframe that SAME selected complete object in the central 70 percent of the canvas, with at least TEN percent EMPTY TRANSPARENT MARGIN on ALL FOUR SIDES. For a source scene, output ONLY the named isolated module, never the scene or several buildings. Remove floor plane, floor cast shadows, background, detached haze and smoke. Only the object's physical architecture and tight existing local flame remain. Outside the silhouette alpha zero; solid parts near-opaque. Preserve source lighting but no background glow. No invented objects, ornament, people, text, new camera, new terrain or redesign. Native RGBA sprite, faithful project-reference candidate, not official canon certification.",
+          "selected": false,
+          "note": "Earlier generation retained; framing or source-fidelity revision required"
+        },
+        {
+          "nativePath": "/workspace/generated_images/exec-e2d540b3-8d36-4b8e-8e54-f570ded68b67.png",
+          "sha256": "c892cb05b3f4ef04d1796f96228c83052bef85cf49947e5caa419e0c1a3bdc82",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-014_enclave-yautja-sous-les-volcans.png",
+          "prompt": "Strict local extraction by ImageGen from this exact project source image, not a redesign. Make a standalone transparent RGBA game sprite of only the specified visible module. SUBJECT: ONLY the central ritual tusk circle, the six curved dark tusk/stone ribs surrounding the central orange fire in source region x870..1115,y430..574. Preserve SIX visible ribs in the same uneven relative sizes and depth arrangement: three on each side, with two largest outer ribs and smaller inner ribs. It is NOT eight ribs, not a perfectly mirrored decorative portal. Preserve the broad open middle, plain angular cracked dark stone surfaces, slight warm metallic edging already visible, and narrow directly attached circular stone footing. Do not invent etched symbols, glyph panels, repeated mechanical red light boxes, additional ribs, a new raised altar or a large terrain island. Keep the exact source camera and observable silhouette, colors, simple materials and visible component arrangement. Do not embellish or infer unseen ornamental details. All plaza floor, people, bridge, other architecture, mountains, sky, lava, background, smoke, exterior glow and floor cast shadow must disappear with alpha zero. Retain only the object's attached narrow architectural footing and short local flame. Solid parts near-opaque. Reframe chosen object complete in central70% of canvas with TEN percent empty transparent margin on every edge. No background scene, floor, island, text labels, camera change, new objects or added design. This low-resolution original project reference determines the visible design; exact art validation stays pending.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-014-module-brazier-pillar",
+      "sourceId": "HWA160-014",
+      "moduleId": "HWA160-014-module-brazier-pillar",
+      "label": "Enclave volcanique — pilier-brasier de la place",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-014-module-brazier-pillar.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-014-module-brazier-pillar.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-014_enclave-yautja-sous-les-volcans.png",
+        "sha256": "13e88102ee07de886839a3629374bb512aee539586cb5b56fe83e861683ea18f",
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "scope": "COMPOSITE_A_DECOMPOSER",
+        "moduleRegionPixels": [
+          1116,
+          552,
+          1189,
+          693
+        ],
+        "moduleExtraction": true
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-2a42e0f7-3a21-4cf7-afde-92561c750982.png",
+      "sha256": "5696b35476e509d4314739ca5dede7ceb0e74d713c217dde22b54f4d9e9c06fb",
+      "bytes": 614945,
+      "width": 1199,
+      "height": 1312,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1250196,
+        "nearOpaquePixelsAlpha240": 305101,
+        "partialAlphaPixels": 322704,
+        "visibleBoundsAlpha16": [
+          307,
+          162,
+          863,
+          1126
+        ],
+        "marginsFractionAlpha16": [
+          0.25604670558799,
+          0.12347560975609756,
+          0.28023352793994993,
+          0.14176829268292682
+        ],
+        "transparentFraction": 0.7947400272584878,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          585.0,
+          1125
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Independent plaza brazier/pillar from a composite scene, selected by source pixel region. Small reference supports overall silhouette and colors; fine details and exact physical scale remain unqualified."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-2a42e0f7-3a21-4cf7-afde-92561c750982.png",
+          "sha256": "5696b35476e509d4314739ca5dede7ceb0e74d713c217dde22b54f4d9e9c06fb",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-014_enclave-yautja-sous-les-volcans.png",
+          "prompt": "Strict local extraction by ImageGen from this exact project source image, not a redesign. Make a standalone transparent RGBA game sprite of only the specified visible module. SUBJECT: ONLY the single freestanding tall tapered brazier pillar at the FRONT RIGHT of the central plaza, around source region x1116..1189,y552..693. It stands in front of the ritual circle near the right edge of the bridge: broad shallow bowl on top with a SHORT orange flame, dark trapezoidal tapering stone body and red vertical light slit on the visible front, small directly attached polygonal plinth. Preserve its original elevated oblique viewpoint and simple dark basalt/bronze faceted design. Do not select the left foreground huge bowl. Do not add skulls, tusks, banners, decorations, glyphs, extra pedestals, rails or any building. Keep the exact source camera and observable silhouette, colors, simple materials and visible component arrangement. Do not embellish or infer unseen ornamental details. All plaza floor, people, bridge, other architecture, mountains, sky, lava, background, smoke, exterior glow and floor cast shadow must disappear with alpha zero. Retain only the object's attached narrow architectural footing and short local flame. Solid parts near-opaque. Reframe chosen object complete in central70% of canvas with TEN percent empty transparent margin on every edge. No background scene, floor, island, text labels, camera change, new objects or added design. This low-resolution original project reference determines the visible design; exact art validation stays pending.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-029-module-trading-counter",
+      "sourceId": "HWA160-029",
+      "moduleId": "HWA160-029-module-trading-counter",
+      "label": "Marché Yautja — comptoir aux pièces exposées",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-029-module-trading-counter.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-029-module-trading-counter.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-029_marche-yautja-aux-lueurs-incandescentes.png",
+        "sha256": "a0a699ec616e9518174e0e69d96b5fb4abff66530813c8475dd34e4e96f1f1cc",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": [
+          162,
+          929,
+          554,
+          1127
+        ],
+        "moduleExtraction": true
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-277b07b6-3cb8-438f-a416-3ada194832f5.png",
+      "sha256": "cd98638a7ddad8ff4732a2e1c21e95272449ad98039f124b89f30c44ab963d29",
+      "bytes": 2005935,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 966873,
+        "nearOpaquePixelsAlpha240": 574109,
+        "partialAlphaPixels": 605991,
+        "visibleBoundsAlpha16": [
+          169,
+          194,
+          1374,
+          845
+        ],
+        "marginsFractionAlpha16": [
+          0.11002604166666667,
+          0.189453125,
+          0.10546875,
+          0.1748046875
+        ],
+        "transparentFraction": 0.6147212982177734,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          771.5,
+          844
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Furniture module isolated from the original market concept. Counter, attached hide drape and displayed wares treated as one dressed prop. The source partially obscures its right end; no complete source sheet or physical footprint is asserted. Human fidelity and occlusion review remains open."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-277b07b6-3cb8-438f-a416-3ada194832f5.png",
+          "sha256": "cd98638a7ddad8ff4732a2e1c21e95272449ad98039f124b89f30c44ab963d29",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-029_marche-yautja-aux-lueurs-incandescentes.png",
+          "prompt": "Edit the exact project source image by isolating the one selected visible prop, as a faithful transparent native RGBA game sprite. SUBJECT: ONLY the low front-left merchant COUNTER with the tawny spotted hide draped over its FRONT and the row of slanted bronze display pieces on top. Locate it in the lower-left interior of the stall, approximately source x162..554,y929..1127 in the1122x1402 image. Keep the dark metal/stone rectangular low counter body, its visible vertical supports/panels, tan spotted hanging hide, and only the exact wares/containers that sit directly on this counter already visible. Preserve exactly the same source three-quarter camera, where the broad front face and tabletop are visible. Do not include the building roof, tall pillars, any braziers, floor, back shelf unit, walls, banners, tusks, or hanging skulls. Do not invent a new stool, legs, undercarriage or details hidden by the original building. The visible reference determines the exact silhouette, proportions, materials, component arrangement and colors. Preserve source camera and source detail; no redesign, no extra ornament, no recreation of the whole scene. Place the complete selected visible object in the central70percent of the canvas, with at least TEN percent EMPTY TRANSPARENT margin on all four sides. Remove every background/floor pixel, cast shadow, exterior glow and detached haze; alpha zero outside its silhouette and near-opaque on solid prop surfaces. Retain only materials and items physically belonging to this selected prop as specified. No text labels or added objects. This is an original project reference candidate; artistic one-to-one fidelity remains subject to human verification.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    },
+    {
+      "id": "p0-20261113-homeworld-HWA160-029-module-hanging-skull",
+      "sourceId": "HWA160-029",
+      "moduleId": "HWA160-029-module-hanging-skull",
+      "label": "Marché Yautja — trophée crânien suspendu",
+      "src": "/game/p0-sprites-20261113/homeworld/HWA160-029-module-hanging-skull.png",
+      "repositoryPath": "public/game/p0-sprites-20261113/homeworld/HWA160-029-module-hanging-skull.png",
+      "source": {
+        "path": "production/homeworld-v160/originals/HWA160-029_marche-yautja-aux-lueurs-incandescentes.png",
+        "sha256": "a0a699ec616e9518174e0e69d96b5fb4abff66530813c8475dd34e4e96f1f1cc",
+        "width": 1122,
+        "height": 1402,
+        "mode": "RGB",
+        "scope": "RENDU_INDEPENDANT",
+        "moduleRegionPixels": [
+          296,
+          680,
+          380,
+          857
+        ],
+        "moduleExtraction": true
+      },
+      "nativeGenerationPath": "/workspace/generated_images/exec-7faddef5-8390-4f3d-afd4-dd7e8def6f76.png",
+      "sha256": "ce4b4c44b9095bbf4f325dddbcace16d25a67824a117a03b93d3be7d34210b86",
+      "bytes": 1037263,
+      "width": 1072,
+      "height": 1467,
+      "mode": "RGBA",
+      "frameCount": 1,
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "processing": "Native ImageGen output copied byte-identically; no raster crop, resize, recolor, mirror or pixel cleanup",
+      "camera": "Original reference camera requested and used as design anchor; human projection review pending, not requalified as 35-degree world camera",
+      "physicalMetres": null,
+      "technical": {
+        "nativeAlpha": true,
+        "alpha0Pixels": 1189917,
+        "nearOpaquePixelsAlpha240": 357304,
+        "partialAlphaPixels": 382695,
+        "visibleBoundsAlpha16": [
+          269,
+          86,
+          779,
+          1331
+        ],
+        "marginsFractionAlpha16": [
+          0.25093283582089554,
+          0.05862304021813224,
+          0.2733208955223881,
+          0.09270620313565099
+        ],
+        "transparentFraction": 0.7566443091292007,
+        "wholeObjectFramingCandidate": true,
+        "suggestedImagePivot": [
+          524.0,
+          1330
+        ],
+        "pivotStatus": "Measured image-bottom candidate, not physical world-scale or collision validation"
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Faithful adaptation of an original-project image, not an official franchise-certified replica",
+        "notes": "Hanging trophy prop selected from the market awning. Visible front skull silhouette and upper suspension loop provide the reference; fine rear geometry is not qualified. No claim that the market scene itself is an independent sprite."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-7faddef5-8390-4f3d-afd4-dd7e8def6f76.png",
+          "sha256": "ce4b4c44b9095bbf4f325dddbcace16d25a67824a117a03b93d3be7d34210b86",
+          "referencePath": "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-029_marche-yautja-aux-lueurs-incandescentes.png",
+          "prompt": "Edit the exact project source image by isolating the one selected visible prop, as a faithful transparent native RGBA game sprite. SUBJECT: ONLY the large elongated ivory alien skull trophy hanging beneath the FRONT AWNING, centered around source x296..380,y680..857 in the1122x1402 image. It is the big central hanging skull with the elongated oval ridged upper cranium, deep dark eye sockets and long narrow teeth/jaw points, suspended from a small brown rope/bone loop above it. Preserve its exact original narrow asymmetric skull silhouette, ivory weathering, dark cavities, and original near-frontal source viewing angle. Retain only its own short suspension loop/cord. Remove all neighboring trophy strings, little skulls, bones, canopy, beams, banners, building, flame, floor and background. Do not turn it into a Predator helmet, humanoid skull, generic horned demon or different alien species. Do not add horns, new teeth, chains, stand, pedestal or decorations. The visible reference determines the exact silhouette, proportions, materials, component arrangement and colors. Preserve source camera and source detail; no redesign, no extra ornament, no recreation of the whole scene. Place the complete selected visible object in the central70percent of the canvas, with at least TEN percent EMPTY TRANSPARENT margin on all four sides. Remove every background/floor pixel, cast shadow, exterior glow and detached haze; alpha zero outside its silhouette and near-opaque on solid prop surfaces. Retain only materials and items physically belonging to this selected prop as specified. No text labels or added objects. This is an original project reference candidate; artistic one-to-one fidelity remains subject to human verification.",
+          "selected": true,
+          "note": "Current selected native output"
+        }
+      ]
+    }
+  ]
+}

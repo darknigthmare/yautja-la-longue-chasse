@@ -1,0 +1,3124 @@
+{
+  "schemaVersion": 1,
+  "batch": "p0-structures-20261113",
+  "sourceCommit": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "sourceBriefPath": "/tmp/p0-sprites-20261113/inventory-agent/clan-war-generation-source-designs.json",
+  "sourceBriefSha256": "745dea89303d712c80565072bb641ce31d50f18ae605569c693fdcf234b97552",
+  "tool": "image_gen.imagegen",
+  "camera": "orthographic-three-quarter;35degree brief",
+  "lighting": "upper-left",
+  "style": "darkteal-charcoal gunmetal with weathered bronze; original-project detailed2.5D RTS",
+  "scope": "18 original-project design identities, three native six-cell pages, one static pose per identity. These are candidate designs; canonical franchise fidelity, animation and gameplay integration are not certified.",
+  "humanArtValidation": false,
+  "canonicalFranchiseCertification": false,
+  "pixelsEditedByCpu": false,
+  "referenceFiles": [
+    {
+      "path": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+      "bytes": 698686,
+      "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/beacon-active.png",
+      "bytes": 28053,
+      "sha256": "e693f5272c6132243d8762aeeb6f00bdf40e84904c4d8f5b2d59a4dbd60052f4"
+    },
+    {
+      "path": "/workspace/generated_images/exec-0c417a15-0327-421a-88f3-7c3b91aaf502.png",
+      "bytes": 2164707,
+      "sha256": "8361836c3d7f6713a41a636a8be3c81af32c600bae55a2e74f02e694f32ea8cc"
+    }
+  ],
+  "pages": [
+    {
+      "id": "s01-s06",
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "src": "/game/p0-sprites-20261113/structures/s01-s06.png",
+      "nativeSource": "/workspace/generated_images/exec-0c417a15-0327-421a-88f3-7c3b91aaf502.png",
+      "sha256": "8361836c3d7f6713a41a636a8be3c81af32c600bae55a2e74f02e694f32ea8cc",
+      "bytes": 2164707,
+      "width": 1536,
+      "height": 1024,
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "nativeBytesUnchanged": true,
+      "pixelsEditedByCpu": false,
+      "status": "generated-candidate",
+      "alpha0Ratio": 0.5897382100423177,
+      "nearOpaquePixels": 457891,
+      "visibleBoundsThreshold": 16,
+      "minimumVisibleCellMarginPixels": 30,
+      "cells": [
+        {
+          "id": "W3-S01",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            108,
+            30,
+            432,
+            464
+          ],
+          "visibleMargins": [
+            108,
+            30,
+            80,
+            48
+          ],
+          "pivot": [
+            270,
+            464
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.954167968343226
+        },
+        {
+          "id": "W3-S02",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            36,
+            92,
+            477,
+            424
+          ],
+          "visibleMargins": [
+            36,
+            92,
+            35,
+            88
+          ],
+          "pivot": [
+            256.5,
+            424
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.970171818007295
+        },
+        {
+          "id": "W3-S03",
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            53,
+            92,
+            452,
+            431
+          ],
+          "visibleMargins": [
+            53,
+            92,
+            60,
+            81
+          ],
+          "pivot": [
+            252.5,
+            431
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9760292772186643
+        },
+        {
+          "id": "W3-S04",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            64,
+            65,
+            469,
+            469
+          ],
+          "visibleMargins": [
+            64,
+            65,
+            43,
+            43
+          ],
+          "pivot": [
+            266.5,
+            469
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9605561613958561
+        },
+        {
+          "id": "W3-S05",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            120,
+            31,
+            387,
+            478
+          ],
+          "visibleMargins": [
+            120,
+            31,
+            125,
+            34
+          ],
+          "pivot": [
+            253.5,
+            478
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9358672548168125
+        },
+        {
+          "id": "W3-S06",
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            41,
+            58,
+            453,
+            464
+          ],
+          "visibleMargins": [
+            41,
+            58,
+            59,
+            48
+          ],
+          "pivot": [
+            247,
+            464
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9613340505648198
+        }
+      ],
+      "prompt": "Create a native transparent game sprite ATLAS containing EXACTLY SIX independent Yautja field structures in an exact regular grid of3columns by2rows. Landscape3:2, preferably1536x1024, each gridcell512x512. Every entire structure and every foot must remain strictly inside its own cell with ATLEAST8percent clear transparent margin; no overlap or elements crossing cells. No text or grid lines. The first reference is a MATERIAL AND RENDERING STYLE anchor: dark teal gunmetal/charcoal panels, restrained weathered bronze trims, small amber lights, machined geometric alien tooling marks, believable bevels and edge wear. Second reference shows the route-beacon silhouette for slot5. This is detailed2.5D handpainted RTS art for original project designs, not replicas of named film props. Consistent orthographic three-quarter camera elevated35degrees; fronts face down-right; soft upper-left illumination. Native alpha0 background, solid opaque structures alpha255 except antialias edges; no lighting haze/cast floor shadows. One functional unoccupied assembly per cell, never a landscape/diorama or character. EXACT slot order left-to-right top-to-bottom: TOPLEFT W3-S01 observation post: a compact raised observation platform on four sturdy splayed supports with angular partial canopy/waist cover and an empty lookout position, NO gun; TOPMIDDLE W3-S02 relief shelter: a low freestanding protective angular canopy with an empty simple low resting berth underneath, no patient/actor; TOPRIGHT W3-S03 logistics cache: a self-contained low lockable armored storage shelter/cabinet with several integrated sealed storage compartments, no loose supplies or currency; BOTTOMLEFT W3-S04 anchoring workshop: stationary rugged repair workbench with attached anchor clamps, a small integrated hand winch and tidy mechanical repair tools, no person; BOTTOMMIDDLE W3-S05 route beacon: exactly the second reference's slender tall mast, geometric amber lantern head with two short prongs, diagonal bronze marks and three splayed feet, keep its silhouette faithful and upgrade material detail; BOTTOMRIGHT W3-S06 firing platform: a small raised slatted platform with directional armored cover and limited railing, open empty firing position, NO gun or occupant. Keep each role immediately distinguishable and readable at64–256px. No invented army emblems or readable runes. Entire geometry including tops and feet, no cropping. Exclude characters, creatures, vehicles, guns, human military designs, ground patches, terrain, water, floor/base/plinth not intrinsic to the assembly, labels, letters, numbers, frames, checkerboard, watermark, smoky glow, UI icons and duplicated structures. Exactly SIX objects.",
+      "referenceIndexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "s07-s12",
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "src": "/game/p0-sprites-20261113/structures/s07-s12.png",
+      "nativeSource": "/workspace/generated_images/exec-5058d6fc-ee0e-4490-859c-a632095a36ea.png",
+      "sha256": "0314da26b2b08230b9804e5456c51bbf7f892d6aecd9a5d1922ec1ca6ea6a338",
+      "bytes": 2272847,
+      "width": 1536,
+      "height": 1024,
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "nativeBytesUnchanged": true,
+      "pixelsEditedByCpu": false,
+      "status": "generated-candidate",
+      "alpha0Ratio": 0.5937703450520834,
+      "nearOpaquePixels": 452611,
+      "visibleBoundsThreshold": 16,
+      "minimumVisibleCellMarginPixels": 18,
+      "cells": [
+        {
+          "id": "W3-S07",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            62,
+            69,
+            486,
+            454
+          ],
+          "visibleMargins": [
+            62,
+            69,
+            26,
+            58
+          ],
+          "pivot": [
+            274,
+            454
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9614028511520576
+        },
+        {
+          "id": "W3-S08",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            38,
+            97,
+            477,
+            442
+          ],
+          "visibleMargins": [
+            38,
+            97,
+            35,
+            70
+          ],
+          "pivot": [
+            257.5,
+            442
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9121512611655452
+        },
+        {
+          "id": "W3-S09",
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            61,
+            82,
+            447,
+            443
+          ],
+          "visibleMargins": [
+            61,
+            82,
+            65,
+            69
+          ],
+          "pivot": [
+            254,
+            443
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9663469793225244
+        },
+        {
+          "id": "W3-S10",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            64,
+            48,
+            456,
+            426
+          ],
+          "visibleMargins": [
+            64,
+            48,
+            56,
+            86
+          ],
+          "pivot": [
+            260,
+            426
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9417011068357798
+        },
+        {
+          "id": "W3-S11",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            30,
+            46,
+            484,
+            423
+          ],
+          "visibleMargins": [
+            30,
+            46,
+            28,
+            89
+          ],
+          "pivot": [
+            257,
+            423
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9761079268667328
+        },
+        {
+          "id": "W3-S12",
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            125,
+            18,
+            369,
+            441
+          ],
+          "visibleMargins": [
+            125,
+            18,
+            143,
+            71
+          ],
+          "pivot": [
+            247,
+            441
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9504346922517405
+        }
+      ],
+      "initialPrompt": "Create a native-alpha transparent game sprite ATLAS of EXACTLY SIX independent original-project Yautja field structures,3columns by2rows, landscape1536x1024, six512x512cells. Whole object and all supports in each own cell with8percent clear gutters; no overlap/cropping. Reference images fix material/style: worn darkteal gunmetal, charcoal plating, subdued bronze trims, tiny amber/orange statuslights, geometric NON-readable tooling marks, detailed2.5D RTS/handpainted rendering. Orthographic3/4 camera elevated35degrees looking down, fronts face lower-right, upper-left light. One connected functional empty assembly per cell, no loose scenery or actors. Solid structures opaque (alpha255 ornear255), backgroundalpha0; edge antialias only. No floor, terrain patches, castshadow, smoke/glow/haze, humans/creatures/vehicles, labels/letters/numbers/gridlines/borders/watermark. Readableat64–256px. These are original project structures, not official franchise props. EXACT six slots lefttoright thennextrow: TOPLEFT W3-S07 reinforced threshold: compact armored gate frame with two thick flanking pillars and defensive cover, visibly open passage, not a magic barrier; TOPMIDDLE W3-S08 rope bridge: one freestanding narrow suspended slatted bridge span, rugged fiber suspension ropes, exactly THREE clearly distinct ground anchoring bases attached to it(two at near end andone at far end), no riverbanks/rocks/river/land; TOPRIGHT W3-S09 light quay: a modest modular pier/landing deck with short mooring cleats and only a few integral supports, no water/boat/ship; BOTTOMLEFT W3-S10 mount rest area: empty compact sheltering rail/awning assembly with an empty trough and harness rail, no animals/people or loose gear; BOTTOMMIDDLE W3-S11 medical post: small protective angular canopy with one empty treatment berth and closed integrated storage, NO patient, visible medical-machine character without redcross orhuman lettering; BOTTOMRIGHT W3-S12 signal relay: slender angular comms mast with a Y-antenna and small console, consistent with the second reference relay geometry, no giant dish, no teleport/effect. Do not substitute more storage cupboards for these six distinct functions.",
+      "correctionPrompt": "Technical cutout EDIT of this EXACT SIX-OBJECT ATLAS. Preserve the six structures, their slots, designs, construction, colors, detailed textures, 35degree camera and upperleft light. REMOVE COMPLETELY every background pixel and all gray/white/brown backdrop haze and cast shadows. Background MUST be native fully transparent alpha0, NOT a gray rectangle at low opacity, NOT an opaque checkerboard, NOT pale opacity16. All solid structure pixels stay fully opaque nearalpha255 with a thin normal antialiased edge only. Background holes inside the open gate and bridge, under roofs, between supports, between rope rails must also be fully alpha0. No floor or ground shadow. Keep all six full objects arranged in the SAME3column by2row grid on1536x1024; gently reduce each within its own512square cell so the entire silhouette including every foot and antenna has ATLEAST40pixels of transparent clear margin on every cell edge; do not crop or reposition into other cells. Top row: armored open gate, suspended ropebridge with exactlyTHREEanchor bases(two near/onefar), empty light quay. Bottomrow: empty mount shelter with trough, empty medical station, Y-antenna signalrelay. No addition/removal/duplication of objects, no characters, no text/grid/border/watermark. This is ONLY alpha/background/gutter correction of the provided six sprites. Export actual RGBA PNG with truly empty transparent outside, not an image painted on white.",
+      "referenceIndexes": [
+        2,
+        0
+      ],
+      "correctionReference": "/workspace/generated_images/exec-abac38f1-2062-4063-bce3-04e04ebc1fbb.png"
+    },
+    {
+      "id": "s13-s18",
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "src": "/game/p0-sprites-20261113/structures/s13-s18.png",
+      "nativeSource": "/workspace/generated_images/exec-8b6ce153-4b9c-408c-811f-335c8314d7e0.png",
+      "sha256": "7b0bc7d53ffd0b0b836e4726035bcdf5338fe3f3d7358cc84eda863f3cd7402d",
+      "bytes": 2490903,
+      "width": 1536,
+      "height": 1024,
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "nativeBytesUnchanged": true,
+      "pixelsEditedByCpu": false,
+      "status": "generated-candidate",
+      "alpha0Ratio": 0.5180308024088541,
+      "nearOpaquePixels": 617991,
+      "visibleBoundsThreshold": 16,
+      "minimumVisibleCellMarginPixels": 15,
+      "cells": [
+        {
+          "id": "W3-S13",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            51,
+            33,
+            471,
+            470
+          ],
+          "visibleMargins": [
+            51,
+            33,
+            41,
+            42
+          ],
+          "pivot": [
+            261,
+            470
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9763985846801185
+        },
+        {
+          "id": "W3-S14",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            29,
+            108,
+            481,
+            417
+          ],
+          "visibleMargins": [
+            29,
+            108,
+            31,
+            95
+          ],
+          "pivot": [
+            255,
+            417
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9784893826388442
+        },
+        {
+          "id": "W3-S15",
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            82,
+            23,
+            455,
+            472
+          ],
+          "visibleMargins": [
+            82,
+            23,
+            57,
+            40
+          ],
+          "pivot": [
+            268.5,
+            472
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9607434812468154
+        },
+        {
+          "id": "W3-S16",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            27,
+            39,
+            497,
+            456
+          ],
+          "visibleMargins": [
+            27,
+            39,
+            15,
+            56
+          ],
+          "pivot": [
+            262,
+            456
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9720510005910664
+        },
+        {
+          "id": "W3-S17",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            23,
+            66,
+            489,
+            425
+          ],
+          "visibleMargins": [
+            23,
+            66,
+            23,
+            87
+          ],
+          "pivot": [
+            256,
+            425
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9518390530664125
+        },
+        {
+          "id": "W3-S18",
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "visibleAlphaThreshold": 16,
+          "visibleBoundsInCell": [
+            31,
+            67,
+            482,
+            446
+          ],
+          "visibleMargins": [
+            31,
+            67,
+            30,
+            66
+          ],
+          "pivot": [
+            256.5,
+            446
+          ],
+          "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+          "hasTransparentPixels": true,
+          "nearOpaqueRatioOfVisible": 0.9680193286916762
+        }
+      ],
+      "prompt": "Create a native-alpha transparent game sprite ATLAS of EXACTLY SIX independent original-project Yautja field structures,3columns by2rows, landscape1536x1024, six512x512cells. Whole object and all supports in each own cell with8percent clear gutters; no overlap/cropping. Reference images fix material/style: worn darkteal gunmetal, charcoal plating, subdued bronze trims, tiny amber/orange statuslights, geometric NON-readable tooling marks, detailed2.5D RTS/handpainted rendering. Orthographic3/4 camera elevated35degrees looking down, fronts face lower-right, upper-left light. One connected functional empty assembly per cell, no loose scenery or actors. Solid structures opaque (alpha255 ornear255), backgroundalpha0; edge antialias only. No floor, terrain patches, castshadow, smoke/glow/haze, humans/creatures/vehicles, labels/letters/numbers/gridlines/borders/watermark. Readableat64–256px. These are original project structures, not official franchise props. EXACT six slots lefttoright thennextrow: TOPLEFT W3-S13 confinement screen: a self-contained armored portal with two posts and a thin translucent amber confinement panel spanning ONLY the opening, physical powered base and side conduit, no area glow or adjacent magical wall; TOPMIDDLE W3-S14 duel emplacement: an EMPTY low octagonal open fighting boundary/platform with four small perimeter markers, no fighters/weapons/trophies and no tall roof; TOPRIGHT W3-S15 listening station: compact directional sensor array with two small sound collectors and an integrated recording console, no weapon orhuman headphones; BOTTOMLEFT W3-S16 return depot: compact covered empty stretcher loading/support rack with integrated sealed extraction container slots, no patient/body/person, no resurrection art; BOTTOMMIDDLE W3-S17 winch ring: circular low lifting frame with two opposed mechanical winch drums and a clear open central lifting gap, attached cables and hooks arranged tidily, no suspended cargo oroperators; BOTTOMRIGHT W3-S18 stopover platform: modest EMPTY angular transport landing deck with four compact perimeter markerlamps, a low boarding ramp and limited rails, no spaceship/aircraft/portal/factory/basebuilding. Six distinct functional silhouettes, not a row of identical cabinets.",
+      "referenceIndexes": [
+        2,
+        0
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "W3-S01",
+      "label": "Poste de veille",
+      "pageId": "s01-s06",
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "src": "/game/p0-sprites-20261113/structures/s01-s06.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        270,
+        464
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 6,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Observation",
+            "cell": "C6"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 6,
+            "cell": "D6"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E6"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F6"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U02",
+            "cell": "G6"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Élargit une vue depuis une position haute occupée.",
+            "cell": "H6"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Peut être contourné derrière un obstacle opaque ; aucune vision à travers la roche.",
+            "cell": "I6"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J6"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K6"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Observation",
+        "Coût RAV": 6,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U02",
+        "Effet": "Élargit une vue depuis une position haute occupée.",
+        "Limite": "Peut être contourné derrière un obstacle opaque ; aucune vision à travers la roche.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S01",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          108,
+          30,
+          432,
+          464
+        ],
+        "visibleMargins": [
+          108,
+          30,
+          80,
+          48
+        ],
+        "pivot": [
+          270,
+          464
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.954167968343226
+      }
+    },
+    {
+      "id": "W3-S02",
+      "label": "Abri de relève",
+      "pageId": "s01-s06",
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "src": "/game/p0-sprites-20261113/structures/s01-s06.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        256.5,
+        424
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 7,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Repos",
+            "cell": "C7"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 8,
+            "cell": "D7"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E7"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F7"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U17",
+            "cell": "G7"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Réduit la fatigue après un tour complet de repos et fournit une place couverte.",
+            "cell": "H7"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Nombre de places limité ; ne soigne pas une blessure majeure.",
+            "cell": "I7"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J7"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K7"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Repos",
+        "Coût RAV": 8,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U17",
+        "Effet": "Réduit la fatigue après un tour complet de repos et fournit une place couverte.",
+        "Limite": "Nombre de places limité ; ne soigne pas une blessure majeure.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S02",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          36,
+          92,
+          477,
+          424
+        ],
+        "visibleMargins": [
+          36,
+          92,
+          35,
+          88
+        ],
+        "pivot": [
+          256.5,
+          424
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.970171818007295
+      }
+    },
+    {
+      "id": "W3-S03",
+      "label": "Cache logistique",
+      "pageId": "s01-s06",
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "src": "/game/p0-sprites-20261113/structures/s01-s06.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        252.5,
+        431
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 8,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Stock",
+            "cell": "C8"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 10,
+            "cell": "D8"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E8"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F8"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U19",
+            "cell": "G8"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Conserve vingt RAV identifiées et fournit le point final d’une route.",
+            "cell": "H8"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Si isolée, elle consomme son stock sans produire de ravitaillement.",
+            "cell": "I8"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J8"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K8"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Stock",
+        "Coût RAV": 10,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U19",
+        "Effet": "Conserve vingt RAV identifiées et fournit le point final d’une route.",
+        "Limite": "Si isolée, elle consomme son stock sans produire de ravitaillement.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S03",
+        "rect": [
+          1024,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          53,
+          92,
+          452,
+          431
+        ],
+        "visibleMargins": [
+          53,
+          92,
+          60,
+          81
+        ],
+        "pivot": [
+          252.5,
+          431
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9760292772186643
+      }
+    },
+    {
+      "id": "W3-S04",
+      "label": "Atelier d’ancrage",
+      "pageId": "s01-s06",
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "src": "/game/p0-sprites-20261113/structures/s01-s06.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        266.5,
+        469
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 9,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Réparation",
+            "cell": "C9"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 12,
+            "cell": "D9"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E9"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F9"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U20",
+            "cell": "G9"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Répare passerelles, treuils et dispositifs après livraison de pièces.",
+            "cell": "H9"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Équipe immobilisée pendant le travail et bruit observable.",
+            "cell": "I9"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J9"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K9"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Réparation",
+        "Coût RAV": 12,
+        "Entretien RAV": 2,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U20",
+        "Effet": "Répare passerelles, treuils et dispositifs après livraison de pièces.",
+        "Limite": "Équipe immobilisée pendant le travail et bruit observable.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S04",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          64,
+          65,
+          469,
+          469
+        ],
+        "visibleMargins": [
+          64,
+          65,
+          43,
+          43
+        ],
+        "pivot": [
+          266.5,
+          469
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9605561613958561
+      }
+    },
+    {
+      "id": "W3-S05",
+      "label": "Balise de route",
+      "pageId": "s01-s06",
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "src": "/game/p0-sprites-20261113/structures/s01-s06.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        253.5,
+        478
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 10,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Navigation",
+            "cell": "C10"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 4,
+            "cell": "D10"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E10"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F10"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U06",
+            "cell": "G10"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Rend un trajet connu lisible aux unités qui reçoivent le relevé.",
+            "cell": "H10"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "L’ennemi peut la déplacer ; les traces doivent être vérifiées.",
+            "cell": "I10"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J10"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K10"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Navigation",
+        "Coût RAV": 4,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U06",
+        "Effet": "Rend un trajet connu lisible aux unités qui reçoivent le relevé.",
+        "Limite": "L’ennemi peut la déplacer ; les traces doivent être vérifiées.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S05",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          120,
+          31,
+          387,
+          478
+        ],
+        "visibleMargins": [
+          120,
+          31,
+          125,
+          34
+        ],
+        "pivot": [
+          253.5,
+          478
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9358672548168125
+      }
+    },
+    {
+      "id": "W3-S06",
+      "label": "Plateforme de tir",
+      "pageId": "s01-s06",
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "src": "/game/p0-sprites-20261113/structures/s01-s06.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        247,
+        464
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 11,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Couvert",
+            "cell": "C11"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 10,
+            "cell": "D11"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E11"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F11"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U13",
+            "cell": "G11"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Crée un angle de tir et un abri directionnel sur appuis validés.",
+            "cell": "H11"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Angle mort sous la plateforme ; ne génère aucun tireur.",
+            "cell": "I11"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J11"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K11"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Couvert",
+        "Coût RAV": 10,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U13",
+        "Effet": "Crée un angle de tir et un abri directionnel sur appuis validés.",
+        "Limite": "Angle mort sous la plateforme ; ne génère aucun tireur.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S06",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          41,
+          58,
+          453,
+          464
+        ],
+        "visibleMargins": [
+          41,
+          58,
+          59,
+          48
+        ],
+        "pivot": [
+          247,
+          464
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9613340505648198
+      }
+    },
+    {
+      "id": "W3-S07",
+      "label": "Seuil renforcé",
+      "pageId": "s07-s12",
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "src": "/game/p0-sprites-20261113/structures/s07-s12.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        274,
+        454
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 12,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Passage",
+            "cell": "C12"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 12,
+            "cell": "D12"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E12"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F12"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U07",
+            "cell": "G12"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Ajoute quinze pour cent de défense estimée au passage occupé.",
+            "cell": "H12"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Contournement et vue plongeante conservent leur efficacité.",
+            "cell": "I12"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J12"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K12"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Passage",
+        "Coût RAV": 12,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U07",
+        "Effet": "Ajoute quinze pour cent de défense estimée au passage occupé.",
+        "Limite": "Contournement et vue plongeante conservent leur efficacité.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S07",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          62,
+          69,
+          486,
+          454
+        ],
+        "visibleMargins": [
+          62,
+          69,
+          26,
+          58
+        ],
+        "pivot": [
+          274,
+          454
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9614028511520576
+      }
+    },
+    {
+      "id": "W3-S08",
+      "label": "Pont de cordes",
+      "pageId": "s07-s12",
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "src": "/game/p0-sprites-20261113/structures/s07-s12.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        257.5,
+        442
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 13,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Franchissement",
+            "cell": "C13"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 14,
+            "cell": "D13"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E13"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F13"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U12",
+            "cell": "G13"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Relie deux rives repérées après pose physique de trois ancrages.",
+            "cell": "H13"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Capacité de charge bornée ; un groupe entier ne passe pas en même temps.",
+            "cell": "I13"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J13"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K13"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Franchissement",
+        "Coût RAV": 14,
+        "Entretien RAV": 2,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U12",
+        "Effet": "Relie deux rives repérées après pose physique de trois ancrages.",
+        "Limite": "Capacité de charge bornée ; un groupe entier ne passe pas en même temps.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S08",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          38,
+          97,
+          477,
+          442
+        ],
+        "visibleMargins": [
+          38,
+          97,
+          35,
+          70
+        ],
+        "pivot": [
+          257.5,
+          442
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9121512611655452
+      }
+    },
+    {
+      "id": "W3-S09",
+      "label": "Quai léger",
+      "pageId": "s07-s12",
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "src": "/game/p0-sprites-20261113/structures/s07-s12.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        254,
+        443
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 14,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Débarquement",
+            "cell": "C14"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 16,
+            "cell": "D14"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E14"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F14"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U25",
+            "cell": "G14"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Permet une arrivée et une évacuation dans une fenêtre de courant.",
+            "cell": "H14"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Nécessite un vrai moyen de transport compatible et un accès aquatique.",
+            "cell": "I14"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J14"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K14"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Débarquement",
+        "Coût RAV": 16,
+        "Entretien RAV": 2,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U25",
+        "Effet": "Permet une arrivée et une évacuation dans une fenêtre de courant.",
+        "Limite": "Nécessite un vrai moyen de transport compatible et un accès aquatique.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S09",
+        "rect": [
+          1024,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          61,
+          82,
+          447,
+          443
+        ],
+        "visibleMargins": [
+          61,
+          82,
+          65,
+          69
+        ],
+        "pivot": [
+          254,
+          443
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9663469793225244
+      }
+    },
+    {
+      "id": "W3-S10",
+      "label": "Aire de montures",
+      "pageId": "s07-s12",
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "src": "/game/p0-sprites-20261113/structures/s07-s12.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        260,
+        426
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 15,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Soins animaux",
+            "cell": "C15"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 12,
+            "cell": "D15"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E15"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F15"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U21",
+            "cell": "G15"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Repos, eau et matériel pour des montures déjà présentes.",
+            "cell": "H15"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Pas de création d’animaux ; gabarit et places limités.",
+            "cell": "I15"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J15"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K15"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Soins animaux",
+        "Coût RAV": 12,
+        "Entretien RAV": 2,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U21",
+        "Effet": "Repos, eau et matériel pour des montures déjà présentes.",
+        "Limite": "Pas de création d’animaux ; gabarit et places limités.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S10",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          64,
+          48,
+          456,
+          426
+        ],
+        "visibleMargins": [
+          64,
+          48,
+          56,
+          86
+        ],
+        "pivot": [
+          260,
+          426
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9417011068357798
+      }
+    },
+    {
+      "id": "W3-S11",
+      "label": "Poste de soin",
+      "pageId": "s07-s12",
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "src": "/game/p0-sprites-20261113/structures/s07-s12.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        257,
+        423
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 16,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Stabilisation",
+            "cell": "C16"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 14,
+            "cell": "D16"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E16"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F16"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U18",
+            "cell": "G16"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Offre un lieu protégé pour stabiliser puis organiser l’évacuation.",
+            "cell": "H16"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Consommables nécessaires et indisponibilité des patients suivie.",
+            "cell": "I16"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J16"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K16"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Stabilisation",
+        "Coût RAV": 14,
+        "Entretien RAV": 2,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U18",
+        "Effet": "Offre un lieu protégé pour stabiliser puis organiser l’évacuation.",
+        "Limite": "Consommables nécessaires et indisponibilité des patients suivie.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S11",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          30,
+          46,
+          484,
+          423
+        ],
+        "visibleMargins": [
+          30,
+          46,
+          28,
+          89
+        ],
+        "pivot": [
+          257,
+          423
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9761079268667328
+      }
+    },
+    {
+      "id": "W3-S12",
+      "label": "Relais de signaux",
+      "pageId": "s07-s12",
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "src": "/game/p0-sprites-20261113/structures/s07-s12.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        247,
+        441
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 17,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Liaison",
+            "cell": "C17"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 12,
+            "cell": "D17"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E17"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F17"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U28",
+            "cell": "G17"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Relie deux secteurs sans faire voyager instantanément les personnes.",
+            "cell": "H17"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Relief et sabotage peuvent couper sa portée.",
+            "cell": "I17"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J17"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K17"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Liaison",
+        "Coût RAV": 12,
+        "Entretien RAV": 2,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U28",
+        "Effet": "Relie deux secteurs sans faire voyager instantanément les personnes.",
+        "Limite": "Relief et sabotage peuvent couper sa portée.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S12",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          125,
+          18,
+          369,
+          441
+        ],
+        "visibleMargins": [
+          125,
+          18,
+          143,
+          71
+        ],
+        "pivot": [
+          247,
+          441
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9504346922517405
+      }
+    },
+    {
+      "id": "W3-S13",
+      "label": "Écran de confinement",
+      "pageId": "s13-s18",
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "src": "/game/p0-sprites-20261113/structures/s13-s18.png",
+      "rect": [
+        0,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        261,
+        470
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 18,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Isolement",
+            "cell": "C18"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 18,
+            "cell": "D18"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 3,
+            "cell": "E18"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F18"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U27",
+            "cell": "G18"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Ferme un couloir pour empêcher la traversée d’une menace donnée.",
+            "cell": "H18"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Consomme de l’énergie et ne protège pas des passages adjacents.",
+            "cell": "I18"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J18"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K18"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Isolement",
+        "Coût RAV": 18,
+        "Entretien RAV": 3,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U27",
+        "Effet": "Ferme un couloir pour empêcher la traversée d’une menace donnée.",
+        "Limite": "Consomme de l’énergie et ne protège pas des passages adjacents.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S13",
+        "rect": [
+          0,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          51,
+          33,
+          471,
+          470
+        ],
+        "visibleMargins": [
+          51,
+          33,
+          41,
+          42
+        ],
+        "pivot": [
+          261,
+          470
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9763985846801185
+      }
+    },
+    {
+      "id": "W3-S14",
+      "label": "Emplacement de duel",
+      "pageId": "s13-s18",
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "src": "/game/p0-sprites-20261113/structures/s13-s18.png",
+      "rect": [
+        512,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        255,
+        417
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 19,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Défi",
+            "cell": "C19"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 8,
+            "cell": "D19"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E19"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F19"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U08",
+            "cell": "G19"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Délimite un espace visible où un duel accepté peut régler un objectif précis.",
+            "cell": "H19"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Seuls les signataires s’engagent ; une troisième force reste libre d’agir.",
+            "cell": "I19"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J19"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K19"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Défi",
+        "Coût RAV": 8,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U08",
+        "Effet": "Délimite un espace visible où un duel accepté peut régler un objectif précis.",
+        "Limite": "Seuls les signataires s’engagent ; une troisième force reste libre d’agir.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S14",
+        "rect": [
+          512,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          29,
+          108,
+          481,
+          417
+        ],
+        "visibleMargins": [
+          29,
+          108,
+          31,
+          95
+        ],
+        "pivot": [
+          255,
+          417
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9784893826388442
+      }
+    },
+    {
+      "id": "W3-S15",
+      "label": "Station d’écoute",
+      "pageId": "s13-s18",
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "src": "/game/p0-sprites-20261113/structures/s13-s18.png",
+      "rect": [
+        1024,
+        0,
+        512,
+        512
+      ],
+      "pivot": [
+        268.5,
+        472
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 20,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Reconnaissance",
+            "cell": "C20"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 10,
+            "cell": "D20"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 1,
+            "cell": "E20"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 2,
+            "cell": "F20"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U05",
+            "cell": "G20"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Compare des sons enregistrés dans un secteur parcouru.",
+            "cell": "H20"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Faune et météo produisent des incertitudes à montrer.",
+            "cell": "I20"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J20"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K20"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Reconnaissance",
+        "Coût RAV": 10,
+        "Entretien RAV": 1,
+        "Délai (tours)": 2,
+        "Operateur ref": "W3-U05",
+        "Effet": "Compare des sons enregistrés dans un secteur parcouru.",
+        "Limite": "Faune et météo produisent des incertitudes à montrer.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S15",
+        "rect": [
+          1024,
+          0,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          82,
+          23,
+          455,
+          472
+        ],
+        "visibleMargins": [
+          82,
+          23,
+          57,
+          40
+        ],
+        "pivot": [
+          268.5,
+          472
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9607434812468154
+      }
+    },
+    {
+      "id": "W3-S16",
+      "label": "Dépôt de retour",
+      "pageId": "s13-s18",
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "src": "/game/p0-sprites-20261113/structures/s13-s18.png",
+      "rect": [
+        0,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        262,
+        456
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 21,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Extraction",
+            "cell": "C21"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 14,
+            "cell": "D21"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E21"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F21"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U17",
+            "cell": "G21"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Prépare contenants, couverture et départ depuis une route gardée.",
+            "cell": "H21"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Aucune résurrection ; il faut transporter les blessés jusqu’au dépôt.",
+            "cell": "I21"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J21"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K21"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Extraction",
+        "Coût RAV": 14,
+        "Entretien RAV": 2,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U17",
+        "Effet": "Prépare contenants, couverture et départ depuis une route gardée.",
+        "Limite": "Aucune résurrection ; il faut transporter les blessés jusqu’au dépôt.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S16",
+        "rect": [
+          0,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          27,
+          39,
+          497,
+          456
+        ],
+        "visibleMargins": [
+          27,
+          39,
+          15,
+          56
+        ],
+        "pivot": [
+          262,
+          456
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9720510005910664
+      }
+    },
+    {
+      "id": "W3-S17",
+      "label": "Anneau de treuils",
+      "pageId": "s13-s18",
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "src": "/game/p0-sprites-20261113/structures/s13-s18.png",
+      "rect": [
+        512,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        256,
+        425
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 22,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Levage",
+            "cell": "C22"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 16,
+            "cell": "D22"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 2,
+            "cell": "E22"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F22"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U20",
+            "cell": "G22"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Déplace une charge lourde entre deux plans de la carte 2D.",
+            "cell": "H22"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Deux opérateurs présents et voie dégagée pendant le mouvement.",
+            "cell": "I22"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J22"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K22"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Levage",
+        "Coût RAV": 16,
+        "Entretien RAV": 2,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U20",
+        "Effet": "Déplace une charge lourde entre deux plans de la carte 2D.",
+        "Limite": "Deux opérateurs présents et voie dégagée pendant le mouvement.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S17",
+        "rect": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          23,
+          66,
+          489,
+          425
+        ],
+        "visibleMargins": [
+          23,
+          66,
+          23,
+          87
+        ],
+        "pivot": [
+          256,
+          425
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9518390530664125
+      }
+    },
+    {
+      "id": "W3-S18",
+      "label": "Plateforme d’escale",
+      "pageId": "s13-s18",
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "src": "/game/p0-sprites-20261113/structures/s13-s18.png",
+      "rect": [
+        1024,
+        512,
+        512,
+        512
+      ],
+      "pivot": [
+        256.5,
+        446
+      ],
+      "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "identityCount": 1,
+      "animationFrames": 1,
+      "source": {
+        "workbook": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+        "workbookSha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183",
+        "sheet": "Structures de guerre",
+        "row": 23,
+        "export": "app/game/clanWarBibleV6Source.json",
+        "exportSha256": "ce27085c44196fefa600407f0bc46cbb74934eb5437126b29d03d35a1e7a751d",
+        "cells": [
+          {
+            "column": "C",
+            "label": "Fonction",
+            "value": "Transport orbital",
+            "cell": "C23"
+          },
+          {
+            "column": "D",
+            "label": "Coût RAV",
+            "value": 22,
+            "cell": "D23"
+          },
+          {
+            "column": "E",
+            "label": "Entretien RAV",
+            "value": 3,
+            "cell": "E23"
+          },
+          {
+            "column": "F",
+            "label": "Délai (tours)",
+            "value": 3,
+            "cell": "F23"
+          },
+          {
+            "column": "G",
+            "label": "Operateur ref",
+            "value": "W3-U26",
+            "cell": "G23"
+          },
+          {
+            "column": "H",
+            "label": "Effet",
+            "value": "Accueille un transport autorisé après reconnaissance et sécurisation locale.",
+            "cell": "H23"
+          },
+          {
+            "column": "I",
+            "label": "Limite",
+            "value": "Ce n’est ni une usine ni une base indépendante ; dépend d’un navire réel et d’une route.",
+            "cell": "I23"
+          },
+          {
+            "column": "J",
+            "label": "Deploiement",
+            "value": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+            "cell": "J23"
+          },
+          {
+            "column": "K",
+            "label": "Provenance",
+            "value": "Reconstitution documentée V4 — nouvelle rédaction V5",
+            "cell": "K23"
+          }
+        ]
+      },
+      "priorityLinks": [
+        "Guerre des clans:NEXT-RTS-01",
+        "Guerre des clans:CW130-RTS-012",
+        "Guerre des clans:CW130-ASSAULT-018"
+      ],
+      "sourceFields": {
+        "Fonction": "Transport orbital",
+        "Coût RAV": 22,
+        "Entretien RAV": 3,
+        "Délai (tours)": 3,
+        "Operateur ref": "W3-U26",
+        "Effet": "Accueille un transport autorisé après reconnaissance et sécurisation locale.",
+        "Limite": "Ce n’est ni une usine ni une base indépendante ; dépend d’un navire réel et d’une route.",
+        "Deploiement": "Acheminer les pièces, poser les appuis sur le terrain puis terminer la mise en service ; l’ordre sur carte réserve les ressources sans créer l’ouvrage.",
+        "Provenance": "Reconstitution documentée V4 — nouvelle rédaction V5"
+      },
+      "physicsOrCollisionChanged": false,
+      "worldMetres": null,
+      "technical": {
+        "id": "W3-S18",
+        "rect": [
+          1024,
+          512,
+          512,
+          512
+        ],
+        "visibleAlphaThreshold": 16,
+        "visibleBoundsInCell": [
+          31,
+          67,
+          482,
+          446
+        ],
+        "visibleMargins": [
+          31,
+          67,
+          30,
+          66
+        ],
+        "pivot": [
+          256.5,
+          446
+        ],
+        "pivotStatus": "alpha-derived-bottom-proposal; not measured in world metres",
+        "hasTransparentPixels": true,
+        "nearOpaqueRatioOfVisible": 0.9680193286916762
+      }
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "s07-s12-alpha-residual",
+      "nativeSource": "/workspace/generated_images/exec-abac38f1-2062-4063-bce3-04e04ebc1fbb.png",
+      "sha256": "89c6064b62ee498a0fe9ecfff9ae3dd72aa0946724222c72ee8d341e270bf788",
+      "reason": "No fully transparent pixels in the native PNG; the background retained alpha near 16. Excluded from delivery, then corrected with a new ImageGen edit. No CPU alpha thresholding or pixel editing was applied."
+    }
+  ],
+  "technicalGates": {
+    "pageCount": 3,
+    "identityCount": 18,
+    "nativeRgba": true,
+    "allCellsContainVisiblePixels": true,
+    "allCellsContainTransparentPixels": true,
+    "allVisibleSilhouettesInsideCell": true,
+    "noPixelNormalization": true,
+    "marginTargetPercent": 8,
+    "allCellsMeet8PercentMargin": false,
+    "actualMarginNote": "Measured at alpha >= 16: minimum visible margins are 30, 18 and 15 pixels for the three pages. Every complete silhouette stays in its 512 x 512 cell. The requested 8 percent target is not uniform; all cells exceed the 8 pixel atlas minimum.",
+    "minimumRequiredCellMarginPixels": 8,
+    "allCellsMeetMinimumMargin": true,
+    "deliveredFilesMatchNativeBytes": true
+  },
+  "visualReview": {
+    "performedBy": "assistant",
+    "all18SlotsInspected": true,
+    "pagesViewedAtNativeResolution": true,
+    "roleReadability": "Six distinct unoccupied structures per page. The rope bridge has three anchoring bases. No animal, patient, operator, ship, gun or cargo reward is added as a game entity.",
+    "nativeScaleBrowserReview": "pending parent gallery",
+    "approvedForRuntime": false
+  },
+  "unusedLayoutAttempts": {
+    "prompt": "Layout-only production sprite atlas EDIT. Preserve EXACTLY the same six objects, their individual designs, component counts, colors, materials, lighting, view and their same six slots. Do not redesign. Canvas stays1536x1024 with a regular3columns x2rows of512squarecells. Current sprites are too close to some cell edges. Make EACH whole object SMALLER within its own cell: maximum object width350pixels AND maximum object height350pixels. Preserve each object's aspect and construction. Center horizontally atcellx256, put its lowest physical foot atcelly430. This creates at least80pixels of clear space on all sides, moreforflatstructures. Do not connect objects or add filler to empty space. Native PNG alpha0 must fill ALL space outside and holes inside each structure. Solid objects opaque nearalpha255 with thin antialiased edge only. REMOVE every background haze/gray/brown opacity and cast floor shadow, not recolor it. NO floor, terrain, labels, borders, text, UI, gridlines, watermark, extra actors/animals/guns/vehicles/cargo. Exactly six entire independent structures as reference, only layout/cutout correction. On the rope bridge, preserve exactly THREE anchoring bases, not four. All tops, feet, antennae and cables fully visible.",
+    "status": "not-delivered",
+    "reason": "Layout experiments completed before freeze. Existing accepted pages preserve their original design geometry and remain the delivered native sources.",
+    "outputs": [
+      {
+        "pageId": "s01-s06",
+        "nativeSource": "/workspace/generated_images/exec-113cc96b-36d8-4974-bc4a-914bd1ede7e6.png",
+        "sha256": "28ffade4389c73b09de76745d07ca870238c640f24eb8039e3ff0d836664d88a",
+        "width": 1536,
+        "height": 1024,
+        "copiedToPublic": false,
+        "pixelsEditedByCpu": false
+      },
+      {
+        "pageId": "s07-s12",
+        "nativeSource": "/workspace/generated_images/exec-ea809060-21c2-4dbb-8d1e-50cab2c3c56f.png",
+        "sha256": "573cce61113651a2d099a4b19b88c39d6cec776a08a73210eecc2dfbf7721129",
+        "width": 1536,
+        "height": 1024,
+        "copiedToPublic": false,
+        "pixelsEditedByCpu": false
+      }
+    ]
+  }
+}

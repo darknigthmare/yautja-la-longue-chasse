@@ -1,0 +1,786 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-13T09:08:43.032398+00:00",
+  "reviewKind": "independent-agent-current-A-B-visual-and-browser-composite-review",
+  "scope": "Current nine V62 project-reference pairs, not original film/PHG canonical certification. Eight restaged candidates plus one explicitly disclosed Wolf source reuse.",
+  "sourceReceipt": {
+    "path": "production/biomasks-dual-20261113/generation/batch-1.json",
+    "sha256": "5fa1fb487ced9381cb7e7a3508aa4d38987b30f3fd962bd798c6e1b279bd7797"
+  },
+  "entries": [
+    {
+      "id": "mk-02-city",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/city.png",
+          "sha256": "012836522b6e78090d272d26cc452c61050df6d3cb71148862b26959a608ca12",
+          "bytes": 1959679,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            192,
+            76,
+            1085,
+            1157
+          ],
+          "margins16": [
+            192,
+            76,
+            169,
+            97
+          ],
+          "transparentPixels": 867232,
+          "opaquePixels240": 691742
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-02-city.png",
+          "sha256": "b73312efe789f8b4d38a39f64977d5c5f11a5e4b0bd87417a768016fc0b38dea",
+          "bytes": 1936471,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            190,
+            75,
+            1089,
+            1159
+          ],
+          "margins16": [
+            190,
+            75,
+            165,
+            95
+          ],
+          "transparentPixels": 863454,
+          "opaquePixels240": 696513
+        }
+      },
+      "coreAspectRatioChangePercent": 0.393280248591954,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Calotte, arc frontal, trois-quarts, pièces latérales et masque inférieur conservés.",
+        "Cuivre/orangé fortement piqué, zones sombres des yeux et disposition des reliefs cohérents à 360 et 96 px."
+      ],
+      "limitations": [
+        "Distribution des petits cratères et reflets regénérée ; leur tracé ne constitue pas une usure 1:1 certifiée."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-03-scar",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/scar.png",
+          "sha256": "a562d4b0105bf36f5b7d4796ac9f5595c483ee178dd1ee82fc643db5deff8c59",
+          "bytes": 2210569,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            144,
+            51,
+            1062,
+            1217
+          ],
+          "margins16": [
+            144,
+            51,
+            192,
+            37
+          ],
+          "transparentPixels": 809845,
+          "opaquePixels240": 745766
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-03-scar.png",
+          "sha256": "38601436cb2f437c077684498bd083d5d2dae16d0848b1c6106f611783f895b9",
+          "bytes": 2114412,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            141,
+            49,
+            1065,
+            1217
+          ],
+          "margins16": [
+            141,
+            49,
+            189,
+            37
+          ],
+          "transparentPixels": 803937,
+          "opaquePixels240": 752091
+        }
+      },
+      "coreAspectRatioChangePercent": 0.4812427254006657,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Grande aile de calotte, petit retour opposé, cicatrice oblique en 7 et deux optiques sombres conservés.",
+        "Même vue trois-quarts ; silhouette reconnaissable à 96 px et même hiérarchie acier/gris."
+      ],
+      "limitations": [
+        "Épaisseur/netteté de la cicatrice et grain fin légèrement réinterprétés."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-04-celtic",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/celtic.png",
+          "sha256": "e21b903458a7bffde23aea21241e8f90b282f4b065b3d64a57d7edeb16bb1174",
+          "bytes": 2090338,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            203,
+            27,
+            1071,
+            1235
+          ],
+          "margins16": [
+            203,
+            27,
+            183,
+            19
+          ],
+          "transparentPixels": 790390,
+          "opaquePixels240": 767976
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-04-celtic.png",
+          "sha256": "b5a353cc7d3a968efd7637ef2f16dbadb090f8921e1ac447feeb14a955cdbd8d",
+          "bytes": 2053283,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            199,
+            29,
+            1071,
+            1234
+          ],
+          "margins16": [
+            199,
+            29,
+            183,
+            20
+          ],
+          "transparentPixels": 795095,
+          "opaquePixels240": 763810
+        }
+      },
+      "coreAspectRatioChangePercent": 0.7109394420329984,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Calotte ovale, interruption supérieure du bord, pièces circulaires de joues et groupes de tuyaux/rainures inférieurs conservés.",
+        "Grilles oculaires noires et même caméra ; aucun élément de porteur ou arme visible."
+      ],
+      "limitations": [
+        "Quelques arêtes et reflets paraissent plus réguliers ; micro-rainures et UV non établies."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-05-chopper",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/chopper.png",
+          "sha256": "3cd116d3bc01742689ffe78b90f1780583accbf9c2b06fe6b8f508437c55767b",
+          "bytes": 2298739,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            106,
+            40,
+            1108,
+            1215
+          ],
+          "margins16": [
+            106,
+            40,
+            146,
+            39
+          ],
+          "transparentPixels": 748640,
+          "opaquePixels240": 808834
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-05-chopper.png",
+          "sha256": "08f38f1ec42919918a415b8063e3032cff7171c3976fbf74ebe1459fff7321f0",
+          "bytes": 2073008,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            138,
+            59,
+            1074,
+            1192
+          ],
+          "margins16": [
+            138,
+            59,
+            180,
+            62
+          ],
+          "transparentPixels": 824362,
+          "opaquePixels240": 734234
+        }
+      },
+      "coreAspectRatioChangePercent": -3.124025558767729,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Large calotte inclinée, chevrons gravés, visière sombre, lamelles courbes des joues et plaque nasale arrondie conservés.",
+        "La lecture reste la même à 96 px."
+      ],
+      "limitations": [
+        "B est un peu plus étroit à hauteur normalisée ; variation du rapport 2D des bornes alpha ≈ -3.12%, pas une mesure de géométrie 3D.",
+        "Granulation et certaines épaisseurs de biseau sont réinterprétées."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-06-wolf",
+      "generatedNew": false,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/wolf.png",
+          "sha256": "81669d98bf32426d039623247e2596ea70be17252ce01464a618f50e6cd17214",
+          "bytes": 2161338,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            262,
+            22,
+            1090,
+            1214
+          ],
+          "margins16": [
+            262,
+            22,
+            164,
+            40
+          ],
+          "transparentPixels": 855148,
+          "opaquePixels240": 700891
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-06-wolf.png",
+          "sha256": "81669d98bf32426d039623247e2596ea70be17252ce01464a618f50e6cd17214",
+          "bytes": 2161338,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            262,
+            22,
+            1090,
+            1214
+          ],
+          "margins16": [
+            262,
+            22,
+            164,
+            40
+          ],
+          "transparentPixels": 855148,
+          "opaquePixels240": 700891
+        }
+      },
+      "coreAspectRatioChangePercent": 0.0,
+      "byteIdenticalAB": true,
+      "decision": "source-reuse-with-disclosed-style-gap",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "A et B sont identiques en octets, SHA identique confirmé ; glyphes, fissures, pointes, optiques et caméra exactement préservés à ce niveau.",
+        "Le réemploi est explicitement annoncé, sans nouveau PNG ni nouvelle génération B comptée."
+      ],
+      "limitations": [
+        "Aucun restaging graphique distinct n’est fourni pour Wolf ; le rendu existant est retenu pour conserver les glyphes.",
+        "Égalité des octets du dessin du projet ne signifie pas certification du masque canonique de la franchise."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-07-feral",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/feral.png",
+          "sha256": "ceba366a222414c5e078baa16b02ac5d1e010a641368e56a4c14ba3bf2e9aebc",
+          "bytes": 1609827,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            229,
+            60,
+            1057,
+            1191
+          ],
+          "margins16": [
+            229,
+            60,
+            197,
+            63
+          ],
+          "transparentPixels": 997669,
+          "opaquePixels240": 553628
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-07-feral.png",
+          "sha256": "d80dc4b41a9c6dec9760b18770db61dc28ecaf791c399fa6ba08591ab32d0ad9",
+          "bytes": 1607625,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            228,
+            61,
+            1055,
+            1192
+          ],
+          "margins16": [
+            228,
+            61,
+            199,
+            62
+          ],
+          "transparentPixels": 1001197,
+          "opaquePixels240": 556403
+        }
+      },
+      "coreAspectRatioChangePercent": -0.12077294685990392,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Aspect os crème, silhouette ajourée en trois-quarts, pointes avant, optique circulaire sombre et longs bords bas conservés.",
+        "Les ouvertures laissent passer les fonds comme dans A ; aucun iris/porteur ajouté."
+      ],
+      "limitations": [
+        "B un peu plus chaud dans la perception des reflets ; texture des pores/canaux recalculée.",
+        "Aspect os ne prouve pas une chimie de matériau ni la forme du véritable accessoire de film."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-08-boar",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/boar.png",
+          "sha256": "1ab476fe4ca264e3e5e2f2a61296dabda10d7e4aced96aeacb3078a901908aa7",
+          "bytes": 2187096,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            157,
+            81,
+            1119,
+            1195
+          ],
+          "margins16": [
+            157,
+            81,
+            135,
+            59
+          ],
+          "transparentPixels": 838314,
+          "opaquePixels240": 718729
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-08-boar.png",
+          "sha256": "0f3d77936521b78bb7219def7485de2815fcf46bffe03af191b8ed84e50bb7b0",
+          "bytes": 2178493,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            158,
+            83,
+            1118,
+            1192
+          ],
+          "margins16": [
+            158,
+            83,
+            136,
+            62
+          ],
+          "transparentPixels": 841569,
+          "opaquePixels240": 718169
+        }
+      },
+      "coreAspectRatioChangePercent": 0.24201908782612858,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Reliefs frontaux emboîtés, crête arrière, yeux sombres, plaque centrale et vue préservés.",
+        "Régions bronze/or et métal sombre conservées ; silhouette stable à 96 px."
+      ],
+      "limitations": [
+        "Éclairage et distribution fine des piqûres changent ; albédo/reliefs exacts non récupérés."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-09-snake",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/snake.png",
+          "sha256": "b8a839c9bde4b7dc77a2226e14909a248f27030241eb9079add3b76d8d2190c8",
+          "bytes": 2030382,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            199,
+            62,
+            1081,
+            1198
+          ],
+          "margins16": [
+            199,
+            62,
+            173,
+            56
+          ],
+          "transparentPixels": 830109,
+          "opaquePixels240": 729282
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-09-snake.png",
+          "sha256": "140706433c6bdd91609a60589aaa3b561acf7e2e3b561594334b73228211fb19",
+          "bytes": 2030419,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            197,
+            61,
+            1083,
+            1201
+          ],
+          "margins16": [
+            197,
+            61,
+            171,
+            53
+          ],
+          "transparentPixels": 824440,
+          "opaquePixels240": 733449
+        }
+      },
+      "coreAspectRatioChangePercent": 0.1010462664597922,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Trois ovales frontaux, branches cuivrées, côtes du front/nez, grilles des yeux et profil général conservés.",
+        "Régions acier/bronze restent distinctes sans nouvelle couleur ni iris."
+      ],
+      "limitations": [
+        "Petit nombre/tracé des stries fines et reflets des inserts restent interprétés."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-10-falconer",
+      "generatedNew": true,
+      "images": {
+        "A": {
+          "path": "public/game/sprites/v62/masks/falconer.png",
+          "sha256": "5130117d27a37344b2d2e354aa7e019c1e9c76bd6a928e1fbe1095b464c6735f",
+          "bytes": 2072756,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            203,
+            22,
+            1053,
+            1222
+          ],
+          "margins16": [
+            203,
+            22,
+            201,
+            32
+          ],
+          "transparentPixels": 826732,
+          "opaquePixels240": 732369
+        },
+        "B": {
+          "path": "public/game/biomasks-dual-20261113/phg/mk-10-falconer.png",
+          "sha256": "9518a0f276eb961a3c2e72d6ee61d474c555adb453689ce625474bfc50b2f886",
+          "bytes": 2004048,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds16": [
+            208,
+            33,
+            1035,
+            1225
+          ],
+          "margins16": [
+            208,
+            33,
+            219,
+            29
+          ],
+          "transparentPixels": 849065,
+          "opaquePixels240": 711855
+        }
+      },
+      "coreAspectRatioChangePercent": -2.0529016975917913,
+      "byteIdenticalAB": false,
+      "decision": "candidate-with-limitations",
+      "visuallyInspected": true,
+      "viewedAtPx": [
+        360,
+        96
+      ],
+      "compositeBackgrounds": [
+        "white",
+        "dark",
+        "checker"
+      ],
+      "observations": [
+        "Grand dôme ovale, sourcils segmentés, optiques sombres, longs panneaux faciaux et petits évents inférieurs conservés.",
+        "Pas de nouvelle dent/corne ou caméra supplémentaire observée ; bonne reconnaissance à 96 px."
+      ],
+      "limitations": [
+        "Dôme/face légèrement plus étroits : rapport 2D des bornes alpha ≈ -2.05%, non mesure3D.",
+        "Microgrille inférieure, usure et réflexions restent interprétées."
+      ],
+      "majorIdentityDriftObserved": false,
+      "visibleAlphaDefectInBrowserObserved": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ],
+  "counts": {
+    "reviewedPairs": 9,
+    "restagedCandidates": 8,
+    "byteIdenticalReusedB": 1,
+    "majorDriftRejects": 0,
+    "humanArtValidated": 0,
+    "canonCertified": 0
+  },
+  "browser": {
+    "passed": true,
+    "errors": [],
+    "source": "Current files read through local browser request interception; no outbound network or image edits",
+    "viewSizes": [
+      360,
+      96
+    ],
+    "backgrounds": [
+      "white",
+      "dark",
+      "checker"
+    ],
+    "comparisonPages": 3
+  },
+  "captures": [
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-1.png",
+      "sha256": "86aa8900968c9f34d05fb9accf60324bbaf8534791b3ab53ff49f1191018ab71",
+      "bytes": 1124265,
+      "actuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-2.png",
+      "sha256": "b1a3725077bc61dd60ba842f6f5514fc85554a3fef5513a3489683cada8be219",
+      "bytes": 894358,
+      "actuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-3.png",
+      "sha256": "3904416ce6ddaa181c35f14b9c3a787c44e4d722569252268bc0564a64a6b238",
+      "bytes": 1153305,
+      "actuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/alpha-composites.png",
+      "sha256": "cf2dd29a5b50f28805884c3cb2c250fd0bd616f30d90c646afb7096e8f843bda",
+      "bytes": 1132028,
+      "actuallyInspected": true
+    }
+  ],
+  "olderEvidenceCaveat": {
+    "path": "/tmp/dual-masks-20261113/current-pair-review/page-03.png",
+    "finding": "Its Wolf B image predates the current byte-identical reuse decision. This review used fresh current-file composites instead and does not accept that older Wolf depiction as current evidence."
+  },
+  "rasterEditingPerformed": false,
+  "sourcePixelsModified": false,
+  "reviewTransforms": "Uniform browser CSS scaling and alpha>=16-bounds centering for display only; no source pixel crop/reencode/export as game art.",
+  "conclusion": "No major change of project design observed at 360/96 px. Keep documented small proportional and fine-detail differences. Wolf is preservation by reuse, not a separate PHG generation. None of these decisions is human art validation or a 1:1 franchise certificate.",
+  "archivedOriginalReportSha256": "275e639757f2d89384d44cc10f690253d7312d03a23a70fadbfb7374bcf61184",
+  "archivalNote": "Only metadata paths adapted to byte-identical copied browser captures; no raster asset or screenshot editing."
+}

@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "diagnosedCommit": "fad5c4b76dc1d3fe159509903c3be0844b8607d8",
+  "remoteFailure": {
+    "run": 43381982223,
+    "job": 131741617566,
+    "step": "Run actual domain, SSR, save and compatibility cases",
+    "availableDiagnostic": "exit 1 annotation only; no TAP available locally",
+    "logsCdnPreviouslyDenied": true,
+    "logsCdnRetriedByThisAgent": false
+  },
+  "localRuntime": {
+    "node": "v22.23.4",
+    "npmCiRepeated": false,
+    "dependencyLock": {
+      "path": "/workspace/yautja-la-longue-chasse/package-lock.json",
+      "sha256": "763dcb2fdfef2e1a7ce196540cca3f4f5617eeb28a36b380d0dc6079410c1892"
+    },
+    "sandboxLimitation": "Native Node spawnSync emitted EPERM in initial sandbox attempt. That attempt is separately preserved as incomplete sandbox evidence and is not a CI reproduction. Both complete runs executed with approved escalation."
+  },
+  "workflow": {
+    "path": "/workspace/yautja-la-longue-chasse/.github/workflows/p0-p1-coherence-20261109.yml",
+    "sha256": "90f6eef29d30244a482d7c5d497d7f8f109ff9e4a0220a0e72a8e362ffa71d61"
+  },
+  "runner": {
+    "path": "/workspace/yautja-la-longue-chasse/scripts/check-p0p1-coherence-20261109.mjs",
+    "sha256": "71d76479750211e74ffe430a40876cb81985da9f46e36c215a9254f3a6f351c7"
+  },
+  "selection": {
+    "path": "/workspace/yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/test-selection.json",
+    "sha256": "6c4f96aaf8c590e72a328a2b328ca70b78e8756b51f8ef953d5ab4921eaa9f92"
+  },
+  "runtimeInputs": {
+    "path": "/workspace/yautja-la-longue-chasse/production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json",
+    "sha256": "5d2b6ca85b69da49c32dbd54d9ed90eea3876de3072148668402a0ee4f90ade4"
+  },
+  "fullRepositoryRun": {
+    "path": "/tmp/primary-masks-20261113/coherence-repro/report.json",
+    "sha256": "74c08f2f4eeea4260006305efaaba94a0c4e82200defa84ee79e8efdf003ca18",
+    "passed": true,
+    "files": 103,
+    "totals": {
+      "tests": 1198,
+      "pass": 1198,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    "startedAt": "2026-11-13T07:03:21.599Z",
+    "finishedAt": "2026-11-13T07:05:11.867Z"
+  },
+  "sparseFixtureRun": {
+    "path": "/tmp/primary-masks-20261113/coherence-sparse-repro/report.json",
+    "sha256": "ea7492d3e5307f2b7f91b2a911a158d2a5ccacfd850923fdf714dd0ba732b927",
+    "passed": true,
+    "files": 103,
+    "totals": {
+      "tests": 1198,
+      "pass": 1198,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    "startedAt": "2026-11-13T07:04:54.643Z",
+    "finishedAt": "2026-11-13T07:06:43.195Z",
+    "fixtureDefinition": {
+      "path": "/tmp/primary-masks-20261113/coherence-sparse-fixture.json",
+      "sha256": "7e73685f35726fd9478ee4e76d1117109d12dddb4a3a52bcdaec76c93b952fd9"
+    },
+    "differenceFromActions": "Local source-file copy matching sparse rules; npm dependencies symlink to existing locked installation instead of fresh npm ci; no git metadata. Static review found no dependency on git metadata in the selected suite."
+  },
+  "fullAndSparsePerFileResultsAndSourceHashesIdentical": true,
+  "staticDependencyReview": {
+    "path": "/tmp/primary-masks-20261113/ci-sparse-static-review.json",
+    "sha256": "2e5dcbe4d25dd3153bce306906dd1231656cde8a0288af7a9bfec61024618984"
+  },
+  "conclusion": "Remote failure was not reproduced. Both 103-file runs pass 1198 actual tests with unchanged test bytes. No missing sparse dependency or gameplay regression demonstrated. The remote root cause remains unknown without failed TAP; do not weaken tests or modify data pins speculatively.",
+  "recommendedNextStep": "The next source commit naturally reruns CI. Add failure-only GitHub annotations naming the actual test and its TAP counts, preserving every existing success criterion and output, only after parent approval.",
+  "repoFilesModifiedByThisDiagnosticAgent": false,
+  "networkCallsByThisDiagnosticAgent": 0
+}

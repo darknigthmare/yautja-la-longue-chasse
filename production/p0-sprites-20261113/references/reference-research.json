@@ -1,0 +1,345 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13T01:31:35.567429+00:00",
+  "repositoryBaseline": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "scope": "Read-only web-reference research. No image generation, source sprite edits, game integration, or fidelity approval performed.",
+  "counts": {
+    "usableSecondaryMaskFronts": 6,
+    "secondaryHeadlessArmourFronts": 3,
+    "officialImageDownloads": 0,
+    "profileOrBackViews": 0,
+    "certified1to1": 0
+  },
+  "communitySource": {
+    "repository": "Matthelzor/pd2-predator-pack",
+    "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+    "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+    "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+  },
+  "referenceViews": [
+    {
+      "id": "alpha-outfit",
+      "label": "Alpha",
+      "view": "armour-front-headless",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        512,
+        512
+      ],
+      "scope": "Structure of a community-ported outfit only; human-rig adaptation, not PHG body proportions.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-outfit-icons/alpha.texture",
+          "bytes": 262272,
+          "sha256": "cf64c3bd416574becf99d891ee52470ed650fa6a321612b77108157f0df6620c"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-0.png",
+          "bytes": 78258,
+          "sha256": "ce08bee55c1d33a34b54513fdc66f32c9f7fb83a27d215d8273d0be865d35605"
+        }
+      ]
+    },
+    {
+      "id": "samurai-outfit",
+      "label": "Samurai",
+      "view": "armour-front-headless",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        512,
+        512
+      ],
+      "scope": "Structure of a community-ported outfit only; human-rig adaptation, not PHG body proportions.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-outfit-icons/samurai.texture",
+          "bytes": 262272,
+          "sha256": "6bf39bb89102c482c55e3487fbb91afd2ac0b1b8cef1f6cc8aa8eb9be5e7c50a"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-1.png",
+          "bytes": 86818,
+          "sha256": "ded24fc776181711a603c3c057f638d226b00dfa712d9c25def6e3f2d4895116"
+        }
+      ]
+    },
+    {
+      "id": "viking-outfit",
+      "label": "Viking",
+      "view": "armour-front-headless",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        512,
+        512
+      ],
+      "scope": "Structure of a community-ported outfit only; human-rig adaptation, not PHG body proportions.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-outfit-icons/viking.texture",
+          "bytes": 262272,
+          "sha256": "0db4b4a9c1d2b116d22b50310906d14074068a28cf28234184ae74ce92009b52"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-2.png",
+          "bytes": 87383,
+          "sha256": "6a17efef765d754d49421c93a219c8abba437c646c658ab42767db706db8ebdb"
+        }
+      ]
+    },
+    {
+      "id": "samurai-mask",
+      "label": "Samurai",
+      "view": "mask-front",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        256,
+        256
+      ],
+      "scope": "Community port icon; no side/back or original game color verification.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/samurai_predator.texture",
+          "bytes": 65664,
+          "sha256": "8bf81e29271d894b3e0d4ee193caf7aee0286af9c43cbd127d8946ab99db58bb"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-3.png",
+          "bytes": 38846,
+          "sha256": "13af8242e1acecc96cc428d09c05376fc138cdd2dfd1afbaef6a7a3123ca63eb"
+        }
+      ]
+    },
+    {
+      "id": "mr-black-mask",
+      "label": "Mr. Black",
+      "view": "mask-front",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        256,
+        256
+      ],
+      "scope": "Community port icon includes head/dreadlocks; keep mask separate from those additions.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_mr_black.texture",
+          "bytes": 65664,
+          "sha256": "edbef3ebc78e24a27610179c65e8703e6d13b9a6939c62a60d5ecaa8c8410286"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-4.png",
+          "bytes": 24490,
+          "sha256": "f40ed47502a26c384c506abfb11d3226a6c12d64290d98d496284b9b76127ef3"
+        }
+      ]
+    },
+    {
+      "id": "wretch-mask",
+      "label": "Wretch",
+      "view": "mask-front",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        256,
+        256
+      ],
+      "scope": "Community port icon includes head/dreadlocks; keep mask separate from those additions.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_wretch.texture",
+          "bytes": 65664,
+          "sha256": "55663d25cf510d85e6274317380ed9ecdccc4b51939456719bf588d69a5c16d7"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-5.png",
+          "bytes": 33843,
+          "sha256": "2f35ff4c715b1b7b009d8ea23ee763e0d7077e4ad804b2941fb64019e61ae89c"
+        }
+      ]
+    },
+    {
+      "id": "viking-mask",
+      "label": "Viking",
+      "view": "mask-front",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        256,
+        256
+      ],
+      "scope": "ID13 label verified in community localization; no side/back or original game color verification.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_13.texture",
+          "bytes": 65664,
+          "sha256": "672e743f2c1f696ebee6b8d71ce56e966ed19c88419d1e30a985987b9c1df32b"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-6.png",
+          "bytes": 56693,
+          "sha256": "65cdce5a5fd32cd921c4d28521696262665b4e41f39498c33b2affe0512f6768"
+        }
+      ]
+    },
+    {
+      "id": "alpha-mask",
+      "label": "Alpha Mask",
+      "view": "mask-front",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        256,
+        256
+      ],
+      "scope": "ID15 label verified in community localization; no side/back or original game color verification.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_15.texture",
+          "bytes": 65664,
+          "sha256": "fb27fc86e325ad112f4350df78d8f3bb6b0d73c0438014117739ca7cf000323b"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-7.png",
+          "bytes": 51921,
+          "sha256": "b1172277bea267b53f885f8167cd56cb4a3ccb628a8a45f34d36d8d01ef83042"
+        }
+      ]
+    },
+    {
+      "id": "vex-mask",
+      "label": "Vex",
+      "view": "mask-front",
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixel1to1Verified": false,
+      "resolution": [
+        256,
+        256
+      ],
+      "scope": "ID18 label verified in community localization; no side/back or original game color verification.",
+      "files": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_18.texture",
+          "bytes": 65664,
+          "sha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-8.png",
+          "bytes": 42406,
+          "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137"
+        }
+      ]
+    }
+  ],
+  "targetCoverage": {
+    "alpha-shape": [
+      "alpha-mask",
+      "alpha-outfit"
+    ],
+    "samurai-shape": [
+      "samurai-mask",
+      "samurai-outfit"
+    ],
+    "mr-black-phg": [
+      "mr-black-mask"
+    ],
+    "viking-phg": [
+      "viking-mask",
+      "viking-outfit"
+    ],
+    "vex-phg": [
+      "vex-mask"
+    ],
+    "wretch-phg": [
+      "wretch-mask"
+    ],
+    "city-rebreather-phg": [],
+    "haze-phg": [],
+    "rival-phg": [],
+    "saber-phg": [],
+    "tank-phg": []
+  },
+  "officialCandidates": [
+    {
+      "id": "alpha-neca",
+      "url": "https://necaonline.com/2020/01/predator-7-scale-action-figure-ultimate-alpha-predator-100th-edition-figure/",
+      "basis": "art-source/v26/known-yautja/roster.json Y-008",
+      "status": "bibliographic-reference-only-not-fetched",
+      "scope": "Licensed figure, not proof of exact PHG default pixels."
+    },
+    {
+      "id": "alpha-playstation",
+      "url": "https://blog.playstation.com/2020/07/17/july-free-update-comes-to-predator-hunting-grounds/",
+      "basis": "Project reference roster",
+      "status": "not-fetched-domain-blog.playstation.com-blocked",
+      "scope": "Official game announcement; image content not inspected in this session."
+    },
+    {
+      "id": "samurai-playstation",
+      "url": "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+      "status": "network-CONNECT403",
+      "scope": "Official game announcement; image content not inspected in this session."
+    },
+    {
+      "id": "samurai-storyblok",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/c4787ee290/samurai-predator.png",
+      "basis": "app/game/data/phgVisualFidelityQueueV122.json",
+      "status": "network-CONNECT403",
+      "scope": "Documented official render URL; no bytes fetched now."
+    },
+    {
+      "id": "viking-storyblok",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/79094b2402/viking-predator.png",
+      "basis": "app/game/data/phgVisualFidelityQueueV122.json",
+      "status": "network-CONNECT403",
+      "scope": "Documented official render URL; no bytes fetched now."
+    },
+    {
+      "id": "samurai-flickr",
+      "url": "https://live.staticflickr.com/65535/50059892976_88be6f6812_h.jpg",
+      "basis": "app/game/data/phgVisualFidelityQueueV122.json, PlayStation article association",
+      "status": "network-CONNECT403",
+      "scope": "Documented article image URL; no bytes fetched now."
+    },
+    {
+      "id": "samurai-neca",
+      "url": "https://store.necaonline.com/products/predator-hunting-grounds-ultimate-samurai-predator-7-inch-scale-action-figure",
+      "status": "network-CONNECT403",
+      "scope": "Licensed figure page; no image bytes inspected now."
+    },
+    {
+      "id": "patch219",
+      "url": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "status": "network-CONNECT403",
+      "scope": "Names and categories only in prior local notes; no new image evidence."
+    }
+  ],
+  "requiredNetworkDomains": [
+    "blog.playstation.com",
+    "forum.predator.illfonic.com",
+    "store.necaonline.com",
+    "necaonline.com",
+    "img2.storyblok.com",
+    "live.staticflickr.com"
+  ],
+  "viewingMethod": "Original DDS DXT5 bytes remain unchanged. Local WebGL viewer uploads compressed native blocks, displays them on black, captures native-size canvases. Screenshot previews are diagnostic references, not newly generated game assets. White RGB icons carry grayscale details in alpha; white-on-white viewing hides them.",
+  "researchLimits": [
+    "No official page or CDN image newly accessible; proxy CONNECT403 evidence preserved.",
+    "GitHub API search returned502ServerError; public GitHub repository web search worked normally.",
+    "No search result was used as a proxy for a denied host. Independent community repositories were inspected as community material.",
+    "FairYautja/HG UI icons are small alpha-based badges; they do not provide body/armour color or multiple views.",
+    "Do not assign unobserved rear/profile geometry or infer PHG material colors from grayscale port icons."
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "batch": "valkyrie-official-source-view",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "status": "generated-candidate",
+  "method": "One native ImageGen request using two inspected official reference images; read-only alpha measurement; no CPU raster editing and no public copy.",
+  "counts": {
+    "generatedCandidateViews": 1,
+    "nativePNGFiles": 1,
+    "newMaskNames": 0,
+    "animationClips": 0,
+    "humanArtValidated": 0,
+    "canonCertified": 0
+  },
+  "entries": [
+    {
+      "id": "valkyrie",
+      "label": "Valkyrie PHG — vue officielle en couleur",
+      "maskId": "mk-25-valkyrie",
+      "assetKind": "mask",
+      "state": "official-source-view",
+      "status": "generated-candidate",
+      "sourceType": "official-promotional-and-publisher-gameplay-images",
+      "sourceIds": [
+        "valkyrie-official-render",
+        "valkyrie-official-closeup"
+      ],
+      "references": [
+        {
+          "id": "valkyrie-official-render",
+          "path": "/tmp/primary-masks-20261113/phg/valkyrie-render.png",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/1f72b30901/valkyrie-predator.png",
+          "sha256": "e394276825314caf023a2af0e47a3800db3b2b32c77eb07417618a5ba3fa433b",
+          "dimensions": [
+            995,
+            1101
+          ],
+          "bytes": 264082,
+          "mode": "P",
+          "httpStatus": 200,
+          "pixelsActuallyInspected": true,
+          "bytesUnmodified": true,
+          "target": "mk-25-valkyrie",
+          "identity": "PHG Valkyrie worn biomask",
+          "camera": "Complete helmet, near front with slight rotation toward image left; two side wing crests fully visible.",
+          "visible": [
+            "Engraved silver/dark-metal central crown, gold brow and cheek plates, black eye apertures, silver patterned lower face.",
+            "Large asymmetric-in-perspective lateral metal wings with branching tips and circular mounts."
+          ],
+          "limits": [
+            "Axe above/behind the helmet and hand at image right are separate objects to exclude.",
+            "Black dreadlocks and neck armor belong to wearer; do not copy into detached mask."
+          ],
+          "limitations": [
+            "Axe above/behind the helmet and hand at image right are separate objects to exclude.",
+            "Black dreadlocks and neck armor belong to wearer; do not copy into detached mask.",
+            "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+            "No strict side/back view, UV or six-morphology fit established.",
+            "Not human-art-approved or canonical 1:1.",
+            "No raster edits or crops performed. Original source bytes are intact."
+          ],
+          "officialPage": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+          "imageLinkActuallyObservedInFetchedOfficialHtml": false,
+          "storyblokContext": "Exact pre-existing URL from app/game/data/phgVisualReferenceResearchV123.json; current PHG homepage link cannot be checked because CONNECT403. Mask/class corroborated by inspected official PlayStation images."
+        },
+        {
+          "id": "valkyrie-official-closeup",
+          "path": "/tmp/primary-masks-20261113/phg/valkyrie-50949877857.jpg",
+          "url": "https://live.staticflickr.com/65535/50949877857_3082c02edb_h.jpg",
+          "sha256": "192e8a379cd3329dc0e0474463a25223a25361c40ca7d5b74cf3344812b916d8",
+          "dimensions": [
+            1600,
+            900
+          ],
+          "bytes": 219406,
+          "mode": "RGB",
+          "httpStatus": 200,
+          "pixelsActuallyInspected": true,
+          "bytesUnmodified": true,
+          "target": "mk-25-valkyrie",
+          "identity": "Official in-game Valkyrie screenshot",
+          "camera": "Near front slightly turned toward image right, helmet large; outer upper wing tips cross/crop the top edge.",
+          "visible": [
+            "Same gold/silver winged mask and engraved brow/cheek geometry as Storyblok render.",
+            "Neck, dreadlocks and shoulder armor separated visually from mask."
+          ],
+          "limits": [
+            "Cropped upper wing cannot be completed from screenshot alone."
+          ],
+          "limitations": [
+            "Cropped upper wing cannot be completed from screenshot alone.",
+            "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+            "No strict side/back view, UV or six-morphology fit established.",
+            "Not human-art-approved or canonical 1:1.",
+            "No raster edits or crops performed. Original source bytes are intact."
+          ],
+          "officialPage": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+          "imageLinkActuallyObservedInFetchedOfficialHtml": true,
+          "storyblokContext": null
+        }
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-53265a85-b3b2-4fa5-b198-e67f7a643649.png",
+      "generatedNativePath": "/workspace/generated_images/exec-53265a85-b3b2-4fa5-b198-e67f7a643649.png",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+      "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e",
+      "bytes": 1355325,
+      "nativeDimensions": [
+        1309,
+        1201
+      ],
+      "nativeMode": "RGBA",
+      "sourceRect": [
+        0,
+        0,
+        1309,
+        1201
+      ],
+      "frameRect": [
+        0,
+        0,
+        1309,
+        1201
+      ],
+      "pivot": [
+        654.5,
+        600.5
+      ],
+      "pivotScope": "centered standalone preview only; not fitted to equipment rig",
+      "view": "actual complete official render camera; slight near-front perspective, not an orthographic reconstruction",
+      "viewCoverage": [
+        "official-promotional-source-view"
+      ],
+      "frames": 1,
+      "animationFrames": 1,
+      "animationClips": 0,
+      "animated": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "hiddenGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "sourceReferenceViewed": true,
+      "generatedOutputVisuallyCompared": true,
+      "publicCopyWritten": false,
+      "prompt": "Create exactly ONE detached Predator: Hunting Grounds VALKYRIE biomask asset, faithfully isolated from the supplied original game references. Image 1 is the complete official promotional render; it is the authority for the exact camera, proportions and complete outline. Image 2 is the official PlayStation in-game screenshot; use it only to clarify directly visible surface details and colors, because its upper wing tips are cropped. Preserve the actual source-render camera and perspective. Do not make an invented orthographic front, side, rear or reconstructed hidden surface.\n\nExtract only the complete physical biomask/helmet with its metal lateral wing ornaments. Preserve the distinctive engraved dark silver crown and central V-shaped silver nose ridge, dark narrow eye apertures, gold curved brow and cheek plates, patterned dark silver lower face, round temple mounts and the large branching pointed silver/gold-edged lateral wings. Each side wing must follow the source silhouette and branching shape exactly, including the three pointed extensions and the source perspective; do not symmetrize the perspective. Keep the visible source palette: silver and dark etched metal, muted worn gold plates and edging, black eye openings. Retain only engravings actually supported at the reference resolution, without adding invented runes or decorative symbols.\n\nStrictly exclude the large axe/hammer above and behind the head, the raised hand/forearm behind the helmet, the blue hand in front, all dreadlocks/hair, neck, necklace, shoulders, armor, body, skin, weapons, pose, environment, text, UI and logos. The wing ornaments and their round mounts are hard helmet components; the hanging dreadlocks are wearer components and must be absent. Do not turn the axe edge into a crown, do not copy cropped wing boundaries from image 2, and do not add rear helmet geometry. The deliverable is only a single source-view mask, suspended alone.\n\nUse a completely transparent background with clean native alpha, no backdrop, no cast shadow, no glow or framing. Center the entire helmet including every wing tip at roughly 75% of the image width and height with generous transparent margins of at least 50 pixels on every side. Do not crop the silhouette. Produce one detailed game-asset rendering. This is a reference-based candidate for later art review; do not add any claim, label or text.",
+      "transparentBackgroundRequested": true,
+      "alphaMetadata": {
+        "path": "/workspace/generated_images/exec-53265a85-b3b2-4fa5-b198-e67f7a643649.png",
+        "bytes": 1355325,
+        "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e",
+        "dimensions": [
+          1309,
+          1201
+        ],
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaHistogram": {
+          "zero": 1141897,
+          "oneToNine": 22626,
+          "10To127": 4800,
+          "128To254": 402494,
+          "255": 292
+        },
+        "alphaGreaterThan0": {
+          "bbox": [
+            25,
+            19,
+            1288,
+            1161
+          ],
+          "margins": [
+            25,
+            19,
+            21,
+            40
+          ]
+        },
+        "alphaGreaterThan9": {
+          "bbox": [
+            200,
+            30,
+            1183,
+            1102
+          ],
+          "margins": [
+            200,
+            30,
+            126,
+            99
+          ]
+        },
+        "alphaGreaterThan127": {
+          "bbox": [
+            202,
+            30,
+            1182,
+            1100
+          ],
+          "margins": [
+            202,
+            30,
+            127,
+            101
+          ]
+        },
+        "alphaGreaterThan254": {
+          "bbox": [
+            225,
+            69,
+            1177,
+            1098
+          ],
+          "margins": [
+            225,
+            69,
+            132,
+            103
+          ]
+        }
+      },
+      "technicalReview": {
+        "status": "pending-browser-composite-review",
+        "nativeAlphaPresent": true,
+        "requested50pxMarginsMetAtAlphaGreaterThan9": false,
+        "visibleTopMarginAtAlphaGreaterThan9": 30,
+        "notes": [
+          "The top tip has only 30 px effective alpha>9 margin; requested 50 px margin was not fully followed.",
+          "Alpha 1..9 includes 22626 pixels; the image viewing tool amplifies weak color fringes, so review on actual browser composites before any judgment.",
+          "No CPU alpha cleanup, crop, recolor or resize was performed."
+        ]
+      },
+      "limitations": [
+        "Generated source-view candidate only; fine engraving interpretation is not pixel 1:1.",
+        "No named tint, neutral albedo, side/back, UV or six-body equipment fit established.",
+        "All counts of canon, human art and runtime validation remain zero."
+      ],
+      "nativeCopyIdentical": true
+    }
+  ],
+  "reviewStatus": "root-and-independent-candidate-review-complete",
+  "humanArtValidated": false
+}

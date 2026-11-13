@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "Archived agent visual comparisons matched to final paired manifest; not human art, canon or runtime approval",
+  "manifestSha256": "b1fa346f649cd5a1edb5f33f5dedb4132d9074b9628a028e3c12f6de4ef8542d",
+  "reviewedPairs": 46,
+  "reviewReports": [
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/batch-1.json",
+      "reviewedPairIds": [
+        "mk-02-city",
+        "mk-03-scar",
+        "mk-04-celtic",
+        "mk-05-chopper",
+        "mk-06-wolf",
+        "mk-07-feral",
+        "mk-08-boar",
+        "mk-09-snake",
+        "mk-10-falconer"
+      ],
+      "sha256": "a09b24dd72737b7971fb6084bab4fbbd76db4af6cc83a4722d00696a652c626f"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/batch-3.json",
+      "reviewedPairIds": [
+        "concept-v133-tyrant",
+        "concept-v133-warlord",
+        "legacy-elder-project",
+        "mask-feral-screen-original",
+        "mk-35-mr-black",
+        "phg-alpha",
+        "phg-cosmetic-arthos",
+        "phg-cosmetic-eclipse",
+        "phg-cosmetic-immortal"
+      ],
+      "sha256": "1455af80258abdee0093b3c4a7f777456365513466450f70f334dd17ad9bf125"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/batch-5.json",
+      "reviewedPairIds": [
+        "phg-cosmetic-wretch",
+        "phg-elder",
+        "mk-23-samurai",
+        "mk-24-viking",
+        "mk-25-valkyrie",
+        "mk-30-emissary",
+        "phg-captured",
+        "phg-cleopatra",
+        "phg-exiled"
+      ],
+      "sha256": "0cb8fbee317d90d034e2e00049e7a9b4a6010a9e8257a5059e494587633f7fb0"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/root-batches-2-4.json",
+      "reviewedPairIds": [
+        "mk-11-berserker",
+        "mk-12-fugitive",
+        "mk-13-dek",
+        "mk-14-enforcer",
+        "concept-v133-glypic",
+        "concept-v133-instinct",
+        "concept-v133-nova",
+        "concept-v133-paroxysm",
+        "concept-v133-requiem",
+        "phg-cosmetic-vex",
+        "phg-cosmetic-ravager",
+        "phg-cosmetic-prophet",
+        "phg-cosmetic-plague",
+        "phg-cosmetic-phoenix",
+        "phg-cosmetic-phalanx",
+        "phg-cosmetic-inferno",
+        "phg-cosmetic-journeyman",
+        "phg-cosmetic-nocturne"
+      ],
+      "sha256": "9a160ed0af3effef79205bd815a47bc203338f44b00d0ff76607d67a50623e7f"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/seed-review.json",
+      "reviewedPairIds": [],
+      "sha256": "23ca60f780800253c23d05b15f84a743b6f514d66355981a3dfb9264e6655ce5"
+    }
+  ],
+  "captures": [
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/alpha-composites.png",
+      "bytes": 1132028,
+      "sha256": "cf2dd29a5b50f28805884c3cb2c250fd0bd616f30d90c646afb7096e8f843bda"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-1.png",
+      "bytes": 1124265,
+      "sha256": "86aa8900968c9f34d05fb9accf60324bbaf8534791b3ab53ff49f1191018ab71"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-2.png",
+      "bytes": 894358,
+      "sha256": "b1a3725077bc61dd60ba842f6f5514fc85554a3fef5513a3489683cada8be219"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-3.png",
+      "bytes": 1153305,
+      "sha256": "3904416ce6ddaa181c35f14b9c3a787c44e4d722569252268bc0564a64a6b238"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-2-native-alpha-composites.png",
+      "bytes": 553746,
+      "sha256": "a41062f2dace60a7b763ab25920ef344ce790374fd30a608fcf70b81818e5039"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-01.png",
+      "bytes": 1321466,
+      "sha256": "ae4d4a0f41df49c6512fdeb4d576604ad49fce41ceb9766179542bccd70ad5c3"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-02.png",
+      "bytes": 1075195,
+      "sha256": "8ed2a81ae618f4aca4b909adaaedcb7adb543ea0cbc86b4af204a4bd0b1298df"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-03.png",
+      "bytes": 307587,
+      "sha256": "cd57037fc4657cab3693e9804d123d03648b4c5f48711716f925e8fd6cfbe151"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-01.png",
+      "bytes": 1355503,
+      "sha256": "2ce46a1d1ee307ff3279bc78dfc44a427a4b26526fd4bfb2c32875cac0239eba"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-02.png",
+      "bytes": 1110199,
+      "sha256": "8b281529de5104c66cb1a8d6e0c0bc66220424415d0c74cdf35c308aacf0ff59"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-03.png",
+      "bytes": 315934,
+      "sha256": "35b35bc7dc07433038a264c83aed25229f708302737955042f3f9dc10aaea5a5"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-01.png",
+      "bytes": 1346162,
+      "sha256": "b407881af7caf32efdf040ff227c33ef05cbd383d8ff574ff90f0bc5cb704f51"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-02.png",
+      "bytes": 1103077,
+      "sha256": "ccc9de11fe20c85d9d0aa98d989a6205db98ae14938948dfdfa90e8276f37b29"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-03.png",
+      "bytes": 314643,
+      "sha256": "76b67aa8648bac54ed683d5cb2fb6caf17e3d5c56d4fda75c4b8674f15b42051"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/page-01.png",
+      "bytes": 1288394,
+      "sha256": "96ad0ccb6a82e24243cbb92ad7da0d95d4928427c8b1103e7b8d4d6ab37de855"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/page-02.png",
+      "bytes": 1263055,
+      "sha256": "47aa579fe2cff72ae472419ebd5bbf916df3ba0efa1eb5efb9e041d44792ece4"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/page-03.png",
+      "bytes": 335837,
+      "sha256": "e0f59f5844dd69957d549b0f47939837e26f312b387b9eaae3e4598d453b1ae7"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/ravin-three-backgrounds.png",
+      "bytes": 848918,
+      "sha256": "ed4704437b0147717610dbd81723dfd0b7e2849941b2408f939d1fbfbbfe3dee"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-01.png",
+      "bytes": 1225394,
+      "sha256": "c0d140018cead2fafdad51183e08d2c13232a129b875aeee83a18bf19d6f848a"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-02.png",
+      "bytes": 1323593,
+      "sha256": "278bf1ddd705c3f3c64d1684cc6a80cca014f054fae8e2cecedc0d29f326047e"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-03.png",
+      "bytes": 1168018,
+      "sha256": "7c123eafff9f241ddd778b654fb8f2893741c3934fd90b3db6eaebb857b67f30"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-04.png",
+      "bytes": 1210241,
+      "sha256": "b51938b1c3af5bbd74f7c231aecd50987b1f8a4ac16827f2853e0ca8243cfc32"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-05.png",
+      "bytes": 623151,
+      "sha256": "720b81a23eb5c5996936df0fa18609970dcab37c79c06af6d1c5caf566fba97b"
+    }
+  ],
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "imagePixelsEdited": false
+}

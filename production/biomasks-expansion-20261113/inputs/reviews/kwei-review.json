@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13T10:34:38.063110+00:00",
+  "reviewer": "independent agent /root/dual_generate_5",
+  "scope": "Read-only independent visual comparison of generated NECA Kwei prototype A/B candidates against two existing product photos. Not a film-mask certification, exact sculpture/UV proof or human artistic validation.",
+  "sourceClass": "official-product-photo-of-licensed-NECA-prototype",
+  "sourceProductStatus": "Prototype Shown. Not Final.",
+  "sourcePins": [
+    {
+      "path": "/tmp/mask-expansion-20261113/kwei-2.jpg",
+      "sha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15",
+      "bytes": 568952,
+      "dimensions": [
+        2400,
+        2400
+      ],
+      "role": "camera-and-palette-authority"
+    },
+    {
+      "path": "/tmp/mask-expansion-20261113/kwei-3.jpg",
+      "sha256": "5e783d1b2c0ea50168f991f5bddbf977c0860b68a5854fba9b637e173de9094c",
+      "bytes": 533718,
+      "dimensions": [
+        2400,
+        2400
+      ],
+      "role": "opposite-view-visible-sculpt-support-only"
+    }
+  ],
+  "generationReceipt": {
+    "path": "production/biomasks-expansion-20261113/generation/neca-kwei-prototype.json",
+    "sha256": "34832f5b8e06ee4d6f6256742ebbffcaffd74e0ad66d0f590c01ef7a39a97cd1"
+  },
+  "sourceAndReceiptPinsVerified": true,
+  "assets": [
+    {
+      "version": "A",
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-kwei-prototype.png",
+      "width": 1265,
+      "height": 1243,
+      "bounds": [
+        181,
+        46,
+        1110,
+        1216
+      ],
+      "sha256": "c527b5214fe814b44561708ff8369fa55bad4072913c3f139b72f3351fef31f8",
+      "bytes": 1988391,
+      "nativeSourcePath": "/workspace/generated_images/exec-dac0cd39-f775-4ca0-9c3b-341ffdd215d9.png",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaZero": 852979,
+      "noise1to9": 10357,
+      "visible16": 708720,
+      "nearOpaque240": 702541,
+      "margins16": [
+        181,
+        46,
+        155,
+        27
+      ],
+      "edgeVisible16": 0,
+      "nativeByteCopyVerified": true,
+      "aspectRatioVisible16": 0.794017094017094,
+      "decision": "candidate-with-documented-limitations",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-kwei-prototype.png",
+      "width": 1265,
+      "height": 1243,
+      "bounds": [
+        181,
+        43,
+        1107,
+        1214
+      ],
+      "sha256": "e81ef9a9cd67af069cb3837ded3b752df529373eed63f00ba7a99798d951a373",
+      "bytes": 1948211,
+      "nativeSourcePath": "/workspace/generated_images/exec-dbd99886-cc66-4e32-bfaa-b6f27f227807.png",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alphaZero": 855303,
+      "noise1to9": 10449,
+      "visible16": 706310,
+      "nearOpaque240": 700404,
+      "margins16": [
+        181,
+        43,
+        158,
+        29
+      ],
+      "edgeVisible16": 0,
+      "nativeByteCopyVerified": true,
+      "aspectRatioVisible16": 0.7907771135781383,
+      "decision": "candidate-with-documented-limitations",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    }
+  ],
+  "blockingFindingCount": 0,
+  "decision": "Both candidates suitable for review with explicit prototype/source-interpretation limitations; no major correction requested.",
+  "cameraReview": {
+    "photo2IsPrimary": true,
+    "photo3UsedAsMirror": false,
+    "bothPointNoseTowardImageRightLikePhoto2": true,
+    "noNewFrontalOrOppositeViewObserved": true,
+    "sameVisibleCameraObserved": true,
+    "exact3DCameraCalibrationPerformed": false
+  },
+  "sculptReview": {
+    "crown": "Tall rounded gold-bronze framework and silver petal/teardrop inserts, lateral silver temple rail and low swept brow layers correspond to source photo2. Opposite-view photo3 supports corresponding side construction without mirroring the final image.",
+    "cheeks": "Dark temple/cheek plate, bronze round temple detail and maroon/red-brown layered cheek structures remain visible. The major near-side bronze triangular wing fin and slim far fin retain their source roles and relative placement.",
+    "muzzle": "Long silver recessed center strip, narrow dark eye lenses, downward side edges and short adjacent recesses remain. No new teeth, long fangs, horns or wearer anatomy observed.",
+    "proportions": "A and B retain comparable crown/cheek/muzzle proportions and nearly identical whole-mask visible aspect. Photo comparison uses manually selected CSS display windows; it is not a calibrated silhouette segmentation.",
+    "wearerRemoval": "No visible skin, eyes/irises, dreadlocks, bands on hair, neck, clothing, weapons, logos or product-photo background remain in the generated cuts. Rear edges exposed by removal remain interpretations of an occluded source boundary."
+  },
+  "paletteReview": {
+    "regionsPreserved": [
+      "weathered gold/bronze crown framework",
+      "silver crown inserts and muzzle",
+      "dark gunmetal lateral plates",
+      "black eye lenses",
+      "maroon/red-brown cheek layers",
+      "bronze cheek fins"
+    ],
+    "A": "Source-like worn toy paint grain is retained, somewhat more pronounced at full native detail.",
+    "B": "Broad palette regions retained; smoother grain and clearer material/reflection hierarchy provide the requested PHG rendering adaptation.",
+    "globalAlbedoOrUVVerified": false
+  },
+  "alphaReview": {
+    "AAndBExteriorActuallyTransparent": true,
+    "noVisibleMaskClippingObserved": true,
+    "noVisibleHaloOnInspectedBackgrounds": true,
+    "backgrounds": [
+      "white420px",
+      "black420px",
+      "checker96px"
+    ],
+    "lowAlpha1to9RetainedAndNotCpuCleaned": true,
+    "AminMarginPixels16": 27,
+    "BminMarginPixels16": 29,
+    "warning": "Top/bottom native margins are below the requested8–12percent. A bottom27px and B bottom29px are clear and do not clip the muzzle/fins; keep the framing limitation explicit."
+  },
+  "ABReadOnlyImageMetrics": {
+    "alpha16IoUUnalignedSameCanvas": 0.9817098362148043,
+    "AvisibleAspect": 0.794017094017094,
+    "BvisibleAspect": 0.7907771135781383,
+    "BRelativeAspectDeltaPercent": -0.4080492049061468,
+    "metricScope": "B stability against generated A only; not canonical/source-photo accuracy."
+  },
+  "limitations": [
+    {
+      "severity": "warning",
+      "finding": "Small temple cartouche glyph shapes, tiny crown perforations, engraving line widths and individual surface pits are interpreted; exact sculpt/mark-count fidelity is unproven."
+    },
+    {
+      "severity": "warning",
+      "finding": "Finer source contact/occluded back geometry cannot be established after wearer/dreadlock removal; no hidden rear/profile/interior claim."
+    },
+    {
+      "severity": "warning",
+      "finding": "Both images have smaller top/bottom margin than requested but no observed clipping."
+    },
+    {
+      "severity": "notice",
+      "finding": "The photographed licensed prototype itself is explicitly Not Final; neither A nor B establishes the final film Kwei mask1:1."
+    }
+  ],
+  "browserEvidence": {
+    "screenshots": [
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/kwei-source-comparison.png",
+        "sha256": "75b8d59b67848f0d3402b43e38a88e1d05c913d7a0524024c0f115d78797cf9f",
+        "bytes": 1462197,
+        "visuallyInspected": true
+      },
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/kwei-alpha-comparison.png",
+        "sha256": "d5c6773ac1ea710cd8a01859385e739fcc0029982e9f29a49f7e53f60f496663",
+        "bytes": 595852,
+        "visuallyInspected": true
+      }
+    ],
+    "method": "Original JPEG/PNG bytes served locally and displayed with CSS scaling/overflow for observational comparison only. No source/candidate raster crop, resize, recolor or re-encode.",
+    "sourceDisplayWindows": {
+      "photo2": [
+        870,
+        65,
+        1525,
+        875
+      ],
+      "photo3": [
+        1000,
+        200,
+        1590,
+        975
+      ]
+    },
+    "windowsAreNotCertifiedMaskBounds": true,
+    "candidateDisplaySizes": [
+      410,
+      420,
+      540,
+      96
+    ]
+  },
+  "sourceOrGameAssetsModifiedByReview": false,
+  "networkRequestsToExternalSources": 0,
+  "newImagesGeneratedByReview": 0,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "pixelEditingPerformed": false
+}

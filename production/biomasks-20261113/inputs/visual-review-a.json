@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Independent read-only visual comparison of four candidate masks against four named community icon captures; not publisher/canonical certification",
+  "sourceReceipt": {
+    "path": "production/biomasks-20261113/generation/phg-a.json",
+    "sha256": "8334d68e5cd6adf6737512b559e800f9682826a9989a5bd89e3f6f422b685bca"
+  },
+  "imagesActuallyViewed": 8,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "entries": [
+    {
+      "id": "phg-elder",
+      "source": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_01.png",
+        "sha256": "f300c2ef88cbc79db5c8d50de50bbacc0bb82fe56b6a3f6d8c81213fd5c2a0c3",
+        "dimensions": [
+          256,
+          257
+        ]
+      },
+      "candidate": {
+        "path": "public/game/biomasks-20261113/masks/elder-phg-reference-view.png",
+        "sha256": "71363050d043ef9cdb200de1a55314cec2aeb555ee617076f81cdefe0bfe26c4",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha0Pixels": 911869,
+        "visibleBoundsAlpha16": [
+          211,
+          145,
+          1043,
+          1124
+        ],
+        "marginsAlpha16": [
+          211,
+          145,
+          211,
+          130
+        ]
+      },
+      "imagesActuallyViewed": 2,
+      "macroDisposition": "no-proven-major-correction-required",
+      "findings": {
+        "macroFindings": [
+          "The large inset oval/circular forehead field, image-left damaged/starburst mark and slanting claw-like cheek scoring are preserved.",
+          "The rounded lower face, narrow eye region and visible asymmetry remain coherent with the icon.",
+          "No long white dreads have been converted into mask points."
+        ],
+        "correctionProven": false
+      }
+    },
+    {
+      "id": "phg-immortal",
+      "source": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_02.png",
+        "sha256": "ce4e9fe67b2d4704385e6aec630836e9fa148086b559e9c9d7bfab9632f2f6f1",
+        "dimensions": [
+          256,
+          257
+        ]
+      },
+      "candidate": {
+        "path": "public/game/biomasks-20261113/masks/immortal-reference-view.png",
+        "sha256": "e5cfccb5b41b899ad2c8240cb8badd6e86f1bbd1c0322bee6e42096c50f0a751",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha0Pixels": 915333,
+        "visibleBoundsAlpha16": [
+          188,
+          124,
+          1066,
+          1124
+        ],
+        "marginsAlpha16": [
+          188,
+          124,
+          188,
+          130
+        ]
+      },
+      "imagesActuallyViewed": 2,
+      "macroDisposition": "no-proven-major-correction-required",
+      "findings": {
+        "macroFindings": [
+          "The broad engraved forehead, two upper light slots, large oval eye/goggle regions, central bridge and bilateral cheek vent panels are preserved.",
+          "No new crown horns or long hair are present.",
+          "The identity remains distinct from a generic Jungle-style plate."
+        ],
+        "correctionProven": false,
+        "uncertainDetails": [
+          "The exact ownership/extent of the long pale side pieces is difficult to separate from the generic pale port head at256px; do not certify these as original PHG side geometry without a clearer model view."
+        ]
+      }
+    },
+    {
+      "id": "phg-nocturne",
+      "source": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_03.png",
+        "sha256": "2aebe4ec0c513d4c9c383944e472ac7899138703057901604f7aad14ac1f4a44",
+        "dimensions": [
+          256,
+          257
+        ]
+      },
+      "candidate": {
+        "path": "public/game/biomasks-20261113/masks/nocturne-reference-view.png",
+        "sha256": "95adc807424703a7f5ddb99549ccb81f579ae54023da7806871321271e2400ef",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha0Pixels": 1021751,
+        "visibleBoundsAlpha16": [
+          229,
+          175,
+          1026,
+          1090
+        ],
+        "marginsAlpha16": [
+          229,
+          175,
+          228,
+          164
+        ]
+      },
+      "imagesActuallyViewed": 2,
+      "macroDisposition": "no-proven-major-correction-required",
+      "findings": {
+        "macroFindings": [
+          "The split upper crown, central round/oval inset, paired pointed inner rim and decorated upper lateral lobes are preserved.",
+          "The dark forehead mark, narrowing brow, pointed cheek panels and central ridged lower shape remain coherent with the source.",
+          "Generic long white dreads are omitted."
+        ],
+        "correctionProven": false,
+        "uncertainDetails": [
+          "Small temple perforations and upper decorative line counts cannot be established exactly from the source resolution."
+        ]
+      }
+    },
+    {
+      "id": "phg-phalanx",
+      "source": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_04.png",
+        "sha256": "4106898755851ec41aae9166d2bd014bed1c50edf3344242843eb0386eb09fa8",
+        "dimensions": [
+          256,
+          257
+        ]
+      },
+      "candidate": {
+        "path": "public/game/biomasks-20261113/masks/phalanx-reference-view.png",
+        "sha256": "e2faa039d11f9438195d56278341f992f8df7d626a53721cba6efffed0643ae3",
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "alpha0Pixels": 1027199,
+        "visibleBoundsAlpha16": [
+          235,
+          137,
+          1017,
+          1115
+        ],
+        "marginsAlpha16": [
+          235,
+          137,
+          237,
+          139
+        ]
+      },
+      "imagesActuallyViewed": 2,
+      "macroDisposition": "no-proven-major-correction-required",
+      "findings": {
+        "macroFindings": [
+          "The layered upper crest, broad divided forehead panel, central vertical lower strip and two sweeping cheek bands are preserved.",
+          "The image-native near-front view and lower pointed outline remain coherent with the icon; no new fangs/dreads are present."
+        ],
+        "correctionProven": false,
+        "uncertainDetails": [
+          "Exact groove depth, slot count on the small central strip and small surface scars remain unqualified."
+        ]
+      }
+    }
+  ],
+  "conclusion": "No sufficiently certain major silhouette, crown-count or asymmetry mismatch was found that warrants an unconditional new generation. Minor lines, ports, pale head/side-piece boundaries and materials remain source-limited and must not be advertised as original PHG1:1.",
+  "filesModified": false
+}

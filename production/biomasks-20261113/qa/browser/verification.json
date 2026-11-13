@@ -1,0 +1,157 @@
+{
+  "scope": "Mask candidate gallery and source inventory only; no canonical fidelity, human art, runtime or animation certification",
+  "manifestSha256": "b254593a8990797045cf6863fecca798aa6be94159f661fad47dc5e52d709109",
+  "browser": "154.0.8037.57",
+  "counts": {
+    "assets": 13,
+    "nativeFiles": 13,
+    "designIdentities": 13,
+    "byCategory": {
+      "masks": 13
+    },
+    "sourceNamedEntries": 110,
+    "exactMissingImagesRequired": null,
+    "humanValidatedAssets": 0,
+    "canonCertifiedAssets": 0,
+    "animationClips": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "name": "Embedded manifest, 13 native candidates and 110 distinct inventory rows agree",
+      "passed": true,
+      "assets": 13,
+      "inventoryEntries": 110
+    },
+    {
+      "name": "Every candidate rectangle renders transparent surroundings and opaque visible material",
+      "passed": true,
+      "rendered": 13,
+      "samples": [
+        {
+          "id": "phg-arthos",
+          "transparent": 171928,
+          "solid": 75106
+        },
+        {
+          "id": "phg-eclipse",
+          "transparent": 171978,
+          "solid": 75758
+        },
+        {
+          "id": "phg-immortal",
+          "transparent": 155634,
+          "solid": 91186
+        },
+        {
+          "id": "phg-inferno",
+          "transparent": 172454,
+          "solid": 74363
+        },
+        {
+          "id": "phg-journeyman",
+          "transparent": 171057,
+          "solid": 76622
+        },
+        {
+          "id": "phg-nocturne",
+          "transparent": 171116,
+          "solid": 76612
+        },
+        {
+          "id": "phg-phalanx",
+          "transparent": 171680,
+          "solid": 76071
+        },
+        {
+          "id": "phg-phoenix",
+          "transparent": 174912,
+          "solid": 71465
+        },
+        {
+          "id": "phg-plague",
+          "transparent": 181149,
+          "solid": 62586
+        },
+        {
+          "id": "phg-prophet",
+          "transparent": 179720,
+          "solid": 67964
+        },
+        {
+          "id": "phg-ravager",
+          "transparent": 183619,
+          "solid": 64355
+        },
+        {
+          "id": "phg-elder",
+          "transparent": 157037,
+          "solid": 88508
+        },
+        {
+          "id": "phg-exiled",
+          "transparent": 172069,
+          "solid": 74537
+        }
+      ]
+    },
+    {
+      "name": "Source categories and P0/P1 priorities filter both the inventory and actual candidate cards",
+      "passed": true,
+      "results": [
+        {
+          "kind": "canonical",
+          "rows": 85,
+          "cards": 13
+        },
+        {
+          "kind": "original",
+          "rows": 22,
+          "cards": 0
+        },
+        {
+          "kind": "nomask",
+          "rows": 3,
+          "cards": 0
+        },
+        {
+          "kind": "alias",
+          "rows": 2,
+          "cards": 0
+        },
+        {
+          "kind": "unknown",
+          "rows": 52,
+          "cards": 0
+        },
+        {
+          "kind": "all",
+          "rows": 110,
+          "cards": 13
+        }
+      ]
+    },
+    {
+      "name": "Search finds mask identity, reports empty results and keeps unsupported Emissary ungenerated",
+      "passed": true
+    },
+    {
+      "name": "Checkerboard, dark and terrain backgrounds plus alpha bounds and pivots compose the native images",
+      "passed": true
+    },
+    {
+      "name": "Keyboard details open the whole native PNG, expose provenance and restore focus",
+      "passed": true
+    },
+    {
+      "name": "320 and 390 pixel screens contain controls, mask details and the scrollable inventory",
+      "passed": true
+    },
+    {
+      "name": "No page exception, missing image or game storage write",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}
