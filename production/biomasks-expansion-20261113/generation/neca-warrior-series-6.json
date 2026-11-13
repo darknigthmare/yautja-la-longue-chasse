@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-warrior-series-6",
+  "sourceEdition": "NECA Predators Series6,2012 official portrait",
+  "tool": "image_gen.imagegen",
+  "scope": "Source-bound official NECA sculpture adaptation A and separate PHG-rendering B; no film fidelity certification or automatic Bible closure.",
+  "entries": [
+    {
+      "id": "neca-warrior-series-6",
+      "label": "Warrior / Ram — NECA Series6",
+      "version": "A",
+      "assetPath": "public/game/biomasks-expansion-20261113/originals/neca-warrior-series-6.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-fa602b2d-cac0-4cbf-9510-cb408b30b3a4.png",
+      "sha256": "cea1ce8f19c50425fd43ebd93ade572533200e5164bf4768ea9f4f892724e784",
+      "bytes": 1613778,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-warrior-series-6.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+      "referenceSourceSha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+          "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+        }
+      ],
+      "referenceSourceUrl": "https://necaonline.com/wp-content/uploads/2012/08/Warrior_01.jpg",
+      "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+      "sourceEdition": "NECA Predators Series6,2012 official portrait",
+      "sourceClass": "official-photo",
+      "submittedReferencePaths": [
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated detachable biomask following only the exact mask visible in the attached official NECA2012 Series6 figure photograph. This is a source-bound visual adaptation of that particular licensed sculpt/paint edition, NOT certified original film geometry. Do not use a similar familiar Predator mask as a substitute.\nPreserve the photograph's actual mask silhouette, width-to-height ratio, pose, camera elevation, yaw/pitch/roll, visible perspective, sculpt proportions, panel boundaries, apertures and painted grey/bronze surface values. Retain the visible physical toy-sculpt reliefs and wear. Use the photo lighting and observed muted material/paint for A; do not brighten into chrome or recolor to remembered canon. Preserve existing asymmetries. Where the small dark photograph cannot resolve fine marks, keep them restrained and unresolved rather than inventing clear detail.\nREMOVE the figure wearer, organic head, dreadlocks, neck, armor, netting, shoulder equipment, straps and black photographic background. Render ONLY the photographed hard mask shell and clearly visible built-in features. Remove hoses/cables leaving the mask for the wearer. Do not make new back/interior surfaces, a new profile or hidden side geometry. No new glyphs, engraving, grooves, vents, filters, holes, wires, teeth, horns or damage. No mirrored redesign or forced symmetry.\nOne mask only, complete and centered, no second object or reference inset. Genuine transparent RGBA background; no floor, shadow plane, support, stand, smoke, halo, text, label or checkerboard. Request1254x1254square if supported. Place the complete visible mask within80percent of the largest canvas axis, leaving10percent empty margin on all sides; preserve proportions and avoid cropped edges. Clear high-quality game-prop image preserving the actual referenced edition, not a newly authored mask.\n\nPHOTO LOCKS — NECA Warrior/Ram Lost Tribe Series6: the huge broad raised crown rim encloses a long oval recessed forehead bowl with several shallow transverse curved ridges. The top outer edge is gently dipped at center with broad rounded left/right corners; do not make horns. Preserve the dark narrow eye band below the heavy low V-shaped brow. Keep the long cheek frames with elongated recessed channels, their slimmer inner lines, and the central projecting long respirator grille with parallel VERTICAL ribs. Retain the slightly olive/bronze-grey weathered paint and dark cavities. All strands outside the mask edges are dreadlocks and must vanish. Do not replace it with Boar, Snake, PHG Scout or generic Jungle Hunter. Tiny relief marks remain below photo resolving power; do not invent them.",
+      "promptSha256": "6e818db883a8ef2b4ddfba012e85cd5595977bfa0b2b36844da3a821d1566f62",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          259,
+          98,
+          983,
+          1154
+        ],
+        "visibleMarginsPx": [
+          259,
+          98,
+          271,
+          100
+        ],
+        "minimumMarginFraction": 0.07815,
+        "transparentPixels": 944882,
+        "opaquePixels": 525
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Broad crown rim and oval ridged forehead bowl retained.",
+          "Narrow black eye band, elongated recessed cheek channels and long parallel vertical respirator ribs retained.",
+          "Wearer, dreadlocks, armour and background removed; no new appendages observed.",
+          "A retains the source photographed paint/roughness and dark presentation."
+        ]
+      },
+      "limitations": [
+        "Source is an official NECA2012 Series6 licensed toy photograph400x600, not a film scan or a physical turntable.",
+        "The mask itself occupies a small part of the photo; fine pores, wear microtexture and exact groove counts cannot be certified1:1.",
+        "Only the visible camera and surfaces are referenced; rear, interior and obscured geometry remain unknown.",
+        "New ImageGen isolated candidate, not an original franchise image or automatic film/comic fidelity certification.",
+        "The native visible margin is below the requested8–12percent minimum; the whole mask stays inside the canvas. Native PNG is retained without pixel editing."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-fa602b2d-cac0-4cbf-9510-cb408b30b3a4.png",
+          "sha256": "cea1ce8f19c50425fd43ebd93ade572533200e5164bf4768ea9f4f892724e784",
+          "bytes": 1613778,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Create ONE isolated detachable biomask following only the exact mask visible in the attached official NECA2012 Series6 figure photograph. This is a source-bound visual adaptation of that particular licensed sculpt/paint edition, NOT certified original film geometry. Do not use a similar familiar Predator mask as a substitute.\nPreserve the photograph's actual mask silhouette, width-to-height ratio, pose, camera elevation, yaw/pitch/roll, visible perspective, sculpt proportions, panel boundaries, apertures and painted grey/bronze surface values. Retain the visible physical toy-sculpt reliefs and wear. Use the photo lighting and observed muted material/paint for A; do not brighten into chrome or recolor to remembered canon. Preserve existing asymmetries. Where the small dark photograph cannot resolve fine marks, keep them restrained and unresolved rather than inventing clear detail.\nREMOVE the figure wearer, organic head, dreadlocks, neck, armor, netting, shoulder equipment, straps and black photographic background. Render ONLY the photographed hard mask shell and clearly visible built-in features. Remove hoses/cables leaving the mask for the wearer. Do not make new back/interior surfaces, a new profile or hidden side geometry. No new glyphs, engraving, grooves, vents, filters, holes, wires, teeth, horns or damage. No mirrored redesign or forced symmetry.\nOne mask only, complete and centered, no second object or reference inset. Genuine transparent RGBA background; no floor, shadow plane, support, stand, smoke, halo, text, label or checkerboard. Request1254x1254square if supported. Place the complete visible mask within80percent of the largest canvas axis, leaving10percent empty margin on all sides; preserve proportions and avoid cropped edges. Clear high-quality game-prop image preserving the actual referenced edition, not a newly authored mask.\n\nPHOTO LOCKS — NECA Warrior/Ram Lost Tribe Series6: the huge broad raised crown rim encloses a long oval recessed forehead bowl with several shallow transverse curved ridges. The top outer edge is gently dipped at center with broad rounded left/right corners; do not make horns. Preserve the dark narrow eye band below the heavy low V-shaped brow. Keep the long cheek frames with elongated recessed channels, their slimmer inner lines, and the central projecting long respirator grille with parallel VERTICAL ribs. Retain the slightly olive/bronze-grey weathered paint and dark cavities. All strands outside the mask edges are dreadlocks and must vanish. Do not replace it with Boar, Snake, PHG Scout or generic Jungle Hunter. Tiny relief marks remain below photo resolving power; do not invent them.",
+          "promptSha256": "6e818db883a8ef2b4ddfba012e85cd5595977bfa0b2b36844da3a821d1566f62",
+          "submittedReferencePaths": [
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "neca-warrior-series-6",
+      "label": "Warrior / Ram — NECA Series6",
+      "version": "B",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/neca-warrior-series-6.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-b6c232c4-d493-47b1-a95a-60e63f97410f.png",
+      "sha256": "7b35b21ccce4f5edf945b7eb6998d65d10c31d22aa91c237756f020161a52b18",
+      "bytes": 1552865,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-warrior-series-6.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+      "referenceSourceSha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+          "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+        }
+      ],
+      "referenceSourceUrl": "https://necaonline.com/wp-content/uploads/2012/08/Warrior_01.jpg",
+      "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+      "sourceEdition": "NECA Predators Series6,2012 official portrait",
+      "sourceClass": "official-photo",
+      "submittedReferencePaths": [
+        "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-warrior-series-6.png",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Edit the FIRST reference, an isolated A mask, into a distinct PHG-quality rendering B of the exact same mask. The SECOND reference is the official NECA2012 Series6 photograph that controls its actual sculpture, paint and camera. This is a rendering/material restage only, not a redesign. Preserve the first reference’s whole outer contour, width-to-height ratio, camera elevation, yaw/pitch/roll, source asymmetries, panels, aperture placement, all forehead ridges, cheek channels, grille ribs, weathered paint palette and broad wear marks. Keep its subdued grey/olive-bronze color; no added gold, color shift or chrome. The source photo remains the authority; do not replace it with a similarly named canonical mesh.\nImprove the rendering to a coherent modern Predator:Hunting Grounds game-prop standard: soft neutral upper-left/front key, gentle opposite frontal fill, physically plausible grey/olive-bronze surface response, controlled roughness and readable dark cavities. Reduce visually distracting fine grain/pore noise into restrained texture while preserving broad pitting and visible sculpt ridges; do not polish away the edition’s worn appearance. A is already a coherent render, so make this a subtle restage rather than manufacturing new design differences.\nKeep only this one complete isolated mask, transparent alpha background, no wearer, eyes/head anatomy, dreadlocks, neck, hoses, armor, stand, scene, floor, extra appendages or cast shadow plane. Do not add glyphs, vents, grooves, teeth, horns, pores presented as exact engraved marks, or hidden rear/interior geometry. Preserve very dark eye cavities as mask optics/apertures. No labels, text or comparison board. Request1254x1254square; center at about80percent of the largest axis with about10percent transparent margins and no cropped edges. Preserve the source shape and camera.\n\nPHOTO LOCKS — NECA Warrior/Ram Lost Tribe Series6: the huge broad raised crown rim encloses a long oval recessed forehead bowl with several shallow transverse curved ridges. The top outer edge is gently dipped at center with broad rounded left/right corners; do not make horns. Preserve the dark narrow eye band below the heavy low V-shaped brow. Keep the long cheek frames with elongated recessed channels, their slimmer inner lines, and the central projecting long respirator grille with parallel VERTICAL ribs. Retain the slightly olive/bronze-grey weathered paint and dark cavities. All strands outside the mask edges are dreadlocks and must vanish. Do not replace it with Boar, Snake, PHG Scout or generic Jungle Hunter. Tiny relief marks remain below photo resolving power; do not invent them.\n\nLIMITS: official source400x600 contains a small mask view. Fine texture, microgroove counts and unseen geometry are not certified film/franchise1:1. B is a PHG-style candidate of this licensed NECA edition only.",
+      "promptSha256": "062cc383add2583cf4fd0248b20b96cbd5dbf7d3a8fc7e8ad9e8603f37919b6e",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          253,
+          93,
+          991,
+          1154
+        ],
+        "visibleMarginsPx": [
+          253,
+          93,
+          263,
+          100
+        ],
+        "minimumMarginFraction": 0.07416,
+        "transparentPixels": 935261,
+        "opaquePixels": 1037
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Broad crown rim and oval ridged forehead bowl retained.",
+          "Narrow black eye band, elongated recessed cheek channels and long parallel vertical respirator ribs retained.",
+          "Wearer, dreadlocks, armour and background removed; no new appendages observed.",
+          "New neutral upper-left/front light and controlled PHG-like material roughness; source palette and macro design retained."
+        ]
+      },
+      "limitations": [
+        "Source is an official NECA2012 Series6 licensed toy photograph400x600, not a film scan or a physical turntable.",
+        "The mask itself occupies a small part of the photo; fine pores, wear microtexture and exact groove counts cannot be certified1:1.",
+        "Only the visible camera and surfaces are referenced; rear, interior and obscured geometry remain unknown.",
+        "New ImageGen isolated candidate, not an original franchise image or automatic film/comic fidelity certification.",
+        "The native visible margin is below the requested8–12percent minimum; the whole mask stays inside the canvas. Native PNG is retained without pixel editing."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-b6c232c4-d493-47b1-a95a-60e63f97410f.png",
+          "sha256": "7b35b21ccce4f5edf945b7eb6998d65d10c31d22aa91c237756f020161a52b18",
+          "bytes": 1552865,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Edit the FIRST reference, an isolated A mask, into a distinct PHG-quality rendering B of the exact same mask. The SECOND reference is the official NECA2012 Series6 photograph that controls its actual sculpture, paint and camera. This is a rendering/material restage only, not a redesign. Preserve the first reference’s whole outer contour, width-to-height ratio, camera elevation, yaw/pitch/roll, source asymmetries, panels, aperture placement, all forehead ridges, cheek channels, grille ribs, weathered paint palette and broad wear marks. Keep its subdued grey/olive-bronze color; no added gold, color shift or chrome. The source photo remains the authority; do not replace it with a similarly named canonical mesh.\nImprove the rendering to a coherent modern Predator:Hunting Grounds game-prop standard: soft neutral upper-left/front key, gentle opposite frontal fill, physically plausible grey/olive-bronze surface response, controlled roughness and readable dark cavities. Reduce visually distracting fine grain/pore noise into restrained texture while preserving broad pitting and visible sculpt ridges; do not polish away the edition’s worn appearance. A is already a coherent render, so make this a subtle restage rather than manufacturing new design differences.\nKeep only this one complete isolated mask, transparent alpha background, no wearer, eyes/head anatomy, dreadlocks, neck, hoses, armor, stand, scene, floor, extra appendages or cast shadow plane. Do not add glyphs, vents, grooves, teeth, horns, pores presented as exact engraved marks, or hidden rear/interior geometry. Preserve very dark eye cavities as mask optics/apertures. No labels, text or comparison board. Request1254x1254square; center at about80percent of the largest axis with about10percent transparent margins and no cropped edges. Preserve the source shape and camera.\n\nPHOTO LOCKS — NECA Warrior/Ram Lost Tribe Series6: the huge broad raised crown rim encloses a long oval recessed forehead bowl with several shallow transverse curved ridges. The top outer edge is gently dipped at center with broad rounded left/right corners; do not make horns. Preserve the dark narrow eye band below the heavy low V-shaped brow. Keep the long cheek frames with elongated recessed channels, their slimmer inner lines, and the central projecting long respirator grille with parallel VERTICAL ribs. Retain the slightly olive/bronze-grey weathered paint and dark cavities. All strands outside the mask edges are dreadlocks and must vanish. Do not replace it with Boar, Snake, PHG Scout or generic Jungle Hunter. Tiny relief marks remain below photo resolving power; do not invent them.\n\nLIMITS: official source400x600 contains a small mask view. Fine texture, microgroove counts and unseen geometry are not certified film/franchise1:1. B is a PHG-style candidate of this licensed NECA edition only.",
+          "promptSha256": "062cc383add2583cf4fd0248b20b96cbd5dbf7d3a8fc7e8ad9e8603f37919b6e",
+          "submittedReferencePaths": [
+            "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-warrior-series-6.png",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg"
+          ]
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-warrior-series-6.png",
+      "sourceASha256": "cea1ce8f19c50425fd43ebd93ade572533200e5164bf4768ea9f4f892724e784"
+    }
+  ],
+  "asOfUtc": "2026-11-13T10:42:00.623132+00:00"
+}

@@ -1,0 +1,1678 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "auditedHead": "065f3cd9f810c0d704ba4fc29323fc8a33c4c152",
+  "mandatoryCommunityIds": [
+    "predator_11",
+    "predator_12",
+    "predator_16",
+    "predator_17",
+    "predator_21",
+    "predator_23",
+    "predator_detox",
+    "predator_14",
+    "predator_kawaii"
+  ],
+  "targets": [
+    {
+      "id": "predator_11",
+      "label": "Modern Predator",
+      "originGroup": "community-additional",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_11.png",
+      "sourceSha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        47,
+        20,
+        207,
+        198
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Wide smooth rounded crown with concentric nested arched teardrop panels",
+        "Narrow bright slotted eyes and long squared nose/lower panel",
+        "Small round central upper and midline features; lateral metallic panels"
+      ],
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "additional-supplied-name",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_11.png",
+          "sha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_11.texture",
+          "sha256": "417b3a6d502edabb8490e72a2956600c85fdc57603e4e3856e7fe7b89bc1310e"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_11.texture",
+        "labelKey": "bm_msk_predator_11",
+        "localizationLine": 55,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "predator_12",
+      "label": "Abyss",
+      "originGroup": "community-additional",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_12.png",
+      "sourceSha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        45,
+        20,
+        210,
+        208
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Fan-like ridged crown with central spine and angular wings",
+        "Deep black eye apertures, sharp cheek facets and long narrow pointed center",
+        "Small diamond/grouped marks on lower forehead"
+      ],
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "additional-supplied-name",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_12.png",
+          "sha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_12.texture",
+          "sha256": "3c4581d23457a24fff323960e6c06168b401ca25c3332f3ce34defc3a52b07b4"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_12.texture",
+        "labelKey": "bm_msk_predator_12",
+        "localizationLine": 58,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "predator_16",
+      "label": "Cyclone",
+      "originGroup": "community-additional",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_16.png",
+      "sourceSha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        56,
+        20,
+        203,
+        203
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Broad flat faceted crown with central raised strip and short top notch",
+        "Mirrored circular fasteners and curled engraved marks on crown sides",
+        "Broad continuous narrow eye band and split blocky lower mouth shield"
+      ],
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "additional-supplied-name",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_16.png",
+          "sha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_16.texture",
+          "sha256": "d543186f027bcd0259e4ff919f635c6ec7dc3fcbef68791bf91969c70081a953"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_16.texture",
+        "labelKey": "bm_msk_predator_16",
+        "localizationLine": 70,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "predator_17",
+      "label": "Vapor",
+      "originGroup": "community-additional",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+      "sourceSha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        63,
+        22,
+        194,
+        188
+      ],
+      "viewerBoundsQualification": "Fenêtre visuelle manuelle CSS[63,22,194,188],horscheveuxsouslementon ; pasune segmentation certifiée,une découpeexportée ou une mesure3D.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Domed crown with dark raised central spine and four long arched upper panels",
+        "Narrow diagonal eyes, short ridged bridge and elongated split central mouth plate",
+        "No visible color information beyond grayscale"
+      ],
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details.",
+        "RÉSERVE MAJEURE OUVERTE : B provisoire environ+11% de largeur sur le proxy visuel A ; refusé pour une version fidèle et à reprendre. La présence des fichiers ne clôture pas ce défaut artistique."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "additional-supplied-name",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+          "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_17.texture",
+          "sha256": "ea600bbd34ed5f174ec32ab734e7d21a58ad173af54832e15668a91b61a523d0"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_17.texture",
+        "labelKey": "bm_msk_predator_17",
+        "localizationLine": 73,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": false,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      },
+      "requiredBQualification": {
+        "geometryDeviationOpen": true,
+        "productionReady": false,
+        "selectionStatus": "provisional-review-only",
+        "rejectedForFaithfulRelease": true
+      }
+    },
+    {
+      "id": "predator_21",
+      "label": "Fray",
+      "originGroup": "community-additional",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_21.png",
+      "sourceSha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        47,
+        9,
+        209,
+        209
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Very dark broad oval dome with narrow central ridge",
+        "Paired rows of light small rectangular crown marks",
+        "Narrow angled eyes and projecting mechanical lower respirator/grille"
+      ],
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "additional-supplied-name",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_21.png",
+          "sha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_21.texture",
+          "sha256": "6ca377f1a5602235f0be1e3cf5b565ad511f64b45d2f287f4b33e7a302ba0bbb"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_21.texture",
+        "labelKey": "bm_msk_predator_21",
+        "localizationLine": 85,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "predator_23",
+      "label": "Remnant",
+      "originGroup": "community-additional",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_23.png",
+      "sourceSha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        50,
+        14,
+        204,
+        208
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Angular tall paired central towers with circular top recesses",
+        "Diagonal stratified ribbed crown and lower cross-engraved texture",
+        "Dark eyes and irregular lower rim; exact fine ribs remain limited by source resolution"
+      ],
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "additional-supplied-name",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_23.png",
+          "sha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_23.texture",
+          "sha256": "599d93cbde8563cfb862b49671ad8f681ea4a306c4311f8e548f71e8b56052ec"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_23.texture",
+        "labelKey": "bm_msk_predator_23",
+        "localizationLine": 94,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "predator_detox",
+      "label": "Detox",
+      "originGroup": "community-additional",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_detox.png",
+      "sourceSha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        62,
+        40,
+        194,
+        195
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Short curved horseshoe crown with deep center U notch",
+        "Two large round dark goggle-like eye openings",
+        "Small round center nose and external clustered breathing tubes/round filters"
+      ],
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "additional-supplied-name",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_detox.png",
+          "sha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_detox.texture",
+          "sha256": "8956cc628a2d50121b2bfe26366b7cf583883043a0ff2520a120a2d8b14ae5d3"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_detox.texture",
+        "labelKey": "bm_msk_predator_detox",
+        "localizationLine": 10,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "predator_14",
+      "label": "City Hunter of 97",
+      "originGroup": "community-variant",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_14.png",
+      "sourceSha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        60,
+        28,
+        194,
+        195
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Worn pitted rounded crown and broad near-horizontal brow",
+        "Dark narrow eyes and long smooth rectangular central lower shield",
+        "Variant source cannot establish equivalence to every City Hunter film or PHG mesh"
+      ],
+      "baseAlreadyRepresented": "mk-02-city",
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "variant-reference",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_14.png",
+          "sha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_14.texture",
+          "sha256": "37bc61d95c9c6c42caeb70e799f25ed87736b7cc1e96624444322b70ffbf767b"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_14.texture",
+        "labelKey": "bm_msk_predator_14",
+        "localizationLine": 64,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "predator_kawaii",
+      "label": "Kawaii Phoenix",
+      "originGroup": "community-variant",
+      "sourceClass": "secondary-port-capture",
+      "sourcePath": "production/biomasks-expansion-20261113/references/community/predator_kawaii.png",
+      "sourceSha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea",
+      "sourceFormat": "PNG",
+      "sourceMode": "RGB",
+      "sourceDimensions": [
+        256,
+        257
+      ],
+      "versionAMode": "source-copy",
+      "sourceIncludesWearerElements": true,
+      "viewerMaskBounds": [
+        42,
+        8,
+        213,
+        211
+      ],
+      "viewerBoundsQualification": "Proposed visible mask framing for CSS review only; not an exported crop or a certified geometry measurement. External dreadlocks remain present in exact reference A.",
+      "camera": "Vue presque frontale du port communautaire ; projection et orientation physique non mesurées.",
+      "identityAnchors": [
+        "Wide outward crown side points around nested curved central ribs",
+        "Two large black almond eye apertures and long pointed central lower plate",
+        "Thin pale looping line motifs; community nickname does not establish a canonical Phoenix colorway"
+      ],
+      "baseAlreadyRepresented": "phg-cosmetic-phoenix",
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details."
+      ],
+      "sourceScope": "Community localization label and unchanged reference screenshot only; no per-mask original PHG provenance certified.",
+      "maskGeometryClaim": "variant-reference",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_kawaii.png",
+          "sha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/community/predator_kawaii.texture",
+          "sha256": "39cbac6b5f3aeb1c0c0e048691ee4a370d952782230cc3871f874a7a775068a4"
+        }
+      ],
+      "attribution": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "textureUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_kawaii.texture",
+        "labelKey": "bm_msk_predator_kawaii",
+        "localizationLine": 16,
+        "readmePath": "production/biomasks-expansion-20261113/references/community/README.md",
+        "localizationPath": "production/biomasks-expansion-20261113/references/community/english.json"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+        "reportSha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-kwei-prototype",
+      "label": "Kwei · prototype NECA",
+      "originGroup": "official-prototype",
+      "sourceClass": "official-photo-prototype",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/kwei-2.jpg",
+      "sourceSha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Masque isolé au trois-quarts de la photographie du prototype ; caméra à conserver dans B.",
+      "identityAnchors": [
+        "Version photographiée du prototype NECA Kwei, distincte d’une certification du masque du film.",
+        "Conserver exactement les seules formes et matières visibles dans les deux photographies R."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/kwei-2.jpg",
+          "sha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/kwei-3.jpg",
+          "sha256": "5e783d1b2c0ea50168f991f5bddbf977c0860b68a5854fba9b637e173de9094c"
+        }
+      ],
+      "sourceScope": "Official NECA photographed prototype; Not Final Product.",
+      "maskGeometryClaim": "edition-specific-prototype-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Prototype NECA photographié : Not Final Product ; silhouette finale et fidélité au film non certifiées.",
+        "A est une nouvelle étude ImageGen isolant le masque visible, pas une copie pixel-identique d’un original franchise.",
+        "B réinterprète le rendu PHG depuis A et les photographies R ; géométrie cachée, profil et dos restent inconnus.",
+        "Les deux photographies R sont conservées en octets identiques ; aucune photographie n’est détourée ou recolorée par un outil CPU.",
+        "Le nom Kwei du film (mk-48-kwei) demeure ouvert ; cette étude de prototype ne le clôture pas."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/kwei-2.jpg",
+            "bytes": 568952,
+            "sha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15",
+            "url": "https://store.necaonline.com/cdn/shop/files/51760_UNP_2.jpg?v=1784139188&width=3840",
+            "sourcePageId": "store-kwei",
+            "sourcePageURL": "https://store.necaonline.com/products/predator-badlands-ultimate-kwei-predator-deks-brother-7-inch-scale-action-figure",
+            "sourcePageSha256": "f95621f9e00a861152355bd104907add56745fcda586cfe2e9214c25065e2406",
+            "dimensions": [
+              2400,
+              2400
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete mask, three-quarter view, camera sees subject left side more clearly. Gold/silver crown, dark red cheek ribs, gold lateral fins. Recommended principal view.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/kwei-3.jpg",
+            "bytes": 533718,
+            "sha256": "5e783d1b2c0ea50168f991f5bddbf977c0860b68a5854fba9b637e173de9094c",
+            "url": "https://store.necaonline.com/cdn/shop/files/51760_UNP_3.jpg?v=1784139187&width=3840",
+            "sourcePageId": "store-kwei",
+            "sourcePageURL": "https://store.necaonline.com/products/predator-badlands-ultimate-kwei-predator-deks-brother-7-inch-scale-action-figure",
+            "sourcePageSha256": "f95621f9e00a861152355bd104907add56745fcda586cfe2e9214c25065e2406",
+            "dimensions": [
+              2400,
+              2400
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete mask from opposite three-quarter view. Recommended corroborating view.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "relatedCanonicalTargetId": "mk-48-kwei",
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/kwei-review.json",
+        "reportSha256": "39c47a8ad3fd035e3591e126669f015ace1a79a456f46cd99ba834a7a4b95073",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-ahab-sdcc-2014",
+      "label": "Ahab · NECA SDCC2014",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+      "sourceSha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Vue presque frontale de la photographie SDCC-1 ; photographies2/3 et concepts en appui, sans côté inventé.",
+      "identityAnchors": [
+        "Édition NECA SDCC2014 précise, pas Ultimate2017.",
+        "Masque ouvert sous le nez ; retirer la bouche du porteur et conserver le vide alpha.",
+        "Conserver rayures et peinture argent/gris légèrement bleu-turquoise visibles dans cette édition."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+          "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-2.jpg",
+          "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-3.jpg",
+          "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-1.jpeg",
+          "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-2.jpeg",
+          "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305"
+        }
+      ],
+      "sourceScope": "Photographies officielles NECA Ahab SDCC2014 et concepts associés, édition distincte du canon comics intégral.",
+      "maskGeometryClaim": "edition-specific-licensed-photo-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "A et B sont de nouvelles images ImageGen fidèles aux seules surfaces photographiées, aucune copie pixel-identique franchise.",
+        "Ne pas mélanger l’édition SDCC2014 et Ultimate2017.",
+        "La peau et la bouche visibles au-dessous du masque appartiennent au porteur et doivent rester exclues.",
+        "La validation canon/humaine/runtime et le nom Ahab mk-18 restent ouverts."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "nativeArticlePath": "production/biomasks-expansion-20261113/references/neca/article-ahab-sdcc.html",
+        "nativeImagePinsPath": "production/biomasks-expansion-20261113/references/neca/ahab-image-pins.json",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/ahab-sdcc-1.jpg",
+            "bytes": 1586399,
+            "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e",
+            "url": "https://necaonline.com/wp-content/uploads/2014/05/Ahab1rev.jpg",
+            "sourcePageId": "article-ahab-sdcc",
+            "sourcePageURL": "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+            "sourcePageSha256": "71437cbd191f74a790bee257b239536a2ba14e5c630f5702c49aa231afd5b032",
+            "dimensions": [
+              2400,
+              3000
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete figure with SDCC2014 mask, silver/blue patina, forehead claw scars, open lower aperture; upper-right inset is the organic head, not an alternate mask. Underlying visible teeth are wearer anatomy.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/ahab-sdcc-2.jpg",
+            "bytes": 1529103,
+            "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b",
+            "url": "https://necaonline.com/wp-content/uploads/2014/05/Ahab2.jpg",
+            "sourcePageId": "article-ahab-sdcc",
+            "sourcePageURL": "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+            "sourcePageSha256": "71437cbd191f74a790bee257b239536a2ba14e5c630f5702c49aa231afd5b032",
+            "dimensions": [
+              2400,
+              3000
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete figure with SDCC2014 mask, silver/blue patina, forehead claw scars, open lower aperture; upper-right inset is the organic head, not an alternate mask. Underlying visible teeth are wearer anatomy.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/ahab-sdcc-3.jpg",
+            "bytes": 1523153,
+            "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01",
+            "url": "https://necaonline.com/wp-content/uploads/2014/05/Ahab3.jpg",
+            "sourcePageId": "article-ahab-sdcc",
+            "sourcePageURL": "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+            "sourcePageSha256": "71437cbd191f74a790bee257b239536a2ba14e5c630f5702c49aa231afd5b032",
+            "dimensions": [
+              2400,
+              3000
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete figure with SDCC2014 mask, silver/blue patina, forehead claw scars, open lower aperture; upper-right inset is the organic head, not an alternate mask. Underlying visible teeth are wearer anatomy.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/ahab-concept-1.jpeg",
+            "bytes": 780645,
+            "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b",
+            "url": "https://necaonline.com/wp-content/uploads/2014/05/ahabpredator_toyconcept1.jpeg",
+            "sourcePageId": "article-ahab-sdcc",
+            "sourcePageURL": "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+            "sourcePageSha256": "71437cbd191f74a790bee257b239536a2ba14e5c630f5702c49aa231afd5b032",
+            "dimensions": [
+              1800,
+              1073
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "NECA-published concept drawing; sheet2 contains a clearly isolated mask drawing separating shell from exposed anatomy. Concept is corroborating design evidence, not a final sculpture scan.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/ahab-concept-2.jpeg",
+            "bytes": 670123,
+            "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305",
+            "url": "https://necaonline.com/wp-content/uploads/2014/05/ahabpredator_toyconcept2.jpeg",
+            "sourcePageId": "article-ahab-sdcc",
+            "sourcePageURL": "https://store.necaonline.com/blogs/san-diego-comic-con/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure",
+            "sourcePageSha256": "71437cbd191f74a790bee257b239536a2ba14e5c630f5702c49aa231afd5b032",
+            "dimensions": [
+              1800,
+              955
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "NECA-published concept drawing; sheet2 contains a clearly isolated mask drawing separating shell from exposed anatomy. Concept is corroborating design evidence, not a final sculpture scan.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "relatedCanonicalTargetId": "mk-18-ahab",
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+        "reportSha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-warrior-series-6",
+      "label": "Warrior · NECA Lost Tribe Series6",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+      "sourceSha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Vue presque frontale du portrait officiel ; conserver l’orientation observée.",
+      "identityAnchors": [
+        "Conserver les formes, couleurs et détails visibles de la version NECA photographiée, sans emprunt PHG."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+          "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+        }
+      ],
+      "sourceScope": "NECA Lost Tribe Series6,2012 ; sculpture et photographie de cette édition seulement.",
+      "maskGeometryClaim": "edition-specific-licensed-photo-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+        "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+        "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "id": "warrior-direct",
+            "url": "https://necaonline.com/wp-content/uploads/2012/08/Warrior_01.jpg",
+            "sourcePageId": "lost-tribe-store",
+            "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+            "identity": "Warrior/Ram Lost Tribe",
+            "path": "/tmp/primary-masks-20261113/film/warrior-direct.jpg",
+            "headerPath": "/tmp/primary-masks-20261113/film/warrior-direct.headers",
+            "httpStatus": 200,
+            "bytes": 39858,
+            "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+            "dimensions": [
+              400,
+              600
+            ],
+            "format": "JPEG",
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Near frontal chest portrait; bronze-grey removable mask with raised oval forehead rim, dark narrow eye band, vertical central respirator and cheek channels. Not a listed missing target.",
+            "generationReady": false,
+            "canonicalFidelityCertified": false,
+            "reinspectedInThisAudit": true,
+            "bytesReusedWithoutMutation": true
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+        "reportSha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-scout-lost-tribe-series-6",
+      "label": "Scout · NECA Lost Tribe Series6",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+      "sourceSha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Léger trois-quarts du portrait officiel, distinct de Scout PHG.",
+      "identityAnchors": [
+        "Conserver les formes, couleurs et détails visibles de la version NECA photographiée, sans emprunt PHG."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+          "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+        }
+      ],
+      "sourceScope": "NECA Lost Tribe Series6,2012 ; sculpture et photographie de cette édition seulement.",
+      "maskGeometryClaim": "edition-specific-licensed-photo-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+        "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+        "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu.",
+        "Scout de Lost Tribe/NECA Series6 ; ne pas le confondre avec la classe Scout PHG."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "id": "scout-direct",
+            "url": "https://necaonline.com/wp-content/uploads/2012/08/SCOUT_01.jpg",
+            "sourcePageId": "lost-tribe-store",
+            "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+            "identity": "Scout Lost Tribe",
+            "path": "/tmp/primary-masks-20261113/film/scout-direct.jpg",
+            "headerPath": "/tmp/primary-masks-20261113/film/scout-direct.headers",
+            "httpStatus": 200,
+            "bytes": 43654,
+            "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+            "dimensions": [
+              400,
+              600
+            ],
+            "format": "JPEG",
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Slight three-quarter chest portrait; silver helmet has sloping rim around oval crown, black eye band and bulging midface side lobes. Not PHG Scout.",
+            "generationReady": false,
+            "canonicalFidelityCertified": false,
+            "reinspectedInThisAudit": true,
+            "bytesReusedWithoutMutation": true
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+        "reportSha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-lava-planet-series-10",
+      "label": "Lava Planet · NECA Series10",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+      "sourceSha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Vue quasi frontale de LP-pred-1 avec son léger angle réel ; catalogue pour peinture rouge bordeaux.",
+      "identityAnchors": [
+        "Entire dark reddish segmented cranial shell, raised center seam, narrow visor and short central ribbed muzzle."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "sourceScope": "NECA Predators Series10, 7-inch,2013, modern sculpt adaptation of Kenner Expanded Universe design.",
+      "maskGeometryClaim": "edition-specific-licensed-photo-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Orange/red setting casts strong colored light; retain restrained uncertainty in surface albedo.",
+        "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+        "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+        "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+        "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+        "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/LP-pred-1.jpg",
+            "bytes": 139839,
+            "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+            "url": "http://necaonline.com/wp-content/uploads/2013/09/LP-pred-1.jpg",
+            "sourcePageId": "article-series10",
+            "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+            "sourcePageSha256": "d48adcd37bfcba927cd8e5d7f3f4714a763cf8d11fb58934350f5a12879dd2e0",
+            "dimensions": [
+              570,
+              861
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete worn mask with segmented dark red/brown dome, narrow dark eyes and small ribbed respirator; colored orange environment affects apparent color.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/series10-catalog.jpg",
+            "bytes": 109824,
+            "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+            "url": "https://necaonline.com/wp-content/uploads/2013/10/51487-Predator-Series10Asst.jpg",
+            "sourcePageId": "article-series10-shipping",
+            "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-predators-series-10-action-figures",
+            "sourcePageSha256": "936feb0cbfeb2ee15547f6fe5921090ddc0c2545f913ee9f24cde6fdd91208e3",
+            "dimensions": [
+              800,
+              600
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "White-background NECA catalog composite; Lava Planet and Hive Wars masked figures; Nightstorm worn mask in small inset, organic head on main figure. Supports identities and less dramatic color, insufficient fine detail alone.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "relatedCanonicalTargetId": "mk-21-lava-planet",
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+        "reportSha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-hive-wars-series-10",
+      "label": "Hive Wars · NECA Series10",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+      "sourceSha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Vue HW-pred-3, léger angle et inclinaison réels ; figure gauche du catalogue pour métal bleu argenté et yeux verts.",
+      "identityAnchors": [
+        "Closed silver-gray muzzle, green eye strip, large oval dome with raised longitudinal ridges and ribbed center seam."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "sourceScope": "NECA Predators Series10,7-inch,2013, Kenner Expanded Universe tribute.",
+      "maskGeometryClaim": "edition-specific-licensed-photo-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+        "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+        "A/B sont deux études ImageGen distinctes liées aux photographies R ; géométrie cachée non établie.",
+        "Validation canonique/humaine/runtime et fermeture bible/P0 restent ouvertes.",
+        "L’édition NECA ne certifie pas automatiquement l’incarnation film,comics oujeu."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/HW-pred-3.jpg",
+            "bytes": 152782,
+            "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+            "url": "http://necaonline.com/wp-content/uploads/2013/09/HW-pred-3.jpg",
+            "sourcePageId": "article-series10",
+            "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+            "sourcePageSha256": "d48adcd37bfcba927cd8e5d7f3f4714a763cf8d11fb58934350f5a12879dd2e0",
+            "dimensions": [
+              570,
+              861
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete blue-gray metal mask with oval ribbed crown, green eye band and smooth closed muzzle; purple setting affects lighting.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/series10-catalog.jpg",
+            "bytes": 109824,
+            "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+            "url": "https://necaonline.com/wp-content/uploads/2013/10/51487-Predator-Series10Asst.jpg",
+            "sourcePageId": "article-series10-shipping",
+            "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-predators-series-10-action-figures",
+            "sourcePageSha256": "936feb0cbfeb2ee15547f6fe5921090ddc0c2545f913ee9f24cde6fdd91208e3",
+            "dimensions": [
+              800,
+              600
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "White-background NECA catalog composite; Lava Planet and Hive Wars masked figures; Nightstorm worn mask in small inset, organic head on main figure. Supports identities and less dramatic color, insufficient fine detail alone.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+        "reportSha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-nightstorm-series-10",
+      "label": "Nightstorm · NECA Series10 · vue partielle",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+      "sourceSha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "partialReferenceView": true,
+      "representationScope": "partial-visible-rigid-mask",
+      "camera": "Vue proche de NS-pred-1, mais étude redressée d’environ4–5° en2D ; limite de fidélité à la caméra source conservée explicitement.",
+      "identityAnchors": [
+        "Conserver coque,cornes supérieures,ovale,optiques,joues et étroite pièce centrale dorée visible.",
+        "Retirer membranes,mâchoires violettes et grandes défenses ivoire biologiques, prouvées par la tête nue NS-pred-4.",
+        "Ne reconstruire ni menton fermé ni pièce imaginaire à la place des mâchoires du porteur."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+          "sha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42",
+          "role": "primary-visible-mask"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-4.jpg",
+          "sha256": "cf8c71bf11c2dfbcf6fd7391ce1795b94b6608bfe55950aa2c153f9dfd325a7c",
+          "role": "unmasked-biology-exclusion"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+          "role": "palette-and-edition-context"
+        }
+      ],
+      "sourceScope": "NECA Predators Series10,7-inch,2013, Kenner tribute. ; masque rigide visible partiel seulement.",
+      "maskGeometryClaim": "edition-specific-partial-rigid-mask-study",
+      "baseAlreadyRepresented": null,
+      "relatedCanonicalTargetId": "mk-59-nightstorm",
+      "limitations": [
+        "NS2–4 are unmasked biological head; do not label their cranial texture as a mask.",
+        "Only one substantial mask view, plus tiny catalog inset; fine relief remains interpretive.",
+        "Native source is small; visible shell details cannot justify fine newly invented glyphs, grooves or full360degree geometry.",
+        "Match the observed camera; unseen rear/interior and hidden edges remain undocumented.",
+        "Partie basse occluse : étude de masque rigide partiel,aucune forme cachée ou menton fermé reconstitué.",
+        "Les membranes violettes et grandes défenses ivoire appartiennent au visage biologique,pas au masque.",
+        "Le minuscule accessoire ToyFair ne qualifie pas la bordure basse,son attribution et sa forme restent incertaines.",
+        "L’état canonique/humain/runtime et la tâche mk-59-nightstorm restent ouverts.",
+        "La caméra A/B a été redressée d’environ4–5° par rapport à NS1 ; acceptable comme candidate partielle, pas comme correspondance1:1 certifiée."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/NS-pred-1.jpg",
+            "bytes": 146128,
+            "sha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42",
+            "url": "http://necaonline.com/wp-content/uploads/2013/09/NS-pred-1.jpg",
+            "sourcePageId": "article-series10",
+            "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+            "sourcePageSha256": "d48adcd37bfcba927cd8e5d7f3f4714a763cf8d11fb58934350f5a12879dd2e0",
+            "dimensions": [
+              570,
+              861
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Only NS-pred-1 shows worn gold ornamental horned mask; NS2-4 show organic exposed head and must not become a biomask.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/NS-pred-4.jpg",
+            "bytes": 183905,
+            "sha256": "cf8c71bf11c2dfbcf6fd7391ce1795b94b6608bfe55950aa2c153f9dfd325a7c",
+            "url": "http://necaonline.com/wp-content/uploads/2013/09/NS-pred-4.jpg",
+            "sourcePageId": "article-series10",
+            "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+            "sourcePageSha256": "d48adcd37bfcba927cd8e5d7f3f4714a763cf8d11fb58934350f5a12879dd2e0",
+            "dimensions": [
+              570,
+              861
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Only NS-pred-1 shows worn gold ornamental horned mask; NS2-4 show organic exposed head and must not become a biomask.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/series10-catalog.jpg",
+            "bytes": 109824,
+            "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+            "url": "https://necaonline.com/wp-content/uploads/2013/10/51487-Predator-Series10Asst.jpg",
+            "sourcePageId": "article-series10-shipping",
+            "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-predators-series-10-action-figures",
+            "sourcePageSha256": "936feb0cbfeb2ee15547f6fe5921090ddc0c2545f913ee9f24cde6fdd91208e3",
+            "dimensions": [
+              800,
+              600
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "White-background NECA catalog composite; Lava Planet and Hive Wars masked figures; Nightstorm worn mask in small inset, organic head on main figure. Supports identities and less dramatic color, insufficient fine detail alone.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "standaloneCompleteObject": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/nightstorm-root-review.json",
+        "reportSha256": "0e605a841928f7dbc3ac61b2f53d12fe465d4b35bc81d10410db34d22b4bcae1",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-clan-leader-toyfair-2016",
+      "label": "Clan Leader · NECA ToyFair2016",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+      "sourceSha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Masque porté dans la photo principale ToyFair2016,quasi frontal. Les trois inserts sont des têtes nues,exclus.",
+      "identityAnchors": [
+        "Conserver les deux immenses cornes et la coque rigide visibles dans la photo principale.",
+        "La peau,les dreads et les mandibules du porteur restent exclus."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+          "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7"
+        }
+      ],
+      "sourceScope": "NECA ToyFair2016 ClanLeader,photographie de cette édition.",
+      "maskGeometryClaim": "edition-specific-licensed-photo-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "A/B sont deux nouvelles études ImageGen liées aux seules formes et couleurs visibles de la source R.",
+        "Aucune reconstitution du dos,de l’intérieur ni des formes cachées.",
+        "Édition photographiée précise ; aucune fidélité film/comics générale ou validation canon/humaine/runtime certifiée.",
+        "Conserver les deux immenses cornes et la coque rigide visibles dans la photo principale.",
+        "La peau,les dreads et les mandibules du porteur restent exclus.",
+        "La petite crête rouge visible entre les cornes dans la source est probablement organique et a été exclue ; sa propriété locale demeure INCERTAINE dans cette photographie.",
+        "Le rapport largeur/hauteur visible de B diffère d’environ+3,245% par rapport à A ; limite mineure de présentation,aucune équivalence géométrique1:1 certifiée."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/clan-leader-toyfair.jpg",
+            "bytes": 316925,
+            "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7",
+            "url": "https://necaonline.com/wp-content/uploads/2016/02/1300w-Clan_Leader-.jpg",
+            "sourcePageId": "article-clan-stalker-toyfair2016",
+            "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/172396551-toy-fair-2016-day-4-predator-kenner-tributes-ultimate-tech-noir-terminator-and-littlebigplanet",
+            "sourcePageSha256": "27f19b99af47a85ecda64098bf8d7973dff15071180325d7cf18fc76f60ce186",
+            "dimensions": [
+              1045,
+              1300
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "NECA2016catalog figure photograph with complete dark green-black horned mask, red eyes and silver muzzle; organic head insets excluded.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "relatedCanonicalTargetId": "mk-58-clan-leader",
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+        "reportSha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-viper-series-12",
+      "label": "Viper · NECA Series12",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+      "sourceSha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "INSERT SUPÉRIEUR DROIT MASQUÉ du catalogue,quasi frontal. La figure principale nue est exclue.",
+      "identityAnchors": [
+        "Le catalogue neutre fait foi pour la palette ; viper7/1 soutiennent les seuls bords et silhouette.",
+        "Ne pas reporter la dominante d’éclairage orange des photos de soutien sur le masque.",
+        "Viper Series12 ne devient pas Scout PHG ou une autre identité LostTribe."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+          "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/viper-7.jpg",
+          "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/viper-1.jpg",
+          "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2"
+        }
+      ],
+      "sourceScope": "NECA Predators Series12 Viper,création originale NECA ; référence de catalogue de cette édition.",
+      "maskGeometryClaim": "edition-specific-licensed-photo-study",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "A/B sont deux nouvelles études ImageGen liées aux seules formes et couleurs visibles de la source R.",
+        "Aucune reconstitution du dos,de l’intérieur ni des formes cachées.",
+        "Édition photographiée précise ; aucune fidélité film/comics générale ou validation canon/humaine/runtime certifiée.",
+        "Le catalogue neutre fait foi pour la palette ; viper7/1 soutiennent les seuls bords et silhouette.",
+        "Ne pas reporter la dominante d’éclairage orange des photos de soutien sur le masque.",
+        "Viper Series12 ne devient pas Scout PHG ou une autre identité LostTribe.",
+        "Viper est une création originale NECA, pas un hommage Kenner ; aucune équivalence de géométrie héritée n’est affirmée."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/viper-catalog.jpg",
+            "bytes": 181807,
+            "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d",
+            "url": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper.jpg",
+            "sourcePageId": "article-viper2014",
+            "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+            "sourcePageSha256": "4db544f79f79a4eb5a02c281068c32062bd4e7636cbc3d6e34bd30ecaf68a190",
+            "dimensions": [
+              1134,
+              1300
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Whitebackground catalog plate with inset masked head clearly showing shell colors and geometry; main body is unmasked and not mask proof.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/viper-7.jpg",
+            "bytes": 231654,
+            "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845",
+            "url": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper7.jpg",
+            "sourcePageId": "article-viper2014",
+            "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+            "sourcePageSha256": "4db544f79f79a4eb5a02c281068c32062bd4e7636cbc3d6e34bd30ecaf68a190",
+            "dimensions": [
+              861,
+              1300
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Nearfrontal Viper worn mask, complete outline, red crown and amber eyes.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/viper-1.jpg",
+            "bytes": 227815,
+            "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2",
+            "url": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper1.jpg",
+            "sourcePageId": "article-viper2014",
+            "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12",
+            "sourcePageSha256": "4db544f79f79a4eb5a02c281068c32062bd4e7636cbc3d6e34bd30ecaf68a190",
+            "dimensions": [
+              861,
+              1300
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "Complete dark metallic Viper shell, red split crown motif, center spine, amber eyes, small silver raised nasal mechanism; colored scene lighting.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+        "reportSha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-golden-angel-horned-2018",
+      "label": "Golden Angel · NECA2018 · coque cornue",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/golden-angel-3.jpg",
+      "sourceSha256": "7399bac54b96457c6773b6117be80d8cd3c79b8d9ebbf7886f470dd9a7fe23ed",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Vue réelle de golden-angel-3.jpg ; isoler le masque sans changer sa caméra.",
+      "identityAnchors": [
+        "Coque bronze à couronne cornue propre à ces vues3/4.",
+        "Conserver les yeux rouges et les seuls motifs visibles ; ne pas ajouter la coque lisse."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-3.jpg",
+          "sha256": "7399bac54b96457c6773b6117be80d8cd3c79b8d9ebbf7886f470dd9a7fe23ed"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-4.jpg",
+          "sha256": "e12f787136f778af2c141cb1988bde57754993094736510e1d351f4fbe1c7d8a"
+        }
+      ],
+      "sourceScope": "NECA GoldenAngel2018,coque photographiée précise ; deux coques distinctes d’un même personnage.",
+      "maskGeometryClaim": "edition-specific-distinct-mask-shell",
+      "sameCharacterEditionGroup": "neca-golden-angel-2018",
+      "relatedCanonicalTargetId": "mk-20-golden-angel",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Cette étude est propre à la coque photographiée et à l’édition NECA2018 ; elle ne certifie pas tout le canon1718.",
+        "La coque cornue et la coque lisse sont deux objets visibles distincts,à conserver sans mélange ni déduplication aveugle.",
+        "A/B sont deux générations ImageGen natives distinctes ; les photographies R restent exactes.",
+        "La peau,la bouche,les dreads et les articulations de figurine appartiennent au porteur et restent exclus.",
+        "Le nommk20GoldenAngel demeure ouvert ; deux candidates d’édition ne constituent pas une validation canonique.",
+        "La silhouette B est environ4,5% plus élancée que A ; réserve de présentation,aucune fidélité géométrique1:1 certifiée."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/golden-angel-3.jpg",
+            "bytes": 461999,
+            "sha256": "7399bac54b96457c6773b6117be80d8cd3c79b8d9ebbf7886f470dd9a7fe23ed",
+            "url": "https://necaonline.com/wp-content/uploads/2018/02/Golden-Angel3.jpg",
+            "sourcePageId": "article-golden-toyfair2018",
+            "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-arcade-more",
+            "sourcePageSha256": "d110fe4c3cf707aa9a05c4d4199f266b4061271131bf76156d8cd933991c2b1a",
+            "dimensions": [
+              1041,
+              1300
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "GoldenAngel2018NECA: photographs1–4 show bronze horned shell; 1upperinset and6–7 show distinct smooth gold shell;5 is exposed organic head. Keep both shell variants separate.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/golden-angel-4.jpg",
+            "bytes": 914191,
+            "sha256": "e12f787136f778af2c141cb1988bde57754993094736510e1d351f4fbe1c7d8a",
+            "url": "https://necaonline.com/wp-content/uploads/2018/02/Golden-Angel4.jpg",
+            "sourcePageId": "article-golden-toyfair2018",
+            "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-arcade-more",
+            "sourcePageSha256": "d110fe4c3cf707aa9a05c4d4199f266b4061271131bf76156d8cd933991c2b1a",
+            "dimensions": [
+              867,
+              1299
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "GoldenAngel2018NECA: photographs1–4 show bronze horned shell; 1upperinset and6–7 show distinct smooth gold shell;5 is exposed organic head. Keep both shell variants separate.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/golden-angel-review.json",
+        "reportSha256": "9a174788ce3ac1fe6a9b7b4b7f0e2f278c4d7a2a366875a059a42e089400c998",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    },
+    {
+      "id": "neca-golden-angel-smooth-2018",
+      "label": "Golden Angel · NECA2018 · coque lisse",
+      "originGroup": "official-edition",
+      "sourceClass": "official-photo",
+      "sourcePath": "production/biomasks-expansion-20261113/references/neca/golden-angel-7.jpg",
+      "sourceSha256": "7833239d3465eb403b4d14f4e58f4081f2a0e0adafe5f226acf65e07e86eb6f5",
+      "versionAMode": "imagegen",
+      "sourceIncludesWearerElements": true,
+      "camera": "Vue réelle de golden-angel-7.jpg ; isoler le masque sans changer sa caméra.",
+      "identityAnchors": [
+        "Coque or lisse du gros plan net7,soutien6 ; pas de cornes inventées.",
+        "Conserver les yeux rouges et la forme visible ; ne pas mélanger les motifs de la coque cornue."
+      ],
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-7.jpg",
+          "sha256": "7833239d3465eb403b4d14f4e58f4081f2a0e0adafe5f226acf65e07e86eb6f5"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-6.jpg",
+          "sha256": "fdf3bd25b098154c2a02f5d3291483a2cdf4f04cfbe8b617f6810c7692b7de60"
+        }
+      ],
+      "sourceScope": "NECA GoldenAngel2018,coque photographiée précise ; deux coques distinctes d’un même personnage.",
+      "maskGeometryClaim": "edition-specific-distinct-mask-shell",
+      "sameCharacterEditionGroup": "neca-golden-angel-2018",
+      "relatedCanonicalTargetId": "mk-20-golden-angel",
+      "baseAlreadyRepresented": null,
+      "limitations": [
+        "Cette étude est propre à la coque photographiée et à l’édition NECA2018 ; elle ne certifie pas tout le canon1718.",
+        "La coque cornue et la coque lisse sont deux objets visibles distincts,à conserver sans mélange ni déduplication aveugle.",
+        "A/B sont deux générations ImageGen natives distinctes ; les photographies R restent exactes.",
+        "La peau,la bouche,les dreads et les articulations de figurine appartiennent au porteur et restent exclus.",
+        "Le nommk20GoldenAngel demeure ouvert ; deux candidates d’édition ne constituent pas une validation canonique."
+      ],
+      "attribution": {
+        "publisher": "NECA",
+        "sourcePhotos": [
+          {
+            "path": "/tmp/mask-expansion-20261113/golden-angel-7.jpg",
+            "bytes": 899061,
+            "sha256": "7833239d3465eb403b4d14f4e58f4081f2a0e0adafe5f226acf65e07e86eb6f5",
+            "url": "https://necaonline.com/wp-content/uploads/2018/02/Golden-Angel7.jpg",
+            "sourcePageId": "article-golden-toyfair2018",
+            "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-arcade-more",
+            "sourcePageSha256": "d110fe4c3cf707aa9a05c4d4199f266b4061271131bf76156d8cd933991c2b1a",
+            "dimensions": [
+              867,
+              1299
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "GoldenAngel2018NECA: photographs1–4 show bronze horned shell; 1upperinset and6–7 show distinct smooth gold shell;5 is exposed organic head. Keep both shell variants separate.",
+            "canonCertified": false
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/golden-angel-6.jpg",
+            "bytes": 834554,
+            "sha256": "fdf3bd25b098154c2a02f5d3291483a2cdf4f04cfbe8b617f6810c7692b7de60",
+            "url": "https://necaonline.com/wp-content/uploads/2018/02/Golden-Angel6.jpg",
+            "sourcePageId": "article-golden-toyfair2018",
+            "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-arcade-more",
+            "sourcePageSha256": "d110fe4c3cf707aa9a05c4d4199f266b4061271131bf76156d8cd933991c2b1a",
+            "dimensions": [
+              867,
+              1299
+            ],
+            "format": "JPEG",
+            "httpStatus": 200,
+            "downloadedUnchanged": true,
+            "visuallyInspectedWith": "tools.view_image",
+            "observation": "GoldenAngel2018NECA: photographs1–4 show bronze horned shell; 1upperinset and6–7 show distinct smooth gold shell;5 is exposed organic head. Keep both shell variants separate.",
+            "canonCertified": false
+          }
+        ]
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "artisticReview": {
+        "reportPath": "production/biomasks-expansion-20261113/inputs/reviews/golden-angel-review.json",
+        "reportSha256": "9a174788ce3ac1fe6a9b7b4b7f0e2f278c4d7a2a366875a059a42e089400c998",
+        "noMajorDeviationObserved": true,
+        "scope": "Independent agent visual comparison only; not human validation or canon/runtime approval."
+      }
+    }
+  ],
+  "remainingCanonicalNamesStillOpen": 46,
+  "noAutomaticCanonicalClosure": true,
+  "notes": [
+    "Source list extensible; source class and A generation/copy mode remain explicit.",
+    "New source-file additions and source lineage require exact SHA256 metadata before build."
+  ]
+}

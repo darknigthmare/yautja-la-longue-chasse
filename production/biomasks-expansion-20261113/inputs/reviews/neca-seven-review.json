@@ -1,0 +1,1492 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13T10:57:16.332509+00:00",
+  "reviewer": "Independent /root/dual_generate_5; generated none of these seven pairs.",
+  "scope": "Seven source-bound NECA edition studies, source photo R to generated A to generated PHG-quality B. All photos and candidates are observationally compared; no canonical franchise, human art, runtime or old Bible backlog certification.",
+  "indexPin": {
+    "path": "production/biomasks-expansion-20261113/inputs/available-designs.json",
+    "sha256": "9654883cb90267da48787a75abdaddf32e1d2a54e26d63fb534f3f5f2c1f1bb7"
+  },
+  "entries": [
+    {
+      "id": "neca-ahab-sdcc-2014",
+      "label": "Ahab · NECA SDCC2014",
+      "generationReceipt": {
+        "path": "production/biomasks-expansion-20261113/generation/neca-ahab-sdcc-2014.json",
+        "sha256": "2b8892ebf153259fdab6eab764158490451363c48f6bb598fd75c6f4d82bd368"
+      },
+      "sourcePrimary": {
+        "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+        "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e",
+        "bytes": 1586399,
+        "width": 2400,
+        "height": 3000,
+        "displayBounds": [
+          1135,
+          725,
+          1495,
+          1210
+        ]
+      },
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+          "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-2.jpg",
+          "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-3.jpg",
+          "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-1.jpeg",
+          "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-2.jpeg",
+          "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305"
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-ahab-sdcc-2014.png",
+          "sha256": "cbfca3d608fbb6105ac0faf020556c924bf3206024916a3347a15689bee97aa8",
+          "bytes": 1199987,
+          "width": 1254,
+          "height": 1254,
+          "bounds": [
+            291,
+            143,
+            963,
+            1111
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1110418,
+          "noise1to9": 8588,
+          "visible16": 453235,
+          "nearOpaque240": 447959,
+          "margins16": [
+            291,
+            143,
+            291,
+            143
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-1a3ac145-c205-48f2-a44b-c0251dd0b90d.png",
+          "sourceAPath": null,
+          "sourceASha256": null,
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+          "referenceSourceSha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+              "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e",
+              "bytes": 1586399
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-2.jpg",
+              "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b",
+              "bytes": 1529103
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-3.jpg",
+              "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01",
+              "bytes": 1523153
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-1.jpeg",
+              "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b",
+              "bytes": 780645
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-2.jpeg",
+              "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305",
+              "bytes": 670123
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-ahab-sdcc-2014.png",
+          "sha256": "be2da769357b9a8f23da53e189fb06794ff2e8540df9828d75e9a0e7d17017da",
+          "bytes": 1267172,
+          "width": 1254,
+          "height": 1254,
+          "bounds": [
+            288,
+            138,
+            965,
+            1116
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1102274,
+          "noise1to9": 7545,
+          "visible16": 462410,
+          "nearOpaque240": 457437,
+          "margins16": [
+            288,
+            138,
+            289,
+            138
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-fd6881d6-73c7-4350-971f-43bac0033ef5.png",
+          "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-ahab-sdcc-2014.png",
+          "sourceASha256": "cbfca3d608fbb6105ac0faf020556c924bf3206024916a3347a15689bee97aa8",
+          "referenceSourcePath": null,
+          "referenceSourceSha256": null,
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+              "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e",
+              "bytes": 1586399
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-2.jpg",
+              "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b",
+              "bytes": 1529103
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-3.jpg",
+              "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01",
+              "bytes": 1523153
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-1.jpeg",
+              "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b",
+              "bytes": 780645
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-2.jpeg",
+              "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305",
+              "bytes": 670123
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        }
+      ],
+      "sourceToA": [
+        "SDCC2014 broad silver crown, three forehead claw scars, turquoise/blue patina, dark eyes and cheek sockets remain recognizable.",
+        "Open lower aperture is empty after wearer mouth/tusks removal. Published detached-mask concept supports the rigid rim versus biological mouth separation."
+      ],
+      "AtoB": [
+        "Same crown, scars, open U aperture and silver/turquoise regions; B smooths coarse grain and clarifies metal without closing the aperture."
+      ],
+      "cavityAndWearerReview": "Open lower U area verified alpha0 in both versions.",
+      "localLimitations": [
+        "Rim notch count, small socket hardware and individual paint chips remain interpreted rather than exact sculpture evidence.",
+        "Near-front source pose is slightly regularized/centered; neither exact3D camera nor full comics Ahab design is established."
+      ],
+      "decision": "candidate-with-documented-source-limitations",
+      "blockingFindingCount": 0,
+      "isolatedRigidMaskObserved": true,
+      "noVisibleWearerAnatomyOrDreadlocks": true,
+      "noVisibleMajorHaloOnWhiteBlackChecker": true,
+      "sourceIdentityReadableAt96And360": true,
+      "approximateSourceCameraPreserved": true,
+      "exact3DCameraOrGeometryCertified": false,
+      "ABStability": {
+        "visibleAspectA": 0.6942148760330579,
+        "visibleAspectB": 0.6922290388548057,
+        "BRelativeAspectDeltaPercent": -0.28605511734346445,
+        "alpha16IoUUnalignedSameCanvas": 0.9796788044676794,
+        "metricScope": "Generated B versus generated A stability only, never canonical/photo geometry proof."
+      },
+      "browserEvidencePage": 1,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false,
+      "transparentOpeningProbe": {
+        "ROI": [
+          600,
+          940,
+          650,
+          1030
+        ],
+        "pixels": 4500,
+        "AalphaZeroPixels": 4500,
+        "BalphaZeroPixels": 4500,
+        "AalphaExtrema": [
+          0,
+          0
+        ],
+        "BalphaExtrema": [
+          0,
+          0
+        ],
+        "method": "Read-only alpha sample, no raster export or asset mutation."
+      }
+    },
+    {
+      "id": "neca-warrior-series-6",
+      "label": "Warrior · NECA Lost Tribe Series6",
+      "generationReceipt": {
+        "path": "production/biomasks-expansion-20261113/generation/neca-warrior-series-6.json",
+        "sha256": "80203379cd598806f2be5d356b8ea99f791f4ca2c297264ff1fa35457015c31a"
+      },
+      "sourcePrimary": {
+        "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+        "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+        "bytes": 39858,
+        "width": 400,
+        "height": 600,
+        "displayBounds": [
+          105,
+          55,
+          295,
+          320
+        ]
+      },
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+          "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-warrior-series-6.png",
+          "sha256": "cea1ce8f19c50425fd43ebd93ade572533200e5164bf4768ea9f4f892724e784",
+          "bytes": 1613778,
+          "width": 1254,
+          "height": 1254,
+          "bounds": [
+            259,
+            98,
+            983,
+            1154
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 944882,
+          "noise1to9": 12808,
+          "visible16": 614537,
+          "nearOpaque240": 609502,
+          "margins16": [
+            259,
+            98,
+            271,
+            100
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-fa602b2d-cac0-4cbf-9510-cb408b30b3a4.png",
+          "sourceAPath": null,
+          "sourceASha256": null,
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+          "referenceSourceSha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+              "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-warrior-series-6.png",
+          "sha256": "7b35b21ccce4f5edf945b7eb6998d65d10c31d22aa91c237756f020161a52b18",
+          "bytes": 1552865,
+          "width": 1254,
+          "height": 1254,
+          "bounds": [
+            253,
+            93,
+            991,
+            1154
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 935261,
+          "noise1to9": 6213,
+          "visible16": 630805,
+          "nearOpaque240": 626047,
+          "margins16": [
+            253,
+            93,
+            263,
+            100
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-b6c232c4-d493-47b1-a95a-60e63f97410f.png",
+          "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-warrior-series-6.png",
+          "sourceASha256": "cea1ce8f19c50425fd43ebd93ade572533200e5164bf4768ea9f4f892724e784",
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+          "referenceSourceSha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+              "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        }
+      ],
+      "sourceToA": [
+        "Raised oval crown rim and ribbed inner panel, dark narrow eye band, tapered cheeks and projecting vertical central grille follow the near-front NECA portrait.",
+        "Muted grey/brown metal remains; no wearer/neck/dreadlocks observed."
+      ],
+      "AtoB": [
+        "Major oval/rib/grille geometry and tonal regions remain; B reduces coarse paint grain and maintains dark lenses."
+      ],
+      "cavityAndWearerReview": "Eyes and grille remain dark recesses; no biological eyes or mouth added.",
+      "localLimitations": [
+        "Small rim pits/dots, grille bar exact spacing and lower grille attachment are interpretations of the400x600 source portrait.",
+        "Near-front symmetry/camera is slightly regularized; hidden sides/interior are not established.",
+        "At least one native margin is below requested8percent, but all source-visible mask extremities remain whole and edge alpha16 is zero; no framing correction required by this review."
+      ],
+      "decision": "candidate-with-documented-source-limitations",
+      "blockingFindingCount": 0,
+      "isolatedRigidMaskObserved": true,
+      "noVisibleWearerAnatomyOrDreadlocks": true,
+      "noVisibleMajorHaloOnWhiteBlackChecker": true,
+      "sourceIdentityReadableAt96And360": true,
+      "approximateSourceCameraPreserved": true,
+      "exact3DCameraOrGeometryCertified": false,
+      "ABStability": {
+        "visibleAspectA": 0.6856060606060606,
+        "visibleAspectB": 0.6955702167766258,
+        "BRelativeAspectDeltaPercent": 1.4533354856514968,
+        "alpha16IoUUnalignedSameCanvas": 0.9742107307329524,
+        "metricScope": "Generated B versus generated A stability only, never canonical/photo geometry proof."
+      },
+      "browserEvidencePage": 1,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    },
+    {
+      "id": "neca-scout-lost-tribe-series-6",
+      "label": "Scout · NECA Lost Tribe Series6",
+      "generationReceipt": {
+        "path": "production/biomasks-expansion-20261113/generation/neca-scout-lost-tribe-series-6.json",
+        "sha256": "afcbdbaad7cb97f168ae421e09c6f4dc4c48543293256839dfd73962f44dd08b"
+      },
+      "sourcePrimary": {
+        "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+        "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+        "bytes": 43654,
+        "width": 400,
+        "height": 600,
+        "displayBounds": [
+          118,
+          40,
+          285,
+          240
+        ]
+      },
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+          "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-scout-lost-tribe-series-6.png",
+          "sha256": "74aae73cc0eab5652a3aefef005fb859cd8843487add059e838148aaace93f66",
+          "bytes": 1674334,
+          "width": 1254,
+          "height": 1254,
+          "bounds": [
+            188,
+            97,
+            1065,
+            1179
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 835979,
+          "noise1to9": 10024,
+          "visible16": 726180,
+          "nearOpaque240": 720512,
+          "margins16": [
+            188,
+            97,
+            189,
+            75
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-4046a720-b427-4109-a454-0fb2f0c3bba1.png",
+          "sourceAPath": null,
+          "sourceASha256": null,
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+          "referenceSourceSha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+              "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-scout-lost-tribe-series-6.png",
+          "sha256": "9024c8e5f351a2ec4ae87734b6078e2a2c8bd3ee7f515fec75e26b87f272ef83",
+          "bytes": 1671465,
+          "width": 1254,
+          "height": 1254,
+          "bounds": [
+            186,
+            95,
+            1062,
+            1183
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 835096,
+          "noise1to9": 7716,
+          "visible16": 729415,
+          "nearOpaque240": 724189,
+          "margins16": [
+            186,
+            95,
+            192,
+            71
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-b0ea3383-f076-4f53-ad58-45b5d5328af1.png",
+          "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-scout-lost-tribe-series-6.png",
+          "sourceASha256": "74aae73cc0eab5652a3aefef005fb859cd8843487add059e838148aaace93f66",
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+          "referenceSourceSha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+              "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        }
+      ],
+      "sourceToA": [
+        "Wide sloped oval crown lip, slight three-quarter view, image-left round temple detail, dark eye band and broad bulging lower face panels are preserved.",
+        "Neutral silver/grey retained, distinct from the PHG Scout identity."
+      ],
+      "AtoB": [
+        "Same broad shell, side module, optical band and panel relationships; B changes grain/reflections only."
+      ],
+      "cavityAndWearerReview": "Dark eye lenses retained, no biological facial detail observed.",
+      "localLimitations": [
+        "Tiny lower fasteners and source-obscured underside are interpretations; exact ownership/attachment cannot be certified from the single portrait.",
+        "Minor eye/crown curvature and pose regularization remain within a source-bound study, not exact camera calibration.",
+        "At least one native margin is below requested8percent, but all source-visible mask extremities remain whole and edge alpha16 is zero; no framing correction required by this review."
+      ],
+      "decision": "candidate-with-documented-source-limitations",
+      "blockingFindingCount": 0,
+      "isolatedRigidMaskObserved": true,
+      "noVisibleWearerAnatomyOrDreadlocks": true,
+      "noVisibleMajorHaloOnWhiteBlackChecker": true,
+      "sourceIdentityReadableAt96And360": true,
+      "approximateSourceCameraPreserved": true,
+      "exact3DCameraOrGeometryCertified": false,
+      "ABStability": {
+        "visibleAspectA": 0.8105360443622921,
+        "visibleAspectB": 0.8051470588235294,
+        "BRelativeAspectDeltaPercent": -0.6648668589442686,
+        "alpha16IoUUnalignedSameCanvas": 0.9879257270375762,
+        "metricScope": "Generated B versus generated A stability only, never canonical/photo geometry proof."
+      },
+      "browserEvidencePage": 1,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    },
+    {
+      "id": "neca-lava-planet-series-10",
+      "label": "Lava Planet · NECA Series10",
+      "generationReceipt": {
+        "path": "production/biomasks-expansion-20261113/generation/neca-lava-planet-series-10.json",
+        "sha256": "a3a4e543bc24da3cd23b58a4e6ff881b4b35a2a4d24ef3c5b4081eb14beb1775"
+      },
+      "sourcePrimary": {
+        "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+        "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+        "bytes": 139839,
+        "width": 570,
+        "height": 861,
+        "displayBounds": [
+          215,
+          70,
+          350,
+          238
+        ]
+      },
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+          "sha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851",
+          "bytes": 1405747,
+          "width": 1266,
+          "height": 1243,
+          "bounds": [
+            244,
+            143,
+            1021,
+            1063
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 985734,
+          "noise1to9": 7562,
+          "visible16": 580064,
+          "nearOpaque240": 574765,
+          "margins16": [
+            244,
+            143,
+            245,
+            180
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-726776de-77f1-49af-b41c-0f116b762c11.png",
+          "sourceAPath": null,
+          "sourceASha256": null,
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "referenceSourceSha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+              "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+              "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": null
+          },
+          "nativeByteCopyVerified": true
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+          "sha256": "6b9669d9c04961cb70607957e31668872b2b0ef3084e5305a8e2c91626678f47",
+          "bytes": 1489390,
+          "width": 1266,
+          "height": 1243,
+          "bounds": [
+            241,
+            143,
+            1022,
+            1065
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 985134,
+          "noise1to9": 6082,
+          "visible16": 582193,
+          "nearOpaque240": 577425,
+          "margins16": [
+            241,
+            143,
+            244,
+            178
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-f3feaecc-56f9-4384-8de8-c88ac24e5319.png",
+          "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+          "sourceASha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851",
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+          "referenceSourceSha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+              "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+              "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": null
+          },
+          "nativeByteCopyVerified": true
+        }
+      ],
+      "sourceToA": [
+        "Entire dark burgundy-red segmented crown, ribbed center seam, oblique dark lenses, stepped cheek ridges and short central grille correspond to the source.",
+        "A retains the orange image-left source lighting as illumination; catalogue supports dark red paint rather than a wholly orange mask."
+      ],
+      "AtoB": [
+        "B keeps burgundy paint, crown/rib/grille shape and dark optics while removing dramatic orange scene lighting for neutral PHG material presentation."
+      ],
+      "cavityAndWearerReview": "Central grille and dark optics preserved; no mouth/teeth/porting body added.",
+      "localLimitations": [
+        "Small source leaves exact rib/pit/slot spacing and side hardware uncertain.",
+        "Source scene light and catalogue are different lighting contexts; exact albedo and physical roughness are not calibrated."
+      ],
+      "decision": "candidate-with-documented-source-limitations",
+      "blockingFindingCount": 0,
+      "isolatedRigidMaskObserved": true,
+      "noVisibleWearerAnatomyOrDreadlocks": true,
+      "noVisibleMajorHaloOnWhiteBlackChecker": true,
+      "sourceIdentityReadableAt96And360": true,
+      "approximateSourceCameraPreserved": true,
+      "exact3DCameraOrGeometryCertified": false,
+      "ABStability": {
+        "visibleAspectA": 0.8445652173913043,
+        "visibleAspectB": 0.8470715835140998,
+        "BRelativeAspectDeltaPercent": 0.29676407116754344,
+        "alpha16IoUUnalignedSameCanvas": 0.9854336922950775,
+        "metricScope": "Generated B versus generated A stability only, never canonical/photo geometry proof."
+      },
+      "browserEvidencePage": 2,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    },
+    {
+      "id": "neca-hive-wars-series-10",
+      "label": "Hive Wars · NECA Series10",
+      "generationReceipt": {
+        "path": "production/biomasks-expansion-20261113/generation/neca-hive-wars-series-10.json",
+        "sha256": "caa593e2e8546878539462666e70cc9b2a34a2b47682e3a3b99aaf2e9fb24fd1"
+      },
+      "sourcePrimary": {
+        "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+        "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+        "bytes": 152782,
+        "width": 570,
+        "height": 861,
+        "displayBounds": [
+          258,
+          138,
+          371,
+          283
+        ]
+      },
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+          "sha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0",
+          "bytes": 1332584,
+          "width": 1262,
+          "height": 1246,
+          "bounds": [
+            285,
+            138,
+            977,
+            1085
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1066168,
+          "noise1to9": 6539,
+          "visible16": 499466,
+          "nearOpaque240": 494682,
+          "margins16": [
+            285,
+            138,
+            285,
+            161
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-800ab7ad-f3e1-4ebc-a1f5-d8e81ded7cdb.png",
+          "sourceAPath": null,
+          "sourceASha256": null,
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "referenceSourceSha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+              "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+              "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": null
+          },
+          "nativeByteCopyVerified": true
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+          "sha256": "736c6ba757218754c93dbf60de33d711ca575e5be859a859aa60f3512daef195",
+          "bytes": 1204926,
+          "width": 1262,
+          "height": 1246,
+          "bounds": [
+            280,
+            143,
+            968,
+            1089
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1071424,
+          "noise1to9": 5511,
+          "visible16": 495278,
+          "nearOpaque240": 491279,
+          "margins16": [
+            280,
+            143,
+            294,
+            157
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-6e504cc3-530d-4a10-8095-04876bed760c.png",
+          "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+          "sourceASha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0",
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "referenceSourceSha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+              "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+              "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": null
+          },
+          "nativeByteCopyVerified": true
+        }
+      ],
+      "sourceToA": [
+        "Closed rounded blue-grey shell, raised ribbed center seam, long side crown ridges, narrow green eye band and smooth projecting muzzle retained from HW-pred3.",
+        "Camera remains slightly oblique rather than a newly invented side/back view."
+      ],
+      "AtoB": [
+        "Blue-grey shell/green lenses and major ribs/muzzle preserved; B reduces coarse toy grain and clarifies broad metal surfaces."
+      ],
+      "cavityAndWearerReview": "Green eye region remains source-like; no iris/flesh, invented hose or additional mouth grille observed.",
+      "localLimitations": [
+        "Crown ridge ends, exact small ridge counts and muzzle depth are interpretations of the modest source size.",
+        "Purple scene illumination does not establish a permanent purple pigment; hidden rear/interior is unknown."
+      ],
+      "decision": "candidate-with-documented-source-limitations",
+      "blockingFindingCount": 0,
+      "isolatedRigidMaskObserved": true,
+      "noVisibleWearerAnatomyOrDreadlocks": true,
+      "noVisibleMajorHaloOnWhiteBlackChecker": true,
+      "sourceIdentityReadableAt96And360": true,
+      "approximateSourceCameraPreserved": true,
+      "exact3DCameraOrGeometryCertified": false,
+      "ABStability": {
+        "visibleAspectA": 0.7307286166842661,
+        "visibleAspectB": 0.7272727272727273,
+        "BRelativeAspectDeltaPercent": -0.4729374671571196,
+        "alpha16IoUUnalignedSameCanvas": 0.9746857555762009,
+        "metricScope": "Generated B versus generated A stability only, never canonical/photo geometry proof."
+      },
+      "browserEvidencePage": 2,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    },
+    {
+      "id": "neca-clan-leader-toyfair-2016",
+      "label": "Clan Leader · NECA ToyFair2016",
+      "generationReceipt": {
+        "path": "production/biomasks-expansion-20261113/generation/neca-clan-leader-toyfair-2016.json",
+        "sha256": "928b8bf6144b79abfe98d93c4e9ac367b03b40903ec1c5dbed04c3c06e3840c1"
+      },
+      "sourcePrimary": {
+        "path": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+        "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7",
+        "bytes": 316925,
+        "width": 1045,
+        "height": 1300,
+        "displayBounds": [
+          258,
+          165,
+          468,
+          532
+        ]
+      },
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+          "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7"
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-clan-leader-toyfair-2016.png",
+          "sha256": "0bf93e65512fcbe4b299496a154b7a8d17b8ea959f73070a9cbebeb407d6d8de",
+          "bytes": 643382,
+          "width": 1448,
+          "height": 1086,
+          "bounds": [
+            486,
+            101,
+            955,
+            972
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1343513,
+          "noise1to9": 6087,
+          "visible16": 222595,
+          "nearOpaque240": 217410,
+          "margins16": [
+            486,
+            101,
+            493,
+            114
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-3b189d31-577f-4faf-ba59-2770146ce46e.png",
+          "sourceAPath": null,
+          "sourceASha256": null,
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+          "referenceSourceSha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+              "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7",
+              "bytes": 316925,
+              "sourceURL": "https://necaonline.com/wp-content/uploads/2016/02/1300w-Clan_Leader-.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/172396551-toy-fair-2016-day-4-predator-kenner-tributes-ultimate-tech-noir-terminator-and-littlebigplanet"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-clan-leader-toyfair-2016.png",
+          "sha256": "fa2f508a297dd72d62e7905e069777b71ac892b95e1b6b4b3e9b6bf0451c5c4d",
+          "bytes": 612812,
+          "width": 1448,
+          "height": 1086,
+          "bounds": [
+            478,
+            105,
+            965,
+            981
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1328027,
+          "noise1to9": 8540,
+          "visible16": 235617,
+          "nearOpaque240": 230250,
+          "margins16": [
+            478,
+            105,
+            483,
+            105
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-5397f9b7-7000-4f04-867d-22d77e7ef0b1.png",
+          "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-clan-leader-toyfair-2016.png",
+          "sourceASha256": "0bf93e65512fcbe4b299496a154b7a8d17b8ea959f73070a9cbebeb407d6d8de",
+          "referenceSourcePath": null,
+          "referenceSourceSha256": null,
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+              "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7",
+              "bytes": 316925,
+              "sourceURL": "https://necaonline.com/wp-content/uploads/2016/02/1300w-Clan_Leader-.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/toy-fair/172396551-toy-fair-2016-day-4-predator-kenner-tributes-ultimate-tech-noir-terminator-and-littlebigplanet"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        }
+      ],
+      "sourceToA": [
+        "Two very tall curved horns, stacked dark green-black crown plates, red angular eye band, paired side recesses and silver ribbed lower face follow the main masked photo.",
+        "White dreadlocks and orange organic head from the nude insets are excluded."
+      ],
+      "AtoB": [
+        "The same broad horned silhouette, red optics and dark green/silver palette remain; B is slightly broader than A and smooths grain."
+      ],
+      "cavityAndWearerReview": "Red eye plates and dark side recesses remain; no organic mandibles or exposed skin added.",
+      "localLimitations": [
+        "Small red-tinted tab behind/between the horn bases is excluded as likely exposed organic crest: it also appears in nude insets. Local shell-versus-wearer ownership is uncertain from this single composite photo; this is not independent proof of an omitted rigid red pigment.",
+        "Source pose/horn asymmetry is regularized toward a centered near-front image; B overall visible aspect is about3percent broader than A without a major new component.",
+        "Fine plate/pit/vent contours and hidden horn-back geometry remain interpreted.",
+        "At least one native margin is below requested8percent, but all source-visible mask extremities remain whole and edge alpha16 is zero; no framing correction required by this review."
+      ],
+      "decision": "candidate-with-documented-source-limitations",
+      "blockingFindingCount": 0,
+      "isolatedRigidMaskObserved": true,
+      "noVisibleWearerAnatomyOrDreadlocks": true,
+      "noVisibleMajorHaloOnWhiteBlackChecker": true,
+      "sourceIdentityReadableAt96And360": true,
+      "approximateSourceCameraPreserved": true,
+      "exact3DCameraOrGeometryCertified": false,
+      "ABStability": {
+        "visibleAspectA": 0.5384615384615384,
+        "visibleAspectB": 0.5559360730593608,
+        "BRelativeAspectDeltaPercent": 3.2452707110241397,
+        "alpha16IoUUnalignedSameCanvas": 0.9187303714249822,
+        "metricScope": "Generated B versus generated A stability only, never canonical/photo geometry proof."
+      },
+      "browserEvidencePage": 2,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    },
+    {
+      "id": "neca-viper-series-12",
+      "label": "Viper · NECA Series12",
+      "generationReceipt": {
+        "path": "production/biomasks-expansion-20261113/generation/neca-viper-series-12.json",
+        "sha256": "8f70f1c23c594e1bc79f5bb56514fa10eccc9861a13dfed8606ac4b3fb53383f"
+      },
+      "sourcePrimary": {
+        "path": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+        "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d",
+        "bytes": 181807,
+        "width": 1134,
+        "height": 1300,
+        "displayBounds": [
+          790,
+          20,
+          1005,
+          315
+        ]
+      },
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+          "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/viper-7.jpg",
+          "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/viper-1.jpg",
+          "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2"
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-viper-series-12.png",
+          "sha256": "3cf6348f99e19d848d847a254d4785ad685c469540a7a72e8b124bfdb9398ca4",
+          "bytes": 1327509,
+          "width": 1122,
+          "height": 1402,
+          "bounds": [
+            189,
+            157,
+            939,
+            1244
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1003009,
+          "noise1to9": 6151,
+          "visible16": 563661,
+          "nearOpaque240": 558833,
+          "margins16": [
+            189,
+            157,
+            183,
+            158
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-cb0d46dc-a599-4992-864d-1c32b4238060.png",
+          "sourceAPath": null,
+          "sourceASha256": null,
+          "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+          "referenceSourceSha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d",
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+              "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d",
+              "bytes": 181807,
+              "sourceURL": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/viper-7.jpg",
+              "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845",
+              "bytes": 231654,
+              "sourceURL": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper7.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/viper-1.jpg",
+              "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2",
+              "bytes": 227815,
+              "sourceURL": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper1.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-viper-series-12.png",
+          "sha256": "35b5d83fad1ab53ee3fe87a56abcea05626b61e3cbeb8bc35f96e4184d729880",
+          "bytes": 1409710,
+          "width": 1122,
+          "height": 1402,
+          "bounds": [
+            178,
+            160,
+            928,
+            1244
+          ],
+          "alphaExtrema": [
+            0,
+            255
+          ],
+          "alphaZero": 1002185,
+          "noise1to9": 8477,
+          "visible16": 562120,
+          "nearOpaque240": 557188,
+          "margins16": [
+            178,
+            160,
+            194,
+            158
+          ],
+          "edgeVisible16": 0,
+          "nativeSourcePath": "/workspace/generated_images/exec-0c6cef1f-87d0-46ed-95b6-77a132adb17e.png",
+          "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-viper-series-12.png",
+          "sourceASha256": "3cf6348f99e19d848d847a254d4785ad685c469540a7a72e8b124bfdb9398ca4",
+          "referenceSourcePath": null,
+          "referenceSourceSha256": null,
+          "referenceSources": [
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+              "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d",
+              "bytes": 181807,
+              "sourceURL": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/viper-7.jpg",
+              "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845",
+              "bytes": 231654,
+              "sourceURL": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper7.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12"
+            },
+            {
+              "path": "production/biomasks-expansion-20261113/references/neca/viper-1.jpg",
+              "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2",
+              "bytes": 227815,
+              "sourceURL": "http://necaonline.com/wp-content/uploads/2014/08/1300-Viper1.jpg",
+              "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-viper-predator-action-figure-from-series-12"
+            }
+          ],
+          "allFalseFlags": {
+            "canonCertified": false,
+            "humanArtValidated": false,
+            "runtimeIntegrated": false,
+            "pixelEditingPerformed": false,
+            "animated": false
+          },
+          "nativeByteCopyVerified": true
+        }
+      ],
+      "sourceToA": [
+        "Source upper-right masked catalogue inset determines palette: dark shell, split red crown motif/center spine, amber eyes, three red dots on image-right temple, silver nose detail and lower round mechanism retained.",
+        "Main unmasked body and orange lighting of supporting photos do not become mask geometry/albedo."
+      ],
+      "AtoB": [
+        "Same red/black crown, amber optics, image-right three-dot module and silver central components; no orange scene wash introduced."
+      ],
+      "cavityAndWearerReview": "Deep side recesses and lower mechanism kept dark/metallic, with no biological mouth or eyes.",
+      "localLimitations": [
+        "The near-front source tilt/asymmetry is slightly straightened; exact camera/edge shape is not calibrated.",
+        "Fine front mechanism divisions, tiny perimeter bevels and hidden side/back geometry remain interpreted."
+      ],
+      "decision": "candidate-with-documented-source-limitations",
+      "blockingFindingCount": 0,
+      "isolatedRigidMaskObserved": true,
+      "noVisibleWearerAnatomyOrDreadlocks": true,
+      "noVisibleMajorHaloOnWhiteBlackChecker": true,
+      "sourceIdentityReadableAt96And360": true,
+      "approximateSourceCameraPreserved": true,
+      "exact3DCameraOrGeometryCertified": false,
+      "ABStability": {
+        "visibleAspectA": 0.6899724011039559,
+        "visibleAspectB": 0.6918819188191881,
+        "BRelativeAspectDeltaPercent": 0.2767527675276771,
+        "alpha16IoUUnalignedSameCanvas": 0.9545521624920353,
+        "metricScope": "Generated B versus generated A stability only, never canonical/photo geometry proof."
+      },
+      "browserEvidencePage": 3,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformedByReview": false
+    }
+  ],
+  "sourcePhotoPins": [
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+      "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e",
+      "bytes": 1586399,
+      "dimensions": [
+        2400,
+        3000
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-2.jpg",
+      "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b",
+      "bytes": 1529103,
+      "dimensions": [
+        2400,
+        3000
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-3.jpg",
+      "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01",
+      "bytes": 1523153,
+      "dimensions": [
+        2400,
+        3000
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-1.jpeg",
+      "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b",
+      "bytes": 780645,
+      "dimensions": [
+        1800,
+        1073
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-2.jpeg",
+      "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305",
+      "bytes": 670123,
+      "dimensions": [
+        1800,
+        955
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+      "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+      "bytes": 39858,
+      "dimensions": [
+        400,
+        600
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+      "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+      "bytes": 43654,
+      "dimensions": [
+        400,
+        600
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+      "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7",
+      "bytes": 139839,
+      "dimensions": [
+        570,
+        861
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+      "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+      "bytes": 109824,
+      "dimensions": [
+        800,
+        600
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+      "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+      "bytes": 152782,
+      "dimensions": [
+        570,
+        861
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+      "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7",
+      "bytes": 316925,
+      "dimensions": [
+        1045,
+        1300
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+      "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d",
+      "bytes": 181807,
+      "dimensions": [
+        1134,
+        1300
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/viper-7.jpg",
+      "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845",
+      "bytes": 231654,
+      "dimensions": [
+        861,
+        1300
+      ],
+      "visuallyInspected": true
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/viper-1.jpg",
+      "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2",
+      "bytes": 227815,
+      "dimensions": [
+        861,
+        1300
+      ],
+      "visuallyInspected": true
+    }
+  ],
+  "counts": {
+    "pairs": 7,
+    "nativeCandidatePngs": 14,
+    "sourcePhotographsAndConceptSheets": 14,
+    "browserScreenshots": 6,
+    "blockingFindings": 0,
+    "canonicalCertificates": 0,
+    "humanValidations": 0,
+    "runtimeIntegrations": 0
+  },
+  "overallDecision": "All seven pairs suitable as reviewable candidates with explicit edition/source limitations; no major correction requested.",
+  "commonLimitations": [
+    "A is a newly generated interpretation of the visible licensed photo sculpture and paint, not a pixel-exact crop of R or proof of the film/comic/game original.",
+    "Tiny grooves, pits, hardware, vent/ridge counts and occluded boundaries remain interpreted; source image size and lighting limit any1:1 claim.",
+    "Near-front source poses are sometimes slightly centered/straightened and symmetry regularized; no calibrated3D camera or hidden geometry is established.",
+    "B stabilizes broad design/palette against generated A; automatic alpha/aspect metrics cannot establish canonical fidelity or human art approval."
+  ],
+  "browserEvidence": {
+    "screenshots": [
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/neca-seven-composites/black-small-01.png",
+        "sha256": "0cc21883869101db1c39b29c07d8b425f87176887608b1f44a6a98ccde53e322",
+        "bytes": 962018,
+        "visuallyInspected": true
+      },
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/neca-seven-composites/black-small-02.png",
+        "sha256": "9a1928b19add7df96a46abc93cf6ba21f8b33b17755d400602fa1056e332da7b",
+        "bytes": 964269,
+        "visuallyInspected": true
+      },
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/neca-seven-composites/black-small-03.png",
+        "sha256": "140482ba708d53740413ae5f3e899d0c4ae3f5ba16bb131275e78a7c7f1e7797",
+        "bytes": 289679,
+        "visuallyInspected": true
+      },
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/neca-seven-composites/source-white-01.png",
+        "sha256": "99c16fd51b0228866a933861e123f1f52e16f8f82a22effb7e375e01d7011e1a",
+        "bytes": 1422831,
+        "visuallyInspected": true
+      },
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/neca-seven-composites/source-white-02.png",
+        "sha256": "1b480c2ebce8421a4247a75bf8127c49b4e1ac5c2da946a0393a8e56dc48f394",
+        "bytes": 1468231,
+        "visuallyInspected": true
+      },
+      {
+        "path": "/tmp/mask-expansion-20261113/reviews/neca-seven-composites/source-white-03.png",
+        "sha256": "92bd2e2932c81606d547ae8ec55427c43c4b18f1d11aba14142b31b3b0bbb553",
+        "bytes": 453249,
+        "visuallyInspected": true
+      }
+    ],
+    "sizes": [
+      360,
+      96
+    ],
+    "backgrounds": [
+      "white360",
+      "black360",
+      "checker96",
+      "white96"
+    ],
+    "method": "Original reference and native candidate bytes served locally. Browser CSS scales/displays manual source windows and alpha16 bounding boxes for comparison. No candidate/source pixel crop, recolor, resize or re-encode is saved.",
+    "manualSourceWindowsAreNotExactMasks": true,
+    "helperPath": "/tmp/mask-expansion-20261113/reviews/review-neca-seven.mjs"
+  },
+  "lineageAndProtectionChecks": {
+    "all14PublicPNGsMatchReceiptSHA": true,
+    "all14PublicPNGsMatchNativeSourceBytes": true,
+    "all7BSourceAPinsMatchActualA": true,
+    "allRegisteredReferencePinsMatchExistingFiles": true,
+    "allReceiptPinsStableDuringFinalRead": true,
+    "noForbiddenTrueFlagsObserved": true,
+    "assetsGeneratedByThisReview": 0,
+    "sourceOrGameAssetsModifiedByReview": false,
+    "oldPacksOrWorkbooksModifiedByReview": false
+  },
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "pixelEditingPerformed": false
+}
