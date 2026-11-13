@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "packId": "biomasks-neutral-20261113",
+  "workarea": "/tmp/yautja-mask-neutral-20261113",
+  "independentCheckoutRequired": true,
+  "gitWorktreeForbidden": true,
+  "sourceObservedHead": "ac9d0cbb8a34f7513ecc4d9b3c303fbb9f9fd1c4",
+  "newBaseHead": "4b70740d192c19d83b36d7aef2a15e5074d64053",
+  "oldTree": "e9f6c49e7f76f480f0c5f5cc5a7062d6a74faa45",
+  "newBaseTree": "e9f6c49e7f76f480f0c5f5cc5a7062d6a74faa45",
+  "baseTreeMatchesSource": true,
+  "decision": {
+    "neutralMethod": "user-authorized-deterministic-monochrome",
+    "imagegenUsedForC": false,
+    "methodId": "srgb8-rec709-luma-v1",
+    "formula": "floor((2126*R+7152*G+722*B+5000)/10000)",
+    "sourceChannels": "encoded8bit sRGB,notlinearized; alpha copied exactly",
+    "output": "RGBA8 PNG,same dimensions/frame/raw alpha",
+    "renderModes": [
+      "deterministic-grayscale",
+      "source-reuse"
+    ],
+    "expectedDerivedC": 66,
+    "expectedReuseC": 0,
+    "newImageGenerationCount": 0,
+    "noCanonOrRuntimeClosure": true
+  },
+  "historicalProtection": {
+    "packs": 6,
+    "files": 728,
+    "bytes": 559769620,
+    "workbooks": 126,
+    "imageGenNativePngs": 145,
+    "allOldFilesRemainAtOriginalPaths": true,
+    "sourceBRepresentations": 66,
+    "sourceBAggregateBytes": 105156431,
+    "sourceDecodedRgbaBytes": 415153624
+  },
+  "sparse": {
+    "manifestSource": "historical-file-selection.json",
+    "literalPatterns": "/tmp/mask-neutral-20261113/historical-sparse-patterns.txt",
+    "historicalFiles": 728,
+    "bootstrapExtras": [
+      "AGENTS.md",
+      "docs/GAMEDEV_AGENT_GUIDE.md",
+      "package.json",
+      "package-lock.json",
+      ".gitignore"
+    ],
+    "workingCheckoutLiteralFilesBeforeNewPack": 733,
+    "workingCheckoutBytesBeforeNewPack": 560191360,
+    "currentlyMissingInNewCheckout": [
+      "production/biomasks-expansion-20261113/qa/artistic/golden-angel-horned-sources.png",
+      "production/biomasks-expansion-20261113/qa/artistic/golden-angel-smooth-sources.png",
+      "production/biomasks-expansion-20261113/qa/artistic/kwei-alpha-comparison.png",
+      "production/biomasks-expansion-20261113/qa/artistic/neca-seven-source-overview.png",
+      "production/biomasks-expansion-20261113/qa/artistic/nightstorm-alpha-AB-comparison.png",
+      "production/biomasks-expansion-20261113/qa/artistic/nightstorm-source-AB-comparison.png",
+      "production/biomasks-expansion-20261113/qa/artistic/verification.json",
+      "production/biomasks-expansion-20261113/qa/browser/community-complete-reference.png",
+      "production/biomasks-expansion-20261113/qa/browser/community-visible-mask-bounds.png",
+      "production/biomasks-expansion-20261113/qa/browser/kwei-prototype-pair.png",
+      "production/biomasks-expansion-20261113/qa/browser/mobile-320-prototype.png",
+      "production/biomasks-expansion-20261113/qa/browser/mobile-390-prototype.png",
+      "production/biomasks-expansion-20261113/qa/browser/paginated-comparison.png",
+      "production/biomasks-expansion-20261113/qa/browser/prototype-source-drawer.png",
+      "production/biomasks-expansion-20261113/qa/browser/vapor-provisional-comparison.png",
+      "production/biomasks-expansion-20261113/qa/browser/verification.json",
+      "production/biomasks-expansion-20261113/qa/portability.json",
+      "production/biomasks-expansion-20261113/qa/storage/current-native-storage-receipt.json",
+      "production/biomasks-expansion-20261113/qa/storage/native-deduplication-receipt.json",
+      "production/biomasks-expansion-20261113/qa/storage/reference-storage-receipt.json"
+    ],
+    "noBroadNamespaces": [
+      "public/game/sprites/v44/**",
+      "public/game/assets/**",
+      "node_modules/**",
+      "all art-source/**"
+    ],
+    "newSelectorSuggestedMaxLiteralFiles": 1024,
+    "newSelectorSuggestedMaxPinnedBytes": 805306368,
+    "newCUpperPlanningAllowanceBytes": 209715200,
+    "estimatedSelectedPayloadWith200MiBC": 769484820
+  },
+  "inventory": {
+    "path": "/tmp/mask-neutral-20261113/neutral-inventory.json",
+    "sha256": "4137f30a8a022ebd7022f2aa7d015de793f98ae8ea7bd61db4b87039c29c140b",
+    "alphaAuditPath": "/tmp/mask-neutral-20261113/b-read-only-analysis.json",
+    "alphaAuditSha256": "4d2992a8c2e04ca20fccda4dc2fc69bd1fbd584e3571a6fd7746e79dd7f4525c",
+    "records": 66,
+    "duplicateBHashes": 0,
+    "aliasesNotNewDesigns": 13,
+    "genericCandidates": 62,
+    "exceptions": [
+      "predator_17 provisional/rejected faithful release",
+      "mk-30-emissary partial source shell",
+      "neca-nightstorm-series-10 partial rigid shell,camera4-5deg deviation",
+      "mask-feral-screen-original nonportable hybrid study"
+    ]
+  },
+  "architecture": {
+    "pixelModuleOwnedBy": "agent5 neutral-mask-pixels.mjs",
+    "independentPixelVerifierOwnedBy": "agent4 verify-neutral-pixels.py",
+    "manifestPairs": "pairs[{id,sourceStatus,versionA,versionB,versionC}]",
+    "sourceBLinks": "existing protected public assets,no source recopy or edit",
+    "newCNamespace": "public/game/biomasks-neutral-20261113/neutral/{id}.png",
+    "newCCounters": [
+      "availableComparisons",
+      "sourceBRepresentations",
+      "neutralCProduced",
+      "newDerivedPngs",
+      "sourceReuseC",
+      "newImageGenPngs=0",
+      "strictMonochromePassed",
+      "rawAlphaIdenticalPassed",
+      "provisionalInherited",
+      "partialInherited",
+      "hybridInherited",
+      "canonicalClosures=0",
+      "runtimeIntegrations=0"
+    ],
+    "gallery": "Paginated B/C comparison; optional A/R drawer; tint preview on C in browser only; explicit baked2D lighting,not3D albedo/UV or runtime integration; no PNG export/change",
+    "workbook": "New separate workbook,old126 immutable:Summary,Cneutral,SourceA-B-R,Method-alpha,Inheritedlimits,46open,ProtectedSources",
+    "ci": "Python/Pillow read-only verification + exact sparse selection/tree guard,zero external photo/private-origin dependency",
+    "pixelEditingPerformed": "true only for explicitly authorized deterministic C RGB mapping; old A/B/R remain byte-identical",
+    "neutralMethodNotCanonicalProof": true
+  },
+  "dependencies": {
+    "node": "22.23.4 available in environment",
+    "sharpLockedVersion": "0.35.4",
+    "playwrightCoreLockedVersion": "1.63.0",
+    "pythonPillow": "12.3.0 read-only verifier",
+    "localNodeModulesStrategy": "Root may add an untracked new-checkout dependency link to existing node_modules for read-only module resolution; no hardcoded external imports committed. No reinstall or old dependency mutation."
+  },
+  "verificationPlan": [
+    "Generate66C only after independent checkout and user method authorization confirmed",
+    "Verify sourceB SHA before and after generation",
+    "Independent per-pixel check formula,allRGB equal,dimensions same,andrawalpha byte-identical",
+    "Preserve all4 inherited exception qualifications and Vapor refusal",
+    "One portable selected-checkout run with independent fixtures,never mutate old source/hardlink",
+    "Browser pagination,66C decode,tint preview changes display only,keyboard/mobiles,no game storage writes",
+    "Deterministic new manifest/workbook and old126XLSX/145natives preserved"
+  ],
+  "noImagesCreatedDuringPlanning": true,
+  "noRepositoryFilesModifiedDuringPlanning": true,
+  "networkRequestsMade": 0,
+  "vercelRetryForbidden": "Quota24h; no retry,upgrade or external previewGET."
+}

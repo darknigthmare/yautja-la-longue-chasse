@@ -1,0 +1,1466 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "status": "bounded-targeted-neca-research-complete",
+  "scope": "Dedicated remainingNECA mask research. No generation, source/raster edits or repository writes by this research agent. Neutral rendering C handled separately by parent.",
+  "previousResearch": {
+    "path": "/tmp/mask-expansion-20261113/neca-report.json",
+    "bytes": 696019,
+    "sha256": "cf2d4ad0a864de59a83627d22c969cce46fa0ac9b61e6cb3768b9b9e4fe3df32"
+  },
+  "excludedProducedNECAEditions": [
+    "neca-kwei-prototype",
+    "neca-ahab-sdcc-2014",
+    "neca-warrior-series-6",
+    "neca-scout-lost-tribe-series-6",
+    "neca-lava-planet-series-10",
+    "neca-nightstorm-series-10",
+    "neca-hive-wars-series-10",
+    "neca-viper-series-12",
+    "neca-golden-angel-horned-2018",
+    "neca-golden-angel-smooth-2018",
+    "neca-clan-leader-toyfair-2016"
+  ],
+  "network": {
+    "runtimeSpecObserved": 5,
+    "declaredHosts": 9,
+    "networkConfigurationChanged": false,
+    "knownDeniedCDN": "eadn-wc04-13179453.nxedge.io",
+    "deniedCDNRetried": false,
+    "CDNImageHostRewrittenToOrigin": false,
+    "PinterestRequested": false,
+    "proxyOrRelayCircumventionUsed": false,
+    "inheritedProxyAndCATrustPreserved": true,
+    "imagesFetchedOnlyOnPublisherOriginURLsDecodedFromActualMediaParameter": true,
+    "previousGoldenAngelAttachmentHTTP403Retried": false
+  },
+  "discoveryMethod": {
+    "description": "Open actual publisher-linked attachment pages. Their displayed gallery image URLs use refused CDN, but publisher-authored Pinterest share anchors contain an encoded media= URL directly on allowed necaonline.com. Decode the exact parameter using urllib.parse.parse_qs; request only that independently published original URL. No CDN hostname/path replacement, no share-service request, no image proxy.",
+    "literalEvidence": "Every downloaded photo stores rawPublisherAnchorTag, publisherShareHref, decodedPublishedImageURL and sourceHTML SHA. Raw anchor membership and exact decoded parameter equality were asserted.",
+    "refusalLimits": "Do not derive absent attachment permalinks or guess alternate image filenames from known CDN URLs."
+  },
+  "attachmentPagesFetched": [
+    {
+      "id": "att-51545-horn-head-pkg1",
+      "url": "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-hornhead-series18.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg1-135x135.jpg",
+        "alt": ""
+      },
+      "targetGroup": "article-hornhead-series18.html",
+      "redirectLocation": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+      "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg1-https.html",
+      "bytes": 117144,
+      "sha256": "275ad03189cf8b174541f7c063b571e1da3a7602ceb0434aba91b6b79b2d0f90",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+          "status": 301,
+          "location": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/"
+        },
+        {
+          "url": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-51545-horn-head-pkg2",
+      "url": "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-hornhead-series18.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg2-135x135.jpg",
+        "alt": ""
+      },
+      "targetGroup": "article-hornhead-series18.html",
+      "redirectLocation": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+      "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg2-https.html",
+      "bytes": 117144,
+      "sha256": "8cafb37a5dc9f85699d216f36c7c04f52e6a0a3a553adccae2f14351f6769e92",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+          "status": 301,
+          "location": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/"
+        },
+        {
+          "url": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-590-scarface-feat-img",
+      "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/590-scarface-feat-img/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-scarface-game.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/590-scarface-feat-img-135x135.jpg",
+        "alt": "590-scarface-feat-img"
+      },
+      "targetGroup": "article-scarface-game.html",
+      "redirectLocation": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/590-scarface-feat-img/",
+      "path": "/tmp/mask-neutral-20261113/att-590-scarface-feat-img-https.html",
+      "bytes": 117465,
+      "sha256": "369e0c420acfc6f294a282f3f74bda041111313f4d77a6bfc9115f73dc021146",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/590-scarface-feat-img/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/590-scarface-feat-img/"
+        },
+        {
+          "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/590-scarface-feat-img/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-scraface1",
+      "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface1/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-scarface-game.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-Scraface1--135x135.jpg",
+        "alt": "1200x-scraface1"
+      },
+      "targetGroup": "article-scarface-game.html",
+      "redirectLocation": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface1/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scraface1-https.html",
+      "bytes": 117027,
+      "sha256": "cdde17342d2e5e4a8910cbfac7a6f327aca986445d0ae3e44865cb749ff4d303",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface1/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface1/"
+        },
+        {
+          "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface1/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-scarfacepredator",
+      "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarfacepredator/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-scarface-game.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-ScarfacePredator--135x135.jpg",
+        "alt": "1200x-scarfacepredator"
+      },
+      "targetGroup": "article-scarface-game.html",
+      "redirectLocation": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarfacepredator/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-https.html",
+      "bytes": 117313,
+      "sha256": "69933f3063ff18fd4b78a5a7f69b275bc7eec42c8501f14d791439130a4f09ca",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarfacepredator/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarfacepredator/"
+        },
+        {
+          "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarfacepredator/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-stalker1a",
+      "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1a/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-kenner-stalker.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-Stalker1a--135x135.jpg",
+        "alt": "1200x-stalker1a"
+      },
+      "targetGroup": "article-kenner-stalker.html",
+      "redirectLocation": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1a/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-stalker1a-https.html",
+      "bytes": 117082,
+      "sha256": "65a9a1a121b5b1d8a241992ec81e08f6deaf9a52e35d37891d996e99b890d3c8",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1a/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1a/"
+        },
+        {
+          "url": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1a/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-stalker1",
+      "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-kenner-stalker.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-Stalker1--135x135.jpg",
+        "alt": "1200x-stalker1"
+      },
+      "targetGroup": "article-kenner-stalker.html",
+      "redirectLocation": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-stalker1-https.html",
+      "bytes": 117040,
+      "sha256": "3c3d2136d87e97541f5bdf4487e740d07b9b26ac3aae30caec87ec67dc9592ef",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1/"
+        },
+        {
+          "url": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-51534_stalker_predator1",
+      "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-kenner-stalker.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-51534_Stalker_Predator1--135x135.jpg",
+        "alt": "1200x-51534_stalker_predator1"
+      },
+      "targetGroup": "article-kenner-stalker.html",
+      "redirectLocation": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator1-https.html",
+      "bytes": 117688,
+      "sha256": "b68492a463fe94d13c1fd2f7b96e055b759ee9c21b0103e3d255e3b627fcaa7b",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/"
+        },
+        {
+          "url": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-51569-ultimate-ahab-predator2",
+      "url": "http://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator2/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-ahab-ultimate.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator2-135x135.jpg",
+        "alt": ""
+      },
+      "targetGroup": "article-ahab-ultimate.html",
+      "redirectLocation": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator2/",
+      "path": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator2-https.html",
+      "bytes": 117532,
+      "sha256": "58c765314d21041e87962f31ef424718d5a6bf8b8138288961a2862603e89e9b",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator2/",
+          "status": 301,
+          "location": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator2/"
+        },
+        {
+          "url": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator2/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-51569-ultimate-ahab-predator7",
+      "url": "http://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator7/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-ahab-ultimate.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator7-135x135.jpg",
+        "alt": ""
+      },
+      "targetGroup": "article-ahab-ultimate.html",
+      "redirectLocation": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator7/",
+      "path": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator7-https.html",
+      "bytes": 117532,
+      "sha256": "52534a65bbe083c9f79687edcfd24f962f42f80c9bf3575cad70668493f035d7",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator7/",
+          "status": 301,
+          "location": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator7/"
+        },
+        {
+          "url": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator7/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-ahab-predator9",
+      "url": "http://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/ahab-predator9/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-ahab-ultimate.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2017/05/Ahab-Predator9-135x135.jpg",
+        "alt": ""
+      },
+      "targetGroup": "article-ahab-ultimate.html",
+      "redirectLocation": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/ahab-predator9/",
+      "path": "/tmp/mask-neutral-20261113/att-ahab-predator9-https.html",
+      "bytes": 116885,
+      "sha256": "c22457d8e6bacd30e11998da6c77ee13c3308a4fbd0969bceea34bffa06b9fc2",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/ahab-predator9/",
+          "status": 301,
+          "location": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/ahab-predator9/"
+        },
+        {
+          "url": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/ahab-predator9/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-51534_stalker_predator2",
+      "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-kenner-stalker.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-51534_Stalker_Predator2--135x135.jpg",
+        "alt": "1200x-51534_stalker_predator2"
+      },
+      "targetGroup": "article-kenner-stalker.html",
+      "redirectLocation": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator2-https.html",
+      "bytes": 117686,
+      "sha256": "0224c02e17d867d67b0373fe6da60a5aa92fc6f1456b8e76a45bd7d74897611d",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/"
+        },
+        {
+          "url": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-scarface_predator",
+      "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-scarface-game.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-Scarface_Predator--135x135.jpg",
+        "alt": "1200x-scarface_predator"
+      },
+      "targetGroup": "article-scarface-game.html",
+      "redirectLocation": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-https.html",
+      "bytes": 117748,
+      "sha256": "9a5c1da6dc3eeb6eca9ad8ea6bd3833ff32e02c71d60349c3e81782fa4311415",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/"
+        },
+        {
+          "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    },
+    {
+      "id": "att-1200x-scraface14",
+      "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-scarface-game.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-Scraface14--135x135.jpg",
+        "alt": "1200x-scraface14"
+      },
+      "targetGroup": "article-scarface-game.html",
+      "redirectLocation": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scraface14-https.html",
+      "bytes": 117069,
+      "sha256": "ee395ef69924986ed2c3694dc01d75b86191a2f6ca91f6391d37425bc490162c",
+      "httpStatus": 200,
+      "redirectChain": [
+        {
+          "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/",
+          "status": 301,
+          "location": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/"
+        },
+        {
+          "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/",
+          "status": 200
+        }
+      ],
+      "imageHostsRewrittenByAgent": false
+    }
+  ],
+  "cachedAttachmentReused": {
+    "path": "/tmp/mask-neutral-20261113/source-attachment-ahab-main-cached.html",
+    "bytes": 117713,
+    "sha256": "b8342f6ec6a413347d3c1a6a19851fe82b3352a669c882871256524e9de7de0a"
+  },
+  "publicManufacturerSearches": [
+    {
+      "path": "/tmp/mask-neutral-20261113/search-neca-crucified.html",
+      "entries": [],
+      "resultCountText": "",
+      "bytes": 95943,
+      "sha256": "98df6c463dd73c17f7799bdc6141fcdf72c8edd1bfdbf6fd13f5af45a8ae580f"
+    },
+    {
+      "path": "/tmp/mask-neutral-20261113/search-neca-elder.html",
+      "entries": [
+        {
+          "title": "Predator 2 – 7” Scale Action Figure – Ultimate Elder Predator",
+          "url": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/"
+        },
+        {
+          "title": "Predator 2 – 7” Scale Action Figure – Ultimate Elder: The Golden Angel",
+          "url": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/"
+        },
+        {
+          "title": "Predator BTS – 1/4 Scale Elder Predator Action Figure Confirmed for 2013!",
+          "url": "https://necaonline.com/2013/01/predator-bts-14-scale-elder-predator-action-figure-confirmed-for-2013/"
+        },
+        {
+          "title": "Toy Fair 2018 – Day 2 Reveals: Action Figures from Aliens Series 13, Alien vs Predator (Arcade) & more!",
+          "url": "https://necaonline.com/2018/02/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-more/"
+        },
+        {
+          "title": "DISCONTINUED – Predator – 7″ Scale Action Figures – Series 17 Assortment",
+          "url": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/"
+        },
+        {
+          "title": "Shipping: Predators, Rocky, Misfits, and Texas Chainsaw Massacre Action Figures!",
+          "url": "https://necaonline.com/2014/10/shipping-predators-rocky-misfits-and-texas-chainsaw-massacre-action-figures/"
+        },
+        {
+          "title": "SDCC Feature Friday #4: Exclusive ‘Fire and Stone’ Ahab Predator Action Figure!",
+          "url": "https://necaonline.com/2014/05/sdcc-feature-friday-4-exclusive-fire-and-stone-ahab-predator-action-figure/"
+        },
+        {
+          "title": "Action Figure Update: Predators Series 12 Line-Up is Changing!",
+          "url": "https://necaonline.com/2014/04/action-figure-update-predators-series-12-line-up-is-changing/"
+        },
+        {
+          "title": "TOY FAIR 2014: First Look at Predator Series 12 and Alien Series 3 Action Figures",
+          "url": "https://necaonline.com/2014/02/toy-fair-2014-first-look-at-predator-series-12-and-alien-series-3-action-figures/"
+        },
+        {
+          "title": "Predator – 7″ Scale Action Figure – Series 12 Assortment **DISCONTINUED**",
+          "url": "https://necaonline.com/2014/02/predator-7-scale-action-figure-series-12-assortment/"
+        }
+      ],
+      "resultCountText": "",
+      "bytes": 126674,
+      "sha256": "20bb13aed9d4491e735eed4ebe7dc351d694028562553cda3a4f92180ecf0a51"
+    },
+    {
+      "path": "/tmp/mask-neutral-20261113/search-neca-hornhead.html",
+      "entries": [
+        {
+          "title": "Predator – 7″ Scale Action Figures – Series 18 Assortment",
+          "url": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/"
+        }
+      ],
+      "resultCountText": "",
+      "bytes": 97501,
+      "sha256": "e023e45a575ee23b9141cb40680b006042e0b5cfbf243aa8c357190ac8e929a7"
+    },
+    {
+      "path": "/tmp/mask-neutral-20261113/search-neca-scarface.html",
+      "entries": [
+        {
+          "title": "Closer Look: Video Game Appearance Ultimate Scarface Predator!",
+          "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/"
+        },
+        {
+          "title": "DISCONTINUED – Predator – 7” Scale Action Figure – Ultimate Scarface (Video Game Appearance)",
+          "url": "https://necaonline.com/2016/02/predator-7-scale-action-figure-ultimate-scarface-video-game-appearance/"
+        },
+        {
+          "title": "Scarface – 18″ Action Figure – Blue Suit **DISCONTINUED**",
+          "url": "https://necaonline.com/2011/06/scarface-18-action-figure-blue-suit/"
+        },
+        {
+          "title": "Scarface – 7″ Action Figure – Assortment **DISCONTINUED**",
+          "url": "https://necaonline.com/2011/06/scarface-7-action-figure-assortment/"
+        },
+        {
+          "title": "Scarface – 18″ Action Figure – White Suit w/Sound **DISCONTINUED**",
+          "url": "https://necaonline.com/2011/03/scarface-18-action-figure-white-suit-wsound/"
+        },
+        {
+          "title": "Say Hello To Our Little Friend (Again)",
+          "url": "https://necaonline.com/2011/03/say-hello-to-our-little-friend-again/"
+        },
+        {
+          "title": "Toy Fair 2007: Part 2",
+          "url": "https://necaonline.com/2011/03/toy-fair-2007-part-2/"
+        },
+        {
+          "title": "UK Toy Fair 2006",
+          "url": "https://necaonline.com/2011/03/uk-toy-fair-2006/"
+        }
+      ],
+      "resultCountText": "",
+      "bytes": 116453,
+      "sha256": "d2a19797907c7a751e4be104c948e59f127839e0369af5a52640f60f0d20e33f"
+    },
+    {
+      "path": "/tmp/mask-neutral-20261113/search-neca-serpent.html",
+      "entries": [
+        {
+          "title": "Predator 2 – 7” Scale Action Figure – Ultimate Snake Predator",
+          "url": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-snake/"
+        },
+        {
+          "title": "DISCONTINUED – Predator – 7″ Scale Action Figures – Series 17 Assortment",
+          "url": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/"
+        },
+        {
+          "title": "Closer Look: Viper Predator Action Figure from Series 12!",
+          "url": "https://necaonline.com/2014/09/closer-look-viper-predator-action-figure-series-12/"
+        },
+        {
+          "title": "Conan the Exterminator",
+          "url": "https://necaonline.com/2011/03/conan-the-exterminator/"
+        }
+      ],
+      "resultCountText": "",
+      "bytes": 106426,
+      "sha256": "ec5db4274a0175abea1f6c404b90e4914f9e760e2f38662c4bef417502d4f02e"
+    },
+    {
+      "path": "/tmp/mask-neutral-20261113/search-neca-tracker.html",
+      "entries": [
+        {
+          "title": "Shipping this Week: Aliens 7″ Scale Series 2 Action Figures",
+          "url": "https://necaonline.com/2014/01/shipping-this-week-aliens-7%e2%80%b3-scale-series-2-action-figures/"
+        },
+        {
+          "title": "DISCONTINUED – Aliens – 7″ Scale Action Figure – Series 2",
+          "url": "https://necaonline.com/2013/07/aliens-7-scale-action-figure-series-2/"
+        },
+        {
+          "title": "First Look: Aliens Series 1 Action Figures in Packaging!",
+          "url": "https://necaonline.com/2013/05/first-look-aliens-series-1-action-figures-in-packaging/"
+        },
+        {
+          "title": "NY TOY FAIR: Aliens Series 1 & Marines vs. Aliens 2-Packs!",
+          "url": "https://necaonline.com/2013/02/ny-toy-fair-aliens-series-1-marines-vs-aliens-2-packs/"
+        },
+        {
+          "title": "Aliens – 7″ Scale Action Figure – Series 1 Assortment (Case 14) ***DISCONTINUED***",
+          "url": "https://necaonline.com/2012/12/aliens-7-scale-action-figure-series-1-assortment-case-14/"
+        },
+        {
+          "title": "Quarriors! Dice building Game by WizKids Games ***DISCONTINUED***",
+          "url": "https://necaonline.com/2011/06/wiz-kids-game-quarriors-dice-building-game/"
+        },
+        {
+          "title": "Predators Get Even Uglier",
+          "url": "https://necaonline.com/2011/03/predators-get-even-uglier/"
+        },
+        {
+          "title": "Predators – 7″ Action Figure – Series 2 Assortment **DISCONTINUED**",
+          "url": "https://necaonline.com/2011/03/predators-7-action-figure-series-2-assortment/"
+        }
+      ],
+      "resultCountText": "",
+      "bytes": 118327,
+      "sha256": "688b8f6f026ac65b73b1786f130396cef929e5c9db1285b3d310e773b634f813"
+    }
+  ],
+  "photos": [
+    {
+      "id": "att-51545-horn-head-pkg1-photo",
+      "targetGroup": "article-hornhead-series18.html",
+      "attachmentPageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg1-https.html",
+      "attachmentPageSha256": "275ad03189cf8b174541f7c063b571e1da3a7602ceb0434aba91b6b79b2d0f90",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51545-horn-head-pkg1%2F&description=51545%20Horn%20Head%20pkg1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51545-Horn-Head-pkg1.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51545-horn-head-pkg1%2F&#038;description=51545%20Horn%20Head%20pkg1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51545-Horn-Head-pkg1.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg1.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+      "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg1-photo.jpg",
+      "bytes": 671859,
+      "sha256": "e0d1f884b6d11c32264a4aa558c51df487d0f5b2b2af685ff88093da5d2d9f93",
+      "dimensions": [
+        1040,
+        1300
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "partial-removable-mask-accessory",
+      "observation": "Blister front with bare organic head; silver detachable mask accessory lower-left shows upper cap/cutouts/eyes, but lower mask is covered by label/plastic. Large illustrated mask on cardboard is artwork, not a complete sculpt photograph.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-51545-horn-head-pkg2-photo",
+      "targetGroup": "article-hornhead-series18.html",
+      "attachmentPageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg2-https.html",
+      "attachmentPageSha256": "8cafb37a5dc9f85699d216f36c7c04f52e6a0a3a553adccae2f14351f6769e92",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51545-horn-head-pkg2%2F&description=51545%20Horn%20Head%20pkg2&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51545-Horn-Head-pkg2.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F51545-horn-head-pkg2%2F&#038;description=51545%20Horn%20Head%20pkg2&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2F51545-Horn-Head-pkg2.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg2.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+      "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg2-photo.jpg",
+      "bytes": 792751,
+      "sha256": "6b95f14e8e611eab03af9d707da9d01d0c5d248f38d78d7abe06f812dc376b03",
+      "dimensions": [
+        1040,
+        1300
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "packaging-art-small-reference",
+      "observation": "Blister back: comic artwork and small printed photograph of worn Hornhead shell, plus other figures. Insufficient full-sculpt pixels; do not derive detailed geometry from print/thumbnail.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-590-scarface-feat-img-photo",
+      "targetGroup": "article-scarface-game.html",
+      "attachmentPageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/590-scarface-feat-img/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-590-scarface-feat-img-https.html",
+      "attachmentPageSha256": "369e0c420acfc6f294a282f3f74bda041111313f4d77a6bfc9115f73dc021146",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F590-scarface-feat-img%2F&description=590%20scarface%20feat%20img&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590-scarface-feat-img.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F590-scarface-feat-img%2F&#038;description=590%20scarface%20feat%20img&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590-scarface-feat-img.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/590-scarface-feat-img.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/590-scarface-feat-img/",
+      "path": "/tmp/mask-neutral-20261113/att-590-scarface-feat-img-photo.jpg",
+      "bytes": 194952,
+      "sha256": "70b1266d92b2f87008afd7b325cbeafb2460e831851de0347b9b64d2e8ced455",
+      "dimensions": [
+        590,
+        298
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "unmasked-head-excluded",
+      "observation": "Scarface organic face exposed; no worn biomask. Not mask geometry proof.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-scraface1-photo",
+      "targetGroup": "article-scarface-game.html",
+      "attachmentPageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface1/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-scraface1-https.html",
+      "attachmentPageSha256": "cdde17342d2e5e4a8910cbfac7a6f327aca986445d0ae3e44865cb749ff4d303",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scraface1%2F&description=1200x%20Scraface1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Scraface1-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scraface1%2F&#038;description=1200x%20Scraface1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Scraface1-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Scraface1-.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface1/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scraface1-photo.jpg",
+      "bytes": 239613,
+      "sha256": "fba0d7afff565761b334f6e37c4c359d9acc807ce858141bc08ccaf5d1d40254",
+      "dimensions": [
+        777,
+        1200
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "unmasked-head-excluded",
+      "observation": "Unmasked Scarface action pose. Not a biomask view.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-scarfacepredator-photo",
+      "targetGroup": "article-scarface-game.html",
+      "attachmentPageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarfacepredator/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-https.html",
+      "attachmentPageSha256": "69933f3063ff18fd4b78a5a7f69b275bc7eec42c8501f14d791439130a4f09ca",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scarfacepredator%2F&description=1200x%20ScarfacePredator&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-ScarfacePredator-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scarfacepredator%2F&#038;description=1200x%20ScarfacePredator&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-ScarfacePredator-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-ScarfacePredator-.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarfacepredator/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-photo.jpg",
+      "bytes": 153678,
+      "sha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+      "dimensions": [
+        960,
+        1200
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "qualified-mask-primary",
+      "observation": "Complete silver/gunmetal NECA2016Scarface shell worn three-quarter, red forehead mark and red ocular-side paint, ridged mechanical lower shield, brow/crown/side mechanisms. Wearer/dreads/skull/armor excluded.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-stalker1a-photo",
+      "targetGroup": "article-kenner-stalker.html",
+      "attachmentPageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1a/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-stalker1a-https.html",
+      "attachmentPageSha256": "65a9a1a121b5b1d8a241992ec81e08f6deaf9a52e35d37891d996e99b890d3c8",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-stalker1a%2F&description=1200x%20Stalker1a&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Stalker1a-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-stalker1a%2F&#038;description=1200x%20Stalker1a&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Stalker1a-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Stalker1a-.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1a/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-stalker1a-photo.jpg",
+      "bytes": 337387,
+      "sha256": "967b0d1262b9293a5f3207427e1a61bd430a55fea30844cc94215806ea1e093a",
+      "dimensions": [
+        1200,
+        795
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "unmasked-head-excluded",
+      "observation": "NECAStalker organic head, translucent/glow-capable body and dreadlocks, normal lighting; no worn mask.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-stalker1-photo",
+      "targetGroup": "article-kenner-stalker.html",
+      "attachmentPageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-stalker1-https.html",
+      "attachmentPageSha256": "3c3d2136d87e97541f5bdf4487e740d07b9b26ac3aae30caec87ec67dc9592ef",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-stalker1%2F&description=1200x%20Stalker1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Stalker1-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-stalker1%2F&#038;description=1200x%20Stalker1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Stalker1-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Stalker1-.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-stalker1/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-stalker1-photo.jpg",
+      "bytes": 151283,
+      "sha256": "a915a6b7e121cdecdc557faa8bf551235af147875c7aec13c040d090efe3bb48",
+      "dimensions": [
+        795,
+        1200
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "unmasked-glow-head-excluded",
+      "observation": "Glowing Stalker organic face/body/dreads, no mask. Does not prove that separate bronze shell is itself translucent or emissive.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-51534_stalker_predator1-photo",
+      "targetGroup": "article-kenner-stalker.html",
+      "attachmentPageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator1-https.html",
+      "attachmentPageSha256": "b68492a463fe94d13c1fd2f7b96e055b759ee9c21b0103e3d255e3b627fcaa7b",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51534_stalker_predator1%2F&description=1200x%2051534%20Stalker%20Predator1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51534_Stalker_Predator1-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51534_stalker_predator1%2F&#038;description=1200x%2051534%20Stalker%20Predator1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51534_Stalker_Predator1-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-51534_Stalker_Predator1-.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator1-photo.jpg",
+      "bytes": 104717,
+      "sha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+      "dimensions": [
+        960,
+        1200
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "qualified-mask-primary",
+      "observation": "Complete worn StalkerKenner/NECASeries16 shell, brown/bronze and charcoal segmented crown, central raised strip, pale gray eye inserts and slotted lower respirator. Nearfrontal catalog view. Body/dreads behind shell are translucent; do not transfer their glow to helmet without proof.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-51569-ultimate-ahab-predator2-photo",
+      "targetGroup": "article-ahab-ultimate.html",
+      "attachmentPageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator2/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator2-https.html",
+      "attachmentPageSha256": "58c765314d21041e87962f31ef424718d5a6bf8b8138288961a2862603e89e9b",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2F51569-ultimate-ahab-predator2%2F&description=51569%20Ultimate%20Ahab%20Predator2&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51569-Ultimate-Ahab-Predator2.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2F51569-ultimate-ahab-predator2%2F&#038;description=51569%20Ultimate%20Ahab%20Predator2&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51569-Ultimate-Ahab-Predator2.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator2.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator2/",
+      "path": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator2-photo.jpg",
+      "bytes": 199374,
+      "sha256": "bcf8dccfc119dd098ffd7fcaeb3ebf6f99feb40db84f30900635a25b00c7fb9e",
+      "dimensions": [
+        1040,
+        1300
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "qualified-mask-support",
+      "observation": "Complete UltimateAhab2017 mask in profile: gray/silver shell, crown scars, cheek circular mechanisms and lower opening; visible underlying teeth belong to wearer. Support for photographed edition, not an alternate unknown back geometry.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-51569-ultimate-ahab-predator7-photo",
+      "targetGroup": "article-ahab-ultimate.html",
+      "attachmentPageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator7/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator7-https.html",
+      "attachmentPageSha256": "52534a65bbe083c9f79687edcfd24f962f42f80c9bf3575cad70668493f035d7",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2F51569-ultimate-ahab-predator7%2F&description=51569%20Ultimate%20Ahab%20Predator7&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51569-Ultimate-Ahab-Predator7.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2F51569-ultimate-ahab-predator7%2F&#038;description=51569%20Ultimate%20Ahab%20Predator7&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2F51569-Ultimate-Ahab-Predator7.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator7.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/51569-ultimate-ahab-predator7/",
+      "path": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator7-photo.jpg",
+      "bytes": 282196,
+      "sha256": "549b919f0e72cf36e9fa6cd17d6a1a976106a6306a5db9f70e732b965856683f",
+      "dimensions": [
+        1040,
+        1300
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "weapon-back-view-excluded",
+      "observation": "Rear view of Ahab with a large bow on the back, not a biomask or shell interior.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-ahab-predator9-photo",
+      "targetGroup": "article-ahab-ultimate.html",
+      "attachmentPageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/ahab-predator9/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-ahab-predator9-https.html",
+      "attachmentPageSha256": "c22457d8e6bacd30e11998da6c77ee13c3308a4fbd0969bceea34bffa06b9fc2",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2Fahab-predator9%2F&description=Ahab%20Predator9&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2FAhab-Predator9.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2Fahab-predator9%2F&#038;description=Ahab%20Predator9&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2FAhab-Predator9.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/05/Ahab-Predator9.jpg",
+      "decodingMethod": "urllib.parse.parse_qs percent-decoding of the publisher-authored media parameter; no host/path fabrication.",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/ahab-predator9/",
+      "path": "/tmp/mask-neutral-20261113/att-ahab-predator9-photo.jpg",
+      "bytes": 571886,
+      "sha256": "42ece07b0d5fd9b758dc88f4969da19d5032dc5866accb10e35419e2c19b77b2",
+      "dimensions": [
+        1040,
+        1300
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "packaging-organic-head-excluded",
+      "observation": "UltimateAhab box front with unmasked comic artwork. No mask sculpture view.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-51534_stalker_predator2-photo",
+      "url": "http://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-kenner-stalker.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-51534_Stalker_Predator2--135x135.jpg",
+        "alt": "1200x-51534_stalker_predator2"
+      },
+      "targetGroup": "article-kenner-stalker.html",
+      "redirectLocation": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator2-https.html",
+      "attachmentPageSha256": "0224c02e17d867d67b0373fe6da60a5aa92fc6f1456b8e76a45bd7d74897611d",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51534_stalker_predator2%2F&description=1200x%2051534%20Stalker%20Predator2&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51534_Stalker_Predator2-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fcloser-look-predator-series-16-action-figures-a-kenner-tribute%2F1200x-51534_stalker_predator2%2F&#038;description=1200x%2051534%20Stalker%20Predator2&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-51534_Stalker_Predator2-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-51534_Stalker_Predator2-.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator2/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator2-photo.jpg",
+      "bytes": 222268,
+      "sha256": "c9168af5af0753adcfb41b058f6db9b6b77049011f807585f3fbf1c3dbfd39e2",
+      "dimensions": [
+        960,
+        1200
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "partial-mask-palette-support",
+      "observation": "Stalker2016blister front: bare figure, partial separate bronze/black mask accessory under plastic at bottom-left, lower portion hidden by label. Confirms color/upper ridges, not a complete second angle. Large cardboard illustration is Kenner-style art and is not the same sculpture authority.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-scarface_predator-photo",
+      "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-scarface-game.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-Scarface_Predator--135x135.jpg",
+        "alt": "1200x-scarface_predator"
+      },
+      "targetGroup": "article-scarface-game.html",
+      "redirectLocation": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-https.html",
+      "attachmentPageSha256": "9a5c1da6dc3eeb6eca9ad8ea6bd3833ff32e02c71d60349c3e81782fa4311415",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scarface_predator%2F&description=1200x%20Scarface%20Predator&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Scarface_Predator-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scarface_predator%2F&#038;description=1200x%20Scarface%20Predator&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Scarface_Predator-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Scarface_Predator-.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scarface_predator/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-photo.jpg",
+      "bytes": 206165,
+      "sha256": "de246dce8fbd77afa1f8453cc8bb5fc40e94afe9d295f2894e2d8409809abe6e",
+      "dimensions": [
+        1003,
+        1200
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "qualified-mask-support",
+      "observation": "Second complete Scarface2016catalog view, more frontal worn mask. Same silver crown and red forehead/ocular-side marks; useful corroborating shape/palette. Upper-right inset is an unmasked head, excluded.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "att-1200x-scraface14-photo",
+      "url": "http://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/",
+      "sourcePagePath": "/tmp/mask-expansion-20261113/article-scarface-game.html",
+      "sourceThumbnail": {
+        "src": "http://necaonline.com/wp-content/uploads/2016/10/1200x-Scraface14--135x135.jpg",
+        "alt": "1200x-scraface14"
+      },
+      "targetGroup": "article-scarface-game.html",
+      "redirectLocation": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/att-1200x-scraface14-https.html",
+      "attachmentPageSha256": "ee395ef69924986ed2c3694dc01d75b86191a2f6ca91f6391d37425bc490162c",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scraface14%2F&description=1200x%20Scraface14&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Scraface14-.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F11%2Fcloser-look-video-game-appearance-ultimate-scarface-predator%2F1200x-scraface14%2F&#038;description=1200x%20Scraface14&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F1200x-Scraface14-.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Scraface14-.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/1200x-scraface14/",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scraface14-photo.jpg",
+      "bytes": 215642,
+      "sha256": "2fc1e5093c84d66bc0ddb2458d10605224568031c1a8b9523cc18bb09f335914",
+      "dimensions": [
+        1200,
+        795
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "unmasked-head-excluded",
+      "observation": "Scarface action scene with exposed organic face. Not a worn mask view.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "primary-hornhead-photo",
+      "sourcePagePath": "/tmp/primary-masks-20261113/film/hornhead.html",
+      "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F&description=NECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%20with%20an%20entire%20series%20dedicated%20to%20Dark%20Horse%20Comics%20Predators%21%20Series%2018%20features%20three%20action%20figure%20debuts%20that%20are%20some%20of%20the%20most%20requested%20by%20fans%3A%20Hornhead%2C%20Broken%20Tusk%20and%20our%20first%20female%20Predator%2C%20Machiko%21Hornhead%20made%20his%20first%20appearance%20in%20Predator%3A%20Life%20%26%20Death%2C%20and%20is%20a%20great&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2FSeries-18-Group590.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F06%2Fpredator-7-scale-action-figures-series-18-assortment%2F&#038;description=NECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%20with%20an%20entire%20series%20dedicated%20to%20Dark%20Horse%20Comics%20Predators%21%20Series%2018%20features%20three%20action%20figure%20debuts%20that%20are%20some%20of%20the%20most%20requested%20by%20fans%3A%20Hornhead%2C%20Broken%20Tusk%20and%20our%20first%20female%20Predator%2C%20Machiko%21Hornhead%20made%20his%20first%20appearance%20in%20Predator%3A%20Life%20%26%20Death%2C%20and%20is%20a%20great&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F06%2FSeries-18-Group590.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+      "path": "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg",
+      "bytes": 119828,
+      "sha256": "2ebca53b05b9cdf5007e01f363d20677d79a1943180000730f6f2dc69713de32",
+      "dimensions": [
+        590,
+        472
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "small-catalog-mask-only",
+      "observation": "NECASeries18 group photo. Hornhead at right wears silver mask; named identity is supported, full-mask pixels too small for reliable high-resolution fidelity. Other two figures are BrokenTusk and Machiko; never substitute them.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "primary-elder-avp-photo",
+      "sourcePagePath": "/tmp/primary-masks-20261113/film/elder-avp.html",
+      "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fpredator-7-scale-action-figures-series-17-assortment%2F&description=%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2ANECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%21%20Series%2017%20features%20even%20more%20action%20figure%20debuts%20from%20the%20Alien%20vs.%20Predator%20movie%20and%20video%20game.%20The%20assortment%20includes%20Youngblood%20and%20Elder%20from%20the%202004%20movie%2C%20and%20Serpent%20Hunter%20from%20the%202010%20video%20game.%20Elder%20Predator%20wears%20a%20regal%20soft%20goods%20cape%20with&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590w-series-17.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2016%2F10%2Fpredator-7-scale-action-figures-series-17-assortment%2F&#038;description=%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2ANECA%E2%80%99s%20longest%20running%20action%20figure%20line%20continues%21%20Series%2017%20features%20even%20more%20action%20figure%20debuts%20from%20the%20Alien%20vs.%20Predator%20movie%20and%20video%20game.%20The%20assortment%20includes%20Youngblood%20and%20Elder%20from%20the%202004%20movie%2C%20and%20Serpent%20Hunter%20from%20the%202010%20video%20game.%20Elder%20Predator%20wears%20a%20regal%20soft%20goods%20cape%20with&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2016%2F10%2F590w-series-17.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/590w-series-17.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+      "path": "/tmp/mask-neutral-20261113/primary-elder-avp-photo.jpg",
+      "bytes": 131582,
+      "sha256": "341e11d48b97c058a0d2d7d65744f6ff19297a053e68e6e0f79087f06c54a79a",
+      "dimensions": [
+        590,
+        364
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "small-catalog-group-limited",
+      "observation": "NECASeries17 group photo: SerpentHunter at left, AVPElder center unmasked, Youngblood right. Left mask readable only at tiny size; center organic head does not establish AVPElder removable shell. Do not substitute right Youngblood mask for Elder.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "primary-greyback-photo",
+      "sourcePagePath": "/tmp/primary-masks-20261113/film/greyback.html",
+      "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2022%2F07%2Fpredator-2-7-scale-action-figure-ultimate-elder-predator%2F&description=Predator%207%E2%80%9D%20Scale%20Action%20Figure%20%E2%80%93%20Ultimate%20Elder%20Predator%20Overview%20Predator%202%2C%20the%20action-packed%20sequel%20to%20the%20original%20movie%2C%20moved%20the%20hunt%20to%20Los%20Angeles%20and%20revealed%20a%20Lost%20Tribe%20of%20alien%20hunters%21%20Their%20leader%3F%20The%20fearsome%20Elder%20Predator%2C%20also%20known%20as%20Greyback%2C%20who%20gifts%20his%20flintlock%20pistol&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2022%2F07%2FElder17-scaled.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2022%2F07%2Fpredator-2-7-scale-action-figure-ultimate-elder-predator%2F&#038;description=Predator%207%E2%80%9D%20Scale%20Action%20Figure%20%E2%80%93%20Ultimate%20Elder%20Predator%20Overview%20Predator%202%2C%20the%20action-packed%20sequel%20to%20the%20original%20movie%2C%20moved%20the%20hunt%20to%20Los%20Angeles%20and%20revealed%20a%20Lost%20Tribe%20of%20alien%20hunters%21%20Their%20leader%3F%20The%20fearsome%20Elder%20Predator%2C%20also%20known%20as%20Greyback%2C%20who%20gifts%20his%20flintlock%20pistol&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2022%2F07%2FElder17-scaled.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2022/07/Elder17-scaled.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+      "path": "/tmp/mask-neutral-20261113/primary-greyback-photo.jpg",
+      "bytes": 593230,
+      "sha256": "2759b15a2539f34b48f0e0e2ceb57e23a1078945ffa0b17624ae5277c48ee84d",
+      "dimensions": [
+        2560,
+        1707
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "qualified-existing-sculpt-family-reference",
+      "observation": "Large UltimateElder/Greyback2022 scene photo with complete gray/aged-gold horned mask, vivid red/orange eye lenses and strong orange lighting. Same apparent horned sculpt family as GoldenAngel2018 already produced; edition/palette reference, not automatically new geometry or a film prop.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "primary-tracker-neca-photo",
+      "sourcePagePath": "/tmp/primary-masks-20261113/film/tracker-neca.html",
+      "sourcePageSha256": "4125db8a5fbde0841d0f8b4db3b342abf3ccddd9f3e204532db935c3d3dd4937",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2011%2F03%2Fpredators-7-action-figure-series-2-assortment%2F&description=Each%20Predator%20stands%20close%20to%208%26quot%3B%20and%20are%20fully%20poseable.%20The%20Tracker%2C%20Battle%20Damaged%20Classic%2C%20and%20Unmasked%20Berserker%20Predators%20are%20a%20must%20for%20collectors%20of%20one%20of%20the%20most%20prevalent%20sci-fi%20action%20films%20of%20all%20time.%20%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2A&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2FimagesFlat%2F51435_Predator_Series_2.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2011%2F03%2Fpredators-7-action-figure-series-2-assortment%2F&#038;description=Each%20Predator%20stands%20close%20to%208%26quot%3B%20and%20are%20fully%20poseable.%20The%20Tracker%2C%20Battle%20Damaged%20Classic%2C%20and%20Unmasked%20Berserker%20Predators%20are%20a%20must%20for%20collectors%20of%20one%20of%20the%20most%20prevalent%20sci-fi%20action%20films%20of%20all%20time.%20%2A%2A%2ATHIS%20ITEM%20HAS%20BEEN%20DISCONTINUED%2A%2A%2A&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2FimagesFlat%2F51435_Predator_Series_2.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/imagesFlat/51435_Predator_Series_2.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2011/03/predators-7-action-figure-series-2-assortment/",
+      "path": "/tmp/mask-neutral-20261113/primary-tracker-neca-photo.jpg",
+      "bytes": 308204,
+      "sha256": "7bf3f5b5aa73f5333c88fcbf2a45faf95e644fc951ab5dca9fcb5293a79192fd",
+      "dimensions": [
+        667,
+        500
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "small-catalog-group-limited",
+      "observation": "NECA2011PredatorsSeries2 group: Berserker left unmasked, Tracker center masked with tusks, BattleDamagedClassic right masked. Individual mask extents tiny; source supports licensed edition identity but not a detailed1:1 reconstruction or every Crucified film state.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "primary-ahab-neca-photo",
+      "sourcePagePath": "/tmp/primary-masks-20261113/film/ahab-neca.html",
+      "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2F&description=This%20brand-new%20version%20of%20Ahab%20is%20based%20on%20his%20appearance%20in%20the%20Dark%20Horse%20comics.%20We%26%2339%3Bve%20given%20our%20SDCC%202014%20exclusive%20a%20massive%20upgrade%2C%20equipping%20it%20with%20the%20all%20new%20%26quot%3BUltimate%26quot%3B%20Predator%20body%20which%20has%20added%20articulation%20in%20the%20biceps%20%28bicep%20swivels%29%2C%20elbows%20%28double%20elbow%20joints%29%20and%20torso%2C%20plus%20an%20opening%20gauntlet.The%20figure%20also%20features&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2FNEW-51569-Ultimate-Ahab-Predator1-590w.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2F&#038;description=This%20brand-new%20version%20of%20Ahab%20is%20based%20on%20his%20appearance%20in%20the%20Dark%20Horse%20comics.%20We%26%2339%3Bve%20given%20our%20SDCC%202014%20exclusive%20a%20massive%20upgrade%2C%20equipping%20it%20with%20the%20all%20new%20%26quot%3BUltimate%26quot%3B%20Predator%20body%20which%20has%20added%20articulation%20in%20the%20biceps%20%28bicep%20swivels%29%2C%20elbows%20%28double%20elbow%20joints%29%20and%20torso%2C%20plus%20an%20opening%20gauntlet.The%20figure%20also%20features&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2FNEW-51569-Ultimate-Ahab-Predator1-590w.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/05/NEW-51569-Ultimate-Ahab-Predator1-590w.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "sourcePageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+      "path": "/tmp/mask-neutral-20261113/primary-ahab-neca-photo.jpg",
+      "bytes": 77986,
+      "sha256": "e18cce75867de4c5ed403b7780d7f5e435ded24390512d4c1ad9139fdb161478",
+      "dimensions": [
+        590,
+        472
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "duplicate-small-catalog-source",
+      "observation": "590px reduced version of full UltimateAhab2017 front catalog image, with unmasked inset and separate weapons. Use full ahab-ultimate-front.jpg instead.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "ahab-ultimate-front-from-cached-attachment",
+      "attachmentPageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/new-51569-ultimate-ahab-predator1/",
+      "attachmentPagePath": "/tmp/mask-neutral-20261113/source-attachment-ahab-main-cached.html",
+      "attachmentPageSha256": "b8342f6ec6a413347d3c1a6a19851fe82b3352a669c882871256524e9de7de0a",
+      "cachedPriorHTTP200": true,
+      "publisherShareHref": "https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2Fnew-51569-ultimate-ahab-predator1%2F&description=NEW%2051569%20Ultimate%20Ahab%20Predator1&media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2FNEW-51569-Ultimate-Ahab-Predator1.jpg",
+      "rawPublisherAnchorTag": "<a  class=\"fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest\" style=\"color:var(--sharing_social_links_icon_color);\" data-placement=\"top\" data-title=\"Pinterest\" data-toggle=\"tooltip\" title=\"Pinterest\" href=\"https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fnecaonline.com%2F2017%2F05%2Fpredator-7-scale-action-figure-ultimate-ahab-predator%2Fnew-51569-ultimate-ahab-predator1%2F&#038;description=NEW%2051569%20Ultimate%20Ahab%20Predator1&#038;media=https%3A%2F%2Fnecaonline.com%2Fwp-content%2Fuploads%2F2017%2F05%2FNEW-51569-Ultimate-Ahab-Predator1.jpg\" target=\"_blank\" rel=\"noopener noreferrer\">",
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/05/NEW-51569-Ultimate-Ahab-Predator1.jpg",
+      "CDNHostRewritePerformed": false,
+      "shareServiceRequested": false,
+      "filenameOverride": "ahab-ultimate-front.jpg",
+      "sourcePageURL": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/new-51569-ultimate-ahab-predator1/",
+      "path": "/tmp/mask-neutral-20261113/ahab-ultimate-front.jpg",
+      "bytes": 265875,
+      "sha256": "ceebb6b6596ce53c4806ccb018ef9e23d75248ec2b4236c86139661a9664030b",
+      "dimensions": [
+        1300,
+        1040
+      ],
+      "format": "JPEG",
+      "mode": "RGB",
+      "httpStatus": 200,
+      "imageRedirectsFollowed": 0,
+      "downloadedUnchanged": true,
+      "actuallyInspectedWith": "tools.view_image",
+      "referenceStatus": "qualified-mask-primary",
+      "observation": "Complete front-ish UltimateAhab2017 silver/gray shell on full catalog sheet, forehead triple scratches, dark eyes, cheek circles and broad lower opening. Right inset organic head, weapons and visible teeth behind aperture are not detachable mask geometry.",
+      "publisherMediaProofVerified": true,
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false
+    }
+  ],
+  "qualifiedEditionHandoffs": [
+    {
+      "targetId": "mk-57-scarface",
+      "editionScope": "NECA2016UltimateScarface VideoGameAppearance, ConcreteJungle adaptation,7-inch-scale.",
+      "referenceStatus": "qualified-source-bound-photographed-edition",
+      "primary": {
+        "path": "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-photo.jpg",
+        "sha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+        "bytes": 153678,
+        "dimensions": [
+          960,
+          1200
+        ],
+        "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-ScarfacePredator-.jpg"
+      },
+      "support": [
+        {
+          "path": "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-photo.jpg",
+          "sha256": "de246dce8fbd77afa1f8453cc8bb5fc40e94afe9d295f2894e2d8409809abe6e",
+          "bytes": 206165,
+          "dimensions": [
+            1003,
+            1200
+          ],
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Scarface_Predator-.jpg",
+          "referenceStatus": "qualified-mask-support"
+        }
+      ],
+      "limitations": [
+        "Keep camera of chosen primary; corroborating front view does not authorize a new invented turnaround.",
+        "Foreground handprint on torso armor belongs to armor; retain only forehead/ocular marks observed on mask.",
+        "Licensed toy realization is not a native game model/UV or certified game1:1."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "sourceOneToOneCertified": false,
+      "hiddenGeometryEstablished": false
+    },
+    {
+      "targetId": "mk-60-stalker",
+      "editionScope": "NECA2016PredatorsSeries16 Kenner tribute Stalker; not LostTribeStalker.",
+      "referenceStatus": "qualified-source-bound-photographed-edition",
+      "primary": {
+        "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator1-photo.jpg",
+        "sha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+        "bytes": 104717,
+        "dimensions": [
+          960,
+          1200
+        ],
+        "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-51534_Stalker_Predator1-.jpg"
+      },
+      "support": [
+        {
+          "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator2-photo.jpg",
+          "sha256": "c9168af5af0753adcfb41b058f6db9b6b77049011f807585f3fbf1c3dbfd39e2",
+          "bytes": 222268,
+          "dimensions": [
+            960,
+            1200
+          ],
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2016/10/1200x-51534_Stalker_Predator2-.jpg",
+          "referenceStatus": "partial-mask-palette-support"
+        }
+      ],
+      "limitations": [
+        "Only one complete nearfrontal worn-mask photo; blister support shows upper mask only.",
+        "Unmasked translucent/glow body is wearer material; bronze/charcoal shell translucency or glow is not established.",
+        "Do not copy originalKenner cardboard illustration as modernNECA sculpt or invent fine engraving."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "sourceOneToOneCertified": false,
+      "hiddenGeometryEstablished": false
+    },
+    {
+      "targetId": "neca-ahab-ultimate-2017",
+      "editionScope": "NECA2017UltimateAhab,7-inch-scale,gray/silver photographed edition; separate study from already-produced SDCC2014Ahab, not newly established canon/geometry.",
+      "referenceStatus": "qualified-source-bound-photographed-edition",
+      "primary": {
+        "path": "/tmp/mask-neutral-20261113/ahab-ultimate-front.jpg",
+        "sha256": "ceebb6b6596ce53c4806ccb018ef9e23d75248ec2b4236c86139661a9664030b",
+        "bytes": 265875,
+        "dimensions": [
+          1300,
+          1040
+        ],
+        "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/05/NEW-51569-Ultimate-Ahab-Predator1.jpg"
+      },
+      "support": [
+        {
+          "path": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator2-photo.jpg",
+          "sha256": "bcf8dccfc119dd098ffd7fcaeb3ebf6f99feb40db84f30900635a25b00c7fb9e",
+          "bytes": 199374,
+          "dimensions": [
+            1040,
+            1300
+          ],
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator2.jpg",
+          "referenceStatus": "qualified-mask-support"
+        }
+      ],
+      "limitations": [
+        "Lower opening is real but visible teeth behind it belong to wearer; exclude from detached mask.",
+        "Right catalog inset is organic head and large rear object in photo7 is a bow, not shell.",
+        "Edition/palette/state differs from SDCC2014; do not count both as independently proven new geometry."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "sourceOneToOneCertified": false,
+      "hiddenGeometryEstablished": false
+    }
+  ],
+  "existingFamilyAdditionalReference": {
+    "targetId": "mk-16-greyback",
+    "editionScope": "NECA2022UltimateElder/Greyback,7-inch-scale.",
+    "referenceStatus": "additional-edition-palette-reference-existing-horned-family",
+    "image": {
+      "path": "/tmp/mask-neutral-20261113/primary-greyback-photo.jpg",
+      "sha256": "2759b15a2539f34b48f0e0e2ceb57e23a1078945ffa0b17624ae5277c48ee84d",
+      "bytes": 593230,
+      "dimensions": [
+        2560,
+        1707
+      ],
+      "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2022/07/Elder17-scaled.jpg"
+    },
+    "geometryRelationship": "Apparent same horned sculpt family as already-produced GoldenAngel2018; no automatic new geometry count.",
+    "limits": [
+      "Strong orange/red scene illumination must not be treated as neutral paint albedo.",
+      "Photo establishes a licensedNECA mask edition; filmGreyback is not thereby certified with this mask."
+    ],
+    "canonCertified": false
+  },
+  "remainingOpenTargets": [
+    {
+      "targetId": "mk-61-hornhead",
+      "status": "partial-reference-not-ready-for-faithful-generation",
+      "paths": [
+        "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg1-photo.jpg",
+        "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg2-photo.jpg",
+        "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg"
+      ],
+      "reason": "Real removable accessory upper part and small worn mask are identified, lower accessory hidden and worn shell too small. Do not invent a high-detail shell from a tiny group or organic forehead horns.",
+      "nativeMaskProofComplete": false
+    },
+    {
+      "targetId": "mk-56-alien-head",
+      "name": "SerpentHunter AVP2010 NECA",
+      "status": "small-group-only-not-ready",
+      "paths": [
+        "/tmp/mask-neutral-20261113/primary-elder-avp-photo.jpg"
+      ],
+      "reason": "Correct Series17licensed catalog identity at left; individual mask too small. Not Lord mk17 and not a movie Youngblood/Elder substitute."
+    },
+    {
+      "targetId": "mk-15-elder",
+      "name": "AVPElder2004NECA",
+      "status": "organic-head-and-small-group-not-mask-proof",
+      "paths": [
+        "/tmp/mask-neutral-20261113/primary-elder-avp-photo.jpg"
+      ],
+      "reason": "Center figure unmasked, possible small carried accessory not sufficient. Neighbor masks belong to different named figures."
+    },
+    {
+      "targetId": "mk-46-tracker",
+      "status": "small-group-only-not-ready",
+      "paths": [
+        "/tmp/mask-neutral-20261113/primary-tracker-neca-photo.jpg"
+      ],
+      "reason": "Correct tusked Tracker center in667x500catalog group, but individual mask pixels insufficient for detailed faithful release."
+    },
+    {
+      "targetId": "mk-47-crucified",
+      "status": "state-identity-and-detail-unresolved",
+      "paths": [
+        "/tmp/mask-neutral-20261113/primary-tracker-neca-photo.jpg"
+      ],
+      "reason": "NECAgroup identifies BattleDamagedClassic at right; exact Crucified film-state alias and tiny damaged shell details are not independently certified. No exact Crucified result in bounded public search."
+    }
+  ],
+  "identityGuardrails": [
+    "Hornhead biological forehead horns are not detachable shell spikes.",
+    "Scarface here is ConcreteJungle, not TonyMontana from Scarfacefilm.",
+    "SerpentHunter/AlienHead is not LordAVP2010; AVPElder is not Greyback, PHGElder or Youngblood.",
+    "StalkerKennerSeries16 is not LostTribeStalker; unmasked glow image is not a glowing mask.",
+    "AhabUltimate2017front/profile show a photographed edition, not an independently new anatomy/geometry.",
+    "Greyback2022horned mask supplements existingGoldenAngelfamily; lighting/character rename cannot inflate geometry count."
+  ],
+  "counts": {
+    "targetedRemainingScopes": 9,
+    "newNativePhotosDownloaded": 20,
+    "newAttachmentHTMLPages": 14,
+    "cachedHTMLReused": 1,
+    "sourceBoundEditionHandoffs": 3,
+    "additionalExistingFamilyReferences": 1,
+    "targetsStillNotReady": 5,
+    "imagesGeneratedByResearchAgent": 0,
+    "repositoryFilesModifiedByResearchAgent": 0,
+    "canonicalOneToOneCertified": 0
+  }
+}

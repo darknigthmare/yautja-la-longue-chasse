@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-scarface-concrete-jungle-2016",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated A of photographed NECA2016 toy edition and separate PHG B. Technical neutral C is outside this receipt.",
+  "entries": [
+    {
+      "id": "neca-scarface-concrete-jungle-2016",
+      "label": "Scarface · NECA Concrete Jungle2016",
+      "version": "A",
+      "assetPath": "public/game/biomasks-neutral-20261113/originals/neca-scarface-concrete-jungle-2016.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-739cbd32-0af6-43da-98aa-fd545e8d4be1.png",
+      "sha256": "d8acc51d889222194904eaf44705c359fd04629dde4cf76c4c18c401c8dcefd5",
+      "bytes": 1425508,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-neutral-20261113/generation/neca-scarface-concrete-jungle-2016.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA2016 licensed toy adaptation of Predator:Concrete Jungle; not certified original game geometry",
+      "referenceSourcePath": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+      "referenceSourceSha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+          "sha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8"
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarface_predator-photo.jpg",
+          "sha256": "de246dce8fbd77afa1f8453cc8bb5fc40e94afe9d295f2894e2d8409809abe6e"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-ScarfacePredator-.jpg",
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-Scarface_Predator-.jpg"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-photo.jpg",
+        "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated rigid detachable biomask faithfully following ONLY the mask worn in the attached official NECA2016 Concrete Jungle Scarface catalogue photograph. Preserve the actual photographed edition's visible sculpture, paint, proportions and camera, including its slight downward/turned inclination and roll. Do not frontalize or symmetrize it. Do not substitute a similarly named film or game mesh. This is an adaptation of this particular licensed2016toy edition, not certification of the original game model.\n\nRetain the silver/grey weathered sculpt and the large tall oval recessed forehead bowl surrounded by the thick curved crown rim. Keep the actual narrow angular black eye apertures under the heavy brow. Preserve the red irregular vertical/claw-like frontal paint stroke on the image-right area of the forehead, and the separate red paint around the image-right optic exactly in their visible positions and extent. Do not invent a logo, glyphs or additional red marks. Keep the long narrow central lower respirator/grille with its visible parallel vertical ribs and the actual recessed round cheek ports and surrounding channels. Preserve the source's photographed width-to-height proportions, little side mechanisms and existing asymmetries. At this photo resolution, uncertain tiny marks remain subdued, not made into new sharp mechanical details.\n\nKeep ONLY the rigid grey/silver mask and its integral visible fittings. REMOVE the wearer, organic face/eyes/chin, brown cranial skin behind the top, all black dreadlocks and hair bands, neck, necklace/chainmail, shoulder cannon, shoulder/body armour, chest red handprint, skull trophies, hands, weapon and white background. The red chest handprint is NOT a mask mark and must not be copied. The small olive/yellow organic chin visible beneath the grille is wearer anatomy and must be excluded. Do not invent the hidden back, inside surfaces or an unseen profile. No new teeth, horns, vents, holes, pipes, runes, mechanical appendages or extra damage.\n\nA should preserve the muted photographed silver patina, grey cavities and restrained paint finish under the source's soft catalogue lighting. Avoid chrome polish, extra glow, harsh comic outlines, dark recoloring or noisy invented pitting. One single complete mask only, not a sheet or comparison; no wearer, stand, floor, shadow plane, scene, text, label, inset or watermark. Use a genuine transparent alpha background. Request1254x1254square if supported; center the full visible mask at about78–80percent of the largest canvas axis with8–12percent transparent margin all round, no clipping and no shape stretching. Preserve only the actual source-view geometry.\n\nREFERENCE ORDER: the FIRST photograph controls the one mask camera and inclination. The SECOND official photograph corroborates the SAME2016sculpt and red paint positions only. Do not combine the viewpoints or switch to its more frontal view. Its inset at upper right shows the UNMASKED organic head and must be ignored completely. The small brown cranial peak visible behind the grey crown in both photos belongs to that organic head, not to the detachable mask.",
+      "promptSha256": "6a17255f8e126085b5cf868473483b1b5a592a3ba3c815db8a423584e22c6eec",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          265,
+          73,
+          973,
+          1180
+        ],
+        "marginsPixels16": [
+          265,
+          73,
+          281,
+          74
+        ],
+        "minimumMarginFraction": 0.05821,
+        "transparentPixels": 1019014,
+        "opaquePixels": 593
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Inclined source view and silver patina retained.",
+          "Red frontal stroke and red image-right optic paint remain distinct from the chest handprint.",
+          "Tall forehead bowl/rim, narrow eyes, circular cheek ports and long ribbed grille retain visible arrangement.",
+          "Wearer and catalogue background excluded; no hidden surfaces claimed."
+        ]
+      },
+      "limitations": [
+        "Source-scoped NECA2016 Concrete Jungle toy edition, not certified original game geometry.",
+        "The mask occupies a small part of the960x1200 and1003x1200 catalogue photographs; fine relief and wear texture are interpretations, not1:1 microdetail proof.",
+        "Only the primary photograph’s inclined camera is referenced; hidden back, interior and side geometry remain unknown.",
+        "The unmasked head inset, cranial peak, chin, dreadlocks, cannon and body/armour are excluded.",
+        "Native visible minimum margin is below requested8–12percent; full mask remains within frame. No CPU resizing or pixel editing performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-739cbd32-0af6-43da-98aa-fd545e8d4be1.png",
+          "sha256": "d8acc51d889222194904eaf44705c359fd04629dde4cf76c4c18c401c8dcefd5",
+          "bytes": 1425508,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Create ONE isolated rigid detachable biomask faithfully following ONLY the mask worn in the attached official NECA2016 Concrete Jungle Scarface catalogue photograph. Preserve the actual photographed edition's visible sculpture, paint, proportions and camera, including its slight downward/turned inclination and roll. Do not frontalize or symmetrize it. Do not substitute a similarly named film or game mesh. This is an adaptation of this particular licensed2016toy edition, not certification of the original game model.\n\nRetain the silver/grey weathered sculpt and the large tall oval recessed forehead bowl surrounded by the thick curved crown rim. Keep the actual narrow angular black eye apertures under the heavy brow. Preserve the red irregular vertical/claw-like frontal paint stroke on the image-right area of the forehead, and the separate red paint around the image-right optic exactly in their visible positions and extent. Do not invent a logo, glyphs or additional red marks. Keep the long narrow central lower respirator/grille with its visible parallel vertical ribs and the actual recessed round cheek ports and surrounding channels. Preserve the source's photographed width-to-height proportions, little side mechanisms and existing asymmetries. At this photo resolution, uncertain tiny marks remain subdued, not made into new sharp mechanical details.\n\nKeep ONLY the rigid grey/silver mask and its integral visible fittings. REMOVE the wearer, organic face/eyes/chin, brown cranial skin behind the top, all black dreadlocks and hair bands, neck, necklace/chainmail, shoulder cannon, shoulder/body armour, chest red handprint, skull trophies, hands, weapon and white background. The red chest handprint is NOT a mask mark and must not be copied. The small olive/yellow organic chin visible beneath the grille is wearer anatomy and must be excluded. Do not invent the hidden back, inside surfaces or an unseen profile. No new teeth, horns, vents, holes, pipes, runes, mechanical appendages or extra damage.\n\nA should preserve the muted photographed silver patina, grey cavities and restrained paint finish under the source's soft catalogue lighting. Avoid chrome polish, extra glow, harsh comic outlines, dark recoloring or noisy invented pitting. One single complete mask only, not a sheet or comparison; no wearer, stand, floor, shadow plane, scene, text, label, inset or watermark. Use a genuine transparent alpha background. Request1254x1254square if supported; center the full visible mask at about78–80percent of the largest canvas axis with8–12percent transparent margin all round, no clipping and no shape stretching. Preserve only the actual source-view geometry.\n\nREFERENCE ORDER: the FIRST photograph controls the one mask camera and inclination. The SECOND official photograph corroborates the SAME2016sculpt and red paint positions only. Do not combine the viewpoints or switch to its more frontal view. Its inset at upper right shows the UNMASKED organic head and must be ignored completely. The small brown cranial peak visible behind the grey crown in both photos belongs to that organic head, not to the detachable mask.",
+          "promptSha256": "6a17255f8e126085b5cf868473483b1b5a592a3ba3c815db8a423584e22c6eec",
+          "submittedReferencePaths": [
+            "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-photo.jpg",
+            "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-photo.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "neca-scarface-concrete-jungle-2016",
+      "label": "Scarface · NECA Concrete Jungle2016",
+      "version": "B",
+      "assetPath": "public/game/biomasks-neutral-20261113/phg/neca-scarface-concrete-jungle-2016.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-8f053fc7-b7df-4b18-bd66-861b112935b8.png",
+      "sha256": "3e8526a4f8869896f02f097898f9374fa1a4bd3837cda255824f7b50591d2775",
+      "bytes": 1495190,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-neutral-20261113/generation/neca-scarface-concrete-jungle-2016.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA2016 licensed toy adaptation of Predator:Concrete Jungle; not certified original game geometry",
+      "referenceSourcePath": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+      "referenceSourceSha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+          "sha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8"
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarface_predator-photo.jpg",
+          "sha256": "de246dce8fbd77afa1f8453cc8bb5fc40e94afe9d295f2894e2d8409809abe6e"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-ScarfacePredator-.jpg",
+        "https://necaonline.com/wp-content/uploads/2016/10/1200x-Scarface_Predator-.jpg"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-scarface-concrete-jungle-2016.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-scarface_predator-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Edit the FIRST reference, the isolated A biomask, into a distinct PHG-quality rendering B of precisely the SAME mask. The SECOND reference is the official NECA2016 catalogue photograph controlling its inclined camera, sculpture and paint. The THIRD official photograph corroborates the same licensed toy edition; its unmasked-head inset must be ignored. Do not change to the third image’s more frontal camera or invent game-model geometry.\n\nPreserve A’s whole shell contour, width-to-height ratio, exact current inclination/yaw/pitch/roll, asymmetric rim and top cutout, oval forehead bowl, thin central raised front relief, eye aperture shapes, the actual circular cheek ports and long lower grille/rib layout. Keep the same muted silver-grey patina and the existing irregular red frontal paint stroke and image-right optic paint in their exact source-relative positions and extents. Do not enlarge or turn the marks into text, a handprint logo or new glyphs; do not add any new red marking. Keep the side fittings and existing broad wear.\n\nChange rendering and material staging only: coherent modern Predator:Hunting Grounds game-prop surface response, soft neutral key from upper-left/front and gentle opposite frontal fill, plausible rough silver paint/metal with restrained reflections and slightly calmer fine grain. Retain broad photographed pitting and silver/dark cavity values without making the whole object chrome. A already has a coherent render, so keep this a subtle restage instead of fabricating design differences. The original small photos do not prove high-resolution microdetail or UVs, and this is a candidate of the NECA2016 adaptation, not certified original Concrete Jungle game geometry.\n\nONE complete isolated rigid mask only on genuine transparent alpha. No wearer, organic face, eyes, brown skull peak, chin, dreadlocks, collar, chest, armour, cannon, stand, floor, background, shadow plane, labels, text or second mask. No new holes, vents, pipes, teeth, horns, runes, mechanisms, damage or hidden back/interior surfaces. Do not smooth away the real sculpt boundaries or change the camera. Square1254x1254if supported; center the complete mask at about78–80percent of the largest canvas axis with8–12percent transparent margins and no cropped tips. Do not stretch or recenter the sculpt independently of its visible source pose.",
+      "promptSha256": "ae73c8ef8427d61e83d40b38f8319d804d9c25f4a5df385dff76361498d0032b",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          263,
+          64,
+          981,
+          1182
+        ],
+        "marginsPixels16": [
+          263,
+          64,
+          273,
+          72
+        ],
+        "minimumMarginFraction": 0.05104,
+        "transparentPixels": 1013280,
+        "opaquePixels": 797
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Inclined source view and silver patina retained.",
+          "Red frontal stroke and red image-right optic paint remain distinct from the chest handprint.",
+          "Tall forehead bowl/rim, narrow eyes, circular cheek ports and long ribbed grille retain visible arrangement.",
+          "Wearer and catalogue background excluded; no hidden surfaces claimed.",
+          "Distinct PHG material/light restage from A+both R; camera, macro design and paint placement preserved."
+        ]
+      },
+      "limitations": [
+        "Source-scoped NECA2016 Concrete Jungle toy edition, not certified original game geometry.",
+        "The mask occupies a small part of the960x1200 and1003x1200 catalogue photographs; fine relief and wear texture are interpretations, not1:1 microdetail proof.",
+        "Only the primary photograph’s inclined camera is referenced; hidden back, interior and side geometry remain unknown.",
+        "The unmasked head inset, cranial peak, chin, dreadlocks, cannon and body/armour are excluded.",
+        "Native visible minimum margin is below requested8–12percent; full mask remains within frame. No CPU resizing or pixel editing performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-8f053fc7-b7df-4b18-bd66-861b112935b8.png",
+          "sha256": "3e8526a4f8869896f02f097898f9374fa1a4bd3837cda255824f7b50591d2775",
+          "bytes": 1495190,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Edit the FIRST reference, the isolated A biomask, into a distinct PHG-quality rendering B of precisely the SAME mask. The SECOND reference is the official NECA2016 catalogue photograph controlling its inclined camera, sculpture and paint. The THIRD official photograph corroborates the same licensed toy edition; its unmasked-head inset must be ignored. Do not change to the third image’s more frontal camera or invent game-model geometry.\n\nPreserve A’s whole shell contour, width-to-height ratio, exact current inclination/yaw/pitch/roll, asymmetric rim and top cutout, oval forehead bowl, thin central raised front relief, eye aperture shapes, the actual circular cheek ports and long lower grille/rib layout. Keep the same muted silver-grey patina and the existing irregular red frontal paint stroke and image-right optic paint in their exact source-relative positions and extents. Do not enlarge or turn the marks into text, a handprint logo or new glyphs; do not add any new red marking. Keep the side fittings and existing broad wear.\n\nChange rendering and material staging only: coherent modern Predator:Hunting Grounds game-prop surface response, soft neutral key from upper-left/front and gentle opposite frontal fill, plausible rough silver paint/metal with restrained reflections and slightly calmer fine grain. Retain broad photographed pitting and silver/dark cavity values without making the whole object chrome. A already has a coherent render, so keep this a subtle restage instead of fabricating design differences. The original small photos do not prove high-resolution microdetail or UVs, and this is a candidate of the NECA2016 adaptation, not certified original Concrete Jungle game geometry.\n\nONE complete isolated rigid mask only on genuine transparent alpha. No wearer, organic face, eyes, brown skull peak, chin, dreadlocks, collar, chest, armour, cannon, stand, floor, background, shadow plane, labels, text or second mask. No new holes, vents, pipes, teeth, horns, runes, mechanisms, damage or hidden back/interior surfaces. Do not smooth away the real sculpt boundaries or change the camera. Square1254x1254if supported; center the complete mask at about78–80percent of the largest canvas axis with8–12percent transparent margins and no cropped tips. Do not stretch or recenter the sculpt independently of its visible source pose.",
+          "promptSha256": "ae73c8ef8427d61e83d40b38f8319d804d9c25f4a5df385dff76361498d0032b",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-scarface-concrete-jungle-2016.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-scarface_predator-photo.jpg"
+          ]
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-neutral-20261113/originals/neca-scarface-concrete-jungle-2016.png",
+      "sourceASha256": "d8acc51d889222194904eaf44705c359fd04629dde4cf76c4c18c401c8dcefd5"
+    }
+  ],
+  "asOfUtc": "2026-11-13T12:15:48.875000+00:00"
+}

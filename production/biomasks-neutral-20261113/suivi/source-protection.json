@@ -1,0 +1,3657 @@
+{
+  "schemaVersion": 1,
+  "sourceBaselineCommit": "4b70740d192c19d83b36d7aef2a15e5074d64053",
+  "files": [
+    {
+      "path": ".github/workflows/biomask-candidates.yml",
+      "bytes": 3647,
+      "sha256": "3457383c35da75b6b2fca9622b6221bb49bafda609ef9a3fa65d83aa8e58d5ad"
+    },
+    {
+      "path": ".github/workflows/dual-biomask-candidates.yml",
+      "bytes": 4510,
+      "sha256": "45f3810f1c0cc0e2a9284c7a19bd19c0cebaebfd392e26d8da5bb07d45e42049"
+    },
+    {
+      "path": ".github/workflows/mask-expansion-candidates.yml",
+      "bytes": 4932,
+      "sha256": "3764fa5d95870067b1ed372e4ec1f3d21aad9ea03f9f39524017d03fb535637d"
+    },
+    {
+      "path": ".github/workflows/p0-sprite-candidates.yml",
+      "bytes": 4272,
+      "sha256": "a48cdefe406b74ec786e4eebaafe8e31e2fe3f020cdc06a6169ccdc31a106357"
+    },
+    {
+      "path": ".github/workflows/primary-biomask-candidates.yml",
+      "bytes": 4147,
+      "sha256": "2c37353f82984eac77524849f6ddd6a056fbc634e2087621b9c8631571138643"
+    },
+    {
+      "path": "app/game/biomaskCatalogueV62.ts",
+      "bytes": 4950,
+      "sha256": "f3f32609f9eb67d92ab1f1cccfacedd8c06dcb530cafcb3bb80b5d6440b8359b"
+    },
+    {
+      "path": "art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+      "bytes": 62111,
+      "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e"
+    },
+    {
+      "path": "docs/THE_PIT_STAGES_V60_SUIVI.xlsx",
+      "bytes": 35380,
+      "sha256": "d1ef8866b4cd94e5e90130efe8ed62a6c099dc0093215bd17348ff25c946ef04"
+    },
+    {
+      "path": "docs/THE_PIT_STAGES_V61_SUIVI.xlsx",
+      "bytes": 14262,
+      "sha256": "5dd113dfb7cb40f3517ba4f1081bd1ece977a9fba3e9cedc01de87835effd2e6"
+    },
+    {
+      "path": "docs/THE_PIT_V62_SUIVI.xlsx",
+      "bytes": 29389,
+      "sha256": "c7c9986d872faf0cbc8398e697a28b9eae57328989fb09eed2881c431c1b57bb"
+    },
+    {
+      "path": "docs/THE_PIT_V63_SUIVI.xlsx",
+      "bytes": 56229,
+      "sha256": "192b168456091239e65939b99c4630de791cfaca4f33f61a1c6a8a032fc9c7af"
+    },
+    {
+      "path": "docs/YAUTJA_REPRISE_CHANTIERS_20261101.xlsx",
+      "bytes": 62258,
+      "sha256": "999e11f136329c54b3f3c59ea015f4c839f59fa00db5baae838888ad9635bcde"
+    },
+    {
+      "path": "docs/YAUTJA_V100_SUIVI.xlsx",
+      "bytes": 1862541,
+      "sha256": "4fabae6cb4f1cb92560f106a784b9b1100df934c69f332507e83eef341c1edcf"
+    },
+    {
+      "path": "docs/YAUTJA_V104_SUIVI.xlsx",
+      "bytes": 2411658,
+      "sha256": "ce78bac96ae57cbee732bc868acecd46b0dc57e5ade49f669fb15c8b12ea03aa"
+    },
+    {
+      "path": "docs/YAUTJA_V105_SUIVI.xlsx",
+      "bytes": 2973530,
+      "sha256": "b0a317b339736d44bcf5b7dc11708749091740e2d9636e67beaa7751118f10bc"
+    },
+    {
+      "path": "docs/YAUTJA_V106_SUIVI.xlsx",
+      "bytes": 3529434,
+      "sha256": "1994f345308b91555021b216146652108f25df93067f7398606af774472af04e"
+    },
+    {
+      "path": "docs/YAUTJA_V107_SUIVI.xlsx",
+      "bytes": 4359489,
+      "sha256": "a9a2419702387868f6f54efd068008422609bc880b58e9a85c35a51e5fdfb66d"
+    },
+    {
+      "path": "docs/YAUTJA_V108_SUIVI.xlsx",
+      "bytes": 4757180,
+      "sha256": "2a9490d4e37ff63405039f4f7e7b8c473373f15f83414ca5ff46e142ca5cdaba"
+    },
+    {
+      "path": "docs/YAUTJA_V109_SUIVI.xlsx",
+      "bytes": 5277296,
+      "sha256": "e80fcea5fdf768d5c9b6fd1874f89bc42badee24fbac9a3cf7cecb447c49ed3f"
+    },
+    {
+      "path": "docs/YAUTJA_V110_SUIVI.xlsx",
+      "bytes": 6260095,
+      "sha256": "0b7d7890c8d235a9cda0f6d61c62001efe150f2c4022924c20d88196afcdbd7c"
+    },
+    {
+      "path": "docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx",
+      "bytes": 156564,
+      "sha256": "32dd0d2f8eb2300a53b845e3d6f7ba15a73e3312c4f586962d1c1e0e21b9a012"
+    },
+    {
+      "path": "docs/YAUTJA_V111_SUIVI.xlsx",
+      "bytes": 8150642,
+      "sha256": "fa5ebf78a08c36b4a567246dfae41de535a8e36c7294ba33190e3e1e2ec9ad05"
+    },
+    {
+      "path": "docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+    },
+    {
+      "path": "docs/YAUTJA_V112_SUIVI.xlsx",
+      "bytes": 9433700,
+      "sha256": "723cc894b643d55dcd076cab8b615866c6879ecc481c55616adcdd0508d2eccc"
+    },
+    {
+      "path": "docs/YAUTJA_V99_SUIVI.xlsx",
+      "bytes": 1130515,
+      "sha256": "53116e8f0fe10867702cccdb2d7bf2c8bbc5baa7c6a9c528085c12f780392a15"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V144_Conflits_Onglets.xlsx",
+      "bytes": 17815,
+      "sha256": "ae81c891fb7346b8d2c5c37ef480774a95e9453cfc53cd872fe8d2c12e22dcdc"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V145_Multiplanetes.xlsx",
+      "bytes": 11554,
+      "sha256": "336b66e5943ed6eea3db2ea1edb5695bd5b441557dec41bfda17fa8a9676947e"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V146_30Planetes_Chrome.xlsx",
+      "bytes": 14130,
+      "sha256": "d9350a132e9ab3efff0f187e43d42ffa3ddeb310ad90f50219fd12c843da18f3"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V147_Quatre_Modes.xlsx",
+      "bytes": 12159,
+      "sha256": "4da7aacb1651c0d3dbebaccc8f55a403ab7e686106f26dd84181ecee2f0a70ac"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V148_Securite_Multionglets.xlsx",
+      "bytes": 12417,
+      "sha256": "06a8d872638bb24fc28951a96b79a9fa5912e5e700de72fbe7f47844aafaf1bf"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V149_Verrou_Local.xlsx",
+      "bytes": 14822,
+      "sha256": "fe665f5f75e2ac764723a4e7de095d50cc30819c5b15a957acc91be812b96227"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V150_Reconciliation_Patrouilles.xlsx",
+      "bytes": 13864,
+      "sha256": "f5db6c557663fea7536923a9f0a9f05c7337ca46b2a5951df5bc7e68fdf2cdbb"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V151_Quatre_Modes_Verrou.xlsx",
+      "bytes": 13268,
+      "sha256": "12e1e711b555a628b0c632e850d08b3327baa2f29a7b37c796a798a8a8e09730"
+    },
+    {
+      "path": "docs/Yautja_ClanWar_V152_RTS_Deux_Onglets.xlsx",
+      "bytes": 11058,
+      "sha256": "1066790290a5a17dd4bde0369265ab1124963c6127eebb73d01be7b9db9c0b60"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V132_Arsenal_Clans.xlsx",
+      "bytes": 78558,
+      "sha256": "d6f589155f8d1747417e55b096c557fb18b0e9ca0c198b38f90cef99f77c4920"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V133_Arsenal_Clans.xlsx",
+      "bytes": 86644,
+      "sha256": "a3a7ef5375242dbfdfd04b106e7be43972f95ace880427519bf2f20bf707eb93"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V134_Arsenal_Clans.xlsx",
+      "bytes": 100213,
+      "sha256": "90b3bf8af03cf21117fae9cf99837230835b01c663267ccb9e267bb53e8b86be"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V135_Arsenal_Clans.xlsx",
+      "bytes": 105309,
+      "sha256": "e94fb220e4ba04d79d4e797f66864497952e71a589d84d49303d537eb0964bac"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V136_Arsenal_Clans.xlsx",
+      "bytes": 145515,
+      "sha256": "88f1d42f33cec1f295144c1eb86fbdfa141daa1bd0c2e48f58bfae12ef9813de"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V137_Arsenal_Clans.xlsx",
+      "bytes": 252376,
+      "sha256": "82abd6d7575a9ed5d86357b30bfdfd9e5e3727a4e9314602368ba13657d63288"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V138_Arsenal_Clans.xlsx",
+      "bytes": 259830,
+      "sha256": "54facea278e0081c8fe71436815d733cea4b6c9add3ce33015fd1256863f13a5"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V139_Arsenal_Clans.xlsx",
+      "bytes": 270530,
+      "sha256": "5dff5e8fcfd8144f1708575babca4e7bbf635a4268b2b9f1e480d1b1a91ce3c2"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V140_Arsenal_Clans.xlsx",
+      "bytes": 495445,
+      "sha256": "785027ec69a5180feda143a24158f30bac590b3c9a2ae1ab8d4742aea95e0328"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V141_Arsenal_Clans.xlsx",
+      "bytes": 506890,
+      "sha256": "f569338770ed5d10b277b56bc520e9cdee44a7260ae802c632b8123fb6678e4d"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V142_Arsenal_Clans.xlsx",
+      "bytes": 518406,
+      "sha256": "9f57339b918b94f8daae3194bf1c2a64faf98d5c3a86fd21df30c1c003f8d693"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V143_Controle_Tours.xlsx",
+      "bytes": 14909,
+      "sha256": "4d8ee81a931d52254f1d66efcd6015478a6590492f2a2c26a9f32e6f261e79a5"
+    },
+    {
+      "path": "docs/Yautja_Gauntlets_V144_Controle_Campagne.xlsx",
+      "bytes": 15511,
+      "sha256": "75ce6597c4a478ca831984d49d02e7864cf7ad64560830898b0ccf031135efe3"
+    },
+    {
+      "path": "docs/campagne/AVENANT_REPRISE_CHASSE_BIBLE_20261109.md",
+      "bytes": 10441,
+      "sha256": "6c5168dca908b024bb8addab915fb3e6bcf5aabe4b71375d8728ccc070343c75"
+    },
+    {
+      "path": "docs/campagne/AVENANT_SKINNING_CANOPEE_20261109.md",
+      "bytes": 6677,
+      "sha256": "fd45626d95b4f36ec50ee2753be03fa2b349d8f6bdc365a8712ebbe0c6eece80"
+    },
+    {
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "bytes": 297486,
+      "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31"
+    },
+    {
+      "path": "docs/campagne/QUETES_RETOURS_ET_ACCORDS_20261109.md",
+      "bytes": 6667,
+      "sha256": "6927ba98ce62167119efd09f4953179490dea0dbb3e03519d8ef1f4ebb2c8dba"
+    },
+    {
+      "path": "docs/campagne/QUETES_VIVANTES_20261109.md",
+      "bytes": 9079,
+      "sha256": "eb4e8f25e57fa6cd570f7301d4e7557a69bb378273219497317108f78d830044"
+    },
+    {
+      "path": "docs/campagne/mobilite/GAMEPLAY_GARAGE_V1.md",
+      "bytes": 11857,
+      "sha256": "2da321b2914d5c0071594d51321800f1fd376d1269413dd3ce9e820fb49f39c4"
+    },
+    {
+      "path": "docs/clan-war-stealth-last-contact/Suivi_Contact_Patrouille.xlsx",
+      "bytes": 9194,
+      "sha256": "7c98ad846e88ea96d3feec0a9a980c3823ddf2c2bd4ab5e8cff0fe3bbeea167a"
+    },
+    {
+      "path": "docs/clan-war-stealth-perception/Suivi_Perception_Patrouilles.xlsx",
+      "bytes": 8247,
+      "sha256": "310c3bf8dd074c608ae1031dd8b3c0725615b7124961fc7961f1e77b6a1e9590"
+    },
+    {
+      "path": "docs/clan-war-v130/Yautja_Guerres_Clans_Plan_Production_V130_2026-10-30.xlsx",
+      "bytes": 182965,
+      "sha256": "40f1f2be0ea38a35215cdb34080eee281a91e840e9601acc7a1286c4041c8bfb"
+    },
+    {
+      "path": "docs/clan-war-v133/Yautja_Guerres_Clans_Suivi_Production_V133_2026-10-31.xlsx",
+      "bytes": 183508,
+      "sha256": "fa505df1ff7b08b3c183c326e9ccb6cf1046256c06ff664b1626c40c86eaf469"
+    },
+    {
+      "path": "docs/clan-war-v134/Yautja_Guerres_Clans_Suivi_Production_V134_2026-10-31.xlsx",
+      "bytes": 193696,
+      "sha256": "3cabd18105390b8eb9022b1a50643071e8c6adaec764569f8818d0dda068a97c"
+    },
+    {
+      "path": "docs/clan-war-v135/Yautja_Guerres_Clans_Suivi_Production_V135_2026-10-31.xlsx",
+      "bytes": 210753,
+      "sha256": "4b75ca6cd4ffe13e143e0f3cec17f6b740af17d5878ce06c89a146cc0b62bf3d"
+    },
+    {
+      "path": "docs/clan-war-v136/Yautja_Guerres_Clans_Suivi_Production_V136_2026-10-31.xlsx",
+      "bytes": 233659,
+      "sha256": "6d630fc2020a7ff4a9d0df50dde5105665c8b19df6dc85f68acb2c67facc7abd"
+    },
+    {
+      "path": "docs/clan-war-v137/Yautja_Guerres_Clans_Suivi_Production_V137_2026-10-31.xlsx",
+      "bytes": 265487,
+      "sha256": "a4be15c587875f002a44d8ca7015fe62eaade2d02e34fc3060af6f771483b42e"
+    },
+    {
+      "path": "docs/clan-war-v138/Yautja_Guerres_Clans_Suivi_Production_V138_2026-10-31.xlsx",
+      "bytes": 300584,
+      "sha256": "e7ff2aa7e874daf8bd558e3be391b132c99abb7b86af7be8a8c6b092a6ac4420"
+    },
+    {
+      "path": "docs/clan-war-v139/Yautja_Guerres_Clans_Suivi_Production_V139_2026-10-31.xlsx",
+      "bytes": 338291,
+      "sha256": "8b2eb718ba8b97d634911ddb8a01f1f3f85a13fb09571e42b21cf36728dc4608"
+    },
+    {
+      "path": "docs/clan-war-v140/Yautja_Guerres_Clans_Suivi_Production_V140_2026-10-31.xlsx",
+      "bytes": 379347,
+      "sha256": "e5a8f3ac7a31312cd0f0ff7da6fabd23510c0f8d861afebfa5870137e3deb44e"
+    },
+    {
+      "path": "docs/clan-war-v140/Yautja_Guerres_Clans_Suivi_Production_V140_2026-10-31_PR49.xlsx",
+      "bytes": 357776,
+      "sha256": "8c2a2299ac8e9c8b0d83d4a23d77b9abcf600911ae59f25dc0237375b916068b"
+    },
+    {
+      "path": "docs/clan-war-v141/Yautja_Guerres_Clans_Suivi_Production_V141_2026-10-31.xlsx",
+      "bytes": 424233,
+      "sha256": "a970e71fe4dfa734ea1c7a6a8c6a5079ebee8f069e2cf9f2a98c75179309ab73"
+    },
+    {
+      "path": "docs/clan-war-v142/Yautja_Guerres_Clans_Suivi_Production_V142_2026-10-31.xlsx",
+      "bytes": 472303,
+      "sha256": "0e547b224ecb93a6e31c474d31a81a7056e90df24ee857942dcbfe0c2996196c"
+    },
+    {
+      "path": "docs/clan-war-v143/Yautja_Guerres_Clans_Suivi_Production_V143_2026-10-31.xlsx",
+      "bytes": 523571,
+      "sha256": "814c057e8638c2baedb03c408304285ef92d912bb75625e11b7d0463ec4c7103"
+    },
+    {
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Avenant_Production_V144_2026-10-31.xlsx",
+      "bytes": 30273,
+      "sha256": "eb99f7022dcd4dc566e401139488bfd6caeb39447443627e3124f86998d09fdd"
+    },
+    {
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Contrats_Bilans_V144_2026-10-31.xlsx",
+      "bytes": 33993,
+      "sha256": "0011926ea776190e21c43c92ed0d63a63ce215b9de9caccf26cc568fd9b17fe1"
+    },
+    {
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31.xlsx",
+      "bytes": 34819,
+      "sha256": "406167c0aacde29858c47e918cc31d9aa5c27cf88e65f12a68a6d56377582916"
+    },
+    {
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31_PR55.xlsx",
+      "bytes": 34819,
+      "sha256": "406167c0aacde29858c47e918cc31d9aa5c27cf88e65f12a68a6d56377582916"
+    },
+    {
+      "path": "docs/clan-war-v144/Yautja_Guerres_Clans_Suivi_Production_V144_2026-10-31_PR57.xlsx",
+      "bytes": 33228,
+      "sha256": "4649a6754223f3346ef749cc31523aacb359d4c7e809e8813595686d23a26626"
+    },
+    {
+      "path": "docs/clan-war-v145/Yautja_Guerres_Clans_Avenants_Production_V144_V145_2026-11-01.xlsx",
+      "bytes": 58897,
+      "sha256": "b697528cf7f5ec9972dcf9087b0a3fdbd4657a0654db580101d4ecf08c8e5b1b"
+    },
+    {
+      "path": "docs/clan-war-v145/Yautja_Guerres_Clans_Preuves_Transfert_V145_2026-11-01.xlsx",
+      "bytes": 61088,
+      "sha256": "60bbacdba4b2acc486e3618a59d6cc0260e78f04c4e8377fb14ae54e59c394b7"
+    },
+    {
+      "path": "docs/clan-war-v146/Yautja_Conseil_V146_Controle_Source_Addendum.xlsx",
+      "bytes": 8079,
+      "sha256": "7714b890d777bcecd7da8f3cacebe554493a8ea49f67720eda9b73eef405ac3c"
+    },
+    {
+      "path": "docs/clan-war-v146/Yautja_Guerres_Clans_Avenants_Production_V144_V146_2026-11-01.xlsx",
+      "bytes": 85510,
+      "sha256": "1c38044d5ea702222336eb65e3378dd87c411918acf315403ebf86de5ef004e5"
+    },
+    {
+      "path": "docs/clan-war-v146/Yautja_Guerres_Clans_Provenance_V146_2026-11-01.xlsx",
+      "bytes": 79555,
+      "sha256": "e324adc53899343fce337526fa5d13a9c3fe0b47d9e0859d70cda861ae0fe4cd"
+    },
+    {
+      "path": "docs/clan-war-v146/Yautja_OuterOps_Reconciliation_V144_V146.xlsx",
+      "bytes": 6050,
+      "sha256": "c399da35507c2d60bab316a5384a930a8ce99a74852240204b2b5f50bdc34be1"
+    },
+    {
+      "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Avenants_Production_V144_V147_2026-11-01.xlsx",
+      "bytes": 112505,
+      "sha256": "bf9b1b1707cf73d36e9f9e68ce030790bebef0d9259462c2999dd068d58303ab"
+    },
+    {
+      "path": "docs/clan-war-v147/Yautja_Guerres_Clans_Source_Conseil_V147_2026-11-01.xlsx",
+      "bytes": 102469,
+      "sha256": "c65980da29192aebd1dcadcdee243880cb8bd853aecdd7a46dc32cae346483ed"
+    },
+    {
+      "path": "docs/clan-war-v152/Yautja_ClanWar_V152_Provenance_QA.xlsx",
+      "bytes": 34057,
+      "sha256": "40ad861f04e789961b1619b3aa464e1c41c26424313ae7e8159b917b72adad37"
+    },
+    {
+      "path": "docs/clan-war-v152/Yautja_OuterOps_Inspection_V153.xlsx",
+      "bytes": 6193,
+      "sha256": "6fb59c4d3571163fe1856e86e8dfe495bd3fae82baaa26d7932046755bf2b125"
+    },
+    {
+      "path": "docs/pr-consolidation-20261103/YAUTJA_CONSOLIDATION_PR_20261103.xlsx",
+      "bytes": 26610,
+      "sha256": "858ed7a0a0099e409479841c00998c82a5fdbcd6bbeb19544062b96a2daf7080"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Backlog_Production_V136.xlsx",
+      "bytes": 48484,
+      "sha256": "93b3559e613b350fd84180d80608bd4273af40afb8fbd987d7dbe7ff923ced0e"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Backlog_Production_V137.xlsx",
+      "bytes": 52195,
+      "sha256": "6f5cc147fbe428c3c2245307ab1fa65dcca3135f480dd12d383a29446c6ff992"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Fidelite_1to1_V136.xlsx",
+      "bytes": 79625,
+      "sha256": "73f8929b83b595b727a5dcc6eb860e8c2975249b915bf1b6c44dd2c8032ecd05"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+      "bytes": 82074,
+      "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Implementation_Status_V136.xlsx",
+      "bytes": 62664,
+      "sha256": "6d7cf3dd6f5680c050202e5d7a2a5d6af7a8067b039233993df5fd22751e237b"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+      "bytes": 64897,
+      "sha256": "701b3556fef308b9a7cc216b7912f0b7d35a60645755831ac238280b7d670472"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V133.xlsx",
+      "bytes": 39128,
+      "sha256": "b02351dbee6ba77d108de2b8af48cfaaa8cb9621d021c36b1b828017c4a774b4"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V134.xlsx",
+      "bytes": 51248,
+      "sha256": "d12e68c5a70ddea6e7ba80eff34204679cca9b76ec79dc0c9ac4fcb656b24e1c"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V135.xlsx",
+      "bytes": 54719,
+      "sha256": "307feaa3e17079153a9de66a949d17b18f6765b7e614c4d54bcb8e7ac775da51"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V136.xlsx",
+      "bytes": 96140,
+      "sha256": "99e437e168c8e2d5ea292f5b61beffce7719a9cb047035da5fe5207eb8ccd9c0"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+      "bytes": 98766,
+      "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V138.xlsx",
+      "bytes": 76119,
+      "sha256": "d406a273dd96ef2ad2190d2ca63bd0d146c1db4c46559cc482832889f40b68ea"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V139.xlsx",
+      "bytes": 85667,
+      "sha256": "4e8568a9ab4f069572508f3cbd0fa04e011b0cc6c97344232a893c2f3a58151f"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V140.xlsx",
+      "bytes": 89650,
+      "sha256": "cd6035186363acc94d3b602f56445c2069b6336baef1ff92c93c35be20e57f9b"
+    },
+    {
+      "path": "docs/production/Yautja_PHG_QA_Visual_Morphologies_V141.xlsx",
+      "bytes": 103065,
+      "sha256": "1d3a4059d23a4c3e090fc52d500ad3b8c06b78ca9c88424c74a971730d1fe6a6"
+    },
+    {
+      "path": "docs/qa/v111-homeworld-before-pr21/YAUTJA_V111_SUIVI.xlsx",
+      "bytes": 8123460,
+      "sha256": "db66ff179b03891051afca7fb5979700d576c9ff4f87bf816fc77ef5daf7bfe0"
+    },
+    {
+      "path": "docs/qa/v112-hunt-continuation/first-two-closure-baseline/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 734128,
+      "sha256": "f13dd1a3548aebac25ba77e11ad5c5835757fc49da94491dbe69dbd291b59989"
+    },
+    {
+      "path": "docs/suivi-production/classeurs/Yautja_V5_Bible_Reconstituee_et_Extensions.xlsx",
+      "bytes": 1107914,
+      "sha256": "f4f604a407cff43be6b2e96896dc18fd8d8a0e5f901fc634e8d777f65818c71f"
+    },
+    {
+      "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
+      "bytes": 2101543,
+      "sha256": "87ad5d1a6eaf49f2908a4457ef3f97b8f34db481a24bbc121d2e924559b19183"
+    },
+    {
+      "path": "docs/suivi-production/v611/Yautja_Suivi_Variantes_2026-10-21.xlsx",
+      "bytes": 1642587,
+      "sha256": "c154f8203cdd1894dfc384cf9704da56badab64417fa0d2e5920b4199cf6b32f"
+    },
+    {
+      "path": "docs/suivi-production/v611/references/Yautja_Suivi_Variantes_2026-10-20.xlsx",
+      "bytes": 1624759,
+      "sha256": "76fe0e138a2ee2c901b491c48edea9e8d3777f1babeb9c480b932c82ffca0d6e"
+    },
+    {
+      "path": "docs/suivi-production/v612/Yautja_Suivi_Variantes_V612_2026-10-21.xlsx",
+      "bytes": 1672140,
+      "sha256": "26c1a5b62d93c73910c33964cb7a942010c8e9986bfb473ef59c537cd79bdb74"
+    },
+    {
+      "path": "docs/suivi-production/v613/Yautja_Suivi_Variantes_V613_2026-10-22.xlsx",
+      "bytes": 1698239,
+      "sha256": "a00b50b46df297ec5ac54ebde19da5a0c420499ebfe765d1c12aad79b2fe0b3e"
+    },
+    {
+      "path": "docs/suivi-production/v614/Yautja_Suivi_Variantes_V614_2026-10-23.xlsx",
+      "bytes": 1715728,
+      "sha256": "92b5bbcb95919db1a9e8eced6153a91f3dbfa3944bd37484c8852311a8250faa"
+    },
+    {
+      "path": "docs/suivi-production/v615/Yautja_Suivi_Variantes_V615_2026-10-23.xlsx",
+      "bytes": 1731753,
+      "sha256": "90f03e170a07d4867f8f8bc588e486d3055c11a826a496ce50790d6a35e3a2f8"
+    },
+    {
+      "path": "production/YAUTJA_V113_SUIVI.xlsx",
+      "bytes": 10373135,
+      "sha256": "082ccfdd584a8989124f81851bdcb50e1c6206940c9d1f46b328d758e428d84f"
+    },
+    {
+      "path": "production/YAUTJA_V114_SUIVI.xlsx",
+      "bytes": 10600088,
+      "sha256": "1367ac28a95c1ecf069ee1b5ee84b9438857c28ed5fb1b4e3b7059e4db619240"
+    },
+    {
+      "path": "production/biomasks-20261113/README.md",
+      "bytes": 5382,
+      "sha256": "265c48aeeb6966f19a5df03a6dad0b54a0f3eb1c69d543f37073c28f2a8db7ec"
+    },
+    {
+      "path": "production/biomasks-20261113/generation/phg-a.json",
+      "bytes": 38449,
+      "sha256": "8334d68e5cd6adf6737512b559e800f9682826a9989a5bd89e3f6f422b685bca"
+    },
+    {
+      "path": "production/biomasks-20261113/generation/phg-b.json",
+      "bytes": 34440,
+      "sha256": "f5fecf48f5b33375efe0a9959036fd48d03a5394eee7d42f8e4599d29d69ed09"
+    },
+    {
+      "path": "production/biomasks-20261113/generation/phg-c.json",
+      "bytes": 38598,
+      "sha256": "aac5d1fb7f85d0711e698be6a665ffb9b079fecec40b041fb32d687bad6fc3ec"
+    },
+    {
+      "path": "production/biomasks-20261113/generation/root-exiled.json",
+      "bytes": 5582,
+      "sha256": "5df718946575ad5c88293faf691ebf689e3afbfdbdcce4cd69fa0c0afdf2f512"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+      "bytes": 361243,
+      "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/capture-geometry-amendment.json",
+      "bytes": 16902,
+      "sha256": "ffb47f09a9f9858a84011b066603be8bf25952bdaca1c33f7872ac72d2b9b62f"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/local-mask-references.json",
+      "bytes": 250098,
+      "sha256": "b17654a365b2a06c4080d42f6a10d647b6d1b1b3f4bc72eedf4948cd3490368b"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/named-front-reference-report.json",
+      "bytes": 112819,
+      "sha256": "d11e295ab4dbfc7389bfc589759fcb4da9bff126a5e3f624cfafa52e947d511b"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/symbol-reference-report.json",
+      "bytes": 4691,
+      "sha256": "f47550a14c9bbd2fe574c63ce15c6671f39f3ad2f3efeceb88c24584805d0caf"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/visual-review-a.json",
+      "bytes": 6581,
+      "sha256": "edc9769ca8cb71867ca19c9fce18b5d724cd86561ec2df7ddfe2b94d71827e69"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/visual-review-b.json",
+      "bytes": 5608,
+      "sha256": "e88a1f2d90a5dc38467b59cc0c3b6a5204038c5393268c583b965c049af6ed3f"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/visual-review-c-and-exiled.json",
+      "bytes": 10258,
+      "sha256": "953d197a7462c6eb7dd074990bec6708755b3b67c51cc1cc903827b3be4dc5a8"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/workbooks-scanned.json",
+      "bytes": 22779,
+      "sha256": "ec6f8a331681a4ac4c60f2db6e4d9b24a187ad30adde7dc55a614838f04c5427"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/README.md",
+      "bytes": 1931,
+      "sha256": "4fc3dc2c34a006281a2dd573a8336a559c3eb5bff4c00651db4f5150b06e0b68"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/browser/mask-provenance.png",
+      "bytes": 471012,
+      "sha256": "9dbb60948b220529c932acf41abbeff85e37e5010dd19a9a0ec45fc3352c67ed"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/browser/masks-checkerboard.png",
+      "bytes": 325885,
+      "sha256": "40031e1c5ea5a92facad67f7e614e0e58f1ec4d7013ecb0e184198ff24a79252"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/browser/masks-terrain-pivots.png",
+      "bytes": 326624,
+      "sha256": "2fc0c468cf9f08e371d7a661061572a476dda6009b0451edad09894c3f831b3d"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/browser/mobile-320.png",
+      "bytes": 230402,
+      "sha256": "70ece9fe7e5427c7cf8e9aafaf26ba21a3f4bd024a491fe2fd384a3b4bf37007"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/browser/mobile-390.png",
+      "bytes": 245249,
+      "sha256": "56a2937b797a3bb62ca210db639aa292b0101a1c41a29cef0f4dd6bab4d27198"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/browser/ravager.png",
+      "bytes": 139855,
+      "sha256": "1e02cfde6ff62a767e6ae70ff2e289dd61d92610043cefae9c24d97647039cb4"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/browser/verification.json",
+      "bytes": 3809,
+      "sha256": "f735d10bcb45f9b19eb3d2df590aedb32da60d900992bd9ed4528a6cfa726ea3"
+    },
+    {
+      "path": "production/biomasks-20261113/qa/ci-relocated-summary.json",
+      "bytes": 161,
+      "sha256": "aaf2fa306239f6b594c74a5e1da6cb25c7bd8ab11b493a6970e7f504d5701eca"
+    },
+    {
+      "path": "production/biomasks-20261113/references/bounded-three-mask-reference-report.json",
+      "bytes": 17579,
+      "sha256": "27afbe00e3589b9624aa6e2d57dc52f344502dcd10f71166e93215a25b4a3cde"
+    },
+    {
+      "path": "production/biomasks-20261113/references/official-network-blocker.json",
+      "bytes": 993,
+      "sha256": "7ef87c800003d43af05499d1dd26bc989d432858d66d81ba89e8a91cb4fdcd77"
+    },
+    {
+      "path": "production/biomasks-20261113/references/scarface-concrete-jungle-reference-check.json",
+      "bytes": 11214,
+      "sha256": "53aaedb87595eced92615eda1ad02124e222b7de41347787d681715ec6f24ecc"
+    },
+    {
+      "path": "production/biomasks-20261113/suivi/Yautja_Masques_Manquants_20261113.xlsx",
+      "bytes": 70766,
+      "sha256": "70e60e4319e0f3469d78dd5c709847dfb96deba133340ddd2e5e87593998db95"
+    },
+    {
+      "path": "production/biomasks-20261113/suivi/build-request.json",
+      "bytes": 398173,
+      "sha256": "d8e511c215574ad885b255c66c022536d5aa7ba0444d011fb1c41982ccd201c8"
+    },
+    {
+      "path": "production/biomasks-20261113/suivi/coverage.json",
+      "bytes": 382658,
+      "sha256": "299f18124df07caf3584b62abb3a511f2ef4eb92caaaedbf5f30e4f2fba017dc"
+    },
+    {
+      "path": "production/biomasks-20261113/suivi/source-protection.json",
+      "bytes": 55525,
+      "sha256": "38790fbf40fdbd96ac982b204be183ef6e8239205d56db3d4ca8f0691867fcdf"
+    },
+    {
+      "path": "production/biomasks-20261113/suivi/verification.json",
+      "bytes": 1249,
+      "sha256": "a03005d0f0c831ff4698fb299c13cf403771fb3af8d8f32bc2bc3cda10dac252"
+    },
+    {
+      "path": "production/biomasks-20261113/tools/build-mask-pack.py",
+      "bytes": 26558,
+      "sha256": "1d6c08ae96b1679266078e52c7e7a0b1c44d22e1d648da09b1fe8697371d3d49"
+    },
+    {
+      "path": "production/biomasks-20261113/tools/ci-mask-inputs.py",
+      "bytes": 9180,
+      "sha256": "429e80291d8dbe9ec78e8fba4a1b5a1f80dc07b4c81f2af7a43d796db40361c2"
+    },
+    {
+      "path": "production/biomasks-20261113/tools/qa-browser.mjs",
+      "bytes": 8486,
+      "sha256": "d7c0b0774ce830f106e69981e364e43262324edd679c6fc777b28958d36ed71d"
+    },
+    {
+      "path": "production/biomasks-20261113/tools/review-template.html",
+      "bytes": 24631,
+      "sha256": "032c2ac39edc8313f8be44b4ff0b7f0156cdc5403e4cb3a1162900e7c9363bf3"
+    },
+    {
+      "path": "production/biomasks-20261113/tools/verify-mask-pack.py",
+      "bytes": 832,
+      "sha256": "b5430b43aa49cb5204ae84b70f9f3efe5eb84e1f8e2a18e869d1b0f5e0fa675e"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/README.md",
+      "bytes": 3757,
+      "sha256": "9210c08234f53738d5aaaa968c798ba1019ec7ca6a731d009ab9f376badd4025"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/generation/batch-1.json",
+      "bytes": 80747,
+      "sha256": "fc2fd6004c434046aedad8cff0d06fdd4cac396cdb6cdbeeb6e6680b2d5bfddf"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/generation/batch-2.json",
+      "bytes": 127307,
+      "sha256": "3324a1358574029519ef7949dc2c4751ffdfa2e388ced38c5fa6ed3a3afd563b"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/generation/batch-3.json",
+      "bytes": 75971,
+      "sha256": "4eec7ca0e7290ca508c182b9f357967b0a7a277038e4e941cf7a71f7cedcd5ad"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/generation/batch-4.json",
+      "bytes": 107833,
+      "sha256": "8e8ec4c8d560f0a4d7ab519a5ff16357490581ba1955206b209f0f9e0aa94328"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/generation/batch-5.json",
+      "bytes": 63470,
+      "sha256": "154cbe85dde4016a289bf5bf5dff4d1711df15772c03fd0d7f97413c4d08b2f3"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/generation/seed.json",
+      "bytes": 4392,
+      "sha256": "b53f58e1f9f47cab633bacce1e87c8d741ef1025550830f5d603e54f13a8252e"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/accepted-outputs.json",
+      "bytes": 119419,
+      "sha256": "4f25fe5a898dfe21ae7ea5d057144ae63736d52e57f5a7114601d39a049fcbc7"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/art-direction.json",
+      "bytes": 24804,
+      "sha256": "698a11b5de1bee15715219d9f2d60a5ce6d612be83126a63ee97e2eeff6ab27d"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/available-designs.json",
+      "bytes": 252781,
+      "sha256": "911451ae7d233f8ae95441222546e0401877d772b932632de41b9e4fdc955f29"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/local-source-audit.json",
+      "bytes": 82371,
+      "sha256": "fa0283e8d63f24858d7ec260f9e887d9974772294116873387f4e8a7f2f24adc"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/render-decisions.json",
+      "bytes": 833,
+      "sha256": "608f2dd74081fddb04809a55433eabc1698f49aceb155da3aac2110613ee01f5"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/batch-1.json",
+      "bytes": 23180,
+      "sha256": "a09b24dd72737b7971fb6084bab4fbbd76db4af6cc83a4722d00696a652c626f"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/batch-3.json",
+      "bytes": 19044,
+      "sha256": "1455af80258abdee0093b3c4a7f777456365513466450f70f334dd17ad9bf125"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/batch-5.json",
+      "bytes": 16898,
+      "sha256": "0cb8fbee317d90d034e2e00049e7a9b4a6010a9e8257a5059e494587633f7fb0"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/root-batches-2-4.json",
+      "bytes": 9197,
+      "sha256": "9a160ed0af3effef79205bd815a47bc203338f44b00d0ff76607d67a50623e7f"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/reviews/seed-review.json",
+      "bytes": 5251,
+      "sha256": "23ca60f780800253c23d05b15f84a743b6f514d66355981a3dfb9264e6655ce5"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/alpha-composites.png",
+      "bytes": 1132028,
+      "sha256": "cf2dd29a5b50f28805884c3cb2c250fd0bd616f30d90c646afb7096e8f843bda"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-1.png",
+      "bytes": 1124265,
+      "sha256": "86aa8900968c9f34d05fb9accf60324bbaf8534791b3ab53ff49f1191018ab71"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-2.png",
+      "bytes": 894358,
+      "sha256": "b1a3725077bc61dd60ba842f6f5514fc85554a3fef5513a3489683cada8be219"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-1/comparison-3.png",
+      "bytes": 1153305,
+      "sha256": "3904416ce6ddaa181c35f14b9c3a787c44e4d722569252268bc0564a64a6b238"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-2-native-alpha-composites.png",
+      "bytes": 553746,
+      "sha256": "a41062f2dace60a7b763ab25920ef344ce790374fd30a608fcf70b81818e5039"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-01.png",
+      "bytes": 1321466,
+      "sha256": "ae4d4a0f41df49c6512fdeb4d576604ad49fce41ceb9766179542bccd70ad5c3"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-02.png",
+      "bytes": 1075195,
+      "sha256": "8ed2a81ae618f4aca4b909adaaedcb7adb543ea0cbc86b4af204a4bd0b1298df"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/black-page-03.png",
+      "bytes": 307587,
+      "sha256": "cd57037fc4657cab3693e9804d123d03648b4c5f48711716f925e8fd6cfbe151"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-01.png",
+      "bytes": 1355503,
+      "sha256": "2ce46a1d1ee307ff3279bc78dfc44a427a4b26526fd4bfb2c32875cac0239eba"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-02.png",
+      "bytes": 1110199,
+      "sha256": "8b281529de5104c66cb1a8d6e0c0bc66220424415d0c74cdf35c308aacf0ff59"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/checker-page-03.png",
+      "bytes": 315934,
+      "sha256": "35b35bc7dc07433038a264c83aed25229f708302737955042f3f9dc10aaea5a5"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-01.png",
+      "bytes": 1346162,
+      "sha256": "b407881af7caf32efdf040ff227c33ef05cbd383d8ff574ff90f0bc5cb704f51"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-02.png",
+      "bytes": 1103077,
+      "sha256": "ccc9de11fe20c85d9d0aa98d989a6205db98ae14938948dfdfa90e8276f37b29"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch-5-composites/white-page-03.png",
+      "bytes": 314643,
+      "sha256": "76b67aa8648bac54ed683d5cb2fb6caf17e3d5c56d4fda75c4b8674f15b42051"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/page-01.png",
+      "bytes": 1288394,
+      "sha256": "96ad0ccb6a82e24243cbb92ad7da0d95d4928427c8b1103e7b8d4d6ab37de855"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/page-02.png",
+      "bytes": 1263055,
+      "sha256": "47aa579fe2cff72ae472419ebd5bbf916df3ba0efa1eb5efb9e041d44792ece4"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/page-03.png",
+      "bytes": 335837,
+      "sha256": "e0f59f5844dd69957d549b0f47939837e26f312b387b9eaae3e4598d453b1ae7"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/batch3-composites/ravin-three-backgrounds.png",
+      "bytes": 848918,
+      "sha256": "ed4704437b0147717610dbd81723dfd0b7e2849941b2408f939d1fbfbbfe3dee"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-01.png",
+      "bytes": 1225394,
+      "sha256": "c0d140018cead2fafdad51183e08d2c13232a129b875aeee83a18bf19d6f848a"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-02.png",
+      "bytes": 1323593,
+      "sha256": "278bf1ddd705c3f3c64d1684cc6a80cca014f054fae8e2cecedc0d29f326047e"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-03.png",
+      "bytes": 1168018,
+      "sha256": "7c123eafff9f241ddd778b654fb8f2893741c3934fd90b3db6eaebb857b67f30"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-04.png",
+      "bytes": 1210241,
+      "sha256": "b51938b1c3af5bbd74f7c231aecd50987b1f8a4ac16827f2853e0ca8243cfc32"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/root-final-pair-review/page-05.png",
+      "bytes": 623151,
+      "sha256": "720b81a23eb5c5996936df0fa18609970dcab37c79c06af6d1c5caf566fba97b"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/artistic/verification.json",
+      "bytes": 7741,
+      "sha256": "44455d846141e909ef42567fd553792c0b2a4165b5b0039a2a5d2b57d1b8dcaf"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/jungle-original-phg-comparison.png",
+      "bytes": 430751,
+      "sha256": "10a2043da388994d1ee2dbcd51874c4f587091e185845d07bf0cae4e32672fea"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/mobile-320-captured.png",
+      "bytes": 222287,
+      "sha256": "c5710950867479a3b6278fc72abebc8e7be0e0ddf661a348d843ba7c4d07c128"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/mobile-390-captured.png",
+      "bytes": 250871,
+      "sha256": "fbdf0db8324a52353b8d3542f03f3678458c9e4121ea746857a970dc718e12be"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/paginated-original-phg-comparison.png",
+      "bytes": 598969,
+      "sha256": "aa505d0d10b0ccc8bdd20ae961773a7f537383ff60352d4e82d998621d1c59ce"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/partial-emissary-pair.png",
+      "bytes": 289341,
+      "sha256": "5a29d523c081ca0ecb2b2508cf66109701dfe861819034bc8c34ed1f6fb5aa9c"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/source-limit-drawer.png",
+      "bytes": 655692,
+      "sha256": "a05f46c0c54def7c92bc27e564ca28bdc2634b182d8595cafd3ccd1da2e480d6"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/tiny-original-visible-bounds.png",
+      "bytes": 386051,
+      "sha256": "77d265f223dcff83f985644ec65a031c4c0a7bfede6530890027c85c51d4726a"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/browser/verification.json",
+      "bytes": 15397,
+      "sha256": "7dedce2ddd05db5b6cef667230efe72b4dcb41f5bd5b9d595381a60961c9997a"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/native-storage-receipt.json",
+      "bytes": 8753,
+      "sha256": "60430f556ff7fcd76a47953883eacc697b8372014c4bb452997ee720ad5e2b74"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/qa/portability.json",
+      "bytes": 2315,
+      "sha256": "286123c7164dc3926079afb37df14ee0ad4a58286674090a8d64fd73864dcc91"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/suivi/Yautja_Masques_Originaux_PHG_20261113.xlsx",
+      "bytes": 96453,
+      "sha256": "01dcd82b20d03ecd1423a04641eb47714b4fdf954a86485a5a3a9ffca0999534"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/suivi/build-request.json",
+      "bytes": 443413,
+      "sha256": "03eb1a114872e15ef678a177cbce4fdcae32a03e2971435a6929ce73617b2f69"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/suivi/coverage.json",
+      "bytes": 1734,
+      "sha256": "25d28e58ecb4b9187a7cd96ddad9a4adbbff1a0e939be2a3e0fd94d530ad2ae8"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/suivi/source-protection.json",
+      "bytes": 77698,
+      "sha256": "eaa3a8d91d203cdf5115312962b9c64d1d9d0a99ff43f464acc167d37b32fd34"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/suivi/verification.json",
+      "bytes": 1639,
+      "sha256": "4b84c3b381cb4edef38b718ab6cfcc28a33ac54f4aaed6dc81cba0442c7ad17d"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/tools/build-dual-mask-pack.py",
+      "bytes": 31374,
+      "sha256": "da0907be719ca83ed8869427cda4145bcd73e2f5481c587e9862eb00b9b2dfd6"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/tools/ci-dual-mask-inputs.py",
+      "bytes": 9306,
+      "sha256": "3fd1c9d615d8169a7d77f96a20ef3f899d9b9c1d7cdc3f2ffc8fc6c1e0e0be98"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/tools/qa-browser.mjs",
+      "bytes": 13504,
+      "sha256": "3f104c5a633822f1e422a35f2f98363f76916c8fe562d1f5adb11dd95a777d84"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/tools/review-template.html",
+      "bytes": 19683,
+      "sha256": "ade0ced8faf282c5cfa2d123092808e57e017a3ce22d1a4be26aa26f27bf4774"
+    },
+    {
+      "path": "production/biomasks-dual-20261113/tools/verify-dual-mask-pack.py",
+      "bytes": 880,
+      "sha256": "c0f8a1c10ba61d3a853ada7cdcab5492fb67787ad7ba824d81503f2ee264b56e"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/README.md",
+      "bytes": 5206,
+      "sha256": "ebea3ad81009f472d9657d238506b8a65f024ede3d8333112db0da8fa8f8b83b"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-ahab-sdcc-2014.json",
+      "bytes": 18095,
+      "sha256": "2b8892ebf153259fdab6eab764158490451363c48f6bb598fd75c6f4d82bd368"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-clan-leader-toyfair-2016.json",
+      "bytes": 22772,
+      "sha256": "928b8bf6144b79abfe98d93c4e9ac367b03b40903ec1c5dbed04c3c06e3840c1"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-golden-angel-horned-2018.json",
+      "bytes": 8288,
+      "sha256": "c9678424a196cd367dc71f14eb5ec050900d51395631f595e639d1999c5676d8"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-golden-angel-smooth-2018.json",
+      "bytes": 8377,
+      "sha256": "5994bd298f1091f1428a5f13c3f88d36c80d81087d5af408ae8aae43c74dffe2"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-hive-wars-series-10.json",
+      "bytes": 29763,
+      "sha256": "caa593e2e8546878539462666e70cc9b2a34a2b47682e3a3b99aaf2e9fb24fd1"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-kwei-prototype.json",
+      "bytes": 8907,
+      "sha256": "34832f5b8e06ee4d6f6256742ebbffcaffd74e0ad66d0f590c01ef7a39a97cd1"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-lava-planet-series-10.json",
+      "bytes": 28947,
+      "sha256": "a3a4e543bc24da3cd23b58a4e6ff881b4b35a2a4d24ef3c5b4081eb14beb1775"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-nightstorm-series-10.json",
+      "bytes": 34906,
+      "sha256": "5f1b6410b9a5be405bbf4a6d290aa609293cea3f8f50cad9e984dd8a6d689460"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-scout-lost-tribe-series-6.json",
+      "bytes": 20604,
+      "sha256": "afcbdbaad7cb97f168ae421e09c6f4dc4c48543293256839dfd73962f44dd08b"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-viper-series-12.json",
+      "bytes": 21664,
+      "sha256": "8f70f1c23c594e1bc79f5bb56514fa10eccc9861a13dfed8606ac4b3fb53383f"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/neca-warrior-series-6.json",
+      "bytes": 20783,
+      "sha256": "80203379cd598806f2be5d356b8ea99f791f4ca2c297264ff1fa35457015c31a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/secondary-batch-1.json",
+      "bytes": 34550,
+      "sha256": "b7424170ca2a601feca2de6d8699235cc8611c4b9ea1b81f475a5c202a7118a6"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/secondary-batch-2.json",
+      "bytes": 59206,
+      "sha256": "364e2715e01dfd5b5161203e359fb41d95bb3256a25930828cc4367b8942a5fe"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/generation/secondary-batch-3.json",
+      "bytes": 43791,
+      "sha256": "716580bfda5e42888af0880db8f9d8049aabb586af568a8331f27bc823474a97"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/accepted-outputs.json",
+      "bytes": 71798,
+      "sha256": "5f8f955ae4ccdaa747288a5784828849673684ee16fd5a83adadb117841afe42"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/art-direction.json",
+      "bytes": 3752,
+      "sha256": "54f3d16715e7ee34e2b8732096cac4580cf0257c27bc9f8b0b26a6295d674b3c"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/available-designs.json",
+      "bytes": 92456,
+      "sha256": "45a07d032d2a77283d3584c665d97bd5a4601f81e3bb312b179ba07cc85c9808"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/contract.json",
+      "bytes": 3051,
+      "sha256": "1099793197638cbf8b0ae719127c716a545d34954861f88eebf1e7b7951c6a4a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/neca-reference-audit.json",
+      "bytes": 33066,
+      "sha256": "10ab1a63a7192628093879d6213c2d2c68de668d1d2e995597c9800ebec060f1"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/nine-fronts-audit.json",
+      "bytes": 33420,
+      "sha256": "539baac5228842c780b7ba012bd746801550042b66839e15f5a437c0589cbc6f"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/comics-report.json",
+      "bytes": 30920,
+      "sha256": "aa74628a25697cd62bce7895183c7237cf441cd7342426e04975904488071e83"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/games-report.json",
+      "bytes": 64346,
+      "sha256": "a0a2cd59974fb9829be4e4ca4be9191b3738b40e8ca55c3ca16041470fd8730e"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/inventory-report.json",
+      "bytes": 1219515,
+      "sha256": "01217f9537f7b7d6853c740e1ff0cff2ac97db8bdfa260489e58ee12b860dee6"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/neca-evidence-index.json",
+      "bytes": 39989,
+      "sha256": "8e539491bf5dd49781ea36811b6f487bea83acad7cdbd91b4d7a4ad687ac9b24"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/neca-report.json",
+      "bytes": 696019,
+      "sha256": "cf2d4ad0a864de59a83627d22c969cce46fa0ac9b61e6cb3768b9b9e4fe3df32"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/phg-report.json",
+      "bytes": 22181,
+      "sha256": "3d6d957daf9eef90d68e2762999279069a90a4b27e671f72b56199d0bb2051b6"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/playstation-source-audit.json",
+      "bytes": 3525,
+      "sha256": "6adf0d1ea89684d16e5fda79b012443514fb940375630aabc14bfbe3a2ade71a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/research/private-archive-receipt.json",
+      "bytes": 412,
+      "sha256": "a8d731905fcfeb61a91d4316cb3c7ad8230bf5243aa6e7c0f937e7d3451d7d61"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/reviews/golden-angel-review.json",
+      "bytes": 15702,
+      "sha256": "9a174788ce3ac1fe6a9b7b4b7f0e2f278c4d7a2a366875a059a42e089400c998"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/reviews/kwei-review.json",
+      "bytes": 8573,
+      "sha256": "39c47a8ad3fd035e3591e126669f015ace1a79a456f46cd99ba834a7a4b95073"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/reviews/neca-seven-review.json",
+      "bytes": 60661,
+      "sha256": "79ad87dbb5717f1891f981bb21971caa90961f2f728e1a63b98a2142cea794fc"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/reviews/nightstorm-root-review.json",
+      "bytes": 3912,
+      "sha256": "0e605a841928f7dbc3ac61b2f53d12fe465d4b35bc81d10410db34d22b4bcae1"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-and-golden-evidence-index.json",
+      "bytes": 4121,
+      "sha256": "91c333aecfd1fb91443a0c1802fb91ee7b460ff8ab1519a30de14c462fca6791"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/inputs/reviews/secondary-nine-review.json",
+      "bytes": 47894,
+      "sha256": "ba9de1469df02af3fb3d56b90fb17177059483deb11f64b3248b02143d542d22"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/artistic/golden-angel-horned-sources.png",
+      "bytes": 816595,
+      "sha256": "81c386d3b3943b0d054bae3bf068159d97ffcb197a77781ca09cf021a4aae8fd"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/artistic/golden-angel-smooth-sources.png",
+      "bytes": 917640,
+      "sha256": "7c3bdeb5cbe82ccf0def013af8fbbbf755c59d8654a24c692d3d61d7a5c05b77"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/artistic/kwei-alpha-comparison.png",
+      "bytes": 595852,
+      "sha256": "d5c6773ac1ea710cd8a01859385e739fcc0029982e9f29a49f7e53f60f496663"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/artistic/neca-seven-source-overview.png",
+      "bytes": 1422831,
+      "sha256": "99c16fd51b0228866a933861e123f1f52e16f8f82a22effb7e375e01d7011e1a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/artistic/nightstorm-alpha-AB-comparison.png",
+      "bytes": 533184,
+      "sha256": "0a55b6d3b798136ffe4d035420fb1b474c79eedfcb69bb90b8ce9ebbbab7697f"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/artistic/nightstorm-source-AB-comparison.png",
+      "bytes": 1358831,
+      "sha256": "57656cb589a53f00af1b455efeadaa30449f7699fffd7ad19fc5edd4cf31a4a9"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/artistic/verification.json",
+      "bytes": 19911,
+      "sha256": "70183878c2d116130c445ec2787693f6baba4ed2458451bc28b9ce5907cf49ba"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/community-complete-reference.png",
+      "bytes": 304672,
+      "sha256": "ff149696a8a660c17226179829bc409bf3a588134d67d9bf9d3f30deefe193df"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/community-visible-mask-bounds.png",
+      "bytes": 343003,
+      "sha256": "1c6aadb25a027194685ba8a12637a96437c84fff82589297baeaa614f485ad65"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/kwei-prototype-pair.png",
+      "bytes": 373970,
+      "sha256": "41d525a857cfed0d82b21dcc9c23429041a05ad43c730b39c79119b6da8b54f9"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/mobile-320-prototype.png",
+      "bytes": 231483,
+      "sha256": "5f724d8b36e755b20bce2082cef91bda3b17abf7636d78871b841efa34009ded"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/mobile-390-prototype.png",
+      "bytes": 259987,
+      "sha256": "8cb088220634208119e13ab7dc2cb7e088033d39248f6ae5911588af3f49069f"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/paginated-comparison.png",
+      "bytes": 558614,
+      "sha256": "838a2b6147882e0848d40ef035a5607657ff677feabb8681566f25e4295768da"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/prototype-source-drawer.png",
+      "bytes": 669623,
+      "sha256": "865233c2c36694dae1f0b5285fa4a3e63fa2ee97b66aa4f35d826eed96d8179d"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/vapor-provisional-comparison.png",
+      "bytes": 383736,
+      "sha256": "ff91884240a6f9c3811ce2f369c345cb28747e4cfebda3757efc08c74154f1de"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/browser/verification.json",
+      "bytes": 8238,
+      "sha256": "9789c1c0d44619decf3e4cbfa9be5937ee0c80863f810aaf9a7100d6f8e8627e"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/portability.json",
+      "bytes": 6080,
+      "sha256": "f82fe6484959c233207f535c3044774350223243e0fd18ec5a8080aab4b0e2e9"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/storage/current-native-storage-receipt.json",
+      "bytes": 12460,
+      "sha256": "c1741974c9045d9eb9bf567baf1151a4c94eccc46810497da22198577e6f041a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/storage/native-deduplication-receipt.json",
+      "bytes": 20351,
+      "sha256": "7877e085c19e09266ef5702891d0a42aefde1d8335bc0ad540fb43593b02161a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/qa/storage/reference-storage-receipt.json",
+      "bytes": 8778,
+      "sha256": "9430d8bb482990024a0beb5cf22ee943478604bbe54ca3a4330e413ca04dcab3"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/README.md",
+      "bytes": 6442,
+      "sha256": "ae22700e1f4e08b055759fb8882b3f6c395d6632d35644f4d8b02130812c561a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/english.json",
+      "bytes": 3836,
+      "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_11.png",
+      "bytes": 34341,
+      "sha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_11.texture",
+      "bytes": 65664,
+      "sha256": "417b3a6d502edabb8490e72a2956600c85fdc57603e4e3856e7fe7b89bc1310e"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_12.png",
+      "bytes": 33677,
+      "sha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_12.texture",
+      "bytes": 65664,
+      "sha256": "3c4581d23457a24fff323960e6c06168b401ca25c3332f3ce34defc3a52b07b4"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_14.png",
+      "bytes": 42498,
+      "sha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_14.texture",
+      "bytes": 65664,
+      "sha256": "37bc61d95c9c6c42caeb70e799f25ed87736b7cc1e96624444322b70ffbf767b"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_16.png",
+      "bytes": 46738,
+      "sha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_16.texture",
+      "bytes": 65664,
+      "sha256": "d543186f027bcd0259e4ff919f635c6ec7dc3fcbef68791bf91969c70081a953"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+      "bytes": 47282,
+      "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_17.texture",
+      "bytes": 65664,
+      "sha256": "ea600bbd34ed5f174ec32ab734e7d21a58ad173af54832e15668a91b61a523d0"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_21.png",
+      "bytes": 50901,
+      "sha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_21.texture",
+      "bytes": 65664,
+      "sha256": "6ca377f1a5602235f0be1e3cf5b565ad511f64b45d2f287f4b33e7a302ba0bbb"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_23.png",
+      "bytes": 47246,
+      "sha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_23.texture",
+      "bytes": 65664,
+      "sha256": "599d93cbde8563cfb862b49671ad8f681ea4a306c4311f8e548f71e8b56052ec"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_detox.png",
+      "bytes": 25760,
+      "sha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_detox.texture",
+      "bytes": 65664,
+      "sha256": "8956cc628a2d50121b2bfe26366b7cf583883043a0ff2520a120a2d8b14ae5d3"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_kawaii.png",
+      "bytes": 39944,
+      "sha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/community/predator_kawaii.texture",
+      "bytes": 65664,
+      "sha256": "39cbac6b5f3aeb1c0c0e048691ee4a370d952782230cc3871f874a7a775068a4"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+      "bytes": 152782,
+      "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/LP-pred-1.jpg",
+      "bytes": 139839,
+      "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+      "bytes": 146128,
+      "sha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-4.jpg",
+      "bytes": 183905,
+      "sha256": "cf8c71bf11c2dfbcf6fd7391ce1795b94b6608bfe55950aa2c153f9dfd325a7c"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-1.jpeg",
+      "bytes": 780645,
+      "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-concept-2.jpeg",
+      "bytes": 670123,
+      "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-image-pins.json",
+      "bytes": 1118,
+      "sha256": "327f32a3200fd49d7f0b2a8c27120fd5ade8e467d04dcc11501078b5f42f5908"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-1.jpg",
+      "bytes": 1586399,
+      "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-2.jpg",
+      "bytes": 1529103,
+      "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/ahab-sdcc-3.jpg",
+      "bytes": 1523153,
+      "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/article-ahab-sdcc.html",
+      "bytes": 370972,
+      "sha256": "71437cbd191f74a790bee257b239536a2ba14e5c630f5702c49aa231afd5b032"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/clan-leader-toyfair.jpg",
+      "bytes": 316925,
+      "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-3.jpg",
+      "bytes": 461999,
+      "sha256": "7399bac54b96457c6773b6117be80d8cd3c79b8d9ebbf7886f470dd9a7fe23ed"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-4.jpg",
+      "bytes": 914191,
+      "sha256": "e12f787136f778af2c141cb1988bde57754993094736510e1d351f4fbe1c7d8a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-6.jpg",
+      "bytes": 834554,
+      "sha256": "fdf3bd25b098154c2a02f5d3291483a2cdf4f04cfbe8b617f6810c7692b7de60"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-7.jpg",
+      "bytes": 899061,
+      "sha256": "7833239d3465eb403b4d14f4e58f4081f2a0e0adafe5f226acf65e07e86eb6f5"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/kwei-2.jpg",
+      "bytes": 568952,
+      "sha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/kwei-3.jpg",
+      "bytes": 533718,
+      "sha256": "5e783d1b2c0ea50168f991f5bddbf977c0860b68a5854fba9b637e173de9094c"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+      "bytes": 43654,
+      "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+      "bytes": 109824,
+      "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/viper-1.jpg",
+      "bytes": 227815,
+      "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/viper-7.jpg",
+      "bytes": 231654,
+      "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/viper-catalog.jpg",
+      "bytes": 181807,
+      "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/warrior-direct.jpg",
+      "bytes": 39858,
+      "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/suivi/Yautja_Expansion_Masques_20261113.xlsx",
+      "bytes": 68075,
+      "sha256": "be8d48d37d67d29e84072f27896cd790f6d075798d59c36b7129da6ad6bf08d8"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/suivi/build-request.json",
+      "bytes": 328509,
+      "sha256": "1b4e09386c230803a89303f5fd1dbb18e50bc8d67915262cbbfa4c56f8a60e3c"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/suivi/coverage.json",
+      "bytes": 950,
+      "sha256": "b39ba61df8215ec1d79c4d6ff318eaa3f1ec99c9bfe5f575287ac23e49e9c679"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/suivi/source-protection.json",
+      "bytes": 109198,
+      "sha256": "914c971e60afd80f593cfb647d6236a23efb9bfed0fc681433269ad1e737d26b"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/suivi/verification.json",
+      "bytes": 1345,
+      "sha256": "dd3c4aa016ac82d1d971247bddc9aee2327de3bd8d4e0ba498594c1f1ca1099b"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/tools/build-mask-expansion.py",
+      "bytes": 28581,
+      "sha256": "fb12866f68c2b258c8c84816f262f415afdd902661c7c2b98aa36b00aad24145"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/tools/ci-mask-expansion-inputs.py",
+      "bytes": 9641,
+      "sha256": "dddf3efa30405e22848d0df37b437d94d0454b27e60141acf9946a105327c85f"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/tools/qa-browser.mjs",
+      "bytes": 15029,
+      "sha256": "fd4126ce13ad1144d2eedd6471a8ae35cdfd30b2b945539f85c7254a00fedbdf"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/tools/qa-portability.py",
+      "bytes": 19144,
+      "sha256": "3116de2eeb7760edc36d4b6726f88b7c4499efbac924d553b2bfab9df916e83a"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/tools/review-template.html",
+      "bytes": 19165,
+      "sha256": "d455310829d2ad7b44f8efd6f35f48b43f527900fabc42711c13cd89443f0b68"
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/tools/verify-mask-expansion.py",
+      "bytes": 905,
+      "sha256": "a69228638815c37f2f85a4a5899c0eef6eb2a6214e63226987ce8beee0dc1014"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/README.md",
+      "bytes": 4019,
+      "sha256": "878269c46dbc6616f7690ac533f342e0353b0345f311c426215e18ae0868b6bc"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/captured.json",
+      "bytes": 5860,
+      "sha256": "a6ddc9ac67f8d41c6237981419a7ef60a20374292c3389011bfc21f8d48fcce8"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/cleopatra.json",
+      "bytes": 4835,
+      "sha256": "0794e6df1af6703c1110e48be38a06704af4eb2b51beab90204a7408f7e7afed"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/emissary.json",
+      "bytes": 5126,
+      "sha256": "8e74c5d8db389da64ecfadd57de5e41cbb34ae8c60120a6d4919cd7c030d759a"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/exiled.json",
+      "bytes": 5447,
+      "sha256": "ecb6bbd1e58c1fc00acfe7bd19651ddba7d337d33386a87d5ed4a2a9b39f462e"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/samurai.json",
+      "bytes": 5565,
+      "sha256": "44a9e28bd268d0102ca205456513fabcb7fad0f6860a41cb39201cc5a8d2bbfd"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/valkyrie.json",
+      "bytes": 11588,
+      "sha256": "3a9e0462811ffeb30fb5b68814b9c0117fbfd0dcd5136c893cdd1c85e8ee00b2"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/viking.json",
+      "bytes": 20380,
+      "sha256": "3cf2fe8f950eefe7f8da2406f8b6fa899a7f31dca03657cf80da27f5e07afe2a"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/accepted-assets.json",
+      "bytes": 12537,
+      "sha256": "e24f780fc4bae7e7e4c38e36cc29434e1abfc7d88cd22712d119f3c3989adfdb"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/five-view-native-protection.json",
+      "bytes": 2397,
+      "sha256": "a8db5946dcb16dc2c39c7286cf378bb20368a080df7a5d33633bb4abf048296c"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/independent-visual-review.json",
+      "bytes": 20727,
+      "sha256": "bd3739fe36b319026db87c191c712b1aa1c867dcdfd20db15d0f767b27c5bdcb"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/network-addition-proposal.json",
+      "bytes": 1597,
+      "sha256": "f19cb4a39a75f0517aee1701863ec41f11a8e3cc2510a9d6150bdab9ddc0d5fc"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/primary-mask-sources.json",
+      "bytes": 66567,
+      "sha256": "3b0f5a8c41643463d71f079f270fe46270e30fc03c14657a7311e003d6957f7e"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/primary-reference-status.json",
+      "bytes": 178961,
+      "sha256": "24bfe15398fd92d7aa1e38d74f418334417e3fbd19906260ed92ff082abfd232"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/remaining-mask-scope.json",
+      "bytes": 76818,
+      "sha256": "0170c9d37e594b1c4e6154c0256408c21c7d211f89ec600c799207e610283532"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/six-view-native-protection.json",
+      "bytes": 2842,
+      "sha256": "847ba382f1ed53349d32c5e62bf212b99be51b50fa45331476fddb0d359c05d1"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/artistic/additional-three-browser-composite.png",
+      "bytes": 1686366,
+      "sha256": "5cb278b201e357d45d6fad65d4ddb2ea34e824d99ce4add0b23c3c91c8f240ba"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/artistic/alpha-browser-composite.png",
+      "bytes": 1042137,
+      "sha256": "537dd7181a1a7bbad66852bf385d7d8def0f8daeabc692db3d746aaeb6b8cfdf"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/artistic/captured-browser-composite.png",
+      "bytes": 464779,
+      "sha256": "23d222d9c53b030e422ff18b0bc6f784e091f5ed9bc867b759ed239317cbec70"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/artistic/emissary-browser-composite.png",
+      "bytes": 451887,
+      "sha256": "18b5a223bf9117900331e8b2e68b6407d805f993b72ec2e191411195beda3eda"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/artistic/viking-v1-v2-browser-composite.png",
+      "bytes": 1059409,
+      "sha256": "15e38faf0377a49593a956ccb264c0c3419c3bb3c63a0e237659c977e5d78c5d"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/browser/colored-mask-bounds-pivots.png",
+      "bytes": 255155,
+      "sha256": "e0f01bd932832b6a718dfe3403427630c4a745a13f93a7910fdf6a0637624d93"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/browser/colored-mask-comparison.png",
+      "bytes": 291560,
+      "sha256": "52a5700dd69a1650540b0c5dd0899f76bbcbea738b9345d8486b383f3039d453"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/browser/mobile-320.png",
+      "bytes": 669709,
+      "sha256": "6cbe2832bdb31424e0d28c2032d3195505e516c147a11430231b51eede147ec3"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/browser/mobile-390.png",
+      "bytes": 721592,
+      "sha256": "111ba811e2883525c2a21886a030efb100786113956558bc18bffe17988f0549"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/browser/official-source-drawer.png",
+      "bytes": 620221,
+      "sha256": "3ee6cb0a0afcd76e552cc044bd105c96b18bcea167fe51d8d24d7ddcf1871a2e"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/browser/verification.json",
+      "bytes": 2707,
+      "sha256": "5c0f1aac94cc3027fecdd1b3665fda7e66da8b125242d7e64577cb65ccf27dc8"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/annotation-review.json",
+      "bytes": 1584,
+      "sha256": "aba68445d4b014a6fdb62c6b99932a5e4dd67678075fc4a96bc47b2e57bae060"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/annotation-verification.json",
+      "bytes": 3915,
+      "sha256": "49b0e2cd166e5fdca45fc00cb67c9c8384d4a363c2a61f5a51f30d6d18223145"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/current-inventory-repair.json",
+      "bytes": 4811,
+      "sha256": "8c9ef7339fc9075991052a5f30588f8f8a10e9f4ac2a8373bc101afb41bb0644"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/diagnosis.json",
+      "bytes": 3953,
+      "sha256": "29825fd328ec5f4f6077ca227bfcb8df4ce9b33e39141f50d41eac1aa0b09673"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/full-reproduction.json",
+      "bytes": 74957,
+      "sha256": "74c08f2f4eeea4260006305efaaba94a0c4e82200defa84ee79e8efdf003ca18"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/receipt.json",
+      "bytes": 1655,
+      "sha256": "bcd1b94124261fbe4fd2c4cf352e94ff13a428ed59241cb121cebe71787274bd"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/sparse-reproduction.json",
+      "bytes": 72588,
+      "sha256": "ea7492d3e5307f2b7f91b2a911a158d2a5ccacfd850923fdf714dd0ba732b927"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/portability.json",
+      "bytes": 2026,
+      "sha256": "d7267af1d822ffe06ec2507c64c8353bce17a5bd676ea07a2b83a3cc1ae04a3d"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/research/emissary-amendment.json",
+      "bytes": 732,
+      "sha256": "1c03bef97e51abeab331167f4bc67c34e1098fd1c625874255d673db54d2aa98"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/research/independent-source-report-corrected.json",
+      "bytes": 17547,
+      "sha256": "0f1837cead3cfd5b8d1b9c5093b7e25bb6d78bf6a6160c27908c4546f035c392"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/research/last-bundles-and-captured-report.json",
+      "bytes": 14316,
+      "sha256": "c8387a963719be5c9b83ae49ddb8b2bf96fabec25392ed673fa6a0504beda69f"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/suivi/Yautja_Masques_Sources_Primaires_20261113.xlsx",
+      "bytes": 55943,
+      "sha256": "373762e12c2ea024d6a670367c5ca25810de76ea41f21bcd91541e289ba312b9"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/suivi/build-request.json",
+      "bytes": 180330,
+      "sha256": "95a87d2cf78308f4bd70d46a82c130bdbe6e9bb8f044115a55d974a2938526b3"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/suivi/coverage.json",
+      "bytes": 1611,
+      "sha256": "fa83637c35263c91acc43c0d906caff3e2dabafde47b44033c19a7cb39eec3a9"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/suivi/source-protection.json",
+      "bytes": 65670,
+      "sha256": "ab87120c736e42521d00e36f3acf4a116a6dbf08601688a3351f168ebe1f790a"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/suivi/verification.json",
+      "bytes": 1592,
+      "sha256": "9978d03e6f36ffca27626b815c3c5ccda49318a1bd5ed9fbf1d41b76e64a2fb8"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/build-primary-mask-pack.py",
+      "bytes": 29950,
+      "sha256": "44d403c068889df72a4724a1bcda067d34d9b3f5064fb566c23a712f7d72c7a1"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/ci-primary-mask-inputs.py",
+      "bytes": 9273,
+      "sha256": "6b6c90f920be54b1daca3488561089a944eead6f3d576bd941fe7a3ef90842cf"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/qa-browser.mjs",
+      "bytes": 10305,
+      "sha256": "9255f51c68cffe368606e4fd4f54c364ca8b82ba7c6f1e21916dc230cd5bbea3"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/review-template.html",
+      "bytes": 18174,
+      "sha256": "9fe0043167783ad99b92e720c459b24229d1c616f84f26fc2ba619a936f205d9"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/verify-primary-mask-pack.py",
+      "bytes": 883,
+      "sha256": "e59887dc13f8527c943a05254bfd703f43f1f306e5717d87c19780bd67e9f61f"
+    },
+    {
+      "path": "production/clan-ship-20261104/clan-ship-operations-20261105.xlsx",
+      "bytes": 57176,
+      "sha256": "e14179938e249f13057fc988b691d6de2eb6a54d2489eafd88d208fef62de017"
+    },
+    {
+      "path": "production/clan-ship-20261104/shiphub-reprise-20261104.xlsx",
+      "bytes": 32656,
+      "sha256": "76a58dc141af8971a2ae2af99d59592a5328a0653142305d0bfcfc826e6b104d"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/Yautja_Commandement_P0_P1_20261109.xlsx",
+      "bytes": 25384483,
+      "sha256": "28bf2f777ae5723f50db1efe0d86100c3d4f192360bc9cdc5227ece003737066"
+    },
+    {
+      "path": "production/crew-dialogue-20261109/suivi/Yautja_Dialogues_Equipage_20261109.xlsx",
+      "bytes": 387839,
+      "sha256": "5d9a9b26952612437bba9d7e7397b2d5b918b0999765a650429213497b34e4fb"
+    },
+    {
+      "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+      "bytes": 2192128,
+      "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face"
+    },
+    {
+      "path": "production/excel-bible-suite-20261108/suivi/Yautja_Suite_Excel_Bible_20261108.xlsx",
+      "bytes": 26500,
+      "sha256": "e7d2af52b637ebc1f90c1f85f2e8bec7853b0f0bddf058e258e21505894a0c04"
+    },
+    {
+      "path": "production/excel-bible-witnesses-20261108/suivi/Yautja_Audience_C37_20261108.xlsx",
+      "bytes": 22771,
+      "sha256": "3915848e84da6cbf8832b11e68d1344d8e521ec50b40e7f3fec5625bc61e1cb4"
+    },
+    {
+      "path": "production/homeworld-sectors-20261103/YAUTJA_MARCHE_MONTURES_CHENILS_20261103.xlsx",
+      "bytes": 44020,
+      "sha256": "7ab7d73aec3b7beb94ac930843a3aa125c617a18f785788007830d5e5ab768fb"
+    },
+    {
+      "path": "production/homeworld-v160/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V160.xlsx",
+      "bytes": 59453,
+      "sha256": "99f0c878169cb8727ac3f2be5e531f486cc9c79ac4b6621057af125521e163fa"
+    },
+    {
+      "path": "production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx",
+      "bytes": 60003,
+      "sha256": "c2477269e83760e7bbbc7a13eae853990d4acd0b6473232bc4941009506cb78f"
+    },
+    {
+      "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+      "bytes": 67189,
+      "sha256": "726fc9f4a9e101d2c735929aff22f881993a344f5d248b329ac6fc636c4349f4"
+    },
+    {
+      "path": "production/mobility-20261108/Yautja_Mobilite_Gameplay_20261108.xlsx",
+      "bytes": 351140,
+      "sha256": "7eeb69fa97f276470a06d91e21ca06bd9bcaa61368e9418dc9c9e6d83f2030ad"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/README.md",
+      "bytes": 6685,
+      "sha256": "eb833e02ec0a1dd00eaf4938188bddd03c1c0e27e74e3ccc1abcddc1d3834793"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/generation/cascade-layers.json",
+      "bytes": 24934,
+      "sha256": "02b1ab184d9b4952eb03f84bbb263ff9ae34f7dcab847494ae6355ea7f27c770"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/generation/homeworld-layers.json",
+      "bytes": 29320,
+      "sha256": "ddbcb39a45af5a2fefb2e255144f5ce4858870e0befb7b405e89baf44b97ed00"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/generation/mask-corrections.json",
+      "bytes": 11036,
+      "sha256": "6b7d56396e5870a5b8ef8614d5b91fbe3184fef68ae47ecb75c211378e4564ca"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/qa/README.md",
+      "bytes": 1732,
+      "sha256": "e34b683c95191ac00398345c63f32cb8fdc1f4b560642b75be778361fb444121"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/qa/browser/HWA160-010-visible-source-components.png",
+      "bytes": 1700380,
+      "sha256": "c10cd6c920f9b21337854fceb95cd5c34830b6f6f5ce28463100875bcdae8114"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/qa/browser/HWA160-052-laser-separation.png",
+      "bytes": 1160103,
+      "sha256": "ebcbcd76ed16cf8ee4bafe240898c6b5a761eb9efbf6d3359c3531d9446baead"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/qa/browser/mobile-320.png",
+      "bytes": 572245,
+      "sha256": "df80fdf12c68b21e49cc17a9c87e0a9327ae30e3ddbaf461cc7839aaba30b889"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/qa/browser/mobile-390.png",
+      "bytes": 703872,
+      "sha256": "54a0735e0353a104336a7e4af5adb3a833c97eda4cf74d5cbaf3c60d55185d9d"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/qa/browser/verification.json",
+      "bytes": 1684,
+      "sha256": "9e7c27f9b0a33c0ab3244282a7bc4bde9490105e197c1e95fbdd9df1bd1d850a"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/qa/browser/vex-front-comparison.png",
+      "bytes": 1138131,
+      "sha256": "90b745a9998c555f0a9c101415bc79a30f81f8b12001282b7a86ea84c4a19039"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/references/fidelity-reference-followup.json",
+      "bytes": 20510,
+      "sha256": "844333947b0e85a262b699149562ad8887bfdb4fb2159a067dbbb0cd79831bb7"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/references/mask-review-a.json",
+      "bytes": 7681,
+      "sha256": "861a7a495f6fcea69d4f980e5a76f4500a6c0151da841d9d335d3dae13a56f4e"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/references/mask-review-b.json",
+      "bytes": 10323,
+      "sha256": "c7cdf7001d054356e2133bcc5496ad73c941ee098615548c565491d71ca969b5"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/suivi/Yautja_Fidelite_P0_Addendum_20261113.xlsx",
+      "bytes": 32530,
+      "sha256": "54051d54618e32285e8ba56ec484ce378cca03ea94e638ad84f787f5ac4278ab"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/suivi/build-request.json",
+      "bytes": 78002,
+      "sha256": "6df3388aeb8c75e8daeb6b90b086acb7339e61384319602424cc519b0548a5b2"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/suivi/coverage.json",
+      "bytes": 899,
+      "sha256": "e469df77c575ddc6df2645b3a83de45af59ce8417798b3f384273a6dfbdbecc4"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/suivi/source-protection.json",
+      "bytes": 42451,
+      "sha256": "3120bfb80e3efbe7c0aa1a0dbb78586e70c2bdcbc0eec7aaeadb2e83c92ce6e6"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/suivi/verification.json",
+      "bytes": 1487,
+      "sha256": "bbe49bfa02c8e4b4085202753e4e7a2b6ff8bbb32c9a901e5f80fa4ed4d8f232"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/build-addendum.py",
+      "bytes": 32120,
+      "sha256": "5a6768c1d191a6c9f0bb921dcd7577d1b21bf74a83d798c3b959d8f2e7fb646c"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/ci-sparse-inputs.py",
+      "bytes": 8055,
+      "sha256": "808797d19e649e2a490c1bd70d18a3c9cf35f8e448bf8b8dad3ff58f587a9a63"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/qa-browser.mjs",
+      "bytes": 7685,
+      "sha256": "042f1cc07f1ff5e00b95a5bde5a5b21a86469805b18a6bac9248599ea7e6cfc6"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/review-template.html",
+      "bytes": 22551,
+      "sha256": "7686efbe437d76723430d9bf3996e8ebc3bcbe7495feaef7eb808b6d23b113d4"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/verify-addendum.py",
+      "bytes": 453,
+      "sha256": "3404903dbe8de113e5da43dc8883afc7be9fb71c060ca1f0a515dfd4920fe966"
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/verify-archived-pack.py",
+      "bytes": 3027,
+      "sha256": "0bfc5c4a327ae08799502c90974ee992a408568af096ecc6824f952fa91a1446"
+    },
+    {
+      "path": "production/p0-sprites-20261113/README.md",
+      "bytes": 8421,
+      "sha256": "2d3bde6b72dfb3d5db9c7e77fdb0ceb2cf131fec8807848bc013e73199b7783e"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/homeworld.json",
+      "bytes": 69869,
+      "sha256": "9a00b1447b3eef4444b0c6b3aa555b576251d7dd1a912a1b820a24c918930283"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/masks.json",
+      "bytes": 67685,
+      "sha256": "c7ed8f930b03a8cef558c73df3970966aeb3f60e86ea85c252552f14073ace9e"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/props.json",
+      "bytes": 38106,
+      "sha256": "df379644108d45206f65ea28759ab815f8c3bf1a4ee9586fb1dad704d49a32dd"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/root-seeds.json",
+      "bytes": 9488,
+      "sha256": "497247c104f7db6d0c57cb2de919eed4a2dd3cdba748850818214c320e35175c"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/structures.json",
+      "bytes": 103214,
+      "sha256": "6f5b46f5165a8f3b66d4740ae2c2e299734971c4162a09267b45eaeaa2e5fe5e"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/units-left.json",
+      "bytes": 220976,
+      "sha256": "d4698b07f763d36cb1ce74dcf0f7518d5b8daeef9953844338654949acad9c56"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/units-u07-u30.json",
+      "bytes": 172484,
+      "sha256": "27830a06d2b99ada7ac4cef81f8b5c87158c29ae4496c6e50a154159e7e10a38"
+    },
+    {
+      "path": "production/p0-sprites-20261113/generation/warp.json",
+      "bytes": 7937,
+      "sha256": "0110ac9d9cc666f41c4269491e47b6241bc028320364a774d04b09b2ccc977ec"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/arsenal.json",
+      "bytes": 591131,
+      "sha256": "7428dbf6ca3c2cae5ebec7cbefc116e00c869dc5f204520c0e0d7c26d466104b"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/clan-war-generation-source-designs.json",
+      "bytes": 252564,
+      "sha256": "745dea89303d712c80565072bb641ce31d50f18ae605569c693fdcf234b97552"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/homeworld-alpha-replacement-candidates.json",
+      "bytes": 23351,
+      "sha256": "9d4df4b4e107333627ad21e1e1cc6e7ec07658313a67f16599a25e01d3b8eb57"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/p0-sprite-inventory.json",
+      "bytes": 1093024,
+      "sha256": "2b9a295377b47c08df74b1e4b3e5e57d203458e975e4337854e8a42fec47eded"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/phg-nine-contracts.json",
+      "bytes": 12006,
+      "sha256": "f7244e444df31f987287cc8076de7bccabf54b086bae29b677839f90a137eb64"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/reference-contracts.json",
+      "bytes": 10548,
+      "sha256": "8b49fa4f4aeb8129ac265caf378c095a07312d0eb830bebd52124af82c0ba18e"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/README.md",
+      "bytes": 1355,
+      "sha256": "9a53c8b2b6d7235ed6cc9f41a60886d71ab447e096655a9da738cbdf432e282a"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/homeworld-checkerboard.png",
+      "bytes": 285059,
+      "sha256": "9c28b23da33ce85d18d09286c80dbb3755fd16130fa7ce5004db555f99d81365"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/masks-checkerboard.png",
+      "bytes": 319728,
+      "sha256": "c36a042250d7d609334bbd300436f502274306c350c0e88d9acf73dcd68d0166"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/mobile-320.png",
+      "bytes": 348628,
+      "sha256": "12689660b01bb426228f56b3013f856310818684f0e1ad26b41a3dd3a3be827f"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/mobile-390.png",
+      "bytes": 434279,
+      "sha256": "06487b9c9263975d306092430e013b1e298b102449009534ec170ddf826435fc"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/native-atlas-dialogue.png",
+      "bytes": 653523,
+      "sha256": "2e7f75c14753ab209fabfbe70979b90cd28316cdd6a454dd98b348e1ad3c3b8b"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/native-scales-128-256.png",
+      "bytes": 332033,
+      "sha256": "cb56a3c30cc417b5982f9fcbd814f3a1e37ae451845cbd9612f53a0827631192"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/props-terrain-pivots.png",
+      "bytes": 280737,
+      "sha256": "524fbcd5d9a59db1d262cecdfe1593af28ecdfe42c319787a56ed726597ddd53"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/structures-checkerboard.png",
+      "bytes": 326316,
+      "sha256": "d9c29d0d1eedf354b8fdee4c550d3991e7ea334995acb4cacd24b9cb16b018e9"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/unit-opposite-views.png",
+      "bytes": 204772,
+      "sha256": "1d857c79b381df8075d93d31424213d98a3a015a55b5ed38d357a302b473e75a"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/browser/verification.json",
+      "bytes": 22612,
+      "sha256": "5c6bc8b03aa1044fe91e443f66096c76a96b7771d0bb1c11cb910bb5d0fd77b6"
+    },
+    {
+      "path": "production/p0-sprites-20261113/qa/pack/verification.json",
+      "bytes": 14592,
+      "sha256": "4493a2cd140213125f1804a94b4acff27e26c7d34cf8bc31e79ef3df9e29de37"
+    },
+    {
+      "path": "production/p0-sprites-20261113/references/README.md",
+      "bytes": 1495,
+      "sha256": "44e0c4956cf5b69095897510a46e4044ea9b217269fcbbc088fbfd4472113da5"
+    },
+    {
+      "path": "production/p0-sprites-20261113/references/reference-research.json",
+      "bytes": 12889,
+      "sha256": "4037f635d81d0e8248ad65541feb8ef6a0929df8e49d5b9f1df7a0c52010fcca"
+    },
+    {
+      "path": "production/p0-sprites-20261113/references/research-addendum.json",
+      "bytes": 18690,
+      "sha256": "3e7d01dae7fecce940f1da274eeac6db2fd1e83959005959fd7a556278b987a2"
+    },
+    {
+      "path": "production/p0-sprites-20261113/suivi/README.md",
+      "bytes": 4909,
+      "sha256": "4600ae7dc6f0341fdbb59788ea29d71c06999b1ebfd0d866ffac101ba53d6f7b"
+    },
+    {
+      "path": "production/p0-sprites-20261113/suivi/Yautja_Sprites_P0_20261113.xlsx",
+      "bytes": 169608,
+      "sha256": "b5d303bec0cd02866a47b8f05a126e05aab7c5755c5e951ace98a0e952d996d3"
+    },
+    {
+      "path": "production/p0-sprites-20261113/suivi/build-request.json",
+      "bytes": 2049486,
+      "sha256": "d9c803db2818d027d3bf7d5fe76a5a52f4c05c35a8082fd3dc98f58e1c9dec96"
+    },
+    {
+      "path": "production/p0-sprites-20261113/suivi/coverage.json",
+      "bytes": 761205,
+      "sha256": "26d4598314aaaa1131bbc5778f839f03509bd7633db350191315b353ad1267fb"
+    },
+    {
+      "path": "production/p0-sprites-20261113/suivi/source-protection.json",
+      "bytes": 42209,
+      "sha256": "0b286c61939927114006bad7d8693af28ed157f7c8709c37078f2393da68851b"
+    },
+    {
+      "path": "production/p0-sprites-20261113/suivi/verification.json",
+      "bytes": 5113,
+      "sha256": "38cf79a6c896ee1ac64e81a6fec4e04675271a408c7a542dfc9e204fb9aa0fce"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/build-pack.py",
+      "bytes": 34019,
+      "sha256": "71f61a7db765e1fd7cf731ccac347c3529627dd4e54f6f5dacbed9170d975f05"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/build-workbook.py",
+      "bytes": 1740,
+      "sha256": "6b430c88531d93998dccdc29cc0ec30f192a63db20554840b245008b7efe7228"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/qa-browser.mjs",
+      "bytes": 10839,
+      "sha256": "6996e2286c3c7c5e8a255b3e739ca0df0af27866738a02602e3fde2050d2b400"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/review-template.html",
+      "bytes": 20520,
+      "sha256": "f3f9e61b665398a6e5e5a87726be2c55f337810b79c33baa16d42c9b7f332d82"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/verify-pack.py",
+      "bytes": 438,
+      "sha256": "ec912dd09af8e954a1c174cf0621fed945c56b58846beb07708012d95e8df91e"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/verify-workbook.py",
+      "bytes": 847,
+      "sha256": "78204d21205b49ec829f9a3fa349c599341eda5bebf6ead925eb3ad50e259123"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/workbook_lib.py",
+      "bytes": 54692,
+      "sha256": "10d3abce0755cceb1c25074ddad168bd9b21b0cd8eb40379540f5e60bd8f02c8"
+    },
+    {
+      "path": "production/p0p1-20261109/suivi/Yautja_Priorites_P0_P1_20261109.xlsx",
+      "bytes": 13911417,
+      "sha256": "78e3de92a382bbd9d309cc1b4459a0c8e3216c0a7617efac9935458a918e7feb"
+    },
+    {
+      "path": "production/quetes-vivantes-20261109/Yautja_Quetes_Vivantes_Bible_20261109.xlsx",
+      "bytes": 427081,
+      "sha256": "5344019af67069a48268ae866498b4552fdad83ae996cbe002868cfefde2931c"
+    },
+    {
+      "path": "production/quetes-vivantes-suite-20261109/Yautja_Quetes_Vivantes_Suite_20261109.xlsx",
+      "bytes": 498931,
+      "sha256": "39c2e6488d6b3362a3d575b0ff07afdb9b6bb2dfb38def857c5a2789143a34c4"
+    },
+    {
+      "path": "production/reprise-chasse-bible-20261109/Yautja_Reprise_Chasse_Bible_20261109.xlsx",
+      "bytes": 84885,
+      "sha256": "5658ef76f73c8afb8e95ccd3e8a6f0b049db24886a1a23fce7694bcbb8e62355"
+    },
+    {
+      "path": "production/ship-interior-25d-20261105/yautja-interieur-25d-v1.6.0.xlsx",
+      "bytes": 25233,
+      "sha256": "3aeda622cdeb39b24c04f925fb32270acdb9f913750e90e99633aa90caf396b4"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/Yautja_Skinning_Canopee_20261109.xlsx",
+      "bytes": 110378,
+      "sha256": "fc7c871a26218fb8b09a9463a9d67884a6f29c848899171ced5c7362125abc79"
+    },
+    {
+      "path": "production/skinning-canopy-20261109/qa/document-first-export/candidate.xlsx",
+      "bytes": 109710,
+      "sha256": "3d7b24ca7b84a1091cd7e93f4bac0fa338d8ca4e4598813c92c824e514a84656"
+    },
+    {
+      "path": "production/wolf-castle-arrival-20261104/wolf-castle-arrival-20261104.xlsx",
+      "bytes": 60621,
+      "sha256": "0eec2649633d36be6ed5753f1b3c6336e1772c250e51d04584e91f4b940324f9"
+    },
+    {
+      "path": "public/aide/YAUTJA_V112_MECANIQUES_CHASSE.xlsx",
+      "bytes": 740369,
+      "sha256": "39f9470537721b13766bf4436d0f43623e06d1bee8c860ec570a4ab1f4f867ec"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/glypic.webp",
+      "bytes": 6004,
+      "sha256": "41d64588928742251f424bc2ebe073d1845877224ef2193fe78d49535df2bbed"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/instinct.webp",
+      "bytes": 5572,
+      "sha256": "773c8164146ced141c592fa1ed785d80ad5ef6662cf283ef37664955dafb549a"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/nova.webp",
+      "bytes": 5692,
+      "sha256": "6aac14a067f8b9eeb152c62fe5320ca87905d37777dddd60d199bd70db405f21"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/paroxysm.webp",
+      "bytes": 5580,
+      "sha256": "97212abde1053892d8bfd8b73d4ca5f6627dbf9477365f648bf4eb6b830a8057"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/requiem.webp",
+      "bytes": 5992,
+      "sha256": "6cb669139f310541896f89fd5576b38f6de62e9493d128c99c06aa5dca21def1"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/tyrant.webp",
+      "bytes": 6002,
+      "sha256": "7f54b0c28b2321fbd7bdf0cfe3e56f3b7a4f21d38e43c17257ca81a489051534"
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/warlord.webp",
+      "bytes": 5986,
+      "sha256": "614f778a9399cd8fdba73cc39939be9d412fd61409b95d9085415d4b011d8e56"
+    },
+    {
+      "path": "public/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp",
+      "bytes": 130652,
+      "sha256": "20fada2367f5ed884d002db8488b2bd96423d756da81ee5c6e65350f823d22ec"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/berserker.webp",
+      "bytes": 7446,
+      "sha256": "a2a498756224bc744ba3b6847296ba61a0ffb3e5cf0dd15bcc0f2b9b1ac12f80"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/celtic.webp",
+      "bytes": 7770,
+      "sha256": "bc8d1a5a856cbe971dbf7ea65119e9e1f0ce6a1d99734c485b0764e9c05a27f3"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/chopper.webp",
+      "bytes": 6354,
+      "sha256": "d0db211fa256f0870984ce2a5ecb0ab39e6c92250ea3909ee40007ac2fc32c41"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/city.webp",
+      "bytes": 8902,
+      "sha256": "3027b433763b8caa67b1b505ddf9b2e19f28624e87085f63670582315b98fbd6"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/dek.webp",
+      "bytes": 7674,
+      "sha256": "9d4123dc4bae2253f74d532814cb44d0afdb4be6ca3750f85d84c36714b0f5ee"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/elder.webp",
+      "bytes": 8848,
+      "sha256": "ecf3acb783d5cae177f9dd6c9f670cefe0c0007a7df2ad1759119daefae6ba0f"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/enforcer.webp",
+      "bytes": 8284,
+      "sha256": "5939e2be0e0411a01a8329b2fb393f907f3b337623663011d454e56116fdd12b"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/feral.webp",
+      "bytes": 8260,
+      "sha256": "e928965e3d41b230c25fdee3ae144c340a5bd8972c07a508737c997b52616c75"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/fugitive.webp",
+      "bytes": 6926,
+      "sha256": "db3a586ad6d8b63dfc6f087968c4d3ac2a5ae5b474bfe41c9eb67175555eabdb"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/jungle.webp",
+      "bytes": 7210,
+      "sha256": "76186196c8b3bb289aa7dc935dc5afb6948f8566fc233f79bf5e7090392b457c"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/scar.webp",
+      "bytes": 7260,
+      "sha256": "9523979a10ad5810fb5316a7944662e3bdd12c2636a12d2408a45fbd9529681f"
+    },
+    {
+      "path": "public/game/assets/v3/actors/yautja/hunter/masks/registered/wolf.webp",
+      "bytes": 8070,
+      "sha256": "a792fbcfa61a66dd49cb0c7fdccad7459a71b0f7b1c8b8722c701caa779a9f2f"
+    },
+    {
+      "path": "public/game/biomasks-20261113/manifest.json",
+      "bytes": 533355,
+      "sha256": "b254593a8990797045cf6863fecca798aa6be94159f661fad47dc5e52d709109"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/arthos-reference-view.png",
+      "bytes": 1218136,
+      "sha256": "c21f8bfc52d47646e0774d1307adc85a71b7155be53c1b4a92dceca0a7e9668a"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/eclipse-reference-view.png",
+      "bytes": 1200902,
+      "sha256": "6bef5737c7f57d575148ab07db5f0c769137ded9ef44c940fd4ec67427475474"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/elder-phg-reference-view.png",
+      "bytes": 1464006,
+      "sha256": "71363050d043ef9cdb200de1a55314cec2aeb555ee617076f81cdefe0bfe26c4"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/exiled-reference-view.png",
+      "bytes": 1378480,
+      "sha256": "f7bb8a335d3252494cb127689c89b777c70e9ddcee18257477097e49af36a679"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/immortal-reference-view.png",
+      "bytes": 1452010,
+      "sha256": "e5cfccb5b41b899ad2c8240cb8badd6e86f1bbd1c0322bee6e42096c50f0a751"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/inferno-reference-view.png",
+      "bytes": 1209682,
+      "sha256": "083f948f390e33f8c1471af257a643846bdfaec8e909831aa81afa8942f4f432"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/journeyman-reference-view.png",
+      "bytes": 1239723,
+      "sha256": "3810731b8786b47466dff9a6c3b736d3a4bd052f0a6f6dcab12cfc6c4e7c120c"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/nocturne-reference-view.png",
+      "bytes": 1164822,
+      "sha256": "95adc807424703a7f5ddb99549ccb81f579ae54023da7806871321271e2400ef"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/phalanx-reference-view.png",
+      "bytes": 1359878,
+      "sha256": "e2faa039d11f9438195d56278341f992f8df7d626a53721cba6efffed0643ae3"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/phoenix-reference-view.png",
+      "bytes": 1255548,
+      "sha256": "b7b7164691740e33398152f65e0f9c62c26dfef8dbc6d052243d0c20894fd804"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/plague-reference-view.png",
+      "bytes": 1212292,
+      "sha256": "aa94cfa17660cb0a538da184936b43c6cfdbb6e9cd4dd89dd26d6dfeb4ffa96f"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/prophet-reference-view.png",
+      "bytes": 1065919,
+      "sha256": "42011ddd850c0a4cc91c09c840f946aa9105cfd99d17e316b7bdaa8c71b115a3"
+    },
+    {
+      "path": "public/game/biomasks-20261113/masks/ravager-reference-view-v2.png",
+      "bytes": 998539,
+      "sha256": "b5f223d0ae98bd23847359520edcc1279d5cf390bc53817d134f064d1e534518"
+    },
+    {
+      "path": "public/game/biomasks-20261113/review.html",
+      "bytes": 468976,
+      "sha256": "1dc0e2bc5c8b4516aa3769b9e2cb64746669867da78faa94dc6179915ba6d43b"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/manifest.json",
+      "bytes": 461967,
+      "sha256": "b1fa346f649cd5a1edb5f33f5dedb4132d9074b9628a028e3c12f6de4ef8542d"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/concept-v133-glypic.webp",
+      "bytes": 6004,
+      "sha256": "41d64588928742251f424bc2ebe073d1845877224ef2193fe78d49535df2bbed"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/concept-v133-instinct.webp",
+      "bytes": 5572,
+      "sha256": "773c8164146ced141c592fa1ed785d80ad5ef6662cf283ef37664955dafb549a"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/concept-v133-nova.webp",
+      "bytes": 5692,
+      "sha256": "6aac14a067f8b9eeb152c62fe5320ca87905d37777dddd60d199bd70db405f21"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/concept-v133-paroxysm.webp",
+      "bytes": 5580,
+      "sha256": "97212abde1053892d8bfd8b73d4ca5f6627dbf9477365f648bf4eb6b830a8057"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/concept-v133-requiem.webp",
+      "bytes": 5992,
+      "sha256": "6cb669139f310541896f89fd5576b38f6de62e9493d128c99c06aa5dca21def1"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/concept-v133-tyrant.webp",
+      "bytes": 6002,
+      "sha256": "7f54b0c28b2321fbd7bdf0cfe3e56f3b7a4f21d38e43c17257ca81a489051534"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/concept-v133-warlord.webp",
+      "bytes": 5986,
+      "sha256": "614f778a9399cd8fdba73cc39939be9d412fd61409b95d9085415d4b011d8e56"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/legacy-elder-project.webp",
+      "bytes": 8848,
+      "sha256": "ecf3acb783d5cae177f9dd6c9f670cefe0c0007a7df2ad1759119daefae6ba0f"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mask-feral-screen-original.webp",
+      "bytes": 130652,
+      "sha256": "20fada2367f5ed884d002db8488b2bd96423d756da81ee5c6e65350f823d22ec"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-01-jungle.png",
+      "bytes": 2624929,
+      "sha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-02-city.png",
+      "bytes": 1959679,
+      "sha256": "012836522b6e78090d272d26cc452c61050df6d3cb71148862b26959a608ca12"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-03-scar.png",
+      "bytes": 2210569,
+      "sha256": "a562d4b0105bf36f5b7d4796ac9f5595c483ee178dd1ee82fc643db5deff8c59"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-04-celtic.png",
+      "bytes": 2090338,
+      "sha256": "e21b903458a7bffde23aea21241e8f90b282f4b065b3d64a57d7edeb16bb1174"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-05-chopper.png",
+      "bytes": 2298739,
+      "sha256": "3cd116d3bc01742689ffe78b90f1780583accbf9c2b06fe6b8f508437c55767b"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-06-wolf.png",
+      "bytes": 2161338,
+      "sha256": "81669d98bf32426d039623247e2596ea70be17252ce01464a618f50e6cd17214"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-07-feral.png",
+      "bytes": 1609827,
+      "sha256": "ceba366a222414c5e078baa16b02ac5d1e010a641368e56a4c14ba3bf2e9aebc"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-08-boar.png",
+      "bytes": 2187096,
+      "sha256": "1ab476fe4ca264e3e5e2f2a61296dabda10d7e4aced96aeacb3078a901908aa7"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-09-snake.png",
+      "bytes": 2030382,
+      "sha256": "b8a839c9bde4b7dc77a2226e14909a248f27030241eb9079add3b76d8d2190c8"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-10-falconer.png",
+      "bytes": 2072756,
+      "sha256": "5130117d27a37344b2d2e354aa7e019c1e9c76bd6a928e1fbe1095b464c6735f"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-11-berserker.png",
+      "bytes": 2322146,
+      "sha256": "6764f7596d6443f4657340728f316d111a50ba6d662d270e5189bc4c2312f087"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-12-fugitive.png",
+      "bytes": 1828914,
+      "sha256": "ca224740b67227565edb8e37b9efa6a0fc70d0ecb187ddc25700a3f827b0652c"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-13-dek.png",
+      "bytes": 1711898,
+      "sha256": "ddaf27997eec01c215ee81b123af0679e3479516e0250c66e5a90e144b4ef2c8"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-14-enforcer.png",
+      "bytes": 1541355,
+      "sha256": "6a3e9bf39a0ac13fc505b9957e187927364a50a8e3a3399919cec3fea14dad75"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-23-samurai.png",
+      "bytes": 1637768,
+      "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-24-viking.png",
+      "bytes": 1767889,
+      "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-25-valkyrie.png",
+      "bytes": 1355325,
+      "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-30-emissary.png",
+      "bytes": 1247126,
+      "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/mk-35-mr-black.png",
+      "bytes": 916066,
+      "sha256": "eac1bb5d969c2a2421b7064bcbe2d0d84c30d16db7768cbb883b1f8708a1f52b"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-alpha.png",
+      "bytes": 1591809,
+      "sha256": "7d50dab62213520dbe50f126d4af03405e4b30f3dfdc903cf5a11dcb9d1d57e9"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-captured.png",
+      "bytes": 1321450,
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cleopatra.png",
+      "bytes": 1618663,
+      "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-arthos.png",
+      "bytes": 1218136,
+      "sha256": "c21f8bfc52d47646e0774d1307adc85a71b7155be53c1b4a92dceca0a7e9668a"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-eclipse.png",
+      "bytes": 1200902,
+      "sha256": "6bef5737c7f57d575148ab07db5f0c769137ded9ef44c940fd4ec67427475474"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-immortal.png",
+      "bytes": 1452010,
+      "sha256": "e5cfccb5b41b899ad2c8240cb8badd6e86f1bbd1c0322bee6e42096c50f0a751"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-inferno.png",
+      "bytes": 1209682,
+      "sha256": "083f948f390e33f8c1471af257a643846bdfaec8e909831aa81afa8942f4f432"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-journeyman.png",
+      "bytes": 1239723,
+      "sha256": "3810731b8786b47466dff9a6c3b736d3a4bd052f0a6f6dcab12cfc6c4e7c120c"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-nocturne.png",
+      "bytes": 1164822,
+      "sha256": "95adc807424703a7f5ddb99549ccb81f579ae54023da7806871321271e2400ef"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-phalanx.png",
+      "bytes": 1359878,
+      "sha256": "e2faa039d11f9438195d56278341f992f8df7d626a53721cba6efffed0643ae3"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-phoenix.png",
+      "bytes": 1255548,
+      "sha256": "b7b7164691740e33398152f65e0f9c62c26dfef8dbc6d052243d0c20894fd804"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-plague.png",
+      "bytes": 1212292,
+      "sha256": "aa94cfa17660cb0a538da184936b43c6cfdbb6e9cd4dd89dd26d6dfeb4ffa96f"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-prophet.png",
+      "bytes": 1065919,
+      "sha256": "42011ddd850c0a4cc91c09c840f946aa9105cfd99d17e316b7bdaa8c71b115a3"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-ravager.png",
+      "bytes": 998539,
+      "sha256": "b5f223d0ae98bd23847359520edcc1279d5cf390bc53817d134f064d1e534518"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-vex.png",
+      "bytes": 1383446,
+      "sha256": "f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-cosmetic-wretch.png",
+      "bytes": 1361371,
+      "sha256": "ffd3ad1a8060cad2ab2b84e39fdeb727ac71c7db19b1c1523f4889cba2782213"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-elder.png",
+      "bytes": 1464006,
+      "sha256": "71363050d043ef9cdb200de1a55314cec2aeb555ee617076f81cdefe0bfe26c4"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/originals/phg-exiled.png",
+      "bytes": 1965781,
+      "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/concept-v133-glypic.png",
+      "bytes": 1897666,
+      "sha256": "8e387b8de3b4fb848cdec30791a2b8f5b0f13abf9df99da86af0bbdb56b24814"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/concept-v133-instinct.png",
+      "bytes": 1510089,
+      "sha256": "f757b15525b97ceebf9ada9e0ea0d301bc2dbc665ba5f00001881123c16549f8"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/concept-v133-nova.png",
+      "bytes": 1325453,
+      "sha256": "4db465cb6cea15ebe6dadf514c7112fd6d17b89b19818efc4786be363e862524"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/concept-v133-paroxysm.png",
+      "bytes": 1473570,
+      "sha256": "5cec24dc24361baf33b402bb26f7f4ce2d017d9399b76eacd288dbc46cdfa0a6"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/concept-v133-requiem.png",
+      "bytes": 1604763,
+      "sha256": "8760c3cb3813ca610109e7158c800d51ccbd00b63ec581c6bd5f37620b7b8604"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/concept-v133-tyrant.png",
+      "bytes": 1151486,
+      "sha256": "9fcf493599046676611adbc0d6cdad9a800518b832772ad482081dad56c84dc4"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/concept-v133-warlord.png",
+      "bytes": 1363243,
+      "sha256": "73b5552d3e8927f8ee42e3fcf5a7b8721ccf835e6da1058b0e48b60517e68c31"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/legacy-elder-project.png",
+      "bytes": 1092751,
+      "sha256": "f98b242a683aed706aafe99e3ca6a8824da7aee5ccf8db8f26180a40d5bd8e8b"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mask-feral-screen-original.png",
+      "bytes": 1315114,
+      "sha256": "cb8318b7dbbc73825c669928d317c526f713dfce972625e12246a39b3a390a56"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-01-jungle.png",
+      "bytes": 2345073,
+      "sha256": "6440f135b78b050c6a065b40c7829703e047eb6b65f08951fb57fc74c72158ea"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-02-city.png",
+      "bytes": 1936471,
+      "sha256": "b73312efe789f8b4d38a39f64977d5c5f11a5e4b0bd87417a768016fc0b38dea"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-03-scar.png",
+      "bytes": 2114412,
+      "sha256": "38601436cb2f437c077684498bd083d5d2dae16d0848b1c6106f611783f895b9"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-04-celtic.png",
+      "bytes": 2053283,
+      "sha256": "b5a353cc7d3a968efd7637ef2f16dbadb090f8921e1ac447feeb14a955cdbd8d"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-05-chopper.png",
+      "bytes": 2073008,
+      "sha256": "08f38f1ec42919918a415b8063e3032cff7171c3976fbf74ebe1459fff7321f0"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-06-wolf.png",
+      "bytes": 2161338,
+      "sha256": "81669d98bf32426d039623247e2596ea70be17252ce01464a618f50e6cd17214"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-07-feral.png",
+      "bytes": 1607625,
+      "sha256": "d80dc4b41a9c6dec9760b18770db61dc28ecaf791c399fa6ba08591ab32d0ad9"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-08-boar.png",
+      "bytes": 2178493,
+      "sha256": "0f3d77936521b78bb7219def7485de2815fcf46bffe03af191b8ed84e50bb7b0"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-09-snake.png",
+      "bytes": 2030419,
+      "sha256": "140706433c6bdd91609a60589aaa3b561acf7e2e3b561594334b73228211fb19"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-10-falconer.png",
+      "bytes": 2004048,
+      "sha256": "9518a0f276eb961a3c2e72d6ee61d474c555adb453689ce625474bfc50b2f886"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-11-berserker.png",
+      "bytes": 2216169,
+      "sha256": "030990c223881ec4a646bc9b0202adeb7b989ca5543121c0883b3af9cb4b7b67"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-12-fugitive.png",
+      "bytes": 1769726,
+      "sha256": "29f77ddfad1db6b13cf703a54d6aa4eb1669aea1e313be3f15233dff05e6edd3"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-13-dek.png",
+      "bytes": 1695972,
+      "sha256": "4964507623b2cb8d49a600dea07d2f6ddc20c6d3ad473f8509e695c8cf665f17"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-14-enforcer.png",
+      "bytes": 1485184,
+      "sha256": "6c629a28f4f143983151b070c30086e21100c80f0a2b07d75ef4f21c4ece38f5"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-23-samurai.png",
+      "bytes": 1598081,
+      "sha256": "97b4cff30423b91bc50562ded3263501a0d0a53665ac44bece193865bb623acf"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-24-viking.png",
+      "bytes": 1757121,
+      "sha256": "4724a14b9b6c42f82cf023128a00845ab6b1ed5ff0cda5f5170a53b2700264b1"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-25-valkyrie.png",
+      "bytes": 1321413,
+      "sha256": "3c111defa672ffdecdc1950f2712936660b35318a2b12e3cd6b4d2134d359e9b"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-30-emissary.png",
+      "bytes": 1301386,
+      "sha256": "5980ae75824563137eb8f5378b643bbe8da330d82162dc41b93f65380b1d76d7"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/mk-35-mr-black.png",
+      "bytes": 1544249,
+      "sha256": "3c1d44c33a1c3ebd63a080ec6b5395c45a31ae0c4a85e8ef30803b8fac8a051b"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-alpha.png",
+      "bytes": 1536607,
+      "sha256": "1bc9edf3c7f1d627e74a7cb9e5e12d16f6ce66f917297bd7d120a11d90f20dc0"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-captured.png",
+      "bytes": 1323162,
+      "sha256": "f3b229d194ce266b1f4b1bad8e2341af6e08f14cc88a9e69291cf3635ca765b8"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cleopatra.png",
+      "bytes": 1520723,
+      "sha256": "14c38b01162d37d6960de9ae18c19bdaad9745e62112a00a226188d2327c98f0"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-arthos.png",
+      "bytes": 1299293,
+      "sha256": "775c00d5d3af391d38b4beb9ad15108102c76837658f594df2879a2c46ca960d"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-eclipse.png",
+      "bytes": 1284213,
+      "sha256": "549e422c101b8b096e7d8e5bd91a0124095de2d68d0cf20e354739a65124713c"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-immortal.png",
+      "bytes": 1528931,
+      "sha256": "47f5c19047947dcdc932f60fcf64c867082bb3cd6f9dc982b1fa1fc7c2d737d7"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-inferno.png",
+      "bytes": 1357279,
+      "sha256": "5e2b8ed759a86e39b9b6e8e2ad73d7f12c743f7e5547d96cac06755395d10b73"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-journeyman.png",
+      "bytes": 1719834,
+      "sha256": "9eb8a58f1ac38eb59cd47f058b39c86070628320565e9bbafac612ead41fccbf"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-nocturne.png",
+      "bytes": 1437481,
+      "sha256": "668e9418eb92ac76cec9636aa325463f76566b7c0c3cee04943b2db1d3eb4718"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-phalanx.png",
+      "bytes": 1313831,
+      "sha256": "a5e3213b1722de0ef6e620588c26bf7574ca530747aa68ea33cdeabf9bd88b4f"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-phoenix.png",
+      "bytes": 1379343,
+      "sha256": "72bb9af2d8d6d80c66a1f0991498175b669e8e50f5e3e16e95712f0bf5361d30"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-plague.png",
+      "bytes": 1477419,
+      "sha256": "a32bb00bf480633d0125923c33c25b08085fc55d47e6f136f331c9e970961c70"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-prophet.png",
+      "bytes": 1492440,
+      "sha256": "c1ac446644a772dd9177bcad0f0cebf1c3e8c000d7ca1fa5e7920a3662d3d283"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-ravager.png",
+      "bytes": 1421637,
+      "sha256": "2f9af33929bf60b383cc3af8cfe41842928d672bee1e9258952952c72aaf5c42"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-vex.png",
+      "bytes": 1357598,
+      "sha256": "de77d6fa149fecfdacdab9d37461e178049c5dd6760fabb85e2592650a10582b"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-wretch.png",
+      "bytes": 1792341,
+      "sha256": "e2433a5ce815a7764e8f8ee8a8e14016f1b6306902d39457edff2342e94f93f4"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-elder.png",
+      "bytes": 1617875,
+      "sha256": "ff2ff8c4b690d0b1896cebdc3f3b6fd5109b423db2737ce49f4533cb6b26dfd2"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/phg/phg-exiled.png",
+      "bytes": 1669822,
+      "sha256": "c7522dfaf23b478cb17c4ea1664c5eb4b0093709cccc0941ef8cb5e16d20687c"
+    },
+    {
+      "path": "public/game/biomasks-dual-20261113/review.html",
+      "bytes": 403174,
+      "sha256": "17df1df15d8e6b0df2380f294fb1b1f86c9ad93bab51561b59a6763a496b6d9c"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/manifest.json",
+      "bytes": 318034,
+      "sha256": "324927d19c5890d616e092b8a29502c4337067eb3ac0e07c4bf45de00cd96a96"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-ahab-sdcc-2014.png",
+      "bytes": 1199987,
+      "sha256": "cbfca3d608fbb6105ac0faf020556c924bf3206024916a3347a15689bee97aa8"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-clan-leader-toyfair-2016.png",
+      "bytes": 643382,
+      "sha256": "0bf93e65512fcbe4b299496a154b7a8d17b8ea959f73070a9cbebeb407d6d8de"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-golden-angel-horned-2018.png",
+      "bytes": 1581529,
+      "sha256": "242b7b44d9b9044f93075aa06461922324ace436533c9d6ff0b3dc1b0aa2a170"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-golden-angel-smooth-2018.png",
+      "bytes": 2053003,
+      "sha256": "bfd70909252ce3a0db63e36960cea30b1a8d9eb554b82849b5ce2bf66c24e5ae"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+      "bytes": 1332584,
+      "sha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-kwei-prototype.png",
+      "bytes": 1988391,
+      "sha256": "c527b5214fe814b44561708ff8369fa55bad4072913c3f139b72f3351fef31f8"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-lava-planet-series-10.png",
+      "bytes": 1405747,
+      "sha256": "c40762991c5c9d18f1b82f36f195c39dc0f907fa8abd543138dbc314775cc851"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+      "bytes": 1228291,
+      "sha256": "1d9016e4e45c733cd9379212f052392c1b0e838cb39b65286044d24c54cc1773"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-scout-lost-tribe-series-6.png",
+      "bytes": 1674334,
+      "sha256": "74aae73cc0eab5652a3aefef005fb859cd8843487add059e838148aaace93f66"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-viper-series-12.png",
+      "bytes": 1327509,
+      "sha256": "3cf6348f99e19d848d847a254d4785ad685c469540a7a72e8b124bfdb9398ca4"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-warrior-series-6.png",
+      "bytes": 1613778,
+      "sha256": "cea1ce8f19c50425fd43ebd93ade572533200e5164bf4768ea9f4f892724e784"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_11.png",
+      "bytes": 34341,
+      "sha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_12.png",
+      "bytes": 33677,
+      "sha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_14.png",
+      "bytes": 42498,
+      "sha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_16.png",
+      "bytes": 46738,
+      "sha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_17.png",
+      "bytes": 47282,
+      "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_21.png",
+      "bytes": 50901,
+      "sha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_23.png",
+      "bytes": 47246,
+      "sha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_detox.png",
+      "bytes": 25760,
+      "sha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/originals/predator_kawaii.png",
+      "bytes": 39944,
+      "sha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-ahab-sdcc-2014.png",
+      "bytes": 1267172,
+      "sha256": "be2da769357b9a8f23da53e189fb06794ff2e8540df9828d75e9a0e7d17017da"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-clan-leader-toyfair-2016.png",
+      "bytes": 612812,
+      "sha256": "fa2f508a297dd72d62e7905e069777b71ac892b95e1b6b4b3e9b6bf0451c5c4d"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-horned-2018.png",
+      "bytes": 1657687,
+      "sha256": "5d0c74574112207551b0db2faf39c9f00fc0bb8a3e493d2dfa2e8305f8c25da5"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-smooth-2018.png",
+      "bytes": 2035399,
+      "sha256": "ead8ef4e6151816a5a450c1a7426d55d46d3a054084fe7c9ac2bce67177931c6"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+      "bytes": 1204926,
+      "sha256": "736c6ba757218754c93dbf60de33d711ca575e5be859a859aa60f3512daef195"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-kwei-prototype.png",
+      "bytes": 1948211,
+      "sha256": "e81ef9a9cd67af069cb3837ded3b752df529373eed63f00ba7a99798d951a373"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+      "bytes": 1489390,
+      "sha256": "6b9669d9c04961cb70607957e31668872b2b0ef3084e5305a8e2c91626678f47"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+      "bytes": 1223247,
+      "sha256": "7ed4e12aa44e96421b7867ac14fe43b2c8ca9460b3b966402943c1b064593bf3"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-scout-lost-tribe-series-6.png",
+      "bytes": 1671465,
+      "sha256": "9024c8e5f351a2ec4ae87734b6078e2a2c8bd3ee7f515fec75e26b87f272ef83"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-viper-series-12.png",
+      "bytes": 1409710,
+      "sha256": "35b5d83fad1ab53ee3fe87a56abcea05626b61e3cbeb8bc35f96e4184d729880"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-warrior-series-6.png",
+      "bytes": 1552865,
+      "sha256": "7b35b21ccce4f5edf945b7eb6998d65d10c31d22aa91c237756f020161a52b18"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_11.png",
+      "bytes": 1741313,
+      "sha256": "d373fcda9d0395e237e89aa52500f64e2769547d10a328f545613d569d9b9336"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_12.png",
+      "bytes": 1392134,
+      "sha256": "09ccf409a0ea9a1db3aad1ba32e7b3a7b5cc7b145a343d6a6b2ba26bc397b40f"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_14.png",
+      "bytes": 1541881,
+      "sha256": "c00797882864330550efbd2047ea51e1c1efc430b826d8f897e290b293227c48"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_16.png",
+      "bytes": 1482547,
+      "sha256": "b62a7e01e6a2b86007e82bdebd695a6e2747c5d2d0126b0297211c60d7a9e7c2"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+      "bytes": 1634260,
+      "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_21.png",
+      "bytes": 1394365,
+      "sha256": "f00ab163c53d9ecaa36eeed008ac66db7fdddfe419d8324c294703104714426a"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_23.png",
+      "bytes": 1737498,
+      "sha256": "a10334918a91f6a747673a3a4c99af71976731805543d02b62af720979319b66"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_detox.png",
+      "bytes": 1901915,
+      "sha256": "bb6ff95ac9f7df750878c999cfcc4efa406854b84be03c2fd4d95d8a6df677ee"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_kawaii.png",
+      "bytes": 1800199,
+      "sha256": "a32167ef2d61ed12de0639aa6097314dd5c891ca271cb007fac84944f6c57204"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-ahab-sdcc-2014/ahab-concept-1.jpeg",
+      "bytes": 780645,
+      "sha256": "0df0168a70edecd267d467f0a9df1aa005e9ed829ffaa39cc2641099af78252b"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-ahab-sdcc-2014/ahab-concept-2.jpeg",
+      "bytes": 670123,
+      "sha256": "632a778116a6eed64d2da86d4639b71b14f451499faacca945dc590feee0c305"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-ahab-sdcc-2014/ahab-sdcc-1.jpg",
+      "bytes": 1586399,
+      "sha256": "682b09d1ee5e0184513d21107042cb9c93b944f77a4823ca76e5375c989ab27e"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-ahab-sdcc-2014/ahab-sdcc-2.jpg",
+      "bytes": 1529103,
+      "sha256": "1efb0768b410b3903ae455d1796dfb42132cdda656fc426d34503a86f8ed944b"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-ahab-sdcc-2014/ahab-sdcc-3.jpg",
+      "bytes": 1523153,
+      "sha256": "37ea67c8b2eb911b1b9a1343a204f7a0e136eedd7ead96729bf4479f9857ac01"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-clan-leader-toyfair-2016/clan-leader-toyfair.jpg",
+      "bytes": 316925,
+      "sha256": "d5c4a2b4a437b8266a0655d63f27fca32026881fabcde5cdb889451b05a015f7"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-golden-angel-horned-2018/golden-angel-3.jpg",
+      "bytes": 461999,
+      "sha256": "7399bac54b96457c6773b6117be80d8cd3c79b8d9ebbf7886f470dd9a7fe23ed"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-golden-angel-horned-2018/golden-angel-4.jpg",
+      "bytes": 914191,
+      "sha256": "e12f787136f778af2c141cb1988bde57754993094736510e1d351f4fbe1c7d8a"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-golden-angel-smooth-2018/golden-angel-6.jpg",
+      "bytes": 834554,
+      "sha256": "fdf3bd25b098154c2a02f5d3291483a2cdf4f04cfbe8b617f6810c7692b7de60"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-golden-angel-smooth-2018/golden-angel-7.jpg",
+      "bytes": 899061,
+      "sha256": "7833239d3465eb403b4d14f4e58f4081f2a0e0adafe5f226acf65e07e86eb6f5"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-hive-wars-series-10/HW-pred-3.jpg",
+      "bytes": 152782,
+      "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-hive-wars-series-10/series10-catalog.jpg",
+      "bytes": 109824,
+      "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-kwei-prototype/kwei-2.jpg",
+      "bytes": 568952,
+      "sha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-kwei-prototype/kwei-3.jpg",
+      "bytes": 533718,
+      "sha256": "5e783d1b2c0ea50168f991f5bddbf977c0860b68a5854fba9b637e173de9094c"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-lava-planet-series-10/LP-pred-1.jpg",
+      "bytes": 139839,
+      "sha256": "692ab99d15ad049643c590578e8c9a660438fe066334cdb39a0ce0e1bc885fc7"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-lava-planet-series-10/series10-catalog.jpg",
+      "bytes": 109824,
+      "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-nightstorm-series-10/NS-pred-1.jpg",
+      "bytes": 146128,
+      "sha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-nightstorm-series-10/NS-pred-4.jpg",
+      "bytes": 183905,
+      "sha256": "cf8c71bf11c2dfbcf6fd7391ce1795b94b6608bfe55950aa2c153f9dfd325a7c"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-nightstorm-series-10/series10-catalog.jpg",
+      "bytes": 109824,
+      "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-scout-lost-tribe-series-6/scout-direct.jpg",
+      "bytes": 43654,
+      "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-viper-series-12/viper-1.jpg",
+      "bytes": 227815,
+      "sha256": "17c06c6b2df0fa80bd7a2627627e08147ac71d826de3399f493e0090e3e55ad2"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-viper-series-12/viper-7.jpg",
+      "bytes": 231654,
+      "sha256": "a45be4fd459f4f3a804044ac692124cc1f7b8998e81be73bda75382bf229f845"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-viper-series-12/viper-catalog.jpg",
+      "bytes": 181807,
+      "sha256": "ca664375aaf1e6fb4a457a9eec88ccbcef757b9015de6462b054264fc1b3b02d"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/references/neca-warrior-series-6/warrior-direct.jpg",
+      "bytes": 39858,
+      "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6"
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/review.html",
+      "bytes": 276289,
+      "sha256": "626942e8617f33a68601cff612472e985a33b38297b240eb786ca3680be3f0d6"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/manifest.json",
+      "bytes": 122152,
+      "sha256": "a683c9a046a6c837d614d6c07ac8385d91b331188995c0c8f33c62f31b783da5"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "bytes": 1321450,
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+      "bytes": 1618663,
+      "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "bytes": 1247126,
+      "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+      "bytes": 1965781,
+      "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+      "bytes": 1637768,
+      "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+      "bytes": 1355325,
+      "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+      "bytes": 1767889,
+      "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/review.html",
+      "bytes": 119452,
+      "sha256": "27317ecf2f556cd168adcd2b8acd33be6598735d7c872d1aaf6d1184a7b4267c"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-emission.png",
+      "bytes": 231650,
+      "sha256": "c62dfd7c1999d6ecbc73cdd9270a443761278b3f79302f7d09a2a70b0e14529d"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-pylon-v2.png",
+      "bytes": 987501,
+      "sha256": "de2eb32e078af6964a5e7e98dc671c33940d0e59644e8d22117abf069c16e361"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/homeworld/hwa160-010-architecture.png",
+      "bytes": 1421451,
+      "sha256": "88b6f151278cf73c08f6a10edcb11e31b9fe031b4c8b9321cfdf5f43976ef8d0"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/manifest.json",
+      "bytes": 46617,
+      "sha256": "d9a2e23591c948e08e484a82965e74868f9a473fedffc2176509e8bbc4572dcf"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/masks/vex-front-v2.png",
+      "bytes": 1383446,
+      "sha256": "f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/references/HWA160-010-original.png",
+      "bytes": 2530735,
+      "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+      "bytes": 1215497,
+      "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/review.html",
+      "bytes": 61908,
+      "sha256": "87023b2c3e8d94cc5aa000dc96bd4ada658dd27c33ddc93d60fef90deac0d4b2"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-001.png",
+      "bytes": 970830,
+      "sha256": "fe7417b98b81a9416b2023363bbba2d70f45fcc730671134d051d420f89058e1"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-014-module-brazier-pillar.png",
+      "bytes": 614945,
+      "sha256": "5696b35476e509d4314739ca5dede7ceb0e74d713c217dde22b54f4d9e9c06fb"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-014-module-ritual-circle.png",
+      "bytes": 1702861,
+      "sha256": "c892cb05b3f4ef04d1796f96228c83052bef85cf49947e5caa419e0c1a3bdc82"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-019.png",
+      "bytes": 1199346,
+      "sha256": "6fdee997e1183142ef9528693335a8d4ade41009c127eb077e37b2befccbd1d9"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-029-module-hanging-skull.png",
+      "bytes": 1037263,
+      "sha256": "ce4b4c44b9095bbf4f325dddbcace16d25a67824a117a03b93d3be7d34210b86"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-029-module-trading-counter.png",
+      "bytes": 2005935,
+      "sha256": "cd98638a7ddad8ff4732a2e1c21e95272449ad98039f124b89f30c44ab963d29"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-032.png",
+      "bytes": 1759850,
+      "sha256": "813ff1d2079fb280715dbb30c0896dc8a2b26c6618898c7fe9efaec2dcd4b0f8"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-040.png",
+      "bytes": 1494348,
+      "sha256": "548d7f226bc7603eee260cc5a391ce7da386a554085ae64f58aa2e4565ec5cea"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-064.png",
+      "bytes": 1560929,
+      "sha256": "63fb0c824ab9a8da63a5bb73cb767f41abc3fa084f7435b6f0451ed990a4bc84"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-068.png",
+      "bytes": 1526929,
+      "sha256": "8aa5e5e9d8e50d33026609d44f3f64cc9fd4902715973ae94def6e9caa5bdadd"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-073.png",
+      "bytes": 1560197,
+      "sha256": "ff322ff76849cd1e6361feec51d56c915239c49916464879920e5a968eb2ea22"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-081.png",
+      "bytes": 1248600,
+      "sha256": "d86b19f99988ab26250c1db3277b8c092f68383c5abbb13f6907c28188f9ce1f"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/homeworld/HWA160-084.png",
+      "bytes": 1992929,
+      "sha256": "a1ab78645450e0a1f38cb1b6add417d6427c49d2dd8f9a53eba82b5391440a7e"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/manifest.json",
+      "bytes": 1288580,
+      "sha256": "f11cb10dae09c43d939ba4711ae08cc2ab6cde5d0f7e98dac40793e57e712a59"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/masks/alpha-front.png",
+      "bytes": 1591809,
+      "sha256": "7d50dab62213520dbe50f126d4af03405e4b30f3dfdc903cf5a11dcb9d1d57e9"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/masks/mr-black-front.png",
+      "bytes": 916066,
+      "sha256": "eac1bb5d969c2a2421b7064bcbe2d0d84c30d16db7768cbb883b1f8708a1f52b"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/masks/samurai-front.png",
+      "bytes": 844670,
+      "sha256": "aeb8ab54027047c31316d20c7a3497265f7d3806351bc0abe46b94f23b91f232"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/masks/vex-front.png",
+      "bytes": 1437392,
+      "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/masks/viking-front.png",
+      "bytes": 1537978,
+      "sha256": "1b4403348b632f1fadd9f4b0b737d87a32512835602ba7ca82578a2426dd22d9"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/masks/wretch-front.png",
+      "bytes": 1361371,
+      "sha256": "ffd3ad1a8060cad2ab2b84e39fdeb727ac71c7db19b1c1523f4889cba2782213"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/barrier-damaged.png",
+      "bytes": 1228587,
+      "sha256": "aa9da0217b57f803989cdb2f9f06cec859f10956edfe3863b33c75c29508bf2d"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/barrier-intact.png",
+      "bytes": 1206652,
+      "sha256": "bf9ce8dad88b208da09bc1d53a92e38fb4b5456c86163a4c3216dea7a30b5d72"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/beacon-active.png",
+      "bytes": 566002,
+      "sha256": "eb1ce7b5d03d7c4d3e99be48b2a7c5b011b2d273233a2bc770000cd5acfcf610"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/beacon-disabled.png",
+      "bytes": 527895,
+      "sha256": "3e567489c3ab854bb3725e2be04f67939c731abd91f020aa186f71922e7ef13c"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/core-active.png",
+      "bytes": 805650,
+      "sha256": "366dd0449f3c76b5c0ac1d5a4197b55b2117123b373ff74591749f293c447a6c"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/core-disabled.png",
+      "bytes": 778204,
+      "sha256": "c0b9b6e54c60cfbdd9955aa701c3ea4058d33cf6766a9c0e9819e8e28e363379"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/medical-empty.png",
+      "bytes": 1026401,
+      "sha256": "debcde50c31a3e5cf3eb5cf4f57de77a3f344651bd8e53f4d744966889869097"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/medical-stocked.png",
+      "bytes": 1104336,
+      "sha256": "5d4972c4adf37f1860f63a4a8ad8945deb142b16dc3f5ecaec707a12d04053a3"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/relay-active.png",
+      "bytes": 698686,
+      "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/relay-disabled.png",
+      "bytes": 691214,
+      "sha256": "5ed43ec3c3c5eabf0cc6ca9300ac50180b734aab628be1ea6135df14493702b9"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/supply-open.png",
+      "bytes": 1346574,
+      "sha256": "4a7606284619e071092b8ffaeb466529be3fceefadbe27725b6afe495e0ffddf"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/props/supply-sealed.png",
+      "bytes": 1029189,
+      "sha256": "2e27cea37721bec79d5a8799dc1848adefcddb36b9010404dd123120f3696819"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/review.html",
+      "bytes": 1052490,
+      "sha256": "74456c421f68d166e2694cef73d64fb17a95b023e73fafa15e60a4ceb8da4c3a"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/structures/s01-s06.png",
+      "bytes": 2164707,
+      "sha256": "8361836c3d7f6713a41a636a8be3c81af32c600bae55a2e74f02e694f32ea8cc"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/structures/s07-s12.png",
+      "bytes": 2272847,
+      "sha256": "0314da26b2b08230b9804e5456c51bbf7f892d6aecd9a5d1922ec1ca6ea6a338"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/structures/s13-s18.png",
+      "bytes": 2490903,
+      "sha256": "7b0bc7d53ffd0b0b836e4726035bcdf5338fe3f3d7358cc84eda863f3cd7402d"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u01-u06-left.png",
+      "bytes": 2214696,
+      "sha256": "402d04833160683162f42f44baddc7793650c8d7935da4e38fe0ebe0ff5cead4"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u01-u06.png",
+      "bytes": 2174626,
+      "sha256": "a893fccf7912c25fcc3d876adaacb638a73877cb4fc3a572c98d0ee5f79502de"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u07-u12-left.png",
+      "bytes": 2306932,
+      "sha256": "7f5defd46fd003e318d072f662e15ca45e035713228c9e4aaf7d31f43b48dbfd"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u07-u12.png",
+      "bytes": 2302401,
+      "sha256": "18441dc7d983b6c152ef1315de21c95ce889593de89631fa298f567d5514557f"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u13-u18-left.png",
+      "bytes": 2381255,
+      "sha256": "e6b0097a2e3c08662dcb63e27ab33988563ff4414e3013dfdac4098d1a62205c"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u13-u18.png",
+      "bytes": 2392467,
+      "sha256": "85efe6acec114fb8751703b5a75b0bdf9ef420dd08ede4a2b4f1a1b12ea83350"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u19-u24-left.png",
+      "bytes": 2136209,
+      "sha256": "9ec7c9a0db8a449b16742e0eef8f994414cb4aa8d9418d19bf61916d91ad1828"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u19-u24.png",
+      "bytes": 2300444,
+      "sha256": "7090afba27038be0013b70b92a0eec00bd48c2edfbade7d5e7e57d1894bfb6ba"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u25-u30-left.png",
+      "bytes": 2111863,
+      "sha256": "417013d552f1fd7dca4fcc674b2848753903eff8baa21cba5a73a96c2c59c7ba"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/units/u25-u30.png",
+      "bytes": 2284126,
+      "sha256": "ceb96a95112dc896c4ed77336b939f7111a16bcf0cba4e4df1c940fc59e46f6d"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/warp/warp-199-empty-bay.png",
+      "bytes": 2544734,
+      "sha256": "c0ebe3051c4badaee28f8db1673da0c2ce901d431d06d10e51866f2d02b03087"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/berserker.png",
+      "bytes": 2322146,
+      "sha256": "6764f7596d6443f4657340728f316d111a50ba6d662d270e5189bc4c2312f087"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/boar.png",
+      "bytes": 2187096,
+      "sha256": "1ab476fe4ca264e3e5e2f2a61296dabda10d7e4aced96aeacb3078a901908aa7"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/celtic.png",
+      "bytes": 2090338,
+      "sha256": "e21b903458a7bffde23aea21241e8f90b282f4b065b3d64a57d7edeb16bb1174"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/chopper.png",
+      "bytes": 2298739,
+      "sha256": "3cd116d3bc01742689ffe78b90f1780583accbf9c2b06fe6b8f508437c55767b"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/city.png",
+      "bytes": 1959679,
+      "sha256": "012836522b6e78090d272d26cc452c61050df6d3cb71148862b26959a608ca12"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/dek.png",
+      "bytes": 1711898,
+      "sha256": "ddaf27997eec01c215ee81b123af0679e3479516e0250c66e5a90e144b4ef2c8"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/enforcer.png",
+      "bytes": 1541355,
+      "sha256": "6a3e9bf39a0ac13fc505b9957e187927364a50a8e3a3399919cec3fea14dad75"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/falconer.png",
+      "bytes": 2072756,
+      "sha256": "5130117d27a37344b2d2e354aa7e019c1e9c76bd6a928e1fbe1095b464c6735f"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/feral.png",
+      "bytes": 1609827,
+      "sha256": "ceba366a222414c5e078baa16b02ac5d1e010a641368e56a4c14ba3bf2e9aebc"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/fugitive.png",
+      "bytes": 1828914,
+      "sha256": "ca224740b67227565edb8e37b9efa6a0fc70d0ecb187ddc25700a3f827b0652c"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/jungle.png",
+      "bytes": 2624929,
+      "sha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/scar.png",
+      "bytes": 2210569,
+      "sha256": "a562d4b0105bf36f5b7d4796ac9f5595c483ee178dd1ee82fc643db5deff8c59"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/snake.png",
+      "bytes": 2030382,
+      "sha256": "b8a839c9bde4b7dc77a2226e14909a248f27030241eb9079add3b76d8d2190c8"
+    },
+    {
+      "path": "public/game/sprites/v62/masks/wolf.png",
+      "bytes": 2161338,
+      "sha256": "81669d98bf32426d039623247e2596ea70be17252ce01464a618f50e6cd17214"
+    }
+  ],
+  "protectedWorkbooks": 126,
+  "priorNativeImageGenPngs": 145,
+  "priorPacks": [
+    "p0-sprites-20261113",
+    "p0-fidelity-20261113",
+    "biomasks-20261113",
+    "biomasks-primary-20261113",
+    "biomasks-dual-20261113",
+    "biomasks-expansion-20261113"
+  ],
+  "sourceStatusesChanged": false
+}

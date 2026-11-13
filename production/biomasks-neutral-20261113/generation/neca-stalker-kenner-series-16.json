@@ -1,0 +1,334 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-stalker-kenner-series-16",
+  "sourceClass": "official-photo",
+  "sourceEdition": "NECA Stalker Kenner tribute,Series16,2016,7-inch; distinct from LostTribe Stalker",
+  "entries": [
+    {
+      "id": "neca-stalker-kenner-series-16",
+      "name": "Stalker Kenner · NECA Series16(2016)",
+      "version": "A",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-6c813bae-6c11-4603-8cd7-d0af5e88054b.png",
+      "sha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+      "bytes": 1157725,
+      "nativeDimensions": [
+        1275,
+        1234
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-neutral-20261113/generation/neca-stalker-kenner-series-16.json",
+      "referenceSourcePath": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+      "referenceSourceSha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+          "sha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116"
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator2-photo.jpg",
+          "sha256": "c9168af5af0753adcfb41b058f6db9b6b77049011f807585f3fbf1c3dbfd39e2"
+        }
+      ],
+      "referenceSourceUse": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+          "role": "complete-mask-primary-camera-palette-sculpt",
+          "viewedBeforeGeneration": true,
+          "imagegenInput": true
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator2-photo.jpg",
+          "role": "partly-hidden-mask-accessory-and-blister-edition-context",
+          "viewedBeforeGeneration": true,
+          "imagegenInput": false
+        }
+      ],
+      "sourceEdition": "NECA Stalker Kenner tribute,Series16,2016,7-inch; distinct from LostTribe Stalker",
+      "prompt": "Extract ONE faithful isolated rigid detachable biomask from this exact official NECA Stalker Kenner tribute Series16(2016) product photograph. Use the visible MASK on the figure, preserving this actual almost-frontal camera with its slight downward head pitch, the complete rigid shell silhouette, proportions, colors, existing panels and coarse relief. This is the brown/bronze OPAQUE mask, NOT the ivory translucent head, skin or hanging dreadlocks around it. Preserve the narrow integrated tall dark CENTRAL CREST/KEEL already rising above the forehead, and the existing small upper shell corners; do not invent horns or a rear helmet. The upper forehead has the real copper-brown rectangular segmented insets divided by dark curved bands around the central black ridge, tapering into the V above the brow. Keep the two large pale gray/silver opaque reflective EYE INSERTS and their thick dark borders; no colored glow, no empty transparent eye holes. Preserve the small existing round bronze bridge detail between the eyes, the bronze curved cheek frame around the dark inset cheek shapes, the existing narrow central oval respirator with its few long vertical dark slots and the small single round port at the lower end. Keep the actual short solid lower edge under that port, not a long invented chin. Do not add any new vent, grille, glyph, symbol, screw, rivet, horn, extra band or hidden side/back geometry. The mask region is only about200px tall in the original; unknown fine details remain restrained interpretation. Preserve its apparent warm bronze/copper-brown paint and charcoal-black inset structure, subdued toy/product-photo highlights and the visible coarse photo texture. This A version should retain a faithful photographed toy/material appearance, rather than redesign or universal mirror chrome. All the milky pale translucent/greenish parts belong to the wearer and must be entirely excluded: head, skin, mandibles, neck, dreadlocks, hanging hair and hands. Also remove armor, shoulder spikes, spears and their tips behind the head, body, packaging and white photo background. Keep ONLY the rigid bronze/black face shell and gray eye inserts. TRUE transparent RGBA background, complete mask centered with8-12percent fully transparent margin above highest existing crest and below lowest port; larger side margins are fine. No floor or shadow plane, halo, glow, UI, labels, extra views, alternate mask or duplicates. One mask only.",
+      "promptSha256": "9b6c40563824a03ed9bed3c37293415e3549ae6815e2cd5b990c7d660c625d4a",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            39,
+            1261,
+            1234
+          ],
+          "8": [
+            312,
+            73,
+            954,
+            1106
+          ],
+          "16": [
+            312,
+            73,
+            954,
+            1105
+          ],
+          "128": [
+            313,
+            74,
+            953,
+            1104
+          ],
+          "240": [
+            314,
+            75,
+            953,
+            1103
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          312,
+          73,
+          321,
+          129
+        ],
+        "maximumBorderAlpha": 1,
+        "occupiedBorderPixels": 44,
+        "visibleWidthHeightRatio": 0.6221,
+        "visibleFractionOfCanvasLongestAxis": 0.8094,
+        "transparentPixels": 1060518,
+        "nearOpaqueFractionOfVisible16": 0.990992961822011
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Agent visual inspection of native output, not human art approval",
+        "observations": "Opaque bronze/copper-brown and charcoal segmented crown, existing tall dark central keel, pale gray eye inserts, bronze cheek frame, narrow vertical-slot central respirator and lower round port retained. Wearer skin/dreadlocks/translucency, armor, spears and photo background excluded; near-front primary camera retained. Fine slot/paint relief remains interpretive from a small product photo. Read-only browser composites show no visible background rectangle, wearer residue, hanging hair or clipped solid shell; opaque shell and pale eye inserts retained.",
+        "browserComparisonPath": "/tmp/mask-neutral-20261113/stalker-series16-comparison.png",
+        "browserComparisonInspected": true,
+        "browserComparisonScope": "Native files displayed via CSS on white/black/checker at390px and96px; R proposed view window is not certified segmentation. No raster edits.",
+        "independentAgentReview": {
+          "agent": "/root/dual_generate_3",
+          "source": "collaboration review message after native file and browser composite inspection",
+          "reviewedSha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+          "outcome": "No major macro deviation observed for this photographed NECA edition candidate.",
+          "scope": "Crête,proportions,panneaux bronze/noir,yeux gris,respirateur,absence de biologie/glow et de halo,lisibilité96px; détails fins interprétatifs.",
+          "technicalLimit": "Native top margin below8percent, documented without solid clipping; no correction requested.",
+          "canonCertified": false,
+          "humanArtValidated": false,
+          "runtimeIntegrated": false
+        }
+      },
+      "limitations": [
+        "Specific NECA2016 Series16 Stalker Kenner tribute toy edition, not LostTribeStalker or a certified original film mask.",
+        "Only primary photograph shows a complete worn mask; support blister partly hides the accessory bottom and cannot establish another full camera.",
+        "Small source mask region about200px tall; fine relief, exact UV/albedo, hidden sides/back/interior are not established.",
+        "Translucent ivory material belongs to the biological wearer/dreadlocks; no sufficient evidence that opaque bronze shell is translucent.",
+        "A is a new ImageGen isolation, not exact photo pixels or a manual alpha cutout; B is a separate rendering adaptation, not certified PHG mesh/material.",
+        "Very low-alpha native edge pixels are preserved without CPU cleaning; maximum border alpha is recorded.",
+        "Native transparent margins are slightly tighter than the requested8-12percent at one edge; the complete solid mask remains unclipped and exact bounds are recorded."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "selectionStatus": "candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-6c813bae-6c11-4603-8cd7-d0af5e88054b.png",
+          "sha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+          "bytes": 1157725,
+          "nativeDimensions": [
+            1275,
+            1234
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false,
+          "prompt": "Extract ONE faithful isolated rigid detachable biomask from this exact official NECA Stalker Kenner tribute Series16(2016) product photograph. Use the visible MASK on the figure, preserving this actual almost-frontal camera with its slight downward head pitch, the complete rigid shell silhouette, proportions, colors, existing panels and coarse relief. This is the brown/bronze OPAQUE mask, NOT the ivory translucent head, skin or hanging dreadlocks around it. Preserve the narrow integrated tall dark CENTRAL CREST/KEEL already rising above the forehead, and the existing small upper shell corners; do not invent horns or a rear helmet. The upper forehead has the real copper-brown rectangular segmented insets divided by dark curved bands around the central black ridge, tapering into the V above the brow. Keep the two large pale gray/silver opaque reflective EYE INSERTS and their thick dark borders; no colored glow, no empty transparent eye holes. Preserve the small existing round bronze bridge detail between the eyes, the bronze curved cheek frame around the dark inset cheek shapes, the existing narrow central oval respirator with its few long vertical dark slots and the small single round port at the lower end. Keep the actual short solid lower edge under that port, not a long invented chin. Do not add any new vent, grille, glyph, symbol, screw, rivet, horn, extra band or hidden side/back geometry. The mask region is only about200px tall in the original; unknown fine details remain restrained interpretation. Preserve its apparent warm bronze/copper-brown paint and charcoal-black inset structure, subdued toy/product-photo highlights and the visible coarse photo texture. This A version should retain a faithful photographed toy/material appearance, rather than redesign or universal mirror chrome. All the milky pale translucent/greenish parts belong to the wearer and must be entirely excluded: head, skin, mandibles, neck, dreadlocks, hanging hair and hands. Also remove armor, shoulder spikes, spears and their tips behind the head, body, packaging and white photo background. Keep ONLY the rigid bronze/black face shell and gray eye inserts. TRUE transparent RGBA background, complete mask centered with8-12percent fully transparent margin above highest existing crest and below lowest port; larger side margins are fine. No floor or shadow plane, halo, glow, UI, labels, extra views, alternate mask or duplicates. One mask only.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        }
+      ]
+    },
+    {
+      "id": "neca-stalker-kenner-series-16",
+      "name": "Stalker Kenner · NECA Series16(2016)",
+      "version": "B",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-21f59e66-9cac-4c60-bad8-c96f9905cec6.png",
+      "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+      "bytes": 1232876,
+      "nativeDimensions": [
+        1275,
+        1233
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-neutral-20261113/generation/neca-stalker-kenner-series-16.json",
+      "referenceSourcePath": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+      "referenceSourceSha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+          "sha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116"
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator2-photo.jpg",
+          "sha256": "c9168af5af0753adcfb41b058f6db9b6b77049011f807585f3fbf1c3dbfd39e2"
+        }
+      ],
+      "referenceSourceUse": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+          "role": "complete-mask-primary-camera-palette-sculpt",
+          "viewedBeforeGeneration": true,
+          "imagegenInput": true
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator2-photo.jpg",
+          "role": "partly-hidden-mask-accessory-and-blister-edition-context",
+          "viewedBeforeGeneration": true,
+          "imagegenInput": false
+        }
+      ],
+      "sourceEdition": "NECA Stalker Kenner tribute,Series16,2016,7-inch; distinct from LostTribe Stalker",
+      "prompt": "Make versionB of the FIRST isolated NECA Stalker Kenner Series16(2016) biomask with realistic PBR rendering consistent with the common PHG art direction. The SECOND image is its official NECA product photograph and is the source-visible sculpture/color check. Preserve the FIRST image geometry, true near-front camera/pitch, overall proportions, exact existing segmented bronze/copper-brown forehead insets and dark bands, narrow integrated dark CENTRAL CREST/KEEL, small real upper shell corners, pale opaque gray/silver eye inserts with thick dark borders, round bronze bridge detail, curved bronze cheek framing, existing central respirator's vertical dark slots and single small round lower port. Preserve the short actual lower edge under the port. This is the specific2016 Series16 Stalker Kenner-tribute sculpture, not LostTribeStalker. Translate ONLY light/material response: neutral soft key from image upper-left/front, gentle front fill, controlled realistic warm bronze/copper-brown painted metal and charcoal-black recessed structure, readable relief, restrained roughness/wear, less photographic grain. No universal mirror chrome and no large texture changes or new color. Eye inserts remain pale gray opaque reflective lenses, not colored glowing eyes or empty transparent holes. The opaque shell must not become ivory, clear, translucent, luminous or bone; ivory translucent parts in the second photo are the biological wearer/dreadlocks and do not belong to this mask. Do NOT add a horn, panel, vent, grille, symbol, glyph, rivet, seam, screw or unseen rear/side helmet. Keep unknown fine relief restrained, no invented tiny machinery. Exactly one complete isolated rigid face shell, TRUE transparent RGBA, no wearer/skin/mandibles/hair/dreadlocks/beads/neck/body/armor/spears/packaging/background, no floor or shadow plane, halo, glow, text or UI. Center with8-12percent empty transparent space above the highest existing crest and below the bottom port, whole silhouette fully inside the frame. Same camera, sculpture and apparent palette, one mask only.",
+      "promptSha256": "9514572dceae759c212f9f3c579a5cb1cd35e00870a3400d86f8dbeedad3c600",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            8,
+            1255,
+            1233
+          ],
+          "8": [
+            309,
+            68,
+            960,
+            1105
+          ],
+          "16": [
+            309,
+            68,
+            960,
+            1105
+          ],
+          "128": [
+            310,
+            69,
+            959,
+            1104
+          ],
+          "240": [
+            311,
+            70,
+            958,
+            1103
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          309,
+          68,
+          315,
+          128
+        ],
+        "maximumBorderAlpha": 1,
+        "occupiedBorderPixels": 37,
+        "visibleWidthHeightRatio": 0.6278,
+        "visibleFractionOfCanvasLongestAxis": 0.8133,
+        "transparentPixels": 1047923,
+        "nearOpaqueFractionOfVisible16": 0.9909612970118974
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Agent visual inspection of native output, not human art approval",
+        "observations": "Opaque bronze/copper-brown and charcoal segmented crown, existing tall dark central keel, pale gray eye inserts, bronze cheek frame, narrow vertical-slot central respirator and lower round port retained. Wearer skin/dreadlocks/translucency, armor, spears and photo background excluded; near-front primary camera retained. Fine slot/paint relief remains interpretive from a small product photo. Read-only browser composites show no visible background rectangle, wearer residue, hanging hair or clipped solid shell; opaque shell and pale eye inserts retained.",
+        "browserComparisonPath": "/tmp/mask-neutral-20261113/stalker-series16-comparison.png",
+        "browserComparisonInspected": true,
+        "browserComparisonScope": "Native files displayed via CSS on white/black/checker at390px and96px; R proposed view window is not certified segmentation. No raster edits.",
+        "independentAgentReview": {
+          "agent": "/root/dual_generate_3",
+          "source": "collaboration review message after native file and browser composite inspection",
+          "reviewedSha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+          "outcome": "No major macro deviation observed for this photographed NECA edition candidate.",
+          "scope": "Crête,proportions,panneaux bronze/noir,yeux gris,respirateur,absence de biologie/glow et de halo,lisibilité96px; détails fins interprétatifs.",
+          "technicalLimit": "Native top margin below8percent, documented without solid clipping; no correction requested.",
+          "canonCertified": false,
+          "humanArtValidated": false,
+          "runtimeIntegrated": false
+        }
+      },
+      "limitations": [
+        "Specific NECA2016 Series16 Stalker Kenner tribute toy edition, not LostTribeStalker or a certified original film mask.",
+        "Only primary photograph shows a complete worn mask; support blister partly hides the accessory bottom and cannot establish another full camera.",
+        "Small source mask region about200px tall; fine relief, exact UV/albedo, hidden sides/back/interior are not established.",
+        "Translucent ivory material belongs to the biological wearer/dreadlocks; no sufficient evidence that opaque bronze shell is translucent.",
+        "A is a new ImageGen isolation, not exact photo pixels or a manual alpha cutout; B is a separate rendering adaptation, not certified PHG mesh/material.",
+        "Very low-alpha native edge pixels are preserved without CPU cleaning; maximum border alpha is recorded.",
+        "Native transparent margins are slightly tighter than the requested8-12percent at one edge; the complete solid mask remains unclipped and exact bounds are recorded."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "selectionStatus": "candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-21f59e66-9cac-4c60-bad8-c96f9905cec6.png",
+          "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+          "bytes": 1232876,
+          "nativeDimensions": [
+            1275,
+            1233
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false,
+          "prompt": "Make versionB of the FIRST isolated NECA Stalker Kenner Series16(2016) biomask with realistic PBR rendering consistent with the common PHG art direction. The SECOND image is its official NECA product photograph and is the source-visible sculpture/color check. Preserve the FIRST image geometry, true near-front camera/pitch, overall proportions, exact existing segmented bronze/copper-brown forehead insets and dark bands, narrow integrated dark CENTRAL CREST/KEEL, small real upper shell corners, pale opaque gray/silver eye inserts with thick dark borders, round bronze bridge detail, curved bronze cheek framing, existing central respirator's vertical dark slots and single small round lower port. Preserve the short actual lower edge under the port. This is the specific2016 Series16 Stalker Kenner-tribute sculpture, not LostTribeStalker. Translate ONLY light/material response: neutral soft key from image upper-left/front, gentle front fill, controlled realistic warm bronze/copper-brown painted metal and charcoal-black recessed structure, readable relief, restrained roughness/wear, less photographic grain. No universal mirror chrome and no large texture changes or new color. Eye inserts remain pale gray opaque reflective lenses, not colored glowing eyes or empty transparent holes. The opaque shell must not become ivory, clear, translucent, luminous or bone; ivory translucent parts in the second photo are the biological wearer/dreadlocks and do not belong to this mask. Do NOT add a horn, panel, vent, grille, symbol, glyph, rivet, seam, screw or unseen rear/side helmet. Keep unknown fine relief restrained, no invented tiny machinery. Exactly one complete isolated rigid face shell, TRUE transparent RGBA, no wearer/skin/mandibles/hair/dreadlocks/beads/neck/body/armor/spears/packaging/background, no floor or shadow plane, halo, glow, text or UI. Center with8-12percent empty transparent space above the highest existing crest and below the bottom port, whole silhouette fully inside the frame. Same camera, sculpture and apparent palette, one mask only.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+      "sourceASha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b"
+    }
+  ],
+  "rejectedAttempts": [],
+  "sourceContext": {
+    "sourcePageURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/",
+    "primaryAttachmentURL": "https://necaonline.com/2016/10/closer-look-predator-series-16-action-figures-a-kenner-tribute/1200x-51534_stalker_predator1/",
+    "supportUse": "Viewed documentary blister context only, not ImageGen input: partly visible upper mask accessory confirms opaque bronze/black palette and edition; biological translucency and original Kenner carton drawing are excluded.",
+    "identityExclusions": [
+      "LostTribeStalker is a different identity.",
+      "Stalker1 and Stalker1a show unmasked biological heads.",
+      "Ivory/greenish translucency and glow belong to wearer/body/dreadlocks; no sufficient evidence the bronze mask shell is translucent.",
+      "Original Kenner illustration on blister is a different stylization and was not an ImageGen input."
+    ]
+  }
+}
