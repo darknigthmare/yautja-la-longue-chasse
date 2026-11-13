@@ -1,0 +1,943 @@
+{
+  "schemaVersion": 1,
+  "id": "p0-fidelity-20261113",
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "dd7c08cea4934de5dfb61c27447a8808d1b87765",
+  "status": "generated-candidates-review-required",
+  "allP0Closed": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "counts": {
+    "assets": 4,
+    "nativeFiles": 4,
+    "byKind": {
+      "effect": 1,
+      "mask": 1,
+      "prop": 2
+    },
+    "componentLayers": 3,
+    "sourceAssemblies": 2,
+    "correctedMaskIdentities": 1,
+    "referenceCopiesExcluded": 2,
+    "newCharacters": 0,
+    "animationClips": 0,
+    "sourceP0Subjects": 775,
+    "sourceP0SubjectsLinked": 2,
+    "newlyClosedP0": 0
+  },
+  "plannedBatch": {
+    "reviewExpectedIds": [
+      "HWA160-010-architecture",
+      "HWA160-052-emission",
+      "HWA160-052-pylon",
+      "vex-front-v2"
+    ],
+    "sourceTargetIds": [
+      "HWA160-010-architecture",
+      "HWA160-010-water",
+      "HWA160-052-emission",
+      "HWA160-052-pylon",
+      "vex-front-v2"
+    ],
+    "missingReviewIds": [],
+    "unresolvedSourceComponentIds": [
+      "HWA160-010-water"
+    ],
+    "reviewBatchComplete": true,
+    "sourceTargetsComplete": false
+  },
+  "baselinePack": {
+    "path": "public/game/p0-sprites-20261113/manifest.json",
+    "sha256": "f11cb10dae09c43d939ba4711ae08cc2ab6cde5d0f7e98dac40793e57e712a59",
+    "workbookSha256": "b5d303bec0cd02866a47b8f05a126e05aab7c5755c5e951ace98a0e952d996d3"
+  },
+  "nativeFiles": [
+    {
+      "path": "public/game/p0-fidelity-20261113/homeworld/hwa160-010-architecture.png",
+      "sha256": "88b6f151278cf73c08f6a10edcb11e31b9fe031b4c8b9321cfdf5f43976ef8d0",
+      "bytes": 1421451,
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-emission.png",
+      "sha256": "c62dfd7c1999d6ecbc73cdd9270a443761278b3f79302f7d09a2a70b0e14529d",
+      "bytes": 231650,
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-pylon-v2.png",
+      "sha256": "de2eb32e078af6964a5e7e98dc671c33940d0e59644e8d22117abf069c16e361",
+      "bytes": 987501,
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/masks/vex-front-v2.png",
+      "sha256": "f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb",
+      "bytes": 1383446,
+      "width": 1254,
+      "height": 1254
+    }
+  ],
+  "referenceFiles": [
+    {
+      "path": "public/game/p0-fidelity-20261113/references/HWA160-010-original.png",
+      "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+      "bytes": 2530735,
+      "originalPath": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+      "src": "/game/p0-fidelity-20261113/references/HWA160-010-original.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "original-project-source",
+      "label": "Source originale du projet — parties visibles à comparer"
+    },
+    {
+      "path": "public/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+      "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+      "bytes": 1215497,
+      "originalPath": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+      "src": "/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+      "width": 1254,
+      "height": 1254,
+      "kind": "original-project-source",
+      "label": "Source originale du projet — parties visibles à comparer"
+    }
+  ],
+  "assets": [
+    {
+      "id": "HWA160-010-architecture",
+      "sourceId": "HWA160-010",
+      "sourceDesignId": "HWA160-010-visible-architecture",
+      "label": "Cascade010 — architecture visible incomplète",
+      "assetKind": "prop",
+      "componentRole": "architecture-visible-only",
+      "path": "public/game/p0-fidelity-20261113/homeworld/hwa160-010-architecture.png",
+      "sha256": "88b6f151278cf73c08f6a10edcb11e31b9fe031b4c8b9321cfdf5f43976ef8d0",
+      "bytes": 1421451,
+      "src": "/game/p0-fidelity-20261113/homeworld/hwa160-010-architecture.png",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627,
+        1147
+      ],
+      "pivotStatus": "proposal derived from original full-frame front-base anchor, not a measured physical support",
+      "camera": "Original source camera retained as visual design anchor; native projection and requested framing require human review",
+      "alpha": {
+        "threshold": 16,
+        "transparentPixels": 1060265,
+        "visiblePixels16": 491121,
+        "opaquePixels240": 480888,
+        "softPixels3To239": 16213,
+        "noisePixels1Or2": 15150,
+        "bounds16": [
+          150,
+          128,
+          1125,
+          1148
+        ],
+        "marginsPixels": [
+          150,
+          128,
+          129,
+          106
+        ],
+        "edgePixels16": 0,
+        "edgePixels16BySide": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "hiddenRgbIgnored": true
+      },
+      "alphaPolicy": "solid-core-with-transparent-surround",
+      "sourceIsCropped": true,
+      "silhouetteCompleteness": "incomplete-in-source",
+      "missingGeometryNotInvented": true,
+      "missingGeometryClaimStatus": "producer-declaration-not-independently-verified",
+      "hiddenSurfaceFidelityEstablished": false,
+      "sourceComponentCompleted": null,
+      "visibleOnly": true,
+      "standaloneCompleteObject": false,
+      "compositionComplete": false,
+      "requestedSourceToReviewAffine": [
+        0.84,
+        0,
+        0,
+        0.84,
+        100,
+        100
+      ],
+      "affineVerified": false,
+      "priorityLinks": [
+        "Homeworld et habitats:QA-007"
+      ],
+      "sourceRows": [
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sha256": "726fc9f4a9e101d2c735929aff22f881993a344f5d248b329ac6fc636c4349f4",
+          "sheet": "Fichiers_PNG",
+          "row": 15,
+          "cells": {
+            "A15": "HWA160-010",
+            "B15": "cascade jumelle du monde yautja",
+            "C15": "Hydrologie",
+            "D15": "1254",
+            "E15": "1254",
+            "F15": "Oui",
+            "G15": "CANDIDAT_A_REVOIR",
+            "H15": "Non mesurée",
+            "I15": "RENDU_INDEPENDANT",
+            "J15": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+            "K15": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+            "L15": "2530735"
+          }
+        },
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sha256": "726fc9f4a9e101d2c735929aff22f881993a344f5d248b329ac6fc636c4349f4",
+          "sheet": "QA_et_Suite",
+          "row": 12,
+          "cells": {
+            "A12": "QA-007",
+            "B12": "P0",
+            "C12": "Indépendance",
+            "D12": "Séparer eau/roche, laser/pylône, statue/base",
+            "E12": "À faire",
+            "F12": "Revue artistique",
+            "G12": "Ne pas découper des vignettes de catalogue en « HD »",
+            "H12": "Composites conservés"
+          }
+        }
+      ],
+      "sourceReferences": [
+        {
+          "path": "public/game/p0-fidelity-20261113/references/HWA160-010-original.png",
+          "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+          "bytes": 2530735,
+          "originalPath": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+          "src": "/game/p0-fidelity-20261113/references/HWA160-010-original.png",
+          "width": 1254,
+          "height": 1254,
+          "kind": "original-project-source",
+          "label": "Source originale du projet — parties visibles à comparer"
+        },
+        {
+          "sha256": "3e71958bcaf6e96d231696cb3b6371395dc1e1f1b36292bf97da74d687dc1066",
+          "role": "initial-visible-only-layer-before-safe-framing",
+          "privateReferenceName": "exec-d5e14131-bfe6-47b8-abdf-5a13ac4fcac2.png",
+          "privateReferenceNotPublished": true
+        },
+        {
+          "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+          "role": "original-composite-anchor",
+          "path": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png"
+        }
+      ],
+      "generationRecord": {
+        "path": "production/p0-fidelity-20261113/generation/cascade-layers.json",
+        "sha256": "02b1ab184d9b4952eb03f84bbb263ff9ae34f7dcab847494ae6355ea7f27c770",
+        "bytes": 24934,
+        "index": 0,
+        "jsonPointer": "/entries/0"
+      },
+      "prompt": "FRAMING-ONLY EDIT of image1, the already separated visible stone architecture. Image2 is the original composite solely to verify its design; do NOT restore any water or hidden surface. Keep ALL existing visible architecture, gold stone, moss, damage, camera, proportions, irregular alpha holes and source-truncated upper fin boundary unchanged. Put the entire visible cutout at the SAME requested affine framing used for the companion water layer: x_new = 0.84*x_old +100 pixels, y_new = 0.84*y_old +100 pixels, on a1254x1254 transparent canvas. Uniformly shrink and translate the existing cutout as one rigid layer. About8percent empty alpha margin around its visible extent. No local scaling, rearrangement, new projection or texture redesign.\nCRITICAL: the right fin top was already incomplete/cut in the original source. Retain that existing incomplete cut shape and put transparent space above it; DO NOT invent a complete spike, fin tip, cap or geometry above the observed cut edge. Keep the water/fog/beam removal holes, never reveal or inpaint hidden rocks. No water, glow beam, fog, pool, newbackground or scenery. Solid visible stone remains opaque, empty area alpha0. No text/labels/frames.",
+      "limitations": [
+        "Visible-only conservative architecture/rock layer, not a complete dry reconstruction of the waterfall building.",
+        "The source already clips the upper tip of the tall right fin. The incomplete observed edge is preserved inside review margins, with no completed tip or invented hidden face.",
+        "Two waterfall curtains, pool water and dense mist occlude underlying stone. Their removed regions remain alpha holes; unseen pool bed, hidden wall faces and supports are not established.",
+        "Fine stone boundaries previously softened by mist remain conservative candidate boundaries; exact source-pixel identity is not certified.",
+        "The requested uniform source-to-review framing is a proposal, not an independently qualified pixel registration or physical projection.",
+        "All water/mist layers were rejected for source-fidelity differences; there is no admitted FX counterpart or complete source recomposition in this sublot.",
+        "The source altar light shaft is removed from the architecture and remains an omitted, unproduced separate effect.",
+        "Not a new animation, no runtime placement, scale, collision, walkthrough or canonical/human art approval.",
+        "La source est déjà tronquée en haut. Seules les formes visibles sont séparées ; une marge alpha ne prouve pas une silhouette complète.",
+        "L'architecture conserve les occultations : ce composant n'est pas un fond sec complet. L'effet peut comprendre eau, brume et lumière verte.",
+        "Recomposition et points d'ancrage proposés ; alignement, échelle physique, caméra en jeu et fidélité détaillée restent à examiner."
+      ],
+      "warnings": [],
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "frames": 1,
+      "newDesignIdentity": null
+    },
+    {
+      "id": "HWA160-052-emission",
+      "sourceId": "HWA160-052",
+      "sourceDesignId": "HWA160-052",
+      "label": "Émission052 — alpha doux, falloff à examiner",
+      "assetKind": "effect",
+      "componentRole": "emission",
+      "path": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-emission.png",
+      "sha256": "c62dfd7c1999d6ecbc73cdd9270a443761278b3f79302f7d09a2a70b0e14529d",
+      "bytes": 231650,
+      "src": "/game/p0-fidelity-20261113/homeworld/HWA160-052-emission.png",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        733,
+        323
+      ],
+      "pivotStatus": "proposal only; not physically or artistically qualified",
+      "camera": "Original HWA160-052 three-quarter camera requested; no new angle invented; yaw/pitch unmeasured",
+      "alpha": {
+        "threshold": 16,
+        "transparentPixels": 1458892,
+        "visiblePixels16": 69544,
+        "opaquePixels240": 4609,
+        "softPixels3To239": 93414,
+        "noisePixels1Or2": 15601,
+        "bounds16": [
+          702,
+          227,
+          1133,
+          468
+        ],
+        "marginsPixels": [
+          702,
+          227,
+          121,
+          786
+        ],
+        "edgePixels16": 0,
+        "edgePixels16BySide": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "hiddenRgbIgnored": true
+      },
+      "alphaPolicy": "soft-effect-no-opaque-core-required",
+      "sourceIsCropped": false,
+      "silhouetteCompleteness": "requires-human-comparison",
+      "missingGeometryNotInvented": null,
+      "missingGeometryClaimStatus": "not-independently-established",
+      "hiddenSurfaceFidelityEstablished": false,
+      "sourceComponentCompleted": null,
+      "visibleOnly": null,
+      "standaloneCompleteObject": null,
+      "compositionComplete": null,
+      "requestedSourceToReviewAffine": null,
+      "affineVerified": false,
+      "priorityLinks": [
+        "Homeworld et habitats:QA-007"
+      ],
+      "sourceRows": [
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "Fichiers_PNG",
+          "row": 57,
+          "sourceId": "HWA160-052"
+        },
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "QA_et_Suite",
+          "row": 12,
+          "id": "QA-007",
+          "priority": "P0",
+          "criterion": "Séparer eau/roche, laser/pylône, statue/base",
+          "status": "À faire"
+        }
+      ],
+      "sourceReferences": [
+        {
+          "path": "public/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+          "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+          "bytes": 1215497,
+          "originalPath": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+          "src": "/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+          "width": 1254,
+          "height": 1254,
+          "kind": "original-project-source",
+          "label": "Source originale du projet — parties visibles à comparer"
+        },
+        {
+          "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+          "role": "original-project-image",
+          "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png"
+        },
+        {
+          "sha256": "88cd736e8f50f05dc747133cf5fb145d15ddcdf35ad64158643b7dd848d9ebc6",
+          "role": "rejected-first-emission-used-for-alpha-correction",
+          "privateReferenceName": "exec-bdd40638-1612-49db-b79c-64f518820ff7.png",
+          "privateReferenceNotPublished": true
+        }
+      ],
+      "generationRecord": {
+        "path": "production/p0-fidelity-20261113/generation/homeworld-layers.json",
+        "sha256": "ddbcb39a45af5a2fefb2e255144f5ce4858870e0befb7b405e89baf44b97ed00",
+        "bytes": 29320,
+        "index": 1,
+        "jsonPointer": "/entries/1"
+      },
+      "prompt": "Correct only this source-derived VFX layer, preserving the original project image's visible optical cone. Image1 is the ORIGINAL HWA160-052 source and authority; image2 is the previously extracted candidate which is TOO OPAQUE AND TOO LARGE and must be corrected. Deliver only one projected cone, no pylon/housing/stone. Use the same1254by1254 square full-source framing. Cone apex/source emission point approximately x733,y323; do not shift it toward the center. The cone's visible light must FADE along its length exactly like original source image1, rather than an opaque orange megaphone/capsule. Native light alpha should be approximately full at the small origin, then about83percent atx850,55percent atx900,31percent atx950,17percent atx1000,9percent atx1050,5percent atx1100,2percent atx1150,zero nearx1200 along the beam center. Soft edges should be still weaker. These are translucent LIGHT values, not gray/orange RGB painted at full opacity. In source image1 the outercone with alpha>=16 ends aroundx1097 and y449, notx1189/y501 as the rejected image2. Keep source original shape/camera/direction and saturated orange-red palette with tiny warm yellow-white origin; make the visible cone smaller/softer according to source, with a smooth transparent falloff outward. Leave native alpha zero everywhere else, all of the physical pylon absent, no new flares/rays/text/frame/checkerboard/backdrop. Do not create another pose, add a second cone, recenter, stretch, rotate, or fill unused canvas. This is one soft optical effect layer aligned to the original source, not an opaque object.",
+      "limitations": [
+        "Generated source-preserving candidate; exact pixel reproduction and canonical one-to-one fidelity are not certified.",
+        "Same source camera and placement requested; socket alignment, physical dimensions and the Homeworld 35-degree projection need review.",
+        "No runtime, collision, animation or human artistic admission performed.",
+        "The native soft-alpha falloff is substantially closer than the rejected first attempt but is still denser than the original at x900–1100; original and generated alpha profiles are recorded. Do not label this effect 1:1 or replace the source without review.",
+        "The physical pylon is absent. Soft-alpha is intentional; no solid-core requirement should be imposed on the effect.",
+        "La structure fine du centre optique n'est pas établie : le cœur lumineux masquait cette surface dans la source. Son exactitude après retrait de l'émission n'est pas certifiée.",
+        "Recomposition et points d'ancrage proposés ; alignement, échelle physique, caméra en jeu et fidélité détaillée restent à examiner."
+      ],
+      "warnings": [],
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "frames": 1,
+      "newDesignIdentity": null
+    },
+    {
+      "id": "HWA160-052-pylon",
+      "sourceId": "HWA160-052",
+      "sourceDesignId": "HWA160-052",
+      "label": "Pylône052 — corps séparé, optique interne non établie",
+      "assetKind": "prop",
+      "componentRole": "pylon",
+      "path": "public/game/p0-fidelity-20261113/homeworld/HWA160-052-pylon-v2.png",
+      "sha256": "de2eb32e078af6964a5e7e98dc671c33940d0e59644e8d22117abf069c16e361",
+      "bytes": 987501,
+      "src": "/game/p0-fidelity-20261113/homeworld/HWA160-052-pylon-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        596.5,
+        1195
+      ],
+      "pivotStatus": "proposal only; not physically or artistically qualified",
+      "camera": "Original HWA160-052 three-quarter camera requested; no new angle invented; yaw/pitch unmeasured",
+      "alpha": {
+        "threshold": 16,
+        "transparentPixels": 1160012,
+        "visiblePixels16": 400178,
+        "opaquePixels240": 394189,
+        "softPixels3To239": 9778,
+        "noisePixels1Or2": 8537,
+        "bounds16": [
+          266,
+          32,
+          927,
+          1195
+        ],
+        "marginsPixels": [
+          266,
+          32,
+          327,
+          59
+        ],
+        "edgePixels16": 0,
+        "edgePixels16BySide": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "hiddenRgbIgnored": true
+      },
+      "alphaPolicy": "solid-core-with-transparent-surround",
+      "sourceIsCropped": false,
+      "silhouetteCompleteness": "requires-human-comparison",
+      "missingGeometryNotInvented": null,
+      "missingGeometryClaimStatus": "not-independently-established",
+      "hiddenSurfaceFidelityEstablished": false,
+      "sourceComponentCompleted": false,
+      "visibleOnly": null,
+      "standaloneCompleteObject": null,
+      "compositionComplete": null,
+      "requestedSourceToReviewAffine": null,
+      "affineVerified": false,
+      "priorityLinks": [
+        "Homeworld et habitats:QA-007"
+      ],
+      "sourceRows": [
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "Fichiers_PNG",
+          "row": 57,
+          "sourceId": "HWA160-052"
+        },
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sheet": "QA_et_Suite",
+          "row": 12,
+          "id": "QA-007",
+          "priority": "P0",
+          "criterion": "Séparer eau/roche, laser/pylône, statue/base",
+          "status": "À faire"
+        }
+      ],
+      "sourceReferences": [
+        {
+          "path": "public/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+          "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+          "bytes": 1215497,
+          "originalPath": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+          "src": "/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+          "width": 1254,
+          "height": 1254,
+          "kind": "original-project-source",
+          "label": "Source originale du projet — parties visibles à comparer"
+        },
+        {
+          "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+          "role": "original-project-image",
+          "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png"
+        },
+        {
+          "sha256": "4f5536f6acba8d2af4c349abb6ad8d0457bae82e25b594ecd2818d205bff264f",
+          "role": "prior-separated-candidate-for-local-incandescent-core-correction",
+          "privateReferenceName": "exec-4ab631ca-7aec-47f9-b861-48195f04b352.png",
+          "privateReferenceNotPublished": true
+        }
+      ],
+      "generationRecord": {
+        "path": "production/p0-fidelity-20261113/generation/homeworld-layers.json",
+        "sha256": "ddbcb39a45af5a2fefb2e255144f5ce4858870e0befb7b405e89baf44b97ed00",
+        "bytes": 29320,
+        "index": 0,
+        "jsonPointer": "/entries/0"
+      },
+      "prompt": "One tiny source-fidelity correction ONLY to the optical aperture center of image1. Image1 is the already separated complete pylon layer; image2 is its ORIGINAL HWA160-052 source authority. Image1 incorrectly invented a yellow spiral/turbine pattern inside the circular lens. That pattern is NOT established by image2. Remove that invented spiral and restore ONLY the plain saturated white-hot incandescent emission core visibly established in image2: a smooth almost featureless warm white/yellow luminous center, with a small orange edge inside the SAME original circular metal rim. Do NOT reveal an unlit lens or new optics, iris, turbine, concentric carving, grille or mechanism. Keep the physical outer ring, bolts/stone/bronze edging, and EVERY OTHER visible pylon pixel/design as close to image1 as possible: exact silhouette, proportions, camera, original screen position and scale, glyphs, three glowing slits, cracks, inclined top fin, vents, stairs, pedestal and full positive margins. Do not change the body/canvas framing, do not recenter/enlarge, do not redesign material or color. Same1254x1254 square full canvas. No outward laser/cone/haze: this remains the BODY-ONLY layer, with the small intrinsic incandescent aperture core retained. True alpha-zero background and fully opaque pylon. No new object, floor, text, labels, frame or checkerboard. This change is limited to replacing the unproven internal spiral with the source-supported overexposed incandescent core.",
+      "limitations": [
+        "Generated source-preserving candidate; exact pixel reproduction and canonical one-to-one fidelity are not certified.",
+        "Same source camera and placement requested; socket alignment, physical dimensions and the Homeworld 35-degree projection need review.",
+        "No runtime, collision, animation or human artistic admission performed.",
+        "The original source hides internal optics behind incandescent emission. Removing the invented spiral does not establish the geometry of an unlit lens; sourceComponentCompleted remains false.",
+        "The current candidate preserves broad silhouette and framing (alpha16 IoU 0.995128 against the preceding version), but small color/detail differences outside the aperture still require source comparison.",
+        "La structure fine du centre optique n'est pas établie : le cœur lumineux masquait cette surface dans la source. Son exactitude après retrait de l'émission n'est pas certifiée.",
+        "Recomposition et points d'ancrage proposés ; alignement, échelle physique, caméra en jeu et fidélité détaillée restent à examiner."
+      ],
+      "warnings": [],
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "frames": 1,
+      "newDesignIdentity": null
+    },
+    {
+      "id": "vex-front-v2",
+      "sourceId": "vex-front",
+      "sourceDesignId": "vex-front",
+      "label": "Vex — correction ciblée du menton",
+      "assetKind": "mask",
+      "componentRole": "corrected-mask-front",
+      "path": "public/game/p0-fidelity-20261113/masks/vex-front-v2.png",
+      "sha256": "f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb",
+      "bytes": 1383446,
+      "src": "/game/p0-fidelity-20261113/masks/vex-front-v2.png",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "centered-preview-proposal-not-rig-fitted",
+      "camera": "front-orthographic",
+      "alpha": {
+        "threshold": 16,
+        "transparentPixels": 922150,
+        "visiblePixels16": 641579,
+        "opaquePixels240": 637027,
+        "softPixels3To239": 7232,
+        "noisePixels1Or2": 6107,
+        "bounds16": [
+          184,
+          116,
+          1071,
+          1155
+        ],
+        "marginsPixels": [
+          184,
+          116,
+          183,
+          99
+        ],
+        "edgePixels16": 0,
+        "edgePixels16BySide": {
+          "top": 0,
+          "bottom": 0,
+          "left": 0,
+          "right": 0
+        },
+        "hiddenRgbIgnored": true
+      },
+      "alphaPolicy": "solid-core-with-transparent-surround",
+      "sourceIsCropped": false,
+      "silhouetteCompleteness": "requires-human-comparison",
+      "missingGeometryNotInvented": null,
+      "missingGeometryClaimStatus": "not-independently-established",
+      "hiddenSurfaceFidelityEstablished": false,
+      "sourceComponentCompleted": null,
+      "visibleOnly": null,
+      "standaloneCompleteObject": null,
+      "compositionComplete": null,
+      "requestedSourceToReviewAffine": null,
+      "affineVerified": false,
+      "priorityLinks": [
+        "Personnalisation et arsenal:vex-phg"
+      ],
+      "sourceRows": [
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 275,
+          "rowSha256": "ca533c75b3b9bc5bfab641361bc784b9af2b0622b4842fbd3cde4d63777fc96d",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "1to1_Validation_Matrix",
+          "row": 275,
+          "rowSha256": "578ce7473d69bafea37768003fcd40632d7b4a0b0945853c74757e1416b7ac05",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "View_Coverage",
+          "row": 275,
+          "rowSha256": "43848339a0119b17e007e655ec0502919df9cdcdcf63435dc3cdd8599bcde919",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Implementation_Status_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Morphology_Coverage",
+          "row": 275,
+          "rowSha256": "0b7740e49d582f46d65644b95eb60c00790df20585c30dc8739c9e21e6d423f9",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Implementation_Status_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Biomasks",
+          "row": 40,
+          "rowSha256": "b78bd12292e4d7a6ba886e6b92a28c588710b9bb4f6c8da83587c3253a0a6241",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Biomasks_Master",
+          "row": 42,
+          "rowSha256": "7f9c9d2e440bc966df532f33ee0acc1432772a98e3b994cea156a7222665cc7f",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx"
+        }
+      ],
+      "sourceReferences": [
+        {
+          "path": "public/game/p0-sprites-20261113/masks/vex-front.png",
+          "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516",
+          "bytes": 1437392,
+          "originalPath": "public/game/p0-sprites-20261113/masks/vex-front.png",
+          "src": "/game/p0-sprites-20261113/masks/vex-front.png",
+          "width": 1254,
+          "height": 1254,
+          "kind": "previous-generated-candidate",
+          "label": "Candidat précédent — pas une référence canonique"
+        },
+        {
+          "sha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706",
+          "bytes": 65664,
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+          "privateReferenceName": "predator_18.texture",
+          "privateReferenceNotPublished": true
+        },
+        {
+          "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137",
+          "bytes": 42406,
+          "role": "native-size read-only WebGL decode screenshot",
+          "privateReferenceName": "native-reference-8.png",
+          "privateReferenceNotPublished": true
+        }
+      ],
+      "generationRecord": {
+        "path": "production/p0-fidelity-20261113/generation/mask-corrections.json",
+        "sha256": "6b7d56396e5870a5b8ef8614d5b91fbe3184fef68ae47ecb75c211378e4564ca",
+        "bytes": 11036,
+        "index": 0,
+        "jsonPointer": "/entries/0"
+      },
+      "prompt": "Make a strictly limited silhouette correction to the biomask in image1 using the identity evidence in image2. Image1 is the full high-resolution current front cutout. Image2 is a 256px monochrome community port reference; its surrounding pale hair strands are NOT established mask geometry and must NOT be added. Keep exactly the same full front camera, dark broad dome, silver cheeks and side flanges, two slanted eye apertures, brow notches, topology of forehead grooves, center ridge, material palette, lighting, scale and empty margins of image1. Change ONLY the outer contour of the lowermost jaw/chin: image1 has a broad rounded U termination; the visible reference mask tapers toward a narrower V-like chin. Narrow and taper this lower central end to match that visible reference contour, keeping the center ridge connected. Do not add a fang, horn, grille, new seam, engraving, hair, wearer or extra object. Do not redesign upper head, eyes, cheek facets or proportions elsewhere. No invented tiny details from the low-resolution icon. One whole detached mask only, centered with at least 9 percent clear empty native alpha on each side, fully contained. Physically opaque metal, genuine transparent background and antialiased outer edges. No drop shadow, floor, glow, labels, text, watermark, frame or fake transparency checkerboard. This is an unapproved reference-based candidate study, not a claim of certified PHG source accuracy.",
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required.",
+        "Only the lower chin outer contour is intentionally corrected. Surface topology and detailed identity require human comparison; no exact original PHG color or UV proof.",
+        "The 256px identity icon and community DDS are cited by URL/hash and are not republished in this addendum.",
+        "Recomposition et points d'ancrage proposés ; alignement, échelle physique, caméra en jeu et fidélité détaillée restent à examiner."
+      ],
+      "warnings": [],
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "frames": 1,
+      "newDesignIdentity": false
+    }
+  ],
+  "groups": [
+    {
+      "id": "HWA160-010-visible-source-components",
+      "label": "HWA160-010 — incomplet : eau/effets rejetés, architecture visible seulement",
+      "source": {
+        "path": "public/game/p0-fidelity-20261113/references/HWA160-010-original.png",
+        "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+        "bytes": 2530735,
+        "originalPath": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+        "src": "/game/p0-fidelity-20261113/references/HWA160-010-original.png",
+        "width": 1254,
+        "height": 1254,
+        "kind": "original-project-source",
+        "label": "Source originale du projet — parties visibles à comparer"
+      },
+      "kind": "component-separation",
+      "assetIds": [
+        "HWA160-010-architecture"
+      ],
+      "placements": [
+        {
+          "assetId": "HWA160-010-architecture",
+          "rect": [
+            -119.04761904761905,
+            -119.04761904761905,
+            1492.857142857143,
+            1492.857142857143
+          ],
+          "status": "inverse-of-requested-affine-not-verified",
+          "opacity": 1
+        }
+      ],
+      "limitations": [
+        "Visible-only conservative architecture/rock layer, not a complete dry reconstruction of the waterfall building.",
+        "The source already clips the upper tip of the tall right fin. The incomplete observed edge is preserved inside review margins, with no completed tip or invented hidden face.",
+        "Two waterfall curtains, pool water and dense mist occlude underlying stone. Their removed regions remain alpha holes; unseen pool bed, hidden wall faces and supports are not established.",
+        "Fine stone boundaries previously softened by mist remain conservative candidate boundaries; exact source-pixel identity is not certified.",
+        "The requested uniform source-to-review framing is a proposal, not an independently qualified pixel registration or physical projection.",
+        "All water/mist layers were rejected for source-fidelity differences; there is no admitted FX counterpart or complete source recomposition in this sublot.",
+        "The source altar light shaft is removed from the architecture and remains an omitted, unproduced separate effect.",
+        "Not a new animation, no runtime placement, scale, collision, walkthrough or canonical/human art approval.",
+        "La source est déjà tronquée en haut. Seules les formes visibles sont séparées ; une marge alpha ne prouve pas une silhouette complète.",
+        "L'architecture conserve les occultations : ce composant n'est pas un fond sec complet. L'effet peut comprendre eau, brume et lumière verte.",
+        "Recomposition et points d'ancrage proposés ; alignement, échelle physique, caméra en jeu et fidélité détaillée restent à examiner.",
+        "La couche eau/brume/rayon010 n'est pas livrée : les essais ont été rejetés pour écarts de forme et d'ancrage. Cette comparaison n'est pas une recomposition source complète."
+      ],
+      "sourceTargetsComplete": false,
+      "unresolvedSourceComponentIds": [
+        "HWA160-010-water"
+      ]
+    },
+    {
+      "id": "HWA160-052-laser-separation",
+      "label": "HWA160-052 — séparation des composants visibles",
+      "source": {
+        "path": "public/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+        "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+        "bytes": 1215497,
+        "originalPath": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+        "src": "/game/p0-fidelity-20261113/references/HWA160-052-original.png",
+        "width": 1254,
+        "height": 1254,
+        "kind": "original-project-source",
+        "label": "Source originale du projet — parties visibles à comparer"
+      },
+      "kind": "component-separation",
+      "assetIds": [
+        "HWA160-052-pylon",
+        "HWA160-052-emission"
+      ],
+      "placements": [
+        {
+          "assetId": "HWA160-052-pylon",
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "status": "proposed-not-registered",
+          "opacity": 1
+        },
+        {
+          "assetId": "HWA160-052-emission",
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "status": "proposed-not-registered",
+          "opacity": 1
+        }
+      ],
+      "limitations": [
+        "Generated source-preserving candidate; exact pixel reproduction and canonical one-to-one fidelity are not certified.",
+        "Same source camera and placement requested; socket alignment, physical dimensions and the Homeworld 35-degree projection need review.",
+        "No runtime, collision, animation or human artistic admission performed.",
+        "The original source hides internal optics behind incandescent emission. Removing the invented spiral does not establish the geometry of an unlit lens; sourceComponentCompleted remains false.",
+        "The current candidate preserves broad silhouette and framing (alpha16 IoU 0.995128 against the preceding version), but small color/detail differences outside the aperture still require source comparison.",
+        "La structure fine du centre optique n'est pas établie : le cœur lumineux masquait cette surface dans la source. Son exactitude après retrait de l'émission n'est pas certifiée.",
+        "Recomposition et points d'ancrage proposés ; alignement, échelle physique, caméra en jeu et fidélité détaillée restent à examiner.",
+        "The native soft-alpha falloff is substantially closer than the rejected first attempt but is still denser than the original at x900–1100; original and generated alpha profiles are recorded. Do not label this effect 1:1 or replace the source without review.",
+        "The physical pylon is absent. Soft-alpha is intentional; no solid-core requirement should be imposed on the effect."
+      ]
+    },
+    {
+      "id": "vex-front-comparison",
+      "label": "Vex — correction du candidat précédent",
+      "source": {
+        "path": "public/game/p0-sprites-20261113/masks/vex-front.png",
+        "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516",
+        "bytes": 1437392,
+        "originalPath": "public/game/p0-sprites-20261113/masks/vex-front.png",
+        "src": "/game/p0-sprites-20261113/masks/vex-front.png",
+        "width": 1254,
+        "height": 1254,
+        "kind": "previous-generated-candidate",
+        "label": "Candidat précédent — pas une référence canonique"
+      },
+      "kind": "mask-correction",
+      "assetIds": [
+        "vex-front-v2"
+      ],
+      "placements": [
+        {
+          "assetId": "vex-front-v2",
+          "rect": [
+            0,
+            0,
+            1254,
+            1254
+          ],
+          "status": "proposed-not-registered",
+          "opacity": 1
+        }
+      ],
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required.",
+        "Only the lower chin outer contour is intentionally corrected. Surface topology and detailed identity require human comparison; no exact original PHG color or UV proof.",
+        "The 256px identity icon and community DDS are cited by URL/hash and are not republished in this addendum.",
+        "Recomposition et points d'ancrage proposés ; alignement, échelle physique, caméra en jeu et fidélité détaillée restent à examiner."
+      ]
+    }
+  ],
+  "protectedSources": {
+    "path": "production/p0-fidelity-20261113/suivi/source-protection.json",
+    "sha256": "3120bfb80e3efbe7c0aa1a0dbb78586e70c2bdcbc0eec7aaeadb2e83c92ce6e6",
+    "files": 216
+  },
+  "inputPins": [
+    {
+      "path": "production/p0-fidelity-20261113/generation/cascade-layers.json",
+      "sha256": "02b1ab184d9b4952eb03f84bbb263ff9ae34f7dcab847494ae6355ea7f27c770",
+      "bytes": 24934
+    },
+    {
+      "path": "production/p0-fidelity-20261113/generation/homeworld-layers.json",
+      "sha256": "ddbcb39a45af5a2fefb2e255144f5ce4858870e0befb7b405e89baf44b97ed00",
+      "bytes": 29320
+    },
+    {
+      "path": "production/p0-fidelity-20261113/generation/mask-corrections.json",
+      "sha256": "6b7d56396e5870a5b8ef8614d5b91fbe3184fef68ae47ecb75c211378e4564ca",
+      "bytes": 11036
+    },
+    {
+      "path": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+      "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+      "bytes": 2530735
+    },
+    {
+      "path": "production/homeworld-v160/originals/HWA160-052_pylone-laser-yautja-incandescent.png",
+      "sha256": "c3ca2bdccac72fba6df18c5fa44989758185036a216c5c702d269556e9902698",
+      "bytes": 1215497
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/masks/vex-front.png",
+      "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516",
+      "bytes": 1437392
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/workbook_lib.py",
+      "sha256": "10d3abce0755cceb1c25074ddad168bd9b21b0cd8eb40379540f5e60bd8f02c8",
+      "bytes": 54692
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/build-addendum.py",
+      "sha256": "5a6768c1d191a6c9f0bb921dcd7577d1b21bf74a83d798c3b959d8f2e7fb646c",
+      "bytes": 32120
+    },
+    {
+      "path": "production/p0-fidelity-20261113/tools/review-template.html",
+      "sha256": "7686efbe437d76723430d9bf3996e8ebc3bcbe7495feaef7eb808b6d23b113d4",
+      "bytes": 22551
+    }
+  ],
+  "limitations": [
+    "Intentional reference-based candidate work, no quantified1:1 score or canonical certification.",
+    "No hidden geometry is established by generation; source clipping and occlusion remain explicit.",
+    "References are excluded from new asset counts; two component layers are not two new source assemblies."
+  ]
+}

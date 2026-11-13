@@ -1,0 +1,91 @@
+name: P0 static sprite candidate integrity
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/p0-sprite-candidates.yml'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/clan-war-command-20261109/suivi/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'production/homeworld-v160/originals/**'
+      - 'public/game/assets/clan-field-20261103/**'
+      - 'public/game/assets/v14/hunter-kit/weapons/feral-speargun.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/weapons/registered/smart-disc.webp'
+      - 'public/game/homeworld/v84/npcs/guard/01.png'
+      - 'public/game/warp-universe/20261109/199_module_baie_warp_fond.png'
+      - 'app/game/clanWarBibleV6Source.json'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/p0-sprite-candidates.yml'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/clan-war-command-20261109/suivi/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'production/homeworld-v160/originals/**'
+      - 'public/game/assets/clan-field-20261103/**'
+      - 'public/game/assets/v14/hunter-kit/weapons/feral-speargun.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/weapons/registered/combistick.webp'
+      - 'public/game/assets/v3/actors/yautja/hunter/weapons/registered/smart-disc.webp'
+      - 'public/game/homeworld/v84/npcs/guard/01.png'
+      - 'public/game/warp-universe/20261109/199_module_baie_warp_fond.png'
+      - 'app/game/clanWarBibleV6Source.json'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: p0-sprite-integrity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  candidate-integrity:
+    name: Native P0 pixels, source pins and deterministic XLSX
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout candidate pack and selection metadata only
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/p0-sprite-candidates.yml
+            /production/p0-fidelity-20261113/
+            /public/game/p0-fidelity-20261113/
+            /production/p0-sprites-20261113/
+            /public/game/p0-sprites-20261113/
+            /production/clan-war-command-20261109/suivi/
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Include exact protected sources and local visual references
+        # This repository is public (GitHub visibility checked: private=false).
+        # The lazy blob fetch remains anonymous after checkout removes its token.
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 production/p0-fidelity-20261113/tools/ci-sparse-inputs.py --patterns > "$RUNNER_TEMP/p0-sprite-sparse-inputs.txt"
+          git sparse-checkout set --no-cone --stdin < "$RUNNER_TEMP/p0-sprite-sparse-inputs.txt"
+          python3 production/p0-fidelity-20261113/tools/ci-sparse-inputs.py --check
+      - name: Install the pinned native PNG reader
+        run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
+      - name: Verify unchanged native candidate pixels and manifest
+        run: python3 production/p0-sprites-20261113/tools/verify-pack.py --require-complete
+      - name: Verify deterministic follow-up and protected historical workbooks
+        run: python3 production/p0-sprites-20261113/tools/verify-workbook.py --check --require-complete
+      - name: Verify native fidelity addendum candidates and source pins
+        run: python3 production/p0-fidelity-20261113/tools/verify-addendum.py --check --require-complete

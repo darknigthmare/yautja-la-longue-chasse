@@ -1,0 +1,381 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "status": "partial-visible-source-candidate",
+  "scope": "P0 QA-007 visible-only layer separation of original HWA160-010; one conservative architecture candidate, all FX attempts rejected for fidelity. No P0 closure.",
+  "humanArtValidated": false,
+  "canonCertified": false,
+  "runtimeIntegrated": false,
+  "allP0Closed": false,
+  "rasterEditingPerformed": false,
+  "sourceBaselineCommit": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "counts": {
+    "nativeGeneratedImages": 5,
+    "publishedCandidateLayers": 1,
+    "publishedPropLayers": 1,
+    "publishedEffectLayers": 0,
+    "rejectedEffectAttempts": 3,
+    "supersededArchitectureAttempts": 1,
+    "completeCompositions": 0,
+    "animationClips": 0,
+    "humanArtApprovals": 0,
+    "canonCertifiedAssets": 0
+  },
+  "entries": [
+    {
+      "id": "HWA160-010-architecture",
+      "sourceId": "HWA160-010",
+      "sourceDesignId": "HWA160-010-visible-architecture",
+      "assetKind": "prop",
+      "compositionGroup": "HWA160-010-visible-source-components",
+      "compositionRole": "architecture-visible-only",
+      "assetPath": "public/game/p0-fidelity-20261113/homeworld/hwa160-010-architecture.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-fc03da72-57a1-4019-8227-2db160d8b30b.png",
+      "sha256": "88b6f151278cf73c08f6a10edcb11e31b9fe031b4c8b9321cfdf5f43976ef8d0",
+      "bytes": 1421451,
+      "width": 1254,
+      "height": 1254,
+      "nativeMode": "RGBA",
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "sourceReference": {
+        "path": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+        "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+        "bytes": 2530735,
+        "width": 1254,
+        "height": 1254,
+        "role": "exact-original-project-composite-reference"
+      },
+      "sourceRows": [
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sha256": "726fc9f4a9e101d2c735929aff22f881993a344f5d248b329ac6fc636c4349f4",
+          "sheet": "Fichiers_PNG",
+          "row": 15,
+          "cells": {
+            "A15": "HWA160-010",
+            "B15": "cascade jumelle du monde yautja",
+            "C15": "Hydrologie",
+            "D15": "1254",
+            "E15": "1254",
+            "F15": "Oui",
+            "G15": "CANDIDAT_A_REVOIR",
+            "H15": "Non mesurée",
+            "I15": "RENDU_INDEPENDANT",
+            "J15": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+            "K15": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+            "L15": "2530735"
+          }
+        },
+        {
+          "path": "production/homeworld-v162/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V162.xlsx",
+          "sha256": "726fc9f4a9e101d2c735929aff22f881993a344f5d248b329ac6fc636c4349f4",
+          "sheet": "QA_et_Suite",
+          "row": 12,
+          "cells": {
+            "A12": "QA-007",
+            "B12": "P0",
+            "C12": "Indépendance",
+            "D12": "Séparer eau/roche, laser/pylône, statue/base",
+            "E12": "À faire",
+            "F12": "Revue artistique",
+            "G12": "Ne pas découper des vignettes de catalogue en « HD »",
+            "H12": "Composites conservés"
+          }
+        }
+      ],
+      "priorityLinks": [
+        "Homeworld et habitats:QA-007"
+      ],
+      "camera": "Original source camera retained as visual design anchor; native projection and requested framing require human review",
+      "view": {
+        "kind": "static",
+        "facing": "source-view",
+        "nativeRender": true,
+        "wasMirror": false
+      },
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "sourceIsCropped": true,
+      "silhouetteCompleteness": "incomplete-in-source",
+      "missingGeometryNotInvented": true,
+      "visibleOnly": true,
+      "standaloneCompleteObject": false,
+      "compositionComplete": false,
+      "pivot": [
+        627,
+        1147
+      ],
+      "pivotStatus": "proposal derived from original full-frame front-base anchor, not a measured physical support",
+      "sourceFramePivotProposal": [
+        627,
+        1247
+      ],
+      "requestedSourceToReviewAffine": [
+        0.84,
+        0,
+        0,
+        0.84,
+        100,
+        100
+      ],
+      "affineVerified": false,
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1060265,
+        "noisePixels1or2": 15150,
+        "softPixels3to239": 16213,
+        "visiblePixels16": 491121,
+        "nearOpaquePixels240": 480888,
+        "visibleBounds16": [
+          150,
+          128,
+          1125,
+          1148
+        ],
+        "marginsPixels16": [
+          150,
+          128,
+          129,
+          106
+        ],
+        "edgePixels16": 0
+      },
+      "alphaMode": "opaque-visible-stone-with-transparent-removed-and-occluded-regions",
+      "prompt": "FRAMING-ONLY EDIT of image1, the already separated visible stone architecture. Image2 is the original composite solely to verify its design; do NOT restore any water or hidden surface. Keep ALL existing visible architecture, gold stone, moss, damage, camera, proportions, irregular alpha holes and source-truncated upper fin boundary unchanged. Put the entire visible cutout at the SAME requested affine framing used for the companion water layer: x_new = 0.84*x_old +100 pixels, y_new = 0.84*y_old +100 pixels, on a1254x1254 transparent canvas. Uniformly shrink and translate the existing cutout as one rigid layer. About8percent empty alpha margin around its visible extent. No local scaling, rearrangement, new projection or texture redesign.\nCRITICAL: the right fin top was already incomplete/cut in the original source. Retain that existing incomplete cut shape and put transparent space above it; DO NOT invent a complete spike, fin tip, cap or geometry above the observed cut edge. Keep the water/fog/beam removal holes, never reveal or inpaint hidden rocks. No water, glow beam, fog, pool, newbackground or scenery. Solid visible stone remains opaque, empty area alpha0. No text/labels/frames.",
+      "references": [
+        {
+          "path": "/workspace/generated_images/exec-d5e14131-bfe6-47b8-abdf-5a13ac4fcac2.png",
+          "sha256": "3e71958bcaf6e96d231696cb3b6371395dc1e1f1b36292bf97da74d687dc1066",
+          "role": "initial-visible-only-layer-before-safe-framing"
+        },
+        {
+          "path": "production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+          "sha256": "3884555bb6c6bad0b6ca5d3d7adbed1581870aa24770436cfa1c77f27eecbec7",
+          "role": "original-composite-anchor"
+        }
+      ],
+      "initialGenerationPrompt": "Strict SUBTRACTIVE LAYER SEPARATION of the provided exact reference, not a redesign and not a dry-scene reconstruction. Output one native 1254 by1254 RGBA PNG, SAME full canvas coordinates, SAME camera, SAME scale, SAME placement, SAME palette and all visible stone/rock/moss/architectural shapes. Produce ONLY the architecture and rock that are actually visible in the source. Preserve the two large curved gold-stone side fins, all clearly visible walls, balustrades, ledges, central stepped supports, altar hardware and foreground rim stones exactly as shown. Keep existing source wear and bounced green illumination on stone; do not invent new texture detail.\nREMOVE to real transparent alpha: both green falling water curtains, the water ribbons on the upper ledges, all basin/pool water, spray, mist and the vertical luminous green beam over the altar. At places where water or mist OCCLUDES stone, leave a TRANSPARENT HOLE. Do NOT reveal, reconstruct or invent the hidden rock, hidden pool bed, pipework, extra wall faces, stair treads or supports. Do NOT bridge disconnected visible stone islands just to make a solid building. If a surface is ambiguous behind a bright waterfall or dense fog, leave it empty rather than inventing a dry wall. This conservative cutout is expected to have irregular alpha holes.\nThe original upper tip of the tall right fin already reaches and is cut by the top canvas edge. Preserve that known framing; do not fabricate or extend the unseen tip and do not shrink/recenter the whole object. Absolutely no pose, projection, silhouette or surface redesign. No scenery, sky, floor outside the original object, black/white background, checkerboard, labels, text, frame, watermark or extra props. Visible retained stone itself is solid/opaque; only the boundary is antialiased and removed/occluded areas have true alpha zero.",
+      "limitations": [
+        "Visible-only conservative architecture/rock layer, not a complete dry reconstruction of the waterfall building.",
+        "The source already clips the upper tip of the tall right fin. The incomplete observed edge is preserved inside review margins, with no completed tip or invented hidden face.",
+        "Two waterfall curtains, pool water and dense mist occlude underlying stone. Their removed regions remain alpha holes; unseen pool bed, hidden wall faces and supports are not established.",
+        "Fine stone boundaries previously softened by mist remain conservative candidate boundaries; exact source-pixel identity is not certified.",
+        "The requested uniform source-to-review framing is a proposal, not an independently qualified pixel registration or physical projection.",
+        "All water/mist layers were rejected for source-fidelity differences; there is no admitted FX counterpart or complete source recomposition in this sublot.",
+        "The source altar light shaft is removed from the architecture and remains an omitted, unproduced separate effect.",
+        "Not a new animation, no runtime placement, scale, collision, walkthrough or canonical/human art approval."
+      ]
+    }
+  ],
+  "rejectedCandidates": [
+    {
+      "id": "water-initial",
+      "nativeSourcePath": "/workspace/generated_images/exec-38460e8c-6261-4e94-a188-ba8f77b034cf.png",
+      "sha256": "4d9e706c7fac98dc95de6897199d4c6fd6184fefa04f26fe48306ad46944e9eb",
+      "bytes": 858675,
+      "status": "rejected-not-published",
+      "reason": "Thin altar beam became an unsupported broad hard teardrop/cone; layer registration and upper ribbon boundaries not qualified.",
+      "prompt": "Strict SUBTRACTIVE EFFECT-LAYER SEPARATION of the provided exact reference, not a redesigned waterfall. Output one native 1254 by1254 RGBA PNG on true transparent alpha, SAME full canvas coordinates, camera, scale, placement and original yellow-green palette. Keep ONLY the source-visible luminous WATER, SPRAY, MIST and its visible vertical luminous green BEAM above the rear altar. There are exactly TWO falling waterfall curtains: the wide curtain at image-left/centre and the narrower one at image-right. Preserve their original widths, curved upper lips, lengths, streak patterns, impact positions, intervening empty gap, shared green foreground basin/pool, visible top water ribbons, spray and soft mist as in the reference. Keep the small altar beam in its original top-right-ish location so the original effect is not lost.\nREMOVE every piece of stone/rock, moss, architecture, wall, fin, rail, altar hardware, steps and foreground rim to TRUE ALPHA ZERO. Do not keep stone as a dark backing. Do not invent water behind occluding rock: where solid foreground architecture originally covered an effect, retain a transparent hole and the original interrupted effect silhouette. Do NOT fill the whole basin into a new ellipse, do NOT add extra falls, streams, tubes, fire, objects or scenery. Do not recenter, enlarge, shrink, crop or rearrange the two falls.\nThe flowing water may have bright solid cores, but soft mist and volumetric glow must have genuine partial alpha; empty surroundings and all removed solid objects have alpha zero. Do not turn the mist into an opaque gray or black cloud. No new background, rectangular plate, checkerboard, labels, text, frame or watermark. This is a static source-faithful candidate effect layer, not a claim of animation or exact automatically registered compositing.",
+      "references": [
+        "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+        "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png"
+      ],
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "transparentPixels": 1154458,
+        "noisePixels1or2": 36089,
+        "softPixels3to239": 115476,
+        "visiblePixels16": 364672,
+        "nearOpaquePixels240": 266493,
+        "visibleBounds16": [
+          348,
+          148,
+          1075,
+          1082
+        ],
+        "marginsPixels16": [
+          348,
+          148,
+          179,
+          172
+        ],
+        "edgePixels16": 0
+      },
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "water-correction",
+      "nativeSourcePath": "/workspace/generated_images/exec-c0c1455b-cc33-4cf4-afce-5fb987e55873.png",
+      "sha256": "87fdd9a45ec70b37f5fd703e997e0c05ce56a27e386bbaa54edb1d1ce9a3ac57",
+      "bytes": 697247,
+      "status": "rejected-not-published",
+      "reason": "Unsupported broad enclosed altar halo remained, and the requested common affine framing did not match the architecture.",
+      "prompt": "Correct this isolated FX layer image1 against ORIGINAL COMPOSITE image2, then apply only the shared review framing. Preserve exactly TWO luminous yellow-green waterfall curtains, same source perspective, widths, streaks, fall heights, impact points, basin/pool shape and soft mist. This is visible-only subtraction; do not add water behind occluding stone. The upper LEFT water ribbon in image1 is too wide/too far left: constrain its silhouette to the water ACTUALLY VISIBLE in image2, not under the front stone rim. All removed architecture is true alpha0.\nIMPORTANT correction: image1 turned the thin vertical altar light shaft into an invented closed TEARDROP/CONE with a broad outline. Remove that teardrop shape entirely. The original has a SLENDER VERTICAL light core and faint diffuse glow above the altar: source-coordinate core roughly x800,y180-to305, narrow width, no hard cone perimeter. Reproduce only that narrow observed source glow, not a floating flame, diamond, droplet, orb, object or altar hardware.\nNow put the ENTIRE corrected effects layer at the same shared affine review framing as the architecture: x_new=0.84*x_old+100pixels, y_new=0.84*y_old+100pixels on1254x1254 canvas. Uniform rigid scale/translation, preserve all relative positions of both falls/pool/beam. Do not center the effects independently inside their own bounds. The coordinate system is the ORIGINAL FULL SOURCE canvas.\nReal transparent surrounds and holes; mist/glow have true soft partial alpha; falling water can have bright dense cores. No stone/rock/moss/architecture, no rectangularplate, blackbackground, checkerboard, extra falls, invented floor, text or frames. Exact automatic pixel registration is not asserted; do not redesign anything to beautify it.",
+      "references": [
+        "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+        "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png"
+      ],
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          254
+        ],
+        "transparentPixels": 1225148,
+        "noisePixels1or2": 18829,
+        "softPixels3to239": 89646,
+        "visiblePixels16": 309714,
+        "nearOpaquePixels240": 238893,
+        "visibleBounds16": [
+          493,
+          250,
+          1138,
+          1125
+        ],
+        "marginsPixels16": [
+          493,
+          250,
+          116,
+          129
+        ],
+        "edgePixels16": 0
+      },
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "water-final-without-beam",
+      "nativeSourcePath": "/workspace/generated_images/exec-214686fd-dca1-4b30-b1d5-c171beb90d19.png",
+      "sha256": "8fb528b4a1d91e9aeea01740c0ebe996dc304d2d17e86fb8e20fbafe6981d8c0",
+      "bytes": 913281,
+      "status": "rejected-not-published",
+      "reason": "Altar beam correctly removed and exactly two falls preserved, but the upper-left ribbon stays expanded and the registration does not preserve the original/architecture alignment. Not admitted for 1:1 fidelity.",
+      "prompt": "Visible-only WATER AND MIST layer for a fixed architectural composite. Image1 is the ORIGINAL complete cascade reference. Image2 is the accepted separated and safely framed architecture; it is an ALIGNMENT GUIDE ONLY and must be absent from the output. Return a1254x1254 transparent PNG containing ONLY the two source waterfalls, pool water and mist, placed to fit the empty regions between the rocks of image2. Do not center or enlarge the effects independently.\nExactly TWO falling green-yellow water curtains. Left fall begins at the LEFT upper lip opening of image2 (approximately x500,y450), falls down toward approximately x595,y880. Right fall begins at its RIGHT lip opening (approximately x840,y425), falls toward approximately x845,y845. The visible pool lies between the INNER rim stones of image2, near center x720,y930; do not move the pool beyond/in front of its front rim. These coordinates guide the full1254x1254 canvas, not a crop. Preserve the ORIGINAL source flow widths, curves, streaks, yellow-green colors, mist and perspective.\nABSOLUTELY OMIT the separate ALTAR LIGHT BEAM above the right/back altar: no beam, no flame, no cone, no droplet, no star, no glow capsule or object floating above the waterfalls. That source light requires a separate future effect; do not bake or invent it here. The image area above the two waterfall lips must therefore be completely transparent except source-visible small top water ribbons.\nNo stone, no moss, no architecture, no altar, no terrain, no black backing, no checkerboard, no scene, no labels. Where source foreground rocks occluded water, leave a transparent hole; do not invent the pool bed or hidden water behind stone. Dense flowing cores can be opaque; mist and spray must be soft partial alpha with true alpha0 in empty surrounds. Preserve the empty separation between the falls and the source-visible hydrology, not a generic twin waterfall redesign. This is a conservative candidate separation, not newly reconstructed hidden geometry.",
+      "references": [
+        "/workspace/yautja-la-longue-chasse/production/homeworld-v160/originals/HWA160-010_cascade-jumelle-du-monde-yautja.png",
+        "/workspace/generated_images/exec-fc03da72-57a1-4019-8227-2db160d8b30b.png"
+      ],
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1134369,
+        "noisePixels1or2": 31000,
+        "softPixels3to239": 98766,
+        "visiblePixels16": 395095,
+        "nearOpaquePixels240": 308381,
+        "visibleBounds16": [
+          334,
+          344,
+          1091,
+          1142
+        ],
+        "marginsPixels16": [
+          334,
+          344,
+          163,
+          112
+        ],
+        "edgePixels16": 0
+      },
+      "pixelEditingPerformed": false
+    }
+  ],
+  "supersededCandidates": [
+    {
+      "nativeSourcePath": "/workspace/generated_images/exec-d5e14131-bfe6-47b8-abdf-5a13ac4fcac2.png",
+      "sha256": "3e71958bcaf6e96d231696cb3b6371395dc1e1f1b36292bf97da74d687dc1066",
+      "status": "superseded-not-published",
+      "reason": "Source-faithful cropped upper edge had insufficient outer review margin; safely framed with ImageGen only, without completing hidden fin tip.",
+      "prompt": "Strict SUBTRACTIVE LAYER SEPARATION of the provided exact reference, not a redesign and not a dry-scene reconstruction. Output one native 1254 by1254 RGBA PNG, SAME full canvas coordinates, SAME camera, SAME scale, SAME placement, SAME palette and all visible stone/rock/moss/architectural shapes. Produce ONLY the architecture and rock that are actually visible in the source. Preserve the two large curved gold-stone side fins, all clearly visible walls, balustrades, ledges, central stepped supports, altar hardware and foreground rim stones exactly as shown. Keep existing source wear and bounced green illumination on stone; do not invent new texture detail.\nREMOVE to real transparent alpha: both green falling water curtains, the water ribbons on the upper ledges, all basin/pool water, spray, mist and the vertical luminous green beam over the altar. At places where water or mist OCCLUDES stone, leave a TRANSPARENT HOLE. Do NOT reveal, reconstruct or invent the hidden rock, hidden pool bed, pipework, extra wall faces, stair treads or supports. Do NOT bridge disconnected visible stone islands just to make a solid building. If a surface is ambiguous behind a bright waterfall or dense fog, leave it empty rather than inventing a dry wall. This conservative cutout is expected to have irregular alpha holes.\nThe original upper tip of the tall right fin already reaches and is cut by the top canvas edge. Preserve that known framing; do not fabricate or extend the unseen tip and do not shrink/recenter the whole object. Absolutely no pose, projection, silhouette or surface redesign. No scenery, sky, floor outside the original object, black/white background, checkerboard, labels, text, frame, watermark or extra props. Visible retained stone itself is solid/opaque; only the boundary is antialiased and removed/occluded areas have true alpha zero.",
+      "alpha": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 818925,
+        "noisePixels1or2": 30943,
+        "softPixels3to239": 21191,
+        "visiblePixels16": 714527,
+        "nearOpaquePixels240": 701457,
+        "visibleBounds16": [
+          49,
+          3,
+          1225,
+          1248
+        ],
+        "marginsPixels16": [
+          49,
+          3,
+          29,
+          6
+        ],
+        "edgePixels16": 0
+      }
+    }
+  ],
+  "unresolvedComponents": [
+    {
+      "id": "HWA160-010-water",
+      "assetKind": "effect",
+      "status": "not-admitted-fidelity-review-open",
+      "reason": "Source-visible water/mist silhouette and common composition registration were not retained faithfully by three native ImageGen attempts."
+    },
+    {
+      "id": "HWA160-010-altar-light",
+      "assetKind": "effect",
+      "status": "omitted-pending-faithful-separate-source-effect",
+      "reason": "The thin source altar light shaft was removed from architecture; generated combined FX versions invented a wide halo and were rejected."
+    }
+  ],
+  "composition": {
+    "group": "HWA160-010-visible-source-components",
+    "status": "partial-only-not-complete",
+    "registrationValidated": false,
+    "sourceIsCropped": true,
+    "sourceViewHasOcclusions": true,
+    "hiddenGeometryRecovered": false,
+    "suggestedArchitecturePivot": [
+      627,
+      1147
+    ],
+    "notes": [
+      "Visible-only conservative architecture/rock layer, not a complete dry reconstruction of the waterfall building.",
+      "The source already clips the upper tip of the tall right fin. The incomplete observed edge is preserved inside review margins, with no completed tip or invented hidden face.",
+      "Two waterfall curtains, pool water and dense mist occlude underlying stone. Their removed regions remain alpha holes; unseen pool bed, hidden wall faces and supports are not established.",
+      "Fine stone boundaries previously softened by mist remain conservative candidate boundaries; exact source-pixel identity is not certified.",
+      "The requested uniform source-to-review framing is a proposal, not an independently qualified pixel registration or physical projection.",
+      "All water/mist layers were rejected for source-fidelity differences; there is no admitted FX counterpart or complete source recomposition in this sublot.",
+      "The source altar light shaft is removed from the architecture and remains an omitted, unproduced separate effect.",
+      "Not a new animation, no runtime placement, scale, collision, walkthrough or canonical/human art approval."
+    ]
+  }
+}

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Yautja — revue de fidélité et couches indépendantes</title>
+  <style>
+    :root { color-scheme:dark; font:15px/1.5 system-ui,sans-serif; color:#e8eee8; background:#0a1511; --line:#4d6759; --muted:#b9c9c0; --accent:#f1d08b; }
+    * { box-sizing:border-box; }
+    body { margin:0; }
+    header,main,footer { max-width:1500px; margin:auto; padding:1.25rem; }
+    header { padding-top:2rem; }
+    h1 { font-size:clamp(1.8rem,4vw,2.8rem); line-height:1.15; margin:.35rem 0 1rem; }
+    h2 { font-size:1.35rem; margin:.2rem 0 .65rem; }
+    h3 { font-size:1rem; margin:.4rem 0; }
+    p { max-width:100ch; }
+    a { color:#ade5d2; text-underline-offset:3px; overflow-wrap:anywhere; }
+    .eyebrow { color:var(--accent); font-size:.8rem; text-transform:uppercase; letter-spacing:.1em; }
+    .notice { border-left:4px solid var(--accent); background:#233527; padding:.8rem 1rem; }
+    .muted,.meta { color:var(--muted); }
+    .meta { font-size:.85rem; overflow-wrap:anywhere; }
+    .toolbar { display:flex; flex-wrap:wrap; align-items:end; gap:.8rem; padding:1rem; border:1px solid var(--line); border-radius:8px; background:#12231b; }
+    label { display:flex; flex-direction:column; gap:.3rem; min-width:0; }
+    input,select,button { font:inherit; color:inherit; background:#1b3024; border:1px solid #829b89; border-radius:4px; padding:.55rem .7rem; max-width:100%; min-width:0; }
+    input[type="checkbox"] { accent-color:#f1d08b; }
+    input[type="range"] { width:100%; padding:0; }
+    button { cursor:pointer; }
+    button:hover { background:#2e4837; }
+    button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+    .search { flex:1 1 300px; }
+    .check { flex-direction:row; align-items:center; padding:.55rem 0; gap:.5rem; }
+    #results { color:var(--muted); }
+    .group { margin:1.25rem 0; padding:1rem; background:#13231b; border:1px solid var(--line); border-radius:8px; min-width:0; }
+    .pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin:1rem 0; }
+    figure { margin:0; min-width:0; }
+    figcaption { margin:.4rem 0; font-weight:600; }
+    .stage { border:1px solid #788e7e; border-radius:5px; overflow:hidden; position:relative; background-color:#c7cec8; background-image:linear-gradient(45deg,#f1f3f0 25%,transparent 25%),linear-gradient(-45deg,#f1f3f0 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#f1f3f0 75%),linear-gradient(-45deg,transparent 75%,#f1f3f0 75%); background-size:24px 24px; background-position:0 0,0 12px,12px -12px,-12px 0; }
+    body[data-background="dark"] .stage { background:#080d09; }
+    body[data-background="terrain"] .stage { background:#56654b; }
+    canvas { display:block; width:100%; height:auto; }
+    .controls-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr)); gap:.8rem; }
+    fieldset { min-width:0; border:1px solid #617b68; padding:.75rem; margin:0; border-radius:5px; }
+    legend { max-width:100%; padding:0 .35rem; overflow-wrap:anywhere; color:var(--accent); }
+    .layer-controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.6rem .9rem; }
+    .layer-controls .wide { grid-column:1/-1; }
+    output { color:var(--accent); font-variant-numeric:tabular-nums; }
+    .asset-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr)); gap:.9rem; margin:1rem 0; }
+    .asset { min-width:0; padding:.8rem; border:1px solid #456551; border-radius:5px; }
+    .asset .stage { max-width:420px; margin:auto; }
+    .asset h3 { overflow-wrap:anywhere; }
+    .reset { margin:.8rem 0 0; }
+    .warning { color:#f9d99d; }
+    .error { color:#ffd3cb; padding:.6rem; }
+    details { margin:.8rem 0; }
+    summary { cursor:pointer; padding:.3rem 0; color:#cbe6d7; }
+    dl { margin:.4rem 0; }
+    dt { color:var(--accent); font-weight:600; }
+    dd { margin:0 0 .6rem; overflow-wrap:anywhere; }
+    li { margin:.4rem 0; overflow-wrap:anywhere; }
+    .pill { display:inline-block; border:1px solid #829a87; border-radius:1rem; padding:.08rem .45rem; margin:.15rem .3rem .15rem 0; font-size:.8rem; }
+    #empty { padding:1.5rem; border:1px dashed #819b88; }
+    footer { border-top:1px solid var(--line); color:var(--muted); }
+    @media(max-width:650px) { header,main,footer { padding:1rem; } .pair { grid-template-columns:minmax(0,1fr); } .toolbar>* { max-width:100%; } .search { flex-basis:100%; } .toolbar>label { width:100%; } .toolbar>.check { width:auto; } .group { padding:.75rem; } }
+    @media(prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; } }
+  </style>
+</head>
+<body data-background="checker">
+<header>
+  <p class="eyebrow">Yautja — La Longue Chasse · addendum du 13 novembre 2026</p>
+  <h1>Références, composants et fidélité</h1>
+  <p class="notice"><strong>Candidats graphiques à examiner.</strong> Les images natives sont conservées. Cette revue ne certifie ni le canon 1:1, ni une correspondance pixel à pixel, ni une animation ou une intégration en jeu. Les contrôles de recomposition sont des propositions d’alignement visuel ; ils ne modifient aucun PNG.</p>
+  <p id="summary" class="muted"></p>
+  <p id="batch-status" class="notice warning"></p>
+</header>
+<main>
+  <section class="toolbar" aria-label="Filtrer et afficher les comparaisons">
+    <label class="search" for="search">Rechercher<input type="search" id="search" autocomplete="off" placeholder="Source, composant ou identité"></label>
+    <label for="group-filter">Comparaison<select id="group-filter"><option value="all">Toutes les comparaisons</option></select></label>
+    <label for="background">Fond<select id="background"><option value="checker">Damier clair</option><option value="dark">Sombre</option><option value="terrain">Sol verdâtre</option></select></label>
+    <label class="check"><input type="checkbox" id="show-bounds">Bornes alpha ≥ 16</label>
+    <label class="check"><input type="checkbox" id="show-pivots">Pivots proposés</label>
+  </section>
+  <p id="results" role="status" aria-live="polite"></p>
+  <div id="groups"></div>
+  <p id="empty" hidden>Aucune comparaison ne correspond aux filtres.</p>
+</main>
+<footer>
+  <p><a href="manifest.json">Manifeste et provenance</a> · <a href="../p0-sprites-20261113/review.html">Lot statique antérieur</a></p>
+  <p>Les fonds sont du CSS. Canvas affiche les rectangles source sans exporter d’image. Les réglages restent uniquement en mémoire de cette page ; aucune sauvegarde de jeu ni aucun stockage navigateur n’est consulté ou écrit.</p>
+</footer>
+<script type="application/json" id="pack-data">__PACK_DATA__</script>
+<script>
+(function() {
+  "use strict";
+  const pack = JSON.parse(document.getElementById("pack-data").textContent);
+  const assets = pack.assets || [];
+  const groups = pack.groups || [];
+  const byId = new Map(assets.map(function(asset) { return [asset.id,asset]; }));
+  const states = new Map();
+  const images = new Map();
+  const visible = new Map();
+  const assetDrawn = new Set();
+  const groupDrawn = new Set();
+  const errors = [];
+  const root = document.getElementById("groups");
+  function el(tag,text,className) { const node=document.createElement(tag); if(text!==undefined) node.textContent=text; if(className) node.className=className; return node; }
+  function url(src) {
+    const own="/game/p0-fidelity-20261113/";
+    if(src.startsWith(own)) return src.slice(own.length);
+    if(src.startsWith("/game/")) return "../"+src.slice(6);
+    if(src.startsWith("https://")) return src;
+    return src;
+  }
+  function image(src) {
+    const target=url(src);
+    if(/^https?:\/\//.test(target)) return Promise.reject(new Error("Référence externe consultable par son lien uniquement ; aucun chargement raster externe dans la galerie."));
+    if(!images.has(target)) images.set(target,new Promise(function(resolve,reject) {
+      const img=new Image(); img.onload=function() { resolve(img); }; img.onerror=function() { reject(new Error("Image inaccessible : "+target)); }; img.src=target;
+    }));
+    return images.get(target);
+  }
+  function link(text,href) { const a=el("a",text); a.href=href; if(href.startsWith("https://")) { a.target="_blank"; a.rel="noopener noreferrer"; } return a; }
+  function setup(canvas,width,height) { const w=Math.max(1,Number(width)||1), h=Math.max(1,Number(height)||1); canvas.width=640; canvas.height=Math.max(1,Math.round(640*h/w)); const c=canvas.getContext("2d"); c.clearRect(0,0,canvas.width,canvas.height); return {c,sx:canvas.width/w,sy:canvas.height/h}; }
+  function stage(label,id,width,height) { const figure=el("figure"); figure.append(el("figcaption",label)); const box=el("div",undefined,"stage"); const canvas=el("canvas"); canvas.dataset.testid=id; canvas.setAttribute("role","img"); canvas.setAttribute("aria-label",label); canvas.width=640; canvas.height=Math.max(1,Math.round(640*(height||1)/(width||1))); box.setAttribute("aria-busy","true"); box.append(canvas); figure.append(box); return {figure,canvas,box}; }
+  function failed(canvas,error) { if(!canvas.isConnected) return; canvas.dataset.error="true"; const box=canvas.parentElement; box.setAttribute("aria-busy","false"); if(!box.querySelector(".error")) box.append(el("p",error.message,"error")); errors.push(error.message); }
+  function marks(c,asset,x,y,w,h) {
+    const r=asset.sourceRect || [0,0,asset.width,asset.height];
+    if(document.getElementById("show-bounds").checked && asset.alpha && asset.alpha.bounds16) { const b=asset.alpha.bounds16; c.strokeStyle="#00edc7"; c.lineWidth=2; c.strokeRect(x+b[0]/r[2]*w,y+b[1]/r[3]*h,(b[2]-b[0])/r[2]*w,(b[3]-b[1])/r[3]*h); }
+    if(document.getElementById("show-pivots").checked && asset.pivot) { const px=x+asset.pivot[0]/r[2]*w, py=y+asset.pivot[1]/r[3]*h; c.strokeStyle="#ffd36f"; c.lineWidth=2; c.beginPath(); c.moveTo(px-7,py); c.lineTo(px+7,py); c.moveTo(px,py-7); c.lineTo(px,py+7); c.stroke(); }
+  }
+  function stateFor(group) {
+    if(!states.has(group.id)) {
+      const values=new Map();
+      (group.assetIds || []).forEach(function(id) { const asset=byId.get(id); if(!asset) return; const p=(group.placements||[]).find(function(item) { return item.assetId===id; }); values.set(id,{visible:true,opacity:1,x:0,y:0,scale:1,rect:(p && p.rect) || [0,0,group.source.width,group.source.height]}); });
+      states.set(group.id,values);
+    }
+    return states.get(group.id);
+  }
+  async function drawAsset(canvas,asset) {
+    try { const img=await image(asset.src); if(!canvas.isConnected) return; const r=asset.sourceRect||[0,0,asset.width,asset.height]; const view=setup(canvas,r[2],r[3]); view.c.drawImage(img,...r,0,0,canvas.width,canvas.height); marks(view.c,asset,0,0,canvas.width,canvas.height); canvas.dataset.rendered="true"; canvas.dataset.assetId=asset.id; canvas.parentElement.setAttribute("aria-busy","false"); assetDrawn.add(asset.id); } catch(error) { failed(canvas,error); }
+  }
+  async function drawGroup(group) {
+    const view=visible.get(group.id); if(!view) return;
+    const source=group.source;
+    const rows=(group.assetIds||[]).map(function(id) { return byId.get(id); }).filter(Boolean);
+    try {
+      const loaded=await Promise.all([image(source.src)].concat(rows.map(function(asset) { return image(asset.src); })));
+      if(!view.composite.isConnected) return;
+      const original=setup(view.source,source.width,source.height); original.c.drawImage(loaded[0],0,0,view.source.width,view.source.height); view.source.dataset.rendered="true"; view.source.parentElement.setAttribute("aria-busy","false");
+      const target=setup(view.composite,source.width,source.height); const state=stateFor(group);
+      rows.forEach(function(asset,index) {
+        const s=state.get(asset.id); if(!s || !s.visible) return;
+        const r=asset.sourceRect||[0,0,asset.width,asset.height]; const p=s.rect;
+        const width=p[2]*s.scale, height=p[3]*s.scale;
+        const x=(p[0]+s.x+(p[2]-width)/2)*target.sx, y=(p[1]+s.y+(p[3]-height)/2)*target.sy;
+        target.c.save(); target.c.globalAlpha=s.opacity; target.c.drawImage(loaded[index+1],...r,x,y,width*target.sx,height*target.sy); marks(target.c,asset,x,y,width*target.sx,height*target.sy); target.c.restore();
+      });
+      view.composite.dataset.rendered="true"; view.composite.parentElement.setAttribute("aria-busy","false"); groupDrawn.add(group.id);
+    } catch(error) { failed(view.composite,error); }
+    rows.forEach(function(asset) { const canvas=view.assets.get(asset.id); if(canvas) drawAsset(canvas,asset); });
+  }
+  function control(parent,asset,group,state,key,title,type,min,max,step) {
+    const label=el("label",title); const input=el("input"); input.id="control-"+group.id+"-"+asset.id+"-"+key; input.dataset.assetId=asset.id; input.dataset.control=key; input.type=type; input.min=String(min); input.max=String(max); input.step=String(step); input.value=String(state[key]); label.htmlFor=input.id; const value=el("output",String(state[key])); value.htmlFor=input.id;
+    label.append(input,value); parent.append(label);
+    input.addEventListener("input",function() { if(!Number.isFinite(input.valueAsNumber)) return; state[key]=Math.max(min,Math.min(max,input.valueAsNumber)); value.textContent=String(state[key]); drawGroup(group); });
+  }
+  function controls(group) {
+    const box=el("div",undefined,"controls-grid"); const values=stateFor(group);
+    values.forEach(function(state,id) {
+      const asset=byId.get(id); const fields=el("fieldset"); fields.dataset.assetId=id; fields.append(el("legend",asset.label || id)); const grid=el("div",undefined,"layer-controls");
+      const label=el("label",undefined,"check wide"); const input=el("input"); input.type="checkbox"; input.checked=state.visible; input.dataset.control="visible"; input.dataset.assetId=id; input.setAttribute("aria-label","Afficher la couche "+id); label.append(input,document.createTextNode("Afficher cette couche")); input.addEventListener("change",function() { state.visible=input.checked; drawGroup(group); }); grid.append(label);
+      control(grid,asset,group,state,"opacity","Opacité proposée","range",0,1,.01);
+      control(grid,asset,group,state,"scale","Échelle proposée","number",.1,3,.01);
+      control(grid,asset,group,state,"x","Décalage X (px source)","number",-group.source.width,group.source.width,1);
+      control(grid,asset,group,state,"y","Décalage Y (px source)","number",-group.source.height,group.source.height,1);
+      fields.append(grid); box.append(fields);
+    });
+    return box;
+  }
+  function metadata(asset) {
+    const details=el("details"); details.append(el("summary","Provenance, mesures et limites")); const dl=el("dl");
+    [["Identité source",asset.sourceId],["SHA256 du PNG",asset.sha256 || "Voir manifeste"],["Rectangle natif",JSON.stringify(asset.sourceRect)],["Pivot proposé",JSON.stringify(asset.pivot)],["Pixels transparents",asset.alpha ? String(asset.alpha.transparentPixels) : "Voir manifeste"],["Noyau alpha ≥ 240",asset.alpha ? String(asset.alpha.opaquePixels240) : "Voir manifeste"],["Priorités liées",(asset.priorityLinks||[]).join(" · ") || "Voir sources"]].forEach(function(row) { dl.append(el("dt",row[0]),el("dd",row[1])); }); details.append(dl);
+    const list=el("ul"); (asset.limitations||[]).forEach(function(note) { list.append(el("li",note)); }); details.append(list);
+    const refs=el("ul"); (asset.sourceReferences||[]).forEach(function(ref) { const li=el("li"); const label=ref.label || ref.path || ref.url || "Référence"; li.append(ref.url ? link(label,ref.url) : document.createTextNode(label)); if(ref.sha256) li.append(document.createTextNode(" · SHA "+ref.sha256)); refs.append(li); }); details.append(refs); return details;
+  }
+  function render() {
+    visible.clear(); root.replaceChildren();
+    const selected=document.getElementById("group-filter").value; const query=document.getElementById("search").value.trim().toLocaleLowerCase("fr");
+    const shown=groups.filter(function(group) { const text=[group.id,group.label].concat((group.assetIds||[]).map(function(id) { const a=byId.get(id); return [id,a && a.sourceId,a && a.label].join(" "); })).join(" ").toLocaleLowerCase("fr"); return (selected==="all" || selected===group.id) && (!query || text.includes(query)); });
+    document.getElementById("results").textContent=shown.length+" comparaison(s) affichée(s) sur "+groups.length+". Réglages de revue uniquement ; aucune validation humaine ou canonique déduite."; document.getElementById("empty").hidden=shown.length>0;
+    shown.forEach(function(group) {
+      const article=el("article",undefined,"group"); article.dataset.testid="comparison-group"; article.dataset.groupId=group.id; article.append(el("p",group.id,"eyebrow"),el("h2",group.label||group.id));
+      const isMask=group.kind==="mask-correction";
+      article.append(el("p",isMask ? "Le panneau gauche montre le candidat antérieur, pas une source canonique. Les références communautaires de forme sont citées dans la provenance." : "Le panneau gauche montre la référence originale du projet, copiée sans retouche. Le panneau droit superpose les composants générés selon un alignement proposé.","notice"));
+      const pair=el("div",undefined,"pair"); const source=stage(isMask ? "Candidat antérieur — comparaison de correction" : "Source originale du projet", "source-canvas",group.source.width,group.source.height); const composite=stage(isMask ? "Candidat corrigé — vue proposée" : "Recomposition proposée — couches indépendantes", "composition-canvas",group.source.width,group.source.height); source.canvas.dataset.groupId=group.id; composite.canvas.dataset.groupId=group.id; pair.append(source.figure,composite.figure); article.append(pair);
+      const sourceLine=el("p",undefined,"meta"); sourceLine.append(link("PNG du panneau source",url(group.source.src)),document.createTextNode(" · SHA "+(group.source.sha256||"voir manifeste"))); article.append(sourceLine);
+      article.append(el("p","Les décalages et l’échelle ne prouvent pas l’identité des proportions ou de la caméra. Remettre les réglages à leur proposition initiale avant d’évaluer les limites du lot.","warning")); article.append(controls(group));
+      const reset=el("button","Réinitialiser cette comparaison","reset"); reset.type="button"; reset.dataset.testid="reset-group"; reset.addEventListener("click",function() { states.delete(group.id); const focused=group.id; render(); const button=root.querySelector('[data-group-id="'+CSS.escape(focused)+'"] [data-testid="reset-group"]'); if(button) button.focus(); }); article.append(reset);
+      const limits=el("ul",undefined,"warning"); (group.limitations||[]).forEach(function(note) { limits.append(el("li",note)); }); article.append(limits);
+      const grid=el("div",undefined,"asset-grid"); const individual=new Map();
+      (group.assetIds||[]).forEach(function(id) { const asset=byId.get(id); if(!asset) return; const card=el("section",undefined,"asset"); card.dataset.assetId=id; card.dataset.testid="asset-card"; card.append(el("h3",asset.label || id)); const r=asset.sourceRect || [0,0,asset.width,asset.height]; const preview=stage("Composant seul : "+(asset.label||id),"asset-canvas",r[2],r[3]); preview.canvas.dataset.assetId=id; card.append(preview.figure); const flags=el("p"); flags.append(el("span",asset.assetKind||"sprite","pill"),el("span","Candidat à revoir","pill")); card.append(flags,el("p",r[2]+" × "+r[3]+" px · source "+asset.sourceId,"meta"),link("PNG natif",url(asset.src)),metadata(asset)); individual.set(id,preview.canvas); grid.append(card); });
+      article.append(grid); root.append(article); visible.set(group.id,{source:source.canvas,composite:composite.canvas,assets:individual}); drawGroup(group);
+    });
+  }
+  groups.forEach(function(group) { const option=el("option",group.label||group.id); option.value=group.id; document.getElementById("group-filter").append(option); });
+  document.getElementById("search").addEventListener("input",render); document.getElementById("group-filter").addEventListener("change",render);
+  document.getElementById("background").addEventListener("change",function(event) { document.body.dataset.background=event.target.value; });
+  ["show-bounds","show-pivots"].forEach(function(id) { document.getElementById(id).addEventListener("change",function() { visible.forEach(function(view,id) { const group=groups.find(function(item) { return item.id===id; }); if(group) drawGroup(group); }); }); });
+  const counts=pack.counts || {}; document.getElementById("summary").textContent=(counts.assets===undefined?assets.length:counts.assets)+" composants/candidats statiques · "+(counts.nativeFiles===undefined?"voir manifeste":counts.nativeFiles)+" PNG générés · "+groups.length+" comparaisons · 0 animation · 0 certification 1:1.";
+  const plan=pack.plannedBatch || {};
+  const unresolved=plan.unresolvedSourceComponentIds || [];
+  const batchStatus=document.getElementById("batch-status");
+  const reviewStatus=plan.reviewBatchComplete===true ? "Lot de revue livré : "+assets.length+" entrées." : "Lot de revue encore en préparation : "+assets.length+" entrées disponibles.";
+  let sourceStatus="Qualification des cibles source non renseignée.";
+  if(plan.sourceTargetsComplete===false) sourceStatus="Cibles source incomplètes : "+(unresolved.includes("HWA160-010-water") ? "eau/effets HWA160-010 non livrés, essais rejetés." : unresolved.join(", ")+" non livré(s).");
+  if(plan.sourceTargetsComplete===true) sourceStatus="Composants source prévus présents ; leur fidélité et leur intégration restent à examiner.";
+  batchStatus.textContent=reviewStatus+" "+sourceStatus+" La fin du lot de revue ne ferme pas les critères P0.";
+  window.__P0_FIDELITY_REVIEW__=Object.freeze({getAssetIds:function() { return assets.map(function(asset) { return asset.id; }); },getStats:function() { return {assetCount:assets.length,groupCount:groups.length,loadedImages:images.size,renderedAssets:assetDrawn.size,renderedGroups:groupDrawn.size,errors:errors.length,errorMessages:errors.slice(),animationClips:0}; },getGroupState:function(id) { const state=states.get(id); return state ? Array.from(state, function(entry) { return {assetId:entry[0],...entry[1]}; }) : []; }});
+  render();
+}());
+</script>
+</body>
+</html>
