@@ -70,11 +70,29 @@ export function hunterPieceV146(id: HunterPieceIdV146): HunterPieceDefinitionV14
   return piece;
 }
 
+/** V148 finishes: how the piece catches light. Bone and gold are earned in play. */
+export const PIECE_FINISH_IDS_V148 = ["polished", "matte", "bone", "gold"] as const;
+export type PieceFinishIdV148 = (typeof PIECE_FINISH_IDS_V148)[number];
+export const PIECE_FINISHES_V148: Readonly<Record<PieceFinishIdV148, {
+  readonly label: string; readonly contrast: number;
+  /** Cosmetic unlock id required to wear it, null when free. */
+  readonly unlock: string | null;
+  /** Colours the finish brings to zones the player left without a colour. */
+  readonly defaults: { readonly primary: string; readonly secondary: string; readonly accent: string } | null;
+}>> = Object.freeze({
+  polished: { label: "Métal poli", contrast: 1.25, unlock: null, defaults: null },
+  matte: { label: "Mat", contrast: 0.5, unlock: null, defaults: null },
+  bone: { label: "Os poli", contrast: 0.7, unlock: "material:bone", defaults: { primary: "#d8cfb8", secondary: "#6b5a45", accent: "#f3ecd8" } },
+  gold: { label: "Or cérémoniel", contrast: 1.2, unlock: "material:gold", defaults: { primary: "#c9a24a", secondary: "#5a4420", accent: "#fff0b0" } },
+});
+
 export interface PieceColorsV146 {
   primary: string | null;
   secondary: string | null;
   accent: string | null;
   light: string | null;
+  /** V148: absent = standard finish. */
+  finish?: PieceFinishIdV148;
 }
 export type HunterPieceColorsV146 = Partial<Record<HunterPieceIdV146, PieceColorsV146>>;
 
@@ -121,7 +139,9 @@ export function normalizePieceColorsV146(source: unknown): HunterPieceColorsV146
       accent: def.zones.accent ? normalizeHexV146(raw.accent) : null,
       light: def.light ? normalizeHexV146(raw.light) : null,
     };
-    if (colors.primary || colors.secondary || colors.accent || colors.light) result[id] = colors;
+    // V148: finishes only make sense on pieces that have a drawn plate zone.
+    if ((PIECE_FINISH_IDS_V148 as readonly unknown[]).includes(raw.finish)) colors.finish = raw.finish as PieceFinishIdV148;
+    if (colors.primary || colors.secondary || colors.accent || colors.light || colors.finish) result[id] = colors;
   }
   return result;
 }

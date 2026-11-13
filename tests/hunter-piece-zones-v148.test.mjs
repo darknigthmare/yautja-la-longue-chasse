@@ -7,7 +7,7 @@ import { build } from "esbuild";
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = relative => readFileSync(root + relative, "utf8");
 const bundle = build({
-  stdin: { contents: `export * from "./app/game/hunterPieceZonesV148.ts";`, resolveDir: root, loader: "ts" },
+  stdin: { contents: `export * from "./app/game/hunterPieceZonesV148.ts"; export * from "./app/game/hunterPiecesV146.ts"; export { allowedPiecesV148, decodeOutfitShareCodeV146, encodeOutfitShareCodeV146 } from "./app/game/systems/hunterCustomizationV146.ts";`, resolveDir: root, loader: "ts" },
   bundle: true, format: "esm", platform: "node", target: "es2022", write: false, loader: { ".json": "json" }, logLevel: "silent",
 }).then(result => import("data:text/javascript;base64," + Buffer.from(result.outputFiles[0].text).toString("base64")));
 
@@ -84,4 +84,31 @@ test("V148 renderers use zones on every layer, including gauntlet, blades, caste
   assert.match(hunt, /state\.plasmaColorV146 \? state\.plasmaColorV146 : weaponDefinition\.color/);
   assert.match(preview, /<PieceZoneLayerV148 src=\{path\}/);
   assert.match(surface, /pieceZoneColorsV148\(appearance, piece\)/);
+});
+
+test("V148 finishes change the shading; bone and gold bring their own colours and must be earned", async () => {
+  const m = await bundle;
+  const source = plate();
+  const red = { primary: "#c83214", secondary: null, accent: null, light: null };
+  const spread = d => lum(d, 70) - lum(d, 30);
+  const standard = spread(m.recolorPlateAutoV148(source, red));
+  assert.ok(spread(m.recolorPlateAutoV148(source, { ...red, finish: "polished" })) > standard);
+  assert.ok(spread(m.recolorPlateAutoV148(source, { ...red, finish: "matte" })) < standard);
+  const bone = { primary: null, secondary: null, accent: null, light: null, finish: "bone" };
+  assert.equal(m.hasZoneColorsV148(bone), true);
+  assert.equal(m.effectiveZoneColorsV148(bone).primary, "#d8cfb8");
+  assert.equal(m.effectiveZoneColorsV148({ ...bone, primary: "#111111" }).primary, "#111111");
+  assert.equal(m.hasZoneColorsV148({ ...bone, finish: "matte" }), false);
+  const normalized = m.normalizePieceColorsV146({ chest: { finish: "gold" }, belt: { finish: "nope" }, knee: { primary: "#fff", finish: "matte" } });
+  assert.deepEqual(normalized.chest, { primary: null, secondary: null, accent: null, light: null, finish: "gold" });
+  assert.equal(normalized.belt, undefined);
+  assert.equal(normalized.knee.finish, "matte");
+  const filtered = m.allowedPiecesV148(normalized, ["material:bone"]);
+  assert.equal(filtered.pieces.chest, undefined);       // gold not earned, no colour left
+  assert.equal(filtered.pieces.knee.finish, "matte");   // free finish kept
+  assert.deepEqual(filtered.removed, ["material:gold"]);
+  const code = m.encodeOutfitShareCodeV146({ piecesV146: { chest: { primary: "#123456", finish: "gold" } } });
+  const decoded = m.decodeOutfitShareCodeV146(code, raw => ({ ...raw }), []);
+  assert.deepEqual(decoded.appearance.piecesV146.chest, { primary: "#123456", secondary: null, accent: null, light: null });
+  assert.deepEqual(decoded.replaced, ["material:gold"]);
 });

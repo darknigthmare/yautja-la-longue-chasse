@@ -12,7 +12,7 @@
  * pixels. This is provisional: an authored zone map always wins when present.
  */
 import {
-  hexToRgbV146, normalizeHexV146, normalizePieceColorsV146,
+  PIECE_FINISHES_V148, hexToRgbV146, normalizeHexV146, normalizePieceColorsV146,
   type HunterPieceIdV146, type PieceColorsV146,
 } from "./hunterPiecesV146.ts";
 
@@ -90,13 +90,23 @@ function recentred(lum: number, median: number): number {
 /** Shading strength kept inside a zone (1 = full original contrast). */
 const ZONE_CONTRAST_V148 = 0.85;
 
-function shade(color: readonly [number, number, number], grey: number, channel: number): number {
-  const g = 0.5 + (grey - 0.5) * ZONE_CONTRAST_V148;
+function shade(color: readonly [number, number, number], grey: number, channel: number, contrast: number): number {
+  const g = Math.max(0, Math.min(1, 0.5 + (grey - 0.5) * ZONE_CONTRAST_V148 * contrast));
   return g <= 0.5 ? color[channel] * g * 2 : color[channel] + (255 - color[channel]) * (g - 0.5) * 2;
 }
 
+/** Player colours completed by the finish's own colours (bone, gold). */
+export function effectiveZoneColorsV148(colors: PieceColorsV146): PieceColorsV146 {
+  const defaults = colors.finish ? PIECE_FINISHES_V148[colors.finish].defaults : null;
+  if (!defaults) return colors;
+  return { ...colors, primary: colors.primary ?? defaults.primary,
+    secondary: colors.secondary ?? defaults.secondary, accent: colors.accent ?? defaults.accent };
+}
+
 export function hasZoneColorsV148(colors: PieceColorsV146 | undefined | null): boolean {
-  return !!colors && !!(colors.primary || colors.secondary || colors.accent);
+  if (!colors) return false;
+  const c = effectiveZoneColorsV148(colors);
+  return !!(c.primary || c.secondary || c.accent);
 }
 
 /**
@@ -110,6 +120,8 @@ export function recolorPlateAutoV148(
 ): Uint8ClampedArray {
   const out = new Uint8ClampedArray(rgba);
   if (!hasZoneColorsV148(colors)) return out;
+  const contrast = colors.finish ? PIECE_FINISHES_V148[colors.finish].contrast : 1;
+  colors = effectiveZoneColorsV148(colors);
   const stats = precomputed ?? autoZoneStatsV148(rgba);
   if (!stats.opaquePixels) return out;
   const tint = (hex: string | null) => (hex && normalizeHexV146(hex) ? hexToRgbV146(hex) : null);
@@ -126,7 +138,7 @@ export function recolorPlateAutoV148(
       const color = tints[zone];
       if (color) {
         const grey = recentred(lum, stats.medians[zone]);
-        r += shade(color, grey, 0) * w; g += shade(color, grey, 1) * w; b += shade(color, grey, 2) * w;
+        r += shade(color, grey, 0, contrast) * w; g += shade(color, grey, 1, contrast) * w; b += shade(color, grey, 2, contrast) * w;
         tinted += w;
       } else if (!untintedTransparent) {
         r += rgba[i] * w; g += rgba[i + 1] * w; b += rgba[i + 2] * w;
@@ -174,7 +186,7 @@ export function pieceCanvasSourceV148(
 ): HTMLCanvasElement | null {
   if (!colors || !hasZoneColorsV148(colors) || typeof document === "undefined") return null;
   const key = [
-    colors.primary ?? "", colors.secondary ?? "", colors.accent ?? "", baseFilter,
+    colors.primary ?? "", colors.secondary ?? "", colors.accent ?? "", colors.finish ?? "", baseFilter,
     placement ? [placement.x, placement.y, placement.width, placement.height].join(":") : "full",
   ].join("|");
   let perImage = cache.get(original);

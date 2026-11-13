@@ -18,7 +18,7 @@ export default function PieceZoneLayerV148({ src, colors, placement, style, piec
   piece?: string;
 }) {
   const ref = useRef<HTMLCanvasElement | null>(null);
-  const primary = colors?.primary ?? "", secondary = colors?.secondary ?? "", accent = colors?.accent ?? "";
+  const primary = colors?.primary ?? "", secondary = colors?.secondary ?? "", accent = colors?.accent ?? "", finish = colors?.finish;
   const px = placement?.x, py = placement?.y, pw = placement?.width, ph = placement?.height;
   useEffect(() => {
     const canvas = ref.current;
@@ -35,13 +35,13 @@ export default function PieceZoneLayerV148({ src, colors, placement, style, piec
       try {
         const pixels = ctx.getImageData(0, 0, 256, 384);
         pixels.data.set(recolorPlateAutoV148(pixels.data,
-          { primary: primary || null, secondary: secondary || null, accent: accent || null, light: null }, undefined, true));
+          { primary: primary || null, secondary: secondary || null, accent: accent || null, light: null, finish }, undefined, true));
         ctx.putImageData(pixels, 0, 0);
       } catch { ctx.clearRect(0, 0, 256, 384); }
     };
     image.src = src;
     return () => { alive = false; };
-  }, [src, primary, secondary, accent, px, py, pw, ph]);
+  }, [src, primary, secondary, accent, finish, px, py, pw, ph]);
   if (!hasZoneColorsV148(colors)) return null;
   return <canvas ref={ref} width={256} height={384} aria-hidden="true" data-piece-zones-v148={piece}
     style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", ...style }} />;
