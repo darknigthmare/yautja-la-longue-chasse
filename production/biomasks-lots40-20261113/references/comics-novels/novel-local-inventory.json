@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Read-only local inventory for COMICS/ROMANS source research; bounded13 targets, no filler and no claim that every named character has a distinct mask.",
+  "repository": "/tmp/yautja-mask-neutral-20261113",
+  "baselineRequestedByParent": "main 2b968494… (no git command executed)",
+  "instructionsRead": [
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/AGENTS.md",
+      "sha256": "9a030752cec073ae6c0a7e09bd4b9437edbfeabef7a24b556841f86a88c63a1b",
+      "bytes": 3612
+    },
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/docs/GAMEDEV_AGENT_GUIDE.md",
+      "sha256": "a25fc2a1c65366428bc02d629a82e5bf56e24bf7c33958a8a70c1c5e83bb3c0f",
+      "bytes": 18467
+    }
+  ],
+  "rules": [
+    "Keep source, variant and production state linked; guide lines109–121.",
+    "Human art validation and canon fidelity remain false for this research.",
+    "A name or prose novel without illustration cannot prove mask geometry.",
+    "A licensed NECA photograph supports its pictured edition and visible angle, not automatically the comic panel sculpt.",
+    "Do not inflate counts for aliases, toy/comic labels, palette-only editions, or biological horns."
+  ],
+  "inputPins": [
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/manifest.json",
+      "sha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+      "bytes": 1127260
+    },
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+      "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de",
+      "bytes": 361243
+    },
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+      "sha256": "6b696cabe94f0821f4bc02a1587ca5782789ffcc58ad52339626cc173515e68e",
+      "bytes": 62111
+    },
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+      "bytes": 297486
+    },
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-expansion-20261113/inputs/research/comics-report.json",
+      "sha256": "aa74628a25697cd62bce7895183c7237cf441cd7342426e04975904488071e83",
+      "bytes": 30920
+    },
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-expansion-20261113/inputs/research/inventory-report.json",
+      "sha256": "01217f9537f7b7d6853c740e1ff0cff2ac97db8bdfa260489e58ee12b860dee6",
+      "bytes": 1219515
+    },
+    {
+      "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/inputs/research/research-neca.json",
+      "sha256": "c6584ad99285827c9779e924b932e5127a95aee152dec08a64682b2d5a63e75f",
+      "bytes": 97217
+    }
+  ],
+  "counts": {
+    "manifestPairs": 69,
+    "localResearchTargets": 13,
+    "newQualifiedMaskReferences": 0,
+    "generationReady": 0,
+    "duplicateEditionGroups": 5
+  },
+  "candidates": [
+    {
+      "id": "comics-dachande-broken-tusk",
+      "name": "Dachande / Broken Tusk",
+      "work": "Aliens vs. Predator (comics) / Aliens vs. Predator: Prey (novel); NECA Series18 2017 edition",
+      "status": "to-research-better-licensed-photo",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 39,
+          "cells": {
+            "A39": "Y-038",
+            "B39": "Broken Tusk Predator",
+            "D39": "Alias / désignation",
+            "E39": "Comics • Roman / prose • Figurine / jouet",
+            "F39": "Aliens vs. Predator / Aliens vs. Predator: Prey",
+            "G39": "Alias / doublon",
+            "H39": "Dachande",
+            "J39": "Alias",
+            "K39": "https://avp.fandom.com/wiki/Broken_Tusk_Predator",
+            "L39": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 62,
+          "cells": {
+            "A62": "Y-061",
+            "B62": "Dachande",
+            "C62": "Broken Tusk Predator",
+            "D62": "Individu nommé",
+            "E62": "Comics • Roman / prose",
+            "F62": "Aliens vs. Predator / Aliens vs. Predator: Prey",
+            "G62": "Univers étendu / merchandising licencié",
+            "H62": "Broken Tusk est son surnom/titre.",
+            "J62": "Oui",
+            "K62": "https://avp.fandom.com/wiki/Dachande",
+            "L62": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 18,
+          "cells": {
+            "A18": "Broken Tusk Predator",
+            "B18": "Comics • Roman / prose • Figurine / jouet",
+            "C18": "Aliens vs. Predator / Aliens vs. Predator: Prey",
+            "D18": "Alias / désignation",
+            "E18": "Alias",
+            "G18": "https://avp.fandom.com/wiki/Broken_Tusk_Predator"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 27,
+          "cells": {
+            "A27": "Dachande",
+            "B27": "Comics • Roman / prose",
+            "C27": "Aliens vs. Predator / Aliens vs. Predator: Prey",
+            "D27": "Individu nommé",
+            "E27": "Oui",
+            "G27": "https://avp.fandom.com/wiki/Dachande"
+          }
+        }
+      ],
+      "aliasDeduplicated": [
+        "Dachande",
+        "Broken Tusk Predator"
+      ],
+      "officialLeadURLs": [
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51543-broken-tusk-pkg1/",
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51543-broken-tusk-pkg2/"
+      ],
+      "availableLicensedReference": {
+        "id": "primary-hornhead-photo",
+        "path": "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg",
+        "sha256": "2ebca53b05b9cdf5007e01f363d20677d79a1943180000730f6f2dc69713de32",
+        "bytes": 119828,
+        "dimensions": [
+          590,
+          472
+        ],
+        "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+        "referenceStatus": "small-catalog-mask-only",
+        "observation": "NECASeries18 group photo. Hornhead at right wears silver mask; named identity is supported, full-mask pixels too small for reliable high-resolution fidelity. Other two figures are BrokenTusk and Machiko; never substitute them."
+      },
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/e9e621098c9ccbf37997533d9ee9de55fa24532fe876bd9b64a6a98b048daf0b.png",
+          "sha256": "e9e621098c9ccbf37997533d9ee9de55fa24532fe876bd9b64a6a98b048daf0b",
+          "bytes": 2099630,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/broken_tusk/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "The 590x472 group identifies the NECA edition, but mask pixels are too small for detailed faithful generation.",
+        "Broken Tusk and Cracked Tusk are not merged: catalogue explicitly treats their toy identities separately.",
+        "A NECA2017 edition photo does not certify exact panel geometry from the original comic."
+      ]
+    },
+    {
+      "id": "comics-machiko-noguchi",
+      "name": "Machiko Noguchi",
+      "work": "Human clan member; Hunter’s Planet novel cited locally; NECA Series18 2017 comic adaptation",
+      "status": "to-research-better-licensed-photo",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 276,
+          "text": "| Voie de clan naturelle | Fondation (comme Dek) ou défi de Varek par duel sanctionné | Succession, portée par le nom | Fondation à partir des rescapés et des haltes | Succession refusée ; fondation sous un nom choisi | Fondation incluant Mara (précédent canon : Machiko Noguchi admise dans un clan, *Hunter's Planet*) | les trois, selon la rivalité avec Harek |"
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 518,
+          "text": "**Humains alliés :** rares et mérités. Un humain qui a tué un Xénomorphe et reçu la marque peut rejoindre le clan, comme Machiko Noguchi (*Hunter's Planet*) ; certains clans le voient d'un mauvais œil (coût en honneur auprès d'eux)."
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1175,
+          "text": "| Machiko Noguchi | humaine acceptée dans un clan (*Hunter's Planet*) | rencontre possible dans une branche Warp |"
+        }
+      ],
+      "officialLeadURLs": [
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51544-machiko-pkg1/",
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51544-machiko-pkg2/"
+      ],
+      "availableLicensedReference": {
+        "id": "primary-hornhead-photo",
+        "path": "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg",
+        "sha256": "2ebca53b05b9cdf5007e01f363d20677d79a1943180000730f6f2dc69713de32",
+        "bytes": 119828,
+        "dimensions": [
+          590,
+          472
+        ],
+        "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+        "referenceStatus": "small-catalog-mask-only",
+        "observation": "NECASeries18 group photo. Hornhead at right wears silver mask; named identity is supported, full-mask pixels too small for reliable high-resolution fidelity. Other two figures are BrokenTusk and Machiko; never substitute them."
+      },
+      "limitations": [
+        "Machiko is not a Yautja catalogue entry; a different wearer does not automatically prove a new shell.",
+        "Only small group pixels exist in prior qualified local research; use the actual licensed edition, not the name."
+      ]
+    },
+    {
+      "id": "comics-big-mama",
+      "name": "Big Mama",
+      "work": "Aliens vs. Predator: Deadliest of the Species",
+      "status": "insufficient-no-primary-mask-image",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 497,
+          "text": "Styles historiques (Samurai, Viking, Pirate, Valkyrie, Anubis, Cleopatra, *Hunting Grounds*) : apparences et armures, pas des races. Une femelle de grande taille (« Big Mama », comics) est couverte par l'éditeur."
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 28,
+          "cells": {
+            "A28": "Y-027",
+            "B28": "Big Mama",
+            "D28": "Individu nommé ou surnommé",
+            "E28": "Comics",
+            "F28": "Aliens vs. Predator: Deadliest of the Species",
+            "G28": "Univers étendu licencié / catalogué",
+            "J28": "Oui",
+            "K28": "https://avp.fandom.com/wiki/Big_Mama",
+            "L28": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 14,
+          "cells": {
+            "A14": "Big Mama",
+            "B14": "Comics",
+            "C14": "Aliens vs. Predator: Deadliest of the Species",
+            "D14": "Individu nommé ou surnommé",
+            "E14": "Oui",
+            "G14": "https://avp.fandom.com/wiki/Big_Mama"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/04180359dafdd9b8abd750c03bbffa28601c5d9abca01dc5bb535b2ff64bba77.png",
+          "sha256": "04180359dafdd9b8abd750c03bbffa28601c5d9abca01dc5bb535b2ff64bba77",
+          "bytes": 2340039,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/big_mama/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "Prior visual audit found a broad dark-grey illustrated costume mask; no comic panel or licensed source establishes it as exact Big Mama geometry.",
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first."
+      ]
+    },
+    {
+      "id": "comics-shorty",
+      "name": "Shorty",
+      "work": "Comics catalogue; individual work not specified by the local workbook",
+      "status": "insufficient-work-and-mask-proof",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 191,
+          "cells": {
+            "A191": "Y-190",
+            "B191": "Shorty",
+            "D191": "Individu nommé ou surnommé",
+            "E191": "Comics",
+            "F191": "Voir la source individuelle",
+            "G191": "Univers étendu licencié / catalogué",
+            "J191": "Oui",
+            "K191": "https://avp.fandom.com/wiki/Shorty",
+            "L191": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 95,
+          "cells": {
+            "A95": "Shorty",
+            "B95": "Comics",
+            "C95": "Voir la source individuelle",
+            "D95": "Individu nommé ou surnommé",
+            "E95": "Oui",
+            "G95": "https://avp.fandom.com/wiki/Shorty"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/f45f73b1289fe2f7f38d261cbd00d048b8145878557c8e3d33c735f9d348870b.png",
+          "sha256": "f45f73b1289fe2f7f38d261cbd00d048b8145878557c8e3d33c735f9d348870b",
+          "bytes": 2382489,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/shorty/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first.",
+        "The local workbook says Voir la source individuelle; a precise published work/issue must be established before attributing a mask."
+      ]
+    },
+    {
+      "id": "comics-top-knot",
+      "name": "Top-Knot",
+      "work": "Aliens vs. Predator: War / Hunter’s Planet",
+      "status": "insufficient-no-primary-mask-image",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 522,
+          "text": "- **Proies du pack Unblooded :** selon la planète d'entraînement, soit la faune locale, soit des drones Xénomorphes sans reine élevés par le clan (précédent canon : le clan de Top-Knot captive une reine, *Aliens vs. Predator: War*). Tuer ces drones ne donne pas le rang Blooded : seule la pyramide le donne."
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1235,
+          "text": "| DR-09 top-knot | Top-Knot Predator (chef de clan) | vérifié | Part of the dreads tied in a high top knot bound by a bronze clasp, the rest hanging at the sides. |"
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1378,
+          "text": "| AR-04 heavy | Top Knot clan | vérifié | Covers most of the body, some arm and leg skin visible, clan colour scheme. |"
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 221,
+          "cells": {
+            "A221": "Y-220",
+            "B221": "Top-Knot",
+            "D221": "Individu nommé ou surnommé",
+            "E221": "Comics • Roman / prose",
+            "F221": "Aliens vs. Predator: War / Hunter's Planet",
+            "G221": "Univers étendu licencié / catalogué",
+            "J221": "Oui",
+            "K221": "https://avp.fandom.com/wiki/Top-Knot",
+            "L221": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 113,
+          "cells": {
+            "A113": "Top-Knot",
+            "B113": "Comics • Roman / prose",
+            "C113": "Aliens vs. Predator: War / Hunter's Planet",
+            "D113": "Individu nommé ou surnommé",
+            "E113": "Oui",
+            "G113": "https://avp.fandom.com/wiki/Top-Knot"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/c52e2d9360c5b1506556164bfbf25d72e4de153119c72796082e1bba5974c321.png",
+          "sha256": "c52e2d9360c5b1506556164bfbf25d72e4de153119c72796082e1bba5974c321",
+          "bytes": 2239378,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/topknot/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "DR-09 is a dreadlock style and AR-04 is armour; neither is evidence for a separate mask.",
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first."
+      ]
+    },
+    {
+      "id": "comics-smiley",
+      "name": "Smiley",
+      "work": "Comics / prose catalogue; individual work not specified by the local workbook",
+      "status": "insufficient-work-and-mask-proof",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 199,
+          "cells": {
+            "A199": "Y-198",
+            "B199": "Smiley",
+            "D199": "Individu nommé ou surnommé",
+            "E199": "Comics • Roman / prose",
+            "F199": "Voir la source individuelle",
+            "G199": "Univers étendu licencié / catalogué",
+            "J199": "Oui",
+            "K199": "https://avp.fandom.com/wiki/Smiley",
+            "L199": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 103,
+          "cells": {
+            "A103": "Smiley",
+            "B103": "Comics • Roman / prose",
+            "C103": "Voir la source individuelle",
+            "D103": "Individu nommé ou surnommé",
+            "E103": "Oui",
+            "G103": "https://avp.fandom.com/wiki/Smiley"
+          }
+        }
+      ],
+      "suppliedIllustrationsRejectedForCanonicalProof": [
+        {
+          "path": "public/game/sprites/v44/user-hunters/2186dd14c94b685464bbbcf70dfa7ecec03f87aca71fa7343e428f479a5cfce0.png",
+          "sha256": "2186dd14c94b685464bbbcf70dfa7ecec03f87aca71fa7343e428f479a5cfce0",
+          "bytes": 2437139,
+          "width": 1024,
+          "height": 1536,
+          "sourceType": "user-supplied-illustrated-costume",
+          "publisherCertified": false,
+          "canonicalFidelityCertified": false,
+          "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/smiley/avec_casque.png",
+          "generationUse": "Source-matched supplied-design candidate only; not an authority for canonical1:1"
+        }
+      ],
+      "limitations": [
+        "A character, alias, descriptive prompt or illustrated costume filename does not establish a distinct canonical biomask; obtain an observed publisher/licensed mask image first.",
+        "Precise illustrated work and identity of the visible mask still required."
+      ]
+    },
+    {
+      "id": "mk-61-hornhead",
+      "name": "Hornhead",
+      "work": "AvP: Life and Death (Bible); NECA Series18 2017",
+      "status": "insufficient-partial-accessory-and-small-mask",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1649,
+          "text": "| MK-61 hornhead | *AvP: Life and Death* (comic) ; NECA | vérifié | Small horns growing from the head itself; removable bio-mask. |"
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 111,
+          "cells": {
+            "A111": "Y-110",
+            "B111": "Hornhead",
+            "D111": "Individu nommé ou surnommé",
+            "E111": "Comics",
+            "F111": "Voir la source individuelle",
+            "G111": "Univers étendu licencié / catalogué",
+            "J111": "Oui",
+            "K111": "https://avp.fandom.com/wiki/Hornhead",
+            "L111": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 54,
+          "cells": {
+            "A54": "Hornhead",
+            "B54": "Comics",
+            "C54": "Voir la source individuelle",
+            "D54": "Individu nommé ou surnommé",
+            "E54": "Oui",
+            "G54": "https://avp.fandom.com/wiki/Hornhead"
+          }
+        }
+      ],
+      "officialLeadURLs": [
+        "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/"
+      ],
+      "availableLicensedReferences": [
+        {
+          "id": "att-51545-horn-head-pkg1-photo",
+          "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg1-photo.jpg",
+          "sha256": "e0d1f884b6d11c32264a4aa558c51df487d0f5b2b2af685ff88093da5d2d9f93",
+          "bytes": 671859,
+          "dimensions": [
+            1040,
+            1300
+          ],
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg1.jpg",
+          "referenceStatus": "partial-removable-mask-accessory",
+          "observation": "Blister front with bare organic head; silver detachable mask accessory lower-left shows upper cap/cutouts/eyes, but lower mask is covered by label/plastic. Large illustrated mask on cardboard is artwork, not a complete sculpt photograph."
+        },
+        {
+          "id": "att-51545-horn-head-pkg2-photo",
+          "path": "/tmp/mask-neutral-20261113/att-51545-horn-head-pkg2-photo.jpg",
+          "sha256": "6b95f14e8e611eab03af9d707da9d01d0c5d248f38d78d7abe06f812dc376b03",
+          "bytes": 792751,
+          "dimensions": [
+            1040,
+            1300
+          ],
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/51545-Horn-Head-pkg2.jpg",
+          "referenceStatus": "packaging-art-small-reference",
+          "observation": "Blister back: comic artwork and small printed photograph of worn Hornhead shell, plus other figures. Insufficient full-sculpt pixels; do not derive detailed geometry from print/thumbnail."
+        },
+        {
+          "id": "primary-hornhead-photo",
+          "path": "/tmp/mask-neutral-20261113/primary-hornhead-photo.jpg",
+          "sha256": "2ebca53b05b9cdf5007e01f363d20677d79a1943180000730f6f2dc69713de32",
+          "bytes": 119828,
+          "dimensions": [
+            590,
+            472
+          ],
+          "sourcePageURL": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+          "decodedPublishedImageURL": "https://necaonline.com/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+          "referenceStatus": "small-catalog-mask-only",
+          "observation": "NECASeries18 group photo. Hornhead at right wears silver mask; named identity is supported, full-mask pixels too small for reliable high-resolution fidelity. Other two figures are BrokenTusk and Machiko; never substitute them."
+        }
+      ],
+      "limitations": [
+        "Biological cranial horns are not part of the removable mask unless the image proves otherwise.",
+        "Packaging front accessory lower portion is obstructed; packaging back is small print; group photo has too few mask pixels."
+      ]
+    },
+    {
+      "id": "comics-bad-blood",
+      "name": "Bad Blood Predator",
+      "work": "Predator: Bad Blood; NECA Ultimate 2-pack 2018",
+      "status": "insufficient-partial-licensed-mask",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 22,
+          "cells": {
+            "A22": "Y-021",
+            "B22": "Bad Blood Predator",
+            "D22": "Individu nommé ou surnommé",
+            "E22": "Comics",
+            "F22": "Predator: Bad Blood",
+            "G22": "Univers étendu licencié / catalogué",
+            "J22": "Oui",
+            "K22": "https://avp.fandom.com/wiki/Bad_Blood_Predator",
+            "L22": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 10,
+          "cells": {
+            "A10": "Bad Blood Predator",
+            "B10": "Comics",
+            "C10": "Predator: Bad Blood",
+            "D10": "Individu nommé ou surnommé",
+            "E10": "Oui",
+            "G10": "https://avp.fandom.com/wiki/Bad_Blood_Predator"
+          }
+        }
+      ],
+      "officialLeadURLs": [
+        "https://store.necaonline.com/blogs/toy-fair/toy-fair-2018-day-2-reveals-action-figures-from-aliens-series-13-alien-vs-predator-arcade-more"
+      ],
+      "localLicensedPhotos": [
+        {
+          "path": "/tmp/mask-expansion-20261113/badblood-enforcer.jpg",
+          "sha256": "de738cfd4333a56718fb443a045c92784f8e5bfa78a01ebef30ecca921575c1f",
+          "bytes": 524862
+        },
+        {
+          "path": "/tmp/mask-expansion-20261113/badblood-enforcer-both-4.jpg",
+          "sha256": "08498b8d489f53e3584a2f64629ce5a9163230dc48b4f889bf1ed349be8fb175",
+          "bytes": 1037096
+        }
+      ],
+      "publishedPhotoURLs": [
+        "https://necaonline.com/wp-content/uploads/2018/02/Bad-Blood-Enforcer-2-pack.jpg",
+        "https://necaonline.com/wp-content/uploads/2018/02/Both4.jpg"
+      ],
+      "limitations": [
+        "Gold mask front is small/partly obscured and supporting photo is a profile. Prior research deliberately did not produce this mask.",
+        "Silver Enforcer on the other figure is separate and already covered.",
+        "Do not replace the mask with an unmasked portrait or infer a new shape from the Bad Blood rank."
+      ]
+    },
+    {
+      "id": "mk-19-afghanistan-intact",
+      "name": "Afghanistan Hunter — intact",
+      "work": "Predator: Hunters II",
+      "status": "insufficient-text-only-no-publisher-panel",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1361,
+          "text": "| MK-19 afghanistan | *Predator: Hunters II* (comic) | vérifié | Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off. |"
+        }
+      ],
+      "requiredState": "Intact mask with blue optics",
+      "limitations": [
+        "The Bible description is not image proof; native publisher panel and issue/page are required."
+      ]
+    },
+    {
+      "id": "mk-19-afghanistan-half-destroyed",
+      "name": "Afghanistan Hunter — half-destroyed",
+      "work": "Predator: Hunters II",
+      "status": "insufficient-text-only-no-publisher-panel",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1361,
+          "text": "| MK-19 afghanistan | *Predator: Hunters II* (comic) | vérifié | Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off. |"
+        }
+      ],
+      "requiredState": "Half the mask structure blown off",
+      "limitations": [
+        "Distinct damaged state is requested by the Bible; no local qualified panel establishes the missing edge, injury or orientation.",
+        "Do not invent the missing half or use intact Jungle Hunter."
+      ]
+    },
+    {
+      "id": "mk-22-race-war",
+      "name": "Race War Predator",
+      "work": "Race War Predator — precise work/edition unresolved locally",
+      "status": "insufficient-identity-and-visual-proof",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "line": 1364,
+          "text": "| MK-22 race war | Race War Predator | vérifié | Brownish-gold mask with a double set of rectangular eye slits. |"
+        }
+      ],
+      "limitations": [
+        "Brown-gold and double rectangular eye slits are descriptive text only.",
+        "Do not equate the Bible label Race War with the Rage War novels or their vacuum suit AR-11 without source proof."
+      ]
+    },
+    {
+      "id": "comics-prose-tichinde",
+      "name": "Tichinde",
+      "work": "Aliens vs. Predator: Prey (local catalogue)",
+      "status": "insufficient-name-no-observed-mask",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 219,
+          "cells": {
+            "A219": "Y-218",
+            "B219": "Tichinde",
+            "D219": "Individu nommé ou surnommé",
+            "E219": "Comics • Roman / prose",
+            "F219": "Aliens vs. Predator: Prey",
+            "G219": "Univers étendu licencié / catalogué",
+            "J219": "Oui",
+            "K219": "https://avp.fandom.com/wiki/Tichinde",
+            "L219": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 111,
+          "cells": {
+            "A111": "Tichinde",
+            "B111": "Comics • Roman / prose",
+            "C111": "Aliens vs. Predator: Prey",
+            "D111": "Individu nommé ou surnommé",
+            "E111": "Oui",
+            "G111": "https://avp.fandom.com/wiki/Tichinde"
+          }
+        }
+      ],
+      "limitations": [
+        "Named character only; the local catalogue does not supply an illustration or separate biomask.",
+        "A novel without official illustration cannot establish a sculpt."
+      ]
+    },
+    {
+      "id": "comics-prose-yeyinde",
+      "name": "Yeyinde",
+      "work": "Comics / prose catalogue; precise work unresolved locally",
+      "status": "insufficient-name-and-alias-identity",
+      "canonicalGeometryEstablishedByThisAudit": false,
+      "generationReady": false,
+      "citations": [
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Index maître",
+          "row": 255,
+          "cells": {
+            "A255": "Y-254",
+            "B255": "Yeyinde",
+            "D255": "Individu nommé ou surnommé",
+            "E255": "Comics • Roman / prose",
+            "F255": "Voir la source individuelle",
+            "G255": "Univers étendu licencié / catalogué",
+            "J255": "Oui",
+            "K255": "https://avp.fandom.com/wiki/Yeyinde",
+            "L255": "Comics"
+          }
+        },
+        {
+          "path": "/tmp/yautja-mask-neutral-20261113/art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx",
+          "sheet": "Comics & romans",
+          "row": 124,
+          "cells": {
+            "A124": "Yeyinde",
+            "B124": "Comics • Roman / prose",
+            "C124": "Voir la source individuelle",
+            "D124": "Individu nommé ou surnommé",
+            "E124": "Oui",
+            "G124": "https://avp.fandom.com/wiki/Yeyinde"
+          }
+        }
+      ],
+      "limitations": [
+        "No observed canonical mask is attached to this entry. Alias relation and precise work must be established before counting any new geometry."
+      ]
+    }
+  ],
+  "alreadyCoveredGroups": [
+    {
+      "identity": "Ahab",
+      "existingManifestIds": [
+        "neca-ahab-sdcc-2014",
+        "neca-ahab-ultimate-2017"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-ahab-sdcc-2014",
+          "label": "Ahab · NECA SDCC2014",
+          "sourceClass": "official-photo"
+        },
+        {
+          "id": "neca-ahab-ultimate-2017",
+          "label": "Ahab · NECA Ultimate2017",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Two existing licensed edition studies. Bible mk18 comic geometry is not automatically closed; add only genuinely observed distinct mask state."
+    },
+    {
+      "identity": "Golden Angel / younger Greyback",
+      "existingManifestIds": [
+        "neca-golden-angel-horned-2018",
+        "neca-golden-angel-smooth-2018"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-golden-angel-horned-2018",
+          "label": "Golden Angel · NECA2018 · coque cornue",
+          "sourceClass": "official-photo"
+        },
+        {
+          "id": "neca-golden-angel-smooth-2018",
+          "label": "Golden Angel · NECA2018 · coque lisse",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Two observed separate masks already included; Greyback2022 additional horned edition photo is not a new geometry by itself."
+    },
+    {
+      "identity": "Enforcer",
+      "existingManifestIds": [
+        "mk-14-enforcer"
+      ],
+      "manifestMatches": [
+        {
+          "id": "mk-14-enforcer",
+          "label": "enforcer",
+          "sourceClass": "existing-project-V62-reference-reconstruction"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Existing project V62 reconstruction is covered in69; not human/canon-certified."
+    },
+    {
+      "identity": "Hive Wars",
+      "existingManifestIds": [
+        "neca-hive-wars-series-10"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-hive-wars-series-10",
+          "label": "Hive Wars · NECA Series10",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Licensed NECA edition already included."
+    },
+    {
+      "identity": "Scout Lost Tribe",
+      "existingManifestIds": [
+        "neca-scout-lost-tribe-series-6"
+      ],
+      "manifestMatches": [
+        {
+          "id": "neca-scout-lost-tribe-series-6",
+          "label": "Scout · NECA Lost Tribe Series6",
+          "sourceClass": "official-photo"
+        }
+      ],
+      "status": "duplicate-existing-edition-do-not-recount",
+      "note": "Covered NECA edition; do not conflate PHG Scout."
+    }
+  ],
+  "excludedFromNewGeometryCount": [
+    {
+      "name": "Serpent Hunter / Alien Head",
+      "id": "mk-56-alien-head",
+      "status": "out-of-this-comics-prose-lot",
+      "reason": "AvP2010 game identity / licensed NECA Series17, not a proven new comics/novel mask; not Lord mk17."
+    },
+    {
+      "name": "Dachande’s Clan / Top-Knot’s Clan / Killers Clan",
+      "status": "group-not-individual-mask",
+      "reason": "Clan entries do not prove one unique mask per member."
+    },
+    {
+      "name": "Bad Blood (Yautja)",
+      "status": "rank-not-individual-mask",
+      "reason": "Catalogue explicitly classifies it as a rank/category."
+    },
+    {
+      "name": "Prey novel-only named hunters",
+      "examples": [
+        "’Aseigan",
+        "A’ni-de",
+        "Chulonte",
+        "Ci’tde",
+        "Da-ec’te",
+        "Etah’-dte"
+      ],
+      "status": "prose-character-names-no-local-illustration",
+      "reason": "No invented mask is generated solely to fill40."
+    }
+  ],
+  "literalPublishedAttachmentLeads": {
+    "cachedHtml": {
+      "path": "/tmp/mask-expansion-20261113/article-hornhead-series18.html",
+      "sha256": "0e00cd416865286b95ac7ee215143e3115320a62d2ae7ee5f02a025bbf8d8cf8",
+      "bytes": 397681
+    },
+    "hrefs": [
+      "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51543-broken-tusk-pkg1/",
+      "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51543-broken-tusk-pkg2/",
+      "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51544-machiko-pkg1/",
+      "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51544-machiko-pkg2/",
+      "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg1/",
+      "http://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/51545-horn-head-pkg2/"
+    ],
+    "qualification": "These literal article links are page leads only. Existing product-photo hrefs point to the denied CDN; no host rewrite or network request was performed."
+  },
+  "novelIllustrationBoundary": {
+    "catalogueSheet": "Comics & romans",
+    "embeddedMediaCountFromPriorAudit": 0,
+    "finding": "Workbook is a textual character catalogue with fan-index URLs; entries do not supply native publisher/licensed illustrations. Novels supply no observed shell by mere character name."
+  },
+  "repoFilesModified": false,
+  "networkRequestsMade": 0,
+  "imageGenerationCallsMade": 0,
+  "imagePixelsEdited": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false
+}

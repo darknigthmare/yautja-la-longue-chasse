@@ -1,0 +1,276 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-snake-ultimate-2022",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-snake-ultimate-2022",
+      "label": "Snake · NECA Ultimate2022",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-snake-ultimate-2022.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-attempt2-native.png",
+      "sha256": "3856ad3b763d9d1f8ab96231759b6d1b3dd19a27decc06b0d3ceb1f44293bd76",
+      "bytes": 1828058,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-snake-ultimate-2022.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Snake2022, Predator2licensed Lost Tribe toy masked-head accessory",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg",
+      "referenceSourceSha256": "82e7cef452045a318f087956be87a11985472f4fe27613ad9f7c3ec6b54ddda5",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg",
+          "sha256": "82e7cef452045a318f087956be87a11985472f4fe27613ad9f7c3ec6b54ddda5"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2022/07/51426_UNP_1-scaled.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-snake/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg",
+        "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-native.png"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Correct ONE source-view rigid NECA Ultimate Snake2022biomask extraction. Reference1 is the exact official white catalogue; ONLY the MASKED-HEAD ACCESSORY UPPER RIGHT is the source. Reference2 is the previous isolated A identifying the same shell, but its silhouette is visibly a little too narrow and its silver temple/crown side caps too constricted. Correct this to the actual source accessory proportions and same camera; do not reconstruct a new mask.\n\nThe hard MASK SHELL alone in reference1, EXCLUDING the black dreadlocks, has approximate total WIDTH/HEIGHT0.80. Previous A is about0.723and should not control that mistake. Use the real source's slightly broader silver/grey upper side caps, cheek width and eye-housing placement, source inclination and asymmetry. Aim at0.80width/height for the actual visible whole rigid shell, not a large dramatic widening or changing its view; no top/bottom feature truncation. This is a new render at the photographed proportions, not an image stretch.\n\nPreserve all real sculpture from the catalogue: broad rounded silver/grey crown, bronze/copper upper recessed plate with actual ribbed oval border, existing axial oval/teardrop relief and nested lateral panels in their source arrangement, pointed swept brows, narrow opaque black lenses, silver cheek plates with bronze/dark inset channels and the short central vertical-bar respirator. Same two-tone silver/copper paint and scuffs, real dark grooves. No extra oval/teardrop, bead, glyph, rib, light, fang, vent or horn. Do not regularize or symmetrize existing source asymmetries. Tiny relief remains limited to actual source pixels; no invented writing.\n\nRemove all black dreadlocks/bands, living head/eyes/skin/neck, collar/armor/body and every unrelated catalogue accessory. The main figure is bare-headed and excluded. Keep solid lenses and actual dark recesses; no exposed living mouth or biological teeth. No invented back/interior or alternate view. A uses neutral soft catalogue lighting, not a new PHG colourway.\n\nOne entire rigid mask, genuine transparent alpha, no floor/support/shadow plane/text, request1254x1254square if supported. Object78–80percent of largest canvas axis with8–12percent margins all sides and no clipping. This is a licensed toy-edition study, not canonical-film/human/runtime certification.",
+      "promptSha256": "795a54931c0554cde36d9c1ecc54745020f80c8405a336afa2500aeec9a6de6f",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          195,
+          75,
+          1060,
+          1176
+        ],
+        "marginsPixels16": [
+          195,
+          75,
+          194,
+          78
+        ],
+        "minimumMarginFraction": 0.05981,
+        "transparentPixels": 857977,
+        "opaquePixels": 571
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Corrected source width, alpha16bbox aspect0.78565; independent gen3preflight lifts the former macro-width reserve.",
+          "Same silver/copper shell and real relief arrangement; first too-narrowA/B retained as nonselected attempts."
+        ]
+      },
+      "limitations": [
+        "Source is exact publicly linked2280x2560catalogue, accessory mask at upper right; microdetail limited to mask-area pixels.",
+        "45MPofficial action photos show only the bare head and are not mask-shape proof; they are excluded from ImageGen references.",
+        "Existing69include mk-09-snake in another project representation; this is Ultimate2022toy edition, no new canonical geometry.",
+        "FirstA/B had a visibly narrow silhouette against source accessory (0.723vs~0.79–0.81rigid-shell aspect). Preserved as nonselected attempts if corrected view is admitted.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-native.png",
+          "sha256": "74fb7acbb88055887c539646eabca004e749b4ba9d238a86b5696433764428de",
+          "bytes": 1660058,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Ultimate Snake2022, Predator2licensed Lost Tribe toy masked-head accessory. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the METALLIC MASKED-HEAD ACCESSORY at UPPER RIGHT of the white catalogue photo. The central main figure is BARE-HEADED and not the mask source. Keep the accessory's actual near-front camera and slight tilt/asymmetry. Retain the broad rounded silver/grey crown, copper/bronze recessed axial and ribbed upper forehead plate, its visible oval/teardrop central reliefs and dark seam arrangement, swept pointed silver brows, narrow opaque black lenses, the flared silver cheek plates with dark bronze inset channels, and the short central bronze-grey respirator plate with existing parallel vertical bar/rib ends. Preserve actual silver/bronze two-tone paint and dark recesses, not a green snake skin or silver-only recolour. Remove the black dreadlocks and neck behind the accessory, no biological teeth or skin. Do not invent snake fangs or extra vents/letters.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+          "promptSha256": "e946d7af3d09820256479b659d627a8cfe5487d9270478cca314afcb4f65a18d",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg"
+          ],
+          "reason": "Rigid mask silhouette too narrow against primary catalogue accessory (~0.723aspect vs~0.79–0.81source excluding dreads), targeted ImageGen correction requested."
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-attempt2-native.png",
+          "sha256": "3856ad3b763d9d1f8ab96231759b6d1b3dd19a27decc06b0d3ceb1f44293bd76",
+          "bytes": 1828058,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Correct ONE source-view rigid NECA Ultimate Snake2022biomask extraction. Reference1 is the exact official white catalogue; ONLY the MASKED-HEAD ACCESSORY UPPER RIGHT is the source. Reference2 is the previous isolated A identifying the same shell, but its silhouette is visibly a little too narrow and its silver temple/crown side caps too constricted. Correct this to the actual source accessory proportions and same camera; do not reconstruct a new mask.\n\nThe hard MASK SHELL alone in reference1, EXCLUDING the black dreadlocks, has approximate total WIDTH/HEIGHT0.80. Previous A is about0.723and should not control that mistake. Use the real source's slightly broader silver/grey upper side caps, cheek width and eye-housing placement, source inclination and asymmetry. Aim at0.80width/height for the actual visible whole rigid shell, not a large dramatic widening or changing its view; no top/bottom feature truncation. This is a new render at the photographed proportions, not an image stretch.\n\nPreserve all real sculpture from the catalogue: broad rounded silver/grey crown, bronze/copper upper recessed plate with actual ribbed oval border, existing axial oval/teardrop relief and nested lateral panels in their source arrangement, pointed swept brows, narrow opaque black lenses, silver cheek plates with bronze/dark inset channels and the short central vertical-bar respirator. Same two-tone silver/copper paint and scuffs, real dark grooves. No extra oval/teardrop, bead, glyph, rib, light, fang, vent or horn. Do not regularize or symmetrize existing source asymmetries. Tiny relief remains limited to actual source pixels; no invented writing.\n\nRemove all black dreadlocks/bands, living head/eyes/skin/neck, collar/armor/body and every unrelated catalogue accessory. The main figure is bare-headed and excluded. Keep solid lenses and actual dark recesses; no exposed living mouth or biological teeth. No invented back/interior or alternate view. A uses neutral soft catalogue lighting, not a new PHG colourway.\n\nOne entire rigid mask, genuine transparent alpha, no floor/support/shadow plane/text, request1254x1254square if supported. Object78–80percent of largest canvas axis with8–12percent margins all sides and no clipping. This is a licensed toy-edition study, not canonical-film/human/runtime certification.",
+          "promptSha256": "795a54931c0554cde36d9c1ecc54745020f80c8405a336afa2500aeec9a6de6f",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg",
+            "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-native.png"
+          ]
+        }
+      ],
+      "maskFamily": "snake",
+      "representationOf": "NECA Ultimate Snake2022, Predator2licensed Lost Tribe toy masked-head accessory",
+      "newCanonicalGeometry": false,
+      "sourceProportionCorrectionPerformed": true,
+      "sourceProportionReserveLiftedByIndependentPreflight": true,
+      "geometryDeviationOpen": false
+    },
+    {
+      "id": "neca-snake-ultimate-2022",
+      "label": "Snake · NECA Ultimate2022",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-snake-ultimate-2022.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-B-attempt2-native.png",
+      "sha256": "798da88bbbe29995c599d1b0b58e50918ed6f3284af7830abe27e94a4a4c65bf",
+      "bytes": 2011229,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-snake-ultimate-2022.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Snake2022, Predator2licensed Lost Tribe toy masked-head accessory",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg",
+      "referenceSourceSha256": "82e7cef452045a318f087956be87a11985472f4fe27613ad9f7c3ec6b54ddda5",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg",
+          "sha256": "82e7cef452045a318f087956be87a11985472f4fe27613ad9f7c3ec6b54ddda5"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2022/07/51426_UNP_1-scaled.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-snake/"
+      ],
+      "submittedReferencePaths": [
+        "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-attempt2-native.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Render ONE PHG-quality PBR B of the selected CORRECTED isolated Snake2022A in reference1. It controls every visible sculpture, the same camera, palette and especially corrected width/proportions. The whole hard shell silhouette width/height is about0.786and matches the official source≈0.79–0.81; KEEP THIS EXACT BROADER PROJECTION, do not narrow it back toward the former0.723. Reference2 is the official white catalogue; only upper-right masked-head accessory corroborates the shell. No frontalization, symmetrization, different pitch, new back/interior or redesign.\n\nPreserve the whole rounded grey/silver crown and broader side caps, the actual copper/bronze upper inset with ribbed oval border, same existing axial oval/teardrop reliefs and nested side-panel arrangement/count from A, pointed brows over two narrow solid black lenses, silver cheek plates with bronze recessed channels, and short central vertical-bar respirator. Keep the existing exact holes, rib count, panel seams, lenses, relief motif and colour accents; no added oval/bead/glyph/vent/horn/tusk. Do not include any black dreadlocks/bands, living head/skin/eyes/neck, collar/body/armor or catalogue objects.\n\nOnly change rendering to coherent modern Predator Hunting Grounds PBR inventory quality: neutral soft upper image-left key, gentle front fill, readable relief, controlled roughness and grain. Preserve the silver/copper two-tone paint and source scuffs, not gold/chrome or a monochrome recolour. A is already PBR-looking: subtle honest lighting/material restage, no fabricated geometry difference. Genuine transparent alpha, one entire mask, no floor/support/shadow plane/text/grid. Request1254x1254square if supported; around78–80percent of largest canvas axis,8–12percent clear margins, no clipping. Exact camera calibration/microrelief unmeasured, licensed toy-edition candidate, no canonical/human/runtime validation.",
+      "promptSha256": "bab9cb00d053372711eef717843ff7a6f7711c8d42827a028b4c046230aee999",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          178,
+          69,
+          1075,
+          1181
+        ],
+        "marginsPixels16": [
+          178,
+          69,
+          179,
+          73
+        ],
+        "minimumMarginFraction": 0.05502,
+        "transparentPixels": 827759,
+        "opaquePixels": 484
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "B follows correctedA source proportions and same sculpture/palette, no wearer restored.",
+          "Fine relief and source camera unmeasured; former too-narrowB retained nonselected."
+        ]
+      },
+      "limitations": [
+        "Source is exact publicly linked2280x2560catalogue, accessory mask at upper right; microdetail limited to mask-area pixels.",
+        "45MPofficial action photos show only the bare head and are not mask-shape proof; they are excluded from ImageGen references.",
+        "Existing69include mk-09-snake in another project representation; this is Ultimate2022toy edition, no new canonical geometry.",
+        "FirstA/B had a visibly narrow silhouette against source accessory (0.723vs~0.79–0.81rigid-shell aspect). Preserved as nonselected attempts if corrected view is admitted.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-B-native.png",
+          "sha256": "e3819acdf5ebdd8853810a9b1ad63826c57eeb50786de00ed86b4b7381bc10e6",
+          "bytes": 1707923,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Ultimate Snake2022, Predator2licensed Lost Tribe toy masked-head accessory. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Silver/grey and recessed copper/bronze two-tone shell. Broad rounded crown with actual ribbed copper upper inset, existing axial oval/teardrop relief arrangement and nested rib panels, narrow solid black eye lenses, silver cheek ribs with bronze channels, short vertical-bar central respirator. Every axial relief/rib count and position stays as in A, no new teardrop or glyph, no extra fang/tusk, no snake-skin recolouring. Same source camera and proportions.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+          "promptSha256": "0bb554508daaed0ca284dd15246197715f0ad13f298675ca7f0bc9c19e7e297b",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-snake-ultimate-2022.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg"
+          ],
+          "reason": "Follows firstA too-narrow silhouette; superseded with primary-source projection correction."
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-B-attempt2-native.png",
+          "sha256": "798da88bbbe29995c599d1b0b58e50918ed6f3284af7830abe27e94a4a4c65bf",
+          "bytes": 2011229,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Render ONE PHG-quality PBR B of the selected CORRECTED isolated Snake2022A in reference1. It controls every visible sculpture, the same camera, palette and especially corrected width/proportions. The whole hard shell silhouette width/height is about0.786and matches the official source≈0.79–0.81; KEEP THIS EXACT BROADER PROJECTION, do not narrow it back toward the former0.723. Reference2 is the official white catalogue; only upper-right masked-head accessory corroborates the shell. No frontalization, symmetrization, different pitch, new back/interior or redesign.\n\nPreserve the whole rounded grey/silver crown and broader side caps, the actual copper/bronze upper inset with ribbed oval border, same existing axial oval/teardrop reliefs and nested side-panel arrangement/count from A, pointed brows over two narrow solid black lenses, silver cheek plates with bronze recessed channels, and short central vertical-bar respirator. Keep the existing exact holes, rib count, panel seams, lenses, relief motif and colour accents; no added oval/bead/glyph/vent/horn/tusk. Do not include any black dreadlocks/bands, living head/skin/eyes/neck, collar/body/armor or catalogue objects.\n\nOnly change rendering to coherent modern Predator Hunting Grounds PBR inventory quality: neutral soft upper image-left key, gentle front fill, readable relief, controlled roughness and grain. Preserve the silver/copper two-tone paint and source scuffs, not gold/chrome or a monochrome recolour. A is already PBR-looking: subtle honest lighting/material restage, no fabricated geometry difference. Genuine transparent alpha, one entire mask, no floor/support/shadow plane/text/grid. Request1254x1254square if supported; around78–80percent of largest canvas axis,8–12percent clear margins, no clipping. Exact camera calibration/microrelief unmeasured, licensed toy-edition candidate, no canonical/human/runtime validation.",
+          "promptSha256": "bab9cb00d053372711eef717843ff7a6f7711c8d42827a028b4c046230aee999",
+          "submittedReferencePaths": [
+            "/workspace/generated_images/imagegen-neca-snake-ultimate-2022-A-attempt2-native.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/snake-catalogue-74229-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "snake",
+      "representationOf": "NECA Ultimate Snake2022, Predator2licensed Lost Tribe toy masked-head accessory",
+      "newCanonicalGeometry": false,
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-snake-ultimate-2022.png",
+      "sourceASha256": "3856ad3b763d9d1f8ab96231759b6d1b3dd19a27decc06b0d3ceb1f44293bd76",
+      "sourceProportionCorrectionPerformed": true,
+      "sourceProportionReserveLiftedByIndependentPreflight": true,
+      "geometryDeviationOpen": false
+    }
+  ],
+  "asOfUtc": "2026-11-13T15:35:34.272891+00:00"
+}

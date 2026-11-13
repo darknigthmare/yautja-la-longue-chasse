@@ -1,0 +1,101 @@
+name: Source-qualified mask batches and exact neutral pixels
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/biomask-lots40-candidates.yml'
+      - 'production/biomasks-lots40-20261113/**'
+      - 'public/game/biomasks-lots40-20261113/**'
+      - 'production/biomasks-expansion-20261113/**'
+      - 'public/game/biomasks-expansion-20261113/**'
+      - 'production/biomasks-dual-20261113/**'
+      - 'public/game/biomasks-dual-20261113/**'
+      - 'production/biomasks-primary-20261113/**'
+      - 'public/game/biomasks-primary-20261113/**'
+      - 'production/biomasks-20261113/**'
+      - 'public/game/biomasks-20261113/**'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - 'production/biomasks-neutral-20261113/**'
+      - 'public/game/biomasks-neutral-20261113/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'app/game/biomaskCatalogueV62.ts'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/biomask-lots40-candidates.yml'
+      - 'production/biomasks-lots40-20261113/**'
+      - 'public/game/biomasks-lots40-20261113/**'
+      - 'production/biomasks-expansion-20261113/**'
+      - 'public/game/biomasks-expansion-20261113/**'
+      - 'production/biomasks-dual-20261113/**'
+      - 'public/game/biomasks-dual-20261113/**'
+      - 'production/biomasks-primary-20261113/**'
+      - 'public/game/biomasks-primary-20261113/**'
+      - 'production/biomasks-20261113/**'
+      - 'public/game/biomasks-20261113/**'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - 'production/biomasks-neutral-20261113/**'
+      - 'public/game/biomasks-neutral-20261113/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'app/game/biomaskCatalogueV62.ts'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mask-lots40-integrity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  mask-lots40-integrity:
+    name: Exact C pixels, inherited qualifications and immutable A/B/R
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout five literal selection files
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/biomask-lots40-candidates.yml
+            /production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py
+            /production/biomasks-lots40-20261113/suivi/source-protection.json
+            /public/game/biomasks-lots40-20261113/manifest.json
+            /production/biomasks-lots40-20261113/suivi/qa-evidence.json
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Select exact historical and neutral inputs under 2 GiB
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py --check-git-tree
+          python3 production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py --patterns > "$RUNNER_TEMP/neutral-mask-inputs.txt"
+          git sparse-checkout set --no-cone --stdin < "$RUNNER_TEMP/neutral-mask-inputs.txt"
+          python3 production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py --check
+      - name: Install pinned read-only PNG reader
+        run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
+      - name: Check package and workbook without rewriting
+        run: python3 production/biomasks-lots40-20261113/tools/verify-mask-lots40.py --check --require-complete
+      - name: Check every neutral RGB and alpha byte independently
+        run: >-
+          python3 production/biomasks-lots40-20261113/tools/verify-neutral-pixels.py
+          --manifest public/game/biomasks-lots40-20261113/manifest.json
+          --inventory production/biomasks-lots40-20261113/inputs/production-inventory.json
+          --accepted-new-masks production/biomasks-lots40-20261113/inputs/accepted-new-masks.json
+          --candidates production/biomasks-lots40-20261113/inputs/candidate-inventory.json
+          --output ${{ runner.temp }}/lots40-independent-pixels.json

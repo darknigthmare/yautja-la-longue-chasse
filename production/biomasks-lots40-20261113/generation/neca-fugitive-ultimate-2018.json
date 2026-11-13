@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-fugitive-ultimate-2018",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-fugitive-ultimate-2018",
+      "label": "Fugitive · NECA Ultimate2018",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-fugitive-ultimate-2018.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-fugitive-ultimate-2018-A-native.png",
+      "sha256": "0ab4e5b529dc781efbfae8237e026dbec57c562495cb5a477382bc926a17cdd3",
+      "bytes": 1412371,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-fugitive-ultimate-2018.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg",
+      "referenceSourceSha256": "308ca41360b9895819652fa3f45501d8dcf5e8e015c72075df2e17657852d712",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg",
+          "sha256": "308ca41360b9895819652fa3f45501d8dcf5e8e015c72075df2e17657852d712"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2018/02/The-Predator-1-.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2018/06/predator-2018-7-scale-action-figure-ultimate-predator/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the dark mask worn by the standing MAIN figure at image LEFT of the white catalogue. The upper-right inset is BARE-HEADED and must be ignored. Keep the main figure's near-frontal/downward source camera. Preserve the high broad smooth charcoal-black crown bounded by its thick raised curved rim and true deep top notch; remove the little RED BIOLOGICAL skin visible through/behind that notch, leaving it transparent. Keep the source angular swept brows and very narrow solid dark eye lenses, layered dark cheek plates, central small gold/bronze triangular bridge accent and the true elongated gold/bronze outlined triangular lower nose/respirator accent with its internal actual metal fitting. Preserve the real charcoal satin paint and restrained gold accents; no chrome/silver redesign, extra runes, new lights, red mask insert or a solid plug filling the crown notch. Remove dreadlocks/collar/shoulder cannon and all body armor.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+      "promptSha256": "ce86ad7f70f3b199f59920b1c07575317d1a525f513ed119af813903c5582b63",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          217,
+          64,
+          1037,
+          1177
+        ],
+        "marginsPixels16": [
+          217,
+          64,
+          217,
+          77
+        ],
+        "minimumMarginFraction": 0.05104,
+        "transparentPixels": 915978,
+        "opaquePixels": 684
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Only the real rigid shell retained, wearer and body removed.",
+          "Source camera, proportions, colour accents and visible sculpture kept; fine source details remain unvalidated."
+        ]
+      },
+      "limitations": [
+        "Exact1040x1300catalogue, complete main figure mask shown near-front; microdetail limited to mask-area pixels.",
+        "Top notch exposes red wearer skin in R: wearer removed, actual mask notch preserved as alpha.",
+        "Existing69include mk-12-fugitive in another representation; Ultimate2018edition is distinct source study, not a new canonical geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-fugitive-ultimate-2018-A-native.png",
+          "sha256": "0ab4e5b529dc781efbfae8237e026dbec57c562495cb5a477382bc926a17cdd3",
+          "bytes": 1412371,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the dark mask worn by the standing MAIN figure at image LEFT of the white catalogue. The upper-right inset is BARE-HEADED and must be ignored. Keep the main figure's near-frontal/downward source camera. Preserve the high broad smooth charcoal-black crown bounded by its thick raised curved rim and true deep top notch; remove the little RED BIOLOGICAL skin visible through/behind that notch, leaving it transparent. Keep the source angular swept brows and very narrow solid dark eye lenses, layered dark cheek plates, central small gold/bronze triangular bridge accent and the true elongated gold/bronze outlined triangular lower nose/respirator accent with its internal actual metal fitting. Preserve the real charcoal satin paint and restrained gold accents; no chrome/silver redesign, extra runes, new lights, red mask insert or a solid plug filling the crown notch. Remove dreadlocks/collar/shoulder cannon and all body armor.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+          "promptSha256": "ce86ad7f70f3b199f59920b1c07575317d1a525f513ed119af813903c5582b63",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "fugitive",
+      "representationOf": "NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition",
+      "newCanonicalGeometry": false
+    },
+    {
+      "id": "neca-fugitive-ultimate-2018",
+      "label": "Fugitive · NECA Ultimate2018",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-fugitive-ultimate-2018.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-fugitive-ultimate-2018-B-native.png",
+      "sha256": "18beb09fe45f1b1a8f2d3bb44b54f5ed7c2631fba742dd8fdbf584772829b3e4",
+      "bytes": 1495084,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-fugitive-ultimate-2018.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg",
+      "referenceSourceSha256": "308ca41360b9895819652fa3f45501d8dcf5e8e015c72075df2e17657852d712",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg",
+          "sha256": "308ca41360b9895819652fa3f45501d8dcf5e8e015c72075df2e17657852d712"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2018/02/The-Predator-1-.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2018/06/predator-2018-7-scale-action-figure-ultimate-predator/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-fugitive-ultimate-2018.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Charcoal satin rounded crown and thick raised curved rim, actual open top notch stays transparent with NO RED SKIN and NO solid plug; narrow solid black lenses, angular dark cheeks with actual small gold accents, gold triangular bridge insert and gold outlined lower triangular respirator fitting. Keep exactly this notch depth/width and source view from A; no added horns, silver recolouring or red crown insert.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+      "promptSha256": "df79b998a5e1d1860bb2ccbdcefe02f9eced45f19dfcde00ec9b9d0935440a73",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          208,
+          61,
+          1042,
+          1178
+        ],
+        "marginsPixels16": [
+          208,
+          61,
+          212,
+          76
+        ],
+        "minimumMarginFraction": 0.04864,
+        "transparentPixels": 907224,
+        "opaquePixels": 818
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Source A camera, contour and photographed edition palette retained; only neutral PBR light/material restaging.",
+          "Visible feature arrangement retained at macro inspection; no wearer restored or hidden geometry invented."
+        ]
+      },
+      "limitations": [
+        "Exact1040x1300catalogue, complete main figure mask shown near-front; microdetail limited to mask-area pixels.",
+        "Top notch exposes red wearer skin in R: wearer removed, actual mask notch preserved as alpha.",
+        "Existing69include mk-12-fugitive in another representation; Ultimate2018edition is distinct source study, not a new canonical geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-fugitive-ultimate-2018-B-native.png",
+          "sha256": "18beb09fe45f1b1a8f2d3bb44b54f5ed7c2631fba742dd8fdbf584772829b3e4",
+          "bytes": 1495084,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Charcoal satin rounded crown and thick raised curved rim, actual open top notch stays transparent with NO RED SKIN and NO solid plug; narrow solid black lenses, angular dark cheeks with actual small gold accents, gold triangular bridge insert and gold outlined lower triangular respirator fitting. Keep exactly this notch depth/width and source view from A; no added horns, silver recolouring or red crown insert.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+          "promptSha256": "df79b998a5e1d1860bb2ccbdcefe02f9eced45f19dfcde00ec9b9d0935440a73",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-fugitive-ultimate-2018.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-64417-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "fugitive",
+      "representationOf": "NECA Ultimate Fugitive2018, licensed The Predator2018 toy edition",
+      "newCanonicalGeometry": false,
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-fugitive-ultimate-2018.png",
+      "sourceASha256": "0ab4e5b529dc781efbfae8237e026dbec57c562495cb5a477382bc926a17cdd3"
+    }
+  ],
+  "asOfUtc": "2026-11-13T15:13:34.951947+00:00"
+}

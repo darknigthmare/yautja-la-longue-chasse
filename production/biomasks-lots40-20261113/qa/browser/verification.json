@@ -1,0 +1,149 @@
+{
+  "passed": true,
+  "manifestSha256": "91d3fc7238d76bb3060619a28778cc7af21dd5a93edd59a9eb576c72d63ab399",
+  "counts": {
+    "domainCapacity": 160,
+    "domains": 4,
+    "candidateRecords": 161,
+    "acceptedABPairs": 46,
+    "completeABC": 46,
+    "newABImageGenPngs": 92,
+    "newDerivedC": 46,
+    "sourceReuseC": 0,
+    "newCImageGenPngs": 0,
+    "exactReferenceCopies": 77,
+    "blockedCandidates": 99,
+    "duplicateRecords": 16,
+    "aliasRecords": 0,
+    "qualifiedNotProduced": 0,
+    "provisionalProduced": 46,
+    "partialProduced": 0,
+    "hybridProduced": 0,
+    "revisedRepresentations": 0,
+    "editionStudies": 46,
+    "sharedGeometryStudies": 0,
+    "canonicalGeometryCertified": 0,
+    "historicalCanonicalRequirementsStillOpen": 46,
+    "canonicalClosures": 0,
+    "runtimeIntegrations": 0
+  },
+  "batches": [
+    {
+      "id": "films",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 15,
+        "duplicate": 11,
+        "provisional": 14
+      },
+      "acceptedAB": 14,
+      "completeABC": 14,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "games",
+      "capacity": 40,
+      "candidateRecords": 41,
+      "statusCounts": {
+        "blocked": 25,
+        "provisional": 16
+      },
+      "acceptedAB": 16,
+      "completeABC": 16,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "comics-novels",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 34,
+        "provisional": 6
+      },
+      "acceptedAB": 6,
+      "completeABC": 6,
+      "capacityIsProduction": false
+    },
+    {
+      "id": "licensed",
+      "capacity": 40,
+      "candidateRecords": 40,
+      "statusCounts": {
+        "blocked": 25,
+        "duplicate": 5,
+        "provisional": 10
+      },
+      "acceptedAB": 10,
+      "completeABC": 10,
+      "capacityIsProduction": false
+    }
+  ],
+  "browser": "154.0.8037.57",
+  "scope": "Static source review and ephemeral tint; not canon,human-art,runtime or animation approval",
+  "checks": [
+    {
+      "name": "Actual accepted A/B/C and blocked/duplicate/alias counts remain separate from four capacities of40",
+      "passed": true,
+      "actualPairs": 46,
+      "capacity": 160,
+      "blocked": 99,
+      "strictAliases": 0
+    },
+    {
+      "name": "Every accepted A/B/C decodes natively and its served PNG matches the manifest SHA",
+      "passed": true,
+      "visited": 46,
+      "nativeImages": 138
+    },
+    {
+      "name": "Domain filters and search work with real empty domains, while8/12 pagination remains bounded",
+      "passed": true,
+      "domains": 4,
+      "emptyState": true
+    },
+    {
+      "name": "A/B/C and B/C modes,300/96 visible scales and three backgrounds keep native frames untouched",
+      "passed": true,
+      "modes": 2,
+      "sizes": [
+        300,
+        96
+      ],
+      "backgrounds": 3
+    },
+    {
+      "name": "Tint preview changes only display RGB,preserves canvas alpha and resets without changing C bytes",
+      "passed": true,
+      "alphaDifference": 0,
+      "rgbDifference": 716054,
+      "shape": [
+        1122,
+        1402
+      ]
+    },
+    {
+      "name": "Keyboard drawer exposes native A/B/C/R links and source limitations,then returns focus on Escape",
+      "passed": true,
+      "references": 4
+    },
+    {
+      "name": "Blocked sources,strict aliases and shared editions never become invented geometry or canonical closures",
+      "passed": true,
+      "openCanonical": 46,
+      "sharedGeometryStudies": 0,
+      "blockedVapor": true
+    },
+    {
+      "name": "320/390px comparison and source drawers fit the viewport without script errors,external images or storage writes",
+      "passed": true,
+      "widths": [
+        320,
+        390
+      ],
+      "scriptErrors": 0
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

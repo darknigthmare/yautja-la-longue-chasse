@@ -1,0 +1,16 @@
+{
+  "scope": "Neutral C versions for existing and newly documented mask representations",
+  "userChoice": "Désaturation technique fidèle (recommandé)",
+  "methodExplicitlySelectedByUser": true,
+  "method": "deterministic-grayscale",
+  "recipe": "srgb8-rec709-luma-v1",
+  "formula": "Y=floor((2126*R+7152*G+722*B+5000)/10000); C=(Y,Y,Y,A_source)",
+  "dimensionsAndAlphaMustRemainIdentical": true,
+  "oldSourceFilesMustRemainByteIdentical": true,
+  "neutralIsA2DShadedBaseNotUnlitPbrAlbedo": true,
+  "newImageGenerationForC": false,
+  "sourceFidelityLimitationsMustRemainOpen": true,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false
+}

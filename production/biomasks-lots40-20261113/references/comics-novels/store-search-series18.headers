@@ -1,0 +1,40 @@
+HTTP/1.1 200 OK
+date: Fri, 13 Nov 2026 14:25:00 GMT
+server: envoy
+
+HTTP/2 200 
+date: Fri, 13 Nov 2026 14:25:01 GMT
+content-type: text/html; charset=utf-8
+x-download-options: noopen
+set-cookie: [redacted transient publisher cookie]
+set-cookie: [redacted transient publisher cookie]
+set-cookie: [redacted transient publisher cookie]
+set-cookie: [redacted transient publisher cookie]
+link: <https://cdn.shopify.com>; rel="preconnect", <https://cdn.shopify.com>; rel="preconnect"; crossorigin, <https://cdnjs.cloudflare.com>; rel="preconnect"; crossorigin, <https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js>; as="script"; rel="preload"; crossorigin; referrerpolicy="no-referrer"; integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==", <//store.necaonline.com/cdn/shop/t/232/assets/base.css?v=95147607049291226611794405716>; as="style"; rel="preload", <//store.necaonline.com/cdn/shop/t/232/assets/redirect-popup.css?v=37921424196717732271794405716>; as="style"; rel="preload", <https://store.necaonline.com/cdn/shopifycloud/portable-wallets/latest/accelerated-checkout-backwards-compat.css>; as="style"; rel="preload"; crossorigin, </.well-known/ucp>; rel="ucp"; version="2026-08-25"
+x-robots-tag: noindex, nofollow
+search-engine: elasticsearch
+x-permitted-cross-domain-policies: none
+etag: W/"page_cache:12270654:SearchController:8ab007452b99985e8dfdd4625890c7e1:62b1a0a3e6f38515e1ba729bee211379"
+nel: {"report_to":"cf-nel","success_fraction":0.01,"max_age":604800}
+shopify-complexity-score: 629
+shopify-complexity-score-v2: 629
+x-frame-options: DENY
+content-security-policy: block-all-mixed-content; frame-ancestors 'none'; upgrade-insecure-requests;
+strict-transport-security: max-age=7889238
+vary: Accept,accept-encoding
+cdn-cache-control: no-cache, no-store
+content-language: en-US
+accept-ch: Sec-CH-Viewport-Width
+powered-by: Shopify
+server-timing: processing;dur=636;desc="gc:44", db;dur=171, db_async;dur=132.444, fetch;dur=18, render;dur=262, asn;desc="13335", edge;desc="ORD", country;desc="FR", knownbot, theme;desc="195550281909", pageType;desc="search", servedBy;desc="f2bn", requestID;desc="3283705d-5594-4c0d-b554-66317e35b0b0-1794579900", _y;desc="00000000-0000-0000-5000-000000000000", _s;desc="00000000-0000-0000-5000-000000000000", _cmp;desc="3.ampS_US_t_t_JaorrGC9QG6i9RtWGmm3kw", _ye;desc="1826137501", _se;desc="1794581701", compressionLevel;desc="5", compressionTime;dur=11.22, earlyhints
+x-request-id: 3283705d-5594-4c0d-b554-66317e35b0b0-1794579900
+cf-cache-status: DYNAMIC
+alt-svc: h3=":443"; ma=86400
+x-xss-protection: 1; mode=block
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=hJ7m9YG1W8VwsYrImUnz0PtUsuOKDu%2Bglq8yUlF2%2BrWVtYKZF3ytgDFM%2Bp%2BYSXoPNIxeXLxojtvcJbetKEnSiKpj56N8o0WCsONcy4UwIdRzKUlsh2GXy2Hb1pQt76Iz9mkva75j"}]}
+x-content-type-options: nosniff
+x-dc: gcp-us-central1,gcp-us-central1,gcp-us-central1
+server: envoy
+cf-ray: a59e717b0d23eafc-ORD
+x-envoy-upstream-service-time: 717
+

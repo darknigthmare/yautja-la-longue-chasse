@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "amendment": "Allow zero bytes only for documentary html/headers/txt under the new references namespace; images/natives/other files still require positive bytes.",
+  "oldManifest": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/manifest-before-selector-empty-document-amendment.json",
+    "sha256": "b77096e449b1224783b5cc826baad5432be4a72429899f5afb913f2521b093e7",
+    "bytes": 1689117
+  },
+  "newManifest": {
+    "path": "public/game/biomasks-lots40-20261113/manifest.json",
+    "sha256": "91d3fc7238d76bb3060619a28778cc7af21dd5a93edd59a9eb576c72d63ab399",
+    "bytes": 1689117
+  },
+  "originalPixelReport": {
+    "path": "production/biomasks-lots40-20261113/qa/independent-pixels.json",
+    "sha256": "3b6ea0cb42325411e978ddcfff4ddd5c79a91d65c0a5cd6b54d830e3a53ccbb5",
+    "bytes": 93675
+  },
+  "originalPixelVerificationManifestSha256": "b77096e449b1224783b5cc826baad5432be4a72429899f5afb913f2521b093e7",
+  "originalPixelVerificationPassed": true,
+  "changedInputPins": [
+    {
+      "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+      "before": {
+        "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+        "bytes": 11110,
+        "sha256": "6dbd8b3f02312630f28a09ebf2d1bad7edf6b8d0f6bee61b255cb6470b1ac67a"
+      },
+      "after": {
+        "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+        "bytes": 11319,
+        "sha256": "eadcd16a221529f18d53c2ab9b24a2e4ca9e5f3ec63041ed9432226a15cb7728"
+      }
+    }
+  ],
+  "changedInputPinFields": [
+    "bytes",
+    "sha256"
+  ],
+  "allOtherManifestJsonIdentical": true,
+  "allPairsA_B_C_ReferenceSourcesAndQualificationsIdentical": true,
+  "allNativeDerivedAndSourceCopyPinsIdentical": true,
+  "sourceImageBytesChanged": false,
+  "selectorPreimageReconstructedByExactInversePatch": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/ci-mask-lots40-inputs-before-empty-documents.py",
+    "sha256": "6dbd8b3f02312630f28a09ebf2d1bad7edf6b8d0f6bee61b255cb6470b1ac67a",
+    "bytes": 11110
+  },
+  "selectorPatchBefore": "        if type(size) is not int or size <= 0:\n",
+  "selectorPatchAfter": "        empty_document = (relative.startswith(PACK + '/references/')\n                          and PurePosixPath(relative).suffix.lower() in {'.html', '.headers', '.txt'})\n        if type(size) is not int or size < 0 or (size == 0 and not empty_document):\n",
+  "newPixelScanPerformed": false,
+  "scope": "Binding of one original exhaustive pixel result to an otherwise identical manifest; no second pixel verification,canon,human or runtime approval."
+}

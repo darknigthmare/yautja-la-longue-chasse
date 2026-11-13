@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-scar-masked-series-15-2016",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-scar-masked-series-15-2016",
+      "label": "Scar masqué · NECA Series15 2016",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-scar-masked-series-15-2016.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-scar-masked-series-15-2016-A-native.png",
+      "sha256": "648b65da64cb268e0b254ac3ee2319ae73ffea23232de9dc7e706c67a68c562c",
+      "bytes": 1917066,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-scar-masked-series-15-2016.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg",
+      "referenceSourceSha256": "b9eeb28446612062728e527429ff310ae924c4292dc57188e1fbc29fa267a8ac",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg",
+          "sha256": "b9eeb28446612062728e527429ff310ae924c4292dc57188e1fbc29fa267a8ac"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2015/12/1300x-Scar_Masked-.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the SILVER MASK WORN by the main figure in the catalogue; it is the documented MASKED SCAR Series15edition, not Series14bare head. Keep the actual slight downward-pitched near-front camera and source proportions. Preserve the broad rounded metal crown with thick layered V/oval rim, actual TOP NOTCH; the dark brown ridged piece seen behind/inside the notch is living head/cranium, REMOVE IT leaving actual notch transparent. Keep the SMALL ACTUAL DARK SCRATCHED FOREHEAD MARK visible near upper centre exactly where the source shows it: its short angular upper strokes and slender lower central strokes must not be replaced by invented writing, different rune or random tally lines. If a tiny stroke is unresolved, do not invent extra strokes. Preserve the two pale silver/grey solid narrow lenses, source curved brow, actual plain cheek housings and long rounded rectangular silver snout/front plate. Retain weathered silver-grey metal, subtle dark grooves, no gold accents or new lights. Remove the living head/neck, dreadlocks, bands, necklace, shoulder cannon, armor and all accessories.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+      "promptSha256": "4f327fa298eeb4c643cf1a835a6f172e2db147c814cae8d19e67d9956e79dd7c",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          225,
+          62,
+          1020,
+          1222
+        ],
+        "marginsPixels16": [
+          225,
+          62,
+          234,
+          32
+        ],
+        "minimumMarginFraction": 0.02552,
+        "transparentPixels": 843879,
+        "opaquePixels": 666
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Only the real rigid shell retained, wearer and body removed.",
+          "Source camera, proportions, colour accents and visible sculpture kept; fine source details remain unvalidated."
+        ]
+      },
+      "limitations": [
+        "Official masked Scar catalogue1300px tall, whole rigid near-front mask visible; small forehead mark stroke exactness remains unvalidated/source-resolution limited.",
+        "Series15masked2016edition is distinct from Series14unmasked2015catalogue; shared Scar family with older project representation, no new canonical geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-scar-masked-series-15-2016-A-native.png",
+          "sha256": "648b65da64cb268e0b254ac3ee2319ae73ffea23232de9dc7e706c67a68c562c",
+          "bytes": 1917066,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the SILVER MASK WORN by the main figure in the catalogue; it is the documented MASKED SCAR Series15edition, not Series14bare head. Keep the actual slight downward-pitched near-front camera and source proportions. Preserve the broad rounded metal crown with thick layered V/oval rim, actual TOP NOTCH; the dark brown ridged piece seen behind/inside the notch is living head/cranium, REMOVE IT leaving actual notch transparent. Keep the SMALL ACTUAL DARK SCRATCHED FOREHEAD MARK visible near upper centre exactly where the source shows it: its short angular upper strokes and slender lower central strokes must not be replaced by invented writing, different rune or random tally lines. If a tiny stroke is unresolved, do not invent extra strokes. Preserve the two pale silver/grey solid narrow lenses, source curved brow, actual plain cheek housings and long rounded rectangular silver snout/front plate. Retain weathered silver-grey metal, subtle dark grooves, no gold accents or new lights. Remove the living head/neck, dreadlocks, bands, necklace, shoulder cannon, armor and all accessories.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+          "promptSha256": "4f327fa298eeb4c643cf1a835a6f172e2db147c814cae8d19e67d9956e79dd7c",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "scar",
+      "representationOf": "NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition",
+      "newCanonicalGeometry": false
+    },
+    {
+      "id": "neca-scar-masked-series-15-2016",
+      "label": "Scar masqué · NECA Series15 2016",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-scar-masked-series-15-2016.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-scar-masked-series-15-2016-B-native.png",
+      "sha256": "547e3b2632c91d61c7a07a69e69bb88d587226a72fdf1e7b8d03f0fb53310ef8",
+      "bytes": 1993003,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-scar-masked-series-15-2016.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg",
+      "referenceSourceSha256": "b9eeb28446612062728e527429ff310ae924c4292dc57188e1fbc29fa267a8ac",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg",
+          "sha256": "b9eeb28446612062728e527429ff310ae924c4292dc57188e1fbc29fa267a8ac"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2015/12/1300x-Scar_Masked-.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2016/04/closer-look-predator-series-15-action-figures/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-scar-masked-series-15-2016.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Same source near-front/down-pitch mask from A, thick rounded V/oval crown rim, actual top notch stays alpha with no brown organic cranium. Preserve precisely the existing small forehead scar mark: SAME number, position, length, angle and relation of its short upper strokes and long lower strokes; do not redraw it as a different rune or add writing. Plain dark silver forehead, pale solid lenses, true small side vent/rib housings and long central rounded rectangular snout. No extra glyph, metal plug in notch, horn or new hidden view.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+      "promptSha256": "d388d344513a325d4af8e7757a395daf345a72868f12cf5a39023c09e0709216",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          223,
+          62,
+          1022,
+          1221
+        ],
+        "marginsPixels16": [
+          223,
+          62,
+          232,
+          33
+        ],
+        "minimumMarginFraction": 0.02632,
+        "transparentPixels": 837557,
+        "opaquePixels": 951
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Source A camera, contour and photographed edition palette retained; only neutral PBR light/material restaging.",
+          "Visible feature arrangement retained at macro inspection; no wearer restored or hidden geometry invented."
+        ]
+      },
+      "limitations": [
+        "Official masked Scar catalogue1300px tall, whole rigid near-front mask visible; small forehead mark stroke exactness remains unvalidated/source-resolution limited.",
+        "Series15masked2016edition is distinct from Series14unmasked2015catalogue; shared Scar family with older project representation, no new canonical geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-scar-masked-series-15-2016-B-native.png",
+          "sha256": "547e3b2632c91d61c7a07a69e69bb88d587226a72fdf1e7b8d03f0fb53310ef8",
+          "bytes": 1993003,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Same source near-front/down-pitch mask from A, thick rounded V/oval crown rim, actual top notch stays alpha with no brown organic cranium. Preserve precisely the existing small forehead scar mark: SAME number, position, length, angle and relation of its short upper strokes and long lower strokes; do not redraw it as a different rune or add writing. Plain dark silver forehead, pale solid lenses, true small side vent/rib housings and long central rounded rectangular snout. No extra glyph, metal plug in notch, horn or new hidden view.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+          "promptSha256": "d388d344513a325d4af8e7757a395daf345a72868f12cf5a39023c09e0709216",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-scar-masked-series-15-2016.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/avp15-final-56088-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "scar",
+      "representationOf": "NECA Scar masked Series15 final catalogue shown April2016, licensed Alien vs. Predator2004toy edition",
+      "newCanonicalGeometry": false,
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-scar-masked-series-15-2016.png",
+      "sourceASha256": "648b65da64cb268e0b254ac3ee2319ae73ffea23232de9dc7e706c67a68c562c"
+    }
+  ],
+  "asOfUtc": "2026-11-13T15:37:47.739431+00:00"
+}

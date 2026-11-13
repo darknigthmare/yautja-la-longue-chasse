@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "New lots40 documentary HTTP metadata only; A/B/C/R image bytes and generation receipts unchanged",
+  "policy": "No transient Set-Cookie value is published. Raw transport originals and original producer reports retained privately, byte-exactly, at the recorded paths. Public documentary copies are amended, not claimed byte-exact to raw headers.",
+  "headerFilesInspected": 65,
+  "headerFilesRedacted": 19,
+  "redactedSetCookieLines": 76,
+  "refreshedPinsByDocument": {
+    "production/biomasks-lots40-20261113/references/comics-novels/candidates.json": 19,
+    "production/biomasks-lots40-20261113/inputs/research/producer-reports/comics-novels.json": 19,
+    "production/biomasks-lots40-20261113/inputs/research/producer-reports/comics-novels-evidence-index.json": 20,
+    "production/biomasks-lots40-20261113/inputs/candidate-inventory.json": 40
+  },
+  "amendments": [
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-preorder.headers",
+      "originalSha256": "cc433aaf63c941a435a2ee184a10ea519b3c016c689b69557108b2bcc5e77f95",
+      "originalBytes": 3388,
+      "sha256": "95733434beea4f866318ae744e1c1375be884747288bf649ce64e3929704c14d",
+      "bytes": 3006,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-preorder.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-store.headers",
+      "originalSha256": "5cebb34853e4ae461dfda717761f4cc67a95f9b9f7d0599a0633f2aeac958710",
+      "originalBytes": 3389,
+      "sha256": "5599b055610aea433f752bdae4d46e37c8990145510017107f2b53b2b4a9b72e",
+      "bytes": 3007,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/avp-minicomic-store.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-closer-store.headers",
+      "originalSha256": "34e8ebf1aca483d08ee1073abf1227da9a6f73008103c552b298a6dabbbc8ec8",
+      "originalBytes": 3396,
+      "sha256": "9b8c42cb9e0439ce1a72df967293083ccf82f41ff9e592b66463f78ffe5fd7d6",
+      "bytes": 3014,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/badblood-closer-store.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/badblood-shipping.headers",
+      "originalSha256": "493bca1c343e0c8b12a7912f2bcffde28e24413416f4ac9fad6e93daf7ed8453",
+      "originalBytes": 3407,
+      "sha256": "1f8dd489abc7311629a81c94c7d4dc3a98b70f500861919f74143806abba8fcb",
+      "bytes": 3025,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/badblood-shipping.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/comic25-store.headers",
+      "originalSha256": "3091e338bec4f4209ee193e8a2499e4a42a39673ed67cb220297904fea5ce2bd",
+      "originalBytes": 3413,
+      "sha256": "d16e122d86a2b24c6e5a6d5b5da1c0168af167e787fa3ff91dd402ae014ce8ce",
+      "bytes": 3031,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/comic25-store.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/sdcc2019-roundup.headers",
+      "originalSha256": "326cb5f58fb2b6bea3c04db3ebf6ee23ca3ea1b0c258ebb91eb88b4b1f85a8f9",
+      "originalBytes": 3390,
+      "sha256": "11575838af284567fe47198c8d8f01b38b199cb0d65ec89df3772e955887da42",
+      "bytes": 3008,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/sdcc2019-roundup.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-armored-predator.headers",
+      "originalSha256": "66eaf088a02da435c9dcbfc0e60925a4bf42dd7b46accc26ef2715e8a2850df9",
+      "originalBytes": 3472,
+      "sha256": "dd3dd254f7369ddc0902873b40004bc16f80329a9390beee8d75435e785033fe",
+      "bytes": 3090,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-armored-predator.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-badblood.headers",
+      "originalSha256": "c14d4c706d515c5ee116f1bf4b0a98d236fda3faddb33c355441db146ac935be",
+      "originalBytes": 3477,
+      "sha256": "71d8539defb251dea5b9ba716111da474ac6de96b5b78476bd04b08e2d1467b6",
+      "bytes": 3095,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-badblood.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-badtwo.headers",
+      "originalSha256": "f504ce04203f9392ee3389cc01e573d837079419c3594d82428f9ed24d5e54b6",
+      "originalBytes": 3452,
+      "sha256": "55f68d829ecce82746028e9742434ce047b0164c295baf34bf3049d9e9ea1cc3",
+      "bytes": 3070,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-badtwo.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-broken.headers",
+      "originalSha256": "52a3f818204bd1b3baa7642333f9dca547ec2106886c4138eadc5f5b814a87cd",
+      "originalBytes": 3475,
+      "sha256": "3ae53f9b6c1a3674e9ba8100b0f46eddd98491f123c78b6c23857b4e9ac37aa3",
+      "bytes": 3093,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-broken.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-darkhorse.headers",
+      "originalSha256": "aead1975b87f4011342f679897d1786849da9fca8138dd3e55b5ea7966e31ab6",
+      "originalBytes": 3470,
+      "sha256": "cdd59c5d4ece7f6ffbaae780fbe73dea0a5e33d55e5721732aed8a93a40f2db6",
+      "bytes": 3088,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-darkhorse.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-hornhead-more.headers",
+      "originalSha256": "7b510a53fc8d20990be8e588a0baa8d88f767de32224745a3c475b884d7b75db",
+      "originalBytes": 3472,
+      "sha256": "c219f4f5b7afad3799728d071a5c15b4aaed6878753bb0883c1ad88554d3fce5",
+      "bytes": 3090,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-hornhead-more.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-machiko.headers",
+      "originalSha256": "c948c3f82e2ffa0b87e518e9e763fad007c8608288c1251d972fd9491918b8c3",
+      "originalBytes": 3467,
+      "sha256": "1de507b0c3b40aefe896807e98ba48153e6156339ac62f50c10bc41d4155c59f",
+      "bytes": 3085,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-machiko.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-minicomic.headers",
+      "originalSha256": "85e78afd29e3cfac056eea2e6a0d0f6d9c31c48601a909a3a4b3099cbad3a6a3",
+      "originalBytes": 3474,
+      "sha256": "0c3f20239ad6317305326a23830b2a2f4e2c20aefaa137d2e921dfbe3a33ad32",
+      "bytes": 3092,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-minicomic.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-predseries17.headers",
+      "originalSha256": "227efee9ccdfe37e85c34b6c7b298a4a86d355a758c33a5f92c978c92f50ea55",
+      "originalBytes": 3465,
+      "sha256": "230f68b291d1d1bdbcdef192beb6a97aa6ab98e8573900388badc8219870837c",
+      "bytes": 3083,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-predseries17.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-series18.headers",
+      "originalSha256": "9a08873fb8e81602f9b090a32ebd84f223f2cb0c1cc2c7d40f7571d3f62e0dfb",
+      "originalBytes": 3471,
+      "sha256": "eaedddb58758a2a910836ff58658ffdb73ffabc1b754850e3c1fe0351398cc1e",
+      "bytes": 3089,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-series18.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-serpent-only.headers",
+      "originalSha256": "4bed6f5cebed65e9cc855d438d2a61712d33e9354c99ca40150d2a1d559f24f8",
+      "originalBytes": 3457,
+      "sha256": "b95f13b170ae34b90657923a2a9e8437d2ef3dd67dd652f331d7f1af3a838a62",
+      "bytes": 3075,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-serpent-only.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/store-search-superman-predator.headers",
+      "originalSha256": "a6e1031e2193712c6e05c87bec26bd2145f0aa443691f6d6a591e14a2e2acb20",
+      "originalBytes": 3466,
+      "sha256": "05cd4fdc8d9b13c640160dc464e9ffb0b864bffd67d4ce9547219006528116c1",
+      "bytes": 3084,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/store-search-superman-predator.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/toyfair2015-store.headers",
+      "originalSha256": "3d737654e08758a3a7fe87c7be388aeccc501deda72f9c7bf9d2d64a22ef3d1a",
+      "originalBytes": 3395,
+      "sha256": "b439210c0e1f5a2a2659d114984886e6662795904fb7d818683cd264324a7440",
+      "bytes": 3013,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/toyfair2015-store.headers",
+      "reason": "Set-Cookie values removed; other response headers retained",
+      "redactedSetCookieLines": 4
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/references/comics-novels/candidates.json",
+      "originalSha256": "75bd9e1e7e7e0c0371aa31a08eb1c76f2ab70c771ecf3787ba424e6b3f6b8948",
+      "originalBytes": 160862,
+      "sha256": "5abfd04074bb1e3fa2b45cf84ff453dc3f08b8da66727ce487a02deb9c90267c",
+      "bytes": 160862,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/references/comics-novels/candidates.json",
+      "reason": "Exact-path SHA/size pins refreshed after documented transport metadata redaction",
+      "refreshedPins": 19
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/inputs/research/producer-reports/comics-novels.json",
+      "originalSha256": "75bd9e1e7e7e0c0371aa31a08eb1c76f2ab70c771ecf3787ba424e6b3f6b8948",
+      "originalBytes": 160862,
+      "sha256": "5abfd04074bb1e3fa2b45cf84ff453dc3f08b8da66727ce487a02deb9c90267c",
+      "bytes": 160862,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/inputs/research/producer-reports/comics-novels.json",
+      "reason": "Exact-path SHA/size pins refreshed after documented transport metadata redaction",
+      "refreshedPins": 19
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/inputs/research/producer-reports/comics-novels-evidence-index.json",
+      "originalSha256": "494d506119189544e55aeb6bcfcadddfd1e958fc04c97c6ecb8019e74d7db72e",
+      "originalBytes": 42601,
+      "sha256": "1c53b8edec0eea64e5d4e3aee1eeb95ff710c4d99647ede024f74bcba7adc34d",
+      "bytes": 42601,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/inputs/research/producer-reports/comics-novels-evidence-index.json",
+      "reason": "Exact-path SHA/size pins refreshed after documented transport metadata redaction",
+      "refreshedPins": 20
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/inputs/candidate-inventory.json",
+      "originalSha256": "261ad7cce4f0045f7763a7b36c4e3fe4509c7da3d54b2cf70752d287a2389e9f",
+      "originalBytes": 757617,
+      "sha256": "7b5e004d2397b16097170d5b3dd22dcf3bd2661ded65b58fc9ac63171470c38a",
+      "bytes": 757617,
+      "privateOriginalPath": "/tmp/mask-lots40-20261113/private-transport-originals/production/biomasks-lots40-20261113/inputs/candidate-inventory.json",
+      "reason": "Exact-path SHA/size pins refreshed after documented transport metadata redaction",
+      "refreshedPins": 40
+    }
+  ],
+  "imagePixelsEdited": false,
+  "canonCertified": false
+}

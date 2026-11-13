@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13",
+  "inventoryRoot": "/tmp/mask-lots40-20261113/inventory",
+  "baselineCommit": "2b96849482b3b16f1fe3c2040ea23a254bc4f897",
+  "baselineTree": "55e21ef5b13c928f074c1eadd6c064fec52ec62c",
+  "readOnly": true,
+  "sources": {
+    "sourceArchiveNames": [
+      "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip"
+    ],
+    "archiveContainersFoundInCurrentWorkspace": false,
+    "archiveContainersNote": "These names are provenance metadata in the committed intake index. A filename search under /workspace and /tmp found no copies of these original two ZIP containers. All 164 extracted PNG sources are present and individually indexed with exact byte hashes.",
+    "pixelRoot": "/workspace/yautja-la-longue-chasse/public/game/sprites/v44/user-hunters",
+    "format": "164 PNG RGBA, each 1024x1536",
+    "independentlyAttributedOfficialSources": false,
+    "proofLimitation": "No source identity or canonical mask geometry is certified by a costume filename. Root separately inspected Broken Tusk and Dark and confirmed their qualification as supplied costume illustrations."
+  },
+  "outputs": [
+    {
+      "path": "/tmp/mask-lots40-20261113/inventory/missing-current.json",
+      "sha256": "2027af977d2375b5511fbdd92faf77108a1005b959d598729ac50865eb097847",
+      "bytes": 1029808
+    },
+    {
+      "path": "/tmp/mask-lots40-20261113/inventory/missing-current.tsv",
+      "sha256": "0ac47860c5919874d443d8d25ecc32e081b2f5c6a5dce918a318af90576c6b9e",
+      "bytes": 56446
+    },
+    {
+      "path": "/tmp/mask-lots40-20261113/inventory/catalogues-cited.json",
+      "sha256": "77f92411b52e3592082e9d0a730d56f3542f6b3212a34dad5ba57df23fa65077",
+      "bytes": 454604
+    },
+    {
+      "path": "/tmp/mask-lots40-20261113/inventory/catalogues-cited.tsv",
+      "sha256": "501c81748ff9e65f6920647bcc695b1e7f9ce1082f0b64bb195f7ee78b158985",
+      "bytes": 61911
+    },
+    {
+      "path": "/tmp/mask-lots40-20261113/inventory/local-visual-164.json",
+      "sha256": "d93d0b6da2743d87ebcff78841d98565501f28a96ab1c1d5534f699e451d798f",
+      "bytes": 210866
+    },
+    {
+      "path": "/tmp/mask-lots40-20261113/inventory/local-visual-164.tsv",
+      "sha256": "a6a753bf2bc1e28847e7077ee19b95a49a194c99205c093fc50a0fe2b07c1423",
+      "bytes": 72743
+    }
+  ],
+  "summary": "110 inventory lines reconcile to 46 exact pair ids, 13 shared-base/project aliases, 8 canonical identities with licensed-edition studies, 38 missing dedicated names, 3 non-mask heads, and 2 original-project story trophies. The 38 names include White Skull paint, Claw paint over Dark described base, and a Rebreather accessory. No count is a count of newly proved mask geometry. The exhaustive 255-record character catalogue explicitly separates aliases, groups, ranks, mutations and individual leads."
+}

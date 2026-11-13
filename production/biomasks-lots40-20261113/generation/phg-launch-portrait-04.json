@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG source-view edition studies; each entry retains its exact identity qualification. Native ImageGen A/B, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-launch-portrait-04",
+      "name": "PHG2019preview — published photo04 (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-launch-portrait-04-A-corrected-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-launch-portrait-04.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-launch-portrait-04.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_b.jpg",
+        "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_z.jpg"
+      ],
+      "publisherLinkedURL": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_z.jpg",
+      "derivedSizeVariantURL": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_b.jpg",
+      "sizeVariantDerivation": "Documented public Flickr b=1024size suffix replacing published z=640; same host,photoID and published secret unchanged. No original-secret guess or access bypass.",
+      "canonicalIdentityUnmapped": true,
+      "previewEdition": true,
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,10December2019 pre-release preview,publisher photo04",
+      "canonicalInventoryId": null,
+      "maskFamily": "unmapped-phg-preview-2019",
+      "representationOf": "publisher-photo-49199095857-preview-mask",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "publisherAltText": "Predator Hunting Grounds - 04",
+        "photoId": "49199095857"
+      },
+      "identityQualification": "Exact official photo number only; class and cosmetic names not assigned.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "publisherAltText": "Predator Hunting Grounds - 04",
+        "photoId": "49199095857",
+        "qualification": "Official preview groups Hunter/Scout/Berserker classes without individually mapping portraits. Exact source photo number is sole individual identity; no class/cosmetic name inferred."
+      },
+      "prompt": "Re-extract/correct ONLY the rigid mask of official PHG2019preview photo04 using the FIRST photo as PRIMARY camera/projection authority. SECOND isolated A1 is useful for visible structural identity but projects the helmet too tall,narrow and bombed compared with FIRST. Match the ACTUAL FIRST source pose/projection: broad swept brim,upper open framework projected LOWER/FLATTER,and a SHORTER projected brim-to-chin span. Keep the source oblique upward-inclined view and its precise roll/yaw,not a new frontal view. Do not physically redesign the mask or stretch it generically; faithfully reproduce how its same rigid structures project in FIRST. Preserve the same whole broad rim silhouette and asymmetric widths,existing angular crown framework/apertures,opaque dark optic slit,the actual single prominent red temple point visible in this view,diagonal cheek slats and the exact central nose/jaw connections. Do not add a hidden lens triangle or opposite module. Keep the nose's physical details/source joins,just match its observed camera projection and source compact silhouette. Do not make the open crown a tall dome or increase hidden depth. No new bars,holes,vents,runes,glyphs,ornaments or speculative microdetail. Fine exact dimensions remain limited by source100–150pixels; use FIRST visual proportions rather than forcing an arbitrary numeric ratio. Exclude ALL biological skin,teeth/mandibles below the metal boundary,dreadlocks/hair rings,neck,body/armor,the raised hand and held disk above/right,and all background. Preserve source actual metal palette/local light; no invented paint. Exactly one complete isolated rigid mask,genuine transparent RGBA,actual empty crown apertures transparent,physically opaque dark optics remain opaque. Center complete silhouette with10percent clear transparent margin all sides,longest axis78-80percent canvas,brim/crown/chin unclipped,no floor/shadow plane/scene/UI/text. Source-numbered PREVIEW2019study only,no inferred class/cosmetic or final-retail status. Only restore actual source camera/projection; do not reconstruct hidden geometry.",
+      "promptSha256": "47fa8428424a606f3165756344c570bcd6fc9e219a03f575e03d6c8cf1290be8",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-launch-portrait-04-publisher-b.jpg",
+        "/workspace/generated_images/imagegen-phg-launch-portrait-04-A-native.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "generationInputPins": [
+        {
+          "submittedPath": "/tmp/mask-lots40-20261113/games/references/phg-launch-portrait-04-publisher-b.jpg",
+          "sha256": "5ba1d56d458960664205cd3fb9a52bad7d77b492ae5379b2cbf1b74cd260f8a1"
+        },
+        {
+          "submittedPath": "/workspace/generated_images/imagegen-phg-launch-portrait-04-A-native.png",
+          "sha256": "cfa3365655c799ff1b8eb16bcc3706c3e5c5f4701f896faf83b9c636343e7514"
+        }
+      ],
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "The distinctive broad swept horizontal brow/crown rim and its raised geometric open/lattice crown structure must remain with their actual source outline; lower face has source triangular/angular openings and inset patterns. Preserve every coarse visible opening and panel as shown,without inventing full hidden mesh. Source head is tilted upward and turned slightly toward image-right; keep exact projected silhouette. Exclude the raised organic hand and separate thrown disk above/right of the head,including any disk/hardware that is not attached to the mask. Preserve only actually visible small physical red lens point(s) under the brow at image-left; do not infer an unseen triangle or a second module.",
+        "exclusions": "All wearer biology,hair/dreads,hair rings,neck,body/armor,weapons,held hand/disk and scene.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified.",
+        "sourceProjectionCheck": "A2 compact source-camera projection passed independent preflight; B retains the corrected low cage/broad brim,one actual red physical point and transparent crown apertures. No class identity inferred."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            64,
+            1250,
+            1167
+          ],
+          "8": [
+            121,
+            172,
+            1173,
+            1008
+          ],
+          "16": [
+            121,
+            173,
+            1172,
+            1007
+          ],
+          "128": [
+            123,
+            173,
+            1172,
+            1007
+          ],
+          "240": [
+            124,
+            174,
+            1171,
+            1006
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          121,
+          173,
+          140,
+          192
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 1.2601918465227817
+      },
+      "limitations": [
+        "Official preview published10December2019,not final-retail status. Individual mask/class/cosmetic identity is UNMAPPED; do not close Hunter/Scout/Berserker or named catalogue tasks from order/body build.",
+        "Primary R is verified public same-photo Flickr b-size derivative of published z-size URL: host,photoID and published secret unchanged; suffix derivation recorded and both original natives retained.",
+        "Mask is roughly100–200pixels in larger source; coarse visible shapes only,fine relief,exact UV/intrinsic albedo,rig fit and hidden views unknown.",
+        "No new canonical geometry claimed; source-numbered edition representation only.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B only material/light adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded.",
+        "A2 source projection corrected via ImageGen only: independent preflight finds compact silhouette and lower projected cage coherent with actual R. Approximate source bounds remain uncertain,no exact projection certification."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-launch-portrait-04-A-corrected-native.png",
+          "sha256": "026034de6e0ff669cf0ad36864f9963f7e3c44fb52a44af37192cbe9712db73f",
+          "prompt": "Re-extract/correct ONLY the rigid mask of official PHG2019preview photo04 using the FIRST photo as PRIMARY camera/projection authority. SECOND isolated A1 is useful for visible structural identity but projects the helmet too tall,narrow and bombed compared with FIRST. Match the ACTUAL FIRST source pose/projection: broad swept brim,upper open framework projected LOWER/FLATTER,and a SHORTER projected brim-to-chin span. Keep the source oblique upward-inclined view and its precise roll/yaw,not a new frontal view. Do not physically redesign the mask or stretch it generically; faithfully reproduce how its same rigid structures project in FIRST. Preserve the same whole broad rim silhouette and asymmetric widths,existing angular crown framework/apertures,opaque dark optic slit,the actual single prominent red temple point visible in this view,diagonal cheek slats and the exact central nose/jaw connections. Do not add a hidden lens triangle or opposite module. Keep the nose's physical details/source joins,just match its observed camera projection and source compact silhouette. Do not make the open crown a tall dome or increase hidden depth. No new bars,holes,vents,runes,glyphs,ornaments or speculative microdetail. Fine exact dimensions remain limited by source100–150pixels; use FIRST visual proportions rather than forcing an arbitrary numeric ratio. Exclude ALL biological skin,teeth/mandibles below the metal boundary,dreadlocks/hair rings,neck,body/armor,the raised hand and held disk above/right,and all background. Preserve source actual metal palette/local light; no invented paint. Exactly one complete isolated rigid mask,genuine transparent RGBA,actual empty crown apertures transparent,physically opaque dark optics remain opaque. Center complete silhouette with10percent clear transparent margin all sides,longest axis78-80percent canvas,brim/crown/chin unclipped,no floor/shadow plane/scene/UI/text. Source-numbered PREVIEW2019study only,no inferred class/cosmetic or final-retail status. Only restore actual source camera/projection; do not reconstruct hidden geometry.",
+          "referencedImagePaths": [
+            "/tmp/mask-lots40-20261113/games/references/phg-launch-portrait-04-publisher-b.jpg",
+            "/workspace/generated_images/imagegen-phg-launch-portrait-04-A-native.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "026034de6e0ff669cf0ad36864f9963f7e3c44fb52a44af37192cbe9712db73f",
+      "bytes": 1268802,
+      "nativeDimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-b.jpg",
+          "sha256": "5ba1d56d458960664205cd3fb9a52bad7d77b492ae5379b2cbf1b74cd260f8a1"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-z.jpg",
+          "sha256": "59b86d1b0fbf26fc8d78c1b9283452944481e0d53cf9a38403a670330af2fb7e"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        121,
+        173,
+        1172,
+        1007
+      ],
+      "transparentPixels": 1008816,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-b.jpg",
+      "referenceSourceSha256": "5ba1d56d458960664205cd3fb9a52bad7d77b492ae5379b2cbf1b74cd260f8a1"
+    },
+    {
+      "id": "phg-launch-portrait-04",
+      "name": "PHG2019preview — published photo04 (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-launch-portrait-04-B-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-launch-portrait-04.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-launch-portrait-04.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_b.jpg",
+        "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_z.jpg"
+      ],
+      "publisherLinkedURL": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_z.jpg",
+      "derivedSizeVariantURL": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_b.jpg",
+      "sizeVariantDerivation": "Documented public Flickr b=1024size suffix replacing published z=640; same host,photoID and published secret unchanged. No original-secret guess or access bypass.",
+      "canonicalIdentityUnmapped": true,
+      "previewEdition": true,
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,10December2019 pre-release preview,publisher photo04",
+      "canonicalInventoryId": null,
+      "maskFamily": "unmapped-phg-preview-2019",
+      "representationOf": "publisher-photo-49199095857-preview-mask",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": {
+        "publisherAltText": "Predator Hunting Grounds - 04",
+        "photoId": "49199095857"
+      },
+      "identityQualification": "Exact official photo number only; class and cosmetic names not assigned.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "publisherAltText": "Predator Hunting Grounds - 04",
+        "photoId": "49199095857",
+        "qualification": "Official preview groups Hunter/Scout/Berserker classes without individually mapping portraits. Exact source photo number is sole individual identity; no class/cosmetic name inferred."
+      },
+      "prompt": "Make version B of the FIRST isolated corrected PHG2019preview photo04 mask. The sole isolated input is the geometry authority; official larger and publisher-linked smaller photo provenance is retained separately. Preserve exactly its SOURCE-MATCHED compact oblique/upward projection,low/flat open crown framework,broad swept brim,whole asymmetrical contour,shorter projected brim-to-chin span,angular cheek slats,central nose joins,and the actual ONE prominent physical red temple point visible in this source view. Do not raise/bomb the cage,elongate the mask,make a new front,change physical design,or add a hidden three-point module. Keep precisely the same crown bars/aperture routes and existing nose/cheek panel edges; no new bars,holes,vents,runes,glyphs,ornaments or hardware. Change ONLY material/light to coherent PHG PBR: same observed dark gunmetal/steel/gray mask with controlled roughness,readable relief,restrained grain,neutral soft image-upper-left/front key and gentle fill. Remove emitted red bloom/flare streaks from the point while retaining the actual single small red physical lens. Lighting highlights do not prove new white/gold/green paint; invent no colorway or universal mirror chrome. Keep upper crown holes genuinely transparent and the actual dark optic insert physically opaque,with no skin/living eyes behind it. Exclude ALL biological skin/teeth/mandibles,dreads/hair rings,neck/body/armor,the held disk/raised hand and background. Exactly ONE complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margin all around,full brim/crown/chin unclipped,longest complete axis78-80percent canvas,no floor/shadow plane/glow halo/UI/text/alternate views. It remains a photo-numbered PRE-RELEASE2019study with unmapped class/cosmetic identity,not a new canonical geometry or final-retail claim. Preserve geometry/camera/proportions; only standardized material/light.",
+      "promptSha256": "75e7ce2d0ca1ad422f41f25d8eb031cfcb08ae78be61773c3b5cc4e03582bd2b",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-launch-portrait-04.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "generationInputPins": null,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "The distinctive broad swept horizontal brow/crown rim and its raised geometric open/lattice crown structure must remain with their actual source outline; lower face has source triangular/angular openings and inset patterns. Preserve every coarse visible opening and panel as shown,without inventing full hidden mesh. Source head is tilted upward and turned slightly toward image-right; keep exact projected silhouette. Exclude the raised organic hand and separate thrown disk above/right of the head,including any disk/hardware that is not attached to the mask. Preserve only actually visible small physical red lens point(s) under the brow at image-left; do not infer an unseen triangle or a second module.",
+        "exclusions": "All wearer biology,hair/dreads,hair rings,neck,body/armor,weapons,held hand/disk and scene.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified.",
+        "sourceProjectionCheck": "A2 compact source-camera projection passed independent preflight; B retains the corrected low cage/broad brim,one actual red physical point and transparent crown apertures. No class identity inferred."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            27,
+            1234,
+            1159
+          ],
+          "8": [
+            119,
+            173,
+            1173,
+            1010
+          ],
+          "16": [
+            119,
+            173,
+            1173,
+            1010
+          ],
+          "128": [
+            119,
+            174,
+            1173,
+            1009
+          ],
+          "240": [
+            120,
+            175,
+            1172,
+            1008
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          119,
+          173,
+          139,
+          189
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 1.2592592592592593
+      },
+      "limitations": [
+        "Official preview published10December2019,not final-retail status. Individual mask/class/cosmetic identity is UNMAPPED; do not close Hunter/Scout/Berserker or named catalogue tasks from order/body build.",
+        "Primary R is verified public same-photo Flickr b-size derivative of published z-size URL: host,photoID and published secret unchanged; suffix derivation recorded and both original natives retained.",
+        "Mask is roughly100–200pixels in larger source; coarse visible shapes only,fine relief,exact UV/intrinsic albedo,rig fit and hidden views unknown.",
+        "No new canonical geometry claimed; source-numbered edition representation only.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B only material/light adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-launch-portrait-04-B-native.png",
+          "sha256": "8856b9b246191e89fec74fe6b63d7114f792df5a22f6a80300b26fb094d4cb4f",
+          "prompt": "Make version B of the FIRST isolated corrected PHG2019preview photo04 mask. The sole isolated input is the geometry authority; official larger and publisher-linked smaller photo provenance is retained separately. Preserve exactly its SOURCE-MATCHED compact oblique/upward projection,low/flat open crown framework,broad swept brim,whole asymmetrical contour,shorter projected brim-to-chin span,angular cheek slats,central nose joins,and the actual ONE prominent physical red temple point visible in this source view. Do not raise/bomb the cage,elongate the mask,make a new front,change physical design,or add a hidden three-point module. Keep precisely the same crown bars/aperture routes and existing nose/cheek panel edges; no new bars,holes,vents,runes,glyphs,ornaments or hardware. Change ONLY material/light to coherent PHG PBR: same observed dark gunmetal/steel/gray mask with controlled roughness,readable relief,restrained grain,neutral soft image-upper-left/front key and gentle fill. Remove emitted red bloom/flare streaks from the point while retaining the actual single small red physical lens. Lighting highlights do not prove new white/gold/green paint; invent no colorway or universal mirror chrome. Keep upper crown holes genuinely transparent and the actual dark optic insert physically opaque,with no skin/living eyes behind it. Exclude ALL biological skin/teeth/mandibles,dreads/hair rings,neck/body/armor,the held disk/raised hand and background. Exactly ONE complete isolated rigid mask,genuine transparent RGBA,10percent clear transparent margin all around,full brim/crown/chin unclipped,longest complete axis78-80percent canvas,no floor/shadow plane/glow halo/UI/text/alternate views. It remains a photo-numbered PRE-RELEASE2019study with unmapped class/cosmetic identity,not a new canonical geometry or final-retail claim. Preserve geometry/camera/proportions; only standardized material/light.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-launch-portrait-04.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-launch-portrait-04.png",
+      "sourceASha256": "026034de6e0ff669cf0ad36864f9963f7e3c44fb52a44af37192cbe9712db73f",
+      "sha256": "8856b9b246191e89fec74fe6b63d7114f792df5a22f6a80300b26fb094d4cb4f",
+      "bytes": 1344814,
+      "nativeDimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-b.jpg",
+          "sha256": "5ba1d56d458960664205cd3fb9a52bad7d77b492ae5379b2cbf1b74cd260f8a1"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-z.jpg",
+          "sha256": "59b86d1b0fbf26fc8d78c1b9283452944481e0d53cf9a38403a670330af2fb7e"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        119,
+        173,
+        1173,
+        1010
+      ],
+      "transparentPixels": 1008059,
+      "nativeCopyIdentical": true
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "phg-launch-portrait-04",
+      "version": "A",
+      "attempt": 1,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-launch-portrait-04-A-native.png",
+      "sha256": "cfa3365655c799ff1b8eb16bcc3706c3e5c5f4701f896faf83b9c636343e7514",
+      "bytes": 1297749,
+      "nativeDimensions": [
+        1293,
+        1217
+      ],
+      "mode": "RGBA",
+      "prompt": "Isolate ONLY the complete rigid mask worn by the single character in this official PHG PRE-RELEASE preview photo from10December2019,exact published photo04 (individual class/cosmetic name UNMAPPED). Preserve actual source camera,yaw/pitch/roll,projected asymmetry,proportions,whole visible outline,coarse panels/relief,apertures and apparent palette/local lighting. Do not turn it into a named Hunter/Scout/Berserker or substitute another film/game mask. It is a source-numbered2019preview study,not proof of a final-retail design. SUBJECT FEATURES: The distinctive broad swept horizontal brow/crown rim and its raised geometric open/lattice crown structure must remain with their actual source outline; lower face has source triangular/angular openings and inset patterns. Preserve every coarse visible opening and panel as shown,without inventing full hidden mesh. Source head is tilted upward and turned slightly toward image-right; keep exact projected silhouette. Exclude the raised organic hand and separate thrown disk above/right of the head,including any disk/hardware that is not attached to the mask. Preserve only actually visible small physical red lens point(s) under the brow at image-left; do not infer an unseen triangle or a second module. Exclude ALL wearer biological skin/eyes/mandibles,dreadlocks/hair rings,neck,body,armor,weapons,held items and background. Keep only source-visible rigid mask and truly attached fittings. Where source contains physically opaque dark optics/mesh insert,keep it opaque dark; where a true empty aperture is shown,keep it an open transparent hole without living eyes/skin behind it. Do not invent hidden side/back/interior or unknown architecture behind openings. No new vents,holes,runes,glyphs,ornaments,unseen lenses or speculative microdetail. Fine relief is limited by roughly100–200source pixels at mask: retain coarse source shapes,do not claim exact mesh or UV. Exactly ONE complete isolated hard mask,genuine transparent RGBA,centered with10percent clear transparent margin all around,longest axis78-80percent canvas,crown/upper rim/chin entirely visible. No background/floor/shadow plane,halo/glow,UI,text,alternate views or other masks. A follows source visible material/lighting/palette; no new art direction or colorway.",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-launch-portrait-04-publisher-b.jpg"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "Independent preflight: initial camera projection was taller/narrower and crown cage too bombed. Selected source-matched A2 has ratio1.260 versus uncertain rigid Rproxy1.25–1.30,without CPU deformation.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ]
+}

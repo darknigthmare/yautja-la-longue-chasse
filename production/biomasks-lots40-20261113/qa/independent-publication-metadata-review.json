@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/dual_generate_5",
+  "passed": true,
+  "scope": "Independent publication-only metadata/code/Git-attribute review; no image files decoded or reread, no pixel/browser/portable suites rerun, no repository or QA index edited.",
+  "binding": {
+    "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/qa/publication-metadata-binding.json",
+    "sha256": "802178c70a29db24553ffdce7436d3ac2954d01a67f01e33520de8d9f23cac8c",
+    "bytes": 4547
+  },
+  "oldManifest": {
+    "path": "production/biomasks-lots40-20261113/qa/amendment/manifest-before-publication-attributes-amendment.json",
+    "sha256": "91d3fc7238d76bb3060619a28778cc7af21dd5a93edd59a9eb576c72d63ab399",
+    "bytes": 1689117
+  },
+  "newManifest": {
+    "path": "public/game/biomasks-lots40-20261113/manifest.json",
+    "sha256": "6f8b937269ec36fa6f92c0ff490d733f4d3c7ad03809ba717313dec72bd3c366",
+    "bytes": 1689117
+  },
+  "changedInputPinRecords": [
+    {
+      "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+      "before": {
+        "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+        "bytes": 11319,
+        "sha256": "eadcd16a221529f18d53c2ab9b24a2e4ca9e5f3ec63041ed9432226a15cb7728"
+      },
+      "after": {
+        "path": "production/biomasks-lots40-20261113/tools/ci-mask-lots40-inputs.py",
+        "bytes": 11349,
+        "sha256": "d589360af9caa211463c6cb823d78ada8491e0c7ffafd16386e9129cd31e1f79"
+      }
+    },
+    {
+      "path": "production/biomasks-lots40-20261113/tools/verify-neutral-pixels.py",
+      "before": {
+        "path": "production/biomasks-lots40-20261113/tools/verify-neutral-pixels.py",
+        "bytes": 21227,
+        "sha256": "9574681529722a08a006be2c1699294aedd6f19072f20eace79e70ba9373356f"
+      },
+      "after": {
+        "path": "production/biomasks-lots40-20261113/tools/verify-neutral-pixels.py",
+        "bytes": 21225,
+        "sha256": "42fa4b82447f59d88dc91b392307e77793a2ecb276881598b3b5c760d8dc1746"
+      }
+    }
+  ],
+  "allOtherManifestJsonIdentical": true,
+  "all46PairsImagesSourceReferencesLineageAndQualificationsIdentical": true,
+  "nativeDerivedSourceCopyAndWorkbookPinsIdentical": true,
+  "selector": {
+    "exactlyOneLiteralAttributesBootstrapAdded": true,
+    "bootstrapFilesBefore": 5,
+    "bootstrapFilesAfter": 6,
+    "otherCodeBytesIdentical": true
+  },
+  "pixelVerifier": {
+    "preimage": {
+      "path": "production/biomasks-lots40-20261113/qa/amendment/verify-neutral-pixels-before-eof-cleanup.py",
+      "sha256": "9574681529722a08a006be2c1699294aedd6f19072f20eace79e70ba9373356f",
+      "bytes": 21227
+    },
+    "newSha256": "42fa4b82447f59d88dc91b392307e77793a2ecb276881598b3b5c760d8dc1746",
+    "astIdentical": true,
+    "astSha256": "c6ec65a5b9a79cf1320c218c11b3466818969c5deb3e253a55be4bf7355cc1ec",
+    "onlyTwoTrailingLfRemoved": true
+  },
+  "gitAttributes": {
+    "pin": {
+      "path": "production/biomasks-lots40-20261113/.gitattributes",
+      "sha256": "1d06e3222bbaf474a1c2d0ba74f104eb1a041defedd2361a270201104511f20e",
+      "bytes": 118
+    },
+    "activeRules": [
+      "inputs/research/inventory/*.tsv -text"
+    ],
+    "stagedAttributesByteIdentical": true,
+    "literalBootstrapNotManifestInput": true,
+    "attributePrecheck": {
+      "path": "/tmp/mask-lots40-20261113/publication-attribute-precheck.json",
+      "sha256": "5c620029cbd169253dd8e0f8fdb782d79b592072dc4115a1fa6d7b7a5bf05751"
+    },
+    "scopeChecks": [
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/inventory/missing-current.tsv",
+        "text": "unset",
+        "eol": "lf",
+        "withinException": true
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/inventory/catalogues-cited.tsv",
+        "text": "unset",
+        "eol": "lf",
+        "withinException": true
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/inventory/local-visual-164.tsv",
+        "text": "unset",
+        "eol": "lf",
+        "withinException": true
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/inventory/nested/scope-probe.tsv",
+        "text": "set",
+        "eol": "lf",
+        "withinException": false
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/scope-probe.tsv",
+        "text": "set",
+        "eol": "lf",
+        "withinException": false
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/references/scope-probe.tsv",
+        "text": "set",
+        "eol": "lf",
+        "withinException": false
+      },
+      {
+        "path": "production/biomasks-neutral-20261113/inputs/research/inventory/scope-probe.tsv",
+        "text": "set",
+        "eol": "lf",
+        "withinException": false
+      }
+    ],
+    "threeStagedTsvEvidence": [
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/inventory/missing-current.tsv",
+        "sha256": "0ac47860c5919874d443d8d25ecc32e081b2f5c6a5dce918a318af90576c6b9e",
+        "bytes": 56446,
+        "indexByteIdenticalToOriginalWorktree": true,
+        "manifestPinPresent": true,
+        "matchesManifestPin": true,
+        "crlfPairs": 111
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/inventory/catalogues-cited.tsv",
+        "sha256": "501c81748ff9e65f6920647bcc695b1e7f9ce1082f0b64bb195f7ee78b158985",
+        "bytes": 61911,
+        "indexByteIdenticalToOriginalWorktree": true,
+        "manifestPinPresent": true,
+        "matchesManifestPin": true,
+        "crlfPairs": 256
+      },
+      {
+        "path": "production/biomasks-lots40-20261113/inputs/research/inventory/local-visual-164.tsv",
+        "sha256": "a6a753bf2bc1e28847e7077ee19b95a49a194c99205c093fc50a0fe2b07c1423",
+        "bytes": 72743,
+        "indexByteIdenticalToOriginalWorktree": true,
+        "manifestPinPresent": true,
+        "matchesManifestPin": true,
+        "crlfPairs": 165
+      }
+    ]
+  },
+  "workflow": {
+    "pin": {
+      "path": ".github/workflows/biomask-lots40-candidates.yml",
+      "sha256": "905cd3615428855182d6c7bb044d29f99bf92073fa0870f20eb4879afede3419",
+      "bytes": 4660
+    },
+    "preimage": {
+      "path": "production/biomasks-lots40-20261113/qa/amendment/biomask-lots40-candidates-before-attributes.yml",
+      "sha256": "9e6bb4a7b689fba921bcbb5b0fd3fe9dcb1b5f037ac8485649cd0d1bc937226b",
+      "bytes": 4597
+    },
+    "onlyLiteralAttributePathAndStepLabelChanged": true,
+    "initialSparseBootstrapFiles": 6
+  },
+  "originalEvidenceRetained": {
+    "exhaustivePixelReport": {
+      "path": "production/biomasks-lots40-20261113/qa/independent-pixels.json",
+      "sha256": "3b6ea0cb42325411e978ddcfff4ddd5c79a91d65c0a5cd6b54d830e3a53ccbb5",
+      "bytes": 93675
+    },
+    "browserReport": {
+      "path": "production/biomasks-lots40-20261113/qa/browser/verification.json",
+      "sha256": "5291264d17e877f2e869d951d5ebfa6533833dbc1fb3d45bb4f832d389a7842b",
+      "bytes": 3865
+    },
+    "portableReport": {
+      "path": "production/biomasks-lots40-20261113/qa/portability.json",
+      "sha256": "23375d01a2374c9c00caaaa46b1900606e6777146cb674443f7254c8391d9b81",
+      "bytes": 7664
+    },
+    "previousBinding": {
+      "path": "production/biomasks-lots40-20261113/qa/selector-empty-documents-binding.json",
+      "sha256": "82b8e6ec04b4dcb0ed90e18f187afff4274fbe729ab7c7330eca0aaa05a1debc",
+      "bytes": 2673
+    }
+  },
+  "evidenceBindingChain": [
+    "b77096e449b1224783b5cc826baad5432be4a72429899f5afb913f2521b093e7",
+    "91d3fc7238d76bb3060619a28778cc7af21dd5a93edd59a9eb576c72d63ab399",
+    "6f8b937269ec36fa6f92c0ff490d733f4d3c7ad03809ba717313dec72bd3c366"
+  ],
+  "originalPixelReportByteIdentical": true,
+  "originalPixelPass": true,
+  "originalBrowserChecksRetained": 8,
+  "originalPortableNegativesRetained": 24,
+  "newPixelScans": 0,
+  "newBrowserPasses": 0,
+  "newPortableSuites": 0,
+  "imageFilesReread": false,
+  "repositoryFilesModified": false,
+  "qaIndexModified": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "productionReady": false,
+  "limitations": [
+    "Existing QA reports remain byte-exact historical executions; this review binds them through the explicitly limited metadata/publication changes and does not claim fresh test executions."
+  ]
+}

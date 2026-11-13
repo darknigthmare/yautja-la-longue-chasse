@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG source-view edition studies; each entry retains its exact identity qualification. Native ImageGen A/B, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-mr-black-2021",
+      "name": "Mr.Black — PHG2021 publisher view (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mr-black-2021-A-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-mr-black-2021.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mr-black-2021.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/51736253084_0b31aa452f_h.jpg"
+      ],
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021",
+      "canonicalInventoryId": "mk-35-mr-black",
+      "maskFamily": "berserker-mr-black",
+      "representationOf": "mk-35-mr-black",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": null,
+      "identityQualification": "Publisher article names Mr.Black as HuntingParty member and describes super/berserker; exact individual screenshot association is editorial-context plus V87 mapping,not printed menu name.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names Mr.Black as HuntingParty member and describes super/berserker; exact individual screenshot association is editorial-context plus V87 mapping,not printed menu name.",
+        "publisherText": "The Hunting Party includes Falconer,Captured,and Mr.Black Predators.",
+        "archiveMapping": "V87 links this exact screenshot to MrBlack; corroboration only."
+      },
+      "prompt": "Isolate ONLY the rigid mask and its physically attached pale bone jaw trophy from this official2021 PHG publisher screenshot. Keep the source exact near-front downward-inclined camera,slight projected asymmetry,whole crown/muzzle contour and apparent proportions. This is the source-visible Mr.Black PHG edition,not a substitute from a film,NECA or prior project reconstruction. Preserve the dark purple-gray/gunmetal metallic smooth broad oval crown with its thick raised surrounding arch and visible source wear; the swept eye/brow/cheek ridges and black opaque eye inserts; the small image-left circular temple module with EXACTLY THREE small red lenses in its source compact triangle,no emitted glow. Preserve the existing pale/beige rigid BONE JAW TROPHY fixed around the lower mask: same complete curved lower outline,source count/placement of small upright teeth and rough worn bone texture. That rigid attached bony jaw is part of this mask edition and must remain; do not remove it as wearer biology,turn it into a living jaw or replace it with generic tusks. Exclude all real wearer skin/living mandibles/neck behind and beneath the trophy,dreadlocks,metal hair rings,body/armor,shoulder weapon on image-right and scene. Do not add a full skull face,new vents,fangs,symbols,runes,holes,fittings or hidden rear/interior geometry. Preserve actual screenshot materials,apparent palette,source local light and dark source eye treatment,not a new colorway or straight-front redesign. Exactly one complete isolated hard mask+trophy,genuine transparent RGBA,centered with10percent clear transparent margin all around,crown and whole bone chin/tips unclipped,longest axis78-80percent canvas. No floor,shadow plane,background,UI,text,glow or duplicate views. Fine relief is limited by the source screenshot; this is a source-view candidate,not automatically certified exact canon geometry.",
+      "promptSha256": "48c91fde330ce1eb1d2388c692ba509ed5b7972b4b1d652854d45f2e01ba101c",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Dark purple-gray/gunmetal oval crown with raised arch,black eye inserts,three red physical lenses and attached pale bone jaw trophy. Preserve whole trophy and source camera.",
+        "exclusions": "Living wearer skin/mandibles,neck,dreads,hair rings,body,armor,shoulder weapon and background.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            17,
+            1248,
+            1242
+          ],
+          "8": [
+            259,
+            57,
+            1006,
+            1160
+          ],
+          "16": [
+            261,
+            57,
+            1004,
+            1160
+          ],
+          "128": [
+            261,
+            58,
+            1003,
+            1159
+          ],
+          "240": [
+            262,
+            59,
+            1002,
+            1158
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          261,
+          57,
+          262,
+          82
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.6736174070716229
+      },
+      "limitations": [
+        "Official publisher game-edition source view; shares Mr.Black/Berserker family,no new canonical geometry claimed.",
+        "Individual screenshot identity is editorial-context and archive-corroborated; no selected menu name printed.",
+        "Fine bone teeth/wear/UV/intrinsic albedo and hidden views limited by small mask region.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B is rendering-only adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Independent preflight estimates selected A roughly4–6percent narrower than source silhouette; source bounds uncertain because of dreads and perspective. No macro correction recommended; no exact proportions certification.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mr-black-2021-A-native.png",
+          "sha256": "10db05d06d46866115255a5f703d0257b31a4161994b823f658ad471eebb5e42",
+          "prompt": "Isolate ONLY the rigid mask and its physically attached pale bone jaw trophy from this official2021 PHG publisher screenshot. Keep the source exact near-front downward-inclined camera,slight projected asymmetry,whole crown/muzzle contour and apparent proportions. This is the source-visible Mr.Black PHG edition,not a substitute from a film,NECA or prior project reconstruction. Preserve the dark purple-gray/gunmetal metallic smooth broad oval crown with its thick raised surrounding arch and visible source wear; the swept eye/brow/cheek ridges and black opaque eye inserts; the small image-left circular temple module with EXACTLY THREE small red lenses in its source compact triangle,no emitted glow. Preserve the existing pale/beige rigid BONE JAW TROPHY fixed around the lower mask: same complete curved lower outline,source count/placement of small upright teeth and rough worn bone texture. That rigid attached bony jaw is part of this mask edition and must remain; do not remove it as wearer biology,turn it into a living jaw or replace it with generic tusks. Exclude all real wearer skin/living mandibles/neck behind and beneath the trophy,dreadlocks,metal hair rings,body/armor,shoulder weapon on image-right and scene. Do not add a full skull face,new vents,fangs,symbols,runes,holes,fittings or hidden rear/interior geometry. Preserve actual screenshot materials,apparent palette,source local light and dark source eye treatment,not a new colorway or straight-front redesign. Exactly one complete isolated hard mask+trophy,genuine transparent RGBA,centered with10percent clear transparent margin all around,crown and whole bone chin/tips unclipped,longest axis78-80percent canvas. No floor,shadow plane,background,UI,text,glow or duplicate views. Fine relief is limited by the source screenshot; this is a source-view candidate,not automatically certified exact canon geometry.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "10db05d06d46866115255a5f703d0257b31a4161994b823f658ad471eebb5e42",
+      "bytes": 1559909,
+      "nativeDimensions": [
+        1266,
+        1242
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg",
+          "sha256": "c9c74ec6c6305b81c8e02a280db9de63ebe462f6813757a6c8cedfa00112ef13"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        261,
+        57,
+        1004,
+        1160
+      ],
+      "transparentPixels": 942487,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg",
+      "referenceSourceSha256": "c9c74ec6c6305b81c8e02a280db9de63ebe462f6813757a6c8cedfa00112ef13"
+    },
+    {
+      "id": "phg-mr-black-2021",
+      "name": "Mr.Black — PHG2021 publisher view (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mr-black-2021-B-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-mr-black-2021.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-mr-black-2021.json",
+      "referenceURLs": [
+        "https://live.staticflickr.com/65535/51736253084_0b31aa452f_h.jpg"
+      ],
+      "sourceClass": "official-publisher-image",
+      "sourceEdition": "Predator:HuntingGrounds,PS4Pro publisher screenshot,15December2021",
+      "canonicalInventoryId": "mk-35-mr-black",
+      "maskFamily": "berserker-mr-black",
+      "representationOf": "mk-35-mr-black",
+      "newCanonicalGeometry": false,
+      "editionStudy": true,
+      "sourcePosition": null,
+      "identityQualification": "Publisher article names Mr.Black as HuntingParty member and describes super/berserker; exact individual screenshot association is editorial-context plus V87 mapping,not printed menu name.",
+      "identityEvidence": {
+        "sourcePage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+        "qualification": "Publisher article names Mr.Black as HuntingParty member and describes super/berserker; exact individual screenshot association is editorial-context plus V87 mapping,not printed menu name.",
+        "publisherText": "The Hunting Party includes Falconer,Captured,and Mr.Black Predators.",
+        "archiveMapping": "V87 links this exact screenshot to MrBlack; corroboration only."
+      },
+      "prompt": "Make version B of the FIRST isolated PHG2021 Mr.Black mask. SECOND image is its official publisher screenshot for source cross-check. Lock FIRST visible geometry,camera/downward tilt,projected asymmetry,whole crown/cheek/muzzle contour,black eye inserts,raised border/central panel,the circular image-left module with EXACTLY THREE physical red lenses in a compact triangle,and the ENTIRE attached pale bone jaw trophy with its same teeth/count/outline. No new view or hidden geometry. Change ONLY material/light to coherent PHG PBR: same worn dark purple-gray/gunmetal metal and pale beige rough bone,controlled realistic roughness,readable relief,restrained grain,neutral soft image-upper-left/front key with gentle fill. Bone stays bone,never chrome or living flesh. Keep three small physical red lenses without emitted glow. Do not repair away damage,add holes,vents,runes,fangs,hardware,paint or ornaments. Exclude living wearer skin/mandibles/neck,dreads/hair rings,body/armor,shoulder weapon and scene. Exactly one complete isolated mask with attached trophy,genuine transparent RGBA,10percent clear transparent margin on all sides,longest complete axis78-80percent canvas,no clipping of crown/bone chin/teeth. No background,floor,shadow plane,UI,text or alternate view. Only material/light standardization; this is a documented game-edition source-view study,not new canonical geometry.",
+      "promptSha256": "0e0e4310595de0f6e6a7c1ae0b170f0cd097faada71fc23ac0ce3d018752ebf1",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-mr-black-2021.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Dark purple-gray/gunmetal oval crown with raised arch,black eye inserts,three red physical lenses and attached pale bone jaw trophy. Preserve whole trophy and source camera.",
+        "exclusions": "Living wearer skin/mandibles,neck,dreads,hair rings,body,armor,shoulder weapon and background.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            61,
+            1226,
+            1219
+          ],
+          "8": [
+            258,
+            64,
+            1001,
+            1159
+          ],
+          "16": [
+            260,
+            64,
+            1001,
+            1159
+          ],
+          "128": [
+            261,
+            65,
+            1001,
+            1158
+          ],
+          "240": [
+            262,
+            65,
+            1000,
+            1157
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          260,
+          64,
+          265,
+          84
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.6767123287671233
+      },
+      "limitations": [
+        "Official publisher game-edition source view; shares Mr.Black/Berserker family,no new canonical geometry claimed.",
+        "Individual screenshot identity is editorial-context and archive-corroborated; no selected menu name printed.",
+        "Fine bone teeth/wear/UV/intrinsic albedo and hidden views limited by small mask region.",
+        "A is new ImageGen source-view isolation,not source-pixel cutout; B is rendering-only adaptation.",
+        "No automatic canon,human art or runtime validation.",
+        "Independent preflight estimates selected A roughly4–6percent narrower than source silhouette; source bounds uncertain because of dreads and perspective. No macro correction recommended; no exact proportions certification.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-mr-black-2021-B-native.png",
+          "sha256": "f3baf12b601e2c78df295d5b1f899cfdc13e149ad51ec4877994477a537fffa5",
+          "prompt": "Make version B of the FIRST isolated PHG2021 Mr.Black mask. SECOND image is its official publisher screenshot for source cross-check. Lock FIRST visible geometry,camera/downward tilt,projected asymmetry,whole crown/cheek/muzzle contour,black eye inserts,raised border/central panel,the circular image-left module with EXACTLY THREE physical red lenses in a compact triangle,and the ENTIRE attached pale bone jaw trophy with its same teeth/count/outline. No new view or hidden geometry. Change ONLY material/light to coherent PHG PBR: same worn dark purple-gray/gunmetal metal and pale beige rough bone,controlled realistic roughness,readable relief,restrained grain,neutral soft image-upper-left/front key with gentle fill. Bone stays bone,never chrome or living flesh. Keep three small physical red lenses without emitted glow. Do not repair away damage,add holes,vents,runes,fangs,hardware,paint or ornaments. Exclude living wearer skin/mandibles/neck,dreads/hair rings,body/armor,shoulder weapon and scene. Exactly one complete isolated mask with attached trophy,genuine transparent RGBA,10percent clear transparent margin on all sides,longest complete axis78-80percent canvas,no clipping of crown/bone chin/teeth. No background,floor,shadow plane,UI,text or alternate view. Only material/light standardization; this is a documented game-edition source-view study,not new canonical geometry.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-mr-black-2021.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-mr-black-2021.png",
+      "sourceASha256": "10db05d06d46866115255a5f703d0257b31a4161994b823f658ad471eebb5e42",
+      "sha256": "f3baf12b601e2c78df295d5b1f899cfdc13e149ad51ec4877994477a537fffa5",
+      "bytes": 1487048,
+      "nativeDimensions": [
+        1266,
+        1243
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-mr-black-2021-publisher.jpg",
+          "sha256": "c9c74ec6c6305b81c8e02a280db9de63ebe462f6813757a6c8cedfa00112ef13"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        260,
+        64,
+        1001,
+        1159
+      ],
+      "transparentPixels": 953418,
+      "nativeCopyIdentical": true
+    }
+  ],
+  "rejectedAttempts": []
+}

@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-stalker-lost-tribe-ultimate-2021",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-stalker-lost-tribe-ultimate-2021",
+      "label": "Stalker Lost Tribe · NECA Ultimate2021",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-stalker-lost-tribe-ultimate-2021.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-stalker-lost-tribe-ultimate-2021-A-native.png",
+      "sha256": "40d5be98b11fc5d74d3610b556dda3d48df4766fec31ccdd0d3d655766ade31b",
+      "bytes": 1699315,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-stalker-lost-tribe-ultimate-2021.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg",
+      "referenceSourceSha256": "11b99cda579a3671c03bb1a14ff7ab732a6c6bee35de2bdf1cc6961ca73fc3e6",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg",
+          "sha256": "11b99cda579a3671c03bb1a14ff7ab732a6c6bee35de2bdf1cc6961ca73fc3e6"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2020/06/514241.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2020/06/predator-2-7-scale-action-figure-ultimate-stalker-predator/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the rigid mask worn by the MAIN FIGURE at LEFT of the white catalogue photo. The separate upper-right head is BARE and excluded. Keep the main mask's real downward-pitched near-frontal camera and visibly foreshortened source proportions, NOT a tall straight frontal reinterpretation. Preserve the full compact oval grey/silver crown with its true nested curved arc inset relief, actual weathered olive/bronze patches and dark grooves, the heavy brow over two narrow black lenses, real cheek/side housings with their visible vertical slits, and the broad short rounded bronze/gold-grey central snout plate. Keep all source sculpted rim/seam shapes and the actual mixed grey/bronze paint. Remove any dark organic cap behind the last metal crown edge with the living head. Do not confuse this Predator2Stalker with the already different NECA Kenner Stalker design, Boar or Snake. No added tusks, horns, glyphs, lights or circular grille.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+      "promptSha256": "860027701f7d24f059c65f0b53a135a24443208677a9bd87fca2ffe15549eeba",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          236,
+          71,
+          1015,
+          1205
+        ],
+        "marginsPixels16": [
+          236,
+          71,
+          239,
+          49
+        ],
+        "minimumMarginFraction": 0.03907,
+        "transparentPixels": 897741,
+        "opaquePixels": 526
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Only the real rigid shell retained, wearer and body removed.",
+          "Source camera, proportions, colour accents and visible sculpture kept; fine source details remain unvalidated."
+        ]
+      },
+      "limitations": [
+        "Catalogue1040x1300shows the full rigid mask with downward source pitch at modest mask-area resolution; exact projection/microdetail unmeasured.",
+        "Predator2Stalker Lost Tribe character differs from Kenner Stalker already69; this is the Ultimate January2021edition, no canonical geometry certification.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-stalker-lost-tribe-ultimate-2021-A-native.png",
+          "sha256": "40d5be98b11fc5d74d3610b556dda3d48df4766fec31ccdd0d3d655766ade31b",
+          "bytes": 1699315,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the rigid mask worn by the MAIN FIGURE at LEFT of the white catalogue photo. The separate upper-right head is BARE and excluded. Keep the main mask's real downward-pitched near-frontal camera and visibly foreshortened source proportions, NOT a tall straight frontal reinterpretation. Preserve the full compact oval grey/silver crown with its true nested curved arc inset relief, actual weathered olive/bronze patches and dark grooves, the heavy brow over two narrow black lenses, real cheek/side housings with their visible vertical slits, and the broad short rounded bronze/gold-grey central snout plate. Keep all source sculpted rim/seam shapes and the actual mixed grey/bronze paint. Remove any dark organic cap behind the last metal crown edge with the living head. Do not confuse this Predator2Stalker with the already different NECA Kenner Stalker design, Boar or Snake. No added tusks, horns, glyphs, lights or circular grille.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+          "promptSha256": "860027701f7d24f059c65f0b53a135a24443208677a9bd87fca2ffe15549eeba",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "stalker-lost-tribe",
+      "representationOf": "NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition",
+      "newCanonicalGeometry": false
+    },
+    {
+      "id": "neca-stalker-lost-tribe-ultimate-2021",
+      "label": "Stalker Lost Tribe · NECA Ultimate2021",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-stalker-lost-tribe-ultimate-2021.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-stalker-lost-tribe-ultimate-2021-B-native.png",
+      "sha256": "29f3626f529138568147c4a247888b7ac47963176641497bdfab8ac9f6254391",
+      "bytes": 1763725,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-stalker-lost-tribe-ultimate-2021.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg",
+      "referenceSourceSha256": "11b99cda579a3671c03bb1a14ff7ab732a6c6bee35de2bdf1cc6961ca73fc3e6",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg",
+          "sha256": "11b99cda579a3671c03bb1a14ff7ab732a6c6bee35de2bdf1cc6961ca73fc3e6"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2020/06/514241.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2020/06/predator-2-7-scale-action-figure-ultimate-stalker-predator/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-stalker-lost-tribe-ultimate-2021.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Actual catalogue down-pitched near-front source camera from A, not straight frontalization. Keep all nested forehead arc/oval reliefs and actual dark central worn motif, full grey/olive-bronze patina, narrow solid black lenses, three actual elongated dark cheek slits on each visible side, broad short rounded central bronze snout. No organic cranium behind last rim, no invented runes/tusks/extra grille or new vents. Preserve source shape/asymmetry and weathering, only restage PBR light/material.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+      "promptSha256": "d59641ac6474a7f902e83b159963b6da84fa95a8a8ae827ae9dc4f23fcb1b4ba",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          241,
+          64,
+          1013,
+          1206
+        ],
+        "marginsPixels16": [
+          241,
+          64,
+          241,
+          48
+        ],
+        "minimumMarginFraction": 0.03828,
+        "transparentPixels": 904280,
+        "opaquePixels": 716
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Source A camera, contour and photographed edition palette retained; only neutral PBR light/material restaging.",
+          "Visible feature arrangement retained at macro inspection; no wearer restored or hidden geometry invented."
+        ]
+      },
+      "limitations": [
+        "Catalogue1040x1300shows the full rigid mask with downward source pitch at modest mask-area resolution; exact projection/microdetail unmeasured.",
+        "Predator2Stalker Lost Tribe character differs from Kenner Stalker already69; this is the Ultimate January2021edition, no canonical geometry certification.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-stalker-lost-tribe-ultimate-2021-B-native.png",
+          "sha256": "29f3626f529138568147c4a247888b7ac47963176641497bdfab8ac9f6254391",
+          "bytes": 1763725,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Actual catalogue down-pitched near-front source camera from A, not straight frontalization. Keep all nested forehead arc/oval reliefs and actual dark central worn motif, full grey/olive-bronze patina, narrow solid black lenses, three actual elongated dark cheek slits on each visible side, broad short rounded central bronze snout. No organic cranium behind last rim, no invented runes/tusks/extra grille or new vents. Preserve source shape/asymmetry and weathering, only restage PBR light/material.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+          "promptSha256": "d59641ac6474a7f902e83b159963b6da84fa95a8a8ae827ae9dc4f23fcb1b4ba",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-stalker-lost-tribe-ultimate-2021.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/lostavp-attachment-70159-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "stalker-lost-tribe",
+      "representationOf": "NECA Ultimate Stalker Lost Tribe, item51424, publisher June2020, release January2021; licensed Predator2character toy edition",
+      "newCanonicalGeometry": false,
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-stalker-lost-tribe-ultimate-2021.png",
+      "sourceASha256": "40d5be98b11fc5d74d3610b556dda3d48df4766fec31ccdd0d3d655766ade31b"
+    }
+  ],
+  "asOfUtc": "2026-11-13T15:26:57.516478+00:00"
+}

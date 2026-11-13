@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-big-red-series-7-2012",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-big-red-series-7-2012",
+      "label": "Big Red · NECA Series7 2012",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-big-red-series-7-2012.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-big-red-series-7-2012-A-native.png",
+      "sha256": "3e4e2a9a50df56814efc12134d8c550144153eefc6fcd89c0506c133d1db46d4",
+      "bytes": 1179945,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-big-red-series-7-2012.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+      "referenceSourceSha256": "79d8f89f429dc3867794a6050e9da5b381ba0e9ff1bdd95c2933cbce0fd8eb60",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+          "sha256": "79d8f89f429dc3867794a6050e9da5b381ba0e9ff1bdd95c2933cbce0fd8eb60"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/bigred-attachment-37957-photo.jpg",
+          "sha256": "415be491f38b5ea1eec414d352cdccfb00f73d80b6501ba864463bf8eb362ad9"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2012/11/Big_Red_01.jpg",
+        "https://necaonline.com/wp-content/uploads/2012/11/Big_Red_02.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2012/11/closer-look-predators-series-7-big-red-predator-action-figure/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/bigred-attachment-37957-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the red biomask worn by the figure in reference1. Keep its actual slight source three-quarter/downward tilt, broad smooth red rounded crown with raised concentric curved black-trimmed forehead seams, small visible yellow/dark forehead emitter detail at its photographed position, swept narrow dark lenses, short recessed cheek/temple mechanisms, full rounded long red snout plate and its real thin black seam lines. Preserve the red painted shell, dark outline marks, scuffs and small bright yellow forehead detail exactly as visible. The other image confirms the shell side, not a new orientation. Remove all dreadlocks and samurai swords/red body armor. The red body armor is not part of the biomask. Do not add a samurai crest, new horn, broad glyphs, extra lights or a fully invented yellow symbol; use only the visible small device.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+      "promptSha256": "00414a6d7cafedfd556054f58a156816f1d0eb2fc3fd6093acef2234bc9b1fcd",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          262,
+          70,
+          978,
+          1155
+        ],
+        "marginsPixels16": [
+          262,
+          70,
+          276,
+          99
+        ],
+        "minimumMarginFraction": 0.05582,
+        "transparentPixels": 994999,
+        "opaquePixels": 502
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Only the real rigid shell retained, wearer and body removed.",
+          "Source camera, proportions, colour accents and visible sculpture kept; fine source details remain unvalidated."
+        ]
+      },
+      "limitations": [
+        "Official photos700x469and469x700show complete rigid mask at modest mask-area resolution; exact small forehead detail/micro-wear not certified.",
+        "Source has mild dramatic studio illumination; preserve documented red/black/yellow paint rather than treating highlights as new markings.",
+        "Fan-film-character licensed toy edition; no claim of an official film-prop geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-big-red-series-7-2012-A-native.png",
+          "sha256": "3e4e2a9a50df56814efc12134d8c550144153eefc6fcd89c0506c133d1db46d4",
+          "bytes": 1179945,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the red biomask worn by the figure in reference1. Keep its actual slight source three-quarter/downward tilt, broad smooth red rounded crown with raised concentric curved black-trimmed forehead seams, small visible yellow/dark forehead emitter detail at its photographed position, swept narrow dark lenses, short recessed cheek/temple mechanisms, full rounded long red snout plate and its real thin black seam lines. Preserve the red painted shell, dark outline marks, scuffs and small bright yellow forehead detail exactly as visible. The other image confirms the shell side, not a new orientation. Remove all dreadlocks and samurai swords/red body armor. The red body armor is not part of the biomask. Do not add a samurai crest, new horn, broad glyphs, extra lights or a fully invented yellow symbol; use only the visible small device.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+          "promptSha256": "00414a6d7cafedfd556054f58a156816f1d0eb2fc3fd6093acef2234bc9b1fcd",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/bigred-attachment-37957-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "big-red",
+      "representationOf": "NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character",
+      "newCanonicalGeometry": false
+    },
+    {
+      "id": "neca-big-red-series-7-2012",
+      "label": "Big Red · NECA Series7 2012",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-big-red-series-7-2012.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-big-red-series-7-2012-B-native.png",
+      "sha256": "9207238f2087a8543869956296d9c000b9f613bf3f27bd71c25cfcb7958a2620",
+      "bytes": 1313831,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-big-red-series-7-2012.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+      "referenceSourceSha256": "79d8f89f429dc3867794a6050e9da5b381ba0e9ff1bdd95c2933cbce0fd8eb60",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+          "sha256": "79d8f89f429dc3867794a6050e9da5b381ba0e9ff1bdd95c2933cbce0fd8eb60"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/bigred-attachment-37957-photo.jpg",
+          "sha256": "415be491f38b5ea1eec414d352cdccfb00f73d80b6501ba864463bf8eb362ad9"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2012/11/Big_Red_01.jpg",
+        "https://necaonline.com/wp-content/uploads/2012/11/Big_Red_02.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2012/11/closer-look-predators-series-7-big-red-predator-action-figure/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-big-red-series-7-2012.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/bigred-attachment-37957-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Actual slight three-quarter/down tilt of A; red rounded crown and long red snout, black curved crown/seam lines, the small paired round yellow forehead pieces at the exact existing position and size, tiny black curved marking around them, dark or grey reflective narrow lenses and actual temple circles. Keep the two yellow circles and black mark arrangement unchanged, no new symbol/letters/paint.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+      "promptSha256": "43af355f9ef3031f282aa408846fba06365b70067fa7663086f971843ff94ed2",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          263,
+          64,
+          972,
+          1158
+        ],
+        "marginsPixels16": [
+          263,
+          64,
+          282,
+          96
+        ],
+        "minimumMarginFraction": 0.05104,
+        "transparentPixels": 991168,
+        "opaquePixels": 848
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Source A camera, contour and photographed edition palette retained; only neutral PBR light/material restaging.",
+          "Visible feature arrangement retained at macro inspection; no wearer restored or hidden geometry invented."
+        ]
+      },
+      "limitations": [
+        "Official photos700x469and469x700show complete rigid mask at modest mask-area resolution; exact small forehead detail/micro-wear not certified.",
+        "Source has mild dramatic studio illumination; preserve documented red/black/yellow paint rather than treating highlights as new markings.",
+        "Fan-film-character licensed toy edition; no claim of an official film-prop geometry.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-big-red-series-7-2012-B-native.png",
+          "sha256": "9207238f2087a8543869956296d9c000b9f613bf3f27bd71c25cfcb7958a2620",
+          "bytes": 1313831,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: Actual slight three-quarter/down tilt of A; red rounded crown and long red snout, black curved crown/seam lines, the small paired round yellow forehead pieces at the exact existing position and size, tiny black curved marking around them, dark or grey reflective narrow lenses and actual temple circles. Keep the two yellow circles and black mark arrangement unchanged, no new symbol/letters/paint.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+          "promptSha256": "43af355f9ef3031f282aa408846fba06365b70067fa7663086f971843ff94ed2",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-big-red-series-7-2012.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-6-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/bigred-attachment-37957-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "big-red",
+      "representationOf": "NECA Big Red Series7 2012, licensed edition of Batman: Dead End fan-film2003 character",
+      "newCanonicalGeometry": false,
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-big-red-series-7-2012.png",
+      "sourceASha256": "3e4e2a9a50df56814efc12134d8c550144153eefc6fcd89c0506c133d1db46d4"
+    }
+  ],
+  "asOfUtc": "2026-11-13T14:50:59.161737+00:00"
+}

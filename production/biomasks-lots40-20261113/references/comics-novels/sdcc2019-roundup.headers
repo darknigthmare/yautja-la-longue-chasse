@@ -1,0 +1,38 @@
+HTTP/1.1 200 OK
+date: Fri, 13 Nov 2026 14:59:23 GMT
+server: envoy
+
+HTTP/2 200 
+date: Fri, 13 Nov 2026 14:59:24 GMT
+content-type: text/html; charset=utf-8
+cf-cache-status: DYNAMIC
+set-cookie: [redacted transient publisher cookie]
+set-cookie: [redacted transient publisher cookie]
+set-cookie: [redacted transient publisher cookie]
+set-cookie: [redacted transient publisher cookie]
+link: <https://cdn.shopify.com>; rel="preconnect", <https://cdn.shopify.com>; rel="preconnect"; crossorigin, <https://cdnjs.cloudflare.com>; rel="preconnect"; crossorigin, <https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js>; as="script"; rel="preload"; crossorigin; referrerpolicy="no-referrer"; integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==", <//store.necaonline.com/cdn/shop/t/232/assets/base.css?v=95147607049291226611794405716>; as="style"; rel="preload", <//store.necaonline.com/cdn/shop/t/232/assets/redirect-popup.css?v=37921424196717732271794405716>; as="style"; rel="preload", <https://store.necaonline.com/cdn/shopifycloud/portable-wallets/latest/accelerated-checkout-backwards-compat.css>; as="style"; rel="preload"; crossorigin, </.well-known/ucp>; rel="ucp"; version="2026-08-25"
+x-permitted-cross-domain-policies: none
+etag: W/"page_cache:12270654:BlogArticleDetailsController:28ba0992f7dcce9975fd87942c6e675d:62b1a0a3e6f38515e1ba729bee211379"
+nel: {"report_to":"cf-nel","success_fraction":0.01,"max_age":604800}
+shopify-complexity-score: 0
+shopify-complexity-score-v2: 288
+x-frame-options: DENY
+content-security-policy: block-all-mixed-content; frame-ancestors 'none'; upgrade-insecure-requests;
+strict-transport-security: max-age=7889238
+vary: Accept,accept-encoding
+cdn-cache-control: no-cache, no-store
+content-language: en-US
+accept-ch: Sec-CH-Viewport-Width
+powered-by: Shopify
+server-timing: processing;dur=293;desc="gc:13", db;dur=100, db_async;dur=33.419, render;dur=125, asn;desc="13335", edge;desc="ORD", country;desc="FR", knownbot, theme;desc="195550281909", pageType;desc="article", servedBy;desc="2hpd", requestID;desc="b9ccce9b-ea5b-41c5-9f81-36c85aa70999-1794581964", _y;desc="00000000-0000-0000-5000-000000000000", _s;desc="00000000-0000-0000-5000-000000000000", _cmp;desc="3.ampS_US_t_t_6p7VnhbMSgq9897duXvI*Q", _ye;desc="1826139564", _se;desc="1794583764", compressionLevel;desc="5", compressionTime;dur=9.344
+x-dc: gcp-us-central1,gcp-us-central1,gcp-us-central1
+x-xss-protection: 1; mode=block
+alt-svc: h3=":443"; ma=86400
+server: envoy
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=2NDk%2BrAAcO7TEfagCYCFR%2BsWUfhYQCRoAvNl2dIN9kHCYgihZspkCty5XXgXidlMJMT1AEd5w0SY3nN75iY5yf8tZfxNtkOeMBLVqJOGh37iQtYrXqGKN1CySYKNvdt%2FUL9FSzY2"}]}
+x-content-type-options: nosniff
+x-download-options: noopen
+x-request-id: b9ccce9b-ea5b-41c5-9f81-36c85aa70999-1794581964
+cf-ray: a59ea3dc6972f60b-ORD
+x-envoy-upstream-service-time: 397
+

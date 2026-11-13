@@ -1,0 +1,240 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "negativeChecks": [
+    {
+      "name": "C alpha rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "pixelsCompared": 1573044,
+      "seconds": 1.213,
+      "diagnostic": [
+        "Independent C formula/monochrome/alpha check failed"
+      ]
+    },
+    {
+      "name": "C dimensions rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "pixelsCompared": 0,
+      "seconds": 0.339,
+      "diagnostic": [
+        "C changed native dimensions",
+        "ValueError: Cannot compare differing native frames"
+      ]
+    },
+    {
+      "name": "C nonmonochrome rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "pixelsCompared": 1573044,
+      "seconds": 1.252,
+      "diagnostic": [
+        "Independent C formula/monochrome/alpha check failed"
+      ]
+    },
+    {
+      "name": "C wrong-gray rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "pixelsCompared": 1573044,
+      "seconds": 1.273,
+      "diagnostic": [
+        "Independent C formula/monochrome/alpha check failed"
+      ]
+    },
+    {
+      "name": "Omitted non-XLSX/non-native historical source rejected despite unchanged count invariants",
+      "passed": true,
+      "diagnostic": "Frozen870 historical source-protection snapshot changed",
+      "seconds": 0.0
+    },
+    {
+      "name": "Nested target sourceStatus cannot claim runtime approval",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: runtimeIntegrated",
+      "seconds": 0.656
+    },
+    {
+      "name": "Strict alias cannot be promoted to a new accepted triplet",
+      "passed": true,
+      "diagnostic": "Blocked, duplicate or alias candidate cannot produce a new A/B/C pair",
+      "seconds": 0.723
+    },
+    {
+      "name": "Altered source B rejected",
+      "passed": true,
+      "diagnostic": "New ImageGen bytes mismatched or duplicated",
+      "seconds": 0.758
+    },
+    {
+      "name": "C linked to another real B identity rejected",
+      "passed": true,
+      "diagnostic": "C source lineage or inherited qualification changed",
+      "seconds": 4.544
+    },
+    {
+      "name": "Duplicate C identity cannot create an unjustified alias",
+      "passed": true,
+      "diagnostic": "Duplicate or unregistered C derivative",
+      "seconds": 4.592
+    },
+    {
+      "name": "False C canonCertified rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: canonCertified",
+      "seconds": 4.64
+    },
+    {
+      "name": "False C humanArtValidated rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: humanArtValidated",
+      "seconds": 4.504
+    },
+    {
+      "name": "False C runtimeIntegrated rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: runtimeIntegrated",
+      "seconds": 4.219
+    },
+    {
+      "name": "Technical C cannot be relabeled as a new ImageGen generation",
+      "passed": true,
+      "diagnostic": "C derivation verification flags disagree",
+      "seconds": 4.018
+    },
+    {
+      "name": "Erased inherited reservation rejected: neca-ambush-convention-exclusive-2015",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "activeReservationCombination": [
+        "provisionalReviewOnly"
+      ],
+      "matchingSourceRepresentations": 42,
+      "pixelsCompared": 1573044,
+      "seconds": 0.318,
+      "diagnostic": [
+        "Inherited candidate qualification changed"
+      ]
+    },
+    {
+      "name": "Erased inherited reservation rejected: phg-launch-portrait-04",
+      "passed": true,
+      "singleRecord": "phg-launch-portrait-04",
+      "activeReservationCombination": [
+        "provisionalReviewOnly",
+        "canonicalIdentityUnmapped"
+      ],
+      "matchingSourceRepresentations": 3,
+      "pixelsCompared": 1573088,
+      "seconds": 0.313,
+      "diagnostic": [
+        "Inherited candidate qualification changed"
+      ]
+    },
+    {
+      "name": "Erased inherited reservation rejected: phg-pirate",
+      "passed": true,
+      "singleRecord": "phg-pirate",
+      "activeReservationCombination": [
+        "provisionalReviewOnly",
+        "geometryDeviationOpen"
+      ],
+      "matchingSourceRepresentations": 1,
+      "pixelsCompared": 1573088,
+      "seconds": 0.311,
+      "diagnostic": [
+        "Inherited candidate qualification changed"
+      ]
+    },
+    {
+      "name": "Independent planned A provenance mismatch rejected",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "pixelsCompared": 1573044
+    },
+    {
+      "name": "Independent A receipt lineage mismatch rejected",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "pixelsCompared": 1573044
+    },
+    {
+      "name": "Independent B receipt lineage mismatch rejected",
+      "passed": true,
+      "singleRecord": "neca-ambush-convention-exclusive-2015",
+      "pixelsCompared": 1573044
+    },
+    {
+      "name": "Contradictory new A/B private provenance rejected",
+      "passed": true,
+      "diagnostic": "Receipt provenance differs: nativeSourcePath",
+      "seconds": 0.72
+    },
+    {
+      "name": "Unregistered public image rejected",
+      "passed": true,
+      "diagnostic": "Unregistered public assets; rejected attempts belong outside final public namespace",
+      "seconds": 6.531
+    },
+    {
+      "name": "Read-only wrapper rejects --write",
+      "passed": true
+    },
+    {
+      "name": "Read-only wrapper rejects --prepare-inventory",
+      "passed": true
+    }
+  ],
+  "scope": "One independent relocated selection; read-only structural baseline and single-record pixel/status negatives; no art/canon/runtime approval.",
+  "fullIndependentProductionFormulaPassExecuted": false,
+  "selection": {
+    "passed": true,
+    "literalFiles": 1424,
+    "pinnedFiles": 1417,
+    "pinnedBytes": 907334924,
+    "selectedBytes": 911087958,
+    "scope": "Sparse file selection and byte pins; not browser, human art, runtime or canon approval"
+  },
+  "manifestSha256": "91d3fc7238d76bb3060619a28778cc7af21dd5a93edd59a9eb576c72d63ab399",
+  "harnessSha256": "29c87db634acb871a8068781c4a2b3ff17a614dc1023bf7002a530f1d3e31b65",
+  "relocatedRoot": "/tmp/mask-lots40-20261113/portable-neutral-43ztezpx",
+  "independentCopies": 1424,
+  "hardlinksCreated": 0,
+  "portableStructuralBaselinePassed": true,
+  "reservationNegativeRepresentatives": [
+    {
+      "identity": "neca-ambush-convention-exclusive-2015",
+      "activeReservationCombination": [
+        "provisionalReviewOnly"
+      ],
+      "matchingSourceRepresentations": 42
+    },
+    {
+      "identity": "phg-launch-portrait-04",
+      "activeReservationCombination": [
+        "provisionalReviewOnly",
+        "canonicalIdentityUnmapped"
+      ],
+      "matchingSourceRepresentations": 3
+    },
+    {
+      "identity": "phg-pirate",
+      "activeReservationCombination": [
+        "provisionalReviewOnly",
+        "geometryDeviationOpen"
+      ],
+      "matchingSourceRepresentations": 1
+    }
+  ],
+  "privateNativeOriginsMasked": 92,
+  "privateReadsAttempted": 0,
+  "readOnlyWriteAttempts": 0,
+  "originalsAndFixturesBytePreserved": true,
+  "independentSingleRecordNegativeRuns": 10,
+  "independentNegativePixelsCompared": 14157484,
+  "timings": {
+    "portableStructuralBaselineSeconds": 6.916,
+    "totalSeconds": 52.867
+  }
+}

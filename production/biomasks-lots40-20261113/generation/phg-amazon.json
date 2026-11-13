@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG group-render geometry with explicit secondary name corroboration; native A/B source-view studies, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-amazon",
+      "name": "Amazon (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-amazon-A-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-amazon.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-amazon.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png"
+      ],
+      "sourceClass": "official-publisher-CDN-group-render",
+      "sourceEdition": "Predator:HuntingGrounds HuntingParty2 group render, this source camera only",
+      "canonicalInventoryId": "mk-28-amazon",
+      "identityQualification": "Official publisher-CDN geometry/render; class identity corroborated by community FairYautja data and symbol, not newly publisher-caption-certified.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Amazon",
+        "dataId": "CD_Predator_Amazon",
+        "iconPath": "/icons/characters/predator/amazon.png",
+        "qualification": "Community data explicitly maps class name to symbol; symbolic shape corroborates the respective group-render mask. Fresh publisher individual caption not found.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "From the attached official PHG HuntingParty2 render, isolate ONLY the specified rigid mask. Preserve its actual source camera, yaw/pitch/roll, projected proportions, visible silhouette, panel boundaries, surface materials and apparent palette. Do not invent a centered straight front or reconstruct hidden side/back/interior. It is one source-view study, not newly certified franchise geometry. Use ImageGen extraction with genuine transparent RGBA; do not keep wearer tissue, hair/dreadlocks, body/clothes, scene or another character. Fine details are limited by the small mask in the native render: keep existing coarse relief and avoid new runes, symbols, holes, vents, fittings or ornament. Preserve opaque dark inserts versus open source holes as actually visible. Exactly one complete isolated mask, center it with8-12percent transparent clear margin around the whole visible silhouette, no clipping, no floor, shadow plane, halo, text, UI, alternate angles or duplicates.\n\nSUBJECT AMAZON, the animal-skull mask worn by the LEFT figure only. Ignore the right figure completely. Preserve the same sharply inclined three-quarter source view: skull crown is high toward image-left and the long nasal/front tip descends toward image-right; do not square it into a symmetrical frontal face. Preserve the aged bone/beige feline skull forehead, prominent irregular bony ridge/crown outline, the same dark eye-socket inserts/apertures and paired nasal openings, the small short bone teeth and the TWO LONG CURVED CANINE FANGS that are integrated rigid skull teeth. These bone teeth are part of the mask and MUST remain complete; do not cut them away as biological Yautja mandibles. Retain the narrow dark diagonal band across the outside of the skull crown and the small physical dark temple fitting with its existing three red lens dots on image-left as visible source mask fittings; remove emitted red halo/glow, not the actual small lenses. Retain only source-visible dark structural mask rim/bracing directly attached to the skull if clearly present. Exclude all biological lower face/skin/mandibles under or behind the skull, hanging hair/dreadlocks, neck, necklaces and chest clothing. Do not add a new lower jaw or a closed breathing helmet. Preserve worn porous bone and subtle gray/black attachment material as in the published render; never turn bone into silver/chrome or a different Feral skull shape. This A version follows the source game rendering and local light; no new art direction or color scheme.",
+      "promptSha256": "51e9b1ecbf648777c231af5ff6f75b24f8f472045f36bd355806acb8ec400a83",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Feline/jaguar skull-shaped hard faceplate, dark eye apertures, small paired nasal opening, long canine fangs and worn bone palette. Three-quarter source camera and band/edge treatment must remain as photographed; do not turn it into Feral or another skull helmet.",
+        "exclusions": "Biological lower face, wearer, dreadlocks, body/gear and red targeting glow are excluded; any separate forehead strap ownership must be qualified.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            35,
+            39,
+            1190,
+            1311
+          ],
+          "8": [
+            120,
+            54,
+            1052,
+            1279
+          ],
+          "16": [
+            120,
+            54,
+            1052,
+            1279
+          ],
+          "128": [
+            121,
+            55,
+            1051,
+            1278
+          ],
+          "240": [
+            122,
+            55,
+            1050,
+            1277
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          120,
+          54,
+          148,
+          32
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.7608163265306123
+      },
+      "limitations": [
+        "Single published group-render view; camera-specific candidate only. Hidden sides/back/interior,exact UV and intrinsic albedo unknown.",
+        "Class name is secondary-corroborated via pinned community data/icon; official group art is shape authority,flat icon is not depth or material proof.",
+        "Small mask region limits exact fine relief; do not certify newly invented microdetail or franchise1:1.",
+        "All wearer anatomy,hair and separate non-shell accessories remain excluded; any unclear mask/wearer boundary is a source limitation.",
+        "A is new ImageGen source-view isolation,not a source-pixel cutout; B is a separate rendering adaptation,not certified original game pixels or mesh.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-amazon-A-native.png",
+          "sha256": "f5a74e9b8539c378e311b7864929a071aec6a617bfc7d0c651ea53f3cea842a8",
+          "prompt": "From the attached official PHG HuntingParty2 render, isolate ONLY the specified rigid mask. Preserve its actual source camera, yaw/pitch/roll, projected proportions, visible silhouette, panel boundaries, surface materials and apparent palette. Do not invent a centered straight front or reconstruct hidden side/back/interior. It is one source-view study, not newly certified franchise geometry. Use ImageGen extraction with genuine transparent RGBA; do not keep wearer tissue, hair/dreadlocks, body/clothes, scene or another character. Fine details are limited by the small mask in the native render: keep existing coarse relief and avoid new runes, symbols, holes, vents, fittings or ornament. Preserve opaque dark inserts versus open source holes as actually visible. Exactly one complete isolated mask, center it with8-12percent transparent clear margin around the whole visible silhouette, no clipping, no floor, shadow plane, halo, text, UI, alternate angles or duplicates.\n\nSUBJECT AMAZON, the animal-skull mask worn by the LEFT figure only. Ignore the right figure completely. Preserve the same sharply inclined three-quarter source view: skull crown is high toward image-left and the long nasal/front tip descends toward image-right; do not square it into a symmetrical frontal face. Preserve the aged bone/beige feline skull forehead, prominent irregular bony ridge/crown outline, the same dark eye-socket inserts/apertures and paired nasal openings, the small short bone teeth and the TWO LONG CURVED CANINE FANGS that are integrated rigid skull teeth. These bone teeth are part of the mask and MUST remain complete; do not cut them away as biological Yautja mandibles. Retain the narrow dark diagonal band across the outside of the skull crown and the small physical dark temple fitting with its existing three red lens dots on image-left as visible source mask fittings; remove emitted red halo/glow, not the actual small lenses. Retain only source-visible dark structural mask rim/bracing directly attached to the skull if clearly present. Exclude all biological lower face/skin/mandibles under or behind the skull, hanging hair/dreadlocks, neck, necklaces and chest clothing. Do not add a new lower jaw or a closed breathing helmet. Preserve worn porous bone and subtle gray/black attachment material as in the published render; never turn bone into silver/chrome or a different Feral skull shape. This A version follows the source game rendering and local light; no new art direction or color scheme.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "f5a74e9b8539c378e311b7864929a071aec6a617bfc7d0c651ea53f3cea842a8",
+      "bytes": 1576875,
+      "nativeDimensions": [
+        1200,
+        1311
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+          "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        120,
+        54,
+        1052,
+        1279
+      ],
+      "transparentPixels": 935447,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+      "referenceSourceSha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43"
+    },
+    {
+      "id": "phg-amazon",
+      "name": "Amazon (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-amazon-B-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-amazon.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-amazon.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png"
+      ],
+      "sourceClass": "official-publisher-CDN-group-render",
+      "sourceEdition": "Predator:HuntingGrounds HuntingParty2 group render, this source camera only",
+      "canonicalInventoryId": "mk-28-amazon",
+      "identityQualification": "Official publisher-CDN geometry/render; class identity corroborated by community FairYautja data and symbol, not newly publisher-caption-certified.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Amazon",
+        "dataId": "CD_Predator_Amazon",
+        "iconPath": "/icons/characters/predator/amazon.png",
+        "qualification": "Community data explicitly maps class name to symbol; symbolic shape corroborates the respective group-render mask. Fresh publisher individual caption not found.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "Make versionB of the FIRST isolated Amazon PHG mask. The SECOND official HuntingParty2 render shows its original source worn by the LEFT figure; ignore the right figure. Lock geometry,camera,angle,projected proportions,outer contour,eye/nasal openings,the integrated TWO LONG BONE CANINES and small teeth,the dark diagonal outer band and small existing temple fitting with three red lens dots to the FIRST image, cross-checking actual source view. Preserve this inclined three-quarter view exactly; no symmetrical front,new profile or invented hidden helmet. Change ONLY material/light presentation to a consistent clean PHG asset: the same weathered warm beige/bone and dark brown pores, controlled rough bone texture, gray/black band and physical fitting, restrained red lens dots with no emitted halo. Bone remains BONE, never metal/chrome. Neutral soft key from image-upper-left/front and gentle fill, restrained high-frequency grain, clear relief without changing design. Keep source opaque dark socket inserts versus source open holes; do not add eyes behind them or close their shapes. No new glyphs,vents,ornament,teeth,new lower jaw,closed helmet or hidden rear surface. Remove any remaining wearer skin,biological mouth/mandibles,hair/dreadlocks,neck/body,clothing,scene or second figure. Genuine transparent RGBA. Important framing: whole solid mask including BOTH canine tips fully visible and centered with at least10percent fully transparent clear space above crown and below both fang tips,also clear side margins. Fit the complete largest mask axis at only78-80percent of canvas; do not bring the tips close to the bottom edge. No floor/shadow plane,background rectangle,glow,UI,text or alternate views. Exactly one mask with geometry/camera/colors preserved; only material/light standardization.",
+      "promptSha256": "e411993bb3be0720d73a961e59960a6b75d75ee06f7dc649c097841a1f645598",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-amazon.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Feline/jaguar skull-shaped hard faceplate, dark eye apertures, small paired nasal opening, long canine fangs and worn bone palette. Three-quarter source camera and band/edge treatment must remain as photographed; do not turn it into Feral or another skull helmet.",
+        "exclusions": "Biological lower face, wearer, dreadlocks, body/gear and red targeting glow are excluded; any separate forehead strap ownership must be qualified.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            25,
+            32,
+            1186,
+            1267
+          ],
+          "8": [
+            133,
+            74,
+            1017,
+            1241
+          ],
+          "16": [
+            133,
+            75,
+            1016,
+            1240
+          ],
+          "128": [
+            134,
+            76,
+            1016,
+            1240
+          ],
+          "240": [
+            135,
+            76,
+            1015,
+            1239
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          133,
+          75,
+          184,
+          71
+        ],
+        "maximumBorderAlpha": 0,
+        "visibleWidthHeightRatio": 0.7579399141630901
+      },
+      "limitations": [
+        "Single published group-render view; camera-specific candidate only. Hidden sides/back/interior,exact UV and intrinsic albedo unknown.",
+        "Class name is secondary-corroborated via pinned community data/icon; official group art is shape authority,flat icon is not depth or material proof.",
+        "Small mask region limits exact fine relief; do not certify newly invented microdetail or franchise1:1.",
+        "All wearer anatomy,hair and separate non-shell accessories remain excluded; any unclear mask/wearer boundary is a source limitation.",
+        "A is new ImageGen source-view isolation,not a source-pixel cutout; B is a separate rendering adaptation,not certified original game pixels or mesh.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup."
+      ],
+      "selectionStatus": "source-view-candidate-review-required",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-amazon-B-native.png",
+          "sha256": "19e9c60d46e330940664033f43b8974ec77467aedcf28bc899b967ec0fbe7455",
+          "prompt": "Make versionB of the FIRST isolated Amazon PHG mask. The SECOND official HuntingParty2 render shows its original source worn by the LEFT figure; ignore the right figure. Lock geometry,camera,angle,projected proportions,outer contour,eye/nasal openings,the integrated TWO LONG BONE CANINES and small teeth,the dark diagonal outer band and small existing temple fitting with three red lens dots to the FIRST image, cross-checking actual source view. Preserve this inclined three-quarter view exactly; no symmetrical front,new profile or invented hidden helmet. Change ONLY material/light presentation to a consistent clean PHG asset: the same weathered warm beige/bone and dark brown pores, controlled rough bone texture, gray/black band and physical fitting, restrained red lens dots with no emitted halo. Bone remains BONE, never metal/chrome. Neutral soft key from image-upper-left/front and gentle fill, restrained high-frequency grain, clear relief without changing design. Keep source opaque dark socket inserts versus source open holes; do not add eyes behind them or close their shapes. No new glyphs,vents,ornament,teeth,new lower jaw,closed helmet or hidden rear surface. Remove any remaining wearer skin,biological mouth/mandibles,hair/dreadlocks,neck/body,clothing,scene or second figure. Genuine transparent RGBA. Important framing: whole solid mask including BOTH canine tips fully visible and centered with at least10percent fully transparent clear space above crown and below both fang tips,also clear side margins. Fit the complete largest mask axis at only78-80percent of canvas; do not bring the tips close to the bottom edge. No floor/shadow plane,background rectangle,glow,UI,text or alternate views. Exactly one mask with geometry/camera/colors preserved; only material/light standardization.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-amazon.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-amazon.png",
+      "sourceASha256": "f5a74e9b8539c378e311b7864929a071aec6a617bfc7d0c651ea53f3cea842a8",
+      "sha256": "19e9c60d46e330940664033f43b8974ec77467aedcf28bc899b967ec0fbe7455",
+      "bytes": 1502536,
+      "nativeDimensions": [
+        1200,
+        1311
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+          "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        133,
+        75,
+        1016,
+        1240
+      ],
+      "transparentPixels": 996156,
+      "nativeCopyIdentical": true
+    }
+  ],
+  "rejectedAttempts": []
+}

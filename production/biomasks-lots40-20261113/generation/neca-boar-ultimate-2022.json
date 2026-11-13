@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-boar-ultimate-2022",
+  "tool": "image_gen.imagegen",
+  "scope": "New isolated source-view A of identified photographed edition and distinct PHG-rendering B. No automatic canonical/human/runtime admission.",
+  "entries": [
+    {
+      "id": "neca-boar-ultimate-2022",
+      "label": "Boar · NECA Ultimate2022",
+      "version": "A",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/neca-boar-ultimate-2022.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-A-attempt2-native.png",
+      "sha256": "2ed43fbe42e76543e32181ddc0ef12884dfed3b56b7e8f9e33d89089193c1aa2",
+      "bytes": 1925231,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-boar-ultimate-2022.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Boar2022, Predator2licensed Lost Tribe toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+      "referenceSourceSha256": "035c62f24ce2f3da19a642d122e59fc6eaf271bcf8af3ae9a88a401c3f2e0c6f",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+          "sha256": "035c62f24ce2f3da19a642d122e59fc6eaf271bcf8af3ae9a88a401c3f2e0c6f"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-0-photo.jpg",
+          "sha256": "ff63f7618034a0e5f73976e4a312c26bd9a5a866b68524bb7899181d6009f686"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2022/05/Boar-scaled.jpg",
+        "https://necaonline.com/wp-content/uploads/2022/05/Boar5-scaled.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2022/05/predator-2-7-scale-action-figure-ultimate-boar-predator/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+        "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-A-native.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-0-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Correct ONLY the isolated Boar Ultimate2022mask extraction boundary. Reference1 is the actual official white catalogue photo, reference2 is the prior isolated A, reference3 is an official close source scene corroborating the same shell. The prior A mistakenly kept the SMALL DARK DENTATED CRANIAL CAP BEHIND/ABOVE THE LAST CONTINUOUS SILVER METAL RIM. That topmost dark cap with two pointed/knobbly organic peaks belongs to the living head, not the mask. It is also related to the exposed biological crown of the separate bare head in reference1. REMOVE ONLY THAT WEARER CAP so that the mask silhouette terminates at the true continuous hard silver-grey upper rim directly beneath it. No dark jagged biological peaks above the rim.\n\nKeep ALL actual rigid mask sculpture from priorA: the tall rounded metal forehead and every nested raised curved/oval arc, actual fine metal edge notches/relief, heavy brow, two narrow solid dark eye lenses, real curled cheek plates with their visible slots, and the broad rounded central vertical silver snout plate. Do not smooth or erase the decorated metal, invent a new smooth dome, truncate the real upper metal arc, add tusks/holes/horns or change the source camera/proportions. Only correct the small incorrectly retained organic cap. Keep the near-front catalogue camera and slight downward tilt, silver/grey patinated toy paint and subdued bronze hints, restrained rough metal relief. Do not copy orange scene illumination as paint.\n\nNo living head/skin/eyes/mouth, dreadlocks, collar/body/armor/cannon, catalogue accessories or background. Preserve real lens material and real dark recesses, not empty holes. One complete rigid metal mask, genuine transparent alpha, no floor/support/cast-shadow plane/text. Request1254x1254square if supported, object78–80percent of largest axis with8–12percent clear margins all sides, no clipping. Do not perform a new view, forced symmetry or hidden geometry invention. Licensed toy-edition source study only, not canon/human/runtime certification.",
+      "promptSha256": "ca51cf5c8762cc77dbbf7172eb428efbd1033f9ab8440ab8fd00629dc1e0abc6",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          286,
+          110,
+          992,
+          1223
+        ],
+        "marginsPixels16": [
+          286,
+          110,
+          262,
+          31
+        ],
+        "minimumMarginFraction": 0.02472,
+        "transparentPixels": 935677,
+        "opaquePixels": 773
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Small wearer cap removed above last hard metal rim; all genuine nested forehead arcs and lower shell preserved.",
+          "No CPU editing; original firstA remains as nonselected native."
+        ]
+      },
+      "limitations": [
+        "Whole mask visible in2048x2560white catalogue and2560x1707scene; source micro-patterning not exact-certified.",
+        "Existing69include mk-08-boar in another project representation. This is the specific official Ultimate2022edition, same mask family, not a new canonical geometry.",
+        "FirstA retained a small wearer cranial cap behind the metal rim; nonselected attempt retained and corrected only via ImageGen.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-A-native.png",
+          "sha256": "0c53f2c3009d220336429447a4f38aa8228771b937a35eeda508e62bfd3e5f50",
+          "bytes": 1938276,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE isolated rigid mask A from the actual photographed licensed toy edition: NECA Ultimate Boar2022, Predator2licensed Lost Tribe toy edition. Reference1 controls the visible source camera, tilt, sculpture, asymmetries, proportions, paint palette and wear. Other references if present only corroborate this same edition, not another view to merge. Do not substitute a PHG interpretation, another edition or a generic Predator mask.\n\nUse ONLY the mask worn by the MAIN standing figure at centre of reference1 white catalogue; the separate upper-right head is BARE and must be excluded. Keep that near-front camera and slight down tilt. Preserve the broad tall oval forehead with actual nested rounded raised arcs/eye-like inset reliefs, rough silver/grey weathering with muted bronze tint, the two very narrow dark lenses under a heavy brow, real downward bulbous cheek plates and the broad central rounded vertical silver snout/front plate. Preserve all visible sculpted nested arc lines and edge notches. The dark organic crown strip/skin peeking behind upper metal and beneath cheek edges must be removed with the wearer. Reference2 is a closer official view only to corroborate relief, not its strong orange scene light as paint. Do not add literal boar tusks, a circular mouth grille, horns or invented glyphs. Only rigid metal mask remains.\n\nRemove every wearer component: living skin/cranium, eyes or teeth behind the mask, biological mandibles, all dreadlocks and their bands, neck, collar, body/chest/shoulder armor, shoulder cannon, cables/hoses belonging to the wearer, hands, weapons, mannequin/stand, scene/catalogue background and any unrelated separate heads or accessories. Keep only the complete rigid mask sculpture. Preserve solid lens materials and real recessed vents; do not expose or invent a living mouth. No new hidden rear/interior geometry or new profile. No forced frontalization, symmetrization, stretching or rotation from the selected source camera. No invented runes, letters, extra horns, tusks, holes, vents, or paint.\n\nFor A follow the actual source paint and neutral catalogue lighting where provided; do not create a new colourway. Preserve real sculpted relief and weathered finish, but do not add fictional microdetail to fake source resolution. One whole mask only, genuine transparent alpha, no floor, support, cast-shadow plane, labels/text/grid or duplicate. Request1254x1254square if supported; mask78–80percent of largest canvas axis with8–12percent clear margins all sides and no clipped edge. This is a documented photographed edition study, not canonical film-prop or human-art certification.",
+          "promptSha256": "4da702798714f594fd54335c9ec306a505be145ec06d5abdd60019b87b16e323",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-0-photo.jpg"
+          ],
+          "reason": "Small dark dentated biological cap behind the actual upper metal rim was retained as if part of shell; independently confirmed. Requires targeted exclusion."
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-A-attempt2-native.png",
+          "sha256": "2ed43fbe42e76543e32181ddc0ef12884dfed3b56b7e8f9e33d89089193c1aa2",
+          "bytes": 1925231,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Correct ONLY the isolated Boar Ultimate2022mask extraction boundary. Reference1 is the actual official white catalogue photo, reference2 is the prior isolated A, reference3 is an official close source scene corroborating the same shell. The prior A mistakenly kept the SMALL DARK DENTATED CRANIAL CAP BEHIND/ABOVE THE LAST CONTINUOUS SILVER METAL RIM. That topmost dark cap with two pointed/knobbly organic peaks belongs to the living head, not the mask. It is also related to the exposed biological crown of the separate bare head in reference1. REMOVE ONLY THAT WEARER CAP so that the mask silhouette terminates at the true continuous hard silver-grey upper rim directly beneath it. No dark jagged biological peaks above the rim.\n\nKeep ALL actual rigid mask sculpture from priorA: the tall rounded metal forehead and every nested raised curved/oval arc, actual fine metal edge notches/relief, heavy brow, two narrow solid dark eye lenses, real curled cheek plates with their visible slots, and the broad rounded central vertical silver snout plate. Do not smooth or erase the decorated metal, invent a new smooth dome, truncate the real upper metal arc, add tusks/holes/horns or change the source camera/proportions. Only correct the small incorrectly retained organic cap. Keep the near-front catalogue camera and slight downward tilt, silver/grey patinated toy paint and subdued bronze hints, restrained rough metal relief. Do not copy orange scene illumination as paint.\n\nNo living head/skin/eyes/mouth, dreadlocks, collar/body/armor/cannon, catalogue accessories or background. Preserve real lens material and real dark recesses, not empty holes. One complete rigid metal mask, genuine transparent alpha, no floor/support/cast-shadow plane/text. Request1254x1254square if supported, object78–80percent of largest axis with8–12percent clear margins all sides, no clipping. Do not perform a new view, forced symmetry or hidden geometry invention. Licensed toy-edition source study only, not canon/human/runtime certification.",
+          "promptSha256": "ca51cf5c8762cc77dbbf7172eb428efbd1033f9ab8440ab8fd00629dc1e0abc6",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+            "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-A-native.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-0-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "boar",
+      "representationOf": "NECA Ultimate Boar2022, Predator2licensed Lost Tribe toy edition",
+      "newCanonicalGeometry": false
+    },
+    {
+      "id": "neca-boar-ultimate-2022",
+      "label": "Boar · NECA Ultimate2022",
+      "version": "B",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/neca-boar-ultimate-2022.png",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-B-native.png",
+      "sha256": "5918f1cbfef5acc1d5c9d5ef3bd1ebac4887a5dc68e5caa1bf80e9ea9ef112e3",
+      "bytes": 1958359,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/neca-boar-ultimate-2022.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceEdition": "NECA Ultimate Boar2022, Predator2licensed Lost Tribe toy edition",
+      "relatedCanonicalTargetId": null,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+      "referenceSourceSha256": "035c62f24ce2f3da19a642d122e59fc6eaf271bcf8af3ae9a88a401c3f2e0c6f",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+          "sha256": "035c62f24ce2f3da19a642d122e59fc6eaf271bcf8af3ae9a88a401c3f2e0c6f"
+        },
+        {
+          "path": "production/biomasks-lots40-20261113/references/films/edition-0-photo.jpg",
+          "sha256": "ff63f7618034a0e5f73976e4a312c26bd9a5a866b68524bb7899181d6009f686"
+        }
+      ],
+      "referenceSourceUrls": [
+        "https://necaonline.com/wp-content/uploads/2022/05/Boar-scaled.jpg",
+        "https://necaonline.com/wp-content/uploads/2022/05/Boar5-scaled.jpg"
+      ],
+      "sourcePageUrls": [
+        "https://necaonline.com/2022/05/predator-2-7-scale-action-figure-ultimate-boar-predator/"
+      ],
+      "submittedReferencePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-boar-ultimate-2022.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-0-photo.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Ultimate Boar2022, Predator2licensed Lost Tribe toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: CorrectedA ends at the continuous rigid round silver upper rim; NO dark jagged organic cap or two head peaks above it. Keep every real nested forehead arc, fine edge relief, narrow solid black lenses, cheek vents and broad central rounded metal snout. The firstR wearer has a dark biological cap behind the upper rim, but it must remain EXCLUDED as A shows. Silver-grey patina with subtle bronze hints, no orange-light paint, no literal boar tusks or new glyphs.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+      "promptSha256": "307d53908438522687c201459034ecf7a3f05c168b8193e462dd99b5de6736aa",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "glyphStrokeExactnessCertified": false,
+      "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          276,
+          105,
+          986,
+          1225
+        ],
+        "marginsPixels16": [
+          276,
+          105,
+          268,
+          29
+        ],
+        "minimumMarginFraction": 0.02313,
+        "transparentPixels": 926686,
+        "opaquePixels": 904
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Source A camera, contour and photographed edition palette retained; only neutral PBR light/material restaging.",
+          "Visible feature arrangement retained at macro inspection; no wearer restored or hidden geometry invented."
+        ]
+      },
+      "limitations": [
+        "Whole mask visible in2048x2560white catalogue and2560x1707scene; source micro-patterning not exact-certified.",
+        "Existing69include mk-08-boar in another project representation. This is the specific official Ultimate2022edition, same mask family, not a new canonical geometry.",
+        "FirstA retained a small wearer cranial cap behind the metal rim; nonselected attempt retained and corrected only via ImageGen.",
+        "Native visible minimum margin is below requested8–12percent; no edge clipping observed and no crop/resize/raster change performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-neca-boar-ultimate-2022-B-native.png",
+          "sha256": "5918f1cbfef5acc1d5c9d5ef3bd1ebac4887a5dc68e5caa1bf80e9ea9ef112e3",
+          "bytes": 1958359,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "nativeMode": "RGBA",
+          "nativeSaveMode": "byte-exact-base64-decoding-of-imagegen-PNG-data-URL",
+          "prompt": "Create ONE PHG-quality PBR inventory rendering B from the exact isolated rigid mask A shown in reference1, edition: NECA Ultimate Boar2022, Predator2licensed Lost Tribe toy edition. Reference1 A controls the whole actual sculpture, source camera, proportions, silhouette, paint palette, wear and asymmetries. The remaining official photos only corroborate the same identified edition; do not combine a different view or borrow wearer anatomy. This is a rendering restage, not a redesign.\n\nVISIBLE DESIGN LOCKS: CorrectedA ends at the continuous rigid round silver upper rim; NO dark jagged organic cap or two head peaks above it. Keep every real nested forehead arc, fine edge relief, narrow solid black lenses, cheek vents and broad central rounded metal snout. The firstR wearer has a dark biological cap behind the upper rim, but it must remain EXCLUDED as A shows. Silver-grey patina with subtle bronze hints, no orange-light paint, no literal boar tusks or new glyphs.\n\nKeep the exact arrangement, count and shape of all actual visible features from A: crowns, ridges, seams, eye lenses, real openings, grille bars, ports, horns or markings if present. Do not invent or remove holes, glyphs/runes, fasteners, tusks, teeth, vents or colour accents; no new hidden back/interior or alternate camera, no forced symmetrization/frontalization. Remove no part of the rigid mask. Keep all wearer biology, skin, living teeth, dreadlocks, collar/body/armor, weapons and supports absent.\n\nOnly standardize the rendering to a coherent modern Predator Hunting Grounds PBR item quality: neutral soft key from upper image-left and gentle front fill, readable dimensional edge relief, controlled roughness and restrained diffuse grain. Preserve real paint, scuffs and weathering rather than turning everything into a polished chrome mirror or fabricating tiny extra engravings. A is already realistic: an honest subtle material/light restage is appropriate; do not create difference through shape or paint redesign.\n\nOne mask only, genuine transparent alpha, no background/floor/support/shadow plane/text/grid. Request1254x1254square if supported. Keep complete object around78–80percent of largest canvas axis,8–12percent clear margin all sides, no edge clipping and no change of source view. Licensed toy edition study only, no canonical-film, human art or runtime validation. Fine details remain limited by the actual reference photographs.",
+          "promptSha256": "307d53908438522687c201459034ecf7a3f05c168b8193e462dd99b5de6736aa",
+          "submittedReferencePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/neca-boar-ultimate-2022.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-attachment-73645-photo.jpg",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/films/edition-0-photo.jpg"
+          ]
+        }
+      ],
+      "maskFamily": "boar",
+      "representationOf": "NECA Ultimate Boar2022, Predator2licensed Lost Tribe toy edition",
+      "newCanonicalGeometry": false,
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/neca-boar-ultimate-2022.png",
+      "sourceASha256": "2ed43fbe42e76543e32181ddc0ef12884dfed3b56b7e8f9e33d89089193c1aa2"
+    }
+  ],
+  "asOfUtc": "2026-11-13T15:01:42.835042+00:00"
+}

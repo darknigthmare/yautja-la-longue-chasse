@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 1,
+  "scope": "Official PHG group-render geometry with explicit secondary name corroboration; native A/B source-view studies, no canon/human/runtime approval.",
+  "entries": [
+    {
+      "id": "phg-pirate",
+      "name": "Pirate (PHG)",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-pirate-A-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/originals/phg-pirate.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-pirate.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png"
+      ],
+      "sourceClass": "official-publisher-CDN-group-render",
+      "sourceEdition": "Predator:HuntingGrounds HuntingParty2 group render, this source camera only",
+      "canonicalInventoryId": "mk-29-pirate",
+      "identityQualification": "Official publisher-CDN geometry/render; class identity corroborated by community FairYautja data and symbol, not newly publisher-caption-certified.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Pirate",
+        "dataId": "CD_Predator_Pirate",
+        "iconPath": "/icons/characters/predator/pirate.png",
+        "qualification": "Community data explicitly maps class name to symbol; symbolic shape corroborates the respective group-render mask. Fresh publisher individual caption not found.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "From the attached official PHG HuntingParty2 render, isolate ONLY the specified rigid mask. Preserve its actual source camera, yaw/pitch/roll, projected proportions, visible silhouette, panel boundaries, surface materials and apparent palette. Do not invent a centered straight front or reconstruct hidden side/back/interior. It is one source-view study, not newly certified franchise geometry. Use ImageGen extraction with genuine transparent RGBA; do not keep wearer tissue, hair/dreadlocks, body/clothes, scene or another character. Fine details are limited by the small mask in the native render: keep existing coarse relief and avoid new runes, symbols, holes, vents, fittings or ornament. Preserve opaque dark inserts versus open source holes as actually visible. Exactly one complete isolated mask, center it with8-12percent transparent clear margin around the whole visible silhouette, no clipping, no floor, shadow plane, halo, text, UI, alternate angles or duplicates.\n\nSUBJECT PIRATE, the METAL LOWER-FACE HALF-MASK of the RIGHT figure only. Ignore the left figure completely. Keep the exact source slightly oblique/inclined camera, with asymmetrical projected widths as shown; no new straight front. The rigid shell is the silver/blue-gray lower nose-and-cheek facepiece with thin copper/brass edges, its long central flattened nose/muzzle panel, curved lateral cheek guards and dark recessed cheek shapes, and the single large circular silver nasal/bull ring attached beneath the central plate. Preserve that ring completely and only the metal shell supporting it. Preserve the source's open/irregular upper edge under the organic brow; DO NOT invent a complete dome or upper forehead, no new eye apertures and no full helmet. The large orange striped ridged forehead/scalp is BIOLOGICAL HEAD, completely exclude it. The diagonal leather strap and dark leather eyepatch across the upper head are separate wearable accessories, exclude them from the rigid metal half-mask. Remove the actual biological eye, red targeting glow, skin, lower biological mandibles/mouth, all dreadlocks/hair, necklaces and body gear. Preserve the actual metallic silver/blue-gray shell, dark inserts and worn copper trim; no ivory skull replacement or new blue/red painted panels. No invented slots, grille, screws, glyphs or hidden rear shell. This A version matches the published game render's visible material/light, not a new front-facing redesign.",
+      "promptSha256": "9e1d6d357b7d899be5ed1474b3d90fb4f12878257f5472a26cb973beb787205c",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Metal lower-face half-mask with long central nose/muzzle shield, curved cheek guards and visible lower circular ring feature. Exposed scalp/head and leather eyepatch are distinct wearer/accessory elements, not a complete metal helmet.",
+        "exclusions": "Organic forehead/scalp, upper face, dreadlocks and separate leather eyepatch are not rigid mask shell. Do not infer a top/back helmet or combine eyepatch into a single fabricated rigid shell.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            13,
+            1282,
+            1177
+          ],
+          "8": [
+            124,
+            69,
+            1196,
+            1148
+          ],
+          "16": [
+            124,
+            69,
+            1196,
+            1148
+          ],
+          "128": [
+            125,
+            70,
+            1195,
+            1147
+          ],
+          "240": [
+            126,
+            72,
+            1194,
+            1146
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          124,
+          69,
+          116,
+          51
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.9935125115848007
+      },
+      "limitations": [
+        "Single published group-render view; camera-specific candidate only. Hidden sides/back/interior,exact UV and intrinsic albedo unknown.",
+        "Class name is secondary-corroborated via pinned community data/icon; official group art is shape authority,flat icon is not depth or material proof.",
+        "Small mask region limits exact fine relief; do not certify newly invented microdetail or franchise1:1.",
+        "All wearer anatomy,hair and separate non-shell accessories remain excluded; any unclear mask/wearer boundary is a source limitation.",
+        "A is new ImageGen source-view isolation,not a source-pixel cutout; B is a separate rendering adaptation,not certified original game pixels or mesh.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded.",
+        "Independent review flags ring projection: selected A/B1 ring is more front-facing than oblique publisher source. A2 was over-flattened and rejected. Pair remains a qualified study, not exact faithful release."
+      ],
+      "selectionStatus": "source-view-study-with-ring-orientation-reserve",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-pirate-A-native.png",
+          "sha256": "a2365b70c898c930ef2520c2d5903689e1dd102c0382c7d46479a2e389a987c0",
+          "prompt": "From the attached official PHG HuntingParty2 render, isolate ONLY the specified rigid mask. Preserve its actual source camera, yaw/pitch/roll, projected proportions, visible silhouette, panel boundaries, surface materials and apparent palette. Do not invent a centered straight front or reconstruct hidden side/back/interior. It is one source-view study, not newly certified franchise geometry. Use ImageGen extraction with genuine transparent RGBA; do not keep wearer tissue, hair/dreadlocks, body/clothes, scene or another character. Fine details are limited by the small mask in the native render: keep existing coarse relief and avoid new runes, symbols, holes, vents, fittings or ornament. Preserve opaque dark inserts versus open source holes as actually visible. Exactly one complete isolated mask, center it with8-12percent transparent clear margin around the whole visible silhouette, no clipping, no floor, shadow plane, halo, text, UI, alternate angles or duplicates.\n\nSUBJECT PIRATE, the METAL LOWER-FACE HALF-MASK of the RIGHT figure only. Ignore the left figure completely. Keep the exact source slightly oblique/inclined camera, with asymmetrical projected widths as shown; no new straight front. The rigid shell is the silver/blue-gray lower nose-and-cheek facepiece with thin copper/brass edges, its long central flattened nose/muzzle panel, curved lateral cheek guards and dark recessed cheek shapes, and the single large circular silver nasal/bull ring attached beneath the central plate. Preserve that ring completely and only the metal shell supporting it. Preserve the source's open/irregular upper edge under the organic brow; DO NOT invent a complete dome or upper forehead, no new eye apertures and no full helmet. The large orange striped ridged forehead/scalp is BIOLOGICAL HEAD, completely exclude it. The diagonal leather strap and dark leather eyepatch across the upper head are separate wearable accessories, exclude them from the rigid metal half-mask. Remove the actual biological eye, red targeting glow, skin, lower biological mandibles/mouth, all dreadlocks/hair, necklaces and body gear. Preserve the actual metallic silver/blue-gray shell, dark inserts and worn copper trim; no ivory skull replacement or new blue/red painted panels. No invented slots, grille, screws, glyphs or hidden rear shell. This A version matches the published game render's visible material/light, not a new front-facing redesign.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sha256": "a2365b70c898c930ef2520c2d5903689e1dd102c0382c7d46479a2e389a987c0",
+      "bytes": 1433209,
+      "nativeDimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+          "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        124,
+        69,
+        1196,
+        1148
+      ],
+      "transparentPixels": 1015778,
+      "nativeCopyIdentical": true,
+      "referenceSourcePath": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+      "referenceSourceSha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43",
+      "geometryDeviationOpen": true
+    },
+    {
+      "id": "phg-pirate",
+      "name": "Pirate (PHG)",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-pirate-B-native.png",
+      "assetPath": "public/game/biomasks-lots40-20261113/phg/phg-pirate.png",
+      "generationReceipt": "production/biomasks-lots40-20261113/generation/phg-pirate.json",
+      "referenceURLs": [
+        "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png"
+      ],
+      "sourceClass": "official-publisher-CDN-group-render",
+      "sourceEdition": "Predator:HuntingGrounds HuntingParty2 group render, this source camera only",
+      "canonicalInventoryId": "mk-29-pirate",
+      "identityQualification": "Official publisher-CDN geometry/render; class identity corroborated by community FairYautja data and symbol, not newly publisher-caption-certified.",
+      "identityEvidence": {
+        "communityRepository": "FairYautja/HG",
+        "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+        "dataPath": "production/biomasks-lots40-20261113/references/games/fairyautja-data.json",
+        "dataName": "Pirate",
+        "dataId": "CD_Predator_Pirate",
+        "iconPath": "/icons/characters/predator/pirate.png",
+        "qualification": "Community data explicitly maps class name to symbol; symbolic shape corroborates the respective group-render mask. Fresh publisher individual caption not found.",
+        "dataSha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+      },
+      "prompt": "Create version B of the FIRST isolated Pirate PHG metal lower-face HALF-MASK. The SECOND official HuntingParty2 render shows its original source worn by the RIGHT figure; ignore the left figure. Preserve the FIRST image geometry, exact oblique camera and tilt, projected asymmetry, visible outline, the irregular open upper edge, long flattened central nose/muzzle plate, curved lateral cheek guards, dark recessed cheek panels, thin copper/brass edging, and the COMPLETE single large silver nasal ring and its attachment. Keep the mask as a lower-face half-shell: no forehead/dome, no new eye apertures, no head or hidden rear geometry. Cross-check only source-visible rigid details against the second image; do not reconstruct a new straight front or unseen side. Change ONLY the material and lighting presentation to consistent clean PHG PBR: same worn silver/blue-gray metal, copper/brass edges and opaque dark recessed panels, controlled realistic roughness, restrained fine grain, readable relief, neutral soft key from image-upper-left/front and gentle fill. Keep subtle source color differences, never a new painted scheme or universal mirror chrome. Do not add vents, slots, screws, runes, ornaments or new straps. Exclude all orange biological forehead/scalp, organic eyes/skin/mandibles, leather eyepatch/diagonal leather strap, red emitted targeting glow, dreadlocks, neck, body, clothing and the other character. Exactly one complete isolated metal half-mask with the whole nasal ring visible. Genuine transparent RGBA, no floor/shadow plane, background, glow, halo, UI or text. Center the entire silhouette with at least 10 percent clear transparent margin on all sides; longest complete axis fills only 78-80 percent of canvas. Preserve geometry/camera/colors; only material/light standardization.",
+      "promptSha256": "b968b3f9c4c571ea3a141bba11b180a21ea236f2508a1c2fb520a14b86cf2864",
+      "referencedImagePaths": [
+        "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-pirate.png",
+        "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+      ],
+      "transparentBackgroundRequested": true,
+      "selfReview": {
+        "performed": true,
+        "kind": "Agent review of native ImageGen output and original source; not human art validation.",
+        "observations": "Metal lower-face half-mask with long central nose/muzzle shield, curved cheek guards and visible lower circular ring feature. Exposed scalp/head and leather eyepatch are distinct wearer/accessory elements, not a complete metal helmet.",
+        "exclusions": "Organic forehead/scalp, upper face, dreadlocks and separate leather eyepatch are not rigid mask shell. Do not infer a top/back helmet or combine eyepatch into a single fabricated rigid shell.",
+        "referenceViewedBeforeGeneration": true,
+        "outputViewedAfterGeneration": true,
+        "limits": "Visible source-view geometry only; fine relief and unclear attachment ownership remain qualified."
+      },
+      "technicalReview": {
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            48,
+            1274,
+            1159
+          ],
+          "8": [
+            150,
+            100,
+            1150,
+            1108
+          ],
+          "16": [
+            151,
+            100,
+            1150,
+            1107
+          ],
+          "128": [
+            151,
+            101,
+            1149,
+            1106
+          ],
+          "240": [
+            152,
+            102,
+            1148,
+            1105
+          ]
+        },
+        "marginsPixelsAlpha16": [
+          151,
+          100,
+          162,
+          92
+        ],
+        "maximumBorderAlpha": 1,
+        "visibleWidthHeightRatio": 0.9920556107249255
+      },
+      "limitations": [
+        "Single published group-render view; camera-specific candidate only. Hidden sides/back/interior,exact UV and intrinsic albedo unknown.",
+        "Class name is secondary-corroborated via pinned community data/icon; official group art is shape authority,flat icon is not depth or material proof.",
+        "Small mask region limits exact fine relief; do not certify newly invented microdetail or franchise1:1.",
+        "All wearer anatomy,hair and separate non-shell accessories remain excluded; any unclear mask/wearer boundary is a source limitation.",
+        "A is new ImageGen source-view isolation,not a source-pixel cutout; B is a separate rendering adaptation,not certified original game pixels or mesh.",
+        "Native transparent margins are tighter than requested8-12percent at one edge; complete strong-alpha mask remains unclipped. Actual bounds recorded; no CPU reframing/cleanup.",
+        "Very weak native edge alpha pixels are preserved without cleanup; actual maximum border alpha recorded.",
+        "Independent review flags ring projection: selected A/B1 ring is more front-facing than oblique publisher source. A2 was over-flattened and rejected. Pair remains a qualified study, not exact faithful release."
+      ],
+      "selectionStatus": "source-view-study-with-ring-orientation-reserve",
+      "productionReady": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/imagegen-phg-pirate-B-native.png",
+          "sha256": "6270f8520ed4ec28c307c1f8d9a1dd60e073d246c3c74e3e1127f41719c79020",
+          "prompt": "Create version B of the FIRST isolated Pirate PHG metal lower-face HALF-MASK. The SECOND official HuntingParty2 render shows its original source worn by the RIGHT figure; ignore the left figure. Preserve the FIRST image geometry, exact oblique camera and tilt, projected asymmetry, visible outline, the irregular open upper edge, long flattened central nose/muzzle plate, curved lateral cheek guards, dark recessed cheek panels, thin copper/brass edging, and the COMPLETE single large silver nasal ring and its attachment. Keep the mask as a lower-face half-shell: no forehead/dome, no new eye apertures, no head or hidden rear geometry. Cross-check only source-visible rigid details against the second image; do not reconstruct a new straight front or unseen side. Change ONLY the material and lighting presentation to consistent clean PHG PBR: same worn silver/blue-gray metal, copper/brass edges and opaque dark recessed panels, controlled realistic roughness, restrained fine grain, readable relief, neutral soft key from image-upper-left/front and gentle fill. Keep subtle source color differences, never a new painted scheme or universal mirror chrome. Do not add vents, slots, screws, runes, ornaments or new straps. Exclude all orange biological forehead/scalp, organic eyes/skin/mandibles, leather eyepatch/diagonal leather strap, red emitted targeting glow, dreadlocks, neck, body, clothing and the other character. Exactly one complete isolated metal half-mask with the whole nasal ring visible. Genuine transparent RGBA, no floor/shadow plane, background, glow, halo, UI or text. Center the entire silhouette with at least 10 percent clear transparent margin on all sides; longest complete axis fills only 78-80 percent of canvas. Preserve geometry/camera/colors; only material/light standardization.",
+          "referencedImagePaths": [
+            "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-lots40-20261113/originals/phg-pirate.png",
+            "/tmp/yautja-mask-neutral-20261113/production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png"
+          ],
+          "selectedForReview": true,
+          "selectedForFaithfulRelease": false
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-lots40-20261113/originals/phg-pirate.png",
+      "sourceASha256": "a2365b70c898c930ef2520c2d5903689e1dd102c0382c7d46479a2e389a987c0",
+      "sha256": "6270f8520ed4ec28c307c1f8d9a1dd60e073d246c3c74e3e1127f41719c79020",
+      "bytes": 1247934,
+      "nativeDimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-lots40-20261113/references/games/phg-hunting-party-2.png",
+          "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43"
+        }
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "visibleBoundsAlpha16": [
+        151,
+        100,
+        1150,
+        1107
+      ],
+      "transparentPixels": 1095540,
+      "nativeCopyIdentical": true,
+      "geometryDeviationOpen": true
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "id": "phg-pirate",
+      "version": "A",
+      "attempt": 2,
+      "nativeSourcePath": "/workspace/generated_images/imagegen-phg-pirate-A-corrected-native.png",
+      "sha256": "06655fae9f9cdf51c3f54da8a5509414fb8159ee7851591e573cf183cd07862d",
+      "bytes": 1362308,
+      "nativeDimensions": [
+        1312,
+        1199
+      ],
+      "mode": "RGBA",
+      "prompt": "Correct ONLY the nasal ring orientation of the Pirate rigid lower-face half-mask. FIRST image is the official PHG HuntingParty2 source: the desired metal half-mask is worn by the RIGHT figure. SECOND image is the isolated candidate with an incorrectly front-facing, nearly circular hanging ring. Preserve the SECOND image shell, its exact three-quarter camera/tilt, projected asymmetry, irregular open upper edge, nose plate, cheek shapes, silver/blue-gray metal, dark recesses and copper edges. Do not rotate or alter the shell to fix the ring. Change only the existing nasal ring below the central nose plate to match the FIRST source view: it is foreshortened and flattened, a broad horizontal oval/ellipse tilted gently with the source, tucked close beneath its attachment points, not a long U or full round loop hanging vertically toward the viewer. Preserve a complete solid silver ring with a visible transparent central opening, same two attachment locations under the central plate, realistic thickness and source size. Do not add a new bar, bolt or different ornament. Follow the real source ring projection, not a generic bull ring. Keep all other coarse details, camera, palette and source-game rendering unchanged. Exclude biology/orange forehead, organic eyes/skin/mandibles, separate leather eyepatch/strap, hair/dreads, body/gear, glow and all background. No complete dome/new eyeholes/hidden helmet. Exactly one isolated rigid half-mask on genuine transparent RGBA, entire ring and shell visible, centered with 10 percent clear transparent margin around the complete silhouette. No floor, shadow plane, text or UI. Small-source fine relief remains qualified; invent no vents, runes, fittings or hidden geometry.",
+      "referencedImagePaths": [
+        "/tmp/mask-lots40-20261113/games/references/phg-hunting-party-2.png",
+        "/workspace/generated_images/imagegen-phg-pirate-A-native.png"
+      ],
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "pixelEditingPerformed": false,
+      "selectedForReview": false,
+      "selectedForFaithfulRelease": false,
+      "rejected": true,
+      "reason": "Independent enlarged-source review: source ring is mainly oblique; this correction over-flattens it and is less faithful than A1. No public pixels replaced.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ]
+}

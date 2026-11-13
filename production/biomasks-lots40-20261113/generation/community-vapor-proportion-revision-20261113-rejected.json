@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 1,
+  "id": "community-vapor-proportion-revision-20261113",
+  "domain": "games",
+  "label": "Vapor — reprise de proportions refusée",
+  "representationOf": "predator_17",
+  "revisesPair": "expansion/predator_17",
+  "newCanonicalGeometry": false,
+  "sourceLimited": true,
+  "status": "blocked",
+  "acceptedPair": false,
+  "neutralCProduced": false,
+  "acceptedNewImageGenFiles": 0,
+  "attemptedNativeImageGenOutputs": 5,
+  "nativeOriginsRetained": true,
+  "sourceClass": "secondary-port-capture",
+  "sourceScope": "Unchanged screenshot of an unofficial community port; original PHG identity, palette and physical projection are not certified.",
+  "referenceSources": [
+    {
+      "path": "production/biomasks-lots40-20261113/references/root/vapor-community-reference.png",
+      "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693",
+      "bytes": 47282
+    }
+  ],
+  "blocker": "Independent review rejects the correction: optical centers remain too high and lower jaw/chin too long; width/height alone does not establish fidelity.",
+  "limitations": [
+    "Source screenshot is only256x257 and includes ambiguous dreadlocks around the rigid silhouette.",
+    "All5 new attempted images were rejected; no new public A/B/C is delivered for this revision.",
+    "The earlier provisional Vapor A/B/C and all earlier source bytes remain unchanged."
+  ],
+  "review": {
+    "path": "/tmp/mask-lots40-20261113/reviews/vapor-preacceptance-review.json",
+    "sha256": "e60e46dc226b8e0ddb59454c7ce67bf8bf735177ec089a720b405adc9a296eb4"
+  },
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "pixelEditingPerformed": false,
+  "attempts": [
+    {
+      "nativeSourcePath": "/workspace/generated_images/imagegen-vapor-revision-A-attempt1-native.png",
+      "sha256": "e3778101f9303d7829df746f15690d40da3d828fe1442fadbcd3cbe521db511c",
+      "bytes": 900414,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha16BBox": [
+        337,
+        92,
+        915,
+        1079
+      ],
+      "visibleWidthHeightRatio": 0.585612968591692,
+      "nativeTransportPreserved": true,
+      "attemptId": "vapor-A-attempt1",
+      "intendedVersion": "A",
+      "prompt": "Create version A of a strictly SOURCE-VIEW detached rigid biomask study from the single supplied grayscale community screenshot. Match the actual mask pictured, not another similarly named mask and not a newly imagined canonical PHG design. This is a proportion-correction study of the provided image; it does not establish the source game's official provenance.\nThe photographed/projected rigid mask is relatively NARROW AND TALL: its whole rigid silhouette is approximately 0.79 to 0.81 times as wide as it is high. Preserve that ratio and the same almost frontal, very slightly inclined camera. Do not broaden the crown, flare the cheeks, shorten the long lower plate, or impose a new perspective. The old presentation was about11percent too wide; this new extraction must follow the narrow screenshot directly, without seeing or copying that old result.\nPreserve the rounded high crown, dark branching central spine, four long arched upper panels with narrow light raised borders, the small center junction above the brow, the narrow diagonal dark eye shapes, the short ridged bridge, and the long split lower mouth plate with its actual longitudinal ribs. Keep every source-specific boundary, the visible proportional panel widths, restrained gray highlights and the existing asymmetries. The lower plate tapers into its actual small two-ended point; no new tusks, teeth, vents, horns, glyphs or extra mechanical ornaments. Preserve soft or uncertain tiny detail rather than inventing sharp patterns.\nSeparate the rigid helmet from the WHITE/LIGHT DREADLOCKS hanging behind and beneath it. All the long white hair strands, rear curtains and surrounding wearer elements must be absent; none are rigid mask prongs. No head, eyes of the wearer, mandibles, chin, neck, shoulder, body, background or stand. Do not infer an unseen back, inside, side profile or hidden flange. The grayscale reference supplies no verified original color: keep neutral silver/gray with dark gray recesses, without inventing colored paint, glow or chrome reflections.\nOne complete isolated mask only on genuine transparent alpha, no checkerboard, floor, shadow plane, text, frame, labels or logos. The mask's full visible silhouette including its lower tips must fit centered with about10percent transparent vertical margins and ample side margins, not touching any edge. Request1254x1254 if available; native image only. This A preserves the reference's soft screenshot light and form rather than restaging as dramatic PHG artwork.",
+      "promptSha256": "19b16ff1daf3381a9508fc805ee01278ba3e0519abd49f39432803e1a134b93a",
+      "accepted": false,
+      "rejectedForFidelity": true,
+      "tool": "image_gen.imagegen",
+      "pixelEditingPerformed": false
+    },
+    {
+      "nativeSourcePath": "/workspace/generated_images/imagegen-vapor-revision-A-final-native.png",
+      "sha256": "4552451bdcb61696159ebd40ec0ba57f0e3675bdead4c86be2dd96072ca57618",
+      "bytes": 1354622,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha16BBox": [
+        216,
+        73,
+        1038,
+        1145
+      ],
+      "visibleWidthHeightRatio": 0.7667910447761194,
+      "nativeTransportPreserved": true,
+      "attemptId": "vapor-A-final",
+      "intendedVersion": "A",
+      "prompt": "Correct the proportions of the isolated rigid mask in reference1 by faithfully matching the original community screenshot in reference2. Reference1 is our rejected A attempt: it is much too tall and narrow, with measured rigid alpha bounds578px wide by987px high (ratio0.586). The original screenshot's rigid mask, excluding all hair, has a projected width/height close to0.80. This is a clear proportion error to correct through image generation, not a new design.\nKeep the full vertical height, approximate feature y positions and frontal source camera, but widen the ENTIRE rigid sculpt coherently by about36percent so that the COMPLETE rigid silhouette is approximately0.79–0.81 times as wide as it is high. On a1254square output the visible mask should occupy approximately790–810px in width and990–1010px in height, with all edges inside the canvas. The mouth must not become taller, the crown must not remain narrow, and the cheeks must not be flared independently. Preserve the original screenshot's relative panel widths and all boundaries. Keep the same dark central branching spine, four long crown panels and pale narrow rims, diagonal eye openings, short ridged bridge, and long tapered split lower respirator. No added horns, tusks, teeth, vents, glyphs, side fittings or hidden geometry.\nReference2 remains the authority for source identity and projected proportions. Its long white dangling elements behind the mask are hair, not rigid mask prongs: exclude every strand, wearer element and background. Keep neutral grayscale/silver shading, without invented original-game colors or new glow. One isolated complete mask only on genuine transparent alpha, centered with about10percent vertical margin and enough horizontal margin, no crop, text, checkerboard, floor, stand, body or labels. All material/detail choices remain those of the source-view extraction. This remains a limited-source community study, not a certification of canonical PHG geometry.",
+      "promptSha256": "355025246bb2f883f0912628a154ded1dfa0bfa7e1b85880c5abf3cc4cc6b49f",
+      "accepted": false,
+      "rejectedForFidelity": true,
+      "tool": "image_gen.imagegen",
+      "pixelEditingPerformed": false
+    },
+    {
+      "nativeSourcePath": "/workspace/generated_images/imagegen-vapor-revision-B-native.png",
+      "sha256": "011afdaacb637fd6cb769e37283279a46859a279e766e4bdf5f6e3a64f21e24a",
+      "bytes": 1531413,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha16BBox": [
+        236,
+        75,
+        1015,
+        1155
+      ],
+      "visibleWidthHeightRatio": 0.7212962962962963,
+      "nativeTransportPreserved": true,
+      "attemptId": "vapor-B",
+      "intendedVersion": "B",
+      "prompt": "Make version B of the SINGLE isolated mask in reference1, restaged into the same high-quality Predator:Hunting Grounds equipment presentation as this project's other biomasks. Reference2 is the unchanged grayscale community screenshot and remains the authority for the actual mask identity. Preserve the complete shape, narrow/tall proportions, camera, existing panel boundaries and feature placement of reference1. Its measured visible rigid width/height is about0.767, close to the approximately0.79 original screenshot proxy; keep that projected ratio in the0.77–0.80 range. DO NOT widen it to the earlier overly wide0.88 presentation, shorten the lower face, raise the crown, alter the notched top, or redesign the brows. Do not introduce a new frontal perspective or symmetrize away source detail.\nKeep the dark branching central crown spine, the four long arched crown panels and existing narrow rims, diagonal dark optical apertures, short ridged bridge and long tapered split respirator with existing longitudinal channels and its two small lower tips. No new horns, tusks, teeth, vents, glyphs, runes, side attachments, plugs or hidden back/interior. White hair hanging behind the screenshot mask is wearer anatomy and must remain absent. No flesh, head, mandibles, dreadlocks, neck, costume, shoulder or background.\nChange ONLY material/light presentation: controlled upper-left key, soft frontal fill, believable weathered silver/gray gunmetal with restrained micrograin, readable existing medium-scale relief, muted rim highlights and dark recesses. Keep the grayscale palette because original-game colors are not established by this community reference; no colored paint, glow, orange reflection, polished chrome or invented damage. Do not replace the mask with a similarly named PHG design.\nOne complete native PNG mask on genuine transparent alpha, including the two eye apertures shown as open in A. Preserve full shape and source-view framing, centered with8–12percent clear vertical margin and generous side margin. No clipping, shadow plane, floor, stand, frame, label, text, comparison or checkerboard. Request1254square if possible. This remains an unvalidated source-limited proportion revision; the rendering does not certify official PHG provenance.",
+      "promptSha256": "8e4ce17c94da58928d5ac9270e9182bebb7001130eca708b3539e999dfd4cf99",
+      "accepted": false,
+      "rejectedForFidelity": true,
+      "tool": "image_gen.imagegen",
+      "pixelEditingPerformed": false
+    },
+    {
+      "nativeSourcePath": "/workspace/generated_images/imagegen-vapor-revision-B-attempt2-native.png",
+      "sha256": "6a6e7b5a4a93dd96479700ce98178b0b770ea97f78a7ba73ae28c5329b8139c2",
+      "bytes": 1733019,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha16BBox": [
+        164,
+        72,
+        1090,
+        1160
+      ],
+      "visibleWidthHeightRatio": 0.8511029411764706,
+      "nativeTransportPreserved": true,
+      "attemptId": "vapor-B-attempt2",
+      "intendedVersion": "B",
+      "prompt": "This is a proportion correction of the mask in reference1. It has the right panel layout, material and almost-frontal camera, but became TOO NARROW again: measured visible bounds are779px wide by1080px high, ratio0.721. The source screenshot in reference2 has a rigid-mask width/height of approximately0.79–0.81. Correct this specific visible error while preserving the design.\nIncrease the horizontal breadth of the ENTIRE rigid mask coherently by roughly11–12percent while holding the vertical height and relative feature y positions. Aim for a complete visible silhouette around850–875px wide by1070–1090px high on a1254square canvas, approximately0.79–0.81 ratio. This is uniform correction of projected mask proportions, not cheek flaring, a new camera, a different mask or decoration. In particular the upper crown should match the reference's breadth and the lower split mouth should not become longer. Keep exact source panel boundaries and relative feature positions, the notched crown, central branching spine, four long curved upper plates with narrow pale rims, diagonal optical apertures, ridged bridge, long central split respirator and its two small lower tips.\nKeep the existing PHG-style restrained upper-left key, soft fill, neutral weathered silver/gray gunmetal, muted highlights and subdued micrograin. The source is grayscale: do not invent colors. No new cuts, glyphs, vents, horns, tusks, teeth, fittings, back, inside or unseen profile. All white hair from the source screenshot must remain absent; no wearer, dreads, mandibles, neck, body, floor or background.\nOne complete native transparent-alpha isolated mask, all tips inside the frame with generous clear margins, no text, logo, frame, sheet, checkerboard or shadow plane. Maintain transparent eye apertures as in reference1. Reference2 fixes identity/proportions only and is not evidence of official PHG attribution. Do not claim or suggest canon validation. This new result replaces only our rejected too-narrow B candidate and must visibly correct its width/height error.",
+      "promptSha256": "baad6bf9b23540ba4fb96dde155d0bf71529256e57207dd57b150e5f907f9434",
+      "accepted": false,
+      "rejectedForFidelity": true,
+      "tool": "image_gen.imagegen",
+      "pixelEditingPerformed": false
+    },
+    {
+      "nativeSourcePath": "/workspace/generated_images/imagegen-vapor-revision-B-attempt3-native.png",
+      "sha256": "7093887f8d10150f01370a9570a5e31e41f564e5e24c356f6363b613519a8d1e",
+      "bytes": 1372023,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha16BBox": [
+        253,
+        77,
+        1000,
+        1155
+      ],
+      "visibleWidthHeightRatio": 0.6929499072356216,
+      "nativeTransportPreserved": true,
+      "attemptId": "vapor-B-attempt3",
+      "intendedVersion": "B",
+      "prompt": "Make a SMALL proportion correction to reference1, preserving its exact mask design, grayscale material, light and view. Its current visible mask is926px wide by1088px high (ratio0.851), slightly too broad compared with the source. Narrow the entire rigid silhouette UNIFORMLY by only about6–7percent, keeping the same vertical length and feature y positions. Aim for visible width850–870px at height1080–1090px, ratio around0.79–0.80. This is a gentle horizontal proportion correction only: do not revert to a tall thin0.72 shape and do not broaden to0.88. Reference2 is the earlier A extraction with the same design; reference3 is the unchanged original screenshot controlling the identity and approximate0.79source proportion.\nKeep the notched crown, central dark branching spine, four long arched upper plates with narrow light borders, diagonal dark/open eye apertures, ridged bridge, tapered split respirator with its actual vertical channels and two small lower tips. No added or removed panels, ornaments, holes, vents, horns, tusks, teeth, glyphs, fins, fittings, damage, back, inside or hidden profile. Maintain current camera and existing small asymmetries; do not make a different frontal redesign. The white dangling strands in source reference3 are hair and must remain entirely absent along with head, mandibles, neck, body and costume.\nPreserve the existing PHG equipment-style believable silver/gray weathered gunmetal, restrained upper-left key, soft fill, dark recesses and subdued surface grain; no new colors, chrome, glow or paint. One single complete mask on genuine transparent alpha, centered with all lower tips and the whole crown safely inside the frame and8–12percent transparent vertical margin. Transparent eye apertures as in reference1. No scene, floor, shadow plane, text, labels, frame or checkerboard. Native1254square if supported. The source is still a limited community capture with no official per-mask PHG provenance certified. The result remains a review candidate.",
+      "promptSha256": "bded4a3d60adca03bbbc08694605b1b963d9dd1eb05c8c1b1a0c27c8b9210c59",
+      "accepted": false,
+      "rejectedForFidelity": true,
+      "tool": "image_gen.imagegen",
+      "pixelEditingPerformed": false
+    }
+  ]
+}
