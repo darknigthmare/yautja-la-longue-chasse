@@ -68,6 +68,7 @@ import { HUNTER_PIECE_IDS_V146, hasCustomPiecesV146, normalizeLightsV146,
   normalizePieceColorsV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
 import { SKIN_PATTERN_IDS_V146, applyHeavyWearV146, earnedCosmeticsV146,
   emptyCustomizationV146, normalizeCustomizationV146, normalizeMarksDisplayV146 } from "./systems/hunterCustomizationV146";
+import { isFutureTrophyUsagesV147, normalizeTrophyUsagesV147 } from "./systems/trophyUsagesV147";
 import {
   ECOLOGY_V8_BOSS_ENEMY_IDS,
   ECOLOGY_V8_ENEMIES,
@@ -1224,6 +1225,7 @@ export function normalizeSave(value: unknown): SaveGame {
     }
   }
 
+  const trophies = normalizeTrophies(source.trophies);
   return {
     version: SAVE_VERSION,
     createdAt: validIsoDate(source.createdAt, fallback.createdAt),
@@ -1281,7 +1283,12 @@ export function normalizeSave(value: unknown): SaveGame {
       clanShipReturnEscort: inspectClanShipReturnEscort(source.clanShipReturnEscort, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
     missionProgress,
-    trophies: normalizeTrophies(source.trophies),
+    trophies,
+    // V147 is written only after a first usage; it never removes a trophy.
+    ...(source.trophyUsagesV147 === undefined || source.trophyUsagesV147 === null ? {} : {
+      trophyUsagesV147: normalizeTrophyUsagesV147(source.trophyUsagesV147, trophies,
+        raw => normalizeTrophies([raw])[0] ?? null),
+    }),
     ...(source.mobilityV1 === undefined ? {} : {
       mobilityV1: inspectMobilityLedger(source.mobilityV1,validIsoDate(source.createdAt,fallback.createdAt)).state,
     }),
@@ -1619,6 +1626,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
   if (isRecord(value.customizationV146) && Number(value.customizationV146.version) > 1)
     return { save: null, failure: "future-version" };
+  // V147 trophy usages hold the exchange ledger: a newer format is never dropped silently.
+  if (isFutureTrophyUsagesV147(value.trophyUsagesV147)) return { save: null, failure: "future-version" };
   if (value.gauntletV134 !== undefined && value.gauntletV134 !== null) {
     if (isRecord(value.gauntletV134) && Number(value.gauntletV134.version) > 1)
       return { save:null, failure:"future-version" };
