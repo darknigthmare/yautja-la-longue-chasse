@@ -1,0 +1,3842 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Concrete positive source acquisitions, remaining named targets and unresolved access/identity limits. Research state only; no task closure or canonical certification.",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "counting": {
+    "baselineNamedInventoryEntries": 110,
+    "baselineMissingCanonicalNamedTargets": 63,
+    "previouslyGeneratedSecondaryMaskNames": 13,
+    "remainingNamedTargetsWithoutThoseCandidateCuts": 48,
+    "currentPrimarySourceViewTargetsAlreadyPresentAsCandidates": 3,
+    "newlyCoveredMaskNamesThisIntake": 2,
+    "exactNumberOfMissingPngs": null,
+    "note": "The previous secondary pack left 50 named targets without candidate cuts. Accepted Valkyrie and Cleopatra candidates now cover two additional names, leaving 48 named targets. Samurai, Viking and Exiled improve existing candidates and do not reduce that count again. This is candidate coverage only: canonical certification, human art validation, runtime integration and P0/bible/Excel task closure all remain zero. Variants can require multiple PNGs; exact remaining PNG totals are undefined.",
+    "currentPrimarySourceViewTargets": 5,
+    "candidateAcceptancePending": false,
+    "remainingNamedTargetsAfterPreviousSecondaryPack": 50,
+    "remainingNamedTargetsWithoutCurrentCandidateCuts": 48,
+    "acceptedCurrentSourceViewCandidates": 5,
+    "improvedPreviouslyCoveredMaskNames": 3,
+    "newNamedCandidatesAccepted": [
+      "mk-25-valkyrie",
+      "phg-cleopatra"
+    ],
+    "canonicalCertified": 0,
+    "humanArtValidated": 0,
+    "runtimeIntegrated": 0,
+    "p0OrBibleExcelTasksClosed": 0
+  },
+  "remainingTargets": [
+    {
+      "id": "mk-15-elder",
+      "name": "elder",
+      "work": "Elder, *AVP* (2004)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1357
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 831
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-16-greyback",
+      "name": "greyback",
+      "work": "Greyback, *Predator 2*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1358
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 832
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-17-lord",
+      "name": "lord",
+      "work": "Lord, *Aliens vs. Predator* (2010)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1359
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 833
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-18-ahab",
+      "name": "ahab",
+      "work": "Ahab, *Fire and Stone* / *Life and Death*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1360
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 834
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-19-afghanistan",
+      "name": "afghanistan",
+      "work": "*Predator: Hunters II* (comic)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1361
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 835
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-20-golden-angel",
+      "name": "golden angel",
+      "work": "Greyback, *Predator 1718* (comic) / NECA",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1362
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 836
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-21-lava-planet",
+      "name": "lava planet",
+      "work": "Kenner / NECA",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1363
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 837
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-22-race-war",
+      "name": "race war",
+      "work": "Race War Predator",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1364
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 838
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-26-anubis",
+      "name": "anubis",
+      "work": "Anubis, PHG",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1524
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 961
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-27-witch",
+      "name": "witch",
+      "work": "Witch, PHG",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1525
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 962
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-28-amazon",
+      "name": "amazon",
+      "work": "Amazon, PHG",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1526
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 963
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-29-pirate",
+      "name": "pirate",
+      "work": "Pirate, PHG",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1527
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 964
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-30-emissary",
+      "name": "emissary",
+      "work": "Emissary, PHG",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1528
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 965
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-32-white-skull",
+      "name": "white skull",
+      "work": "Hunting Grounds",
+      "kind": "painted-mask-variant",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1530
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 967
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-33-rebreather",
+      "name": "rebreather",
+      "work": "City Hunter, PHG",
+      "kind": "backup-respirator",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1531
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 968
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 272
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-46-tracker",
+      "name": "tracker",
+      "work": "Tracker, *Predators* (2010)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1634
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1043
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-47-crucified",
+      "name": "crucified",
+      "work": "Classic (Crucified) Predator, *Predators* (2010)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1635
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1044
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-48-kwei",
+      "name": "kwei",
+      "work": "Kwei, *Badlands*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1636
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1045
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-49-njohrr",
+      "name": "njohrr",
+      "work": "Njohrr, *Badlands*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1637
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1046
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-50-grendel-king",
+      "name": "grendel king",
+      "work": "Grendel King, *Killer of Killers*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1638
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1047
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-51-oni-kok",
+      "name": "oni (KoK)",
+      "work": "Samurai Killer, *Killer of Killers*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1639
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1048
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-52-grendel",
+      "name": "grendel",
+      "work": "Viking Killer, *Killer of Killers*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1640
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1049
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-54-claw",
+      "name": "claw",
+      "work": "Claw, *AvP* (2010)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1642
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1051
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-55-dark",
+      "name": "dark",
+      "work": "Dark, *AvP* (2010)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1643
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1052
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-56-alien-head",
+      "name": "alien head",
+      "work": "Alien Head, *AvP* (2010)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1644
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1053
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-57-scarface",
+      "name": "scarface",
+      "work": "Scarface, *Concrete Jungle*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1645
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1054
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-58-clan-leader",
+      "name": "clan leader",
+      "work": "Kenner (années 1990) ; NECA Deluxe Clan Leader",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1646
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1055
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-59-nightstorm",
+      "name": "nightstorm",
+      "work": "NECA (Scarab Predator)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1647
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1056
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-60-stalker",
+      "name": "stalker",
+      "work": "Kenner ; NECA",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1648
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1057
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-61-hornhead",
+      "name": "hornhead",
+      "work": "*AvP: Life and Death* (comic) ; NECA",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1649
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1058
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-63-spartan",
+      "name": "spartan",
+      "work": "Spartan, *AvP* (2010)",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1651
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1060
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-64-dek-shell",
+      "name": "dek shell",
+      "work": "Dek, *Badlands*",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1652
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1061
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-exalted",
+      "name": "Exalted (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-gladiator",
+      "name": "Gladiator (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-oni",
+      "name": "Oni (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-jotun",
+      "name": "Jotun (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-father",
+      "name": "Father (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-captured",
+      "name": "Captured (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-hunter",
+      "name": "Hunter (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-scout",
+      "name": "Scout (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-berserker",
+      "name": "Berserker (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-haze",
+      "name": "Haze",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 45
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 278
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-rival",
+      "name": "Rival",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 44
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 277
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-salamander",
+      "name": "Salamander",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-mors",
+      "name": "Mors",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-foxtrot",
+      "name": "Foxtrot",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-tank",
+      "name": "Tank",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 41
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 274
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-saber",
+      "name": "Saber",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask-candidate",
+      "sourceLocations": [
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 40
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 273
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    }
+  ],
+  "networkObservation": {
+    "observedRevision": 5,
+    "observationsCurrent": true,
+    "networkPolicyState": "unknown",
+    "configuredCustomHosts": [
+      "api.github.com",
+      "blog.playstation.com",
+      "forum.predator.illfonic.com",
+      "img2.storyblok.com",
+      "live.staticflickr.com",
+      "necaonline.com",
+      "predator.illfonic.com",
+      "store.necaonline.com",
+      "www.sideshow.com"
+    ],
+    "positiveActualRequests": [
+      "blog.playstation.com",
+      "img2.storyblok.com",
+      "live.staticflickr.com",
+      "necaonline.com",
+      "store.necaonline.com"
+    ],
+    "configuredButFreshConnect403Hosts": [
+      "forum.predator.illfonic.com",
+      "predator.illfonic.com",
+      "www.sideshow.com"
+    ],
+    "requiredAdditionalPhotoHost": "eadn-wc04-13179453.nxedge.io",
+    "additionalHostConfiguredInObservedRuntime": false,
+    "additionalHostDraftSaveConfirmed": false,
+    "additionalHostDraftSaveResult": "draft_not_editable",
+    "settingsAction": "Add eadn-wc04-13179453.nxedge.io to the existing custom allowlist, preserving all current entries, through environment settings. The attempted draft edit was not saved; no runtime application is claimed.",
+    "noUnchangedRetriesOrAlternateHostBypass": true
+  },
+  "positivePhgAcquisitions": {
+    "publisherArticlesReceived": 6,
+    "targetSourceImages": 9,
+    "targetIdentities": [
+      "mk-23-samurai",
+      "mk-24-viking",
+      "mk-25-valkyrie",
+      "phg-cleopatra",
+      "phg-exiled"
+    ],
+    "sourceMetadata": "production/biomasks-primary-20261113/inputs/primary-mask-sources.json",
+    "publisherPhotoLinksActuallyObserved": 4,
+    "storyblokRenderLinkChain": "Five exact Storyblok URLs came from the existing pinned project ledger; current PHG-homepage links could not be re-observed. Directly linked publisher screenshots corroborate Samurai, Viking, Valkyrie and Exiled. Cleopatra has only a repeated small roadmap render for identity/composition; the roadmap explicitly says artwork not final.",
+    "additionalSupplementaryRoadmapLinksObserved": 1
+  },
+  "alphaFinding": {
+    "status": "primary-mask-reference-still-missing",
+    "url": "https://blog.playstation.com/2020/07/17/july-free-update-comes-to-predator-hunting-grounds/",
+    "finding": "The July 17 official article was fetched and its three linked full-resolution images inspected. None depicts the Alpha mask. A title/date/repository label must not be promoted to Alpha geometry evidence."
+  },
+  "excludedPhgImages": [
+    {
+      "sha256": "1226e51d34adc83444ac85e850c0a0d130e2cd8118fcd841cec6bfb961bdedd8",
+      "dimensions": [
+        2048,
+        1152
+      ],
+      "bytes": 338881,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Unmasked red-skinned Predator; does not show Alpha mask."
+    },
+    {
+      "sha256": "877cedc6e4edced42c82df5ebbf925c5ffb209b025c4d28245cc5532aaea00e7",
+      "dimensions": [
+        2048,
+        1281
+      ],
+      "bytes": 481764,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Roadmap with Samurai and a separate Elder-like masked class; not an Alpha mask reference."
+    },
+    {
+      "sha256": "58aa813784c1961021406a8968a5d7280339f899b77d87368eeac893eb088472",
+      "dimensions": [
+        2048,
+        1152
+      ],
+      "bytes": 405764,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Human weapons only; no mask."
+    },
+    {
+      "sha256": "ad051336f1c7259133aae785816d0313bd105d7542e498c83f161ad9b81098fa",
+      "dimensions": [
+        1024,
+        657
+      ],
+      "bytes": 185855,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Roadmap; small repeated Viking render, no new geometry."
+    },
+    {
+      "sha256": "890e10d4d4343af306c5790cba369750f4d3b84f732c46ff5dde6ee5dc36dbe5",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "bytes": 60282,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Battle axe only; not a biomask."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/50949073078_3827940049_h.jpg",
+      "sha256": "6c56bdcaa87737400eeeeac2c605d8d7725447074518c4525dce8987c6a14aa3",
+      "dimensions": [
+        1600,
+        1026
+      ],
+      "bytes": 509618,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Roadmap, no additional mask camera."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/50949780876_a25521aa09_h.jpg",
+      "sha256": "0580ab9416a4f4079745ea5a29a1c7c969b2e81c138459a2e569ddf0f72f5212",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 235035,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Modifiers menu only, no mask."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/50949877782_72e742c7c4_h.jpg",
+      "sha256": "c0facdd3f049ad42af9bd48bf46d42dc20db05d1f9b64e288e7df4af14da2fa4",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 142397,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Battle hammer only, not a mask."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/51412748941_1d2947f72e_b.jpg",
+      "sha256": "528feb14fff5847483148c61bb0f42f8178a28f5180fbb989cabee3f2fdb56af",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "bytes": 185485,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Human fireteam gameplay, no Cleopatra mask."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/51412748956_1769c7c2d5_b.jpg",
+      "sha256": "234425020bbd9ecc16395ec66b41fe823d708ffeac262d109cfcde4c7932badd",
+      "dimensions": [
+        1024,
+        576
+      ],
+      "bytes": 56342,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Smart disc weapon only, not a biomask."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/51630949277_3abc75bc3b_h.jpg",
+      "sha256": "523c3afbd4f0c1a83d963150c239a6c5b4c8aea751ee69e0c04bae5acca0f428",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 283093,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Night jungle scenery only."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/51632407794_28caf9ec3b_h.jpg",
+      "sha256": "0414a1811169d49b18f4b90e261f9d8b8286d5b689cd8598e76131394313b2a8",
+      "dimensions": [
+        1600,
+        1026
+      ],
+      "bytes": 445470,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Roadmap; three unnamed-in-image cosmetic masks appear very small. Article names Salamander, Mors and Foxtrot but does not map each image unambiguously to its name. Do not auto-label left/middle/right from list order."
+    },
+    {
+      "url": "https://live.staticflickr.com/65535/51632623345_20cb1136ff_h.jpg",
+      "sha256": "d5d36ac8e6a40cd8eb704f0bea7c9d6288a356759f4bdf8bbcf2232e27ce36dd",
+      "dimensions": [
+        1600,
+        900
+      ],
+      "bytes": 277466,
+      "pixelsActuallyInspected": true,
+      "reasonExcluded": "Night jungle scenery only."
+    }
+  ],
+  "phgDeniedProbes": [
+    {
+      "id": "patch214",
+      "url": "https://forum.predator.illfonic.com/t/patch-notes-2-14/18974",
+      "result": {
+        "exitCode": 56,
+        "httpStatus": 0,
+        "downloadedBodyBytes": 0,
+        "error": "CONNECT tunnel failed,response403"
+      },
+      "publisherResponseAcquired": false,
+      "imageAcquired": false
+    },
+    {
+      "id": "patch219",
+      "url": "https://forum.predator.illfonic.com/t/patch-notes-2-19/20975",
+      "result": {
+        "exitCode": 56,
+        "httpStatus": 0,
+        "downloadedBodyBytes": 0,
+        "error": "CONNECT tunnel failed,response403"
+      },
+      "publisherResponseAcquired": false,
+      "imageAcquired": false
+    },
+    {
+      "id": "patch240",
+      "url": "https://forum.predator.illfonic.com/t/patch-notes-2-40/28174",
+      "result": {
+        "exitCode": 56,
+        "httpStatus": 0,
+        "downloadedBodyBytes": 0,
+        "error": "CONNECT tunnel failed,response403"
+      },
+      "publisherResponseAcquired": false,
+      "imageAcquired": false
+    },
+    {
+      "id": "phg-home",
+      "url": "https://predator.illfonic.com/",
+      "result": {
+        "exitCode": 56,
+        "httpStatus": 0,
+        "downloadedBodyBytes": 0,
+        "error": "CONNECT tunnel failed,response403"
+      },
+      "publisherResponseAcquired": false,
+      "imageAcquired": false
+    }
+  ],
+  "filmResearch": {
+    "publisherPagesReceived": 12,
+    "exactPhotoLinksQueued": 174,
+    "downloadedImagesInspected": 4,
+    "generationReadyNewTargets": 0,
+    "pages": [
+      {
+        "id": "scarface",
+        "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "httpStatus": 200,
+        "bytes": 148310,
+        "sha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "title": "Closer Look: Video Game Appearance Ultimate Scarface Predator! – NECAOnline.com",
+        "targetIds": [
+          "mk-57-scarface"
+        ]
+      },
+      {
+        "id": "tracker-neca",
+        "url": "https://necaonline.com/2011/03/predators-7-action-figure-series-2-assortment/",
+        "httpStatus": 200,
+        "bytes": 128677,
+        "sha256": "4125db8a5fbde0841d0f8b4db3b342abf3ccddd9f3e204532db935c3d3dd4937",
+        "title": "Predators – 7″ Action Figure – Series 2 Assortment **DISCONTINUED** – NECAOnline.com",
+        "targetIds": [
+          "mk-46-tracker"
+        ]
+      },
+      {
+        "id": "elder-avp",
+        "url": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "httpStatus": 200,
+        "bytes": 166818,
+        "sha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "title": "DISCONTINUED – Predator – 7″ Scale Action Figures – Series 17 Assortment – NECAOnline.com",
+        "targetIds": [
+          "mk-15-elder",
+          "mk-56-alien-head"
+        ]
+      },
+      {
+        "id": "greyback",
+        "url": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "httpStatus": 200,
+        "bytes": 157580,
+        "sha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "title": "Predator 2 – 7” Scale Action Figure – Ultimate Elder Predator – NECAOnline.com",
+        "targetIds": [
+          "mk-16-greyback"
+        ]
+      },
+      {
+        "id": "golden-angel",
+        "url": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "httpStatus": 200,
+        "bytes": 136770,
+        "sha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "title": "Predator 2 – 7” Scale Action Figure – Ultimate Elder: The Golden Angel – NECAOnline.com",
+        "targetIds": [
+          "mk-20-golden-angel"
+        ]
+      },
+      {
+        "id": "clan-leader",
+        "url": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "httpStatus": 200,
+        "bytes": 157308,
+        "sha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "title": "Closer Look: Predator Deluxe Clan Leader! – NECAOnline.com",
+        "targetIds": [
+          "mk-58-clan-leader"
+        ]
+      },
+      {
+        "id": "lava-nightstorm",
+        "url": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "httpStatus": 200,
+        "bytes": 140456,
+        "sha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "title": "Predators – 7″ Action Figure – Series 10 Asst (case 14) ***DISCONTINUED*** – NECAOnline.com",
+        "targetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ]
+      },
+      {
+        "id": "hornhead",
+        "url": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "httpStatus": 200,
+        "bytes": 145003,
+        "sha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "title": "Predator – 7″ Scale Action Figures – Series 18 Assortment – NECAOnline.com",
+        "targetIds": [
+          "mk-61-hornhead"
+        ]
+      },
+      {
+        "id": "kenner-stalker",
+        "url": "https://store.necaonline.com/blogs/news/closer-look-predator-series-16-action-figures-a-kenner-tribute",
+        "httpStatus": 200,
+        "bytes": 382459,
+        "sha256": "a95e081f0d7ef251be4920c52a00585dc733b260ab8323a9e680fc18249cae87",
+        "title": "Closer Look: Predator Series 16 Action Figures – a Kenner Tribute!",
+        "targetIds": [
+          "mk-60-stalker"
+        ]
+      },
+      {
+        "id": "ahab-neca",
+        "url": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "httpStatus": 200,
+        "bytes": 141728,
+        "sha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "title": "Predator – 7″ Scale Action Figure – Ultimate Ahab Predator – NECAOnline.com",
+        "targetIds": [
+          "mk-18-ahab"
+        ]
+      },
+      {
+        "id": "lost-tribe-store",
+        "url": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+        "httpStatus": 200,
+        "bytes": 372624,
+        "sha256": "260017bc8c4d29260a9655266f9f609a5e5959c59d1c4d3250a6fa64d1cc439b",
+        "title": "Predators: Introducing the Lost Tribe from Our Series 6 Action Figures",
+        "targetIds": []
+      },
+      {
+        "id": "stalker-neca-page",
+        "url": "https://necaonline.com/2016/02/predator-7-scale-action-figures-series-16-assortment/",
+        "httpStatus": 200,
+        "bytes": 131422,
+        "sha256": "ed2ce74b553774fc0a94c012d35aeb52c1c285f726ebe158cbbd6b23b4425a4e",
+        "title": "DISCONTINUED – Predator – 7″ Scale Action Figures – Series 16 Assortment – NECAOnline.com",
+        "targetIds": [
+          "mk-60-stalker"
+        ]
+      }
+    ],
+    "downloadedImages": [
+      {
+        "id": "warrior-direct",
+        "url": "https://necaonline.com/wp-content/uploads/2012/08/Warrior_01.jpg",
+        "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+        "identity": "Warrior/Ram Lost Tribe",
+        "httpStatus": 200,
+        "bytes": 39858,
+        "sha256": "f93a554396054c6b8cace94a5fb5e5c08ad98bf477a4eb6151675a485fa799f6",
+        "dimensions": [
+          400,
+          600
+        ],
+        "downloadedUnchanged": true,
+        "observation": "Near frontal chest portrait; bronze-grey removable mask with raised oval forehead rim, dark narrow eye band, vertical central respirator and cheek channels. Not a listed missing target.",
+        "generationReady": false,
+        "canonicalFidelityCertified": false
+      },
+      {
+        "id": "lost-direct",
+        "url": "https://necaonline.com/wp-content/uploads/2012/08/Lost_04.jpg",
+        "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+        "identity": "Lost Predator Lost Tribe",
+        "httpStatus": 200,
+        "bytes": 33725,
+        "sha256": "c6a930dba06810907f86a6d0727999c528af614c706e9aaa8bcd978e48040790",
+        "dimensions": [
+          400,
+          600
+        ],
+        "downloadedUnchanged": true,
+        "observation": "Near frontal chest portrait of exposed organic head, not a detachable mask. Not a listed missing target.",
+        "generationReady": false,
+        "canonicalFidelityCertified": false
+      },
+      {
+        "id": "scout-direct",
+        "url": "https://necaonline.com/wp-content/uploads/2012/08/SCOUT_01.jpg",
+        "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+        "identity": "Scout Lost Tribe",
+        "httpStatus": 200,
+        "bytes": 43654,
+        "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+        "dimensions": [
+          400,
+          600
+        ],
+        "downloadedUnchanged": true,
+        "observation": "Slight three-quarter chest portrait; silver helmet has sloping rim around oval crown, black eye band and bulging midface side lobes. Not PHG Scout.",
+        "generationReady": false,
+        "canonicalFidelityCertified": false
+      },
+      {
+        "id": "stalker-thumb1",
+        "url": "https://necaonline.com/wp-content/uploads/2016/10/1200x-Stalker1a--135x135.jpg",
+        "sourcePageUrl": "https://store.necaonline.com/blogs/news/closer-look-predator-series-16-action-figures-a-kenner-tribute",
+        "identity": "Stalker Kenner NECA Series16",
+        "httpStatus": 200,
+        "bytes": 6487,
+        "sha256": "c906fe2f20f3ec258be1b396343bdac8899a86b91a10957516af4d36e0f08cd1",
+        "dimensions": [
+          135,
+          135
+        ],
+        "downloadedUnchanged": true,
+        "observation": "135x135 thumbnail of full figure in environment; too small for reliable mask contour/details. Does not support 1:1 generation alone.",
+        "generationReady": false,
+        "canonicalFidelityCertified": false
+      }
+    ],
+    "photoQueue": [
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/590-scarface-feat-img.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface1-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface2-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface3-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface4-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface5-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface6-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface7-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface8-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface9-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface10-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface11-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface12-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface13-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scraface14-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Scarface_Predator-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-ScarfacePredator-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-51536_Scarface_Predator_pkg2-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-51536_Scarface_Predator_pkg1-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "scarface",
+        "sourcePageUrl": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+        "sourcePageSha256": "c3b55f6a961b492f5a9187b69be7cd2d8df24c8c9445025d6423359004f88347",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-51536_Scarface_Predator_pkg3-.jpg",
+        "contextualTargetIds": [
+          "mk-57-scarface"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "tracker-neca",
+        "sourcePageUrl": "https://necaonline.com/2011/03/predators-7-action-figure-series-2-assortment/",
+        "sourcePageSha256": "4125db8a5fbde0841d0f8b4db3b342abf3ccddd9f3e204532db935c3d3dd4937",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/imagesFlat/51435_Predator_Series_2.jpg",
+        "contextualTargetIds": [
+          "mk-46-tracker"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder1-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder2-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder3-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder4-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder5-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder6-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder7-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder8-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder9-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder10-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder11-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Elder12-.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter1-a.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter3a-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter2a-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter1-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter2-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter3-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter4-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter5-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter6-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter7-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter8-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter9-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter10-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter11-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Serpent-Hunter12-.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood1-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood2-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood3-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood4-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood5-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood6-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Youngblood7-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-series-17-.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/51541-Serpent-Hunter-pkg1.jpg",
+        "contextualTargetIds": [
+          "mk-56-alien-head"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/51539-Elder-pkg.jpg",
+        "contextualTargetIds": [
+          "mk-15-elder"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/51540-Youngblood-pkg.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "elder-avp",
+        "sourcePageUrl": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+        "sourcePageSha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/590w-series-17.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder1-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder2-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder3-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder4-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder5-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder6-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder7-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder8-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder9-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder10-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder11-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder12-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder13-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder14-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder15-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder16-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "greyback",
+        "sourcePageUrl": "https://necaonline.com/2022/07/predator-2-7-scale-action-figure-ultimate-elder-predator/",
+        "sourcePageSha256": "ac29752d6c92ccb16ef22af66e4f7bd6c440689c68dd8fb63d5ce0037d0c64ef",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2022/07/Elder17-scaled.jpg",
+        "contextualTargetIds": [
+          "mk-16-greyback"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel1.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel2.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel3.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel4.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel5.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel6.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel7.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "golden-angel",
+        "sourcePageUrl": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+        "sourcePageSha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2018/02/Golden-Angel1590.jpg",
+        "contextualTargetIds": [
+          "mk-20-golden-angel"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader1-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader2-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader3-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader4-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader5-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader6-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader7-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader8-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader9-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader10-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader11-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader12-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader13-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader14-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader15-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader16-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader17-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader18-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader19-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader20-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader21-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader22-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader23-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan-Leader24-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader-a-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader1-a-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader2-a-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader3-a-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader_pkg3-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader_pkg1-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader_pkg4-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/1200x-Clan_Leader_pkg2-.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "clan-leader",
+        "sourcePageUrl": "https://necaonline.com/2016/10/closer-look-predator-deluxe-clan-leader/",
+        "sourcePageSha256": "510418e4a948259e18b149ebba74b86a20bef9ed0b50e67958bb5402f55ecf23",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/10/590-clan-leader-feat-img.jpg",
+        "contextualTargetIds": [
+          "mk-58-clan-leader"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3592.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3587.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3578.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3574.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/51490_Series_10_Nightstorm.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/1000h-51488_Series_10_Hive_Wars_pkg.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3505.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3494.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3488.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3479.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3471.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/LAVA1.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/51489_Series_10_Lava_Planet.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/1000h-51489_Series_10_Lava_Planet_pkg.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3467.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3460.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3428.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3411.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/DSC_3403.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/51488_Series_10_Hive_Wars.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/1000h-51490_Series_10_Nightstorm_pkg.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "lava-nightstorm",
+        "sourcePageUrl": "https://necaonline.com/2013/06/predators-7-action-figure-series-10-asst-case-14/",
+        "sourcePageSha256": "01815c347c7568ae44142c18cf6402514c267e74be587ac26e7d944da4124aaa",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2013/06/51487-Predator-Series10Asst.jpg",
+        "contextualTargetIds": [
+          "mk-21-lava-planet",
+          "mk-59-nightstorm"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/Series-18-Group.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51543-Broken-Tusk1-1.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51543-Broken-Tusk2-1.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51543-Broken-Tusk3-1.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51544-Machiko1-1.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51544-Machiko2-1.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/Horn-Head-no-blood-1.jpg",
+        "contextualTargetIds": [
+          "mk-61-hornhead"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/Horn-Head6-1.jpg",
+        "contextualTargetIds": [
+          "mk-61-hornhead"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/Horn-Head7-1.jpg",
+        "contextualTargetIds": [
+          "mk-61-hornhead"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/Horn-Head8-1.jpg",
+        "contextualTargetIds": [
+          "mk-61-hornhead"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51543-Broken-Tusk-pkg1.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51543-Broken-Tusk-pkg2.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51545-Horn-Head-pkg1.jpg",
+        "contextualTargetIds": [
+          "mk-61-hornhead"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51545-Horn-Head-pkg2.jpg",
+        "contextualTargetIds": [
+          "mk-61-hornhead"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51544-Machiko-pkg1.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/51544-Machiko-pkg2.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "hornhead",
+        "sourcePageUrl": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+        "sourcePageSha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/06/Series-18-Group590.jpg",
+        "contextualTargetIds": [],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "context_only"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/NEW-51569-Ultimate-Ahab-Predator1.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator2.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator3.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator4.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator7.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator8.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator6.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/51569-Ultimate-Ahab-Predator5.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/Ahab-Predator9.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/Ahab-Predator10.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/Ahab-Predator11.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/Ahab-Predator12.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "ahab-neca",
+        "sourcePageUrl": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+        "sourcePageSha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/NEW-51569-Ultimate-Ahab-Predator1-590w.jpg",
+        "contextualTargetIds": [
+          "mk-18-ahab"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      },
+      {
+        "sourcePageId": "stalker-neca-page",
+        "sourcePageUrl": "https://necaonline.com/2016/02/predator-7-scale-action-figures-series-16-assortment/",
+        "sourcePageSha256": "ed2ce74b553774fc0a94c012d35aeb52c1c285f726ebe158cbbd6b23b4425a4e",
+        "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2016/02/590x-Predator-Series-16-NEW-GROUP.jpg",
+        "contextualTargetIds": [
+          "mk-60-stalker"
+        ],
+        "view": "uninspected",
+        "downloadState": "not_requested_blocked_cdn_host",
+        "canonicalIdentityCertified": false,
+        "priority": "target"
+      }
+    ],
+    "identityLimits": [
+      "MK15 Elder is AVP2004 Bouvetoya Elder; not PHG Elder and not Greyback.",
+      "MK16 Greyback is Predator2 Elder; MK20 Golden Angel is its 1718/NECA state and calls for two separately verified masks.",
+      "MK56 Alien Head corresponds to Serpent Hunter AVP2010; never substitute for Lord MK17.",
+      "MK60 Stalker is Kenner/NECA Series16, not Lost Tribe Stalker.",
+      "MK31 Bionic is a cybernetic head layer with right eye, not a detachable biomask.",
+      "Hornhead article explicitly confirms a removable mask, but cranial horns do not establish its geometry.",
+      "Licensed figures may be adaptations; page identity alone does not certify exact original game/film/comic fidelity.",
+      "No Lord MK17 exact official source was found in the documented official pages.",
+      "Golden Angel two masks must be distinguished by actual images before per-variant generation.",
+      "No new target generation is considered ready from the small Stalker thumbnail or unrelated Lost Tribe photographs."
+    ],
+    "blockedPhotoProbe": {
+      "url": "https://eadn-wc04-13179453.nxedge.io/wp-content/uploads/2017/05/NEW-51569-Ultimate-Ahab-Predator1.jpg",
+      "result": "curl56 CONNECT403 HTTP000 0bytes; no unchanged retries or alternate-origin retrieval"
+    },
+    "blockedSideshowProbe": {
+      "url": "https://www.sideshow.com/collectibles/predator-tracker-hot-toys-901303",
+      "result": "curl56 CONNECT403 HTTP000 0bytes; no unchanged retries"
+    }
+  },
+  "alphaSearches": [
+    {
+      "url": "https://blog.playstation.com/?s=%22Alpha%20Predator%22",
+      "sha256": "4c13ac09fe5d871892600a798b22457437a08d5c06b886857bb37134e5fe5fc4",
+      "bytes": 107267,
+      "httpStatus": 200,
+      "finding": "No usable new PHG article link in fetched search results; not image evidence."
+    },
+    {
+      "url": "https://blog.playstation.com/?s=Alpha",
+      "sha256": "a31867d625e45d2cf02d9d1cb52caa284cc05f277b9209a8695ae1af7068822c",
+      "bytes": 173364,
+      "httpStatus": 200,
+      "finding": "No usable new PHG article link in fetched search results; not image evidence."
+    }
+  ],
+  "newlyCoveredCandidateNames": [
+    {
+      "inventoryId": "mk-25-valkyrie",
+      "name": "Valkyrie PHG",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+      "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e",
+      "status": "generated-candidate",
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "inventoryId": "phg-cleopatra",
+      "name": "Cleopatra PHG",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+      "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4",
+      "status": "generated-candidate",
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ],
+  "acceptedCandidateInput": {
+    "path": "production/biomasks-primary-20261113/inputs/accepted-assets.json",
+    "sha256": "639c22ec66b33191d7d3839b6f5f798153c0e5861aa0ee57e3a49a81e61256af"
+  },
+  "acceptanceLimits": "All five entries remain generated candidates. Source availability and technical/source-view acceptance do not close any P0, bible/Excel fidelity requirement, human art validation or runtime integration."
+}

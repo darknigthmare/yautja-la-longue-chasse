@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "batch": "viking-official-source-view",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "status": "generated-candidate",
+  "method": "Version1 selected after independent native-browser alpha/source comparison; native PNG bytes copied unchanged. Version2 retained as private unselected attempt metadata. Pillow measurement only; no CPU image editing.",
+  "counts": {
+    "generatedCandidateViews": 1,
+    "nativePNGFiles": 1,
+    "newMaskNames": 0,
+    "animationClips": 0,
+    "humanArtValidated": 0,
+    "canonCertified": 0,
+    "generatedAttempts": 2,
+    "publicNativePNGFiles": 1
+  },
+  "entries": [
+    {
+      "id": "viking",
+      "label": "Viking PHG — vue officielle en couleur",
+      "maskId": "mk-24-viking",
+      "assetKind": "mask",
+      "state": "official-source-view",
+      "status": "generated-candidate",
+      "sourceType": "official-promotional-and-publisher-gameplay-images",
+      "sourceIds": [
+        "viking-official-render",
+        "viking-official-front"
+      ],
+      "references": [
+        {
+          "id": "viking-official-render",
+          "path": "/tmp/primary-masks-20261113/phg/viking-render.png",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/79094b2402/viking-predator.png",
+          "sha256": "82facff1a00df89b895583f68048186a81081a140d1107ec4f509a7beb72d205",
+          "bytes": 357919,
+          "dimensions": [
+            995,
+            1101
+          ],
+          "mode": "P",
+          "httpStatus": 200,
+          "pixelsActuallyInspected": true,
+          "identity": "PHG Viking class worn mask",
+          "camera": "Full-body promotional render; head near front turned slightly toward image right; full horned helmet visible.",
+          "visible": [
+            "Engraved dark/silver upper helmet, gold brow and gold nose plate, silver cheek/lower face panels.",
+            "Two long curved helmet horns: gold lower sections with ridged grey tips, not a proved bone material.",
+            "Decorated plate covers image-left eye / anatomical RIGHT eye; image-right aperture remains dark."
+          ],
+          "limitations": [
+            "No named customization swatch or selected variant is shown.",
+            "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+            "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+            "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+            "Exclude the blue axe blade behind head, axe shaft, necklace, body, shoulders and all hanging black dreadlocks.",
+            "Fine engraving is visible only to render resolution; preserve it without inventing extra runes."
+          ],
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "Exact Storyblok URL already in app/game/data/phgVisualReferenceResearchV123.json; matching official PlayStation screenshot directly confirms identity and visible colored details. Official PHG homepage remains CONNECT 403."
+          },
+          "bytesUnmodified": true
+        },
+        {
+          "id": "viking-official-front",
+          "path": "/tmp/primary-masks-20261113/phg/viking-50536850927.jpg",
+          "url": "https://live.staticflickr.com/65535/50536850927_fe13656697_b.jpg",
+          "sha256": "5d7014b43388437b5d17c384fe60b8ea1168d29c1243b44c5d9eaa6e3b0bf457",
+          "bytes": 102588,
+          "dimensions": [
+            1024,
+            576
+          ],
+          "mode": "RGB",
+          "httpStatus": 200,
+          "pixelsActuallyInspected": true,
+          "identity": "PHG Viking class worn mask",
+          "camera": "In-game front view, very slight angle; both horn tops touch/cross top edge and are cropped.",
+          "visible": [
+            "Dark engraved crown, gold nose plate and brow details, silver cheeks.",
+            "Engraved plate covers anatomical RIGHT eye / image LEFT; opposite eye is an open dark slit.",
+            "Source distinguishes mask horn hardware from long black wearer dreadlocks."
+          ],
+          "limitations": [
+            "No named customization swatch or selected variant is shown.",
+            "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+            "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+            "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+            "Only 1024×576 full frame; helmet occupies a smaller area.",
+            "Cannot complete horn-tip geometry from this cropped source alone."
+          ],
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": true,
+            "attribution": "Tramell Isaac; October 27, 2020",
+            "caption": "Predator: Hunting Grounds",
+            "visibleFooter": "Captured From PS4 Pro; © 2020 20th Century Studios"
+          },
+          "bytesUnmodified": true
+        }
+      ],
+      "nativeSourcePath": "/workspace/generated_images/exec-ad374758-2bdd-402d-a9f1-e8799ced6ce6.png",
+      "generatedNativePath": "/workspace/generated_images/exec-ad374758-2bdd-402d-a9f1-e8799ced6ce6.png",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+      "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749",
+      "bytes": 1767889,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotScope": "centered standalone preview only; not fitted to equipment rig",
+      "view": "source render camera, slight three-quarter turn toward image right and downward pitch; exact projection not measured",
+      "viewCoverage": [
+        "official-promotional-source-view"
+      ],
+      "frames": 1,
+      "animationFrames": 1,
+      "animationClips": 0,
+      "animated": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "hiddenGeometryEstablished": false,
+      "pixelEditingPerformed": false,
+      "sourceReferenceViewed": true,
+      "generatedOutputVisuallyCompared": true,
+      "publicCopyWritten": true,
+      "prompt": "Produce ONE isolated detached Viking Predator biomask/helmet cutout, copied faithfully from the TWO supplied official Predator: Hunting Grounds images. This is a source-view production candidate, not an invented Norse helmet or a claimed canonical reconstruction. MAIN CAMERA: keep the exact slight three-quarter angle and slight downward pitch of the FIRST image, viking-render.png; the face points slightly toward image right. The SECOND official screenshot is only to check visible color placement and asymmetric details, not to turn the object into a frontal pose. Preserve the original mask outline, proportions, foreplate topology, engraved ornamental shapes and colors: dark blue-black metal upper dome with the large round decorated forehead medallion and concentric engraved bands; long paired upward curved horn structures with golden outer mounting plates and gray ridged tips; small subordinate points already visible near their roots; the broad worn silver lower face shell; the long golden engraved central nose plate with wider rounded lower end; a golden engraved eye-cover over the eye at IMAGE LEFT (wearer's anatomical right) and the dark open eye aperture at IMAGE RIGHT. Keep that asymmetry. Match source horn curvature, spacing and relative height, no extra horns. Keep the shallow gold brow bands and original asymmetric eye-cover outline. Small ornament detail should remain visually subordinate, no new runes or design additions. These source pictures establish visible coloration and shape, not hidden rear geometry. Remove the entire wearer: no black hanging dreadlocks, hair, exposed flesh, shoulders, armor, collar, necklaces, body, hands or skull trophy. In particular the large BLUE AXE BLADE and handle extending behind/above the head in the first picture are a WEAPON, not helmet parts: OMIT THE AXE COMPLETELY. Preserve just the true metal helmet, faceplate, horns and their attachments. No generic human Viking helmet, no hollow human nose guard, no additional eye, no beard. Match the game's realistic worn metal/shading as seen, with restrained neutral lighting preserving silver/gold/blue-black source colors. Do not redesign, mirror or symmetrize the face. Entire whole helmet including both horn tips fully inside a square 1254x1254 canvas, centered and sized about 75 percent of canvas height, at least 10 percent completely empty transparent alpha margin on all sides. Native transparent background, opaque metal core and clean antialiased silhouette. No checkerboard painting, no floor or cast shadow, no glow, scenery, text, watermark, frame, UI, duplicate objects or alternate views.",
+      "transparentBackgroundRequested": true,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 970730,
+        "visiblePixels16": 575145,
+        "opaquePixels240": 567579,
+        "noisePixels1or2": 20838,
+        "bounds16": [
+          197,
+          68,
+          1053,
+          1170
+        ],
+        "marginsPixels": [
+          197,
+          68,
+          201,
+          84
+        ],
+        "marginMinimumFraction": 0.05422647527910686,
+        "opaqueFractionOfVisible16": 0.9868450564640221,
+        "hiddenRgbIgnored": true
+      },
+      "technicalQA": {
+        "nativePNG": true,
+        "RGBA": true,
+        "alphaZeroPresent": true,
+        "solidCorePresent": true,
+        "sourceBytesIntact": true,
+        "subjectInsideCanvasAtAlpha16": true,
+        "nativeCopyBytesIdentical": true
+      },
+      "agentVisualAssessment": {
+        "scope": "non-human source comparison of visible macro shape, color arrangement and wearer exclusions",
+        "macroFeatures": [
+          "Paired long upward curved gold-mounted horns with grey striated tips retained.",
+          "Dark engraved crown and silver cheeks with central gold nose plate retained.",
+          "Golden engraved eye-cover at image left and open dark opposite aperture retained.",
+          "No blue axe, dreadlocks, wearer, body or neck included."
+        ],
+        "reviewStatus": "accepted-as-candidate-only-after-independent-source-and-native-browser-comparison",
+        "nativeBrowserAlphaReview": "Independent reviewer compared v1 and v2 on black, white and checkerboard using native browser alpha. Both had clean contours; suspected white blobs in view_image were mostly alpha1–9/255 and did not establish a compositing defect. Version1 retained because version2 offered no visible alpha benefit and recomputed ornamental detail."
+      },
+      "limitations": [
+        "A candidate interpretation of visible official images, not publisher-certified or pixel-level1:1 reproduction.",
+        "Source render angle is approximated; exact camera and projection are unmeasured. No new frontal, side or rear reconstruction is established.",
+        "Fine engraved motifs, rune identity/counts, horn-root shapes and small lower-face attachments remain interpretations of limited source resolution.",
+        "Illuminated source colors are visible appearance only; neutral albedo, material UVs, precise colorway names and hidden geometry are not established.",
+        "Promotional Storyblok URL is pinned in project research; official publisher screenshot corroborates mask identity and visible colored details. The currently unavailable PHG homepage was not used as newly verified linkage.",
+        "Foreground is fully inside the native canvas. Actual top/bottom margins68/84pixels are smaller than requested10percent; no CPU reframing was performed.",
+        "No six-morphology equipment fitting, rig, runtime integration, animation, human art approval or canonical certification.",
+        "This improves the primary-source view for an existing named mask; it does not reduce the50remaining named missing-mask targets.",
+        "Low-alpha external pixels are present; native browser review found clean edges on black, white and checkerboard. No CPU cleanup was performed; retain human artistic review requirement."
+      ],
+      "nativeCopyIdentical": true
+    }
+  ],
+  "attempts": [
+    {
+      "version": "v1",
+      "nativeSourcePath": "/workspace/generated_images/exec-ad374758-2bdd-402d-a9f1-e8799ced6ce6.png",
+      "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749",
+      "bytes": 1767889,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "Produce ONE isolated detached Viking Predator biomask/helmet cutout, copied faithfully from the TWO supplied official Predator: Hunting Grounds images. This is a source-view production candidate, not an invented Norse helmet or a claimed canonical reconstruction. MAIN CAMERA: keep the exact slight three-quarter angle and slight downward pitch of the FIRST image, viking-render.png; the face points slightly toward image right. The SECOND official screenshot is only to check visible color placement and asymmetric details, not to turn the object into a frontal pose. Preserve the original mask outline, proportions, foreplate topology, engraved ornamental shapes and colors: dark blue-black metal upper dome with the large round decorated forehead medallion and concentric engraved bands; long paired upward curved horn structures with golden outer mounting plates and gray ridged tips; small subordinate points already visible near their roots; the broad worn silver lower face shell; the long golden engraved central nose plate with wider rounded lower end; a golden engraved eye-cover over the eye at IMAGE LEFT (wearer's anatomical right) and the dark open eye aperture at IMAGE RIGHT. Keep that asymmetry. Match source horn curvature, spacing and relative height, no extra horns. Keep the shallow gold brow bands and original asymmetric eye-cover outline. Small ornament detail should remain visually subordinate, no new runes or design additions. These source pictures establish visible coloration and shape, not hidden rear geometry. Remove the entire wearer: no black hanging dreadlocks, hair, exposed flesh, shoulders, armor, collar, necklaces, body, hands or skull trophy. In particular the large BLUE AXE BLADE and handle extending behind/above the head in the first picture are a WEAPON, not helmet parts: OMIT THE AXE COMPLETELY. Preserve just the true metal helmet, faceplate, horns and their attachments. No generic human Viking helmet, no hollow human nose guard, no additional eye, no beard. Match the game's realistic worn metal/shading as seen, with restrained neutral lighting preserving silver/gold/blue-black source colors. Do not redesign, mirror or symmetrize the face. Entire whole helmet including both horn tips fully inside a square 1254x1254 canvas, centered and sized about 75 percent of canvas height, at least 10 percent completely empty transparent alpha margin on all sides. Native transparent background, opaque metal core and clean antialiased silhouette. No checkerboard painting, no floor or cast shadow, no glow, scenery, text, watermark, frame, UI, duplicate objects or alternate views.",
+      "sourceReferencePaths": [
+        "/tmp/primary-masks-20261113/phg/viking-render.png",
+        "/tmp/primary-masks-20261113/phg/viking-50536850927.jpg"
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 970730,
+        "visiblePixels16": 575145,
+        "opaquePixels240": 567579,
+        "noisePixels1or2": 20838,
+        "bounds16": [
+          197,
+          68,
+          1053,
+          1170
+        ],
+        "marginsPixels": [
+          197,
+          68,
+          201,
+          84
+        ]
+      },
+      "pixelEditingPerformed": false,
+      "publicCopyWritten": true,
+      "acceptanceStatus": "accepted-generated-candidate",
+      "nativeCopyIdentical": true
+    },
+    {
+      "version": "v2",
+      "nativeSourcePath": "/workspace/generated_images/exec-6c49cbb9-3e19-4489-aedc-c9cf7334801f.png",
+      "sha256": "92805ce635b9b134e0ce2aed20c0fa57ca233ab6f2833cc2b1a98f94aabe1a4f",
+      "bytes": 1737605,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "prompt": "Perform a very precise cutout cleanup of the FIRST attached generated Viking Predator biomask ONLY. Fix its external alpha/silhouette artifacts; preserve the mask's actual design unchanged. The first image has unwanted WHITE BLOBS or clumps sticking OUTSIDE the actual gray ridged horn contours near both upper horn tips, especially on the high image-left tip and above the arched image-right horn. It also has unwanted thin bright RED and YELLOW fringe pixels just OUTSIDE the real helmet/horn/faceplate silhouette. Remove those external white blobs and red/yellow cutout fringes and replace them with genuinely empty transparent alpha. Preserve the actual gray striated horn material and its authentic pale highlights; do not remove or shorten real horns. Preserve every true helmet feature, gold/silver/dark-blue-black metal, existing engraved motifs, gold eye-cover on IMAGE LEFT and dark open eye on IMAGE RIGHT. The second and third attached official reference images distinguish the actual gray ridged horn edges from the external white cutout debris. Do not introduce their wearer, dreadlocks or weapon. Keep the EXACT same current three-quarter pose toward image right, proportions, outlines, ornament shapes, horn curvature, lighting, colors, canvas framing and margins from the FIRST image. No scaling, no reframing, no movement, no rotation, no redesigned details. The margins are already adequate. Only the false external cutout debris must change. Keep an opaque metal core and clean natural antialiased alpha edge. Output ONE native transparent PNG on the same square1254x1254 canvas. No painted checkerboard, added background, drop shadow, glow, floor, weapon, body, hair, necklace, skin, text, frame or extra views.",
+      "sourceReferencePaths": [
+        "/workspace/generated_images/exec-ad374758-2bdd-402d-a9f1-e8799ced6ce6.png",
+        "/tmp/primary-masks-20261113/phg/viking-render.png",
+        "/tmp/primary-masks-20261113/phg/viking-50536850927.jpg"
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 979488,
+        "visiblePixels16": 579573,
+        "opaquePixels240": 572253,
+        "noisePixels1or2": 8797,
+        "bounds16": [
+          197,
+          68,
+          1057,
+          1171
+        ],
+        "marginsPixels": [
+          197,
+          68,
+          197,
+          83
+        ]
+      },
+      "pixelEditingPerformed": false,
+      "publicCopyWritten": false,
+      "acceptanceStatus": "not-selected",
+      "reason": "ImageGen alpha cleanup requested for apparent external white/red/yellow fringe; subsequent read-only diagnosis found most suspect white blobs alpha1–9/255, so view_image preview alone does not establish native compositing defect. Both versions retained for browser comparison. No reframing requested or performed by CPU.",
+      "notSelectedReason": "No visible alpha improvement in native browser composites; engraved detail and highlights were recomputed. Version1 better preserves first source-derived candidate."
+    }
+  ],
+  "currentSelection": "v1",
+  "selectedAssetPath": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+  "reviewStatus": "root-and-independent-candidate-review-complete",
+  "humanArtValidated": false
+}

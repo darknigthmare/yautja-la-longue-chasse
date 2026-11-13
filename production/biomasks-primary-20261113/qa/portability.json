@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "selectedFiles": 366,
+  "selection": {
+    "passed": true,
+    "literalFiles": 366,
+    "pinnedFiles": 359,
+    "pinnedBytes": 301340755,
+    "selectedBytes": 301758852,
+    "scope": "Sparse file selection and byte pins; not browser, human art, runtime or canon approval"
+  },
+  "privateNativeOriginsMaskedReadOnly": 5,
+  "privateOfficialPhotosRequired": false,
+  "repositoryInputsChanged": false,
+  "negativeChecks": [
+    {
+      "name": "Native output byte mismatch is rejected",
+      "passed": true,
+      "diagnostic": "Accepted native candidate byte mismatch: samurai"
+    },
+    {
+      "name": "Historical protected source mutation is rejected",
+      "passed": true,
+      "diagnostic": "Pinned file changed: production/p0-sprites-20261113/README.md"
+    },
+    {
+      "name": "Automatic canonical approval is rejected",
+      "passed": true,
+      "diagnostic": "Unapproved automatic validation claim in samurai"
+    },
+    {
+      "name": "Unregistered public files are rejected",
+      "passed": true
+    },
+    {
+      "name": "Read-only verifier rejects writes",
+      "passed": true
+    }
+  ],
+  "scope": "Relocated exact selected files, deterministic reconstruction and explicit failures; no canon/human/runtime art approval",
+  "relocatedCheckoutLocation": "Temporary isolated /tmp directory; private inputs not copied",
+  "manifestSha256": "2d087cf90dfc8eaef371fb06e42cf50c00b4634caf69603e3a4cdde8ee09a0f9"
+}

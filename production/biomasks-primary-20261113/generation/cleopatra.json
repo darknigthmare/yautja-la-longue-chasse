@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "tool": "image_gen.imagegen",
+  "status": "generated-candidate",
+  "reviewStatus": "root-and-independent-candidate-review-complete",
+  "entries": [
+    {
+      "id": "cleopatra",
+      "prompt": "Create ONE reference-bound transparent cutout of the actual CLEOPATRA Predator Hunting Grounds biomask and its clearly attached rigid helmet pieces from this exact official promotional render. This is extraction and faithful visible reconstruction, NOT a redesign. Retain the exact camera of the head in the image, near frontal with its very slight turn, no new profile/back/interior views. Only depict the empty detached mask, no alien head, hair/dreadlocks, neck, necklace, body armor, shoulders, weapons, disc weapon, hands or background. Keep the precise tall smooth dark steel-blue face shield tapering to a narrow flat-ended lower central plate, thin aged gold outlines, two narrow black leaf-shaped eye openings, and large circular bronze/gold frontal medallion high above the brows with its concentric visible relief pattern and dark small oval above it. The actual helmet has TWO tall outer curved fluted ribbed metal side fins in silver/dark bronze as seen in the source, with slender inner curved gold-edged prongs framing the medallion: preserve only these specific visible shapes and spacing; don't add a generic Egyptian crown, humanoid pharaoh face, cobra heads, ears, horns, new symbols or ornaments. Preserve the actual little pointed gold emblem below the disc and source's tiny red targeting light cluster on image LEFT temple if visible. Exclude the layered large shoulder armor and body collar below the mask. Match source proportions, blue/silver/gold colors and visible patina; lighting is not a certified neutral albedo. Fine engraving beyond source resolution must stay restrained instead of invented glyphs. Fully contained entire mask and fins centered with at least 60px clear transparent native margin on all sides, about 75 percent frame height, one object only. High quality physically plausible game prop rendering, soft neutral illumination, actual transparent background alpha through tool, no floor shadow, floating fragments, labels, text, border, UI, watermark or checkerboard.",
+      "nativeSourcePath": "/workspace/generated_images/exec-d1ea495a-943c-4b7c-b0f7-fcb5c278f012.png",
+      "sourceIds": [
+        "cleopatra-official-render"
+      ],
+      "label": "Cleopatra · PHG · couleur et vue du rendu",
+      "view": "Near frontal, slight turn constrained to the single full official promotional render; no new side/back view.",
+      "limitations": [
+        "The promotional render is the only probative geometry source; the official article and roadmap corroborate identity rather than additional mask views.",
+        "Fine medallion ornament, flute counts and small reliefs are generated interpretations limited by reference resolution.",
+        "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+        "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration."
+      ],
+      "assetPath": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+      "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4",
+      "bytes": 1618663,
+      "nativeDimensions": [
+        1192,
+        1319
+      ],
+      "width": 1192,
+      "height": 1319,
+      "nativeMode": "RGBA",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "transparentBackgroundRequested": true,
+      "sourceRect": [
+        0,
+        0,
+        1192,
+        1319
+      ],
+      "pivot": [
+        596.0,
+        659.5
+      ],
+      "pivotStatus": "centered review proposal, not fitted to wearer rig",
+      "sourceReferences": [
+        {
+          "id": "cleopatra-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/163e3cfd75/cleopatra-predator.png",
+          "sha256": "e72dfeb2c21bb4e47a1ccf53b040e57deb594ac37d8d76c7e9f4430c61de995a",
+          "width": 995,
+          "height": 1101
+        }
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          170,
+          69,
+          1020,
+          1231
+        ],
+        "marginsPixels16": [
+          170,
+          69,
+          172,
+          88
+        ],
+        "transparentPixels": 888484,
+        "visiblePixels16": 659619
+      }
+    }
+  ],
+  "humanArtValidated": false
+}

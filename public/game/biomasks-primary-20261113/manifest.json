@@ -1,0 +1,2289 @@
+{
+  "schemaVersion": 1,
+  "id": "biomasks-primary-20261113",
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "status": "generated-candidates-review-required",
+  "allMasksGenerated": false,
+  "allP0Closed": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "animationClips": 0,
+  "counts": {
+    "nativeFiles": 5,
+    "assets": 5,
+    "newNamedTargets": 2,
+    "improvedExistingNamedTargets": 3,
+    "remainingNamedTargets": 48,
+    "baselineRemainingNamedTargets": 50,
+    "sourceNamedEntries": 110,
+    "exactMissingImagesRequired": null,
+    "canonCertifiedAssets": 0,
+    "humanValidatedAssets": 0,
+    "runtimeIntegratedAssets": 0,
+    "animationClips": 0
+  },
+  "plannedBatch": {
+    "selectedTargetIds": [
+      "cleopatra",
+      "exiled",
+      "samurai",
+      "valkyrie",
+      "viking"
+    ],
+    "missingSelectedIds": [],
+    "requestedBatchGenerated": true,
+    "allNamedRequirementsComplete": false
+  },
+  "assets": [
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+      "bytes": 1618663,
+      "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4",
+      "id": "cleopatra",
+      "inventoryId": "phg-cleopatra",
+      "label": "Cleopatra · PHG · couleur et vue du rendu",
+      "url": "/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+      "src": "/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+      "width": 1192,
+      "height": 1319,
+      "sourceRect": [
+        0,
+        0,
+        1192,
+        1319
+      ],
+      "pivot": [
+        596.0,
+        659.5
+      ],
+      "pivotStatus": "review proposal; no rig integration",
+      "alpha": {
+        "threshold": 16,
+        "bounds16": [
+          170,
+          69,
+          1020,
+          1231
+        ],
+        "marginsPixels": [
+          170,
+          69,
+          172,
+          88
+        ],
+        "transparentPixels": 888484,
+        "visiblePixels16": 659619,
+        "opaquePixels240": 651188,
+        "nearOpaqueFractionOfVisible16": 0.9872183790945985,
+        "occupancy16": 0.4195387750532995,
+        "softPixels3To239": 15186,
+        "coreDoesNotTouchFrameEdges": true,
+        "hiddenRgbIgnored": true
+      },
+      "view": "Near frontal, slight turn constrained to the single full official promotional render; no new side/back view.",
+      "frames": 1,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "sourceIds": [
+        "cleopatra-official-render"
+      ],
+      "references": [
+        {
+          "id": "cleopatra-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/163e3cfd75/cleopatra-predator.png",
+          "sha256": "e72dfeb2c21bb4e47a1ccf53b040e57deb594ac37d8d76c7e9f4430c61de995a",
+          "bytes": 328708,
+          "width": 995,
+          "height": 1101,
+          "mode": "P",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "PHG Cleopatra worn biomask",
+          "view": "Near front, nearly symmetric view, complete crest and lower mask visible.",
+          "sourceKind": "promotional-render-listed-in-project-source-ledger",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/?p=352735",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "Exact pre-existing URL from app/game/data/phgVisualReferenceResearchV123.json; current PHG homepage link cannot be checked because CONNECT403. Mask/class corroborated by inspected official PlayStation images."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Long narrow blue-grey metal face with sharply sloped black eye slits and long blunt lower nose/chin line.",
+            "Large round gold forehead medallion with engraved rings/motif and smaller gold lower insignia.",
+            "Two long curved fluted silver/gold-edged side wings rising beyond crown; small narrow upper inner prongs."
+          ],
+          "limitations": [
+            "Shoulder cannon, chest mesh, gold shoulder plates, disk weapon and black/brown side tubes belong to wearer or equipment, not the detached faceplate.",
+            "Official article corroborates class identity via roadmap, but supplies no additional close-up mask camera.",
+            "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+            "No strict side/back view, UV or six-morphology fit established.",
+            "Not human-art-approved or canonical 1:1.",
+            "No raster edits or crops performed. Original source bytes are intact."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false,
+          "projectSourceLedger": {
+            "path": "app/game/data/phgVisualReferenceResearchV123.json",
+            "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+            "jsonPointer": "/targets/3/originalEvidenceUrls"
+          }
+        }
+      ],
+      "generationRecord": {
+        "path": "production/biomasks-primary-20261113/generation/cleopatra.json",
+        "bytes": 4835,
+        "sha256": "0794e6df1af6703c1110e48be38a06704af4eb2b51beab90204a7408f7e7afed"
+      },
+      "limitations": [
+        "The promotional render is the only probative geometry source; the official article and roadmap corroborate identity rather than additional mask views.",
+        "Fine medallion ornament, flute counts and small reliefs are generated interpretations limited by reference resolution.",
+        "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+        "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration.",
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Reference intake and candidate generation do not close bible/Excel requirements automatically.",
+        "No independent publisher closeup was found. The directly linked official roadmap repeats this pose at small size, sufficient only to corroborate class/composition.",
+        "The roadmap states artwork not final and subject to change; it cannot validate fine geometry or exact release-game materials.",
+        "The source leaves rear attachment surfaces hidden.",
+        "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+        "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+        "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+      ],
+      "warnings": [],
+      "previousCandidate": null
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+      "bytes": 1965781,
+      "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee",
+      "id": "exiled",
+      "inventoryId": "phg-exiled",
+      "label": "Exiled · PHG · couleur et vue officielle",
+      "url": "/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+      "src": "/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+      "width": 1069,
+      "height": 1472,
+      "sourceRect": [
+        0,
+        0,
+        1069,
+        1472
+      ],
+      "pivot": [
+        534.5,
+        736.0
+      ],
+      "pivotStatus": "review proposal; no rig integration",
+      "alpha": {
+        "threshold": 16,
+        "bounds16": [
+          130,
+          41,
+          946,
+          1291
+        ],
+        "marginsPixels": [
+          130,
+          41,
+          123,
+          181
+        ],
+        "transparentPixels": 819421,
+        "visiblePixels16": 733234,
+        "opaquePixels240": 724716,
+        "nearOpaqueFractionOfVisible16": 0.9883829718752812,
+        "occupancy16": 0.465969058852239,
+        "softPixels3To239": 13665,
+        "coreDoesNotTouchFrameEdges": true,
+        "hiddenRgbIgnored": true
+      },
+      "view": "Near-front slight three-quarter constrained to the complete head in the official render, with close-up only for visible face details.",
+      "frames": 1,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "sourceIds": [
+        "exiled-official-render",
+        "exiled-official-closeup"
+      ],
+      "references": [
+        {
+          "id": "exiled-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/7ed246b069/exiled-predator.png",
+          "sha256": "ed265971f2bf2a2788ea1fbec3b24007e20263651b932e78a1987c92937008d8",
+          "bytes": 269382,
+          "width": 995,
+          "height": 1101,
+          "mode": "P",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "PHG Exiled worn biomask",
+          "view": "Near front with slight turn toward image left; complete split upper crest visible.",
+          "sourceKind": "promotional-render-listed-in-project-source-ledger",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "Exact pre-existing URL from app/game/data/phgVisualReferenceResearchV123.json; current PHG homepage link cannot be checked because CONNECT403. Mask/class corroborated by inspected official PlayStation images."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Tall brown carved/engraved face shell, two split upright top prongs, pale brow strips, dark almond eye apertures.",
+            "Circular cheek motifs, central long engraved ridge, small squared mouth/tooth details and projecting pale tusks."
+          ],
+          "limitations": [
+            "Brown surface is visually wood-like; material chemistry is not proven.",
+            "Do not copy dreadlocks, large blue wrist blades, green-lit shoulder gun, necklace, chest/neck armor or axe weapon.",
+            "Attachment ownership of the longest downward pale neck-adjacent fang is not fully established; do not invent a detached mounting or hidden underside.",
+            "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+            "No strict side/back view, UV or six-morphology fit established.",
+            "Not human-art-approved or canonical 1:1.",
+            "No raster edits or crops performed. Original source bytes are intact."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false,
+          "projectSourceLedger": {
+            "path": "app/game/data/phgVisualReferenceResearchV123.json",
+            "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+            "jsonPointer": "/targets/4/originalEvidenceUrls"
+          }
+        },
+        {
+          "id": "exiled-official-closeup",
+          "url": "https://live.staticflickr.com/65535/51632611790_7c3d35a12d_h.jpg",
+          "sha256": "f8787b3fb083c0251cc73e802fd7bdbe56f4ed205eda2ac755836bf8d19d390f",
+          "bytes": 334876,
+          "width": 1600,
+          "height": 900,
+          "mode": "RGB",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "Official Exiled Predator DLC Pack promo",
+          "view": "Same pose as complete render, close crop; upper prong tips cut by top edge.",
+          "sourceKind": "publisher-linked-gameplay-or-promo-screenshot",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": true,
+            "context": "Exact image URL observed in the fetched official article."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Named EXILED PREDATOR DLC PACK text in image.",
+            "Brown carved helmet, pale trim/cheek motifs, dark lenses and visible tusks agree with render."
+          ],
+          "limitations": [
+            "Upper mask prongs cropped. No side or back coverage.",
+            "Strong blue/green lighting affects visible color.",
+            "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+            "No strict side/back view, UV or six-morphology fit established.",
+            "Not human-art-approved or canonical 1:1.",
+            "No raster edits or crops performed. Original source bytes are intact."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false
+        }
+      ],
+      "generationRecord": {
+        "path": "production/biomasks-primary-20261113/generation/exiled.json",
+        "bytes": 5447,
+        "sha256": "ecb6bbd1e58c1fc00acfe7bd19651ddba7d337d33386a87d5ed4a2a9b39f462e"
+      },
+      "limitations": [
+        "Long pale downward tusks over the neck have uncertain ownership/attachment and are deliberately omitted; this is a conservative partial mask cutout.",
+        "Brown wood-like appearance does not establish actual material, neutral albedo or a named customization swatch.",
+        "Fine engraved line arrangements and mounting details remain generated interpretations.",
+        "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+        "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration.",
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Reference intake and candidate generation do not close bible/Excel requirements automatically.",
+        "Brown wood-like appearance does not establish material chemistry or neutral albedo.",
+        "The longest lower fangs may belong to wearer/neck equipment; their mask attachment and hidden underside remain unproved.",
+        "Official closeup is heavily blue/green lit and crops the top crest; use complete render silhouette.",
+        "New source-view color candidate supplements the grayscale Exiled reference-view candidate without creating an additional named mask.",
+        "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+        "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+        "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+      ],
+      "warnings": [
+        "Marge native inférieure à5%; revoir le cadrage."
+      ],
+      "previousCandidate": {
+        "path": "public/game/biomasks-20261113/masks/exiled-reference-view.png",
+        "bytes": 1378480,
+        "sha256": "f7bb8a335d3252494cb127689c89b777c70e9ddcee18257477097e49af36a679",
+        "url": "/game/biomasks-20261113/masks/exiled-reference-view.png",
+        "label": "Ancien candidat frontal monochrome",
+        "provenance": "Source communautaire secondaire monochrome ; angle distinct et couleurs non établies"
+      }
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+      "bytes": 1637768,
+      "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715",
+      "id": "samurai",
+      "inventoryId": "mk-23-samurai",
+      "label": "Samurai · PHG · couleur et vue officielle",
+      "url": "/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+      "src": "/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+      "width": 1312,
+      "height": 1199,
+      "sourceRect": [
+        0,
+        0,
+        1312,
+        1199
+      ],
+      "pivot": [
+        656.0,
+        599.5
+      ],
+      "pivotStatus": "review proposal; no rig integration",
+      "alpha": {
+        "threshold": 16,
+        "bounds16": [
+          90,
+          12,
+          1154,
+          1183
+        ],
+        "marginsPixels": [
+          90,
+          12,
+          158,
+          16
+        ],
+        "transparentPixels": 819467,
+        "visiblePixels16": 735673,
+        "opaquePixels240": 727967,
+        "nearOpaqueFractionOfVisible16": 0.9895252374356541,
+        "occupancy16": 0.467661694704937,
+        "softPixels3To239": 12736,
+        "coreDoesNotTouchFrameEdges": true,
+        "hiddenRgbIgnored": true
+      },
+      "view": "Official close-up camera: head tilted forward, three-quarter toward image left; clearly rigid dome completed only from matching full render.",
+      "frames": 1,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "sourceIds": [
+        "samurai-official-closeup",
+        "samurai-official-render"
+      ],
+      "references": [
+        {
+          "id": "samurai-official-closeup",
+          "url": "https://live.staticflickr.com/65535/50059892976_c149533c4a_k.jpg",
+          "sha256": "bf2144389c5fa0e74a1c0444973a119f36ddd1f668f020c14281068571dfd096",
+          "bytes": 653635,
+          "width": 2048,
+          "height": 1152,
+          "mode": "RGB",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "PHG Samurai class worn mask",
+          "view": "Close in-game scene, head inclined and turned toward image left; uppermost crest cut by top edge.",
+          "sourceKind": "publisher-linked-gameplay-screenshot",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": true,
+            "attribution": "Jordan Mathewson, Design Director, IllFonic; June 30, 2020",
+            "caption": "Predator: Hunting Grounds",
+            "visibleFooter": "Captured From PS4 Pro; TM & © 2020 Twentieth Century Fox Film Corporation"
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Large visible red faceplate, gold reliefs, gold-edged black helmet side lames, black eye apertures.",
+            "Red three-dot light at image left of brow.",
+            "Crown is partly cropped; lower face is exposed clearly."
+          ],
+          "limitations": [
+            "No named customization swatch or selected variant is shown.",
+            "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+            "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+            "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+            "Upper crest is cropped. Pair with the full render only for already visible matching crown parts.",
+            "Do not copy shoulders, necklace, neck covering, dreadlocks, sword, wearer or background into detached mask."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false
+        },
+        {
+          "id": "samurai-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/c4787ee290/samurai-predator.png",
+          "sha256": "ba39ebea14ffc89a0eabbebdde7d51b46439591bc765db78ba5a61bc718d791f",
+          "bytes": 290228,
+          "width": 995,
+          "height": 1101,
+          "mode": "P",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "PHG Samurai class worn mask",
+          "view": "Full-body crouching promotional render, mask near front with a small turn; full upper silhouette visible.",
+          "sourceKind": "promotional-render-listed-in-project-source-ledger",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "Exact Storyblok URL already in app/game/data/phgVisualReferenceResearchV123.json; related mask identity and colors corroborated by directly inspected official PlayStation screenshot. Official PHG homepage remains CONNECT 403."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Black/dark helmet cap and layered flared side lames edged in gold.",
+            "Gold side horns/brow crest; red lower oni/menpo faceplate with raised curling gold lines and black eye openings."
+          ],
+          "limitations": [
+            "No named customization swatch or selected variant is shown.",
+            "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+            "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+            "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+            "Thin black pointed upper crest/strands have uncertain helmet-versus-wearer ownership from these views. Preserve only confidently visible hard mask parts; do not invent rear hair or rear helmet."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false,
+          "projectSourceLedger": {
+            "path": "app/game/data/phgVisualReferenceResearchV123.json",
+            "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+            "jsonPointer": "/targets/0/originalEvidenceUrls"
+          }
+        }
+      ],
+      "generationRecord": {
+        "path": "production/biomasks-primary-20261113/generation/samurai.json",
+        "bytes": 5565,
+        "sha256": "44a9e28bd268d0102ca205456513fabcb7fad0f6860a41cb39201cc5a8d2bbfd"
+      },
+      "limitations": [
+        "Fine gold relief and central vent arrangement are simplified generated interpretations, not a one-to-one reconstruction.",
+        "Ambiguous thin rear upper crest is omitted; this candidate does not establish the complete helmet silhouette.",
+        "Layered side plates are thicker than the source in places.",
+        "Visible alpha>=16 top margin is 12px, a framing warning; silhouette is not clipped.",
+        "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+        "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration.",
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Generated source-view candidates supplement the existing grayscale fronts; they do not create newly covered mask identities or close bible/Excel tasks.",
+        "The official closeup crops the upper crown; the matching render provides only its visible current-angle silhouette. Ownership of thin black upper crest/strands remains uncertain.",
+        "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+        "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+        "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+      ],
+      "warnings": [
+        "Marge native inférieure à5%; revoir le cadrage."
+      ],
+      "previousCandidate": {
+        "path": "public/game/p0-sprites-20261113/masks/samurai-front.png",
+        "bytes": 844670,
+        "sha256": "aeb8ab54027047c31316d20c7a3497265f7d3806351bc0abe46b94f23b91f232",
+        "url": "/game/p0-sprites-20261113/masks/samurai-front.png",
+        "label": "Ancien candidat frontal monochrome",
+        "provenance": "Source communautaire secondaire monochrome ; angle distinct et couleurs non établies"
+      }
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+      "bytes": 1355325,
+      "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e",
+      "id": "valkyrie",
+      "inventoryId": "mk-25-valkyrie",
+      "label": "Valkyrie PHG — vue officielle en couleur",
+      "url": "/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+      "src": "/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+      "width": 1309,
+      "height": 1201,
+      "sourceRect": [
+        0,
+        0,
+        1309,
+        1201
+      ],
+      "pivot": [
+        654.5,
+        600.5
+      ],
+      "pivotStatus": "review proposal; no rig integration",
+      "alpha": {
+        "threshold": 16,
+        "bounds16": [
+          200,
+          30,
+          1182,
+          1101
+        ],
+        "marginsPixels": [
+          200,
+          30,
+          127,
+          100
+        ],
+        "transparentPixels": 1141897,
+        "visiblePixels16": 406869,
+        "opaquePixels240": 397910,
+        "nearOpaqueFractionOfVisible16": 0.9779806276713143,
+        "occupancy16": 0.2588045739831017,
+        "softPixels3To239": 15796,
+        "coreDoesNotTouchFrameEdges": true,
+        "hiddenRgbIgnored": true
+      },
+      "view": "actual complete official render camera; slight near-front perspective, not an orthographic reconstruction",
+      "frames": 1,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "sourceIds": [
+        "valkyrie-official-render",
+        "valkyrie-official-closeup"
+      ],
+      "references": [
+        {
+          "id": "valkyrie-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/1f72b30901/valkyrie-predator.png",
+          "sha256": "e394276825314caf023a2af0e47a3800db3b2b32c77eb07417618a5ba3fa433b",
+          "bytes": 264082,
+          "width": 995,
+          "height": 1101,
+          "mode": "P",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "PHG Valkyrie worn biomask",
+          "view": "Complete helmet, near front with slight rotation toward image left; two side wing crests fully visible.",
+          "sourceKind": "promotional-render-listed-in-project-source-ledger",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "Exact pre-existing URL from app/game/data/phgVisualReferenceResearchV123.json; current PHG homepage link cannot be checked because CONNECT403. Mask/class corroborated by inspected official PlayStation images."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Engraved silver/dark-metal central crown, gold brow and cheek plates, black eye apertures, silver patterned lower face.",
+            "Large asymmetric-in-perspective lateral metal wings with branching tips and circular mounts."
+          ],
+          "limitations": [
+            "Axe above/behind the helmet and hand at image right are separate objects to exclude.",
+            "Black dreadlocks and neck armor belong to wearer; do not copy into detached mask.",
+            "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+            "No strict side/back view, UV or six-morphology fit established.",
+            "Not human-art-approved or canonical 1:1.",
+            "No raster edits or crops performed. Original source bytes are intact."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false,
+          "projectSourceLedger": {
+            "path": "app/game/data/phgVisualReferenceResearchV123.json",
+            "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+            "jsonPointer": "/targets/2/originalEvidenceUrls"
+          }
+        },
+        {
+          "id": "valkyrie-official-closeup",
+          "url": "https://live.staticflickr.com/65535/50949877857_3082c02edb_h.jpg",
+          "sha256": "192e8a379cd3329dc0e0474463a25223a25361c40ca7d5b74cf3344812b916d8",
+          "bytes": 219406,
+          "width": 1600,
+          "height": 900,
+          "mode": "RGB",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "Official in-game Valkyrie screenshot",
+          "view": "Near front slightly turned toward image right, helmet large; outer upper wing tips cross/crop the top edge.",
+          "sourceKind": "publisher-linked-gameplay-or-promo-screenshot",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": true,
+            "context": "Exact image URL observed in the fetched official article."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Same gold/silver winged mask and engraved brow/cheek geometry as Storyblok render.",
+            "Neck, dreadlocks and shoulder armor separated visually from mask."
+          ],
+          "limitations": [
+            "Cropped upper wing cannot be completed from screenshot alone.",
+            "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+            "No strict side/back view, UV or six-morphology fit established.",
+            "Not human-art-approved or canonical 1:1.",
+            "No raster edits or crops performed. Original source bytes are intact."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false
+        }
+      ],
+      "generationRecord": {
+        "path": "production/biomasks-primary-20261113/generation/valkyrie.json",
+        "bytes": 11588,
+        "sha256": "3a9e0462811ffeb30fb5b68814b9c0117fbfd0dcd5136c893cdd1c85e8ee00b2"
+      },
+      "limitations": [
+        "Generated source-view candidate only; fine engraving interpretation is not pixel 1:1.",
+        "No named tint, neutral albedo, side/back, UV or six-body equipment fit established.",
+        "All counts of canon, human art and runtime validation remain zero.",
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Reference intake and candidate generation do not close bible/Excel requirements automatically.",
+        "The official screenshot crops upper wing tips; complete silhouette is established only by the current angle of the render.",
+        "Perspective makes the wings appear asymmetric; no mirror or alternative camera is certified.",
+        "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+        "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+        "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+      ],
+      "warnings": [
+        "Marge native inférieure à5%; revoir le cadrage."
+      ],
+      "previousCandidate": null
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+      "bytes": 1767889,
+      "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749",
+      "id": "viking",
+      "inventoryId": "mk-24-viking",
+      "label": "Viking PHG — vue officielle en couleur",
+      "url": "/game/biomasks-primary-20261113/masks/viking-source-view.png",
+      "src": "/game/biomasks-primary-20261113/masks/viking-source-view.png",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "review proposal; no rig integration",
+      "alpha": {
+        "threshold": 16,
+        "bounds16": [
+          197,
+          68,
+          1053,
+          1170
+        ],
+        "marginsPixels": [
+          197,
+          68,
+          201,
+          84
+        ],
+        "transparentPixels": 970730,
+        "visiblePixels16": 575145,
+        "opaquePixels240": 567579,
+        "nearOpaqueFractionOfVisible16": 0.9868450564640221,
+        "occupancy16": 0.36574826583640485,
+        "softPixels3To239": 13369,
+        "coreDoesNotTouchFrameEdges": true,
+        "hiddenRgbIgnored": true
+      },
+      "view": "source render camera, slight three-quarter turn toward image right and downward pitch; exact projection not measured",
+      "frames": 1,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "sourceIds": [
+        "viking-official-render",
+        "viking-official-front"
+      ],
+      "references": [
+        {
+          "id": "viking-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/79094b2402/viking-predator.png",
+          "sha256": "82facff1a00df89b895583f68048186a81081a140d1107ec4f509a7beb72d205",
+          "bytes": 357919,
+          "width": 995,
+          "height": 1101,
+          "mode": "P",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "PHG Viking class worn mask",
+          "view": "Full-body promotional render; head near front turned slightly toward image right; full horned helmet visible.",
+          "sourceKind": "promotional-render-listed-in-project-source-ledger",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "Exact Storyblok URL already in app/game/data/phgVisualReferenceResearchV123.json; matching official PlayStation screenshot directly confirms identity and visible colored details. Official PHG homepage remains CONNECT 403."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Engraved dark/silver upper helmet, gold brow and gold nose plate, silver cheek/lower face panels.",
+            "Two long curved helmet horns: gold lower sections with ridged grey tips, not a proved bone material.",
+            "Decorated plate covers image-left eye / anatomical RIGHT eye; image-right aperture remains dark."
+          ],
+          "limitations": [
+            "No named customization swatch or selected variant is shown.",
+            "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+            "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+            "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+            "Exclude the blue axe blade behind head, axe shaft, necklace, body, shoulders and all hanging black dreadlocks.",
+            "Fine engraving is visible only to render resolution; preserve it without inventing extra runes."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false,
+          "projectSourceLedger": {
+            "path": "app/game/data/phgVisualReferenceResearchV123.json",
+            "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+            "jsonPointer": "/targets/1/originalEvidenceUrls"
+          }
+        },
+        {
+          "id": "viking-official-front",
+          "url": "https://live.staticflickr.com/65535/50536850927_fe13656697_b.jpg",
+          "sha256": "5d7014b43388437b5d17c384fe60b8ea1168d29c1243b44c5d9eaa6e3b0bf457",
+          "bytes": 102588,
+          "width": 1024,
+          "height": 576,
+          "mode": "RGB",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "PHG Viking class worn mask",
+          "view": "In-game front view, very slight angle; both horn tops touch/cross top edge and are cropped.",
+          "sourceKind": "publisher-linked-gameplay-screenshot",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+            "imageLinkObservedInFetchedPage": true,
+            "attribution": "Tramell Isaac; October 27, 2020",
+            "caption": "Predator: Hunting Grounds",
+            "visibleFooter": "Captured From PS4 Pro; © 2020 20th Century Studios"
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+          "observations": [
+            "Dark engraved crown, gold nose plate and brow details, silver cheeks.",
+            "Engraved plate covers anatomical RIGHT eye / image LEFT; opposite eye is an open dark slit.",
+            "Source distinguishes mask horn hardware from long black wearer dreadlocks."
+          ],
+          "limitations": [
+            "No named customization swatch or selected variant is shown.",
+            "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+            "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+            "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+            "Only 1024×576 full frame; helmet occupies a smaller area.",
+            "Cannot complete horn-tip geometry from this cropped source alone."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false
+        }
+      ],
+      "generationRecord": {
+        "path": "production/biomasks-primary-20261113/generation/viking.json",
+        "bytes": 20380,
+        "sha256": "3cf2fe8f950eefe7f8da2406f8b6fa899a7f31dca03657cf80da27f5e07afe2a"
+      },
+      "limitations": [
+        "A candidate interpretation of visible official images, not publisher-certified or pixel-level1:1 reproduction.",
+        "Source render angle is approximated; exact camera and projection are unmeasured. No new frontal, side or rear reconstruction is established.",
+        "Fine engraved motifs, rune identity/counts, horn-root shapes and small lower-face attachments remain interpretations of limited source resolution.",
+        "Illuminated source colors are visible appearance only; neutral albedo, material UVs, precise colorway names and hidden geometry are not established.",
+        "Promotional Storyblok URL is pinned in project research; official publisher screenshot corroborates mask identity and visible colored details. The currently unavailable PHG homepage was not used as newly verified linkage.",
+        "Foreground is fully inside the native canvas. Actual top/bottom margins68/84pixels are smaller than requested10percent; no CPU reframing was performed.",
+        "No six-morphology equipment fitting, rig, runtime integration, animation, human art approval or canonical certification.",
+        "This improves the primary-source view for an existing named mask; it does not reduce the50remaining named missing-mask targets.",
+        "Low-alpha external pixels are present; native browser review found clean edges on black, white and checkerboard. No CPU cleanup was performed; retain human artistic review requirement.",
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Generated source-view candidates supplement the existing grayscale fronts; they do not create newly covered mask identities or close bible/Excel tasks.",
+        "The in-game screenshot crops the horn tops; only the render gives a complete current-angle horn silhouette.",
+        "Fine engraving is limited by source resolution; do not invent extra runes or mirror the covered eye.",
+        "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+        "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+        "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+      ],
+      "warnings": [],
+      "previousCandidate": {
+        "path": "public/game/p0-sprites-20261113/masks/viking-front.png",
+        "bytes": 1537978,
+        "sha256": "1b4403348b632f1fadd9f4b0b737d87a32512835602ba7ca82578a2426dd22d9",
+        "url": "/game/p0-sprites-20261113/masks/viking-front.png",
+        "label": "Ancien candidat frontal monochrome",
+        "provenance": "Source communautaire secondaire monochrome ; angle distinct et couleurs non établies"
+      }
+    }
+  ],
+  "nativeFiles": [
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+      "bytes": 1618663,
+      "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+      "bytes": 1965781,
+      "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+      "bytes": 1637768,
+      "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+      "bytes": 1355325,
+      "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+      "bytes": 1767889,
+      "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749"
+    }
+  ],
+  "remainingTargets": [
+    {
+      "id": "mk-15-elder",
+      "name": "elder",
+      "work": "Elder, *AVP* (2004)",
+      "kind": "biomask",
+      "declaredSourceStatus": "film",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Ornate ancient mask, gold-bronze inlays, wide flared crown.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1357
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 831
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-16-greyback",
+      "name": "greyback",
+      "work": "Greyback, *Predator 2*",
+      "kind": "biomask",
+      "declaredSourceStatus": "film",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Elder mask, aged and patinated, ornate crest.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1358
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 832
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-17-lord",
+      "name": "lord",
+      "work": "Lord, *Aliens vs. Predator* (2010)",
+      "kind": "biomask",
+      "declaredSourceStatus": "interprétation",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Ornate high-rank mask (the source gives no visual detail).",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1359
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 833
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-18-ahab",
+      "name": "ahab",
+      "work": "Ahab, *Fire and Stone* / *Life and Death*",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Partial mask leaving the mouth exposed, deep stab damage through the right eye area.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1360
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 834
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-19-afghanistan",
+      "name": "afghanistan",
+      "work": "*Predator: Hunters II* (comic)",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off.",
+      "guardrail": "Two states required by the source: intact and half blown off; blue burning eyes.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1361
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 835
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-20-golden-angel",
+      "name": "golden angel",
+      "work": "Greyback, *Predator 1718* (comic) / NECA",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Two masks on separate images: a bird-like mask with blood-red eyes, and a traditional one close to the 1987 mask.",
+      "guardrail": "Two different mask geometries: bird-like mask and traditional 1987-like mask. Do not count as one finished component.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1362
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 836
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-21-lava-planet",
+      "name": "lava planet",
+      "work": "Kenner / NECA",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Scorpion-like blood-red mask (shared with Cracked Tusk).",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1363
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 837
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-22-race-war",
+      "name": "race war",
+      "work": "Race War Predator",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Brownish-gold mask with a double set of rectangular eye slits.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1364
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 838
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-26-anubis",
+      "name": "anubis",
+      "work": "Anubis, PHG",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Elongated jackal-like mask with tall ears and long snout, dark metal with gold plating, glowing eyes.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1524
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 961
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-27-witch",
+      "name": "witch",
+      "work": "Witch, PHG",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Skull-like bone mask with ornamental antlers, tusks and feathers, tribal look.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1525
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 962
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-28-amazon",
+      "name": "amazon",
+      "work": "Amazon, PHG",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bone mask shaped like a jaguar skull.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1526
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 963
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-29-pirate",
+      "name": "pirate",
+      "work": "Pirate, PHG",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Half mask covering only the lower face (mouth and mandibles); separate layer: simple leather eyepatch over a clouded, scarred LEFT eye.",
+      "guardrail": "Lower-half mask and separate eyepatch over the anatomical LEFT eye; preserve separate components.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1527
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 964
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-30-emissary",
+      "name": "emissary",
+      "work": "Emissary, PHG",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié (silhouette)",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bio-mask close to the Fugitive's, worn with a human-style combat helmet over it, camouflage tones.",
+      "guardrail": "PHG Emissary; do not substitute movie Emissary 1/2 V44 candidates.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1528
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 965
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-32-white-skull",
+      "name": "white skull",
+      "work": "Hunting Grounds",
+      "kind": "painted-mask-variant",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Standard bio-mask with a white skull painted on its face.",
+      "guardrail": "Painted mask variant; a new independent base geometry is not established.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1530
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 967
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-33-rebreather",
+      "name": "rebreather",
+      "work": "City Hunter, PHG",
+      "kind": "backup-respirator",
+      "declaredSourceStatus": "vérifié",
+      "priority": "P0",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Backup breathing mask resembling a scuba second-stage regulator, worn without the bio-mask.",
+      "guardrail": "Backup respirator, worn without a full biomask; do not generate a full helmet.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1531
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 968
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 272
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-46-tracker",
+      "name": "tracker",
+      "work": "Tracker, *Predators* (2010)",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bio-helmet with battle damage on its LEFT side and two elephant-like tusks attached at the jaw.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1634
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1043
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-47-crucified",
+      "name": "crucified",
+      "work": "Classic (Crucified) Predator, *Predators* (2010)",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Jungle Hunter style mask with the LEFT side broken open, partly revealing the eye.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1635
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1044
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-48-kwei",
+      "name": "kwei",
+      "work": "Kwei, *Badlands*",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Similar to Dek's mask with its own details; describe from a still.",
+      "guardrail": "Badlands character geometry must remain distinct from Dek.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1636
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1045
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-49-njohrr",
+      "name": "njohrr",
+      "work": "Njohrr, *Badlands*",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bio-mask with antler-like horns on each side.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1637
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1046
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-50-grendel-king",
+      "name": "grendel king",
+      "work": "Grendel King, *Killer of Killers*",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Custom mask shaped like the face of a Yautja skull.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1638
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1047
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-51-oni-kok",
+      "name": "oni (KoK)",
+      "work": "Samurai Killer, *Killer of Killers*",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Metallic mask over the face, lower mandibles visible beneath it; no upper mandibles, the lower pair longer, thicker, curving upward.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1639
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1048
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-52-grendel",
+      "name": "grendel",
+      "work": "Viking Killer, *Killer of Killers*",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bio-mask not described; describe from a still.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1640
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1049
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-54-claw",
+      "name": "claw",
+      "work": "Claw, *AvP* (2010)",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Jungle Hunter based helmet with four vertical red stripes and blood streaks on the front.",
+      "guardrail": "Claw has four vertical red stripes and blood on the shared Claw/Dark base; prose does not establish identical film Jungle geometry.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1642
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1051
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-55-dark",
+      "name": "dark",
+      "work": "Dark, *AvP* (2010)",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié (base)",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Jungle Hunter based helmet (same base as Claw, without the stripes).",
+      "guardrail": "Dark shares the Claw base without stripes; do not silently substitute film Jungle geometry.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1643
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1052
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-56-alien-head",
+      "name": "alien head",
+      "work": "Alien Head, *AvP* (2010)",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bio-helmet shaped like a Xenomorph's head.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1644
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1053
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-57-scarface",
+      "name": "scarface",
+      "work": "Scarface, *Concrete Jungle*",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié (partiel)",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Aged, battle-worn mask; unmasked face with a deep scar and an empty LEFT eye socket (separate face layer).",
+      "guardrail": "Mask geometry and unmasked scar/empty LEFT eye socket are separate layers.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1645
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1054
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-58-clan-leader",
+      "name": "clan leader",
+      "work": "Kenner (années 1990) ; NECA Deluxe Clan Leader",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bio-mask with giant horns, the longest of any known Predator.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1646
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1055
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-59-nightstorm",
+      "name": "nightstorm",
+      "work": "NECA (Scarab Predator)",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Anubis-like mask with horn-like ridges and mandible vents.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1647
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1056
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-60-stalker",
+      "name": "stalker",
+      "work": "Kenner ; NECA",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Horns pointing downward.",
+      "guardrail": "Kenner/NECA Stalker Night Hunter, not Lost Tribe Stalker.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1648
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1057
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-61-hornhead",
+      "name": "hornhead",
+      "work": "*AvP: Life and Death* (comic) ; NECA",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Small horns growing from the head itself; removable bio-mask.",
+      "guardrail": "Small horns grow from the head; do not automatically attach them to the removable biomask.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1649
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1058
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-63-spartan",
+      "name": "spartan",
+      "work": "Spartan, *AvP* (2010)",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Bio-helmet not described; describe from a capture.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1651
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1060
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "mk-64-dek-shell",
+      "name": "dek shell",
+      "work": "Dek, *Badlands*",
+      "kind": "biomask",
+      "declaredSourceStatus": "vérifié",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Improvised mask made from the shell of a Bone Bison.",
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1652
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1061
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-exalted",
+      "name": "Exalted (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-gladiator",
+      "name": "Gladiator (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-oni",
+      "name": "Oni (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-jotun",
+      "name": "Jotun (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-father",
+      "name": "Father (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-captured",
+      "name": "Captured (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-hunter",
+      "name": "Hunter (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": "PHG class mask; equivalence with the 1987 Jungle film base is not established.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-scout",
+      "name": "Scout (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": "PHG class mask; inspect exact in-game geometry.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-berserker",
+      "name": "Berserker (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask",
+      "declaredSourceStatus": "à relever",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": "PHG class mask; equivalence with the film Berserker base is not established.",
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-haze",
+      "name": "Haze",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "declaredSourceStatus": "Name documented in patch history; shape not described",
+      "priority": "P0",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 45
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 278
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-rival",
+      "name": "Rival",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "declaredSourceStatus": "Name documented in patch history; shape not described",
+      "priority": "P0",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 44
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 277
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-salamander",
+      "name": "Salamander",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "declaredSourceStatus": "Name documented in patch history; shape not described",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-mors",
+      "name": "Mors",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "declaredSourceStatus": "Name documented in patch history; shape not described",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-foxtrot",
+      "name": "Foxtrot",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "declaredSourceStatus": "Name documented in patch history; shape not described",
+      "priority": "non-spécifiée (demande utilisateur/bible)",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-tank",
+      "name": "Tank",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "kind": "biomask",
+      "declaredSourceStatus": "Name documented in patch history; shape not described",
+      "priority": "P0",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": null,
+      "guardrail": null,
+      "sourceLocations": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 41
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 274
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "phg-cosmetic-saber",
+      "name": "Saber",
+      "work": "Predator: Hunting Grounds",
+      "kind": "biomask-candidate",
+      "declaredSourceStatus": null,
+      "priority": "P0",
+      "baselineStatus": "missing-dedicated-canonical-mask",
+      "description": "Saber (Dutch shoulder pauldron): named cosmetic; exact geometry not established.",
+      "guardrail": "Listed as Dutch shoulder pauldron cosmetic; actual biomask identity is not established. No mask production without visual proof.",
+      "sourceLocations": [
+        {
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "sha256": "913935157ddd804b82aeb0b0c69a1e99caa9bb8578efb174e10a144b1ea93b7e",
+          "sheet": "Biomasks_Master",
+          "row": 40
+        },
+        {
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "sha256": "8fda523dbcb1fe5122a6283df5ee3f9c8e4e1548b1ea44b09332d335824cab73",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 273
+        }
+      ],
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    }
+  ],
+  "newlyCoveredNamedTargetIds": [
+    "mk-25-valkyrie",
+    "phg-cleopatra"
+  ],
+  "inputPins": [
+    {
+      "path": "production/biomasks-primary-20261113/README.md",
+      "bytes": 3106,
+      "sha256": "6c6e9ee6ac372ff268a32d0934905ffb061137aa3b42217779bceb554ccebf7d"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/cleopatra.json",
+      "bytes": 4835,
+      "sha256": "0794e6df1af6703c1110e48be38a06704af4eb2b51beab90204a7408f7e7afed"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/exiled.json",
+      "bytes": 5447,
+      "sha256": "ecb6bbd1e58c1fc00acfe7bd19651ddba7d337d33386a87d5ed4a2a9b39f462e"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/samurai.json",
+      "bytes": 5565,
+      "sha256": "44a9e28bd268d0102ca205456513fabcb7fad0f6860a41cb39201cc5a8d2bbfd"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/valkyrie.json",
+      "bytes": 11588,
+      "sha256": "3a9e0462811ffeb30fb5b68814b9c0117fbfd0dcd5136c893cdd1c85e8ee00b2"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/viking.json",
+      "bytes": 20380,
+      "sha256": "3cf2fe8f950eefe7f8da2406f8b6fa899a7f31dca03657cf80da27f5e07afe2a"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/accepted-assets.json",
+      "bytes": 8829,
+      "sha256": "639c22ec66b33191d7d3839b6f5f798153c0e5861aa0ee57e3a49a81e61256af"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/independent-visual-review.json",
+      "bytes": 14248,
+      "sha256": "04fa9557a2ac7fd63f356eb90d0ef7b551bffb447d29132adaa9157fc30cda01"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/network-addition-proposal.json",
+      "bytes": 1597,
+      "sha256": "f19cb4a39a75f0517aee1701863ec41f11a8e3cc2510a9d6150bdab9ddc0d5fc"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/primary-mask-sources.json",
+      "bytes": 46262,
+      "sha256": "0dea7af0aef83e6860775c9674bb461fffaf1c2e6f27f77faead2ba229d64242"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/primary-reference-status.json",
+      "bytes": 163094,
+      "sha256": "d894940b1a5f887ac6f2a8501c70901e0c8d9238a33dcec008f78e103cc50600"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/remaining-mask-scope.json",
+      "bytes": 76818,
+      "sha256": "0170c9d37e594b1c4e6154c0256408c21c7d211f89ec600c799207e610283532"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/build-primary-mask-pack.py",
+      "bytes": 25036,
+      "sha256": "3c169928b666ca9848fa824e52f427dbb7e36d6f05dc737824c9c4a6f7fab3f5"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/ci-primary-mask-inputs.py",
+      "bytes": 9273,
+      "sha256": "6b6c90f920be54b1daca3488561089a944eead6f3d576bd941fe7a3ef90842cf"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/qa-browser.mjs",
+      "bytes": 9862,
+      "sha256": "e8d90df47e2f264606247f0cb1a3b432d562d07f08a60f8805a2b6934737947f"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/review-template.html",
+      "bytes": 17512,
+      "sha256": "0862e92a71e2c70f0e9a40e8605340261bc850f4372f6189692e46680dda8697"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/tools/verify-primary-mask-pack.py",
+      "bytes": 883,
+      "sha256": "e59887dc13f8527c943a05254bfd703f43f1f306e5717d87c19780bd67e9f61f"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/workbook_lib.py",
+      "bytes": 54692,
+      "sha256": "10d3abce0755cceb1c25074ddad168bd9b21b0cd8eb40379540f5e60bd8f02c8"
+    }
+  ],
+  "protectedSources": {
+    "path": "production/biomasks-primary-20261113/suivi/source-protection.json",
+    "bytes": 65670,
+    "sha256": "ab87120c736e42521d00e36f3acf4a116a6dbf08601688a3351f168ebe1f790a",
+    "files": 336,
+    "workbooks": 123,
+    "priorNativePNGs": 62
+  },
+  "limitations": [
+    "Les nouvelles découpes candidates ne certifient pas les exigences de fidélité et ne ferment pas les tâches bible/Excel.",
+    "Les angles des anciens frontaux secondaires et des vues officielles en couleur diffèrent.",
+    "Aucun dos ou profil, aucune animation, admission canonique ou intégration runtime ne sont déduits."
+  ]
+}

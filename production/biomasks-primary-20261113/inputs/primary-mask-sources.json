@@ -1,0 +1,810 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Primary-source reference intake for five color source-view candidates. Samurai, Viking and Exiled supplement previous candidates; Valkyrie and Cleopatra are newly source-documented names. No previous pack is overwritten.",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "sourceInventory": {
+    "path": "production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+    "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de"
+  },
+  "sourceLedger": {
+    "path": "app/game/data/phgVisualReferenceResearchV123.json",
+    "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617"
+  },
+  "sourceImagesAreRuntimeAssets": false,
+  "thirdPartyPhotosOrHtmlCommitted": false,
+  "copyrightNotice": "Referenced game screenshots and promotional renders belong to their respective rights holders. Public availability is not a redistribution license; this intake records stable URLs and byte hashes only.",
+  "pages": [
+    {
+      "id": "samurai-publisher-article",
+      "url": "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+      "sha256": "fb1a1b599e943b991458c31fa972135e5858d75e36b49c06c945b18b77538b33",
+      "bytes": 183083,
+      "httpStatus": 200,
+      "sourceHtmlUnmodified": true,
+      "archivedInRepository": false
+    },
+    {
+      "id": "viking-publisher-article",
+      "url": "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+      "sha256": "a108ca6159ee0aeb05d0e987020b0f6eb5ce1ea9da069f596c288aee3191064d",
+      "bytes": 178180,
+      "httpStatus": 200,
+      "sourceHtmlUnmodified": true,
+      "archivedInRepository": false
+    },
+    {
+      "id": "alpha-article-non-probative",
+      "url": "https://blog.playstation.com/2020/07/17/july-free-update-comes-to-predator-hunting-grounds/",
+      "sha256": "d9df8758adf5c4ae872cd169767d0584ea791ca3103cdb325294b81fc6c020bf",
+      "bytes": 175010,
+      "httpStatus": 200,
+      "sourceHtmlUnmodified": true,
+      "archivedInRepository": false
+    },
+    {
+      "id": "valkyrie-publisher-article",
+      "url": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+      "canonicalUrl": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+      "sha256": "3614698f48cd26213a94c3cadaa4c551fb830d186c7a87f5d170daa2d39f5293",
+      "bytes": 170383,
+      "httpStatus": 200,
+      "sourceHtmlUnmodified": true,
+      "archivedInRepository": false
+    },
+    {
+      "id": "cleopatra-publisher-article",
+      "url": "https://blog.playstation.com/?p=352735",
+      "canonicalUrl": "https://blog.playstation.com/2021/08/31/become-the-fearsome-cleopatra-with-this-months-new-additions-to-predator-hunting-grounds/",
+      "sha256": "5a991544b1266987d393c08849dae4d3e8ea715d1e6d4778ebfd14ee6e189774",
+      "bytes": 168035,
+      "httpStatus": 200,
+      "sourceHtmlUnmodified": true,
+      "archivedInRepository": false
+    },
+    {
+      "id": "exiled-publisher-article",
+      "url": "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+      "canonicalUrl": "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+      "sha256": "b33e6b2b02e66eb19c83766f52aea5b0594b24671b7d07c2d08757d4377165d2",
+      "bytes": 195370,
+      "httpStatus": 200,
+      "sourceHtmlUnmodified": true,
+      "archivedInRepository": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "samurai-official-render",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/c4787ee290/samurai-predator.png",
+      "sha256": "ba39ebea14ffc89a0eabbebdde7d51b46439591bc765db78ba5a61bc718d791f",
+      "bytes": 290228,
+      "width": 995,
+      "height": 1101,
+      "mode": "P",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "PHG Samurai class worn mask",
+      "view": "Full-body crouching promotional render, mask near front with a small turn; full upper silhouette visible.",
+      "sourceKind": "promotional-render-listed-in-project-source-ledger",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": false,
+        "context": "Exact Storyblok URL already in app/game/data/phgVisualReferenceResearchV123.json; related mask identity and colors corroborated by directly inspected official PlayStation screenshot. Official PHG homepage remains CONNECT 403."
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Black/dark helmet cap and layered flared side lames edged in gold.",
+        "Gold side horns/brow crest; red lower oni/menpo faceplate with raised curling gold lines and black eye openings."
+      ],
+      "limitations": [
+        "No named customization swatch or selected variant is shown.",
+        "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+        "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+        "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+        "Thin black pointed upper crest/strands have uncertain helmet-versus-wearer ownership from these views. Preserve only confidently visible hard mask parts; do not invent rear hair or rear helmet."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "projectSourceLedger": {
+        "path": "app/game/data/phgVisualReferenceResearchV123.json",
+        "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+        "jsonPointer": "/targets/0/originalEvidenceUrls"
+      }
+    },
+    {
+      "id": "samurai-official-closeup",
+      "url": "https://live.staticflickr.com/65535/50059892976_c149533c4a_k.jpg",
+      "sha256": "bf2144389c5fa0e74a1c0444973a119f36ddd1f668f020c14281068571dfd096",
+      "bytes": 653635,
+      "width": 2048,
+      "height": 1152,
+      "mode": "RGB",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "PHG Samurai class worn mask",
+      "view": "Close in-game scene, head inclined and turned toward image left; uppermost crest cut by top edge.",
+      "sourceKind": "publisher-linked-gameplay-screenshot",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": true,
+        "attribution": "Jordan Mathewson, Design Director, IllFonic; June 30, 2020",
+        "caption": "Predator: Hunting Grounds",
+        "visibleFooter": "Captured From PS4 Pro; TM & © 2020 Twentieth Century Fox Film Corporation"
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Large visible red faceplate, gold reliefs, gold-edged black helmet side lames, black eye apertures.",
+        "Red three-dot light at image left of brow.",
+        "Crown is partly cropped; lower face is exposed clearly."
+      ],
+      "limitations": [
+        "No named customization swatch or selected variant is shown.",
+        "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+        "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+        "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+        "Upper crest is cropped. Pair with the full render only for already visible matching crown parts.",
+        "Do not copy shoulders, necklace, neck covering, dreadlocks, sword, wearer or background into detached mask."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "viking-official-render",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/79094b2402/viking-predator.png",
+      "sha256": "82facff1a00df89b895583f68048186a81081a140d1107ec4f509a7beb72d205",
+      "bytes": 357919,
+      "width": 995,
+      "height": 1101,
+      "mode": "P",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "PHG Viking class worn mask",
+      "view": "Full-body promotional render; head near front turned slightly toward image right; full horned helmet visible.",
+      "sourceKind": "promotional-render-listed-in-project-source-ledger",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": false,
+        "context": "Exact Storyblok URL already in app/game/data/phgVisualReferenceResearchV123.json; matching official PlayStation screenshot directly confirms identity and visible colored details. Official PHG homepage remains CONNECT 403."
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Engraved dark/silver upper helmet, gold brow and gold nose plate, silver cheek/lower face panels.",
+        "Two long curved helmet horns: gold lower sections with ridged grey tips, not a proved bone material.",
+        "Decorated plate covers image-left eye / anatomical RIGHT eye; image-right aperture remains dark."
+      ],
+      "limitations": [
+        "No named customization swatch or selected variant is shown.",
+        "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+        "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+        "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+        "Exclude the blue axe blade behind head, axe shaft, necklace, body, shoulders and all hanging black dreadlocks.",
+        "Fine engraving is visible only to render resolution; preserve it without inventing extra runes."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "projectSourceLedger": {
+        "path": "app/game/data/phgVisualReferenceResearchV123.json",
+        "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+        "jsonPointer": "/targets/1/originalEvidenceUrls"
+      }
+    },
+    {
+      "id": "viking-official-front",
+      "url": "https://live.staticflickr.com/65535/50536850927_fe13656697_b.jpg",
+      "sha256": "5d7014b43388437b5d17c384fe60b8ea1168d29c1243b44c5d9eaa6e3b0bf457",
+      "bytes": 102588,
+      "width": 1024,
+      "height": 576,
+      "mode": "RGB",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "PHG Viking class worn mask",
+      "view": "In-game front view, very slight angle; both horn tops touch/cross top edge and are cropped.",
+      "sourceKind": "publisher-linked-gameplay-screenshot",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2020/10/27/october-free-update-and-new-paid-dlc-arrive-in-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": true,
+        "attribution": "Tramell Isaac; October 27, 2020",
+        "caption": "Predator: Hunting Grounds",
+        "visibleFooter": "Captured From PS4 Pro; © 2020 20th Century Studios"
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Dark engraved crown, gold nose plate and brow details, silver cheeks.",
+        "Engraved plate covers anatomical RIGHT eye / image LEFT; opposite eye is an open dark slit.",
+        "Source distinguishes mask horn hardware from long black wearer dreadlocks."
+      ],
+      "limitations": [
+        "No named customization swatch or selected variant is shown.",
+        "No backside, strict profile, UV map, six-body fit or human art validation is established.",
+        "Illuminated promotional pixels are not proof of neutral albedo or an exact named colorway.",
+        "Only the depicted camera and directly visible surfaces may be used; do not invent hidden geometry.",
+        "Only 1024×576 full frame; helmet occupies a smaller area.",
+        "Cannot complete horn-tip geometry from this cropped source alone."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "valkyrie-official-render",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/1f72b30901/valkyrie-predator.png",
+      "sha256": "e394276825314caf023a2af0e47a3800db3b2b32c77eb07417618a5ba3fa433b",
+      "bytes": 264082,
+      "width": 995,
+      "height": 1101,
+      "mode": "P",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "PHG Valkyrie worn biomask",
+      "view": "Complete helmet, near front with slight rotation toward image left; two side wing crests fully visible.",
+      "sourceKind": "promotional-render-listed-in-project-source-ledger",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": false,
+        "context": "Exact pre-existing URL from app/game/data/phgVisualReferenceResearchV123.json; current PHG homepage link cannot be checked because CONNECT403. Mask/class corroborated by inspected official PlayStation images."
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Engraved silver/dark-metal central crown, gold brow and cheek plates, black eye apertures, silver patterned lower face.",
+        "Large asymmetric-in-perspective lateral metal wings with branching tips and circular mounts."
+      ],
+      "limitations": [
+        "Axe above/behind the helmet and hand at image right are separate objects to exclude.",
+        "Black dreadlocks and neck armor belong to wearer; do not copy into detached mask.",
+        "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+        "No strict side/back view, UV or six-morphology fit established.",
+        "Not human-art-approved or canonical 1:1.",
+        "No raster edits or crops performed. Original source bytes are intact."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "projectSourceLedger": {
+        "path": "app/game/data/phgVisualReferenceResearchV123.json",
+        "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+        "jsonPointer": "/targets/2/originalEvidenceUrls"
+      }
+    },
+    {
+      "id": "valkyrie-official-closeup",
+      "url": "https://live.staticflickr.com/65535/50949877857_3082c02edb_h.jpg",
+      "sha256": "192e8a379cd3329dc0e0474463a25223a25361c40ca7d5b74cf3344812b916d8",
+      "bytes": 219406,
+      "width": 1600,
+      "height": 900,
+      "mode": "RGB",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "Official in-game Valkyrie screenshot",
+      "view": "Near front slightly turned toward image right, helmet large; outer upper wing tips cross/crop the top edge.",
+      "sourceKind": "publisher-linked-gameplay-or-promo-screenshot",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2021/02/16/new-year-new-mode-new-content-for-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": true,
+        "context": "Exact image URL observed in the fetched official article."
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Same gold/silver winged mask and engraved brow/cheek geometry as Storyblok render.",
+        "Neck, dreadlocks and shoulder armor separated visually from mask."
+      ],
+      "limitations": [
+        "Cropped upper wing cannot be completed from screenshot alone.",
+        "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+        "No strict side/back view, UV or six-morphology fit established.",
+        "Not human-art-approved or canonical 1:1.",
+        "No raster edits or crops performed. Original source bytes are intact."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "id": "cleopatra-official-render",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/163e3cfd75/cleopatra-predator.png",
+      "sha256": "e72dfeb2c21bb4e47a1ccf53b040e57deb594ac37d8d76c7e9f4430c61de995a",
+      "bytes": 328708,
+      "width": 995,
+      "height": 1101,
+      "mode": "P",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "PHG Cleopatra worn biomask",
+      "view": "Near front, nearly symmetric view, complete crest and lower mask visible.",
+      "sourceKind": "promotional-render-listed-in-project-source-ledger",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/?p=352735",
+        "imageLinkObservedInFetchedPage": false,
+        "context": "Exact pre-existing URL from app/game/data/phgVisualReferenceResearchV123.json; current PHG homepage link cannot be checked because CONNECT403. Mask/class corroborated by inspected official PlayStation images."
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Long narrow blue-grey metal face with sharply sloped black eye slits and long blunt lower nose/chin line.",
+        "Large round gold forehead medallion with engraved rings/motif and smaller gold lower insignia.",
+        "Two long curved fluted silver/gold-edged side wings rising beyond crown; small narrow upper inner prongs."
+      ],
+      "limitations": [
+        "Shoulder cannon, chest mesh, gold shoulder plates, disk weapon and black/brown side tubes belong to wearer or equipment, not the detached faceplate.",
+        "Official article corroborates class identity via roadmap, but supplies no additional close-up mask camera.",
+        "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+        "No strict side/back view, UV or six-morphology fit established.",
+        "Not human-art-approved or canonical 1:1.",
+        "No raster edits or crops performed. Original source bytes are intact."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "projectSourceLedger": {
+        "path": "app/game/data/phgVisualReferenceResearchV123.json",
+        "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+        "jsonPointer": "/targets/3/originalEvidenceUrls"
+      }
+    },
+    {
+      "id": "exiled-official-render",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/7ed246b069/exiled-predator.png",
+      "sha256": "ed265971f2bf2a2788ea1fbec3b24007e20263651b932e78a1987c92937008d8",
+      "bytes": 269382,
+      "width": 995,
+      "height": 1101,
+      "mode": "P",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "PHG Exiled worn biomask",
+      "view": "Near front with slight turn toward image left; complete split upper crest visible.",
+      "sourceKind": "promotional-render-listed-in-project-source-ledger",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": false,
+        "context": "Exact pre-existing URL from app/game/data/phgVisualReferenceResearchV123.json; current PHG homepage link cannot be checked because CONNECT403. Mask/class corroborated by inspected official PlayStation images."
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Tall brown carved/engraved face shell, two split upright top prongs, pale brow strips, dark almond eye apertures.",
+        "Circular cheek motifs, central long engraved ridge, small squared mouth/tooth details and projecting pale tusks."
+      ],
+      "limitations": [
+        "Brown surface is visually wood-like; material chemistry is not proven.",
+        "Do not copy dreadlocks, large blue wrist blades, green-lit shoulder gun, necklace, chest/neck armor or axe weapon.",
+        "Attachment ownership of the longest downward pale neck-adjacent fang is not fully established; do not invent a detached mounting or hidden underside.",
+        "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+        "No strict side/back view, UV or six-morphology fit established.",
+        "Not human-art-approved or canonical 1:1.",
+        "No raster edits or crops performed. Original source bytes are intact."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "projectSourceLedger": {
+        "path": "app/game/data/phgVisualReferenceResearchV123.json",
+        "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617",
+        "jsonPointer": "/targets/4/originalEvidenceUrls"
+      }
+    },
+    {
+      "id": "exiled-official-closeup",
+      "url": "https://live.staticflickr.com/65535/51632611790_7c3d35a12d_h.jpg",
+      "sha256": "f8787b3fb083c0251cc73e802fd7bdbe56f4ed205eda2ac755836bf8d19d390f",
+      "bytes": 334876,
+      "width": 1600,
+      "height": 900,
+      "mode": "RGB",
+      "httpStatus": 200,
+      "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+      "identity": "Official Exiled Predator DLC Pack promo",
+      "view": "Same pose as complete render, close crop; upper prong tips cut by top edge.",
+      "sourceKind": "publisher-linked-gameplay-or-promo-screenshot",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/2021/10/28/happy-haunting-and-hunting-in-predator-hunting-grounds/",
+        "imageLinkObservedInFetchedPage": true,
+        "context": "Exact image URL observed in the fetched official article."
+      },
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs and primary_mask_provenance",
+      "observations": [
+        "Named EXILED PREDATOR DLC PACK text in image.",
+        "Brown carved helmet, pale trim/cheek motifs, dark lenses and visible tusks agree with render."
+      ],
+      "limitations": [
+        "Upper mask prongs cropped. No side or back coverage.",
+        "Strong blue/green lighting affects visible color.",
+        "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+        "No strict side/back view, UV or six-morphology fit established.",
+        "Not human-art-approved or canonical 1:1.",
+        "No raster edits or crops performed. Original source bytes are intact."
+      ],
+      "bytesUnmodified": true,
+      "archivedInRepository": false,
+      "redistributionLicenseEstablished": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    }
+  ],
+  "targets": [
+    {
+      "id": "samurai",
+      "inventoryId": "mk-23-samurai",
+      "name": "Samurai PHG",
+      "sourceIds": [
+        "samurai-official-closeup",
+        "samurai-official-render"
+      ],
+      "view": "Inclined three-quarter source view turned toward image left, matching the official closeup; complete only matching crown parts actually visible in the full render.",
+      "visibleMaterials": [
+        "Red lower menpo/oni faceplate with raised gold curling relief.",
+        "Dark blue-black helmet cap and side lames edged in gold.",
+        "Gold broad brow and lateral upward projections; dark eye apertures."
+      ],
+      "excludedElements": [
+        "Wearer neck, shoulders, armor and necklace.",
+        "Sword, hands and jungle background.",
+        "Hanging dreadlocks and any uncertain hair-like upper/rear crest strands."
+      ],
+      "limitations": [
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Generated source-view candidates supplement the existing grayscale fronts; they do not create newly covered mask identities or close bible/Excel tasks.",
+        "The official closeup crops the upper crown; the matching render provides only its visible current-angle silhouette. Ownership of thin black upper crest/strands remains uncertain."
+      ],
+      "priorCandidate": {
+        "path": "public/game/p0-sprites-20261113/masks/samurai-front.png",
+        "sha256": "aeb8ab54027047c31316d20c7a3497265f7d3806351bc0abe46b94f23b91f232"
+      },
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "priorDedicatedCandidatePresent": true,
+      "acceptedCandidate": {
+        "assetPath": "public/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+        "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715",
+        "bytes": 1637768,
+        "nativeDimensions": [
+          1312,
+          1199
+        ],
+        "view": "Official close-up camera: head tilted forward, three-quarter toward image left; clearly rigid dome completed only from matching full render.",
+        "limitations": [
+          "Fine gold relief and central vent arrangement are simplified generated interpretations, not a one-to-one reconstruction.",
+          "Ambiguous thin rear upper crest is omitted; this candidate does not establish the complete helmet silhouette.",
+          "Layered side plates are thicker than the source in places.",
+          "Visible alpha>=16 top margin is 12px, a framing warning; silhouette is not clipped.",
+          "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+          "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration."
+        ],
+        "generationReceipt": "production/biomasks-primary-20261113/generation/samurai.json",
+        "status": "generated-candidate",
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "pixelEditingPerformed": false
+      },
+      "candidateAcceptanceScope": "Accepted for this source-limited generated-candidate batch after technical/source-view review; this does not mean human art validation or canonical fidelity certification.",
+      "newlyCoveredMaskName": false
+    },
+    {
+      "id": "viking",
+      "inventoryId": "mk-24-viking",
+      "name": "Viking PHG",
+      "sourceIds": [
+        "viking-official-render",
+        "viking-official-front"
+      ],
+      "view": "Near front with slight turn toward image right, matching the full promotional render; screenshot supports visible facial details only.",
+      "visibleMaterials": [
+        "Dark/silver engraved upper helmet with gold brow and nose plate.",
+        "Silver cheek/lower face panels.",
+        "Two curved horns with gold lower sections and grey ridged tips; exact tip material is unproved.",
+        "Engraved plate over image-left eye (anatomical right eye); opposite eye aperture remains dark."
+      ],
+      "excludedElements": [
+        "Blue axe blade and axe shaft behind the head.",
+        "Wearer dreadlocks, necklace, shoulders and body."
+      ],
+      "limitations": [
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Generated source-view candidates supplement the existing grayscale fronts; they do not create newly covered mask identities or close bible/Excel tasks.",
+        "The in-game screenshot crops the horn tops; only the render gives a complete current-angle horn silhouette.",
+        "Fine engraving is limited by source resolution; do not invent extra runes or mirror the covered eye."
+      ],
+      "priorCandidate": {
+        "path": "public/game/p0-sprites-20261113/masks/viking-front.png",
+        "sha256": "1b4403348b632f1fadd9f4b0b737d87a32512835602ba7ca82578a2426dd22d9"
+      },
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "priorDedicatedCandidatePresent": true,
+      "acceptedCandidate": {
+        "assetPath": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+        "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749",
+        "bytes": 1767889,
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "view": "source render camera, slight three-quarter turn toward image right and downward pitch; exact projection not measured",
+        "limitations": [
+          "A candidate interpretation of visible official images, not publisher-certified or pixel-level1:1 reproduction.",
+          "Source render angle is approximated; exact camera and projection are unmeasured. No new frontal, side or rear reconstruction is established.",
+          "Fine engraved motifs, rune identity/counts, horn-root shapes and small lower-face attachments remain interpretations of limited source resolution.",
+          "Illuminated source colors are visible appearance only; neutral albedo, material UVs, precise colorway names and hidden geometry are not established.",
+          "Promotional Storyblok URL is pinned in project research; official publisher screenshot corroborates mask identity and visible colored details. The currently unavailable PHG homepage was not used as newly verified linkage.",
+          "Foreground is fully inside the native canvas. Actual top/bottom margins68/84pixels are smaller than requested10percent; no CPU reframing was performed.",
+          "No six-morphology equipment fitting, rig, runtime integration, animation, human art approval or canonical certification.",
+          "This improves the primary-source view for an existing named mask; it does not reduce the50remaining named missing-mask targets.",
+          "Low-alpha external pixels are present; native browser review found clean edges on black, white and checkerboard. No CPU cleanup was performed; retain human artistic review requirement."
+        ],
+        "generationReceipt": "production/biomasks-primary-20261113/generation/viking.json",
+        "status": "generated-candidate",
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "pixelEditingPerformed": false
+      },
+      "candidateAcceptanceScope": "Accepted for this source-limited generated-candidate batch after technical/source-view review; this does not mean human art validation or canonical fidelity certification.",
+      "newlyCoveredMaskName": false
+    },
+    {
+      "id": "valkyrie",
+      "inventoryId": "mk-25-valkyrie",
+      "name": "Valkyrie PHG",
+      "sourceIds": [
+        "valkyrie-official-render",
+        "valkyrie-official-closeup"
+      ],
+      "view": "Complete source-render camera: near front with slight turn toward image left; publisher screenshot at the opposite slight angle supports visible face details only.",
+      "visibleMaterials": [
+        "Engraved dark/silver central crown with gold brow and cheek plates.",
+        "Black eye apertures, patterned silver lower face.",
+        "Large lateral wing-shaped metal crests with branching tips and circular mounts."
+      ],
+      "excludedElements": [
+        "Axe above and behind the helmet.",
+        "Hand, neck armor, shoulders, body and black dreadlocks."
+      ],
+      "limitations": [
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Reference intake and candidate generation do not close bible/Excel requirements automatically.",
+        "The official screenshot crops upper wing tips; complete silhouette is established only by the current angle of the render.",
+        "Perspective makes the wings appear asymmetric; no mirror or alternative camera is certified."
+      ],
+      "priorCandidate": null,
+      "priorDedicatedCandidatePresent": false,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "acceptedCandidate": {
+        "assetPath": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+        "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e",
+        "bytes": 1355325,
+        "nativeDimensions": [
+          1309,
+          1201
+        ],
+        "view": "actual complete official render camera; slight near-front perspective, not an orthographic reconstruction",
+        "limitations": [
+          "Generated source-view candidate only; fine engraving interpretation is not pixel 1:1.",
+          "No named tint, neutral albedo, side/back, UV or six-body equipment fit established.",
+          "All counts of canon, human art and runtime validation remain zero."
+        ],
+        "generationReceipt": "production/biomasks-primary-20261113/generation/valkyrie.json",
+        "status": "generated-candidate",
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "pixelEditingPerformed": false
+      },
+      "candidateAcceptanceScope": "Accepted for this source-limited generated-candidate batch after technical/source-view review; this does not mean human art validation or canonical fidelity certification.",
+      "newlyCoveredMaskName": true
+    },
+    {
+      "id": "cleopatra",
+      "inventoryId": "phg-cleopatra",
+      "name": "Cleopatra PHG",
+      "sourceIds": [
+        "cleopatra-official-render"
+      ],
+      "view": "Near frontal source-render camera with complete curved crest and lower mask visible.",
+      "visibleMaterials": [
+        "Long blue-grey face shell with sharply sloped black eye slits.",
+        "Large round gold forehead medallion with ringed motifs and a smaller gold insignia below.",
+        "Two tall curved fluted silver/gold-edged side crests with narrow upper inner prongs."
+      ],
+      "excludedElements": [
+        "Shoulder cannon, chest mesh, shoulder armor and disc weapon.",
+        "Black/brown wearer side tubes, body, neck and necklace."
+      ],
+      "limitations": [
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Reference intake and candidate generation do not close bible/Excel requirements automatically.",
+        "No independent publisher closeup was found. The directly linked official roadmap repeats this pose at small size, sufficient only to corroborate class/composition.",
+        "The roadmap states artwork not final and subject to change; it cannot validate fine geometry or exact release-game materials.",
+        "The source leaves rear attachment surfaces hidden."
+      ],
+      "priorCandidate": null,
+      "priorDedicatedCandidatePresent": false,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "acceptedCandidate": {
+        "assetPath": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+        "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4",
+        "bytes": 1618663,
+        "nativeDimensions": [
+          1192,
+          1319
+        ],
+        "view": "Near frontal, slight turn constrained to the single full official promotional render; no new side/back view.",
+        "limitations": [
+          "The promotional render is the only probative geometry source; the official article and roadmap corroborate identity rather than additional mask views.",
+          "Fine medallion ornament, flute counts and small reliefs are generated interpretations limited by reference resolution.",
+          "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+          "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration."
+        ],
+        "generationReceipt": "production/biomasks-primary-20261113/generation/cleopatra.json",
+        "status": "generated-candidate",
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "pixelEditingPerformed": false
+      },
+      "candidateAcceptanceScope": "Accepted for this source-limited generated-candidate batch after technical/source-view review; this does not mean human art validation or canonical fidelity certification.",
+      "newlyCoveredMaskName": true
+    },
+    {
+      "id": "exiled",
+      "inventoryId": "phg-exiled",
+      "name": "Exiled PHG",
+      "sourceIds": [
+        "exiled-official-render",
+        "exiled-official-closeup"
+      ],
+      "view": "Complete source-render camera: near front with slight turn toward image left; publisher closeup repeats the same pose and crops upper prong tips.",
+      "visibleMaterials": [
+        "Tall brown engraved face shell, split double upright crest and pale brow strips.",
+        "Dark almond eye apertures, circular cheek motifs and long engraved central ridge.",
+        "Small squared mouth-edge details and small clearly visible side projections."
+      ],
+      "excludedElements": [
+        "Black dreadlocks, green-lit shoulder gun and blue wrist blades.",
+        "Neck/chest armor, necklace, axe, body and wearer hands.",
+        "Longest pale downward neck-adjacent fangs whose attachment to the detached biomask is uncertain."
+      ],
+      "limitations": [
+        "Only directly visible source angles and surfaces support a candidate; there is no full turntable or rear geometry proof.",
+        "Promotional and gameplay lighting do not establish neutral albedo or a named customization swatch.",
+        "No orthographic-front equivalence, UV mapping, six-morphology fit, canonical 1:1 certification or human art validation is established.",
+        "Reference intake and candidate generation do not close bible/Excel requirements automatically.",
+        "Brown wood-like appearance does not establish material chemistry or neutral albedo.",
+        "The longest lower fangs may belong to wearer/neck equipment; their mask attachment and hidden underside remain unproved.",
+        "Official closeup is heavily blue/green lit and crops the top crest; use complete render silhouette.",
+        "New source-view color candidate supplements the grayscale Exiled reference-view candidate without creating an additional named mask."
+      ],
+      "priorCandidate": {
+        "path": "public/game/biomasks-20261113/masks/exiled-reference-view.png",
+        "sha256": "f7bb8a335d3252494cb127689c89b777c70e9ddcee18257477097e49af36a679"
+      },
+      "priorDedicatedCandidatePresent": true,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "acceptedCandidate": {
+        "assetPath": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+        "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee",
+        "bytes": 1965781,
+        "nativeDimensions": [
+          1069,
+          1472
+        ],
+        "view": "Near-front slight three-quarter constrained to the complete head in the official render, with close-up only for visible face details.",
+        "limitations": [
+          "Long pale downward tusks over the neck have uncertain ownership/attachment and are deliberately omitted; this is a conservative partial mask cutout.",
+          "Brown wood-like appearance does not establish actual material, neutral albedo or a named customization swatch.",
+          "Fine engraved line arrangements and mounting details remain generated interpretations.",
+          "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+          "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration."
+        ],
+        "generationReceipt": "production/biomasks-primary-20261113/generation/exiled.json",
+        "status": "generated-candidate",
+        "canonCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "pixelEditingPerformed": false
+      },
+      "candidateAcceptanceScope": "Accepted for this source-limited generated-candidate batch after technical/source-view review; this does not mean human art validation or canonical fidelity certification.",
+      "newlyCoveredMaskName": false
+    }
+  ],
+  "counts": {
+    "sourceImages": 9,
+    "sourceViewTargets": 5,
+    "newlySourceDocumentedMaskNames": 2,
+    "newlyCoveredMaskNames": 2,
+    "generationAcceptancePending": false,
+    "canonCertified": 0,
+    "humanArtValidated": 0,
+    "runtimeIntegrated": 0,
+    "acceptedCandidateViews": 5,
+    "improvedPreviouslyCoveredMaskNames": 3,
+    "remainingNamedTargetsWithoutCandidateCuts": 48
+  },
+  "primaryResearchReceiptSha256s": [
+    "c95ddd68d0cfe530680b7c058a08ec57a01cbd2914aec2e379447b9311b76657",
+    "30af28ed2a3fd6e5d2b31624b0b72f4fdd7bf0fd7410c9463ed14b317f59d2cd"
+  ],
+  "supplementaryCorroboration": [
+    {
+      "id": "cleopatra-official-roadmap",
+      "url": "https://live.staticflickr.com/65535/51413504814_d4b39ac929_b.jpg",
+      "sha256": "280830b827a3f6833ebc4590b0dfc08a0d758dbba0f871e5407ee3b2c85bef20",
+      "bytes": 80296,
+      "width": 1024,
+      "height": 657,
+      "identity": "Official roadmap depicting Cleopatra with the matching Storyblok pose/mask",
+      "view": "Small complete character render within a 1024-pixel-wide roadmap, no new camera.",
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image; primary_phg_mask_refs",
+      "sourceKind": "publisher-linked-roadmap",
+      "publisherChain": {
+        "officialPage": "https://blog.playstation.com/?p=352735",
+        "imageLinkObservedInFetchedPage": true
+      },
+      "use": "Class identity and repeated-pose corroboration only; not a generation geometry reference.",
+      "limitations": [
+        "Only class identity/composition corroboration; insufficient resolution for fine geometric or color validation.",
+        "Footer explicitly says artwork not final and subject to change.",
+        "Promotional camera only; no named menu swatch, selected tint or exact neutral albedo.",
+        "No strict side/back view, UV or six-morphology fit established.",
+        "Not human-art-approved or canonical 1:1.",
+        "No raster edits or crops performed. Original source bytes are intact."
+      ],
+      "archivedInRepository": false
+    }
+  ],
+  "acceptedCandidateInput": {
+    "path": "production/biomasks-primary-20261113/inputs/accepted-assets.json",
+    "sha256": "639c22ec66b33191d7d3839b6f5f798153c0e5861aa0ee57e3a49a81e61256af"
+  },
+  "acceptanceLimits": "All five entries remain generated candidates. Source availability and technical/source-view acceptance do not close any P0, bible/Excel fidelity requirement, human art validation or runtime integration."
+}
