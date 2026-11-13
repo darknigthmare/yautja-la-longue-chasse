@@ -6,6 +6,8 @@ import { clanNpcPiecesV146 } from "./systems/hunterCustomizationV146";
 import ChromaticSurfaceV113 from "./ChromaticSurfaceV113";
 import { pieceForArmorSlotV146 } from "./hunterPiecesV146";
 import { SkinPatternSurfaceV146 } from "./HunterCosmeticOverlaysV146";
+import PieceZoneLayerV148 from "./PieceZoneLayerV148";
+import { pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import DecalSurfaceV133 from "./DecalSurfaceV133";
 import { maskChromaticsForAppearanceV131 } from "./hunterChromaticsV113";
 import { HUNTER_SKIN_FILTERS_V114, HUNTER_DREAD_FILTERS_V114, HUNTER_ARMOR_FILTERS_V114 } from "./hunterPaletteFiltersV114";
@@ -194,6 +196,13 @@ export default function HomeworldModularHunter({ morphId, dreadStyleId, classNam
           {hasWristblades && <img alt="" draggable={false} data-homeworld-layer="blade-housing"
             src={HUNTER_EQUIPMENT_V3.wristblades.housing}
             style={{ ...imageStyle, zIndex: 26, transformOrigin: "0 0", transform: restMatrixCss(hunterWristbladeRegistrationMatrix(morphId)) }} />}
+          {/* V148: zone colours on the worn kit, same overlay as the rig preview. */}
+          {(["base", "lid"] as const).map((part, index) => <PieceZoneLayerV148 key={"zones-" + part} piece="gauntlet"
+            src={gauntletRigSpriteV139(gauntletVariantId, part)} colors={pieceZoneColorsV148(appearance, "gauntlet")}
+            style={{ zIndex: 24 + index, transformOrigin: "0 0", transform: gauntlet }} />)}
+          {hasWristblades && <PieceZoneLayerV148 piece="wristblades" src={HUNTER_EQUIPMENT_V3.wristblades.housing}
+            colors={pieceZoneColorsV148(appearance, "wristblades")}
+            style={{ zIndex: 26, transformOrigin: "0 0", transform: restMatrixCss(hunterWristbladeRegistrationMatrix(morphId)) }} />}
         </>;
       })()}
     </span>

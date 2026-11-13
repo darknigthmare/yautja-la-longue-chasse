@@ -3983,6 +3983,7 @@ function drawHunterTrophyLayers(
   alpha = 1,
   carried = false,
   partId?: TrophyPartId,
+  appearance?: HunterAppearance,
 ): void {
   for (const trophyId of trophyAtomicLayerIds(partId)) {
     const image = assets.hunterTrophies[trophyId];
@@ -3999,6 +4000,8 @@ function drawHunterTrophyLayers(
           translateY: layout.belt.y,
           pivot: layout.pivot,
           scale: layout.belt.scale,
+          // V148: worn trophies take the "trophies" piece colours (bone patina, bindings).
+          ...(appearance ? { pieceTint: { appearance, piece: "trophies" as const } } : {}),
         },
       );
       continue;
@@ -4227,7 +4230,7 @@ function drawHunterLayered(
     !state.trophyCarried &&
     appearance.trophyAdornmentId === "skull-spine"
   ) {
-    drawHunterTrophyLayers(context, assets, frame, 0.82, false);
+    drawHunterTrophyLayers(context, assets, frame, 0.82, false, undefined, appearance);
   }
 
   if (atomicBodyReady) {

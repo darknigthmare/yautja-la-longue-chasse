@@ -364,7 +364,8 @@ export function HunterRigPreview({
     const piece: HunterPieceIdV146 | null = slot.startsWith("caster-") && !slot.includes("laser") ? "caster"
       : slot === "blade-housing" || slot === "wristblades" ? "wristblades"
       : slot.startsWith("gauntlet-") ? "gauntlet"
-      : slot.startsWith("weapon-") ? "weapons" : null;
+      : slot.startsWith("weapon-") ? "weapons"
+      : slot.startsWith("trophy-") && !trophyCarried ? "trophies" : null;
     const colors = piece ? pieceZoneColorsV148(appearance, piece) : null;
     if (!colors) return base;
     return <Fragment key={slot}>{base}
