@@ -10,6 +10,9 @@ import type { ClanWarPresentationV131 } from "./systems/clanWarViewV131";
 import styles from "./ClanWarGauntletV131.module.css";
 
 interface ClanWarGauntletV131Props {
+  /** V146: recoloured wrist display and hologram; undefined keeps the model palette. */
+  displayColor?: string;
+  hologramColor?: string;
   view: ClanWarPresentationV131;
   planetName: string;
   turn: number;
@@ -31,11 +34,12 @@ interface ClanWarGauntletV131Props {
  * zoom, rotation, filters and keyboard focus while the player changes views. */
 export default function ClanWarGauntletV131({
   view, planetName, turn, departure, destination, controlled,
-  territories, queuedOrders, persisted, pending, gauntletId, readoutLabel, readoutValue, children, compactCommand = false,
+  territories, queuedOrders, persisted, pending, gauntletId, readoutLabel, readoutValue, children, compactCommand = false, displayColor, hologramColor,
 }: ClanWarGauntletV131Props) {
   const equipped = gauntletByIdV132(gauntletId) ?? gauntletByIdV132("jungle-hunter") as GauntletDefinitionV132;
   const palette = GAUNTLET_PALETTES_V132[equipped.theme];
-  const colors = { "--holo-accent":palette.accent, "--holo-secondary":palette.secondary, "--holo-display":palette.display, "--holo-metal":palette.metal } as CSSProperties;
+  // V146 lights: the player's display and hologram colours replace the model's (cosmetic only).
+  const colors = { "--holo-accent":hologramColor ?? palette.accent, "--holo-secondary":palette.secondary, "--holo-display":displayColor ?? palette.display, "--holo-metal":palette.metal } as CSSProperties;
   return <section className={styles.stage} style={colors} data-testid="clan-war-gauntlet-v131" data-command-layout={compactCommand} data-war-presentation={view} data-gauntlet-model={equipped.id} data-gauntlet-scan={palette.scan}
     aria-label="Projection stratégique et atlas des guerres de clans">
     <div className={styles.projector} aria-hidden={view === "classic"}>

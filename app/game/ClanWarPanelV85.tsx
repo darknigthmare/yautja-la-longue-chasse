@@ -593,7 +593,8 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
       </div>
       <div className={styles.metrics}><p>Stock consolidé <span className={styles.stockReadout}><span>S<strong>{budget.s}</strong></span><span>M<strong>{budget.m}</strong></span><span>I<strong>{budget.i}</strong></span></span></p><p>Contrôle <strong>{controlled.length}/{definitions.length}</strong></p><p>Aptes <strong>{warFitCombatantsV85(simulation).length}</strong></p><p>Entretien prévu <strong>S{warUpkeepV85(simulation)}</strong></p></div>
       {simulation.completedObjectives.includes("CON-O01") && <p className={styles.positive} role="status">{planet.name} maîtrisée · domination confirmée après deux fins de tour. {persistedWar ? "Victoire archivée sur cet appareil." : "Victoire en mémoire · sauvegarde à confirmer."}</p>}
-      <ClanWarGauntletV131 compactCommand view={presentation} planetName={planet.name} turn={simulation.turn}
+      <ClanWarGauntletV131 compactCommand view={presentation}
+        displayColor={save.appearance?.lightsV146?.display} hologramColor={save.appearance?.lightsV146?.hologram} planetName={planet.name} turn={simulation.turn}
         departure={territory.name} destination={warTerritoryForSimulationV96(simulation, targetId)?.name ?? targetId}
         controlled={controlled.length} territories={definitions.length} queuedOrders={simulation.orders.length}
         persisted={persistedWar} pending={pendingWrites > 0}

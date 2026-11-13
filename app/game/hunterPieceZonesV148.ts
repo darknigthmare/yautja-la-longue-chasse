@@ -189,6 +189,8 @@ export function pieceCanvasSourceV148(
   ctx.filter = "none";
   let pixels: ImageData;
   try { pixels = ctx.getImageData(0, 0, CANVAS_W, CANVAS_H); } catch { return null; }
+  // Canvas stand-ins without pixel access: let the caller fall back to V113.
+  if (!pixels?.data || pixels.data.length !== CANVAS_W * CANVAS_H * 4) return null;
   pixels.data.set(recolorPlateAutoV148(pixels.data, colors));
   ctx.putImageData(pixels, 0, 0);
   if (!perImage) { perImage = new Map(); cache.set(original, perImage); }

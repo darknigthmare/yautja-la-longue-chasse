@@ -8,6 +8,7 @@
  * published combat art. Presentation only: no combat state is written.
  */
 import { chromaticCanvasSourceV113 } from "./hunterChromaticCanvasV113";
+import { pieceCanvasSourceV148, pieceZoneColorsV148 } from "./hunterPieceZonesV148";
 import { maskChromaticsForAppearanceV131, type ChromaticChannelV113 } from "./hunterChromaticsV113";
 import { chromaticsForPieceV146, pieceForArmorSlotV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
 import {
@@ -82,7 +83,9 @@ export function drawPitPersonalFighterV147(
     layerSource: (layer: PitFighterArtLayer, image: HTMLImageElement) => {
       const tint = pitPersonalLayerTintV147(layer.id);
       if (!tint || typeof document === "undefined") return null;
-      return chromaticCanvasSourceV113(image, pitPersonalLayerChromaticsV147(appearance, tint), tint.channel, layer.placement, layer.filter);
+      // V148: three zones when the piece has zone colours, else the V113 pigment.
+      const zoned = pieceCanvasSourceV148(image, pieceZoneColorsV148(appearance, tint.piece), layer.placement, layer.filter);
+      return zoned ?? chromaticCanvasSourceV113(image, pitPersonalLayerChromaticsV147(appearance, tint), tint.channel, layer.placement, layer.filter);
     },
   });
 }
