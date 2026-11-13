@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "subject": "Jungle existing project mask / first PHG-style B seed",
+  "scope": "Independent agent visual source-pair comparison and read-only native raster analysis. This is not human artistic approval or canonical 1:1 certification.",
+  "decision": "accepted-style-seed-candidate-with-limitations",
+  "majorDesignDriftObserved": false,
+  "sourceA": {
+    "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v62/masks/jungle.png",
+    "sha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709",
+    "bytes": 2624929,
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "extrema": [
+        0,
+        255
+      ],
+      "bounds16": [
+        75,
+        45,
+        1168,
+        1214
+      ],
+      "marginsPixels16": [
+        75,
+        45,
+        86,
+        40
+      ],
+      "transparentPixels": 596513,
+      "visiblePixels16": 966452,
+      "opaquePixels240": 960616
+    }
+  },
+  "candidateB": {
+    "path": "/workspace/generated_images/exec-08d31756-6694-4d09-850f-d6fb104beac4.png",
+    "sha256": "6440f135b78b050c6a065b40c7829703e047eb6b65f08951fb57fc74c72158ea",
+    "bytes": 2345073,
+    "mode": "RGBA",
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "alpha": {
+      "extrema": [
+        0,
+        255
+      ],
+      "bounds16": [
+        82,
+        51,
+        1149,
+        1217
+      ],
+      "marginsPixels16": [
+        82,
+        51,
+        105,
+        37
+      ],
+      "transparentPixels": 608802,
+      "visiblePixels16": 953576,
+      "opaquePixels240": 947731
+    }
+  },
+  "contractSha256": "4a767e2e0f1a374e8e5a8430c9557acc8bf25b2e31ec23928efe2b0c0ee7b066",
+  "inspections": {
+    "method": "tools.view_image on A and native B; Pillow alpha/dimension/hash analysis only",
+    "actualBrowserCompositeExecuted": false,
+    "actual360And96PixelBrowserScaleReviewExecuted": false,
+    "cpuImageEditingPerformed": false,
+    "imageGenerationPerformedByReviewer": false,
+    "repositoryFilesModifiedByReviewer": false
+  },
+  "identityLocksObserved": [
+    "Same visible three-quarter/downward head pitch and left/right orientation; no new front/profile/back invented.",
+    "Broad rounded upper cap, enclosing wide brow rim, indented cheeks and long central lower rounded faceplate remain recognizable and close to A.",
+    "Two dark perforated/mesh ocular openings remain; they were not replaced with glowing or exposed wearer eyes.",
+    "Three dark optical elements remain on the image-left temple in the same triangular housing; no new red targeting-light state.",
+    "Grey/warm steel appearance and existing wear language remain; no new ornaments, horns, vents or teeth observed.",
+    "No body, hair/dreadlocks, weapon, neck, wearer face, scene background or duplicate mask observed."
+  ],
+  "phgDirectionAssessment": {
+    "passesCandidateTarget": true,
+    "alreadyPbrSource": true,
+    "observedChanges": [
+      "Cap/cheek micrograin reads slightly calmer and less contrasty.",
+      "Large reflections remain controlled, with broad readable material rather than noisy universal chrome.",
+      "Existing source palette and form remain close; the adaptation is intentionally restrained."
+    ],
+    "doNotForceLargerDifference": "A already has a high-quality PBR-like rendering. A stronger stylistic contrast would risk redesigning the mask; no regeneration is recommended merely to make B look more different."
+  },
+  "limitations": [
+    "A is an exact existing project file; this review does not establish that A is an original canonical film/game asset.",
+    "Minor apparent proportion shifts remain: B visible alpha16 bounds are slightly narrower at similar height. This is not pixel-identical geometry or a certified exact copy.",
+    "Fine pits, mesh pattern and scratches have been recalculated by generation and are not exact UV/detail-map reproduction.",
+    "Raw view_image appearances are not a replacement for actual dark/light/checker browser composites; those checks remain for the pack QA.",
+    "Actual 360px and 96px rendering was not executed by this quick seed review; parent pack QA should cover it."
+  ],
+  "framing": {
+    "sourceAAlpha16Size": [
+      1093,
+      1169
+    ],
+    "candidateBAlpha16Size": [
+      1067,
+      1166
+    ],
+    "relativeBoundingBoxAspectChange": -0.021276044813478556,
+    "candidateCoreClipped": false,
+    "candidateMinimumMarginPixels16": 37,
+    "warnings": [
+      "Native B minimum margin is37px, under5percent of1254px. It is a framing warning, with no core clipping. Do not CPU-shrink or crop."
+    ]
+  },
+  "nextUse": "Suitable as the restrained family seed for B generation, while source A stays byte-preserved. Apply per-mask design/camera/palette/partial-scope locks, not the Jungle geometry or its three-optic layout to other masks.",
+  "futureFramingGuidance": "For wide crests/horns request the entire bounding box within roughly75–80percent of the larger canvas axis; preserve every extremity instead of blindly filling75–80percent height. Record actual native output, do not CPU-resize.",
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "pixelEditingPerformed": false
+}

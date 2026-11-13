@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "scope": "Relocated selected files with private origins masked; no raster editing or art/canon/runtime approval",
+  "selection": {
+    "passed": true,
+    "literalFiles": 517,
+    "pinnedFiles": 510,
+    "pinnedBytes": 447398210,
+    "selectedBytes": 448811100,
+    "scope": "Sparse file selection and byte pins; not browser, human art, runtime or canon approval"
+  },
+  "relocatedRoot": "/tmp/dual-mask-relocated-u6krh9vt",
+  "privateNativeOriginsMaskedReadOnly": 45,
+  "reusedBCheckedAgainstSourceA": 1,
+  "privateOriginalReadsAttempted": 0,
+  "sourceMutationsUsedIndependentUnlinkedFixtures": true,
+  "historicalRepositorySourcesChanged": false,
+  "manifestSha256": "b1fa346f649cd5a1edb5f33f5dedb4132d9074b9628a028e3c12f6de4ef8542d",
+  "negativeChecks": [
+    {
+      "name": "A source-copy byte mutation is rejected",
+      "passed": true,
+      "diagnostic": "Version A must be a byte-identical copy: mk-01-jungle"
+    },
+    {
+      "name": "B native byte mutation is rejected",
+      "passed": true,
+      "diagnostic": "Accepted B native byte mismatch: mk-01-jungle"
+    },
+    {
+      "name": "Historical protected source mutation is rejected",
+      "passed": true,
+      "diagnostic": "Pinned file changed: production/p0-sprites-20261113/README.md"
+    },
+    {
+      "name": "Automatic canonical approval is rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval is forbidden: mk-01-jungle accepted"
+    },
+    {
+      "name": "A reused B cannot be announced as a new generation",
+      "passed": true,
+      "diagnostic": "B reuse must explicitly declare generatedNew=false"
+    },
+    {
+      "name": "Unregistered public image is rejected",
+      "passed": true,
+      "diagnostic": "Unregistered public files: ['public/game/biomasks-dual-20261113/unregistered.png']"
+    },
+    {
+      "name": "Duplicate alias does not create another geometry",
+      "passed": true,
+      "diagnostic": "The 11 clan aliases and two shared-base references must remain references"
+    },
+    {
+      "name": "A byte copy relabeled as a new B generation is rejected",
+      "passed": true,
+      "diagnostic": "B must be a distinct new generation, not a source/other-B byte copy"
+    },
+    {
+      "name": "Read-only verifier rejects writes",
+      "passed": true
+    }
+  ]
+}
