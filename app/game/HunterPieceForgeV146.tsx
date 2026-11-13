@@ -9,13 +9,13 @@ import { useEffect, useMemo, useState } from "react";
 import type { HunterAppearance, SaveGame } from "./types";
 import {
   HUNTER_LIGHT_IDS_V146, HUNTER_LIGHT_LABELS_V146, HUNTER_PIECES_V146,
-  normalizeHexV146, type HunterLightIdV146, type HunterPieceIdV146,
+  PIECE_FINISH_IDS_V148, PIECE_FINISHES_V148, normalizeHexV146, type HunterLightIdV146, type HunterPieceIdV146, type PieceFinishIdV148,
   type PieceColorsV146, type PieceZoneV146,
 } from "./hunterPiecesV146";
 import { CHROMATIC_PALETTE_PRESETS_V115 } from "./hunterChromaticsV113";
 import {
   CUSTOMIZATION_MODES_V146, HUNTER_MARKS_V146, OUTFIT_SLOTS_V146, SKIN_PATTERN_IDS_V146,
-  assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
+  allowedMarksV146, allowedPiecesV148, assignModeOutfitV146, clanColorsForNpcV146, decodeOutfitShareCodeV146, deleteOutfitV146,
   earnedCosmeticsV146, effectivePrimaryV146, emptyCustomizationV146, encodeOutfitShareCodeV146,
   payRepairFromArchiveV146, repairCostV146, repairPieceV146, saveOutfitV146,
   type CustomizationModeV146, type CustomizationV146, type HunterMarkIdV146, type SkinPatternIdV146,
@@ -72,7 +72,7 @@ export default function HunterPieceForgeV146({
   const setPieceColor = (zone: keyof PieceColorsV146, value: string | null) => setDraft(current => {
     const pieces = { ...(current.piecesV146 ?? {}) };
     const next = { ...(pieces[pieceId] ?? EMPTY), [zone]: value };
-    if (!next.primary && !next.secondary && !next.accent && !next.light) delete pieces[pieceId];
+    if (!next.primary && !next.secondary && !next.accent && !next.light && !next.finish) delete pieces[pieceId];
     else pieces[pieceId] = next;
     return { ...current, presetId: "custom", piecesV146: pieces };
   });
@@ -92,7 +92,11 @@ export default function HunterPieceForgeV146({
     setMessage(onCommit(apply, confirmation) ? confirmation : "Changement non enregistré : la sauvegarde n'a pas confirmé l'écriture.");
   };
   const commitAppearance = () => commit(current => ({
-    ...current, appearance: normalizeHunterAppearanceV146(draft),
+    // Never trust the draft for earned content: unearned marks and finishes are dropped.
+    ...current, appearance: normalizeHunterAppearanceV146({
+      ...draft, marksV146: allowedMarksV146(draft.marksV146 ?? {}, earned),
+      piecesV146: allowedPiecesV148(draft.piecesV146 ?? {}, earned).pieces,
+    }),
     customizationV146: { ...(current.customizationV146 ?? emptyCustomizationV146()), earned },
   }), "Couleurs enregistrées dans la campagne.");
   const withCustomization = (change: (state: CustomizationV146) => CustomizationV146): CustomizationApplyV146 =>
@@ -134,15 +138,31 @@ export default function HunterPieceForgeV146({
         <h3>{piece.label}</h3>
         {ZONES.map(zone => piece.zones[zone] ? zoneInput(zone, `${ZONE_LABELS[zone]} : ${piece.zones[zone]}`) : null)}
         {piece.light && zoneInput("light", `Lumière : ${piece.light}`)}
+        <label className={styles.zone}><span>Finition</span>
+          <select disabled={disabled} value={colors.finish ?? ""} onChange={event => setDraft(current => {
+            const pieces = { ...(current.piecesV146 ?? {}) };
+            const next: PieceColorsV146 = { ...(pieces[pieceId] ?? EMPTY) };
+            if (event.target.value) next.finish = event.target.value as PieceFinishIdV148; else delete next.finish;
+            if (!next.primary && !next.secondary && !next.accent && !next.light && !next.finish) delete pieces[pieceId];
+            else pieces[pieceId] = next;
+            return { ...current, presetId: "custom", piecesV146: pieces };
+          })}>
+            <option value="">Standard</option>
+            {PIECE_FINISH_IDS_V148.map(id => {
+              const finish = PIECE_FINISHES_V148[id];
+              const locked = !!finish.unlock && !earned.includes(finish.unlock);
+              return <option key={id} value={id} disabled={locked}>{finish.label}{locked ? " (à gagner)" : ""}</option>;
+            })}
+          </select><span /></label>
         {piece.channel && <div className={styles.presets} aria-label="Teintes du clan">
           {CHROMATIC_PALETTE_PRESETS_V115.filter(item => item.channel === piece.channel).map(item =>
             <button key={item.hex} type="button" title={item.label} disabled={disabled}
               style={{ background: item.hex }} onClick={() => setPieceColor("primary", item.hex)}>
               <span className={styles.visuallyHidden}>{item.label}</span></button>)}
         </div>}
-        <p className={styles.note}>{piece.channel
-          ? "Aperçu : la couleur principale s'applique déjà à cette pièce. Les zones secondaire, accent et lumière s'afficheront avec les planches V146 (base grise et carte des zones)."
-          : "Couleurs enregistrées. Cette pièce n'a pas encore de calque teintable : elles s'afficheront avec ses planches V146."}</p>
+        <p className={styles.note}>{piece.light
+          ? "Les trois zones s'affichent sur la pièce. Zones provisoires : elles suivent les ombres et les reflets de la planche actuelle, en attendant les cartes de zones dessinées. La couleur de lumière s'affichera avec ces planches."
+          : "Les trois zones s'affichent sur la pièce. Zones provisoires : elles suivent les ombres et les reflets de la planche actuelle, en attendant les cartes de zones dessinées."}</p>
       </div>
     </div>}
 
