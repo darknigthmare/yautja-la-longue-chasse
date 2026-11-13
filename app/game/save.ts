@@ -14,6 +14,10 @@ import { normalizeYouthCampaign, youthCampaignMatchesSave } from "./systems/yout
 import { normalizeNurseryCampaign } from "./systems/nurseryCampaign";
 import { archiveTransferPending } from "./systems/archiveTransferGuard";
 import { defaultJusticeProgress, normalizeJusticeProgress } from "./systems/justice";
+import {
+  applyTribunalActionV147, effectiveRankV147, normalizeHonorTribunalV147, recordInfractionV147,
+  tribunalVersionStatusV147, type RecordInfractionInputV147, type TribunalActionResultV147, type TribunalActionV147,
+} from "./systems/honorTribunalV147";
 import { defaultHomeworldProgress, normalizeHomeworldProgress } from "./systems/homeworld";
 import {normalizeCntlipLedgerV77} from './systems/cntlipLedgerV77';
 import {homeworldCntlipEligibleV77} from './systems/homeworldCntlipPhysicalV77';
@@ -1151,6 +1155,8 @@ export function normalizeSave(value: unknown): SaveGame {
     rawProfile.honor,
     fallback.profile.honor,
   );
+  const tribunalV147 = source.tribunalV147 === undefined || source.tribunalV147 === null
+    ? null : normalizeHonorTribunalV147(source.tribunalV147);
   const requestedDifficultyId = isOneOf(
     rawSettings.difficultyId,
     DIFFICULTY_IDS,
@@ -1213,7 +1219,7 @@ export function normalizeSave(value: unknown): SaveGame {
         rawProfile.hunterName,
         fallback.profile.hunterName,
       ).slice(0, 32),
-      rankId: rankForHonor(honor),
+      rankId: effectiveRankV147(rankForHonor(honor), tribunalV147),
       honor,
       clanMarks: nonNegativeInteger(
         rawProfile.clanMarks,
@@ -1262,6 +1268,8 @@ export function normalizeSave(value: unknown): SaveGame {
     }),
     missionProgress,
     trophies: normalizeTrophies(source.trophies),
+    // V147: written only once a tribunal record exists; older saves stay unchanged.
+    ...(tribunalV147 ? { tribunalV147 } : {}),
     ...(source.mobilityV1 === undefined ? {} : {
       mobilityV1: inspectMobilityLedger(source.mobilityV1,validIsoDate(source.createdAt,fallback.createdAt)).state,
     }),
@@ -1594,6 +1602,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // Preserve incompatible inspection bytes instead of silently clearing a
   // player's checkpoint during import, archive export or account transfer.
   // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
+  // V147: a newer or unreadable tribunal record is refused, never silently cleared.
+  const tribunalStatusV147 = tribunalVersionStatusV147(value.tribunalV147);
+  if (tribunalStatusV147 === "future-version") return { save: null, failure: "future-version" };
+  if (tribunalStatusV147 === "invalid") return { save: null, failure: "invalid-save" };
   if (value.gauntletV134 !== undefined && value.gauntletV134 !== null) {
     if (isRecord(value.gauntletV134) && Number(value.gauntletV134.version) > 1)
       return { save:null, failure:"future-version" };
@@ -2436,7 +2448,7 @@ export function applyMissionResult(
     exploration,
     profile: {
       ...save.profile,
-      rankId: rankForHonor(nextHonor),
+      rankId: effectiveRankV147(rankForHonor(nextHonor), save.tribunalV147),
       honor: nextHonor,
       clanMarks: save.profile.clanMarks + clanMarksReward,
       playTimeSeconds: save.profile.playTimeSeconds + elapsedSeconds,
@@ -2480,4 +2492,40 @@ export function applyMissionResult(
       missionProgress,
     ),
   };
+}
+
+// ---------------------------------------------------------------------------
+// V147 tribunal: one transaction for honour, rank, justice declaration and dossier
+// ---------------------------------------------------------------------------
+
+export interface TribunalSaveUpdateV147 {
+  update: Pick<SaveGame, "profile" | "justice" | "tribunalV147">;
+  result: TribunalActionResultV147;
+}
+
+/** Applies a played tribunal step to a campaign; the caller persists `update` atomically. */
+export function applyTribunalActionToSaveV147(save: SaveGame, action: TribunalActionV147, now = new Date().toISOString()): TribunalSaveUpdateV147 {
+  const tribunal = save.tribunalV147 ?? null;
+  const result = applyTribunalActionV147(tribunal, action, {
+    honor: save.profile.honor, rankId: save.profile.rankId,
+    currentRankThreshold: RANK_THRESHOLDS[save.profile.rankId],
+    missionsCompleted: save.statistics.missionsCompleted,
+    declaration: save.justice.declaration, now,
+  });
+  const honor = result.honor;
+  return {
+    result,
+    update: {
+      profile: { ...save.profile, honor, rankId: effectiveRankV147(rankForHonor(honor), result.tribunal) },
+      justice: { ...save.justice, declaration: result.declaration },
+      tribunalV147: result.ok ? result.tribunal : tribunal,
+    },
+  };
+}
+
+/** Records an act actually committed in play; returns null when the record is refused. */
+export function recordInfractionOnSaveV147(save: SaveGame, input: RecordInfractionInputV147):
+    { tribunalV147: NonNullable<SaveGame["tribunalV147"]>; infractionId: string } | null {
+  const recorded = recordInfractionV147(save.tribunalV147 ?? null, input);
+  return recorded ? { tribunalV147: recorded.tribunal, infractionId: recorded.infractionId } : null;
 }
