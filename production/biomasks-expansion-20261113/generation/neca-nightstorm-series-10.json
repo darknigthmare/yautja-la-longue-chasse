@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two native ImageGen candidates of the partial visible rigid NECA Nightstorm Series10 mask; no unsupported biological tusks or closed lower shell. No automatic canonical, film, human, runtime or prior-backlog closure.",
+  "entries": [
+    {
+      "id": "neca-nightstorm-series-10",
+      "label": "Nightstorm · NECA Predators Series10 · partial visible rigid mask",
+      "version": "A",
+      "assetPath": "public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-ed5b805b-eeb3-448a-aba7-0cf3aa373b57.png",
+      "sha256": "1d9016e4e45c733cd9379212f052392c1b0e838cb39b65286044d24c54cc1773",
+      "bytes": 1228291,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "nativeCopyIdentical": true,
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-nightstorm-series-10.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceQualification": "partial-visible-rigid-mask",
+      "partialMask": true,
+      "standaloneCompleteObject": false,
+      "lowerSideGeometryUndocumented": true,
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+          "sha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-4.jpg",
+          "sha256": "cf8c71bf11c2dfbcf6fd7391ce1795b94b6608bfe55950aa2c153f9dfd325a7c"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+      "referenceSourceSha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42",
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Correct ONLY the two unsupported LOWER SIDE HOOKS in image1. Image1 is the current isolated Nightstorm mask candidate. Image2 is the actual small official masked Nightstorm photo; image3 is the unmasked biological head, proving that the ivory tusks and purple jaws do not belong to the mask.\n\nThe current isolated candidate invented two long gold pointed hooks hanging down from the left and right cheek rims to almost the bottom of the central ribbed gold strip. Those dangling pointed lower hooks are NOT sufficiently established by the source. REMOVE those two downward tapering hook ends completely. Retain the broad rigid cheek rails immediately alongside/below the narrow eye band, but terminate their lower outer boundaries much higher, close to that cheek/optical construction. Leave real transparent empty alpha beneath those short rigid cheek edges. Do not replace the removed hooks with teeth, tusks, fang ornaments, lower straps, a solid jaw or a closed chin. This is a deliberately PARTIAL VISIBLE RIGID MASK; the source-hidden lower side shell is unknown, not an invitation to complete it.\n\nKeep image1's whole upper crown, EXACTLY two high flaring horns with their inward darker top tips, gold/silver oval frontal medallion, narrow recessed optical region, temple recesses, visible upper cheek rails and SMALL NARROW central gold ribbed nose/muzzle column. The central column must remain at its current observed short end, with fully empty alpha to either side and below it. Do not cut out or shorten that center strip. Keep source view, overall camera, horn/oval/eye proportions, gold-bronze and cool silver palette, restrained toy-like wear and every other existing surface unchanged. Do not add new decoration or reconstruct a rear/interior.\n\nOne isolated mask-only native transparent PNG. No wearer, dreadlocks, purple membrane, white/ivory biological teeth, flesh, neck, body or background. Center the retained complete visible rigid structure in the canvas with clear natural margins around upper horns and lower central strip. No crop, no fake checkerboard, no labels, no floor or halo. This is a localized subtractive correction, never a redesign or a new view.",
+      "promptSha256": "cbae8f42d869bfe84e67ec5c591e339677f55bb7e1a0d35c8a4e421737532c3b",
+      "transparentBackgroundRequested": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "originalGamePixelsVerified": false,
+      "newlyClosedBibleMask": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "zeroPixels": 1112571,
+        "noisePixels1to9": 9506,
+        "visiblePixels16": 450071,
+        "nearOpaquePixels240": 443283,
+        "visibleBounds16": [
+          235,
+          55,
+          1011,
+          1018
+        ],
+        "margins16": [
+          235,
+          55,
+          243,
+          236
+        ],
+        "edgeVisible16": 0
+      },
+      "visibleRigidComponents": [
+        "Two high crown horns and their darker inward tips",
+        "Gold-bronze crown and silver/steel-blue-grey frontal oval",
+        "Narrow optical region and immediately adjacent rigid cheek/temple rails",
+        "Small narrow visible ribbed central gold nose/muzzle strip"
+      ],
+      "biologicalComponentsExcluded": [
+        "Large pale ivory mandible tusks",
+        "Purple fleshy lower jaws, membranes, mouth and teeth",
+        "Blue organic skull/skin, neck, body and dreadlocks"
+      ],
+      "visualCandidateReview": {
+        "status": "candidate-with-source-limitations",
+        "observations": [
+          "Two crown horns, central oval, optical/cheek construction and short ribbed central strip retained. Unsupported lower pointed side hooks removed by ImageGen; lower silhouette deliberately partial and open.",
+          "Large ivory tusks, purple mouth/mandibles and all wearer anatomy are excluded. Small source does not certify exact grain or hidden edge shape."
+        ],
+        "humanArtValidated": false
+      },
+      "limitations": [
+        "NS-pred-1 offers only one small worn-mask view; catalog inset is smaller. Fine relief, tiny marks, exact pigment and3D shape remain interpreted.",
+        "NS-pred-4 is an unmasked anatomy exclusion reference only; biological tusks and purple jaws are not mask geometry.",
+        "Partial-visible-rigid-mask: occluded lower side shell, rear and interior are not reconstructed or established; no claim of complete wearable geometry.",
+        "NECA Series10 licensed toy sculpture/paint study, not a certified film, PHG, comic or original Kenner shape.",
+        "No canonical/human artistic validation, runtime integration, animation or previous46-name backlog closure is claimed.",
+        "Native upper margin is below requested8–12percent (A55px/B60px), but the horn tips are complete and no edge pixel alpha16 is present.",
+        "NS-pred-1 shows about4–5degrees apparent tilt between crown horn tops; A/B straighten this toward a centered near-front view and make the rendering more symmetrical. The tiny catalogue inset is more frontal. These photographs cannot establish whether any residual asymmetry is sculpted or caused by pose/perspective; exact camera and sculpture symmetry are not certified."
+      ],
+      "initialGenerationPrompt": "Generate version A: one isolated source-faithful study of the rigid NECA Nightstorm Series10 biomask shown worn in image1, not a new character design. The source is a small official licensed toy product photo; do NOT claim film-canon, exact UV, exact sculpt or hidden geometry. Image1 (NS-pred-1) alone sets the near-front slightly oblique camera, tilt, visible shape and paint. Image2 (NS-pred-4) is the UNMASKED biological head and is supplied ONLY to identify what must be removed. Image3 (Series10 catalogue) contains the same masked Nightstorm in its small central-left square inset; use that inset only as broad form/paint confirmation, NOT any of the other characters.\n\nCRITICAL ANATOMY SEPARATION: The huge PALE IVORY curved tusks around the lower mouth, the PURPLE fleshy mandibles, exposed mouth/teeth and blue skull/neck are BIOLOGICAL: they also exist on image2 without the helmet. REMOVE them all, rather than fusing, plating, recoloring or resculpting them into the mask. Remove ALL dreadlocks, hair bands, skin, neck, shoulders, body, armor, staff, weapons, backdrop, ruins, text and logos. Where these biological mandibles previously sat, the output must be genuinely EMPTY TRANSPARENT ALPHA. Do not put a solid closed chin, lower jaw shield, metal tusk or replacement ornament behind their removed positions.\n\nKEEP ONLY THE SOURCE-ATTESTED RIGID MASK: the tall gold-bronze crown with exactly TWO high flaring horn-like side extensions and their short darker tips curving inward as shown; the large smooth silver/blue-grey oval/teardrop frontal medallion encircled in gold; the narrow dark recessed optical region with restrained grey-blue reflective highlights, not eyeballs or colored glow; the actually visible gold/silver cheek/temple rails; and the SMALL NARROW central gold nose/muzzle column with the few broad horizontal ribs that are actually visible between the organic mandibles. Keep that little central strip to its observed short end. Its incomplete/occluded lower boundary remains source-limited. Leave open alpha beside and beneath it; do not fabricate a complete full-face lower helmet. This is explicitly a PARTIAL VISIBLE RIGID MASK, not a complete invented shell.\n\nPreserve source camera, width/height, asymmetries and relation of the two horns, oval and eye/cheek area; do not turn it into a side view, generic Predator helmet or artificially perfect new frontal sculpt. Source paint is weathered gold/bronze framing and silver/steel-blue-grey inset plates with dark recesses. The orange photographic background is NOT the mask color. Retain the gold and cool neutral silver distinction, no new lacquer, luminous eyes or saturated pigments. Small100–180px mask details do not support invented writing/runes, rows of screws, cracks, horns, spikes, teeth, filigree or extra vents. Use only restrained broad detail that is visible, gentle source-like toy paint wear, and soft photographic light.\n\nOne detached mask-only static PNG on true native transparent background, with generous8–12percent clear margin around every horn and the short central strip. Whole visible rigid shell centered, about76–80percent of the longest square canvas axis. No clipped tips, no ground shadow, floor, halo, rectangle, fake checkerboard, labels, frame, watermark, duplicate object, wearer or invented interior/back. All image creation/editing by ImageGen only, no CPU pixel operations.",
+      "referencedImagePaths": [
+        "/workspace/generated_images/exec-4a19e23a-7617-456d-949d-876b989529a6.png",
+        "/tmp/mask-expansion-20261113/NS-pred-1.jpg",
+        "/tmp/mask-expansion-20261113/NS-pred-4.jpg"
+      ],
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-4a19e23a-7617-456d-949d-876b989529a6.png",
+          "sha256": "167fe9ed86392b4294b445d017280333778217b114beea0d182a2ee88cab734d",
+          "bytes": 1286581,
+          "selected": false,
+          "prompt": "Generate version A: one isolated source-faithful study of the rigid NECA Nightstorm Series10 biomask shown worn in image1, not a new character design. The source is a small official licensed toy product photo; do NOT claim film-canon, exact UV, exact sculpt or hidden geometry. Image1 (NS-pred-1) alone sets the near-front slightly oblique camera, tilt, visible shape and paint. Image2 (NS-pred-4) is the UNMASKED biological head and is supplied ONLY to identify what must be removed. Image3 (Series10 catalogue) contains the same masked Nightstorm in its small central-left square inset; use that inset only as broad form/paint confirmation, NOT any of the other characters.\n\nCRITICAL ANATOMY SEPARATION: The huge PALE IVORY curved tusks around the lower mouth, the PURPLE fleshy mandibles, exposed mouth/teeth and blue skull/neck are BIOLOGICAL: they also exist on image2 without the helmet. REMOVE them all, rather than fusing, plating, recoloring or resculpting them into the mask. Remove ALL dreadlocks, hair bands, skin, neck, shoulders, body, armor, staff, weapons, backdrop, ruins, text and logos. Where these biological mandibles previously sat, the output must be genuinely EMPTY TRANSPARENT ALPHA. Do not put a solid closed chin, lower jaw shield, metal tusk or replacement ornament behind their removed positions.\n\nKEEP ONLY THE SOURCE-ATTESTED RIGID MASK: the tall gold-bronze crown with exactly TWO high flaring horn-like side extensions and their short darker tips curving inward as shown; the large smooth silver/blue-grey oval/teardrop frontal medallion encircled in gold; the narrow dark recessed optical region with restrained grey-blue reflective highlights, not eyeballs or colored glow; the actually visible gold/silver cheek/temple rails; and the SMALL NARROW central gold nose/muzzle column with the few broad horizontal ribs that are actually visible between the organic mandibles. Keep that little central strip to its observed short end. Its incomplete/occluded lower boundary remains source-limited. Leave open alpha beside and beneath it; do not fabricate a complete full-face lower helmet. This is explicitly a PARTIAL VISIBLE RIGID MASK, not a complete invented shell.\n\nPreserve source camera, width/height, asymmetries and relation of the two horns, oval and eye/cheek area; do not turn it into a side view, generic Predator helmet or artificially perfect new frontal sculpt. Source paint is weathered gold/bronze framing and silver/steel-blue-grey inset plates with dark recesses. The orange photographic background is NOT the mask color. Retain the gold and cool neutral silver distinction, no new lacquer, luminous eyes or saturated pigments. Small100–180px mask details do not support invented writing/runes, rows of screws, cracks, horns, spikes, teeth, filigree or extra vents. Use only restrained broad detail that is visible, gentle source-like toy paint wear, and soft photographic light.\n\nOne detached mask-only static PNG on true native transparent background, with generous8–12percent clear margin around every horn and the short central strip. Whole visible rigid shell centered, about76–80percent of the longest square canvas axis. No clipped tips, no ground shadow, floor, halo, rectangle, fake checkerboard, labels, frame, watermark, duplicate object, wearer or invented interior/back. All image creation/editing by ImageGen only, no CPU pixel operations.",
+          "referencedImagePaths": [
+            "/tmp/mask-expansion-20261113/NS-pred-1.jpg",
+            "/tmp/mask-expansion-20261113/NS-pred-4.jpg",
+            "/tmp/mask-expansion-20261113/series10-catalog.jpg"
+          ],
+          "reason": "Unsupported long pointed metal hooks extrapolated below the cheek rails; excluded before public delivery."
+        },
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-ed5b805b-eeb3-448a-aba7-0cf3aa373b57.png",
+          "sha256": "1d9016e4e45c733cd9379212f052392c1b0e838cb39b65286044d24c54cc1773",
+          "bytes": 1228291,
+          "selected": true,
+          "prompt": "Correct ONLY the two unsupported LOWER SIDE HOOKS in image1. Image1 is the current isolated Nightstorm mask candidate. Image2 is the actual small official masked Nightstorm photo; image3 is the unmasked biological head, proving that the ivory tusks and purple jaws do not belong to the mask.\n\nThe current isolated candidate invented two long gold pointed hooks hanging down from the left and right cheek rims to almost the bottom of the central ribbed gold strip. Those dangling pointed lower hooks are NOT sufficiently established by the source. REMOVE those two downward tapering hook ends completely. Retain the broad rigid cheek rails immediately alongside/below the narrow eye band, but terminate their lower outer boundaries much higher, close to that cheek/optical construction. Leave real transparent empty alpha beneath those short rigid cheek edges. Do not replace the removed hooks with teeth, tusks, fang ornaments, lower straps, a solid jaw or a closed chin. This is a deliberately PARTIAL VISIBLE RIGID MASK; the source-hidden lower side shell is unknown, not an invitation to complete it.\n\nKeep image1's whole upper crown, EXACTLY two high flaring horns with their inward darker top tips, gold/silver oval frontal medallion, narrow recessed optical region, temple recesses, visible upper cheek rails and SMALL NARROW central gold ribbed nose/muzzle column. The central column must remain at its current observed short end, with fully empty alpha to either side and below it. Do not cut out or shorten that center strip. Keep source view, overall camera, horn/oval/eye proportions, gold-bronze and cool silver palette, restrained toy-like wear and every other existing surface unchanged. Do not add new decoration or reconstruct a rear/interior.\n\nOne isolated mask-only native transparent PNG. No wearer, dreadlocks, purple membrane, white/ivory biological teeth, flesh, neck, body or background. Center the retained complete visible rigid structure in the canvas with clear natural margins around upper horns and lower central strip. No crop, no fake checkerboard, no labels, no floor or halo. This is a localized subtractive correction, never a redesign or a new view.",
+          "referencedImagePaths": [
+            "/workspace/generated_images/exec-4a19e23a-7617-456d-949d-876b989529a6.png",
+            "/tmp/mask-expansion-20261113/NS-pred-1.jpg",
+            "/tmp/mask-expansion-20261113/NS-pred-4.jpg"
+          ],
+          "reason": "Subtractive ImageGen correction removes unsupported lower side hooks while retaining central visible gold strip and crown. No CPU image edits."
+        }
+      ],
+      "browserSelfReview": {
+        "method": "Native JPEG/PNG bytes displayed with CSS scaling and viewport windows only; observational screenshots, no raster asset edits.",
+        "sourceComparison": {
+          "maskedPhoto": "NS-pred-1.jpg",
+          "unmaskedBiologicalExclusionPhoto": "NS-pred-4.jpg",
+          "catalogueInset": "series10-catalog.jpg"
+        },
+        "screenshots": [
+          {
+            "path": "/tmp/mask-expansion-20261113/nightstorm-source-AB-comparison.png",
+            "sha256": "57656cb589a53f00af1b455efeadaa30449f7699fffd7ad19fc5edd4cf31a4a9",
+            "bytes": 1358831,
+            "visuallyInspected": true
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/nightstorm-alpha-AB-comparison.png",
+            "sha256": "0a55b6d3b798136ffe4d035420fb1b474c79eedfcb69bb90b8ce9ebbbab7697f",
+            "bytes": 533184,
+            "visuallyInspected": true
+          }
+        ],
+        "candidateDisplaySizes": [
+          410,
+          420,
+          540,
+          96
+        ],
+        "backgrounds": [
+          "white",
+          "black",
+          "checker"
+        ],
+        "findings": [
+          "Partial rigid silhouette remains open beneath cheek edges and beside narrow center strip. No closed chin, biological tusk or purple jaw is present.",
+          "Two upper horns, oval, optical/cheek region and narrow center strip remain whole with clear alpha; no visible rectangular background or major halo.",
+          "B preserves A broad geometry/camera/palette while reducing coarse toy paint grain.",
+          "Fine relief and removed lower boundary remain interpretations of the small photographs; no exact source-sculpture certification."
+        ],
+        "reviewer": "same generation agent; parent independent review still required for any human validation",
+        "humanArtValidated": false,
+        "canonCertified": false
+      }
+    },
+    {
+      "id": "neca-nightstorm-series-10",
+      "label": "Nightstorm · NECA Predators Series10 · partial visible rigid mask",
+      "version": "B",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-06e66b5f-662e-4986-b855-bc2edbcd3747.png",
+      "sha256": "7ed4e12aa44e96421b7867ac14fe43b2c8ca9460b3b966402943c1b064593bf3",
+      "bytes": 1223247,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "nativeCopyIdentical": true,
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-nightstorm-series-10.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceClass": "official-photo",
+      "sourceQualification": "partial-visible-rigid-mask",
+      "partialMask": true,
+      "standaloneCompleteObject": false,
+      "lowerSideGeometryUndocumented": true,
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+          "sha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-4.jpg",
+          "sha256": "cf8c71bf11c2dfbcf6fd7391ce1795b94b6608bfe55950aa2c153f9dfd325a7c"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+      "referenceSourceSha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42",
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create version B, a PHG-quality rendering adaptation of the EXACT partial rigid Nightstorm mask in image1. Image1 is the selected generated A and is authoritative for the current mask-only silhouette, camera, proportions, partial lower boundary and retained visible components. Image2 is the small official NECA Series10 masked source photo. Image3 is the official Series10 catalog, whose small central-left inset shows the same Nightstorm mask. These photos support the observed paint and major shape only; their other characters and wearer anatomy must never be added.\n\nKeep the exact same near-front slightly oblique camera, same TWO high flaring crown horns with inward darker tips, same gold-bronze crown framework, same smooth oval/teardrop silver/steel-blue-grey frontal plate, same narrow recessed optical band and broad upper cheek/temple rails, and the SAME SMALL NARROW central gold nose/muzzle column with its few visible broad horizontal ribs. Preserve image1's open partial silhouette: the cheek rims terminate SHORT close to the optical construction. NO dangling lower side hooks, NO metal fangs/tusks, NO closed chin, NO full lower jaw, NO hidden-shell completion, and no new rear or interior. Empty alpha beneath and beside the center strip remains empty alpha. Biological ivory tusks, purple jaws/mouth/teeth, blue skull and all hair/dreadlocks belong to the wearer and MUST remain excluded.\n\nImprove graphic finish only through coherent physically plausible material shading: broad soft neutral upper-left/front key, restrained opposite frontal fill, controlled roughness hierarchy, readable dark recesses and gentle metallic reflections. Keep the gold/bronze, desaturated cool silver inset regions and dark optical treatment in the SAME places. No new colored glow, lacquer, enamel, irises or light emitter. Reduce the overly coarse mottled/pitted toy grain in image1 to restrained fine material grain; keep broad source paint wear without inventing engravings, rune writing, decorative texture or rows of hardware. Do not polish the whole mask into chrome, smooth away shape boundaries or redesign ornament. The source mask is tiny100–180px; detailed surface markings are unproven and must stay understated.\n\nOne isolated static mask only, centered on a native transparent square PNG with8–12percent clear native margin around every point, object roughly76–80percent of the longest canvas axis. Whole retained shell visible; no clipping, wearer, background, floor shadow, haze, colored halo, checkerboard, label, text, frame or watermark. ImageGen rendering only; do not change any source pixels through CPU. This is explicitly a partial-visible-rigid-mask source study, not canonical certification or a completed full mask.",
+      "promptSha256": "619f4112d4d0f80182aacd648630f9a12944ca501463042b9a6a50a0e35208c8",
+      "transparentBackgroundRequested": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "originalGamePixelsVerified": false,
+      "newlyClosedBibleMask": false,
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "zeroPixels": 1106591,
+        "noisePixels1to9": 8139,
+        "visiblePixels16": 457528,
+        "nearOpaquePixels240": 451576,
+        "visibleBounds16": [
+          229,
+          60,
+          1011,
+          1028
+        ],
+        "margins16": [
+          229,
+          60,
+          243,
+          226
+        ],
+        "edgeVisible16": 0
+      },
+      "visibleRigidComponents": [
+        "Two high crown horns and their darker inward tips",
+        "Gold-bronze crown and silver/steel-blue-grey frontal oval",
+        "Narrow optical region and immediately adjacent rigid cheek/temple rails",
+        "Small narrow visible ribbed central gold nose/muzzle strip"
+      ],
+      "biologicalComponentsExcluded": [
+        "Large pale ivory mandible tusks",
+        "Purple fleshy lower jaws, membranes, mouth and teeth",
+        "Blue organic skull/skin, neck, body and dreadlocks"
+      ],
+      "visualCandidateReview": {
+        "status": "candidate-with-source-limitations",
+        "observations": [
+          "Same two upper horns, oval, short cheek rails and narrow center strip as corrected A. Neutral gold/bronze with cool silver regions preserved; material grain reduced and lighting clarified for PHG readability.",
+          "No organic mandibles, ivory tusks, lower hooks, closed chin or hidden-shell completion observed. Fine surface/edge interpretation remains source-limited."
+        ],
+        "humanArtValidated": false
+      },
+      "limitations": [
+        "NS-pred-1 offers only one small worn-mask view; catalog inset is smaller. Fine relief, tiny marks, exact pigment and3D shape remain interpreted.",
+        "NS-pred-4 is an unmasked anatomy exclusion reference only; biological tusks and purple jaws are not mask geometry.",
+        "Partial-visible-rigid-mask: occluded lower side shell, rear and interior are not reconstructed or established; no claim of complete wearable geometry.",
+        "NECA Series10 licensed toy sculpture/paint study, not a certified film, PHG, comic or original Kenner shape.",
+        "No canonical/human artistic validation, runtime integration, animation or previous46-name backlog closure is claimed.",
+        "Native upper margin is below requested8–12percent (A55px/B60px), but the horn tips are complete and no edge pixel alpha16 is present.",
+        "NS-pred-1 shows about4–5degrees apparent tilt between crown horn tops; A/B straighten this toward a centered near-front view and make the rendering more symmetrical. The tiny catalogue inset is more frontal. These photographs cannot establish whether any residual asymmetry is sculpted or caused by pose/perspective; exact camera and sculpture symmetry are not certified."
+      ],
+      "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+      "sourceASha256": "1d9016e4e45c733cd9379212f052392c1b0e838cb39b65286044d24c54cc1773",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+        "/tmp/mask-expansion-20261113/NS-pred-1.jpg",
+        "/tmp/mask-expansion-20261113/series10-catalog.jpg"
+      ],
+      "attempts": [
+        {
+          "nativeSourcePath": "/workspace/generated_images/exec-06e66b5f-662e-4986-b855-bc2edbcd3747.png",
+          "sha256": "7ed4e12aa44e96421b7867ac14fe43b2c8ca9460b3b966402943c1b064593bf3",
+          "bytes": 1223247,
+          "selected": true,
+          "prompt": "Create version B, a PHG-quality rendering adaptation of the EXACT partial rigid Nightstorm mask in image1. Image1 is the selected generated A and is authoritative for the current mask-only silhouette, camera, proportions, partial lower boundary and retained visible components. Image2 is the small official NECA Series10 masked source photo. Image3 is the official Series10 catalog, whose small central-left inset shows the same Nightstorm mask. These photos support the observed paint and major shape only; their other characters and wearer anatomy must never be added.\n\nKeep the exact same near-front slightly oblique camera, same TWO high flaring crown horns with inward darker tips, same gold-bronze crown framework, same smooth oval/teardrop silver/steel-blue-grey frontal plate, same narrow recessed optical band and broad upper cheek/temple rails, and the SAME SMALL NARROW central gold nose/muzzle column with its few visible broad horizontal ribs. Preserve image1's open partial silhouette: the cheek rims terminate SHORT close to the optical construction. NO dangling lower side hooks, NO metal fangs/tusks, NO closed chin, NO full lower jaw, NO hidden-shell completion, and no new rear or interior. Empty alpha beneath and beside the center strip remains empty alpha. Biological ivory tusks, purple jaws/mouth/teeth, blue skull and all hair/dreadlocks belong to the wearer and MUST remain excluded.\n\nImprove graphic finish only through coherent physically plausible material shading: broad soft neutral upper-left/front key, restrained opposite frontal fill, controlled roughness hierarchy, readable dark recesses and gentle metallic reflections. Keep the gold/bronze, desaturated cool silver inset regions and dark optical treatment in the SAME places. No new colored glow, lacquer, enamel, irises or light emitter. Reduce the overly coarse mottled/pitted toy grain in image1 to restrained fine material grain; keep broad source paint wear without inventing engravings, rune writing, decorative texture or rows of hardware. Do not polish the whole mask into chrome, smooth away shape boundaries or redesign ornament. The source mask is tiny100–180px; detailed surface markings are unproven and must stay understated.\n\nOne isolated static mask only, centered on a native transparent square PNG with8–12percent clear native margin around every point, object roughly76–80percent of the longest canvas axis. Whole retained shell visible; no clipping, wearer, background, floor shadow, haze, colored halo, checkerboard, label, text, frame or watermark. ImageGen rendering only; do not change any source pixels through CPU. This is explicitly a partial-visible-rigid-mask source study, not canonical certification or a completed full mask.",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+            "/tmp/mask-expansion-20261113/NS-pred-1.jpg",
+            "/tmp/mask-expansion-20261113/series10-catalog.jpg"
+          ],
+          "reason": "First PHG-quality rendering candidate retained after source-view, silhouette, material and alpha review."
+        }
+      ],
+      "browserSelfReview": {
+        "method": "Native JPEG/PNG bytes displayed with CSS scaling and viewport windows only; observational screenshots, no raster asset edits.",
+        "sourceComparison": {
+          "maskedPhoto": "NS-pred-1.jpg",
+          "unmaskedBiologicalExclusionPhoto": "NS-pred-4.jpg",
+          "catalogueInset": "series10-catalog.jpg"
+        },
+        "screenshots": [
+          {
+            "path": "/tmp/mask-expansion-20261113/nightstorm-source-AB-comparison.png",
+            "sha256": "57656cb589a53f00af1b455efeadaa30449f7699fffd7ad19fc5edd4cf31a4a9",
+            "bytes": 1358831,
+            "visuallyInspected": true
+          },
+          {
+            "path": "/tmp/mask-expansion-20261113/nightstorm-alpha-AB-comparison.png",
+            "sha256": "0a55b6d3b798136ffe4d035420fb1b474c79eedfcb69bb90b8ce9ebbbab7697f",
+            "bytes": 533184,
+            "visuallyInspected": true
+          }
+        ],
+        "candidateDisplaySizes": [
+          410,
+          420,
+          540,
+          96
+        ],
+        "backgrounds": [
+          "white",
+          "black",
+          "checker"
+        ],
+        "findings": [
+          "Partial rigid silhouette remains open beneath cheek edges and beside narrow center strip. No closed chin, biological tusk or purple jaw is present.",
+          "Two upper horns, oval, optical/cheek region and narrow center strip remain whole with clear alpha; no visible rectangular background or major halo.",
+          "B preserves A broad geometry/camera/palette while reducing coarse toy paint grain.",
+          "Fine relief and removed lower boundary remain interpretations of the small photographs; no exact source-sculpture certification."
+        ],
+        "reviewer": "same generation agent; parent independent review still required for any human validation",
+        "humanArtValidated": false,
+        "canonCertified": false
+      }
+    }
+  ],
+  "asOfUtc": "2026-11-13T10:46:08.621053+00:00",
+  "counts": {
+    "generatedNewA": 1,
+    "generatedNewB": 1,
+    "selectedNativeOutputs": 2,
+    "rejectedNativeAttempts": 1,
+    "canonCertified": 0,
+    "humanArtValidated": 0,
+    "runtimeIntegrated": 0,
+    "sourcePixelEdits": 0
+  },
+  "ABStabilityMetrics": {
+    "alpha16IoUUnalignedSameCanvas": 0.953300233079163,
+    "visibleAspectA": 0.8058151609553479,
+    "visibleAspectB": 0.8078512396694215,
+    "relativeAspectDeltaPercent": 0.2526731703160978,
+    "scope": "Generated B stability against generated A only, not photo/canonical fidelity."
+  },
+  "sourceCameraInterpretation": {
+    "apparentNS1HornTopTiltDegreesApprox": [
+      4,
+      5
+    ],
+    "renderedNearFrontCameraRectified": true,
+    "renderingSymmetrizationObserved": true,
+    "trueSculptAsymmetryEstablished": false,
+    "measurementScope": "Manual approximate2D observation, not3D camera calibration."
+  }
+}

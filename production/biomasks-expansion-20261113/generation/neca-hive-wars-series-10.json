@@ -1,0 +1,337 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-hive-wars-series-10",
+  "sourceClass": "official-photo",
+  "edition": "NECA Series10, 2013",
+  "entries": [
+    {
+      "id": "neca-hive-wars-series-10",
+      "version": "A",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-800ab7ad-f3e1-4ebc-a1f5-d8e81ded7cdb.png",
+      "sha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0",
+      "bytes": 1332584,
+      "nativeDimensions": [
+        1262,
+        1246
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-hive-wars-series-10.json",
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+      "referenceSourceSha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "referenceSourceDetails": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/HW-pred-3.jpg",
+          "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+          "url": "http://necaonline.com/wp-content/uploads/2013/09/HW-pred-3.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+          "dimensions": [
+            570,
+            861
+          ]
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+          "url": "https://necaonline.com/wp-content/uploads/2013/10/51487-Predator-Series10Asst.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-predators-series-10-action-figures",
+          "dimensions": [
+            800,
+            600
+          ]
+        }
+      ],
+      "prompt": "Correct the FIRST generated HiveWars NECA Series10 biomask against the SECOND actual HW-pred-3 photograph; THIRD catalog's blue figure at LEFT is only coarse paint support. Preserve its correct blue-silver rough painted toy appearance, dark side panels, central pale segmented forehead ridge with narrow midline groove, two long curved outer crown bands, narrow GREEN inserts, closed lower face and elongated paler solid rectangular nose/mouth panel. No grille, fangs, tubes, extra stripes, horns, ornaments or invented microdetails. The first candidate is framed too tightly near the top and its shell is slightly too elongated/narrow. Restore the primary photographed solid-shell proportions with a modest10percent broader silhouette relative to height, keeping all existing panels and eye placement in the same relationship. Keep the actual slight clockwise inclination and mild yaw toward image-RIGHT; do not rotate it to a symmetrical front. Do not reveal new hidden side/back geometry. Most importantly recenter and scale down: the complete visible mask should occupy only78percent of the canvas longest axis, with at least10percent fully transparent empty margin above the crown and below the chin, and on both sides. Preserve photo-like grain, not polished PHG rendering yet, and retain subdued blue-gray/silver palette with no purple scenic paint. Only the rigid detachable face shell on TRUE transparent RGBA. No wearer, dreadlocks, beads, neck/armor/shoulder cannon, horizontal alien tube/weapon, scenery, background, floor/shadow, labels or UI. Exactly one complete mask with all edges inside the transparent margin.",
+      "promptSha256": "42004ed67c0c255a88073044a5568135f44feeb3a33891efb548d43b55029bf7",
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "sourcePhotosViewedBeforeGeneration": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            0,
+            25,
+            1244,
+            1246
+          ],
+          "8": [
+            285,
+            138,
+            977,
+            1086
+          ],
+          "32": [
+            285,
+            138,
+            977,
+            1085
+          ],
+          "128": [
+            286,
+            139,
+            976,
+            1084
+          ],
+          "254": [
+            288,
+            145,
+            973,
+            1083
+          ]
+        },
+        "maximumBorderAlpha": 1,
+        "occupiedBorderPixels": 75,
+        "strongVisibleAxisFraction": 0.7584,
+        "strongMarginsPixels": [
+          286,
+          139,
+          286,
+          162
+        ]
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Automated agent visual review, not human art validation",
+        "observations": "Hive Wars: rounded blue-silver oval crown and pale segmented midline, narrow green eye inserts, closed slate lower face with paler long center panel. Retained the actual slight photo perspective/inclination; wearer/dreads/beads/tube/weapon/shoulder cannon excluded. Native browser composites show the complete solid shell cleanly against all three backgrounds, no visible rectangular background, dreadlocks, beads, body, tube or clipped mask.",
+        "browserCompositePath": "/tmp/mask-expansion-20261113/neca-lava-hive-composites.png",
+        "browserCompositeInspected": true,
+        "browserBackgrounds": [
+          "black",
+          "white",
+          "checker"
+        ]
+      },
+      "limitations": [
+        "Official NECA Series10 photographed toy edition; not a certified film/comic equivalent or final franchise master.",
+        "Source photographs have mask regions only about100-180px tall; fine relief, exact texture, hidden profile/back and UV/albedo remain unknown.",
+        "Version A is a new ImageGen isolation from official photos, not a pixel cutout or source original.",
+        "Apparent dark burgundy or blue-silver palette checked against official white-background catalog; exact lighting-independent pigment is not established.",
+        "Photographic grain/rough toy surface in A and PHG material response in B remain rendering interpretations; no canonical or human art certification.",
+        "Very faint native alpha pixels may reach the canvas edge; their maximum alpha is documented and no CPU cleaning was performed.",
+        "Native complete mask occupies about74-76percent of the longest canvas axis after framing correction, with actual strong-alpha bounds/margins recorded; margins are slightly more generous than target78-80percent. No CPU reframing was performed."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-eb419c0f-f0a4-4a3b-b26d-18630d61da69.png",
+          "sha256": "09b4b338adb867a8b9fb4ea9fde1656d480a829f3af90e355808f55d433f9251",
+          "selected": false,
+          "prompt": "Use the FIRST photograph as the exact visible sculpture and camera reference. The SECOND image is an official Series 10 catalog composite used ONLY to cross-check apparent paint colors. Make ONE isolated rigid detachable BIOMASK ONLY on a genuinely transparent RGBA background. This is the specified NECA Series 10 toy edition, not a different film, comic, modern Ultimate, or imagined franchise variant. Match the mask's visible silhouette, proportions, camera yaw/pitch/roll, lens shapes, existing raised edges, ribs, panel boundaries and coarse wear. Keep the same slight real photo perspective; do not invent a straight symmetrical front, rotate the head or reveal hidden surfaces. The mask in the source is only about100-180px tall, so retain coarse visible form and do not invent fine runic letters, additional markings, microvents, screws, decorative panels, horns or unseen rear geometry. Extract visually using image generation: remove the whole wearer, skin, dreadlocks, beads, body, armor, neck ring, shoulder equipment, targeting/plasma weapon, handheld weapons and scenic background. No hair, dangling strands, tubes or supporting head. Preserve photographic grain and the apparent rough painted toy surface, with the primary photo's subdued local highlights; no PHG style redesign in this A version. Remove strong environmental color cast rather than turn it into new painted stripes; the catalog confirms the coarse paint family but does not establish exact albedo. No scene, cast floor shadow, glow, vignette, frame, label or UI. Entire mask visible and centered, largest visible axis about78-80 percent of the canvas, leave at least10 percent genuinely transparent margin all around. Exactly one mask, no alternate views.\n\nHIVE WARS Series10: Use HW-pred-3 as primary; in the white catalog this is the BLUE figure at the LEFT, never the red Lava figure or gold inset. Preserve this photo's slightly oblique/inclined head camera and its existing closed rigid face shell, with subtly unequal visible left/right side widths. Rounded tall oval crown, central pale bone/silver segmented vertical rib/spine with a narrow dark middle groove, blue-gray/silver curved outer forehead bands, no horns. Narrow green eye inserts with dark bordering sockets, do not make emissive beams or enlarge them. Lower face is a closed dark slate/blue-gray rounded jaw shell around the existing paler blue/silver central elongated rectangular nose-to-mouth panel, ending near the flat/rounded chin. Preserve the grainy stippled weathered painted metal texture. There is NO mouth grille, no new breathing slots and no fangs. Keep apparent blue-silver metal and pale rib accents, but the purple/blue scenic illumination is not extra purple painted armor. The black/brown dreadlocks and pale beads behind the shell, the shoulder weapon, and the long alien tube/weapon crossing horizontally near the neck/cheek are external scene/wearer elements: completely remove them, do not attach a side tube to the biomask.\nCamera constraint from HW-pred-3: retain the slight clockwise inclination, the top midline sits a little image-LEFT of the nose/chin, with centerline descending toward image-RIGHT, and a mild yaw toward image-RIGHT. Do not re-center every panel into a perfectly mirrored straight-on front. Match the broad oval crown and lower muzzle width-to-height proportions, roughly0.78-0.82 for the visible solid shell, not a tall skinny helmet. This mild original inclination must remain in A and B.\n",
+          "rejectionReason": "Top framing too tight and visible shell slightly narrower/longer than primary photograph; correct composition and coarse proportions only.",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        },
+        {
+          "number": 2,
+          "nativeSourcePath": "/workspace/generated_images/exec-800ab7ad-f3e1-4ebc-a1f5-d8e81ded7cdb.png",
+          "sha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0",
+          "selected": true,
+          "prompt": "Correct the FIRST generated HiveWars NECA Series10 biomask against the SECOND actual HW-pred-3 photograph; THIRD catalog's blue figure at LEFT is only coarse paint support. Preserve its correct blue-silver rough painted toy appearance, dark side panels, central pale segmented forehead ridge with narrow midline groove, two long curved outer crown bands, narrow GREEN inserts, closed lower face and elongated paler solid rectangular nose/mouth panel. No grille, fangs, tubes, extra stripes, horns, ornaments or invented microdetails. The first candidate is framed too tightly near the top and its shell is slightly too elongated/narrow. Restore the primary photographed solid-shell proportions with a modest10percent broader silhouette relative to height, keeping all existing panels and eye placement in the same relationship. Keep the actual slight clockwise inclination and mild yaw toward image-RIGHT; do not rotate it to a symmetrical front. Do not reveal new hidden side/back geometry. Most importantly recenter and scale down: the complete visible mask should occupy only78percent of the canvas longest axis, with at least10percent fully transparent empty margin above the crown and below the chin, and on both sides. Preserve photo-like grain, not polished PHG rendering yet, and retain subdued blue-gray/silver palette with no purple scenic paint. Only the rigid detachable face shell on TRUE transparent RGBA. No wearer, dreadlocks, beads, neck/armor/shoulder cannon, horizontal alien tube/weapon, scenery, background, floor/shadow, labels or UI. Exactly one complete mask with all edges inside the transparent margin.",
+          "referencedImagePaths": [
+            "/workspace/generated_images/exec-eb419c0f-f0a4-4a3b-b26d-18630d61da69.png",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        }
+      ],
+      "referencedImagePaths": [
+        "/workspace/generated_images/exec-eb419c0f-f0a4-4a3b-b26d-18630d61da69.png",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+      ]
+    },
+    {
+      "id": "neca-hive-wars-series-10",
+      "version": "B",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-6e504cc3-530d-4a10-8095-04876bed760c.png",
+      "sha256": "736c6ba757218754c93dbf60de33d711ca575e5be859a859aa60f3512daef195",
+      "bytes": 1204926,
+      "nativeDimensions": [
+        1262,
+        1246
+      ],
+      "mode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-hive-wars-series-10.json",
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+      "referenceSourceSha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc"
+        }
+      ],
+      "referenceSourceDetails": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/HW-pred-3.jpg",
+          "sha256": "61ce1ab156a7b1a90c1250fc371ea92ca799b9a97953e4102686099502df92a0",
+          "url": "http://necaonline.com/wp-content/uploads/2013/09/HW-pred-3.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/behind-the-scenes/closer-look-predators-series-10-action-figures",
+          "dimensions": [
+            570,
+            861
+          ]
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+          "scratchPath": "/tmp/mask-expansion-20261113/series10-catalog.jpg",
+          "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+          "url": "https://necaonline.com/wp-content/uploads/2013/10/51487-Predator-Series10Asst.jpg",
+          "sourcePageURL": "https://store.necaonline.com/blogs/news/shipping-predators-series-10-action-figures",
+          "dimensions": [
+            800,
+            600
+          ]
+        }
+      ],
+      "prompt": "Create versionB of the FIRST generated NECA HiveWars Series10 biomask as one realistic PHG-consistent PBR asset. Geometry and camera are LOCKED to first image: same slightly clockwise inclination and mild yaw toward image-RIGHT, same broad oval crown and closed lower shell proportions, same coarse existing central segmented pale rib/spine and narrow central seam, same curved outer blue-silver crown bands, same narrow GREEN eye inserts and dark eye borders, same elongated paler solid rectangular central nose/mouth shield. Do not reorient into a perfectly mirrored front and do not reveal additional hidden geometry. SECOND official HW-pred-3 photo and THIRD official catalog's BLUE figure at LEFT only cross-check this Series10 sculpture and coarse apparent paint, not different franchise masks. Change ONLY rendering: controlled rough blue-gray/silver metal with pale silver/bone-toned midline accents, less photographic grit and less excessive high-frequency toy grain; preserve the reference's broad weathering and subtle stipple, not new dents or grooves. Neutral soft key from image-upper-left/front with gentle front fill, subdued metallic highlights and readable relief. Keep the same apparent blue-silver paint and green non-emissive inserts; purple/blue theatrical scene illumination is not extra paint. No universal chrome. No new grille or breathing slots, no fangs, horns, glyphs, letters, runes, screws, decoration or new seams. Source mask is about130px tall, fine relief/material is necessarily restrained interpretation. ONLY the existing detached rigid face shell, on TRUE transparent RGBA; no wearer/head/neck/armor, dreadlocks/beads, shoulder cannon, transverse tube or weapon, background, floor/shadow plane, halo, vignette, text or UI. Entire complete mask centered with at least10percent fully transparent margin above crown, below chin and both sides; longest solid mask axis about78-80percent of canvas. Exactly one mask.",
+      "promptSha256": "c416a009f67b479a57fb59f617997bb3fd625973bc296e293600e2726d0c2ac3",
+      "transparentBackgroundRequested": true,
+      "nativeCopyByteIdentical": true,
+      "sourcePhotosViewedBeforeGeneration": true,
+      "technicalReview": {
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alphaBoundsByThreshold": {
+          "1": [
+            155,
+            15,
+            1216,
+            1206
+          ],
+          "8": [
+            280,
+            143,
+            969,
+            1089
+          ],
+          "32": [
+            281,
+            144,
+            968,
+            1089
+          ],
+          "128": [
+            281,
+            144,
+            967,
+            1088
+          ],
+          "254": [
+            283,
+            145,
+            966,
+            1086
+          ]
+        },
+        "maximumBorderAlpha": 0,
+        "occupiedBorderPixels": 0,
+        "strongVisibleAxisFraction": 0.7576,
+        "strongMarginsPixels": [
+          281,
+          144,
+          295,
+          158
+        ]
+      },
+      "visualReview": {
+        "performed": true,
+        "kind": "Automated agent visual review, not human art validation",
+        "observations": "Hive Wars: rounded blue-silver oval crown and pale segmented midline, narrow green eye inserts, closed slate lower face with paler long center panel. Retained the actual slight photo perspective/inclination; wearer/dreads/beads/tube/weapon/shoulder cannon excluded. Native browser composites show the complete solid shell cleanly against all three backgrounds, no visible rectangular background, dreadlocks, beads, body, tube or clipped mask.",
+        "browserCompositePath": "/tmp/mask-expansion-20261113/neca-lava-hive-composites.png",
+        "browserCompositeInspected": true,
+        "browserBackgrounds": [
+          "black",
+          "white",
+          "checker"
+        ]
+      },
+      "limitations": [
+        "Official NECA Series10 photographed toy edition; not a certified film/comic equivalent or final franchise master.",
+        "Source photographs have mask regions only about100-180px tall; fine relief, exact texture, hidden profile/back and UV/albedo remain unknown.",
+        "Version A is a new ImageGen isolation from official photos, not a pixel cutout or source original.",
+        "Apparent dark burgundy or blue-silver palette checked against official white-background catalog; exact lighting-independent pigment is not established.",
+        "Photographic grain/rough toy surface in A and PHG material response in B remain rendering interpretations; no canonical or human art certification.",
+        "VersionB translates material response and neutral lighting from generatedA with official photo cross-check; it does not establish original PHG mesh/UV or film equivalence.",
+        "Native complete mask occupies about74-76percent of the longest canvas axis after framing correction, with actual strong-alpha bounds/margins recorded; margins are slightly more generous than target78-80percent. No CPU reframing was performed."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "attempts": [
+        {
+          "number": 1,
+          "nativeSourcePath": "/workspace/generated_images/exec-6e504cc3-530d-4a10-8095-04876bed760c.png",
+          "sha256": "736c6ba757218754c93dbf60de33d711ca575e5be859a859aa60f3512daef195",
+          "selected": true,
+          "prompt": "Create versionB of the FIRST generated NECA HiveWars Series10 biomask as one realistic PHG-consistent PBR asset. Geometry and camera are LOCKED to first image: same slightly clockwise inclination and mild yaw toward image-RIGHT, same broad oval crown and closed lower shell proportions, same coarse existing central segmented pale rib/spine and narrow central seam, same curved outer blue-silver crown bands, same narrow GREEN eye inserts and dark eye borders, same elongated paler solid rectangular central nose/mouth shield. Do not reorient into a perfectly mirrored front and do not reveal additional hidden geometry. SECOND official HW-pred-3 photo and THIRD official catalog's BLUE figure at LEFT only cross-check this Series10 sculpture and coarse apparent paint, not different franchise masks. Change ONLY rendering: controlled rough blue-gray/silver metal with pale silver/bone-toned midline accents, less photographic grit and less excessive high-frequency toy grain; preserve the reference's broad weathering and subtle stipple, not new dents or grooves. Neutral soft key from image-upper-left/front with gentle front fill, subdued metallic highlights and readable relief. Keep the same apparent blue-silver paint and green non-emissive inserts; purple/blue theatrical scene illumination is not extra paint. No universal chrome. No new grille or breathing slots, no fangs, horns, glyphs, letters, runes, screws, decoration or new seams. Source mask is about130px tall, fine relief/material is necessarily restrained interpretation. ONLY the existing detached rigid face shell, on TRUE transparent RGBA; no wearer/head/neck/armor, dreadlocks/beads, shoulder cannon, transverse tube or weapon, background, floor/shadow plane, halo, vignette, text or UI. Entire complete mask centered with at least10percent fully transparent margin above crown, below chin and both sides; longest solid mask axis about78-80percent of canvas. Exactly one mask.",
+          "referencedImagePaths": [
+            "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+          ],
+          "transparentBackgroundRequested": true
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+      "sourceASha256": "ac7a8d689b4d5864b7b552200d171e797ef2498755edca37d41fb95bb90558c0",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-hive-wars-series-10.png",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+      ]
+    }
+  ],
+  "rejectedAttempts": [
+    {
+      "number": 1,
+      "nativeSourcePath": "/workspace/generated_images/exec-eb419c0f-f0a4-4a3b-b26d-18630d61da69.png",
+      "sha256": "09b4b338adb867a8b9fb4ea9fde1656d480a829f3af90e355808f55d433f9251",
+      "selected": false,
+      "prompt": "Use the FIRST photograph as the exact visible sculpture and camera reference. The SECOND image is an official Series 10 catalog composite used ONLY to cross-check apparent paint colors. Make ONE isolated rigid detachable BIOMASK ONLY on a genuinely transparent RGBA background. This is the specified NECA Series 10 toy edition, not a different film, comic, modern Ultimate, or imagined franchise variant. Match the mask's visible silhouette, proportions, camera yaw/pitch/roll, lens shapes, existing raised edges, ribs, panel boundaries and coarse wear. Keep the same slight real photo perspective; do not invent a straight symmetrical front, rotate the head or reveal hidden surfaces. The mask in the source is only about100-180px tall, so retain coarse visible form and do not invent fine runic letters, additional markings, microvents, screws, decorative panels, horns or unseen rear geometry. Extract visually using image generation: remove the whole wearer, skin, dreadlocks, beads, body, armor, neck ring, shoulder equipment, targeting/plasma weapon, handheld weapons and scenic background. No hair, dangling strands, tubes or supporting head. Preserve photographic grain and the apparent rough painted toy surface, with the primary photo's subdued local highlights; no PHG style redesign in this A version. Remove strong environmental color cast rather than turn it into new painted stripes; the catalog confirms the coarse paint family but does not establish exact albedo. No scene, cast floor shadow, glow, vignette, frame, label or UI. Entire mask visible and centered, largest visible axis about78-80 percent of the canvas, leave at least10 percent genuinely transparent margin all around. Exactly one mask, no alternate views.\n\nHIVE WARS Series10: Use HW-pred-3 as primary; in the white catalog this is the BLUE figure at the LEFT, never the red Lava figure or gold inset. Preserve this photo's slightly oblique/inclined head camera and its existing closed rigid face shell, with subtly unequal visible left/right side widths. Rounded tall oval crown, central pale bone/silver segmented vertical rib/spine with a narrow dark middle groove, blue-gray/silver curved outer forehead bands, no horns. Narrow green eye inserts with dark bordering sockets, do not make emissive beams or enlarge them. Lower face is a closed dark slate/blue-gray rounded jaw shell around the existing paler blue/silver central elongated rectangular nose-to-mouth panel, ending near the flat/rounded chin. Preserve the grainy stippled weathered painted metal texture. There is NO mouth grille, no new breathing slots and no fangs. Keep apparent blue-silver metal and pale rib accents, but the purple/blue scenic illumination is not extra purple painted armor. The black/brown dreadlocks and pale beads behind the shell, the shoulder weapon, and the long alien tube/weapon crossing horizontally near the neck/cheek are external scene/wearer elements: completely remove them, do not attach a side tube to the biomask.\nCamera constraint from HW-pred-3: retain the slight clockwise inclination, the top midline sits a little image-LEFT of the nose/chin, with centerline descending toward image-RIGHT, and a mild yaw toward image-RIGHT. Do not re-center every panel into a perfectly mirrored straight-on front. Match the broad oval crown and lower muzzle width-to-height proportions, roughly0.78-0.82 for the visible solid shell, not a tall skinny helmet. This mild original inclination must remain in A and B.\n",
+      "rejectionReason": "Top framing too tight and visible shell slightly narrower/longer than primary photograph; correct composition and coarse proportions only.",
+      "referencedImagePaths": [
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/HW-pred-3.jpg",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg"
+      ],
+      "transparentBackgroundRequested": true,
+      "version": "A"
+    }
+  ]
+}

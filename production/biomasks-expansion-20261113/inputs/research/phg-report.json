@@ -1,0 +1,439 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-13",
+  "scope": "Local PHG reference audit and fresh allowed GitHub community corpus retrieval only. No generation, no source edits, no git changes.",
+  "result": "No new publisher-certified 1:1 mask reference discovered. Eleven explicitly named community icons retrieved; six 128px mask line symbols plus Amazon 1024px silhouette can assist coarse identity checking only. Hunter/Scout/Berserker/Witch symbols cannot establish mask geometry.",
+  "communitySource": {
+    "repository": "https://github.com/FairYautja/HG",
+    "commit": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+    "latestCommitUnchanged": true,
+    "pushedAt": "2026-11-02T21:59:34Z",
+    "commitDate": "2026-11-02T21:58:57Z",
+    "treePath": "/tmp/mask-expansion-20261113/fairyautja-pinned-tree.json",
+    "treeSha256": "36da6707163ee3b0beb5308d049bd273758dc45eb409b50202533d87d7201a30",
+    "treeEntries": 301,
+    "sourceType": "Public community datamining/reference project, not publisher certification"
+  },
+  "assets": [
+    {
+      "name": "hunter",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/hunter.png",
+      "gitBlobSha": "a9ce432ad5ab9a47f0460d642c243af752f7fd8d",
+      "bytesExpected": 2867,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/hunter.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/hunter.png",
+      "downloadExitCode": 0,
+      "sha256": "ec12127617a4c9d46f01d1180bb4ef57668bfd36abdda31b179db9b7553ec701",
+      "bytes": 2867,
+      "computedGitBlobSha": "a9ce432ad5ab9a47f0460d642c243af752f7fd8d",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "class-emblem",
+      "identityEvidence": {
+        "communityDataName": "HUNTER",
+        "communityDataId": "CD_Predator_Hunter",
+        "communityIconPath": "/icons/characters/predator/hunter.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Three separate abstract white curved strokes. Not a mask or a character portrait.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "scout",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/scout.png",
+      "gitBlobSha": "5cf3effe8dee4f12c51110587ec96266c4970d98",
+      "bytesExpected": 2482,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/scout.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/scout.png",
+      "downloadExitCode": 0,
+      "sha256": "769776e8c18e4b6dbe1b6f79024f55cc3ce4739244f2e7873c602301d8460d08",
+      "bytes": 2482,
+      "computedGitBlobSha": "5cf3effe8dee4f12c51110587ec96266c4970d98",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "class-emblem",
+      "identityEvidence": {
+        "communityDataName": "SCOUT",
+        "communityDataId": "CD_Predator_Scout",
+        "communityIconPath": "/icons/characters/predator/scout.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Abstract swept star/bird-like class mark. Not a mask or a character portrait; no relation proved to Lost/Scout NECA.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "berserker",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/berserker.png",
+      "gitBlobSha": "6778720e2b7e7343a7ac19158c70c5347dab6451",
+      "bytesExpected": 3037,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/berserker.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/berserker.png",
+      "downloadExitCode": 0,
+      "sha256": "7c6166d19cbdfce21bbabafbbb281e1986138cda1501d4c6186efe02e2bccedc",
+      "bytes": 3037,
+      "computedGitBlobSha": "6778720e2b7e7343a7ac19158c70c5347dab6451",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "class-emblem",
+      "identityEvidence": {
+        "communityDataName": "BERSERKER",
+        "communityDataId": "CD_Predator_Berserker",
+        "communityIconPath": "/icons/characters/predator/berserker.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Three ascending curved claw/flame strokes. Not a mask or a character portrait.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "amazon",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/amazon.png",
+      "gitBlobSha": "04a1576ba341d0b727c257330b95fed19ce76160",
+      "bytesExpected": 31545,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/amazon.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/amazon.png",
+      "downloadExitCode": 0,
+      "sha256": "d3ce59420ef472b51d895098beed5ee6c5ed61b4353480061c1e1d682f7ddac7",
+      "bytes": 31545,
+      "computedGitBlobSha": "04a1576ba341d0b727c257330b95fed19ce76160",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "mode": "RGBA",
+      "referenceType": "mask-symbol",
+      "identityEvidence": {
+        "communityDataName": "Amazon",
+        "communityDataId": "CD_Predator_Amazon",
+        "communityIconPath": "/icons/characters/predator/amazon.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Front feline skull outline, broad domed brow, side spike/ear contours, large eye apertures, paired nasal slots and two long fangs. Symbol has no material or depth information.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "anubis",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/anubis.png",
+      "gitBlobSha": "5d33bf85410b90ad2d288b587bd7845f37d3e60d",
+      "bytesExpected": 5202,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/anubis.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/anubis.png",
+      "downloadExitCode": 0,
+      "sha256": "6605d67bb54452967c72a90e9311681528274ca9adb3322074b304c40f028fe0",
+      "bytes": 5202,
+      "computedGitBlobSha": "5d33bf85410b90ad2d288b587bd7845f37d3e60d",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "mask-line-symbol",
+      "identityEvidence": {
+        "communityDataName": "Anubis",
+        "communityDataId": "CD_Predator_Zeta",
+        "communityIconPath": "/icons/characters/predator/anubis.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Long jackal ears above thin pointed oval brow, central small oval crest, diagonal eye cuts and narrow tapered lower muzzle. 128px line art, hidden shape/material unknown.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "witch",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/witch.png",
+      "gitBlobSha": "ae05cc4ac1ebe6081f4480c5e9e132da2b5b6bc6",
+      "bytesExpected": 4423,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/witch.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/witch.png",
+      "downloadExitCode": 0,
+      "sha256": "c1cc3e265393d9fe788d64d2a91505d77cf249cb5452364a40ea7dffb3233232",
+      "bytes": 4423,
+      "computedGitBlobSha": "ae05cc4ac1ebe6081f4480c5e9e132da2b5b6bc6",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "class-emblem",
+      "identityEvidence": {
+        "communityDataName": "Witch",
+        "communityDataId": "CD_Predator_Lambda",
+        "communityIconPath": "/icons/characters/predator/witch.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Three lashed sticks form a triangle with three dots inside. Does not depict a biomask.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "exalted",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/exalted.png",
+      "gitBlobSha": "a94814309dde823baed0b5b77a622829e0b8a6b0",
+      "bytesExpected": 5518,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/exalted.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/exalted.png",
+      "downloadExitCode": 0,
+      "sha256": "69e785244c0183edd7b405b9a4a76b852cd889df25e09569279b853f0eeb5424",
+      "bytes": 5518,
+      "computedGitBlobSha": "a94814309dde823baed0b5b77a622829e0b8a6b0",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "mask-line-symbol",
+      "identityEvidence": {
+        "communityDataName": "Exalted",
+        "communityDataId": "CD_Predator_Cid",
+        "communityIconPath": "/icons/characters/predator/exalted.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Wide high domed brow with short top stem, large black eye openings, ornate curving cheek/mouth forms. 128px graphic, no material/depth proof.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "gladiator",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/gladiator.png",
+      "gitBlobSha": "adbe217c414afad9e1f7a3b914170a21ad562b97",
+      "bytesExpected": 7524,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/gladiator.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/gladiator.png",
+      "downloadExitCode": 0,
+      "sha256": "eb7f18c0867b33e0e6cda2ce40cda321dd60f686dac4730318e90a610ad9f876",
+      "bytes": 7524,
+      "computedGitBlobSha": "adbe217c414afad9e1f7a3b914170a21ad562b97",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "mask-line-symbol",
+      "identityEvidence": {
+        "communityDataName": "Gladiator",
+        "communityDataId": "CD_Predator_Gamma",
+        "communityIconPath": "/icons/characters/predator/gladiator.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Roman gladiator-inspired helmet with tall thin central fin, arched brow, patterned/perforated eye zones and central lower vertical plate. 128px line art.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "oni",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/oni.png",
+      "gitBlobSha": "bbd51894040a71829df4cf97b8e040b66d3c3f03",
+      "bytesExpected": 5155,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/oni.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/oni.png",
+      "downloadExitCode": 0,
+      "sha256": "3b555a6a8b9fbacf9805a278eaeb64d5cb37b847211190dc8cb44bc342544d12",
+      "bytes": 5155,
+      "computedGitBlobSha": "bbd51894040a71829df4cf97b8e040b66d3c3f03",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "mask-line-symbol",
+      "identityEvidence": {
+        "communityDataName": "Oni",
+        "communityDataId": "CD_Predator_Kappa",
+        "communityIconPath": "/icons/characters/predator/oni.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "High rounded tapered forehead, V seam, deep angled eye strips/cheek vents and narrow projecting central lower wedge. 128px line art.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "jotun",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/jotun.png",
+      "gitBlobSha": "906a97e6cd2ff9a8006eb35e85598ee4fcdf1ec0",
+      "bytesExpected": 4862,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/jotun.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/jotun.png",
+      "downloadExitCode": 0,
+      "sha256": "4b76b0c70c60bde570f5474a27730571b58b566744f8515dbd524fe19fda01b7",
+      "bytes": 4862,
+      "computedGitBlobSha": "906a97e6cd2ff9a8006eb35e85598ee4fcdf1ec0",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "mask-line-symbol",
+      "identityEvidence": {
+        "communityDataName": "Jotun",
+        "communityDataId": "CD_Predator_Jotun",
+        "communityIconPath": "/icons/characters/predator/jotun.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "High shield-shaped forehead with two pointed outer upper edges, narrow angled eyes and divided long lower sides around open central shape. 128px line art.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    },
+    {
+      "name": "father",
+      "repositoryPath": "docusaurus/static/icons/characters/predator/father.png",
+      "gitBlobSha": "3d24c1215c6d6f6eac1dc5182707b7ef1e061cf6",
+      "bytesExpected": 3058,
+      "url": "https://raw.githubusercontent.com/FairYautja/HG/87d08ed4028f89f3625bf059c95539cb71769fc6/docusaurus/static/icons/characters/predator/father.png",
+      "localPath": "/tmp/mask-expansion-20261113/fairyautja/father.png",
+      "downloadExitCode": 0,
+      "sha256": "e1b269c11beb1367a4cc599fdb5ca67ba1c6e27ad9590dc1d3a6e35d48ff20de",
+      "bytes": 3058,
+      "computedGitBlobSha": "3d24c1215c6d6f6eac1dc5182707b7ef1e061cf6",
+      "dimensions": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "referenceType": "mask-symbol",
+      "identityEvidence": {
+        "communityDataName": "Father",
+        "communityDataId": "CD_Predator_Father",
+        "communityIconPath": "/icons/characters/predator/father.png",
+        "dataPath": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+        "rendererPath": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+        "explanation": "The community data row explicitly pairs the icon URL and class name; Icon.js displays row.icon beside row.name."
+      },
+      "visualObservations": "Wide antler-like branching upper silhouette with low eye slots and two lower dark openings. 128px silhouette, no material/depth proof.",
+      "visuallyInspected": true,
+      "sourcePixelsUnchanged": true,
+      "canonicalCertified": false,
+      "independentPublisherIdentityValidated": false,
+      "canReconstructCanonicalPBR1to1": false
+    }
+  ],
+  "supportFiles": [
+    {
+      "path": "/tmp/mask-expansion-20261113/fairyautja/characters.mdx",
+      "bytes": 10527,
+      "sha256": "adfeaa756a7e5be59c482e7d75b6d50c8e69b6c34f1aebf54e8690ff957766f0"
+    },
+    {
+      "path": "/tmp/mask-expansion-20261113/fairyautja/Icon.js",
+      "bytes": 499,
+      "sha256": "d41a8a1ba6504afe851e40f370aa1755240df1dca20a2c4d36df68f65ed0a265"
+    },
+    {
+      "path": "/tmp/mask-expansion-20261113/fairyautja/data.json",
+      "bytes": 186751,
+      "sha256": "0268ed43b5b72cf5bf43476e382896a63670ea5de9faaf4a03ca05b96e4652f2"
+    }
+  ],
+  "browserInspection": {
+    "screenshots": [
+      "/tmp/mask-expansion-20261113/fairyautja-board-1.png",
+      "/tmp/mask-expansion-20261113/fairyautja-board-2.png",
+      "/tmp/mask-expansion-20261113/fairyautja-board-3.png",
+      "/tmp/mask-expansion-20261113/fairyautja-board-4.png"
+    ],
+    "script": "/tmp/mask-expansion-20261113/fairyautja-reference-board.mjs",
+    "method": "Native source PNGs viewed individually, then browser CSS display screenshots on black and white; no raster edits."
+  },
+  "existingSourcesReviewed": [
+    {
+      "path": "/tmp/primary-masks-20261113/phg-next-independent/hunting-party-2-render.png",
+      "finding": "Official 995x1101 group render already audited, Amazon/Pirate assignment is archive assertion and secondary shape description only; no new publisher caption discovered by this child. Parent researching official pages independently."
+    },
+    {
+      "paths": [
+        "/tmp/primary-masks-20261113/phg-next-independent/launch-class-49198892311.jpg",
+        "/tmp/primary-masks-20261113/phg-next-independent/launch-class-49199095822.jpg",
+        "/tmp/primary-masks-20261113/phg-next-independent/launch-class-49199095857.jpg"
+      ],
+      "finding": "Three official 2019 portraits are 394x640, no Hunter/Scout/Berserker strings in bytes, no EXIF/IPTC class labels. IPTC contains only charset/version and encrypted Flickr reference. Community icons are abstract class emblems and cannot resolve mapping."
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/symbol-reference-report.json",
+      "finding": "Existing Pirate two-tone 1024px icon is only half-mask/eyepatch/head silhouette; Bionic is mechanical head rather than detachable mask. No new PBR proof."
+    },
+    {
+      "path": "/tmp/dual-masks-20261113/local-source-audit.json",
+      "finding": "V44 assets are reconstructions and do not become canon references through filenames. V87 has Feral/Eclipse documentary art already covered; no further qualified source identified for missing PHG cosmetics Haze/Rival/Salamander/Mors/Foxtrot/Tank/Saber/Rebreather."
+    }
+  ],
+  "negativeEvidence": {
+    "sharedCommunityIconBlobs": "Captured/Jungle Hunter share icon; Celtic/Chopper/Scar/Wolf share another. These reuse patterns cannot certify mask equivalence.",
+    "noCosmeticMaskFilesInCommunityTree": true,
+    "doNotRenameLostScoutNECAtoPHGScout": true
+  },
+  "networkBoundaries": {
+    "used": [
+      "api.github.com",
+      "raw.githubusercontent.com"
+    ],
+    "unchangedBlockedHostsNotRetried": [
+      "eadn-wc04-13179453.nxedge.io",
+      "forum.predator.illfonic.com",
+      "predator.illfonic.com",
+      "www.sideshow.com"
+    ],
+    "wordpressDisabledAPIBypassAttempted": false,
+    "playstationWebResearchOwnedByParent": true
+  }
+}
