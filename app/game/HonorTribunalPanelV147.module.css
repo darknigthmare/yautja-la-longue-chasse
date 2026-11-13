@@ -1,0 +1,11 @@
+.tribunal{margin-top:18px}
+.tribunal h3{margin:4px 0 12px;font-size:1.05rem}
+.steps{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:12px 0}
+.steps li{padding:6px 10px;border:1px solid #526259;border-radius:5px;font-size:.8rem;color:#aab9b0}
+.steps li[aria-current=step]{border-color:#d5bf85;color:#f1f5ed;background:#2c2a1c}
+.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:12px 0}
+.columns ul{margin:0;padding-left:18px;font-size:.85rem;line-height:1.7;color:#bdcfc1}
+.columns li button{margin-left:8px;min-height:34px;padding:6px 10px}
+.history{margin:14px 0;font-size:.85rem;color:#bdcfc1}
+.history summary{cursor:pointer}
+@media(max-width:640px){.columns{grid-template-columns:1fr}}

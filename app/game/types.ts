@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V147: infractions, played trials, verdicts, rank freeze and exile; older saves may omit. */
+  tribunalV147?: import("./systems/honorTribunalV147").HonorTribunalV147 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

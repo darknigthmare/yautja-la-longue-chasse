@@ -290,6 +290,7 @@ import type {
 import { recordGlassDesertExpedition, type HomeworldProgress, type HomeworldService } from "./systems/homeworld";
 import type { GlassDesertProof } from "./systems/glassDesert";
 
+import { tribunalAccessV147 } from "./systems/honorTribunalV147";
 import { advanceJusticeTime, applyJusticeAction, getJusticeStatus, getJusticeRouteControl, type JusticeProgress, type JusticeJurisdictionId } from "./systems/justice";
 
 import { normalizeHomeworldExpeditionProof, type HomeworldExpeditionProof } from "./systems/homeworldExpedition";
@@ -302,6 +303,7 @@ const HomeworldExpedition = React.lazy(() => import("./HomeworldExpedition"));
 const GlassDesertExpedition = React.lazy(() => import("./GlassDesertExpedition"));
 const MobilityGarage = React.lazy(() => import("./MobilityGarage"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
+const HonorTribunalPanelV147 = React.lazy(() => import("./HonorTribunalPanelV147"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const ClanWarPanelV85 = React.lazy(() => import("./ClanWarPanelV85"));
 const ClanWarGauntletLockerV132 = React.lazy(() => import("./ClanWarGauntletLockerV132"));
@@ -2183,7 +2185,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2193,7 +2195,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2520,6 +2522,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [persistSocialProgress]);
   const persistJusticeProgress = useCallback((justice: JusticeProgress) =>
     persistSocialProgress({ justice }), [persistSocialProgress]);
+  // V147: honour, frozen rank, Bad Blood declaration and dossier change together.
+  const persistTribunalV147 = useCallback((update: Pick<SaveGame, "profile" | "justice" | "tribunalV147">) =>
+    persistSocialProgress(update), [persistSocialProgress]);
 
   const openGameReserveV66 = useCallback((fresh = false, version: GameReserveChoiceV109 = 1): boolean => {
     // The autonomous expedition cannot lend a ship or adult arsenal to a youth save.
@@ -2572,6 +2577,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         setScreen('wolf-castle'); setToast("Rejoins la baie royale pour repartir avec ton vaisseau."); return;
       }
       const docking = saveRef.current.clanShipDocking;
+      // V147: an exile loses access to the city and the clan ship (bible, voie Bad Blood).
+      const tribunalAccess = tribunalAccessV147(saveRef.current.tribunalV147);
+      if ((next === "homeworld" && !tribunalAccess.city) || (next === "clan-ship" && !tribunalAccess.clanShip && docking?.status !== "aboard")) {
+        setToast("Exil prononcé par le tribunal : la cité et le navire de clan te sont fermés. Le dossier de justice reste ouvert depuis le pont."); return;
+      }
       if (docking && docking.status !== "free-flight" && ["homeworld", "map", "briefing", "mission", "game-reserve", "ship-acquisition-v89", "wolf-castle", "planet-arrival"].includes(next)) {
         setToast("Désamarre le vaisseau personnel du Clan Ship avant de choisir une autre destination."); return;
       }
@@ -4826,7 +4836,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       {screen === "justice" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <JusticePanel progress={save.justice} jurisdictionId={justiceJurisdiction}
-            onProgress={persistJusticeProgress} onClose={() => go(justiceReturnScreen)} onNotify={setToast} embedded />
+            onProgress={persistJusticeProgress} onNotify={setToast} embedded
+            onClose={() => {
+              // An exile pronounced while in the city returns to the personal deck.
+              const access = tribunalAccessV147(saveRef.current.tribunalV147);
+              go((justiceReturnScreen === "homeworld" && !access.city) || (justiceReturnScreen === "clan-ship" && !access.clanShip && saveRef.current.clanShipDocking?.status !== "aboard") ? "deck" : justiceReturnScreen);
+            }} />
+          <HonorTribunalPanelV147 save={save} onCommit={persistTribunalV147} onNotify={setToast} />
         </Suspense>
       )}
 
