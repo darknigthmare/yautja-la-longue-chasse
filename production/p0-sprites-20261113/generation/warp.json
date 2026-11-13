@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "lot": "p0-sprites-20261113",
+  "family": "warp",
+  "sourceCommit": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "scope": "Native intentionally opaque empty-bay background candidate for WARP-199; original preserved and gameplay/artistic P0 acceptance remains open.",
+  "sourceP0": {
+    "key": "Warp Universe:WARP-199",
+    "priority": "P0",
+    "criterion": "Salle de baie vide, sol dégagé ; réserver l’espace des vrais props 001–005, éviter un portail peint en doublon.",
+    "source": {
+      "path": "docs/campagne/WARP_UNIVERSE_REPRISE.md",
+      "line": 56
+    }
+  },
+  "entries": [
+    {
+      "id": "WARP-199",
+      "sourceId": "WARP-199",
+      "sourceDesignId": "WARP-199",
+      "label": "Baie Warp vide — fond modulaire",
+      "repositoryPath": "public/game/p0-sprites-20261113/warp/warp-199-empty-bay.png",
+      "src": "/game/p0-sprites-20261113/warp/warp-199-empty-bay.png",
+      "nativeGenerationPath": "/workspace/generated_images/exec-449c3cc4-604d-4a39-a9d3-170178518784.png",
+      "sha256": "c0ebe3051c4badaee28f8db1673da0c2ce901d431d06d10e51866f2d02b03087",
+      "bytes": 2544734,
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "frameCount": 1,
+      "assetKind": "background",
+      "opaqueIntentional": true,
+      "alphaPolicy": "intentionally-opaque-background",
+      "classification": "original-project-background-adaptation",
+      "state": "empty-modular-bay-background",
+      "camera": "Original frontal source camera/layout requested and inspected; exact artistic projection review remains open.",
+      "facing": "frontal-source-camera",
+      "pivot": [
+        835.5,
+        940
+      ],
+      "pivotStatus": "Image-bottom proposal for background only; no physical placement approval.",
+      "status": "generated-candidate",
+      "humanValidated": false,
+      "canonicalCertification": false,
+      "runtimeIntegrated": false,
+      "priorityLinks": [
+        "Warp Universe:WARP-199"
+      ],
+      "source": {
+        "path": "docs/campagne/WARP_UNIVERSE_REPRISE.md",
+        "line": 56,
+        "priority": "P0",
+        "sha256": "26d66e2fd75cbdc717388a4d0ed9e2eb63edee0f0ea16c15bd884de4ff6af5c7"
+      },
+      "references": [
+        {
+          "path": "public/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+          "sha256": "c5b88e5939bb4eaaad016da06377802e0ff8cf7d127f48c4ca438bfcb47d17ad",
+          "width": 1672,
+          "height": 941,
+          "mode": "RGB",
+          "role": "original-project-painted-bay-reference-preserved"
+        }
+      ],
+      "sourceP0": {
+        "key": "Warp Universe:WARP-199",
+        "priority": "P0",
+        "criterion": "Salle de baie vide, sol dégagé ; réserver l’espace des vrais props 001–005, éviter un portail peint en doublon.",
+        "source": {
+          "path": "docs/campagne/WARP_UNIVERSE_REPRISE.md",
+          "line": 56
+        }
+      },
+      "processing": "Native ImageGen output copied byte-identically. No CPU raster crop, resize, recolor, mirroring, alpha cleanup or background removal.",
+      "technical": {
+        "imageFormat": "PNG",
+        "nativeWidth": 1672,
+        "nativeHeight": 941,
+        "alphaRange": null,
+        "opaqueBackgroundIntentional": true,
+        "transparentCutoutRequired": false,
+        "nativeBytesIdentical": true,
+        "sourceBytesUnchanged": true,
+        "fullCanvasBackground": true
+      },
+      "artReview": {
+        "assistantInspected": true,
+        "sourceRelationship": "Local equipment-removal adaptation of an original-project bay background, not an official franchise-certified replica.",
+        "notes": "The two painted portal pylons, two coordinate consoles and dedicated round portal platform have been removed; walls, ceiling, galleries, floor palette and frontal layout retained as design anchors. Human fidelity, usable floor and modular placement review remains open."
+      },
+      "limitations": [
+        "This is one intentionally opaque static background; transparent sprite alpha/margin criteria do not apply.",
+        "No portal, console, reactor or beacon is included as a baked floor object. Existing archive01 props001–005 remain separate dependencies.",
+        "Exact artistic fidelity, engine floor collision, camera/scale, portal alignment and scene integration remain unqualified."
+      ],
+      "existingPropDependencies": {
+        "status": "documented-delivered-in-archive01-not-present-in-this-checkout",
+        "catalogue": "docs/campagne/WARP_UNIVERSE_ASSETS.md",
+        "lines": [
+          54,
+          55,
+          56,
+          57,
+          58
+        ],
+        "ids": [
+          "001",
+          "002",
+          "003",
+          "004",
+          "005"
+        ],
+        "paths": [
+          "module/01_portail_warp_actif.png",
+          "module/02_portail_warp_inactif.png",
+          "module/03_console_coordonnees.png",
+          "module/04_coeur_warp.png",
+          "module/05_balise_ancrage.png"
+        ],
+        "action": "Recover existing archive01 and verify its native references before generating duplicates or claiming modular-scene integration."
+      },
+      "attempts": [
+        {
+          "nativePath": "/workspace/generated_images/exec-449c3cc4-604d-4a39-a9d3-170178518784.png",
+          "sha256": "c0ebe3051c4badaee28f8db1673da0c2ce901d431d06d10e51866f2d02b03087",
+          "referencePath": "/workspace/yautja-la-longue-chasse/public/game/warp-universe/20261109/199_module_baie_warp_fond.png",
+          "referenceSha256": "c5b88e5939bb4eaaad016da06377802e0ff8cf7d127f48c4ca438bfcb47d17ad",
+          "prompt": "Edit this exact existing original-project WARP bay background into its EMPTY MODULAR BAY state. This is a precise local equipment removal, not a redesign. Preserve the source's same wide landscape composition, frontal camera, vanishing point, scale, architecture, upper side galleries/railings, dark green-black ribbed walls, ceiling machinery/ring light, cables integrated into walls, attached wall trophy reliefs, dark red cloth banners, worn bronze/black metal textures, turquoise ceiling illumination, restrained red architectural strips, atmospheric depth, and large foreground floor panels with the front rim/steps. REMOVE ONLY THE PAINTED-IN MODULAR EQUIPMENT that must be supplied separately in the game: both enormous freestanding blade-shaped warp portal pylons at left/right of the central floor (including their bases, attached projecting braces and dedicated portal hoses), both freestanding red-screen control consoles at far left and right on the lower floor, and the dedicated round raised warp-portal platform between the two pylons, including its red ring and attached front little control lip. Replace the exposed portions by a faithful seamless continuation of the source's EXISTING room back wall and EXISTING broad flat metal floor panel pattern. The floor must be one unobstructed empty playable band across the entire room, with clear space reserved for future separate portal, coordinate console, reactor and return beacon props. Do not leave ghost pylons, console shadows, floating device interfaces, painted gateway, glowing portal membrane, portal ring on the floor or new equipment. Preserve architectural side-wall buttresses that are part of the room; only detachable modular portal equipment goes away. No people, creatures, labels, text captions, new furniture, new doorway or changed camera. Keep the original aspect/layout and material palette faithfully. This image is a complete intentionally OPAQUE BACKGROUND, filling all pixels; do not produce a cutout or transparent holes. Native opaque PNG. No claim of official canon certification or human approval.",
+          "transparentBackgroundRequested": false,
+          "selected": true,
+          "note": "Selected native intentionally opaque empty-bay background candidate."
+        }
+      ]
+    }
+  ]
+}

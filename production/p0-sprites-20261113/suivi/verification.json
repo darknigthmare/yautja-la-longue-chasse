@@ -1,0 +1,159 @@
+{
+  "passed": true,
+  "asOf": "2026-11-13",
+  "artifact": {
+    "path": "production/p0-sprites-20261113/suivi/Yautja_Sprites_P0_20261113.xlsx",
+    "bytes": 169608,
+    "sha256": "b5d303bec0cd02866a47b8f05a126e05aab7c5755c5e951ace98a0e952d996d3"
+  },
+  "sheets": [
+    "Synthèse",
+    "Assets",
+    "Couverture P0",
+    "Références",
+    "Blocages fidélité",
+    "Sources protégées",
+    "Déjà existants"
+  ],
+  "cellsCompared": 18759,
+  "deterministicReconstructionIdentical": true,
+  "formulaCaches": [
+    {
+      "sheet": "Synthèse",
+      "cell": "B5",
+      "formula": "COUNTA('Couverture P0'!A5:A779)",
+      "cached": 775
+    },
+    {
+      "sheet": "Synthèse",
+      "cell": "B7",
+      "formula": "COUNTA('Assets'!A5:A114)",
+      "cached": 110
+    },
+    {
+      "sheet": "Synthèse",
+      "cell": "B19",
+      "formula": "COUNTIF('Couverture P0'!I5:I779,\"Candidat généré lié\")",
+      "cached": 23
+    }
+  ],
+  "counts": {
+    "p0Subjects": 775,
+    "sourceStatusesUnchanged": {
+      "QUALIFIE_BORNE_ANTERIEUR": 19,
+      "PARTIEL": 640,
+      "OUVERT": 114,
+      "QUALIFIE_BORNE": 2
+    },
+    "generatedStaticViews": 110,
+    "generatedSourceDesignIdentities": 80,
+    "generatedSpriteFrames": 109,
+    "generatedOpaqueBackgrounds": 1,
+    "nativePngFiles": 45,
+    "nativePixels": 70774708,
+    "nativeBytes": 69451848,
+    "generatedAnimations": 0,
+    "humanArtApprovals": 0,
+    "canonicalOneToOneCertifications": 0,
+    "totalRequiredImages": null,
+    "totalRequiredAnimationFrames": null,
+    "newlyClosedP0": 0,
+    "subjectsWithCandidateArtLinks": 23,
+    "subjectsWithoutCandidateArtLinks": 752,
+    "candidateViewsWithoutExactP0Link": 0,
+    "candidateSourceDesignsWithoutExactP0Link": 0,
+    "sourceWorkbooksProtected": 119,
+    "priorFollowupWorkbooksProtected": 1,
+    "allProtectedWorkbooks": 120,
+    "staticViewsByCategory": {
+      "homeworld": 13,
+      "masks": 6,
+      "props": 12,
+      "structures": 18,
+      "units": 60,
+      "warp": 1
+    },
+    "sourceDesignIdentitiesByCategory": {
+      "homeworld": 13,
+      "masks": 6,
+      "props": 12,
+      "structures": 18,
+      "units": 30,
+      "warp": 1
+    },
+    "unitSourceDesignIdentities": 30,
+    "unitStaticViews": 60,
+    "sourceMapDesignIdentities": 12,
+    "sourceMapStaticViews": 0
+  },
+  "allP0Closed": false,
+  "sourceInputsProtected": {
+    "sourceWorkbooks": 119,
+    "priorFollowupWorkbooks": 1,
+    "totalProtectedWorkbooks": 120,
+    "protectedInputs": 126
+  },
+  "inputPins": [
+    {
+      "path": "public/game/p0-sprites-20261113/manifest.json",
+      "bytes": 1288580,
+      "sha256": "f11cb10dae09c43d939ba4711ae08cc2ab6cde5d0f7e98dac40793e57e712a59"
+    },
+    {
+      "path": "production/p0-sprites-20261113/suivi/source-protection.json",
+      "bytes": 42209,
+      "sha256": "0b286c61939927114006bad7d8693af28ed157f7c8709c37078f2393da68851b"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/registre-priorites.json",
+      "bytes": 11665192,
+      "sha256": "1236cab2585624405faea9e44db97d6268e99eefaecad694355483ad0309bd19"
+    },
+    {
+      "path": "production/clan-war-command-20261109/suivi/source-inventory.json",
+      "bytes": 666165,
+      "sha256": "862c6199c348efd4bb06ea9ce4e024fcb80465a575aeefd72c421f6d8923c9a0"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/p0-sprite-inventory.json",
+      "bytes": 1093024,
+      "sha256": "2b9a295377b47c08df74b1e4b3e5e57d203458e975e4337854e8a42fec47eded"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/clan-war-generation-source-designs.json",
+      "bytes": 252564,
+      "sha256": "745dea89303d712c80565072bb641ce31d50f18ae605569c693fdcf234b97552"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/arsenal.json",
+      "bytes": 591131,
+      "sha256": "7428dbf6ca3c2cae5ebec7cbefc116e00c869dc5f204520c0e0d7c26d466104b"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/workbook_lib.py",
+      "bytes": 54692,
+      "sha256": "10d3abce0755cceb1c25074ddad168bd9b21b0cd8eb40379540f5e60bd8f02c8"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/build-workbook.py",
+      "bytes": 1740,
+      "sha256": "6b430c88531d93998dccdc29cc0ec30f192a63db20554840b245008b7efe7228"
+    },
+    {
+      "path": "production/p0-sprites-20261113/tools/verify-workbook.py",
+      "bytes": 847,
+      "sha256": "78204d21205b49ec829f9a3fa349c599341eda5bebf6ead925eb3ad50e259123"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/reference-contracts.json",
+      "bytes": 10548,
+      "sha256": "8b49fa4f4aeb8129ac265caf378c095a07312d0eb830bebd52124af82c0ba18e"
+    },
+    {
+      "path": "production/p0-sprites-20261113/pack-inputs/phg-nine-contracts.json",
+      "bytes": 12006,
+      "sha256": "f7244e444df31f987287cc8076de7bccabf54b086bae29b677839f90a137eb64"
+    }
+  ],
+  "scope": "SHA and PNG headers/rectangles plus deterministic OpenXML, cell/formula caches and source preservation. Alpha/pivot/quality values are the separately pinned pack measurements, not a new artistic or gameplay review."
+}
