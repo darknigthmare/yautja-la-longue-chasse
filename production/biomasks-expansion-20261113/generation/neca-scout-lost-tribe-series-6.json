@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "id": "neca-scout-lost-tribe-series-6",
+  "sourceEdition": "NECA Predators Series6,2012 official portrait",
+  "tool": "image_gen.imagegen",
+  "scope": "Source-bound official NECA sculpture adaptation A and separate PHG-rendering B; no film fidelity certification or automatic Bible closure.",
+  "entries": [
+    {
+      "id": "neca-scout-lost-tribe-series-6",
+      "label": "Scout Lost Tribe — NECA Series6",
+      "version": "A",
+      "assetPath": "public/game/biomasks-expansion-20261113/originals/neca-scout-lost-tribe-series-6.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-4046a720-b427-4109-a454-0fb2f0c3bba1.png",
+      "sha256": "74aae73cc0eab5652a3aefef005fb859cd8843487add059e838148aaace93f66",
+      "bytes": 1674334,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-scout-lost-tribe-series-6.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+      "referenceSourceSha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+          "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+        }
+      ],
+      "referenceSourceUrl": "https://necaonline.com/wp-content/uploads/2012/08/SCOUT_01.jpg",
+      "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+      "sourceEdition": "NECA Predators Series6,2012 official portrait",
+      "sourceClass": "official-photo",
+      "submittedReferencePaths": [
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/scout-direct.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Create ONE isolated detachable biomask following only the exact mask visible in the attached official NECA2012 Series6 figure photograph. This is a source-bound visual adaptation of that particular licensed sculpt/paint edition, NOT certified original film geometry. Do not use a similar familiar Predator mask as a substitute.\nPreserve the photograph's actual mask silhouette, width-to-height ratio, pose, camera elevation, yaw/pitch/roll, visible perspective, sculpt proportions, panel boundaries, apertures and painted grey/bronze surface values. Retain the visible physical toy-sculpt reliefs and wear. Use the photo lighting and observed muted material/paint for A; do not brighten into chrome or recolor to remembered canon. Preserve existing asymmetries. Where the small dark photograph cannot resolve fine marks, keep them restrained and unresolved rather than inventing clear detail.\nREMOVE the figure wearer, organic head, dreadlocks, neck, armor, netting, shoulder equipment, straps and black photographic background. Render ONLY the photographed hard mask shell and clearly visible built-in features. Remove hoses/cables leaving the mask for the wearer. Do not make new back/interior surfaces, a new profile or hidden side geometry. No new glyphs, engraving, grooves, vents, filters, holes, wires, teeth, horns or damage. No mirrored redesign or forced symmetry.\nOne mask only, complete and centered, no second object or reference inset. Genuine transparent RGBA background; no floor, shadow plane, support, stand, smoke, halo, text, label or checkerboard. Request1254x1254square if supported. Place the complete visible mask within80percent of the largest canvas axis, leaving10percent empty margin on all sides; preserve proportions and avoid cropped edges. Clear high-quality game-prop image preserving the actual referenced edition, not a newly authored mask.\n\nPHOTO LOCKS — NECA Scout Lost Tribe Series6, distinct from PHG Scout class: retain the smoothly rounded broad oval forehead dome with a smooth thick sloping perimeter rim and shallow top-center dip. Preserve the photo’s slightly turned/elevated three-quarter camera; do not square it to a new symmetrical front. Keep narrow black eye slits under the low brow, the broad rounded projecting central muzzle plate, and the swollen rounded side-cheek lobes. Keep the closed lower muzzle and two small built-in downward fittings at its lower edge, but REMOVE the ribbed black wearer hoses continuing below the fittings. Preserve muted silver/grey paint and slight worn mottling; no new bronze colorway, runes, vents, canine teeth or emitters. Do not substitute PHG Scout, Snake or V62 Boar geometry.",
+      "promptSha256": "ba4766945b5c248109fde61e5ba79688a162eb35d0fb95272c1f39268cebc5ff",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          188,
+          97,
+          1065,
+          1179
+        ],
+        "visibleMarginsPx": [
+          188,
+          97,
+          189,
+          75
+        ],
+        "minimumMarginFraction": 0.05981,
+        "transparentPixels": 835979,
+        "opaquePixels": 612
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Broad smooth rounded crown/rim, narrow dark eye slits and rounded projecting center/side muzzle lobes retained.",
+          "Two lower built-in fittings retained; external wearer hoses, dreadlocks and armour removed.",
+          "Candidate remains the photographed NECA Lost Tribe Scout edition, distinct from PHG Scout.",
+          "A retains the source photographed paint/roughness and dark presentation."
+        ]
+      },
+      "limitations": [
+        "Source is an official NECA2012 Series6 licensed toy photograph400x600, not a film scan or a physical turntable.",
+        "The mask itself occupies a small part of the photo; fine pores, wear microtexture and exact groove counts cannot be certified1:1.",
+        "Only the visible camera and surfaces are referenced; rear, interior and obscured geometry remain unknown.",
+        "New ImageGen isolated candidate, not an original franchise image or automatic film/comic fidelity certification.",
+        "The native visible margin is below the requested8–12percent minimum; the whole mask stays inside the canvas. Native PNG is retained without pixel editing."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-4046a720-b427-4109-a454-0fb2f0c3bba1.png",
+          "sha256": "74aae73cc0eab5652a3aefef005fb859cd8843487add059e838148aaace93f66",
+          "bytes": 1674334,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Create ONE isolated detachable biomask following only the exact mask visible in the attached official NECA2012 Series6 figure photograph. This is a source-bound visual adaptation of that particular licensed sculpt/paint edition, NOT certified original film geometry. Do not use a similar familiar Predator mask as a substitute.\nPreserve the photograph's actual mask silhouette, width-to-height ratio, pose, camera elevation, yaw/pitch/roll, visible perspective, sculpt proportions, panel boundaries, apertures and painted grey/bronze surface values. Retain the visible physical toy-sculpt reliefs and wear. Use the photo lighting and observed muted material/paint for A; do not brighten into chrome or recolor to remembered canon. Preserve existing asymmetries. Where the small dark photograph cannot resolve fine marks, keep them restrained and unresolved rather than inventing clear detail.\nREMOVE the figure wearer, organic head, dreadlocks, neck, armor, netting, shoulder equipment, straps and black photographic background. Render ONLY the photographed hard mask shell and clearly visible built-in features. Remove hoses/cables leaving the mask for the wearer. Do not make new back/interior surfaces, a new profile or hidden side geometry. No new glyphs, engraving, grooves, vents, filters, holes, wires, teeth, horns or damage. No mirrored redesign or forced symmetry.\nOne mask only, complete and centered, no second object or reference inset. Genuine transparent RGBA background; no floor, shadow plane, support, stand, smoke, halo, text, label or checkerboard. Request1254x1254square if supported. Place the complete visible mask within80percent of the largest canvas axis, leaving10percent empty margin on all sides; preserve proportions and avoid cropped edges. Clear high-quality game-prop image preserving the actual referenced edition, not a newly authored mask.\n\nPHOTO LOCKS — NECA Scout Lost Tribe Series6, distinct from PHG Scout class: retain the smoothly rounded broad oval forehead dome with a smooth thick sloping perimeter rim and shallow top-center dip. Preserve the photo’s slightly turned/elevated three-quarter camera; do not square it to a new symmetrical front. Keep narrow black eye slits under the low brow, the broad rounded projecting central muzzle plate, and the swollen rounded side-cheek lobes. Keep the closed lower muzzle and two small built-in downward fittings at its lower edge, but REMOVE the ribbed black wearer hoses continuing below the fittings. Preserve muted silver/grey paint and slight worn mottling; no new bronze colorway, runes, vents, canine teeth or emitters. Do not substitute PHG Scout, Snake or V62 Boar geometry.",
+          "promptSha256": "ba4766945b5c248109fde61e5ba79688a162eb35d0fb95272c1f39268cebc5ff",
+          "submittedReferencePaths": [
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/scout-direct.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "neca-scout-lost-tribe-series-6",
+      "label": "Scout Lost Tribe — NECA Series6",
+      "version": "B",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/neca-scout-lost-tribe-series-6.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-b0ea3383-f076-4f53-ad58-45b5d5328af1.png",
+      "sha256": "9024c8e5f351a2ec4ae87734b6078e2a2c8bd3ee7f515fec75e26b87f272ef83",
+      "bytes": 1671465,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-scout-lost-tribe-series-6.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+      "referenceSourceSha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/scout-direct.jpg",
+          "sha256": "46e8c492fb5e6ed7e18ce1ed75ec4851bf6f8da52fbebb5feb4ff65b8697491e"
+        }
+      ],
+      "referenceSourceUrl": "https://necaonline.com/wp-content/uploads/2012/08/SCOUT_01.jpg",
+      "sourcePageUrl": "https://store.necaonline.com/blogs/news/predators-introducing-the-lost-tribe-from-our-series-6-action-figures",
+      "sourceEdition": "NECA Predators Series6,2012 official portrait",
+      "sourceClass": "official-photo",
+      "submittedReferencePaths": [
+        "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-scout-lost-tribe-series-6.png",
+        "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/scout-direct.jpg"
+      ],
+      "sourceReferencesViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "prompt": "Edit the FIRST reference, isolated A, into a separate PHG-quality rendering B of precisely the same mask. The SECOND reference is its official NECA2012 Series6 photograph. Preserve A's complete visible shell contour, width-to-height proportions, current slightly turned/elevated camera, all asymmetries, smooth dome/rim, eye-slit shapes, center/cheek muzzle lobes, small image-left circular side fitting, and both small lower built-in connectors. The photo controls the actual licensed sculpt and muted silver-grey paint. This is NECA Lost Tribe Scout, distinct from PHG Scout, and must not become any familiar PHG mesh.\nChange only rendering/material staging: coherent physical silver/grey surface response, soft neutral upper-left/front key and soft opposite frontal fill. Contain the fine mottled grain into a calmer game-prop roughness while preserving broad source wear, smooth forehead silhouette and paint value relationships. A is already a complete render; use subtle restaging rather than inventing differences. Keep the dark eye slits dark, retain the visible image-left lens reflection without adding eye glow or anatomy. Do not add bronze or gold recoloring, chrome gloss or brand-new damage.\nOne mask only with genuine transparent alpha and about10percent clear margin on each side of1254x1254square. Keep all edge details inside the canvas, source proportions unchanged. No wearer, organic face, neck, dreadlocks, external hoses, armor, stand, floor, shadow plane, duplicate, inset, background, text or labels. No extra vents, holes, ridges, teeth, horns, glyphs or new mechanisms. Retain only the visible mask features; no invented hidden rear/interior surfaces.\n\nPHOTO LOCKS — NECA Scout Lost Tribe Series6, distinct from PHG Scout class: retain the smoothly rounded broad oval forehead dome with a smooth thick sloping perimeter rim and shallow top-center dip. Preserve the photo’s slightly turned/elevated three-quarter camera; do not square it to a new symmetrical front. Keep narrow black eye slits under the low brow, the broad rounded projecting central muzzle plate, and the swollen rounded side-cheek lobes. Keep the closed lower muzzle and two small built-in downward fittings at its lower edge, but REMOVE the ribbed black wearer hoses continuing below the fittings. Preserve muted silver/grey paint and slight worn mottling; no new bronze colorway, runes, vents, canine teeth or emitters. Do not substitute PHG Scout, Snake or V62 Boar geometry.\n\nLIMITS: official400x600source has only one small photographed view. Microtexture and invisible geometry are not film/franchise1:1 certified. This is a source-bound PHG-rendering candidate of the photographed NECA edition.",
+      "promptSha256": "6a50f3fd26b3f5e90a7651f4b5d2b1f6fbcb2e0520922bf3f46c7fb028921938",
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          186,
+          95,
+          1062,
+          1183
+        ],
+        "visibleMarginsPx": [
+          186,
+          95,
+          192,
+          71
+        ],
+        "minimumMarginFraction": 0.05662,
+        "transparentPixels": 835096,
+        "opaquePixels": 933
+      },
+      "selfReview": {
+        "verdict": "candidate-with-source-resolution-limitations",
+        "reviewType": "agent-visual-inspection-not-human-validation",
+        "notes": [
+          "Broad smooth rounded crown/rim, narrow dark eye slits and rounded projecting center/side muzzle lobes retained.",
+          "Two lower built-in fittings retained; external wearer hoses, dreadlocks and armour removed.",
+          "Candidate remains the photographed NECA Lost Tribe Scout edition, distinct from PHG Scout.",
+          "New neutral upper-left/front light and controlled PHG-like material roughness; source palette and macro design retained."
+        ]
+      },
+      "limitations": [
+        "Source is an official NECA2012 Series6 licensed toy photograph400x600, not a film scan or a physical turntable.",
+        "The mask itself occupies a small part of the photo; fine pores, wear microtexture and exact groove counts cannot be certified1:1.",
+        "Only the visible camera and surfaces are referenced; rear, interior and obscured geometry remain unknown.",
+        "New ImageGen isolated candidate, not an original franchise image or automatic film/comic fidelity certification.",
+        "The native visible margin is below the requested8–12percent minimum; the whole mask stays inside the canvas. Native PNG is retained without pixel editing."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-b0ea3383-f076-4f53-ad58-45b5d5328af1.png",
+          "sha256": "9024c8e5f351a2ec4ae87734b6078e2a2c8bd3ee7f515fec75e26b87f272ef83",
+          "bytes": 1671465,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Edit the FIRST reference, isolated A, into a separate PHG-quality rendering B of precisely the same mask. The SECOND reference is its official NECA2012 Series6 photograph. Preserve A's complete visible shell contour, width-to-height proportions, current slightly turned/elevated camera, all asymmetries, smooth dome/rim, eye-slit shapes, center/cheek muzzle lobes, small image-left circular side fitting, and both small lower built-in connectors. The photo controls the actual licensed sculpt and muted silver-grey paint. This is NECA Lost Tribe Scout, distinct from PHG Scout, and must not become any familiar PHG mesh.\nChange only rendering/material staging: coherent physical silver/grey surface response, soft neutral upper-left/front key and soft opposite frontal fill. Contain the fine mottled grain into a calmer game-prop roughness while preserving broad source wear, smooth forehead silhouette and paint value relationships. A is already a complete render; use subtle restaging rather than inventing differences. Keep the dark eye slits dark, retain the visible image-left lens reflection without adding eye glow or anatomy. Do not add bronze or gold recoloring, chrome gloss or brand-new damage.\nOne mask only with genuine transparent alpha and about10percent clear margin on each side of1254x1254square. Keep all edge details inside the canvas, source proportions unchanged. No wearer, organic face, neck, dreadlocks, external hoses, armor, stand, floor, shadow plane, duplicate, inset, background, text or labels. No extra vents, holes, ridges, teeth, horns, glyphs or new mechanisms. Retain only the visible mask features; no invented hidden rear/interior surfaces.\n\nPHOTO LOCKS — NECA Scout Lost Tribe Series6, distinct from PHG Scout class: retain the smoothly rounded broad oval forehead dome with a smooth thick sloping perimeter rim and shallow top-center dip. Preserve the photo’s slightly turned/elevated three-quarter camera; do not square it to a new symmetrical front. Keep narrow black eye slits under the low brow, the broad rounded projecting central muzzle plate, and the swollen rounded side-cheek lobes. Keep the closed lower muzzle and two small built-in downward fittings at its lower edge, but REMOVE the ribbed black wearer hoses continuing below the fittings. Preserve muted silver/grey paint and slight worn mottling; no new bronze colorway, runes, vents, canine teeth or emitters. Do not substitute PHG Scout, Snake or V62 Boar geometry.\n\nLIMITS: official400x600source has only one small photographed view. Microtexture and invisible geometry are not film/franchise1:1 certified. This is a source-bound PHG-rendering candidate of the photographed NECA edition.",
+          "promptSha256": "6a50f3fd26b3f5e90a7651f4b5d2b1f6fbcb2e0520922bf3f46c7fb028921938",
+          "submittedReferencePaths": [
+            "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/originals/neca-scout-lost-tribe-series-6.png",
+            "/workspace/yautja-la-longue-chasse/production/biomasks-expansion-20261113/references/neca/scout-direct.jpg"
+          ]
+        }
+      ],
+      "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-scout-lost-tribe-series-6.png",
+      "sourceASha256": "74aae73cc0eab5652a3aefef005fb859cd8843487add059e838148aaace93f66"
+    }
+  ],
+  "asOfUtc": "2026-11-13T10:45:22.366660+00:00"
+}

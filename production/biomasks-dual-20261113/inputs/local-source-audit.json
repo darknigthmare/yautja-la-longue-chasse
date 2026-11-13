@@ -1,0 +1,1656 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13T08:29:51.917909+00:00",
+  "scope": "Read-only local source audit for46 still-uncovered named masks and the new two-version faithful/reference plus PHG-quality request. No image creation, image pixel edits or repository changes.",
+  "observedCommit": "6929a45eae299c550192ecb77ef44a03862e4c5e",
+  "sourcePins": [
+    {
+      "path": "production/biomasks-20261113/inputs/local-mask-references.json",
+      "sha256": "b17654a365b2a06c4080d42f6a10d647b6d1b1b3f4bc72eedf4948cd3490368b",
+      "bytes": 250098
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/primary-reference-status.json",
+      "sha256": "24bfe15398fd92d7aa1e38d74f418334417e3fbd19906260ed92ff082abfd232",
+      "bytes": 178961
+    },
+    {
+      "path": "docs/drive-archive-audit-v87-sources.json",
+      "sha256": "4e81c02a141d552cceed5ba5d18cc3f6e705cf75696280c1fe343726b365fd24",
+      "bytes": 3003312
+    },
+    {
+      "path": "app/game/data/driveArchiveAuditSpritesV87.json",
+      "sha256": "be7fbfcc05d74e438be13a07b75293f1b14fe72c34ba8d0a0930df8eadfe065b",
+      "bytes": 716841
+    }
+  ],
+  "counts": {
+    "remainingNamedTargets": 46,
+    "targetsWithFilenameOnlyCostumeLeads": 32,
+    "newStrictCanonicalExactSourcesForRemaining46": 0,
+    "freshlyInspectedSuppliedCostumes": 4,
+    "additionalArchivedDocumentaryReferencesUsefulForExistingNames": 2
+  },
+  "remainingTargetSourceReview": [
+    {
+      "id": "mk-15-elder",
+      "name": "elder",
+      "work": "Elder, *AVP* (2004)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "elder_avp",
+          "path": "public/game/sprites/v44/user-hunters/342033dd006fcf3163d3092fe32f8ac9d4aa44d63e20a8737afbb14418ef8add.png",
+          "sha256": "342033dd006fcf3163d3092fe32f8ac9d4aa44d63e20a8737afbb14418ef8add",
+          "bytes": 2706988,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": true,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [
+            "Three-quarter body illustration with gold/bronze frontal plate, glyph-like marks and studs, pale eye shapes, organic lower mandibles and red cloak.",
+            "The visible image can guide a supplied-design study; it does not independently establish the AVP2004 licensed Elder mask sculpture."
+          ],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-16-greyback",
+      "name": "greyback",
+      "work": "Greyback, *Predator 2*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "elder_greyback",
+          "path": "public/game/sprites/v44/user-hunters/eda4af4a7d6b975b26301ca7cd00a1b0e8c913de6f22d012e0434caed46d5763.png",
+          "sha256": "eda4af4a7d6b975b26301ca7cd00a1b0e8c913de6f22d012e0434caed46d5763",
+          "bytes": 2506313,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-17-lord",
+      "name": "lord",
+      "work": "Lord, *Aliens vs. Predator* (2010)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "lord",
+          "path": "public/game/sprites/v44/user-hunters/41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44.png",
+          "sha256": "41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44",
+          "bytes": 2524606,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-18-ahab",
+      "name": "ahab",
+      "work": "Ahab, *Fire and Stone* / *Life and Death*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "ahab",
+          "path": "public/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+          "sha256": "0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb",
+          "bytes": 2415367,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": true,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-19-afghanistan",
+      "name": "afghanistan",
+      "work": "*Predator: Hunters II* (comic)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "mk-20-golden-angel",
+      "name": "golden angel",
+      "work": "Greyback, *Predator 1718* (comic) / NECA",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "golden_angel",
+          "path": "public/game/sprites/v44/user-hunters/2ddd3e2aeb79bfed20a4544d9217bb5897e96f321813dda480e0cd2b3268c647.png",
+          "sha256": "2ddd3e2aeb79bfed20a4544d9217bb5897e96f321813dda480e0cd2b3268c647",
+          "bytes": 2370677,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": true,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-21-lava-planet",
+      "name": "lava planet",
+      "work": "Kenner / NECA",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "lava_planet",
+          "path": "public/game/sprites/v44/user-hunters/433e2660c5e6c9c909a4e17004d10dda6d51726026e7c2baf98dcd8a016abbf7.png",
+          "sha256": "433e2660c5e6c9c909a4e17004d10dda6d51726026e7c2baf98dcd8a016abbf7",
+          "bytes": 2300160,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": true,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-22-race-war",
+      "name": "race war",
+      "work": "Race War Predator",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "mk-26-anubis",
+      "name": "anubis",
+      "work": "Anubis, PHG",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "anubis_phg",
+          "path": "public/game/sprites/v44/user-hunters/7e91e55f8be40a0a41172f6ad680e45d436f7c22cec1b31c3a5e816e025aa94f.png",
+          "sha256": "7e91e55f8be40a0a41172f6ad680e45d436f7c22cec1b31c3a5e816e025aa94f",
+          "bytes": 2221174,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-27-witch",
+      "name": "witch",
+      "work": "Witch, PHG",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "witch_phg",
+          "path": "public/game/sprites/v44/user-hunters/612121ad2e128deb15d17b6c781c4312f0f897c69510a78a2a809dbf83d629d3.png",
+          "sha256": "612121ad2e128deb15d17b6c781c4312f0f897c69510a78a2a809dbf83d629d3",
+          "bytes": 2395882,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-28-amazon",
+      "name": "amazon",
+      "work": "Amazon, PHG",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "amazon_phg",
+          "path": "public/game/sprites/v44/user-hunters/0ec2b204583bd7f74ad0a2d6dcaab386135bc949f32b81dbaf90e96c46a7cd36.png",
+          "sha256": "0ec2b204583bd7f74ad0a2d6dcaab386135bc949f32b81dbaf90e96c46a7cd36",
+          "bytes": 2361479,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Official-looking HuntingParty2 group artwork is locally available and has visible forms. Named left/right attribution remains archive/Bible evidence without fresh independent publisher binding."
+    },
+    {
+      "id": "mk-29-pirate",
+      "name": "pirate",
+      "work": "Pirate, PHG",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "pirate_phg",
+          "path": "public/game/sprites/v44/user-hunters/3e4a9b9c0db843f6df3b5895e4b9a30397172dd1639a1f13ae5a73b3fb71ef47.png",
+          "sha256": "3e4a9b9c0db843f6df3b5895e4b9a30397172dd1639a1f13ae5a73b3fb71ef47",
+          "bytes": 2392681,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Official-looking HuntingParty2 group artwork is locally available and has visible forms. Named left/right attribution remains archive/Bible evidence without fresh independent publisher binding."
+    },
+    {
+      "id": "mk-32-white-skull",
+      "name": "white skull",
+      "work": "Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "mk-33-rebreather",
+      "name": "rebreather",
+      "work": "City Hunter, PHG",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "mk-46-tracker",
+      "name": "tracker",
+      "work": "Tracker, *Predators* (2010)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "tracker",
+          "path": "public/game/sprites/v44/user-hunters/eec1933f8faf85dcffec56b9c213198587d1a48d94bcf0edbec22df775329269.png",
+          "sha256": "eec1933f8faf85dcffec56b9c213198587d1a48d94bcf0edbec22df775329269",
+          "bytes": 2261563,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": true,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-47-crucified",
+      "name": "crucified",
+      "work": "Classic (Crucified) Predator, *Predators* (2010)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "mk-48-kwei",
+      "name": "kwei",
+      "work": "Kwei, *Badlands*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "kwei",
+          "path": "public/game/sprites/v44/user-hunters/15bf6cfd2f4ad4b5bd40853f8a4a1e6d5c6f91daa938b93466e51729050a59a6.png",
+          "sha256": "15bf6cfd2f4ad4b5bd40853f8a4a1e6d5c6f91daa938b93466e51729050a59a6",
+          "bytes": 2392389,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": true,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [
+            "Illustrated silver/gold crown, long tapered silver nose guard, reddish central face area and dark eye slit; wearer flesh/dreads surround it.",
+            "Filename alone does not prove the requested Kwei incarnation; no official comparison is available."
+          ],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-49-njohrr",
+      "name": "njohrr",
+      "work": "Njohrr, *Badlands*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "njohrr",
+          "path": "public/game/sprites/v44/user-hunters/477311f33dfd95713b7835f2a2fb6f0eb43739928109dc8c59209ea8261270bb.png",
+          "sha256": "477311f33dfd95713b7835f2a2fb6f0eb43739928109dc8c59209ea8261270bb",
+          "bytes": 2969433,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": true,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [
+            "Illustrated large antlered headdress, dark/gold facial frame and visible skull-like lower structure, with white wearer hair.",
+            "Do not promote the large deer-antler geometry to canonical Njohrr on filename evidence."
+          ],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-50-grendel-king",
+      "name": "grendel king",
+      "work": "Grendel King, *Killer of Killers*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "jotun_grendel",
+          "path": "public/game/sprites/v44/user-hunters/c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108.png",
+          "sha256": "c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108",
+          "bytes": 2377515,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-51-oni-kok",
+      "name": "oni (KoK)",
+      "work": "Samurai Killer, *Killer of Killers*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "oni",
+          "path": "public/game/sprites/v44/user-hunters/db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2.png",
+          "sha256": "db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2",
+          "bytes": 2221789,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-52-grendel",
+      "name": "grendel",
+      "work": "Viking Killer, *Killer of Killers*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "jotun_grendel",
+          "path": "public/game/sprites/v44/user-hunters/c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108.png",
+          "sha256": "c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108",
+          "bytes": 2377515,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-54-claw",
+      "name": "claw",
+      "work": "Claw, *AvP* (2010)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "mk-55-dark",
+      "name": "dark",
+      "work": "Dark, *AvP* (2010)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "dark",
+          "path": "public/game/sprites/v44/user-hunters/422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff.png",
+          "sha256": "422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff",
+          "bytes": 2293547,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-56-alien-head",
+      "name": "alien head",
+      "work": "Alien Head, *AvP* (2010)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "serpent_hunter",
+          "path": "public/game/sprites/v44/user-hunters/50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b.png",
+          "sha256": "50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b",
+          "bytes": 2445222,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-57-scarface",
+      "name": "scarface",
+      "work": "Scarface, *Concrete Jungle*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "scarface",
+          "path": "public/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+          "sha256": "bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc",
+          "bytes": 2341969,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": true,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-58-clan-leader",
+      "name": "clan leader",
+      "work": "Kenner (années 1990) ; NECA Deluxe Clan Leader",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "clan_leader",
+          "path": "public/game/sprites/v44/user-hunters/178dde36c091e75d01f8c9181b40c5dc44e195a190e859d3733fcad6ced4d4e8.png",
+          "sha256": "178dde36c091e75d01f8c9181b40c5dc44e195a190e859d3733fcad6ced4d4e8",
+          "bytes": 2393636,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-59-nightstorm",
+      "name": "nightstorm",
+      "work": "NECA (Scarab Predator)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "nightstorm",
+          "path": "public/game/sprites/v44/user-hunters/cbfc02f4a2cba048f284fc3792d8e9af5607a95edc0f29e396a3b239cf7f4a9c.png",
+          "sha256": "cbfc02f4a2cba048f284fc3792d8e9af5607a95edc0f29e396a3b239cf7f4a9c",
+          "bytes": 2201663,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": true,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [
+            "Three-quarter illustrated costume with gold round frontal medallion and two high side projections; black lower face and gold armor.",
+            "Mask ownership and source pose are visible, but no original licensed sculpt comparison was obtained."
+          ],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-60-stalker",
+      "name": "stalker",
+      "work": "Kenner ; NECA",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "stalker_kenner",
+          "path": "public/game/sprites/v44/user-hunters/a3689ab1766c88b3e7e86f8c075e383935752f414d3538a22dd3c970e537fdaa.png",
+          "sha256": "a3689ab1766c88b3e7e86f8c075e383935752f414d3538a22dd3c970e537fdaa",
+          "bytes": 2170629,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-61-hornhead",
+      "name": "hornhead",
+      "work": "*AvP: Life and Death* (comic) ; NECA",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "hornhead",
+          "path": "public/game/sprites/v44/user-hunters/02c6c272c04536b6ccbe9a74180e992b4ce5596ecca0ab09e616358ccf2a5338.png",
+          "sha256": "02c6c272c04536b6ccbe9a74180e992b4ce5596ecca0ab09e616358ccf2a5338",
+          "bytes": 2207285,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-63-spartan",
+      "name": "spartan",
+      "work": "Spartan, *AvP* (2010)",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "spartan",
+          "path": "public/game/sprites/v44/user-hunters/63e2a6bdcbfd88bf89d41b1cf75a2b9bbd12510c0816f77f1c328acbd4df5b8d.png",
+          "sha256": "63e2a6bdcbfd88bf89d41b1cf75a2b9bbd12510c0816f77f1c328acbd4df5b8d",
+          "bytes": 2324683,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "mk-64-dek-shell",
+      "name": "dek shell",
+      "work": "Dek, *Badlands*",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "dek_training_armor",
+          "path": "public/game/sprites/v44/user-hunters/fb324d3ef04571df533fdd6093101842ce80f7ed8c41220f68f9d427e392a43e.png",
+          "sha256": "fb324d3ef04571df533fdd6093101842ce80f7ed8c41220f68f9d427e392a43e",
+          "bytes": 2311352,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        },
+        {
+          "label": "dek_bone_bison",
+          "path": "public/game/sprites/v44/user-hunters/bf0b33ebb990dd0c69b489b79fc662dc6c1a4dea057bdcc3f7a7e7dfacc9992b.png",
+          "sha256": "bf0b33ebb990dd0c69b489b79fc662dc6c1a4dea057bdcc3f7a7e7dfacc9992b",
+          "bytes": 2431150,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-exalted",
+      "name": "Exalted (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "exalted_phg",
+          "path": "public/game/sprites/v44/user-hunters/97b56a8b59065181d94348156cb46effbcdf0dd9e5fac7563034a98bc8eb33d6.png",
+          "sha256": "97b56a8b59065181d94348156cb46effbcdf0dd9e5fac7563034a98bc8eb33d6",
+          "bytes": 2282052,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-gladiator",
+      "name": "Gladiator (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "gladiator_phg",
+          "path": "public/game/sprites/v44/user-hunters/78272dbb293dc528c51c372c03e54c160e0be234e483a0116f662e01df8a0d41.png",
+          "sha256": "78272dbb293dc528c51c372c03e54c160e0be234e483a0116f662e01df8a0d41",
+          "bytes": 2215497,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-oni",
+      "name": "Oni (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "oni",
+          "path": "public/game/sprites/v44/user-hunters/db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2.png",
+          "sha256": "db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2",
+          "bytes": 2221789,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-jotun",
+      "name": "Jotun (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "jotun_grendel",
+          "path": "public/game/sprites/v44/user-hunters/c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108.png",
+          "sha256": "c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108",
+          "bytes": 2377515,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-father",
+      "name": "Father (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "The named beige-striped Father mask import is a material swatch, not mask geometry."
+    },
+    {
+      "id": "phg-hunter",
+      "name": "Hunter (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "hunter_class_phg",
+          "path": "public/game/sprites/v44/user-hunters/406cf16f35907bcc3be71b2fa0bef7799805e024025e56a3c43993f58ba29a91.png",
+          "sha256": "406cf16f35907bcc3be71b2fa0bef7799805e024025e56a3c43993f58ba29a91",
+          "bytes": 2144568,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-scout",
+      "name": "Scout (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "scout_class_phg",
+          "path": "public/game/sprites/v44/user-hunters/6c74994765c47e360556eb160a78cced75b375e897077e4f091da046983afa2a.png",
+          "sha256": "6c74994765c47e360556eb160a78cced75b375e897077e4f091da046983afa2a",
+          "bytes": 2094836,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-berserker",
+      "name": "Berserker (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [
+        {
+          "label": "berserker_class_phg",
+          "path": "public/game/sprites/v44/user-hunters/2c2336c98d456d1de6828f80173dd8df74c85a594198c0a9b950c5b155e1b44a.png",
+          "sha256": "2c2336c98d456d1de6828f80173dd8df74c85a594198c0a9b950c5b155e1b44a",
+          "bytes": 2301480,
+          "dimensions": [
+            1024,
+            1536
+          ],
+          "kind": "user-supplied-illustrated-costume",
+          "namedIdentityEvidence": "Supplied archive filename only; no independent canonical identity verification",
+          "freshlyVisuallyInspected": false,
+          "visuallyInspectedInEarlierAudit": false,
+          "observations": [],
+          "strictCanonicalExactReady": false,
+          "maySupportSuppliedDesignStudyOnly": true
+        }
+      ],
+      "reason": "Local costume drawings exist, but are not independent exact original-work references. A faithful-to-supplied-design pair must be labeled as such and cannot certify the named franchise mask."
+    },
+    {
+      "id": "phg-cosmetic-haze",
+      "name": "Haze",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "phg-cosmetic-rival",
+      "name": "Rival",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "phg-cosmetic-salamander",
+      "name": "Salamander",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "phg-cosmetic-mors",
+      "name": "Mors",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "phg-cosmetic-foxtrot",
+      "name": "Foxtrot",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "phg-cosmetic-tank",
+      "name": "Tank",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    },
+    {
+      "id": "phg-cosmetic-saber",
+      "name": "Saber",
+      "work": "Predator: Hunting Grounds",
+      "strictCanonicalExactReady": false,
+      "newDualNamedPairReady": false,
+      "filenameLeads": [],
+      "reason": "No detached official mask geometry newly qualified locally; descriptions or source names must not generate a missing shape."
+    }
+  ],
+  "qualifiedExistingNameReferences": {
+    "feral": {
+      "path": "public/game/imports/v87/archive-audit/79514a7967629cdb9e126221bc02a8d839c513fdd718fd5ac55274591ab60456.png",
+      "sha256": "79514a7967629cdb9e126221bc02a8d839c513fdd718fd5ac55274591ab60456",
+      "bytes": 742636,
+      "nativeNature": "reference-documentary",
+      "dimensions": [
+        957,
+        540
+      ],
+      "freshlyVisuallyInspected": true,
+      "publisherChainFreshlyVerified": false,
+      "sourceKindQualification": "Archived documentary reference according to source ledger; source-author assertions are not independent publisher certification. No network verification attempted.",
+      "parentArchives": [
+        {
+          "sourceArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "sourceArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "sourceMember": "YAUTJA_PHG_RECONSTRUIT_156/references/79514a796762_feral_2024_004.png",
+          "manifestRecordRefs": [
+            "manifest-107367fb15c931c548274738edb66fd652fda6e8b0f08df0b75e83a9fe91cadd",
+            "manifest-96739090149128ee313d97d34549dd55a32117ec553d54d75d62f903054bddfa",
+            "manifest-bf4e48e28e28278b51304b39a3bfaee5b0b34fe211fbff72545978ef50831702"
+          ]
+        }
+      ],
+      "sourceManifestRecords": [
+        {
+          "id": "manifest-107367fb15c931c548274738edb66fd652fda6e8b0f08df0b75e83a9fe91cadd",
+          "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+          "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/dreads_gaps.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+          ],
+          "manifestSha256": "d60b9b424c7da46e25129c40bca2de50e85c0baabc9bb4d9092ad96e71a4a51b",
+          "recordPath": "$.reference_inventory[7]",
+          "declaredFileField": "path",
+          "declaredFile": "references/79514a796762_feral_2024_004.png",
+          "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/references/79514a796762_feral_2024_004.png",
+          "declaredSemantics": {
+            "id": "feral_2024",
+            "source_urls": [
+              "https://forum.predator.illfonic.com/t/patch-notes-3-0-0/33939"
+            ]
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "b4fffc0400e98daa54ec3ee6bec0d32057e567039bee8f110716891c12aded3b"
+        },
+        {
+          "id": "manifest-96739090149128ee313d97d34549dd55a32117ec553d54d75d62f903054bddfa",
+          "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+          "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/references_index.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+          ],
+          "manifestSha256": "ccb3d3a86f7b88e23b8faaaf835138773c77527965b32c1615ed6097465d3742",
+          "recordPath": "$[40]",
+          "declaredFileField": "file",
+          "declaredFile": "references/79514a796762_feral_2024_004.png",
+          "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/references/79514a796762_feral_2024_004.png",
+          "declaredSemantics": {
+            "kind": "reference_visuelle_pas_texture_generee"
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "717192dd753adee29305317012a7641e178a5d394a796a82a16b161a389b0d4b"
+        },
+        {
+          "id": "manifest-bf4e48e28e28278b51304b39a3bfaee5b0b34fe211fbff72545978ef50831702",
+          "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+          "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/skins_recent_jobs.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+          ],
+          "manifestSha256": "b351c4d1919a55236875656c97b0277d1ddd9c9e4a306343362804cf993f3b63",
+          "recordPath": "$.jobs[8].reference_records[0]",
+          "declaredFileField": "file",
+          "declaredFile": "references/79514a796762_feral_2024_004.png",
+          "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/references/79514a796762_feral_2024_004.png",
+          "declaredSemantics": {},
+          "documentLimits": {
+            "fidelity_note": "Reconstitutions visuelles non calibrées ; pas des fichiers extraits du jeu, fidélité UV/1:1 non certifiée."
+          },
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "3b5f4d08ba6e1b69f99daf1ce3b1e6643952f05f484e112d9acb568587bc8ecd"
+        }
+      ],
+      "observations": [
+        "A continuous visible bone biomask in three-quarter gameplay/promo scene, with warm orange environmental light.",
+        "Fine tooth/bone ridges are visible at the reference resolution; forehead and lower face are within frame.",
+        "The footer names IllFonic and2024, but that alone does not authenticate publication."
+      ],
+      "limitations": [
+        "Feral already has an existingV62 candidate; this does not reduce the46 remaining named targets.",
+        "Archive points to official forum patch3.0.0, but that host was previously refused and was not retried.",
+        "Single camera, no exact UV/neutral albedo/back geometry; orange lighting is not intrinsic bone color."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "relatedExistingCandidate": "public/game/sprites/v62/masks/feral.png",
+      "maySupportQualifiedSourceViewAndPhgBoneStyleStudy": true
+    },
+    "eclipse": {
+      "path": "public/game/imports/v87/archive-audit/969c2c3f5b6d53d3f38d47a94f7c54aea817be5038aeb092fba0616348393a9b.png",
+      "sha256": "969c2c3f5b6d53d3f38d47a94f7c54aea817be5038aeb092fba0616348393a9b",
+      "bytes": 752029,
+      "nativeNature": "reference-documentary",
+      "dimensions": [
+        1920,
+        1080
+      ],
+      "freshlyVisuallyInspected": true,
+      "publisherChainFreshlyVerified": false,
+      "sourceKindQualification": "Archived documentary reference according to source ledger; source-author assertions are not independent publisher certification. No network verification attempted.",
+      "parentArchives": [
+        {
+          "sourceArchive": "YAUTJA_PHG_AJOUTS_6_TEXTURES_20261007.zip",
+          "sourceArchiveSha256": "ef53a1e2fe5b1fc1ec1c8beaece4d6b1b57e33511b6b3902e595e82476af7556",
+          "sourceMember": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "manifestRecordRefs": [
+            "manifest-04c009692f67bc9142f9fd03fa23a916279a84b9da550fd4a09b87832a25fd60",
+            "manifest-25178074fa3f4cac9b0a6e14d831e8855c65bf7e1f0f5e1f0e763b934c74ea6c",
+            "manifest-a90f6a1fb11a220d59d1d546b3e6aa2fe81630c9a89ed044bd8250f71bc61e37",
+            "manifest-c4295c9f3efc6c06eba56353df021321d1e7930bad49743788e2f4cb176b07e2",
+            "manifest-d6373192835ad28b97dc7d2ef0ccb081c69d67b1cff5923bb4c22e75893c938b",
+            "manifest-f5bcfd02956ccca6bbe545d580a8120f74aa2829d74a7b8be0d4c1f91f4dd989"
+          ]
+        },
+        {
+          "sourceArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "sourceArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "sourceMember": "YAUTJA_PHG_RECONSTRUIT_156/ajouts_documentes_20261007/references/epic_deluxe_officiel_2020.png",
+          "manifestRecordRefs": [
+            "manifest-0ead903f404c59a5b574116579cf47aab670a2bd20d6d8242cf09c1246c1653e",
+            "manifest-e687d1945c1e177c1ce989468d0d875f5f46a20f6e52ecb686f52c118b0064ad"
+          ]
+        },
+        {
+          "sourceArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "sourceArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "sourceMember": "YAUTJA_PHG_RECONSTRUIT_156/references/969c2c3f5b6d_epic_deluxe_official_2020.png",
+          "manifestRecordRefs": [
+            "manifest-73d121ae2594f43cf9c1a0a22cd7f31f9de5cf5d697ce44edec2886fffff718b",
+            "manifest-fc6ad63cb48efe0b8cf05521ee90128bad5ee820394db08b59a0fb3dba04af2e"
+          ]
+        }
+      ],
+      "sourceManifestRecords": [
+        {
+          "id": "manifest-04c009692f67bc9142f9fd03fa23a916279a84b9da550fd4a09b87832a25fd60",
+          "manifestFileId": "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM",
+          "manifestArchive": "YAUTJA_PHG_AJOUTS_6_TEXTURES_20261007.zip",
+          "manifestArchiveSha256": "ef53a1e2fe5b1fc1ec1c8beaece4d6b1b57e33511b6b3902e595e82476af7556",
+          "manifestMember": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/records/armor_epic_promo_2020.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM"
+          ],
+          "manifestSha256": "6a7c7e0b42db5610f933dc39c03044538ee35639965c6c6ad67bd5a8c4d87220",
+          "recordPath": "$.references[0]",
+          "declaredFileField": "path",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "resolvedMemberPath": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/records/references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "declaredSemantics": {
+            "source_urls": [
+              "https://store.epicgames.com/p/predator-hunting-grounds-digital-deluxe-edition-83f461",
+              "https://cdn2.unrealengine.com/Diesel/productv2/predator-hunting-grounds/digital-deluxe-edition/CRE1089_Predator_EpicStore_DDE_1920x1080_002_TH-1920x1080-4d92f031878d6ba27398dfa86181d59f1c47ef5d.png"
+            ],
+            "role": "Planche officielle historique ; seules les zones d’armure du personnage sont utilisées."
+          },
+          "documentLimits": {
+            "strict_1to1_verified": false
+          },
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "a3602b43e3039d61f53e160b5961ba263b3499218d72c6be41ebe94ccdf00a01"
+        },
+        {
+          "id": "manifest-25178074fa3f4cac9b0a6e14d831e8855c65bf7e1f0f5e1f0e763b934c74ea6c",
+          "manifestFileId": "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM",
+          "manifestArchive": "YAUTJA_PHG_AJOUTS_6_TEXTURES_20261007.zip",
+          "manifestArchiveSha256": "ef53a1e2fe5b1fc1ec1c8beaece4d6b1b57e33511b6b3902e595e82476af7556",
+          "manifestMember": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/reports/common.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM"
+          ],
+          "manifestSha256": "c61bd20933496bfdbdfb0c72f35e5100de2269562e54238b34215cbc34f975de",
+          "recordPath": "$.reference_images[3]",
+          "declaredFileField": "file",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "resolvedMemberPath": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/reports/references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "declaredSemantics": {
+            "role": "official_named_Epic_skin_and_armor_promo"
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "cb057695d913cf03cabb742144d4b9c3a41a658f26a72640ddfcde0d267b72dd"
+        },
+        {
+          "id": "manifest-73d121ae2594f43cf9c1a0a22cd7f31f9de5cf5d697ce44edec2886fffff718b",
+          "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+          "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/armor_references_manifest.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+          ],
+          "manifestSha256": "3a427946020936af5d3ef21c0fdb63f8d41f84b25aa1584fa6a8d21b5a22858c",
+          "recordPath": "$.references[1]",
+          "declaredFileField": "file",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_2020.png",
+          "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/references/969c2c3f5b6d_epic_deluxe_official_2020.png",
+          "declaredSemantics": {
+            "source_urls": [
+              "https://store.epicgames.com/p/predator-hunting-grounds-digital-deluxe-edition-83f461",
+              "https://forum.predator.illfonic.com/t/pc-deluxe-skin/1698",
+              "https://cdn2.unrealengine.com/Diesel/productv2/predator-hunting-grounds/digital-deluxe-edition/CRE1089_Predator_EpicStore_DDE_1920x1080_002_TH-1920x1080-4d92f031878d6ba27398dfa86181d59f1c47ef5d.png"
+            ]
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "2ab66160249f76d9f15223ce15ca070427f24722d039cf0b01167c4f74540ea1"
+        },
+        {
+          "id": "manifest-a90f6a1fb11a220d59d1d546b3e6aa2fe81630c9a89ed044bd8250f71bc61e37",
+          "manifestFileId": "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM",
+          "manifestArchive": "YAUTJA_PHG_AJOUTS_6_TEXTURES_20261007.zip",
+          "manifestArchiveSha256": "ef53a1e2fe5b1fc1ec1c8beaece4d6b1b57e33511b6b3902e595e82476af7556",
+          "manifestMember": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/records/skin_default_epic_exclusive.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM"
+          ],
+          "manifestSha256": "73f2f48b2ff9fe8a9f01f04868853a8f82344346305c1014ffc00942cf5c8ede",
+          "recordPath": "$.reference_images[1]",
+          "declaredFileField": "file",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "resolvedMemberPath": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/records/references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "declaredSemantics": {
+            "role": "official_named_Epic_skin_and_armor_promo"
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "cb057695d913cf03cabb742144d4b9c3a41a658f26a72640ddfcde0d267b72dd"
+        },
+        {
+          "id": "manifest-c4295c9f3efc6c06eba56353df021321d1e7930bad49743788e2f4cb176b07e2",
+          "manifestFileId": "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM",
+          "manifestArchive": "YAUTJA_PHG_AJOUTS_6_TEXTURES_20261007.zip",
+          "manifestArchiveSha256": "ef53a1e2fe5b1fc1ec1c8beaece4d6b1b57e33511b6b3902e595e82476af7556",
+          "manifestMember": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/REFERENCES.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM"
+          ],
+          "manifestSha256": "04c2050416bde585b65704d720047627e3fe61e4f83f0e0361376a7aee271d93",
+          "recordPath": "$[2]",
+          "declaredFileField": "file",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "resolvedMemberPath": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "declaredSemantics": {
+            "primary_texture": false
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "787ad3fb8f13c4882c32ed7e45c410e924d10e209bcc3e7885ca4145f9f99d08"
+        },
+        {
+          "id": "manifest-d6373192835ad28b97dc7d2ef0ccb081c69d67b1cff5923bb4c22e75893c938b",
+          "manifestFileId": "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM",
+          "manifestArchive": "YAUTJA_PHG_AJOUTS_6_TEXTURES_20261007.zip",
+          "manifestArchiveSha256": "ef53a1e2fe5b1fc1ec1c8beaece4d6b1b57e33511b6b3902e595e82476af7556",
+          "manifestMember": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/manifest.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM"
+          ],
+          "manifestSha256": "5252815cc94a77b35ac6ba7fcf6b60d16ceb7ae722e27d2e8d02ad28eb77186a",
+          "recordPath": "$.reference_images[2]",
+          "declaredFileField": "file",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "resolvedMemberPath": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "declaredSemantics": {
+            "primary_texture": false
+          },
+          "documentLimits": {
+            "count_note": "Les 4 peaux créées couvrent 4 entrées de production. Les 2 aspects promotionnels d’armure et les propositions de réemploi restent dans les vérifications ouvertes. Le nombre de PNG désigne uniquement les fichiers textures/, sans les références.",
+            "all_game_variants_complete": false
+          },
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "787ad3fb8f13c4882c32ed7e45c410e924d10e209bcc3e7885ca4145f9f99d08"
+        },
+        {
+          "id": "manifest-f5bcfd02956ccca6bbe545d580a8120f74aa2829d74a7b8be0d4c1f91f4dd989",
+          "manifestFileId": "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM",
+          "manifestArchive": "YAUTJA_PHG_AJOUTS_6_TEXTURES_20261007.zip",
+          "manifestArchiveSha256": "ef53a1e2fe5b1fc1ec1c8beaece4d6b1b57e33511b6b3902e595e82476af7556",
+          "manifestMember": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/reports/common.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1zvVRJdtVvr5SKg1GVcizChi1-QUpXomM"
+          ],
+          "manifestSha256": "c61bd20933496bfdbdfb0c72f35e5100de2269562e54238b34215cbc34f975de",
+          "recordPath": "$.assets[1].reference_images[1]",
+          "declaredFileField": "file",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "resolvedMemberPath": "YAUTJA_PHG_AJOUTS_DRIVE_20261007/reports/references/969c2c3f5b6d_epic_deluxe_official_1920.png",
+          "declaredSemantics": {
+            "role": "official_named_Epic_skin_and_armor_promo"
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "cb057695d913cf03cabb742144d4b9c3a41a658f26a72640ddfcde0d267b72dd"
+        },
+        {
+          "id": "manifest-fc6ad63cb48efe0b8cf05521ee90128bad5ee820394db08b59a0fb3dba04af2e",
+          "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+          "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+          "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+          "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/references_index.json",
+          "manifestInsideArchive": "",
+          "manifestVolumeIds": [
+            "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+          ],
+          "manifestSha256": "ccb3d3a86f7b88e23b8faaaf835138773c77527965b32c1615ed6097465d3742",
+          "recordPath": "$[52]",
+          "declaredFileField": "file",
+          "declaredFile": "references/969c2c3f5b6d_epic_deluxe_official_2020.png",
+          "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/references/969c2c3f5b6d_epic_deluxe_official_2020.png",
+          "declaredSemantics": {
+            "kind": "reference_visuelle_pas_texture_generee"
+          },
+          "documentLimits": {},
+          "trust": "source-author-assertion-not-independent-canon-certification",
+          "sourceRecordSha256": "e4c119dec0b1e3cdc242f4845ff73ec5a0a008a3f56ebc94a641bbfbaa62b4df"
+        }
+      ],
+      "observations": [
+        "The promo explicitly labels a small mask image EARLY ACCESS / PREDATOR ECLIPSE MASK.",
+        "Mask thumbnail is roughly100pixels high: round dark forehead cap, ring-like rim, slanted dark eyes, central narrow elongated lower grille and grey/gunmetal palette.",
+        "The red outer glow belongs to the promotional layout, not the physical mask.",
+        "The broad silhouette resembles the existing named community-derived Eclipse candidate."
+      ],
+      "limitations": [
+        "Source URL chain is archived EpicStore/CDN claims, not freshly downloaded publisher bytes in this audit.",
+        "Artwork says ARTWORK SUBJECT TO CHANGE; the small image is not proof of all shipping geometry, fine engraving or a calibrated named swatch.",
+        "Existing grey candidate is generated from a secondary icon and is not an exact original default.",
+        "Eclipse was already one of the13 secondary candidates, so it does not reduce the46 remaining named targets."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "relatedExistingCandidate": "public/game/biomasks-20261113/masks/eclipse-reference-view.png",
+      "maySupportNamedLowResolutionCorroborationOnly": true
+    }
+  },
+  "unassignedGroupReference": {
+    "path": "public/game/imports/v87/archive-audit/9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43.png",
+    "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43",
+    "bytes": 1231313,
+    "nativeNature": "reference-documentary",
+    "dimensions": [
+      995,
+      1101
+    ],
+    "freshlyVisuallyInspected": true,
+    "publisherChainFreshlyVerified": false,
+    "sourceKindQualification": "Archived documentary reference according to source ledger; source-author assertions are not independent publisher certification. No network verification attempted.",
+    "parentArchives": [
+      {
+        "sourceArchive": "YAUTJA_PHG_FINITION_15_TEXTURES_20261007.zip",
+        "sourceArchiveSha256": "9df0f7da86fe9151cdb6504bffa99b5648c2aba9ed9cd14e5de41f1da6c853d9",
+        "sourceMember": "YAUTJA_PHG_FINITION_20261007/references/9fa0c0a40f53_9fa0c0a40f53_hunting-party-2.png",
+        "manifestRecordRefs": [
+          "manifest-01d7fb0da91d5093bbb368c0a9aa3e664f8c8e113927371ab2c8c7acedf87465",
+          "manifest-f56598a434bee474f44136da95bf5a6e83149b98ed94480e901fcce899900ac7"
+        ]
+      },
+      {
+        "sourceArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+        "sourceArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+        "sourceMember": "YAUTJA_PHG_RECONSTRUIT_156/references/9fa0c0a40f53_hunting-party-2.png",
+        "manifestRecordRefs": [
+          "manifest-c6343d9d00c225bf912dc810382d9f26ee2455fd78159cb776e5320ddbf38370",
+          "manifest-e2f81bcfe54cb73961bf0de2de89739f992519a24dd241e219d4ca4e5451ca7d",
+          "manifest-eefc8f79a04fc87e2a18cdfa818cb9c1fe7f94cd7efa24c77f80dcc2a55380a5"
+        ]
+      }
+    ],
+    "sourceManifestRecords": [
+      {
+        "id": "manifest-01d7fb0da91d5093bbb368c0a9aa3e664f8c8e113927371ab2c8c7acedf87465",
+        "manifestFileId": "1UKTqgMxI8wujcK8UgZfq0ufP0zEyB8Qo",
+        "manifestArchive": "YAUTJA_PHG_FINITION_15_TEXTURES_20261007.zip",
+        "manifestArchiveSha256": "9df0f7da86fe9151cdb6504bffa99b5648c2aba9ed9cd14e5de41f1da6c853d9",
+        "manifestMember": "YAUTJA_PHG_FINITION_20261007/REFERENCES.json",
+        "manifestInsideArchive": "",
+        "manifestVolumeIds": [
+          "1UKTqgMxI8wujcK8UgZfq0ufP0zEyB8Qo"
+        ],
+        "manifestSha256": "a7292edb41f79aa4c774327011e01d2db9cbe2b5ffb849e9e2615ff03598eec7",
+        "recordPath": "$[15]",
+        "declaredFileField": "file",
+        "declaredFile": "references/9fa0c0a40f53_9fa0c0a40f53_hunting-party-2.png",
+        "resolvedMemberPath": "YAUTJA_PHG_FINITION_20261007/references/9fa0c0a40f53_9fa0c0a40f53_hunting-party-2.png",
+        "declaredSemantics": {
+          "primary_texture": false,
+          "source_urls": [
+            "https://predator.illfonic.com/",
+            "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+            "https://forum.predator.illfonic.com/t/gladiator-predator-is-here/34743"
+          ],
+          "notes": []
+        },
+        "documentLimits": {},
+        "trust": "source-author-assertion-not-independent-canon-certification",
+        "sourceRecordSha256": "f048d38ccc482d2466b91e988ffd15d357ce793a80848aae8477744513425c58"
+      },
+      {
+        "id": "manifest-c6343d9d00c225bf912dc810382d9f26ee2455fd78159cb776e5320ddbf38370",
+        "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+        "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+        "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+        "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/skins_recent_jobs.json",
+        "manifestInsideArchive": "",
+        "manifestVolumeIds": [
+          "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+        ],
+        "manifestSha256": "b351c4d1919a55236875656c97b0277d1ddd9c9e4a306343362804cf993f3b63",
+        "recordPath": "$.jobs[4].reference_records[0]",
+        "declaredFileField": "file",
+        "declaredFile": "references/9fa0c0a40f53_hunting-party-2.png",
+        "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/references/9fa0c0a40f53_hunting-party-2.png",
+        "declaredSemantics": {},
+        "documentLimits": {
+          "fidelity_note": "Reconstitutions visuelles non calibrées ; pas des fichiers extraits du jeu, fidélité UV/1:1 non certifiée."
+        },
+        "trust": "source-author-assertion-not-independent-canon-certification",
+        "sourceRecordSha256": "f56442b62354f915c7b017f9d4eb4f92f22bd9d408a6bf93c59a2e0101aedb24"
+      },
+      {
+        "id": "manifest-e2f81bcfe54cb73961bf0de2de89739f992519a24dd241e219d4ca4e5451ca7d",
+        "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+        "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+        "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+        "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/references_index.json",
+        "manifestInsideArchive": "",
+        "manifestVolumeIds": [
+          "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+        ],
+        "manifestSha256": "ccb3d3a86f7b88e23b8faaaf835138773c77527965b32c1615ed6097465d3742",
+        "recordPath": "$[56]",
+        "declaredFileField": "file",
+        "declaredFile": "references/9fa0c0a40f53_hunting-party-2.png",
+        "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/references/9fa0c0a40f53_hunting-party-2.png",
+        "declaredSemantics": {
+          "kind": "reference_visuelle_pas_texture_generee"
+        },
+        "documentLimits": {},
+        "trust": "source-author-assertion-not-independent-canon-certification",
+        "sourceRecordSha256": "adc7efded581fb79c9cebba2d1d22c24545720bed8ed695ac7c522e6b327d335"
+      },
+      {
+        "id": "manifest-eefc8f79a04fc87e2a18cdfa818cb9c1fe7f94cd7efa24c77f80dcc2a55380a5",
+        "manifestFileId": "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw",
+        "manifestArchive": "YAUTJA_PHG_PEAUX_DREADS_PARURES_01_SUR_04.zip",
+        "manifestArchiveSha256": "c35809786c5609fe1b240906cb39ef4e449e86b6a8a3f352200249f3f2e758f9",
+        "manifestMember": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/skins_recent_jobs.json",
+        "manifestInsideArchive": "",
+        "manifestVolumeIds": [
+          "1QfYm9-qk-75GeHU3mJCT6O1J_MCFPIrw"
+        ],
+        "manifestSha256": "b351c4d1919a55236875656c97b0277d1ddd9c9e4a306343362804cf993f3b63",
+        "recordPath": "$.jobs[3].reference_records[0]",
+        "declaredFileField": "file",
+        "declaredFile": "references/9fa0c0a40f53_hunting-party-2.png",
+        "resolvedMemberPath": "YAUTJA_PHG_RECONSTRUIT_156/dossiers/references/9fa0c0a40f53_hunting-party-2.png",
+        "declaredSemantics": {},
+        "documentLimits": {
+          "fidelity_note": "Reconstitutions visuelles non calibrées ; pas des fichiers extraits du jeu, fidélité UV/1:1 non certifiée."
+        },
+        "trust": "source-author-assertion-not-independent-canon-certification",
+        "sourceRecordSha256": "f56442b62354f915c7b017f9d4eb4f92f22bd9d408a6bf93c59a2e0101aedb24"
+      },
+      {
+        "id": "manifest-f56598a434bee474f44136da95bf5a6e83149b98ed94480e901fcce899900ac7",
+        "manifestFileId": "1UKTqgMxI8wujcK8UgZfq0ufP0zEyB8Qo",
+        "manifestArchive": "YAUTJA_PHG_FINITION_15_TEXTURES_20261007.zip",
+        "manifestArchiveSha256": "9df0f7da86fe9151cdb6504bffa99b5648c2aba9ed9cd14e5de41f1da6c853d9",
+        "manifestMember": "YAUTJA_PHG_FINITION_20261007/manifest.json",
+        "manifestInsideArchive": "",
+        "manifestVolumeIds": [
+          "1UKTqgMxI8wujcK8UgZfq0ufP0zEyB8Qo"
+        ],
+        "manifestSha256": "f5584729868c805ebe16a90cbe30bcc8dc15bdd8d93606cd244c1fabe33eefd3",
+        "recordPath": "$.reference_images[15]",
+        "declaredFileField": "file",
+        "declaredFile": "references/9fa0c0a40f53_9fa0c0a40f53_hunting-party-2.png",
+        "resolvedMemberPath": "YAUTJA_PHG_FINITION_20261007/references/9fa0c0a40f53_9fa0c0a40f53_hunting-party-2.png",
+        "declaredSemantics": {
+          "primary_texture": false,
+          "source_urls": [
+            "https://predator.illfonic.com/",
+            "https://blog.playstation.com/2020/06/30/the-samurai-predator-arrives-in-predator-hunting-grounds/",
+            "https://forum.predator.illfonic.com/t/gladiator-predator-is-here/34743"
+          ],
+          "notes": []
+        },
+        "documentLimits": {
+          "count_note": "175 PNG antérieurs conservés + 15 nouveaux fichiers = 190 PNG. Ce lot comprend 1 révision(s) de matière existante, conservant leur version antérieure, et 2 filets avec alpha réel. Les références, les réemplois et les captures de contrôle ne sont pas comptés comme textures. Une révision de Demon n’est pas une nouvelle teinte officielle. 3 des 28 dossiers précédents disposent maintenant d’une reconstruction observée ; 25 restent ouverts.",
+          "all_game_variants_complete": false
+        },
+        "trust": "source-author-assertion-not-independent-canon-certification",
+        "sourceRecordSha256": "f048d38ccc482d2466b91e988ffd15d357ce793a80848aae8477744513425c58"
+      }
+    ],
+    "observations": [
+      "Image-left character wears a pale animal-skull facial shell with dark eye openings, nasal cavity, pointed side teeth, and a small red targeting emitter at its image-left temple.",
+      "Image-right character wears a dark metal lower-face assembly and a separate dark eyepatch/strap above it; substantial upper-face wearer skin is exposed.",
+      "Mask shells must exclude wearer flesh, hair/dreads, shoulder armor, jewelry and weapons."
+    ],
+    "limitations": [
+      "Amazon-left/Pirate-right is declared by the source archive and matches Bible prose, but primary named publisher binding was not freshly established.",
+      "Keep the masks as separate source-view studies if generated before identity confirmation; do not mark named canonical coverage automatically.",
+      "Pirate eyepatch is a separate component. Do not bake eye/skin or recreate hidden strap geometry, and do not infer/mirror anatomical side from a filename."
+    ],
+    "canonCertified": false,
+    "humanArtValidated": false,
+    "runtimeIntegrated": false,
+    "freshPublisherPixelsAlreadyAcquiredPreviousTurn": true,
+    "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png",
+    "namedPrimaryAttributionEstablished": false
+  },
+  "freshlyInspectedRejections": [
+    {
+      "path": "public/game/imports/v87/archive-audit/bb3996b32c332b4c0a2c106a8c08d6d6074e6726267eab404778d9432b1a088a.png",
+      "sha256": "bb3996b32c332b4c0a2c106a8c08d6d6074e6726267eab404778d9432b1a088a",
+      "bytes": 26142,
+      "freshlyVisuallyInspected": true,
+      "reason": "MOTTLE menu row only; no Anubis head or mask geometry."
+    },
+    {
+      "path": "public/game/imports/v87/archive-audit/499e022e1ce36bdca292b0cc76e6024f8e24567792b26c2989ea2c1f6acd27d3.png",
+      "sha256": "499e022e1ce36bdca292b0cc76e6024f8e24567792b26c2989ea2c1f6acd27d3",
+      "bytes": 741106,
+      "freshlyVisuallyInspected": true,
+      "reason": "Skin-pattern customization screenshot with an unmasked Elder wearer; no biomask geometry."
+    },
+    {
+      "path": "public/game/imports/v87/archive-audit/e446e15096df1066f22285321233129aeb27889b23d49c67a08d64139de0ca91.png",
+      "sha256": "e446e15096df1066f22285321233129aeb27889b23d49c67a08d64139de0ca91",
+      "bytes": 13298,
+      "freshlyVisuallyInspected": true,
+      "reason": "DEFAULT ARMOR(ELDER) menu label only; no mask geometry."
+    },
+    {
+      "path": "public/game/imports/v85/drive-latest/armor_classe_father_masque_beige_strie.png",
+      "sha256": "fb3253efac9651ad053b76ffe30656334727d65a07b8f2475c4e203945bb71b1",
+      "bytes": 4129591,
+      "freshlyVisuallyInspected": true,
+      "reason": "Beige rocky/striated surface texture; not a mask shape, face image or UV geometry reference."
+    }
+  ],
+  "oldKnownProxiesRejected": [
+    "Tracker warp173 has no canonical tusks; V5 generated Tracker plate is not original geometry.",
+    "GoldenAngel red-eye horned supplied costume is not proof of either licensed mask.",
+    "Ahab supplied drawing and masked Greyback costume are not original-work biomask authority.",
+    "LostTribe Scout is not PHG Scout; unmasked Lost and135px Stalker thumbnail do not establish new mask geometry."
+  ],
+  "networkActions": {
+    "requestsMade": 0,
+    "deniedHostsRetried": false,
+    "networkPolicyBypassed": false,
+    "knownNeCaGalleryCdn": "eadn-wc04-13179453.nxedge.io",
+    "knownGalleryPhotoUrlsQueued": 174,
+    "wordpress401RouteNotRetried": true
+  },
+  "dualVersionDirection": {
+    "faithfulVersion": "Preserve only actually visible source design, palette and current camera; qualify which work/source is being matched. Generated interpretation never becomes exact original by default.",
+    "phgVersion": "Standardize rendering resolution, studio light, edge clarity and physically plausible material response while preserving silhouette, openings, anatomy-free components, decoration and original material family. Do not make bone or gold into generic grey metal.",
+    "twoDifferentRolesNotCertification": true,
+    "canonCertified": false,
+    "humanArtValidated": false,
+    "runtimeIntegrated": false
+  },
+  "conclusion": "No additional named mask among the46 can currently receive a certified exact-original source from these local findings. Feral and Eclipse archived documentary images can assist qualified source-view/PHG direction work for names already represented. HuntingParty2 offers visible shapes but named attribution remains unresolved. This audit does not prove source absence on the whole Web.",
+  "repoFilesModifiedByThisAgent": false,
+  "imagePixelsModified": false,
+  "imagesGenerated": 0
+}

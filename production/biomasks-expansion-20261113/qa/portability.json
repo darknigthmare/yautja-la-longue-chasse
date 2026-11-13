@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "scope": "One relocated exact selection; simulated absent private origins; independent temporary bad fixtures; no art/canon/runtime approval",
+  "qualificationFixtureLimit": "Qualification mutations test the frozen declarations and deterministic outputs, not independent canonical truth.",
+  "negativeChecks": [
+    {
+      "name": "Exact A capture byte mutation rejected",
+      "passed": true,
+      "diagnostic": "Exact reference copy required: public/game/biomasks-expansion-20261113/originals/predator_11.png"
+    },
+    {
+      "name": "Native generated A byte mutation rejected",
+      "passed": true,
+      "diagnostic": "Generated native bytes mismatched or reused"
+    },
+    {
+      "name": "Native generated B byte mutation rejected",
+      "passed": true,
+      "diagnostic": "Generated native bytes mismatched or reused"
+    },
+    {
+      "name": "Official photograph R byte mutation rejected",
+      "passed": true,
+      "diagnostic": "Missing exact source reference: neca-kwei-prototype"
+    },
+    {
+      "name": "Protected historical XLSX byte mutation rejected",
+      "passed": true,
+      "diagnostic": "Pinned source changed: art-source/v6/catalogue/catalogue_yautja_tous_medias.xlsx"
+    },
+    {
+      "name": "Automatic canonCertified in accepted output rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: predator_11 B"
+    },
+    {
+      "name": "Automatic canonCertified in generation receipt rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: receipt predator_11"
+    },
+    {
+      "name": "Automatic humanArtValidated in accepted output rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: predator_11 B"
+    },
+    {
+      "name": "Automatic humanArtValidated in generation receipt rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: receipt predator_11"
+    },
+    {
+      "name": "Automatic runtimeIntegrated in accepted output rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: predator_11 B"
+    },
+    {
+      "name": "Automatic runtimeIntegrated in generation receipt rejected",
+      "passed": true,
+      "diagnostic": "Automatic approval forbidden: receipt predator_11"
+    },
+    {
+      "name": "False private origin in receipt rejected with unchanged pixels and accepted metadata",
+      "passed": true,
+      "diagnostic": "Receipt lineage differs: nativeSourcePath"
+    },
+    {
+      "name": "Provisional B cannot be promoted with unchanged pixels and consistent metadata",
+      "passed": true,
+      "diagnostic": "Frozen provisional artistic qualification changed: geometryDeviationOpen"
+    },
+    {
+      "name": "B linked to the real A of another identity rejected",
+      "passed": true,
+      "diagnostic": "Wrong A/reference lineage"
+    },
+    {
+      "name": "A linked to a real R photograph of another identity rejected",
+      "passed": true,
+      "diagnostic": "Wrong A/reference lineage"
+    },
+    {
+      "name": "Inverted A/B generation version rejected",
+      "passed": true,
+      "diagnostic": "Explicit generation version and exact output path required"
+    },
+    {
+      "name": "A copied as a new B rejected with consistent receipt/hash metadata",
+      "passed": true,
+      "diagnostic": "Generated native bytes mismatched or reused"
+    },
+    {
+      "name": "Opaque RGB B rejected with consistent receipt/hash metadata",
+      "passed": true,
+      "diagnostic": "Generated mask requires native RGBA PNG, real alpha and unclipped solid silhouette"
+    },
+    {
+      "name": "Distinct A/B bytes cannot share one private native origin",
+      "passed": true,
+      "diagnostic": "Each generated version needs a distinct native ImageGen origin"
+    },
+    {
+      "name": "Missing exact R photographs in A lineage rejected",
+      "passed": true,
+      "diagnostic": "All exact R photographs must be retained in A/B lineage"
+    },
+    {
+      "name": "Duplicated source identity rejected",
+      "passed": true,
+      "diagnostic": "Duplicate identities or missing mandatory community references"
+    },
+    {
+      "name": "Changed DDS qualification rejected with a revised source pin",
+      "passed": true,
+      "diagnostic": "Native community DDS proof must remain256x256DXT5"
+    },
+    {
+      "name": "Frozen prototype qualification cannot be silently promoted",
+      "passed": true,
+      "diagnostic": "Deterministic output differs: public/game/biomasks-expansion-20261113/manifest.json"
+    },
+    {
+      "name": "Frozen partial qualification cannot be silently promoted",
+      "passed": true,
+      "diagnostic": "Deterministic output differs: public/game/biomasks-expansion-20261113/manifest.json"
+    },
+    {
+      "name": "Unregistered public image rejected",
+      "passed": true,
+      "diagnostic": "Unregistered public files: ['public/game/biomasks-expansion-20261113/unregistered.png']"
+    },
+    {
+      "name": "Read-only verifier rejects --write",
+      "passed": true
+    },
+    {
+      "name": "Read-only verifier rejects --freeze-sources",
+      "passed": true
+    }
+  ],
+  "selection": {
+    "passed": true,
+    "literalFiles": 708,
+    "pinnedFiles": 701,
+    "pinnedBytes": 549925647,
+    "selectedBytes": 550923781,
+    "scope": "Sparse file selection and byte pins; not browser, human art, runtime or canon approval"
+  },
+  "manifestSha256": "324927d19c5890d616e092b8a29502c4337067eb3ac0e07c4bf45de00cd96a96",
+  "harnessSha256": "3116de2eeb7760edc36d4b6726f88b7c4499efbac924d553b2bfab9df916e83a",
+  "relocatedRoot": "/tmp/mask-expansion-relocated-q0x05o7e",
+  "independentCopies": 708,
+  "hardlinksCreated": 0,
+  "privateNativeOriginsMasked": 31,
+  "portableBaselinePassed": true,
+  "privateReadsAttempted": 0,
+  "readOnlyWriteAttempts": 0,
+  "originExistenceProbes": 243,
+  "fixtureSelectionRestoredByteExactly": true,
+  "sourceMutationsUsedIndependentUnlinkedFixtures": true,
+  "historicalSourcesChanged": false,
+  "originalSelectedFilesUnchanged": true
+}

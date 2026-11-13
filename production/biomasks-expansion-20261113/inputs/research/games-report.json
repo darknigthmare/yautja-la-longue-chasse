@@ -1,0 +1,1173 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13T10:24:34.378268+00:00",
+  "scope": "Read-only LOCAL reference search for unfinished game masks and selected film masks; no network requests, image generation, image pixel editing or repository mutation. Not an assertion that unavailable references do not exist elsewhere.",
+  "observedCommit": "065f3cd9f810c0d704ba4fc29323fc8a33c4c152",
+  "sourcePins": [
+    {
+      "path": "production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+      "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de",
+      "bytes": 361243
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/local-mask-references.json",
+      "sha256": "b17654a365b2a06c4080d42f6a10d647b6d1b1b3f4bc72eedf4948cd3490368b",
+      "bytes": 250098
+    },
+    {
+      "path": "production/biomasks-dual-20261113/inputs/local-source-audit.json",
+      "sha256": "fa0283e8d63f24858d7ec260f9e887d9974772294116873387f4e8a7f2f24adc",
+      "bytes": 82371
+    },
+    {
+      "path": "production/biomasks-20261113/references/scarface-concrete-jungle-reference-check.json",
+      "sha256": "53aaedb87595eced92615eda1ad02124e222b7de41347787d681715ec6f24ecc",
+      "bytes": 11214
+    },
+    {
+      "path": "docs/v44-user-hunters-intake.json",
+      "sha256": "d816b5dca0f6b3eff5a75754edc904ca10bb0991c18f5d2fcc712ecaacbecc08",
+      "bytes": 274730
+    },
+    {
+      "path": "docs/DLC-PRIVE-CATALOGUE.md",
+      "sha256": "a006aba5f53a8b897288fa8e12de397dc56dae25c6879557d708f96cf15e4d1f",
+      "bytes": 47382
+    },
+    {
+      "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+      "bytes": 297486
+    },
+    {
+      "path": "art-source/v31/known-yautja/prompts/scarface-pit-static.json",
+      "sha256": "50fafab7e7a571e5e23d88c9d6251e2dfb279ff9d6f38310ff2931c97acd7ff0",
+      "bytes": 5749
+    },
+    {
+      "path": "art-source/v31/known-yautja/prompts/stone-heart-pit-static.json",
+      "sha256": "80db2058441d568c68c46b1d6e1952f4e5c79ee0fd6d4d8ffc616e585fcd0e22",
+      "bytes": 6072
+    },
+    {
+      "path": "art-source/v91/pit/intake/manifest.json",
+      "sha256": "5fe60a0d178a82efcd43c1a7b9202029f23f0c2ce404653917cc7c6c55e291cc",
+      "bytes": 78341
+    },
+    {
+      "path": "docs/pit-native-animations-v91.md",
+      "sha256": "aea4bcbba7d483dba90bfc9537fe2cddabc999105e1a393f9d3a6087515a5c58",
+      "bytes": 4093
+    }
+  ],
+  "counts": {
+    "missingNamedOtherGameMasksReviewed": 6,
+    "selectedFilmMasksReviewed": 7,
+    "locallyOpenedImagesThisTask": 15,
+    "newExactCanonicalReferencesQualified": 0,
+    "networkRequests": 0,
+    "imagesGenerated": 0,
+    "imagePixelEdits": 0
+  },
+  "gameTargets": [
+    {
+      "id": "mk-17-lord",
+      "name": "lord",
+      "work": "Lord, *Aliens vs. Predator* (2010)",
+      "inventorySourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1359,
+          "text": "| MK-17 lord | Lord, *Aliens vs. Predator* (2010) | interprétation | Ornate high-rank mask (the source gives no visual detail). |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 833,
+          "cells": {
+            "A833": "DOC-9c183a-L1357",
+            "C833": "Personnalisation et arsenal",
+            "D833": "Catalogue des variantes d'équipement : prompts d'image / Biomasques",
+            "E833": "Entrée de tableau",
+            "F833": "ID : MK-17 lord ; Source : Lord, *Aliens vs. Predator* (2010) ; Statut : interprétation ; Détails : Ornate high-rank mask (the source gives no visual detail).",
+            "G833": "Conception et critères de campagne — constat ou contenu de la source",
+            "H833": "Déclaration source datée à rapprocher du comportement attesté",
+            "J833": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K833": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1357–1357"
+          }
+        }
+      ],
+      "dedicatedOriginalMaskAssetFound": false,
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44.png",
+        "sha256": "41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44",
+        "bytes": 2524606,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "lord",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/lord/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: tall bronze/gold crown-like crest with horizontal and vertical ribs and leaf/stud fringe; long central nose structure, organic lower mandibles, pale dreadlocks and red cape. No original game screenshot provenance. Distinct from the supplied Serpent Hunter drawing.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No locally available identified original game screenshot, official render, licensed sculpt photo, original model or texture/geometry combination establishes the complete mask.",
+      "nextNeeded": "An identified original-work screenshot/render with the whole visible mask at useful resolution; retain game version/skin/angle and source provenance."
+    },
+    {
+      "id": "mk-54-claw",
+      "name": "claw",
+      "work": "Claw, *AvP* (2010)",
+      "inventorySourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1642,
+          "text": "| MK-54 claw | Claw, *AvP* (2010) | vérifié | Jungle Hunter based helmet with four vertical red stripes and blood streaks on the front. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1051,
+          "cells": {
+            "A1051": "DOC-9c183a-L1640",
+            "C1051": "Personnalisation et arsenal",
+            "D1051": "Catalogue des variantes d'équipement : prompts d'image / Contrôle des manques : ajouts de la franchise / Masques ajoutés",
+            "E1051": "Entrée de tableau",
+            "F1051": "ID : MK-54 claw ; Source : Claw, *AvP* (2010) ; Statut : vérifié ; Détails : Jungle Hunter based helmet with four vertical red stripes and blood streaks on the front.",
+            "G1051": "Conception et critères de campagne — constat ou contenu de la source",
+            "H1051": "Déclaration source datée à rapprocher du comportement attesté",
+            "J1051": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K1051": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1640–1640"
+          }
+        }
+      ],
+      "dedicatedOriginalMaskAssetFound": false,
+      "canonicalExactGenerationReady": false,
+      "localIllustration": null,
+      "reason": "No dedicated Claw mask image located. Description of four red stripes is not enough to reconstruct shape or camera; do not recolor a generic Jungle Hunter and call it exact.",
+      "nextNeeded": "An identified original-work screenshot/render with the whole visible mask at useful resolution; retain game version/skin/angle and source provenance."
+    },
+    {
+      "id": "mk-55-dark",
+      "name": "dark",
+      "work": "Dark, *AvP* (2010)",
+      "inventorySourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1643,
+          "text": "| MK-55 dark | Dark, *AvP* (2010) | vérifié (base) | Jungle Hunter based helmet (same base as Claw, without the stripes). |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1052,
+          "cells": {
+            "A1052": "DOC-9c183a-L1641",
+            "C1052": "Personnalisation et arsenal",
+            "D1052": "Catalogue des variantes d'équipement : prompts d'image / Contrôle des manques : ajouts de la franchise / Masques ajoutés",
+            "E1052": "Entrée de tableau",
+            "F1052": "ID : MK-55 dark ; Source : Dark, *AvP* (2010) ; Statut : vérifié (base) ; Détails : Jungle Hunter based helmet (same base as Claw, without the stripes).",
+            "G1052": "Conception et critères de campagne — constat ou contenu de la source",
+            "H1052": "Déclaration source datée à rapprocher du comportement attesté",
+            "J1052": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K1052": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1641–1641"
+          }
+        }
+      ],
+      "dedicatedOriginalMaskAssetFound": false,
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff.png",
+        "sha256": "422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff",
+        "bytes": 2293547,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "dark",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/dark/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: worn silver/gray rounded dome with panel outlines, black narrow eye apertures, broad angular vertical muzzle and circular temple fitting. No original game screenshot provenance.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No locally available identified original game screenshot, official render, licensed sculpt photo, original model or texture/geometry combination establishes the complete mask.",
+      "nextNeeded": "An identified original-work screenshot/render with the whole visible mask at useful resolution; retain game version/skin/angle and source provenance."
+    },
+    {
+      "id": "mk-56-alien-head",
+      "name": "alien head",
+      "work": "Alien Head, *AvP* (2010)",
+      "inventorySourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1644,
+          "text": "| MK-56 alien head | Alien Head, *AvP* (2010) | vérifié | Bio-helmet shaped like a Xenomorph's head. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1053,
+          "cells": {
+            "A1053": "DOC-9c183a-L1642",
+            "C1053": "Personnalisation et arsenal",
+            "D1053": "Catalogue des variantes d'équipement : prompts d'image / Contrôle des manques : ajouts de la franchise / Masques ajoutés",
+            "E1053": "Entrée de tableau",
+            "F1053": "ID : MK-56 alien head ; Source : Alien Head, *AvP* (2010) ; Statut : vérifié ; Détails : Bio-helmet shaped like a Xenomorph's head.",
+            "G1053": "Conception et critères de campagne — constat ou contenu de la source",
+            "H1053": "Déclaration source datée à rapprocher du comportement attesté",
+            "J1053": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K1053": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1642–1642"
+          }
+        }
+      ],
+      "dedicatedOriginalMaskAssetFound": false,
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b.png",
+        "sha256": "50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b",
+        "bytes": 2445222,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "serpent_hunter",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/03_AVP/serpent_hunter/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: long swept-back alien-like rear dome, large raised silver forehead panel, narrow snout and vertical teeth-like front slots. Underlying wearer and gear visible. Filename grouping supports only the supplied illustration; canonical AVP2010 model not acquired.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No locally available identified original game screenshot, official render, licensed sculpt photo, original model or texture/geometry combination establishes the complete mask.",
+      "nextNeeded": "An identified original-work screenshot/render with the whole visible mask at useful resolution; retain game version/skin/angle and source provenance."
+    },
+    {
+      "id": "mk-57-scarface",
+      "name": "scarface",
+      "work": "Scarface, *Concrete Jungle*",
+      "inventorySourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1645,
+          "text": "| MK-57 scarface | Scarface, *Concrete Jungle* | vérifié (partiel) | Aged, battle-worn mask; unmasked face with a deep scar and an empty LEFT eye socket (separate face layer). |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1054,
+          "cells": {
+            "A1054": "DOC-9c183a-L1643",
+            "C1054": "Personnalisation et arsenal",
+            "D1054": "Catalogue des variantes d'équipement : prompts d'image / Contrôle des manques : ajouts de la franchise / Masques ajoutés",
+            "E1054": "Entrée de tableau",
+            "F1054": "ID : MK-57 scarface ; Source : Scarface, *Concrete Jungle* ; Statut : vérifié (partiel) ; Détails : Aged, battle-worn mask; unmasked face with a deep scar and an empty LEFT eye socket (separate face layer).",
+            "G1054": "Conception et critères de campagne — constat ou contenu de la source",
+            "H1054": "Déclaration source datée à rapprocher du comportement attesté",
+            "J1054": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K1054": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1643–1643"
+          }
+        }
+      ],
+      "dedicatedOriginalMaskAssetFound": false,
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+        "sha256": "bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc",
+        "bytes": 2341969,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "scarface",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/scarface/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: silver flattened oval crown, image-right red stripe/marking, black eye apertures, round temple fitting and long vertical front grille. Two-handed large curved Maul. Source filename identifies intended character only; mask topology has no original game screenshot proof.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No locally available identified original game screenshot, official render, licensed sculpt photo, original model or texture/geometry combination establishes the complete mask.",
+      "nextNeeded": "An identified original-work screenshot/render with the whole visible mask at useful resolution; retain game version/skin/angle and source provenance."
+    },
+    {
+      "id": "mk-63-spartan",
+      "name": "spartan",
+      "work": "Spartan, *AvP* (2010)",
+      "inventorySourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1651,
+          "text": "| MK-63 spartan | Spartan, *AvP* (2010) | à relever | Bio-helmet not described; describe from a capture. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1060,
+          "cells": {
+            "A1060": "DOC-9c183a-L1649",
+            "C1060": "Personnalisation et arsenal",
+            "D1060": "Catalogue des variantes d'équipement : prompts d'image / Contrôle des manques : ajouts de la franchise / Masques ajoutés",
+            "E1060": "Entrée de tableau",
+            "F1060": "ID : MK-63 spartan ; Source : Spartan, *AvP* (2010) ; Statut : à relever ; Détails : Bio-helmet not described; describe from a capture.",
+            "G1060": "Conception et critères de campagne — constat ou contenu de la source",
+            "H1060": "Déclaration source datée à rapprocher du comportement attesté",
+            "J1060": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K1060": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1649–1649"
+          }
+        }
+      ],
+      "dedicatedOriginalMaskAssetFound": false,
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/63e2a6bdcbfd88bf89d41b1cf75a2b9bbd12510c0816f77f1c328acbd4df5b8d.png",
+        "sha256": "63e2a6bdcbfd88bf89d41b1cf75a2b9bbd12510c0816f77f1c328acbd4df5b8d",
+        "bytes": 2324683,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "spartan",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/spartan/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: tall oval silver dome split by a long central bronze rail; angular cheek panels and long central rectangular muzzle; pale pink eyes. No original game screenshot provenance. Do not substitute the PHG Spartan spear or Greek-themed project concepts.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No locally available identified original game screenshot, official render, licensed sculpt photo, original model or texture/geometry combination establishes the complete mask.",
+      "nextNeeded": "An identified original-work screenshot/render with the whole visible mask at useful resolution; retain game version/skin/angle and source provenance."
+    }
+  ],
+  "selectedFilmTargets": [
+    {
+      "id": "mk-46-tracker",
+      "name": "tracker",
+      "work": "Tracker, *Predators* (2010)",
+      "canonicalExactGenerationReady": false,
+      "localIllustration": null,
+      "reason": "Earlier pinned local audit rejects warp173 (missing diagnostic tusks) and V5 generated plate (not canonical geometry). Historical Sideshow gallery screenshot names/hashes exist in V28 receipt, but image files were not located in current workspace/tmp search.",
+      "historicalReceipt": {
+        "path": "art-source/v28/known-hunters/characters/tracker/references.json",
+        "sha256": "1c07ee62bea79366c054edc15087abb6aa839539605c736964b2c2b2d9bbe986",
+        "bytes": 3229
+      },
+      "freshlyVisuallyInspectedThisTask": false
+    },
+    {
+      "id": "mk-47-crucified",
+      "name": "crucified",
+      "work": "Classic (Crucified) Predator, *Predators* (2010)",
+      "canonicalExactGenerationReady": false,
+      "localIllustration": null,
+      "reason": "No dedicated local original-work mask image located. Broken LEFT eye area described in bible is not sufficient to derive the damaged silhouette or material.",
+      "freshlyVisuallyInspectedThisTask": false
+    },
+    {
+      "id": "mk-48-kwei",
+      "name": "kwei",
+      "work": "Kwei, *Badlands*",
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/15bf6cfd2f4ad4b5bd40853f8a4a1e6d5c6f91daa938b93466e51729050a59a6.png",
+        "sha256": "15bf6cfd2f4ad4b5bd40853f8a4a1e6d5c6f91daa938b93466e51729050a59a6",
+        "bytes": 2392389,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "kwei",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/01_FILMS/kwei/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: silver/gold swept crown with ornate gold ribs, narrow black eye slot, reddish cheek/midface region, long tapered silver front and small gold side prongs. No official original-work comparator; do not assert this illustration is the newly documented licensed Kwei product design.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No inspected local illustration is independent original-work geometry evidence.",
+      "parallelWorkBoundary": "Parent reports another agent investigating a newly identified official store.necaonline.com Kwei product; no duplicate web access performed here."
+    },
+    {
+      "id": "mk-49-njohrr",
+      "name": "njohrr",
+      "work": "Njohrr, *Badlands*",
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/477311f33dfd95713b7835f2a2fb6f0eb43739928109dc8c59209ea8261270bb.png",
+        "sha256": "477311f33dfd95713b7835f2a2fb6f0eb43739928109dc8c59209ea8261270bb",
+        "bytes": 2969433,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "njohrr",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/njohrr/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: very large branching deer-like antler crown, gold brow/face trim, dark recessed eyes, skull-like muzzle and white dreadlocks. No original-work comparator. Supplied antlers must not be promoted to canonical Njohrr mask geometry.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No inspected local illustration is independent original-work geometry evidence."
+    },
+    {
+      "id": "mk-50-grendel-king",
+      "name": "grendel king",
+      "work": "Grendel King, *Killer of Killers*",
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108.png",
+        "sha256": "c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108",
+        "bytes": 2377515,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "jotun_grendel",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/jotun_grendel/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: dark round crown framed by two very tall upward silver horn blades, dark eye strip, vertical tooth/tusk muzzle and red side modules. One supplied label is shared by two requested named targets in old audit; it cannot establish both Grendel King and Viking Killer.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No inspected local illustration is independent original-work geometry evidence."
+    },
+    {
+      "id": "mk-51-oni-kok",
+      "name": "oni (KoK)",
+      "work": "Samurai Killer, *Killer of Killers*",
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2.png",
+        "sha256": "db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2",
+        "bytes": 2221789,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "oni",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/oni/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: high swept silver crown around dark insert, two thin horizontal eye/side grille slots, long sharp nose rail, visible organic lower face/tusk and two red temple lights. Filename cannot establish exact KoK design or justify transferring to PHG Oni.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No inspected local illustration is independent original-work geometry evidence."
+    },
+    {
+      "id": "mk-52-grendel",
+      "name": "grendel",
+      "work": "Viking Killer, *Killer of Killers*",
+      "canonicalExactGenerationReady": false,
+      "localIllustration": {
+        "path": "public/game/sprites/v44/user-hunters/c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108.png",
+        "sha256": "c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108",
+        "bytes": 2377515,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA",
+        "sourceLabel": "jotun_grendel",
+        "sourceClass": "user-supplied-illustrated-costume",
+        "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/jotun_grendel/avec_casque.png",
+        "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+        "visuallyInspectedThisTask": true,
+        "observation": "Three-quarter body illustration: dark round crown framed by two very tall upward silver horn blades, dark eye strip, vertical tooth/tusk muzzle and red side modules. One supplied label is shared by two requested named targets in old audit; it cannot establish both Grendel King and Viking Killer.",
+        "usableForExistingProjectDesignStudy": true,
+        "usableForExactCanonicalMask": false,
+        "canonicalFidelityCertified": false,
+        "humanArtValidated": false
+      },
+      "reason": "No inspected local illustration is independent original-work geometry evidence."
+    }
+  ],
+  "inspectedLocalImages": [
+    {
+      "path": "public/game/sprites/v44/user-hunters/422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff.png",
+      "sha256": "422778d3d11917c71c233af8b685d40ea12b1a892f769a3533df1fe6a63292ff",
+      "bytes": 2293547,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "dark",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/dark/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: worn silver/gray rounded dome with panel outlines, black narrow eye apertures, broad angular vertical muzzle and circular temple fitting. No original game screenshot provenance.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44.png",
+      "sha256": "41e2f73e48697af98f3d9e607a59b4e7728492747738e0de7552b834f0d47f44",
+      "bytes": 2524606,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "lord",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/lord/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: tall bronze/gold crown-like crest with horizontal and vertical ribs and leaf/stud fringe; long central nose structure, organic lower mandibles, pale dreadlocks and red cape. No original game screenshot provenance. Distinct from the supplied Serpent Hunter drawing.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/63e2a6bdcbfd88bf89d41b1cf75a2b9bbd12510c0816f77f1c328acbd4df5b8d.png",
+      "sha256": "63e2a6bdcbfd88bf89d41b1cf75a2b9bbd12510c0816f77f1c328acbd4df5b8d",
+      "bytes": 2324683,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "spartan",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/spartan/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: tall oval silver dome split by a long central bronze rail; angular cheek panels and long central rectangular muzzle; pale pink eyes. No original game screenshot provenance. Do not substitute the PHG Spartan spear or Greek-themed project concepts.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b.png",
+      "sha256": "50efbc51922e4327aed5473f8155a529d796d7aea155f7d397479f5e92e7391b",
+      "bytes": 2445222,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "serpent_hunter",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/03_AVP/serpent_hunter/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: long swept-back alien-like rear dome, large raised silver forehead panel, narrow snout and vertical teeth-like front slots. Underlying wearer and gear visible. Filename grouping supports only the supplied illustration; canonical AVP2010 model not acquired.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc.png",
+      "sha256": "bca00052d4a595a914e60859b8a51b9678c5be442cdcd259342238924800b2bc",
+      "bytes": 2341969,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "scarface",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/scarface/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: silver flattened oval crown, image-right red stripe/marking, black eye apertures, round temple fitting and long vertical front grille. Two-handed large curved Maul. Source filename identifies intended character only; mask topology has no original game screenshot proof.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108.png",
+      "sha256": "c14e9de9f335d870ee970c4fc606694c02ed2a4f6288580b9562fb4639d09108",
+      "bytes": 2377515,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "jotun_grendel",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/jotun_grendel/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: dark round crown framed by two very tall upward silver horn blades, dark eye strip, vertical tooth/tusk muzzle and red side modules. One supplied label is shared by two requested named targets in old audit; it cannot establish both Grendel King and Viking Killer.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2.png",
+      "sha256": "db4ed202d1da986bcbbf4d51ecf0eff5e4652f9c342a08d457b7d0c5ddee74e2",
+      "bytes": 2221789,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "oni",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/oni/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: high swept silver crown around dark insert, two thin horizontal eye/side grille slots, long sharp nose rail, visible organic lower face/tusk and two red temple lights. Filename cannot establish exact KoK design or justify transferring to PHG Oni.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/d147ef61687b1f866f4844dc5fbe67ee6bb2097087ab34877449df2c6c0530de.png",
+      "sha256": "d147ef61687b1f866f4844dc5fbe67ee6bb2097087ab34877449df2c6c0530de",
+      "bytes": 2488374,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "warlord",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/warlord/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: bone skull-like faceplate with red eyes and long tusks; numerous enormous red/brown horns project around the back/shoulder region. No verified attachment map or original KoK film frame. Do not assign back horns to the removable mask or confuse this project costume with AVP2010 Lord.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/15bf6cfd2f4ad4b5bd40853f8a4a1e6d5c6f91daa938b93466e51729050a59a6.png",
+      "sha256": "15bf6cfd2f4ad4b5bd40853f8a4a1e6d5c6f91daa938b93466e51729050a59a6",
+      "bytes": 2392389,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "kwei",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/01_FILMS/kwei/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: silver/gold swept crown with ornate gold ribs, narrow black eye slot, reddish cheek/midface region, long tapered silver front and small gold side prongs. No official original-work comparator; do not assert this illustration is the newly documented licensed Kwei product design.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/477311f33dfd95713b7835f2a2fb6f0eb43739928109dc8c59209ea8261270bb.png",
+      "sha256": "477311f33dfd95713b7835f2a2fb6f0eb43739928109dc8c59209ea8261270bb",
+      "bytes": 2969433,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "njohrr",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/07_FILMS_COMPLEMENTS/njohrr/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: very large branching deer-like antler crown, gold brow/face trim, dark recessed eyes, skull-like muzzle and white dreadlocks. No original-work comparator. Supplied antlers must not be promoted to canonical Njohrr mask geometry.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/447e32b132461f5b446386f6c2ef6e90d96ac5aae68d0abb564a94e22ed7088f.png",
+      "sha256": "447e32b132461f5b446386f6c2ef6e90d96ac5aae68d0abb564a94e22ed7088f",
+      "bytes": 2050612,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "extinction_ancient",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_ancient/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: elongated tapered silver oval crown with central rail, narrow dark eyes and long perforated muzzle; rounded burgundy shoulder armor and tall rectangular red back module. The supplied title is not a verified Extinction unit/model identification. No game/manual image provenance.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v44/user-hunters/b7b2badbd33475472be01ab3b174150f43b1c4afb929e27d86892eb26ef4d732.png",
+      "sha256": "b7b2badbd33475472be01ab3b174150f43b1c4afb929e27d86892eb26ef4d732",
+      "bytes": 2212695,
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "sourceLabel": "ancient_primal_hunt",
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/ancient_primal_hunt/avec_casque.png",
+      "identityEvidence": "Archive filename grouping only; no independent original-work geometry verification",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: silver/gray crown with small rear prongs, lime-green eyes, broad angular vertical mouth plate, side fitting and project armor. No AVP2 Primal Hunt capture provenance; colors and topology must not be declared canonical from filename.",
+      "usableForExistingProjectDesignStudy": true,
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v31/film-plates/scarface.png",
+      "sha256": "db1e0e6cfa7bda03921b64fe20358b696241057c59f50cc90585fa554bac85c5",
+      "bytes": 1786696,
+      "dimensions": [
+        1083,
+        1568
+      ],
+      "mode": "RGBA",
+      "label": "Scarface V31",
+      "sourceClass": "generated-project-adaptation",
+      "receiptPath": "art-source/v31/known-yautja/prompts/scarface-pit-static.json",
+      "visuallyInspectedThisTask": true,
+      "observation": "Full-body generated project plate is UNMASKED, showing organic head and mandibles. It contains no biomask to extract. V31 prompt record explicitly calls it fan-made art, not certified 1:1.",
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v91/pit/scarface/masked-idle-right.png",
+      "sha256": "00148909cf869b171869723979daeb630ff0b960de82e3191c51803790284ef6",
+      "bytes": 2424932,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "label": "Scarface V91",
+      "sourceClass": "generated-project-adaptation",
+      "receiptPath": "art-source/v91/pit/intake/manifest.json",
+      "visuallyInspectedThisTask": true,
+      "observation": "Two illustrated animation poses deriving from supplied V44 costume. Visible silver/red grille mask follows that local costume; not an observed Concrete Jungle game asset or independent canonical reference.",
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    },
+    {
+      "path": "public/game/sprites/v31/film-plates/stone-heart.png",
+      "sha256": "3bc40905110d31d3a631a19e1ef81ec3fe478e588067b4550918e4ad5a9e6c4f",
+      "bytes": 1870714,
+      "dimensions": [
+        1038,
+        1568
+      ],
+      "mode": "RGBA",
+      "label": "Stone Heart V31",
+      "sourceClass": "generated-project-adaptation",
+      "receiptPath": "art-source/v31/known-yautja/prompts/stone-heart-pit-static.json",
+      "visuallyInspectedThisTask": true,
+      "observation": "Full-body generated cyborg plate has exposed organic mouth/mandibles and red cybernetic temple modules. No separate removable biomask geometry is established.",
+      "usableForExactCanonicalMask": false,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false
+    }
+  ],
+  "additionalOtherGameFilenameLeads": [
+    {
+      "sourceLabel": "ancient_primal_hunt",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/b7b2badbd33475472be01ab3b174150f43b1c4afb929e27d86892eb26ef4d732.png",
+        "sha256": "b7b2badbd33475472be01ab3b174150f43b1c4afb929e27d86892eb26ef4d732",
+        "bytes": 2212695,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/ancient_primal_hunt/avec_casque.png",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: silver/gray crown with small rear prongs, lime-green eyes, broad angular vertical mouth plate, side fitting and project armor. No AVP2 Primal Hunt capture provenance; colors and topology must not be declared canonical from filename.",
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "extinction_ancient",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/447e32b132461f5b446386f6c2ef6e90d96ac5aae68d0abb564a94e22ed7088f.png",
+        "sha256": "447e32b132461f5b446386f6c2ef6e90d96ac5aae68d0abb564a94e22ed7088f",
+        "bytes": 2050612,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/extinction_ancient/avec_casque.png",
+      "visuallyInspectedThisTask": true,
+      "observation": "Three-quarter body illustration: elongated tapered silver oval crown with central rail, narrow dark eyes and long perforated muzzle; rounded burgundy shoulder armor and tall rectangular red back module. The supplied title is not a verified Extinction unit/model identification. No game/manual image provenance.",
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "prince",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/7ea916d16bbe0ba66638ed6c85d2030d346144e1af5717a666743aef66a5506e.png",
+        "sha256": "7ea916d16bbe0ba66638ed6c85d2030d346144e1af5717a666743aef66a5506e",
+        "bytes": 2162145,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/prince/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "long_spear",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/fab493fb784672fc605ed501f4934e5732a8553d20ee313e9d294732924e295a.png",
+        "sha256": "fab493fb784672fc605ed501f4934e5732a8553d20ee313e9d294732924e295a",
+        "bytes": 2255288,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/long_spear/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "swift_knife",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/45ddc1d47bfd0f6683340de57f90ab7244ff1568ddce7b80a7f7c5c81fcc0a55.png",
+        "sha256": "45ddc1d47bfd0f6683340de57f90ab7244ff1568ddce7b80a7f7c5c81fcc0a55",
+        "bytes": 2190643,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/swift_knife/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "vega4_snes",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/cea1425a3b0de159e4352f4daeff564fd387a1664698f363708379e8d0d54862.png",
+        "sha256": "cea1425a3b0de159e4352f4daeff564fd387a1664698f363708379e8d0d54862",
+        "bytes": 2289677,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/vega4_snes/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "wolf_elite_bg386",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/15bdf673ae9fd745e89918ed8bdfb9746c03afa854698c2625fa8f325f7d8432.png",
+        "sha256": "15bdf673ae9fd745e89918ed8bdfb9746c03afa854698c2625fa8f325f7d8432",
+        "bytes": 2280124,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/08_JEUX_COMPLEMENTS/wolf_elite_bg386/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "arcade_hunter",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/7f4f60ae4a03d3a46da1cbbd18c882819d33d959ad99a50d042193930d11330b.png",
+        "sha256": "7f4f60ae4a03d3a46da1cbbd18c882819d33d959ad99a50d042193930d11330b",
+        "bytes": 2203694,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/arcade_hunter/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "arcade_warrior",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/b003f01a0f8990513c948f622f2f883e805b2746364d83be2d0b5a8aecfcd313.png",
+        "sha256": "b003f01a0f8990513c948f622f2f883e805b2746364d83be2d0b5a8aecfcd313",
+        "bytes": 2123507,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/arcade_warrior/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    },
+    {
+      "sourceLabel": "arcade_mad",
+      "source": {
+        "path": "public/game/sprites/v44/user-hunters/c6dc527c2c010e6f0b4345da50c9510e6af7b87e51dc23dd310d561f998c49c7.png",
+        "sha256": "c6dc527c2c010e6f0b4345da50c9510e6af7b87e51dc23dd310d561f998c49c7",
+        "bytes": 2211136,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "mode": "RGBA"
+      },
+      "sourceClass": "user-supplied-illustrated-costume",
+      "sourceArchive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+      "sourceArchiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/arcade_mad/avec_casque.png",
+      "visuallyInspectedThisTask": false,
+      "observation": null,
+      "canonicalExactGenerationReady": false,
+      "reason": "Costume illustration with filename-only identity; not an acquired original game screenshot/manual/model render. Do not infer an exact removable biomask from the game/character name."
+    }
+  ],
+  "extinctionCoverage": {
+    "cataloguePath": "docs/DLC-PRIVE-CATALOGUE.md:143",
+    "catalogueIds": [
+      "G-011",
+      "G-012",
+      "G-013",
+      "G-014",
+      "G-015",
+      "G-016",
+      "G-017",
+      "G-018"
+    ],
+    "unitClasses": [
+      "Brawler",
+      "Hunter",
+      "Spear Master",
+      "Stalker",
+      "Disc Master",
+      "Vanguard",
+      "Military Hydra",
+      "Blazer"
+    ],
+    "classification": "Units rather than named individuals; reference capture required for each specific model/upgrade.",
+    "officialManualURLAlreadyListed": "https://gamingalexandria.com/ps2/Aliens%20Versus%20Predator%20Extinction/Aliens%20Versus%20Predator%20Extinction%20-%20Manual.pdf",
+    "manualLocallyFound": false,
+    "noRequestToManualURLPerformed": true,
+    "limitation": "Extinction arena art and honor skull trophy assets do not establish a mask. The supplied extinction_ancient illustration does not replace an identified unit model/manual view."
+  },
+  "scarfaceExternalCorpusReceipt": {
+    "path": "production/biomasks-20261113/references/scarface-concrete-jungle-reference-check.json",
+    "repository": "Adolini1715/Concrete-Jungle-PC",
+    "commit": "fd4bcd33b96e1553de73fdc7319f800dcb8fb207",
+    "readmeURL": "https://github.com/Adolini1715/Concrete-Jungle-PC/blob/fd4bcd33b96e1553de73fdc7319f800dcb8fb207/README.md",
+    "assessment": "The repository supplies a native static-recompilation port and replacement UI art. ItsREADME explicitly excludes game code/data and requires the user disc. The22PNGfiles are buttons/fonts/radar/controller/mouse art, not a named Scarface biomask view; no provided model establishes the mask geometry.",
+    "decision": {
+      "newExactScarfaceReferenceLocated": false,
+      "newTargetReferenceImagesDownloaded": 0,
+      "imagesGenerated": 0,
+      "canonicalOneToOneSupported": false,
+      "missingDependency": "An actual observed game screenshot/model render or supplied original game data is not included in this corpus."
+    },
+    "externalTexturePackLead": {
+      "url": "https://archive.org/details/pcj-scarface-hd-pack",
+      "scope": "ExternalHDreplacementpack link in README, not a supplied reference. Not requested/downloaded/inspected. Higher-resolution edited textures alone would not prove exact original geometry, original material or an identified costume mask."
+    },
+    "newNetworkActions": false
+  },
+  "officialIdentitySourcesAlreadyRecorded": [
+    {
+      "subject": "Scarface",
+      "url": "https://necaonline.com/2016/11/closer-look-video-game-appearance-ultimate-scarface-predator/",
+      "supports": "Licensed Concrete Jungle figure identity and masked/unmasked head options; usable gallery image bytes not locally available in this audit.",
+      "imageHostKnownDenied": "eadn-wc04-13179453.nxedge.io",
+      "retryPerformed": false
+    },
+    {
+      "subject": "Stone Heart",
+      "url": "https://store.necaonline.com/products/predator-7-scale-action-figure-concrete-jungle-stone-heart-predator",
+      "supports": "Licensed augmented Concrete Jungle warrior identity; source text does not prove a removable mask on the generated project plate.",
+      "freshlyRequested": false
+    }
+  ],
+  "excludedNonMaskAssets": [
+    {
+      "path": "public/game/assets/v139/rig-gauntlets/dark-2010/base.svg",
+      "reason": "Gauntlet design, not mask."
+    },
+    {
+      "path": "public/game/ships/v12/avp-2010-mothership.webp",
+      "reason": "Ship art, not mask."
+    },
+    {
+      "path": "public/game/sprites/v43/pit-arenas/arena-131-avp-2010-freyas-prospect/p0-depth.png",
+      "reason": "Arena background, not mask."
+    },
+    {
+      "path": "public/game/sprites/v54/pit-arenas/arena-137-concrete-jungle-neonopolis/p0-depth.png",
+      "reason": "Arena background, not mask."
+    },
+    {
+      "path": "public/game/assets/v16/franchise-trophies/franchise-avp-extinction-honor-skull-set.webp",
+      "reason": "Trophy art, not mask."
+    },
+    {
+      "path": "public/game/assets/v16/franchise-trophies/franchise-phg-spartan-spear.webp",
+      "reason": "Spear and PHG naming, not an AVP2010 Spartan mask."
+    },
+    {
+      "path": "public/game/assets/v133/concept-masks/warlord.webp",
+      "reason": "Project concept, not AVP2010 Lord original geometry."
+    }
+  ],
+  "identityGuardrails": [
+    "Lord MK17 and Serpent Hunter/Alien Head MK56 stay separate.",
+    "PHG Scout and Lost Tribe Scout stay separate.",
+    "PHG Oni/Jotun/Viking/Father and KoK Oni/Grendel/Badlands father stay separate until original-work evidence proves identity.",
+    "Grendel King and Viking Killer are not both established by one V44 jotun_grendel filename.",
+    "Mad arcade MK62, Pilot MK53 and Bionic MK31 are head/face-layer issues, not automatically new biomasks.",
+    "Concrete Jungle Stone Heart cybernetic head is not a removable mask by default.",
+    "Body/back/shoulder horns must not be copied as removable mask horns without attachment evidence."
+  ],
+  "searchLimits": [
+    "Local filename and metadata searches covered public, art-source, docs, production, workspace/tmp filename leads and pinned prior source audits. Unreadable /tmp/codex-daemon-1000 private directory was not searched.",
+    "No new independent original-work screenshot/render/model was located among inspected target leads. Additional V44 filename leads are retained as unverified illustrations, never accepted from filenames.",
+    "Current network remains unchanged; denied NECA CDN and other known denied hosts were not retried; no rewrites, alternate API routes or bypass.",
+    "No new image canvases or contact sheets were written; all images viewed directly from existing files."
+  ],
+  "conclusion": "No newly qualified local canonical exact mask reference. Existing costume artwork may support clearly labeled project-design studies, but cannot fulfill an exact existing version by name. The inspected source pixels, identity limits and next missing dependencies are pinned for the parent to combine with separately acquired official photos.",
+  "repoFilesModified": false,
+  "networkUsed": false,
+  "pixelEditingPerformed": false,
+  "canonicalCertified": false,
+  "humanArtValidated": false
+}

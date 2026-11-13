@@ -1,0 +1,564 @@
+{
+  "schemaVersion": "yautja-local-comics-mask-reference-audit-20261113-1",
+  "asOfUtc": "2026-11-13T10:24:14.864651+00:00",
+  "scope": "Read-only local provenance research for still-missing comics biomasks and adjacent character/elder names; no image generation or repository mutation.",
+  "repository": "/workspace/yautja-la-longue-chasse",
+  "inventoryPin": {
+    "path": "/workspace/yautja-la-longue-chasse/production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+    "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de",
+    "bytes": 361243
+  },
+  "localReferencesPin": {
+    "path": "/workspace/yautja-la-longue-chasse/production/biomasks-20261113/inputs/local-mask-references.json",
+    "sha256": "b17654a365b2a06c4080d42f6a10d647b6d1b1b3f4bc72eedf4948cd3490368b",
+    "bytes": 250098
+  },
+  "counts": {
+    "inventoryNamedEntries": 110,
+    "namedComicsMaskTargets": 4,
+    "adjacentFilmMaskTargets": 1,
+    "additionalCharacterLabelsChecked": 2,
+    "qualifiedNewLocalExactMaskImages": 0,
+    "freshlyVisuallyInspectedCostumeImages": 6,
+    "newImagesGenerated": 0
+  },
+  "qualifiedCandidates": [],
+  "candidates": [
+    {
+      "inventoryId": "mk-18-ahab",
+      "name": "ahab",
+      "work": "Ahab, *Fire and Stone* / *Life and Death*",
+      "scopeClass": "named-comics-mask",
+      "bibleDescription": "Partial mask leaving the mouth exposed, deep stab damage through the right eye area.",
+      "status": "no-qualified-local-exact-mask-reference",
+      "qualifiedForCanonicalGeneration": false,
+      "existingDedicatedAssetsInPinnedInventory": [],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1360,
+          "text": "| MK-18 ahab | Ahab, *Fire and Stone* / *Life and Death* | vérifié | Partial mask leaving the mouth exposed, deep stab damage through the right eye area. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 834,
+          "cells": {
+            "A834": "DOC-9c183a-L1358",
+            "C834": "Personnalisation et arsenal",
+            "D834": "Catalogue des variantes d'équipement : prompts d'image / Biomasques",
+            "E834": "Entrée de tableau",
+            "F834": "ID : MK-18 ahab ; Source : Ahab, *Fire and Stone* / *Life and Death* ; Statut : vérifié ; Détails : Partial mask leaving the mouth exposed, deep stab damage through the right eye area.",
+            "G834": "Conception et critères de campagne — constat ou contenu de la source",
+            "H834": "Déclaration source datée à rapprocher du comportement attesté",
+            "J834": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K834": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1358–1358"
+          }
+        }
+      ],
+      "neededEvidence": [
+        "A publisher/author comic panel or licensed photograph showing the actual partial mask and deep right-eye wound.",
+        "Retain left/right orientation; exposed mouth and wounds are asymmetric."
+      ],
+      "rejectedLocalCandidate": {
+        "pin": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v44/user-hunters/0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb.png",
+          "sha256": "0c8ceb1c953ccade7dc0e80cd2ae0d1c779396cc8f3669ecc9bb4aa07712d4fb",
+          "bytes": 2415367
+        },
+        "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "archiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/ahab/avec_casque.png",
+        "sourceType": "user-supplied-illustrated-costume",
+        "identityScope": "Archive filename grouping only; visual identity is not independently certified",
+        "visuallyInspectedThisAudit": true,
+        "visualObservation": "Illustrated full body wearing a silver partial mask with the mouth exposed; forehead claw-like scratches and a circular side fitting. The required deep right-eye stab damage is not established by this illustration.",
+        "rejectionReason": "Source-named supplied illustrated reconstruction, not a comic panel or licensed mask photograph; no exact-canon authority."
+      }
+    },
+    {
+      "inventoryId": "mk-19-afghanistan",
+      "name": "afghanistan",
+      "work": "*Predator: Hunters II* (comic)",
+      "scopeClass": "named-comics-mask",
+      "bibleDescription": "Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off.",
+      "status": "no-qualified-local-exact-mask-reference",
+      "qualifiedForCanonicalGeneration": false,
+      "existingDedicatedAssetsInPinnedInventory": [],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1361,
+          "text": "| MK-19 afghanistan | *Predator: Hunters II* (comic) | vérifié | Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 835,
+          "cells": {
+            "A835": "DOC-9c183a-L1359",
+            "C835": "Personnalisation et arsenal",
+            "D835": "Catalogue des variantes d'équipement : prompts d'image / Biomasques",
+            "E835": "Entrée de tableau",
+            "F835": "ID : MK-19 afghanistan ; Source : *Predator: Hunters II* (comic) ; Statut : vérifié ; Détails : Elegant mask close to the Jungle Hunter, large constantly burning blue eyes; second state with half the structure blown off.",
+            "G835": "Conception et critères de campagne — constat ou contenu de la source",
+            "H835": "Déclaration source datée à rapprocher du comportement attesté",
+            "J835": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K835": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1359–1359"
+          }
+        }
+      ],
+      "neededEvidence": [
+        "A named Hunters II panel showing the intact mask with blue optics.",
+        "A separate panel for the half-destroyed state; do not invent the lost half or use a generic Jungle Hunter."
+      ],
+      "rejectedLocalCandidate": null
+    },
+    {
+      "inventoryId": "mk-20-golden-angel",
+      "name": "golden angel",
+      "work": "Greyback, *Predator 1718* (comic) / NECA",
+      "scopeClass": "named-comics-mask",
+      "bibleDescription": "Two masks on separate images: a bird-like mask with blood-red eyes, and a traditional one close to the 1987 mask.",
+      "status": "no-qualified-local-exact-mask-reference",
+      "qualifiedForCanonicalGeneration": false,
+      "existingDedicatedAssetsInPinnedInventory": [],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1362,
+          "text": "| MK-20 golden angel | Greyback, *Predator 1718* (comic) / NECA | vérifié | Two masks on separate images: a bird-like mask with blood-red eyes, and a traditional one close to the 1987 mask. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 836,
+          "cells": {
+            "A836": "DOC-9c183a-L1360",
+            "C836": "Personnalisation et arsenal",
+            "D836": "Catalogue des variantes d'équipement : prompts d'image / Biomasques",
+            "E836": "Entrée de tableau",
+            "F836": "ID : MK-20 golden angel ; Source : Greyback, *Predator 1718* (comic) / NECA ; Statut : vérifié ; Détails : Two masks on separate images: a bird-like mask with blood-red eyes, and a traditional one close to the 1987 mask.",
+            "G836": "Conception et critères de campagne — constat ou contenu de la source",
+            "H836": "Déclaration source datée à rapprocher du comportement attesté",
+            "J836": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K836": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1360–1360"
+          }
+        }
+      ],
+      "neededEvidence": [
+        "Separate exact views for the bird-like red-eyed mask and the traditional1987-like mask.",
+        "Keep Golden Angel/1718 distinct from AVP Elder and PHG Elder."
+      ],
+      "rejectedLocalCandidate": {
+        "pin": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v44/user-hunters/2ddd3e2aeb79bfed20a4544d9217bb5897e96f321813dda480e0cd2b3268c647.png",
+          "sha256": "2ddd3e2aeb79bfed20a4544d9217bb5897e96f321813dda480e0cd2b3268c647",
+          "bytes": 2370677
+        },
+        "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "archiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/golden_angel/avec_casque.png",
+        "sourceType": "user-supplied-illustrated-costume",
+        "identityScope": "Archive filename grouping only; visual identity is not independently certified",
+        "visuallyInspectedThisAudit": true,
+        "visualObservation": "Illustrated full body wearing a bronze mask with a high horned brow, red eyes and a long central muzzle. This single costume does not establish either of the two separately documented Golden Angel masks.",
+        "rejectionReason": "Source-named supplied illustrated reconstruction, not a comic panel or licensed mask photograph; no exact-canon authority."
+      }
+    },
+    {
+      "inventoryId": "mk-61-hornhead",
+      "name": "hornhead",
+      "work": "*AvP: Life and Death* (comic) ; NECA",
+      "scopeClass": "named-comics-mask",
+      "bibleDescription": "Small horns growing from the head itself; removable bio-mask.",
+      "status": "no-qualified-local-exact-mask-reference",
+      "qualifiedForCanonicalGeneration": false,
+      "existingDedicatedAssetsInPinnedInventory": [],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1649,
+          "text": "| MK-61 hornhead | *AvP: Life and Death* (comic) ; NECA | vérifié | Small horns growing from the head itself; removable bio-mask. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 1058,
+          "cells": {
+            "A1058": "DOC-9c183a-L1647",
+            "C1058": "Personnalisation et arsenal",
+            "D1058": "Catalogue des variantes d'équipement : prompts d'image / Contrôle des manques : ajouts de la franchise / Masques ajoutés",
+            "E1058": "Entrée de tableau",
+            "F1058": "ID : MK-61 hornhead ; Source : *AvP: Life and Death* (comic) ; NECA ; Statut : vérifié ; Détails : Small horns growing from the head itself; removable bio-mask.",
+            "G1058": "Conception et critères de campagne — constat ou contenu de la source",
+            "H1058": "Déclaration source datée à rapprocher du comportement attesté",
+            "J1058": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K1058": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1647–1647"
+          }
+        }
+      ],
+      "neededEvidence": [
+        "A licensed mask-on and mask-off comparison showing the removable mask and actual cranial horns.",
+        "Do not turn the biological horns into new mask horns or infer hidden openings."
+      ],
+      "rejectedLocalCandidate": {
+        "pin": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v44/user-hunters/02c6c272c04536b6ccbe9a74180e992b4ce5596ecca0ab09e616358ccf2a5338.png",
+          "sha256": "02c6c272c04536b6ccbe9a74180e992b4ce5596ecca0ab09e616358ccf2a5338",
+          "bytes": 2207285
+        },
+        "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "archiveEntry": "YAUTJA_NECA_84_PAIRES/05_COMICS_JEUX/hornhead/avec_casque.png",
+        "sourceType": "user-supplied-illustrated-costume",
+        "identityScope": "Archive filename grouping only; visual identity is not independently certified",
+        "visuallyInspectedThisAudit": true,
+        "visualObservation": "Illustrated full body with a silver enclosed mask, red eyes and several brown protrusions passing through or sitting on the upper shell. The documented horns belong to the wearer’s head; their exact relation to the removable canonical mask is not established by this reconstruction.",
+        "rejectionReason": "Source-named supplied illustrated reconstruction, not a comic panel or licensed mask photograph; no exact-canon authority."
+      }
+    },
+    {
+      "inventoryId": "mk-15-elder",
+      "name": "elder",
+      "work": "Elder, *AVP* (2004)",
+      "scopeClass": "adjacent-film-mask",
+      "bibleDescription": "Ornate ancient mask, gold-bronze inlays, wide flared crown.",
+      "status": "no-qualified-local-exact-mask-reference",
+      "qualifiedForCanonicalGeneration": false,
+      "existingDedicatedAssetsInPinnedInventory": [],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1357,
+          "text": "| MK-15 elder | Elder, *AVP* (2004) | film | Ornate ancient mask, gold-bronze inlays, wide flared crown. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 831,
+          "cells": {
+            "A831": "DOC-9c183a-L1355",
+            "C831": "Personnalisation et arsenal",
+            "D831": "Catalogue des variantes d'équipement : prompts d'image / Biomasques",
+            "E831": "Entrée de tableau",
+            "F831": "ID : MK-15 elder ; Source : Elder, *AVP* (2004) ; Statut : film ; Détails : Ornate ancient mask, gold-bronze inlays, wide flared crown.",
+            "G831": "Conception et critères de campagne — constat ou contenu de la source",
+            "H831": "Déclaration source datée à rapprocher du comportement attesté",
+            "J831": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K831": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1355–1355"
+          }
+        }
+      ],
+      "neededEvidence": [
+        "A licensed or film image of AVP2004 Elder’s actual mask.",
+        "Do not substitute PHG Elder, Greyback or the V3 Elder project mask."
+      ],
+      "rejectedLocalCandidate": {
+        "pin": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v44/user-hunters/342033dd006fcf3163d3092fe32f8ac9d4aa44d63e20a8737afbb14418ef8add.png",
+          "sha256": "342033dd006fcf3163d3092fe32f8ac9d4aa44d63e20a8737afbb14418ef8add",
+          "bytes": 2706988
+        },
+        "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "archiveEntry": "YAUTJA_NECA_84_PAIRES/03_AVP/elder_avp/avec_casque.png",
+        "sourceType": "user-supplied-illustrated-costume",
+        "identityScope": "Archive filename grouping only; visual identity is not independently certified",
+        "visuallyInspectedThisAudit": true,
+        "visualObservation": "Illustrated full body with an ornate gold/bronze forehead plate, glyph-like marks and mouth-exposing mask. Filename and broad written likeness do not prove the AVP2004 canonical sculpt.",
+        "rejectionReason": "Source-named supplied illustrated reconstruction, not a comic panel or licensed mask photograph; no exact-canon authority."
+      }
+    },
+    {
+      "inventoryId": null,
+      "name": "Big Mama",
+      "scopeClass": "comic-character-without-named-mask-entry",
+      "status": "character-label-does-not-establish-unique-biomask",
+      "qualifiedForCanonicalGeneration": false,
+      "rejectedLocalCandidate": {
+        "pin": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v44/user-hunters/04180359dafdd9b8abd750c03bbffa28601c5d9abca01dc5bb535b2ff64bba77.png",
+          "sha256": "04180359dafdd9b8abd750c03bbffa28601c5d9abca01dc5bb535b2ff64bba77",
+          "bytes": 2340039
+        },
+        "archive": "YAUTJA_PARTIE_2_COMPLEMENTS_80_PAIRES_160_PNG.zip",
+        "archiveEntry": "YAUTJA_COMPLEMENTS_80_PAIRES/09_COMICS_COMPLEMENTS/big_mama/avec_casque.png",
+        "sourceType": "user-supplied-illustrated-costume",
+        "visuallyInspectedThisAudit": true,
+        "visualObservation": "Illustrated full body with a broad dark grey mask, long central projecting nose/muzzle, red eye lenses and blue dreadlocks. No comic panel, publisher capture or licensed sculpt provenance establishes that mask as Big Mama’s exact biomask."
+      },
+      "neededEvidence": [
+        "A primary or licensed image explicitly identifying the worn/removable biomask; a character name, body morphology or dreadlock weapon is insufficient."
+      ]
+    },
+    {
+      "inventoryId": null,
+      "name": "Spiked Tail",
+      "scopeClass": "Kenner-NECA-character-not-comics-mask-entry",
+      "status": "character-label-does-not-establish-unique-biomask",
+      "qualifiedForCanonicalGeneration": false,
+      "rejectedLocalCandidate": {
+        "pin": {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v44/user-hunters/824cdfaf469d27acfd51c5ad6f9a30dce35e96f090003c4bdea972a207d8b0ed.png",
+          "sha256": "824cdfaf469d27acfd51c5ad6f9a30dce35e96f090003c4bdea972a207d8b0ed",
+          "bytes": 2381163
+        },
+        "archive": "YAUTJA_PARTIE_1_NECA_84_PAIRES_168_PNG.zip",
+        "archiveEntry": "YAUTJA_NECA_84_PAIRES/04_KENNER/spiked_tail/avec_casque.png",
+        "sourceType": "user-supplied-illustrated-costume",
+        "visuallyInspectedThisAudit": true,
+        "visualObservation": "Illustrated full body wearing a large bronze crown-like spiked mask and olive armour. This costume image cannot establish the precise licensed outer mask or separate it from biological cranial projections by provenance alone."
+      },
+      "neededEvidence": [
+        "A primary or licensed image explicitly identifying the worn/removable biomask; a character name, body morphology or dreadlock weapon is insufficient."
+      ]
+    }
+  ],
+  "identityCautions": [
+    {
+      "name": "Spiked Tail",
+      "evidence": "docs/campagne/BIBLE_DE_CAMPAGNE.md:306,328,1236",
+      "finding": "Rogue Space Tribe / NECA biography and DR-10 mace dreadlocks; those rows do not define a separate comics biomask. A long dreadlock mace is hair/equipment, not a mask."
+    },
+    {
+      "name": "Big Mama",
+      "evidence": "docs/campagne/BIBLE_DE_CAMPAGNE.md:497; docs/v55-stage-references-comics.json:deadliest-skyliner",
+      "finding": "The bible establishes a large female and the older research connects the name to The Deadliest of the Species by text/index. Neither source supplies a verified image of her exact mask."
+    },
+    {
+      "name": "Elder variants",
+      "finding": "AVP2004 Elder, Greyback, PHG Elder, the V3 Elder project mask, Elder Belize, Elder Tartarus and Gotham Elder are separate identities/labels. Elder Belize/Tartarus/Gotham costume labels have no primary mask pixels established locally."
+    },
+    {
+      "name": "Hornhead",
+      "finding": "Small horns are biological head features. They cannot be added to the mask without a licensed mask-on reference."
+    }
+  ],
+  "archiveAudit": {
+    "pin": {
+      "path": "/workspace/yautja-la-longue-chasse/docs/drive-archive-audit-v87-sources.json",
+      "sha256": "4e81c02a141d552cceed5ba5d18cc3f6e705cf75696280c1fe343726b365fd24",
+      "bytes": 3003312
+    },
+    "nativeRecords": 121,
+    "referencePngRecords": 45,
+    "manifestRecords": 1351,
+    "individualPngProofRecords": 42,
+    "finding": "No named target provenance found for Ahab, Afghanistan, Golden Angel, Hornhead, Big Mama or Spiked Tail among the archive-audit reference records. The references are PHG and Badlands material; material reconstructions are not biomask geometry authority. This was a metadata/provenance screen, not a fresh visual review of every archived pixel."
+  },
+  "additionalImportChecks": [
+    {
+      "pin": {
+        "path": "/workspace/yautja-la-longue-chasse/docs/drive-new-deposits-v87-sources.json",
+        "sha256": "cdd43f2907fd6f7c37b18017bc2740eef0f8413bc9c9bd2ab25842039e048515",
+        "bytes": 717073
+      },
+      "finding": "Spiked Tail and Hornhead lineage/costume variants including enforcers-comics are extrapolated populations; manifest canonicalFidelityCertified=false. A mask held at a generated commander’s hip is not an exact licensed reference."
+    },
+    {
+      "pin": {
+        "path": "/workspace/yautja-la-longue-chasse/docs/drive-imports-v85-sources.json",
+        "sha256": "df5d48f7a05722ca6f1e9238fdbeb7660b638c5f7c40ca502564877e179f6f72",
+        "bytes": 24007
+      },
+      "finding": "Imported original generated groups, lineage bodies and rider variants; no independently qualified exact comics mask image located."
+    },
+    {
+      "pin": {
+        "path": "/workspace/yautja-la-longue-chasse/docs/drive-new-deposits-v89-sources.json",
+        "sha256": "eba90b6235526fad04b19ca5a0dd49caa8e3741e7685564c0c76ab4037a24a2c",
+        "bytes": 1418437
+      },
+      "finding": "Source archives preserve byte identity of project assets; byte preservation does not certify a canonical mask. Spiked Tail rider/morphology images are not primary mask references."
+    }
+  ],
+  "workbookMediaScan": {
+    "method": "Read-only ZIP central-directory inspection for xl/media/",
+    "workbooksInspected": 125,
+    "workbooksWithMedia": 0,
+    "embeddedMediaImages": 0,
+    "errors": []
+  },
+  "excludedGeneratedDerivatives": [
+    {
+      "id": "ahab",
+      "pin": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v31/film-plates/ahab.png",
+        "sha256": "c55e25057d734e877e71aec719a535b1bbfe15316f518141c6af45e30036ef0d",
+        "bytes": 1338075
+      },
+      "receipt": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v31/film-plates/manifest.json",
+        "sha256": "7fb30ccae4c942d5050656d3e1e10c597b370b1fa0d0947e1cac89f0a4bd2139",
+        "bytes": 34382
+      },
+      "sourceGenerator": "OpenAI imagegen (built-in)",
+      "receiptCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified",
+      "reason": "Original fan-made static interpretation; not a primary comic image or a new independent exact reference.",
+      "visuallyInspectedThisAudit": false
+    },
+    {
+      "id": "big-mama",
+      "pin": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v31/film-plates/big-mama.png",
+        "sha256": "0a501470c74d1db777e30058ceb7f183a571a05efe55ba80181cd640a15f6d09",
+        "bytes": 1555574
+      },
+      "receipt": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/sprites/v31/film-plates/manifest.json",
+        "sha256": "7fb30ccae4c942d5050656d3e1e10c597b370b1fa0d0947e1cac89f0a4bd2139",
+        "bytes": 34382
+      },
+      "sourceGenerator": "OpenAI imagegen (built-in)",
+      "receiptCanonStatus": "fan-made-static-interpretation-not-1-to-1-certified",
+      "reason": "Original fan-made static interpretation; not a primary comic image or a new independent exact reference.",
+      "visuallyInspectedThisAudit": false
+    },
+    {
+      "id": "spiked-tail--enforcers-comics-10",
+      "imagePin": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/production/enforcer-alternatives-v107/spiked-tail/enforcers-comics-10.png",
+        "sha256": "5cfe9e4fa7a91fcbd903791c469d7c54a3eaeca28113fd1ca16f325dc05ca710",
+        "bytes": 1957213
+      },
+      "receiptPin": {
+        "path": "/workspace/yautja-la-longue-chasse/docs/suivi-production/v107-enforcer-poses/receipts/spiked-tail--enforcers-comics-10.json",
+        "sha256": "cad0f927b638f8fa775c777ef400238880f2fac79b4435fe0cb9bd2d2cc23bbe",
+        "bytes": 4192
+      },
+      "method": "builtin-imagegen",
+      "submittedReferencesCount": 0,
+      "role": "alternative-pose",
+      "reason": "Generated original lineage/costume alternative. The family label enforcers-comics and NECA-inspired anatomy do not certify exact individual mask geometry.",
+      "visuallyInspectedThisAudit": false
+    },
+    {
+      "id": "hornhead--enforcers-comics-10",
+      "imagePin": {
+        "path": "/workspace/yautja-la-longue-chasse/public/game/production/enforcer-alternatives-v107/hornhead/enforcers-comics-10.png",
+        "sha256": "311576cb7e5057f871ab1015634314375a94e4215b20f233131b32cae9b586d5",
+        "bytes": 1672753
+      },
+      "receiptPin": {
+        "path": "/workspace/yautja-la-longue-chasse/docs/suivi-production/v107-enforcer-poses/receipts/hornhead--enforcers-comics-10.json",
+        "sha256": "00ca3b2026f49cbac3eb951e035467af13770bced7153178eae6dcf95dd76a14",
+        "bytes": 3851
+      },
+      "method": "builtin-imagegen",
+      "submittedReferencesCount": 0,
+      "role": "alternative-pose",
+      "reason": "Generated original lineage/costume alternative. The family label enforcers-comics and NECA-inspired anatomy do not certify exact individual mask geometry.",
+      "visuallyInspectedThisAudit": false
+    }
+  ],
+  "cachedLicensedTextLeads": [
+    {
+      "id": "elder-avp",
+      "url": "https://necaonline.com/2016/10/predator-7-scale-action-figures-series-17-assortment/",
+      "cachedHtmlPin": {
+        "path": "/tmp/primary-masks-20261113/film/elder-avp.html",
+        "sha256": "5a1b9362e0172615e016cec7a59eaa0f0dd091dba05a59f26d67f4a162b03741",
+        "bytes": 166818
+      },
+      "historicalHttpStatus": 200,
+      "status": "licensed-text-provenance-only-no-usable-local-target-photo",
+      "imageHost": "eadn-wc04-13179453.nxedge.io",
+      "imageHostAccess": "outside unchanged nine-host policy; no fetch attempted by this audit",
+      "imagesVisuallyInspected": false
+    },
+    {
+      "id": "golden-angel",
+      "url": "https://necaonline.com/2018/02/predator-2-7-scale-action-figure-ultimate-elder-the-golden-angel/",
+      "cachedHtmlPin": {
+        "path": "/tmp/primary-masks-20261113/film/golden-angel.html",
+        "sha256": "ca60248d0a2123ef88116e5ce899a8decf228bf9018e5ef8940bbd33bbb361d8",
+        "bytes": 136770
+      },
+      "historicalHttpStatus": 200,
+      "status": "licensed-text-provenance-only-no-usable-local-target-photo",
+      "imageHost": "eadn-wc04-13179453.nxedge.io",
+      "imageHostAccess": "outside unchanged nine-host policy; no fetch attempted by this audit",
+      "imagesVisuallyInspected": false
+    },
+    {
+      "id": "hornhead",
+      "url": "https://necaonline.com/2017/06/predator-7-scale-action-figures-series-18-assortment/",
+      "cachedHtmlPin": {
+        "path": "/tmp/primary-masks-20261113/film/hornhead.html",
+        "sha256": "53d33e058e575d99505f68d1c1e7bd1af8b6961f7965af5622939470e064dcda",
+        "bytes": 145003
+      },
+      "historicalHttpStatus": 200,
+      "status": "licensed-text-provenance-only-no-usable-local-target-photo",
+      "imageHost": "eadn-wc04-13179453.nxedge.io",
+      "imageHostAccess": "outside unchanged nine-host policy; no fetch attempted by this audit",
+      "imagesVisuallyInspected": false
+    },
+    {
+      "id": "ahab-neca",
+      "url": "https://necaonline.com/2017/05/predator-7-scale-action-figure-ultimate-ahab-predator/",
+      "cachedHtmlPin": {
+        "path": "/tmp/primary-masks-20261113/film/ahab-neca.html",
+        "sha256": "0240486fc66448d28f909c57eaa09748e12c1a806f7eed463e05bcd296581e5f",
+        "bytes": 141728
+      },
+      "historicalHttpStatus": 200,
+      "status": "licensed-text-provenance-only-no-usable-local-target-photo",
+      "imageHost": "eadn-wc04-13179453.nxedge.io",
+      "imageHostAccess": "outside unchanged nine-host policy; no fetch attempted by this audit",
+      "imagesVisuallyInspected": false
+    }
+  ],
+  "otherPinnedEvidence": [
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/campagne/BIBLE_DE_CAMPAGNE.md",
+      "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+      "bytes": 297486
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/v55-stage-references-comics.json",
+      "sha256": "e71d371a4f1c962c8295cb479f66d05b540013d1211dfbb7ea95216f4e78c33d",
+      "bytes": 43907
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/v44-user-hunters-intake.json",
+      "sha256": "d816b5dca0f6b3eff5a75754edc904ca10bb0991c18f5d2fcc712ecaacbecc08",
+      "bytes": 274730
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/v45-ahab-generation.json",
+      "sha256": "f8a6ceb5f5707c02133e7c17e9e8786dfa0e096e3ab720b3a7d7ee216211648d",
+      "bytes": 17289
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/v45-ahab-art-review.json",
+      "sha256": "e114ceb8d05689eca1194213e5e2e0f25a0d48d3720c4eaadf3aca953b32919e",
+      "bytes": 11038
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/suivi-production/v614/references/production-plan-v614.json",
+      "sha256": "1a2d3e28044dd6a83efa1b4ee0f26397e61b8ac4c11dfbc9daaeaf49c9573202",
+      "bytes": 231222
+    }
+  ],
+  "network": {
+    "requestsMadeThisAudit": 0,
+    "allowlistUnchanged": true,
+    "restrictionBypassAttempted": false
+  },
+  "claims": {
+    "canonCertified": false,
+    "humanArtValidated": false,
+    "runtimeIntegrated": false,
+    "repositoryFilesModified": false,
+    "pixelEditingPerformed": false
+  },
+  "conclusion": "No new local reference meets the exact canonical mask requirement for the four named comics entries. Do not extract or relabel the known164 costume reconstructions as canon. Keep these missing masks open until a precisely identified primary/licensed image is accessible. The negative result is bounded to the local inventories, manifests, checked workbooks and source chains described here."
+}

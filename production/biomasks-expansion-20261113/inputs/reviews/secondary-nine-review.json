@@ -1,0 +1,1427 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "reviewer": "dual_generate_3 independent visual review",
+  "status": "final-eight-candidate-reviews-one-provisional-major-proportion-reserve",
+  "scope": "Nine RGB256x257 community HUD screenshots on black versus native ImageGen PHG-style B. Community names are not certified originalPHG identities.",
+  "methods": {
+    "pixelAssetEdits": false,
+    "referenceReencoding": false,
+    "comparison": "Chromium playwright-core, local HTTP read-only image server, isotropic CSS only.",
+    "backgrounds": [
+      "white",
+      "black",
+      "checker"
+    ],
+    "visibleMaskLongestAxes": [
+      360,
+      96
+    ],
+    "viewport": [
+      1600,
+      800
+    ],
+    "deviceScaleFactor": 1,
+    "sourceWindows": "Original inventory proposed windows; Vapor refined manually after crown/chin review. Whole sourceA displayed alongside each comparison.",
+    "instructionsRead": [
+      "AGENTS.md",
+      "docs/GAMEDEV_AGENT_GUIDE.md",
+      "/tmp/p0-sprites-20261113/references/create-game-assets.md"
+    ]
+  },
+  "entries": [
+    {
+      "id": "predator_11",
+      "label": "Modern Predator",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_11.png",
+          "sha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a",
+          "bytes": 34341,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            47,
+            20,
+            207,
+            198
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_11.png",
+          "sha256": "d373fcda9d0395e237e89aa52500f64e2769547d10a328f545613d569d9b9336",
+          "bytes": 1741313,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            202,
+            102,
+            1053,
+            1141
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 851249,
+            "oneToNine": 14398,
+            "tenToFifteen": 341,
+            "sixteenTo239": 5463,
+            "solid240plus": 701065
+          },
+          "margins16": [
+            202,
+            102,
+            201,
+            113
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Couronne large arrondie, panneaux arqués emboîtés et larme centrale conservés ; yeux grillagés et deux longues fentes du bouclier inférieur conservés.",
+      "engravingObservation": "Les deux petits reliefs axiaux principaux sont présents ; grain, biseaux et petite modulation des panneaux sont interprétés.",
+      "dreadlockRemovalObservation": "Dreadlocks longues supprimées. Quelques petites languettes latérales segmentées restent ; leur appartenance exacte à la coque dans A est moins nette que la grande silhouette et ne certifie pas le périmètre1:1.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_11.png",
+        "bytes": 494279,
+        "sha256": "389f8e4266be0bdde0dfe01e633c318f8a0c35fce666c2e10823194a805602ac"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "predator_12",
+      "label": "Abyss",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_12.png",
+          "sha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d",
+          "bytes": 33677,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            45,
+            20,
+            210,
+            208
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_12.png",
+          "sha256": "09ccf409a0ea9a1db3aad1ba32e7b3a7b5cc7b145a343d6a6b2ba26bc397b40f",
+          "bytes": 1392134,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            220,
+            95,
+            1034,
+            1160
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 978495,
+            "oneToNine": 8605,
+            "tenToFifteen": 290,
+            "sixteenTo239": 4613,
+            "solid240plus": 580513
+          },
+          "margins16": [
+            220,
+            95,
+            220,
+            94
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Couronne en éventail étagé, colonne centrale, ailes, grandes ouvertures sombres et bas étroit conservés.",
+      "engravingObservation": "Les trois petits traits groupés du front sont présents ; la colonne de petits reliefs du nez reste une interprétation des pixels visibles.",
+      "dreadlockRemovalObservation": "Pas de longues mèches ni de nouvelles plaques striées représentant les cheveux ; côtés de coque cohérents avec les surfaces visibles.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_12.png",
+        "bytes": 439034,
+        "sha256": "d9f88ce169e6741adea0564f25bb4cf20a073847e468dd63fcc65410c15b364d"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "predator_16",
+      "label": "Cyclone",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_16.png",
+          "sha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a",
+          "bytes": 46738,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            56,
+            20,
+            203,
+            203
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_16.png",
+          "sha256": "b62a7e01e6a2b86007e82bdebd695a6e2747c5d2d0126b0297211c60d7a9e7c2",
+          "bytes": 1482547,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            224,
+            119,
+            1031,
+            1117
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 946245,
+            "oneToNine": 9631,
+            "tenToFifteen": 263,
+            "sixteenTo239": 4481,
+            "solid240plus": 611896
+          },
+          "margins16": [
+            224,
+            119,
+            223,
+            137
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Calotte facettée et encoche haute, bande oculaire presque continue, bouclier inférieur divisé et creux latéraux conservés.",
+      "engravingObservation": "Les marques en anneaux/courbes aux positions hautes sont conservées ; finesse, profondeur et très petits signes restent interprétés.",
+      "dreadlockRemovalObservation": "Dreadlocks supprimées sans appendices pendants ni plaques nouvelles manifestes.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_16.png",
+        "bytes": 510287,
+        "sha256": "145996467e8dabd3962e0f5c1c4c119a716821339d6ee7df8c33bdbb575f22b3"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "predator_17",
+      "label": "Vapor",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+          "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693",
+          "bytes": 47282,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            56,
+            21,
+            203,
+            211
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+          "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+          "bytes": 1634260,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            193,
+            113,
+            1061,
+            1100
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 888902,
+            "oneToNine": 8982,
+            "tenToFifteen": 272,
+            "sixteenTo239": 4641,
+            "solid240plus": 669719
+          },
+          "margins16": [
+            193,
+            113,
+            193,
+            154
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "provisional-review-only-major-proportion-reserve",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Panneaux arqués, axe du front, yeux clairs et reliefs longitudinaux conservés. B1initial trop étroit et menton aigu/allongé. B2corrige le menton mais élargit trop la coque. B3raccourci/émoussé reste plus étroit queB1. Parmi les3, B2garde la meilleure forme du menton ; aucun ne satisfait entièrement les proportions source.",
+      "engravingObservation": "Pas de nouvelle iconographie ; finesse de rainures et grain métal non certifiables depuis256px.",
+      "dreadlockRemovalObservation": "Longs cheveux supprimés. Les petits éléments latéraux sont solidaires du rendu de coque, sans mèches transformées en grandes plaques striées.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_17-corrected-comparison.png",
+        "bytes": 563243,
+        "sha256": "411858b53c4bffa3dcf08a7c9c02bdcd746a39b80f7cca314c21476085c0ed12"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "proportionFinding": {
+        "refinedManualSourceWindow": [
+          63,
+          22,
+          194,
+          188
+        ],
+        "qualification": "Visual helmet-only CSS window excludes dreadlocks; approximate, not segmented/certified geometric mask.",
+        "sourceWindowAspect": 0.7891566265060241,
+        "currentBAlpha16Aspect": 0.8794326241134752,
+        "relativeDifference": 0.11439553895295318,
+        "previousBSha256": "b87816bf0e7cc751eba38dd559c9be9e9439de6c30bd0828b77a3fcd25389753",
+        "previousStatus": "Rejected as narrow pointed chin; archived by generation owner.",
+        "correction1Sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+        "correction1Status": "Best-relative-chin candidate, current public B; about11percent wider on approximate source-window proxy. Material deviation remains open.",
+        "targetProxyRange": [
+          0.77,
+          0.81
+        ],
+        "additionalNativeAttempt": {
+          "key": "B3",
+          "title": "B3 ·menton court, trop étroit",
+          "path": "/workspace/generated_images/exec-39f85db9-8b7a-417b-9e99-cb215b457055.png",
+          "bytes": 1234536,
+          "sha256": "9a8c7fa4afe388d9a4bb0b654378b606209b6acabe46b3785b5dc3f8ca40c8a3",
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "bounds": [
+            283,
+            110,
+            970,
+            1099
+          ],
+          "aspect": 0.6946410515672397
+        },
+        "additionalNativeAttemptStatus": "ImageGen correction overshot narrow, ratioapproximately0.695; not recommended overB2."
+      },
+      "recommendation": "Parent decision: retain B2wide solely as a provisional comparison. Keep the approximately11percent width deviation and proportion work OPEN. Do not mark this pair as source-faithful or the group as9conformant.",
+      "rootAdjudicationSeparateFromIndependentFinding": false,
+      "threeNativeAttemptsComparison": {
+        "path": "/tmp/mask-expansion-20261113/reviews/vapor-three-attempts-comparison.png",
+        "bytes": 734721,
+        "sha256": "4dd6a2a572e11c91ef738c5e6b09a777d6278dc92601566d2a92e19253a16803",
+        "visuallyInspected": true,
+        "CSSOnly": true
+      },
+      "provisionalReviewOnly": true,
+      "majorDefectOpen": true,
+      "proportionsConformant": false,
+      "referenceFaithfulVersionEstablished": false,
+      "rootDecision": {
+        "source": "Parent root explicit decision2026-11-13",
+        "selectedBsha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+        "selectionScope": "provisional-review-only",
+        "proportionTaskOpen": true,
+        "furtherGenerationAuthorized": false,
+        "generationAttempt4ProducedPNG": false,
+        "thirdNativeCandidateNotSelected": true
+      }
+    },
+    {
+      "id": "predator_21",
+      "label": "Fray",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_21.png",
+          "sha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1",
+          "bytes": 50901,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            47,
+            9,
+            209,
+            209
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_21.png",
+          "sha256": "f00ab163c53d9ecaa36eeed008ac66db7fdddfe419d8324c294703104714426a",
+          "bytes": 1394365,
+          "dimensions": [
+            1246,
+            1262
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            207,
+            79,
+            1028,
+            1157
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 941146,
+            "oneToNine": 10060,
+            "tenToFifteen": 282,
+            "sixteenTo239": 4756,
+            "solid240plus": 616208
+          },
+          "margins16": [
+            207,
+            79,
+            218,
+            105
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Large dôme sombre, petit axe central, yeux obliques noirs et respirateur projeté conservés.",
+      "engravingObservation": "Les deux rangées de petits traits clairs par côté restent reconnaissables ; position très fine et usure des traits ne sont pas une preuve UV.",
+      "dreadlockRemovalObservation": "Cheveux externes retirés ; nervures du masque restent à l’intérieur de la silhouette de coque.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_21.png",
+        "bytes": 476453,
+        "sha256": "7c8373e8798cb6699bbd12678d66cfb44b3a125cf5006b01d998b8af883880d2"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "predator_23",
+      "label": "Remnant",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_23.png",
+          "sha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88",
+          "bytes": 47246,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            50,
+            14,
+            204,
+            208
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_23.png",
+          "sha256": "a10334918a91f6a747673a3a4c99af71976731805543d02b62af720979319b66",
+          "bytes": 1737498,
+          "dimensions": [
+            1247,
+            1261
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            210,
+            73,
+            1036,
+            1164
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 926010,
+            "oneToNine": 11158,
+            "tenToFifteen": 417,
+            "sixteenTo239": 6398,
+            "solid240plus": 628484
+          },
+          "margins16": [
+            210,
+            73,
+            211,
+            97
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Deux tours hautes et leurs creux ronds, couronne en strates diagonales, yeux noirs et bord inférieur irrégulier conservés.",
+      "engravingObservation": "Reliefs croisés et strates présents ; quantité et profondeur des micro-rayures/biseaux interprétées.",
+      "dreadlockRemovalObservation": "Mèches supprimées ; les couches latérales visibles correspondent aux strates du masque et ne deviennent pas des brins pendants.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_23.png",
+        "bytes": 512596,
+        "sha256": "2d3456f7ef82d97ee0f9d90ff07b897373bb3b837eb8b63c4fe01a9521b01eb5"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "predator_detox",
+      "label": "Detox",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_detox.png",
+          "sha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af",
+          "bytes": 25760,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            62,
+            40,
+            194,
+            195
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_detox.png",
+          "sha256": "bb6ff95ac9f7df750878c999cfcc4efa406854b84be03c2fd4d95d8a6df677ee",
+          "bytes": 1901915,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            171,
+            83,
+            1083,
+            1170
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 824885,
+            "oneToNine": 12630,
+            "tenToFifteen": 494,
+            "sixteenTo239": 5751,
+            "solid240plus": 728756
+          },
+          "margins16": [
+            171,
+            83,
+            171,
+            84
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Grande encoche enU, deux ouvertures rondes, petit organe axial et deux tubes inférieurs conservés.",
+      "engravingObservation": "Bloc de petits trous du côté et filtre central lisibles ; perforations fines et matière physique restent interprétées.",
+      "dreadlockRemovalObservation": "Dreadlocks supprimées sans ajout de plaques pendantes.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_detox.png",
+        "bytes": 469788,
+        "sha256": "cfca457a00b60dfc6f25573b9142bd56eaa2d8d50436be37c164a9e3a282421f"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "predator_14",
+      "label": "City Hunter of 97",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_14.png",
+          "sha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70",
+          "bytes": 42498,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            60,
+            28,
+            194,
+            195
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_14.png",
+          "sha256": "c00797882864330550efbd2047ea51e1c1efc430b826d8f897e290b293227c48",
+          "bytes": 1541881,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            232,
+            83,
+            1017,
+            1151
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 917261,
+            "oneToNine": 10566,
+            "tenToFifteen": 284,
+            "sixteenTo239": 4871,
+            "solid240plus": 639534
+          },
+          "margins16": [
+            232,
+            83,
+            237,
+            103
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            1,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Calotte usée piquée, large sourcil, petits reliefs latéraux et long bouclier inférieur fermé conservés.",
+      "engravingObservation": "Marque sombre centrale et usure générale visibles ; distribution microscopique du pitting ne saurait être exacte.",
+      "dreadlockRemovalObservation": "Cheveux supprimés ; petits mécanismes latéraux restent, sans grandes surfaces nouvelles de cheveux métallisés.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_14.png",
+        "bytes": 487536,
+        "sha256": "9629e1fd3c05113d8ee99e4f3e7dd808e77b440a0a3d1f12398ea7e5ab121695"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "predator_kawaii",
+      "label": "Kawaii Phoenix",
+      "assets": [
+        {
+          "version": "A",
+          "path": "production/biomasks-expansion-20261113/references/community/predator_kawaii.png",
+          "sha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea",
+          "bytes": 39944,
+          "dimensions": [
+            256,
+            257
+          ],
+          "mode": "RGB",
+          "pixelsEdited": false,
+          "displayBounds": [
+            42,
+            8,
+            213,
+            211
+          ],
+          "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+          "alpha": false
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/predator_kawaii.png",
+          "sha256": "a32167ef2d61ed12de0639aa6097314dd5c891ca271cb007fac84944f6c57204",
+          "bytes": 1800199,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "pixelsEdited": false,
+          "displayBounds": [
+            147,
+            64,
+            1107,
+            1179
+          ],
+          "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+          "alpha": true,
+          "alphaHistogram": {
+            "zero": 846437,
+            "oneToNine": 12975,
+            "tenToFifteen": 370,
+            "sixteenTo239": 5882,
+            "solid240plus": 706852
+          },
+          "margins16": [
+            147,
+            64,
+            147,
+            75
+          ],
+          "cornerAlpha": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ],
+      "status": "source-bound-candidate-no-major-deviation-observed",
+      "camera": "Nearfrontal secondarycapture camera preserved; no mirror or new measured physical projection claimed.",
+      "shapeObservation": "Pointes latérales en éventail, crête en arcs emboîtés, grands yeux en amande et long centre inférieur conservés.",
+      "engravingObservation": "Boucles fines pâles et petits nœuds visibles conservés dans leur organisation ; tracé haute résolution interprété.",
+      "dreadlockRemovalObservation": "La version actuelle n’a plus les plaques jugales striées non supportées du premier essai. Les longs cheveux sont absents et les joues restent simples.",
+      "at360px": "Silhouette, eyes and named macroreliefs remain readable on white, black and checker backgrounds.",
+      "at96px": "Main silhouette and eye arrangement readable; fine relief/engraving resolution is insufficient for identity certification.",
+      "alphaObservation": "Native transparent exterior behaves cleanly in browser composites; lowalpha1–9 edge pixels were not CPU-cleaned or treated as an automatic defect.",
+      "capture": {
+        "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_kawaii.png",
+        "bytes": 473918,
+        "sha256": "37efaa47e3a1211bdf8a0b03beeb70484877b14b4f64f8967f90d62ed4939b53"
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    }
+  ],
+  "browserErrors": [],
+  "failedRequests": [],
+  "sourceAndOutputImagePins": [
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_11.png",
+      "sha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a",
+      "bytes": 34341,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        47,
+        20,
+        207,
+        198
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_11"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_11.png",
+      "sha256": "d373fcda9d0395e237e89aa52500f64e2769547d10a328f545613d569d9b9336",
+      "bytes": 1741313,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        202,
+        102,
+        1053,
+        1141
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 851249,
+        "oneToNine": 14398,
+        "tenToFifteen": 341,
+        "sixteenTo239": 5463,
+        "solid240plus": 701065
+      },
+      "margins16": [
+        202,
+        102,
+        201,
+        113
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_11"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_12.png",
+      "sha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d",
+      "bytes": 33677,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        45,
+        20,
+        210,
+        208
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_12"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_12.png",
+      "sha256": "09ccf409a0ea9a1db3aad1ba32e7b3a7b5cc7b145a343d6a6b2ba26bc397b40f",
+      "bytes": 1392134,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        220,
+        95,
+        1034,
+        1160
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 978495,
+        "oneToNine": 8605,
+        "tenToFifteen": 290,
+        "sixteenTo239": 4613,
+        "solid240plus": 580513
+      },
+      "margins16": [
+        220,
+        95,
+        220,
+        94
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_12"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_16.png",
+      "sha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a",
+      "bytes": 46738,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        56,
+        20,
+        203,
+        203
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_16"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_16.png",
+      "sha256": "b62a7e01e6a2b86007e82bdebd695a6e2747c5d2d0126b0297211c60d7a9e7c2",
+      "bytes": 1482547,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        224,
+        119,
+        1031,
+        1117
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 946245,
+        "oneToNine": 9631,
+        "tenToFifteen": 263,
+        "sixteenTo239": 4481,
+        "solid240plus": 611896
+      },
+      "margins16": [
+        224,
+        119,
+        223,
+        137
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_16"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_17.png",
+      "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693",
+      "bytes": 47282,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        56,
+        21,
+        203,
+        211
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_17"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+      "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+      "bytes": 1634260,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        193,
+        113,
+        1061,
+        1100
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 888902,
+        "oneToNine": 8982,
+        "tenToFifteen": 272,
+        "sixteenTo239": 4641,
+        "solid240plus": 669719
+      },
+      "margins16": [
+        193,
+        113,
+        193,
+        154
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_17"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_21.png",
+      "sha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1",
+      "bytes": 50901,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        47,
+        9,
+        209,
+        209
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_21"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_21.png",
+      "sha256": "f00ab163c53d9ecaa36eeed008ac66db7fdddfe419d8324c294703104714426a",
+      "bytes": 1394365,
+      "dimensions": [
+        1246,
+        1262
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        207,
+        79,
+        1028,
+        1157
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 941146,
+        "oneToNine": 10060,
+        "tenToFifteen": 282,
+        "sixteenTo239": 4756,
+        "solid240plus": 616208
+      },
+      "margins16": [
+        207,
+        79,
+        218,
+        105
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_21"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_23.png",
+      "sha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88",
+      "bytes": 47246,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        50,
+        14,
+        204,
+        208
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_23"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_23.png",
+      "sha256": "a10334918a91f6a747673a3a4c99af71976731805543d02b62af720979319b66",
+      "bytes": 1737498,
+      "dimensions": [
+        1247,
+        1261
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        210,
+        73,
+        1036,
+        1164
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 926010,
+        "oneToNine": 11158,
+        "tenToFifteen": 417,
+        "sixteenTo239": 6398,
+        "solid240plus": 628484
+      },
+      "margins16": [
+        210,
+        73,
+        211,
+        97
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_23"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_detox.png",
+      "sha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af",
+      "bytes": 25760,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        62,
+        40,
+        194,
+        195
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_detox"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_detox.png",
+      "sha256": "bb6ff95ac9f7df750878c999cfcc4efa406854b84be03c2fd4d95d8a6df677ee",
+      "bytes": 1901915,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        171,
+        83,
+        1083,
+        1170
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 824885,
+        "oneToNine": 12630,
+        "tenToFifteen": 494,
+        "sixteenTo239": 5751,
+        "solid240plus": 728756
+      },
+      "margins16": [
+        171,
+        83,
+        171,
+        84
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_detox"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_14.png",
+      "sha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70",
+      "bytes": 42498,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        60,
+        28,
+        194,
+        195
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_14"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_14.png",
+      "sha256": "c00797882864330550efbd2047ea51e1c1efc430b826d8f897e290b293227c48",
+      "bytes": 1541881,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        232,
+        83,
+        1017,
+        1151
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 917261,
+        "oneToNine": 10566,
+        "tenToFifteen": 284,
+        "sixteenTo239": 4871,
+        "solid240plus": 639534
+      },
+      "margins16": [
+        232,
+        83,
+        237,
+        103
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "id": "predator_14"
+    },
+    {
+      "version": "A",
+      "path": "production/biomasks-expansion-20261113/references/community/predator_kawaii.png",
+      "sha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea",
+      "bytes": 39944,
+      "dimensions": [
+        256,
+        257
+      ],
+      "mode": "RGB",
+      "pixelsEdited": false,
+      "displayBounds": [
+        42,
+        8,
+        213,
+        211
+      ],
+      "boundsKind": "Manual source mask-window from audited inventory; not a certified geometry measurement.",
+      "alpha": false,
+      "id": "predator_kawaii"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/predator_kawaii.png",
+      "sha256": "a32167ef2d61ed12de0639aa6097314dd5c891ca271cb007fac84944f6c57204",
+      "bytes": 1800199,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "pixelsEdited": false,
+      "displayBounds": [
+        147,
+        64,
+        1107,
+        1179
+      ],
+      "boundsKind": "Native alpha>=16 bbox, measurement only; file unmodified.",
+      "alpha": true,
+      "alphaHistogram": {
+        "zero": 846437,
+        "oneToNine": 12975,
+        "tenToFifteen": 370,
+        "sixteenTo239": 5882,
+        "solid240plus": 706852
+      },
+      "margins16": [
+        147,
+        64,
+        147,
+        75
+      ],
+      "cornerAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "id": "predator_kawaii"
+    }
+  ],
+  "historicalVaporEvidence": [
+    {
+      "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_17.png",
+      "bytes": 496150,
+      "sha256": "6cfb978bf7c2e777e9bbd500c927f10c0e088ab8793553b0ee400339b19f2e07"
+    },
+    {
+      "path": "/tmp/mask-expansion-20261113/reviews/secondary-predator_17-refined-before-correction.png",
+      "bytes": 514948,
+      "sha256": "40696ab466d5623a84b178459c896388e036d1b5b906b55e97644474577cdb7b"
+    }
+  ],
+  "limitations": [
+    "A is an opaque RGBcapture, not alpha cutout or originalPHG game pixels.",
+    "Fine highresolution grooves, engravings, exact sculpt depth and albedo are interpretive.",
+    "No side/back/interior/UV or wearable geometry established.",
+    "Native margins smaller than target on some candidates are documented and unclipped; no CPU resizing or alpha repair performed.",
+    "A browser visual pass does not certify canon, human art validation, runtime integration, animation or close Bible/Excel tasks."
+  ],
+  "allNineGeometricallySourceExact": false,
+  "allP0Closed": false,
+  "summary": {
+    "sourceBoundCandidatesWithoutMajorObservedDeviation": 8,
+    "candidateWithOpenMaterialProportionDeviation": 1,
+    "sourceExactCertified": 0,
+    "humanArtValidated": 0,
+    "runtimeIntegrated": 0,
+    "provisionalReviewOnly": 1,
+    "wholeNineSourceConformant": false
+  },
+  "generationOwnerReportedLastAttempt": {
+    "result": "NoPNG; ImageGenHTTP400moderation_blocked(categoryother,outputstage), reported by generation owner.",
+    "requestID": "64870b5a-c292-46c0-84a3-cc983aa4bdf2",
+    "reviewerUsedBypassOrRetry": false,
+    "receiptOwner": "dual_generate_2"
+  },
+  "allNineNoMajorDeviationObserved": false,
+  "allSourceAndOutputImagePinsVerifiedAfterReview": true,
+  "provisionalReviewOnlyIds": [
+    "predator_17"
+  ]
+}

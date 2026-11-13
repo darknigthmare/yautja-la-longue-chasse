@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "tool": "image_gen.imagegen",
+  "status": "generated-candidate",
+  "reviewStatus": "root-and-independent-candidate-review-complete",
+  "entries": [
+    {
+      "id": "exiled",
+      "prompt": "Create ONE precise reference-constrained transparent cutout of the actual EXILED Predator Hunting Grounds worn biomask from these TWO official images. FIRST image's complete head is authoritative for the near-front/slight three-quarter camera, tilt and top silhouette. SECOND official close-up corroborates visible faceplate relief and brown palette but crops the crown; do not invent a new view from that crop. Show ONLY empty detached rigid biomask. Exclude all wearer flesh, eyes, dreadlocks, hair, neck, skull necklace, shoulder cannon, armor, arms, weapon, background and game logo/text. The long pale tusks hanging below the mouth over the neck/chest have uncertain attachment to wearer versus mask in these photos: OMIT those dangling lower ivory teeth, do not invent sockets or mounting geometry. Keep only the clearly attached curved lateral rigid mask hooks and existing solid lower cheek plates. Precisely reproduce this tall brown wood-like striated engraved surface appearance (material is not established), narrow split twin upper forehead pillars ending in curled circular scrolls, tall central panel with an elongated oval/loop relief and paired small spirals lower down, paler bands bordering dark slanted eye apertures, horizontally banded narrow nose strip, broad angular lower cheek plates with circular depressions at either side, and the short mechanical/plate lower central mouth structure. No generic tribal redesign, no additional ram horns or nose horns, no animal face, teeth, extra engraved symbols, luminous eyes or green sci-fi emission. Keep source brown and worn tan areas under restrained lighting, not the colored green/blue environmental lights as emissive material. Fine engraved counts are limited by the source resolution and must not become new elaborate filigree. Retain only visible forms; no unseen rear shell or wearer reconstruction. One entire detached mask only, centered at about 75 percent canvas height with generous clear native transparent margins of at least 60px around all hooks, crown and chin. High quality game prop cutout, real native alpha via tool, no cast ground shadow, background, fake checkerboard, text, labels, UI, frame or duplicated object.",
+      "nativeSourcePath": "/workspace/generated_images/exec-4b79245d-fec2-41c5-b7a1-8a68aaf2f117.png",
+      "sourceIds": [
+        "exiled-official-render",
+        "exiled-official-closeup"
+      ],
+      "label": "Exiled · PHG · couleur et vue officielle",
+      "view": "Near-front slight three-quarter constrained to the complete head in the official render, with close-up only for visible face details.",
+      "limitations": [
+        "Long pale downward tusks over the neck have uncertain ownership/attachment and are deliberately omitted; this is a conservative partial mask cutout.",
+        "Brown wood-like appearance does not establish actual material, neutral albedo or a named customization swatch.",
+        "Fine engraved line arrangements and mounting details remain generated interpretations.",
+        "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+        "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration."
+      ],
+      "assetPath": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+      "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee",
+      "bytes": 1965781,
+      "nativeDimensions": [
+        1069,
+        1472
+      ],
+      "width": 1069,
+      "height": 1472,
+      "nativeMode": "RGBA",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "transparentBackgroundRequested": true,
+      "sourceRect": [
+        0,
+        0,
+        1069,
+        1472
+      ],
+      "pivot": [
+        534.5,
+        736.0
+      ],
+      "pivotStatus": "centered review proposal, not fitted to wearer rig",
+      "sourceReferences": [
+        {
+          "id": "exiled-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/7ed246b069/exiled-predator.png",
+          "sha256": "ed265971f2bf2a2788ea1fbec3b24007e20263651b932e78a1987c92937008d8",
+          "width": 995,
+          "height": 1101
+        },
+        {
+          "id": "exiled-official-closeup",
+          "url": "https://live.staticflickr.com/65535/51632611790_7c3d35a12d_h.jpg",
+          "sha256": "f8787b3fb083c0251cc73e802fd7bdbe56f4ed205eda2ac755836bf8d19d390f",
+          "width": 1600,
+          "height": 900
+        }
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          130,
+          41,
+          946,
+          1291
+        ],
+        "marginsPixels16": [
+          130,
+          41,
+          123,
+          181
+        ],
+        "transparentPixels": 819421,
+        "visiblePixels16": 733234
+      }
+    }
+  ],
+  "humanArtValidated": false
+}

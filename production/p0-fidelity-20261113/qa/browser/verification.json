@@ -1,0 +1,62 @@
+{
+  "scope": "Static addendum gallery, native decoding and in-memory comparison controls; no art, canon, gameplay or animation approval",
+  "manifestSha256": "d9a2e23591c948e08e484a82965e74868f9a473fedffc2176509e8bbc4572dcf",
+  "browser": "154.0.8037.57",
+  "counts": {
+    "assets": 4,
+    "nativeFiles": 4,
+    "byKind": {
+      "effect": 1,
+      "mask": 1,
+      "prop": 2
+    },
+    "componentLayers": 3,
+    "sourceAssemblies": 2,
+    "correctedMaskIdentities": 1,
+    "referenceCopiesExcluded": 2,
+    "newCharacters": 0,
+    "animationClips": 0,
+    "sourceP0Subjects": 775,
+    "sourceP0SubjectsLinked": 2,
+    "newlyClosedP0": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "name": "The embedded catalogue and every native component render",
+      "passed": true,
+      "stats": {
+        "assetCount": 4,
+        "groupCount": 3,
+        "loadedImages": 7,
+        "renderedAssets": 4,
+        "renderedGroups": 3,
+        "errors": 0,
+        "errorMessages": [],
+        "animationClips": 0
+      }
+    },
+    {
+      "name": "The source panes are labelled as original project art or previous mask candidates",
+      "passed": true
+    },
+    {
+      "name": "Layer visibility, opacity, placement and reset affect the real composition",
+      "passed": true
+    },
+    {
+      "name": "Filters, empty results, backgrounds and visible metadata work",
+      "passed": true
+    },
+    {
+      "name": "320 and 390 pixel layouts retain source and control access without horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "No page errors, missing rasters or game storage writes",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "status": "generated-candidates",
+  "baselineCommit": "dd7c08cea4934de5dfb61c27447a8808d1b87765",
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "pixelEditingPerformed": false,
+  "entries": [
+    {
+      "prompt": "Make a strictly limited silhouette correction to the biomask in image1 using the identity evidence in image2. Image1 is the full high-resolution current front cutout. Image2 is a 256px monochrome community port reference; its surrounding pale hair strands are NOT established mask geometry and must NOT be added. Keep exactly the same full front camera, dark broad dome, silver cheeks and side flanges, two slanted eye apertures, brow notches, topology of forehead grooves, center ridge, material palette, lighting, scale and empty margins of image1. Change ONLY the outer contour of the lowermost jaw/chin: image1 has a broad rounded U termination; the visible reference mask tapers toward a narrower V-like chin. Narrow and taper this lower central end to match that visible reference contour, keeping the center ridge connected. Do not add a fang, horn, grille, new seam, engraving, hair, wearer or extra object. Do not redesign upper head, eyes, cheek facets or proportions elsewhere. No invented tiny details from the low-resolution icon. One whole detached mask only, centered with at least 9 percent clear empty native alpha on each side, fully contained. Physically opaque metal, genuine transparent background and antialiased outer edges. No drop shadow, floor, glow, labels, text, watermark, frame or fake transparency checkerboard. This is an unapproved reference-based candidate study, not a claim of certified PHG source accuracy.",
+      "nativePath": "/workspace/generated_images/exec-dda9ebea-556d-4656-840d-4d62fdbf0657.png",
+      "assetPath": "public/game/p0-fidelity-20261113/masks/vex-front-v2.png",
+      "id": "vex-front-v2",
+      "sourceId": "vex-front",
+      "sourceDesignId": "vex-front",
+      "assetKind": "prop",
+      "compositionGroup": "vex-front-comparison",
+      "role": "corrected-mask-front",
+      "camera": "front-orthographic",
+      "correction": "Limited lower-chin silhouette taper; no new identity, body, side/back view or invented hair",
+      "label": "Vex — correction ciblée du menton",
+      "status": "generated-candidate",
+      "sourceReference": {
+        "path": "public/game/p0-sprites-20261113/masks/vex-front.png",
+        "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516",
+        "role": "previous-generated-candidate-not-canonical-ground-truth"
+      },
+      "identityReference": {
+        "id": "vex-mask",
+        "label": "Vex",
+        "view": "mask-front",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixel1to1Verified": false,
+        "resolution": [
+          256,
+          256
+        ],
+        "scope": "ID18 label verified in community localization; no side/back or original game color verification.",
+        "files": [
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_18.texture",
+            "bytes": 65664,
+            "sha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706",
+            "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+            "gitBlobSha": "686a9a410ab20e993dc08837799392262a197065",
+            "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+            "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture"
+          },
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/native-reference-8.png",
+            "bytes": 42406,
+            "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137",
+            "role": "native-size read-only WebGL decode screenshot",
+            "derivedFromSourceSha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706"
+          }
+        ]
+      },
+      "references": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_18.texture",
+          "bytes": 65664,
+          "sha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+          "gitBlobSha": "686a9a410ab20e993dc08837799392262a197065",
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-8.png",
+          "bytes": 42406,
+          "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137",
+          "role": "native-size read-only WebGL decode screenshot",
+          "derivedFromSourceSha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706"
+        }
+      ],
+      "priorityLinks": [
+        "Personnalisation et arsenal:vex-phg"
+      ],
+      "sourceRows": [
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Not_1to1_Do_Not_Claim",
+          "row": 275,
+          "rowSha256": "ca533c75b3b9bc5bfab641361bc784b9af2b0622b4842fbd3cde4d63777fc96d",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "1to1_Validation_Matrix",
+          "row": 275,
+          "rowSha256": "578ce7473d69bafea37768003fcd40632d7b4a0b0945853c74757e1416b7ac05",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Fidelite_1to1_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "View_Coverage",
+          "row": 275,
+          "rowSha256": "43848339a0119b17e007e655ec0502919df9cdcdcf63435dc3cdd8599bcde919",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Implementation_Status_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Morphology_Coverage",
+          "row": 275,
+          "rowSha256": "0b7740e49d582f46d65644b95eb60c00790df20585c30dc8739c9e21e6d423f9",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Implementation_Status_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Implementation_Status_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Biomasks",
+          "row": 40,
+          "rowSha256": "b78bd12292e4d7a6ba886e6b92a28c588710b9bb4f6c8da83587c3253a0a6241",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx"
+        },
+        {
+          "priorityKey": "Personnalisation et arsenal:vex-phg",
+          "priority": "P0",
+          "sheet": "Biomasks_Master",
+          "row": 42,
+          "rowSha256": "7f9c9d2e440bc966df532f33ee0acc1432772a98e3b994cea156a7222665cc7f",
+          "scope": "SUIVI_ACTIF",
+          "path": "docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx",
+          "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/6103b19ecbc47de30a554ba65bda66fe6b515425/docs/production/Yautja_PHG_Personnalisation_Audit_Production_V137.xlsx"
+        }
+      ],
+      "sha256": "f3186e81c8271e77d6a0c5a4ee5f376f134e1f86be0b60cf16ddd886c7324bdb",
+      "bytes": 1383446,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "nativeSourcePath": "/workspace/generated_images/exec-dda9ebea-556d-4656-840d-4d62fdbf0657.png",
+      "nativeCopyIdentical": true,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "centered-preview-proposal-not-rig-fitted",
+      "visibleBoundsAlpha16": [
+        184,
+        116,
+        1071,
+        1155
+      ],
+      "transparentPixels": 922150,
+      "opaquePixels240": 637027,
+      "visiblePixels16": 641579,
+      "marginsPixelsAlpha16": [
+        184,
+        116,
+        183,
+        99
+      ],
+      "viewCoverage": [
+        "front"
+      ],
+      "pixelEditingPerformed": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "animated": false,
+      "newDesignIdentity": false,
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required.",
+        "Only the lower chin outer contour is intentionally corrected. Surface topology and detailed identity require human comparison; no exact original PHG color or UV proof.",
+        "The 256px identity icon and community DDS are cited by URL/hash and are not republished in this addendum."
+      ]
+    }
+  ]
+}

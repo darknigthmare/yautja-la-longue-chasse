@@ -1,0 +1,99 @@
+{
+  "scope": "Static source-view candidate gallery only; not canonical fidelity, human art, runtime or animation certification",
+  "manifestSha256": "a683c9a046a6c837d614d6c07ac8385d91b331188995c0c8f33c62f31b783da5",
+  "browser": "154.0.8037.57",
+  "counts": {
+    "nativeFiles": 7,
+    "assets": 7,
+    "newNamedTargets": 4,
+    "improvedExistingNamedTargets": 3,
+    "remainingNamedTargets": 46,
+    "baselineRemainingNamedTargets": 50,
+    "partialReferenceCandidates": 1,
+    "sourceNamedEntries": 110,
+    "exactMissingImagesRequired": null,
+    "canonCertifiedAssets": 0,
+    "humanValidatedAssets": 0,
+    "runtimeIntegratedAssets": 0,
+    "animationClips": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "name": "Embedded manifest and seven candidates preserve the remaining scope",
+      "passed": true,
+      "candidateViews": 7,
+      "newNamedTargets": 4,
+      "improvedExistingNamedTargets": 3,
+      "remainingNamedTargets": 46,
+      "partialReferenceView": "emissary"
+    },
+    {
+      "name": "HTTP bytes, decoded dimensions and real alpha agree with each native candidate",
+      "passed": true,
+      "samples": [
+        {
+          "id": "captured",
+          "transparent": 967658,
+          "solid": 587072
+        },
+        {
+          "id": "cleopatra",
+          "transparent": 888484,
+          "solid": 651188
+        },
+        {
+          "id": "emissary",
+          "transparent": 936778,
+          "solid": 619342
+        },
+        {
+          "id": "exiled",
+          "transparent": 819421,
+          "solid": 724716
+        },
+        {
+          "id": "samurai",
+          "transparent": 819467,
+          "solid": 727967
+        },
+        {
+          "id": "valkyrie",
+          "transparent": 1141897,
+          "solid": 397910
+        },
+        {
+          "id": "viking",
+          "transparent": 970730,
+          "solid": 567579
+        }
+      ]
+    },
+    {
+      "name": "Every identity filters its actual new candidate and any previous candidate",
+      "passed": true
+    },
+    {
+      "name": "Display backgrounds, alpha bounds, pivots and size remain independent of native files",
+      "passed": true
+    },
+    {
+      "name": "Keyboard opens official source details and Escape restores focus",
+      "passed": true
+    },
+    {
+      "name": "Remaining identities are visible without claiming an exact PNG total",
+      "passed": true
+    },
+    {
+      "name": "320 and 390 pixel screens contain all cards, controls, drawer and table",
+      "passed": true
+    },
+    {
+      "name": "No missing files, JavaScript exception, external image fetch or game storage write",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

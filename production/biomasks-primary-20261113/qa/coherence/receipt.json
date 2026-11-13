@@ -1,0 +1,33 @@
+{
+  "scope": "Evidence for the remote general regression failure at fad5c4b76; full and sparse local reproductions passed, remote root cause unknown. Runner only gains failure annotations; success criteria are unchanged. The candidate-manifest hash records the mask batch present when these historical diagnostics were archived, not a gameplay dependency.",
+  "files": [
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/diagnosis.json",
+      "sha256": "29825fd328ec5f4f6077ca227bfcb8df4ce9b33e39141f50d41eac1aa0b09673",
+      "bytes": 3953
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/full-reproduction.json",
+      "sha256": "74c08f2f4eeea4260006305efaaba94a0c4e82200defa84ee79e8efdf003ca18",
+      "bytes": 74957
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/sparse-reproduction.json",
+      "sha256": "ea7492d3e5307f2b7f91b2a911a158d2a5ccacfd850923fdf714dd0ba732b927",
+      "bytes": 72588
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/annotation-verification.json",
+      "sha256": "49b0e2cd166e5fdca45fc00cb67c9c8384d4a363c2a61f5a51f30d6d18223145",
+      "bytes": 3915
+    },
+    {
+      "path": "production/biomasks-primary-20261113/qa/coherence/annotation-review.json",
+      "sha256": "aba68445d4b014a6fdb62c6b99932a5e4dd67678075fc4a96bc47b2e57bae060",
+      "bytes": 1584
+    }
+  ],
+  "originalPathsRetainedInReports": true,
+  "currentRunnerSha256": "7bf40c64c573d29ff781cc9b3a1e397bb28b448e0ffc6cf1272841ea2d8b6e1a",
+  "candidateManifestAtArchivalSha256": "0bf7a1335652706f93d6f609c3e9ce9e3dd3896bbc3f907e3ed2e5bb54847001"
+}

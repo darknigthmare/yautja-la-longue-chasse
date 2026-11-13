@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "root independent of generation agent",
+  "id": "neca-nightstorm-series-10",
+  "scope": "Visual comparison of the source photograph, partial rigid mask A and PHG B using unchanged browser captures and actual native sources; not human-art, canon or runtime approval",
+  "generationReceipt": {
+    "path": "production/biomasks-expansion-20261113/generation/neca-nightstorm-series-10.json",
+    "sha256": "5f1b6410b9a5be405bbf4a6d290aa609293cea3f8f50cad9e984dd8a6d689460",
+    "bytes": 34906
+  },
+  "versions": [
+    {
+      "id": "neca-nightstorm-series-10",
+      "version": "A",
+      "assetPath": "public/game/biomasks-expansion-20261113/originals/neca-nightstorm-series-10.png",
+      "sha256": "1d9016e4e45c733cd9379212f052392c1b0e838cb39b65286044d24c54cc1773",
+      "nativeDimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "id": "neca-nightstorm-series-10",
+      "version": "B",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+      "sha256": "7ed4e12aa44e96421b7867ac14fe43b2c8ca9460b3b966402943c1b064593bf3",
+      "nativeDimensions": [
+        1254,
+        1254
+      ]
+    }
+  ],
+  "sourceReferences": [
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-1.jpg",
+      "sha256": "350e50b55519f6c7610c5a6f7bbc0b1fdc81c86e4bcd3c42d14da9f3a974bb42",
+      "bytes": 146128
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/NS-pred-4.jpg",
+      "sha256": "cf8c71bf11c2dfbcf6fd7391ce1795b94b6608bfe55950aa2c153f9dfd325a7c",
+      "bytes": 183905
+    },
+    {
+      "path": "production/biomasks-expansion-20261113/references/neca/series10-catalog.jpg",
+      "sha256": "20b3cf46da1279cd6891297ad6dc2dda9ca42c595c49d3c3c2bedb8081a35adc",
+      "bytes": 109824
+    }
+  ],
+  "captures": [
+    {
+      "path": "/tmp/mask-expansion-20261113/nightstorm-source-AB-comparison.png",
+      "sha256": "57656cb589a53f00af1b455efeadaa30449f7699fffd7ad19fc5edd4cf31a4a9",
+      "bytes": 1358831
+    },
+    {
+      "path": "/tmp/mask-expansion-20261113/nightstorm-alpha-AB-comparison.png",
+      "sha256": "0a55b6d3b798136ffe4d035420fb1b474c79eedfcb69bb90b8ce9ebbbab7697f",
+      "bytes": 533184
+    }
+  ],
+  "candidateReviewPassedWithLimitations": true,
+  "majorUnresolvedShapeOrAlphaDefectObserved": false,
+  "observations": [
+    "Original masked and unmasked official photographs distinguish ivory tusks and purple mandible tissue as wearer anatomy. A/B exclude all of these organic parts.",
+    "Rigid high crown horns, gold/silver central oval, dark eyes, short cheek rails and visible central gold column are preserved.",
+    "No closed chin or long lower cheek hooks are invented; the asset remains a partial visible rigid mask, not a complete unseen shell.",
+    "B retains the principal A silhouette and palette, with reduced coarse surface grain. Native screenshots are readable on white/black and checker at96px with no visible matte rectangle or clipped tips."
+  ],
+  "limitations": [
+    "NS1 has an apparent approximately4–5degree head/horn-line tilt. A/B straighten this toward the more frontal catalog view and symmetrize presentation; two photographs do not establish true3D sculptural asymmetry. This is not an exact camera or franchise1:1 certification.",
+    "Fine recesses, metal pitting and paint boundaries are interpreted from small photographs.",
+    "The lower shell boundary is partly occluded in the photograph; only the attested rigid visible portion is represented.",
+    "Native upper margins55/60px are smaller than the requested8–12percent but all visible crown tips remain inside the canvas."
+  ],
+  "sourceQualification": "partial-visible-rigid-mask",
+  "standaloneCompleteObject": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "pixelEditingPerformed": false
+}

@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "reviewer": "dual_generate_3 independent R→A→B review",
+  "status": "complete-source-bound-candidate-review",
+  "entries": [
+    {
+      "id": "neca-golden-angel-horned-2018",
+      "status": "source-bound-candidate-no-major-defect-observed",
+      "photographs": [
+        {
+          "key": "R3",
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-3.jpg",
+          "sha256": "7399bac54b96457c6773b6117be80d8cd3c79b8d9ebbf7886f470dd9a7fe23ed",
+          "bytes": 461999,
+          "dimensions": [
+            1041,
+            1300
+          ]
+        },
+        {
+          "key": "R4",
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-4.jpg",
+          "sha256": "e12f787136f778af2c141cb1988bde57754993094736510e1d351f4fbe1c7d8a",
+          "bytes": 914191,
+          "dimensions": [
+            867,
+            1299
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-golden-angel-horned-2018.png",
+          "sha256": "242b7b44d9b9044f93075aa06461922324ace436533c9d6ff0b3dc1b0aa2a170",
+          "bytes": 1581529,
+          "dimensions": [
+            1122,
+            1402
+          ],
+          "mode": "RGBA",
+          "displayBounds": [
+            94,
+            100,
+            1077,
+            1173
+          ],
+          "alphaHistogram": {
+            "zero": 968880,
+            "oneToNine": 14467,
+            "solid240plus": 582871
+          },
+          "margins16": [
+            94,
+            100,
+            45,
+            229
+          ]
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-horned-2018.png",
+          "sha256": "5d0c74574112207551b0db2faf39c9f00fc0bb8a3e493d2dfa2e8305f8c25da5",
+          "bytes": 1657687,
+          "dimensions": [
+            1122,
+            1402
+          ],
+          "mode": "RGBA",
+          "displayBounds": [
+            81,
+            98,
+            1069,
+            1227
+          ],
+          "alphaHistogram": {
+            "zero": 930618,
+            "oneToNine": 10146,
+            "solid240plus": 625710
+          },
+          "margins16": [
+            81,
+            98,
+            53,
+            175
+          ]
+        }
+      ],
+      "sourceToA": {
+        "scope": "NECA2018UltimateGoldenAngel sculpt edition only; not certified film/comic geometry.",
+        "observation": "Visible sculpt identity, selected threequartercamera and bronze/copper or gold organization retained. Wearer skin, dreadlocks, armor, necklace and external tubing excluded.",
+        "limits": "R3/R4orR7/R6 use different head angles; source photowindows are manual and do not establish an exact3D projection or hidden shell contour."
+      },
+      "AToB": {
+        "observation": "Main silhouette, existing crown ornaments or smooth crown rim, narrow red eyes and side cheek devices preserved; no transfer of horns onto smooth variant.",
+        "bboxAspectA": 0.9161230195712954,
+        "bboxAspectB": 0.87511071744907,
+        "relativeAspectChange": -0.04476724331347692,
+        "minorProportionLimit": "HornedB is about4.5percent more elongated thanA at equal longest axis; minor residual difference retained in report."
+      },
+      "renderReview": {
+        "visibleLongestAxes": [
+          360,
+          96
+        ],
+        "backgrounds": [
+          "white",
+          "black",
+          "checker"
+        ],
+        "readability": "Main shape and eye layout remain readable at96px; finer relief assessed at360px only.",
+        "alpha": "No visible matte halo or opaque background in browser white/black/checker views. Native lowalpha1–9 pixels preserved; no cleanup mutation.",
+        "framing": "Whole shell/tips remain in native canvas. Some margins below requested8–12percent remain documented, especially portrait horned width and tightly framed smoothlongaxis."
+      },
+      "fineDetailsLimit": "Micropitting, scratch distribution, small cartouches/grooves and exact paint roughness are interpreted from photographs, not certified sculpt/UV details.",
+      "evidence": [
+        {
+          "id": "neca-golden-angel-horned-2018",
+          "mode": "sources",
+          "path": "/tmp/mask-expansion-20261113/reviews/golden-angel-horned-sources.png",
+          "bytes": 816595,
+          "sha256": "81c386d3b3943b0d054bae3bf068159d97ffcb197a77781ca09cf021a4aae8fd",
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "nativeAssetEdited": false
+        },
+        {
+          "id": "neca-golden-angel-horned-2018",
+          "mode": "alpha",
+          "path": "/tmp/mask-expansion-20261113/reviews/golden-angel-horned-alpha.png",
+          "bytes": 533477,
+          "sha256": "acabf8f4f95e59c6063323ae558c5cf275655b89edc3f2de5f05c0206980d7ce",
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "nativeAssetEdited": false
+        }
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "neca-golden-angel-smooth-2018",
+      "status": "source-bound-candidate-no-major-defect-observed",
+      "photographs": [
+        {
+          "key": "R7",
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-7.jpg",
+          "sha256": "7833239d3465eb403b4d14f4e58f4081f2a0e0adafe5f226acf65e07e86eb6f5",
+          "bytes": 899061,
+          "dimensions": [
+            867,
+            1299
+          ]
+        },
+        {
+          "key": "R6",
+          "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-6.jpg",
+          "sha256": "fdf3bd25b098154c2a02f5d3291483a2cdf4f04cfbe8b617f6810c7692b7de60",
+          "bytes": 834554,
+          "dimensions": [
+            867,
+            1299
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "version": "A",
+          "path": "public/game/biomasks-expansion-20261113/originals/neca-golden-angel-smooth-2018.png",
+          "sha256": "bfd70909252ce3a0db63e36960cea30b1a8d9eb554b82849b5ce2bf66c24e5ae",
+          "bytes": 2053003,
+          "dimensions": [
+            1198,
+            1313
+          ],
+          "mode": "RGBA",
+          "displayBounds": [
+            138,
+            77,
+            1003,
+            1251
+          ],
+          "alphaHistogram": {
+            "zero": 758711,
+            "oneToNine": 10971,
+            "solid240plus": 797223
+          },
+          "margins16": [
+            138,
+            77,
+            195,
+            62
+          ]
+        },
+        {
+          "version": "B",
+          "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-smooth-2018.png",
+          "sha256": "ead8ef4e6151816a5a450c1a7426d55d46d3a054084fe7c9ac2bce67177931c6",
+          "bytes": 2035399,
+          "dimensions": [
+            1198,
+            1313
+          ],
+          "mode": "RGBA",
+          "displayBounds": [
+            140,
+            80,
+            999,
+            1249
+          ],
+          "alphaHistogram": {
+            "zero": 762124,
+            "oneToNine": 7766,
+            "solid240plus": 797443
+          },
+          "margins16": [
+            140,
+            80,
+            199,
+            64
+          ]
+        }
+      ],
+      "sourceToA": {
+        "scope": "NECA2018UltimateGoldenAngel sculpt edition only; not certified film/comic geometry.",
+        "observation": "Visible sculpt identity, selected threequartercamera and bronze/copper or gold organization retained. Wearer skin, dreadlocks, armor, necklace and external tubing excluded.",
+        "limits": "R3/R4orR7/R6 use different head angles; source photowindows are manual and do not establish an exact3D projection or hidden shell contour."
+      },
+      "AToB": {
+        "observation": "Main silhouette, existing crown ornaments or smooth crown rim, narrow red eyes and side cheek devices preserved; no transfer of horns onto smooth variant.",
+        "bboxAspectA": 0.7367972742759795,
+        "bboxAspectB": 0.7348160821214713,
+        "relativeAspectChange": -0.0026889243808007057,
+        "minorProportionLimit": "SmoothA/B bboxaspect differs by less than1percent."
+      },
+      "renderReview": {
+        "visibleLongestAxes": [
+          360,
+          96
+        ],
+        "backgrounds": [
+          "white",
+          "black",
+          "checker"
+        ],
+        "readability": "Main shape and eye layout remain readable at96px; finer relief assessed at360px only.",
+        "alpha": "No visible matte halo or opaque background in browser white/black/checker views. Native lowalpha1–9 pixels preserved; no cleanup mutation.",
+        "framing": "Whole shell/tips remain in native canvas. Some margins below requested8–12percent remain documented, especially portrait horned width and tightly framed smoothlongaxis."
+      },
+      "fineDetailsLimit": "Micropitting, scratch distribution, small cartouches/grooves and exact paint roughness are interpreted from photographs, not certified sculpt/UV details.",
+      "evidence": [
+        {
+          "id": "neca-golden-angel-smooth-2018",
+          "mode": "sources",
+          "path": "/tmp/mask-expansion-20261113/reviews/golden-angel-smooth-sources.png",
+          "bytes": 917640,
+          "sha256": "7c3bdeb5cbe82ccf0def013af8fbbbf755c59d8654a24c692d3d61d7a5c05b77",
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "nativeAssetEdited": false
+        },
+        {
+          "id": "neca-golden-angel-smooth-2018",
+          "mode": "alpha",
+          "path": "/tmp/mask-expansion-20261113/reviews/golden-angel-smooth-alpha.png",
+          "bytes": 571899,
+          "sha256": "d8b06e59d9ddc8b3b043123c724545cc06407bedb1622e7b12170ede3b6aa20e",
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "nativeAssetEdited": false
+        }
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    }
+  ],
+  "imagePins": [
+    {
+      "key": "R3",
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-3.jpg",
+      "sha256": "7399bac54b96457c6773b6117be80d8cd3c79b8d9ebbf7886f470dd9a7fe23ed",
+      "bytes": 461999,
+      "dimensions": [
+        1041,
+        1300
+      ],
+      "pairId": "neca-golden-angel-horned-2018"
+    },
+    {
+      "key": "R4",
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-4.jpg",
+      "sha256": "e12f787136f778af2c141cb1988bde57754993094736510e1d351f4fbe1c7d8a",
+      "bytes": 914191,
+      "dimensions": [
+        867,
+        1299
+      ],
+      "pairId": "neca-golden-angel-horned-2018"
+    },
+    {
+      "version": "A",
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-golden-angel-horned-2018.png",
+      "sha256": "242b7b44d9b9044f93075aa06461922324ace436533c9d6ff0b3dc1b0aa2a170",
+      "bytes": 1581529,
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "displayBounds": [
+        94,
+        100,
+        1077,
+        1173
+      ],
+      "alphaHistogram": {
+        "zero": 968880,
+        "oneToNine": 14467,
+        "solid240plus": 582871
+      },
+      "margins16": [
+        94,
+        100,
+        45,
+        229
+      ],
+      "pairId": "neca-golden-angel-horned-2018"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-horned-2018.png",
+      "sha256": "5d0c74574112207551b0db2faf39c9f00fc0bb8a3e493d2dfa2e8305f8c25da5",
+      "bytes": 1657687,
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA",
+      "displayBounds": [
+        81,
+        98,
+        1069,
+        1227
+      ],
+      "alphaHistogram": {
+        "zero": 930618,
+        "oneToNine": 10146,
+        "solid240plus": 625710
+      },
+      "margins16": [
+        81,
+        98,
+        53,
+        175
+      ],
+      "pairId": "neca-golden-angel-horned-2018"
+    },
+    {
+      "key": "R7",
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-7.jpg",
+      "sha256": "7833239d3465eb403b4d14f4e58f4081f2a0e0adafe5f226acf65e07e86eb6f5",
+      "bytes": 899061,
+      "dimensions": [
+        867,
+        1299
+      ],
+      "pairId": "neca-golden-angel-smooth-2018"
+    },
+    {
+      "key": "R6",
+      "path": "production/biomasks-expansion-20261113/references/neca/golden-angel-6.jpg",
+      "sha256": "fdf3bd25b098154c2a02f5d3291483a2cdf4f04cfbe8b617f6810c7692b7de60",
+      "bytes": 834554,
+      "dimensions": [
+        867,
+        1299
+      ],
+      "pairId": "neca-golden-angel-smooth-2018"
+    },
+    {
+      "version": "A",
+      "path": "public/game/biomasks-expansion-20261113/originals/neca-golden-angel-smooth-2018.png",
+      "sha256": "bfd70909252ce3a0db63e36960cea30b1a8d9eb554b82849b5ce2bf66c24e5ae",
+      "bytes": 2053003,
+      "dimensions": [
+        1198,
+        1313
+      ],
+      "mode": "RGBA",
+      "displayBounds": [
+        138,
+        77,
+        1003,
+        1251
+      ],
+      "alphaHistogram": {
+        "zero": 758711,
+        "oneToNine": 10971,
+        "solid240plus": 797223
+      },
+      "margins16": [
+        138,
+        77,
+        195,
+        62
+      ],
+      "pairId": "neca-golden-angel-smooth-2018"
+    },
+    {
+      "version": "B",
+      "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-smooth-2018.png",
+      "sha256": "ead8ef4e6151816a5a450c1a7426d55d46d3a054084fe7c9ac2bce67177931c6",
+      "bytes": 2035399,
+      "dimensions": [
+        1198,
+        1313
+      ],
+      "mode": "RGBA",
+      "displayBounds": [
+        140,
+        80,
+        999,
+        1249
+      ],
+      "alphaHistogram": {
+        "zero": 762124,
+        "oneToNine": 7766,
+        "solid240plus": 797443
+      },
+      "margins16": [
+        140,
+        80,
+        199,
+        64
+      ],
+      "pairId": "neca-golden-angel-smooth-2018"
+    }
+  ],
+  "browser": {
+    "engine": "Chromium via playwright-core",
+    "errors": [],
+    "screenshotsActuallyInspected": 4,
+    "sourcePhotosActuallyInspected": 4,
+    "candidatePNGsActuallyInspected": 4,
+    "rendering": "Read-only local image server, isotropic browser CSS, no mirrored view or CPU raster edits.",
+    "referenceWindows": {
+      "R3": [
+        375,
+        103,
+        599,
+        325
+      ],
+      "R4": [
+        420,
+        102,
+        620,
+        365
+      ],
+      "R7": [
+        169,
+        77,
+        540,
+        560
+      ],
+      "R6": [
+        408,
+        165,
+        547,
+        367
+      ]
+    },
+    "windowQualification": "Manual CSS source display windows; no original photo crop exported or geometry certificate."
+  },
+  "allAssetsUnchangedAfterReview": true,
+  "noMajorDefectObserved": true,
+  "requestedMinorHornedAspectLimitRecorded": true,
+  "certifiedOneToOne": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "closesP0": false
+}
