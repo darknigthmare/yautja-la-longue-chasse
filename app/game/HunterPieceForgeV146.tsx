@@ -140,9 +140,9 @@ export default function HunterPieceForgeV146({
               style={{ background: item.hex }} onClick={() => setPieceColor("primary", item.hex)}>
               <span className={styles.visuallyHidden}>{item.label}</span></button>)}
         </div>}
-        <p className={styles.note}>{piece.channel
-          ? "Aperçu : la couleur principale s'applique déjà à cette pièce. Les zones secondaire, accent et lumière s'afficheront avec les planches V146 (base grise et carte des zones)."
-          : "Couleurs enregistrées. Cette pièce n'a pas encore de calque teintable : elles s'afficheront avec ses planches V146."}</p>
+        <p className={styles.note}>{piece.light
+          ? "Les trois zones s'affichent sur la pièce. Zones provisoires : elles suivent les ombres et les reflets de la planche actuelle, en attendant les cartes de zones dessinées. La couleur de lumière s'affichera avec ces planches."
+          : "Les trois zones s'affichent sur la pièce. Zones provisoires : elles suivent les ombres et les reflets de la planche actuelle, en attendant les cartes de zones dessinées."}</p>
       </div>
     </div>}
 
