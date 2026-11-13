@@ -1,0 +1,315 @@
+{
+  "scope": "Static source-qualified review gallery; not canonical, human-art, runtime or animation validation",
+  "manifestSha256": "324927d19c5890d616e092b8a29502c4337067eb3ac0e07c4bf45de00cd96a96",
+  "browser": "154.0.8037.57",
+  "counts": {
+    "sourceDesignRecords": 20,
+    "versionACopies": 9,
+    "newAGenerations": 11,
+    "newBGenerations": 20,
+    "newImageGenPngs": 31,
+    "completeCandidatePairs": 20,
+    "representations": 40,
+    "byteCompleteComparisons": 20,
+    "reviewedWithoutMajorDeviationPairs": 19,
+    "provisionalReviewOnlyPairs": 1,
+    "provisionalImageGenPngs": 1,
+    "exactReferenceImageCopies": 24,
+    "exactReferencePhotoCopies": 22,
+    "exactReferenceConceptCopies": 2,
+    "communitySourceRecords": 9,
+    "editionSpecificPrototypes": 1,
+    "partialVisibleMaskStudies": 1,
+    "canonicalNamesStillWithoutValidatedCutout": 46,
+    "newlyCertifiedCanonicalNames": 0,
+    "canonicalNamesWithNewSourceEditionStudies": 6,
+    "humanArtValidatedAssets": 0,
+    "runtimeIntegratedAssets": 0,
+    "animationClips": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "name": "Manifest separates exact community references, generated A/B, source photographs and46 still-open canonical targets",
+      "passed": true,
+      "pairs": 20,
+      "newA": 11,
+      "newB": 20,
+      "exactA": 9,
+      "remainingCanonicalNames": 46
+    },
+    {
+      "name": "All A/B images decode at native dimensions, match HTTP SHA and preserve their declared alpha semantics",
+      "passed": true,
+      "representationsDecoded": 40,
+      "samples": [
+        {
+          "id": "predator_11",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_11",
+          "version": "B",
+          "transparent": 851249,
+          "solid": 701065
+        },
+        {
+          "id": "predator_12",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_12",
+          "version": "B",
+          "transparent": 978495,
+          "solid": 580513
+        },
+        {
+          "id": "predator_16",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_16",
+          "version": "B",
+          "transparent": 946245,
+          "solid": 611896
+        },
+        {
+          "id": "predator_17",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_17",
+          "version": "B",
+          "transparent": 888902,
+          "solid": 669719
+        },
+        {
+          "id": "predator_21",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_21",
+          "version": "B",
+          "transparent": 941146,
+          "solid": 616208
+        },
+        {
+          "id": "predator_23",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_23",
+          "version": "B",
+          "transparent": 926010,
+          "solid": 628484
+        },
+        {
+          "id": "predator_detox",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_detox",
+          "version": "B",
+          "transparent": 824885,
+          "solid": 728756
+        },
+        {
+          "id": "predator_14",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_14",
+          "version": "B",
+          "transparent": 917261,
+          "solid": 639534
+        },
+        {
+          "id": "predator_kawaii",
+          "version": "A",
+          "transparent": 0,
+          "solid": 65792
+        },
+        {
+          "id": "predator_kawaii",
+          "version": "B",
+          "transparent": 846437,
+          "solid": 706852
+        },
+        {
+          "id": "neca-kwei-prototype",
+          "version": "A",
+          "transparent": 852979,
+          "solid": 702541
+        },
+        {
+          "id": "neca-kwei-prototype",
+          "version": "B",
+          "transparent": 855303,
+          "solid": 700404
+        },
+        {
+          "id": "neca-ahab-sdcc-2014",
+          "version": "A",
+          "transparent": 1110418,
+          "solid": 447959
+        },
+        {
+          "id": "neca-ahab-sdcc-2014",
+          "version": "B",
+          "transparent": 1102274,
+          "solid": 457437
+        },
+        {
+          "id": "neca-warrior-series-6",
+          "version": "A",
+          "transparent": 944882,
+          "solid": 609502
+        },
+        {
+          "id": "neca-warrior-series-6",
+          "version": "B",
+          "transparent": 935261,
+          "solid": 626047
+        },
+        {
+          "id": "neca-scout-lost-tribe-series-6",
+          "version": "A",
+          "transparent": 835979,
+          "solid": 720512
+        },
+        {
+          "id": "neca-scout-lost-tribe-series-6",
+          "version": "B",
+          "transparent": 835096,
+          "solid": 724189
+        },
+        {
+          "id": "neca-lava-planet-series-10",
+          "version": "A",
+          "transparent": 985734,
+          "solid": 574765
+        },
+        {
+          "id": "neca-lava-planet-series-10",
+          "version": "B",
+          "transparent": 985134,
+          "solid": 577425
+        },
+        {
+          "id": "neca-hive-wars-series-10",
+          "version": "A",
+          "transparent": 1066168,
+          "solid": 494682
+        },
+        {
+          "id": "neca-hive-wars-series-10",
+          "version": "B",
+          "transparent": 1071424,
+          "solid": 491279
+        },
+        {
+          "id": "neca-nightstorm-series-10",
+          "version": "A",
+          "transparent": 1112571,
+          "solid": 443283
+        },
+        {
+          "id": "neca-nightstorm-series-10",
+          "version": "B",
+          "transparent": 1106591,
+          "solid": 451576
+        },
+        {
+          "id": "neca-clan-leader-toyfair-2016",
+          "version": "A",
+          "transparent": 1343513,
+          "solid": 217410
+        },
+        {
+          "id": "neca-clan-leader-toyfair-2016",
+          "version": "B",
+          "transparent": 1328027,
+          "solid": 230250
+        },
+        {
+          "id": "neca-viper-series-12",
+          "version": "A",
+          "transparent": 1003009,
+          "solid": 558833
+        },
+        {
+          "id": "neca-viper-series-12",
+          "version": "B",
+          "transparent": 1002185,
+          "solid": 557188
+        },
+        {
+          "id": "neca-golden-angel-horned-2018",
+          "version": "A",
+          "transparent": 968880,
+          "solid": 582871
+        },
+        {
+          "id": "neca-golden-angel-horned-2018",
+          "version": "B",
+          "transparent": 930618,
+          "solid": 625710
+        },
+        {
+          "id": "neca-golden-angel-smooth-2018",
+          "version": "A",
+          "transparent": 758711,
+          "solid": 797223
+        },
+        {
+          "id": "neca-golden-angel-smooth-2018",
+          "version": "B",
+          "transparent": 762124,
+          "solid": 797443
+        }
+      ]
+    },
+    {
+      "name": "Family filters, every identity and variant-to-prior-base table remain consistent",
+      "passed": true
+    },
+    {
+      "name": "96/360px visible-mask and complete-A modes change CSS framing without changing native files or B scale",
+      "passed": true
+    },
+    {
+      "name": "Keyboard drawer preserves source qualifications, native R photographs and Escape focus return",
+      "passed": true
+    },
+    {
+      "name": "Prototype, edition and secondary-source limitations remain visible and the46 old names stay open",
+      "passed": true
+    },
+    {
+      "name": "320/390px controls, cards, source photographs, drawer and expanded tables stay within the viewport",
+      "passed": true
+    },
+    {
+      "name": "No missing files, JS errors, external image requests or game-storage writes occur",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "failedRequests": []
+}

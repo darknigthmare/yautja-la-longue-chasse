@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "scope": "Two native source-view NECA prototype and PHG-rendering candidates; no canon, human-art or runtime approval",
+  "entries": [
+    {
+      "id": "neca-kwei-prototype",
+      "version": "A",
+      "nativeSourcePath": "/workspace/generated_images/exec-dac0cd39-f775-4ca0-9c3b-341ffdd215d9.png",
+      "assetPath": "public/game/biomasks-expansion-20261113/originals/neca-kwei-prototype.png",
+      "sha256": "c527b5214fe814b44561708ff8369fa55bad4072913c3f139b72f3351fef31f8",
+      "bytes": 1988391,
+      "nativeDimensions": [
+        1265,
+        1243
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 852979,
+      "visibleBoundsAlpha16": [
+        181,
+        46,
+        1110,
+        1216
+      ],
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-kwei-prototype.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "referenceSourcePath": "production/biomasks-expansion-20261113/references/neca/kwei-2.jpg",
+      "referenceSourceSha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/kwei-2.jpg",
+          "sha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/kwei-3.jpg",
+          "sha256": "5e783d1b2c0ea50168f991f5bddbf977c0860b68a5854fba9b637e173de9094c"
+        }
+      ],
+      "submittedReferencePaths": [
+        "/tmp/mask-expansion-20261113/kwei-2.jpg",
+        "/tmp/mask-expansion-20261113/kwei-3.jpg"
+      ],
+      "prompt": "Create version A, a faithful isolated biomask asset of the EXISTING NECA Kwei prototype shown in the two official product photos. The first photo defines the camera: keep its exact three-quarter view, nose pointing toward image-right; the second opposite view is supporting shape evidence only. Preserve the actual visible sculpt and paint, do not design a new mask. Extract only the rigid biomask/helmet face and its own attached crown/temple plates and cheek fins. Remove the wearer, flesh, dreadlocks, body, clothing, weapons, logos, text and photographic background. This is a source-faithful cutout study of a licensed prototype, not a new interpretation of the film.\nKeep the tall rounded crown with alternating weathered gold-bronze framing and silver inset petal/teardrop panels; the low gold scroll-like eyebrow structure; long dark narrow eye lenses (solid black lenses, not exposed eyeballs); the silver muzzle with its long rounded recessed center strip, sharp downward side edges and actual short recessed slits; maroon/red-brown angular raised cheek framing beneath the eyes; the visible gold wing-shaped lower cheek fin and corresponding far fin; the real silver/black lateral temple panel and small bronze round temple detail. Match the photograph's silhouette, plate thickness, grooves, angles, all three-dimensional panel boundaries and worn hand-painted metallic surface. Do not add horns, fangs, spines, runes, vents or ornaments. Do not mirror the design or turn it into a frontal view. Do not add a rear shell or any hidden geometry. Dark internal occluded areas may remain dark, with no skin or hair. Preserve the actual toy sculpt's weathered gold/silver/maroon palette and paint grain rather than making it polished chrome.\nOne complete mask only, large and centered with about10 percent transparent margin on every side, no cropped tips, no floor or shadow plane, no frame, no caption. The exterior background must have genuine transparency, not a painted checkerboard. High-detail source-faithful product-asset rendering, with the same camera and restrained photographic light as the first reference. All visible rigid mask silhouette must fit inside the canvas.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "edition": "NECA Kwei prototype shown; not final product; not a film certification",
+      "limitations": [
+        "Source-view extraction from a licensed NECA prototype, not pixel-identical to the photograph or certified film geometry.",
+        "Fine paint grain and occluded interior are interpreted; external wearer and dreadlocks removed.",
+        "Native top/bottom margins are smaller than the requested 8–12 percent, but no visible mask is clipped."
+      ]
+    },
+    {
+      "id": "neca-kwei-prototype",
+      "version": "B",
+      "nativeSourcePath": "/workspace/generated_images/exec-dbd99886-cc66-4e32-bfaa-b6f27f227807.png",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/neca-kwei-prototype.png",
+      "sha256": "e81ef9a9cd67af069cb3837ded3b752df529373eed63f00ba7a99798d951a373",
+      "bytes": 1948211,
+      "nativeDimensions": [
+        1265,
+        1243
+      ],
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 855303,
+      "visibleBoundsAlpha16": [
+        181,
+        43,
+        1107,
+        1214
+      ],
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/neca-kwei-prototype.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "sourceAPath": "public/game/biomasks-expansion-20261113/originals/neca-kwei-prototype.png",
+      "sourceASha256": "c527b5214fe814b44561708ff8369fa55bad4072913c3f139b72f3351fef31f8",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/kwei-2.jpg",
+          "sha256": "4bd5b8c5c65f389cfd71ea5871ea6630d337738c54ae54e3c530e42663179b15"
+        },
+        {
+          "path": "production/biomasks-expansion-20261113/references/neca/kwei-3.jpg",
+          "sha256": "5e783d1b2c0ea50168f991f5bddbf977c0860b68a5854fba9b637e173de9094c"
+        }
+      ],
+      "submittedReferencePaths": [
+        "public/game/biomasks-expansion-20261113/originals/neca-kwei-prototype.png",
+        "/tmp/mask-expansion-20261113/kwei-2.jpg",
+        "/tmp/mask-expansion-20261113/kwei-3.jpg"
+      ],
+      "prompt": "Create version B by restaging ONLY the isolated Kwei mask in reference image 1 into the shared Predator: Hunting Grounds style of high-end physically based equipment rendering. The second and third images are the actual official NECA Kwei prototype source photos and establish sculpture and paint. Image 1 fixes the exact three-quarter camera and image-right facing orientation. Keep that camera, exact visible silhouette and all panel boundaries, proportions, long muzzle, dark solid optical lenses, gold scroll brow and petal/teardrop crown panels, silver temple panel and round bronze temple detail, maroon red-brown cheeks, actual gold cheek fins, engraved grooves and existing edge wear. Keep every hard-surface feature and known gold/silver/maroon region in the same place. No redesigned skull, horns, fangs, vents, new runes, new spikes, changed lenses or extra rear shell. No mirroring and no front-view reconstruction. The mask has no visible wearer: no skin, teeth, hair or dreadlocks, no shoulders or costume.\nChange only rendering presentation: consistent restrained upper-left key light and soft frontal fill, physically plausible brushed/cast silver and weathered bronze-gold, dark maroon painted insets, clean tonal hierarchy with readable medium-scale wear. Reduce the toy-like coarse surface noise of A to the controlled realistic material grain used by PHG equipment; retain actual sculpt grooves and weathered edges. No glossy chrome, heavy cinematic rim light, orange grading, glowing eyes or colored reflections that change albedo. Same design, same sculpture and same palette as the prototype; better standardized PBR presentation only.\nOne complete isolated mask on a genuinely transparent background, with a clear 8–12 percent empty margin on all sides and no cropped tips. Center it; retain the same projected aspect ratio as reference1. No text, watermarks, logos, panel borders, diagrams, contact sheet, ground plane, cast shadow or background. Preserve the two long lower muzzle edges, both actual cheek fins and all crown outline tips without adding hidden detail.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "edition": "NECA Kwei prototype shown; not final product; not a film certification",
+      "limitations": [
+        "PHG-style presentation of a licensed NECA prototype, not a film-certified model.",
+        "Fine engravings and metallic wear are interpreted, while visible main sculpt and palette are preserved.",
+        "Native margins are smaller than the requested8–12 percent, but no visible mask is clipped."
+      ]
+    }
+  ]
+}

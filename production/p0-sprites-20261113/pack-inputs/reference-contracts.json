@@ -1,0 +1,259 @@
+{
+  "asOf": "2026-11-13",
+  "baseCommitObserved": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "readOnlyRepository": true,
+  "generationPerformed": false,
+  "imagePixelsModified": false,
+  "images": [
+    {
+      "id": "scar-body-idle-v34",
+      "path": "public/game/sprites/v34/pit/scar/scar-idle-v34.png",
+      "sha256": "725a14de4bf905122f4585663b2654d7925f57089fdbdae383e06da1290ec8c4",
+      "bytes": 2216119,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "originalImageOpened": true,
+      "visualReview": "Existing project BODY/style anchor; RGB magenta sheet, not primary film evidence. Both displayed rows do not establish anatomically correct independent opposite-side animation. Native-alpha replacement must preserve identity without inheriting unverified ownership mistakes.",
+      "canonicalOneToOneCertified": false,
+      "alpha": {
+        "nativeAlpha": false,
+        "existingMode": "opaque-magenta-source-use-explicit-color-key-in-private-Canvas-only"
+      }
+    },
+    {
+      "id": "feral-static-v5",
+      "path": "public/game/sprites/v5/film-plates/feral-hunter.png",
+      "sha256": "846d3b0874af7ea298ef7fc84ebad04602e2bbdddc7b96d8fcad8d69b8cb5b8d",
+      "bytes": 1470399,
+      "width": 1086,
+      "height": 1479,
+      "mode": "RGBA",
+      "originalImageOpened": true,
+      "visualReview": "Existing full-body project plate: bone skull mask, ochre mottled hide, black dreads, exposed torso/no classic net, open fan shield on anatomical left and pole weapon. Static project plate, not film certification.",
+      "canonicalOneToOneCertified": false,
+      "alpha": {
+        "zero": 1153752,
+        "oneToTwo": 0,
+        "threeTo254": 15326,
+        "opaque255": 437116,
+        "visibleBBoxAt3": [
+          79,
+          79,
+          1007,
+          1400
+        ],
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "archivist-static-v84",
+      "path": "public/game/homeworld/v84/npcs/archivist/01.png",
+      "sha256": "0829dc2b1ed98293a57002fef88725b3218185f93de6d4102470b61018baf1c1",
+      "bytes": 2125549,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "originalImageOpened": true,
+      "visualReview": "Original role NPC: four external mandibles, heavy black dreads with gold rings, patterned charcoal/ivory robe, bronze writing tablet. Existing rendering includes visible diffuse halo; require no halo/ground/shadow in a fresh native cutout. Not a canonical named film individual.",
+      "canonicalOneToOneCertified": false,
+      "alpha": {
+        "zero": 1035025,
+        "oneToTwo": 11222,
+        "threeTo254": 526617,
+        "opaque255": 0,
+        "visibleBBoxAt3": [
+          281,
+          11,
+          909,
+          1501
+        ],
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "mount-bestiary-sheet-v77",
+      "path": "public/game/homeworld/v77/fauna/mounts-bestiary-sheet-1.png",
+      "sha256": "649f7ff3bfebfda07a79002b9c50d63b7861d35ec64997897096971cf9d41d0b",
+      "bytes": 2816101,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "originalImageOpened": true,
+      "visualReview": "Composite original-project bestiary with six named species and front/rear/profile references. Painted background, labels and multi-view composition remain; this is not six engine-ready single cutouts and does not certify franchise canon. Creature endpoints near sheet borders require dedicated redraw with safe margins.",
+      "canonicalOneToOneCertified": false,
+      "alpha": {
+        "zero": 576667,
+        "oneToTwo": 247708,
+        "threeTo254": 748489,
+        "opaque255": 0,
+        "visibleBBoxAt3": [
+          21,
+          0,
+          1516,
+          1005
+        ],
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "scar-left-calibration-v100",
+      "path": "art-source/v100/pit/scar/intake/021-scar-left-reference-left-original.png",
+      "sha256": "afda5ebad65ed340201456786529962cdf1c7d97a1152f039d910cc537618d2c",
+      "bytes": 1972634,
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "originalImageOpened": true,
+      "visualReview": "Independent project left-facing full-body calibration/reference, not an animation. Silver biomask/red project marking, mesh and plated armor, lance, wrist blades, shoulder caster, holstered disc. Native alpha includes diffuse fringe/halo; do not count this reference as a new action frame.",
+      "canonicalOneToOneCertified": false,
+      "alpha": {
+        "zero": 1100331,
+        "oneToTwo": 21635,
+        "threeTo254": 450898,
+        "opaque255": 0,
+        "visibleBBoxAt3": [
+          192,
+          85,
+          860,
+          1396
+        ],
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "feral-body-idle-v34",
+      "path": "public/game/sprites/v34/pit/feral-hunter/feral-hunter-idle-v34.png",
+      "sha256": "db5aebcd23175ce3efec94cb6bcebf9e4bb3d099f02fb20d49224d7b36f57f33",
+      "bytes": 2100765,
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "originalImageOpened": true,
+      "visualReview": "Legacy RGB/magenta 4x2 BODY style sheet, not newly generated alpha. Bone mask, mottled ochre hide, bare torso, black dreads, ribbed pelvic armor and ankle wraps. Two rows alone do not prove independent anatomical sidedness; use V100 native opposite-side sources for ownership.",
+      "canonicalOneToOneCertified": false,
+      "alpha": {
+        "nativeAlpha": false,
+        "existingMode": "opaque-magenta-source-use-explicit-color-key-in-private-Canvas-only"
+      }
+    },
+    {
+      "id": "berserker-mr-black-form-anchor",
+      "path": "public/game/sprites/v62/masks/berserker.png",
+      "sha256": "6764f7596d6443f4657340728f316d111a50ba6d662d270e5189bc4c2312f087",
+      "bytes": 2322146,
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "originalImageOpened": true,
+      "visualReview": "Opened local project mask: long angular anthracite shell, black eye lenses, triple laser module, visible attached lower creature jaw. Bible MK35 refers to MK11 Berserker. Useful local form/style anchor, not an exact PHG selected-mask screenshot/UV/shader proof.",
+      "canonicalOneToOneCertified": false,
+      "alpha": {
+        "zero": 690944,
+        "oneToTwo": 6487,
+        "threeTo254": 874538,
+        "opaque255": 547,
+        "visibleBBoxAt3": [
+          206,
+          35,
+          1158,
+          1240
+        ],
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "imagesOpened": 7,
+    "existingHomeworldStaticVariants": 640,
+    "homeworldRoles": 32,
+    "variantsPerRole": 20,
+    "v100BodyStudies": 52,
+    "v100NativeOrientations": 104
+  },
+  "currentCoverageCaveat": "V26 is an immutable historical roster, not current animation discovery. V100 contains26BODY studies for each of Feral/Scar; eight newly bound gestures, two historical reuses and42 studies-only are not full gameplay completion.",
+  "fidelityRules": [
+    {
+      "source": "app/game/hunterSpriteAtlas.ts:3",
+      "rule": "validated means human artistic review, not image generation or decode success."
+    },
+    {
+      "source": "docs/hunter-sprite-animation-contract-v26.md:15",
+      "rule": "Character/version/equipment/action/posture/native-facing are separate dimensions. No automatic mirror, recolor, interpolation or held duplicate counted as an authored drawing."
+    },
+    {
+      "source": "docs/pit-workbook-animations-v100.md:31",
+      "rule": "Measure native-alpha gutters without rewriting pixels; alpha3 on an edge remains visible/rejected. Rect/pivot metadata are allowed, not destructive CPU cleanup."
+    },
+    {
+      "source": "app/game/HomeworldNpcSpriteV84.tsx:48",
+      "rule": "Static NPC renderer currently mirrors for requested facing. This preserves one static identity and must not be counted as independent native opposite-side art."
+    },
+    {
+      "source": "production/clan-ship-20261104/operations-production.json:287",
+      "rule": "OPS-F22 already verified, art review open. OPS-F23 P1 explicitly reuses six existing same-role drawings; these are not six missing PNG files."
+    }
+  ],
+  "crewResolution": "clan-crew-resolved-variants.json",
+  "phgNineContracts": "phg-nine-contracts.json",
+  "packagingNotes": "packaging-notes.md",
+  "primaryReferenceGaps": {
+    "scar": [
+      "tmp/yautja-film-references/scar/prime1-front.jpg",
+      "tmp/yautja-film-references/scar/prime1-angle.jpg",
+      "tmp/fidelity-scar-official-browser.png"
+    ],
+    "feral": [
+      "tmp/yautja-film-references/feral-hunter/prime1-full.jpg",
+      "tmp/yautja-film-references/feral-hunter/prime1-three-quarter.jpg",
+      "tmp/yautja-film-references/feral-hunter/neca-51725_UNP_10.jpg",
+      "tmp/yautja-film-references/feral-hunter/neca-51725_UNP_12.jpg",
+      "tmp/fidelity-feral-official-browser.png"
+    ]
+  },
+  "canonicalReferenceUrls": {
+    "scar": [
+      "https://www.prime1studio.com/avp-scar-predator/MMPR-04DXS.html",
+      "https://www.20thcenturystudios.com/movies/alien-vs-predator"
+    ],
+    "feral": [
+      "https://necaonline.com/2023/05/prey-7-scale-action-figure-ultimate-feral-predator/",
+      "https://www.20thcenturystudios.com/movies/prey"
+    ]
+  },
+  "promptLocks": [
+    "Actual scene role and identity from references, no generic Predator substitute.",
+    "Whole silhouette, all extremities/weapons/dreads inside native frame with transparent gutters, stable character scale.",
+    "Real transparent_background true; no black painted backdrop, checkerboard, floor, cast shadow, fog, halo, text or labels.",
+    "Four external mandibles when visible; preserve character lineage anatomy, mask silhouette, costume and anatomical equipment ownership.",
+    "Feral: no classical fishnet, no shoulder caster; segmented shield belongs anatomical left, wrist blades right.",
+    "Scar runtime-default: separate from Celtic and PHG Scar adaptation, preserve recorded kit state; do not turn a reference prop into canon proof.",
+    "Draw genuinely new phases/native directions; no copied identical cell, CSS mirror, recolor or rig counted as newly authored animation.",
+    "Keep original image bytes/prompts/references and hashes; metadata rectangles/pivots only."
+  ]
+}

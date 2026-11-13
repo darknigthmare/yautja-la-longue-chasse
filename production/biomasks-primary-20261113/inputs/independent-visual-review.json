@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-13",
+  "reviewType": "independent-agent-artistic-comparison-and-browser-alpha-composite",
+  "status": "candidate-review-complete-not-human-validation",
+  "entries": [
+    {
+      "id": "samurai",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+        "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715",
+        "bytes": 1637768,
+        "nativeDimensions": [
+          1312,
+          1199
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          90,
+          12,
+          1154,
+          1183
+        ],
+        "alpha16MarginsLTRB": [
+          90,
+          12,
+          158,
+          16
+        ]
+      },
+      "sourceIds": [
+        "samurai-official-closeup",
+        "samurai-official-render"
+      ],
+      "decision": "candidate-with-limitations",
+      "view": "Trois quarts orienté vers la gauche de l’image ; tête inclinée vers le bas, côté droit de l’image davantage visible, cohérent avec le gros plan officiel.",
+      "observations": [
+        "Palette rouge profond, or et noir conservée.",
+        "Bandeau doré à deux branches, lamelles latérales et émetteur rouge côté gauche de l’image cohérents.",
+        "Aucun corps, arme, dreadlock ni fond opaque observé.",
+        "Aucun amas blanc ni liseré coloré visible en composite navigateur sur noir, blanc et damier."
+      ],
+      "limitations": [
+        "Les ornements dorés et évents centraux sont interprétés et simplifiés ; leur compte et leur tracé exacts ne sont pas certifiés.",
+        "Les reliefs latéraux sont plus épais que sur le gros plan officiel.",
+        "Les fines pointes sommitales ambiguës ont été volontairement omises ; ce candidat ne prouve donc pas la silhouette complète du casque.",
+        "La marge supérieure alpha16 est de 12 pixels : pointe non coupée, avertissement de marge conservé.",
+        "Les parties masquées, intérieur, dos et vue strictement frontale ne sont pas établis."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "viking",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+        "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749",
+        "bytes": 1767889,
+        "nativeDimensions": [
+          1254,
+          1254
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          197,
+          68,
+          1053,
+          1170
+        ],
+        "alpha16MarginsLTRB": [
+          197,
+          68,
+          201,
+          84
+        ]
+      },
+      "sourceIds": [
+        "viking-official-render",
+        "viking-official-front"
+      ],
+      "decision": "candidate-with-limitations",
+      "view": "Trois quarts légèrement tourné vers la droite de l’image, fondé sur le render officiel complet.",
+      "observations": [
+        "Deux grandes cornes dorées à pointes grises striées, front sombre orné, nez doré allongé et joues argentées conservés.",
+        "Cache oculaire gravé doré sur le côté gauche de l’image, œil anatomique droit ; ouverture sombre du côté opposé.",
+        "Hache bleue, corps, armure d’épaule, collier et dreadlocks exclus.",
+        "Aucun amas blanc ni liseré coloré visible en composite navigateur sur noir, blanc et damier."
+      ],
+      "limitations": [
+        "Les fines gravures, runes et motifs du médaillon ont été interprétés ; les petits tracés ne sont pas une reproduction certifiée.",
+        "L’éclairage de studio et les reflets diffèrent des sources.",
+        "Les parties cachées, intérieur, dos et angle frontal non coupé ne sont pas établis.",
+        "Le matériau exact des pointes grises striées n’est pas prouvé."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "cleopatra",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
+        "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4",
+        "bytes": 1618663,
+        "nativeDimensions": [
+          1192,
+          1319
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          170,
+          69,
+          1020,
+          1231
+        ],
+        "alpha16MarginsLTRB": [
+          170,
+          69,
+          172,
+          88
+        ]
+      },
+      "sourceIds": [
+        "cleopatra-official-render"
+      ],
+      "decision": "candidate-with-limitations",
+      "view": "Quasi frontale, cohérente avec le render officiel complet, sans reconstruction de dos ni angle supplémentaire.",
+      "observations": [
+        "Forme allongée bleu/noir, deux ailes latérales côtelées, grand médaillon doré supérieur et contour doré recourbé conservés.",
+        "Apertures oculaires sombres, petit motif doré au-dessus des yeux et émetteur rouge côté gauche de l’image présents.",
+        "Corps, collerette, épaule armée, équipement et arme exclus.",
+        "Aucun bloc opaque, halo blanc ou liseré coloré apparent sur noir, blanc et damier en composition Chromium.",
+        "Ailes et extrémités non coupées ; marge alpha16 minimale de 69 pixels."
+      ],
+      "limitations": [
+        "Le seul render complet sert de preuve géométrique. Les autres sources identifient Cleopatra mais n’établissent pas une seconde vue du masque.",
+        "Les motifs du médaillon, petites inscriptions et le compte exact des côtes latérales sont interprétés, non certifiés.",
+        "Les reflets et la patine ont été reconstruits à une résolution supérieure à celle du masque visible dans la référence.",
+        "Intérieur, dos, épaisseurs et parties cachées ne sont pas établis."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "exiled",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
+        "sha256": "09b5d821909b445e9eefeae395d20c8d1b1ffc728549abc28837c4d07503c4ee",
+        "bytes": 1965781,
+        "nativeDimensions": [
+          1069,
+          1472
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          130,
+          41,
+          946,
+          1291
+        ],
+        "alpha16MarginsLTRB": [
+          130,
+          41,
+          123,
+          181
+        ]
+      },
+      "sourceIds": [
+        "exiled-official-render",
+        "exiled-official-closeup"
+      ],
+      "decision": "candidate-with-limitations",
+      "view": "Quasi frontale avec faible rotation vers la gauche de l’image, cohérente avec le render et sa promotion rapprochée.",
+      "observations": [
+        "Double crête supérieure séparée par une fente, grandes gravures spiralées et géométriques, bande claire des sourcils et ouvertures sombres conservées.",
+        "Deux crochets rigides latéraux recourbés vers le haut conservés.",
+        "Les deux longs éléments pendants vers le cou ne sont pas inclus, leur appartenance au masque n’étant pas établie.",
+        "Dreadlocks, peau, cou, armure de torse, arme et canon d’épaule exclus.",
+        "Aucun bloc opaque, halo blanc ou liseré coloré apparent sur noir, blanc et damier en composition Chromium.",
+        "Pointes et crochets non coupés ; marge alpha16 minimale de 41 pixels."
+      ],
+      "limitations": [
+        "Les petits signes, rainures et patine sont interprétés ; les motifs fins ne sont pas certifiés au tracé près.",
+        "L’appartenance des longs éléments pendants au masque ou au porteur reste ambiguë ; leur omission empêche d’attester un ensemble complet.",
+        "Le matériau exact de la face brune et des crochets n’est pas établi par ces vues.",
+        "Intérieur, dos et parties masquées ne sont pas établis."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "valkyrie",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/valkyrie-source-view.png",
+        "sha256": "cf2651ae4704e036a79d4cacd00883d684ae1335054fe7008e269d5dfaf1bb1e",
+        "bytes": 1355325,
+        "nativeDimensions": [
+          1309,
+          1201
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          200,
+          30,
+          1182,
+          1101
+        ],
+        "alpha16MarginsLTRB": [
+          200,
+          30,
+          127,
+          100
+        ]
+      },
+      "sourceIds": [
+        "valkyrie-official-render",
+        "valkyrie-official-closeup"
+      ],
+      "decision": "candidate-with-limitations",
+      "view": "Proche du trois quarts du render, légèrement tourné vers la gauche de l’image ; pas de reconstruction d’une face orthographique.",
+      "observations": [
+        "Deux ailes latérales à branches, médaillons de fixation, dôme argenté orné et bande centrale rivetée conservés.",
+        "Plaques oculaires dorées et ouvertures sombres, parties basses argentées rainurées et contour doré cohérents avec les sources.",
+        "Arme levée derrière la tête, mains, peau, dreadlocks et cou exclus.",
+        "Aucun bloc opaque, halo blanc ou liseré coloré apparent sur noir, blanc et damier en composition Chromium.",
+        "Pointes des ailes et menton non coupés ; marge alpha16 minimale de 30 pixels."
+      ],
+      "limitations": [
+        "Les petits entrelacs, rivets et gravures sont interprétés ; leur compte et leur tracé exacts ne sont pas certifiés.",
+        "Les jeux de lumière et les reflets or/argent diffèrent de la scène officielle.",
+        "La photo rapprochée coupe une partie des ailes ; le render complet reste la preuve de leurs extrémités.",
+        "Intérieur, dos et géométrie cachée ne sont pas établis."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "emissary",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+        "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+        "bytes": 1247126,
+        "nativeDimensions": [
+          1192,
+          1319
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          209,
+          82,
+          972,
+          1219
+        ],
+        "alpha16MarginsLTRB": [
+          209,
+          82,
+          220,
+          100
+        ]
+      },
+      "sourceIds": [
+        "emissary-official-render"
+      ],
+      "decision": "partial-candidate-with-limitations",
+      "partial": true,
+      "view": "Faible trois quarts cohérent avec le render, tête inclinée, côté gauche de l’image davantage visible ; aucune face orthographique ajoutée.",
+      "observations": [
+        "Dôme ovale noir, cerclage argenté, sourcils courbes, ouvertures oculaires noires et insert inférieur bronzé conservés.",
+        "Rangée de cinq ports sur le côté gauche de l’image cohérente avec la référence visible.",
+        "Les appendices rigides supérieurs interrompus au bord horizontal de la source, vers y197, ne sont pas rétablis.",
+        "Peau, dreadlocks, camouflage, cou, torse et armes exclus.",
+        "Aucun bloc blanc opaque, halo ou liseré coloré apparent en composition Chromium sur noir, blanc et damier.",
+        "Le contour publié est entièrement dans son cadre ; marges alpha16 de 209, 82, 220 et 100 pixels."
+      ],
+      "limitations": [
+        "Candidat explicitement partiel : le sommet des deux appendices rigides manque dans la source et leur omission empêche d’attester une silhouette supérieure complète.",
+        "Les proportions relatives du dôme et de la face ont été légèrement reconstruites ; leur correspondance métrique exacte n’est pas certifiée.",
+        "Les fines rainures, ports, reflets et détails mécaniques de l’insert inférieur sont interprétés à partir du render.",
+        "La référence Storyblok est citée dans le registre local V87 ; le lien depuis la page PHG actuelle n’a pas été vérifié car cette page reste inaccessible.",
+        "Intérieur, dos, épaisseurs et géométrie cachée ne sont pas établis."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "captured",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+        "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+        "bytes": 1321450,
+        "nativeDimensions": [
+          1199,
+          1312
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          225,
+          96,
+          973,
+          1213
+        ],
+        "alpha16MarginsLTRB": [
+          225,
+          96,
+          226,
+          99
+        ]
+      },
+      "sourceIds": [
+        "captured-official-closeup",
+        "captured-official-render"
+      ],
+      "decision": "candidate-with-limitations",
+      "view": "Proche de la vue légèrement inclinée du gros plan officiel ; personnage extrême droite uniquement utilisé dans le render du groupe.",
+      "observations": [
+        "Dôme ovale gris usé, rim irrégulier ébréché, trois points rouges côté gauche de l’image et lentille sombre du même côté conservés.",
+        "Ouverture oculaire cassée côté droit de l’image conservée avec son bord irrégulier ; peau et iris du porteur exclus.",
+        "Aucune substitution par un Jungle Hunter intact et symétrique ; dommage de la vue de référence maintenu.",
+        "Corps, cou, dreadlocks, peau et canon d’épaule exclus.",
+        "L’ouverture droite est réellement transparente et laisse passer blanc ou damier en composition Chromium ; aucune lentille noire de remplacement.",
+        "Aucun bloc opaque, halo blanc ou liseré coloré apparent sur noir, blanc ou damier.",
+        "Contour non coupé ; marges alpha16 de 225, 96, 226 et 99 pixels."
+      ],
+      "limitations": [
+        "Le rebord supérieur et certaines cassures sont légèrement plus saillants que dans la référence ; leur nombre, profondeur et tracé exacts ne sont pas certifiés.",
+        "Les proportions du dôme apparaissent légèrement plus dominantes ; la correspondance métrique exacte n’est pas établie.",
+        "Les rayures et la patine sont reconstruites, sans reproduction au pixel près.",
+        "La délimitation du bord cassé a été reconstruite après exclusion de la peau et de l’œil visibles dans la photographie.",
+        "Intérieur, dos, épaisseurs et géométrie cachée ne sont pas établis."
+      ],
+      "rightOpeningAlphaProbe": {
+        "box": [
+          750,
+          715,
+          795,
+          740
+        ],
+        "pixelCount": 1125,
+        "alphaRange": [
+          0,
+          0
+        ],
+        "zeroAlphaCount": 1125
+      },
+      "leftLensAlphaProbe": {
+        "box": [
+          430,
+          715,
+          480,
+          745
+        ],
+        "pixelCount": 1500,
+        "alphaRange": [
+          252,
+          253
+        ],
+        "zeroAlphaCount": 0
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ],
+  "browserEvidence": {
+    "browser": "Chromium via Playwright-core",
+    "viewport": [
+      1500,
+      1410
+    ],
+    "deviceScaleFactor": 1,
+    "backgrounds": [
+      "#050505",
+      "#ffffff",
+      "CSS checkerboard"
+    ],
+    "probeCount": 5,
+    "note": "Cinq captures de composition : 6 images Samurai/Viking, 6 images Viking V1/V2, 9 images des trois masques supplémentaires, 3 images Emissary et 3 images Captured. Ces observations ne sont ni des tests de gameplay, ni une certification canonique.",
+    "screenshots": [
+      {
+        "path": "production/biomasks-primary-20261113/qa/artistic/alpha-browser-composite.png",
+        "sha256": "537dd7181a1a7bbad66852bf385d7d8def0f8daeabc692db3d746aaeb6b8cfdf",
+        "bytes": 1042137,
+        "nativeDimensions": [
+          1500,
+          1410
+        ],
+        "mode": "RGB"
+      },
+      {
+        "path": "production/biomasks-primary-20261113/qa/artistic/viking-v1-v2-browser-composite.png",
+        "sha256": "15e38faf0377a49593a956ccb264c0c3419c3bb3c63a0e237659c977e5d78c5d",
+        "bytes": 1059409,
+        "nativeDimensions": [
+          1500,
+          1410
+        ],
+        "mode": "RGB"
+      },
+      {
+        "path": "production/biomasks-primary-20261113/qa/artistic/additional-three-browser-composite.png",
+        "sha256": "5cb278b201e357d45d6fad65d4ddb2ea34e824d99ce4add0b23c3c91c8f240ba",
+        "bytes": 1686366,
+        "nativeDimensions": [
+          1500,
+          2100
+        ],
+        "mode": "RGB"
+      },
+      {
+        "path": "production/biomasks-primary-20261113/qa/artistic/emissary-browser-composite.png",
+        "sha256": "18b5a223bf9117900331e8b2e68b6407d805f993b72ec2e191411195beda3eda",
+        "bytes": 451887,
+        "nativeDimensions": [
+          1500,
+          760
+        ],
+        "mode": "RGB"
+      },
+      {
+        "path": "production/biomasks-primary-20261113/qa/artistic/captured-browser-composite.png",
+        "sha256": "23d222d9c53b030e422ff18b0bc6f784e091f5ed9bc867b759ed239317cbec70",
+        "bytes": 464779,
+        "nativeDimensions": [
+          1500,
+          794
+        ],
+        "mode": "RGB"
+      }
+    ],
+    "probes": [
+      {
+        "id": "first-two",
+        "viewport": [
+          1500,
+          1410
+        ],
+        "imageCount": 6
+      },
+      {
+        "id": "viking-v1-v2",
+        "viewport": [
+          1500,
+          1410
+        ],
+        "imageCount": 6
+      },
+      {
+        "id": "additional-three",
+        "viewport": [
+          1500,
+          2100
+        ],
+        "imageCount": 9
+      },
+      {
+        "id": "emissary-partial",
+        "viewport": [
+          1500,
+          760
+        ],
+        "imageCount": 3
+      },
+      {
+        "id": "captured-damaged-mask",
+        "viewport": [
+          1500,
+          760
+        ],
+        "imageCount": 3
+      }
+    ]
+  },
+  "vikingAlternative": {
+    "candidate": {
+      "path": "/workspace/generated_images/exec-6c49cbb9-3e19-4489-aedc-c9cf7334801f.png",
+      "sha256": "92805ce635b9b134e0ce2aed20c0fa57ca233ab6f2833cc2b1a98f94aabe1a4f",
+      "bytes": 1737605,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        255
+      ],
+      "alpha16BoundingBox": [
+        197,
+        68,
+        1057,
+        1171
+      ],
+      "alpha16MarginsLTRB": [
+        197,
+        68,
+        197,
+        83
+      ]
+    },
+    "decision": "not-selected",
+    "reason": "V2 n’améliore pas visiblement les contours alpha dans le navigateur ; les fines gravures/reflets ont été recalculés. Préférence pour V1, première génération liée directement aux sources."
+  },
+  "alphaDiagnostic": {
+    "preliminaryFindingRetracted": true,
+    "note": "Les amas blancs et liserés vus dans l’aperçu PNG brut ont été évalués trop vite comme artefacts opaques. Le bloc blanc au-dessus de la corne droite est constitué de pixels alpha1–9/255 et disparaît dans la composition RGBA normale ; le contrôle navigateur annule ce rejet préliminaire. Aucun nettoyage CPU ni modification des PNG effectué."
+  },
+  "authorizationAndStatus": {
+    "humanValidationCount": 0,
+    "canonCertificationCount": 0,
+    "runtimeIntegrationCount": 0,
+    "sourceViewCandidateCount": 7,
+    "newNamedTargetsWithCandidateCount": 4,
+    "improvedExistingMaskViewCandidateCount": 3
+  },
+  "archivalNote": "Original review JSON hash preserved below; only metadata paths were updated to repository copies. Screenshot PNGs and candidate PNGs remain byte-identical.",
+  "originalReviewReportSha256": "f36c4970fe190fed0125e5bae32b7d88cfd7544671f56c926127aa57a139eade"
+}

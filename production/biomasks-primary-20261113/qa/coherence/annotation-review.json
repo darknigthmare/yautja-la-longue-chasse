@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "changedRepositoryFilesOwnedByThisAgent": [
+    "scripts/check-p0p1-coherence-20261109.mjs"
+  ],
+  "historicalReferencePins": [
+    {
+      "path": "scripts/runtime-v113-inputs.json",
+      "sha256": "78d11a432ca10054e3e06a2cf2dacfde706410b474e39615741beb2b1c17c8ed",
+      "unchangedFromHead": true
+    },
+    {
+      "path": "production/p0p1-20261109/verification.json",
+      "sha256": "b9b94e59ba2ca077e6050ef47a9fa98deb15eb58c3f9da137f8f009e7651b0cf",
+      "unchangedFromHead": true
+    },
+    {
+      "path": "production/clan-war-command-20261109/verification.json",
+      "sha256": "1e41b982cbce3f4018168eb2425bfd454d4d326fdefebbb46f33ae35ea0d8ba4",
+      "unchangedFromHead": true
+    }
+  ],
+  "runnerListedBy": "scripts/runtime-v113-inputs.json",
+  "historicalRecordsNotRewritten": true,
+  "checks": {
+    "nodeSyntax": true,
+    "targetedEslint": true,
+    "gitDiffWhitespace": true,
+    "predicateBodyByteIdentical": true,
+    "positiveNegativeInjectionAndNonGitHubFixtures": true
+  },
+  "runnerSha256": "7bf40c64c573d29ff781cc9b3a1e397bb28b448e0ffc6cf1272841ea2d8b6e1a",
+  "verification": {
+    "path": "/tmp/primary-masks-20261113/annotation-verification/verification.json",
+    "sha256": "49b0e2cd166e5fdca45fc00cb67c9c8384d4a363c2a61f5a51f30d6d18223145"
+  },
+  "remoteFailure": "not reproduced; cause unknown",
+  "completeSuiteEvidenceUnchanged": [
+    "/tmp/primary-masks-20261113/coherence-repro/report.json",
+    "/tmp/primary-masks-20261113/coherence-sparse-repro/report.json"
+  ],
+  "fullSuiteRepeatedAfterDiagnosticOnlyChange": false
+}

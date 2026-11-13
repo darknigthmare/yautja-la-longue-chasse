@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "f26b985e7c354a611963d9aaa76e10d9a26a6586",
+  "status": "generated-candidates",
+  "entries": [
+    {
+      "prompt": "Reference-constrained detached biomask study: Exiled PHG, from the EXACT single named source image. Preserve the visible mask design and its current near-front camera 1:1 as closely as that reference permits; this is not a redesign. Extract only the hard metal mask. The source's long thin white strands behind/below the helmet belong to a shared wearer/hair rendering and are not established mask geometry: omit those strands, do not turn them into teeth or spikes. Keep the two actual curved pointed metal temple hooks and the solid lower side plates. Preserve the tall divided central forehead crest ending in two curled round scrolls, the oval central forehead depression, the small stacked circular stud/depression group above the nose bridge, the slanted dark eye apertures, the angular nose housing, the curved lower mechanical mouth/cheek assembly, all visible plate boundaries, proportions, broad symmetry and source grayscale values. Do not invent new runes, an unseen rear shell, an extra nose vent, extra horns, fangs, color finish or an articulated jaw. Fine detail that is unresolved at the 256px reference must stay restrained, not replaced by elaborate invented filigree. Exactly one entire detached mask centered on a square canvas, occupying about75percent of canvas height with at least10percent clear native transparent margin on every side. Physically opaque gray metal with gently antialiased contours, true alpha-zero background. No body, skin, eyes of a wearer, head, hair, floor, cast shadow, aura, spotlight, fake checkerboard, labels, letters, UI, border or watermark. Retain the source view, do not create a new side/back angle or a certified UV texture. Native high-resolution PNG suitable for visual review; fidelity beyond the visible secondary source is not established.",
+      "id": "phg-exiled",
+      "label": "Exiled · PHG · vue de référence",
+      "sourceId": "predator_22",
+      "nativeSourcePath": "/workspace/generated_images/exec-47431d72-4fe1-4a6c-8a8c-f5f7ba14d18d.png",
+      "assetPath": "public/game/biomasks-20261113/masks/exiled-reference-view.png",
+      "camera": "near-front view constrained to the named secondary icon; no new perspective",
+      "viewCoverage": [
+        "source-icon-front-view"
+      ],
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "limitations": [
+        "Secondary community port icon attributed to PHG, not publisher-certified original PHG pixels.",
+        "The 256×256 grayscale front icon does not establish original UVs, color variants, back/profile geometry or fine engraving counts.",
+        "Long generic white wearer strands are omitted as unestablished biomask geometry; the two curved metal temple hooks are retained.",
+        "High-resolution surface detail is generated interpretation and must be reviewed; no 1:1 pixel or six-morphology fitting claim."
+      ],
+      "sha256": "f7bb8a335d3252494cb127689c89b777c70e9ddcee18257477097e49af36a679",
+      "bytes": 1378480,
+      "width": 1254,
+      "height": 1254,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "centered review proposal, not fitted to wearer rig",
+      "alpha": {
+        "transparentPixels": 1030271,
+        "visiblePixels16": 527730,
+        "opaquePixels240": 521308,
+        "bounds16": [
+          244,
+          103,
+          1011,
+          1098
+        ],
+        "marginsPixels16": [
+          244,
+          103,
+          243,
+          156
+        ]
+      },
+      "sourceCommunity": {
+        "id": "predator_22",
+        "communityLabel": "Exiled",
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_22.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22.texture",
+        "gitBlobSha": "330672712108269331d4b768853b37d91c2ec553",
+        "sha256": "1e532900b5966a39759060018a77bc3e8ce90f07afca85e076218460040b7086",
+        "bytes": 65664,
+        "width": 256,
+        "height": 256,
+        "fourCC": "DXT5",
+        "bibleTargetConfirmedByInventory": true,
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false,
+        "profileOrBack": false,
+        "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified."
+      },
+      "referenceCapture": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_22.png",
+        "sha256": "8ab063991d3aca7a3e2db8df11da58fb380f96a9b53ed0fdf64b47e57aba4d99",
+        "role": "Read-only WebGL canvas display capture; the raster capture box may include a fractional-pixel wrapper border, not claimed to be original DDS pixels",
+        "dimensions": [
+          256,
+          257
+        ]
+      },
+      "nativeCopyIdentical": true
+    }
+  ]
+}

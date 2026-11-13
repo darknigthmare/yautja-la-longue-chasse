@@ -1,0 +1,325 @@
+{
+  "schemaVersion": 1,
+  "batch": "secondary-batch-3",
+  "tool": "image_gen.imagegen",
+  "scope": "Three grayscale isolated PHG-style candidates from secondary community screenshot references; City Hunter97 and Kawaii Phoenix remain variants.",
+  "entries": [
+    {
+      "id": "predator_detox",
+      "label": "Detox",
+      "version": "B",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_detox.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-ae7f69c4-e059-4845-9528-af8c7ae2b3c1.png",
+      "sha256": "bb6ff95ac9f7df750878c999cfcc4efa406854b84be03c2fd4d95d8a6df677ee",
+      "bytes": 1901915,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_detox.png",
+      "sourceASha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af",
+      "submittedReferencePath": "/tmp/all-masks-20261113/web-references/fronts/predator_detox.png",
+      "submittedReferenceSha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af",
+      "sourceADimensions": [
+        256,
+        257
+      ],
+      "sourceAMode": "RGB",
+      "sourceClass": "secondary-port-capture",
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-3.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "prompt": "Create ONE isolated biomask using the exact same visible design, shape proportions and near-front camera as the attached reference. The256x257 RGB screenshot of an unofficial community game-port HUD icon is the only authority for this edit. It is a secondary community reference, not a certified original franchise capture. Preserve the visible whole mask contour, width-to-height proportion, yaw/pitch/roll, panel layout, dark optics/apertures, surface reliefs and recognizable visible fine marks. Do not redesign it from a familiar franchise name.\n\nThe requested change is ONLY to isolate the hard mask and stage its visible surfaces as a coherent high-quality Predator:Hunting Grounds-style game-prop render. REMOVE the white/grey external dreadlocks and all pale hanging hair strands, hair bands, wearer/head/neck/body and the black reference background. These external strands are not mask appendages. Keep the actual mask shell and its clearly visible attached hardware. Do not add hair, neck, wearer, stand, floor, cables behind the shell, invented back, hidden profile geometry, horns, holes, vents, tubes, teeth, glyphs, letters or extra ornaments. Do not rebuild missing details from canon or imagination.\n\nMaintain the source's grayscale without adding any colored albedo, eye glow or warm gold. Original albedo and physical materials are unknown; this is a restrained grayscale material interpretation. Use physically coherent grey metallic and dark grey surfaces, roughness variations, a soft neutral key light from upper left/front, soft opposite frontal fill, legible dark recesses and contained fine surface grain. Preserve visible wear rather than adding damage, avoid all-over chrome, avoid crushed black outlines, avoid powdery noise. Retain the source's visible fine-line arrangements without adding runes or changing their placement; no claim of character-perfect engraving from a256px source.\n\nONE single mask, no sheet, no duplicate, no collage, no text or labels. True transparent alpha background, no baked black, no checkerboard. Square canvas, request1254x1254 if supported. Center the complete mask at approximately78–82 percent of the largest canvas dimension, with8–12 percent transparent margins and no cropped edges. Preserve source shape proportions; do not flatten, stretch, rotate to another angle or create a new side view.\n\nVISIBLE DESIGN LOCKS — Detox: the shell has a broad curved horseshoe-shaped top crown with a deep central U-shaped notch, layered outer side rims and a tapering brow down the center. The two very large dark round goggle-like eye openings have grey circular rims. Below them is a small centered rounded nose-like mechanical piece with vertical slots, and the visible lower face has a tightly clustered breathing/filter arrangement with small circular openings and the same outward-curving short tube/mouth shapes. Preserve the count, positions and curved paths seen in the reference; do not replace these with a generic Predator muzzle. The curved crown and all these lower-face hard parts belong to the mask; the long pale strands behind and below the sides do not. Do not add skull teeth, long tusks or a respirator hose not visible in the screenshot.\n\nREFERENCE LIMITATIONS TO RESPECT: Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture. Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance. Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory. Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown. Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages. Fine lines at256px do not establish certified high-resolution franchise details.",
+      "promptSha256": "803e4cc30e464e2d58c8361473675ca977e61254a0bf0c9cade05147c0fdefe7",
+      "classification": "additional-supplied-community-reference",
+      "basePairAlreadyPresent": null,
+      "countsAsNewGeometry": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          171,
+          83,
+          1083,
+          1170
+        ],
+        "visibleMarginsPx": [
+          171,
+          83,
+          171,
+          84
+        ],
+        "minimumVisibleMarginFraction": 0.06619,
+        "transparentPixels": 824885,
+        "opaquePixels": 304,
+        "borderAlphaMax": 1
+      },
+      "selfReview": {
+        "verdict": "candidate-with-limitations",
+        "reviewType": "automated-agent-artistic-inspection-not-human-validation",
+        "notes": [
+          "Horseshoe/U crown, two dark round optics, small slotted nose, lower filter cluster and short curved breathing pieces retain the reference macro design.",
+          "External pale dreadlocks, wearer and black backdrop removed; grayscale material and neutral lighting retained.",
+          "Filter-hole and fine wear details are not certified exact at the source resolution."
+        ]
+      },
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details.",
+        "New ImageGen grayscale mask-only rendering candidate; high-resolution microdetail is an interpretation of the256px source, not certified franchise geometry or exact UV/albedo.",
+        "Native visible minimum margin is below the requested8–12percent; full mask stays within the canvas. No CPU resizing or recropping performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-ae7f69c4-e059-4845-9528-af8c7ae2b3c1.png",
+          "sha256": "bb6ff95ac9f7df750878c999cfcc4efa406854b84be03c2fd4d95d8a6df677ee",
+          "bytes": 1901915,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Create ONE isolated biomask using the exact same visible design, shape proportions and near-front camera as the attached reference. The256x257 RGB screenshot of an unofficial community game-port HUD icon is the only authority for this edit. It is a secondary community reference, not a certified original franchise capture. Preserve the visible whole mask contour, width-to-height proportion, yaw/pitch/roll, panel layout, dark optics/apertures, surface reliefs and recognizable visible fine marks. Do not redesign it from a familiar franchise name.\n\nThe requested change is ONLY to isolate the hard mask and stage its visible surfaces as a coherent high-quality Predator:Hunting Grounds-style game-prop render. REMOVE the white/grey external dreadlocks and all pale hanging hair strands, hair bands, wearer/head/neck/body and the black reference background. These external strands are not mask appendages. Keep the actual mask shell and its clearly visible attached hardware. Do not add hair, neck, wearer, stand, floor, cables behind the shell, invented back, hidden profile geometry, horns, holes, vents, tubes, teeth, glyphs, letters or extra ornaments. Do not rebuild missing details from canon or imagination.\n\nMaintain the source's grayscale without adding any colored albedo, eye glow or warm gold. Original albedo and physical materials are unknown; this is a restrained grayscale material interpretation. Use physically coherent grey metallic and dark grey surfaces, roughness variations, a soft neutral key light from upper left/front, soft opposite frontal fill, legible dark recesses and contained fine surface grain. Preserve visible wear rather than adding damage, avoid all-over chrome, avoid crushed black outlines, avoid powdery noise. Retain the source's visible fine-line arrangements without adding runes or changing their placement; no claim of character-perfect engraving from a256px source.\n\nONE single mask, no sheet, no duplicate, no collage, no text or labels. True transparent alpha background, no baked black, no checkerboard. Square canvas, request1254x1254 if supported. Center the complete mask at approximately78–82 percent of the largest canvas dimension, with8–12 percent transparent margins and no cropped edges. Preserve source shape proportions; do not flatten, stretch, rotate to another angle or create a new side view.\n\nVISIBLE DESIGN LOCKS — Detox: the shell has a broad curved horseshoe-shaped top crown with a deep central U-shaped notch, layered outer side rims and a tapering brow down the center. The two very large dark round goggle-like eye openings have grey circular rims. Below them is a small centered rounded nose-like mechanical piece with vertical slots, and the visible lower face has a tightly clustered breathing/filter arrangement with small circular openings and the same outward-curving short tube/mouth shapes. Preserve the count, positions and curved paths seen in the reference; do not replace these with a generic Predator muzzle. The curved crown and all these lower-face hard parts belong to the mask; the long pale strands behind and below the sides do not. Do not add skull teeth, long tusks or a respirator hose not visible in the screenshot.\n\nREFERENCE LIMITATIONS TO RESPECT: Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture. Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance. Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory. Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown. Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages. Fine lines at256px do not establish certified high-resolution franchise details.",
+          "promptSha256": "803e4cc30e464e2d58c8361473675ca977e61254a0bf0c9cade05147c0fdefe7",
+          "submittedReferencePaths": [
+            "/tmp/all-masks-20261113/web-references/fronts/predator_detox.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "predator_14",
+      "label": "City Hunter of 97",
+      "version": "B",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_14.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-0cd86c78-fd22-48fe-8bcb-8df13df26582.png",
+      "sha256": "c00797882864330550efbd2047ea51e1c1efc430b826d8f897e290b293227c48",
+      "bytes": 1541881,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_14.png",
+      "sourceASha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70",
+      "submittedReferencePath": "/tmp/all-masks-20261113/web-references/fronts/predator_14.png",
+      "submittedReferenceSha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70",
+      "sourceADimensions": [
+        256,
+        257
+      ],
+      "sourceAMode": "RGB",
+      "sourceClass": "secondary-port-capture",
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-3.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "prompt": "Create ONE isolated biomask using the exact same visible design, shape proportions and near-front camera as the attached reference. The256x257 RGB screenshot of an unofficial community game-port HUD icon is the only authority for this edit. It is a secondary community reference, not a certified original franchise capture. Preserve the visible whole mask contour, width-to-height proportion, yaw/pitch/roll, panel layout, dark optics/apertures, surface reliefs and recognizable visible fine marks. Do not redesign it from a familiar franchise name.\n\nThe requested change is ONLY to isolate the hard mask and stage its visible surfaces as a coherent high-quality Predator:Hunting Grounds-style game-prop render. REMOVE the white/grey external dreadlocks and all pale hanging hair strands, hair bands, wearer/head/neck/body and the black reference background. These external strands are not mask appendages. Keep the actual mask shell and its clearly visible attached hardware. Do not add hair, neck, wearer, stand, floor, cables behind the shell, invented back, hidden profile geometry, horns, holes, vents, tubes, teeth, glyphs, letters or extra ornaments. Do not rebuild missing details from canon or imagination.\n\nMaintain the source's grayscale without adding any colored albedo, eye glow or warm gold. Original albedo and physical materials are unknown; this is a restrained grayscale material interpretation. Use physically coherent grey metallic and dark grey surfaces, roughness variations, a soft neutral key light from upper left/front, soft opposite frontal fill, legible dark recesses and contained fine surface grain. Preserve visible wear rather than adding damage, avoid all-over chrome, avoid crushed black outlines, avoid powdery noise. Retain the source's visible fine-line arrangements without adding runes or changing their placement; no claim of character-perfect engraving from a256px source.\n\nONE single mask, no sheet, no duplicate, no collage, no text or labels. True transparent alpha background, no baked black, no checkerboard. Square canvas, request1254x1254 if supported. Center the complete mask at approximately78–82 percent of the largest canvas dimension, with8–12 percent transparent margins and no cropped edges. Preserve source shape proportions; do not flatten, stretch, rotate to another angle or create a new side view.\n\nVISIBLE DESIGN LOCKS — City Hunter of97 COMMUNITY VARIANT: retain the broad dark rounded/oval dome, its worn pitted appearance and the small dark mark near the upper center. Preserve the low near-horizontal angular brow band and the two narrow black eye slots beneath it. Retain the long smooth rectangular central lower shield with rounded/angled bottom corners, subtle central ridge and the source's short cheek-side plates. Preserve the dome-to-brow-to-lower-shield proportions exactly. All very pale vertical hanging forms around the outside are dreadlocks to remove. Do not replace this with any other City Hunter mask mesh; do not add canonical side emitters, tubes, vents or engraved glyphs absent here. This is a community variant of an already covered City Hunter base, not a new canonical geometry.\n\nREFERENCE LIMITATIONS TO RESPECT: Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture. Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance. Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory. Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown. Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages. Fine lines at256px do not establish certified high-resolution franchise details.",
+      "promptSha256": "d6fcae3b1351fb0c85cba05d01dd5230d41c79bddf3652a3308e6a1dbf16319c",
+      "classification": "additional-community-variant-reference",
+      "basePairAlreadyPresent": "mk-02-city",
+      "countsAsNewGeometry": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          232,
+          83,
+          1017,
+          1151
+        ],
+        "visibleMarginsPx": [
+          232,
+          83,
+          237,
+          103
+        ],
+        "minimumVisibleMarginFraction": 0.06619,
+        "transparentPixels": 917261,
+        "opaquePixels": 992,
+        "borderAlphaMax": 1
+      },
+      "selfReview": {
+        "verdict": "candidate-with-limitations",
+        "reviewType": "automated-agent-artistic-inspection-not-human-validation",
+        "notes": [
+          "Rounded dark pitted dome, central dark spot, low angular brow, narrow dark eye slots and long smooth lower shield retain the source layout.",
+          "No dreadlocks, wearer or black backdrop remain. The result stays a community City Hunter variant.",
+          "Pitting/scratches and small side fittings are not certified stroke-for-stroke from the256px screenshot."
+        ]
+      },
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details.",
+        "New ImageGen grayscale mask-only rendering candidate; high-resolution microdetail is an interpretation of the256px source, not certified franchise geometry or exact UV/albedo.",
+        "Native visible minimum margin is below the requested8–12percent; full mask stays within the canvas. No CPU resizing or recropping performed."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-0cd86c78-fd22-48fe-8bcb-8df13df26582.png",
+          "sha256": "c00797882864330550efbd2047ea51e1c1efc430b826d8f897e290b293227c48",
+          "bytes": 1541881,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Create ONE isolated biomask using the exact same visible design, shape proportions and near-front camera as the attached reference. The256x257 RGB screenshot of an unofficial community game-port HUD icon is the only authority for this edit. It is a secondary community reference, not a certified original franchise capture. Preserve the visible whole mask contour, width-to-height proportion, yaw/pitch/roll, panel layout, dark optics/apertures, surface reliefs and recognizable visible fine marks. Do not redesign it from a familiar franchise name.\n\nThe requested change is ONLY to isolate the hard mask and stage its visible surfaces as a coherent high-quality Predator:Hunting Grounds-style game-prop render. REMOVE the white/grey external dreadlocks and all pale hanging hair strands, hair bands, wearer/head/neck/body and the black reference background. These external strands are not mask appendages. Keep the actual mask shell and its clearly visible attached hardware. Do not add hair, neck, wearer, stand, floor, cables behind the shell, invented back, hidden profile geometry, horns, holes, vents, tubes, teeth, glyphs, letters or extra ornaments. Do not rebuild missing details from canon or imagination.\n\nMaintain the source's grayscale without adding any colored albedo, eye glow or warm gold. Original albedo and physical materials are unknown; this is a restrained grayscale material interpretation. Use physically coherent grey metallic and dark grey surfaces, roughness variations, a soft neutral key light from upper left/front, soft opposite frontal fill, legible dark recesses and contained fine surface grain. Preserve visible wear rather than adding damage, avoid all-over chrome, avoid crushed black outlines, avoid powdery noise. Retain the source's visible fine-line arrangements without adding runes or changing their placement; no claim of character-perfect engraving from a256px source.\n\nONE single mask, no sheet, no duplicate, no collage, no text or labels. True transparent alpha background, no baked black, no checkerboard. Square canvas, request1254x1254 if supported. Center the complete mask at approximately78–82 percent of the largest canvas dimension, with8–12 percent transparent margins and no cropped edges. Preserve source shape proportions; do not flatten, stretch, rotate to another angle or create a new side view.\n\nVISIBLE DESIGN LOCKS — City Hunter of97 COMMUNITY VARIANT: retain the broad dark rounded/oval dome, its worn pitted appearance and the small dark mark near the upper center. Preserve the low near-horizontal angular brow band and the two narrow black eye slots beneath it. Retain the long smooth rectangular central lower shield with rounded/angled bottom corners, subtle central ridge and the source's short cheek-side plates. Preserve the dome-to-brow-to-lower-shield proportions exactly. All very pale vertical hanging forms around the outside are dreadlocks to remove. Do not replace this with any other City Hunter mask mesh; do not add canonical side emitters, tubes, vents or engraved glyphs absent here. This is a community variant of an already covered City Hunter base, not a new canonical geometry.\n\nREFERENCE LIMITATIONS TO RESPECT: Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture. Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance. Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory. Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown. Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages. Fine lines at256px do not establish certified high-resolution franchise details.",
+          "promptSha256": "d6fcae3b1351fb0c85cba05d01dd5230d41c79bddf3652a3308e6a1dbf16319c",
+          "submittedReferencePaths": [
+            "/tmp/all-masks-20261113/web-references/fronts/predator_14.png"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "predator_kawaii",
+      "label": "Kawaii Phoenix",
+      "version": "B",
+      "assetPath": "public/game/biomasks-expansion-20261113/phg/predator_kawaii.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-141e1a08-b44a-4b0b-9b46-b1946fb4dfae.png",
+      "sha256": "a32167ef2d61ed12de0639aa6097314dd5c891ca271cb007fac84944f6c57204",
+      "bytes": 1800199,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "sourceAPath": "production/biomasks-expansion-20261113/references/community/predator_kawaii.png",
+      "sourceASha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea",
+      "submittedReferencePath": "/tmp/all-masks-20261113/web-references/fronts/predator_kawaii.png",
+      "submittedReferenceSha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea",
+      "sourceADimensions": [
+        256,
+        257
+      ],
+      "sourceAMode": "RGB",
+      "sourceClass": "secondary-port-capture",
+      "sourceReferenceViewedBeforeGeneration": true,
+      "generatedOutputViewedAfterGeneration": true,
+      "generationReceipt": "production/biomasks-expansion-20261113/generation/secondary-batch-3.json",
+      "renderMode": "imagegen",
+      "generatedNew": true,
+      "prompt": "Create ONE isolated biomask using the exact same visible design, shape proportions and near-front camera as the attached reference. The256x257 RGB screenshot of an unofficial community game-port HUD icon is the only authority for this edit. It is a secondary community reference, not a certified original franchise capture. Preserve the visible whole mask contour, width-to-height proportion, yaw/pitch/roll, panel layout, dark optics/apertures, surface reliefs and recognizable visible fine marks. Do not redesign it from a familiar franchise name.\n\nThe requested change is ONLY to isolate the hard mask and stage its visible surfaces as a coherent high-quality Predator:Hunting Grounds-style game-prop render. REMOVE the white/grey external dreadlocks and all pale hanging hair strands, hair bands, wearer/head/neck/body and the black reference background. These external strands are not mask appendages. Keep the actual mask shell and its clearly visible attached hardware. Do not add hair, neck, wearer, stand, floor, cables behind the shell, invented back, hidden profile geometry, horns, holes, vents, tubes, teeth, glyphs, letters or extra ornaments. Do not rebuild missing details from canon or imagination.\n\nMaintain the source's grayscale without adding any colored albedo, eye glow or warm gold. Original albedo and physical materials are unknown; this is a restrained grayscale material interpretation. Use physically coherent grey metallic and dark grey surfaces, roughness variations, a soft neutral key light from upper left/front, soft opposite frontal fill, legible dark recesses and contained fine surface grain. Preserve visible wear rather than adding damage, avoid all-over chrome, avoid crushed black outlines, avoid powdery noise. Retain the source's visible fine-line arrangements without adding runes or changing their placement; no claim of character-perfect engraving from a256px source.\n\nONE single mask, no sheet, no duplicate, no collage, no text or labels. True transparent alpha background, no baked black, no checkerboard. Square canvas, request1254x1254 if supported. Center the complete mask at approximately78–82 percent of the largest canvas dimension, with8–12 percent transparent margins and no cropped edges. Preserve source shape proportions; do not flatten, stretch, rotate to another angle or create a new side view.\n\nVISIBLE DESIGN LOCKS — Kawaii Phoenix COMMUNITY VARIANT: retain the wide upper crown with upward/outward swept pointed side plates. Keep the nested curved central ribs, inward-looping thin pale line motifs and their source positions on the forehead; do not turn their loops into text or runes. Retain the two very large dark almond-shaped eyes, narrow long central nose/lower plate and the sweeping cheek panels that curve toward it. Preserve the same lower pointed/tapered central contour and the small thin pale loops across the brow/nose bridge. All long white/grey strands outside or behind the shell are wearer dreadlocks and must be removed. Do not add phoenix feathers, beaks, horns, flames, a colored Phoenix palette, new top spikes or any lost rear geometry. This is the grayscale community Kawaii Phoenix variant of an already covered Phoenix base, not a new canonical design.\n\nREFERENCE LIMITATIONS TO RESPECT: Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture. Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance. Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory. Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown. Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages. Fine lines at256px do not establish certified high-resolution franchise details.\n\nSTRICT CORRECTION AFTER FIRST REVIEW: isolate only the shell visible in the reference. The pale striped rectangular bands on the outer white dreadlocks are NOT vent blocks on the mask. Do not retain them, attach them to the cheeks or invent hardware from them. The left and right outer cheek shell areas must remain smooth continuous source-shaped grey panels with only the thin source panel-edge lines. No added ribbed square/rectangular vents, no ribbed cheek plaques and no protruding side blocks. Keep every other source-visible macro shape, the curved crown ribs and thin pale forehead loops as shown. Preserve the visibly wide source proportion. Leave approximately110–130pixels transparent margin above and below on a1254square canvas.",
+      "promptSha256": "7ef1cec9d137e7ee797b6a07bc1f65f302654d983999e76f8c7b6620509d33e3",
+      "classification": "additional-community-variant-reference",
+      "basePairAlreadyPresent": "phg-cosmetic-phoenix",
+      "countsAsNewGeometry": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "alphaQa": {
+        "mode": "RGBA",
+        "alphaExtrema": [
+          0,
+          255
+        ],
+        "alpha16BBox": [
+          147,
+          64,
+          1107,
+          1179
+        ],
+        "visibleMarginsPx": [
+          147,
+          64,
+          147,
+          75
+        ],
+        "minimumVisibleMarginFraction": 0.05104,
+        "transparentPixels": 846437,
+        "opaquePixels": 1250,
+        "borderAlphaMax": 0
+      },
+      "selfReview": {
+        "verdict": "candidate-with-limitations",
+        "reviewType": "automated-agent-artistic-inspection-not-human-validation",
+        "notes": [
+          "Swept pointed crown, nested central curved ribs, large dark almond optics and long tapered central/cheek panels retained.",
+          "Pale loop arrangement remains recognizable; no extra letters or canonical glyph accuracy claimed.",
+          "External dreadlocks, wearer and backdrop removed. This stays a community Phoenix variant.",
+          "Corrected candidate has smooth outer cheeks; unsupported ribbed vent plaques from attempt1 are absent."
+        ]
+      },
+      "limitations": [
+        "Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture.",
+        "Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance.",
+        "Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory.",
+        "Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown.",
+        "Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages.",
+        "Fine lines at256px do not establish certified high-resolution franchise details.",
+        "New ImageGen grayscale mask-only rendering candidate; high-resolution microdetail is an interpretation of the256px source, not certified franchise geometry or exact UV/albedo.",
+        "Native visible minimum margin is below the requested8–12percent; full mask stays within the canvas. No CPU resizing or recropping performed.",
+        "One ImageGen correction removed the unsupported ribbed cheek plaques. Low-alpha1–9 edge pixels remain unedited; some viewers over-display those pixels."
+      ],
+      "attempts": [
+        {
+          "attempt": 1,
+          "selected": false,
+          "nativeSourcePath": "/workspace/generated_images/exec-f73a8849-e863-4739-9b9a-a1de466a603f.png",
+          "sha256": "663cc9acae15338bacb367adb1affe80366e10b3bad4e70ffbbddbf73415e57d",
+          "bytes": 1910491,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Create ONE isolated biomask using the exact same visible design, shape proportions and near-front camera as the attached reference. The256x257 RGB screenshot of an unofficial community game-port HUD icon is the only authority for this edit. It is a secondary community reference, not a certified original franchise capture. Preserve the visible whole mask contour, width-to-height proportion, yaw/pitch/roll, panel layout, dark optics/apertures, surface reliefs and recognizable visible fine marks. Do not redesign it from a familiar franchise name.\n\nThe requested change is ONLY to isolate the hard mask and stage its visible surfaces as a coherent high-quality Predator:Hunting Grounds-style game-prop render. REMOVE the white/grey external dreadlocks and all pale hanging hair strands, hair bands, wearer/head/neck/body and the black reference background. These external strands are not mask appendages. Keep the actual mask shell and its clearly visible attached hardware. Do not add hair, neck, wearer, stand, floor, cables behind the shell, invented back, hidden profile geometry, horns, holes, vents, tubes, teeth, glyphs, letters or extra ornaments. Do not rebuild missing details from canon or imagination.\n\nMaintain the source's grayscale without adding any colored albedo, eye glow or warm gold. Original albedo and physical materials are unknown; this is a restrained grayscale material interpretation. Use physically coherent grey metallic and dark grey surfaces, roughness variations, a soft neutral key light from upper left/front, soft opposite frontal fill, legible dark recesses and contained fine surface grain. Preserve visible wear rather than adding damage, avoid all-over chrome, avoid crushed black outlines, avoid powdery noise. Retain the source's visible fine-line arrangements without adding runes or changing their placement; no claim of character-perfect engraving from a256px source.\n\nONE single mask, no sheet, no duplicate, no collage, no text or labels. True transparent alpha background, no baked black, no checkerboard. Square canvas, request1254x1254 if supported. Center the complete mask at approximately78–82 percent of the largest canvas dimension, with8–12 percent transparent margins and no cropped edges. Preserve source shape proportions; do not flatten, stretch, rotate to another angle or create a new side view.\n\nVISIBLE DESIGN LOCKS — Kawaii Phoenix COMMUNITY VARIANT: retain the wide upper crown with upward/outward swept pointed side plates. Keep the nested curved central ribs, inward-looping thin pale line motifs and their source positions on the forehead; do not turn their loops into text or runes. Retain the two very large dark almond-shaped eyes, narrow long central nose/lower plate and the sweeping cheek panels that curve toward it. Preserve the same lower pointed/tapered central contour and the small thin pale loops across the brow/nose bridge. All long white/grey strands outside or behind the shell are wearer dreadlocks and must be removed. Do not add phoenix feathers, beaks, horns, flames, a colored Phoenix palette, new top spikes or any lost rear geometry. This is the grayscale community Kawaii Phoenix variant of an already covered Phoenix base, not a new canonical design.\n\nREFERENCE LIMITATIONS TO RESPECT: Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture. Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance. Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory. Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown. Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages. Fine lines at256px do not establish certified high-resolution franchise details.",
+          "promptSha256": "afa339d92618cfaa1342009c2000804d128f57d8d01e9c2e53d6080ee65e9281",
+          "submittedReferencePaths": [
+            "/tmp/all-masks-20261113/web-references/fronts/predator_kawaii.png"
+          ],
+          "rejectionReason": "Added ribbed cheek-side vent plaques that may interpret pale dreadlock bands as mask hardware."
+        },
+        {
+          "attempt": 2,
+          "selected": true,
+          "nativeSourcePath": "/workspace/generated_images/exec-141e1a08-b44a-4b0b-9b46-b1946fb4dfae.png",
+          "sha256": "a32167ef2d61ed12de0639aa6097314dd5c891ca271cb007fac84944f6c57204",
+          "bytes": 1800199,
+          "nativeDimensions": [
+            1254,
+            1254
+          ],
+          "prompt": "Create ONE isolated biomask using the exact same visible design, shape proportions and near-front camera as the attached reference. The256x257 RGB screenshot of an unofficial community game-port HUD icon is the only authority for this edit. It is a secondary community reference, not a certified original franchise capture. Preserve the visible whole mask contour, width-to-height proportion, yaw/pitch/roll, panel layout, dark optics/apertures, surface reliefs and recognizable visible fine marks. Do not redesign it from a familiar franchise name.\n\nThe requested change is ONLY to isolate the hard mask and stage its visible surfaces as a coherent high-quality Predator:Hunting Grounds-style game-prop render. REMOVE the white/grey external dreadlocks and all pale hanging hair strands, hair bands, wearer/head/neck/body and the black reference background. These external strands are not mask appendages. Keep the actual mask shell and its clearly visible attached hardware. Do not add hair, neck, wearer, stand, floor, cables behind the shell, invented back, hidden profile geometry, horns, holes, vents, tubes, teeth, glyphs, letters or extra ornaments. Do not rebuild missing details from canon or imagination.\n\nMaintain the source's grayscale without adding any colored albedo, eye glow or warm gold. Original albedo and physical materials are unknown; this is a restrained grayscale material interpretation. Use physically coherent grey metallic and dark grey surfaces, roughness variations, a soft neutral key light from upper left/front, soft opposite frontal fill, legible dark recesses and contained fine surface grain. Preserve visible wear rather than adding damage, avoid all-over chrome, avoid crushed black outlines, avoid powdery noise. Retain the source's visible fine-line arrangements without adding runes or changing their placement; no claim of character-perfect engraving from a256px source.\n\nONE single mask, no sheet, no duplicate, no collage, no text or labels. True transparent alpha background, no baked black, no checkerboard. Square canvas, request1254x1254 if supported. Center the complete mask at approximately78–82 percent of the largest canvas dimension, with8–12 percent transparent margins and no cropped edges. Preserve source shape proportions; do not flatten, stretch, rotate to another angle or create a new side view.\n\nVISIBLE DESIGN LOCKS — Kawaii Phoenix COMMUNITY VARIANT: retain the wide upper crown with upward/outward swept pointed side plates. Keep the nested curved central ribs, inward-looping thin pale line motifs and their source positions on the forehead; do not turn their loops into text or runes. Retain the two very large dark almond-shaped eyes, narrow long central nose/lower plate and the sweeping cheek panels that curve toward it. Preserve the same lower pointed/tapered central contour and the small thin pale loops across the brow/nose bridge. All long white/grey strands outside or behind the shell are wearer dreadlocks and must be removed. Do not add phoenix feathers, beaks, horns, flames, a colored Phoenix palette, new top spikes or any lost rear geometry. This is the grayscale community Kawaii Phoenix variant of an already covered Phoenix base, not a new canonical design.\n\nREFERENCE LIMITATIONS TO RESPECT: Secondary unofficial PAYDAY2 port/HUD icon, not a named original PHG menu capture. Community label is proven only in the pinned localization file; README credits multiple games without per-mask provenance. Reference PNG is RGB256x257 screenshot from native256x256 DDS visualization; no source image conversion or editing was performed in this inventory. Source is grayscale; original game palette, UV, exact physical material, profile/back and hidden geometry are unknown. Dreadlocks are visible around/behind the mask; they are wearer elements to exclude from B, not mask appendages. Fine lines at256px do not establish certified high-resolution franchise details.\n\nSTRICT CORRECTION AFTER FIRST REVIEW: isolate only the shell visible in the reference. The pale striped rectangular bands on the outer white dreadlocks are NOT vent blocks on the mask. Do not retain them, attach them to the cheeks or invent hardware from them. The left and right outer cheek shell areas must remain smooth continuous source-shaped grey panels with only the thin source panel-edge lines. No added ribbed square/rectangular vents, no ribbed cheek plaques and no protruding side blocks. Keep every other source-visible macro shape, the curved crown ribs and thin pale forehead loops as shown. Preserve the visibly wide source proportion. Leave approximately110–130pixels transparent margin above and below on a1254square canvas.",
+          "promptSha256": "7ef1cec9d137e7ee797b6a07bc1f65f302654d983999e76f8c7b6620509d33e3",
+          "submittedReferencePaths": [
+            "/tmp/all-masks-20261113/web-references/fronts/predator_kawaii.png"
+          ]
+        }
+      ]
+    }
+  ],
+  "asOfUtc": "2026-11-13T10:33:57.881011+00:00"
+}

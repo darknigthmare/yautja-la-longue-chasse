@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:,">
+  <title>Masques — vues officielles, candidats à revoir</title>
+  <style>
+    :root{color-scheme:dark;font:15px/1.55 system-ui,sans-serif;--ink:#e8eeea;--muted:#bac8bf;--line:#526b5d;--panel:#15271d;--accent:#f0cf85;--image-max:360px}
+    *{box-sizing:border-box}body{margin:0;background:#0b1510;color:var(--ink)}header,main,footer{max-width:1500px;margin:auto;padding:1.25rem}header{padding-top:2rem}h1{font-size:clamp(1.75rem,4vw,2.8rem);line-height:1.18;margin:.25rem 0 .8rem}h2{font-size:1.3rem;margin:.2rem 0 .7rem}h3{font-size:1rem;margin:.4rem 0}p{max-width:105ch}a{color:#a9e7cc;text-underline-offset:3px}button,input,select{font:inherit;color:inherit;background:#20392a;border:1px solid #839b8a;border-radius:5px;padding:.55rem .7rem}button{cursor:pointer}button:hover{background:#31503b}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.eyebrow{color:var(--accent);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}.notice{border-left:4px solid var(--accent);padding:.8rem 1rem;background:#293827}.muted,.counts{color:var(--muted)}.toolbar{border:1px solid var(--line);padding:1rem;border-radius:8px;background:#122219}.controls{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}.controls label{display:inline-flex;align-items:center;gap:.45rem;max-width:100%;min-width:0}.controls select{max-width:100%;min-width:0}.controls input[type=range]{width:130px;padding:0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem;margin:1.25rem 0}article{min-width:0;border:1px solid var(--line);padding:1rem;background:var(--panel);border-radius:8px}.comparison{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}.comparison figure{margin:0;min-width:0}.stage{height:310px;position:relative;display:flex;align-items:center;justify-content:center;border:1px solid #859084;border-radius:5px;overflow:hidden;background-color:#c5cbc6;background-image:linear-gradient(45deg,#eef1ed 25%,transparent 25%),linear-gradient(-45deg,#eef1ed 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#eef1ed 75%),linear-gradient(-45deg,transparent 75%,#eef1ed 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}body[data-background=dark] .stage{background:#050a07}body[data-background=terrain] .stage{background:#55654a}.art-frame{position:relative;width:min(100%,var(--image-max));max-height:100%;aspect-ratio:var(--ratio,1)}.art-frame img{display:block;width:100%;height:100%;object-fit:contain}.art-frame svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.bounds,.pivot{display:none}body[data-bounds=true] .bounds,body[data-pivots=true] .pivot{display:block}.bounds{fill:none;stroke:#ff5353;stroke-width:3;vector-effect:non-scaling-stroke}.pivot{stroke:#46fcdf;stroke-width:2;vector-effect:non-scaling-stroke}figcaption,.small{font-size:.84rem}figcaption{margin-top:.5rem;color:var(--muted)}.meta{font-size:.85rem;overflow-wrap:anywhere}.card-actions{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.8rem}.pill{display:inline-block;font-size:.77rem;border:1px solid #9cb19f;border-radius:1rem;padding:.12rem .5rem;color:#f0d491}.angle-note{font-size:.87rem;color:#f2d89c}.empty{padding:1.5rem;border:1px dashed var(--line)}details{border:1px solid var(--line);border-radius:7px;padding:1rem;margin:1.2rem 0}summary{cursor:pointer;color:var(--accent);font-weight:600}.table-scroll{overflow:auto;max-width:100%}table{width:100%;min-width:720px;border-collapse:collapse;font-size:.85rem;margin-top:1rem}th,td{padding:.6rem;border:1px solid var(--line);text-align:left;vertical-align:top;overflow-wrap:anywhere}td:nth-child(2){min-width:140px}td:nth-child(3){min-width:310px}.open-count{color:var(--muted)}footer{border-top:1px solid var(--line);font-size:.86rem;color:var(--muted)}dialog{position:fixed;inset:0 0 0 auto;margin:0;width:min(700px,100%);height:100dvh;max-width:100%;max-height:100dvh;overflow:auto;border:1px solid #8da591;background:#122219;color:var(--ink);padding:1.25rem}dialog::backdrop{background:#000b}.drawer-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;position:sticky;top:-1.25rem;background:#122219f7;padding:.8rem 0;z-index:1}.drawer-head h2{margin:.2rem 0}.detail-image{max-height:45vh;max-width:100%;width:auto;height:auto;display:block;margin:auto}.detail-stage{padding:1rem;height:auto;min-height:220px}.detail-body{overflow-wrap:anywhere}dl{margin:.8rem 0}dt{font-weight:600;color:var(--accent)}dd{margin:0 0 .7rem}li{margin:.4rem 0}code{font-size:.85em}.source-reference{border-top:1px solid var(--line);padding-top:.7rem}
+    .comparison.single{grid-template-columns:minmax(0,1fr)}
+    @media(max-width:1000px){.grid{grid-template-columns:minmax(0,1fr)}.stage{height:340px}}
+    @media(max-width:560px){header,main,footer{padding:1rem}.comparison{gap:.55rem}.stage{height:230px}.controls{align-items:flex-start;gap:.8rem}.controls label{flex-wrap:wrap}.controls input[type=range]{width:110px}article{padding:.75rem}dialog{padding:1rem}.drawer-head{top:-1rem}.card-actions{gap:.7rem}h2{font-size:1.15rem}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+  </style>
+</head>
+<body data-background="checker" data-bounds="false" data-pivots="false">
+<header>
+  <p class="eyebrow">Yautja — La Longue Chasse · revue des masques</p>
+  <h1>Masques · couleurs et vues officielles</h1>
+  <p class="notice"><strong id="batch-notice">Vues candidates à revoir.</strong> Ces générations suivent les vues et matériaux visibles dans les références officielles. La fidélité canonique 1:1, la validation artistique humaine et l’intégration en jeu restent ouvertes. Aucun profil ou dos caché n’est déduit.</p>
+  <p class="counts" id="summary" role="status"></p>
+  <p class="small">Les anciens PNG frontaux monochromes restent conservés. Les angles et les sources diffèrent : la comparaison ne mesure pas une correspondance pixel pour pixel. Les photos officielles ne sont pas republiées ici.</p>
+</header>
+<main>
+  <section class="toolbar" aria-label="Affichage des candidats">
+    <div class="controls">
+      <label for="mask-filter">Masque <select id="mask-filter"><option value="all">Tous les candidats</option></select></label>
+      <label for="background">Fond <select id="background"><option value="checker">Damier</option><option value="dark">Sombre</option><option value="terrain">Sol verdâtre</option></select></label>
+      <label for="image-size">Aperçu <input id="image-size" type="range" min="140" max="480" step="20" value="360"><output id="image-size-value" for="image-size">360 px max.</output></label>
+      <label><input type="checkbox" id="show-bounds"> Bornes alpha ≥ 16</label>
+      <label><input type="checkbox" id="show-pivots"> Pivots proposés</label>
+    </div>
+    <p id="results" class="small" role="status" aria-live="polite"></p>
+  </section>
+  <div id="grid" class="grid"></div>
+  <p id="empty" class="empty" hidden>Aucun candidat dans cette sélection.</p>
+  <details id="remaining-panel">
+    <summary id="remaining-summary">Cibles nommées encore sans découpe candidate</summary>
+    <p id="remaining-note">Une cible peut exiger plusieurs formes ou états ; le nombre exact de PNG requis reste indéterminé. Les vues candidates ne ferment pas la fidélité canonique, les autres angles ou l’intégration en jeu.</p>
+    <p class="open-count" id="remaining-count"></p>
+    <div class="table-scroll"><table><thead><tr><th>ID</th><th>Nom / œuvre</th><th>Exigence conservée</th><th>État</th></tr></thead><tbody id="remaining-rows"></tbody></table></div>
+  </details>
+</main>
+<footer>
+  <p><a href="manifest.json">Manifeste et empreintes SHA256</a> · <a href="../p0-sprites-20261113/review.html">Premier lot conservé</a> · <a href="../biomasks-20261113/review.html">Inventaire et treize candidats précédents</a></p>
+  <p>Les PNG natifs ne sont ni découpés, ni recolorés, ni réencodés par cette galerie. Les fonds et repères sont des calques d’affichage. Aucun export d’image, stockage navigateur ou état de jeu n’est écrit. Tab et Entrée ouvrent les sources ; Échap ferme le tiroir et restitue le focus.</p>
+</footer>
+<dialog id="details" aria-labelledby="detail-title">
+  <div class="drawer-head"><h2 id="detail-title"></h2><button type="button" id="close-details">Fermer</button></div>
+  <div id="detail-body" class="detail-body"></div>
+</dialog>
+<script type="application/json" id="pack-data">__PACK_DATA__</script>
+<script>
+(function(){
+  'use strict';
+  const pack=JSON.parse(document.getElementById('pack-data').textContent);
+  const grid=document.getElementById('grid'),dialog=document.getElementById('details');
+  const stats={rendered:0,errors:0,assetCount:pack.assets.length};
+  let opener=null;
+  function el(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;}
+  function localUrl(asset){const url=asset.url||('/'+asset.path.replace(/^public\//,''));if(!url.startsWith('/game/')||url.includes('..'))throw new Error('Unexpected asset URL');return '../'+url.slice('/game/'.length);}
+  function link(text,url){const a=el('a',text);a.href=url;if(url.startsWith('https://')){a.target='_blank';a.rel='noopener noreferrer';}return a;}
+  function nativeImage(asset,previous){const image=el('img');image.src=localUrl(asset);image.alt=previous?asset.label||'Ancien candidat frontal monochrome':asset.label+' — nouvelle vue candidate';image.decoding='async';if(!previous){image.dataset.assetId=asset.id;image.addEventListener('load',()=>{stats.rendered++;image.dataset.loaded='true';});image.addEventListener('error',()=>{stats.errors++;image.dataset.loaded='false';});}return image;}
+  function overlay(asset){
+    const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 '+asset.width+' '+asset.height);svg.setAttribute('aria-hidden','true');
+    const b=asset.alpha.bounds16,rect=document.createElementNS(ns,'rect');rect.setAttribute('class','bounds');for(const [key,value]of Object.entries({x:b[0],y:b[1],width:b[2]-b[0],height:b[3]-b[1]}))rect.setAttribute(key,value);svg.append(rect);
+    const [x,y]=asset.pivot;for(const coords of [{x1:x-22,y1:y,x2:x+22,y2:y},{x1:x,y1:y-22,x2:x,y2:y+22}]){const line=document.createElementNS(ns,'line');line.setAttribute('class','pivot');for(const [key,value]of Object.entries(coords))line.setAttribute(key,value);svg.append(line);}return svg;
+  }
+  function stage(asset,previous){const box=el('div',undefined,'stage'),frame=el('div',undefined,'art-frame');frame.style.setProperty('--ratio',(asset.width||1)+' / '+(asset.height||1));frame.append(nativeImage(asset,previous));if(!previous)frame.append(overlay(asset));box.append(frame);return box;}
+  function card(asset){
+    const article=el('article');article.dataset.assetId=asset.id;article.append(el('h2',asset.label),el('span','Candidat statique · validation ouverte','pill'));
+    const pair=el('div',undefined,asset.previousCandidate?'comparison':'comparison single'),fresh=el('figure');
+    fresh.append(el('h3','Nouvelle vue en couleur'),stage(asset,false),el('figcaption',asset.view));
+    pair.append(fresh);
+    if(asset.previousCandidate){const old=el('figure');old.append(el('h3','Ancien frontal conservé'),stage(asset.previousCandidate,true),el('figcaption',asset.previousCandidate.provenance||'Référence communautaire monochrome ; vue distincte.'));pair.append(old);}
+    article.append(pair,el('p',asset.previousCandidate?'Angles et provenance distincts : les détails cachés restent ouverts.':'Première vue candidate pour cette cible nommée ; les autres angles et détails cachés restent ouverts.','angle-note'));
+    if(asset.partialReferenceView){article.append(el('p','Vue partielle : les deux petits éléments supérieurs coupés dans la référence sont exclus. Cette découpe ne représente pas une silhouette complète.','notice partial-reference'));const missing=el('ul',undefined,'small');for(const item of asset.incompleteSourceElements||[])missing.append(el('li',item));article.append(missing);}
+    article.append(el('p',asset.width+' × '+asset.height+' px natifs · SHA256 '+asset.sha256,'meta'));
+    const actions=el('div',undefined,'card-actions'),button=el('button','Sources et limites');button.type='button';button.dataset.details=asset.id;button.addEventListener('click',()=>openDetails(asset,button));actions.append(button,link('PNG natif',localUrl(asset)));article.append(actions);return article;
+  }
+  function render(){const value=document.getElementById('mask-filter').value,assets=pack.assets.filter(a=>value==='all'||a.id===value);grid.replaceChildren(...assets.map(card));document.getElementById('results').textContent=assets.length+' vue(s) candidate(s) affichée(s).';document.getElementById('empty').hidden=assets.length>0;}
+  function row(dl,title,value){dl.append(el('dt',title),el('dd',String(value)));}
+  function openDetails(asset,button){
+    opener=button;document.getElementById('detail-title').textContent=asset.label+' — sources et limites';const body=document.getElementById('detail-body');body.replaceChildren();
+    const box=el('div',undefined,'stage detail-stage'),image=nativeImage(asset,true);image.className='detail-image';image.dataset.detailNative='true';image.alt=asset.label+' — PNG natif entier';box.append(image);body.append(box);
+    const dl=el('dl');row(dl,'Vue générée',asset.view);row(dl,'Dimensions natives',asset.width+' × '+asset.height+' px');row(dl,'SHA256 du candidat',asset.sha256);row(dl,'Qualification','Candidat généré ; canon 1:1, art humain et runtime non validés.');row(dl,'Pivot proposé',JSON.stringify(asset.pivot));row(dl,'Marges alpha ≥ 16',JSON.stringify(asset.alpha.marginsPixels));body.append(dl,link('Ouvrir le PNG natif',localUrl(asset)),el('h3','Références officielles consultées'));
+    for(const source of asset.references){const section=el('section',undefined,'source-reference'),info=el('dl');section.append(link(source.label||source.id,source.url));row(info,'SHA256 de la source',source.sha256);row(info,'Dimensions source',source.width+' × '+source.height+' px');if(source.view)row(info,'Vue visible',source.view);if(source.observations)row(info,'Observation',Array.isArray(source.observations)?source.observations.join(' '):source.observations);section.append(info);body.append(section);}
+    if(asset.partialReferenceView){body.append(el('p','Vue partielle : la source officielle coupe deux petits éléments supérieurs ; ils sont exclus du candidat. La silhouette complète reste à documenter.','notice'));}
+    body.append(el('h3','Limites conservées'));const list=el('ul');for(const note of [...asset.limitations,...(asset.incompleteSourceElements||[])])list.append(el('li',note));body.append(list,el('p','Les photos tierces restent hors de ce pack. Les liens et empreintes documentent la provenance sans transformer la génération en validation.','small'));dialog.showModal();document.getElementById('close-details').focus();
+  }
+  function close(){dialog.close();}
+  dialog.addEventListener('close',()=>{if(opener?.isConnected)opener.focus();});document.getElementById('close-details').addEventListener('click',close);
+  document.getElementById('mask-filter').addEventListener('change',render);
+  document.getElementById('background').addEventListener('change',e=>document.body.dataset.background=e.target.value);
+  document.getElementById('show-bounds').addEventListener('change',e=>document.body.dataset.bounds=String(e.target.checked));
+  document.getElementById('show-pivots').addEventListener('change',e=>document.body.dataset.pivots=String(e.target.checked));
+  document.getElementById('image-size').addEventListener('input',e=>{document.documentElement.style.setProperty('--image-max',e.target.value+'px');document.getElementById('image-size-value').textContent=e.target.value+' px max.';});
+  for(const asset of pack.assets){const option=el('option',asset.label);option.value=asset.id;document.getElementById('mask-filter').append(option);}
+  document.getElementById('batch-notice').textContent=pack.counts.nativeFiles+' vues candidates à revoir.';
+  document.getElementById('summary').textContent=pack.counts.nativeFiles+' PNG natifs supplémentaires · '+pack.counts.newNamedTargets+' nouvelle(s) cible(s) nommée(s) · '+pack.counts.improvedExistingNamedTargets+' identité(s) déjà candidate(s) améliorée(s) · '+pack.counts.remainingNamedTargets+' cibles encore sans découpe candidate · canon / humain / jeu : 0 / 0 / 0.';
+  document.getElementById('remaining-note').textContent=pack.counts.newNamedTargets+' cibles nommées reçoivent une première vue candidate et '+pack.counts.improvedExistingNamedTargets+' identités déjà candidates sont améliorées. '+pack.counts.remainingNamedTargets+' cibles restent sans découpe candidate. Une cible peut exiger plusieurs formes ou états ; le nombre exact de PNG requis reste indéterminé. La fidélité canonique, les autres angles et l’intégration restent ouverts.';
+  const remaining=pack.remainingTargets||[];document.getElementById('remaining-summary').textContent=remaining.length+' cibles nommées encore sans découpe candidate';document.getElementById('remaining-count').textContent=remaining.length+' identités documentaires ; total exact des images requis indéterminé.';
+  for(const target of remaining){const tr=el('tr');for(const value of [target.id,target.name+(target.work?' — '+target.work:''),target.description||target.guardrail||'Référence visuelle toujours requise',target.baselineStatus||'Ouvert'])tr.append(el('td',value));document.getElementById('remaining-rows').append(tr);}
+  window.__PRIMARY_MASK_REVIEW__={getStats:()=>({...stats}),getPack:()=>pack};render();
+})();
+</script>
+</body>
+</html>

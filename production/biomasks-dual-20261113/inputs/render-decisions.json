@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "decisions": [
+    {
+      "id": "mk-06-wolf",
+      "mode": "source-reuse",
+      "generatedNew": false,
+      "reason": "The existing project image already has PHG-compatible high quality PBR rendering. Two attempted restagings changed readable forehead glyphs. Both are unselected; B reuses A byte-for-byte to retain the original glyph map.",
+      "sourceAPath": "public/game/sprites/v62/masks/wolf.png",
+      "receipt": "production/biomasks-dual-20261113/generation/batch-1.json",
+      "newCanonicalMask": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ],
+  "counts": {
+    "pairs": 46,
+    "sourceAReuses": 46,
+    "newImageGenB": 45,
+    "sourceBReuses": 1,
+    "canonicalNamedTargetsStillMissing": 46
+  }
+}

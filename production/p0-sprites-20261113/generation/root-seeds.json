@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "baseCommit": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "generator": "image_gen.imagegen",
+  "rasterMutationAfterGeneration": false,
+  "artStatus": "generated-candidate",
+  "humanValidated": false,
+  "canonCertified": false,
+  "assets": [
+    {
+      "id": "relay-active",
+      "kind": "prop",
+      "nativeSourcePath": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+      "path": "public/game/p0-sprites-20261113/props/relay-active.png",
+      "prompt": "EDIT THE PROVIDED GAME SPRITE, not a new design. Produce exactly ONE detailed isolated RTS relay prop on a native transparent alpha background. Strict one-to-one fidelity to the reference silhouette and construction: same orthographic three-quarter front view, same tall Y-shaped antenna, same slanted blocky control housing, same narrow front control screen with exactly three amber-orange round status lights in a diagonal, same two angular side panels, same three splayed armored foot plates. Preserve the relative bounding box, framing, placement, footprint, all component counts and proportions; the whole antenna and all feet must fit with a generous transparent margin. Square output, preferably1024x1024. The reference ground anchor is at normalized(0.5,0.8); keep this stable. Upgrade only material rendering and small-scale surface detail: dark teal gunmetal and charcoal steel, restrained weathered bronze edge strips, shallow geometric Yautja tooling marks without readable letters, believable bevels and seams, fine edge wear, consistent soft upper-left light. Premium detailed 2.5D hand-painted game prop, readable at128–256px, grounded in Predator/Yautja technological visual language without inventing film provenance. No new horns, skulls, cables, weapons, extra antennae or changed silhouette. Active status uses only those three small orange lights; no area glow or haze. Single object only. NO background, floor, cast shadow, checkerboard, scenery, human lettering, UI frame, captions, watermark or duplicate views. Keep source identity exact; this is the active relay state.",
+      "references": [
+        {
+          "path": "public/game/assets/clan-field-20261103/relay-active.png",
+          "role": "exact project silhouette, camera and state",
+          "sha256": "e5f0640c75eaa7cd5ee93bf778f962d02df069e0c26e571fd24838bb03048e43"
+        }
+      ],
+      "anchorNormalized": [
+        0.5,
+        0.8
+      ],
+      "camera": "orthographic-three-quarter",
+      "state": "active",
+      "animationFrames": 1,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/manifest.json",
+      "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a",
+      "bytes": 698686,
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "transparentRatio": 0.8257359543559493,
+        "nearOpaquePixels": 259986,
+        "visibleBoundsAt16": [
+          333,
+          137,
+          849,
+          1079
+        ]
+      },
+      "promptSha256": "3c9236919218726f53f4efc433db9ce3a2beb66e28c70d3b7ecf4d837f6f3e3b"
+    },
+    {
+      "id": "units-u01-u06",
+      "kind": "unit-atlas",
+      "nativeSourcePath": "/workspace/generated_images/exec-6da11ff5-d6d3-485a-9121-9f215da8d129.png",
+      "path": "public/game/p0-sprites-20261113/units/u01-u06.png",
+      "prompt": "Generate a production game sprite ATLAS with EXACTLY SIX separate full-body Yautja warrior role sprites, arranged in an exact3-column by2-row regular grid. Landscape3:2 canvas, ideally1536x1024; each cell square512x512. Each figure must fit entirely inside its own cell with clear transparent gutter on all sides, feet on one consistent cell-relative baseline, same body scale(about400px tall), no overlap. Reference image establishes authentic existing project Yautja anatomy and rendering: four mandibles, heavy reptilian brow, black thick dreadlocks with bronze rings, mottled tan/brown skin, broad chest, strong legs/clawed feet, dark mesh/body net and weathered dark-metal/bronze hunting equipment. Keep all these anatomical/material properties, with readable silhouette at64–128px, detailed2.5D game art, orthographic three-quarter camera elevated about30degrees, all six facing diagonally toward the lower right. Same upper-left light, no cast floor shadow. Each is ONE member archetype of a source squad, never paint the full squad or an icon. This is original-project role art, not named film characters. Exact slot roles, reading left to right then next row: TOPLEFT W3-U01 border tracker: light armor, low alert stance, compact combistick and small tracking pouch; TOPMIDDLE W3-U02 ridge scout: slim high-visibility observer, compact Yautja optics biomask and wrist observation terminal, no human binoculars or heavy cannon; TOPRIGHT W3-U03 marsh watcher: dark moss/copper waterproof armor, upright short hunting spear, alert lookout, no water or ground; BOTTOMLEFT W3-U04 scent tracker: crouched forward slightly examining spoor with a small wrist sensor, light mesh armor, no creature extra; BOTTOMMIDDLE W3-U05 shadow lookout: restrained charcoal light armor and small dark shoulder mantle, stealthy standing readiness, opaque body/no cloak transparency; BOTTOMRIGHT W3-U06 route marker: practical light armor, carrying one small orange-lit Yautja route beacon rod and a compact marker pack. Distinguish gear and poses while keeping the same family proportions. All solid bodies and equipment fully opaque, native straight alpha only outside silhouettes with antialias at edges. No scenery/background/floor/base/plinth, no fog/glow behind figures, no text/numbers/labels/gridlines/borders/frames/watermark. Do not invent uniforms from unrelated franchises or human rifle shapes. EXACTLY six isolated characters only.",
+      "references": [
+        {
+          "path": "public/game/homeworld/v84/npcs/guard/01.png",
+          "role": "project Yautja anatomy and materials",
+          "sha256": "1b416c3c1e0b9bc16bc35e386267e0dbed1965d7ef3a4925a3866461c91e9191"
+        }
+      ],
+      "camera": "orthographic-three-quarter-requested30degrees",
+      "grid": {
+        "columns": 3,
+        "rows": 2
+      },
+      "sourceBlueprint": "app/game/clanWarBibleV6Source.json",
+      "frames": [
+        {
+          "id": "W3-U01",
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "pivotStatus": "proposed standing ground reference; not physical scale approval",
+          "animationFrames": 1,
+          "pose": "static-role-archetype",
+          "facing": "lower-right",
+          "humanValidated": false
+        },
+        {
+          "id": "W3-U02",
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "pivotStatus": "proposed standing ground reference; not physical scale approval",
+          "animationFrames": 1,
+          "pose": "static-role-archetype",
+          "facing": "lower-right",
+          "humanValidated": false
+        },
+        {
+          "id": "W3-U03",
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "pivotStatus": "proposed standing ground reference; not physical scale approval",
+          "animationFrames": 1,
+          "pose": "static-role-archetype",
+          "facing": "lower-right",
+          "humanValidated": false
+        },
+        {
+          "id": "W3-U04",
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "pivotStatus": "proposed standing ground reference; not physical scale approval",
+          "animationFrames": 1,
+          "pose": "static-role-archetype",
+          "facing": "lower-right",
+          "humanValidated": false
+        },
+        {
+          "id": "W3-U05",
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "pivotStatus": "proposed standing ground reference; not physical scale approval",
+          "animationFrames": 1,
+          "pose": "static-role-archetype",
+          "facing": "lower-right",
+          "humanValidated": false
+        },
+        {
+          "id": "W3-U06",
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ],
+          "pivot": [
+            256,
+            490
+          ],
+          "pivotStatus": "proposed standing ground reference; not physical scale approval",
+          "animationFrames": 1,
+          "pose": "static-role-archetype",
+          "facing": "lower-right",
+          "humanValidated": false
+        }
+      ],
+      "sha256": "a893fccf7912c25fcc3d876adaacb638a73877cb4fc3a572c98d0ee5f79502de",
+      "bytes": 2174626,
+      "nativeSize": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "alpha": {
+        "transparentRatio": 0.7029507954915365,
+        "nearOpaquePixels": 346971,
+        "visibleBoundsAt16": [
+          127,
+          9,
+          1372,
+          1010
+        ]
+      },
+      "promptSha256": "5f09f047eccc04782af714e7dae8aa0f50614cd7a7aa77686bca7554ced2c594"
+    }
+  ]
+}

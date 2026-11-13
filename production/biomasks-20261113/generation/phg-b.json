@@ -1,0 +1,516 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "status": "generated-candidates",
+  "sourceBaselineCommit": "f26b985e7c354a611963d9aaa76e10d9a26a6586",
+  "method": "ImageGen native reference-based individual cutouts; native files copied byte-identically, no CPU raster editing",
+  "sourceCommunity": {
+    "repository": "Matthelzor/pd2-predator-pack",
+    "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+    "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+    "scope": "Community PAYDAY2 port icon attributed by repository README to Predator: Hunting Grounds / IllFonic and other games; not publisher-certified"
+  },
+  "humanArtValidated": false,
+  "canonCertified": false,
+  "runtimeIntegrated": false,
+  "counts": {
+    "generatedCandidates": 4,
+    "nativePngFiles": 4,
+    "animationClips": 0,
+    "humanValidated": 0,
+    "canonCertified": 0
+  },
+  "entries": [
+    {
+      "id": "phg-phoenix",
+      "name": "phoenix",
+      "source": "predator_05",
+      "locks": "Phoenix. Retain the fan-like layered curved blade/feather crown wrapping the upper dome, including each visible outlined point and the pointed central forehead leaf. Preserve the single small dark oval at the bridge between the eye regions, the angled eyes, elongated angular cheek panels and tapered central lower face. The crown is made of the same curved metallic layered plates as the reference, never flames, feathers with barbs, horns or a bird beak. Lower jaw ends as in the icon, without added fangs.",
+      "prompt": "Reference-constrained detached biomask asset, one complete object only. The supplied image is the actual named 256px monochrome community port HUD icon; preserve its visible mask geometry and source near-front camera, without rotating to an invented new view. ISOLATE the physical METAL MASK, not the generic pale porter's head or the long white hair/dread strands shared behind the mask. Those strands must NOT become metal teeth, tassels, spikes, hair or a helmet skirt. Keep native asymmetries, exact major contour, all visibly established large points, eye aperture layout, plate divisions, negative spaces and grayscale value relationships. Do not redesign, extrapolate hidden sides/back, add invented engraving, text/runes, ornaments, teeth, muzzle mechanisms or generic Predator features. Finite low resolution cannot establish microdetail: keep ambiguous surfaces restrained rather than inventing decorations. Material: physically opaque grayscale metal with the source's restrained highlights, no new color scheme. Standalone cutout, centered on a square1254x1254 canvas, complete silhouette at most80percent of canvas height and width, at least10percent empty native alpha on EVERY side. Genuine transparent background, solid object, antialiased boundary. No character/body, hair, floor, shadow, glow, UI, labels, frame or watermark. This remains a candidate study based on a secondary icon, not certified original PHG pixels/color/UVs. SPECIFIC LOCKS: Phoenix. Retain the fan-like layered curved blade/feather crown wrapping the upper dome, including each visible outlined point and the pointed central forehead leaf. Preserve the single small dark oval at the bridge between the eye regions, the angled eyes, elongated angular cheek panels and tapered central lower face. The crown is made of the same curved metallic layered plates as the reference, never flames, feathers with barbs, horns or a bird beak. Lower jaw ends as in the icon, without added fangs.",
+      "nativeSourcePath": "/workspace/generated_images/exec-035bc44a-6dc5-47db-a00c-4d6f34dddecc.png",
+      "assetPath": "public/game/biomasks-20261113/masks/phoenix-reference-view.png",
+      "maskId": "phoenix",
+      "label": "Phoenix",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceReference": {
+        "id": "predator_05",
+        "communityLabel": "Phoenix",
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_05.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_05.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_05.texture",
+        "gitBlobSha": "125a4975cbed071da9834cc8db86cca7cbef4b1c",
+        "sha256": "d7b456c7f5c1f035eebded97b00db2f262cb1d309b2146cfa1511845c6bc1969",
+        "bytes": 65664,
+        "width": 256,
+        "height": 256,
+        "fourCC": "DXT5",
+        "bibleTargetConfirmedByInventory": true,
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false,
+        "profileOrBack": false,
+        "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+        "capturePath": "/tmp/all-masks-20261113/web-references/fronts/predator_05.png",
+        "captureSha256": "98420c73ca70e77d67225f37af2a408cf0c59ee4d71bbd8d9a9db764d77fca8a",
+        "captureBytes": 33428,
+        "viewingMethod": "Native-size read-only WebGL DDS decoding screenshot, not a new authored asset"
+      },
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "scope": "Community PAYDAY2 port icon attributed by repository README to Predator: Hunting Grounds / IllFonic and other games; not publisher-certified"
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_05.png",
+          "sha256": "98420c73ca70e77d67225f37af2a408cf0c59ee4d71bbd8d9a9db764d77fca8a",
+          "role": "native-size DDS reference view, private and not republished"
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_05.texture",
+          "sha256": "d7b456c7f5c1f035eebded97b00db2f262cb1d309b2146cfa1511845c6bc1969",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_05.texture",
+          "role": "unchanged community DDS, not republished"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-035bc44a-6dc5-47db-a00c-4d6f34dddecc.png",
+      "sha256": "b7b7164691740e33398152f65e0f9c62c26dfef8dbc6d052243d0c20894fd804",
+      "bytes": 1255548,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1047696,
+      "visiblePixelsAlpha16": 508545,
+      "opaquePixels240": 500550,
+      "visibleBoundsAlpha16": [
+        218,
+        151,
+        1036,
+        1100
+      ],
+      "marginsPixelsAlpha16": [
+        218,
+        151,
+        218,
+        154
+      ],
+      "marginsFractionAlpha16": [
+        0.17384370015948963,
+        0.12041467304625199,
+        0.17384370015948963,
+        0.12280701754385964
+      ],
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "Centered standalone preview proposal, no rig fit",
+      "camera": "Native near-front source-icon view requested; no rotation or back/profile invented",
+      "viewCoverage": [
+        "source-icon-front-view"
+      ],
+      "palette": "Monochrome source-reference appearance; original PHG palette/material UVs unknown",
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "runtimeIntegrated": false,
+      "animated": false,
+      "animationClips": 0,
+      "limitations": [
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed."
+      ]
+    },
+    {
+      "id": "phg-plague",
+      "name": "plague",
+      "source": "predator_06",
+      "locks": "Plague. Preserve the large oval/circular rib-cage-like open crown: central vertical spine, diagonal tapering ribs and the black open negative gaps BETWEEN ribs as shown. Do not convert that cage into solid engraved forehead or add horns. Preserve the narrow angry eye regions and the long straight central trapezoidal respirator/nose panel descending toward the chin with its small lower vent detail. Retain angular side cheek panels; no organic skin, gas hose or extra respirator canisters.",
+      "prompt": "Strict single-region geometry correction to the Plague biomask in image1, with image2 as the actual named identity reference. The current generated image1 incorrectly opened the upper edge of the oval/circular forehead cage into TWO standing pointed broken rim ends. The reference image2 shows a smooth continuous enclosing oval upper rim behind/meeting the top of the central vertical rib/spine. Correct ONLY this topmost oval cage outline: restore the smooth rounded continuous closed upper arc, without the pair of invented cut/broken protruding horn tips. Keep the whole rib-cage opening pattern, central spine and diagonal ribs, all eye holes, long trapezoidal central respirator/nose, lower vent, angular side panels, source front camera, metal grayscale values, overall width/height, center and margins EXACTLY as in image1. Do not add a solid forehead plate, extra ribs, new ornaments, horn, head, hair, wearer, shadow or text. Image2's long pale hair and generic head behind the mask must remain excluded. This is a framing-identical shape correction of the mask alone; do not resize, rotate, zoom, recenter or redesign the other parts. One complete mask with true transparent background, physically opaque metal and antialiased edges. At least10percent empty native alpha margins on every side. Keep ambiguous microdetails restrained; this is a secondary-reference candidate, not certified original PHG pixels or UVs.",
+      "nativeSourcePath": "/workspace/generated_images/exec-f27e30d4-c281-4c72-92ba-d7c88ca5bc62.png",
+      "assetPath": "public/game/biomasks-20261113/masks/plague-reference-view.png",
+      "maskId": "plague",
+      "label": "Plague",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceReference": {
+        "id": "predator_06",
+        "communityLabel": "Plague",
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_06.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_06.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_06.texture",
+        "gitBlobSha": "4b210d4d38ac3c50ff3e4dfff7122b054dcc4990",
+        "sha256": "6110b1cabe642db07292d9cba05151014ebff42b245183a71b5760d6685d1dce",
+        "bytes": 65664,
+        "width": 256,
+        "height": 256,
+        "fourCC": "DXT5",
+        "bibleTargetConfirmedByInventory": true,
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false,
+        "profileOrBack": false,
+        "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+        "capturePath": "/tmp/all-masks-20261113/web-references/fronts/predator_06.png",
+        "captureSha256": "6b5fa4769e7a5f4200e94ce8c75f41cea015818610584ab889dab53adba72776",
+        "captureBytes": 32676,
+        "viewingMethod": "Native-size read-only WebGL DDS decoding screenshot, not a new authored asset"
+      },
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "scope": "Community PAYDAY2 port icon attributed by repository README to Predator: Hunting Grounds / IllFonic and other games; not publisher-certified"
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_06.png",
+          "sha256": "6b5fa4769e7a5f4200e94ce8c75f41cea015818610584ab889dab53adba72776",
+          "role": "native-size DDS reference view, private and not republished"
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_06.texture",
+          "sha256": "6110b1cabe642db07292d9cba05151014ebff42b245183a71b5760d6685d1dce",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_06.texture",
+          "role": "unchanged community DDS, not republished"
+        },
+        {
+          "path": "/workspace/generated_images/exec-e7679db1-b19c-482b-9534-447516a6ba70.png",
+          "sha256": "00d17ec48701efcd238f4024ce98de48370fbb74e25ebdf52fa97f5e18e4f79a",
+          "role": "previous generated candidate, top rim corrected, not canonical authority"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-f27e30d4-c281-4c72-92ba-d7c88ca5bc62.png",
+      "sha256": "aa94cfa17660cb0a538da184936b43c6cfdbb6e9cd4dd89dd26d6dfeb4ffa96f",
+      "bytes": 1212292,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1096336,
+      "visiblePixelsAlpha16": 457001,
+      "opaquePixels240": 444077,
+      "visibleBoundsAlpha16": [
+        270,
+        151,
+        985,
+        1100
+      ],
+      "marginsPixelsAlpha16": [
+        270,
+        151,
+        269,
+        154
+      ],
+      "marginsFractionAlpha16": [
+        0.215311004784689,
+        0.12041467304625199,
+        0.21451355661881977,
+        0.12280701754385964
+      ],
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "Centered standalone preview proposal, no rig fit",
+      "camera": "Native near-front source-icon view requested; no rotation or back/profile invented",
+      "viewCoverage": [
+        "source-icon-front-view"
+      ],
+      "palette": "Monochrome source-reference appearance; original PHG palette/material UVs unknown",
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "runtimeIntegrated": false,
+      "animated": false,
+      "animationClips": 0,
+      "limitations": [
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed."
+      ],
+      "correctionScope": "Top oval cage outer rim only; remove unsupported split ends and restore smooth enclosing arc",
+      "attempts": 2
+    },
+    {
+      "id": "phg-inferno",
+      "name": "inferno",
+      "source": "predator_07",
+      "locks": "Inferno. Preserve the broad segmented convex forehead shield with curved horizontal plate divisions, central tapering ridge and visible short upward pointed crown/outer corners. Retain the wide brow over the narrow eye apertures, the symmetrical horizontal cheek rib lines and narrow vertical central clasp/muzzle hardware. Preserve the visible round small port on IMAGE-LEFT near the cheek/temple; do not automatically mirror it onto the other side. No flames, lava, extra horns, skull jaw or added side tubes.",
+      "prompt": "Reference-constrained detached biomask asset, one complete object only. The supplied image is the actual named 256px monochrome community port HUD icon; preserve its visible mask geometry and source near-front camera, without rotating to an invented new view. ISOLATE the physical METAL MASK, not the generic pale porter's head or the long white hair/dread strands shared behind the mask. Those strands must NOT become metal teeth, tassels, spikes, hair or a helmet skirt. Keep native asymmetries, exact major contour, all visibly established large points, eye aperture layout, plate divisions, negative spaces and grayscale value relationships. Do not redesign, extrapolate hidden sides/back, add invented engraving, text/runes, ornaments, teeth, muzzle mechanisms or generic Predator features. Finite low resolution cannot establish microdetail: keep ambiguous surfaces restrained rather than inventing decorations. Material: physically opaque grayscale metal with the source's restrained highlights, no new color scheme. Standalone cutout, centered on a square1254x1254 canvas, complete silhouette at most80percent of canvas height and width, at least10percent empty native alpha on EVERY side. Genuine transparent background, solid object, antialiased boundary. No character/body, hair, floor, shadow, glow, UI, labels, frame or watermark. This remains a candidate study based on a secondary icon, not certified original PHG pixels/color/UVs. SPECIFIC LOCKS: Inferno. Preserve the broad segmented convex forehead shield with curved horizontal plate divisions, central tapering ridge and visible short upward pointed crown/outer corners. Retain the wide brow over the narrow eye apertures, the symmetrical horizontal cheek rib lines and narrow vertical central clasp/muzzle hardware. Preserve the visible round small port on IMAGE-LEFT near the cheek/temple; do not automatically mirror it onto the other side. No flames, lava, extra horns, skull jaw or added side tubes.",
+      "nativeSourcePath": "/workspace/generated_images/exec-d8635f26-92ac-4127-9406-62430f719fa2.png",
+      "assetPath": "public/game/biomasks-20261113/masks/inferno-reference-view.png",
+      "maskId": "inferno",
+      "label": "Inferno",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceReference": {
+        "id": "predator_07",
+        "communityLabel": "Inferno",
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_07.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_07.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_07.texture",
+        "gitBlobSha": "ab955622822eb52b8276942577f55f1503d70b09",
+        "sha256": "e1ebacf00f13c7ee417faa15b083f6b448a96b2d8cad00fff4ee4dcd7768d8ab",
+        "bytes": 65664,
+        "width": 256,
+        "height": 256,
+        "fourCC": "DXT5",
+        "bibleTargetConfirmedByInventory": true,
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false,
+        "profileOrBack": false,
+        "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+        "capturePath": "/tmp/all-masks-20261113/web-references/fronts/predator_07.png",
+        "captureSha256": "7ac34449e31c73243695853d62218e3ea89b77f4ce0fbdc0694d756cc1ea1fec",
+        "captureBytes": 31318,
+        "viewingMethod": "Native-size read-only WebGL DDS decoding screenshot, not a new authored asset"
+      },
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "scope": "Community PAYDAY2 port icon attributed by repository README to Predator: Hunting Grounds / IllFonic and other games; not publisher-certified"
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_07.png",
+          "sha256": "7ac34449e31c73243695853d62218e3ea89b77f4ce0fbdc0694d756cc1ea1fec",
+          "role": "native-size DDS reference view, private and not republished"
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_07.texture",
+          "sha256": "e1ebacf00f13c7ee417faa15b083f6b448a96b2d8cad00fff4ee4dcd7768d8ab",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_07.texture",
+          "role": "unchanged community DDS, not republished"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-d8635f26-92ac-4127-9406-62430f719fa2.png",
+      "sha256": "083f948f390e33f8c1471af257a643846bdfaec8e909831aa81afa8942f4f432",
+      "bytes": 1209682,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1027467,
+      "visiblePixelsAlpha16": 526166,
+      "opaquePixels240": 519969,
+      "visibleBoundsAlpha16": [
+        278,
+        131,
+        977,
+        1127
+      ],
+      "marginsPixelsAlpha16": [
+        278,
+        131,
+        277,
+        127
+      ],
+      "marginsFractionAlpha16": [
+        0.22169059011164274,
+        0.10446570972886762,
+        0.22089314194577353,
+        0.10127591706539076
+      ],
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "Centered standalone preview proposal, no rig fit",
+      "camera": "Native near-front source-icon view requested; no rotation or back/profile invented",
+      "viewCoverage": [
+        "source-icon-front-view"
+      ],
+      "palette": "Monochrome source-reference appearance; original PHG palette/material UVs unknown",
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "runtimeIntegrated": false,
+      "animated": false,
+      "animationClips": 0,
+      "limitations": [
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed."
+      ]
+    },
+    {
+      "id": "phg-prophet",
+      "name": "prophet",
+      "source": "predator_08",
+      "locks": "Prophet. Preserve the tall rounded flared dome/crown with its nested curved U/leaf-shaped forehead plate boundaries and central slim vertical ridge. Keep the source's visible pointed outer upper edges and narrow central top cap without inventing a tall spike. Retain the angled eye region, angular cheek panels and small narrow vertically ribbed central mouth/nose strip. Preserve asymmetrical tiny temple port details only where actually visible. No religious symbols, lettering, extra fins, tusks or hanging strips.",
+      "prompt": "Reference-constrained detached biomask asset, one complete object only. The supplied image is the actual named 256px monochrome community port HUD icon; preserve its visible mask geometry and source near-front camera, without rotating to an invented new view. ISOLATE the physical METAL MASK, not the generic pale porter's head or the long white hair/dread strands shared behind the mask. Those strands must NOT become metal teeth, tassels, spikes, hair or a helmet skirt. Keep native asymmetries, exact major contour, all visibly established large points, eye aperture layout, plate divisions, negative spaces and grayscale value relationships. Do not redesign, extrapolate hidden sides/back, add invented engraving, text/runes, ornaments, teeth, muzzle mechanisms or generic Predator features. Finite low resolution cannot establish microdetail: keep ambiguous surfaces restrained rather than inventing decorations. Material: physically opaque grayscale metal with the source's restrained highlights, no new color scheme. Standalone cutout, centered on a square1254x1254 canvas, complete silhouette at most80percent of canvas height and width, at least10percent empty native alpha on EVERY side. Genuine transparent background, solid object, antialiased boundary. No character/body, hair, floor, shadow, glow, UI, labels, frame or watermark. This remains a candidate study based on a secondary icon, not certified original PHG pixels/color/UVs. SPECIFIC LOCKS: Prophet. Preserve the tall rounded flared dome/crown with its nested curved U/leaf-shaped forehead plate boundaries and central slim vertical ridge. Keep the source's visible pointed outer upper edges and narrow central top cap without inventing a tall spike. Retain the angled eye region, angular cheek panels and small narrow vertically ribbed central mouth/nose strip. Preserve asymmetrical tiny temple port details only where actually visible. No religious symbols, lettering, extra fins, tusks or hanging strips.",
+      "nativeSourcePath": "/workspace/generated_images/exec-73798e94-6554-4aa0-8314-66fe63255a86.png",
+      "assetPath": "public/game/biomasks-20261113/masks/prophet-reference-view.png",
+      "maskId": "prophet",
+      "label": "Prophet",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceReference": {
+        "id": "predator_08",
+        "communityLabel": "Prophet",
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_08.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_08.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_08.texture",
+        "gitBlobSha": "6fea336d2d2a83c933180e6b5ded27089275b226",
+        "sha256": "d7f9c898c3f55e47afb4a59ec8a3fd86328acb5a0490d2a81491fdb7a14d672f",
+        "bytes": 65664,
+        "width": 256,
+        "height": 256,
+        "fourCC": "DXT5",
+        "bibleTargetConfirmedByInventory": true,
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false,
+        "profileOrBack": false,
+        "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+        "capturePath": "/tmp/all-masks-20261113/web-references/fronts/predator_08.png",
+        "captureSha256": "173dca27006bb9b0be1c4450fbb83bf70bbb181890dc39f792e6accb27a90cf7",
+        "captureBytes": 31040,
+        "viewingMethod": "Native-size read-only WebGL DDS decoding screenshot, not a new authored asset"
+      },
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "scope": "Community PAYDAY2 port icon attributed by repository README to Predator: Hunting Grounds / IllFonic and other games; not publisher-certified"
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_08.png",
+          "sha256": "173dca27006bb9b0be1c4450fbb83bf70bbb181890dc39f792e6accb27a90cf7",
+          "role": "native-size DDS reference view, private and not republished"
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_08.texture",
+          "sha256": "d7f9c898c3f55e47afb4a59ec8a3fd86328acb5a0490d2a81491fdb7a14d672f",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_08.texture",
+          "role": "unchanged community DDS, not republished"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-73798e94-6554-4aa0-8314-66fe63255a86.png",
+      "sha256": "42011ddd850c0a4cc91c09c840f946aa9105cfd99d17e316b7bdaa8c71b115a3",
+      "bytes": 1065919,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1081822,
+      "visiblePixelsAlpha16": 479189,
+      "opaquePixels240": 474569,
+      "visibleBoundsAlpha16": [
+        289,
+        160,
+        965,
+        1101
+      ],
+      "marginsPixelsAlpha16": [
+        289,
+        160,
+        289,
+        153
+      ],
+      "marginsFractionAlpha16": [
+        0.23046251993620415,
+        0.12759170653907495,
+        0.23046251993620415,
+        0.12200956937799043
+      ],
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotStatus": "Centered standalone preview proposal, no rig fit",
+      "camera": "Native near-front source-icon view requested; no rotation or back/profile invented",
+      "viewCoverage": [
+        "source-icon-front-view"
+      ],
+      "palette": "Monochrome source-reference appearance; original PHG palette/material UVs unknown",
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "runtimeIntegrated": false,
+      "animated": false,
+      "animationClips": 0,
+      "limitations": [
+        "Secondary community icon only, not publisher-certified PHG source pixels.",
+        "The256px source does not establish exact microtopology, engravings, original game color/materials, UVs or side/back geometry.",
+        "The generic white head/hair surrounding the mask icon was excluded; no wearer anatomy or unsupported hair is supplied.",
+        "Shape, proportions, aperture/point counts and reference-level surface detail still require human art comparison before any1:1 claim.",
+        "Centered image-anchor only; rigging, physical dimensions and six-morphology fit were not performed."
+      ]
+    }
+  ],
+  "supersededCandidates": [
+    {
+      "id": "phg-plague-initial",
+      "reason": "Upper enclosing oval rim was broken into two unsupported projecting tips; corrected via ImageGen only",
+      "nativePath": "/workspace/generated_images/exec-e7679db1-b19c-482b-9534-447516a6ba70.png",
+      "archivePath": "/tmp/all-masks-20261113/rejected/phg-plague-initial.png",
+      "sha256": "00d17ec48701efcd238f4024ce98de48370fbb74e25ebdf52fa97f5e18e4f79a",
+      "bytes": 1207861,
+      "prompt": "Reference-constrained detached biomask asset, one complete object only. The supplied image is the actual named 256px monochrome community port HUD icon; preserve its visible mask geometry and source near-front camera, without rotating to an invented new view. ISOLATE the physical METAL MASK, not the generic pale porter's head or the long white hair/dread strands shared behind the mask. Those strands must NOT become metal teeth, tassels, spikes, hair or a helmet skirt. Keep native asymmetries, exact major contour, all visibly established large points, eye aperture layout, plate divisions, negative spaces and grayscale value relationships. Do not redesign, extrapolate hidden sides/back, add invented engraving, text/runes, ornaments, teeth, muzzle mechanisms or generic Predator features. Finite low resolution cannot establish microdetail: keep ambiguous surfaces restrained rather than inventing decorations. Material: physically opaque grayscale metal with the source's restrained highlights, no new color scheme. Standalone cutout, centered on a square1254x1254 canvas, complete silhouette at most80percent of canvas height and width, at least10percent empty native alpha on EVERY side. Genuine transparent background, solid object, antialiased boundary. No character/body, hair, floor, shadow, glow, UI, labels, frame or watermark. This remains a candidate study based on a secondary icon, not certified original PHG pixels/color/UVs. SPECIFIC LOCKS: Plague. Preserve the large oval/circular rib-cage-like open crown: central vertical spine, diagonal tapering ribs and the black open negative gaps BETWEEN ribs as shown. Do not convert that cage into solid engraved forehead or add horns. Preserve the narrow angry eye regions and the long straight central trapezoidal respirator/nose panel descending toward the chin with its small lower vent detail. Retain angular side cheek panels; no organic skin, gas hose or extra respirator canisters.",
+      "pixelEditingPerformed": false
+    }
+  ]
+}

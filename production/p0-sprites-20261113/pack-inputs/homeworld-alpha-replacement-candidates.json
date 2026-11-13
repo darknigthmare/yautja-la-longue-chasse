@@ -1,0 +1,981 @@
+{
+  "scope": "Existing opaque sources cannot be used as transparent sprites. Candidate image edits preserving the project reference, not official franchise 1:1 certification. Original images immutable; create new native alpha images and review perspective/margins instead of padding a cropped source. Source creation rows may be P1, while P0 alpha/perspective/independence gates depend on usable outputs.",
+  "sourceWorkbook": "production/homeworld-v161/YAUTJA_HOMEWORLD_PROPS_ECHELLE_TRIBUS_V161.xlsx",
+  "sourceP0Gate": {
+    "sheet": "QA_et_Suite",
+    "row": 7,
+    "id": "QA-002",
+    "criterion": "Alpha présent et au moins un pixel transparent; opaque conservé en archive"
+  },
+  "sourceRegistryLinks": [
+    "Homeworld et habitats:QA-004",
+    "Homeworld et habitats:QA-005",
+    "Homeworld et habitats:QA-007"
+  ],
+  "candidateCount": 11,
+  "candidates": [
+    {
+      "id": "HWA160-001",
+      "label": "arche yautja cérémonielle aux trophées anciens",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-001_arche-yautja-ceremonielle-aux-trophees-anciens.png",
+      "originalName": "arche_yautja_cérémonielle_aux_trophées_anciens.png",
+      "sha256": "ffe0f4c2379e3057d229bae9157a49df53528014063f24cbfdddc7c6aae73558",
+      "bytes": 2502496,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-014",
+      "label": "enclave yautja sous les volcans",
+      "category": "Scène de concept",
+      "path": "production/homeworld-v160/originals/HWA160-014_enclave-yautja-sous-les-volcans.png",
+      "originalName": "enclave_yautja_sous_les_volcans.png",
+      "sha256": "13e88102ee07de886839a3629374bb512aee539586cb5b56fe83e861683ea18f",
+      "bytes": 2578030,
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1672,
+            941
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1672,
+            941
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1672,
+            941
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1672,
+            941
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "COMPOSITE_A_DECOMPOSER",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-019",
+      "label": "grand hall alien aux glyphes sacrés",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-019_grand-hall-alien-aux-glyphes-sacres.png",
+      "originalName": "grand_hall_alien_aux_glyphes_sacrés.png",
+      "sha256": "f43ab9fdd9cff71f372dbf6bba73e027f68200f8fe6b0e53235c95925e584038",
+      "bytes": 2753163,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-029",
+      "label": "marché yautja aux lueurs incandescentes",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-029_marche-yautja-aux-lueurs-incandescentes.png",
+      "originalName": "marché_yautja_aux_lueurs_incandescentes.png",
+      "sha256": "a0a699ec616e9518174e0e69d96b5fb4abff66530813c8475dd34e4e96f1f1cc",
+      "bytes": 2655121,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-032",
+      "label": "monument cérémoniel yautja aux braises ardentes",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-032_monument-ceremoniel-yautja-aux-braises-ardentes.png",
+      "originalName": "monument_cérémoniel_yautja_aux_braises_ardentes.png",
+      "sha256": "69aa6d5b9df0252aeca9a559cb351feb388fda4a8a98c750021869ec463134f3",
+      "bytes": 2748810,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-040",
+      "label": "pavillon de chasse yautja aux lueurs ambrées",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-040_pavillon-de-chasse-yautja-aux-lueurs-ambrees.png",
+      "originalName": "pavillon_de_chasse_yautja_aux_lueurs_ambrées.png",
+      "sha256": "b0de4960609699c977e49d4deeaa0908392d27b881257e16af6a0d665b9630bb",
+      "bytes": 2367269,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-064",
+      "label": "résidence noble yautja aux lueurs d ambre",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-064_residence-noble-yautja-aux-lueurs-d-ambre.png",
+      "originalName": "résidence_noble_yautja_aux_lueurs_d_ambre.png",
+      "sha256": "ce3619123638aac7228d372758556b023d95feac9dffb99d70fd3acfea1a7d80",
+      "bytes": 2697538,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-068",
+      "label": "sanctuaire yautja aux cristaux flamboyants",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-068_sanctuaire-yautja-aux-cristaux-flamboyants.png",
+      "originalName": "sanctuaire_yautja_aux_cristaux_flamboyants.png",
+      "sha256": "f69f87b0dfbd6231a9a625b2c082af51bf1a26ac009e3d72c911c646fe6bfd17",
+      "bytes": 2727697,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-073",
+      "label": "statue ancestrale yautja monumentale",
+      "category": "Monument",
+      "path": "production/homeworld-v160/originals/HWA160-073_statue-ancestrale-yautja-monumentale.png",
+      "originalName": "statue_ancestrale_yautja_monumentale.png",
+      "sha256": "f280cefd30019f10d907dda0275354946e77488e1eea045528add7b58b8213bc",
+      "bytes": 2751342,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-081",
+      "label": "totem yautja aux trophées ancestraux",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-081_totem-yautja-aux-trophees-ancestraux.png",
+      "originalName": "totem_yautja_aux_trophées_ancestraux.png",
+      "sha256": "1b6e49283a4a22836a431ecdcfbdd57290c67198ab3e295abae235e437850bab",
+      "bytes": 2389379,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    },
+    {
+      "id": "HWA160-084",
+      "label": "tour de guet yautja monumentale",
+      "category": "Bâtiment",
+      "path": "production/homeworld-v160/originals/HWA160-084_tour-de-guet-yautja-monumentale.png",
+      "originalName": "tour_de_guet_yautja_monumentale.png",
+      "sha256": "2110038942bcc29cbf01cb583f1c6afbee16eb7fb3f48ee3c2426421ca3e152a",
+      "bytes": 2607943,
+      "width": 1122,
+      "height": 1402,
+      "mode": "RGB",
+      "transparentRatio": 0.0,
+      "alphaBounds": {
+        "0": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "8": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "24": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "128": {
+          "box": [
+            0,
+            0,
+            1122,
+            1402
+          ],
+          "margins": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "hasTransparency": false,
+      "minimumVisibleMargin": 0,
+      "state": "ARCHIVE_OPAQUE",
+      "canonicalCertification": false,
+      "humanValidated": false,
+      "runtimeIntegrated": false,
+      "scaleStatus": "NON_MESUREE",
+      "physicalMetres": null,
+      "source": "conversation-generation",
+      "scope": "RENDU_INDEPENDANT",
+      "notes": "Fond opaque conservé ; ne pas traiter comme sprite transparent."
+    }
+  ],
+  "existingPngCorpusCounts": {
+    "v160": 107,
+    "v161New": 3,
+    "total": 110,
+    "v160StateCounts": {
+      "ARCHIVE_OPAQUE": 11,
+      "CANDIDAT_A_REVOIR": 67,
+      "PROPOSITION_GRANDE_ECHELLE": 9
+    }
+  },
+  "explicitMissingP1Dependencies": [
+    {
+      "id": "HWA160-N04",
+      "label": "Contrefort courbe de tour",
+      "reference": "REF01",
+      "brief": "Une nervure latérale architecturale élancée ; hauteur indicative 32 m, détails fins, aucune porte géante.",
+      "targetId": "target-v81-55-17"
+    },
+    {
+      "id": "HWA160-N05",
+      "label": "Paroi de falaise volcanique",
+      "reference": "REF02",
+      "brief": "Grand segment rocheux vertical, hauteur indicative 24 m ; aucun bâtiment, aucune chute peinte dessus.",
+      "targetId": "target-v81-69-245"
+    },
+    {
+      "id": "HWA160-N06",
+      "label": "Chute d’eau indépendante",
+      "reference": "REF02",
+      "brief": "Rideau d’eau vertical sans temple, sans plate-forme ; embruns alpha partiels ; hauteur indicative 22 m.",
+      "targetId": "extension-hydrologie"
+    },
+    {
+      "id": "HWA160-N07",
+      "label": "Crevasse naturelle étroite",
+      "reference": "REF03",
+      "brief": "Faille irrégulière au niveau du sol avec basalte brisé et lave orange profonde, sans maçonnerie ; 12 m indicatifs.",
+      "targetId": "target-v81-69-250"
+    },
+    {
+      "id": "HWA160-N08",
+      "label": "Crevasse naturelle ramifiée",
+      "reference": "REF03",
+      "brief": "Faille en Y naturelle, rives fragmentées ; 18 m indicatifs ; pas de murs, ni pylônes, ni symboles.",
+      "targetId": "target-v81-69-248"
+    },
+    {
+      "id": "HWA160-N09",
+      "label": "Massif sombre du premier plan",
+      "reference": "REF03",
+      "brief": "Touffe minérale/végétale basse gris charbon aux branches irrégulières ; interprétation non canonique, pas de monstre inventé.",
+      "targetId": "target-v81-70-261"
+    },
+    {
+      "id": "HWA160-N10",
+      "label": "Amas de basalte fracturé",
+      "reference": "REF03",
+      "brief": "Amas naturel bas et dissymétrique ; 4 m indicatifs ; relief visible à la caméra 35°, aucune architecture.",
+      "targetId": "target-v81-69-243"
+    }
+  ]
+}
