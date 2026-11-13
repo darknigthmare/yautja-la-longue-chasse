@@ -1,0 +1,741 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "batch": "phg-a",
+  "sourceBaselineCommit": "f26b985e7c354a611963d9aaa76e10d9a26a6586",
+  "status": "generated-candidates",
+  "method": "ImageGen referenced cutouts; native PNG bytes copied unchanged; Pillow used only for read-only measurement",
+  "sourceAttribution": "Matthelzor/pd2-predator-pack commit967905f04f02f702e89e0ca976bac712c516a4e9, community port attributed by README to Predator: Hunting Grounds / IllFonic and other games. Not publisher-certified. Raw DDS and screenshots not republished in public assets.",
+  "scope": "Four named missing near-frontal mask appearances from bible requests; no variants, additional views, UVs or canonical approvals inferred.",
+  "counts": {
+    "generatedCandidateViews": 4,
+    "nativePNGFiles": 4,
+    "sourceMaskIdentities": 4,
+    "animationClips": 0,
+    "humanArtValidated": 0,
+    "canonCertified": 0
+  },
+  "entries": [
+    {
+      "id": "phg-elder",
+      "label": "Elder PHG",
+      "maskId": "phg-elder",
+      "sourceId": "predator_01",
+      "sourceDesignId": "phg-elder",
+      "assetKind": "mask",
+      "state": "reference-view",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "label": "Elder",
+        "iconId": "predator_01"
+      },
+      "sourceReference": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_01.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+        "sha256": "f4a6ef6efb9be9ae56cf8d5fa478576c40c21a5149c574f9ec12c5d123e92e51",
+        "gitBlobSha": "b183277598b836fab48e96c739bc096bff3adba3",
+        "bytes": 65664,
+        "dimensions": [
+          256,
+          256
+        ],
+        "role": "named-secondary-community-port-DDS-icon",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_01.texture",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+          "sha256": "f4a6ef6efb9be9ae56cf8d5fa478576c40c21a5149c574f9ec12c5d123e92e51",
+          "gitBlobSha": "b183277598b836fab48e96c739bc096bff3adba3",
+          "bytes": 65664,
+          "dimensions": [
+            256,
+            256
+          ],
+          "role": "named-secondary-community-port-DDS-icon",
+          "sourceType": "community-PAYDAY2-port-HUD-icon",
+          "publisherCertified": false,
+          "originalGamePixelOneToOneVerified": false
+        },
+        {
+          "path": "/tmp/all-masks-20261113/phg-a-input-fronts/predator_01.png",
+          "originalInputPath": "/tmp/all-masks-20261113/web-references/fronts/predator_01.png",
+          "sha256": "f300c2ef88cbc79db5c8d50de50bbacc0bb82fe56b6a3f6d8c81213fd5c2a0c3",
+          "bytes": 32065,
+          "role": "read-only WebGL DDS inspection screenshot, exact bytes used as ImageGen reference",
+          "derivedFromSourceSha256": "f4a6ef6efb9be9ae56cf8d5fa478576c40c21a5149c574f9ec12c5d123e92e51",
+          "dimensions": [
+            256,
+            257
+          ],
+          "sourceTextureDimensions": [
+            256,
+            256
+          ],
+          "captureQualifier": "Browser bounding-box screenshot256x257 for a256x256 DDS; not publisher source pixels or a certified original-game capture.",
+          "rasterEditingPerformed": false
+        },
+        {
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+          "repository": "Matthelzor/pd2-predator-pack",
+          "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+          "role": "community port repository attribution",
+          "attribution": "Repository README credits Predator: Hunting Grounds / IllFonic and other games. Per-mask port accuracy is not publisher-certified."
+        }
+      ],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535,
+          "scope": "Named-mask production request; not geometry authority"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-382bbc01-9137-4779-ad1e-90daeaee7a53.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-382bbc01-9137-4779-ad1e-90daeaee7a53.png",
+      "assetPath": "public/game/biomasks-20261113/masks/elder-phg-reference-view.png",
+      "sha256": "71363050d043ef9cdb200de1a55314cec2aeb555ee617076f81cdefe0bfe26c4",
+      "bytes": 1464006,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotScope": "centered standalone preview proposal; not equipment-rig fitted",
+      "camera": "source-native near-frontal icon view requested; exact projection unmeasured",
+      "viewCoverage": [
+        "reference-near-front-icon-view"
+      ],
+      "frames": 1,
+      "animationFrames": 1,
+      "animationClips": 0,
+      "animated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "hiddenGeometryEstablished": false,
+      "sourceReferenceViewed": true,
+      "generatedOutputVisuallyCompared": true,
+      "prompt": "Create ONE detached biomask cutout, faithfully constrained to the supplied named 256-pixel monochrome reference. This is a source-based production candidate, not a redesign or certification of original PHG pixels. Preserve the visible source camera, exact macro silhouette, proportions, plate topology, aperture shapes, asymmetries, tonal arrangement and material appearance. Do not invent tiny engravings or hidden sides from low-resolution evidence. The long pale hair/cord strands hanging behind and below all these icons belong to the shared wearer render; OMIT those detached strands and the wearer, do not turn them into mask teeth, spikes or horns. Keep only the mask itself, including real metal side flanges that are visibly part of it. Neutral silver/charcoal grayscale ONLY, no imagined original-game colored finish. One whole mask, centered on a square 1254x1254 canvas at about72–78percent canvas height with at least10percent completely empty native alpha on every side. Opaque solid mask material, antialiased boundary, genuinely transparent empty background. No body, eyes or skin of a wearer, hair, neck, scenic background, floor, shadow, glow, text, labels, UI, collage, border or watermark. No extra object or alternate view. IDENTITY: Elder PHG from this specific community icon, not AVP Elder, Greyback, Golden Angel or the project's original elder.webp. Preserve the large rounded oval forehead disk with its raised oval border, its small irregular existing surface mark on the upper-left part of the disk and darker wear beneath, the shallow narrow eye slit shapes under the lower forehead edge, the comparatively plain lower face plate and the small visible rivet/perforation details already present. Keep the lateral flanges subordinate. No crown, horns or huge teeth, no fantasy additions.",
+      "limitations": [
+        "Named256px community port HUD reference, not publisher-certified original PHG pixels.",
+        "Only the visible near-frontal source icon view is represented; no profile/back view or hidden geometry is established.",
+        "Grayscale reference appearance only: original game colors, material UVs and six-morphology rig fit are not verified.",
+        "High-resolution surface detail and fine aperture/emblem/rivet counts remain an interpretation of limited-resolution evidence; no pixel-level1:1 certification.",
+        "Generic pale hanging wearer strands omitted; faint edge/hair boundaries need human review on dark/checkerboard backgrounds.",
+        "Read-only reference screenshot measures256x257 for256x256 DDS; its exact input bytes and dimensions are recorded, without CPU normalization.",
+        "Centered preview pivot only; no rig fitting, physical scale, runtime admission or animation.",
+        "This is only the community-labelled Elder PHG source, not Elder AVP, Greyback, Golden Angel or the original project elder.webp."
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 911869,
+        "visiblePixels16": 622407,
+        "opaquePixels240": 617295,
+        "noisePixels1or2": 34160,
+        "bounds16": [
+          211,
+          145,
+          1043,
+          1124
+        ],
+        "marginsPixels": [
+          211,
+          145,
+          211,
+          130
+        ],
+        "marginMinimumFraction": 0.10366826156299841,
+        "opaqueFractionOfVisible16": 0.9917867247636997,
+        "hiddenRgbIgnored": true
+      },
+      "technicalQA": {
+        "nativePNG": true,
+        "RGBA": true,
+        "alphaZeroPresent": true,
+        "solidCorePresent": true,
+        "sourceBytesIntact": true,
+        "nativeCopyBytesIdentical": true,
+        "marginAtLeastEightPercentAlpha16": true
+      },
+      "artReview": {
+        "status": "human-review-required",
+        "agentReviewScope": "Source and generated macro structure inspected; not human artistic certification",
+        "sourceAuthority": "secondary-community-only"
+      }
+    },
+    {
+      "id": "phg-immortal",
+      "label": "Immortal",
+      "maskId": "phg-immortal",
+      "sourceId": "predator_02",
+      "sourceDesignId": "phg-immortal",
+      "assetKind": "mask",
+      "state": "reference-view",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "label": "Immortal",
+        "iconId": "predator_02"
+      },
+      "sourceReference": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_02.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+        "sha256": "c206b22234e84a1240cc1c617b5166b4bb2186c488490589a83005399cae632d",
+        "gitBlobSha": "aeed885e17b11e10e7a3ad0ab76d326f60e00499",
+        "bytes": 65664,
+        "dimensions": [
+          256,
+          256
+        ],
+        "role": "named-secondary-community-port-DDS-icon",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_02.texture",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+          "sha256": "c206b22234e84a1240cc1c617b5166b4bb2186c488490589a83005399cae632d",
+          "gitBlobSha": "aeed885e17b11e10e7a3ad0ab76d326f60e00499",
+          "bytes": 65664,
+          "dimensions": [
+            256,
+            256
+          ],
+          "role": "named-secondary-community-port-DDS-icon",
+          "sourceType": "community-PAYDAY2-port-HUD-icon",
+          "publisherCertified": false,
+          "originalGamePixelOneToOneVerified": false
+        },
+        {
+          "path": "/tmp/all-masks-20261113/phg-a-input-fronts/predator_02.png",
+          "originalInputPath": "/tmp/all-masks-20261113/web-references/fronts/predator_02.png",
+          "sha256": "ce4e9fe67b2d4704385e6aec630836e9fa148086b559e9c9d7bfab9632f2f6f1",
+          "bytes": 31706,
+          "role": "read-only WebGL DDS inspection screenshot, exact bytes used as ImageGen reference",
+          "derivedFromSourceSha256": "c206b22234e84a1240cc1c617b5166b4bb2186c488490589a83005399cae632d",
+          "dimensions": [
+            256,
+            257
+          ],
+          "sourceTextureDimensions": [
+            256,
+            256
+          ],
+          "captureQualifier": "Browser bounding-box screenshot256x257 for a256x256 DDS; not publisher source pixels or a certified original-game capture.",
+          "rasterEditingPerformed": false
+        },
+        {
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+          "repository": "Matthelzor/pd2-predator-pack",
+          "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+          "role": "community port repository attribution",
+          "attribution": "Repository README credits Predator: Hunting Grounds / IllFonic and other games. Per-mask port accuracy is not publisher-certified."
+        }
+      ],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "scope": "Named-mask production request; not geometry authority"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-f2ae2278-b7fe-4d5b-bd51-7d7f6d953b7d.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-f2ae2278-b7fe-4d5b-bd51-7d7f6d953b7d.png",
+      "assetPath": "public/game/biomasks-20261113/masks/immortal-reference-view.png",
+      "sha256": "e5cfccb5b41b899ad2c8240cb8badd6e86f1bbd1c0322bee6e42096c50f0a751",
+      "bytes": 1452010,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotScope": "centered standalone preview proposal; not equipment-rig fitted",
+      "camera": "source-native near-frontal icon view requested; exact projection unmeasured",
+      "viewCoverage": [
+        "reference-near-front-icon-view"
+      ],
+      "frames": 1,
+      "animationFrames": 1,
+      "animationClips": 0,
+      "animated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "hiddenGeometryEstablished": false,
+      "sourceReferenceViewed": true,
+      "generatedOutputVisuallyCompared": true,
+      "prompt": "Create ONE detached biomask cutout, faithfully constrained to the supplied named 256-pixel monochrome reference. This is a source-based production candidate, not a redesign or certification of original PHG pixels. Preserve the visible source camera, exact macro silhouette, proportions, plate topology, aperture shapes, asymmetries, tonal arrangement and material appearance. Do not invent tiny engravings or hidden sides from low-resolution evidence. The long pale hair/cord strands hanging behind and below all these icons belong to the shared wearer render; OMIT those detached strands and the wearer, do not turn them into mask teeth, spikes or horns. Keep only the mask itself, including real metal side flanges that are visibly part of it. Neutral silver/charcoal grayscale ONLY, no imagined original-game colored finish. One whole mask, centered on a square 1254x1254 canvas at about72–78percent canvas height with at least10percent completely empty native alpha on every side. Opaque solid mask material, antialiased boundary, genuinely transparent empty background. No body, eyes or skin of a wearer, hair, neck, scenic background, floor, shadow, glow, text, labels, UI, collage, border or watermark. No extra object or alternate view. IDENTITY: Immortal exactly as this icon. Preserve the broad segmented dark forehead, the paired slanted light inserts near the upper corners, the curved nested cheek/temple ribs, the two rounded almond-like recessed eye shapes with raised rims and their visible dark structure, the thin centered bridge, fluted lower side vents and narrow segmented central lower-face termination. Do not simplify it into a generic Predator helmet, do not replace the rounded eye framing with large flat slits, and do not add a crown or tusks.",
+      "limitations": [
+        "Named256px community port HUD reference, not publisher-certified original PHG pixels.",
+        "Only the visible near-frontal source icon view is represented; no profile/back view or hidden geometry is established.",
+        "Grayscale reference appearance only: original game colors, material UVs and six-morphology rig fit are not verified.",
+        "High-resolution surface detail and fine aperture/emblem/rivet counts remain an interpretation of limited-resolution evidence; no pixel-level1:1 certification.",
+        "Generic pale hanging wearer strands omitted; faint edge/hair boundaries need human review on dark/checkerboard backgrounds.",
+        "Read-only reference screenshot measures256x257 for256x256 DDS; its exact input bytes and dimensions are recorded, without CPU normalization.",
+        "Centered preview pivot only; no rig fitting, physical scale, runtime admission or animation."
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 915333,
+        "visiblePixels16": 643507,
+        "opaquePixels240": 636856,
+        "noisePixels1or2": 9797,
+        "bounds16": [
+          188,
+          124,
+          1066,
+          1124
+        ],
+        "marginsPixels": [
+          188,
+          124,
+          188,
+          130
+        ],
+        "marginMinimumFraction": 0.09888357256778309,
+        "opaqueFractionOfVisible16": 0.9896644480945818,
+        "hiddenRgbIgnored": true
+      },
+      "technicalQA": {
+        "nativePNG": true,
+        "RGBA": true,
+        "alphaZeroPresent": true,
+        "solidCorePresent": true,
+        "sourceBytesIntact": true,
+        "nativeCopyBytesIdentical": true,
+        "marginAtLeastEightPercentAlpha16": true
+      },
+      "artReview": {
+        "status": "human-review-required",
+        "agentReviewScope": "Source and generated macro structure inspected; not human artistic certification",
+        "sourceAuthority": "secondary-community-only"
+      }
+    },
+    {
+      "id": "phg-nocturne",
+      "label": "Nocturne",
+      "maskId": "phg-nocturne",
+      "sourceId": "predator_03",
+      "sourceDesignId": "phg-nocturne",
+      "assetKind": "mask",
+      "state": "reference-view",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "label": "Nocturne",
+        "iconId": "predator_03"
+      },
+      "sourceReference": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_03.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+        "sha256": "7f8bcbc19074ddc647373a918dd5497e473135278bcc75b5e26e48977b96a056",
+        "gitBlobSha": "fbdb34591bcfdb1515894ccb520d8c279756904d",
+        "bytes": 65664,
+        "dimensions": [
+          256,
+          256
+        ],
+        "role": "named-secondary-community-port-DDS-icon",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_03.texture",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+          "sha256": "7f8bcbc19074ddc647373a918dd5497e473135278bcc75b5e26e48977b96a056",
+          "gitBlobSha": "fbdb34591bcfdb1515894ccb520d8c279756904d",
+          "bytes": 65664,
+          "dimensions": [
+            256,
+            256
+          ],
+          "role": "named-secondary-community-port-DDS-icon",
+          "sourceType": "community-PAYDAY2-port-HUD-icon",
+          "publisherCertified": false,
+          "originalGamePixelOneToOneVerified": false
+        },
+        {
+          "path": "/tmp/all-masks-20261113/phg-a-input-fronts/predator_03.png",
+          "originalInputPath": "/tmp/all-masks-20261113/web-references/fronts/predator_03.png",
+          "sha256": "2aebe4ec0c513d4c9c383944e472ac7899138703057901604f7aad14ac1f4a44",
+          "bytes": 27885,
+          "role": "read-only WebGL DDS inspection screenshot, exact bytes used as ImageGen reference",
+          "derivedFromSourceSha256": "7f8bcbc19074ddc647373a918dd5497e473135278bcc75b5e26e48977b96a056",
+          "dimensions": [
+            256,
+            257
+          ],
+          "sourceTextureDimensions": [
+            256,
+            256
+          ],
+          "captureQualifier": "Browser bounding-box screenshot256x257 for a256x256 DDS; not publisher source pixels or a certified original-game capture.",
+          "rasterEditingPerformed": false
+        },
+        {
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+          "repository": "Matthelzor/pd2-predator-pack",
+          "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+          "role": "community port repository attribution",
+          "attribution": "Repository README credits Predator: Hunting Grounds / IllFonic and other games. Per-mask port accuracy is not publisher-certified."
+        }
+      ],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "scope": "Named-mask production request; not geometry authority"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-d1a96d6e-846c-4216-ad08-3ce7b5309aac.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-d1a96d6e-846c-4216-ad08-3ce7b5309aac.png",
+      "assetPath": "public/game/biomasks-20261113/masks/nocturne-reference-view.png",
+      "sha256": "95adc807424703a7f5ddb99549ccb81f579ae54023da7806871321271e2400ef",
+      "bytes": 1164822,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotScope": "centered standalone preview proposal; not equipment-rig fitted",
+      "camera": "source-native near-frontal icon view requested; exact projection unmeasured",
+      "viewCoverage": [
+        "reference-near-front-icon-view"
+      ],
+      "frames": 1,
+      "animationFrames": 1,
+      "animationClips": 0,
+      "animated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "hiddenGeometryEstablished": false,
+      "sourceReferenceViewed": true,
+      "generatedOutputVisuallyCompared": true,
+      "prompt": "Create ONE detached biomask cutout, faithfully constrained to the supplied named 256-pixel monochrome reference. This is a source-based production candidate, not a redesign or certification of original PHG pixels. Preserve the visible source camera, exact macro silhouette, proportions, plate topology, aperture shapes, asymmetries, tonal arrangement and material appearance. Do not invent tiny engravings or hidden sides from low-resolution evidence. The long pale hair/cord strands hanging behind and below all these icons belong to the shared wearer render; OMIT those detached strands and the wearer, do not turn them into mask teeth, spikes or horns. Keep only the mask itself, including real metal side flanges that are visibly part of it. Neutral silver/charcoal grayscale ONLY, no imagined original-game colored finish. One whole mask, centered on a square 1254x1254 canvas at about72–78percent canvas height with at least10percent completely empty native alpha on every side. Opaque solid mask material, antialiased boundary, genuinely transparent empty background. No body, eyes or skin of a wearer, hair, neck, scenic background, floor, shadow, glow, text, labels, UI, collage, border or watermark. No extra object or alternate view. IDENTITY: Nocturne exactly as the supplied icon. Preserve the dark large tapered shield-like forehead, the small rounded top-center inset, the two raised upper side lobes with only their faint existing oval surface emblems, the pale shallow eye band and narrow dark slits, the bright central bridge and the vertical ribbed lower-face panel with its source-specific tapered contour. Do not turn the top lobes into tall horns; do not invent legible runes, text or additional heraldry.",
+      "limitations": [
+        "Named256px community port HUD reference, not publisher-certified original PHG pixels.",
+        "Only the visible near-frontal source icon view is represented; no profile/back view or hidden geometry is established.",
+        "Grayscale reference appearance only: original game colors, material UVs and six-morphology rig fit are not verified.",
+        "High-resolution surface detail and fine aperture/emblem/rivet counts remain an interpretation of limited-resolution evidence; no pixel-level1:1 certification.",
+        "Generic pale hanging wearer strands omitted; faint edge/hair boundaries need human review on dark/checkerboard backgrounds.",
+        "Read-only reference screenshot measures256x257 for256x256 DDS; its exact input bytes and dimensions are recorded, without CPU normalization.",
+        "Centered preview pivot only; no rig fitting, physical scale, runtime admission or animation."
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1021751,
+        "visiblePixels16": 539174,
+        "opaquePixels240": 534633,
+        "noisePixels1or2": 8571,
+        "bounds16": [
+          229,
+          175,
+          1026,
+          1090
+        ],
+        "marginsPixels": [
+          229,
+          175,
+          228,
+          164
+        ],
+        "marginMinimumFraction": 0.13078149920255183,
+        "opaqueFractionOfVisible16": 0.9915778579827662,
+        "hiddenRgbIgnored": true
+      },
+      "technicalQA": {
+        "nativePNG": true,
+        "RGBA": true,
+        "alphaZeroPresent": true,
+        "solidCorePresent": true,
+        "sourceBytesIntact": true,
+        "nativeCopyBytesIdentical": true,
+        "marginAtLeastEightPercentAlpha16": true
+      },
+      "artReview": {
+        "status": "human-review-required",
+        "agentReviewScope": "Source and generated macro structure inspected; not human artistic certification",
+        "sourceAuthority": "secondary-community-only"
+      }
+    },
+    {
+      "id": "phg-phalanx",
+      "label": "Phalanx",
+      "maskId": "phg-phalanx",
+      "sourceId": "predator_04",
+      "sourceDesignId": "phg-phalanx",
+      "assetKind": "mask",
+      "state": "reference-view",
+      "status": "generated-candidate",
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "label": "Phalanx",
+        "iconId": "predator_04"
+      },
+      "sourceReference": {
+        "path": "/tmp/all-masks-20261113/web-references/icons/predator_04.texture",
+        "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+        "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+        "sha256": "f584a06a334f5ec00dd1ff7781e655371e4a22dd440ecb7761442995f9385555",
+        "gitBlobSha": "7115b848eddeb92aaef708a7b49724ca391e7ae6",
+        "bytes": 65664,
+        "dimensions": [
+          256,
+          256
+        ],
+        "role": "named-secondary-community-port-DDS-icon",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixelOneToOneVerified": false
+      },
+      "references": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_04.texture",
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+          "sha256": "f584a06a334f5ec00dd1ff7781e655371e4a22dd440ecb7761442995f9385555",
+          "gitBlobSha": "7115b848eddeb92aaef708a7b49724ca391e7ae6",
+          "bytes": 65664,
+          "dimensions": [
+            256,
+            256
+          ],
+          "role": "named-secondary-community-port-DDS-icon",
+          "sourceType": "community-PAYDAY2-port-HUD-icon",
+          "publisherCertified": false,
+          "originalGamePixelOneToOneVerified": false
+        },
+        {
+          "path": "/tmp/all-masks-20261113/phg-a-input-fronts/predator_04.png",
+          "originalInputPath": "/tmp/all-masks-20261113/web-references/fronts/predator_04.png",
+          "sha256": "4106898755851ec41aae9166d2bd014bed1c50edf3344242843eb0386eb09fa8",
+          "bytes": 31321,
+          "role": "read-only WebGL DDS inspection screenshot, exact bytes used as ImageGen reference",
+          "derivedFromSourceSha256": "f584a06a334f5ec00dd1ff7781e655371e4a22dd440ecb7761442995f9385555",
+          "dimensions": [
+            256,
+            257
+          ],
+          "sourceTextureDimensions": [
+            256,
+            256
+          ],
+          "captureQualifier": "Browser bounding-box screenshot256x257 for a256x256 DDS; not publisher source pixels or a certified original-game capture.",
+          "rasterEditingPerformed": false
+        },
+        {
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+          "repository": "Matthelzor/pd2-predator-pack",
+          "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+          "role": "community port repository attribution",
+          "attribution": "Repository README credits Predator: Hunting Grounds / IllFonic and other games. Per-mask port accuracy is not publisher-certified."
+        }
+      ],
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "scope": "Named-mask production request; not geometry authority"
+        }
+      ],
+      "generatedNativePath": "/workspace/generated_images/exec-decb2c00-41ad-4e44-9432-88d4401d222d.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-decb2c00-41ad-4e44-9432-88d4401d222d.png",
+      "assetPath": "public/game/biomasks-20261113/masks/phalanx-reference-view.png",
+      "sha256": "e2faa039d11f9438195d56278341f992f8df7d626a53721cba6efffed0643ae3",
+      "bytes": 1359878,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "width": 1254,
+      "height": 1254,
+      "sourceRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pivot": [
+        627.0,
+        627.0
+      ],
+      "pivotScope": "centered standalone preview proposal; not equipment-rig fitted",
+      "camera": "source-native near-frontal icon view requested; exact projection unmeasured",
+      "viewCoverage": [
+        "reference-near-front-icon-view"
+      ],
+      "frames": 1,
+      "animationFrames": 1,
+      "animationClips": 0,
+      "animated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "hiddenGeometryEstablished": false,
+      "sourceReferenceViewed": true,
+      "generatedOutputVisuallyCompared": true,
+      "prompt": "Create ONE detached biomask cutout, faithfully constrained to the supplied named 256-pixel monochrome reference. This is a source-based production candidate, not a redesign or certification of original PHG pixels. Preserve the visible source camera, exact macro silhouette, proportions, plate topology, aperture shapes, asymmetries, tonal arrangement and material appearance. Do not invent tiny engravings or hidden sides from low-resolution evidence. The long pale hair/cord strands hanging behind and below all these icons belong to the shared wearer render; OMIT those detached strands and the wearer, do not turn them into mask teeth, spikes or horns. Keep only the mask itself, including real metal side flanges that are visibly part of it. Neutral silver/charcoal grayscale ONLY, no imagined original-game colored finish. One whole mask, centered on a square 1254x1254 canvas at about72–78percent canvas height with at least10percent completely empty native alpha on every side. Opaque solid mask material, antialiased boundary, genuinely transparent empty background. No body, eyes or skin of a wearer, hair, neck, scenic background, floor, shadow, glow, text, labels, UI, collage, border or watermark. No extra object or alternate view. IDENTITY: Phalanx exactly as this icon. Preserve its broad dark helmet dome with a central split/seam, paired arched forehead channels, pronounced wraparound temple flanges, narrow dark horizontal eye apertures, the tall central nose/lower-face spine with visible horizontal breaks, and the layered V-shaped silver cheek channels tapering toward the narrow bottom. Preserve the full contour of the temple flanges; no new horns or exposed mandibles.",
+      "limitations": [
+        "Named256px community port HUD reference, not publisher-certified original PHG pixels.",
+        "Only the visible near-frontal source icon view is represented; no profile/back view or hidden geometry is established.",
+        "Grayscale reference appearance only: original game colors, material UVs and six-morphology rig fit are not verified.",
+        "High-resolution surface detail and fine aperture/emblem/rivet counts remain an interpretation of limited-resolution evidence; no pixel-level1:1 certification.",
+        "Generic pale hanging wearer strands omitted; faint edge/hair boundaries need human review on dark/checkerboard backgrounds.",
+        "Read-only reference screenshot measures256x257 for256x256 DDS; its exact input bytes and dimensions are recorded, without CPU normalization.",
+        "Centered preview pivot only; no rig fitting, physical scale, runtime admission or animation."
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "transparentPixels": 1027199,
+        "visiblePixels16": 535544,
+        "opaquePixels240": 530642,
+        "noisePixels1or2": 7154,
+        "bounds16": [
+          235,
+          137,
+          1017,
+          1115
+        ],
+        "marginsPixels": [
+          235,
+          137,
+          237,
+          139
+        ],
+        "marginMinimumFraction": 0.10925039872408293,
+        "opaqueFractionOfVisible16": 0.9908466904680101,
+        "hiddenRgbIgnored": true
+      },
+      "technicalQA": {
+        "nativePNG": true,
+        "RGBA": true,
+        "alphaZeroPresent": true,
+        "solidCorePresent": true,
+        "sourceBytesIntact": true,
+        "nativeCopyBytesIdentical": true,
+        "marginAtLeastEightPercentAlpha16": true
+      },
+      "artReview": {
+        "status": "human-review-required",
+        "agentReviewScope": "Source and generated macro structure inspected; not human artistic certification",
+        "sourceAuthority": "secondary-community-only"
+      }
+    }
+  ]
+}

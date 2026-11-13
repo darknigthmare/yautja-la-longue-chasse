@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Exactly3newpublicrepositorysearches and at most3returnedcorpora for ScarfacePredator, LordPredatorAVP2010, AhabPredator; no imagegeneration.",
+  "queries": [
+    {
+      "target": "scarface",
+      "query": "\"Scarface\" \"Predator\" \"mask\" in:readme",
+      "url": "https://github.com/search?q=%22Scarface%22+%22Predator%22+%22mask%22+in%3Areadme&type=repositories",
+      "status": 200,
+      "responseSha256": "e6588665cb9bdf4628e15d52fd6661f1e6e96b6943c25c3c1f171b6fc972e917",
+      "resultCount": 29,
+      "results": [
+        {
+          "repository": "BrunelCS/CS2001_git_Lab1",
+          "description": "",
+          "language": null,
+          "public": true
+        },
+        {
+          "repository": "Carter54git/Greates-Games-Decompilations-List",
+          "description": "Greates Games Decompilations List",
+          "language": null,
+          "public": true
+        },
+        {
+          "repository": "Jonathanwong96/Cs2001Lab5",
+          "description": "",
+          "language": null,
+          "public": true
+        },
+        {
+          "repository": "beth-sm/bm",
+          "description": "",
+          "language": null,
+          "public": true
+        },
+        {
+          "repository": "sergrodrig/queveo",
+          "description": "",
+          "language": "JavaScript",
+          "public": true
+        },
+        {
+          "repository": "valenvivaldi/notch-fight",
+          "description": "Pixel-art anime fights starring Claude that drop out of the MacBook notch while Claude Code works",
+          "language": "Python",
+          "public": true
+        },
+        {
+          "repository": "pedrocontreras/movies",
+          "description": "",
+          "language": "Java",
+          "public": true
+        },
+        {
+          "repository": "bhanuprataptailor/MovieRecommendation",
+          "description": "Movie recommendation with features including genre, cast, keywords and director.",
+          "language": "Python",
+          "public": true
+        },
+        {
+          "repository": "TaeKyoungKim/movie_recommener_web",
+          "description": "",
+          "language": "HTML",
+          "public": true
+        },
+        {
+          "repository": "DavidHenriquezz/BusquedaPeliculas",
+          "description": "",
+          "language": "C",
+          "public": true
+        }
+      ]
+    },
+    {
+      "target": "lord",
+      "query": "\"Lord Predator\" \"AVP\" \"2010\" in:readme",
+      "url": "https://github.com/search?q=%22Lord+Predator%22+%22AVP%22+%222010%22+in%3Areadme&type=repositories",
+      "status": 200,
+      "responseSha256": "c77d9fa5ee65c4aac4ae2377f57429eedc721d3085f1f0b3cc0ae1ae667fc1d3",
+      "resultCount": 0,
+      "results": []
+    },
+    {
+      "target": "ahab",
+      "query": "\"Ahab\" \"Predator\" \"mask\" in:readme",
+      "url": "https://github.com/search?q=%22Ahab%22+%22Predator%22+%22mask%22+in%3Areadme&type=repositories",
+      "status": 200,
+      "responseSha256": "c3f241d0f16295d798ebc57b9c5379e621a23fd3c8d841bb8c5a6e0b820f0281",
+      "resultCount": 13,
+      "results": [
+        {
+          "repository": "Kamikaze94/WolfHUD",
+          "description": "Payday 2 HUD",
+          "language": "Lua",
+          "public": true
+        },
+        {
+          "repository": "Kraggy1337/KraggyHud",
+          "description": "pPaste from Kraggy1337.",
+          "language": "Lua",
+          "public": true
+        },
+        {
+          "repository": "gregor-dietrich/ShaveHUD",
+          "description": "Lua Mod Collection for Payday 2.",
+          "language": "Lua",
+          "public": true
+        },
+        {
+          "repository": "antraiti/ChannelCommands",
+          "description": "List of twitch channel commands",
+          "language": null,
+          "public": true
+        },
+        {
+          "repository": "PeterOvermann/WordAssociations",
+          "description": "A large corpus of English-language word associations.",
+          "language": null,
+          "public": true
+        },
+        {
+          "repository": "rusdinspo/booksynosis62",
+          "description": "booksynosis62 - Book Title List",
+          "language": "HTML",
+          "public": true
+        },
+        {
+          "repository": "Catazat/hkncraft",
+          "description": "",
+          "language": "Python",
+          "public": true
+        },
+        {
+          "repository": "rusdinspo/booksynosis51",
+          "description": "booksynosis51 - Book Title List",
+          "language": "HTML",
+          "public": true
+        },
+        {
+          "repository": "rusdinspo/booksynosis20",
+          "description": "booksynosis20 - Book Title List",
+          "language": "HTML",
+          "public": true
+        },
+        {
+          "repository": "limalewat11/dbTitleBook96",
+          "description": "dbTitleBook96 - Book Title List",
+          "language": "HTML",
+          "public": true
+        }
+      ]
+    }
+  ],
+  "corpora": [
+    {
+      "repository": "Carter54git/Greates-Games-Decompilations-List",
+      "commit": "6d1c7f30173d272b92a4e774429378bb16be85e7",
+      "defaultBranch": "main",
+      "treeFile": {
+        "path": "/tmp/all-masks-20261113/web-references/three-target-search/Carter54git--Greates-Games-Decompilations-List-tree.json",
+        "sha256": "bd51c7e81dad1a06cda8778c1444e7c002939207659b613226cde07e1b85ce5f"
+      },
+      "treeEntries": 1,
+      "truncated": false,
+      "readme": {
+        "path": "/tmp/all-masks-20261113/web-references/three-target-search/Carter54git--Greates-Games-Decompilations-List-README.txt",
+        "repositoryPath": "README.md",
+        "sha256": "c187b7571343e65ffb41c53da2ec7a3dca6004a10a5e969fec3023b3b46400b8"
+      },
+      "readmeTargetLines": [
+        {
+          "line": 512,
+          "text": "- **The Legend of Zelda: Majora's Mask** — [zeldaret/mm](https://github.com/zeldaret/mm)"
+        },
+        {
+          "line": 513,
+          "text": "- **The Legend of Zelda: Majora's Mask (2 Ship 2 Harkinian, PS4)** — [alechurri/2ship2harkinian-ps4](https://github.com/alechurri/2ship2harkinian-ps4) — *Port.*"
+        },
+        {
+          "line": 514,
+          "text": "- **The Legend of Zelda: Majora's Mask (MaskPad)** — [chrissotraidis/maskpad](https://github.com/chrissotraidis/maskpad) — *Port.*"
+        },
+        {
+          "line": 515,
+          "text": "- **The Legend of Zelda: Majora's Mask (MMRecompRando)** — [RecompRando/MMRecompRando](https://github.com/RecompRando/MMRecompRando) — *Static recompilation.*"
+        },
+        {
+          "line": 516,
+          "text": "- **The Legend of Zelda: Majora's Mask (n64decomp)** — [n64decomp/majora](https://github.com/n64decomp/majora) — *Inactive or archived.*"
+        },
+        {
+          "line": 517,
+          "text": "- **The Legend of Zelda: Majora's Mask (Native Port)** — [Zelda64Recomp/Zelda64Recomp](https://github.com/Zelda64Recomp/Zelda64Recomp)"
+        },
+        {
+          "line": 518,
+          "text": "- **The Legend of Zelda: Majora's Mask (Zelda64 Recompiled [Android])** — [linkzenic/Zelda64Recomp-Android](https://github.com/linkzenic/Zelda64Recomp-Android) — *Static recompilation.*"
+        },
+        {
+          "line": 788,
+          "text": "- **The Legend of Zelda: The Wind Waker (WindowWaker)** — [MaskeZenY/WindowWaker](https://github.com/MaskeZenY/WindowWaker) — *Port.*"
+        },
+        {
+          "line": 858,
+          "text": "- **Scooby-Doo! Unmasked** — [josiahg2502-glitch/Scooby-Doo-ReMasked](https://github.com/josiahg2502-glitch/Scooby-Doo-ReMasked) — *Static recompilation.*"
+        },
+        {
+          "line": 1554,
+          "text": "- **The Legend of Zelda: Majora's Mask 3D (mm3d-dekui)** — [tgacquin/mm3d-dekui](https://github.com/tgacquin/mm3d-dekui) — *Port.*"
+        },
+        {
+          "line": 1555,
+          "text": "- **The Legend of Zelda: Majora's Mask 3D (Project Restoration)** — [leoetlino/project-restoration](https://github.com/leoetlino/project-restoration) — *Inactive or archived.*"
+        },
+        {
+          "line": 2563,
+          "text": "- **Predator: Concrete Jungle** — [Adolini1715/Concrete-Jungle-PC](https://github.com/Adolini1715/Concrete-Jungle-PC) — *Static recompilation.*"
+        },
+        {
+          "line": 2571,
+          "text": "- **Scarface: The World Is Yours** — [scarface-decomp/scarface_decomp](https://github.com/scarface-decomp/scarface_decomp)"
+        },
+        {
+          "line": 2742,
+          "text": "- **Far Cry Instincts: Predator** — [bugcoder00/FarCryInstinctsPredatorRecomp](https://github.com/bugcoder00/FarCryInstinctsPredatorRecomp) — *Static recompilation.*"
+        },
+        {
+          "line": 3235,
+          "text": "- **Alien vs. Predator 2** — [lemiur/AVP2-Reconstructed](https://github.com/lemiur/AVP2-Reconstructed)"
+        },
+        {
+          "line": 3930,
+          "text": "- **Alien vs Predator** ✦ — [Joshua-1248/Alien-V.S.-Predator-Atari-Jaguar-Decompilation](https://github.com/Joshua-1248/Alien-V.S.-Predator-Atari-Jaguar-Decompilation)"
+        },
+        {
+          "line": 4057,
+          "text": "- **The Legend of Zelda: Majora's Mask (2 Ship 2 Harkinian)** — [2ship2harkinian/2ship2harkinian](https://github.com/2ship2harkinian/2ship2harkinian)"
+        }
+      ],
+      "imageFiles": 0,
+      "imageTargetPaths": [],
+      "allTargetPaths": [],
+      "assessment": "Single-README decompilation index, zero image files. PredatorConcreteJungle is a game-code link, not a mask image; ScarfaceTheWorldIsYours is a separate film-licensed game, not the YautjaScarface identity.",
+      "exactTargetReferenceLocated": false
+    },
+    {
+      "repository": "Kamikaze94/WolfHUD",
+      "commit": "1b2736f9290062fe73ef3f2f10b913255def4905",
+      "defaultBranch": "master",
+      "treeFile": {
+        "path": "/tmp/all-masks-20261113/web-references/three-target-search/Kamikaze94--WolfHUD-tree.json",
+        "sha256": "b456be7ffe1b3afdb704a3760380f2270c6e826b979e4ae2b57aaed28d98b4fa"
+      },
+      "treeEntries": 77,
+      "truncated": false,
+      "readme": null,
+      "readmeTargetLines": [],
+      "imageFiles": 12,
+      "imageTargetPaths": [
+        {
+          "path": "assets/hudlist/mask_up.texture",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2db5e94440ee4e1901da0f5f28d3e18fde27b19b",
+          "size": 4224,
+          "url": "https://api.github.com/repos/Kamikaze94/WolfHUD/git/blobs/2db5e94440ee4e1901da0f5f28d3e18fde27b19b"
+        }
+      ],
+      "allTargetPaths": [
+        {
+          "path": "assets/hudlist/mask_up.texture",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2db5e94440ee4e1901da0f5f28d3e18fde27b19b",
+          "size": 4224,
+          "url": "https://api.github.com/repos/Kamikaze94/WolfHUD/git/blobs/2db5e94440ee4e1901da0f5f28d3e18fde27b19b"
+        }
+      ],
+      "assessment": "PAYDAY2HUD repository,77tree entries and12image-like files. The only mask-named image is mask_up.texture; actual GPU inspection shows a tiny generic human crew/mask-up action symbol, not a Yautjabiomask. No named Scarface/Lord/Ahab image binding.",
+      "exactTargetReferenceLocated": false
+    },
+    {
+      "repository": "BrunelCS/CS2001_git_Lab1",
+      "commit": "3f0eb601326e4a894adc57a67777c2fcb54e79de",
+      "defaultBranch": "main",
+      "treeFile": {
+        "path": "/tmp/all-masks-20261113/web-references/three-target-search/BrunelCS--CS2001_git_Lab1-tree.json",
+        "sha256": "df5399c6f8583563631f72cc521cb3edb807b74e9645b97729b17c2e3d394a43"
+      },
+      "treeEntries": 10,
+      "truncated": false,
+      "readme": {
+        "path": "/tmp/all-masks-20261113/web-references/three-target-search/BrunelCS--CS2001_git_Lab1-README.txt",
+        "repositoryPath": "README.md",
+        "sha256": "3c0fd2edd276cc7b7b933b23e042a9c9a0389171061005b0e83be32a4b889d05"
+      },
+      "readmeTargetLines": [
+        {
+          "line": 106,
+          "text": "1806529 | Scarface |1989"
+        },
+        {
+          "line": 136,
+          "text": "1906714 | Scarface123 | 1989"
+        },
+        {
+          "line": 156,
+          "text": "1906971 | Scarface | 1983"
+        },
+        {
+          "line": 234,
+          "text": "1917124 | The Mask | 1994"
+        },
+        {
+          "line": 236,
+          "text": "1917124 | The Mask Of Zorro | 1998"
+        },
+        {
+          "line": 508,
+          "text": "1615900 | Predators | 2010"
+        }
+      ],
+      "imageFiles": 0,
+      "imageTargetPaths": [],
+      "allTargetPaths": [],
+      "assessment": "Classroom student film-title list,10tree entries, zero images. README mentions Scarface1983 and Predators2010 as separate films, not the PredatorScarface identity.",
+      "exactTargetReferenceLocated": false
+    }
+  ],
+  "visuallyInspectedNonTarget": {
+    "source": {
+      "repository": "Kamikaze94/WolfHUD",
+      "commit": "1b2736f9290062fe73ef3f2f10b913255def4905",
+      "repositoryPath": "assets/hudlist/mask_up.texture",
+      "url": "https://raw.githubusercontent.com/Kamikaze94/WolfHUD/1b2736f9290062fe73ef3f2f10b913255def4905/assets/hudlist/mask_up.texture",
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/wolfhud-mask-up.texture",
+      "sha256": "1a82d86ac6f8f2bba5a55406c8da422a5f7d79e017af4a73099d25967f64e208",
+      "bytes": 4224,
+      "width": 64,
+      "height": 64,
+      "fourCC": "DXT3"
+    },
+    "capture": {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/native-reference-0.png",
+      "sha256": "99c0e7e6b4e5f471b031280d68fd44738cc52e9d34a3b48082da9ae25e300042",
+      "dimensions": [
+        64,
+        65
+      ]
+    },
+    "method": "Read-onlyWebGLDXT3decodeonblackwithnativecanvasscreenshot",
+    "decision": "GenericPAYDAYcrew-mask-upaction symbol, not any of the3Yautjatargets."
+  },
+  "uninspectedLead": {
+    "repository": "Adolini1715/Concrete-Jungle-PC",
+    "url": "https://github.com/Adolini1715/Concrete-Jungle-PC",
+    "discoveredIn": "Carter54gitREADME line2563",
+    "scope": "Static-recompilation game-code lead only; not inspected because the3-corpusbound was reached, and no visual mask reference is established."
+  },
+  "targetStatus": [
+    {
+      "target": "ScarfacePredator",
+      "newExactVisualReferences": 0,
+      "canonicalOneToOneSupported": false,
+      "status": "unknown-after-bounded-independent-search"
+    },
+    {
+      "target": "LordPredatorAVP2010",
+      "newExactVisualReferences": 0,
+      "canonicalOneToOneSupported": false,
+      "status": "unknown-after-bounded-independent-search"
+    },
+    {
+      "target": "AhabPredator",
+      "newExactVisualReferences": 0,
+      "canonicalOneToOneSupported": false,
+      "status": "unknown-after-bounded-independent-search"
+    }
+  ],
+  "counts": {
+    "newQueries": 3,
+    "corporaInspected": 3,
+    "newImageSourcesInspected": 1,
+    "usableTargetImages": 0,
+    "imagesGenerated": 0,
+    "canonicalCertifications": 0
+  },
+  "network": {
+    "previouslyDeniedOfficialHostsRetried": false,
+    "SideshowMirrorsSought": false,
+    "permissionBypassUsed": false,
+    "hostsUsed": [
+      "github.com",
+      "api.github.com",
+      "raw.githubusercontent.com"
+    ]
+  },
+  "limits": "Searches inspect first-page indexedGitHubpublicresults plus3pinnedtrees. They do not prove references absent from the whole web. Previouslyrefusedlicensedphoto hosts were neither retried nor mirrored.",
+  "pins": [
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/BrunelCS--CS2001_git_Lab1-README.txt",
+      "sha256": "3c0fd2edd276cc7b7b933b23e042a9c9a0389171061005b0e83be32a4b889d05",
+      "bytes": 16187
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/BrunelCS--CS2001_git_Lab1-tree.json",
+      "sha256": "df5399c6f8583563631f72cc521cb3edb807b74e9645b97729b17c2e3d394a43",
+      "bytes": 2454
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/Carter54git--Greates-Games-Decompilations-List-README.txt",
+      "sha256": "c187b7571343e65ffb41c53da2ec7a3dca6004a10a5e969fec3023b3b46400b8",
+      "bytes": 545289
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/Carter54git--Greates-Games-Decompilations-List-tree.json",
+      "sha256": "bd51c7e81dad1a06cda8778c1444e7c002939207659b613226cde07e1b85ce5f",
+      "bytes": 459
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/Kamikaze94--WolfHUD-tree.json",
+      "sha256": "b456be7ffe1b3afdb704a3760380f2270c6e826b979e4ae2b57aaed28d98b4fa",
+      "bytes": 17885
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/corpora.json",
+      "sha256": "2612a8d620024620af792a45abab7f06e89bc7cd3bac5c54df6dd10c74d11e52",
+      "bytes": 6738
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/mask-up-reference.json",
+      "sha256": "8b3dbbbc6f8921be9300cb32bc3c78a34f7087d6fc263358047f558033a8cbe2",
+      "bytes": 532
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/native-dds-view-report.json",
+      "sha256": "95e24824a7a2489e954380051f6e891ed79db1b33578ca696ec32c87e91e9f0e",
+      "bytes": 178
+    },
+    {
+      "path": "/tmp/all-masks-20261113/web-references/three-target-search/queries.json",
+      "sha256": "f00eed9fef989aab07c33aaa43b300a8fd2d7e1a4343197c2adb0820244eab24",
+      "bytes": 4465
+    }
+  ]
+}
