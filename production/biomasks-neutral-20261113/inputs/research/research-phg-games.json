@@ -1,0 +1,751 @@
+{
+  "schemaVersion": "yautja-phg-games-readonly-research-20261113-1",
+  "asOfUtc": "2026-11-13T12:02:33.979300+00:00",
+  "scope": "Read-only local and permitted-host research for still-missing PHG/other-game biomasks, with no regeneration of delivered pairs and no neutral-style decision.",
+  "priorPackPins": [
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/biomasks-dual-20261113/manifest.json",
+      "sha256": "b1fa346f649cd5a1edb5f33f5dedb4132d9074b9628a028e3c12f6de4ef8542d",
+      "bytes": 461967
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/public/game/biomasks-expansion-20261113/manifest.json",
+      "sha256": "324927d19c5890d616e092b8a29502c4337067eb3ac0e07c4bf45de00cd96a96",
+      "bytes": 318034
+    }
+  ],
+  "deliveryDeduplication": {
+    "priorDualPairs": 46,
+    "priorExpansionPairs": 20,
+    "priorExpansionArtisticReservation": "Vapor remains provisional with geometryDeviationOpen=true, productionReady=false, rejectedForFaithfulRelease=true; no retry or generation performed.",
+    "coveredIds": [
+      "concept-v133-glypic",
+      "concept-v133-instinct",
+      "concept-v133-nova",
+      "concept-v133-paroxysm",
+      "concept-v133-requiem",
+      "concept-v133-tyrant",
+      "concept-v133-warlord",
+      "legacy-elder-project",
+      "mask-feral-screen-original",
+      "mk-01-jungle",
+      "mk-02-city",
+      "mk-03-scar",
+      "mk-04-celtic",
+      "mk-05-chopper",
+      "mk-06-wolf",
+      "mk-07-feral",
+      "mk-08-boar",
+      "mk-09-snake",
+      "mk-10-falconer",
+      "mk-11-berserker",
+      "mk-12-fugitive",
+      "mk-13-dek",
+      "mk-14-enforcer",
+      "mk-23-samurai",
+      "mk-24-viking",
+      "mk-25-valkyrie",
+      "mk-30-emissary",
+      "mk-35-mr-black",
+      "phg-alpha",
+      "phg-captured",
+      "phg-cleopatra",
+      "phg-cosmetic-arthos",
+      "phg-cosmetic-eclipse",
+      "phg-cosmetic-immortal",
+      "phg-cosmetic-inferno",
+      "phg-cosmetic-journeyman",
+      "phg-cosmetic-nocturne",
+      "phg-cosmetic-phalanx",
+      "phg-cosmetic-phoenix",
+      "phg-cosmetic-plague",
+      "phg-cosmetic-prophet",
+      "phg-cosmetic-ravager",
+      "phg-cosmetic-vex",
+      "phg-cosmetic-wretch",
+      "phg-elder",
+      "phg-exiled",
+      "predator_11",
+      "predator_12",
+      "predator_16",
+      "predator_17",
+      "predator_21",
+      "predator_23",
+      "predator_detox",
+      "predator_14",
+      "predator_kawaii",
+      "neca-kwei-prototype",
+      "neca-ahab-sdcc-2014",
+      "neca-warrior-series-6",
+      "neca-scout-lost-tribe-series-6",
+      "neca-lava-planet-series-10",
+      "neca-hive-wars-series-10",
+      "neca-nightstorm-series-10",
+      "neca-clan-leader-toyfair-2016",
+      "neca-viper-series-12",
+      "neca-golden-angel-horned-2018",
+      "neca-golden-angel-smooth-2018"
+    ]
+  },
+  "counts": {
+    "remainingPHGOrOtherGameEntriesAudited": 27,
+    "newFullMaskReferencesQualified": 0,
+    "newPartialMaskSourceViewsIdentified": 1,
+    "newPixelDesignsDownloaded": 0,
+    "imagesGenerated": 0,
+    "repositoryFilesModified": 0
+  },
+  "newPartialReference": {
+    "candidateId": "phg-bionic-mask-held-source-view",
+    "name": "Bionic held biomask, PHG",
+    "notInDeliveredPairs": true,
+    "notInOriginal110AsDedicatedMask": true,
+    "sourceClass": "official-CDN-game-render",
+    "sourcePin": {
+      "path": "/tmp/mask-neutral-20261113/phg-games/bionic-official.png",
+      "sha256": "0228497c95cf187ed21a9851b46aa834d0c192a62df2d9b426ef8f213c7de007",
+      "bytes": 1070761
+    },
+    "sourceUrl": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/8449c6f835/bionic.png",
+    "downloadHttpStatus": 200,
+    "downloadedBytesUnchanged": true,
+    "samePixelsPreviouslyArchivedAs": "public/game/imports/v87/archive-audit/0228497c95cf187ed21a9851b46aa834d0c192a62df2d9b426ef8f213c7de007.png",
+    "newDownloadedPixelDesign": false,
+    "newlyIdentifiedUsefulMaskView": true,
+    "visuallyInspected": true,
+    "observation": "The character has an exposed organic head. A separate grey hard biomask is held in the image-right hand, low in the frame, around x770–938/y705–940. Its domed upper shell, tapered ridges and lower side relief are visible in an oblique hand-held view.",
+    "qualification": "partial named-source mask reference only",
+    "sourceNameEvidence": "Official asset filename bionic.png; archived reference manifest independently records this URL. The current publisher webpage remains unverified because its host had CONNECT403 and was not retried.",
+    "limitations": [
+      "The hand occludes part of the upper/eye-side shell; a complete isolated mask would require undocumented reconstruction.",
+      "Only the current oblique view is documented, with about150x230pixels of mask area; no exact frontal, profile, rear, UV or thickness proof.",
+      "Magenta background and blue/white scene lighting are already present in the original downloaded file; paint albedo and a neutral grey tint cannot be inferred exactly.",
+      "The large open mouth on the character is an organic head, not a second detachable biomask.",
+      "Do not identify this as a generic PHG Hunter/Scout mask or a NECA Bionic sculpt by resemblance."
+    ],
+    "fullMaskIsolationSupported": false,
+    "partialViewStudySupported": true,
+    "generationReady": false,
+    "neutralVersionReady": false,
+    "canonCertified": false,
+    "humanArtValidated": false,
+    "runtimeIntegrated": false
+  },
+  "remainingTargetResults": [
+    {
+      "id": "mk-17-lord",
+      "name": "lord",
+      "work": "Lord, *Aliens vs. Predator* (2010)",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Ornate high-rank mask (the source gives no visual detail).",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "A high-rank textual description cannot establish the2010game mask. No precisely named game capture or original game model was found in the checked local corpora."
+    },
+    {
+      "id": "mk-26-anubis",
+      "name": "anubis",
+      "work": "Anubis, PHG",
+      "newFullMaskReferenceQualified": false,
+      "status": "exact-forum-source-urls-known-but-pixels-not-local-and-host-still-blocked",
+      "sourceDescriptionOnly": "Elongated jackal-like mask with tall ears and long snout, dark metal with gold plating, glowing eyes.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "blockedSourceLeads": [
+        "https://forum.predator.illfonic.com/t/patch-notes-3-2-0/36078",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/3/7/37673eba38c82af9576971c60256e32400f86b5a.jpeg"
+      ],
+      "retryAttempted": false
+    },
+    {
+      "id": "mk-27-witch",
+      "name": "witch",
+      "work": "Witch, PHG",
+      "newFullMaskReferenceQualified": false,
+      "status": "exact-forum-source-urls-known-but-pixels-not-local-and-host-still-blocked",
+      "sourceDescriptionOnly": "Skull-like bone mask with ornamental antlers, tusks and feathers, tribal look.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "blockedSourceLeads": [
+        "https://forum.predator.illfonic.com/t/the-witch-predator-has-arrived/36352",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/f/2/f28ef49b92215ecac343cff87767b29b4964bf36.jpeg"
+      ],
+      "retryAttempted": false
+    },
+    {
+      "id": "mk-28-amazon",
+      "name": "amazon",
+      "work": "Amazon, PHG",
+      "newFullMaskReferenceQualified": false,
+      "status": "existing-bundle-render-unmapped-individual-identity",
+      "sourceDescriptionOnly": "Bone mask shaped like a jaguar skull.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "existingSource": "/tmp/primary-masks-20261113/phg-next-independent/hunting-party-2-render.png",
+      "limitation": "The official two-character composite is useful but its individual names are not printed; prior ordering/body resemblance cannot establish Amazon/Pirate mapping. No new mapping evidence found."
+    },
+    {
+      "id": "mk-29-pirate",
+      "name": "pirate",
+      "work": "Pirate, PHG",
+      "newFullMaskReferenceQualified": false,
+      "status": "existing-bundle-render-unmapped-individual-identity",
+      "sourceDescriptionOnly": "Half mask covering only the lower face (mouth and mandibles); separate layer: simple leather eyepatch over a clouded, scarred LEFT eye.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "existingSource": "/tmp/primary-masks-20261113/phg-next-independent/hunting-party-2-render.png",
+      "limitation": "The official two-character composite is useful but its individual names are not printed; prior ordering/body resemblance cannot establish Amazon/Pirate mapping. No new mapping evidence found."
+    },
+    {
+      "id": "mk-32-white-skull",
+      "name": "white skull",
+      "work": "Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Standard bio-mask with a white skull painted on its face.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-33-rebreather",
+      "name": "rebreather",
+      "work": "City Hunter, PHG",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Backup breathing mask resembling a scuba second-stage regulator, worn without the bio-mask.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "Backup respirator is a distinct equipment scope; do not treat a film mask or complete helmet as an exact PHG rebreather reference."
+    },
+    {
+      "id": "mk-54-claw",
+      "name": "claw",
+      "work": "Claw, *AvP* (2010)",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Jungle Hunter based helmet with four vertical red stripes and blood streaks on the front.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "The Bible description and a similar NECA sculpt cannot replace an explicitly identified2010game screenshot; no game data were extracted."
+    },
+    {
+      "id": "mk-55-dark",
+      "name": "dark",
+      "work": "Dark, *AvP* (2010)",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Jungle Hunter based helmet (same base as Claw, without the stripes).",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "The Bible description and a similar NECA sculpt cannot replace an explicitly identified2010game screenshot; no game data were extracted."
+    },
+    {
+      "id": "mk-56-alien-head",
+      "name": "alien head",
+      "work": "Alien Head, *AvP* (2010)",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Bio-helmet shaped like a Xenomorph's head.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "The Bible description and a similar NECA sculpt cannot replace an explicitly identified2010game screenshot; no game data were extracted."
+    },
+    {
+      "id": "mk-57-scarface",
+      "name": "scarface",
+      "work": "Scarface, *Concrete Jungle*",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Aged, battle-worn mask; unmasked face with a deep scar and an empty LEFT eye socket (separate face layer).",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "mk-63-spartan",
+      "name": "spartan",
+      "work": "Spartan, *AvP* (2010)",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Bio-helmet not described; describe from a capture.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "The Bible description and a similar NECA sculpt cannot replace an explicitly identified2010game screenshot; no game data were extracted."
+    },
+    {
+      "id": "phg-exalted",
+      "name": "Exalted (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "exact-forum-source-urls-known-but-pixels-not-local-and-host-still-blocked",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "blockedSourceLeads": [
+        "https://forum.predator.illfonic.com/t/exalted-predator-is-here/36265",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/2/a/2afc3b0f85c36e3ee86008c5850290524059262e.jpeg",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/6/9/69972c2add7580387c04a3dcb41f398ce0880efe.jpeg"
+      ],
+      "retryAttempted": false
+    },
+    {
+      "id": "phg-gladiator",
+      "name": "Gladiator (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "exact-forum-source-urls-known-but-pixels-not-local-and-host-still-blocked",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "blockedSourceLeads": [
+        "https://forum.predator.illfonic.com/t/gladiator-predator-is-here/34743",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/3/e/3eb7ff4ba93e05a64fdf07a3606a032b2af819e3.jpeg"
+      ],
+      "retryAttempted": false
+    },
+    {
+      "id": "phg-oni",
+      "name": "Oni (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "exact-forum-source-urls-known-but-pixels-not-local-and-host-still-blocked",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "blockedSourceLeads": [
+        "https://forum.predator.illfonic.com/t/oni-predator-is-here/36985",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/4/b/4b45c9372102e03ec59fa191bc2683361210b9aa.jpeg",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/4/f/4f73d94b67c64e450a0e7dcaa9fb7f7b04194f8d.jpeg"
+      ],
+      "retryAttempted": false
+    },
+    {
+      "id": "phg-jotun",
+      "name": "Jotun (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "exact-forum-source-urls-known-but-pixels-not-local-and-host-still-blocked",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "blockedSourceLeads": [
+        "https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/b/b/bbe2ada00af2f753f9d9ffd8901ff8c734c81341.jpeg"
+      ],
+      "retryAttempted": false
+    },
+    {
+      "id": "phg-father",
+      "name": "Father (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "exact-forum-source-urls-known-but-pixels-not-local-and-host-still-blocked",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "blockedSourceLeads": [
+        "https://forum.predator.illfonic.com/t/the-father-predator-joins-the-hunt/37649",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/1/1/115e9779e3094d60dc76204c126d66ebf47e3b4b.jpeg",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/5/a/5a2022a80e7eb95a77ffe33f4e1473c317b5fd93.jpeg",
+        "https://forum.predator.illfonic.com/uploads/default/original/3X/7/c/7c7a88451ddca2ae45e9695966b865de337d16dc.jpeg"
+      ],
+      "retryAttempted": false
+    },
+    {
+      "id": "phg-hunter",
+      "name": "Hunter (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "existing-launch-portraits-unmapped-individual-identity",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "Official2019class portraits are present, but name-to-image mapping remains unproved; do not assign by image order, physique or similarity to film masks."
+    },
+    {
+      "id": "phg-scout",
+      "name": "Scout (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "existing-launch-portraits-unmapped-individual-identity",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "Official2019class portraits are present, but name-to-image mapping remains unproved; do not assign by image order, physique or similarity to film masks."
+    },
+    {
+      "id": "phg-berserker",
+      "name": "Berserker (PHG)",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "existing-launch-portraits-unmapped-individual-identity",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "Official2019class portraits are present, but name-to-image mapping remains unproved; do not assign by image order, physique or similarity to film masks."
+    },
+    {
+      "id": "phg-cosmetic-haze",
+      "name": "Haze",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-cosmetic-rival",
+      "name": "Rival",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-cosmetic-salamander",
+      "name": "Salamander",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-cosmetic-mors",
+      "name": "Mors",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-cosmetic-foxtrot",
+      "name": "Foxtrot",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-cosmetic-tank",
+      "name": "Tank",
+      "work": "Predator: Hunting Grounds cosmetic",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": null,
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "phg-cosmetic-saber",
+      "name": "Saber",
+      "work": "Predator: Hunting Grounds",
+      "newFullMaskReferenceQualified": false,
+      "status": "no-new-exact-local-or-permitted-primary-visual",
+      "sourceDescriptionOnly": "Saber (Dutch shoulder pauldron): named cosmetic; exact geometry not established.",
+      "generationReady": false,
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "limitation": "Inventory text mentions a Dutch shoulder-pauldron cosmetic context; verify the intended wearable-mask identity before generation."
+    }
+  ],
+  "currentCorpusChecks": [
+    {
+      "repository": "Matthelzor/pd2-predator-pack",
+      "treePin": {
+        "path": "/tmp/mask-neutral-20261113/phg-games/payday-current-tree.json",
+        "sha256": "57c760d2cb358f3ddbbddd02828afea1c707c84a0790e791a37248214a61bab9",
+        "bytes": 595365
+      },
+      "head": "967905f04f02f702e89e0ca976bac712c516a4e9",
+      "sameCommitAsPriorAudit": true,
+      "maskModelRecords": 33,
+      "finding": "No new repository revision. The known mask corpus includes already covered designs/variants, one exposed face and an unrelated O.W.F.L operative gasmask. Model/texture presence is not a new named PHG canonical reference.",
+      "modelsDownloaded": false,
+      "newGeometryQualified": false
+    },
+    {
+      "repository": "FairYautja/HG",
+      "treePin": {
+        "path": "/tmp/mask-neutral-20261113/phg-games/fairyautja-current-tree.json",
+        "sha256": "36da6707163ee3b0beb5308d049bd273758dc45eb409b50202533d87d7201a30",
+        "bytes": 74980
+      },
+      "head": "87d08ed4028f89f3625bf059c95539cb71769fc6",
+      "sameCommitAsPriorAudit": true,
+      "finding": "No new repository revision. The class icons are flat emblems and do not prove shaded mask geometry. Existing Bionic/Pirate emblem images were visually inspected and excluded.",
+      "newGeometryQualified": false
+    }
+  ],
+  "publisherSearches": [
+    {
+      "key": "ps-gladiator",
+      "url": "https://blog.playstation.com/?s=Predator+Gladiator",
+      "status": 200,
+      "path": "/tmp/mask-neutral-20261113/phg-games/ps-gladiator.html",
+      "bytes": 107177,
+      "sha256": "42d3dc708a90176b2e712d758cb31127855feff4a53b24051450d01401afae05",
+      "links": [],
+      "finding": "HTTP200 search page states Nothing Found; no image or exact named-mask reference."
+    },
+    {
+      "key": "ps-jotun",
+      "url": "https://blog.playstation.com/?s=Predator+Jotun",
+      "status": 200,
+      "path": "/tmp/mask-neutral-20261113/phg-games/ps-jotun.html",
+      "bytes": 107125,
+      "sha256": "fc18d845d2bb89122dd2e4ab0da1a0ac14fac0381758a68f9eb42db12b0d352e",
+      "links": [],
+      "finding": "HTTP200 search page states Nothing Found; no image or exact named-mask reference."
+    },
+    {
+      "key": "ps-father",
+      "url": "https://blog.playstation.com/?s=Predator+Father",
+      "status": 200,
+      "path": "/tmp/mask-neutral-20261113/phg-games/ps-father.html",
+      "bytes": 107138,
+      "sha256": "f91d97813c6b79dbf1b795141d5d8330ad3d33ab19ce1e840484226d8da3aa37",
+      "links": [],
+      "finding": "HTTP200 search page states Nothing Found; no image or exact named-mask reference."
+    },
+    {
+      "key": "ps-2024",
+      "url": "https://blog.playstation.com/?s=Predator+2024",
+      "status": 200,
+      "path": "/tmp/mask-neutral-20261113/phg-games/ps-2024.html",
+      "bytes": 114867,
+      "sha256": "bc3d7756935b329db87fa7839b03833f21cb23367d352249ee69141ae4da6e12",
+      "links": [
+        "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/"
+      ],
+      "finding": "Only the already-known2019launch post is returned."
+    },
+    {
+      "key": "gh-phg-masks",
+      "url": "https://api.github.com/search/repositories?q=Predator%20Hunting%20Grounds%20masks&per_page=8",
+      "error": "HTTP Error 502: Bad Gateway",
+      "retryAttempted": false
+    },
+    {
+      "key": "gh-avp-masks",
+      "url": "https://api.github.com/search/repositories?q=AVP%202010%20predator%20models&per_page=8",
+      "error": "HTTP Error 502: Bad Gateway",
+      "retryAttempted": false
+    },
+    {
+      "url": "https://blog.playstation.com/?s=Bionic",
+      "path": "/tmp/mask-neutral-20261113/phg-games/ps-bionic.html",
+      "status": 200,
+      "bytes": 155341,
+      "sha256": "a367a30bceb44ea4025f2e59d3671371115f563d44a4c8a4bbdf32dd04e1605e",
+      "links": [
+        "https://blog.playstation.com/2008/07/09/bionic-commando-rearmed-psn-features-revealed/",
+        "https://blog.playstation.com/2008/07/24/1942-joint-strike-coming-to-psn-today-and-a-bionic-commando-rearmed-update/",
+        "https://blog.playstation.com/2008/08/01/bionic-commando-rearmed-behind-the-scenes/",
+        "https://blog.playstation.com/2008/08/08/bionic-commando-rearmed-behind-the-scenes-3/",
+        "https://blog.playstation.com/2008/08/14/bionic-commando-rearmed-and-street-fighter-alpha-available-today-on-the-psn/",
+        "https://blog.playstation.com/2009/05/14/bionic-commando-rearmed-reduced/",
+        "https://blog.playstation.com/2009/05/21/bionic-commando-viral-videos/",
+        "https://blog.playstation.com/2009/06/18/new-bionic-commando-rearmed-update-includes-trophies-and-more/",
+        "https://blog.playstation.com/2010/11/04/comet-crash-bionic-swarm-dlc-coming-soon/",
+        "https://blog.playstation.com/2025/04/14/the-making-of-hand-crafted-pixel-art-platformer-bionic-bay-out-april-17-on-ps5/"
+      ]
+    }
+  ],
+  "blockedForumReferences": {
+    "exalted": [
+      "https://forum.predator.illfonic.com/t/exalted-predator-is-here/36265",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/2/a/2afc3b0f85c36e3ee86008c5850290524059262e.jpeg",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/6/9/69972c2add7580387c04a3dcb41f398ce0880efe.jpeg"
+    ],
+    "jotun": [
+      "https://forum.predator.illfonic.com/t/the-jotun-predator-has-arrived/37412",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/b/b/bbe2ada00af2f753f9d9ffd8901ff8c734c81341.jpeg"
+    ],
+    "witch": [
+      "https://forum.predator.illfonic.com/t/the-witch-predator-has-arrived/36352",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/f/2/f28ef49b92215ecac343cff87767b29b4964bf36.jpeg"
+    ],
+    "anubis": [
+      "https://forum.predator.illfonic.com/t/patch-notes-3-2-0/36078",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/3/7/37673eba38c82af9576971c60256e32400f86b5a.jpeg"
+    ],
+    "father": [
+      "https://forum.predator.illfonic.com/t/the-father-predator-joins-the-hunt/37649",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/1/1/115e9779e3094d60dc76204c126d66ebf47e3b4b.jpeg",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/5/a/5a2022a80e7eb95a77ffe33f4e1473c317b5fd93.jpeg",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/7/c/7c7a88451ddca2ae45e9695966b865de337d16dc.jpeg"
+    ],
+    "gladiator": [
+      "https://forum.predator.illfonic.com/t/gladiator-predator-is-here/34743",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/3/e/3eb7ff4ba93e05a64fdf07a3606a032b2af819e3.jpeg"
+    ],
+    "oni": [
+      "https://forum.predator.illfonic.com/t/oni-predator-is-here/36985",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/4/b/4b45c9372102e03ec59fa191bc2683361210b9aa.jpeg",
+      "https://forum.predator.illfonic.com/uploads/default/original/3X/4/f/4f73d94b67c64e450a0e7dcaa9fb7f7b04194f8d.jpeg"
+    ]
+  },
+  "otherGameEvidence": {
+    "concreteJungle": {
+      "path": "/tmp/all-masks-20261113/web-references/concrete-jungle/corpus.json",
+      "sha256": "044ce466f5d181e92c03d41b35a14fc23664dd74fa336e96562420c23e60151b",
+      "bytes": 7981
+    },
+    "finding": "Previously audited PC recompilation repository contains no original game data/models; only interface replacement art. It cannot establish Scarface or any2010AVPmask. The refreshed AVP model repository search failed502 and was not retried."
+  },
+  "exclusions": [
+    {
+      "sourcePin": {
+        "path": "/tmp/all-masks-20261113/web-references/hg-additional/bionic.png",
+        "sha256": "760e915bfb003ac6ccffb457ee16051f611d2ac1f5858b704048e641143afbb0",
+        "bytes": 165677
+      },
+      "reason": "Flat class emblem, not the official Bionic3Drender or a geometry reference."
+    },
+    {
+      "sourcePin": {
+        "path": "/tmp/all-masks-20261113/web-references/hg-additional/pirate.png",
+        "sha256": "6e8e7c3edaa1dcc7785fdf6d65aa144366ac09f9ff5e4ea3addc3b2d18e3f5cf",
+        "bytes": 82154
+      },
+      "reason": "Class/emblem icon supplies no shaded3Dmask or proof of volume."
+    },
+    {
+      "sourcePin": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/owfl_gasmask.png",
+        "sha256": "192dfe5d07ebbcef184e0f0f30cacc39f1861edab1c14563ad8bad8536fd3567",
+        "bytes": 35518
+      },
+      "reason": "Visually a human-style operative gasmask; no identified Predator/PHG biomask provenance. Outside current Yautja mask scope."
+    },
+    {
+      "sourceLabel": "Exiled Repulsive Dreads",
+      "reason": "Known wearer dreadlock variant; no separate unmade mask geometry."
+    }
+  ],
+  "neutralVersionLimits": [
+    "No neutral version was generated. User preference/strategy remains pending.",
+    "Neutral material staging cannot establish hidden geometry or remove observed colour safely as a claim of original albedo.",
+    "A held/occluded Bionic reference supports only a bounded partial view, not an invented full neutral front."
+  ],
+  "network": {
+    "policyUnchanged": true,
+    "successfulHttpRequests": 8,
+    "http502QueriesNotRetried": 2,
+    "initialSandboxNetworkFailure": "Six default-sandbox requests failedEPERM before HTTP; the tool escalation path was then approved for the same already-authorized domains.",
+    "forumOrIllfonicHomepageRequestsThisAudit": 0,
+    "necaCdnRequestsThisAudit": 0,
+    "deniedHostRetryAttempted": false,
+    "rawGitHubOrAlternateCdnBypassAttempted": false,
+    "evidenceFiles": [
+      {
+        "path": "/tmp/mask-neutral-20261113/phg-games/queries.json",
+        "sha256": "ba0d610a005a7bb6c8d787cfc87428c884a0b22aa51efe9f4442441970d1f273",
+        "bytes": 1732
+      },
+      {
+        "path": "/tmp/mask-neutral-20261113/phg-games/current-tree-research.json",
+        "sha256": "20cbe4a22f11d85c2f6e948fac60cab9a50a893f9c8fa0ae0d07f406978aa0cb",
+        "bytes": 101898
+      },
+      {
+        "path": "/tmp/mask-neutral-20261113/phg-games/bionic-download.json",
+        "sha256": "b3d23d2faf75047a77ed589c5c6cbc3716593263475bc9b27046e09a974e4435",
+        "bytes": 315
+      },
+      {
+        "path": "/tmp/mask-neutral-20261113/phg-games/bionic-search.json",
+        "sha256": "af9d5bdecbc1a88fdfd83681b316371f9a7ae5860d392fabd34ad083b578f78b",
+        "bytes": 1258
+      }
+    ]
+  },
+  "evidencePins": [
+    {
+      "path": "/workspace/yautja-la-longue-chasse/docs/drive-archive-audit-v87-sources.json",
+      "sha256": "4e81c02a141d552cceed5ba5d18cc3f6e705cf75696280c1fe343726b365fd24",
+      "bytes": 3003312
+    },
+    {
+      "path": "/workspace/yautja-la-longue-chasse/production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+      "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de",
+      "bytes": 361243
+    },
+    {
+      "path": "/tmp/primary-masks-20261113/phg-next-independent/independent-remaining-mask-reference-report.json",
+      "sha256": "0f1837cead3cfd5b8d1b9c5093b7e25bb6d78bf6a6160c27908c4546f035c392",
+      "bytes": 17547
+    },
+    {
+      "path": "/tmp/primary-masks-20261113/phg-next-independent/last-two-bundles-and-captured-reference-report.json",
+      "sha256": "c8387a963719be5c9b83ae49ddb8b2bf96fabec25392ed673fa6a0504beda69f",
+      "bytes": 14316
+    }
+  ],
+  "conclusion": "No new complete exact mask reference was qualified. One previously unused official Bionic image contains a newly identified, named but hand-occluded mask view; preserve it as a partial research lead only. All remaining game-mask identities stay open, and the20/46previous pairs are untouched.",
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false
+}

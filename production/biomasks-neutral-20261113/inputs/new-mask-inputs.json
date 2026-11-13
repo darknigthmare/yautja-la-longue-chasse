@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "targets": [
+    {
+      "id": "neca-scarface-concrete-jungle-2016",
+      "label": "Scarface · NECA ConcreteJungle2016",
+      "sourceClass": "official-photo",
+      "originGroup": "new-official-edition",
+      "sourceScope": "Photographies officielles de cette édition NECA,vue source uniquement.",
+      "camera": "Caméra de la première référence R,conservée dans A/B ; aucune vue cachée inventée.",
+      "sourcePath": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+      "sourceSha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarfacepredator-photo.jpg",
+          "sha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+          "role": "primary-camera-and-sculpt"
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-scarface_predator-photo.jpg",
+          "sha256": "de246dce8fbd77afa1f8453cc8bb5fc40e94afe9d295f2894e2d8409809abe6e",
+          "role": "secondary-sculpt,nude-inset-excluded"
+        }
+      ],
+      "relatedCanonicalTargetId": "mk-57-scarface",
+      "sourceStatus": {
+        "reviewStatus": "edition-candidate-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure."
+        ]
+      },
+      "limitations": [
+        "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+        "C est une dérivée technique monochrome de B ; elle ne corrige pas les incertitudes artistiques,ne crée pas un albédo3D et ne valide pas le canon.",
+        "Source-scoped NECA2016 Concrete Jungle toy edition, not certified original game geometry.",
+        "The mask occupies a small part of the960x1200 and1003x1200 catalogue photographs; fine relief and wear texture are interpretations, not1:1 microdetail proof.",
+        "Only the primary photograph’s inclined camera is referenced; hidden back, interior and side geometry remain unknown.",
+        "The unmasked head inset, cranial peak, chin, dreadlocks, cannon and body/armour are excluded.",
+        "Native visible minimum margin is below requested8–12percent; full mask remains within frame. No CPU resizing or pixel editing performed."
+      ],
+      "identityAnchors": [],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "neca-stalker-kenner-series-16",
+      "label": "Stalker · NECA KennerSeries16",
+      "sourceClass": "official-photo",
+      "originGroup": "new-official-edition",
+      "sourceScope": "Photographies officielles de cette édition NECA,vue source uniquement.",
+      "camera": "Caméra de la première référence R,conservée dans A/B ; aucune vue cachée inventée.",
+      "sourcePath": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+      "sourceSha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator1-photo.jpg",
+          "sha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+          "role": "primary-mask-view"
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-1200x-51534_stalker_predator2-photo.jpg",
+          "sha256": "c9168af5af0753adcfb41b058f6db9b6b77049011f807585f3fbf1c3dbfd39e2",
+          "role": "documentary-package/biology-only,not-imagegen-input"
+        }
+      ],
+      "relatedCanonicalTargetId": "mk-60-stalker",
+      "sourceStatus": {
+        "reviewStatus": "edition-candidate-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure."
+        ]
+      },
+      "limitations": [
+        "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+        "C est une dérivée technique monochrome de B ; elle ne corrige pas les incertitudes artistiques,ne crée pas un albédo3D et ne valide pas le canon.",
+        "Specific NECA2016 Series16 Stalker Kenner tribute toy edition, not LostTribeStalker or a certified original film mask.",
+        "Only primary photograph shows a complete worn mask; support blister partly hides the accessory bottom and cannot establish another full camera.",
+        "Small source mask region about200px tall; fine relief, exact UV/albedo, hidden sides/back/interior are not established.",
+        "Translucent ivory material belongs to the biological wearer/dreadlocks; no sufficient evidence that opaque bronze shell is translucent.",
+        "A is a new ImageGen isolation, not exact photo pixels or a manual alpha cutout; B is a separate rendering adaptation, not certified PHG mesh/material.",
+        "Very low-alpha native edge pixels are preserved without CPU cleaning; maximum border alpha is recorded.",
+        "Native transparent margins are slightly tighter than the requested8-12percent at one edge; the complete solid mask remains unclipped and exact bounds are recorded."
+      ],
+      "identityAnchors": [],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "neca-ahab-ultimate-2017",
+      "label": "Ahab · NECA Ultimate2017",
+      "sourceClass": "official-photo",
+      "originGroup": "new-official-edition",
+      "sourceScope": "Photographies officielles de cette édition NECA,vue source uniquement.",
+      "camera": "Caméra de la première référence R,conservée dans A/B ; aucune vue cachée inventée.",
+      "sourcePath": "production/biomasks-neutral-20261113/references/neca/ahab-ultimate-front.jpg",
+      "sourceSha256": "ceebb6b6596ce53c4806ccb018ef9e23d75248ec2b4236c86139661a9664030b",
+      "referenceSources": [
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/ahab-ultimate-front.jpg",
+          "sha256": "ceebb6b6596ce53c4806ccb018ef9e23d75248ec2b4236c86139661a9664030b",
+          "role": "primary-camera-and-sculpt"
+        },
+        {
+          "path": "production/biomasks-neutral-20261113/references/neca/att-51569-ultimate-ahab-predator2-photo.jpg",
+          "sha256": "bcf8dccfc119dd098ffd7fcaeb3ebf6f99feb40db84f30900635a25b00c7fb9e",
+          "role": "secondary-sculpt"
+        }
+      ],
+      "relatedCanonicalTargetId": "mk-18-ahab",
+      "sourceStatus": {
+        "reviewStatus": "edition-candidate-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+          "New edition/view study,not a new canonical geometry declaration and not a replacement of Ahab SDCC2014."
+        ]
+      },
+      "limitations": [
+        "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+        "New edition/view study,not a new canonical geometry declaration and not a replacement of Ahab SDCC2014.",
+        "C est une dérivée technique monochrome de B ; elle ne corrige pas les incertitudes artistiques,ne crée pas un albédo3D et ne valide pas le canon.",
+        "Source-view extraction from a licensed figure, not an exact original comic mesh or2014 edition substitution.",
+        "Fine metal pitting, tiny grooves and small camera rectification are interpreted.",
+        "Organic teeth/mandibles inside lower opening are excluded; lower aperture is genuinely transparent.",
+        "PHG material/light restaging of the photographed NECA Ultimate2017 mask, not a canonical comic certification.",
+        "Minute pitting, tiny grooves and small source-camera straightening are interpreted.",
+        "Upper inner-U metallic ridges are supported by both photos; separate beige biological teeth are excluded and the aperture remains alpha-empty."
+      ],
+      "identityAnchors": [],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ],
+  "sourcePhotosAuditPath": "production/biomasks-neutral-20261113/inputs/research/new-photos-pins.json"
+}

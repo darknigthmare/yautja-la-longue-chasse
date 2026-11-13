@@ -1,0 +1,999 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "reviewer": "dual_generate_3 independent research and visual reviewer",
+  "status": "final-three-photographed-edition-candidate-reviews",
+  "scope": "Three new NECAphotographed-edition A/B candidates. Research provenance and raw mediaURL evidence are separate in research-neca.json.",
+  "entries": [
+    {
+      "id": "neca-scarface-concrete-jungle-2016",
+      "status": "source-bound-candidate-no-major-defect-observed",
+      "references": [
+        {
+          "key": "R1",
+          "title": "R primaire trois-quarts",
+          "path": "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-photo.jpg",
+          "sha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+          "bytes": 153678,
+          "dimensions": [
+            960,
+            1200
+          ],
+          "bounds": [
+            357,
+            50,
+            537,
+            283
+          ],
+          "manualWindowOnly": true
+        },
+        {
+          "key": "R2",
+          "title": "R soutien frontal, inset nu exclu",
+          "path": "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-photo.jpg",
+          "sha256": "de246dce8fbd77afa1f8453cc8bb5fc40e94afe9d295f2894e2d8409809abe6e",
+          "bytes": 206165,
+          "dimensions": [
+            1003,
+            1200
+          ],
+          "bounds": [
+            282,
+            163,
+            417,
+            360
+          ],
+          "manualWindowOnly": true
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-scarface-concrete-jungle-2016.png",
+          "sha256": "d8acc51d889222194904eaf44705c359fd04629dde4cf76c4c18c401c8dcefd5",
+          "bytes": 1425508,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds": [
+            265,
+            73,
+            973,
+            1180
+          ],
+          "margins16": [
+            265,
+            73,
+            281,
+            74
+          ],
+          "alpha1to9": 11539,
+          "alphaZero": 1019014,
+          "cornersAlpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pixelEditingByReviewer": false
+        },
+        {
+          "version": "B",
+          "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/phg/neca-scarface-concrete-jungle-2016.png",
+          "sha256": "3e8526a4f8869896f02f097898f9374fa1a4bd3837cda255824f7b50591d2775",
+          "bytes": 1495190,
+          "dimensions": [
+            1254,
+            1254
+          ],
+          "mode": "RGBA",
+          "bounds": [
+            263,
+            64,
+            981,
+            1182
+          ],
+          "margins16": [
+            263,
+            64,
+            273,
+            72
+          ],
+          "alpha1to9": 7756,
+          "alphaZero": 1013280,
+          "cornersAlpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pixelEditingByReviewer": false
+        }
+      ],
+      "macroObservation": "Couronne échancrée/ovale, relief axial, yeux sombres, canaux rigides inférieurs et ports de joue conservés. Rouge sur front et côté oculaire image droite reste en place ; aucun motif de torse n’est transposé.",
+      "cameraObservation": "Vue de masque inclinée/trois-quarts cohérente avec la primaire, stabilisée enA→B ; deux photos du jouet n’établissent pas une projection physique exacte.",
+      "paletteObservation": "Argent/gris métallique et marques rouges conservés ; éclairage/roughness changent pourB, sans nouvelle couleur de base majeure.",
+      "limitations": [
+        "La silhouette paraît un peu plus élancée que l’impression de la vue R trois-quarts ; l’échelle apparente varie avec les deux angles de tête du jouet. Proportions/caméra R→A non certifiées.",
+        "Distribution du pitting, nombre exact de micro-stries, profondeur des biseaux et grains de peinture sont interprétés depuis une tête relativement petite."
+      ],
+      "wearerExclusion": "No organic head, hair/dreadlocks, torso armor or unrelated weapon is part of the detached shell.",
+      "artReviewLevel": "Independent visual review at stated sizes, not human art approval or canon certification.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "evidence": [
+        {
+          "id": "neca-scarface-concrete-jungle-2016",
+          "mode": "source",
+          "path": "/tmp/mask-neutral-20261113/reviews/neca-scarface-concrete-jungle-2016-source.png",
+          "bytes": 683418,
+          "sha256": "71bf4bc4483aaa418a9959ce7bc0c6c49eccefcd272ee58c42243341267ad721",
+          "viewport": [
+            1600,
+            1120
+          ],
+          "deviceScaleFactor": 1,
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "pixelAssetEdited": false
+        },
+        {
+          "id": "neca-scarface-concrete-jungle-2016",
+          "mode": "alpha",
+          "path": "/tmp/mask-neutral-20261113/reviews/neca-scarface-concrete-jungle-2016-alpha.png",
+          "bytes": 502731,
+          "sha256": "ddc372ddfd8029bd5b29aaaed38126607475e4b4e521712a1eb033206dfea97b",
+          "viewport": [
+            1600,
+            1120
+          ],
+          "deviceScaleFactor": 1,
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "pixelAssetEdited": false
+        }
+      ],
+      "AToBProportionCheck": {
+        "alpha16BboxAspectA": 0.6395663956639567,
+        "alpha16BboxAspectB": 0.6422182468694096,
+        "relativeChange": 0.00414632667293291,
+        "qualification": "NativeA/B bbox comparison only; photo manual windows are not certified segmentation or3Dgeometry."
+      },
+      "browserObservation": {
+        "sizes": [
+          360,
+          96
+        ],
+        "backgrounds": [
+          "white",
+          "black",
+          "checker"
+        ],
+        "shapeReadability": "Main silhouette and identity features readable; fine grooves become subpixel at96px.",
+        "alpha": "Transparent exterior, no visible opaque matte/halo in browser composites; native lowalpha edge pixels retained.",
+        "geometryAndView": "A→B does not show a major silhouette/camera redesign."
+      }
+    },
+    {
+      "id": "neca-stalker-kenner-series-16",
+      "status": "source-bound-candidate-no-major-defect-observed",
+      "references": [
+        {
+          "key": "R1",
+          "title": "R primaire, masque complet",
+          "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator1-photo.jpg",
+          "sha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+          "bytes": 104717,
+          "dimensions": [
+            960,
+            1200
+          ],
+          "bounds": [
+            374,
+            132,
+            507,
+            341
+          ],
+          "manualWindowOnly": true
+        },
+        {
+          "key": "R2",
+          "title": "R soutien blister, accessoire partiel",
+          "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator2-photo.jpg",
+          "sha256": "c9168af5af0753adcfb41b058f6db9b6b77049011f807585f3fbf1c3dbfd39e2",
+          "bytes": 222268,
+          "dimensions": [
+            960,
+            1200
+          ],
+          "bounds": [
+            0,
+            0,
+            960,
+            1200
+          ],
+          "manualWindowOnly": true
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+          "sha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+          "bytes": 1157725,
+          "dimensions": [
+            1275,
+            1234
+          ],
+          "mode": "RGBA",
+          "bounds": [
+            312,
+            73,
+            954,
+            1105
+          ],
+          "margins16": [
+            312,
+            73,
+            321,
+            129
+          ],
+          "alpha1to9": 9695,
+          "alphaZero": 1060518,
+          "cornersAlpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pixelEditingByReviewer": false
+        },
+        {
+          "version": "B",
+          "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+          "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+          "bytes": 1232876,
+          "dimensions": [
+            1275,
+            1233
+          ],
+          "mode": "RGBA",
+          "bounds": [
+            309,
+            68,
+            960,
+            1105
+          ],
+          "margins16": [
+            309,
+            68,
+            315,
+            128
+          ],
+          "alpha1to9": 11641,
+          "alphaZero": 1047923,
+          "cornersAlpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pixelEditingByReviewer": false
+        }
+      ],
+      "macroObservation": "Crête axiale, couronne en panneaux bronze/charbon, petit bossage central, yeux gris clairs, grille verticale et petit port inférieur restent cohérents. Pas de chair, de dents organiques ou de dreadlocks transférées.",
+      "cameraObservation": "Vue proche de la frontale primaire conservée ; blister de soutien partiel, pas une seconde caméra de coque entière.",
+      "paletteObservation": "Bronze/brun et noir/charbon conservés, yeux gris clairs non lumineux. Glow/translucide du porteur n’est pas transformé en matière de casque inventée.",
+      "limitations": [
+        "Seule une photographie de coque portée complète ; l’accessoire du blister est tronqué par l’étiquette.",
+        "Fines gravures, pitting, micro-biseaux et matière physique exacte restent interprétés.",
+        "Marge haute nativeA≈6%etB≈5,5%, inférieure à8–12%visé, sans clipping ; simple cadrage documenté, aucune correction demandée."
+      ],
+      "wearerExclusion": "No organic head, hair/dreadlocks, torso armor or unrelated weapon is part of the detached shell.",
+      "artReviewLevel": "Independent visual review at stated sizes, not human art approval or canon certification.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "evidence": [
+        {
+          "id": "neca-stalker-kenner-series-16",
+          "mode": "source",
+          "path": "/tmp/mask-neutral-20261113/reviews/neca-stalker-kenner-series-16-source.png",
+          "bytes": 670398,
+          "sha256": "f8f24504321bd508ac923730d64c482e5417fe63fb0ec52efb9cef48d4238a76",
+          "viewport": [
+            1600,
+            1120
+          ],
+          "deviceScaleFactor": 1,
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "pixelAssetEdited": false
+        },
+        {
+          "id": "neca-stalker-kenner-series-16",
+          "mode": "alpha",
+          "path": "/tmp/mask-neutral-20261113/reviews/neca-stalker-kenner-series-16-alpha.png",
+          "bytes": 518196,
+          "sha256": "07e5e6313787fb06d61fb240c38cd9a666d9d5718554d8c3cb6336b77dd58152",
+          "viewport": [
+            1600,
+            1120
+          ],
+          "deviceScaleFactor": 1,
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "pixelAssetEdited": false
+        }
+      ],
+      "AToBProportionCheck": {
+        "alpha16BboxAspectA": 0.622093023255814,
+        "alpha16BboxAspectB": 0.6277724204435873,
+        "relativeChange": 0.009129498283149573,
+        "qualification": "NativeA/B bbox comparison only; photo manual windows are not certified segmentation or3Dgeometry."
+      },
+      "browserObservation": {
+        "sizes": [
+          360,
+          96
+        ],
+        "backgrounds": [
+          "white",
+          "black",
+          "checker"
+        ],
+        "shapeReadability": "Main silhouette and identity features readable; fine grooves become subpixel at96px.",
+        "alpha": "Transparent exterior, no visible opaque matte/halo in browser composites; native lowalpha edge pixels retained.",
+        "geometryAndView": "A→B does not show a major silhouette/camera redesign."
+      }
+    },
+    {
+      "id": "neca-ahab-ultimate-2017",
+      "status": "source-bound-candidate-no-major-defect-observed",
+      "references": [
+        {
+          "key": "R1",
+          "title": "R primaire frontale, dents arrière exclues",
+          "path": "/tmp/mask-neutral-20261113/ahab-ultimate-front.jpg",
+          "sha256": "ceebb6b6596ce53c4806ccb018ef9e23d75248ec2b4236c86139661a9664030b",
+          "bytes": 265875,
+          "dimensions": [
+            1300,
+            1040
+          ],
+          "bounds": [
+            252,
+            49,
+            405,
+            244
+          ],
+          "manualWindowOnly": true
+        },
+        {
+          "key": "R2",
+          "title": "R profil de soutien",
+          "path": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator2-photo.jpg",
+          "sha256": "bcf8dccfc119dd098ffd7fcaeb3ebf6f99feb40db84f30900635a25b00c7fb9e",
+          "bytes": 199374,
+          "dimensions": [
+            1040,
+            1300
+          ],
+          "bounds": [
+            335,
+            83,
+            502,
+            324
+          ],
+          "manualWindowOnly": true
+        }
+      ],
+      "assets": [
+        {
+          "version": "A",
+          "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-ahab-ultimate-2017.png",
+          "sha256": "a2c0bbc66eb97ef9930ac1959c4372261d7ebada9cac3786392efa4314610926",
+          "bytes": 1412753,
+          "dimensions": [
+            1402,
+            1122
+          ],
+          "mode": "RGBA",
+          "bounds": [
+            325,
+            81,
+            1079,
+            1067
+          ],
+          "margins16": [
+            325,
+            81,
+            323,
+            55
+          ],
+          "alpha1to9": 10941,
+          "alphaZero": 1029278,
+          "cornersAlpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pixelEditingByReviewer": false
+        },
+        {
+          "version": "B",
+          "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/phg/neca-ahab-ultimate-2017.png",
+          "sha256": "0ef534cb11fe9b7fd160837d566083a2fe7ffc5e140edf9e0d49d6b0602c5769",
+          "bytes": 1478694,
+          "dimensions": [
+            1402,
+            1122
+          ],
+          "mode": "RGBA",
+          "bounds": [
+            315,
+            79,
+            1080,
+            1071
+          ],
+          "margins16": [
+            315,
+            79,
+            322,
+            51
+          ],
+          "alpha1to9": 8993,
+          "alphaZero": 1016751,
+          "cornersAlpha": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "pixelEditingByReviewer": false
+        }
+      ],
+      "macroObservation": "Dôme bordé, trois griffures, petits ports de joue, yeux foncés et grande ouverture enU conservés. Les grandes dents/mandibules beiges du porteur sont exclues.",
+      "cameraObservation": "Vue quasi frontale primaire, profil utilisé en corroboration seulement ; aucun dos/intérieur inventé ou certifié.",
+      "paletteObservation": "Coque argent/gris de l’édition Ultimate2017, sans transférer la patine bleutée deSDCC2014.",
+      "limitations": [
+        "Les petites stries gris métal au sommet intérieur duU sont visibles sur les deux R comme relief de bordure rigide. Leur compte/profondeur haute résolution reste interprété.",
+        "Photographies du jouet, pas scan de coque ni modèle original de jeu/comic ; cette édition ne vaut pas nouvelle géométrie automatiquement."
+      ],
+      "wearerExclusion": "No organic head, hair/dreadlocks, torso armor or unrelated weapon is part of the detached shell.",
+      "artReviewLevel": "Independent visual review at stated sizes, not human art approval or canon certification.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "evidence": [
+        {
+          "id": "neca-ahab-ultimate-2017",
+          "mode": "source",
+          "path": "/tmp/mask-neutral-20261113/reviews/neca-ahab-ultimate-2017-source.png",
+          "bytes": 729769,
+          "sha256": "a0a182646766e0468491bc4f4ca4d146f3b205e584baa82892b24e4966869afb",
+          "viewport": [
+            1600,
+            1120
+          ],
+          "deviceScaleFactor": 1,
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "pixelAssetEdited": false
+        },
+        {
+          "id": "neca-ahab-ultimate-2017",
+          "mode": "alpha",
+          "path": "/tmp/mask-neutral-20261113/reviews/neca-ahab-ultimate-2017-alpha.png",
+          "bytes": 592545,
+          "sha256": "4e41750d7341247a7182f7cf41a7ad3180192cb04deeff2da9e54f06ff5ba1f2",
+          "viewport": [
+            1600,
+            1120
+          ],
+          "deviceScaleFactor": 1,
+          "visibleLongestAxes": [
+            360,
+            96
+          ],
+          "backgrounds": [
+            "white",
+            "black",
+            "checker"
+          ],
+          "pixelAssetEdited": false
+        }
+      ],
+      "AToBProportionCheck": {
+        "alpha16BboxAspectA": 0.7647058823529411,
+        "alpha16BboxAspectB": 0.7711693548387096,
+        "relativeChange": 0.008452233250620278,
+        "qualification": "NativeA/B bbox comparison only; photo manual windows are not certified segmentation or3Dgeometry."
+      },
+      "browserObservation": {
+        "sizes": [
+          360,
+          96
+        ],
+        "backgrounds": [
+          "white",
+          "black",
+          "checker"
+        ],
+        "shapeReadability": "Main silhouette and identity features readable; fine grooves become subpixel at96px.",
+        "alpha": "Transparent exterior, no visible opaque matte/halo in browser composites; native lowalpha edge pixels retained.",
+        "geometryAndView": "A→B does not show a major silhouette/camera redesign."
+      },
+      "upperUBorderSpecialReview": {
+        "evidence": {
+          "path": "/tmp/mask-neutral-20261113/reviews/ahab-upper-U-review.png",
+          "bytes": 751881,
+          "sha256": "0abd210631889f2a9081e5db9935afc36fab48b885851b30d356641608baed83"
+        },
+        "observation": "Small gray rigid striations visible at upperUedge in front and profile R; separate from large beige wearer teeth behind the aperture. InA the opening is empty and the gray edge bars do not read as wearer teeth.",
+        "recommendation": "No subtractive correction of the attested gray metal border required beforeB; count/depth remain interpreted.",
+        "emptyApertureVerifiedInAAndB": [
+          {
+            "version": "A",
+            "sha256": "a2c0bbc66eb97ef9930ac1959c4372261d7ebada9cac3786392efa4314610926",
+            "samples": [
+              {
+                "xy": [
+                  700,
+                  900
+                ],
+                "alpha": 0
+              },
+              {
+                "xy": [
+                  700,
+                  980
+                ],
+                "alpha": 0
+              },
+              {
+                "xy": [
+                  700,
+                  1040
+                ],
+                "alpha": 0
+              }
+            ]
+          },
+          {
+            "version": "B",
+            "sha256": "0ef534cb11fe9b7fd160837d566083a2fe7ffc5e140edf9e0d49d6b0602c5769",
+            "samples": [
+              {
+                "xy": [
+                  700,
+                  900
+                ],
+                "alpha": 0
+              },
+              {
+                "xy": [
+                  700,
+                  980
+                ],
+                "alpha": 0
+              },
+              {
+                "xy": [
+                  700,
+                  1040
+                ],
+                "alpha": 0
+              }
+            ]
+          }
+        ],
+        "BObservation": "Bretains gray rigid upper-Uborder, empty transparent aperture and no organic teeth/mandibles. Silver palette, three scratches, side ports and selected front camera retained."
+      }
+    }
+  ],
+  "sourceAndOutputPins": [
+    {
+      "key": "R1",
+      "title": "R primaire trois-quarts",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scarfacepredator-photo.jpg",
+      "sha256": "a4680801614264cf78605bf39c7a3a3a968872df73a85615c620b48a62aafee8",
+      "bytes": 153678,
+      "dimensions": [
+        960,
+        1200
+      ],
+      "bounds": [
+        357,
+        50,
+        537,
+        283
+      ],
+      "manualWindowOnly": true,
+      "id": "neca-scarface-concrete-jungle-2016"
+    },
+    {
+      "key": "R2",
+      "title": "R soutien frontal, inset nu exclu",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-scarface_predator-photo.jpg",
+      "sha256": "de246dce8fbd77afa1f8453cc8bb5fc40e94afe9d295f2894e2d8409809abe6e",
+      "bytes": 206165,
+      "dimensions": [
+        1003,
+        1200
+      ],
+      "bounds": [
+        282,
+        163,
+        417,
+        360
+      ],
+      "manualWindowOnly": true,
+      "id": "neca-scarface-concrete-jungle-2016"
+    },
+    {
+      "version": "A",
+      "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-scarface-concrete-jungle-2016.png",
+      "sha256": "d8acc51d889222194904eaf44705c359fd04629dde4cf76c4c18c401c8dcefd5",
+      "bytes": 1425508,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bounds": [
+        265,
+        73,
+        973,
+        1180
+      ],
+      "margins16": [
+        265,
+        73,
+        281,
+        74
+      ],
+      "alpha1to9": 11539,
+      "alphaZero": 1019014,
+      "cornersAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixelEditingByReviewer": false,
+      "id": "neca-scarface-concrete-jungle-2016"
+    },
+    {
+      "version": "B",
+      "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/phg/neca-scarface-concrete-jungle-2016.png",
+      "sha256": "3e8526a4f8869896f02f097898f9374fa1a4bd3837cda255824f7b50591d2775",
+      "bytes": 1495190,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "bounds": [
+        263,
+        64,
+        981,
+        1182
+      ],
+      "margins16": [
+        263,
+        64,
+        273,
+        72
+      ],
+      "alpha1to9": 7756,
+      "alphaZero": 1013280,
+      "cornersAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixelEditingByReviewer": false,
+      "id": "neca-scarface-concrete-jungle-2016"
+    },
+    {
+      "key": "R1",
+      "title": "R primaire, masque complet",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator1-photo.jpg",
+      "sha256": "92b8b3d33475e1c31311e33ad1c4ff0e1b1b19271fd805de9fcdca34ca9e0116",
+      "bytes": 104717,
+      "dimensions": [
+        960,
+        1200
+      ],
+      "bounds": [
+        374,
+        132,
+        507,
+        341
+      ],
+      "manualWindowOnly": true,
+      "id": "neca-stalker-kenner-series-16"
+    },
+    {
+      "key": "R2",
+      "title": "R soutien blister, accessoire partiel",
+      "path": "/tmp/mask-neutral-20261113/att-1200x-51534_stalker_predator2-photo.jpg",
+      "sha256": "c9168af5af0753adcfb41b058f6db9b6b77049011f807585f3fbf1c3dbfd39e2",
+      "bytes": 222268,
+      "dimensions": [
+        960,
+        1200
+      ],
+      "bounds": [
+        0,
+        0,
+        960,
+        1200
+      ],
+      "manualWindowOnly": true,
+      "id": "neca-stalker-kenner-series-16"
+    },
+    {
+      "version": "A",
+      "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-stalker-kenner-series-16.png",
+      "sha256": "a7ab047059f93c72a9411204cd8a4c59754f53ee552e40e0ac3be35b1e26348b",
+      "bytes": 1157725,
+      "dimensions": [
+        1275,
+        1234
+      ],
+      "mode": "RGBA",
+      "bounds": [
+        312,
+        73,
+        954,
+        1105
+      ],
+      "margins16": [
+        312,
+        73,
+        321,
+        129
+      ],
+      "alpha1to9": 9695,
+      "alphaZero": 1060518,
+      "cornersAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixelEditingByReviewer": false,
+      "id": "neca-stalker-kenner-series-16"
+    },
+    {
+      "version": "B",
+      "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+      "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+      "bytes": 1232876,
+      "dimensions": [
+        1275,
+        1233
+      ],
+      "mode": "RGBA",
+      "bounds": [
+        309,
+        68,
+        960,
+        1105
+      ],
+      "margins16": [
+        309,
+        68,
+        315,
+        128
+      ],
+      "alpha1to9": 11641,
+      "alphaZero": 1047923,
+      "cornersAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixelEditingByReviewer": false,
+      "id": "neca-stalker-kenner-series-16"
+    },
+    {
+      "key": "R1",
+      "title": "R primaire frontale, dents arrière exclues",
+      "path": "/tmp/mask-neutral-20261113/ahab-ultimate-front.jpg",
+      "sha256": "ceebb6b6596ce53c4806ccb018ef9e23d75248ec2b4236c86139661a9664030b",
+      "bytes": 265875,
+      "dimensions": [
+        1300,
+        1040
+      ],
+      "bounds": [
+        252,
+        49,
+        405,
+        244
+      ],
+      "manualWindowOnly": true,
+      "id": "neca-ahab-ultimate-2017"
+    },
+    {
+      "key": "R2",
+      "title": "R profil de soutien",
+      "path": "/tmp/mask-neutral-20261113/att-51569-ultimate-ahab-predator2-photo.jpg",
+      "sha256": "bcf8dccfc119dd098ffd7fcaeb3ebf6f99feb40db84f30900635a25b00c7fb9e",
+      "bytes": 199374,
+      "dimensions": [
+        1040,
+        1300
+      ],
+      "bounds": [
+        335,
+        83,
+        502,
+        324
+      ],
+      "manualWindowOnly": true,
+      "id": "neca-ahab-ultimate-2017"
+    },
+    {
+      "version": "A",
+      "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/originals/neca-ahab-ultimate-2017.png",
+      "sha256": "a2c0bbc66eb97ef9930ac1959c4372261d7ebada9cac3786392efa4314610926",
+      "bytes": 1412753,
+      "dimensions": [
+        1402,
+        1122
+      ],
+      "mode": "RGBA",
+      "bounds": [
+        325,
+        81,
+        1079,
+        1067
+      ],
+      "margins16": [
+        325,
+        81,
+        323,
+        55
+      ],
+      "alpha1to9": 10941,
+      "alphaZero": 1029278,
+      "cornersAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixelEditingByReviewer": false,
+      "id": "neca-ahab-ultimate-2017"
+    },
+    {
+      "version": "B",
+      "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/phg/neca-ahab-ultimate-2017.png",
+      "sha256": "0ef534cb11fe9b7fd160837d566083a2fe7ffc5e140edf9e0d49d6b0602c5769",
+      "bytes": 1478694,
+      "dimensions": [
+        1402,
+        1122
+      ],
+      "mode": "RGBA",
+      "bounds": [
+        315,
+        79,
+        1080,
+        1071
+      ],
+      "margins16": [
+        315,
+        79,
+        322,
+        51
+      ],
+      "alpha1to9": 8993,
+      "alphaZero": 1016751,
+      "cornersAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixelEditingByReviewer": false,
+      "id": "neca-ahab-ultimate-2017"
+    }
+  ],
+  "browser": {
+    "engine": "Chromium via playwright-core; local read-only image server",
+    "errors": [],
+    "failedRequests": [],
+    "capturesActuallyInspected": 6,
+    "comparison": "Local read-only HTTP image server, isotropic browser/CSS framing, no raster file edits or reencoding.",
+    "photoWindows": "Manual display windows only, not exported crops or certified source-mask segmentation."
+  },
+  "pending": [],
+  "noMajorDefectObservedInCompletedPairs": true,
+  "allImagePinsVerifiedAfterReview": true,
+  "researchSourceOneToOneCertified": false,
+  "closesBibleOrExcel": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false,
+  "repositoryFilesEditedByReviewer": 0,
+  "counts": {
+    "completedPairs": 3,
+    "majorDefectsObserved": 0,
+    "candidatePNGsPinned": 6,
+    "referencePhotographsPinned": 6,
+    "browserScreenshotsInspected": 6,
+    "additionalDetailScreenshotInspected": 1,
+    "canonicalOneToOneCertified": 0,
+    "humanArtValidated": 0,
+    "runtimeIntegrated": 0
+  },
+  "allTwelveImagePinsVerifiedAfterReview": true,
+  "generationReceiptsVerified": [
+    {
+      "id": "neca-scarface-concrete-jungle-2016",
+      "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/generation/neca-scarface-concrete-jungle-2016.json",
+      "bytes": 21758,
+      "sha256": "7f519c6d071dc8e2559d77d8f3d5f57bbd732f9159b58e316810cdc6e584e1c1"
+    },
+    {
+      "id": "neca-stalker-kenner-series-16",
+      "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/generation/neca-stalker-kenner-series-16.json",
+      "bytes": 25453,
+      "sha256": "a5a8d5a915394b9f1243b0bbaeadb904b5c0395e5f4808247b4bc6dac713124c"
+    },
+    {
+      "id": "neca-ahab-ultimate-2017",
+      "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/generation/neca-ahab-ultimate-2017.json",
+      "bytes": 8893,
+      "sha256": "0313753303e65b7ad7df58dfa1cb68dcf5a6845afd40e19186ef59a4d80eefda"
+    }
+  ]
+}

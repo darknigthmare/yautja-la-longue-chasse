@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "negativeChecks": [
+    {
+      "name": "C alpha rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "concept-v133-glypic",
+      "pixelsCompared": 1572516,
+      "seconds": 1.134,
+      "diagnostic": [
+        "C pixels fail independent formula/monochrome/alpha verification"
+      ]
+    },
+    {
+      "name": "C dimensions rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "concept-v133-glypic",
+      "pixelsCompared": 0,
+      "seconds": 0.352,
+      "diagnostic": [
+        "C dimensions differ from B",
+        "Cannot complete verification: Pixel verification requires identical native dimensions"
+      ]
+    },
+    {
+      "name": "C nonmonochrome rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "concept-v133-glypic",
+      "pixelsCompared": 1572516,
+      "seconds": 1.092,
+      "diagnostic": [
+        "C pixels fail independent formula/monochrome/alpha verification"
+      ]
+    },
+    {
+      "name": "C wrong-gray rejected with coherent file/receipt pins",
+      "passed": true,
+      "singleRecord": "concept-v133-glypic",
+      "pixelsCompared": 1572516,
+      "seconds": 1.132,
+      "diagnostic": [
+        "C pixels fail independent formula/monochrome/alpha verification"
+      ]
+    },
+    {
+      "name": "Omitted non-XLSX/non-native historical source rejected despite unchanged count invariants",
+      "passed": true,
+      "diagnostic": "Frozen728 historical source-protection snapshot changed",
+      "seconds": 0.0
+    },
+    {
+      "name": "Nested target sourceStatus cannot claim runtime approval",
+      "passed": true,
+      "diagnostic": "Automatic canonical/human/runtime/animation approval forbidden",
+      "seconds": 0.615
+    },
+    {
+      "name": "Altered source B rejected",
+      "passed": true,
+      "diagnostic": "Pinned bytes changed: public/game/biomasks-dual-20261113/phg/concept-v133-glypic.png",
+      "seconds": 0.279
+    },
+    {
+      "name": "C linked to another real B identity rejected",
+      "passed": true,
+      "diagnostic": "C source lineage or inherited qualification changed",
+      "seconds": 0.895
+    },
+    {
+      "name": "Duplicate C identity cannot create an unjustified alias",
+      "passed": true,
+      "diagnostic": "Duplicate/unregistered C derivative",
+      "seconds": 0.859
+    },
+    {
+      "name": "False C canonCertified rejected",
+      "passed": true,
+      "diagnostic": "Automatic canonical/human/runtime/animation approval forbidden",
+      "seconds": 0.904
+    },
+    {
+      "name": "False C humanArtValidated rejected",
+      "passed": true,
+      "diagnostic": "Automatic canonical/human/runtime/animation approval forbidden",
+      "seconds": 0.89
+    },
+    {
+      "name": "False C runtimeIntegrated rejected",
+      "passed": true,
+      "diagnostic": "Automatic canonical/human/runtime/animation approval forbidden",
+      "seconds": 0.893
+    },
+    {
+      "name": "Erased inherited reservation rejected: predator_17",
+      "passed": true,
+      "singleRecord": "predator_17",
+      "pixelsCompared": 1572516,
+      "seconds": 0.318,
+      "diagnostic": [
+        "sourceStatus is not exactly preserved from the inventory",
+        "Provisional-review flag changed from original source",
+        "Protected provisional/partial/hybrid source qualification changed"
+      ]
+    },
+    {
+      "name": "Erased inherited reservation rejected: neca-nightstorm-series-10",
+      "passed": true,
+      "singleRecord": "neca-nightstorm-series-10",
+      "pixelsCompared": 1572516,
+      "seconds": 0.307,
+      "diagnostic": [
+        "sourceStatus is not exactly preserved from the inventory",
+        "Partial-reference flag changed from original source",
+        "Protected provisional/partial/hybrid source qualification changed"
+      ]
+    },
+    {
+      "name": "Erased inherited reservation rejected: mk-30-emissary",
+      "passed": true,
+      "singleRecord": "mk-30-emissary",
+      "pixelsCompared": 1572516,
+      "seconds": 0.307,
+      "diagnostic": [
+        "sourceStatus is not exactly preserved from the inventory",
+        "Partial-reference flag changed from original source",
+        "Protected provisional/partial/hybrid source qualification changed"
+      ]
+    },
+    {
+      "name": "Erased inherited reservation rejected: mask-feral-screen-original",
+      "passed": true,
+      "singleRecord": "mask-feral-screen-original",
+      "pixelsCompared": 1572516,
+      "seconds": 0.309,
+      "diagnostic": [
+        "sourceStatus is not exactly preserved from the inventory",
+        "Hybrid-study flag changed from original source",
+        "Protected provisional/partial/hybrid source qualification changed"
+      ]
+    },
+    {
+      "name": "Contradictory new A/B private provenance rejected",
+      "passed": true,
+      "diagnostic": "Receipt provenance differs: nativeSourcePath",
+      "seconds": 0.666
+    },
+    {
+      "name": "Unregistered public image rejected",
+      "passed": true,
+      "diagnostic": "Unregistered neutral public files",
+      "seconds": 8.37
+    },
+    {
+      "name": "Read-only wrapper rejects --write",
+      "passed": true
+    },
+    {
+      "name": "Read-only wrapper rejects --prepare-inventory",
+      "passed": true
+    }
+  ],
+  "scope": "One independent relocated selection; read-only structural baseline and single-record pixel/status negatives; no art/canon/runtime approval.",
+  "fullIndependent69CFormulaPassExecuted": false,
+  "selection": {
+    "passed": true,
+    "literalFiles": 863,
+    "pinnedFiles": 856,
+    "pinnedBytes": 638898123,
+    "selectedBytes": 641331792,
+    "scope": "Sparse file selection and byte pins; not browser, human art, runtime or canon approval"
+  },
+  "manifestSha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+  "harnessSha256": "1622d99d8f250f963953a3394d9c02d043fca4655662a2578f23c5cbff20f70e",
+  "relocatedRoot": "/tmp/mask-neutral-20261113/portable-neutral-xxaefhjt",
+  "independentCopies": 863,
+  "hardlinksCreated": 0,
+  "portableStructuralBaselinePassed": true,
+  "privateNativeOriginsMasked": 6,
+  "privateReadsAttempted": 0,
+  "readOnlyWriteAttempts": 0,
+  "originalsAndFixturesBytePreserved": true,
+  "independentSingleRecordNegativeRuns": 8,
+  "independentNegativePixelsCompared": 11007612,
+  "timings": {
+    "portableStructuralBaselineSeconds": 8.387,
+    "totalSeconds": 30.528
+  }
+}

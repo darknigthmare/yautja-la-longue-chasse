@@ -1,0 +1,96 @@
+name: Neutral biomask pixel and source integrity
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/neutral-mask-candidates.yml'
+      - 'production/biomasks-neutral-20261113/**'
+      - 'public/game/biomasks-neutral-20261113/**'
+      - 'production/biomasks-expansion-20261113/**'
+      - 'public/game/biomasks-expansion-20261113/**'
+      - 'production/biomasks-dual-20261113/**'
+      - 'public/game/biomasks-dual-20261113/**'
+      - 'production/biomasks-primary-20261113/**'
+      - 'public/game/biomasks-primary-20261113/**'
+      - 'production/biomasks-20261113/**'
+      - 'public/game/biomasks-20261113/**'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'app/game/biomaskCatalogueV62.ts'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/neutral-mask-candidates.yml'
+      - 'production/biomasks-neutral-20261113/**'
+      - 'public/game/biomasks-neutral-20261113/**'
+      - 'production/biomasks-expansion-20261113/**'
+      - 'public/game/biomasks-expansion-20261113/**'
+      - 'production/biomasks-dual-20261113/**'
+      - 'public/game/biomasks-dual-20261113/**'
+      - 'production/biomasks-primary-20261113/**'
+      - 'public/game/biomasks-primary-20261113/**'
+      - 'production/biomasks-20261113/**'
+      - 'public/game/biomasks-20261113/**'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'app/game/biomaskCatalogueV62.ts'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: neutral-mask-integrity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  neutral-mask-integrity:
+    name: Exact C pixels, inherited qualifications and immutable A/B/R
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout five literal selection files
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/neutral-mask-candidates.yml
+            /production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py
+            /production/biomasks-neutral-20261113/suivi/source-protection.json
+            /public/game/biomasks-neutral-20261113/manifest.json
+            /production/biomasks-neutral-20261113/suivi/qa-evidence.json
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Select exact historical and neutral inputs under 768 MiB
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py --check-git-tree
+          python3 production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py --patterns > "$RUNNER_TEMP/neutral-mask-inputs.txt"
+          git sparse-checkout set --no-cone --stdin < "$RUNNER_TEMP/neutral-mask-inputs.txt"
+          python3 production/biomasks-neutral-20261113/tools/ci-neutral-mask-inputs.py --check
+      - name: Install pinned read-only PNG reader
+        run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
+      - name: Check package and workbook without rewriting
+        run: python3 production/biomasks-neutral-20261113/tools/verify-neutral-mask-pack.py --check --require-complete
+      - name: Check every neutral RGB and alpha byte independently
+        run: >-
+          python3 production/biomasks-neutral-20261113/tools/verify-neutral-pixels.py
+          --manifest public/game/biomasks-neutral-20261113/manifest.json
+          --inventory production/biomasks-neutral-20261113/inputs/neutral-production-inventory.json
+          --accepted-new-masks production/biomasks-neutral-20261113/inputs/accepted-new-masks.json
+          --output ${{ runner.temp }}/neutral-independent-pixels.json

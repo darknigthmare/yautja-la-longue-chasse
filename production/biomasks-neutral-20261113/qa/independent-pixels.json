@@ -1,0 +1,4505 @@
+{
+  "schemaVersion": 1,
+  "asOfUtc": "2026-11-13T12:33:50.144767+00:00",
+  "verification": "independent-python-pillow-every-pixel",
+  "partialVerifiedOnly": false,
+  "fullProductionVerification": true,
+  "allChecksPassed": true,
+  "verifier": {
+    "python": "3.12.14",
+    "pillow": "12.3.0",
+    "methodId": "srgb8-rec709-luma-v1",
+    "formula": "Y=floor((2126*R+7152*G+722*B+5000)/10000); C=(Y,Y,Y,A_source)",
+    "colorSpace": "encoded8-bit sRGB values, no gamma linearization",
+    "importsConverterImplementation": false,
+    "writesImages": false
+  },
+  "manifest": {
+    "path": "/tmp/yautja-mask-neutral-20261113/public/game/biomasks-neutral-20261113/manifest.json",
+    "sha256": "7b96d864c71c5d95ed5078e29e03d88ad0f01af651f3ab3e069265e69e797b18",
+    "bytes": 1127260
+  },
+  "sourceInventory": {
+    "path": "/tmp/yautja-mask-neutral-20261113/production/biomasks-neutral-20261113/inputs/neutral-production-inventory.json",
+    "sha256": "d2cb08e346f68a47995f6bc0b97dac4c7757b2c80aa2886e086eb5e25a14fe8a",
+    "bytes": 696128
+  },
+  "sourceManifests": [
+    {
+      "path": "public/game/biomasks-dual-20261113/manifest.json",
+      "sha256": "b1fa346f649cd5a1edb5f33f5dedb4132d9074b9628a028e3c12f6de4ef8542d",
+      "bytes": 461967
+    },
+    {
+      "path": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sha256": "324927d19c5890d616e092b8a29502c4337067eb3ac0e07c4bf45de00cd96a96",
+      "bytes": 318034
+    }
+  ],
+  "acceptedNewMasks": {
+    "path": "production/biomasks-neutral-20261113/inputs/accepted-new-masks.json",
+    "sha256": "c5464ceb6cc00958f8a9d8d2b9d239dff48dd545ec9cecc661ca58c18a6d5838",
+    "bytes": 14407
+  },
+  "counts": {
+    "historicalRepresentations": 66,
+    "explicitlyAcceptedNewPairs": 3,
+    "expectedRepresentations": 69,
+    "manifestRepresentations": 69,
+    "verifiedRepresentations": 69,
+    "unverifiedRepresentations": 0,
+    "passedRepresentations": 69,
+    "failedRepresentations": 0,
+    "pixelsCompared": 108506041,
+    "uniqueBHashes": 69,
+    "uniqueCHashes": 69,
+    "protectedSourcePinsRead": 208,
+    "specialStatusRepresentations": 4
+  },
+  "issues": [],
+  "entries": [
+    {
+      "id": "concept-v133-glypic",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/concept-v133-glypic.png",
+        "sha256": "8e387b8de3b4fb848cdec30791a2b8f5b0f13abf9df99da86af0bbdb56b24814",
+        "bytes": 1897666
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/concept-v133-glypic.png",
+        "sha256": "1a566438d5f3c7aedc50e4eab46619003824e4e887dd3850b61d4c4d82976690",
+        "bytes": 1088136
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "6fc19ae94f24d23152cffe4b318a173e5601db85621324eba07e55bd89aa4dfa",
+        "outputAlphaSha256": "6fc19ae94f24d23152cffe4b318a173e5601db85621324eba07e55bd89aa4dfa",
+        "sourceNonzeroAlphaPixels": 772238,
+        "outputNonzeroAlphaPixels": 772238,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "concept-v133-instinct",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/concept-v133-instinct.png",
+        "sha256": "f757b15525b97ceebf9ada9e0ea0d301bc2dbc665ba5f00001881123c16549f8",
+        "bytes": 1510089
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/concept-v133-instinct.png",
+        "sha256": "9568873be0d8a1bd20db28a6deed82bc49fd1a934f5d871e80701fb89af548a2",
+        "bytes": 935472
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "8889b973eb86e2ec990ca4ce9bf17cfcdf692d4918c8ea65329bc67eeaf9bcf4",
+        "outputAlphaSha256": "8889b973eb86e2ec990ca4ce9bf17cfcdf692d4918c8ea65329bc67eeaf9bcf4",
+        "sourceNonzeroAlphaPixels": 668936,
+        "outputNonzeroAlphaPixels": 668936,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "concept-v133-nova",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/concept-v133-nova.png",
+        "sha256": "4db465cb6cea15ebe6dadf514c7112fd6d17b89b19818efc4786be363e862524",
+        "bytes": 1325453
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/concept-v133-nova.png",
+        "sha256": "8e76f2cc4b9f0be01f87cc04138af6d71bce6dc1a87036467f43a6e72bda3b32",
+        "bytes": 803522
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "cf78e8e13daef69c59aa9666e0065cb84ab8e1884919744eb082c64aa1cf226d",
+        "outputAlphaSha256": "cf78e8e13daef69c59aa9666e0065cb84ab8e1884919744eb082c64aa1cf226d",
+        "sourceNonzeroAlphaPixels": 576130,
+        "outputNonzeroAlphaPixels": 576130,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "concept-v133-paroxysm",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/concept-v133-paroxysm.png",
+        "sha256": "5cec24dc24361baf33b402bb26f7f4ce2d017d9399b76eacd288dbc46cdfa0a6",
+        "bytes": 1473570
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/concept-v133-paroxysm.png",
+        "sha256": "06c256f12e9fc55db2b3590a89af7ff90071ff15b5ad5dd673839f71b6f7f4ce",
+        "bytes": 870084
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "340d7b0997d3a22f2d00271022c9087aa50c973810a338b95c8edff3b4975a96",
+        "outputAlphaSha256": "340d7b0997d3a22f2d00271022c9087aa50c973810a338b95c8edff3b4975a96",
+        "sourceNonzeroAlphaPixels": 646803,
+        "outputNonzeroAlphaPixels": 646803,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "concept-v133-requiem",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/concept-v133-requiem.png",
+        "sha256": "8760c3cb3813ca610109e7158c800d51ccbd00b63ec581c6bd5f37620b7b8604",
+        "bytes": 1604763
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/concept-v133-requiem.png",
+        "sha256": "5c442918ca17ad63d4dc591a3986859c745cb37ffb55bd76333f101806bea89f",
+        "bytes": 955808
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "534926739bdef83b14ed1056fd35adbc84de2a10069329b5abb16932da22a5e1",
+        "outputAlphaSha256": "534926739bdef83b14ed1056fd35adbc84de2a10069329b5abb16932da22a5e1",
+        "sourceNonzeroAlphaPixels": 684470,
+        "outputNonzeroAlphaPixels": 684470,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "concept-v133-tyrant",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/concept-v133-tyrant.png",
+        "sha256": "9fcf493599046676611adbc0d6cdad9a800518b832772ad482081dad56c84dc4",
+        "bytes": 1151486
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/concept-v133-tyrant.png",
+        "sha256": "cc2ff8105193f90bf1c348d36ba282d5bb573e88a92d2bc4b3cf4067be2370a5",
+        "bytes": 636482
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "a45463a0365f58f09744b11724f24d487da7e5fef223c0b38516fc1058d41972",
+        "outputAlphaSha256": "a45463a0365f58f09744b11724f24d487da7e5fef223c0b38516fc1058d41972",
+        "sourceNonzeroAlphaPixels": 492821,
+        "outputNonzeroAlphaPixels": 492821,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "concept-v133-warlord",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/concept-v133-warlord.png",
+        "sha256": "73b5552d3e8927f8ee42e3fcf5a7b8721ccf835e6da1058b0e48b60517e68c31",
+        "bytes": 1363243
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/concept-v133-warlord.png",
+        "sha256": "c8a685971f9aebf48c095482da66cb1821b51a684fc71b3f92ae9f0cf63695f7",
+        "bytes": 793666
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "84f765a80fc27a5fe8018f88bbfbdfcf79d70c6b398dbc6364e01083ae938e14",
+        "outputAlphaSha256": "84f765a80fc27a5fe8018f88bbfbdfcf79d70c6b398dbc6364e01083ae938e14",
+        "sourceNonzeroAlphaPixels": 592690,
+        "outputNonzeroAlphaPixels": 592690,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "legacy-elder-project",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/legacy-elder-project.png",
+        "sha256": "f98b242a683aed706aafe99e3ca6a8824da7aee5ccf8db8f26180a40d5bd8e8b",
+        "bytes": 1092751
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/legacy-elder-project.png",
+        "sha256": "b1f86d7f1ded810be14f682072ae44d985258eebc47ff81262d236044afec249",
+        "bytes": 667525
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "2a14197089d062de6b9989eafee3d252f0344a51c64d8ed13547a58d6cf332ee",
+        "outputAlphaSha256": "2a14197089d062de6b9989eafee3d252f0344a51c64d8ed13547a58d6cf332ee",
+        "sourceNonzeroAlphaPixels": 442441,
+        "outputNonzeroAlphaPixels": 442441,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mask-feral-screen-original",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mask-feral-screen-original.png",
+        "sha256": "cb8318b7dbbc73825c669928d317c526f713dfce972625e12246a39b3a390a56",
+        "bytes": 1315114
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mask-feral-screen-original.png",
+        "sha256": "0295e389cfc86f048d6a815a9646b73595858287bf4968fd4132ea4477be27c5",
+        "bytes": 773738
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "hybrid-project-study",
+        "portableMaskUse": "not-a-portable-mask-asset",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": true,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Ravin is a hybrid with uncertain mask-versus-wearer ownership; keep as nonportable study, not canonical Feral and not silently clean-detached geometry."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "56498dc3e58a82a125bf73952d14e98c64818b54772f951bd004ee77b13d7178",
+        "outputAlphaSha256": "56498dc3e58a82a125bf73952d14e98c64818b54772f951bd004ee77b13d7178",
+        "sourceNonzeroAlphaPixels": 481568,
+        "outputNonzeroAlphaPixels": 481568,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-01-jungle",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-01-jungle.png",
+        "sha256": "6440f135b78b050c6a065b40c7829703e047eb6b65f08951fb57fc74c72158ea",
+        "bytes": 2345073
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-01-jungle.png",
+        "sha256": "29ce4c8a071103c369d19e0c5c17d74683e43da6870ec5f0d0b8bc55b41b155f",
+        "bytes": 1224222
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4338df338969a936af2f4b0c8129a910fd304304496167ad57e6bb8f7b69ca11",
+        "outputAlphaSha256": "4338df338969a936af2f4b0c8129a910fd304304496167ad57e6bb8f7b69ca11",
+        "sourceNonzeroAlphaPixels": 963714,
+        "outputNonzeroAlphaPixels": 963714,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-02-city",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-02-city.png",
+        "sha256": "b73312efe789f8b4d38a39f64977d5c5f11a5e4b0bd87417a768016fc0b38dea",
+        "bytes": 1936471
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-02-city.png",
+        "sha256": "a1770e463c6e5ee223f3cb2aa01e2ca6d8e16f11064e7258697e93f3c18424c1",
+        "bytes": 1016488
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "c79893a46c64fc54c8d9c9ed84ee15b8e225d63dd0878ae7dd1b0c14d07f5c2f",
+        "outputAlphaSha256": "c79893a46c64fc54c8d9c9ed84ee15b8e225d63dd0878ae7dd1b0c14d07f5c2f",
+        "sourceNonzeroAlphaPixels": 709062,
+        "outputNonzeroAlphaPixels": 709062,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-03-scar",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-03-scar.png",
+        "sha256": "38601436cb2f437c077684498bd083d5d2dae16d0848b1c6106f611783f895b9",
+        "bytes": 2114412
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-03-scar.png",
+        "sha256": "2a4ee38e02b30de65551f954f1118a9764fedcffe5665b65833229cbd18090d8",
+        "bytes": 1102628
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "c744aa13c9c97b64b14ee48eea431682e39010063a609638ca4bf1d10e05d2e1",
+        "outputAlphaSha256": "c744aa13c9c97b64b14ee48eea431682e39010063a609638ca4bf1d10e05d2e1",
+        "sourceNonzeroAlphaPixels": 768579,
+        "outputNonzeroAlphaPixels": 768579,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-04-celtic",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-04-celtic.png",
+        "sha256": "b5a353cc7d3a968efd7637ef2f16dbadb090f8921e1ac447feeb14a955cdbd8d",
+        "bytes": 2053283
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-04-celtic.png",
+        "sha256": "3c19644c1112bb2760afb75244e1bc5367299c4779c94a734b7315ec7cf1bbd4",
+        "bytes": 1119878
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "fda6f83dbdb03c88bd5c8202acf17780138f26902c031bb8b8bdec1734d35d43",
+        "outputAlphaSha256": "fda6f83dbdb03c88bd5c8202acf17780138f26902c031bb8b8bdec1734d35d43",
+        "sourceNonzeroAlphaPixels": 777421,
+        "outputNonzeroAlphaPixels": 777421,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-05-chopper",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-05-chopper.png",
+        "sha256": "08f38f1ec42919918a415b8063e3032cff7171c3976fbf74ebe1459fff7321f0",
+        "bytes": 2073008
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-05-chopper.png",
+        "sha256": "ff09ef36d0a756331dc804e90bbabc276667c882e3879a9351b545fb24fbff63",
+        "bytes": 1066051
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "1e63bff7e3958d905593088ffaf8b7cc2de0c202be890d1e4bc842fe7353430e",
+        "outputAlphaSha256": "1e63bff7e3958d905593088ffaf8b7cc2de0c202be890d1e4bc842fe7353430e",
+        "sourceNonzeroAlphaPixels": 748154,
+        "outputNonzeroAlphaPixels": 748154,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-06-wolf",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-06-wolf.png",
+        "sha256": "81669d98bf32426d039623247e2596ea70be17252ce01464a618f50e6cd17214",
+        "bytes": 2161338
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-06-wolf.png",
+        "sha256": "1f9bc5aba058d7bfe9b6279906190b93fae0571245592d351cfff5c08ca0dda8",
+        "bytes": 1220976
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": false,
+        "sourceBRenderMode": "source-reuse",
+        "specialNotes": [
+          "B is exact A byte reuse to preserve readable forehead glyphs; no new B generation. Neutralization must preserve glyph topology and alpha exactly if technical route is selected."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "5b686f25472b58edc13eab09166aa500ab40fd25256faaa05fe8f8ca2c52f658",
+        "outputAlphaSha256": "5b686f25472b58edc13eab09166aa500ab40fd25256faaa05fe8f8ca2c52f658",
+        "sourceNonzeroAlphaPixels": 717368,
+        "outputNonzeroAlphaPixels": 717368,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-07-feral",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-07-feral.png",
+        "sha256": "d80dc4b41a9c6dec9760b18770db61dc28ecaf791c399fa6ba08591ab32d0ad9",
+        "bytes": 1607625
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-07-feral.png",
+        "sha256": "ce67450b30a1a3b1160137227dedf605c29dd142f250b51215c91ea8b1136e39",
+        "bytes": 889119
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "f6f5b728fa076fc7775c690bfcc0e0b321803f3344b4c97e3c6fc01f5370ade2",
+        "outputAlphaSha256": "f6f5b728fa076fc7775c690bfcc0e0b321803f3344b4c97e3c6fc01f5370ade2",
+        "sourceNonzeroAlphaPixels": 571319,
+        "outputNonzeroAlphaPixels": 571319,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-08-boar",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-08-boar.png",
+        "sha256": "0f3d77936521b78bb7219def7485de2815fcf46bffe03af191b8ed84e50bb7b0",
+        "bytes": 2178493
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-08-boar.png",
+        "sha256": "75d704a90271ce5193ea1224ec3fd367084d25e7074dc5efa94ad4062a545294",
+        "bytes": 1100205
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "12786d25a706bf925ffa7baace529cfeaf412462f75cda39d134889e6b86ee25",
+        "outputAlphaSha256": "12786d25a706bf925ffa7baace529cfeaf412462f75cda39d134889e6b86ee25",
+        "sourceNonzeroAlphaPixels": 730947,
+        "outputNonzeroAlphaPixels": 730947,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-09-snake",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-09-snake.png",
+        "sha256": "140706433c6bdd91609a60589aaa3b561acf7e2e3b561594334b73228211fb19",
+        "bytes": 2030419
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-09-snake.png",
+        "sha256": "b0c0bf37ccd241854d2805939e22be27348e5d7f614f059eb7f8d5bd847cd3ab",
+        "bytes": 1107453
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "aa17ba560057c29150b3055c6b449752ec7ef0fb41ae9d7fec728510aa47fc53",
+        "outputAlphaSha256": "aa17ba560057c29150b3055c6b449752ec7ef0fb41ae9d7fec728510aa47fc53",
+        "sourceNonzeroAlphaPixels": 748076,
+        "outputNonzeroAlphaPixels": 748076,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-10-falconer",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-10-falconer.png",
+        "sha256": "9518a0f276eb961a3c2e72d6ee61d474c555adb453689ce625474bfc50b2f886",
+        "bytes": 2004048
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-10-falconer.png",
+        "sha256": "8e88abe1e93a9992e8d358e8642f778846eee0177058849872931e07a234e762",
+        "bytes": 1041705
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "597d6c44e078bfa6347274d2243316d2a01894c2273c4f6e3c663c66b0e1314a",
+        "outputAlphaSha256": "597d6c44e078bfa6347274d2243316d2a01894c2273c4f6e3c663c66b0e1314a",
+        "sourceNonzeroAlphaPixels": 723451,
+        "outputNonzeroAlphaPixels": 723451,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-11-berserker",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-11-berserker.png",
+        "sha256": "030990c223881ec4a646bc9b0202adeb7b989ca5543121c0883b3af9cb4b7b67",
+        "bytes": 2216169
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-11-berserker.png",
+        "sha256": "a2bb524fd51a3261d576f7f2d4bdbd4121f25dfedc53c3620668bd2bca680d2a",
+        "bytes": 1210739
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "2ac28f4d77dca7f3f783108b8006467ea4aef10e5e3ec72a5d1bbb5199fd8c60",
+        "outputAlphaSha256": "2ac28f4d77dca7f3f783108b8006467ea4aef10e5e3ec72a5d1bbb5199fd8c60",
+        "sourceNonzeroAlphaPixels": 846586,
+        "outputNonzeroAlphaPixels": 846586,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-12-fugitive",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-12-fugitive.png",
+        "sha256": "29f77ddfad1db6b13cf703a54d6aa4eb1669aea1e313be3f15233dff05e6edd3",
+        "bytes": 1769726
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-12-fugitive.png",
+        "sha256": "486cdf8cd9756bb8263954874d0757b5fc4b3498ff2ac33cae81395243e0da6f",
+        "bytes": 964131
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "18ed6f68f6301080f6806bbd50b984bf3dca9d88e89bc51225f3aef4fdb7078a",
+        "outputAlphaSha256": "18ed6f68f6301080f6806bbd50b984bf3dca9d88e89bc51225f3aef4fdb7078a",
+        "sourceNonzeroAlphaPixels": 732433,
+        "outputNonzeroAlphaPixels": 732433,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-13-dek",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-13-dek.png",
+        "sha256": "4964507623b2cb8d49a600dea07d2f6ddc20c6d3ad473f8509e695c8cf665f17",
+        "bytes": 1695972
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-13-dek.png",
+        "sha256": "6f7ffd7c1865f956ecf0ea8468811240a8a2104b0244e38eedaa5f44a30660df",
+        "bytes": 924567
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "24f438756beedd9171c1059499fb849c74abc0e9396b59f6c459dfc7c90ffa7a",
+        "outputAlphaSha256": "24f438756beedd9171c1059499fb849c74abc0e9396b59f6c459dfc7c90ffa7a",
+        "sourceNonzeroAlphaPixels": 632033,
+        "outputNonzeroAlphaPixels": 632033,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-14-enforcer",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-14-enforcer.png",
+        "sha256": "6c629a28f4f143983151b070c30086e21100c80f0a2b07d75ef4f21c4ece38f5",
+        "bytes": 1485184
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-14-enforcer.png",
+        "sha256": "67fb3b14ad460a64962f82a2be47ef4bc2eff609b10e17c8de4a1d5dccce2f9e",
+        "bytes": 846148
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "e3234edc42353971d44fcf2187a4d6c34d20b74781566749e71e67f2424a9d83",
+        "outputAlphaSha256": "e3234edc42353971d44fcf2187a4d6c34d20b74781566749e71e67f2424a9d83",
+        "sourceNonzeroAlphaPixels": 552928,
+        "outputNonzeroAlphaPixels": 552928,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-23-samurai",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-23-samurai.png",
+        "sha256": "97b4cff30423b91bc50562ded3263501a0d0a53665ac44bece193865bb623acf",
+        "bytes": 1598081
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-23-samurai.png",
+        "sha256": "caa3bc19c7c2eca3a44b1b84140a82dddea7cef1ef2ad1fe330b9e8528e0bc56",
+        "bytes": 919586
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "05f2d63a099a4f95ce54198a3a3c7ca12fdf8fa45c83a7092a4d9a55de436ca3",
+        "outputAlphaSha256": "05f2d63a099a4f95ce54198a3a3c7ca12fdf8fa45c83a7092a4d9a55de436ca3",
+        "sourceNonzeroAlphaPixels": 677247,
+        "outputNonzeroAlphaPixels": 677247,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-24-viking",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-24-viking.png",
+        "sha256": "4724a14b9b6c42f82cf023128a00845ab6b1ed5ff0cda5f5170a53b2700264b1",
+        "bytes": 1757121
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-24-viking.png",
+        "sha256": "e5911ee77ed5f9bebff5f0df427bb71d824cc77c74b7098167c2fa5a78c610d5",
+        "bytes": 998465
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "26c2819915b8aa413225641cba7f1caaffd45f55c9f5ecbdfd895d468f84d3bb",
+        "outputAlphaSha256": "26c2819915b8aa413225641cba7f1caaffd45f55c9f5ecbdfd895d468f84d3bb",
+        "sourceNonzeroAlphaPixels": 651416,
+        "outputNonzeroAlphaPixels": 651416,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-25-valkyrie",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-25-valkyrie.png",
+        "sha256": "3c111defa672ffdecdc1950f2712936660b35318a2b12e3cd6b4d2134d359e9b",
+        "bytes": 1321413
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-25-valkyrie.png",
+        "sha256": "b1996a61c4003efd0473c6c42535793bbfee737a52390090ca2b1fecb1aa56fb",
+        "bytes": 731269
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "552c8e9eb40e872fdb2baaca64ea574e8b99a09cc94c83e31d25ee71cf68f267",
+        "outputAlphaSha256": "552c8e9eb40e872fdb2baaca64ea574e8b99a09cc94c83e31d25ee71cf68f267",
+        "sourceNonzeroAlphaPixels": 421038,
+        "outputNonzeroAlphaPixels": 421038,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-30-emissary",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-30-emissary.png",
+        "sha256": "5980ae75824563137eb8f5378b643bbe8da330d82162dc41b93f65380b1d76d7",
+        "bytes": 1301386
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-30-emissary.png",
+        "sha256": "ea6c3bcfe763acd637ef3eb0577be0d3a4b84dc4d7b603e3a3b90882dd29a31e",
+        "bytes": 795015
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "partial-face-shell-source-view",
+        "portableMaskUse": "partial-study-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": true,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Emissary is already flagged partialReferenceView by the dual manifest: two small upper projections are cut in the source; no complete upper silhouette or invented missing tips. Neutral C stays partial."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4e8c3fb727a11a521923d20ff6d7960aa03d599bcc7c9bf54c6cccfbed9fa039",
+        "outputAlphaSha256": "4e8c3fb727a11a521923d20ff6d7960aa03d599bcc7c9bf54c6cccfbed9fa039",
+        "sourceNonzeroAlphaPixels": 630801,
+        "outputNonzeroAlphaPixels": 630801,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "mk-35-mr-black",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/mk-35-mr-black.png",
+        "sha256": "3c1d44c33a1c3ebd63a080ec6b5395c45a31ae0c4a85e8ef30803b8fac8a051b",
+        "bytes": 1544249
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/mk-35-mr-black.png",
+        "sha256": "a01489eb6db672e1d1dab7ccf65656669b478154b8adb2a32b06cad9de1d2253",
+        "bytes": 875201
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "6f1ed0c3543afc4a4ddd70659a2a1d5c84734a90d59d13bae89d7dfa5bde0e65",
+        "outputAlphaSha256": "6f1ed0c3543afc4a4ddd70659a2a1d5c84734a90d59d13bae89d7dfa5bde0e65",
+        "sourceNonzeroAlphaPixels": 607507,
+        "outputNonzeroAlphaPixels": 607507,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-alpha",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-alpha.png",
+        "sha256": "1bc9edf3c7f1d627e74a7cb9e5e12d16f6ce66f917297bd7d120a11d90f20dc0",
+        "bytes": 1536607
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-alpha.png",
+        "sha256": "9eba9e005d11402617480bded219ab9a5ef514e59cb49c1fe80c5dbc6816b1ef",
+        "bytes": 894215
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "aa7108b1b57757014a12752a875953cd90ffc7659dd702cd7f59109a2151d07b",
+        "outputAlphaSha256": "aa7108b1b57757014a12752a875953cd90ffc7659dd702cd7f59109a2151d07b",
+        "sourceNonzeroAlphaPixels": 547611,
+        "outputNonzeroAlphaPixels": 547611,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-captured",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-captured.png",
+        "sha256": "f3b229d194ce266b1f4b1bad8e2341af6e08f14cc88a9e69291cf3635ca765b8",
+        "bytes": 1323162
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-captured.png",
+        "sha256": "dff61aee9406911c70785fa684cfdc8a66f1ea722d6c1e1f4e939670dd957665",
+        "bytes": 752001
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "3ee3091511d1e73d9795761117cd3907bcf0a4edda08cd4c3a76d934cec83e3a",
+        "outputAlphaSha256": "3ee3091511d1e73d9795761117cd3907bcf0a4edda08cd4c3a76d934cec83e3a",
+        "sourceNonzeroAlphaPixels": 592433,
+        "outputNonzeroAlphaPixels": 592433,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cleopatra",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cleopatra.png",
+        "sha256": "14c38b01162d37d6960de9ae18c19bdaad9745e62112a00a226188d2327c98f0",
+        "bytes": 1520723
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cleopatra.png",
+        "sha256": "906000224928e7d22010d3411b182b8fff879420a9d78833dc50b1d951beae53",
+        "bytes": 881781
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "30ec0a9fe15e561ea12593157ed5e274d6900be72c1082459edd048762d1b8a9",
+        "outputAlphaSha256": "30ec0a9fe15e561ea12593157ed5e274d6900be72c1082459edd048762d1b8a9",
+        "sourceNonzeroAlphaPixels": 598640,
+        "outputNonzeroAlphaPixels": 598640,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-arthos",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-arthos.png",
+        "sha256": "775c00d5d3af391d38b4beb9ad15108102c76837658f594df2879a2c46ca960d",
+        "bytes": 1299293
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-arthos.png",
+        "sha256": "9d0de3824717aa09c194049ec41f44b3334de2767517ac75a05b265428a5fad0",
+        "bytes": 778694
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "542f48ca3dc93ccee3043898e289b490591cd8219d3f69c5f017ce1a1322e139",
+        "outputAlphaSha256": "542f48ca3dc93ccee3043898e289b490591cd8219d3f69c5f017ce1a1322e139",
+        "sourceNonzeroAlphaPixels": 543985,
+        "outputNonzeroAlphaPixels": 543985,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-eclipse",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-eclipse.png",
+        "sha256": "549e422c101b8b096e7d8e5bd91a0124095de2d68d0cf20e354739a65124713c",
+        "bytes": 1284213
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-eclipse.png",
+        "sha256": "bc9c798d0c0d39a7ab220604edbb704d557defed44cf4ebf231f8f77049da279",
+        "bytes": 777149
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "79fc3fbd799997579eea3eadfdcac65dfaaa3b7929eda5fc231ba62e4f99cf8c",
+        "outputAlphaSha256": "79fc3fbd799997579eea3eadfdcac65dfaaa3b7929eda5fc231ba62e4f99cf8c",
+        "sourceNonzeroAlphaPixels": 545555,
+        "outputNonzeroAlphaPixels": 545555,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-immortal",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-immortal.png",
+        "sha256": "47f5c19047947dcdc932f60fcf64c867082bb3cd6f9dc982b1fa1fc7c2d737d7",
+        "bytes": 1528931
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-immortal.png",
+        "sha256": "ec6b0b0f23c796ea48fbeec99a0f46266e7faf5e81ab38dbdf2f097b42d2ea67",
+        "bytes": 903583
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "5ac5e9efda4a5d6e79a82d1816087655556c449d65d5f6838996fd88359ed641",
+        "outputAlphaSha256": "5ac5e9efda4a5d6e79a82d1816087655556c449d65d5f6838996fd88359ed641",
+        "sourceNonzeroAlphaPixels": 660845,
+        "outputNonzeroAlphaPixels": 660845,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-inferno",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-inferno.png",
+        "sha256": "5e2b8ed759a86e39b9b6e8e2ad73d7f12c743f7e5547d96cac06755395d10b73",
+        "bytes": 1357279
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-inferno.png",
+        "sha256": "aa001c43f3401ab9314e3dddbd6b9850bb8606e57b8fc25c75fdf8e6f9e37824",
+        "bytes": 782710
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "d4d3707cb26ea4bc97b4ada4f20d1c5088dfd40f5725f4ff831179dccff63849",
+        "outputAlphaSha256": "d4d3707cb26ea4bc97b4ada4f20d1c5088dfd40f5725f4ff831179dccff63849",
+        "sourceNonzeroAlphaPixels": 543004,
+        "outputNonzeroAlphaPixels": 543004,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-journeyman",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-journeyman.png",
+        "sha256": "9eb8a58f1ac38eb59cd47f058b39c86070628320565e9bbafac612ead41fccbf",
+        "bytes": 1719834
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-journeyman.png",
+        "sha256": "744b70fce064848449c063e95a65405c0ab9373f7688e05400144c7fca616a40",
+        "bytes": 987399
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "f8b822f93deb8ce42071b4eba5517d8d16898f96eb35ef9e18c8ebb7cd42ed11",
+        "outputAlphaSha256": "f8b822f93deb8ce42071b4eba5517d8d16898f96eb35ef9e18c8ebb7cd42ed11",
+        "sourceNonzeroAlphaPixels": 723598,
+        "outputNonzeroAlphaPixels": 723598,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-nocturne",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-nocturne.png",
+        "sha256": "668e9418eb92ac76cec9636aa325463f76566b7c0c3cee04943b2db1d3eb4718",
+        "bytes": 1437481
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-nocturne.png",
+        "sha256": "60bf3f4e17f4c56978989858cc164ade966b7f28099f7b1be655fdabb3b1109f",
+        "bytes": 811820
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "e3091326260015b578e3153a346cf4ee64f17d0882a17fc00e2ace5107aa3d26",
+        "outputAlphaSha256": "e3091326260015b578e3153a346cf4ee64f17d0882a17fc00e2ace5107aa3d26",
+        "sourceNonzeroAlphaPixels": 632630,
+        "outputNonzeroAlphaPixels": 632630,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-phalanx",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-phalanx.png",
+        "sha256": "a5e3213b1722de0ef6e620588c26bf7574ca530747aa68ea33cdeabf9bd88b4f",
+        "bytes": 1313831
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-phalanx.png",
+        "sha256": "ad8e4657a8598105d97a61b96083c1fb4c913ac4e49461cfe7df3867ea98f835",
+        "bytes": 745603
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4c665f5dfe61284e22004151879d6b9b4662513c661f97e0d407a5619c72c86e",
+        "outputAlphaSha256": "4c665f5dfe61284e22004151879d6b9b4662513c661f97e0d407a5619c72c86e",
+        "sourceNonzeroAlphaPixels": 546147,
+        "outputNonzeroAlphaPixels": 546147,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-phoenix",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-phoenix.png",
+        "sha256": "72bb9af2d8d6d80c66a1f0991498175b669e8e50f5e3e16e95712f0bf5361d30",
+        "bytes": 1379343
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-phoenix.png",
+        "sha256": "134723be9a5583b930c58313817675ee71b5886eaf667453fbaeb88ec9558380",
+        "bytes": 782829
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "078af008b9cc0efc781936210852925d874b0ae257e7e6f2177979fed96a8fca",
+        "outputAlphaSha256": "078af008b9cc0efc781936210852925d874b0ae257e7e6f2177979fed96a8fca",
+        "sourceNonzeroAlphaPixels": 531794,
+        "outputNonzeroAlphaPixels": 531794,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-plague",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-plague.png",
+        "sha256": "a32bb00bf480633d0125923c33c25b08085fc55d47e6f136f331c9e970961c70",
+        "bytes": 1477419
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-plague.png",
+        "sha256": "43182aa459000a71a53477ec23d5d704217a1b80ce6faa6d9660a9f1b247e906",
+        "bytes": 940239
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "92323b0d03d0ae936243dbde0101aac18aa3920966a98cb94cb239812bcd1b60",
+        "outputAlphaSha256": "92323b0d03d0ae936243dbde0101aac18aa3920966a98cb94cb239812bcd1b60",
+        "sourceNonzeroAlphaPixels": 599163,
+        "outputNonzeroAlphaPixels": 599163,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-prophet",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-prophet.png",
+        "sha256": "c1ac446644a772dd9177bcad0f0cebf1c3e8c000d7ca1fa5e7920a3662d3d283",
+        "bytes": 1492440
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-prophet.png",
+        "sha256": "b94d74da29d940322ade3e73c52dfacbdbda9ba3306049c500da4318e1f6a5bb",
+        "bytes": 875832
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "6178acf7c2890684b92decd4ce2bd2af10ce12ccd2597bda54780a5beff1dc26",
+        "outputAlphaSha256": "6178acf7c2890684b92decd4ce2bd2af10ce12ccd2597bda54780a5beff1dc26",
+        "sourceNonzeroAlphaPixels": 614687,
+        "outputNonzeroAlphaPixels": 614687,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-ravager",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-ravager.png",
+        "sha256": "2f9af33929bf60b383cc3af8cfe41842928d672bee1e9258952952c72aaf5c42",
+        "bytes": 1421637
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-ravager.png",
+        "sha256": "31e1f68b2789824be32a5d1c4156f696ab5dc297d8441e09a1b3527643358fb1",
+        "bytes": 883079
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "02bb333b0c449ded674e9c6a10e2ddf9542c2f2307e84bb39c9bca19bf1b9c39",
+        "outputAlphaSha256": "02bb333b0c449ded674e9c6a10e2ddf9542c2f2307e84bb39c9bca19bf1b9c39",
+        "sourceNonzeroAlphaPixels": 666263,
+        "outputNonzeroAlphaPixels": 666263,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-vex",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-vex.png",
+        "sha256": "de77d6fa149fecfdacdab9d37461e178049c5dd6760fabb85e2592650a10582b",
+        "bytes": 1357598
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-vex.png",
+        "sha256": "e13424e4b674771329861ac61b5ef36726e9a6b52ea0cc38a90dff7bcd95d457",
+        "bytes": 794671
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "346a627c81ff1fe7f2efb886cde312dc25a51c859ad73566cd318f37177268fc",
+        "outputAlphaSha256": "346a627c81ff1fe7f2efb886cde312dc25a51c859ad73566cd318f37177268fc",
+        "sourceNonzeroAlphaPixels": 655308,
+        "outputNonzeroAlphaPixels": 655308,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-cosmetic-wretch",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-cosmetic-wretch.png",
+        "sha256": "e2433a5ce815a7764e8f8ee8a8e14016f1b6306902d39457edff2342e94f93f4",
+        "bytes": 1792341
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-cosmetic-wretch.png",
+        "sha256": "efae8b212cd15af1b347b9a9689394fb9c57b5d52c144cc5e815c0ce114772ae",
+        "bytes": 965942
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "0fbbea77d3137f40df9346dc2be0452fecd38bb12e0fa0436fc7b71793d1e52c",
+        "outputAlphaSha256": "0fbbea77d3137f40df9346dc2be0452fecd38bb12e0fa0436fc7b71793d1e52c",
+        "sourceNonzeroAlphaPixels": 648034,
+        "outputNonzeroAlphaPixels": 648034,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-elder",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-elder.png",
+        "sha256": "ff2ff8c4b690d0b1896cebdc3f3b6fd5109b423db2737ce49f4533cb6b26dfd2",
+        "bytes": 1617875
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-elder.png",
+        "sha256": "2c82a5b4f1c3f32e6613c86293caa818a6794703521316c9ddc0932fa8279b58",
+        "bytes": 898844
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "9bfec8eb539b23ef15b9e9ff5ff8083111a69077792e820b756ede8561258a45",
+        "outputAlphaSha256": "9bfec8eb539b23ef15b9e9ff5ff8083111a69077792e820b756ede8561258a45",
+        "sourceNonzeroAlphaPixels": 694274,
+        "outputNonzeroAlphaPixels": 694274,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "phg-exiled",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-dual-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-dual-20261113/phg/phg-exiled.png",
+        "sha256": "c7522dfaf23b478cb17c4ea1664c5eb4b0093709cccc0941ef8cb5e16d20687c",
+        "bytes": 1669822
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/phg-exiled.png",
+        "sha256": "208b7085c0d37a516a6e50950e9f2952ac173c697b871d087c2fe3de8249c813",
+        "bytes": 906570
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "3781510da553228eb5d17045426c7c7d7c5a55a08a7c2fd58f01110bdf346ef0",
+        "outputAlphaSha256": "3781510da553228eb5d17045426c7c7d7c5a55a08a7c2fd58f01110bdf346ef0",
+        "sourceNonzeroAlphaPixels": 623367,
+        "outputNonzeroAlphaPixels": 623367,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_11",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_11.png",
+        "sha256": "d373fcda9d0395e237e89aa52500f64e2769547d10a328f545613d569d9b9336",
+        "bytes": 1741313
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_11.png",
+        "sha256": "a6c9187a8bd681ee646ad303a8c339c4f517d4dd6d9be5038da8e4d5ecccf345",
+        "bytes": 952921
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "aa53af28936b67bca8b051626b6b5877cec9ceae82e27091e0b086fc683ecaf8",
+        "outputAlphaSha256": "aa53af28936b67bca8b051626b6b5877cec9ceae82e27091e0b086fc683ecaf8",
+        "sourceNonzeroAlphaPixels": 721267,
+        "outputNonzeroAlphaPixels": 721267,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_12",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_12.png",
+        "sha256": "09ccf409a0ea9a1db3aad1ba32e7b3a7b5cc7b145a343d6a6b2ba26bc397b40f",
+        "bytes": 1392134
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_12.png",
+        "sha256": "e9325022760d8edd3d9858eb3c0e66f5273b9a6be072c5e9efe1f4a76c8d688f",
+        "bytes": 797147
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "63eeb9a165f6a5c87fe05602480a80a0d53502dc427452011f5dbad3e2b3bf26",
+        "outputAlphaSha256": "63eeb9a165f6a5c87fe05602480a80a0d53502dc427452011f5dbad3e2b3bf26",
+        "sourceNonzeroAlphaPixels": 594021,
+        "outputNonzeroAlphaPixels": 594021,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_16",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_16.png",
+        "sha256": "b62a7e01e6a2b86007e82bdebd695a6e2747c5d2d0126b0297211c60d7a9e7c2",
+        "bytes": 1482547
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_16.png",
+        "sha256": "d8b69bd285ea254d3f74897af6d49a26596c14ea19ba7a1b69a677747b84278e",
+        "bytes": 867191
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "786be90833449c2700457cee313a02143af134ad629db87e8b71bb1de94122d2",
+        "outputAlphaSha256": "786be90833449c2700457cee313a02143af134ad629db87e8b71bb1de94122d2",
+        "sourceNonzeroAlphaPixels": 626271,
+        "outputNonzeroAlphaPixels": 626271,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_17",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_17.png",
+        "sha256": "7e0da6152d7186373456f973cb185339616a04c453b1a2f5c8e435ca04cee361",
+        "bytes": 1634260
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_17.png",
+        "sha256": "9e2d25b3219335cd2a197a53479eb0aa7ea8341e2c878154d4f3ada3f817bb4c",
+        "bytes": 922150
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "provisional-review-only",
+        "portableMaskUse": "hold-pending-design-review",
+        "provisionalReviewOnly": true,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Vapor remains provisional; neutral C must not imply the unresolved projection/design review is closed."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "371e50a59b68256098dbea2e77967f98c654f414ed376f0bb803f2cd800d08ce",
+        "outputAlphaSha256": "371e50a59b68256098dbea2e77967f98c654f414ed376f0bb803f2cd800d08ce",
+        "sourceNonzeroAlphaPixels": 683614,
+        "outputNonzeroAlphaPixels": 683614,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_21",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_21.png",
+        "sha256": "f00ab163c53d9ecaa36eeed008ac66db7fdddfe419d8324c294703104714426a",
+        "bytes": 1394365
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_21.png",
+        "sha256": "38464f8fca6837fc9821be3e66287398422b7c3e86a475ec4aab5770f7df93e9",
+        "bytes": 809182
+      },
+      "dimensions": [
+        1246,
+        1262
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572452,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "9c7bf7f095b4854b71790215e1d9d3361a0903a4215078b4e9f081ad65137cdc",
+        "outputAlphaSha256": "9c7bf7f095b4854b71790215e1d9d3361a0903a4215078b4e9f081ad65137cdc",
+        "sourceNonzeroAlphaPixels": 631306,
+        "outputNonzeroAlphaPixels": 631306,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_23",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_23.png",
+        "sha256": "a10334918a91f6a747673a3a4c99af71976731805543d02b62af720979319b66",
+        "bytes": 1737498
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_23.png",
+        "sha256": "9ccf5ba954c7738131d9c7db63c6548546722f0254ca12eb4e2bd8bd823661ce",
+        "bytes": 959735
+      },
+      "dimensions": [
+        1247,
+        1261
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572467,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "5cec8285f4ed819c3f71f689f5f83528019d09ee4fd5bf2ad61d3ecfe5ddb777",
+        "outputAlphaSha256": "5cec8285f4ed819c3f71f689f5f83528019d09ee4fd5bf2ad61d3ecfe5ddb777",
+        "sourceNonzeroAlphaPixels": 646457,
+        "outputNonzeroAlphaPixels": 646457,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_detox",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_detox.png",
+        "sha256": "bb6ff95ac9f7df750878c999cfcc4efa406854b84be03c2fd4d95d8a6df677ee",
+        "bytes": 1901915
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_detox.png",
+        "sha256": "bff7b077354eb21eb0ac8a54949ad486312fb1b0e1118c4ed1e22579c37ea430",
+        "bytes": 1029785
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "fe7fbecd09555f1944c21d57e5ed1f388f3c4ef405dfe489ae628f60c843dc24",
+        "outputAlphaSha256": "fe7fbecd09555f1944c21d57e5ed1f388f3c4ef405dfe489ae628f60c843dc24",
+        "sourceNonzeroAlphaPixels": 747631,
+        "outputNonzeroAlphaPixels": 747631,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_14",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_14.png",
+        "sha256": "c00797882864330550efbd2047ea51e1c1efc430b826d8f897e290b293227c48",
+        "bytes": 1541881
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_14.png",
+        "sha256": "3672d5022a9b981ea545b683f4e9ea713f94c14bfda47aedba13ed98d3874966",
+        "bytes": 854193
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4958cf38311d1aeea9c87e89fdd8a7c20a3817930292e250a25afe3797ab2103",
+        "outputAlphaSha256": "4958cf38311d1aeea9c87e89fdd8a7c20a3817930292e250a25afe3797ab2103",
+        "sourceNonzeroAlphaPixels": 655255,
+        "outputNonzeroAlphaPixels": 655255,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "predator_kawaii",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/predator_kawaii.png",
+        "sha256": "a32167ef2d61ed12de0639aa6097314dd5c891ca271cb007fac84944f6c57204",
+        "bytes": 1800199
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/predator_kawaii.png",
+        "sha256": "2d0ed4187846f6fea592fd7cc35704feb3b0377adf4bfa2879874f775bffd0e0",
+        "bytes": 1006680
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "1d9736e206c742f714005897115bc570f3dba5a600cfe2393c038d3622ed150d",
+        "outputAlphaSha256": "1d9736e206c742f714005897115bc570f3dba5a600cfe2393c038d3622ed150d",
+        "sourceNonzeroAlphaPixels": 726079,
+        "outputNonzeroAlphaPixels": 726079,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-kwei-prototype",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-kwei-prototype.png",
+        "sha256": "e81ef9a9cd67af069cb3837ded3b752df529373eed63f00ba7a99798d951a373",
+        "bytes": 1948211
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-kwei-prototype.png",
+        "sha256": "e1fbb6dab845add4650026e5c64441e35a1c51a66feb357feac6f2c49991a970",
+        "bytes": 1093811
+      },
+      "dimensions": [
+        1265,
+        1243
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572395,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "2ef56b67873c5881523c4cc813caca65a2ebe91cfd93e8097941651f1ebc652a",
+        "outputAlphaSha256": "2ef56b67873c5881523c4cc813caca65a2ebe91cfd93e8097941651f1ebc652a",
+        "sourceNonzeroAlphaPixels": 717092,
+        "outputNonzeroAlphaPixels": 717092,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-ahab-sdcc-2014",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-ahab-sdcc-2014.png",
+        "sha256": "be2da769357b9a8f23da53e189fb06794ff2e8540df9828d75e9a0e7d17017da",
+        "bytes": 1267172
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-ahab-sdcc-2014.png",
+        "sha256": "cce73507c2ff0a40cd8e0e34b54ba81fb5c70f0f1411445c95d727e7a9de0e78",
+        "bytes": 719380
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "43499fe7a849d92a3a4204ed087022e74835bfcd781146d99b0d1ddcf99d7434",
+        "outputAlphaSha256": "43499fe7a849d92a3a4204ed087022e74835bfcd781146d99b0d1ddcf99d7434",
+        "sourceNonzeroAlphaPixels": 470242,
+        "outputNonzeroAlphaPixels": 470242,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-warrior-series-6",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-warrior-series-6.png",
+        "sha256": "7b35b21ccce4f5edf945b7eb6998d65d10c31d22aa91c237756f020161a52b18",
+        "bytes": 1552865
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-warrior-series-6.png",
+        "sha256": "92e86da7f781edc2bba4a04fabe56da6b084d16af53106e19b5b97c3588d4b40",
+        "bytes": 865475
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "61fc60375e2179a036a8828b29ec919f749596185df40665e6373253ab4d254b",
+        "outputAlphaSha256": "61fc60375e2179a036a8828b29ec919f749596185df40665e6373253ab4d254b",
+        "sourceNonzeroAlphaPixels": 637255,
+        "outputNonzeroAlphaPixels": 637255,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-scout-lost-tribe-series-6",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-scout-lost-tribe-series-6.png",
+        "sha256": "9024c8e5f351a2ec4ae87734b6078e2a2c8bd3ee7f515fec75e26b87f272ef83",
+        "bytes": 1671465
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-scout-lost-tribe-series-6.png",
+        "sha256": "5c50280f7cdce4d18bdd7cf86f3b7b0acc81067ab3d39406b263ce451231525f",
+        "bytes": 918088
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "067647f90a8645e83b28fff39462657e56de55dbb1c799d9baa1ecf9dd9b02fe",
+        "outputAlphaSha256": "067647f90a8645e83b28fff39462657e56de55dbb1c799d9baa1ecf9dd9b02fe",
+        "sourceNonzeroAlphaPixels": 737420,
+        "outputNonzeroAlphaPixels": 737420,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-lava-planet-series-10",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-lava-planet-series-10.png",
+        "sha256": "6b9669d9c04961cb70607957e31668872b2b0ef3084e5305a8e2c91626678f47",
+        "bytes": 1489390
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-lava-planet-series-10.png",
+        "sha256": "20a9d3afe3368099662bcf0d7ab62d980697c53c407992de5c9cb363d425f1a7",
+        "bytes": 795708
+      },
+      "dimensions": [
+        1266,
+        1243
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573638,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "b7b272677c04eb152482d5570eade947979a9bd89627e170d062aa7add5f0b20",
+        "outputAlphaSha256": "b7b272677c04eb152482d5570eade947979a9bd89627e170d062aa7add5f0b20",
+        "sourceNonzeroAlphaPixels": 588504,
+        "outputNonzeroAlphaPixels": 588504,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-hive-wars-series-10",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-hive-wars-series-10.png",
+        "sha256": "736c6ba757218754c93dbf60de33d711ca575e5be859a859aa60f3512daef195",
+        "bytes": 1204926
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-hive-wars-series-10.png",
+        "sha256": "dd3ca72a9e9ed8dfefc2511ee4057566f79fd3f9279a4fcd0dc5ebe7b7d43146",
+        "bytes": 681954
+      },
+      "dimensions": [
+        1262,
+        1246
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572452,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "966b322873e0bb8d9f028b56df8d7e5e09e5161985800208af215d292993f7dd",
+        "outputAlphaSha256": "966b322873e0bb8d9f028b56df8d7e5e09e5161985800208af215d292993f7dd",
+        "sourceNonzeroAlphaPixels": 501028,
+        "outputNonzeroAlphaPixels": 501028,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-nightstorm-series-10",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-nightstorm-series-10.png",
+        "sha256": "7ed4e12aa44e96421b7867ac14fe43b2c8ca9460b3b966402943c1b064593bf3",
+        "bytes": 1223247
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-nightstorm-series-10.png",
+        "sha256": "ba7885db3ccefdd34b5d863affc36857af05459a06f525d4d42d8e714c111e20",
+        "bytes": 720600
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "partial-visible-rigid-mask",
+        "portableMaskUse": "partial-study-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": true,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Only visible rigid shell is represented; hidden lower-side shell/rear/interior are unestablished. Neutral C must not complete missing geometry."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "06ea5b361334c8e9d3f7e16e93fb370becc5bfae0c0ad1e9c29eb2b9679c8880",
+        "outputAlphaSha256": "06ea5b361334c8e9d3f7e16e93fb370becc5bfae0c0ad1e9c29eb2b9679c8880",
+        "sourceNonzeroAlphaPixels": 465925,
+        "outputNonzeroAlphaPixels": 465925,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-clan-leader-toyfair-2016",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-clan-leader-toyfair-2016.png",
+        "sha256": "fa2f508a297dd72d62e7905e069777b71ac892b95e1b6b4b3e9b6bf0451c5c4d",
+        "bytes": 612812
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-clan-leader-toyfair-2016.png",
+        "sha256": "f5822bd60ea656e308ba19eadba8ff0d129565b4d5031af25e7994f33bc70c7c",
+        "bytes": 403804
+      },
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572528,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "4885f81256e73fe1735b69823c1b83ab62ef8de1802ace4cd459367fbe94a465",
+        "outputAlphaSha256": "4885f81256e73fe1735b69823c1b83ab62ef8de1802ace4cd459367fbe94a465",
+        "sourceNonzeroAlphaPixels": 244501,
+        "outputNonzeroAlphaPixels": 244501,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-viper-series-12",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-viper-series-12.png",
+        "sha256": "35b5d83fad1ab53ee3fe87a56abcea05626b61e3cbeb8bc35f96e4184d729880",
+        "bytes": 1409710
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-viper-series-12.png",
+        "sha256": "e132e3841194a3d2573eca8c729be6b6286e874cedbe7aaaa0185d16783106cd",
+        "bytes": 776953
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573044,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "bf8abfe921e3d110538422214a16809d2589d15342ac8cdfe3b901d0cb0a4908",
+        "outputAlphaSha256": "bf8abfe921e3d110538422214a16809d2589d15342ac8cdfe3b901d0cb0a4908",
+        "sourceNonzeroAlphaPixels": 570859,
+        "outputNonzeroAlphaPixels": 570859,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-golden-angel-horned-2018",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-horned-2018.png",
+        "sha256": "5d0c74574112207551b0db2faf39c9f00fc0bb8a3e493d2dfa2e8305f8c25da5",
+        "bytes": 1657687
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-golden-angel-horned-2018.png",
+        "sha256": "df1d9320e1edd512ae28a3e1c08bbef0313111fa61b2d3db4e2525d6120c001d",
+        "bytes": 903783
+      },
+      "dimensions": [
+        1122,
+        1402
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573044,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "191399dbc140f8c1383ca5d699e9cb9f7ab3a2271abe5752d4070ea1d582e700",
+        "outputAlphaSha256": "191399dbc140f8c1383ca5d699e9cb9f7ab3a2271abe5752d4070ea1d582e700",
+        "sourceNonzeroAlphaPixels": 642426,
+        "outputNonzeroAlphaPixels": 642426,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-golden-angel-smooth-2018",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "public/game/biomasks-expansion-20261113/manifest.json",
+      "sourceB": {
+        "path": "public/game/biomasks-expansion-20261113/phg/neca-golden-angel-smooth-2018.png",
+        "sha256": "ead8ef4e6151816a5a450c1a7426d55d46d3a054084fe7c9ac2bce67177931c6",
+        "bytes": 2035399
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-golden-angel-smooth-2018.png",
+        "sha256": "14145b259dcde33d9890e933a3ee9cf9fa500b48221dfd6b3faacbd7c353999f",
+        "bytes": 1111686
+      },
+      "dimensions": [
+        1198,
+        1313
+      ],
+      "sourceStatus": {
+        "reviewStatus": "candidate-representation-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": []
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572974,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "bbf868b71d1583f795a2dd0cb6fff0984e0a67c48427864564f9f42620a360a7",
+        "outputAlphaSha256": "bbf868b71d1583f795a2dd0cb6fff0984e0a67c48427864564f9f42620a360a7",
+        "sourceNonzeroAlphaPixels": 810850,
+        "outputNonzeroAlphaPixels": 810850,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-scarface-concrete-jungle-2016",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "production/biomasks-neutral-20261113/inputs/accepted-new-masks.json",
+      "sourceB": {
+        "path": "public/game/biomasks-neutral-20261113/phg/neca-scarface-concrete-jungle-2016.png",
+        "sha256": "3e8526a4f8869896f02f097898f9374fa1a4bd3837cda255824f7b50591d2775",
+        "bytes": 1495190
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-scarface-concrete-jungle-2016.png",
+        "sha256": "8f5a98188448f9eee9c58071d2068b06441270adf816bf1567dd2af93bfc17d6",
+        "bytes": 835282
+      },
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "sourceStatus": {
+        "reviewStatus": "edition-candidate-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572516,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "a930e475ada20cd2e818d8be696bdaf454966fc83f9cf42bd7690b0ac7405a94",
+        "outputAlphaSha256": "a930e475ada20cd2e818d8be696bdaf454966fc83f9cf42bd7690b0ac7405a94",
+        "sourceNonzeroAlphaPixels": 559236,
+        "outputNonzeroAlphaPixels": 559236,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-stalker-kenner-series-16",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "production/biomasks-neutral-20261113/inputs/accepted-new-masks.json",
+      "sourceB": {
+        "path": "public/game/biomasks-neutral-20261113/phg/neca-stalker-kenner-series-16.png",
+        "sha256": "0293abdb586151d2c16e250b5dacdda2d42c6581fa65c4b892f50d59c26ab28d",
+        "bytes": 1232876
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-stalker-kenner-series-16.png",
+        "sha256": "c78275f24199956c3ca78f9d2231800b26f8450511ce0b3c2ce1e5439fc428cc",
+        "bytes": 728021
+      },
+      "dimensions": [
+        1275,
+        1233
+      ],
+      "sourceStatus": {
+        "reviewStatus": "edition-candidate-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1572075,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "3fa6ef4c16b58b2d6edfaa8cdf2712fad5bf228c72230f0f6293f5ba556291e1",
+        "outputAlphaSha256": "3fa6ef4c16b58b2d6edfaa8cdf2712fad5bf228c72230f0f6293f5ba556291e1",
+        "sourceNonzeroAlphaPixels": 524152,
+        "outputNonzeroAlphaPixels": 524152,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    },
+    {
+      "id": "neca-ahab-ultimate-2017",
+      "passed": true,
+      "errors": [],
+      "sourceManifestPath": "production/biomasks-neutral-20261113/inputs/accepted-new-masks.json",
+      "sourceB": {
+        "path": "public/game/biomasks-neutral-20261113/phg/neca-ahab-ultimate-2017.png",
+        "sha256": "0ef534cb11fe9b7fd160837d566083a2fe7ffc5e140edf9e0d49d6b0602c5769",
+        "bytes": 1478694
+      },
+      "neutralC": {
+        "path": "public/game/biomasks-neutral-20261113/neutral/neca-ahab-ultimate-2017.png",
+        "sha256": "c67f884b15daa5ef513c8890e6128e1f102ce906363490e70a2122903aae85cc",
+        "bytes": 823282
+      },
+      "dimensions": [
+        1402,
+        1122
+      ],
+      "sourceStatus": {
+        "reviewStatus": "edition-candidate-unvalidated",
+        "portableMaskUse": "candidate-only",
+        "provisionalReviewOnly": false,
+        "partialReferenceView": false,
+        "hybridStudy": false,
+        "canonicalCertified": false,
+        "humanArtValidated": false,
+        "runtimeIntegrated": false,
+        "newBGeneration": true,
+        "sourceBRenderMode": "imagegen",
+        "specialNotes": [
+          "Specific NECA edition/source view only; no automatic film/game/comic geometry certification or task closure.",
+          "New edition/view study,not a new canonical geometry declaration and not a replacement of Ahab SDCC2014."
+        ]
+      },
+      "pixelChecks": {
+        "passed": true,
+        "pixelsCompared": 1573044,
+        "comparedTransparentRgb": true,
+        "formulaMatchesEveryPixel": true,
+        "formulaMismatchPixels": 0,
+        "formulaMismatchChannels": {
+          "R": 0,
+          "G": 0,
+          "B": 0
+        },
+        "maximumRgbAbsoluteError": 0,
+        "strictMonochromeEveryPixel": true,
+        "nonMonochromePixels": 0,
+        "alphaByteIdentical": true,
+        "alphaMismatchPixels": 0,
+        "sourceAlphaSha256": "e5190a62429fc23b9427be928877c64dded89235ed7f817f107ddaff6441856a",
+        "outputAlphaSha256": "e5190a62429fc23b9427be928877c64dded89235ed7f817f107ddaff6441856a",
+        "sourceNonzeroAlphaPixels": 556293,
+        "outputNonzeroAlphaPixels": 556293,
+        "geometryCoverageIdentical": true,
+        "geometryPixelsLost": 0,
+        "geometryPixelsGained": 0,
+        "sourceWasStrictlyAchromatic": false,
+        "outputGrayRange": [
+          0,
+          255
+        ],
+        "firstMismatches": [],
+        "sourceBFileUnchangedDuringRead": true
+      }
+    }
+  ],
+  "scopeLimits": [
+    "Pixel and metadata verification only; it does not certify canonical design, original-game albedo, human artistic approval, runtime integration, animation, UVs or wearable geometry.",
+    "All RGB samples including invisible RGB beneath alpha0 are checked; all decoded alpha bytes must be identical. Prior source PNG file hashes must match their original manifests and inventory.",
+    "Only this JSON report may be written; the verifier neither generates, converts nor exports an image."
+  ],
+  "imagesWritten": 0,
+  "pixelsModifiedByVerifier": false,
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "runtimeIntegrated": false
+}
