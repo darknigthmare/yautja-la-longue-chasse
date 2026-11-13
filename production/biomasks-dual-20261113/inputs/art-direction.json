@@ -1,0 +1,372 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "kind": "dual-version-biomask-art-direction-contract",
+  "scope": "For each distinct available project mask design, A reuses the exact existing file bytes in its native PNG/WebP format; B is the only newly generated PHG-standardized PNG. Existing local design coverage is distinct from the canonical named targets that still lack a cutout. No image generation or repository mutation performed by this contract task.",
+  "basis": {
+    "projectGuide": "docs/GAMEDEV_AGENT_GUIDE.md",
+    "assetGuide": "/tmp/p0-sprites-20261113/references/create-game-assets.md",
+    "referenceLedger": "production/biomasks-primary-20261113/inputs/primary-mask-sources.json",
+    "referenceLedgerSha256": "3b0f5a8c41643463d71f079f270fe46270e30fc03c14657a7311e003d6957f7e",
+    "visualParametersAreQualitativeTargetsNotMeasuredOriginalShaderData": true
+  },
+  "preservationBaseline": {
+    "historicalPackIds": [
+      "p0-sprites-20261113",
+      "p0-fidelity-20261113",
+      "biomasks-20261113",
+      "biomasks-primary-20261113"
+    ],
+    "nativeCandidatePngs": 69,
+    "pngCountIncludesOtherP0SubjectsNotOnlyMasks": true,
+    "workbooksToPreserve": 124,
+    "sourceOfCounts": "Independent read-only inventory agent verified actual files; first primary snapshot protects 123 workbooks plus its own follow-up is the 124th.",
+    "priorArtifactsMayNotBeRewritten": true
+  },
+  "inspectedPrimaryPhgStyleReferences": [
+    {
+      "id": "viking-official-render",
+      "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/79094b2402/viking-predator.png",
+      "sha256": "82facff1a00df89b895583f68048186a81081a140d1107ec4f509a7beb72d205",
+      "bytes": 357919,
+      "width": 995,
+      "height": 1101,
+      "view": "Full-body promotional render; head near front turned slightly toward image right; full horned helmet visible.",
+      "localReferencePath": "/tmp/primary-masks-20261113/phg/viking-render.png",
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image",
+      "styleRole": "Material hierarchy: engraved dark crown, gold ornament, silver cheeks, grey ridged horn tips. It is not one uniform metal finish. The blue axe above/behind the crown is not helmet geometry.",
+      "copyIdentityFeaturesIntoOtherMasks": false,
+      "neutralShaderParametersMeasured": false,
+      "thirdPartyPhotoRedistributionLicenseEstablished": false
+    },
+    {
+      "id": "samurai-official-closeup",
+      "url": "https://live.staticflickr.com/65535/50059892976_c149533c4a_k.jpg",
+      "sha256": "bf2144389c5fa0e74a1c0444973a119f36ddd1f668f020c14281068571dfd096",
+      "bytes": 653635,
+      "width": 2048,
+      "height": 1152,
+      "view": "Close in-game scene, head inclined and turned toward image left; uppermost crest cut by top edge.",
+      "localReferencePath": "/tmp/primary-masks-20261113/phg/samurai-50059892976.jpg",
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image",
+      "styleRole": "Colored material example: red menpo, gold relief and edging, blue-black helmet, dark optical apertures. Preserve color regions; warm jungle light is not proof of neutral albedo.",
+      "copyIdentityFeaturesIntoOtherMasks": false,
+      "neutralShaderParametersMeasured": false,
+      "thirdPartyPhotoRedistributionLicenseEstablished": false
+    },
+    {
+      "id": "captured-official-closeup",
+      "url": "https://live.staticflickr.com/65535/51736253154_04460b2d51_h.jpg",
+      "sha256": "2607972229abfcbef292cc35977bede436851c50f399c853bed0a55f6e9a94e8",
+      "bytes": 147558,
+      "width": 1600,
+      "height": 900,
+      "view": "Near-front head with downward pitch, complete visible main faceplate and irregular damaged upper rim; screenshot shows the full visible upper edge within frame.",
+      "localReferencePath": "/tmp/primary-masks-20261113/phg-next-independent/party-2021-51736253154.jpg",
+      "visuallyInspected": true,
+      "inspectionMethod": "tools.view_image",
+      "styleRole": "Worn steel example: broad restrained reflections, pitting and scratches, broad panel read. Anatomical-left eye region/image right is damaged and exposes wearer; detached cutout must remove flesh and iris and keep the opening transparent.",
+      "copyIdentityFeaturesIntoOtherMasks": false,
+      "neutralShaderParametersMeasured": false,
+      "thirdPartyPhotoRedistributionLicenseEstablished": false
+    }
+  ],
+  "inspectedExistingCandidates": [
+    {
+      "id": "viking",
+      "path": "public/game/biomasks-primary-20261113/masks/viking-source-view.png",
+      "sha256": "df474c52ae040ec591cd97d650352ba99cff60ae3e27dac25549759a7bfcc749",
+      "visuallyInspected": true,
+      "role": "Existing generated candidate used only to illustrate current rendering; not primary shape or detail authority.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "captured",
+      "path": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+      "visuallyInspected": true,
+      "role": "Existing generated candidate used only to illustrate current rendering; not primary shape or detail authority.",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    }
+  ],
+  "naming": {
+    "pairKey": "{designId}::{sourceSha256}::{variantState}::{sourceViewId}",
+    "versionA": "existing-file",
+    "versionB": "phg-standardized",
+    "fileExamples": [
+      "A: reference the existing project path or byte-identical copy with its original extension",
+      "B: {slug}-{state}-{view}-phg-standardized.png"
+    ],
+    "versionALabel": "Original du projet — fichier inchangé",
+    "versionBLabel": "Adaptation graphique PHG — candidat",
+    "neverUseUnqualifiedLabels": [
+      "copie exacte certifiée",
+      "canon 1:1 validé",
+      "nouveau masque canonique",
+      "UV exactes"
+    ]
+  },
+  "sharedIdentityLocks": [
+    "A is an immutable existing project image; B takes its project design and documented view as the geometry/palette lock. If a reliable same-identity primary reference conflicts with A, report the discrepancy rather than silently redesigning the pair or upgrading A canonical status.",
+    "Same named identity, cited release/edition, mask variant and wear/damage state in both versions.",
+    "Same reference camera, yaw, pitch, roll, visible-side coverage and perspective. Do not invent a strict front, profile, rear or hidden underside to standardize the view.",
+    "Preserve outer silhouette, relative widths/heights, horn/crest/mandible-like mask appendages actually attached, panel boundaries and known ornament positions.",
+    "Preserve asymmetry, broken borders, intentional missing pieces, worn-through openings, optical lenses and emitter side/count when actually resolved.",
+    "Preserve established color regions and material boundaries. PHG quality does not authorize converting bone-like, wood-like, lacquered or colored surfaces into generic silver metal.",
+    "Wearer anatomy, eyes/iris/skin visible through holes, hair/dreadlocks, clothes, weapons, shoulder cannon and backdrop are not detached biomask parts.",
+    "If attachment or ownership is ambiguous, record it and use the same conservative omission/partial scope in both versions; do not hide the omission in the standardized version.",
+    "Unresolved fine glyphs, engraving counts, screw counts and damage maps stay restrained and explicitly unverified; quality improvement does not authorize new identity details."
+  ],
+  "versions": {
+    "phg-standardized": {
+      "goal": "Generate a new PHG-quality raster rendering of the same visible design in A. Improve lighting, material rendering and readability without changing design, palette, damage, camera or established source limitations.",
+      "allowedChanges": [
+        "Consistent neutral studio-like illumination rather than scene-specific colored spill.",
+        "Clear physically plausible surface separation, roughness hierarchy, restrained micrograin, bevel readability and cavity contrast within already visible features.",
+        "Cleaner consistent edge treatment and detail density at common display scale.",
+        "Translate a non-game source medium to game-prop-like shading while labeling inferred relief/material rendering as adaptation."
+      ],
+      "prohibitedChanges": [
+        "New horns, vents, teeth, runes, symbols, face proportions, symmetry, damage, panel layouts or colorway.",
+        "Generic PHG/Jungle Hunter replacement of a different mask design.",
+        "Polished chrome on every mask, inflated bevels, exaggerated scratches, glowing eyes or decorative rim light.",
+        "A new camera angle or completed cropped silhouette.",
+        "Painting flesh or a new lens into an actually missing/damaged opening.",
+        "Inventing source color for a monochrome A when no reliable color source establishes it; keep grayscale."
+      ],
+      "alreadyPhgRule": "If A already meets the PHG rendering quality and a new restaging changes authored design details, reuse A explicitly for B instead of accepting drift. Record mode=source-reuse, generatedNew=false and the reason; preserve exact A bytes and do not count B as a new ImageGen output. Otherwise B is a controlled new restaging under the common light/material contract.",
+      "planningRuleBeforeReuseDecision": "If A is already a PHG-like candidate, B is a controlled restaging under the common light/material/readability contract. Do not manufacture a stronger contrast by redesigning it; A remains a reused exact existing file and B is the only new generation."
+    },
+    "existing-file": {
+      "goal": "Preserve exactly the existing project file bytes; no ImageGen regeneration, crop, format conversion or color correction for A. The word original means existing project asset, not automatically an original movie/game/comic asset.",
+      "formats": [
+        "PNG",
+        "WebP or other genuinely existing source format if inventory declares it"
+      ],
+      "requirements": [
+        "Record source path, format, byte count, SHA256, dimensions, original origin/limits and variant/view.",
+        "Compare reused/copied bytes with the source and keep the original source file intact.",
+        "Keep the original status/provenance separately; the new pair does not grant canonical fidelity or human review.",
+        "A may itself be a prior generated adaptation, project-original concept or secondary monochrome port candidate. Label the actual type explicitly."
+      ],
+      "prohibited": [
+        "Regenerating A and calling it the exact existing file.",
+        "Converting WebP to PNG just to share an extension.",
+        "Changing matte/alpha, pixel boundaries, native dimensions, palette, damage or sharpening.",
+        "Treating reuse as a new image generation or as proof of canonical 1:1 fidelity."
+      ]
+    }
+  },
+  "standardizedLook": {
+    "light": {
+      "target": "Broad neutral key from front/upper image left, lower-intensity frontal/opposite fill, restrained occlusion. No colored rim or environment backdrop.",
+      "qualitativeWhiteBalance": "neutral daylight; no warm gold wash over all materials",
+      "shadowPolicy": "Readable dark cavities, no crushed black whole-object silhouette; no floor or cast ground shadow.",
+      "reflectionPolicy": "Broad controlled reflections following existing curvature; original black cap/lens remains black, not silver."
+    },
+    "materials": {
+      "steel": "Worn grey/gunmetal with broad moderate highlights, subtle pits and hairline scratches where supported.",
+      "goldOrBronze": "Warm metal regions stay distinct and local; preserve tarnish hierarchy instead of yellow paint across the face.",
+      "lacquer": "Keep saturated colored enamel fields and visible raised metallic decoration as separate finishes.",
+      "darkGlossyCap": "Retain dark broad cap value with controlled brighter reflected patches; do not make it emit light.",
+      "boneWoodOrOther": "Preserve the observed material appearance and hue; biological/wood chemical identity is unproven unless separately sourced.",
+      "numericalShaderMaps": "No physically measured roughness/metalness/normal-map claim. Any numeric parameters used later are art targets, not recovered original PHG data."
+    },
+    "detailHierarchy": [
+      "Silhouette and major eye/mouth/crown divisions survive at 96px.",
+      "Material regions, medium relief and identifying damage read at 360px.",
+      "Fine grain supports material and does not become new readable symbols."
+    ],
+    "surfaceNoise": "Keep lower amplitude than panel/engraving relief; no universal heavy grunge pass."
+  },
+  "technicalOutput": {
+    "creationAndEditingTool": "B only: image_gen.imagegen. A only: existing file reference or byte-identical copy.",
+    "transparentBackgroundRequested": true,
+    "fileType": "A: preserve its actual original PNG/WebP format and alpha as-is. B: native generated PNG with genuine RGBA alpha.",
+    "targetFraming": "One detached mask, about 75–80 percent canvas height, centered with requested clear margin about 10 percent. Actual dimensions and margins must be recorded.",
+    "nativeDimensions": "Record actual tool output; no CPU resize/crop/recolor/chroma cleanup/re-encode to force a target.",
+    "copyPolicy": "Byte-identical copy of native output is allowed; preserve the native original.",
+    "cpuUse": "Read-only dimensions/hash/alpha analysis only. Browser CSS display and QA screenshots may be used for review, never exported as replacement game assets.",
+    "displayScalesPx": [
+      360,
+      96
+    ],
+    "displayTransform": "Contain at common review height with native aspect preserved; normalization is a review display transform, not proof of exact pixel correspondence.",
+    "requiredAlphaChecks": [
+      "Contains alpha0 background and visible near-opaque mask material.",
+      "Core alpha>=16 silhouette does not touch a frame edge.",
+      "Record alpha>=16 bounds and clear margins; under5 percent margin is a warning, not permission to crop/repair the PNG.",
+      "Inspect source-appropriate lens vs empty aperture separately.",
+      "Composite on dark, white and checkerboard; hidden RGB in alpha1–9 can look wrong in raw viewers yet be invisible in correct RGBA compositing."
+    ],
+    "requestedCanvas": "For B ask for one isolated object on a square transparent canvas at the tool native high-resolution output, about 75–80 percent visible object height. Never CPU-resize to force a numeric dimension; record actual native dimensions/aspect.",
+    "requiredAlphaChecksForA": "Observe and record A as-is; any baked background or limitation remains documented. Do not repair A. B must pass the generated-output alpha checks."
+  },
+  "pairReview": {
+    "beforeGeneration": [
+      "Verify A byte-for-byte and classify its origin. The exactness claim for A concerns the existing project file bytes, not the original canon.",
+      "Confirm source identity/edition/state and exact cited files/URLs/SHA.",
+      "Write an identity-anchor list and missing/uncertain surface list.",
+      "Choose the primary shape/camera source; style references must not contribute their own ornament geometry."
+    ],
+    "at360px": [
+      "Display A and B at common visible object height in the same documented camera, with primary source beside them only if available. A is not re-encoded or cropped for this display.",
+      "Compare crown/temple/chin extents, feature spacing and panel boundaries; flag amplified chips/bevels rather than silently accepting them as exact.",
+      "Verify B visibly uses common lighting/material readability without shifting the color-region layout or adding identity details.",
+      "Check holes and missing pieces over light/dark/checker backgrounds."
+    ],
+    "at96px": [
+      "Confirm both retain the same recognizable silhouette and major optical/mouth features.",
+      "Confirm no source-specific feature disappears under overly strong highlights or dark fill.",
+      "Check that B remains legible without painted outer outlines or neon glow."
+    ],
+    "rejectBeforeAcceptance": [
+      "Different named mask/variant/state or unproven alias substitution.",
+      "Added/remapped horns, vents, glyphs, fangs, lenses, emitter side or repaired damage.",
+      "Filled anatomical hole, wearer eye/flesh in the mask, included weapon/dreads/body.",
+      "Camera changed to an unsupported new angle or source-cropped geometry invented as complete.",
+      "B is a copied/renamed A presented as a new generation, or B invents a palette/style difference by changing design. A reuse itself is expected and must not be counted as a new generation.",
+      "Core silhouette clipped, opaque checkerboard/backdrop or visible alpha artifacts in correct browser composites."
+    ],
+    "limitationsRatherThanCertification": [
+      "High-resolution microdetail inferred from small sources remains unverified.",
+      "Acceptable as a candidate with documented differences is not exact canon approval.",
+      "Partial source coverage remains partial for both members, including Emissary and any other source with missing visible upper geometry."
+    ]
+  },
+  "specialAnchorsFromInspectedReferences": {
+    "viking": {
+      "lock": [
+        "Image-left/anatomical-right engraved gold ocular cover; opposite aperture dark.",
+        "Gold lower horn regions with grey ridged tips, dark engraved crown and silver cheeks."
+      ],
+      "exclude": [
+        "Blue axe behind crown",
+        "wearer dreadlocks",
+        "necklace and shoulder armor"
+      ],
+      "uncertain": [
+        "Exact tip material",
+        "fine rune/engraving counts"
+      ]
+    },
+    "samurai": {
+      "lock": [
+        "Red menpo, local gold curls and trim, blue-black dome and side lames.",
+        "Emitter at image-left brow and the source close-up camera."
+      ],
+      "exclude": [
+        "Sword",
+        "wearer/body/neck",
+        "ambiguous rear upper tuft unless attachment is established"
+      ],
+      "uncertain": [
+        "Fine gold scroll/vent count",
+        "complete rear/upper crest ownership"
+      ]
+    },
+    "captured": {
+      "lock": [
+        "Grey worn broad cap and irregular broken rim.",
+        "Image-left dark intact lens and image-left targeting emitter.",
+        "Image-right/anatomical-left damaged exposed region becomes empty alpha after removing wearer, not a new dark lens."
+      ],
+      "exclude": [
+        "Exposed iris and flesh",
+        "dreadlocks",
+        "neck/cannon/body"
+      ],
+      "uncertain": [
+        "Exact fine chip map and metal thickness"
+      ]
+    }
+  },
+  "pairManifestMinimum": [
+    "pairId",
+    "designId",
+    "inventoryIdOrAliases",
+    "variantState",
+    "sourceViewId",
+    "versionKind",
+    "sourceAPath",
+    "sourceAFormat",
+    "sourceABytes",
+    "sourceASha256",
+    "sourceATypology",
+    "sourceOriginalStatus",
+    "sourceOriginLimitations",
+    "sourceIdentityConfidence",
+    "primaryReferenceIdsIfAny",
+    "styleReferenceIds",
+    "colorEvidenceEstablished",
+    "materialEvidence",
+    "identityAnchors",
+    "cameraLock",
+    "partialMask",
+    "versionBGenerationReceipt",
+    "versionBNativeSourcePath",
+    "versionBAssetPath",
+    "versionBSha256",
+    "versionBNativeDimensions",
+    "versionBAlphaMetrics",
+    "versionBNativeCopyIdentical",
+    "versionBGenerationPrompt",
+    "newGenerationCount=1",
+    "reusedExistingFileCount=1",
+    "canonCertified=false",
+    "humanArtValidated=false",
+    "runtimeIntegrated=false",
+    "pixelEditingPerformed=false"
+  ],
+  "countingAndAdmission": {
+    "pairCandidateComplete": "A existing file is present and byte-identical to its declared source; B is a separately generated candidate with matching project design/state/view and partial scope. This is not canonical certification.",
+    "onePairIsNotTwoMaskIdentities": true,
+    "doNotCountCopiesAsNewGenerations": true,
+    "pairNeedsMatchingPartialScope": true,
+    "canonCertified": false,
+    "humanArtValidated": false,
+    "runtimeIntegrated": false,
+    "pixelEditingPerformed": false,
+    "animationClips": 0,
+    "p0OrBibleExcelTasksClosedByThisContract": 0,
+    "expectedNewGenerationsPerDistinctDesign": 1,
+    "expectedReusedSourceFilesPerDistinctDesign": 1,
+    "availableLocalDesignCountReported": 46,
+    "availableLocalDesignsAreNotTheSameAsRemainingCanonicalNames": true,
+    "remainingCanonicalNamedTargetsWithoutPriorCandidate": 46
+  },
+  "sourceATypology": [
+    {
+      "type": "legacy-film-mask-project-asset",
+      "meaning": "Existing V62 or other project mask attributed to a named film/game figure; A byte equality does not establish accuracy to that canon."
+    },
+    {
+      "type": "project-original-design",
+      "meaning": "An existing project-original concept/design. Preserve its own design identity; do not recast it as a named canonical Predator."
+    },
+    {
+      "type": "generated-primary-reference-candidate",
+      "meaning": "Existing ImageGen candidate linked to visible primary references; original generation limits and unresolved details remain in force."
+    },
+    {
+      "type": "generated-secondary-monochrome-candidate",
+      "meaning": "Existing gray candidate from a named secondary source/port icon; its true game color, UVs or hidden geometry are not established."
+    }
+  ],
+  "sharedGenerationPromptB": "ROLE: Create one high-quality PHG-standardized biomask cutout from the FIRST reference, the exact existing project design A. FIRST reference is authoritative for this design, silhouette, proportions, camera, panel boundaries, palette, wear/damage and visible openings. Keep the same yaw, pitch, roll, perspective and only the surfaces actually visible in A. This is a rendering adaptation, not a new mask, canon certificate or new view.\n\nART DIRECTION: Cohesive Predator Hunting Grounds-like game-prop quality. Broad neutral key from upper/front image left, restrained opposite/front fill, soft controlled reflections and readable cavities. Physically plausible material separation, modest roughness hierarchy, restrained pits/hairline grain and clean antialiased contours. Keep steel, dark glossy parts, gold/bronze, lacquer, bone-like or wood-like appearances distinct where A actually establishes them. Do not convert the entire mask to generic chrome or cover it in heavy grunge. Preserve each established color region; if A is grayscale and no reliable same-mask color evidence is provided, remain grayscale. Environmental blue/red highlights from any style reference must not become permanent pigments. Quality comes from light/material/readability, never added identity details.\n\nLOCKS: Preserve all existing major features, asymmetry, damage state, missing pieces, dark optical lenses, true empty holes, emitter side/count and relative placement where visible/resolved. Do not add horns, crowns, fangs, teeth, vents, screws, glyphs, runes, ornaments, new cracks, scratches that change the damage pattern, or a different nose/jaw/eye shape. Fine unresolved detail stays restrained. If a second image is provided only as a STYLE reference, borrow lighting/detail hierarchy only: do not borrow its shape, colors, horns, engravings, damaged eye or other identity features. Same-mask primary evidence, if supplied, is for visible confirmation; do not invent unseen rear/interior geometry.\n\nOUTPUT: One detached empty mask only, with no wearer anatomy, iris, skin, dreadlocks, hair, neck, clothing, armor, weapon or background. Maintain A's documented partial scope: do not finish cropped/uncertain appendages or repair damage. Empty damaged openings remain transparent; a dark intact optical lens remains dark. Native high-resolution PNG with true transparent background via the tool. Ask for square canvas, object about 75–80 percent height, centered with generous clear native margins around every point and chin. No floor/cast ground shadow, labels, text, UI, frame, watermark, fake checkerboard, aura or duplicate mask. No CPU crop/resize/recolor/re-encoding.\n\nPER-MASK LOCKS AND LIMITS: [insert identity anchors, exact A path/hash, original source type, known palette, view, partial scope and uncertainty for this mask].\n",
+  "renderDecisionAmendments": [
+    {
+      "id": "wolf-glyph-conservation",
+      "decisionSource": "Parent implementation decision after two inspected non-retained attempts",
+      "scope": "B may reuse an existing sufficient-quality A with an explicit receipt; no canonical/human/runtime certification follows.",
+      "newImageGenerationCountForReuse": 0,
+      "sourcePixelsEdited": false
+    }
+  ]
+}

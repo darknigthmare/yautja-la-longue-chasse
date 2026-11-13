@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "sourceBaselineCommit": "6929a45eae299c550192ecb77ef44a03862e4c5e",
+  "tool": "image_gen.imagegen",
+  "asOf": "2026-11-13",
+  "entries": [
+    {
+      "id": "mk-01-jungle",
+      "assetPath": "public/game/biomasks-dual-20261113/phg/mk-01-jungle.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-08d31756-6694-4d09-850f-d6fb104beac4.png",
+      "sha256": "6440f135b78b050c6a065b40c7829703e047eb6b65f08951fb57fc74c72158ea",
+      "bytes": 2345073,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "sourceAPath": "public/game/sprites/v62/masks/jungle.png",
+      "sourceASha256": "8200cc50718767c07ec461808688a1f3e7135e8e325a71dc16a172a2e29ae709",
+      "prompt": "Create ONE restaged PHG-quality game-prop render of the EXACT EXISTING MASK DESIGN shown in the single reference image. This reference image is the sole authority for geometry, camera, identity, materials/color regions, wear and the optical states; do not redesign it from its Jungle Hunter name or a generic Predator memory. Maintain its same slight three-quarter camera and downward pitch, broad rounded oval forehead cap, continuous raised brow rim, tapered indented cheek planes, rounded rectangular long lower nose/face plate, TWO black fine-perforated optical lenses, and THREE DARK circular targeting optics in the triangular housing at IMAGE LEFT. The optics are dark in the reference: do NOT light them red. Preserve all these specific shapes, asymmetry, panel boundaries and relative proportions. Only change rendering to a cohesive Predator Hunting Grounds-like high quality REALTIME GAME ASSET look: broad neutral soft key from upper IMAGE LEFT, gentle frontal/opposite fill, readable cavity contrast, physically plausible warm worn gunmetal/steel with restrained pitting, lower-amplitude micrograin than the large panel relief, controlled moderately broad reflections and clean bevel readability. Keep the observed underlying warm grey/tan steel palette and characteristic wear; do not turn it into polished silver chrome, new paint or pristine metal. Reduce photographic surface noise for clear game-scale read at96px and360px, without erasing source-specific scuffs or creating new decorative scratches, symbols, glyphs, vents, fangs, horns or mechanical parts. Do NOT repair, widen, symmetrize or reshape anything. No new camera, orthographic front or hidden backside. One complete detached EMPTY mask only, no wearer/eyes/flesh/hair/dreads/body, no neck or shoulders, no weapons, no floor/cast shadow, background, aura, UI, label, text, border or fake checkerboard. Actual native transparent RGBA background. Center the entire visible mask at about75percent frame height with at least80px clear transparent margins around every edge. No cropped silhouette. This is a STYLE RESTAGING of this supplied project asset, NOT a certificate that it is the original movie prop.",
+      "versionKind": "phg-standardized",
+      "sourceScope": "existing-project-V62-reference-reconstruction",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "alpha": {
+        "bounds16": [
+          82,
+          51,
+          1149,
+          1217
+        ],
+        "marginsPixels16": [
+          82,
+          51,
+          105,
+          37
+        ],
+        "transparentPixels": 608802,
+        "visiblePixels16": 953576
+      },
+      "limitations": [
+        "Version A means byte-identical existing project file, not a newly certified franchise original.",
+        "Version B may standardize rendering only: keep visible silhouette, view, palette, damage, eye/lens treatment, emitters and ornaments of A.",
+        "No invented back, side view, hidden geometry, colorway, mask variant or automatic human/canonical validation.",
+        "The project V62 representation remains a generated reconstruction; its named film/licensed provenance is not equivalent to canonical fidelity certification.",
+        "Source A was already a PBR reconstruction; B is a restrained restaging with calmer grain/reflections rather than a different mask design.",
+        "Independent seed review finds about2percent narrower normalized silhouette, fine detail recalculated, and a37px minimum margin warning; no core clipping observed."
+      ]
+    }
+  ]
+}
