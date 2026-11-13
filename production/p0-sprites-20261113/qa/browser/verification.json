@@ -1,0 +1,927 @@
+{
+  "scope": "Native static candidate gallery only; no runtime, canonical, human art or animation certification",
+  "browser": "154.0.8037.57",
+  "origin": "http://127.0.0.1:8765",
+  "manifestSha256": "f11cb10dae09c43d939ba4711ae08cc2ab6cde5d0f7e98dac40793e57e712a59",
+  "manifestCounts": {
+    "assets": 110,
+    "nativeFiles": 45,
+    "byCategory": {
+      "homeworld": 13,
+      "masks": 6,
+      "props": 12,
+      "structures": 18,
+      "units": 60,
+      "warp": 1
+    },
+    "spriteFrames": 109,
+    "opaqueBackgrounds": 1,
+    "designIdentities": 80,
+    "designIdentitiesByCategory": {
+      "homeworld": 13,
+      "masks": 6,
+      "props": 12,
+      "structures": 18,
+      "units": 30,
+      "warp": 1
+    },
+    "sourceP0Subjects": 775,
+    "animationClips": 0,
+    "humanValidatedAssets": 0,
+    "canonCertifiedAssets": 0
+  },
+  "passed": true,
+  "checks": [
+    {
+      "name": "Native catalogue and gallery agree",
+      "passed": true,
+      "assets": 110,
+      "nativeFiles": 45,
+      "designIdentities": 80
+    },
+    {
+      "name": "Every native source rectangle decodes; opaque backgrounds are distinguished from sprites",
+      "passed": true,
+      "rendered": 110,
+      "measurements": [
+        {
+          "id": "HWA160-001",
+          "transparent": 212697,
+          "solid": 31943,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-014-module-brazier-pillar",
+          "transparent": 207534,
+          "solid": 39842,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-014-module-ritual-circle",
+          "transparent": 209599,
+          "solid": 35457,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-019",
+          "transparent": 197290,
+          "solid": 48777,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-029-module-hanging-skull",
+          "transparent": 209977,
+          "solid": 37204,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-029-module-trading-counter",
+          "transparent": 192832,
+          "solid": 54656,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-032",
+          "transparent": 177648,
+          "solid": 62226,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-040",
+          "transparent": 185856,
+          "solid": 58349,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-064",
+          "transparent": 187288,
+          "solid": 57607,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-068",
+          "transparent": 184624,
+          "solid": 59488,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-073",
+          "transparent": 181709,
+          "solid": 62722,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-081",
+          "transparent": 198716,
+          "solid": 45249,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "HWA160-084",
+          "transparent": 161635,
+          "solid": 79131,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "alpha-front",
+          "transparent": 170565,
+          "solid": 73827,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "mr-black-front",
+          "transparent": 201547,
+          "solid": 46836,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "samurai-front",
+          "transparent": 204868,
+          "solid": 41348,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "vex-front",
+          "transparent": 156188,
+          "solid": 91297,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "viking-front",
+          "transparent": 173465,
+          "solid": 73468,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "wretch-front",
+          "transparent": 184090,
+          "solid": 63346,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "barrier-damaged",
+          "transparent": 171063,
+          "solid": 76575,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "barrier-intact",
+          "transparent": 173561,
+          "solid": 74260,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "beacon-active",
+          "transparent": 220649,
+          "solid": 27014,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "beacon-disabled",
+          "transparent": 221652,
+          "solid": 26195,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "core-active",
+          "transparent": 201150,
+          "solid": 47137,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "core-disabled",
+          "transparent": 201223,
+          "solid": 47176,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "medical-empty",
+          "transparent": 183961,
+          "solid": 64084,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "medical-stocked",
+          "transparent": 183972,
+          "solid": 63623,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "relay-active",
+          "transparent": 210557,
+          "solid": 36983,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "relay-disabled",
+          "transparent": 209725,
+          "solid": 37863,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "supply-open",
+          "transparent": 165585,
+          "solid": 81541,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "supply-sealed",
+          "transparent": 191022,
+          "solid": 56740,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S01",
+          "transparent": 171738,
+          "solid": 62874,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S02",
+          "transparent": 164751,
+          "solid": 69517,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S03",
+          "transparent": 165750,
+          "solid": 73449,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S04",
+          "transparent": 150788,
+          "solid": 75593,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S05",
+          "transparent": 198814,
+          "solid": 35075,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S06",
+          "transparent": 151422,
+          "solid": 76736,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S07",
+          "transparent": 162193,
+          "solid": 70529,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S08",
+          "transparent": 185755,
+          "solid": 39510,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S09",
+          "transparent": 158018,
+          "solid": 67729,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S10",
+          "transparent": 165115,
+          "solid": 67866,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S11",
+          "transparent": 143250,
+          "solid": 95758,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S12",
+          "transparent": 190227,
+          "solid": 47151,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S13",
+          "transparent": 151403,
+          "solid": 87826,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S14",
+          "transparent": 148061,
+          "solid": 91619,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S15",
+          "transparent": 163673,
+          "solid": 74432,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S16",
+          "transparent": 135555,
+          "solid": 98974,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S17",
+          "transparent": 144620,
+          "solid": 82159,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-S18",
+          "transparent": 136880,
+          "solid": 96095,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U01",
+          "transparent": 184175,
+          "solid": 48462,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U01-left",
+          "transparent": 182810,
+          "solid": 52573,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U02",
+          "transparent": 190013,
+          "solid": 46265,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U02-left",
+          "transparent": 186218,
+          "solid": 51601,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U03",
+          "transparent": 180323,
+          "solid": 53128,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U03-left",
+          "transparent": 174195,
+          "solid": 57959,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U04",
+          "transparent": 182716,
+          "solid": 50612,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U04-left",
+          "transparent": 180007,
+          "solid": 55609,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U05",
+          "transparent": 186923,
+          "solid": 49210,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U05-left",
+          "transparent": 185443,
+          "solid": 52829,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U06",
+          "transparent": 185895,
+          "solid": 49016,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U06-left",
+          "transparent": 181611,
+          "solid": 53772,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U07",
+          "transparent": 178803,
+          "solid": 56951,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U07-left",
+          "transparent": 177904,
+          "solid": 58310,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U08",
+          "transparent": 184006,
+          "solid": 52414,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U08-left",
+          "transparent": 182452,
+          "solid": 55481,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U09",
+          "transparent": 184993,
+          "solid": 54430,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U09-left",
+          "transparent": 182737,
+          "solid": 57406,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U10",
+          "transparent": 171241,
+          "solid": 68025,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U10-left",
+          "transparent": 171900,
+          "solid": 67410,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U11",
+          "transparent": 174269,
+          "solid": 58620,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U11-left",
+          "transparent": 172958,
+          "solid": 62072,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U12",
+          "transparent": 176186,
+          "solid": 59032,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U12-left",
+          "transparent": 173592,
+          "solid": 63188,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U13",
+          "transparent": 179286,
+          "solid": 52994,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U13-left",
+          "transparent": 177397,
+          "solid": 55540,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U14",
+          "transparent": 162371,
+          "solid": 64315,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U14-left",
+          "transparent": 163227,
+          "solid": 65549,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U15",
+          "transparent": 171197,
+          "solid": 57524,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U15-left",
+          "transparent": 170092,
+          "solid": 60832,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U16",
+          "transparent": 166070,
+          "solid": 59935,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U16-left",
+          "transparent": 157107,
+          "solid": 68532,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U17",
+          "transparent": 168450,
+          "solid": 64076,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U17-left",
+          "transparent": 165260,
+          "solid": 68434,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U18",
+          "transparent": 176903,
+          "solid": 57346,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U18-left",
+          "transparent": 170705,
+          "solid": 63082,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U19",
+          "transparent": 181170,
+          "solid": 54140,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U19-left",
+          "transparent": 188788,
+          "solid": 48695,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U20",
+          "transparent": 180174,
+          "solid": 56260,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U20-left",
+          "transparent": 185871,
+          "solid": 51913,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U21",
+          "transparent": 172200,
+          "solid": 60544,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U21-left",
+          "transparent": 178891,
+          "solid": 55673,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U22",
+          "transparent": 177337,
+          "solid": 54580,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U22-left",
+          "transparent": 188250,
+          "solid": 47640,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U23",
+          "transparent": 181236,
+          "solid": 53066,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U23-left",
+          "transparent": 190548,
+          "solid": 47742,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U24",
+          "transparent": 169770,
+          "solid": 61841,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U24-left",
+          "transparent": 178912,
+          "solid": 55692,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U25",
+          "transparent": 182785,
+          "solid": 53908,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U25-left",
+          "transparent": 195387,
+          "solid": 45055,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U26",
+          "transparent": 176476,
+          "solid": 59519,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U26-left",
+          "transparent": 189566,
+          "solid": 49662,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U27",
+          "transparent": 179149,
+          "solid": 57726,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U27-left",
+          "transparent": 190314,
+          "solid": 49459,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U28",
+          "transparent": 181720,
+          "solid": 54829,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U28-left",
+          "transparent": 192593,
+          "solid": 47739,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U29",
+          "transparent": 179122,
+          "solid": 57123,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U29-left",
+          "transparent": 189701,
+          "solid": 49684,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U30",
+          "transparent": 174642,
+          "solid": 61271,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "W3-U30-left",
+          "transparent": 184766,
+          "solid": 53636,
+          "rendered": "true",
+          "assetKind": "sprite"
+        },
+        {
+          "id": "WARP-199",
+          "transparent": 122432,
+          "solid": 127568,
+          "rendered": "true",
+          "assetKind": "background"
+        }
+      ]
+    },
+    {
+      "name": "Family filters, alpha and pivot controls and compositing backgrounds",
+      "passed": true
+    },
+    {
+      "name": "Search resolves identity, empty results and native opposite views",
+      "passed": true
+    },
+    {
+      "name": "Keyboard dialogue opens, preserves native atlas and restores focus",
+      "passed": true
+    },
+    {
+      "name": "Representative native rectangles remain visible at 128 and 256 pixels",
+      "passed": true,
+      "samples": [
+        {
+          "id": "HWA160-001",
+          "size": 128,
+          "solid": 1829,
+          "transparent": 13791
+        },
+        {
+          "id": "HWA160-001",
+          "size": 256,
+          "solid": 8409,
+          "transparent": 55208
+        },
+        {
+          "id": "alpha-front",
+          "size": 128,
+          "solid": 4530,
+          "transparent": 11198
+        },
+        {
+          "id": "alpha-front",
+          "size": 256,
+          "solid": 19809,
+          "transparent": 43959
+        },
+        {
+          "id": "W3-S01",
+          "size": 128,
+          "solid": 3717,
+          "transparent": 11658
+        },
+        {
+          "id": "W3-S01",
+          "size": 256,
+          "solid": 16663,
+          "transparent": 45178
+        },
+        {
+          "id": "W3-U01",
+          "size": 128,
+          "solid": 2775,
+          "transparent": 12344
+        },
+        {
+          "id": "W3-U01",
+          "size": 256,
+          "solid": 12748,
+          "transparent": 48097
+        },
+        {
+          "id": "W3-U01-left",
+          "size": 128,
+          "solid": 3043,
+          "transparent": 12113
+        },
+        {
+          "id": "W3-U01-left",
+          "size": 256,
+          "solid": 13870,
+          "transparent": 47589
+        },
+        {
+          "id": "W3-U07",
+          "size": 128,
+          "solid": 3240,
+          "transparent": 11886
+        },
+        {
+          "id": "W3-U07",
+          "size": 256,
+          "solid": 14882,
+          "transparent": 46535
+        }
+      ]
+    },
+    {
+      "name": "Responsive controls and dialogue fit 320 and 390 pixel viewports",
+      "passed": true
+    },
+    {
+      "name": "No browser exceptions, failed asset loads or game storage writes",
+      "passed": true,
+      "stats": {
+        "rendered": 238,
+        "errors": 0,
+        "assetCount": 110,
+        "nativeFiles": 45,
+        "animationClips": 0
+      }
+    }
+  ],
+  "pageErrors": [],
+  "failedRequests": []
+}

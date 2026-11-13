@@ -1,0 +1,813 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "status": "generated-candidates",
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "method": "ImageGen native PNG originals; copies only, no pixel manipulation",
+  "entries": [
+    {
+      "id": "relay-disabled",
+      "kind": "relay",
+      "state": "disabled",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/relay-disabled.png",
+      "generatedNativePath": "/workspace/generated_images/exec-5d8a9a5f-8e38-44aa-ab39-d2be0602d841.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/relay-disabled.png",
+      "sha256": "5ed43ec3c3c5eabf0cc6ca9300ac50180b734aab628be1ea6135df14493702b9",
+      "bytes": 691214,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1292550,
+      "visiblePixelsAlphaAtLeast16": 271140,
+      "bodyPixelsAlphaAtLeast240": 265851,
+      "alphaNoisePixels1or2": 5728,
+      "visibleBoundsAlpha16": [
+        330,
+        132,
+        851,
+        1081
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1 into its DISABLED STATE, image2 is the exact corresponding project blueprint. Keep the identical detailed relay from image1, its exact silhouette, orthographic three-quarter view, antenna Y fork, geometric casing, bronze edge strips, three foot plates, same framing and perspective. Change only the three amber round indicator lights so that all three are visibly unlit dark glass. Absolutely no glowing light anywhere. Do not remove, add, damage or redesign any part. High-detail dark teal gunmetal/charcoal steel with weathered bronze edge strips, shallow geometric tooling marks without legible lettering, soft upper-left light. This is the paired state of the same object, not another relay. One complete isolated RTS sprite, square native transparent alpha background, generous empty margin, identical apparent scale to image1. Ground anchor approximately normalized(0.5,0.8). No floor, shadow, glow, haze, checkerboard, captions, letters, UI, watermark or duplicate objects. True transparency. No pixel-normalization or mirroring; render this physical state directly.",
+      "references": [
+        {
+          "path": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+          "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+        },
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/relay-disabled.png",
+          "sha256": "1bb7d6213c27bcd8acb8835bc8ee75eb29c11e5b7e0c577cd9b7ccd86236e529"
+        }
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "nearOpaqueBodyFractionOfVisible16": 0.9804934720070813,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Three dark indicator lenses; same Y fork, housing and three feet.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "beacon-active",
+      "kind": "beacon",
+      "state": "active",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/beacon-active.png",
+      "generatedNativePath": "/workspace/generated_images/exec-d94c8050-2636-4d82-99c2-c9812c24657f.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/beacon-active.png",
+      "sha256": "eb1ce7b5d03d7c4d3e99be48b2a7c5b011b2d273233a2bc770000cd5acfcf610",
+      "bytes": 566002,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1367825,
+      "visiblePixelsAlphaAtLeast16": 195800,
+      "bodyPixelsAlphaAtLeast240": 190776,
+      "alphaNoisePixels1or2": 6080,
+      "visibleBoundsAlpha16": [
+        316,
+        145,
+        877,
+        1093
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1, the precise ACTIVE BEACON blueprint, into a detailed 2.5D RTS prop. Image2 is MATERIAL/RENDERING STYLE ONLY, not the shape. Preserve image1 silhouette one-to-one: same slender vertical column with diagonal bronze insets, same small angular diamond-like lamp housing at top, two short upright dark antenna tabs, two rectangular orange light windows in the head, same single small amber base indicator, same low angular pedestal and three splayed foot plates. Do NOT replace this with the broad relay from image2. Same orthographic three-quarter camera and proportions/framing as image1. Upgrade flat surfaces to dark teal gunmetal and charcoal steel with weathered bronze edges, shallow geometric Yautja tooling marks without readable glyphs, fine bevels, seams, controlled edge wear. Soft upper-left light, coherent with image2. Active lights small and contained: no glow cloud or bloom. Readable at128–256px. ONE complete isolated object on native transparent alpha, square canvas preferably1280x1280, generous transparent margin, anchor near normalized(0.5,0.8). No ground, cast shadow, scenery, UI, labels, captions, human letters, watermarks or other props. Do not crop antenna or feet.",
+      "references": [
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/beacon-active.png",
+          "sha256": "e693f5272c6132243d8762aeeb6f00bdf40e84904c4d8f5b2d59a4dbd60052f4"
+        },
+        {
+          "path": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+          "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+        }
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "nearOpaqueBodyFractionOfVisible16": 0.974341164453524,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Two upright tabs, two amber head windows and amber base status.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "beacon-disabled",
+      "kind": "beacon",
+      "state": "disabled",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/beacon-disabled.png",
+      "generatedNativePath": "/workspace/generated_images/exec-a1daaa31-1d93-4e3c-b99e-3c35c721da8a.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/beacon-disabled.png",
+      "sha256": "3e567489c3ab854bb3725e2be04f67939c731abd91f020aa186f71922e7ef13c",
+      "bytes": 527895,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1374977,
+      "visiblePixelsAlphaAtLeast16": 188657,
+      "bodyPixelsAlphaAtLeast240": 184026,
+      "alphaNoisePixels1or2": 6099,
+      "visibleBoundsAlpha16": [
+        314,
+        248,
+        882,
+        1093
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1 into the precise DISABLED beacon state from image2. Keep identical detailed materials, three-quarter orthographic camera, slender column, diagonal bronze insets, angular lamp head, pedestal, three splayed feet, exact proportions and framing. The two short antenna tabs on top are RETRACTED as in image2, so do not leave any tall horns. Both rectangular lamp windows and the small round base indicator are off, dark unlit glass, no orange glow anywhere. Everything else is the same physical object. Dark teal gunmetal/charcoal steel with restrained weathered bronze strips, soft upper-left light and crisp small geometric surface tooling without letters. ONE isolated whole RTS sprite, preferably square1280x1280, generous transparent margin. Solid body nearly fully opaque alpha, native backgroundalpha0 with antialiased outeredge only; no haze, shadow, floor or checkerboard. No labels, UI, scenery, watermark or duplicate props. No change of silhouette beyond the explicit retraction shown in image2.",
+      "references": [
+        {
+          "path": "/workspace/generated_images/exec-d94c8050-2636-4d82-99c2-c9812c24657f.png",
+          "sha256": "eb1ce7b5d03d7c4d3e99be48b2a7c5b011b2d273233a2bc770000cd5acfcf610"
+        },
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/beacon-disabled.png",
+          "sha256": "2353bbdb37627802053f9c5b96b04bebdf4c696f90f18dd08e6507c09f348c29"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.975452805885814,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Top tabs retracted; both head panes and base status unlit.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "supply-sealed",
+      "kind": "supply",
+      "state": "sealed",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/supply-sealed.png",
+      "generatedNativePath": "/workspace/generated_images/exec-22604b91-880d-41e9-9c92-11dc6c8b8407.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/supply-sealed.png",
+      "sha256": "2e27cea37721bec79d5a8799dc1848adefcddb36b9010404dd123120f3696819",
+      "bytes": 1029189,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1161083,
+      "visiblePixelsAlphaAtLeast16": 401658,
+      "bodyPixelsAlphaAtLeast240": 396730,
+      "alphaNoisePixels1or2": 7499,
+      "visibleBoundsAlpha16": [
+        127,
+        293,
+        1121,
+        932
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1: turn this exact CLOSED FIELD SUPPLY CACHE blueprint into a high-detail2.5D RTS sprite. Image2 supplies ONLY dark teal gunmetal, worn bronze edge-material and upper-left lighting style; do NOT copy the relay shape. Preserve image1 orthographic three-quarter view and its unusual low wide form: a flat closed rectangular armored slab/lid, heavy bronze-rimmed top, four narrow dark angular leg/side supports, negative/open space beneath as drawn, small front amber indicator and short bronze rib accents. It is a low field-supply bench/cache, NOT a generic solid cube or upright cabinet. Keep the same tabletop corner positions, overall silhouette, front/side proportions and generous original framing; no new big boxes, handles, antennae or logos. Add believable bevels, seams and fine wear within existing silhouette, no readable lettering. The lid is fully CLOSED and flat; do not show open contents. Native square transparent-alpha canvas, body opaque with antialiased outeredges, no floor/shadow/glow/haze/checkerboard. Single complete object only. Readable at128–256px. Keep all supports and corners inside frame. No text, UI, labels, extra items or watermark.",
+      "references": [
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/supply-sealed.png",
+          "sha256": "e975c13d584eafa823ccc1757236fe01681cbef33a7652bf694cd8e29a86b5c1"
+        },
+        {
+          "path": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+          "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.9877308556035234,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Flat closed lid; original low open support geometry remains.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "supply-open",
+      "kind": "supply",
+      "state": "open",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/supply-open.png",
+      "generatedNativePath": "/workspace/generated_images/exec-7bd813e5-aa04-4530-9ec4-3b575ad546d1.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/supply-open.png",
+      "sha256": "4a7606284619e071092b8ffaeb466529be3fceefadbe27725b6afe495e0ffddf",
+      "bytes": 1346574,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 981815,
+      "visiblePixelsAlphaAtLeast16": 575647,
+      "bodyPixelsAlphaAtLeast240": 569890,
+      "alphaNoisePixels1or2": 11795,
+      "visibleBoundsAlpha16": [
+        147,
+        117,
+        1105,
+        1076
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1, the detailed supply cache, into the OPEN state shown by image2. Preserve exactly the same low broad base, four angular supports/open negative spaces, front inset panel with short bronze ribs and small amber indicator, dark teal gunmetal and worn bronze material, orthographic three-quarter view and component scale. Only lift its large armored rectangular lid on the rear hinge into the upright angled position shown in image2. Preserve the same lid outline/bronze border when opened; no extra second lid. The interior is a shallow dark tray with FOUR small flat rectangular supply bars near its rear edge as in image2, not weapons or piles of extra cargo. Whole open lid and all feet must fit with ample transparent margin; same bottom/footprint anchor as image1. Premium2.5D hand-painted RTS prop, fine bevels/seams/wear, soft upper-left light, no readable letters. One object on native transparent alpha, square preferably1280x1280. Solid surfaces opaque, antialiased outeredge only. No background, floor, shadow, haze, captions, UI, watermark or duplicate props. This is the same cache opened, not redesigned.",
+      "references": [
+        {
+          "path": "/workspace/generated_images/exec-22604b91-880d-41e9-9c92-11dc6c8b8407.png",
+          "sha256": "2e27cea37721bec79d5a8799dc1848adefcddb36b9010404dd123120f3696819"
+        },
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/supply-open.png",
+          "sha256": "f8e69504e7eca8f7a5d6faaf40b37a023295fb3a29ea4c595e939becf291e9e5"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.9899990792968607,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Rear lid raised; five bars visible as in the actual source SVG loop i<5. Prompt said four, observed source and output correctly contain five.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "barrier-intact",
+      "kind": "barrier",
+      "state": "intact",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/barrier-intact.png",
+      "generatedNativePath": "/workspace/generated_images/exec-78cfc2a0-d0a6-4f2e-b26b-c05b811db05a.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/barrier-intact.png",
+      "sha256": "bf9ce8dad88b208da09bc1d53a92e38fb4b5456c86163a4c3216dea7a30b5d72",
+      "bytes": 1206652,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1041664,
+      "visiblePixelsAlphaAtLeast16": 522869,
+      "bodyPixelsAlphaAtLeast240": 518329,
+      "alphaNoisePixels1or2": 5083,
+      "visibleBoundsAlpha16": [
+        172,
+        185,
+        1047,
+        1034
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1, the exact INTACT BARRICADE blueprint, into detailed2.5D RTS game art. Image2 is surface/lighting/palette style only, do not copy relay geometry. Keep image1 one-to-one silhouette: one wide upright rectangular armored slab with beveled angular corners, two broad weathered bronze vertical edge strips, one large recessed dark central inset panel, two tiny round amber indicator lamps along its top rim, short bronze diagonal rib marks low on the face, and TWO small supporting foot plates. Preserve three-quarter orthographic camera, original proportions, orientation, footprint and generous framing; no tall antenna, no relay/Yfork, no extra shield, no spikes or skulls. Dark teal gunmetal/charcoal steel, restrained bronze trim, fine machining lines/bevels/edge wear inside existing panels, soft upper-left light. This state is INTACT: no cracks, bullet holes or broken corners. ONE isolated complete prop on true transparent native alpha background, square preferably1280x1280, opaque body with antialiased edges only. No floor, cast shadow, glow, haze, text, labels, UI, scenery or watermark. Readable at128–256px.",
+      "references": [
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/barrier-intact.png",
+          "sha256": "22245581678d5ea0e550d74d25d78bccbcf27ed8ed7cc929c0e27d3554d3c303"
+        },
+        {
+          "path": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+          "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.991317136797171,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Two top amber lamps, intact central recessed panel, two supports.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "barrier-damaged",
+      "kind": "barrier",
+      "state": "damaged",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/barrier-damaged.png",
+      "generatedNativePath": "/workspace/generated_images/exec-9ea3127e-bd4e-4f82-8bc7-9b303556cb92.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/barrier-damaged.png",
+      "sha256": "aa9da0217b57f803989cdb2f9f06cec859f10956edfe3863b33c75c29508bf2d",
+      "bytes": 1228587,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1021274,
+      "visiblePixelsAlphaAtLeast16": 539273,
+      "bodyPixelsAlphaAtLeast240": 534331,
+      "alphaNoisePixels1or2": 9053,
+      "visibleBoundsAlpha16": [
+        171,
+        190,
+        1056,
+        1050
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1 into the exact DAMAGED BARRICADE state drawn in image2. Keep the same wide upright slab, angular beveled corners, two bronze vertical edge strips, recessed central panel, two small amber top indicators, two supports, material finish, camera, scale and framing. Add the single large dark zig-zag fracture vertically down the central inset as shown in image2, with fractured dark inner metal edges; a small chipped/creased patch in the left bronze edge at the location shown. Preserve overall outline, do not collapse or explode the barrier, no missing huge chunks. The fracture is dark, NOT glowing lava. Top two amber lamps remain active. Same charcoal/dark teal gunmetal and weathered bronze, restrained seams and wear, soft upper-left light. ONE whole isolated2.5D RTS sprite on native transparent alpha, square preferably1280x1280. Opaque body, antialiased outeredges, no floor/shadow/glow/haze/checkerboard. No text, labels, scenery, UI, watermark, fire, sparks or duplicate objects.",
+      "references": [
+        {
+          "path": "/workspace/generated_images/exec-78cfc2a0-d0a6-4f2e-b26b-c05b811db05a.png",
+          "sha256": "bf9ce8dad88b208da09bc1d53a92e38fb4b5456c86163a4c3216dea7a30b5d72"
+        },
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/barrier-damaged.png",
+          "sha256": "39c3d108e57408a32ef586ce4354a7abc2cf0d30323fa664215e4006f3031272"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.9908358104336764,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Dark central zigzag fracture and small left-edge chipped patch; top lamps retained.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "core-active",
+      "kind": "core",
+      "state": "active",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/core-active.png",
+      "generatedNativePath": "/workspace/generated_images/exec-547d1e6b-2b0e-4a61-8c02-01b10a20f2b8.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/core-active.png",
+      "sha256": "366dd0449f3c76b5c0ac1d5a4197b55b2117123b373ff74591749f293c447a6c",
+      "bytes": 805650,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1232959,
+      "visiblePixelsAlphaAtLeast16": 332718,
+      "bodyPixelsAlphaAtLeast240": 329084,
+      "alphaNoisePixels1or2": 4719,
+      "visibleBoundsAlpha16": [
+        364,
+        193,
+        887,
+        1077
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1, the precise ACTIVE GENERATOR CORE blueprint, into a detailed premium2.5D RTS prop. Image2 is ONLY the material and lighting style: dark teal gunmetal, charcoal steel, weathered bronze trim, fine bevels/seams/tooling and restrained wear under soft upper-left light. Preserve image1 geometry one-to-one: compact upright angular L/two-sided housing, a diamond/rhombus bronze base plate, small flat angular cap at top, one round amber status lamp on the cap front, two narrow vertical orange reactor windows on adjacent visible faces, and exactly FOUR dark diagonal brace bars crossing the left/front illuminated window. Same orthographic three-quarter angle, overall proportions, footprint, original generous framing, anchor near(0.5,0.8). No antenna/Yfork, no relay box, no round sci-fi reactor rings, no extra legs or pipes. Active light contained within the windows and lamp, NO surrounding glow or haze. Single whole isolated object, native transparent alpha background, square preferably1280x1280. Solid body opaque, only antialiased outeredges. No floor or cast shadow, scenery, text, readable glyphs, labels, UI, watermark or duplicate views. All corners of base and cap remain inside frame.",
+      "references": [
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/core-active.png",
+          "sha256": "5bca40f17e67472d7b30dad4dedf5593a6b0f7c94cd0ebd02457f3cc97b87a56"
+        },
+        {
+          "path": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+          "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.9890778376883728,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Four front diagonal braces; two active orange windows and top lamp.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "core-disabled",
+      "kind": "core",
+      "state": "disabled",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/core-disabled.png",
+      "generatedNativePath": "/workspace/generated_images/exec-2c685937-fb24-45f5-a1a6-fb08305a4824.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/core-disabled.png",
+      "sha256": "c0b9b6e54c60cfbdd9955aa701c3ea4058d33cf6766a9c0e9819e8e28e363379",
+      "bytes": 778204,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1234539,
+      "visiblePixelsAlphaAtLeast16": 332906,
+      "bodyPixelsAlphaAtLeast240": 329531,
+      "alphaNoisePixels1or2": 3000,
+      "visibleBoundsAlpha16": [
+        363,
+        192,
+        886,
+        1078
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1 into its DISABLED GENERATOR state, precisely the state distinction in blueprint image2. Preserve the exact detailed physical generator: same two-sided upright angular housing, square/rhombus bronze base plate, cap, round top status lens, four diagonal brace bars, both vertical inset windows, metal seams/material/wear, three-quarter orthographic view, proportions, camera/framing and footprint. Change ONLY the illumination: both vertical windows and the top round lens are OFF, dark unlit blue-teal/charcoal glass. No orange light remains, no glow, sparks or smoke. Do not remove parts or redesign the housing. Same fine2.5D hand-painted dark teal gunmetal/worn bronze finish and soft upper-left lighting. Single whole isolated object, native transparent alpha background, square preferably1280x1280. Opaque solid body with antialiased outeredge only. No floor/cast shadow/checkerboard/haze, lettering, labels, UI, scenery, watermark or duplicate views.",
+      "references": [
+        {
+          "path": "/workspace/generated_images/exec-547d1e6b-2b0e-4a61-8c02-01b10a20f2b8.png",
+          "sha256": "366dd0449f3c76b5c0ac1d5a4197b55b2117123b373ff74591749f293c447a6c"
+        },
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/core-disabled.png",
+          "sha256": "353ca93b0e573d4b4ebd885ff2bf4279e7d2025fc4036cf072c0aa4e1f3ce878"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.9898620030879588,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Same four braces and generator geometry; both panes and top lens unlit.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "medical-stocked",
+      "kind": "medical",
+      "state": "stocked",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/medical-stocked.png",
+      "generatedNativePath": "/workspace/generated_images/exec-d44e70bf-7ab2-434f-a02d-96c50c7f02f6.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/medical-stocked.png",
+      "sha256": "5d4972c4adf37f1860f63a4a8ad8945deb142b16dc3f5ecaec707a12d04053a3",
+      "bytes": 1104336,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1109893,
+      "visiblePixelsAlphaAtLeast16": 450613,
+      "bodyPixelsAlphaAtLeast240": 445645,
+      "alphaNoisePixels1or2": 9402,
+      "visibleBoundsAlpha16": [
+        209,
+        160,
+        1045,
+        1003
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1, the exact STOCKED MEDICAL CASE blueprint, into detailed2.5D RTS art. Image2 is MATERIAL/LIGHTING ONLY, not the shape. Preserve image1 silhouette, proportions and three-quarter orthographic view: a low compact angular open case on two small bronze foot/brackets, hinged rectangular lid upright at rear, two slender inset accent strips inside that lid, dark shallow tray with exactly FOUR small medical cartridges/capsules arranged diagonally as drawn, each with one tiny amber indicator, and one round amber status indicator in the front rim. Do not invent a human medical cross, labels, syringes, skulls or extra tools. Keep the same visible front/side panels and foot positions. High-detail dark teal gunmetal/charcoal steel, restrained worn bronze border/feet, shallow geometric tooling without readable text, crisp bevels/seams and fine edge wear coherent with image2. Soft upper-left light, contained tiny lamps, no halo. ONE whole isolated object on true transparent alpha canvas, square preferably1280x1280, generous margin, all lid corners and feet fully visible. Opaque body with antialiased edges only. No floor, cast shadow, checkerboard, haze, scenery, UI, captions, watermark or duplicate props. This is the stocked state with FOUR cartridges.",
+      "references": [
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/medical-stocked.png",
+          "sha256": "d4ac5b75b525ecc1b9354d68c796817a6f1d4ee1a90daf94993a47edd13d1231"
+        },
+        {
+          "path": "/workspace/generated_images/exec-44de78c1-17a6-42f9-8fe0-f3946d9bfb8c.png",
+          "sha256": "2edc08600786ea0abd2c15dacd4ad8d5db2837684cdae9211064d0164b63e06a"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.9889750184748332,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "Four cartridge indicators and front amber status; open lid and two feet.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    },
+    {
+      "id": "medical-empty",
+      "kind": "medical",
+      "state": "empty",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "sourceBlueprint": "public/game/assets/clan-field-20261103/medical-empty.png",
+      "generatedNativePath": "/workspace/generated_images/exec-03995dbc-baf4-4337-b8c7-c160bfcdf497.png",
+      "assetPath": "public/game/p0-sprites-20261113/props/medical-empty.png",
+      "sha256": "debcde50c31a3e5cf3eb5cf4f57de77a3f344651bd8e53f4d744966889869097",
+      "bytes": 1026401,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1115015,
+      "visiblePixelsAlphaAtLeast16": 452371,
+      "bodyPixelsAlphaAtLeast240": 447591,
+      "alphaNoisePixels1or2": 3344,
+      "visibleBoundsAlpha16": [
+        209,
+        159,
+        1045,
+        1004
+      ],
+      "requestedAnchor": [
+        0.5,
+        0.8
+      ],
+      "nativeAnchor": [
+        627.0,
+        1003.2
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "orthographic-three-quarter",
+      "prompt": "EDIT image1 into the EMPTY MEDICAL CASE state defined by image2. Keep the IDENTICAL detailed case from image1: same open upright lid, two inset lid strips, hinge angle, bronze-rimmed shallow tray, front/side panels, two small bronze feet/brackets, orthographic three-quarter view, exact proportions/framing and ground placement. Remove ALL FOUR medical cartridges from the tray. The small round front status indicator is OFF, a dark unlit lens, not orange. Do not close the lid, do not add items, do not change any physical case part. The tray is visibly entirely empty. Preserve dark teal gunmetal/charcoal steel, worn bronze edges, fine geometric seams and soft upper-left lighting. One complete isolated2.5D RTS sprite on native transparent alpha background, square preferably1280x1280, same generous margin. Body opaque, antialiased outeredges only; no floor, castshadow, glow, haze, checkerboard, text, labels, icons, human medical cross, scenery, UI, watermark or second object. This is the same stocked-case identity with contents removed, not a different container.",
+      "references": [
+        {
+          "path": "/workspace/generated_images/exec-d44e70bf-7ab2-434f-a02d-96c50c7f02f6.png",
+          "sha256": "5d4972c4adf37f1860f63a4a8ad8945deb142b16dc3f5ecaec707a12d04053a3"
+        },
+        {
+          "path": "/workspace/yautja-la-longue-chasse/public/game/assets/clan-field-20261103/medical-empty.png",
+          "sha256": "afa15e8fbdb78b4fc3d6ee4e18f2d26d59785b104a6b2b7b6d069e87a79529ea"
+        }
+      ],
+      "nearOpaqueBodyFractionOfVisible16": 0.9894334517464647,
+      "visualReview": {
+        "reviewer": "AI-agent comparison with local blueprint and generated state pair",
+        "humanReview": false,
+        "observations": "No cartridges; front status lens dark; same open case and lid.",
+        "fullObjectVisible": true,
+        "stateDistinctionObserved": true,
+        "canonicalFilmOrPHGFidelityCertified": false
+      }
+    }
+  ],
+  "sourceBaselineCommit": "6103b19ecbc47de30a554ba65bda66fe6b515425",
+  "nativeSingleObjectPNGs": 11,
+  "sourceBlueprintsUnchanged": true,
+  "limits": [
+    "Generated project-original prop candidates, not human-approved or canonical PHG/film replicas.",
+    "No animation sequence is claimed: one directly generated state sprite per entry.",
+    "Native frames/padding differ; rects, bounds and requested anchor are recorded without pixel normalization.",
+    "Alpha is largely253 rather than255; this is near-opaque. NoiseFloor2 is metadata only, no source pixels were changed.",
+    "Runtime/collision/save contracts not modified.",
+    "Root-owned relay-active is a separate seed asset and is not duplicated in this11-entry child manifest."
+  ]
+}

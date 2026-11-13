@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "55c1d335d206512f7bd69e9c83066f757a66c7af",
+  "tool": "image_gen.imagegen",
+  "status": "generated-candidate",
+  "reviewStatus": "root-and-independent-candidate-review-complete",
+  "entries": [
+    {
+      "id": "samurai",
+      "prompt": "Create ONE precise transparent-background cutout of the SAMURAI PREDATOR biomask and its visible rigid helmet assembly from these two actual official Predator Hunting Grounds images. This is reference-bound game asset work, not a new design. FIRST image is authoritative for large face details, colors, asymmetry and exact camera angle: retain that head tilt, three-quarter orientation towards viewer's LEFT, low forward gaze. SECOND image only supplies the uppermost visible silhouette cropped off the first photo; do not change the first photo's view to the second pose. Depict ONLY the separate empty wearable face mask/rigid kabuto helmet, no head, no wearer, no flesh, no neck, no dreadlocks, no body, no shoulders, no hands, no sword, no background. Match actual broad dark blue-black rounded dome, gold sweeping brow ornament with two curved pointed upward side crests, layered black/gold side helmet plates, narrow dark eye apertures, deep red menpo faceplate with the exact visible gold curling relief layout and little vertical central vent slits, small red targeting emitter visible at the viewer's LEFT brow as in first photo. Do not replace with generic samurai armor. No teeth, fangs, extra horns, invented spikes, extra red eye lights, invented glyphs or symmetrical simplification. The fine rigid crest-like points seen above/behind the dome in reference 2 are not established as a detachable biomask part: omit that ambiguous rear tuft instead of inventing its hidden geometry; finish the mask only at the continuous clearly visible dome contour. The layered rigid side temple plates which are clearly visible belong to this helmet and should remain. Retain source surface patina and scratches, red enamel and aged gold/black metal. Natural soft neutral studio light, no exaggerated emissive glow, no added surface decoration. Visually extract/carefully reconstruct only what the photos actually show, keeping proportions and silhouette as close as possible. No invented orthographic front, rear or hidden interior. ONE mask only centered and fully within frame, very generous transparent safety margins around every point and chin, high quality PBR-like game prop cutout with native alpha, no ground shadow, labels, text, UI, borders or baked checkerboard.",
+      "nativeSourcePath": "/workspace/generated_images/exec-a204a3a1-8d57-4af8-a416-1a12c421fc4b.png",
+      "sourceIds": [
+        "samurai-official-closeup",
+        "samurai-official-render"
+      ],
+      "label": "Samurai · PHG · couleur et vue officielle",
+      "view": "Official close-up camera: head tilted forward, three-quarter toward image left; clearly rigid dome completed only from matching full render.",
+      "limitations": [
+        "Fine gold relief and central vent arrangement are simplified generated interpretations, not a one-to-one reconstruction.",
+        "Ambiguous thin rear upper crest is omitted; this candidate does not establish the complete helmet silhouette.",
+        "Layered side plates are thicker than the source in places.",
+        "Visible alpha>=16 top margin is 12px, a framing warning; silhouette is not clipped.",
+        "Official visible reference colors and camera only; original UVs, neutral albedo, backside, profile and exact fine topology remain unestablished.",
+        "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration."
+      ],
+      "assetPath": "public/game/biomasks-primary-20261113/masks/samurai-source-view.png",
+      "sha256": "22e606754e4868253592ddeb84bffce29b9a3a6b5f8286bb2b10c895f22ea715",
+      "bytes": 1637768,
+      "nativeDimensions": [
+        1312,
+        1199
+      ],
+      "width": 1312,
+      "height": 1199,
+      "nativeMode": "RGBA",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "transparentBackgroundRequested": true,
+      "sourceRect": [
+        0,
+        0,
+        1312,
+        1199
+      ],
+      "pivot": [
+        656.0,
+        599.5
+      ],
+      "pivotStatus": "centered review proposal, not fitted to wearer rig",
+      "sourceReferences": [
+        {
+          "id": "samurai-official-closeup",
+          "url": "https://live.staticflickr.com/65535/50059892976_c149533c4a_k.jpg",
+          "sha256": "bf2144389c5fa0e74a1c0444973a119f36ddd1f668f020c14281068571dfd096",
+          "width": 2048,
+          "height": 1152
+        },
+        {
+          "id": "samurai-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/c4787ee290/samurai-predator.png",
+          "sha256": "ba39ebea14ffc89a0eabbebdde7d51b46439591bc765db78ba5a61bc718d791f",
+          "width": 995,
+          "height": 1101
+        }
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          90,
+          12,
+          1154,
+          1183
+        ],
+        "marginsPixels16": [
+          90,
+          12,
+          158,
+          16
+        ],
+        "transparentPixels": 819467,
+        "visiblePixels16": 735673
+      }
+    }
+  ],
+  "humanArtValidated": false
+}

@@ -1,0 +1,1046 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "status": "generated-candidates",
+  "canonCertified": false,
+  "humanArtValidated": false,
+  "method": "ImageGen native front cutouts; original output bytes copied without pixel editing",
+  "scope": "Six named secondary community front references. Not original PHG material UVs, canonical certification, back/profile coverage or replacement of Alpha/Samurai body proxies.",
+  "sourceAttribution": {
+    "repository": "Matthelzor/pd2-predator-pack",
+    "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+    "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+    "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+  },
+  "sourceScope": "Monochrome community PAYDAY2 port HUD icons attributed by the repository README to Predator: Hunting Grounds / IllFonic and other games. No claim of publisher approval or port accuracy.",
+  "referenceResearchPath": "/tmp/p0-sprites-20261113/web-references/reference-research.json",
+  "referenceResearchSha256": "4037f635d81d0e8248ad65541feb8ef6a0929df8e49d5b9f1df7a0c52010fcca",
+  "distributionNote": "Only newly generated candidate PNGs are copied to public. Raw community DDS textures and diagnostic source screenshots are not redistributed in public assets.",
+  "counts": {
+    "generatedCandidateFronts": 6,
+    "sourceFronts": 6,
+    "profileViews": 0,
+    "backViews": 0,
+    "certified1to1": 0,
+    "humanArtValidated": 0
+  },
+  "entries": [
+    {
+      "id": "samurai-front",
+      "maskId": "samurai",
+      "kind": "mask",
+      "state": "front",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+      },
+      "sourceReference": {
+        "id": "samurai-mask",
+        "label": "Samurai",
+        "view": "mask-front",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixel1to1Verified": false,
+        "resolution": [
+          256,
+          256
+        ],
+        "scope": "Community port icon; no side/back or original game color verification.",
+        "files": [
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/samurai_predator.texture",
+            "bytes": 65664,
+            "sha256": "8bf81e29271d894b3e0d4ee193caf7aee0286af9c43cbd127d8946ab99db58bb",
+            "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/samurai_predator.texture",
+            "gitBlobSha": "8d5d6ec1d59eeb084c21af21bb71aed60f32ba9c",
+            "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/samurai_predator.texture",
+            "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/samurai_predator.texture"
+          },
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/native-reference-3.png",
+            "bytes": 38846,
+            "sha256": "13af8242e1acecc96cc428d09c05376fc138cdd2dfd1afbaef6a7a3123ca63eb",
+            "role": "native-size read-only WebGL decode screenshot",
+            "derivedFromSourceSha256": "8bf81e29271d894b3e0d4ee193caf7aee0286af9c43cbd127d8946ab99db58bb"
+          }
+        ]
+      },
+      "generatedNativePath": "/workspace/generated_images/exec-5be902fc-dce9-4605-b56c-067b0cf5eff7.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-5be902fc-dce9-4605-b56c-067b0cf5eff7.png",
+      "assetPath": "public/game/p0-sprites-20261113/masks/samurai-front.png",
+      "sha256": "aeb8ab54027047c31316d20c7a3497265f7d3806351bc0abe46b94f23b91f232",
+      "bytes": 844670,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1257603,
+      "visiblePixelsAlphaAtLeast16": 299785,
+      "bodyPixelsAlphaAtLeast240": 291906,
+      "alphaNoisePixels1or2": 10543,
+      "visibleBoundsAlpha16": [
+        334,
+        183,
+        923,
+        1022
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "nativeAnchor": [
+        627.0,
+        627.0
+      ],
+      "pivotNormalized": [
+        0.5,
+        0.5
+      ],
+      "pivotScope": "Centered standalone preview sprite; equipment rig fitting has not been performed.",
+      "marginsPixelsAlpha16": [
+        334,
+        183,
+        331,
+        232
+      ],
+      "marginsFractionAlpha16": [
+        0.266347687400319,
+        0.145933014354067,
+        0.26395534290271133,
+        0.1850079744816587
+      ],
+      "minimumMarginRequirementFraction": 0.08,
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "front-orthographic",
+      "prompt": "Framing-only correction of image1. Keep this EXACT front biomask design, all intrinsic contours, horns/crest/jaw, plate topology, grayscale material and surface detail unchanged. Image2 is the original named reference for identity, not a request to redesign. The current mask is too large in its canvas. Make the same complete mask visibly SMALLER, occupying only about70percent of the square canvas height, centered with at least12percent empty native alpha on EVERY side including the highest spike and lowest jaw. Do not crop any part. Do not change the front camera, proportions, details, eye slots, asymmetries, aperture counts or grayscale palette. No hairstyle strands, wearer/body, floor/shadow/glow/scenery/text/labels/UI/frame/watermark. Transparent background with fully opaque object and antialiased boundary only. Exactly one front mask, no new view. Use the canvas space for transparency, not extra adornment.",
+      "references": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/samurai_predator.texture",
+          "bytes": 65664,
+          "sha256": "8bf81e29271d894b3e0d4ee193caf7aee0286af9c43cbd127d8946ab99db58bb",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/samurai_predator.texture",
+          "gitBlobSha": "8d5d6ec1d59eeb084c21af21bb71aed60f32ba9c",
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/samurai_predator.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/samurai_predator.texture"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-3.png",
+          "bytes": 38846,
+          "sha256": "13af8242e1acecc96cc428d09c05376fc138cdd2dfd1afbaef6a7a3123ca63eb",
+          "role": "native-size read-only WebGL decode screenshot",
+          "derivedFromSourceSha256": "8bf81e29271d894b3e0d4ee193caf7aee0286af9c43cbd127d8946ab99db58bb"
+        }
+      ],
+      "viewCoverage": [
+        "front"
+      ],
+      "materials": "Monochrome reference appearance only; no original game UV/color verification.",
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required."
+      ],
+      "visualReview": {
+        "reviewer": "AI-agent comparison with actual named source reference",
+        "humanReview": false,
+        "fullObjectVisible": true,
+        "geometryMatchStatus": "source-aligned candidate; exact geometry not certified",
+        "observations": [
+          "Broad dark forehead plate, paired raised side fins, layered cheeks and curling lower ornament retained.",
+          "Upper swept spike cluster is included as mask geometry; small spike counts, etched lines and outline curvature remain reconstructed at higher resolution."
+        ]
+      },
+      "generationPasses": [
+        {
+          "purpose": "initial source-referenced front generation",
+          "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite, not a new design. The reference is a monochrome named community port icon; reproduce only the clearly visible front geometry and grayscale materials, do not infer missing sides/back or unseen UV colors. Preserve the exact broad dark forehead dome, narrow angry black eye slots, layered silver cheek guards, curling spiral lower mandible-like plates and the irregular sharp spiked crest on top. This is the particular model pictured, not a generic Japanese kabuto. Do not add horns, facial skin or ornaments. Remove the black background and any detached hair/dreadlock strands behind or below the mask if clearly separate from its armor; retain all intrinsic skull bones, crest, horns or attached jaw structures actually present. No head, neck, wearer, body, hair extensions, stand, scenery, floor, cast shadow, glow, text, captions, border or watermark. Keep the front-facing camera and original width/height proportions. Same shape, plate boundaries and observable damage, no newly designed surface motifs. The complete mask with all intrinsic points must fit centered inside a square canvas with at least8percent transparent margin on all sides; prefer1024square. Fully opaque solid mask and only antialiased edges, straight native transparent alpha outside. Premium readable game cutout faithful to this particular reference, crisp detail but no imagined color or creative redesign.",
+          "generatedNativePath": "/workspace/generated_images/exec-0ae4e1cf-d0d7-431c-8dad-364c930c478e.png",
+          "sha256": "995c64fdf4e28f9f1797c1b10a2919d8318439349e4993d8d0f59deb3eb55de6",
+          "references": [
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-3.png",
+              "bytes": 38846,
+              "sha256": "13af8242e1acecc96cc428d09c05376fc138cdd2dfd1afbaef6a7a3123ca63eb",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "8bf81e29271d894b3e0d4ee193caf7aee0286af9c43cbd127d8946ab99db58bb"
+            }
+          ]
+        },
+        {
+          "purpose": "framing-only ImageGen re-edit to increase empty margins",
+          "prompt": "Framing-only correction of image1. Keep this EXACT front biomask design, all intrinsic contours, horns/crest/jaw, plate topology, grayscale material and surface detail unchanged. Image2 is the original named reference for identity, not a request to redesign. The current mask is too large in its canvas. Make the same complete mask visibly SMALLER, occupying only about70percent of the square canvas height, centered with at least12percent empty native alpha on EVERY side including the highest spike and lowest jaw. Do not crop any part. Do not change the front camera, proportions, details, eye slots, asymmetries, aperture counts or grayscale palette. No hairstyle strands, wearer/body, floor/shadow/glow/scenery/text/labels/UI/frame/watermark. Transparent background with fully opaque object and antialiased boundary only. Exactly one front mask, no new view. Use the canvas space for transparency, not extra adornment.",
+          "generatedNativePath": "/workspace/generated_images/exec-5be902fc-dce9-4605-b56c-067b0cf5eff7.png",
+          "sha256": "aeb8ab54027047c31316d20c7a3497265f7d3806351bc0abe46b94f23b91f232",
+          "references": [
+            {
+              "path": "/workspace/generated_images/exec-0ae4e1cf-d0d7-431c-8dad-364c930c478e.png",
+              "sha256": "995c64fdf4e28f9f1797c1b10a2919d8318439349e4993d8d0f59deb3eb55de6"
+            },
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-3.png",
+              "bytes": 38846,
+              "sha256": "13af8242e1acecc96cc428d09c05376fc138cdd2dfd1afbaef6a7a3123ca63eb",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "8bf81e29271d894b3e0d4ee193caf7aee0286af9c43cbd127d8946ab99db58bb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mr-black-front",
+      "maskId": "mr-black",
+      "kind": "mask",
+      "state": "front",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+      },
+      "sourceReference": {
+        "id": "mr-black-mask",
+        "label": "Mr. Black",
+        "view": "mask-front",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixel1to1Verified": false,
+        "resolution": [
+          256,
+          256
+        ],
+        "scope": "Community port icon includes head/dreadlocks; keep mask separate from those additions.",
+        "files": [
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_mr_black.texture",
+            "bytes": 65664,
+            "sha256": "edbef3ebc78e24a27610179c65e8703e6d13b9a6939c62a60d5ecaa8c8410286",
+            "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_mr_black.texture",
+            "gitBlobSha": "2ef4df8a7b63c454a78173e0f6fb230b5610869d",
+            "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_mr_black.texture",
+            "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_mr_black.texture"
+          },
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/native-reference-4.png",
+            "bytes": 24490,
+            "sha256": "f40ed47502a26c384c506abfb11d3226a6c12d64290d98d496284b9b76127ef3",
+            "role": "native-size read-only WebGL decode screenshot",
+            "derivedFromSourceSha256": "edbef3ebc78e24a27610179c65e8703e6d13b9a6939c62a60d5ecaa8c8410286"
+          }
+        ]
+      },
+      "generatedNativePath": "/workspace/generated_images/exec-683cb8dd-2a78-4125-8b79-b4068df10308.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-683cb8dd-2a78-4125-8b79-b4068df10308.png",
+      "assetPath": "public/game/p0-sprites-20261113/masks/mr-black-front.png",
+      "sha256": "eac1bb5d969c2a2421b7064bcbe2d0d84c30d16db7768cbb883b1f8708a1f52b",
+      "bytes": 916066,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1235236,
+      "visiblePixelsAlphaAtLeast16": 330879,
+      "bodyPixelsAlphaAtLeast240": 327458,
+      "alphaNoisePixels1or2": 4433,
+      "visibleBoundsAlpha16": [
+        338,
+        237,
+        911,
+        991
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "nativeAnchor": [
+        627.0,
+        627.0
+      ],
+      "pivotNormalized": [
+        0.5,
+        0.5
+      ],
+      "pivotScope": "Centered standalone preview sprite; equipment rig fitting has not been performed.",
+      "marginsPixelsAlpha16": [
+        338,
+        237,
+        343,
+        263
+      ],
+      "marginsFractionAlpha16": [
+        0.26953748006379585,
+        0.18899521531100477,
+        0.27352472089314195,
+        0.20972886762360446
+      ],
+      "minimumMarginRequirementFraction": 0.08,
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "front-orthographic",
+      "prompt": "Framing-only correction of image1. Keep this EXACT front biomask design, all intrinsic contours, horns/crest/jaw, plate topology, grayscale material and surface detail unchanged. Image2 is the original named reference for identity, not a request to redesign. The current mask is too large in its canvas. Make the same complete mask visibly SMALLER, occupying only about70percent of the square canvas height, centered with at least12percent empty native alpha on EVERY side including the highest spike and lowest jaw. Do not crop any part. Do not change the front camera, proportions, details, eye slots, asymmetries, aperture counts or grayscale palette. No hairstyle strands, wearer/body, floor/shadow/glow/scenery/text/labels/UI/frame/watermark. Transparent background with fully opaque object and antialiased boundary only. Exactly one front mask, no new view. Use the canvas space for transparency, not extra adornment.",
+      "references": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_mr_black.texture",
+          "bytes": 65664,
+          "sha256": "edbef3ebc78e24a27610179c65e8703e6d13b9a6939c62a60d5ecaa8c8410286",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_mr_black.texture",
+          "gitBlobSha": "2ef4df8a7b63c454a78173e0f6fb230b5610869d",
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_mr_black.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_mr_black.texture"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-4.png",
+          "bytes": 24490,
+          "sha256": "f40ed47502a26c384c506abfb11d3226a6c12d64290d98d496284b9b76127ef3",
+          "role": "native-size read-only WebGL decode screenshot",
+          "derivedFromSourceSha256": "edbef3ebc78e24a27610179c65e8703e6d13b9a6939c62a60d5ecaa8c8410286"
+        }
+      ],
+      "viewCoverage": [
+        "front"
+      ],
+      "materials": "Monochrome reference appearance only; no original game UV/color verification.",
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required."
+      ],
+      "visualReview": {
+        "reviewer": "AI-agent comparison with actual named source reference",
+        "humanReview": false,
+        "fullObjectVisible": true,
+        "geometryMatchStatus": "source-aligned candidate; exact geometry not certified",
+        "observations": [
+          "Tall broad smooth plate with a top notch, sharp slanted eye slots and attached small-toothed jaw retained.",
+          "The visible temple insert has six dark perforations, following this inspected port reference rather than substituting the three colored emitters in the older local Berserker sprite.",
+          "External strands behind the side plates were omitted; fine jaw teeth and wear marks remain reconstructed."
+        ]
+      },
+      "generationPasses": [
+        {
+          "purpose": "initial source-referenced front generation",
+          "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite, not a new design. The reference is a monochrome named community port icon; reproduce only the clearly visible front geometry and grayscale materials, do not infer missing sides/back or unseen UV colors. Preserve the exact smooth tall dark forehead shield with its open notch between the two upper corners, sharp angled eye slits and nose ridge, side plate seams, small circular cluster at the viewer-left temple, and the creature jaw with its small teeth attached around the lower face. Keep the jaw grayscale as pictured. Do not substitute a different Predator mask. Remove the black background and any detached hair/dreadlock strands behind or below the mask if clearly separate from its armor; retain all intrinsic skull bones, crest, horns or attached jaw structures actually present. No head, neck, wearer, body, hair extensions, stand, scenery, floor, cast shadow, glow, text, captions, border or watermark. Keep the front-facing camera and original width/height proportions. Same shape, plate boundaries and observable damage, no newly designed surface motifs. The complete mask with all intrinsic points must fit centered inside a square canvas with at least8percent transparent margin on all sides; prefer1024square. Fully opaque solid mask and only antialiased edges, straight native transparent alpha outside. Premium readable game cutout faithful to this particular reference, crisp detail but no imagined color or creative redesign.",
+          "generatedNativePath": "/workspace/generated_images/exec-24535194-62be-4095-afb2-affcde593add.png",
+          "sha256": "8740233673dc63638088c6e876339f34942b1cbffd358563e28201582c577d08",
+          "references": [
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-4.png",
+              "bytes": 24490,
+              "sha256": "f40ed47502a26c384c506abfb11d3226a6c12d64290d98d496284b9b76127ef3",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "edbef3ebc78e24a27610179c65e8703e6d13b9a6939c62a60d5ecaa8c8410286"
+            }
+          ]
+        },
+        {
+          "purpose": "framing-only ImageGen re-edit to increase empty margins",
+          "prompt": "Framing-only correction of image1. Keep this EXACT front biomask design, all intrinsic contours, horns/crest/jaw, plate topology, grayscale material and surface detail unchanged. Image2 is the original named reference for identity, not a request to redesign. The current mask is too large in its canvas. Make the same complete mask visibly SMALLER, occupying only about70percent of the square canvas height, centered with at least12percent empty native alpha on EVERY side including the highest spike and lowest jaw. Do not crop any part. Do not change the front camera, proportions, details, eye slots, asymmetries, aperture counts or grayscale palette. No hairstyle strands, wearer/body, floor/shadow/glow/scenery/text/labels/UI/frame/watermark. Transparent background with fully opaque object and antialiased boundary only. Exactly one front mask, no new view. Use the canvas space for transparency, not extra adornment.",
+          "generatedNativePath": "/workspace/generated_images/exec-683cb8dd-2a78-4125-8b79-b4068df10308.png",
+          "sha256": "eac1bb5d969c2a2421b7064bcbe2d0d84c30d16db7768cbb883b1f8708a1f52b",
+          "references": [
+            {
+              "path": "/workspace/generated_images/exec-24535194-62be-4095-afb2-affcde593add.png",
+              "sha256": "8740233673dc63638088c6e876339f34942b1cbffd358563e28201582c577d08"
+            },
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-4.png",
+              "bytes": 24490,
+              "sha256": "f40ed47502a26c384c506abfb11d3226a6c12d64290d98d496284b9b76127ef3",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "edbef3ebc78e24a27610179c65e8703e6d13b9a6939c62a60d5ecaa8c8410286"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wretch-front",
+      "maskId": "wretch",
+      "kind": "mask",
+      "state": "front",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+      },
+      "sourceReference": {
+        "id": "wretch-mask",
+        "label": "Wretch",
+        "view": "mask-front",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixel1to1Verified": false,
+        "resolution": [
+          256,
+          256
+        ],
+        "scope": "Community port icon includes head/dreadlocks; keep mask separate from those additions.",
+        "files": [
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_wretch.texture",
+            "bytes": 65664,
+            "sha256": "55663d25cf510d85e6274317380ed9ecdccc4b51939456719bf588d69a5c16d7",
+            "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_wretch.texture",
+            "gitBlobSha": "df26fc4d9297dc0c67f8f7db6014ec51bd9bd8a5",
+            "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_wretch.texture",
+            "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_wretch.texture"
+          },
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/native-reference-5.png",
+            "bytes": 33843,
+            "sha256": "2f35ff4c715b1b7b009d8ea23ee763e0d7077e4ad804b2941fb64019e61ae89c",
+            "role": "native-size read-only WebGL decode screenshot",
+            "derivedFromSourceSha256": "55663d25cf510d85e6274317380ed9ecdccc4b51939456719bf588d69a5c16d7"
+          }
+        ]
+      },
+      "generatedNativePath": "/workspace/generated_images/exec-4f938d09-54c7-4c33-ba93-d2fa7539c45d.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-4f938d09-54c7-4c33-ba93-d2fa7539c45d.png",
+      "assetPath": "public/game/p0-sprites-20261113/masks/wretch-front.png",
+      "sha256": "ffd3ad1a8060cad2ab2b84e39fdeb727ac71c7db19b1c1523f4889cba2782213",
+      "bytes": 1361371,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1107664,
+      "visiblePixelsAlphaAtLeast16": 447495,
+      "bodyPixelsAlphaAtLeast240": 442608,
+      "alphaNoisePixels1or2": 14120,
+      "visibleBoundsAlpha16": [
+        255,
+        206,
+        1000,
+        1083
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "nativeAnchor": [
+        627.0,
+        627.0
+      ],
+      "pivotNormalized": [
+        0.5,
+        0.5
+      ],
+      "pivotScope": "Centered standalone preview sprite; equipment rig fitting has not been performed.",
+      "marginsPixelsAlpha16": [
+        255,
+        206,
+        254,
+        171
+      ],
+      "marginsFractionAlpha16": [
+        0.20334928229665072,
+        0.16427432216905902,
+        0.2025518341307815,
+        0.13636363636363635
+      ],
+      "minimumMarginRequirementFraction": 0.08,
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "front-orthographic",
+      "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite, not a new design. The source is a named monochrome community port icon; reproduce only its observable front geometry and grayscale metallic/bony values. Do not infer missing side/back, original UV colors or body proportions. Preserve the exact intricate ribbed biomask: scalloped bony upper outline, raised segmented central spine descending from crown to nose, dense paired chevron/rib plates across forehead and cheeks, narrow dark angular eye slits and the short armored chin. The central front topology and rib counts should follow the picture, not a generic alien skull. Long narrow dangling light strands behind the outside cheeks are separate dreadlocks, not mask extensions; omit only those strands. Same source silhouette, intrinsic geometry count, plate boundaries and observable damage; no invented motifs. Front orthographic camera. Put the complete mask including all intrinsic horns/crest in the CENTER TWO THIRDS of a square canvas with very generous transparent empty margin at least12percent on all sides; do not enlarge it to fill canvas. Prefer1024square. Solid object fully opaque, straight native alpha outside with only antialiased edge. No wearer, head/neck, hair extensions, body, stand, scenery, floor, shadow, fog, glow, text, caption, UI, border or watermark. Detailed crisp grayscale game cutout, faithful to this particular picture instead of a creative redesign. Preserve original notches and asymmetries.",
+      "references": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_wretch.texture",
+          "bytes": 65664,
+          "sha256": "55663d25cf510d85e6274317380ed9ecdccc4b51939456719bf588d69a5c16d7",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_wretch.texture",
+          "gitBlobSha": "df26fc4d9297dc0c67f8f7db6014ec51bd9bd8a5",
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_wretch.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_wretch.texture"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-5.png",
+          "bytes": 33843,
+          "sha256": "2f35ff4c715b1b7b009d8ea23ee763e0d7077e4ad804b2941fb64019e61ae89c",
+          "role": "native-size read-only WebGL decode screenshot",
+          "derivedFromSourceSha256": "55663d25cf510d85e6274317380ed9ecdccc4b51939456719bf588d69a5c16d7"
+        }
+      ],
+      "viewCoverage": [
+        "front"
+      ],
+      "materials": "Monochrome reference appearance only; no original game UV/color verification.",
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required."
+      ],
+      "visualReview": {
+        "reviewer": "AI-agent comparison with actual named source reference",
+        "humanReview": false,
+        "fullObjectVisible": true,
+        "geometryMatchStatus": "source-aligned candidate; exact geometry not certified",
+        "observations": [
+          "Paired dense rib/chevron relief, segmented central spine, bony scalloped upper edge and angular eye slots retained.",
+          "The small source does not establish exact individual rib counts, material maps or depth. External hanging hair was omitted."
+        ]
+      },
+      "generationPasses": [
+        {
+          "purpose": "source-referenced front generation",
+          "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite, not a new design. The source is a named monochrome community port icon; reproduce only its observable front geometry and grayscale metallic/bony values. Do not infer missing side/back, original UV colors or body proportions. Preserve the exact intricate ribbed biomask: scalloped bony upper outline, raised segmented central spine descending from crown to nose, dense paired chevron/rib plates across forehead and cheeks, narrow dark angular eye slits and the short armored chin. The central front topology and rib counts should follow the picture, not a generic alien skull. Long narrow dangling light strands behind the outside cheeks are separate dreadlocks, not mask extensions; omit only those strands. Same source silhouette, intrinsic geometry count, plate boundaries and observable damage; no invented motifs. Front orthographic camera. Put the complete mask including all intrinsic horns/crest in the CENTER TWO THIRDS of a square canvas with very generous transparent empty margin at least12percent on all sides; do not enlarge it to fill canvas. Prefer1024square. Solid object fully opaque, straight native alpha outside with only antialiased edge. No wearer, head/neck, hair extensions, body, stand, scenery, floor, shadow, fog, glow, text, caption, UI, border or watermark. Detailed crisp grayscale game cutout, faithful to this particular picture instead of a creative redesign. Preserve original notches and asymmetries.",
+          "generatedNativePath": "/workspace/generated_images/exec-4f938d09-54c7-4c33-ba93-d2fa7539c45d.png",
+          "sha256": "ffd3ad1a8060cad2ab2b84e39fdeb727ac71c7db19b1c1523f4889cba2782213",
+          "references": [
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-5.png",
+              "bytes": 33843,
+              "sha256": "2f35ff4c715b1b7b009d8ea23ee763e0d7077e4ad804b2941fb64019e61ae89c",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "55663d25cf510d85e6274317380ed9ecdccc4b51939456719bf588d69a5c16d7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "viking-front",
+      "maskId": "viking",
+      "kind": "mask",
+      "state": "front",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+      },
+      "sourceReference": {
+        "id": "viking-mask",
+        "label": "Viking",
+        "view": "mask-front",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixel1to1Verified": false,
+        "resolution": [
+          256,
+          256
+        ],
+        "scope": "ID13 label verified in community localization; no side/back or original game color verification.",
+        "files": [
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_13.texture",
+            "bytes": 65664,
+            "sha256": "672e743f2c1f696ebee6b8d71ce56e966ed19c88419d1e30a985987b9c1df32b",
+            "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_13.texture",
+            "gitBlobSha": "d4d9ea7b5fc3e75bfef0125791a6600169854ec3",
+            "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_13.texture",
+            "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_13.texture"
+          },
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/native-reference-6.png",
+            "bytes": 56693,
+            "sha256": "65cdce5a5fd32cd921c4d28521696262665b4e41f39498c33b2affe0512f6768",
+            "role": "native-size read-only WebGL decode screenshot",
+            "derivedFromSourceSha256": "672e743f2c1f696ebee6b8d71ce56e966ed19c88419d1e30a985987b9c1df32b"
+          }
+        ]
+      },
+      "generatedNativePath": "/workspace/generated_images/exec-a148dbff-3044-48f4-b861-9f88d201c5b8.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-a148dbff-3044-48f4-b861-9f88d201c5b8.png",
+      "assetPath": "public/game/p0-sprites-20261113/masks/viking-front.png",
+      "sha256": "1b4403348b632f1fadd9f4b0b737d87a32512835602ba7ca82578a2426dd22d9",
+      "bytes": 1537978,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1038527,
+      "visiblePixelsAlphaAtLeast16": 519785,
+      "bodyPixelsAlphaAtLeast240": 513352,
+      "alphaNoisePixels1or2": 10198,
+      "visibleBoundsAlpha16": [
+        256,
+        131,
+        998,
+        1122
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "nativeAnchor": [
+        627.0,
+        627.0
+      ],
+      "pivotNormalized": [
+        0.5,
+        0.5
+      ],
+      "pivotScope": "Centered standalone preview sprite; equipment rig fitting has not been performed.",
+      "marginsPixelsAlpha16": [
+        256,
+        131,
+        256,
+        132
+      ],
+      "marginsFractionAlpha16": [
+        0.20414673046251994,
+        0.10446570972886762,
+        0.20414673046251994,
+        0.10526315789473684
+      ],
+      "minimumMarginRequirementFraction": 0.08,
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "front-orthographic",
+      "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite, not a new design. The source is a named monochrome community port icon; reproduce only its observable front geometry and grayscale metallic/bony values. Do not infer missing side/back, original UV colors or body proportions. Preserve the exact tall pair of upper horns with the same inward/outward curvature, the round raised central forehead medallion and its source interlaced geometric relief, the curved plate borders, the asymmetric eye protection including the decorated plate across the viewer-left eye, the other dark open eye slot, detailed nose ridge and narrow patterned lower face. No generic Viking human helmet, no extra horn pair. Omit only the extrinsic hanging straight dreadlock strands behind the cheek armor. Same source silhouette, intrinsic geometry count, plate boundaries and observable damage; no invented motifs. Front orthographic camera. Put the complete mask including all intrinsic horns/crest in the CENTER TWO THIRDS of a square canvas with very generous transparent empty margin at least12percent on all sides; do not enlarge it to fill canvas. Prefer1024square. Solid object fully opaque, straight native alpha outside with only antialiased edge. No wearer, head/neck, hair extensions, body, stand, scenery, floor, shadow, fog, glow, text, caption, UI, border or watermark. Detailed crisp grayscale game cutout, faithful to this particular picture instead of a creative redesign. Preserve original notches and asymmetries.",
+      "references": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_13.texture",
+          "bytes": 65664,
+          "sha256": "672e743f2c1f696ebee6b8d71ce56e966ed19c88419d1e30a985987b9c1df32b",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_13.texture",
+          "gitBlobSha": "d4d9ea7b5fc3e75bfef0125791a6600169854ec3",
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_13.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_13.texture"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-6.png",
+          "bytes": 56693,
+          "sha256": "65cdce5a5fd32cd921c4d28521696262665b4e41f39498c33b2affe0512f6768",
+          "role": "native-size read-only WebGL decode screenshot",
+          "derivedFromSourceSha256": "672e743f2c1f696ebee6b8d71ce56e966ed19c88419d1e30a985987b9c1df32b"
+        }
+      ],
+      "viewCoverage": [
+        "front"
+      ],
+      "materials": "Monochrome reference appearance only; no original game UV/color verification.",
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required."
+      ],
+      "visualReview": {
+        "reviewer": "AI-agent comparison with actual named source reference",
+        "humanReview": false,
+        "fullObjectVisible": true,
+        "geometryMatchStatus": "source-aligned candidate; exact geometry not certified",
+        "observations": [
+          "Paired tall side horns, circular decorated forehead medallion, asymmetrical viewer-left eye plate and patterned nose/chin retained.",
+          "Fine interlace, engravings and horn curvature are reconstructed; the grayscale icon does not establish production material colors."
+        ]
+      },
+      "generationPasses": [
+        {
+          "purpose": "source-referenced front generation",
+          "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite, not a new design. The source is a named monochrome community port icon; reproduce only its observable front geometry and grayscale metallic/bony values. Do not infer missing side/back, original UV colors or body proportions. Preserve the exact tall pair of upper horns with the same inward/outward curvature, the round raised central forehead medallion and its source interlaced geometric relief, the curved plate borders, the asymmetric eye protection including the decorated plate across the viewer-left eye, the other dark open eye slot, detailed nose ridge and narrow patterned lower face. No generic Viking human helmet, no extra horn pair. Omit only the extrinsic hanging straight dreadlock strands behind the cheek armor. Same source silhouette, intrinsic geometry count, plate boundaries and observable damage; no invented motifs. Front orthographic camera. Put the complete mask including all intrinsic horns/crest in the CENTER TWO THIRDS of a square canvas with very generous transparent empty margin at least12percent on all sides; do not enlarge it to fill canvas. Prefer1024square. Solid object fully opaque, straight native alpha outside with only antialiased edge. No wearer, head/neck, hair extensions, body, stand, scenery, floor, shadow, fog, glow, text, caption, UI, border or watermark. Detailed crisp grayscale game cutout, faithful to this particular picture instead of a creative redesign. Preserve original notches and asymmetries.",
+          "generatedNativePath": "/workspace/generated_images/exec-a148dbff-3044-48f4-b861-9f88d201c5b8.png",
+          "sha256": "1b4403348b632f1fadd9f4b0b737d87a32512835602ba7ca82578a2426dd22d9",
+          "references": [
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-6.png",
+              "bytes": 56693,
+              "sha256": "65cdce5a5fd32cd921c4d28521696262665b4e41f39498c33b2affe0512f6768",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "672e743f2c1f696ebee6b8d71ce56e966ed19c88419d1e30a985987b9c1df32b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alpha-front",
+      "maskId": "alpha",
+      "kind": "mask",
+      "state": "front",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+      },
+      "sourceReference": {
+        "id": "alpha-mask",
+        "label": "Alpha Mask",
+        "view": "mask-front",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixel1to1Verified": false,
+        "resolution": [
+          256,
+          256
+        ],
+        "scope": "ID15 label verified in community localization; no side/back or original game color verification.",
+        "files": [
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_15.texture",
+            "bytes": 65664,
+            "sha256": "fb27fc86e325ad112f4350df78d8f3bb6b0d73c0438014117739ca7cf000323b",
+            "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_15.texture",
+            "gitBlobSha": "738c853cbe5a0085861ecc2fb21ed45cfba12381",
+            "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_15.texture",
+            "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_15.texture"
+          },
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/native-reference-7.png",
+            "bytes": 51921,
+            "sha256": "b1172277bea267b53f885f8167cd56cb4a3ccb628a8a45f34d36d8d01ef83042",
+            "role": "native-size read-only WebGL decode screenshot",
+            "derivedFromSourceSha256": "fb27fc86e325ad112f4350df78d8f3bb6b0d73c0438014117739ca7cf000323b"
+          }
+        ]
+      },
+      "generatedNativePath": "/workspace/generated_images/exec-d24b4b4e-5f5a-4efa-85ef-d42354c2e086.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-d24b4b4e-5f5a-4efa-85ef-d42354c2e086.png",
+      "assetPath": "public/game/p0-sprites-20261113/masks/alpha-front.png",
+      "sha256": "7d50dab62213520dbe50f126d4af03405e4b30f3dfdc903cf5a11dcb9d1d57e9",
+      "bytes": 1591809,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 1009308,
+      "visiblePixelsAlphaAtLeast16": 525927,
+      "bodyPixelsAlphaAtLeast240": 516943,
+      "alphaNoisePixels1or2": 30438,
+      "visibleBoundsAlpha16": [
+        237,
+        113,
+        1017,
+        1130
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "nativeAnchor": [
+        627.0,
+        627.0
+      ],
+      "pivotNormalized": [
+        0.5,
+        0.5
+      ],
+      "pivotScope": "Centered standalone preview sprite; equipment rig fitting has not been performed.",
+      "marginsPixelsAlpha16": [
+        237,
+        113,
+        237,
+        124
+      ],
+      "marginsFractionAlpha16": [
+        0.18899521531100477,
+        0.09011164274322168,
+        0.18899521531100477,
+        0.09888357256778309
+      ],
+      "minimumMarginRequirementFraction": 0.08,
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "front-orthographic",
+      "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite. Reproduce the particular source geometry instead of making a design inspired by its name. The source is a named monochrome community port icon, not a color or 3-view certification. Keep only its observable front shape and grayscale metallic/bony material values; never invent unseen sides/back, original game UV colors or wearer proportions. Preserve the exact fossil/insect-skull biomask in the reference: two enormous dark tilted oval eye openings, thin bony rings and ridges around those openings, the raised rough skeletal bridge down its long middle, small upper skull sockets/protuberances and irregular exposed lower skull rim with its directly attached bony teeth. Match this bone geometry, not a generic Xenomorph or human skull. Preserve teeth attached to the lower skull rim but do not turn the long narrow straight hanging strands behind the side plates into extra teeth; those separate hairstyle strands should be absent. Same visible silhouette, intrinsic part counts, front plate boundaries, proportions, grooves and asymmetries. Front orthographic view only. Complete mask centered in the CENTRAL TWO THIRDS of a square canvas, generous native transparent blank margin at least12percent on all sides; prefer1024square. All object solids opaque and only antialiased outside edges. Native straight alpha background, no black painted background. No body, wearer, head, neck, extra hair, stand, scenery, floor, cast shadow, glow, haze, label, lettering, UI, frame or watermark. Crisp grayscale game cutout with faithful readable detail, no newly invented patterns or colors.",
+      "references": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_15.texture",
+          "bytes": 65664,
+          "sha256": "fb27fc86e325ad112f4350df78d8f3bb6b0d73c0438014117739ca7cf000323b",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_15.texture",
+          "gitBlobSha": "738c853cbe5a0085861ecc2fb21ed45cfba12381",
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_15.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_15.texture"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-7.png",
+          "bytes": 51921,
+          "sha256": "b1172277bea267b53f885f8167cd56cb4a3ccb628a8a45f34d36d8d01ef83042",
+          "role": "native-size read-only WebGL decode screenshot",
+          "derivedFromSourceSha256": "fb27fc86e325ad112f4350df78d8f3bb6b0d73c0438014117739ca7cf000323b"
+        }
+      ],
+      "viewCoverage": [
+        "front"
+      ],
+      "materials": "Monochrome reference appearance only; no original game UV/color verification.",
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required."
+      ],
+      "visualReview": {
+        "reviewer": "AI-agent comparison with actual named source reference",
+        "humanReview": false,
+        "fullObjectVisible": true,
+        "geometryMatchStatus": "source-aligned candidate; exact geometry not certified",
+        "observations": [
+          "Large tilted eye openings, elongated central bony bridge, fossil/insect-skull ridges and intrinsic lower bony projections retained.",
+          "Clearly separate straight rear strands were omitted; intrinsic skull protrusions were retained. Individual small teeth and fracture boundaries are reconstructed and need human review."
+        ]
+      },
+      "generationPasses": [
+        {
+          "purpose": "source-referenced front generation",
+          "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite. Reproduce the particular source geometry instead of making a design inspired by its name. The source is a named monochrome community port icon, not a color or 3-view certification. Keep only its observable front shape and grayscale metallic/bony material values; never invent unseen sides/back, original game UV colors or wearer proportions. Preserve the exact fossil/insect-skull biomask in the reference: two enormous dark tilted oval eye openings, thin bony rings and ridges around those openings, the raised rough skeletal bridge down its long middle, small upper skull sockets/protuberances and irregular exposed lower skull rim with its directly attached bony teeth. Match this bone geometry, not a generic Xenomorph or human skull. Preserve teeth attached to the lower skull rim but do not turn the long narrow straight hanging strands behind the side plates into extra teeth; those separate hairstyle strands should be absent. Same visible silhouette, intrinsic part counts, front plate boundaries, proportions, grooves and asymmetries. Front orthographic view only. Complete mask centered in the CENTRAL TWO THIRDS of a square canvas, generous native transparent blank margin at least12percent on all sides; prefer1024square. All object solids opaque and only antialiased outside edges. Native straight alpha background, no black painted background. No body, wearer, head, neck, extra hair, stand, scenery, floor, cast shadow, glow, haze, label, lettering, UI, frame or watermark. Crisp grayscale game cutout with faithful readable detail, no newly invented patterns or colors.",
+          "generatedNativePath": "/workspace/generated_images/exec-d24b4b4e-5f5a-4efa-85ef-d42354c2e086.png",
+          "sha256": "7d50dab62213520dbe50f126d4af03405e4b30f3dfdc903cf5a11dcb9d1d57e9",
+          "references": [
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-7.png",
+              "bytes": 51921,
+              "sha256": "b1172277bea267b53f885f8167cd56cb4a3ccb628a8a45f34d36d8d01ef83042",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "fb27fc86e325ad112f4350df78d8f3bb6b0d73c0438014117739ca7cf000323b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vex-front",
+      "maskId": "vex",
+      "kind": "mask",
+      "state": "front",
+      "status": "generated-candidate",
+      "humanArtValidated": false,
+      "canonCertified": false,
+      "sourceType": "secondary-community-PHG-port-icon",
+      "sourceCommunity": {
+        "repository": "Matthelzor/pd2-predator-pack",
+        "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+        "readme": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+        "attribution": "README explicitly credits Predator: Hunting Grounds / IllFonic and other games. Assets are a community port, not publisher-certified."
+      },
+      "sourceReference": {
+        "id": "vex-mask",
+        "label": "Vex",
+        "view": "mask-front",
+        "sourceType": "community-PAYDAY2-port-HUD-icon",
+        "publisherCertified": false,
+        "originalGamePixel1to1Verified": false,
+        "resolution": [
+          256,
+          256
+        ],
+        "scope": "ID18 label verified in community localization; no side/back or original game color verification.",
+        "files": [
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_18.texture",
+            "bytes": 65664,
+            "sha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706",
+            "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+            "gitBlobSha": "686a9a410ab20e993dc08837799392262a197065",
+            "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+            "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture"
+          },
+          {
+            "path": "/tmp/p0-sprites-20261113/web-references/native-reference-8.png",
+            "bytes": 42406,
+            "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137",
+            "role": "native-size read-only WebGL decode screenshot",
+            "derivedFromSourceSha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706"
+          }
+        ]
+      },
+      "generatedNativePath": "/workspace/generated_images/exec-f66aef65-c9a9-4a9c-8ae3-be1231fbbb26.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-f66aef65-c9a9-4a9c-8ae3-be1231fbbb26.png",
+      "assetPath": "public/game/p0-sprites-20261113/masks/vex-front.png",
+      "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516",
+      "bytes": 1437392,
+      "nativeDimensions": [
+        1254,
+        1254
+      ],
+      "nativeMode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "transparentPixels": 917589,
+      "visiblePixelsAlphaAtLeast16": 641438,
+      "bodyPixelsAlphaAtLeast240": 636656,
+      "alphaNoisePixels1or2": 10390,
+      "visibleBoundsAlpha16": [
+        185,
+        119,
+        1068,
+        1135
+      ],
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "nativeAnchor": [
+        627.0,
+        627.0
+      ],
+      "pivotNormalized": [
+        0.5,
+        0.5
+      ],
+      "pivotScope": "Centered standalone preview sprite; equipment rig fitting has not been performed.",
+      "marginsPixelsAlpha16": [
+        185,
+        119,
+        186,
+        119
+      ],
+      "marginsFractionAlpha16": [
+        0.14752791068580542,
+        0.094896331738437,
+        0.14832535885167464,
+        0.094896331738437
+      ],
+      "minimumMarginRequirementFraction": 0.08,
+      "transparency": {
+        "mode": "alpha",
+        "noiseFloor": 2
+      },
+      "pixelEditingPerformed": false,
+      "animationFrames": 1,
+      "camera": "front-orthographic",
+      "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite. Reproduce the particular source geometry instead of making a design inspired by its name. The source is a named monochrome community port icon, not a color or 3-view certification. Keep only its observable front shape and grayscale metallic/bony material values; never invent unseen sides/back, original game UV colors or wearer proportions. Preserve the exact restrained smooth dark biomask: broad rounded forehead divided by the few pictured long panel seams, tapering sharply down to the eye bridge, angular black eye slots in silver rims, long sharp central nose/face ridge, compact tapered chin and angular silver cheek/side plates. This model has no horns, crest, attached creature jaw or extra decorations: add none. Omit the long narrow hanging straight dreadlock strands behind the side armor while retaining every actual metal plate. Same visible silhouette, intrinsic part counts, front plate boundaries, proportions, grooves and asymmetries. Front orthographic view only. Complete mask centered in the CENTRAL TWO THIRDS of a square canvas, generous native transparent blank margin at least12percent on all sides; prefer1024square. All object solids opaque and only antialiased outside edges. Native straight alpha background, no black painted background. No body, wearer, head, neck, extra hair, stand, scenery, floor, cast shadow, glow, haze, label, lettering, UI, frame or watermark. Crisp grayscale game cutout with faithful readable detail, no newly invented patterns or colors.",
+      "references": [
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/pd2-mask-icons/predator_18.texture",
+          "bytes": 65664,
+          "sha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+          "gitBlobSha": "686a9a410ab20e993dc08837799392262a197065",
+          "url": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture",
+          "rawUrl": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_18.texture"
+        },
+        {
+          "path": "/tmp/p0-sprites-20261113/web-references/native-reference-8.png",
+          "bytes": 42406,
+          "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137",
+          "role": "native-size read-only WebGL decode screenshot",
+          "derivedFromSourceSha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706"
+        }
+      ],
+      "viewCoverage": [
+        "front"
+      ],
+      "materials": "Monochrome reference appearance only; no original game UV/color verification.",
+      "limitations": [
+        "The source is a community port icon, not publisher-certified original PHG pixels.",
+        "Generated detail is an interpretation of a 256×256 front icon; pixel-level 1:1 fidelity has not been established.",
+        "No profile/back views, UV certification, six-morphology rig fit or complete body claim.",
+        "Detached hair omitted only where clearly separate from mask geometry.",
+        "Human silhouette and surface review is still required."
+      ],
+      "visualReview": {
+        "reviewer": "AI-agent comparison with actual named source reference",
+        "humanReview": false,
+        "fullObjectVisible": true,
+        "geometryMatchStatus": "source-aligned candidate; exact geometry not certified",
+        "observations": [
+          "Restrained broad smooth dome, long seams, slanted rimmed eye slots, central ridge and compact angular chin/cheeks retained.",
+          "No horns or extra jaw were added. Thin seam placement and exact plate curvature remain reconstructed at higher resolution."
+        ]
+      },
+      "generationPasses": [
+        {
+          "purpose": "source-referenced front generation",
+          "prompt": "Edit the attached exact frontal biomask reference into ONE high-resolution isolated mask sprite. Reproduce the particular source geometry instead of making a design inspired by its name. The source is a named monochrome community port icon, not a color or 3-view certification. Keep only its observable front shape and grayscale metallic/bony material values; never invent unseen sides/back, original game UV colors or wearer proportions. Preserve the exact restrained smooth dark biomask: broad rounded forehead divided by the few pictured long panel seams, tapering sharply down to the eye bridge, angular black eye slots in silver rims, long sharp central nose/face ridge, compact tapered chin and angular silver cheek/side plates. This model has no horns, crest, attached creature jaw or extra decorations: add none. Omit the long narrow hanging straight dreadlock strands behind the side armor while retaining every actual metal plate. Same visible silhouette, intrinsic part counts, front plate boundaries, proportions, grooves and asymmetries. Front orthographic view only. Complete mask centered in the CENTRAL TWO THIRDS of a square canvas, generous native transparent blank margin at least12percent on all sides; prefer1024square. All object solids opaque and only antialiased outside edges. Native straight alpha background, no black painted background. No body, wearer, head, neck, extra hair, stand, scenery, floor, cast shadow, glow, haze, label, lettering, UI, frame or watermark. Crisp grayscale game cutout with faithful readable detail, no newly invented patterns or colors.",
+          "generatedNativePath": "/workspace/generated_images/exec-f66aef65-c9a9-4a9c-8ae3-be1231fbbb26.png",
+          "sha256": "d045aacca71608b4af49a21c8f4770a42e49e45c73dcef9e668e8ba13f76e516",
+          "references": [
+            {
+              "path": "/tmp/p0-sprites-20261113/web-references/native-reference-8.png",
+              "bytes": 42406,
+              "sha256": "6cd7b9b179950e6c1d647fb453eced3d06d4f2612d75330ff1b9e1620cbcc137",
+              "role": "native-size read-only WebGL decode screenshot",
+              "derivedFromSourceSha256": "d4c7f28ac7518b5e3f2dce98531566f5c5e4fb28c7d1d42e258c0bb573404706"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

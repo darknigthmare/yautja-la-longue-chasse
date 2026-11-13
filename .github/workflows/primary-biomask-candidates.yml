@@ -1,0 +1,91 @@
+name: Primary-source biomask candidate integrity
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/primary-biomask-candidates.yml'
+      - '.github/workflows/p0-sprite-candidates.yml'
+      - 'production/biomasks-primary-20261113/**'
+      - 'public/game/biomasks-primary-20261113/**'
+      - 'production/biomasks-20261113/**'
+      - 'public/game/biomasks-20261113/**'
+      - '.github/workflows/biomask-candidates.yml'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'public/game/sprites/v62/masks/**'
+      - 'public/game/assets/v3/actors/yautja/hunter/masks/**'
+      - 'public/game/assets/v133/concept-masks/**'
+      - 'public/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/primary-biomask-candidates.yml'
+      - '.github/workflows/p0-sprite-candidates.yml'
+      - 'production/biomasks-primary-20261113/**'
+      - 'public/game/biomasks-primary-20261113/**'
+      - 'production/biomasks-20261113/**'
+      - 'public/game/biomasks-20261113/**'
+      - '.github/workflows/biomask-candidates.yml'
+      - 'production/p0-sprites-20261113/**'
+      - 'public/game/p0-sprites-20261113/**'
+      - 'production/p0-fidelity-20261113/**'
+      - 'public/game/p0-fidelity-20261113/**'
+      - '**/*.xlsx'
+      - 'docs/campagne/**'
+      - 'public/game/sprites/v62/masks/**'
+      - 'public/game/assets/v3/actors/yautja/hunter/masks/**'
+      - 'public/game/assets/v133/concept-masks/**'
+      - 'public/game/assets/v14/hunter-kit/masks/mask-feral-screen.webp'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: primary-biomask-candidate-integrity-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  primary-mask-integrity:
+    name: Official-source mask candidates, source pins and workbook
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout four exact mask selection files
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 1
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /.github/workflows/primary-biomask-candidates.yml
+            /production/biomasks-primary-20261113/tools/ci-primary-mask-inputs.py
+            /production/biomasks-primary-20261113/suivi/source-protection.json
+            /public/game/biomasks-primary-20261113/manifest.json
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Include exact protected sources without unrelated historical art
+        # The repository is public; lazy blob fetches remain anonymous after
+        # checkout removes its read token. The selector itself never changes Git.
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 production/biomasks-primary-20261113/tools/ci-primary-mask-inputs.py --check-git-tree
+          python3 production/biomasks-primary-20261113/tools/ci-primary-mask-inputs.py --patterns > "$RUNNER_TEMP/biomask-sparse-inputs.txt"
+          git sparse-checkout set --no-cone --stdin < "$RUNNER_TEMP/biomask-sparse-inputs.txt"
+          python3 production/biomasks-primary-20261113/tools/ci-primary-mask-inputs.py --check
+      - name: Install pinned native PNG reader
+        run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
+      - name: Verify native candidates and deterministic workbook without rewriting
+        # Completeness concerns this seven-cut review batch, including Emissary's
+        # explicitly partial source view. It does
+        # not imply all inventory masks, canonical fidelity or human approval.
+        run: python3 production/biomasks-primary-20261113/tools/verify-primary-mask-pack.py --check --require-complete

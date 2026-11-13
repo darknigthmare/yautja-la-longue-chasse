@@ -1,0 +1,1985 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "scope": "Read-only source acquisition for all masks requested by the current Bible/list task; no generation or canonical approval.",
+  "communitySource": {
+    "repository": "Matthelzor/pd2-predator-pack",
+    "commit": "967905f04f02f702e89e0ca976bac712c516a4e9",
+    "readmeUrl": "https://github.com/Matthelzor/pd2-predator-pack/blob/967905f04f02f702e89e0ca976bac712c516a4e9/README.md",
+    "localReadmePath": "/tmp/all-masks-20261113/web-references/community-README.md",
+    "readmeSha256": "ae22700e1f4e08b055759fb8882b3f6c395d6632d35644f4d8b02130812c561a",
+    "sourceAttributionLines": [
+      25,
+      30,
+      31,
+      35,
+      52
+    ]
+  },
+  "method": "DDSdownloadunchanged;GitblobSHAverified;originalDXT5decodedbyGPUWebGLonblack;nativecanvas screenshots with no rasterretouch/rescale/cropassetexport.",
+  "counts": {
+    "additionalDDSReferences": 27,
+    "nativeScreenshots": 27,
+    "bibleNamedTargets": 14,
+    "shadedFrontCandidates": 13,
+    "flatSymbolOnly": 1,
+    "canonCertified": 0,
+    "profileBackReferences": 0
+  },
+  "sourceInspection": {
+    "performed": true,
+    "contactSheets": [
+      {
+        "path": "/tmp/all-masks-20261113/web-references/native-dds-on-black-batch-0.png",
+        "sha256": "01320a9f93343e568daa3e72769ed56c99221200dfcb1f9ab418bf77bad0d7a3"
+      },
+      {
+        "path": "/tmp/all-masks-20261113/web-references/native-dds-on-black-batch-1.png",
+        "sha256": "bea7506e1988a2ed7a8f67ec65269cb63202edb7643b4b903308cda84adc1f6e"
+      },
+      {
+        "path": "/tmp/all-masks-20261113/web-references/native-dds-on-black-batch-2.png",
+        "sha256": "f47904533e4cf11b6ee7c60f80c28fb5ea28971ceafede0439dddb3c5cacaa27"
+      }
+    ],
+    "batchSize": 9,
+    "nativeSize": [
+      256,
+      256
+    ]
+  },
+  "entries": [
+    {
+      "targetId": "phg-elder",
+      "sourceId": "MK-37-to-MK-45:elder",
+      "targetName": "Elder (PHG)",
+      "kind": "biomask",
+      "communityId": "predator_01",
+      "communityLabel": "Elder",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535,
+          "text": "| MK-37 → MK-45 | Cleopatra, Exiled, Exalted, Gladiator, Oni, Jotun, Father, Captured, Elder, Alpha, Hunter, Scout, Berserker, et les masques cosmétiques nommés plus haut | à relever | No text source describes them: describe each from a game capture, then add `matching the Predator: Hunting Grounds '<name>' mask`. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972,
+          "cells": {
+            "A972": "DOC-9c183a-L1533",
+            "C972": "Personnalisation et arsenal",
+            "D972": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Masques PHG",
+            "E972": "Entrée de tableau",
+            "F972": "ID : MK-37 → MK-45 ; Source : Cleopatra, Exiled, Exalted, Gladiator, Oni, Jotun, Father, Captured, Elder, Alpha, Hunter, Scout, Berserker, et les masques cosmétiques nommés plus haut ; Statut : à relever ; Détails : No text source describes them: describe each from a game capture, then add `matching the Predator: Hunting Grounds '<name>' mask`.",
+            "G972": "Conception et critères de campagne — constat ou contenu de la source",
+            "H972": "Déclaration source datée à rapprocher du comportement attesté",
+            "J972": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K972": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1533–1533"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_01.texture",
+          "sha256": "f4a6ef6efb9be9ae56cf8d5fa478576c40c21a5149c574f9ec12c5d123e92e51",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+          "gitBlobSha": "b183277598b836fab48e96c739bc096bff3adba3",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_01.png",
+          "sha256": "f300c2ef88cbc79db5c8d50de50bbacc0bb82fe56b6a3f6d8c81213fd5c2a0c3",
+          "bytes": 32065,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "f4a6ef6efb9be9ae56cf8d5fa478576c40c21a5149c574f9ec12c5d123e92e51",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 25,
+          "key": "bm_msk_predator_01",
+          "value": "Elder"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 38,
+          "text": "<Mask id=\"predator_01\" unit=\"units/mods/masks/msk_predator_01/msk_predator_01\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Rounded smooth forehead disc, small visible forehead emblem, narrow dark eye band, short smooth tapering faceplate.",
+        "Community Elder label is not permission to conflate this with Greyback/Predator2 or Elder/AVP2004."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-immortal",
+      "sourceId": "PHG-MASK-immortal",
+      "targetName": "Immortal",
+      "kind": "biomask",
+      "communityId": "predator_02",
+      "communityLabel": "Immortal",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_02.texture",
+          "sha256": "c206b22234e84a1240cc1c617b5166b4bb2186c488490589a83005399cae632d",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+          "gitBlobSha": "aeed885e17b11e10e7a3ad0ab76d326f60e00499",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_02.png",
+          "sha256": "ce4e9fe67b2d4704385e6aec630836e9fa148086b559e9c9d7bfab9632f2f6f1",
+          "bytes": 31706,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "c206b22234e84a1240cc1c617b5166b4bb2186c488490589a83005399cae632d",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 28,
+          "key": "bm_msk_predator_02",
+          "value": "Immortal"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 42,
+          "text": "<Mask id=\"predator_02\" unit=\"units/mods/masks/msk_predator_02/msk_predator_02\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Raised curving forehead panels, two pale upper temple apertures, arched eye contours and a tapered central nose/faceplate."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-nocturne",
+      "sourceId": "PHG-MASK-nocturne",
+      "targetName": "Nocturne",
+      "kind": "biomask",
+      "communityId": "predator_03",
+      "communityLabel": "Nocturne",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_03.texture",
+          "sha256": "7f8bcbc19074ddc647373a918dd5497e473135278bcc75b5e26e48977b96a056",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+          "gitBlobSha": "fbdb34591bcfdb1515894ccb520d8c279756904d",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_03.png",
+          "sha256": "2aebe4ec0c513d4c9c383944e472ac7899138703057901604f7aad14ac1f4a44",
+          "bytes": 27885,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "7f8bcbc19074ddc647373a918dd5497e473135278bcc75b5e26e48977b96a056",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 31,
+          "key": "bm_msk_predator_03",
+          "value": "Nocturne"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 46,
+          "text": "<Mask id=\"predator_03\" unit=\"units/mods/masks/msk_predator_03/msk_predator_03\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Smooth broad heart/bowl forehead, notched crown with paired raised points, oval patterned upper side panels; angular lower face."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-phalanx",
+      "sourceId": "PHG-MASK-phalanx",
+      "targetName": "Phalanx",
+      "kind": "biomask",
+      "communityId": "predator_04",
+      "communityLabel": "Phalanx",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_04.texture",
+          "sha256": "f584a06a334f5ec00dd1ff7781e655371e4a22dd440ecb7761442995f9385555",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+          "gitBlobSha": "7115b848eddeb92aaef708a7b49724ca391e7ae6",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_04.png",
+          "sha256": "4106898755851ec41aae9166d2bd014bed1c50edf3344242843eb0386eb09fa8",
+          "bytes": 31321,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "f584a06a334f5ec00dd1ff7781e655371e4a22dd440ecb7761442995f9385555",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 34,
+          "key": "bm_msk_predator_04",
+          "value": "Phalanx"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 50,
+          "text": "<Mask id=\"predator_04\" unit=\"units/mods/masks/msk_predator_04/msk_predator_04\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Angular broad forehead panels, central raised ridge and long pointed beak/nose plate, layered silver cheek facets."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-phoenix",
+      "sourceId": "PHG-MASK-phoenix",
+      "targetName": "Phoenix",
+      "kind": "biomask",
+      "communityId": "predator_05",
+      "communityLabel": "Phoenix",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_05.texture",
+          "sha256": "d7b456c7f5c1f035eebded97b00db2f262cb1d309b2146cfa1511845c6bc1969",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_05.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_05.texture",
+          "gitBlobSha": "125a4975cbed071da9834cc8db86cca7cbef4b1c",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_05.png",
+          "sha256": "98420c73ca70e77d67225f37af2a408cf0c59ee4d71bbd8d9a9db764d77fca8a",
+          "bytes": 33428,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "d7b456c7f5c1f035eebded97b00db2f262cb1d309b2146cfa1511845c6bc1969",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 37,
+          "key": "bm_msk_predator_05",
+          "value": "Phoenix"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 54,
+          "text": "<Mask id=\"predator_05\" unit=\"units/mods/masks/msk_predator_05/msk_predator_05\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Flame/leaf-like crown of long raised blades around a central elongated shield panel; large dark eye openings and pointed lower face.",
+        "Do not substitute the separate KawaiiPhoenix community modification."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-plague",
+      "sourceId": "PHG-MASK-plague",
+      "targetName": "Plague",
+      "kind": "biomask",
+      "communityId": "predator_06",
+      "communityLabel": "Plague",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_06.texture",
+          "sha256": "6110b1cabe642db07292d9cba05151014ebff42b245183a71b5760d6685d1dce",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_06.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_06.texture",
+          "gitBlobSha": "4b210d4d38ac3c50ff3e4dfff7122b054dcc4990",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_06.png",
+          "sha256": "6b5fa4769e7a5f4200e94ce8c75f41cea015818610584ab889dab53adba72776",
+          "bytes": 32676,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "6110b1cabe642db07292d9cba05151014ebff42b245183a71b5760d6685d1dce",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 40,
+          "key": "bm_msk_predator_06",
+          "value": "Plague"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 58,
+          "text": "<Mask id=\"predator_06\" unit=\"units/mods/masks/msk_predator_06/msk_predator_06\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Exposed rib/spine-like forehead framework with dark gaps, crossing angular lower-face struts and long central faceplate."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-inferno",
+      "sourceId": "PHG-MASK-inferno",
+      "targetName": "Inferno",
+      "kind": "biomask",
+      "communityId": "predator_07",
+      "communityLabel": "Inferno",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_07.texture",
+          "sha256": "e1ebacf00f13c7ee417faa15b083f6b448a96b2d8cad00fff4ee4dcd7768d8ab",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_07.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_07.texture",
+          "gitBlobSha": "ab955622822eb52b8276942577f55f1503d70b09",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_07.png",
+          "sha256": "7ac34449e31c73243695853d62218e3ea89b77f4ce0fbdc0694d756cc1ea1fec",
+          "bytes": 31318,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "e1ebacf00f13c7ee417faa15b083f6b448a96b2d8cad00fff4ee4dcd7768d8ab",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 43,
+          "key": "bm_msk_predator_07",
+          "value": "Inferno"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 62,
+          "text": "<Mask id=\"predator_07\" unit=\"units/mods/masks/msk_predator_07/msk_predator_07\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Segmented shield forehead with raised crown points, layered brow/cheek ridges and small circular feature on image-left temple."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-prophet",
+      "sourceId": "PHG-MASK-prophet",
+      "targetName": "Prophet",
+      "kind": "biomask",
+      "communityId": "predator_08",
+      "communityLabel": "Prophet",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_08.texture",
+          "sha256": "d7f9c898c3f55e47afb4a59ec8a3fd86328acb5a0490d2a81491fdb7a14d672f",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_08.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_08.texture",
+          "gitBlobSha": "6fea336d2d2a83c933180e6b5ded27089275b226",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_08.png",
+          "sha256": "173dca27006bb9b0be1c4450fbb83bf70bbb181890dc39f792e6accb27a90cf7",
+          "bytes": 31040,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "d7f9c898c3f55e47afb4a59ec8a3fd86328acb5a0490d2a81491fdb7a14d672f",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 46,
+          "key": "bm_msk_predator_08",
+          "value": "Prophet"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 66,
+          "text": "<Mask id=\"predator_08\" unit=\"units/mods/masks/msk_predator_08/msk_predator_08\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Nested arch/teardrop raised forehead motif, narrow dark eye band, projecting central vertical oval respirator/grille."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-eclipse",
+      "sourceId": "PHG-MASK-eclipse",
+      "targetName": "Eclipse",
+      "kind": "biomask",
+      "communityId": "predator_09",
+      "communityLabel": "Eclipse",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_09.texture",
+          "sha256": "5d9326e7bc46b90a27eae3ba9e23f39b45d4fefedd986984656e32b3e188700b",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_09.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_09.texture",
+          "gitBlobSha": "9e610f7fa07b4b28c86284a789caeaa094c804fa",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_09.png",
+          "sha256": "57b85bcd07096d8a765a9848c9c32c798ddc0f63c57f735ee84d67263934bcf0",
+          "bytes": 33065,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "5d9326e7bc46b90a27eae3ba9e23f39b45d4fefedd986984656e32b3e188700b",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 49,
+          "key": "bm_msk_predator_09",
+          "value": "Eclipse"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 70,
+          "text": "<Mask id=\"predator_09\" unit=\"units/mods/masks/msk_predator_09/msk_predator_09\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Horseshoe/ring-like upper crown around a dark disc, small inward radial projections on its lower inner sides, long narrow lower central plate."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-journeyman",
+      "sourceId": "PHG-MASK-journeyman",
+      "targetName": "Journeyman",
+      "kind": "biomask",
+      "communityId": "predator_10",
+      "communityLabel": "Journeyman",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_10.texture",
+          "sha256": "117a76864b15d73e318b8f334424667b48864babcee99b887012f1f4eb4898a0",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_10.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_10.texture",
+          "gitBlobSha": "2a227e2fdb976c513053020bd813348e2e8b59c1",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_10.png",
+          "sha256": "c9cf0a47ae4c13654d0248dc175086bfdc73d9880019c87ed3db15d0780c57cd",
+          "bytes": 32592,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "117a76864b15d73e318b8f334424667b48864babcee99b887012f1f4eb4898a0",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 52,
+          "key": "bm_msk_predator_10",
+          "value": "Journeyman"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 74,
+          "text": "<Mask id=\"predator_10\" unit=\"units/mods/masks/msk_predator_10/msk_predator_10\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Angular tall shield forehead with thick U-shaped perimeter and upper rectangular details; large lower oval grille and image-left circular temple feature."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-arthos",
+      "sourceId": "PHG-MASK-arthos",
+      "targetName": "Arthos",
+      "kind": "biomask",
+      "communityId": "predator_19",
+      "communityLabel": "Arthos",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_19.texture",
+          "sha256": "69c109c85ed7a7016d543471b2ae7c83056f8cb309b24c280c87b6bd34de0632",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_19.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_19.texture",
+          "gitBlobSha": "5b169ae750fffd43b6321f62db4ac3cadaabee86",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_19.png",
+          "sha256": "d103cd7d55121f0665341bfb5dd5132e3e0e27e3da9c46a4122f62fdc24d029e",
+          "bytes": 53735,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "69c109c85ed7a7016d543471b2ae7c83056f8cb309b24c280c87b6bd34de0632",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 79,
+          "key": "bm_msk_predator_19",
+          "value": "Arthos"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 110,
+          "text": "<Mask id=\"predator_19\" unit=\"units/mods/masks/msk_predator_19/msk_predator_19\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Broad dark forehead with sweeping raised rails and center seam, outward pointed side contours, narrow eyes and skeletal lower facets."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-cosmetic-ravager",
+      "sourceId": "PHG-MASK-ravager",
+      "targetName": "Ravager",
+      "kind": "biomask",
+      "communityId": "predator_20",
+      "communityLabel": "Ravager",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1508,
+          "text": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32)."
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 950,
+          "cells": {
+            "A950": "DOC-9c183a-L1506",
+            "C950": "Personnalisation et arsenal",
+            "D950": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Armes et équipements de PHG",
+            "E950": "Point de conception",
+            "F950": "- Masques : Journeyman, Eclipse, Prophet, Inferno, Plague, Phoenix, Phalanx, Nocturne, Immortal (patch 1.10, cités avec la teinte Obsidian) ; Ravager, Arthos, Vex (2.01) ; Wretch, Haze, Rival (2.14) ; City Hunter Rebreather, Mr Black (2.19-2.23) ; Salamander, Mors, Foxtrot (2.28) ; Tank (2.40) ; Bone (2.42). Option de cicatrices sur les masques (2.32).",
+            "G950": "Conception et critères de campagne — constat ou contenu de la source",
+            "H950": "Déclaration source datée à rapprocher du comportement attesté",
+            "J950": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K950": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1506–1506"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_20.texture",
+          "sha256": "0b6f99408a85bb4e849478b4ed32e778e1a517eb53dc775bd3d9b1c3d56d33d2",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_20.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_20.texture",
+          "gitBlobSha": "29f0e44728f6b2fbe55f7da3cb4531fd29223870",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_20.png",
+          "sha256": "0c9eda0893d8cd20dce45e515b8e8995ed73e64cf614e6a74b893ed650bb3bf7",
+          "bytes": 51593,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "0b6f99408a85bb4e849478b4ed32e778e1a517eb53dc775bd3d9b1c3d56d33d2",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 82,
+          "key": "bm_msk_predator_20",
+          "value": "Ravager"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 114,
+          "text": "<Mask id=\"predator_20\" unit=\"units/mods/masks/msk_predator_20/msk_predator_20\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Paired large teardrop forehead recesses flanking a central ridge; angular eye slits and long central lower oval panel."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "phg-exiled",
+      "sourceId": "MK-37-to-MK-45:exiled",
+      "targetName": "Exiled (PHG)",
+      "kind": "biomask",
+      "communityId": "predator_22",
+      "communityLabel": "Exiled",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1535,
+          "text": "| MK-37 → MK-45 | Cleopatra, Exiled, Exalted, Gladiator, Oni, Jotun, Father, Captured, Elder, Alpha, Hunter, Scout, Berserker, et les masques cosmétiques nommés plus haut | à relever | No text source describes them: describe each from a game capture, then add `matching the Predator: Hunting Grounds '<name>' mask`. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 972,
+          "cells": {
+            "A972": "DOC-9c183a-L1533",
+            "C972": "Personnalisation et arsenal",
+            "D972": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Masques PHG",
+            "E972": "Entrée de tableau",
+            "F972": "ID : MK-37 → MK-45 ; Source : Cleopatra, Exiled, Exalted, Gladiator, Oni, Jotun, Father, Captured, Elder, Alpha, Hunter, Scout, Berserker, et les masques cosmétiques nommés plus haut ; Statut : à relever ; Détails : No text source describes them: describe each from a game capture, then add `matching the Predator: Hunting Grounds '<name>' mask`.",
+            "G972": "Conception et critères de campagne — constat ou contenu de la source",
+            "H972": "Déclaration source datée à rapprocher du comportement attesté",
+            "J972": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K972": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1533–1533"
+          }
+        }
+      ],
+      "referenceKind": "secondary-monochrome-front-render",
+      "candidateFrontGenerationSupported": true,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_22.texture",
+          "sha256": "1e532900b5966a39759060018a77bc3e8ce90f07afca85e076218460040b7086",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22.texture",
+          "gitBlobSha": "330672712108269331d4b768853b37d91c2ec553",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_22.png",
+          "sha256": "8ab063991d3aca7a3e2db8df11da58fb380f96a9b53ed0fdf64b47e57aba4d99",
+          "bytes": 48565,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "1e532900b5966a39759060018a77bc3e8ce90f07afca85e076218460040b7086",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 88,
+          "key": "bm_msk_predator_22",
+          "value": "Exiled"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 122,
+          "text": "<Mask id=\"predator_22\" unit=\"units/mods/masks/msk_predator_22/msk_predator_22\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "Highly sculpted skeletal plates, tall double-scroll central crown and outward curved side projections; deeply recessed eye band and ribbed lower face.",
+        "ExiledRepulsiveDreads is explicitly a predlock variant of this label, not a new proven mask identity."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    },
+    {
+      "targetId": "mk-30-emissary",
+      "sourceId": "MK-30",
+      "targetName": "emissary",
+      "kind": "biomask",
+      "communityId": "predator_emissary",
+      "communityLabel": "Emissary",
+      "sourceRows": [
+        {
+          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
+          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
+          "line": 1528,
+          "text": "| MK-30 emissary | Emissary, PHG | vérifié (silhouette) | Bio-mask close to the Fugitive's, worn with a human-style combat helmet over it, camouflage tones. |"
+        },
+        {
+          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
+          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
+          "sheet": "Bible campagne",
+          "row": 965,
+          "cells": {
+            "A965": "DOC-9c183a-L1526",
+            "C965": "Personnalisation et arsenal",
+            "D965": "Catalogue des variantes d'équipement : prompts d'image / Inventaire Predator: Hunting Grounds et références par entrée / Masques PHG",
+            "E965": "Entrée de tableau",
+            "F965": "ID : MK-30 emissary ; Source : Emissary, PHG ; Statut : vérifié (silhouette) ; Détails : Bio-mask close to the Fugitive's, worn with a human-style combat helmet over it, camouflage tones.",
+            "G965": "Conception et critères de campagne — constat ou contenu de la source",
+            "H965": "Déclaration source datée à rapprocher du comportement attesté",
+            "J965": "Le texte courant conserve ses critères complets ; aucune clôture automatique par présence de code.",
+            "K965": "docs/campagne/BIBLE_DE_CAMPAGNE.md:1526–1526"
+          }
+        }
+      ],
+      "referenceKind": "flat-two-tone-symbol",
+      "candidateFrontGenerationSupported": false,
+      "canonicalOneToOneSupported": false,
+      "publisherCertified": false,
+      "humanArtValidated": false,
+      "referenceFiles": [
+        {
+          "path": "/tmp/all-masks-20261113/web-references/icons/predator_emissary.texture",
+          "sha256": "b11b6f7d4867f2c81fc2027b0f50a2768203e83df1577b89fec2ad71c8d32a8b",
+          "bytes": 65664,
+          "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_emissary.texture",
+          "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_emissary.texture",
+          "gitBlobSha": "eb87512902a604792418c7957e3452ac7ade875c",
+          "format": "DDS-DXT5",
+          "width": 256,
+          "height": 256
+        },
+        {
+          "path": "/tmp/all-masks-20261113/web-references/fronts/predator_emissary.png",
+          "sha256": "7ade0c877f32fa98928f604a4b3d055433b222a023f5cb67cdcf404dbb16675d",
+          "bytes": 16101,
+          "role": "Native256x256read-onlyWebGLscreenshotonblack",
+          "derivedFromSha256": "b11b6f7d4867f2c81fc2027b0f50a2768203e83df1577b89fec2ad71c8d32a8b",
+          "width": 256,
+          "height": 256
+        }
+      ],
+      "identityEvidence": {
+        "localizationFile": {
+          "path": "/tmp/all-masks-20261113/web-references/english.json",
+          "sha256": "9a2566a1a794f313a3d9bb123f341a4bda7914d57a39d37cc4f0052412bde5b1",
+          "line": 7,
+          "key": "bm_msk_predator_emissary",
+          "value": "Emissary"
+        },
+        "definitionFile": {
+          "path": "/tmp/all-masks-20261113/web-references/main.xml",
+          "sha256": "cc9554aa095390475c3b77a6b9d8ac57051550f4fcd72fd56defcfaa00ddf594",
+          "line": 11,
+          "text": "<Mask id=\"predator_emissary\" unit=\"units/mods/masks/msk_predator_emissary/msk_predator_emissary\" type=\"helmet\" global_value=\"predator_mod\" skip_mask_on_sequence=\"false\">"
+        }
+      },
+      "observedShapeNotes": [
+        "This file is a flat white/black outlined pictogram, not a shaded geometric/material render.",
+        "It does not establish the military helmet mentioned by BibleMK30, hidden surfaces, volumetric facets or camouflage colors.",
+        "Do not identify PHGEmissary with either cut-film Emissary1/2 outfit from V44 without a separate binding."
+      ],
+      "camera": "Front-view-likeHUDicon; tilt/perspective not calibrated, no side or rear reference.",
+      "limits": [
+        "Community port attribution covers several games, not publisher verification of each extracted icon.",
+        "256px cannot establish exact microengraving, material UVs, original color or hidden geometry.",
+        "Long pale strands around these icons belong to the shared wearer/predlocks render and are not automatically mask teeth or spikes.",
+        "Any generated image remains a candidate, never canonical1:1 or human-validated merely because its technical checks pass."
+      ]
+    }
+  ],
+  "allAdditionalReferences": [
+    {
+      "id": "owfl_gasmask",
+      "communityLabel": "O.W.F.L Operative Gas Mask",
+      "path": "/tmp/all-masks-20261113/web-references/icons/owfl_gasmask.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/owfl_gasmask.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/owfl_gasmask.texture",
+      "gitBlobSha": "ce10f8db147bbfe8e5ab59727a110e0ba197abd5",
+      "sha256": "c00db8d58dcfef401053b3dc5716fb508c65f61ce53b415057a1605c52649a3b",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/owfl_gasmask.png",
+        "sha256": "192dfe5d07ebbcef184e0f0f30cacc39f1861edab1c14563ad8bad8536fd3567",
+        "bytes": 35518,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "HumanO.W.F.Lgasmask; not CityRebreather or a Yautjabiomask."
+    },
+    {
+      "id": "predator_01",
+      "communityLabel": "Elder",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_01.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_01.texture",
+      "gitBlobSha": "b183277598b836fab48e96c739bc096bff3adba3",
+      "sha256": "f4a6ef6efb9be9ae56cf8d5fa478576c40c21a5149c574f9ec12c5d123e92e51",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_01.png",
+        "sha256": "f300c2ef88cbc79db5c8d50de50bbacc0bb82fe56b6a3f6d8c81213fd5c2a0c3",
+        "bytes": 32065,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_02",
+      "communityLabel": "Immortal",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_02.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_02.texture",
+      "gitBlobSha": "aeed885e17b11e10e7a3ad0ab76d326f60e00499",
+      "sha256": "c206b22234e84a1240cc1c617b5166b4bb2186c488490589a83005399cae632d",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_02.png",
+        "sha256": "ce4e9fe67b2d4704385e6aec630836e9fa148086b559e9c9d7bfab9632f2f6f1",
+        "bytes": 31706,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_03",
+      "communityLabel": "Nocturne",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_03.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_03.texture",
+      "gitBlobSha": "fbdb34591bcfdb1515894ccb520d8c279756904d",
+      "sha256": "7f8bcbc19074ddc647373a918dd5497e473135278bcc75b5e26e48977b96a056",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_03.png",
+        "sha256": "2aebe4ec0c513d4c9c383944e472ac7899138703057901604f7aad14ac1f4a44",
+        "bytes": 27885,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_04",
+      "communityLabel": "Phalanx",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_04.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_04.texture",
+      "gitBlobSha": "7115b848eddeb92aaef708a7b49724ca391e7ae6",
+      "sha256": "f584a06a334f5ec00dd1ff7781e655371e4a22dd440ecb7761442995f9385555",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_04.png",
+        "sha256": "4106898755851ec41aae9166d2bd014bed1c50edf3344242843eb0386eb09fa8",
+        "bytes": 31321,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_05",
+      "communityLabel": "Phoenix",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_05.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_05.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_05.texture",
+      "gitBlobSha": "125a4975cbed071da9834cc8db86cca7cbef4b1c",
+      "sha256": "d7b456c7f5c1f035eebded97b00db2f262cb1d309b2146cfa1511845c6bc1969",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_05.png",
+        "sha256": "98420c73ca70e77d67225f37af2a408cf0c59ee4d71bbd8d9a9db764d77fca8a",
+        "bytes": 33428,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_06",
+      "communityLabel": "Plague",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_06.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_06.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_06.texture",
+      "gitBlobSha": "4b210d4d38ac3c50ff3e4dfff7122b054dcc4990",
+      "sha256": "6110b1cabe642db07292d9cba05151014ebff42b245183a71b5760d6685d1dce",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_06.png",
+        "sha256": "6b5fa4769e7a5f4200e94ce8c75f41cea015818610584ab889dab53adba72776",
+        "bytes": 32676,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_07",
+      "communityLabel": "Inferno",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_07.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_07.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_07.texture",
+      "gitBlobSha": "ab955622822eb52b8276942577f55f1503d70b09",
+      "sha256": "e1ebacf00f13c7ee417faa15b083f6b448a96b2d8cad00fff4ee4dcd7768d8ab",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_07.png",
+        "sha256": "7ac34449e31c73243695853d62218e3ea89b77f4ce0fbdc0694d756cc1ea1fec",
+        "bytes": 31318,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_08",
+      "communityLabel": "Prophet",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_08.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_08.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_08.texture",
+      "gitBlobSha": "6fea336d2d2a83c933180e6b5ded27089275b226",
+      "sha256": "d7f9c898c3f55e47afb4a59ec8a3fd86328acb5a0490d2a81491fdb7a14d672f",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_08.png",
+        "sha256": "173dca27006bb9b0be1c4450fbb83bf70bbb181890dc39f792e6accb27a90cf7",
+        "bytes": 31040,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_09",
+      "communityLabel": "Eclipse",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_09.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_09.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_09.texture",
+      "gitBlobSha": "9e610f7fa07b4b28c86284a789caeaa094c804fa",
+      "sha256": "5d9326e7bc46b90a27eae3ba9e23f39b45d4fefedd986984656e32b3e188700b",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_09.png",
+        "sha256": "57b85bcd07096d8a765a9848c9c32c798ddc0f63c57f735ee84d67263934bcf0",
+        "bytes": 33065,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_10",
+      "communityLabel": "Journeyman",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_10.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_10.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_10.texture",
+      "gitBlobSha": "2a227e2fdb976c513053020bd813348e2e8b59c1",
+      "sha256": "117a76864b15d73e318b8f334424667b48864babcee99b887012f1f4eb4898a0",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_10.png",
+        "sha256": "c9cf0a47ae4c13654d0248dc175086bfdc73d9880019c87ed3db15d0780c57cd",
+        "bytes": 32592,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_11",
+      "communityLabel": "Modern Predator",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_11.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_11.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_11.texture",
+      "gitBlobSha": "b645f5e3e3918f09b6ff58479eabf344c67a1afa",
+      "sha256": "417b3a6d502edabb8490e72a2956600c85fdc57603e4e3856e7fe7b89bc1310e",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_11.png",
+        "sha256": "34cf2cb57370dbf7592bfbb6ec9d1b640454373c1f6e2803b7998867f464762a",
+        "bytes": 34341,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_12",
+      "communityLabel": "Abyss",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_12.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_12.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_12.texture",
+      "gitBlobSha": "7b6001c11e3e302b1dc537edbfdff2fa36d3d974",
+      "sha256": "3c4581d23457a24fff323960e6c06168b401ca25c3332f3ce34defc3a52b07b4",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_12.png",
+        "sha256": "e5081dabf679db81b81da482ae1e8959505398099d5f209d11882d536b3fef0d",
+        "bytes": 33677,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_14",
+      "communityLabel": "City Hunter of 97",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_14.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_14.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_14.texture",
+      "gitBlobSha": "97b5f1767b1841346a6762803c82556b45b9e812",
+      "sha256": "37bc61d95c9c6c42caeb70e799f25ed87736b7cc1e96624444322b70ffbf767b",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_14.png",
+        "sha256": "56090297fd1c812c0ff924b57eb4ada86ed3c154bf5a9871c19395af338eaa70",
+        "bytes": 42498,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_16",
+      "communityLabel": "Cyclone",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_16.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_16.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_16.texture",
+      "gitBlobSha": "6a1a42f7ecf5ac6f789ea2ae162a312181259509",
+      "sha256": "d543186f027bcd0259e4ff919f635c6ec7dc3fcbef68791bf91969c70081a953",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_16.png",
+        "sha256": "2b3b83fa2882f92d27975b6814e3bfb467e6d651a9558e94c3db17a8ef99057a",
+        "bytes": 46738,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_17",
+      "communityLabel": "Vapor",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_17.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_17.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_17.texture",
+      "gitBlobSha": "86e1685af862cad985adef5b7f773d6e66606f21",
+      "sha256": "ea600bbd34ed5f174ec32ab734e7d21a58ad173af54832e15668a91b61a523d0",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_17.png",
+        "sha256": "381e04d63d19c1418d89c31a647bf1084f015e098b597b5f9d79329e34f21693",
+        "bytes": 47282,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_19",
+      "communityLabel": "Arthos",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_19.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_19.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_19.texture",
+      "gitBlobSha": "5b169ae750fffd43b6321f62db4ac3cadaabee86",
+      "sha256": "69c109c85ed7a7016d543471b2ae7c83056f8cb309b24c280c87b6bd34de0632",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_19.png",
+        "sha256": "d103cd7d55121f0665341bfb5dd5132e3e0e27e3da9c46a4122f62fdc24d029e",
+        "bytes": 53735,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_20",
+      "communityLabel": "Ravager",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_20.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_20.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_20.texture",
+      "gitBlobSha": "29f0e44728f6b2fbe55f7da3cb4531fd29223870",
+      "sha256": "0b6f99408a85bb4e849478b4ed32e778e1a517eb53dc775bd3d9b1c3d56d33d2",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_20.png",
+        "sha256": "0c9eda0893d8cd20dce45e515b8e8995ed73e64cf614e6a74b893ed650bb3bf7",
+        "bytes": 51593,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_21",
+      "communityLabel": "Fray",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_21.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_21.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_21.texture",
+      "gitBlobSha": "84f6033388be788c5c0443ce44eb098b65616207",
+      "sha256": "6ca377f1a5602235f0be1e3cf5b565ad511f64b45d2f287f4b33e7a302ba0bbb",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_21.png",
+        "sha256": "486d6e921d4814401474962b71ccd4be7c928a10102b40232fd0da586dc768f1",
+        "bytes": 50901,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_22",
+      "communityLabel": "Exiled",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_22.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22.texture",
+      "gitBlobSha": "330672712108269331d4b768853b37d91c2ec553",
+      "sha256": "1e532900b5966a39759060018a77bc3e8ce90f07afca85e076218460040b7086",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_22.png",
+        "sha256": "8ab063991d3aca7a3e2db8df11da58fb380f96a9b53ed0fdf64b47e57aba4d99",
+        "bytes": 48565,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_22_extra",
+      "communityLabel": "Exiled (Repulsive Dreads)",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_22_extra.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22_extra.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_22_extra.texture",
+      "gitBlobSha": "bc5a98da907050c2c139cfcbd0a0f56a0f4d5a4b",
+      "sha256": "44a2752169feaf5b621df314b696a4dcc172be39fd7a2960937509e1c0512acf",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_22_extra.png",
+        "sha256": "2b02bedda67ae63433b5ac02df10c6b569b49ad4476941b6597120ccc737d86a",
+        "bytes": 39636,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "ExplicitExiledpredlockvariant, not an independent proven mask."
+    },
+    {
+      "id": "predator_23",
+      "communityLabel": "Remnant",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_23.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_23.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_23.texture",
+      "gitBlobSha": "150b9073f962a0be2de3b32266b35c8b5021d97c",
+      "sha256": "599d93cbde8563cfb862b49671ad8f681ea4a306c4311f8e548f71e8b56052ec",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_23.png",
+        "sha256": "dec89aeed715cd04fcfa7a915a23f9afc8256ab2916eca4e284cd1b8b0a8ca88",
+        "bytes": 47246,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_detox",
+      "communityLabel": "Detox",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_detox.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_detox.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_detox.texture",
+      "gitBlobSha": "aa353c6885962bfa0b3626526cf2b234fc03f9d7",
+      "sha256": "8956cc628a2d50121b2bfe26366b7cf583883043a0ff2520a120a2d8b14ae5d3",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_detox.png",
+        "sha256": "230a69c92311ef63b371f10635479b429356ca796c6818ba815b70eefb92c4af",
+        "bytes": 25760,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "No requested Bible/XLSXmask identity found by the inventory; do not generate solely because this corpus contains it."
+    },
+    {
+      "id": "predator_dogmeat",
+      "communityLabel": "Wolf Predator",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_dogmeat.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_dogmeat.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_dogmeat.texture",
+      "gitBlobSha": "739c9b8eec73da784c9122acb650918ef6761751",
+      "sha256": "67416c376250e27d5c1efbfde7e95611f14f9238ead71c2bdb9186d7c53e2f61",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_dogmeat.png",
+        "sha256": "a80d1831c2795f80111c75a69326a6e80f99fc8c0bea6712847723ac213fbdeb",
+        "bytes": 40587,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "WolfalreadyhasV62mask; no new missing identity proved."
+    },
+    {
+      "id": "predator_emissary",
+      "communityLabel": "Emissary",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_emissary.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_emissary.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_emissary.texture",
+      "gitBlobSha": "eb87512902a604792418c7957e3452ac7ade875c",
+      "sha256": "b11b6f7d4867f2c81fc2027b0f50a2768203e83df1577b89fec2ad71c8d32a8b",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": true,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_emissary.png",
+        "sha256": "7ade0c877f32fa98928f604a4b3d055433b222a023f5cb67cdcf404dbb16675d",
+        "bytes": 16101,
+        "width": 256,
+        "height": 256
+      }
+    },
+    {
+      "id": "predator_kawaii",
+      "communityLabel": "Kawaii Phoenix",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_kawaii.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_kawaii.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_kawaii.texture",
+      "gitBlobSha": "d524e50d2d6fbb36a8016687782e3ab1c8044f51",
+      "sha256": "39cbac6b5f3aeb1c0c0e048691ee4a370d952782230cc3871f874a7a775068a4",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_kawaii.png",
+        "sha256": "5788e7d5627f601f7f0c990df3b93420efe03028254d77f79555cab84302f9ea",
+        "bytes": 39944,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "NamedcommunityKawaiiPhoenixmodification not bound to the requested Bible mask."
+    },
+    {
+      "id": "predator_maskless",
+      "communityLabel": "Yautjan Predator Face",
+      "path": "/tmp/all-masks-20261113/web-references/icons/predator_maskless.texture",
+      "url": "https://raw.githubusercontent.com/Matthelzor/pd2-predator-pack/967905f04f02f702e89e0ca976bac712c516a4e9/Predator%20Mask%20Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_maskless.texture",
+      "repositoryPath": "Predator Mask Pack/assets/guis/dlcs/mods/textures/pd2/blackmarket/icons/masks/predator_maskless.texture",
+      "gitBlobSha": "26eff80844f3ba2d95414b310b0d4b098f5858a2",
+      "sha256": "5a5c6f29cb77fab550cb374f9e85a3caaac742f99a7a3487e995a0d08ca766d1",
+      "bytes": 65664,
+      "width": 256,
+      "height": 256,
+      "fourCC": "DXT5",
+      "bibleTargetConfirmedByInventory": false,
+      "sourceType": "community-PAYDAY2-port-HUD-icon",
+      "publisherCertified": false,
+      "originalGamePixelOneToOneVerified": false,
+      "profileOrBack": false,
+      "scope": "Named monochrome frontal icon only; per-mask PHG origin and original color/materials are not certified.",
+      "nativeFrontScreenshot": {
+        "path": "/tmp/all-masks-20261113/web-references/fronts/predator_maskless.png",
+        "sha256": "aa8a0caa479e8c0658eea0d79af88acdb2bfbcf6db157fd04d41fdd143efc311",
+        "bytes": 33602,
+        "width": 256,
+        "height": 256
+      },
+      "productionExclusion": "UnmaskedYautjaface, not a biomask."
+    }
+  ],
+  "rejectedDiagnostics": [
+    {
+      "path": "/tmp/all-masks-20261113/web-references/rejected/too-many-webgl-contexts.png",
+      "reason": "27simultaneousWebGLcontexts exceeded Chromium active-context limit; first11canvases lost context. Not a valid source sheet; final captures were redone in3batchesof9."
+    }
+  ],
+  "previouslyUnresolvedFive": [
+    "CityRebreather",
+    "Haze",
+    "Rival",
+    "Saber",
+    "Tank"
+  ],
+  "previouslyUnresolvedFiveNewExactSourceLocated": false,
+  "network": {
+    "previouslyDeniedOfficialHostsRetried": false,
+    "bypassUsed": false,
+    "ordinaryGithubRawAcquisitionOnly": true
+  },
+  "distribution": "RawcommunityDDS and diagnosticcaptures remain research inputs outside the public repository; only generated candidates may be published with attribution and these limits."
+}
