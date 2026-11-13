@@ -44,13 +44,16 @@ async function ready(){await page.waitForFunction(()=>{const images=[...document
 try{
  await page.goto(origin+'/game/'+prefix+'/review.html',{waitUntil:'networkidle'});
  await ready();
- await check('Embedded manifest and five candidates preserve the remaining scope',async()=>{
+ await check('Embedded manifest and seven candidates preserve the remaining scope',async()=>{
   assert.deepEqual(JSON.parse(await page.locator('#pack-data').textContent()),pack);
-  assert.deepEqual(pack.assets.map(a=>a.id).sort(),['cleopatra','exiled','samurai','valkyrie','viking']);
-  assert.equal(pack.counts.nativeFiles,5);assert.equal(pack.counts.newNamedTargets,2);assert.equal(pack.counts.improvedExistingNamedTargets,3);assert.equal(pack.remainingTargets.length,48);
-  assert.equal(await page.locator('#grid article').count(),5);assert.equal(await page.locator('#remaining-rows tr').count(),48);
-  assert.ok((await page.locator('#summary').textContent()).includes('48'));
-  return{candidateViews:5,newNamedTargets:2,improvedExistingNamedTargets:3,remainingNamedTargets:48};
+  assert.deepEqual(pack.assets.map(a=>a.id).sort(),['captured','cleopatra','emissary','exiled','samurai','valkyrie','viking']);
+  assert.equal(pack.counts.nativeFiles,7);assert.equal(pack.counts.newNamedTargets,4);assert.equal(pack.counts.improvedExistingNamedTargets,3);assert.equal(pack.remainingTargets.length,46);
+  assert.equal(await page.locator('#grid article').count(),7);assert.equal(await page.locator('#remaining-rows tr').count(),46);
+  assert.ok((await page.locator('#summary').textContent()).includes('46'));
+  const partial=pack.assets.find(a=>a.id==='emissary');assert.equal(partial.partialReferenceView,true);assert.ok(partial.incompleteSourceElements.length>0);
+  assert.deepEqual(pack.assets.filter(a=>a.partialReferenceView).map(a=>a.id),['emissary']);
+  assert.ok((await page.locator('article[data-asset-id="emissary"] .partial-reference').textContent()).includes('silhouette complète'));
+  return{candidateViews:7,newNamedTargets:4,improvedExistingNamedTargets:3,remainingNamedTargets:46,partialReferenceView:'emissary'};
  });
  await check('HTTP bytes, decoded dimensions and real alpha agree with each native candidate',async()=>{
   const samples=[];
@@ -72,7 +75,7 @@ try{
  await check('Display backgrounds, alpha bounds, pivots and size remain independent of native files',async()=>{
   for(const value of ['dark','terrain','checker']){await page.locator('#background').selectOption(value);assert.equal(await page.locator('body').getAttribute('data-background'),value);}
   await page.locator('#show-bounds').check();await page.locator('#show-pivots').check();
-  assert.equal(await page.locator('.bounds:visible').count(),5);assert.equal(await page.locator('.pivot').evaluateAll(lines=>lines.filter(line=>getComputedStyle(line).display!=='none').length),10);
+  assert.equal(await page.locator('.bounds:visible').count(),7);assert.equal(await page.locator('.pivot').evaluateAll(lines=>lines.filter(line=>getComputedStyle(line).display!=='none').length),14);
   await page.locator('#image-size').fill('240');await page.locator('#image-size').dispatchEvent('input');assert.equal(await page.locator('#image-size-value').textContent(),'240 px max.');
   await page.locator('#background').selectOption('terrain');await page.screenshot({path:path.join(output,'colored-mask-bounds-pivots.png')});
   await page.locator('#show-bounds').uncheck();await page.locator('#show-pivots').uncheck();await page.locator('#image-size').fill('360');await page.locator('#image-size').dispatchEvent('input');await page.locator('#background').selectOption('checker');await page.screenshot({path:path.join(output,'colored-mask-comparison.png')});
@@ -86,7 +89,7 @@ try{
   await page.screenshot({path:path.join(output,'official-source-drawer.png')});await page.keyboard.press('Escape');assert.ok(await button.evaluate(b=>b===document.activeElement));
  });
  await check('Remaining identities are visible without claiming an exact PNG total',async()=>{
-  await page.locator('#remaining-panel summary').click();assert.equal(await page.locator('#remaining-rows tr:visible').count(),48);
+  await page.locator('#remaining-panel summary').click();assert.equal(await page.locator('#remaining-rows tr:visible').count(),46);
   assert.ok((await page.locator('#remaining-panel').textContent()).includes('indéterminé'));await page.locator('#remaining-panel summary').click();
  });
  await check('320 and 390 pixel screens contain all cards, controls, drawer and table',async()=>{

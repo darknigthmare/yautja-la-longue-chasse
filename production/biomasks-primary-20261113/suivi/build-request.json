@@ -14,13 +14,18 @@
         ],
         [
           "Nouveaux PNG candidats",
-          5,
+          7,
           "Vues officielles en couleur, sans certification automatique"
         ],
         [
           "Nouveaux noms avec découpe candidate",
-          2,
-          "Valkyrie et Cleopatra si présentes ; aucune tâche certifiée terminée"
+          4,
+          "Valkyrie, Cleopatra, Emissary partiel et Captured ; aucune tâche certifiée terminée"
+        ],
+        [
+          "Vues sources explicitement partielles",
+          1,
+          "Emissary : deux petits éléments supérieurs exclus, silhouette complète non établie"
         ],
         [
           "Noms existants améliorés",
@@ -29,7 +34,7 @@
         ],
         [
           "Noms restants",
-          48,
+          46,
           "Baseline50 moins nouveaux candidats nommés ; pas un total de PNG"
         ],
         [
@@ -40,7 +45,7 @@
         [
           "Lot sélectionné généré",
           true,
-          "Cinq vues sélectionnées seulement"
+          "Sept découpes sélectionnées seulement, dont Emissary partiel"
         ],
         [
           "Canon / humain / runtime / animation",
@@ -56,6 +61,16 @@
           "Anciens PNG candidats protégés",
           62,
           "Images natives des trois lots, références et QA exclus"
+        ],
+        [
+          "Cinq PNG et reçus initiaux préservés",
+          "5 /5",
+          "Les octets du commit fad5c4b76 restent inchangés pendant cette extension"
+        ],
+        [
+          "Six PNG et reçus antérieurs préservés",
+          "6 /6",
+          "Emissary et les cinq premiers candidats restent inchangés pendant l’ajout Captured"
         ],
         [
           "Fichiers protégés",
@@ -87,6 +102,50 @@
           "Marges",
           "État",
           "Limites"
+        ],
+        [
+          "captured",
+          "Captured · PHG · masque abîmé, vue officielle",
+          {
+            "label": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+            "target": "../../../public/game/biomasks-primary-20261113/masks/captured-source-view.png"
+          },
+          "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+          "1199×1312",
+          "Near-front slight three-quarter pitch of the individually published Captured screenshot; same damaged state, no intact alternative or new camera.",
+          [
+            599.5,
+            656.0
+          ],
+          [
+            225,
+            96,
+            973,
+            1213
+          ],
+          [
+            225,
+            96,
+            226,
+            99
+          ],
+          "Candidat, non intégré",
+          [
+            "Identity follows the immediate publisher paragraph naming Captured and its tarnished mask, corroborated by the far-right figure in the matching bundle; no character name is printed in the image.",
+            "The anatomical left eye area (image right) is exposed/damaged in the screenshot. The cutout removes wearer flesh and iris and keeps the missing protection as transparent space.",
+            "Fine chip placement, scratch patterns and metal thickness are generated interpretation, not a certified exact damage map.",
+            "No backside, original UVs, full variant set, human art approval, canonical fidelity certification or runtime integration is established.",
+            "Independent comparison finds slightly amplified upper tab/rim chips and a more dominant dome; candidate geometry remains subject to artistic review.",
+            "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+            "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+            "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+            "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+            "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established.",
+            "Do not repair the missing eye-edge material or substitute an intact Jungle Hunter mask. The damaged void is part of this visible state.",
+            "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+            "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+            "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+          ]
         ],
         [
           "cleopatra",
@@ -130,6 +189,53 @@
             "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
             "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
             "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+          ]
+        ],
+        [
+          "emissary",
+          "Emissary · PHG · masque facial partiel en couleur",
+          {
+            "label": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+            "target": "../../../public/game/biomasks-primary-20261113/masks/emissary-source-view.png"
+          },
+          "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+          "1192×1319",
+          "Official render camera, near-front slight three-quarter; partial facial shell only, interrupted upper appendages deliberately excluded.",
+          [
+            596.0,
+            659.5
+          ],
+          [
+            209,
+            82,
+            972,
+            1219
+          ],
+          [
+            209,
+            82,
+            220,
+            100
+          ],
+          "Candidat, non intégré",
+          [
+            "The render cuts off two small upright pieces near source y197; they are omitted without extending or reconstructing their tips. This is a partial facial mask cutout and does not establish the complete upper silhouette.",
+            "Single official-named promotional asset cross-referenced by the archived project ledger; a fresh link from the PHG homepage remains inaccessible.",
+            "Dome/face proportions and studio reflections differ slightly; fine cheek port and grille details are generated interpretations.",
+            "No backside, strict profile, original UVs, neutral albedo, human art approval, canonical fidelity certification or runtime integration is established.",
+            "Only the visible facial shell and actual downward-pitched near-front camera support a partial candidate.",
+            "The source foreground starts abruptly at horizontal image row 197: two small projections above the continuous main dome are cut. Do not reconstruct or complete these missing appendages.",
+            "The main oval dome outline is visible and continuous; a partial facial cutout is not a complete helmet silhouette.",
+            "The current PHG homepage link and a newly observed publisher-page label are unverified after the earlier CONNECT 403. The explicit official CDN asset filename and archived reference declaration support identity at this limited grade.",
+            "The archived V87 asset at /assets/63 is a generated reconstructed skin texture; its authenticated bytes do not prove original game geometry or biomask fidelity.",
+            "Promotional blue/red highlights do not establish neutral albedo, a named material or a selected customization swatch.",
+            "No original UV, side/back, six-morphology fit, human art validation, runtime integration or canonical pixel 1:1 proof.",
+            "Do not conflate PHG Emissary with film Emissary One/Two character plates.",
+            "White/green and striped hidden-background RGB artifacts are not mask material; exclude the wearer, camouflage cloth, scarf, dreadlocks, blades and background.",
+            "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+            "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+            "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées.",
+            "Vue candidate partielle : les deux petits éléments supérieurs coupés par le cadre officiel sont exclus ; leur forme et la silhouette complète restent ouvertes."
           ]
         ],
         [
@@ -343,6 +449,51 @@
           "Observation / limites"
         ],
         [
+          "captured",
+          "captured-official-closeup",
+          "https://live.staticflickr.com/65535/51736253154_04460b2d51_h.jpg",
+          "2607972229abfcbef292cc35977bede436851c50f399c853bed0a55f6e9a94e8",
+          147558,
+          "1600×900",
+          [
+            [
+              "Broad rounded grey/silver forehead plate with a scratched weathered surface.",
+              "Irregular chipped upper and side rim, including a broken opening at image right (anatomical left eye).",
+              "Rectangular central lower/nose panel, raised cheek shapes and a dark eye slot at image left."
+            ],
+            [
+              "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+              "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+              "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+              "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+              "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established."
+            ]
+          ]
+        ],
+        [
+          "captured",
+          "captured-official-render",
+          "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1105/24ae4846d9/phg-dlc-hunting-party_fixed_v1.png",
+          "0168b660c79958693d20f57a51c5284ebb6fb79d2cce795ff471f29d1f39838b",
+          1459706,
+          "991×1101",
+          [
+            [
+              "Broad rounded grey/silver forehead plate with a scratched weathered surface.",
+              "Irregular chipped upper and side rim, including a broken opening at image right (anatomical left eye).",
+              "Rectangular central lower/nose panel, raised cheek shapes and a dark eye slot at image left."
+            ],
+            [
+              "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+              "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+              "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+              "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+              "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established.",
+              "Strong blue/red promotional lighting and smaller face detail in the composite; use the individual publisher photo for mask contour and visible neutral-looking appearance."
+            ]
+          ]
+        ],
+        [
           "cleopatra",
           "cleopatra-official-render",
           "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/163e3cfd75/cleopatra-predator.png",
@@ -362,6 +513,33 @@
               "No strict side/back view, UV or six-morphology fit established.",
               "Not human-art-approved or canonical 1:1.",
               "No raster edits or crops performed. Original source bytes are intact."
+            ]
+          ]
+        ],
+        [
+          "emissary",
+          "emissary-official-render",
+          "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/15aa55e206/emissary.png",
+          "aa35f7d12aa79dad4a1bacb2ddef600da0d87ce04aadb396ad989c31e9ee401f",
+          771178,
+          "995×1101",
+          [
+            [
+              "Large glossy black oval dome within a raised dark/silver rim, with reflected blue/red lighting.",
+              "Dark angular eye apertures, silver cheek plates with small circular fasteners.",
+              "Long dark tapered central face with a bronze/gold-edged nasal insert.",
+              "Upper small projections end abruptly at the source foreground horizontal boundary; they do not establish complete appendage geometry."
+            ],
+            [
+              "Only the visible facial shell and actual downward-pitched near-front camera support a partial candidate.",
+              "The source foreground starts abruptly at horizontal image row 197: two small projections above the continuous main dome are cut. Do not reconstruct or complete these missing appendages.",
+              "The main oval dome outline is visible and continuous; a partial facial cutout is not a complete helmet silhouette.",
+              "The current PHG homepage link and a newly observed publisher-page label are unverified after the earlier CONNECT 403. The explicit official CDN asset filename and archived reference declaration support identity at this limited grade.",
+              "The archived V87 asset at /assets/63 is a generated reconstructed skin texture; its authenticated bytes do not prove original game geometry or biomask fidelity.",
+              "Promotional blue/red highlights do not establish neutral albedo, a named material or a selected customization swatch.",
+              "No original UV, side/back, six-morphology fit, human art validation, runtime integration or canonical pixel 1:1 proof.",
+              "Do not conflate PHG Emissary with film Emissary One/Two character plates.",
+              "White/green and striped hidden-background RGB artifacts are not mask material; exclude the wearer, camouflage cloth, scarf, dreadlocks, blades and background."
             ]
           ]
         ],
@@ -855,30 +1033,6 @@
               "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
               "sheet": "Bible campagne",
               "row": 964
-            }
-          ],
-          false,
-          false
-        ],
-        [
-          "mk-30-emissary",
-          "emissary",
-          "Emissary, PHG",
-          "biomask",
-          "missing-dedicated-canonical-mask",
-          "Bio-mask close to the Fugitive's, worn with a human-style combat helmet over it, camouflage tones.",
-          "PHG Emissary; do not substitute movie Emissary 1/2 V44 candidates.",
-          [
-            {
-              "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-              "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
-              "line": 1528
-            },
-            {
-              "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
-              "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
-              "sheet": "Bible campagne",
-              "row": 965
             }
           ],
           false,
@@ -1467,30 +1621,6 @@
           false
         ],
         [
-          "phg-captured",
-          "Captured (PHG)",
-          "Predator: Hunting Grounds",
-          "biomask",
-          "missing-dedicated-canonical-mask",
-          null,
-          null,
-          [
-            {
-              "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-              "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
-              "line": 1535
-            },
-            {
-              "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
-              "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
-              "sheet": "Bible campagne",
-              "row": 972
-            }
-          ],
-          false,
-          false
-        ],
-        [
           "phg-hunter",
           "Hunter (PHG)",
           "Predator: Hunting Grounds",
@@ -1794,6 +1924,90 @@
           "Action"
         ],
         [
+          "captured",
+          "Ouvert",
+          "Identity follows the immediate publisher paragraph naming Captured and its tarnished mask, corroborated by the far-right figure in the matching bundle; no character name is printed in the image.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "The anatomical left eye area (image right) is exposed/damaged in the screenshot. The cutout removes wearer flesh and iris and keeps the missing protection as transparent space.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "Fine chip placement, scratch patterns and metal thickness are generated interpretation, not a certified exact damage map.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "No backside, original UVs, full variant set, human art approval, canonical fidelity certification or runtime integration is established.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "Independent comparison finds slightly amplified upper tab/rim chips and a more dominant dome; candidate geometry remains subject to artistic review.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "Do not repair the missing eye-edge material or substitute an intact Jungle Hunter mask. The damaged void is part of this visible state.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "captured",
+          "Ouvert",
+          "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
           "cleopatra",
           "Ouvert",
           "The promotional render is the only probative geometry source; the official article and roadmap corroborate identity rather than additional mask views.",
@@ -1875,6 +2089,108 @@
           "cleopatra",
           "Ouvert",
           "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "The render cuts off two small upright pieces near source y197; they are omitted without extending or reconstructing their tips. This is a partial facial mask cutout and does not establish the complete upper silhouette.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Single official-named promotional asset cross-referenced by the archived project ledger; a fresh link from the PHG homepage remains inaccessible.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Dome/face proportions and studio reflections differ slightly; fine cheek port and grille details are generated interpretations.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "No backside, strict profile, original UVs, neutral albedo, human art approval, canonical fidelity certification or runtime integration is established.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Only the visible facial shell and actual downward-pitched near-front camera support a partial candidate.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "The source foreground starts abruptly at horizontal image row 197: two small projections above the continuous main dome are cut. Do not reconstruct or complete these missing appendages.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "The main oval dome outline is visible and continuous; a partial facial cutout is not a complete helmet silhouette.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "The current PHG homepage link and a newly observed publisher-page label are unverified after the earlier CONNECT 403. The explicit official CDN asset filename and archived reference declaration support identity at this limited grade.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "The archived V87 asset at /assets/63 is a generated reconstructed skin texture; its authenticated bytes do not prove original game geometry or biomask fidelity.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Promotional blue/red highlights do not establish neutral albedo, a named material or a selected customization swatch.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "No original UV, side/back, six-morphology fit, human art validation, runtime integration or canonical pixel 1:1 proof.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Do not conflate PHG Emissary with film Emissary One/Two character plates.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "White/green and striped hidden-background RGB artifacts are not mask material; exclude the wearer, camouflage cloth, scarf, dreadlocks, blades and background.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées.",
+          "Revue artistique et sources complémentaires"
+        ],
+        [
+          "emissary",
+          "Ouvert",
+          "Vue candidate partielle : les deux petits éléments supérieurs coupés par le cadre officiel sont exclus ; leur forme et la silhouette complète restent ouvertes.",
           "Revue artistique et sources complémentaires"
         ],
         [
@@ -4301,12 +4617,13 @@
     }
   ],
   "counts": {
-    "nativeFiles": 5,
-    "assets": 5,
-    "newNamedTargets": 2,
+    "nativeFiles": 7,
+    "assets": 7,
+    "newNamedTargets": 4,
     "improvedExistingNamedTargets": 3,
-    "remainingNamedTargets": 48,
+    "remainingNamedTargets": 46,
     "baselineRemainingNamedTargets": 50,
+    "partialReferenceCandidates": 1,
     "sourceNamedEntries": 110,
     "exactMissingImagesRequired": null,
     "canonCertifiedAssets": 0,
@@ -4314,5 +4631,5 @@
     "runtimeIntegratedAssets": 0,
     "animationClips": 0
   },
-  "manifestSha256": "2d087cf90dfc8eaef371fb06e42cf50c00b4634caf69603e3a4cdde8ee09a0f9"
+  "manifestSha256": "a683c9a046a6c837d614d6c07ac8385d91b331188995c0c8f33c62f31b783da5"
 }

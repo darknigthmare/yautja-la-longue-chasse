@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "asOf": "2026-11-13",
-  "scope": "Five source-view color candidates accepted for technical and source-limited review; no human art approval or canonical fidelity certification.",
+  "scope": "Seven source-view color candidates accepted for technical and source-limited review, including partial Emissary and the source-visible damaged Captured variant; no human art approval or canonical fidelity certification.",
   "entries": [
     {
       "id": "samurai",
@@ -148,6 +148,67 @@
         "Generated interpretation awaiting human art review; no canonical fidelity certification or runtime integration."
       ],
       "generationReceipt": "production/biomasks-primary-20261113/generation/exiled.json",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "emissary",
+      "label": "Emissary · PHG · masque facial partiel en couleur",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-058e6bf4-c331-43d0-b5f5-1e16efad005e.png",
+      "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+      "bytes": 1247126,
+      "nativeDimensions": [
+        1192,
+        1319
+      ],
+      "sourceIds": [
+        "emissary-official-render"
+      ],
+      "view": "Official render camera, near-front slight three-quarter; partial facial shell only, interrupted upper appendages deliberately excluded.",
+      "limitations": [
+        "The render cuts off two small upright pieces near source y197; they are omitted without extending or reconstructing their tips. This is a partial facial mask cutout and does not establish the complete upper silhouette.",
+        "Single official-named promotional asset cross-referenced by the archived project ledger; a fresh link from the PHG homepage remains inaccessible.",
+        "Dome/face proportions and studio reflections differ slightly; fine cheek port and grille details are generated interpretations.",
+        "No backside, strict profile, original UVs, neutral albedo, human art approval, canonical fidelity certification or runtime integration is established."
+      ],
+      "partialMask": true,
+      "generationReceipt": "production/biomasks-primary-20261113/generation/emissary.json",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false
+    },
+    {
+      "id": "captured",
+      "label": "Captured · PHG · masque abîmé, vue officielle",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "nativeSourcePath": "/workspace/generated_images/exec-c7514f42-84d8-4894-abd9-ad16c284f608.png",
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+      "bytes": 1321450,
+      "nativeDimensions": [
+        1199,
+        1312
+      ],
+      "sourceIds": [
+        "captured-official-closeup",
+        "captured-official-render"
+      ],
+      "view": "Near-front slight three-quarter pitch of the individually published Captured screenshot; same damaged state, no intact alternative or new camera.",
+      "limitations": [
+        "Identity follows the immediate publisher paragraph naming Captured and its tarnished mask, corroborated by the far-right figure in the matching bundle; no character name is printed in the image.",
+        "The anatomical left eye area (image right) is exposed/damaged in the screenshot. The cutout removes wearer flesh and iris and keeps the missing protection as transparent space.",
+        "Fine chip placement, scratch patterns and metal thickness are generated interpretation, not a certified exact damage map.",
+        "No backside, original UVs, full variant set, human art approval, canonical fidelity certification or runtime integration is established.",
+        "Independent comparison finds slightly amplified upper tab/rim chips and a more dominant dome; candidate geometry remains subject to artistic review."
+      ],
+      "partialMask": false,
+      "damagedVariant": true,
+      "generationReceipt": "production/biomasks-primary-20261113/generation/captured.json",
       "status": "generated-candidate",
       "canonCertified": false,
       "humanArtValidated": false,

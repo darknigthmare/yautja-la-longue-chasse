@@ -11,12 +11,13 @@
   "runtimeIntegrated": false,
   "animationClips": 0,
   "counts": {
-    "nativeFiles": 5,
-    "assets": 5,
-    "newNamedTargets": 2,
+    "nativeFiles": 7,
+    "assets": 7,
+    "newNamedTargets": 4,
     "improvedExistingNamedTargets": 3,
-    "remainingNamedTargets": 48,
+    "remainingNamedTargets": 46,
     "baselineRemainingNamedTargets": 50,
+    "partialReferenceCandidates": 1,
     "sourceNamedEntries": 110,
     "exactMissingImagesRequired": null,
     "canonCertifiedAssets": 0,
@@ -26,7 +27,9 @@
   },
   "plannedBatch": {
     "selectedTargetIds": [
+      "captured",
       "cleopatra",
+      "emissary",
       "exiled",
       "samurai",
       "valkyrie",
@@ -34,9 +37,182 @@
     ],
     "missingSelectedIds": [],
     "requestedBatchGenerated": true,
-    "allNamedRequirementsComplete": false
+    "allNamedRequirementsComplete": false,
+    "includesPartialSourceViews": true,
+    "scope": "Selected reference-view cuts only; Emissary deliberately excludes source-cropped upper elements."
   },
   "assets": [
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "bytes": 1321450,
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+      "id": "captured",
+      "inventoryId": "phg-captured",
+      "label": "Captured · PHG · masque abîmé, vue officielle",
+      "url": "/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "src": "/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "width": 1199,
+      "height": 1312,
+      "sourceRect": [
+        0,
+        0,
+        1199,
+        1312
+      ],
+      "pivot": [
+        599.5,
+        656.0
+      ],
+      "pivotStatus": "review proposal; no rig integration",
+      "alpha": {
+        "threshold": 16,
+        "bounds16": [
+          225,
+          96,
+          973,
+          1213
+        ],
+        "marginsPixels": [
+          225,
+          96,
+          226,
+          99
+        ],
+        "transparentPixels": 967658,
+        "visiblePixels16": 593225,
+        "opaquePixels240": 587072,
+        "nearOpaqueFractionOfVisible16": 0.9896278814952169,
+        "occupancy16": 0.37710859150918447,
+        "softPixels3To239": 10002,
+        "coreDoesNotTouchFrameEdges": true,
+        "hiddenRgbIgnored": true
+      },
+      "view": "Near-front slight three-quarter pitch of the individually published Captured screenshot; same damaged state, no intact alternative or new camera.",
+      "frames": 1,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "sourceIds": [
+        "captured-official-closeup",
+        "captured-official-render"
+      ],
+      "references": [
+        {
+          "id": "captured-official-closeup",
+          "url": "https://live.staticflickr.com/65535/51736253154_04460b2d51_h.jpg",
+          "sha256": "2607972229abfcbef292cc35977bede436851c50f399c853bed0a55f6e9a94e8",
+          "bytes": 147558,
+          "width": 1600,
+          "height": 900,
+          "mode": "RGB",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "Captured PHG worn damaged biomask; primary editorial-context association",
+          "identityEvidenceGrade": "primary-publisher-editorial-context-photo-association; no printed selected name",
+          "view": "Near-front head with downward pitch, complete visible main faceplate and irregular damaged upper rim; screenshot shows the full visible upper edge within frame.",
+          "sourceKind": "publisher-linked-individual-gameplay-screenshot",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+            "requestedUrl": "https://blog.playstation.com/?p=358472",
+            "imageLinkObservedInFetchedPage": true,
+            "context": "First individual image linked immediately after the paragraph that explicitly ends by naming Captured and its tarnished mask. This is a primary editorial-context association beyond a legacy archive label. The image has blank alt/no individual caption and no selected menu name, so the name-to-image association remains contextual, not a pixel-written identity proof."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs, root and primary_mask_provenance",
+          "observations": [
+            "Broad rounded grey/silver forehead plate with a scratched weathered surface.",
+            "Irregular chipped upper and side rim, including a broken opening at image right (anatomical left eye).",
+            "Rectangular central lower/nose panel, raised cheek shapes and a dark eye slot at image left."
+          ],
+          "limitations": [
+            "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+            "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+            "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+            "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+            "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false
+        },
+        {
+          "id": "captured-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1105/24ae4846d9/phg-dlc-hunting-party_fixed_v1.png",
+          "sha256": "0168b660c79958693d20f57a51c5284ebb6fb79d2cce795ff471f29d1f39838b",
+          "bytes": 1459706,
+          "width": 991,
+          "height": 1101,
+          "mode": "RGBA",
+          "httpStatus": 200,
+          "publisher": "IllFonic / PlayStation Blog / 20th Century Studios",
+          "identity": "Image-right figure in Hunting Party 1 promotional composite, matched to publisher Captured closeup",
+          "identityEvidenceGrade": "composite-position-correspondence-corroborated-by-primary-context-photo; no position assigned by exclusion alone",
+          "view": "Image-right character, near front with downward head pitch; rounded damaged crown and faceplate visible in a three-person composite.",
+          "sourceKind": "official-cdn-promotional-composite-from-project-ledger",
+          "publisherChain": {
+            "officialPage": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+            "requestedUrl": "https://blog.playstation.com/?p=358472",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "The publisher article names Hunting Party membership and its linked roadmap repeats this composition. Image-right figure is matched to the individually linked Captured contextual photo by its specific damaged rounded mask; current homepage/CDN composite linkage is unobserved."
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs, root and primary_mask_provenance",
+          "observations": [
+            "Broad rounded grey/silver forehead plate with a scratched weathered surface.",
+            "Irregular chipped upper and side rim, including a broken opening at image right (anatomical left eye).",
+            "Rectangular central lower/nose panel, raised cheek shapes and a dark eye slot at image left."
+          ],
+          "limitations": [
+            "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+            "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+            "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+            "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+            "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established.",
+            "Strong blue/red promotional lighting and smaller face detail in the composite; use the individual publisher photo for mask contour and visible neutral-looking appearance."
+          ],
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false,
+          "projectSourceLedger": {
+            "path": "app/game/data/driveArchiveAuditSpritesV87.json",
+            "sha256": "be7fbfcc05d74e438be13a07b75293f1b14fe72c34ba8d0a0930df8eadfe065b",
+            "jsonPointer": "/assets/59/declaredSemantics/source_urls/3"
+          }
+        }
+      ],
+      "partialReferenceView": false,
+      "incompleteSourceElements": [],
+      "generationRecord": {
+        "path": "production/biomasks-primary-20261113/generation/captured.json",
+        "bytes": 5860,
+        "sha256": "a6ddc9ac67f8d41c6237981419a7ef60a20374292c3389011bfc21f8d48fcce8"
+      },
+      "limitations": [
+        "Identity follows the immediate publisher paragraph naming Captured and its tarnished mask, corroborated by the far-right figure in the matching bundle; no character name is printed in the image.",
+        "The anatomical left eye area (image right) is exposed/damaged in the screenshot. The cutout removes wearer flesh and iris and keeps the missing protection as transparent space.",
+        "Fine chip placement, scratch patterns and metal thickness are generated interpretation, not a certified exact damage map.",
+        "No backside, original UVs, full variant set, human art approval, canonical fidelity certification or runtime integration is established.",
+        "Independent comparison finds slightly amplified upper tab/rim chips and a more dominant dome; candidate geometry remains subject to artistic review.",
+        "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+        "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+        "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+        "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+        "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established.",
+        "Do not repair the missing eye-edge material or substitute an intact Jungle Hunter mask. The damaged void is part of this visible state.",
+        "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+        "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+        "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+      ],
+      "warnings": [],
+      "previousCandidate": null
+    },
     {
       "path": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
       "bytes": 1618663,
@@ -139,6 +315,8 @@
           }
         }
       ],
+      "partialReferenceView": false,
+      "incompleteSourceElements": [],
       "generationRecord": {
         "path": "production/biomasks-primary-20261113/generation/cleopatra.json",
         "bytes": 4835,
@@ -159,6 +337,146 @@
         "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
         "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
         "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées."
+      ],
+      "warnings": [],
+      "previousCandidate": null
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "bytes": 1247126,
+      "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+      "id": "emissary",
+      "inventoryId": "mk-30-emissary",
+      "label": "Emissary · PHG · masque facial partiel en couleur",
+      "url": "/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "src": "/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "width": 1192,
+      "height": 1319,
+      "sourceRect": [
+        0,
+        0,
+        1192,
+        1319
+      ],
+      "pivot": [
+        596.0,
+        659.5
+      ],
+      "pivotStatus": "review proposal; no rig integration",
+      "alpha": {
+        "threshold": 16,
+        "bounds16": [
+          209,
+          82,
+          972,
+          1219
+        ],
+        "marginsPixels": [
+          209,
+          82,
+          220,
+          100
+        ],
+        "transparentPixels": 936778,
+        "visiblePixels16": 624450,
+        "opaquePixels240": 619342,
+        "nearOpaqueFractionOfVisible16": 0.9918200016014093,
+        "occupancy16": 0.3971701665386122,
+        "softPixels3To239": 8374,
+        "coreDoesNotTouchFrameEdges": true,
+        "hiddenRgbIgnored": true
+      },
+      "view": "Official render camera, near-front slight three-quarter; partial facial shell only, interrupted upper appendages deliberately excluded.",
+      "frames": 1,
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "animated": false,
+      "sourceIds": [
+        "emissary-official-render"
+      ],
+      "references": [
+        {
+          "id": "emissary-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/15aa55e206/emissary.png",
+          "sha256": "aa35f7d12aa79dad4a1bacb2ddef600da0d87ce04aadb396ad989c31e9ee401f",
+          "bytes": 771178,
+          "width": 995,
+          "height": 1101,
+          "mode": "RGBA",
+          "httpStatus": 200,
+          "publisher": "IllFonic / Predator: Hunting Grounds asset CDN; current publisher-page link unobserved",
+          "identity": "Single-character official CDN file explicitly named emissary.png, corroborated by an archived Emissary reference declaration; current publisher-page link unverified.",
+          "identityEvidenceGrade": "explicit-official-asset-filename-plus-archive-context; no fresh publisher-page label",
+          "view": "Near-front head pitched downward; continuous main oval crown and lower facial shell visible, but two small upper projections are clipped at the source foreground boundary.",
+          "sourceKind": "single-named-promotional-render-from-official-cdn-and-archived-source-declaration",
+          "publisherChain": {
+            "officialPage": "https://predator.illfonic.com/",
+            "imageLinkObservedInFetchedPage": false,
+            "context": "Exact asset URL recovered from the existing V87 source declarations. The CDN file is explicitly named emissary.png. Current publisher-page linkage remains unverified; the generated V87 skin texture is not independent geometry evidence."
+          },
+          "projectSourceLedger": {
+            "path": "app/game/data/driveArchiveAuditSpritesV87.json",
+            "sha256": "be7fbfcc05d74e438be13a07b75293f1b14fe72c34ba8d0a0930df8eadfe065b",
+            "jsonPointer": "/assets/63/declaredSemantics/source_urls"
+          },
+          "visuallyInspected": true,
+          "inspectionMethod": "tools.view_image; primary_phg_mask_refs, root and primary_mask_provenance",
+          "observations": [
+            "Large glossy black oval dome within a raised dark/silver rim, with reflected blue/red lighting.",
+            "Dark angular eye apertures, silver cheek plates with small circular fasteners.",
+            "Long dark tapered central face with a bronze/gold-edged nasal insert.",
+            "Upper small projections end abruptly at the source foreground horizontal boundary; they do not establish complete appendage geometry."
+          ],
+          "limitations": [
+            "Only the visible facial shell and actual downward-pitched near-front camera support a partial candidate.",
+            "The source foreground starts abruptly at horizontal image row 197: two small projections above the continuous main dome are cut. Do not reconstruct or complete these missing appendages.",
+            "The main oval dome outline is visible and continuous; a partial facial cutout is not a complete helmet silhouette.",
+            "The current PHG homepage link and a newly observed publisher-page label are unverified after the earlier CONNECT 403. The explicit official CDN asset filename and archived reference declaration support identity at this limited grade.",
+            "The archived V87 asset at /assets/63 is a generated reconstructed skin texture; its authenticated bytes do not prove original game geometry or biomask fidelity.",
+            "Promotional blue/red highlights do not establish neutral albedo, a named material or a selected customization swatch.",
+            "No original UV, side/back, six-morphology fit, human art validation, runtime integration or canonical pixel 1:1 proof.",
+            "Do not conflate PHG Emissary with film Emissary One/Two character plates.",
+            "White/green and striped hidden-background RGB artifacts are not mask material; exclude the wearer, camouflage cloth, scarf, dreadlocks, blades and background."
+          ],
+          "partialSourceGeometry": true,
+          "sourceForegroundTopBoundaryY": 197,
+          "bytesUnmodified": true,
+          "archivedInRepository": false,
+          "redistributionLicenseEstablished": false,
+          "canonicalFidelityCertified": false,
+          "humanArtValidated": false
+        }
+      ],
+      "partialReferenceView": true,
+      "incompleteSourceElements": [
+        "Deux petits éléments supérieurs coupés dans la référence officielle, exclus de cette découpe sans reconstruction."
+      ],
+      "generationRecord": {
+        "path": "production/biomasks-primary-20261113/generation/emissary.json",
+        "bytes": 5126,
+        "sha256": "8e74c5d8db389da64ecfadd57de5e41cbb34ae8c60120a6d4919cd7c030d759a"
+      },
+      "limitations": [
+        "The render cuts off two small upright pieces near source y197; they are omitted without extending or reconstructing their tips. This is a partial facial mask cutout and does not establish the complete upper silhouette.",
+        "Single official-named promotional asset cross-referenced by the archived project ledger; a fresh link from the PHG homepage remains inaccessible.",
+        "Dome/face proportions and studio reflections differ slightly; fine cheek port and grille details are generated interpretations.",
+        "No backside, strict profile, original UVs, neutral albedo, human art approval, canonical fidelity certification or runtime integration is established.",
+        "Only the visible facial shell and actual downward-pitched near-front camera support a partial candidate.",
+        "The source foreground starts abruptly at horizontal image row 197: two small projections above the continuous main dome are cut. Do not reconstruct or complete these missing appendages.",
+        "The main oval dome outline is visible and continuous; a partial facial cutout is not a complete helmet silhouette.",
+        "The current PHG homepage link and a newly observed publisher-page label are unverified after the earlier CONNECT 403. The explicit official CDN asset filename and archived reference declaration support identity at this limited grade.",
+        "The archived V87 asset at /assets/63 is a generated reconstructed skin texture; its authenticated bytes do not prove original game geometry or biomask fidelity.",
+        "Promotional blue/red highlights do not establish neutral albedo, a named material or a selected customization swatch.",
+        "No original UV, side/back, six-morphology fit, human art validation, runtime integration or canonical pixel 1:1 proof.",
+        "Do not conflate PHG Emissary with film Emissary One/Two character plates.",
+        "White/green and striped hidden-background RGB artifacts are not mask material; exclude the wearer, camouflage cloth, scarf, dreadlocks, blades and background.",
+        "Une vue statique de référence officielle ; aucune face cachée, animation, UV ou adaptation de morphologie certifiée.",
+        "La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.",
+        "Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées.",
+        "Vue candidate partielle : les deux petits éléments supérieurs coupés par le cadre officiel sont exclus ; leur forme et la silhouette complète restent ouvertes."
       ],
       "warnings": [],
       "previousCandidate": null
@@ -304,6 +622,8 @@
           "humanArtValidated": false
         }
       ],
+      "partialReferenceView": false,
+      "incompleteSourceElements": [],
       "generationRecord": {
         "path": "production/biomasks-primary-20261113/generation/exiled.json",
         "bytes": 5447,
@@ -481,6 +801,8 @@
           }
         }
       ],
+      "partialReferenceView": false,
+      "incompleteSourceElements": [],
       "generationRecord": {
         "path": "production/biomasks-primary-20261113/generation/samurai.json",
         "bytes": 5565,
@@ -653,6 +975,8 @@
           "humanArtValidated": false
         }
       ],
+      "partialReferenceView": false,
+      "incompleteSourceElements": [],
       "generationRecord": {
         "path": "production/biomasks-primary-20261113/generation/valkyrie.json",
         "bytes": 11588,
@@ -821,6 +1145,8 @@
           "humanArtValidated": false
         }
       ],
+      "partialReferenceView": false,
+      "incompleteSourceElements": [],
       "generationRecord": {
         "path": "production/biomasks-primary-20261113/generation/viking.json",
         "bytes": 20380,
@@ -859,9 +1185,19 @@
   ],
   "nativeFiles": [
     {
+      "path": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "bytes": 1321450,
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355"
+    },
+    {
       "path": "public/game/biomasks-primary-20261113/masks/cleopatra-source-view.png",
       "bytes": 1618663,
       "sha256": "f37cd993a99b94ecc22944405ea5020b537695332c09b387639234c038c3dbf4"
+    },
+    {
+      "path": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "bytes": 1247126,
+      "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070"
     },
     {
       "path": "public/game/biomasks-primary-20261113/masks/exiled-source-view.png",
@@ -1192,32 +1528,6 @@
           "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
           "sheet": "Bible campagne",
           "row": 964
-        }
-      ],
-      "canonicalFidelityCertified": false,
-      "humanArtValidated": false
-    },
-    {
-      "id": "mk-30-emissary",
-      "name": "emissary",
-      "work": "Emissary, PHG",
-      "kind": "biomask",
-      "declaredSourceStatus": "vérifié (silhouette)",
-      "priority": "non-spécifiée (demande utilisateur/bible)",
-      "baselineStatus": "missing-dedicated-canonical-mask",
-      "description": "Bio-mask close to the Fugitive's, worn with a human-style combat helmet over it, camouflage tones.",
-      "guardrail": "PHG Emissary; do not substitute movie Emissary 1/2 V44 candidates.",
-      "sourceLocations": [
-        {
-          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
-          "line": 1528
-        },
-        {
-          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
-          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
-          "sheet": "Bible campagne",
-          "row": 965
         }
       ],
       "canonicalFidelityCertified": false,
@@ -1854,32 +2164,6 @@
       "humanArtValidated": false
     },
     {
-      "id": "phg-captured",
-      "name": "Captured (PHG)",
-      "work": "Predator: Hunting Grounds",
-      "kind": "biomask",
-      "declaredSourceStatus": "à relever",
-      "priority": "non-spécifiée (demande utilisateur/bible)",
-      "baselineStatus": "missing-dedicated-canonical-mask",
-      "description": null,
-      "guardrail": null,
-      "sourceLocations": [
-        {
-          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
-          "line": 1535
-        },
-        {
-          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
-          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
-          "sheet": "Bible campagne",
-          "row": 972
-        }
-      ],
-      "canonicalFidelityCertified": false,
-      "humanArtValidated": false
-    },
-    {
       "id": "phg-hunter",
       "name": "Hunter (PHG)",
       "work": "Predator: Hunting Grounds",
@@ -2179,18 +2463,45 @@
   ],
   "newlyCoveredNamedTargetIds": [
     "mk-25-valkyrie",
+    "mk-30-emissary",
+    "phg-captured",
     "phg-cleopatra"
   ],
   "inputPins": [
     {
+      "path": "app/game/data/driveArchiveAuditSpritesV87.json",
+      "bytes": 716841,
+      "sha256": "be7fbfcc05d74e438be13a07b75293f1b14fe72c34ba8d0a0930df8eadfe065b"
+    },
+    {
+      "path": "app/game/data/phgVisualReferenceResearchV123.json",
+      "bytes": 62701,
+      "sha256": "685ce59dcd67f239f091cc08a64a134e015517ab76c71ad4bf3ff2cdf935f617"
+    },
+    {
+      "path": "production/biomasks-20261113/inputs/all-named-mask-inventory.json",
+      "bytes": 361243,
+      "sha256": "183f4dc2637f0a49ba542aaebc52dd2533043c551bcf1f0728f04ff00608f5de"
+    },
+    {
       "path": "production/biomasks-primary-20261113/README.md",
-      "bytes": 3106,
-      "sha256": "6c6e9ee6ac372ff268a32d0934905ffb061137aa3b42217779bceb554ccebf7d"
+      "bytes": 4019,
+      "sha256": "878269c46dbc6616f7690ac533f342e0353b0345f311c426215e18ae0868b6bc"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/captured.json",
+      "bytes": 5860,
+      "sha256": "a6ddc9ac67f8d41c6237981419a7ef60a20374292c3389011bfc21f8d48fcce8"
     },
     {
       "path": "production/biomasks-primary-20261113/generation/cleopatra.json",
       "bytes": 4835,
       "sha256": "0794e6df1af6703c1110e48be38a06704af4eb2b51beab90204a7408f7e7afed"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/generation/emissary.json",
+      "bytes": 5126,
+      "sha256": "8e74c5d8db389da64ecfadd57de5e41cbb34ae8c60120a6d4919cd7c030d759a"
     },
     {
       "path": "production/biomasks-primary-20261113/generation/exiled.json",
@@ -2214,13 +2525,18 @@
     },
     {
       "path": "production/biomasks-primary-20261113/inputs/accepted-assets.json",
-      "bytes": 8829,
-      "sha256": "639c22ec66b33191d7d3839b6f5f798153c0e5861aa0ee57e3a49a81e61256af"
+      "bytes": 12537,
+      "sha256": "e24f780fc4bae7e7e4c38e36cc29434e1abfc7d88cd22712d119f3c3989adfdb"
+    },
+    {
+      "path": "production/biomasks-primary-20261113/inputs/five-view-native-protection.json",
+      "bytes": 2397,
+      "sha256": "a8db5946dcb16dc2c39c7286cf378bb20368a080df7a5d33633bb4abf048296c"
     },
     {
       "path": "production/biomasks-primary-20261113/inputs/independent-visual-review.json",
-      "bytes": 14248,
-      "sha256": "04fa9557a2ac7fd63f356eb90d0ef7b551bffb447d29132adaa9157fc30cda01"
+      "bytes": 20727,
+      "sha256": "bd3739fe36b319026db87c191c712b1aa1c867dcdfd20db15d0f767b27c5bdcb"
     },
     {
       "path": "production/biomasks-primary-20261113/inputs/network-addition-proposal.json",
@@ -2229,13 +2545,13 @@
     },
     {
       "path": "production/biomasks-primary-20261113/inputs/primary-mask-sources.json",
-      "bytes": 46262,
-      "sha256": "0dea7af0aef83e6860775c9674bb461fffaf1c2e6f27f77faead2ba229d64242"
+      "bytes": 66567,
+      "sha256": "3b0f5a8c41643463d71f079f270fe46270e30fc03c14657a7311e003d6957f7e"
     },
     {
       "path": "production/biomasks-primary-20261113/inputs/primary-reference-status.json",
-      "bytes": 163094,
-      "sha256": "d894940b1a5f887ac6f2a8501c70901e0c8d9238a33dcec008f78e103cc50600"
+      "bytes": 178961,
+      "sha256": "24bfe15398fd92d7aa1e38d74f418334417e3fbd19906260ed92ff082abfd232"
     },
     {
       "path": "production/biomasks-primary-20261113/inputs/remaining-mask-scope.json",
@@ -2243,9 +2559,14 @@
       "sha256": "0170c9d37e594b1c4e6154c0256408c21c7d211f89ec600c799207e610283532"
     },
     {
+      "path": "production/biomasks-primary-20261113/inputs/six-view-native-protection.json",
+      "bytes": 2842,
+      "sha256": "847ba382f1ed53349d32c5e62bf212b99be51b50fa45331476fddb0d359c05d1"
+    },
+    {
       "path": "production/biomasks-primary-20261113/tools/build-primary-mask-pack.py",
-      "bytes": 25036,
-      "sha256": "3c169928b666ca9848fa824e52f427dbb7e36d6f05dc737824c9c4a6f7fab3f5"
+      "bytes": 29950,
+      "sha256": "44d403c068889df72a4724a1bcda067d34d9b3f5064fb566c23a712f7d72c7a1"
     },
     {
       "path": "production/biomasks-primary-20261113/tools/ci-primary-mask-inputs.py",
@@ -2254,13 +2575,13 @@
     },
     {
       "path": "production/biomasks-primary-20261113/tools/qa-browser.mjs",
-      "bytes": 9862,
-      "sha256": "e8d90df47e2f264606247f0cb1a3b432d562d07f08a60f8805a2b6934737947f"
+      "bytes": 10305,
+      "sha256": "9255f51c68cffe368606e4fd4f54c364ca8b82ba7c6f1e21916dc230cd5bbea3"
     },
     {
       "path": "production/biomasks-primary-20261113/tools/review-template.html",
-      "bytes": 17512,
-      "sha256": "0862e92a71e2c70f0e9a40e8605340261bc850f4372f6189692e46680dda8697"
+      "bytes": 18174,
+      "sha256": "9fe0043167783ad99b92e720c459b24229d1c616f84f26fc2ba619a936f205d9"
     },
     {
       "path": "production/biomasks-primary-20261113/tools/verify-primary-mask-pack.py",
@@ -2280,6 +2601,22 @@
     "files": 336,
     "workbooks": 123,
     "priorNativePNGs": 62
+  },
+  "preservedInitialFive": {
+    "path": "production/biomasks-primary-20261113/inputs/five-view-native-protection.json",
+    "bytes": 2397,
+    "sha256": "a8db5946dcb16dc2c39c7286cf378bb20368a080df7a5d33633bb4abf048296c",
+    "files": 10,
+    "nativePNGs": 5,
+    "generationReceipts": 5
+  },
+  "preservedFirstSix": {
+    "path": "production/biomasks-primary-20261113/inputs/six-view-native-protection.json",
+    "bytes": 2842,
+    "sha256": "847ba382f1ed53349d32c5e62bf212b99be51b50fa45331476fddb0d359c05d1",
+    "files": 12,
+    "nativePNGs": 6,
+    "generationReceipts": 6
   },
   "limitations": [
     "Les nouvelles découpes candidates ne certifient pas les exigences de fidélité et ne ferment pas les tâches bible/Excel.",

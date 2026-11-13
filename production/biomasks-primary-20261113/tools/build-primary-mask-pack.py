@@ -30,8 +30,12 @@ EXPECTED = {
     'valkyrie': ('mk-25-valkyrie', {'valkyrie-official-render', 'valkyrie-official-closeup'}),
     'cleopatra': ('phg-cleopatra', {'cleopatra-official-render'}),
     'exiled': ('phg-exiled', {'exiled-official-render', 'exiled-official-closeup'}),
+    'emissary': ('mk-30-emissary', {'emissary-official-render'}),
+    'captured': ('phg-captured', {'captured-official-closeup', 'captured-official-render'}),
 }
-NEW_NAMES = {'valkyrie', 'cleopatra'}
+NEW_NAMES = {'valkyrie', 'cleopatra', 'emissary', 'captured'}
+FIVE_VIEW_PIN = 'a8db5946dcb16dc2c39c7286cf378bb20368a080df7a5d33633bb4abf048296c'
+SIX_VIEW_PIN = '847ba382f1ed53349d32c5e62bf212b99be51b50fa45331476fddb0d359c05d1'
 FORBIDDEN_APPROVALS = ('canonCertified', 'humanArtValidated', 'runtimeIntegrated',
                        'pixelEditingPerformed', 'animated')
 
@@ -128,6 +132,34 @@ def no_approval(row, label):
         raise ValueError('Unapproved automatic validation claim in ' + label)
 
 
+def five_view_protection():
+    path = INPUTS / 'five-view-native-protection.json'
+    if digest(path.read_bytes()) != FIVE_VIEW_PIN:
+        raise ValueError('The immutable first-five candidate protection snapshot changed')
+    data = load(path)
+    if (data['baselineCommit'] != 'fad5c4b76dc1d3fe159509903c3be0844b8607d8'
+            or len(data['files']) != 10 or data['nativeCandidates'] != 5
+            or data['generationReceipts'] != 5):
+        raise ValueError('Unexpected first-five candidate protection membership')
+    for record in data['files']:
+        assert_pin(record)
+    return data
+
+
+def six_view_protection():
+    path = INPUTS / 'six-view-native-protection.json'
+    if digest(path.read_bytes()) != SIX_VIEW_PIN:
+        raise ValueError('The immutable first-six candidate protection snapshot changed')
+    data = load(path)
+    if (data['baselineManifestSha256'] != '0bf7a1335652706f93d6f609c3e9ce9e3dd3896bbc3f907e3ed2e5bb54847001'
+            or len(data['files']) != 12 or data['nativeCandidates'] != 6
+            or data['generationReceipts'] != 6):
+        raise ValueError('Unexpected first-six candidate protection membership')
+    for record in data['files']:
+        assert_pin(record)
+    return data
+
+
 def alpha_metrics(image):
     if image.mode != 'RGBA':
         raise ValueError('Native RGBA PNG required')
@@ -154,9 +186,36 @@ def public_reference(row):
             if k not in {'path', 'localPath', 'privateReferencePath', 'headersPath'}}
 
 
+def provenance_ledgers(sources):
+    records = [sources['sourceInventory'], sources['sourceLedger']]
+    records.extend(r['projectSourceLedger'] for r in sources['sources'] if r.get('projectSourceLedger'))
+    paths = set()
+    for row in records:
+        path = repo_file(row['path'])
+        if pin(path)['sha256'] != row['sha256']:
+            raise ValueError('Declared source ledger bytes changed: ' + row['path'])
+        paths.add(path)
+    for source in sources['sources']:
+        row = source.get('projectSourceLedger')
+        if not row or not row.get('jsonPointer'):
+            continue
+        value = load(repo_file(row['path']))
+        for token in row['jsonPointer'].split('/')[1:]:
+            token = token.replace('~1', '/').replace('~0', '~')
+            value = value[int(token)] if isinstance(value, list) else value[token]
+        matches = (value == source['url'] if isinstance(value, str)
+                   else isinstance(value, list) and source['url'] in value)
+        if not matches:
+            raise ValueError('The declared source URL is absent from its exact ledger pointer')
+    return paths
+
+
 def build(require_complete):
     protected = protection()
+    first_five = five_view_protection()
+    first_six = six_view_protection()
     sources = load(INPUTS / 'primary-mask-sources.json')
+    ledger_files = provenance_ledgers(sources)
     refs = {r['id']: r for r in sources['sources']}
     targets = {r['id']: r for r in sources['targets']}
     if len(refs) != len(sources['sources']) or not set(EXPECTED).issubset(targets):
@@ -236,6 +295,8 @@ def build(require_complete):
             'La fidélité 1:1 reste une cible de revue, sans certification canonique ni validation artistique humaine.',
             'Les photos officielles restent des références privées identifiées par URL et SHA ; elles ne sont pas republiées.',
         ]))
+        if identity == 'emissary':
+            notes.append('Vue candidate partielle : les deux petits éléments supérieurs coupés par le cadre officiel sont exclus ; leur forme et la silhouette complète restent ouvertes.')
         assets.append({**actual, 'id': identity, 'inventoryId': inventory_id,
                        'label': entry['label'], 'url': '/' + asset.relative_to(ROOT / 'public').as_posix(),
                        'src': '/' + asset.relative_to(ROOT / 'public').as_posix(),
@@ -246,6 +307,9 @@ def build(require_complete):
                        'humanArtValidated': False, 'runtimeIntegrated': False,
                        'pixelEditingPerformed': False, 'animated': False,
                        'sourceIds': entry['sourceIds'], 'references': references,
+                       'partialReferenceView': identity == 'emissary',
+                       'incompleteSourceElements': ['Deux petits éléments supérieurs coupés dans la référence officielle, exclus de cette découpe sans reconstruction.']
+                                                   if identity == 'emissary' else [],
                        'generationRecord': pin(receipt_path), 'limitations': notes,
                        'warnings': ['Marge native inférieure à5%; revoir le cadrage.']
                                    if min(metrics['marginsPixels']) / min(width, height) < .05 else [],
@@ -262,6 +326,7 @@ def build(require_complete):
     if actual_files - allowed:
         raise ValueError('Unregistered public files: ' + repr(sorted(actual_files - allowed)))
     input_files = [p for folder in (INPUTS, PACK / 'generation') for p in folder.rglob('*.json')]
+    input_files.extend(ledger_files)
     input_files += [PACK / 'README.md', PACK / 'tools/build-primary-mask-pack.py',
                     PACK / 'tools/verify-primary-mask-pack.py', PACK / 'tools/ci-primary-mask-inputs.py',
                     PACK / 'tools/review-template.html', PACK / 'tools/qa-browser.mjs',
@@ -278,17 +343,24 @@ def build(require_complete):
                 'counts': {'nativeFiles': len(native), 'assets': len(assets), 'newNamedTargets': len(newly_covered),
                            'improvedExistingNamedTargets': len(seen - NEW_NAMES), 'remainingNamedTargets': len(remaining),
                            'baselineRemainingNamedTargets': 50,
+                           'partialReferenceCandidates': sum(a['partialReferenceView'] for a in assets),
                            'sourceNamedEntries': 110, 'exactMissingImagesRequired': None,
                            'canonCertifiedAssets': 0, 'humanValidatedAssets': 0,
                            'runtimeIntegratedAssets': 0, 'animationClips': 0},
                 'plannedBatch': {'selectedTargetIds': sorted(EXPECTED), 'missingSelectedIds': missing,
-                                 'requestedBatchGenerated': not missing, 'allNamedRequirementsComplete': False},
+                                 'requestedBatchGenerated': not missing, 'allNamedRequirementsComplete': False,
+                                 'includesPartialSourceViews': any(a['partialReferenceView'] for a in assets),
+                                 'scope': 'Selected reference-view cuts only; Emissary deliberately excludes source-cropped upper elements.'},
                 'assets': assets, 'nativeFiles': native,
                 'remainingTargets': remaining,
                 'newlyCoveredNamedTargetIds': sorted(newly_covered_inventory_ids),
                 'inputPins': sorted([pin(p) for p in set(input_files)], key=lambda r: r['path']),
                 'protectedSources': {**pin(FOLLOW / 'source-protection.json'),
                                      'files': len(protected['files']), 'workbooks': 123, 'priorNativePNGs': 62},
+                'preservedInitialFive': {**pin(INPUTS / 'five-view-native-protection.json'),
+                                        'files': len(first_five['files']), 'nativePNGs': 5, 'generationReceipts': 5},
+                'preservedFirstSix': {**pin(INPUTS / 'six-view-native-protection.json'),
+                                     'files': len(first_six['files']), 'nativePNGs': 6, 'generationReceipts': 6},
                 'limitations': ['Les nouvelles découpes candidates ne certifient pas les exigences de fidélité et ne ferment pas les tâches bible/Excel.',
                                 'Les angles des anciens frontaux secondaires et des vues officielles en couleur diffèrent.',
                                 'Aucun dos ou profil, aucune animation, admission canonique ou intégration runtime ne sont déduits.']}
@@ -309,14 +381,17 @@ def workbook_data(manifest, protected, lib):
     tables = []
     summary = [['Mesure', 'Valeur', 'Portée'],
                ['Nouveaux PNG candidats', c['nativeFiles'], 'Vues officielles en couleur, sans certification automatique'],
-               ['Nouveaux noms avec découpe candidate', c['newNamedTargets'], 'Valkyrie et Cleopatra si présentes ; aucune tâche certifiée terminée'],
+               ['Nouveaux noms avec découpe candidate', c['newNamedTargets'], 'Valkyrie, Cleopatra, Emissary partiel et Captured ; aucune tâche certifiée terminée'],
+               ['Vues sources explicitement partielles', c['partialReferenceCandidates'], 'Emissary : deux petits éléments supérieurs exclus, silhouette complète non établie'],
                ['Noms existants améliorés', c['improvedExistingNamedTargets'], 'Samurai, Viking et Exiled avaient déjà un candidat frontal secondaire'],
                ['Noms restants', c['remainingNamedTargets'], 'Baseline50 moins nouveaux candidats nommés ; pas un total de PNG'],
                ['Total exact d’images requises', 'Indéterminé', 'Autres angles et variantes non déduits depuis un nom'],
-               ['Lot sélectionné généré', manifest['plannedBatch']['requestedBatchGenerated'], 'Cinq vues sélectionnées seulement'],
+               ['Lot sélectionné généré', manifest['plannedBatch']['requestedBatchGenerated'], 'Sept découpes sélectionnées seulement, dont Emissary partiel'],
                ['Canon / humain / runtime / animation', '0 /0 /0 /0', 'Critères ouverts'],
                ['XLSX antérieurs protégés', 123, '122 sources et suivis antérieurs, plus le classeur du troisième lot'],
                ['Anciens PNG candidats protégés', 62, 'Images natives des trois lots, références et QA exclus'],
+               ['Cinq PNG et reçus initiaux préservés', '5 /5', 'Les octets du commit fad5c4b76 restent inchangés pendant cette extension'],
+               ['Six PNG et reçus antérieurs préservés', '6 /6', 'Emissary et les cinq premiers candidats restent inchangés pendant l’ajout Captured'],
                ['Fichiers protégés', len(protected['files']), 'Toutes les empreintes vérifiées']]
     tables.append(('Synthèse', summary, [48, 35, 120]))
     pngs = [['ID', 'Nom', 'PNG natif', 'SHA256', 'Dimensions', 'Vue exacte', 'Pivot proposé', 'Bornes alpha16', 'Marges', 'État', 'Limites']]
@@ -407,6 +482,8 @@ def main(arguments=None):
               'workbook': {'path': relative(workbook), 'sha256': digest(raw), 'bytes': len(raw)},
               'sheets': [s['name'] for s in data['sheets']], 'cellsCompared': cells,
               'protectedFiles': len(protected['files']), 'protectedWorkbooks': 123, 'protectedPriorNativePNGs': 62,
+              'preservedInitialNativePNGs': 5, 'preservedInitialGenerationReceipts': 5,
+              'preservedPriorNativePNGs': 6, 'preservedPriorGenerationReceipts': 6,
               'scope': 'Native bytes and alpha, pinned provenance and deterministic OpenXML only; no art/canon/runtime approval'}
     outputs[FOLLOW / 'verification.json'] = encoded(result)
     for path, content in outputs.items():

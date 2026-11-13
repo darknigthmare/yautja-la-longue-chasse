@@ -7,25 +7,28 @@
     "baselineNamedInventoryEntries": 110,
     "baselineMissingCanonicalNamedTargets": 63,
     "previouslyGeneratedSecondaryMaskNames": 13,
-    "remainingNamedTargetsWithoutThoseCandidateCuts": 48,
+    "remainingNamedTargetsWithoutThoseCandidateCuts": 46,
     "currentPrimarySourceViewTargetsAlreadyPresentAsCandidates": 3,
-    "newlyCoveredMaskNamesThisIntake": 2,
+    "newlyCoveredMaskNamesThisIntake": 4,
     "exactNumberOfMissingPngs": null,
-    "note": "The previous secondary pack left 50 named targets without candidate cuts. Accepted Valkyrie and Cleopatra candidates now cover two additional names, leaving 48 named targets. Samurai, Viking and Exiled improve existing candidates and do not reduce that count again. This is candidate coverage only: canonical certification, human art validation, runtime integration and P0/bible/Excel task closure all remain zero. Variants can require multiple PNGs; exact remaining PNG totals are undefined.",
-    "currentPrimarySourceViewTargets": 5,
+    "note": "The previous secondary pack left 50 named targets without candidate cuts. Accepted Valkyrie, Cleopatra, partial facial-shell Emissary and damaged Captured candidates cover four additional names, leaving 46 named targets. Samurai, Viking and Exiled improve existing candidates and do not reduce that count again. This is candidate coverage only: canonical certification, human art validation, runtime integration and P0/bible/Excel task closure all remain zero. Missing upper Emissary appendages are not reconstructed; Captured preserves a transparent broken eye opening. Variants can require multiple PNGs and exact remaining PNG totals are undefined.",
+    "currentPrimarySourceViewTargets": 7,
     "candidateAcceptancePending": false,
     "remainingNamedTargetsAfterPreviousSecondaryPack": 50,
-    "remainingNamedTargetsWithoutCurrentCandidateCuts": 48,
-    "acceptedCurrentSourceViewCandidates": 5,
+    "remainingNamedTargetsWithoutCurrentCandidateCuts": 46,
+    "acceptedCurrentSourceViewCandidates": 7,
     "improvedPreviouslyCoveredMaskNames": 3,
     "newNamedCandidatesAccepted": [
       "mk-25-valkyrie",
-      "phg-cleopatra"
+      "phg-cleopatra",
+      "mk-30-emissary",
+      "phg-captured"
     ],
     "canonicalCertified": 0,
     "humanArtValidated": 0,
     "runtimeIntegrated": 0,
-    "p0OrBibleExcelTasksClosed": 0
+    "p0OrBibleExcelTasksClosed": 0,
+    "pendingNamedCandidateTargets": []
   },
   "remainingTargets": [
     {
@@ -275,27 +278,6 @@
           "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
           "sheet": "Bible campagne",
           "row": 964
-        }
-      ],
-      "canonicalFidelityCertified": false,
-      "humanArtValidated": false
-    },
-    {
-      "id": "mk-30-emissary",
-      "name": "emissary",
-      "work": "Emissary, PHG",
-      "kind": "biomask",
-      "sourceLocations": [
-        {
-          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
-          "line": 1528
-        },
-        {
-          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
-          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
-          "sheet": "Bible campagne",
-          "row": 965
         }
       ],
       "canonicalFidelityCertified": false,
@@ -812,27 +794,6 @@
       "humanArtValidated": false
     },
     {
-      "id": "phg-captured",
-      "name": "Captured (PHG)",
-      "work": "Predator: Hunting Grounds",
-      "kind": "biomask",
-      "sourceLocations": [
-        {
-          "path": "docs/campagne/BIBLE_DE_CAMPAGNE.md",
-          "sha256": "2541ac083c3d72547b72f74613a035d7af22bb2b3899db588610e000b9009c31",
-          "line": 1535
-        },
-        {
-          "path": "production/excel-bible-20261108/suivi/Yautja_Suivi_Excel_Bible_20261108.xlsx",
-          "sha256": "4f9ff0954f18b5d6830d3a2d46c0caf035a04b6582c934fc274e096fb5f7face",
-          "sheet": "Bible campagne",
-          "row": 972
-        }
-      ],
-      "canonicalFidelityCertified": false,
-      "humanArtValidated": false
-    },
-    {
       "id": "phg-hunter",
       "name": "Hunter (PHG)",
       "work": "Predator: Hunting Grounds",
@@ -1115,19 +1076,23 @@
     "noUnchangedRetriesOrAlternateHostBypass": true
   },
   "positivePhgAcquisitions": {
-    "publisherArticlesReceived": 6,
-    "targetSourceImages": 9,
+    "publisherArticlesReceived": 7,
+    "targetSourceImages": 12,
     "targetIdentities": [
       "mk-23-samurai",
       "mk-24-viking",
       "mk-25-valkyrie",
       "phg-cleopatra",
-      "phg-exiled"
+      "phg-exiled",
+      "mk-30-emissary",
+      "phg-captured"
     ],
     "sourceMetadata": "production/biomasks-primary-20261113/inputs/primary-mask-sources.json",
-    "publisherPhotoLinksActuallyObserved": 4,
+    "publisherPhotoLinksActuallyObserved": 5,
     "storyblokRenderLinkChain": "Five exact Storyblok URLs came from the existing pinned project ledger; current PHG-homepage links could not be re-observed. Directly linked publisher screenshots corroborate Samurai, Viking, Valkyrie and Exiled. Cleopatra has only a repeated small roadmap render for identity/composition; the roadmap explicitly says artwork not final.",
-    "additionalSupplementaryRoadmapLinksObserved": 1
+    "additionalSupplementaryRoadmapLinksObserved": 1,
+    "emissaryIdentityGrade": "Explicit single-character official asset filename and archived source declaration; current publisher-page link remains unobserved. Original game geometry is not established by the V87 generated skin texture.",
+    "capturedIdentityGrade": "Primary editorial-context association from immediately adjacent paragraph naming Captured and its tarnished mask; individual photo label/menu name absent. Composite position corroborated by that specific damaged face, never by membership order alone."
   },
   "alphaFinding": {
     "status": "primary-mask-reference-still-missing",
@@ -3832,11 +3797,279 @@
       "canonicalFidelityCertified": false,
       "humanArtValidated": false,
       "runtimeIntegrated": false
+    },
+    {
+      "inventoryId": "mk-30-emissary",
+      "name": "Emissary PHG",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+      "status": "generated-candidate",
+      "partialMaskCutout": true,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "inventoryId": "phg-captured",
+      "name": "Captured PHG",
+      "assetPath": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+      "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+      "status": "generated-candidate",
+      "damagedMaskOpeningTransparent": true,
+      "canonicalFidelityCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
     }
   ],
   "acceptedCandidateInput": {
     "path": "production/biomasks-primary-20261113/inputs/accepted-assets.json",
-    "sha256": "639c22ec66b33191d7d3839b6f5f798153c0e5861aa0ee57e3a49a81e61256af"
+    "sha256": "e24f780fc4bae7e7e4c38e36cc29434e1abfc7d88cd22712d119f3c3989adfdb"
   },
-  "acceptanceLimits": "All five entries remain generated candidates. Source availability and technical/source-view acceptance do not close any P0, bible/Excel fidelity requirement, human art validation or runtime integration."
+  "acceptanceLimits": "All seven entries remain generated candidates. Emissary is a conservative partial facial cutout; Captured retains a transparent damaged eye opening and documented generated contour interpretations. Source availability and technical/source-view acceptance do not close any P0, bible/Excel fidelity requirement, human art validation or runtime integration.",
+  "independentBoundedResearch": {
+    "researchReportSha256": "a793fb61b5b15c0d13764c02421d1c3815c44f3f57558fa56c11871f021733ae",
+    "pages": [
+      {
+        "id": "launch-2019-blog",
+        "url": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "httpStatus": 200,
+        "sha256": "4229c735613b33cf231ee0629fafc0da4976b3ea065e70ada91578f4d724ac77",
+        "bytes": 175210,
+        "interpretation": "Official article names Hunter/Scout/Berserker as three gameplay classes and links three portraits; the individual images have generic numbered alt text and no class captions."
+      },
+      {
+        "id": "search-emissary",
+        "url": "https://blog.playstation.com/?s=Emissary",
+        "httpStatus": 200,
+        "sha256": "492314a8e95fe9d1afb41ac8efe1c762e6c9fa9a3df5921f86db8a47806a2e41",
+        "bytes": 107043,
+        "interpretation": "Official fetched page only; no usable new PHG article link returned by this fetched search."
+      },
+      {
+        "id": "search-anubis",
+        "url": "https://blog.playstation.com/?s=Anubis",
+        "httpStatus": 200,
+        "sha256": "2e9309f57893225da8b9861f59f5058f329446d401ff27805aedf7ace49d34bb",
+        "bytes": 107017,
+        "interpretation": "Official fetched page only; no usable new PHG article link returned by this fetched search."
+      },
+      {
+        "id": "search-witch",
+        "url": "https://blog.playstation.com/?s=Witch",
+        "httpStatus": 200,
+        "sha256": "3b73ee3e42ce0125842026db2fea9b28fc165fbcca798147bcb380e65099a242",
+        "bytes": 172125,
+        "interpretation": "Official fetched page only; no usable new PHG article link returned by this fetched search."
+      },
+      {
+        "id": "search-amazon",
+        "url": "https://blog.playstation.com/?s=Amazon",
+        "httpStatus": 200,
+        "sha256": "a59be988306158fa907b8c82fa58c9837772523d560b740a2ed2f26af631c9b4",
+        "bytes": 149287,
+        "interpretation": "Official fetched page only; no usable new PHG article link returned by this fetched search."
+      }
+    ],
+    "emissaryProjectSourceLedger": {
+      "path": "app/game/data/driveArchiveAuditSpritesV87.json",
+      "sha256": "be7fbfcc05d74e438be13a07b75293f1b14fe72c34ba8d0a0930df8eadfe065b",
+      "jsonPointer": "/assets/63/declaredSemantics/source_urls"
+    },
+    "emissaryGeometryBoundary": "Only continuous dome and directly visible facial shell are usable; two upper projections are clipped at row 197. Accepted Emissary candidate deliberately omits them and is partial; 47 named targets remain without candidate cuts.",
+    "excludedNamedImageAttributions": [
+      {
+        "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/f227f8d64d/hunting-party-2.png",
+        "sha256": "9fa0c0a40f537681900d4765a87346ac517b0b75d13596bbc9854759b41adf43",
+        "bytes": 1231313,
+        "dimensions": [
+          995,
+          1101
+        ],
+        "identity": "Two-character official Hunting Party 2 render; per-character names are not printed in the image.",
+        "identityEvidenceGrade": "bundle-asset-name; Amazon-left is an archived declaration, not fresh publisher-position proof",
+        "targetIds": [
+          "phg-amazon",
+          "mk-29-pirate"
+        ],
+        "publisherLinkObservedInFetchedPage": false,
+        "limitations": [
+          "No original game UV, named tint, menu-selected name, side/back, six-body fit, human validation or canonical pixel 1:1 proof.",
+          "Only visible surfaces and actual source camera can be reproduced.",
+          "All files retained as native downloaded bytes; no crop, resize, recolor or alpha editing.",
+          "Do not label left/right solely from the order of names in a list.",
+          "Bible row1464 gives secondary textual descriptions consistent with the two looks, but no primary publisher caption or menu name establishes each position here.",
+          "Head decorations, skull/cloth necklace, dreadlocks and body are separate wearer components; do not merge into mask."
+        ],
+        "reasonExcludedFromNamedGeneration": "Bundle names or grouped paragraph context do not establish each depicted character position/name. No automatic attribution from order, body shape, mask resemblance or archived declaration."
+      },
+      {
+        "url": "https://live.staticflickr.com/65535/49198892311_6fa7226f69_z.jpg",
+        "sha256": "b68fe23e4ab256759e6bda2e86c060ae748ab088592675526e5bc88dac02da91",
+        "bytes": 65601,
+        "dimensions": [
+          394,
+          640
+        ],
+        "identity": "Official launch class portrait, individually UNMAPPED to class name.",
+        "identityEvidenceGrade": "publisher portrait and grouped class context only",
+        "targetIds": [
+          "phg-hunter",
+          "phg-scout",
+          "phg-berserker"
+        ],
+        "publisherLinkObservedInFetchedPage": true,
+        "officialPage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "exactAltText": "Predator Hunting Grounds - 06",
+        "limitations": [
+          "No original game UV, named tint, menu-selected name, side/back, six-body fit, human validation or canonical pixel 1:1 proof.",
+          "Only visible surfaces and actual source camera can be reproduced.",
+          "All files retained as native downloaded bytes; no crop, resize, recolor or alpha editing.",
+          "Generic numbered alt text does not name the class. Paragraph names the three classes but does not label each linked image.",
+          "Do not assign Hunter/Scout/Berserker to an image by order, body build, mask resemblance or a film counterpart."
+        ],
+        "reasonExcludedFromNamedGeneration": "Bundle names or grouped paragraph context do not establish each depicted character position/name. No automatic attribution from order, body shape, mask resemblance or archived declaration."
+      },
+      {
+        "url": "https://live.staticflickr.com/65535/49199095822_f0083b004b_z.jpg",
+        "sha256": "56fb81e680a27486c4b4c2ada812b11164550bc0e6c91147c620172864ca3638",
+        "bytes": 52583,
+        "dimensions": [
+          394,
+          640
+        ],
+        "identity": "Official launch class portrait, individually UNMAPPED to class name.",
+        "identityEvidenceGrade": "publisher portrait and grouped class context only",
+        "targetIds": [
+          "phg-hunter",
+          "phg-scout",
+          "phg-berserker"
+        ],
+        "publisherLinkObservedInFetchedPage": true,
+        "officialPage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "exactAltText": "Predator Hunting Grounds - 05",
+        "limitations": [
+          "No original game UV, named tint, menu-selected name, side/back, six-body fit, human validation or canonical pixel 1:1 proof.",
+          "Only visible surfaces and actual source camera can be reproduced.",
+          "All files retained as native downloaded bytes; no crop, resize, recolor or alpha editing.",
+          "Generic numbered alt text does not name the class. Paragraph names the three classes but does not label each linked image.",
+          "Do not assign Hunter/Scout/Berserker to an image by order, body build, mask resemblance or a film counterpart."
+        ],
+        "reasonExcludedFromNamedGeneration": "Bundle names or grouped paragraph context do not establish each depicted character position/name. No automatic attribution from order, body shape, mask resemblance or archived declaration."
+      },
+      {
+        "url": "https://live.staticflickr.com/65535/49199095857_ee64ccbaa8_z.jpg",
+        "sha256": "59b86d1b0fbf26fc8d78c1b9283452944481e0d53cf9a38403a670330af2fb7e",
+        "bytes": 72054,
+        "dimensions": [
+          394,
+          640
+        ],
+        "identity": "Official launch class portrait, individually UNMAPPED to class name.",
+        "identityEvidenceGrade": "publisher portrait and grouped class context only",
+        "targetIds": [
+          "phg-hunter",
+          "phg-scout",
+          "phg-berserker"
+        ],
+        "publisherLinkObservedInFetchedPage": true,
+        "officialPage": "https://blog.playstation.com/2019/12/10/predator-hunting-grounds-launching-april-24th-2020/",
+        "exactAltText": "Predator Hunting Grounds - 04",
+        "limitations": [
+          "No original game UV, named tint, menu-selected name, side/back, six-body fit, human validation or canonical pixel 1:1 proof.",
+          "Only visible surfaces and actual source camera can be reproduced.",
+          "All files retained as native downloaded bytes; no crop, resize, recolor or alpha editing.",
+          "Generic numbered alt text does not name the class. Paragraph names the three classes but does not label each linked image.",
+          "Do not assign Hunter/Scout/Berserker to an image by order, body build, mask resemblance or a film counterpart."
+        ],
+        "reasonExcludedFromNamedGeneration": "Bundle names or grouped paragraph context do not establish each depicted character position/name. No automatic attribution from order, body shape, mask resemblance or archived declaration."
+      }
+    ],
+    "amazonPirateIdentityLimit": "The official two-person hunting-party-2.png bundle is visibly useful but does not print per-character names. Amazon-left is only an archived V87 declaration (/assets/93), without fresh publisher-position proof; its generated skin texture does not authenticate mask geometry. Do not auto-label or generate either named mask from list order.",
+    "launchClassIdentityLimit": "Three publisher-linked launch portraits are individually unnamed. The article names Hunter, Scout and Berserker together, but generic numbered alt text does not map those names to the individual portraits.",
+    "noAccessBypassOrUnchangedDeniedHostRetry": true
+  },
+  "capturedPrimaryResearch": {
+    "researchReportSha256": "c8387a963719be5c9b83ae49ddb8b2bf96fabec25392ed673fa6a0504beda69f",
+    "publisherPage": {
+      "requestedUrl": "https://blog.playstation.com/?p=358472",
+      "canonicalUrl": "https://blog.playstation.com/2021/12/15/predator-hunting-grounds-introduces-the-hunting-party/",
+      "httpStatus": 200,
+      "bytes": 170202,
+      "sha256": "c5a1c30e4a92b8a956cb9cbfe2654e3357b28ae1c3b969a100afd9d7b6529dbf"
+    },
+    "identityEvidence": "First individual image after the paragraph ending with Captured and tarnished mask; contextual primary association, not a printed per-photo name or menu selection.",
+    "shortPublisherQuote": "And then there’s the Captured Predator [...] held captive, with a tarnished mask.",
+    "generationLimits": [
+      "The Captured name-to-photo association is editorial context: the first individual image follows the paragraph that names Captured and its tarnished mask. The photo has no individual caption, no nonempty alt label and no menu-selected name.",
+      "Only the directly visible downward-pitched near-front source camera is supported; no strict profile, backside, UV, exact neutral albedo or selected swatch is established.",
+      "The anatomical left eye and skin are visible through missing material at image right. They belong to the wearer and must be omitted; preserve the broken opening as void rather than completing an intact rim.",
+      "Weathering, fine chips and surface scratches can support a generated interpretation but do not certify canonical pixel 1:1 fidelity.",
+      "No human art approval, six-morphology equipment fit, runtime integration or P0/bible/Excel closure is established."
+    ],
+    "excludedAdditionalSources": [
+      {
+        "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/e4e09af68e/hunting-party-3.png",
+        "sha256": "9a5241b5bd248705cb1d7152f6980ac9b50fa1eedc8cdf7da6984343042533d5",
+        "bytes": 1488048,
+        "dimensions": [
+          995,
+          1101
+        ],
+        "identity": "Official Hunting Party 3 composite; three masked characters.",
+        "assessment": "No fresh primary publisher caption or exact single-character asset label maps these positions by name. Film-mask resemblance and archive labels alone do not establish a new PHG named-mask 1:1 reference.",
+        "publisherLinkObserved": false
+      },
+      {
+        "url": "https://live.staticflickr.com/65535/51735609251_0850e3d30b_h.jpg",
+        "sha256": "b4ae6ffb7847d4bcdf3d64194ce78f784c5802ac042e9be310e1e9fe2cb55112",
+        "bytes": 137273,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "identity": "Six detached Predator Mask Scars cosmetic examples in a primary publisher screenshot.",
+        "assessment": "Article explicitly names category Predator Mask Scars but supplies no individual cosmetic names, selected tint labels or left-to-right mapping. Do not name them or close six listed cosmetics from appearance alone.",
+        "publisherLinkObserved": true
+      },
+      {
+        "url": "https://live.staticflickr.com/65535/51736253084_0b31aa452f_h.jpg",
+        "sha256": "c9c74ec6c6305b81c8e02a280db9de63ebe462f6813757a6c8cedfa00112ef13",
+        "bytes": 139500,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "identity": "Individual publisher screenshot linked by V87 as MrBlack.",
+        "assessment": "Not a new missing target in this pass; dark metal shell plus pale jaw decoration. Article says its cosmetic mask was already released and can be purchased in-game. No blanket identity with all film/Berserker classes inferred.",
+        "publisherLinkObserved": true
+      },
+      {
+        "url": "https://live.staticflickr.com/65535/51736495690_f8744810dc_h.jpg",
+        "sha256": "265426d3f0859110583b05b172b768e36859d571dddd0c4491dd0fb132e8fab7",
+        "bytes": 517546,
+        "dimensions": [
+          1600,
+          1026
+        ],
+        "identity": "Official roadmap repeating the Hunting Party 1 character composite.",
+        "assessment": "Corroborates membership/composition; small repeated render, no additional camera or individually printed character names. Footer states artwork not final and subject to change.",
+        "publisherLinkObserved": true
+      },
+      {
+        "url": "https://live.staticflickr.com/65535/51736495745_524d30807c_h.jpg",
+        "sha256": "c81e57f0d7a4df613fd74662ba4131d1c3b4d7fbeb1f346cfc788e93756ef6d1",
+        "bytes": 152243,
+        "dimensions": [
+          1600,
+          900
+        ],
+        "identity": "Individual publisher screenshot linked by V87 as Falconer.",
+        "assessment": "Not a new missing target in this pass. New article describes Falconer as part of the trio and says its cosmetic mask was already released; individual image alt/caption does not print the name. Useful bundle context only.",
+        "publisherLinkObserved": true
+      }
+    ],
+    "additionalSourceRule": "Hunting Party 3 positions remain archive-only labels; six Mask Scars examples are individually unnamed. Do not assign new named targets from positional order or film resemblance.",
+    "acceptedNewNamedCandidate": "phg-captured",
+    "candidateAcceptanceLimits": "Generated source-view candidate with transparent image-right damage opening. Rim/breaks are somewhat amplified and dome dominant; these interpretations remain documented and do not certify canonical geometry."
+  }
 }

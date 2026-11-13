@@ -85,6 +85,7 @@ jobs:
       - name: Install pinned native PNG reader
         run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
       - name: Verify native candidates and deterministic workbook without rewriting
-        # Completeness concerns this five-view review batch. It does
+        # Completeness concerns this seven-cut review batch, including Emissary's
+        # explicitly partial source view. It does
         # not imply all inventory masks, canonical fidelity or human approval.
         run: python3 production/biomasks-primary-20261113/tools/verify-primary-mask-pack.py --check --require-complete

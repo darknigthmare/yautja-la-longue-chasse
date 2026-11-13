@@ -257,6 +257,141 @@
       "canonCertified": false,
       "humanArtValidated": false,
       "runtimeIntegrated": false
+    },
+    {
+      "id": "emissary",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+        "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+        "bytes": 1247126,
+        "nativeDimensions": [
+          1192,
+          1319
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          209,
+          82,
+          972,
+          1219
+        ],
+        "alpha16MarginsLTRB": [
+          209,
+          82,
+          220,
+          100
+        ]
+      },
+      "sourceIds": [
+        "emissary-official-render"
+      ],
+      "decision": "partial-candidate-with-limitations",
+      "partial": true,
+      "view": "Faible trois quarts cohérent avec le render, tête inclinée, côté gauche de l’image davantage visible ; aucune face orthographique ajoutée.",
+      "observations": [
+        "Dôme ovale noir, cerclage argenté, sourcils courbes, ouvertures oculaires noires et insert inférieur bronzé conservés.",
+        "Rangée de cinq ports sur le côté gauche de l’image cohérente avec la référence visible.",
+        "Les appendices rigides supérieurs interrompus au bord horizontal de la source, vers y197, ne sont pas rétablis.",
+        "Peau, dreadlocks, camouflage, cou, torse et armes exclus.",
+        "Aucun bloc blanc opaque, halo ou liseré coloré apparent en composition Chromium sur noir, blanc et damier.",
+        "Le contour publié est entièrement dans son cadre ; marges alpha16 de 209, 82, 220 et 100 pixels."
+      ],
+      "limitations": [
+        "Candidat explicitement partiel : le sommet des deux appendices rigides manque dans la source et leur omission empêche d’attester une silhouette supérieure complète.",
+        "Les proportions relatives du dôme et de la face ont été légèrement reconstruites ; leur correspondance métrique exacte n’est pas certifiée.",
+        "Les fines rainures, ports, reflets et détails mécaniques de l’insert inférieur sont interprétés à partir du render.",
+        "La référence Storyblok est citée dans le registre local V87 ; le lien depuis la page PHG actuelle n’a pas été vérifié car cette page reste inaccessible.",
+        "Intérieur, dos, épaisseurs et géométrie cachée ne sont pas établis."
+      ],
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
+    },
+    {
+      "id": "captured",
+      "candidate": {
+        "path": "public/game/biomasks-primary-20261113/masks/captured-source-view.png",
+        "sha256": "a50b348290dea555c30e752399c761b3f59abab4139ac72a1f23465c327ee355",
+        "bytes": 1321450,
+        "nativeDimensions": [
+          1199,
+          1312
+        ],
+        "mode": "RGBA",
+        "alphaRange": [
+          0,
+          255
+        ],
+        "alpha16BoundingBox": [
+          225,
+          96,
+          973,
+          1213
+        ],
+        "alpha16MarginsLTRB": [
+          225,
+          96,
+          226,
+          99
+        ]
+      },
+      "sourceIds": [
+        "captured-official-closeup",
+        "captured-official-render"
+      ],
+      "decision": "candidate-with-limitations",
+      "view": "Proche de la vue légèrement inclinée du gros plan officiel ; personnage extrême droite uniquement utilisé dans le render du groupe.",
+      "observations": [
+        "Dôme ovale gris usé, rim irrégulier ébréché, trois points rouges côté gauche de l’image et lentille sombre du même côté conservés.",
+        "Ouverture oculaire cassée côté droit de l’image conservée avec son bord irrégulier ; peau et iris du porteur exclus.",
+        "Aucune substitution par un Jungle Hunter intact et symétrique ; dommage de la vue de référence maintenu.",
+        "Corps, cou, dreadlocks, peau et canon d’épaule exclus.",
+        "L’ouverture droite est réellement transparente et laisse passer blanc ou damier en composition Chromium ; aucune lentille noire de remplacement.",
+        "Aucun bloc opaque, halo blanc ou liseré coloré apparent sur noir, blanc ou damier.",
+        "Contour non coupé ; marges alpha16 de 225, 96, 226 et 99 pixels."
+      ],
+      "limitations": [
+        "Le rebord supérieur et certaines cassures sont légèrement plus saillants que dans la référence ; leur nombre, profondeur et tracé exacts ne sont pas certifiés.",
+        "Les proportions du dôme apparaissent légèrement plus dominantes ; la correspondance métrique exacte n’est pas établie.",
+        "Les rayures et la patine sont reconstruites, sans reproduction au pixel près.",
+        "La délimitation du bord cassé a été reconstruite après exclusion de la peau et de l’œil visibles dans la photographie.",
+        "Intérieur, dos, épaisseurs et géométrie cachée ne sont pas établis."
+      ],
+      "rightOpeningAlphaProbe": {
+        "box": [
+          750,
+          715,
+          795,
+          740
+        ],
+        "pixelCount": 1125,
+        "alphaRange": [
+          0,
+          0
+        ],
+        "zeroAlphaCount": 1125
+      },
+      "leftLensAlphaProbe": {
+        "box": [
+          430,
+          715,
+          480,
+          745
+        ],
+        "pixelCount": 1500,
+        "alphaRange": [
+          252,
+          253
+        ],
+        "zeroAlphaCount": 0
+      },
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false
     }
   ],
   "browserEvidence": {
@@ -271,8 +406,8 @@
       "#ffffff",
       "CSS checkerboard"
     ],
-    "probeCount": 3,
-    "note": "Trois captures de composition : 6 images Samurai/Viking, 6 images Viking V1/V2 et 9 images des trois masques supplémentaires. Ces observations ne sont ni des tests de gameplay, ni une certification canonique.",
+    "probeCount": 5,
+    "note": "Cinq captures de composition : 6 images Samurai/Viking, 6 images Viking V1/V2, 9 images des trois masques supplémentaires, 3 images Emissary et 3 images Captured. Ces observations ne sont ni des tests de gameplay, ni une certification canonique.",
     "screenshots": [
       {
         "path": "production/biomasks-primary-20261113/qa/artistic/alpha-browser-composite.png",
@@ -303,6 +438,26 @@
           2100
         ],
         "mode": "RGB"
+      },
+      {
+        "path": "production/biomasks-primary-20261113/qa/artistic/emissary-browser-composite.png",
+        "sha256": "18b5a223bf9117900331e8b2e68b6407d805f993b72ec2e191411195beda3eda",
+        "bytes": 451887,
+        "nativeDimensions": [
+          1500,
+          760
+        ],
+        "mode": "RGB"
+      },
+      {
+        "path": "production/biomasks-primary-20261113/qa/artistic/captured-browser-composite.png",
+        "sha256": "23d222d9c53b030e422ff18b0bc6f784e091f5ed9bc867b759ed239317cbec70",
+        "bytes": 464779,
+        "nativeDimensions": [
+          1500,
+          794
+        ],
+        "mode": "RGB"
       }
     ],
     "probes": [
@@ -329,6 +484,22 @@
           2100
         ],
         "imageCount": 9
+      },
+      {
+        "id": "emissary-partial",
+        "viewport": [
+          1500,
+          760
+        ],
+        "imageCount": 3
+      },
+      {
+        "id": "captured-damaged-mask",
+        "viewport": [
+          1500,
+          760
+        ],
+        "imageCount": 3
       }
     ]
   },
@@ -370,10 +541,10 @@
     "humanValidationCount": 0,
     "canonCertificationCount": 0,
     "runtimeIntegrationCount": 0,
-    "sourceViewCandidateCount": 5,
-    "newNamedTargetsWithCandidateCount": 2,
+    "sourceViewCandidateCount": 7,
+    "newNamedTargetsWithCandidateCount": 4,
     "improvedExistingMaskViewCandidateCount": 3
   },
   "archivalNote": "Original review JSON hash preserved below; only metadata paths were updated to repository copies. Screenshot PNGs and candidate PNGs remain byte-identical.",
-  "originalReviewReportSha256": "541907984c20b766e6bd286f337f0210b54b198020fb29b0a10e00e9231e0222"
+  "originalReviewReportSha256": "f36c4970fe190fed0125e5bae32b7d88cfd7544671f56c926127aa57a139eade"
 }

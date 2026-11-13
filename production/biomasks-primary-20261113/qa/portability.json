@@ -1,27 +1,41 @@
 {
   "passed": true,
-  "selectedFiles": 366,
+  "selectedFiles": 374,
   "selection": {
     "passed": true,
-    "literalFiles": 366,
-    "pinnedFiles": 359,
-    "pinnedBytes": 301340755,
-    "selectedBytes": 301758852,
+    "literalFiles": 374,
+    "pinnedFiles": 367,
+    "pinnedBytes": 304758389,
+    "selectedBytes": 305243616,
     "scope": "Sparse file selection and byte pins; not browser, human art, runtime or canon approval"
   },
-  "privateNativeOriginsMaskedReadOnly": 5,
+  "privateNativeOriginsMaskedReadOnly": 7,
   "privateOfficialPhotosRequired": false,
   "repositoryInputsChanged": false,
+  "preservedInitialNativePNGs": 5,
+  "preservedInitialGenerationReceipts": 5,
+  "preservedPriorNativePNGs": 6,
+  "preservedPriorGenerationReceipts": 6,
   "negativeChecks": [
     {
       "name": "Native output byte mismatch is rejected",
       "passed": true,
-      "diagnostic": "Accepted native candidate byte mismatch: samurai"
+      "diagnostic": "Accepted native candidate byte mismatch: captured"
     },
     {
       "name": "Historical protected source mutation is rejected",
       "passed": true,
       "diagnostic": "Pinned file changed: production/p0-sprites-20261113/README.md"
+    },
+    {
+      "name": "The five initial generation receipts remain immutable",
+      "passed": true,
+      "diagnostic": "Pinned file changed: production/biomasks-primary-20261113/generation/viking.json"
+    },
+    {
+      "name": "The sixth Emissary generation receipt remains immutable",
+      "passed": true,
+      "diagnostic": "Pinned file changed: production/biomasks-primary-20261113/generation/emissary.json"
     },
     {
       "name": "Automatic canonical approval is rejected",
@@ -39,5 +53,5 @@
   ],
   "scope": "Relocated exact selected files, deterministic reconstruction and explicit failures; no canon/human/runtime art approval",
   "relocatedCheckoutLocation": "Temporary isolated /tmp directory; private inputs not copied",
-  "manifestSha256": "2d087cf90dfc8eaef371fb06e42cf50c00b4634caf69603e3a4cdde8ee09a0f9"
+  "manifestSha256": "a683c9a046a6c837d614d6c07ac8385d91b331188995c0c8f33c62f31b783da5"
 }

@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "asOf": "2026-11-13",
+  "sourceBaselineCommit": "fad5c4b76dc1d3fe159509903c3be0844b8607d8",
+  "tool": "image_gen.imagegen",
+  "status": "generated-candidate",
+  "reviewStatus": "root-and-independent-partial-candidate-review-complete",
+  "entries": [
+    {
+      "id": "emissary",
+      "prompt": "Create ONE transparent cutout of ONLY the clearly visible facial biomask shell of EMISSARY from this EXACT official Predator Hunting Grounds single-subject render. Reference-bound partial game asset, no redesign, no new camera angle. Retain the head's exact source pitch and near-front slight three-quarter orientation. The source has two small upright appendages CUT OFF at the top of the visible render near image y197: EXCLUDE these incomplete upright pieces entirely; do NOT extend or invent their tips. This is a deliberately PARTIAL face-mask shell cutout, not a completed helmet. Keep the clearly continuous main black oval dome and all visible facial shell below it. Preserve the very broad smooth reflective near-black upper oval cap, its thin raised gunmetal rim and little trapezoidal central brow join, two flowing raised silver/gunmetal brow ridges bordering the narrow black eye apertures, strongly tapering angular dark-silver lower cheeks, central narrow nose ridge, the small bronze/gold framed vertical rounded-trapezoid breathing grille at lower center, and the row of small round/oval recessed ports on the visible image-left lower cheek. Match the source silhouette, dark black/gunmetal/bronze palette and panel boundaries as closely as the available image shows. Exclude dreadlocks and their gold sleeves, wearer/neck/flesh, shoulder armor/cannon, camo clothing, body, hands, blades and all background/hidden low-alpha RGB colors in the reference. Do not add Predator fangs, mandibles, skull teeth, horns, new vents or extra ornament. Fine grille/port counts smaller than source resolution must remain restrained; do not invent elaborate mechanical microdetail. No backside/interior or strict orthographic front reconstruction. Physically opaque mask material with true native transparent surrounding alpha. One entire visible facial mask shell only, fully contained and centered occupying about75percent frame height, generous clear transparent margin at least60px on every side. Soft controlled neutral illumination, keep the black cap black, no neon eye glow, no body, floor, shadows, mockup, checkerboard, labels, text, UI, border or watermarks.",
+      "nativeSourcePath": "/workspace/generated_images/exec-058e6bf4-c331-43d0-b5f5-1e16efad005e.png",
+      "sourceIds": [
+        "emissary-official-render"
+      ],
+      "label": "Emissary · PHG · masque facial partiel en couleur",
+      "view": "Official render camera, near-front slight three-quarter; partial facial shell only, interrupted upper appendages deliberately excluded.",
+      "limitations": [
+        "The render cuts off two small upright pieces near source y197; they are omitted without extending or reconstructing their tips. This is a partial facial mask cutout and does not establish the complete upper silhouette.",
+        "Single official-named promotional asset cross-referenced by the archived project ledger; a fresh link from the PHG homepage remains inaccessible.",
+        "Dome/face proportions and studio reflections differ slightly; fine cheek port and grille details are generated interpretations.",
+        "No backside, strict profile, original UVs, neutral albedo, human art approval, canonical fidelity certification or runtime integration is established."
+      ],
+      "assetPath": "public/game/biomasks-primary-20261113/masks/emissary-source-view.png",
+      "sha256": "5cfa91e931ecde6f6ef4e845423f2f3f6be12a6134e5943b6e9a90f11b0e7070",
+      "bytes": 1247126,
+      "nativeDimensions": [
+        1192,
+        1319
+      ],
+      "width": 1192,
+      "height": 1319,
+      "nativeMode": "RGBA",
+      "status": "generated-candidate",
+      "canonCertified": false,
+      "humanArtValidated": false,
+      "runtimeIntegrated": false,
+      "pixelEditingPerformed": false,
+      "nativeCopyIdentical": true,
+      "partialMask": true,
+      "transparentBackgroundRequested": true,
+      "sourceRect": [
+        0,
+        0,
+        1192,
+        1319
+      ],
+      "pivot": [
+        596.0,
+        659.5
+      ],
+      "pivotStatus": "review proposal, not fitted to wearer rig",
+      "sourceReferences": [
+        {
+          "id": "emissary-official-render",
+          "url": "https://img2.storyblok.com/fit-in/995x1101/f/115795/995x1101/15aa55e206/emissary.png",
+          "sha256": "aa35f7d12aa79dad4a1bacb2ddef600da0d87ce04aadb396ad989c31e9ee401f",
+          "width": 995,
+          "height": 1101
+        }
+      ],
+      "alpha": {
+        "extrema": [
+          0,
+          255
+        ],
+        "bounds16": [
+          209,
+          82,
+          972,
+          1219
+        ],
+        "marginsPixels16": [
+          209,
+          82,
+          220,
+          100
+        ],
+        "transparentPixels": 936778,
+        "visiblePixels16": 624450
+      }
+    }
+  ]
+}

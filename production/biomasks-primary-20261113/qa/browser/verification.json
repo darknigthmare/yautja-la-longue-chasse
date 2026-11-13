@@ -1,14 +1,15 @@
 {
   "scope": "Static source-view candidate gallery only; not canonical fidelity, human art, runtime or animation certification",
-  "manifestSha256": "2d087cf90dfc8eaef371fb06e42cf50c00b4634caf69603e3a4cdde8ee09a0f9",
+  "manifestSha256": "a683c9a046a6c837d614d6c07ac8385d91b331188995c0c8f33c62f31b783da5",
   "browser": "154.0.8037.57",
   "counts": {
-    "nativeFiles": 5,
-    "assets": 5,
-    "newNamedTargets": 2,
+    "nativeFiles": 7,
+    "assets": 7,
+    "newNamedTargets": 4,
     "improvedExistingNamedTargets": 3,
-    "remainingNamedTargets": 48,
+    "remainingNamedTargets": 46,
     "baselineRemainingNamedTargets": 50,
+    "partialReferenceCandidates": 1,
     "sourceNamedEntries": 110,
     "exactMissingImagesRequired": null,
     "canonCertifiedAssets": 0,
@@ -19,21 +20,32 @@
   "passed": true,
   "checks": [
     {
-      "name": "Embedded manifest and five candidates preserve the remaining scope",
+      "name": "Embedded manifest and seven candidates preserve the remaining scope",
       "passed": true,
-      "candidateViews": 5,
-      "newNamedTargets": 2,
+      "candidateViews": 7,
+      "newNamedTargets": 4,
       "improvedExistingNamedTargets": 3,
-      "remainingNamedTargets": 48
+      "remainingNamedTargets": 46,
+      "partialReferenceView": "emissary"
     },
     {
       "name": "HTTP bytes, decoded dimensions and real alpha agree with each native candidate",
       "passed": true,
       "samples": [
         {
+          "id": "captured",
+          "transparent": 967658,
+          "solid": 587072
+        },
+        {
           "id": "cleopatra",
           "transparent": 888484,
           "solid": 651188
+        },
+        {
+          "id": "emissary",
+          "transparent": 936778,
+          "solid": 619342
         },
         {
           "id": "exiled",
