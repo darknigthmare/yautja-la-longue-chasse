@@ -1,0 +1,235 @@
+{
+  "methode": "imagegen_integre",
+  "note": "Les noms des images de référence identifient les éléments utilisés durant la création. Ces photographies ne sont pas incluses dans le pack.",
+  "assets": [
+    {
+      "prompt": "Use case: stylized-concept. Create one independent 2D game sprite of the Vulture creature from Predator: Badlands, FULL BODY, standing alert with both wings folded compactly along its sides. This is a reconstructed game pose based on the visible movie anatomy, not a newly discovered canonical film frame. Input image 1 is the previous painted game sprite for visual continuity, slim body, long tapering tail and surface treatment; images 2 and 3 are actual film frames governing the pale ivory and deep red membranes, pointed head crest, narrow beaked mouth, clawed hind feet, and overall reptilian anatomy. Show the creature side-on facing LEFT, with a small three-quarter angle so two folded wings and both hind feet remain readable. Raise the neck modestly; close the beak. Weight rests on the two clawed hind feet, with bent joints and a compact alert stance. The folded wings must remain recognizably membranous wing structures, with long folded wing spars lying backwards alongside the body and trailing membrane pleats, no extra arms. Keep the long tail completely visible extending to the right in a low shallow curve. Preserve the visible head profile and the ivory-red wing pattern; do not import alternate concept-art horns, antlers, feathers, fur, decorative new spikes or a new species. Realistic finely painted 2D creature cutout, restrained material detail and crisp readable silhouette, consistent with reference 1. Entire creature centered inside the canvas with comfortable transparent margin around crest, beak, claws, folded wing tips and tail; absolutely no cropping. Exactly ONE creature, no nest, no perch, no rock, no ground, no environment, no cast shadow, no glow, no text, no border. Background genuinely transparent with native alpha, including all gaps between limbs and tail. The pose, folds, hidden side and foot placement are reconstructed for the game.",
+      "sources": [
+        "https://www.avpcentral.com/badlands-creatures-genna-monsters-guide",
+        "https://www.avpcentral.com/images/genna-creatures/vulture.webp",
+        "https://clip.cafe/predator-badlands-2025/throw-me-that-and-i-can-get-you-the-antidote/"
+      ],
+      "reference_files": [
+        "04_vulture_volant.png",
+        "vulture_film.webp",
+        "vulture_vol_film_5_0.jpg"
+      ],
+      "generation_tool": "image_gen.imagegen",
+      "generation_original_filename": "exec-d5c65a54-b062-45dc-a100-79f0649f1a3e.png",
+      "confirmed_details": [
+        "Les plans du film montrent une créature reptilienne volante, deux ailes membraneuses avec secteurs pâles et rouges, une tête pointue à crête et deux pieds griffus.",
+        "Le plan large du clip montre la silhouette volante allongée et la queue ; le plan frontal montre la répartition générale des couleurs et les serres.",
+        "Les sprites 4 et 25 montrent déjà deux positions de vol ; aucun état posé n’était livré dans la V13."
+      ],
+      "extrapolated_details": [
+        "La posture bipède au sol, le port du cou, la fermeture du bec, la flexion des pattes et la répartition du poids sont reconstitués ; ils ne reproduisent pas un photogramme entier du film.",
+        "Les ailes sont rabattues vers l’arrière mais les membranes restent en partie ouvertes ; les plis, articulations et structures masquées sont adaptés.",
+        "La face cachée, le nombre et la disposition fine des doigts peu résolus, les microécailles, les veines, les couleurs locales et la courbure de la queue sont interprétés.",
+        "Aucune échelle physique canonique, ancre de sol, transition animée ou alignement avec les sprites 4 et 25 n’est fourni."
+      ],
+      "transparent_background_requested": true,
+      "image_pixels_edited": false,
+      "id": 160,
+      "nom": "Vulture entier — posé, ailes rabattues",
+      "generation_original_sha256": "d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346"
+    },
+    {
+      "prompt": "Use case: stylized-concept. Generate exactly one independent full-body 2D game sprite of the Vulture creature from Predator: Badlands in its documented near-FRONTAL aerial attack: wings spread broadly, beaked jaws open, both clawed hind feet thrust forward toward the viewer. Input image 1 is an actual film frame and MUST govern the front-facing action, facial identity, shape of head crest, body mass, ivory and dark red wing membrane pattern, and forward grasping feet. Images 2 and 3 are previous full game sprites used only for visual continuity and to reconstruct the wing tips, long slender tail and far-side surfaces that image 1 cuts off; image 4 is another film silhouette reference. This is a complete reconstructed game pose, not a claim that all details are present in one canonical movie frame. Keep the head and thorax nearly frontal with a small angle to the viewer's left, mouth open in attack, prominent backward/upward blade-like cranial crest, leathery reptilian body with fine scales. Exactly two massive membranous wings, ivory/pale grey separated by deep red irregular bands; entire curved wing tips and full span visible with 6 percent or more breathing room from the canvas sides. Exactly two hind legs ending in readable grasping claws advanced forward, no held stone, no prey. The long narrow tail trails behind and curves visibly toward the lower right so its complete tip can be read, no cropped rear body. Complete creature in one clean silhouette, realistic finely painted game cutout consistent in rendering detail with images 2 and 3, restrained soft neutral lighting. Full subject centered with generous fully transparent margins at all edges, especially both wing tips, crest, claws and tail. No environment, sky, ground, nest, cast shadow, glow, blur, motion streaks, text, labels, extra creatures, alternate concept-design horns or feathers. Genuinely transparent background with native alpha in every gap. This is a single static attack pose; do not create a sheet or several animation frames.",
+      "sources": [
+        "https://www.avpcentral.com/badlands-creatures-genna-monsters-guide",
+        "https://www.avpcentral.com/images/genna-creatures/vulture.webp",
+        "https://clip.cafe/predator-badlands-2025/throw-me-that-and-i-can-get-you-the-antidote/"
+      ],
+      "reference_files": [
+        "vulture_film.webp",
+        "04_vulture_volant.png",
+        "25_vulture_battement_bas.png",
+        "vulture_vol_film_5_0.jpg"
+      ],
+      "generation_tool": "image_gen.imagegen",
+      "generation_original_filename": "exec-0190b788-2349-415b-a07f-e6f42b9e8aba.png",
+      "confirmed_details": [
+        "Le plan final inspecté montre une approche quasi frontale avec ailes étendues, gueule béante et serres avancées.",
+        "Les membranes claires parcourues de plages rouges, la tête pointue à crête et la morphologie reptilienne sont visibles.",
+        "Les sprites 4 et 25 couvrent des vols surtout latéraux ; cette vue de menace frontale sert un usage distinct."
+      ],
+      "extrapolated_details": [
+        "Les pointes d’ailes et d’autres extrémités coupées dans le photogramme sont reconstituées à partir des silhouettes entières déjà adaptées des sprites 4 et 25 ; elles ne sont pas de nouveaux angles officiels.",
+        "La courbure de la queue, la lisibilité des deux pieds, l’angle de la tête, le déploiement complet des ailes et les détails cachés ont été recomposés pour cadrer l’animal entier.",
+        "Les microécailles, veines, dents, doigts et contrastes fins ne sont pas tous résolus dans le plan du film et sont interprétés.",
+        "La vue n’est pas une trame alignée avec les sprites 4 et 25 ; taille apparente, pivot, perspective et durée restent à régler. Aucun cycle d’animation n’est fourni."
+      ],
+      "transparent_background_requested": true,
+      "image_pixels_edited": false,
+      "id": 161,
+      "nom": "Vulture entier — attaque quasi frontale",
+      "generation_original_sha256": "0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652"
+    },
+    {
+      "prompt": "Create one native transparent RGBA PNG 2D game sprite. EDIT the first reference image, preserving its whole plant, olive palette, realistically painted texture, complete silhouette, five cup-shaped leaves, their positions and proportions, stems, rolled yellow-green rims and pale radial veins as closely as possible. The only requested biological change is to remove the single curled grey worm from the upper-left leaf cup, reconstructing the uninterrupted concave leaf surface underneath it. Every leaf cup is now empty. The second reference is the actual Predator: Badlands film shot for the plant morphology: do not introduce new organs, species features, flowers, droplets, light, or a different growth stage. This is a useful empty resource state for the game, not a new species. Keep the same three-quarter viewpoint and complete base with all leaf tips comfortably within the canvas. One whole standalone plant only; no worm anywhere, no loose worm, no scenery, ground patch, cast ground shadow, labels, grid, frame, pedestal or UI. Preserve transparent background. Fully transparent pixels around and between leaves and stems; no grey, black, olive haze, mist, vignette or coloured backdrop rendered behind the plant. Detailed natural material, soft neutral lighting, consistent with the source sprite. Maintain the original canvas proportions and ample transparent padding; no cropping of tips or base.",
+      "sources": [
+        "https://www.avpgalaxy.net/predator-movies/predator-badlands/worms/",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2025/11/worm-02.avif"
+      ],
+      "reference_files": [
+        "99_plante_feuilles_coupe_vers_sans_nom.png",
+        "worm-02.png"
+      ],
+      "generation_tool": "image_gen.imagegen",
+      "generation_original_filename": "exec-7d786ae1-fb68-4b40-b023-ea9ffeac1e1e.png",
+      "confirmed_details": [
+        "Le photogramme montre des feuilles concaves vert olive, des bords jaunâtres roulés, des nervures radiales claires et des tiges fines courbes.",
+        "Un petit ver occupe une coupe ; plusieurs autres feuilles visibles sont vides.",
+        "Le nº 99 fournit déjà une touffe complète avec un ver ; le nouveau fichier fournit le même type de plante avec les coupes vides."
+      ],
+      "extrapolated_details": [
+        "État de jeu après prélèvement ou sans ressource reconstitué : aucune nouvelle espèce, pousse ou fonction médicinale n’est déduite.",
+        "La surface auparavant cachée sous le ver est reconstituée. Le nombre de feuilles, la réunion des tiges et la forme complète héritent de la reconstitution du nº 99.",
+        "Les textures, reflets, nuances plus jaunes et proportions ont légèrement changé lors de la génération ; l’échange d’images ne bénéficie pas d’un alignement pixel à pixel ni d’un pivot commun validé.",
+        "Les zones masquées du revers et de la base restent interprétées sobrement."
+      ],
+      "transparent_background_requested": true,
+      "image_pixels_edited": false,
+      "id": 162,
+      "nom": "Plante à feuilles en coupe — sans ver",
+      "generation_original_sha256": "0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486"
+    },
+    {
+      "prompt": "Create one native transparent RGBA PNG 2D game sprite. EDIT the first reference: the whole black-flowered antidote plant sprite based on Predator: Badlands production reference. Make a clear AFTER-PICKING gameplay state while preserving the original whole basal rosette, leaf arrangement, grey-green and muted yellow palette, realistic leaf texture, thin branches, complete base, original viewpoint and lighting as closely as possible. Remove the black flower together with its green star of sepals and the uppermost short part of its flower stalk, as though the flower and a small length of stalk have been picked. Leave a simple clean snapped end on the remaining tall green stalk slightly below the former calyx. Keep that stalk upright and healthy, no new shoots or growth. All lower leaves and lower branches remain present and unchanged in concept. There must be ZERO flowers, ZERO closed flower buds, ZERO detached petals, ZERO detached flower, no pollen, no wilt or invented biology. This is explicitly a reconstructed harvested gameplay state of the existing plant, not a documented closed-bud state and not a new species. The second reference is an ILP production reference for the existing grey-green and yellow basal foliage only. One standalone whole harvested plant with ample transparent padding on all edges, every leaf tip and the complete stem junction inside the frame. No ground or roots added outside that junction, no soil, planter, scenery, cast ground shadow, labels, UI, frame, grid, backdrop or coloured haze. Real transparency around the whole silhouette and in foliage gaps. Natural realistic painted 2D cutout for a side-scrolling game, neutral soft light. Keep source canvas proportions. The generated PNG must be natively RGBA with transparency.",
+      "sources": [
+        "https://www.ilpvfx.com/news/new-breakdown-alert!-predator:-badlands",
+        "https://player.vimeo.com/video/1155064586?h=7cb561f85d",
+        "https://clip.cafe/predator-badlands-2025/the-venom-makes-them-bloom/"
+      ],
+      "reference_files": [
+        "130_plante_antidote_entiere_fleur_ouverte.png",
+        "ilp_fleurs_noires_groupe_reference.png"
+      ],
+      "generation_tool": "image_gen.imagegen",
+      "generation_original_filename": "exec-dc88370c-cfdc-4590-9942-ebc0c59f2473.png",
+      "confirmed_details": [
+        "La planche de végétaux ILP montre des plantes à corolle noire, tige fine et feuillage basal gris-vert et jaune.",
+        "La plante entière en fleur est déjà livrée en nº 130 ; la corolle cueillie constitue le nº 124.",
+        "Le nouveau PNG conserve la rosette basse et la haute tige, avec une extrémité sectionnée visible et aucune fleur présente."
+      ],
+      "extrapolated_details": [
+        "L’état après cueillette et le niveau de rupture de la tige sont conçus pour l’interaction de récolte du jeu ; aucun photogramme complet de cet état n’est certifié.",
+        "La corolle, les sépales et le haut de la tige sont retirés par génération. L’intérieur de la section, les nervures, les petites feuilles et les zones masquées sont reconstitués.",
+        "Ce fichier ne représente pas un bouton fermé, une floraison, une régénération ou une nouvelle espèce. Aucun mécanisme de repousse n’est affirmé.",
+        "La disposition et les dimensions visibles ont légèrement changé ; aucune transition animée, échelle physique canonique ni correspondance de pivots validée n’est fournie.",
+        "La pointe de feuille droite reste entière avec une marge native de 7 pixels ; les pixels n’ont pas été recadrés ni retouchés."
+      ],
+      "transparent_background_requested": true,
+      "image_pixels_edited": false,
+      "id": 163,
+      "nom": "Plante antidote — après cueillette",
+      "generation_original_sha256": "3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb"
+    },
+    {
+      "prompt": "Créer un seul sprite 2D de décor de jeu représentant l'encadrement du sas de laboratoire Weyland-Yutani LAB-04 dans Predator: Badlands. Un seul asset entier, sas ouvert sans personnage ni occupant, détaché du bâtiment ; fond véritablement transparent RGBA, ouverture centrale transparente et visible de part en part. Ni salle, ni couloir, ni mur extérieur au sas, ni caisses dans le passage, ni sol de décor, ni ombre portée extérieure. Vue trois quarts frontale, on voit la grande entrée de face et le flanc droit du sas comme dans la photo de référence. Cadrage avec au moins 6% de marge sur chaque côté ; seuil, couronnement et tous les bords entièrement visibles.\n\nLes deux premières images sont les références de forme : sas_lab04_ravincent_crop.png est la photographie du décor construit de Ra Vincent ; sas_lab04_ilp_crop.png est le même sas dans le plan final ILP à 50,4 secondes. La grande photo ravincent_14.jpg précise les couleurs et l'ensemble. Le PNG120 fourni en dernier n'est qu'une référence du rendu peint réaliste de la collection : ne pas représenter ce pupitre.\n\nConserver les formes essentielles documentées : carter volumineux gris ivoire rectangulaire avec angles extérieurs chanfreinés et arrondis, sommet large portant AIRLOCK noir, entrée rectangulaire haute à coins supérieurs coupés et encadrement intérieur gris foncé. Rayures diagonales noires alignées autour de l'entrée, sur les montants et la traverse supérieure. Seuil bas gris clair portant LAB-04 noir, avec petits chevrons de chaque côté. Sur chaque montant frontal, la plaque verticale sombre indique L au-dessus de 0 et 4 jaunes. Petites commandes noires rectangulaires près du passage. Sur le large montant de droite, une niche vide rectangulaire arrondie au milieu et une niche basse avec un petit extincteur métallique foncé à poignée rouge et pictogramme jaune, comme dans la photo. Le montant gauche symétrique est en partie masqué par la capsule : compléter seulement son contour en continuité du carter. Le flanc droit possède une ouverture latérale rectangulaire avec un plafond fin éclairé et un montant arrière gris. Reproduire cette épaisseur et ce flanc sans inventer une grande chambre de sas profonde ni un mécanisme interne.\n\nLe passage de devant et la découpe latérale doivent révéler l'alpha, pas le couloir et les caisses que l'on aperçoit dans la référence. Garder uniquement le seuil et les surfaces de l'encadrement du sas. Les surfaces arrière peu visibles sont fermées très sobrement par la même coque grise sans nouveau mécanisme. Aucun vantail ou porte coulissante fermée ajouté. Texture peinte réaliste cohérente avec la collection, lumière neutre douce, ivoire patiné légèrement, contours nets ; pas de halo hors de la silhouette. Ne pas interpréter cet objet comme un portail énergétique ni une machine médicale. Un seul sprite complet, alpha natif, sans grille de transparence peinte.",
+      "sources": [
+        "https://www.ravincentworkshop.com/predator-badlands/",
+        "https://images.squarespace-cdn.com/content/v1/5bd830b9ebfc7f8841dba818/1776641658490-WAECB95LV0CJVP143UOV/4.jpeg",
+        "https://www.ilpvfx.com/news/new-breakdown-alert!-predator:-badlands",
+        "https://player.vimeo.com/video/1155064586?h=7cb561f85d"
+      ],
+      "reference_files": [
+        "sas_lab04_ravincent_crop.png",
+        "sas_lab04_ilp_crop.png",
+        "ravincent_14.jpg",
+        "120_pupitre_medical_wy_deux_pieds.png"
+      ],
+      "generation_tool": "image_gen.imagegen",
+      "generation_original_filename": "exec-b245bef7-5167-4f63-ab81-8a5e239695ea.png",
+      "confirmed_details": [
+        "La photographie du décor Ra Vincent montre l’encadrement AIRLOCK/LAB-04 ; le même élément apparaît dans le plan final ILP vers 50,4 s.",
+        "Carter clair massif aux angles extérieurs chanfreinés, entrée frontale à angles supérieurs coupés, seuil inscrit LAB-04 et traverse AIRLOCK.",
+        "Rayures diagonales noires autour du passage, panneaux verticaux L 0 4 sur les montants et petits rectangles sombres près de l’entrée.",
+        "Sur le montant droit, niche centrale vide et niche basse contenant un petit extincteur sombre à poignée rouge.",
+        "Flanc droit épais avec découpe latérale, montant arrière et petite lumière supérieure."
+      ],
+      "extrapolated_details": [
+        "Parties du montant gauche masquées par la capsule complétées par continuité du carter ; le renfoncement gauche généré est une reconstruction non certifiée.",
+        "Profondeur arrière, raccords au mur, faces internes moins visibles, détails de fixations et de l’extincteur reconstitués sobrement.",
+        "Les proportions dans la vue isolée, l’espacement des rayures, les lettres, les microtextures et la patine sont adaptés au sprite, sans exactitude géométrique ou typographique 1:1.",
+        "Le couloir, les murs et les caisses visibles à travers le sas dans la référence sont retirés pour obtenir des passages transparents. Le sprite représente le seul encadrement, pas une architecture de bâtiment entière ni une coupe intérieure."
+      ],
+      "transparent_background_requested": true,
+      "image_pixels_edited": false,
+      "id": 164,
+      "nom": "Encadrement de sas Weyland-Yutani LAB-04 — ouvert",
+      "generation_original_sha256": "18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf"
+    },
+    {
+      "prompt": "Générer UN SEUL sprite 2D de jeu : le meuble de laboratoire Weyland-Yutani à façade inclinée et modules verticaux encastrés, placé contre le mur droit dans Predator: Badlands. Objet entier isolé, deux pieds visibles jusqu'aux petits appuis, aucun mur, autre meuble, câble libre, sol, personnage ou ombre portée externe. Fond véritablement transparent RGBA, 7% de marge minimum autour de la silhouette, base et extrémités non coupées.\n\nRéférences de géométrie : panneau_modules_ilp_crop.png montre le meuble dans le plan final ILP à 50,4 s, panneau_modules_ravincent_crop.png fournit les détails de la photographie du décor de Ra Vincent. La grande photographie ravincent_14.jpg situe l'objet et ses matières. Le dernier PNG120 donne seulement la peinture réaliste de notre collection ; ne pas copier son pupitre, ses boutons ou ses pieds circulaires. Reproduire le meuble horizontal au fond de la référence, derrière le pupitre qui le masque.\n\nVue trois quarts frontale modérée, montrant la façade entière et un flanc droit étroit, dans des proportions naturelles. Meuble bas et assez large, carter ivoire-gris mat. Sommet et panneau de modules inclinés en arrière comme un pupitre étroit ; ne pas en faire une armoire verticale ou un rack haut. À l'extrême gauche de la façade, petit clavier noir encastré carré à touches claires en grille, une petite plaque de mise en garde dessous et quelques lignes verticales discrètes plus à droite. La zone principale présente CINQ logements verticaux en relief : de gauche à droite, un petit dispositif cylindrique beige-gris inséré, un logement clair vide à motif oblong, deux dispositifs cylindriques beige-gris insérés côte à côte, puis un logement clair vide à motif oblong. Chaque dispositif inséré est compact, avec une petite tête plus claire et un bas gris sombre ; ne pas imaginer de tuyauterie, câbles, écrans ou instruments supplémentaires. À l'extrémité droite du panneau, conserver le grand rectangle noir sombre visible dans le film et une petite marque géométrique sombre sous celui-ci. Sous les cinq logements, une bande de rayures diagonales sombres horizontale, puis une façade basse claire avec plusieurs fines rainures horizontales longues.\n\nLa caisse est portée par deux pieds fins gris, légèrement obliques, un à chaque extrémité, avec petits appuis sombres au sol et une traverse basse grise simple. Le pied gauche et la partie basse gauche sont documentés ; le pied droit est masqué par un pupitre dans les références, le compléter sobrement par continuité avec le pied gauche. Aucune grosse base circulaire, aucun socle massif, aucune grande roulette inventée. Dos et dessous invisibles fermés sobrement par la même tôle, sans architecture intérieure imaginée. La fonction technique précise est inconnue, donc ne pas ajouter de liquide, arme, commande médicale spécialisée ou étiquette fonctionnelle.\n\nRendu peint 2D détaillé réaliste, gris clair ivoire légèrement patiné, lumière neutre douce et contours nets, détails minuscules discrètement simplifiés. Les marquages trop petits ne sont pas des textes lisibles inventés. Un seul accessoire entier, alpha natif, pas de damier de transparence peint, pas de mur derrière les pieds.",
+      "sources": [
+        "https://www.ravincentworkshop.com/predator-badlands/",
+        "https://images.squarespace-cdn.com/content/v1/5bd830b9ebfc7f8841dba818/1776641658490-WAECB95LV0CJVP143UOV/4.jpeg",
+        "https://www.ilpvfx.com/news/new-breakdown-alert!-predator:-badlands",
+        "https://player.vimeo.com/video/1155064586?h=7cb561f85d"
+      ],
+      "reference_files": [
+        "panneau_modules_ilp_crop.png",
+        "panneau_modules_ravincent_crop.png",
+        "ravincent_14.jpg",
+        "120_pupitre_medical_wy_deux_pieds.png"
+      ],
+      "generation_tool": "image_gen.imagegen",
+      "generation_original_filename": "exec-0e7ce822-194d-4e41-b9c7-f85ac07af934.png",
+      "confirmed_details": [
+        "Meuble situé contre le mur droit du laboratoire, visible dans la photo du décor Ra Vincent et le plan final ILP vers 50,4 s ; forme distincte des meubles déjà livrés.",
+        "Carter horizontal clair avec partie supérieure inclinée, cinq logements verticaux : trois occupés par des éléments compacts beige-gris et deux à motif oblong clair.",
+        "Petit clavier noir à gauche, rectangle noir à droite, rayures diagonales sous la rangée et longues lignes horizontales sur la façade basse.",
+        "Pied gauche étroit, appuis bas et traverse inférieure visibles ; partie droite masquée par le pupitre dans les références."
+      ],
+      "extrapolated_details": [
+        "Pied droit, appuis arrière et surfaces occultées complétés sobrement à partir de la construction visible du côté gauche.",
+        "Face arrière et dessous simplifiés ; aucun mécanisme intérieur ni branchement non documenté n’est inféré.",
+        "Les formes précises des éléments encastrés, petites vis, grille du rectangle noir, clavier, pictogramme de gauche et logo inférieur droit sont interprétés depuis des références à distance.",
+        "La fonction du meuble et des éléments insérés n’est pas identifiée ; ils ne sont pas présentés comme des armes, bouteilles de gaz ou outils médicaux certifiés.",
+        "Proportions, patine, microtexture et orientation du sprite sont adaptées ; dimensions physiques et fidélité exacte 1:1 non certifiées."
+      ],
+      "transparent_background_requested": true,
+      "image_pixels_edited": false,
+      "id": 165,
+      "nom": "Meuble Weyland-Yutani incliné à cinq logements verticaux",
+      "generation_original_sha256": "b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff"
+    },
+    {
+      "prompt": "Use case: stylized-concept. Asset type: one complete independent waist-equipment sprite, realistic painted 2D, for Yautja: La Longue Chasse.\n\nPrimary request: reconstruct KWEI'S BELT, CENTRAL THREE-PLATE TABARD AND TWO RED CLOTH PANELS from Predator: Badlands as one connected empty wearable assembly, faithful to the actual manufactured film costume in image 1.\n\nInput roles: Image 1 is Weta Workshop's full photograph of the actual Kwei costume, the primary authority for silhouette, proportions and materials. Image 2 is the official NECA licensed Kwei figure full-body accessory photograph; use only to clarify the lower ends of the waist equipment. Image 3 is a closer official NECA view clarifying the belt front and sculpted central clasp, with miniature material/color limitations. Image 4 is a delivered Kwei armor game sprite for painted rendering quality only: DO NOT copy its shoulder plates, chest geometry or collar ornament.\n\nThe isolated assembly consists of a broad dark brown belt built from three narrow horizontal bands, restrained gray end plates near the hips, and a large central sculpted dark brown clasp. The clasp is an irregular shield-shaped organic relief, bulbous at the top and tapered below, matching the reference. It is NOT a human skull, animal head, horned monster face or fantasy jewel. Hanging directly beneath the clasp are exactly THREE overlapping rounded ochre-brown shell/bone plates, narrowing into a short central tabard with a pointed rounded end. Follow the full actual costume photo for the relationship of the three plates to the clasp. Behind and beside these three plates hang TWO long dark burgundy red coarse fabric panels, one on either side, reaching considerably below the plate tabard with uneven worn and frayed lower ends. These are two separate draped cloth tails, not a continuous red skirt, not a cape, not banners stretched horizontally. The visible folds and asymmetrical ragged hems should follow the primary costume image. Include the belt, tabard and red cloth only. EXCLUDE the unrelated gray pebbled undersuit/tunic under the belt in the references.\n\nShow the belt empty while retaining a wearable oval volume: a shallow frontal three-quarter view with front clasp and full cloth lengths clearly visible. Only a plain dark leather inner band and simple unobtrusive rear belt return are permitted to complete the oval; their hidden construction is not fully documented. No elaborate rear closures, extra pouches, weapons or invented ornament. The center of the empty waist opening is genuinely transparent. Keep the belt roughly horizontal, and all cloth hanging downward naturally under gravity.\n\nStyle: detailed realistic painted 2D equipment, worn dark brown belt, muted ochre shell plates, subdued burgundy coarse fabric, subtle chips and scratches, believable thickness. Neutral soft studio lighting, coherent with image 4. Preserve natural surface irregularity; no glossy toy plastic and no polished bright gold.\n\nOne assembly only on a square transparent canvas. Show its ENTIRE silhouette with at least 10 percent transparent margin above, below and on both sides, and maximum 75 percent frame occupancy. No clipping of cloth threads or belt side returns.\n\nStrict exclusions: no body, skin, legs, head, hands, mannequin, breastplate, arms, shoulders, boots, armor greaves, weapons, floor, pedestal, cast shadow, smoky glow, background, text, labels, logo or watermark. True transparent alpha background.",
+      "sources": [
+        "https://www.wetaworkshop.com/web/image/133200-2ecea622/1.jpg",
+        "https://www.wetaworkshop.com/projects/predator-badlands",
+        "https://store.necaonline.com/cdn/shop/files/51760_UNP_1.jpg?v=1784139187&width=3840",
+        "https://store.necaonline.com/collections/alien-predator/products/predator-badlands-ultimate-kwei-predator-deks-brother-7-inch-scale-action-figure",
+        "https://store.necaonline.com/cdn/shop/files/51760_UNP_3.jpg?v=1784139187&width=3840"
+      ],
+      "reference_files": [
+        "weta_extra_04.jpg",
+        "neca_kwei_1.jpg",
+        "neca_kwei_3.jpg",
+        "157_plastron_epaulieres_kwei.png"
+      ],
+      "generation_tool": "image_gen.imagegen",
+      "generation_original_filename": "exec-76e0a23f-6c1e-4c88-8f64-a7402e541f96.png",
+      "confirmed_details": [
+        "Ceinture brun sombre formée de bandes horizontales et pièces latérales grises.",
+        "Grande boucle centrale en relief organique brun, distincte d’une tête ou d’un crâne humain.",
+        "Trois plaques centrales ocres arrondies, superposées en un tablier court et effilé.",
+        "Deux longs pans de tissu rouge foncé, irréguliers et effilochés, descendant nettement sous les plaques."
+      ],
+      "extrapolated_details": [
+        "Revers continu de la ceinture et doublure intérieure simples ; fermeture cachée non documentée.",
+        "Courbure de l’ovale vide, épaisseur complète des plaques et attaches masquées.",
+        "Relief précis de la boucle, distribution des fissures et rayures adaptés au rendu peint.",
+        "Plis, déchirures, largeur exacte et placement des fils des pans rouges reconstitués. Le tissu est plus saturé et les pans s’écartent davantage dans le sprite."
+      ],
+      "transparent_background_requested": true,
+      "image_pixels_edited": false,
+      "id": 166,
+      "nom": "Ceinture, tablier et pans rouges de Kwei",
+      "generation_original_sha256": "1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a"
+    }
+  ],
+  "note_documentaire_v14": "Ce lot contient seulement les prompts des nouveaux fichiers. Les 159 entrées antérieures sont conservées à l’identique dans la collection cumulative V14."
+}

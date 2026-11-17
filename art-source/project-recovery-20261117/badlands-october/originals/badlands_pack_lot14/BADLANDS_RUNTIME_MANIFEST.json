@@ -1,0 +1,643 @@
+{
+  "schemaVersion": 1,
+  "schema": "badlands-static-cutouts-runtime-v1",
+  "packId": "badlands-v14",
+  "packVersion": 14,
+  "packageKind": "lot",
+  "assetRoot": "/game/assets/badlands/v14",
+  "installedInProject": false,
+  "availableMeaning": "Le PNG existe dans cette archive ; cela ne signifie pas qu’il est installé ou chargé par le jeu.",
+  "sourceTierMeaning": "Approximation visuelle générée depuis les références ; aucune entrée ne revendique exact-override.",
+  "alphaGeometry": {
+    "thresholdExclusive": 16,
+    "boundsConvention": "inclusive"
+  },
+  "pivotMeaning": "Centre-bas géométrique de la boîte alpha >16 ; ce point n’est pas un ancrage physique ni une attache validée.",
+  "coverage": {
+    "planned": 7,
+    "available": 7,
+    "installed": 0
+  },
+  "projectRead": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "refRequested": "main",
+    "readDate": "2026-10-07",
+    "commitPinned": false,
+    "files": [
+      {
+        "path": "scripts/build-cutout-manifests.mjs",
+        "blobSha": "755af020d0683e968ea5f92512e65b5af9512c06",
+        "inspectedLines": [
+          1,
+          200
+        ],
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/scripts/build-cutout-manifests.mjs"
+      },
+      {
+        "path": "art-source/v14/hunter-kit/manifests/equipment.json",
+        "blobSha": "8d5ad11ced6a287fd29ca8cf9fc22a99764a55ec",
+        "inspectedLines": "complete",
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/art-source/v14/hunter-kit/manifests/equipment.json"
+      },
+      {
+        "path": "app/game/hunterSpriteAtlas.ts",
+        "blobSha": "c0bb6bac7b0e1b17dde7229cd8a88642f6a2544e",
+        "inspectedLines": [
+          1,
+          180
+        ],
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/app/game/hunterSpriteAtlas.ts"
+      },
+      {
+        "path": "tests/hunterSpriteAtlas.test.ts",
+        "blobSha": "6d56b82a37edc52789f42bee17f5c4625c3470dc",
+        "inspectedLines": [
+          1,
+          180
+        ],
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/tests/hunterSpriteAtlas.test.ts"
+      },
+      {
+        "path": "scripts/build-private-dlc-manifest.mjs",
+        "blobSha": "e52fe54e8f9d9a33a6f7e5f5f88fb921832e215a",
+        "inspectedLines": [
+          1,
+          160
+        ],
+        "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/main/scripts/build-private-dlc-manifest.mjs"
+      }
+    ]
+  },
+  "entries": [
+    {
+      "id": "badlands-160",
+      "assetId": 160,
+      "name": "Vulture entier — posé, ailes rabattues",
+      "category": "faune",
+      "lot": 14,
+      "sourcePath": "sprites/faune/160_vulture_pose_ailes_repliees.png",
+      "runtimePath": "public/game/assets/badlands/v14/sprites/faune/160_vulture_pose_ailes_repliees.png",
+      "runtimeUrl": "/game/assets/badlands/v14/sprites/faune/160_vulture_pose_ailes_repliees.png",
+      "planned": true,
+      "available": true,
+      "sourceTier": "approximation",
+      "installedInProject": false,
+      "frameCount": 1,
+      "animationReady": false,
+      "rigReady": false,
+      "facingDescription": "Profil gauche avec léger trois-quarts",
+      "physicalScaleMeters": null,
+      "collisionShape": null,
+      "frameRect": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "bytes": 1741479,
+        "sha256": "d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346"
+      },
+      "validation": {
+        "alpha": {
+          "min": 0,
+          "max": 254
+        },
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          16,
+          34,
+          1518,
+          1005
+        ],
+        "padding": {
+          "left": 16,
+          "top": 34,
+          "right": 17,
+          "bottom": 18
+        },
+        "visiblePixels": 303896,
+        "totalPixels": 1572864,
+        "visibleRatio": 0.193212,
+        "transparentRatio": 0.789607,
+        "partialAlphaPixels": 330919
+      },
+      "pivot": {
+        "pixels": [
+          767.5,
+          1006
+        ],
+        "normalized": [
+          0.499674,
+          0.982422
+        ],
+        "kind": "content-bottom-center",
+        "validatedInGame": false
+      },
+      "placementNote": "Point de sol à fixer aux pieds ; le pivot géométrique n’est pas un pied validé. Posture au sol reconstituée.",
+      "componentToJoinToScenery": false,
+      "relations": {
+        "complement_de_asset_id": 4,
+        "related_asset_ids": [
+          25
+        ]
+      }
+    },
+    {
+      "id": "badlands-161",
+      "assetId": 161,
+      "name": "Vulture entier — attaque quasi frontale",
+      "category": "faune",
+      "lot": 14,
+      "sourcePath": "sprites/faune/161_vulture_attaque_frontale.png",
+      "runtimePath": "public/game/assets/badlands/v14/sprites/faune/161_vulture_attaque_frontale.png",
+      "runtimeUrl": "/game/assets/badlands/v14/sprites/faune/161_vulture_attaque_frontale.png",
+      "planned": true,
+      "available": true,
+      "sourceTier": "approximation",
+      "installedInProject": false,
+      "frameCount": 1,
+      "animationReady": false,
+      "rigReady": false,
+      "facingDescription": "Quasi frontale, tête légèrement tournée vers la gauche du spectateur",
+      "physicalScaleMeters": null,
+      "collisionShape": null,
+      "frameRect": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "bytes": 2340103,
+        "sha256": "0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652"
+      },
+      "validation": {
+        "alpha": {
+          "min": 0,
+          "max": 254
+        },
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          11,
+          42,
+          1528,
+          987
+        ],
+        "padding": {
+          "left": 11,
+          "top": 42,
+          "right": 7,
+          "bottom": 36
+        },
+        "visiblePixels": 582515,
+        "totalPixels": 1572864,
+        "visibleRatio": 0.370353,
+        "transparentRatio": 0.609452,
+        "partialAlphaPixels": 614279
+      },
+      "pivot": {
+        "pixels": [
+          770.0,
+          988
+        ],
+        "normalized": [
+          0.501302,
+          0.964844
+        ],
+        "kind": "content-bottom-center",
+        "validatedInGame": false
+      },
+      "placementNote": "Centrage en vol à définir sur le corps ; le centre-bas de la boîte visible comprend la queue et n’est pas un centre de vol. Marge droite native de 7 pixels.",
+      "componentToJoinToScenery": false,
+      "relations": {
+        "complement_de_asset_id": 4,
+        "related_asset_ids": [
+          25
+        ]
+      }
+    },
+    {
+      "id": "badlands-162",
+      "assetId": 162,
+      "name": "Plante à feuilles en coupe — sans ver",
+      "category": "flore",
+      "lot": 14,
+      "sourcePath": "sprites/flore/162_plante_feuilles_coupe_sans_ver.png",
+      "runtimePath": "public/game/assets/badlands/v14/sprites/flore/162_plante_feuilles_coupe_sans_ver.png",
+      "runtimeUrl": "/game/assets/badlands/v14/sprites/flore/162_plante_feuilles_coupe_sans_ver.png",
+      "planned": true,
+      "available": true,
+      "sourceTier": "approximation",
+      "installedInProject": false,
+      "frameCount": 1,
+      "animationReady": false,
+      "rigReady": false,
+      "facingDescription": "Trois quarts, même organisation générale que le nº 99",
+      "physicalScaleMeters": null,
+      "collisionShape": null,
+      "frameRect": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "bytes": 2417456,
+        "sha256": "0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486"
+      },
+      "validation": {
+        "alpha": {
+          "min": 0,
+          "max": 254
+        },
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          18,
+          46,
+          1006,
+          1446
+        ],
+        "padding": {
+          "left": 18,
+          "top": 46,
+          "right": 17,
+          "bottom": 89
+        },
+        "visiblePixels": 593350,
+        "totalPixels": 1572864,
+        "visibleRatio": 0.377242,
+        "transparentRatio": 0.60366,
+        "partialAlphaPixels": 623389
+      },
+      "pivot": {
+        "pixels": [
+          512.5,
+          1447
+        ],
+        "normalized": [
+          0.500488,
+          0.942057
+        ],
+        "kind": "content-bottom-center",
+        "validatedInGame": false
+      },
+      "placementNote": "État vide complémentaire du nº 99. Régler un point de sol et une échelle communs lors du changement d’état ; aucun échange de trame aligné n’est garanti.",
+      "componentToJoinToScenery": false,
+      "relations": {
+        "complement_de_asset_id": 99
+      }
+    },
+    {
+      "id": "badlands-163",
+      "assetId": 163,
+      "name": "Plante antidote — après cueillette",
+      "category": "flore",
+      "lot": 14,
+      "sourcePath": "sprites/flore/163_plante_antidote_apres_cueillette.png",
+      "runtimePath": "public/game/assets/badlands/v14/sprites/flore/163_plante_antidote_apres_cueillette.png",
+      "runtimeUrl": "/game/assets/badlands/v14/sprites/flore/163_plante_antidote_apres_cueillette.png",
+      "planned": true,
+      "available": true,
+      "sourceTier": "approximation",
+      "installedInProject": false,
+      "frameCount": 1,
+      "animationReady": false,
+      "rigReady": false,
+      "facingDescription": "Trois quarts, organisation générale du nº 130",
+      "physicalScaleMeters": null,
+      "collisionShape": null,
+      "frameRect": [
+        0,
+        0,
+        1262,
+        1246
+      ],
+      "metadata": {
+        "width": 1262,
+        "height": 1246,
+        "channels": 4,
+        "bytes": 937969,
+        "sha256": "3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb"
+      },
+      "validation": {
+        "alpha": {
+          "min": 0,
+          "max": 255
+        },
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          25,
+          223,
+          1254,
+          1229
+        ],
+        "padding": {
+          "left": 25,
+          "top": 223,
+          "right": 7,
+          "bottom": 16
+        },
+        "visiblePixels": 293539,
+        "totalPixels": 1572452,
+        "visibleRatio": 0.186676,
+        "transparentRatio": 0.784999,
+        "partialAlphaPixels": 337357
+      },
+      "pivot": {
+        "pixels": [
+          640.0,
+          1230
+        ],
+        "normalized": [
+          0.507132,
+          0.987159
+        ],
+        "kind": "content-bottom-center",
+        "validatedInGame": false
+      },
+      "placementNote": "État après cueillette du nº 130, à associer à la ressource nº 124 selon les règles du jeu. Harmoniser l’échelle et le point de sol avant de permuter les états.",
+      "componentToJoinToScenery": false,
+      "relations": {
+        "complement_de_asset_id": 130,
+        "harvested_resource_asset_id": 124
+      }
+    },
+    {
+      "id": "badlands-164",
+      "assetId": 164,
+      "name": "Encadrement de sas Weyland-Yutani LAB-04 — ouvert",
+      "category": "synthetiques",
+      "lot": 14,
+      "sourcePath": "sprites/synthetiques/164_sas_lab04_ouvert.png",
+      "runtimePath": "public/game/assets/badlands/v14/sprites/synthetiques/164_sas_lab04_ouvert.png",
+      "runtimeUrl": "/game/assets/badlands/v14/sprites/synthetiques/164_sas_lab04_ouvert.png",
+      "planned": true,
+      "available": true,
+      "sourceTier": "approximation",
+      "installedInProject": false,
+      "frameCount": 1,
+      "animationReady": false,
+      "rigReady": false,
+      "facingDescription": "Trois quarts frontal, flanc droit visible",
+      "physicalScaleMeters": null,
+      "collisionShape": null,
+      "frameRect": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "bytes": 1873448,
+        "sha256": "18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf"
+      },
+      "validation": {
+        "alpha": {
+          "min": 0,
+          "max": 254
+        },
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          198,
+          47,
+          1374,
+          999
+        ],
+        "padding": {
+          "left": 198,
+          "top": 47,
+          "right": 161,
+          "bottom": 24
+        },
+        "visiblePixels": 777358,
+        "totalPixels": 1572864,
+        "visibleRatio": 0.494231,
+        "transparentRatio": 0.489707,
+        "partialAlphaPixels": 802621
+      },
+      "pivot": {
+        "pixels": [
+          786.5,
+          1000
+        ],
+        "normalized": [
+          0.512044,
+          0.976562
+        ],
+        "kind": "content-bottom-center",
+        "validatedInGame": false
+      },
+      "placementNote": "Composant architectural isolé : masquer les raccords arrière dans un mur et intégrer le seuil au sol. Les ouvertures du PNG restent transparentes.",
+      "componentToJoinToScenery": true,
+      "relations": {
+        "related_asset_ids": [
+          155,
+          156
+        ]
+      }
+    },
+    {
+      "id": "badlands-165",
+      "assetId": 165,
+      "name": "Meuble Weyland-Yutani incliné à cinq logements verticaux",
+      "category": "synthetiques",
+      "lot": 14,
+      "sourcePath": "sprites/synthetiques/165_meuble_modules_wy.png",
+      "runtimePath": "public/game/assets/badlands/v14/sprites/synthetiques/165_meuble_modules_wy.png",
+      "runtimeUrl": "/game/assets/badlands/v14/sprites/synthetiques/165_meuble_modules_wy.png",
+      "planned": true,
+      "available": true,
+      "sourceTier": "approximation",
+      "installedInProject": false,
+      "frameCount": 1,
+      "animationReady": false,
+      "rigReady": false,
+      "facingDescription": "Trois quarts frontal modéré, flanc droit étroit visible",
+      "physicalScaleMeters": null,
+      "collisionShape": null,
+      "frameRect": [
+        0,
+        0,
+        1536,
+        1024
+      ],
+      "metadata": {
+        "width": 1536,
+        "height": 1024,
+        "channels": 4,
+        "bytes": 2071699,
+        "sha256": "b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff"
+      },
+      "validation": {
+        "alpha": {
+          "min": 0,
+          "max": 254
+        },
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          67,
+          84,
+          1487,
+          995
+        ],
+        "padding": {
+          "left": 67,
+          "top": 84,
+          "right": 48,
+          "bottom": 28
+        },
+        "visiblePixels": 975587,
+        "totalPixels": 1572864,
+        "visibleRatio": 0.620262,
+        "transparentRatio": 0.369291,
+        "partialAlphaPixels": 992019
+      },
+      "pivot": {
+        "pixels": [
+          777.5,
+          996
+        ],
+        "normalized": [
+          0.506185,
+          0.972656
+        ],
+        "kind": "content-bottom-center",
+        "validatedInGame": false
+      },
+      "placementNote": "Aligner les pieds et appuis au sol ; dos à placer contre le mur. Pied droit et surfaces masquées reconstitués.",
+      "componentToJoinToScenery": false,
+      "relations": {
+        "related_asset_ids": [
+          120,
+          121
+        ]
+      }
+    },
+    {
+      "id": "badlands-166",
+      "assetId": 166,
+      "name": "Ceinture, tablier et pans rouges de Kwei",
+      "category": "yautja",
+      "lot": 14,
+      "sourcePath": "sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png",
+      "runtimePath": "public/game/assets/badlands/v14/sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png",
+      "runtimeUrl": "/game/assets/badlands/v14/sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png",
+      "planned": true,
+      "available": true,
+      "sourceTier": "approximation",
+      "installedInProject": false,
+      "frameCount": 1,
+      "animationReady": false,
+      "rigReady": false,
+      "facingDescription": "Vue frontale légèrement surplombante, faible ouverture de trois quarts.",
+      "physicalScaleMeters": null,
+      "collisionShape": null,
+      "frameRect": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "metadata": {
+        "width": 1254,
+        "height": 1254,
+        "channels": 4,
+        "bytes": 1494233,
+        "sha256": "1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a"
+      },
+      "validation": {
+        "alpha": {
+          "min": 0,
+          "max": 255
+        },
+        "cornerAlpha": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "bounds": [
+          280,
+          132,
+          971,
+          1214
+        ],
+        "padding": {
+          "left": 280,
+          "top": 132,
+          "right": 282,
+          "bottom": 39
+        },
+        "visiblePixels": 522418,
+        "totalPixels": 1572516,
+        "visibleRatio": 0.332218,
+        "transparentRatio": 0.654915,
+        "partialAlphaPixels": 541731
+      },
+      "pivot": {
+        "pixels": [
+          626.0,
+          1215
+        ],
+        "normalized": [
+          0.499203,
+          0.9689
+        ],
+        "kind": "content-bottom-center",
+        "validatedInGame": false
+      },
+      "placementNote": "Ensemble d’équipement isolé ; intérieur et attaches cachées reconstitués. Pour le personnage, régler l’attache à la taille et les couches de tissu.",
+      "componentToJoinToScenery": false,
+      "relations": {
+        "complement_de_asset_id": 40,
+        "equipment_set_asset_ids": [
+          157,
+          159
+        ]
+      }
+    }
+  ]
+}

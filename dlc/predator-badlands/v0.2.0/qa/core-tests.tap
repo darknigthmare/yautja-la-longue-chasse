@@ -1,0 +1,538 @@
+TAP version 13
+# Subtest: 69 scenes: 25 WY, 44 Dek; 46 inherited and 23 labelled bridges
+ok 1 - 69 scenes: 25 WY, 44 Dek; 46 inherited and 23 labelled bridges
+  ---
+  duration_ms: 3.222234
+  type: 'test'
+  ...
+# Subtest: Graphs, equipment and enemy references are valid
+ok 2 - Graphs, equipment and enemy references are valid
+  ---
+  duration_ms: 0.377259
+  type: 'test'
+  ...
+# Subtest: Intro and outcome freeze simulation
+ok 3 - Intro and outcome freeze simulation
+  ---
+  duration_ms: 0.638997
+  type: 'test'
+  ...
+# Subtest: Four depth planes cycle once and jump height is physical
+ok 4 - Four depth planes cycle once and jump height is physical
+  ---
+  duration_ms: 0.65454
+  type: 'test'
+  ...
+# Subtest: Cooldown prevents repeated damage in one frame
+ok 5 - Cooldown prevents repeated damage in one frame
+  ---
+  duration_ms: 0.289969
+  type: 'test'
+  ...
+# Subtest: Range and plane restrict attacks
+ok 6 - Range and plane restrict attacks
+  ---
+  duration_ms: 0.130253
+  type: 'test'
+  ...
+# Subtest: Ranged ammunition and reload are finite
+ok 7 - Ranged ammunition and reload are finite
+  ---
+  duration_ms: 0.528593
+  type: 'test'
+  ...
+# Subtest: Healing uses only two charges, and only a medical kit
+ok 8 - Healing uses only two charges, and only a medical kit
+  ---
+  duration_ms: 0.216891
+  type: 'test'
+  ...
+# Subtest: Puzzle order cannot be skipped
+ok 9 - Puzzle order cannot be skipped
+  ---
+  duration_ms: 0.295338
+  type: 'test'
+  ...
+# Subtest: Multi-target boss does not end on the first target
+ok 10 - Multi-target boss does not end on the first target
+  ---
+  duration_ms: 0.429616
+  type: 'test'
+  ...
+# Subtest: Kalisk regeneration is an event, not a kill
+ok 11 - Kalisk regeneration is an event, not a kill
+  ---
+  duration_ms: 0.258954
+  type: 'test'
+  ...
+# Subtest: No companions before their story appearance
+ok 12 - No companions before their story appearance
+  ---
+  duration_ms: 0.188038
+  type: 'test'
+  ...
+# Subtest: Boss telegraphs precede damage; phases accelerate cooldowns
+ok 13 - Boss telegraphs precede damage; phases accelerate cooldowns
+  ---
+  duration_ms: 0.249509
+  type: 'test'
+  ...
+# Subtest: Death and retry reset the whole encounter
+ok 14 - Death and retry reset the whole encounter
+  ---
+  duration_ms: 0.120869
+  type: 'test'
+  ...
+# Subtest: Progress, inventory and enemy damage survive serialization
+ok 15 - Progress, inventory and enemy damage survive serialization
+  ---
+  duration_ms: 0.403297
+  type: 'test'
+  ...
+# Subtest: Legacy migration preserves completions; rejects future/corrupt saves
+ok 16 - Legacy migration preserves completions; rejects future/corrupt saves
+  ---
+  duration_ms: 0.315417
+  type: 'test'
+  ...
+# Subtest: Malformed numeric values are clamped safely
+ok 17 - Malformed numeric values are clamped safely
+  ---
+  duration_ms: 0.206746
+  type: 'test'
+  ...
+# Subtest: 30/60 Hz movement agrees, and outlier frames are bounded
+ok 18 - 30/60 Hz movement agrees, and outlier frames are bounded
+  ---
+  duration_ms: 0.424849
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_recovery
+ok 19 - Objective + exit: wy_recovery
+  ---
+  duration_ms: 0.272453
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_power
+ok 20 - Objective + exit: wy_power
+  ---
+  duration_ms: 0.130833
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_briefing
+ok 21 - Objective + exit: wy_briefing
+  ---
+  duration_ms: 0.105436
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_checks
+ok 22 - Objective + exit: wy_checks
+  ---
+  duration_ms: 0.075592
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_jungle_entry
+ok 23 - Objective + exit: wy_jungle_entry
+  ---
+  duration_ms: 0.206546
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_relay
+ok 24 - Objective + exit: wy_relay
+  ---
+  duration_ms: 1.225406
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_ship_wreck
+ok 25 - Objective + exit: wy_ship_wreck
+  ---
+  duration_ms: 0.104785
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_airlock
+ok 26 - Objective + exit: wy_airlock
+  ---
+  duration_ms: 0.110964
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_trophy_deck
+ok 27 - Objective + exit: wy_trophy_deck
+  ---
+  duration_ms: 0.156643
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_cockpit
+ok 28 - Objective + exit: wy_cockpit
+  ---
+  duration_ms: 0.085587
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_inventory
+ok 29 - Objective + exit: wy_inventory
+  ---
+  duration_ms: 0.072647
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_track
+ok 30 - Objective + exit: wy_track
+  ---
+  duration_ms: 2.0723
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_overlook
+ok 31 - Objective + exit: wy_overlook
+  ---
+  duration_ms: 1.18825
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_den_edge
+ok 32 - Objective + exit: wy_den_edge
+  ---
+  duration_ms: 0.090905
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_capture
+ok 33 - Objective + exit: wy_capture
+  ---
+  duration_ms: 0.359833
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_transport
+ok 34 - Objective + exit: wy_transport
+  ---
+  duration_ms: 1.068283
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_transfer
+ok 35 - Objective + exit: wy_transfer
+  ---
+  duration_ms: 0.106478
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_experiment
+ok 36 - Objective + exit: wy_experiment
+  ---
+  duration_ms: 0.072648
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_decommission
+ok 37 - Objective + exit: wy_decommission
+  ---
+  duration_ms: 0.059789
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_alarm
+ok 38 - Objective + exit: wy_alarm
+  ---
+  duration_ms: 0.099718
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_breach
+ok 39 - Objective + exit: wy_breach
+  ---
+  duration_ms: 0.071315
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_legs
+ok 40 - Objective + exit: wy_legs
+  ---
+  duration_ms: 0.094119
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_loader
+ok 41 - Objective + exit: wy_loader
+  ---
+  duration_ms: 0.093829
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_loader_check
+ok 42 - Objective + exit: wy_loader_check
+  ---
+  duration_ms: 0.066278
+  type: 'test'
+  ...
+# Subtest: Objective + exit: wy_finale
+ok 43 - Objective + exit: wy_finale
+  ---
+  duration_ms: 0.090124
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_crystal_cave
+ok 44 - Objective + exit: pred_crystal_cave
+  ---
+  duration_ms: 0.372842
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_trial_exit
+ok 45 - Objective + exit: pred_trial_exit
+  ---
+  duration_ms: 0.071045
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_hunt_atlas
+ok 46 - Objective + exit: pred_hunt_atlas
+  ---
+  duration_ms: 0.054721
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_navigation
+ok 47 - Objective + exit: pred_navigation
+  ---
+  duration_ms: 0.058737
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_trophy_room
+ok 48 - Objective + exit: pred_trophy_room
+  ---
+  duration_ms: 0.055262
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_gear_check
+ok 49 - Objective + exit: pred_gear_check
+  ---
+  duration_ms: 0.051797
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_father
+ok 50 - Objective + exit: pred_father
+  ---
+  duration_ms: 0.127919
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_launch
+ok 51 - Objective + exit: pred_launch
+  ---
+  duration_ms: 0.599308
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_orbit
+ok 52 - Objective + exit: pred_orbit
+  ---
+  duration_ms: 0.761538
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_pod_release
+ok 53 - Objective + exit: pred_pod_release
+  ---
+  duration_ms: 0.104836
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_pod
+ok 54 - Objective + exit: pred_pod
+  ---
+  duration_ms: 1.186648
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_vines
+ok 55 - Objective + exit: pred_vines
+  ---
+  duration_ms: 1.960224
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_after_vines
+ok 56 - Objective + exit: pred_after_vines
+  ---
+  duration_ms: 0.129442
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_spike_field
+ok 57 - Objective + exit: pred_spike_field
+  ---
+  duration_ms: 0.138826
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_thia
+ok 58 - Objective + exit: pred_thia
+  ---
+  duration_ms: 2.086561
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_canopy
+ok 59 - Objective + exit: pred_canopy
+  ---
+  duration_ms: 1.41112
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_imbre
+ok 60 - Objective + exit: pred_imbre
+  ---
+  duration_ms: 0.106558
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_water
+ok 61 - Objective + exit: pred_water
+  ---
+  duration_ms: 1.47191
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_razor
+ok 62 - Objective + exit: pred_razor
+  ---
+  duration_ms: 1.925302
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_bison_track
+ok 63 - Objective + exit: pred_bison_track
+  ---
+  duration_ms: 0.12147
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_bison
+ok 64 - Objective + exit: pred_bison
+  ---
+  duration_ms: 0.466641
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_luna
+ok 65 - Objective + exit: pred_luna
+  ---
+  duration_ms: 0.151464
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_camp
+ok 66 - Objective + exit: pred_camp
+  ---
+  duration_ms: 0.088231
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_watch
+ok 67 - Objective + exit: pred_watch
+  ---
+  duration_ms: 1.639158
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_wreckage
+ok 68 - Objective + exit: pred_wreckage
+  ---
+  duration_ms: 0.132887
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_terminal_access
+ok 69 - Objective + exit: pred_terminal_access
+  ---
+  duration_ms: 0.220096
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_mother
+ok 70 - Objective + exit: pred_mother
+  ---
+  duration_ms: 0.095071
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_den
+ok 71 - Objective + exit: pred_den
+  ---
+  duration_ms: 0.110393
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_capture
+ok 72 - Objective + exit: pred_capture
+  ---
+  duration_ms: 1.319385
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_lab
+ok 73 - Objective + exit: pred_lab
+  ---
+  duration_ms: 1.603576
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_escape
+ok 74 - Objective + exit: pred_escape
+  ---
+  duration_ms: 0.207057
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_service_exit
+ok 75 - Objective + exit: pred_service_exit
+  ---
+  duration_ms: 0.115451
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_kwei_wreck
+ok 76 - Objective + exit: pred_kwei_wreck
+  ---
+  duration_ms: 0.118215
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_salvage
+ok 77 - Objective + exit: pred_salvage
+  ---
+  duration_ms: 0.122101
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_organic
+ok 78 - Objective + exit: pred_organic
+  ---
+  duration_ms: 0.113799
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_approach
+ok 79 - Objective + exit: pred_approach
+  ---
+  duration_ms: 2.109736
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_infiltration
+ok 80 - Objective + exit: pred_infiltration
+  ---
+  duration_ms: 0.157203
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_rescue
+ok 81 - Objective + exit: pred_rescue
+  ---
+  duration_ms: 0.118466
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_reunited
+ok 82 - Objective + exit: pred_reunited
+  ---
+  duration_ms: 1.837303
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_free_kalisk
+ok 83 - Objective + exit: pred_free_kalisk
+  ---
+  duration_ms: 0.185886
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_tessa
+ok 84 - Objective + exit: pred_tessa
+  ---
+  duration_ms: 0.259054
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_return
+ok 85 - Objective + exit: pred_return
+  ---
+  duration_ms: 0.130283
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_njohrr
+ok 86 - Objective + exit: pred_njohrr
+  ---
+  duration_ms: 0.525749
+  type: 'test'
+  ...
+# Subtest: Objective + exit: pred_mother_ship
+ok 87 - Objective + exit: pred_mother_ship
+  ---
+  duration_ms: 0.099186
+  type: 'test'
+  ...
+# Subtest: Completion freezes the remaining combat tick
+ok 88 - Completion freezes the remaining combat tick
+  ---
+  duration_ms: 0.305553
+  type: 'test'
+  ...
+1..88
+# tests 88
+# suites 0
+# pass 88
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 137.267821

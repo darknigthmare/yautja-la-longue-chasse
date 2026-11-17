@@ -1,0 +1,546 @@
+{
+  "package": "ALIENS_TANTALUS_DLC_AVP_PREDATOR_V0_5",
+  "version": "0.5.0",
+  "generatedAt": "2026-09-30T00:00:00+02:00",
+  "integrityScope": "all package files except MANIFEST.json itself",
+  "totalFiles": 108,
+  "payloadFiles": 107,
+  "payloadBytes": 794763,
+  "files": [
+    {
+      "path": "AVP_PREDATOR_STANDALONE_V0_5.html",
+      "size": 136263,
+      "sha256": "7a75548acd195ee24b10c378feccc7d675cbf222121ffcb40bfc44abf4d8d9fd"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "size": 690,
+      "sha256": "3d00bae6371a580f70c42318c9c66ec5c45ad898179b53c6401f1ccfb3c0dd70"
+    },
+    {
+      "path": "DLC_PACKAGE.json",
+      "size": 371,
+      "sha256": "7c39296d1a33697d234d417489c105bfb7fa125141aa4f1ac2c421230357e16a"
+    },
+    {
+      "path": "JOUER_AVP_PREDATOR_V0_5.html",
+      "size": 6650,
+      "sha256": "3cc0a40278a5af6741fd004e47950489491d9d1644cdb37b0f220a8ea1987f26"
+    },
+    {
+      "path": "README.md",
+      "size": 1064,
+      "sha256": "acffb901c61f8f96841a1b1c8a0230206e65438c92bf5791ce16b2f6b069821f"
+    },
+    {
+      "path": "assets/environments/blooding_hall.svg",
+      "size": 327,
+      "sha256": "a18d4546919a11cea8115892422de58c68b89efb272347e29ae4a9d7e436c96e"
+    },
+    {
+      "path": "assets/environments/borehole.svg",
+      "size": 290,
+      "sha256": "a0afb6cb0746413d31a14f349a8faf63f2cddbb239316612bd4dcdcec724ca74"
+    },
+    {
+      "path": "assets/environments/bouvetoya.svg",
+      "size": 290,
+      "sha256": "06193cd1c2d8d931b27923eb2107f757aa702d5230b093ce2e5b4946e7ed6195"
+    },
+    {
+      "path": "assets/environments/grid_arena.svg",
+      "size": 353,
+      "sha256": "7e6897de087427e4532366086ff4bfc62b0658b99d1f18afb9f3f6e063df383a"
+    },
+    {
+      "path": "assets/environments/hive.svg",
+      "size": 274,
+      "sha256": "58697b10b12addc23fcf883a660b14d3821041cfb9799fe9a2509ed474951f7f"
+    },
+    {
+      "path": "assets/environments/mortuary.svg",
+      "size": 343,
+      "sha256": "6f7ca1f4bce86c28ea8dbd1380107df6d6c93149571f1ff9b191e75a0527e7c4"
+    },
+    {
+      "path": "assets/environments/mothership.svg",
+      "size": 266,
+      "sha256": "64006f04b64aa253254dab91a7d1db85f9df176c569cbc7fa628804722ae9fca"
+    },
+    {
+      "path": "assets/environments/pyramid.svg",
+      "size": 411,
+      "sha256": "043d526c135fefac2ab673b67022d9e3bc28af902422b892abcee1d4cbd34bff"
+    },
+    {
+      "path": "assets/environments/queen_surface.svg",
+      "size": 290,
+      "sha256": "da31f3a1e6af1bef1f28063b300c9adc75645393493b6bd2c5280c4e82216628"
+    },
+    {
+      "path": "assets/environments/queen_weapon_arena.svg",
+      "size": 432,
+      "sha256": "5d88b792c4304e2171b521ea994d6e4ff7f3ee03d450a5a0f8b2251fa59234f4"
+    },
+    {
+      "path": "assets/environments/quinn_borehole.svg",
+      "size": 455,
+      "sha256": "8e9558ae95d469cf9a41f19b5a8aae0ff34beaebb215d093ea0df29e5a8f3394"
+    },
+    {
+      "path": "assets/environments/shifting_labyrinth.svg",
+      "size": 411,
+      "sha256": "f610d8b287ef40a3852ed00444460cc0ace5f484458b41f749f7d710339af0c7"
+    },
+    {
+      "path": "assets/environments/stafford_pillar.svg",
+      "size": 456,
+      "sha256": "ae73d45bad9c7b5a0316f89e882df1fa31a5b7f531e499cddb0438c163fd0cbe"
+    },
+    {
+      "path": "assets/environments/trophy_floor.svg",
+      "size": 377,
+      "sha256": "feaa96b2406083ee94a55501e68f983efb61833983104bc40379e8675db2f630"
+    },
+    {
+      "path": "assets/environments/water_tank_yard.svg",
+      "size": 309,
+      "sha256": "fb2991b679183592244c9ab348021c4af457478815ce5950e540c5889c4cff0a"
+    },
+    {
+      "path": "assets/environments/weyland_flame.svg",
+      "size": 454,
+      "sha256": "72d3d5645abdf69a57c4e1c0de74bdec6756616d093b02a0d423b4ceb9ce3f60"
+    },
+    {
+      "path": "assets/environments/whaling_station.svg",
+      "size": 287,
+      "sha256": "61be3c0a1575343321bfa70fa033fccea217d544f61372df2a204294bf990277"
+    },
+    {
+      "path": "assets/environments/wrist_hologram.svg",
+      "size": 453,
+      "sha256": "dcf087c0983ea69509482528b0875911db2570bfc6f735da2a1422b557c1e14c"
+    },
+    {
+      "path": "assets/icons/acid_damage.svg",
+      "size": 313,
+      "sha256": "2f2badc1befe54155fb690853df9774adfa9f5dd6af9d8d1cedb144f88574003"
+    },
+    {
+      "path": "assets/icons/alien_head_shield.svg",
+      "size": 330,
+      "sha256": "1fa3ff5b204cc9bdbe4262022593cea68d0740d2c45096f3d0ce642b2939a154"
+    },
+    {
+      "path": "assets/icons/alien_tail_spear.svg",
+      "size": 330,
+      "sha256": "1fa3ff5b204cc9bdbe4262022593cea68d0740d2c45096f3d0ce642b2939a154"
+    },
+    {
+      "path": "assets/icons/alien_vision.svg",
+      "size": 375,
+      "sha256": "f6903a40f86f501919932bc61809131124bfc3f9a08ff051b3f68973f20f3de1"
+    },
+    {
+      "path": "assets/icons/celtic_biomask.svg",
+      "size": 320,
+      "sha256": "eb7d0f7475d640e64611677f66afc2337baf02ef0b2ce6234c88942edcdf0ba3"
+    },
+    {
+      "path": "assets/icons/chopper_biomask.svg",
+      "size": 320,
+      "sha256": "eb7d0f7475d640e64611677f66afc2337baf02ef0b2ce6234c88942edcdf0ba3"
+    },
+    {
+      "path": "assets/icons/cloak.svg",
+      "size": 309,
+      "sha256": "4c27e5fd114193f962739f6c474a3680966c42cb4d376ddcafb029f694e626e2"
+    },
+    {
+      "path": "assets/icons/combistick.svg",
+      "size": 298,
+      "sha256": "70956c2af4f87c8cd53c23d508942ee59000975efd6cd95bba8e04645157e3fb"
+    },
+    {
+      "path": "assets/icons/dagger.svg",
+      "size": 298,
+      "sha256": "70956c2af4f87c8cd53c23d508942ee59000975efd6cd95bba8e04645157e3fb"
+    },
+    {
+      "path": "assets/icons/elder_biomask.svg",
+      "size": 320,
+      "sha256": "eb7d0f7475d640e64611677f66afc2337baf02ef0b2ce6234c88942edcdf0ba3"
+    },
+    {
+      "path": "assets/icons/elder_spear.svg",
+      "size": 298,
+      "sha256": "70956c2af4f87c8cd53c23d508942ee59000975efd6cd95bba8e04645157e3fb"
+    },
+    {
+      "path": "assets/icons/facehugger.svg",
+      "size": 394,
+      "sha256": "e55e4722767668dafefe1cb0ccbc60fdde09b79782e4e94b1f3e3a29fa4e4cf3"
+    },
+    {
+      "path": "assets/icons/flame_signature.svg",
+      "size": 454,
+      "sha256": "0efe63c6123a9249bad032817b7186946e38680088d5d7af45ee91f6a6becbcc"
+    },
+    {
+      "path": "assets/icons/honor_mark.svg",
+      "size": 309,
+      "sha256": "02b69e5ecfad3b5829b285491ceddb347cc07b8fbd93baa30f53e04dd9a82e5a"
+    },
+    {
+      "path": "assets/icons/long_wrist_blades.svg",
+      "size": 298,
+      "sha256": "70956c2af4f87c8cd53c23d508942ee59000975efd6cd95bba8e04645157e3fb"
+    },
+    {
+      "path": "assets/icons/netgun.svg",
+      "size": 309,
+      "sha256": "4c27e5fd114193f962739f6c474a3680966c42cb4d376ddcafb029f694e626e2"
+    },
+    {
+      "path": "assets/icons/plasmacaster.svg",
+      "size": 309,
+      "sha256": "4c27e5fd114193f962739f6c474a3680966c42cb4d376ddcafb029f694e626e2"
+    },
+    {
+      "path": "assets/icons/scar_biomask.svg",
+      "size": 320,
+      "sha256": "eb7d0f7475d640e64611677f66afc2337baf02ef0b2ce6234c88942edcdf0ba3"
+    },
+    {
+      "path": "assets/icons/self_destruct.svg",
+      "size": 309,
+      "sha256": "4c27e5fd114193f962739f6c474a3680966c42cb4d376ddcafb029f694e626e2"
+    },
+    {
+      "path": "assets/icons/shuriken.svg",
+      "size": 298,
+      "sha256": "70956c2af4f87c8cd53c23d508942ee59000975efd6cd95bba8e04645157e3fb"
+    },
+    {
+      "path": "assets/icons/target_validation.svg",
+      "size": 456,
+      "sha256": "b0c9de30db6041b2e775d38da6fc86cf4953c02342b16ed41874d46e7ea25129"
+    },
+    {
+      "path": "assets/icons/thermal_vision.svg",
+      "size": 309,
+      "sha256": "4c27e5fd114193f962739f6c474a3680966c42cb4d376ddcafb029f694e626e2"
+    },
+    {
+      "path": "assets/icons/trace_scan.svg",
+      "size": 339,
+      "sha256": "47a0ac9d4921071758ab367f5ab6693b1dbf0ededafb202d8ced7971bd520ad7"
+    },
+    {
+      "path": "assets/icons/water_tank_chain.svg",
+      "size": 356,
+      "sha256": "d95c088d7ac07746624f61b53d81f269cfe7537a198243cc28d1c39c4b0e6446"
+    },
+    {
+      "path": "assets/icons/wrist_blade_projectile.svg",
+      "size": 329,
+      "sha256": "c7a8dd834addfd6b386349705423a98fb534a289f85c5d5736a166b840aa5d3b"
+    },
+    {
+      "path": "assets/icons/wrist_blades.svg",
+      "size": 298,
+      "sha256": "70956c2af4f87c8cd53c23d508942ee59000975efd6cd95bba8e04645157e3fb"
+    },
+    {
+      "path": "assets/icons/wrist_computer.svg",
+      "size": 309,
+      "sha256": "4c27e5fd114193f962739f6c474a3680966c42cb4d376ddcafb029f694e626e2"
+    },
+    {
+      "path": "assets/icons/wrist_hologram.svg",
+      "size": 453,
+      "sha256": "dcf087c0983ea69509482528b0875911db2570bfc6f735da2a1422b557c1e14c"
+    },
+    {
+      "path": "assets/icons/xeno_vision.svg",
+      "size": 309,
+      "sha256": "4c27e5fd114193f962739f6c474a3680966c42cb4d376ddcafb029f694e626e2"
+    },
+    {
+      "path": "assets/props/queen_chain.svg",
+      "size": 408,
+      "sha256": "0109da4e592156638f5241c8727df99372836c8470a5af0b997b9aaa7bae2715"
+    },
+    {
+      "path": "assets/props/water_tank.svg",
+      "size": 331,
+      "sha256": "fb8f122923446d761d1d753b8a55c640906b5a7e16109b0df42bef2b6e93456e"
+    },
+    {
+      "path": "assets/sprites/alien_queen.svg",
+      "size": 361,
+      "sha256": "efd856fa27e60deb37e3f894cf6d055ab4155c0a89bf16d389a88bc2c1ac909c"
+    },
+    {
+      "path": "assets/sprites/alien_warrior.svg",
+      "size": 356,
+      "sha256": "3761ad758cd79ddbca569381e5438b6fbb9bd7de4b1e066440d31adee2a3beaf"
+    },
+    {
+      "path": "assets/sprites/celtic_damaged_predator.svg",
+      "size": 446,
+      "sha256": "259675e072e7b6b6594271f01ae07ce0d68ab01287815ac5f23cd6f948094e03"
+    },
+    {
+      "path": "assets/sprites/celtic_predator.svg",
+      "size": 667,
+      "sha256": "e3b7f3ece0916a63761a2f06525f7a7b7db21095aeea6e09865e252316a9851b"
+    },
+    {
+      "path": "assets/sprites/chopper_predator.svg",
+      "size": 675,
+      "sha256": "044c98ef3e47840cf2ad0c188ca2568c4697e50bacdae2e6b13983a17b093058"
+    },
+    {
+      "path": "assets/sprites/elder_predator.svg",
+      "size": 601,
+      "sha256": "f99bf9eb840bfc547ae4d808cc8b631cef64dc90961592cb59561ae86b9629d0"
+    },
+    {
+      "path": "assets/sprites/facehugger.svg",
+      "size": 395,
+      "sha256": "288bcacf4716f1fa8c012e80f718e58278f1fa4496cfbf874bffcb0890c95840"
+    },
+    {
+      "path": "assets/sprites/grid_alien.svg",
+      "size": 426,
+      "sha256": "7b82c86710e1891a928d4b8016ba586a9a7e22fdcaa08565082fef080a18a0bd"
+    },
+    {
+      "path": "assets/sprites/lex_armed.svg",
+      "size": 553,
+      "sha256": "cd3a7ac01218613531545d14902af9cdb4b11928d9134f444dbd52a42c9a7c6e"
+    },
+    {
+      "path": "assets/sprites/lex_silhouette.svg",
+      "size": 274,
+      "sha256": "8088068afc4d0b4cdddd25fc16585ce8b72eb1ce215deb125a50fa54960871c8"
+    },
+    {
+      "path": "assets/sprites/predalien_chestburster.svg",
+      "size": 420,
+      "sha256": "d4c4ce96c96526b74acb9a3952e7741d1d40a21336ccdefb2a3a2840cf50d8df"
+    },
+    {
+      "path": "assets/sprites/quinn.svg",
+      "size": 459,
+      "sha256": "6110bacb5365d00353f726a048f8e0426ea2176005a4143a455db3f54baff192"
+    },
+    {
+      "path": "assets/sprites/scar_blooded_predator.svg",
+      "size": 746,
+      "sha256": "e5e74a954cf26b17b2818c9d44672ead9903735a2cdd0cc26f770874828c5a29"
+    },
+    {
+      "path": "assets/sprites/scar_predator.svg",
+      "size": 673,
+      "sha256": "53ef822be0f83d46ddbdbe1a3831375f7ee99d6b72685436a173b3f77875d550"
+    },
+    {
+      "path": "assets/sprites/scar_unmasked_predator.svg",
+      "size": 574,
+      "sha256": "422ee21cce98be7bb2e63e506e783970e3e4e5471a40eece7032d9b53e4cffc8"
+    },
+    {
+      "path": "assets/sprites/sebastian_cocoon.svg",
+      "size": 384,
+      "sha256": "2409ee9604a474de0815e7b899abfae038b1cf0df097b9af1ee266eb1ca0908b"
+    },
+    {
+      "path": "assets/sprites/stafford_silhouette.svg",
+      "size": 390,
+      "sha256": "437aaa961474651554a230a2b2c78b414fab2c77a13938d73f659f51c0a15c3e"
+    },
+    {
+      "path": "assets/sprites/stafford_trapped.svg",
+      "size": 455,
+      "sha256": "8b43c1ddfaf7ed0cbbe62dcaf0ac1623e12916098fd480d36b9b42de9d1d390f"
+    },
+    {
+      "path": "assets/sprites/weyland_hostile.svg",
+      "size": 454,
+      "sha256": "7727ab3659246e7ad20b4d7b7864a40400dcb73371109a3db95c904cc8b63521"
+    },
+    {
+      "path": "docs/CODEX_AVP_PREDATOR_V0_5.html",
+      "size": 7080,
+      "sha256": "0290f07c8aab1b449f97181ceacd9c841b8b921c138477fb4b3000559f99c314"
+    },
+    {
+      "path": "docs/FIDELITE_SCENE_PAR_SCENE_V0_5.html",
+      "size": 30796,
+      "sha256": "13164343eb85c7b62336d1ddebe1643439325d6bfb2eb57d432512eaa6ce283e"
+    },
+    {
+      "path": "docs/LEVEL_DESIGN_CODEX_V0_5.html",
+      "size": 40458,
+      "sha256": "dd0b4bd6be66300fdbfae15604aff87d49eef1ac3be7a57c084955e286354c56"
+    },
+    {
+      "path": "docs/QA_MATRIX_V0_5.json",
+      "size": 1257,
+      "sha256": "b6954577877d40e4a2e9ef597ef9b42a9068de591130ec80afcc38aef3ec6e23"
+    },
+    {
+      "path": "docs/RAPPORT_TECHNIQUE_ET_VISUEL_AVP_PREDATOR_V0_5.html",
+      "size": 5969,
+      "sha256": "887c2d4af3a515c786510a4dc9a39731ba73172e8102a549b37debe8087b9397"
+    },
+    {
+      "path": "docs/SCENES_SUPPRIMEES_ARCHIVE.md",
+      "size": 942,
+      "sha256": "bdd01e944949e9afc6e1b4538b80d9fca278c8a41e9aa27e9915fe812e6c3981"
+    },
+    {
+      "path": "docs/SOURCES_ET_FIDELITE.json",
+      "size": 2002,
+      "sha256": "d8fab488af519bad467c984c52de687a93094a4ca17e91d3f751d44fccd38ca5"
+    },
+    {
+      "path": "docs/reference/AVP_2004_Catalogue_visuel.html",
+      "size": 173210,
+      "sha256": "79d09b78c217d40367f64b0353ebc1dc1a44a9d4887ceea2d60daa3e1f33b673"
+    },
+    {
+      "path": "docs/reference/AVP_2004_Inventaire.xlsx",
+      "size": 37661,
+      "sha256": "38b613ddd72f0cfdd9473d5ce08b8b51a851e1971601d13e9ab42b8960e2c272"
+    },
+    {
+      "path": "installer/install-avp-predator.mjs",
+      "size": 1862,
+      "sha256": "b906f1076c300fcdeebda0eb00d1bb12743e8b766e36fbfb99fb670b25297e9a"
+    },
+    {
+      "path": "installer/uninstall-avp-predator.mjs",
+      "size": 523,
+      "sha256": "00c81b8e2caed98f3777172bb6b8103bbfba652a23fe6dd5cfbf9d3b0b779a31"
+    },
+    {
+      "path": "screenshots/control_09_blooding.png",
+      "size": 13225,
+      "sha256": "c388973152fd9926f4b98cbcb3f443dc573f6c589c395bb950c64d12a0ba4b5d"
+    },
+    {
+      "path": "screenshots/control_11_lex.png",
+      "size": 14637,
+      "sha256": "c071a62a2ca0944c2b03c6ddfc2d76a1dc888fe86e5e94e83ddbea57e01ac38f"
+    },
+    {
+      "path": "screenshots/control_15_rescue.png",
+      "size": 14972,
+      "sha256": "fa7a5b4e97f0eee7f7d84d2435cd3a3f7343c6e7d67b8db3138fb77a7c9d6311"
+    },
+    {
+      "path": "screenshots/control_17_shuriken.png",
+      "size": 13413,
+      "sha256": "037ee30b1bde801a14c9d0b242b3e68c7a838fc7cbfe1d00a099d312603fdf56"
+    },
+    {
+      "path": "screenshots/control_17_wristblade.png",
+      "size": 14575,
+      "sha256": "9311bdf0b3693f4d073847ceacc8f6441fa1e22bd20f25f446574c48a267e40c"
+    },
+    {
+      "path": "screenshots/control_19_predalien.png",
+      "size": 12316,
+      "sha256": "636642eca8602a5078706c2703631f0d5ab4e24063e28b2f624d7cbf8706d50c"
+    },
+    {
+      "path": "src/campaign.json",
+      "size": 41098,
+      "sha256": "ba0e421ef4a13ce1a94f5e637cec5e3d6be816d421d197f8b261576acf6c1dbb"
+    },
+    {
+      "path": "src/codex.json",
+      "size": 7565,
+      "sha256": "da9e40ee06ab81d92a257c0ec4a67951ce5751cf14abb4ab944137259fd7f874"
+    },
+    {
+      "path": "src/encounters.json",
+      "size": 3225,
+      "sha256": "21539ca988b3b791ea5209a8ecb082030c8319a85dceda326dbbb100682fe197"
+    },
+    {
+      "path": "src/game.js",
+      "size": 120549,
+      "sha256": "45a09b4ab0d3d89d79b72dc763c933c326e0905cdd4231650518ca6835dc435c"
+    },
+    {
+      "path": "src/loadouts.json",
+      "size": 1569,
+      "sha256": "3706c7648a49e846df9f8b7d50708516318eb60dd82c1b948ae757219d98b46e"
+    },
+    {
+      "path": "src/rooms.json",
+      "size": 28174,
+      "sha256": "18fa0b7f86406eed7306899a60e6d5e1b8d72fd19c9d6ef08ad182b60eb5b141"
+    },
+    {
+      "path": "src/secondary.json",
+      "size": 7660,
+      "sha256": "56ccc083ac047d36dcb2757004a395cf40715b84ba0da15ac3c5de6db2865e56"
+    },
+    {
+      "path": "src/style.css",
+      "size": 9107,
+      "sha256": "f9ac6c8c5b77a55fbecb1573b686bd8db5fd0de4c55d9e6e082b690653d1953a"
+    },
+    {
+      "path": "src/weapons.json",
+      "size": 2502,
+      "sha256": "acdb7472b847daf90294e685b57ca19522a6feb6ae4c23eeeaea8d990c477fef"
+    },
+    {
+      "path": "tests/all-beats-smoke.mjs",
+      "size": 2207,
+      "sha256": "f63132b954043de77bc226371523a90ed5da33636c08e9feec21730221aec60b"
+    },
+    {
+      "path": "tests/graph-smoke.mjs",
+      "size": 941,
+      "sha256": "92b82864125d48b9e02b9e8c48a2d36b6b104362e2105cea68d8b1a3cc9c0360"
+    },
+    {
+      "path": "tests/installer-smoke.mjs",
+      "size": 1133,
+      "sha256": "b3e98d343a8fec5d2767253eb12eb94b1ffc2ba682af9eb11b44fe17796aafa9"
+    },
+    {
+      "path": "tests/migration-smoke.mjs",
+      "size": 2293,
+      "sha256": "0af49e3eeb48b89b207adf59561240af9fe914a9db2958ef8bfeeb5d79209333"
+    },
+    {
+      "path": "tests/progression-smoke.mjs",
+      "size": 2143,
+      "sha256": "9f944ac30360ebebdfefb6ceab8f5e4ae0647c462eaa61ca0524181f7f741fcf"
+    },
+    {
+      "path": "tests/results.json",
+      "size": 623,
+      "sha256": "1832c8fb2cea6d4c3d90df145ab22443fa2b2d4b14091c3237c157a4007b9ab3"
+    },
+    {
+      "path": "tests/runtime-smoke.mjs",
+      "size": 5694,
+      "sha256": "2da80fe9619394913d8ed39b975241751cb10b5ff500609c909c9de119a38f5b"
+    },
+    {
+      "path": "tests/verify.mjs",
+      "size": 2149,
+      "sha256": "e7c1294393775dcd86cea6564b43f207bd90b178348f6ca6dcec721325af8b95"
+    }
+  ]
+}

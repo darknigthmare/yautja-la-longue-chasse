@@ -1,0 +1,1359 @@
+{
+  "id": "avp_2004_predator",
+  "title": "AVP · Le Rite sous la glace",
+  "subtitle": "Campagne Yautja · Film 2004 · Ultimate Rite Pass",
+  "version": "0.5.0",
+  "continuity": "Alien vs. Predator (2004) — montage cinéma / continuité écran ; transitions gameplay signalées",
+  "playableActors": [
+    "Chopper",
+    "Celtic",
+    "Scar",
+    "Elder"
+  ],
+  "chapterCount": 20,
+  "beatCount": 106,
+  "chapters": [
+    {
+      "id": "rite_00",
+      "title": "Le signal",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "00a",
+          "room": "mothership_observation",
+          "objective": "Atteindre la console d’observation du clan.",
+          "mode": "reach",
+          "flags": [],
+          "hint": "La pyramide est encore enfouie sous la glace."
+        },
+        {
+          "id": "00b",
+          "room": "mothership_ritual_gallery",
+          "objective": "Valider le rite et rejoindre le contrôle du faisceau.",
+          "mode": "interact",
+          "flags": [
+            "ritual"
+          ]
+        },
+        {
+          "id": "00c",
+          "room": "mothership_observation",
+          "objective": "Déclencher le faisceau thermique vers Bouvetøya.",
+          "mode": "interact",
+          "flags": [
+            "heat_beam"
+          ]
+        }
+      ],
+      "fidelity": "Le vaisseau Yautja ouvre le puits thermique qui donne accès à la pyramide avant la descente du trio.",
+      "notes": "Tutoriel sans combat; aucune cible humaine n’est engagée.",
+      "next": "rite_01"
+    },
+    {
+      "id": "rite_01",
+      "title": "Équipement du trio",
+      "actor": "Chopper",
+      "beats": [
+        {
+          "id": "01a",
+          "room": "mothership_arming_bay",
+          "objective": "Équiper Chopper et vérifier les trois biomasks.",
+          "mode": "interact",
+          "flags": [
+            "gear_chopper"
+          ]
+        },
+        {
+          "id": "01b",
+          "room": "mothership_arming_bay",
+          "objective": "Inspecter l’équipement de Celtic et Scar.",
+          "mode": "interact",
+          "flags": [
+            "gear_trio"
+          ]
+        },
+        {
+          "id": "01c",
+          "room": "drop_capsules",
+          "objective": "Rejoindre les capsules et lancer le déploiement.",
+          "mode": "reach",
+          "flags": [
+            "deploy"
+          ]
+        }
+      ],
+      "fidelity": "Scar, Celtic et Chopper sont les trois jeunes chasseurs du rite. Les trois plasmacasters sont déjà dissimulés dans la pyramide, pas portés au départ.",
+      "notes": "Le runtime restreint les armes à celles confirmées ou directement cohérentes avec le film.",
+      "next": "rite_02"
+    },
+    {
+      "id": "rite_02",
+      "title": "Descente sur Bouvetøya",
+      "actor": "Chopper",
+      "beats": [
+        {
+          "id": "02a",
+          "room": "drop_zone",
+          "objective": "Quitter la capsule sans révéler la présence du trio.",
+          "mode": "stealth",
+          "flags": []
+        },
+        {
+          "id": "02b",
+          "room": "ice_ridge",
+          "objective": "Traverser la crête sous camouflage.",
+          "mode": "stealth",
+          "flags": []
+        },
+        {
+          "id": "02c",
+          "room": "whaling_outskirts",
+          "objective": "Observer la station et repérer les humains armés.",
+          "mode": "interact",
+          "flags": [
+            "surface_scan"
+          ]
+        },
+        {
+          "id": "02d",
+          "room": "whaling_overlook",
+          "objective": "Rejoindre l’angle d’approche utilisé par le trio avant l’assaut.",
+          "mode": "stealth",
+          "flags": [
+            "trio_surface_ready"
+          ],
+          "actor": "Celtic",
+          "hint": "Aucune cible non armée ne doit être engagée."
+        }
+      ],
+      "fidelity": "Les trois Predators arrivent par capsules, progressent sous camouflage puis observent la station baleinière avant d’attaquer l’équipe armée restée en surface.",
+      "notes": "Les cibles deviennent valides seulement lorsque leur rôle hostile est établi par la scène.",
+      "next": "rite_03"
+    },
+    {
+      "id": "rite_03",
+      "title": "Chasse en surface",
+      "actor": "Chopper",
+      "beats": [
+        {
+          "id": "03a",
+          "room": "whaling_rooftops",
+          "objective": "Neutraliser les sentinelles armées de la station.",
+          "mode": "combat_human",
+          "flags": [],
+          "encounter": {
+            "type": "human_security",
+            "count": 2
+          },
+          "actor": "Chopper"
+        },
+        {
+          "id": "03b",
+          "room": "whaling_catwalk",
+          "objective": "Passer au-dessus de la cour sans perdre la piste du forage.",
+          "mode": "stealth",
+          "flags": [],
+          "actor": "Chopper"
+        },
+        {
+          "id": "03c",
+          "room": "whaling_yard",
+          "objective": "Éliminer les hommes armés qui défendent le puits.",
+          "mode": "combat_human",
+          "flags": [],
+          "encounter": {
+            "type": "human_security",
+            "count": 3
+          },
+          "actor": "Chopper"
+        },
+        {
+          "id": "03d",
+          "room": "quinn_confrontation",
+          "objective": "Prendre le contrôle de Celtic et affronter Quinn au bord du forage.",
+          "mode": "duel_quinn",
+          "flags": [
+            "quinn_duel"
+          ],
+          "encounter": {
+            "type": "quinn",
+            "count": 1
+          },
+          "actor": "Celtic"
+        },
+        {
+          "id": "03e",
+          "room": "quinn_fall",
+          "objective": "Repousser Quinn dans le puits thermique conformément au film.",
+          "mode": "scripted_push",
+          "flags": [
+            "quinn_fall"
+          ],
+          "actor": "Celtic"
+        },
+        {
+          "id": "03f",
+          "room": "predator_regroup",
+          "objective": "Rejoindre Scar et Chopper au bord du puits.",
+          "mode": "reach",
+          "flags": [
+            "trio_regroup"
+          ],
+          "actor": "Celtic"
+        },
+        {
+          "id": "03g",
+          "room": "wrist_hologram",
+          "objective": "Afficher l’hologramme du complexe sur le wrist computer de Celtic.",
+          "mode": "wrist_scan",
+          "flags": [
+            "pyramid_hologram"
+          ],
+          "actor": "Celtic"
+        },
+        {
+          "id": "03h",
+          "room": "drill_control",
+          "objective": "Sécuriser la route vers le puits thermique.",
+          "mode": "interact",
+          "flags": [
+            "surface_clear"
+          ],
+          "actor": "Celtic"
+        }
+      ],
+      "fidelity": "Après l’assaut de la station, Celtic affronte Rusten Quinn et le précipite dans le puits. Le trio se regroupe et Celtic consulte l’hologramme du complexe avant la descente.",
+      "notes": "Quinn est traité selon le montage cinéma : confrontation à la station, chute dans le puits puis mise à mort par Scar au fond du forage.",
+      "next": "rite_04"
+    },
+    {
+      "id": "rite_04",
+      "title": "Le puits thermique",
+      "actor": "Celtic",
+      "beats": [
+        {
+          "id": "04a",
+          "room": "borehole_lip",
+          "objective": "Rejoindre le bord du forage.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Celtic"
+        },
+        {
+          "id": "04b",
+          "room": "borehole_upper",
+          "objective": "Descendre la section haute.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Celtic"
+        },
+        {
+          "id": "04c",
+          "room": "borehole_mid",
+          "objective": "Franchir la section médiane sur plusieurs plans.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Celtic"
+        },
+        {
+          "id": "04d",
+          "room": "borehole_lower",
+          "objective": "Atteindre le fond du puits.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Celtic"
+        },
+        {
+          "id": "04e",
+          "room": "quinn_bottom",
+          "objective": "Prendre le contrôle de Scar et achever Quinn blessé au fond du puits.",
+          "mode": "quinn_finish",
+          "flags": [
+            "quinn_finished"
+          ],
+          "encounter": {
+            "type": "quinn_injured",
+            "count": 1
+          },
+          "actor": "Scar"
+        },
+        {
+          "id": "04f",
+          "room": "pyramid_exterior",
+          "objective": "Rejoindre l’entrée de la pyramide.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Scar"
+        }
+      ],
+      "fidelity": "Le trio descend le tunnel. Quinn a survécu à sa chute ; Scar l’achève au fond avant que les chasseurs poursuivent vers la pyramide.",
+      "notes": "La verticalité reste découpée en pièces 2D ; la confrontation de Quinn est maintenant explicitement représentée.",
+      "next": "rite_05"
+    },
+    {
+      "id": "rite_05",
+      "title": "L’arsenal profané",
+      "actor": "Celtic",
+      "beats": [
+        {
+          "id": "05a",
+          "room": "entrance_chamber",
+          "objective": "Entrer dans la pyramide et suivre la route du rite.",
+          "mode": "reach",
+          "flags": []
+        },
+        {
+          "id": "05b",
+          "room": "stone_descent",
+          "objective": "Descendre vers le cœur du complexe.",
+          "mode": "reach",
+          "flags": []
+        },
+        {
+          "id": "05c",
+          "room": "weapons_antechamber",
+          "objective": "Atteindre la chambre d’armes.",
+          "mode": "reach",
+          "flags": []
+        },
+        {
+          "id": "05d",
+          "room": "weapons_chamber",
+          "objective": "Inspecter les trois niches vides des plasmacasters.",
+          "mode": "interact",
+          "flags": [
+            "cannons_missing"
+          ]
+        },
+        {
+          "id": "05e",
+          "room": "weapons_exit",
+          "objective": "Se séparer pour récupérer les armes volées.",
+          "mode": "interact",
+          "flags": [
+            "split_hunters"
+          ]
+        },
+        {
+          "id": "05f",
+          "room": "hunter_split_gallery",
+          "objective": "Suivre l’ordre de séparation et prendre une route distincte dans le labyrinthe.",
+          "mode": "stealth",
+          "flags": [
+            "hunt_split_committed"
+          ],
+          "actor": "Chopper"
+        }
+      ],
+      "fidelity": "Les humains ont pris les trois plasmacasters avant l’arrivée du trio; les jeunes chasseurs doivent les récupérer.",
+      "notes": "Le plasmacaster reste verrouillé pour le joueur jusqu’au moment où Lex en rend un à Scar.",
+      "next": "rite_06"
+    },
+    {
+      "id": "rite_06",
+      "title": "Premier sang",
+      "actor": "Chopper",
+      "beats": [
+        {
+          "id": "06a",
+          "room": "pyramid_staircase_top",
+          "objective": "Suivre le groupe qui transporte les armes.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Celtic"
+        },
+        {
+          "id": "06b",
+          "room": "stafford_net_lane",
+          "objective": "Immobiliser Stafford avec le netgun de Celtic.",
+          "mode": "stafford_net",
+          "flags": [
+            "stafford_net"
+          ],
+          "encounter": {
+            "type": "stafford",
+            "count": 1
+          },
+          "actor": "Celtic"
+        },
+        {
+          "id": "06c",
+          "room": "stafford_pillar",
+          "objective": "Exécuter Stafford au combistick pendant que Lex protège le plasmacaster.",
+          "mode": "stafford_execute",
+          "flags": [
+            "stafford_executed"
+          ],
+          "encounter": {
+            "type": "stafford_trapped",
+            "count": 1
+          },
+          "actor": "Celtic"
+        },
+        {
+          "id": "06d",
+          "room": "pyramid_staircase_mid",
+          "objective": "Basculer sur Chopper, repousser Lex et dégainer les longues arm blades.",
+          "mode": "scripted_chopper",
+          "flags": [
+            "chopper_focus"
+          ],
+          "actor": "Chopper"
+        },
+        {
+          "id": "06e",
+          "room": "pyramid_staircase_low",
+          "objective": "Subir l’embuscade de Grid derrière Chopper.",
+          "mode": "scripted_death",
+          "flags": [
+            "chopper_death"
+          ],
+          "actor": "Chopper"
+        }
+      ],
+      "fidelity": "Celtic piège Stafford au filet puis l’exécute au combistick. Chopper se focalise sur Lex et le plasmacaster ; Grid surgit derrière lui, l’empale puis le tue par head-bite.",
+      "notes": "Le changement de personnage se fait au beat près afin de suivre le montage sans inventer une présence supplémentaire.",
+      "next": "rite_07"
+    },
+    {
+      "id": "rite_07",
+      "title": "Celtic contre Grid",
+      "actor": "Celtic",
+      "beats": [
+        {
+          "id": "07a",
+          "room": "grid_clash",
+          "objective": "Engager Grid au corps-à-corps et survivre au premier choc.",
+          "mode": "boss_grid",
+          "flags": [
+            "grid_clash"
+          ],
+          "encounter": {
+            "type": "grid",
+            "count": 1
+          }
+        },
+        {
+          "id": "07b",
+          "room": "grid_tail_cut",
+          "objective": "Sectionner la queue de Grid avec les wrist blades.",
+          "mode": "boss_grid",
+          "flags": [
+            "grid_tail_cut",
+            "celtic_blades_melt"
+          ],
+          "encounter": {
+            "type": "grid",
+            "count": 1
+          }
+        },
+        {
+          "id": "07c",
+          "room": "grid_column",
+          "objective": "Repousser Grid contre la maçonnerie malgré l’armure rongée.",
+          "mode": "boss_grid",
+          "flags": [
+            "grid_grapple"
+          ],
+          "encounter": {
+            "type": "grid",
+            "count": 1
+          }
+        },
+        {
+          "id": "07d",
+          "room": "net_chamber",
+          "objective": "Piéger Grid avec le razor net au moment où il revient à l’attaque.",
+          "mode": "boss_grid",
+          "flags": [
+            "grid_net_phase"
+          ],
+          "encounter": {
+            "type": "grid",
+            "count": 1
+          }
+        },
+        {
+          "id": "07e",
+          "room": "net_chamber_center",
+          "objective": "Approcher pour le coup final tandis que l’acide dissout le filet.",
+          "mode": "scripted_observe",
+          "flags": [
+            "grid_net_melts"
+          ]
+        },
+        {
+          "id": "07f",
+          "room": "net_chamber_exit",
+          "objective": "Atteindre l’issue filmique du duel.",
+          "mode": "scripted_death",
+          "flags": [
+            "celtic_death"
+          ]
+        }
+      ],
+      "fidelity": "Celtic affronte Grid au corps-à-corps, coupe sa queue, perd ses wrist blades sous l’acide, le projette contre la pierre, le capture au filet puis meurt lorsque l’acide libère Grid.",
+      "notes": "La chronologie des gestes essentiels du duel est maintenant imposée, tout en laissant le joueur exécuter chaque phase.",
+      "next": "rite_08"
+    },
+    {
+      "id": "rite_08",
+      "title": "Le dernier chasseur",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "08a",
+          "room": "labyrinth_hunt",
+          "objective": "Pister Lex, Sebastian et Weyland dans le labyrinthe mobile.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Scar"
+        },
+        {
+          "id": "08b",
+          "room": "glyph_corridor",
+          "objective": "Couper leur route avant le prochain mouvement des murs.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Scar"
+        },
+        {
+          "id": "08c",
+          "room": "weyland_scan",
+          "objective": "Scanner Weyland et constater que sa signature en fait une cible non valide.",
+          "mode": "weyland_scan",
+          "flags": [
+            "weyland_honor"
+          ],
+          "encounter": {
+            "type": "weyland",
+            "count": 1
+          },
+          "actor": "Scar"
+        },
+        {
+          "id": "08d",
+          "room": "weyland_flame",
+          "objective": "Subir l’attaque au lance-flammes improvisé de Weyland.",
+          "mode": "scripted_observe",
+          "flags": [
+            "weyland_flame"
+          ],
+          "actor": "Scar"
+        },
+        {
+          "id": "08e",
+          "room": "weyland_retaliation",
+          "objective": "Riposter maintenant que Weyland a choisi le combat.",
+          "mode": "combat_weyland",
+          "flags": [
+            "weyland_killed"
+          ],
+          "encounter": {
+            "type": "weyland_hostile",
+            "count": 1
+          },
+          "actor": "Scar"
+        },
+        {
+          "id": "08f",
+          "room": "moving_wall",
+          "objective": "Reprendre la poursuite avant que la pyramide ne ferme le passage.",
+          "mode": "reach",
+          "flags": [
+            "wall_shift"
+          ],
+          "actor": "Scar"
+        }
+      ],
+      "fidelity": "Scar évalue Weyland et l’épargne d’abord. Weyland utilise ensuite son inhalateur et un dispositif improvisé pour l’attaquer ; Scar riposte et le tue, puis la pyramide mobile sépare les survivants.",
+      "notes": "Le système de cible empêche toujours une mise à mort anticipée de Weyland.",
+      "next": "rite_09"
+    },
+    {
+      "id": "rite_09",
+      "title": "Le marquage",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "09a",
+          "room": "pillar_hall_entry",
+          "objective": "Traquer les mouvements dans la salle des piliers.",
+          "mode": "reach",
+          "flags": []
+        },
+        {
+          "id": "09b",
+          "room": "pillar_hall_facehugger",
+          "objective": "Neutraliser le premier Facehugger.",
+          "mode": "combat_xeno",
+          "flags": [
+            "facehugger_kill"
+          ],
+          "encounter": {
+            "type": "facehugger",
+            "count": 1
+          }
+        },
+        {
+          "id": "09c",
+          "room": "pillar_hall",
+          "objective": "Abattre le Xénomorphe et sécuriser la salle.",
+          "mode": "combat_xeno",
+          "flags": [
+            "first_xeno_kill"
+          ],
+          "encounter": {
+            "type": "xeno",
+            "count": 1
+          }
+        },
+        {
+          "id": "09c2",
+          "room": "trophy_cut_floor",
+          "objective": "Prélever le sang acide de la prise avec le ceremonial dagger avant le marquage.",
+          "mode": "trophy_cut",
+          "flags": [
+            "scar_trophy_cut"
+          ],
+          "actor": "Scar",
+          "hint": "Le prélèvement doit être effectué au ceremonial dagger."
+        },
+        {
+          "id": "09d",
+          "room": "blooding_niche",
+          "objective": "Retirer le biomask et accomplir le blooding avec le sang acide prélevé.",
+          "mode": "blooding",
+          "flags": [
+            "scar_blooded",
+            "scar_unmasked"
+          ]
+        },
+        {
+          "id": "09e",
+          "room": "blooding_niche",
+          "objective": "Achever le rite malgré la menace résiduelle.",
+          "mode": "scripted_facehugger",
+          "flags": [
+            "scar_implanted_hidden"
+          ]
+        },
+        {
+          "id": "09f",
+          "room": "blooding_exit",
+          "objective": "Quitter la salle des piliers sans révéler au joueur ce que le Facehugger a implanté.",
+          "mode": "reach",
+          "flags": [
+            "implant_hidden_continues"
+          ],
+          "actor": "Scar"
+        }
+      ],
+      "fidelity": "Scar élimine un Facehugger et un Xénomorphe, se marque avec le sang acide puis est surpris par un autre Facehugger après avoir retiré son biomask.",
+      "notes": "Le ceremonial dagger, le retrait du biomask et le blooding sont séparés afin de reproduire les gestes visibles avant l’attaque du Facehugger.",
+      "next": "rite_10"
+    },
+    {
+      "id": "rite_10",
+      "title": "Le gouffre",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "10a",
+          "room": "chasm_approach",
+          "objective": "Reprendre la piste de Lex et Sebastian.",
+          "mode": "reach",
+          "flags": []
+        },
+        {
+          "id": "10b",
+          "room": "chasm_crossing",
+          "objective": "Observer la capture de Sebastian par Grid sans réécrire la scène.",
+          "mode": "scripted_observe",
+          "flags": [
+            "sebastian_taken"
+          ]
+        },
+        {
+          "id": "10c",
+          "room": "lower_chasm",
+          "objective": "Contourner le gouffre pour rejoindre Lex.",
+          "mode": "reach",
+          "flags": []
+        },
+        {
+          "id": "10d",
+          "room": "reunion_corridor",
+          "objective": "Recevoir le plasmacaster rendu par Lex.",
+          "mode": "receive_plasma",
+          "flags": [
+            "plasma_recovered",
+            "alliance_start"
+          ]
+        },
+        {
+          "id": "10e",
+          "room": "plasma_calibration",
+          "objective": "Fixer le plasmacaster restitué par Lex et vérifier sa charge.",
+          "mode": "wrist_scan",
+          "flags": [
+            "plasma_calibrated"
+          ],
+          "actor": "Scar"
+        }
+      ],
+      "fidelity": "Après la capture de Sebastian, Scar rejoint Lex. Elle lui rend son plasmacaster ; il l’accepte comme alliée de circonstance et réarme son épaule.",
+      "notes": "Aucun duel Scar/Grid supprimé du film n’est injecté ici.",
+      "next": "rite_11"
+    },
+    {
+      "id": "rite_11",
+      "title": "Le tir du chasseur",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "11a",
+          "room": "shooting_gallery",
+          "objective": "Couvrir Lex avec le plasmacaster contre la première vague.",
+          "mode": "combat_plasma",
+          "flags": [],
+          "encounter": {
+            "type": "xeno",
+            "count": 2
+          },
+          "actor": "Scar",
+          "ally": "Lex"
+        },
+        {
+          "id": "11b",
+          "room": "shooting_gallery_lex",
+          "objective": "Tenir l’Alien en respect jusqu’à ce que Lex l’abatte avec le combistick.",
+          "mode": "ally_lex_kill",
+          "flags": [
+            "lex_first_kill"
+          ],
+          "actor": "Scar",
+          "encounter": {
+            "type": "xeno",
+            "count": 1
+          },
+          "ally": "Lex",
+          "hint": "Affaiblissez la créature sans lui porter le coup final."
+        },
+        {
+          "id": "11c",
+          "room": "shooting_gallery",
+          "objective": "Balayer le corridor avec le plasmacaster avant la prochaine poussée.",
+          "mode": "combat_plasma",
+          "flags": [
+            "plasma_corridor"
+          ],
+          "encounter": {
+            "type": "xeno",
+            "count": 3
+          },
+          "actor": "Scar",
+          "ally": "Lex"
+        },
+        {
+          "id": "11d",
+          "room": "shooting_gallery_end",
+          "objective": "Tenir jusqu’au rappel de la Reine et au repli des Aliens.",
+          "mode": "survive",
+          "flags": [
+            "queen_call"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        },
+        {
+          "id": "11e",
+          "room": "queen_call_retreat",
+          "objective": "Suivre Lex pendant que les Aliens abandonnent l’assaut pour répondre à la Reine.",
+          "mode": "reach",
+          "flags": [
+            "xeno_withdrawal"
+          ],
+          "actor": "Scar"
+        }
+      ],
+      "fidelity": "Lex abat un Alien avec l’arme à portée; Scar utilise son plasmacaster et les Aliens se replient au signal de la Reine.",
+      "notes": "Lex devient un véritable allié de terrain : son premier kill au combistick est exécuté par son IA et ne peut pas être volé par le joueur.",
+      "next": "rite_12"
+    },
+    {
+      "id": "rite_12",
+      "title": "Armes de l’ennemi",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "12a",
+          "room": "armor_crafting",
+          "objective": "Prélever les parties résistantes de la carcasse.",
+          "mode": "interact",
+          "flags": [
+            "salvage_xeno"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "12b",
+          "room": "armor_crafting",
+          "objective": "Fabriquer pour Lex un bouclier crânien et une lance de queue.",
+          "mode": "craft",
+          "flags": [
+            "lex_gear"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "12c",
+          "room": "lex_armed_ready",
+          "objective": "Vérifier que Lex peut progresser avec le bouclier crânien et la lance de queue.",
+          "mode": "scripted_observe",
+          "flags": [
+            "lex_gear_ready"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        }
+      ],
+      "fidelity": "Scar fabrique pour Lex une protection et une arme à partir du Xénomorphe abattu.",
+      "notes": "Aucun gadget supplémentaire n’est ajouté à Lex.",
+      "next": "rite_13"
+    },
+    {
+      "id": "rite_13",
+      "title": "La ruche",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "13a",
+          "room": "hive_entry",
+          "objective": "Entrer dans la ruche et suivre les traces de Sebastian.",
+          "mode": "reach",
+          "flags": [],
+          "ally": "Lex"
+        },
+        {
+          "id": "13b",
+          "room": "hive_resin",
+          "objective": "Traverser les parois résinées sans attirer inutilement la ruche.",
+          "mode": "stealth_xeno",
+          "flags": [],
+          "ally": "Lex"
+        },
+        {
+          "id": "13b2",
+          "room": "hive_lower",
+          "objective": "Descendre au niveau inférieur en suivant la résine et les traces des hôtes.",
+          "mode": "stealth_xeno",
+          "flags": [
+            "hive_depth"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        },
+        {
+          "id": "13c",
+          "room": "host_gallery",
+          "objective": "Retrouver Sebastian coconné et reconnaître l’implantation.",
+          "mode": "scripted_observe",
+          "flags": [
+            "sebastian_host"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "13d",
+          "room": "host_gallery",
+          "objective": "Couvrir Lex pendant qu’elle abrège Sebastian avant l’éclosion.",
+          "mode": "scripted_observe",
+          "flags": [
+            "sebastian_mercy"
+          ]
+        },
+        {
+          "id": "13e",
+          "room": "host_gallery",
+          "objective": "Détruire le chestburster qui émerge après sa mort.",
+          "mode": "scripted_kill",
+          "flags": [
+            "chestburster_kill"
+          ],
+          "ally": "Lex"
+        }
+      ],
+      "fidelity": "Scar et Lex trouvent Sebastian implanté; après sa mort, Scar détruit le chestburster.",
+      "notes": "La décision de Lex sur Sebastian reste cinématique, vue par Scar.",
+      "next": "rite_14"
+    },
+    {
+      "id": "rite_14",
+      "title": "Détruire le terrain de chasse",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "14a",
+          "room": "egg_chamber_entry",
+          "objective": "Atteindre la masse d’œufs au cœur de la ruche.",
+          "mode": "reach",
+          "flags": [],
+          "ally": "Lex"
+        },
+        {
+          "id": "14b",
+          "room": "egg_chamber",
+          "objective": "Armer le dispositif d’autodestruction.",
+          "mode": "self_destruct",
+          "flags": [
+            "nuke_armed"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "14c",
+          "room": "egg_chamber_exit",
+          "objective": "Quitter la chambre avant l’encerclement.",
+          "mode": "escape_start",
+          "flags": [
+            "escape_timer"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "14d",
+          "room": "nuke_exit_gallery",
+          "objective": "Prendre de la distance tandis que le compte à rebours du wrist device continue.",
+          "mode": "escape",
+          "flags": [
+            "nuke_running"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        }
+      ],
+      "fidelity": "Scar règle son dispositif d’autodestruction et le laisse dans la ruche afin de détruire la pyramide.",
+      "notes": "Le compte à rebours démarre ici et reste actif jusqu’à la remontée.",
+      "next": "rite_15"
+    },
+    {
+      "id": "rite_15",
+      "title": "Course vers la surface",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "15a",
+          "room": "escape_lower",
+          "objective": "Quitter l’écloserie avant le souffle.",
+          "mode": "escape",
+          "flags": [],
+          "ally": "Lex"
+        },
+        {
+          "id": "15b",
+          "room": "escape_gallery",
+          "objective": "Subir l’attaque d’un Alien pendant la fuite.",
+          "mode": "scripted_wound",
+          "flags": [
+            "scar_wounded"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        },
+        {
+          "id": "15b2",
+          "room": "escape_gallery_rescue",
+          "objective": "Survivre blessé pendant que Lex abat l’Alien qui vient d’attaquer Scar.",
+          "mode": "ally_rescue",
+          "flags": [
+            "lex_saves_scar"
+          ],
+          "actor": "Scar",
+          "ally": "Lex",
+          "encounter": {
+            "type": "xeno",
+            "count": 1
+          },
+          "hint": "Scar est diminué : esquivez et laissez Lex créer l’ouverture."
+        },
+        {
+          "id": "15c",
+          "room": "escape_sled",
+          "objective": "Rejoindre le traîneau du tunnel.",
+          "mode": "reach",
+          "flags": [],
+          "ally": "Lex"
+        },
+        {
+          "id": "15d",
+          "room": "borehole_escape",
+          "objective": "Remonter le puits pendant que le compte à rebours s’épuise.",
+          "mode": "escape_sled",
+          "flags": [
+            "blast_chase"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "15e",
+          "room": "surface_tunnel_exit",
+          "objective": "Franchir la lèvre du tunnel avant l’onde de choc.",
+          "mode": "escape",
+          "flags": [
+            "blast_escape"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "15f",
+          "room": "whaling_collapse",
+          "objective": "S’éloigner de l’effondrement de la station.",
+          "mode": "reach",
+          "flags": [
+            "pyramid_destroyed"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "15g",
+          "room": "collapse_runoff",
+          "objective": "Traverser les débris de la station et gagner le champ de glace.",
+          "mode": "reach",
+          "flags": [
+            "surface_clear_after_blast"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        }
+      ],
+      "fidelity": "Scar et Lex fuient sur le traîneau; l’explosion détruit la pyramide et provoque l’effondrement de la station.",
+      "notes": "La blessure de Scar et le sauvetage par Lex sont non divergents.",
+      "next": "rite_16"
+    },
+    {
+      "id": "rite_16",
+      "title": "Marque du guerrier",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "16a",
+          "room": "surface_ruins",
+          "objective": "Reprendre pied après l’explosion.",
+          "mode": "reach",
+          "flags": [],
+          "ally": "Lex"
+        },
+        {
+          "id": "16b",
+          "room": "surface_ruins",
+          "objective": "Marquer Lex comme guerrière reconnue.",
+          "mode": "mark_lex",
+          "flags": [
+            "lex_blooded"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "16c",
+          "room": "warrior_pause",
+          "objective": "Rester près de Lex après le marquage, avant l’arrivée de la Reine.",
+          "mode": "scripted_observe",
+          "flags": [
+            "warrior_recognition"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        },
+        {
+          "id": "16d",
+          "room": "ice_field_final",
+          "objective": "Faire face à l’arrivée de la Reine.",
+          "mode": "scripted_observe",
+          "flags": [
+            "queen_arrival"
+          ],
+          "ally": "Lex"
+        }
+      ],
+      "fidelity": "Scar marque Lex peu avant l’irruption de la Reine à la surface.",
+      "notes": "Le marquage est obligatoire et ne dépend pas d’un score caché.",
+      "next": "rite_17"
+    },
+    {
+      "id": "rite_17",
+      "title": "La Reine",
+      "actor": "Scar",
+      "beats": [
+        {
+          "id": "17a",
+          "room": "ice_field_final",
+          "objective": "Engager la Reine et empêcher qu’elle n’isole Lex.",
+          "mode": "boss_queen",
+          "flags": [
+            "queen_phase_attack"
+          ],
+          "encounter": {
+            "type": "queen",
+            "count": 1
+          },
+          "ally": "Lex"
+        },
+        {
+          "id": "17a1",
+          "room": "queen_shuriken_lane",
+          "objective": "Frapper la Reine au shuriken pendant l’ouverture du duel.",
+          "mode": "boss_queen_weapon",
+          "flags": [
+            "queen_shuriken"
+          ],
+          "encounter": {
+            "type": "queen",
+            "count": 1
+          },
+          "actor": "Scar",
+          "ally": "Lex",
+          "requiredWeapon": "shuriken"
+        },
+        {
+          "id": "17a2",
+          "room": "queen_combistick_arc",
+          "objective": "Porter l’assaut au combistick contre la tête de la Reine.",
+          "mode": "boss_queen_weapon",
+          "flags": [
+            "queen_combistick"
+          ],
+          "encounter": {
+            "type": "queen",
+            "count": 1
+          },
+          "actor": "Scar",
+          "ally": "Lex",
+          "requiredWeapon": "combistick"
+        },
+        {
+          "id": "17a3",
+          "room": "queen_wristblade_lane",
+          "objective": "Utiliser les wrist blades comme projectile de dernier recours contre la Reine.",
+          "mode": "boss_queen_weapon",
+          "flags": [
+            "queen_wristblade_launch"
+          ],
+          "encounter": {
+            "type": "queen",
+            "count": 1
+          },
+          "actor": "Scar",
+          "ally": "Lex",
+          "requiredWeapon": "wrist_blade_projectile"
+        },
+        {
+          "id": "17b",
+          "room": "water_tank_yard",
+          "objective": "La repousser vers le réservoir tout en survivant à ses charges.",
+          "mode": "boss_queen",
+          "flags": [
+            "queen_counter"
+          ],
+          "encounter": {
+            "type": "queen",
+            "count": 1
+          },
+          "ally": "Lex"
+        },
+        {
+          "id": "17c",
+          "room": "water_tank_yard",
+          "objective": "Attirer la Reine près du réservoir et accrocher sa chaîne.",
+          "mode": "boss_queen_chain",
+          "flags": [
+            "queen_chain"
+          ],
+          "encounter": {
+            "type": "queen",
+            "count": 1
+          },
+          "ally": "Lex"
+        },
+        {
+          "id": "17d",
+          "room": "water_tank_yard",
+          "objective": "Subir la blessure mortelle infligée par la queue de la Reine.",
+          "mode": "scripted_fatal",
+          "flags": [
+            "scar_fatal"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "17d2",
+          "room": "separator_yard",
+          "objective": "Maintenir l’attention de la Reine pendant que Lex atteint le réservoir.",
+          "mode": "survive",
+          "flags": [
+            "queen_distracted"
+          ],
+          "actor": "Scar",
+          "ally": "Lex"
+        },
+        {
+          "id": "17e",
+          "room": "coastal_edge",
+          "objective": "Maintenir la Reine occupée pendant que Lex fait basculer le réservoir.",
+          "mode": "scripted_push",
+          "flags": [
+            "water_tank_fall"
+          ],
+          "ally": "Lex"
+        },
+        {
+          "id": "17f",
+          "room": "coastal_edge",
+          "objective": "Voir le réservoir entraîner la Reine dans l’océan.",
+          "mode": "scripted_observe",
+          "flags": [
+            "queen_drowned"
+          ],
+          "ally": "Lex"
+        }
+      ],
+      "fidelity": "Scar et Lex affrontent la Reine à la surface, exploitent la chaîne encore fixée à elle et la relient à un grand réservoir; Scar est mortellement empalé avant que le réservoir ne l’entraîne dans l’océan.",
+      "notes": "Le duel final impose désormais les usages d’armes de Scar documentés à l’écran avant la séquence chaîne/réservoir ; l’issue reste non divergente.",
+      "next": "rite_18"
+    },
+    {
+      "id": "rite_18",
+      "title": "La relève",
+      "actor": "Elder",
+      "beats": [
+        {
+          "id": "18a",
+          "room": "recovery_landing",
+          "objective": "Voir le clan se révéler autour du corps de Scar.",
+          "mode": "scripted_observe",
+          "flags": [
+            "clan_revealed"
+          ],
+          "actor": "Elder"
+        },
+        {
+          "id": "18b",
+          "room": "recovery_landing",
+          "objective": "Approcher le corps de Scar avec le clan.",
+          "mode": "reach",
+          "flags": [
+            "scar_recovered"
+          ],
+          "actor": "Elder"
+        },
+        {
+          "id": "18c",
+          "room": "elder_circle",
+          "objective": "Reconnaître la marque de Lex et lui remettre le trophée du clan.",
+          "mode": "elder_gift",
+          "flags": [
+            "elder_respect"
+          ],
+          "actor": "Elder"
+        },
+        {
+          "id": "18d",
+          "room": "mothership_procession",
+          "objective": "Ramener Scar à bord du vaisseau.",
+          "mode": "reach",
+          "flags": [],
+          "actor": "Elder"
+        }
+      ],
+      "fidelity": "L’Elder et le clan récupèrent Scar; l’Elder reconnaît Lex et lui remet une arme en signe de respect.",
+      "notes": "Courte section Elder uniquement pour conserver le point de vue Yautja.",
+      "next": "rite_19"
+    },
+    {
+      "id": "rite_19",
+      "title": "Le passager",
+      "actor": "Elder",
+      "beats": [
+        {
+          "id": "19a",
+          "room": "mothership_mortuary",
+          "objective": "Déposer Scar dans la chambre mortuaire.",
+          "mode": "interact",
+          "flags": [
+            "mortuary_body"
+          ],
+          "actor": "Elder"
+        },
+        {
+          "id": "19b",
+          "room": "mortuary_seal",
+          "objective": "Sceller le protocole funéraire du jeune chasseur.",
+          "mode": "interact",
+          "flags": [
+            "mortuary_sealed"
+          ],
+          "actor": "Elder"
+        },
+        {
+          "id": "19c",
+          "room": "mothership_mortuary",
+          "objective": "Observer l’anomalie qui met fin au film.",
+          "mode": "ending_predalien",
+          "flags": [
+            "predalien_emergence"
+          ],
+          "actor": "Elder"
+        }
+      ],
+      "fidelity": "Le dernier plan révèle un chestburster hybride émergeant du corps de Scar à bord du vaisseau.",
+      "notes": "La campagne s’arrête à cette naissance; AVP-R reste un DLC distinct.",
+      "next": null
+    }
+  ],
+  "rules": {
+    "filmLockedDeaths": [
+      "chopper_death",
+      "celtic_death",
+      "scar_fatal"
+    ],
+    "pyramidFilmCycleSeconds": 600,
+    "profiles": 4,
+    "deletedScenesInCampaign": false,
+    "filmLockedOutcome": true,
+    "sideEvidenceCount": 34,
+    "saveMigrationFrom": [
+      "0.4.0",
+      "0.3.0",
+      "0.2.0"
+    ],
+    "difficultyDoesNotAlterStory": true,
+    "gridFightOrder": [
+      "clash",
+      "tail_sever",
+      "acid_melt",
+      "grapple",
+      "net",
+      "net_melts",
+      "celtic_death"
+    ],
+    "queenFinalOrder": [
+      "engage",
+      "counter",
+      "chain_to_tank",
+      "scar_fatal",
+      "tank_over_cliff",
+      "queen_drowned"
+    ],
+    "perBeatActorOverride": true,
+    "targetValidation": true,
+    "wristComputerOverlay": true,
+    "namedSurfaceSequence": true,
+    "lexCompanionSystem": true,
+    "scarUnmaskedState": true,
+    "queenWeaponSequence": [
+      "shuriken",
+      "combistick",
+      "wrist_blade_projectile"
+    ]
+  }
+}

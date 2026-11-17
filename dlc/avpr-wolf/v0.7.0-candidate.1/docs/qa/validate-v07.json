@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "version": "0.7.0-candidate.1",
+  "rooms": 47,
+  "chapters": 14,
+  "weapons": 8,
+  "unrated": [
+    "wreck_biomask",
+    "cemetery_karl"
+  ],
+  "reconstructions": 11,
+  "parallelEvents": 13,
+  "spriteSheets": 6,
+  "blackoutRooms": 18,
+  "bossPhases": [
+    "gauntlet_damage",
+    "gear_shed",
+    "inner_jaw_rip",
+    "final_grapple",
+    "mutual_fatality"
+  ],
+  "hunterProtocol": {
+    "chainWindow": 6.5,
+    "maxChainBonus": 0.75,
+    "chainStep": 0.06,
+    "bossTelegraphSeconds": 0.62,
+    "bossSpecialCooldown": 3.2,
+    "alertMemorySeconds": 4.2
+  }
+}
