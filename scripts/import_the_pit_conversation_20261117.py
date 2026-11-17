@@ -28,7 +28,7 @@ EXPECTED = {
 }
 DEST = pathlib.Path("public/game/sprites/v44/user-hunters/conversation-20261117")
 def git_blob_sha(data):
-    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + bytes([0]) + data).hexdigest()
 
 def main():
     if len(sys.argv) != 2:
@@ -45,7 +45,7 @@ def main():
             actual = git_blob_sha(data)
             if actual != expected:
                 raise RuntimeError(f"Source hash mismatch for {name}: {actual} != {expected}")
-            if not data.startswith(b"\\x89PNG\\r\\n\\x1a\\n"):
+            if not data.startswith(bytes([137,80,78,71,13,10,26,10])):
                 raise RuntimeError(f"Not a PNG: {name}")
             target = dest / pathlib.PurePosixPath(name).name
             if target.exists():
