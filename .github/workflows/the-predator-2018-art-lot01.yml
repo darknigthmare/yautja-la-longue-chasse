@@ -1,0 +1,145 @@
+name: The Predator 2018 art lot 01 intake
+
+# One-time upload of two generated masters and two separate candidate sprites.
+# Only this PR branch is writable. No merge, deployment or runtime activation.
+on:
+  push:
+    branches: [codex/project-archive-recovery-20261117]
+    paths: ['.github/workflows/the-predator-2018-art-lot01.yml']
+permissions:
+  contents: write
+concurrency:
+  group: the-predator-2018-art-lot01
+  cancel-in-progress: false
+jobs:
+  intake:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/project-archive-recovery-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/project-archive-recovery-20261117
+          fetch-depth: 1
+          lfs: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /dlc/the-predator-2018/
+            /docs/qa/current-integration-20261103/runtime-inputs.json
+            /.vercelignore
+            /tsconfig.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned image decoder
+        run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Preserve masters, split selected characters and record honest review status
+        shell: python
+        run: |
+          import ast, copy, hashlib, io, json, pathlib, urllib.request
+          from PIL import Image
+          root = pathlib.Path('dlc/the-predator-2018')
+          lot = root / 'production/art/lot-01'
+          lot.mkdir(parents=True, exist_ok=True)
+          cdn = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/'
+          sources = [
+              ('master-01.png', '7978d875-2258-44de-8734-91e63c494d94.png', 2436998, '6dd35a42bda25a733bce36c6435297301510773244f87659d2c2824b2fd8b0f1'),
+              ('master-02.png', '4f8dc4b1-75ec-4a04-912b-84c78163502d.png', 2472294, '52aa1525e1a0c63f79129077e79d5489a45266a5f70da303316c3feb2f78c299')
+          ]
+          files = {}
+          def record(path, raw, role):
+              if path.exists():
+                  assert path.read_bytes() == raw, 'Refusing to overwrite different art: ' + str(path)
+              else:
+                  path.write_bytes(raw)
+              with Image.open(io.BytesIO(raw)) as image:
+                  image.load()
+                  assert image.format == 'PNG' and image.mode == 'RGBA'
+                  alpha = image.getchannel('A')
+                  assert alpha.getextrema()[0] == 0 and alpha.getextrema()[1] > 200
+                  files[path.name] = {'role':role,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'gitBlobSha1':hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest(),'width':image.width,'height':image.height,'mode':image.mode,'alphaRange':list(alpha.getextrema())}
+          for name, remote, size, digest in sources:
+              with urllib.request.urlopen(cdn + remote, timeout=40) as response:
+                  raw = response.read(size + 1)
+              assert len(raw) == size and hashlib.sha256(raw).hexdigest() == digest
+              record(lot / name, raw, 'original-generated-master')
+          selections = [
+              ('fugitive-armored-idle-right-candidate.png', 'fugitive-armored-idle-right', 'master-01.png', (0,0,740,1024)),
+              ('upgrade-armored-idle-right-candidate.png', 'upgrade-armored-idle-right', 'master-02.png', (740,0,1536,1024))
+          ]
+          sprites = []
+          for name, asset_id, source, region in selections:
+              with Image.open(lot / source) as master:
+                  crop = master.crop(region).convert('RGBA')
+              alpha = crop.getchannel('A').point(lambda value: 0 if value <= 12 else value)
+              crop.putalpha(alpha)
+              bounds = alpha.getbbox()
+              assert bounds is not None
+              crop = crop.crop(bounds)
+              padding = 24
+              sprite = Image.new('RGBA', (crop.width+padding*2, crop.height+padding*2), (0,0,0,0))
+              sprite.paste(crop, (padding,padding))
+              stream = io.BytesIO(); sprite.save(stream, format='PNG', optimize=True)
+              record(lot / name, stream.getvalue(), 'individual-candidate-sprite')
+              sprites.append({'id':asset_id,'file':name,'source':source,'sourceRegion':list(region),'contentCropWithinRegion':list(bounds),'padding':padding,'frames':1,'facing':'right','pose':'combat-idle','pivotPx':[sprite.width/2,sprite.height-padding],'pivotStatus':'provisional-bounding-box-bottom-center','runtimeIntegrated':False,'visualMatchApproved':False,'productionStatus':'draft-generated-not-approved'})
+          manifest = {'schema':1,'date':'2026-11-17','film':'The Predator (2018)','generationTool':'image_gen','masterCount':2,'individualSpriteCount':2,'uniqueCharacters':2,'containsOfficialPixels':False,'certifiedOneToOne':False,'animationSetComplete':False,'nativeIntegration':False,'processing':'Selected character crops only; alpha values <=12 cleared; 24 transparent pixels padded; no upscaling or anatomical repainting.','files':files,'sprites':sprites,'review':{'alphaDecoded':True,'fullBodySelectedCandidates':True,'officialReferenceOverlayCompleted':False,'knownLimitations':['Three-quarter lateral interpretation rather than a measured orthographic turnaround.','Mask, plating, organic armor and equipment details require comparison against film frames.','First master Upgrade top silhouette is too close to the edge; use the second master for the exported Upgrade.','Two still poses only: not walk/attack animation sets.','Native pixel dimensions are recorded; these are not advertised as 4K sprites.']}}
+          (lot / 'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+          (lot / 'REVIEW.md').write_text('''# Lot 01 — deux sprites candidats, pas une validation 1:1
+
+          Deux sorties de génération sont conservées sans modification : `master-01.png` et `master-02.png`. Elles montrent les deux mêmes personnages ; ce ne sont pas quatre personnages uniques.
+
+          Deux PNG individuels sont exportés : le Fugitive du premier master et l’Upgrade du second. Le fond possède un vrai canal alpha, vérifié avec Pillow. Les pixels de bruit alpha <=12 sont éliminés et une marge transparente de 24 pixels est ajoutée. Aucun agrandissement artificiel n’est appliqué. Les rectangles de découpe, dimensions, empreintes et pivots provisoires figurent dans `manifest.json`.
+
+          Statut : **draft-generated-not-approved**. Les deux silhouettes ont été contrôlées sur fond de vérification de transparence ; aucune superposition plan par plan aux images du film n’a été validée. Le masque, les éléments d’armure et la morphologie restent à corriger après confrontation aux références. Le haut de l’Upgrade du premier master est trop près du bord : cette variante n’est pas retenue pour le sprite individuel.
+
+          Il s’agit d’une pose par personnage. Les animations, humains, Predator Dogs, états endommagés, intégration bitmap et fusion HuntCanvas restent à produire. Aucun de ces nouveaux dessins n’est activé automatiquement dans le moteur.
+          '''.replace('          ',''))
+          missing_path = root / 'production/missing-assets.json'
+          missing = json.loads(missing_path.read_text())
+          for asset in missing['priorityLot']:
+              match = next(s for s in sprites if s['id'] == asset['id'])
+              asset.update(status='draft-generated-not-approved', file='art/lot-01/'+match['file'], visualMatchApproved=False, animationComplete=False, runtimeIntegrated=False)
+          missing_path.write_text(json.dumps(missing,ensure_ascii=False,indent=2)+'\n')
+          readme = root / 'production/README.md'
+          text = readme.read_text()
+          text += '\n## Lot 01 publié\n\nDeux masters et deux PNG individuels sont conservés dans [`art/lot-01/`](art/lot-01/REVIEW.md). Fugitive et Upgrade sont des propositions à contrôler, pas des animations complètes ni des éléments approuvés 1:1. Les 51 fichiers d’origine sont inchangés.\n'
+          if '## Lot 01 publié' not in readme.read_text():
+              readme.write_text(text)
+          for name in ['verify_recovery.py','run_recovery_qa.py']:
+              ast.parse((root/'tools'/name).read_text(), filename=name)
+          # The archive exclusions changed these two pinned build inputs. Refresh only them.
+          pinned_path = pathlib.Path('docs/qa/current-integration-20261103/runtime-inputs.json')
+          pinned = json.loads(pinned_path.read_text()); before = copy.deepcopy(pinned)
+          assert len(pinned['entries']) == pinned['files'] == 2308
+          changed = []
+          for entry in pinned['entries']:
+              if entry['path'] not in ('.vercelignore','tsconfig.json'):
+                  continue
+              raw = pathlib.Path(entry['path']).read_bytes()
+              pinned['bytes'] += len(raw) - entry['bytes']
+              entry.update(bytes=len(raw),sha256=hashlib.sha256(raw).hexdigest())
+              changed.append(entry['path'])
+          assert set(changed) == {'.vercelignore','tsconfig.json'}
+          for old, new in zip(before['entries'],pinned['entries']):
+              if old['path'] not in changed:
+                  assert old == new
+          pinned_path.write_text(json.dumps(pinned,ensure_ascii=False,indent=2)+'\n')
+          print(json.dumps({'masters':2,'individualSprites':2,'approvedOneToOne':False,'files':files},indent=2))
+      - name: Verify byte-identical originals remain intact
+        run: python dlc/the-predator-2018/tools/verify_recovery.py
+      - name: Commit only the new art, production status and two updated inventory entries
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- dlc/the-predator-2018/production
+          git add -- docs/qa/current-integration-20261103/runtime-inputs.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'feat(dlc): add two generated Predator 2018 sprite candidates without changing originals'
+          for attempt in 1 2 3; do
+            if git push origin HEAD:codex/project-archive-recovery-20261117; then exit 0; fi
+            git fetch --depth=20 origin codex/project-archive-recovery-20261117
+            git rebase origin/codex/project-archive-recovery-20261117
+          done
+          exit 1
