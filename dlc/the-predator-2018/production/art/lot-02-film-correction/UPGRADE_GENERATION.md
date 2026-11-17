@@ -1,11 +1,17 @@
-# Image suivante : Upgrade / Assassin uniquement — film The Predator (2018)
+# Upgrade / Assassin — consigne corrigée après inspection des références
 
-Créer maintenant UNE nouvelle image, UN seul personnage entier : l'Upgrade Predator du film 2018, et surtout PAS le Fugitive. Les deux dernières sorties sont deux essais de Fugitive et ne remplissent pas la deuxième commande. Ne pas utiliser leur biomask, leurs vêtements ni leur armure comme base de l'Upgrade.
+La première consigne interdisant toute ceinture et toute protection pelvienne était erronée. Les deux photos de la figurine officiellement licenciée NECA inspectées dans cette passe montrent une ceinture brun-bronze, un ensemble pelvien segmenté et des gantelets techniques importants. Ne pas les supprimer. La figurine reste un complément : chaque état doit encore être confronté au film.
 
-Sprite 2D réaliste haute définition, profil de combat orienté à droite, corps entier avec marge, transparent, sans texte, sans décor, sans sol, sans deuxième personnage. Dessiner le modèle du film The Predator (2018), pas une variante originale. Tête NUE très allongée, front large en pente, quatre petites mandibules dentées conformes à l'anatomie Yautja du film, dreadlocks noires pendantes. Une créature extraordinairement grande et musclée, épaules larges mais non hérissées, bras longs, cuisses puissantes, jambes nettement DIGITIGRADES et pieds longs griffus, appuis souples de chasseur. Peau et exopeau biologique brun-gris, texture reptilienne fine, tête plus claire mouchetée, ventre/creux des articulations distincts. L'armure organique doit coller aux volumes musculaires et non former des écailles géantes décollées. Dessin de l'Upgrade dans son état protégé visible dans le film, pas un humanoïde en armure.
+## Cible artistique
 
-AUCUN biomask. AUCUN plastron métallique. AUCUN pantalon, pagne, ceinture, filet, bottes, épaulières détachées ou costume de Fugitive. AUCUN canon d'épaule. AUCUNE grande pointe sur les épaules, le dos ou le crâne. AUCUNE couronne de dragon, aucune peau de lave, aucune veine rouge lumineuse. Ne pas transformer les doigts en cinq longues lames de métal. Conserver de petites griffes naturelles proportionnées. Les gantelets/éléments techniques éventuels restent minimaux et conformes au personnage, sans lui greffer un arsenal du Jungle Hunter.
+Un seul sprite HD entier, vue latérale de combat tournée vers la droite, vrai fond alpha, marge tout autour, aucun texte ni planche. Grande tête nue allongée, front haut à petits reliefs, petites mandibules pâles, dreadlocks foncées, peau armurée gris-vert finement texturée avec lignes rougeâtres non lumineuses, pectoraux et abdomen lisibles. Les reliefs biologiques suivent les muscles. Gantelets techniques argent-gris et protection pelvienne brun-bronze conformes aux références. Cuisses puissantes, longues jambes digitigrades et pieds proportionnés. Pas de masque, pas de canon d'épaule du Fugitive, pas de peau de lave, pas de grandes pointes de dragon ou d'épaulettes en écailles détachées. Ne pas confondre la posture nouvelle avec une nouvelle variante anatomique.
 
-La taille supérieure de l'Upgrade sera gérée dans le moteur : dans l'image, conserver tête, dreadlocks, mains et pieds parfaitement entiers, avec 8 % de marge. Pose sobre de combat, pas de hurlement théâtral, pas de monstre fantasy. L'objectif est la ressemblance au modèle de cinéma et non une augmentation libre du nombre de détails.
+## Références réellement inspectées
 
-Sources : page du fournisseur VFX MPC https://www.mpcvfx.com/en/filmography/predator/ et référence de volume licenciée NECA https://store.necaonline.com/products/predator-2018-deluxe-armored-assassin-predator-12-inch-action-figure . Les captures inaccessibles n'ont pas été contrôlées ; aucune certification de fidélité n'est accordée avant revue.
+- https://store.necaonline.com/cdn/shop/files/51579_Assassin_Armored_15.jpg?v=1757700027&width=1500
+- https://store.necaonline.com/cdn/shop/files/51579_Assassin_Armored_8.jpg?v=1757700027&width=1500
+- Page de provenance : https://store.necaonline.com/products/predator-2018-deluxe-armored-assassin-predator-12-inch-action-figure
+
+## État de livraison
+
+Les nouvelles planches générées ne respectent pas ce design et sont classées `rejected-film-fidelity-mismatch`. La tentative additionnelle avec ces images directement en entrée a échoué avant soumission du job : forfait du service incompatible. Aucun nouveau sprite Upgrade conforme n'est donc déclaré livré. L'asset reste ouvert dans le suivi, et les anciens essais ne deviennent pas automatiquement des sources canoniques.
