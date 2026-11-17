@@ -1,4 +1,5 @@
 name: The Predator 2018 fidelity lot 02 intake
+# The content job does not edit workflows. Retirement uses the authorized connector separately.
 on:
   push:
     branches: [codex/project-archive-recovery-20261117]
@@ -19,107 +20,61 @@ jobs:
           ref: codex/project-archive-recovery-20261117
           fetch-depth: 1
           lfs: false
-          sparse-checkout: |
-            dlc/the-predator-2018
-            .github/workflows
+          sparse-checkout: dlc/the-predator-2018
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
-      - name: Preserve five rejected trials and their review, not approved production art
+      - name: Verify and preserve rejected trials only
         shell: python
         run: |
           import hashlib, io, json, pathlib, stat, urllib.request, zipfile
           from PIL import Image
-          root = pathlib.Path('dlc/the-predator-2018/production/art/lot-02-film-correction')
-          url = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/fed6ed6a-8930-47be-8a6a-217972a2edd5.zip'
-          size = 10870904
-          digest = 'fc587afcfcea2c8e497e32376603169110a185137ff70a06a275dea0f492b093'
-          with urllib.request.urlopen(url, timeout=45) as response:
-              raw = response.read(size+1)
-          assert len(raw) == size and hashlib.sha256(raw).hexdigest() == digest
-          expected = {'manifest.json','REVIEW.md','FILM_FIDELITY_GATE.json','verify_lot.py','TECHNICAL_QA.json',
-              'rejected/fugitive-attempt-01.png','rejected/fugitive-attempt-02.png',
-              'rejected/infographic-attempt-03.png','rejected/human-sheet-attempt-04.png',
-              'rejected/predator-sheet-attempt-05.png'}
+          root=pathlib.Path('dlc/the-predator-2018/production/art/lot-02-film-correction')
+          url='https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/fed6ed6a-8930-47be-8a6a-217972a2edd5.zip'
+          size=10870904;digest='fc587afcfcea2c8e497e32376603169110a185137ff70a06a275dea0f492b093'
+          with urllib.request.urlopen(url,timeout=45) as response:raw=response.read(size+1)
+          assert len(raw)==size and hashlib.sha256(raw).hexdigest()==digest
+          expected={'manifest.json','REVIEW.md','FILM_FIDELITY_GATE.json','verify_lot.py','TECHNICAL_QA.json','rejected/fugitive-attempt-01.png','rejected/fugitive-attempt-02.png','rejected/infographic-attempt-03.png','rejected/human-sheet-attempt-04.png','rejected/predator-sheet-attempt-05.png'}
           with zipfile.ZipFile(io.BytesIO(raw)) as archive:
-              assert archive.testzip() is None
-              assert set(archive.namelist()) == expected and len(archive.infolist()) == 10
-              assert sum(i.file_size for i in archive.infolist()) < 14000000
+              assert archive.testzip() is None and set(archive.namelist())==expected and len(archive.infolist())==10
+              assert sum(i.file_size for i in archive.infolist())<14000000
               for info in archive.infolist():
-                  rel = pathlib.PurePosixPath(info.filename)
-                  assert not rel.is_absolute() and '..' not in rel.parts and '\\' not in info.filename
-                  assert not stat.S_ISLNK(info.external_attr >> 16)
-                  path = root / rel
-                  assert not path.is_symlink() and path.resolve().is_relative_to(root.resolve())
-                  data = archive.read(info)
-                  if path.exists():
-                      assert path.read_bytes() == data, 'Conflicting content: ' + str(path)
-                  else:
-                      path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
-          manifest = json.loads((root/'manifest.json').read_text())
-          assert manifest['attemptCount'] == len(manifest['files']) == 5
-          assert manifest['newApprovedSprites'] == manifest['newApprovedAnimations'] == 0
-          for rel, entry in manifest['files'].items():
-              path = root / rel; data = path.read_bytes()
-              assert len(data) == entry['bytes'] and hashlib.sha256(data).hexdigest() == entry['sha256']
-              assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest() == entry['gitBlobSha1']
-              with Image.open(path) as image:
-                  image.load()
-                  assert image.format == 'PNG' and image.mode == entry['mode']
-                  assert list(image.size) == [entry['width'],entry['height']]
-                  assert list(image.getchannel('A').getextrema()) == entry['alphaRange']
-              assert entry['status'] == 'rejected-film-fidelity-mismatch'
-              assert all(entry[k] is False for k in ['visualMatchApproved','runtimeIntegrated','animationComplete'])
-          receipt = {'archiveSha256':digest,'archiveBytes':size,'importedFiles':10,'generatedTrials':5,
-              'approvedSprites':0,'approvedAnimations':0,'nativeRuntimeModified':False,
-              'officialReferencePixelsPublished':False,'publication':'review-and-rejected-trials-only'}
+                  rel=pathlib.PurePosixPath(info.filename)
+                  assert not rel.is_absolute() and '..' not in rel.parts and '\\' not in info.filename and not stat.S_ISLNK(info.external_attr>>16)
+                  path=root/rel;assert not path.is_symlink() and path.resolve().is_relative_to(root.resolve())
+                  data=archive.read(info)
+                  if info.filename=='manifest.json':
+                      metadata=json.loads(data)
+                      metadata['files']['rejected/fugitive-attempt-01.png']['generationId']=None
+                      metadata['files']['rejected/fugitive-attempt-01.png']['generationIdStatus']='not-verified; identified by source PNG hashes instead'
+                      data=(json.dumps(metadata,ensure_ascii=False,indent=2)+'\n').encode()
+                  if path.exists():assert path.read_bytes()==data,'Conflicting content: '+str(path)
+                  else:path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(data)
+          m=json.loads((root/'manifest.json').read_text())
+          assert m['attemptCount']==len(m['files'])==5 and m['newApprovedSprites']==m['newApprovedAnimations']==0
+          for rel,e in m['files'].items():
+              p=root/rel;b=p.read_bytes()
+              assert len(b)==e['bytes'] and hashlib.sha256(b).hexdigest()==e['sha256']
+              assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==e['gitBlobSha1']
+              with Image.open(p) as im:
+                  im.load();assert im.format=='PNG' and im.mode==e['mode']
+                  assert list(im.size)==[e['width'],e['height']] and list(im.getchannel('A').getextrema())==e['alphaRange']
+              assert e['status']=='rejected-film-fidelity-mismatch' and all(e[k] is False for k in ['visualMatchApproved','runtimeIntegrated','animationComplete'])
+          receipt={'sourceArchiveSha256':digest,'sourceArchiveBytes':size,'importedFiles':10,'generatedTrials':5,'approvedSprites':0,'approvedAnimations':0,'nativeRuntimeModified':False,'officialReferencePixelsPublished':False,'metadataCorrection':'Unverified first generation ID removed; PNG bytes unchanged.','publication':'review-and-rejected-trials-only'}
           (root/'IMPORT_RECEIPT.json').write_text(json.dumps(receipt,indent=2)+'\n')
-          # Replace this one-shot write workflow with a permanent read-only check before committing.
-          readonly = '''name: The Predator 2018 film-fidelity gate
-          on:
-            pull_request:
-              paths:
-                - 'dlc/the-predator-2018/**'
-                - '.github/workflows/the-predator-2018-film-fidelity-lot02.yml'
-            workflow_dispatch:
-          permissions:
-            contents: read
-          jobs:
-            verify:
-              runs-on: ubuntu-latest
-              timeout-minutes: 5
-              steps:
-                - uses: actions/checkout@v4
-                  with:
-                    fetch-depth: 1
-                    lfs: false
-                    persist-credentials: false
-                    sparse-checkout: dlc/the-predator-2018
-                - uses: actions/setup-python@v5
-                  with:
-                    python-version: '3.12'
-                - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
-                - run: python dlc/the-predator-2018/tools/verify_recovery.py
-                - run: python dlc/the-predator-2018/production/art/lot-02-film-correction/verify_lot.py
-          '''
-          import textwrap
-          lines=readonly.splitlines()
-          readonly=lines[0]+'\n'+textwrap.dedent('\n'.join(lines[1:])).rstrip()+'\n'
-          pathlib.Path('.github/workflows/the-predator-2018-film-fidelity-lot02.yml').write_text(readonly)
-          print(json.dumps(receipt,indent=2))
+          print(json.dumps(receipt))
       - name: Verify the original DLC remained untouched
         run: python dlc/the-predator-2018/tools/verify_recovery.py
-      - name: Commit this bounded archive and retire write workflow
+      - name: Commit this bounded content only
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -f -- dlc/the-predator-2018/production/art/lot-02-film-correction
-          git add -- .github/workflows/the-predator-2018-film-fidelity-lot02.yml
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'art(dlc): archive five rejected trials and preserve strict film-fidelity gate'
+          git commit -m 'art(dlc): archive five rejected trials with verified hashes and film-reference review'
           for attempt in 1 2 3; do
             if git push origin HEAD:codex/project-archive-recovery-20261117; then exit 0; fi
             git fetch --depth=30 origin codex/project-archive-recovery-20261117
