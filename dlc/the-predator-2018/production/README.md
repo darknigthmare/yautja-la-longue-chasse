@@ -13,3 +13,7 @@ Ce contrôle ciblé n’est ni un parcours complet des deux campagnes ni une hom
 Premier lot prioritaire : deux sprites individuels de base, Fugitive et Upgrade, en pied et orientés vers la droite. Leur présence ne doit être annoncée qu’après enregistrement des PNG et de leurs empreintes dans un manifeste. Une pose de base n’est pas une animation. Aucun dessin n’est approuvé 1:1 par défaut.
 
 Les humains, Predator Dogs, autres états et animations restent listés dans `missing-assets.json`. Les lacunes de récupération des anciennes archives sont distinctes du travail artistique restant.
+
+## Lot 01 publié
+
+Deux masters et deux PNG individuels sont conservés dans [`art/lot-01/`](art/lot-01/REVIEW.md). Fugitive et Upgrade sont des propositions à contrôler, pas des animations complètes ni des éléments approuvés 1:1. Les 51 fichiers d’origine sont inchangés.

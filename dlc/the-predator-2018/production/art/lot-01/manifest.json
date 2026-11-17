@@ -1,0 +1,140 @@
+{
+  "schema": 1,
+  "date": "2026-11-17",
+  "film": "The Predator (2018)",
+  "generationTool": "image_gen",
+  "masterCount": 2,
+  "individualSpriteCount": 2,
+  "uniqueCharacters": 2,
+  "containsOfficialPixels": false,
+  "certifiedOneToOne": false,
+  "animationSetComplete": false,
+  "nativeIntegration": false,
+  "processing": "Selected character crops only; alpha values <=12 cleared; 24 transparent pixels padded; no upscaling or anatomical repainting.",
+  "files": {
+    "master-01.png": {
+      "role": "original-generated-master",
+      "bytes": 2436998,
+      "sha256": "6dd35a42bda25a733bce36c6435297301510773244f87659d2c2824b2fd8b0f1",
+      "gitBlobSha1": "b86444b95b38c1d82937b371589b2af87009b0ba",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    "master-02.png": {
+      "role": "original-generated-master",
+      "bytes": 2472294,
+      "sha256": "52aa1525e1a0c63f79129077e79d5489a45266a5f70da303316c3feb2f78c299",
+      "gitBlobSha1": "1471ab6fc75fbd68f2a7c0fa5c58e6edeead9373",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    "fugitive-armored-idle-right-candidate.png": {
+      "role": "individual-candidate-sprite",
+      "bytes": 972279,
+      "sha256": "7bf549af297687c4651013d802dbc76ff6b65625728b5424e0143d5c6898e0f1",
+      "gitBlobSha1": "57e3629029cdad84eb14f2f8a5776eb7a743a2c3",
+      "width": 663,
+      "height": 1028,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    },
+    "upgrade-armored-idle-right-candidate.png": {
+      "role": "individual-candidate-sprite",
+      "bytes": 1157980,
+      "sha256": "f16f12151b811ae8fbc8227cf1790ff6179e917d857efea7c64be0b15959fc9e",
+      "gitBlobSha1": "78a08f669ab195b50f30a9eb47699fd92e22f48c",
+      "width": 788,
+      "height": 1045,
+      "mode": "RGBA",
+      "alphaRange": [
+        0,
+        254
+      ]
+    }
+  },
+  "sprites": [
+    {
+      "id": "fugitive-armored-idle-right",
+      "file": "fugitive-armored-idle-right-candidate.png",
+      "source": "master-01.png",
+      "sourceRegion": [
+        0,
+        0,
+        740,
+        1024
+      ],
+      "contentCropWithinRegion": [
+        30,
+        23,
+        645,
+        1003
+      ],
+      "padding": 24,
+      "frames": 1,
+      "facing": "right",
+      "pose": "combat-idle",
+      "pivotPx": [
+        331.5,
+        1004
+      ],
+      "pivotStatus": "provisional-bounding-box-bottom-center",
+      "runtimeIntegrated": false,
+      "visualMatchApproved": false,
+      "productionStatus": "draft-generated-not-approved"
+    },
+    {
+      "id": "upgrade-armored-idle-right",
+      "file": "upgrade-armored-idle-right-candidate.png",
+      "source": "master-02.png",
+      "sourceRegion": [
+        740,
+        0,
+        1536,
+        1024
+      ],
+      "contentCropWithinRegion": [
+        41,
+        7,
+        781,
+        1004
+      ],
+      "padding": 24,
+      "frames": 1,
+      "facing": "right",
+      "pose": "combat-idle",
+      "pivotPx": [
+        394.0,
+        1021
+      ],
+      "pivotStatus": "provisional-bounding-box-bottom-center",
+      "runtimeIntegrated": false,
+      "visualMatchApproved": false,
+      "productionStatus": "draft-generated-not-approved"
+    }
+  ],
+  "review": {
+    "alphaDecoded": true,
+    "fullBodySelectedCandidates": true,
+    "officialReferenceOverlayCompleted": false,
+    "knownLimitations": [
+      "Three-quarter lateral interpretation rather than a measured orthographic turnaround.",
+      "Mask, plating, organic armor and equipment details require comparison against film frames.",
+      "First master Upgrade top silhouette is too close to the edge; use the second master for the exported Upgrade.",
+      "Two still poses only: not walk/attack animation sets.",
+      "Native pixel dimensions are recorded; these are not advertised as 4K sprites."
+    ]
+  }
+}
