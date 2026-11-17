@@ -1,0 +1,151 @@
+name: The Predator 2018 complete conversation preservation
+
+# One-shot source transfer requested by the owner. No generation, merge or deployment.
+on:
+  push:
+    branches: [codex/project-archive-recovery-20261117]
+    paths: ['.github/workflows/the-predator-2018-conversation-complete.yml']
+permissions:
+  contents: write
+concurrency:
+  group: the-predator-2018-conversation-complete
+  cancel-in-progress: false
+jobs:
+  preserve:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/project-archive-recovery-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: codex/project-archive-recovery-20261117
+          fetch-depth: 1
+          lfs: false
+          sparse-checkout: dlc/the-predator-2018
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Preserve original ZIP and eleven exact members
+        shell: python
+        run: |
+          import hashlib, io, json, pathlib, stat, urllib.request, zipfile
+          root = pathlib.Path('dlc/the-predator-2018')
+          url = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/3e850b25-4c56-4994-aad0-f54826311d49.zip'
+          size = 16845218
+          digest = '19e3103aae6f2bf1d9cf3ce65591f08b5cd3b6f368eaf24ca64f7674c12a0b41'
+          with urllib.request.urlopen(url, timeout=60) as response:
+              raw = response.read(size + 1)
+          assert len(raw) == size and hashlib.sha256(raw).hexdigest() == digest
+          basename = 'THE_PREDATOR_2018_CONTROLE_FIDELITE_20261117.zip'
+          art = 'production/art/archived-fidelity-attempts-20261117/'
+          expected = {'DIRECTION_ARTISTIQUE.md','README.md','REFERENCES.json','REVIEW.json','verify.py',
+                      'rejected/attempt-01-scene.png','rejected/attempt-02-scene.png',
+                      'rejected/attempt-03-alien-atlas.png','rejected/attempt-04-human-atlas.png',
+                      'rejected/attempt-05-fugitive-atlas.png','rejected/attempt-06-upgrade-atlas.png'}
+          additions = {'history/' + basename: raw,
+                       'history/' + basename + '.sha256': (digest + '  ' + basename + '\n').encode()}
+          with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+              assert archive.testzip() is None
+              entries = [i for i in archive.infolist() if not i.is_dir()]
+              assert len(entries) == 11 and sum(i.file_size for i in entries) == 17103778
+              seen = set()
+              for entry in entries:
+                  p = pathlib.PurePosixPath(entry.filename)
+                  assert not p.is_absolute() and '..' not in p.parts and '\\' not in entry.filename
+                  assert not stat.S_ISLNK(entry.external_attr >> 16)
+                  assert p.parts[0] == 'THE_PREDATOR_2018_CONTROLE_FIDELITE_20261117'
+                  rel = pathlib.PurePosixPath(*p.parts[1:]).as_posix()
+                  assert rel in expected and rel not in seen
+                  seen.add(rel)
+                  additions[art + rel] = archive.read(entry)
+              assert seen == expected
+          # Preserve the originally delivered checksum text too, without replacing normalized copies.
+          additions['history/attachment-checksums/YAUTJA_DLC_THE_PREDATOR_2018_V0_4_CANDIDATE1.zip.sha256'] = b'79c7f578ec01c7226d9353f99d2fca3b66487723b26122f4651e3e715ad9285e  YAUTJA_DLC_THE_PREDATOR_2018_V0_4_CANDIDATE1.zip\n'
+          additions['history/attachment-checksums/YAUTJA_DLC_THE_PREDATOR_2018_V0_5_CANDIDATE1.zip.sha256'] = b'f58fba410784ee146d1b75355dd90f6e47f18dff7b8356eee0f7380c9e195c90  /mnt/data/YAUTJA_DLC_THE_PREDATOR_2018_V0_5_CANDIDATE1.zip\n'
+          for rel, content in additions.items():
+              dest = root / rel
+              assert dest.resolve().is_relative_to(root.resolve())
+              assert not dest.is_symlink()
+              if dest.exists():
+                  assert dest.read_bytes() == content, 'Refusing to overwrite different source: ' + rel
+          for rel, content in additions.items():
+              dest = root / rel
+              dest.parent.mkdir(parents=True, exist_ok=True)
+              if not dest.exists():
+                  dest.write_bytes(content)
+          print(json.dumps({'sourceFilesRestoredOrReused':len(additions),'newGeneratedImages':0,'unpackedPngs':6}))
+      - name: Verify unchanged historical recovery and all 45 current inputs
+        run: |
+          python dlc/the-predator-2018/tools/verify_recovery.py
+          python dlc/the-predator-2018/tools/verify_conversation_publication.py --report dlc/the-predator-2018/publication/20261117-source-completion/receipt.json
+      - name: Write browsing index from verified coverage only
+        shell: python
+        run: |
+          import json, pathlib
+          root = pathlib.Path('dlc/the-predator-2018')
+          receipt = json.loads((root/'publication/20261117-source-completion/receipt.json').read_text())
+          assert receipt['ok'] and receipt['sourceInputsCovered'] == 45 and receipt['artPngsDecoded'] == 15
+          assert receipt['originalV05FilesUnchanged'] == 51
+          lines = [
+              '# The Predator (2018) — DLC et sprites conservés dans la PR #146',
+              '',
+              'Génération arrêtée à la demande de l’utilisateur. Cette passe conserve les fichiers existants ; elle ne dessine, ne régénère, ne redécoupe et ne remplace aucun sprite.',
+              '',
+              '## DLC',
+              '',
+              '- [Standalone v0.5](JOUER_THE_PREDATOR_2018_V0_5.html), [données](src/data/game-data.json), [documentation](docs/) et [intégration](docs/INTEGRATION_V0_5.md).',
+              '- 51 fichiers v0.5 inchangés, 52 séquences et 183 micro-zones.',
+              '- [Archives historiques](history/) : ZIP originaux v0.2, v0.3, v0.5 ; six fichiers v0.4 ; archive de contrôle de fidélité originale et ses onze membres accessibles séparément.',
+              '- Les ZIP originaux v0.1 et v0.4 ne sont pas récupérés. Le checksum v0.4 seul ne remplace pas son archive.',
+              '',
+              '## Sprites, planches et illustrations',
+              '',
+              '13 images sources originales + 2 découpes individuelles déjà présentes = 15 PNG artistiques consultables. Les captures QA du DLC sont conservées séparément dans docs/. Une planche contenant plusieurs poses reste une seule image source, pas une série d’animations intégrées.',
+              '',
+              '[Index de toutes les images](SPRITES_INDEX.md)',
+              '',
+              'Tous les statuts de revue sont conservés : candidats non approuvés et essais rejetés restent distingués. Leur présence dans Git ne certifie pas une fidélité 1:1 au film et ne les active pas dans le moteur.',
+              '',
+              '## Vérification',
+              '',
+              '[Inventaire des 45 fichiers disponibles](publication/20261117-source-completion/available-inputs.json) · [Correspondances SHA-256 et chemins réels](publication/20261117-source-completion/receipt.json)',
+              '',
+              '45/45 fichiers disponibles retrouvés à l’octet près, directement ou dans les ZIP historiques. Les 13 images sources sont aussi accessibles directement, hors ZIP. Les quatre ZIP et leurs 140 membres ont été vérifiés ; les 15 PNG artistiques ont été décodés.',
+              '',
+              'Commande de contrôle : `python dlc/the-predator-2018/tools/verify_conversation_publication.py` (Python 3 et Pillow). Sans --report, le contrôle est en lecture seule.',
+              '',
+              'Les rapports anciens, y compris les mentions antérieures « non envoyé dans la PR », sont préservés comme documents historiques ; le présent index et son reçu décrivent la conservation actuelle. Aucun nouveau résultat de gameplay, aucune fusion HuntCanvas et aucun déploiement ne sont revendiqués.'
+          ]
+          (root/'PUBLICATION_COMPLETE_20261117.md').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+          index = ['# Index des sprites et images — The Predator (2018)', '',
+                   'Fichiers d’origine conservés sans génération ni modification. Les noms ci-dessous identifient les fichiers, pas une approbation de leur fidélité.', '',
+                   '| Image source de la conversation | Fichier conservé |', '| --- | --- |']
+          for item in receipt['coverage']:
+              if item['source'].startswith('a_') and item['source'].endswith('.png'):
+                  path = next(p for p in item['locations'] if p.startswith('production/art/'))
+                  index.append('| `' + item['source'] + '` | [' + pathlib.PurePosixPath(path).name + '](' + path + ') |')
+          index += ['', '## Deux découpes individuelles déjà publiées', '',
+                    '- [Fugitive — candidat, pose unique](production/art/lot-01/fugitive-armored-idle-right-candidate.png)',
+                    '- [Upgrade — candidat, pose unique](production/art/lot-01/upgrade-armored-idle-right-candidate.png)',
+                    '', '## Revues conservées', '',
+                    '- [Lot 01](production/art/lot-01/REVIEW.md)',
+                    '- [Lot 02 — correction cinéma et essais rejetés](production/art/lot-02-film-correction/REVIEW.md)',
+                    '- [Contrôle de fidélité — six essais antérieurs archivés](production/art/archived-fidelity-attempts-20261117/README.md)',
+                    '', 'Aucun statut de validation artistique ni d’intégration n’a été promu par cet import.']
+          (root/'SPRITES_INDEX.md').write_text('\n'.join(index)+'\n',encoding='utf-8')
+      - name: Commit only this conversation's preserved files
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f -- dlc/the-predator-2018/history/THE_PREDATOR_2018_CONTROLE_FIDELITE_20261117.zip dlc/the-predator-2018/history/THE_PREDATOR_2018_CONTROLE_FIDELITE_20261117.zip.sha256 dlc/the-predator-2018/history/attachment-checksums dlc/the-predator-2018/production/art/archived-fidelity-attempts-20261117 dlc/the-predator-2018/publication/20261117-source-completion/receipt.json dlc/the-predator-2018/PUBLICATION_COMPLETE_20261117.md dlc/the-predator-2018/SPRITES_INDEX.md
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'feat(dlc): preserve all available Predator 2018 DLC sources and 13 generated originals'
+          for attempt in 1 2 3; do
+            if git push origin HEAD:codex/project-archive-recovery-20261117; then exit 0; fi
+            git fetch --depth=40 origin codex/project-archive-recovery-20261117
+            git rebase origin/codex/project-archive-recovery-20261117
+          done
+          exit 1
