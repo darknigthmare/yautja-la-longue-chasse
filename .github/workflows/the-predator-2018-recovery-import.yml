@@ -1,126 +1,27 @@
-name: The Predator 2018 verified source recovery
+name: The Predator 2018 source integrity
 
-# One-shot archival import requested by the repository owner.
-# Fixed public source URLs and SHA-256 digests; no external source code is executed.
+# Import completed at fc72c4d05a46f71b9afa3bc7196c07909f6d195f.
+# Read-only verification: no external packages, download, auto-commit or push.
 on:
-  push:
-    branches: [codex/project-archive-recovery-20261117]
-    paths: ['.github/workflows/the-predator-2018-recovery-import.yml']
+  pull_request:
+    paths:
+      - 'dlc/the-predator-2018/**'
+      - '.github/workflows/the-predator-2018-recovery-import.yml'
+  workflow_dispatch:
 permissions:
-  contents: write
-concurrency:
-  group: the-predator-2018-recovery-import
-  cancel-in-progress: false
+  contents: read
 jobs:
-  recover:
-    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/project-archive-recovery-20261117'
+  verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: codex/project-archive-recovery-20261117
           fetch-depth: 1
           lfs: false
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /dlc/the-predator-2018/
-            /dlc/README.md
-            /.vercelignore
-            /tsconfig.json
-      - name: Recover exact bytes and verify archive contents
-        shell: python
-        run: |
-          import hashlib, io, json, pathlib, stat, urllib.request, zipfile
-          root = pathlib.Path('dlc/the-predator-2018')
-          root.mkdir(parents=True, exist_ok=True)
-          cdn = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/'
-          sources = [
-            ('v0.5-original', 'f05120a3-762e-4c4b-960d-aecab9383c7f.zip', 'history/YAUTJA_DLC_THE_PREDATOR_2018_V0_5_CANDIDATE1.zip', 'f58fba410784ee146d1b75355dd90f6e47f18dff7b8356eee0f7380c9e195c90', 1978603),
-            ('v0.3-original', '9be5aae0-42c0-4722-8916-b3dc15801a1c.zip', 'history/YAUTJA_DLC_THE_PREDATOR_2018_V0_3_CANDIDATE1.zip', '3be249c4905e9aea0a3a1107bb9ed681d5edc24786c368b0459132b187536572', 1968766),
-            ('v0.2-original', 'de6f3c50-fbd7-428a-9dd7-e8cc76e7b647.zip', 'history/YAUTJA_DLC_THE_PREDATOR_2018_V0_2_CANDIDATE2.zip', '100c2277cfa463eb45f5a8db12ae04f630dbbd1840b373bab954bc8f3e5f0cdc', 1156492),
-            ('v0.4-recovered-file', '990079d3-ad5e-46c1-a177-519dbfdcc5d1.html', 'history/v0.4-recovered/JOUER_THE_PREDATOR_2018_V0_4.html', 'd01ac8ba8f3702c83bd39f4a79dd1805bc53b2e5e4ebac122846efc108b5bf75', 147657),
-            ('v0.4-recovered-file', '8deab1b0-f44c-491b-a75b-67eea3056b59.md', 'history/v0.4-recovered/docs/CODEX_COMPLET_V0_4.md', '7bf264e6e8a57409a65770bd546bba6ed0f2caebbb86999a7c886d72784c1829', 62448),
-            ('v0.4-recovered-file', 'a9584dc4-5f1f-4232-b3e4-b6f104821c8d.md', 'history/v0.4-recovered/README.md', '67483b7171d231fd3f995067d79a2841e75fdb24ec3559dd81f2c2f2828fa17c', 3444),
-            ('v0.4-recovered-file', 'eb1c763d-8258-4199-843e-f32825aa7e86.md', 'history/v0.4-recovered/docs/CONTINUITY_MATRIX_V0_4.md', '03090d0a5e1cf9f31c94bf0cd20ce3ca7e85ce7725219460a2cb3b156381b9ef', 2251),
-            ('v0.4-recovered-file', 'f47025a4-8b06-45b4-a60d-5904c6e8b261.md', 'history/v0.4-recovered/docs/INTEGRATION_V0_4.md', 'a9e71849e1782478af48d37d9f0c7de5f8dd5956b223375e78616e88740887fc', 1324),
-            ('v0.4-recovered-file', '52299f88-f2f8-4bc7-9b67-a181dded8cb3.html', 'history/v0.4-recovered/docs/RAPPORT_VISUEL_QA_V0_4.html', '171a8c8bce2b2b642ef2bae7b5b431c4ee62456f011f093d078baec58bb37c78', 3679),
-          ]
-          inventory = {}
-          def store(rel, raw, origin):
-              dest = root / rel
-              assert not pathlib.PurePosixPath(rel).is_absolute() and '..' not in pathlib.PurePosixPath(rel).parts
-              assert dest.resolve().is_relative_to(root.resolve()) and not dest.is_symlink()
-              dest.parent.mkdir(parents=True, exist_ok=True)
-              if dest.exists():
-                  assert dest.read_bytes() == raw, 'Refusing to overwrite a different file: ' + rel
-              else:
-                  dest.write_bytes(raw)
-              inventory[rel] = {'bytes':len(raw), 'sha256':hashlib.sha256(raw).hexdigest(), 'gitBlobSha1':hashlib.sha1(b'blob '+str(len(raw)).encode()+b'\0'+raw).hexdigest(), 'origin':origin}
-          for label, remote, rel, digest, size in sources:
-              with urllib.request.urlopen(cdn + remote, timeout=45) as response:
-                  raw = response.read(size + 1)
-              assert len(raw) == size and hashlib.sha256(raw).hexdigest() == digest, rel + ': hash/size mismatch'
-              store(rel, raw, label)
-              if rel.endswith('.zip'):
-                  store(rel + '.sha256', (digest + '  ' + pathlib.PurePosixPath(rel).name + '\n').encode(), 'recomputed-from-original')
-                  with zipfile.ZipFile(io.BytesIO(raw)) as z:
-                      assert z.testzip() is None and len(z.infolist()) <= 250
-                      assert sum(i.file_size for i in z.infolist()) < 20000000
-                      for info in z.infolist():
-                          p = pathlib.PurePosixPath(info.filename)
-                          assert not p.is_absolute() and '..' not in p.parts and '\\' not in info.filename
-                          assert not stat.S_ISLNK(info.external_attr >> 16)
-                          if label == 'v0.5-original' and not info.is_dir():
-                              assert p.parts[0] == 'THE_PREDATOR_2018_DLC_V0_5'
-                              store(str(pathlib.PurePosixPath(*p.parts[1:])), z.read(info), label)
-          data = json.loads((root/'src/data/game-data.json').read_text())
-          scenes = [s for c in data['campaigns'].values() for s in c['scenes']]
-          assert len(scenes) == 52 and sum(len(s['route']) for s in scenes) == 183
-          assert sum(v['origin'] == 'v0.5-original' and not k.startswith('history/') for k,v in inventory.items()) == 51
-          result = {'schema':1,'kind':'byte-identical-source-recovery','sourceFiles':len(inventory),'scenes':52,'microZones':183,'files':inventory,'unavailableOriginals':['v0.1 ZIP','v0.4 ZIP'],'nativeHuntCanvasFusion':False,'hostCampaignSlots':False,'newDedicatedSpritesInOriginalPackage':0}
-          (root/'RECOVERY_INVENTORY_SHA256.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
-          (root/'RECOVERY_20261117.md').write_text('''# The Predator (2018) — récupération dans la PR #146
-
-          Les 51 fichiers de la v0.5.0-candidate.1 sont restaurés octet pour octet à la racine de ce dossier. Les trois ZIP originaux disponibles (v0.2, v0.3, v0.5), leurs sommes SHA-256 et six fichiers isolés v0.4 sont conservés sous `history/`.
-
-          Les ZIP originaux v0.1 et v0.4 ne sont pas disponibles dans cette reprise. Aucun ZIP reconstruit n’est présenté comme l’original. Les rapports v0.5 dans `docs/` sont des rapports historiques, pas les résultats de ce job d’import.
-
-          Le job vérifie les SHA-256, les tailles, les CRC ZIP, les chemins, les 51 fichiers extraits et le total de 52 séquences / 183 micro-zones. Il n’exécute ni installateur ni moteur de jeu.
-
-          Le runtime, le standalone, les deux campagnes, les données, le codex, les captures originales, les tests, la passerelle Next.js et les installateurs sont conservés. Ce dépôt de sources n’active pas automatiquement le DLC dans HuntCanvas ou dans les cinq sauvegardes principales.
-
-          Les silhouettes procédurales de l’original ne sont pas des sprites bitmap dédiés validés 1:1. Les nouvelles productions doivent être isolées sous `production/` et accompagnées d’un statut honnête. Les Emissary, APC, hybrides supprimés et fins alternatives restent hors campagne cinéma.
-          '''.replace('          ',''))
-          readme = pathlib.Path('dlc/README.md')
-          text = readme.read_text()
-          if '(the-predator-2018/' not in text:
-              text += '\n## The Predator (2018)\n\n[`the-predator-2018/`](the-predator-2018/RECOVERY_20261117.md) : v0.5 complète (51 fichiers), ZIP originaux v0.2/v0.3/v0.5 et six fichiers v0.4 récupérés séparément. Import de sources uniquement ; pas de fusion HuntCanvas ni d’activation automatique. Les inventaires propres à ce DLC sont séparés des totaux de récupération précédents.\n'
-              readme.write_text(text)
-          ignore = pathlib.Path('.vercelignore')
-          text = ignore.read_text()
-          if '/dlc/the-predator-2018' not in text.splitlines():
-              ignore.write_text(text+'\n# Archive-only The Predator 2018 sources.\n/dlc/the-predator-2018\n')
-          config = pathlib.Path('tsconfig.json')
-          text = config.read_text(); parsed = json.loads(text)
-          if 'dlc/the-predator-2018' not in parsed.get('exclude',[]):
-              marker = '"exclude": ['
-              assert text.count(marker) == 1
-              config.write_text(text.replace(marker, marker+'"dlc/the-predator-2018", ',1))
-          print(json.dumps({'verifiedFiles':len(inventory),'scenes':len(scenes),'zones':sum(len(s['route']) for s in scenes)},indent=2))
-      - name: Commit only this DLC and its build exclusions
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -f -- dlc/the-predator-2018
-          git add -- dlc/README.md .vercelignore tsconfig.json
-          if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'feat(dlc): restore The Predator 2018 v0.5 and available historical sources'
-          for attempt in 1 2 3; do
-            if git push origin HEAD:codex/project-archive-recovery-20261117; then exit 0; fi
-            git fetch --depth=20 origin codex/project-archive-recovery-20261117
-            git rebase origin/codex/project-archive-recovery-20261117
-          done
-          exit 1
+          persist-credentials: false
+          sparse-checkout: dlc/the-predator-2018
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python dlc/the-predator-2018/tools/verify_recovery.py
