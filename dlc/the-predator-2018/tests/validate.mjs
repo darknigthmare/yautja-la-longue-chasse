@@ -1,0 +1,180 @@
+import { existsSync, readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { join, resolve } from 'node:path';
+import { mkdtempSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+
+const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
+let pass=0,fail=0;
+const ok=(condition,label)=>{if(condition){pass++;console.log(`OK  ${label}`)}else{fail++;console.error(`FAIL ${label}`)}};
+const data=JSON.parse(readFileSync(join(root,'src/data/game-data.json'),'utf8'));
+const human=data.campaigns.human.scenes,pred=data.campaigns.predator.scenes,all=[...human,...pred],routes=all.flatMap(s=>s.route);
+
+ok(data.meta.version==='0.5.0-candidate.1','version v0.5 candidate.1');
+ok(data.meta.saveKey==='yautja.dlc.the-predator-2018.v5','clé de sauvegarde v5 séparée');
+ok(data.meta.hostProtocolVersion===2,'protocole hôte v2');
+ok(human.length===26,'26 scènes humaines conservées');
+ok(pred.length===26,'26 scènes Predator conservées');
+ok(all.length===52,'52 scènes totales');
+ok(new Set(all.map(s=>s.id)).size===52,'52 IDs de scène uniques');
+ok(all.every(s=>s.route.length>=2),'chaque scène possède au moins deux micro-zones');
+ok(routes.length===183,'183 micro-zones conservées');
+ok(new Set(routes.map(r=>r.id)).size===183,'IDs micro-zones uniques');
+ok(routes.every(r=>r.checkpoint===true),'checkpoint déclaré sur chaque micro-zone');
+ok(routes.every(r=>typeof r.encounter==='string'),'chaque micro-zone possède un type de rencontre');
+ok(routes.every(r=>typeof r.secondary==='string'),'chaque micro-zone possède un défi secondaire');
+ok(routes.every(r=>Array.isArray(r.phases)&&r.phases.length>=1),'chaîne d’objectifs sur chaque micro-zone');
+ok(routes.every(r=>Number.isInteger(r.reinforcementWaves)&&r.reinforcementWaves>=0&&r.reinforcementWaves<=2),'budget de renfort fini sur chaque zone');
+ok(routes.every(r=>typeof r.hazard==='string'&&data.environmentHazards[r.hazard]),'danger environnemental référencé sur chaque zone');
+ok(routes.every(r=>typeof r.checkpointLabel==='string'&&r.checkpointLabel.length>5),'libellé de checkpoint enrichi sur chaque zone');
+ok(routes.every(r=>Number.isInteger(r.tacticalIntensity)&&r.tacticalIntensity>=1&&r.tacticalIntensity<=5),'intensité tactique bornée 1–5');
+ok(all.every(s=>s.route.every(r=>r.mirrorEvent===s.event)),'micro-zones reliées à leur événement miroir');
+ok(all.every(s=>Array.isArray(s.v05Systems)&&s.v05Systems.includes('objective-chain')),'scènes annotées systèmes v0.5');
+ok(Object.values(data.locations).every(l=>Array.isArray(l.rooms)&&l.rooms.length>=2),'chaque lieu possède un graphe de pièces');
+ok(new Set(all.map(s=>s.act)).size===4,'quatre actes narratifs distincts');
+
+const count=(key,val)=>routes.filter(r=>r[key]===val).length;
+ok(count('encounter','lockdown')===52,'52 zones de verrouillage combat');
+ok(count('encounter','interaction')===15,'15 zones d’interaction');
+ok(count('encounter','defense')===17,'17 zones de défense');
+ok(count('encounter','stealth')===6,'6 zones d’infiltration');
+ok(count('encounter','traverse')===93,'93 zones de traversée');
+ok(count('reinforcementWaves',0)===108,'108 zones sans vague supplémentaire');
+ok(count('reinforcementWaves',1)===58,'58 zones à une vague');
+ok(count('reinforcementWaves',2)===17,'17 zones à deux vagues');
+ok(new Set(routes.map(r=>r.hazard)).size>=15,'au moins 15 dangers environnementaux utilisés');
+ok(Object.keys(data.environmentHazards).length>=19,'registre complet des dangers environnementaux');
+
+for(const [enc,plan] of Object.entries(data.gameplay.roomPhasePlans||{})){
+  ok(routes.filter(r=>r.encounter===enc).every(r=>JSON.stringify(r.phases)===JSON.stringify(plan)),`plan de phases cohérent pour ${enc}`);
+}
+
+for(const flag of ['objectiveChains','reinforcementWaves','enemyRoles','squadOrderSystem','humanCohesion','predatorMomentum','environmentalHazards','mirrorEventMastery','bossTelegraphs','hostCommandBridge']){
+  ok(data.gameplay[flag]===true,`système ${flag} activé`);
+}
+ok(data.gameplay.hostCampaignSlots===false,'pas de fausse fusion des slots hôte');
+ok(data.gameplay.huntCanvasFusion===false,'pas de fausse fusion HuntCanvas');
+ok(data.gameplay.saveMigration==='v4-v3-v2-to-v5','migration v4/v3/v2 → v5 déclarée');
+ok(JSON.stringify(data.gameplay.squadOrders)==='["follow","focus","hold"]','trois ordres d’escouade déclarés');
+ok(data.progressionV5.human.meter==='cohesion','progression humaine basée sur cohésion');
+ok(data.progressionV5.predator.meter==='momentum','progression Predator basée sur momentum');
+ok(data.progressionV5.mirror.totalEvents===27,'27 événements miroir catalogués');
+
+ok(pred.some(s=>s.actor==='Fugitive Predator'),'Fugitive jouable');
+ok(pred.some(s=>s.actor==='Upgrade Predator'),'Upgrade jouable');
+ok(pred.find(s=>s.id==='P12')?.goal==='scripted-loss','mort canonique Fugitive verrouillée');
+ok(pred.find(s=>s.id==='P26')?.goal==='scripted-loss','mort canonique Upgrade verrouillée');
+ok(human.find(s=>s.id==='H24')?.goal==='boss','boss final humain conservé');
+ok(data.gameplay.canonicalOutcomeLock===true,'verrouillage des issues canoniques');
+ok(data.cutContent.some(x=>/Emissary/i.test(x)),'Emissaries exclus du montage cinéma');
+ok(data.cutContent.some(x=>/APC/i.test(x)),'APC exclu du montage cinéma');
+ok(data.cutContent.some(x=>/Ripley/i.test(x)),'fin Ripley exclue');
+ok(Object.values(data.locations).filter(l=>l.asset).length>=3,'trois décors V43 hôte référencés');
+ok(Object.keys(data.companionRoles||{}).length>=10,'registre des rôles compagnons présent');
+ok(data.companionRoles.Rory==='scanner','Rory reste scanner non-combattant');
+ok(data.companionRoles['Predator Dog']==='charger','Predator Dog reste chargeur');
+
+const game=readFileSync(join(root,'web/game.js'),'utf8');
+ok(game.includes("LEGACY_SAVE='yautja.dlc.the-predator-2018.v4'"),'migration v4 → v5 implémentée');
+ok(game.includes("OLDER_SAVE='yautja.dlc.the-predator-2018.v3'"),'compatibilité migration v3 conservée');
+ok(game.includes("OLDEST_SAVE='yautja.dlc.the-predator-2018.v2'"),'compatibilité migration v2 conservée');
+for(const fn of ['mirrorSummary','markMirrorEvent','cycleSquadOrder','enemyRole','spawnReinforcementWave','advanceObjectivePhase','masterySnapshot']) ok(game.includes(`function ${fn}`),`${fn} implémenté`);
+ok(game.includes("state.cohesion"),'cohésion humaine utilisée dans le runtime');
+ok(game.includes("state.momentum"),'momentum Predator utilisé dans le runtime');
+ok(game.includes("boss.telegraph"),'télégraphe de boss implémenté');
+ok(game.includes("reinforcement-wave"),'événement de vague de renfort émis');
+ok(game.includes("mirror-complete"),'événement maîtrise miroir émis');
+ok(game.includes("objective-phase"),'événement phase d’objectif émis');
+ok(game.includes("source!=='yautja-host'"),'filtrage des commandes hôte implémenté');
+ok(game.includes("command-ack"),'accusé de réception des commandes implémenté');
+ok(game.includes("command:m.command"),'payload de commande hôte tracé');
+ok(game.includes("KeyG"),'commande G de l’escouade implémentée');
+ok(game.includes("hazardZone"),'zones de danger environnemental implémentées');
+ok(game.includes("aiRole"),'rôles IA ennemis implémentés');
+ok(game.includes("window.__TP_NATIVE_API"),'API runtime native exposée');
+ok(game.includes("protocol:D.meta.hostProtocolVersion"),'API runtime expose le protocole');
+
+ok(existsSync(join(root,'JOUER_THE_PREDATOR_2018_V0_5.html')),'standalone v0.5 existe');
+const standalone=readFileSync(join(root,'JOUER_THE_PREDATOR_2018_V0_5.html'),'utf8');
+ok(standalone.includes('"version":"0.5.0-candidate.1"'),'standalone embarque la v0.5');
+ok(standalone.includes('"microZones":183'),'standalone embarque 183 micro-zones');
+ok(standalone.includes('G ordre escouade'),'commande escouade visible dans le standalone');
+ok(standalone.includes('window.__TP_QA_QUERY=window.__TP_QA_QUERY||\'\';'),'jeton QA standalone présent');
+ok(existsSync(join(root,'tools/build_standalone.mjs')),'builder standalone fourni');
+const builder=readFileSync(join(root,'tools/build_standalone.mjs'),'utf8');
+ok(builder.includes('.replace(\'<script src="data.js"></script><script src="game.js"></script>\',()=>'),'builder protège les séquences $$ via callback de remplacement');
+const buildResult=spawnSync(process.execPath,[join(root,'tools/build_standalone.mjs')],{encoding:'utf8'});
+ok(buildResult.status===0,'reconstruction standalone reproductible');
+
+const routeDir=join(root,'native-integration/app/dlc/the-predator-2018');
+const bridgeDir=join(root,'native-integration/app/game/dlc/the-predator-2018');
+ok(existsSync(join(routeDir,'page.tsx')),'route Next.js fournie');
+ok(existsSync(join(routeDir,'DlcFrame.tsx')),'frame client natif fourni');
+ok(existsSync(join(bridgeDir,'manifest.ts')),'manifeste TS natif fourni');
+ok(existsSync(join(bridgeDir,'integrationContract.ts')),'contrat natif fourni');
+ok(existsSync(join(bridgeDir,'hostBridge.ts')),'bridge de commandes hôte fourni');
+const frame=readFileSync(join(routeDir,'DlcFrame.tsx'),'utf8');
+ok(frame.includes('createThePredator2018Command'),'frame peut envoyer des commandes au runtime');
+ok(frame.includes('isThePredator2018RuntimeMessage'),'frame valide les messages runtime');
+ok(frame.includes('sessionStorage.setItem'),'frame conserve un miroir non destructif');
+ok(frame.includes('send("snapshot")'),'frame demande un snapshot au ready');
+const contract=readFileSync(join(bridgeDir,'integrationContract.ts'),'utf8');
+ok(contract.includes('saveKey: "yautja.dlc.the-predator-2018.v5"'),'contrat natif pointe vers la sauvegarde v5');
+ok(contract.includes('hostMirrorKey: "yautja.dlc.the-predator-2018.host-mirror.v5"'),'miroir hôte v5 isolé');
+ok(contract.includes('protocol: 2'),'contrat protocole 2');
+ok(contract.includes('"mirror-complete"'),'contrat déclare mirror-complete');
+ok(contract.includes('"snapshot"'),'contrat déclare commande snapshot');
+ok(contract.includes('hostCampaignSlots: false'),'contrat garde les slots hôte isolés');
+ok(contract.includes('huntCanvasFusion: false'),'contrat garde HuntCanvas isolé');
+const hostBridge=readFileSync(join(bridgeDir,'hostBridge.ts'),'utf8');
+ok(hostBridge.includes('createThePredator2018Command'),'fabrique de commandes typées fournie');
+ok(hostBridge.includes('isThePredator2018RuntimeMessage'),'garde de type des messages fourni');
+
+const browser=JSON.parse(readFileSync(join(root,'docs/BROWSER_QA_RESULTS.json'),'utf8'));
+ok(browser.version==='0.5.0-candidate.1','QA navigateur correspond à la v0.5');
+ok(browser.scenesPassed===52&&browser.scenesChecked===52,'52/52 scènes validées dans Chromium');
+ok(browser.runtimeErrors===0,'aucune erreur runtime Chromium');
+ok(browser.interactions.length>=14&&browser.interactions.every(x=>x.ok),'14 scénarios d’interaction navigateur validés');
+for(const name of ['human-cover-mitigation','upgrade-organic-armor','squad-order-and-cohesion','predator-momentum-takedown','finite-reinforcement-wave','host-command-snapshot-v2','boss-telegraph','mirror-event-mastery']) ok(browser.interactions.some(x=>x.name===name&&x.ok),`${name} validé dans Chromium`);
+
+const tmp=mkdtempSync(join(tmpdir(),'predator-dlc-v05-'));
+mkdirSync(join(tmp,'app','game'),{recursive:true});
+writeFileSync(join(tmp,'package.json'),'{}');
+writeFileSync(join(tmp,'app','game','CampaignMainMenu.tsx'),`<button type="button" disabled={busy||!catalog||!catalog.slots.some(s=>s.status!=='empty')} onClick={()=>open('load')}><span className={styles.actionTitle}>Charger une partie</span></button>`);
+let result=spawnSync(process.execPath,[join(root,'install','INSTALLER_LOCAL.mjs'),tmp],{encoding:'utf8'});
+ok(result.status===0,'installateur v0.5 sort en succès');
+ok(existsSync(join(tmp,'public','dlc','the-predator-2018','index.html')),'runtime public installé');
+ok(existsSync(join(tmp,'app','dlc','the-predator-2018','page.tsx')),'route Next.js installée');
+ok(existsSync(join(tmp,'app','dlc','the-predator-2018','DlcFrame.tsx')),'frame client installée');
+ok(existsSync(join(tmp,'app','game','dlc','the-predator-2018','hostBridge.ts')),'bridge de commande installé');
+let menu=readFileSync(join(tmp,'app','game','CampaignMainMenu.tsx'),'utf8');
+ok(menu.includes('THE_PREDATOR_2018_DLC_LINK_START'),'menu patché avec marqueur');
+ok(menu.includes('v0.5 · 52 séquences · 183 zones · maîtrise miroir'),'menu affiche la candidate v0.5');
+ok(menu.includes("window.location.href='/dlc/the-predator-2018'"),'menu cible la route native');
+result=spawnSync(process.execPath,[join(root,'install','INSTALLER_LOCAL.mjs'),tmp],{encoding:'utf8'});
+ok(result.status===0,'réinstallation v0.5 idempotente');
+menu=readFileSync(join(tmp,'app','game','CampaignMainMenu.tsx'),'utf8');
+ok((menu.match(/THE_PREDATOR_2018_DLC_LINK_START/g)||[]).length===1,'bloc menu non dupliqué à la réinstallation');
+result=spawnSync(process.execPath,[join(root,'install','DESINSTALLER_LOCAL.mjs'),tmp],{encoding:'utf8'});
+ok(result.status===0,'désinstallateur v0.5 sort en succès');
+menu=readFileSync(join(tmp,'app','game','CampaignMainMenu.tsx'),'utf8');
+ok(!menu.includes('THE_PREDATOR_2018_DLC_LINK_START'),'menu restauré');
+ok(!existsSync(join(tmp,'public','dlc','the-predator-2018')),'runtime public supprimé');
+ok(!existsSync(join(tmp,'app','dlc','the-predator-2018','page.tsx')),'route native supprimée');
+ok(!existsSync(join(tmp,'app','game','dlc','the-predator-2018')),'bridge natif supprimé');
+rmSync(tmp,{recursive:true,force:true});
+
+const ts=spawnSync('tsc',['--noEmit','--target','ES2022','--module','ESNext','--moduleResolution','bundler','--skipLibCheck',join(bridgeDir,'manifest.ts'),join(bridgeDir,'integrationContract.ts'),join(bridgeDir,'hostBridge.ts')],{encoding:'utf8'});
+ok(ts.status===0,'bridge TypeScript passe tsc');
+if(ts.status!==0) console.error(ts.stdout,ts.stderr);
+const tsxTmp=mkdtempSync(join(tmpdir(),'predator-dlc-v05-tsx-'));
+const reactStub=join(tsxTmp,'react-stub.d.ts');
+writeFileSync(reactStub,`declare module "react" { export function useEffect(fn: () => void | (() => void), deps?: readonly unknown[]): void; export function useState<T>(value: T): [T,(value:T)=>void]; export function useRef<T>(value:T): { current:T }; } declare module "react/jsx-runtime" { export const jsx:any; export const jsxs:any; export const Fragment:any; } declare namespace JSX { interface IntrinsicElements { [elemName:string]: any } }`);
+const tsx=spawnSync('tsc',['--noEmit','--target','ES2022','--module','ESNext','--moduleResolution','bundler','--jsx','react-jsx','--skipLibCheck',reactStub,join(routeDir,'DlcFrame.tsx'),join(routeDir,'page.tsx'),join(bridgeDir,'integrationContract.ts'),join(bridgeDir,'hostBridge.ts')],{encoding:'utf8'});
+ok(tsx.status===0,'route Next.js client passe le contrôle TypeScript/TSX');
+if(tsx.status!==0) console.error(tsx.stdout,tsx.stderr);
+rmSync(tsxTmp,{recursive:true,force:true});
+
+console.log(`RESULT ${pass} passed / ${fail} failed`);
+if(fail) process.exit(1);

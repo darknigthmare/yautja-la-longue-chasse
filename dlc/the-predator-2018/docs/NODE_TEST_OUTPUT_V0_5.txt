@@ -1,0 +1,147 @@
+OK  version v0.5 candidate.1
+OK  clé de sauvegarde v5 séparée
+OK  protocole hôte v2
+OK  26 scènes humaines conservées
+OK  26 scènes Predator conservées
+OK  52 scènes totales
+OK  52 IDs de scène uniques
+OK  chaque scène possède au moins deux micro-zones
+OK  183 micro-zones conservées
+OK  IDs micro-zones uniques
+OK  checkpoint déclaré sur chaque micro-zone
+OK  chaque micro-zone possède un type de rencontre
+OK  chaque micro-zone possède un défi secondaire
+OK  chaîne d’objectifs sur chaque micro-zone
+OK  budget de renfort fini sur chaque zone
+OK  danger environnemental référencé sur chaque zone
+OK  libellé de checkpoint enrichi sur chaque zone
+OK  intensité tactique bornée 1–5
+OK  micro-zones reliées à leur événement miroir
+OK  scènes annotées systèmes v0.5
+OK  chaque lieu possède un graphe de pièces
+OK  quatre actes narratifs distincts
+OK  52 zones de verrouillage combat
+OK  15 zones d’interaction
+OK  17 zones de défense
+OK  6 zones d’infiltration
+OK  93 zones de traversée
+OK  108 zones sans vague supplémentaire
+OK  58 zones à une vague
+OK  17 zones à deux vagues
+OK  au moins 15 dangers environnementaux utilisés
+OK  registre complet des dangers environnementaux
+OK  plan de phases cohérent pour traverse
+OK  plan de phases cohérent pour lockdown
+OK  plan de phases cohérent pour interaction
+OK  plan de phases cohérent pour defense
+OK  plan de phases cohérent pour stealth
+OK  système objectiveChains activé
+OK  système reinforcementWaves activé
+OK  système enemyRoles activé
+OK  système squadOrderSystem activé
+OK  système humanCohesion activé
+OK  système predatorMomentum activé
+OK  système environmentalHazards activé
+OK  système mirrorEventMastery activé
+OK  système bossTelegraphs activé
+OK  système hostCommandBridge activé
+OK  pas de fausse fusion des slots hôte
+OK  pas de fausse fusion HuntCanvas
+OK  migration v4/v3/v2 → v5 déclarée
+OK  trois ordres d’escouade déclarés
+OK  progression humaine basée sur cohésion
+OK  progression Predator basée sur momentum
+OK  27 événements miroir catalogués
+OK  Fugitive jouable
+OK  Upgrade jouable
+OK  mort canonique Fugitive verrouillée
+OK  mort canonique Upgrade verrouillée
+OK  boss final humain conservé
+OK  verrouillage des issues canoniques
+OK  Emissaries exclus du montage cinéma
+OK  APC exclu du montage cinéma
+OK  fin Ripley exclue
+OK  trois décors V43 hôte référencés
+OK  registre des rôles compagnons présent
+OK  Rory reste scanner non-combattant
+OK  Predator Dog reste chargeur
+OK  migration v4 → v5 implémentée
+OK  compatibilité migration v3 conservée
+OK  compatibilité migration v2 conservée
+OK  mirrorSummary implémenté
+OK  markMirrorEvent implémenté
+OK  cycleSquadOrder implémenté
+OK  enemyRole implémenté
+OK  spawnReinforcementWave implémenté
+OK  advanceObjectivePhase implémenté
+OK  masterySnapshot implémenté
+OK  cohésion humaine utilisée dans le runtime
+OK  momentum Predator utilisé dans le runtime
+OK  télégraphe de boss implémenté
+OK  événement de vague de renfort émis
+OK  événement maîtrise miroir émis
+OK  événement phase d’objectif émis
+OK  filtrage des commandes hôte implémenté
+OK  accusé de réception des commandes implémenté
+OK  payload de commande hôte tracé
+OK  commande G de l’escouade implémentée
+OK  zones de danger environnemental implémentées
+OK  rôles IA ennemis implémentés
+OK  API runtime native exposée
+OK  API runtime expose le protocole
+OK  standalone v0.5 existe
+OK  standalone embarque la v0.5
+OK  standalone embarque 183 micro-zones
+OK  commande escouade visible dans le standalone
+OK  jeton QA standalone présent
+OK  builder standalone fourni
+OK  builder protège les séquences $$ via callback de remplacement
+OK  reconstruction standalone reproductible
+OK  route Next.js fournie
+OK  frame client natif fourni
+OK  manifeste TS natif fourni
+OK  contrat natif fourni
+OK  bridge de commandes hôte fourni
+OK  frame peut envoyer des commandes au runtime
+OK  frame valide les messages runtime
+OK  frame conserve un miroir non destructif
+OK  frame demande un snapshot au ready
+OK  contrat natif pointe vers la sauvegarde v5
+OK  miroir hôte v5 isolé
+OK  contrat protocole 2
+OK  contrat déclare mirror-complete
+OK  contrat déclare commande snapshot
+OK  contrat garde les slots hôte isolés
+OK  contrat garde HuntCanvas isolé
+OK  fabrique de commandes typées fournie
+OK  garde de type des messages fourni
+OK  QA navigateur correspond à la v0.5
+OK  52/52 scènes validées dans Chromium
+OK  aucune erreur runtime Chromium
+OK  14 scénarios d’interaction navigateur validés
+OK  human-cover-mitigation validé dans Chromium
+OK  upgrade-organic-armor validé dans Chromium
+OK  squad-order-and-cohesion validé dans Chromium
+OK  predator-momentum-takedown validé dans Chromium
+OK  finite-reinforcement-wave validé dans Chromium
+OK  host-command-snapshot-v2 validé dans Chromium
+OK  boss-telegraph validé dans Chromium
+OK  mirror-event-mastery validé dans Chromium
+OK  installateur v0.5 sort en succès
+OK  runtime public installé
+OK  route Next.js installée
+OK  frame client installée
+OK  bridge de commande installé
+OK  menu patché avec marqueur
+OK  menu affiche la candidate v0.5
+OK  menu cible la route native
+OK  réinstallation v0.5 idempotente
+OK  bloc menu non dupliqué à la réinstallation
+OK  désinstallateur v0.5 sort en succès
+OK  menu restauré
+OK  runtime public supprimé
+OK  route native supprimée
+OK  bridge natif supprimé
+OK  bridge TypeScript passe tsc
+OK  route Next.js client passe le contrôle TypeScript/TSX
+RESULT 146 passed / 0 failed

@@ -23,3 +23,7 @@ python3 dlc/tools/verify_archive_recovery_20261117.py
 Cette commande lit les trois inventaires, compare tailles/SHA-256/empreintes Git, décode les PNG, analyse les JSON/SVG, vérifie les CRC des ZIP/XLSX et les sommes de contrôle historiques. Elle n'exécute aucun installateur, reconstruction ou test de gameplay et n'écrit pas dans le dépôt.
 
 Les sources AVP et AVP:R restent au statut artistique **draft**. Les SVG, captures, sprite sheets et rapports ne constituent pas une certification de fidélité 1:1 ni une recette du moteur Yautja. Les scripts d'installation visent Tantalus et restent archivés. Les versions précédentes sont référencées avec leurs empreintes et correspondances par contenu ; les fichiers historiques distincts restent explicitement attribués à leurs archives sources.
+
+## The Predator (2018)
+
+[`the-predator-2018/`](the-predator-2018/RECOVERY_20261117.md) : v0.5 complète (51 fichiers), ZIP originaux v0.2/v0.3/v0.5 et six fichiers v0.4 récupérés séparément. Import de sources uniquement ; pas de fusion HuntCanvas ni d’activation automatique. Les inventaires propres à ce DLC sont séparés des totaux de récupération précédents.
