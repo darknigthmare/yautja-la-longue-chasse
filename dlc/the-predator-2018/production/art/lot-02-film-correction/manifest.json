@@ -9,6 +9,7 @@
   "newApprovedAnimations": 0,
   "containsOfficialPixels": false,
   "publicationKind": "rejected-attempts-and-corrected-reference-review",
+  "provenanceIdentifiers": "PNG SHA-256 and Git blob hashes; generation IDs are not used as evidence.",
   "files": {
     "rejected/fugitive-attempt-01.png": {
       "bytes": 1292981,
@@ -17,22 +18,13 @@
       "width": 1199,
       "height": 1312,
       "mode": "RGBA",
-      "alphaRange": [
-        0,
-        255
-      ],
-      "generationId": null,
+      "alphaRange": [0, 255],
       "generator": "image_gen",
       "status": "rejected-film-fidelity-mismatch",
       "visualMatchApproved": false,
       "runtimeIntegrated": false,
       "animationComplete": false,
-      "issues": [
-        "Biomask trop allongé par rapport à la calotte ronde de référence.",
-        "Plastron ouvert et ventre/filet incorrects pour le costume armuré.",
-        "Genouillères et guêtres métalliques réinterprétées."
-      ],
-      "generationIdStatus": "not-verified; identified by source PNG hashes instead"
+      "issues": ["Biomask trop allongé par rapport à la calotte ronde de référence.", "Plastron ouvert et ventre/filet incorrects pour le costume armuré.", "Genouillères et guêtres métalliques réinterprétées."]
     },
     "rejected/fugitive-attempt-02.png": {
       "bytes": 1309040,
@@ -41,21 +33,13 @@
       "width": 1199,
       "height": 1312,
       "mode": "RGBA",
-      "alphaRange": [
-        0,
-        255
-      ],
-      "generationId": "c1863454-a586-4cd0-867e-acd76a9d0ae6",
+      "alphaRange": [0, 255],
       "generator": "image_gen",
       "status": "rejected-film-fidelity-mismatch",
       "visualMatchApproved": false,
       "runtimeIntegrated": false,
       "animationComplete": false,
-      "issues": [
-        "Calotte et bas du biomask encore réinterprétés.",
-        "Répartition maille/plastron, genouillères et guêtres non conforme aux références contrôlées.",
-        "Lateralité trois-quarts et pose, pas animation."
-      ]
+      "issues": ["Calotte et bas du biomask encore réinterprétés.", "Répartition maille/plastron, genouillères et guêtres non conforme aux références contrôlées.", "Lateralité trois-quarts et pose, pas animation."]
     },
     "rejected/infographic-attempt-03.png": {
       "bytes": 2860676,
@@ -64,22 +48,13 @@
       "width": 1536,
       "height": 1024,
       "mode": "RGBA",
-      "alphaRange": [
-        4,
-        251
-      ],
-      "generationId": "ac75cf36-c673-49ec-8abf-168a9b79a250",
+      "alphaRange": [4, 251],
       "generator": "image_gen",
       "status": "rejected-film-fidelity-mismatch",
       "visualMatchApproved": false,
       "runtimeIntegrated": false,
       "animationComplete": false,
-      "issues": [
-        "Infographie non demandée au lieu de sprites individuels.",
-        "Upgrade à grandes plaques/épines non conforme aux volumes de référence.",
-        "Légendes inventées : cette planche ne constitue ni référence canonique ni source du codex.",
-        "Variantes et poses minuscules, pas un jeu d’animations validées."
-      ]
+      "issues": ["Infographie non demandée au lieu de sprites individuels.", "Upgrade à grandes plaques/épines non conforme aux volumes de référence.", "Légendes inventées : cette planche ne constitue ni référence canonique ni source du codex.", "Variantes et poses minuscules, pas un jeu d’animations validées."]
     },
     "rejected/human-sheet-attempt-04.png": {
       "bytes": 2768789,
@@ -88,21 +63,13 @@
       "width": 2172,
       "height": 724,
       "mode": "RGBA",
-      "alphaRange": [
-        0,
-        255
-      ],
-      "generationId": "df0bde76-030c-4dd0-a7fe-91ee7a612414",
+      "alphaRange": [0, 255],
       "generator": "image_gen",
       "status": "rejected-film-fidelity-mismatch",
       "visualMatchApproved": false,
       "runtimeIntegrated": false,
       "animationComplete": false,
-      "issues": [
-        "Personnages non attribuables 1:1 aux costumes précis du film à partir de cette sortie.",
-        "Palette pixel-art et planche multi-personnages hors format des sprites HD individuels demandé.",
-        "Grille, cohérence temporelle et raccords non validés ; aucune animation complète ne doit être comptée."
-      ]
+      "issues": ["Personnages non attribuables 1:1 aux costumes précis du film à partir de cette sortie.", "Palette pixel-art et planche multi-personnages hors format des sprites HD individuels demandé.", "Grille, cohérence temporelle et raccords non validés ; aucune animation complète ne doit être comptée."]
     },
     "rejected/predator-sheet-attempt-05.png": {
       "bytes": 3159626,
@@ -111,99 +78,27 @@
       "width": 1774,
       "height": 887,
       "mode": "RGBA",
-      "alphaRange": [
-        0,
-        255
-      ],
-      "generationId": "f9c1802e-ab40-4a07-a1d3-ecebbb28f63e",
+      "alphaRange": [0, 255],
       "generator": "image_gen",
       "status": "rejected-film-fidelity-mismatch",
       "visualMatchApproved": false,
       "runtimeIntegrated": false,
       "animationComplete": false,
-      "issues": [
-        "Les designs génériques rejetés sont réutilisés.",
-        "Upgrade encore hérissé d’épines excessives ; morphologie et équipement divergents.",
-        "Chien non homologué au design des Predator Dogs de 2018.",
-        "Planche pixel-art non demandée ; aucune animation découpée ou activée."
-      ]
+      "issues": ["Les designs génériques rejetés sont réutilisés.", "Upgrade encore hérissé d’épines excessives ; morphologie et équipement divergents.", "Chien non homologué au design des Predator Dogs de 2018.", "Planche pixel-art non demandée ; aucune animation découpée ou activée."]
     }
   },
   "referencePolicy": "URLs et observations seulement; aucun pixel officiel redistribué.",
   "references": [
-    {
-      "id": "FILM-FUGITIVE-SHIP",
-      "tier": "official-film-still",
-      "url": "https://lumiere-a.akamaihd.net/v1/images/image_6fb94458.jpeg",
-      "publisher": "20th Century Studios",
-      "page": "https://www.20thcenturystudios.com/movies/the-predator",
-      "inspection": "retrieved-and-visually-inspected-in-media-sandbox",
-      "width": 1800,
-      "height": 968,
-      "purpose": "biomask, plastron, état armuré"
-    },
-    {
-      "id": "FILM-FUGITIVE-OUTSIDE",
-      "tier": "official-film-still",
-      "url": "https://lumiere-a.akamaihd.net/v1/images/image_bbf39e2d.jpeg",
-      "publisher": "20th Century Studios",
-      "page": "https://www.20thcenturystudios.com/movies/the-predator",
-      "inspection": "retrieved-and-visually-inspected-in-media-sandbox",
-      "width": 1800,
-      "height": 968,
-      "purpose": "biomask et silhouette"
-    },
-    {
-      "id": "FILM-FUGITIVE-LAB",
-      "tier": "official-film-still",
-      "url": "https://lumiere-a.akamaihd.net/v1/images/image_bc2e2f49.jpeg",
-      "publisher": "20th Century Studios",
-      "inspection": "retrieved-and-visually-inspected-in-media-sandbox",
-      "purpose": "séparer état de laboratoire démasqué de l’état armuré"
-    },
-    {
-      "id": "LICENSED-FUGITIVE-FULLBODY",
-      "tier": "licensed-figure-republished-by-secondary-index",
-      "url": "https://3.bp.blogspot.com/-Rb3Rwt0v0Ag/WzNfQ3XRcBI/AAAAAAAAbw8/IBiKy0Phxc8WQpuAyyIlqJZMpQ0H44XGQCLcBGAs/s1600/mj1.jpg",
-      "publisher": "NECA; image republiée dans une galerie de produit",
-      "page": "https://www.mechanicaljapan.com/2018/06/the-predator-2018-ultimate-fugitive-predator-NECA-figure-figura-predator-neca.html",
-      "inspection": "retrieved-and-visually-inspected-in-media-sandbox",
-      "width": 1040,
-      "height": 1300,
-      "purpose": "complément de volumes; le film prime"
-    },
-    {
-      "id": "LICENSED-UPGRADE-15",
-      "tier": "official-licensee-product-photo",
-      "url": "https://store.necaonline.com/cdn/shop/files/51579_Assassin_Armored_15.jpg?v=1757700027&width=1500",
-      "publisher": "NECA",
-      "page": "https://store.necaonline.com/products/predator-2018-deluxe-armored-assassin-predator-12-inch-action-figure",
-      "inspection": "retrieved-and-visually-inspected-in-media-sandbox",
-      "width": 1500,
-      "height": 2250,
-      "purpose": "peau armurée, gantelets, ceinture et pelvis, proportions"
-    },
-    {
-      "id": "LICENSED-UPGRADE-8",
-      "tier": "official-licensee-product-photo",
-      "url": "https://store.necaonline.com/cdn/shop/files/51579_Assassin_Armored_8.jpg?v=1757700027&width=1500",
-      "publisher": "NECA",
-      "inspection": "retrieved-and-visually-inspected-in-media-sandbox",
-      "width": 1500,
-      "height": 2250,
-      "purpose": "seconde vue de volumes; ne certifie pas toutes les scènes"
-    }
+    {"id":"FILM-FUGITIVE-SHIP","tier":"official-film-still","url":"https://lumiere-a.akamaihd.net/v1/images/image_6fb94458.jpeg","publisher":"20th Century Studios","page":"https://www.20thcenturystudios.com/movies/the-predator","inspection":"retrieved-and-visually-inspected-in-media-sandbox","width":1800,"height":968,"purpose":"biomask, plastron, état armuré"},
+    {"id":"FILM-FUGITIVE-OUTSIDE","tier":"official-film-still","url":"https://lumiere-a.akamaihd.net/v1/images/image_bbf39e2d.jpeg","publisher":"20th Century Studios","page":"https://www.20thcenturystudios.com/movies/the-predator","inspection":"retrieved-and-visually-inspected-in-media-sandbox","width":1800,"height":968,"purpose":"biomask et silhouette"},
+    {"id":"FILM-FUGITIVE-LAB","tier":"official-film-still","url":"https://lumiere-a.akamaihd.net/v1/images/image_bc2e2f49.jpeg","publisher":"20th Century Studios","inspection":"retrieved-and-visually-inspected-in-media-sandbox","purpose":"séparer état de laboratoire démasqué de l’état armuré"},
+    {"id":"LICENSED-FUGITIVE-FULLBODY","tier":"licensed-figure-republished-by-secondary-index","url":"https://3.bp.blogspot.com/-Rb3Rwt0v0Ag/WzNfQ3XRcBI/AAAAAAAAbw8/IBiKy0Phxc8WQpuAyyIlqJZMpQ0H44XGQCLcBGAs/s1600/mj1.jpg","publisher":"NECA; image republiée dans une galerie de produit","page":"https://www.mechanicaljapan.com/2018/06/the-predator-2018-ultimate-fugitive-predator-NECA-figure-figura-predator-neca.html","inspection":"retrieved-and-visually-inspected-in-media-sandbox","width":1040,"height":1300,"purpose":"complément de volumes; le film prime"},
+    {"id":"LICENSED-UPGRADE-15","tier":"official-licensee-product-photo","url":"https://store.necaonline.com/cdn/shop/files/51579_Assassin_Armored_15.jpg?v=1757700027&width=1500","publisher":"NECA","page":"https://store.necaonline.com/products/predator-2018-deluxe-armored-assassin-predator-12-inch-action-figure","inspection":"retrieved-and-visually-inspected-in-media-sandbox","width":1500,"height":2250,"purpose":"peau armurée, gantelets, ceinture et pelvis, proportions"},
+    {"id":"LICENSED-UPGRADE-8","tier":"official-licensee-product-photo","url":"https://store.necaonline.com/cdn/shop/files/51579_Assassin_Armored_8.jpg?v=1757700027&width=1500","publisher":"NECA","inspection":"retrieved-and-visually-inspected-in-media-sandbox","width":1500,"height":2250,"purpose":"seconde vue de volumes; ne certifie pas toutes les scènes"}
   ],
-  "additionalReferenceGeneration": {
-    "provider": "Higgsfield",
-    "model": "gpt_image_2_6",
-    "requestedJobs": 2,
-    "submittedJobs": 0,
-    "error": "Requires basic plan or higher.",
-    "retriedOnAnotherPaidModel": false
-  },
-  "supersededLot": "../lot-01",
-  "supersededLotStatus": "not-acceptable-as-film-one-to-one",
-  "blockRuntimeSelection": true,
-  "officialFilmOverlayCompleted": false
+  "additionalReferenceGeneration": {"provider":"Higgsfield","model":"gpt_image_2_6","requestedJobs":2,"submittedJobs":0,"error":"Requires basic plan or higher.","retriedOnAnotherPaidModel":false},
+  "supersededLot":"../lot-01",
+  "supersededLotStatus":"not-acceptable-as-film-one-to-one",
+  "blockRuntimeSelection":true,
+  "officialFilmOverlayCompleted":false
 }
