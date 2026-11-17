@@ -1,0 +1,91 @@
+{
+  "id": 172,
+  "nom": "Plafonnier hexagonal du laboratoire Weyland-Yutani",
+  "categorie": "synthetiques",
+  "lot": 15,
+  "fichier": "sprites/synthetiques/172_plafonnier_hexagonal_wy.png",
+  "repositoryPath": "art-source/predator-badlands/v15/sprites/synthetiques/172_plafonnier_hexagonal_wy.png",
+  "metadata": "metadata/172_plafonnier_hexagonal_wy.json",
+  "generation_request_file": "prompts/172_plafonnier_hexagonal_wy.json",
+  "date_generation": "2026-11-17",
+  "format": "PNG",
+  "mode": "RGBA",
+  "largeur_px": 1831,
+  "hauteur_px": 859,
+  "taille_octets": 1740134,
+  "sha256": "849170bec26c7e786cb6f54d68a1dc4b55279be383b2566a860bde704a184c1d",
+  "gitBlobSha": "cccabc38d10e8e53ea854fbee9b7e14a98d282fa",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "coins": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pixels_entierement_transparents": 569790,
+    "pourcentage_entierement_transparent": 36.2271,
+    "max_sur_bord_du_canvas": 1
+  },
+  "boite_contenu_alpha_superieur_8_px": [
+    64,
+    49,
+    1767,
+    805
+  ],
+  "marges_contenu_px": {
+    "gauche": 64,
+    "haut": 49,
+    "droite": 64,
+    "bas": 54
+  },
+  "pose": "Plafonnier entier isolé, anneau lumineux allumé ; ni tige ni câbles de suspension.",
+  "orientation": "Trois quarts inférieur, sous-face et trois faces latérales visibles.",
+  "type_visuel": "sprite_statique_equipement",
+  "sources": [
+    "https://www.ravincentworkshop.com/predator-badlands/",
+    "https://images.squarespace-cdn.com/content/v1/5bd830b9ebfc7f8841dba818/1776641658490-WAECB95LV0CJVP143UOV/4.jpeg"
+  ],
+  "source_type": "Photographie primaire du décor construit publiée par Ra Vincent, chef décorateur du film.",
+  "source_limit": "Une vue oblique par-dessous ; bord supérieur et dessus incomplets dans la photographie. La référence de style156 ne documente pas la forme de cet objet.",
+  "confirmed_details": [
+    "Boîtier hexagonal gris à faces latérales planes.",
+    "Pourtour lumineux blanc continu à six côtés.",
+    "Liseré anthracite entre la coque et la bande lumineuse.",
+    "Sous-face opaque grise, polygone central hexagonal et joints radiaux.",
+    "Silhouette basse et large, sans mécanisme de projection."
+  ],
+  "extrapolated_details": [
+    "Fermeture minimale du contour supérieur hors cadre dans la référence.",
+    "Profondeur des faces et petits détails de surface adaptés pour la mise à plat en sprite.",
+    "Fixations invisibles omises ; aucun dessus technique inventé."
+  ],
+  "parties_cachees_reconstituees": [
+    "Fermeture minimale du contour supérieur hors cadre dans la référence.",
+    "Profondeur des faces et petits détails de surface adaptés pour la mise à plat en sprite.",
+    "Fixations invisibles omises ; aucun dessus technique inventé."
+  ],
+  "native_png_unmodified": true,
+  "qa": {
+    "root_visual_reviewed": true,
+    "review_note": "Plafonnier entier comparé à la photographie Ra Vincent et contrôlé sur fond gris : boîtier hexagonal, bande lumineuse et panneau central cohérents ; pas de silhouette coupée. Le bord supérieur hors référence et la profondeur des faces sont reconstitués. Pixels alpha très faibles conservés sans retouche ; contrôle artistique humain et intégration moteur non effectués.",
+    "agent_notes": null,
+    "checks": [
+      "PNG décodable",
+      "RGBA natif",
+      "alpha réel",
+      "marges du contenu visible",
+      "copie native octet pour octet",
+      "absence de doublon SHA-256 dans les 166 originaux"
+    ]
+  },
+  "art_status": "draft",
+  "human_art_validation": false,
+  "fidelite_exacte_1_a_1_verifiee": false,
+  "animation_incluse": false,
+  "installedInProject": false,
+  "engine_integration": "Source présente dans la PR ; aucune inscription dans un atlas runtime, animation, collision ou point d’attache testé.",
+  "echelle_physique_canonique": null,
+  "runtime_pivot": null
+}
