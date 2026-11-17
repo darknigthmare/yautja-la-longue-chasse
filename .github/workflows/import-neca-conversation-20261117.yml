@@ -1,0 +1,169 @@
+name: Import NECA conversation PNGs once
+on:
+  push:
+    branches: [codex/project-archive-recovery-20261117]
+    paths: [.github/workflows/import-neca-conversation-20261117.yml]
+permissions:
+  contents: write
+concurrency:
+  group: neca-conversation-import-20261117
+  cancel-in-progress: false
+jobs:
+  import:
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/project-archive-recovery-20261117'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Preserve original PNG bytes and publish in small non-forced commits
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import base64, hashlib, html, io, json, os, pathlib, subprocess, tempfile, time, urllib.request, zipfile
+          REPO = 'darknigthmare/yautja-la-longue-chasse'
+          BRANCH = 'codex/project-archive-recovery-20261117'
+          DEST = 'art-source/project-recovery-20261117/neca-combat-conversation'
+          CDN = 'https://d2ol7oe51mr4n9.cloudfront.net/user_3JHwJlNzgmcxQy32tjF7NiVZPuH/'
+          ARCHIVE = ('c719df42-9aba-440b-a7a4-493e31cce377.zip', 'ca89d4dc3830fd67e3111cbb75fa2a3d188b93445f8436cc05250990446ff922')
+          NEW = [
+            ('01_FILMS/city_hunter.png','f1bf88ab-2aca-46d1-a121-b329a17ed40d.png','28606755d0e0b1f5450fdb536feef0c190ce59f8fccf77f27eaa91d00e1da9bf'),
+            ('01_FILMS/berserker.png','99f6ea75-deb2-4eef-8ae4-fd6d1b146112.png','7b9c450403d8d62fcfdbcb20e8f8913e0e81732613d559b66fb20f80d9ce84e1'),
+            ('01_FILMS/falconer.png','40140446-2757-4c24-abf6-fbb35511cd02.png','2379f447d09d4cef93491055effbb1b715997864c28e7286e7a623e8c4d34d8e'),
+            ('01_FILMS/tracker.png','5a9bb18f-d1bf-4358-b6bc-5d5a1c114973.png','ae745170d2292193d6c174cc2d4be2467ea4e5233cc134c15aa388576fa2cd68'),
+            ('01_FILMS/feral.png','747c6331-523a-4e9d-8438-ac3eb91cd598.png','ec30d813dc8a48dc5f54837882ed4cfbad3f7c850133bd52e51aa37b5c7564d3'),
+            ('02_LOST_TRIBE/greyback.png','e78ade1f-08a7-4965-8d02-5dc02ed38d45.png','59377e23ae6c5c75f89864f54f9ee04c8170fe02c5fafd5763223ee0903fe56e'),
+            ('03_AVP/scar.png','8433bfff-13ed-4225-9b34-641a08dd4cd3.png','bb9b4b6c4bd70ffdd362f4435b94bd092c6372fabbd296e74b15afc623fdffb3'),
+            ('03_AVP/celtic.png','8ec2a50e-5ac4-468c-8a81-580b7cece482.png','5196ead7abf91d2f43c8f52e0485c9cfc3e1c4069335a11b818106e4d74765c6'),
+            ('03_AVP/chopper.png','6eb45065-a935-4d4b-b223-defc43f20110.png','0e43f7067b6d26b63e0661e2dcadd52baf8ba873eaa8bac921854291c30e7d1a'),
+            ('03_AVP/wolf.png','14d11c67-836b-4595-92a5-0906d2f10005.png','44ae1d59db3c1dc6e335e3c2689854568dd0546791528e47e275330a71ea1de3')
+          ]
+          def download(name, expected):
+              for attempt in range(3):
+                  try:
+                      with urllib.request.urlopen(CDN + name, timeout=120) as response:
+                          data = response.read()
+                      if hashlib.sha256(data).hexdigest() != expected:
+                          raise ValueError('SHA-256 mismatch: ' + name)
+                      return data
+                  except Exception:
+                      if attempt == 2:
+                          raise
+                      time.sleep(3)
+          payload = {}
+          records = []
+          def add(path, data, expected, category, title):
+              p = pathlib.PurePosixPath(path)
+              assert not p.is_absolute() and '..' not in p.parts and p.suffix == '.png'
+              assert data.startswith(b'\x89PNG\r\n\x1a\n')
+              assert hashlib.sha256(data).hexdigest() == expected
+              assert path not in payload
+              blob = hashlib.sha1(('blob ' + str(len(data)) + '\0').encode() + data).hexdigest()
+              payload[path] = data
+              records.append(dict(path=path, category=category, title=title, bytes=len(data), sha256=expected, git_blob_sha=blob))
+          # Prioritize the ten most recent images. Names express the requested identities, not validation.
+          for path, source, expected in NEW:
+              add('04_REGENERATIONS_NON_VALIDEES/' + path, download(source, expected), expected, 'regeneration_non_validee', path.rsplit('/',1)[1].removesuffix('.png'))
+          archive_data = download(*ARCHIVE)
+          with zipfile.ZipFile(io.BytesIO(archive_data)) as archive:
+              assert archive.testzip() is None
+              inventory = json.loads(archive.read('INVENTAIRE.json'))
+              assert len(inventory['files']) == 39
+              for item in inventory['files']:
+                  add(item['file'], archive.read(item['file']), item['sha256'], item['category'], item['title'])
+              historical_inventory = archive.read('INVENTAIRE.json')
+          assert len(records) == 49 and len({x['sha256'] for x in records}) == 49
+          assert sum(x['bytes'] for x in records) == 123292075
+          summary = dict(schema_version=1, import_date='2026-11-17', repository=REPO, pr=146, branch=BRANCH, png_count=49, total_png_bytes=123292075, categories={'premier_lot':9,'regeneration_non_validee':10,'hors_lot':29,'planche':1}, image_bytes_modified=False, artistic_fidelity_1_to_1_validated=False, files=records)
+          payload['INVENTAIRE.json'] = (json.dumps(summary, ensure_ascii=False, indent=2)+'\n').encode()
+          payload['SHA256SUMS.txt'] = ''.join(x['sha256']+'  '+x['path']+'\n' for x in records).encode()
+          payload['sources/INVENTAIRE_RECUPERATION_39.json'] = historical_inventory
+          readme = '''# Sprites NECA / The PIT — sauvegarde de la conversation
+
+          Import du 17 novembre 2026 dans la PR #146. 49 PNG distincts, 123 292 075 octets. Les images sont conservees sans conversion, recadrage ou regeneration pendant cet import.
+
+          | Dossier | Nombre | Statut |
+          | --- | ---: | --- |
+          | 01_PREMIER_LOT_RECUPERE | 9 | Originaux recuperes du premier lot; correspondance SHA-256 verifiee localement avec le releve historique. |
+          | 04_REGENERATIONS_NON_VALIDEES | 10 | Dernieres images generees dans la conversation; identites demandees, fidelite non validee. |
+          | 02_VARIANTES_NON_VALIDEES | 29 | Variantes refusees/non validees, sauvegardees separement; ne pas utiliser comme reproductions NECA. |
+          | 03_PLANCHE_NON_CONFORME | 1 | Ancienne planche de roster, archive historique, pas des sprites individuels. |
+
+          Les 52 originaux manquants du premier lot de 61 ne sont pas declares recuperes. Les dix regenerations ne sont pas ces originaux. Aucun personnage supplementaire n'a ete genere pendant cet import.
+
+          ## Usage
+          Ouvrir INDEX.html pour la galerie locale. INVENTAIRE.json contient tailles, SHA-256 et empreintes Git; SHA256SUMS.txt permet `sha256sum -c SHA256SUMS.txt` depuis ce dossier. Le sous-dossier sources conserve l'inventaire historique sans le reecrire.
+
+          ## Limites
+          Sauvegarde de sources uniquement: aucun remplacement de sprite dans le moteur, aucune activation automatique, aucune certification de fidelite artistique 1:1. Les noms des dix regenerations reprennent les personnages demandes dans la conversation, sans affirmer que le dessin les reproduit correctement.
+          '''
+          payload['README.md'] = readme.encode()
+          gallery = '<!doctype html><html lang="fr"><meta charset="utf-8"><title>NECA — Conversation</title><style>body{font:16px system-ui;background:#16191e;color:#eee;padding:24px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}figure{margin:0;padding:12px;background:#282d35;border-radius:8px}img{width:100%;height:350px;object-fit:contain}figcaption{overflow-wrap:anywhere}small{color:#bbb}</style><h1>49 PNG — sauvegarde de conversation</h1><p>Originaux recuperes et images non validees sont separes. Aucune fidelite 1:1 certifiee.</p><main>'
+          for record in records:
+              path = html.escape(record['path'], quote=True)
+              gallery += '<figure><a href="'+path+'"><img loading="lazy" src="'+path+'" alt="'+html.escape(record['title'],quote=True)+'"></a><figcaption>'+html.escape(record['title'])+'<br><small>'+html.escape(record['category'])+'</small></figcaption></figure>'
+          payload['INDEX.html'] = (gallery+'</main></html>\n').encode()
+          work = pathlib.Path(tempfile.mkdtemp(prefix='neca-pr146-'))
+          env = os.environ.copy()
+          env.update(GIT_AUTHOR_NAME='github-actions[bot]', GIT_AUTHOR_EMAIL='41898282+github-actions[bot]@users.noreply.github.com', GIT_COMMITTER_NAME='github-actions[bot]', GIT_COMMITTER_EMAIL='41898282+github-actions[bot]@users.noreply.github.com', GIT_TERMINAL_PROMPT='0')
+          def git(*args, data=None, check=True):
+              result = subprocess.run(['git',*args],cwd=work,env=env,input=data,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+              if check and result.returncode:
+                  raise RuntimeError('git '+args[0]+' failed: '+result.stderr.decode(errors='replace')[:3000])
+              return result
+          def text(*args):
+              return git(*args).stdout.decode().strip()
+          git('init','-q')
+          git('remote','add','origin','https://github.com/'+REPO+'.git')
+          auth = base64.b64encode(('x-access-token:'+os.environ['GH_TOKEN']).encode()).decode()
+          git('config','http.https://github.com/.extraheader','AUTHORIZATION: basic '+auth)
+          git('config','remote.origin.promisor','true')
+          git('config','remote.origin.partialclonefilter','blob:none')
+          blobs = {}
+          for path, data in payload.items():
+              blobs[path] = git('hash-object','-w','--stdin',data=data).stdout.decode().strip()
+          def snapshot():
+              git('fetch','--quiet','--depth=1','--filter=blob:none','--no-tags','origin',BRANCH)
+              parent = text('rev-parse','FETCH_HEAD')
+              entries = {}
+              for line in git('ls-tree','-r','-z',parent).stdout.split(b'\0'):
+                  if line:
+                      meta,path = line.split(b'\t',1)
+                      entries[path.decode()] = meta.decode().split()[2]
+              return parent,entries
+          paths = list(payload)
+          commits = []
+          for offset in range(0,len(paths),10):
+              batch = paths[offset:offset+10]
+              for attempt in range(6):
+                  parent,remote = snapshot()
+                  git('read-tree',parent)
+                  changed = []
+                  for path in batch:
+                      target = DEST+'/'+path
+                      previous = remote.get(target)
+                      if previous == blobs[path]:
+                          continue
+                      if previous is not None:
+                          raise RuntimeError('Refusing to overwrite different existing file: '+target)
+                      git('update-index','--add','--cacheinfo','100644',blobs[path],target)
+                      changed.append(path)
+                  if not changed:
+                      break
+                  tree = text('write-tree','--missing-ok')
+                  commit = text('commit-tree',tree,'-p',parent,'-m','assets(neca): preserve conversation sources batch '+str(offset//10+1)+' ('+str(len(changed))+' files)')
+                  pushed = git('push','--porcelain','origin',commit+':refs/heads/'+BRANCH,check=False)
+                  if pushed.returncode == 0:
+                      commits.append(commit)
+                      print('PUBLISHED',commit,len(changed),'files',flush=True)
+                      break
+                  if attempt == 5:
+                      raise RuntimeError('Non-forced push failed after retry: '+pushed.stderr.decode(errors='replace')[:3000])
+                  time.sleep(2)
+          head,remote = snapshot()
+          for path,blob in blobs.items():
+              assert remote.get(DEST+'/'+path) == blob, 'Remote mismatch: '+path
+          print(json.dumps(dict(status='verified',head=head,png_count=49,files=len(blobs),bytes=123292075,commits=commits),indent=2),flush=True)
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('## NECA conversation import verified\n\n49 PNG files, 123292075 bytes, no image-byte changes.\n\nFinal head: `'+head+'`\n\nOriginals, unvalidated regenerations and rejected variants remain separated.\n')
+          PY
