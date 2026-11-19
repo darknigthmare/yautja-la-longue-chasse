@@ -14,9 +14,9 @@
  * - Honour (proposed in the bible): a kill made by the hound counts as made by
  *   the player for the honour code, same event id, same rules.
  *
- * Pure module: no React, no browser globals, no save writes. Recruitment is not
- * produced in the campaign; `recruitHoundV147` is the entry point a future
- * recruitment flow must call.
+ * Pure module: no React, no browser globals, no save writes. Recruitment,
+ * selection for the next hunt and care happen at the Chenil des Pisteurs
+ * (`houndKennelV147.ts`); the hunt drives the field simulation below.
  */
 
 const isRecord = (v: unknown): v is Record<string, unknown> =>
@@ -96,6 +96,11 @@ export interface HoundV147 {
 export interface HuntingHoundsV147 {
   version: 1;
   hounds: HoundV147[];
+  /**
+   * Hound chosen at the kennel for the next hunt. Optional: absent when no
+   * hound was chosen, so states written before the kennel keep their shape.
+   */
+  activeHoundId?: string;
 }
 
 export const HOUNDS_MAX_V147 = 12;
@@ -139,6 +144,11 @@ export function normalizeHuntingHoundsV147(source: unknown): HuntingHoundsV147 {
     result.hounds.push(hound);
     if (result.hounds.length >= HOUNDS_MAX_V147) break;
   }
+  // The choice survives a wound (the kennel shows it as waiting for care) but
+  // never a death or an unknown identity.
+  if (typeof source.activeHoundId === "string" &&
+      result.hounds.some(entry => entry.id === source.activeHoundId && entry.condition !== "dead"))
+    result.activeHoundId = source.activeHoundId;
   return result;
 }
 
@@ -155,8 +165,12 @@ export type HoundChangeV147 =
   | { readonly ok: true; readonly state: HuntingHoundsV147 }
   | { readonly ok: false; readonly reason: HoundRefusalV147 };
 
-const replaceHound = (state: HuntingHoundsV147, hound: HoundV147): HuntingHoundsV147 =>
-  ({ ...state, hounds: state.hounds.map(entry => entry.id === hound.id ? hound : entry) });
+const replaceHound = (state: HuntingHoundsV147, hound: HoundV147): HuntingHoundsV147 => {
+  const next: HuntingHoundsV147 = { ...state, hounds: state.hounds.map(entry => entry.id === hound.id ? hound : entry) };
+  // A dead hound cannot stay chosen for the next hunt.
+  if (hound.condition === "dead" && next.activeHoundId === hound.id) delete next.activeHoundId;
+  return next;
+};
 
 /** Entry point for a future recruitment flow; a fallen identity stays fallen. */
 export function recruitHoundV147(
@@ -177,6 +191,29 @@ export function canHoundJoinHuntV147(state: HuntingHoundsV147, houndId: string):
   if (hound.condition === "dead") return "dead";
   if (hound.condition === "wounded") return "wounded";
   return null;
+}
+
+/**
+ * Chooses the hound that joins the next hunt, or none (`null`). Only a hound
+ * able to join (known, alive, not wounded) can be chosen.
+ */
+export function selectHoundForHuntV147(state: HuntingHoundsV147, houndId: string | null): HoundChangeV147 {
+  if (houndId === null) {
+    if (state.activeHoundId === undefined) return { ok: true, state };
+    const { activeHoundId: _dropped, ...rest } = state;
+    void _dropped;
+    return { ok: true, state: rest };
+  }
+  const refusal = canHoundJoinHuntV147(state, houndId);
+  if (refusal) return { ok: false, reason: refusal };
+  return state.activeHoundId === houndId ? { ok: true, state } : { ok: true, state: { ...state, activeHoundId: houndId } };
+}
+
+/** The chosen hound, only while it can really join a hunt (ready). */
+export function activeHoundV147(state: HuntingHoundsV147 | null | undefined): HoundV147 | null {
+  if (!state || !state.activeHoundId) return null;
+  const hound = state.hounds.find(entry => entry.id === state.activeHoundId);
+  return hound && hound.condition === "ready" ? hound : null;
 }
 
 /**
@@ -320,7 +357,7 @@ export function killHonorV147(input: {
 }
 
 // ---------------------------------------------------------------------------
-// In-hunt controller (ready for a hound rendered in the hunt; none is yet)
+// In-hunt controller (driven by HuntCanvas for the hound that joined the hunt)
 // ---------------------------------------------------------------------------
 
 export interface FieldPreyV147 {
@@ -473,4 +510,101 @@ export function stepHoundFieldV147(
 /** End-of-hunt report from the field state (for MissionResult.houndV147). */
 export function houndHuntReportFromFieldV147(field: HoundFieldV147): HoundHuntReportV147 {
   return { houndId: field.houndId, ordersCompleted: field.ordersCompleted, wounded: field.wounded, died: field.dead };
+}
+
+// ---------------------------------------------------------------------------
+// Hunt wiring helpers (input, target, checkpoint)
+// ---------------------------------------------------------------------------
+
+/** Orders that can be given by cycling, in bible order. */
+const CYCLE_ORDERS_V147: readonly HoundOrderIdV147[] = ["recall", "track", "drive", "attack"];
+
+/**
+ * Next usable order after `current` for the "next order" key. Attack is
+ * skipped without a designated prey, so the cycle never stalls on it.
+ */
+export function nextHoundOrderV147(current: HoundOrderIdV147, bond: number, hasTarget: boolean): HoundOrderIdV147 {
+  const usable = CYCLE_ORDERS_V147.filter(order => isOrderUnlockedV147(order, bond) && (order !== "attack" || hasTarget));
+  if (usable.length === 0) return "recall";
+  const index = usable.indexOf(current);
+  return usable[(index + 1) % usable.length];
+}
+
+export const HOUND_STICK_THRESHOLD_V147 = 0.6;
+
+/**
+ * Right stick of the gamepad: up Pister, right Rabattre, left Attaquer, down
+ * Revenir. Returns null inside the dead zone. The caller edge-detects.
+ */
+export function houndStickOrderV147(axisX: unknown, axisY: unknown): HoundOrderIdV147 | null {
+  const x = typeof axisX === "number" && Number.isFinite(axisX) ? axisX : 0;
+  const y = typeof axisY === "number" && Number.isFinite(axisY) ? axisY : 0;
+  if (Math.max(Math.abs(x), Math.abs(y)) < HOUND_STICK_THRESHOLD_V147) return null;
+  if (Math.abs(y) >= Math.abs(x)) return y < 0 ? "track" : "recall";
+  return x > 0 ? "drive" : "attack";
+}
+
+export const HOUND_TARGET_RANGE_V147 = 720;
+
+/**
+ * Prey designated for Attaquer: the closest live prey to `aim` when the hunter
+ * aims, otherwise the closest one in front of the hunter, otherwise the
+ * closest one, always within range of the hunter.
+ */
+export function pickHoundTargetV147(
+  hunter: { x: number; y: number; facing: number; aim?: { x: number; y: number } | null },
+  prey: readonly FieldPreyV147[], range = HOUND_TARGET_RANGE_V147,
+): FieldPreyV147 | null {
+  const near = prey.filter(entry => entry.alive && Math.hypot(entry.x - hunter.x, entry.y - hunter.y) <= range);
+  if (near.length === 0) return null;
+  const closestTo = (list: readonly FieldPreyV147[], x: number, y: number) =>
+    [...list].sort((a, b) => Math.hypot(a.x - x, a.y - y) - Math.hypot(b.x - x, b.y - y))[0];
+  if (hunter.aim) return closestTo(near, hunter.aim.x, hunter.aim.y);
+  const ahead = near.filter(entry => (entry.x - hunter.x) * (hunter.facing < 0 ? -1 : 1) >= 0);
+  return closestTo(ahead.length ? ahead : near, hunter.x, hunter.y);
+}
+
+export const HOUND_FIELD_SNAPSHOT_VERSION_V147 = 1 as const;
+
+export interface HoundFieldSnapshotV147 extends HoundFieldV147 {
+  version: typeof HOUND_FIELD_SNAPSHOT_VERSION_V147;
+}
+
+/** JSON form stored in a hunt checkpoint (optional field). */
+export function snapshotHoundFieldV147(field: HoundFieldV147): HoundFieldSnapshotV147 {
+  return { version: HOUND_FIELD_SNAPSHOT_VERSION_V147, ...field, markedIds: [...field.markedIds] };
+}
+
+/** A checkpoint written by a newer hound format is refused, never reduced. */
+export function isFutureHoundFieldV147(raw: unknown): boolean {
+  return isRecord(raw) && Number(raw.version) > HOUND_FIELD_SNAPSHOT_VERSION_V147;
+}
+
+/**
+ * Strict reader for a checkpointed hound. Returns null for anything that is
+ * not a coherent version-1 field (including a future version).
+ */
+export function restoreHoundFieldV147(raw: unknown): HoundFieldV147 | null {
+  if (!isRecord(raw) || raw.version !== HOUND_FIELD_SNAPSHOT_VERSION_V147) return null;
+  const finite = (v: unknown): v is number => typeof v === "number" && Number.isFinite(v);
+  if (typeof raw.houndId !== "string" || !ID_PATTERN.test(raw.houndId)) return null;
+  if (![raw.x, raw.y, raw.health, raw.maxHealth, raw.biteCooldown, raw.ordersCompleted].every(finite)) return null;
+  const maxHealth = raw.maxHealth as number, health = raw.health as number;
+  if (maxHealth <= 0 || maxHealth > 10_000 || health < 0 || health > maxHealth) return null;
+  if (typeof raw.order !== "string" || !(HOUND_ORDER_IDS_V147 as readonly string[]).includes(raw.order) || raw.order === "signature") return null;
+  if (raw.targetId !== null && (typeof raw.targetId !== "string" || raw.targetId.length > 160)) return null;
+  if (!Array.isArray(raw.markedIds) || raw.markedIds.length > 512 ||
+      raw.markedIds.some(id => typeof id !== "string" || id.length > 160)) return null;
+  if (typeof raw.orderDone !== "boolean" || typeof raw.wounded !== "boolean" || typeof raw.dead !== "boolean") return null;
+  const orders = raw.ordersCompleted as number;
+  if (!Number.isInteger(orders) || orders < 0 || orders > 9_999) return null;
+  const dead = raw.dead as boolean;
+  if (dead !== (health <= 0)) return null;
+  return {
+    houndId: raw.houndId, x: raw.x as number, y: raw.y as number, health, maxHealth,
+    order: raw.order as HoundOrderIdV147, targetId: raw.targetId as string | null,
+    biteCooldown: Math.max(0, Math.min(HOUND_FIELD_V147.biteInterval, raw.biteCooldown as number)),
+    orderDone: raw.orderDone, ordersCompleted: orders, markedIds: [...raw.markedIds as string[]],
+    wounded: raw.wounded as boolean, dead,
+  };
 }
