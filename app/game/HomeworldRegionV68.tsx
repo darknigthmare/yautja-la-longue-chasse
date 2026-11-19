@@ -45,6 +45,8 @@ export interface HomeworldRegionV68Props {
   onOpenSettings?(): void;
   /** V149: residence panel for a Demeure the player stands in (null when it holds no house). */
   residenceV149?(buildingId: string, disabled: boolean): ReactNode;
+  /** V150: guests of the player's house at this tick (village walk or seated inside). */
+  guestsV150?(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }): readonly { residentId: string; x: number; y: number; inside: boolean; moving: boolean; label: string }[];
 }
 const axes = [['left', '←'], ['up', '↑'], ['down', '↓'], ['right', '→']] as const;
 type Move = typeof axes[number][0];
@@ -242,6 +244,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const interiorShell = state.zone === 'interior' ? homeworldInteriorShellV64({ buildingId: `v68-${regionId}-${state.buildingId}`, width: 710, depth: 650 }) : null;
   const bridge = HOMEWORLD_PASSAGE_BRIDGE_V67, bridgeScale = bridge.width / (bridge.deck.right - bridge.deck.left);
   const pointer = (move: Move, pressed: boolean, e: PointerEvent<HTMLButtonElement>) => { e.preventDefault(); if (pressed && !modal && !suspended) { e.currentTarget.setPointerCapture(e.pointerId); touch.current.add(move); } else touch.current.delete(move); };
+  const guests = props.guestsV150?.({ regionId, runId: state.runId, tick: state.tick, zone: state.zone, buildingId: state.buildingId }) ?? [];
   const drawActor = (id: string, x: number, y: number, morph: typeof save.appearance.bodyMorphId, dread: typeof save.appearance.dreadStyleId, moving = false, resident?: typeof definition.residents[number]) => {
     if (state.zone === 'village' && villagePaintOccludedV70(definition.buildings, { x, y }, state.actor, { actorHeight: youthWelcome ? 82 : 100 })) return null;
     const p = project({ x, y }), placement = homeworldModularPlacementV64(morph, 'reference', morph === 'young' ? 82 : 100);
@@ -274,7 +277,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'village' && <>
           {definition.buildings.map(b => { const placement = homeworldBuildingSpritePlacementV64(b); return <span key={b.id} data-region-building={b.id} className={styles.building} style={{ ...placement, zIndex: Math.round(b.y), opacity: villageFacadeFadedV70(b, state.actor, youthWelcome ? 82 : 100) ? .42 : 1 }}><img alt="" draggable={false} src={b.art.src} /><span>{b.label}</span></span>; })}
           {definition.props.filter(p => !villagePaintOccludedV70(definition.buildings, p, state.actor, { actorHeight: youthWelcome ? 82 : 100 })).map(p => { const ground = project(p); return <HomeworldNativePropV64 key={p.id} id={`${regionId}-${p.id}`} artId={p.artId} art={HOMEWORLD_PROP_ART_V64[p.artId]} x={ground.x} y={ground.y} depth={p.y} />; })}
-          {definition.residents.map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1, n); })}
+          {definition.residents.filter(n => !guests.some(g => g.residentId === n.id)).map(n => { const p = regionResidentPositionV68(n, state.tick); return drawActor(n.id, p.x, p.y, n.morphId, n.dreadStyleId, n.route.length > 1, n); })}
+          {guests.filter(g => !g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId}>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, g.moving, n)}</span> : null; })}
           {props.onBibleSceneAction&&<HomeworldBibleCultureHostV86 regionId={regionId} tick={state.tick} />}
           <HomeworldVillageLifeV69 regionId={regionId} tick={state.tick} actor={state.actor} actorHeight={youthWelcome ? 82 : 100} activityProgress={activitySession.progress} rect={{ left: camera.x / zoom, top: camera.y / zoom, right: (camera.x + size.width) / zoom, bottom: (camera.y + size.height) / zoom }} />
           {HOMEWORLD_REGION_TRACES_V68.map((p, n) => { const v = project(p); return <span key={p.id} className={`${styles.trace} ${state.traces.includes(p.id) ? styles.collected : ''}`} data-region-trace={p.id} style={{ left: v.x, top: v.y }}><i /><b>{p.label}</b><small>{definition.traceNotes[n]}</small></span>; })}
@@ -287,6 +291,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         {state.zone === 'interior' && <>
           {interiorShell?.groups.map(group => <span key={group.side} className={styles.interiorPanels} data-region-interior-panels={group.side} style={{ ...group.clip, left: group.clip.left + 25, top: group.clip.top + 35 * d }}>{group.panels.map(panel => <HomeworldNativePropV64 key={panel.id} id={panel.id} artId={panel.artId} art={panel.art} x={panel.localPaintPivot.x} y={panel.localPaintPivot.y} depth={group.side === 'north' ? 0 : panel.groundPivot.y} />)}</span>)}
           {homeworldRegionInteriorPropsV68(state.buildingId).map(prop => { const p = project(prop); return <HomeworldNativePropV64 key={prop.id} id={prop.id} artId={prop.artId} art={HOMEWORLD_PROP_ART_V64[prop.artId]} x={p.x} y={p.y} depth={prop.y} />; })}
+          {guests.filter(g => g.inside).map(g => { const n = definition.residents.find(r => r.id === g.residentId); return n ? <span key={`guest-${g.residentId}`} data-residence-guest-v150={g.residentId} data-guest-inside>{drawActor(`guest-${n.id}`, g.x, g.y, n.morphId, n.dreadStyleId, false, n)}</span> : null; })}
           <span className={styles.waypoint} style={{ left: 380, top: 620 * d }}><b>Sortie</b></span>
         </>}
         <span className={styles.actor} data-region-player data-youth-appearance={youthWelcome} data-x={state.actor.x} data-y={state.actor.y} style={{ left: position.x, top: position.y, zIndex: Math.round(state.actor.y) }}><i className={styles.shadow} />{(youthWelcome || hero.exactPreset) && playerPlacement ? <img src={hero.src} alt="" draggable={false} style={{ ...playerPlacement, position: 'absolute', transform: `scaleX(${state.actor.facing})` }} /> : <HomeworldModularHunter morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={appearance} motionPhase={state.tick / 60} speed={Math.hypot(state.actor.vx, state.actor.vy)} style={{ ...(playerPlacement ?? { width: 100, height: 100, top: -100 }), position: 'absolute', transform: `scaleX(${state.actor.facing})` }} />}</span>
