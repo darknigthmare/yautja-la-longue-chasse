@@ -716,6 +716,8 @@ export interface SaveGame {
   residenceLifeV150?: import("./systems/residenceLifeV150").ResidenceLifeV150 | null;
   /** V151 / STATE5-01: player origin O1..O6, set at character creation, plus origin transitions and relations. */
   originV151?: import("./systems/originsV151").OriginStateV151 | null;
+  /** V154: residence scenes S1–S3 played (gestures, decision, material use inscribed). Absent until first used. */
+  residenceScenesV154?: import("./systems/residenceScenesV154").ResidenceScenesV154 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

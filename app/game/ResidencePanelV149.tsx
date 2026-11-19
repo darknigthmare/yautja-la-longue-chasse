@@ -6,7 +6,7 @@
  */
 import { useState } from "react";
 import {
-  RESIDENCE_HOUSES_V149, RESIDENCE_SLOTS_V149, RESIDENCE_SLOT_IDS_V149, availableScenesV149, houseMissionActionsV149,
+  RESIDENCE_HOUSES_V149, RESIDENCE_SLOTS_V149, RESIDENCE_SLOT_IDS_V149, houseMissionActionsV149,
   houseV149, normalizeResidenceV149, emptyResidenceV149, objectsInHouseV149, packedObjectsV149, residenceAccessV149,
   roomsForHouseV149, isFutureResidenceV149,
   type ResidenceActionV149, type ResidenceHouseV149, type ResidenceProofActionV149,
@@ -47,7 +47,6 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
   const here = objectsInHouseV149(state, house.id);
   const packed = packedObjectsV149(state);
   const destinations = state.rights.filter(id => id !== house.id).map(id => houseV149(id)!).filter(Boolean);
-  const scenes = availableScenesV149(state, house.id, context);
 
   return (
     <section className={styles.panel} data-residence-v149={house.id} data-residence-active={access.active || undefined}>
@@ -128,11 +127,6 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
           {transfer?.stage === "in-transit" && <p>Charge en route vers {houseV149(transfer.toHouseId)?.title} : confirme l’arrivée à son seuil. Cette maison reste active jusque-là.</p>}
         </div>
 
-        {scenes.length > 0 && <div className={styles.block}>
-          <h4>Scènes de la maison</h4>
-          {scenes.map(scene => <details key={scene.id}><summary>{scene.title}</summary><p>{scene.sequence}</p><p className={styles.note}>Choix : {scene.choices}</p></details>)}
-          <p className={styles.note}>Texte de la bible ; ces scènes ne sont pas encore jouées.</p>
-        </div>}
       </>}
       {message && <p role="status" className={styles.message}>{message}</p>}
     </section>

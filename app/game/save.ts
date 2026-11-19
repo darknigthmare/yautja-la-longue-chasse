@@ -1,6 +1,7 @@
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
 import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
+import { isFutureResidenceScenesV154, normalizeResidenceScenesV154 } from "./systems/residenceScenesV154";
 import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
@@ -1274,6 +1275,7 @@ export function normalizeSave(value: unknown): SaveGame {
     // V149: written only once the player has a residence state; old saves keep their shape.
     ...(source.residenceV149 === undefined ? {} : { residenceV149: normalizeResidenceV149(source.residenceV149) }),
     ...(source.residenceLifeV150 === undefined ? {} : { residenceLifeV150: normalizeResidenceLifeV150(source.residenceLifeV150) }),
+    ...(source.residenceScenesV154 === undefined ? {} : { residenceScenesV154: normalizeResidenceScenesV154(source.residenceScenesV154) }),
     // STATE5-01: never rewritten; an absent origin is read as the documented default and not written until used.
     ...(source.originV151 === undefined ? {} : { originV151: normalizeOriginV151(source.originV151) }),
     ...(source.clanShipDocking === undefined ? {} : {
@@ -1620,6 +1622,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.residenceLifeV150 !== undefined && value.residenceLifeV150 !== null) {
     if (isFutureResidenceLifeV150(value.residenceLifeV150)) return { save: null, failure: "future-version" };
     if (!normalizeResidenceLifeV150(value.residenceLifeV150)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.residenceScenesV154 !== undefined && value.residenceScenesV154 !== null) {
+    if (isFutureResidenceScenesV154(value.residenceScenesV154)) return { save: null, failure: "future-version" };
+    if (!normalizeResidenceScenesV154(value.residenceScenesV154)) return { save: null, failure: "invalid-save" };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;
