@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V152: legs scellé (partie qui transmet) et héritage reçu (nouvelle partie). Absent tant qu'il n'est pas utilisé. */
+  heritageV152?: import("./systems/heritageV152").HeritageStateV152 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

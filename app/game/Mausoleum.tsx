@@ -1,6 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- unchanged public game bitmaps */
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type KeyboardEvent, type ReactNode } from "react";
 import type { SaveGame } from "./types";
 import { controlKeyCodeFromInput, matchesControlAction } from "./systems/controlBindings";
 import { controlActionShortcut } from "./controlBindingLabels";
@@ -12,8 +12,10 @@ import { createHeldDirectionV94 } from "./systems/heldDirectionV94";
 import { createPhaseClockV94 } from "./systems/phaseClockV94";
 import { pageActivitySnapshotV94, serverPageActivityV94, subscribePageActivityV94 } from "./systems/pageActivityV94";
 
-export default function Mausoleum({ save, suspended = false, source = "homeworld", onProgress, onExit, onSound }: {
+export default function Mausoleum({ save, suspended = false, source = "homeworld", onProgress, onExit, onSound, heritage }: {
   save: SaveGame | null; suspended?: boolean; source?: "homeworld" | "menu";
+  /** V152: niche des lignées et legs, fournie par la session de campagne. */
+  heritage?: ReactNode;
   onProgress?(progress: MausoleumProgress): boolean; onExit(): void;
   onSound?(id: "select" | "mask-on" | "mask-off" | "scan"): void;
 }) {
@@ -148,6 +150,7 @@ export default function Mausoleum({ save, suspended = false, source = "homeworld
       <div className={styles.prompt}>{nearest ? <button type="button" onClick={examine}>{save ? controlActionShortcut("hunt.interact", save.settings.controlBindings) : "Entrée"} · Examiner {nearest.title}</button> : <p>Approche un piédestal · {save ? `${controlActionShortcut("hunt.moveLeft", save.settings.controlBindings)} / ${controlActionShortcut("hunt.moveRight", save.settings.controlBindings)}` : "flèches"} ou toucher</p>}</div>
     </div>
     <footer className={styles.footer} inert={!!selected || paused}><div><button type="button" disabled={page === 0} onClick={() => { setPage(value => value - 1); resetPosition(90); }}>← Alcôves</button><span>{galleryLabel} · {page + 1}/{Math.max(1, Math.ceil(entries.length / 3))}</span><button type="button" disabled={(page + 1) * 3 >= entries.length} onClick={() => { setPage(value => value + 1); resetPosition(90); }}>Alcôves →</button></div><p>{access.preview ? "Visite du catalogue sans charger ni modifier une partie. Le rituel d’étude nécessite un chasseur Young Blood." : "Les études du dossier sont sauvegardées ; elles ne terminent jamais un DLC."}</p><small>Architecture et dispositif d’archives : interprétation originale du projet. Les reproductions visibles ne sont pas certifiées 1:1.</small></footer>
+    {heritage && <div inert={!!selected || paused}>{heritage}</div>}
     {selected && <div className={styles.backdrop} inert={paused}><div className={styles.dossier} role="dialog" aria-modal="true" aria-labelledby="mausoleum-dossier-title" ref={dialog} tabIndex={-1} onKeyDown={onDialogKey}>
       <p className={styles.eyebrow}>{phase ? MAUSOLEUM_PHASE_LABELS[phase] : "EXAMINER LA CHASSE"}</p><h2 id="mausoleum-dossier-title">{selected.title}</h2>
       <div className={styles.inspect} data-ritual-pose={phase ?? "inspect"}>{displayedMask?.src ? <img src={displayedMask.src} alt={`${displayedMask.name} · reproduction d’étude`} draggable={false} style={{ animationPlayState: paused ? "paused" : "running" }} /> : <p>{displayedMask?.note}</p>}</div>
