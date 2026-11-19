@@ -8,10 +8,12 @@ import {createMobilityLedger,mobilityServiceQuote,type MobilityOrder} from './sy
 import {mobilityUpgradePreview,MOBILITY_STAT_LABELS} from './systems/mobility/workshop';
 import type {MobilityWriter} from './systems/mobility/controller';
 import MobilityDrivingYard from './MobilityDrivingYard';
+import MobilityMountsV153 from './MobilityMountsV153';
+import type {MountWriterV153} from './systems/mobility/mountsV153';
 import styles from './MobilityGarage.module.css';
-export interface MobilityGarageProps {save:SaveGame;suspended?:boolean;onCommand:MobilityWriter;onClose:()=>void;onSound?:(id:GameSfxId)=>void}
+export interface MobilityGarageProps {save:SaveGame;suspended?:boolean;onCommand:MobilityWriter;onMountCommand?:MountWriterV153;onClose:()=>void;onSound?:(id:GameSfxId)=>void}
 const modeLabels:Record<string,string>={purchase:'Commande aux Forges',quest:'Quête / recrutement',craft:'Fabrication',faction:'Réservé à une faction','training-loan':'Formation / remise du clan','clan-service':'Service du clan',insertion:'Insertion',narrative:'Narration','non-pilotable':'Non pilotable'};
-export default function MobilityGarage({save,suspended=false,onCommand,onClose,onSound}:MobilityGarageProps){
+export default function MobilityGarage({save,suspended=false,onCommand,onMountCommand,onClose,onSound}:MobilityGarageProps){
  const [selected,setSelected]=useState('clan_hoverbike'),[filter,setFilter]=useState('all'),[message,setMessage]=useState('');
  const ledger=useMemo(()=>save.mobilityV1??createMobilityLedger(save.createdAt),[save.mobilityV1,save.createdAt]);
  const model=MOBILITY_CATALOGUE.find(d=>d.id===selected)!;
@@ -19,7 +21,7 @@ export default function MobilityGarage({save,suspended=false,onCommand,onClose,o
  const stats=owned?mobilityStats(model.id,owned.upgrades,owned.condition):mobilityStats(model.id);
  const allowed=!suspended&&!ledger.active;
  const order=(action:MobilityOrder)=>{if(!allowed)return;const r=onCommand({...action,ownerCreatedAt:save.createdAt,expectedRevision:ledger.revision});setMessage(r.message);if(r.accepted)onSound?.('select');return r;};
- const entries=MOBILITY_CATALOGUE.filter(d=>filter==='all'||filter==='owned'&&ledger.owned.some(v=>v.id===d.id)||filter==='sale'&&d.shopEnabled||filter===d.kind);
+ const entries=MOBILITY_CATALOGUE.filter(d=>filter==='all'||filter==='owned'&&(ledger.owned.some(v=>v.id===d.id)||!!save.mountsV153?.mounts.some(v=>v.id===d.id))||filter==='sale'&&d.shopEnabled||filter===d.kind);
  const paidAllowed=allowed&&ledger.recoveryDebt===0;
  const reward=ledger.trainingReward;
  const claimAllowed=paidAllowed&&reward?.status==='available'&&mobilityRankIndex(save.profile.rankId)>=mobilityRankIndex('blooded');
@@ -35,10 +37,10 @@ export default function MobilityGarage({save,suspended=false,onCommand,onClose,o
    </section>
    <div className={styles.layout}>
     <aside className={styles.catalogue}><label htmlFor="mobility-filter">Registre du clan</label><select id="mobility-filter" value={filter} onChange={e=>setFilter(e.target.value)} disabled={suspended}><option value="all">Tous les modèles · 50</option><option value="sale">Commandable maintenant</option><option value="owned">Mon garage</option><option value="machine">Machines</option><option value="mount">Montures</option></select>
-     <div role="list" className={styles.items}>{entries.map(d=><div role="listitem" key={d.id}><button type="button" data-mobility-model={d.id} aria-pressed={selected===d.id} onClick={()=>setSelected(d.id)} disabled={suspended} className={selected===d.id?styles.selected:''}><small>{String(d.index).padStart(2,'0')} · {d.kind==='mount'?'MONTURE':'MACHINE'}</small><strong>{d.name}</strong><span>{ledger.owned.some(v=>v.id===d.id)?'Au garage':modeLabels[d.acquisitionMode]}</span></button></div>)}</div>{entries.length===0&&<p>Aucun modèle dans cette sélection.</p>}
+     <div role="list" className={styles.items}>{entries.map(d=><div role="listitem" key={d.id}><button type="button" data-mobility-model={d.id} aria-pressed={selected===d.id} onClick={()=>setSelected(d.id)} disabled={suspended} className={selected===d.id?styles.selected:''}><small>{String(d.index).padStart(2,'0')} · {d.kind==='mount'?'MONTURE':'MACHINE'}</small><strong>{d.name}</strong><span>{ledger.owned.some(v=>v.id===d.id)?'Au garage':save.mountsV153?.mounts.some(v=>v.id===d.id)?'Monture recrutée':modeLabels[d.acquisitionMode]}</span></button></div>)}</div>{entries.length===0&&<p>Aucun modèle dans cette sélection.</p>}
     </aside>
     <article className={styles.detail} aria-label={model.name}>
-     <div className={styles.heading}><div><small>{model.family} · palier {model.tier}</small><h3>{model.name}</h3></div><span className={styles.tag}>{owned?'POSSESSION CONFIRMÉE':modeLabels[model.acquisitionMode]}</span></div>
+     <div className={styles.heading}><div><small>{model.family} · palier {model.tier}</small><h3>{model.name}</h3></div><span className={styles.tag}>{owned||save.mountsV153?.mounts.some(v=>v.id===model.id)?'POSSESSION CONFIRMÉE':modeLabels[model.acquisitionMode]}</span></div>
      <div className={styles.preview}>{model.previewPath?<img src={model.previewPath} width="1536" height="1024" alt={`${model.name} — source statique en cours de revue`}/>:<div><strong>Référence de la bible</strong><p>{model.silhouette}</p></div>}<span>Source de revue · fidélité artistique non certifiée</span></div>
      <p>{model.role}</p>
      <dl className={styles.metrics}><div><dt>Vitesse de piste</dt><dd>{stats.speed.toFixed(1)} u/s</dd></div><div><dt>Accélération</dt><dd>{stats.acceleration.toFixed(1)} u/s²</dd></div><div><dt>Charge utile</dt><dd>{stats.capacity.toFixed(0)} kg</dd></div><div><dt>Résistance aux chocs</dt><dd>{(stats.collisionResistance*100).toFixed(0)} %</dd></div></dl>
@@ -47,6 +49,7 @@ export default function MobilityGarage({save,suspended=false,onCommand,onClose,o
      {owned&&<section data-mobility-maintenance><h4>Garage · état persistant</h4><p>État {owned.condition.toFixed(1)} % · réserve {owned.energy.toFixed(1)} % · trajet {owned.distance.toFixed(0)} unités de piste</p><div className={styles.actions}>{(['repair','recharge','care']as const).map(type=>{const cost=mobilityServiceQuote(ledger,model.id,type);if((type==='care')!==(model.kind==='mount'))return null;return <button key={type} disabled={!paidAllowed||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type,modelId:model.id,expectedCost:cost!})}>{type==='repair'?'Réparer':type==='recharge'?'Recharger':'Soigner / reposer'}{cost!==null?` · ${cost} marques`:' · inutile'}</button>;})}<button disabled={!paidAllowed||!model.trialEnabled||owned.condition<25||owned.energy<10} onClick={()=>order({type:'start',modelId:model.id,loaned:false})}>Sortir sur l’aire</button></div>
       {model.kind==='machine'&&<div className={styles.modules}>{MOBILITY_MODULES.map(mod=>{const preview=mobilityUpgradePreview(ledger,model.id,mod.id);const cost=mobilityServiceQuote(ledger,model.id,'upgrade',mod.id);return <article key={mod.id}><strong>{mod.name} · {owned.upgrades[mod.id]}/3</strong><p>{mod.description}</p>{preview&&<div data-upgrade-preview={mod.id}><p className={styles.hint}>Avant → après · état {preview.condition.toFixed(1)} %, sans cargaison</p><dl className={styles.comparison}>{MOBILITY_STAT_LABELS.map(stat=>{const scale='scale' in stat?stat.scale:1;const before=preview.current[stat.key]*scale,after=preview.next[stat.key]*scale;return <div key={stat.key}><dt>{stat.label}</dt><dd>{before.toFixed(stat.decimals)} → <strong>{after.toFixed(stat.decimals)}</strong> {stat.unit}</dd></div>;})}</dl></div>}<button disabled={!paidAllowed||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type:'upgrade',modelId:model.id,module:mod.id,expectedCost:cost!})}>{cost===null?'Niveau maximal':`Installer · ${cost} marques`}</button></article>;})}</div>}
      </section>}
+     {model.kind==='mount'&&<MobilityMountsV153 save={save} mountId={model.id} allowed={allowed} onCommand={onMountCommand} onMessage={setMessage}/>}
      <details><summary>Doctrine, limites et biomes</summary><p>{model.source_class}</p><p>Biomes : {model.biomes.join(', ')}.</p><p>Contraintes : {model.weaknesses.join(' · ')}.</p><p>Capacités de conception : {model.abilities.join(' · ')}.</p><p>Gabarit proposé : {model.dimensions} · équipage : {model.crew}.</p><p>Chasses montées, transfert orbital, variantes d’état, animations et sons dédiés restent suivis séparément ; aucune propriété de compagnon n’est créée par ce catalogue.</p></details>
     </article>
    </div>
