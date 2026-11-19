@@ -300,8 +300,8 @@ import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilte
 import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
 import {
   HOUND_ORDERS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, issueHoundOrderV147,
-  nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147, stepHoundFieldV147,
-  type FieldPreyV147, type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
+  houndStickOrderV147, nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147,
+  stepHoundFieldV147, type FieldPreyV147, type HoundOrderIdV147, type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
 } from "./systems/huntingHoundsV147";
 import type {
   DifficultyId,
@@ -766,6 +766,9 @@ interface InputHub {
   gamepadHeld: Set<Action>;
   pressed: Set<Action>;
   previousGamepadButtons: boolean[];
+  /** V147: right-stick hound order (edge) and the direction currently held. */
+  houndStickOrderV147?: HoundOrderIdV147 | null;
+  houndStickHeldV147?: HoundOrderIdV147 | null;
   activeGamepadIndex: number | null;
   gamepadNeedsNeutral: boolean;
   gamepadDialogActions: HuntDialogGamepadAction[];
@@ -10592,6 +10595,9 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   setDirection("right", right);
   setDirection("up", up);
   setDirection("down", down);
+  const houndStick = houndStickOrderV147(gamepad.axes[2], gamepad.axes[3]);
+  if (houndStick && houndStick !== input.houndStickHeldV147) input.houndStickOrderV147 = houndStick;
+  input.houndStickHeldV147 = houndStick;
   if (aiming) input.gamepadHeld.add("aim");
   if (current[buttons.jump]) input.gamepadHeld.add("jump");
 
@@ -10749,15 +10755,20 @@ function houndPreyV147(state: GameState, tracking: boolean): FieldPreyV147[] {
 const houndOrderLabelV147 = (order: HoundFieldV147["order"]) =>
   HOUND_ORDERS_V147.find(entry => entry.id === order)?.label ?? order;
 
-function updateHoundV147(state: GameState, mission: MissionDefinition, input: InputHub, delta: number): void {
+function updateHoundV147(
+  state: GameState, mission: MissionDefinition, input: InputHub, delta: number,
+  /** Order chosen directly with the right stick, if any. */
+  directOrder: HoundOrderIdV147 | null = null,
+): void {
   let field = state.houndFieldV147;
   const hound = state.houndV147;
   if (!field || !hound) { input.pressed.delete("houndOrder"); return; }
   const player = { x: state.player.x + state.player.width / 2, y: state.world.floorY };
-  if (consume(input, "houndOrder")) {
+  const cycled = consume(input, "houndOrder");
+  if (cycled || directOrder) {
     const target = pickHoundTargetV147(
       { x: player.x, y: player.y, facing: state.player.facing }, houndPreyV147(state, false));
-    const next = nextHoundOrderV147(field.order, hound.bond, !!target);
+    const next = directOrder ?? nextHoundOrderV147(field.order, hound.bond, !!target);
     const issued = issueHoundOrderV147(field, next, hound.bond, next === "attack" ? target?.id ?? null : null);
     if (issued.ok) {
       field = issued.field;
@@ -10765,6 +10776,9 @@ function updateHoundV147(state: GameState, mission: MissionDefinition, input: In
     } else {
       announce(state, issued.reason === "dead" ? `${hound.name} est mort.`
         : issued.reason === "wounded" ? `${hound.name} est blessé : il ne répond qu’au rappel.`
+        : issued.reason === "locked"
+          ? `${houndOrderLabelV147(next)} : lien ${HOUND_ORDERS_V147.find(entry => entry.id === next)?.bond ?? "?"} requis (${hound.bond}).`
+        : issued.reason === "no-target" ? `${hound.name} : aucune proie au sol à portée.`
         : `${hound.name} ne peut pas exécuter cet ordre.`, 1.8);
     }
   }
@@ -10935,7 +10949,9 @@ function stepGame(
   for (const enemy of state.enemies) {
     updateRegularEnemy(state, enemy, mission, delta);
   }
-  updateHoundV147(state, mission, playerInput, delta);
+  const houndStickOrder = state.riteMenuCorpseId ? null : input.houndStickOrderV147 ?? null;
+  input.houndStickOrderV147 = null;
+  updateHoundV147(state, mission, playerInput, delta, houndStickOrder);
   updateBoss(state, mission, difficulty, delta);
   state.playerUsedRangedWeapon = false;
   state.playerUsedEnergyWeapon = false;
