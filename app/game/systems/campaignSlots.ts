@@ -1,4 +1,5 @@
 import { youthCampaignNeedsScene } from "./youthCampaign";
+import { createOriginV151, isOriginIdV151 } from "./originsV151";
 import { soloV66NeedsScene } from "./campaignSoloV66";
 import { soloV67NeedsScene } from "./campaignSoloV67";
 import { soloV68NeedsScene } from "./campaignSoloV68";
@@ -468,25 +469,30 @@ export async function migrateLegacyCampaignSlot(storage: ArchiveStorage | null =
   });
 }
 /** Creation never replaces an occupied slot and does not activate it implicitly. */
-export async function createCampaignSlot(id: CampaignSlotId, name = "", storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
+export async function createCampaignSlot(id: CampaignSlotId, name = "", storage: ArchiveStorage | null = browserStorage(), originId: unknown = null): Promise<CampaignSlotResult> {
   return mutation(storage, data => {
     if (!slotIdValid(id)) fail("invalid-slot", "Numéro de partie invalide.");
     const catalog = loadCampaignSlots(data);
     if (catalog.status !== "ready") fail(catalog.failure ?? "protected-save", "Le stockage courant est protégé.");
     if (catalog.legacy === "available") fail("migration-required", "Conservez d’abord la partie existante dans un emplacement.");
     if (catalog.slots[id - 1].status !== "empty" || data.getItem(campaignSlotStorageKey(id)) !== null) fail("slot-occupied", "Cette partie est déjà occupée ; aucune donnée n’est remplacée.");
-    const doc = newCampaignDocument(id, name, catalog);
+    const doc = newCampaignDocument(id, name, catalog, originId);
     persistSlot(data, doc, null);
     return { slotId: id, checkpoint: doc.checkpoints[0] };
   });
 }
-function newCampaignDocument(id: CampaignSlotId, name: string, catalog: CampaignSlotCatalog): SlotDocument {
+/** STATE5-01: the origin is fixed here, at character creation, and never rewritten afterwards. */
+function newCampaignDocument(id: CampaignSlotId, name: string, catalog: CampaignSlotCatalog, originId: unknown = null): SlotDocument {
     if (typeof name !== "string" || name.length > 80) fail("invalid-slot", "Le nom de partie est invalide.");
     const owners = new Set(catalog.slots.map(s => s.ownerCreatedAt));
     let timestamp = Date.now(); while (owners.has(new Date(timestamp).toISOString())) timestamp++;
     const save = defaultSave(new Date(timestamp).toISOString());
     save.prologue = createNurseryCampaign();
     if (name.trim()) save.profile.hunterName = name.trim();
+    if (originId !== null && originId !== undefined) {
+      if (!isOriginIdV151(originId)) fail("invalid-slot", "Origine inconnue.");
+      save.originV151 = createOriginV151(originId, "creation");
+    }
     const archive: CompleteArchive = { format: COMPLETE_ARCHIVE_FORMAT, version: 1, contentVersion: GAME_CONTENT_VERSION,
       exportedAt: new Date().toISOString(), campaign: save,
       attachments: { activeHunt: null, shipProgression: createDefaultShipProgression(save), pit: null, pitReplay: null } };
@@ -504,7 +510,7 @@ function rejectFutureTargets(replacements: ArchiveReplacement[], owner: string):
 /** Explicitly confirmed replacement: old campaign, all checkpoints and live
  * progress survive in an immutable rescue archive. Slot and workspace commit together. */
 export async function replaceCampaignSlot(id: CampaignSlotId, name: string,
-  options: {expectedRevision: number; expectedOwnerCreatedAt: string}, storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
+  options: {expectedRevision: number; expectedOwnerCreatedAt: string; originId?: unknown}, storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
   return mutation(storage, data => {
     if (!options || !Number.isInteger(options.expectedRevision) || !iso(options.expectedOwnerCreatedAt)) fail("save-conflict", "Confirmez de nouveau la partie à remplacer.");
     const {raw, document: old} = requireSlot(data, id, options.expectedRevision);
@@ -528,7 +534,7 @@ export async function replaceCampaignSlot(id: CampaignSlotId, name: string,
       const active=catalog.slots[catalog.activeSlotId-1];
       replaceCheckpoint(data,active.id,{kind:"auto",expectedRevision:active.revision},sourcePreimage);
     }
-    const next = {...newCampaignDocument(id,name,catalog),revision:old.revision+1};
+    const next = {...newCampaignDocument(id,name,catalog,options.originId ?? null),revision:old.revision+1};
     const desired = next.checkpoints[0].archive;
     const plan = prepareCompleteArchiveImport(desired,data);
     rejectFutureTargets(plan.replacements,desired.campaign.createdAt);
@@ -571,7 +577,7 @@ export async function recoverCampaignWorkspace(id: CampaignSlotId, checkpointId:
 }
 /** Last-resort, explicitly confirmed new start. No readable campaign or future
  * document may be sacrificed. Raw damaged bytes survive in the same transaction. */
-export async function recoverAsNewCampaignSlot(id: CampaignSlotId,name:string,storage:ArchiveStorage|null=browserStorage()):Promise<CampaignSlotResult>{
+export async function recoverAsNewCampaignSlot(id: CampaignSlotId,name:string,storage:ArchiveStorage|null=browserStorage(),originId:unknown=null):Promise<CampaignSlotResult>{
  return mutation(storage,data=>{
   if(!slotIdValid(id))fail("invalid-slot","Numéro de partie invalide.");
   const catalog=loadCampaignSlots(data);
@@ -580,7 +586,7 @@ export async function recoverAsNewCampaignSlot(id: CampaignSlotId,name:string,st
   const key=campaignSlotStorageKey(id),before=data.getItem(key),backup=data.getItem(key+'.backup');
   if(before!==null||backup!==null||catalog.slots[id-1].status!=="empty")fail("protected-save","Cette récupération exige un emplacement vide ; aucun slot endommagé ou futur n’est remplacé.");
   for(const raw of [data.getItem(SAVE_STORAGE_KEY),data.getItem(SAVE_STORAGE_KEY+'.backup')])if(raw!==null&&parseSaveImport(raw).save)fail("recovery-required","Une copie de campagne lisible existe. Conservez-la avant une nouvelle chronique.");
-  const next=newCampaignDocument(id,name,catalog),serialized=JSON.stringify(next),desired=next.checkpoints[0].archive;
+  const next=newCampaignDocument(id,name,catalog,originId),serialized=JSON.stringify(next),desired=next.checkpoints[0].archive;
   const plan=prepareCompleteArchiveImport(desired,data);rejectFutureTargets(plan.replacements,desired.campaign.createdAt);
   const replacements:ArchiveReplacement[]=[{key:key+'.backup',before:backup,after:serialized},{key,before,after:serialized},...plan.replacements];
   const rescueKey=SLOT_PREFIX+'workspace-recovery.'+globalThis.crypto.randomUUID();
