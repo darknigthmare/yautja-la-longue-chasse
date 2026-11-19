@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable @next/next/no-img-element -- unmodified native ground, architectural modules and animation cells */
-import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent, type ReactNode } from 'react';
 import type { SaveGame } from './types';
 import { HOMEWORLD_GEOMETRY_V64, homeworldProjectGroundV64, homeworldBuildingSpritePlacementV64 } from './systems/homeworldGeometryV64';
 import { HOMEWORLD_BUILDING_ART_V64, HOMEWORLD_GROUND_ART_V64, HOMEWORLD_PROP_ART_V64, HOMEWORLD_INTERIOR_ART_V64 } from './systems/homeworldArtV64';
@@ -43,6 +43,8 @@ export interface HomeworldRegionV68Props {
   onBibleSceneAction?(action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86;
   onReachCity(state?: HomeworldRegionStateV68): boolean | void;
   onOpenSettings?(): void;
+  /** V149: residence panel for a Demeure the player stands in (null when it holds no house). */
+  residenceV149?(buildingId: string, disabled: boolean): ReactNode;
 }
 const axes = [['left', '←'], ['up', '↑'], ['down', '↓'], ['right', '→']] as const;
 type Move = typeof axes[number][0];
@@ -309,6 +311,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         <p>{serviceBuilding?.role === 'forge' ? 'Les balises et les outils demeurent aux ateliers. Le poste de calibration extérieur permet de comparer les lectures avant une sortie.' : serviceBuilding?.role === 'clinic' ? 'La maison des soins protège les retours. Observe les avertissements du territoire et interromps une sortie lorsque sa lecture devient incertaine.' : serviceBuilding?.role === 'archive' ? 'Les récits gardent leurs auteurs. Une préparation au village ne vaut ni trophée, ni preuve de terrain ; le guide ne confirme que les relevés réellement remis.' : serviceBuilding?.role === 'hall' ? 'La maison commune rassemble les chemins du clan. Les demeures, les ateliers et les soins ont chacun leur approche ; le poste extérieur reste séparé des rues.' : 'Cette demeure reste celle de ses habitants. Les coffrets et les outils ne sont pas des prises à emporter.'}</p>
         <p><b>Danger du territoire : {definition.hazard}.</b> Les avertissements concernent le poste extérieur, pas les services civils.</p>
         {narratives.map(n => <p key={n.id}><b>{n.title}</b><br />{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}
+        {serviceBuilding?.role === 'residence' && state.buildingId && props.residenceV149?.(state.buildingId, !localAllowed)}
         <p>Ressors par le seuil au sud, puis consulte le plan du village pour préparer ton chemin.</p>
       </div> : notice ? <><YautjaTranslationV67 text={notice} />{noticeFromGuide && narratives.map(n => <p key={n.id}>{n.instruction}{n.confirmedReport && <><br />{n.confirmedReport}</>}</p>)}</> : <p>{artError || (!gate.allowed ? gate.reason : !ready ? 'Les abords du territoire se dévoilent…' : state.zone === 'passage' ? `Suis les bornes jusqu’au village. La corniche mesure environ ${Math.round(homeworldRegionRouteMetresV68(regionId))} mètres ; tu peux revenir sur tes pas.` : definition.introduction)}</p>}
       {navigationError && <p role="alert">{navigationError}</p>}

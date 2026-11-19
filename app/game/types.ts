@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V149: first residence, local respect, moves (BUILD5-07). Absent until first used. */
+  residenceV149?: import("./systems/residenceV149").ResidenceStateV149 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
