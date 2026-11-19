@@ -25,7 +25,7 @@ import React, {
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
 import HoundKennelPanelV147 from "./HoundKennelPanelV147";
-import { HOUND_KENNEL_LOCATION_V147 } from "./systems/huntingHoundsV147";
+import { HOUND_KENNEL_LOCATION_V147, activeHoundV147 } from "./systems/huntingHoundsV147";
 import { chooseAtKennelV147, healAtKennelV147, kennelRefusalTextV147, recruitAtKennelV147 } from "./systems/houndKennelV147";
 import HunterPieceForgeV146, { type CustomizationApplyV146 } from "./HunterPieceForgeV146";
 import { emptyCustomizationV146, outfitForModeV146 } from "./systems/hunterCustomizationV146";
@@ -6289,6 +6289,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <HuntCanvas
             mission={selectedMission}
+            houndV147={activeHoundV147(save.houndsV147)}
             firstHuntGuideEnabled={selectedMission.id === "jungle-vey" && save.missionProgress["jungle-vey"].status !== "completed"}
             encounterRun={save.missionProgress[selectedMission.id].attempts}
             insertionPlan={huntResumePayload?.insertionPlan}

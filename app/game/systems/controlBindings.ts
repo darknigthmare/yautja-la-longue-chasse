@@ -48,6 +48,7 @@ export const CONTROL_ACTION_DEFINITIONS = [
   { id: "hunt.useGearTwo", context: "hunt", behavior: "press", label: "Utiliser l’équipement 2" },
   { id: "hunt.interact", context: "hunt", behavior: "press", label: "Interagir" },
   { id: "hunt.podSelfDestruct", context: "hunt", behavior: "press", label: "Autodestruction des capsules / annuler" },
+  { id: "hunt.houndOrder", context: "hunt", behavior: "press", label: "Ordre suivant au chien de chasse" },
   { id: "hunt.pause", context: "hunt", behavior: "press", label: "Pause" },
 
   { id: "pit.p1MoveLeft", context: "pit", behavior: "hold", label: "J1 — Se déplacer à gauche" },
@@ -291,7 +292,12 @@ const ACTION_DEFINITION_BY_ID = new Map<
 // Pod recovery also has an in-scene button. An old profile may already use
 // every supported key; keep its bindings rather than inventing a collision or
 // resetting the entire keyboard when this newly added action is migrated.
-const OPTIONAL_KEYBOARD_ACTIONS: ReadonlySet<ControlActionId> = new Set(["hunt.podSelfDestruct"]);
+const OPTIONAL_KEYBOARD_MIGRATIONS: readonly (readonly [ControlActionId, string, string])[] = [
+  ["hunt.podSelfDestruct", "KeyX", "L’autodestruction des capsules"],
+  // V147: the hunting hound's order also has an on-screen button.
+  ["hunt.houndOrder", "KeyT", "L’ordre au chien de chasse"],
+];
+const OPTIONAL_KEYBOARD_ACTIONS: ReadonlySet<ControlActionId> = new Set(OPTIONAL_KEYBOARD_MIGRATIONS.map(([id]) => id));
 
 function freezeBindings(
   source: Record<ControlActionId, readonly string[]>,
@@ -323,6 +329,7 @@ export const DEFAULT_CONTROL_BINDINGS = freezeBindings({
   "hunt.useGearTwo": ["Digit4", "Numpad4"],
   "hunt.interact": ["KeyE"],
   "hunt.podSelfDestruct": ["KeyX"],
+  "hunt.houndOrder": ["KeyT"],
   "hunt.pause": ["Escape"],
 
   "pit.p1MoveLeft": ["KeyQ", "ArrowLeft"],
@@ -600,18 +607,19 @@ export function normalizeControlBindings(
     }
   }
 
-  if (source && !Object.prototype.hasOwnProperty.call(source, "hunt.podSelfDestruct")) {
+  for (const [actionId, preferred, name] of OPTIONAL_KEYBOARD_MIGRATIONS) {
+    if (!source || Object.prototype.hasOwnProperty.call(source, actionId)) continue;
     const occupied = new Set(CONTROL_ACTION_DEFINITIONS
-      .filter(definition => definition.context === "hunt" && definition.id !== "hunt.podSelfDestruct")
+      .filter(definition => definition.context === "hunt" && definition.id !== actionId)
       .flatMap(definition => normalized[definition.id]));
-    const key = ["KeyX", ...SUPPORTED_CONTROL_KEY_CODES].find(code => !occupied.has(code));
-    normalized["hunt.podSelfDestruct"] = key ? [key] : [];
-    if (key !== "KeyX") {
-      const warning = issues.findIndex(entry => entry.code === "missing-action" && entry.actionId === "hunt.podSelfDestruct");
+    const key = [preferred, ...SUPPORTED_CONTROL_KEY_CODES].find(code => !occupied.has(code));
+    normalized[actionId] = key ? [key] : [];
+    if (key !== preferred) {
+      const warning = issues.findIndex(entry => entry.code === "missing-action" && entry.actionId === actionId);
       issues[warning] = issue("warning", "missing-action", key
-        ? `L’autodestruction des capsules utilise ${key} pour conserver tes commandes existantes.`
-        : "L’autodestruction des capsules reste accessible par son bouton ; aucune touche libre n’est disponible.",
-      "hunt.podSelfDestruct", key);
+        ? `${name} utilise ${key} pour conserver tes commandes existantes.`
+        : `${name} reste accessible par son bouton ; aucune touche libre n’est disponible.`,
+      actionId, key);
     }
   }
 
