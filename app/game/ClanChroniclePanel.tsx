@@ -59,6 +59,7 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, on
   const [query, setQuery] = useState("");
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
   const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
+  const narrativeRank = getChronicleRank(chronicle) ?? "youngling";
   const results = useMemo(() => {
     const search = fold(query.trim());
     return concepts.entries.filter(entry => fold(`${entry.id} ${entry.profile} ${entry.weapon}`).includes(search));
@@ -78,7 +79,7 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, on
     {section === "journey" && <div>
       <aside className={styles.legacy} data-chronicle-legacy-rank={chronicle.legacyRecognition?.rankId ?? "none"}>
         <h3>{save.prologue ? "Chronique de jeunesse" : "Campagne existante préservée"}</h3>
-        <p>{save.profile.hunterName} · {save.prologue ? CHRONICLE_RANK_LABELS[getChronicleRank(chronicle) ?? "youngling"] : CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
+        <p>{save.profile.hunterName} · {save.prologue ? (narrativeRank === "young-blood" ? "Reconnaissance locale de la cohorte" : CHRONICLE_RANK_LABELS[narrativeRank]) : CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
         <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le grade affiché appartient à la carrière adulte. Les actes du parcours du clan figurent dans le registre ci-dessous."}</p>
       </aside>
       <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
@@ -96,8 +97,8 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, on
           </ol>
         </details>
         <ol className={styles.rites}>
-          <li><h4>Young Blood · L-02 et L-03</h4><p>Chasser le Quatza-Rij à trois, rentrer, puis recevoir la reconnaissance du clan.</p><p>Chapitre indisponible.</p></li>
-          <li><h4>Blooded · L-04</h4><p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p><p>Chapitre indisponible.</p></li>
+          <li><h4>Young Blood · L-02 et L-03</h4><p>Chasser le Quatza-Rij à trois, rentrer, puis recevoir la reconnaissance du clan.</p><p>Épreuve à produire.</p></li>
+          <li><h4>Blooded · L-04</h4><p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p><p>Épreuve à produire.</p></li>
           <li data-rank-queen-proof-v168>
             <h4>Elite · L-05, L-06 et L-07</h4>
             <ul>
@@ -107,7 +108,7 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, on
             </ul>
             {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}
           </li>
-          <li><h4>Elder · R2-M049 et R2-M050</h4><p>Former un pack et juger un différend devant le clan.</p><p>Chapitre indisponible.</p></li>
+          <li><h4>Elder · R2-M049 et R2-M050</h4><p>Former un pack et juger un différend devant le clan.</p><p>Épreuve à produire.</p></li>
         </ol>
       </section>
       <h3 className={styles.subheading}>Reconnaissances enregistrées dans la chronique</h3>

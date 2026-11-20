@@ -176,12 +176,13 @@ const dossier = qa.load("app/game/systems/rankRiteDossierV168.ts");
 const cradle = qa.load("app/game/systems/buriedCradle.ts");
 
 test("the canonical rite dossier distinguishes career rank from dated crown evidence", () => {
-  const save = withProfile({ honor: 8_120, rankId: "elder", acquiredRankIdV166: "elder" });
+  const save = withProfile({ honor: 8_119, rankId: "elder", acquiredRankIdV166: "elder" });
   save.honorSourcesV169 = { version: 1, entries: [
-    { id: "contract:single", kind: "contract", amount: 1 },
-  ], outsideBalance: 1 };
+    { id: "contract:single", source: "contract", delta: 120 },
+  ], outsideBalance: 120 };
   const first = dossier.rankRiteDossierV168(save);
-  assert(first.thresholds.find(tier => tier.bibleRank === "Elder").remainingHonor === 0);
+  assert.equal(first.honor, 7_999);
+  assert.equal(first.thresholds.find(tier => tier.bibleRank === "Elder").remainingHonor, 1);
   assert.equal(first.queen.canOpenExpedition, false);
   assert.match(first.queen.label, /chasses à terminer/);
   for (const mission of MISSIONS) save.missionProgress[mission.id] = {
