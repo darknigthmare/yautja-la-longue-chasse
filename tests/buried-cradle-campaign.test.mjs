@@ -108,11 +108,31 @@ test('retreat, victory and manual crown retrieval have distinct, idempotent debr
 
 test('autonomous acid marks or destroys the actual cargo independently of player damage', () => {
   const snapshots = qa.load('app/game/systems/buriedCradleSnapshot.ts');
-  const original = fresh();
-  original.prologue = { status: 'completed', chronicle: { version: 1,
+  const nursery = qa.load('app/game/systems/nurseryCampaign.ts');
+  const prologue = qa.load('app/game/systems/nurseryPrologue.ts');
+  const original = { ...fresh(), prologue: nursery.createNurseryCampaign() };
+  const environment = { assetsReady: true, pageVisible: true, paused: false, nextChapterReady: true };
+  let youth = prologue.createNurseryPrologue({ readyMode: 'press' }), completion = null;
+  for (let frame = 0; frame < 2400 && youth.phase !== 'complete'; frame++) {
+    const distance = Math.abs(youth.rival.x - youth.player.x);
+    let input = {};
+    if (youth.inputArmed && youth.phase === 'prompt') input = { confirm: frame % 2 === 0 };
+    if (youth.inputArmed && youth.phase === 'ready') input = { ready: frame % 2 === 0 };
+    if (youth.inputArmed && youth.phase === 'duel') {
+      input = { move: distance > 44 ? Math.sign(youth.rival.x - youth.player.x) : 0, light: frame % 30 === 0 };
+    }
+    const result = prologue.stepNurseryPrologue(youth, input, environment);
+    youth = result.state;
+    completion = result.completion ?? completion;
+  }
+  const adult = nursery.withNurseryCompletion(original, completion, youth, OWNER);
+  assert(adult, 'the fixture must contain a valid completed nursery checkpoint');
+  const fixture = { ...adult, prologue: { ...adult.prologue, chronicle: { ...adult.prologue.chronicle,
     evidence: chronicle.CHRONICLE_EVIDENCE.filter(item => !['first-queen-hunt', 'queen-mission-briefing'].includes(item.id)).map(({ id, sourceId }) => ({ id, sourceId })),
-    rites: chronicle.CHRONICLE_RITES.slice(0, 3).map(({ id, sourceId }) => ({ id, sourceId })), legacyRecognition: null } };
-  const save = act(act(original, 'prepare'), 'depart');
+    rites: chronicle.CHRONICLE_RITES.slice(0, 3).map(({ id, sourceId }) => ({ id, sourceId })),
+  } } };
+  assert(nursery.normalizeNurseryCampaign(fixture.prologue));
+  const save = act(act(fixture, 'prepare'), 'depart');
   const run = cradle.createBuriedCradleRun(completedProgress(), 1);
   const place = (run, roomId, x) => ({ ...run, roomId, player: { ...run.player, x, y: 508,
     facing: 1, velocityX: 0, velocityY: 0, grounded: true } });
