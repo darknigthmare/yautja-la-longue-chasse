@@ -347,6 +347,10 @@ interface HuntCanvasProps {
   onSuspendHunt?(payload: HuntPersistencePayload): void;
   onInvalidateHunt?(): void;
   onResumeFailure?(): void;
+  /** V155: Hardcore chronicle. A death is final: no retry, no relay, no abandon. */
+  hardcore?: boolean;
+  /** V155: called once when a Hardcore hunter dies, before the hunt sidecar is invalidated. */
+  onHardcoreDeath?(): void;
 }
 
 export interface HuntPersistencePayload {
@@ -10704,6 +10708,8 @@ export default function HuntCanvas({
   onSuspendHunt,
   onInvalidateHunt,
   onResumeFailure,
+  hardcore = false,
+  onHardcoreDeath,
 }: HuntCanvasProps) {
   // Freeze the model for the current hunt. An external-tab cosmetic preference
   // update must not restart the same simulation or replace assets mid-combat.
@@ -10722,6 +10728,9 @@ export default function HuntCanvas({
   const persistHuntRef = useRef(onPersistHunt);
   const suspendHuntRef = useRef(onSuspendHunt);
   const invalidateHuntRef = useRef(onInvalidateHunt);
+  // Frozen for the hunt: the mode is fixed at campaign creation.
+  const [hardcoreHunt] = useState(hardcore);
+  const hardcoreDeathRef = useRef(onHardcoreDeath);
   const resumeFailureRef = useRef(onResumeFailure);
   const soundRef = useRef(onSound);
   const restartRef = useRef<() => void>(() => undefined);
@@ -10784,6 +10793,9 @@ export default function HuntCanvas({
   useEffect(() => {
     invalidateHuntRef.current = onInvalidateHunt;
   }, [onInvalidateHunt]);
+  useEffect(() => {
+    hardcoreDeathRef.current = onHardcoreDeath;
+  }, [onHardcoreDeath]);
 
   useEffect(() => {
     resumeFailureRef.current = onResumeFailure;
@@ -11452,6 +11464,8 @@ export default function HuntCanvas({
     });
 
     const restart = () => {
+      // V155: a Hardcore death is final; the retry and relay are never offered.
+      if (hardcoreHunt && game.phase === "dead") return;
       const retryFromCheckpoint = Boolean(game.lastCheckpoint);
       const visitedBeforeRetry = game.visitedScreenIds;
       const explorationBeforeRetry = game.exploration;
@@ -11532,6 +11546,8 @@ export default function HuntCanvas({
       finishRef.current(resultFor(game, mission, difficulty, "failed"));
     };
     requestAbortRef.current = () => {
+      // V155: abandoning cannot turn a Hardcore death into an interrupted hunt.
+      if (hardcoreHunt && game.phase === "dead") return;
       input.pressed.clear();
       if (game.player.cloaked) {
         game.player.cloaked = false;
@@ -11767,6 +11783,8 @@ export default function HuntCanvas({
         lastObservedPhase = game.phase;
         if (game.phase === "dead") {
           invalidateHuntRef.current?.();
+          // The sidecar is retired first; the session still knows the mission.
+          if (hardcoreHunt) hardcoreDeathRef.current?.();
         }
       }
       if (game.paused !== lastObservedPaused) {
@@ -12323,6 +12341,21 @@ export default function HuntCanvas({
               <span style={{ ...styles.modalKicker, color: mission.palette.danger }}>
                 SIGNAL VITAL PERDU
               </span>
+              {hardcoreHunt ? <>
+              <h2 id="hunt-dead-title" style={styles.modalTitle}>Mort définitive</h2>
+              <p style={styles.modalCopy} data-hardcore-death>
+                Chronique Hardcore : la mort ne se reprend pas. Transmets le rapport ; la clôture de la chronique et le legs au mausolée te seront demandés ensuite.
+              </p>
+              <div style={styles.modalActions}>
+                <button
+                  type="button"
+                  onClick={() => reportFailureRef.current()}
+                  style={styles.primaryButton}
+                >
+                  Rapport de mort
+                </button>
+              </div>
+              </> : <>
               <h2 id="hunt-dead-title" style={styles.modalTitle}>Le rite n’est pas terminé</h2>
               <p style={styles.modalCopy}>
                 {ui.checkpointLabel.startsWith("Relais")
@@ -12354,6 +12387,7 @@ export default function HuntCanvas({
                   Abandonner
                 </button>
               </div>
+              </>}
             </div>
           </div>
         ) : null}

@@ -712,6 +712,8 @@ export interface SaveGame {
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
   /** V152: legs scellé (partie qui transmet) et héritage reçu (nouvelle partie). Absent tant qu'il n'est pas utilisé. */
   heritageV152?: import("./systems/heritageV152").HeritageStateV152 | null;
+  /** V155: mode Hardcore choisi à la création (fixé) et mort définitive. Absent sur une partie normale. */
+  hardcoreV155?: import("./systems/hardcoreV155").HardcoreStateV155 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

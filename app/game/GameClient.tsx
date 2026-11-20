@@ -2,6 +2,8 @@
 import { actMobility, type MobilityCommand } from "./systems/mobility/ledger";
 import { moveHeritageWeaponV152, sealHeritageTestamentV152 } from "./systems/heritageV152";
 import HeritagePanelV152, { type HeritageActionV152 } from "./HeritagePanelV152";
+import { closeHardcoreChronicleV155, hardcoreStatusV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
+import HardcoreChroniclePanelV155, { type HardcoreCloseChoiceV155 } from "./HardcoreChroniclePanelV155";
 import { atMobilityForge } from "./systems/mobility/access";
 import type { MobilityReceipt } from "./systems/mobility/controller";
 import { acceptTrophyTutorialCheckpointV6, inspectTrophyTutorialV6, type TrophyTutorialStateV6 } from "./systems/trophyTutorialV6";
@@ -2185,7 +2187,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "heritageV152">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "heritageV152" | "hardcoreV155">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2195,7 +2197,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, heritageV152: update.heritageV152 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2243,6 +2245,22 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       : moveHeritageWeaponV152(current, action.to);
     if (!change.ok) return { ok: false, message: change.reason };
     return persistSocialProgress({ heritageV152: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+
+  /** V155: a Hardcore death is written at once (no retry exists); closure waits for the player's confirmation. */
+  const recordHardcoreDeathV155Session = useCallback(() => {
+    const current = saveRef.current, missionId = activeHuntSessionRef.current?.missionId;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !missionId || hardcoreStatusV155(current) !== "alive") return;
+    const change = recordHardcoreDeathV155(current, missionId as MissionId, new Date().toISOString());
+    if (!change.ok || !persistSocialProgress({ hardcoreV155: change.hardcore })) setToast("Mort Hardcore non encore inscrite : elle le sera avec le rapport de mort.");
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const closeHardcoreChronicleSession = useCallback((choice: HardcoreCloseChoiceV155): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    const change = closeHardcoreChronicleV155(current, choice, new Date().toISOString());
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ hardcoreV155: change.hardcore, ...(change.heritage ? { heritageV152: change.heritage } : {}) })
+      ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; la chronique n’est pas close." };
   }, [entry.ownerCreatedAt, persistSocialProgress]);
 
   const commitTrophyTutorialCheckpoint = useCallback((candidate: TrophyTutorialStateV6): boolean => {
@@ -4337,6 +4355,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     </main>
   );
 
+  // V155: after a Hardcore death nothing else is played; the hunt screen stays until its death report.
+  const hardcoreStatus = hardcoreStatusV155(save);
+  if ((hardcoreStatus === "death-pending" || hardcoreStatus === "closed") && screen !== "mission") return (
+    <main className="game-shell" ref={gameShellRef} data-game-content-version={GAME_CONTENT_VERSION} data-campaign-session={entry.slotId} data-campaign-owner={entry.ownerCreatedAt}>
+      <HardcoreChroniclePanelV155 save={save} busy={campaignSaveBusy} onClose={closeHardcoreChronicleSession} onMainMenu={() => { void returnToMainMenu(); }} />
+      {campaignSaveMessage && <p role="status">{campaignSaveMessage}</p>}
+    </main>
+  );
+
   return (
     <main
       ref={gameShellRef}
@@ -6241,6 +6268,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onPersistHunt={persistActiveHunt}
             onSuspendHunt={suspendActiveHunt}
             onInvalidateHunt={invalidateActiveHuntPersistence}
+            hardcore={hardcoreStatusV155(activeMissionSave) === "alive"}
+            onHardcoreDeath={recordHardcoreDeathV155Session}
             onResumeFailure={rejectActiveHuntResume}
             onSound={playGameplaySound}
             onMusicContext={setHuntMusicContext}

@@ -42,6 +42,8 @@ export interface HeritageTriggerDefinitionV152 {
 }
 export const HERITAGE_TRIGGERS_V152: readonly HeritageTriggerDefinitionV152[] = [
   { id: "black-god-sacrifice", label: "Sacrifice réclamé par le Black Warrior", origin: "bible", reachable: false, transmitsMask: true, transmitsWeapon: true },
+  // V155 : la mort en Hardcore existe (systems/hardcoreV155.ts) ; elle scelle le legs à la clôture de la
+  // chronique, jamais depuis le panneau. « reachable » désigne les déclencheurs choisis au Mausolée.
   { id: "hardcore-death", label: "Mort définitive en mode Hardcore", origin: "bible", reachable: false, transmitsMask: true, transmitsWeapon: true },
   // Bible : « BB-E2 ne transmet que la légende, sans masque ». L'absence d'arme est proposée (« que la légende »).
   { id: "bad-blood-e2", label: "Fin Bad Blood BB-E2 · La dernière traque", origin: "bible", reachable: false, transmitsMask: false, transmitsWeapon: false },
@@ -157,21 +159,37 @@ export function heritageWeaponRankAllowedV152(save: Pick<SaveGame, "profile" | "
 type SealSource = Pick<SaveGame, "createdAt" | "profile" | "prologue" | "appearance" | "inventory" | "trophies" | "statistics" | "storyCompleted"> & { heritageV152?: unknown };
 /** Scelle le legs dans la partie qui transmet. Irréversible ; un second scellement est refusé. */
 export function sealHeritageTestamentV152(save: SealSource, choice: { trigger: HeritageTriggerV152; weaponId: WeaponId | null }, now: string): HeritageChangeV152 {
+  const definition = trigger(choice.trigger);
+  if (definition?.id === "hardcore-death") return { ok: false, reason: "La mort en Hardcore scelle son legs à la clôture de la chronique, pas depuis ce panneau." };
+  if (!definition?.reachable) return { ok: false, reason: "Ce déclencheur n’existe pas encore dans le jeu." };
+  if (definition.id === "elder-retirement") { const gate = heritageSealEligibilityV152(save); if (!gate.allowed) return { ok: false, reason: gate.reason }; }
+  return sealWith(save, definition, choice.weaponId, save.appearance.biomaskId, now);
+}
+
+/**
+ * V155 · legs d'une mort en Hardcore. Appelé seulement par systems/hardcoreV155.ts, après la mort
+ * constatée et la confirmation explicite du joueur. Le masque est celui porté ; à défaut, celui que le
+ * joueur désigne (proposé). L'arme est choisie à la clôture (proposé : la bible dit « avant la fin »,
+ * une mort en Hardcore n'est pas annoncée).
+ */
+export function sealHardcoreDeathTestamentV152(save: SealSource, choice: { weaponId: WeaponId | null; maskId: BiomaskId | null }, now: string): HeritageChangeV152 {
+  const definition = trigger("hardcore-death")!;
+  return sealWith(save, definition, choice.weaponId, isMask(save.appearance.biomaskId) ? save.appearance.biomaskId : choice.maskId, now);
+}
+
+function sealWith(save: SealSource, definition: HeritageTriggerDefinitionV152, weaponId: WeaponId | null, maskId: BiomaskId | null, now: string): HeritageChangeV152 {
   if (isFutureHeritageV152(save.heritageV152)) return { ok: false, reason: "Registre d’héritage d’une version plus récente : rien n’est modifié." };
   const state = save.heritageV152 === undefined || save.heritageV152 === null ? emptyHeritageV152() : normalizeHeritageV152(save.heritageV152, save.createdAt);
   if (!state) return { ok: false, reason: "Registre d’héritage illisible : rien n’est modifié." };
   if (state.testament) return { ok: false, reason: "Le legs est déjà scellé ; il ne peut être ni refait ni dupliqué." };
-  const definition = trigger(choice.trigger);
-  if (!definition?.reachable) return { ok: false, reason: "Ce déclencheur n’existe pas encore dans le jeu." };
-  if (definition.id === "elder-retirement") { const gate = heritageSealEligibilityV152(save); if (!gate.allowed) return { ok: false, reason: gate.reason }; }
-  if (definition.transmitsMask && !isMask(save.appearance.biomaskId)) return { ok: false, reason: "Aucun biomask porté : choisis d’abord un masque à déposer au mausolée." };
-  if (definition.transmitsWeapon && (!isWeapon(choice.weaponId) || !save.inventory.unlockedWeaponIds.includes(choice.weaponId)))
+  if (definition.transmitsMask && !isMask(maskId)) return { ok: false, reason: "Aucun biomask porté : choisis d’abord un masque à déposer au mausolée." };
+  if (definition.transmitsWeapon && (!isWeapon(weaponId) || !save.inventory.unlockedWeaponIds.includes(weaponId)))
     return { ok: false, reason: "Choisis une arme que ton chasseur possède réellement." };
   if (!iso(now)) return { ok: false, reason: "Horodatage invalide." };
   const testament: HeritageTestamentV152 = {
     id: testamentIdV152(save.createdAt), ownerCreatedAt: save.createdAt, sealedAt: now, trigger: definition.id,
-    maskId: definition.transmitsMask ? save.appearance.biomaskId : null,
-    weaponId: definition.transmitsWeapon ? choice.weaponId : null,
+    maskId: definition.transmitsMask ? maskId : null,
+    weaponId: definition.transmitsWeapon ? weaponId : null,
     legend: { hunterName: save.profile.hunterName.slice(0, 48), rankId: save.profile.rankId,
       chronicleRankId: save.prologue ? getChronicleRank(save.prologue.chronicle) : null, honor: save.profile.honor,
       trophyCount: save.trophies.length, missionsCompleted: save.statistics.missionsCompleted, storyCompleted: save.storyCompleted },

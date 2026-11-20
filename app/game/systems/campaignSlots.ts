@@ -10,6 +10,7 @@ import { GAME_CONTENT_VERSION } from "../buildInfo";
 import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION, SAVE_MAX_SERIALIZED_BYTES } from "../save";
 import type { SaveGame } from "../types";
 import { heritageClaimOfCampaignV152, heritageMaskLabelV152, heritageTestamentOfCampaignV152, heritageWeaponLabelV152, receiveHeritageV152 } from "./heritageV152";
+import { createHardcoreStateV155, hardcoreDeathRecordedV155, hardcoreStatusV155, type HardcoreStatusV155 } from "./hardcoreV155";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./archiveTransferGuard";
 import { applyArchiveTransaction, withArchiveTransferLock, type ArchiveStorage, type ArchiveReplacement } from "./archiveTransaction";
 import { createCompleteArchive, importCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, COMPLETE_ARCHIVE_FORMAT, type CompleteArchive } from "./completeArchive";
@@ -41,7 +42,11 @@ export interface CampaignSlotSummary {
   ownerCreatedAt: string | null; hunterName: string; label: string;
   checkpoints: CampaignCheckpointSummary[]; lastCheckpointId: CampaignCheckpointId | null;
   failure: CampaignSlotFailure | null; recoveryAvailable: boolean;
+  /** V155: état Hardcore de la campagne qui représente la partie ; absent pour une partie normale. */
+  hardcoreV155?: Exclude<HardcoreStatusV155, "none">;
 }
+/** V155: options fixées à la création d'une partie (proposé : le mode Hardcore ne change plus ensuite). */
+export interface CampaignCreationOptionsV155 { hardcore?: boolean }
 export interface CampaignSlotCatalog {
   status: "ready" | "blocked" | "unavailable"; failure: CampaignSlotFailure | null;
   slots: CampaignSlotSummary[]; activeSlotId: CampaignSlotId | null;
@@ -185,6 +190,10 @@ export function loadCampaignSlots(storage: ArchiveStorage | null = browserStorag
     }
     if (archiveTransferPending(storage)) fail("protected-save", "Un transfert attend sa récupération. Les parties restent protégées.");
     catalog.heritageOffers = heritageOffersV152(storage, catalog, current.save, reads);
+    for (const slot of slotCampaignsV152(storage, catalog, current.save, false, reads)) {
+      const status = hardcoreStatusV155(slot.latest);
+      if (status !== "none") catalog.slots[slot.slotId - 1].hardcoreV155 = status;
+    }
   } catch (error) { catalog.status = "blocked"; catalog.failure = error instanceof Refusal ? error.failure : "read-failed"; catalog.legacy = "blocked"; }
   return catalog;
 }
@@ -516,7 +525,7 @@ function heritageOffersV152(storage: ArchiveStorage, catalog: CampaignSlotCatalo
 }
 /** V152: create a new campaign in an empty slot that inherits the sealed legacy of another slot.
  * The legacy is read, never moved out of its source; a legacy already received anywhere is refused. */
-export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, fromSlotId: CampaignSlotId, storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
+export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, fromSlotId: CampaignSlotId, storage: ArchiveStorage | null = browserStorage(), options: CampaignCreationOptionsV155 = {}): Promise<CampaignSlotResult> {
   return mutation(storage, data => {
     if (!slotIdValid(id) || !slotIdValid(fromSlotId) || id === fromSlotId) fail("invalid-slot", "Numéro de partie invalide.");
     const catalog = loadCampaignSlots(data);
@@ -536,7 +545,7 @@ export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, f
     const doc = newCampaignDocument(id, name, catalog, save => {
       const received = receiveHeritageV152(save, testament, claims, save.createdAt);
       if (!received.ok) { refusal = received.reason; return save; }
-      return received.save;
+      return withCreationOptionsV155(received.save, options);
     });
     if (refusal) fail("owner-conflict", refusal);
     persistSlot(data, doc, null);
@@ -544,17 +553,22 @@ export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, f
   });
 }
 /** Creation never replaces an occupied slot and does not activate it implicitly. */
-export async function createCampaignSlot(id: CampaignSlotId, name = "", storage: ArchiveStorage | null = browserStorage()): Promise<CampaignSlotResult> {
+export async function createCampaignSlot(id: CampaignSlotId, name = "", storage: ArchiveStorage | null = browserStorage(), options: CampaignCreationOptionsV155 = {}): Promise<CampaignSlotResult> {
   return mutation(storage, data => {
     if (!slotIdValid(id)) fail("invalid-slot", "Numéro de partie invalide.");
     const catalog = loadCampaignSlots(data);
     if (catalog.status !== "ready") fail(catalog.failure ?? "protected-save", "Le stockage courant est protégé.");
     if (catalog.legacy === "available") fail("migration-required", "Conservez d’abord la partie existante dans un emplacement.");
     if (catalog.slots[id - 1].status !== "empty" || data.getItem(campaignSlotStorageKey(id)) !== null) fail("slot-occupied", "Cette partie est déjà occupée ; aucune donnée n’est remplacée.");
-    const doc = newCampaignDocument(id, name, catalog);
+    const doc = newCampaignDocument(id, name, catalog, options.hardcore === true ? save => withCreationOptionsV155(save, options) : undefined);
     persistSlot(data, doc, null);
     return { slotId: id, checkpoint: doc.checkpoints[0] };
   });
+}
+/** V155: Hardcore is written only when chosen; a normal campaign keeps the exact pre-V155 shape. */
+function withCreationOptionsV155(save: SaveGame, options: CampaignCreationOptionsV155): SaveGame {
+  if (options.hardcore !== undefined && typeof options.hardcore !== "boolean") fail("invalid-slot", "Option de création invalide.");
+  return options.hardcore ? { ...save, hardcoreV155: createHardcoreStateV155(save.createdAt) } : save;
 }
 function newCampaignDocument(id: CampaignSlotId, name: string, catalog: CampaignSlotCatalog, prepare?: (save: SaveGame) => SaveGame): SlotDocument {
     if (typeof name !== "string" || name.length > 80) fail("invalid-slot", "Le nom de partie est invalide.");
@@ -681,6 +695,12 @@ export async function activateCampaignCheckpoint(id: CampaignSlotId, checkpointI
     const catalog = loadCampaignSlots(data);
     if (catalog.status !== "ready") fail(catalog.failure ?? "protected-save", "La campagne active est protégée.");
     if (catalog.legacy === "available") fail("migration-required", "Conservez d’abord la partie courante.");
+    // V155 (proposé) : après une mort Hardcore, une sauvegarde antérieure ne ramène pas le chasseur.
+    // Elle reste conservée et lisible dans l’archive ; seul son chargement est refusé.
+    const working = catalog.activeSlotId === id ? readWorkingCampaign(data).save : null;
+    if ((target.checkpoints.some(c => hardcoreDeathRecordedV155(c.archive.campaign)) ||
+        (working?.createdAt === target.ownerCreatedAt && hardcoreDeathRecordedV155(working))) && !hardcoreDeathRecordedV155(chosen.archive.campaign))
+      fail("protected-save", "Chronique Hardcore : la mort est définitive. Cette sauvegarde antérieure reste conservée mais ne peut pas être chargée.");
     // Take the immutable target before rotating autos; loading auto-1 in the
     // current party must not accidentally load the newly captured auto-1.
     const desired = checkArchive(JSON.stringify(chosen.archive));
