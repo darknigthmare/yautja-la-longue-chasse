@@ -1,4 +1,5 @@
 import { HONOR_RANK_THRESHOLDS_V166, missionHonorRewardV166, promoteRankV166, resolveAcquiredRankV166 } from "./systems/honorProgressionV166";
+import { applyRiteHonorV169, emptyHonorSourcesV169, inspectHonorSourcesV169, settleHonorSourcesV169, HONOR_SOURCES_LEDGER_VERSION_V169 } from "./systems/honorSourcesV169";
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
@@ -407,6 +408,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     storyCompleted: false,
     homeworld: defaultHomeworldProgress(),
     justice: defaultJusticeProgress(),
+    honorSourcesV169: emptyHonorSourcesV169(),
   };
 }
 
@@ -1358,6 +1360,11 @@ export function normalizeSave(value: unknown): SaveGame {
     storyCompleted,
     homeworld: normalizeHomeworldProgress(source.homeworld),
     justice: normalizeJusticeProgress(source.justice),
+    // V169 : absent = sauvegarde antérieure (réglée au prochain enregistrement).
+    // Un registre illisible est conservé tel quel : aucun gain n'est reversé.
+    ...(source.honorSourcesV169 === undefined || source.honorSourcesV169 === null ? {} : {
+      honorSourcesV169: inspectHonorSourcesV169(source.honorSourcesV169) ?? (source.honorSourcesV169 as SaveGame["honorSourcesV169"]),
+    }),
     prologue: normalizeNurseryCampaign(source.prologue),
     youthTraining: normalizeYouthCampaign(source.youthTraining),
     soloV66: normalizeSoloV66Campaign(source.soloV66),
@@ -1812,6 +1819,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
       value.homeworld.contractsV68 !== undefined && !isHomeworldContractsV68(value.homeworld.contractsV68))) {
     return { save: null, failure: "invalid-save" };
   }
+  if (value.honorSourcesV169 !== undefined && value.honorSourcesV169 !== null) {
+    const raw = value.honorSourcesV169;
+    if (isRecord(raw) && Number(raw.version) > HONOR_SOURCES_LEDGER_VERSION_V169) return { save: null, failure: "future-version" };
+    if (!inspectHonorSourcesV169(raw)) return { save: null, failure: "invalid-save" };
+  }
   if (isRecord(value.inventory) && value.inventory.harvestV112 !== undefined) {
     const raw=value.inventory.harvestV112;
     if(isRecord(raw)&&Number(raw.version)>1)return {save:null,failure:"future-version"};
@@ -1904,8 +1916,14 @@ function persistCampaign(
   replaceExisting: boolean,
 ): SaveWriteResult {
   const validated = inspectSavePayload(save);
+  // V169 : un enregistrement de jeu règle une seule fois chaque événement
+  // d'honneur des registres durables. Un import ou un remplacement explicite
+  // écrit les octets choisis sans les modifier.
+  const settledSave = validated.save && !replaceExisting
+    ? settleHonorSourcesV169(validated.save).save
+    : validated.save;
   const snapshot: SaveGame = {
-    ...(validated.save ?? normalizeSave(save)),
+    ...(settledSave ?? normalizeSave(save)),
     updatedAt: new Date().toISOString(),
   };
   const failed = (failure: SaveWriteFailure): SaveWriteResult => ({ save: snapshot, persisted: false, failure });
@@ -2196,6 +2214,19 @@ type MissionResultInput = Omit<MissionResult, "trophyClaims"> & {
 };
 
 export function applyMissionResult(
+  currentSave: SaveGame,
+  rawResult: MissionResultInput,
+): SaveGame {
+  const next = applyMissionResultCore(currentSave, rawResult);
+  // V169 : rites de la rencontre, réglés une fois et seulement si le résultat
+  // a été accepté (la tentative a été inscrite).
+  const before = normalizeSave(currentSave);
+  const missionId = rawResult.missionId;
+  if (!MISSION_BY_ID[missionId] || next.missionProgress[missionId]?.attempts !== before.missionProgress[missionId].attempts + 1) return next;
+  return applyRiteHonorV169(before, next, rawResult as MissionResult).save;
+}
+
+function applyMissionResultCore(
   currentSave: SaveGame,
   rawResult: MissionResultInput,
 ): SaveGame {

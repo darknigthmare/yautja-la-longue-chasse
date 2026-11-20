@@ -570,6 +570,8 @@ export interface MissionResult {
   toolUseIdsV112?: string[];
   /** Monotone actual encounter index, matching missionProgress.attempts at launch. */
   harvestEncounterRunV112?: number;
+  /** V169 : gestes de rite réellement terminés (marque, dépeçage, suspension) et leur nature. */
+  riteEventsV169?: import("./systems/honorSourcesV169").RiteHonorEventV169[];
   kills: number;
   scans: number;
   /** Stable V7/V8 roster identities encountered during this hunt. */
@@ -733,4 +735,9 @@ export interface SaveGame {
   homeworld: HomeworldProgress;
   /** Evidence and warrants are independent of honor and versus matches. */
   justice: JusticeProgress;
+  /**
+   * V169 : événements d'honneur déjà réglés hors des chasses (contrats,
+   * chronique, verdicts…) et rites par rencontre. Absent : sauvegarde antérieure.
+   */
+  honorSourcesV169?: import("./systems/honorSourcesV169").HonorSourceLedgerV169 | null;
 }
