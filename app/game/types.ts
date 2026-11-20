@@ -631,6 +631,11 @@ export interface MissionProgress {
 export interface PlayerProfile {
   hunterName: string;
   rankId: RankId;
+  /**
+   * V166 : rang acquis, jamais perdu quand l'honneur redescend (bible). Absent
+   * d'une sauvegarde antérieure : la migration garde le rang qu'elle affichait.
+   */
+  acquiredRankIdV166?: RankId;
   honor: number;
   clanMarks: number;
   playTimeSeconds: number;

@@ -1,25 +1,31 @@
 /**
- * V164 — Branche Warp « Tantalus 2204 » (crossover USS Tantalus, station Asphodèle).
+ * V164 → V167 — Branche Warp « Tantalus 2204 » (crossover USS Tantalus, station Asphodèle).
  *
  * Source : docs/campagne/BIBLE_DE_CAMPAGNE.md, « Crossover : USS Tantalus »
  * (décisions du 6 novembre : 2204 s'atteint par le Warp ; le sort de l'Echo-8
- * est le choix du joueur), « Warp gate d'après le lore NECA » et le classeur V6
- * (WARP-R01, R05, R22 ; V5 États communs STATE5-25 → STATE5-30).
+ * est le choix du joueur ; décision du 20 novembre 2026 : exception — le Warp
+ * peut aussi atteindre 2204, branche du Warp ; le classeur V6 n'a pas d'époque
+ * 2204), « Warp gate d'après le lore NECA » et le classeur V6 (WARP-R01, R05,
+ * R22 ; V5 États communs STATE5-25 → STATE5-30).
  *
- * La quête et l'installation sont lues dans le dossier Warp commun
- * (R2-M030 → M032). Ce module conserve uniquement les voyages et les choix
- * propres à la branche Tantalus (STATE5-27 → STATE5-30).
+ * V167 : la branche est raccordée à la base Warp (`warpEpochsV165.ts`). Le
+ * départ, le voyage engagé (un seul à la fois, toutes branches confondues),
+ * le retour réservé et l'état de branche sont ceux de `warpEpochsV165`. La
+ * porte isolée de V164 (lecture `warp-universe` de la chronique) est
+ * supprimée. Ce module garde : les données de la mission, le choix de
+ * l'Echo-8, et la lecture des anciens dossiers `tantalusV164`, importés dans
+ * l'état Warp à la première écriture.
  */
-import { evaluateChronicleAccess, type ChronicleAccessContext, type ChronicleRequirement } from "./clanChronicle";
-import { shipAcquisitionOwnedHullV89 } from "./shipAcquisitionV89";
-import { canReturnFromWarpV165, inspectWarpEpochsV165 } from "./warpEpochsV165";
+import {
+  WARP_TANTALUS_BRANCH_ID_V165, branchVisitV165, createWarpEpochsV165, emptyBranchVisitV165, normalizeWarpEpochsV165,
+  type WarpEpochsStateV165, type WarpUpdateV165,
+} from "./warpEpochsV165";
 
 export const TANTALUS_LEDGER_VERSION_V164 = 1 as const;
 /** STATE5-27 : identifiant de branche. Le présent et la branche gardent des populations distinctes. */
-export const TANTALUS_BRANCH_ID_V164 = "warp-tantalus-2204" as const;
+export const TANTALUS_BRANCH_ID_V164 = WARP_TANTALUS_BRANCH_ID_V165;
 export const TANTALUS_YEAR_V164 = 2204 as const;
 
-export type WarpQuestOutcomeV164 = "non_commence" | "en_cours" | "reussi" | "echoue"; // STATE5-25
 export type WarpReturnReservationV164 = "inactive" | "reservee" | "utilisee"; // STATE5-29
 export type TantalusEcho8ChoiceV164 = "emporte" | "marque";
 
@@ -46,22 +52,6 @@ export interface TantalusLedgerV164 {
   consumedEventIds: readonly string[];
 }
 
-/** Conditions de départ, dans le vocabulaire du classeur (WARP-R01, STATE5-25/26). */
-export interface TantalusWarpGateInputV164 {
-  chronicle: unknown;
-  personalShipAvailable: boolean;
-  /** STATE5-25 : issue lue dans le dossier de la quête commune. */
-  warpQuestOutcome?: WarpQuestOutcomeV164;
-  /** STATE5-26 : installation matérielle vérifiée. */
-  warpModuleInstalled: boolean;
-  /** STATE5-28 : un voyage engagé dans une autre branche Warp (base Warp, PR #162) bloque ce départ. */
-  otherWarpTripActive?: boolean;
-}
-export interface TantalusGateV164 {
-  allowed: boolean;
-  missing: readonly ChronicleRequirement[];
-}
-
 export type TantalusContentStatusV164 = "implemente" | "non_implemente";
 export interface TantalusBeatV164 {
   id: string;
@@ -72,7 +62,7 @@ export interface TantalusBeatV164 {
 }
 /** Déroulé de la mission annexe « Le silence d'Asphodèle » (bible, mission proposée). */
 export const TANTALUS_BEATS_V164: readonly TantalusBeatV164[] = Object.freeze([
-  { id: "acces-warp", label: "Branche Warp vers 2204", source: "2204 s'atteint par le Warp (décision du 6 novembre).", status: "implemente" },
+  { id: "acces-warp", label: "Branche Warp vers 2204", source: "2204 s'atteint par le Warp (décision du 6 novembre) ; exception écrite dans la bible : 2204 est une branche du Warp (décision du 20 novembre 2026).", status: "implemente" },
   { id: "abordage", label: "Abordage par l'anneau extérieur", source: "Le chasseur aborde Asphodèle par l'anneau extérieur, avant l'arrivée du Tantalus.", status: "non_implemente" },
   { id: "chasse-ponts", label: "Chasse dans les ponts inférieurs", source: "Il chasse les Xénomorphes nés du conteneur QZ17 dans les ponts inférieurs.", status: "non_implemente" },
   { id: "discretion", label: "Rester caché de Crucible et de CASSIUS", source: "En restant caché des récupérateurs Crucible et de CASSIUS.", status: "non_implemente" },
@@ -98,7 +88,7 @@ export function createTantalusLedgerV164(owner: string): TantalusLedgerV164 | nu
   return { version: TANTALUS_LEDGER_VERSION_V164, ownerSaveCreatedAt: owner, activeTrip: null, echo8: null, completedTripIds: [], consumedEventIds: [] };
 }
 
-/** Strict : null pour toute forme inconnue, y compris une version future (voir inspect). */
+/** Ancien format V164 (lecture seule). Strict : null pour toute forme inconnue, y compris une version future (voir inspect). */
 export function normalizeTantalusLedgerV164(raw: unknown, owner?: string): TantalusLedgerV164 | null {
   if (!record(raw) || raw.version !== TANTALUS_LEDGER_VERSION_V164 || !iso(raw.ownerSaveCreatedAt)) return null;
   if (owner !== undefined && raw.ownerSaveCreatedAt !== owner) return null;
@@ -132,96 +122,81 @@ export function inspectTantalusLedgerV164(raw: unknown, owner: unknown): Tantalu
   return typeof owner === "string" && normalizeTantalusLedgerV164(raw, owner) ? "valid" : "invalid";
 }
 
-/** WARP-R01 par l'accès existant `warp-universe` (Blooded, vaisseau, Adjutant, quête commune, module). */
-export function evaluateTantalusGateV164(input: TantalusWarpGateInputV164): TantalusGateV164 {
-  const access = evaluateChronicleAccess(input.chronicle, "warp-universe", {
-    personalShipAvailable: input.personalShipAvailable === true,
-    warpModuleInstalled: input.warpModuleInstalled === true,
-  });
-  // Le résultat explicite de la quête commune fait foi sur le reçu de chronique.
-  const missing = access.missing.filter(m => m.id !== "warp-module-quest" || input.warpQuestOutcome !== "reussi");
-  if (input.warpQuestOutcome !== undefined && input.warpQuestOutcome !== "reussi" && !missing.some(m => m.id === "warp-module-quest")) {
-    missing.push({ id: "warp-module-quest", label: "Quête commune du Warp réussie" });
-  }
-  if (input.otherWarpTripActive === true) missing.push({ id: "trip-active", label: "Un autre voyage Warp est déjà engagé" });
-  return { allowed: missing.length === 0, missing };
+// ---------------------------------------------------------------------------
+// V167 — raccordement à la base Warp
+// ---------------------------------------------------------------------------
+
+/** Événement de la branche (`trip:<voyage>:echo8`) : un même voyage ne choisit qu'une fois. */
+export function chooseTantalusEcho8V167(state: WarpEpochsStateV165, choice: TantalusEcho8ChoiceV164): WarpUpdateV165 {
+  const refuse = (message: string): WarpUpdateV165 => ({ accepted: false, changed: false, state, message });
+  if (!state.activeWarpTripId || state.activeTripBranchId !== TANTALUS_BRANCH_ID_V164)
+    return refuse("L'Echo-8 se trouve dans la branche 2204 : engager d'abord le voyage vers 2204.");
+  if (choice !== "emporte" && choice !== "marque") return refuse("Choix inconnu.");
+  const eventId = `trip:${state.activeWarpTripId}:echo8`;
+  if (state.consumedEventIds.includes(eventId)) return { accepted: true, changed: false, state, message: "Événement déjà appliqué." };
+  const visit = branchVisitV165(state, TANTALUS_BRANCH_ID_V164);
+  if (visit.echo8) return refuse("Le sort de l'Echo-8 est déjà décidé dans cette branche.");
+  const label = TANTALUS_ECHO8_CHOICES_V164.find(c => c.id === choice)!;
+  return { accepted: true, changed: true, message: label.label + ". " + label.consequence, state: {
+    ...state,
+    branchVisitState: { ...state.branchVisitState, [TANTALUS_BRANCH_ID_V164]: { ...visit, echo8: { choice, tripId: state.activeWarpTripId } } },
+    consumedEventIds: [...state.consumedEventIds, eventId],
+  } };
 }
 
-export type TantalusActionV164 =
-  | { kind: "depart"; eventId: string }
-  | { kind: "echo8"; eventId: string; choice: TantalusEcho8ChoiceV164 }
-  | { kind: "return"; eventId: string };
-export interface TantalusResultV164 {
-  accepted: boolean;
-  changed: boolean;
-  ledger: TantalusLedgerV164 | null;
-  message: string;
+/** Vue lisible (STATE5-27 → 30) tirée de l'état Warp commun. */
+export function tantalusViewV167(state: WarpEpochsStateV165 | null) {
+  const visit = state ? branchVisitV165(state, TANTALUS_BRANCH_ID_V164) : emptyBranchVisitV165();
+  const inBranch = !!state?.activeWarpTripId && state.activeTripBranchId === TANTALUS_BRANCH_ID_V164;
+  return {
+    inBranch,
+    activeWarpTripId: inBranch ? state!.activeWarpTripId : null,
+    otherTripBranchId: state?.activeWarpTripId && !inBranch ? state.activeTripBranchId : null,
+    echo8: visit.echo8?.choice ?? null,
+    visits: visit.visits,
+  };
+}
+
+export interface TantalusLegacyMergeV167 {
+  /** null : état Warp illisible (rien n'est fusionné ni écrit). */
+  state: WarpEpochsStateV165 | null;
+  /** Vrai si le dossier `tantalusV164` a été repris : il peut être effacé dans la même écriture. */
+  importedLegacy: boolean;
+  /** Vrai si un ancien voyage 2204 engagé attend la fin d'un autre voyage pour être repris (proposé). */
+  pendingLegacy: boolean;
 }
 
 /**
- * Transition unique. Le départ vérifie les conditions ; le choix et le retour ne
- * les revérifient pas (WARP-R01 : une condition perdue après départ ne supprime
- * jamais le retour engagé ; STATE5-29).
+ * Lit un ancien dossier `tantalusV164` dans l'état Warp, sans perte :
+ * voyages terminés → visites ; Echo-8 → état de branche ; voyage engagé →
+ * voyage Warp engagé avec retour réservé (STATE5-29, honoré même sans module).
+ * Si un autre voyage Warp est déjà engagé, l'ancien dossier reste tel quel et
+ * sera repris après ce retour (règle proposée : ce cas n'existe que dans une
+ * sauvegarde ayant fait tourner séparément les deux PR).
  */
-export function actTantalusV164(raw: unknown, owner: string, action: TantalusActionV164, gate: TantalusWarpGateInputV164): TantalusResultV164 {
-  const base = raw === undefined || raw === null ? createTantalusLedgerV164(owner) : normalizeTantalusLedgerV164(raw, owner);
-  const refuse = (message: string): TantalusResultV164 => ({ accepted: false, changed: false, ledger: base, message });
-  if (!base) return refuse("Dossier Tantalus illisible ou d'une autre campagne : rien n'est modifié.");
-  if (!record(action) || !ident(action.eventId)) return refuse("Événement sans identifiant.");
-  if (base.consumedEventIds.includes(action.eventId)) {
-    return { accepted: true, changed: false, ledger: base, message: "Événement déjà enregistré : il ne s'applique pas à nouveau." };
-  }
-  if (base.consumedEventIds.length >= MAX_IDS - 2) return refuse("Journal de branche plein.");
-  const consumed = [...base.consumedEventIds, action.eventId];
-  switch (action.kind) {
-    case "depart": {
-      if (base.activeTrip) return refuse("Un voyage est déjà engagé : rentrer d'abord par la fenêtre réservée.");
-      const evaluation = evaluateTantalusGateV164(gate);
-      if (!evaluation.allowed) return refuse("Départ refusé : " + evaluation.missing.map(m => m.label).join(" ; ") + ".");
-      return { accepted: true, changed: true, message: "Seuil franchi. Arrivée en 2204, Tantalus Reach, en vue de la station Asphodèle. Retour réservé.",
-        ledger: { ...base, consumedEventIds: consumed, activeTrip: { tripId: action.eventId, branchId: TANTALUS_BRANCH_ID_V164, returnReservation: "reservee" } } };
-    }
-    case "echo8": {
-      if (!base.activeTrip) return refuse("L'Echo-8 se trouve dans la branche 2204 : engager d'abord le voyage.");
-      if (base.echo8) return refuse("Le sort de l'Echo-8 est déjà décidé dans cette branche.");
-      if (action.choice !== "emporte" && action.choice !== "marque") return refuse("Choix inconnu.");
-      const label = TANTALUS_ECHO8_CHOICES_V164.find(c => c.id === action.choice)!;
-      return { accepted: true, changed: true, message: label.label + ". " + label.consequence,
-        ledger: { ...base, consumedEventIds: consumed, echo8: { choice: action.choice, eventId: action.eventId, tripId: base.activeTrip.tripId } } };
-    }
-    case "return": {
-      const trip = base.activeTrip;
-      if (!trip || trip.returnReservation !== "reservee") return refuse("Aucun retour réservé.");
-      return { accepted: true, changed: true, message: "Retour par la fenêtre réservée. La branche 2204 garde son état.",
-        ledger: { ...base, consumedEventIds: consumed, activeTrip: null, completedTripIds: [...base.completedTripIds, trip.tripId] } };
-    }
-    default: return refuse("Action inconnue.");
-  }
+export function mergeLegacyTantalusV167(warpRaw: unknown, legacyRaw: unknown, owner: string): TantalusLegacyMergeV167 {
+  const warpPresent = warpRaw !== undefined && warpRaw !== null;
+  const warp = warpPresent ? normalizeWarpEpochsV165(warpRaw, owner) : null;
+  if (warpPresent && !warp) return { state: null, importedLegacy: false, pendingLegacy: false };
+  const legacy = legacyRaw === undefined || legacyRaw === null ? null : normalizeTantalusLedgerV164(legacyRaw, owner);
+  if (!legacy) return { state: warp, importedLegacy: false, pendingLegacy: false };
+  const base = warp ?? createWarpEpochsV165(owner);
+  if (legacy.activeTrip && base.activeWarpTripId) return { state: base, importedLegacy: false, pendingLegacy: true };
+  const visit = branchVisitV165(base, TANTALUS_BRANCH_ID_V164);
+  const trips = legacy.completedTripIds.length + (legacy.activeTrip ? 1 : 0);
+  const echo8 = visit.echo8 ?? (legacy.echo8 ? { choice: legacy.echo8.choice, tripId: legacy.echo8.tripId } : undefined);
+  const next: WarpEpochsStateV165 = {
+    ...base,
+    tripCount: base.tripCount + trips,
+    branchVisitState: { ...base.branchVisitState, [TANTALUS_BRANCH_ID_V164]: { ...visit, visits: visit.visits + trips, ...(echo8 ? { echo8 } : {}) } },
+    ...(legacy.activeTrip ? {
+      warpBranchId: TANTALUS_BRANCH_ID_V164, activeWarpTripId: legacy.activeTrip.tripId,
+      activeTripBranchId: TANTALUS_BRANCH_ID_V164, warpReturnReservation: "reservee" as const,
+    } : {}),
+    consumedEventIds: [...base.consumedEventIds, ...legacy.consumedEventIds.filter(id => !base.consumedEventIds.includes(id))],
+  };
+  // Le résultat doit rester un état Warp valide ; sinon rien n'est repris.
+  const checked = normalizeWarpEpochsV165(next, owner);
+  return checked ? { state: checked, importedLegacy: true, pendingLegacy: false } : { state: base, importedLegacy: false, pendingLegacy: true };
 }
 
-/** Vue lisible pour l'interface (STATE5-28/29 dérivés du dossier). */
-export function tantalusViewV164(ledger: TantalusLedgerV164 | null) {
-  return {
-    activeWarpTripId: ledger?.activeTrip?.tripId ?? null,
-    warpBranchId: ledger?.activeTrip ? TANTALUS_BRANCH_ID_V164 : null,
-    warpReturnReservation: (ledger?.activeTrip ? "reservee" : ledger?.completedTripIds.length ? "utilisee" : "inactive") as WarpReturnReservationV164,
-    echo8: ledger?.echo8?.choice ?? null,
-    trips: ledger?.completedTripIds.length ?? 0,
-  };
-}
-
-/** Lit le dossier Warp de cette campagne et les preuves réelles de possession. */
-export function tantalusGateFromSaveV164(
-  save: { createdAt: string; prologue?: { chronicle?: unknown } | null; shipAcquisitionV89?: unknown; warpEpochsV165?: unknown },
-  ship: ChronicleAccessContext = {},
-): TantalusWarpGateInputV164 {
-  const { state } = inspectWarpEpochsV165(save.warpEpochsV165, save.createdAt);
-  return {
-    chronicle: save.prologue?.chronicle ?? null,
-    personalShipAvailable: ship.personalShipAvailable === true ||
-      shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt) !== null,
-    warpQuestOutcome: state?.warpQuestOutcome ?? "non_commence",
-    warpModuleInstalled: state?.warpModuleInstalled === true,
-    otherWarpTripActive: canReturnFromWarpV165(state),
-  };
-}

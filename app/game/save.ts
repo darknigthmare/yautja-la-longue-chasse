@@ -1,3 +1,4 @@
+import { HONOR_RANK_THRESHOLDS_V166, missionHonorRewardV166, resolveAcquiredRankV166 } from "./systems/honorProgressionV166";
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
 import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -136,12 +137,12 @@ export const SAVE_MAX_SERIALIZED_BYTES = 1024 * 1024;
 const SAVE_EXPORT_FORMAT = "yautja-long-hunt.save-export";
 const FINAL_STORY_MISSION_ID: MissionId = "ruins-ancient-guardian";
 
-export const RANK_THRESHOLDS: Readonly<Record<RankId, number>> = {
-  "young-blood": 0,
-  blooded: 250,
-  elite: 650,
-  elder: 1_800,
-};
+/**
+ * V166 : seuils de la bible (« Seuils d'honneur — décision ») pour les rangs
+ * que la piste de carrière connaît ; voir systems/honorProgressionV166.ts.
+ * Avant V166 : blooded 250, elite 650, elder 1 800.
+ */
+export const RANK_THRESHOLDS: Readonly<Record<RankId, number>> = HONOR_RANK_THRESHOLDS_V166;
 
 const DEFAULT_LOADOUT: Loadout = {
   armorId: "hunter",
@@ -280,11 +281,6 @@ const MAX_DISCOVERED_ENEMY_INPUT_ITEMS = Math.max(
 // Apex claims. Keep enough physical slots to complete that collection while
 // still bounding malformed or endlessly replayed saves.
 const MAX_TROPHY_RECORDS = 500;
-const REPLAY_HONOR_BASE_RATE = 0.05;
-const REPLAY_HONOR_SCORE_RATE = 0.1;
-const REPLAY_HONOR_EVENT_RATE = 0.5;
-const REPLAY_HONOR_PROGRESS_CAP = 20;
-const REPLAY_HONOR_RAW_CAP = 40;
 
 const TROPHY_QUALITY_ORDER: Readonly<Record<TrophyQuality, number>> = {
   worthy: 1,
@@ -376,6 +372,7 @@ export function defaultSave(now = new Date().toISOString()): SaveGame {
     profile: {
       hunterName: "Chasseur sans nom",
       rankId: "young-blood",
+      acquiredRankIdV166: "young-blood",
       honor: 0,
       clanMarks: 0,
       playTimeSeconds: 0,
@@ -1021,17 +1018,8 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
     .slice(-MAX_TROPHY_RECORDS);
 }
 
-function rankForHonor(honor: number): RankId {
-  if (honor >= RANK_THRESHOLDS.elder) {
-    return "elder";
-  }
-  if (honor >= RANK_THRESHOLDS.elite) {
-    return "elite";
-  }
-  if (honor >= RANK_THRESHOLDS.blooded) {
-    return "blooded";
-  }
-  return "young-blood";
+function campaignRankForHonor(honor: number, acquiredRank: unknown, tribunal: SaveGame["tribunalV147"]): RankId {
+  return effectiveRankV147(resolveAcquiredRankV166(honor, acquiredRank), tribunal);
 }
 
 function normalizeLoadout(
@@ -1195,6 +1183,7 @@ export function normalizeSave(value: unknown): SaveGame {
   );
   const tribunalV147 = source.tribunalV147 === undefined || source.tribunalV147 === null
     ? null : normalizeHonorTribunalV147(source.tribunalV147);
+  const acquiredRankId = campaignRankForHonor(honor, rawProfile.acquiredRankIdV166, tribunalV147);
   const requestedDifficultyId = isOneOf(
     rawSettings.difficultyId,
     DIFFICULTY_IDS,
@@ -1258,7 +1247,8 @@ export function normalizeSave(value: unknown): SaveGame {
         rawProfile.hunterName,
         fallback.profile.hunterName,
       ).slice(0, 32),
-      rankId: effectiveRankV147(rankForHonor(honor), tribunalV147),
+      rankId: acquiredRankId,
+      acquiredRankIdV166: acquiredRankId,
       honor,
       clanMarks: nonNegativeInteger(
         rawProfile.clanMarks,
@@ -2546,27 +2536,17 @@ export function applyMissionResult(
     )
       ? Math.round(qualityBonus / 2)
       : 0;
-  const replayMasteryHonor =
-    Math.max(
-      5,
-      Math.round(mission.baseRewards.honor * REPLAY_HONOR_BASE_RATE),
-    ) +
-    Math.round(score * REPLAY_HONOR_SCORE_RATE) +
-    Math.round(eventHonor * REPLAY_HONOR_EVENT_RATE);
-  const replayProgressHonor = Math.min(
-    REPLAY_HONOR_PROGRESS_CAP,
-    scoreImprovement * 2 + replayQualityBonus,
-  );
-  const rawHonorReward = firstCompletion
-    ? mission.baseRewards.honor + eventHonor + qualityBonus
-    : Math.min(
-        REPLAY_HONOR_RAW_CAP,
-        replayMasteryHonor + replayProgressHonor,
-      );
-  const honorReward = Math.round(
-    Math.max(firstCompletion ? -50 : 0, rawHonorReward) *
-      difficulty.rewardMultiplier,
-  );
+  // V166 : première réussite inchangée ; gains en rejouant relevés (proposé).
+  const honorReward = missionHonorRewardV166({
+    baseHonor: mission.baseRewards.honor,
+    firstCompletion,
+    eventHonor,
+    score,
+    qualityBonus,
+    replayQualityBonus,
+    scoreImprovement,
+    rewardMultiplier: difficulty.rewardMultiplier,
+  });
   const replayMultiplier = firstCompletion ? 1 : 0.35;
   const clanMarksReward = Math.round(
     (mission.baseRewards.clanMarks + score * 1.5) *
@@ -2574,6 +2554,7 @@ export function applyMissionResult(
       replayMultiplier,
   );
   const nextHonor = Math.max(0, save.profile.honor + honorReward);
+  const nextRankId = campaignRankForHonor(nextHonor, save.profile.acquiredRankIdV166, save.tribunalV147);
   const nextMission = MISSIONS.find(
     (candidate) => candidate.order === mission.order + 1,
   );
@@ -2617,7 +2598,8 @@ export function applyMissionResult(
     exploration,
     profile: {
       ...save.profile,
-      rankId: effectiveRankV147(rankForHonor(nextHonor), save.tribunalV147),
+      rankId: nextRankId,
+      acquiredRankIdV166: nextRankId,
       honor: nextHonor,
       clanMarks: save.profile.clanMarks + clanMarksReward,
       playTimeSeconds: save.profile.playTimeSeconds + elapsedSeconds,
@@ -2721,10 +2703,11 @@ export function applyTribunalActionToSaveV147(save: SaveGame, action: TribunalAc
     declaration: save.justice.declaration, now,
   });
   const honor = result.honor;
+  const rankId = campaignRankForHonor(honor, save.profile.acquiredRankIdV166, result.tribunal);
   return {
     result,
     update: {
-      profile: { ...save.profile, honor, rankId: effectiveRankV147(rankForHonor(honor), result.tribunal) },
+      profile: { ...save.profile, honor, rankId, acquiredRankIdV166: rankId },
       justice: { ...save.justice, declaration: result.declaration },
       tribunalV147: result.ok ? result.tribunal : tribunal,
     },

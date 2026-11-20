@@ -466,7 +466,7 @@ La note parlait de « Glacier Moon » et « Swamp Moon » : elles deviennent des
 
 ### Époque, cités, Matriarches, races
 
-**Époque (révisée) :** la campagne suit toute la vie du Yautja, sur des siècles. Le joueur naît à l'époque des films (1987-2025) ; des ellipses de plusieurs décennies séparent les rangs. La fin de jeu (Elder et au-delà) atteint naturellement l'époque coloniale et 2204 (crossover *Tantalus*, Weyland-Yutani et ses synthétiques, OWLF héritière). Le Warp sert aux époques passées. Canon : Greyback vient sur Terre au XVIIIe siècle puis en 1997 (bio NECA), ce qui situe l'échelle d'une vie. *(Proposé : dates indicatives Youngling → Blooded 1990-2025 ; Elite vers 2050-2100 ; Clan Leader à Adjudicator 2100-2200 ; Philosopher et Black God après 2204.)*
+**Époque (révisée) :** la campagne suit toute la vie du Yautja, sur des siècles. Le joueur naît à l'époque des films (1987-2025) ; des ellipses de plusieurs décennies séparent les rangs. La fin de jeu (Elder et au-delà) atteint naturellement l'époque coloniale et 2204 (crossover *Tantalus*, Weyland-Yutani et ses synthétiques, OWLF héritière). Le Warp sert aux époques passées. Décision du 20 novembre 2026 : exception — le Warp peut aussi atteindre 2204 (Tantalus) ; 2204 est une branche du Warp ; le classeur V6 n'a pas d'époque 2204. Canon : Greyback vient sur Terre au XVIIIe siècle puis en 1997 (bio NECA), ce qui situe l'échelle d'une vie. *(Proposé : dates indicatives Youngling → Blooded 1990-2025 ; Elite vers 2050-2100 ; Clan Leader à Adjudicator 2100-2200 ; Philosopher et Black God après 2204.)*
 
 **Cités :** chaque clan a sa cité sur Yautja Prime. La cité déjà construite (12 quartiers) devient celle du clan d'origine du joueur ; les cités des clans alliés et rivaux se visitent par les régions et les skiffs. *(Proposé : 3 cités visitables au départ, plus la cité du clan fondé par le joueur.)*
 
@@ -1195,6 +1195,8 @@ Source : la bible de campagne d'*Aliens: Tantalus Frontier* (dépôt `darknigthm
 *Production (proposé)* — **Props :** anneau extérieur, pont de contrôle, laboratoire, berceaux QZ17, barricades de l'Echo-8 (réutiliser les assets de *Tantalus Frontier* si les licences des deux dépôts le permettent). **SFX :** alarme de quarantaine, voix de CASSIUS, détecteur de mouvement des Marines. **Musique :** MUS-41.
 
 **À décider :** rien. Décisions du 6 novembre : 2204 s'atteint par le Warp (époque future) ; le sort de l'Echo-8 est le choix du joueur (emporté pour l'honorer, ce qui colle à « plaque retrouvée, jamais le corps », ou laissé avec une marque gravée). À reporter dans le point ouvert n°5 de la bible *Tantalus* (« le fil Echo-8 est-il conservé ? »).
+
+Décision du 20 novembre 2026 : exception — le Warp peut aussi atteindre 2204 (Tantalus) ; 2204 est une branche du Warp ; le classeur V6 n'a pas d'époque 2204.
 
 ## Catalogue des variantes d'équipement : prompts d'image
 

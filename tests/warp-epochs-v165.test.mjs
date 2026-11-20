@@ -180,5 +180,6 @@ test("rendu SSR du panneau et intégration au client", () => {
   assert.match(html2, /data-warp-return="reservee"/);
   const client = readFileSync(new URL("../app/game/GameClient.tsx", import.meta.url), "utf8");
   assert.match(client, /const WarpEpochsPanelV165 = React\.lazy\(\(\) => import\("\.\/WarpEpochsPanelV165"\)\)/);
-  assert.match(client, /persistSocialProgress\(\{ warpEpochsV165: state \}\)/);
+  // V167 : l'écriture efface aussi l'ancien dossier tantalusV164 une fois repris dans l'état Warp.
+  assert.match(client, /persistSocialProgress\(clearLegacyTantalus \? \{ warpEpochsV165: state, tantalusV164: null \} : \{ warpEpochsV165: state \}\)/);
 });

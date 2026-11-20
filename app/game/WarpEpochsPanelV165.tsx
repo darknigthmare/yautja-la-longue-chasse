@@ -12,7 +12,8 @@ import {
   warpAccessContextFromSaveV165, warpConditionsV165, warpW02HuntMissionV165,
   type WarpEpochsStateV165, type WarpUpdateV165,
 } from "./systems/warpEpochsV165";
-import { normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
+import { mergeLegacyTantalusV167 } from "./systems/tantalusV164";
+import TantalusPanelV164 from "./TantalusPanelV164";
 import styles from "./WarpEpochsPanelV165.module.css";
 
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
@@ -21,17 +22,18 @@ export interface WarpEpochsPanelV165Props {
   save: SaveGame;
   /** Disponibilité réelle du vaisseau, lue par le client (jamais devinée ici). */
   shipContext?: ChronicleAccessContext;
-  /** Écrit l'état dans la sauvegarde ; false si l'écriture est refusée. */
-  onPersist(state: WarpEpochsStateV165): boolean;
+  /** Écrit l'état dans la sauvegarde ; false si l'écriture est refusée.
+   * `clearLegacyTantalus` (V167) : l'ancien dossier `tantalusV164` est repris
+   * dans `state` et doit être effacé dans la même écriture. */
+  onPersist(state: WarpEpochsStateV165, clearLegacyTantalus?: boolean): boolean;
   onClose(): void;
 }
 
 export default function WarpEpochsPanelV165({ save, shipContext = { personalShipAvailable: false }, onPersist, onClose }: WarpEpochsPanelV165Props) {
-  const state = useMemo(() => normalizeWarpEpochsV165(save.warpEpochsV165, save.createdAt) ?? createWarpEpochsV165(save.createdAt), [save]);
-  const ctx = useMemo(() => ({
-    ...warpAccessContextFromSaveV165(save, shipContext),
-    otherWarpTripActive: Boolean(normalizeTantalusLedgerV164(save.tantalusV164, save.createdAt)?.activeTrip),
-  }), [save, shipContext]);
+  // V167 : un ancien dossier `tantalusV164` est relu dans l'état Warp commun.
+  const merged = useMemo(() => mergeLegacyTantalusV167(save.warpEpochsV165, save.tantalusV164, save.createdAt), [save]);
+  const state = useMemo(() => merged.state ?? normalizeWarpEpochsV165(save.warpEpochsV165, save.createdAt) ?? createWarpEpochsV165(save.createdAt), [merged, save]);
+  const ctx = useMemo(() => warpAccessContextFromSaveV165(save, shipContext), [save, shipContext]);
   const [message, setMessage] = useState("");
   const [hunting, setHunting] = useState(false);
   const base = MISSIONS.find(mission => mission.id === W02_HUNT_BASE_MISSION_ID_V165);
@@ -39,7 +41,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
 
   const apply = (update: WarpUpdateV165) => {
     if (!update.accepted) { setMessage(update.message); return false; }
-    if (update.changed && !onPersist(update.state)) { setMessage("Sauvegarde refusée : aucun changement appliqué."); return false; }
+    if (update.changed && !onPersist(update.state, merged.importedLegacy)) { setMessage("Sauvegarde refusée : aucun changement appliqué."); return false; }
     setMessage(update.message); return true;
   };
   const finishHunt = (result: MissionResult, aborted: boolean) => {
@@ -78,7 +80,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
       <div><p className={styles.eyebrow}>WARP · ÉPOQUES · V165</p><h2 id="warp-v165-title">Le Warp</h2></div>
       <button type="button" onClick={onClose} disabled={!!state.activeWarpTripId} title={state.activeWarpTripId ? "Reviens d'abord par le retour réservé" : undefined}>Retour</button>
     </header>
-    <p className={styles.notice}>Chapitre facultatif : aucune mission Warp ne valide un rang (WARP-R02, WARP-R24). Seule la branche W-02 (Japon féodal, 1629) est jouable ; les autres sont décrites et marquées non implémentées.</p>
+    <p className={styles.notice}>Chapitre facultatif : aucune mission Warp ne valide un rang (WARP-R02, WARP-R24). Branches jouables : W-02 (Japon féodal, 1629) et 2204 (Tantalus, exception écrite dans la bible le 20 novembre 2026) ; les autres sont décrites et marquées non implémentées.</p>
     <p className={styles.message} role="status" aria-live="polite">{message}</p>
 
     <div className={styles.section}>
@@ -158,6 +160,8 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
       <ul className={styles.list}>{WARP_W02_CONTRACTS_V165.map(contract => <li key={contract.id}>{contract.label} — non implémenté. {contract.note}</li>)}</ul>
       {w02.epochCompleted && <p className={styles.ok}>Époque terminée dans cette branche.</p>}
     </div>
+
+    <TantalusPanelV164 state={state} onApply={apply} pendingLegacy={merged.pendingLegacy} />
 
     {state.echoes.length > 0 && <div className={styles.section} data-warp-echoes={state.echoes.length}>
       <h3>Échos temporels</h3>

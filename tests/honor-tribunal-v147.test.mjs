@@ -164,7 +164,9 @@ test("V147 save: field only when present, rank frozen in the profile, future ver
   const base = m.defaultSave();
   const fresh = m.normalizeSave(base);
   assert.equal("tribunalV147" in fresh, false);
-  const save = m.normalizeSave({ ...base, profile: { ...base.profile, honor: 3000 }, statistics: { ...base.statistics, missionsCompleted: 2 } });
+  const legacy = { ...base, profile: { ...base.profile, honor: 3000 }, statistics: { ...base.statistics, missionsCompleted: 2 } };
+  delete legacy.profile.acquiredRankIdV166;
+  const save = m.normalizeSave(legacy);
   assert.equal(save.profile.rankId, "elder");
   const rec = m.recordInfractionOnSaveV147(save, { kind: "kill-defenseless-or-unworthy", jurisdiction: "internal", witnesses, traces: traces(), recordedAt: NOW });
   let current = m.normalizeSave({ ...save, tribunalV147: rec.tribunalV147 });
@@ -182,6 +184,33 @@ test("V147 save: field only when present, rank frozen in the profile, future ver
   assert.deepEqual(round.save.tribunalV147, current.tribunalV147);
   const future = m.parseSaveImport(JSON.stringify({ ...current, tribunalV147: { ...current.tribunalV147, version: 2 } }));
   assert.equal(future.failure, "future-version");
+});
+
+test("V166 keeps a migrated freeze through an honour threshold and promotes only after reparation", async () => {
+  const m = await bundle;
+  const { tribunal, infractionId } = record(m, null, "kill-defenseless-or-unworthy");
+  const sentenced = playTrial(m, tribunal, infractionId, {}, ctx({
+    rankId: "blooded", honor: 1800, currentRankThreshold: 1500,
+  }));
+  assert.equal(sentenced.verdict.outcome, "judgment");
+  const save = m.defaultSave(NOW);
+  save.profile.honor = 5200;
+  delete save.profile.acquiredRankIdV166;
+  save.statistics.missionsCompleted = 5;
+  save.tribunalV147 = sentenced.tribunal;
+
+  const frozen = m.normalizeSave(save);
+  assert.equal(frozen.profile.rankId, "blooded");
+  assert.equal(frozen.profile.acquiredRankIdV166, "blooded");
+  assert.equal(m.normalizeSave(frozen).profile.acquiredRankIdV166, "blooded");
+
+  const { result, update } = m.applyTribunalActionToSaveV147(frozen, { type: "complete-reparation" }, NOW);
+  assert.equal(result.ok, true, result.message);
+  assert.equal(update.tribunalV147.freeze, null);
+  assert.equal(update.profile.rankId, "elite");
+  assert.equal(update.profile.acquiredRankIdV166, "elite");
+  const later = m.normalizeSave({ ...frozen, ...update, profile: { ...update.profile, honor: 1200 } });
+  assert.equal(later.profile.rankId, "elite", "a legally acquired rank survives lower honour");
 });
 
 test("V147 normalisation drops inconsistent records instead of inventing state", async () => {

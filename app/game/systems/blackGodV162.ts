@@ -28,13 +28,15 @@
 import type { BiomaskId, SaveGame, WeaponId } from "../types";
 import { getChronicleRank } from "./clanChronicle";
 import { hardcoreDeathRecordedV155, isFutureHardcoreV155 } from "./hardcoreV155";
+import { BLACK_GOD_HONOR_THRESHOLD_V166 } from "./honorProgressionV166";
+import { rankTrialsBlockedV147 } from "./honorTribunalV147";
 import {
   isFutureHeritageV152, normalizeHeritageV152, sealBlackGodSacrificeTestamentV152, type HeritageStateV152,
 } from "./heritageV152";
 
 export const BLACK_GOD_V162_VERSION = 1 as const;
 /** Bible, « Seuils d'honneur » : Level 10 Black God, 40 000 d'honneur cumulé (valeur proposée dans la bible). */
-export const BLACK_GOD_HONOR_THRESHOLD_V162 = 40_000 as const;
+export const BLACK_GOD_HONOR_THRESHOLD_V162 = BLACK_GOD_HONOR_THRESHOLD_V166;
 /** Proposé : trois blessures graves mettent fin à la tentative (retraite, nouvelle tentative possible). */
 export const BLACK_GOD_MAX_WOUNDS_V162 = 3 as const;
 
@@ -102,7 +104,13 @@ export function blackGodStatusV162(campaign: unknown): BlackGodStatusV162 {
 }
 export const blackGodSacrificedV162 = (campaign: unknown): boolean => blackGodStatusV162(campaign) === "sacrificed";
 
-type AccessSource = Pick<SaveGame, "createdAt" | "profile" | "prologue"> & { blackGodV162?: unknown; hardcoreV155?: unknown };
+type JusticeSourceV162 = Partial<Pick<SaveGame, "justice" | "tribunalV147">>;
+type AccessSource = Pick<SaveGame, "createdAt" | "profile" | "prologue"> & JusticeSourceV162 &
+  { blackGodV162?: unknown; hardcoreV155?: unknown };
+
+function blackGodBadBloodV162(save: JusticeSourceV162): boolean {
+  return save.justice?.declaration === "bad-blood" || Boolean(save.tribunalV147?.exile);
+}
 /** Accès à l'épreuve finale. La victoire déjà acquise n'a plus besoin du seuil (« le rang acquis reste »). */
 export function blackGodTrialAccessV162(save: AccessSource): { allowed: boolean; reasons: string[] } {
   const reasons: string[] = [];
@@ -112,6 +120,9 @@ export function blackGodTrialAccessV162(save: AccessSource): { allowed: boolean;
   if (state.sacrifice) return { allowed: false, reasons: ["La chronique est close par le sacrifice."] };
   if (state.victoryAt) return { allowed: false, reasons: ["L’épreuve finale est déjà remportée."] };
   if (hardcoreDeathRecordedV155(save)) reasons.push("Chronique Hardcore : la mort est définitive.");
+  if (blackGodBadBloodV162(save)) reasons.push("La voie Bad Blood ne donne pas accès à l’épreuve du Black God.");
+  else if (rankTrialsBlockedV147(save.tribunalV147))
+    reasons.push("Le rang est gelé : termine la réparation avant l’épreuve du Black God.");
   if (save.profile.honor < BLACK_GOD_HONOR_THRESHOLD_V162)
     reasons.push(`Honneur cumulé : ${save.profile.honor} / ${BLACK_GOD_HONOR_THRESHOLD_V162} (seuil de la bible, valeur proposée).`);
   const chronicle = save.prologue ? getChronicleRank(save.prologue.chronicle) : null;
@@ -258,7 +269,8 @@ export function recordBlackGodTrialV162(save: WriteSource & Pick<SaveGame, "trop
     message: "Victoire inscrite. Statut quasi divin de Black God (hors canon). Le sacrifice reste à ton choix, quand tu le décides." };
 }
 
-type SacrificeSource = Parameters<typeof sealBlackGodSacrificeTestamentV152>[0] & { blackGodV162?: unknown; hardcoreV155?: unknown };
+type SacrificeSource = Parameters<typeof sealBlackGodSacrificeTestamentV152>[0] & JusticeSourceV162 &
+  { blackGodV162?: unknown; hardcoreV155?: unknown };
 /**
  * Sacrifice au choix, après la victoire. Clôt la chronique (lecture seule, rien n'est effacé) et scelle
  * le legs « black-god-sacrifice » (masque, arme choisie avant la fin, légende ; bonus à l'héritier) par
@@ -272,6 +284,7 @@ export function sacrificeBlackGodV162(save: SacrificeSource, choice: { weaponId:
   if (state.sacrifice) return { ok: false, reason: "Le sacrifice est déjà accompli ; la chronique est close." };
   if (!state.victoryAt) return { ok: false, reason: "Le sacrifice suit la victoire de l’épreuve finale." };
   if (hardcoreDeathRecordedV155(save)) return { ok: false, reason: "Chronique Hardcore : la mort est déjà inscrite." };
+  if (blackGodBadBloodV162(save)) return { ok: false, reason: "La voie Bad Blood ne donne pas accès au sacrifice du Black God." };
   if (!isGesture(choice.gesture)) return { ok: false, reason: "Choisis le dernier geste de l’épilogue." };
   if (!iso(now)) return { ok: false, reason: "Horodatage invalide." };
   const existing = save.heritageV152 === undefined || save.heritageV152 === null ? null : normalizeHeritageV152(save.heritageV152, save.createdAt);

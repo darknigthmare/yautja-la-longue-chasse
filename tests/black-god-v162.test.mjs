@@ -60,6 +60,25 @@ test("sources : seuil de la bible, hors canon annoncé, sacrifice non proposé a
   assert.equal(H.sealHeritageTestamentV152(victorious(), { trigger: "black-god-sacrifice", weaponId: "combistick" }, gone).ok, false);
 });
 
+test("le tribunal et la voie Bad Blood contrôlent l’accès au Black God sans effacer la victoire", () => {
+  const recognized = legend();
+  const T = source.load("app/game/systems/honorTribunalV147.ts");
+  const frozen = { ...recognized, tribunalV147: {
+    ...T.emptyHonorTribunalV147(), freeze: { verdictId: "ver-1", rankId: "elder" },
+  } };
+  assert.match(BG.startBlackGodTrialV162(frozen).reason, /rang est gelé/);
+  assert.equal(BG.recordBlackGodTrialV162(frozen, winRun(recognized), won).ok, false);
+
+  const declared = { ...recognized, justice: { ...recognized.justice, declaration: "bad-blood" } };
+  assert.match(BG.startBlackGodTrialV162(declared).reason, /voie Bad Blood/);
+
+  const victoriousBadBlood = { ...victorious(), justice: declared.justice };
+  assert.equal(BG.blackGodStatusV162(victoriousBadBlood), "victory");
+  const choice = { weaponId: "combistick", maskId: null, gesture: "transmettre" };
+  assert.match(BG.sacrificeBlackGodV162(victoriousBadBlood, choice, gone).reason, /voie Bad Blood/);
+  assert.equal(BG.sacrificeBlackGodV162({ ...victoriousBadBlood, justice: recognized.justice }, choice, gone).ok, true);
+});
+
 test("accès refusé sans seuil d’honneur, sans rang Elder, après une mort Hardcore", () => {
   const low = legend(owner, 39_999);
   const access = BG.blackGodTrialAccessV162(low);
