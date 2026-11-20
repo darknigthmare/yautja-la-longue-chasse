@@ -98,6 +98,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
   const waypointRef = useRef(waypoint);
   const [status, setStatus] = useState("Pont prêt. Clique sur le sol pour marcher, ou utilise les commandes de déplacement.");
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [returnCleaning, setReturnCleaning] = useState(false);
   const helpId = useId();
   const planId = useId();
   const room = ROOMS[frame.roomId];
@@ -458,6 +459,8 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
             size={ACTOR_WIDTH} pose={frame.moving && !suspended && !reducedMotion ? "run" : "idle"} phase={reducedMotion ? 0 : frame.phase}
             speed={frame.moving && !suspended ? METRICS.speed : 0} facing={frame.actor.facing} label="Ton chasseur équipé dans le vaisseau"
             style={{ position: "absolute", left: -ACTOR_WIDTH / 2, top: -ACTOR_FOOT }} />
+          {returnCleaning && frame.roomId === 'medical-bay' && <span aria-hidden="true" data-cradle-return-cleaning
+            className={styles.returnCleaning} />}
         </div>
       </div>
       <div className={styles.vignette} aria-hidden="true" />
@@ -488,7 +491,18 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
       </div>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{status}</p>
-    {cradleReturn && <BuriedCradleReturnPanel controlled={cradleReturn} stationId={serviceNearby} suspended={suspended}
+    {cradleReturn && <BuriedCradleReturnPanel controlled={{ ...cradleReturn, onAction(action, observation) {
+      const accepted = cradleReturn.onAction(action, observation);
+      if (accepted && action.type === 'treat-return') {
+        setReturnCleaning(true);
+        const timer = window.setTimeout(() => {
+          setReturnCleaning(false);
+          timersRef.current.delete(timer);
+        }, 1600);
+        timersRef.current.add(timer);
+      }
+      return accepted;
+    } }} stationId={serviceNearby} suspended={suspended}
       observe={() => {
         if (suspendedRef.current) return null;
         const current = frameRef.current;
@@ -523,7 +537,7 @@ function Fixture({ fixture, actor, artOverride, label }: { fixture: ShipInterior
   artOverride?: NativeArt; label?: string }) {
   const point = pointOnScreen(fixture);
   const actorPoint = pointOnScreen(actor);
-  const displayHeight = artOverride === CRADLE_CROWN_ART ? 230 : fixture.height;
+  const displayHeight = artOverride === CRADLE_CROWN_ART || artOverride === CRADLE_MARKED_CROWN_ART ? 230 : fixture.height;
   const occludes = actor.y < fixture.y && Math.abs(actor.x - fixture.x) < fixture.width / 2 + 22 && actorPoint.y > point.y - displayHeight && actorPoint.y - ACTOR_FOOT < point.y;
   return <div className={styles.fixture} data-ship-fixture={fixture.id} data-occluding={occludes} data-fixture-depth={Math.round(fixture.y)}
     data-cradle-return-object={label ? 'installed' : undefined} role={label ? 'img' : undefined} aria-label={label}

@@ -110,6 +110,8 @@ import { actClanShipReturnEscort, type ClanShipReturnEscortAction, type ClanShip
 import type { ClanShipService } from "./ClanShipHub";
 import { actBuriedCradleCampaign, evaluateBuriedCradleAccess, type CradleCampaignAction } from './systems/buriedCradleCampaign';
 import type { CradleReturnOperation, CradleReturnObservation } from './systems/buriedCradleReturn';
+import { getCradleCrownCondition } from './systems/buriedCradle';
+import cradleArt from './data/buriedCradleArt.json';
 import { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission,
   registerCompanionResidenceRecruitment, availableClanResidenceCrew, type CompanionResidenceAction, type CompanionResidenceObservation } from './systems/companionResidence';
 import { createWolfCastleVisit, inspectWolfCastleVisit, actWolfCastle, applyWolfCastleCheckpoint, type WolfCastleAction, type WolfCastleCheckpoint } from "./systems/wolfCastle";
@@ -5263,9 +5265,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             <p>Raccourcis ouverts : {save.buriedCradle?.progress.shortcutIds.length ?? 0}/3</p>
             <p>Réservoir : {save.buriedCradle?.progress.drainageOpened ? 'drainé' : 'non drainé'}</p>
             <p>Matriarche : {save.buriedCradle?.progress.bossDefeated ? 'neutralisée' : 'chasse non résolue'}</p>
-            <p>Crête : {save.buriedCradle?.crownDelivered ? 'présentée au débrief' : save.buriedCradle?.progress.crownClaimed ? 'prélevée' : 'non prélevée'}</p>
-            {save.buriedCradle?.crownDelivered && <img src="/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png"
-              alt="Crête de la Matriarche rapportée" style={{ width: '100%', maxHeight: 270, objectFit: 'contain' }} />}
+            {(() => {
+              const state = save.buriedCradle;
+              const condition = state ? getCradleCrownCondition(state.progress) : 'unclaimed';
+              const source = cradleArt.assets[condition === 'marked' ? 'A012' : '100'];
+              const status = condition === 'lost' ? 'détruite par l’acide' : condition === 'marked' ? 'marquée par l’acide' :
+                state?.crownDelivered ? 'présentée au débrief' : condition === 'intact' ? 'prélevée' : 'non prélevée';
+              return <><p>Crête : {status}</p>{state?.crownDelivered && <img src={source.src}
+                alt={condition === 'marked' ? 'Crête de la Matriarche marquée par l’acide' : 'Crête de la Matriarche rapportée'}
+                style={{ width: '100%', maxHeight: 270, objectFit: 'contain' }} />}</>;
+            })()}
           </article></div>
         </div>
       </section>}

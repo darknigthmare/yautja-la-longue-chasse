@@ -12,11 +12,33 @@ const out=path.resolve(root,process.env.COMMAND_OPERATIONS_OUTPUT||'production/c
 await fs.mkdir(out,{recursive:true});await fs.writeFile(path.join(out,'run.lock'),new Date().toISOString()+'\n',{flag:'wx'});
 await fs.copyFile(fileURLToPath(import.meta.url),path.join(out,'recipe-used.mjs'));
 const sha=value=>createHash('sha256').update(value).digest('hex');
-const domainBuild=await build({stdin:{contents:"export {DEFAULT_WAR_RULES_V6} from './app/game/systems/clanWarBibleV6';export {createWarOperationsV115} from './app/game/systems/clanWarOperationsV115';",resolveDir:root},bundle:true,platform:'node',format:'esm',write:false,logLevel:'warning'});
+const domainBuild=await build({stdin:{contents:"export {DEFAULT_WAR_RULES_V6} from './app/game/systems/clanWarBibleV6';export {createWarOperationsV115,commandStealthV115} from './app/game/systems/clanWarOperationsV115';",resolveDir:root},bundle:true,platform:'node',format:'esm',write:false,logLevel:'warning'});
 const domain=await import('data:text/javascript;base64,'+Buffer.from(domainBuild.outputFiles[0].contents).toString('base64'));
 const startingWorld=domain.createWarOperationsV115(domain.DEFAULT_WAR_RULES_V6);
 const firstTeamUpkeep=domain.DEFAULT_WAR_RULES_V6.units.find(unit=>unit.id===startingWorld.teams[0].unitId).upkeepRav;
-const sourceNames=['app/game/ClanWarOperationsV115.tsx','app/game/ClanWarOperationsV115.module.css','app/game/ClanWarCommandOverlay.tsx','app/game/ClanWarCommandOverlay.module.css','app/game/systems/clanWarOperationsArchive.ts','app/game/systems/clanWarOperationsV115.ts','app/game/systems/clanWarFenceV94.ts','scripts/qa-clan-war-command-operations-20261109.mjs'];
+const sourceNames=['app/game/ClanWarOperationsV115.tsx','app/game/ClanWarOperationsV115.module.css','app/game/ClanWarCommandOverlay.tsx','app/game/ClanWarCommandOverlay.module.css','app/game/systems/clanWarOperationsArchive.ts','app/game/systems/clanWarOperationsV115.ts','app/game/systems/clanWarFenceV94.ts','app/game/systems/clanWarStealthAcousticsV115.ts','app/game/systems/sceneAudio.ts','app/game/audioFiles.ts','app/game/sound.ts','tests/browser/clan-war-v151-four-modes.fixture.tsx','public/audio/manifest.json','public/audio/sfx/footstep/v54.wav','scripts/qa-clan-war-command-operations-20261109.mjs'];
+const footstepPath='/audio/sfx/footstep/v54.wav';
+const footstepEntry=JSON.parse(await fs.readFile(path.join(root,'public/audio/manifest.json'),'utf8')).entries.find(entry=>entry.id==='footstep');
+const footstep=footstepEntry.sources.find(source=>new URL(source.url,'http://localhost').pathname===footstepPath);
+const stealthMoves={up:'↑ Nord',left:'← Ouest',down:'↓ Sud',right:'→ Est',wait:'Attendre / récupérer énergie'};
+function findListenRoute(start){
+ const queue=[{world:start,route:[]}],seen=new Set();
+ for(let index=0;index<queue.length;index++){
+  const {world,route}=queue[index];
+  if(!world.active || route.length>12)continue;
+  const key=JSON.stringify(world.active.stealth)+':'+world.active.tick;
+  if(seen.has(key))continue;
+  seen.add(key);
+  const result=domain.commandStealthV115(world,'listen',domain.DEFAULT_WAR_RULES_V6);
+  if(result.listenCue)return {route,cue:result.listenCue};
+  if(route.length===12)continue;
+  for(const move of Object.keys(stealthMoves)){
+   const next=domain.commandStealthV115(world,move,domain.DEFAULT_WAR_RULES_V6);
+   if(next.accepted&&next.state.active?.mode==='stealth')queue.push({world:next.state,route:[...route,move]});
+  }
+ }
+ throw new Error('No covered, audible patrol reached through legal actions');
+}
 const source=async()=>Object.fromEntries(await Promise.all(sourceNames.map(async name=>[name,sha(await fs.readFile(path.join(root,name)))])));
 const report={schemaVersion:1,scope:'Actual production operations component and shared dialog, esbuild host with original W3 rules. Real browser events, localStorage, IDB and Web Locks. Not full GameClient, campaign, physical-controller or canonical-art certification.',checks:[],screenshots:[],errors:[],httpErrors:[],sourceBefore:await source(),canonicalKey:'yautja.clan-war.v115.operations.fenced.v2'};
 const pass=(name,detail={})=>report.checks.push({name,passed:true,...detail});
@@ -32,12 +54,12 @@ const server=createServer(async(req,res)=>{
  if(pathname==='/favicon.ico'){res.writeHead(204);res.end();return;}
  const filename=path.resolve(root,'public','.'+decodeURIComponent(pathname));
  if(!filename.startsWith(path.join(root,'public')+path.sep)){res.writeHead(403);res.end();return;}
- try{const bytes=await fs.readFile(filename);res.writeHead(200,{'content-type':filename.endsWith('.svg')?'image/svg+xml':filename.endsWith('.png')?'image/png':'application/octet-stream'});res.end(bytes);}catch{res.writeHead(404);res.end();}
+ try{const bytes=await fs.readFile(filename);res.writeHead(200,{'content-type':filename.endsWith('.svg')?'image/svg+xml':filename.endsWith('.png')?'image/png':filename.endsWith('.wav')?'audio/wav':filename.endsWith('.json')?'application/json':'application/octet-stream'});res.end(bytes);}catch{res.writeHead(404);res.end();}
 });
 let browser,context,page;
 try{
  await new Promise((ok,fail)=>{server.once('error',fail);server.listen(0,'127.0.0.1',ok);});
- browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox']});report.browserVersion=browser.version();
+ browser=await chromium.launch({executablePath:process.env.CHROMIUM_EXECUTABLE||'/usr/bin/chromium',headless:true,args:['--no-sandbox']});report.browserVersion=browser.version();
  context=await browser.newContext({viewport:{width:1440,height:1000},locale:'fr-FR'});page=await context.newPage();page.setDefaultTimeout(20000);
  page.on('pageerror',e=>report.errors.push(e.message));page.on('response',r=>{if(r.status()>=400)report.httpErrors.push({url:r.url(),status:r.status()});});
  const url='http://127.0.0.1:'+server.address().port;report.url=url;await page.goto(url,{waitUntil:'networkidle'});
@@ -112,7 +134,36 @@ try{
  pass('Reload restores the actual paused field and mission identity without reopening a drawer or debiting RAV again');
  await context.close();context=await browser.newContext({viewport:{width:1440,height:1000},locale:'fr-FR'});page=await context.newPage();page.setDefaultTimeout(20000);
  page.on('pageerror',e=>report.errors.push(e.message));page.on('response',r=>{if(r.status()>=400)report.httpErrors.push({url:r.url(),status:r.status()});});
+ await page.addInitScript(expectedBytes=>{
+  const decoded=new WeakSet(),outputs=new WeakMap();
+  const probe={decoded:false,played:[]};
+  window.stealthAudioProbe=probe;
+  const decode=AudioContext.prototype.decodeAudioData;
+  AudioContext.prototype.decodeAudioData=function(bytes,...args){
+   const footstep=bytes.byteLength===expectedBytes;
+   const result=decode.call(this,bytes,...args);
+   if(footstep)void result.then(buffer=>{decoded.add(buffer);probe.decoded=true;},()=>{});
+   return result;
+  };
+  const connect=AudioNode.prototype.connect;
+  AudioNode.prototype.connect=function(target,...args){
+   const result=connect.call(this,target,...args);
+   if(target instanceof AudioNode)outputs.set(this,target);
+   return result;
+  };
+  const start=AudioBufferSourceNode.prototype.start;
+  AudioBufferSourceNode.prototype.start=function(...args){
+   const result=start.apply(this,args);
+   if(decoded.has(this.buffer)){
+    const filter=outputs.get(this),envelope=outputs.get(filter),panner=outputs.get(envelope);
+    probe.played.push({type:filter?.type??null,lowpassHz:filter?.frequency?.value??null,
+     pan:panner?.pan?.value??null,sharedBus:Boolean(panner&&outputs.get(panner) instanceof GainNode)});
+   }
+   return result;
+  };
+ },footstep.bytes);
  await page.goto(url,{waitUntil:'networkidle'});
+ const sampleResponse=page.waitForResponse(response=>new URL(response.url()).pathname===footstepPath&&response.ok());
  const stealthOperations=page.locator('[data-testid="clan-operations-v115"]');await stealthOperations.locator('[data-war-mode-card="stealth"]').click();
  dialog=page.getByRole('dialog',{name:'Préparer un mandat',exact:true});await dialog.waitFor();
  await dialog.getByRole('combobox',{name:'Territoire de la Bible V6',exact:true}).selectOption(target);
@@ -157,6 +208,49 @@ try{
  await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||'null')?.active?.tick===tick+1,{key:report.canonicalKey,tick:stealthBefore.active.tick});
  pass('Closing the drawer restores a usable native stealth field without resetting its mission');
  await screenshot('04-stealth-field-desktop.png');
+ const sample=await sampleResponse;
+ assert.equal(sha(await sample.body()),footstep.sha256);
+ await page.waitForFunction(()=>window.stealthAudioProbe.decoded);
+ const listen=stealthOperations.getByRole('button',{name:'Écouter la patrouille (1 énergie)',exact:true});
+ const listeningRoute=findListenRoute(JSON.parse(await archive()));
+ for(const move of listeningRoute.route){
+  const previous=JSON.parse(await archive()).active.tick;
+  await stealthOperations.getByRole('button',{name:stealthMoves[move],exact:true}).click();
+  await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||'null')?.active?.tick===tick+1,
+   {key:report.canonicalKey,tick:previous});
+ }
+ assert.equal(await listen.isEnabled(),true);
+ const audioState=()=>page.evaluate(()=>window.stealthAudioProbe.played);
+ assert.equal((await audioState()).length,0);
+ const beforeListen=await archive();
+ await page.evaluate(key=>new Promise((held,reject)=>{
+  let finish;
+  const release=new Promise(resolve=>{finish=resolve;});
+  const request=navigator.locks.request(key+'.write',()=>{held();return release;});
+  window.releaseStealthAudioLock=()=>{finish();return request;};
+  void request.catch(reject);
+ }),report.canonicalKey);
+ try {
+  await listen.click();
+  await stealthOperations.getByText('Une autre écriture V115 est en cours ; réessayez.',{exact:true}).waitFor();
+  assert.equal(await archive(),beforeListen);
+  assert.equal((await audioState()).length,0);
+ } finally {
+  await page.evaluate(()=>window.releaseStealthAudioLock());
+ }
+ const tickBeforeListen=JSON.parse(beforeListen).active.tick;
+ await listen.click();
+ await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||'null')?.active?.tick===tick+1,
+  {key:report.canonicalKey,tick:tickBeforeListen});
+ await page.waitForFunction(()=>window.stealthAudioProbe.played.length===1);
+ assert.equal(JSON.parse(await archive()).active.stealth.heardBearing,listeningRoute.cue.bearing);
+ const [played]=await audioState();
+ assert.equal(played.type,'lowpass');
+ assert.equal(played.lowpassHz,listeningRoute.cue.lowpassHz);
+ assert.ok(Math.abs(played.pan-listeningRoute.cue.pan)<.00001);
+ assert.equal(played.sharedBus,true);
+ pass('The native listen gesture schedules the verified WAV through the shared spatial effects graph only after a successful archive write',
+  {asset:footstepPath,sha256:footstep.sha256,bearing:listeningRoute.cue.bearing,steps:listeningRoute.route.length});
  assert.deepEqual(report.errors,[]);assert.deepEqual(report.httpErrors,[]);pass('No page or resource errors');
  report.sourceAfter=await source();assert.deepEqual(report.sourceAfter,report.sourceBefore);pass('Sources and shared overlay remain byte-identical during native run');
  report.passed=true;

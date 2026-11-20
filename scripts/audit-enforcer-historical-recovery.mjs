@@ -1,7 +1,10 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import { lstatSync, readdirSync, readFileSync } from 'node:fs';
+import { join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseArgs } from 'node:util';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const originalCommit = 'd71e995ae886df69c4165a1a153291449e8f22f6';
@@ -34,8 +37,8 @@ function checkpointEntries(commit) {
   }));
 }
 
-function readCheckpoint(blob) {
-  const checkpoint = JSON.parse(git('cat-file', 'blob', blob));
+function parseCheckpoint(bytes) {
+  const checkpoint = JSON.parse(bytes);
   assert.equal(checkpoint.schemaVersion, 'yautja-v613-native-checkpoint-1');
   assert.ok(Array.isArray(checkpoint.assets));
   assert.equal(new Set(checkpoint.assets.map(row => row.id)).size, checkpoint.assets.length,
@@ -53,11 +56,18 @@ function matchingAttempt(target, row) {
   ) ?? null;
 }
 
+function matchingReceipts(finals, checkpoint, source) {
+  return finals.flatMap(target => {
+    const attempt = matchingAttempt(target, checkpoint.get(target.id));
+    return attempt ? [{ id: target.id, sha256: target.sha256, ...source, attemptIndex: attempt.attemptIndex }] : [];
+  });
+}
+
 function inspectCandidates(commits, images, finals) {
   const rows = commits.map(commit => {
     const index = checkpointEntries(commit);
     const checkpointBlob = index.get(checkpointPath);
-    const checkpoint = checkpointBlob ? readCheckpoint(checkpointBlob) : new Map();
+    const checkpoint = checkpointBlob ? parseCheckpoint(git('cat-file', 'blob', checkpointBlob)) : new Map();
     const originalImages = [];
     const differingImages = [];
     for (const target of images) {
@@ -68,22 +78,56 @@ function inspectCandidates(commits, images, finals) {
       const item = { id: target.id, blob, bytes: file.length, sha256 };
       (item.bytes === target.bytes && sha256 === target.sha256 ? originalImages : differingImages).push(item);
     }
-    const finalReceipts = finals.flatMap(target => {
-      const attempt = matchingAttempt(target, checkpoint.get(target.id));
-      return attempt ? [{
-        id: target.id, sha256: target.sha256, checkpointBlob, attemptIndex: attempt.attemptIndex,
-      }] : [];
-    });
+    const finalReceipts = matchingReceipts(finals, checkpoint, { checkpointBlob });
     return { commit, checkpointBlob: checkpointBlob ?? null, originalImages, differingImages, finalReceipts };
   });
   return rows;
 }
 
-function collectReport(refs) {
+function inspectArchive(directory, images) {
+  const archiveRoot = resolve(directory);
+  assert.ok(lstatSync(archiveRoot).isDirectory(), 'Dossier d’archive attendu : ' + directory);
+  const imagesBySize = new Map();
+  for (const target of images) {
+    const group = imagesBySize.get(target.bytes) ?? [];
+    group.push(target);
+    imagesBySize.set(target.bytes, group);
+  }
+  const originalImages = [];
+  function scan(folder) {
+    for (const entry of readdirSync(folder, { withFileTypes: true })) {
+      const path = join(folder, entry.name);
+      if (entry.isDirectory()) {
+        scan(path);
+      } else if (entry.isFile() && imagesBySize.has(lstatSync(path).size)) {
+        const file = readFileSync(path);
+        const sha256 = createHash('sha256').update(file).digest('hex');
+        for (const target of imagesBySize.get(file.length) ?? []) {
+          if (sha256 === target.sha256) {
+            originalImages.push({ id: target.id, path: relative(archiveRoot, path), bytes: file.length, sha256 });
+          }
+        }
+      }
+    }
+  }
+  scan(archiveRoot);
+  originalImages.sort((left, right) => left.path.localeCompare(right.path, 'en'));
+  return { directory, originalImages };
+}
+
+function inspectArchiveCheckpoint(path, finals) {
+  const stat = lstatSync(path);
+  assert.ok(stat.isFile(), 'Fichier checkpoint attendu : ' + path);
+  const file = readFileSync(path);
+  const checkpointSha256 = createHash('sha256').update(file).digest('hex');
+  const finalReceipts = matchingReceipts(finals, parseCheckpoint(file), { checkpointSha256 });
+  return { path, checkpointSha256, finalReceipts };
+}
+
+function collectReport(refs, { archive, checkpoint }) {
   const v610 = JSON.parse(git('show', originalCommit + ':' + v610Path));
   const v613 = JSON.parse(git('show', originalCommit + ':' + v613Path));
-  const historic = new Map(JSON.parse(git('show', originalCommit + ':' + checkpointPath))
-    .assets.map(row => [row.id, row]));
+  const historic = parseCheckpoint(git('show', originalCommit + ':' + checkpointPath));
   assert.equal(v610.records.length, 36);
   assert.equal(v613.assets.length, 36);
   assert.equal(historic.size, 21);
@@ -101,12 +145,17 @@ function collectReport(refs) {
   assert.equal(sourceReceipts.length, v613.summary.matchingFinalReceiptsRecovered);
   const knownIds = new Set(sourceReceipts.map(row => row.id));
   const candidates = inspectCandidates([...new Set(refs.map(commitFor))], v610.records, v613.assets);
-  const pngIds = new Set(candidates.flatMap(row => row.originalImages.map(image => image.id)));
-  const receiptCandidateIds = new Set(candidates.flatMap(row => row.finalReceipts.map(receipt => receipt.id)));
+  const archiveCandidates = archive.map(directory => inspectArchive(directory, v610.records));
+  const checkpointCandidates = checkpoint.map(path => inspectArchiveCheckpoint(path, v613.assets));
+  const pngIds = new Set([...candidates, ...archiveCandidates].flatMap(row => row.originalImages.map(image => image.id)));
+  const receiptCandidateIds = new Set(
+    [...candidates, ...checkpointCandidates].flatMap(row => row.finalReceipts.map(receipt => receipt.id))
+  );
   return {
     schemaVersion: 1,
     originalCommit,
-    scope: 'Observation des chemins et checkpoints aux seuls commits examinés. Revue de provenance requise pour un nouveau reçu concordant.',
+    scope: 'Observation des chemins et checkpoints aux seuls commits examinés. Revue de provenance requise pour un nouveau reçu concordant.'
+      + (archive.length || checkpoint.length ? ' Dossiers et checkpoints locaux fournis examinés aussi.' : ''),
     v610: {
       criterion: 'ENFORCERS-V610-TRACES',
       preservedTraceCount: v610.records.length,
@@ -123,8 +172,16 @@ function collectReport(refs) {
         ({ id: row.id, sha256: row.sha256, bytes: row.bytes, path: row.repoPngPath })),
     },
     candidates,
+    ...(archive.length ? { archiveCandidates } : {}),
+    ...(checkpoint.length ? { checkpointCandidates } : {}),
   };
 }
 
-const args = process.argv.slice(2);
-process.stdout.write(JSON.stringify(collectReport(['HEAD', ...args]), null, 2) + '\n');
+const { values, positionals } = parseArgs({
+  options: {
+    archive: { type: 'string', multiple: true, default: [] },
+    checkpoint: { type: 'string', multiple: true, default: [] },
+  },
+  allowPositionals: true,
+});
+process.stdout.write(JSON.stringify(collectReport(['HEAD', ...positionals], values), null, 2) + '\n');

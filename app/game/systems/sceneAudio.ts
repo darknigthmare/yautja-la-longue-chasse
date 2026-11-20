@@ -104,27 +104,38 @@ export class GameSceneAudio implements SceneAudioPort, RecordedSceneAudioPort {
     if (!buffer || buffer.duration <= 0) return false;
 
     const { context, effects } = graph;
-    const source = context.createBufferSource();
-    const filter = context.createBiquadFilter();
-    const envelope = context.createGain();
-    source.buffer = buffer;
-    filter.type = "lowpass";
-    filter.frequency.value = finite(sample.lowpassHz, 8_000, 40, 14_000);
-    filter.Q.value = .707;
-    source.connect(filter);
-    filter.connect(envelope);
-    const nodes: AudioNode[] = [source, filter, envelope];
-    if (typeof context.createStereoPanner === "function") {
-      const panner = context.createStereoPanner();
-      panner.pan.value = finite(sample.pan, 0, -1, 1);
-      envelope.connect(panner);
-      panner.connect(effects);
-      nodes.push(panner);
-    } else {
-      envelope.connect(effects);
+    const nodes: AudioNode[] = [];
+    let voice: Voice | null = null;
+    try {
+      const source = context.createBufferSource();
+      nodes.push(source);
+      const filter = context.createBiquadFilter();
+      nodes.push(filter);
+      const envelope = context.createGain();
+      nodes.push(envelope);
+      source.buffer = buffer;
+      filter.type = "lowpass";
+      filter.frequency.value = finite(sample.lowpassHz, 8_000, 40, 14_000);
+      filter.Q.value = .707;
+      source.connect(filter);
+      filter.connect(envelope);
+      if (typeof context.createStereoPanner === "function") {
+        const panner = context.createStereoPanner();
+        nodes.push(panner);
+        panner.pan.value = finite(sample.pan, 0, -1, 1);
+        envelope.connect(panner);
+        panner.connect(effects);
+      } else {
+        envelope.connect(effects);
+      }
+      voice = { source, envelope, nodes, loop: false, context };
+      this.beginVoice(voice, context.currentTime, buffer.duration, gain);
+      return true;
+    } catch {
+      if (voice && this.voices.has(voice)) this.stopVoice(voice, 0);
+      else for (const node of nodes) node.disconnect();
+      return false;
     }
-    this.beginVoice({ source, envelope, nodes, loop: false, context }, context.currentTime, buffer.duration, gain);
-    return true;
   }
 
   loop(key: string, sound: SceneAudioSound): void {

@@ -108,6 +108,17 @@ test('recorded cues use a decoded sample and filter/pan through the shared bus',
   assert.equal(h.voice.playRecorded('footstep', cue), false);
 });
 
+test('a refused recorded source is released without propagating an audio failure', () => {
+  const h = sceneHarness({ sample: () => ({ duration: .4 }) });
+  const createSource = h.context.createBufferSource;
+  h.context.createBufferSource = () => Object.assign(createSource(), {
+    start() { throw new Error('audio unavailable'); },
+  });
+  const existingNodes = h.nodes.length;
+  assert.equal(h.voice.playRecorded('footstep', { gain: .15, pan: .65, lowpassHz: 750 }), false);
+  assert.ok(h.nodes.slice(existingNodes).every(node => node.disconnected));
+});
+
 test('repeated frame requests keep one ambience and every source routes through the effects bus', () => {
   const h = sceneHarness();
   for (let frame = 0; frame < 1_000; frame += 1) h.voice.loop('orbit', drone);
