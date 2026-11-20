@@ -3954,8 +3954,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         setPendingHuntResult({result,returnToDeck});setToast(delivery.reason);return;
       }
       const current = saveRef.current;
-      let next = { ...applyMissionResult(current, result), planetArrival: null, planetArrivalRun: null };
       const session = activeHuntSessionRef.current;
+      if (!session || session.missionId !== result.missionId) return;
+      const settled = applyMissionResult(current, result);
+      if (settled.missionProgress[result.missionId]?.attempts !== current.missionProgress[result.missionId]?.attempts + 1) {
+        setPendingHuntResult({ result, returnToDeck });
+        setToast("Le résultat ne correspond pas à la tentative active. La chasse et ses archives sont conservées.");
+        return;
+      }
+      let next = { ...settled, planetArrival: null, planetArrivalRun: null };
       const runInsertion = normalizePlanetInsertionPlan(session?.configuration.insertion);
       if (runInsertion?.team === 'triad' && session) {
         const shipId = session.configuration.insertionShipId;
