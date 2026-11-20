@@ -341,3 +341,27 @@ test("quota and concurrent saves refuse desert proof while preserving the last d
   storage.setItem = original; const concurrent = JSON.stringify({ ...before.save, updatedAt: "2026-09-24T14:00:00.000Z" }); storage.data.set(p.SAVE_STORAGE_KEY, concurrent);
   assert.equal(p.writeSaveWithStatus(after, storage).failure, "save-conflict"); assert.equal(storage.getItem(p.SAVE_STORAGE_KEY), concurrent);
 });
+
+test("the legacy nursery receipt is indexed and the real training chapter is credited once", () => {
+  const disk = store(welcome());
+  const migrated = p.writeSaveWithStatus(p.loadSave(disk), disk);
+  assert.equal(migrated.persisted, true, migrated.failure);
+  assert.equal(migrated.save.profile.honor, 0);
+  const planned = p.startYouthCampaign(migrated.save, owner);
+  assert(planned);
+  let current = p.writeSaveWithStatus(planned, disk);
+  assert.equal(current.persisted, true, current.failure);
+  for (const step of path.transitions) {
+    const next = p.withYouthProgress(current.save, step.receipts, step.state, now);
+    assert(next);
+    current = p.writeSaveWithStatus(next, disk);
+    assert.equal(current.persisted, true, current.failure);
+  }
+  const reloaded = p.loadSave(disk);
+  assert.equal(reloaded.profile.honor, 50);
+  assert.deepEqual(reloaded.honorSourcesV169.entries.map(({ id, delta }) => [id, delta]), [
+    ["chronicle:intro-completed", 0],
+    ["chronicle:training-completed", 50],
+  ]);
+  assert.equal(p.writeSaveWithStatus(reloaded, disk).save.profile.honor, 50);
+});

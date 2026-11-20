@@ -175,9 +175,11 @@ export function settleHonorSourcesV169(save: SaveGame, previous: SaveGame | null
   const priorBalance = Math.min(prior.profile.honor, ledger?.outsideBalance ?? totalCredited(ledger?.entries ?? []));
   const honorLost = Math.max(0, prior.profile.honor - honor);
   let outsideBalance = Math.max(0, priorBalance - honorLost);
+  let added = false;
   for (const entry of collectHonorSourceEventsV169(save)) {
     if (known.has(entry.id)) continue;
     known.add(entry.id);
+    added = true;
     const after = honor + Math.max(0, Math.min(Number.MAX_SAFE_INTEGER - honor, entry.delta));
     const credited = after - honor;
     entries.push({ ...entry, delta: credited });
@@ -185,7 +187,7 @@ export function settleHonorSourcesV169(save: SaveGame, previous: SaveGame | null
     honor = after;
   }
   if (entries.length > MAX_RECEIPTS) return { ...save, honorSourcesV169: raw };
-  if (!entries.length && !ledger) return save;
+  if (!added && !ledger) return save;
   if (ledger && entries.length === ledger.entries.length && outsideBalance === ledger.outsideBalance && save.honorSourcesV169 === raw) return save;
   return { ...save, profile: { ...save.profile, honor }, honorSourcesV169: { ...ledger, version: VERSION, entries, outsideBalance } };
 }

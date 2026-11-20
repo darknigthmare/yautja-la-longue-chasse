@@ -6,7 +6,6 @@ const qa = homeworldSceneSsrV78();
 const saves = qa.load("app/game/save.ts");
 const {createNurseryCampaign, withNurseryCheckpoint, withNurseryCompletion} = qa.load("app/game/systems/nurseryCampaign.ts");
 const {createNurseryPrologue, stepNurseryPrologue} = qa.load("app/game/systems/nurseryPrologue.ts");
-const {CHRONICLE_EVIDENCE, recordChronicleEvidence} = qa.load("app/game/systems/clanChronicle.ts");
 const key = saves.SAVE_STORAGE_KEY;
 const fresh = () => saves.defaultSave("2026-11-20T18:00:00.000Z");
 
@@ -45,16 +44,6 @@ function completedIntro(save) {
   return completed;
 }
 
-function withEvidence(save, ids) {
-  const completed = save.prologue?.status === "completed" ? save : completedIntro(save);
-  const chronicle = ids.reduce((state, id) => {
-    const receipt = CHRONICLE_EVIDENCE.find(item => item.id === id);
-    const result = recordChronicleEvidence(state, receipt);
-    assert(result.accepted);
-    return result.state;
-  }, completed.prologue.chronicle);
-  return { ...completed, prologue: { ...completed.prologue, chronicle } };
-}
 
 test("a saved chapter adds honour once while preserving the acquired rank through a reload", () => {
   const disk = storage();
@@ -62,7 +51,7 @@ test("a saved chapter adds honour once while preserving the acquired rank throug
   save.profile.honor = 1499;
   const initial = saves.writeSaveWithStatus(save, disk);
   assert.equal(initial.persisted, true);
-  const first = saves.writeSaveWithStatus(withEvidence(initial.save, ["intro-completed"]), disk);
+  const first = saves.writeSaveWithStatus(completedIntro(initial.save), disk);
   assert.equal(first.persisted, true);
   assert.equal(first.save.profile.honor, 1599);
   assert.equal(first.save.profile.rankId, "young-blood");
@@ -76,20 +65,6 @@ test("a saved chapter adds honour once while preserving the acquired rank throug
   ]);
 });
 
-test("legacy receipts receive no retroactive credit and a later chapter is paid normally", () => {
-  const disk = storage();
-  disk.setItem(key, JSON.stringify(withEvidence(fresh(), ["intro-completed"])));
-  const migrated = saves.writeSaveWithStatus(saves.loadSave(disk), disk);
-  assert.equal(migrated.persisted, true);
-  assert.equal(migrated.save.profile.honor, 0);
-  const next = saves.writeSaveWithStatus(withEvidence(migrated.save, ["intro-completed", "training-completed"]), disk);
-  assert.equal(next.persisted, true);
-  assert.equal(next.save.profile.honor, 50);
-  assert.deepEqual(next.save.honorSourcesV169.entries.map(({id, delta}) => [id, delta]), [
-    ["chronicle:intro-completed", 0],
-    ["chronicle:training-completed", 50],
-  ]);
-});
 
 test("an incompatible honor ledger stays intact through backup recovery and an ordinary write", () => {
   for (const archive of [{ version: 2, entries: [], future: ["keep"] }, { version: 1, entries: "incomplete" }]) {
