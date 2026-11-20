@@ -36,3 +36,25 @@ chemin historique, à sa taille et à son empreinte. Pour un reçu V6.13, seul
 l’essai accepté du checkpoint qui correspond aux octets finaux est retenu.
 Un nouveau résultat concordant exige un rapprochement avec son archive de
 production avant clôture. Les trois états sources du classeur restent ouverts.
+
+## Vérifier une archive de production disponible localement
+
+Une archive extraite peut contenir un original V6.10 à un autre emplacement.
+Le contrôle parcourt les fichiers ordinaires du dossier fourni et identifie les
+PNG attendus par leur taille et leur SHA‑256, indépendamment du nom du fichier.
+Un checkpoint V6.13 peut également être présenté à part pour comparer son essai
+accepté à la taille et au SHA‑256 du PNG final.
+
+```sh
+node scripts/audit-enforcer-historical-recovery.mjs \
+  --archive /chemin/vers/une-archive-extraite \
+  --checkpoint /chemin/vers/native-checkpoint.json
+```
+
+Les options acceptent plusieurs dossiers ou checkpoints. `archiveCandidates`
+indique le chemin relatif de chaque original V6.10 retrouvé dans les dossiers
+locaux. `checkpointCandidates` identifie les reçus V6.13 candidats et consigne le
+SHA‑256 de leur checkpoint. La revue de provenance décide leur admission. Les
+reçus actuellement publiés et les candidats restent comptés séparément.
+
+La recherche de reprise a inspecté 21 références Git liées aux Enforcers et 54 265 entrées de fichiers dans huit arborescences historiques complètes, sans candidat de la taille d’un visuel V6.10. Les 20 exécutions Actions historiques consultées n’avaient aucun artefact listé. Le dossier Drive V6.10 était vide dans les résultats accessibles, y compris pour les fichiers supprimés. Les recherches par noms des sorties V6.13 déjà documentées n’ont fourni aucun reçu supplémentaire. Le suivi conserve ses deux lignes ouvertes.

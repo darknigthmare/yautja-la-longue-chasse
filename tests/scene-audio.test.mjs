@@ -52,6 +52,7 @@ function audioGraph() {
     destination: node('destination'),
     createGain() { return Object.assign(node('gain'), { gain: parameter() }); },
     createBiquadFilter() { return Object.assign(node('filter'), { frequency: parameter(350), Q: parameter(1), type: 'lowpass' }); },
+    createStereoPanner() { return Object.assign(node('panner'), { pan: parameter(0) }); },
     createOscillator() { return Object.assign(source('oscillator'), { frequency: parameter(440), type: 'sine' }); },
     createBufferSource() { return Object.assign(source('buffer-source'), { buffer: null, loop: false }); },
     createBuffer(channels, length, sampleRate) {
@@ -71,11 +72,52 @@ function sceneHarness(options = {}) {
   let available = options.available ?? true, releases = 0;
   const voice = new GameSceneAudio({
     graph: () => available ? graph : null,
+    sample: options.sample,
     unlock: options.deferredUnlock ? () => new Promise(resolve => pending.push(resolve)) : async () => {},
     released: () => { releases += 1; },
   });
   return { ...graph, voice, pending, enable() { available = true; }, get releases() { return releases; } };
 }
+
+test('recorded cues use a decoded sample and filter/pan through the shared bus', async () => {
+  let buffer = null;
+  const requests = [];
+  const h = sceneHarness({ sample: id => { requests.push(id); return buffer; } });
+  const cue = { gain: .14, pan: -.65, lowpassHz: 750 };
+  assert.equal(h.voice.playRecorded('footstep', cue), false);
+  buffer = { duration: .4 };
+  await nextTurn();
+  assert.equal(h.sources.length, 0);
+  assert.equal(h.voice.playRecorded('footstep', cue), true);
+
+  assert.deepEqual(requests, ['footstep', 'footstep']);
+  const [source] = h.sources;
+  const [filter] = source.connections;
+  const [envelope] = filter.connections;
+  const [panner] = envelope.connections;
+  assert.equal(source.buffer, buffer);
+  assert.deepEqual(source.starts, [h.context.currentTime]);
+  assert.equal(filter.type, 'lowpass');
+  assert.equal(filter.frequency.value, cue.lowpassHz);
+  assert.ok(envelope.gain.calls.some(call => call.type === 'linear' && call.value === cue.gain));
+  assert.equal(panner.pan.value, cue.pan);
+  assert.equal(panner.connections[0], h.effects);
+  h.voice.stop();
+  assert.ok([source, filter, envelope, panner].every(node => node.disconnected));
+  h.voice.dispose();
+  assert.equal(h.voice.playRecorded('footstep', cue), false);
+});
+
+test('a refused recorded source is released without propagating an audio failure', () => {
+  const h = sceneHarness({ sample: () => ({ duration: .4 }) });
+  const createSource = h.context.createBufferSource;
+  h.context.createBufferSource = () => Object.assign(createSource(), {
+    start() { throw new Error('audio unavailable'); },
+  });
+  const existingNodes = h.nodes.length;
+  assert.equal(h.voice.playRecorded('footstep', { gain: .15, pan: .65, lowpassHz: 750 }), false);
+  assert.ok(h.nodes.slice(existingNodes).every(node => node.disconnected));
+});
 
 test('repeated frame requests keep one ambience and every source routes through the effects bus', () => {
   const h = sceneHarness();

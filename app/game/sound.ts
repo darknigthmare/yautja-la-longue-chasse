@@ -151,6 +151,7 @@ export class GameAudio {
     const voice = new GameSceneAudio({
       graph: () => this.readyTime() === null || !this.context || !this.effects ? null : { context: this.context, effects: this.effects },
       unlock: () => this.unlock(),
+      sample: id => this.fileAudio.getRecordedSfx(id),
       released: () => this.sceneVoices.delete(voice),
     });
     if (this.disposed) voice.dispose();

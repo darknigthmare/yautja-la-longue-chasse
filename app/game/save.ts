@@ -2481,8 +2481,9 @@ export function applyMissionResult(
   }
 
   const harvestDeliveryV112=deliverHarvestV112(save,rawResult.specimensV112,rawResult.toolUseIdsV112,result.outcome==="success",mission.id,rawResult.harvestEncounterRunV112);
-  if(!harvestDeliveryV112.ok)return save;
-  save.inventory=harvestDeliveryV112.inventory;
+  if (!harvestDeliveryV112.ok ||
+      (rawResult.harvestEncounterRunV112 !== undefined && harvestDeliveryV112.inventory === save.inventory)) return save;
+  save.inventory = harvestDeliveryV112.inventory;
   const exploration = mergeExplorationProgress(
     save.exploration,
     // A terminal snapshot cannot discover another biome or introduce an
@@ -2579,7 +2580,7 @@ export function applyMissionResult(
       difficulty.rewardMultiplier *
       replayMultiplier,
   );
-  const nextHonor = Math.max(0, save.profile.honor + honorReward);
+  const nextHonor = Math.max(0, save.profile.honor + honorReward + (harvestDeliveryV112.returnedRiteHonor ?? 0));
   const nextRankId = campaignRankForHonor(nextHonor, save.profile.acquiredRankIdV166, save.tribunalV147, save.honorSourcesV169);
   const nextMission = MISSIONS.find(
     (candidate) => candidate.order === mission.order + 1,

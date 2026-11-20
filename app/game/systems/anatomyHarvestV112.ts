@@ -40,7 +40,9 @@ const entries:readonly [readonly string[], readonly AnatomyPartV112[]][] = [
 ];
 export const ANATOMY_CATALOGUE_V112:Readonly<Record<string,readonly AnatomyPartV112[]>> =
   Object.freeze(Object.fromEntries(entries.flatMap(([species,parts]) => species.map(id => [id,Object.freeze(parts.map(p=>Object.freeze({...p})))]))));
-export function anatomyPartsV112(speciesId:string):readonly AnatomyPartV112[] { return ANATOMY_CATALOGUE_V112[speciesId] ?? []; }
+export function anatomyPartsV112(speciesId:string):readonly AnatomyPartV112[] {
+  return Object.prototype.hasOwnProperty.call(ANATOMY_CATALOGUE_V112, speciesId) ? ANATOMY_CATALOGUE_V112[speciesId] : [];
+}
 export function anatomyPartV112(speciesId:string, action:string):AnatomyPartV112|null {
   return anatomyPartsV112(speciesId).find(part=>part.action===action) ?? null;
 }

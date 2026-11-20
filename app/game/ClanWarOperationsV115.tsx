@@ -1,10 +1,10 @@
 "use client";
 // FIELD_PROPS_20261103
 
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type CSSProperties } from "react";
 import { GAUNTLET_PALETTES_V132,gauntletByIdV132 } from "./systems/clanWarGauntletCatalogV132";
 import { planWarRouteV6, type WarRulesV6 } from "./systems/clanWarBibleV6";
-import { warMissionTerrainV116,warTerrainCellBlockedV116 } from "./systems/clanWarMissionTerrainV116";
+import { warMissionTerrainV116,warTerrainCellBlockedV116, type WarMissionTerrainV116 } from "./systems/clanWarMissionTerrainV116";
 import { warSourceRtsScenarioV119, warRtsScriptedEligibilityV119,
   type WarSourceRtsScenarioIdV119,
 } from "./systems/clanWarRtsScenariosV119";
@@ -55,6 +55,7 @@ import { createWarFencePortV94 } from "./systems/clanWarFenceV94";
 import { readWarOperationsArchive, writeWarOperationsArchive, repairWarOperationsArchive,
   adoptWarOperationsLegacyArchive, snapshotWarOperationsLegacyArchive, exportWarOperationsLegacyArchive,
   type WarOperationsArchiveBaseline, type WarOperationsLegacySnapshot } from "./systems/clanWarOperationsArchive";
+import type { RecordedSceneAudioPort } from "./systems/sceneAudio";
 import ClanWarCommandOverlay from "./ClanWarCommandOverlay";
 import styles from "./ClanWarOperationsV115.module.css";
 
@@ -72,14 +73,40 @@ const focusLabels: Record<OuterFocusV115, string> = {
   recon: "Reconnaissance", intercept: "Interception", escort: "Protection de passage",
 };
 const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
-type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null;gauntletId?:string;holographic?:boolean};
+type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null;gauntletId?:string;holographic?:boolean;createSceneAudio?:()=>RecordedSceneAudioPort|null};
 
-export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null,gauntletId="jungle-hunter",holographic=false}:Props) {
+const stealthDirections = [
+  { label: "haut", dx: 0, dy: -1 },
+  { label: "droite", dx: 1, dy: 0 },
+  { label: "bas", dx: 0, dy: 1 },
+  { label: "gauche", dx: -1, dy: 0 },
+];
+
+function describeStealthNeighbors(
+  terrain: WarMissionTerrainV116,
+  actor: { x: number; y: number; gridPowered?: boolean },
+): string {
+  return stealthDirections.map(({ label, dx, dy }) => {
+    const x = actor.x + dx, y = actor.y + dy;
+    let tile = "passage";
+    if (x < 0 || y < 0 || x >= terrain.width || y >= terrain.height) tile = "limite de la carte";
+    else if (x === terrain.poweredDoor.x && y === terrain.poweredDoor.y) {
+      tile = actor.gridPowered === false ? "porte fermée" : "porte franchissable";
+    } else if (warTerrainCellBlockedV116(terrain, x, y)) tile = "obstacle";
+    else if (terrain.cover.includes(x + "," + y)) tile = "couvert";
+    return label + " " + tile;
+  }).join(", ");
+}
+
+export default function ClanWarOperationsV115({rules,active=true,persist=false,initialScenarioId=null,gauntletId="jungle-hunter",holographic=false,createSceneAudio}:Props) {
   const sourcePilotSiteId=(initialScenarioId==="W3-RTS05"||initialScenarioId==="W3-RTS06")?"W3-K13":
     (initialScenarioId==="W3-RTS03"||initialScenarioId==="W3-RTS04")?"W3-K07":"W3-K02";
   const [world,setWorld]=useState<WarOperationsStateV115>(()=>createWarOperationsV115(rules));
   const worldRef=useRef(world);
   const fieldRoot=useRef<HTMLElement>(null);
+  const stealthMapId = useId();
+  const listenAudio=useRef<RecordedSceneAudioPort|null>(null);
+  const listenAudible=useRef(false);
   const councilAudit=useMemo(()=>buildWarCouncilAuditV146(world,null,rules),[world,rules]);
   const knownArchiveBytesRef=useRef<string|null>(null);
   const archiveBaselineRef=useRef<WarOperationsArchiveBaseline|null>(null);
@@ -337,14 +364,32 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     }catch{if(mountedV115Ref.current)setMessage("Export indisponible : les octets d’origine restent conservés. Réessayez après rétablissement du stockage.");}
   }
 
+  useEffect(()=>{
+    listenAudible.current=active&&!blocked&&commandPanel===null&&world.active?.mode==="stealth";
+    if(!listenAudible.current)listenAudio.current?.stop();
+  },[active,blocked,commandPanel,world.active?.mode]);
+  useEffect(()=>()=>{
+    listenAudio.current?.dispose();
+    listenAudio.current=null;
+  },[createSceneAudio]);
+
   function commit(update:WarOperationsUpdateV115) {
     if(!update.accepted){setMessage(update.message);return;}
     if(blocked||!hydrated||!active||!verifyOwnV115ArchiveV148())return;
+    const openingStealth=update.state.active?.mode==="stealth"&&worldRef.current.active?.id!==update.state.active.id;
+    if(openingStealth||(update.listenCue&&listenAudible.current)){
+      listenAudio.current??=createSceneAudio?.()??null;
+      listenAudio.current?.unlock();
+    }
     writeV115(async()=>{
       if(!verifyOwnV115ArchiveV148())return;
       if(!await persistWorld(update.state))return;
       if(!mountedV115Ref.current)return;
       worldRef.current=update.state;setWorld(update.state);setMessage(update.message);
+      if(update.listenCue&&activeV115Ref.current&&listenAudible.current&&
+        document.visibilityState==="visible"&&!fieldRoot.current?.closest("[hidden], [inert]")){
+        listenAudio.current?.playRecorded("footstep",update.listenCue);
+      }
     });
   }
   useEffect(()=>{
@@ -706,18 +751,32 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <p className={styles.explain}>Art temporaire schématique : aucun sprite de film ou de Predator: Hunting Grounds n&apos;est faussement déclaré intégré.</p>
       </div>}
 
-      {stealth && <div data-war-field-mode="stealth">
-        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="img" aria-label="Plan d'infiltration : X pisteur, G uniquement si visible, R relais, E extraction et obstacles">
+      {stealth && missionTerrain && <div data-war-field-mode="stealth">
+        <div className={`${styles.grid} ${styles.stealthMap}`} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}}
+          role="group" tabIndex={active ? 0 : -1} aria-label="Carte et commandes d’infiltration"
+          aria-describedby={`${stealthMapId}-keys ${stealthMapId}-status`}
+          aria-keyshortcuts={active && !blocked && (stealth.reinforcementMode !== undefined || stealth.supportGuard)
+            ? "ArrowUp ArrowRight ArrowDown ArrowLeft Z Q S D W A E Space" : undefined}>
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
             const mark=stealth.x===x&&stealth.y===y?"X":secondGuardVisible&&stealth.supportGuard?.x===x&&stealth.supportGuard?.y===y?"G₂":
               guardVisible&&stealth.guardX===x&&y===(stealth.guardY??2)?"G":x===7&&y===1?"R":x===1&&y===4?"E":missionTerrain?.controlPanel.x===x&&missionTerrain.controlPanel.y===y?"⚡":missionTerrain?.poweredDoor.x===x&&missionTerrain.poweredDoor.y===y?(stealth.gridPowered===false?"▣":"◇"):wall?"▥":stealth.decoyTurns&&stealth.decoyX===x&&
               (stealth.decoyY??2)===y?"♪":
               missionTerrain?.cover.includes(x+","+y)?"▤":"·";
-            return <span className={styles.cell} data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"||mark==="G₂"?"rival":""} key={index} title={"Case "+x+","+y}>{mark==="R"?<ClanWarFieldSprite id={stealth.sabotaged?"relay-disabled":"relay-active"} label={stealth.sabotaged?"Relais neutralisé":"Relais actif"} size={40}/>:mark==="E"?<ClanWarFieldSprite id="beacon-active" label="Extraction" size={40}/>:mark}</span>;
+            return <span className={styles.cell} aria-hidden="true" data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"||mark==="G₂"?"rival":""} key={index} title={"Case "+x+","+y}>{mark==="R"?<ClanWarFieldSprite id={stealth.sabotaged?"relay-disabled":"relay-active"} label={stealth.sabotaged?"Relais neutralisé":"Relais actif"} size={40}/>:mark==="E"?<ClanWarFieldSprite id="beacon-active" label="Extraction" size={40}/>:mark}</span>;
           })}
         </div>
-        <p>Clavier lorsque le panneau a le focus : flèches, ZQSD ou WASD ; E : interagir ; Espace : attendre. Une pression = un ordre ; aucun maintien automatique.</p>
+        <p id={stealthMapId + "-keys"}>Sur la carte, utilisez les flèches, ZQSD ou WASD pour vous déplacer, E pour interagir et Espace pour attendre. Chaque pression envoie un ordre. Tab quitte la carte.</p>
+        <p id={stealthMapId + "-status"} role="status" aria-atomic="true">
+          {`Pisteur en (${stealth.x}, ${stealth.y}). ${describeStealthNeighbors(missionTerrain, stealth)}. `}
+          {stealth.sabotaged
+            ? `Extraction en (${missionTerrain.extraction.x}, ${missionTerrain.extraction.y}). `
+            : `Relais à saboter en (${missionTerrain.relay.x}, ${missionTerrain.relay.y}). `}
+          {`Panneau électrique en (${missionTerrain.controlPanel.x}, ${missionTerrain.controlPanel.y}). `}
+          {guardVisible && `Patrouille en (${stealth.guardX}, ${stealth.guardY ?? 2}). `}
+          {secondGuardVisible && stealth.supportGuard && `Renfort en (${stealth.supportGuard.x}, ${stealth.supportGuard.y}). `}
+          {!guardVisible && !secondGuardVisible && "Aucune patrouille visible."}
+        </p>
         <p>Rejoindre le relais (7,1), le désactiver, puis rejoindre l&apos;extraction (1,4). Alerte <strong>{stealth.alarm}/3</strong> · énergie de camouflage <strong>{stealth.energy}/5</strong> · relais <strong>{stealth.sabotaged?"neutralisé":"actif"}</strong> · diversion <strong>{stealth.decoyUsed?"épuisée": "disponible"}</strong> · leurre <strong>{stealth.decoyTurns??0} tour(s) à la position émise</strong> · couverts utilisés <strong>{(stealth.usedCoverIds??[]).length}/{missionTerrain?.cover.length??0}</strong> · écoutes <strong>{stealth.acousticUsed??0}/2</strong> · circuit <strong>{stealth.gridPowered===false?"coupé":"alimenté"}</strong> · manœuvres <strong>{stealth.gridSwitches??0}/2</strong>.</p>
         <p className={styles.explain}>Terrain régional : {missionTerrain?.title} · {missionTerrain?.ground} · obstacle : {missionTerrain?.wallLabel}.</p>
         {stealth.reinforcementMode===undefined&&!stealth.supportGuard&&<p role="alert">Cette archive ne précise pas la règle de renfort. Choisissez le comportement pour reprendre l&apos;infiltration ; son état actuel sera conservé.</p>}

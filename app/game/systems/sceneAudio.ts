@@ -1,5 +1,5 @@
 /**
- * A disposable procedural voice on the owning GameAudio effects bus.
+ * A disposable voice on the owning GameAudio effects bus.
  * It never creates an AudioContext or fetches files. Short cues are immediate:
  * a blocked autoplay unlock cannot replay an old impact later.
  */
@@ -35,11 +35,22 @@ export interface SceneAudioPort {
   dispose(): void;
 }
 
+export interface SceneAudioSample {
+  gain: number;
+  pan: number;
+  lowpassHz: number;
+}
+
+export interface RecordedSceneAudioPort extends Pick<SceneAudioPort, "unlock" | "stop" | "dispose"> {
+  playRecorded(id: string, sample: SceneAudioSample): boolean;
+}
+
 export interface SceneAudioGraph { context: AudioContext; effects: AudioNode }
 export interface SceneAudioOwner {
   /** Null until the shared engine is ready, or while it is paused/disposed. */
   graph: () => SceneAudioGraph | null;
   unlock: () => Promise<void>;
+  sample?: (id: string) => AudioBuffer | null;
   released?: () => void;
 }
 
@@ -55,7 +66,7 @@ const SILENCE = .0001;
 const finite = (value: number | undefined, fallback: number, minimum: number, maximum: number) =>
   Number.isFinite(value) ? Math.max(minimum, Math.min(maximum, value!)) : fallback;
 
-export class GameSceneAudio implements SceneAudioPort {
+export class GameSceneAudio implements SceneAudioPort, RecordedSceneAudioPort {
   private readonly owner: SceneAudioOwner;
   private readonly voices = new Set<Voice>();
   private desiredLoop: { key: string; sound: SceneAudioSound } | null = null;
@@ -82,6 +93,49 @@ export class GameSceneAudio implements SceneAudioPort {
     if (!graph) return false;
     this.addSound(graph, sound, false);
     return true;
+  }
+
+  playRecorded(id: string, sample: SceneAudioSample): boolean {
+    if (this.disposed) return false;
+    const graph = this.owner.graph();
+    const gain = finite(sample.gain, 0, 0, 1);
+    if (!graph || gain <= 0) return false;
+    const buffer = this.owner.sample?.(id);
+    if (!buffer || buffer.duration <= 0) return false;
+
+    const { context, effects } = graph;
+    const nodes: AudioNode[] = [];
+    let voice: Voice | null = null;
+    try {
+      const source = context.createBufferSource();
+      nodes.push(source);
+      const filter = context.createBiquadFilter();
+      nodes.push(filter);
+      const envelope = context.createGain();
+      nodes.push(envelope);
+      source.buffer = buffer;
+      filter.type = "lowpass";
+      filter.frequency.value = finite(sample.lowpassHz, 8_000, 40, 14_000);
+      filter.Q.value = .707;
+      source.connect(filter);
+      filter.connect(envelope);
+      if (typeof context.createStereoPanner === "function") {
+        const panner = context.createStereoPanner();
+        nodes.push(panner);
+        panner.pan.value = finite(sample.pan, 0, -1, 1);
+        envelope.connect(panner);
+        panner.connect(effects);
+      } else {
+        envelope.connect(effects);
+      }
+      voice = { source, envelope, nodes, loop: false, context };
+      this.beginVoice(voice, context.currentTime, buffer.duration, gain);
+      return true;
+    } catch {
+      if (voice && this.voices.has(voice)) this.stopVoice(voice, 0);
+      else for (const node of nodes) node.disconnect();
+      return false;
+    }
   }
 
   loop(key: string, sound: SceneAudioSound): void {

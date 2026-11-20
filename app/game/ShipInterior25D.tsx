@@ -13,6 +13,7 @@ import ShipPreparationPanelV88 from "./ShipPreparationPanelV88";
 import CompanionResidencePanel from "./CompanionResidencePanel";
 import CompanionQuartersScene from "./CompanionQuartersScene";
 import BuriedCradleReturnPanel from './BuriedCradleReturnPanel';
+import { getCradleCrownCondition } from './systems/buriedCradle';
 import { CRADLE_RETURN_MENTOR } from './systems/buriedCradleReturn';
 import type { HunterAppearance } from './types';
 import cradleArt from './data/buriedCradleArt.json';
@@ -50,10 +51,13 @@ const FIXTURE_ART = {
   ...SHIP_INTERIOR_25D_ART,
   archiveTerminal: SHIP_LEVEL_ART_V22.archiveTerminal,
 } satisfies Record<ShipInterior25dArtKey, NativeArt>;
-const crownSource = cradleArt.assets['100'];
-const CRADLE_CROWN_ART: NativeArt = { src: crownSource.src, sourceWidth: crownSource.width, sourceHeight: crownSource.height,
-  alphaBounds: { x: crownSource.bounds[0], y: crownSource.bounds[1],
-    width: crownSource.bounds[2] - crownSource.bounds[0], height: crownSource.bounds[3] - crownSource.bounds[1] } };
+function cradleCrownArt({ src, width, height, bounds }: typeof cradleArt.assets['100']): NativeArt {
+  const [left, top, right, bottom] = bounds;
+  return { src, sourceWidth: width, sourceHeight: height,
+    alphaBounds: { x: left, y: top, width: right - left, height: bottom - top } };
+}
+const CRADLE_CROWN_ART = cradleCrownArt(cradleArt.assets['100']);
+const CRADLE_MARKED_CROWN_ART = cradleCrownArt(cradleArt.assets.A012);
 
 const RETURN_MENTOR_APPEARANCE: HunterAppearance = {
   presetId: 'custom', bodyMorphId: 'classic', headStyleId: 'legacy-clan',
@@ -94,6 +98,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
   const waypointRef = useRef(waypoint);
   const [status, setStatus] = useState("Pont prêt. Clique sur le sol pour marcher, ou utilise les commandes de déplacement.");
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [returnCleaning, setReturnCleaning] = useState(false);
   const helpId = useId();
   const planId = useId();
   const room = ROOMS[frame.roomId];
@@ -374,6 +379,11 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
   const cradleState = cradleReturn?.save.buriedCradle;
   const cradleInstalled = !!cradleState && ['extracted', 'reported'].includes(cradleState.status) &&
     cradleState.personalShipId === cradleReturn?.selectedShipId && (cradleState.returnVisit?.revision ?? 0) >= 2;
+  const cradleCrown = cradleState && getCradleCrownCondition(cradleState.progress);
+  const cradleReturnArt = cradleCrown === 'intact' ? CRADLE_CROWN_ART :
+    cradleCrown === 'marked' ? CRADLE_MARKED_CROWN_ART : FIXTURE_ART.archiveTerminal;
+  const cradleReturnLabel = cradleCrown === 'intact' ? 'Crête de la Matriarche rapportée' :
+    cradleCrown === 'marked' ? 'Crête de la Matriarche marquée par l’acide' : 'Relevés du Berceau sans trophée';
   const cradleMentorHere = frame.roomId === CRADLE_RETURN_MENTOR.roomId &&
     cradleState?.status === 'extracted' && cradleState.personalShipId === cradleReturn?.selectedShipId &&
     cradleState.returnVisit?.revision === 1;
@@ -410,8 +420,8 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
         <div className={styles.floorRim} style={{ top: roomHeight - 26 }} aria-hidden="true" />
         <div className={styles.roomGlyph} aria-hidden="true">{String(ROOM_ORDER.indexOf(frame.roomId) + 1).padStart(2, "0")}</div>
         {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} actor={frame.actor}
-          artOverride={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? CRADLE_CROWN_ART : FIXTURE_ART.archiveTerminal : undefined}
-          label={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? 'Crête de la Matriarche rapportée' : 'Relevés du Berceau sans trophée' : undefined} />)}
+          artOverride={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleReturnArt : undefined}
+          label={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleReturnLabel : undefined} />)}
         {cradleMentorHere && <div className={styles.actor} data-cradle-return-mentor={CRADLE_RETURN_MENTOR.id}
           style={{ left: cradleMentorScreen.x, top: cradleMentorScreen.y, zIndex: 20 + Math.round(cradleMentorPosition.y) }}>
           <span className={styles.actorShadow} />
@@ -449,6 +459,8 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
             size={ACTOR_WIDTH} pose={frame.moving && !suspended && !reducedMotion ? "run" : "idle"} phase={reducedMotion ? 0 : frame.phase}
             speed={frame.moving && !suspended ? METRICS.speed : 0} facing={frame.actor.facing} label="Ton chasseur équipé dans le vaisseau"
             style={{ position: "absolute", left: -ACTOR_WIDTH / 2, top: -ACTOR_FOOT }} />
+          {returnCleaning && frame.roomId === 'medical-bay' && <span aria-hidden="true" data-cradle-return-cleaning
+            className={styles.returnCleaning} />}
         </div>
       </div>
       <div className={styles.vignette} aria-hidden="true" />
@@ -479,7 +491,18 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
       </div>
     </div>
     <p className={styles.status} role="status" aria-live="polite">{status}</p>
-    {cradleReturn && <BuriedCradleReturnPanel controlled={cradleReturn} stationId={serviceNearby} suspended={suspended}
+    {cradleReturn && <BuriedCradleReturnPanel controlled={{ ...cradleReturn, onAction(action, observation) {
+      const accepted = cradleReturn.onAction(action, observation);
+      if (accepted && action.type === 'treat-return') {
+        setReturnCleaning(true);
+        const timer = window.setTimeout(() => {
+          setReturnCleaning(false);
+          timersRef.current.delete(timer);
+        }, 1600);
+        timersRef.current.add(timer);
+      }
+      return accepted;
+    } }} stationId={serviceNearby} suspended={suspended}
       observe={() => {
         if (suspendedRef.current) return null;
         const current = frameRef.current;
@@ -514,7 +537,7 @@ function Fixture({ fixture, actor, artOverride, label }: { fixture: ShipInterior
   artOverride?: NativeArt; label?: string }) {
   const point = pointOnScreen(fixture);
   const actorPoint = pointOnScreen(actor);
-  const displayHeight = artOverride === CRADLE_CROWN_ART ? 230 : fixture.height;
+  const displayHeight = artOverride === CRADLE_CROWN_ART || artOverride === CRADLE_MARKED_CROWN_ART ? 230 : fixture.height;
   const occludes = actor.y < fixture.y && Math.abs(actor.x - fixture.x) < fixture.width / 2 + 22 && actorPoint.y > point.y - displayHeight && actorPoint.y - ACTOR_FOOT < point.y;
   return <div className={styles.fixture} data-ship-fixture={fixture.id} data-occluding={occludes} data-fixture-depth={Math.round(fixture.y)}
     data-cradle-return-object={label ? 'installed' : undefined} role={label ? 'img' : undefined} aria-label={label}

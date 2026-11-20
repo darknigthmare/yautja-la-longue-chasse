@@ -33,6 +33,19 @@
 .art { position: absolute; display: block; pointer-events: none; }
 .art img { display: block; position: absolute; max-width: none; object-fit: contain; filter: drop-shadow(0 3px 3px #0007); }
 .actorShadow { position: absolute; left: -31px; top: -9px; width: 62px; height: 20px; border-radius: 50%; background: #000a; filter: blur(3px); }
+.returnCleaning {
+  position: absolute; left: -66px; top: -154px; width: 132px; height: 118px; pointer-events: none;
+  background:
+    radial-gradient(ellipse at 22% 64%, #bed99caa, transparent 37%),
+    radial-gradient(ellipse at 71% 58%, #cddec29c, transparent 43%),
+    radial-gradient(ellipse at 46% 27%, #b1cec777, transparent 39%);
+  filter: blur(4px); opacity: .62; animation: returnCleaning 1.6s ease-out both;
+}
+@keyframes returnCleaning {
+  0% { opacity: 0; transform: translateY(19px) scale(.75); }
+  28% { opacity: .92; }
+  100% { opacity: 0; transform: translateY(-32px) scale(1.24); }
+}
 .returnMentorAction { position: absolute; top: 12px; left: 0; transform: translateX(-50%); width: max-content; min-height: 44px; pointer-events: auto; padding: 6px 10px; border: 1px solid var(--ship-accent); border-radius: 6px; background: #0b1716; color: #f0e5bf; font-size: 12px; }
 .returnMentorAction:focus-visible { outline: 3px solid var(--ship-accent); outline-offset: 3px; }
 .trophy { position: absolute; width: 120px; height: 150px; z-index: 5; display: grid; align-content: start; justify-items: center; text-align: center; pointer-events: none; }
@@ -95,4 +108,7 @@
   .shortcuts nav { grid-template-columns: repeat(2,minmax(0,1fr)); }.status,.help,.shortcuts { padding-left: 14px; padding-right: 14px; }
 }
 @media (max-width: 360px) { .header { align-items: flex-start; }.header h2 { font-size: 19px; }.viewport { height: 420px; }.routeHint { top: 9px; right: 9px; max-width: 230px; }.context strong { font-size: 13px; }.context span { font-size: 11px; } }
-@media (prefers-reduced-motion: reduce) { .fixtureBody { transition: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .fixtureBody { transition: none; }
+  .returnCleaning { animation: none; }
+}

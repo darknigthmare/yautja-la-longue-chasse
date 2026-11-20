@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {build} from "esbuild";
-const compiled=await build({stdin:{contents:`export * from "./app/game/save";export * from "./app/game/data";export * from "./app/game/systems/harvestInventoryV112";`,resolveDir:process.cwd(),loader:"ts"},bundle:true,write:false,platform:"node",format:"esm",logLevel:"silent"});
+const compiled=await build({stdin:{contents:`export * from "./app/game/save";export * from "./app/game/data";export * from "./app/game/systems/harvestInventoryV112";export * from "./app/game/systems/ritesOfHuntV77";`,resolveDir:process.cwd(),loader:"ts"},bundle:true,write:false,platform:"node",format:"esm",logLevel:"silent"});
 const api=await import("data:text/javascript;base64,"+Buffer.from(compiled.outputFiles[0].text).toString("base64"));
 const mission="jungle-vey";
 const save=()=>{const s=api.defaultSave("2026-10-28T00:00:00.000Z");s.profile.clanMarks=100;s.inventory.fieldToolIds=["flaying-tool"];return s;};
@@ -208,4 +208,78 @@ test("manual preservation keeps its paid partial work across a much later real s
   assert.equal(normalized.profile.playTimeSeconds,s.profile.playTimeSeconds);
   assert.equal(api.workConservationV112(normalized,jobId).save.inventory.harvestV112.jobs[0].unitsDone,2,
     "only the next explicit manual gesture advances the work after return");
+});
+
+
+function playedFieldReturn({count = 1, parts = ["harvest-hide", "harvest-tissue"]} = {}) {
+  const runId = mission + ":0";
+  const prey = Array.from({length: count}, (_, index) => ({
+    id: "returned-" + index, x: 100, y: 100, kind: "beast", worthy: true, protectedPrey: false,
+    sourceEnemyId: "hell-hound-stalker", label: "Chien de chasse", defeated: true, active: true,
+    health: 0, defeatedAt: 0, integrity: 94,
+  }));
+  const context = {runId, missionId: mission, actor: {x: 100, y: 90}, grounded: true, health: 100,
+    suspended: false, flayingToolOwned: true, prey, supports: [],
+    acceptSpecimen: item => api.tryCarrySpecimenV112(rites.specimensV112, item, "hunter").ok,
+  };
+  let rites = api.createRitesOfHuntV77(runId, mission);
+  for (const corpse of prey) {
+    const registered = api.registerRitePreyV77(rites, corpse, context);
+    assert(registered.accepted, registered.message);
+    rites = registered.state;
+    const actions = parts.includes("harvest-hide") ? ["flay", ...parts] : parts;
+    for (const action of actions) {
+      const started = api.startHuntRiteV77(rites, corpse.id, action, context);
+      assert(started.accepted, started.message);
+      rites = started.state;
+      let completed = false;
+      for (let tick = 0; tick < 45 && rites.operation; tick++) {
+        const step = api.stepHuntRiteV77(rites, .1, context);
+        rites = step.state;
+        completed = step.accepted;
+      }
+      assert(completed, action + " finished in V77");
+    }
+  }
+  return {...result(), specimensV112: rites.specimensV112, toolUseIdsV112: rites.completedEventIds.map(id => runId + ":" + id)};
+}
+
+test("the successful return of two real V77 parts credits one prey and the exact encounter once", () => {
+  const report = playedFieldReturn();
+  const before = save();
+  const withoutParts = api.applyMissionResult(before, {...report, specimensV112: []});
+  const rewarded = api.applyMissionResult(before, report);
+  assert.equal(report.specimensV112.length, 2);
+  assert.equal(rewarded.profile.honor, withoutParts.profile.honor + 3);
+  assert.equal(rewarded.profile.clanMarks, withoutParts.profile.clanMarks);
+  assert.equal(depot(rewarded).toolCondition, depot(withoutParts).toolCondition);
+  const reloaded = api.parseSaveImport(JSON.stringify(rewarded)).save;
+  assert(reloaded);
+  const duplicate = api.applyMissionResult(reloaded, report);
+  assert.equal(duplicate.profile.honor, rewarded.profile.honor);
+  assert.equal(duplicate.missionProgress[mission].attempts, 1);
+  assert.equal(depot(duplicate).specimens.length, 2);
+});
+
+test("the return bonus caps at 20 and requires the exact part receipt from the same body", () => {
+  const report = playedFieldReturn({count: 8, parts: ["harvest-tissue"]});
+  assert.equal(report.specimensV112.length, 8);
+  const normal = api.applyMissionResult(save(), {...report, specimensV112: []});
+  assert.equal(api.applyMissionResult(save(), report).profile.honor, normal.profile.honor + 20);
+  const wrongProof = {...report, toolUseIdsV112: report.toolUseIdsV112.map(id => id.replace("harvest-tissue:", "harvest-hide:"))};
+  assert.equal(api.applyMissionResult(save(), wrongProof).profile.honor, normal.profile.honor);
+  const unknown = {...report, specimensV112: report.specimensV112.map(item => ({...item, speciesId: "constructor"}))};
+  assert.equal(api.applyMissionResult(save(), unknown).profile.honor, normal.profile.honor);
+});
+
+test("an unsuccessful hunt keeps wear and the encounter receipt without a return bonus", () => {
+  const report = playedFieldReturn();
+  for (const outcome of ["failed", "abandoned"]) {
+    const next = api.applyMissionResult(save(), {...report, outcome});
+    assert.equal(next.profile.honor, 0);
+    assert.equal(depot(next).specimens.length, 0);
+    assert.equal(depot(next).toolCondition, 85);
+    assert.equal(depot(next).settledEncounterRuns[mission], 0);
+    assert.equal(api.applyMissionResult(next, {...report, outcome}).missionProgress[mission].attempts, 1);
+  }
 });

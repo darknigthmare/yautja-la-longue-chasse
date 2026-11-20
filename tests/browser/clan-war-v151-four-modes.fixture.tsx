@@ -1,5 +1,6 @@
 import React from "react";
 import {createRoot} from "react-dom/client";
+import {GameAudio} from "../../app/game/sound";
 import ClanWarOperationsV115 from "../../app/game/ClanWarOperationsV115";
 import {DEFAULT_WAR_RULES_V6} from "../../app/game/systems/clanWarBibleV6";
 import {createWarOperationsV115,warMissionEligibleV115} from "../../app/game/systems/clanWarOperationsV115";
@@ -12,12 +13,14 @@ const team=seeded.teams[0]?.id??"";
 const target=rules.territories.find(t=>t.id!==seeded.baseId&&
   warMissionEligibleV115(seeded,rules,t.id,[team])===null)?.id??"";
 if(!team||!target)throw new Error("Missing valid native V115 operation");
+const gameAudio=new GameAudio();
+const createSceneAudio=()=>gameAudio.createSceneAudio();
 function Fixture(){
   return <main data-testid="v147-actual-four-mode-lab"
       data-legal-team={team} data-legal-target={target}
       data-initial-rav={seeded.rav}>
     <h1>V151 : Quatre modes V115 et verrou réel des archives</h1>
-    <ClanWarOperationsV115 rules={rules} active persist />
+    <ClanWarOperationsV115 rules={rules} active persist createSceneAudio={createSceneAudio}/>
   </main>;
 }
 const mount=document.getElementById("root");

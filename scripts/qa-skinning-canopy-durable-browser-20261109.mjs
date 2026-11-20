@@ -29,9 +29,17 @@ const source=await readFile(path.join(root,'app/game/HuntCanvas.tsx'),'utf8');
 const marker='    const fixedStep = 1 / 60;';
 assert.equal(source.split(marker).length,2,'One native lifecycle hook boundary');
 const observer='    window.__onSkinningCanopyMountV112?.({get game(){return game;},input,get alive(){return alive;},resumed:resumeSnapshot!=null,mission,encounterRun,native:{makeEnemy,damageEnemy,createDropShipArrival,canopySupportReachableV112,solvePlayerRigFrame}});\n';
-const bootstrap=await build({stdin:{contents:'export {defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
+const boardingMarker='      finish(resultFor(state, mission, difficulty, "success"));';
+assert.equal(source.split(boardingMarker).length,2,'One native successful boarding result');
+const boardingObserver=[
+  '      const terminalResult = resultFor(state, mission, difficulty, "success");',
+  '      window.__onSkinningCanopyResultV169?.(terminalResult);',
+  '      finish(terminalResult);',
+].join('\n');
+const instrumentedSource=source.replace(marker,observer+marker).replace(boardingMarker,boardingObserver);
+const bootstrap=await build({stdin:{contents:'export {applyMissionResult,defaultSave,SAVE_STORAGE_KEY} from "./app/game/save";export {GALAXY_NAVIGATION} from "./app/game/galaxyNavigation";',resolveDir:root,loader:'ts'},bundle:true,write:false,format:'cjs',platform:'node',logLevel:'silent'});
 const mod={exports:{}};
-runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url)});
+runInNewContext(bootstrap.outputFiles[0].text,{module:mod,exports:mod.exports,require:createRequire(import.meta.url),structuredClone,TextEncoder});
 const admission=mod.exports.defaultSave('2026-11-09T00:00:00.000Z');
 admission.profile.clanMarks=100;
 admission.inventory.fieldToolIds=['flaying-tool'];
@@ -42,22 +50,22 @@ admission.settings.screenShake=false;
 const storageKey=mod.exports.SAVE_STORAGE_KEY;
 const route=mod.exports.GALAXY_NAVIGATION.sectors.flatMap(sector=>sector.systems.flatMap(system=>system.bodies.flatMap(body=>body.missions.map(mission=>({sector,system,body,mission}))))).find(item=>item.mission.id==='jungle-vey');
 assert.ok(route);
-const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/skinning-canopy-durable-20261109.fixture.jsx'],bundle:true,write:false,format:'iife',platform:'browser',jsx:'automatic',outfile:'fixture.js',metafile:true,logLevel:'silent',external:['/game/*'],define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'native-gameclient-and-one-declared-hook',setup(builder){
+const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/skinning-canopy-durable-20261109.fixture.jsx'],bundle:true,write:false,format:'iife',platform:'browser',jsx:'automatic',outfile:'fixture.js',metafile:true,logLevel:'silent',external:['/game/*'],define:{'process.env.NODE_ENV':'"production"'},plugins:[{name:'native-gameclient-with-declared-observers',setup(builder){
   builder.onLoad({filter:/\/app\/globals\.css$/},async args=>({loader:'css',resolveDir:path.dirname(args.path),contents:(await postcss([tailwind({base:root})]).process(await readFile(args.path,'utf8'),{from:args.path})).css}));
-  builder.onLoad({filter:/\/HuntCanvas\.tsx$/},()=>({loader:'tsx',resolveDir:path.join(root,'app/game'),contents:source.replace(marker,observer+marker)}));
+  builder.onLoad({filter:/\/HuntCanvas\.tsx$/},()=>({loader:'tsx',resolveDir:path.join(root,'app/game'),contents:instrumentedSource}));
 }}]});
 const js=bundle.outputFiles.find(file=>file.path.endsWith('.js')),css=bundle.outputFiles.find(file=>file.path.endsWith('.css'));
 assert.ok(js&&css);
 const sourceHashes={};
-for(const file of Object.keys(bundle.metafile.inputs).filter(name=>name.startsWith('app/game/')&&/HuntCanvas|GameClient|HuntCanopy|HuntRites|HuntFieldGuide|HuntAccessibility|activeHuntSave|canopy|ritesOfHunt|huntRites|harvestInventory|fieldStash|huntField|hunterRig|sound\.ts/.test(name)).sort()){
+for(const file of Object.keys(bundle.metafile.inputs).filter(name=>name.startsWith('app/game/')&&/HuntCanvas|GameClient|HuntCanopy|HuntRites|HuntFieldGuide|HuntAccessibility|activeHuntSave|canopy|ritesOfHunt|huntRites|harvestInventory|fieldStash|huntField|hunterRig|save\.ts|sound\.ts/.test(name)).sort()){
   sourceHashes[file]=hash(await readFile(path.join(root,file)));
 }
 const report={
   schemaVersion:1,startedAt:new Date().toISOString(),sourceCommit:revision,workingTreeDirty:dirty.length>0,workingTreeOverlay:dirty,
   classification:'IN_PROGRESS',browserExecuted:false,passed:false,checks:[],captures:[],errors:[],cases:{},admissionArrivals:[],
-  sourceHashes,hookSha256:hash(observer),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
+  sourceHashes,hookSha256:hash(observer),boardingObserverSha256:hash(boardingObserver),bundleSha256:hash(js.contents),cssBundleSha256:hash(css.contents),
   inputTimestampSemantics:'Input logs use the nearest decision observation, not the exact browser event-dispatch clock. Native simulation continues while screenshots, DOM inspection and protocol messages are processed.',
-  instrumentation:['One declared Canvas mount hook exposes read-only state plus the disclosed initial/terminal fixture setup','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
+  instrumentation:['One declared Canvas mount hook exposes read-only state plus the disclosed initial/terminal fixture setup','A read-only Canvas observer copies the successful native result immediately before the existing finish callback','A passthrough Storage.prototype.setItem observer records the successful native platform call without changing bytes or acknowledgements','No production GameClient callback, ownership check, sidecar encoder, writer or claim is substituted'],
   admission:{kind:'Declared production defaultSave with field tool, 100 marks and condition25',sha256:hash(admission),save:admission},
   scope:'Complete production GameClient, its actual campaign front end, admission/claim, active-hunt serializer and localStorage writer. Mounted HuntCanvas uses the native rAF, DOM controls and keyboard listeners. One initial physical prey is created through native damage for field work. A separate declared terminal segment prepares Apex prerequisites and initial position; outcome and settlement are native. Canopy starts at the canonical insertion with original geometry, enemies and hazards.',
   limits:['Automated desktop Chromium, not physical phone/controller or novice comprehension','No artistic or audio-listening qualification; audio is muted','No complete campaign or eight-mission ground fallback claim','The terminal extraction segment has a declared position/prerequisite fixture and does not prove intervening main-route traversal'],
@@ -167,7 +175,12 @@ async function reloadHunt(label){
 }
 async function newCase(kind){
   context=await browser.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1});
-  await context.addInitScript(({save,key})=>{if(localStorage.length===0)localStorage.setItem(key,JSON.stringify(save));},{save:admission,key:storageKey});
+  await context.addInitScript(({save,key})=>{
+    if(localStorage.length===0)localStorage.setItem(key,JSON.stringify(save));
+    const results=[];
+    window.__skinningCanopyResultsV169=results;
+    window.__onSkinningCanopyResultV169=result=>results.push(structuredClone(result));
+  },{save:admission,key:storageKey});
   page=await context.newPage();
   page.setDefaultTimeout(45000);
   page.on('pageerror',error=>report.errors.push({case:kind,error:String(error)}));
@@ -298,11 +311,15 @@ async function field(){
     return{specimen:data.specimen,toolPreview:await page.locator('[data-rite-tool-preview-v112]').innerText()};
   });
   await pause();
-  await check('a field deposit survives durable reload and is picked up without another harvest or tool debit',async()=>{
+  await check('a field deposit survives durable reload without a tool debit or premature honor',async()=>{
+    const honorBeforeDeposit=(await campaign()).profile.honor;
     await page.getByRole('button',{name:/^Déposer ·/}).click();
     assert.equal((await observation()).rites.stashedSpecimensV112[0].specimenId,data.specimen.id);
+    assert.equal((await campaign()).profile.honor,honorBeforeDeposit);
     await reloadHunt('04-stash');
+    assert.equal((await campaign()).profile.honor,honorBeforeDeposit);
     await page.getByRole('button',{name:/^Reprendre ·/}).click();
+    assert.equal((await campaign()).profile.honor,honorBeforeDeposit);
     const state=await observation();
     assert.equal(state.rites.stashedSpecimensV112.length,0);
     assert.deepEqual(state.rites.specimensV112,[data.specimen]);
@@ -335,7 +352,8 @@ async function field(){
     return data.mobile;
   });
   await page.setViewportSize({width:1280,height:900});
-  await check('declared terminal segment keeps field identity and uses native boarding, settlement and tool wear',async()=>{
+  await check('native boarding settles the exact field piece, tool wear and three honor points',async()=>{
+    const before=await campaign();
     data.terminalSegment=await page.evaluate(()=>window.__skinningCanopyQaV112.prepareTerminalSegment());
     assert.deepEqual(data.terminalSegment.before.rites.specimensV112,data.terminalSegment.after.rites.specimensV112);
     assert.deepEqual(data.terminalSegment.before.worldExtraction,data.terminalSegment.after.worldExtraction);
@@ -347,11 +365,32 @@ async function field(){
     await page.keyboard.press('KeyE');
     await page.locator('.debrief-actions').getByRole('button',{name:'Retour au vaisseau',exact:true}).waitFor();
     const save=await campaign();
+    const results=await page.evaluate(()=>window.__skinningCanopyResultsV169);
+    assert.equal(results.length,1,'One successful result from native boarding');
+    const [terminal]=results;
+    const missionId=terminal.missionId,run=terminal.harvestEncounterRunV112;
+    assert.equal(missionId,route.mission.id);
+    assert.equal(terminal.outcome,'success');
+    assert.equal(run,before.missionProgress[missionId].attempts);
+    assert.deepEqual(terminal.specimensV112,[data.specimen]);
+    const sourcePrefix=missionId+':'+run+':';
+    assert.ok(data.specimen.sourceId.startsWith(sourcePrefix));
+    const preyId=data.specimen.sourceId.slice(sourcePrefix.length);
+    const harvestReceipt=sourcePrefix+'harvest-hide:'+preyId;
+    const flayReceipt=sourcePrefix+'flay:'+preyId;
+    assert.deepEqual([...terminal.toolUseIdsV112].sort(),[flayReceipt,harvestReceipt].sort());
+    const withoutPart=mod.exports.applyMissionResult(before,{...terminal,specimensV112:[]});
+    assert.equal(save.profile.honor,withoutPart.profile.honor+3,'Only the returned part adds three points to the other hunt rewards');
+    assert.equal(save.missionProgress[missionId].attempts,before.missionProgress[missionId].attempts+1);
+    assert.equal(save.inventory.harvestV112.settledEncounterRuns[missionId],run);
     assert.deepEqual(save.inventory.harvestV112.specimens,[data.specimen]);
     assert.equal(save.inventory.harvestV112.toolCondition,15);
     assert.equal(save.inventory.harvestV112.toolUseIds.length,2);
     assert.equal(await disk(),null,'Terminal settlement clears the actual sidecar');
-    data.delivered={specimen:save.inventory.harvestV112.specimens[0],toolCondition:save.inventory.harvestV112.toolCondition,toolUseIds:save.inventory.harvestV112.toolUseIds};
+    data.delivered={
+      specimen:save.inventory.harvestV112.specimens[0],toolCondition:save.inventory.harvestV112.toolCondition,toolUseIds:save.inventory.harvestV112.toolUseIds,
+      honor:{before:before.profile.honor,withoutReturnedPart:withoutPart.profile.honor,after:save.profile.honor,bonus:3,missionId,run,harvestReceipt,flayReceipt},
+    };
     await capture('06-native-field-settlement');
     return data.delivered;
   });
@@ -377,8 +416,24 @@ async function field(){
     await capture('07-native-conserved-part');
     return{item,marksPaid:14,toolCondition:15};
   });
-  data.finalCampaign=await campaign();
-  data.finalSidecar=await disk();
+  await check('a fresh campaign document preserves the mounted part and does not pay harvest honor again',async()=>{
+    const priorDocument=await page.evaluate(()=>window.__skinningCanopyQaV112.documentId);
+    const settledCampaign=await campaign();
+    const {missionId,run,after}=data.delivered.honor;
+    assert.equal(settledCampaign.profile.honor,after);
+    await page.reload();
+    await openCampaign();
+    const newDocument=await page.evaluate(()=>window.__skinningCanopyQaV112.documentId);
+    assert.notEqual(newDocument,priorDocument,'A fresh browser document loaded the durable campaign');
+    data.finalCampaign=await campaign();
+    data.finalSidecar=await disk();
+    assert.equal(data.finalSidecar,null);
+    assert.equal(data.finalCampaign.profile.honor,after);
+    assert.equal(data.finalCampaign.missionProgress[missionId].attempts,settledCampaign.missionProgress[missionId].attempts);
+    assert.equal(data.finalCampaign.inventory.harvestV112.settledEncounterRuns[missionId],run);
+    assert.deepEqual(data.finalCampaign.inventory.harvestV112.specimens,[data.mounted]);
+    return{missionId,run,honor:after,documentReloaded:true};
+  });
   await context.close();context=null;
 }
 async function canopy(){

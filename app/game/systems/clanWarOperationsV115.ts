@@ -12,6 +12,7 @@ import { warMissionTerrainV116, warTerrainCellBlockedV116, warTerrainLineOfSight
 import { warRtsNextPathStepV118 } from "./clanWarTacticalNavigationV118";
 import {warStealthPatrolSpawnV140} from "./clanWarStealthPatrolV140";
 import {warStealthDecoyPatrolV141} from "./clanWarStealthDecoyV141";
+import {warStealthListenCueV115,type WarStealthListenCueV115} from "./clanWarStealthAcousticsV115";
 import {chooseStealthSupportGuard} from "./clanWarStealthGuardPlacement";
 import {warOuterRouteChoicesV142} from "./clanWarOuterChoicesV142";
 import {warAssaultContactV141} from "./clanWarAssaultContactV141";
@@ -139,7 +140,7 @@ export interface WarOperationsStateV115 {
   pendingRecruits?: WarRecruitmentV115[]; recruitedTeamIds?: string[];
   pendingTreatments?: WarTreatmentV116[]; treatmentReceipts?: string[];
 }
-export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string }
+export interface WarOperationsUpdateV115 { state: WarOperationsStateV115; accepted: boolean; message: string; listenCue?: WarStealthListenCueV115 }
 const MAX_REPORTS = 120;
 
 const reject = (state: WarOperationsStateV115, message: string): WarOperationsUpdateV115 => ({ state, accepted: false, message });
@@ -582,6 +583,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
  if(!["up","down","left","right","cloak","interact","wait","decoy","hide","listen","quiet-sabotage","cut-grid","restore-grid","cover-up","cover-down","cover-left","cover-right"].includes(command))
   return reject(state,"Action inconnue.");
  const terrain=warMissionTerrainV116(mission.targetId,rules);
+ const listenCue=command==="listen"?warStealthListenCueV115(stealth,terrain):null;
  let {x,y,cloaked,energy,alarm,sabotaged,guardX,guardDirection}=stealth;
  let guardY=stealth.guardY??2;
  let supportGuard=stealth.supportGuard?{...stealth.supportGuard}:undefined;
@@ -604,9 +606,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   gridSwitches++;energy--;
  }
  if(command==="listen"){
-  if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||
-    Math.min(distance({x,y},{x:guardX,y:guardY}),
-      supportGuard?distance({x,y},supportGuard):Infinity)>5)
+  if(!terrain.cover.includes(coord(x,y))||cloaked||energy<1||acousticUsed>=2||!listenCue)
    return reject(state,"Écoute refusée : couvert réel, patrouille à portée acoustique, batterie et limite de deux usages.");
   acousticUsed++;energy--;
  }
@@ -718,12 +718,8 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   supportGuard=chooseStealthSupportGuard(terrain,{x:guardX,y:guardY},{x,y});
   if(supportGuard)reinforcementIssued=true;
  }
- if(command==="listen"){
-  // Direction is coarse relative bearing only. No guard x-coordinate,
-  // opponent ID, camera reveal or cross-planet information enters the record.
-  const acoustic=(supportGuard&&distance({x,y},supportGuard)<
-      distance({x,y},{x:guardX,y:guardY}))?supportGuard.x:guardX;
-  heardBearing=acoustic>x+1?"est":acoustic<x-1?"ouest":"proche";
+ if(listenCue){
+  heardBearing=listenCue.bearing;
   heardAtTick=mission.tick+1;
  }
  // Quiet waiting replenishes the existing cloak battery only while actually
@@ -746,7 +742,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
    "Relais désactivé et pisteur extrait ; renseignement et sabotage consignés."),"Extraction confirmée.");
  if(mission.tick>=65)return accept(recordOutcome(advanced,mission.id,"stealth",null,mission.targetId,mission.teamIds,"defeat",[],rules,
   "Fenêtre d'infiltration expirée."),"Mission interrompue par la durée de l'exercice.");
- return accept(advanced,switching?
+ const update=accept(advanced,switching?
    (gridPowered?"Réseau réalimenté : porte motorisée franchissable.":"Coupure locale : porte motorisée physiquement verrouillée."):
    command==="quiet-sabotage"?"Sabotage discret : 2 énergie engagées, sans alarme automatique.":
   command==="listen"?"Écoute locale : présence de la patrouille "+heardBearing+" ; aucune position exacte révélée.":
@@ -756,6 +752,7 @@ export function commandStealthV115(state:WarOperationsStateV115,command:StealthC
   command==="wait"?"Observation et attente : camouflage rechargé uniquement hors du regard adverse.":
   sabotaged?"Relais neutralisé : retournez au point d'extraction (1,4).":
   "Restez hors du champ de la patrouille et atteignez le relais (7,1).");
+ return listenCue?{...update,listenCue}:update;
 }
 function rtsEnemyTurn(actors:WarRtsActorV115[],rules:WarRulesV6,terrain:WarMissionTerrainV116,
   scripted?:WarRtsScriptedObjectiveV119) {

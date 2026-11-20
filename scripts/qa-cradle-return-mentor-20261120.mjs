@@ -15,7 +15,10 @@ const commit = execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).
 if (process.env.CRADLE_RETURN_QA_COMMIT) assert.equal(commit, process.env.CRADLE_RETURN_QA_COMMIT);
 const buildId = (await readFile('.next/BUILD_ID', 'utf8')).trim();
 assert.ok(buildId);
-const output = resolve(process.env.CRADLE_RETURN_QA_OUTPUT ?? 'outputs/qa-cradle-return-mentor');
+const scenario = process.env.CRADLE_RETURN_QA_SCENARIO ?? 'mentor';
+assert(['mentor', 'acid'].includes(scenario), 'Choose CRADLE_RETURN_QA_SCENARIO=mentor or acid.');
+const acid = scenario === 'acid';
+const output = resolve(process.env.CRADLE_RETURN_QA_OUTPUT ?? (acid ? 'outputs/qa-cradle-return-acid' : 'outputs/qa-cradle-return-mentor'));
 await mkdir(output, { recursive: true });
 const qa = homeworldSceneSsrV78();
 const campaign = qa.load('app/game/systems/buriedCradleCampaign.ts');
@@ -38,18 +41,36 @@ function acquire(action) {
 }
 acquire({ type: 'prepare' });
 acquire({ type: 'depart' });
-let run = cradle.createBuriedCradleRun(save.buriedCradle.progress, 1);
-run.player.x = 156;
-run.player.y = 508;
-run = cradle.stepBuriedCradle(run, { interactPressed: true }, 1 / 60).run;
-assert(run.extracted);
-acquire({ type: 'extract', progress: run.progress, snapshot: snapshots.snapshotBuriedCradleRun(run) });
+let run = cradle.createBuriedCradleRun(acid ? { ...save.buriedCradle.progress,
+  bossDefeated: true, rootRingCut: true, visitedRoomIds: [...cradle.CRADLE_ROOM_IDS],
+} : save.buriedCradle.progress, 1);
+if (acid) {
+  // Bounded admission: the queen is already defeated. Collect the actual
+  // fragment through room 12's interaction, then stage the carrier before the
+  // first active pool of room 08. Exposure starts inside Chromium.
+  run.roomId = '12';
+  run.player.x = 1620;
+  const pickup = cradle.stepBuriedCradle(run, { interactPressed: true }, 1 / 60);
+  assert(pickup.events.some(event => event.type === 'crown-claimed'));
+  run = pickup.run;
+  run.roomId = '08';
+  run.player.x = 420;
+  assert.equal(cradle.getCradleCrownCondition(run.progress), 'intact');
+  acquire({ type: 'checkpoint', progress: run.progress, snapshot: snapshots.snapshotBuriedCradleRun(run) });
+} else {
+  run.player.x = 156;
+  run = cradle.stepBuriedCradle(run, { interactPressed: true }, 1 / 60).run;
+  assert(run.extracted);
+  acquire({ type: 'extract', progress: run.progress, snapshot: snapshots.snapshotBuriedCradleRun(run) });
+}
 const parsed = saves.parseSaveImport(saves.exportSave(save));
 assert(parsed.save, parsed.failure);
-assert.equal(parsed.save.buriedCradle.returnVisit.revision, 0);
+if (acid) assert.equal(parsed.save.buriedCradle.snapshot.run.roomId, '08');
+else assert.equal(parsed.save.buriedCradle.returnVisit.revision, 0);
 
-const report = { commit, buildId, passed: false, checks: [], errors: [],
-  admission: 'Canonical export/import from a declared eight-chase prerequisite fixture and a real first-room retreat. No crown seeded. All checks start from the personal ship.' };
+const report = { commit, buildId, scenario, passed: false, checks: [], errors: [],
+  admission: acid ? 'Canonical active save with eight prerequisite chases and a defeated queen. The model picks up the fragment in room 12 and the fixture places the carrier at x=420 on the floor of room 08 before any exposure. Movement, acid, extraction, treatment, examination and debrief use the compiled game controls.' :
+    'Canonical export/import from a declared eight-chase prerequisite fixture and a real first-room retreat. No crown seeded. All checks start from the personal ship.' };
 const browser = await chromium.launch({
   executablePath: process.env.CHROMIUM_EXECUTABLE || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH || undefined,
   headless: true,
@@ -70,7 +91,7 @@ try {
   const mentor = ship.locator('[data-cradle-return-mentor="return-mentor"]');
   const diskSave = () => page.evaluate(key => JSON.parse(localStorage.getItem(key)), saves.SAVE_STORAGE_KEY);
 
-  async function openShip() {
+  async function openCampaign() {
     await page.waitForSelector('[data-campaign-menu], [data-campaign-session]');
     if (await page.locator('[data-campaign-menu]').isVisible()) {
       const campaignSection = page.locator('[data-menu-section="campaign"]');
@@ -80,6 +101,9 @@ try {
     }
     const play = page.getByRole('button', { name: 'Jouer', exact: true });
     if (await play.isVisible()) await play.click();
+  }
+  async function openShip() {
+    await openCampaign();
     await panel.waitFor();
   }
   async function guide(target) {
@@ -103,11 +127,78 @@ try {
 
   const response = await page.goto(origin.href, { waitUntil: 'domcontentloaded' });
   assert.ok(response?.ok() && (await response.text()).includes(buildId), 'The compiled source is being served.');
-  await openShip();
+  if (acid) {
+    await openCampaign();
+    const sceneSelector = '[data-buried-cradle]';
+    const scene = page.locator(sceneSelector);
+    await page.locator(sceneSelector + '[data-room="08"][data-crown-condition="intact"]').waitFor();
+    await scene.focus();
+    async function decodeCrown(file) {
+      const source = scene.locator('svg image[href$="' + file + '"]');
+      const url = await source.getAttribute('href');
+      const sprite = await page.evaluate(async path => {
+        const image = new Image();
+        image.src = path;
+        await image.decode();
+        return { path, width: image.naturalWidth, height: image.naturalHeight };
+      }, url);
+      assert.equal(sprite.width, 1254);
+      assert.equal(sprite.height, 1254);
+      return sprite;
+    }
+    async function advanceRight(targetX) {
+      await page.keyboard.down('KeyD');
+      try {
+        await page.waitForFunction(({ selector, targetX }) => Number(document.querySelector(selector)?.getAttribute('data-player-x')) >= targetX,
+          { selector: sceneSelector, targetX }, { timeout: 12_000 });
+      } finally {
+        await page.keyboard.up('KeyD');
+      }
+    }
+    const intact = await decodeCrown('A011_054_crete_arrimee_transport.png');
+    await advanceRight(550);
+    await page.locator(sceneSelector + '[data-crown-condition="marked"]').waitFor();
+    await scene.getByRole('button', { name: 'Pause', exact: true }).click();
+    const marked = await decodeCrown('A012_054_crete_endommagee.png');
+    const atMark = await diskSave();
+    assert.equal(cradle.getCradleCrownCondition(atMark.buriedCradle.progress), 'marked');
+    await scene.screenshot({ path: join(output, 'marked-part-fragment.png') });
+    await scene.getByRole('button', { name: 'Reprendre la chasse', exact: true }).click();
+    await page.locator(sceneSelector + '[data-crown-condition="lost"][data-crown="false"]').waitFor();
+    assert.equal(await scene.locator('svg image[href$="A012_054_crete_endommagee.png"]').count(), 0);
+    const destroyed = await diskSave();
+    assert.equal(destroyed.buriedCradle.progress.crownTransport.acidSeconds, cradle.CRADLE_CROWN_ACID_SECONDS.lost);
+    report.checks.push({ kind: 'native-crown-exposure', intact, marked, lostSeconds: destroyed.buriedCradle.progress.crownTransport.acidSeconds });
+    await scene.screenshot({ path: join(output, 'lost-fragment.png') });
+
+    // Take the normal low route to the emergency beacon in room 11.
+    for (const [targetX, room] of [[1660, '10'], [1660, '11']]) {
+      await advanceRight(targetX);
+      await page.keyboard.press('KeyE');
+      await page.locator(sceneSelector + '[data-room="' + room + '"]').waitFor();
+    }
+    await advanceRight(156);
+    await page.keyboard.press('KeyE');
+    await scene.getByRole('button', { name: 'Rejoindre le débrief à bord', exact: true }).click();
+    const returned = await diskSave();
+    assert.equal(returned.buriedCradle.outcome, 'victory-without-crown');
+    assert.equal(returned.buriedCradle.snapshot.run.roomId, '11');
+    assert.equal(returned.buriedCradle.crownDelivered, false);
+    await page.getByRole('button', { name: 'Rejoindre les soins et le débrief à bord', exact: true }).click();
+    await panel.waitFor();
+    await panel.getByText('L’acide a détruit la crête pendant le transport.', { exact: false }).waitFor();
+    report.checks.push({ kind: 'physical-acid-extraction', outcome: returned.buriedCradle.outcome, exit: returned.buriedCradle.snapshot.run.roomId });
+  } else {
+    await openShip();
+  }
   assert.equal(await mentor.count(), 0);
   await guide('medical-bay');
+  const cleaning = ship.locator('[data-ship-actor] [data-cradle-return-cleaning]');
+  assert.equal(await cleaning.count(), 0);
   await panel.locator('[data-cradle-return-action="treat-return"]').click();
+  await cleaning.waitFor({ state: 'attached' });
   await ship.locator('[data-cradle-return-panel][data-return-revision="1"]').waitFor();
+  report.checks.push({ kind: 'physical-acid-cleaning', room: 'medical-bay', onHunterArmor: true });
   assert.equal(await mentor.count(), 0);
   const beforeExamination = await diskSave();
   assert.equal(beforeExamination.buriedCradle.returnVisit.events[0].witness, undefined);
@@ -136,12 +227,27 @@ try {
   assert.equal(examined.profile.rankId, beforeExamination.profile.rankId);
   assert.deepEqual(examined.trophies, beforeExamination.trophies);
   report.checks.push({ kind: 'native-mentor-examination', sprites, receipt: examined.buriedCradle.returnVisit.events[1] });
+  let receipt = examined.buriedCradle.returnVisit;
+  if (acid) {
+    await panel.getByText('Les relevés d’expédition sont installés. Le support de trophée reste vide.', { exact: true }).waitFor();
+    const absentCrown = panel.locator('img[src$="100_trophee_couronne_socle.png"], img[src$="A012_054_crete_endommagee.png"]');
+    assert.equal(await absentCrown.count(), 0);
+    await panel.locator('[data-cradle-return-action="analyze-workshop"]').click();
+    await ship.locator('[data-cradle-return-panel][data-return-revision="3"]').waitFor();
+    const reported = await diskSave();
+    assert.equal(reported.buriedCradle.status, 'reported');
+    assert.equal(reported.buriedCradle.outcome, 'victory-without-crown');
+    assert.equal(reported.buriedCradle.crownDelivered, false);
+    assert.deepEqual(reported.trophies, examined.trophies);
+    receipt = reported.buriedCradle.returnVisit;
+    report.checks.push({ kind: 'lost-crown-debrief', emptyStand: true, receipt });
+  }
 
   await page.reload({ waitUntil: 'domcontentloaded' });
   await openShip();
   await panel.locator('[data-cradle-return-witness]').waitFor();
   const afterReload = await diskSave();
-  assert.deepEqual(afterReload.buriedCradle.returnVisit, examined.buriedCradle.returnVisit);
+  assert.deepEqual(afterReload.buriedCradle.returnVisit, receipt);
   assert.deepEqual(report.errors, []);
   report.checks.push({ kind: 'durable-reload', originalSnapshotUnchanged: true, noTrophyOrRankAwarded: true });
   await panel.screenshot({ path: join(output, 'mentor-receipt-reloaded.png') });

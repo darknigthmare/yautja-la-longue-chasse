@@ -33,17 +33,21 @@ function Fixture(){
  const [save,setSave]=useState(()=>{const loaded=loadSaveWithStatus();if(loaded.loaded)return loaded.save;const written=replaceSaveWithStatus(fresh());if(!written.persisted)throw Error(written.failure);return written.save;});
  const menuRoot=useRef(null);
  const saveRef=useRef(save),[screen,setScreen]=useState(()=>save.inventory.harvestV112.specimens.length?'workshop':'hunt'),[generation,setGeneration]=useState(0),[status,setStatus]=useState(''),lastResult=useRef(null),sessionAliveRef=useRef(true);
- const callbacks=useRef(null),kindRef=useRef('rites'),resumeRef=useRef(null);
+ const callbacks=useRef(null),activeHuntSessionRef=useRef(null),kindRef=useRef('rites'),resumeRef=useRef(null);
  const closeWorkshop=()=>{audit.menuBacks=(audit.menuBacks??0)+1;setScreen('menu');};
  useMenuGamepad(menuRoot,screen==='workshop','lifecycle:'+screen,closeWorkshop,{confirmButton:save.settings.huntAccessibility.gamepadButtons.jump,backButton:save.settings.huntAccessibility.gamepadButtons.interact});
  const recordSave=useCallback(value=>{saveRef.current=value;setSave(value);},[]);
  useLayoutEffect(()=>{
  if(callbacks.current===null)callbacks.current=makeGameClientCallbacksV112({
-  saveRef,sessionAliveRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
-  setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;},
+  saveRef,sessionAliveRef,activeHuntSessionRef,setSave:recordSave,setScreen:value=>setScreen(value==='debrief'?'workshop':value),setToast:value=>{audit.toasts.push(value);setStatus(value);},
+  setSaveFailure:value=>{audit.failure=value;},setLastResult:value=>{lastResult.current=value;},clearHuntSession:()=>{audit.clears++;activeHuntSessionRef.current=null;},
  });
  window.__onHuntLifecycleMountV112=handle=>{
   audit.mounts++;audit.runtime=handle;
+  activeHuntSessionRef.current={
+   runId:'v112-lifecycle-'+audit.mounts,missionId:handle.mission.id,encounterRun:handle.encounterRun,
+   ownerSaveCreatedAt:saveRef.current.createdAt,configuration:{},
+  };
   if(resumeRef.current)return;
   const g=handle.game;
   // Deliberately authored fixture admission: no claim of traversing a mission.
@@ -70,7 +74,7 @@ function Fixture(){
    disconnect(){pad.connected=false;const event=new Event('gamepaddisconnected');Object.defineProperty(event,'gamepad',{value:pad});window.dispatchEvent(event);},
    reconnect(){pad.axes.fill(0);pad.buttons.forEach(b=>{b.pressed=false;b.value=0;});pad.connected=true;},
    remount(kind='rites'){audit.oldRuntime=audit.runtime;kindRef.current=kind;resumeRef.current=null;callbacks.current.resetSettlement();setScreen('hunt');setGeneration(x=>x+1);},
-   unmount(){audit.oldRuntime=audit.runtime;setScreen('unmounted');},
+   unmount(){audit.oldRuntime=audit.runtime;activeHuntSessionRef.current=null;setScreen('unmounted');},
    oldState:()=>audit.oldRuntime?{alive:audit.oldRuntime.alive,x:audit.oldRuntime.game.player.x,elapsed:audit.oldRuntime.game.elapsed}:null,
    prepareExtraction(){
     // Only missing Apex/mission prerequisites are seeded. The harvested part,
@@ -90,7 +94,7 @@ function Fixture(){
  const finish=result=>callbacks.current.completeMission(result);
  const persist=payload=>{audit.persisted.push(payload);};
  return <main ref={menuRoot}><header><h1>Chasse V112 : cycle natif et persistance</h1><p>Insertion de contrôle, carcasse créée par dégâts réels, images de repli. Les prérequis Apex sont amorcés avant le seul segment d’extraction ; aucune campagne complète ni appareil physique qualifié.</p></header>
- {screen==='hunt'&&<HuntCanvas key={generation} mission={mission} encounterRun={0} loadout={save.loadout} inventory={save.inventory} appearance={save.appearance} difficulty={save.settings.difficultyId} controlBindings={save.settings.controlBindings} huntAccessibility={save.settings.huntAccessibility} reducedGore={true} screenShake={false} highContrastVision={false} explorationProgress={save.exploration} onFinish={finish} onAbort={finish} onPersistHunt={persist} onSuspendHunt={persist}/>}
+ {screen==='hunt'&&<HuntCanvas key={generation} mission={mission} encounterRun={save.missionProgress[mission.id].attempts} loadout={save.loadout} inventory={save.inventory} appearance={save.appearance} difficulty={save.settings.difficultyId} controlBindings={save.settings.controlBindings} huntAccessibility={save.settings.huntAccessibility} reducedGore={true} screenShake={false} highContrastVision={false} explorationProgress={save.exploration} onFinish={finish} onAbort={finish} onPersistHunt={persist} onSuspendHunt={persist}/>}
  {screen==='workshop'&&<ConservationPanelV112 onClose={closeWorkshop} gamepadButtons={save.settings.huntAccessibility.gamepadButtons} inventory={save.inventory} clanMarks={save.profile.clanMarks} onAction={(action,id)=>callbacks.current.performConservationActionV112(action,id)}/>}
  <p role="status" id="lifecycle-status">{status}</p></main>;
 }

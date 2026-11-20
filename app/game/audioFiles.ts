@@ -200,6 +200,14 @@ export class OptionalAudioFiles {
     state.state = "unusable"; state.failedAt = Date.now();
   }
 
+  getRecordedSfx(id: string): AudioBuffer | null {
+    if (this.disposed || this.paused || this.graph()?.context.state !== "running") return null;
+    const state = this.effects.get(id);
+    if (state?.state === "ready" && state.buffer) return state.buffer;
+    void this.loadEffect(id);
+    return null;
+  }
+
   /** Synchronous dispatch: a loading source only benefits future events. */
   playSfx(id: string, intensity = 1): boolean {
     const graph = this.graph();

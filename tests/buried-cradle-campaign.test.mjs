@@ -106,6 +106,77 @@ test('retreat, victory and manual crown retrieval have distinct, idempotent debr
   }
 });
 
+test('autonomous acid marks or destroys the actual cargo independently of player damage', () => {
+  const snapshots = qa.load('app/game/systems/buriedCradleSnapshot.ts');
+  const save = active();
+  const run = cradle.createBuriedCradleRun(completedProgress(), 1);
+  const place = (run, roomId, x) => ({ ...run, roomId, player: { ...run.player, x, y: 508,
+    facing: 1, velocityX: 0, velocityY: 0, grounded: true } });
+  const pickup = cradle.stepBuriedCradle(place(run, '12', 1620), { interactPressed: true }, 1 / 60);
+  assert(pickup.events.some(event => event.type === 'crown-claimed'));
+  const bodyOnly = cradle.stepBuriedCradle(place(pickup.run, '08', 495), {}, 0.25).run;
+  assert(bodyOnly.player.health < pickup.run.player.health);
+  assert.equal(cradle.getCradleCrownCondition(bodyOnly.progress), 'intact');
+
+  const contact = cradle.stepBuriedCradle(place(pickup.run, '08', 670), {}, 0.25);
+  assert.equal(contact.run.player.health, pickup.run.player.health);
+  assert(contact.events.some(event => event.type === 'crown-acid' && event.id === 'marked'));
+  assert.equal(cradle.getCradleCrownCondition(contact.run.progress), 'marked');
+  assert.equal(cradle.getCradleCrownCondition(pickup.run.progress), 'intact');
+  const checkpoint = act(save, 'checkpoint', { progress: contact.run.progress, snapshot: snapshots.snapshotBuriedCradleRun(contact.run) });
+  const resumed = saves.parseSaveImport(saves.exportSave(checkpoint)).save.buriedCradle;
+  assert.deepEqual(resumed.snapshot.run, contact.run);
+  assert.equal(campaign.actBuriedCradleCampaign(save, { type: 'checkpoint', progress: contact.run.progress }, context).accepted, false);
+
+  const extract = (run) => {
+    const next = cradle.stepBuriedCradle(place(run, '12', 1788), { interactPressed: true }, 1 / 60).run;
+    assert(next.extracted);
+    return { progress: next.progress, snapshot: snapshots.snapshotBuriedCradleRun(next) };
+  };
+  const markedReturn = act(checkpoint, 'extract', extract(resumed.snapshot.run));
+  const marked = act(markedReturn, 'report');
+  assert.equal(marked.buriedCradle.outcome, 'crown-returned');
+  assert.equal(marked.buriedCradle.crownDelivered, true);
+
+  // The portability checks use the legacy adult save accepted by the full
+  // campaign parser. Exercise the reducer's separate chronicle branch with an
+  // eligible chronicle that has not yet recorded a queen-hunt receipt.
+  const prologue = { status: 'completed', chronicle: { version: 1,
+    evidence: chronicle.CHRONICLE_EVIDENCE.filter(item => item.id !== 'first-queen-hunt').map(({ id, sourceId }) => ({ id, sourceId })),
+    rites: chronicle.CHRONICLE_RITES.slice(0, 3).map(({ id, sourceId }) => ({ id, sourceId })), legacyRecognition: null } };
+  const hasQueenEvidence = ({ prologue }) => prologue.chronicle.evidence.some(item => item.id === 'first-queen-hunt');
+  assert.equal(hasQueenEvidence(act({ ...markedReturn, prologue }, 'report')), true);
+
+  let lost = resumed.snapshot.run;
+  let lostEvents = 0;
+  for (let frame = 0; frame < 5; frame++) {
+    const step = cradle.stepBuriedCradle(lost, {}, 0.25);
+    lost = step.run;
+    lostEvents += step.events.filter(event => event.type === 'crown-acid' && event.id === 'lost').length;
+  }
+  assert.equal(lost.player.health, pickup.run.player.health);
+  assert.equal(lostEvents, 1);
+  assert.equal(cradle.getCradleCarriedCrownRect(lost), null);
+  const physicalExtraction = extract(lost);
+  const returned = act(checkpoint, 'extract', physicalExtraction);
+  assert.equal(returned.buriedCradle.outcome, 'victory-without-crown');
+  const reported = act(returned, 'report');
+  assert.equal(reported.buriedCradle.crownDelivered, false);
+  assert.equal(reported.prologue, null);
+  assert.equal(hasQueenEvidence(act({ ...returned, prologue }, 'report')), false);
+  assert.equal(cradle.getCradleCrownCondition(saves.parseSaveImport(saves.exportSave(reported)).save.buriedCradle.progress), 'lost');
+
+  const retry = act(reported, 'depart');
+  assert.equal(retry.buriedCradle.progress.bossDefeated, true);
+  assert.equal(cradle.getCradleCrownCondition(retry.buriedCradle.progress), 'unclaimed');
+  assert.equal(retry.buriedCradle.progress.crownTransport.attempt, 1);
+  assert.equal(campaign.actBuriedCradleCampaign(retry, { type: 'extract', ...physicalExtraction }, context).accepted, false);
+  const retryRun = cradle.createBuriedCradleRun(retry.buriedCradle.progress, 1);
+  const newPickup = cradle.stepBuriedCradle(place(retryRun, '12', 1620), { interactPressed: true }, 1 / 60).run;
+  assert.equal(cradle.getCradleCrownCondition(newPickup.progress), 'intact');
+  assert.equal(act(retry, 'extract', extract(newPickup)).buriedCradle.outcome, 'crown-returned');
+});
+
 test('queen proof records no automatic Elite rite and no duplicate trophy economy', () => {
   const save = fresh();
   save.prologue = { status: 'completed', chronicle: { version: 1,

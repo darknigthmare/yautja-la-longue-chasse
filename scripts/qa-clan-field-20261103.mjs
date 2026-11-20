@@ -87,10 +87,16 @@ async function runBrowser(){
     assert.equal(await ops.locator('[data-field-prop="relay-active"]').count(),1);
     pass("Stealth props leave the out-of-range guard hidden",{tick:initial.tick});
 
-    await ops.focus();await page.keyboard.press("Space");
-    await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||"null")?.active?.tick===tick,keyAndTick(initial.tick+1));
+    const stealthMap=ops.getByRole("group",{name:"Carte et commandes d’infiltration",exact:true});
+    const waitForStealthTurn=async tick=>{
+      await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||"null")?.active?.tick===tick,keyAndTick(tick));
+      // The localStorage head can advance before the archive writer releases its lock.
+      await page.evaluate(name=>navigator.locks.request(name,()=>undefined),key+".write");
+    };
+    await stealthMap.focus();await page.keyboard.press("Space");
+    await waitForStealthTurn(initial.tick+1);
     await page.keyboard.down("Space");
-    await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||"null")?.active?.tick===tick,keyAndTick(initial.tick+2));
+    await waitForStealthTurn(initial.tick+2);
     await page.keyboard.down("Space");await page.keyboard.up("Space");
     await page.waitForTimeout(120);
     assert.equal((await archive()).active.tick,initial.tick+2);
@@ -98,8 +104,8 @@ async function runBrowser(){
 
     await rule.focus();await page.keyboard.press("e");
     await ops.getByRole("button",{name:"Camouflage optique",exact:true}).focus();await page.keyboard.press("e");
-    await ops.focus();await ops.dispatchEvent("keydown",{key:" ",ctrlKey:true});
-    await ops.dispatchEvent("keydown",{key:" ",isComposing:true});
+    await stealthMap.focus();await stealthMap.dispatchEvent("keydown",{key:" ",ctrlKey:true});
+    await stealthMap.dispatchEvent("keydown",{key:" ",isComposing:true});
     await page.waitForTimeout(120);
     assert.equal((await archive()).active.tick,initial.tick+2);
     pass("Stealth selects, buttons, shortcuts and IME do not dispatch a tactical order");
