@@ -19,6 +19,7 @@ import ClanWarGeoAiV126 from "./ClanWarGeoAiV126";
 import ClanWarSourceMapStudyV128 from "./ClanWarSourceMapStudyV128";
 import ClanWarRtsMissionStudyV129 from "./ClanWarRtsMissionStudyV129";
 import ClanWarRtsSquadsV133 from "./ClanWarRtsSquadsV133";
+import type { RecordedSceneAudioPort } from "./systems/sceneAudio";
 import type { WarSourceRtsScenarioIdV119 } from "./systems/clanWarRtsScenariosV119";
 
 const COUNCIL_TOOL_GROUPS = [
@@ -39,7 +40,7 @@ type CouncilSection = typeof COUNCIL_TOOL_GROUPS[number]["tools"][number][0];
 
 const fold = (value: string) => value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 /** Latest workbook figures and route planning, without invented campaign acquisitions. */
-export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false }: { active?: boolean; gauntletId?: string; holographic?: boolean }) {
+export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungle-hunter", holographic = false, createSceneAudio }: { active?: boolean; gauntletId?: string; holographic?: boolean; createSceneAudio?: () => RecordedSceneAudioPort | null }) {
   const [privateRules, setPrivateRules] = useState<WarRulesV6 | null>(null);
   const [importName, setImportName] = useState(""), [importError, setImportError] = useState(""), [importBusy, setImportBusy] = useState(false);
   const importTicket = useRef(0);
@@ -119,7 +120,7 @@ export default function ClanWarBibleV6Panel({ active = true, gauntletId = "jungl
     <div hidden={section !== "missions"}><ClanWarOperationsV115
       key={rulesGeneration+":"+(requestedRtsPilot??"free")}
       rules={rules} active={active && section === "missions" && !sourceOpen && !rulesOpen}
-      persist={rules === DEFAULT_WAR_RULES_V6} initialScenarioId={requestedRtsPilot} gauntletId={gauntletId} holographic={holographic}/></div>
+      persist={rules === DEFAULT_WAR_RULES_V6} initialScenarioId={requestedRtsPilot} gauntletId={gauntletId} holographic={holographic} createSceneAudio={createSceneAudio}/></div>
     {section === "variants" && <ClanWarVariantAtlasV120 onOpenPrototype={()=>{setRequestedRtsPilot(null);setSection("missions");}}/>}
     {section === "geoai" && <ClanWarGeoAiV126/>}
     {section === "w3maps" && <ClanWarSourceMapStudyV128 rules={rules}/>}

@@ -24,11 +24,12 @@ export function inspectBuriedCradleSnapshot(raw: unknown, progress: BuriedCradle
   if (!exact(raw, ['version', 'run']) || raw.version !== 1 ||
       !exact(raw.run, ['progress', 'roomId', 'player', 'boss', 'rootTrap', 'clockSeconds', 'extracted', 'checkpointBudget'])) return invalid();
   const run = raw.run;
+  const expectedProgressKeys = Object.hasOwn(progress, 'crownTransport') ? [...progressKeys, 'crownTransport'] : progressKeys;
   if ((progress.checkpointId === '07' && budget < 1) || (progress.checkpointId === '11' && budget < 2) ||
-      !exact(run.progress, progressKeys) || !parseBuriedCradleProgress(run.progress) ||
+      !exact(run.progress, expectedProgressKeys) || !parseBuriedCradleProgress(run.progress) ||
       JSON.stringify(parseBuriedCradleProgress(run.progress)) !== JSON.stringify(progress) ||
       !CRADLE_ROOM_IDS.includes(run.roomId as CradleRoomId) || !progress.visitedRoomIds.includes(run.roomId as CradleRoomId) ||
-      !number(run.clockSeconds, 0, 31_536_000) || typeof run.extracted !== 'boolean' || run.checkpointBudget !== budget ||
+      !number(run.clockSeconds, 0, 31_536_000) || (progress.crownTransport?.acidSeconds ?? 0) > run.clockSeconds + 1e-6 || typeof run.extracted !== 'boolean' || run.checkpointBudget !== budget ||
       !exact(run.player, ['x', 'y', 'width', 'height', 'velocityX', 'velocityY', 'facing', 'grounded', 'health', 'hurtSeconds', 'meleeSeconds']) ||
       !exact(run.boss, ['phase', 'health', 'attack', 'stage', 'remainingSeconds', 'cycle', 'targetX', 'targetFloorY', 'attackHit', 'weakPoint', 'pools']) ||
       !exact(run.rootTrap, ['stage', 'remainingSeconds', 'targetX', 'targetFloorY', 'attackHit'])) return invalid();

@@ -12,6 +12,7 @@ import { CRADLE_CHECKPOINT_BUDGET } from './systems/buriedCradleCampaign';
 import { inspectBuriedCradleSnapshot, snapshotBuriedCradleRun, type BuriedCradleSnapshot } from './systems/buriedCradleSnapshot';
 import { BURIED_CRADLE_DOORS, BURIED_CRADLE_ROOMS, CRADLE_BOSS_HEAD, buriedCradleRoom,
   createBuriedCradleRun, getBuriedCradlePlatforms, getCradleBossAttackRects, getCradleEnvironmentHazards,
+  getCradleCarriedCrownRect, getCradleCrownCondition, hasCradleCrownForReturn,
   getCradleWeakPoint, stepBuriedCradle, type BuriedCradleProgress, type BuriedCradleRun, type CradleInput,
   type CradleEvent } from './systems/buriedCradle';
 import art from './data/buriedCradleArt.json';
@@ -50,8 +51,14 @@ function Sprite({ id, x, y, width, height, opacity = 1, flip = false, raw = fals
   </g>;
 }
 function describeEvents(events: readonly CradleEvent[], next: BuriedCradleRun): string | null {
-  if (events.some(e => e.type === 'extracted')) return next.progress.crownClaimed ? 'Crête arrimée. Extraction vers ton vaisseau.' : 'Repli engagé. Tes observations sont conservées.';
-  if (events.some(e => e.type === 'crown-claimed')) return 'Crête prélevée. Rejoins la balise d’extraction à droite.';
+  if (events.some(e => e.type === 'extracted')) {
+    if (hasCradleCrownForReturn(next.progress)) return 'Crête arrimée. Extraction vers ton vaisseau.';
+    if (getCradleCrownCondition(next.progress) === 'lost') return 'Crête perdue dans l’acide. Les relevés rentrent avec toi.';
+    return 'Extraction engagée. Tes observations sont conservées.';
+  }
+  if (events.some(e => e.type === 'crown-acid' && e.id === 'lost')) return 'L’acide a détruit la crête. Regagne l’extraction avec tes relevés.';
+  if (events.some(e => e.type === 'crown-acid' && e.id === 'marked')) return 'La crête est marquée par l’acide. Sors-la de la nappe pour la conserver.';
+  if (events.some(e => e.type === 'crown-claimed')) return 'Crête prélevée. Évite les nappes acides et rejoins la balise à droite.';
   if (events.some(e => e.type === 'boss-phase' && e.id === 'defeated')) return 'La Matriarche est neutralisée. Approche de la crête pour la prélever.';
   if (events.some(e => e.type === 'knockout')) return `Reprise à la balise ${next.progress.checkpointId}. La Matriarche vivante retrouve ses défenses.`;
   if (events.some(e => e.type === 'root-cut')) return 'Anneau racinaire sectionné. Le passage vers la lèvre du bassin est ouvert.';
@@ -208,7 +215,9 @@ export default function BuriedCradleScene(props: BuriedCradleSceneProps) {
         if (result.events.some(event => event.type === 'part-cut' || event.type === 'root-cut')) propsRef.current.onSound?.('objective');
         if (result.events.some(event => event.type === 'crown-claimed')) propsRef.current.onSound?.('trophy');
         if (previous.roomId === '12' && previous.boss.stage !== result.run.boss.stage && result.run.boss.stage === 'telegraph') propsRef.current.onSound?.('enemy-alert');
-        const changed = JSON.stringify(result.run.progress) !== JSON.stringify(frameRef.current.progress);
+        const changed = JSON.stringify({ ...result.run.progress, crownTransport: undefined }) !==
+          JSON.stringify({ ...previous.progress, crownTransport: undefined }) ||
+          getCradleCrownCondition(result.run.progress) !== getCradleCrownCondition(previous.progress);
         const combatChanged = previous.boss.stage !== result.run.boss.stage || previous.boss.phase !== result.run.boss.phase ||
           previous.rootTrap.stage !== result.run.rootTrap.stage || previous.player.health !== result.run.player.health ||
           JSON.stringify(previous.boss.health) !== JSON.stringify(result.run.boss.health);
@@ -262,16 +271,20 @@ export default function BuriedCradleScene(props: BuriedCradleSceneProps) {
     : boss.attack === 'bite' ? boss.stage === 'telegraph' ? 'A002' : boss.stage === 'active' ? 'A003' : 'A004'
     : !reducedMotion && Math.floor(frame.clockSeconds * 1.3) % 2 ? 'A001' : '059';
   const actorSize = frame.player.height * HUNTER_RIG_CANVAS.width / HUNTER_RIG_CANVAS.groundY;
+  const crownCondition = getCradleCrownCondition(frame.progress);
+  const carriedCrown = hasCradleCrownForReturn(frame.progress) ? getCradleCarriedCrownRect(frame) : null;
+  const crownLabel = crownCondition === 'marked' ? 'Crête marquée' : crownCondition === 'lost' ? 'Crête perdue' : 'Crête arrimée';
   const status = inBoss && !frame.progress.bossDefeated
     ? `${attackLabels[boss.attack]} · ${boss.stage === 'telegraph' ? 'préparation' : boss.stage === 'active' ? 'danger' : weak ? 'frappe la zone exposée' : 'repositionne-toi'}` : notice;
   return <section ref={rootRef} tabIndex={-1} className={styles.scene} data-buried-cradle data-room={frame.roomId}
     data-player-x={Math.round(frame.player.x)} data-player-y={Math.round(frame.player.y)} data-health={frame.player.health}
     data-boss-phase={boss.phase} data-boss-stage={boss.stage} data-clock={frame.clockSeconds.toFixed(2)}
-    data-checkpoint={frame.progress.checkpointId} data-crown={frame.progress.crownClaimed} data-high-contrast={highContrast}>
+    data-checkpoint={frame.progress.checkpointId} data-crown={!!carriedCrown} data-crown-condition={crownCondition} data-high-contrast={highContrast}>
     <header className={styles.header}>
       <div><span className={styles.eyebrow}>XENO PRIME · LE BERCEAU ENFOUI</span><h2>{room.name}</h2></div>
       <div className={styles.vitals}><label>Vitalité <meter min={0} max={100} value={frame.player.health} /></label>
-        <span>Balise {frame.progress.checkpointId} · {frame.progress.visitedRoomIds.length}/12 lieux</span></div>
+        <span>Balise {frame.progress.checkpointId} · {frame.progress.visitedRoomIds.length}/12 lieux</span>
+        {crownCondition !== 'unclaimed' && <span>{crownLabel}</span>}</div>
       <button type="button" onClick={togglePause} aria-pressed={paused} disabled={!!pending || !!resourceError || runtimeError || frame.extracted || suspended}>{paused ? 'Reprendre' : 'Pause'}</button>
     </header>
     <div className={styles.viewport} ref={viewportRef} onErrorCapture={event => {
@@ -312,7 +325,7 @@ export default function BuriedCradleScene(props: BuriedCradleSceneProps) {
           <Sprite id={bossHead} {...CRADLE_BOSS_HEAD} raw />
           {!frame.progress.bossDefeated && boss.phase === 'bulb' && <Sprite id="063" x={1550} y={440} width={70} height={85} />}
           {frame.progress.bossDefeated && !frame.progress.crownClaimed && <Sprite id="054" x={1620} y={570} width={72} height={54} />}
-          {frame.progress.bossDefeated && <><text x={1656} y={554} textAnchor="middle" className={styles.label}>{frame.progress.crownClaimed ? 'Crête arrimée' : `${interactionKey} · Prélever`}</text>
+          {frame.progress.bossDefeated && <><text x={1656} y={554} textAnchor="middle" className={styles.label}>{frame.progress.crownClaimed ? crownLabel : `${interactionKey} · Prélever`}</text>
             <Sprite id="047" x={1806} y={540} width={36} height={84} /><text x={1824} y={520} textAnchor="middle" className={styles.rescue}>{interactionKey} · Extraction</text></>}
           {!frame.progress.bossDefeated && boss.stage !== 'opening' && getCradleBossAttackRects(boss).map((area, i) => <g key={i}>
             {boss.stage === 'active' && <Sprite id={boss.attack === 'breath' ? '103' : boss.attack === 'capture' ? '091' : boss.attack === 'puncture' ? '039' : boss.attack === 'sweep' ? '038' : boss.attack === 'whips' ? '045' : '071'} {...area} />}
@@ -335,9 +348,10 @@ export default function BuriedCradleScene(props: BuriedCradleSceneProps) {
             <HunterRigPreview appearance={appearance} armorId={loadout.armorId} weaponIds={loadout.weaponIds} gearIds={loadout.gearIds}
               size={actorSize} facing={frame.player.facing} phase={frame.clockSeconds * 7}
               pose={!frame.player.grounded ? frame.player.velocityY < 0 ? 'jump' : 'fall' : frame.player.velocityX ? 'run' : 'idle'}
-              bladesExtended={frame.player.meleeSeconds > .2} trophyCarried={frame.progress.crownClaimed} label="Ton chasseur" />
+              bladesExtended={frame.player.meleeSeconds > .2} label="Ton chasseur" />
           </div>
         </foreignObject>
+        {carriedCrown && <Sprite id={crownCondition === 'marked' ? 'A012' : 'A011'} {...carriedCrown} />}
         {frame.player.meleeSeconds > .35 && <path d={`M${frame.player.x + 36} ${frame.player.y + 48}l${frame.player.facing * 105} -18`} stroke="#e2f2cf" strokeWidth={5} />}
       </svg>
       {overlayOpen && <div className={styles.overlay} role="dialog" aria-modal="true" aria-label="Expédition suspendue" onKeyDown={event => {

@@ -130,6 +130,19 @@ export interface BuriedCradleProgress {
   rootRingCut: boolean;
   bossDefeated: boolean;
   crownClaimed: boolean;
+  crownTransport?: { attempt: number; acidSeconds: number };
+}
+export const CRADLE_CROWN_ACID_SECONDS = { marked: 0.2, lost: 1 } as const;
+
+export function getCradleCrownCondition(progress: BuriedCradleProgress): "unclaimed" | "intact" | "marked" | "lost" {
+  if (!progress.crownClaimed) return "unclaimed";
+  const seconds = progress.crownTransport?.acidSeconds ?? 0;
+  if (seconds >= CRADLE_CROWN_ACID_SECONDS.lost) return "lost";
+  return seconds >= CRADLE_CROWN_ACID_SECONDS.marked ? "marked" : "intact";
+}
+export function hasCradleCrownForReturn(progress: BuriedCradleProgress): boolean {
+  const condition = getCradleCrownCondition(progress);
+  return condition === "intact" || condition === "marked";
 }
 export function createBuriedCradleProgress(): BuriedCradleProgress {
   return { version: 1, visitedRoomIds: ["01"], shortcutIds: [], checkpointId: "01",
@@ -153,8 +166,20 @@ export function parseBuriedCradleProgress(value: unknown): BuriedCradleProgress 
     (p.shortcutIds.includes("perch-forest") && (!p.visitedRoomIds.includes("06") || !p.visitedRoomIds.includes("02"))) ||
     (p.shortcutIds.includes("fault-river") && (!p.visitedRoomIds.includes("07") || !p.visitedRoomIds.includes("03"))) ||
     (p.shortcutIds.includes("roots-fault") && (!p.rootRingCut || !p.visitedRoomIds.includes("07")))) return null;
+  let crownTransport: BuriedCradleProgress["crownTransport"];
+  if (Object.hasOwn(p, "crownTransport")) {
+    const transport = p.crownTransport;
+    if (!transport || typeof transport !== "object" || Array.isArray(transport) ||
+        Object.keys(transport).sort().join("|") !== "acidSeconds|attempt" || !p.bossDefeated ||
+        !Number.isSafeInteger(transport.attempt) || transport.attempt < 0 ||
+        !Number.isFinite(transport.acidSeconds) || transport.acidSeconds < 0 ||
+        transport.acidSeconds > CRADLE_CROWN_ACID_SECONDS.lost ||
+        (transport.acidSeconds > 0 && !p.crownClaimed)) return null;
+    crownTransport = { attempt: transport.attempt, acidSeconds: transport.acidSeconds };
+  }
   return { version: 1, visitedRoomIds: [...p.visitedRoomIds], shortcutIds: [...p.shortcutIds], checkpointId: p.checkpointId!,
-    drainageOpened: p.drainageOpened!, rootRingCut: p.rootRingCut!, bossDefeated: p.bossDefeated!, crownClaimed: p.crownClaimed! };
+    drainageOpened: p.drainageOpened!, rootRingCut: p.rootRingCut!, bossDefeated: p.bossDefeated!, crownClaimed: p.crownClaimed!,
+    ...(crownTransport ? { crownTransport } : {}) };
 }
 
 export function buriedCradleRoom(id: CradleRoomId): CradleRoom {
@@ -227,7 +252,7 @@ export interface BuriedCradleRun {
 }
 export interface CradleInput { move?: -1 | 0 | 1; jumpPressed?: boolean; jumpHeld?: boolean; meleePressed?: boolean; interactPressed?: boolean }
 export interface CradleEvent { type: "door-locked" | "shortcut-opened" | "room-entered" | "drainage-opened" | "root-cut" |
-  "part-cut" | "boss-phase" | "hurt" | "knockout" | "crown-claimed" | "extracted"; id?: string }
+  "part-cut" | "boss-phase" | "hurt" | "knockout" | "crown-claimed" | "crown-acid" | "extracted"; id?: string }
 export interface CradleStep { run: BuriedCradleRun; events: CradleEvent[] }
 
 const BOSS_SEQUENCES: Record<Exclude<CradleBossPhase, "defeated">, readonly CradleAttack[]> = {
@@ -269,7 +294,8 @@ export function createBuriedCradleRun(saved?: unknown, checkpointBudget: 0 | 1 |
   const progress = saved === undefined ? createBuriedCradleProgress() : parseBuriedCradleProgress(saved);
   if (!progress) throw new RangeError("Unsupported or malformed Berceau progress; keep the original save");
   return { progress, roomId: progress.checkpointId, player: playerAt(checkpointFeet[progress.checkpointId]),
-    boss: newBoss(progress.bossDefeated), rootTrap: newRootTrap(), clockSeconds: 0, extracted: false, checkpointBudget };
+    boss: newBoss(progress.bossDefeated), rootTrap: newRootTrap(),
+    clockSeconds: progress.crownTransport?.acidSeconds ?? 0, extracted: false, checkpointBudget };
 }
 function cloneRun(run: BuriedCradleRun): BuriedCradleRun {
   return { ...run, progress: { ...run.progress, visitedRoomIds: [...run.progress.visitedRoomIds], shortcutIds: [...run.progress.shortcutIds] },
@@ -470,11 +496,30 @@ export function getCradleEnvironmentHazards(run: BuriedCradleRun): CradleEnviron
     warning: "Acide autonome ; ne disparaît pas avec la Matriarche.", stage: "active" }];
   return [];
 }
+/** The cargo sprite and the acid test share this world-space footprint. */
+export function getCradleCarriedCrownRect(run: BuriedCradleRun): WorldRect | null {
+  if (!hasCradleCrownForReturn(run.progress)) return null;
+  const player = run.player;
+  return { x: player.facing === 1 ? player.x - 36 : player.x + player.width - 8,
+    y: player.y + player.height - 44, width: 44, height: 42 };
+}
+
+function exposeCradleCrown(run: BuriedCradleRun, hazards: readonly CradleEnvironmentHazard[], dt: number, events: CradleEvent[]): void {
+  const crown = getCradleCarriedCrownRect(run);
+  if (!crown || !hazards.some(hazard => hazard.id === "autonomous-acid" && hazard.stage === "active" && overlaps(crown, hazard))) return;
+  const progress = run.progress;
+  const before = getCradleCrownCondition(progress);
+  progress.crownTransport = { attempt: progress.crownTransport?.attempt ?? 0,
+    acidSeconds: Math.min(CRADLE_CROWN_ACID_SECONDS.lost, (progress.crownTransport?.acidSeconds ?? 0) + dt) };
+  const after = getCradleCrownCondition(progress);
+  if (after !== before) events.push({ type: "crown-acid", id: after });
+}
+
 export function getCradleWorldCondition(progress: BuriedCradleProgress) {
   return { fungalForestRemains: true, autonomousXenomorphsRemain: true, headRemainsInRoom12: true,
     basinControlAlive: !progress.bossDefeated, riverBridgeDeployed: progress.bossDefeated,
     canopyMembranesRelaxed: progress.bossDefeated, controlledVentsCalm: progress.bossDefeated,
-    crownTrophy: progress.crownClaimed ? "fragment" as const : null };
+    crownTrophy: hasCradleCrownForReturn(progress) ? "fragment" as const : null };
 }
 
 /** Pure room simulation. Pressed actions fire once even when a frame is subdivided. */
@@ -506,7 +551,9 @@ export function stepBuriedCradle(current: BuriedCradleRun, input: CradleInput, d
     Object.assign(player, { x: motion.x, y: motion.y, velocityX: motion.velocityX,
       velocityY: motion.velocityY, grounded: motion.grounded });
     stepRootTrap(run, dt, events); stepBoss(run, dt, events);
-    for (const hazard of getCradleEnvironmentHazards(run)) if (hazard.stage === "active" && overlaps(player, hazard)) hurt(run, 10, events);
+    const hazards = getCradleEnvironmentHazards(run);
+    exposeCradleCrown(run, hazards, dt, events);
+    for (const hazard of hazards) if (hazard.stage === "active" && overlaps(player, hazard)) hurt(run, 10, events);
     if (run.player.health <= 0) { knockout(run, events); break; }
     if (index === 0 && input.meleePressed) melee(run, events);
     if (index === 0 && input.interactPressed) { interact(run, events); if (events.some(event => event.type === "room-entered") || run.extracted) break; }

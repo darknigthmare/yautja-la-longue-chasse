@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
+import type { RecordedSceneAudioPort } from "./systems/sceneAudio";
 import type { SaveGame } from "./types";
 import {
   CLAN_WAR_ENTRIES_V85, CLAN_WAR_SECTIONS_V85, CLAN_WAR_WORKBOOK_V85,
@@ -94,7 +95,7 @@ function Entry({ entry }: { entry: ClanWarEntryV85 }) {
 }
 
 /** Autonomous exercises and source dossier. Main campaign progress is read only. */
-export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound,onEquipGauntlet,onClaimGauntletStudy }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void; onEquipGauntlet?: (id:string)=>boolean; onClaimGauntletStudy?: (id:string)=>boolean }) {
+export default function ClanWarPanelV85({ save, onClose, suspended = false, initialPlanetId, onGauntletSound,onEquipGauntlet,onClaimGauntletStudy,createSceneAudio }: { save: SaveGame; onClose: () => void; suspended?: boolean; initialPlanetId?: string; onGauntletSound?: (theme: GauntletThemeV132) => void; onEquipGauntlet?: (id:string)=>boolean; onClaimGauntletStudy?: (id:string)=>boolean; createSceneAudio?: () => RecordedSceneAudioPort | null }) {
   const root = useRef<HTMLElement>(null);
   const focusPlanetSelection = useRef(Boolean(initialPlanetId));
   const pageActive = useSyncExternalStore(subscribePageActivityV94, pageActivitySnapshotV94, serverPageActivityV94);
@@ -538,7 +539,7 @@ export default function ClanWarPanelV85({ save, onClose, suspended = false, init
     {gauntletStorageWarning && <p className={styles.storage} role="status">{gauntletStorageWarning}</p>}
     {pendingWrites > 0 && <p className={styles.storage} role="status">Enregistrement des exercices en cours…</p>}
     {canRetryPersistence && <button type="button" disabled={pendingWrites > 0} onClick={() => { sessionStore.retryPersistence(); if (planetSession !== sessionStore) planetSession.retryPersistence(); }}>Réessayer la sauvegarde des exercices</button>}
-    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive && commandLayer === null} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"}/></div>
+    <div hidden={tab !== "bible"}><ClanWarBibleV6Panel active={tab === "bible" && !suspended && pageActive && commandLayer === null} gauntletId={equippedGauntletId} holographic={presentation==="gauntlet"} createSceneAudio={createSceneAudio}/></div>
     {tab === "operations" && <ClanWarMissionsV114 key={planet.id} simulation={simulation} planetName={planet.name} active={!suspended && pageActive && commandLayer === null && pendingWrites === 0 && strategic.writableWar} onPrepareSite={(from, to, kind) => { setTab("korthas"); prepareSite(from, to, kind); }}/>}
 
     {tab === "composition" && <div>

@@ -4893,7 +4893,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       <div hidden={screen === "homeworld" || screen === "sprite-library" || trophyTutorialOpen} inert={shipStationOpen || settingsOpen || screen === "sprite-library"}>{topBar}</div>
 
       {screen === "clan-war" && <section className="screen panel-screen" inert={settingsOpen}>
-        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134} /></Suspense>
+        <Suspense fallback={<DeferredGameScreen />}><ClanWarPanelV85 save={save} createSceneAudio={createSceneAudio} onClose={() => go(archiveReturnV85)} onGauntletSound={playGauntletSignal} onEquipGauntlet={equipGauntletCampaignV134} onClaimGauntletStudy={claimGauntletResearchV134} /></Suspense>
       </section>}
       {screen === "sprite-library" && <Suspense fallback={<DeferredGameScreen />}>
         <RecentSpriteLibraryV85 onClose={() => go(archiveReturnV85)} />
