@@ -3,7 +3,8 @@
 import { lazy, Suspense, useEffect, useRef } from "react";
 import { ARMORS, CODEX_ENTRIES, DIFFICULTIES, GEAR, WEAPONS } from "../game/data";
 import { HUNTER_PRESETS, appearanceForPreset } from "../game/hunterLore";
-import { normalizeSave } from "../game/save";
+import { normalizeSave, recordInfractionOnSaveV147 } from "../game/save";
+import { INFRACTIONS_V147 } from "../game/systems/honorTribunalV147";
 import type { ShipProgressionState } from "../game/systems/progression";
 import type { SaveGame } from "../game/types";
 import type { HomeworldService } from "../game/systems/homeworld";
@@ -12,6 +13,24 @@ import styles from "./session.module.css";
 
 const ShipHub = lazy(() => import("../game/ShipHub"));
 const HunterRigPreview = lazy(() => import("../game/HunterRigPreview"));
+const HonorTribunalPanelV147 = lazy(() => import("../game/HonorTribunalPanelV147"));
+
+/** Test dossier only: one accusation piece, one piece of each defence kind, one witness of each side. */
+function recordTestInfractionV147(save: SaveGame, kind: (typeof INFRACTIONS_V147)[number]["id"], jurisdiction: "internal" | "inter-clan") {
+  return recordInfractionOnSaveV147(save, {
+    kind, jurisdiction, recordedAt: new Date().toISOString(),
+    witnesses: [
+      { id: "test-accuser", name: "Accusateur de test", role: "accuser", account: "confirms-accusation" },
+      { id: "test-companion", name: "Compagnon de test", role: "companion", account: "confirms-player" },
+      { id: "test-pack", name: "Membre du pack de test", role: "pack", account: "confirms-accusation" },
+    ],
+    traces: [
+      { id: "test-act", kind: "mask-recording", label: "Enregistrement du masque (test)", shows: "act" },
+      { id: "test-constraint", kind: "trace", label: "Traces d'une contrainte (test)", shows: "constraint" },
+      { id: "test-contrary", kind: "trophy-provenance", label: "Provenance du trophée (test)", shows: "contrary" },
+    ],
+  });
+}
 
 export type DevService = HomeworldService | "map" | "airlock" | "armory" | "customization" | "trophies" | "codex" |
   "medbay" | "training" | "settings" | "clan-war" | "pit" | "justice" | "mausoleum";
@@ -141,7 +160,20 @@ export default function DevServices({ service, save, progression, host, onSave, 
       onNotify={onNotify}
     /></Suspense>}
 
-    {["mobility", "clan-war", "pit", "justice", "mausoleum"].includes(service) && <div className={styles.empty}>
+    {service === "justice" && <div className={styles.form}>
+      <p>Tribunal V147 · inscrire une infraction de test pour jouer un procès. Ce dossier reste dans cet essai.</p>
+      {INFRACTIONS_V147.map(definition => <div key={definition.id}>
+        {(["internal", "inter-clan"] as const).map(jurisdiction => <button type="button" key={jurisdiction} onClick={() => {
+          const recorded = recordTestInfractionV147(save, definition.id, jurisdiction);
+          if (recorded) onSave(normalizeSave({ ...save, tribunalV147: recorded.tribunalV147 }));
+          else onNotify("Registre des infractions plein dans cet essai.");
+        }}>{definition.label} · {jurisdiction === "internal" ? "affaire interne" : "entre clans"}</button>)}
+      </div>)}
+      <Suspense fallback={<p>Chargement du tribunal…</p>}><HonorTribunalPanelV147 save={save} onNotify={onNotify}
+        onCommit={update => { onSave(normalizeSave({ ...save, ...update })); return true; }} /></Suspense>
+    </div>}
+
+    {["mobility", "clan-war", "pit", "mausoleum"].includes(service) && <div className={styles.empty}>
       <h3>Service de campagne</h3>
       {service === "mobility" && <p data-dev-mobility-readonly>Le prêt, le permis, les achats et l’entretien utilisent le registre de ta campagne. Cet essai ne crée aucun véhicule et ne dépense aucune marque.</p>}
       <p>Tu peux explorer ce lieu dans l’essai. Ce service complet conserve sa progression propre et s’ouvre depuis la campagne.</p>
