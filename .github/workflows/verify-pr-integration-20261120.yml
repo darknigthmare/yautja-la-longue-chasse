@@ -1,4 +1,4 @@
-name: Verify the preserved honor penalty and official inventory
+name: Verify the origin endings after integration
 
 on:
   push:
@@ -9,11 +9,11 @@ permissions:
   contents: read
 
 concurrency:
-  group: yautja-warp-honor-qualification-20261120
+  group: yautja-origin-endings-qualification-20261120
   cancel-in-progress: true
 
 env:
-  FINAL_CANDIDATE_SHA: '0f571de764a59476a0dae8a6520bc6f50a1b897a'
+  FINAL_CANDIDATE_SHA: '58889b2c5a18a41ed90cbda24669ac731897ba14'
 
 jobs:
   runtime-candidate:
@@ -23,7 +23,7 @@ jobs:
     permissions:
       contents: read
     env:
-      ASSET_RACCORDS_SOURCE_COMMIT: '0f571de764a59476a0dae8a6520bc6f50a1b897a'
+      ASSET_RACCORDS_SOURCE_COMMIT: '58889b2c5a18a41ed90cbda24669ac731897ba14'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
     steps:
@@ -72,5 +72,74 @@ jobs:
           path: outputs/qa-asset-raccords-20261120/
           if-no-files-found: error
 
-      - name: Exercise replay penalties and career migration
-        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/save-v2.test.mjs tests/honor-progression-v166.test.mjs tests/honor-tribunal-v147.test.mjs tests/tantalus-warp-v167.test.mjs
+  integration-checks:
+    name: Typecheck and changed gameplay regressions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      INTEGRATION_MAIN: 41c5f23e3650a3b554409d72e2ba81a1fb9a3786
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.FINAL_CANDIDATE_SHA }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/warp/w02/
+            /public/game/hounds/v147/
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /art-source/v113/20261120-integration/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize runtime and install pinned dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next types and check TypeScript
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=2600 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint the origin ending integration
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/GameClient.tsx app/game/OriginEndingPanelV170.tsx app/game/systems/originEndingsV170.ts app/game/systems/originsV151.ts
+      - name: Exercise changed and adjacent gameplay suites
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$INTEGRATION_MAIN"
+          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$INTEGRATION_MAIN" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
+          test "${#changed[@]}" -gt 0
+          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
+            tests/origins-v151.test.mjs \
+            tests/origins-trophy-v157.test.mjs \
+            tests/residence-scenes-v154.test.mjs \
+            tests/residence-v149.test.mjs \
+            tests/residence-life-v150.test.mjs \
+            tests/trophy-workshop-commit-v94.test.mjs \
+            tests/save-v2.test.mjs \
+            tests/campaign-slots.test.mjs \
+            tests/game-client-code-splitting.test.mjs \
+            tests/honor-progression-v166.test.mjs \
+            tests/honor-tribunal-v147.test.mjs \
+            tests/tantalus-warp-v167.test.mjs \
+            | sort -u)
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
