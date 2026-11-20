@@ -339,7 +339,10 @@ try {
   report.sourceAfter = await identity();
   assert.equal(report.sourceAfter.sha256, report.sourceBefore.sha256);
   assert.equal((await fs.readFile(path.join(root, '.next/BUILD_ID'), 'utf8')).trim(), report.buildId);
-  assert.equal(report.errors.length, 0); assert.equal(report.httpErrors.length, 0);
+  assert.equal(report.errors.length, 0);
+  assert.equal(report.httpErrors.length, 0,
+    [...new Set(report.httpErrors.map(({ url, status }) => status + " " + new URL(url).pathname))]
+      .sort().join("\n"));
   assert.equal(report.consoleErrors.length, 0); assert.equal(report.requestFailures.length, 0);
   assert.equal(report.resourceMismatches.length, 0);
   pass('Exact application sources and served production JavaScript remain identical during native PHG checks', { sourceSha256: report.sourceBefore.sha256, files: report.sourceBefore.files.length, buildId: report.buildId, scriptResponses: report.servedScripts.length });

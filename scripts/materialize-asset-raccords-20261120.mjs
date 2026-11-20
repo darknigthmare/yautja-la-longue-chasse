@@ -67,7 +67,7 @@ async function materialize(files, immutable = new Map(), scope) {
     immutablePublicPinsVerified: immutable.size, substituteAssets: false}));
 }
 const [mode, ...extra] = process.argv.slice(2);
-assert.ok(['runtime', 'catalogue', 'hunt-runtime', 'production-assets', 'red-baseline', 'candidate'].includes(mode) && extra.length === 0);
+assert.ok(['runtime', 'catalogue', 'hunt-runtime', 'forge-browser', 'production-assets', 'red-baseline', 'candidate'].includes(mode) && extra.length === 0);
 if (mode === 'runtime') {
   const inventory = JSON.parse(await fs.readFile(path.join(root, current), 'utf8'));
   assert.ok(Array.isArray(inventory.entries) && inventory.entries.length === inventory.files);
@@ -75,6 +75,37 @@ if (mode === 'runtime') {
   const immutable = new Map(inventory.entries.filter(row => row.path.startsWith('public/')).map(row => [row.path, row]));
   await materialize(inventory.entries.map(row => row.path), immutable,
     'Exact paths from the existing official current inventory; public pins preserved; modified source compared to this HEAD, not reattributed to an old hash.');
+} else if (mode === 'forge-browser') {
+  assert.ok(process.env.PHG_FAILED_REPORT_FILE, 'A failed PHG browser report is required.');
+  const previous = JSON.parse(await fs.readFile(process.env.PHG_FAILED_REPORT_FILE, 'utf8'));
+  assert.ok(previous.passed === false && Array.isArray(previous.httpErrors));
+  const reportOrigin = new URL(previous.url).origin;
+  const tree = trackedTree();
+  const requests = new Map();
+  for (const item of previous.httpErrors) {
+    const url = new URL(item.url), pathname = decodeURIComponent(url.pathname), file = 'public' + pathname;
+    const key = item.status + ' ' + url.origin + pathname;
+    const found = requests.get(key);
+    if (found) { found.responses++; continue; }
+    const tracked = local(file) ? tree.get(file) : undefined;
+    const eligible = item.status === 404 && url.origin === reportOrigin &&
+      tracked?.type === 'blob' && ['100644', '100755'].includes(tracked.mode);
+    const inCheckout = eligible ? await fs.stat(path.join(root, file)).then(() => true, error => {
+      if (error.code === 'ENOENT') return false;
+      throw error;
+    }) : null;
+    requests.set(key, {status: item.status, pathname, tracked: eligible, inCheckout, responses: 1,
+      file: eligible ? file : null});
+  }
+  const entries = [...requests.values()].sort((a,b) => a.pathname.localeCompare(b.pathname) || a.status-b.status);
+  await writeReport('forge-browser-prior-http.json', {sourceCommit, previousBuildId: previous.buildId,
+    HTTPResponsesInPriorRun: previous.httpErrors.length, entries});
+  for (const {status, pathname, tracked, inCheckout, responses} of entries) {
+    console.log(JSON.stringify({status, pathname, tracked, inCheckout, responses}));
+  }
+  const files = entries.filter(row => row.tracked && !row.inCheckout).map(row => row.file);
+  if (files.length) await materialize(files, new Map(),
+    'Exact tracked public paths missing in the prior strict forge browser recipe; no substitutes or ignored network errors.');
 } else if (mode === 'catalogue') {
   const {build} = await import('esbuild');
   const result = await build({
