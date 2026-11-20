@@ -35,6 +35,8 @@ const bundle = await build({ stdin: { contents: [
   "export {defaultSave,SAVE_STORAGE_KEY,parseSaveImport} from './app/game/save';",
   "export {appearanceForPreset,loadoutForPreset} from './app/game/hunterLore';",
   "export {PHG_OGRE_BIOMASK_ID_V131} from './app/game/phgBiomaskTintsV131';",
+  "export {conceptBiomaskV133} from './app/game/conceptBiomasksV133';",
+  "export {referenceBiomaskV62,preservedBiomaskV62} from './app/game/biomaskCatalogueV62';",
   "export {DECAL_FIELDS_V133,Y_A_U_T_J_A_DECALS_V133} from './app/game/yautjaDecalsV133';",
   "export {PHG_WARPAINT_EVIDENCE_V133} from './app/game/yautjaDecalsV133';",
 ].join('\n'), resolveDir: root }, bundle: true, platform: 'node', format: 'esm', write: false, logLevel: 'silent' });
@@ -198,6 +200,40 @@ try {
       }
       pass('T02 Samurai lineage keeps both Requiem and Nova after custom armor', named);
     }
+    const originalMask = (await stored()).appearance;
+    const originalLabel = (api.referenceBiomaskV62(originalMask.biomaskId) ??
+      api.preservedBiomaskV62(originalMask.biomaskId))?.label;
+    assert.ok(originalLabel);
+    const concept = api.conceptBiomaskV133('concept-v133-requiem');
+    const requiem = 'phg-study-v132-requiem';
+    await chooseOption('Biomask', concept.name);
+    assert.equal((await stored()).appearance.biomaskId, concept.id);
+    assert.equal(await rig.getAttribute('data-mask'), concept.id);
+    const beforeConcept = await storedRaw();
+    const maskPigment = forge.locator('#chromatic-mask-color-v131');
+    await maskSelect.selectOption(requiem);
+    assert.equal(await maskSelect.inputValue(), requiem, 'Eligible finish stays in the draft after selecting it');
+    await maskPigment.fill('#435665');
+    assert.equal(await maskSelect.inputValue(), requiem, 'Editing pigment keeps the eligible finish');
+    await forge.locator('[data-selected-material-id="' + requiem + '"]').waitFor();
+    assert.equal(await storedRaw(), beforeConcept, 'The concept preview does not write the appearance');
+    await commit('concept-finish');
+    await openForge({ reload: true });
+    const savedConcept = (await stored()).appearance;
+    assert.equal(savedConcept.biomaskId, concept.id);
+    assert.equal(savedConcept.chromaticsV113.maskOriginId, preset);
+    assert.equal(savedConcept.chromaticsV113.maskMaterialId, requiem);
+    assert.equal(savedConcept.chromaticsV113.maskHex, '#435665');
+    assert.equal(await maskSelect.inputValue(), requiem);
+    pass(preset + ' concept supports the owned Requiem finish during preview and after save/reload',
+      { shell: concept.assetPath, finish: requiem });
+
+    await chooseOption('Biomask', originalLabel);
+    await maskSelect.selectOption(originalMask.chromaticsV113.maskMaterialId ?? '');
+    if (originalMask.chromaticsV113.maskHex) await maskPigment.fill(originalMask.chromaticsV113.maskHex);
+    else await forge.getByRole('button', { name: 'Teinte naturelle', exact: true }).click();
+    await commit('restore-native-mask-palette');
+
     for (const zone of ['face', 'body', 'armor', 'biomask']) {
       const item = api.Y_A_U_T_J_A_DECALS_V133.find(d => d.zone === zone); assert.ok(item);
       const before = await storedRaw();
