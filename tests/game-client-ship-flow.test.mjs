@@ -34,6 +34,10 @@ const dependencies = await build({
     'export { actClanShipOperations, bindClanShipMission, clanShipContract, createClanShipOperations, evaluateClanShipAccess, inspectClanShipOperations, releaseClanShipMissionBinding, settleClanShipMission, CLAN_SHIP_ONBOARDING_STEPS } from "./app/game/systems/clanShipOperations.ts";',
     'export { actCompanionResidence, bindCompanionResidenceMission, settleCompanionResidenceMission, releaseCompanionResidenceMission, registerCompanionResidenceRecruitment, availableClanResidenceCrew, inspectCompanionResidence } from "./app/game/systems/companionResidence.ts";',
     'export { applyMissionResult as applyRealMissionResult } from "./app/game/save.ts";',
+    'export { blackGodStatusV162 } from "./app/game/systems/blackGodV162.ts";',
+    'export { tribunalBlocksChroniclePromotionV147 } from "./app/game/systems/honorTribunalV147.ts";',
+    'export { getChronicleRank } from "./app/game/systems/clanChronicle.ts";',
+    'export { settleQueenHuntMissionV163 } from "./app/game/systems/queenHuntV163.ts";',
   ].join('\n'), resolveDir: fileURLToPath(new URL('../', import.meta.url)), loader: 'ts' },
   bundle: true, write: false, format: 'iife', globalName: 'ShipFlowDependencies', platform: 'node', logLevel: 'silent',
 });
