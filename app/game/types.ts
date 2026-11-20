@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V159: routes spatiales typées, voyage engagé et position du vaisseau (STATE5-18/19); absent des anciennes sauvegardes. */
+  spaceRoutesV159?: import("./systems/spaceRoutesV159").SpaceRoutesStateV159 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

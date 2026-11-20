@@ -13,6 +13,7 @@ import {
   type CSSProperties,
   type KeyboardEvent,
   type PointerEvent,
+  type ReactNode,
 } from "react";
 import { controlActionShortcut } from "./controlBindingLabels";
 import { MISSIONS } from "./data";
@@ -86,6 +87,8 @@ export interface GalaxyMapPanelProps {
   onVisitHomeworld?: () => void;
   justiceControlLabel?: string;
   onOpenJustice?: () => void;
+  /** V159: poste de route typée, rendu sous la carte (état et écritures tenus par l’hôte). */
+  routesPanel?: ReactNode;
 }
 
 const MISSION_BY_ID = Object.freeze(
@@ -204,6 +207,7 @@ export default function GalaxyMapPanel({
   onVisitHomeworld,
   justiceControlLabel,
   onOpenJustice,
+  routesPanel,
 }: GalaxyMapPanelProps) {
   const rootRef = useRef<HTMLElement | null>(null);
   const suspendedRef = useRef(suspended);
@@ -869,6 +873,7 @@ export default function GalaxyMapPanel({
             </p>
           ) : null}
         </div>
+        {routesPanel}
       </div>
     </section>
   );
