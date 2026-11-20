@@ -3,17 +3,17 @@ name: Assemble Yautja pull requests
 on:
   push:
     branches:
-      - codex/assemble-prs-20261120
+      - codex/assemble-prs-exact-20261120
 
 permissions: {}
 
 concurrency:
-  group: yautja-integration-prs-20261120
+  group: yautja-integration-exact-20261120
   cancel-in-progress: false
 
 jobs:
   assemble:
-    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/assemble-prs-20261120'
+    if: github.repository == 'darknigthmare/yautja-la-longue-chasse' && github.ref == 'refs/heads/codex/assemble-prs-exact-20261120'
     runs-on: ubuntu-latest
     timeout-minutes: 35
     permissions:

@@ -163,6 +163,10 @@ def resolve_merge(number):
 def merge_tip(ref, title, number=None):
     if git("merge-base", "--is-ancestor", ref, "HEAD", check=False).returncode == 0:
         return
+    if number is not None:
+        preview = git("merge-tree", "--write-tree", "HEAD", ref, check=False)
+        if preview.returncode not in (0, 1):
+            raise RuntimeError(preview.stderr or preview.stdout)
     result = git("merge", "--no-ff", "-m", title, ref, check=False)
     if result.returncode:
         if number is None or not conflicts():
@@ -207,6 +211,45 @@ function normalizeCampaignCreationV155(originOrOptions: unknown, options: Campai
     git("commit", "-m", "Preserve legacy campaign creation and bind the combined hunt checks")
 
 
+
+def prefetch_source_blobs(refs):
+    from concurrent.futures import ThreadPoolExecutor
+    from hashlib import sha1
+    from urllib.parse import quote
+    from urllib.request import urlopen
+
+    sources = {}
+    for ref in refs:
+        commit = git("rev-parse", ref)
+        records = git("ls-tree", "-r", "-z", commit, "--", "app", "scripts", "tests", INVENTORY).split("\0")
+        for record in filter(None, records):
+            meta, path = record.split("\t", 1)
+            mode, kind, sha = meta.split()
+            if kind == "blob" and mode in ("100644", "100755"):
+                sources.setdefault(sha, (commit, path))
+    def find_missing():
+        inventory = "\n".join(sorted(sources)) + "\n"
+        status = subprocess.run(["git", "cat-file", "--batch-check"], input=inventory, text=True,
+            capture_output=True, check=True, env={**os.environ, "GIT_NO_LAZY_FETCH": "1"})
+        return [line.split()[0] for line in status.stdout.splitlines() if line.endswith(" missing")]
+    missing = find_missing()
+    print(f"Loading {len(missing)} precise source blobs, with Git hash verification", flush=True)
+    def restore(sha):
+        commit, path = sources[sha]
+        url = "https://raw.githubusercontent.com/darknigthmare/yautja-la-longue-chasse/" + commit + "/" + quote(path)
+        with urlopen(url, timeout=25) as response:
+            raw = response.read(8 * 1024 * 1024 + 1)
+        assert len(raw) <= 8 * 1024 * 1024, path
+        actual = sha1(f"blob {len(raw)}\0".encode() + raw).hexdigest()
+        assert actual == sha, (path, commit, actual, sha)
+        wrote = subprocess.check_output(["git", "hash-object", "-w", "--stdin"], input=raw).decode().strip()
+        assert wrote == sha, path
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        for _ in pool.map(restore, missing):
+            pass
+    assert not find_missing()
+
+
 def main():
     assert git("rev-parse", "HEAD") == os.environ["INTEGRATION_SEED"]
     git("config", "user.name", "Codex")
@@ -216,11 +259,18 @@ def main():
     git("config", "merge.renames", "false")
     git("sparse-checkout", "set", "--no-cone", "/*", "!/*/", "/app/", "/scripts/", "/tests/", "/.github/",
         "/" + INVENTORY, "/.openai/hosting.json", "/build/")
+    git("reset", "--hard", "HEAD")
     refspecs = [f"+refs/pull/{pr}/head:refs/wave/pr/{pr}" for pr in ORDER]
-    git("fetch", "--refetch", "--filter=blob:limit=128k", "--no-tags", "origin", "+refs/heads/main:refs/wave/main", *refspecs, visible=True)
+    git("fetch", "--filter=blob:none", "--no-tags", "origin", "+refs/heads/main:refs/wave/main", *refspecs, visible=True)
     assert git("rev-parse", "refs/wave/main") == MAIN, "main advanced; review changes before assembly"
     for pr in ORDER:
         assert git("rev-parse", f"refs/wave/pr/{pr}") == HEADS[pr], f"PR #{pr} moved"
+    refs = [os.environ["INTEGRATION_SEED"], "refs/wave/main", *(f"refs/wave/pr/{pr}" for pr in ORDER)]
+    bases = set()
+    for index, left in enumerate(refs):
+        for right in refs[index+1:]:
+            bases.update(git("merge-base", "--all", left, right).splitlines())
+    prefetch_source_blobs(refs + sorted(bases))
     merge_tip("refs/wave/main", "Bring in the verified main branch")
     for pr in ORDER:
         merge_tip(f"refs/wave/pr/{pr}", f"Merge PR #{pr} into November integration", pr)
