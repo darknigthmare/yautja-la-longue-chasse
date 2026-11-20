@@ -1,0 +1,193 @@
+name: Current asset raccords - equipment and physical supports
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/game/**'
+      - 'scripts/materialize-asset-raccords-20261120.mjs'
+      - 'scripts/qa-asset-raccords-browser-20261120.mjs'
+      - 'scripts/qa-environment-prop-raccords-20261120.mjs'
+      - 'tests/*raccords*20261120*'
+      - 'tests/fixtures/environment-prop-raccord-contract-20261120.mjs'
+      - 'tests/browser/asset-raccords-20261120.fixture.jsx'
+      - 'tests/browser/environment-prop-raccords-20261120.fixture.mjs'
+      - 'tests/environment-prop-registry-v19.test.mjs'
+      - 'docs/qa/current-integration-20261103/runtime-inputs.json'
+      - '.github/workflows/assets-raccords-20261120.yml'
+      - 'package*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: assets-raccords-20261120-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+env:
+  ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+  NEXT_TELEMETRY_DISABLED: '1'
+  ASSET_RACCORDS_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+
+jobs:
+  runtime-candidate:
+    name: Official current runtime candidate and required inventory check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout the exact source head and bounded current inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize exact official paths and preserve historical public bytes
+        run: node scripts/materialize-asset-raccords-20261120.mjs runtime
+      - name: Install the unchanged dependency lock without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate the candidate only through the official V113 program
+        id: candidate
+        run: node scripts/materialize-asset-raccords-20261120.mjs candidate
+      - name: Reproduce the candidate and fingerprint the exact current source
+        run: |
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+          git diff --exit-code -- docs/qa/current-integration-20261103/runtime-inputs.json
+      - name: Preserve the official bytes, generator receipt and materialization pins
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: asset-raccords-runtime-${{ github.event.pull_request.head.sha || github.sha }}
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Require the committed current inventory to match the official generator
+        if: ${{ !cancelled() && steps.candidate.outcome == 'success' }}
+        run: node scripts/snapshot-runtime-v113.mjs --check docs/qa/current-integration-20261103/runtime-inputs.json
+
+  verify:
+    name: Equipment continuity, physical support bindings and native browser evidence
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
+      ASSET_RACCORDS_QA_OUTPUT: outputs/qa-asset-raccords-20261120
+      ENVIRONMENT_PROP_RACCORD_SOURCE_COMMIT: ${{ github.event.pull_request.head.sha || github.sha }}
+      ENVIRONMENT_PROP_RACCORD_QA_OUTPUT: outputs/qa-environment-prop-raccords-20261120
+    steps:
+      - name: Checkout the exact source head
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize exact official current inputs
+        run: node scripts/materialize-asset-raccords-20261120.mjs runtime
+      - name: Install the unchanged dependency lock without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Materialize only available V19 pairs and native adjacent-suite imagery
+        run: node scripts/materialize-asset-raccords-20261120.mjs catalogue
+      - name: Prepare exact GameClient resources without claiming a browser pass
+        env:
+          ASSET_RACCORDS_PREPARE_ONLY: '1'
+        run: node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Prepare only the physical support images resolved by current production exports
+        run: node scripts/qa-environment-prop-raccords-20261120.mjs --materialize
+      - name: Fingerprint the current source before qualification
+        run: node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Generate Next types and check the whole application
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          npm run typecheck
+      - name: Strict lint of changed presentation, registry, test and QA sources
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/GameClient.tsx app/game/HomeworldHub.tsx
+          app/game/HomeworldPassageV67.tsx app/game/HomeworldRegionV68.tsx
+          app/game/environmentPropRegistry.ts
+          tests/homeworld-player-equipment-raccords-20261120.test.mjs
+          tests/environment-prop-raccords-20261120.test.mjs
+          tests/environment-prop-registry-v19.test.mjs
+          tests/fixtures/environment-prop-raccord-contract-20261120.mjs
+          scripts/materialize-asset-raccords-20261120.mjs
+          scripts/qa-asset-raccords-browser-20261120.mjs
+          scripts/qa-environment-prop-raccords-20261120.mjs
+          tests/browser/asset-raccords-20261120.fixture.jsx
+          tests/browser/environment-prop-raccords-20261120.fixture.mjs
+      - name: Execute current parent rendering, real selectors and adjacent regressions
+        run: |
+          set -o pipefail
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 \
+            tests/homeworld-player-equipment-raccords-20261120.test.mjs \
+            tests/environment-prop-raccords-20261120.test.mjs \
+            tests/environment-prop-registry-v19.test.mjs \
+            tests/environment-prop-catalogue-v19.test.mjs \
+            tests/environment-prop-drawing.test.mjs \
+            tests/homeworld-passage-v67.test.mjs \
+            tests/homeworld-passage-persistence-v67.test.mjs \
+            tests/homeworld-regions-v68.test.mjs \
+            tests/hunter-rig-origin.test.mjs \
+            2>&1 | tee outputs/qa-asset-raccords-20261120/native-regressions.log
+      - name: Build the actual Next production application
+        run: npm run build:production
+      - name: Smoke the compiled Next HTTP server and required resources
+        run: npm run qa:next-production
+      - name: Verify real Next delivery of the City and Jungle gauntlet sources
+        run: node scripts/materialize-asset-raccords-20261120.mjs production-assets
+      - name: Play the real GameClient equipment continuity journeys
+        run: node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Render actual rigid support plans and record flexible binding metadata separately
+        run: node scripts/qa-environment-prop-raccords-20261120.mjs
+      - name: Reproduce the actual new regression assertions on the unchanged main baseline
+        run: node scripts/materialize-asset-raccords-20261120.mjs red-baseline
+      - name: Fingerprint final source and reject tracked changes from verification
+        run: |
+          node scripts/check-hunt-integration-source-v112.mjs --current
+          git diff --exit-code
+      - name: Preserve raw receipts, expected baseline failures and original captures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: asset-raccords-native-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            outputs/qa-asset-raccords-20261120/
+            outputs/qa-environment-prop-raccords-20261120/
+          if-no-files-found: error
+          retention-days: 30
