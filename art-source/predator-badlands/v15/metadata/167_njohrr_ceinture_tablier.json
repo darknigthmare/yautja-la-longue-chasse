@@ -1,0 +1,92 @@
+{
+  "id": 167,
+  "nom": "Ceinture, tablier et tassettes de Njohrr",
+  "categorie": "yautja",
+  "lot": 15,
+  "fichier": "sprites/yautja/167_njohrr_ceinture_tablier.png",
+  "repositoryPath": "art-source/predator-badlands/v15/sprites/yautja/167_njohrr_ceinture_tablier.png",
+  "metadata": "metadata/167_njohrr_ceinture_tablier.json",
+  "generation_request_file": "prompts/167_njohrr_ceinture_tablier.json",
+  "date_generation": "2026-11-17",
+  "format": "PNG",
+  "mode": "RGBA",
+  "largeur_px": 1254,
+  "hauteur_px": 1254,
+  "taille_octets": 1863591,
+  "sha256": "20a432d6aab63297d6bc426abc737385423240b9bd3c9ee30f03c0ad68bc102f",
+  "gitBlobSha": "44ad1111cdbe439b4d7e083f639cbd1e812f3e35",
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "coins": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "pixels_entierement_transparents": 900625,
+    "pourcentage_entierement_transparent": 57.2729,
+    "max_sur_bord_du_canvas": 1
+  },
+  "boite_contenu_alpha_superieur_8_px": [
+    66,
+    138,
+    1185,
+    1106
+  ],
+  "marges_contenu_px": {
+    "gauche": 66,
+    "haut": 138,
+    "droite": 69,
+    "bas": 148
+  },
+  "pose": "Ceinture vide en volume, tablier central entier et trois tassettes superposées de chaque côté.",
+  "orientation": "Vue frontale très légèrement surplombante ; ovale de taille ouvert.",
+  "type_visuel": "sprite_statique_equipement",
+  "sources": [
+    "https://www.hottoys.jp/item/view/4570191994663.php",
+    "https://www.hottoys.jp/catalog/swfdata/ht5586/imgview_image/up_2.jpg",
+    "https://www.hottoys.jp/catalog/swfdata/ht5586/imgview_image/up_5.jpg"
+  ],
+  "source_type": "Photographies officielles de la figurine Hot Toys MMS863 sous licence Predator: Badlands ; référence secondaire pour le costume du film.",
+  "source_limit": "Les vues Hot Toys montrent un prototype de figurine. La ceinture et les tassettes ne sont pas corroborées ici par une photographie détaillée du costume de tournage ou un photogramme du bas du corps. La page Wētā actuelle n’apporte pas de vue Njohrr exploitable. Aucune fidélité 1:1 certifiée.",
+  "confirmed_details": [
+    "Sur la figurine officielle : ceinture large brun bordeaux en matière grainée.",
+    "Trois lames arrondies superposées de chaque côté des hanches ; lignes incisées croisées sur les petites lames supérieures.",
+    "Long pan frontal brun presque rectangulaire, portant un tablier de plaques métalliques bronze effilées en chevrons.",
+    "Petite pièce sommitale bronze pointue avec accents rouges."
+  ],
+  "extrapolated_details": [
+    "Arc arrière, doublure intérieure et fermeture masquée de la ceinture reconstitués simplement en cuir sombre.",
+    "Montage complet hors personnage, courbure de la taille vide et retours des lames latérales adaptés à la présentation isolée.",
+    "Relief et dimensions exacts de la boucle, épaisseurs, grain, patine et rayures recréés ; le sprite amplifie les détails pour leur lisibilité.",
+    "Symétrie de présentation et profondeur du tablier central reconstituées à partir des deux angles de la figurine."
+  ],
+  "parties_cachees_reconstituees": [
+    "Revers de ceinture et doublure intérieure",
+    "Attaches derrière le tablier",
+    "Retours arrière des tassettes"
+  ],
+  "native_png_unmodified": true,
+  "qa": {
+    "root_visual_reviewed": true,
+    "review_note": "PNG et composite gris examinés face aux photos Hot Toys02/05 : ceinture, trois tassettes par côté et tablier entiers. Matières et silhouette cohérentes avec la figurine ; boucle plus accentuée et intérieur reconstruits. Transparence native préservée, faibles pixels alpha1 sur bord sans contour visible.",
+    "agent_notes": "RGBA natif 1254×1254 ; silhouettes complètes. Bbox alpha>8 : [66,138,1185,1106]. Coins alpha0. Quelques pixels natifs alpha1 sur les bords externes, invisibles au contrôle sur fond gris, conservés sans retouche. Bord alpha maximal1.",
+    "checks": [
+      "PNG décodable",
+      "RGBA natif",
+      "alpha réel",
+      "marges du contenu visible",
+      "copie native octet pour octet",
+      "absence de doublon SHA-256 dans les 166 originaux"
+    ]
+  },
+  "art_status": "draft",
+  "human_art_validation": false,
+  "fidelite_exacte_1_a_1_verifiee": false,
+  "animation_incluse": false,
+  "installedInProject": false,
+  "engine_integration": "Source présente dans la PR ; aucune inscription dans un atlas runtime, animation, collision ou point d’attache testé.",
+  "echelle_physique_canonique": null,
+  "runtime_pivot": null
+}

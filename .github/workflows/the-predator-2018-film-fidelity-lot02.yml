@@ -1,0 +1,30 @@
+name: The Predator 2018 film-fidelity gate
+# Content intake is complete. This workflow never downloads art or writes to Git.
+# A passing check verifies rejection/integrity, NOT artistic 1:1 compliance.
+on:
+  pull_request:
+    paths:
+      - 'dlc/the-predator-2018/**'
+      - '.github/workflows/the-predator-2018-film-fidelity-lot02.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          lfs: false
+          persist-credentials: false
+          sparse-checkout: dlc/the-predator-2018
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --disable-pip-version-check 'Pillow==12.0.0'
+      - name: Original package unchanged
+        run: python dlc/the-predator-2018/tools/verify_recovery.py
+      - name: Five rejected trials intact, zero approved sprites
+        run: python dlc/the-predator-2018/production/art/lot-02-film-correction/verify_lot.py

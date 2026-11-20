@@ -56,6 +56,10 @@ const eslintConfig = defineConfig([
     "docs/qa/hunt-pr62-followup-r8-20261102/hud-layout/native-badge.bundle.js",
     // Standalone historical DLC archive; not activated application source.
     "dlc/prey-2022/**",
+    "dlc/avp-2004-predator/**",
+    "dlc/avpr-wolf/**",
+    // Restored project source packs retain their historical code verbatim.
+    "art-source/project-recovery-20261117/**",
     "tmp/**",
     "work/**",
     "work-local/**",

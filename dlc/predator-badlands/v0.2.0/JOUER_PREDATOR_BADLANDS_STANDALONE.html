@@ -1,0 +1,2090 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08130f"><title>Predator Badlands — v0.2 reconstruite</title><style>:root{color-scheme:dark;--bg:#07100d;--panel:#101c17;--line:#385044;--ink:#e5e9da;--muted:#aabbaa;--accent:#bcd07c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,sans-serif}button,a{font:inherit}button{background:#17291e;color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:9px 13px;cursor:pointer}button:hover,button:focus-visible{border-color:var(--accent);outline:2px solid var(--accent);outline-offset:2px}button:disabled{opacity:.45;cursor:default}a{color:var(--accent)}[hidden]{display:none!important}#shell{max-width:1600px;margin:auto}header{padding:12px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);gap:16px}h1{font-size:20px;letter-spacing:.12em;margin:3px 0}small{font-size:10px;letter-spacing:.14em;color:var(--muted)}nav{display:flex;gap:8px;flex-wrap:wrap}#gameArea{position:relative;background:#030805}canvas{width:100%;height:auto;display:block;aspect-ratio:16/9;touch-action:none}#hud{position:absolute;top:14px;left:18px;right:18px;display:flex;justify-content:space-between;pointer-events:none;gap:20px}#hud>div{padding:10px 14px;background:#07100dd9;border:1px solid #314738;max-width:65%;border-radius:6px}#hud h2{font-size:20px;margin:2px 0}#hud p{font-size:12px;margin:3px 0}#provenance{font-size:10px;color:#c6c5a0}#stats{text-align:right;min-width:200px}meter{width:180px;height:18px}#event{position:absolute;left:50%;bottom:11%;transform:translateX(-50%);width:min(560px,90%);background:#111c15f5;border:1px solid #83985d;border-radius:10px;padding:20px;box-shadow:0 20px 80px #000}#event h2{font-size:22px;margin:0 0 10px}#event p{color:var(--muted);font-size:14px}footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);font-size:11px;padding:12px 18px;color:var(--muted)}.overlay{position:fixed;inset:0;background:radial-gradient(ellipse at 20% 30%,#233827f2,#030906fa 75%);display:flex;align-items:center;justify-content:center;z-index:10;overflow:auto;padding:30px}.panel{width:min(1000px,100%);max-height:94dvh;overflow:auto;padding:32px;border:1px solid #405543;border-radius:12px;background:#0a160ff5}.panel h2{font-size:clamp(26px,5vw,54px);line-height:1.05;margin:15px 0 22px}.panel>p{color:var(--muted);max-width:850px}.campaigns{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}.campaigns article{border:1px solid var(--line);padding:22px;background:linear-gradient(130deg,#233923,#101b13)}.campaigns b{letter-spacing:.06em}.campaigns button{margin:5px 6px 0 0}.notice{border-left:3px solid #b6a76b;padding:10px 15px;background:#181e10;font-size:12px}.keys{font-size:12px}#closeMenu{margin-right:15px}#artGrid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:20px 0}#artGrid figure{margin:0;border:1px solid var(--line);font-size:11px;text-align:center;padding:6px}#artGrid img{width:100%;display:block}#chapters ol{font-size:13px;padding-left:22px}#chapters li{padding:5px}#touch{display:none;position:absolute;bottom:8px;left:8px;right:8px;gap:4px;flex-wrap:wrap;justify-content:center}#touch button{padding:8px;touch-action:none;min-height:44px;min-width:44px;background:#102215ed}@media(pointer:coarse),(max-width:900px){#touch{display:flex}header{padding:8px;align-items:flex-start}header h1{font-size:14px}nav{gap:4px}nav button{padding:6px;font-size:11px}#hud{top:6px;left:6px;right:6px;gap:5px}#hud>div{padding:5px;max-width:70%}#hud h2{font-size:13px}#hud p{font-size:10px}#stats{min-width:120px}meter{width:100px}#provenance{display:none}.overlay{padding:10px}.panel{padding:18px}.campaigns{gap:10px}.campaigns article{padding:12px}#artGrid{grid-template-columns:repeat(3,1fr)}footer{flex-direction:column;gap:3px;padding:7px}#event{bottom:24%;padding:10px}#event p{font-size:12px}#event h2{font-size:17px}}@media(max-width:600px){.campaigns{grid-template-columns:1fr}.panel h2{font-size:30px}#gameArea{min-height:500px;padding-top:118px}canvas{height:auto;object-fit:contain;margin-top:0}#hud{display:grid;grid-template-columns:minmax(0,1fr) 120px}#hud>div{max-width:none}#hud{flex-wrap:wrap}#stats{margin-left:auto}#event{bottom:28%}#touch button{font-size:11px}}
+</style></head>
+<body><main id="shell"><header><div><small>YAUTJA / DLC AUTONOME · RECONSTRUCTION</small><h1>PREDATOR: BADLANDS</h1></div><nav aria-label="Session"><button id="save">Sauvegarder</button><button id="codex">Codex</button><button id="pause">Pause</button><button id="menuButton">Campagnes</button></nav></header>
+<section id="gameArea" aria-label="Niveau de jeu"><canvas id="game" width="1280" height="720" tabindex="0" aria-label="Badlands : A/D ou flèches pour marcher, Q profondeur, espace saut, F attaque, E interaction"></canvas><div id="hud"><div><small id="episode"></small><h2 id="title">La meute de Genna</h2><p id="objective"></p><span id="provenance"></span></div><div id="stats"><meter id="health" min="0" max="100" value="100" aria-label="Santé"></meter><p id="weapon"></p><p id="resources"></p></div></div><div id="event" hidden role="dialog" aria-modal="true" aria-labelledby="eventTitle"><h2 id="eventTitle"></h2><p id="eventText"></p><button id="confirm">Continuer</button></div><div id="touch" aria-label="Commandes tactiles"><button data-hold="left" aria-label="Gauche">◀</button><button data-hold="right" aria-label="Droite">▶</button><button data-action="depth">Plan</button><button data-action="jump">Saut</button><button data-hold="fire">Attaque</button><button data-action="interact">Utiliser</button><button data-action="cycle">Arme</button><button data-action="reload">Recharger</button><button data-action="heal">Soin</button></div></section>
+<footer><span id="status" role="status">Sélectionnez une campagne.</span><span id="storage" role="status">Sauvegarde locale indépendante</span></footer>
+<section id="menu" class="overlay" aria-labelledby="menuTitle"><div class="panel"><small>v0.2.0 RECONSTRUITE · SOURCE ORIGINALE NON RETROUVÉE</small><h2 id="menuTitle">Deux regards.<br>Une même chasse.</h2><p>25 épisodes Weyland-Yutani / 44 épisodes Dek. Les 46 scènes héritées restent distinctes des 23 raccords de gameplay créés pour cette reconstruction.</p><div class="campaigns"><article><b>I · WEYLAND-YUTANI</b><p>Point de vue synthétique du prototype : exploration, collecte et capture.</p><button data-new="weyland">Nouvelle campagne I</button><button data-resume="weyland">Reprendre I</button></article><article><b>II · DEK</b><p>Quatre plans, équipement, meute, affrontements et retour au clan.</p><button data-new="predator">Nouvelle campagne II</button><button data-resume="predator">Reprendre II</button></article></div><p class="notice">Prototype non officiel. Graphismes provisoires conservés ; fidélité visuelle 1:1 non validée. Les intitulés et événements hérités ne constituent pas une nouvelle certification du lore.</p><p class="keys">A/D ou ←/→ marcher · Q plan · Espace sauter · F attaquer · E utiliser · V arme · R recharger · H soigner · Échap pause.</p><button id="closeMenu" hidden>Retour à la partie</button><a href="../v0.1.0/JOUER_PREDATOR_BADLANDS.html">Archive v0.1 originale</a></div></section>
+<section id="codexPanel" class="overlay" hidden aria-labelledby="codexTitle"><div class="panel"><h2 id="codexTitle">Codex de production</h2><p>Les images ci-dessous sont les 18 SVG historiques, pas de nouvelles illustrations certifiées 1:1.</p><button id="closeCodex">Revenir au jeu</button><div id="artGrid"></div><div id="chapters"></div></div></section>
+</main><script>
+window.BADLANDS_DATA = {
+  "version": "0.1.0",
+  "title": "PREDATOR: BADLANDS — LA MEUTE DE GENNA",
+  "hostBaseline": {
+    "repo": "darknigthmare/aliens-tantalus-frontier",
+    "commit": "496996f5ea557d970ec625aa346876f3eaed1c5f",
+    "package": "86.0.0"
+  },
+  "campaigns": [
+    {
+      "id": "weyland",
+      "title": "CAMPAGNE I — WEYLAND-YUTANI",
+      "subtitle": "Le « côté humain » demandé, transposé fidèlement aux synthétiques Thia/Tessa puisque le film ne montre aucun humain.",
+      "playable": [
+        "Tessa",
+        "Thia"
+      ],
+      "scenes": [
+        {
+          "id": "wy_recovery",
+          "title": "Réactivation de Tessa",
+          "location": "Base Weyland-Yutani · baie médicale",
+          "environment": "LAB",
+          "profile": "SIDE",
+          "objectiveType": "interact",
+          "objective": "Réactiver les systèmes, récupérer le dossier Kalisk et reprendre la mission.",
+          "actors": [
+            "Tessa",
+            "Drones synthétiques"
+          ],
+          "enemies": [],
+          "gear": [
+            "scanner",
+            "repair_tool"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Tessa est remise en service et la mission de capture reprend.",
+          "chapter": 1,
+          "next": [
+            "wy_briefing"
+          ],
+          "prev": []
+        },
+        {
+          "id": "wy_briefing",
+          "title": "Directive MU/TH/UR",
+          "location": "Centre de commandement",
+          "environment": "LAB",
+          "profile": "DEPTH",
+          "objectiveType": "collect",
+          "objective": "Récupérer les trois blocs de données de la mission : Kalisk, Thia, activité Yautja.",
+          "actors": [
+            "Tessa"
+          ],
+          "enemies": [],
+          "gear": [
+            "scanner"
+          ],
+          "canonLock": true,
+          "canonOutcome": "La Corporation privilégie la capture du Kalisk et identifie Dek comme variable hostile.",
+          "chapter": 2,
+          "next": [
+            "wy_jungle_entry"
+          ],
+          "prev": [
+            "wy_recovery"
+          ]
+        },
+        {
+          "id": "wy_jungle_entry",
+          "title": "Déploiement sur Genna",
+          "location": "Jungle extérieure de la base",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "combat",
+          "objective": "Traverser la zone hostile avec l’escouade synthétique.",
+          "actors": [
+            "Tessa",
+            "Drones synthétiques"
+          ],
+          "enemies": [
+            "tree_vine",
+            "spike_pod"
+          ],
+          "gear": [
+            "synth_rifle",
+            "scanner"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Les synthétiques peuvent opérer là où des humains ne survivraient pas.",
+          "chapter": 3,
+          "next": [
+            "wy_ship_wreck"
+          ],
+          "prev": [
+            "wy_briefing"
+          ]
+        },
+        {
+          "id": "wy_ship_wreck",
+          "title": "Le vaisseau de Kwei",
+          "location": "Épave Yautja · coque",
+          "environment": "SHIP",
+          "profile": "SIDE",
+          "objectiveType": "combat",
+          "objective": "Sécuriser l’épave et ouvrir l’accès intérieur.",
+          "actors": [
+            "Tessa",
+            "Drones synthétiques"
+          ],
+          "enemies": [
+            "rock_biter"
+          ],
+          "gear": [
+            "synth_rifle"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Tessa localise le vaisseau écrasé de Kwei.",
+          "chapter": 4,
+          "next": [
+            "wy_trophy_deck"
+          ],
+          "prev": [
+            "wy_jungle_entry"
+          ]
+        },
+        {
+          "id": "wy_trophy_deck",
+          "title": "Trophées et technologies",
+          "location": "Épave Yautja · galerie de trophées",
+          "environment": "SHIP",
+          "profile": "DEPTH",
+          "objectiveType": "collect",
+          "objective": "Scanner trois éléments technologiques sans détériorer les preuves.",
+          "actors": [
+            "Tessa"
+          ],
+          "enemies": [],
+          "gear": [
+            "scanner"
+          ],
+          "canonLock": true,
+          "canonOutcome": "La galerie sert de trace matérielle de la culture de chasse du clan.",
+          "chapter": 5,
+          "next": [
+            "wy_cockpit"
+          ],
+          "prev": [
+            "wy_ship_wreck"
+          ]
+        },
+        {
+          "id": "wy_cockpit",
+          "title": "Cryo et plasmacaster",
+          "location": "Épave Yautja · cockpit",
+          "environment": "SHIP",
+          "profile": "SIDE",
+          "objectiveType": "collect",
+          "objective": "Récupérer la bandoulière cryogénique et l’arme d’épaule.",
+          "actors": [
+            "Tessa"
+          ],
+          "enemies": [],
+          "gear": [
+            "cryo_grenade",
+            "kwei_plasmacaster"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Tessa récupère l’équipement qui permettra la capture.",
+          "chapter": 6,
+          "next": [
+            "wy_track"
+          ],
+          "prev": [
+            "wy_trophy_deck"
+          ]
+        },
+        {
+          "id": "wy_track",
+          "title": "Piste de Dek",
+          "location": "Razor Grass · piste de chasse",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "survive",
+          "objective": "Suivre les traces à travers la Razor Grass pendant 15 secondes.",
+          "actors": [
+            "Tessa",
+            "Drones synthétiques"
+          ],
+          "enemies": [
+            "bone_bison",
+            "spike_pod"
+          ],
+          "gear": [
+            "scanner",
+            "synth_rifle"
+          ],
+          "canonLock": true,
+          "canonOutcome": "L’équipe remonte la piste laissée par Dek, Thia et Bud.",
+          "chapter": 7,
+          "next": [
+            "wy_den_edge"
+          ],
+          "prev": [
+            "wy_cockpit"
+          ]
+        },
+        {
+          "id": "wy_den_edge",
+          "title": "Aux abords du Kalisk",
+          "location": "Lisière du repaire",
+          "environment": "GENNA",
+          "profile": "SIDE",
+          "objectiveType": "combat",
+          "objective": "Établir un périmètre sans provoquer le Kalisk avant l’ordre.",
+          "actors": [
+            "Tessa",
+            "Drones synthétiques"
+          ],
+          "enemies": [
+            "luna_bug"
+          ],
+          "gear": [
+            "synth_rifle",
+            "cryo_grenade"
+          ],
+          "canonLock": true,
+          "canonOutcome": "La capture intervient après le duel entre Dek et le Kalisk.",
+          "chapter": 8,
+          "next": [
+            "wy_capture"
+          ],
+          "prev": [
+            "wy_track"
+          ]
+        },
+        {
+          "id": "wy_capture",
+          "title": "Capture cryogénique",
+          "location": "Repaire du Kalisk",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "boss",
+          "objective": "Immobiliser le Kalisk et Dek avec l’équipement cryogénique.",
+          "actors": [
+            "Tessa",
+            "Dek",
+            "Kalisk"
+          ],
+          "enemies": [
+            "kalisk",
+            "dek_target"
+          ],
+          "gear": [
+            "cryo_grenade",
+            "kwei_plasmacaster"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek et le Kalisk sont capturés vivants.",
+          "chapter": 9,
+          "next": [
+            "wy_transport"
+          ],
+          "prev": [
+            "wy_den_edge"
+          ]
+        },
+        {
+          "id": "wy_transport",
+          "title": "Retour avec spécimens",
+          "location": "Convoi vers la base",
+          "environment": "BASE",
+          "profile": "SIDE",
+          "objectiveType": "escort",
+          "objective": "Maintenir l’intégrité du conteneur Kalisk jusqu’au laboratoire.",
+          "actors": [
+            "Tessa",
+            "Drones synthétiques",
+            "Kalisk"
+          ],
+          "enemies": [
+            "tree_vine"
+          ],
+          "gear": [
+            "synth_rifle"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Les spécimens sont transférés vers les installations Weyland-Yutani.",
+          "chapter": 10,
+          "next": [
+            "wy_experiment"
+          ],
+          "prev": [
+            "wy_capture"
+          ]
+        },
+        {
+          "id": "wy_experiment",
+          "title": "Sujet Yautja",
+          "location": "Laboratoire de contention",
+          "environment": "BASE",
+          "profile": "DEPTH",
+          "objectiveType": "interact",
+          "objective": "Lancer l’analyse de Dek puis traiter l’objection de Thia.",
+          "actors": [
+            "Tessa",
+            "Thia",
+            "Dek"
+          ],
+          "enemies": [],
+          "gear": [
+            "scanner",
+            "syringe"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Tessa étudie Dek; Thia intervient et est jugée défaillante.",
+          "chapter": 11,
+          "next": [
+            "wy_decommission"
+          ],
+          "prev": [
+            "wy_transport"
+          ]
+        },
+        {
+          "id": "wy_decommission",
+          "title": "Désactivation de Thia",
+          "location": "Secteur de maintenance synthétique",
+          "environment": "BASE",
+          "profile": "SIDE",
+          "objectiveType": "interact",
+          "objective": "Placer Thia en procédure de désactivation.",
+          "actors": [
+            "Tessa",
+            "Thia"
+          ],
+          "enemies": [],
+          "gear": [
+            "repair_tool"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Thia doit être mise hors service, mais aide Dek à s’échapper.",
+          "chapter": 12,
+          "next": [
+            "wy_breach"
+          ],
+          "prev": [
+            "wy_experiment"
+          ]
+        },
+        {
+          "id": "wy_breach",
+          "title": "Brèche interne",
+          "location": "Corridor de sécurité",
+          "environment": "BASE",
+          "profile": "HYBRID",
+          "objectiveType": "combat",
+          "objective": "Contenir l’évasion de Dek et les sabotages organiques.",
+          "actors": [
+            "Tessa",
+            "Drones synthétiques",
+            "Dek"
+          ],
+          "enemies": [
+            "organic_trap"
+          ],
+          "gear": [
+            "synth_rifle",
+            "kwei_plasmacaster"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek transforme l’écologie de Genna en arsenal.",
+          "chapter": 13,
+          "next": [
+            "wy_legs"
+          ],
+          "prev": [
+            "wy_decommission"
+          ]
+        },
+        {
+          "id": "wy_legs",
+          "title": "Les jambes de Thia",
+          "location": "Dépôt de maintenance",
+          "environment": "BASE",
+          "profile": "DEPTH",
+          "objectiveType": "combat",
+          "objective": "Empêcher les jambes autonomes de rejoindre le torse de Thia.",
+          "actors": [
+            "Tessa",
+            "Thia legs"
+          ],
+          "enemies": [
+            "thia_legs"
+          ],
+          "gear": [
+            "synth_rifle"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Les deux moitiés de Thia finissent par se réunir.",
+          "chapter": 14,
+          "next": [
+            "wy_loader"
+          ],
+          "prev": [
+            "wy_breach"
+          ]
+        },
+        {
+          "id": "wy_loader",
+          "title": "Power Loader",
+          "location": "Hangar industriel",
+          "environment": "BASE",
+          "profile": "SIDE",
+          "objectiveType": "interact",
+          "objective": "Monter dans le Power Loader et rejoindre le secteur de confinement.",
+          "actors": [
+            "Tessa"
+          ],
+          "enemies": [],
+          "gear": [
+            "power_loader",
+            "kwei_plasmacaster",
+            "cryo_grenade"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Tessa utilise un exosquelette lourd pendant le combat final.",
+          "chapter": 15,
+          "next": [
+            "wy_finale"
+          ],
+          "prev": [
+            "wy_legs"
+          ]
+        },
+        {
+          "id": "wy_finale",
+          "title": "Directive terminale",
+          "location": "Enclos Kalisk / hangar",
+          "environment": "BASE",
+          "profile": "HYBRID",
+          "objectiveType": "boss",
+          "objective": "Combattre jusqu’au verrouillage canonique de l’issue.",
+          "actors": [
+            "Tessa",
+            "Dek",
+            "Thia",
+            "Bud",
+            "Kalisk"
+          ],
+          "enemies": [
+            "kalisk_ally",
+            "dek_boss"
+          ],
+          "gear": [
+            "power_loader",
+            "kwei_plasmacaster",
+            "cryo_grenade"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Le Kalisk est tué; Tessa est ensuite détruite par Dek et Bud.",
+          "chapter": 16,
+          "next": [],
+          "prev": [
+            "wy_loader"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "predator",
+      "title": "CAMPAGNE II — DEK",
+      "subtitle": "Le film depuis le point de vue du jeune Yautja : de Yautja Prime à Genna, puis retour au clan.",
+      "playable": [
+        "Dek"
+      ],
+      "scenes": [
+        {
+          "id": "pred_crystal_cave",
+          "title": "L’épreuve du cadet",
+          "location": "Yautja Prime · grotte de cristal",
+          "environment": "YAUTJA",
+          "profile": "HYBRID",
+          "objectiveType": "combat",
+          "objective": "Vaincre Kwei lors de l’entraînement sans quitter l’arène.",
+          "actors": [
+            "Dek",
+            "Kwei"
+          ],
+          "enemies": [
+            "kwei_spar"
+          ],
+          "gear": [
+            "plasma_sword",
+            "gauntlet"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Ouverture sur l’entraînement de Dek et Kwei.",
+          "chapter": 1,
+          "next": [
+            "pred_hunt_atlas"
+          ],
+          "prev": []
+        },
+        {
+          "id": "pred_hunt_atlas",
+          "title": "Choisir l’impossible",
+          "location": "Vaisseau de Kwei · atlas de chasse",
+          "environment": "SHIP",
+          "profile": "DEPTH",
+          "objectiveType": "collect",
+          "objective": "Examiner trois hologrammes puis sélectionner Genna et le Kalisk.",
+          "actors": [
+            "Dek",
+            "Kwei"
+          ],
+          "enemies": [],
+          "gear": [
+            "scanner_yautja"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek choisit le Kalisk pour prouver sa valeur.",
+          "chapter": 2,
+          "next": [
+            "pred_trophy_room"
+          ],
+          "prev": [
+            "pred_crystal_cave"
+          ]
+        },
+        {
+          "id": "pred_trophy_room",
+          "title": "Héritage de Kwei",
+          "location": "Vaisseau de Kwei · galerie",
+          "environment": "SHIP",
+          "profile": "SIDE",
+          "objectiveType": "collect",
+          "objective": "Inspecter le mur de trophées et récupérer l’équipement préparé.",
+          "actors": [
+            "Dek",
+            "Kwei"
+          ],
+          "enemies": [],
+          "gear": [
+            "plasma_sword",
+            "bow",
+            "combistick",
+            "cryo_grenade",
+            "medikit"
+          ],
+          "canonLock": true,
+          "canonOutcome": "La galerie matérialise le statut de chasseur de Kwei.",
+          "chapter": 3,
+          "next": [
+            "pred_father"
+          ],
+          "prev": [
+            "pred_hunt_atlas"
+          ]
+        },
+        {
+          "id": "pred_father",
+          "title": "Le jugement de Njohrr",
+          "location": "Yautja Prime · esplanade du clan",
+          "environment": "YAUTJA",
+          "profile": "SIDE",
+          "objectiveType": "boss",
+          "objective": "Résister à Njohrr; l’issue est verrouillée par le film.",
+          "actors": [
+            "Dek",
+            "Kwei",
+            "Njohrr"
+          ],
+          "enemies": [
+            "njohrr_script"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Njohrr ordonne la mort de Dek; Kwei refuse et sauve son frère.",
+          "chapter": 4,
+          "next": [
+            "pred_launch"
+          ],
+          "prev": [
+            "pred_trophy_room"
+          ]
+        },
+        {
+          "id": "pred_launch",
+          "title": "La mort de Kwei",
+          "location": "Vaisseau de Kwei · sas",
+          "environment": "SHIP",
+          "profile": "SIDE",
+          "objectiveType": "survive",
+          "objective": "Tenir jusqu’au lancement automatique; aucune intervention ne peut sauver Kwei.",
+          "actors": [
+            "Dek",
+            "Kwei",
+            "Njohrr"
+          ],
+          "enemies": [],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek assiste à l’exécution de Kwei pendant que le vaisseau part pour Genna.",
+          "chapter": 5,
+          "next": [
+            "pred_orbit"
+          ],
+          "prev": [
+            "pred_father"
+          ]
+        },
+        {
+          "id": "pred_orbit",
+          "title": "Genna en vue",
+          "location": "Orbite rocheuse de Genna",
+          "environment": "SPACE",
+          "profile": "SIDE",
+          "objectiveType": "survive",
+          "objective": "Éviter les débris et maintenir la coque jusqu’à l’éjection.",
+          "actors": [
+            "Dek"
+          ],
+          "enemies": [
+            "debris"
+          ],
+          "gear": [
+            "ship_controls"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Le vaisseau est endommagé dans la zone de débris.",
+          "chapter": 6,
+          "next": [
+            "pred_pod"
+          ],
+          "prev": [
+            "pred_launch"
+          ]
+        },
+        {
+          "id": "pred_pod",
+          "title": "Éjection",
+          "location": "Capsule au-dessus de Genna",
+          "environment": "SPACE",
+          "profile": "SIDE",
+          "objectiveType": "survive",
+          "objective": "Survivre à la descente et à l’attaque de la faune volante.",
+          "actors": [
+            "Dek"
+          ],
+          "enemies": [
+            "genna_vulture"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek s’éjecte avant l’impact.",
+          "chapter": 7,
+          "next": [
+            "pred_vines"
+          ],
+          "prev": [
+            "pred_orbit"
+          ]
+        },
+        {
+          "id": "pred_vines",
+          "title": "La planète attaque",
+          "location": "Jungle · zone des lianes",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "survive",
+          "objective": "Échapper aux lianes sans pouvoir sauver tout l’arsenal.",
+          "actors": [
+            "Dek"
+          ],
+          "enemies": [
+            "tree_vine",
+            "tree_vine"
+          ],
+          "gear": [
+            "plasma_sword",
+            "bow",
+            "combistick",
+            "cryo_grenade",
+            "medikit"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Les lianes détruisent ou emportent l’essentiel de son équipement.",
+          "chapter": 8,
+          "next": [
+            "pred_spike_field"
+          ],
+          "prev": [
+            "pred_pod"
+          ]
+        },
+        {
+          "id": "pred_spike_field",
+          "title": "Le nid",
+          "location": "Champ de Spike Pods",
+          "environment": "GENNA",
+          "profile": "SIDE",
+          "objectiveType": "boss",
+          "objective": "Survivre au venin, libérer Thia et abattre le Vulture.",
+          "actors": [
+            "Dek",
+            "Thia"
+          ],
+          "enemies": [
+            "spike_pod",
+            "genna_vulture"
+          ],
+          "gear": [
+            "plasma_sword",
+            "shuriken"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Thia fournit l’antidote après avoir utilisé l’arme lancée par Dek.",
+          "chapter": 9,
+          "next": [
+            "pred_thia"
+          ],
+          "prev": [
+            "pred_vines"
+          ]
+        },
+        {
+          "id": "pred_thia",
+          "title": "Un outil parlant",
+          "location": "Canopée hostile",
+          "environment": "GENNA",
+          "profile": "DEPTH",
+          "objectiveType": "escort",
+          "objective": "Transporter Thia et franchir la végétation prédatrice.",
+          "actors": [
+            "Dek",
+            "Thia"
+          ],
+          "enemies": [
+            "rock_biter",
+            "spike_pod"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek accepte Thia comme guide vers le repaire du Kalisk.",
+          "chapter": 10,
+          "next": [
+            "pred_imbre"
+          ],
+          "prev": [
+            "pred_spike_field"
+          ]
+        },
+        {
+          "id": "pred_imbre",
+          "title": "Imbre Anguis",
+          "location": "Vallée humide",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "collect",
+          "objective": "Observer trois organismes et progresser sans les gaspiller.",
+          "actors": [
+            "Dek",
+            "Thia"
+          ],
+          "enemies": [
+            "imbre_anguis"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Thia exploite sa connaissance des organismes de Genna.",
+          "chapter": 11,
+          "next": [
+            "pred_razor"
+          ],
+          "prev": [
+            "pred_thia"
+          ]
+        },
+        {
+          "id": "pred_razor",
+          "title": "La Razor Grass",
+          "location": "Plaine coupante",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "survive",
+          "objective": "Traverser la Razor Grass en utilisant les ouvertures créées par la faune.",
+          "actors": [
+            "Dek",
+            "Thia"
+          ],
+          "enemies": [
+            "razor_grass",
+            "bone_bison"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Le terrain lui-même devient une menace.",
+          "chapter": 12,
+          "next": [
+            "pred_bison"
+          ],
+          "prev": [
+            "pred_imbre"
+          ]
+        },
+        {
+          "id": "pred_bison",
+          "title": "La chasse du Bone Bison",
+          "location": "Plaine du troupeau",
+          "environment": "GENNA",
+          "profile": "SIDE",
+          "objectiveType": "boss",
+          "objective": "Abattre le Bone Bison lors de sa charge.",
+          "actors": [
+            "Dek",
+            "Thia",
+            "Bud"
+          ],
+          "enemies": [
+            "bone_bison_boss"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek coupe le Bone Bison pendant la charge.",
+          "chapter": 13,
+          "next": [
+            "pred_luna"
+          ],
+          "prev": [
+            "pred_razor"
+          ]
+        },
+        {
+          "id": "pred_luna",
+          "title": "Bud",
+          "location": "Bordure de la plaine",
+          "environment": "GENNA",
+          "profile": "SIDE",
+          "objectiveType": "boss",
+          "objective": "Sauver la petite créature attaquée par le Luna Bug.",
+          "actors": [
+            "Dek",
+            "Thia",
+            "Bud"
+          ],
+          "enemies": [
+            "luna_bug_boss"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Bud rejoint le groupe après le sauvetage.",
+          "chapter": 14,
+          "next": [
+            "pred_camp"
+          ],
+          "prev": [
+            "pred_bison"
+          ]
+        },
+        {
+          "id": "pred_camp",
+          "title": "Une nouvelle meute",
+          "location": "Camp de nuit",
+          "environment": "GENNA",
+          "profile": "DEPTH",
+          "objectiveType": "interact",
+          "objective": "Partager la chasse, écouter Thia et laisser Bud marquer Dek.",
+          "actors": [
+            "Dek",
+            "Thia",
+            "Bud"
+          ],
+          "enemies": [],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Bud marque Dek de son odeur; Thia évoque la notion de meute.",
+          "chapter": 15,
+          "next": [
+            "pred_wreckage"
+          ],
+          "prev": [
+            "pred_luna"
+          ]
+        },
+        {
+          "id": "pred_wreckage",
+          "title": "Les morts de la première mission",
+          "location": "Avant-poste Weyland-Yutani détruit",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "collect",
+          "objective": "Identifier trois restes de l’équipe de Thia et atteindre le terminal.",
+          "actors": [
+            "Dek",
+            "Thia"
+          ],
+          "enemies": [
+            "rock_biter"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Thia retrouve les traces de son ancienne équipe.",
+          "chapter": 16,
+          "next": [
+            "pred_mother"
+          ],
+          "prev": [
+            "pred_camp"
+          ]
+        },
+        {
+          "id": "pred_mother",
+          "title": "Signal à la Corporation",
+          "location": "Terminal MU/TH/UR",
+          "environment": "BASE",
+          "profile": "DEPTH",
+          "objectiveType": "interact",
+          "objective": "Laisser Thia se connecter au système; la conséquence est canonique.",
+          "actors": [
+            "Dek",
+            "Thia"
+          ],
+          "enemies": [],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Thia révèle que Weyland-Yutani arrive pour capturer le Kalisk.",
+          "chapter": 17,
+          "next": [
+            "pred_den"
+          ],
+          "prev": [
+            "pred_wreckage"
+          ]
+        },
+        {
+          "id": "pred_den",
+          "title": "Le Kalisk",
+          "location": "Repaire du Kalisk",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "boss",
+          "objective": "Sectionner le Kalisk et survivre jusqu’à sa régénération complète.",
+          "actors": [
+            "Dek",
+            "Kalisk"
+          ],
+          "enemies": [
+            "kalisk_boss"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek le décapite, mais le Kalisk se régénère et le domine.",
+          "chapter": 18,
+          "next": [
+            "pred_capture"
+          ],
+          "prev": [
+            "pred_mother"
+          ]
+        },
+        {
+          "id": "pred_capture",
+          "title": "Pris vivant",
+          "location": "Repaire · assaut Weyland-Yutani",
+          "environment": "GENNA",
+          "profile": "SIDE",
+          "objectiveType": "survive",
+          "objective": "Résister à l’escouade; la cryo-capture est verrouillée.",
+          "actors": [
+            "Dek",
+            "Tessa",
+            "Kalisk"
+          ],
+          "enemies": [
+            "synth_drone",
+            "synth_drone"
+          ],
+          "gear": [
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Tessa immobilise Dek et le Kalisk avec l’équipement cryogénique.",
+          "chapter": 19,
+          "next": [
+            "pred_lab"
+          ],
+          "prev": [
+            "pred_den"
+          ]
+        },
+        {
+          "id": "pred_lab",
+          "title": "Sujet d’étude",
+          "location": "Laboratoire de contention",
+          "environment": "BASE",
+          "profile": "DEPTH",
+          "objectiveType": "survive",
+          "objective": "Tenir pendant l’examen jusqu’à l’intervention de Thia.",
+          "actors": [
+            "Dek",
+            "Tessa",
+            "Thia"
+          ],
+          "enemies": [
+            "synth_drone"
+          ],
+          "gear": [],
+          "canonLock": true,
+          "canonOutcome": "Thia détourne l’attention et permet à Dek de s’échapper.",
+          "chapter": 20,
+          "next": [
+            "pred_escape"
+          ],
+          "prev": [
+            "pred_capture"
+          ]
+        },
+        {
+          "id": "pred_escape",
+          "title": "Évasion",
+          "location": "Galerie technique",
+          "environment": "BASE",
+          "profile": "HYBRID",
+          "objectiveType": "combat",
+          "objective": "Sortir du secteur d’étude sans récupérer l’ancien arsenal.",
+          "actors": [
+            "Dek"
+          ],
+          "enemies": [
+            "synth_drone",
+            "synth_drone"
+          ],
+          "gear": [
+            "improvised_blade"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek fuit la base avec des moyens limités.",
+          "chapter": 21,
+          "next": [
+            "pred_kwei_wreck"
+          ],
+          "prev": [
+            "pred_lab"
+          ]
+        },
+        {
+          "id": "pred_kwei_wreck",
+          "title": "Le dernier refuge de Kwei",
+          "location": "Épave Yautja · intérieur",
+          "environment": "SHIP",
+          "profile": "DEPTH",
+          "objectiveType": "interact",
+          "objective": "Soigner les blessures, affronter le deuil de Kwei et préparer le retour.",
+          "actors": [
+            "Dek"
+          ],
+          "enemies": [],
+          "gear": [
+            "medikit_salvaged"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek retrouve le vaisseau de Kwei et change sa conception de la force.",
+          "chapter": 22,
+          "next": [
+            "pred_organic"
+          ],
+          "prev": [
+            "pred_escape"
+          ]
+        },
+        {
+          "id": "pred_organic",
+          "title": "Arsenal de Genna",
+          "location": "Jungle · atelier improvisé",
+          "environment": "GENNA",
+          "profile": "HYBRID",
+          "objectiveType": "collect",
+          "objective": "Fabriquer quatre armes à partir de l’écologie locale.",
+          "actors": [
+            "Dek",
+            "Bud"
+          ],
+          "enemies": [
+            "spike_pod",
+            "explosive_grub"
+          ],
+          "gear": [
+            "vulture_wristblade",
+            "razor_claw",
+            "explosive_grub_weapon",
+            "squirt_cannon"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek transforme la faune et la flore de Genna en armes.",
+          "chapter": 23,
+          "next": [
+            "pred_infiltration"
+          ],
+          "prev": [
+            "pred_kwei_wreck"
+          ]
+        },
+        {
+          "id": "pred_infiltration",
+          "title": "Retour à la base",
+          "location": "Périmètre Weyland-Yutani",
+          "environment": "BASE",
+          "profile": "HYBRID",
+          "objectiveType": "combat",
+          "objective": "Neutraliser les gardes synthétiques avec l’arsenal organique.",
+          "actors": [
+            "Dek",
+            "Bud"
+          ],
+          "enemies": [
+            "synth_drone",
+            "synth_drone",
+            "synth_drone"
+          ],
+          "gear": [
+            "vulture_wristblade",
+            "explosive_grub_weapon",
+            "squirt_cannon"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek et Bud infiltrent la base.",
+          "chapter": 24,
+          "next": [
+            "pred_rescue"
+          ],
+          "prev": [
+            "pred_organic"
+          ]
+        },
+        {
+          "id": "pred_rescue",
+          "title": "Récupérer Thia",
+          "location": "Maintenance synthétique",
+          "environment": "BASE",
+          "profile": "DEPTH",
+          "objectiveType": "combat",
+          "objective": "Libérer Thia et permettre à ses jambes de la rejoindre.",
+          "actors": [
+            "Dek",
+            "Thia",
+            "Bud"
+          ],
+          "enemies": [
+            "synth_drone",
+            "synth_drone"
+          ],
+          "gear": [
+            "vulture_wristblade",
+            "squirt_cannon"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Thia est réunifiée et le groupe reforme sa meute.",
+          "chapter": 25,
+          "next": [
+            "pred_free_kalisk"
+          ],
+          "prev": [
+            "pred_infiltration"
+          ]
+        },
+        {
+          "id": "pred_free_kalisk",
+          "title": "Libérer la mère",
+          "location": "Zone de confinement",
+          "environment": "BASE",
+          "profile": "SIDE",
+          "objectiveType": "boss",
+          "objective": "Ouvrir le confinement du Kalisk et survivre à la rupture.",
+          "actors": [
+            "Dek",
+            "Thia",
+            "Bud",
+            "Kalisk"
+          ],
+          "enemies": [
+            "containment_drones"
+          ],
+          "gear": [
+            "organic_trap",
+            "vulture_wristblade"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Le Kalisk est libéré et détruit une partie de la base.",
+          "chapter": 26,
+          "next": [
+            "pred_tessa"
+          ],
+          "prev": [
+            "pred_rescue"
+          ]
+        },
+        {
+          "id": "pred_tessa",
+          "title": "Tessa au Power Loader",
+          "location": "Hangar final",
+          "environment": "BASE",
+          "profile": "HYBRID",
+          "objectiveType": "boss",
+          "objective": "Vaincre le Power Loader, récupérer le plasmacaster de Kwei et protéger Thia.",
+          "actors": [
+            "Dek",
+            "Tessa",
+            "Thia",
+            "Bud",
+            "Kalisk"
+          ],
+          "enemies": [
+            "tessa_loader_boss"
+          ],
+          "gear": [
+            "vulture_wristblade",
+            "squirt_cannon"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Tessa tue le Kalisk puis est détruite; Dek récupère le plasmacaster.",
+          "chapter": 27,
+          "next": [
+            "pred_return"
+          ],
+          "prev": [
+            "pred_free_kalisk"
+          ]
+        },
+        {
+          "id": "pred_return",
+          "title": "Retour au clan",
+          "location": "Yautja Prime · zone d’atterrissage",
+          "environment": "YAUTJA",
+          "profile": "SIDE",
+          "objectiveType": "combat",
+          "objective": "Traverser la garde du clan avec Thia et Bud.",
+          "actors": [
+            "Dek",
+            "Thia",
+            "Bud"
+          ],
+          "enemies": [
+            "clan_guard",
+            "clan_guard"
+          ],
+          "gear": [
+            "kwei_plasmacaster",
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek revient présenter son trophée et réclamer son dû.",
+          "chapter": 28,
+          "next": [
+            "pred_njohrr"
+          ],
+          "prev": [
+            "pred_tessa"
+          ]
+        },
+        {
+          "id": "pred_njohrr",
+          "title": "Le père",
+          "location": "Yautja Prime · esplanade du clan",
+          "environment": "YAUTJA",
+          "profile": "HYBRID",
+          "objectiveType": "boss",
+          "objective": "Désarmer Njohrr et briser son piège de domination.",
+          "actors": [
+            "Dek",
+            "Njohrr",
+            "Bud",
+            "Thia"
+          ],
+          "enemies": [
+            "njohrr_boss"
+          ],
+          "gear": [
+            "kwei_plasmacaster",
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Dek bat Njohrr; Bud l’achève et Dek prend le camouflage.",
+          "chapter": 29,
+          "next": [
+            "pred_mother_ship"
+          ],
+          "prev": [
+            "pred_return"
+          ]
+        },
+        {
+          "id": "pred_mother_ship",
+          "title": "La prochaine chasse",
+          "location": "Yautja Prime · horizon",
+          "environment": "YAUTJA",
+          "profile": "SIDE",
+          "objectiveType": "interact",
+          "objective": "Observer le vaisseau qui apparaît et terminer sur la révélation finale.",
+          "actors": [
+            "Dek",
+            "Thia",
+            "Bud"
+          ],
+          "enemies": [],
+          "gear": [
+            "cloak",
+            "plasma_sword"
+          ],
+          "canonLock": true,
+          "canonOutcome": "Un immense vaisseau arrive; Dek l’identifie comme celui de sa mère.",
+          "chapter": 30,
+          "next": [],
+          "prev": [
+            "pred_njohrr"
+          ]
+        }
+      ]
+    }
+  ],
+  "weapons": {
+    "plasma_sword": {
+      "name": "Épée plasma",
+      "kind": "melee",
+      "damage": 44
+    },
+    "gauntlet": {
+      "name": "Gantelet Yautja",
+      "kind": "utility",
+      "damage": 0
+    },
+    "bow": {
+      "name": "Arc Yautja",
+      "kind": "ranged",
+      "damage": 26
+    },
+    "combistick": {
+      "name": "Combistick",
+      "kind": "melee",
+      "damage": 32
+    },
+    "cryo_grenade": {
+      "name": "Grenade cryogénique",
+      "kind": "ranged",
+      "damage": 36
+    },
+    "medikit": {
+      "name": "Medi-kit Yautja",
+      "kind": "heal",
+      "damage": 0
+    },
+    "shuriken": {
+      "name": "Shuriken",
+      "kind": "ranged",
+      "damage": 28
+    },
+    "scanner_yautja": {
+      "name": "Atlas de chasse",
+      "kind": "utility",
+      "damage": 0
+    },
+    "ship_controls": {
+      "name": "Commandes de vol",
+      "kind": "utility",
+      "damage": 0
+    },
+    "scanner": {
+      "name": "Scanner Weyland-Yutani",
+      "kind": "utility",
+      "damage": 0
+    },
+    "repair_tool": {
+      "name": "Outil de réparation synthétique",
+      "kind": "heal",
+      "damage": 0
+    },
+    "synth_rifle": {
+      "name": "Fusil synthétique",
+      "kind": "ranged",
+      "damage": 18
+    },
+    "kwei_plasmacaster": {
+      "name": "Plasmacaster de Kwei",
+      "kind": "ranged",
+      "damage": 40
+    },
+    "syringe": {
+      "name": "Sonde d’échantillonnage",
+      "kind": "utility",
+      "damage": 0
+    },
+    "power_loader": {
+      "name": "Power Loader",
+      "kind": "melee",
+      "damage": 52
+    },
+    "improvised_blade": {
+      "name": "Lame improvisée",
+      "kind": "melee",
+      "damage": 24
+    },
+    "medikit_salvaged": {
+      "name": "Medi-kit récupéré",
+      "kind": "heal",
+      "damage": 0
+    },
+    "vulture_wristblade": {
+      "name": "Wristblade · bec de Vulture",
+      "kind": "melee",
+      "damage": 34
+    },
+    "razor_claw": {
+      "name": "Lames de Razor Grass",
+      "kind": "melee",
+      "damage": 30
+    },
+    "explosive_grub_weapon": {
+      "name": "Grubs explosifs",
+      "kind": "ranged",
+      "damage": 42
+    },
+    "squirt_cannon": {
+      "name": "Squirt · canon organique",
+      "kind": "ranged",
+      "damage": 24
+    },
+    "organic_trap": {
+      "name": "Piège organique",
+      "kind": "ranged",
+      "damage": 34
+    },
+    "cloak": {
+      "name": "Camouflage de Njohrr",
+      "kind": "utility",
+      "damage": 0
+    }
+  },
+  "enemies": {
+    "tree_vine": {
+      "name": "Liane prédatrice",
+      "hp": 36,
+      "damage": 8
+    },
+    "spike_pod": {
+      "name": "Spike Pod",
+      "hp": 30,
+      "damage": 7
+    },
+    "rock_biter": {
+      "name": "Rock Biter",
+      "hp": 42,
+      "damage": 10
+    },
+    "bone_bison": {
+      "name": "Bone Bison",
+      "hp": 72,
+      "damage": 15
+    },
+    "bone_bison_boss": {
+      "name": "Bone Bison",
+      "hp": 180,
+      "damage": 20
+    },
+    "luna_bug": {
+      "name": "Luna Bug",
+      "hp": 70,
+      "damage": 14
+    },
+    "luna_bug_boss": {
+      "name": "Luna Bug",
+      "hp": 170,
+      "damage": 18
+    },
+    "genna_vulture": {
+      "name": "Genna Vulture",
+      "hp": 85,
+      "damage": 16
+    },
+    "kalisk": {
+      "name": "Kalisk",
+      "hp": 400,
+      "damage": 25
+    },
+    "kalisk_boss": {
+      "name": "Kalisk",
+      "hp": 700,
+      "damage": 28
+    },
+    "kalisk_ally": {
+      "name": "Kalisk",
+      "hp": 450,
+      "damage": 0
+    },
+    "dek_target": {
+      "name": "Dek",
+      "hp": 250,
+      "damage": 16
+    },
+    "dek_boss": {
+      "name": "Dek",
+      "hp": 360,
+      "damage": 22
+    },
+    "synth_drone": {
+      "name": "Drone synthétique",
+      "hp": 80,
+      "damage": 14
+    },
+    "containment_drones": {
+      "name": "Drones de confinement",
+      "hp": 220,
+      "damage": 16
+    },
+    "organic_trap": {
+      "name": "Défense organique",
+      "hp": 70,
+      "damage": 12
+    },
+    "thia_legs": {
+      "name": "Jambes autonomes de Thia",
+      "hp": 120,
+      "damage": 9
+    },
+    "debris": {
+      "name": "Débris orbital",
+      "hp": 60,
+      "damage": 18
+    },
+    "imbre_anguis": {
+      "name": "Imbre Anguis",
+      "hp": 45,
+      "damage": 5
+    },
+    "razor_grass": {
+      "name": "Razor Grass",
+      "hp": 50,
+      "damage": 12
+    },
+    "explosive_grub": {
+      "name": "Explosive Grub",
+      "hp": 25,
+      "damage": 20
+    },
+    "kwei_spar": {
+      "name": "Kwei · entraînement",
+      "hp": 260,
+      "damage": 16
+    },
+    "njohrr_script": {
+      "name": "Njohrr",
+      "hp": 999,
+      "damage": 22
+    },
+    "tessa_loader_boss": {
+      "name": "Tessa · Power Loader",
+      "hp": 620,
+      "damage": 24
+    },
+    "clan_guard": {
+      "name": "Garde du clan",
+      "hp": 120,
+      "damage": 18
+    },
+    "njohrr_boss": {
+      "name": "Njohrr",
+      "hp": 720,
+      "damage": 26
+    }
+  },
+  "sources": [
+    {
+      "name": "20th Century Studios — Predator: Badlands",
+      "url": "https://www.20thcenturystudios.com/movies/predator-badlands",
+      "use": "Synopsis officiel, date, durée, protagonistes."
+    },
+    {
+      "name": "The Walt Disney Company — How Predator: Badlands Expands the Franchise",
+      "url": "https://thewaltdisneycompany.com/news/predator-badlands/",
+      "use": "Dek, Thia, Kalisk, statut d’outsider, absence initiale de cloak/plasmacaster."
+    },
+    {
+      "name": "Reuters — Predator perspective at Comic-Con",
+      "url": "https://www.reuters.com/business/media-telecom/predator-badlands-propels-predator-perspective-comic-con-2025-07-26/",
+      "use": "Confirmation qu’aucun personnage humain n’apparaît dans le film."
+    },
+    {
+      "name": "Wētā Workshop Design Studio — Predator: Badlands Yautja Weapons",
+      "url": "https://wetaworkshopdesignstudio.artstation.com/projects/rlxRPa",
+      "use": "Références de design canon : épée, arc, combistick, shuriken, gauntlet, plasmacaster, etc."
+    },
+    {
+      "name": "AVP Galaxy — Badlands set report",
+      "url": "https://www.avpgalaxy.net/2025/10/06/predator-badlands-set-report-confirms-new-details-pg-13-rating/",
+      "use": "Équipement visible, cryo-grenades, outils de Thia, improvisation organique."
+    },
+    {
+      "name": "Wikipedia — Predator: Badlands",
+      "url": "https://en.wikipedia.org/wiki/Predator:_Badlands",
+      "use": "Ordre détaillé des événements du film, recoupé avec les sources secondaires."
+    },
+    {
+      "name": "AVP Central — Creatures of Genna",
+      "url": "https://www.avpcentral.com/badlands-creatures-genna-monsters-guide",
+      "use": "Noms usuels des créatures et dangers de Genna."
+    },
+    {
+      "name": "AVP Central — Kwei’s ship",
+      "url": "https://www.avpcentral.com/kwei-ship",
+      "use": "Organisation du vaisseau, crash, récupération par Tessa et retour final."
+    }
+  ],
+  "fidelity": {
+    "humanPOV": "Le film ne contient pas de personnages humains; la campagne 1 utilise donc la branche Weyland-Yutani synthétique, sans inventer un protagoniste humain.",
+    "dialogue": "Dialogues du prototype originaux/paraphrasés; aucun script du film n’est reproduit.",
+    "locations": "Les noms de zones naturelles sont descriptifs lorsqu’aucun nom officiel public n’existe.",
+    "canonLocks": [
+      "Mort de Kwei",
+      "Perte de l’arsenal dans les lianes",
+      "Défaite/régénération du Kalisk",
+      "Capture cryogénique",
+      "Mort du Kalisk",
+      "Mort de Tessa",
+      "Défaite de Njohrr",
+      "Arrivée du vaisseau de la mère de Dek"
+    ]
+  }
+};
+
+</script><script>
+/* Reconstruction 2026-11-06, not a recovery of the unavailable historical v0.2. */
+(() => {
+  'use strict';
+  const original = globalThis.BADLANDS_DATA;
+  if (!original) throw new Error('Les données originales v0.1 sont requises.');
+  const bridges = {
+    wy_recovery: ['wy_power', 'Circuit de réactivation', 'interact'],
+    wy_briefing: ['wy_checks', 'Préparer la sortie', 'collect'],
+    wy_jungle_entry: ['wy_relay', 'Relais de reconnaissance', 'escort'],
+    wy_ship_wreck: ['wy_airlock', 'Accès à la coque', 'interact'],
+    wy_cockpit: ['wy_inventory', 'Inventaire de récupération', 'collect'],
+    wy_track: ['wy_overlook', 'Observation du périmètre', 'survive'],
+    wy_transport: ['wy_transfer', 'Sas de transfert', 'interact'],
+    wy_decommission: ['wy_alarm', 'Rétablir les verrous', 'interact'],
+    wy_loader: ['wy_loader_check', 'Contrôle de l’exosquelette', 'interact'],
+    pred_crystal_cave: ['pred_trial_exit', 'Sortie de l’épreuve', 'interact'],
+    pred_hunt_atlas: ['pred_navigation', 'Route de chasse', 'interact'],
+    pred_trophy_room: ['pred_gear_check', 'Préparatifs', 'collect'],
+    pred_orbit: ['pred_pod_release', 'Verrou de capsule', 'interact'],
+    pred_vines: ['pred_after_vines', 'Débris de l’arsenal', 'collect'],
+    pred_thia: ['pred_canopy', 'Passage de canopée', 'escort'],
+    pred_imbre: ['pred_water', 'Passage humide', 'survive'],
+    pred_razor: ['pred_bison_track', 'Piste du troupeau', 'collect'],
+    pred_camp: ['pred_watch', 'Veille de la meute', 'survive'],
+    pred_wreckage: ['pred_terminal_access', 'Accès au terminal', 'interact'],
+    pred_escape: ['pred_service_exit', 'Sortie technique', 'interact'],
+    pred_kwei_wreck: ['pred_salvage', 'Récupération utile', 'collect'],
+    pred_organic: ['pred_approach', 'Approche de la base', 'escort'],
+    pred_rescue: ['pred_reunited', 'La meute réunie', 'escort']
+  };
+  const goals = {
+    interact: 'Activer les trois relais dans l’ordre affiché avec E.',
+    collect: 'Récupérer quatre éléments signalés, un sur chaque plan.',
+    escort: 'Accompagner le groupe jusqu’au sas en restant à proximité.',
+    survive: 'Atteindre l’abri et tenir jusqu’à la fin de la séquence.'
+  };
+  const clone = value => JSON.parse(JSON.stringify(value));
+  const campaigns = original.campaigns.map(c => {
+    const scenes = [];
+    for (const s of c.scenes) {
+      scenes.push({...clone(s), provenance: 'inherited-v0.1-unreviewed', bridge: false});
+      if (bridges[s.id]) {
+        const [id, title, objectiveType] = bridges[s.id];
+        const source = s.id === 'pred_vines' ? c.scenes.find(x => x.id === 'pred_thia') : s;
+        scenes.push({...clone(s), gear: clone(source.gear), id, title, objectiveType,
+          objective: goals[objectiveType], enemies: [], canonLock: false,
+          canonOutcome: 'Raccord de gameplay original : aucune nouvelle scène du film n’est revendiquée.',
+          bridge: true, provenance: 'original-gameplay-bridge', sourceAnchor: s.id});
+      }
+    }
+    scenes.forEach((s, i) => {
+      s.chapter = i + 1;
+      s.next = scenes[i + 1] ? [scenes[i + 1].id] : [];
+      s.prev = scenes[i - 1] ? [scenes[i - 1].id] : [];
+      s.width = s.environment === 'SPACE' ? 2200 : 2400 + (i % 3) * 180;
+      s.targetCount = s.objectiveType === 'collect' ? 4 : s.objectiveType === 'interact' ? (s.bridge ? 3 : 1) : 0;
+    });
+    return {...clone(c), scenes};
+  });
+  const weapons = clone(original.weapons);
+  for (const w of Object.values(weapons)) {
+    w.cooldown = w.kind === 'ranged' ? 0.38 : 0.5;
+    w.magazine = w.kind === 'ranged' ? 8 : 0;
+    w.reserve = w.kind === 'ranged' ? 32 : 0;
+    w.range = w.kind === 'ranged' ? 580 : 125;
+  }
+  globalThis.BADLANDS_V2_DATA = {
+    version: '0.2.0-reconstructed', schema: 2, depthCount: 4, campaigns, weapons,
+    enemies: clone(original.enemies), sources: clone(original.sources),
+    provenance: {originalVersionRecovered: false, reconstructedFrom: '0.1.0',
+      reconstructionDate: '2026-11-06', oneToOneArtCertified: false,
+      warning: '46 scènes héritées non réauditées plan par plan ; 23 raccords originaux explicitement signalés.'}
+  };
+})();
+
+</script><script>
+/* Pure, deterministic game state. No DOM, storage or network side effects. */
+(() => {
+  'use strict';
+  const D = globalThis.BADLANDS_V2_DATA;
+  const copy = v => JSON.parse(JSON.stringify(v));
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const number = (v, a, b, fallback) => Number.isFinite(v) ? clamp(v, a, b) : fallback;
+  const campaign = id => D.campaigns.find(c => c.id === id);
+  const scene = state => campaign(state.campaign).scenes.find(s => s.id === state.scene);
+  function create(cid, sid, completed = []) {
+    const c = campaign(cid);
+    if (!c) throw new Error('Campagne inconnue.');
+    const spec = sid ? c.scenes.find(s => s.id === sid) : c.scenes[0];
+    if (!spec) throw new Error('Scène inconnue.');
+    const ids = new Set(c.scenes.map(s => s.id));
+    const armed = spec.gear.filter(id => ['melee', 'ranged'].includes(D.weapons[id].kind));
+    const gear = [...spec.gear];
+    // Bare hands are a simulation fallback, never a new lore weapon.
+    const state = {schema: 2, campaign: cid, scene: spec.id,
+      done: [...new Set(completed.filter(id => ids.has(id)))], elapsed: 0,
+      phase: 'intro', message: spec.bridge ? 'Raccord de gameplay original.' : 'Épisode hérité de la v0.1.',
+      player: {x: 120, depth: 1, hp: 100, z: 0, vz: 0, facing: 1, cooldown: 0, reload: 0,
+        selected: Math.max(0, gear.indexOf(armed[0])), medkits: 2},
+      gear, ammo: Object.fromEntries(gear.map(id => [id, {loaded: D.weapons[id].magazine, reserve: D.weapons[id].reserve}])),
+      enemies: spec.enemies.map((id, i) => ({id, x: 600 + i * 270, depth: i % 4,
+        hp: D.enemies[id].hp, maxHp: D.enemies[id].hp, windup: 0, cooldown: 0.8 + i * 0.2, phase: 1})),
+      nodes: Array.from({length: spec.targetCount}, (_, i) => ({x: 420 + i * 420, depth: i % 4, taken: false})),
+      puzzle: 0, objectiveTimer: 0, companions: [], escortX: 100,
+      event: null, shots: [], hits: [], inventoryLog: []};
+    if (cid === 'predator') {
+      if (spec.actors.includes('Thia') && spec.chapter >= c.scenes.find(x => x.id === 'pred_thia').chapter) state.companions.push({id: 'Thia', x: 80, depth: 1});
+      if (spec.actors.includes('Bud') && spec.chapter > c.scenes.find(x => x.id === 'pred_luna').chapter) state.companions.push({id: 'Bud', x: 60, depth: 1});
+    } else if (spec.actors.includes('Drones synthétiques')) state.companions.push({id: 'Unité', x: 80, depth: 1});
+    if (spec.objectiveType === 'escort' && !state.companions.length) state.companions.push({id: 'Objectif escorté', x: 80, depth: 1});
+    return state;
+  }
+  function complete(s, event) {
+    if (s.phase !== 'play') return;
+    s.phase = 'outcome';
+    s.event = event || 'objective-complete';
+    if (!s.done.includes(s.scene)) s.done.push(s.scene);
+    s.message = scene(s).canonOutcome;
+  }
+  function confirm(s) {
+    if (s.phase === 'intro') s.phase = 'play';
+    else if (s.phase === 'outcome') s.phase = 'exit';
+    return s;
+  }
+  function weapon(s) { return D.weapons[s.gear[s.player.selected]] || {name: 'Mains nues (simulation)', kind: 'melee', damage: 14, range: 100, cooldown: 0.5}; }
+  function attack(s) {
+    if (s.phase !== 'play') return false;
+    const p = s.player, w = weapon(s);
+    if (p.cooldown > 0 || p.reload > 0 || !['melee', 'ranged'].includes(w.kind)) return false;
+    const ammo = s.ammo[s.gear[p.selected]];
+    if (w.kind === 'ranged') {
+      if (!ammo || ammo.loaded <= 0) {s.message = 'Chargeur vide : R pour recharger, V pour changer d’arme.'; return false;}
+      ammo.loaded--;
+    }
+    p.cooldown = w.cooldown;
+    const target = s.enemies.filter(e => e.hp > 0 && e.depth === p.depth && Math.abs(e.x - p.x) <= w.range)
+      .sort((a, b) => Math.abs(a.x - p.x) - Math.abs(b.x - p.x))[0];
+    s.shots.push({x: p.x, end: target ? target.x : p.x + p.facing * w.range, depth: p.depth, ttl: 0.12});
+    if (target) {
+      target.hp = Math.max(0, target.hp - (w.damage || 14));
+      s.hits.push({x: target.x, depth: target.depth, ttl: 0.3});
+      const total = target.maxHp;
+      target.phase = target.hp <= total / 3 ? 3 : target.hp <= total * 2 / 3 ? 2 : 1;
+      if (s.scene === 'pred_den' && target.hp <= total * 0.42) {
+        target.hp = total; complete(s, 'kalisk-regenerated');
+      } else if (['combat', 'boss'].includes(scene(s).objectiveType) && s.enemies.every(e => e.hp <= 0)) {
+        complete(s, s.scene === 'wy_capture' ? 'cryo-capture' : s.scene === 'pred_father' ? 'kwei-intervenes' : s.scene === 'pred_crystal_cave' ? 'training-ended' : 'encounter-ended');
+      }
+    }
+    return true;
+  }
+  function action(s, name) {
+    if (name === 'confirm') {confirm(s); return s;}
+    if (name === 'retry' && s.phase === 'dead') return create(s.campaign, s.scene, s.done);
+    if (!['play', 'exit'].includes(s.phase)) return s;
+    const p = s.player, spec = scene(s);
+    if (name === 'depth') {p.depth = (p.depth + 1) % 4; p.z = 0; p.vz = 0;}
+    if (name === 'jump' && p.z === 0) p.vz = 360;
+    if (name === 'cycle' && s.gear.length) {p.selected = (p.selected + 1) % s.gear.length; p.reload = 0;}
+    if (name === 'reload') {
+      const a = s.ammo[s.gear[p.selected]], w = weapon(s);
+      if (a && w.kind === 'ranged' && a.loaded < w.magazine && a.reserve > 0 && p.reload === 0) p.reload = 1.2;
+    }
+    if (name === 'heal' && p.hp < 100 && p.medkits > 0 && s.gear.some(id => D.weapons[id].kind === 'heal')) {
+      p.medkits--; p.hp = Math.min(100, p.hp + 40);
+    }
+    if (name === 'fire') attack(s);
+    if (name === 'interact') {
+      if (s.phase === 'exit' && p.x >= spec.width - 170) {
+        if (!spec.next.length) {s.phase = 'finished'; s.message = 'Campagne terminée.'; return s;}
+        return create(s.campaign, spec.next[0], s.done);
+      }
+      if (s.phase === 'play' && ['collect', 'interact'].includes(spec.objectiveType)) {
+        const index = s.nodes.findIndex(n => !n.taken && n.depth === p.depth && Math.abs(n.x - p.x) < 95);
+        if (index >= 0) {
+          if (spec.objectiveType === 'interact' && index !== s.puzzle) s.message = `Relais ${s.puzzle + 1} à activer d’abord.`;
+          else {s.nodes[index].taken = true; s.puzzle++; s.inventoryLog.push(`node-${index + 1}`);
+            if (s.nodes.every(n => n.taken)) complete(s, spec.objectiveType === 'interact' ? 'relays-open' : 'collection-complete');}
+        }
+      }
+    }
+    return s;
+  }
+  function step(s, elapsed, input = {}) {
+    if (!['play', 'exit'].includes(s.phase)) return s;
+    const dt = number(elapsed, 0, 0.05, 0), p = s.player, spec = scene(s);
+    s.elapsed += dt;
+    const move = (input.right ? 1 : 0) - (input.left ? 1 : 0);
+    if (move) p.facing = move;
+    p.x = clamp(p.x + move * 245 * dt, 30, spec.width - 30);
+    if (p.z > 0 || p.vz > 0) {p.z = Math.max(0, p.z + p.vz * dt); p.vz -= 920 * dt; if (!p.z) p.vz = 0;}
+    p.cooldown = Math.max(0, p.cooldown - dt);
+    if (p.reload > 0) {
+      p.reload = Math.max(0, p.reload - dt);
+      if (p.reload === 0) {const a = s.ammo[s.gear[p.selected]], w = weapon(s); const n = Math.min(w.magazine - a.loaded, a.reserve); a.loaded += n; a.reserve -= n;}
+    }
+    for (const list of [s.shots, s.hits]) {for (const item of list) item.ttl -= dt; for (let i = list.length - 1; i >= 0; i--) if (list[i].ttl <= 0) list.splice(i, 1);}
+    s.companions.forEach((c, i) => {const target = p.x - 65 - i * 45; c.x = clamp(c.x + clamp(target - c.x, -180 * dt, 180 * dt), 30, spec.width - 30); c.depth = p.depth;});
+    if (s.phase === 'exit') return s;
+    if (input.fire) attack(s);
+    if (s.phase !== 'play') return s;
+    for (const e of s.enemies) {
+      if (e.hp <= 0) continue;
+      e.cooldown = Math.max(0, e.cooldown - dt);
+      const same = e.depth === p.depth, dx = p.x - e.x;
+      const fixed = /vine|pod|grass|trap/.test(e.id);
+      const active = same && Math.abs(dx) < 650;
+      if (active && !fixed && e.windup <= 0 && Math.abs(dx) > 55) e.x = clamp(e.x + Math.sign(dx) * (65 + e.phase * 14) * dt, 30, spec.width - 30);
+      if (e.windup > 0) {
+        e.windup = Math.max(0, e.windup - dt);
+        if (e.windup === 0) {
+          if (same && Math.abs(e.x - p.x) < 105 && p.z < 38) p.hp = Math.max(0, p.hp - D.enemies[e.id].damage * (0.65 + e.phase * 0.15));
+          e.cooldown = Math.max(0.65, 1.6 - e.phase * 0.2);
+        }
+      } else if (active && Math.abs(dx) < 110 && e.cooldown === 0) e.windup = 0.65;
+    }
+    if (p.hp <= 0) {s.phase = 'dead'; s.message = 'Échec : recommencer ce point de contrôle.'; return s;}
+    if (spec.objectiveType === 'survive') {
+      s.objectiveTimer += dt;
+      if (s.objectiveTimer >= 15 && p.x > spec.width * 0.55) complete(s, s.scene === 'pred_capture' ? 'cryo-capture' : 'survival-event');
+    }
+    if (spec.objectiveType === 'escort') {
+      s.escortX = s.companions.length ? Math.min(...s.companions.map(c => c.x)) : p.x;
+      if (p.x > spec.width - 300 && s.escortX > spec.width - 420) {s.objectiveTimer += dt; if (s.objectiveTimer >= 2) complete(s, 'escort-arrived');}
+    }
+    if (s.scene === 'pred_father' && s.elapsed >= 15) complete(s, 'kwei-intervenes');
+    if (s.scene === 'pred_den' && s.elapsed >= 26) {const k = s.enemies.find(e => e.id === 'kalisk_boss'); if (k) k.hp = k.maxHp; complete(s, 'kalisk-regenerated');}
+    return s;
+  }
+  function serialize(s) {return JSON.stringify(s);}
+  function restore(raw) {
+    const v = typeof raw === 'string' ? JSON.parse(raw) : copy(raw);
+    if (!v || !campaign(v.campaign)) throw new Error('Sauvegarde invalide.');
+    if (v.schema != null && v.schema !== 2) throw new Error('Version de sauvegarde non prise en charge.');
+    const s = create(v.campaign, v.scene, Array.isArray(v.done) ? v.done : []);
+    if (v.schema == null) {s.message = 'Progression v0.1 migrée ; la sauvegarde originale est conservée.'; return s;}
+    const p = v.player || {}, spec = scene(s);
+    for (const [key, min, max, fallback] of [['x', 30, spec.width - 30, 120], ['hp', 0, 100, 100], ['depth', 0, 3, 1], ['z', 0, 140, 0], ['vz', -900, 360, 0], ['cooldown', 0, 2, 0], ['reload', 0, 1.2, 0], ['selected', 0, Math.max(0, s.gear.length - 1), 0], ['medkits', 0, 2, 2]]) s.player[key] = number(p[key], min, max, fallback);
+    for (const k of ['depth', 'selected', 'medkits']) s.player[k] = Math.floor(s.player[k]);
+    s.player.facing = p.facing === -1 ? -1 : 1;
+    s.elapsed = number(v.elapsed, 0, 86400, 0);
+    s.objectiveTimer = number(v.objectiveTimer, 0, 86400, 0);
+    s.puzzle = Math.floor(number(v.puzzle, 0, s.nodes.length, 0));
+    s.nodes.forEach((n, i) => {n.taken = v.nodes?.[i]?.taken === true;});
+    s.enemies.forEach((e, i) => {const old = v.enemies?.[i]; if (!old || old.id !== e.id) return;
+      e.hp = number(old.hp, 0, e.maxHp, e.maxHp); e.x = number(old.x, 30, spec.width - 30, e.x);
+      e.depth = Math.floor(number(old.depth, 0, 3, e.depth)); e.phase = e.hp <= e.maxHp / 3 ? 3 : e.hp <= e.maxHp * 2 / 3 ? 2 : 1;
+      e.cooldown = number(old.cooldown, 0, 2, 0.8); e.windup = number(old.windup, 0, 0.65, 0);});
+    s.companions.forEach((c, i) => {const old = v.companions?.[i]; c.x = number(old?.x, 30, spec.width - 30, c.x); c.depth = s.player.depth;});
+    for (const id of s.gear) {const a = v.ammo?.[id] || {}; s.ammo[id].loaded = Math.floor(number(a.loaded, 0, D.weapons[id].magazine, D.weapons[id].magazine)); s.ammo[id].reserve = Math.floor(number(a.reserve, 0, D.weapons[id].reserve, D.weapons[id].reserve));}
+    s.phase = ['intro', 'play', 'outcome', 'exit', 'dead', 'finished'].includes(v.phase) ? v.phase : 'intro';
+    s.message = typeof v.message === 'string' ? v.message.slice(0, 1000) : s.message;
+    s.event = typeof v.event === 'string' ? v.event.slice(0, 100) : null;
+    s.inventoryLog = Array.isArray(v.inventoryLog) ? v.inventoryLog.filter(x => typeof x === 'string').slice(0, 40) : [];
+    if (s.player.hp === 0) s.phase = 'dead';
+    return s;
+  }
+  globalThis.BADLANDS_V2 = {data: D, create, scene, step, action, attack, weapon, serialize, restore};
+})();
+
+</script><script>
+globalThis.BADLANDS_ART = {"bone_bison": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><ellipse cx=\"128\" cy=\"138\" rx=\"74\" ry=\"44\" fill=\"#6c5d4c\"/><circle cx=\"184\" cy=\"104\" r=\"28\" fill=\"#6c5d4c\"/><path d=\"M76 164 L54 220 M112 168 L102 222 M160 166 L170 222 M194 156 L214 218\" stroke=\"#3a332b\" stroke-width=\"14\"/></svg>", "bud": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><ellipse cx=\"128\" cy=\"138\" rx=\"74\" ry=\"44\" fill=\"#746750\"/><circle cx=\"184\" cy=\"104\" r=\"28\" fill=\"#746750\"/><path d=\"M76 164 L54 220 M112 168 L102 222 M160 166 L170 222 M194 156 L214 218\" stroke=\"#3a332b\" stroke-width=\"14\"/></svg>", "cryo_grenade": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><path d=\"M32 180 L118 54 L132 68 L48 194 Z\" fill=\"#7db7c9\"/><circle cx=\"126\" cy=\"60\" r=\"16\" fill=\"#18211f\"/></svg>", "dek": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><circle cx=\"128\" cy=\"60\" r=\"28\" fill=\"#9c6c4b\"/><rect x=\"96\" y=\"86\" width=\"64\" height=\"92\" rx=\"18\" fill=\"#9c6c4b\"/><path d=\"M100 112 L62 170 M156 112 L196 170 M112 174 L88 230 M148 174 L174 230\" stroke=\"#9c6c4b\" stroke-width=\"18\"/><path d=\"M104 52 L70 22 M116 48 L96 12 M140 48 L162 12 M152 54 L190 25\" stroke=\"#42362f\" stroke-width=\"7\"/></svg>", "genna_vulture": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><ellipse cx=\"128\" cy=\"138\" rx=\"74\" ry=\"44\" fill=\"#725548\"/><circle cx=\"184\" cy=\"104\" r=\"28\" fill=\"#725548\"/><path d=\"M76 164 L54 220 M112 168 L102 222 M160 166 L170 222 M194 156 L214 218\" stroke=\"#3a332b\" stroke-width=\"14\"/></svg>", "kalisk": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><ellipse cx=\"128\" cy=\"138\" rx=\"74\" ry=\"44\" fill=\"#6d5847\"/><circle cx=\"184\" cy=\"104\" r=\"28\" fill=\"#6d5847\"/><path d=\"M76 164 L54 220 M112 168 L102 222 M160 166 L170 222 M194 156 L214 218\" stroke=\"#3a332b\" stroke-width=\"14\"/><path d=\"M96 98 L82 34 M124 94 L120 24 M150 96 L164 34\" stroke=\"#b19a73\" stroke-width=\"10\"/></svg>", "kwei": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><circle cx=\"128\" cy=\"60\" r=\"28\" fill=\"#9b684a\"/><rect x=\"96\" y=\"86\" width=\"64\" height=\"92\" rx=\"18\" fill=\"#9b684a\"/><path d=\"M100 112 L62 170 M156 112 L196 170 M112 174 L88 230 M148 174 L174 230\" stroke=\"#9b684a\" stroke-width=\"18\"/><path d=\"M104 52 L70 22 M116 48 L96 12 M140 48 L162 12 M152 54 L190 25\" stroke=\"#42362f\" stroke-width=\"7\"/></svg>", "kwei_ship": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><path d=\"M24 116 Q128 18 232 116 Q128 206 24 116Z\" fill=\"#4d5957\"/><ellipse cx=\"128\" cy=\"116\" rx=\"46\" ry=\"24\" fill=\"#111918\"/><path d=\"M55 120 L18 162 M200 120 L238 162\" stroke=\"#879a92\" stroke-width=\"8\"/></svg>", "luna_bug": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><ellipse cx=\"128\" cy=\"138\" rx=\"74\" ry=\"44\" fill=\"#5c6657\"/><circle cx=\"184\" cy=\"104\" r=\"28\" fill=\"#5c6657\"/><path d=\"M76 164 L54 220 M112 168 L102 222 M160 166 L170 222 M194 156 L214 218\" stroke=\"#3a332b\" stroke-width=\"14\"/></svg>", "njohrr": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><circle cx=\"128\" cy=\"60\" r=\"28\" fill=\"#8b5d41\"/><rect x=\"96\" y=\"86\" width=\"64\" height=\"92\" rx=\"18\" fill=\"#8b5d41\"/><path d=\"M100 112 L62 170 M156 112 L196 170 M112 174 L88 230 M148 174 L174 230\" stroke=\"#8b5d41\" stroke-width=\"18\"/><path d=\"M104 52 L70 22 M116 48 L96 12 M140 48 L162 12 M152 54 L190 25\" stroke=\"#42362f\" stroke-width=\"7\"/></svg>", "plasma_sword": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><path d=\"M32 180 L118 54 L132 68 L48 194 Z\" fill=\"#e24a36\"/><circle cx=\"126\" cy=\"60\" r=\"16\" fill=\"#18211f\"/></svg>", "power_loader": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><rect x=\"80\" y=\"54\" width=\"96\" height=\"96\" rx=\"12\" fill=\"#b59a4b\"/><rect x=\"34\" y=\"88\" width=\"48\" height=\"20\" fill=\"#4f4934\"/><rect x=\"174\" y=\"88\" width=\"48\" height=\"20\" fill=\"#4f4934\"/><path d=\"M96 150 L72 220 M160 150 L184 220\" stroke=\"#6f6340\" stroke-width=\"20\"/></svg>", "spike_pod": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><path d=\"M128 230 Q68 154 114 72 Q128 42 142 72 Q188 154 128 230Z\" fill=\"#7e4f43\"/><path d=\"M116 110 L48 82 M140 126 L214 80 M126 164 L52 188\" stroke=\"#94a681\" stroke-width=\"9\"/></svg>", "squirt_cannon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><path d=\"M32 180 L118 54 L132 68 L48 194 Z\" fill=\"#688663\"/><circle cx=\"126\" cy=\"60\" r=\"16\" fill=\"#18211f\"/></svg>", "synth_drone": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><circle cx=\"128\" cy=\"60\" r=\"28\" fill=\"#c9d2cf\"/><rect x=\"96\" y=\"86\" width=\"64\" height=\"92\" rx=\"18\" fill=\"#c9d2cf\"/><path d=\"M100 112 L62 170 M156 112 L196 170 M112 174 L88 230 M148 174 L174 230\" stroke=\"#c9d2cf\" stroke-width=\"18\"/></svg>", "tessa": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><circle cx=\"128\" cy=\"60\" r=\"28\" fill=\"#e6e7e2\"/><rect x=\"96\" y=\"86\" width=\"64\" height=\"92\" rx=\"18\" fill=\"#e6e7e2\"/><path d=\"M100 112 L62 170 M156 112 L196 170 M112 174 L88 230 M148 174 L174 230\" stroke=\"#e6e7e2\" stroke-width=\"18\"/></svg>", "thia": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><circle cx=\"128\" cy=\"60\" r=\"28\" fill=\"#d9ddd7\"/><rect x=\"96\" y=\"86\" width=\"64\" height=\"92\" rx=\"18\" fill=\"#d9ddd7\"/><path d=\"M100 112 L62 170 M156 112 L196 170 M112 174 L88 230 M148 174 L174 230\" stroke=\"#d9ddd7\" stroke-width=\"18\"/></svg>", "tree_vine": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 256 256\"><rect width=\"256\" height=\"256\" fill=\"#07100f\"/><path d=\"M128 230 Q68 154 114 72 Q128 42 142 72 Q188 154 128 230Z\" fill=\"#45633e\"/><path d=\"M116 110 L48 82 M140 126 L214 80 M126 164 L52 188\" stroke=\"#94a681\" stroke-width=\"9\"/></svg>"};
+(() => {
+  'use strict';
+  const G = globalThis.BADLANDS_V2, D = G.data, $ = id => document.getElementById(id);
+  const canvas = $('game'), ctx = canvas.getContext('2d'), input = {};
+  const ART = ['bone_bison','bud','cryo_grenade','dek','genna_vulture','kalisk','kwei','kwei_ship','luna_bug','njohrr','plasma_sword','power_loader','spike_pod','squirt_cannon','synth_drone','tessa','thia','tree_vine'];
+  const sprites = {}, originals = {};
+  let state = null, paused = false, last = performance.now(), autosave = 0, storageStatus = 'Sauvegarde locale indépendante';
+  const clearInput = () => Object.keys(input).forEach(k => delete input[k]);
+  const key = (cid, kind = 'auto') => `badlands.v2.${cid}.${kind}`;
+  const blocked = () => paused || !$('menu').hidden || !$('codexPanel').hidden || document.hidden;
+  async function loadArt() {
+    await Promise.all(ART.map(async name => {
+      try {
+        const text = globalThis.BADLANDS_ART?.[name] || await (await fetch(`../v0.1.0/assets/svg/${name}.svg`)).text();
+        originals[name] = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(text);
+        // Background removal is a runtime presentation treatment; original SVG bytes stay untouched.
+        const xml = new DOMParser().parseFromString(text, 'image/svg+xml');
+        const bg = xml.documentElement.querySelector('rect[width="256"][height="256"]');
+        if (bg) bg.remove();
+        const img = new Image();
+        img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(new XMLSerializer().serializeToString(xml));
+        await img.decode(); const normalized = document.createElement('canvas'); normalized.width = 256; normalized.height = 256; normalized.getContext('2d').drawImage(img, 0, 0, 256, 256); sprites[name] = normalized;
+      } catch { /* Geometric fallback is explicit; never block the campaign. */ }
+    }));
+    renderCodex();
+  }
+  function candidates(cid) {
+    const all = [];
+    try {
+      for (const kind of ['manual','auto']) for (const suffix of ['', '.bak']) {
+        const raw = localStorage.getItem(key(cid, kind) + suffix);
+        if (!raw) continue;
+        try {const v = JSON.parse(raw); const restored = G.restore(v); if (restored.campaign === cid) all.push({state: restored, time: v.savedAt || 0});} catch { /* Try other slot/backup, do not overwrite it. */ }
+      }
+      const legacy = localStorage.getItem('tantalus.badlands.v0.1.0');
+      if (!all.length && legacy) {const restored = G.restore(legacy); if (restored.campaign === cid) all.push({state: restored, time: 0});}
+    } catch {storageStatus = 'Stockage indisponible : partie jouable sans sauvegarde.';}
+    return all.sort((a, b) => b.time - a.time);
+  }
+  function persist(kind = 'auto') {
+    if (!state) return;
+    try {
+      const target = key(state.campaign, kind), previous = localStorage.getItem(target);
+      if (previous) {try {G.restore(previous); localStorage.setItem(target + '.bak', previous);} catch { /* Preserve a valid backup. */ }}
+      localStorage.setItem(target, JSON.stringify({...state, savedAt: Date.now()}));
+      storageStatus = `${kind === 'manual' ? 'Sauvegarde manuelle' : 'Point automatique'} · ${state.campaign === 'predator' ? 'Dek' : 'Weyland-Yutani'}`;
+    } catch {storageStatus = 'Échec de sauvegarde : stockage bloqué ou plein.';}
+    $('storage').textContent = storageStatus;
+  }
+  function start(cid, resume) {
+    const saved = resume ? candidates(cid)[0] : null;
+    if (resume && !saved) {storageStatus = 'Aucune sauvegarde valide pour cette campagne.'; $('storage').textContent = storageStatus; return;}
+    state = saved ? saved.state : G.create(cid); paused = false; clearInput();
+    $('menu').hidden = true; $('closeMenu').hidden = false; autosave = 0; showEvent(); canvas.focus();
+  }
+  function run(action) {
+    if (!state || blocked()) return;
+    const oldScene = state.scene, oldPhase = state.phase;
+    state = G.action(state, action);
+    if (state.scene !== oldScene || state.phase !== oldPhase) {clearInput(); persist(); showEvent();}
+    updateHud();
+  }
+  function showEvent() {
+    if (!state) {$('event').hidden = true; return;}
+    const visible = ['intro','outcome','dead','finished'].includes(state.phase) || paused;
+    $('event').hidden = !visible;
+    if (!visible) return;
+    $('eventTitle').textContent = paused ? 'Partie en pause' : state.phase === 'intro' ? G.scene(state).title : state.phase === 'dead' ? 'Chasse interrompue' : state.phase === 'finished' ? 'Campagne terminée' : 'Étape accomplie';
+    $('eventText').textContent = paused ? 'La simulation, les attaques et les minuteries sont suspendues.' : state.phase === 'intro' ? `${G.scene(state).objective} ${state.message}` : state.message;
+    $('confirm').textContent = paused ? 'Reprendre' : state.phase === 'dead' ? 'Recommencer la scène' : state.phase === 'finished' ? 'Campagnes' : 'Continuer';
+    if ($('menu').hidden && $('codexPanel').hidden) $('confirm').focus();
+  }
+  function pauseGame() {if (!state || !$('menu').hidden || !$('codexPanel').hidden) return; paused = !paused; clearInput(); if (paused) persist(); showEvent();}
+  function openMenu() {persist(); clearInput(); $('menu').hidden = false; $('closeMenu').hidden = !state; document.querySelector('[data-new]').focus();}
+  function updateHud() {
+    $('storage').textContent = storageStatus;
+    if (!state) return;
+    const spec = G.scene(state), w = G.weapon(state), ammo = state.ammo[state.gear[state.player.selected]];
+    $('episode').textContent = `${state.campaign === 'predator' ? 'DEK' : 'WEYLAND-YUTANI'} · ${spec.chapter}/${D.campaigns.find(c => c.id === state.campaign).scenes.length}`;
+    $('title').textContent = spec.title; $('objective').textContent = spec.objective;
+    $('provenance').textContent = spec.bridge ? 'RACCORD ORIGINAL · PAS UNE SCÈNE CERTIFIÉE DU FILM' : 'SCÈNE HÉRITÉE v0.1 · REVUE LORE DÉTAILLÉE RESTANTE';
+    $('health').value = state.player.hp;
+    $('weapon').textContent = w.name + (w.kind === 'ranged' ? ` · ${ammo.loaded}/${ammo.reserve}` : '');
+    $('resources').textContent = `Plan ${state.player.depth + 1}/4 · Soins ${state.player.medkits}${state.player.reload > 0 ? ' · Rechargement…' : ''}`;
+    const count = state.nodes.filter(n => n.taken).length;
+    $('status').textContent = state.phase === 'exit' ? 'Sas ouvert : rejoindre la sortie et utiliser E.' : `${state.message} ${state.nodes.length ? `${count}/${state.nodes.length}` : `${state.enemies.filter(e => e.hp > 0).length} menace(s)`}`;
+  }
+  function renderCodex() {
+    $('artGrid').replaceChildren();
+    for (const name of ART) {const f = document.createElement('figure'), im = document.createElement('img'), cap = document.createElement('figcaption'); im.src = originals[name] || `../v0.1.0/assets/svg/${name}.svg`; im.alt = name.replaceAll('_',' '); cap.textContent = im.alt; f.append(im, cap); $('artGrid').append(f);}
+    $('chapters').replaceChildren();
+    for (const c of D.campaigns) {const h = document.createElement('h3'), ol = document.createElement('ol'); h.textContent = `${c.title} · ${c.scenes.length}`; for (const s of c.scenes) {const li = document.createElement('li'); li.textContent = `${s.title} — ${s.bridge ? 'raccord original' : 'hérité v0.1'}`; ol.append(li);} $('chapters').append(h, ol);}
+  }
+  const lane = d => 628 - d * 88;
+  function sprite(name, x, y, height, facing = 1, torso = false) {
+    const im = sprites[name]; ctx.save(); ctx.translate(x, y); ctx.scale(facing, 1);
+    if (im) {
+      if (torso) ctx.drawImage(im,0,0,256,170,-height/2,-height*.67,height,height*.67);
+      else { const bottom = ['bud','bone_bison','genna_vulture','kalisk','luna_bug'].includes(name) ? 222 : name === 'kwei_ship' ? 206 : 230; ctx.drawImage(im,-height/2,-height + height * (256-bottom)/256,height,height); }
+    } else {ctx.fillStyle = '#9c9a75'; ctx.fillRect(-14,-50,28,50); ctx.beginPath(); ctx.arc(0,-62,13,0,Math.PI*2); ctx.fill();}
+    ctx.restore();
+  }
+  function enemyArt(id) {if (/kalisk/.test(id)) return 'kalisk'; if (/bison/.test(id)) return 'bone_bison'; if (/vulture/.test(id)) return 'genna_vulture'; if (/luna/.test(id)) return 'luna_bug'; if (/kwei/.test(id)) return 'kwei'; if (/njohrr|clan_guard/.test(id)) return 'njohrr'; if (/loader/.test(id)) return 'power_loader'; if (/dek/.test(id)) return 'dek'; if (/vine/.test(id)) return 'tree_vine'; if (/pod|grass|trap|grub/.test(id)) return 'spike_pod'; if (/thia/.test(id)) return 'thia'; return 'synth_drone';}
+  function draw() {
+    const spec = state ? G.scene(state) : {environment: 'GENNA', width: 2600}, env = spec.environment;
+    const bg = ctx.createLinearGradient(0,0,0,720); bg.addColorStop(0,env === 'YAUTJA' ? '#3d221e' : env === 'SPACE' ? '#0c132d' : '#203a30'); bg.addColorStop(1,'#030b07'); ctx.fillStyle = bg; ctx.fillRect(0,0,1280,720);
+    const cam = state ? Math.max(0, Math.min(spec.width - 1280,state.player.x - 420)) : 0;
+    for(let i=0;i<28;i++) {const x = i*150 - (cam*.3)%150; ctx.fillStyle = i%2 ? '#10271ddd' : '#142e2388'; if(env === 'GENNA') {ctx.beginPath();ctx.moveTo(x,600);ctx.lineTo(x+25,100+(i%5)*35);ctx.lineTo(x+95,600);ctx.fill();} else if(env === 'SPACE') {ctx.fillStyle='#d2d7cb';ctx.fillRect(x,(i*83)%430,2,2);} else {ctx.fillRect(x,180+(i%3)*70,110,380);ctx.strokeStyle='#476053';ctx.strokeRect(x+20,240+(i%3)*70,70,110);}}
+    if (!state) return;
+    ctx.font='13px system-ui';
+    for(let d=3;d>=0;d--) {
+      const y=lane(d);ctx.strokeStyle = d===state.player.depth?'#b3bc70':'#3a5141';ctx.lineWidth=d===state.player.depth?2:1;ctx.beginPath();ctx.moveTo(0,y+8);ctx.lineTo(1280,y+8);ctx.stroke();ctx.fillStyle='#a4b59e';ctx.fillText(`PLAN ${d+1}`,12,y+28);
+      for(const n of state.nodes) if(n.depth===d&&!n.taken) {const x=n.x-cam;ctx.fillStyle='#b8d68c';ctx.fillRect(x-14,y-42,28,35);ctx.fillStyle='#0b1b13';ctx.fillText(String(state.nodes.indexOf(n)+1),x-4,y-19);ctx.fillStyle='#d7e3c8';ctx.fillText('E',x-3,y-55);}
+      const actors = state.enemies.filter(e=>e.depth===d&&e.hp>0).map(e=>({x:e.x,kind:'enemy',e}));
+      const carryThia = state.campaign==='predator' && spec.chapter < D.campaigns[1].scenes.find(s=>s.id==='pred_rescue').chapter;
+      state.companions.filter(c=>c.depth===d && !(carryThia && c.id==='Thia')).forEach(c=>actors.push({x:c.x,kind:'companion',c}));
+      if(state.player.depth===d) actors.push({x:state.player.x,kind:'player'});
+      actors.sort((a,b)=>a.x-b.x);
+      for(const a of actors) {
+        const x=a.x-cam;
+        if(x < -150 || x > 1430) continue;
+        ctx.fillStyle='#0007';ctx.beginPath();ctx.ellipse(x,y+2,28,7,0,0,Math.PI*2);ctx.fill();
+        if(a.kind==='enemy') {const e=a.e,h=/boss|kalisk|loader/.test(e.id)?140:90;sprite(enemyArt(e.id),x,y,h,e.x<state.player.x?1:-1);ctx.fillStyle='#17120e';ctx.fillRect(x-36,y-h-15,72,6);ctx.fillStyle=e.windup>0?'#f1cc6c':'#cb7b59';ctx.fillRect(x-36,y-h-15,72*e.hp/e.maxHp,6);if(e.windup>0){ctx.strokeStyle='#f1cc6c';ctx.beginPath();ctx.arc(x,y-40,42,0,Math.PI*2);ctx.stroke();}}
+        else if(a.kind==='companion') sprite(a.c.id==='Bud'?'bud':a.c.id==='Thia'?'thia':'synth_drone',x,y,a.c.id==='Bud'?52:80,1,a.c.id==='Thia'&&spec.chapter<35);
+        else {const p=state.player;const ship=spec.environment==='SPACE';if(carryThia && state.companions.some(c=>c.id==='Thia'))sprite('thia',x-22*p.facing,y-p.z-42,68,p.facing,true);sprite(ship?'kwei_ship':state.campaign==='predator'?'dek':'tessa',x,y-p.z,ship?125:100,p.facing);}
+      }
+      for(const shot of state.shots) if(shot.depth===d){ctx.strokeStyle='#e6c39a';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(shot.x-cam,y-43);ctx.lineTo(shot.end-cam,y-43);ctx.stroke();}
+      for(const hit of state.hits) if(hit.depth===d){ctx.strokeStyle='#d2ed9a';ctx.beginPath();ctx.arc(hit.x-cam,y-45,10+30*(.3-hit.ttl),0,Math.PI*2);ctx.stroke();}
+    }
+    const exit=spec.width-110-cam;ctx.strokeStyle=state.phase==='exit'?'#bbdf8d':'#50604e';ctx.lineWidth=4;ctx.strokeRect(exit-22,470,44,150);ctx.fillStyle='#cbdbc0';ctx.fillText('SAS · E',exit-25,455);
+    ctx.fillStyle='#14231a';ctx.fillRect(150,683,980,5);ctx.fillStyle='#b7cb7f';ctx.fillRect(150,683,980*state.player.x/spec.width,5);
+  }
+  function loop(now) {
+    const dt=Math.min(.05,Math.max(0,(now-last)/1000));last=now;
+    if(state&&!blocked()) {const phase=state.phase;state=G.step(state,dt,input);if(state.phase!==phase){clearInput();persist();showEvent();}autosave+=dt;if(autosave>5&&['play','exit'].includes(state.phase)){persist();autosave=0;}}
+    draw();updateHud();requestAnimationFrame(loop);
+  }
+  const actions={KeyQ:'depth',Space:'jump',KeyE:'interact',KeyV:'cycle',KeyR:'reload',KeyH:'heal'};
+  const held={KeyA:'left',ArrowLeft:'left',KeyD:'right',ArrowRight:'right',KeyF:'fire'};
+  window.addEventListener('keydown',e=>{
+    if(e.code==='Escape'){pauseGame();return;}
+    if(!state||blocked()||!['play','exit'].includes(state.phase))return;
+    if(held[e.code]){e.preventDefault();input[held[e.code]]=true;}
+    if(actions[e.code]){e.preventDefault();if(!e.repeat)run(actions[e.code]);}
+  });
+  window.addEventListener('keyup',e=>{if(held[e.code])delete input[held[e.code]];});
+  window.addEventListener('blur',()=>{clearInput();if(state&&!blocked()){paused=true;persist();showEvent();}});
+  document.addEventListener('visibilitychange',()=>{clearInput();if(document.hidden&&state){paused=true;persist();showEvent();}});
+  document.querySelectorAll('[data-hold]').forEach(b=>{
+    b.addEventListener('pointerdown',e=>{e.preventDefault();if(blocked()||!state)return;b.setPointerCapture(e.pointerId);input[b.dataset.hold]=true;});
+    for(const event of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(event,()=>{delete input[b.dataset.hold];});
+  });
+  document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>run(b.dataset.action));
+  document.querySelectorAll('[data-new]').forEach(b=>b.onclick=()=>start(b.dataset.new,false));
+  document.querySelectorAll('[data-resume]').forEach(b=>b.onclick=()=>start(b.dataset.resume,true));
+  $('confirm').onclick=()=>{if(paused){paused=false;showEvent();canvas.focus();return;}if(state.phase==='finished'){openMenu();return;}run(state.phase==='dead'?'retry':'confirm');canvas.focus();};
+  $('save').onclick=()=>persist('manual');$('pause').onclick=pauseGame;$('menuButton').onclick=openMenu;
+  $('closeMenu').onclick=()=>{$('menu').hidden=true;clearInput();showEvent();canvas.focus();};
+  $('codex').onclick=()=>{clearInput();$('codexPanel').hidden=false;$('closeCodex').focus();};
+  $('closeCodex').onclick=()=>{$('codexPanel').hidden=true;clearInput();showEvent();canvas.focus();};
+  const query=new URLSearchParams(location.search || globalThis.BADLANDS_TEST_QUERY || '');
+  if(query.get('qa')==='1') {globalThis.BADLANDS_DEBUG={snapshot:()=>state?JSON.parse(G.serialize(state)):null,input:()=>({...input})};const cid=query.get('campaign'),sid=query.get('scene');try{if(cid&&sid){state=G.create(cid,sid);$('menu').hidden=true;showEvent();}}catch{storageStatus='Paramètres de scène invalides : retour au menu.';}}
+  loadArt();document.body.dataset.runtime='ready';requestAnimationFrame(loop);
+})();
+
+</script></body></html>

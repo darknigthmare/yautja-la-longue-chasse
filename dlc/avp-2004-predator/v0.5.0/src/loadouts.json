@@ -1,0 +1,66 @@
+{
+  "Chopper": {
+    "mask": "Chopper biomask",
+    "weapons": [
+      "long_wrist_blades",
+      "dagger"
+    ],
+    "tech": [
+      "cloak",
+      "thermal",
+      "xeno_vision",
+      "wrist_computer",
+      "target_validation"
+    ],
+    "notes": "Longues lames caractéristiques; aucune utilisation du plasmacaster avant la chambre d’armes."
+  },
+  "Celtic": {
+    "mask": "Celtic biomask",
+    "weapons": [
+      "wrist_blades",
+      "combistick",
+      "netgun",
+      "dagger"
+    ],
+    "tech": [
+      "cloak",
+      "thermal",
+      "xeno_vision",
+      "wrist_computer",
+      "wrist_hologram",
+      "target_validation"
+    ],
+    "notes": "Netgun et combistick sont utilisés contre Stafford ; le wrist computer projette l’hologramme du complexe. Le duel Grid conserve son issue fixe."
+  },
+  "Scar": {
+    "mask": "Scar biomask",
+    "weapons": [
+      "wrist_blades",
+      "combistick",
+      "shuriken",
+      "dagger"
+    ],
+    "locked": [
+      "plasmacaster"
+    ],
+    "tech": [
+      "cloak",
+      "thermal",
+      "xeno_vision",
+      "wrist_computer",
+      "target_validation"
+    ],
+    "notes": "Le plasmacaster reste verrouillé jusqu’à sa restitution par Lex. Après le blooding, le runtime affiche Scar démasqué. Le projectile de wrist blade n’est disponible que lors du combat final."
+  },
+  "Elder": {
+    "mask": "Elder biomask",
+    "weapons": [
+      "elder_spear"
+    ],
+    "tech": [
+      "wrist_computer",
+      "clan_command"
+    ],
+    "notes": "Épilogue uniquement; aucune séquence de combat inventée."
+  }
+}

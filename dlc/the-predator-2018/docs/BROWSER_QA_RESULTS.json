@@ -1,0 +1,801 @@
+{
+  "version": "0.5.0-candidate.1",
+  "scenesChecked": 52,
+  "scenesPassed": 52,
+  "interactions": [
+    {
+      "name": "predator-controls",
+      "ok": true,
+      "info": {
+        "error": "",
+        "errors": [],
+        "scene": "P07",
+        "room": "1",
+        "native": "0.5.0-candidate.1"
+      }
+    },
+    {
+      "name": "human-controls",
+      "ok": true,
+      "info": {
+        "error": "",
+        "errors": [],
+        "scene": "H08",
+        "room": "1"
+      }
+    },
+    {
+      "name": "room-transition-checkpoint-host-event",
+      "ok": true,
+      "info": {
+        "room": 1,
+        "checkpointRoom": 1,
+        "event": "room-enter",
+        "events": [
+          "checkpoint",
+          "scene-start",
+          "ready",
+          "secondary-complete",
+          "checkpoint",
+          "room-enter"
+        ],
+        "error": "",
+        "errors": []
+      }
+    },
+    {
+      "name": "storage-blocked-fallback",
+      "ok": true,
+      "info": {
+        "scene": "H01",
+        "room": 0,
+        "screen": "play",
+        "campaign": "human",
+        "runtimeError": "",
+        "errors": [],
+        "ready": "complete",
+        "encounter": "traverse"
+      }
+    },
+    {
+      "name": "v04-save-migration",
+      "ok": true,
+      "info": {
+        "migrated": true,
+        "scene": 7,
+        "room": 2,
+        "hp": 73,
+        "cohesion": 84,
+        "order": "hold",
+        "mirror": true,
+        "grade": "A",
+        "honors": [
+          "old"
+        ],
+        "error": "",
+        "errors": []
+      }
+    },
+    {
+      "name": "human-cover-mitigation",
+      "ok": true,
+      "info": {
+        "before": {
+          "guard": true,
+          "focus": false,
+          "armor": 0,
+          "hp": 100,
+          "score": {
+            "score": 82,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 0
+          },
+          "encounter": "lockdown",
+          "secondary": "fast-clear",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 1,
+          "cohesion": 100,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "debris",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "ready",
+            "payload": {
+              "saveKey": "yautja.dlc.the-predator-2018.v5",
+              "protocol": 2,
+              "microZones": 183,
+              "campaigns": {
+                "human": 26,
+                "predator": 26
+              },
+              "hostCampaignSlots": false,
+              "huntCanvasFusion": false,
+              "commands": [
+                "snapshot",
+                "start",
+                "resume",
+                "pause",
+                "difficulty",
+                "squad-order"
+              ]
+            },
+            "ts": 1790720529969
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 0
+        },
+        "after": {
+          "guard": true,
+          "focus": false,
+          "armor": 0,
+          "hp": 89.6,
+          "score": {
+            "score": 80,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 98,
+            "momentum": 0
+          },
+          "encounter": "lockdown",
+          "secondary": "fast-clear",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 1,
+          "cohesion": 97.712,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "debris",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "ready",
+            "payload": {
+              "saveKey": "yautja.dlc.the-predator-2018.v5",
+              "protocol": 2,
+              "microZones": 183,
+              "campaigns": {
+                "human": 26,
+                "predator": 26
+              },
+              "hostCampaignSlots": false,
+              "huntCanvasFusion": false,
+              "commands": [
+                "snapshot",
+                "start",
+                "resume",
+                "pause",
+                "difficulty",
+                "squad-order"
+              ]
+            },
+            "ts": 1790720529969
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 0
+        }
+      }
+    },
+    {
+      "name": "upgrade-organic-armor",
+      "ok": true,
+      "info": {
+        "before": {
+          "guard": false,
+          "focus": false,
+          "armor": 100,
+          "hp": 165,
+          "score": {
+            "score": 78,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 0
+          },
+          "encounter": "traverse",
+          "secondary": "clear-threats",
+          "phase": "advance",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 0,
+          "cohesion": 100,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "low-gravity",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "ready",
+            "payload": {
+              "saveKey": "yautja.dlc.the-predator-2018.v5",
+              "protocol": 2,
+              "microZones": 183,
+              "campaigns": {
+                "human": 26,
+                "predator": 26
+              },
+              "hostCampaignSlots": false,
+              "huntCanvasFusion": false,
+              "commands": [
+                "snapshot",
+                "start",
+                "resume",
+                "pause",
+                "difficulty",
+                "squad-order"
+              ]
+            },
+            "ts": 1790720530335
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 0
+        },
+        "after": {
+          "guard": false,
+          "focus": false,
+          "armor": 87.6,
+          "hp": 157.4,
+          "score": {
+            "score": 77,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 0
+          },
+          "encounter": "traverse",
+          "secondary": "clear-threats",
+          "phase": "advance",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 0,
+          "cohesion": 100,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "low-gravity",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "ready",
+            "payload": {
+              "saveKey": "yautja.dlc.the-predator-2018.v5",
+              "protocol": 2,
+              "microZones": 183,
+              "campaigns": {
+                "human": 26,
+                "predator": 26
+              },
+              "hostCampaignSlots": false,
+              "huntCanvasFusion": false,
+              "commands": [
+                "snapshot",
+                "start",
+                "resume",
+                "pause",
+                "difficulty",
+                "squad-order"
+              ]
+            },
+            "ts": 1790720530335
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 0
+        }
+      }
+    },
+    {
+      "name": "performance-grade-and-host-event",
+      "ok": true,
+      "info": {
+        "record": {
+          "score": 86,
+          "grade": "A",
+          "accuracy": 100,
+          "cohesion": 100,
+          "momentum": 0,
+          "damage": 0,
+          "takedowns": 0,
+          "secondary": 1,
+          "waves": 0,
+          "at": "2026-09-29T22:22:10.645Z"
+        },
+        "event": "scene-complete",
+        "error": "",
+        "errors": []
+      }
+    },
+    {
+      "name": "squad-order-and-cohesion",
+      "ok": true,
+      "info": {
+        "before": {
+          "guard": false,
+          "focus": false,
+          "armor": 0,
+          "hp": 100,
+          "score": {
+            "score": 82,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 0
+          },
+          "encounter": "lockdown",
+          "secondary": "fast-clear",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 1,
+          "cohesion": 100,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "debris",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "ready",
+            "payload": {
+              "saveKey": "yautja.dlc.the-predator-2018.v5",
+              "protocol": 2,
+              "microZones": 183,
+              "campaigns": {
+                "human": 26,
+                "predator": 26
+              },
+              "hostCampaignSlots": false,
+              "huntCanvasFusion": false,
+              "commands": [
+                "snapshot",
+                "start",
+                "resume",
+                "pause",
+                "difficulty",
+                "squad-order"
+              ]
+            },
+            "ts": 1790720530717
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 0
+        },
+        "after": {
+          "guard": false,
+          "focus": false,
+          "armor": 0,
+          "hp": 88,
+          "score": {
+            "score": 80,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 97,
+            "momentum": 0
+          },
+          "encounter": "lockdown",
+          "secondary": "fast-clear",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 1,
+          "cohesion": 97.36,
+          "momentum": 0,
+          "squadOrder": "focus",
+          "hazard": "debris",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "checkpoint",
+            "payload": {
+              "campaign": "human",
+              "scene": "H08",
+              "sceneIndex": 7,
+              "room": 1,
+              "checkpoint": {
+                "scene": 7,
+                "room": 1,
+                "hp": 100,
+                "energy": 0,
+                "ammo": 8,
+                "armor": 0,
+                "cohesion": 100,
+                "momentum": 0,
+                "squadOrder": "focus",
+                "phase": 0,
+                "wave": 0
+              }
+            },
+            "ts": 1790720530868
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 0
+        },
+        "order": "focus",
+        "events": [
+          "checkpoint",
+          "scene-start",
+          "ready",
+          "squad-order",
+          "checkpoint"
+        ]
+      }
+    },
+    {
+      "name": "predator-momentum-takedown",
+      "ok": true,
+      "info": {
+        "before": {
+          "moved": true,
+          "before": {
+            "guard": false,
+            "focus": false,
+            "armor": 0,
+            "hp": 125,
+            "score": {
+              "score": 78,
+              "grade": "A",
+              "accuracy": 100,
+              "cohesion": 100,
+              "momentum": 0
+            },
+            "encounter": "lockdown",
+            "secondary": "no-damage",
+            "phase": "neutralize",
+            "phaseIndex": 0,
+            "wave": 0,
+            "wavesTotal": 1,
+            "cohesion": 100,
+            "momentum": 0,
+            "squadOrder": "follow",
+            "hazard": "steam",
+            "hostEvent": {
+              "source": "the-predator-2018",
+              "protocol": 2,
+              "version": "0.5.0-candidate.1",
+              "type": "ready",
+              "payload": {
+                "saveKey": "yautja.dlc.the-predator-2018.v5",
+                "protocol": 2,
+                "microZones": 183,
+                "campaigns": {
+                  "human": 26,
+                  "predator": 26
+                },
+                "hostCampaignSlots": false,
+                "huntCanvasFusion": false,
+                "commands": [
+                  "snapshot",
+                  "start",
+                  "resume",
+                  "pause",
+                  "difficulty",
+                  "squad-order"
+                ]
+              },
+              "ts": 1790720530913
+            },
+            "enemiesAlive": 2,
+            "bossTelegraph": 0
+          }
+        },
+        "after": {
+          "guard": false,
+          "focus": false,
+          "armor": 0,
+          "hp": 125,
+          "score": {
+            "score": 81,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 22
+          },
+          "encounter": "lockdown",
+          "secondary": "no-damage",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 1,
+          "cohesion": 100,
+          "momentum": 22,
+          "squadOrder": "follow",
+          "hazard": "steam",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "ready",
+            "payload": {
+              "saveKey": "yautja.dlc.the-predator-2018.v5",
+              "protocol": 2,
+              "microZones": 183,
+              "campaigns": {
+                "human": 26,
+                "predator": 26
+              },
+              "hostCampaignSlots": false,
+              "huntCanvasFusion": false,
+              "commands": [
+                "snapshot",
+                "start",
+                "resume",
+                "pause",
+                "difficulty",
+                "squad-order"
+              ]
+            },
+            "ts": 1790720530913
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 0
+        }
+      }
+    },
+    {
+      "name": "finite-reinforcement-wave",
+      "ok": true,
+      "info": {
+        "spawned": true,
+        "before": {
+          "guard": false,
+          "focus": false,
+          "armor": 0,
+          "hp": 100,
+          "score": {
+            "score": 82,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 0
+          },
+          "encounter": "lockdown",
+          "secondary": "collect-cache",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 1,
+          "cohesion": 100,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "smoke",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "ready",
+            "payload": {
+              "saveKey": "yautja.dlc.the-predator-2018.v5",
+              "protocol": 2,
+              "microZones": 183,
+              "campaigns": {
+                "human": 26,
+                "predator": 26
+              },
+              "hostCampaignSlots": false,
+              "huntCanvasFusion": false,
+              "commands": [
+                "snapshot",
+                "start",
+                "resume",
+                "pause",
+                "difficulty",
+                "squad-order"
+              ]
+            },
+            "ts": 1790720531324
+          },
+          "enemiesAlive": 0,
+          "bossTelegraph": 0
+        },
+        "after": {
+          "guard": false,
+          "focus": false,
+          "armor": 0,
+          "hp": 100,
+          "score": {
+            "score": 84,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 0
+          },
+          "encounter": "lockdown",
+          "secondary": "collect-cache",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 1,
+          "wavesTotal": 1,
+          "cohesion": 100,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "smoke",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "reinforcement-wave",
+            "payload": {
+              "scene": "H01",
+              "room": 1,
+              "wave": 1,
+              "total": 1,
+              "reason": "qa"
+            },
+            "ts": 1790720531472
+          },
+          "enemiesAlive": 2,
+          "bossTelegraph": 0
+        },
+        "events": [
+          "checkpoint",
+          "scene-start",
+          "ready",
+          "checkpoint",
+          "reinforcement-wave"
+        ]
+      }
+    },
+    {
+      "name": "host-command-snapshot-v2",
+      "ok": true,
+      "info": {
+        "ack": {
+          "id": "qa-snapshot",
+          "command": "snapshot",
+          "ok": true,
+          "result": {
+            "screen": "play",
+            "campaign": "human",
+            "scene": "H01",
+            "room": 0,
+            "phase": "advance",
+            "wave": 0,
+            "cohesion": 100,
+            "momentum": 0,
+            "squadOrder": "follow",
+            "mastery": {
+              "mirror": {
+                "mastered": 0,
+                "available": 27
+              },
+              "scenes": 0,
+              "gradeS": 0,
+              "secondary": 0
+            },
+            "progress": {
+              "human": {
+                "unlocked": 1,
+                "last": 0,
+                "checkpoint": {
+                  "scene": 0,
+                  "room": 0,
+                  "hp": 100,
+                  "energy": 0,
+                  "ammo": 8,
+                  "armor": 0,
+                  "cohesion": 100,
+                  "momentum": 0,
+                  "squadOrder": "follow",
+                  "phase": 0,
+                  "wave": 0
+                },
+                "clues": [],
+                "completed": false,
+                "honors": [],
+                "records": {}
+              }
+            }
+          }
+        },
+        "version": "0.5.0-candidate.1",
+        "protocol": 2,
+        "errors": []
+      }
+    },
+    {
+      "name": "boss-telegraph",
+      "ok": true,
+      "info": {
+        "runtime": {
+          "guard": false,
+          "focus": false,
+          "armor": 0,
+          "hp": 100,
+          "score": {
+            "score": 82,
+            "grade": "A",
+            "accuracy": 100,
+            "cohesion": 100,
+            "momentum": 0
+          },
+          "encounter": "lockdown",
+          "secondary": "clear-threats",
+          "phase": "neutralize",
+          "phaseIndex": 0,
+          "wave": 0,
+          "wavesTotal": 1,
+          "cohesion": 100,
+          "momentum": 0,
+          "squadOrder": "follow",
+          "hazard": "mud",
+          "hostEvent": {
+            "source": "the-predator-2018",
+            "protocol": 2,
+            "version": "0.5.0-candidate.1",
+            "type": "boss-telegraph",
+            "payload": {
+              "scene": "H24",
+              "phase": 2,
+              "kind": "charge",
+              "lane": 1
+            },
+            "ts": 1790720531994
+          },
+          "enemiesAlive": 1,
+          "bossTelegraph": 286.70000000000005
+        },
+        "events": [
+          "checkpoint",
+          "scene-start",
+          "ready",
+          "boss-telegraph"
+        ],
+        "errors": []
+      }
+    },
+    {
+      "name": "mirror-event-mastery",
+      "ok": true,
+      "info": {
+        "pred": 1,
+        "entry": {
+          "human": true,
+          "predator": true
+        },
+        "mastery": {
+          "mirror": {
+            "mastered": 1,
+            "available": 27
+          },
+          "scenes": 2,
+          "gradeS": 0,
+          "secondary": 2
+        },
+        "events": [
+          "checkpoint",
+          "scene-start",
+          "ready",
+          "secondary-complete",
+          "scene-complete",
+          "checkpoint",
+          "scene-start",
+          "secondary-complete",
+          "mirror-complete",
+          "scene-complete"
+        ],
+        "errors": []
+      }
+    }
+  ],
+  "visualCaptures": [
+    "menu-v05.png",
+    "human-multizone-v05.png",
+    "fugitive-v05.png",
+    "upgrade-armor-v05.png",
+    "human-final-boss-v05.png",
+    "predator-final-v05.png",
+    "timeline-mastery-v05.png",
+    "systems-v05.png"
+  ],
+  "runtimeErrors": 0,
+  "ok": true
+}

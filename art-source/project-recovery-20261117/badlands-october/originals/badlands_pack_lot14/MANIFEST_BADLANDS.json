@@ -1,0 +1,725 @@
+{
+  "schema": "badlands_sprite_pack_v14",
+  "titre": "Predator: Badlands — lot 14 de 7 ajouts",
+  "date_creation": "2026-10-07",
+  "nombre_sprites": 7,
+  "comptage_categories": {
+    "faune": 2,
+    "flore": 2,
+    "synthetiques": 2,
+    "yautja": 1
+  },
+  "methode": "Génération d’images intégrée, un sprite par génération ou correction ; PNG conservés sans modification des pixels.",
+  "portee": "7 PNG du lot 14 seulement. La version cumulative V14 contient 166 PNG.",
+  "fidelite": "Recréations générées à partir de références du film, de production ou de sources secondaires identifiées. Parties cachées et angles adaptés explicités par fichier ; aucune correspondance exacte 1:1 certifiée.",
+  "assets": [
+    {
+      "nom": "Vulture entier — posé, ailes rabattues",
+      "nom_court": "Vulture — posé, ailes rabattues",
+      "categorie": "faune",
+      "fichier": "sprites/faune/160_vulture_pose_ailes_repliees.png",
+      "pose": "Debout en alerte sur deux pieds, bec fermé, ailes rabattues vers l’arrière avec membranes partiellement déployées, queue étendue",
+      "orientation": "Profil gauche avec léger trois-quarts",
+      "type_visuel": "pose_de_jeu_entiere_reconstituee",
+      "base_de_reference": "Silhouette générale, ailes membraneuses ivoire à motifs rouges, tête pointue et pieds griffus documentés par deux plans du film. Le sprite 4 fournit la continuité picturale ; l’état debout au sol, les plis des ailes et les détails cachés sont reconstitués pour le jeu. Aucune image officielle de cette posture au sol ni d’un nid entier n’est certifiée.",
+      "sources": [
+        "https://www.avpcentral.com/badlands-creatures-genna-monsters-guide",
+        "https://www.avpcentral.com/images/genna-creatures/vulture.webp",
+        "https://clip.cafe/predator-badlands-2025/throw-me-that-and-i-can-get-you-the-antidote/"
+      ],
+      "confirmed_details": [
+        "Les plans du film montrent une créature reptilienne volante, deux ailes membraneuses avec secteurs pâles et rouges, une tête pointue à crête et deux pieds griffus.",
+        "Le plan large du clip montre la silhouette volante allongée et la queue ; le plan frontal montre la répartition générale des couleurs et les serres.",
+        "Les sprites 4 et 25 montrent déjà deux positions de vol ; aucun état posé n’était livré dans la V13."
+      ],
+      "extrapolated_details": [
+        "La posture bipède au sol, le port du cou, la fermeture du bec, la flexion des pattes et la répartition du poids sont reconstitués ; ils ne reproduisent pas un photogramme entier du film.",
+        "Les ailes sont rabattues vers l’arrière mais les membranes restent en partie ouvertes ; les plis, articulations et structures masquées sont adaptés.",
+        "La face cachée, le nombre et la disposition fine des doigts peu résolus, les microécailles, les veines, les couleurs locales et la courbure de la queue sont interprétés.",
+        "Aucune échelle physique canonique, ancre de sol, transition animée ou alignement avec les sprites 4 et 25 n’est fourni."
+      ],
+      "notes_fidelite": [
+        "Les plans du film montrent une créature reptilienne volante, deux ailes membraneuses avec secteurs pâles et rouges, une tête pointue à crête et deux pieds griffus.",
+        "Le plan large du clip montre la silhouette volante allongée et la queue ; le plan frontal montre la répartition générale des couleurs et les serres.",
+        "Les sprites 4 et 25 montrent déjà deux positions de vol ; aucun état posé n’était livré dans la V13.",
+        "La posture bipède au sol, le port du cou, la fermeture du bec, la flexion des pattes et la répartition du poids sont reconstitués ; ils ne reproduisent pas un photogramme entier du film.",
+        "Les ailes sont rabattues vers l’arrière mais les membranes restent en partie ouvertes ; les plis, articulations et structures masquées sont adaptés.",
+        "La face cachée, le nombre et la disposition fine des doigts peu résolus, les microécailles, les veines, les couleurs locales et la courbure de la queue sont interprétés.",
+        "Aucune échelle physique canonique, ancre de sol, transition animée ou alignement avec les sprites 4 et 25 n’est fourni."
+      ],
+      "new_subject": false,
+      "canonical_subject": "vulture",
+      "canonical_state": "pose_ailes_rabattues",
+      "full_body": true,
+      "reconstruction": true,
+      "instant_du_film_completement_documente": false,
+      "reconstitution_zones_non_documentees": true,
+      "fidelite_exacte_1_a_1_verifiee": false,
+      "complement_de_asset_id": 4,
+      "related_asset_ids": [
+        25
+      ],
+      "gameplay_state_reconstruction": true,
+      "usage_court": "Repos au sol · pose reconstituée",
+      "integration_hint": "Pose de repos au sol ; régler le contact des deux pieds et la taille. Membranes encore partiellement ouvertes. Pas de transition animée avec les vols 4 et 25.",
+      "placement_note": "Point de sol à fixer aux pieds ; le pivot géométrique n’est pas un pied validé. Posture au sol reconstituée.",
+      "id": 160,
+      "lot": 14,
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 1741479,
+      "sha256": "d09735241c8d3bee1de691ba7d4836d275d9933826271c9708c7a2a4174d7346",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 1241945,
+        "pourcentage_entierement_transparent": 78.9607,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        16,
+        34,
+        1520,
+        1006
+      ],
+      "marges_contenu_px": {
+        "gauche": 16,
+        "haut": 34,
+        "droite": 16,
+        "bas": 18
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.5,
+        "y": 0.982422,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      },
+      "animation_incluse": false,
+      "alignement_intertrames_verifie": false,
+      "echelle_physique_canonique": null
+    },
+    {
+      "nom": "Vulture entier — attaque quasi frontale",
+      "nom_court": "Vulture — attaque frontale",
+      "categorie": "faune",
+      "fichier": "sprites/faune/161_vulture_attaque_frontale.png",
+      "pose": "Attaque aérienne, deux ailes largement ouvertes, gueule ouverte, deux pieds griffus avancés, queue entière recourbée vers la droite",
+      "orientation": "Quasi frontale, tête légèrement tournée vers la gauche du spectateur",
+      "type_visuel": "attaque_entiere_reconstituee",
+      "base_de_reference": "Un photogramme final montre le Vulture attaquant de face, gueule ouverte, ailes étendues et serres avancées. Les sprites entiers 4 et 25 et une seconde silhouette du film aident à reconstituer les extrémités hors champ. La pose complète est adaptée pour le jeu ; aucun vol avec pierre n’est représenté.",
+      "sources": [
+        "https://www.avpcentral.com/badlands-creatures-genna-monsters-guide",
+        "https://www.avpcentral.com/images/genna-creatures/vulture.webp",
+        "https://clip.cafe/predator-badlands-2025/throw-me-that-and-i-can-get-you-the-antidote/"
+      ],
+      "confirmed_details": [
+        "Le plan final inspecté montre une approche quasi frontale avec ailes étendues, gueule béante et serres avancées.",
+        "Les membranes claires parcourues de plages rouges, la tête pointue à crête et la morphologie reptilienne sont visibles.",
+        "Les sprites 4 et 25 couvrent des vols surtout latéraux ; cette vue de menace frontale sert un usage distinct."
+      ],
+      "extrapolated_details": [
+        "Les pointes d’ailes et d’autres extrémités coupées dans le photogramme sont reconstituées à partir des silhouettes entières déjà adaptées des sprites 4 et 25 ; elles ne sont pas de nouveaux angles officiels.",
+        "La courbure de la queue, la lisibilité des deux pieds, l’angle de la tête, le déploiement complet des ailes et les détails cachés ont été recomposés pour cadrer l’animal entier.",
+        "Les microécailles, veines, dents, doigts et contrastes fins ne sont pas tous résolus dans le plan du film et sont interprétés.",
+        "La vue n’est pas une trame alignée avec les sprites 4 et 25 ; taille apparente, pivot, perspective et durée restent à régler. Aucun cycle d’animation n’est fourni."
+      ],
+      "notes_fidelite": [
+        "Le plan final inspecté montre une approche quasi frontale avec ailes étendues, gueule béante et serres avancées.",
+        "Les membranes claires parcourues de plages rouges, la tête pointue à crête et la morphologie reptilienne sont visibles.",
+        "Les sprites 4 et 25 couvrent des vols surtout latéraux ; cette vue de menace frontale sert un usage distinct.",
+        "Les pointes d’ailes et d’autres extrémités coupées dans le photogramme sont reconstituées à partir des silhouettes entières déjà adaptées des sprites 4 et 25 ; elles ne sont pas de nouveaux angles officiels.",
+        "La courbure de la queue, la lisibilité des deux pieds, l’angle de la tête, le déploiement complet des ailes et les détails cachés ont été recomposés pour cadrer l’animal entier.",
+        "Les microécailles, veines, dents, doigts et contrastes fins ne sont pas tous résolus dans le plan du film et sont interprétés.",
+        "La vue n’est pas une trame alignée avec les sprites 4 et 25 ; taille apparente, pivot, perspective et durée restent à régler. Aucun cycle d’animation n’est fourni."
+      ],
+      "new_subject": false,
+      "canonical_subject": "vulture",
+      "canonical_state": "attaque_quasi_frontale",
+      "full_body": true,
+      "reconstruction": true,
+      "instant_du_film_completement_documente": false,
+      "reconstitution_zones_non_documentees": true,
+      "fidelite_exacte_1_a_1_verifiee": false,
+      "complement_de_asset_id": 4,
+      "related_asset_ids": [
+        25
+      ],
+      "usage_court": "Attaque aérienne · extrémités reconstituées",
+      "integration_hint": "Attaque quasi frontale à utiliser comme état statique ou référence d’animation. Serres et bouche ouvertes, extrémités entières. Ne pas en déduire une trame alignée avec 4, 25 ou 160.",
+      "placement_note": "Centrage en vol à définir sur le corps ; le centre-bas de la boîte visible comprend la queue et n’est pas un centre de vol. Marge droite native de 7 pixels.",
+      "id": 161,
+      "lot": 14,
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 2340103,
+      "sha256": "0a1085996c0dd271ecaa1024e9075bbb3d46f1e5163f22d6957d77a69a291652",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 958585,
+        "pourcentage_entierement_transparent": 60.9452,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        11,
+        42,
+        1529,
+        988
+      ],
+      "marges_contenu_px": {
+        "gauche": 11,
+        "haut": 42,
+        "droite": 7,
+        "bas": 36
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.501302,
+        "y": 0.964844,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      },
+      "animation_incluse": false,
+      "alignement_intertrames_verifie": false,
+      "echelle_physique_canonique": null
+    },
+    {
+      "nom": "Plante à feuilles en coupe — sans ver",
+      "nom_court": "Feuilles en coupe — sans ver",
+      "categorie": "flore",
+      "fichier": "sprites/flore/162_plante_feuilles_coupe_sans_ver.png",
+      "pose": "Touffe entière à cinq feuilles en coupe, toutes vides",
+      "orientation": "Trois quarts, même organisation générale que le nº 99",
+      "type_visuel": "etat_ressource_reconstitue",
+      "base_de_reference": "Édition générée du sprite nº 99, recoupée avec le photogramme worm-02 du film montrant une coupe occupée et d’autres coupes vides. La forme complète de la touffe reste reconstituée. Cet état vide est fourni pour le jeu ; il ne certifie pas un photogramme complet après récolte.",
+      "sources": [
+        "https://www.avpgalaxy.net/predator-movies/predator-badlands/worms/",
+        "https://www.avpgalaxy.net/wordpress/wp-content/uploads/2025/11/worm-02.avif"
+      ],
+      "confirmed_details": [
+        "Le photogramme montre des feuilles concaves vert olive, des bords jaunâtres roulés, des nervures radiales claires et des tiges fines courbes.",
+        "Un petit ver occupe une coupe ; plusieurs autres feuilles visibles sont vides.",
+        "Le nº 99 fournit déjà une touffe complète avec un ver ; le nouveau fichier fournit le même type de plante avec les coupes vides."
+      ],
+      "extrapolated_details": [
+        "État de jeu après prélèvement ou sans ressource reconstitué : aucune nouvelle espèce, pousse ou fonction médicinale n’est déduite.",
+        "La surface auparavant cachée sous le ver est reconstituée. Le nombre de feuilles, la réunion des tiges et la forme complète héritent de la reconstitution du nº 99.",
+        "Les textures, reflets, nuances plus jaunes et proportions ont légèrement changé lors de la génération ; l’échange d’images ne bénéficie pas d’un alignement pixel à pixel ni d’un pivot commun validé.",
+        "Les zones masquées du revers et de la base restent interprétées sobrement."
+      ],
+      "notes_fidelite": [
+        "Le photogramme montre des feuilles concaves vert olive, des bords jaunâtres roulés, des nervures radiales claires et des tiges fines courbes.",
+        "Un petit ver occupe une coupe ; plusieurs autres feuilles visibles sont vides.",
+        "Le nº 99 fournit déjà une touffe complète avec un ver ; le nouveau fichier fournit le même type de plante avec les coupes vides.",
+        "État de jeu après prélèvement ou sans ressource reconstitué : aucune nouvelle espèce, pousse ou fonction médicinale n’est déduite.",
+        "La surface auparavant cachée sous le ver est reconstituée. Le nombre de feuilles, la réunion des tiges et la forme complète héritent de la reconstitution du nº 99.",
+        "Les textures, reflets, nuances plus jaunes et proportions ont légèrement changé lors de la génération ; l’échange d’images ne bénéficie pas d’un alignement pixel à pixel ni d’un pivot commun validé.",
+        "Les zones masquées du revers et de la base restent interprétées sobrement."
+      ],
+      "new_subject": false,
+      "canonical_subject": "Plante de Genna à feuilles en coupe — désignation descriptive",
+      "canonical_state": "Coupes vides — état de jeu reconstitué",
+      "full_body": true,
+      "reconstruction": true,
+      "instant_du_film_completement_documente": false,
+      "reconstitution_zones_non_documentees": true,
+      "fidelite_exacte_1_a_1_verifiee": false,
+      "placement_note": "État vide complémentaire du nº 99. Régler un point de sol et une échelle communs lors du changement d’état ; aucun échange de trame aligné n’est garanti.",
+      "complement_de_asset_id": 99,
+      "derive_du_sprite": 99,
+      "gameplay_state_reconstruction": true,
+      "resource_present": false,
+      "usage_court": "État vide · ressource absente",
+      "integration_hint": "Complément vide de la plante 99. Régler un point de sol et une taille communs avant tout échange d’état ; pas d’alignement pixel à pixel fourni.",
+      "id": 162,
+      "lot": 14,
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1024,
+      "hauteur_px": 1536,
+      "taille_octets": 2417456,
+      "sha256": "0031e7592f3d1972313682847c5b19c18d15877964a174c011d4e4c6feb91486",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 949475,
+        "pourcentage_entierement_transparent": 60.366,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        18,
+        46,
+        1007,
+        1447
+      ],
+      "marges_contenu_px": {
+        "gauche": 18,
+        "haut": 46,
+        "droite": 17,
+        "bas": 89
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.500488,
+        "y": 0.942057,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      },
+      "animation_incluse": false,
+      "alignement_intertrames_verifie": false,
+      "echelle_physique_canonique": null
+    },
+    {
+      "nom": "Plante antidote — après cueillette",
+      "nom_court": "Plante antidote — après cueillette",
+      "categorie": "flore",
+      "fichier": "sprites/flore/163_plante_antidote_apres_cueillette.png",
+      "pose": "Plante entière sans corolle, tige florale sectionnée au-dessus du feuillage basal",
+      "orientation": "Trois quarts, organisation générale du nº 130",
+      "type_visuel": "etat_ressource_reconstitue",
+      "base_de_reference": "Édition générée du sprite nº 130, issu de la planche de végétaux du breakdown officiel ILP, avec la fleur cueillie nº 124 comme relation d’usage. La forme des feuilles provient du modèle de production ; la tige après cueillette est un état de jeu reconstitué et non une phase botanique documentée dans le film.",
+      "sources": [
+        "https://www.ilpvfx.com/news/new-breakdown-alert!-predator:-badlands",
+        "https://player.vimeo.com/video/1155064586?h=7cb561f85d",
+        "https://clip.cafe/predator-badlands-2025/the-venom-makes-them-bloom/"
+      ],
+      "confirmed_details": [
+        "La planche de végétaux ILP montre des plantes à corolle noire, tige fine et feuillage basal gris-vert et jaune.",
+        "La plante entière en fleur est déjà livrée en nº 130 ; la corolle cueillie constitue le nº 124.",
+        "Le nouveau PNG conserve la rosette basse et la haute tige, avec une extrémité sectionnée visible et aucune fleur présente."
+      ],
+      "extrapolated_details": [
+        "L’état après cueillette et le niveau de rupture de la tige sont conçus pour l’interaction de récolte du jeu ; aucun photogramme complet de cet état n’est certifié.",
+        "La corolle, les sépales et le haut de la tige sont retirés par génération. L’intérieur de la section, les nervures, les petites feuilles et les zones masquées sont reconstitués.",
+        "Ce fichier ne représente pas un bouton fermé, une floraison, une régénération ou une nouvelle espèce. Aucun mécanisme de repousse n’est affirmé.",
+        "La disposition et les dimensions visibles ont légèrement changé ; aucune transition animée, échelle physique canonique ni correspondance de pivots validée n’est fournie.",
+        "La pointe de feuille droite reste entière avec une marge native de 7 pixels ; les pixels n’ont pas été recadrés ni retouchés."
+      ],
+      "notes_fidelite": [
+        "La planche de végétaux ILP montre des plantes à corolle noire, tige fine et feuillage basal gris-vert et jaune.",
+        "La plante entière en fleur est déjà livrée en nº 130 ; la corolle cueillie constitue le nº 124.",
+        "Le nouveau PNG conserve la rosette basse et la haute tige, avec une extrémité sectionnée visible et aucune fleur présente.",
+        "L’état après cueillette et le niveau de rupture de la tige sont conçus pour l’interaction de récolte du jeu ; aucun photogramme complet de cet état n’est certifié.",
+        "La corolle, les sépales et le haut de la tige sont retirés par génération. L’intérieur de la section, les nervures, les petites feuilles et les zones masquées sont reconstitués.",
+        "Ce fichier ne représente pas un bouton fermé, une floraison, une régénération ou une nouvelle espèce. Aucun mécanisme de repousse n’est affirmé.",
+        "La disposition et les dimensions visibles ont légèrement changé ; aucune transition animée, échelle physique canonique ni correspondance de pivots validée n’est fournie.",
+        "La pointe de feuille droite reste entière avec une marge native de 7 pixels ; les pixels n’ont pas été recadrés ni retouchés."
+      ],
+      "new_subject": false,
+      "canonical_subject": "Plante de Genna à fleur antidote noire — désignation descriptive",
+      "canonical_state": "Après prélèvement de la fleur — état de jeu reconstitué",
+      "full_body": true,
+      "reconstruction": true,
+      "instant_du_film_completement_documente": false,
+      "reconstitution_zones_non_documentees": true,
+      "fidelite_exacte_1_a_1_verifiee": false,
+      "placement_note": "État après cueillette du nº 130, à associer à la ressource nº 124 selon les règles du jeu. Harmoniser l’échelle et le point de sol avant de permuter les états.",
+      "complement_de_asset_id": 130,
+      "derive_du_sprite": 130,
+      "harvested_resource_asset_id": 124,
+      "gameplay_state_reconstruction": true,
+      "resource_present": false,
+      "closed_bud_state": false,
+      "usage_court": "Après cueillette · état de jeu reconstitué",
+      "integration_hint": "Complément après récolte de la plante 130, à associer à la fleur 124. Tige sectionnée, aucune corolle. Ce n’est pas un bouton fermé. Harmoniser taille et placement des états.",
+      "id": 163,
+      "lot": 14,
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1262,
+      "hauteur_px": 1246,
+      "taille_octets": 937969,
+      "sha256": "3bb7a02f3892734a57fef9944e62eb8026b73e4464629ad9e1fd569631cff3eb",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "pixels_entierement_transparents": 1234374,
+        "pourcentage_entierement_transparent": 78.4999,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        25,
+        223,
+        1255,
+        1231
+      ],
+      "marges_contenu_px": {
+        "gauche": 25,
+        "haut": 223,
+        "droite": 7,
+        "bas": 15
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.507132,
+        "y": 0.987961,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      },
+      "animation_incluse": false,
+      "alignement_intertrames_verifie": false,
+      "echelle_physique_canonique": null
+    },
+    {
+      "nom": "Encadrement de sas Weyland-Yutani LAB-04 — ouvert",
+      "nom_court": "Sas WY LAB-04 — ouvert",
+      "categorie": "synthetiques",
+      "fichier": "sprites/synthetiques/164_sas_lab04_ouvert.png",
+      "pose": "Encadrement de sas entier, passages ouverts et transparents",
+      "orientation": "Trois quarts frontal, flanc droit visible",
+      "type_visuel": "composant_decor_interieur_entier",
+      "base_de_reference": "Photographie 2500×1496 du décor de laboratoire construite publiée par le chef décorateur Ra Vincent, recoupée avec le plan final ILP vers 50,4 secondes. Les contours principaux sont visibles ; les zones masquées et les détails à distance sont reconstitués selon les notes. Le nº 120 sert uniquement à la cohérence du rendu peint.",
+      "sources": [
+        "https://www.ravincentworkshop.com/predator-badlands/",
+        "https://images.squarespace-cdn.com/content/v1/5bd830b9ebfc7f8841dba818/1776641658490-WAECB95LV0CJVP143UOV/4.jpeg",
+        "https://www.ilpvfx.com/news/new-breakdown-alert!-predator:-badlands",
+        "https://player.vimeo.com/video/1155064586?h=7cb561f85d"
+      ],
+      "confirmed_details": [
+        "La photographie du décor Ra Vincent montre l’encadrement AIRLOCK/LAB-04 ; le même élément apparaît dans le plan final ILP vers 50,4 s.",
+        "Carter clair massif aux angles extérieurs chanfreinés, entrée frontale à angles supérieurs coupés, seuil inscrit LAB-04 et traverse AIRLOCK.",
+        "Rayures diagonales noires autour du passage, panneaux verticaux L 0 4 sur les montants et petits rectangles sombres près de l’entrée.",
+        "Sur le montant droit, niche centrale vide et niche basse contenant un petit extincteur sombre à poignée rouge.",
+        "Flanc droit épais avec découpe latérale, montant arrière et petite lumière supérieure."
+      ],
+      "extrapolated_details": [
+        "Parties du montant gauche masquées par la capsule complétées par continuité du carter ; le renfoncement gauche généré est une reconstruction non certifiée.",
+        "Profondeur arrière, raccords au mur, faces internes moins visibles, détails de fixations et de l’extincteur reconstitués sobrement.",
+        "Les proportions dans la vue isolée, l’espacement des rayures, les lettres, les microtextures et la patine sont adaptés au sprite, sans exactitude géométrique ou typographique 1:1.",
+        "Le couloir, les murs et les caisses visibles à travers le sas dans la référence sont retirés pour obtenir des passages transparents. Le sprite représente le seul encadrement, pas une architecture de bâtiment entière ni une coupe intérieure."
+      ],
+      "notes_fidelite": [
+        "La photographie du décor Ra Vincent montre l’encadrement AIRLOCK/LAB-04 ; le même élément apparaît dans le plan final ILP vers 50,4 s.",
+        "Carter clair massif aux angles extérieurs chanfreinés, entrée frontale à angles supérieurs coupés, seuil inscrit LAB-04 et traverse AIRLOCK.",
+        "Rayures diagonales noires autour du passage, panneaux verticaux L 0 4 sur les montants et petits rectangles sombres près de l’entrée.",
+        "Sur le montant droit, niche centrale vide et niche basse contenant un petit extincteur sombre à poignée rouge.",
+        "Flanc droit épais avec découpe latérale, montant arrière et petite lumière supérieure.",
+        "Parties du montant gauche masquées par la capsule complétées par continuité du carter ; le renfoncement gauche généré est une reconstruction non certifiée.",
+        "Profondeur arrière, raccords au mur, faces internes moins visibles, détails de fixations et de l’extincteur reconstitués sobrement.",
+        "Les proportions dans la vue isolée, l’espacement des rayures, les lettres, les microtextures et la patine sont adaptés au sprite, sans exactitude géométrique ou typographique 1:1.",
+        "Le couloir, les murs et les caisses visibles à travers le sas dans la référence sont retirés pour obtenir des passages transparents. Le sprite représente le seul encadrement, pas une architecture de bâtiment entière ni une coupe intérieure."
+      ],
+      "new_subject": true,
+      "canonical_subject": "encadrement_sas_wy_lab04",
+      "canonical_state": "ouvert",
+      "full_body": true,
+      "reconstruction": true,
+      "instant_du_film_completement_documente": false,
+      "reconstitution_zones_non_documentees": true,
+      "fidelite_exacte_1_a_1_verifiee": false,
+      "architectural_component": true,
+      "related_asset_ids": [
+        155,
+        156
+      ],
+      "usage_court": "Composant de décor · ouvert",
+      "integration_hint": "Encadrement de sas avec deux passages transparents. Raccorder l’arrière au mur et le seuil au sol ; définir les collisions sur les montants, puis la zone de passage. Pas de porte animée.",
+      "placement_note": "Composant architectural isolé : masquer les raccords arrière dans un mur et intégrer le seuil au sol. Les ouvertures du PNG restent transparentes.",
+      "id": 164,
+      "lot": 14,
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 1873448,
+      "sha256": "18b905ffe7628cecbe7d604fcef5dfa4dbe25fca527b7f52a8da80180155c5cf",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 770243,
+        "pourcentage_entierement_transparent": 48.9707,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        197,
+        47,
+        1375,
+        1001
+      ],
+      "marges_contenu_px": {
+        "gauche": 197,
+        "haut": 47,
+        "droite": 161,
+        "bas": 23
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.511719,
+        "y": 0.977539,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      },
+      "animation_incluse": false,
+      "alignement_intertrames_verifie": false,
+      "echelle_physique_canonique": null
+    },
+    {
+      "nom": "Meuble Weyland-Yutani incliné à cinq logements verticaux",
+      "nom_court": "Meuble WY à modules verticaux",
+      "categorie": "synthetiques",
+      "fichier": "sprites/synthetiques/165_meuble_modules_wy.png",
+      "pose": "Meuble entier isolé, cinq logements dont trois occupés",
+      "orientation": "Trois quarts frontal modéré, flanc droit étroit visible",
+      "type_visuel": "composant_decor_interieur_entier",
+      "base_de_reference": "Photographie 2500×1496 du décor de laboratoire construite publiée par le chef décorateur Ra Vincent, recoupée avec le plan final ILP vers 50,4 secondes. Les contours principaux sont visibles ; les zones masquées et les détails à distance sont reconstitués selon les notes. Le nº 120 sert uniquement à la cohérence du rendu peint.",
+      "sources": [
+        "https://www.ravincentworkshop.com/predator-badlands/",
+        "https://images.squarespace-cdn.com/content/v1/5bd830b9ebfc7f8841dba818/1776641658490-WAECB95LV0CJVP143UOV/4.jpeg",
+        "https://www.ilpvfx.com/news/new-breakdown-alert!-predator:-badlands",
+        "https://player.vimeo.com/video/1155064586?h=7cb561f85d"
+      ],
+      "confirmed_details": [
+        "Meuble situé contre le mur droit du laboratoire, visible dans la photo du décor Ra Vincent et le plan final ILP vers 50,4 s ; forme distincte des meubles déjà livrés.",
+        "Carter horizontal clair avec partie supérieure inclinée, cinq logements verticaux : trois occupés par des éléments compacts beige-gris et deux à motif oblong clair.",
+        "Petit clavier noir à gauche, rectangle noir à droite, rayures diagonales sous la rangée et longues lignes horizontales sur la façade basse.",
+        "Pied gauche étroit, appuis bas et traverse inférieure visibles ; partie droite masquée par le pupitre dans les références."
+      ],
+      "extrapolated_details": [
+        "Pied droit, appuis arrière et surfaces occultées complétés sobrement à partir de la construction visible du côté gauche.",
+        "Face arrière et dessous simplifiés ; aucun mécanisme intérieur ni branchement non documenté n’est inféré.",
+        "Les formes précises des éléments encastrés, petites vis, grille du rectangle noir, clavier, pictogramme de gauche et logo inférieur droit sont interprétés depuis des références à distance.",
+        "La fonction du meuble et des éléments insérés n’est pas identifiée ; ils ne sont pas présentés comme des armes, bouteilles de gaz ou outils médicaux certifiés.",
+        "Proportions, patine, microtexture et orientation du sprite sont adaptées ; dimensions physiques et fidélité exacte 1:1 non certifiées."
+      ],
+      "notes_fidelite": [
+        "Meuble situé contre le mur droit du laboratoire, visible dans la photo du décor Ra Vincent et le plan final ILP vers 50,4 s ; forme distincte des meubles déjà livrés.",
+        "Carter horizontal clair avec partie supérieure inclinée, cinq logements verticaux : trois occupés par des éléments compacts beige-gris et deux à motif oblong clair.",
+        "Petit clavier noir à gauche, rectangle noir à droite, rayures diagonales sous la rangée et longues lignes horizontales sur la façade basse.",
+        "Pied gauche étroit, appuis bas et traverse inférieure visibles ; partie droite masquée par le pupitre dans les références.",
+        "Pied droit, appuis arrière et surfaces occultées complétés sobrement à partir de la construction visible du côté gauche.",
+        "Face arrière et dessous simplifiés ; aucun mécanisme intérieur ni branchement non documenté n’est inféré.",
+        "Les formes précises des éléments encastrés, petites vis, grille du rectangle noir, clavier, pictogramme de gauche et logo inférieur droit sont interprétés depuis des références à distance.",
+        "La fonction du meuble et des éléments insérés n’est pas identifiée ; ils ne sont pas présentés comme des armes, bouteilles de gaz ou outils médicaux certifiés.",
+        "Proportions, patine, microtexture et orientation du sprite sont adaptées ; dimensions physiques et fidélité exacte 1:1 non certifiées."
+      ],
+      "new_subject": true,
+      "canonical_subject": "meuble_wy_cinq_logements_verticaux",
+      "canonical_state": "modules_encastres",
+      "full_body": true,
+      "reconstruction": true,
+      "instant_du_film_completement_documente": false,
+      "reconstitution_zones_non_documentees": true,
+      "fidelite_exacte_1_a_1_verifiee": false,
+      "related_asset_ids": [
+        120,
+        121
+      ],
+      "usage_court": "Mobilier de laboratoire · fonction non identifiée",
+      "integration_hint": "Meuble entier à cinq logements, dont trois occupés. Placer les appuis au sol ; fonction des modules non identifiée. Aucun objet encastré n’est fourni séparément.",
+      "placement_note": "Aligner les pieds et appuis au sol ; dos à placer contre le mur. Pied droit et surfaces masquées reconstitués.",
+      "id": 165,
+      "lot": 14,
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1536,
+      "hauteur_px": 1024,
+      "taille_octets": 2071699,
+      "sha256": "b1019354e944dbd2d908443a80c86ca2fe37482584dd8e5a319d848de0accaff",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "pixels_entierement_transparents": 580845,
+        "pourcentage_entierement_transparent": 36.9291,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        67,
+        83,
+        1488,
+        996
+      ],
+      "marges_contenu_px": {
+        "gauche": 67,
+        "haut": 83,
+        "droite": 48,
+        "bas": 28
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.506185,
+        "y": 0.972656,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      },
+      "animation_incluse": false,
+      "alignement_intertrames_verifie": false,
+      "echelle_physique_canonique": null
+    },
+    {
+      "nom": "Ceinture, tablier et pans rouges de Kwei",
+      "nom_court": "Ceinture et tablier de Kwei",
+      "categorie": "yautja",
+      "fichier": "sprites/yautja/166_ceinture_tablier_pans_rouges_kwei.png",
+      "pose": "Ceinture vide en volume avec trois plaques centrales superposées et deux longs pans de tissu rouge.",
+      "orientation": "Vue frontale légèrement surplombante, faible ouverture de trois quarts.",
+      "type_visuel": "equipement_isole_reconstitue",
+      "base_de_reference": "La photo primaire du costume fabriqué par Wētā gouverne la silhouette, les matières et la longueur des pans. Deux vues du prototype officiel NECA sous licence corroborent le tablier et le relief central. Le sprite nº157 fournit seulement le rendu peint. Le revers simple de ceinture, les plis complets et la microtexture sont reconstitués.",
+      "sources": [
+        "https://www.wetaworkshop.com/web/image/133200-2ecea622/1.jpg",
+        "https://www.wetaworkshop.com/projects/predator-badlands",
+        "https://store.necaonline.com/cdn/shop/files/51760_UNP_1.jpg?v=1784139187&width=3840",
+        "https://store.necaonline.com/collections/alien-predator/products/predator-badlands-ultimate-kwei-predator-deks-brother-7-inch-scale-action-figure",
+        "https://store.necaonline.com/cdn/shop/files/51760_UNP_3.jpg?v=1784139187&width=3840"
+      ],
+      "confirmed_details": [
+        "Ceinture brun sombre formée de bandes horizontales et pièces latérales grises.",
+        "Grande boucle centrale en relief organique brun, distincte d’une tête ou d’un crâne humain.",
+        "Trois plaques centrales ocres arrondies, superposées en un tablier court et effilé.",
+        "Deux longs pans de tissu rouge foncé, irréguliers et effilochés, descendant nettement sous les plaques."
+      ],
+      "extrapolated_details": [
+        "Revers continu de la ceinture et doublure intérieure simples ; fermeture cachée non documentée.",
+        "Courbure de l’ovale vide, épaisseur complète des plaques et attaches masquées.",
+        "Relief précis de la boucle, distribution des fissures et rayures adaptés au rendu peint.",
+        "Plis, déchirures, largeur exacte et placement des fils des pans rouges reconstitués. Le tissu est plus saturé et les pans s’écartent davantage dans le sprite."
+      ],
+      "notes_fidelite": [
+        "Ceinture brun sombre formée de bandes horizontales et pièces latérales grises.",
+        "Grande boucle centrale en relief organique brun, distincte d’une tête ou d’un crâne humain.",
+        "Trois plaques centrales ocres arrondies, superposées en un tablier court et effilé.",
+        "Deux longs pans de tissu rouge foncé, irréguliers et effilochés, descendant nettement sous les plaques.",
+        "Revers continu de la ceinture et doublure intérieure simples ; fermeture cachée non documentée.",
+        "Courbure de l’ovale vide, épaisseur complète des plaques et attaches masquées.",
+        "Relief précis de la boucle, distribution des fissures et rayures adaptés au rendu peint.",
+        "Plis, déchirures, largeur exacte et placement des fils des pans rouges reconstitués. Le tissu est plus saturé et les pans s’écartent davantage dans le sprite."
+      ],
+      "new_subject": false,
+      "canonical_subject": "Ceinture et tablier de Kwei",
+      "canonical_state": "Équipement vide isolé",
+      "full_body": true,
+      "reconstruction": true,
+      "instant_du_film_completement_documente": false,
+      "reconstitution_zones_non_documentees": true,
+      "fidelite_exacte_1_a_1_verifiee": false,
+      "complement_de_asset_id": 40,
+      "equipment_set_asset_ids": [
+        157,
+        159
+      ],
+      "usage_court": "Équipement isolé · ensemble de taille",
+      "integration_hint": "Ceinture, trois plaques et pans rouges réunis dans un seul PNG. Convient à un aperçu d’équipement ; séparation des couches, attaches, proportions et occlusions nécessaires pour le porter sur un personnage.",
+      "placement_note": "Ensemble d’équipement isolé ; intérieur et attaches cachées reconstitués. Pour le personnage, régler l’attache à la taille et les couches de tissu.",
+      "id": 166,
+      "lot": 14,
+      "format": "PNG",
+      "mode": "RGBA",
+      "largeur_px": 1254,
+      "hauteur_px": 1254,
+      "taille_octets": 1494233,
+      "sha256": "1ce359e34401ce39a9344dc06b7885c77b123e52def7bb29aa23b0c7610e7e1a",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "pixels_entierement_transparents": 1029864,
+        "pourcentage_entierement_transparent": 65.4915,
+        "coins": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "boite_contenu_alpha_superieur_8_px": [
+        280,
+        131,
+        972,
+        1215
+      ],
+      "marges_contenu_px": {
+        "gauche": 280,
+        "haut": 131,
+        "droite": 282,
+        "bas": 39
+      },
+      "ancrage_geometrique_indicatif": {
+        "x": 0.499203,
+        "y": 0.9689,
+        "type": "centre_bas_de_la_boite_contenu",
+        "a_ajuster_dans_le_moteur": true
+      },
+      "animation_incluse": false,
+      "alignement_intertrames_verifie": false,
+      "echelle_physique_canonique": null
+    }
+  ],
+  "version": "14.0",
+  "nombre_fichiers_png": 7,
+  "nombre_sprites_lot_14": 7,
+  "notes_documentaires_v14": [
+    {
+      "id": 4,
+      "note": "Les nº 160 et 161 ajoutent une posture posée reconstituée et une attaque quasi frontale complète. Les vols 4 et 25 restent disponibles ; aucun cycle aligné n’est fourni.",
+      "fields": {
+        "complement_pose_asset_id": 160,
+        "complement_attaque_asset_id": 161
+      }
+    },
+    {
+      "id": 25,
+      "note": "Les nouveaux états 160 et 161 complètent les usages du Vulture, sans remplacer ce vol ni partager un alignement intertrames validé.",
+      "fields": {
+        "complement_pose_asset_id": 160,
+        "complement_attaque_asset_id": 161
+      }
+    },
+    {
+      "id": 99,
+      "note": "Le nº 162 fournit la plante avec toutes les coupes vides pour un état de ressource absente. La disposition et les pivots doivent être harmonisés dans le jeu.",
+      "fields": {
+        "complement_vide_asset_id": 162
+      }
+    },
+    {
+      "id": 130,
+      "note": "Le nº 163 est un état après cueillette reconstitué à partir de cette plante. Il ne représente ni bouton fermé ni phase canonique de floraison.",
+      "fields": {
+        "complement_apres_cueillette_asset_id": 163
+      }
+    },
+    {
+      "id": 124,
+      "note": "Le nº 163 peut servir d’état du végétal après prélèvement de cette fleur dans les règles de récolte du jeu. Cette association ne certifie pas une séquence animée.",
+      "fields": {
+        "complement_plante_cueillie_asset_id": 163
+      }
+    },
+    {
+      "id": 40,
+      "note": "Le nº 166 isole l’ensemble de taille de Kwei : ceinture, tablier et pans rouges. Il complète le plastron 157 et les jambières 159, avec les attaches cachées reconstituées.",
+      "fields": {
+        "complement_ceinture_asset_id": 166
+      }
+    }
+  ],
+  "nombre_composants_architecturaux_a_raccorder": 1,
+  "nombre_portions_a_raccorder_au_decor": 0
+}

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rapport visuel QA — The Predator v0.4</title>
+<style>
+body{margin:0;background:#050807;color:#e6f0eb;font:15px/1.55 system-ui,sans-serif}main{width:min(1180px,94vw);margin:auto;padding:40px 0 80px}h1,h2{color:#c8f58e}.hero{border:1px solid #35594f;padding:24px;background:#08130f}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}.stat{border:1px solid #29473f;padding:14px;background:#07110f}.stat b{display:block;font-size:28px;color:#fff}.shots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}figure{margin:0;border:1px solid #29473f;background:#08130f;padding:8px}img{width:100%;display:block}figcaption{padding:8px;color:#9db3aa}table{width:100%;border-collapse:collapse}td,th{padding:8px;border-bottom:1px solid #29473f;text-align:left}code{color:#ffd36f}@media(max-width:800px){.stats,.shots{grid-template-columns:1fr}}
+</style></head><body><main>
+<section class="hero"><p>YAUTJA · LA LONGUE CHASSE · DLC CINÉMA</p><h1>THE PREDATOR — CHASSE CROISÉE v0.4.0-candidate.1</h1>
+<p>Rapport de validation de la candidate v0.4. Les captures ci-dessous proviennent réellement du standalone testé dans Chromium.</p></section>
+<section class="stats">
+<div class="stat"><b>52/52</b>scènes Chromium</div>
+<div class="stat"><b>8/8</b>interactions</div>
+<div class="stat"><b>94/94</b>contrôles Node</div>
+<div class="stat"><b>0</b>erreur runtime</div>
+</section>
+<h2>Nouveautés réellement testées</h2>
+<table><thead><tr><th>Contrôle</th><th>Résultat</th></tr></thead><tbody><tr><td>predator-controls</td><td>OK</td></tr><tr><td>human-controls</td><td>OK</td></tr><tr><td>room-transition-checkpoint-host-event</td><td>OK</td></tr><tr><td>storage-blocked-fallback</td><td>OK</td></tr><tr><td>v03-save-migration</td><td>OK</td></tr><tr><td>human-cover-mitigation</td><td>OK</td></tr><tr><td>upgrade-organic-armor</td><td>OK</td></tr><tr><td>performance-grade-and-host-event</td><td>OK</td></tr></tbody></table>
+<h2>Captures</h2><div class="shots"><figure><img src="captures/menu-v04.png" alt="Menu"><figcaption>Menu</figcaption></figure><figure><img src="captures/human-multizone-v04.png" alt="Human Multizone"><figcaption>Human Multizone</figcaption></figure><figure><img src="captures/fugitive-v04.png" alt="Fugitive"><figcaption>Fugitive</figcaption></figure><figure><img src="captures/upgrade-armor-v04.png" alt="Upgrade Armor"><figcaption>Upgrade Armor</figcaption></figure><figure><img src="captures/human-final-boss-v04.png" alt="Human Final Boss"><figcaption>Human Final Boss</figcaption></figure><figure><img src="captures/predator-final-v04.png" alt="Predator Final"><figcaption>Predator Final</figcaption></figure><figure><img src="captures/timeline-v04.png" alt="Timeline"><figcaption>Timeline</figcaption></figure><figure><img src="captures/systems-v04.png" alt="Systems"><figcaption>Systems</figcaption></figure></div>
+<h2>Contrat d’intégration</h2>
+<p>La route Next.js relaie désormais les événements <code>ready</code>, <code>migration</code>, <code>checkpoint</code>, <code>scene-start</code>, <code>scene-complete</code> et <code>campaign-complete</code>. Les cinq slots principaux et <code>HuntCanvas</code> restent explicitement non fusionnés dans cette candidate.</p>
+<h2>Limites visuelles</h2>
+<p>Les sprites et décors autonomes restent des graphismes vectoriels originaux/provisoires. Trois décors V43 du projet hôte peuvent être réutilisés lorsque le DLC est installé dans le dépôt. Aucun photogramme officiel du film n’est inclus.</p>
+</main></body></html>

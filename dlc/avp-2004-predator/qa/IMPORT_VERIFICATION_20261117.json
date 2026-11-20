@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "performedAtUtc": "2026-11-17T03:25:12.025634+00:00",
+  "command": "python3 dlc/tools/verify_archive_recovery_20261117.py",
+  "readOnly": true,
+  "verifierSha256": "a9020261dd0e99b5c2ac750077bfb249de2554e69c66c15982b93c2aa2bde197",
+  "inventorySha256": "21eefd5c8cbd2c94cf79a76c4905be21dd2dbc1e577845a13722ca9f9b6c488f",
+  "pack": "avp-2004-predator",
+  "inventory": "dlc/avp-2004-predator/qa/IMPORT_INVENTORY_20261117.json",
+  "status": "PASS",
+  "scope": "Byte preservation, archive structure, image decode and recorded checksums; no gameplay or artistic approval.",
+  "auditedBaseCommit": "351208cc9d3a7157e563a0426f9208aecab6c20e",
+  "files": 108,
+  "hashMatches": 108,
+  "bytes": 812552,
+  "uniqueFileSha256": 92,
+  "jsonParsed": 12,
+  "pngDecoded": 6,
+  "svgParsed": 68,
+  "pngDetails": [
+    {
+      "path": "dlc/avp-2004-predator/v0.5.0/screenshots/control_09_blooding.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "rgbaSha256": "b4d5e2506bb6a963558704b97c7bff505747cee24afe30d6ae706b90a5629be1"
+    },
+    {
+      "path": "dlc/avp-2004-predator/v0.5.0/screenshots/control_11_lex.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "rgbaSha256": "1455e993ad481362004c29c3fa34ef5e6dda049ef1b1b14fca81bce9de9d8301"
+    },
+    {
+      "path": "dlc/avp-2004-predator/v0.5.0/screenshots/control_15_rescue.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "rgbaSha256": "4a54df902ae440e8ef7583619e8b3c69edb4700b50910370c682af0144ac58ce"
+    },
+    {
+      "path": "dlc/avp-2004-predator/v0.5.0/screenshots/control_17_shuriken.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "rgbaSha256": "878444c211d6a0720a6c5f169ef0b27aaf48703cae0d3712bfb1238775837512"
+    },
+    {
+      "path": "dlc/avp-2004-predator/v0.5.0/screenshots/control_17_wristblade.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "rgbaSha256": "83d0a0a92880f598a5fcc818cea065f568e570e81fbbef39ae5f19732e69f406"
+    },
+    {
+      "path": "dlc/avp-2004-predator/v0.5.0/screenshots/control_19_predalien.png",
+      "width": 1280,
+      "height": 720,
+      "mode": "RGB",
+      "rgbaSha256": "82fdf65df8a9f26cda644f82bfd2f83faddf58a3a1d8279a55b9928be12bebb4"
+    }
+  ],
+  "archivesChecked": [
+    {
+      "path": "dlc/avp-2004-predator/v0.5.0/docs/reference/AVP_2004_Inventaire.xlsx",
+      "entries": 21,
+      "crc": "PASS"
+    }
+  ],
+  "preservedBaselineFilesChecked": 0,
+  "historicalChecksumManifests": [
+    {
+      "manifest": "dlc/avp-2004-predator/v0.5.0/MANIFEST.json",
+      "checkedEntries": 107,
+      "matchedEntries": 107,
+      "explicitPathRelocations": {},
+      "status": "PASS",
+      "issues": []
+    }
+  ],
+  "issues": [],
+  "notPerformed": [
+    "historical-runtime-tests",
+    "installers",
+    "rebuilding-historical-artifacts",
+    "browser-playthrough",
+    "Next-build",
+    "native-Yautja-integration",
+    "human-artistic-review",
+    "one-to-one-fidelity-certification"
+  ]
+}
