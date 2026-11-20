@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V163: contrats Queen Hunt et jalon firstQueenResolved ; champ additif, absent des anciennes sauvegardes. */
+  queenHuntV163?: import("./systems/queenHuntV163").QueenHuntStateV163 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

@@ -48,6 +48,7 @@ import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
 import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shipInsertionEnergy";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
+import { inspectQueenHuntV163, normalizeQueenHuntV163, QUEEN_HUNT_VERSION_V163 } from "./systems/queenHuntV163";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -1268,6 +1269,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
+    ...(source.queenHuntV163 === undefined ? {} : {
+      queenHuntV163: normalizeQueenHuntV163(source.queenHuntV163, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1600,6 +1604,14 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     if (typeof value.createdAt !== "string" ||
         !normalizeGauntletCampaignV134(value.gauntletV134,value.createdAt))
       return { save:null, failure:"invalid-save" };
+  }
+  // V163 : un registre Queen Hunt futur ou étranger est refusé, jamais effacé.
+  if (value.queenHuntV163 !== undefined && value.queenHuntV163 !== null) {
+    if (isRecord(value.queenHuntV163) && Number(value.queenHuntV163.version) > QUEEN_HUNT_VERSION_V163)
+      return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" ||
+        inspectQueenHuntV163(value.queenHuntV163, value.createdAt).status !== "valid")
+      return { save: null, failure: "invalid-save" };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;
