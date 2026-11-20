@@ -1,4 +1,4 @@
-name: Qualify current P0 through P3 candidate
+name: Verify debrief honor and Clan Ship dialogue
 
 on:
   push:
@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: yautja-p0-p3-next-stage3
+  group: yautja-p0-p3-next-off-ship-state
   cancel-in-progress: false
 
 jobs:
@@ -19,13 +19,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '437b6fe0928c771830d6571db15acc65967bd92e'
+      ASSET_RACCORDS_SOURCE_COMMIT: '55515da65f0ece85dcfb4de7d32e8050e4a75c35'
       BASE_COMMIT: '62b3658cc04b3404a0e302163230995d47d83d66'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '437b6fe0928c771830d6571db15acc65967bd92e'
+          ref: '55515da65f0ece85dcfb4de7d32e8050e4a75c35'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -45,8 +45,6 @@ jobs:
             /.github/workflows/
             /docs/
             /public/game/xeno-prime/berceau-v1/
-            /public/audio/
-            /public/game/assets/clan-field-20261103/
             /public/**/manifest.json
             /public/game/p0-sprites-20261113/warp/
             /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
@@ -62,98 +60,7 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-      - name: Generate the official candidate inventory
-        run: |
-          node scripts/materialize-asset-raccords-20261120.mjs candidate
-          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
-          node scripts/check-hunt-integration-source-v112.mjs --current
-      - name: Verify Next types
-        run: |
-          node node_modules/next/dist/bin/next typegen
-          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
-      - name: Exercise the changed and adjacent contracts
-        if: ${{ !cancelled() }}
-        shell: bash
-        run: |
-          git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_COMMIT"
-          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
-          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
-            tests/scene-audio.test.mjs \
-            tests/game-client-ship-flow.test.mjs \
-            tests/harvest-inventory-v112.test.mjs \
-            tests/hunt-harvest-runtime-v111.test.mjs \
-            tests/honor-sources-v169.test.mjs \
-            tests/nursery-campaign.test.mjs \
-            tests/canopy-traversal-v112.test.mjs \
-            tests/hunt-canopy-runtime-v112.test.mjs \
-            tests/hunt-skinning-worksite-20261109.test.mjs \
-            tests/hunt-harvest-runtime-v111.test.mjs \
-            tests/trophy-harvest-v111.test.mjs \
-            tests/warp-module-bay.test.mjs \
-            tests/warp-epochs-v165.test.mjs \
-            tests/tantalus-warp-v167.test.mjs \
-            tests/clan-logistics-v108.test.mjs \
-            tests/clan-supply-route-v109.test.mjs \
-            tests/clan-war-summary-keyboard-20261120.test.mjs \
-            tests/ship-receipt-v161.test.mjs \
-            tests/homeworld-contracts-v68-integration.test.mjs \
-            tests/residence-life-v150.test.mjs \
-            tests/mobility-training-reward.test.mjs \
-            tests/pit-backward-throws-v112.test.mjs \
-            tests/pit-forward-throws-v109.test.mjs | sort -u)
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
-      - name: Strict lint of modified source and QA drivers
-        if: ${{ !cancelled() }}
-        shell: bash
-        run: |
-          mapfile -t edited < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'app/**/*.ts' 'app/**/*.tsx' 'scripts/*.mjs' 'tests/*.test.mjs')
-          test "${#edited[@]}" -gt 0
-          node node_modules/eslint/bin/eslint.js --max-warnings=0 "${edited[@]}"
-      - name: Preserve inventory and materialization evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: runtime-candidate-437b6fe0928c771830d6571db15acc65967bd92e
-          path: outputs/qa-asset-raccords-20261120/
-          if-no-files-found: error
-
-  operations:
-    name: V115 Chromium keyboard, Web Locks and original WAV
-    runs-on: ubuntu-24.04
-    timeout-minutes: 12
-    env:
-      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
-      COMMAND_OPERATIONS_OUTPUT: outputs/p0-p3-next/command-v115
-    steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: 437b6fe0928c771830d6571db15acc65967bd92e
-          persist-credentials: false
-          fetch-depth: 1
-          filter: blob:none
-          sparse-checkout-cone-mode: false
-          sparse-checkout: |
-            /*
-            !/*/
-            /app/
-            /lib/
-            /types/
-            /tests/browser/
-            /scripts/
-            /public/audio/manifest.json
-            /public/audio/sfx/
-            /public/game/assets/clan-field-20261103/
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
-        with:
-          node-version: '22'
-      - run: npm ci --ignore-scripts --no-audit --no-fund
-      - run: node scripts/qa-clan-war-command-operations-20261109.mjs
-      - name: Preserve V115 evidence
-        if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
-        with:
-          name: operations-v115-437b6fe0928c771830d6571db15acc65967bd92e
-          path: outputs/p0-p3-next/command-v115/
-          if-no-files-found: error
-
+      - name: Verify debrief identity, quota and dialogue recovery with real saves
+        run: node --experimental-strip-types --test --test-reporter=spec tests/honor-sources-v169.test.mjs tests/clan-ship-dialogue.test.mjs tests/clan-ship-hunt-dialogue.test.mjs
+      - name: Strict lint of the updated state and fixtures
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/honorSourcesV169.ts app/game/systems/clanShipDialogue.ts tests/honor-sources-v169.test.mjs tests/clan-ship-dialogue.test.mjs
