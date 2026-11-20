@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FINAL_CANDIDATE_SHA: '6a8dd3b602ce36ca9fee85024c6c954c414b4817'
+  FINAL_CANDIDATE_SHA: 'd198129f596e3b928e730912053ffa0616d5fd6e'
 
 jobs:
   runtime-candidate:
@@ -23,7 +23,7 @@ jobs:
     permissions:
       contents: read
     env:
-      ASSET_RACCORDS_SOURCE_COMMIT: '6a8dd3b602ce36ca9fee85024c6c954c414b4817'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'd198129f596e3b928e730912053ffa0616d5fd6e'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
     steps:
@@ -119,6 +119,8 @@ jobs:
         run: |
           node node_modules/next/dist/bin/next typegen
           node --max-old-space-size=2600 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint the changed game integration
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/HuntCanvas.tsx app/game/HomeworldHub.tsx app/game/GameClient.tsx
       - name: Exercise changed and adjacent gameplay suites
         if: ${{ !cancelled() }}
         shell: bash
