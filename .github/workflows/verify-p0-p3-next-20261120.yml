@@ -1,4 +1,4 @@
-name: Verify final original assets, forge and campaign receipts
+name: Verify original scores, final assets and physical returns
 
 on:
   push:
@@ -6,9 +6,10 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 concurrency:
-  group: yautja-p0-p3-next final original assets
+  group: yautja-p0-p3-next-final-audio
   cancel-in-progress: false
 
 jobs:
@@ -19,13 +20,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
+      ASSET_RACCORDS_SOURCE_COMMIT: '233e5937ca8f73aee6519a3ab4362b31534a2f9b'
       BASE_COMMIT: '62b3658cc04b3404a0e302163230995d47d83d66'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
+          ref: '233e5937ca8f73aee6519a3ab4362b31534a2f9b'
           persist-credentials: false
           fetch-depth: 12
           filter: blob:none
@@ -113,7 +114,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: runtime-candidate-3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54
+          name: runtime-candidate-233e5937ca8f73aee6519a3ab4362b31534a2f9b
           path: outputs/qa-asset-raccords-20261120/
           if-no-files-found: error
 
@@ -125,7 +126,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
+      ASSET_RACCORDS_SOURCE_COMMIT: '233e5937ca8f73aee6519a3ab4362b31534a2f9b'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -133,12 +134,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
+      YAUTJA_QA_RUNTIME_COMMIT: '233e5937ca8f73aee6519a3ab4362b31534a2f9b'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
+          ref: '233e5937ca8f73aee6519a3ab4362b31534a2f9b'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -332,6 +333,12 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs catalogue
           ASSET_RACCORDS_PREPARE_ONLY=1 node scripts/qa-asset-raccords-browser-20261120.mjs
+      - name: Materialize exact tracked resources observed in the forge
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 44833505161 --name forge-browser-3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54 --dir "$RUNNER_TEMP/prior-forge"
+          PHG_FAILED_REPORT_FILE="$RUNNER_TEMP/prior-forge/forge/report.json" node scripts/materialize-asset-raccords-20261120.mjs forge-browser
       - name: Build and start the production application
         id: server
         run: |
@@ -352,14 +359,15 @@ jobs:
         if: ${{ !cancelled() && steps.server.outcome == 'success' }}
         env:
           CRADLE_RETURN_QA_URL: http://127.0.0.1:3121/
-          CRADLE_RETURN_QA_COMMIT: 3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54
+          CRADLE_RETURN_QA_COMMIT: 233e5937ca8f73aee6519a3ab4362b31534a2f9b
           CRADLE_RETURN_QA_SCENARIO: acid
+          CRADLE_RETURN_QA_AUDIO: '1'
           CRADLE_RETURN_QA_OUTPUT: outputs/p0-p3-next/cradle
         run: node scripts/qa-cradle-return-mentor-20261120.mjs
       - name: Preserve native forge and Cradle reports
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: forge-browser-3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54
+          name: forge-browser-233e5937ca8f73aee6519a3ab4362b31534a2f9b
           path: outputs/p0-p3-next/
           if-no-files-found: error
