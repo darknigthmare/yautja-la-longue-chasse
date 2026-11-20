@@ -87,6 +87,35 @@ test("swept swing stops at a thin solid wall and releases rather than crossing o
   assert.equal(runtime.canopySegmentClearV112({x:10,y:10},{x:200,y:10},[platform(90,0,2,40,"one-way")]),true);
 });
 
+test("grab and swing use the rope path as well as the actor's collision box",()=>{
+  const snag=platform(334,180,3,30);
+  const swing={supportId:support.id,length:220,angle:0,angularVelocity:3};
+  const grip=runtime.canopySwingPointV112(swing,support);
+  const actor={...body,x:grip.x-body.width/2,y:grip.y-body.height*.28};
+  const overhead=platform(grip.x-10,180,20,30);
+  assert.equal(runtime.canopySupportReachableV112(actor,support,[overhead]),true,
+    "the hunter can still climb beside the support");
+  assert.equal(runtime.attachCanopySwingV112(actor,support,[overhead]),null,
+    "a rope obstructed near its anchor cannot start a swing");
+
+  const next=runtime.stepCanopySwingV112(swing,actor,support,{moveAxis:1,climbAxis:0},.15,[snag],624);
+  assert.equal(next.detached,true);
+  assert.ok(next.body.x>actor.x && next.body.y>snag.y+snag.height,
+    "the obstacle touches the rope while the hunter is below it");
+  const lastGrip=runtime.canopySwingPointV112(next.swing,support);
+  assert.ok(runtime.canopySegmentClearV112({x:grip.x,y:support.y},lastGrip,[snag]));
+  close(next.body.x+body.width/2,lastGrip.x);
+  close(next.body.y+body.height*.28,lastGrip.y);
+  close(next.body.velocityX,runtime.releaseCanopySwingV112(next.swing).velocityX);
+});
+
+test("swing physics and stamina share the same bounded axes",()=>{
+  const swing=runtime.attachCanopySwingV112(body,support);
+  const normal=runtime.stepCanopySwingV112(swing,body,support,{moveAxis:1,climbAxis:-1},.05,[],624);
+  const saturated=runtime.stepCanopySwingV112(swing,body,support,{moveAxis:100,climbAxis:-100},.05,[],624);
+  assert.deepEqual(saturated,normal);
+});
+
 test("support reach checks reject remote or wall-separated grips and malformed suspended state",()=>{
   assert.equal(runtime.canopySupportReachableV112(body,support,[]),true);
   assert.equal(runtime.canopySupportReachableV112({...body,x:1000},support,[]),false);

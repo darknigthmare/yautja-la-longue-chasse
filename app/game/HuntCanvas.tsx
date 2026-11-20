@@ -8785,7 +8785,7 @@ function updatePlayer(
     (state.jumpAssist?.bufferSeconds ?? 0) > 0;
   if (player.climbing && currentClimbZone && !player.canopySwing &&
     !climbJumpRequested && Math.abs(moveAxis) > 0.5) {
-    player.canopySwing = attachCanopySwingV112(player, currentClimbZone);
+    player.canopySwing = attachCanopySwingV112(player, currentClimbZone, state.world.platforms);
     if (player.canopySwing) announce(state, "Balancement : direction pour pomper, Haut/Bas pour la longueur, Saut pour lâcher.", 3);
   }
   if (
@@ -8996,6 +8996,7 @@ function updatePlayer(
   player.velocityX = motion.velocityX;
   player.velocityY = motion.velocityY;
   const minimumPlayerY = state.world.minY ?? 0;
+  const swingClippedAtCeiling = Boolean(player.canopySwing) && player.y < minimumPlayerY;
   if (player.y < minimumPlayerY) {
     player.y = minimumPlayerY;
     player.velocityY = Math.max(0, player.velocityY);
@@ -9031,9 +9032,11 @@ function updatePlayer(
     maximumX = state.world.bossArena.x - 90;
   }
   const boundedX = clamp(player.x, 0, maximumX);
-  if (boundedX !== player.x || player.y <= minimumPlayerY || player.grounded) {
+  if (boundedX !== player.x || swingClippedAtCeiling || player.grounded) {
+    if (player.climbing && !player.grounded) player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
+    player.climbing = false;
+    player.climbZoneId = null;
     player.canopySwing = null;
-    if (boundedX !== player.x) { player.climbing = false; player.climbZoneId = null; }
   }
   player.x = boundedX;
   const currentClimbSupport = player.climbing ? player.climbZoneId : null;
