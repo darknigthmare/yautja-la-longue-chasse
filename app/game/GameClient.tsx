@@ -1515,8 +1515,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     }
   }, [screen, selectedMission, shipStationOpen, hubLocation]);
 
+  const cradleReturnPending = save.buriedCradle?.status === "extracted" &&
+    Boolean(save.buriedCradle.returnVisit) && save.buriedCradle.personalShipId === selectedShipId;
+  const cradleReturnOnDeck = screen === "deck" && hubLocation === "deck" && cradleReturnPending;
   useEffect(() => {
-    const context: GameMusicContext | null = settingsOpen || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
+    const context: GameMusicContext | null = cradleReturnOnDeck ? "cradle-return"
+      : settingsOpen || (screen === "buried-cradle-briefing" && cradleReturnPending) || screen === "planet-arrival" || screen === "prologue" || screen === "youth-training" || screen === "solo-v66" || screen === "solo-v67" || screen === "solo-v68" || screen === "solo-v69" || screen === "solo-v70" || screen === "solo-v90" ? null
       : screen === "title" ? "menu"
       : screen === "mission" ? huntMusicContext
       : screen === 'buried-cradle' ? 'exploration'
@@ -1525,11 +1529,13 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       : screen === "pit" || screen === "pit-narrative" ? "combat"
       : hubLocation === "homeworld" && (screen === "homeworld" || shipStationOpen) ? "homeworld"
       : "ship";
-    const apply = () => { void audioRef.current?.setMusicContext(document.hidden ? null : context, { fadeSeconds: 0.5 }); };
+    const apply = () => {
+      void audioRef.current?.setMusicContext(document.hidden && context !== "cradle-return" ? null : context, { fadeSeconds: 0.5 });
+    };
     apply();
     document.addEventListener("visibilitychange", apply);
     return () => document.removeEventListener("visibilitychange", apply);
-  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen]);
+  }, [screen, settingsOpen, huntMusicContext, hubLocation, shipStationOpen, cradleReturnOnDeck, cradleReturnPending]);
 
   useEffect(() => {
     const apply = () => audioRef.current?.setPaused(settingsOpen || document.hidden);
@@ -2846,7 +2852,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ownedShipIds: fleet.unlockedShipIds, returnActive: true, returnObservation: observation });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
-    if (result.changed && action.type === "treat-return") playGameplaySound("medicomp");
+    if (result.changed && action.type === "treat-return") {
+      playGameplaySound("medicomp");
+      playGameplaySound("armor-repair");
+    }
     setToast(result.message); return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
     persistSocialProgress, playGameplaySound, resumableHunt, screen, settingsOpen, trophyWorkshop]);
@@ -2860,6 +2869,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const result = actBuriedCradleCampaign(current, action, { personalShipId: fleet.selectedShipId, ownedShipIds: fleet.unlockedShipIds });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    if (result.changed && action.type === 'extract') audioRef.current?.resetCradleReturnMusic();
     if (action.type !== 'checkpoint') setToast(result.message);
     if (action.type === 'depart') { setHubLocation('deck'); setScreen('buried-cradle'); }
     return true;
@@ -5093,7 +5103,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <section className="screen panel-screen" inert={settingsOpen}>
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
-              <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)} />
+              <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)}
+                onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
+                  ? undefined : () => go("buried-cradle-briefing")} />
             </Suspense>
             <p className="source-badge">
               <button type="button" className="ghost-button" data-warp-entry-v165 onClick={() => go("warp-epochs")}>

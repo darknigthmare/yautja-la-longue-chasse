@@ -17,6 +17,7 @@ import CompanionCataloguePanel from "./CompanionCataloguePanel";
 import HuntingHoundsPanelV147 from "./HuntingHoundsPanelV147";
 import GameReserveEntryV66 from "./GameReserveEntryV66";
 import type {GameReserveChoiceV109} from './systems/gameReserveV66';
+import { rankRiteDossierV168 } from "./systems/rankRiteDossierV168";
 
 const regions = [
   ["Désert", "Unblooded", "Dunes, oueds, citerne tribale et canyons de chasse."],
@@ -48,10 +49,17 @@ function HomeworldRegionArt({ name }: { name: string }) {
 }
 
 /** Read-only design dossier. Never grants evidence, equipment, ownership or XP. */
-export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: { save: SaveGame; onClose: () => void; onGameReserveV66?: (fresh: boolean, version?: GameReserveChoiceV109) => boolean }) {
+export default function ClanChroniclePanel({ save, onClose, onGameReserveV66, onOpenCradle }: {
+  save: SaveGame;
+  onClose: () => void;
+  onGameReserveV66?: (fresh: boolean, version?: GameReserveChoiceV109) => boolean;
+  onOpenCradle?: () => void;
+}) {
   const [section, setSection] = useState<"journey" | "worlds" | "humans" | "companions">("journey");
   const [query, setQuery] = useState("");
   const chronicle = useMemo(() => save.prologue?.chronicle ?? migrateV35ClanChronicle(save), [save]);
+  const rankDossier = useMemo(() => rankRiteDossierV168(save), [save]);
+  const narrativeRank = getChronicleRank(chronicle) ?? "youngling";
   const results = useMemo(() => {
     const search = fold(query.trim());
     return concepts.entries.filter(entry => fold(`${entry.id} ${entry.profile} ${entry.weapon}`).includes(search));
@@ -71,25 +79,54 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: 
     {section === "journey" && <div>
       <aside className={styles.legacy} data-chronicle-legacy-rank={chronicle.legacyRecognition?.rankId ?? "none"}>
         <h3>{save.prologue ? "Chronique de jeunesse" : "Campagne existante préservée"}</h3>
-        <p>{save.profile.hunterName} · {save.prologue ? CHRONICLE_RANK_LABELS[getChronicleRank(chronicle) ?? "youngling"] : CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
-        <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le vaisseau, les trophées, les contrats et THE PIT restent accessibles comme auparavant."}</p>
+        <p>{save.profile.hunterName} · {save.prologue ? (narrativeRank === "young-blood" ? "Reconnaissance locale de la cohorte" : CHRONICLE_RANK_LABELS[narrativeRank]) : CHRONICLE_RANK_LABELS[save.profile.rankId]} · {save.profile.honor} honneur · {save.statistics.missionsCompleted} mission(s) terminée(s).</p>
+        <p>{save.prologue ? "Le rang narratif vient du prologue et de ses rites réellement enregistrés. Aucun honneur adulte, biomask ou vaisseau n’est accordé par la nurserie." : "Cette reconnaissance historique ne valide pas rétroactivement les nouveaux rites. Le grade affiché appartient à la carrière adulte. Les actes du parcours du clan figurent dans le registre ci-dessous."}</p>
       </aside>
       <div className={styles.opening}><p className={styles.eyebrow}>OUVERTURE · YOUNGLING</p><h3>L’Arène de la nurserie</h3><p>Duel d’enfance sans HUD, vision rouge, orange et jaune. Maintien « Prêt », poings, prises, petites lames détachées et victoire au KO. La caméra révèle ensuite la nurserie bâtie autour du squelette sec et évidé d’un scolopendre géant, puis la lune rouge.</p><p>Le titre reste <strong>Yautja: The Long Hunt</strong>. Le passage Unblooded précède l’arrivée à la cité, le dojo, le premier biomask, les baraquements et le premier réveil.</p></div>
       {save.prologue && <aside className={styles.legacy} data-youth-chronicle><h3>Formation auprès du clan</h3><p>{youthCampaignObjective(save.youthTraining)}</p><p>{youthEquipmentSummary(save.youthTraining)}</p><p>Les gestes du dojo, les remises d’équipement, le parcours chronométré, le duel, le repos et la reconnaissance accompagnée du désert gardent leurs propres preuves. Ils ne remplacent ni les Premières Pistes ni la chasse sans guide ; aucun rang supplémentaire ne vient d’une visite de menu.</p></aside>}
-      <h3 className={styles.subheading}>Les preuves précèdent les promotions</h3>
+      <section aria-labelledby="chronicle-campaign-rank-rites" data-campaign-rank-rites-v168>
+        <h3 id="chronicle-campaign-rank-rites" className={styles.subheading}>Épreuves de rang de la campagne</h3>
+        <p>Honneur pris en compte pour les seuils · {rankDossier.honor.toLocaleString("fr-FR")}</p>
+        <details>
+          <summary>Seuils d’honneur et épreuves</summary>
+          <ol>
+            {rankDossier.thresholds.map(tier => <li key={tier.level} data-rank-threshold-v168={tier.level}>
+              <strong>{tier.bibleRank}</strong> · {tier.threshold.toLocaleString("fr-FR")} · {tier.trial}.
+              {" "}{tier.remainingHonor > 0 ? `Il manque ${tier.remainingHonor.toLocaleString("fr-FR")} d’honneur.` : "Seuil atteint."}
+            </li>)}
+          </ol>
+        </details>
+        <ol className={styles.rites}>
+          <li><h4>Young Blood · L-02 et L-03</h4><p>Chasser le Quatza-Rij à trois, rentrer, puis recevoir la reconnaissance du clan.</p><p>Épreuve à produire.</p></li>
+          <li><h4>Blooded · L-04</h4><p>Traverser la pyramide en triade, chacun avec sa prise, puis recevoir la marque à l’acide.</p><p>Épreuve à produire.</p></li>
+          <li data-rank-queen-proof-v168>
+            <h4>Elite · L-05, L-06 et L-07</h4>
+            <ul>
+              <li>Chasse solitaire · Quatza-Rij adulte. Chapitre indisponible.</li>
+              <li>Rites d’initiation et d’ascension du clan. Après les huit chasses, la station d’entraînement propose une préparation au plasma.</li>
+              <li>Crête de la Matriarche · {rankDossier.queen.label}.</li>
+            </ul>
+            {rankDossier.queen.canOpenExpedition && onOpenCradle && <button type="button" onClick={onOpenCradle}>Ouvrir le dossier du Berceau</button>}
+          </li>
+          <li><h4>Elder · R2-M049 et R2-M050</h4><p>Former un pack et juger un différend devant le clan.</p><p>Épreuve à produire.</p></li>
+        </ol>
+      </section>
+      <h3 className={styles.subheading}>Reconnaissances enregistrées dans la chronique</h3>
       <ol className={styles.rites}>
-        {CHRONICLE_RITES.map(rite => {
+        {CHRONICLE_RITES.filter(rite => rite.id === "nursery-recognition" || rite.id === "unguided-hunt-recognition" ||
+          chronicle.rites.some(receipt => receipt.id === rite.id)).map(rite => {
           const evaluation = evaluateChroniclePromotion(chronicle, rite.id);
           return <li key={rite.id} data-chronicle-rite={rite.id}>
             <span className={styles.badge}>{chronicle.rites.some(receipt => receipt.id === rite.id) ? "Rite enregistré" : rite.id === "nursery-recognition" ? "Duel et titre à achever" : "Mission à produire"}</span>
-            <h4>{rite.grantsRankId ? CHRONICLE_RANK_LABELS[rite.grantsRankId] : "Adjutant · fonction de second de chasse"}</h4>
+            <h4>{rite.id === "unguided-hunt-recognition" ? "Reconnaissance locale de la cohorte" :
+              rite.grantsRankId ? CHRONICLE_RANK_LABELS[rite.grantsRankId] : "Adjutant · fonction de second de chasse"}</h4>
             <p>{rite.label}</p>
             <details><summary>Conditions du parcours narratif</summary><ul>{evaluation.missing.map(item => <li key={item.id}>{item.label}</li>)}</ul></details>
           </li>;
         })}
       </ol>
       <div className={styles.cards}>
-        <article tabIndex={0}><h3>Le premier vaisseau</h3><p>Remise après le rite Blooded. Avant cela, vie sur la planète mère et transports du clan. Quatza-Rij à trois, puis pyramide changeante à trois sans armes à énergie.</p></article>
+        <article tabIndex={0}><h3>Le premier vaisseau</h3><p>Remise après le rite Blooded. Avant cela, vie sur la planète mère et transports du clan. La triade retrouve ses armes à plasma dans la pyramide.</p></article>
         <article tabIndex={0}><h3>Warp Universe</h3><p>Expérience sur plusieurs mondes, nomination Adjutant, quête et installation du module. Les seuils chiffrés proposés restent à équilibrer ; l’honneur seul n’ouvre pas le portail.</p></article>
         <article tabIndex={0}><h3>Compagnons</h3><p>Rencontrer, recruter puis affecter. Aucun occupant ni compartiment gratuit à bord. Une affectation demande un vaisseau réel et un réaménagement au port ; un allié déployé n’est pas présent simultanément dans sa cabine.</p></article>
       </div>

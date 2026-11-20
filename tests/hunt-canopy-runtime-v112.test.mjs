@@ -84,6 +84,42 @@ test("remote active supports cannot attract the real player through a wall or ac
  f.state.player.x+=1000;f.frame();
  assert.equal(f.state.player.climbing,false);assert.equal(f.state.player.canopySwing,null);
 });
+test("a real solid landing clears the rigid grip and restores the resting state",()=>{
+ const f=fixture();
+ const {player}=f.state;
+ const floor=f.state.world.floorY;
+ const tree={...f.support,kind:"tree",height:330,y:floor-300};
+ f.state.world={...f.state.world,climbables:[tree],platforms:[]};
+ Object.assign(player,{y:floor-player.height-3,velocityY:80,stamina:72});
+ f.held.add("down");
+ for(let tick=0;tick<24&&!player.grounded;tick++)f.frame();
+ assert.equal(player.grounded,true);
+ assert.equal(player.climbing,false);
+ assert.equal(player.climbZoneId,null);
+ assert.equal(player.canopySwing,null);
+ const reachedStamina=player.stamina;
+ f.held.clear();
+ for(let tick=0;tick<12;tick++)f.frame();
+ assert.ok(player.stamina>reachedStamina);
+ assert.equal(runtime.currentCanopyNavigationV112(f.state).mode,"resting");
+});
+
+test("the actual world ceiling releases a reeled swing instead of leaving a phantom grip",()=>{
+ const f=fixture();
+ f.held.add("right"); f.frame();
+ assert.ok(f.state.player.canopySwing);
+ const {player}=f.state;
+ const minY=player.y-.25;
+ f.state.world={...f.state.world,minY};
+ f.held.clear(); f.held.add("up");
+ f.frame();
+ assert.equal(player.y,minY);
+ assert.equal(player.climbing,false);
+ assert.equal(player.climbZoneId,null);
+ assert.equal(player.canopySwing,null);
+ assert.ok(player.climbReattachSeconds>0);
+});
+
 test("stamina exhaustion releases the swing and requires a real landing before reacquisition",()=>{
  const f=fixture();f.held.add("right");f.frame();f.state.player.stamina=.001;f.frame();
  assert.equal(f.state.player.climbing,false);assert.equal(f.state.player.canopySwing,null);

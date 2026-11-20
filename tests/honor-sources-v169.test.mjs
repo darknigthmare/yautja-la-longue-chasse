@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {test} from "node:test";
 import {homeworldSceneSsrV78} from "./helpers/homeworld-scene-ssr-v78.mjs";
+import {createCradleReturnRoute} from "./helpers/buried-cradle-return-route.mjs";
 
 const qa = homeworldSceneSsrV78();
 const saves = qa.load("app/game/save.ts");
@@ -144,4 +145,56 @@ test("lost supplementary points do not count against the later campaign rank", (
   assert(later.persisted);
   assert.equal(later.save.profile.rankId, "blooded");
   assert.equal(saves.loadSave(disk).profile.rankId, "blooded");
+});
+
+test("the adult Cradle debrief credits the actual returned queen once", () => {
+  const campaign = qa.load("app/game/systems/buriedCradleCampaign.ts");
+  const cradle = qa.load("app/game/systems/buriedCradle.ts");
+  const {snapshotBuriedCradleRun} = qa.load("app/game/systems/buriedCradleSnapshot.ts");
+  const {MISSIONS} = qa.load("app/game/data.ts");
+  const context = {personalShipId:"classic-predator-spaceship", ownedShipIds:["classic-predator-spaceship"]};
+  let save = fresh();
+  for (const mission of MISSIONS) save.missionProgress[mission.id] = {
+    ...save.missionProgress[mission.id], status:"completed", attempts:1, completions:1,
+  };
+  const doAction = action => {
+    const result = campaign.actBuriedCradleCampaign(save, action, context);
+    assert(result.accepted, result.message);
+    save = {...save, buriedCradle:result.state, prologue:result.prologue};
+  };
+  doAction({type:"prepare"});
+  doAction({type:"depart"});
+  const run = cradle.createBuriedCradleRun({...save.buriedCradle.progress, rootRingCut:true,
+    bossDefeated:true, visitedRoomIds:[...cradle.CRADLE_ROOM_IDS]}, 1);
+  run.roomId = "12";
+  run.player.x = 1620;
+  const pickup = cradle.stepBuriedCradle(run, {interactPressed:true}, 1/60);
+  assert(pickup.events.some(event => event.type === "crown-claimed"));
+  pickup.run.player.x = 1788;
+  const exit = cradle.stepBuriedCradle(pickup.run, {interactPressed:true}, 1/60).run;
+  assert.equal(exit.extracted, true);
+  doAction({type:"extract", progress:exit.progress, snapshot:snapshotBuriedCradleRun(exit)});
+  const disk = storage();
+  const waiting = saves.writeSaveWithStatus(save, disk);
+  assert(waiting.persisted);
+  assert.equal(waiting.save.profile.honor, 0);
+  const presented = createCradleReturnRoute(qa).complete(waiting.save, context);
+  assert.equal(presented.buriedCradle.crownDelivered, true);
+  disk.refuseWrites(true);
+  assert.equal(saves.writeSaveWithStatus(presented, disk).persisted, false);
+  assert.equal(saves.loadSave(disk).profile.honor, 0);
+  disk.refuseWrites(false);
+  const settled = saves.writeSaveWithStatus(presented, disk);
+  assert(settled.persisted);
+  assert.equal(settled.save.profile.honor, 400);
+  assert.equal(settled.save.profile.rankId, waiting.save.profile.rankId);
+  const reloaded = saves.loadSave(disk);
+  assert.equal(reloaded.profile.honor, 400);
+  const settledAgain = saves.writeSaveWithStatus(reloaded, disk);
+  assert(settledAgain.persisted);
+  assert.deepEqual(settledAgain.save.honorSourcesV169.entries.map(({id, delta}) => [id, delta]),
+    [["chronicle:first-queen-hunt",400]]);
+  const historical = storage();
+  assert(saves.writeSaveWithStatus(presented, historical).persisted);
+  assert.equal(saves.loadSave(historical).profile.honor, 0);
 });

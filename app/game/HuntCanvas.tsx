@@ -7047,7 +7047,7 @@ function updateCorpseDiscoveryV112(state:GameState):void {
     const witness=state.enemies.find(e=>e.id===observation.actorId),corpse=state.huntRites.corpses.find(c=>c.id===observation.corpseId);
     if(!witness||!corpse)continue;
     if(witness.kind!=="beast"){
-      if(observation.channel==="visual"){
+      if(observation.channel==="visual"||observation.channel==="staged"){
         const discovery=discoverHuntRiteV77(state.huntRites,corpse.id,{id:witness.id,kind:witness.kind,
           position:{x:witness.x+witness.width/2,y:witness.y+witness.height/2},alive:witness.alive&&witness.active,lineOfSight:true},context);
         if(discovery.accepted)state.huntRites=discovery.state;
@@ -8785,7 +8785,7 @@ function updatePlayer(
     (state.jumpAssist?.bufferSeconds ?? 0) > 0;
   if (player.climbing && currentClimbZone && !player.canopySwing &&
     !climbJumpRequested && Math.abs(moveAxis) > 0.5) {
-    player.canopySwing = attachCanopySwingV112(player, currentClimbZone);
+    player.canopySwing = attachCanopySwingV112(player, currentClimbZone, state.world.platforms);
     if (player.canopySwing) announce(state, "Balancement : direction pour pomper, Haut/Bas pour la longueur, Saut pour lâcher.", 3);
   }
   if (
@@ -8996,6 +8996,7 @@ function updatePlayer(
   player.velocityX = motion.velocityX;
   player.velocityY = motion.velocityY;
   const minimumPlayerY = state.world.minY ?? 0;
+  const swingClippedAtCeiling = Boolean(player.canopySwing) && player.y < minimumPlayerY;
   if (player.y < minimumPlayerY) {
     player.y = minimumPlayerY;
     player.velocityY = Math.max(0, player.velocityY);
@@ -9031,9 +9032,11 @@ function updatePlayer(
     maximumX = state.world.bossArena.x - 90;
   }
   const boundedX = clamp(player.x, 0, maximumX);
-  if (boundedX !== player.x || player.y <= minimumPlayerY || player.grounded) {
+  if (boundedX !== player.x || swingClippedAtCeiling || player.grounded) {
+    if (player.climbing && !player.grounded) player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
+    player.climbing = false;
+    player.climbZoneId = null;
     player.canopySwing = null;
-    if (boundedX !== player.x) { player.climbing = false; player.climbZoneId = null; }
   }
   player.x = boundedX;
   const currentClimbSupport = player.climbing ? player.climbZoneId : null;

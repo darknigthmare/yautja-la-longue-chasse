@@ -6,9 +6,10 @@ import { createShipTrainingReceiptV94, restoreShipTrainingReceiptV94, type ShipT
 import { recordTrainingResult, TRAINING_LABELS, type ShipProgressionState, type TrainingDisciplineId } from "./systems/progression";
 import { createShipTrainingRecoveryPortV94, createShipTrainingRecoveryQueueV94, type ShipTrainingRecoveryPortV94 } from "./systems/shipTrainingRecoveryV94";
 import type { SaveGame } from "./types";
+import { canPracticeClanPlasma } from "./systems/trainingDrill";
 import { classifyShipTrainingAcknowledgementV94, observeShipTrainingAcknowledgementV94, type ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
 
-interface TrainingSessionV94 { id: number; owner: string; disciplineId: TrainingDisciplineId; seed: number; external: boolean }
+interface TrainingSessionV94 { id: number; owner: string; disciplineId: TrainingDisciplineId; seed: number; external: boolean; clanPlasma: boolean }
 interface TrainingDelegationV94 {
   owner: string; expected: ShipProgressionState; discipline: TrainingDisciplineId; score: number;
   stopWaiting: (() => void) | null;
@@ -207,15 +208,17 @@ export function useShipTrainingV94(options: Options) {
     setCanRetryTraining(true);
     retryTrainingSave();
   }, [notify, retryTrainingSave]);
-  const requestTraining = useCallback(async (disciplineId: TrainingDisciplineId) => {
+  const requestTraining = useCallback(async (disciplineId: TrainingDisciplineId, clanPlasma = false) => {
     const o = live.current;
     if (!available() || finishing.current || session.current || hasPendingResult() || !Object.hasOwn(TRAINING_LABELS, disciplineId) ||
-        o.progression.ownerSaveCreatedAt !== o.save.createdAt) return;
+        o.progression.ownerSaveCreatedAt !== o.save.createdAt ||
+        (clanPlasma && (disciplineId !== "targeting" || !canPracticeClanPlasma(o.save.missionProgress)))) return;
     const active: TrainingSessionV94 = { id: ++nextId.current, owner: o.save.createdAt, disciplineId,
-      seed: o.progression.training[disciplineId].attempts, external: !!o.onTrainingRequested };
+      seed: o.progression.training[disciplineId].attempts, external: !clanPlasma && !!o.onTrainingRequested, clanPlasma };
     session.current = active; claimed.current = false; setSaveIssue(null); setTrainingSession(active);
     notify(`${TRAINING_LABELS[disciplineId]} : ${active.external ? "épreuve externe en attente" : "épreuve autonome prête"}.`);
     if (!o.onTrainingRequested) return;
+    if (!active.external) return;
     // An observer can synchronously cancel/unmount while presenting the start.
     // Do not start an external operation once that generation lost ownership.
     if (!mounted.current || session.current !== active || live.current.save.createdAt !== active.owner) return;

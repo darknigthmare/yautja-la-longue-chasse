@@ -35,7 +35,7 @@ Le contrôle inclut `HEAD` et compare chaque PNG éventuellement présent à son
 chemin historique, à sa taille et à son empreinte. Pour un reçu V6.13, seul
 l’essai accepté du checkpoint qui correspond aux octets finaux est retenu.
 Un nouveau résultat concordant exige un rapprochement avec son archive de
-production avant clôture. Les trois états sources du classeur restent ouverts.
+production avant clôture. Les deux exigences sources du classeur restent ouvertes.
 
 ## Vérifier une archive de production disponible localement
 
@@ -58,3 +58,13 @@ SHA‑256 de leur checkpoint. La revue de provenance décide leur admission. Les
 reçus actuellement publiés et les candidats restent comptés séparément.
 
 La recherche de reprise a inspecté 21 références Git liées aux Enforcers et 54 265 entrées de fichiers dans huit arborescences historiques complètes, sans candidat de la taille d’un visuel V6.10. Les 20 exécutions Actions historiques consultées n’avaient aucun artefact listé. Le dossier Drive V6.10 était vide dans les résultats accessibles, y compris pour les fichiers supprimés. Les recherches par noms des sorties V6.13 déjà documentées n’ont fourni aucun reçu supplémentaire. Le suivi conserve ses deux lignes ouvertes.
+
+## Contrôle après la PR #175
+
+Au commit `62b3658cc04b3404a0e302163230995d47d83d66`, la comparaison avec le dernier audit ne révèle aucun PNG ni reçu V6.13 ajouté. L’artefact Actions de la PR contient les rapports du contrôle et du test avec un fichier synthétique. Le checkpoint publié reste à 15 reçus concordants. [PR #175](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/175) · [Artefact Actions](https://github.com/darknigthmare/yautja-la-longue-chasse/actions/runs/44825425300/artifacts/14673143484)
+
+Les deux ZIP V6.12 référencés par la PR #9 déclarent 72 PNG des lots V6.11 et V6.12. Ce périmètre a été vérifié dans le script de publication et les métadonnées disponibles. L’inventaire publié n’atteste aucun PNG V6.10. Les octets des ZIP Drive n’ont pas été inspectés pendant cette reprise. Les checkpoints V6.12 et V6.14 et les registres Drive V87 à V89 ne partagent aucun identifiant ni SHA‑256 avec les cibles recherchées. [PR #9](https://github.com/darknigthmare/yautja-la-longue-chasse/pull/9) · [Script de publication](../../../scripts/package-enforcer-production-v612.py)
+
+Les 31 commentaires et avis des PR #7, #9, #10, #15, #174 et #175 ne contiennent aucune pièce jointe ni archive supplémentaire. Les arbres `main` complets des deux dépôts liés, l’archive DLC et la base Yautja, totalisent respectivement 46 et 63 fichiers Git. Aucun chemin de production ni aucune taille de fichier n’y correspond aux preuves recherchées.
+
+Le classeur Drive V6.12 possède sept révisions listées. Le téléchargement de l’avant-dernière révision a renvoyé HTTP 403. Une archive locale demeure nécessaire pour rapprocher les 36 PNG V6.10 ou les 21 reçus finaux V6.13 encore absents.

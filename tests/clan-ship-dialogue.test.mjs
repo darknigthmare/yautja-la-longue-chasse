@@ -5,6 +5,7 @@ import { qa, ops, saves, fixture, completeInterior, aboard, recruit, refit, resi
 const { clanShipDialogue: dialogue, CLAN_SHIP_DIALOGUE_TOPICS: topics, CLAN_SHIP_VOICES: voices } = qa.load('app/game/systems/clanShipDialogue.ts');
 const without = (value, keys) => Object.fromEntries(Object.entries(value).filter(([key]) => !keys.includes(key)));
 const hearing = qa.load('app/game/systems/clanShipTrophyHearing.ts');
+const expeditions = qa.load('app/game/systems/planetInsertion.ts');
 const base = ['ship-seal-check', 'ship-armory-audit', 'ship-triage-route'].reduce(completeInterior, fixture({ evidence: false, ruins: false }));
 const at = (save, id) => aboard(save, hearing.clanShipTrophyWitnessPost(save, id) ?? ops.CLAN_SHIP_RECRUITS.find(n => n.id === id).roomId);
 const ask = (save, id, topic = 'greeting', active = true) => { const located = at(save, id); return dialogue(located, id, located.clanShipDocking.roomId, topic, active); };
@@ -190,4 +191,41 @@ test('reading every topic repeatedly is a pure observation, including every oper
     for (let round = 0; round < 8; round++) for (const { id } of topics) dialogue(save, 'iron-claw', 'armurerie', id);
     assert.equal(JSON.stringify(save), bytes);
   }
+});
+
+test('the surgeon reads only confirmed expedition recovery until actual care', () => {
+  const owner = base.createdAt;
+  const plan = { version: 1, method: 'pod', team: 'triad' };
+  let roster = null;
+  for (const id of ['karhek','saketh']) {
+    roster = expeditions.recruitExpeditionMember(roster, owner, id);
+    roster = expeditions.assignExpeditionMember(roster, owner, SHIP, id);
+  }
+  const outcome = {
+    version: 1, runId: 'triad-return-dialogue', plan,
+    members: [
+      { id: 'karhek', status: 'extracted', health: 45, maxHealth: 100 },
+      { id: 'saketh', status: 'left-behind', health: 0, maxHealth: 120 },
+    ],
+    extracted: ['karhek'], leftBehind: ['saketh'], injured: ['karhek'],
+  };
+  const injured = expeditions.settleExpeditionOutcome(roster, owner, outcome.runId, plan, SHIP, outcome);
+  assert(injured);
+  const save = { ...clone(base), expeditionRoster: injured };
+  const before = JSON.stringify(save);
+  const view = ask(save, 'black-suture', 'work');
+  assert.equal(view.phase, 'work-recovery');
+  assert.match(view.detail, /Ka’rhek/);
+  assert.doesNotMatch(view.detail, /Sa’keth/);
+  assert.equal(ask(save, 'iron-claw', 'work').phase, 'work');
+  assert.equal(ask(save, 'black-suture', 'return').phase, ask(base, 'black-suture', 'return').phase);
+  assert.equal(ask(save, 'black-suture', 'work', false).line, null);
+  assert.equal(JSON.stringify(save), before);
+  const foreign = { ...save, expeditionRoster: { ...injured, ownerCreatedAt: 'other' } };
+  assert.equal(ask(foreign, 'black-suture', 'work').phase, 'work');
+  const future = { ...save, expeditionRoster: { ...injured, version: 99 } };
+  assert.equal(ask(future, 'black-suture', 'work').phase, 'work');
+  const healed = expeditions.careForExpeditionMember(injured, owner, 'karhek', 80, 'recovering');
+  assert.equal(healed.cost, 20);
+  assert.equal(ask({ ...save, expeditionRoster: healed.roster }, 'black-suture', 'work').phase, 'work');
 });

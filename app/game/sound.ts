@@ -2,7 +2,7 @@
 import { OptionalAudioFiles } from "./audioFiles.ts";
 import { GameSceneAudio } from "./systems/sceneAudio.ts";
 
-export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld";
+export type GameMusicContext = "menu" | "ship" | "galaxy" | "exploration" | "combat" | "boss" | "homeworld" | "cradle-return";
 
 /** Original synth signatures for HUD variants; these are NOT film SFX recordings. */
 export type GameGauntletSoundProfileV133 = "classic" | "urban" | "elder" | "bronze" | "stealth" | "scar" | "wolf" | "brutal" | "feral" | "badlands";
@@ -59,6 +59,7 @@ export type GameSfxId =
   | "mask-off"
   | "weapon-switch"
   | "medicomp"
+  | "armor-repair"
   | "netgun"
   | "snare"
   | "enemy-alert"
@@ -138,6 +139,7 @@ export class GameAudio {
   private requestedAmbience: GameAudioBiome | null = null;
   private musicRequest = 0;
   private requestedMusic: GameMusicContext | null = null;
+  private cradleReturnMusicFinished = false;
   private cloakFileActive = false;
   private fileAudio: OptionalAudioFiles;
   private readonly sceneVoices = new Set<GameSceneAudio>();
@@ -387,8 +389,19 @@ export class GameAudio {
     this.requestedMusic = context;
     await this.unlock();
     if (this.disposed || request !== this.musicRequest || context !== this.requestedMusic || this.readyTime() === null) return;
-    void this.fileAudio.startLoop("music", context, fade);
+    if (context === "cradle-return" && !this.cradleReturnMusicFinished) {
+      const continueOnShip = () => {
+        if (this.disposed || this.requestedMusic !== "cradle-return" || this.cradleReturnMusicFinished) return;
+        this.cradleReturnMusicFinished = true;
+        void this.setMusicContext("cradle-return", { fadeSeconds: fade });
+      };
+      void this.fileAudio.startLoop("music", context, fade, undefined, continueOnShip, continueOnShip);
+      return;
+    }
+    void this.fileAudio.startLoop("music", context === "cradle-return" ? "ship" : context, fade);
   }
+
+  resetCradleReturnMusic(): void { this.cradleReturnMusicFinished = false; }
 
   stopMusic(fadeSeconds = .4): void {
     this.musicRequest++; this.requestedMusic = null;
@@ -512,6 +525,9 @@ export class GameAudio {
         break;
       case "medicomp":
         this.medicomp();
+        break;
+      case "armor-repair":
+        this.armorRepair();
         break;
       case "netgun":
         this.netgun();
@@ -651,6 +667,19 @@ export class GameAudio {
         filterFrequency: 2_200,
       });
     });
+  }
+
+  armorRepair(): void {
+    if (this.fileAudio.playSfx("armor-repair")) return;
+    const now = this.readyTime();
+    if (now === null) return;
+
+    // Follow the Medicomp before the cleaner closes and vents.
+    const at = now + .36;
+    this.tone(245, { at, duration: .09, gain: .06, type: "triangle" });
+    this.noise({ at: at + .08, duration: .53, gain: .065, filterType: "bandpass", filterFrequency: 1_140, endFilterFrequency: 360 });
+    this.tone(115, { at: at + .09, duration: .48, endFrequency: 79, gain: .027, type: "sine" });
+    this.tone(283, { at: at + .61, duration: .065, gain: .045, type: "triangle" });
   }
 
   netgun(): void {

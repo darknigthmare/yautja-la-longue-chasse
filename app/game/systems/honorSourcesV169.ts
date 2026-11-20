@@ -1,5 +1,8 @@
 /** Honor earned outside the eight campaign hunts is credited with its saved receipt. */
+import { MISSIONS } from "../data";
 import type { SaveGame } from "../types";
+import { inspectBuriedCradleCampaign } from "./buriedCradleCampaign";
+import { evaluateClanShipAccess } from "./clanShipOperations";
 import { HOMEWORLD_ALL_CONTRACTS_V69, normalizeHomeworldContractsV68 } from "./homeworldContractsV68";
 import { CHRONICLE_EVIDENCE, normalizeClanChronicle, type ChronicleEvidenceId } from "./clanChronicle";
 import { normalizeNpcMissionsV66 } from "./homeworldNpcMissionsV66";
@@ -27,7 +30,7 @@ const MAX_RECEIPTS = 256;
  * - `intro-completed` : 100 — bible, Level 1 Unblooded, seuil 100 atteint à
  *   la « fin de l'intro (R2-M006) ».
  * - `first-queen-hunt` : 400 — bible, « reine Xénomorphe : base 400 » et
- *   « Contrat de ruche petite : 400 d'honneur ».
+ *   « Contrat de ruche petite : 400 d'honneur ». La remise validée du Berceau détermine ce reçu.
  * - Autres chapitres accomplis : 50 *(proposé)*. Calcul : la bible place
  *   Young Blood à 500 et dit que « le pack et les sorties d'entraînement
  *   rapportent assez pour atteindre 500 en une dizaine de missions » ;
@@ -118,9 +121,21 @@ function collectHonorSourceEventsV169(save: SaveGame): HonorSourceEventV169[] {
     const chronicle = normalizeClanChronicle(save.prologue.chronicle);
     for (const definition of CHRONICLE_EVIDENCE) {
       const value = CHRONICLE_HONOR_V169[definition.id];
-      if (value > 0 && chronicle.evidence.some(({ id }) => id === definition.id)) {
+      if (definition.id !== "first-queen-hunt" && value > 0 && chronicle.evidence.some(({ id }) => id === definition.id)) {
         events.push({ id: `chronicle:${definition.id}`, source: "chronicle", label: definition.label, delta: value });
       }
+    }
+  }
+  if (save.buriedCradle && evaluateClanShipAccess(save).allowed &&
+      MISSIONS.every(mission => save.missionProgress[mission.id]?.status === "completed")) {
+    const cradle = inspectBuriedCradleCampaign(save.buriedCradle, save.createdAt);
+    if (cradle.state?.status === "reported" && cradle.state.crownDelivered) {
+      events.push({
+        id: "chronicle:first-queen-hunt",
+        source: "chronicle",
+        label: "Crête de la Matriarche remise au débrief",
+        delta: CHRONICLE_HONOR_V169["first-queen-hunt"],
+      });
     }
   }
   for (const key of SOLO_CAMPAIGN_KEYS_V169) {

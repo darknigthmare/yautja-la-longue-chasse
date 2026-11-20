@@ -19,7 +19,7 @@ import {
   settleWarDueEventsV151, settleWarOuterOpsV115, recallWarOuterMissionV116, stepAssaultV115, warAssaultWaveProfileV140,
   warMissionEligibleV115, warOuterSecondsRemainingV115,
   type WarMissionModeV115, type OuterFocusV115, type WarOperationsStateV115,
-  type WarOperationsUpdateV115,
+  type WarOperationsUpdateV115, type WarRtsV115,
 } from "./systems/clanWarOperationsV115";
 import {reinforceWarAssaultLineV135,redirectWarOuterOpsV135} from "./systems/clanWarParallelModesV135";
 import {orderWarAssaultHoldV136,supplyWarOuterMissionV136} from "./systems/clanWarParallelModesV136";
@@ -50,7 +50,8 @@ import {planWarStealthStepV142,commandWarStealthStepV142} from "./systems/clanWa
 import {auditWarOperationsDebriefsV144} from "./systems/clanWarDebriefV144";
 import {buildWarCouncilAuditV147} from "./systems/clanWarCouncilReviewV147";
 import ClanWarFieldSprite from "./ClanWarFieldSprite";
-import {fieldKeyboardAction,fieldKeyboardTargetBlocked} from "./systems/clanWarFieldControls";
+import {fieldKeyboardAction,fieldKeyboardTargetBlocked,fieldShortcutAttributes,fieldShortcutKeys,fieldShortcutLabel,type FieldAction} from "./systems/clanWarFieldControls";
+import ClanWarFieldShortcuts,{useClanWarFieldShortcuts} from "./ClanWarFieldShortcuts";
 import { createWarFencePortV94 } from "./systems/clanWarFenceV94";
 import { readWarOperationsArchive, writeWarOperationsArchive, repairWarOperationsArchive,
   adoptWarOperationsLegacyArchive, snapshotWarOperationsLegacyArchive, exportWarOperationsLegacyArchive,
@@ -75,18 +76,23 @@ const focusLabels: Record<OuterFocusV115, string> = {
 const formatTime = (seconds:number) => String(Math.floor(seconds / 60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
 type Props={rules:WarRulesV6;active?:boolean;persist?:boolean;initialScenarioId?:WarSourceRtsScenarioIdV119|null;gauntletId?:string;holographic?:boolean;createSceneAudio?:()=>RecordedSceneAudioPort|null};
 
-const stealthDirections = [
-  { label: "haut", dx: 0, dy: -1 },
-  { label: "droite", dx: 1, dy: 0 },
-  { label: "bas", dx: 0, dy: 1 },
-  { label: "gauche", dx: -1, dy: 0 },
-];
+const tacticalDirections = [
+  { action: "up", label: "haut", dx: 0, dy: -1 },
+  { action: "right", label: "droite", dx: 1, dy: 0 },
+  { action: "down", label: "bas", dx: 0, dy: 1 },
+  { action: "left", label: "gauche", dx: -1, dy: 0 },
+] as const;
+
+function selectedRtsActor(rts: WarRtsV115 | undefined, preferredTeamId: string) {
+  const live = rts?.actors.filter(actor => actor.side === "ally" && actor.hp > 0);
+  return live?.find(actor => actor.teamId === preferredTeamId) ?? live?.[0];
+}
 
 function describeStealthNeighbors(
   terrain: WarMissionTerrainV116,
   actor: { x: number; y: number; gridPowered?: boolean },
 ): string {
-  return stealthDirections.map(({ label, dx, dy }) => {
+  return tacticalDirections.map(({ label, dx, dy }) => {
     const x = actor.x + dx, y = actor.y + dy;
     let tile = "passage";
     if (x < 0 || y < 0 || x >= terrain.width || y >= terrain.height) tile = "limite de la carte";
@@ -105,6 +111,8 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const worldRef=useRef(world);
   const fieldRoot=useRef<HTMLElement>(null);
   const stealthMapId = useId();
+  const rtsMapId = useId();
+  const fieldShortcuts = useClanWarFieldShortcuts();
   const listenAudio=useRef<RecordedSceneAudioPort|null>(null);
   const listenAudible=useRef(false);
   const councilAudit=useMemo(()=>buildWarCouncilAuditV146(world,null,rules),[world,rules]);
@@ -457,6 +465,10 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
   const assault=current?.mode==="assault"?current.assault:undefined;
   const stealth=current?.mode==="stealth"?current.stealth:undefined;
   const rts=current?.mode==="rts"?current.rts:undefined;
+  const rtsActor = selectedRtsActor(rts, rtsSelectedId);
+  const rtsTeamId = rtsActor?.teamId ?? "";
+  const shortcutText = (action: FieldAction) => fieldShortcutKeys(action, fieldShortcuts).map(fieldShortcutLabel).join(" / ");
+  const movementKeys = tacticalDirections.map(({ action, label }) => label + " " + shortcutText(action)).join(", ");
   const missionTerrain=current?warMissionTerrainV116(current.targetId,rules):null;
   const guardVisible=Boolean(stealth&&missionTerrain&&warStealthGuardVisibleV138(stealth,missionTerrain));
   const secondGuardVisible=Boolean(stealth?.supportGuard&&missionTerrain&&
@@ -473,6 +485,26 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
     mode==="rts" ? `${missionPc} PC mobilisés · ${selectedIds.length} équipes sélectionnées` :
     `${available.length} équipes libres · ${world.rav} RAV de simulation`;
   const gauntletVars = {"--gauntlet-accent":signal.accent,"--gauntlet-display":signal.display} as CSSProperties;
+
+  function holdRtsTeam(teamId: string) {
+    const state = worldRef.current;
+    const field = state.active?.rts;
+    const actor = field?.actors.find(unit => unit.teamId === teamId && unit.side === "ally" && unit.hp > 0);
+    if (!actor) return;
+    commit(field?.realtime
+      ? issueWarRtsRealtimeOrderV115(state, teamId, actor.x, actor.y, "hold", rules)
+      : holdWarRtsAlternatingV119(state, teamId, rules));
+  }
+
+  function orderRtsCell(teamId: string, x: number, y: number) {
+    const state = worldRef.current;
+    const field = state.active?.rts;
+    if (!field) return;
+    const enemy = field.actors.some(unit => unit.side === "rival" && unit.hp > 0 && unit.x === x && unit.y === y);
+    commit(field.realtime
+      ? issueWarRtsRealtimeOrderV115(state, teamId, x, y, enemy ? "attack" : "advance", rules)
+      : commandRtsV115(state, teamId, x, y, rules));
+  }
 
   function start(atTime:number) {
     const result=beginWarOperationV115(worldRef.current,mode,targetId,selectedIds,rules,atTime,focus,
@@ -522,7 +554,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         editing:fieldKeyboardTargetBlocked(event.target),
         mode:worldRef.current.active?.mode==="stealth"?"stealth":"other",
         blocked:blocked||!active||!actor||
-          (actor.reinforcementMode===undefined&&!actor.supportGuard)});
+          (actor.reinforcementMode===undefined&&!actor.supportGuard)},fieldShortcuts);
       if(!command)return;
       event.preventDefault();event.stopPropagation();
       commit(commandStealthV115(worldRef.current,command,rules));
@@ -541,6 +573,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       <button type="button" onClick={()=>setCommandPanel("reports")} data-war-command="reports">Comptes rendus <span>{world.reports.length}</span></button>
       <button type="button" onClick={()=>setCommandPanel("archive")} data-war-command="archive">Archives et règles</button>
     </nav>
+    <ClanWarFieldShortcuts shortcuts={fieldShortcuts} active={active}/>
     {holographic && <aside className={styles.gauntletRibbon} style={gauntletVars}
       aria-label="Projection tactique du gauntlet équipé" data-testid="clan-operations-gauntlet-v133" data-gauntlet-model={equipped?.id ?? "jungle-hunter"} data-current-mode={mode}>
       <span className={styles.overline}>SIGNAL DU GAUNTLET · {equipped?.name ?? "Jungle Hunter"}</span>
@@ -752,11 +785,11 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
       </div>}
 
       {stealth && missionTerrain && <div data-war-field-mode="stealth">
-        <div className={`${styles.grid} ${styles.stealthMap}`} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}}
+        <div className={`${styles.grid} ${styles.keyboardMap}`} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}}
           role="group" tabIndex={active ? 0 : -1} aria-label="Carte et commandes d’infiltration"
           aria-describedby={`${stealthMapId}-keys ${stealthMapId}-status`}
           aria-keyshortcuts={active && !blocked && (stealth.reinforcementMode !== undefined || stealth.supportGuard)
-            ? "ArrowUp ArrowRight ArrowDown ArrowLeft Z Q S D W A E Space" : undefined}>
+            ? fieldShortcutAttributes(fieldShortcuts,"stealth") : undefined}>
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),wall=Boolean(missionTerrain?.walls.includes(x+","+y));
             const mark=stealth.x===x&&stealth.y===y?"X":secondGuardVisible&&stealth.supportGuard?.x===x&&stealth.supportGuard?.y===y?"G₂":
@@ -766,7 +799,7 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
             return <span className={styles.cell} aria-hidden="true" data-wall={wall} data-actor={mark==="X"?"ally":mark==="G"||mark==="G₂"?"rival":""} key={index} title={"Case "+x+","+y}>{mark==="R"?<ClanWarFieldSprite id={stealth.sabotaged?"relay-disabled":"relay-active"} label={stealth.sabotaged?"Relais neutralisé":"Relais actif"} size={40}/>:mark==="E"?<ClanWarFieldSprite id="beacon-active" label="Extraction" size={40}/>:mark}</span>;
           })}
         </div>
-        <p id={stealthMapId + "-keys"}>Sur la carte, utilisez les flèches, ZQSD ou WASD pour vous déplacer, E pour interagir et Espace pour attendre. Chaque pression envoie un ordre. Tab quitte la carte.</p>
+        <p id={stealthMapId + "-keys"}>Depuis la carte, {movementKeys}. Interagir avec {shortcutText("interact")}, attendre avec {shortcutText("wait")}. Chaque pression envoie un ordre. Tab quitte la carte.</p>
         <p id={stealthMapId + "-status"} role="status" aria-atomic="true">
           {`Pisteur en (${stealth.x}, ${stealth.y}). ${describeStealthNeighbors(missionTerrain, stealth)}. `}
           {stealth.sabotaged
@@ -922,16 +955,31 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
         <span className={styles.explain}>Tenue <strong>{rts.hold}/{rts.realtime?3:2}</strong> · {rts.realtime?"Simulation active toutes les secondes":"Une réponse par commande"}</span></div>
         <div className={styles.cards}>
           {rts.actors.filter(unit=>unit.side==="ally").map(unit=><button type="button" key={unit.id}
-            aria-pressed={rtsSelectedId===unit.teamId} disabled={blocked}
+            aria-pressed={rtsTeamId===unit.teamId} disabled={blocked||unit.hp<=0}
             onClick={()=>setRtsSelectedId(unit.teamId??"")}>{teamsById(unit.teamId??"")} · PV {unit.hp}</button>)}
-          {rts.realtime ? <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
-            onClick={()=>{const actor=rts.actors.find(unit=>unit.teamId===rtsSelectedId);if(actor)commit(issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,actor.x,actor.y,"hold",rules));}}>
-            Tenir la position et utiliser le couvert</button> :
-            <button type="button" disabled={blocked||!rts.actors.some(unit=>unit.teamId===rtsSelectedId)}
-              onClick={()=>commit(holdWarRtsAlternatingV119(worldRef.current,rtsSelectedId,rules))}>
-              Défendre / laisser passer un tour tactique</button>}
+          <button type="button" disabled={blocked||!rtsTeamId} onClick={()=>holdRtsTeam(rtsTeamId)}>
+            {rts.realtime?"Tenir la position et utiliser le couvert":"Défendre / laisser passer un tour tactique"}
+          </button>
         </div>
-        <div className={styles.grid} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}} role="group" aria-label="Champ de bataille tactique 9 colonnes par 6 lignes">
+        <div className={`${styles.grid} ${styles.keyboardMap}`} style={{gridTemplateColumns:"repeat(9,minmax(0,1fr))"}}
+          role="group" tabIndex={active ? 0 : -1} aria-label="Champ de bataille tactique 9 colonnes par 6 lignes"
+          aria-describedby={`${rtsMapId}-keys ${rtsMapId}-status`}
+          aria-keyshortcuts={active && !blocked && rtsTeamId ? fieldShortcutAttributes(fieldShortcuts,"rts") : undefined}
+          onKeyDown={event=>{
+            if(event.target!==event.currentTarget)return;
+            const actor=selectedRtsActor(worldRef.current.active?.rts,rtsSelectedId);
+            if(!actor?.teamId)return;
+            const command=fieldKeyboardAction({key:event.key,repeat:event.repeat,
+              ctrlKey:event.ctrlKey,metaKey:event.metaKey,altKey:event.altKey,
+              isComposing:event.nativeEvent.isComposing,mode:"rts",blocked:blocked||!active},fieldShortcuts);
+            if(!command||command==="interact")return;
+            event.preventDefault();event.stopPropagation();
+            if(command==="wait")holdRtsTeam(actor.teamId);
+            else {
+              const direction=tacticalDirections.find(item=>item.action===command);
+              if(direction)orderRtsCell(actor.teamId,actor.x+direction.dx,actor.y+direction.dy);
+            }
+          }}>
           {Array.from({length:54},(_,index)=>{
             const x=index%9,y=Math.floor(index/9),actor=rts.actors.find(item=>item.x===x&&item.y===y);
             const objective=x===7&&y===3,wall=Boolean(missionTerrain?.walls.includes(x+","+y)),
@@ -953,16 +1001,18 @@ export default function ClanWarOperationsV115({rules,active=true,persist=false,i
               mark=actor?(actor.side==="ally"?(carrying||beaconOnAlly?"Y◆":"Y"):(beaconOnEnemy?"R◆":"R")):
                 cargoOnGround||beaconGround?"◆":decoy?(rts.scripted?.kind==="beacon-intercept"&&rts.scripted.decoy.recognized?"×":"?"):
                 isShip?"⌂":isRidge?"▲":isExit?"⇥":isFilter?"✚":isLever?"⚙":objective?"◎":wall?"▥":cover?"▤":"·";
-            return <button key={index} type="button" disabled={blocked||!rtsSelectedId||wall}
+            return <button key={index} type="button" disabled={blocked||!rtsTeamId||wall}
               className={styles.cell} data-wall={wall} data-actor={actor?.side??""} data-objective={objective} data-cover={cover}
               title={"Position "+x+","+y+(actor?" · "+actor.unitId+" · PV "+actor.hp:"")}
               aria-label={"Case "+x+","+y+" · "+(actor?.side==="ally"?(carrying?"porteur allié":"allié"):
-                actor?.side==="rival"?"adversaire":cargoOnGround||beaconGround?"objet réel au sol":decoy?"leurre":isShip?"coque de retour":isRidge?"arête à reconnaître":isExit?"sortie":isFilter?"filtre à réparer":isLever?"levier du circuit":objective?"objectif":"libre")}
-              onClick={()=>commit(rts.realtime?
-                issueWarRtsRealtimeOrderV115(worldRef.current,rtsSelectedId,x,y,actor?.side==="rival"?"attack":"advance",rules):
-                commandRtsV115(worldRef.current,rtsSelectedId,x,y,rules))}>{mark}</button>;
+                actor?.side==="rival"?"adversaire":cargoOnGround||beaconGround?"objet réel au sol":decoy?"leurre":isShip?"coque de retour":isRidge?"arête à reconnaître":isExit?"sortie":isFilter?"filtre à réparer":isLever?"levier du circuit":objective?"objectif":wall?"obstacle":cover?"couvert":"libre")}
+              onClick={()=>orderRtsCell(rtsTeamId,x,y)}>{mark}</button>;
           })}
         </div>
+        <p id={rtsMapId + "-keys"}>Depuis la carte, {movementKeys}. Tenir la position avec {shortcutText("wait")}.</p>
+        <p id={rtsMapId + "-status"} role="status" aria-atomic="true">{rtsActor
+          ? `${teamsById(rtsTeamId)} sélectionné en (${rtsActor.x}, ${rtsActor.y}), ${rtsActor.hp} PV.`
+          : "Aucun détachement apte sur la carte."}</p>
         <p className={styles.explain}>Y = allié, R = opposition d&apos;exercice, ◎ = balise, ▤ = couvert, ▥ = obstacle, ◆ = charge, ⇥ = sortie, ✚ = filtre, ⚙ = levier, ⌂ = coque, ▲ = arête à reconnaître, ? = signal suspect.
           Ces objectifs W3 utilisent une adaptation tactique 9 × 6 : les décors narratifs et les cartes sources complètes W3-MAP01/02 restent à développer.</p>
       </div>}

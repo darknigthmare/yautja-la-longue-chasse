@@ -13,6 +13,7 @@ import { controlActionShortcut } from "./controlBindingLabels";
 import { SAVE_STORAGE_KEY } from "./save";
 import HunterRigPreview from "./HunterRigPreview";
 import TrainingDrill from "./TrainingDrill";
+import { canPracticeClanPlasma } from "./systems/trainingDrill";
 import { useShipTrainingV94 } from "./useShipTrainingV94";
 import { useShipServiceCommitV94, observeShipNotificationV94 } from "./useShipServiceCommitV94";
 import type { ShipTrainingReceiverV94 } from "./systems/shipTrainingAcknowledgementV94";
@@ -745,6 +746,12 @@ export default function ShipHub({
             }]
           : []),
         ...drills,
+        ...(canPracticeClanPlasma(save.missionProgress) ? [{
+          id: "train-clan-plasma",
+          label: "Préparation des rites · Plasma",
+          detail: "Cibles simulées et retenue du tir. Le score rejoint le registre de ciblage Biomask.",
+          run: () => { if (!hasPendingService()) return requestTraining("targeting", true); },
+        }] : []),
       ];
     }
 
@@ -1164,6 +1171,7 @@ export default function ShipHub({
           key={trainingSession.id}
           disciplineId={trainingSession.disciplineId}
           seed={trainingSession.seed}
+          clanPlasma={trainingSession.clanPlasma}
           controlBindings={controlBindings}
           suspended={suspended}
           gamepadEnabled={gamepadEnabled}

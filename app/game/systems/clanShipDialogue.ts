@@ -3,6 +3,7 @@ import type { ClanShipRoomId } from './clanShipDocking';
 import { CLAN_SHIP_RECRUITS, clanShipContract, inspectClanShipOperations, type ClanShipNpcId } from './clanShipOperations';
 import { CLAN_SHIP_SPACE_SCENARIOS } from './clanShipSpaceEncounter';
 import { inspectCompanionResidence, type CompanionCampaign } from './companionResidence';
+import { inspectExpeditionRoster, TRIO_MEMBERS } from './planetInsertion';
 import { clanShipTrophyWitnessPost, inspectClanShipTrophyHearing, isClanShipTrophyWitnessGathered } from './clanShipTrophyHearing';
 
 /** Original voices for this clan, not a universal Yautja code or a new ledger.
@@ -15,7 +16,7 @@ export const CLAN_SHIP_DIALOGUE_TOPICS = [
   { id: 'return', label: 'Revenir sur le dernier affrontement' },
 ] as const;
 export type ClanShipDialogueTopic = typeof CLAN_SHIP_DIALOGUE_TOPICS[number]['id'];
-export type ClanShipDialoguePhase = 'greeting' | 'work' | 'invitation' | 'agreement' | 'no-report' |
+export type ClanShipDialoguePhase = 'greeting' | 'work' | 'work-recovery' | 'invitation' | 'agreement' | 'no-report' |
   'return-victory' | 'return-defeat' | 'return-withdrawn' | 'hearing';
 interface ClanVoice {
   greeting: string; work: string; invitation: string; agreement: string; noReport: string;
@@ -89,7 +90,7 @@ export interface ClanShipDialogue {
   npcId: ClanShipNpcId; name: string; present: boolean; phase: ClanShipDialoguePhase | null;
   line: string | null; detail: string | null; reason: string;
 }
-type DialogueSave = CompanionCampaign & Pick<SaveGame, 'clanShipIncidents' | 'clanShipTrophyHearing'>;
+type DialogueSave = CompanionCampaign & Pick<SaveGame, 'clanShipIncidents' | 'clanShipTrophyHearing' | 'expeditionRoster'>;
 
 /** The enclosing native operations panel is opened only at its service point.
  * Being on a roster card is NOT physical presence. Refit rooms and the C37
@@ -122,7 +123,16 @@ export function clanShipDialogue(save: DialogueSave, npcId: ClanShipNpcId, roomI
     : say('invitation', voice.invitation, 'Propose-lui de rejoindre ton cercle.');
   if (topic === 'work') {
     const task = clanShipContract(state.activeContract?.contractId);
-    return say('work', voice.work, task ? `Demande en cours : ${task.name}.` : 'Aucune nouvelle demande du clan en cours.');
+    const detail = task ? `Demande en cours : ${task.name}.` : 'Aucune nouvelle demande du clan en cours.';
+    if (npcId === 'black-suture') {
+      const roster = inspectExpeditionRoster(save.expeditionRoster, save.createdAt).state;
+      const recovering = TRIO_MEMBERS.filter(member => roster?.members.some(entry =>
+        entry.id === member.id && entry.availability === 'recovering')).map(member => member.name);
+      if (recovering.length) return say('work-recovery',
+        'Je garde le poste de soins libre. Au prochain départ, vérifie qui a repris du service avant de choisir ta formation.',
+        `Le registre indique une convalescence pour ${recovering.join(' et ')}. ${detail}`);
+    }
+    return say('work', voice.work, detail);
   }
   if (topic === 'return') {
     const archived = [...state.completedContracts].reverse().find(receipt => receipt.proof.kind === 'space');

@@ -39,6 +39,25 @@ test("a body is visual evidence once, with local fear and no hunter position",()
   assert.equal("lastKnownTarget" in first.state,false);
   assert.equal(step(first.state,.2).observations.length,0);
 });
+test("a prior sighting of a bare body allows one real staging sighting and no repeat radio",()=>{
+  const witness=actor();
+  const marked=corpse("prey",{marked:true});
+  const bare=step(initial());
+  const occluded=step(bare.state,.2,{corpses:[marked],canSee:()=>false});
+  assert.equal(occluded.observations.length,0);
+  const staged=step(occluded.state,1,{corpses:[marked]});
+  assert.deepEqual(plain(staged.observations.map(o=>[o.channel,o.fear])),[["staged",8]]);
+  assert.equal(staged.state.pendingRadios.length,0);
+  assert.equal(staged.state.zones[0].fear,8);
+  assert.equal(r.discoverySignalLabelV112(staged.state.reactions[0]),"MISE EN SCÈNE");
+  assert.ok(r.corpseZoneFearV112(staged.state,witness,[marked],1)>r.corpseZoneFearV112(bare.state,witness,[marked],1));
+  const saved=plain(staged.state);
+  const restored=r.restoreCorpseDiscoveryV112(saved,"run",[marked],[witness],1);
+  assert.ok(restored);
+  const flayed={...marked,flayed:true};
+  assert.equal(step(restored,2,{corpses:[flayed]}).observations.length,0,"a later rite never retriggers the same staged witness");
+  assert.equal(r.restoreCorpseDiscoveryV112({...saved,receipts:saved.receipts.slice(1),events:saved.events.slice(1)},"run",[marked],[witness],1),null);
+});
 test("occlusion, inactive actors and boss never create discoveries or radios",()=>{
   const blocked=step(initial(),0,{canSee:()=>false,canSmell:()=>false});
   assert.equal(blocked.state.receipts.length,0);assert.equal(blocked.state.pendingRadios.length,0);
@@ -165,6 +184,29 @@ test("native HuntCanvas discovery records the actual body and no last-known hunt
   const suspicion=f.state.aiBrains[w.id].suspicion;
   f.state.elapsed=.2;r.updateCorpseDiscoveryV112(f.state);
   assert.equal(f.state.aiBrains[w.id].suspicion,suspicion);
+});
+test("the real staged rite registers a living witness who previously saw the bare body",()=>{
+  const f=fixture(),w=f.makeWitness();
+  r.updateCorpseDiscoveryV112(f.state);
+  const corpse=f.state.huntRites.corpses[0];
+  assert.equal(corpse.witnesses.length,0);
+  f.state.player.x=corpse.x-f.state.player.width/2;
+  const started=r.startHuntRiteV77(f.state.huntRites,corpse.id,"mark",r.riteContextV77(f.state));
+  assert.equal(started.accepted,true);
+  f.state.huntRites=started.state;
+  for(let i=1;i<=10;i++){
+    f.state.elapsed=i/10;
+    f.state.huntRites=r.stepHuntRiteV77(f.state.huntRites,.1,r.riteContextV77(f.state)).state;
+  }
+  assert.ok(f.state.huntRites.corpses[0].marked);
+  r.updateCorpseDiscoveryV112(f.state);
+  assert.deepEqual(plain(f.state.huntRites.corpses[0].witnesses),[w.id]);
+  assert.equal(f.state.huntRites.fear,8);
+  assert.equal(f.state.huntRites.honorDelta,0);
+  assert.equal(f.state.aiBrains[w.id].lastKnownTarget,null);
+  f.state.elapsed=1.2;r.updateCorpseDiscoveryV112(f.state);
+  assert.equal(f.state.huntRites.fear,8);
+  assert.equal(f.state.ecosystem.receipts.length,2);
 });
 test("native structural wall prevents body discovery, local fear and radio",()=>{
   const f=fixture();f.makeWitness();
