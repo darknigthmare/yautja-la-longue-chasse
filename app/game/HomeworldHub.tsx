@@ -102,6 +102,7 @@ import {defaultHomeworldCartographyV104,normalizeHomeworldCartographyV104} from 
 import {createCartographyTransactionV104,cartographyPostReachedV104,sampleCartographyWalkV104,type CartographyActionV104} from './systems/homeworldCartographyV104';
 import {homeworldStreetContactReachedV100,nearestHomeworldStreetContactV100,homeworldStreetPlacesV100} from './systems/homeworldStreetContactsV100';
 import {isHoundKennelContactV147} from './systems/houndKennelV147';
+import HoundKennelPanelV147, {type HoundKennelActionV147} from './HoundKennelPanelV147';
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import HomeworldInteriorSurface from "./HomeworldInteriorSurface";
 import HomeworldYouthMotionV74 from "./HomeworldYouthMotionV74";
@@ -135,9 +136,8 @@ export interface HomeworldHubProps {
   /** Keep the lift inside this scene instead of browser/session-wide memory. */
   ephemeralSession?: boolean;
   onService(service: HomeworldService): void;
-  /** V147: Chenil des Pisteurs, shown while a kennel handler is reached on foot.
-   * `atKennel` re-checks the physical reach at the moment of an action. */
-  kennelV147?(context: { disabled: boolean; atKennel(): boolean }): ReactNode;
+  /** Save a kennel action after Homeworld has checked the hunter's physical reach. */
+  onKennelActionV147?(action: HoundKennelActionV147): boolean;
   onReturnShip(): void;
   /** Available only at the physically reached mentor after the chief. */
   onYouthTraining?(): boolean;
@@ -166,7 +166,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, recoveryStorage, ephemeralSession = false, onService, kennelV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, recoveryStorage, ephemeralSession = false, onService, onKennelActionV147, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1326,6 +1326,13 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
     if(!current||!isHoundKennelContactV147(current.id)||current.owner!==saveRef.current.createdAt||suspendedRef.current||pausedRef.current||inactive)return false;
     return !!homeworldStreetContactReachedV100(current.id,{actor:actorRef.current,levelId:levelRefV77.current,seconds:cityClockV68.current,interiorId:interiorRef.current?.buildingId,inTransit:!!transitRefV77.current||!!skiffRefV77.current});
   };
+  const handleKennelActionV147 = (action: HoundKennelActionV147): boolean => {
+    if (!atKennelV147()) {
+      onNotify("Approche-toi du Chenil des Pisteurs pour agir.");
+      return false;
+    }
+    return onKennelActionV147?.(action) ?? false;
+  };
   const selectedNpc = HOMEWORLD_NPCS.find(npc => npc.id === selectedPoint?.npcId);
   const inquiryDialogue = homeworldInquiryDialogue(progress, selectedPoint?.npcId);
   const selectedRegion = HOMEWORLD_REGIONS.find(region => region.id === selectedPoint?.regionId);
@@ -1594,7 +1601,12 @@ export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, 
               <button type="button" disabled={suspended || paused || inactive} onClick={() => submitInquiry(option.action)}>{option.label}</button>
             </div>)}
           </section>}
-        </> : selectedStreetContactV100 ? <><HomeworldStreetConversationV100 key={selectedStreetContactV100.id} contact={selectedStreetContactV100} progress={progress} seconds={phase} youth={youthWelcome} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready} onLandmark={requestStreetLandmarkV100}/>{kennelV147&&isHoundKennelContactV147(selectedStreetContactV100.id)&&kennelV147({disabled:cargoMigrationPendingV108||suspended||paused||inactive,atKennel:atKennelV147})}</> : dialog.streetContactV100 ? <p role="status">La conversation est interrompue. Rejoins cet habitant sur son passage.</p> : selectedResidentV68 ? <>
+        </> : selectedStreetContactV100 ? <>
+          <HomeworldStreetConversationV100 key={selectedStreetContactV100.id} contact={selectedStreetContactV100} progress={progress} seconds={phase} youth={youthWelcome} disabled={cargoMigrationPendingV108||suspended||paused||inactive||!motionAssetsV74.ready} onLandmark={requestStreetLandmarkV100}/>
+          {onKennelActionV147 && isHoundKennelContactV147(selectedStreetContactV100.id) &&
+            <HoundKennelPanelV147 hounds={save.houndsV147} disabled={cargoMigrationPendingV108||suspended||paused||inactive}
+              onAction={handleKennelActionV147} />}
+        </> : dialog.streetContactV100 ? <p role="status">La conversation est interrompue. Rejoins cet habitant sur son passage.</p> : selectedResidentV68 ? <>
           <p data-homeworld-civilian-routine-v84={selectedResidentPoseV84?.phase} data-homeworld-civilian-group-v84={selectedResidentRoutineV84?.groupId ?? undefined}>
             {selectedResidentPoseV84?.phaseLabel}{selectedResidentRoutineV84?.groupLabel ? ` · ${selectedResidentRoutineV84.groupLabel}` : ''}.
           </p>

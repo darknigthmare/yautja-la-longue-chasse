@@ -45,7 +45,6 @@ import React, {
 } from "react";
 import HunterRigPreview from "./HunterRigPreview";
 import HunterChromaticForgeV113 from "./HunterChromaticForgeV113";
-import HoundKennelPanelV147 from "./HoundKennelPanelV147";
 import { HOUND_KENNEL_LOCATION_V147, activeHoundV147 } from "./systems/huntingHoundsV147";
 import { chooseAtKennelV147, healAtKennelV147, kennelRefusalTextV147, recruitAtKennelV147 } from "./systems/houndKennelV147";
 import HunterPieceForgeV146, { type CustomizationApplyV146 } from "./HunterPieceForgeV146";
@@ -5095,18 +5094,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <p>{campaignWelcomeV69(save).next}</p>
               </section>}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
-                kennelV147={({ disabled, atKennel }) => <HoundKennelPanelV147 hounds={save.houndsV147} disabled={disabled}
-                  onAction={action => {
-                    // V147: every kennel action re-checks that the hunter still stands at the kennel.
-                    if (!atKennel()) { setToast("Approche-toi du Chenil des Pisteurs pour agir."); return false; }
-                    const current = saveRef.current.houndsV147;
-                    const change = action.type === "recruit"
-                      ? recruitAtKennelV147(current, { catalogueId: action.catalogueId, name: action.name, locationId: HOUND_KENNEL_LOCATION_V147 })
-                      : action.type === "choose" ? chooseAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147)
-                      : healAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147);
-                    if (!change.ok) { setToast(kennelRefusalTextV147(change.reason)); return false; }
-                    return persistSocialProgress({ houndsV147: change.state });
-                  }} />}
+                onKennelActionV147={action => {
+                  const current = saveRef.current.houndsV147;
+                  const change = action.type === "recruit"
+                    ? recruitAtKennelV147(current, { catalogueId: action.catalogueId, name: action.name, locationId: HOUND_KENNEL_LOCATION_V147 })
+                    : action.type === "choose" ? chooseAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147)
+                    : healAtKennelV147(current, action.houndId, HOUND_KENNEL_LOCATION_V147);
+                  if (!change.ok) { setToast(kennelRefusalTextV147(change.reason)); return false; }
+                  return persistSocialProgress({ houndsV147: change.state });
+                }}
                 onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
               </ClanPaletteContextV146.Provider>

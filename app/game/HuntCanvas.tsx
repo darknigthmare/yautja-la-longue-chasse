@@ -12231,6 +12231,8 @@ export default function HuntCanvas({
     gauntletVisualId,
     frozenInsertion,
     frozenInsertionShipId,
+    frozenHound,
+    hardcoreHunt,
     insertionRunId,
     activeBindings,
     activeAccessibility,
