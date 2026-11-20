@@ -108,31 +108,7 @@ test('retreat, victory and manual crown retrieval have distinct, idempotent debr
 
 test('autonomous acid marks or destroys the actual cargo independently of player damage', () => {
   const snapshots = qa.load('app/game/systems/buriedCradleSnapshot.ts');
-  const nursery = qa.load('app/game/systems/nurseryCampaign.ts');
-  const prologue = qa.load('app/game/systems/nurseryPrologue.ts');
-  const original = { ...fresh(), prologue: nursery.createNurseryCampaign() };
-  const environment = { assetsReady: true, pageVisible: true, paused: false, nextChapterReady: true };
-  let youth = prologue.createNurseryPrologue({ readyMode: 'press' }), completion = null;
-  for (let frame = 0; frame < 2400 && youth.phase !== 'complete'; frame++) {
-    const distance = Math.abs(youth.rival.x - youth.player.x);
-    let input = {};
-    if (youth.inputArmed && youth.phase === 'prompt') input = { confirm: frame % 2 === 0 };
-    if (youth.inputArmed && youth.phase === 'ready') input = { ready: frame % 2 === 0 };
-    if (youth.inputArmed && youth.phase === 'duel') {
-      input = { move: distance > 44 ? Math.sign(youth.rival.x - youth.player.x) : 0, light: frame % 30 === 0 };
-    }
-    const result = prologue.stepNurseryPrologue(youth, input, environment);
-    youth = result.state;
-    completion = result.completion ?? completion;
-  }
-  const adult = nursery.withNurseryCompletion(original, completion, youth, OWNER);
-  assert(adult, 'the fixture must contain a valid completed nursery checkpoint');
-  const fixture = { ...adult, prologue: { ...adult.prologue, chronicle: { ...adult.prologue.chronicle,
-    evidence: chronicle.CHRONICLE_EVIDENCE.filter(item => !['first-queen-hunt', 'queen-mission-briefing'].includes(item.id)).map(({ id, sourceId }) => ({ id, sourceId })),
-    rites: chronicle.CHRONICLE_RITES.slice(0, 3).map(({ id, sourceId }) => ({ id, sourceId })),
-  } } };
-  assert(nursery.normalizeNurseryCampaign(fixture.prologue));
-  const save = act(act(fixture, 'prepare'), 'depart');
+  const save = active();
   const run = cradle.createBuriedCradleRun(completedProgress(), 1);
   const place = (run, roomId, x) => ({ ...run, roomId, player: { ...run.player, x, y: 508,
     facing: 1, velocityX: 0, velocityY: 0, grounded: true } });
@@ -157,9 +133,19 @@ test('autonomous acid marks or destroys the actual cargo independently of player
     assert(next.extracted);
     return { progress: next.progress, snapshot: snapshots.snapshotBuriedCradleRun(next) };
   };
-  const marked = act(act(checkpoint, 'extract', extract(resumed.snapshot.run)), 'report');
+  const markedReturn = act(checkpoint, 'extract', extract(resumed.snapshot.run));
+  const marked = act(markedReturn, 'report');
   assert.equal(marked.buriedCradle.outcome, 'crown-returned');
   assert.equal(marked.buriedCradle.crownDelivered, true);
+
+  // The portability checks use the legacy adult save accepted by the full
+  // campaign parser. Exercise the reducer's separate chronicle branch with an
+  // eligible chronicle that has not yet recorded a queen-hunt receipt.
+  const prologue = { status: 'completed', chronicle: { version: 1,
+    evidence: chronicle.CHRONICLE_EVIDENCE.filter(item => item.id !== 'first-queen-hunt').map(({ id, sourceId }) => ({ id, sourceId })),
+    rites: chronicle.CHRONICLE_RITES.slice(0, 3).map(({ id, sourceId }) => ({ id, sourceId })), legacyRecognition: null } };
+  const hasQueenEvidence = ({ prologue }) => prologue.chronicle.evidence.some(item => item.id === 'first-queen-hunt');
+  assert.equal(hasQueenEvidence(act({ ...markedReturn, prologue }, 'report')), true);
 
   let lost = resumed.snapshot.run;
   let lostEvents = 0;
@@ -176,7 +162,8 @@ test('autonomous acid marks or destroys the actual cargo independently of player
   assert.equal(returned.buriedCradle.outcome, 'victory-without-crown');
   const reported = act(returned, 'report');
   assert.equal(reported.buriedCradle.crownDelivered, false);
-  assert.equal(reported.prologue.chronicle.evidence.some(item => item.id === 'first-queen-hunt'), false);
+  assert.equal(reported.prologue, null);
+  assert.equal(hasQueenEvidence(act({ ...returned, prologue }, 'report')), false);
   assert.equal(cradle.getCradleCrownCondition(saves.parseSaveImport(saves.exportSave(reported)).save.buriedCradle.progress), 'lost');
 
   const retry = act(reported, 'depart');
