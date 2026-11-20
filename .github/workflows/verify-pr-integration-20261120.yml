@@ -1,46 +1,145 @@
-name: Verify save controls and physical route persistence
+name: Verify the new Warp and honor integrations
 
 on:
   push:
-    branches: [codex/verify-pr-integration-20261120]
+    branches:
+      - codex/verify-pr-integration-20261120
 
 permissions:
   contents: read
 
+concurrency:
+  group: yautja-warp-honor-qualification-20261120
+  cancel-in-progress: true
+
+env:
+  FINAL_CANDIDATE_SHA: '28c75950a911376ac1ec509fc996c3748d625353'
+
 jobs:
-  legacy-fixtures:
+  runtime-candidate:
+    name: Verify and preserve the official V113 inventory candidate
     runs-on: ubuntu-24.04
-    timeout-minutes: 13
+    timeout-minutes: 25
+    permissions:
+      contents: read
     env:
+      ASSET_RACCORDS_SOURCE_COMMIT: '28c75950a911376ac1ec509fc996c3748d625353'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '57cb3c0f9379279a8e1de6228afcfaa43d0067d5'
+      NEXT_TELEMETRY_DISABLED: '1'
     steps:
-      - name: Checkout the exact candidate
+      - name: Checkout exact candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '57cb3c0f9379279a8e1de6228afcfaa43d0067d5'
+          ref: ${{ env.FINAL_CANDIDATE_SHA }}
           persist-credentials: false
+          fetch-depth: 3
           filter: blob:none
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
             !/*/
             /app/
-            /scripts/
             /tests/
+            /scripts/
             /build/
             /worker/
             /.openai/
             /.github/workflows/
             /docs/
             /public/**/manifest.json
+            /public/game/warp/w02/
+            /public/game/hounds/v147/
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /art-source/v113/20261120-integration/
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Materialize the official inputs
-        run: node scripts/materialize-asset-raccords-20261120.mjs runtime
-      - name: Install dependencies and exercise the two changed fixtures
+      - name: Materialize runtime and install pinned dependencies
         run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/save-v2.test.mjs tests/homeworld-passage-persistence-v67.test.mjs
+      - name: Generate and verify the current inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Preserve the original candidate and receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: integration-v113-runtime-${{ env.FINAL_CANDIDATE_SHA }}
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
+
+  integration-checks:
+    name: Typecheck and changed gameplay regressions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      INTEGRATION_MAIN: fc4252e3e50535ec1b7e3b7470c42d29dea51568
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.FINAL_CANDIDATE_SHA }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/warp/w02/
+            /public/game/hounds/v147/
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /art-source/v113/20261120-integration/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize runtime and install pinned dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next types and check TypeScript
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=2600 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Lint the combined Warp and career source
+        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/GameClient.tsx app/game/WarpEpochsPanelV165.tsx app/game/TantalusPanelV164.tsx app/game/save.ts app/game/systems/honorProgressionV166.ts app/game/systems/warpEpochsV165.ts app/game/systems/tantalusV164.ts
+      - name: Exercise changed and adjacent gameplay suites
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$INTEGRATION_MAIN"
+          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$INTEGRATION_MAIN" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
+          test "${#changed[@]}" -gt 0
+          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
+            tests/conservation-persistence-ui-v112.test.mjs \
+            tests/save-v2.test.mjs \
+            tests/campaign-slots.test.mjs \
+            tests/black-god-session-guard-v162.test.mjs \
+            tests/black-god-v162.test.mjs \
+            tests/clanChronicle.test.ts \
+            tests/honor-tribunal-v147.test.mjs \
+            tests/homeworld-passage-persistence-v67.test.mjs \
+            tests/gauntlet-mission-resume-v142.test.mjs \
+            tests/homeworld-player-equipment-raccords-20261120.test.mjs \
+            tests/environment-prop-raccords-20261120.test.mjs \
+            tests/canopy-navigation-v112.test.mjs \
+            tests/hunt-canopy-runtime-v112.test.mjs | sort -u)
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
