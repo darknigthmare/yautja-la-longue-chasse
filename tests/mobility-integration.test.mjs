@@ -10,7 +10,7 @@ const archives=qa.load('app/game/systems/completeArchive.ts');
 const OWNER='2026-11-08T10:00:00.000Z',MAIN=saves.SAVE_STORAGE_KEY;
 const input={throttle:1,steer:0,brake:false,boost:false,interact:false};
 function store(){const values=new Map();return {values,fail:false,uncertain:false,readback:false,get length(){return values.size;},key(i){return [...values.keys()][i]??null;},getItem(k){if(k===MAIN&&this.readback){this.readback=false;throw Error('readback');}return values.get(k)??null;},setItem(k,v){if(k===MAIN&&this.fail)throw new DOMException('quota','QuotaExceededError');values.set(k,v);if(k===MAIN&&this.uncertain){this.uncertain=false;this.readback=true;}},removeItem(k){values.delete(k);}};}
-function seed(){const s=saves.defaultSave(OWNER);s.profile.honor=300;s.profile.rankId='blooded';s.profile.clanMarks=10000;s.mobilityV1=m.createMobilityLedger(OWNER);return s;}
+function seed(){const s=saves.defaultSave(OWNER);s.profile.honor=300;s.profile.rankId='blooded';s.profile.acquiredRankIdV166='blooded';s.profile.clanMarks=10000;s.mobilityV1=m.createMobilityLedger(OWNER);return s;}
 function action(s,cmd){const result=m.actMobility(s,{...cmd,ownerCreatedAt:s.createdAt,expectedRevision:s.mobilityV1?.revision??0});assert(result.accepted,result.message);return {...s,mobilityV1:result.state,profile:{...s.profile,clanMarks:result.clanMarks}};}
 function bought(){const s=seed();s.mobilityV1.circulationPermit=true;return action(s,{type:'buy',modelId:'clan_hoverbike',expectedCost:420});}
 function active(){return action(bought(),{type:'start',modelId:'clan_hoverbike',loaned:false});}
