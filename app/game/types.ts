@@ -761,6 +761,8 @@ export interface SaveGame {
   queenHuntV163?: import("./systems/queenHuntV163").QueenHuntStateV163 | null;
   /** V165 : quête commune, module, branches Warp, voyage engagé et état de branche ; absent sur les anciennes sauvegardes. */
   warpEpochsV165?: import("./systems/warpEpochsV165").WarpEpochsStateV165 | null;
+  /** V164 : branche Warp Tantalus 2204 (voyage, retour réservé, choix Echo-8) ; absente des anciennes sauvegardes. */
+  tantalusV164?: import("./systems/tantalusV164").TantalusLedgerV164 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
