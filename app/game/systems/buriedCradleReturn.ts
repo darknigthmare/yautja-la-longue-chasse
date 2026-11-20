@@ -4,10 +4,16 @@ import { isNearShipInterior25dStation, type ShipInterior25dRoomId } from './ship
  * describe the subsequent care, examination and debrief on the assigned hull. */
 export type CradleReturnOperation = 'treat-return' | 'inspect-return' | 'present-clan' | 'analyze-workshop';
 export interface CradleReturnObservation { roomId: ShipInterior25dRoomId; x: number; y: number }
-export interface CradleReturnEvent { type: CradleReturnOperation; observation: CradleReturnObservation }
+export const CRADLE_RETURN_MENTOR = {
+  id: 'return-mentor', roomId: 'trophy-hall', position: { x: 710, y: 426 },
+} as const;
+export interface CradleReturnEvent {
+  type: CradleReturnOperation; observation: CradleReturnObservation;
+  witness?: typeof CRADLE_RETURN_MENTOR.id;
+}
 export interface CradleReturnVisit { version: 1; revision: number; events: CradleReturnEvent[] }
 export const CRADLE_RETURN_STATIONS = {
-  'treat-return': 'medical-bay', 'inspect-return': 'trophy-hall',
+  'treat-return': 'medical-bay', 'inspect-return': CRADLE_RETURN_MENTOR.roomId,
   'present-clan': 'clan-archives', 'analyze-workshop': 'trophy-hall',
 } as const satisfies Record<CradleReturnOperation, ShipInterior25dRoomId>;
 
@@ -34,11 +40,15 @@ export function inspectCradleReturnVisit(value: unknown, campaignStatus: string)
       (campaignStatus === 'reported') !== (value.events.length === 3)) return invalid;
   const events: CradleReturnEvent[] = [];
   for (const [index, event] of value.events.entries()) {
-    if (!record(event) || !keys(event, ['type', 'observation']) || !isCradleReturnOperation(event.type) ||
+    if (!record(event)) return invalid;
+    // Older examinations are kept as recorded, without adding a witness retrospectively.
+    const witnessed = event.type === 'inspect-return' && event.witness === CRADLE_RETURN_MENTOR.id;
+    if (!keys(event, witnessed ? ['type', 'observation', 'witness'] : ['type', 'observation']) || !isCradleReturnOperation(event.type) ||
         (index === 0 && event.type !== 'treat-return') || (index === 1 && event.type !== 'inspect-return') ||
         (index === 2 && !['present-clan', 'analyze-workshop'].includes(event.type)) ||
         !cradleReturnInReach(event.type, event.observation)) return invalid;
-    events.push({ type: event.type, observation: { ...event.observation } });
+    events.push({ type: event.type, observation: { ...event.observation },
+      ...(witnessed ? { witness: CRADLE_RETURN_MENTOR.id } : {}) });
   }
   return { status: 'valid', state: { version: 1, revision: events.length, events } };
 }
@@ -58,10 +68,12 @@ export function advanceCradleReturnVisit(visit: CradleReturnVisit, operation: Cr
   const expected = visit.revision === 0 ? ['treat-return'] : visit.revision === 1 ? ['inspect-return'] : ['present-clan', 'analyze-workshop'];
   if (!expected.includes(operation)) return refuse(visit.revision === 0 ? 'Passe d’abord au poste de soin.' :
     visit.revision === 1 ? 'Inspecte d’abord la crête ou les relevés rapportés à l’atelier.' : 'Choisis la présentation au clan ou l’analyse à l’atelier.');
+  const event: CradleReturnEvent = { type: operation, observation: { ...observation } };
+  if (operation === 'inspect-return') event.witness = CRADLE_RETURN_MENTOR.id;
   return { accepted: true, state: { version: 1, revision: visit.revision + 1,
-    events: [...visit.events.map(event => ({ ...event, observation: { ...event.observation } })), { type: operation, observation: { ...observation } }] },
+    events: [...visit.events.map(receipt => ({ ...receipt, observation: { ...receipt.observation } })), event] },
     message: operation === 'treat-return' ? 'Soins et nettoyage de l’équipement confirmés. La crête ou les relevés attendent ton examen à l’atelier.' :
-      operation === 'inspect-return' ? 'Le contenu du retour est installé et examiné. Choisis comment conclure ce retour.' :
+      operation === 'inspect-return' ? 'Le mentor a assisté à l’examen du retour. Choisis comment conclure ce retour.' :
       operation === 'present-clan' ? 'Présentation déposée aux archives du clan. Ton rapport et son origine restent consultables.' :
       'Analyse personnelle consignée à l’atelier. Les observations restent dans ton dossier de chasse.' };
 }

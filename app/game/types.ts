@@ -636,6 +636,8 @@ export interface PlayerProfile {
    * d'une sauvegarde antérieure : la migration garde le rang qu'elle affichait.
    */
   acquiredRankIdV166?: RankId;
+  /** Preserved pilot receipts pending support for their narrative rites. */
+  rankTrialsV168?: unknown;
   honor: number;
   clanMarks: number;
   playTimeSeconds: number;
@@ -791,4 +793,6 @@ export interface SaveGame {
   homeworld: HomeworldProgress;
   /** Evidence and warrants are independent of honor and versus matches. */
   justice: JusticeProgress;
+  /** Receipts for honour settled with its owning campaign. Unknown archives stay intact until inspected. */
+  honorSourcesV169?: unknown;
 }

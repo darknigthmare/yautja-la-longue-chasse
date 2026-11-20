@@ -2844,9 +2844,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ownedShipIds: fleet.unlockedShipIds, returnActive: true, returnObservation: observation });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    if (result.changed && action.type === "treat-return") playGameplaySound("medicomp");
     setToast(result.message); return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
-    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+    persistSocialProgress, playGameplaySound, resumableHunt, screen, settingsOpen, trophyWorkshop]);
 
   const commitCradleAction = useCallback((action: CradleCampaignAction): boolean => {
     const current = saveRef.current;
@@ -4270,6 +4271,25 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
       entry.ownerCreatedAt, playSound]);
 
+
+  const equipBiomask = useCallback((biomaskId: BiomaskId | null) => {
+    if (nurseryWriteAttemptRef.current) return;
+    const committed = commitCustomizationV146(current => ({
+      ...current,
+      appearance: {
+        ...current.appearance,
+        presetId: "custom",
+        biomaskId,
+        chromaticsV113: {
+          ...normalizeHunterChromaticsV113(current.appearance.chromaticsV113),
+          maskOriginId: maskOriginForCustomizationV135(current.appearance),
+        },
+      },
+    }), biomaskId === null ? "Biomask retiré." : "Biomask équipé.");
+    if (!committed) return;
+    setSelectedCatalogueEntryId(null);
+    setPreviewMaskWorn(saveRef.current.appearance.biomaskId !== null);
+  }, [commitCustomizationV146]);
 
   /** V147: trophy usages reuse the owner-bound durable write of V146 (nothing is announced before it is confirmed). */
   const commitTrophyUsageV147 = useCallback((action: TrophyUsageActionV147, confirmation: string): boolean => {
@@ -6317,10 +6337,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                       }
                       glyph={option.id === null ? "◌" : undefined}
                       selected={save.appearance.biomaskId === option.id}
-                      onSelect={() => {
-                        updateAppearance("biomaskId", option.id);
-                        setPreviewMaskWorn(option.id !== null);
-                      }}
+                      onSelect={() => equipBiomask(option.id)}
                     />
                   ))}
                 </CustomizationSection>
@@ -7633,11 +7650,12 @@ function RigStateControls({
   onBlades: () => void;
   onAim: () => void;
 }) {
+  const wearingMask = maskAvailable && maskWorn;
   const actions = [
     {
       id: "mask",
-      label: maskWorn ? "Retirer mask" : "Porter mask",
-      active: maskWorn,
+      label: wearingMask ? "Retirer mask" : "Porter mask",
+      active: wearingMask,
       disabled: !maskAvailable,
       onClick: onMask,
     },

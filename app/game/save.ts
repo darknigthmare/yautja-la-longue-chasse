@@ -4,6 +4,7 @@ import {
   missionHonorRewardV166,
   resolveAcquiredRankV166,
 } from "./systems/honorProgressionV166";
+import { honorForCampaignRankV169, honorSourcesStatusV169, settleHonorSourcesV169 } from "./systems/honorSourcesV169";
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
 import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -1023,8 +1024,9 @@ function normalizeTrophies(source: unknown): TrophyRecord[] {
     .slice(-MAX_TROPHY_RECORDS);
 }
 
-function campaignRankForHonor(honor: number, acquiredRank: unknown, tribunal: SaveGame["tribunalV147"]): RankId {
-  return effectiveRankV147(resolveAcquiredRankV166(honor, acquiredRank), tribunal);
+function campaignRankForHonor(honor: number, acquiredRank: unknown, tribunal: SaveGame["tribunalV147"], honorSources: unknown): RankId {
+  const campaignHonor = honorForCampaignRankV169(honor, honorSources);
+  return effectiveRankV147(resolveAcquiredRankV166(campaignHonor, acquiredRank), tribunal);
 }
 
 function normalizeLoadout(
@@ -1188,7 +1190,7 @@ export function normalizeSave(value: unknown): SaveGame {
   );
   const tribunalV147 = source.tribunalV147 === undefined || source.tribunalV147 === null
     ? null : normalizeHonorTribunalV147(source.tribunalV147);
-  const acquiredRankId = campaignRankForHonor(honor, rawProfile.acquiredRankIdV166, tribunalV147);
+  const acquiredRankId = campaignRankForHonor(honor, rawProfile.acquiredRankIdV166, tribunalV147, source.honorSourcesV169);
   const requestedDifficultyId = isOneOf(
     rawSettings.difficultyId,
     DIFFICULTY_IDS,
@@ -1254,6 +1256,7 @@ export function normalizeSave(value: unknown): SaveGame {
       ).slice(0, 32),
       rankId: acquiredRankId,
       acquiredRankIdV166: acquiredRankId,
+      ...(rawProfile.rankTrialsV168 == null ? {} : { rankTrialsV168: rawProfile.rankTrialsV168 }),
       honor,
       clanMarks: nonNegativeInteger(
         rawProfile.clanMarks,
@@ -1461,6 +1464,7 @@ export function normalizeSave(value: unknown): SaveGame {
     storyCompleted,
     homeworld: normalizeHomeworldProgress(source.homeworld),
     justice: normalizeJusticeProgress(source.justice),
+    ...(source.honorSourcesV169 == null ? {} : { honorSourcesV169: source.honorSourcesV169 }),
     prologue: normalizeNurseryCampaign(source.prologue),
     youthTraining: normalizeYouthCampaign(source.youthTraining),
     soloV66: normalizeSoloV66Campaign(source.soloV66),
@@ -1505,6 +1509,7 @@ export type SaveImportFailure =
 export interface SaveImportParseResult {
   save: SaveGame | null;
   failure: SaveImportFailure | null;
+  protectedHonorLedger?: true;
 }
 
 export type SaveLoadFailure =
@@ -1701,6 +1706,13 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isFutureHuntingHoundsV147(value.houndsV147))
     return { save: null, failure: "future-version" };
   // V147: a newer or unreadable tribunal record is refused, never silently cleared.
+  // V168 trial archives are owned by the pilot branch until the canonical rites exist.
+  // Refuse to replace them with a campaign that cannot read those receipts.
+  if (isRecord(value.profile) && value.profile.rankTrialsV168 != null)
+    return { save: null, failure: "future-version" };
+  const honorStatusV169 = honorSourcesStatusV169(value.honorSourcesV169);
+  if (honorStatusV169 === "future-version") return { save: null, failure: "future-version" };
+  if (honorStatusV169 === "invalid") return { save: null, failure: "invalid-save", protectedHonorLedger: true };
   const tribunalStatusV147 = tribunalVersionStatusV147(value.tribunalV147);
   if (tribunalStatusV147 === "future-version") return { save: null, failure: "future-version" };
   if (tribunalStatusV147 === "invalid") return { save: null, failure: "invalid-save" };
@@ -2060,6 +2072,7 @@ export function loadSaveWithStatus(
   // Falling back to an older backup on a downgraded client could silently roll
   // back a valid future campaign. Keep both files untouched instead.
   if (primary?.failure === "future-version") return fresh("future-version");
+  if (primary?.protectedHonorLedger) return fresh("invalid-save");
   try {
     const backup = storage.getItem(saveBackupKey(key));
     const recovered = backup === null ? null : parseSaveImport(backup).save;
@@ -2084,11 +2097,12 @@ function persistCampaign(
   replaceExisting: boolean,
 ): SaveWriteResult {
   const validated = inspectSavePayload(save);
-  const snapshot: SaveGame = {
+  const requested: SaveGame = {
     ...(validated.save ?? normalizeSave(save)),
     updatedAt: new Date().toISOString(),
   };
-  const failed = (failure: SaveWriteFailure): SaveWriteResult => ({ save: snapshot, persisted: false, failure });
+  const failed = (failure: SaveWriteFailure, retryable = requested): SaveWriteResult =>
+    ({ save: retryable, persisted: false, failure });
   if (!validated.save) return failed("invalid-save");
   if (!storage) return failed("storage-unavailable");
   if (archiveTransferPending(storage)) return failed("protected-save");
@@ -2107,22 +2121,28 @@ function persistCampaign(
       const parsed = parseSaveImport(previousSerialized);
       previous = parsed.save;
       if (!replaceExisting && !previous) {
-        if (parsed.failure === "future-version") return failed("protected-save");
+        if (parsed.failure === "future-version" || parsed.protectedHonorLedger) return failed("protected-save");
         const recovered = loadSaveWithStatus(storage, key);
-        if (recovered.source !== "backup" || recovered.save.createdAt !== snapshot.createdAt) {
+        if (recovered.source !== "backup" || recovered.save.createdAt !== requested.createdAt) {
           return failed("protected-save");
         }
         previous = recovered.save;
         previousSerialized = JSON.stringify(previous);
       }
     }
-    if (!replaceExisting && previous && previous.createdAt !== snapshot.createdAt) {
-      return failed("save-conflict");
+    if (!replaceExisting && previous) {
+      if (previous.createdAt !== requested.createdAt) return failed("save-conflict");
+      // This receipt ledger belongs to the confirmed campaign write. Refuse a
+      // stale copy before it can lose points or convert them into a rank.
+      if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
     }
   } catch {
     return failed("read-failed");
   }
 
+  const snapshot = replaceExisting ? requested : settleHonorSourcesV169(requested, previous);
   const serialized = JSON.stringify(snapshot);
   if (new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) return failed("invalid-save");
   const observedBefore = observedCampaigns.get(storage)?.get(key);
@@ -2560,7 +2580,7 @@ export function applyMissionResult(
       replayMultiplier,
   );
   const nextHonor = Math.max(0, save.profile.honor + honorReward);
-  const nextRankId = campaignRankForHonor(nextHonor, save.profile.acquiredRankIdV166, save.tribunalV147);
+  const nextRankId = campaignRankForHonor(nextHonor, save.profile.acquiredRankIdV166, save.tribunalV147, save.honorSourcesV169);
   const nextMission = MISSIONS.find(
     (candidate) => candidate.order === mission.order + 1,
   );
@@ -2709,7 +2729,7 @@ export function applyTribunalActionToSaveV147(save: SaveGame, action: TribunalAc
     declaration: save.justice.declaration, now,
   });
   const honor = result.honor;
-  const rankId = campaignRankForHonor(honor, save.profile.acquiredRankIdV166, result.tribunal);
+  const rankId = campaignRankForHonor(honor, save.profile.acquiredRankIdV166, result.tribunal, save.honorSourcesV169);
   return {
     result,
     update: {

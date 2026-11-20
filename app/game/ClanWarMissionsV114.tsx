@@ -1,16 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
 import {
-  WAR_MISSION_TEMPLATES_V114, WAR_LINE_ROSTER_V114, WAR_STEALTH_WALLS_V114,
+  WAR_MISSION_TEMPLATES_V114, WAR_LINE_ROSTER_V114, WAR_STEALTH_STEPS_V114,
+  WAR_STEALTH_RELAY_V114, WAR_STEALTH_EXIT_V114,
   WAR_STEALTH_HEIGHT_V114, WAR_STEALTH_WIDTH_V114, WAR_RTS_HEIGHT_V114, WAR_RTS_WIDTH_V114,
   actWarStealthV114, activateWarLineSupportV114, createWarLineV114, createWarMissionBoardV114,
   createWarRtsV114, createWarStealthV114, deployWarLineV114, deployWarRtsV114,
   finishWarMissionV114, issueWarDispatchV114, orderWarRtsV114, readWarMissionBoardV114,
-  resolveWarDispatchesV114, stepWarLineV114, stepWarRtsV114, warMissionStorageKeyV114,
-  type WarMissionBoardV114, type WarMissionModeV114,
+  resolveWarDispatchesV114, stepWarLineV114, stepWarRtsV114, warMissionStorageKeyV114, warStealthVisibleCellV114,
+  type WarMissionBoardV114, type WarMissionModeV114, type WarStealthActionV114, type WarStealthMoveV114,
 } from "./systems/clanWarMissionModesV114";
 import { warTerritoriesForSimulationV96, type WarSimulationV85, type WarOrderKindV85 } from "./systems/clanWarV85";
+import { fieldKeyboardAction } from "./systems/clanWarFieldControls";
 import styles from "./ClanWarMissionsV114.module.css";
 
 interface Props {
@@ -27,6 +29,19 @@ const MODE_LABELS: Record<WarMissionModeV114, string> = {
   stealth: "Infiltration et sabotage",
   rts: "Guerre totale · RTS",
 };
+const stealthDirections = [
+  { action: "up", label: "Haut", glyph: "↑" }, { action: "left", label: "Gauche", glyph: "←" },
+  { action: "down", label: "Bas", glyph: "↓" }, { action: "right", label: "Droite", glyph: "→" },
+] as const satisfies readonly { action: WarStealthMoveV114; label: string; glyph: string }[];
+const stealthMarkers = {
+  wall: { glyph: "■", kind: styles.wall, label: "obstacle" },
+  hero: { glyph: "H", kind: styles.hero, label: "chasseur" },
+  guard: { glyph: "S", kind: styles.guard, label: "sentinelle" },
+  relay: { glyph: "R", kind: styles.objective, label: "relais" },
+  exit: { glyph: "E", kind: styles.exit, label: "extraction" },
+  floor: { glyph: "·", kind: styles.floor, label: "libre" },
+} as const;
+const tileLabel = ({ x, y }: { x: number; y: number }) => `colonne ${x + 1}, ligne ${y + 1}`;
 const formatTime = (millis: number) => {
   const sec = Math.max(0, Math.ceil(millis / 1000));
   return Math.floor(sec / 60) + " min " + String(sec % 60).padStart(2, "0") + " s";
@@ -53,6 +68,7 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
   const [rts, setRts] = useState(() => createWarRtsV114());
   const [selectedSquad, setSelectedSquad] = useState<string>("own-1");
   const sequence = useRef(0);
+  const stealthHelpId = useId();
 
   const definitions = warTerritoriesForSimulationV96(simulation);
   const ownSites = definitions.filter(item => simulation.territories[item.id]?.controller === "CON-F01");
@@ -183,11 +199,32 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
   }
   const cells = useMemo(() => Array.from({ length: WAR_STEALTH_WIDTH_V114 * WAR_STEALTH_HEIGHT_V114 }, (_, index) => {
     const x = index % WAR_STEALTH_WIDTH_V114, y = Math.floor(index / WAR_STEALTH_WIDTH_V114);
-    const wall = WAR_STEALTH_WALLS_V114.has(x + "," + y), player = stealth.x === x && stealth.y === y;
-    const guard = stealth.guards.some(item => item.x === x && item.y === y);
-    const objective = x === 9 && y === 1, exit = x === 1 && y === 6;
-    return { x, y, wall, player, guard, objective, exit };
+    return { x, y, marker: stealthMarkers[warStealthVisibleCellV114(stealth, x, y)] };
   }), [stealth]);
+  const canPlayStealth = active && !blocked && stealth.phase === "active";
+  const adjacentStealthCells = stealthDirections.map(({ action, label }) => {
+    const { dx, dy } = WAR_STEALTH_STEPS_V114[action];
+    const cell = warStealthVisibleCellV114(stealth, stealth.x + dx, stealth.y + dy);
+    return `${label} ${stealthMarkers[cell].label}`;
+  }).join(", ");
+  const visibleStealthGuards = stealth.guards
+    .filter(guard => warStealthVisibleCellV114(stealth, guard.x, guard.y) === "guard")
+    .map(tileLabel).join(" et ");
+
+  function stealthAction(action: WarStealthActionV114) {
+    if (canPlayStealth) setStealth(state => actWarStealthV114(state, action));
+  }
+  function handleStealthKey(event: KeyboardEvent<HTMLDivElement>) {
+    if (event.defaultPrevented || event.target !== event.currentTarget || event.shiftKey) return;
+    const command = fieldKeyboardAction({
+      key: event.key, repeat: event.repeat, ctrlKey: event.ctrlKey, altKey: event.altKey, metaKey: event.metaKey,
+      isComposing: event.nativeEvent.isComposing, blocked: !canPlayStealth, mode: "stealth",
+    });
+    if (!command || command === "wait") return;
+    event.preventDefault();
+    event.stopPropagation();
+    stealthAction(command);
+  }
 
   return <section className={styles.root} data-testid="war-mission-modes-v114">
     <div className={styles.heading}><div><p className={styles.kicker}>MANDATS MULTI-MODES · V114</p><h3>Opérations de clans · {planetName}</h3><p>Les quatre modes utilisent les lieux et personnes de l’exercice V3. Leurs rapports et ressources d’entraînement se répondent, mais ne donnent aucun trophée, rang, territoire ou combattant à la campagne.</p></div></div>
@@ -251,18 +288,27 @@ export default function ClanWarMissionsV114({ simulation, planetName, active, on
       </div>}
       {run?.mode === "stealth" && <div data-testid="war-stealth-v114">
         <div className={styles.progress}><span>Alarme {stealth.alarm}/4</span><span>Énergie de camouflage {stealth.energy}/10</span><span>Relais {stealth.planted ? "neutralisé" : "actif"}</span></div>
-        <div className={styles.stealthMap} aria-label="Plan d’infiltration : H héros, S sentinelle, R relais, E extraction, blocs obstacles">
-          {cells.map(cell => <span key={cell.x + "," + cell.y} className={cell.wall ? styles.wall : cell.player ? styles.hero : cell.guard ? styles.guard : cell.objective ? styles.objective : cell.exit ? styles.exit : styles.floor} title={cell.x + "," + cell.y}>{cell.wall ? "■" : cell.player ? "H" : cell.guard ? "S" : cell.objective ? "R" : cell.exit ? "E" : "·"}</span>)}
+        <p id={stealthHelpId}>Sur le terrain, déplacez-vous avec les flèches, ZQSD ou WASD. Appuyez sur E à portée du relais.
+          Le relais se trouve en {tileLabel(WAR_STEALTH_RELAY_V114)} et l’extraction en {tileLabel(WAR_STEALTH_EXIT_V114)}.</p>
+        <div className={styles.stealthField} role="group" tabIndex={0} aria-label="Terrain d’infiltration"
+          aria-describedby={stealthHelpId} aria-keyshortcuts="ArrowUp ArrowLeft ArrowDown ArrowRight Z Q S D W A E"
+          onKeyDown={handleStealthKey}>
+          <div className={styles.stealthMap} aria-hidden="true">
+            {cells.map(({ x, y, marker }) => <span key={x + "," + y} className={marker.kind} title={tileLabel({ x, y })}>{marker.glyph}</span>)}
+          </div>
         </div>
-        <div className={styles.arrows}>
-          {(["up", "left", "down", "right"] as const).map(action => <button key={action} type="button" disabled={!active || stealth.phase !== "active"} onClick={() => setStealth(state => actWarStealthV114(state, action))}>{({ up: "↑ Haut", left: "← Gauche", down: "↓ Bas", right: "→ Droite" })[action]}</button>)}
+        <p role="status" aria-atomic="true">Vous êtes en {tileLabel(stealth)}. {adjacentStealthCells}.
+          {visibleStealthGuards && <> Sentinelles visibles en {visibleStealthGuards}.</>}
+          {stealth.phase === "victory" ? " Extraction réussie." : stealth.phase === "defeat" ? " Alerte, mission échouée." : ""}
+        </p>
+        <div className={styles.arrows} role="group" aria-label="Déplacements d’infiltration">
+          {stealthDirections.map(({ action, label, glyph }) => <button key={action} type="button" disabled={!canPlayStealth} onClick={() => stealthAction(action)}><span aria-hidden="true">{glyph} </span>{label}</button>)}
         </div>
         <div className={styles.actions}>
-          <button type="button" aria-pressed={stealth.crouch} disabled={!active || stealth.phase !== "active"} onClick={() => setStealth(state => actWarStealthV114(state, "crouch"))}>Profil bas {stealth.crouch ? "actif" : "inactif"}</button>
-          <button type="button" aria-pressed={stealth.cloak} disabled={!active || stealth.phase !== "active" || stealth.energy <= 0} onClick={() => setStealth(state => actWarStealthV114(state, "cloak"))}>Camouflage {stealth.cloak ? "actif" : "inactif"}</button>
-          <button type="button" disabled={!active || stealth.phase !== "active"} onClick={() => setStealth(state => actWarStealthV114(state, "interact"))}>Neutraliser le relais</button>
+          <button type="button" aria-pressed={stealth.crouch} disabled={!canPlayStealth} onClick={() => stealthAction("crouch")}>Profil bas {stealth.crouch ? "actif" : "inactif"}</button>
+          <button type="button" aria-pressed={stealth.cloak} disabled={!canPlayStealth || stealth.energy <= 0} onClick={() => stealthAction("cloak")}>Camouflage {stealth.cloak ? "actif" : "inactif"}</button>
+          <button type="button" disabled={!canPlayStealth} onClick={() => stealthAction("interact")}>Neutraliser le relais</button>
         </div>
-        <p>Approcher R, interagir depuis une case voisine, puis rejoindre E. Éviter la ligne de vue des sentinelles. {stealth.phase === "victory" ? "Extraction réussie." : stealth.phase === "defeat" ? "Alerte : mission échouée." : ""}</p>
       </div>}
       {run?.mode === "rts" && <div data-testid="war-rts-v114">
         <div className={styles.progress}><span>Points de commandement {rts.points}</span><span>Ouest {rts.leftCapture}/7</span><span>Est {rts.rightCapture}/7</span><span>Tenue {rts.hold}/6</span></div>

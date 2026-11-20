@@ -5,7 +5,7 @@ import { useId, useLayoutEffect, useRef, useState } from 'react';
 import { useMenuGamepad } from './useMenuGamepad';
 import type { SaveGame } from './types';
 import { shipForId, type ShipId } from './shipCatalogue';
-import { CRADLE_RETURN_STATIONS, cradleReturnChoice, type CradleReturnObservation, type CradleReturnOperation } from './systems/buriedCradleReturn';
+import { CRADLE_RETURN_MENTOR, CRADLE_RETURN_STATIONS, cradleReturnChoice, type CradleReturnObservation, type CradleReturnOperation } from './systems/buriedCradleReturn';
 import type { PhysicalShipStationId } from './systems/shipLevelLayout';
 import styles from './BuriedCradleReturnPanel.module.css';
 
@@ -45,6 +45,7 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
   const correctHull = controlled.selectedShipId === state.personalShipId;
   const ready = correctHull && !suspended && state.status === 'extracted';
   const examined = visit.revision >= 2;
+  const witnessed = visit.events[1]?.witness === CRADLE_RETURN_MENTOR.id;
   const crown = state.progress.crownClaimed;
   const act = (type: CradleReturnOperation) => {
     const observation = observe();
@@ -81,7 +82,8 @@ export default function BuriedCradleReturnPanel({ controlled, stationId, suspend
       </article>
       <article className={styles.step} data-return-step="inspection"><span className={styles.number}>02</span><h4>{crown ? 'Examiner la crête' : 'Installer les relevés'}</h4>
         <p>{examined ? crown ? 'La crête repose sur le support. Les relevés de cette expédition restent à côté : ils racontent comment tu l’as obtenue.' :
-          'Les relevés d’expédition sont installés. Le support de trophée reste vide.' : 'Rejoins la galerie des trophées et examine ce qui a réellement été rapporté.'}</p>
+          'Les relevés d’expédition sont installés. Le support de trophée reste vide.' : 'Le mentor te rejoint à l’établi de la galerie des trophées après les soins. Examine avec lui ce qui est revenu à bord.'}</p>
+        {witnessed && <p className={styles.detail} data-cradle-return-witness>Examen observé par le mentor du retour.</p>}
         {examined && correctHull && crown && <img className={styles.crown} src="/game/xeno-prime/berceau-v1/sprites/props_effets/100_trophee_couronne_socle.png" alt="Crête de la Matriarche sur son support" width={1254} height={1254} />}
         {examined && <dl className={styles.readings}><div><dt>Lieux relevés</dt><dd>{state.progress.visitedRoomIds.length} / 12</dd></div>
           <div><dt>Raccourcis ouverts</dt><dd>{state.progress.shortcutIds.length} / 3</dd></div>

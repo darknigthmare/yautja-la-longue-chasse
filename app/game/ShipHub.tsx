@@ -1201,7 +1201,7 @@ function RoomSummary({
           title="Route de la Longue Chasse"
           detail={
             clan.nextRankLabel
-              ? `Prochain rang : ${clan.nextRankLabel} à ${clan.honorForNextRank} honneur.`
+              ? `Prochain rang : ${clan.nextRankLabel} à ${clan.honorForNextRank} points d’honneur de chasse.`
               : clan.nextBibleTier
                 ? `Le rang d’Ancien est atteint ; prochain palier d’honneur de la bible : ${clan.nextBibleTier.bibleRank} à ${clan.nextBibleTier.threshold.toLocaleString("fr-FR")} honneur${clan.nextBibleTier.gameRankId ? "" : " (rang pas encore présent dans le jeu)"}.`
                 : "Le rang d’Ancien est atteint ; le seuil de Black God (40 000 honneur) est atteint."

@@ -1,4 +1,5 @@
 import { nextBibleTierV166, type BibleHonorTierV166 } from "./honorProgressionV166";
+import { honorForCampaignRankV169 } from "./honorSourcesV169";
 import { archiveTransferPending } from "./archiveTransferGuard";
 import { normalizeSave, parseSaveImport, RANK_THRESHOLDS, SAVE_STORAGE_KEY } from "../save";
 import {
@@ -1534,7 +1535,7 @@ export function evaluateClanProgression(
     nextThreshold === null
       ? 1
       : clamp(
-          (save.profile.honor - currentThreshold) /
+          (honorForCampaignRankV169(save.profile.honor, save.honorSourcesV169) - currentThreshold) /
             Math.max(1, nextThreshold - currentThreshold),
           0,
           1,

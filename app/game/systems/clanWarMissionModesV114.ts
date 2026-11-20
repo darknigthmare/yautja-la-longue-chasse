@@ -168,8 +168,32 @@ export interface WarStealthGuardV114 { id: string; x: number; y: number; axis: "
 export interface WarStealthV114 { x: number; y: number; tick: number; energy: number; cloak: boolean; crouch: boolean; alarm: number; planted: boolean; guards: WarStealthGuardV114[]; phase: WarMissionPhaseV114 }
 export const WAR_STEALTH_WIDTH_V114 = 12, WAR_STEALTH_HEIGHT_V114 = 8;
 export const WAR_STEALTH_WALLS_V114 = new Set(["4,1", "4,2", "4,3", "4,4", "6,5", "7,5", "8,5", "6,1", "6,2"]);
+export const WAR_STEALTH_STEPS_V114 = {
+  up: { dx: 0, dy: -1 }, left: { dx: -1, dy: 0 },
+  down: { dx: 0, dy: 1 }, right: { dx: 1, dy: 0 },
+} as const;
+export const WAR_STEALTH_RELAY_V114 = { x: 9, y: 1 } as const;
+export const WAR_STEALTH_EXIT_V114 = { x: 1, y: 6 } as const;
+
+export type WarStealthMoveV114 = keyof typeof WAR_STEALTH_STEPS_V114;
+export type WarStealthActionV114 = WarStealthMoveV114 | "cloak" | "crouch" | "interact";
+
+function warStealthBlockedCellV114(x: number, y: number): boolean {
+  return x < 0 || x >= WAR_STEALTH_WIDTH_V114 || y < 0 ||
+    y >= WAR_STEALTH_HEIGHT_V114 || WAR_STEALTH_WALLS_V114.has(x + "," + y);
+}
+
+/** The visual map and text readout use the same visible marker at every cell. */
+export function warStealthVisibleCellV114(state: WarStealthV114, x: number, y: number) {
+  if (warStealthBlockedCellV114(x, y)) return "wall";
+  if (state.x === x && state.y === y) return "hero";
+  if (state.guards.some(guard => guard.x === x && guard.y === y)) return "guard";
+  if (x === WAR_STEALTH_RELAY_V114.x && y === WAR_STEALTH_RELAY_V114.y) return "relay";
+  if (x === WAR_STEALTH_EXIT_V114.x && y === WAR_STEALTH_EXIT_V114.y) return "exit";
+  return "floor";
+}
 export function createWarStealthV114(intel = 0): WarStealthV114 {
-  return { x: 1, y: 6, tick: 0, energy: bounded(6 + Math.floor(intel / 15), 0, 10), cloak: false, crouch: false, alarm: 0, planted: false,
+  return { ...WAR_STEALTH_EXIT_V114, tick: 0, energy: bounded(6 + Math.floor(intel / 15), 0, 10), cloak: false, crouch: false, alarm: 0, planted: false,
     guards: [{ id: "g1", x: 8, y: 3, axis: "x", direction: 1 }, { id: "g2", x: 3, y: 5, axis: "y", direction: -1 }], phase: "active" };
 }
 function sightBlocked(x: number, y: number, gx: number, gy: number) {
@@ -177,15 +201,15 @@ function sightBlocked(x: number, y: number, gx: number, gy: number) {
   if (y === gy) for (let xx = Math.min(x, gx) + 1; xx < Math.max(x, gx); xx++) if (WAR_STEALTH_WALLS_V114.has(xx + "," + y)) return true;
   return false;
 }
-export function actWarStealthV114(state: WarStealthV114, action: "up" | "down" | "left" | "right" | "cloak" | "crouch" | "interact"): WarStealthV114 {
+export function actWarStealthV114(state: WarStealthV114, action: WarStealthActionV114): WarStealthV114 {
   if (state.phase !== "active") return state;
   if (action === "cloak") return { ...state, cloak: !state.cloak && state.energy > 0 };
   if (action === "crouch") return { ...state, crouch: !state.crouch };
-  const dx = action === "left" ? -1 : action === "right" ? 1 : 0;
-  const dy = action === "up" ? -1 : action === "down" ? 1 : 0;
+  const { dx, dy } = action === "interact" ? { dx: 0, dy: 0 } : WAR_STEALTH_STEPS_V114[action];
   const x = state.x + dx, y = state.y + dy;
-  if (action !== "interact" && (x < 0 || x >= WAR_STEALTH_WIDTH_V114 || y < 0 || y >= WAR_STEALTH_HEIGHT_V114 || WAR_STEALTH_WALLS_V114.has(x + "," + y))) return state;
-  const planted = state.planted || (action === "interact" && Math.abs(state.x - 9) + Math.abs(state.y - 1) <= 1);
+  if (action !== "interact" && warStealthBlockedCellV114(x, y)) return state;
+  const relay = WAR_STEALTH_RELAY_V114;
+  const planted = state.planted || (action === "interact" && Math.abs(state.x - relay.x) + Math.abs(state.y - relay.y) <= 1);
   const nextTick = state.tick + 1;
   const guards = state.guards.map(g => {
     const low = g.id === "g1" ? 7 : 3, high = g.id === "g1" ? 10 : 6;
@@ -201,7 +225,7 @@ export function actWarStealthV114(state: WarStealthV114, action: "up" | "down" |
   });
   const alarm = bounded(state.alarm + (spotted ? 1 : -1), 0, 5);
   return { ...state, x: action === "interact" ? state.x : x, y: action === "interact" ? state.y : y,
-    tick: nextTick, guards, energy, cloak, alarm, planted, phase: alarm >= 4 ? "defeat" : planted && x === 1 && y === 6 ? "victory" : "active" };
+    tick: nextTick, guards, energy, cloak, alarm, planted, phase: alarm >= 4 ? "defeat" : planted && x === WAR_STEALTH_EXIT_V114.x && y === WAR_STEALTH_EXIT_V114.y ? "victory" : "active" };
 }
 export interface WarRtsUnitV114 { id: string; side: "own" | "enemy"; x: number; y: number; targetX: number; targetY: number; hp: number; cooldown: number }
 export interface WarRtsV114 { tick: number; points: number; leftCapture: number; rightCapture: number; hold: number; seq: number; units: WarRtsUnitV114[]; phase: WarMissionPhaseV114 }

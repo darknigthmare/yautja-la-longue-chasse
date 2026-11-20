@@ -1,6 +1,6 @@
-/** Current native workshop and Homeworld regression for B136-0374 / 0375.
- * Boot a production GameClient first. Only the initial adult/custom campaign
- * is seeded. All edits, the save, and the Homeworld entry are real UI actions.
+/** Native workshop and Homeworld checks for B136-0374 / 0375 and a bounded
+ * B136-0376 mask session. The only save fixture is the initial adult campaign.
+ * Native controls perform the edits. Two storage faults exercise real refusals.
  */
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
@@ -24,10 +24,10 @@ const colors = [
 ];
 const report = {
   startedAt: new Date().toISOString(), url: url.href,
-  criteria: ['B136-0374', 'B136-0375'],
+  criteria: ['B136-0374', 'B136-0375', 'B136-0376 (bounded)'],
   scope: '48 catalogue choices and five pigments on one classic custom hunter, then one actual Homeworld visit after reload. Renderer comparison uses mask sources, atlas cells and pigments; the two scenes intentionally have different transforms.',
   fixture: 'One initial adult defaultSave with custom appearance, native Jungle mask and muted audio. No pigments or motifs seeded.',
-  limits: ['No human art or official UV validation', 'No other morphologies or three-angle review'],
+  limits: ['No human art or official UV validation', 'No other morphologies or three-angle review', 'Bounded mask cycle test, not the separate hour-long materials endurance run'],
   decals: [], colors: [], screenshots: [], errors: [], assetResponses: {},
 };
 let browser, context, page, tracing = false;
@@ -181,6 +181,118 @@ try {
   for (const [zone, id] of Object.entries(chosen)) assert.equal(persisted[api.DECAL_FIELDS_V133[zone]], id);
   for (const { field, hex } of colors) assert.equal(persisted[field], hex);
   report.persisted = { chromatics: persisted, beforeSha256: sha(before), afterSha256: sha(after) };
+
+  const maskId = result.save.appearance.biomaskId;
+  assert.equal(maskId, 'jungle', 'The initial recipe uses the native Jungle Hunter mask');
+  const maskLayers = preview.locator('[data-chromatic-channel="biomask"], [data-yautja-decal-zone="biomask"]');
+  const rigControls = page.locator('.customization-preview .rig-state-controls');
+  const wear = rigControls.getByRole('button', { name: 'Porter mask', exact: true });
+  const remove = rigControls.getByRole('button', { name: 'Retirer mask', exact: true });
+  const maskOptions = page.locator('.customization-section').filter({
+    has: page.getByRole('heading', { name: 'Biomask', exact: true }),
+  });
+  const uncover = maskOptions.getByRole('button', { name: /Visage découvert/ });
+  const equip = maskOptions.getByRole('button', { name: /Jungle Hunter/ });
+
+  async function waitMask(worn) {
+    await page.waitForFunction(({ selector, value }) =>
+      document.querySelector(selector)?.getAttribute('data-mask') === value,
+    { selector: previewSelector, value: worn ? maskId : 'off' });
+    if (worn) {
+      await preview.locator('[data-chromatic-channel="biomask"]').first().waitFor({ state: 'attached' });
+      await decalState(preview, 'biomask', chosen.biomask, api.DECAL_ATLAS_PATH_V133);
+    } else {
+      assert.equal(await maskLayers.count(), 0);
+    }
+  }
+
+  async function checkRefusedMask(option, worn) {
+    const unchanged = await stored();
+    const restore = await page.evaluateHandle(key => {
+      const original = Storage.prototype.setItem;
+      let refused = 0;
+      Storage.prototype.setItem = function (item, value) {
+        if (this === localStorage && item === key) {
+          refused += 1;
+          throw new DOMException('Refus de stockage volontaire pour la recette', 'QuotaExceededError');
+        }
+        return original.call(this, item, value);
+      };
+      return () => { Storage.prototype.setItem = original; return refused; };
+    }, api.SAVE_STORAGE_KEY);
+    let refused;
+    try {
+      await option.click();
+      await page.getByRole('status').filter({ hasText: /Personnalisation non confirmée/ }).waitFor();
+      await waitMask(worn);
+      assert.equal(await stored(), unchanged, 'A refused selection keeps the campaign bytes');
+      assert.equal(await (worn ? equip : uncover).getAttribute('aria-pressed'), 'true');
+    } finally {
+      refused = await restore.evaluate(undo => undo());
+      await restore.dispose();
+    }
+    assert.equal(refused, 1, 'The fault must refuse exactly the requested write');
+  }
+
+  const maskStarted = Date.now();
+  const previewCycles = 24;
+  for (let cycle = 0; cycle < previewCycles; cycle += 1) {
+    await remove.click();
+    await waitMask(false);
+    assert.equal(await stored(), after, 'Preview removal does not write the campaign');
+    await wear.click();
+    await waitMask(true);
+    assert.equal(await stored(), after, 'Preview re-equipping does not write the campaign');
+  }
+
+  await checkRefusedMask(uncover, true);
+  await uncover.click();
+  await waitMask(false);
+  const unmasked = api.parseSaveImport(await stored()).save;
+  assert.equal(unmasked?.appearance.biomaskId, null);
+  assert.equal(unmasked?.createdAt, initial.createdAt);
+  assert.deepEqual(unmasked?.profile, result.save.profile);
+  await capture(preview, 'atelier-biomask-retire.png');
+
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await openCampaign();
+  await openWorkshop();
+  await waitMask(false);
+  assert.equal(await wear.isDisabled(), true);
+  assert.equal(await wear.getAttribute('aria-pressed'), 'false');
+  assert.equal(api.parseSaveImport(await stored()).save?.appearance.biomaskId, null);
+
+  const pieceForge = page.locator('[data-hunter-pieces-v146]');
+  const plasmaColor = pieceForge.locator('label').filter({ hasText: "Plasma et tirs d'énergie" }).locator('input[type="color"]');
+  const newPlasmaColor = '#257085';
+  const beforeLightDraft = await stored();
+  await pieceForge.getByRole('tab', { name: 'Lumières', exact: true }).click();
+  await plasmaColor.fill(newPlasmaColor);
+  assert.equal(await stored(), beforeLightDraft, 'An independent light draft does not write the campaign');
+
+  await checkRefusedMask(equip, false);
+  await equip.click();
+  await waitMask(true);
+  assert.equal(await plasmaColor.inputValue(), newPlasmaColor, 'Equipping the mask preserves the independent light draft');
+  const equipped = api.parseSaveImport(await stored()).save;
+  assert.deepEqual(equipped?.appearance, result.save.appearance, 'The same mask recovers its original pigment and decal');
+  assert.deepEqual(equipped?.profile, result.save.profile);
+  assert.deepEqual(equipped?.inventory, result.save.inventory);
+  await pieceForge.getByRole('button', { name: 'Confirmer les couleurs', exact: true }).click();
+  await page.waitForFunction(({ key, value }) =>
+    JSON.parse(localStorage.getItem(key))?.appearance?.lightsV146?.plasma === value,
+  { key: api.SAVE_STORAGE_KEY, value: newPlasmaColor });
+  assert.deepEqual(api.parseSaveImport(await stored()).save?.appearance, {
+    ...result.save.appearance,
+    lightsV146: { ...result.save.appearance.lightsV146, plasma: newPlasmaColor },
+  }, 'Confirming the independent light never restores an earlier mask');
+  await waitMask(true);
+  await capture(preview, 'atelier-biomask-porte.png');
+  report.biomaskSession = {
+    previewCycles, failedDurableWrites: 2, confirmedDurableChanges: 2,
+    independentLightDraftPreserved: true,
+    durationMs: Date.now() - maskStarted, originalMaskRestored: true,
+  };
 
   await page.reload({ waitUntil: 'domcontentloaded' });
   await openCampaign();
