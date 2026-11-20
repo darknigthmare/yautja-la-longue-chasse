@@ -1,6 +1,8 @@
 import type {FieldSpecimenV112,HarvestInventoryV112} from "./systems/harvestInventoryV112";
 import type { HuntAccessibilityV112 } from "./systems/huntAccessibilityV112";
 import type { HunterChromaticsV113 } from "./hunterChromaticsV113";
+import type { HunterPieceColorsV146, HunterLightsV146, HunterPieceIdV146 } from "./hunterPiecesV146";
+import type { HunterMarksDisplayV146, SkinPatternIdV146, CustomizationV146 } from "./systems/hunterCustomizationV146";
 /**
  * Shared game contracts.
  *
@@ -283,6 +285,14 @@ export interface HunterAppearance {
   laserColorId?: LaserColorId;
   /** Optional for legacy V1-V112 saves; normalized by save.ts. */
   chromaticsV113?: HunterChromaticsV113;
+  /** V146: per-piece colours in three zones plus light; absent = channel colours. */
+  piecesV146?: HunterPieceColorsV146;
+  /** V146: recoloured glowing effects (laser, plasma, display...). */
+  lightsV146?: HunterLightsV146;
+  /** V146: earned marks the player chose to show, with their colour. */
+  marksV146?: HunterMarksDisplayV146;
+  /** V146: skin pattern layer (earned), null = none. */
+  skinPatternIdV146?: SkinPatternIdV146 | null;
 }
 
 export interface ContentUnlock {
@@ -577,6 +587,8 @@ export interface MissionResult {
   /** Permanent discoveries survive success, death and voluntary extraction. */
   exploration?: ExplorationProgress;
   secondWindUsed: boolean;
+  /** V146: armour pieces cracked by heavy hits; applied once to the campaign. */
+  wearV146?: { heavyPieces: HunterPieceIdV146[] };
   completedAt: string;
 }
 
@@ -710,6 +722,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V146: outfits, mode outfits, clan palette, earned cosmetics, heavy wear. */
+  customizationV146?: CustomizationV146 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

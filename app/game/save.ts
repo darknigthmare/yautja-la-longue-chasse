@@ -64,6 +64,10 @@ import {
   type HunterLorePresetId,
 } from "./hunterLore";
 import { ENEMY_V7_DEFINITIONS } from "./enemyRosterV7";
+import { HUNTER_PIECE_IDS_V146, hasCustomPiecesV146, normalizeLightsV146,
+  normalizePieceColorsV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
+import { SKIN_PATTERN_IDS_V146, applyHeavyWearV146, earnedCosmeticsV146,
+  emptyCustomizationV146, normalizeCustomizationV146, normalizeMarksDisplayV146 } from "./systems/hunterCustomizationV146";
 import {
   ECOLOGY_V8_BOSS_ENEMY_IDS,
   ECOLOGY_V8_ENEMIES,
@@ -649,6 +653,11 @@ function normalizeUpgradeRecord<T extends string>(
   return normalized;
 }
 
+/** V146: shared with outfits and share codes (same rules as campaign saves). */
+export function normalizeHunterAppearanceV146(source: unknown): HunterAppearance {
+  return normalizeAppearance(source);
+}
+
 function normalizeAppearance(source: unknown): HunterAppearance {
   if (!isRecord(source)) {
     return { ...DEFAULT_HUNTER_APPEARANCE };
@@ -697,6 +706,15 @@ function normalizeAppearance(source: unknown): HunterAppearance {
       : DEFAULT_HUNTER_APPEARANCE.laserColorId,
     chromaticsV113: migrateLegacyPhgAppearanceV115(source),
   };
+  // V146 fields are written only when present, so older appearances keep
+  // their exact shape (and their bytes) after normalisation.
+  const piecesV146 = normalizePieceColorsV146(source.piecesV146);
+  if (Object.keys(piecesV146).length) appearance.piecesV146 = piecesV146;
+  const lightsV146 = normalizeLightsV146(source.lightsV146);
+  if (Object.keys(lightsV146).length) appearance.lightsV146 = lightsV146;
+  const marksV146 = normalizeMarksDisplayV146(source.marksV146);
+  if (Object.keys(marksV146).length) appearance.marksV146 = marksV146;
+  if (isOneOf(source.skinPatternIdV146, SKIN_PATTERN_IDS_V146)) appearance.skinPatternIdV146 = source.skinPatternIdV146;
 
   if (appearance.presetId !== "custom") {
     const expected = appearanceForPreset(
@@ -725,7 +743,9 @@ function normalizeAppearance(source: unknown): HunterAppearance {
 
     // A legendary id describes the complete authored plate, never a label
     // that can remain attached to a manually altered combination of modules.
-    if (!matchesAuthoredModules || hasCustomChromaticsV113(appearance.chromaticsV113)) appearance.presetId = "custom";
+    if (!matchesAuthoredModules || hasCustomChromaticsV113(appearance.chromaticsV113) ||
+      hasCustomPiecesV146(appearance.piecesV146, appearance.lightsV146) ||
+      appearance.marksV146 !== undefined || appearance.skinPatternIdV146 !== undefined) appearance.presetId = "custom";
   }
 
   return appearance;
@@ -1265,6 +1285,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.mobilityV1 === undefined ? {} : {
       mobilityV1: inspectMobilityLedger(source.mobilityV1,validIsoDate(source.createdAt,fallback.createdAt)).state,
     }),
+    ...(source.customizationV146 === undefined || source.customizationV146 === null ? {} : {
+      customizationV146: normalizeCustomizationV146(source.customizationV146, raw => ({ ...normalizeAppearance(raw) })),
+    }),
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
@@ -1594,6 +1617,8 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   // Preserve incompatible inspection bytes instead of silently clearing a
   // player's checkpoint during import, archive export or account transfer.
   // A newer or cross-owner gauntlet receipt cannot be silently dropped during import/export.
+  if (isRecord(value.customizationV146) && Number(value.customizationV146.version) > 1)
+    return { save: null, failure: "future-version" };
   if (value.gauntletV134 !== undefined && value.gauntletV134 !== null) {
     if (isRecord(value.gauntletV134) && Number(value.gauntletV134.version) > 1)
       return { save:null, failure:"future-version" };
@@ -2314,7 +2339,7 @@ export function applyMissionResult(
   };
 
   if (result.outcome !== "success") {
-    return {
+    return withCustomizationAfterMissionV146({
       ...save,
       updatedAt: now,
       exploration,
@@ -2338,7 +2363,7 @@ export function applyMissionResult(
           (result.outcome === "failed" ? 1 : 0),
         currentHuntStreak: 0,
       },
-    };
+    }, rawResult);
   }
 
   const firstCompletion = previous.completions === 0;
@@ -2472,12 +2497,34 @@ export function applyMissionResult(
       save.storyCompleted || mission.id === FINAL_STORY_MISSION_ID,
   };
 
-  return {
+  return withCustomizationAfterMissionV146({
     ...progressedSave,
     inventory: unlockContent(
       progressedSave,
       nextHonor,
       missionProgress,
     ),
+  }, rawResult);
+}
+
+/**
+ * V146: heavy hits crack armour pieces until a forge repair (also after a
+ * failed hunt), and cosmetics earned by this result are recorded once.
+ */
+function withCustomizationAfterMissionV146(next: SaveGame, raw: MissionResultInput): SaveGame {
+  const reported = isRecord(raw.wearV146) && Array.isArray(raw.wearV146.heavyPieces)
+    ? raw.wearV146.heavyPieces.filter((id): id is HunterPieceIdV146 =>
+      (HUNTER_PIECE_IDS_V146 as readonly string[]).includes(id as string)).slice(0, 8)
+    : [];
+  const base = next.customizationV146 ?? null;
+  const earned = earnedCosmeticsV146({
+    honor: next.profile.honor, rankId: next.profile.rankId,
+    trophies: next.trophies, justiceDeclaration: next.justice?.declaration,
+  }, base?.earned ?? []);
+  const unchangedEarned = (base?.earned ?? []).length === earned.length;
+  if (!reported.length && unchangedEarned) return next;
+  return {
+    ...next,
+    customizationV146: applyHeavyWearV146({ ...(base ?? emptyCustomizationV146()), earned }, reported),
   };
 }
