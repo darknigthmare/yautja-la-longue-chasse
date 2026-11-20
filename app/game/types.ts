@@ -743,6 +743,8 @@ export interface SaveGame {
   residenceScenesV154?: import("./systems/residenceScenesV154").ResidenceScenesV154 | null;
   /** V158: voie originals (owner, single location, provenance mission) and the house material reserve. Absent until first used. */
   pathObjectsV158?: import("./systems/pathObjectsV158").PathObjectsV158 | null;
+  /** V152: legs scellé (partie qui transmet) et héritage reçu (nouvelle partie). Absent tant qu'il n'est pas utilisé. */
+  heritageV152?: import("./systems/heritageV152").HeritageStateV152 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

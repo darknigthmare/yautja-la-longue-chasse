@@ -4,6 +4,7 @@ import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems
 import { isFutureResidenceScenesV154, normalizeResidenceScenesV154 } from "./systems/residenceScenesV154";
 import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
 import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
+import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
@@ -1325,6 +1326,10 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.originV151 === undefined ? {} : { originV151: normalizeOriginV151(source.originV151) }),
     // V158: absent until a voie mission or a material purchase writes it; old saves keep their shape.
     ...(source.pathObjectsV158 === undefined ? {} : { pathObjectsV158: normalizePathObjectsV158(source.pathObjectsV158) }),
+    // V152: written only once a legacy is sealed or received; old saves keep their exact shape.
+    ...(source.heritageV152 === undefined ? {} : {
+      heritageV152: source.heritageV152 === null ? null : normalizeHeritageV152(source.heritageV152, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1687,6 +1692,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.pathObjectsV158 !== undefined && value.pathObjectsV158 !== null) {
     if (isFuturePathObjectsV158(value.pathObjectsV158)) return { save: null, failure: "future-version" };
     if (!normalizePathObjectsV158(value.pathObjectsV158)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.heritageV152 !== undefined && value.heritageV152 !== null) {
+    if (isFutureHeritageV152(value.heritageV152)) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !normalizeHeritageV152(value.heritageV152, value.createdAt)) return { save: null, failure: "invalid-save" };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;

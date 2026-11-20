@@ -26,7 +26,8 @@ function subscribeFullscreen(changed:()=>void){
 
 export interface CampaignCheckpointView {id:string;kind:'manual'|'auto';index:number;label:string;savedAt:string;hasActiveHunt:boolean;playTimeSeconds:number;resumeLocation?:string}
 export interface CampaignSlotView {id:number;status:'empty'|'ready'|'blocked';revision:number;ownerCreatedAt:string|null;hunterName:string|null;checkpoints:readonly CampaignCheckpointView[];lastCheckpointId:string|null;recoveryAvailable?:boolean}
-export interface CampaignCatalogView {slots:readonly CampaignSlotView[];activeSlotId:number|null;status?:'ready'|'blocked'|'unavailable';failure?:string|null;workspaceRecoveryAvailable?:boolean}
+export interface CampaignHeritageOfferView {slotId:number;testamentId:string;hunterName:string;maskLabel:string;weaponLabel:string;claimed:boolean;claimedBySlotId:number|null}
+export interface CampaignCatalogView {slots:readonly CampaignSlotView[];activeSlotId:number|null;status?:'ready'|'blocked'|'unavailable';failure?:string|null;workspaceRecoveryAvailable?:boolean;heritageOffers?:readonly CampaignHeritageOfferView[]}
 const time=(seconds:number)=>`${Math.floor(seconds/3600)} h ${Math.floor(seconds%3600/60).toString().padStart(2,'0')}`;
 const date=(value:string)=>new Date(value).toLocaleString('fr-FR',{dateStyle:'short',timeStyle:'short'});
 const place=(checkpoint:Pick<CampaignCheckpointView,'hasActiveHunt'|'resumeLocation'>)=>checkpoint.hasActiveHunt?'Chasse suspendue':checkpoint.resumeLocation==='buried-cradle'?'Xeno Prime · Berceau enfoui':checkpoint.resumeLocation==='wolf-castle'?'Château du Roi · système Wolf':checkpoint.resumeLocation==='planet-arrival'?'Arrivée sur planète':checkpoint.resumeLocation==='clan-ship'?'Clan Ship AVP · escale':checkpoint.resumeLocation==='homeworld'?'Yautja Prime':checkpoint.resumeLocation==='prologue'?'Nurserie · prologue':checkpoint.resumeLocation==='youth-training'?'Formation Unblooded':checkpoint.resumeLocation==='game-reserve'?'Réserve de chasse':checkpoint.resumeLocation==='new-game'?'Début de campagne':'Vaisseau personnel';
@@ -48,14 +49,14 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  onPrepareImport?:(slotId:number,serialized:string)=>CampaignSlotImportPreparation;
  onImport?:(preview:CampaignSlotImportPreview)=>void;
  catalog:CampaignCatalogView|null;busy:boolean;message:string|null;onRefresh:()=>void;
- onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string,originId?:string)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
+ onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string,originId?:string,heritageFromSlotId?:number)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
  onReplace?:(slotId:number,name:string,expectedRevision:number,expectedOwnerCreatedAt:string,originId?:string)=>void;
  onWorkspaceRecover?:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
  onRecoverNew?:(slotId:number,name:string,originId?:string)=>void;
  modeAccess?:Readonly<Record<MainMenuGameModeV81,boolean>>;
  onOpenGameMode?:(mode:MainMenuGameModeV81,spoilersConfirmed:boolean)=>void;
 }){
- const [view,setView]=useState<MenuView>(initialEntry?.section??'main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
+ const [view,setView]=useState<MenuView>(initialEntry?.section??'main'),[selected,setSelected]=useState(1),[name,setName]=useState(''),[heritageFrom,setHeritageFrom]=useState<number|null>(null),[confirmation,setConfirmation]=useState<{slot:CampaignSlotView;checkpoint:CampaignCheckpointView}|null>(null);
  const [importPreview,setImportPreview]=useState<CampaignSlotImportPreview|null>(null),[importConfirmation,setImportConfirmation]=useState<CampaignSlotImportPreview|null>(null);
  const [importFileName,setImportFileName]=useState(''),[importMessage,setImportMessage]=useState<string|null>(null),[importReading,setImportReading]=useState(false);
  const [importText,setImportText]=useState('');
@@ -200,7 +201,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
     <div className={styles.parties} aria-label="Les cinq parties">{catalog?.slots.map(item=><button type="button" key={item.id} data-campaign-slot={item.id} data-slot-state={item.status} aria-pressed={selected===item.id} disabled={busy||(view==='import'&&(importReading||item.status!=='empty'||archivesBlocked))} onClick={()=>{importReadGeneration.current++;setImportReading(false);setSelected(item.id);setImportPreview(null);setImportConfirmation(null);setImportMessage(null);}}><span>PARTIE {String(item.id).padStart(2,'0')}</span><strong>{item.status==='empty'?'Emplacement libre':item.hunterName??'Archive protégée'}</strong><small>{item.status==='blocked'?'Archive protégée':item.status==='empty'?'Nouvelle histoire':`${item.checkpoints.length} / 12 sauvegardes`}</small></button>)}</div>
     {view==='new'?<div className={styles.newGame}>
      <figure className={styles.prologuePreview}><img src="/game/prologue/v47/arena.png" alt="" decoding="async" /><figcaption><span>PROLOGUE</span><h3>La nurserie du clan</h3><p>Grandissez sur Yautja Prime : accueil Unblooded, dojo, camp, reconnaissance et patrouille du désert. La petite Fosse propose ensuite un duel de novices facultatif.</p></figcaption></figure>
-     <form className={styles.creationPanel} onSubmit={event=>{event.preventDefault();if(busy||archivesBlocked)return;if(slot?.status==='empty')onCreate(slot.id,name.trim(),originId);else if(slot?.status==='ready'&&onReplace){confirmationTriggerRef.current=event.currentTarget.querySelector('button[type=submit]');setReplacement({slot,name:name.trim(),originId});}}}>
+     <form className={styles.creationPanel} onSubmit={event=>{event.preventDefault();if(busy||archivesBlocked)return;if(slot?.status==='empty'){const offer=catalog?.heritageOffers?.find(item=>item.slotId===heritageFrom&&!item.claimed);if(offer)onCreate(slot.id,name.trim(),originId,offer.slotId);else onCreate(slot.id,name.trim(),originId);}else if(slot?.status==='ready'&&onReplace){confirmationTriggerRef.current=event.currentTarget.querySelector('button[type=submit]');setReplacement({slot,name:name.trim(),originId});}}}>
       <p className={styles.eyebrow}>Partie {slot?.id} · {slot?.status==='empty'?'Emplacement libre':'Emplacement protégé'}</p>
       <h3>Une nouvelle chronique</h3>
       <label htmlFor="campaign-hunter-name">Nom du chasseur</label><input id="campaign-hunter-name" aria-describedby="campaign-name-help" maxLength={48} value={name} onChange={event=>setName(event.target.value)} disabled={busy} autoComplete="off" placeholder="Chasseur sans nom" />
@@ -210,6 +211,11 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
        <p className={styles.inputHelp}>Fixée pour toute la chronique : elle change les scènes de voie, pas le rang ni les récompenses.</p>
        {ORIGINS_V151.map(origin=><label key={origin.id} className={styles.originOption}><input type="radio" name="campaign-origin" value={origin.id} checked={originId===origin.id} onChange={()=>setOriginId(origin.id)} /><span><b>{origin.title}</b> — {origin.promise}</span></label>)}
       </fieldset>
+      {slot?.status==='empty'&&!!catalog?.heritageOffers?.length&&<fieldset data-heritage-offers><legend>Héritage d’une autre partie</legend>
+       <label><input type="radio" name="campaign-heritage" checked={heritageFrom===null} disabled={busy} onChange={()=>setHeritageFrom(null)} /> Aucun héritage</label>
+       {catalog.heritageOffers.map(offer=><label key={offer.testamentId} data-heritage-offer={offer.slotId}><input type="radio" name="campaign-heritage" checked={heritageFrom===offer.slotId} disabled={busy||offer.claimed} onChange={()=>setHeritageFrom(offer.slotId)} /> Descendant de {offer.hunterName||'Chasseur sans nom'} (partie {offer.slotId}) · {offer.maskLabel} au mausolée, {offer.weaponLabel} aux Archives des Lignées, +100 d’honneur{offer.claimed?' · déjà reçu par une autre partie':''}</label>)}
+       <p className={styles.inputHelp}>Le legs reste dans sa partie d’origine ; il ne peut être reçu qu’une fois. Aucun rang n’est donné.</p>
+      </fieldset>}
       <button className={styles.featured} type="submit" disabled={busy||archivesBlocked||!slot||slot.status==='blocked'||(slot.status==='ready'&&!onReplace)}>{slot?.status==='ready'?`Remplacer la partie ${slot.id}…`:`Créer la partie ${slot?.id} et commencer le prologue`}</button>
       {canRecoverNew&&<button type="button" disabled={busy} onClick={event=>{confirmationTriggerRef.current=event.currentTarget;setReplacement({slot:slot!,name:name.trim(),originId,recovery:true});}}>Conserver les données endommagées et repartir…</button>}
       {slot?.status==='ready'&&<p className={styles.notice}>Cette campagne contient déjà {slot.checkpoints.length} sauvegarde(s). Le remplacement demande une confirmation explicite et conserve une archive de secours complète.</p>}

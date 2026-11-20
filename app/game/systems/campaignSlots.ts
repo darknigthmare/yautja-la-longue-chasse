@@ -10,6 +10,7 @@ import { createNurseryCampaign } from "./nurseryCampaign";
 import { GAME_CONTENT_VERSION } from "../buildInfo";
 import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION, SAVE_MAX_SERIALIZED_BYTES } from "../save";
 import type { SaveGame } from "../types";
+import { heritageClaimOfCampaignV152, heritageMaskLabelV152, heritageTestamentOfCampaignV152, heritageWeaponLabelV152, receiveHeritageV152 } from "./heritageV152";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./archiveTransferGuard";
 import { applyArchiveTransaction, withArchiveTransferLock, type ArchiveStorage, type ArchiveReplacement } from "./archiveTransaction";
 import { createCompleteArchive, importCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, COMPLETE_ARCHIVE_FORMAT, type CompleteArchive } from "./completeArchive";
@@ -47,6 +48,13 @@ export interface CampaignSlotCatalog {
   slots: CampaignSlotSummary[]; activeSlotId: CampaignSlotId | null;
   legacy: "empty" | "available" | "migrated" | "blocked";
   workspaceRecoveryAvailable?: boolean;
+  /** V152: legs scellés dans une partie, offerts à la création d'une nouvelle partie. */
+  heritageOffers?: CampaignHeritageOfferV152[];
+}
+export interface CampaignHeritageOfferV152 {
+  slotId: CampaignSlotId; testamentId: string; hunterName: string; maskLabel: string; weaponLabel: string;
+  /** Déjà reçu par une partie (emplacement connu, ou campagne de travail non attribuée). */
+  claimed: boolean; claimedBySlotId: CampaignSlotId | null;
 }
 export interface CampaignSlotResult {
   ok: boolean; failure: CampaignSlotFailure | null; message: string; catalog: CampaignSlotCatalog;
@@ -157,8 +165,10 @@ export function loadCampaignSlots(storage: ArchiveStorage | null = browserStorag
   const catalog: CampaignSlotCatalog = { status: "ready", failure: null, slots: CAMPAIGN_SLOT_IDS.map(empty), activeSlotId: null, legacy: "empty" };
   if (!storage) return { ...catalog, status: "unavailable", failure: "storage-unavailable", legacy: "blocked" };
   try {
+    const reads = new Map<CampaignSlotId, SlotRead>();
     for (const id of CAMPAIGN_SLOT_IDS) {
       const read = readSlot(storage, id), doc = read.document;
+      reads.set(id, read);
       catalog.slots[id - 1] = doc ? { id, status: "ready", revision: doc.revision, ownerCreatedAt: doc.ownerCreatedAt,
         hunterName: doc.checkpoints.find(c => c.id === doc.lastCheckpointId)!.archive.campaign.profile.hunterName,
         label: doc.label, checkpoints: doc.checkpoints.map(summary), lastCheckpointId: doc.lastCheckpointId, failure: null, recoveryAvailable: false }
@@ -175,6 +185,7 @@ export function loadCampaignSlots(storage: ArchiveStorage | null = browserStorag
       catalog.legacy = owned.length ? "migrated" : "available";
     }
     if (archiveTransferPending(storage)) fail("protected-save", "Un transfert attend sa récupération. Les parties restent protégées.");
+    catalog.heritageOffers = heritageOffersV152(storage, catalog, current.save, reads);
   } catch (error) { catalog.status = "blocked"; catalog.failure = error instanceof Refusal ? error.failure : "read-failed"; catalog.legacy = "blocked"; }
   return catalog;
 }
@@ -468,6 +479,71 @@ export async function migrateLegacyCampaignSlot(storage: ArchiveStorage | null =
     return { slotId: id, checkpoint: doc.checkpoints[0] };
   });
 }
+/** V152: the campaign that represents a slot now (working copy for the active slot, else its last checkpoint). */
+function slotCampaignsV152(storage: ArchiveStorage, catalog: CampaignSlotCatalog, working: SaveGame | null, includeBackups: boolean, reads?: ReadonlyMap<CampaignSlotId, SlotRead>) {
+  const result: { slotId: CampaignSlotId; latest: SaveGame | null; all: SaveGame[] }[] = [];
+  for (const id of CAMPAIGN_SLOT_IDS) {
+    const all: SaveGame[] = []; let latest: SaveGame | null = null;
+    const read = reads?.get(id) ?? readSlot(storage, id);
+    if (read.document) {
+      all.push(...read.document.checkpoints.map(c => c.archive.campaign));
+      latest = read.document.checkpoints.find(c => c.id === read.document!.lastCheckpointId)!.archive.campaign;
+      if (catalog.activeSlotId === id && working && working.createdAt === read.document.ownerCreatedAt) { latest = working; all.push(working); }
+    }
+    if (includeBackups) {
+      const backup = storage.getItem(campaignSlotStorageKey(id) + ".backup");
+      if (backup !== null) all.push(...parseSlot(backup, id).checkpoints.map(c => c.archive.campaign));
+      if (read.recovery) all.push(...read.recovery.checkpoints.map(c => c.archive.campaign));
+    }
+    result.push({ slotId: id, latest, all });
+  }
+  return result;
+}
+function heritageClaimsV152(campaigns: ReturnType<typeof slotCampaignsV152>, working: SaveGame | null): Map<string, CampaignSlotId | null> {
+  const claims = new Map<string, CampaignSlotId | null>();
+  for (const slot of campaigns) for (const campaign of slot.all) { const id = heritageClaimOfCampaignV152(campaign); if (id) claims.set(id, slot.slotId); }
+  const workingClaim = heritageClaimOfCampaignV152(working);
+  if (workingClaim && !claims.has(workingClaim)) claims.set(workingClaim, null);
+  return claims;
+}
+function heritageOffersV152(storage: ArchiveStorage, catalog: CampaignSlotCatalog, working: SaveGame | null, reads: ReadonlyMap<CampaignSlotId, SlotRead>): CampaignHeritageOfferV152[] {
+  const campaigns = slotCampaignsV152(storage, catalog, working, false, reads), claims = heritageClaimsV152(campaigns, working);
+  return campaigns.flatMap(slot => {
+    const testament = heritageTestamentOfCampaignV152(slot.latest);
+    return testament ? [{ slotId: slot.slotId, testamentId: testament.id, hunterName: testament.legend.hunterName,
+      maskLabel: heritageMaskLabelV152(testament.maskId), weaponLabel: heritageWeaponLabelV152(testament.weaponId),
+      claimed: claims.has(testament.id), claimedBySlotId: claims.get(testament.id) ?? null }] : [];
+  });
+}
+/** V152: create a new campaign in an empty slot that inherits the sealed legacy of another slot.
+ * The legacy is read, never moved out of its source; a legacy already received anywhere is refused. */
+export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, fromSlotId: CampaignSlotId, storage: ArchiveStorage | null = browserStorage(), originId: unknown = null): Promise<CampaignSlotResult> {
+  return mutation(storage, data => {
+    if (!slotIdValid(id) || !slotIdValid(fromSlotId) || id === fromSlotId) fail("invalid-slot", "Numéro de partie invalide.");
+    const catalog = loadCampaignSlots(data);
+    if (catalog.status !== "ready") fail(catalog.failure ?? "protected-save", "Le stockage courant est protégé.");
+    if (catalog.legacy === "available") fail("migration-required", "Conservez d’abord la partie existante dans un emplacement.");
+    if (catalog.slots[id - 1].status !== "empty" || data.getItem(campaignSlotStorageKey(id)) !== null || data.getItem(campaignSlotStorageKey(id) + ".backup") !== null)
+      fail("slot-occupied", "Cette partie est déjà occupée ; aucune donnée n’est remplacée.");
+    const working = readWorkingCampaign(data).save;
+    let campaigns: ReturnType<typeof slotCampaignsV152>;
+    try { campaigns = slotCampaignsV152(data, catalog, working, true); }
+    catch { return fail("protected-save", "Une partie ou sa copie de secours est protégée : l’héritage ne peut pas être vérifié."); }
+    const source = campaigns.find(slot => slot.slotId === fromSlotId)?.latest;
+    const testament = heritageTestamentOfCampaignV152(source);
+    if (!source || !testament) fail("empty-slot", "Cette partie n’a scellé aucun legs.");
+    const claims = new Set(heritageClaimsV152(campaigns, working).keys());
+    let refusal = "";
+    const doc = newCampaignDocument(id, name, catalog, originId, save => {
+      const received = receiveHeritageV152(save, testament, claims, save.createdAt);
+      if (!received.ok) { refusal = received.reason; return save; }
+      return received.save;
+    });
+    if (refusal) fail("owner-conflict", refusal);
+    persistSlot(data, doc, null);
+    return { slotId: id, checkpoint: doc.checkpoints[0] };
+  });
+}
 /** Creation never replaces an occupied slot and does not activate it implicitly. */
 export async function createCampaignSlot(id: CampaignSlotId, name = "", storage: ArchiveStorage | null = browserStorage(), originId: unknown = null): Promise<CampaignSlotResult> {
   return mutation(storage, data => {
@@ -482,7 +558,7 @@ export async function createCampaignSlot(id: CampaignSlotId, name = "", storage:
   });
 }
 /** STATE5-01: the origin is fixed here, at character creation, and never rewritten afterwards. */
-function newCampaignDocument(id: CampaignSlotId, name: string, catalog: CampaignSlotCatalog, originId: unknown = null): SlotDocument {
+function newCampaignDocument(id: CampaignSlotId, name: string, catalog: CampaignSlotCatalog, originId: unknown = null, prepare?: (save: SaveGame) => SaveGame): SlotDocument {
     if (typeof name !== "string" || name.length > 80) fail("invalid-slot", "Le nom de partie est invalide.");
     const owners = new Set(catalog.slots.map(s => s.ownerCreatedAt));
     let timestamp = Date.now(); while (owners.has(new Date(timestamp).toISOString())) timestamp++;
@@ -493,9 +569,10 @@ function newCampaignDocument(id: CampaignSlotId, name: string, catalog: Campaign
       if (!isOriginIdV151(originId)) fail("invalid-slot", "Origine inconnue.");
       save.originV151 = createOriginV151(originId, "creation");
     }
+    const campaign = prepare ? prepare(save) : save;
     const archive: CompleteArchive = { format: COMPLETE_ARCHIVE_FORMAT, version: 1, contentVersion: GAME_CONTENT_VERSION,
-      exportedAt: new Date().toISOString(), campaign: save,
-      attachments: { activeHunt: null, shipProgression: createDefaultShipProgression(save), pit: null, pitReplay: null } };
+      exportedAt: new Date().toISOString(), campaign,
+      attachments: { activeHunt: null, shipProgression: createDefaultShipProgression(campaign), pit: null, pitReplay: null } };
     return initialDocument(id, checkArchive(JSON.stringify(archive)), name, "prologue");
 }
 function rejectFutureTargets(replacements: ArchiveReplacement[], owner: string): void {
