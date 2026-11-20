@@ -54,7 +54,6 @@ import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionElig
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
 import { getChronicleRank, CHRONICLE_RANK_LABELS } from "./systems/clanChronicle";
-import { actTantalusV164, tantalusGateFromSaveV164, type TantalusActionV164, type TantalusResultV164 } from "./systems/tantalusV164";
 import campaignMenuStyles from "./CampaignMainMenu.module.css";
 import CampaignFrontEnd, { type CampaignSessionEntry } from "./CampaignFrontEnd";
 import { CampaignSavePanel } from "./CampaignMainMenu";
@@ -331,7 +330,6 @@ const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
-const TantalusPanelV164 = React.lazy(() => import("./TantalusPanelV164"));
 const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
@@ -2235,18 +2233,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     setSave(result.save);
     return true;
   }, [reconcileHuntWrite]);
-
-  // V164 : branche Warp Tantalus 2204. Le module Warp n'a encore aucune source
-  // dans la sauvegarde : le départ reste refusé tant qu'aucun contenu ne l'installe.
-  const commitTantalusV164 = useCallback((action: TantalusActionV164): TantalusResultV164 => {
-    const current = saveRef.current;
-    const result = actTantalusV164(current.tantalusV164 ?? null, current.createdAt, action, tantalusGateFromSaveV164(current));
-    if (!result.changed) return result;
-    if (!persistSocialProgress({ tantalusV164: result.ledger })) {
-      return { ...result, accepted: false, changed: false, ledger: saveRef.current.tantalusV164 ?? null, message: "Sauvegarde non confirmée : la branche reste dans son dernier état enregistré." };
-    }
-    return result;
-  }, [persistSocialProgress]);
 
   const commitTrophyTutorialCheckpoint = useCallback((candidate: TrophyTutorialStateV6): boolean => {
     const current = saveRef.current;
@@ -4563,7 +4549,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
               <WarpEpochsPanelV165 save={save} shipContext={mainMenuBrowserShipContextV81(save)}
-                onPersist={state => persistSocialProgress({ warpEpochsV165: state })}
+                onPersist={(state, clearLegacyTantalus) => persistSocialProgress(clearLegacyTantalus ? { warpEpochsV165: state, tantalusV164: null } : { warpEpochsV165: state })}
                 onClose={() => go("clan-chronicle")} />
             </Suspense>
           </div>
@@ -4948,11 +4934,6 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             justiceControlLabel={getJusticeRouteControl(save.justice, "clan-core").label}
             onOpenJustice={() => { setJusticeJurisdiction("clan-core"); openStationScreen("justice", hubLocation); setJusticeReturnScreen("map"); }}
           />
-        </Suspense>
-      )}
-      {screen === "map" && (
-        <Suspense fallback={null}>
-          <TantalusPanelV164 save={save} onCommit={commitTantalusV164} />
         </Suspense>
       )}
 
