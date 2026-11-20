@@ -7047,7 +7047,7 @@ function updateCorpseDiscoveryV112(state:GameState):void {
     const witness=state.enemies.find(e=>e.id===observation.actorId),corpse=state.huntRites.corpses.find(c=>c.id===observation.corpseId);
     if(!witness||!corpse)continue;
     if(witness.kind!=="beast"){
-      if(observation.channel==="visual"){
+      if(observation.channel==="visual"||observation.channel==="staged"){
         const discovery=discoverHuntRiteV77(state.huntRites,corpse.id,{id:witness.id,kind:witness.kind,
           position:{x:witness.x+witness.width/2,y:witness.y+witness.height/2},alive:witness.alive&&witness.active,lineOfSight:true},context);
         if(discovery.accepted)state.huntRites=discovery.state;
