@@ -1201,7 +1201,7 @@ function RoomSummary({
           title="Route de la Longue Chasse"
           detail={
             clan.nextRankLabel
-              ? `Prochain rang : ${clan.nextRankLabel} à ${clan.honorForNextRank} honneur.`
+              ? `Épreuve du rang ${clan.nextRankLabel} débloquée à ${clan.honorForNextRank} honneur ; seule l’épreuve réussie fait monter.`
               : clan.nextBibleTier
                 ? `Le rang d’Ancien est atteint ; prochain palier d’honneur de la bible : ${clan.nextBibleTier.bibleRank} à ${clan.nextBibleTier.threshold.toLocaleString("fr-FR")} honneur${clan.nextBibleTier.gameRankId ? "" : " (rang pas encore présent dans le jeu)"}.`
                 : "Le rang d’Ancien est atteint ; le seuil de Black God (40 000 honneur) est atteint."
@@ -1211,6 +1211,7 @@ function RoomSummary({
           label={`Progression ${clan.rankLabel}`}
           ratio={clan.rankProgress}
         />
+        <RankTrialSummaryV168 trials={clan.rankTrialsV168} />
         <StatGrid
           values={[
             ["Missions", save.statistics.missionsCompleted.toString()],
@@ -1485,6 +1486,36 @@ function RoomSummary({
         ))}
       </div>
     </>
+  );
+}
+
+/** V168 : état des épreuves de rang ; les volets se jouent depuis le briefing de leur chasse. */
+function RankTrialSummaryV168({ trials }: { trials: ReturnType<typeof evaluateClanProgression>["rankTrialsV168"] }) {
+  return (
+    <section aria-label="Épreuves de rang" data-rank-trials-v168>
+      <p className="eyebrow">Épreuves de rang</p>
+      {trials.map((view) => (
+        <article className="equipment-card" key={view.trial.rankId} data-rank-trial-status={view.status}>
+          <p className="equipment-type">{view.trial.bibleRank} · bible : {view.trial.bibleTrial}</p>
+          <p>{view.statusLabel}</p>
+          {view.status !== "passed" && (
+            <ul>
+              {view.parts.map(({ part, done, attempts, lastFailureReasons, conditions, blockers }) => (
+                <li key={part.id}>
+                  <strong>{done ? "Réussi" : "À réussir"} · {part.label}</strong>
+                  {part.origin === "substitut proposé" ? " (substitut proposé)" : ""}
+                  <br />
+                  <small>{conditions.join(", ")}.{attempts > 0 ? ` Tentatives : ${attempts}.` : ""}</small>
+                  {lastFailureReasons.length > 0 && <><br /><small>Dernier échec : {lastFailureReasons.join(" ")} Nouvel essai possible.</small></>}
+                  {blockers.length > 0 && <><br /><small>Obstacle : {blockers.join(" ")}</small></>}
+                  {part.missingContent && <><br /><small>Contenu de la bible absent : {part.missingContent}</small></>}
+                </li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))}
+    </section>
   );
 }
 

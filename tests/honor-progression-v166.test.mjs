@@ -61,6 +61,7 @@ test("migration : une sauvegarde antérieure garde le rang qu'elle affichait et 
   for (const [honorValue, expected] of [[0, "young-blood"], [249, "young-blood"], [250, "blooded"], [650, "elite"], [1_800, "elder"], [3_128, "elder"], [9_000, "elder"]]) {
     const legacy = withProfile({ honor: honorValue, rankId: "young-blood" });
     delete legacy.profile.acquiredRankIdV166;
+    delete legacy.profile.rankTrialsV168; // V168 : une sauvegarde antérieure n'a pas ce champ.
     const migrated = saves.normalizeSave(legacy);
     assert.equal(migrated.profile.rankId, expected, `honneur ${honorValue}`);
     assert.equal(migrated.profile.acquiredRankIdV166, expected);
@@ -70,6 +71,7 @@ test("migration : une sauvegarde antérieure garde le rang qu'elle affichait et 
   // Comme avant V166, un rankId stocké sans le champ V166 n'est pas cru.
   const forged = withProfile({ honor: 10, rankId: "elder" });
   delete forged.profile.acquiredRankIdV166;
+  delete forged.profile.rankTrialsV168;
   assert.equal(saves.normalizeSave(forged).profile.rankId, "young-blood");
 });
 
@@ -78,7 +80,7 @@ test("le rang acquis n'est jamais perdu quand l'honneur repasse sous le seuil", 
   assert.equal(elite.profile.rankId, "elite");
   assert.equal(honor.promoteRankV166("elder", 0), "elder");
   assert.equal(honor.resolveAcquiredRankV166(0, "elder"), "elder");
-  assert.equal(honor.resolveAcquiredRankV166(5_200, "blooded"), "elite", "la promotion au seuil reste automatique");
+  assert.equal(honor.resolveAcquiredRankV166(5_200, "blooded"), "elite", "règle V166, utilisée seulement pour migrer une sauvegarde sans état V168");
   assert.equal(honor.resolveAcquiredRankV166(5_200, "inconnu"), "elder", "champ invalide = sauvegarde antérieure : anciens seuils");
 
   // Constat : une mission réussie ne fait jamais baisser l'honneur aujourd'hui
@@ -93,6 +95,7 @@ test("le rang acquis n'est jamais perdu quand l'honneur repasse sous le seuil", 
   // Une partie migrée Elder avec 3 128 d'honneur (sous 8 000) le reste en jouant.
   const legacyElder = withProfile({ honor: 3_128 });
   delete legacyElder.profile.acquiredRankIdV166;
+  delete legacyElder.profile.rankTrialsV168;
   const afterHunt = saves.applyMissionResult(saves.normalizeSave(legacyElder), penalty);
   assert.ok(afterHunt.profile.honor < 8_000);
   assert.equal(afterHunt.profile.rankId, "elder");
@@ -114,8 +117,10 @@ test("gains : première réussite inchangée, rejouer rapporte le plafond propos
   const second = saves.applyMissionResult(first, victory("jungle-vey", { completedAt: "2026-11-20T09:00:00.000Z" }));
   assert.equal(second.profile.honor - first.profile.honor, Math.round(79 * 1.15));
 
+  // V168 : le seuil débloque l'épreuve ; seule l'épreuve réussie fait monter.
   const promoted = saves.applyMissionResult(withProfile({ honor: 1_450 }), victory("jungle-vey"));
-  assert.equal(promoted.profile.rankId, "blooded");
+  assert.ok(promoted.profile.honor >= 1_500);
+  assert.equal(promoted.profile.rankId, "young-blood");
 });
 
 test("rythme estimé : avant V166 Elder en moins de 2 h ; après, chaque rang supérieur à plus de 2 h du précédent", () => {
@@ -164,7 +169,8 @@ test("estimation : fonction pure et cas limites", () => {
 });
 
 test("progression du clan : prochain palier de la bible affiché après Elder", () => {
-  const save = saves.normalizeSave(withProfile({ honor: 9_000 }));
+  // V168 : le rang Elder vient de l'épreuve ; il est déclaré acquis ici.
+  const save = saves.normalizeSave(withProfile({ honor: 9_000, acquiredRankIdV166: "elder" }));
   const snapshot = progression.evaluateClanProgression(save, progression.createDefaultShipProgression(save, CREATED));
   assert.equal(snapshot.rankId, "elder");
   assert.equal(snapshot.nextRankId, null);

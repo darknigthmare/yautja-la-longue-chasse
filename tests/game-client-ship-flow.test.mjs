@@ -607,6 +607,9 @@ test("first launch persists the campaign owner and each replay opens a fresh aut
   assert.equal(environment.activeHuntSessionRef.current, null);
   // This separate replay fixture has earned the catalogue's required rank.
   environment.save.profile.honor = environment.RANK_THRESHOLDS.blooded;
+  // V168 : l'honneur débloque seulement l'épreuve ; le rang Blooded est déclaré acquis.
+  environment.save.profile.rankId = "blooded";
+  environment.save.profile.acquiredRankIdV166 = "blooded";
   // Follow the real debrief button, not a separately reproduced replay routine.
   const replayButton = findNode((node) => ts.isJsxElement(node) && node.openingElement.tagName.getText(ast) === "button" && node.children.some((child) => ts.isJsxText(child) && child.text.includes("Rejouer la chasse")));
   const click = replayButton.openingElement.attributes.properties.find((attr) => attr.name?.getText(ast) === "onClick");

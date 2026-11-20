@@ -1,4 +1,7 @@
 import { nextBibleTierV166, type BibleHonorTierV166 } from "./honorProgressionV166";
+import { rankTrialViewsV168, type RankTrialViewV168 } from "./rankTrialsV168";
+import { evaluateBuriedCradleAccess } from "./buriedCradleCampaign";
+import { evaluateClanShipAccess } from "./clanShipOperations";
 import { archiveTransferPending } from "./archiveTransferGuard";
 import { normalizeSave, parseSaveImport, RANK_THRESHOLDS, SAVE_STORAGE_KEY } from "../save";
 import {
@@ -177,6 +180,11 @@ export interface ClanProgressSnapshot {
    * jeu ou non), ou null après Black God (40 000).
    */
   nextBibleTier: BibleHonorTierV166 | null;
+  /**
+   * V168 : épreuves de rang (Blooded, Elite, Elder). Le seuil débloque
+   * l'épreuve ; seule l'épreuve réussie fait monter.
+   */
+  rankTrialsV168: RankTrialViewV168[];
   prestige: number;
   completedRites: RiteProgress[];
   pendingRites: RiteProgress[];
@@ -1568,6 +1576,10 @@ export function evaluateClanProgression(
     honorForNextRank: nextThreshold,
     rankProgress,
     nextBibleTier: nextBibleTierV166(save.profile.honor),
+    rankTrialsV168: rankTrialViewsV168(save, {
+      cradleMissing: evaluateBuriedCradleAccess(save, state.selectedShipId, state.unlockedShipIds).missing,
+      triadAccess: evaluateClanShipAccess(save),
+    }),
     prestige: Math.round(
       save.profile.honor +
         save.profile.clanMarks * 0.25 +

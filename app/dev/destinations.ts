@@ -170,7 +170,8 @@ function devDestinationSeed(id: string) {
 export function createDevSave(destination: DevDestination): SaveGame {
   const { canonical, owner } = devDestinationSeed(destination.id);
   const save = structuredClone(defaultSave(owner));
-  save.profile = { ...save.profile, hunterName: 'Chasseur de test', rankId: 'elite', honor: RANK_THRESHOLDS.elite, clanMarks: 1000 };
+  save.profile = { ...save.profile, hunterName: 'Chasseur de test', rankId: 'elite', acquiredRankIdV166: 'elite', honor: RANK_THRESHOLDS.elite, clanMarks: 1000 };
+  // V168 : le rang ne vient plus de l'honneur seul ; le rang de test est déclaré acquis.
   save.inventory = {
     ...save.inventory,
     unlockedWeaponIds: WEAPONS.map(weapon => weapon.id),
