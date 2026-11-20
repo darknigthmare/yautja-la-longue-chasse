@@ -9,6 +9,8 @@ import HouseScenesPanelV154 from "./HouseScenesPanelV154";
 import { emptyResidenceScenesV154, guestsAtHouseV154, isFutureResidenceScenesV154, normalizeResidenceScenesV154, type SceneActionV154 } from "./systems/residenceScenesV154";
 import PathMissionPanelV158 from "./PathMissionPanelV158";
 import HouseMaterialsPanelV158 from "./HouseMaterialsPanelV158";
+import OriginEndingPanelV170, { type OriginEndingActionV170 } from "./OriginEndingPanelV170";
+import { confirmEndingV170, examineEndingV170 } from "./systems/originEndingsV170";
 import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -3122,6 +3124,21 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!change.ok) return { ok: false, message: change.reason };
     const update = change.objects === objects ? { originV151: change.origin } : { originV151: change.origin, pathObjectsV158: change.objects };
     return persistSocialProgress(update) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
+  // V170: voie ending (Ox-M29), chosen once at Elite; only the origin record is written, never a common rank.
+  const originEndingActionV170 = useCallback((action: OriginEndingActionV170): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureOriginV151(current.originV151)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const context = { rankId: current.profile.rankId,
+      atWorkshop: screen === "trophies" && !trophyTutorialOpen && !trophyWorkshop && pendingTrophyCommit === null };
+    // An older save is read with the documented default origin; it is written only now, once used.
+    const origin = originOfSaveV151(current.originV151);
+    const change = action.kind === "examine" ? examineEndingV170(origin, action.endingId, context)
+      : confirmEndingV170(origin, action.endingId, action.confirmation, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    if (!change.changed) return { ok: true, message: change.message };
+    return persistSocialProgress({ originV151: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
   }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
   // V158: voie mission that puts the -02 object in play (provenance), at the workshop or on a region route.
   const pathMissionActionV158 = useCallback((action: PathMissionActionV158, place: Omit<PathPlaceContextV158, "originId" | "rankId">): { ok: boolean; message: string } => {
@@ -6459,6 +6476,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               place={{ atWorkshop: !trophyWorkshop && pendingTrophyCommit === null, region: null }}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
               onAction={(action: PathMissionActionV158) => pathMissionActionV158(action, { atWorkshop: true, region: null })} />
+            <OriginEndingPanelV170 origin={save.originV151} rankId={save.profile.rankId} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
+              disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+              onAction={originEndingActionV170} />
             <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
               heldOriginalIds={heldPathOriginalIdsV158(normalizePathObjectsV158(save.pathObjectsV158))}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
