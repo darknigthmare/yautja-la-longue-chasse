@@ -136,10 +136,13 @@ test('ancienne sauvegarde : position gardée, voyage antérieur achevé, nouveau
  const owned=playShipAcquisitionV161(qa,rankBlooded());
  const legacyTrip=ok(null,ENGAGE,owned).state; // même forme d’état que l’ancienne règle produisait
  const old=rankBlooded();
+ // A pre-V166 save carries honor and the old displayed rank only.
+ delete old.profile.acquiredRankIdV166;
  const storage=store();
  assert(saves.writeSaveWithStatus({...old,spaceRoutesV159:legacyTrip},storage,key).persisted);
  const loaded=saves.loadSaveWithStatus(storage,key);assert(loaded.loaded,loaded.failure);
  const oldSave=loaded.save;
+ assert.equal(oldSave.profile.acquiredRankIdV166,'blooded');
  assert.deepEqual(oldSave.spaceRoutesV159,legacyTrip);
  const view=routes.spacePersonalShipV159(oldSave);
  assert.equal(view.owned,false);assert.equal(routes.spaceLegacyTripV159(oldSave.spaceRoutesV159,view),true);

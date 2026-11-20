@@ -107,7 +107,9 @@ function fixture(originId) {
     for (const y of offsets.flatMap(delta => delta ? [delta, -delta] : [0])) {
       for (const x of offsets.flatMap(delta => delta ? [delta, -delta] : [0])) {
         const state = { ...base, actor: { ...base.actor, x: target.x + x, y: target.y + y, vx: 0, vy: 0 } };
-        if (api.normalizeHomeworldRegionV68(state) && api.homeworldRegionInteractionV68(state)?.id === id) {
+        const distanceToFauna = Math.hypot(state.actor.x - state.fauna.x, state.actor.y - state.fauna.y);
+        const canObserve = expected !== "track" || (distanceToFauna >= 210 && distanceToFauna <= 550);
+        if (canObserve && api.normalizeHomeworldRegionV68(state) && api.homeworldRegionInteractionV68(state)?.id === id) {
           near = state;
           break;
         }
@@ -116,7 +118,14 @@ function fixture(originId) {
     }
     assert(near, "A valid approach to " + id);
     assert.equal(env.checkpointHomeworldRegionV68(near), true);
-    const next = api.stepHomeworldRegionV68(near, { interact: true });
+    let next = near;
+    if (expected === "track") {
+      // The fauna interaction owns the approach to the cache until it has
+      // recorded a real quiet observation. Let the runtime accumulate it.
+      for (let tick = 0; tick < 90; tick++) next = api.stepHomeworldRegionV68(next);
+      assert(next.observedTicks >= 90);
+    }
+    next = api.stepHomeworldRegionV68(next, { interact: true });
     assert.equal(next.pendingFieldEvent?.action ?? null, expected, id);
     assert(api.canAdvanceHomeworldRegionV68(near, next), id);
     return next;
@@ -129,6 +138,8 @@ function fixture(originId) {
   const guide = api.HOMEWORLD_REGIONS_V68[REGION].residents.find(resident => resident.id === "guide");
   function huntToCache({ prematureReport = false } = {}) {
     beginField();
+    const fauna = region().fauna;
+    issue("fauna", { x: fauna.x + 300, y: fauna.y }, 165, "track");
     const [first, second] = api.REGION_WARD_POSTS_V68;
     issue(first.id, first, 5, null);
     issue(second.id, second, 5, "ward");
@@ -254,7 +265,7 @@ test("BUILD5-07 / QA5-05: a confirmed threshold mission opens three rooms and mo
   performed(f.actHouse(FIRST, { kind: "bed", position: 1 }));
   performed(f.actHouse(FIRST, { kind: "place", objectId: lamp, slotId: "bench" }));
   assert.equal(f.actHouse(FIRST, { kind: "place", objectId: lamp, slotId: "display" }).ok, false);
-  f.sortie();
+  // Four proofs per outing (including observation) contribute 20 respect.
   f.sortie();
   f.house(FIRST);
   performed(f.actHouse(FIRST, { kind: "place", objectId: lamp, slotId: "display" }));

@@ -41,7 +41,11 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
   const base = MISSIONS.find(mission => mission.id === W02_HUNT_BASE_MISSION_ID_V165);
   const w02 = branchVisitV165(state, "W-02");
   const terraceAlerted = w02.alertedPassages.includes(WARP_W02_TERRACE_ALERT_V165);
-  const huntMission = useMemo(() => base ? warpW02HuntMissionV165(base, terraceAlerted) : null, [base, terraceAlerted]);
+  const huntMissions = useMemo(() => base ? {
+    initial: warpW02HuntMissionV165(base),
+    alerted: warpW02HuntMissionV165(base, true),
+  } : null, [base]);
+  const huntMission = (terraceAlerted ? huntMissions?.alerted : huntMissions?.initial) ?? null;
 
   const apply = (update: WarpUpdateV165) => {
     if (!update.accepted) { setMessage(update.message); return false; }
