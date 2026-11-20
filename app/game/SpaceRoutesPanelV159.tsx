@@ -11,6 +11,7 @@ import {
   spaceRouteV159,
   spaceRoutesFromV159,
   spaceSystemNameV159,
+  spaceLegacyTripV159,
   createSpaceRoutesV159,
   type SpacePersonalShipV159,
   type SpaceRoutesActionV159,
@@ -83,6 +84,11 @@ export default function SpaceRoutesPanelV159({ ownerCreatedAt, state, ship, disa
             {" "}· étape {trip.legsDone}/{trip.legsTotal}
           </p>
           <progress max={trip.legsTotal} value={trip.legsDone} aria-label="Progression du trajet" />
+          {spaceLegacyTripV159(view, ship) && (
+            <p className={styles.note} data-legacy-trip>
+              Voyage engagé avant l’exigence du reçu de vaisseau : il peut aller jusqu’à son arrivée. Un nouveau départ exigera la mission « Une coque vraiment acquise » conclue au chantier naval.
+            </p>
+          )}
           {!pending && (
             <button type="button" className="alien-button" disabled={disabled}
               onClick={() => run({ kind: "advance" })}>

@@ -2,7 +2,7 @@ import source from '../data/spaceRoutesSourceV159.json';
 import { GALAXY_SYSTEM_REGISTRY } from '../galaxyRegistry';
 import { isShipId, type ShipId } from '../shipCatalogue';
 import type { SaveGame } from '../types';
-import { shipAcquisitionEligibleV89, shipAcquisitionOwnedHullV89 } from './shipAcquisitionV89';
+import { shipReceiptV161 } from './shipReceiptV161';
 
 /**
  * V159 — routes spatiales typées et incidents V6 entre systèmes.
@@ -11,7 +11,8 @@ import { shipAcquisitionEligibleV89, shipAcquisitionOwnedHullV89 } from './shipA
  * - 36 incidents « Incidents des routes » SPACE-E01 → E36 : titre, déclencheur,
  *   lieu (SPACE-BASE-xx), action, deux choix « A ou B », entrée, conséquence.
  * - « Les dix bases spatiales » SPACE-BASE-01 → 10 (titres affichés au lieu).
- * - « V5 États communs » STATE5-17 personalShipOwned, STATE5-18
+ * - « V5 États communs » STATE5-17 personalShipOwned (depuis V161 : reçu
+ *   propriétaire R2-M021 exigé, voir `shipReceiptV161.ts`), STATE5-18
  *   personalShipLocation, STATE5-19 currentWorldId, STATE5-20 travelManifest.
  * Bible (Espace : carte galactique et exploration) : routes entre systèmes,
  * trajet qui consomme du temps, incident tiré parmi les 36 selon le type de
@@ -296,32 +297,39 @@ export const normalizeSpaceRoutesV159 = (raw: unknown, ownerCreatedAt: string) =
 
 // ---------------------------------------------------------------- ownership (STATE5-17)
 
-export interface SpaceRoutesFleetV159 { selectedShipId: ShipId; unlockedShipIds: readonly ShipId[] }
 export interface SpacePersonalShipV159 {
   owned: boolean; shipId: ShipId | null;
-  source: 'recu-chantier-v89' | 'flotte-existante' | null; reason: string | null;
+  source: 'recu-chantier-v89' | null; reason: string | null;
+  /** Le vaisseau est amarré au Clan Ship : aucune route, même un voyage déjà engagé. */
+  docked: boolean;
 }
 /**
- * STATE5-17 : un voyage exige un vaisseau personnel possédé.
- * 1. reçu d’acquisition du chantier V89, s’il existe ;
- * 2. sinon la règle déjà appliquée par le jeu au vaisseau personnel :
- *    rang Blooded réellement acquis et coque sélectionnée parmi les coques débloquées.
- * Un vaisseau amarré au Clan Ship n’est pas disponible pour une route.
+ * STATE5-17 « Mission d’obtention conclue ; Déverrouiller une carte ne suffit pas » :
+ * depuis V161, un voyage exige le reçu propriétaire du chantier V89 (droits remis
+ * puis entrée dans le navire). Une coque débloquée ou sélectionnée dans la flotte
+ * ne suffit plus. Un vaisseau amarré au Clan Ship n’est pas disponible pour une route.
  */
 export function spacePersonalShipV159(
   save: Pick<SaveGame, 'createdAt' | 'profile' | 'prologue' | 'shipAcquisitionV89' | 'clanShipDocking'>,
-  fleet: SpaceRoutesFleetV159 | null,
 ): SpacePersonalShipV159 {
-  const refuse = (reason: string): SpacePersonalShipV159 => ({ owned: false, shipId: null, source: null, reason });
-  if (save.clanShipDocking && save.clanShipDocking.status !== 'free-flight')
-    return refuse('Le vaisseau personnel est amarré au Clan Ship : désamarre-le avant de prendre une route.');
-  const receipt = shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt);
-  if (receipt && isShipId(receipt.shipId)) return { owned: true, shipId: receipt.shipId, source: 'recu-chantier-v89', reason: null };
-  if (!shipAcquisitionEligibleV89(save))
-    return refuse('Aucun vaisseau personnel possédé : le rang Blooded doit être réellement acquis (Atlas des mondes, Accès).');
-  if (!fleet || !isShipId(fleet.selectedShipId) || !fleet.unlockedShipIds.includes(fleet.selectedShipId))
-    return refuse('Aucune coque débloquée n’est sélectionnée comme vaisseau personnel.');
-  return { owned: true, shipId: fleet.selectedShipId, source: 'flotte-existante', reason: null };
+  const docked = !!save.clanShipDocking && save.clanShipDocking.status !== 'free-flight';
+  if (docked) return { owned: false, shipId: null, source: null, docked,
+    reason: 'Le vaisseau personnel est amarré au Clan Ship : désamarre-le avant de prendre une route.' };
+  const owned = shipReceiptV161(save);
+  if (owned.receipt && isShipId(owned.receipt.shipId))
+    return { owned: true, shipId: owned.receipt.shipId, source: 'recu-chantier-v89', reason: null, docked };
+  return { owned: false, shipId: null, source: null, docked, reason: owned.reason ?? 'Aucun vaisseau personnel possédé.' };
+}
+
+/**
+ * Proposé (V161) : un voyage engagé avant V161 sans reçu (ancienne règle « coque
+ * débloquée ») ou avec une autre coque peut aller jusqu’à son arrivée ; aucun
+ * nouveau départ n’est accepté sans reçu. Depuis V161, `engage` inscrit toujours
+ * la coque du reçu, qui ne peut plus changer : seul un voyage antérieur se trouve
+ * dans ce cas.
+ */
+export function spaceLegacyTripV159(state: SpaceRoutesStateV159 | null, ship: SpacePersonalShipV159): boolean {
+  return !!state?.trip && !ship.docked && (!ship.owned || ship.shipId !== state.trip.manifest.shipId);
 }
 
 // ---------------------------------------------------------------- actions
@@ -384,8 +392,8 @@ export function actSpaceRoutesV159(raw: unknown, action: SpaceRoutesActionV159, 
   }
 
   // advance
-  if (!context.ship.owned || context.ship.shipId !== trip.manifest.shipId)
-    return deny(context.ship.reason ?? 'Le vaisseau embarqué au départ doit rester le vaisseau personnel pour poursuivre ce voyage.');
+  if (context.ship.docked) return deny(context.ship.reason ?? 'Le vaisseau personnel est amarré au Clan Ship.');
+  const legacy = spaceLegacyTripV159(state, context.ship);
   if (pendingSpaceIncidentV159(state)) return deny('Un incident attend ton choix avant de poursuivre la route.');
   if (trip.legsDone < trip.legsTotal) trip.legsDone += 1;
   if (trip.incident && trip.incident.option === null && trip.legsDone === trip.incident.atLeg) {
@@ -401,5 +409,6 @@ export function actSpaceRoutesV159(raw: unknown, action: SpaceRoutesActionV159, 
   state.location = { kind: 'system', systemId: trip.toSystemId };
   state.trip = null;
   return { accepted: true, changed: true, state, arrivedAt: trip.toSystemId,
-    message: `Arrivée : ${spaceSystemNameV159(trip.toSystemId)}.` };
+    message: `Arrivée : ${spaceSystemNameV159(trip.toSystemId)}.${legacy
+      ? ' Voyage engagé avant l’exigence du reçu : il est achevé, mais un nouveau départ exige « Une coque vraiment acquise » conclue au chantier naval.' : ''}` };
 }

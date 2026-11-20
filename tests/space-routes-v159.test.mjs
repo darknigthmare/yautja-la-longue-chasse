@@ -2,21 +2,26 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
+import {playShipAcquisitionV161} from './helpers/ship-receipt-v161.mjs';
 
 const qa=homeworldSceneSsrV78();
 const routes=qa.load('app/game/systems/spaceRoutesV159.ts');
 const saves=qa.load('app/game/save.ts');
 const catalogue=qa.load('app/game/shipCatalogue.ts');
 const owner='2026-11-20T10:00:00.000Z', key=saves.SAVE_STORAGE_KEY;
-const SHIP=catalogue.DEFAULT_SHIP_ID, fleet={selectedShipId:SHIP,unlockedShipIds:[SHIP]};
+// V161 : le vaisseau personnel est celui du reçu R2-M021 (coque du chantier V89).
+const SHIP=catalogue.DEFAULT_SHIP_ID;
 
 function store(){
  const data=new Map();
  return {data,get length(){return data.size;},key(i){return [...data.keys()][i]??null;},
   getItem(n){return data.get(n)??null;},setItem(n,v){data.set(n,v);},removeItem(n){data.delete(n);}};
 }
-function blooded(){const s=saves.defaultSave(owner);s.profile.honor=250;s.profile.rankId='blooded';return s;}
-const ctx=(save,f=fleet)=>({ownerCreatedAt:owner,ship:routes.spacePersonalShipV159(save,f)});
+function rankBlooded(){const s=saves.defaultSave(owner);s.profile.honor=250;s.profile.rankId='blooded';return s;}
+const OWNED=playShipAcquisitionV161(qa,rankBlooded());
+// V161 : « blooded » = Blooded ET reçu de vaisseau réellement obtenu.
+function blooded(){return structuredClone(OWNED);}
+const ctx=save=>({ownerCreatedAt:owner,ship:routes.spacePersonalShipV159(save)});
 function act(state,action,save=blooded()){
  const r=routes.actSpaceRoutesV159(state,action,ctx(save));assert(r.accepted,r.message);return r;
 }
@@ -54,14 +59,16 @@ test('refus sans vaisseau possédé (STATE5-17) et vaisseau amarré',()=>{
  const young=saves.defaultSave(owner);
  const r1=routes.actSpaceRoutesV159(null,{kind:'engage',routeId:'route-oseris-nivalis'},ctx(young));
  assert.equal(r1.accepted,false);assert.equal(r1.state,null);assert.match(r1.message,/Blooded/);
- const r2=routes.actSpaceRoutesV159(null,{kind:'engage',routeId:'route-oseris-nivalis'},ctx(blooded(),{selectedShipId:SHIP,unlockedShipIds:[]}));
- assert.equal(r2.accepted,false);
+ // V161 : Blooded avec coque débloquée mais sans reçu R2-M021 → refusé.
+ const r2=routes.actSpaceRoutesV159(null,{kind:'engage',routeId:'route-oseris-nivalis'},ctx(rankBlooded()));
+ assert.equal(r2.accepted,false);assert.match(r2.message,/Une coque vraiment acquise/);
  const docked={...blooded(),clanShipDocking:{status:'aboard'}};
  const r3=routes.actSpaceRoutesV159(null,{kind:'engage',routeId:'route-oseris-nivalis'},ctx(docked));
  assert.equal(r3.accepted,false);assert.match(r3.message,/amarré/);
- // advancing a trip after the ship stops being owned is refused too
+ // advancing a trip while the ship is docked is refused too
+ // (V161 : le reçu ne peut plus être perdu ; seul l’amarrage retire le vaisseau d’une route)
  const started=act(null,{kind:'engage',routeId:'route-oseris-nivalis'}).state;
- const r4=routes.actSpaceRoutesV159(started,{kind:'advance'},ctx(young));
+ const r4=routes.actSpaceRoutesV159(started,{kind:'advance'},ctx({...blooded(),clanShipDocking:{status:'aboard'}}));
  assert.equal(r4.accepted,false);assert.deepEqual(r4.state,started);
  // a route that does not leave the current system is refused
  assert.equal(routes.actSpaceRoutesV159(null,{kind:'engage',routeId:'route-umbra-tempest'},ctx(blooded())).accepted,false);
@@ -150,7 +157,7 @@ test('ancienne sauvegarde intacte, version future et propriétaire étranger ref
 });
 
 test('rendu SSR du poste de route et intégration à la carte',()=>{
- const props=(state,save=blooded())=>({ownerCreatedAt:owner,state,ship:routes.spacePersonalShipV159(save,fleet),onAction:()=>({accepted:false,changed:false,state,message:''})});
+ const props=(state,save=blooded())=>({ownerCreatedAt:owner,state,ship:routes.spacePersonalShipV159(save),onAction:()=>({accepted:false,changed:false,state,message:''})});
  const idle=qa.render('app/game/SpaceRoutesPanelV159.tsx',props(null));
  assert.match(idle,/Vaisseau à Système Oseris/);
  assert.match(idle,/data-route-id="route-oseris-nivalis"/);assert.match(idle,/data-route-type="clan"/);

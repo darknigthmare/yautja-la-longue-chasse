@@ -51,6 +51,7 @@ import { createGameReserveV66, createGameReserveV104, createGameReserveV107, cre
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
 import { actSpaceRoutesV159, normalizeSpaceRoutesV159, spacePersonalShipV159, type SpaceRoutesActionV159, type SpaceRoutesResultV159 } from './systems/spaceRoutesV159';
+import { shipAcquisitionAuthorityV161 } from './systems/shipReceiptV161';
 import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
@@ -2479,7 +2480,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const shipAcquisitionContextV89 = (current: SaveGame): ShipAcquisitionContextV89 => {
     const mounted = screen === 'ship-acquisition-v89' && current.createdAt === entry.ownerCreatedAt;
     const scene = mounted ? shipAcquisitionSceneFactsV89() : { host: null, candidate: null };
-    return { save: current, active: mounted, ...scene, authority: null,
+    // V161 : attestation « moyens et accord » (proposée, voir shipReceiptV161.ts) ; null avant Blooded.
+    return { save: current, active: mounted, ...scene, authority: shipAcquisitionAuthorityV161(current),
       focused: gameFocusedV89 && typeof document !== 'undefined' && readGameFocusV89(),
       suspended: settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy };
   };
@@ -2513,8 +2515,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     return { ...result, state: saveRef.current.shipAcquisitionV89 ?? null };
   };
 
-  const spaceShipV159 = useMemo(() => screen === 'map' ? spacePersonalShipV159(save, loadShipProgression(save)) : null,
-    [save, screen, selectedShipId]);
+  const spaceShipV159 = useMemo(() => screen === 'map' ? spacePersonalShipV159(save) : null, [save, screen]);
   // V159: routes typées. L’action est écrite avant d’être annoncée ; l’écran relit la sauvegarde confirmée.
   const onSpaceRouteActionV159 = (action: SpaceRoutesActionV159): SpaceRoutesResultV159 => {
     const current = saveRef.current;
@@ -2526,7 +2527,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       return refused('Poste de route suspendu : confirme d’abord la campagne et ses sauvegardes.');
     }
     const result = actSpaceRoutesV159(current.spaceRoutesV159, action,
-      { ownerCreatedAt: current.createdAt, ship: spacePersonalShipV159(current, loadShipProgression(current)) });
+      { ownerCreatedAt: current.createdAt, ship: spacePersonalShipV159(current) });
     if (!result.accepted || !result.changed) return result;
     if (!persistSocialProgress({ spaceRoutesV159: result.state })) return refused('Route non confirmée dans la sauvegarde. Le dernier relevé enregistré reste conservé ; réessaie.');
     return { ...result, state: saveRef.current.spaceRoutesV159 ?? null };
@@ -4942,7 +4943,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               <SpaceRoutesPanelV159
                 ownerCreatedAt={save.createdAt}
                 state={normalizeSpaceRoutesV159(save.spaceRoutesV159, save.createdAt)}
-                ship={spaceShipV159 ?? spacePersonalShipV159(save, loadShipProgression(save))}
+                ship={spaceShipV159 ?? spacePersonalShipV159(save)}
                 disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
                 onAction={onSpaceRouteActionV159}
               />
