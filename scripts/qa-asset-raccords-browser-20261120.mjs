@@ -196,9 +196,9 @@ try{
       export {HUNTER_ASSET_ROOT_V3,HUNTER_BODY_PART_IDS,hunterBodyPartPath,hunterBodyFullPath,hunterDreadPath,hunterArmorPath,hunterMaskRigPath,HUNTER_EQUIPMENT_V3} from './app/game/hunterVisuals';`,resolveDir:root,loader:'ts'},
     bundle:true,write:false,format:'cjs',platform:'node',jsx:'automatic',loader:{'.css':'empty'},external:['react','react-dom'],logLevel:'silent',
   });
-  const module={exports:{}};
-  runInNewContext(bootstrap.outputFiles[0].text,{module,exports:module.exports,require:createRequire(import.meta.url),TextEncoder,TextDecoder,structuredClone,URL,URLSearchParams,console,setTimeout,clearTimeout});
-  const api=module.exports,admissions=[];
+  const bootstrapModule={exports:{}};
+  runInNewContext(bootstrap.outputFiles[0].text,{module:bootstrapModule,exports:bootstrapModule.exports,require:createRequire(import.meta.url),TextEncoder,TextDecoder,structuredClone,URL,URLSearchParams,console,setTimeout,clearTimeout});
+  const api=bootstrapModule.exports,admissions=[];
   for(const [kind,regionId] of [['passage','ash-marches'],['region','luminous-marshes']]){
     const save=api.defaultSave('2026-11-20T00:00:00.000Z');
     save.profile.rankId='blooded';save.profile.honor=250;save.profile.hunterName='Qualification raccords';
