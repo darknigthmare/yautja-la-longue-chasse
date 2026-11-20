@@ -25,8 +25,16 @@ interface Rect { x: number; y: number; width: number; height: number }
 export const WARP_BAY_METRICS = Object.freeze({ width: 1000, height: 563, actorRadius: 12, speed: 230, reach: 48, maxFrameSeconds: 0.05 });
 export const WARP_BAY_ART_ROOT = '/game/warp-universe/20261109/';
 export const WARP_BAY_ROOMS = {
-  bay: { label: 'Baie du prototype', background: '199_module_baie_warp_fond.png', doorX: 900 },
-  synchronization: { label: 'Salle de synchronisation', background: '200_module_salle_avatar_fond.png', doorX: 100 },
+  bay: { label: 'Baie du prototype', background: '/game/p0-sprites-20261113/warp/warp-199-empty-bay.png', doorX: 900 },
+  synchronization: { label: 'Salle de synchronisation', background: WARP_BAY_ART_ROOT + '200_module_salle_avatar_fond.png', doorX: 100 },
+} as const;
+
+export const WARP_BAY_COORDINATE_CONSOLE = {
+  src: '/game/ship-interior/v21/console-navigation.webp',
+  footprint: { x: 68, y: 410, width: 80, height: 36 },
+  width: 142,
+  // Authored inset for the transparent space below the stand in the source.
+  bottomPadding: 10,
 } as const;
 const finite = (v: number) => Number.isFinite(v);
 const distance = (a: WarpBayPoint, b: WarpBayPoint) => Math.hypot(a.x - b.x, a.y - b.y);
@@ -35,7 +43,7 @@ function fixtures(room: WarpBayRoomId): readonly Rect[] {
   const doorX = WARP_BAY_ROOMS[room].doorX;
   const jambs = [{ x: doorX - 83, y: 395, width: 24, height: 77 }, { x: doorX + 59, y: 395, width: 24, height: 77 }];
   return room === 'bay' ? [...jambs,
-    { x: 68, y: 410, width: 80, height: 36 },
+    WARP_BAY_COORDINATE_CONSOLE.footprint,
     { x: 605, y: 425, width: 40, height: 39 },
     { x: 716, y: 430, width: 28, height: 30 },
   ] : jambs;

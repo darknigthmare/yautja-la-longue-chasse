@@ -3,6 +3,7 @@
 import {useMemo,useState} from 'react';
 import type {SaveGame} from './types';
 import type {GameSfxId} from './sound';
+import type {SceneAudioPort} from './systems/sceneAudio';
 import {MOBILITY_CATALOGUE,MOBILITY_MODULES,mobilityStats,mobilityRankIndex} from './systems/mobility/catalogue';
 import {createMobilityLedger,mobilityServiceQuote,type MobilityOrder} from './systems/mobility/ledger';
 import {mobilityUpgradePreview,MOBILITY_STAT_LABELS} from './systems/mobility/workshop';
@@ -13,9 +14,9 @@ import type {MountWriterV153} from './systems/mobility/mountsV153';
 import MountRidingYardV156 from './MountRidingYardV156';
 import type {MountRideWriterV156} from './systems/mobility/mountRidingV156';
 import styles from './MobilityGarage.module.css';
-export interface MobilityGarageProps {save:SaveGame;suspended?:boolean;onCommand:MobilityWriter;onMountCommand?:MountWriterV153;onRideCommand?:MountRideWriterV156;onClose:()=>void;onSound?:(id:GameSfxId)=>void}
+export interface MobilityGarageProps {save:SaveGame;suspended?:boolean;onCommand:MobilityWriter;onMountCommand?:MountWriterV153;onRideCommand?:MountRideWriterV156;onClose:()=>void;onSound?:(id:GameSfxId)=>void;createSceneAudio?:()=>SceneAudioPort|null}
 const modeLabels:Record<string,string>={purchase:'Commande aux Forges',quest:'Quête / recrutement',craft:'Fabrication',faction:'Réservé à une faction','training-loan':'Formation / remise du clan','clan-service':'Service du clan',insertion:'Insertion',narrative:'Narration','non-pilotable':'Non pilotable'};
-export default function MobilityGarage({save,suspended=false,onCommand,onMountCommand,onRideCommand,onClose,onSound}:MobilityGarageProps){
+export default function MobilityGarage({save,suspended=false,onCommand,onMountCommand,onRideCommand,onClose,onSound,createSceneAudio}:MobilityGarageProps){
  const [selected,setSelected]=useState('clan_hoverbike'),[filter,setFilter]=useState('all'),[message,setMessage]=useState('');
  const ledger=useMemo(()=>save.mobilityV1??createMobilityLedger(save.createdAt),[save.mobilityV1,save.createdAt]);
  const model=MOBILITY_CATALOGUE.find(d=>d.id===selected)!;
@@ -32,7 +33,7 @@ export default function MobilityGarage({save,suspended=false,onCommand,onMountCo
  return <section className={styles.shell} aria-labelledby="mobility-title" data-mobility-garage>
   <header className={styles.heading}><div><small>FORGES · COMPTOIR DES CONVOIS</small><h2 id="mobility-title">Registre de mobilité</h2><p>Commande, entretien et aire de conduite du clan</p></div><div className={styles.balance}><strong>{save.profile.clanMarks.toLocaleString('fr-FR')}</strong><span>marques de clan</span><span>Permis : {ledger.circulationPermit?'confirmé':'à obtenir'}</span><span data-mobility-owned-count={ledger.owned.length}>{ledger.owned.length} engin(s) au garage</span></div></header>
   {ledger.recoveryDebt>0&&<section className={styles.notice} aria-label="Dette de remorquage"><strong>Récupération à régler · {ledger.recoveryDebt} marques</strong><p>Le retour de sécurité conserve les dommages et la réserve. Les sorties personnelles et l’atelier sont suspendus jusqu’au règlement ; les chasses à pied restent accessibles.</p><button disabled={!allowed||save.profile.clanMarks<ledger.recoveryDebt} onClick={()=>order({type:'settle-recovery',expectedCost:ledger.recoveryDebt})}>Régler le remorquage · {ledger.recoveryDebt} marques</button></section>}
-  {ride&&onRideCommand&&!ledger.active ? <MountRidingYardV156 key={`${save.createdAt}:ride:${ride.active!.id}`} state={ride} bindings={save.settings.controlBindings} suspended={suspended} onCommand={onRideCommand} onSound={onSound}/> : ledger.active ? <MobilityDrivingYard key={`${save.createdAt}:${ledger.active.id}`} state={ledger} bindings={save.settings.controlBindings} suspended={suspended} onCommand={onCommand} onSound={onSound}/> : <>
+  {ride&&onRideCommand&&!ledger.active ? <MountRidingYardV156 key={`${save.createdAt}:ride:${ride.active!.id}`} state={ride} bindings={save.settings.controlBindings} suspended={suspended} onCommand={onRideCommand} onSound={onSound} createSceneAudio={createSceneAudio}/> : ledger.active ? <MobilityDrivingYard key={`${save.createdAt}:${ledger.active.id}`} state={ledger} bindings={save.settings.controlBindings} suspended={suspended} onCommand={onCommand} onSound={onSound} createSceneAudio={createSceneAudio}/> : <>
    <section className={styles.notice} aria-label="Prêt de formation"><strong>{ledger.circulationPermit?'Aire des convois':'Obtenir le permis de circulation'}</strong><p>Un Grav-Sled est prêté pour les trois balises, un chargement et le retour au sas. Ce prêt ne donne ni propriété, ni rang, ni honneur.</p><button onClick={()=>order({type:'start',modelId:'scout_grav_sled',loaned:true})} disabled={!allowed}>Prendre le Grav-Sled de formation</button></section>
    <section className={styles.notice} aria-label="Remise du Grav-Sled" data-mobility-training-reward={reward?.status??'unearned'}>
     <strong>Le sceau du convoyeur</strong>

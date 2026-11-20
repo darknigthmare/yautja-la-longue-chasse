@@ -5399,7 +5399,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               Réglages
             </button>
           </div>}
-      {screen === "mobility" && (<Suspense fallback={<DeferredGameScreen />}><MobilityGarage key={save.createdAt} save={save} suspended={settingsOpen || Boolean(trophyWorkshop) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy} onCommand={commitMobility} onMountCommand={commitMounts} onRideCommand={commitMountRide} onClose={() => go("homeworld")} onSound={playGameplaySound} /></Suspense>)}
+      {screen === "mobility" && (<Suspense fallback={<DeferredGameScreen />}><MobilityGarage key={save.createdAt} save={save} suspended={settingsOpen || Boolean(trophyWorkshop) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy} onCommand={commitMobility} onMountCommand={commitMounts} onRideCommand={commitMountRide} onClose={() => go("homeworld")} onSound={playGameplaySound} createSceneAudio={createSceneAudio} /></Suspense>)}
       {screen === "justice" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <JusticePanel progress={save.justice} jurisdictionId={justiceJurisdiction}

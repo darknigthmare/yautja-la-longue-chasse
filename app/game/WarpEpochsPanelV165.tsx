@@ -1,12 +1,14 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element -- keep the original transparent source image */
 import React, { Suspense, useMemo, useState } from "react";
 import type { MissionResult, SaveGame } from "./types";
 import type { ChronicleAccessContext } from "./systems/clanChronicle";
 import { MISSIONS } from "./data";
 import {
   WARP_BRANCHES_V165, WARP_COMPONENTS_V165, WARP_PROTOTYPE_ARC_V165, WARP_W02_CONTRACTS_V165, WARP_W02_STEPS_V165,
-  W02_HUNT_BASE_MISSION_ID_V165, applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
+  W02_HUNT_BASE_MISSION_ID_V165, WARP_W02_BONSHO_V165, WARP_W02_TERRACE_ALERT_V165,
+  applyW02HuntResultV165, branchVisitV165, canLaunchW02HuntV165, canReturnFromWarpV165,
   createWarpEpochsV165, departWarpV165, evaluateWarpDepartureV165, installWarpModuleV165, normalizeWarpEpochsV165,
   resolveW02StepV165, returnFromWarpV165, selectWarpBranchV165, startWarpCommonQuestV165, verifyWarpComponentV165,
   warpAccessContextFromSaveV165, warpConditionsV165, warpW02HuntMissionV165,
@@ -37,7 +39,9 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
   const [message, setMessage] = useState("");
   const [hunting, setHunting] = useState(false);
   const base = MISSIONS.find(mission => mission.id === W02_HUNT_BASE_MISSION_ID_V165);
-  const huntMission = useMemo(() => base ? warpW02HuntMissionV165(base) : null, [base]);
+  const w02 = branchVisitV165(state, "W-02");
+  const terraceAlerted = w02.alertedPassages.includes(WARP_W02_TERRACE_ALERT_V165);
+  const huntMission = useMemo(() => base ? warpW02HuntMissionV165(base, terraceAlerted) : null, [base, terraceAlerted]);
 
   const apply = (update: WarpUpdateV165) => {
     if (!update.accepted) { setMessage(update.message); return false; }
@@ -64,7 +68,6 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
 
   const conditions = warpConditionsV165(state, ctx);
   const departure = evaluateWarpDepartureV165(state, ctx);
-  const w02 = branchVisitV165(state, "W-02");
   const inW02 = state.activeTripBranchId === "W-02";
   const huntLaunch = canLaunchW02HuntV165(state);
   const conditionRows = [
@@ -146,6 +149,8 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
         const done = w02.steps[step.id];
         return <article key={step.id} className={styles.section} data-warp-step={step.id} data-resolved={String(!!done?.resolved)}>
           <h4>{step.title}</h4><p>{step.scene}</p>
+          {inW02 && step.id === "WARP-M16" && <img className={styles.bonsho} data-warp-bonsho
+            src={WARP_W02_BONSHO_V165} alt="Cloche de bronze suspendue à un portique de bois" width={1536} height={1024} />}
           {done?.resolved ? <p className={styles.ok}>Résolue : {step.choices.find(c => c.id === done.choice)?.label} · {done.success ? "réussie" : "sans réussite"}</p>
             : <div className={styles.actions}>{step.choices.map(choice => <button key={choice.id} type="button" disabled={!inW02}
               onClick={() => apply(resolveW02StepV165(state, step.id, choice.id))}>{choice.label}</button>)}</div>}
@@ -153,6 +158,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
       })}
       <h4>Chasse complète (mission existante adaptée)</h4>
       <p>Le panorama du col des cèdres situe le duel en 1629. Le terrain et les sprites viennent de « Sang dans la canopée ». Les trophées restent rattachés à la branche W-02.</p>
+      {terraceAlerted && <p>La cloche a détourné un garde de la terrasse vers le camp. Attends-toi à le retrouver près de la lame.</p>}
       <button type="button" disabled={!huntLaunch.allowed || !huntMission} onClick={() => { setMessage(""); setHunting(true); }}>Lancer la chasse</button>
       {!huntLaunch.allowed && <p className={styles.missing}>{huntLaunch.reason}</p>}
       {w02.trophy && <p className={styles.ok}>Trophée : {w02.trophy.name} — {w02.trophy.circumstances}</p>}

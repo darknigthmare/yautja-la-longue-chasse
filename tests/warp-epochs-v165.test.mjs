@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { homeworldSceneSsrV78 } from "./helpers/homeworld-scene-ssr-v78.mjs";
 
 // V165 : boucle Warp W-02 (1629). Modules réels, aucun mock de logique de jeu.
@@ -87,6 +88,38 @@ test("mission 1629 jouable via la chasse existante adaptée, sans honneur ni ran
   assert.equal(warp.applyW02HuntResultV165(after, huntResult("success"), false).accepted, false);
   const final = ok(warp.resolveW02StepV165(after, "WARP-M18", "accepter-don"));
   assert.equal(warp.branchVisitV165(final, "W-02").epochCompleted, true);
+});
+
+test("la cloche de W-02 détourne un garde sans changer l'effectif de la chasse", () => {
+  const base = MISSIONS.find(mission => mission.id === warp.W02_HUNT_BASE_MISSION_ID_V165);
+  const gone = ok(warp.departWarpV165(readyState(), full));
+  const sounded = ok(warp.resolveW02StepV165(gone, "WARP-M16", "declencher"));
+  const saved = parseSaveImport(exportSave({ ...defaultSave(owner), warpEpochsV165: sounded }));
+  assert.ok(saved.save, saved.failure);
+  const visit = warp.branchVisitV165(saved.save.warpEpochsV165, "W-02");
+  assert.deepEqual(visit.alertedPassages, [warp.WARP_W02_TERRACE_ALERT_V165]);
+
+  const clear = warpWaves(base, false);
+  const alarm = warpWaves(base, visit.alertedPassages.includes(warp.WARP_W02_TERRACE_ALERT_V165));
+  assert.equal(alarm.waves[0].count, clear.waves[0].count - 1);
+  assert.deepEqual(alarm.waves.find(wave => wave.id === "w02-terrace-guard"),
+    { ...clear.waves[0], id: "w02-terrace-guard", count: 1, trigger: "objective", triggerId: "recover-transponder" });
+  assert.equal(alarm.total, clear.total);
+  assert.equal(alarm.waves.at(-1), clear.waves.at(-1), "profil des renforts du boss conservé");
+  assert.equal(warp.resolveW02StepV165(sounded, "WARP-M16", "contourner").changed, false);
+  assert.equal(warp.resolveW02StepV165(readyState(), "WARP-M16", "declencher").accepted, false);
+
+  const art = readFileSync(new URL(`../public${warp.WARP_W02_BONSHO_V165}`, import.meta.url));
+  assert.equal(createHash("sha256").update(art).digest("hex"),
+    "d636d7fd399bb2dabb1c05caec8213bf28321d4d89fba424767d0e801e1428e0");
+  const panel = source.render("app/game/WarpEpochsPanelV165.tsx", { save: saved.save, onPersist: () => true, onClose: () => {} });
+  assert.match(panel, /data-warp-bonsho/);
+  assert.match(panel, /a détourné un garde de la terrasse vers le camp/);
+
+  function warpWaves(mission, alerted) {
+    const waves = warp.warpW02HuntMissionV165(mission, alerted).enemyWaves;
+    return { waves, total: waves.reduce((total, wave) => total + wave.count, 0) };
+  }
 });
 
 test("échec, retrait et technologie laissée : pas de trophée, un écho vers W-03", () => {
