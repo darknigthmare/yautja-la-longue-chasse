@@ -14,6 +14,7 @@ import styles from "./ClanChroniclePanel.module.css";
 import TribeArtGallery from "./TribeArtGallery";
 import tribeArt from "./tribeArtV37.json";
 import CompanionCataloguePanel from "./CompanionCataloguePanel";
+import HuntingHoundsPanelV147 from "./HuntingHoundsPanelV147";
 import GameReserveEntryV66 from "./GameReserveEntryV66";
 import type {GameReserveChoiceV109} from './systems/gameReserveV66';
 
@@ -65,7 +66,7 @@ export default function ClanChroniclePanel({ save, onClose, onGameReserveV66 }: 
       {([["journey", "Parcours et rites"], ["worlds", "Mondes et réserves"], ["humans", "100 proies · fiches de conception"], ["companions", "Compagnons · registre"]] as const).map(([id, label]) => <button type="button" key={id} aria-pressed={section === id} onClick={() => setSection(id)}>{label}</button>)}
     </nav>
 
-    {section === "companions" && <CompanionCataloguePanel />}
+    {section === "companions" && <><CompanionCataloguePanel /><HuntingHoundsPanelV147 hounds={save.houndsV147} /></>}
 
     {section === "journey" && <div>
       <aside className={styles.legacy} data-chronicle-legacy-rank={chronicle.legacyRecognition?.rankId ?? "none"}>

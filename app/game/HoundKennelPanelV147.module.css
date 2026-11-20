@@ -1,0 +1,24 @@
+.kennel { margin: 1rem 0 0; color: #dfd8c3; text-align: left; }
+.eyebrow { color: #b9b889; font-size: .7rem; letter-spacing: .2em; margin: 0 0 .4rem; }
+.kennel h3 { margin: 0 0 .5rem; font-size: clamp(1.1rem, 2vw, 1.5rem); }
+.subtitle { margin: 1rem 0 .5rem; font-size: .95rem; letter-spacing: .08em; }
+.notice { color: #b5bcaf; max-width: 80ch; line-height: 1.55; font-size: .84rem; }
+.empty { color: #a9b0a7; font-size: .82rem; padding: .7rem .9rem; border-left: 3px solid #8c9262; background: #26302166; }
+.roster { display: grid; gap: .6rem; margin: .7rem 0 0; padding: 0; list-style: none; }
+.roster li { padding: .7rem .9rem; border: 1px solid #56645178; background: #151d18; }
+.roster li[data-chosen="true"] { border-color: #c9a24a; }
+.row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; font-size: .85rem; }
+.bond { margin: .35rem 0; font-size: .78rem; color: #b8c0ae; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+.chosen { font-size: .76rem; color: #d9c07a; }
+.kennel button { min-height: 2.75rem; padding: .4rem .8rem; border: 1px solid #c9a24a; background: transparent; color: inherit; cursor: pointer; }
+.kennel button:disabled { opacity: .5; cursor: not-allowed; }
+.kennel button[aria-pressed="true"] { background: #c9a24a33; }
+.kennel button:focus-visible, .kennel input:focus-visible { outline: 3px solid #d4d49b; outline-offset: 3px; }
+.recruit { display: grid; gap: .7rem; }
+.choices { display: flex; flex-wrap: wrap; gap: .4rem; }
+.portrait { margin: 0; display: grid; gap: .4rem; max-width: 22rem; }
+.portrait img { width: 100%; height: auto; background: #0d1410; }
+.portrait figcaption { font-size: .78rem; color: #b5bcaf; line-height: 1.45; }
+.form { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; font-size: .84rem; }
+.form input { min-height: 2.75rem; padding: .3rem .6rem; border: 1px solid #56645178; background: #0d1410; color: inherit; max-width: 100%; }

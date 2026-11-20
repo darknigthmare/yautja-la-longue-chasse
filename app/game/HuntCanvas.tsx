@@ -298,6 +298,11 @@ import {
 import { chromaticsForPieceV146, lightColorV146, type HunterPieceIdV146 } from "./hunterPiecesV146";
 import { camouflageVisibilityV146, heavyHitPieceV146, missionWearV146, wearFilterV146, type HunterMarkIdV146, type SkinPatternIdV146 } from "./systems/hunterCustomizationV146";
 import { markColorV146, markLayerV146, markStrokesV146 } from "./hunterMarksArtV146";
+import {
+  HOUND_ORDERS_V147, createHoundFieldV147, damageHoundFieldV147, houndHuntReportFromFieldV147, issueHoundOrderV147,
+  houndStickOrderV147, nextHoundOrderV147, pickHoundTargetV147, restoreHoundFieldV147, snapshotHoundFieldV147,
+  stepHoundFieldV147, type FieldPreyV147, type HoundOrderIdV147, type HoundFieldSnapshotV147, type HoundFieldV147, type HoundV147,
+} from "./systems/huntingHoundsV147";
 import type {
   DifficultyId,
   ExplorationProgress,
@@ -335,6 +340,8 @@ interface HuntCanvasProps {
   appearance: HunterAppearance;
   /** Cosmetic-only wrist model chosen before mission entry; never a combat stat. */
   gauntletVariantId?: string;
+  /** V147: hunting hound chosen at the kennel (ready only); frozen for the hunt. */
+  houndV147?: HoundV147 | null;
   reducedGore: boolean;
   screenShake: boolean;
   highContrastVision: boolean;
@@ -382,6 +389,7 @@ type Action =
   | "gearTwo"
   | "interact"
   | "podSelfDestruct"
+  | "houndOrder"
   | "pause";
 
 type HuntPhase =
@@ -570,6 +578,8 @@ interface GearSlotSnapshot {
 }
 
 interface MissionCheckpointPayload {
+  /** V147: written only when a hound joined the hunt. */
+  houndFieldV147?: HoundFieldSnapshotV147;
   insertion?: HuntInsertionState;
   ecosystem?: CorpseDiscoveryStateV112;
   huntRites?: RitesOfHuntV77;
@@ -756,6 +766,9 @@ interface InputHub {
   gamepadHeld: Set<Action>;
   pressed: Set<Action>;
   previousGamepadButtons: boolean[];
+  /** V147: right-stick hound order (edge) and the direction currently held. */
+  houndStickOrderV147?: HoundOrderIdV147 | null;
+  houndStickHeldV147?: HoundOrderIdV147 | null;
   activeGamepadIndex: number | null;
   gamepadNeedsNeutral: boolean;
   gamepadDialogActions: HuntDialogGamepadAction[];
@@ -771,6 +784,12 @@ interface InputHub {
 }
 
 interface GameState {
+  /** V147: the hunting hound in the field (absent when no hound joined). */
+  houndFieldV147?: HoundFieldV147;
+  houndV147?: { name: string; bond: number };
+  /** Prey the hound marked, shown above it for a few seconds. */
+  houndMarkV147?: { preyId: string; until: number } | null;
+  houndFacingV147?: -1 | 1;
   insertion: HuntInsertionState;
   /** Live session identity, deliberately outside checkpoint authority. */
   insertionRunId: string;
@@ -871,6 +890,7 @@ interface GameState {
 
 interface UiSnapshot {
   canopyNavigationV112: CanopyNavigationV112 | null;
+  houndV147: HoundUiV147 | null;
   podRecovery: (HuntPodSafety & { phase: 'ready' | 'countdown' | 'destroyed'; remainingSeconds: number; count: number }) | null;
   insertion: {
     method: PlanetInsertionPlan['method']; searchRemaining: number;
@@ -969,6 +989,7 @@ const HUNT_CONTROL_ACTIONS: Readonly<
   "hunt.useGearTwo": "gearTwo",
   "hunt.interact": "interact",
   "hunt.podSelfDestruct": "podSelfDestruct",
+  "hunt.houndOrder": "houndOrder",
   "hunt.pause": "pause",
 };
 
@@ -987,6 +1008,7 @@ const DEFAULT_HUNT_ACCESSIBILITY_CANVAS_V112 = normalizeHuntAccessibilityV112(un
 
 const EMPTY_UI: UiSnapshot = {
   canopyNavigationV112: null,
+  houndV147: null,
   podRecovery: null,
   insertion: { method: 'pod', team: 'solo', runId: '', shipId: null, searchRemaining: 0, members: [] },
   fieldPackV112:{carried:[],nearby:[],canDrop:false},
@@ -2058,6 +2080,7 @@ function captureCheckpoint(
     scans: state.scans,
     supportKills: state.supportKills,
     damageTaken: state.damageTaken,
+    ...(state.houndFieldV147 ? { houndFieldV147: snapshotHoundFieldV147(state.houndFieldV147) } : {}),
     secondWindUsed: state.secondWindUsed,
     boss: cloneEnemyState(state.boss),
     bossMechanics: cloneBossMechanics(state.bossMechanics),
@@ -2545,6 +2568,8 @@ function restoreCheckpoint(
     insertion: restoredInsertion ?? state.insertion,
     ecosystem: restoredEcosystem,
     huntRites: restoredRites ?? state.huntRites,
+    houndFieldV147: restoredHoundFieldV147(state, checkpoint),
+    houndMarkV147: null,
     riteMenuCorpseId: null,
     riteOperationDamageStart: checkpoint.riteOperationDamageStart ?? null,
     exploration,
@@ -3133,6 +3158,7 @@ function snapshot(state: GameState, mission: MissionDefinition): UiSnapshot {
   const actorAt={x:state.player.x+state.player.width/2,y:state.player.y+state.player.height/2};
   return {
     canopyNavigationV112: currentCanopyNavigationV112(state),
+    houndV147: houndUiV147(state),
     podRecovery: state.insertion?.podRecovery ? {
       ...huntPodSafety(state.insertion.podRecovery, huntPodAnchors(state.insertion.plan, state.world), podSafetyInput(state)),
       phase: state.insertion.podRecovery.phase, remainingSeconds: state.insertion.podRecovery.remainingSeconds,
@@ -3326,6 +3352,7 @@ function resultFor(
   return {
     missionId: mission.id,
     insertionOutcome: state.insertion ? huntInsertionOutcome(state.insertion, state.insertionRunId) : undefined,
+    ...(state.houndFieldV147 ? { houndV147: houndHuntReportFromFieldV147(state.houndFieldV147) } : {}),
     exploration: normalizeExplorationProgress(state.exploration),
     difficultyId: difficulty,
     outcome,
@@ -6065,6 +6092,7 @@ function renderGame(
     drawCanopyNavigationMarkersV112(context, currentCanopyNavigationV112(state).markers);
   }
   drawHuntCompanions(context, state, assets);
+  drawHoundV147(context, state);
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
     : 1;
@@ -10567,6 +10595,9 @@ function pollGamepad(input: InputHub): "focus-lost" | "gamepad-disconnected" | n
   setDirection("right", right);
   setDirection("up", up);
   setDirection("down", down);
+  const houndStick = houndStickOrderV147(gamepad.axes[2], gamepad.axes[3]);
+  if (houndStick && houndStick !== input.houndStickHeldV147) input.houndStickOrderV147 = houndStick;
+  input.houndStickHeldV147 = houndStick;
   if (aiming) input.gamepadHeld.add("aim");
   if (current[buttons.jump]) input.gamepadHeld.add("jump");
 
@@ -10674,6 +10705,167 @@ function flushCorpseRiteGamepadV112(state:GameState,input:InputHub,root:HTMLElem
   if(focused?.nodeName==="BUTTON"&&menu.contains(focused))focused.setAttribute("data-gamepad-focus-v112","true");
 }
 
+// ---------------------------------------------------------------------------
+// V147: hunting hound in the field
+// ---------------------------------------------------------------------------
+
+interface HoundUiV147 {
+  name: string;
+  orderLabel: string;
+  healthShare: number;
+  wounded: boolean;
+  dead: boolean;
+}
+
+function attachHoundV147(state: GameState, hound: HoundV147): void {
+  // Field coordinates are at ground level (feet), like the hunter's and the prey's.
+  const at = { x: state.player.x + state.player.width / 2 - 40, y: state.world.floorY };
+  state.houndFieldV147 = createHoundFieldV147(hound, at);
+  state.houndV147 = { name: hound.name, bond: hound.bond };
+  state.houndMarkV147 = null;
+}
+
+/** Checkpoint field of the same hound; otherwise the live one (old checkpoints). */
+function restoredHoundFieldV147(state: GameState, checkpoint: MissionCheckpointPayload): HoundFieldV147 | undefined {
+  if (!state.houndFieldV147) return undefined;
+  if (!checkpoint.houndFieldV147) return state.houndFieldV147;
+  const field = restoreHoundFieldV147(checkpoint.houndFieldV147);
+  return field && field.houndId === state.houndFieldV147.houndId ? field : state.houndFieldV147;
+}
+
+/** Height above the floor a hound can still reach with a bite or a push (proposé). */
+const HOUND_REACH_ABOVE_FLOOR_V147 = 60;
+
+/**
+ * Prey the hound may work on. The hound stays on the ground: every position
+ * is projected onto the floor, and only prey standing near the floor can be
+ * driven or bitten (tracking follows the scent below any prey). The mission's
+ * target (boss) can be tracked but never driven or attacked: the duel belongs
+ * to the hunter (proposé).
+ */
+function houndPreyV147(state: GameState, tracking: boolean): FieldPreyV147[] {
+  const floor = state.world.floorY;
+  return state.enemies
+    .filter(enemy => enemy.active && enemy.alive && (tracking ||
+      !enemy.boss && floor - (enemy.y + enemy.height) <= HOUND_REACH_ABOVE_FLOOR_V147))
+    .map(enemy => ({ id: enemy.id, x: enemy.x + enemy.width / 2, y: floor, alive: true,
+      trailAge: Math.max(0, state.elapsed - enemy.lastTrackAt) }));
+}
+
+const houndOrderLabelV147 = (order: HoundFieldV147["order"]) =>
+  HOUND_ORDERS_V147.find(entry => entry.id === order)?.label ?? order;
+
+function updateHoundV147(
+  state: GameState, mission: MissionDefinition, input: InputHub, delta: number,
+  /** Order chosen directly with the right stick, if any. */
+  directOrder: HoundOrderIdV147 | null = null,
+): void {
+  let field = state.houndFieldV147;
+  const hound = state.houndV147;
+  if (!field || !hound) { input.pressed.delete("houndOrder"); return; }
+  const player = { x: state.player.x + state.player.width / 2, y: state.world.floorY };
+  const cycled = consume(input, "houndOrder");
+  if (cycled || directOrder) {
+    const target = pickHoundTargetV147(
+      { x: player.x, y: player.y, facing: state.player.facing }, houndPreyV147(state, false));
+    const next = directOrder ?? nextHoundOrderV147(field.order, hound.bond, !!target);
+    const issued = issueHoundOrderV147(field, next, hound.bond, next === "attack" ? target?.id ?? null : null);
+    if (issued.ok) {
+      field = issued.field;
+      announce(state, `${hound.name} : ${houndOrderLabelV147(next)}.`, 1.6);
+    } else {
+      announce(state, issued.reason === "dead" ? `${hound.name} est mort.`
+        : issued.reason === "wounded" ? `${hound.name} est blessé : il ne répond qu’au rappel.`
+        : issued.reason === "locked"
+          ? `${houndOrderLabelV147(next)} : lien ${HOUND_ORDERS_V147.find(entry => entry.id === next)?.bond ?? "?"} requis (${hound.bond}).`
+        : issued.reason === "no-target" ? `${hound.name} : aucune proie au sol à portée.`
+        : `${hound.name} ne peut pas exécuter cet ordre.`, 1.8);
+    }
+  }
+  const wasWounded = field.wounded, wasDead = field.dead, fromX = field.x;
+  const step = stepHoundFieldV147(field, { dt: delta, player, prey: houndPreyV147(state, field.order === "track") });
+  field = step.field;
+  for (const event of step.events) {
+    const enemy = "preyId" in event ? state.enemies.find(entry => entry.id === event.preyId) : undefined;
+    if (event.type === "push" && enemy && enemy.alive) {
+      enemy.x = clamp(enemy.x + event.dx, 0, state.world.width - enemy.width);
+    } else if (event.type === "bite" && enemy && enemy.alive && enemy.active) {
+      damageEnemy(state, mission, enemy, event.damage, "weapon");
+      // The prey fights back while it stands (provisional value, proposé).
+      if (enemy.alive) field = damageHoundFieldV147(field, Math.max(1, enemy.damage * 0.35));
+    } else if (event.type === "marked" && enemy) {
+      state.houndMarkV147 = { preyId: enemy.id, until: state.elapsed + 6 };
+      announce(state, `${hound.name} marque une proie.`, 1.6);
+    } else if (event.type === "driven") {
+      announce(state, `${hound.name} a rabattu la proie vers toi.`, 1.6);
+    }
+  }
+  if (field.dead && !wasDead) announce(state, `${hound.name} est mort. Il ne reviendra pas.`, 4);
+  else if (field.wounded && !wasWounded) announce(state, `${hound.name} est blessé et revient au pied.`, 3);
+  if (Math.abs(field.x - fromX) > 0.5) state.houndFacingV147 = field.x > fromX ? 1 : -1;
+  if (state.houndMarkV147 && state.houndMarkV147.until < state.elapsed) state.houndMarkV147 = null;
+  state.houndFieldV147 = field;
+}
+
+function houndUiV147(state: GameState): HoundUiV147 | null {
+  const field = state.houndFieldV147, hound = state.houndV147;
+  if (!field || !hound) return null;
+  return { name: hound.name, orderLabel: houndOrderLabelV147(field.order),
+    healthShare: field.maxHealth > 0 ? field.health / field.maxHealth : 0, wounded: field.wounded, dead: field.dead };
+}
+
+/** Provisional silhouette until the hound sprites are admitted (no runtime art yet). */
+function drawHoundV147(context: CanvasRenderingContext2D, state: GameState): void {
+  const field = state.houndFieldV147;
+  if (!field) return;
+  const mark = state.houndMarkV147;
+  if (mark) {
+    const prey = state.enemies.find(entry => entry.id === mark.preyId && entry.alive);
+    if (prey) {
+      const x = prey.x + prey.width / 2, y = prey.y - 18;
+      context.save();
+      context.strokeStyle = "#ffb347"; context.lineWidth = 2;
+      context.beginPath(); context.moveTo(x - 8, y - 10); context.lineTo(x, y); context.lineTo(x + 8, y - 10); context.stroke();
+      context.restore();
+    }
+  }
+  if (field.x < state.cameraX - 120 || field.x > state.cameraX + VIEW_WIDTH + 120) return;
+  const facing = state.houndFacingV147 ?? (state.player.x + state.player.width / 2 >= field.x ? 1 : -1);
+  const groundY = field.y;
+  context.save();
+  context.translate(field.x, groundY);
+  if (field.dead) { context.rotate(facing * Math.PI / 2.4); context.globalAlpha = 0.7; }
+  context.scale(facing, 1);
+  context.fillStyle = "#2a1d17";
+  context.strokeStyle = "#0d0907";
+  context.lineWidth = 2;
+  // Body, neck and head.
+  context.beginPath();
+  context.ellipse(0, -26, 30, 12, 0, 0, Math.PI * 2);
+  context.moveTo(22, -30); context.lineTo(38, -46); context.lineTo(54, -40); context.lineTo(48, -30); context.lineTo(28, -22);
+  context.fill(); context.stroke();
+  // Legs (four, alternating with movement).
+  const stride = field.dead ? 0 : Math.sin(state.elapsed * 12) * 5;
+  context.lineWidth = 4;
+  for (const [x, phase] of [[-20, 1], [-12, -1], [14, -1], [22, 1]] as const) {
+    context.beginPath(); context.moveTo(x, -18); context.lineTo(x + stride * phase, 0); context.stroke();
+  }
+  // Dorsal quills (hounds of Predators, 2010).
+  context.fillStyle = "#4b2f22";
+  for (let i = 0; i < 5; i++) {
+    const qx = -18 + i * 9;
+    context.beginPath(); context.moveTo(qx, -36); context.lineTo(qx + 4, -50 - (i % 2) * 5); context.lineTo(qx + 8, -36); context.fill();
+  }
+  context.restore();
+  if (!field.dead) {
+    context.save();
+    context.fillStyle = "#07100fd9"; context.fillRect(field.x - 26, groundY - 62, 52, 4);
+    context.fillStyle = field.wounded ? "#ff7e6a" : "#c9a24a";
+    context.fillRect(field.x - 26, groundY - 62, 52 * field.health / field.maxHealth, 4);
+    context.restore();
+  }
+}
+
 function stepGame(
   state: GameState,
   mission: MissionDefinition,
@@ -10757,6 +10949,9 @@ function stepGame(
   for (const enemy of state.enemies) {
     updateRegularEnemy(state, enemy, mission, delta);
   }
+  const houndStickOrder = state.riteMenuCorpseId ? null : input.houndStickOrderV147 ?? null;
+  input.houndStickOrderV147 = null;
+  updateHoundV147(state, mission, playerInput, delta, houndStickOrder);
   updateBoss(state, mission, difficulty, delta);
   state.playerUsedRangedWeapon = false;
   state.playerUsedEnergyWeapon = false;
@@ -10821,6 +11016,7 @@ export default function HuntCanvas({
   huntAccessibility,
   appearance,
   gauntletVariantId,
+  houndV147,
   reducedGore,
   screenShake,
   highContrastVision,
@@ -10840,6 +11036,7 @@ export default function HuntCanvas({
   // Freeze the model for the current hunt. An external-tab cosmetic preference
   // update must not restart the same simulation or replace assets mid-combat.
   const [gauntletVisualId]=useState(()=>gauntletVariantId ?? "jungle-hunter");
+  const [frozenHound] = useState(() => houndV147 && houndV147.condition === "ready" ? houndV147 : null);
   const [frozenInsertion] = useState(() => normalizePlanetInsertionPlan(insertionPlan) ?? { ...DEFAULT_PLAN });
   const [frozenInsertionShipId] = useState(insertionShipId);
   const activeBindings = controlBindings ?? DEFAULT_CONTROL_BINDINGS;
@@ -11030,6 +11227,7 @@ export default function HuntCanvas({
       frozenInsertionShipId,
     );
     game.huntAccessibility=normalizeHuntAccessibilityV112(activeAccessibility);
+    if (frozenHound) attachHoundV147(game, frozenHound);
     const restoredHunt = deserializeActiveHuntCheckpoint(resumeSnapshot);
     const restoredRetry = deserializeActiveHuntCheckpoint(
       resumeRetryCheckpoint,
@@ -12637,6 +12835,14 @@ export default function HuntCanvas({
             shortcut={controlActionShortcut("hunt.heal", activeBindings)}
             onPress={() => pressAction("heal")}
           />
+          {ui.houndV147 && (
+            <ActionButton
+              label={`${ui.houndV147.name} : ${ui.houndV147.dead ? "mort" : ui.houndV147.orderLabel}${ui.houndV147.wounded && !ui.houndV147.dead ? " (blessé)" : ""}`}
+              shortcut={controlActionShortcut("hunt.houndOrder", activeBindings)}
+              disabled={ui.houndV147.dead}
+              onPress={() => pressAction("houndOrder")}
+            />
+          )}
           </div>
         </details>
       </div>
@@ -12661,6 +12867,7 @@ export default function HuntCanvas({
         <span>{controlActionShortcut("hunt.toggleCloak", activeBindings)} · camouflage</span>
         <span>{controlActionShortcut("hunt.useGearOne", activeBindings)}/{controlActionShortcut("hunt.useGearTwo", activeBindings)} · équipements</span>
         <span>{controlActionShortcut("hunt.heal", activeBindings)} · soin ({ui.medicomps})</span>
+        {ui.houndV147 && <span>{controlActionShortcut("hunt.houndOrder", activeBindings)} · ordre suivant au chien</span>}
         <span>{controlActionShortcut("hunt.interact", activeBindings)} · interaction</span>
         <span>{controlActionShortcut("hunt.pause", activeBindings)} · pause</span>
         <span>Manette compatible</span>
