@@ -1,0 +1,8 @@
+.panel{position:fixed;right:16px;bottom:16px;z-index:40;max-width:min(420px,calc(100vw - 32px));max-height:70vh;overflow:auto;background:rgba(10,14,12,.94);color:#e6eadf;border:1px solid #5d6b55;border-radius:6px;padding:8px 12px;font-size:.9rem}
+.panel summary{cursor:pointer;font-weight:600}
+.panel h3{margin:.6em 0 .3em;font-size:1rem}
+.panel ul{margin:.3em 0;padding-left:1.2em}
+.panel button{margin:.25em .4em .25em 0}
+.missing{color:#f0b37a}
+.status{font-style:italic}
+.todo{opacity:.75}

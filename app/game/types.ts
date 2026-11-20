@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V164 : branche Warp Tantalus 2204 (voyage, retour réservé, choix Echo-8) ; absente des anciennes sauvegardes. */
+  tantalusV164?: import("./systems/tantalusV164").TantalusLedgerV164 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
