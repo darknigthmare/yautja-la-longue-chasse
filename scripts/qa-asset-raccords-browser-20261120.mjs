@@ -28,7 +28,7 @@ const revision=git('rev-parse','HEAD');
 const report={
   schemaVersion:1,startedAt:new Date().toISOString(),sourceCommit:revision,
   browserExecuted:false,passed:false,classification:'IN_PROGRESS',checks:[],captures:[],errors:[],consoleErrors:[],
-  sourceHashes:{},admissions:[],journeys:[],assets:[],preparation:null,
+  sourceHashes:{},admissions:[],journeys:[],paintReadiness:[],assets:[],preparation:null,
   runtime:'Original production React GameClient bundled by the existing esbuild/PostCSS test host; Next production delivery is checked separately.',
   instrumentation:'The initial campaign is supplied once through native browser-context storageState. No seeding init script exists at reload. No injected scene hook, replacement callback, fake image, alternate writer or gameplay clock. The fixture exposes only a document ID and a read of the native campaign key.',
   scope:'Two separate real outings: city to Passage V67 (ash-marches) and back; city to Region V68 (luminous-marshes) and back. Each starts at a declared native safe city portal approach.',
@@ -75,6 +75,21 @@ function sceneFor(kind){
   return page.locator('[data-homeworld-region-v68]:visible');
 }
 function visualFor(kind){return actorFor(kind).locator('[data-modular-homeworld-character]');}
+function actorSelector(kind){return kind==='city'?'[data-homeworld-hub] [data-homeworld-actor]':kind==='passage'?'[data-homeworld-passage-v67] [data-passage-actor]':'section[data-homeworld-region-v68] [data-region-player]';}
+function nativePlayerPaintState({selector,readyOnly=false}){
+  const sockets=[...document.querySelectorAll(selector)].filter(node=>node.getClientRects().length>0);
+  if(sockets.length!==1)return readyOnly?false:{ready:false,socketCount:sockets.length};
+  const socket=sockets[0],portraits=socket.querySelectorAll('[data-modular-homeworld-character]');
+  if(portraits.length!==1)return readyOnly?false:{ready:false,socketCount:1,portraitCount:portraits.length};
+  const visual=portraits[0],box=node=>{const r=node.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
+  const viewport=socket.closest('[data-homeworld-hub]')?.querySelector('[data-homeworld-viewport]')??socket.closest('[data-homeworld-passage-v67]')?.querySelector('[role="group"][aria-label^="Parcours 2.5D"]')??socket.closest('section[data-homeworld-region-v68]')?.querySelector('[tabindex="0"][aria-label^="Explorer "]');
+  const browserViewport={x:0,y:0,width:innerWidth,height:innerHeight},bounds=box(visual),nativeViewport=viewport?box(viewport):null;
+  const intersects=(a,b)=>Math.min(a.x+a.width,b.x+b.width)>Math.max(a.x,b.x)&&Math.min(a.y+a.height,b.y+b.height)>Math.max(a.y,b.y);
+  const ancestors=[];for(let current=visual;current;current=current.parentElement){const style=getComputedStyle(current);ancestors.push({tag:current.tagName,id:current.id,classes:String(current.className),display:style.display,visibility:style.visibility,opacity:Number(style.opacity),animationName:style.animationName,animationDuration:style.animationDuration,animationPlayState:style.animationPlayState});}
+  const style=getComputedStyle(visual),state={socketCount:1,portraitCount:1,bounds,display:style.display,visibility:style.visibility,opacity:Number(style.opacity),nativeViewport,browserViewport,intersectsNativeViewport:!!nativeViewport&&intersects(bounds,nativeViewport),intersectsBrowserViewport:intersects(bounds,browserViewport),ancestors};
+  state.ready=bounds.width>0&&bounds.height>0&&Object.values(bounds).every(Number.isFinite)&&state.intersectsNativeViewport&&state.intersectsBrowserViewport&&ancestors.every(item=>item.display!=='none'&&item.visibility==='visible'&&item.opacity>0);
+  return readyOnly&&!state.ready?false:state;
+}
 async function equipment(kind,expected){
   const actor=actorFor(kind);
   // The native ground sockets are intentionally 0x0 in all three scene CSS
@@ -82,18 +97,19 @@ async function equipment(kind,expected){
   await actor.waitFor({state:'attached'});assert.equal(await actor.count(),1,'Exactly one native player socket must own the observation.');
   const visual=visualFor(kind);assert.equal(await visual.count(),1,'Exactly one native modular sprite must belong to the player socket.');
   await visual.waitFor({state:'visible'});
+  // The native .screen ancestor animates from opacity 0 for 420ms. Poll the
+  // actual paint predicates; do not change CSS, advance clocks or sleep blindly.
+  const selector=actorSelector(kind),paintStarted=Date.now(),paintReceipt={scene:kind,initial:await page.evaluate(nativePlayerPaintState,{selector}),final:null};
+  report.paintReadiness.push(paintReceipt);
+  let paintHandle;
+  try{paintHandle=await page.waitForFunction(nativePlayerPaintState,{selector,readyOnly:true},{polling:'raf',timeout:60000});paintReceipt.final=await paintHandle.jsonValue();}
+  finally{paintReceipt.waitedMs=Date.now()-paintStarted;await paintHandle?.dispose();}
   await page.waitForFunction(({selector,base,lid})=>{
     const roots=[...document.querySelectorAll(selector)].filter(node=>node.getClientRects().length>0);
     return roots.length===1&&[base,lid].every(src=>[...roots[0].querySelectorAll('img[data-homeworld-layer="gauntlet"]')].some(img=>img.getAttribute('src')===src&&img.complete&&img.naturalWidth>0))&&roots[0].querySelectorAll('img[data-homeworld-layer="blade-housing"]').length===1&&[...roots[0].querySelectorAll('img')].every(img=>img.complete&&img.naturalWidth>0);
-  },{selector:kind==='city'?'[data-homeworld-hub] [data-homeworld-actor]':kind==='passage'?'[data-homeworld-passage-v67] [data-passage-actor]':'[data-homeworld-region-v68] [data-region-player]',base:expected.gauntlet.base,lid:expected.gauntlet.lid});
+  },{selector,base:expected.gauntlet.base,lid:expected.gauntlet.lid});
   const observed=await actor.evaluate(node=>{
     const box=element=>{const r=element.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
-    const visual=node.querySelector('[data-modular-homeworld-character]'),visualStyle=getComputedStyle(visual);
-    const viewport=node.closest('[data-homeworld-hub]')?.querySelector('[data-homeworld-viewport]')??node.closest('[data-homeworld-passage-v67]')?.querySelector('[role="group"][aria-label^="Parcours 2.5D"]')??node.closest('section[data-homeworld-region-v68]')?.querySelector('[tabindex="0"][aria-label^="Explorer "]');
-    const browserViewport={x:0,y:0,width:innerWidth,height:innerHeight};
-    const intersects=(a,b)=>Math.min(a.x+a.width,b.x+b.width)>Math.max(a.x,b.x)&&Math.min(a.y+a.height,b.y+b.height)>Math.max(a.y,b.y);
-    const visualBounds=box(visual),viewportBounds=viewport?box(viewport):null;
-    const ancestors=[];for(let current=visual;current;current=current.parentElement){const style=getComputedStyle(current);ancestors.push({display:style.display,visibility:style.visibility,opacity:Number(style.opacity)});}
     return{
       modular:!!node.querySelector('[data-modular-homeworld-character]'),
       gauntlets:[...node.querySelectorAll('img[data-homeworld-layer="gauntlet"]')].map(img=>({part:img.getAttribute('data-gauntlet-part'),src:img.getAttribute('src'),complete:img.complete,width:img.naturalWidth,height:img.naturalHeight,transform:img.style.transform,bounds:box(img)})),
@@ -101,9 +117,9 @@ async function equipment(kind,expected){
       blades:[...node.querySelectorAll('img[data-homeworld-layer="blade-housing"]')].map(img=>({src:img.getAttribute('src'),complete:img.complete,width:img.naturalWidth,height:img.naturalHeight,transform:img.style.transform})),
       body:node.querySelector('[data-modular-homeworld-character]')?.getAttribute('data-body-morph'),
       socketBounds:box(node),
-      visual:{bounds:visualBounds,display:visualStyle.display,visibility:visualStyle.visibility,opacity:Number(visualStyle.opacity),nativeViewport:viewportBounds,browserViewport,intersectsNativeViewport:!!viewportBounds&&intersects(visualBounds,viewportBounds),intersectsBrowserViewport:intersects(visualBounds,browserViewport),ancestors},
     };
   });
+  observed.visual=await page.evaluate(nativePlayerPaintState,{selector});
   assert.ok(observed.modular);
   assert.ok(observed.visual.bounds.width>0&&observed.visual.bounds.height>0&&Object.values(observed.visual.bounds).every(Number.isFinite),'The native rendered sprite must have a positive finite rectangle.');
   assert.ok(observed.visual.intersectsNativeViewport&&observed.visual.intersectsBrowserViewport,'The actual sprite must intersect both its native scene viewport and the browser viewport.');
@@ -415,13 +431,15 @@ try{
         scenes:[...document.querySelectorAll('[data-homeworld-hub],[data-homeworld-passage-v67],section[data-homeworld-region-v68]')].map(node=>({visible:node.getClientRects().length>0,attributes:Object.fromEntries([...node.attributes].filter(attr=>attr.name.startsWith('data-')).map(attr=>[attr.name,attr.value])),text:node.innerText.slice(0,6000)})),
         players:[...document.querySelectorAll('[data-homeworld-actor],[data-passage-actor],[data-region-player]')].map(socket=>{
           const rect=node=>{const r=node.getBoundingClientRect(),style=getComputedStyle(node);return{x:r.x,y:r.y,width:r.width,height:r.height,display:style.display,visibility:style.visibility,opacity:style.opacity,transform:style.transform};};
-          const visual=socket.querySelector('[data-modular-homeworld-character]');return{socket:rect(socket),visual:visual?rect(visual):null,gauntlets:[...socket.querySelectorAll('img[data-homeworld-layer="gauntlet"]')].map(img=>({src:img.getAttribute('src'),complete:img.complete,naturalWidth:img.naturalWidth,bounds:rect(img)}))};
+          const visual=socket.querySelector('[data-modular-homeworld-character]'),ancestors=[];
+          for(let current=visual;current;current=current.parentElement){const style=getComputedStyle(current);ancestors.push({tag:current.tagName,id:current.id,classes:String(current.className),display:style.display,visibility:style.visibility,opacity:style.opacity,animationName:style.animationName,animationDuration:style.animationDuration,animationPlayState:style.animationPlayState});}
+          return{socket:rect(socket),visual:visual?rect(visual):null,ancestors,gauntlets:[...socket.querySelectorAll('img[data-homeworld-layer="gauntlet"]')].map(img=>({src:img.getAttribute('src'),complete:img.complete,naturalWidth:img.naturalWidth,bounds:rect(img)}))};
         }),
         failedImages:[...document.images].filter(img=>img.complete&&img.naturalWidth===0).slice(0,32).map(img=>({src:img.getAttribute('src'),complete:img.complete,naturalWidth:img.naturalWidth})),
         pendingImages:[...document.images].filter(img=>!img.complete).slice(0,32).map(img=>img.getAttribute('src')),
       }));
       const failures=[...requests.values()].filter(item=>item.status!==200);
-      console.log('ASSET_RACCORDS_FAILURE_DIAGNOSTICS '+JSON.stringify({sourceCommit:revision,scene:currentScene,failure:report.failure,body:report.failureText,dom:report.failureDom,assetFailures:failures,consoleErrors:report.consoleErrors.slice(-20),pageErrors:report.errors}));
+      console.log('ASSET_RACCORDS_FAILURE_DIAGNOSTICS '+JSON.stringify({sourceCommit:revision,scene:currentScene,failure:report.failure,body:report.failureText,dom:report.failureDom,assetFailures:failures,paintReadiness:report.paintReadiness.slice(-1),consoleErrors:report.consoleErrors.slice(-20),pageErrors:report.errors}));
       await captureViewport('failure');
       if(currentScene&&await visualFor(currentScene).isVisible())await capture('failure-scene',currentScene,'failure');
     }catch(diagnosticError){report.diagnosticFailure=String(diagnosticError);console.log('ASSET_RACCORDS_DIAGNOSTIC_ERROR '+String(diagnosticError));}
