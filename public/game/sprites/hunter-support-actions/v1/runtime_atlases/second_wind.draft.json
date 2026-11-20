@@ -1,0 +1,497 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-second_wind-support-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "second_wind-support-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "second_wind_a",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/second_wind_a.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "second_wind_b",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/second_wind_b.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "second_wind_action",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            306.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            306.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            306.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            304.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_a",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            303.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            287.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            287.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            287.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            287.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            289.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            288.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            289.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "second_wind_b",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

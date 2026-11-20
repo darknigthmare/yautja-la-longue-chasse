@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-victory_trophy-draft-v2",
+  "characterId": "reference-yautja",
+  "variantId": "victory_trophy-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "victory_trophy_enter",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_trophy_enter.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "victory_trophy_idle",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_trophy_idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "victory_trophy_exit",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/victory_trophy_exit.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "victory_trophy_enter",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            133.520928,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159.392004,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159.036595,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.439357,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            134.465162,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.768942,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.34121,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.469272,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            134.22986,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.734229,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.442192,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.284494,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            134.57404,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.745918,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.232979,
+            304
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "victory_trophy_idle",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            154.395123,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            153.768656,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            154.145316,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            153.876774,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            154.188083,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            153.701339,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            154.199865,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            153.796451,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.737954,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.237234,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.610092,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.307851,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            154.48506,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            153.883843,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            154.449767,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            153.999964,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            154.449767,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            153.883843,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            154.48506,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.307851,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.610092,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.237234,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            154.737954,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            153.796451,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            154.199865,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            153.701339,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            154.188083,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            153.876774,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            154.145316,
+            296
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "victory_trophy_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            153.768656,
+            296
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "victory_trophy_exit",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.637105,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            131.670553,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.631675,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.004122,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.738563,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            132.412126,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.899377,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            157.94276,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.735908,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            131.698052,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.530517,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.966632,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.677716,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            131.99786,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.58343,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_exit",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            157.980842,
+            303
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "victory_trophy_exit_reversible",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.232979,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.745918,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            134.57404,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.284494,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.442192,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.734229,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            134.22986,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.469272,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.34121,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.768942,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            134.465162,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.439357,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159.036595,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159.392004,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            133.520928,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "victory_trophy_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            305
+          ],
+          "durationTicks": 5
+        }
+      ]
+    }
+  ]
+}

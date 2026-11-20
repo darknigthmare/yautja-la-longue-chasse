@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-canopy_swing-support-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "canopy_swing-support-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "canopy_swing",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/canopy_swing.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "canopy_swing_loop",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            187.19262388154607,
+            47.72948176409138
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            182.5458491541437,
+            48.38287252437742
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            179.84291187739464,
+            48.32136671390332
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            178.5780554162297,
+            48.02816409040476
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            179.02975731895225,
+            47.276771956856706
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            172.94783882783884,
+            46.89776223776224
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            167.91666170693964,
+            47.00479853588858
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            163.44668623135243,
+            46.87431727398712
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            162.2255970067129,
+            46.28463739407945
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            160.94888638920133,
+            44.81883014623172
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.71266461808602,
+            44.8
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.44782356208654,
+            44.99267787708933
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.34936179577466,
+            44.512874119718305
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            161.2162263776176,
+            45.99215424777255
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            162.28488408521304,
+            46.16383145363409
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "canopy_swing",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            163.35647081413208,
+            45.88565668202765
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

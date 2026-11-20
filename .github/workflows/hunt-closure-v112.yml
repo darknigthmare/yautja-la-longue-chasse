@@ -261,6 +261,8 @@ jobs:
           NODE
       - name: Install locked dependencies without lifecycle scripts
         run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Materialize current V19 sector bindings without rewriting the historical index
+        run: node scripts/materialize-asset-raccords-20261120.mjs hunt-runtime
       - name: Strict lint of the full GameClient browser recipe
         run: node node_modules/eslint/bin/eslint.js --max-warnings=0 scripts/qa-skinning-canopy-durable-browser-20261109.mjs tests/browser/skinning-canopy-durable-20261109.fixture.jsx
       - name: Play field work, durable reloads, extraction, workshop and canopy
@@ -270,7 +272,9 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: skinning-canopy-durable-${{ github.sha }}
-          path: outputs/qa-skinning-canopy-20261109/
+          path: |
+            outputs/qa-skinning-canopy-20261109/
+            outputs/qa-asset-raccords-20261120/materialization-hunt-runtime.json
           if-no-files-found: error
           retention-days: 30
 

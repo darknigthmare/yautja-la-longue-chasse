@@ -1,0 +1,5496 @@
+{
+  "version": "1.0",
+  "purpose": "Original V1 atlas hashes and frame references for preservation during V2 re-export.",
+  "clips": [
+    {
+      "id": "branch_enter",
+      "label": "Accroupi sur branche — entrée",
+      "stance": "branch",
+      "phase": "enter",
+      "atlas": "atlases/branch_enter.png",
+      "atlasSha256": "b430e51987401347bc3af59648681adc0811655c72f3c6de0e5f438feaa1267e",
+      "atlasWidth": 1254,
+      "atlasHeight": 1254,
+      "frameWidth": 314,
+      "frameHeight": 314,
+      "frameCount": 16,
+      "columns": 4,
+      "rows": 4,
+      "order": "row-major",
+      "fps": 16,
+      "gridEdges": {
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ]
+      },
+      "gridStrategy": "round(i * atlasSize / 4); pad right/bottom with transparent pixels to ceil(atlasSize / 4), no resampling",
+      "hasAlpha": true,
+      "channels": 4,
+      "anchorType": "foot_baseline",
+      "anchorTarget": {
+        "x": 157,
+        "y": 308
+      },
+      "anchorNotes": [
+        "Ground anchor is the lowest alpha>=128 pixel; no automatic horizontal recentering.",
+        "This corrects image placement, not anatomical differences."
+      ],
+      "anchorStatus": "Décalages de lecture mesurés; appuis des pieds ou de la main à vérifier avec la géométrie du moteur cible. PNG source non déplacés.",
+      "frames": [
+        {
+          "index": 0,
+          "number": 1,
+          "file": "frames/branch_enter/001.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 43080,
+            "transparentPixels": 55516,
+            "semitransparentPixels": 43023,
+            "visiblePixels": 26403,
+            "borderNonTransparentPixels": 186,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 186,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 1,
+          "number": 2,
+          "file": "frames/branch_enter/002.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 46320,
+            "transparentPixels": 51962,
+            "semitransparentPixels": 46267,
+            "visiblePixels": 26883,
+            "borderNonTransparentPixels": 203,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 203,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 2,
+          "number": 3,
+          "file": "frames/branch_enter/003.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 47261,
+            "transparentPixels": 51335,
+            "semitransparentPixels": 47218,
+            "visiblePixels": 27352,
+            "borderNonTransparentPixels": 149,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 149,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 3,
+          "number": 4,
+          "file": "frames/branch_enter/004.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 43297,
+            "transparentPixels": 54985,
+            "semitransparentPixels": 43228,
+            "visiblePixels": 27161,
+            "borderNonTransparentPixels": 143,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 143,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 9,
+              "width": 312,
+              "height": 305
+            }
+          }
+        },
+        {
+          "index": 4,
+          "number": 5,
+          "file": "frames/branch_enter/005.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 47465,
+            "transparentPixels": 50817,
+            "semitransparentPixels": 47437,
+            "visiblePixels": 27593,
+            "borderNonTransparentPixels": 268,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 268,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 5,
+          "number": 6,
+          "file": "frames/branch_enter/006.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 53149,
+            "transparentPixels": 44820,
+            "semitransparentPixels": 53124,
+            "visiblePixels": 26943,
+            "borderNonTransparentPixels": 279,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 279,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 6,
+          "number": 7,
+          "file": "frames/branch_enter/007.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 49079,
+            "transparentPixels": 49203,
+            "semitransparentPixels": 49054,
+            "visiblePixels": 26221,
+            "borderNonTransparentPixels": 157,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 157,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 7,
+          "number": 8,
+          "file": "frames/branch_enter/008.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45178,
+            "transparentPixels": 52791,
+            "semitransparentPixels": 45145,
+            "visiblePixels": 25434,
+            "borderNonTransparentPixels": 156,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 156,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 312,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 8,
+          "number": 9,
+          "file": "frames/branch_enter/009.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 48850,
+            "transparentPixels": 49746,
+            "semitransparentPixels": 48822,
+            "visiblePixels": 25118,
+            "borderNonTransparentPixels": 217,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 217,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 9,
+          "number": 10,
+          "file": "frames/branch_enter/010.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 44704,
+            "transparentPixels": 53578,
+            "semitransparentPixels": 44634,
+            "visiblePixels": 25295,
+            "borderNonTransparentPixels": 225,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 225,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 10,
+          "number": 11,
+          "file": "frames/branch_enter/011.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42519,
+            "transparentPixels": 56077,
+            "semitransparentPixels": 42500,
+            "visiblePixels": 25432,
+            "borderNonTransparentPixels": 138,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 138,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 11,
+          "number": 12,
+          "file": "frames/branch_enter/012.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 43910,
+            "transparentPixels": 54372,
+            "semitransparentPixels": 43842,
+            "visiblePixels": 26099,
+            "borderNonTransparentPixels": 92,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 92,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 312,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 12,
+          "number": 13,
+          "file": "frames/branch_enter/013.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45749,
+            "transparentPixels": 52533,
+            "semitransparentPixels": 45722,
+            "visiblePixels": 25692,
+            "borderNonTransparentPixels": 311,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 311,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 13,
+          "number": 14,
+          "file": "frames/branch_enter/014.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 308
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 0
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 44763,
+            "transparentPixels": 53206,
+            "semitransparentPixels": 44749,
+            "visiblePixels": 25372,
+            "borderNonTransparentPixels": 327,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 327,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 14,
+          "number": 15,
+          "file": "frames/branch_enter/015.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42738,
+            "transparentPixels": 55544,
+            "semitransparentPixels": 42714,
+            "visiblePixels": 25565,
+            "borderNonTransparentPixels": 292,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 292,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 15,
+          "number": 16,
+          "file": "frames/branch_enter/016.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 307
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 1
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37827,
+            "transparentPixels": 60142,
+            "semitransparentPixels": 37801,
+            "visiblePixels": 25033,
+            "borderNonTransparentPixels": 268,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 268,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 299,
+              "height": 313
+            }
+          }
+        }
+      ],
+      "staticStance": {
+        "file": "stances/branch.png",
+        "sourceFrame": 16
+      }
+    },
+    {
+      "id": "branch_exit",
+      "label": "Accroupi sur branche — sortie",
+      "stance": "branch",
+      "phase": "exit",
+      "atlas": "atlases/branch_exit.png",
+      "atlasSha256": "a5e88c940040ebf5d20c786164c21972230008a7c44f09d3726ac90c3e39f6de",
+      "atlasWidth": 1254,
+      "atlasHeight": 1254,
+      "frameWidth": 314,
+      "frameHeight": 314,
+      "frameCount": 16,
+      "columns": 4,
+      "rows": 4,
+      "order": "row-major",
+      "fps": 16,
+      "gridEdges": {
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ]
+      },
+      "gridStrategy": "round(i * atlasSize / 4); pad right/bottom with transparent pixels to ceil(atlasSize / 4), no resampling",
+      "hasAlpha": true,
+      "channels": 4,
+      "anchorType": "foot_baseline",
+      "anchorTarget": {
+        "x": 157,
+        "y": 308
+      },
+      "anchorNotes": [
+        "Ground anchor is the lowest alpha>=128 pixel; no automatic horizontal recentering.",
+        "This corrects image placement, not anatomical differences."
+      ],
+      "anchorStatus": "Décalages de lecture mesurés; appuis des pieds ou de la main à vérifier avec la géométrie du moteur cible. PNG source non déplacés.",
+      "frames": [
+        {
+          "index": 0,
+          "number": 1,
+          "file": "frames/branch_exit/001.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 31224,
+            "transparentPixels": 67372,
+            "semitransparentPixels": 31157,
+            "visiblePixels": 27438,
+            "borderNonTransparentPixels": 14,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 14,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 5,
+              "width": 302,
+              "height": 309
+            }
+          }
+        },
+        {
+          "index": 1,
+          "number": 2,
+          "file": "frames/branch_exit/002.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 32678,
+            "transparentPixels": 65604,
+            "semitransparentPixels": 32615,
+            "visiblePixels": 27861,
+            "borderNonTransparentPixels": 4,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 4,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 8,
+              "y": 21,
+              "width": 305,
+              "height": 293
+            }
+          }
+        },
+        {
+          "index": 2,
+          "number": 3,
+          "file": "frames/branch_exit/003.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 32486,
+            "transparentPixels": 66110,
+            "semitransparentPixels": 32408,
+            "visiblePixels": 28158,
+            "borderNonTransparentPixels": 1,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 1,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 17,
+              "width": 311,
+              "height": 297
+            }
+          }
+        },
+        {
+          "index": 3,
+          "number": 4,
+          "file": "frames/branch_exit/004.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 33618,
+            "transparentPixels": 64664,
+            "semitransparentPixels": 33551,
+            "visiblePixels": 28229,
+            "borderNonTransparentPixels": 0,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 0,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 6,
+              "y": 31,
+              "width": 289,
+              "height": 262
+            }
+          }
+        },
+        {
+          "index": 4,
+          "number": 5,
+          "file": "frames/branch_exit/005.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 33407,
+            "transparentPixels": 64875,
+            "semitransparentPixels": 33351,
+            "visiblePixels": 27924,
+            "borderNonTransparentPixels": 0,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 0,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 29,
+              "y": 2,
+              "width": 281,
+              "height": 309
+            }
+          }
+        },
+        {
+          "index": 5,
+          "number": 6,
+          "file": "frames/branch_exit/006.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 33944,
+            "transparentPixels": 64025,
+            "semitransparentPixels": 33887,
+            "visiblePixels": 28413,
+            "borderNonTransparentPixels": 13,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 13,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 14,
+              "y": 4,
+              "width": 299,
+              "height": 309
+            }
+          }
+        },
+        {
+          "index": 6,
+          "number": 7,
+          "file": "frames/branch_exit/007.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 285
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 23
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 34430,
+            "transparentPixels": 63852,
+            "semitransparentPixels": 34372,
+            "visiblePixels": 28869,
+            "borderNonTransparentPixels": 3,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 3,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 305
+            }
+          }
+        },
+        {
+          "index": 7,
+          "number": 8,
+          "file": "frames/branch_exit/008.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 285
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 23
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 35980,
+            "transparentPixels": 61989,
+            "semitransparentPixels": 35909,
+            "visiblePixels": 29283,
+            "borderNonTransparentPixels": 3,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 3,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 6,
+              "width": 277,
+              "height": 295
+            }
+          }
+        },
+        {
+          "index": 8,
+          "number": 9,
+          "file": "frames/branch_exit/009.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36390,
+            "transparentPixels": 62206,
+            "semitransparentPixels": 36328,
+            "visiblePixels": 29481,
+            "borderNonTransparentPixels": 3,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 3,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 1,
+              "width": 312,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 9,
+          "number": 10,
+          "file": "frames/branch_exit/010.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36484,
+            "transparentPixels": 61798,
+            "semitransparentPixels": 36405,
+            "visiblePixels": 29886,
+            "borderNonTransparentPixels": 1,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 1,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 8,
+              "y": 3,
+              "width": 301,
+              "height": 311
+            }
+          }
+        },
+        {
+          "index": 10,
+          "number": 11,
+          "file": "frames/branch_exit/011.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37148,
+            "transparentPixels": 61448,
+            "semitransparentPixels": 37057,
+            "visiblePixels": 30165,
+            "borderNonTransparentPixels": 5,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 5,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 29,
+              "y": 5,
+              "width": 285,
+              "height": 309
+            }
+          }
+        },
+        {
+          "index": 11,
+          "number": 12,
+          "file": "frames/branch_exit/012.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 157,
+            "y": 286
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 22
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37972,
+            "transparentPixels": 60310,
+            "semitransparentPixels": 37853,
+            "visiblePixels": 29996,
+            "borderNonTransparentPixels": 10,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 10,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 11,
+              "width": 304,
+              "height": 287
+            }
+          }
+        },
+        {
+          "index": 12,
+          "number": 13,
+          "file": "frames/branch_exit/013.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 294
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 14
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 39222,
+            "transparentPixels": 59060,
+            "semitransparentPixels": 39126,
+            "visiblePixels": 30786,
+            "borderNonTransparentPixels": 13,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 13,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 31,
+              "y": 6,
+              "width": 283,
+              "height": 307
+            }
+          }
+        },
+        {
+          "index": 13,
+          "number": 14,
+          "file": "frames/branch_exit/014.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 294
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 14
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 39163,
+            "transparentPixels": 58806,
+            "semitransparentPixels": 39082,
+            "visiblePixels": 30824,
+            "borderNonTransparentPixels": 4,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 4,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 6,
+              "width": 313,
+              "height": 293
+            }
+          }
+        },
+        {
+          "index": 14,
+          "number": 15,
+          "file": "frames/branch_exit/015.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 295
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 13
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37999,
+            "transparentPixels": 60283,
+            "semitransparentPixels": 37889,
+            "visiblePixels": 30430,
+            "borderNonTransparentPixels": 9,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 9,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 0,
+              "width": 290,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 15,
+          "number": 16,
+          "file": "frames/branch_exit/016.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 157,
+            "y": 295
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 308
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": 13
+          },
+          "anchorConfidence": "high",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37828,
+            "transparentPixels": 60141,
+            "semitransparentPixels": 37685,
+            "visiblePixels": 30348,
+            "borderNonTransparentPixels": 11,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 11,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 2,
+              "width": 285,
+              "height": 311
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trunk_close_enter",
+      "label": "Affût serré au tronc — entrée",
+      "stance": "trunk_close",
+      "phase": "enter",
+      "atlas": "atlases/trunk_close_enter.png",
+      "atlasSha256": "d1c224ca37e7c338711debfa43f25530bdf0118325c3d3f4598d677ade6ffd19",
+      "atlasWidth": 1254,
+      "atlasHeight": 1254,
+      "frameWidth": 314,
+      "frameHeight": 314,
+      "frameCount": 16,
+      "columns": 4,
+      "rows": 4,
+      "order": "row-major",
+      "fps": 16,
+      "gridEdges": {
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ]
+      },
+      "gridStrategy": "round(i * atlasSize / 4); pad right/bottom with transparent pixels to ceil(atlasSize / 4), no resampling",
+      "hasAlpha": true,
+      "channels": 4,
+      "anchorType": "main_grip",
+      "anchorTarget": {
+        "x": 100,
+        "y": 80
+      },
+      "anchorNotes": [
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation."
+      ],
+      "anchorStatus": "Décalages de lecture mesurés; appuis des pieds ou de la main à vérifier avec la géométrie du moteur cible. PNG source non déplacés.",
+      "frames": [
+        {
+          "index": 0,
+          "number": 1,
+          "file": "frames/trunk_close_enter/001.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 103,
+            "y": 90
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -3,
+            "y": -10
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 40300,
+            "transparentPixels": 58296,
+            "semitransparentPixels": 40213,
+            "visiblePixels": 29365,
+            "borderNonTransparentPixels": 137,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 137,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 1,
+          "number": 2,
+          "file": "frames/trunk_close_enter/002.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 103,
+            "y": 87
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -3,
+            "y": -7
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 43158,
+            "transparentPixels": 55124,
+            "semitransparentPixels": 43074,
+            "visiblePixels": 28997,
+            "borderNonTransparentPixels": 140,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 140,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 2,
+          "number": 3,
+          "file": "frames/trunk_close_enter/003.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 103,
+            "y": 87
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -3,
+            "y": -7
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 41521,
+            "transparentPixels": 57075,
+            "semitransparentPixels": 41452,
+            "visiblePixels": 29029,
+            "borderNonTransparentPixels": 109,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 109,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 3,
+          "number": 4,
+          "file": "frames/trunk_close_enter/004.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 103,
+            "y": 86
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -3,
+            "y": -6
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 40105,
+            "transparentPixels": 58177,
+            "semitransparentPixels": 40033,
+            "visiblePixels": 28986,
+            "borderNonTransparentPixels": 73,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 73,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 9,
+              "width": 297,
+              "height": 305
+            }
+          }
+        },
+        {
+          "index": 4,
+          "number": 5,
+          "file": "frames/trunk_close_enter/005.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 103,
+            "y": 86
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -3,
+            "y": -6
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45120,
+            "transparentPixels": 53162,
+            "semitransparentPixels": 45078,
+            "visiblePixels": 28999,
+            "borderNonTransparentPixels": 229,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 229,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 5,
+          "number": 6,
+          "file": "frames/trunk_close_enter/006.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 103,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -3,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45041,
+            "transparentPixels": 52928,
+            "semitransparentPixels": 44996,
+            "visiblePixels": 28578,
+            "borderNonTransparentPixels": 202,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 202,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 6,
+          "number": 7,
+          "file": "frames/trunk_close_enter/007.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 103,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -3,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42625,
+            "transparentPixels": 55657,
+            "semitransparentPixels": 42587,
+            "visiblePixels": 28050,
+            "borderNonTransparentPixels": 193,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 193,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 7,
+          "number": 8,
+          "file": "frames/trunk_close_enter/008.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 41926,
+            "transparentPixels": 56043,
+            "semitransparentPixels": 41907,
+            "visiblePixels": 28167,
+            "borderNonTransparentPixels": 130,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 130,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 301,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 8,
+          "number": 9,
+          "file": "frames/trunk_close_enter/009.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42431,
+            "transparentPixels": 56165,
+            "semitransparentPixels": 42363,
+            "visiblePixels": 29205,
+            "borderNonTransparentPixels": 177,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 177,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 9,
+          "number": 10,
+          "file": "frames/trunk_close_enter/010.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 48882,
+            "transparentPixels": 49400,
+            "semitransparentPixels": 48804,
+            "visiblePixels": 28850,
+            "borderNonTransparentPixels": 207,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 207,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 10,
+          "number": 11,
+          "file": "frames/trunk_close_enter/011.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45917,
+            "transparentPixels": 52679,
+            "semitransparentPixels": 45860,
+            "visiblePixels": 28664,
+            "borderNonTransparentPixels": 189,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 189,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 11,
+          "number": 12,
+          "file": "frames/trunk_close_enter/012.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45928,
+            "transparentPixels": 52354,
+            "semitransparentPixels": 45843,
+            "visiblePixels": 28295,
+            "borderNonTransparentPixels": 148,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 148,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 305,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 12,
+          "number": 13,
+          "file": "frames/trunk_close_enter/013.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 102,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 44658,
+            "transparentPixels": 53624,
+            "semitransparentPixels": 44628,
+            "visiblePixels": 28363,
+            "borderNonTransparentPixels": 346,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 346,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 13,
+          "number": 14,
+          "file": "frames/trunk_close_enter/014.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45232,
+            "transparentPixels": 52737,
+            "semitransparentPixels": 45180,
+            "visiblePixels": 27748,
+            "borderNonTransparentPixels": 306,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 306,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 14,
+          "number": 15,
+          "file": "frames/trunk_close_enter/015.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42929,
+            "transparentPixels": 55353,
+            "semitransparentPixels": 42883,
+            "visiblePixels": 27115,
+            "borderNonTransparentPixels": 251,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 251,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 15,
+          "number": 16,
+          "file": "frames/trunk_close_enter/016.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 41683,
+            "transparentPixels": 56286,
+            "semitransparentPixels": 41660,
+            "visiblePixels": 26777,
+            "borderNonTransparentPixels": 204,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 204,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 299,
+              "height": 313
+            }
+          }
+        }
+      ],
+      "staticStance": {
+        "file": "stances/trunk_close.png",
+        "sourceFrame": 16
+      }
+    },
+    {
+      "id": "trunk_close_exit",
+      "label": "Affût serré au tronc — sortie",
+      "stance": "trunk_close",
+      "phase": "exit",
+      "atlas": "atlases/trunk_close_exit.png",
+      "atlasSha256": "b8847ea70aecc7055f35686b52fd9076a52f4808322821d9b1626f3b6dcc2e9e",
+      "atlasWidth": 1254,
+      "atlasHeight": 1254,
+      "frameWidth": 314,
+      "frameHeight": 314,
+      "frameCount": 16,
+      "columns": 4,
+      "rows": 4,
+      "order": "row-major",
+      "fps": 16,
+      "gridEdges": {
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ]
+      },
+      "gridStrategy": "round(i * atlasSize / 4); pad right/bottom with transparent pixels to ceil(atlasSize / 4), no resampling",
+      "hasAlpha": true,
+      "channels": 4,
+      "anchorType": "main_grip",
+      "anchorTarget": {
+        "x": 100,
+        "y": 80
+      },
+      "anchorNotes": [
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation."
+      ],
+      "anchorStatus": "Décalages de lecture mesurés; appuis des pieds ou de la main à vérifier avec la géométrie du moteur cible. PNG source non déplacés.",
+      "frames": [
+        {
+          "index": 0,
+          "number": 1,
+          "file": "frames/trunk_close_exit/001.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42965,
+            "transparentPixels": 55631,
+            "semitransparentPixels": 42907,
+            "visiblePixels": 32409,
+            "borderNonTransparentPixels": 92,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 92,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 29,
+              "y": 0,
+              "width": 285,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 1,
+          "number": 2,
+          "file": "frames/trunk_close_exit/002.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 98,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 2,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45120,
+            "transparentPixels": 53162,
+            "semitransparentPixels": 45086,
+            "visiblePixels": 32407,
+            "borderNonTransparentPixels": 157,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 157,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 21,
+              "width": 313,
+              "height": 293
+            }
+          }
+        },
+        {
+          "index": 2,
+          "number": 3,
+          "file": "frames/trunk_close_exit/003.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 40897,
+            "transparentPixels": 57699,
+            "semitransparentPixels": 40836,
+            "visiblePixels": 31468,
+            "borderNonTransparentPixels": 24,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 24,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 19,
+              "width": 314,
+              "height": 295
+            }
+          }
+        },
+        {
+          "index": 3,
+          "number": 4,
+          "file": "frames/trunk_close_exit/004.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 39839,
+            "transparentPixels": 58443,
+            "semitransparentPixels": 39802,
+            "visiblePixels": 30435,
+            "borderNonTransparentPixels": 64,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 64,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 30,
+              "width": 293,
+              "height": 284
+            }
+          }
+        },
+        {
+          "index": 4,
+          "number": 5,
+          "file": "frames/trunk_close_exit/005.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 44567,
+            "transparentPixels": 53715,
+            "semitransparentPixels": 44535,
+            "visiblePixels": 29785,
+            "borderNonTransparentPixels": 176,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 176,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 5,
+          "number": 6,
+          "file": "frames/trunk_close_exit/006.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 98,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 2,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 43734,
+            "transparentPixels": 54235,
+            "semitransparentPixels": 43699,
+            "visiblePixels": 29115,
+            "borderNonTransparentPixels": 154,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 154,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 6,
+          "number": 7,
+          "file": "frames/trunk_close_exit/007.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 39579,
+            "transparentPixels": 58703,
+            "semitransparentPixels": 39566,
+            "visiblePixels": 29250,
+            "borderNonTransparentPixels": 62,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 62,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 7,
+          "number": 8,
+          "file": "frames/trunk_close_exit/008.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 66
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 14
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42405,
+            "transparentPixels": 55564,
+            "semitransparentPixels": 42394,
+            "visiblePixels": 30085,
+            "borderNonTransparentPixels": 134,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 134,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 303,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 8,
+          "number": 9,
+          "file": "frames/trunk_close_exit/009.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 45023,
+            "transparentPixels": 53573,
+            "semitransparentPixels": 44971,
+            "visiblePixels": 30497,
+            "borderNonTransparentPixels": 252,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 252,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 9,
+          "number": 10,
+          "file": "frames/trunk_close_exit/010.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42860,
+            "transparentPixels": 55422,
+            "semitransparentPixels": 42810,
+            "visiblePixels": 30932,
+            "borderNonTransparentPixels": 129,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 129,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 10,
+          "number": 11,
+          "file": "frames/trunk_close_exit/011.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 43483,
+            "transparentPixels": 55113,
+            "semitransparentPixels": 43422,
+            "visiblePixels": 30846,
+            "borderNonTransparentPixels": 96,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 96,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 11,
+          "number": 12,
+          "file": "frames/trunk_close_exit/012.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 67
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 44426,
+            "transparentPixels": 53856,
+            "semitransparentPixels": 44403,
+            "visiblePixels": 30564,
+            "borderNonTransparentPixels": 121,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 121,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 289,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 12,
+          "number": 13,
+          "file": "frames/trunk_close_exit/013.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 98,
+            "y": 65
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 2,
+            "y": 15
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42632,
+            "transparentPixels": 55650,
+            "semitransparentPixels": 42607,
+            "visiblePixels": 30504,
+            "borderNonTransparentPixels": 211,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 211,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 13,
+          "number": 14,
+          "file": "frames/trunk_close_exit/014.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 66
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 14
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42498,
+            "transparentPixels": 55471,
+            "semitransparentPixels": 42452,
+            "visiblePixels": 30571,
+            "borderNonTransparentPixels": 136,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 136,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 14,
+          "number": 15,
+          "file": "frames/trunk_close_exit/015.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 66
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 14
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 41913,
+            "transparentPixels": 56369,
+            "semitransparentPixels": 41895,
+            "visiblePixels": 31135,
+            "borderNonTransparentPixels": 121,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 121,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 15,
+          "number": 16,
+          "file": "frames/trunk_close_exit/016.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 65
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": 15
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42958,
+            "transparentPixels": 55011,
+            "semitransparentPixels": 42918,
+            "visiblePixels": 30861,
+            "borderNonTransparentPixels": 57,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 57,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 299,
+              "height": 313
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trunk_open_enter",
+      "label": "Appui ouvert sur tronc — entrée",
+      "stance": "trunk_open",
+      "phase": "enter",
+      "atlas": "atlases/trunk_open_enter.png",
+      "atlasSha256": "dd29387109478a2562d1e44cf7ea368dfa54be39f97da9bdbceb5d8a49745352",
+      "atlasWidth": 1254,
+      "atlasHeight": 1254,
+      "frameWidth": 314,
+      "frameHeight": 314,
+      "frameCount": 16,
+      "columns": 4,
+      "rows": 4,
+      "order": "row-major",
+      "fps": 16,
+      "gridEdges": {
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ]
+      },
+      "gridStrategy": "round(i * atlasSize / 4); pad right/bottom with transparent pixels to ceil(atlasSize / 4), no resampling",
+      "hasAlpha": true,
+      "channels": 4,
+      "anchorType": "main_grip",
+      "anchorTarget": {
+        "x": 100,
+        "y": 80
+      },
+      "anchorNotes": [
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation."
+      ],
+      "anchorStatus": "Décalages de lecture mesurés; appuis des pieds ou de la main à vérifier avec la géométrie du moteur cible. PNG source non déplacés.",
+      "frames": [
+        {
+          "index": 0,
+          "number": 1,
+          "file": "frames/trunk_open_enter/001.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 101,
+            "y": 87
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -1,
+            "y": -7
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37214,
+            "transparentPixels": 61382,
+            "semitransparentPixels": 37135,
+            "visiblePixels": 29625,
+            "borderNonTransparentPixels": 37,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 37,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 59,
+              "y": 0,
+              "width": 247,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 1,
+          "number": 2,
+          "file": "frames/trunk_open_enter/002.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 101,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": -1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37615,
+            "transparentPixels": 60667,
+            "semitransparentPixels": 37570,
+            "visiblePixels": 29039,
+            "borderNonTransparentPixels": 69,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 69,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 11,
+              "width": 299,
+              "height": 303
+            }
+          }
+        },
+        {
+          "index": 2,
+          "number": 3,
+          "file": "frames/trunk_open_enter/003.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 100,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 34681,
+            "transparentPixels": 63915,
+            "semitransparentPixels": 34618,
+            "visiblePixels": 28162,
+            "borderNonTransparentPixels": 10,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 10,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 13,
+              "width": 314,
+              "height": 301
+            }
+          }
+        },
+        {
+          "index": 3,
+          "number": 4,
+          "file": "frames/trunk_open_enter/004.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36287,
+            "transparentPixels": 61995,
+            "semitransparentPixels": 36237,
+            "visiblePixels": 28815,
+            "borderNonTransparentPixels": 80,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 80,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 15,
+              "width": 283,
+              "height": 299
+            }
+          }
+        },
+        {
+          "index": 4,
+          "number": 5,
+          "file": "frames/trunk_open_enter/005.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 100,
+            "y": 83
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -3
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37385,
+            "transparentPixels": 60897,
+            "semitransparentPixels": 37332,
+            "visiblePixels": 28670,
+            "borderNonTransparentPixels": 42,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 42,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 47,
+              "y": 0,
+              "width": 267,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 5,
+          "number": 6,
+          "file": "frames/trunk_open_enter/006.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 100,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 40198,
+            "transparentPixels": 57771,
+            "semitransparentPixels": 40171,
+            "visiblePixels": 30244,
+            "borderNonTransparentPixels": 148,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 148,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 6,
+          "number": 7,
+          "file": "frames/trunk_open_enter/007.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 100,
+            "y": 83
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -3
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 39009,
+            "transparentPixels": 59273,
+            "semitransparentPixels": 38946,
+            "visiblePixels": 30346,
+            "borderNonTransparentPixels": 57,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 57,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 7,
+          "number": 8,
+          "file": "frames/trunk_open_enter/008.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 43299,
+            "transparentPixels": 54670,
+            "semitransparentPixels": 43268,
+            "visiblePixels": 30116,
+            "borderNonTransparentPixels": 101,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 101,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 297,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 8,
+          "number": 9,
+          "file": "frames/trunk_open_enter/009.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 38644,
+            "transparentPixels": 59952,
+            "semitransparentPixels": 38558,
+            "visiblePixels": 29688,
+            "borderNonTransparentPixels": 25,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 25,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 1,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 9,
+          "number": 10,
+          "file": "frames/trunk_open_enter/010.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 40512,
+            "transparentPixels": 57770,
+            "semitransparentPixels": 40422,
+            "visiblePixels": 29502,
+            "borderNonTransparentPixels": 78,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 78,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 10,
+          "number": 11,
+          "file": "frames/trunk_open_enter/011.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 38098,
+            "transparentPixels": 60498,
+            "semitransparentPixels": 38035,
+            "visiblePixels": 29817,
+            "borderNonTransparentPixels": 36,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 36,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 11,
+          "number": 12,
+          "file": "frames/trunk_open_enter/012.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 99,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 40344,
+            "transparentPixels": 57938,
+            "semitransparentPixels": 40289,
+            "visiblePixels": 29400,
+            "borderNonTransparentPixels": 60,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 60,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 303,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 12,
+          "number": 13,
+          "file": "frames/trunk_open_enter/013.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 99,
+            "y": 84
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 1,
+            "y": -4
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37860,
+            "transparentPixels": 60422,
+            "semitransparentPixels": 37808,
+            "visiblePixels": 28077,
+            "borderNonTransparentPixels": 66,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 66,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 314,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 13,
+          "number": 14,
+          "file": "frames/trunk_open_enter/014.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 38990,
+            "transparentPixels": 58979,
+            "semitransparentPixels": 38942,
+            "visiblePixels": 27636,
+            "borderNonTransparentPixels": 110,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 110,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 14,
+          "number": 15,
+          "file": "frames/trunk_open_enter/015.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36154,
+            "transparentPixels": 62128,
+            "semitransparentPixels": 36124,
+            "visiblePixels": 27094,
+            "borderNonTransparentPixels": 61,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 61,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 0,
+              "width": 311,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 15,
+          "number": 16,
+          "file": "frames/trunk_open_enter/016.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 100,
+            "y": 85
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 0,
+            "y": -5
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 38232,
+            "transparentPixels": 59737,
+            "semitransparentPixels": 38192,
+            "visiblePixels": 26812,
+            "borderNonTransparentPixels": 95,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 95,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 303,
+              "height": 313
+            }
+          }
+        }
+      ],
+      "staticStance": {
+        "file": "stances/trunk_open.png",
+        "sourceFrame": 16
+      }
+    },
+    {
+      "id": "trunk_open_exit",
+      "label": "Appui ouvert sur tronc — sortie",
+      "stance": "trunk_open",
+      "phase": "exit",
+      "atlas": "atlases/trunk_open_exit.png",
+      "atlasSha256": "4b4a0a751c9654b60abaed0934e999a50f0c262c7c127c6415013cd3ec4614ca",
+      "atlasWidth": 1254,
+      "atlasHeight": 1254,
+      "frameWidth": 314,
+      "frameHeight": 314,
+      "frameCount": 16,
+      "columns": 4,
+      "rows": 4,
+      "order": "row-major",
+      "fps": 16,
+      "gridEdges": {
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ]
+      },
+      "gridStrategy": "round(i * atlasSize / 4); pad right/bottom with transparent pixels to ceil(atlasSize / 4), no resampling",
+      "hasAlpha": true,
+      "channels": 4,
+      "anchorType": "main_grip",
+      "anchorTarget": {
+        "x": 100,
+        "y": 80
+      },
+      "anchorNotes": [
+        "This source places the main fist farther left than other atlases; use hand-only ROI x40..94,y45..129 to exclude helmet and forearm.",
+        "Approximate main-hand anchor measured from the screen-left fist silhouette; static hand registration should be visually checked with target tree geometry.",
+        "Preserves all hip, knee, head and free-arm movement; do not register on whole-body bounding boxes.",
+        "Entry and exit are separately drawn; mask, arm, torso and foot shapes can differ across the join even after translation.",
+        "Default preview reversible exit avoids cross-atlas endpoint shape mismatches; this dedicated exit remains an alternate drawing sequence."
+      ],
+      "anchorStatus": "Décalages de lecture mesurés; appuis des pieds ou de la main à vérifier avec la géométrie du moteur cible. PNG source non déplacés.",
+      "frames": [
+        {
+          "index": 0,
+          "number": 1,
+          "file": "frames/trunk_open_exit/001.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 74,
+            "y": 95
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 26,
+            "y": -15
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 42913,
+            "transparentPixels": 55683,
+            "semitransparentPixels": 42758,
+            "visiblePixels": 33481,
+            "borderNonTransparentPixels": 19,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 19,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 27,
+              "y": 15,
+              "width": 287,
+              "height": 299
+            }
+          }
+        },
+        {
+          "index": 1,
+          "number": 2,
+          "file": "frames/trunk_open_exit/002.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 73,
+            "y": 95
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 27,
+            "y": -15
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 41116,
+            "transparentPixels": 57166,
+            "semitransparentPixels": 40967,
+            "visiblePixels": 32718,
+            "borderNonTransparentPixels": 51,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 51,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 15,
+              "width": 313,
+              "height": 299
+            }
+          }
+        },
+        {
+          "index": 2,
+          "number": 3,
+          "file": "frames/trunk_open_exit/003.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 0,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 74,
+            "y": 95
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 26,
+            "y": -15
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 38161,
+            "transparentPixels": 60435,
+            "semitransparentPixels": 38029,
+            "visiblePixels": 31044,
+            "borderNonTransparentPixels": 28,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 28,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 17,
+              "width": 314,
+              "height": 297
+            }
+          }
+        },
+        {
+          "index": 3,
+          "number": 4,
+          "file": "frames/trunk_open_exit/004.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 0,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 74,
+            "y": 95
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 26,
+            "y": -15
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36710,
+            "transparentPixels": 61572,
+            "semitransparentPixels": 36584,
+            "visiblePixels": 29690,
+            "borderNonTransparentPixels": 30,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 30,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 17,
+              "width": 295,
+              "height": 297
+            }
+          }
+        },
+        {
+          "index": 4,
+          "number": 5,
+          "file": "frames/trunk_open_exit/005.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 74,
+            "y": 94
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 26,
+            "y": -14
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36130,
+            "transparentPixels": 62152,
+            "semitransparentPixels": 36056,
+            "visiblePixels": 29165,
+            "borderNonTransparentPixels": 77,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 77,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 41,
+              "y": 0,
+              "width": 273,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 5,
+          "number": 6,
+          "file": "frames/trunk_open_exit/006.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 74,
+            "y": 94
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 26,
+            "y": -14
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36475,
+            "transparentPixels": 61494,
+            "semitransparentPixels": 36397,
+            "visiblePixels": 29040,
+            "borderNonTransparentPixels": 104,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 104,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 3,
+              "y": 0,
+              "width": 310,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 6,
+          "number": 7,
+          "file": "frames/trunk_open_exit/007.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 314,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 75,
+            "y": 93
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 25,
+            "y": -13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36765,
+            "transparentPixels": 61517,
+            "semitransparentPixels": 36671,
+            "visiblePixels": 29001,
+            "borderNonTransparentPixels": 58,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 58,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 7,
+          "number": 8,
+          "file": "frames/trunk_open_exit/008.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 314,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 76,
+            "y": 93
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 24,
+            "y": -13
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37448,
+            "transparentPixels": 60521,
+            "semitransparentPixels": 37363,
+            "visiblePixels": 29206,
+            "borderNonTransparentPixels": 34,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 34,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 295,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 8,
+          "number": 9,
+          "file": "frames/trunk_open_exit/009.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 76,
+            "y": 92
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 24,
+            "y": -12
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 35872,
+            "transparentPixels": 62724,
+            "semitransparentPixels": 35785,
+            "visiblePixels": 28938,
+            "borderNonTransparentPixels": 57,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 57,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 17,
+              "y": 0,
+              "width": 297,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 9,
+          "number": 10,
+          "file": "frames/trunk_open_exit/010.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 76,
+            "y": 89
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 24,
+            "y": -9
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 34719,
+            "transparentPixels": 63563,
+            "semitransparentPixels": 34653,
+            "visiblePixels": 28564,
+            "borderNonTransparentPixels": 60,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 60,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 314
+            }
+          }
+        },
+        {
+          "index": 10,
+          "number": 11,
+          "file": "frames/trunk_open_exit/011.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 627,
+            "width": 314,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 77,
+            "y": 88
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 23,
+            "y": -8
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 34501,
+            "transparentPixels": 64095,
+            "semitransparentPixels": 34403,
+            "visiblePixels": 28538,
+            "borderNonTransparentPixels": 25,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 25,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 0,
+              "width": 301,
+              "height": 306
+            }
+          }
+        },
+        {
+          "index": 11,
+          "number": 12,
+          "file": "frames/trunk_open_exit/012.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 627,
+            "width": 313,
+            "height": 314
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 0
+          },
+          "pivot": {
+            "x": 77,
+            "y": 88
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 23,
+            "y": -8
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 35846,
+            "transparentPixels": 62436,
+            "semitransparentPixels": 35801,
+            "visiblePixels": 29469,
+            "borderNonTransparentPixels": 8,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 8,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 21,
+              "y": 1,
+              "width": 278,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 12,
+          "number": 13,
+          "file": "frames/trunk_open_exit/013.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 77,
+            "y": 90
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 23,
+            "y": -10
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 36486,
+            "transparentPixels": 61796,
+            "semitransparentPixels": 36428,
+            "visiblePixels": 30071,
+            "borderNonTransparentPixels": 27,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 27,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 308,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 13,
+          "number": 14,
+          "file": "frames/trunk_open_exit/014.png",
+          "atlasRect": {
+            "x": 314,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 76,
+            "y": 89
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 24,
+            "y": -9
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37357,
+            "transparentPixels": 60612,
+            "semitransparentPixels": 37289,
+            "visiblePixels": 30445,
+            "borderNonTransparentPixels": 56,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 56,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 313,
+              "height": 313
+            }
+          }
+        },
+        {
+          "index": 14,
+          "number": 15,
+          "file": "frames/trunk_open_exit/015.png",
+          "atlasRect": {
+            "x": 627,
+            "y": 941,
+            "width": 314,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 76,
+            "y": 90
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 24,
+            "y": -10
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 37784,
+            "transparentPixels": 60498,
+            "semitransparentPixels": 37711,
+            "visiblePixels": 30764,
+            "borderNonTransparentPixels": 2,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 2,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 1,
+              "y": 6,
+              "width": 313,
+              "height": 295
+            }
+          }
+        },
+        {
+          "index": 15,
+          "number": 16,
+          "file": "frames/trunk_open_exit/016.png",
+          "atlasRect": {
+            "x": 941,
+            "y": 941,
+            "width": 313,
+            "height": 313
+          },
+          "exportedFrameSize": {
+            "width": 314,
+            "height": 314
+          },
+          "transparentPadding": {
+            "top": 0,
+            "left": 0,
+            "right": 1,
+            "bottom": 1
+          },
+          "pivot": {
+            "x": 76,
+            "y": 89
+          },
+          "anchorTarget": {
+            "x": 100,
+            "y": 80
+          },
+          "drawOffset": {
+            "x": 24,
+            "y": -9
+          },
+          "anchorConfidence": "approximate",
+          "durationMs": 62.5,
+          "alphaInspection": {
+            "nonTransparentPixels": 38601,
+            "transparentPixels": 59368,
+            "semitransparentPixels": 38524,
+            "visiblePixels": 31083,
+            "borderNonTransparentPixels": 13,
+            "borderVisiblePixels": 0,
+            "borderTracePixels": 13,
+            "borderOpaquePixels": 0,
+            "borderWarningAlphaThreshold": 16,
+            "alphaMin": 0,
+            "alphaMax": 255,
+            "occupiedBounds": {
+              "x": 0,
+              "y": 0,
+              "width": 295,
+              "height": 297
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -120,6 +120,7 @@ import sprintStylesV81 from "./HomeworldSprintV81.module.css";
 
 export interface HomeworldHubProps {
   save: SaveGame;
+  gauntletVariantId?: string;
   selectedShipId: ShipId;
   suspended: boolean;
   navigation?: ReactNode;
@@ -157,7 +158,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, recoveryStorage, ephemeralSession = false, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, gauntletVariantId, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, recoveryStorage, ephemeralSession = false, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1388,7 +1389,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           <span className={styles.heroVisual} style={youthWelcome ? { transform: "none" } : undefined}>
           {youthWelcome ? (motionAssetsV74.ready ? <HomeworldYouthMotionV74 seconds={phase} moving={youthSpeedV74 > 5} velocity={youthMotionV74.velocity} lastDirection={youthMotionV74.direction} distanceWorld={youthMotionV74.distanceWorld} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} /> : <HomeworldYouthMotionV72 seconds={0} moving={false} facing={actor.facing} height={HOMEWORLD_YOUTH_PLATE_V69.physicalHeight} />) : heroPlate.status === "custom-modular-body" ? <HomeworldModularHunter className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined} morphId={save.appearance.bodyMorphId} dreadStyleId={save.appearance.dreadStyleId} appearance={save.appearance} dreadAngles={dreadAngles}
-            showArmor armorId={save.loadout.armorId} hasWristblades={save.loadout.weaponIds.includes("wristblades")} /> : <img
+            showArmor armorId={save.loadout.armorId} hasWristblades={save.loadout.weaponIds.includes("wristblades")} gauntletVariantId={gauntletVariantId} /> : <img
             className={styles.heroPlate}
             style={heroPlacement ? { inset: "auto", ...heroPlacement } : undefined}
             src={heroPlate.src}

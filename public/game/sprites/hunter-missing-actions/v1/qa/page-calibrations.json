@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "calibrations": [
+    {
+      "sheetId": "combo_finisher_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-f241a6ad-de73-481e-b2e2-7ea8e6e2bcdd.png",
+      "sourceSha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62",
+      "status": "parent-adopted-for-draft-preview",
+      "basis": "Raw-cell coordinates, alpha>=128, bottom8-row two-foot candidate centroids; compare A16 to B01",
+      "drawOffset": {
+        "x": 20.861091636008922,
+        "y": 4
+      },
+      "equivalentPivotAdjustment": {
+        "x": -20.861091636008922,
+        "y": -4
+      },
+      "applyTo": "Every frame of this B page, once, with constant scale",
+      "changesSourcePixels": false,
+      "changesIndividualFrameMovement": false,
+      "anchors": {
+        "A16": {
+          "midpointX": 156.4098473963776,
+          "floorY": 303
+        },
+        "B01": {
+          "midpointX": 135.54875576036866,
+          "floorY": 299
+        }
+      },
+      "evidence": "combo-finisher-b-corrected-qa.json",
+      "review": "combo-finisher-b-corrected-review.md",
+      "artisticStatus": "draft_requires_human_review"
+    },
+    {
+      "sheetId": "heavy_strike_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-46f3ae14-e17a-41bb-a812-8ba72b944553.png",
+      "sourceSha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3",
+      "status": "parent-adopted-for-draft-preview",
+      "basis": "A16 and corrected B01 boot contact regions at alpha>=128; exclude blade tip below footline. Back foot y292->298 and front foot y291->297.",
+      "drawOffset": {
+        "x": 0,
+        "y": -6
+      },
+      "equivalentPivotAdjustment": {
+        "x": 0,
+        "y": 6
+      },
+      "applyTo": "Every frame of this B page, once, with constant scale",
+      "changesSourcePixels": false,
+      "changesIndividualFrameMovement": false,
+      "evidence": "batch-03-heavy-guard-qa.json",
+      "review": "batch-03-heavy-guard-review.md",
+      "residualArtisticLimitation": "B has a more open stance and the rear boot flattens; no horizontal or scale correction is applied to conceal this visible pose change. Junction is not certified seamless.",
+      "artisticStatus": "draft_requires_human_review"
+    }
+  ]
+}

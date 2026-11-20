@@ -4541,7 +4541,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <Suspense fallback={<DeferredGameScreen />}>
           <section className="screen panel-screen" hidden={screen !== "homeworld"} inert={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}>
             <div className="screen-safe">
-              <HomeworldHub key={save.createdAt} save={save} selectedShipId={selectedShipId} arrivalV67={homeworldArrivalV67}
+              <HomeworldHub key={save.createdAt} save={save} gauntletVariantId={hunterGauntlet.equippedId} selectedShipId={selectedShipId} arrivalV67={homeworldArrivalV67}
                 navigation={<>
                 {!save.prologue && <button type="button" className="ghost-button" onClick={() => openMap("homeworld")}>Carte galactique</button>}
                 <button type="button" className="ghost-button" onClick={() => {
@@ -4577,7 +4577,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
       {screen === "homeworld-region-v68" && hydrated && save.homeworldRegionV68 && <section inert={settingsOpen} data-homeworld-region-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
-          <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}
+          <HomeworldRegionV68 contractsValue={save.homeworld.contractsV68} key={save.createdAt+":"+save.homeworldRegionV68.runId} save={save} gauntletVariantId={hunterGauntlet.equippedId} regionId={save.homeworldRegionV68.regionId} checkpoint={save.homeworldRegionV68}
             suspended={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy} onCheckpoint={checkpointHomeworldRegionV68}
             onFieldEvent={fieldHomeworldRegionV68} onBibleSceneAction={bibleActionHomeworldV86} onReachCity={reachCityHomeworldRegionV68} onOpenSettings={() => setSettingsOpen(true)} />
         </Suspense>
@@ -4585,7 +4585,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       {screen === "homeworld-passage-v67" && hydrated && save.homeworldPassageV67 && <section inert={settingsOpen} data-homeworld-passage-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
           <HomeworldPassageV67 key={save.createdAt + ":" + save.homeworldPassageV67.journeyId + ":" + save.homeworldPassageV67.direction}
-            save={save} regionId={save.homeworldPassageV67.regionId} checkpoint={save.homeworldPassageV67} direction={save.homeworldPassageV67.direction}
+            save={save} gauntletVariantId={hunterGauntlet.equippedId} regionId={save.homeworldPassageV67.regionId} checkpoint={save.homeworldPassageV67} direction={save.homeworldPassageV67.direction}
             suspended={settingsOpen || Boolean(archiveRecoveryIssue) || archiveTransferBusy}
             onCheckpoint={checkpointHomeworldPassageV67} onReachBiome={reachHomeworldBiomeV67} onReachCity={reachHomeworldCityV67}
             onOpenSettings={() => setSettingsOpen(true)} />

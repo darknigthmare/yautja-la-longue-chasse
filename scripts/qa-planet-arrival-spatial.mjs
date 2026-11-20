@@ -1662,8 +1662,10 @@ async function capturePreparedMoment(label, prepared, target = page, attempt = 1
     // Request an ordinary full-viewport renderer copy concurrently. It asks
     // Chromium to present the fresh paint promptly; its pixels never replace
     // the calibrated X11 source or qualify the final photograph. Do not await
-    // its PNG/transport before the live after-observation.
-    const parameters = { format: 'png', fromSurface: true, captureBeyondViewport: false, optimizeForSpeed: true };
+    // its encoding/transport before the live after-observation.
+    // This intentionally lossy auxiliary response is never saved or used as
+    // visual/pixel evidence; the calibrated X11 copy and native PNG proofs stay unchanged.
+    const parameters = { format: 'jpeg', quality: 1, fromSurface: true, captureBeyondViewport: false, optimizeForSpeed: true };
     acquisition.auxiliaryComposition = {
       kind: 'native-cdp-full-viewport-composition-request', method: 'Page.captureScreenshot', parameters,
       evidence: false, pixelsUsed: false,

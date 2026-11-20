@@ -1,0 +1,497 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-death-support-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "death-support-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "death_a",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/death_a.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "death_b",
+      "src": "/game/sprites/hunter-support-actions/v1/import_atlases/death_b.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "death_action",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "death_a",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            313.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            313.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            313.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            313.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            311.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            311.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            311.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            311.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            308.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            301.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_a",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            302.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            280.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            280.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            282.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            280.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            289.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            290.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            290.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            290.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            293.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            293.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            292.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            293.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            293.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            293.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            293.5
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "death_b",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            293.5
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}

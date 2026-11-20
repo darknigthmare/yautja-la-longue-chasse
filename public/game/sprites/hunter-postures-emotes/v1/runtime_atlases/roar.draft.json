@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-roar-draft-v2",
+  "characterId": "reference-yautja",
+  "variantId": "roar-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "roar_enter",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/roar_enter.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "roar_idle",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/roar_idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "roar_exit",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/roar_exit.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "roar_enter",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.322829,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159.020718,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.517268,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.680641,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.413469,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            160.214432,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.823143,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.212919,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.713842,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.475988,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.758505,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.659849,
+            306
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.856915,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            161.365134,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            160.773558,
+            307
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "roar_idle",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.173013,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.670989,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.125473,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.433255,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.484219,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.158241,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.104725,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.07671,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.419625,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.971472,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.605868,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.783632,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.406911,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.165307,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.259077,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.075928,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.259077,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.165307,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            158.406911,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.783632,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.605868,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            157.971472,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.419625,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.07671,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.104725,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.158241,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.484219,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.433255,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.125473,
+            307
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "roar_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            157.670989,
+            307
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "roar_exit",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            161.963769,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            161.680376,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            162.648265,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            162.064577,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            161.831215,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            161.458085,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            161.733114,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            160.687574,
+            303
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            162.00341,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            161.342271,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            161.395238,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            160.761866,
+            305
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            162.17765,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            161.592808,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            163.328704,
+            304
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_exit",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            162.473951,
+            304
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "roar_exit_reversible",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            160.773558,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            161.365134,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.856915,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159.659849,
+            306
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.758505,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.475988,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            158.713842,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159.212919,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            158.823143,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            160.214432,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.413469,
+            308
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159.680641,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.517268,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159.020718,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            158.322829,
+            307
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "roar_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            307
+          ],
+          "durationTicks": 5
+        }
+      ]
+    }
+  ]
+}
