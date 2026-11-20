@@ -59,6 +59,7 @@ export type GameSfxId =
   | "mask-off"
   | "weapon-switch"
   | "medicomp"
+  | "armor-repair"
   | "netgun"
   | "snare"
   | "enemy-alert"
@@ -513,6 +514,9 @@ export class GameAudio {
       case "medicomp":
         this.medicomp();
         break;
+      case "armor-repair":
+        this.armorRepair();
+        break;
       case "netgun":
         this.netgun();
         break;
@@ -651,6 +655,19 @@ export class GameAudio {
         filterFrequency: 2_200,
       });
     });
+  }
+
+  armorRepair(): void {
+    if (this.fileAudio.playSfx("armor-repair")) return;
+    const now = this.readyTime();
+    if (now === null) return;
+
+    // Follow the Medicomp before the cleaner closes and vents.
+    const at = now + .36;
+    this.tone(245, { at, duration: .09, gain: .06, type: "triangle" });
+    this.noise({ at: at + .08, duration: .53, gain: .065, filterType: "bandpass", filterFrequency: 1_140, endFilterFrequency: 360 });
+    this.tone(115, { at: at + .09, duration: .48, endFrequency: 79, gain: .027, type: "sine" });
+    this.tone(283, { at: at + .61, duration: .065, gain: .045, type: "triangle" });
   }
 
   netgun(): void {

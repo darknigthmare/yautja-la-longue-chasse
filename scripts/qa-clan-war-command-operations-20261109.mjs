@@ -15,8 +15,10 @@ const sha=value=>createHash('sha256').update(value).digest('hex');
 const domainBuild=await build({stdin:{contents:"export {DEFAULT_WAR_RULES_V6} from './app/game/systems/clanWarBibleV6';export {createWarOperationsV115,commandStealthV115} from './app/game/systems/clanWarOperationsV115';",resolveDir:root},bundle:true,platform:'node',format:'esm',write:false,logLevel:'warning'});
 const domain=await import('data:text/javascript;base64,'+Buffer.from(domainBuild.outputFiles[0].contents).toString('base64'));
 const startingWorld=domain.createWarOperationsV115(domain.DEFAULT_WAR_RULES_V6);
-const firstTeamUpkeep=domain.DEFAULT_WAR_RULES_V6.units.find(unit=>unit.id===startingWorld.teams[0].unitId).upkeepRav;
-const sourceNames=['app/game/ClanWarOperationsV115.tsx','app/game/ClanWarOperationsV115.module.css','app/game/ClanWarCommandOverlay.tsx','app/game/ClanWarCommandOverlay.module.css','app/game/systems/clanWarOperationsArchive.ts','app/game/systems/clanWarOperationsV115.ts','app/game/systems/clanWarFenceV94.ts','app/game/systems/clanWarStealthAcousticsV115.ts','app/game/systems/sceneAudio.ts','app/game/audioFiles.ts','app/game/sound.ts','tests/browser/clan-war-v151-four-modes.fixture.tsx','public/audio/manifest.json','public/audio/sfx/footstep/v54.wav','scripts/qa-clan-war-command-operations-20261109.mjs'];
+const deployedTeams=startingWorld.teams.slice(0,2);
+const deployedUnits=deployedTeams.map(team=>domain.DEFAULT_WAR_RULES_V6.units.find(unit=>unit.id===team.unitId));
+const formationUpkeep=deployedUnits.reduce((total,unit)=>total+unit.upkeepRav,0);
+const sourceNames=['app/game/ClanWarOperationsV115.tsx','app/game/ClanWarOperationsV115.module.css','app/game/ClanWarFieldShortcuts.tsx','app/game/systems/clanWarFieldControls.ts','app/game/ClanWarCommandOverlay.tsx','app/game/ClanWarCommandOverlay.module.css','app/game/systems/clanWarOperationsArchive.ts','app/game/systems/clanWarOperationsV115.ts','app/game/systems/clanWarFenceV94.ts','app/game/systems/clanWarStealthAcousticsV115.ts','app/game/systems/sceneAudio.ts','app/game/audioFiles.ts','app/game/sound.ts','tests/browser/clan-war-v151-four-modes.fixture.tsx','public/audio/manifest.json','public/audio/sfx/footstep/v54.wav','scripts/qa-clan-war-command-operations-20261109.mjs'];
 const footstepPath='/audio/sfx/footstep/v54.wav';
 const footstepEntry=JSON.parse(await fs.readFile(path.join(root,'public/audio/manifest.json'),'utf8')).entries.find(entry=>entry.id==='footstep');
 const footstep=footstepEntry.sources.find(source=>new URL(source.url,'http://localhost').pathname===footstepPath);
@@ -90,6 +92,7 @@ try{
  await dialog.locator('[data-war-briefing-step-button="teams"]').click();
  for(const choice of await dialog.locator('input[type="checkbox"]').all())await choice.uncheck();
  await dialog.locator('input[type="checkbox"]').first().check();
+ await dialog.locator('input[type="checkbox"]').nth(1).check();
  assert.equal(await dialog.getByRole('button',{name:/^Lancer :/}).isEnabled(),true);
  await screenshot('01b-briefing-teams-desktop.png');
  await page.keyboard.press('Escape');await dialog.waitFor({state:'hidden'});assert.equal(await archive(),null);
@@ -97,16 +100,60 @@ try{
  await operations.locator('[data-war-command="briefing"]').click();await dialog.waitFor();
  await dialog.locator('[data-war-briefing-step-button="teams"]').click();
  assert.equal(await dialog.locator('input[type="checkbox"]').first().isChecked(),true);
+ assert.equal(await dialog.locator('input[type="checkbox"]').nth(1).isChecked(),true);
  await dialog.getByRole('button',{name:/^Lancer :/}).click();await dialog.waitFor({state:'hidden'});
  await page.waitForFunction(key=>{const value=JSON.parse(localStorage.getItem(key)||'null');return value?.active?.mode==='rts';},report.canonicalKey);
- const started=JSON.parse(await archive());assert.equal(started.rav,Number(await lab.getAttribute('data-initial-rav'))-firstTeamUpkeep);
+ const started=JSON.parse(await archive());assert.equal(started.rav,Number(await lab.getAttribute('data-initial-rav'))-formationUpkeep);
+ assert.deepEqual(started.active.teamIds,deployedTeams.map(team=>team.id));
  const missionId=started.active.id;assert.ok(missionId);await operations.getByRole('region',{name:'Mission jouable active'}).waitFor();
- pass('Briefing launches through the real V2 archive, spends exactly the selected unit’s source upkeep and reveals actual RTS terrain',{missionId,rav:started.rav,sourceUpkeepRav:firstTeamUpkeep});
+ pass('Briefing launches two squads through the real V2 archive and debits their exact source upkeep',{missionId,rav:started.rav,sourceUpkeepRav:formationUpkeep});
  await screenshot('02-rts-field-desktop.png');
  await operations.getByRole('button',{name:'Passer en ordres alternés',exact:true}).click();
  await page.waitForFunction(key=>JSON.parse(localStorage.getItem(key)||'null')?.active?.rts?.realtime===false,report.canonicalKey);
  await operations.getByRole('button',{name:'Activer la bataille en temps réel',exact:true}).waitFor();
  pass('Actual player input pauses realtime through the original persistent RTS command');
+ const rtsMap=operations.getByRole('group',{name:'Champ de bataille tactique 9 colonnes par 6 lignes',exact:true});
+ const prefs=operations.locator('details').filter({has:page.locator('summary',{hasText:'Personnaliser les commandes clavier'})});
+ const openPrefs=()=>prefs.locator('summary').click();
+ const leftKey=prefs.getByRole('combobox',{name:'Aller à gauche',exact:true});
+ const waitKey=prefs.getByRole('combobox',{name:'Attendre ou tenir la position',exact:true});
+ const lockedArchive=()=>page.evaluate(name=>navigator.locks.request(name,()=>undefined),report.canonicalKey+'.write');
+ const teamButton=index=>operations.getByRole('button',{name:deployedUnits[index].name+' · PV',exact:false});
+ const archivedActor=(world,index)=>world.active.rts.actors.find(actor=>actor.teamId===deployedTeams[index].id);
+ await openPrefs();await leftKey.selectOption('j');
+ await waitKey.selectOption('j');
+ await prefs.getByText('Cette touche est déjà utilisée par une autre action.',{exact:true}).waitFor();
+ assert.equal(await waitKey.inputValue(),'');
+ assert.match(await rtsMap.getAttribute('aria-keyshortcuts'),/\bJ\b/);
+ await openPrefs();
+ const beforeOrders=await archive();
+ await rtsMap.focus();await page.keyboard.press('ArrowLeft');
+ await lockedArchive();assert.equal(await archive(),beforeOrders);
+ for(const index of [0,1]){
+  await teamButton(index).click();
+  assert.equal(await teamButton(index).getAttribute('aria-pressed'),'true');
+  const before=JSON.parse(await archive());
+  const actor=archivedActor(before,index),other=archivedActor(before,1-index);
+  await rtsMap.focus();await page.keyboard.press('j');
+  await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||'null')?.active?.tick===tick,
+   {key:report.canonicalKey,tick:before.active.tick+1});
+  await lockedArchive();
+  const after=JSON.parse(await archive());
+  const moved=archivedActor(after,index),unchanged=archivedActor(after,1-index);
+  assert.deepEqual([moved.x,moved.y],[actor.x-1,actor.y]);
+  assert.deepEqual([unchanged.x,unchanged.y],[other.x,other.y]);
+ }
+ const beforeHold=JSON.parse(await archive());
+ await rtsMap.focus();await page.keyboard.press('Space');
+ await page.waitForFunction(({key,tick})=>JSON.parse(localStorage.getItem(key)||'null')?.active?.tick===tick,
+  {key:report.canonicalKey,tick:beforeHold.active.tick+1});
+ await lockedArchive();
+ const held=JSON.parse(await archive());
+ for(const index of [0,1]){
+  const before=archivedActor(beforeHold,index),after=archivedActor(held,index);
+  assert.deepEqual([after.x,after.y],[before.x,before.y]);
+ }
+ pass('Remapped movement orders each selected squad; duplicate and old bindings are inert, and Space holds the formation');
  for(const width of [390,320]){
   await page.setViewportSize({width,height:844});
   const overflow=await operations.evaluate(el=>({scroll:el.scrollWidth,client:el.clientWidth}));assert.ok(overflow.scroll<=overflow.client+1,JSON.stringify(overflow));
@@ -132,6 +179,13 @@ try{
  const reloaded=JSON.parse(await archive());assert.equal(reloaded.active.id,missionId);assert.equal(reloaded.rav,beforeReload.rav);
  assert.equal(await operations.getByRole('region',{name:'Mission jouable active'}).isVisible(),true);assert.equal(await page.getByRole('dialog').count(),0);
  pass('Reload restores the actual paused field and mission identity without reopening a drawer or debiting RAV again');
+ assert.equal(await teamButton(0).getAttribute('aria-pressed'),'true');
+ assert.match(await rtsMap.getAttribute('aria-keyshortcuts'),/\bJ\b/);
+ await openPrefs();assert.equal(await leftKey.inputValue(),'j');
+ await prefs.getByRole('button',{name:'Restaurer les touches par défaut',exact:true}).click();
+ assert.match(await rtsMap.getAttribute('aria-keyshortcuts'),/\bArrowLeft\b/);
+ assert.equal(await leftKey.inputValue(),'');assert.equal(await archive(),JSON.stringify(reloaded));
+ pass('Reload preserves tactical keyboard preferences and selects an available squad; restoring defaults leaves mission bytes unchanged');
  await context.close();context=await browser.newContext({viewport:{width:1440,height:1000},locale:'fr-FR'});page=await context.newPage();page.setDefaultTimeout(20000);
  page.on('pageerror',e=>report.errors.push(e.message));page.on('response',r=>{if(r.status()>=400)report.httpErrors.push({url:r.url(),status:r.status()});});
  await page.addInitScript(expectedBytes=>{

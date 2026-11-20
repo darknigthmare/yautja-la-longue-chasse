@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "06ecd451449c503580196939a631b49343a224c325775eda18c8068e5e7fcf8e",
+  "version": "99682a144bf72b148413fcb71b3f9840e50c725b3ed49b9a4a2a1af91e5ce734",
   "entries": [
     {
       "id": "ui",
@@ -201,6 +201,20 @@
           "mime": "audio/wav",
           "bytes": 30408,
           "sha256": "94f68331a930ddf1658f7fa7601cfd6bc8f12a7ec9da6ce88f268ee6f238d8f5"
+        }
+      ],
+      "fallback": "procedural"
+    },
+    {
+      "id": "armor-repair",
+      "category": "sfx",
+      "folder": "sfx/armor-repair",
+      "sources": [
+        {
+          "url": "/audio/sfx/armor-repair/berceau.wav?v=3cc5a366f816f310",
+          "mime": "audio/wav",
+          "bytes": 60044,
+          "sha256": "3cc5a366f816f310e2ce0317a119f38defcbb790489615f7e40baa79ce141f23"
         }
       ],
       "fallback": "procedural"

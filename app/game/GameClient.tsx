@@ -2846,7 +2846,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ownedShipIds: fleet.unlockedShipIds, returnActive: true, returnObservation: observation });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
-    if (result.changed && action.type === "treat-return") playGameplaySound("medicomp");
+    if (result.changed && action.type === "treat-return") {
+      playGameplaySound("medicomp");
+      playGameplaySound("armor-repair");
+    }
     setToast(result.message); return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
     persistSocialProgress, playGameplaySound, resumableHunt, screen, settingsOpen, trophyWorkshop]);

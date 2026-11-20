@@ -12,3 +12,7 @@ Les textes de licence des archives sont dans `licenses/`. Les correspondances or
 Les motifs trophy/victory/defeat sont des créations procédurales originales du projet, sans échantillons tiers. Les fichiers de ce lot ne sont pas des sons officiels Predator ou Alien vs Predator. Aucun soutien des auteurs ou ayants droit de la franchise n'est impliqué.
 
 Les musiques, voix et autres ambiances restent à produire ou à fournir. Une écoute artistique du mix reste nécessaire ; les tests techniques ne constituent pas une approbation subjective.
+
+## Retour du Berceau (R2‑M027)
+
+`sfx/armor-repair/berceau.wav` est un effet original généré par `node scripts/build-cradle-return-audio.mjs`. Il combine la fermeture de la pince, la décontamination et le verrouillage final. Le délai initial laisse le Medicomp audible. Source procédurale mono en PCM 24 kHz, sans échantillon tiers.

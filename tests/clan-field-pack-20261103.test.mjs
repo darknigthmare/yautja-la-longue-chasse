@@ -72,3 +72,28 @@ test('UI wiring keeps save locks, hidden actors and action preconditions',()=>{
  assert.ok(rts.includes('maxWidth:"none"'));
  assert.ok(rts.includes('state.observed?mission.tasks'));
 });
+
+test('tactical shortcuts are deterministic across aliases, collision, persistence and reset',()=>{
+ const custom=api.rebindFieldShortcut({},'left','j');
+ assert.deepEqual(custom,{left:'j'});
+ const base={mode:'stealth'};
+ assert.equal(api.fieldKeyboardAction({...base,key:'J'},custom),'left');
+ assert.equal(api.fieldKeyboardAction({...base,key:'ArrowLeft'},custom),null);
+ assert.equal(api.fieldKeyboardAction({mode:'rts',key:'j'},custom),'left');
+ assert.equal(api.fieldKeyboardAction({...base,key:'j',repeat:true},custom),null);
+ assert.equal(api.fieldKeyboardAction({...base,key:'j',editing:true},custom),null);
+ assert.equal(api.rebindFieldShortcut(custom,'wait','j'),null);
+ assert.equal(api.rebindFieldShortcut(custom,'wait','e'),null);
+ assert.equal(api.rebindFieldShortcut(custom,'wait','Tab'),null);
+ const released=api.rebindFieldShortcut(custom,'wait','q');
+ assert.deepEqual(released,{left:'j',wait:'q'});
+ assert.equal(api.rebindFieldShortcut(released,'left',null),null);
+ assert.deepEqual(api.readFieldShortcuts(JSON.stringify(released)),released);
+ assert.deepEqual(api.readFieldShortcuts('{"left":"j","wait":"j"}'),{});
+ assert.deepEqual(api.readFieldShortcuts('{"interact":"Escape"}'),{});
+ assert.deepEqual(api.readFieldShortcuts('['),{});
+ assert.deepEqual(api.rebindFieldShortcut(custom,'left',null),{});
+ assert.equal(api.fieldKeyboardAction({...base,key:'ArrowLeft'},{}),'left');
+ assert.match(api.fieldShortcutAttributes(custom,'stealth'),/\bE\b/);
+ assert.doesNotMatch(api.fieldShortcutAttributes(custom,'rts'),/\bE\b/);
+});
