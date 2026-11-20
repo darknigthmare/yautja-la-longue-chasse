@@ -139,9 +139,39 @@ export interface OriginStateV151 {
   relations: Record<string, RelationV151>;
   /** Event ids already applied (never twice). */
   consumed: string[];
+  /**
+   * V170, STATE5-08 « originEndingId » : fin de voie choisie à Elite (Ox-M29).
+   * Clé additive : absente tant que la sélection n'a pas été visitée.
+   */
+  ending?: OriginEndingStateV151;
+}
+/** V170 : Ox-M29 « Enregistrer la visite de sélection séparément de sa réussite » ; écrit une fois. */
+export interface OriginEndingStateV151 {
+  version: 1;
+  /** Ox-M29 visitée (examen d'au moins une fin). */
+  selectionVisited: boolean;
+  /** STATE5-08 : exactement une valeur valide Ox-E1..E3 de la voie, ou null. */
+  originEndingId: string | null;
+  /** Ox.endingChoiceConfirmed : vrai seulement après confirmation explicite. */
+  endingChoiceConfirmed: boolean;
+  /** Ox.endingRealized : vrai seulement après la clôture Ox-M30 jouée (non jouée dans ce jeu). */
+  endingRealized: boolean;
 }
 const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
-export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && typeof raw.version === "number" && raw.version > 1;
+export const isFutureOriginV151 = (raw: unknown) => isRecord(raw) && ((typeof raw.version === "number" && raw.version > 1)
+  // V170: a future ending record makes the whole origin record future (never overwritten by an older game).
+  || (isRecord(raw.ending) && typeof raw.ending.version === "number" && raw.ending.version > 1));
+/** V170 : identifiant de fin valide pour la voie (Ox-E1..Ox-E3, « Fins des six voies »). */
+export const isOriginEndingIdV151 = (originId: OriginIdV151, id: unknown): id is string =>
+  typeof id === "string" && /^O[1-6]-E[1-3]$/.test(id) && id.startsWith(`${originId}-`);
+function normalizeEnding(originId: OriginIdV151, raw: unknown): OriginEndingStateV151 | null {
+  if (!isRecord(raw) || raw.version !== 1) return null;
+  // Confirmed and identified go together: a provisional or invalid value stays unconfirmed (Ox-M29).
+  const confirmed = raw.endingChoiceConfirmed === true && isOriginEndingIdV151(originId, raw.originEndingId);
+  return { version: 1, selectionVisited: raw.selectionVisited === true || confirmed,
+    originEndingId: confirmed ? raw.originEndingId as string : null, endingChoiceConfirmed: confirmed,
+    endingRealized: confirmed && raw.endingRealized === true };
+}
 
 export function createOriginV151(originId: OriginIdV151, sourceKind: OriginStateV151["source"] = "creation"): OriginStateV151 {
   return { version: 1, originId, source: sourceKind, transitions: {}, relations: {}, consumed: [] };
@@ -179,6 +209,8 @@ export function normalizeOriginV151(raw: unknown): OriginStateV151 | null {
     if (!["present", "awaited", "absent"].includes(String(value.presence))) continue;
     state.relations[id] = { name: value.name, presence: value.presence as RelationV151["presence"], transitionId: String(value.transitionId), choice: value.choice };
   }
+  const ending = normalizeEnding(state.originId, raw.ending);
+  if (ending) state.ending = ending;
   if (Array.isArray(raw.consumed)) state.consumed = [...new Set(raw.consumed.filter((v): v is string => typeof v === "string"))].slice(-200);
   return state;
 }
