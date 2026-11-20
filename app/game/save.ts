@@ -1,4 +1,9 @@
-import { HONOR_RANK_THRESHOLDS_V166, missionHonorRewardV166, resolveAcquiredRankV166 } from "./systems/honorProgressionV166";
+import {
+  HONOR_RANK_THRESHOLDS_V166,
+  LEGACY_REPLAY_HONOR_RULES_V35,
+  missionHonorRewardV166,
+  resolveAcquiredRankV166,
+} from "./systems/honorProgressionV166";
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
 import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
 import { isFutureResidenceLifeV150, normalizeResidenceLifeV150 } from "./systems/residenceLifeV150";
@@ -2536,7 +2541,8 @@ export function applyMissionResult(
     )
       ? Math.round(qualityBonus / 2)
       : 0;
-  // V166 : première réussite inchangée ; gains en rejouant relevés (proposé).
+  // Un bilan négatif garde l’ancien calcul de maîtrise en chasse rejouée.
+  const replayHonorRules = eventHonor < 0 ? LEGACY_REPLAY_HONOR_RULES_V35 : undefined;
   const honorReward = missionHonorRewardV166({
     baseHonor: mission.baseRewards.honor,
     firstCompletion,
@@ -2546,7 +2552,7 @@ export function applyMissionResult(
     replayQualityBonus,
     scoreImprovement,
     rewardMultiplier: difficulty.rewardMultiplier,
-  });
+  }, replayHonorRules);
   const replayMultiplier = firstCompletion ? 1 : 0.35;
   const clanMarksReward = Math.round(
     (mission.baseRewards.clanMarks + score * 1.5) *
