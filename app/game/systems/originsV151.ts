@@ -196,11 +196,18 @@ export function houseTransitionOpenV151(residence: ResidenceStateV149, context: 
   return !!houseId && context.atHouseId === houseId && residenceAccessV149(residence, houseId, context).inhabit;
 }
 
+export function houseTransitionRecordV151(current: OriginStateV151, houseId: string | null): TransitionRecordV151 | undefined {
+  const transition = houseTransitionV151(current.originId);
+  const record = current.transitions[transition.id];
+  return record && (record.resolved || record.houseId === houseId) ? record : undefined;
+}
+
 /** One gesture of the scene. Out of order: the sheet's failure text, nothing lost. */
 export function houseTransitionStepV151(current: OriginStateV151, residence: ResidenceStateV149, stepIndex: number, context: ResidenceContextV149): OriginChangeV151 {
   if (!houseTransitionOpenV151(residence, context)) return refuse("La scène se joue dans ta résidence active.");
   const transition = houseTransitionV151(current.originId);
-  const record = current.transitions[transition.id] ?? { steps: 0, resolved: false, success: false, choice: null, houseId: null };
+  const record = houseTransitionRecordV151(current, residence.activeResidenceId)
+    ?? { steps: 0, resolved: false, success: false, choice: null, houseId: null };
   if (record.resolved) return refuse("Cette scène est déjà résolue.");
   if (!Number.isInteger(stepIndex) || stepIndex < 0 || stepIndex >= transition.steps.length) return refuse("Geste inconnu.");
   if (stepIndex < record.steps) return refuse("Déjà fait.");
@@ -216,7 +223,8 @@ export function houseTransitionChooseV151(current: OriginStateV151, residence: R
   const transition = houseTransitionV151(current.originId);
   const eventId = `${transition.id}:resolved`;
   if (current.consumed.includes(eventId)) return refuse("Cette scène est déjà résolue.");
-  const record = current.transitions[transition.id];
+  const record = houseTransitionRecordV151(current, residence.activeResidenceId);
+  if (record?.resolved) return refuse("Cette scène est déjà résolue.");
   if (!record || record.steps < transition.steps.length) return refuse("Termine d’abord les gestes de la scène.");
   if (choice !== 0 && choice !== 1) return refuse("Choix inconnu.");
   const state = structuredClone(current);

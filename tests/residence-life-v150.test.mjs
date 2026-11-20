@@ -81,7 +81,8 @@ test("an unfinished walk restarts from home on the next run; a reload keeps the 
 });
 
 test("at the « recevoir » threshold two guests can come; they never take the same place", () => {
-  const residence = livingAtCm07(3);
+  const occupied = livingAtCm07(3);
+  const residence = ok(R.placeObjectV149(occupied, R.TRAVEL_CONTAINER_ID_V149, "chest", ctx("HOME-CM07")));
   assert.ok(R.respectForV149(residence, "CM07") >= 80);
   let life = ok(L.inviteGuestV150(L.emptyResidenceLifeV150(), residence, "guide", ctx("HOME-CM07")));
   life = ok(L.inviteGuestV150(life, residence, "keeper", ctx("HOME-CM07")));
@@ -144,4 +145,31 @@ test("save round-trip keeps the visit; the life panel renders for the active hou
   assert.match(html, /data-residence-invite="guide"/);
   assert.match(html, /attendu/);
   assert.equal(source.render("app/game/ResidenceLifePanelV150.tsx", { ...props, house: R.houseV149("HOME-CM08") }), "");
+});
+
+test("an occupied threshold delays a second guest until a seat is available", () => {
+  const house = "HOME-CM07";
+  let residence = livingAtCm07(3);
+  let life = ok(L.inviteGuestV150(L.emptyResidenceLifeV150(), residence, "guide", ctx(house)));
+  life = ok(L.inviteGuestV150(life, residence, "keeper", ctx(house)));
+  const view = { regionId: "luminous-marshes", runId: "waiting", tick: 0, zone: "village", buildingId: null };
+  life = L.settleResidenceLifeV150(life, residence, view).state;
+  assert.deepEqual(life.visits.map(v => [v.stage, v.place]), [["under-way", "workshop"], ["invited", null]]);
+  assert.deepEqual(L.guestsInSceneV150(life, view).map(g => g.residentId), ["guide"]);
+  residence = ok(R.placeObjectV149(residence, R.TRAVEL_CONTAINER_ID_V149, "chest", ctx(house)));
+  life = L.settleResidenceLifeV150(life, residence, { ...view, tick: 2 }).state;
+  assert.deepEqual(life.visits.map(v => [v.stage, v.place]), [["under-way", "workshop"], ["under-way", "threshold"]]);
+});
+
+test("a visiting guide answers at the visible position and leaves no collision at the empty post", () => {
+  const state = G.createHomeworldRegionV68("luminous-marshes", "visit", true);
+  const guide = L.guestResidentV150(state.regionId, "guide");
+  const post = G.regionResidentPositionV68(guide, state.tick);
+  const away = { residentId: "guide", x: 6420, y: 2380, inside: false, moving: true };
+  const atPost = { ...state, actor: { ...state.actor, ...post } };
+  const nearGuide = { ...state, actor: { ...state.actor, x: away.x, y: away.y } };
+  assert.equal(G.homeworldRegionInteractionV68(nearGuide, [away])?.id, "guide");
+  assert.notEqual(G.homeworldRegionInteractionV68(atPost, [away])?.id, "guide");
+  assert.notEqual(G.regionCollisionV68(state.regionId, post, state.tick, [away]), "guide");
+  assert.notEqual(G.homeworldRegionInteractionV68(nearGuide, [{ ...away, inside: true }])?.id, "guide");
 });

@@ -166,6 +166,8 @@ test("SSR: panel shows the scene with its source trigger; conversation shows cor
   const resolved = ok(S.sceneChooseV154(scenes, residence, "V5-HOME-CM07-S1", 0, base("HOME-CM07")));
   const after = source.render("app/game/HouseScenesPanelV154.tsx", { ...props, scenes: resolved });
   assert.match(after, /data-house-scene-result="0"/);
+  assert.match(after, /<button disabled="" data-house-scene-review="V5-HOME-CM07-S1">Revoir la conversation/);
+  assert.match(after, /Les invités doivent être présents/);
   assert.match(after, /data-house-scene-consumed/);
   assert.equal(source.render("app/game/HouseScenesPanelV154.tsx", { ...props, house: R.houseV149("HOME-CM08") }), "", "not the active residence");
   const chunk = JSON.parse(readFileSync(new URL("../app/game/data/dialoguesV6-401-500.json", import.meta.url), "utf8"));
@@ -178,4 +180,16 @@ test("SSR: panel shows the scene with its source trigger; conversation shows cor
   // The real loader finds the corpus scene (dynamic import of the chunk).
   const loaded = await D.loadHouseDialogueV154("V5-HOME-CM07-S1");
   assert.equal(loaded?.id, "D6-H-V5-HOME-CM07-S1");
+});
+
+test("a carried lamp is offered among the residence placement controls", () => {
+  const house = R.houseV149("HOME-CM07");
+  let residence = livingAtCm07();
+  residence = ok(R.placeObjectV149(residence, R.TRAVEL_CONTAINER_ID_V149, "chest", base(house.id)));
+  residence.objects.find(o => o.id === R.CM07_LAMP_ID_V149).location = { kind: "carried" };
+  const html = source.render("app/game/ResidencePanelV149.tsx", {
+    house, residence, rankId: "young-blood", disabled: false, regionAllowed: () => true,
+    onAction: () => ({ ok: true, message: "" }),
+  });
+  assert.match(html, /data-residence-place="[^"]+&gt;arrival">Poser : Lampe du passeur/);
 });

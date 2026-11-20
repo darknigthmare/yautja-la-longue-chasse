@@ -282,13 +282,17 @@ export function inviteGuestV150(life: ResidenceLifeV150, residence: ResidenceSta
   return { ok: true, state, message: `${resident.name} (${resident.role}) viendra à ${house.title} ; reste au village pour l’accueillir.` };
 }
 
+function arrivalOccupied(residence: ResidenceStateV149, houseId: string): boolean {
+  return residence.objects.some(o => o.location.kind === "room" && o.location.houseId === houseId && o.location.slotId === "arrival");
+}
+
 /** The guest's choice of place (R19): the first free one, never an occupied slot. */
 export function chooseGuestPlaceV150(life: ResidenceLifeV150, residence: ResidenceStateV149, houseId: string): GuestPlaceIdV150 | null {
   const taken = new Set(life.visits.filter(v => v.houseId === houseId && v.stage === "under-way" && v.place).map(v => v.place));
-  const arrivalUsed = residence.objects.some(o => o.location.kind === "room" && o.location.houseId === houseId && o.location.slotId === "arrival");
+  const arrivalUsed = arrivalOccupied(residence, houseId);
   for (const place of GUEST_PLACES_V150) {
     if (taken.has(place.id)) continue;
-    if (place.id === "threshold" && arrivalUsed && taken.size === 0) continue; // the arrival container blocks the bench
+    if (place.id === "threshold" && arrivalUsed) continue;
     return place.id;
   }
   return null;
@@ -309,16 +313,25 @@ export function settleResidenceLifeV150(
     const house = houseV149(visit.houseId)!;
     if (residence.activeResidenceId !== visit.houseId) { visit.stage = "done"; continue; } // moved away: the invitation lapses
     if (house.regionId !== region.regionId || region.zone === "passage") continue;
-    if (visit.stage === "invited" || (visit.stage === "under-way" && visit.runId !== region.runId)) {
-      visit.stage = "under-way"; visit.runId = region.runId; visit.startTick = region.tick;
-      visit.place = chooseGuestPlaceV150(state, residence, visit.houseId);
-      events.push(`${guestResidentV150(region.regionId as HomeworldRegionIdV68, visit.guestId)?.name ?? "L’invité"} quitte sa maison et prend le chemin de ta porte.`);
-      continue;
-    }
-    if (visit.stage === "under-way" && visitViewV150(visit, region.tick).stage === "gone") {
+    if (visit.stage === "done") continue;
+    const continuing = visit.stage === "under-way" && visit.runId === region.runId;
+    if (continuing && visitViewV150(visit, region.tick).stage === "gone") {
       visit.stage = "done";
       state.history = [...state.history, { houseId: visit.houseId, guestId: visit.guestId, place: visit.place, runId: region.runId }].slice(-20);
       events.push(`${guestResidentV150(region.regionId as HomeworldRegionIdV68, visit.guestId)?.name ?? "L’invité"} est rentré chez lui.`);
+      continue;
+    }
+    if (continuing && visit.place && !(visit.place === "threshold" && arrivalOccupied(residence, visit.houseId))) continue;
+    visit.place = null;
+    const seat = chooseGuestPlaceV150(state, residence, visit.houseId);
+    if (!seat) {
+      visit.stage = "invited"; visit.runId = null; visit.startTick = null;
+      continue;
+    }
+    visit.place = seat;
+    if (!continuing) {
+      visit.stage = "under-way"; visit.runId = region.runId; visit.startTick = region.tick;
+      events.push(`${guestResidentV150(region.regionId as HomeworldRegionIdV68, visit.guestId)?.name ?? "L’invité"} quitte sa maison et prend le chemin de ta porte.`);
     }
   }
   state.visits = state.visits.filter(v => v.stage !== "done");
@@ -392,8 +405,8 @@ export function guestsInSceneV150(
     } else if (seen.stage === "present") {
       const atHouse = view.zone === "interior" && view.buildingId === houseBuildingIdV149(house);
       if (view.zone === "village" || atHouse) {
-        const place = GUEST_PLACES_V150.find(p => p.id === visit.place) ?? GUEST_PLACES_V150[0];
-        out.push({ residentId: visit.guestId, ...place.interior, inside: true, moving: false, label });
+        const place = GUEST_PLACES_V150.find(p => p.id === visit.place);
+        if (place) out.push({ residentId: visit.guestId, ...place.interior, inside: true, moving: false, label });
       }
     }
   }

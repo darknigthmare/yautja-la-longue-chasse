@@ -132,3 +132,16 @@ test("save round trip through the real save module (normalizeSave / import)", as
   assert.deepEqual(imported.save.originV151, origin);
   assert.equal(p.parseSaveImport(JSON.stringify({ ...save, originV151: { ...origin, version: 2 } })).failure, "future-version");
 });
+
+test("an evicted workshop trophy can be replaced after repeating its gestures", () => {
+  let state = O.createOriginV151("O2");
+  for (let i = 0; i < 3; i++) state = ok(T.trophyTransitionStepV157(state, "claim-1", i, ctx()));
+  const available = ctx(["claim-2"]);
+  assert.equal(T.trophyTransitionChooseV157(state, "claim-2", 1, available).ok, false);
+  assert.equal(T.trophyTransitionStepV157(state, "claim-2", 1, available).ok, false);
+  for (let i = 0; i < 3; i++) state = ok(T.trophyTransitionStepV157(state, "claim-2", i, available));
+  state = ok(T.trophyTransitionChooseV157(state, "claim-2", 1, available));
+  assert.equal(state.transitions["STORY5-TR-O2-02"].trophyId, "claim-2");
+  assert.equal(state.transitions["STORY5-TR-O2-02"].choice, 1);
+  assert.equal(T.trophyTransitionStepV157(state, "claim-3", 0, ctx(["claim-3"])).ok, false);
+});

@@ -81,7 +81,10 @@ export default function HouseScenesPanelV154({ house, residence, life, scenes, r
             {trigger.proposed ? "Lecture du jeu (proposé) : " : "Lecture : "}{trigger.readings.join(" ou ")}.{" "}
             {!resolved && done === 0 && (trigger.reached ? "Atteint." : `Manque : ${trigger.missing.join(", ")}.`)}</p>
           {resolved ? <div data-house-scene-result={record!.choice}>
+            <button disabled={disabled || guests.present.length === 0} data-house-scene-review={scene.id}
+              onClick={() => { setOpenId(scene.id); setPreview(null); setMessage(""); }}>Revoir la conversation</button>
             <p><b>{options[record!.choice!]}</b></p>
+            {guests.present.length === 0 && <p className={styles.note}>Les invités doivent être présents pour revoir la conversation.</p>}
             <p>{scene.consequence}</p>
             {record!.consumed.length > 0 && (stock ? <p className={styles.note} data-house-scene-consumed={stock.receipts.includes(`${scene.id}:materials`) ? "taken" : "inscribed"}>
               {stock.receipts.includes(`${scene.id}:materials`)

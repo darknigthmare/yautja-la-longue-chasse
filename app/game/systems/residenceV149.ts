@@ -203,7 +203,8 @@ export function normalizeResidenceV149(raw: unknown): ResidenceStateV149 | null 
   if (isRecord(raw.missions)) for (const [id, value] of Object.entries(raw.missions)) {
     const house = houseV149(id);
     if (!house || !isRecord(value) || (value.status !== "active" && value.status !== "completed")) continue;
-    const done = Array.isArray(value.done) ? [...new Set(value.done.filter((a): a is ResidenceProofActionV149 => PROOF_ACTIONS.includes(a as ResidenceProofActionV149)))] : [];
+    const done = Array.isArray(value.done) ? [...new Set(value.done.filter((a): a is ResidenceProofActionV149 =>
+      PROOF_ACTIONS.includes(a as ResidenceProofActionV149) && (a !== "report" || value.status === "completed")))] : [];
     const choice = typeof value.choice === "number" && Number.isInteger(value.choice) && value.choice >= 0 && value.choice < house.mission.choices.length ? value.choice : null;
     state.missions[id] = { status: value.status, runId: typeof value.runId === "string" ? value.runId : null, done, choice };
   }
@@ -331,9 +332,13 @@ export function recordResidenceFieldEventV149(current: ResidenceStateV149, event
     const mission = state.missions[house.id];
     if (!mission || mission.status !== "active") continue;
     if (mission.runId !== event.runId) { mission.runId = event.runId; mission.done = []; }
-    if (!mission.done.includes(action)) mission.done.push(action);
     const required = houseMissionActionsV149(house);
-    if (required.every(entry => mission.done.includes(entry))) {
+    if (action !== "report") {
+      if (!mission.done.includes(action)) mission.done.push(action);
+      continue;
+    }
+    if (required.every(entry => entry === "report" || mission.done.includes(entry))) {
+      if (!mission.done.includes("report")) mission.done.push("report");
       mission.status = "completed";
       state.respect[house.communityId] = Math.min(100, respectForV149(state, house.communityId) + RESPECT_FOR_MISSION_V149);
       completed.push(house.id);
