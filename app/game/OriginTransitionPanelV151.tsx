@@ -6,7 +6,7 @@
  */
 import { useState } from "react";
 import { emptyResidenceV149, normalizeResidenceV149, type ResidenceHouseV149 } from "./systems/residenceV149";
-import { houseTransitionOpenV151, houseTransitionV151, isFutureOriginV151, originOfSaveV151, originV151 } from "./systems/originsV151";
+import { houseTransitionOpenV151, houseTransitionRecordV151, houseTransitionV151, isFutureOriginV151, originOfSaveV151, originV151 } from "./systems/originsV151";
 import styles from "./ResidencePanelV149.module.css";
 
 type OriginAction = { kind: "step"; index: number } | { kind: "choose"; choice: 0 | 1 };
@@ -23,7 +23,7 @@ export default function OriginTransitionPanelV151({ house, residence, origin, ra
   const context = { rankId, atHouseId: house.id, regionAllowed };
   if (!houseTransitionOpenV151(residenceState, context)) return null;
   const transition = houseTransitionV151(state.originId);
-  const record = state.transitions[transition.id];
+  const record = houseTransitionRecordV151(state, house.id);
   const act = (action: OriginAction) => { const result = onAction(action); setMessage(result.message); };
   const done = record?.steps ?? 0;
 

@@ -163,3 +163,20 @@ test("save reading: future version refused, unknown entries dropped, active hous
   assert.equal(loaded.activeResidenceId, null);
   assert.deepEqual(loaded.objects, []);
 });
+
+test("a threshold report must follow the field objectives even after reload", () => {
+  const house = "HOME-CM07";
+  const accepted = ok(R.acceptHouseMissionV149(R.emptyResidenceV149(), house, context(house)));
+  const early = run(accepted, "r", ["ward", "report"]);
+  assert.deepEqual(early.completed, []);
+  assert.deepEqual(early.state.missions[house].done, ["ward"]);
+  const legacy = structuredClone(early.state);
+  legacy.missions[house].done.push("report");
+  const recovered = run(R.normalizeResidenceV149(legacy), "r", ["recover"]);
+  assert.equal(recovered.state.missions[house].status, "active");
+  assert.deepEqual(recovered.completed, []);
+  assert.ok(!recovered.state.objects.some(o => o.id === R.CM07_LAMP_ID_V149));
+  const reported = run(recovered.state, "r", ["report"]);
+  assert.deepEqual(reported.completed, [house]);
+  assert.equal(reported.state.objects.filter(o => o.id === R.CM07_LAMP_ID_V149).length, 1);
+});

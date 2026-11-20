@@ -85,3 +85,24 @@ test("STATE5-01: old saves get the documented default; stored values are never r
   const forged = O.normalizeOriginV151({ version: 1, originId: "O1", transitions: { "STORY5-TR-O1-01": { steps: 1, resolved: true, success: true, choice: 0 } } });
   assert.equal(forged.transitions["STORY5-TR-O1-01"].resolved, false, "a resolution without its gestures is not kept");
 });
+
+test("house gestures start again after a transfer and the choice waits for the new address", () => {
+  const before = "HOME-CM07";
+  const after = "HOME-CM08";
+  const from = ctx(before, "blooded");
+  const to = ctx(after, "blooded");
+  let residence = activeCm07();
+  let state = O.createOriginV151("O6");
+  for (let i = 0; i < 3; i++) state = ok(O.houseTransitionStepV151(state, residence, i, from));
+  residence = ok(R.acceptHouseMissionV149(residence, after, to));
+  residence = field(residence, "transfer", ["ward", "recover", "report"]);
+  residence = ok(R.chooseHouseRouteV149(residence, after, 0, to));
+  residence = ok(R.startTransferV149(residence, after, from));
+  residence = ok(R.confirmDepartureV149(residence, from));
+  residence = ok(R.confirmArrivalV149(residence, to));
+  assert.equal(O.houseTransitionChooseV151(state, residence, 0, to).ok, false);
+  assert.equal(O.houseTransitionStepV151(state, residence, 1, to).ok, false);
+  for (let i = 0; i < 3; i++) state = ok(O.houseTransitionStepV151(state, residence, i, to));
+  state = ok(O.houseTransitionChooseV151(state, residence, 0, to));
+  assert.equal(state.transitions["STORY5-TR-O6-01"].houseId, after);
+});

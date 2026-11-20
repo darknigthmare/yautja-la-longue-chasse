@@ -132,11 +132,17 @@ export function trophyTransitionOpenV157(context: TrophyWorkshopContextV157): bo
   return context.atWorkshop && context.ownedTrophyIds.length > 0;
 }
 
-function guard(current: OriginStateV151, trophyId: string, context: TrophyWorkshopContextV157) {
+export function trophyTransitionRecordV157(current: OriginStateV151, ownedTrophyIds: readonly string[]): TransitionRecordV151 | undefined {
+  const transition = trophyTransitionV157(current.originId);
+  const record = current.transitions[transition.id];
+  if (record?.trophyId && !record.resolved && !ownedTrophyIds.includes(record.trophyId)) return undefined;
+  return record;
+}
+
+function guard(trophyId: string, context: TrophyWorkshopContextV157, record: TransitionRecordV151 | undefined) {
   if (!context.atWorkshop) return "La scène se joue à l’atelier de trophées.";
   if (!context.ownedTrophyIds.length) return "Aucun trophée en ta possession : la scène attend une prise réelle.";
-  const transition = trophyTransitionV157(current.originId);
-  const bound = current.transitions[transition.id]?.trophyId ?? null;
+  const bound = record?.trophyId ?? null;
   // Ownership is checked on every action: a trophy no longer in the save cannot be used.
   if (!context.ownedTrophyIds.includes(trophyId)) return "Ce trophée n’est pas en ta possession.";
   if (bound && bound !== trophyId) return "Un autre trophée est déjà posé au banc pour cette scène.";
@@ -145,10 +151,11 @@ function guard(current: OriginStateV151, trophyId: string, context: TrophyWorksh
 
 /** One gesture. Out of order: the sheet's failure text, nothing lost. */
 export function trophyTransitionStepV157(current: OriginStateV151, trophyId: string, stepIndex: number, context: TrophyWorkshopContextV157): OriginTrophyChangeV157 {
-  const refused = guard(current, trophyId, context);
+  const record = trophyTransitionRecordV157(current, context.ownedTrophyIds)
+    ?? { steps: 0, resolved: false, success: false, choice: null, houseId: null, trophyId: null };
+  const refused = guard(trophyId, context, record);
   if (refused) return refuse(refused);
   const transition = trophyTransitionV157(current.originId);
-  const record: TransitionRecordV151 = current.transitions[transition.id] ?? { steps: 0, resolved: false, success: false, choice: null, houseId: null, trophyId: null };
   if (record.resolved) return refuse("Cette scène est déjà résolue.");
   if (!Number.isInteger(stepIndex) || stepIndex < 0 || stepIndex >= TRANSITION_STEP_COUNT_V151) return refuse("Geste inconnu.");
   if (stepIndex < record.steps) return refuse("Déjà fait.");
@@ -160,12 +167,12 @@ export function trophyTransitionStepV157(current: OriginStateV151, trophyId: str
 
 /** The choice closes the scene once: resolved and success distinct, decision and relation recorded. */
 export function trophyTransitionChooseV157(current: OriginStateV151, trophyId: string, choice: 0 | 1, context: TrophyWorkshopContextV157): OriginTrophyChangeV157 {
-  const refused = guard(current, trophyId, context);
+  const record = trophyTransitionRecordV157(current, context.ownedTrophyIds);
+  const refused = guard(trophyId, context, record);
   if (refused) return refuse(refused);
   const transition = trophyTransitionV157(current.originId);
   const eventId = `${transition.id}:resolved`;
-  if (current.consumed.includes(eventId)) return refuse("Cette scène est déjà résolue.");
-  const record = current.transitions[transition.id];
+  if (record?.resolved || current.consumed.includes(eventId)) return refuse("Cette scène est déjà résolue.");
   if (!record || record.steps < TRANSITION_STEP_COUNT_V151) return refuse("Termine d’abord les gestes de la scène.");
   if (choice !== 0 && choice !== 1) return refuse("Choix inconnu.");
   const state = structuredClone(current);

@@ -45,6 +45,7 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
   const rooms = roomsForHouseV149(house.id);
   const shownRoom = rooms.find(entry => entry.id.endsWith(room));
   const here = objectsInHouseV149(state, house.id);
+  const placeable = [...here, ...state.objects.filter(object => object.location.kind === "carried")];
   const packed = packedObjectsV149(state);
   const destinations = state.rights.filter(id => id !== house.id).map(id => houseV149(id)!).filter(Boolean);
 
@@ -103,7 +104,7 @@ export default function ResidencePanelV149({ house, residence, rankId, disabled,
               const inSlot = here.filter(object => object.location.kind === "room" && object.location.slotId === slot);
               return <li key={slot} data-residence-slot={slot}>
                 <b>{RESIDENCE_SLOTS_V149[slot].label}</b>{RESIDENCE_SLOTS_V149[slot].right === "furnish" && ` (respect ${house.respect.furnish})`} : {inSlot.length ? inSlot.map(object => object.label).join(", ") : "libre"}
-                {!transfer && <span className={styles.moves}>{here.filter(object => object.location.kind === "room" && object.location.slotId !== slot).map(object =>
+                {!transfer && <span className={styles.moves}>{placeable.filter(object => object.location.kind !== "room" || object.location.slotId !== slot).map(object =>
                   <button key={object.id} disabled={disabled} data-residence-place={`${object.id}>${slot}`} onClick={() => act({ kind: "place", objectId: object.id, slotId: slot })}>Poser : {object.label}</button>)}</span>}
               </li>;
             })}

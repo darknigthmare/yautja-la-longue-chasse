@@ -185,6 +185,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   }, [pause, resume, clear]);
   useEffect(() => {
     let frame = 0, last = 0, accumulator = 0;
+    const visitsAt = (checkpoint: HomeworldRegionStateV68) => latest.current.guestsV150?.(checkpoint) ?? [];
     const loop = (time: number) => {
       const delta = last ? Math.min(.05, (time - last) / 1000) : 0; last = time;
       const inactive = document.hidden || !document.hasFocus();
@@ -205,11 +206,11 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
         while (accumulator >= 1 / 60 && !pauseRef.current && current.current) {
           accumulator -= 1 / 60;
           const confirm = interact.current; interact.current = false;
-          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before) : null;
+          const before = current.current, interaction = confirm ? homeworldRegionInteractionV68(before, visitsAt(before)) : null;
           if((confirm)&&bibleCulturalNearbyV86(before)&&latest.current.onBibleSceneAction){openBible();break;}
           const activity = !interaction && before.zone === 'village' && (confirm) ? nearestVillageActivityV70(regionId, before.actor) : null;
           const villageResident = !interaction && !activity && before.zone === 'village' && (confirm) ? nearestHomeworldVillageResidentV69(regionId, before.tick, before.actor) : null;
-          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && (confirm) });
+          const next = stepHomeworldRegionV68(before, { x: Number(active('hunt.moveRight') || touch.current.has('right') || sample.movement.right) - Number(active('hunt.moveLeft') || touch.current.has('left') || sample.movement.left), y: Number(active('hunt.moveDown') || touch.current.has('down') || sample.movement.down) - Number(active('hunt.moveUp') || touch.current.has('up') || sample.movement.up), interact: !activity && !villageResident && confirm }, false, visitsAt);
           current.current = next;
           if (next.tick % 2 === 0 || next.zone !== before.zone || next.pendingFieldEvent) setState(next);
           if (next.pendingFieldEvent) { if (!field(next)) break; }
@@ -232,7 +233,8 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const d = HOMEWORLD_GEOMETRY_V64.depthScale, position = project(state.actor), zoom = Math.min(.98, Math.max(.6, size.height / 720));
   const world = state.zone === 'passage' ? { width: 18700, depth: 3300 } : state.zone === 'interior' ? HOMEWORLD_REGION_INTERIOR_V68 : HOMEWORLD_VILLAGE_WORLD_V68;
   const camera = { x: world.width * zoom < size.width ? -(size.width - world.width * zoom) / 2 : Math.max(0, Math.min(world.width * zoom - size.width, position.x * zoom - size.width / 2)), y: state.zone === 'interior' && world.depth * d * zoom < size.height - 240 ? -(size.height - world.depth * d * zoom) / 2 : Math.max(-180, Math.min(world.depth * d * zoom - size.height + 190, position.y * zoom - size.height * .66)) };
-  const interaction = homeworldRegionInteractionV68(state), activity = !interaction && state.zone === 'village' ? nearestVillageActivityV70(regionId, state.actor) : null, villageResident = !interaction && !activity && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
+  const guests = props.guestsV150?.(state) ?? [];
+  const interaction = homeworldRegionInteractionV68(state, guests), activity = !interaction && state.zone === 'village' ? nearestVillageActivityV70(regionId, state.actor) : null, villageResident = !interaction && !activity && state.zone === 'village' ? nearestHomeworldVillageResidentV69(regionId, state.tick, state.actor) : null, appearance = save.appearance;
   const bibleNearby=!!props.onBibleSceneAction&&bibleCulturalNearbyV86(state),b=BIBLE_CULTURAL_BINDING_V86;
   const bibleContext=bibleCulturalContextV86({save,ownerSaveCreatedAt:save.createdAt,region:state,sceneActive:localPanel==='bible-v86'&&ready&&!error,
     focused,suspended,host:regionId===b.regionId&&state.zone==='village'?{id:b.npcId,present:true,alive:true,conscious:true}:null,
@@ -246,7 +248,6 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
   const interiorShell = state.zone === 'interior' ? homeworldInteriorShellV64({ buildingId: `v68-${regionId}-${state.buildingId}`, width: 710, depth: 650 }) : null;
   const bridge = HOMEWORLD_PASSAGE_BRIDGE_V67, bridgeScale = bridge.width / (bridge.deck.right - bridge.deck.left);
   const pointer = (move: Move, pressed: boolean, e: PointerEvent<HTMLButtonElement>) => { e.preventDefault(); if (pressed && !modal && !suspended) { e.currentTarget.setPointerCapture(e.pointerId); touch.current.add(move); } else touch.current.delete(move); };
-  const guests = props.guestsV150?.({ regionId, runId: state.runId, tick: state.tick, zone: state.zone, buildingId: state.buildingId }) ?? [];
   const drawActor = (id: string, x: number, y: number, morph: typeof save.appearance.bodyMorphId, dread: typeof save.appearance.dreadStyleId, moving = false, resident?: typeof definition.residents[number]) => {
     if (state.zone === 'village' && villagePaintOccludedV70(definition.buildings, { x, y }, state.actor, { actorHeight: youthWelcome ? 82 : 100 })) return null;
     const p = project({ x, y }), placement = homeworldModularPlacementV64(morph, 'reference', morph === 'young' ? 82 : 100);
@@ -303,7 +304,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       <b>{narratives[0]?.instruction ?? regionObjectiveV68(state)}</b>
       {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
-      {props.pathMissionV158?.(!localAllowed)}
+      {props.pathMissionV158 && <div style={{ pointerEvents: 'auto' }}>{props.pathMissionV158(!localAllowed)}</div>}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
     </aside>
     <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!bibleNearby&&!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{bibleNearby?'Parler à l’hôte de la halte':interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>

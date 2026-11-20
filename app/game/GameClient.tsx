@@ -2822,9 +2822,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const residence = isFutureResidenceV149(current.residenceV149) ? { state: current.residenceV149, completed: [] as string[] }
       : recordResidenceFieldEventV149(normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149(),
         { regionId: event.regionId, runId: event.runId, action: event.action });
-    if (residence.completed.length) setToast(`Mission de seuil vérifiée : ${residence.completed.map(id => houseV149(id)?.title ?? id).join(", ")}. Retourne à la demeure pour recevoir la clé.`);
-    return persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state},
+    const saved = persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state},
       residenceV149: residence.state, ...settleResidenceLifeForRegionV150(current, state) });
+    if (saved && residence.completed.length) setToast(`Mission de seuil vérifiée : ${residence.completed.map(id => houseV149(id)?.title ?? id).join(", ")}. Retourne à la demeure pour recevoir la clé.`);
+    return saved;
   }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
   const residenceActionV149 = useCallback((houseId: string, action: ResidenceActionV149): { ok: boolean; message: string } => {
     const current = saveRef.current;

@@ -7,7 +7,7 @@
  */
 import { useState } from "react";
 import { isFutureOriginV151, originOfSaveV151, originV151 } from "./systems/originsV151";
-import { trophyTransitionOpenV157, trophyTransitionV157 } from "./systems/originTrophyV157";
+import { trophyTransitionOpenV157, trophyTransitionRecordV157, trophyTransitionV157 } from "./systems/originTrophyV157";
 import styles from "./ResidencePanelV149.module.css";
 
 export type OriginTrophyActionV157 =
@@ -27,9 +27,9 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
   if (isFutureOriginV151(origin)) return null;
   const state = originOfSaveV151(origin);
   const transition = trophyTransitionV157(state.originId);
-  const record = state.transitions[transition.id];
   const holdsOriginal = !!transition.originalId && heldOriginalIds.includes(transition.originalId);
   const ownedIds = trophies.map(trophy => trophy.id);
+  const record = trophyTransitionRecordV157(state, ownedIds);
   const open = trophyTransitionOpenV157({ atWorkshop, ownedTrophyIds: ownedIds });
   if (!atWorkshop) return null;
   const header = <header>
