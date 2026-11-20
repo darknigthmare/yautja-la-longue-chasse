@@ -4,9 +4,12 @@ import ResidencePanelV149 from "./ResidencePanelV149";
 import ResidenceLifePanelV150 from "./ResidenceLifePanelV150";
 import OriginTransitionPanelV151 from "./OriginTransitionPanelV151";
 import OriginTrophyTransitionPanelV157, { type OriginTrophyActionV157 } from "./OriginTrophyTransitionPanelV157";
-import { trophyTransitionChooseV157, trophyTransitionStepV157 } from "./systems/originTrophyV157";
+import { trophyTransitionStepV157 } from "./systems/originTrophyV157";
 import HouseScenesPanelV154 from "./HouseScenesPanelV154";
-import { applySceneActionV154, emptyResidenceScenesV154, guestsAtHouseV154, isFutureResidenceScenesV154, normalizeResidenceScenesV154, type SceneActionV154 } from "./systems/residenceScenesV154";
+import { emptyResidenceScenesV154, guestsAtHouseV154, isFutureResidenceScenesV154, normalizeResidenceScenesV154, type SceneActionV154 } from "./systems/residenceScenesV154";
+import PathMissionPanelV158 from "./PathMissionPanelV158";
+import HouseMaterialsPanelV158 from "./HouseMaterialsPanelV158";
+import { applyPathMissionActionV158, applySceneActionWithStockV158, buyMaterialV158, emptyPathObjectsV158, heldPathOriginalIdsV158, isFuturePathObjectsV158, normalizePathObjectsV158, trophyChooseWithOriginalsV158, type PathMissionActionV158, type PathPlaceContextV158 } from "./systems/pathObjectsV158";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
 import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
 import { actMobility, type MobilityCommand } from "./systems/mobility/ledger";
@@ -2231,7 +2234,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2241,7 +2244,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2897,7 +2900,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const residenceSceneActionV154 = useCallback((action: SceneActionV154): { ok: boolean; message: string } => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
-    if (isFutureResidenceScenesV154(current.residenceScenesV154) || isFutureResidenceV149(current.residenceV149) || isFutureResidenceLifeV150(current.residenceLifeV150))
+    if (isFutureResidenceScenesV154(current.residenceScenesV154) || isFutureResidenceV149(current.residenceV149) || isFutureResidenceLifeV150(current.residenceLifeV150) || isFuturePathObjectsV158(current.pathObjectsV158))
       return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
     const residence = normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149();
     const region = current.homeworldRegionV68;
@@ -2905,9 +2908,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const guests = atHouseId ? guestsAtHouseV154(normalizeResidenceLifeV150(current.residenceLifeV150), atHouseId, region ? { runId: region.runId, tick: region.tick } : null) : { present: [], pending: false };
     const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed,
       runId: region?.runId ?? null, guestsPresent: guests.present, invitationPending: guests.pending };
-    const change = applySceneActionV154(normalizeResidenceScenesV154(current.residenceScenesV154) ?? emptyResidenceScenesV154(), residence, action, context);
+    // V158: a confirmed option takes its materials from the real reserve, in the same write as the decision.
+    const objects = normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158();
+    const change = applySceneActionWithStockV158(normalizeResidenceScenesV154(current.residenceScenesV154) ?? emptyResidenceScenesV154(), objects, residence, action, context);
     if (!change.ok) return { ok: false, message: change.reason };
-    return persistSocialProgress({ residenceScenesV154: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+    const update = change.objects === objects ? { residenceScenesV154: change.scenes } : { residenceScenesV154: change.scenes, pathObjectsV158: change.objects };
+    return persistSocialProgress(update) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
   }, [entry.ownerCreatedAt, persistSocialProgress]);
   const originActionV151 = useCallback((action: { kind: "step"; index: number } | { kind: "choose"; choice: 0 | 1 }): { ok: boolean; message: string } => {
     const current = saveRef.current;
@@ -2927,16 +2933,52 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const originTrophyActionV157 = useCallback((action: OriginTrophyActionV157): { ok: boolean; message: string } => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
-    if (isFutureOriginV151(current.originV151)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    if (isFutureOriginV151(current.originV151) || isFuturePathObjectsV158(current.pathObjectsV158)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const objects = normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158();
     const context = { atWorkshop: screen === "trophies" && !trophyTutorialOpen && !trophyWorkshop && pendingTrophyCommit === null,
-      ownedTrophyIds: current.trophies.map((trophy: { id: string }) => trophy.id) };
+      ownedTrophyIds: current.trophies.map((trophy: { id: string }) => trophy.id), heldOriginalIds: heldPathOriginalIdsV158(objects) };
     // An older save is read with the documented default origin; it is written only now, once used.
     const origin = originOfSaveV151(current.originV151);
-    const change = action.kind === "step" ? trophyTransitionStepV157(origin, action.trophyId, action.index, context)
-      : trophyTransitionChooseV157(origin, action.trophyId, action.choice, context);
+    if (action.kind === "step") {
+      const step = trophyTransitionStepV157(origin, action.trophyId, action.index, context);
+      if (!step.ok) return { ok: false, message: step.reason };
+      return persistSocialProgress({ originV151: step.state }) ? { ok: true, message: step.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+    }
+    // V158: the voie original really held lets the scene succeed; O4 « archives » moves it in the same write.
+    const change = trophyChooseWithOriginalsV158(origin, objects, action.trophyId, action.choice, context);
     if (!change.ok) return { ok: false, message: change.reason };
-    return persistSocialProgress({ originV151: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+    const update = change.objects === objects ? { originV151: change.origin } : { originV151: change.origin, pathObjectsV158: change.objects };
+    return persistSocialProgress(update) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
   }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
+  // V158: voie mission that puts the -02 object in play (provenance), at the workshop or on a region route.
+  const pathMissionActionV158 = useCallback((action: PathMissionActionV158, place: Omit<PathPlaceContextV158, "originId" | "rankId">): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureOriginV151(current.originV151) || isFuturePathObjectsV158(current.pathObjectsV158)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const origin = originOfSaveV151(current.originV151);
+    const region = current.homeworldRegionV68;
+    // The place is re-read from the save: the workshop flag from the screen, the region from the last checkpoint.
+    const context: PathPlaceContextV158 = { originId: origin.originId, rankId: current.profile.rankId,
+      atWorkshop: place.atWorkshop && screen === "trophies" && !trophyTutorialOpen && !trophyWorkshop && pendingTrophyCommit === null,
+      region: !place.atWorkshop && region ? { regionId: region.regionId, runId: region.runId, zone: region.zone, eventReceipts: region.eventReceipts } : null };
+    const change = applyPathMissionActionV158(normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158(), action, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ pathObjectsV158: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
+  // V158: one material unit bought at the quarter workshop; clan marks and reserve change in one write.
+  const buyMaterialActionV158 = useCallback((item: string): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFuturePathObjectsV158(current.pathObjectsV158) || isFutureResidenceV149(current.residenceV149)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const region = current.homeworldRegionV68;
+    const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
+    const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    const residence = normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149();
+    const change = buyMaterialV158(normalizePathObjectsV158(current.pathObjectsV158) ?? emptyPathObjectsV158(), current.profile.clanMarks, item, residence, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ pathObjectsV158: change.state, profile: { ...current.profile, clanMarks: change.clanMarks } })
+      ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
   const bibleActionHomeworldV86 = useCallback((action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86 => {
     const previous=normalizeBibleSceneLedgerV86(saveRef.current.homeworld.bibleScenesV86)??defaultBibleSceneLedgerV86(entry.ownerCreatedAt);
     const fail=(message:string):BibleSceneResultV86=>({ok:false,changed:false,ledger:previous,message});
@@ -4807,10 +4849,20 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                   regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={originActionV151} />
                 <HouseScenesPanelV154 house={house} residence={save.residenceV149} life={save.residenceLifeV150} scenes={save.residenceScenesV154}
                   region={save.homeworldRegionV68 ? { runId: save.homeworldRegionV68.runId, tick: save.homeworldRegionV68.tick } : null} rankId={save.profile.rankId} disabled={disabled}
-                  regionAllowed={(regionId: string) => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceSceneActionV154} />
+                  regionAllowed={(regionId: string) => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceSceneActionV154}
+                  stock={(() => { const objects = normalizePathObjectsV158(save.pathObjectsV158) ?? emptyPathObjectsV158(); return { materials: objects.materials, receipts: objects.receipts }; })()} />
+                <HouseMaterialsPanelV158 house={house} objects={save.pathObjectsV158} clanMarks={save.profile.clanMarks} disabled={disabled} onBuy={buyMaterialActionV158} />
               </>;
             }}
-            guestsV150={(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }) => guestsInSceneV150(normalizeResidenceLifeV150(save.residenceLifeV150) ?? emptyResidenceLifeV150(), view)} />
+            guestsV150={(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }) => guestsInSceneV150(normalizeResidenceLifeV150(save.residenceLifeV150) ?? emptyResidenceLifeV150(), view)}
+            pathMissionV158={(disabled: boolean) => {
+              // Read from the last durable checkpoint, the same state the action handler checks.
+              const checkpoint = save.homeworldRegionV68;
+              if (!checkpoint) return null;
+              const place = { atWorkshop: false, region: { regionId: checkpoint.regionId, runId: checkpoint.runId, zone: checkpoint.zone, eventReceipts: checkpoint.eventReceipts } };
+              return <PathMissionPanelV158 origin={save.originV151} objects={save.pathObjectsV158} rankId={save.profile.rankId} disabled={disabled}
+                place={place} onAction={(action: PathMissionActionV158) => pathMissionActionV158(action, place)} />;
+            }} />
         </Suspense>
       </section>}
       {screen === "homeworld-passage-v67" && hydrated && save.homeworldPassageV67 && <section inert={settingsOpen} data-homeworld-passage-campaign>
@@ -6117,7 +6169,12 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </button>
               </div>
             </article>
+            <PathMissionPanelV158 origin={save.originV151} objects={save.pathObjectsV158} rankId={save.profile.rankId}
+              place={{ atWorkshop: !trophyWorkshop && pendingTrophyCommit === null, region: null }}
+              disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+              onAction={(action: PathMissionActionV158) => pathMissionActionV158(action, { atWorkshop: true, region: null })} />
             <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
+              heldOriginalIds={heldPathOriginalIdsV158(normalizePathObjectsV158(save.pathObjectsV158))}
               disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
               trophies={trophyRecords.map((trophy: { id: string; targetName: string; claimedAt: string }) =>
                 ({ id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}` }))}

@@ -13,11 +13,12 @@ import {
   sceneConsumptionV154, sceneGesturesV154, sceneOptionsV154, sceneTriggerV154, type SceneActionV154, type SceneContextV154,
 } from "./systems/residenceScenesV154";
 import { loadHouseDialogueV154, type HouseDialogueV154 } from "./systems/houseDialogueV154";
+import { sceneMaterialNeedsV158 } from "./systems/pathObjectsV158";
 import HouseSceneConversationV154 from "./HouseSceneConversationV154";
 import type { HomeworldRegionIdV68 } from "./systems/homeworldRegionsV68";
 import styles from "./ResidencePanelV149.module.css";
 
-export default function HouseScenesPanelV154({ house, residence, life, scenes, region, rankId, disabled, regionAllowed, onAction, loadDialogue = loadHouseDialogueV154, dialogues }: {
+export default function HouseScenesPanelV154({ house, residence, life, scenes, region, rankId, disabled, regionAllowed, onAction, loadDialogue = loadHouseDialogueV154, dialogues, stock }: {
   house: ResidenceHouseV149;
   residence: unknown;
   life: unknown;
@@ -31,6 +32,8 @@ export default function HouseScenesPanelV154({ house, residence, life, scenes, r
   loadDialogue?(sceneId: string): Promise<HouseDialogueV154 | null>;
   /** Already loaded dialogues (tests, or a parent cache). */
   dialogues?: Record<string, HouseDialogueV154 | null>;
+  /** V158: real material reserve and the scenes whose materials were taken (`<sceneId>:materials`). */
+  stock?: { materials: Readonly<Record<string, number>>; receipts: readonly string[] };
 }) {
   const [message, setMessage] = useState("");
   const [openId, setOpenId] = useState<string | null>(null);
@@ -80,7 +83,11 @@ export default function HouseScenesPanelV154({ house, residence, life, scenes, r
           {resolved ? <div data-house-scene-result={record!.choice}>
             <p><b>{options[record!.choice!]}</b></p>
             <p>{scene.consequence}</p>
-            {record!.consumed.length > 0 && <p className={styles.note} data-house-scene-consumed>Consommation inscrite : {record!.consumed.map(c => `${c.quantity ?? "quantité non indiquée"} × ${c.item}`).join(", ")} (matériau absent du jeu : rien n’est prélevé, proposé).</p>}
+            {record!.consumed.length > 0 && (stock ? <p className={styles.note} data-house-scene-consumed={stock.receipts.includes(`${scene.id}:materials`) ? "taken" : "inscribed"}>
+              {stock.receipts.includes(`${scene.id}:materials`)
+                ? `Prélevé de la réserve : ${sceneMaterialNeedsV158(scene.id, record!.choice!).map(c => `${c.quantity} × ${c.item}`).join(", ")}.`
+                : `Consommation inscrite avant la réserve de matériaux : ${record!.consumed.map(c => `${c.quantity ?? "quantité non indiquée"} × ${c.item}`).join(", ")} ; rien n’a été prélevé.`}</p>
+              : <p className={styles.note} data-house-scene-consumed>Consommation inscrite : {record!.consumed.map(c => `${c.quantity ?? "quantité non indiquée"} × ${c.item}`).join(", ")} (matériau absent du jeu : rien n’est prélevé, proposé).</p>)}
           </div> : !open ? <button disabled={disabled || !canPlay} data-house-scene-open={scene.id} onClick={() => { setOpenId(scene.id); setPreview(null); setMessage(""); }}>
             {done > 0 ? `Reprendre (${done}/${gestures.length} gestes)` : "Jouer la scène"}</button> : null}
           {open && !resolved && <>
@@ -94,7 +101,9 @@ export default function HouseScenesPanelV154({ house, residence, life, scenes, r
             </div>}
             {preview !== null && done >= gestures.length && <div className={styles.block} data-house-scene-preview-of={preview}>
               <p>{scene.consequence}</p>
-              {sceneConsumptionV154(scene.id, preview).map(c => <p key={c.item} className={styles.note} data-house-scene-cost>
+              {sceneConsumptionV154(scene.id, preview).map(c => stock ? <p key={c.item} className={styles.note} data-house-scene-cost data-house-scene-stock={stock.materials[c.item] ?? 0}>
+                Consomme : {c.quantity ?? 1} × {c.item} (« {c.source} »){c.quantity === null && " ; quantité non indiquée, une unité (proposé)"}. Réserve : {stock.materials[c.item] ?? 0}.{(stock.materials[c.item] ?? 0) < (c.quantity ?? 1) && " Réserve insuffisante : la confirmation sera refusée."}</p>
+                : <p key={c.item} className={styles.note} data-house-scene-cost>
                 Consomme : {c.quantity ?? "quantité non indiquée"} × {c.item} (« {c.source} »).{!MATERIALS_IN_GAME_V154.includes(c.item) && " Ce matériau n’existe pas dans le jeu : la consommation est inscrite au registre, rien n’est prélevé (proposé)."}</p>)}
               <p className={styles.note}>Aperçu gratuit ; la décision ne s’écrit qu’à la confirmation, une seule fois.</p>
               <button disabled={disabled} data-house-scene-confirm={preview} onClick={() => act({ kind: "choose", sceneId: scene.id, choice: preview })}>Confirmer ce choix</button>

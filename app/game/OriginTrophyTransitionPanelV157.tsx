@@ -14,8 +14,10 @@ export type OriginTrophyActionV157 =
   | { kind: "step"; trophyId: string; index: number }
   | { kind: "choose"; trophyId: string; choice: 0 | 1 };
 
-export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWorkshop, disabled, onAction }: {
+export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWorkshop, disabled, onAction, heldOriginalIds = [] }: {
   origin: unknown; atWorkshop: boolean; disabled: boolean;
+  /** V158: voie originals really under the hunter's custody. */
+  heldOriginalIds?: readonly string[];
   /** The player's own trophies (SaveGame.trophies), with a display label. */
   trophies: readonly { id: string; label: string }[];
   onAction(action: OriginTrophyActionV157): { ok: boolean; message: string };
@@ -26,6 +28,7 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
   const state = originOfSaveV151(origin);
   const transition = trophyTransitionV157(state.originId);
   const record = state.transitions[transition.id];
+  const holdsOriginal = !!transition.originalId && heldOriginalIds.includes(transition.originalId);
   const ownedIds = trophies.map(trophy => trophy.id);
   const open = trophyTransitionOpenV157({ atWorkshop, ownedTrophyIds: ownedIds });
   if (!atWorkshop) return null;
@@ -48,7 +51,8 @@ export default function OriginTrophyTransitionPanelV157({ origin, trophies, atWo
     <section className={styles.panel} data-origin-trophy-v157={transition.id} data-origin-v151={state.originId}>
       {header}
       <p>{transition.scene}</p>
-      {!transition.object.inGame && <p className={styles.note} data-origin-trophy-absent>{transition.object.absence}</p>}
+      {holdsOriginal ? <p className={styles.note} data-origin-trophy-original={transition.originalId}>Original sous ta garde : {transition.object.name}. Son propriétaire et son emplacement restent inchangés par l’exposition.</p>
+        : !transition.object.inGame && <p className={styles.note} data-origin-trophy-absent>{transition.object.absence}</p>}
       {record?.resolved ? <div className={styles.block} data-origin-resolved={record.success ? "success" : "resolved"}>
         <p><b>{transition.options[record.choice!]}</b></p>
         <p>{transition.reactions[record.choice!]}</p>

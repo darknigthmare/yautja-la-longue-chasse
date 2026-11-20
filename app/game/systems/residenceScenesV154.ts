@@ -25,7 +25,8 @@
  * Choix du jeu « proposé » :
  *   - aucun de ces matériaux n'existe dans le jeu (pas de stock domestique) :
  *     la consommation est inscrite dans le registre de la scène, rien n'est
- *     prélevé et le choix n'est pas bloqué ;
+ *     prélevé et le choix n'est pas bloqué (V158 : le jeu passe désormais par
+ *     `applySceneActionWithStockV158`, qui prélève une réserve réelle) ;
  *   - lecture des déclencheurs dans l'état de partie (table TRIGGERS) ; les
  *     conditions de météo ou d'heure « fictionnelles » ne sont pas simulées ;
  *   - le déclencheur est exigé pour commencer (premier geste) ; une scène

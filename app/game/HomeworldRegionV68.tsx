@@ -48,6 +48,8 @@ export interface HomeworldRegionV68Props {
   residenceV149?(buildingId: string, disabled: boolean): ReactNode;
   /** V150: guests of the player's house at this tick (village walk or seated inside). */
   guestsV150?(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }): readonly { residentId: string; x: number; y: number; inside: boolean; moving: boolean; label: string }[];
+  /** V158: voie mission played on this route (null when none applies here). */
+  pathMissionV158?(disabled: boolean): ReactNode;
 }
 const axes = [['left', '←'], ['up', '↑'], ['down', '↓'], ['right', '→']] as const;
 type Move = typeof axes[number][0];
@@ -302,6 +304,7 @@ export default function HomeworldRegionV68(props: HomeworldRegionV68Props) {
       <b>{narratives[0]?.instruction ?? regionObjectiveV68(state)}</b>
       {regionId===b.regionId&&props.onBibleSceneAction&&state.zone==='village'&&<span>Halte des Crêtes : table de la place, après le relevé remis au guide.{bibleNearby?' Arrête-toi puis interagis.':''}</span>}
       {destination && routeProgress && <span data-village-route-instruction-v70>{destination.name} · {routeProgress.arrived ? 'Approche atteinte : interagir sur place' : routeProgress.offRoute ? 'Reviens aux repères tracés au sol' : `${routeProgress.metres} m à pied`}</span>}
+      {props.pathMissionV158?.(!localAllowed)}
       <span>{state.zone === 'village' ? `${state.visitedBuildings.length}/12 lieux visités · ${state.greeted.length}/12 témoins rencontrés · ${definition.residents.length + HOMEWORLD_VILLAGE_LIFE_V69[regionId].residents.length} habitants` : state.zone === 'passage' ? `${Math.round(state.walked * .023)} m parcourus · ${state.routeVisited.length}/${definition.route.length} bornes` : serviceBuilding?.label}</span>
     </aside>
     <footer className={styles.controls} inert={modal}><div>{axes.map(([id, label]) => <button key={id} aria-label={`Marcher ${id}`} onPointerDown={e => pointer(id, true, e)} onPointerUp={e => pointer(id, false, e)} onPointerCancel={e => pointer(id, false, e)} onLostPointerCapture={() => touch.current.delete(id)}>{label}</button>)}</div><button disabled={!bibleNearby&&!interaction && !activity && !villageResident} data-region-interact onPointerDown={e => { e.preventDefault(); interact.current = true; }}>{bibleNearby?'Parler à l’hôte de la halte':interaction?.label ?? (activity ? `Participer : ${activity.name}` : villageResident ? `Parler : ${villageResident.name}` : 'Approche un lieu ou un habitant')} <small>{controlActionShortcut('hunt.interact', save.settings.controlBindings)}</small></button><small>{controlActionShortcut('hunt.pause', save.settings.controlBindings)} · Pause</small></footer>
