@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: yautja-p0p1-candidate-20261120
+  group: yautja-p0p1-final-candidate-20261120
   cancel-in-progress: false
 
 jobs:
@@ -19,13 +19,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'fbee40429c7588f841f79c3763f73a00baa62ade'
       BASE_COMMIT: '5c44bf24506c71792f9dffa49761be6a87879bd6'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
+          ref: 'fbee40429c7588f841f79c3763f73a00baa62ade'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -76,6 +76,11 @@ jobs:
           mapfile -t changed < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
           mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
             tests/scene-audio.test.mjs \
+            tests/canopy-traversal-v112.test.mjs \
+            tests/hunt-canopy-runtime-v112.test.mjs \
+            tests/hunt-skinning-worksite-20261109.test.mjs \
+            tests/hunt-harvest-runtime-v111.test.mjs \
+            tests/trophy-harvest-v111.test.mjs \
             tests/warp-module-bay.test.mjs \
             tests/warp-epochs-v165.test.mjs \
             tests/tantalus-warp-v167.test.mjs \
@@ -100,7 +105,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: runtime-candidate-e045fcc30bf68427e9a44587429fcfd922b99dfd
+          name: runtime-candidate-fbee40429c7588f841f79c3763f73a00baa62ade
           path: outputs/qa-asset-raccords-20261120/
           if-no-files-found: error
 
@@ -111,7 +116,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'fbee40429c7588f841f79c3763f73a00baa62ade'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -124,12 +129,12 @@ jobs:
       COMMAND_SUMMARY_OUTPUT: outputs/p0p1-native/command-keyboard
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
       YAUTJA_LOGISTICS_V108_QA_SCENARIO: storage-recovery
-      YAUTJA_QA_RUNTIME_COMMIT: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
+      YAUTJA_QA_RUNTIME_COMMIT: 'fbee40429c7588f841f79c3763f73a00baa62ade'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
+          ref: 'fbee40429c7588f841f79c3763f73a00baa62ade'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -155,6 +160,119 @@ jobs:
             /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
             /public/game/homeworld/v64/clan-shuttle.png
             /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /public/game/assets/clan-field-20261103/
+            /public/game/assets/v133/decals/decal-atlas.webp
+            /public/game/ships/v13/classic-predator-spaceship-top.webp
+            /public/game/backgrounds/ship-hub-v4.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/classic/parts/head.webp
+            /public/game/sprites/v62/heads/elder-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/net/full.webp
+            /public/game/sprites/v62/heads/super-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/net/full.webp
+            /public/game/sprites/v62/heads/feral-head.png
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/torso.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/pelvis.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/upper-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/lower-arm-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/hand-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-front.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/thigh-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/shin-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/parts/foot-back.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/net/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/super/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/elder/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/feral/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/huntress/full.webp
+            /public/game/assets/v3/actors/yautja/hunter/body/young/full.webp
+            /public/game/sprites/v5/film-plates/jungle-hunter.png
+            /public/game/sprites/v5/film-plates/city-hunter.png
+            /public/game/sprites/v5/film-plates/greyback.png
+            /public/game/sprites/v5/film-plates/boar.png
+            /public/game/sprites/v5/film-plates/shaman.png
+            /public/game/sprites/v5/film-plates/lost-borg.png
+            /public/game/sprites/v5/film-plates/snake.png
+            /public/game/sprites/v5/film-plates/warrior.png
+            /public/game/sprites/v5/film-plates/guardian.png
+            /public/game/sprites/v5/film-plates/lost-scout.png
+            /public/game/sprites/v5/film-plates/lost-stalker.png
+            /public/game/sprites/v5/film-plates/scar.png
+            /public/game/sprites/v5/film-plates/celtic.png
+            /public/game/sprites/v5/film-plates/chopper.png
+            /public/game/sprites/v5/film-plates/avp-elder.png
+            /public/game/sprites/v5/film-plates/ancient-warrior.png
+            /public/game/sprites/v5/film-plates/temple-guard.png
+            /public/game/sprites/v62/masks/city.png
+            /public/game/assets/v3/actors/yautja/hunter/masks/elder.webp
+            /public/game/sprites/v62/masks/boar.png
+            /public/game/sprites/v62/masks/snake.png
+            /public/game/sprites/v62/masks/enforcer.png
+            /public/game/sprites/v62/masks/scar.png
+            /public/game/sprites/v62/masks/celtic.png
+            /public/game/sprites/v62/masks/chopper.png
       - name: Node 22
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
@@ -182,14 +300,21 @@ jobs:
       - name: Physical clan logistics and conflicting tabs
         if: ${{ !cancelled() && steps.server.outcome == 'success' }}
         run: node scripts/qa-clan-supply-route-v109.mjs
-      - name: Protect journal keyboard actions in the live three-squad panel
+      - name: Protect native keyboard actions in the mounted three-squad component
         if: ${{ !cancelled() && steps.server.outcome == 'success' }}
         run: node scripts/qa-clan-war-summary-keyboard-20261120.mjs
+      - name: Exercise both W-02 bell choices on the qualified Warp route
+        if: ${{ !cancelled() && steps.server.outcome == 'success' }}
+        env:
+          WARP_W02_QA_ORIGIN: http://127.0.0.1:3121
+          WARP_W02_QA_SOURCE_COMMIT: fbee40429c7588f841f79c3763f73a00baa62ade
+          WARP_W02_QA_OUTPUT: outputs/p0p1-native/warp-w02
+        run: node scripts/qa-warp-w02-native-20261120.mjs
       - name: Preserve browser evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: browser-recipes-e045fcc30bf68427e9a44587429fcfd922b99dfd
+          name: browser-recipes-fbee40429c7588f841f79c3763f73a00baa62ade
           path: |
             outputs/p0p1-native/
             outputs/phg-decal-parity/
