@@ -84,3 +84,17 @@ test("an incompatible honor ledger stays intact through backup recovery and an o
     assert.equal(disk.getItem(key + ".backup"), backup);
   }
 });
+
+test("saving a V168 pilot archive preserves its rank trial receipts for a compatible version", () => {
+  const disk = storage();
+  const old = fresh();
+  assert.equal(saves.writeSaveWithStatus(old, disk).persisted, true);
+  const archive = { version: 1, attempts: [{ id: "trial-original", receipts: ["keep"] }] };
+  const byteProof = JSON.stringify({ ...old, profile: { ...old.profile, rankTrialsV168: archive } });
+  disk.setItem(key, byteProof);
+  assert.deepEqual(saves.normalizeSave(JSON.parse(byteProof)).profile.rankTrialsV168, archive);
+  assert.equal(saves.parseSaveImport(byteProof).failure, "future-version");
+  assert.equal(saves.loadSaveWithStatus(disk).failure, "future-version");
+  assert.equal(saves.writeSaveWithStatus(old, disk).failure, "protected-save");
+  assert.equal(disk.getItem(key), byteProof);
+});

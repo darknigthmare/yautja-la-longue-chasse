@@ -1256,6 +1256,7 @@ export function normalizeSave(value: unknown): SaveGame {
       ).slice(0, 32),
       rankId: acquiredRankId,
       acquiredRankIdV166: acquiredRankId,
+      ...(rawProfile.rankTrialsV168 == null ? {} : { rankTrialsV168: rawProfile.rankTrialsV168 }),
       honor,
       clanMarks: nonNegativeInteger(
         rawProfile.clanMarks,
@@ -1705,6 +1706,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (isFutureHuntingHoundsV147(value.houndsV147))
     return { save: null, failure: "future-version" };
   // V147: a newer or unreadable tribunal record is refused, never silently cleared.
+  // V168 trial archives are owned by the pilot branch until the canonical rites exist.
+  // Refuse to replace them with a campaign that cannot read those receipts.
+  if (isRecord(value.profile) && value.profile.rankTrialsV168 != null)
+    return { save: null, failure: "future-version" };
   const honorStatusV169 = honorSourcesStatusV169(value.honorSourcesV169);
   if (honorStatusV169 === "future-version") return { save: null, failure: "future-version" };
   if (honorStatusV169 === "invalid") return { save: null, failure: "invalid-save", protectedHonorLedger: true };
