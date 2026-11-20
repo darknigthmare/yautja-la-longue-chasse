@@ -91,7 +91,9 @@ try {
       const room = route[index - 1], next = route[index];
       const door = motion.SHIP_INTERIOR_25D_ROOMS[room].doors.find(candidate => candidate.targetRoomId === next);
       assert.ok(door);
-      await ship.locator('[data-ship-door="' + door.id + '"][data-door-ready="true"]').waitFor();
+      // The native door pivot is deliberately zero-sized. Its live ready
+      // attribute proves reachability; the visible interaction button commits.
+      await ship.locator('[data-ship-door="' + door.id + '"][data-door-ready="true"]').waitFor({ state: 'attached' });
       await ship.locator('[data-ship-interact]').click();
       await page.locator(shipSelector + '[data-ship-room="' + next + '"]').waitFor();
     }
@@ -114,7 +116,10 @@ try {
   const mentorAction = mentor.locator('[data-cradle-return-mentor-action]');
   await mentorAction.waitFor();
   const sprites = await mentor.locator('img').evaluateAll(async images => {
-    await Promise.all(images.map(image => image.decode()));
+    await Promise.all(images.map(async image => {
+      try { await image.decode(); }
+      catch { throw Error('Unable to decode the mentor’s original layer: ' + (image.currentSrc || image.src)); }
+    }));
     return images.map(image => ({ url: image.currentSrc, width: image.naturalWidth, height: image.naturalHeight }));
   });
   assert(sprites.length > 0 && sprites.every(sprite => sprite.width > 0 && sprite.height > 0));
