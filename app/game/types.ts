@@ -733,6 +733,8 @@ export interface SaveGame {
   houndsV147?: HuntingHoundsV147 | null;
   /** V147: infractions, played trials, verdicts, rank freeze and exile; older saves may omit. */
   tribunalV147?: import("./systems/honorTribunalV147").HonorTribunalV147 | null;
+  /** V149: first residence, local respect, moves (BUILD5-07). Absent until first used. */
+  residenceV149?: import("./systems/residenceV149").ResidenceStateV149 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

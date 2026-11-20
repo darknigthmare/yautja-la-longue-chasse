@@ -1,4 +1,5 @@
 import { inspectMobilityLedger } from "./systems/mobility/ledger";
+import { isFutureResidenceV149, normalizeResidenceV149 } from "./systems/residenceV149";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
@@ -1312,6 +1313,8 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
+    // V149: written only once the player has a residence state; old saves keep their shape.
+    ...(source.residenceV149 === undefined ? {} : { residenceV149: normalizeResidenceV149(source.residenceV149) }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1654,6 +1657,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     if (typeof value.createdAt !== "string" ||
         !normalizeGauntletCampaignV134(value.gauntletV134,value.createdAt))
       return { save:null, failure:"invalid-save" };
+  }
+  if (value.residenceV149 !== undefined && value.residenceV149 !== null) {
+    if (isFutureResidenceV149(value.residenceV149)) return { save: null, failure: "future-version" };
+    if (!normalizeResidenceV149(value.residenceV149)) return { save: null, failure: "invalid-save" };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;
