@@ -231,5 +231,139 @@ def main():
     assert not git("status", "--porcelain")
     print("INTEGRATION_CHECKPOINT", git("rev-parse", "HEAD"), git("rev-parse", "HEAD^{tree}"), flush=True)
 
+import hashlib
+import json
+
+WARP_PATCH = Path(os.environ["RUNNER_TEMP"]) / "warp-tantalus-patch.json"
+CANOPY_PATCH = Path(os.environ["RUNNER_TEMP"]) / "canopy-grip-patch.json"
+PATCHES = {
+    138: "88ba0f8d7d774f77cb039235a30be22d307974d8",
+    142: "812024aabb4d0889ab258778fcf55c805c9f01d7",
+    157: "484d40cbda380e33306b19adcd7e700087a2aa29",
+    160: "0b827b7f2a4a4634ee160df50d70b9863db0af7d",
+}
+ASSETS = {
+    "public/game/warp/w02/cedar-pass-1629.webp": "93ba180bb0161bb59e51d1f73d14383214553a80",
+    "public/game/hounds/v147/field-hound.webp": "7d7f779e0b74e0bb4b816bc5b84d8ff8b497bd26",
+}
+PROVENANCE = {
+    "art-source/v113/20261120-integration/cedar-pass-1629.png": "9947e8aed721a96c2d617933184de0b8c3a775aa",
+    "art-source/v113/20261120-integration/field-hound.png": "3404e87975fefd0d0197675ee1603d69735c8956",
+}
+
+def resolve_residence_replay(path):
+    def preserve_arcs(match):
+        ours, base, theirs = match.groups()
+        if "const arcs = recordMinorArcsFieldEventV160" not in ours or "const saved = persistSocialProgress" not in theirs:
+            return match[0]
+        arcs_line = next(line for line in ours.splitlines(True) if "const arcs = recordMinorArcsFieldEventV160" in line)
+        arcs_record = "      ...(arcs.changed && arcs.state ? { minorArcsV160: arcs.state } : {})"
+        saved_anchor = "    const saved = persistSocialProgress"
+        index = theirs.index(saved_anchor)
+        end = theirs.index(" });", index)
+        return theirs[:index] + arcs_line + theirs[index:end] + ",\n" + arcs_record + theirs[end:]
+    file = Path(path)
+    current = file.read_text()
+    merged = CONFLICT.sub(preserve_arcs, current)
+    if merged != current:
+        file.write_text(merged)
+    if not re.search(r"^<{7} ", merged, re.M):
+        git("add", "--", path)
+
+def apply_patch_commit(pr, sha):
+    assert git("rev-parse", f"{sha}^") == HEADS[pr]
+    git("merge-base", "--is-ancestor", HEADS[pr], "HEAD")
+    result = git("cherry-pick", sha, check=False)
+    if result.returncode:
+        auto_resolve()
+        if pr == 157 and "app/game/GameClient.tsx" in conflicts():
+            resolve_residence_replay("app/game/GameClient.tsx")
+            auto_resolve()
+        pending = conflicts()
+        if pending:
+            print(f"Unresolved patch for #{pr}: {pending}", file=sys.stderr)
+            print(git("diff", "--cc", "--", *pending)[:25000], file=sys.stderr)
+            raise RuntimeError(f"Patch conflicts for #{pr}")
+        git("cherry-pick", "--continue")
+    print(f"Applied corrections for #{pr}: {git('rev-parse','--short','HEAD')}", flush=True)
+
+def apply_manifest(manifest_path):
+    for entry in json.loads(manifest_path.read_text()):
+        path = entry["path"]
+        def apply(text):
+            for change in entry["edits"]:
+                before, after = change["before"], change["after"]
+                if text.count(before) != 1:
+                    raise RuntimeError(f"Patch anchor for {path} occurs {text.count(before)} times: {before[:320]!r}")
+                text = text.replace(before, after, 1)
+            return text
+        edit_file(path, apply)
+        git("add", "--", path)
+
+def field_hound(text):
+    text = exact_replace(text, "interface AssetBank {\n", "interface AssetBank {\n  houndPortraitV147?: HTMLImageElement | null;\n")
+    text = exact_replace(text, "  drawHoundV147(context, state);", "  drawHoundV147(context, state, assets.houndPortraitV147);")
+    text = exact_replace(text,
+        "/** Provisional silhouette until the hound sprites are admitted (no runtime art yet). */\nfunction drawHoundV147(context: CanvasRenderingContext2D, state: GameState): void {",
+        'const FIELD_HOUND_SPRITE_V147 = "/game/hounds/v147/field-hound.webp";\n\nfunction drawHoundV147(context: CanvasRenderingContext2D, state: GameState, portrait?: HTMLImageElement | null): void {')
+    start = text.index('  context.fillStyle = "#2a1d17";', text.index("function drawHoundV147("))
+    end = text.index("  context.restore();\n  if (!field.dead)", start)
+    fallback = "".join("  " + line if line.strip() else line for line in text[start:end].splitlines(True))
+    text = text[:start] + """  if (portrait?.naturalWidth && portrait.naturalHeight) {
+    const height = 54;
+    const width = height * portrait.naturalWidth / portrait.naturalHeight;
+    context.drawImage(portrait, -width * 0.59, -height, width, height);
+  } else {
+""" + fallback + "  }\n" + text[end:]
+    return exact_replace(text, "    queueImage(backgroundPath(mission), (image) => {",
+        "    if (frozenHound) {\n      queueImage(FIELD_HOUND_SPRITE_V147, image => { assets.houndPortraitV147 = image; });\n    }\n\n    queueImage(backgroundPath(mission), (image) => {")
+
+def asset_pins(text):
+    config = json.loads(text)
+    def verified_pins(want, current):
+        pins = {entry["path"]: entry for entry in current}
+        for path, expected in sorted(want.items()):
+            assert git("rev-parse", f"HEAD:{path}") == expected
+            raw = subprocess.check_output(["git", "cat-file", "blob", expected])
+            pin = {"path": path, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
+            assert path not in pins or pins[path] == pin, path
+            pins[path] = pin
+        return list(pins.values())
+    config["assets"] = verified_pins(ASSETS, config["assets"])
+    config["provenance"] = verified_pins(PROVENANCE, config["provenance"])
+    config["scope"] = ("Verified original public files used by Homeworld, native forge and Preserve V6, "
+                       "with newly integrated W-02 scenery and field hound art and their original source images.")
+    return json.dumps(config, ensure_ascii=False, indent=2) + "\n"
+
+def stage_two():
+    assert git("rev-parse", "HEAD") == os.environ["INTEGRATION_SEED"]
+    git("config", "user.name", "Codex")
+    git("config", "user.email", "codex@users.noreply.github.com")
+    git("config", "core.hooksPath", "/dev/null")
+    git("config", "merge.conflictStyle", "diff3")
+    git("config", "merge.renames", "false")
+    git("sparse-checkout", "set", "--no-cone", "/*", "!/*/", "/app/", "/scripts/", "/tests/", "/.github/",
+        "/docs/v113-runtime-public-inputs.json", "/" + INVENTORY, "/.openai/hosting.json", "/build/")
+    git("reset", "--hard", "HEAD")
+    git("fetch", "--filter=blob:none", "--no-tags", "origin",
+        "+refs/heads/codex/assemble-prs-20261120:refs/wave/control", visible=True)
+    assert git("rev-parse", "refs/wave/control") == os.environ["GITHUB_SHA"]
+    git("merge-base", "--is-ancestor", MAIN, "HEAD")
+    for pr in ORDER:
+        git("merge-base", "--is-ancestor", HEADS[pr], "HEAD")
+    for pr, sha in PATCHES.items():
+        apply_patch_commit(pr, sha)
+    apply_manifest(WARP_PATCH)
+    apply_manifest(CANOPY_PATCH)
+    path = "app/game/HuntCanvas.tsx"
+    edit_file(path, field_hound)
+    registry = "docs/v113-runtime-public-inputs.json"
+    edit_file(registry, asset_pins)
+    git("add", "--", path, registry)
+    git("commit", "-m", "Raccorder le Warp et les nouveaux visuels W-02 et du molosse")
+    git("diff", "--check", MAIN, "HEAD", "--", "app", "scripts", "tests", ".github", visible=True)
+    assert not git("status", "--porcelain")
+    print("INTEGRATION_CHECKPOINT", git("rev-parse", "HEAD"), git("rev-parse", "HEAD^{tree}"), flush=True)
+
 if __name__ == "__main__":
-    main()
+    stage_two()

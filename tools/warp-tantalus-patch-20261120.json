@@ -1,0 +1,193 @@
+[
+  {
+    "path": "app/game/systems/warpEpochsV165.ts",
+    "baseBlob": "c589baffbc09f033c7d5ef7e04b900ec698ad80d",
+    "baseHead": "5c6db4b3a57bc268db4a92cd84478c1dd9b40683",
+    "edits": [
+      {
+        "before": "  evaluateChronicleAccess, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,\n} from \"./clanChronicle\";\n\nexport const WARP_EPOCHS_V165_VERSION",
+        "after": "  evaluateChronicleAccess, getChronicleFunctions, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,\n} from \"./clanChronicle\";\nimport { shipAcquisitionOwnedHullV89 } from \"./shipAcquisitionV89\";\n\nexport const WARP_EPOCHS_V165_VERSION"
+      },
+      {
+        "before": "  /** Fonction Adjutant actuelle du joueur. */\n  adjutant: boolean;\n}\ntype ChronicleSaveSource",
+        "after": "  /** Fonction Adjutant actuelle du joueur. */\n  adjutant: boolean;\n  /** Voyage réservé vers une autre branche Warp. */\n  otherWarpTripActive?: boolean;\n}\ntype ChronicleSaveSource"
+      },
+      {
+        "before": "  const blooded = evaluateChronicleAccess(chronicle, \"personal-ship-acquisition\").allowed;\n  return {\n    blooded,\n    personalShip: ship?.personalShipAvailable === true,\n    adjutant: Array.isArray(chronicle?.rites) && chronicle.rites.some(rite => rite?.id === \"adjutant-appointment\"),\n  };",
+        "after": "  const blooded = evaluateChronicleAccess(chronicle, \"personal-ship-acquisition\").allowed;\n  const ownedHull = typeof source.createdAt === \"string\"\n    ? shipAcquisitionOwnedHullV89(source.shipAcquisitionV89, source.createdAt)\n    : null;\n  return {\n    blooded,\n    personalShip: ship?.personalShipAvailable === true || ownedHull !== null,\n    adjutant: getChronicleFunctions(chronicle).includes(\"adjutant\"),\n  };"
+      },
+      {
+        "before": "  if (state?.activeWarpTripId) missing.push({ id: \"trip-active\", label: \"Un voyage est déjà engagé\", where: \"Revenir par le retour réservé\" });\n  const branch = WARP_BRANCHES_V165.find(entry => entry.id === state?.warpBranchId);",
+        "after": "  if (state?.activeWarpTripId || ctx.otherWarpTripActive) {\n    missing.push({ id: \"trip-active\", label: \"Un voyage Warp est déjà engagé\", where: \"Revenir par le retour réservé\" });\n  }\n  const branch = WARP_BRANCHES_V165.find(entry => entry.id === state?.warpBranchId);"
+      },
+      {
+        "before": "/** Adapte le texte d'une mission existante ; le niveau, les sprites et les\n * comportements restent ceux de la mission de base (limite assumée). */",
+        "after": "/** Adapte la présentation d'une chasse existante en conservant sa géométrie. */"
+      },
+      {
+        "before": "    targetName: \"Champion du château\",\n    briefing: \"Branche W-02, 1629, de nuit. Un champion local tient la cour du château (personnage proposé, aucun personnage des films). Les héros canon restent intouchables. Le terrain et les sprites sont encore ceux de « Sang dans la canopée » : seule la mission est adaptée.\",\n    debrief: {",
+        "after": "    targetName: \"Champion du château\",\n    briefing: \"Branche W-02, 1629. Traverse le col des cèdres de nuit pour rejoindre la cour où t’attend le champion du château. Les héros canon restent intouchables.\",\n    presentation: {\n      backgroundPath: \"/game/warp/w02/cedar-pass-1629.webp\",\n      backgroundLayout: \"single\",\n      revealAnnouncement: \"Le feu de la garde révèle ta silhouette.\",\n    },\n    debrief: {"
+      }
+    ]
+  },
+  {
+    "path": "app/game/systems/tantalusV164.ts",
+    "baseBlob": "d0913dcf4a6298d29ac0b780240f6739f7f93bfa",
+    "baseHead": "de10d911472767484e770fc14eaa889ceb699ac7",
+    "edits": [
+      {
+        "before": " * Module isolé : la base Warp commune (R2-M030 → M032, quête commune et\n * installation du module) n'existe pas encore dans la sauvegarde. Ce module ne\n * la recrée pas. Il lit les conditions par l'accès existant `warp-universe` de\n * la chronique et ne conserve que l'état propre à la branche Tantalus\n * (STATE5-27 → STATE5-30 pour ce seul voyage). Tant qu'aucun contenu du jeu ne\n * produit « quête commune réussie » et « module installé », le départ reste refusé.\n */\nimport { evaluateChronicleAccess, type ChronicleRequirement } from \"./clanChronicle\";\nimport { shipAcquisitionOwnedHullV89 } from \"./shipAcquisitionV89\";",
+        "after": " * La quête et l'installation sont lues dans le dossier Warp commun\n * (R2-M030 → M032). Ce module conserve uniquement les voyages et les choix\n * propres à la branche Tantalus (STATE5-27 → STATE5-30).\n */\nimport { evaluateChronicleAccess, type ChronicleAccessContext, type ChronicleRequirement } from \"./clanChronicle\";\nimport { shipAcquisitionOwnedHullV89 } from \"./shipAcquisitionV89\";\nimport { canReturnFromWarpV165, inspectWarpEpochsV165 } from \"./warpEpochsV165\";"
+      },
+      {
+        "before": "  /** STATE5-25. Sans base Warp, dérivé de la preuve de chronique `warp-module-quest`. */\n  warpQuestOutcome?: WarpQuestOutcomeV164;\n  /** STATE5-26 : installation matérielle vérifiée. Aucune source dans la sauvegarde actuelle. */",
+        "after": "  /** STATE5-25 : issue lue dans le dossier de la quête commune. */\n  warpQuestOutcome?: WarpQuestOutcomeV164;\n  /** STATE5-26 : installation matérielle vérifiée. */"
+      },
+      {
+        "before": "  const missing = [...access.missing];\n  // STATE5-25 : réussite requise, pas une simple entrée de journal.\n  if (input.warpQuestOutcome !== undefined && input.warpQuestOutcome !== \"reussi\" && !missing.some(m => m.id === \"warp-module-quest\")) {",
+        "after": "  // Le résultat explicite de la quête commune fait foi sur le reçu de chronique.\n  const missing = access.missing.filter(m => m.id !== \"warp-module-quest\" || input.warpQuestOutcome !== \"reussi\");\n  if (input.warpQuestOutcome !== undefined && input.warpQuestOutcome !== \"reussi\" && !missing.some(m => m.id === \"warp-module-quest\")) {"
+      },
+      {
+        "before": "/**\n * Lecture des conditions dans la sauvegarde actuelle. Chronique dans\n * `prologue.chronicle` ; vaisseau par le reçu d'acquisition V89. STATE5-26 n'a\n * aucune source : `warpModuleInstalled` vaut faux tant que la base Warp ne\n * l'écrit pas (signalé comme limite, non contourné).\n */\nexport function tantalusGateFromSaveV164(save: { createdAt: string; prologue?: { chronicle?: unknown } | null; shipAcquisitionV89?: unknown }): TantalusWarpGateInputV164 {\n  return {\n    chronicle: save.prologue?.chronicle ?? null,\n    personalShipAvailable: shipAcquisitionOwnedHullV89(save.shipAcquisitionV89 ?? null, save.createdAt) !== null,\n    warpModuleInstalled: false,\n  };\n}",
+        "after": "/** Lit le dossier Warp de cette campagne et les preuves réelles de possession. */\nexport function tantalusGateFromSaveV164(\n  save: { createdAt: string; prologue?: { chronicle?: unknown } | null; shipAcquisitionV89?: unknown; warpEpochsV165?: unknown },\n  ship: ChronicleAccessContext = {},\n): TantalusWarpGateInputV164 {\n  const { state } = inspectWarpEpochsV165(save.warpEpochsV165, save.createdAt);\n  return {\n    chronicle: save.prologue?.chronicle ?? null,\n    personalShipAvailable: ship.personalShipAvailable === true ||\n      shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt) !== null,\n    warpQuestOutcome: state?.warpQuestOutcome ?? \"non_commence\",\n    warpModuleInstalled: state?.warpModuleInstalled === true,\n    otherWarpTripActive: canReturnFromWarpV165(state),\n  };\n}"
+      }
+    ]
+  },
+  {
+    "path": "app/game/WarpEpochsPanelV165.tsx",
+    "baseBlob": "9d5ba39a8535294cd1f566efd55adb3243036f15",
+    "baseHead": "5c6db4b3a57bc268db4a92cd84478c1dd9b40683",
+    "edits": [
+      {
+        "before": "} from \"./systems/warpEpochsV165\";\nimport styles from \"./WarpEpochsPanelV165.module.css\";",
+        "after": "} from \"./systems/warpEpochsV165\";\nimport { normalizeTantalusLedgerV164 } from \"./systems/tantalusV164\";\nimport styles from \"./WarpEpochsPanelV165.module.css\";"
+      },
+      {
+        "before": "  const ctx = useMemo(() => warpAccessContextFromSaveV165(save, shipContext), [save, shipContext]);",
+        "after": "  const ctx = useMemo(() => ({\n    ...warpAccessContextFromSaveV165(save, shipContext),\n    otherWarpTripActive: Boolean(normalizeTantalusLedgerV164(save.tantalusV164, save.createdAt)?.activeTrip),\n  }), [save, shipContext]);"
+      },
+      {
+        "before": "      <p>« Sang dans la canopée » adaptée : champion du château (proposé). Le terrain et les sprites restent ceux de la mission de base. Aucun honneur ni rang n’est écrit.</p>",
+        "after": "      <p>Le panorama du col des cèdres situe le duel en 1629. Le terrain et les sprites viennent de « Sang dans la canopée ». Les trophées restent rattachés à la branche W-02.</p>"
+      }
+    ]
+  },
+  {
+    "path": "app/game/TantalusPanelV164.tsx",
+    "baseBlob": "effd9db4a433cc241d390fee2785cdb39aa52d56",
+    "baseHead": "de10d911472767484e770fc14eaa889ceb699ac7",
+    "edits": [
+      {
+        "before": "import type { SaveGame } from './types';\nimport {",
+        "after": "import type { SaveGame } from './types';\nimport type { ChronicleAccessContext } from './systems/clanChronicle';\nimport {"
+      },
+      {
+        "before": "  save: Pick<SaveGame, 'createdAt' | 'prologue' | 'shipAcquisitionV89' | 'tantalusV164'>;\n  onCommit:",
+        "after": "  save: Pick<SaveGame, 'createdAt' | 'prologue' | 'shipAcquisitionV89' | 'tantalusV164' | 'warpEpochsV165'>;\n  shipContext?: ChronicleAccessContext;\n  onCommit:"
+      },
+      {
+        "before": "export default function TantalusPanelV164({ save, onCommit, initiallyOpen = false }: TantalusPanelV164Props)",
+        "after": "export default function TantalusPanelV164({ save, shipContext, onCommit, initiallyOpen = false }: TantalusPanelV164Props)"
+      },
+      {
+        "before": "  const gate = evaluateTantalusGateV164(tantalusGateFromSaveV164(save));",
+        "after": "  const gate = evaluateTantalusGateV164(tantalusGateFromSaveV164(save, shipContext));"
+      }
+    ]
+  },
+  {
+    "path": "app/game/types.ts",
+    "baseBlob": "73b7fb2c0879ae38b7a52853cf14672e635d682e",
+    "baseHead": "0b13a154a9bbdadcffc1660d99fd8634e558591a",
+    "edits": [
+      {
+        "before": "  briefing: string;\n  debrief: MissionDebriefDefinition;\n  threatLevel: 1 | 2 | 3 | 4;",
+        "after": "  briefing: string;\n  debrief: MissionDebriefDefinition;\n  presentation?: {\n    backgroundPath: string;\n    backgroundLayout: \"single\";\n    revealAnnouncement?: string;\n  };\n  threatLevel: 1 | 2 | 3 | 4;"
+      }
+    ]
+  },
+  {
+    "path": "app/game/HuntCanvas.tsx",
+    "baseBlob": "fad1d809852c32052ac22106e534363d13df076a",
+    "baseHead": "0b13a154a9bbdadcffc1660d99fd8634e558591a",
+    "edits": [
+      {
+        "before": "function backgroundPath(mission: MissionDefinition): string {\n  return backgroundPathForBiome(mission.biome);\n}",
+        "after": "function backgroundPath(mission: MissionDefinition): string {\n  return mission.presentation?.backgroundPath ?? backgroundPathForBiome(mission.biome);\n}"
+      },
+      {
+        "before": "    const usesStackedPanorama = mission.biome === \"jungle\";",
+        "after": "    const singlePanorama = mission.presentation?.backgroundLayout === \"single\";\n    const usesStackedPanorama = mission.biome === \"jungle\" && !singlePanorama;"
+      },
+      {
+        "before": "    const offset = -((cameraX * activeSector.layers.background.parallax) % drawWidth);\n    context.save();\n    context.globalAlpha = 0.78;\n    for (let x = offset - drawWidth; x < VIEW_WIDTH + drawWidth; x += drawWidth) {\n      context.drawImage(\n        image,\n        0,\n        sourceY,\n        image.naturalWidth,\n        sourceHeight,\n        x,\n        0,\n        drawWidth,\n        drawHeight,\n      );\n    }",
+        "after": "    context.save();\n    context.globalAlpha = 0.78;\n    if (singlePanorama) {\n      const cameraRange = Math.max(1, state.world.width - VIEW_WIDTH);\n      const progress = clamp(cameraX / cameraRange, 0, 1);\n      const x = -(drawWidth - VIEW_WIDTH) * progress;\n      context.drawImage(image, x, 0, drawWidth, drawHeight);\n    } else {\n      const offset = -((cameraX * activeSector.layers.background.parallax) % drawWidth);\n      for (let x = offset - drawWidth; x < VIEW_WIDTH + drawWidth; x += drawWidth) {\n        context.drawImage(\n          image,\n          0,\n          sourceY,\n          image.naturalWidth,\n          sourceHeight,\n          x,\n          0,\n          drawWidth,\n          drawHeight,\n        );\n      }\n    }"
+      },
+      {
+        "before": "  if (mission.biome === \"jungle\" && assets.farLake && !assets.background) {",
+        "after": "  if (!mission.presentation && mission.biome === \"jungle\" && assets.farLake && !assets.background) {"
+      },
+      {
+        "before": "        announce(state, \"La fusée de Vey révèle ta signature.\", 2.5);",
+        "after": "        announce(state, mission.presentation?.revealAnnouncement ?? \"La fusée de Vey révèle ta signature.\", 2.5);"
+      },
+      {
+        "before": "    queueImage(\n      \"/game/assets/v2/environments/jungle/layers/far-lake.webp\",\n      (image) => {\n        assets.farLake = image;\n      },\n    );",
+        "after": "    if (!mission.presentation) {\n      queueImage(\n        \"/game/assets/v2/environments/jungle/layers/far-lake.webp\",\n        (image) => {\n          assets.farLake = image;\n        },\n      );\n    }"
+      }
+    ]
+  },
+  {
+    "path": "app/game/GameClient.tsx",
+    "baseBlob": "818d796949a5676c6db3cec0c1f29e48f7695bfd",
+    "baseHead": "de10d911472767484e770fc14eaa889ceb699ac7",
+    "edits": [
+      {
+        "before": "  // V164 : branche Warp Tantalus 2204. Le module Warp n'a encore aucune source\n  // dans la sauvegarde : le départ reste refusé tant qu'aucun contenu ne l'installe.\n  const commitTantalusV164",
+        "after": "  // V164 : le départ Tantalus lit les conditions de la campagne courante.\n  const commitTantalusV164"
+      },
+      {
+        "before": "    const result = actTantalusV164(current.tantalusV164 ?? null, current.createdAt, action, tantalusGateFromSaveV164(current));",
+        "after": "    const gate = tantalusGateFromSaveV164(current, mainMenuBrowserShipContextV81(current));\n    const result = actTantalusV164(current.tantalusV164 ?? null, current.createdAt, action, gate);"
+      },
+      {
+        "before": "          <TantalusPanelV164 save={save} onCommit={commitTantalusV164} />",
+        "after": "          <TantalusPanelV164 save={save} shipContext={mainMenuBrowserShipContextV81(save)} onCommit={commitTantalusV164} />"
+      }
+    ]
+  },
+  {
+    "path": "tests/warp-epochs-v165.test.mjs",
+    "baseBlob": "2f3739e8bf5a704ccbb628a0f21b338d59ed946f",
+    "baseHead": "5c6db4b3a57bc268db4a92cd84478c1dd9b40683",
+    "edits": [
+      {
+        "before": "  assert.match(mission.planetName, /1629/);",
+        "after": "  assert.match(mission.planetName, /1629/);\n  assert.equal(base.presentation, undefined);\n  assert.equal(mission.presentation.backgroundLayout, \"single\");\n  assert.match(mission.presentation.revealAnnouncement, /garde/);\n  const panorama = readFileSync(new URL(`../public${mission.presentation.backgroundPath}`, import.meta.url));\n  assert.equal(panorama.toString(\"ascii\", 0, 4), \"RIFF\");\n  assert.equal(panorama.toString(\"ascii\", 8, 12), \"WEBP\");"
+      }
+    ]
+  },
+  {
+    "path": "tests/tantalus-v164.test.mjs",
+    "baseBlob": "8cd9a534e032f1bef221418d16ae2377f4652b80",
+    "baseHead": "de10d911472767484e770fc14eaa889ceb699ac7",
+    "edits": [
+      {
+        "before": "const t = qa.load('app/game/systems/tantalusV164.ts');\nconst chron",
+        "after": "const t = qa.load('app/game/systems/tantalusV164.ts');\nconst warp = qa.load('app/game/systems/warpEpochsV165.ts');\nconst chron"
+      },
+      {
+        "before": "/** Chronique Blooded + Adjutant + quête du module, obtenue par les reçus réels. */\nfunction warpReadyChronicle() {\n  const all = chron.CHRONICLE_EVIDENCE.filter(e => !['elder-time-passage', 'ancient-time-passage'].includes(e.id));",
+        "after": "/** Chronique Blooded + Adjutant, avec ou sans l'ancien reçu du module. */\nfunction warpReadyChronicle(legacyWarpReceipt = true) {\n  const all = chron.CHRONICLE_EVIDENCE.filter(e =>\n    !['elder-time-passage', 'ancient-time-passage'].includes(e.id) && (legacyWarpReceipt || e.id !== 'warp-module-quest'),\n  );"
+      },
+      {
+        "before": "test('la sauvegarde actuelle ne fournit aucun module installé : départ refusé en jeu réel', () => {",
+        "after": "test('une campagne sans installation validée refuse le départ', () => {"
+      },
+      {
+        "before": "test('arrivée en 2204 avec branche, voyage et retour réservé', () => {",
+        "after": "test('installation commune : Tantalus et W-02 partagent le module et excluent deux voyages actifs', () => {\n  const ship = {personalShipAvailable: true};\n  // Les preuves du grade et de la nomination sont semées dans cette campagne de test.\n  const base = {...saves.defaultSave(owner), prologue: {chronicle: warpReadyChronicle(false)}};\n  const context = warp.warpAccessContextFromSaveV165(base, ship);\n  const applied = result => {\n    assert.equal(result.accepted, true, result.message);\n    return result.state;\n  };\n  let common = applied(warp.startWarpCommonQuestV165(warp.createWarpEpochsV165(owner), context, 'stabilite'));\n  for (const component of warp.WARP_COMPONENTS_V165) {\n    common = applied(warp.verifyWarpComponentV165(common, component.id, 'reparer'));\n  }\n  common = applied(warp.installWarpModuleV165(common, 'marge'));\n  common = applied(warp.selectWarpBranchV165(common, 'W-02'));\n  const save = {...base, warpEpochsV165: common};\n  const gate = t.tantalusGateFromSaveV164(save, ship);\n  assert.equal(gate.warpQuestOutcome, 'reussi');\n  assert.equal(gate.warpModuleInstalled, true);\n  assert.equal(t.evaluateTantalusGateV164(gate).allowed, true);\n  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164(save)).allowed, false);\n  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164({...save, warpEpochsV165: {...common, version: 2}}, ship)).allowed, false);\n  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164({...save, warpEpochsV165: {...common, ownerCreatedAt: '2026-01-01T00:00:00.000Z'}}, ship)).allowed, false);\n\n  const tantalus = t.actTantalusV164(null, owner, {kind: 'depart', eventId: 'tantalus-depart'}, gate);\n  assert.equal(tantalus.accepted, true, tantalus.message);\n  const withTantalus = {...save, tantalusV164: tantalus.ledger};\n  const blocked = qa.render('app/game/WarpEpochsPanelV165.tsx', {\n    save: withTantalus, shipContext: ship, onPersist: () => true, onClose: () => {},\n  });\n  assert.match(blocked, /Un voyage Warp est déjà engagé/);\n  assert.match(blocked, /disabled=\"\">Engager le voyage/);\n  const returned = t.actTantalusV164(tantalus.ledger, owner, {kind: 'return', eventId: 'tantalus-return'},\n    t.tantalusGateFromSaveV164({...withTantalus, prologue: null}));\n  assert.equal(returned.accepted, true, returned.message);\n\n  const activeW02 = applied(warp.departWarpV165(common, context));\n  const fromW02 = t.tantalusGateFromSaveV164({...save, warpEpochsV165: activeW02}, ship);\n  assert.equal(fromW02.otherWarpTripActive, true);\n  assert.match(t.actTantalusV164(returned.ledger, owner, {kind: 'depart', eventId: 'blocked-depart'}, fromW02).message,\n    /Un autre voyage Warp est déjà engagé/);\n  const backW02 = applied(warp.returnFromWarpV165(activeW02));\n  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164({...save, warpEpochsV165: backW02}, ship)).allowed, true);\n});\n\ntest('arrivée en 2204 avec branche, voyage et retour réservé', () => {"
+      }
+    ]
+  }
+]

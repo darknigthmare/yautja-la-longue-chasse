@@ -18,8 +18,9 @@ jobs:
     timeout-minutes: 35
     permissions:
       contents: write
+    outputs:
+      head: ${{ steps.publish.outputs.head }}
     env:
-      INTEGRATION_SEED: 'a96bb977cc9064effd533b0b9cc0e28ffc0081b0'
       INTEGRATION_REF: refs/heads/codex/integration-prs-20261120
       GIT_LFS_SKIP_SMUDGE: '1'
       GIT_TERMINAL_PROMPT: '0'
@@ -29,7 +30,10 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-          sparse-checkout: /tools/integrate-pr-wave-20261120.py
+          sparse-checkout: |
+            /tools/integrate-pr-wave-20261120.py
+            /tools/warp-tantalus-patch-20261120.json
+            /tools/canopy-grip-patch-20261120.json
           sparse-checkout-cone-mode: false
 
       - name: Fetch the integration seed with a partial Git checkout
@@ -37,10 +41,13 @@ jobs:
         run: |
           script=tools/integrate-pr-wave-20261120.py
           install -m 0600 "$script" "$RUNNER_TEMP/integrate-pr-wave-20261120.py"
+          install -m 0600 "tools/warp-tantalus-patch-20261120.json" "$RUNNER_TEMP/warp-tantalus-patch.json"
+          install -m 0600 "tools/canopy-grip-patch-20261120.json" "$RUNNER_TEMP/canopy-grip-patch.json"
           git clone --filter=blob:none --no-checkout --single-branch --branch "${INTEGRATION_REF#refs/heads/}" \
             "https://github.com/$GITHUB_REPOSITORY" "$RUNNER_TEMP/wave-repository"
           cd "$RUNNER_TEMP/wave-repository"
-          test "$(git rev-parse HEAD)" = "$INTEGRATION_SEED"
+          git merge-base --is-ancestor "a96bb977cc9064effd533b0b9cc0e28ffc0081b0" HEAD
+          printf 'INTEGRATION_SEED=%s\n' "$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           git config --local core.hooksPath /dev/null
 
       - name: Assemble the integration commits
@@ -52,6 +59,7 @@ jobs:
           git diff --cached --exit-code --quiet
 
       - name: Publish the integration checkpoint
+        id: publish
         shell: bash
         env:
           CHECKPOINT_TOKEN: ${{ github.token }}
@@ -74,3 +82,122 @@ jobs:
             GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $basic_auth" \
             git push --porcelain origin "$candidate:$INTEGRATION_REF"
           printf 'Integration checkpoint: %s\n' "$candidate"
+          printf 'head=%s\n' "$candidate" >> "$GITHUB_OUTPUT"
+
+  runtime-candidate:
+    name: Verify and preserve the official V113 inventory candidate
+    needs: assemble
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      ASSET_RACCORDS_SOURCE_COMMIT: ${{ needs.assemble.outputs.head }}
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ needs.assemble.outputs.head }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/warp/w02/
+            /public/game/hounds/v147/
+            /art-source/v113/20261120-integration/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize runtime and install pinned dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate and verify the current inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Preserve the original candidate and receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: integration-v113-runtime-${{ needs.assemble.outputs.head }}
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
+
+  integration-checks:
+    name: Typecheck and changed gameplay regressions
+    needs: assemble
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      INTEGRATION_MAIN: ba328df3d74fd540254bf72162d09b6240245012
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ needs.assemble.outputs.head }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/warp/w02/
+            /public/game/hounds/v147/
+            /art-source/v113/20261120-integration/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize runtime and install pinned dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next types and check TypeScript
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=2600 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Exercise changed and adjacent gameplay suites
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$INTEGRATION_MAIN"
+          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$INTEGRATION_MAIN" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
+          test "${#changed[@]}" -gt 0
+          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
+            tests/conservation-persistence-ui-v112.test.mjs \
+            tests/homeworld-player-equipment-raccords-20261120.test.mjs \
+            tests/environment-prop-raccords-20261120.test.mjs \
+            tests/canopy-navigation-v112.test.mjs \
+            tests/hunt-canopy-runtime-v112.test.mjs | sort -u)
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
