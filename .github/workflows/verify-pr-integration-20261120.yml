@@ -1,4 +1,4 @@
-name: Verify legacy replay rewards under the new honor limits
+name: Verify the preserved honor penalty and official inventory
 
 on:
   push:
@@ -13,19 +13,19 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  FINAL_CANDIDATE_SHA: '767e71348b2275a7c8869230a953aa9dc5a2e6f8'
+  FINAL_CANDIDATE_SHA: '0f571de764a59476a0dae8a6520bc6f50a1b897a'
 
 jobs:
-  save-regression:
-    name: Legacy saves, trophy rewards and replay honor
+  runtime-candidate:
+    name: Verify and preserve the official V113 inventory candidate
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     permissions:
       contents: read
     env:
+      ASSET_RACCORDS_SOURCE_COMMIT: '0f571de764a59476a0dae8a6520bc6f50a1b897a'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      INTEGRATION_MAIN: fc4252e3e50535ec1b7e3b7470c42d29dea51568
     steps:
       - name: Checkout exact candidate
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -59,5 +59,18 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-      - name: Exercise the updated rewards and the prior save tests
-        run: node --experimental-strip-types --test --test-reporter=spec tests/save-v2.test.mjs
+      - name: Generate and verify the current inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Preserve the original candidate and receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: integration-v113-runtime-${{ env.FINAL_CANDIDATE_SHA }}
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
+
+      - name: Exercise replay penalties and career migration
+        run: node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/save-v2.test.mjs tests/honor-progression-v166.test.mjs tests/honor-tribunal-v147.test.mjs tests/tantalus-warp-v167.test.mjs
