@@ -5,8 +5,8 @@
     "bytes": 264999,
     "sha256": "8eee8a5f5a043f2a67477bc6bcff97fffb1ee1666864bd7aed60c7a6c21ca138"
   },
-  "files": 2387,
-  "bytes": 1111584582,
+  "files": 2390,
+  "bytes": 1111650478,
   "entries": [
     {
       "path": ".github/workflows/p0-p1-coherence-20261109.yml",
@@ -705,8 +705,8 @@
     },
     {
       "path": "app/game/GameClient.tsx",
-      "bytes": 425126,
-      "sha256": "744e69f11b2fa638ab3ce8e43c1d831f4fa7a8e58bf1079d09d80949d6b57c2a"
+      "bytes": 427130,
+      "sha256": "d11cbe149d068dd51e3dea26a27c9e2966c8b95cb72c0810a22ca7e74b48e6a9"
     },
     {
       "path": "app/game/GameReserveEntryV104.module.css",
@@ -1532,6 +1532,11 @@
       "path": "app/game/NurseryPrologueScreen.tsx",
       "bytes": 27673,
       "sha256": "f6814fe5a797bca74ca1ca9306da17ac27c40f6c055347f25ec932a90e14396b"
+    },
+    {
+      "path": "app/game/OriginEndingPanelV170.tsx",
+      "bytes": 5133,
+      "sha256": "eb73e7db44dbd3db7295e7b4a87a8424bbfc58a3917e5ada4c809a4bbda2139d"
     },
     {
       "path": "app/game/OriginTransitionPanelV151.tsx",
@@ -2592,6 +2597,11 @@
       "path": "app/game/data/npcProductionV615.json",
       "bytes": 52512,
       "sha256": "3d3c2a15d29f9877ad5ceb8ff7cf135c6dbca4bf9235f3f922179b7eb18e0733"
+    },
+    {
+      "path": "app/game/data/originEndingsV170.json",
+      "bytes": 45876,
+      "sha256": "c1dda6e411f7d25f7a847fc4e197bb3d9dce1a80a2e073573e57499c31a19dd0"
     },
     {
       "path": "app/game/data/originsV151.json",
@@ -5829,14 +5839,19 @@
       "sha256": "0b6ee167110ef86c0a5d7d1e2643bfaccb54628bac1b847a1d0e020f214658c5"
     },
     {
+      "path": "app/game/systems/originEndingsV170.ts",
+      "bytes": 10867,
+      "sha256": "9c36361c22459d72dcafeaec60ed6d37fbdbc68ae293d43bfaad7bf1cd25dbb8"
+    },
+    {
       "path": "app/game/systems/originTrophyV157.ts",
       "bytes": 12479,
       "sha256": "be3e05d0902a4cc70f3a1007f64d7639b18dd4e197bf56e75d61dbfc3bd9c7af"
     },
     {
       "path": "app/game/systems/originsV151.ts",
-      "bytes": 15311,
-      "sha256": "a39d29abd27ec63398b98310277ae51a24492071a190bda3de3f4c4c55ca8bca"
+      "bytes": 17327,
+      "sha256": "66c259e54087952f8ac463985767d3ec345fb0b132fd5b2d24ac459377a52d3c"
     },
     {
       "path": "app/game/systems/oserisLevelDesign.ts",
