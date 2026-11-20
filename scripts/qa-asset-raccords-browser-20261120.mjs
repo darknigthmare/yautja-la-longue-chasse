@@ -74,25 +74,40 @@ function sceneFor(kind){
   if(kind==='passage')return page.locator('[data-homeworld-passage-v67]:visible');
   return page.locator('[data-homeworld-region-v68]:visible');
 }
+function visualFor(kind){return actorFor(kind).locator('[data-modular-homeworld-character]');}
 async function equipment(kind,expected){
   const actor=actorFor(kind);
-  await actor.waitFor({state:'visible'});
+  // The native ground sockets are intentionally 0x0 in all three scene CSS
+  // modules. The actual authored sprite descendant must be visible instead.
+  await actor.waitFor({state:'attached'});assert.equal(await actor.count(),1,'Exactly one native player socket must own the observation.');
+  const visual=visualFor(kind);assert.equal(await visual.count(),1,'Exactly one native modular sprite must belong to the player socket.');
+  await visual.waitFor({state:'visible'});
   await page.waitForFunction(({selector,base,lid})=>{
     const roots=[...document.querySelectorAll(selector)].filter(node=>node.getClientRects().length>0);
     return roots.length===1&&[base,lid].every(src=>[...roots[0].querySelectorAll('img[data-homeworld-layer="gauntlet"]')].some(img=>img.getAttribute('src')===src&&img.complete&&img.naturalWidth>0))&&roots[0].querySelectorAll('img[data-homeworld-layer="blade-housing"]').length===1&&[...roots[0].querySelectorAll('img')].every(img=>img.complete&&img.naturalWidth>0);
   },{selector:kind==='city'?'[data-homeworld-hub] [data-homeworld-actor]':kind==='passage'?'[data-homeworld-passage-v67] [data-passage-actor]':'[data-homeworld-region-v68] [data-region-player]',base:expected.gauntlet.base,lid:expected.gauntlet.lid});
   const observed=await actor.evaluate(node=>{
     const box=element=>{const r=element.getBoundingClientRect();return{x:r.x,y:r.y,width:r.width,height:r.height};};
+    const visual=node.querySelector('[data-modular-homeworld-character]'),visualStyle=getComputedStyle(visual);
+    const viewport=node.closest('[data-homeworld-hub]')?.querySelector('[data-homeworld-viewport]')??node.closest('[data-homeworld-passage-v67]')?.querySelector('[role="group"][aria-label^="Parcours 2.5D"]')??node.closest('section[data-homeworld-region-v68]')?.querySelector('[tabindex="0"][aria-label^="Explorer "]');
+    const browserViewport={x:0,y:0,width:innerWidth,height:innerHeight};
+    const intersects=(a,b)=>Math.min(a.x+a.width,b.x+b.width)>Math.max(a.x,b.x)&&Math.min(a.y+a.height,b.y+b.height)>Math.max(a.y,b.y);
+    const visualBounds=box(visual),viewportBounds=viewport?box(viewport):null;
+    const ancestors=[];for(let current=visual;current;current=current.parentElement){const style=getComputedStyle(current);ancestors.push({display:style.display,visibility:style.visibility,opacity:Number(style.opacity)});}
     return{
       modular:!!node.querySelector('[data-modular-homeworld-character]'),
       gauntlets:[...node.querySelectorAll('img[data-homeworld-layer="gauntlet"]')].map(img=>({part:img.getAttribute('data-gauntlet-part'),src:img.getAttribute('src'),complete:img.complete,width:img.naturalWidth,height:img.naturalHeight,transform:img.style.transform,bounds:box(img)})),
       armor:[...new Set([...node.querySelectorAll('[data-armor-module]')].map(item=>item.getAttribute('data-armor-module')))].sort(),
       blades:[...node.querySelectorAll('img[data-homeworld-layer="blade-housing"]')].map(img=>({src:img.getAttribute('src'),complete:img.complete,width:img.naturalWidth,height:img.naturalHeight,transform:img.style.transform})),
       body:node.querySelector('[data-modular-homeworld-character]')?.getAttribute('data-body-morph'),
-      actorBounds:box(node),
+      socketBounds:box(node),
+      visual:{bounds:visualBounds,display:visualStyle.display,visibility:visualStyle.visibility,opacity:Number(visualStyle.opacity),nativeViewport:viewportBounds,browserViewport,intersectsNativeViewport:!!viewportBounds&&intersects(visualBounds,viewportBounds),intersectsBrowserViewport:intersects(visualBounds,browserViewport),ancestors},
     };
   });
   assert.ok(observed.modular);
+  assert.ok(observed.visual.bounds.width>0&&observed.visual.bounds.height>0&&Object.values(observed.visual.bounds).every(Number.isFinite),'The native rendered sprite must have a positive finite rectangle.');
+  assert.ok(observed.visual.intersectsNativeViewport&&observed.visual.intersectsBrowserViewport,'The actual sprite must intersect both its native scene viewport and the browser viewport.');
+  assert.ok(observed.visual.ancestors.every(style=>style.display!=='none'&&style.visibility==='visible'&&style.opacity>0),'The real sprite and its ancestors must permit native painting.');
   assert.equal(observed.body,expected.bodyMorphId);
   assert.equal(observed.gauntlets.length,2);
   for(const part of ['base','lid']){
@@ -126,7 +141,7 @@ async function capture(label,kind,inline=false){
   const name=label+'-player.png',receipt={file:name,kind:'native-player-clip-no-resize',bytes:png.length,sha256:hash(png),width:png.readUInt32BE(16),height:png.readUInt32BE(20),clip};
   await writeFile(path.join(out,name),png);report.captures.push(receipt);
   const inlineKey=typeof inline==='string'?inline:kind;
-  if(inline&&!inlineScenes.has(inlineKey)&&inlineScenes.size<4){
+  if(inline&&!inlineScenes.has(inlineKey)&&(inlineScenes.size<4||inlineKey==='failure')){
     inlineScenes.add(inlineKey);
     console.log('ASSET_RACCORDS_NATIVE_PNG '+JSON.stringify({...receipt,base64:png.toString('base64')}));
   }
@@ -398,13 +413,17 @@ try{
       report.failureDom=await page.evaluate(()=>({
         title:document.title,url:location.href,visible:!document.hidden,focused:document.hasFocus(),
         scenes:[...document.querySelectorAll('[data-homeworld-hub],[data-homeworld-passage-v67],section[data-homeworld-region-v68]')].map(node=>({visible:node.getClientRects().length>0,attributes:Object.fromEntries([...node.attributes].filter(attr=>attr.name.startsWith('data-')).map(attr=>[attr.name,attr.value])),text:node.innerText.slice(0,6000)})),
+        players:[...document.querySelectorAll('[data-homeworld-actor],[data-passage-actor],[data-region-player]')].map(socket=>{
+          const rect=node=>{const r=node.getBoundingClientRect(),style=getComputedStyle(node);return{x:r.x,y:r.y,width:r.width,height:r.height,display:style.display,visibility:style.visibility,opacity:style.opacity,transform:style.transform};};
+          const visual=socket.querySelector('[data-modular-homeworld-character]');return{socket:rect(socket),visual:visual?rect(visual):null,gauntlets:[...socket.querySelectorAll('img[data-homeworld-layer="gauntlet"]')].map(img=>({src:img.getAttribute('src'),complete:img.complete,naturalWidth:img.naturalWidth,bounds:rect(img)}))};
+        }),
         failedImages:[...document.images].filter(img=>img.complete&&img.naturalWidth===0).slice(0,32).map(img=>({src:img.getAttribute('src'),complete:img.complete,naturalWidth:img.naturalWidth})),
         pendingImages:[...document.images].filter(img=>!img.complete).slice(0,32).map(img=>img.getAttribute('src')),
       }));
       const failures=[...requests.values()].filter(item=>item.status!==200);
       console.log('ASSET_RACCORDS_FAILURE_DIAGNOSTICS '+JSON.stringify({sourceCommit:revision,scene:currentScene,failure:report.failure,body:report.failureText,dom:report.failureDom,assetFailures:failures,consoleErrors:report.consoleErrors.slice(-20),pageErrors:report.errors}));
       await captureViewport('failure');
-      if(currentScene&&await actorFor(currentScene).isVisible())await capture('failure-scene',currentScene);
+      if(currentScene&&await visualFor(currentScene).isVisible())await capture('failure-scene',currentScene,'failure');
     }catch(diagnosticError){report.diagnosticFailure=String(diagnosticError);console.log('ASSET_RACCORDS_DIAGNOSTIC_ERROR '+String(diagnosticError));}
   }
 }finally{

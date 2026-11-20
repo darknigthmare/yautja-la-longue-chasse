@@ -175,12 +175,16 @@ jobs:
       - name: Verify real Next delivery of the City and Jungle gauntlet sources
         run: node scripts/materialize-asset-raccords-20261120.mjs production-assets
       - name: Play the real GameClient equipment continuity journeys
+        id: native_gameclient
         run: node scripts/qa-asset-raccords-browser-20261120.mjs
       - name: Render actual rigid support plans and record flexible binding metadata separately
+        if: ${{ !cancelled() && (steps.native_gameclient.outcome == 'success' || steps.native_gameclient.outcome == 'failure') }}
         run: node scripts/qa-environment-prop-raccords-20261120.mjs
       - name: Reproduce the actual new regression assertions on the unchanged main baseline
+        if: ${{ !cancelled() && (steps.native_gameclient.outcome == 'success' || steps.native_gameclient.outcome == 'failure') }}
         run: node scripts/materialize-asset-raccords-20261120.mjs red-baseline
       - name: Fingerprint final source and reject tracked changes from verification
+        if: ${{ !cancelled() && (steps.native_gameclient.outcome == 'success' || steps.native_gameclient.outcome == 'failure') }}
         run: |
           node scripts/check-hunt-integration-source-v112.mjs --current
           git diff --exit-code
