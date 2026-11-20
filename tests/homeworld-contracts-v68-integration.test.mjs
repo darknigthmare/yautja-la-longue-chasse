@@ -15,7 +15,7 @@ export * from './app/game/systems/minorArcsV160';
 export { tribunalAccessV147, tribunalBlocksChroniclePromotionV147 } from './app/game/systems/honorTribunalV147';
 export { getChronicleRank } from './app/game/systems/clanChronicle';
 export { emptyResidenceV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149 } from './app/game/systems/residenceV149';
-export { emptyResidenceLifeV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, settleResidenceLifeV150 } from './app/game/systems/residenceLifeV150';
+export { emptyResidenceLifeV150, guestsInSceneV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, settleResidenceLifeV150 } from './app/game/systems/residenceLifeV150';
 export * from './app/game/systems/homeworldRegionsV68';
 export * from './app/game/systems/homeworldAccessV69';
 export {createNurseryCampaign} from './app/game/systems/nurseryCampaign';

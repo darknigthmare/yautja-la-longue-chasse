@@ -1,5 +1,6 @@
 import { homeworldInteriorForBuildingV64, isHomeworldInteriorWalkableV64, nearestHomeworldInteriorTargetV64 } from './homeworldInteriorsV64';
 import { normalizeRegionFieldEventV68 } from './homeworldRegionsV68';
+import type { HomeworldVec2 } from './homeworldCity';
 import { HOMEWORLD_CHAIN_CONTRACTS_V69, type ContractChainV69 } from './homeworldContractChainsV69';
 
 /** Local clan commissions. This board, its marks and its regional fauna are
@@ -96,14 +97,14 @@ export const HOMEWORLD_CONTRACT_SCHEMA_VERSION_V69 = 2 as const;
 export interface HomeworldContractsV68 { version: 1 | 2; serial: number; entries: ContractEntryV68[] }
 export interface ContractMeetContextV68 { eligible: boolean; interiorId: string | null; pointId: string | null;
   npcId: string | null; actor: { x: number; y: number }; suspended?: boolean }
-export interface ContractLiveContextV68 { regionId: string; runId: string; suspended?: boolean }
+export interface ContractLiveContextV68 { regionId: string; runId: string; suspended?: boolean; reportAt?: HomeworldVec2 | null }
 export type ContractActionV68 = { kind: 'accept' | 'abandon' | 'resume' | 'deliver'; contractId: string };
 export interface ContractResultV68 { state: HomeworldContractsV68; ok: boolean; changed: boolean; message: string; rewardMarks: number }
 export const defaultHomeworldContractsV68 = (): HomeworldContractsV68 => ({ version: 1, serial: 0, entries: [] });
 
 /** The site/target names identify real V68 village interactions. A report is
  * accepted only later in that same run, never from a historical expedition. */
-export function normalizeContractFieldEventV68(raw: unknown): ContractFieldEventV68 | null {
+export function normalizeContractFieldEventV68(raw: unknown, reportAt?: HomeworldVec2 | null): ContractFieldEventV68 | null {
   if (!record(raw) || raw.version !== 1 || !CONTRACT_REGIONS_V68.includes(raw.regionId as ContractRegionIdV68)
     || !runIdValid(raw.runId) || !integer(raw.tick, 1) || !integer(raw.trailCount, 0, 3) || !integer(raw.evaded, 0, 10000)
     || raw.armed !== false || typeof raw.walked !== 'number' || !Number.isFinite(raw.walked) || raw.walked < 400 || raw.walked > 5_184_000
@@ -119,7 +120,7 @@ export function normalizeContractFieldEventV68(raw: unknown): ContractFieldEvent
   for (const optional of ['observedTicks', 'touches', 'interventions'] as const) if (raw[optional] !== undefined && !integer(raw[optional], 0, 100000)) return null;
   // The scene's own validator checks the real ground footprint, target reach
   // and the maximum distance physically walkable by this event's tick.
-  if (!normalizeRegionFieldEventV68(raw)) return null;
+  if (!normalizeRegionFieldEventV68(raw, reportAt)) return null;
   return { version: 1, regionId, runId: raw.runId, tick: raw.tick, action, siteId: expectedSite, targetId: expectedTarget,
     walked: raw.walked, actor: { x: raw.actor.x as number, y: raw.actor.y as number }, trailCount: 3, evaded: raw.evaded,
     armed: false, ...(raw.observedTicks === undefined ? {} : { observedTicks: raw.observedTicks as number }),
@@ -227,7 +228,7 @@ export function bindContractsVillageRunV68(raw: unknown, regionId: string, runId
 /** Only call from the live village reducer's successful physical interaction.
  * This validates local save receipts; it is not a multiplayer anti-cheat scheme. */
 export function recordContractsFieldEventV68(raw: unknown, eventRaw: unknown, context: ContractLiveContextV68): ContractResultV68 {
-  const state = normalizeHomeworldContractsV68(raw), event = normalizeContractFieldEventV68(eventRaw);
+  const state = normalizeHomeworldContractsV68(raw), event = normalizeContractFieldEventV68(eventRaw, context.reportAt);
   if (!writable(raw) || !event || context.suspended || event.runId !== context.runId || event.regionId !== context.regionId) return result(state, false, false, 'Observation non valide : aucun contrat avancé.');
   let changed = false;
   for (const entry of state.entries) {

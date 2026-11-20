@@ -109,6 +109,9 @@ export const WARP_COMPONENTS_V165: readonly { id: WarpComponentIdV165; label: st
   { id: "interface-navigation", label: "Interface de navigation" },
 ];
 
+export const WARP_W02_BONSHO_V165 = "/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png";
+export const WARP_W02_TERRACE_ALERT_V165 = "terrasse-clochettes";
+
 export type WarpW02StepIdV165 = "WARP-M16" | "WARP-M17" | "WARP-M18";
 export interface WarpStepChoiceV165 { id: string; label: string; effect: string }
 export interface WarpStepV165 {
@@ -124,7 +127,7 @@ export const WARP_W02_STEPS_V165: readonly WarpStepV165[] = [
     scene: "Des clochettes signalent les passages entre terrasses. Observe leur mouvement, traverse les bambous et suis une proie qui évite les chemins fréquentés. Un guetteur voit seulement certaines portions du trajet.",
     choices: [
       { id: "contourner", label: "Contourner les signaux", effect: "Les habitants ignorent ton passage." },
-      { id: "declencher", label: "Déclencher les signaux pour détourner le guetteur", effect: "Les passages alertés restent connus des habitants." },
+      { id: "declencher", label: "Faire sonner la cloche pour détourner le guetteur", effect: "Le guetteur quitte la terrasse. Il rejoint le camp où se trouve la lame." },
     ] },
   { id: "WARP-M17", title: "Un duel accepté",
     scene: "Un combattant local équipé attend dans une cour ouverte. Les gestes fixent un début et une interruption possibles. Kenji, héros du film, n'est pas ce combattant et n'est jamais une cible.",
@@ -484,8 +487,8 @@ export function resolveW02StepV165(state: WarpEpochsStateV165, stepId: WarpW02St
     branchVisitState: withVisit(state, "W-02", v => ({
       ...v,
       steps: { ...v.steps, [stepId]: { resolved: true, success: true, choice: choiceId } },
-      alertedPassages: stepId === "WARP-M16" && choiceId === "declencher" && !v.alertedPassages.includes("terrasse-clochettes")
-        ? [...v.alertedPassages, "terrasse-clochettes"] : v.alertedPassages,
+      alertedPassages: stepId === "WARP-M16" && choiceId === "declencher" && !v.alertedPassages.includes(WARP_W02_TERRACE_ALERT_V165)
+        ? [...v.alertedPassages, WARP_W02_TERRACE_ALERT_V165] : v.alertedPassages,
       takenObjectIds: stepId === "WARP-M18" && choiceId === "accepter-don" ? [...v.takenObjectIds, objectId] : v.takenObjectIds,
       epochCompleted: v.epochCompleted || (stepId === "WARP-M18" && v.huntSuccess),
     })),
@@ -556,8 +559,8 @@ export function applyW02HuntResultV165(state: WarpEpochsStateV165, result: Pick<
 
 export const W02_HUNT_BASE_MISSION_ID_V165 = "jungle-vey" as const;
 
-/** Adapte la présentation d'une chasse existante en conservant sa géométrie. */
-export function warpW02HuntMissionV165(base: MissionDefinition): MissionDefinition {
+/** Adapte une chasse existante. Le guetteur détourné se replie au camp. */
+export function warpW02HuntMissionV165(base: MissionDefinition, terraceAlerted = false): MissionDefinition {
   if (base.id !== W02_HUNT_BASE_MISSION_ID_V165) throw new Error("Mission de base inattendue pour W-02.");
   const label = (id: string, text: string, description: string) => {
     const objective = base.objectives.find(o => o.id === id);
@@ -570,6 +573,13 @@ export function warpW02HuntMissionV165(base: MissionDefinition): MissionDefiniti
     label("extract-jungle-trophy", "Revenir au seuil", "Rejoins la fenêtre de retour réservée."),
   ].filter((o): o is NonNullable<typeof o> => o !== null);
   const attackLabels: Record<string, string> = { burst: "Tir d'arquebuse", area: "Feu révélateur", melee: "Coupe au sabre" };
+  const enemyWaves = terraceAlerted ? base.enemyWaves.flatMap((wave): MissionDefinition["enemyWaves"] => {
+    if (wave.id !== "jungle-patrol" || wave.count < 2) return [wave];
+    return [
+      { ...wave, count: wave.count - 1 },
+      { ...wave, id: "w02-terrace-guard", trigger: "objective", triggerId: "recover-transponder", count: 1 },
+    ];
+  }) : base.enemyWaves;
   return {
     ...base,
     title: "W-02 · Le champion du château",
@@ -590,6 +600,7 @@ export function warpW02HuntMissionV165(base: MissionDefinition): MissionDefiniti
     prerequisiteMissionId: null,
     baseRewards: { ...base.baseRewards, honor: 0, clanMarks: 0 },
     objectives,
+    enemyWaves,
     boss: {
       ...base.boss,
       name: "Champion du château",

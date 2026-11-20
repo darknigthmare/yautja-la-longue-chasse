@@ -41,6 +41,10 @@ jobs:
             /desktop/
             /build/
             /.github/workflows/
+            /public/game/p0-sprites-20261113/warp/warp-199-empty-bay.png
+            /public/game/ship-interior/v21/console-navigation.webp
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/warp/w02/cedar-pass-1629.webp
             /production/clan-war-command-20261109/qa/ci/test-selection.json
             /production/clan-war-command-20261109/qa/ci/runtime-file-inputs.json
       - name: Node 22
@@ -54,6 +58,8 @@ jobs:
         run: npm ci --ignore-scripts --no-audit --no-fund
       - name: Run actual domain, SSR, save and compatibility cases
         run: node scripts/check-p0p1-coherence-20261109.mjs
+      - name: Verify the current Warp epoch and the original branch art
+        run: node --experimental-strip-types --test --test-concurrency=1 tests/warp-epochs-v165.test.mjs
       - name: Preserve individual TAP results and source fingerprints
         if: always()
         uses: actions/upload-artifact@v4

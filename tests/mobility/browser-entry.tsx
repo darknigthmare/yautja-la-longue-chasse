@@ -10,7 +10,11 @@ import type {MobilityReceipt} from '../../app/game/systems/mobility/controller';
 const OWNER='2026-11-08T10:00:00.000Z';
 function initial(){
  if(!localStorage.getItem('yautja-long-hunt.save')){
-  const seed=defaultSave(OWNER);seed.profile.honor=300;seed.profile.rankId='blooded';seed.profile.clanMarks=10000;
+  const seed=defaultSave(OWNER);
+  seed.profile.honor=300;
+  seed.profile.rankId='blooded';
+  seed.profile.acquiredRankIdV166='blooded';
+  seed.profile.clanMarks=10000;
   seed.settings.masterVolume=0;const w=writeSaveWithStatus(seed);if(!w.persisted)throw new Error(w.failure??'seed');
  }
  return loadSaveWithStatus().save;

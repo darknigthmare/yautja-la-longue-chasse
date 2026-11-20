@@ -290,6 +290,11 @@ export type TrophyUsageActionV147 =
   | { kind: "exchange"; trophyId: string; clanId: TrophyExchangeClanIdV147; receive: "favor" | "materials" };
 
 export type TrophyUsageCheckV147 = { ok: true } | { ok: false; reason: string };
+export interface TrophyUsageStationV147 { atPersonalTrophyHall: boolean }
+
+export function isPersonalShipTrophyDisplayV147(assignment: TrophyAssignmentV147 | null | undefined): boolean {
+  return assignment?.usage === "displayed" && assignment.site === "ship";
+}
 
 type UsageSave = Pick<SaveGame, "trophies" | "inventory"> & { trophyUsagesV147?: TrophyUsagesV147 | null };
 
@@ -314,7 +319,9 @@ function harvestArchiveAccepts(save: UsageSave, clanId: string): boolean {
 }
 
 /** Dit si une transition est permise, et sinon pourquoi (texte affichable). */
-export function checkTrophyUsageV147(save: UsageSave, action: TrophyUsageActionV147): TrophyUsageCheckV147 {
+export function checkTrophyUsageV147(
+  save: UsageSave, action: TrophyUsageActionV147, station?: TrophyUsageStationV147,
+): TrophyUsageCheckV147 {
   const state = stateOf(save);
   const trophy = save.trophies.find(entry => entry.id === action.trophyId);
   const refuse = (reason: string): TrophyUsageCheckV147 => ({ ok: false, reason });
@@ -326,6 +333,12 @@ export function checkTrophyUsageV147(save: UsageSave, action: TrophyUsageActionV
       : refuse("Trophée introuvable dans la collection.");
   }
   const current = state.assignments[trophy.id] ?? null;
+  const touchesPersonalDisplay =
+    (action.kind === "display" && action.site === "ship") ||
+    (isPersonalShipTrophyDisplayV147(current) && ["display", "wear", "store"].includes(action.kind));
+  if (station && !station.atPersonalTrophyHall && touchesPersonalDisplay) {
+    return refuse("Rejoins le poste de la Salle des trophées à bord de ton vaisseau personnel.");
+  }
   switch (action.kind) {
     case "display":
       if (!(TROPHY_DISPLAY_SITES_V147 as readonly string[]).includes(action.site)) return refuse("Lieu d'exposition inconnu.");
@@ -362,9 +375,9 @@ export function checkTrophyUsageV147(save: UsageSave, action: TrophyUsageActionV
  * commit durable V146). Seul « exchange » retire un trophée de la collection.
  */
 export function applyTrophyUsageV147<T extends UsageSave>(
-  save: T, action: TrophyUsageActionV147, now = new Date().toISOString(),
+  save: T, action: TrophyUsageActionV147, now = new Date().toISOString(), station?: TrophyUsageStationV147,
 ): T | null {
-  if (!checkTrophyUsageV147(save, action).ok) return null;
+  if (!checkTrophyUsageV147(save, action, station).ok) return null;
   const state = stateOf(save);
   const trophy = save.trophies.find(entry => entry.id === action.trophyId)!;
   const assignments = { ...state.assignments };

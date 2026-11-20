@@ -9,25 +9,28 @@ import {COURSE_STEP,COURSE_MAX_TICKS,MOBILITY_YARD,mobilityYardNpcs,parkedAtDepo
 import {MobilityDriveController,type MobilityWriter} from './systems/mobility/controller';
 import type {MobilityLedger} from './systems/mobility/ledger';
 import type {GameSfxId} from './sound';
+import type {SceneAudioPort} from './systems/sceneAudio';
+import {createMobilityAudio} from './systems/mobility/audio';
 import styles from './MobilityGarage.module.css';
 const actionControls:Partial<Record<ControlActionId,MobilityControl>>={
  'hunt.moveUp':'forward','hunt.moveDown':'reverse','hunt.moveLeft':'left','hunt.moveRight':'right',
  'hunt.jump':'brake','hunt.aim':'boost','hunt.interact':'interact',
 };
-interface Props {state:MobilityLedger;bindings:ControlBindings;suspended:boolean;onCommand:MobilityWriter;onSound?:(id:GameSfxId)=>void}
+interface Props {state:MobilityLedger;bindings:ControlBindings;suspended:boolean;onCommand:MobilityWriter;onSound?:(id:GameSfxId)=>void;createSceneAudio?:()=>SceneAudioPort|null}
 export default function MobilityDrivingYard(props:Props){
  const [controller]=useState(()=>new MobilityDriveController(props.state));
  const [course,setCourse]=useState(controller.predicted),[paused,setPaused]=useState(true),[notice,setNotice]=useState(controller.message),[recovery,setRecovery]=useState(false),[padNeutral,setPadNeutral]=useState(false);
  const latest=useRef(props),pauseRef=useRef(true),held=useRef(new MobilityHeldControls()),padGate=useRef(new MobilityPadGate()),neutralRef=useRef(false),canvasRef=useRef<SVGSVGElement|null>(null);
  const model=mobilityDefinition(props.state.active!.modelId)!;
+ const sceneAudio=useRef<ReturnType<typeof createMobilityAudio>|null>(null);
  useEffect(()=>{latest.current=props;},[props]);
  const clear=()=>{held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);};
  const flush=()=>{const ok=controller.flush(latest.current.onCommand);setCourse({...controller.predicted});setNotice(controller.message);if(!ok){pauseRef.current=true;setPaused(true);}return ok;};
- const pause=()=>{pauseRef.current=true;setPaused(true);clear();if(flush())setNotice('Conduite en pause · dernières commandes enregistrées.');};
+ const pause=()=>{pauseRef.current=true;setPaused(true);sceneAudio.current?.stop();clear();if(flush())setNotice('Conduite en pause · dernières commandes enregistrées.');};
  useEffect(()=>{
   let frame=0,last=0,accumulator=0,lastPaint=0;
-  const flushNow=()=>{const ok=controller.flush(latest.current.onCommand);if(!ok){pauseRef.current=true;setPaused(true);setNotice(controller.message);}setCourse({...controller.predicted});return ok;};
-  const halt=()=>{pauseRef.current=true;setPaused(true);held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);accumulator=0;if(flushNow())setNotice('Conduite en pause · dernières commandes enregistrées.');};
+  const flushNow=()=>{const ok=controller.flush(latest.current.onCommand);if(!ok){pauseRef.current=true;setPaused(true);sceneAudio.current?.stop();setNotice(controller.message);}setCourse({...controller.predicted});return ok;};
+  const halt=()=>{pauseRef.current=true;setPaused(true);sceneAudio.current?.stop();held.current.clear();padGate.current.reset();neutralRef.current=false;setPadNeutral(false);accumulator=0;if(flushNow())setNotice('Conduite en pause · dernières commandes enregistrées.');};
   const key=(event:KeyboardEvent,down:boolean)=>{
    const source=`key:${event.code || event.key}`;
    // Release even over editable controls or while suspended; otherwise keys stick.
@@ -64,8 +67,11 @@ export default function MobilityDrivingYard(props:Props){
     const before=controller.predicted;
     if(!controller.step(input))break;
     const after=controller.predicted;
-    if(after.impacts>before.impacts)latest.current.onSound?.('hit');
-    if(after.checkpoint>before.checkpoint||after.cargoDelivered!==before.cargoDelivered)latest.current.onSound?.('objective');
+    if (sceneAudio.current) sceneAudio.current.drive(before,after,input);
+    else {
+     if(after.impacts>before.impacts)latest.current.onSound?.('hit');
+     if(after.checkpoint>before.checkpoint||after.cargoDelivered!==before.cargoDelivered)latest.current.onSound?.('objective');
+    }
     accumulator-=COURSE_STEP;
     if(controller.pending.length===30&&!flushNow())break;
     if(after.tick>=COURSE_MAX_TICKS){halt();setNotice('Limite de sortie atteinte : remiser ou demander le retour de sécurité.');break;}
@@ -75,7 +81,7 @@ export default function MobilityDrivingYard(props:Props){
   document.addEventListener('keydown',down,true);document.addEventListener('keyup',up);window.addEventListener('blur',halt);
   document.addEventListener('visibilitychange',visibility);window.addEventListener('pagehide',halt);window.addEventListener('beforeunload',unload);
   frame=requestAnimationFrame(draw);
-  return()=>{cancelAnimationFrame(frame);document.removeEventListener('keydown',down,true);document.removeEventListener('keyup',up);window.removeEventListener('blur',halt);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',halt);window.removeEventListener('beforeunload',unload);};
+  return()=>{cancelAnimationFrame(frame);sceneAudio.current?.dispose();sceneAudio.current=null;document.removeEventListener('keydown',down,true);document.removeEventListener('keyup',up);window.removeEventListener('blur',halt);document.removeEventListener('visibilitychange',visibility);window.removeEventListener('pagehide',halt);window.removeEventListener('beforeunload',unload);};
  },[controller]);
  const finish=(type:'return'|'recover')=>{
   pause();if(!flush())return;
@@ -83,7 +89,14 @@ export default function MobilityDrivingYard(props:Props){
   const result=props.onCommand({type,runId:state.active.id,ownerCreatedAt:state.ownerCreatedAt,expectedRevision:state.revision});
   setNotice(result.message);setRecovery(false);
  };
- const resume=()=>{if(props.suspended||!flush()||controller.predicted.tick>=COURSE_MAX_TICKS)return;clear();pauseRef.current=false;setPaused(false);setNotice('Conduite active · l’usure et la charge sont sauvegardées.');canvasRef.current?.focus();};
+ const resume=()=>{
+  if(props.suspended||!flush()||controller.predicted.tick>=COURSE_MAX_TICKS)return;
+  if(!sceneAudio.current){
+   const port=props.createSceneAudio?.();
+   if(port)sceneAudio.current=createMobilityAudio(port,model.id);
+  }
+  sceneAudio.current?.unlock();
+  clear();pauseRef.current=false;setPaused(false);setNotice('Conduite active · l’usure et la charge sont sauvegardées.');canvasRef.current?.focus();};
  const control=(label:string,control:MobilityControl)=>
   <button key={label} type="button" disabled={props.suspended||paused||controller.blocked} aria-label={label}
    onPointerDown={e=>{if(paused||pauseRef.current||props.suspended||controller.blocked)return;e.preventDefault();e.currentTarget.setPointerCapture(e.pointerId);held.current.press(`pointer:${e.pointerId}`,[control]);}}

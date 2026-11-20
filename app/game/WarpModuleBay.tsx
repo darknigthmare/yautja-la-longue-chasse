@@ -8,7 +8,7 @@ import { useHomeworldReducedMotionV77 } from './useHomeworldReducedMotionV77';
 import type { SaveGame } from './types';
 import {
   actWarpBay, createWarpBayState, planWarpBayPath, stepWarpBay, stepWarpBayPath,
-  warpBayStations, WARP_BAY_ART_ROOT, WARP_BAY_METRICS as METRICS, WARP_BAY_ROOMS,
+  warpBayStations, WARP_BAY_ART_ROOT, WARP_BAY_COORDINATE_CONSOLE, WARP_BAY_METRICS as METRICS, WARP_BAY_ROOMS,
   type WarpBayAction, type WarpBayPoint, type WarpBayState,
 } from './systems/warpModuleBay';
 import styles from './WarpModuleBay.module.css';
@@ -168,6 +168,8 @@ export default function WarpModuleBay({ save, onExit, suspended = false }: WarpM
     approach({ x: (event.clientX - rect.left - cameraX) / scale, y: (event.clientY - rect.top - cameraY) / scale });
   }
   const actorWidth = 78, actorFootY = HUNTER_RIG_CANVAS.groundY / HUNTER_RIG_CANVAS.width * actorWidth;
+  const coordinateConsole = WARP_BAY_COORDINATE_CONSOLE;
+  const consoleFoot = coordinateConsole.footprint.y + coordinateConsole.footprint.height;
   return <section className={styles.root} data-warp-module-bay data-warp-room={state.roomId} data-warp-door-open={state.doorOpen}
     data-warp-actor-x={state.actor.x.toFixed(2)} data-warp-actor-y={state.actor.y.toFixed(2)} data-warp-walked={state.walked.toFixed(2)}
     data-warp-bench-tested={state.benchTested} data-warp-navigating={navigating}>
@@ -179,8 +181,11 @@ export default function WarpModuleBay({ save, onExit, suspended = false }: WarpM
     <div ref={sceneRef} className={styles.viewport} tabIndex={0} role="group" aria-label={`${room.label} : déplacement du chasseur`}
       onPointerDown={groundClick} data-warp-viewport data-warp-camera-x={cameraX.toFixed(2)} data-warp-camera-y={cameraY.toFixed(2)} data-warp-scale={scale.toFixed(4)}>
       <div className={styles.world} style={{ width: METRICS.width, height: METRICS.height, transform: `translate(${cameraX}px,${cameraY}px) scale(${scale})` }}>
-        <img className={styles.background} src={WARP_BAY_ART_ROOT + room.background} alt="" draggable={false} width={1672} height={941} />
+        <img className={styles.background} data-warp-background={state.roomId} src={room.background} alt="" draggable={false} width={1672} height={941} />
         {state.roomId === 'bay' && <>
+          <img className={styles.prop} data-warp-prop="coordinate-console" src={coordinateConsole.src} alt="" draggable={false}
+            style={{ left: coordinateConsole.footprint.x + coordinateConsole.footprint.width / 2, top: consoleFoot + coordinateConsole.bottomPadding,
+              width: coordinateConsole.width, zIndex: consoleFoot }} />
           <img className={styles.prop} data-warp-prop="201" src={WARP_BAY_ART_ROOT + '201_module_archiviste_yautja.png'} alt="" draggable={false}
             style={{ left: 730, top: 460, height: 122, zIndex: 460 }} />
           <img className={styles.prop} data-warp-prop="203" src={WARP_BAY_ART_ROOT + '203_module_memoire_avatar.png'} alt="" draggable={false}

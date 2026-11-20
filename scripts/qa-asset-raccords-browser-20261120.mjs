@@ -242,7 +242,8 @@ try{
   const api=bootstrapModule.exports,admissions=[];
   for(const [kind,regionId] of [['passage','ash-marches'],['region','luminous-marshes']]){
     const save=api.defaultSave('2026-11-20T00:00:00.000Z');
-    save.profile.rankId='blooded';save.profile.honor=250;save.profile.hunterName='Qualification raccords';
+    save.profile.rankId='blooded';save.profile.acquiredRankIdV166='blooded';
+    save.profile.honor=250;save.profile.hunterName='Qualification raccords';
     save.appearance.presetId='custom';
     save.inventory.unlockedArmorIds=[...new Set([...save.inventory.unlockedArmorIds,'scout'])];
     save.loadout.armorId='scout';save.loadout.weaponIds=['wristblades'];
@@ -255,6 +256,8 @@ try{
     assert.equal(point?.regionId,regionId,'The prepared approach must expose the requested native region portal.');
     save.homeworld.locationV77=api.createHomeworldCheckpointV77(save.createdAt,arrival.levelId,arrival.actor,null,arrival.actor);
     const parsed=api.parseSaveImport(JSON.stringify(save));assert.ok(parsed.save&&!parsed.failure,'Prepared campaign must pass the real import parser.');
+    assert.equal(parsed.save.profile.rankId,'blooded','The imported snapshot must retain the acquired rank required to equip City Hunter.');
+    assert.equal(parsed.save.profile.acquiredRankIdV166,'blooded');
     assert.equal(parsed.save.gauntletV134.equippedId,'city-hunter');assert.equal(parsed.save.appearance.presetId,'custom');
     assert.equal(parsed.save.loadout.armorId,'scout');
     const expected={ownerCreatedAt:save.createdAt,archive:JSON.parse(JSON.stringify(save.gauntletV134)),bodyMorphId:save.appearance.bodyMorphId,

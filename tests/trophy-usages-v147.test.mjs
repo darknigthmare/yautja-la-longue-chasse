@@ -63,6 +63,37 @@ test("V147 one usage at a time: displayed or worn, moving replaces the single lo
   assert.equal(save.trophies.length, 2);
 });
 
+test("V147 the physical ship display can only receive or release the original at its trophy post", async () => {
+  const m = await bundle;
+  const save = fixture(m, [{ id: "a" }, { id: "b" }]);
+  const shortcut = { atPersonalTrophyHall: false };
+  const post = { atPersonalTrophyHall: true };
+  const display = { kind: "display", trophyId: "a", site: "ship" };
+  assert.equal(m.applyTrophyUsageV147(save, display, NOW, shortcut), null);
+  assert.match(m.checkTrophyUsageV147(save, display, shortcut).reason, /Salle des trophées/);
+  const atShip = m.applyTrophyUsageV147(save, display, NOW, post);
+  assert.equal(m.isPersonalShipTrophyDisplayV147(atShip.trophyUsagesV147.assignments.a), true);
+  assert.equal(m.isPersonalShipTrophyDisplayV147(atShip.trophyUsagesV147.assignments.b), false);
+  assert.equal(m.applyTrophyUsageV147(atShip, display, NOW, post), null, "no second placement is written");
+
+  const commands = [
+    { kind: "store", trophyId: "a" },
+    { kind: "wear", trophyId: "a" },
+    { kind: "display", trophyId: "a", site: "base" },
+  ];
+  for (const command of commands) assert.equal(m.applyTrophyUsageV147(atShip, command, NOW, shortcut), null);
+  const placedAtHome = m.applyTrophyUsageV147(atShip, { kind: "display", trophyId: "b", site: "home" }, NOW, shortcut);
+  assert.equal(m.isPersonalShipTrophyDisplayV147(placedAtHome.trophyUsagesV147.assignments.b), false);
+
+  const roundTrip = m.parseSaveImport(m.exportSave(atShip)).save;
+  assert.ok(roundTrip);
+  assert.equal(m.isPersonalShipTrophyDisplayV147(roundTrip.trophyUsagesV147.assignments.a), true);
+  const stored = m.applyTrophyUsageV147(roundTrip, commands[0], NOW, post);
+  assert.equal(m.trophyUsageV147(stored, "a"), "reserve");
+  assert.equal(m.isPersonalShipTrophyDisplayV147(stored.trophyUsagesV147.assignments.a), false);
+  assert.deepEqual(stored.trophies.map(trophy => trophy.id).sort(), ["a", "b"], "display changes location and never duplicates an original");
+});
+
 test("V147 worn trophies are capped and give the bible's prey reactions", async () => {
   const m = await bundle;
   let save = fixture(m, [
@@ -174,7 +205,12 @@ test("V147 trophy wall wires the usages through the durable campaign write", () 
   const client = read("app/game/GameClient.tsx");
   assert.match(client, /<TrophyUsageSummaryV147 save=\{save\}/);
   assert.match(client, /<TrophyUsageControlsV147/);
-  assert.match(client, /applyTrophyUsageV147\(current, action\)/);
+  assert.match(client, /applyTrophyUsageV147\(current, action, undefined, \{ atPersonalTrophyHall \}\)/);
+  assert.match(client, /onOpenPersonalTrophyHall=\{\(\) => openStationScreen\("trophies", "deck", undefined, true\)\}/);
+  assert.match(client, /if \(!isPersonalShipTrophyDisplayV147\(trophyAssignments\?\.\[trophy\.id\]\)\) return \[\]/);
+  const interior = read("app/game/ShipInterior25D.tsx");
+  assert.match(interior, /if \(actual\.type === "service"\) \{ openService\(actual\.station\.id, true\)/);
+  assert.match(interior, /data-ship-shortcut=\{station\.id\}[^>]*onClick=\{\(\) => openService\(station\.id\)\}/);
   const types = read("app/game/types.ts");
   assert.match(types, /trophyUsagesV147\?: import\("\.\/systems\/trophyUsagesV147"\)\.TrophyUsagesV147 \| null;/);
   // The V146 worn-trophies piece stays purely cosmetic.

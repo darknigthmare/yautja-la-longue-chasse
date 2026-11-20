@@ -2,7 +2,7 @@ import type { MissionResult, RankId, SaveGame } from '../types';
 import { canVisitHomeworldVillagesV69, type HomeworldAccessSaveV69 } from './homeworldAccessV69';
 import {
   canMeetContractGiverV68, contractRegionNameV68, normalizeContractFieldEventV68,
-  type ContractDefinitionV68, type ContractFieldActionV68, type ContractFieldEventV68, type ContractRegionIdV68,
+  type ContractDefinitionV68, type ContractFieldActionV68, type ContractFieldEventV68, type ContractLiveContextV68, type ContractRegionIdV68,
 } from './homeworldContractsV68';
 
 /**
@@ -324,8 +324,8 @@ export function bindMinorArcsRunV160(raw: unknown, ownerCreatedAt: string, regio
 }
 
 /** Même événement physique que les contrats V68 ; appelé uniquement depuis l'interaction réussie du village. */
-export function recordMinorArcsFieldEventV160(raw: unknown, ownerCreatedAt: string, eventRaw: unknown, context: { regionId: string; runId: string; suspended?: boolean }): MinorArcResultV160 {
-  const inspection = inspectMinorArcsV160(raw, ownerCreatedAt), event = normalizeContractFieldEventV68(eventRaw);
+export function recordMinorArcsFieldEventV160(raw: unknown, ownerCreatedAt: string, eventRaw: unknown, context: ContractLiveContextV68): MinorArcResultV160 {
+  const inspection = inspectMinorArcsV160(raw, ownerCreatedAt), event = normalizeContractFieldEventV68(eventRaw, context.reportAt);
   if (inspection.status !== 'valid') return out(null, inspection.status === 'absent', false, 'Aucun mini-arc suivi.');
   if (!event || context.suspended || event.runId !== context.runId || event.regionId !== context.regionId) return out(inspection.state, false, false, 'Observation non valide.');
   const state = structuredClone(inspection.state);

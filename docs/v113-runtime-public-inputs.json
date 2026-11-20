@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "release": "V113",
-  "scope": "Verified original public files used by Homeworld, native forge and Preserve V6, with newly integrated W-02 scenery and field hound art and their original source images.",
+  "scope": "Verified original public files used by Homeworld, native forge and Preserve V6, with newly integrated W-02 scenery and field hound art and their original source images. The unchanged WARP-199 bay and WARP-193 bell source PNGs are reused in the pilot and W-02.",
   "sourceSnapshot": {
     "commit": "03cf51badd450338d748da55599a317a71debd28",
     "tree": "8955aa3ae57f3c1c5151fc6e2980d083bbcd0aaa"
@@ -28,6 +28,11 @@
       "path": "art-source/v113/20261120-integration/field-hound.png",
       "bytes": 1219185,
       "sha256": "0b60b93e8233549599b41d50b6e2835f726afe3803e1543d305ccec1221710ed"
+    },
+    {
+      "path": "docs/suivi-production/v113-warp-p0p1-20261120.md",
+      "bytes": 1978,
+      "sha256": "3dc6253a85f0bf857ed202fedc9fd0ab2fa05bc749550e8bafc3261a8033573f"
     }
   ],
   "runtimeAssets": [
@@ -289,6 +294,7 @@
     "public/game/homeworld/v84/npcs/dock-officer/15.png",
     "public/game/homeworld/v84/ritual-brazier-right.png",
     "public/game/homeworld/v84/training-rack-left.png",
+    "public/game/p0-sprites-20261113/warp/warp-199-empty-bay.png",
     "public/game/planets/earth/ne_110m_land.geojson",
     "public/game/production/enforcer-alternatives-v107/alpha/enforcers-comics-10.png",
     "public/game/production/enforcer-alternatives-v107/augmentes-assassin/enforcers-comics-10.png",
@@ -690,6 +696,7 @@
     "public/game/sprites/v93/pit/scar/004-scar-masked-taunt-r2-v93.png",
     "public/game/sprites/v93/pit/scar/006-scar-masked-idle-r2-v93.png",
     "public/game/ui/v112/field-harvest-symbols.svg",
+    "public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png",
     "public/game/youth/v48/unblooded-right.png"
   ],
   "originalRuntimeInputs": [
@@ -1982,6 +1989,11 @@
       "path": "public/game/homeworld/v84/training-rack-left.png",
       "bytes": 1662707,
       "sha256": "04b83e9a2cb0c1a0d85420eb40798d5e85b2961949148fd6faf03d5105b16be1"
+    },
+    {
+      "path": "public/game/p0-sprites-20261113/warp/warp-199-empty-bay.png",
+      "bytes": 2544734,
+      "sha256": "c0ebe3051c4badaee28f8db1673da0c2ce901d431d06d10e51866f2d02b03087"
     },
     {
       "path": "public/game/planets/earth/ne_110m_land.geojson",
@@ -3987,6 +3999,11 @@
       "path": "public/game/ui/v112/field-harvest-symbols.svg",
       "bytes": 1240,
       "sha256": "bea22b01bbf8a6b394932abc705b850e40d5037f077add9e6e347b3b65fee1ad"
+    },
+    {
+      "path": "public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png",
+      "bytes": 2124690,
+      "sha256": "d636d7fd399bb2dabb1c05caec8213bf28321d4d89fba424767d0e801e1428e0"
     },
     {
       "path": "public/game/youth/v48/unblooded-right.png",
