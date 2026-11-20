@@ -9,7 +9,7 @@ const saves=qa.load('app/game/save.ts'), archives=qa.load('app/game/systems/comp
 const {MobilityDriveController}=qa.load('app/game/systems/mobility/controller.ts');
 const OWNER='2026-11-08T17:00:00.000Z',MAIN=saves.SAVE_STORAGE_KEY;
 const IDLE={throttle:0,steer:0,brake:false,boost:false,interact:false};
-function seed(){const s=saves.defaultSave(OWNER);s.profile.honor=300;s.profile.rankId='blooded';s.profile.clanMarks=10000;return s;}
+function seed(){const s=saves.defaultSave(OWNER);s.profile.honor=300;s.profile.rankId='blooded';s.profile.acquiredRankIdV166='blooded';s.profile.clanMarks=10000;return s;}
 function act(s,command,expected=true){const before=JSON.stringify(s);const r=m.actMobility(s,{ownerCreatedAt:s.createdAt,expectedRevision:s.mobilityV1?.revision??0,...command});assert.equal(r.accepted,expected,r.message);assert.equal(JSON.stringify(s),before);return r.accepted?{...s,mobilityV1:r.state,profile:{...s.profile,clanMarks:r.clanMarks}}:s;}
 function train(s=seed()){
  s=act(s,{type:'start',modelId:'scout_grav_sled',loaned:true});let course=s.mobilityV1.active.course,stage=0,batch=[];

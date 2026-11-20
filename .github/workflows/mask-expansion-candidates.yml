@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/mask-expansion-candidates.yml'
+      - '.github/scripts/materialize-historical-art-inputs-20261113.sh'
       - '.github/workflows/p0-sprite-candidates.yml'
       - 'production/biomasks-dual-20261113/**'
       - 'public/game/biomasks-dual-20261113/**'
@@ -32,6 +33,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/mask-expansion-candidates.yml'
+      - '.github/scripts/materialize-historical-art-inputs-20261113.sh'
       - '.github/workflows/p0-sprite-candidates.yml'
       - 'production/biomasks-dual-20261113/**'
       - 'public/game/biomasks-dual-20261113/**'
@@ -79,6 +81,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/mask-expansion-candidates.yml
+            /.github/scripts/materialize-historical-art-inputs-20261113.sh
             /production/biomasks-expansion-20261113/tools/ci-mask-expansion-inputs.py
             /production/biomasks-expansion-20261113/suivi/source-protection.json
             /public/game/biomasks-expansion-20261113/manifest.json
@@ -87,6 +90,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Include exact protected sources without unrelated historical art
+        id: archived_inputs
         # The repository is public; lazy blob fetches remain anonymous after
         # checkout removes its read token. The selector itself never changes Git.
         shell: bash
@@ -94,7 +98,9 @@ jobs:
           set -euo pipefail
           python3 production/biomasks-expansion-20261113/tools/ci-mask-expansion-inputs.py --check-git-tree
           python3 production/biomasks-expansion-20261113/tools/ci-mask-expansion-inputs.py --patterns > "$RUNNER_TEMP/biomask-sparse-inputs.txt"
+          printf '%s\n' '/.github/scripts/materialize-historical-art-inputs-20261113.sh' >> "$RUNNER_TEMP/biomask-sparse-inputs.txt"
           git sparse-checkout set --no-cone --stdin < "$RUNNER_TEMP/biomask-sparse-inputs.txt"
+          bash .github/scripts/materialize-historical-art-inputs-20261113.sh archived
           python3 production/biomasks-expansion-20261113/tools/ci-mask-expansion-inputs.py --check
       - name: Install pinned native PNG reader
         run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
@@ -103,3 +109,6 @@ jobs:
         # Community screenshots are exact reference copies; prototype/edition A
         # and PHG B may be native ImageGen studies. The prior46 canon targets stay open.
         run: python3 production/biomasks-expansion-20261113/tools/verify-mask-expansion.py --check --require-complete
+      - name: Restore current source files after archive verification
+        if: ${{ always() && (steps.archived_inputs.outcome == 'success' || steps.archived_inputs.outcome == 'failure') }}
+        run: bash .github/scripts/materialize-historical-art-inputs-20261113.sh current

@@ -31,7 +31,7 @@ function seedSave():SaveGame{
   const current=loadSaveWithStatus(storage);
   if(current.loaded&&current.save.createdAt===OWNER)return current.save;
   const fresh=defaultSave(OWNER);
-  fresh.profile={...fresh.profile,honor:730,rankId:"elite"};
+  fresh.profile={...fresh.profile,honor:730,rankId:"elite",acquiredRankIdV166:"elite"};
   const previous=fresh.missionProgress[study.missionId];
   fresh.missionProgress[study.missionId]={
     ...previous,status:"completed",attempts:2,

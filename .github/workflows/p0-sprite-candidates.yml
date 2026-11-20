@@ -5,6 +5,7 @@ on:
   pull_request:
     paths:
       - '.github/workflows/p0-sprite-candidates.yml'
+      - '.github/scripts/materialize-historical-art-inputs-20261113.sh'
       - 'production/p0-fidelity-20261113/**'
       - 'public/game/p0-fidelity-20261113/**'
       - 'production/p0-sprites-20261113/**'
@@ -24,6 +25,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/p0-sprite-candidates.yml'
+      - '.github/scripts/materialize-historical-art-inputs-20261113.sh'
       - 'production/p0-fidelity-20261113/**'
       - 'public/game/p0-fidelity-20261113/**'
       - 'production/p0-sprites-20261113/**'
@@ -63,6 +65,7 @@ jobs:
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /.github/workflows/p0-sprite-candidates.yml
+            /.github/scripts/materialize-historical-art-inputs-20261113.sh
             /production/p0-fidelity-20261113/
             /public/game/p0-fidelity-20261113/
             /production/p0-sprites-20261113/
@@ -73,13 +76,16 @@ jobs:
         with:
           python-version: '3.12'
       - name: Include exact protected sources and local visual references
+        id: archived_inputs
         # This repository is public (GitHub visibility checked: private=false).
         # The lazy blob fetch remains anonymous after checkout removes its token.
         shell: bash
         run: |
           set -euo pipefail
           python3 production/p0-fidelity-20261113/tools/ci-sparse-inputs.py --patterns > "$RUNNER_TEMP/p0-sprite-sparse-inputs.txt"
+          printf '%s\n' '/.github/scripts/materialize-historical-art-inputs-20261113.sh' >> "$RUNNER_TEMP/p0-sprite-sparse-inputs.txt"
           git sparse-checkout set --no-cone --stdin < "$RUNNER_TEMP/p0-sprite-sparse-inputs.txt"
+          bash .github/scripts/materialize-historical-art-inputs-20261113.sh archived
           python3 production/p0-fidelity-20261113/tools/ci-sparse-inputs.py --check
       - name: Install the pinned native PNG reader
         run: python3 -m pip install --disable-pip-version-check --no-input 'Pillow==12.3.0'
@@ -89,3 +95,6 @@ jobs:
         run: python3 production/p0-sprites-20261113/tools/verify-workbook.py --check --require-complete
       - name: Verify native fidelity addendum candidates and source pins
         run: python3 production/p0-fidelity-20261113/tools/verify-archived-pack.py --pack addendum --check --require-complete
+      - name: Restore current source files after archive verification
+        if: ${{ always() && (steps.archived_inputs.outcome == 'success' || steps.archived_inputs.outcome == 'failure') }}
+        run: bash .github/scripts/materialize-historical-art-inputs-20261113.sh current
