@@ -1,6 +1,8 @@
 "use client";
 import { applyResidenceActionV149, emptyResidenceV149, houseForBuildingV149, houseV149, isFutureResidenceV149, normalizeResidenceV149, recordResidenceFieldEventV149, type ResidenceActionV149 } from "./systems/residenceV149";
 import ResidencePanelV149 from "./ResidencePanelV149";
+import ResidenceLifePanelV150 from "./ResidenceLifePanelV150";
+import { emptyResidenceLifeV150, guestsInSceneV150, inspectThresholdMarkV150, inviteGuestV150, isFutureResidenceLifeV150, normalizeResidenceLifeV150, readReminderV150, settleResidenceLifeV150 } from "./systems/residenceLifeV150";
 import { actMobility, type MobilityCommand } from "./systems/mobility/ledger";
 import { atMobilityForge } from "./systems/mobility/access";
 import type { MobilityReceipt } from "./systems/mobility/controller";
@@ -2223,7 +2225,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "houndsV147" | "residenceV149">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2233,7 +2235,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2828,12 +2830,24 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!binding.ok || !persistSocialProgress({ homeworldRegionV68: state, homeworld: { ...current.homeworld, contractsV68: binding.state } })) return false;
     setHubLocation("homeworld"); setScreen("homeworld-region-v68"); return true;
   }, [entry.ownerCreatedAt, persistSocialProgress]);
+  /** V150: guests set out / go home and absence is counted with each region checkpoint (same write). */
+  const settleResidenceLifeForRegionV150 = useCallback((current: SaveGame, state: HomeworldRegionStateV68): { residenceLifeV150?: SaveGame["residenceLifeV150"] } => {
+    if (isFutureResidenceLifeV150(current.residenceLifeV150) || isFutureResidenceV149(current.residenceV149)) return {};
+    const residence = normalizeResidenceV149(current.residenceV149);
+    const before = normalizeResidenceLifeV150(current.residenceLifeV150);
+    if (!residence?.activeResidenceId && !before) return {};
+    const settled = settleResidenceLifeV150(before ?? emptyResidenceLifeV150(), residence ?? emptyResidenceV149(),
+      { regionId: state.regionId, runId: state.runId, tick: state.tick, zone: state.zone, buildingId: state.buildingId });
+    if (JSON.stringify(settled.state) === JSON.stringify(before)) return {};
+    if (settled.events.length) setToast(settled.events.join(" "));
+    return { residenceLifeV150: settled.state };
+  }, []);
   const checkpointHomeworldRegionV68 = useCallback((state: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !current.homeworldRegionV68 ||
       !canEnterHomeworldRegionV68(current, state.regionId).allowed || !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state)) return false;
-    return persistSocialProgress({ homeworldRegionV68: state });
-  }, [entry.ownerCreatedAt, persistSocialProgress]);
+    return persistSocialProgress({ homeworldRegionV68: state, ...settleResidenceLifeForRegionV150(current, state) });
+  }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
   const fieldHomeworldRegionV68 = useCallback((event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !current.homeworldRegionV68 ||
@@ -2847,8 +2861,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         { regionId: event.regionId, runId: event.runId, action: event.action });
     if (residence.completed.length) setToast(`Mission de seuil vérifiée : ${residence.completed.map(id => houseV149(id)?.title ?? id).join(", ")}. Retourne à la demeure pour recevoir la clé.`);
     return persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state},
-      residenceV149: residence.state });
-  }, [entry.ownerCreatedAt, persistSocialProgress]);
+      residenceV149: residence.state, ...settleResidenceLifeForRegionV150(current, state) });
+  }, [entry.ownerCreatedAt, persistSocialProgress, settleResidenceLifeForRegionV150]);
   const residenceActionV149 = useCallback((houseId: string, action: ResidenceActionV149): { ok: boolean; message: string } => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
@@ -2859,6 +2873,20 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const change = applyResidenceActionV149(normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149(), houseId, action, context);
     if (!change.ok) return { ok: false, message: change.reason };
     return persistSocialProgress({ residenceV149: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const residenceLifeActionV150 = useCallback((action: { kind: "invite"; guestId: string } | { kind: "inspect" } | { kind: "read"; id: string }): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureResidenceLifeV150(current.residenceLifeV150) || isFutureResidenceV149(current.residenceV149)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const residence = normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149();
+    const life = normalizeResidenceLifeV150(current.residenceLifeV150) ?? emptyResidenceLifeV150();
+    const region = current.homeworldRegionV68;
+    const atHouseId = region && region.zone === "interior" ? houseForBuildingV149(region.regionId, region.buildingId)?.id ?? null : null;
+    const context = { rankId: current.profile.rankId, atHouseId, regionAllowed: (regionId: string) => canEnterHomeworldRegionV68(current, regionId).allowed };
+    if (action.kind === "read") return persistSocialProgress({ residenceLifeV150: readReminderV150(life, action.id) }) ? { ok: true, message: "" } : { ok: false, message: "Sauvegarde refusée." };
+    const change = action.kind === "invite" ? inviteGuestV150(life, residence, action.guestId, context) : inspectThresholdMarkV150(life, residence, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ residenceLifeV150: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
   }, [entry.ownerCreatedAt, persistSocialProgress]);
   const bibleActionHomeworldV86 = useCallback((action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86 => {
     const previous=normalizeBibleSceneLedgerV86(saveRef.current.homeworld.bibleScenesV86)??defaultBibleSceneLedgerV86(entry.ownerCreatedAt);
@@ -4721,9 +4749,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             residenceV149={(buildingId: string, disabled: boolean) => {
               const house = houseForBuildingV149(save.homeworldRegionV68!.regionId, buildingId);
               if (!house) return null;
-              return <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled}
-                regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={action => residenceActionV149(house.id, action)} />;
-            }} />
+              return <>
+                <ResidencePanelV149 house={house} residence={save.residenceV149} rankId={save.profile.rankId} disabled={disabled}
+                  regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={action => residenceActionV149(house.id, action)} />
+                <ResidenceLifePanelV150 house={house} residence={save.residenceV149} life={save.residenceLifeV150} rankId={save.profile.rankId} disabled={disabled}
+                  regionAllowed={regionId => canEnterHomeworldRegionV68(save, regionId).allowed} onAction={residenceLifeActionV150} />
+              </>;
+            }}
+            guestsV150={(view: { regionId: string; runId: string; tick: number; zone: string; buildingId: string | null }) => guestsInSceneV150(normalizeResidenceLifeV150(save.residenceLifeV150) ?? emptyResidenceLifeV150(), view)} />
         </Suspense>
       </section>}
       {screen === "homeworld-passage-v67" && hydrated && save.homeworldPassageV67 && <section inert={settingsOpen} data-homeworld-passage-campaign>

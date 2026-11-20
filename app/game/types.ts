@@ -735,6 +735,8 @@ export interface SaveGame {
   tribunalV147?: import("./systems/honorTribunalV147").HonorTribunalV147 | null;
   /** V149: first residence, local respect, moves (BUILD5-07). Absent until first used. */
   residenceV149?: import("./systems/residenceV149").ResidenceStateV149 | null;
+  /** V150: guests, room states and reminders of the residence (BUILD5-08). Absent until first used. */
+  residenceLifeV150?: import("./systems/residenceLifeV150").ResidenceLifeV150 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
