@@ -9,6 +9,7 @@ const bundle = await build({ stdin: { contents: `
 export * from './app/game/systems/homeworld';
 export * from './app/game/systems/homeworldInput';
 export * from './app/game/systems/homeworldContractsV68';
+export * from './app/game/systems/minorArcsV160';
 export * from './app/game/systems/homeworldRegionsV68';
 export * from './app/game/save';
 `, resolveDir: process.cwd() }, bundle: true, write: false, format: 'esm', platform: 'node', logLevel: 'silent' });

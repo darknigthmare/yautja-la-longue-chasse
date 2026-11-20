@@ -755,6 +755,8 @@ export interface SaveGame {
   blackGodV162?: import("./systems/blackGodV162").BlackGodStateV162 | null;
   /** V159: routes spatiales typées, voyage engagé et position du vaisseau (STATE5-18/19); absent des anciennes sauvegardes. */
   spaceRoutesV159?: import("./systems/spaceRoutesV159").SpaceRoutesStateV159 | null;
+  /** V160 : mini-arcs Lost Tribe / Serpent Clan, champ additif créé à la première épreuve acceptée. */
+  minorArcsV160?: import("./systems/minorArcsV160").MinorArcsV160 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

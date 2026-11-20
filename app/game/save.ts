@@ -63,6 +63,7 @@ import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
 import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shipInsertionEnergy";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
+import { inspectMinorArcsV160, recordMinorArcsHuntResultV160 } from "./systems/minorArcsV160";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -1353,6 +1354,11 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.spaceRoutesV159 === undefined ? {} : {
       spaceRoutesV159: inspectSpaceRoutesV159(source.spaceRoutesV159, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
+    // V160 : écrit seulement s'il existe déjà ; un registre illisible est retiré
+    // ici, mais inspectSavePayload refuse avant tout import une version future.
+    ...(source.minorArcsV160 === undefined || source.minorArcsV160 === null ? {} : {
+      minorArcsV160: inspectMinorArcsV160(source.minorArcsV160, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1734,6 +1740,12 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.spaceRoutesV159 !== undefined && value.spaceRoutesV159 !== null) {
     const routes = inspectSpaceRoutesV159(value.spaceRoutesV159, typeof value.createdAt === "string" ? value.createdAt : "");
     if (routes.status === "future-version" || routes.status === "invalid-save") return { save: null, failure: routes.status };
+  }
+  // V160 : un registre de mini-arcs plus récent ou d'un autre propriétaire n'est jamais effacé à l'import.
+  if (value.minorArcsV160 !== undefined && value.minorArcsV160 !== null) {
+    const arcs = inspectMinorArcsV160(value.minorArcsV160, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (arcs.status === "future") return { save: null, failure: "future-version" };
+    if (arcs.status !== "valid") return { save: null, failure: "invalid-save" };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;
@@ -2610,8 +2622,13 @@ export function applyMissionResult(
       save.storyCompleted || mission.id === FINAL_STORY_MISSION_ID,
   };
 
+  // V160 : seule une réussite réellement appliquée peut remplir le contrat SC-1 ;
+  // le champ n'est écrit que s'il existe déjà dans la sauvegarde.
+  const minorArcs = save.minorArcsV160 === undefined || save.minorArcsV160 === null
+    ? null : recordMinorArcsHuntResultV160(save.minorArcsV160, save.createdAt, result);
   return withHoundAfterMissionV147(withCustomizationAfterMissionV146({
     ...progressedSave,
+    ...(minorArcs?.changed && minorArcs.state ? { minorArcsV160: minorArcs.state } : {}),
     inventory: unlockContent(
       progressedSave,
       nextHonor,
