@@ -1,6 +1,7 @@
 "use client";
 /* Existing project bitmap is served unchanged in web and packaged desktop builds. */
 /* eslint-disable @next/next/no-img-element */
+import { LEGACY_DEFAULT_ORIGIN_V151, ORIGINS_V151 } from './systems/originsV151';
 import {useCallback,useLayoutEffect,useRef,useState,useSyncExternalStore,type KeyboardEvent} from 'react';
 import {useMenuGamepad} from './useMenuGamepad';
 import {menuFocusIndex,type MenuDirection} from './systems/menuNavigation';
@@ -47,10 +48,10 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  onPrepareImport?:(slotId:number,serialized:string)=>CampaignSlotImportPreparation;
  onImport?:(preview:CampaignSlotImportPreview)=>void;
  catalog:CampaignCatalogView|null;busy:boolean;message:string|null;onRefresh:()=>void;
- onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
- onReplace?:(slotId:number,name:string,expectedRevision:number,expectedOwnerCreatedAt:string)=>void;
+ onRecover:(slotId:number)=>void;onCreate:(slotId:number,name:string,originId?:string)=>void;onContinue:(slotId:number)=>void;onLoad:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
+ onReplace?:(slotId:number,name:string,expectedRevision:number,expectedOwnerCreatedAt:string,originId?:string)=>void;
  onWorkspaceRecover?:(slotId:number,checkpointId:string,expectedRevision:number)=>void;
- onRecoverNew?:(slotId:number,name:string)=>void;
+ onRecoverNew?:(slotId:number,name:string,originId?:string)=>void;
  modeAccess?:Readonly<Record<MainMenuGameModeV81,boolean>>;
  onOpenGameMode?:(mode:MainMenuGameModeV81,spoilersConfirmed:boolean)=>void;
 }){
@@ -61,7 +62,8 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
  const importReadGeneration=useRef(0),importAlive=useRef(true);
  // Remounting also invalidates a pending read from React's development replay.
  useLayoutEffect(()=>{importReadGeneration.current++;importAlive.current=true;return()=>{importAlive.current=false;};},[]);
- const [replacement,setReplacement]=useState<{slot:CampaignSlotView;name:string;recovery?:boolean}|null>(null);
+ const [replacement,setReplacement]=useState<{slot:CampaignSlotView;name:string;originId:string;recovery?:boolean}|null>(null);
+ const [originId,setOriginId]=useState<string>(LEGACY_DEFAULT_ORIGIN_V151);
  const [spoilerMode,setSpoilerMode]=useState<MainMenuGameModeV81|'clan-war'|null>(null);
  const rootRef=useRef<HTMLElement>(null),dialogRef=useRef<HTMLElement>(null),confirmationTriggerRef=useRef<HTMLButtonElement>(null);
  const navigationFocusRef=useRef<string|null>(initialEntry?.action?`[data-menu-action="${initialEntry.action}"]`:null);
@@ -198,13 +200,18 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
     <div className={styles.parties} aria-label="Les cinq parties">{catalog?.slots.map(item=><button type="button" key={item.id} data-campaign-slot={item.id} data-slot-state={item.status} aria-pressed={selected===item.id} disabled={busy||(view==='import'&&(importReading||item.status!=='empty'||archivesBlocked))} onClick={()=>{importReadGeneration.current++;setImportReading(false);setSelected(item.id);setImportPreview(null);setImportConfirmation(null);setImportMessage(null);}}><span>PARTIE {String(item.id).padStart(2,'0')}</span><strong>{item.status==='empty'?'Emplacement libre':item.hunterName??'Archive protégée'}</strong><small>{item.status==='blocked'?'Archive protégée':item.status==='empty'?'Nouvelle histoire':`${item.checkpoints.length} / 12 sauvegardes`}</small></button>)}</div>
     {view==='new'?<div className={styles.newGame}>
      <figure className={styles.prologuePreview}><img src="/game/prologue/v47/arena.png" alt="" decoding="async" /><figcaption><span>PROLOGUE</span><h3>La nurserie du clan</h3><p>Grandissez sur Yautja Prime : accueil Unblooded, dojo, camp, reconnaissance et patrouille du désert. La petite Fosse propose ensuite un duel de novices facultatif.</p></figcaption></figure>
-     <form className={styles.creationPanel} onSubmit={event=>{event.preventDefault();if(busy||archivesBlocked)return;if(slot?.status==='empty')onCreate(slot.id,name.trim());else if(slot?.status==='ready'&&onReplace){confirmationTriggerRef.current=event.currentTarget.querySelector('button[type=submit]');setReplacement({slot,name:name.trim()});}}}>
+     <form className={styles.creationPanel} onSubmit={event=>{event.preventDefault();if(busy||archivesBlocked)return;if(slot?.status==='empty')onCreate(slot.id,name.trim(),originId);else if(slot?.status==='ready'&&onReplace){confirmationTriggerRef.current=event.currentTarget.querySelector('button[type=submit]');setReplacement({slot,name:name.trim(),originId});}}}>
       <p className={styles.eyebrow}>Partie {slot?.id} · {slot?.status==='empty'?'Emplacement libre':'Emplacement protégé'}</p>
       <h3>Une nouvelle chronique</h3>
       <label htmlFor="campaign-hunter-name">Nom du chasseur</label><input id="campaign-hunter-name" aria-describedby="campaign-name-help" maxLength={48} value={name} onChange={event=>setName(event.target.value)} disabled={busy} autoComplete="off" placeholder="Chasseur sans nom" />
       <p id="campaign-name-help" className={styles.inputHelp}>Facultatif · vous commencez dans la nurserie, sans vaisseau personnel.</p>
+      <fieldset className={styles.originChoice} data-campaign-origin-v151 disabled={busy}>
+       <legend>Origine du chasseur</legend>
+       <p className={styles.inputHelp}>Fixée pour toute la chronique : elle change les scènes de voie, pas le rang ni les récompenses.</p>
+       {ORIGINS_V151.map(origin=><label key={origin.id} className={styles.originOption}><input type="radio" name="campaign-origin" value={origin.id} checked={originId===origin.id} onChange={()=>setOriginId(origin.id)} /><span><b>{origin.title}</b> — {origin.promise}</span></label>)}
+      </fieldset>
       <button className={styles.featured} type="submit" disabled={busy||archivesBlocked||!slot||slot.status==='blocked'||(slot.status==='ready'&&!onReplace)}>{slot?.status==='ready'?`Remplacer la partie ${slot.id}…`:`Créer la partie ${slot?.id} et commencer le prologue`}</button>
-      {canRecoverNew&&<button type="button" disabled={busy} onClick={event=>{confirmationTriggerRef.current=event.currentTarget;setReplacement({slot:slot!,name:name.trim(),recovery:true});}}>Conserver les données endommagées et repartir…</button>}
+      {canRecoverNew&&<button type="button" disabled={busy} onClick={event=>{confirmationTriggerRef.current=event.currentTarget;setReplacement({slot:slot!,name:name.trim(),originId,recovery:true});}}>Conserver les données endommagées et repartir…</button>}
       {slot?.status==='ready'&&<p className={styles.notice}>Cette campagne contient déjà {slot.checkpoints.length} sauvegarde(s). Le remplacement demande une confirmation explicite et conserve une archive de secours complète.</p>}
       {(archivesBlocked||slot?.status==='blocked')&&<p className={styles.notice} role="status">Archives protégées : aucune création ni suppression. Consultez les sauvegardes lisibles dans « Charger une partie ». Une version future reste intacte ; une archive corrompue nécessite une récupération explicite.</p>}
      </form>
@@ -252,7 +259,7 @@ export default function CampaignMainMenu({catalog,busy,message,onRefresh,onCreat
    <p>{replacement.recovery?'Les données de travail endommagées seront conservées exactement dans une archive brute de secours. Elles ne seront pas utilisées pour cette nouvelle partie et leurs progrès ne peuvent pas être reconstruits automatiquement. Aucun slot occupé ni aucune version future ne sera écrasé.':'Cette campagne et ses dix emplacements manuels / deux autos ne seront plus accessibles dans cet emplacement.'} Une nouvelle chronique « {replacement.name||'Chasseur sans nom'} » commencera dans la nurserie. Une archive de secours complète restera conservée sur cet appareil ; elle ne sera pas effacée par les futures autosauvegardes.</p>
    <p>Si l’écriture ou le contrôle de version échoue, le remplacement est annulé. Aucun autre emplacement de campagne ne sera remplacé.</p>
    {message&&<p role="status">{message}</p>}
-   <div className={styles.dialogActions}><button type="button" disabled={busy} onClick={()=>setReplacement(null)}>Annuler</button><button type="button" disabled={busy||(archivesBlocked&&!replacement.recovery)} onClick={()=>replacement.recovery?onRecoverNew?.(replacement.slot.id,replacement.name):onReplace?.(replacement.slot.id,replacement.name,replacement.slot.revision,replacement.slot.ownerCreatedAt!)}>{replacement.recovery?'Confirmer la nouvelle chronique protégée':`Confirmer le remplacement de la partie ${replacement.slot.id}`}</button></div>
+   <div className={styles.dialogActions}><button type="button" disabled={busy} onClick={()=>setReplacement(null)}>Annuler</button><button type="button" disabled={busy||(archivesBlocked&&!replacement.recovery)} onClick={()=>replacement.recovery?onRecoverNew?.(replacement.slot.id,replacement.name,replacement.originId):onReplace?.(replacement.slot.id,replacement.name,replacement.slot.revision,replacement.slot.ownerCreatedAt!,replacement.originId)}>{replacement.recovery?'Confirmer la nouvelle chronique protégée':`Confirmer le remplacement de la partie ${replacement.slot.id}`}</button></div>
   </section></div>}
   {confirmation&&<div className={styles.backdrop}><section ref={dialogRef} className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="checkpoint-confirm-title" onKeyDown={event=>{if(event.key==='Tab'){const nodes=controls(dialogRef.current!);if(event.shiftKey&&document.activeElement===nodes[0]){event.preventDefault();nodes.at(-1)?.focus();}else if(!event.shiftKey&&document.activeElement===nodes.at(-1)){event.preventDefault();nodes[0]?.focus();}}}}><p className={styles.eyebrow}>Archives du clan</p><h2 id="checkpoint-confirm-title">{canRecoverWorkspace?'Récupérer depuis ce checkpoint ?':'Charger ce checkpoint ?'}</h2><p>Partie {confirmation.slot.id} · {confirmation.slot.hunterName}<br/>{confirmation.checkpoint.label} · {date(confirmation.checkpoint.savedAt)}</p>
    <p>{canRecoverWorkspace?'La campagne courante est endommagée. Ses données brutes seront conservées dans une archive de secours séparée avant la restauration de ce checkpoint. Les progrès postérieurs au checkpoint ne seront pas repris.':archivesBlocked?'Le stockage courant est protégé. Les sauvegardes restent consultables mais ne peuvent pas remplacer une version future ou un stockage inaccessible.':'L’état actuel sera conservé automatiquement avant le chargement. Le chargement sera refusé si cette sauvegarde ne peut pas être confirmée.'}</p>
