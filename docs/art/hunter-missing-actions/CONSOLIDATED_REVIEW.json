@@ -1,0 +1,1175 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-10T12:30:32.882807+00:00",
+  "scope": "Independent source atlas review, read-only; review of generated raster sources and intended engine mapping, not gameplay integration.",
+  "auditedGameplayCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+  "artisticStatus": "draft_requires_human_review",
+  "expectedFinal": {
+    "actions": 14,
+    "sheets": 19,
+    "newSourceDrawings": 304
+  },
+  "current": {
+    "registeredSelectedSheets": 19,
+    "sourceSheetsWithMatchingMeasurements": 19,
+    "sourceSheetsVisuallyReviewed": 19,
+    "reviewedSourceDrawings": 304,
+    "fullyReviewedExpectedSelection": true,
+    "missingMeasurements": [],
+    "sheetsWithAlphaGte16Border": 0,
+    "sheetsWithAlphaGt2Border": 8,
+    "framesWithAlphaGt2Border": 24,
+    "runtimeValidatedClipsClaimed": 0,
+    "nativeFacingsReviewed": [
+      "right"
+    ],
+    "nativeLeftDrawingsClaimed": 0
+  },
+  "measurements": {
+    "grid": "Read exact native cells using Math.round, with variable 313/314 widths in 1254px sheets; no source rewrite.",
+    "alphaGte16": "Used to flag actual substantial border clipping; thresholds.15 is exactly alpha>=16.",
+    "alphaGt2": "Recorded separately because it is the runtime visibility threshold; low-alpha source edge noise is not hidden.",
+    "bodyAndActionReview": "Visual inspection of entire source sheets; machine dimensions/alpha are not human anatomical approval.",
+    "loopDiagnostic": "Silhouette overlap is descriptive only, never an artistic pass/fail gate."
+  },
+  "sources": [
+    {
+      "sheetId": "light_1",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-654a23ec-0e59-432b-95f0-1320a21516d9.png",
+      "sourceSha256": "7ffc19d904b921135eb7035034bfc8dbe70e1e16f9b4522f7eaebe6605b8631f",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.5699643119688448,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "minimumVisibleMarginsLTRB": [
+        57,
+        14,
+        25,
+        8
+      ],
+      "quantitativeReport": "batch-01-qa.json",
+      "visualReview": "batch-01-visual-review.md",
+      "visualObservation": "Compact outward slash, full body and controlled recovery. Final guard is close, not certified identical.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "light_2",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-9a0c2707-d1c5-4321-91b8-53dc4f83da66.png",
+      "sourceSha256": "b11645bbb7793e5efa07c88a1827d019ea2667582139c3e6e079b325357bb280",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6945194834265598,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        69,
+        15,
+        32,
+        15
+      ],
+      "quantitativeReport": "batch-01-qa.json",
+      "visualReview": "batch-01-visual-review.md",
+      "visualObservation": "Rising backhand differs from first slash; final four source drawings vary only slightly.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "parry",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-34a45560-6aca-4e6a-96ad-d469eeb73cfa.png",
+      "sourceSha256": "4678373ff386360eaa6681db06444b70d2fb7a9272f467472e81c39cbdd0808f",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.702386494000697,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        79,
+        19,
+        47,
+        14
+      ],
+      "quantitativeReport": "batch-01-qa.json",
+      "visualReview": "batch-01-visual-review.md",
+      "visualObservation": "Defensive forearm raise, compression and return. Preview anticipation cannot delay mechanical activation.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "combo_finisher_a",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-1f45797d-4ea4-4427-b2a9-a23f8e5232fc.png",
+      "sourceSha256": "fbcd7a34e252654e4ea771c2242cadf7bdd3c0495cede63f826cba38fb1053b3",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.7047584889438326,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        13,
+        16
+      ],
+      "minimumVisibleMarginsLTRB": [
+        41,
+        34,
+        13,
+        8
+      ],
+      "quantitativeReport": "batch-01-qa.json",
+      "visualReview": "batch-01-visual-review.md",
+      "visualObservation": "Broad wind-up and full extension; part A intentionally does not recover.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "heavy_strike_a",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-d7665e6a-7ec1-4413-abda-70ef157740a6.png",
+      "sourceSha256": "ab63427c92184a82acb2f6a0f0ec0931585133655d0940c76ab50ad958a6cdb9",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.7318106779199703,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        63,
+        6,
+        67,
+        19
+      ],
+      "quantitativeReport": "batch-01-qa.json",
+      "visualReview": "batch-01-visual-review.md",
+      "visualObservation": "Overhead arm-up, chop and low committed contact; all blade tips retained.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "air_strike_a",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-34dc9892-cd5f-497f-b95e-e4fe8693c47a.png",
+      "sourceSha256": "a314900fa37cfee70f67f7f21409eb792be0413fb8fd01bd4442c58ed0498174",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.7157510639001448,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        46,
+        8,
+        37,
+        21
+      ],
+      "quantitativeReport": "batch-01-qa.json",
+      "visualReview": "batch-01-visual-review.md",
+      "visualObservation": "Already airborne throughout; knees tucked, attack downwards, no takeoff or landing invented.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "guard_break_a",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-e3f93098-0187-4d0a-8f68-4f6a9f60285d.png",
+      "sourceSha256": "9f1419af4d2a434e733827f16ad097754cdd9a585d8eac2b5869e02915c78829",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6461225195800869,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        13,
+        15,
+        16
+      ],
+      "minimumVisibleMarginsLTRB": [
+        37,
+        19,
+        23,
+        7
+      ],
+      "quantitativeReport": "batch-03-heavy-guard-qa.json",
+      "visualReview": "batch-03-heavy-guard-review.md",
+      "visualObservation": "Guard-breaking push/punch distinct from wristblade sweeps, full body, no opponent or shield invented.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "combo_finisher_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-f241a6ad-de73-481e-b2e2-7ea8e6e2bcdd.png",
+      "sourceSha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6982351848884208,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        53,
+        42,
+        39,
+        11
+      ],
+      "quantitativeReport": "combo-finisher-b-corrected-qa.json",
+      "visualReview": "combo-finisher-b-corrected-review.md",
+      "visualObservation": "Revised source retained in draft; constant page translation only; stance/pose differences remain.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "heavy_strike_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-46f3ae14-e17a-41bb-a812-8ba72b944553.png",
+      "sourceSha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6769711723123962,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        48,
+        34,
+        45,
+        6
+      ],
+      "quantitativeReport": "batch-03-heavy-guard-qa.json",
+      "visualReview": "batch-03-heavy-guard-review.md",
+      "visualObservation": "Revised source retained in draft; wider stance/rear boot flattening remains; page Y translation only.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "air_strike_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-ec1576df-7cc3-488e-ab63-9288cc688abd.png",
+      "sourceSha256": "5a8323b3ea18a292cb7e372ff57a5a79efa4903e307e93687a5af399ab5e5d49",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6716968221626998,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        63,
+        33,
+        46,
+        14
+      ],
+      "quantitativeReport": "air-strike-b-corrected-qa.json",
+      "visualReview": "air-strike-b-corrected-review.md",
+      "visualObservation": "Revised source retained; dread motion and torso recovery preserved, no page calibration or height normalization.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "dodge",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-93599687-55f2-40df-88b3-f1676f6ef8fd.png",
+      "sourceSha256": "11a487d96330b109f3f5134412dc49b42c111b0d561013e8b1c26f4314b8f1b5",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6638978554113281,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        16
+      ],
+      "minimumVisibleMarginsLTRB": [
+        29,
+        28,
+        24,
+        7
+      ],
+      "quantitativeReport": "batch-04-qa.json",
+      "visualReview": "batch-04-dodge-run-review.md",
+      "visualObservation": "Compression and low evasive motion then return; do not pin feet or alter gameplay invulnerability.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "run_forward",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-efc3ced9-9248-4ac4-a073-e05110bee0d6.png",
+      "sourceSha256": "a3df5d789cb3e77f26f891391ce5ab48631c4e890828aa9dd8763302d5ab06f3",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.7144200758529643,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        52,
+        15,
+        58,
+        10
+      ],
+      "quantitativeReport": "batch-04-qa.json",
+      "visualReview": "batch-04-dodge-run-review.md",
+      "visualObservation": "Running motion throughout, no terminal idle hold; 16-to-1 junction remains a visible review concern.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "guard_break_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-b66de90d-1694-4afd-b908-311119af5ea0.png",
+      "sourceSha256": "7e6f4774e9291683ae8de2dbb995276453b13e73b2f18ccdcbd0dedfabe7f6ef",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6664142050064992,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "minimumVisibleMarginsLTRB": [
+        31,
+        30,
+        34,
+        9
+      ],
+      "quantitativeReport": "batch-05-qa.json",
+      "visualReview": "batch-05-guard-retreat-climb-review.md",
+      "visualObservation": "Natural recovery with stable source root at A/B join; no calibration needed, stance narrows.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "run_backward",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-0bfdcb13-2cca-434f-8fdf-4a049357209e.png",
+      "sourceSha256": "2605f3cbcee3e5c9857c221275e2707623813e4ea44a7b5e9b29cc6cb8db8868",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.7375352619623584,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        62,
+        16,
+        81,
+        16
+      ],
+      "quantitativeReport": "batch-05-qa.json",
+      "visualReview": "batch-05-guard-retreat-climb-review.md",
+      "visualObservation": "Native retreat sequence facing right; not reverse playback/mirror. Loop junction requires refinement.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "climb_up",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-a91fbfe3-cceb-4e9d-8c7e-8f0d66051185.png",
+      "sourceSha256": "26b5af44f2af861574c5a215d086346716d7591a00a6744cd2f58043e4c93b02",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.7578695542684463,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        106,
+        7,
+        56,
+        13
+      ],
+      "quantitativeReport": "batch-05-qa.json",
+      "visualReview": "batch-05-guard-retreat-climb-review.md",
+      "visualObservation": "Grips and knees exchange, no support fused into art; no obvious loop closure defect in still-sheet review.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "climb_down",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-c6af9ebb-5a0f-49a3-943a-c6b8e7d84c1f.png",
+      "sourceSha256": "fe5dfb2521f98b294ccf553512311dff85b9e7fdb81f5bdd975f3380d64dfcea",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.687450556941869,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        13,
+        16
+      ],
+      "minimumVisibleMarginsLTRB": [
+        96,
+        9,
+        69,
+        2
+      ],
+      "quantitativeReport": "batch-06-qa.json",
+      "visualReview": "batch-06-climb-jump-landing-review.md",
+      "visualObservation": "Descending grip sequence with retracted blades; full body retained, minimum bottom margin 2 px; no automatic foot stabilization.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "jump_a",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-767afa4d-e125-4e6d-8e21-34e3661053ba.png",
+      "sourceSha256": "10ecc974cf8280669b8afe34e34edffe457e0869d866b2242d8987624520eecc",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.5955627796473931,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [],
+      "minimumVisibleMarginsLTRB": [
+        52,
+        4,
+        35,
+        7
+      ],
+      "quantitativeReport": "batch-06-qa.json",
+      "visualReview": "batch-06-climb-jump-landing-review.md",
+      "visualObservation": "Anticipation, takeoff and rise with retracted blades; source anticipation must not delay the actual jump impulse.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "landing",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-28c99bae-a60c-440e-af53-244ec5c69a5b.png",
+      "sourceSha256": "f4c5896f6fdae30f4e3049458411962e1ed9f3c3140ab1123df819422e85f805",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.5831139396991827,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        1,
+        13,
+        14,
+        15,
+        16
+      ],
+      "minimumVisibleMarginsLTRB": [
+        61,
+        3,
+        57,
+        9
+      ],
+      "quantitativeReport": "batch-06-qa.json",
+      "visualReview": "batch-06-climb-jump-landing-review.md",
+      "visualObservation": "Landing compression/recovery with retracted blades; substantial cannon pixels stay 3 px from top, faint halo touches border; presentation clock remains missing.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    },
+    {
+      "sheetId": "jump_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-f08d1fe4-1831-4aaa-96da-cd5af7b70a8f.png",
+      "sourceSha256": "1fa746dbe4ad062e18e826e6a110cd20113ede13291574e3caef94c74dc9afe9",
+      "sourceMatchesMeasurement": true,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "originalMode": "RGBA",
+      "transparentPixelFraction": 0.6060955818573547,
+      "frameCount": 16,
+      "sourceGrid": {
+        "columns": 4,
+        "rows": 4,
+        "x": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "y": [
+          0,
+          314,
+          627,
+          941,
+          1254
+        ],
+        "rule": "Math.round(k*extent/4)"
+      },
+      "borderFramesAlphaGte16": [],
+      "borderFramesAlphaGt2": [
+        13,
+        14,
+        15
+      ],
+      "minimumVisibleMarginsLTRB": [
+        52,
+        18,
+        39,
+        6
+      ],
+      "quantitativeReport": "batch-07-qa.json",
+      "visualReview": "batch-07-jump-review.md",
+      "visualObservation": "Leg unfolding/fall with retracted blades, full body; A/B and B/landing pose and vertical junctions remain draft, no additional calibration.",
+      "status": "retained_draft",
+      "humanArtApproved": false
+    }
+  ],
+  "constantPageCalibrations": [
+    {
+      "sheetId": "combo_finisher_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-f241a6ad-de73-481e-b2e2-7ea8e6e2bcdd.png",
+      "sourceSha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62",
+      "status": "parent-adopted-for-draft-preview",
+      "basis": "Raw-cell coordinates, alpha>=128, bottom8-row two-foot candidate centroids; compare A16 to B01",
+      "drawOffset": {
+        "x": 20.861091636008922,
+        "y": 4
+      },
+      "equivalentPivotAdjustment": {
+        "x": -20.861091636008922,
+        "y": -4
+      },
+      "applyTo": "Every frame of this B page, once, with constant scale",
+      "changesSourcePixels": false,
+      "changesIndividualFrameMovement": false,
+      "anchors": {
+        "A16": {
+          "midpointX": 156.4098473963776,
+          "floorY": 303
+        },
+        "B01": {
+          "midpointX": 135.54875576036866,
+          "floorY": 299
+        }
+      },
+      "evidence": "combo-finisher-b-corrected-qa.json",
+      "review": "combo-finisher-b-corrected-review.md",
+      "artisticStatus": "draft_requires_human_review"
+    },
+    {
+      "sheetId": "heavy_strike_b",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-46f3ae14-e17a-41bb-a812-8ba72b944553.png",
+      "sourceSha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3",
+      "status": "parent-adopted-for-draft-preview",
+      "basis": "A16 and corrected B01 boot contact regions at alpha>=128; exclude blade tip below footline. Back foot y292->298 and front foot y291->297.",
+      "drawOffset": {
+        "x": 0,
+        "y": -6
+      },
+      "equivalentPivotAdjustment": {
+        "x": 0,
+        "y": 6
+      },
+      "applyTo": "Every frame of this B page, once, with constant scale",
+      "changesSourcePixels": false,
+      "changesIndividualFrameMovement": false,
+      "evidence": "batch-03-heavy-guard-qa.json",
+      "review": "batch-03-heavy-guard-review.md",
+      "residualArtisticLimitation": "B has a more open stance and the rear boot flattens; no horizontal or scale correction is applied to conceal this visible pose change. Junction is not certified seamless.",
+      "artisticStatus": "draft_requires_human_review"
+    }
+  ],
+  "excludedTransitionAttempts": [
+    {
+      "action": "combo_finisher",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-2e636ad6-b0cf-41e8-bfcd-95b01953eb7e.png",
+      "sourceSha256": "f0849d1f85979199fd1b52adf8de98f799088b46c2f3ca56d96db44792c9e923",
+      "selection": "excluded_from_selected_registry",
+      "reason": "Original B attempts showed visible A16-to-B01 size/junction discontinuity; corrected source retained instead.",
+      "sourcePreserved": true,
+      "evidence": "batch-02-transition-qa.json",
+      "review": "batch-02-transition-review.md"
+    },
+    {
+      "action": "heavy_strike",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-37c186e4-be83-4287-b082-0c6eee7306a2.png",
+      "sourceSha256": "a811dcc1bd4dc195f214dba21fae9e9b00311fddc716af2b93ea236ea649ad48",
+      "selection": "excluded_from_selected_registry",
+      "reason": "Original B attempts showed visible A16-to-B01 size/junction discontinuity; corrected source retained instead.",
+      "sourcePreserved": true,
+      "evidence": "batch-02-transition-qa.json",
+      "review": "batch-02-transition-review.md"
+    },
+    {
+      "action": "air_strike",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-5e69702f-39b4-4027-b454-5e654940509e.png",
+      "sourceSha256": "bd0c14eb550a683aff9f77a3347f9fa00bac92f3a98fd28b9565b92aababf411",
+      "selection": "excluded_from_selected_registry",
+      "reason": "Original B attempts showed visible A16-to-B01 size/junction discontinuity; corrected source retained instead.",
+      "sourcePreserved": true,
+      "evidence": "batch-02-transition-qa.json",
+      "review": "batch-02-transition-review.md"
+    },
+    {
+      "action": "climb_down",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-56bbddd3-ed16-4818-b60c-d5bb05379b4d.png",
+      "sourceSha256": "bc4ccf4755fc0fdcd94a6d93e296615382cabdb82ad8175f64e16b1ebaf8ba5d",
+      "selection": "excluded_from_selected_registry",
+      "reason": "Locomotion equipment inconsistency: extended wristblades where retracted state was required. Actual alpha>=16 border clipping was not found; climb-down minimum bottom margin was only1px. Native correction requested without changing pose scale.",
+      "sourcePreserved": true,
+      "evidence": "batch-06-initial-qa.json",
+      "review": "batch-06-initial-review.md"
+    },
+    {
+      "action": "jump_a",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-073f8a66-2041-454a-b0c0-84144018d014.png",
+      "sourceSha256": "c43441e3a4af41be3407dd9af3c3995965eb1f4fd878afeb9c87ae4d4c7843e5",
+      "selection": "excluded_from_selected_registry",
+      "reason": "Locomotion equipment inconsistency: extended wristblades where retracted state was required. Actual alpha>=16 border clipping was not found; climb-down minimum bottom margin was only1px. Native correction requested without changing pose scale.",
+      "sourcePreserved": true,
+      "evidence": "batch-06-initial-qa.json",
+      "review": "batch-06-initial-review.md"
+    },
+    {
+      "action": "landing",
+      "source": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-b7ae6cbe-a801-4d48-a980-98bf674a6434.png",
+      "sourceSha256": "17ee198c3d048f0809b20f347bfd12ba00c0932d90fc25f0e340e6b641cc175a",
+      "selection": "excluded_from_selected_registry",
+      "reason": "Locomotion equipment inconsistency: extended wristblades where retracted state was required. Actual alpha>=16 border clipping was not found; climb-down minimum bottom margin was only1px. Native correction requested without changing pose scale.",
+      "sourcePreserved": true,
+      "evidence": "batch-06-initial-qa.json",
+      "review": "batch-06-initial-review.md"
+    }
+  ],
+  "remainingSourceAndIntegrationFamilies": [
+    {
+      "priority": 3,
+      "family": "Idle and aim hold",
+      "mechanism": "grounded stillness, aiming and aimAngle",
+      "status": "native whole-body source missing for this personal-hunter pack; rig already active",
+      "phaseNeeds": "idle loop, aim enter/hold/exit; body clock must remain independent of weapon firing"
+    },
+    {
+      "priority": 3,
+      "family": "Canopy attachment, hold, release and swing",
+      "mechanism": "climbing, climbZoneId, canopySwing, applyPlayerJump(climb), exhaustion",
+      "status": "generic rig / grip IK; V2.1 trunk poses are draft studies, not traversal clips",
+      "phaseNeeds": "attach and release one-shots; sustained grip/swing cycle; physics supplies support contact and flight"
+    },
+    {
+      "priority": 3,
+      "family": "Aerial boost",
+      "mechanism": "applyPlayerJump result.jump === boost; aerialBoostUsed",
+      "status": "mechanic present; no dedicated whole-body boost source/clip",
+      "phaseNeeds": "short one-shot with event cursor or explicit presentation selector"
+    },
+    {
+      "priority": 3,
+      "family": "Thrown and execution melee",
+      "mechanism": "actionKind throw and execution; lockedTargetId; existing startup/active/recovery",
+      "status": "mechanics present; attacker/victim synchronized native clips absent for personal hunter",
+      "phaseNeeds": "attacker and victim native clips matched to actual phases; no invented cinematic duration"
+    },
+    {
+      "priority": 3,
+      "family": "Combistick versions of selected attacks",
+      "mechanism": "active available combistick overrides wristblades profile",
+      "status": "not covered by wristblades artwork",
+      "phaseNeeds": "separate weapon-correct attack set and parry poses"
+    },
+    {
+      "priority": 4,
+      "family": "Ranged aim, charge, shot/recoil, throw, recall/pickup and weapon switch",
+      "mechanism": "HunterWeaponFamily melee/thrown/energy/bow/guided; aiming, charge and recovery logic",
+      "status": "layered weapon transforms/effects exist; body and equipment source sequences needed for each equipped weapon",
+      "phaseNeeds": "independent equipment clock; explicit object ownership during stored/hand/world states"
+    },
+    {
+      "priority": 4,
+      "family": "Mask on/off and wrist computer",
+      "mechanism": "mask input toggles maskOn; gauntletOpen procedural state",
+      "status": "mask draws by boolean; authored transfer between face/hand/storage missing",
+      "phaseNeeds": "presentation-only sequences; preserve one physical object and customization layers"
+    },
+    {
+      "priority": 4,
+      "family": "Scan",
+      "mechanism": "playerScan / scanPulse / scanCooldown",
+      "status": "event and VFX exist; no dedicated body sequence",
+      "phaseNeeds": "short gesture triggered by accepted scan; no artificial control lock"
+    },
+    {
+      "priority": 4,
+      "family": "Cloak on/off",
+      "mechanism": "cloaked boolean / forceDecloak",
+      "status": "effect exists; dedicated activation gesture missing",
+      "phaseNeeds": "equipment/body-independent cue; no gameplay resource changes"
+    },
+    {
+      "priority": 4,
+      "family": "Medicomp and Second Wind",
+      "mechanism": "playerHeal; hurtPlayer secondWindUsed branch",
+      "status": "mechanics apply immediately; no authored treatment/revival body phases",
+      "phaseNeeds": "separate healing one-shot and emergency recovery; presentation cannot delay existing healing"
+    },
+    {
+      "priority": 4,
+      "family": "Gear deployment",
+      "mechanism": "activateGearSlot with gearOne/gearTwo",
+      "status": "mechanics exist; equipment-specific native hand/body sequences missing",
+      "phaseNeeds": "draw exact loadout item; toss/set/return hand ownership and effect event separated"
+    },
+    {
+      "priority": 5,
+      "family": "Damage reaction and death",
+      "mechanism": "hurtPlayer health/invulnerability; dead phase pauses immediately",
+      "status": "generic presentation; authored flinch/fall/death absent",
+      "phaseNeeds": "event-driven presentation clock; death must be designed around pause without advancing simulation"
+    },
+    {
+      "priority": 5,
+      "family": "Field dressing and anatomy collection",
+      "mechanism": "HuntFieldWorkV112 action flay/harvest-hide/harvest-tissue/harvest-bone; approach/work/secure",
+      "status": "specialized IK rig already exists; whole-body native source absent for personal hunter",
+      "phaseNeeds": "approach one-shot, work loop, secure/return; interruption must follow real operation"
+    },
+    {
+      "priority": 5,
+      "family": "Carry, hang, set down and generic interaction",
+      "mechanism": "huntRites carryingCorpseId / operations and interact handlers",
+      "status": "mechanics/props exist; native whole-body transition library absent",
+      "phaseNeeds": "object-specific grips, ownership, occlusion and interruptible phase cues"
+    },
+    {
+      "priority": 5,
+      "family": "Trophy extraction, raise, hold and stow",
+      "mechanism": "TrophyRitualState; TrophyVictoryState lift/hold/settle",
+      "status": "extraction generic rig; two victory studies already exist in V2.1 with draft/no-binding status",
+      "phaseNeeds": "do not regenerate those two studies as missing; revise/integrate actual trophy type and anatomy/equipment contract"
+    },
+    {
+      "priority": 5,
+      "family": "Boarding",
+      "mechanism": "DropShipPhase boarding; boardingProgress",
+      "status": "actor is moved by sequence; no native climbing/boarding body clip",
+      "phaseNeeds": "presentation fitted to existing boardingProgress; transport physics untouched"
+    }
+  ],
+  "existingPreviousDraftActions": [
+    "branch",
+    "trunk_close",
+    "trunk_open",
+    "roar",
+    "victory_spear",
+    "victory_trophy"
+  ],
+  "limitationsDocument": "ART_REVIEW_LIMITATIONS.md",
+  "noClaims": [
+    "No human artistic validation",
+    "No runtime binding or gameplay integration",
+    "No automatic left-facing coverage",
+    "No full modular wardrobe/layer contract satisfaction",
+    "No universally seamless A/B joins or loop seams",
+    "No browser gameplay or performance verification from this asset review",
+    "No all-game or all-roster animation completeness"
+  ],
+  "readOnly": true,
+  "sourcePixelsModified": false
+}

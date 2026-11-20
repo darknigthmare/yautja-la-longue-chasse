@@ -1,0 +1,1182 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-trunk_close-draft-v2",
+  "characterId": "reference-yautja",
+  "variantId": "trunk_close-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "trunk_close_enter",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/trunk_close_enter.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "trunk_close_idle",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/trunk_close_idle.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "trunk_close_exit",
+      "src": "/game/sprites/hunter-postures-emotes/v1/import_atlases/trunk_close_exit.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "trunk_close_enter",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            92
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            89
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            89
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            88
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            88
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "trunk_close_idle",
+      "facing": "right",
+      "status": "draft",
+      "loop": true,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            56
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            56
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            56
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            57
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            57
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            57
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            57
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            57
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            57
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            57
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            56
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            56
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            56
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            54
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        },
+        {
+          "pageId": "trunk_close_idle",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            55
+          ],
+          "durationTicks": 8
+        }
+      ]
+    },
+    {
+      "id": "trunk_close_exit",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            100,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            100,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            68
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            69
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            100,
+            67
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            68
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            68
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_exit",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            101,
+            67
+          ],
+          "durationTicks": 5
+        }
+      ]
+    },
+    {
+      "id": "trunk_close_exit_reversible",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 80,
+      "frames": [
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            103,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            104,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            86
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            87
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            88
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            88
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            89
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            89
+          ],
+          "durationTicks": 5
+        },
+        {
+          "pageId": "trunk_close_enter",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            105,
+            92
+          ],
+          "durationTicks": 5
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2340 @@
+{
+  "schemaVersion": 1,
+  "packId": "hunter-missing-actions",
+  "version": "1.0",
+  "artisticStatus": "draft",
+  "layout": "Repository delivery across three task directories; all paths are repository-relative.",
+  "scope": [
+    "public/game/sprites/hunter-missing-actions/v1",
+    "art-source/hunter-missing-actions/v1",
+    "docs/art/hunter-missing-actions"
+  ],
+  "auditedBaseCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+  "runtimeBinding": null,
+  "totalIndexedFiles": 460,
+  "totalIndexedBytes": 88524938,
+  "totalFilesIncludingThisIndex": 461,
+  "downloadableArchive": {
+    "file": "YAUTJA_Chasse_Combat_Locomotion_304_Sprites_V1.zip",
+    "bytes": 108971322,
+    "sha256": "ed3bf7ea38e0b16d8f4deec7c3f1de2dd1cb0f33922b53d925efd4b7db5ec7ac",
+    "files": 425
+  },
+  "downloadablePackIndex": "public/game/sprites/hunter-missing-actions/v1/package_file_index.json",
+  "excludedFiles": [
+    "public/game/sprites/hunter-missing-actions/v1/repository_file_index.json (self hash excluded)"
+  ],
+  "omittedGeneratedArtifacts": [
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/Yautja_Animations_Manquantes_V1_Apercu.html",
+      "bytes": 36003985,
+      "sha256": "124ceb9fff6f69720c635078d18b60bbdfe28d0a033b47b88ca5af421ed83cd4",
+      "retainedIn": "YAUTJA_Chasse_Combat_Locomotion_304_Sprites_V1.zip",
+      "connectorStatus": "HTTP 400",
+      "connectorError": "MCP request body is invalid or exceeds the 16 MiB limit",
+      "regenerateFromRepositoryRoot": "node art-source/hunter-missing-actions/v1/build_standalone.cjs public/game/sprites/hunter-missing-actions/v1"
+    }
+  ],
+  "files": [
+    {
+      "path": "art-source/hunter-missing-actions/v1/anchor_measurements.json",
+      "bytes": 10069,
+      "sha256": "dd14b038aba5c5b83f7e747b7931bfa05b13749f0bba38d20f5a82bcaf598558"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/apply_page_calibrations.cjs",
+      "bytes": 4305,
+      "sha256": "269437f1c5b6adaa592715480137f3753d170bbd896ecff68bb9741c464a9594"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/build_package_index.cjs",
+      "bytes": 3854,
+      "sha256": "23ef123c68fb9c533bcf35c7cee752b6e014e2b9b7d19cacf3d4af95629e271b"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/build_runtime_manifests.cjs",
+      "bytes": 4380,
+      "sha256": "d6df7be37e959014f9ab57b9afc6aa59c6f6021d9478bed1afa16b4543305cc6"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/build_standalone.cjs",
+      "bytes": 2513,
+      "sha256": "c8dd1dba896012c50b8e3a5453f5c5220ffcc3f019596281bfd0112f70b06fdd"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/check_pack.cjs",
+      "bytes": 7510,
+      "sha256": "c9942b67fc7fed29755d35358faa814a72384395bcfaa49e4b52220dd97a49fa"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/check_pipeline.cjs",
+      "bytes": 6596,
+      "sha256": "88de118cf200d8b5c3e479cfe678a22b7621a4f8891d764142bd4e8f07d7bcdc"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/check_preview_behavior.cjs",
+      "bytes": 6857,
+      "sha256": "f5434b0510adfb66401c9c01558071b50bff8be2c599fedf116e1ecd49f47bf0"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/check_runtime_manifests.mjs",
+      "bytes": 3685,
+      "sha256": "9bdb4ed549e8964b5dcb76d2d8f6be02373a6fd66351b8f0056eb98bb45e99b4"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/export_sprites.cjs",
+      "bytes": 15280,
+      "sha256": "a0716160ba58318d87ab37a12b56b39eae502b365c3efcd8df352bf56aaa4ae6"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/extract_endpoint_refs.cjs",
+      "bytes": 2237,
+      "sha256": "7e2de5e092b4767b5180fec8d645ecf07bfbfd1d9a041c4994c97e78560c111d"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/hunt_animation_state_map.json",
+      "bytes": 26691,
+      "sha256": "5e86da7f5e39f1056f5d43717d995752055b3d3a76e0b8b6d23725623d4ac98a"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/ingest_sources.cjs",
+      "bytes": 5388,
+      "sha256": "ccc158fdb2b0ae400d16b6de2b16678e23267dc6eba8c361a4200aa8617adf7e"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/package.json",
+      "bytes": 44,
+      "sha256": "a51bff776fdd53226e2e67d8f654d17dadfe3decc8bf8bf869cba3aff9813826"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/playback_core.js",
+      "bytes": 5427,
+      "sha256": "50ac44bb58555d7adbd54dfec5c79489e1eabc5f1803589388813803042750b7"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/preview_template.html",
+      "bytes": 10516,
+      "sha256": "5b40415cb5bbaa4cea397baf3ca0ae7f215c92f2fed0cff50585c5eb2e4adb5b"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/prompts.json",
+      "bytes": 79291,
+      "sha256": "c18df7144188e9417b7ddd7097d02f0ad2eac0c6ca94c0d6ad2178e70fd8d472"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/render_contact_sheet.cjs",
+      "bytes": 4403,
+      "sha256": "e7da1dddf2a797cf093fc52b3a2b3b1db9baa903ce875facb2092058e9f0dca2"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/render_preview.cjs",
+      "bytes": 7329,
+      "sha256": "5ee610e55dd7503a4620ab412bc0b3bd91f7b0f9eb6c21fc0cbb4354e09c2e97"
+    },
+    {
+      "path": "art-source/hunter-missing-actions/v1/sources.json",
+      "bytes": 72215,
+      "sha256": "faa492a87853ea8e794060c515c63996418469cc9d92f4d96a3db1962891f1a0"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/ART_REVIEW_LIMITATIONS.md",
+      "bytes": 4402,
+      "sha256": "001d58489f99b91375640cd2e557325b96754d2637306af0dc3aa3194ba9b1e8"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/CONSOLIDATED_REVIEW.json",
+      "bytes": 37835,
+      "sha256": "8eeedabf33ada18a84ba67f0306ff2e81051754bd69f13c2be04e8d43a94ad7f"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/CONSOLIDATED_REVIEW.md",
+      "bytes": 4302,
+      "sha256": "70c0c02ca52d4dea99d501ec519d8bd0501fa09a64016f5e4d87f6f4e0b2943f"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/README.md",
+      "bytes": 16803,
+      "sha256": "c8fe63fb63ce48221241864a7beb8c91d88d7ea91a174cd8776f4194798fdb92"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/air-strike-b-corrected-qa.json",
+      "bytes": 38513,
+      "sha256": "711644698dbfb46f1978c50d592fa781918919dd2722cd567eb8eabeb1b4b3cb"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/air-strike-b-corrected-review.md",
+      "bytes": 2151,
+      "sha256": "add77ee20f21a12d05c9e2b0ba21a2dd0fc63bc3834c5801a784269337a576a9"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-01-qa.json",
+      "bytes": 345492,
+      "sha256": "b96be0c43644a7fc15abae71b86610ee29b7956fa05eae2bd60c5f485e182d79"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-01-visual-review.md",
+      "bytes": 5548,
+      "sha256": "3d8cc4c98ca31a72da012faa8870f75e371f53d3e73e1b08ef52e691ece7a810"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-02-transition-qa.json",
+      "bytes": 12651,
+      "sha256": "068fbe6db221f6cf0885d99299cf03bd9a6ed1c9553b0e5884faae672b447e37"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-02-transition-review.md",
+      "bytes": 3911,
+      "sha256": "4cc2ef4a5c29f7d68bcec6d860a51478486b286db08f136244e44b7c04ed3ee0"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-03-heavy-guard-qa.json",
+      "bytes": 83947,
+      "sha256": "884c8d343d31ddd3087a9489187fb59b778e39cb5690084f932f75a56f3bff55"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-03-heavy-guard-review.md",
+      "bytes": 3058,
+      "sha256": "fde02fe99c546ff720476f398e2f99f78b93e896aff44a3c2a829df3f3a367f5"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-04-dodge-run-review.md",
+      "bytes": 2587,
+      "sha256": "9200b58003a0bb525bec5f0fba9cdf2a0546b85d78dcb478577a60b9d588e381"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-04-qa.json",
+      "bytes": 108451,
+      "sha256": "24521f7106a9beb2ef94689e7485093d773cfb982c72e5aa89ee3368a77dc14f"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-05-guard-retreat-climb-review.md",
+      "bytes": 3026,
+      "sha256": "e64eafa0f1d2eab22d98515ca14728199d384472054eda1e6166228ba9357617"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-05-loop-diagnostics.json",
+      "bytes": 5106,
+      "sha256": "9dabe5bf714d615044508fdff97874f1e504591200bbafc71db21fb7633cf695"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-05-qa.json",
+      "bytes": 163041,
+      "sha256": "1020fc787cf8477cf7c4c84b27bbd55f2f77c0c7101258d10a972e5e8871a02c"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-06-climb-jump-landing-review.md",
+      "bytes": 2879,
+      "sha256": "e639f081402a7780da0575fe47e519130b2aab286fa9ba9a7098f8d8da449ea1"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-06-initial-qa.json",
+      "bytes": 124055,
+      "sha256": "9701f0e642e5ecfe7b370dff7c586305c5eccaec09c6092347570598f5315886"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-06-initial-review.md",
+      "bytes": 1872,
+      "sha256": "7f70ce56a4e5007bf7157ba7a09f58b8a9031a43973ccd238d4d71a2f0155531"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-06-qa.json",
+      "bytes": 165498,
+      "sha256": "430f95cee7d0bff6346a0943559ce58994d0fafdf1ca3a4dacb6c6a1cd53d655"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-07-jump-review.md",
+      "bytes": 2736,
+      "sha256": "816d8a72f0114e2132dd8aa9c75670b858e909ef185376b176fd4ff055ca25f3"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/batch-07-qa.json",
+      "bytes": 41547,
+      "sha256": "caae648f87663f01755a536fd54fd2873f7d9badf30c7b45fc6554d073f248bc"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/combo-finisher-b-corrected-qa.json",
+      "bytes": 38799,
+      "sha256": "4d5839780be28436512add59eee8c40d14e55a6c40370e9cec7f1a7f4fdd584b"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/combo-finisher-b-corrected-review.md",
+      "bytes": 2518,
+      "sha256": "ba5ab7223d51469f8298158fb55661a06380fddfb2d8e4a392cd9a140ed28e1b"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/excluded-locomotion-attempts.json",
+      "bytes": 1994,
+      "sha256": "fc439f45875c6da035e2b08ac76fa327a9b2f25d197fcd4e97f70b5637f23d96"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/gap_audit_2026-11-10.json",
+      "bytes": 38286,
+      "sha256": "94f516464c01880fb0449845eb7e61359ca571957ee865d85cc4c4f0ae1d9b46"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/guard-break-a-b-transition-qa.json",
+      "bytes": 959,
+      "sha256": "f84cb518c44427c7324b7800740174ca43ba85d32f0fa5326ac27836c6a6a6e9"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/hunt_animation_state_map.json",
+      "bytes": 26691,
+      "sha256": "5e86da7f5e39f1056f5d43717d995752055b3d3a76e0b8b6d23725623d4ac98a"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/jump-endpoint-diagnostic.json",
+      "bytes": 2039,
+      "sha256": "aacfd7508e86817ce6c7d933e4a2d8f2e43283de2d5a0e81d0aecd47a1ae5e1c"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/page-calibrations.json",
+      "bytes": 2303,
+      "sha256": "9b7b61d808edae3970c0cf665aa58eec30ab18288858045942bb5df8a8c69cf3"
+    },
+    {
+      "path": "docs/art/hunter-missing-actions/run-forward-loop-diagnostic.json",
+      "bytes": 2493,
+      "sha256": "144ec19a56415301e3a8b99e4e151cecad0d0b4411877629051a20f352fb6b19"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/ART_REVIEW_LIMITATIONS.md",
+      "bytes": 4403,
+      "sha256": "70fdcc510a12bb002ad316ae926c18dd895985a32b3f048ed615fde48cfd6317"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/README.md",
+      "bytes": 12221,
+      "sha256": "3b29c435ab86d4218181a6935324d031afdb9c7095783c3181b2d3fc8d7d3a80"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/Yautja_Animations_Manquantes_V1.mp4",
+      "bytes": 2168520,
+      "sha256": "90c5ad39bb5fda304a3b5c82cd73e2f632ccaf2e422da6adad846280d4047f67"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/Yautja_Animations_Manquantes_V1_Contact.png",
+      "bytes": 1130414,
+      "sha256": "a16475d74e8e0ec8ae84166ae6357a028a0a2df1f5b80274788b08880e802cff"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/anchor_measurements.json",
+      "bytes": 10069,
+      "sha256": "dd14b038aba5c5b83f7e747b7931bfa05b13749f0bba38d20f5a82bcaf598558"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/animations.json",
+      "bytes": 704018,
+      "sha256": "cdc936a5ff2df172ed8ff544adb351f79289753c9dcb41d5b50e171a3950722a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/air_strike_a.png",
+      "bytes": 1288753,
+      "sha256": "a314900fa37cfee70f67f7f21409eb792be0413fb8fd01bd4442c58ed0498174"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/air_strike_b.png",
+      "bytes": 1454686,
+      "sha256": "5a8323b3ea18a292cb7e372ff57a5a79efa4903e307e93687a5af399ab5e5d49"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/climb_down.png",
+      "bytes": 1229985,
+      "sha256": "fe5dfb2521f98b294ccf553512311dff85b9e7fdb81f5bdd975f3380d64dfcea"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/climb_up.png",
+      "bytes": 1150967,
+      "sha256": "26b5af44f2af861574c5a215d086346716d7591a00a6744cd2f58043e4c93b02"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/combo_finisher_a.png",
+      "bytes": 1327220,
+      "sha256": "fbcd7a34e252654e4ea771c2242cadf7bdd3c0495cede63f826cba38fb1053b3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/combo_finisher_b.png",
+      "bytes": 1345765,
+      "sha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/dodge.png",
+      "bytes": 1488845,
+      "sha256": "11a487d96330b109f3f5134412dc49b42c111b0d561013e8b1c26f4314b8f1b5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/guard_break_a.png",
+      "bytes": 1554965,
+      "sha256": "9f1419af4d2a434e733827f16ad097754cdd9a585d8eac2b5869e02915c78829"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/guard_break_b.png",
+      "bytes": 1518331,
+      "sha256": "7e6f4774e9291683ae8de2dbb995276453b13e73b2f18ccdcbd0dedfabe7f6ef"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/heavy_strike_a.png",
+      "bytes": 1254260,
+      "sha256": "ab63427c92184a82acb2f6a0f0ec0931585133655d0940c76ab50ad958a6cdb9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/heavy_strike_b.png",
+      "bytes": 1439130,
+      "sha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/jump_a.png",
+      "bytes": 1489258,
+      "sha256": "10ecc974cf8280669b8afe34e34edffe457e0869d866b2242d8987624520eecc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/jump_b.png",
+      "bytes": 1656429,
+      "sha256": "1fa746dbe4ad062e18e826e6a110cd20113ede13291574e3caef94c74dc9afe9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/landing.png",
+      "bytes": 1548777,
+      "sha256": "f4c5896f6fdae30f4e3049458411962e1ed9f3c3140ab1123df819422e85f805"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/light_1.png",
+      "bytes": 1602698,
+      "sha256": "7ffc19d904b921135eb7035034bfc8dbe70e1e16f9b4522f7eaebe6605b8631f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/light_2.png",
+      "bytes": 1412139,
+      "sha256": "b11645bbb7793e5efa07c88a1827d019ea2667582139c3e6e079b325357bb280"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/parry.png",
+      "bytes": 1345500,
+      "sha256": "4678373ff386360eaa6681db06444b70d2fb7a9272f467472e81c39cbdd0808f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/run_backward.png",
+      "bytes": 1217410,
+      "sha256": "2605f3cbcee3e5c9857c221275e2707623813e4ea44a7b5e9b29cc6cb8db8868"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/atlases/run_forward.png",
+      "bytes": 1309429,
+      "sha256": "a3df5d789cb3e77f26f891391ce5ab48631c4e890828aa9dd8763302d5ab06f3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/contact_sheet.json",
+      "bytes": 6148,
+      "sha256": "4135c9be3b2735a91a722b1818004adb6ea57a1258379de349734cf4805b7cdc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/01.png",
+      "bytes": 88597,
+      "sha256": "a3a77b4324e49a1a392de219c3d8982e2c2b240704446c4f0d5de6b7f1fc43a1"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/02.png",
+      "bytes": 88126,
+      "sha256": "6c0bae1f4cc9221395cfbe69480a1925ddf3cc1108eb5d8e0da90ed3599a64aa"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/03.png",
+      "bytes": 84372,
+      "sha256": "36b345b735b76852d53746f942c2301b244fe169ec293ab606bff8a71fdc68b5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/04.png",
+      "bytes": 79996,
+      "sha256": "32046fbe523ae789bc5723af6a0fc06d0eea31e7e3622632616e060db2106ff0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/05.png",
+      "bytes": 81110,
+      "sha256": "04ce534288f2e95bb918ad10e75a7e84f87935d17ee28feb52e4b8c04a9c1251"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/06.png",
+      "bytes": 77538,
+      "sha256": "e4d8507aa2c5ba4e1694611564d6424e1478054fe38b81e7b10b56c26b80669a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/07.png",
+      "bytes": 79233,
+      "sha256": "41e005cfec70a96f691f2dec8d35cac690f913f36667af4d5a2094c84267988a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/08.png",
+      "bytes": 79926,
+      "sha256": "45eb958b51c58be9a86a825643078230a2ae863368b21c5b20d1bd5e3b90d452"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/09.png",
+      "bytes": 78677,
+      "sha256": "e95bd516c5379266f5f3a3cd3d481a9f9d03f5a5432e3c4d124be9124f4dadd9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/10.png",
+      "bytes": 79765,
+      "sha256": "bd9f56526dac5fee08ce9e681ee516cbe4ddb8e446d57fc9e4ff83a3789256bb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/11.png",
+      "bytes": 78938,
+      "sha256": "0af236a18bd80e42155034a433616fdda74db0ed7e4af37361aec9f46bf7a5c8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/12.png",
+      "bytes": 77790,
+      "sha256": "6575f08008531e229debae4e45daa18669d648c27c667393e4926d8deca001f8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/13.png",
+      "bytes": 76508,
+      "sha256": "3c915679ee689554afa68af09e3e835c4be189e1bd07a44f04fdb0a8d57fdcb3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/14.png",
+      "bytes": 76065,
+      "sha256": "48810b07f689ee3d8536c6b7a8be8355b6d5874aaf3269104f4eec5166c8a3d2"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/15.png",
+      "bytes": 84264,
+      "sha256": "562e744eb8dd398d7b1fe2c3734a3d341307de72375bdee73839866247abf33c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_a/16.png",
+      "bytes": 86122,
+      "sha256": "e4e3423f710d17fc44244f997bdc123a8cc3702b63f0f50d6c6b3c21abdf2469"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/01.png",
+      "bytes": 98473,
+      "sha256": "61fe1982282194f283d0a3be3a1996761a0ad2379e07eadec39d257bcf6937b0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/02.png",
+      "bytes": 93102,
+      "sha256": "afe1f65b2841ae2ba666adb2825a2b30c221c0e0425f69eb5c27a7e89ba0ef51"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/03.png",
+      "bytes": 87144,
+      "sha256": "27b82d275ee3b46e45713b1e08dc2075c439b3efbebb1e49863714210a5d9ddd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/04.png",
+      "bytes": 90010,
+      "sha256": "c0707418de986d620d2600032239139e60ebd9a0da82f43e4b22bc30dcea47bc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/05.png",
+      "bytes": 92217,
+      "sha256": "5dcb2446ee29f2182285a0f1da4eb0a42cd5bbb3cd3513bf4acedd82beadba88"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/06.png",
+      "bytes": 93153,
+      "sha256": "65bb1e90209151c0007f83dba3dd3a851f2b0dec0895015dc114cd06c820de00"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/07.png",
+      "bytes": 94687,
+      "sha256": "46eccffb9f84edf2b7b85b248f648e106fef0e44a901b40f7e7dfc68854cf2f6"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/08.png",
+      "bytes": 97546,
+      "sha256": "dbc3b7b8d2c938f636a312a81c63a7799afa220624a939311fe27f5c6d9c2a99"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/09.png",
+      "bytes": 99180,
+      "sha256": "4571225709d6d64de5b3683121ea92cb9289a07cf71952bcaa36040585fcc0af"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/10.png",
+      "bytes": 100441,
+      "sha256": "53221575c5a8e3c9ec17502652737da38c385c35d7296de9c951d6db98c9e9a6"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/11.png",
+      "bytes": 100341,
+      "sha256": "30158cb7eeff18e3d9fda98190fed00d9e70a009bab6af070a7de4a0ac987013"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/12.png",
+      "bytes": 99221,
+      "sha256": "0e345d54ff961675b90bf7c9cec5c345e9b94807e212b22a323c21362f2f31fb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/13.png",
+      "bytes": 98315,
+      "sha256": "cede7c2a097266d7b3b5554d897ed482246e9d1684ba0703bd3c97ebc4a1a6bb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/14.png",
+      "bytes": 98252,
+      "sha256": "39213e2ad4633dd507082d4d2d36364a2b50791e8f88da3a5409c543d8db3642"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/15.png",
+      "bytes": 98178,
+      "sha256": "b3b89bd10377ffa01ec1cf03df09c8f4bdf60336227a0fdd4a090e16abf74e42"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/air_strike_b/16.png",
+      "bytes": 98232,
+      "sha256": "766078f846bef7da6f83e03c0b656e3d57a143cd35c75f0be906cb17a358341a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/01.png",
+      "bytes": 85283,
+      "sha256": "ca053f391de0c6421f6b0906dc7527c68a7c435eb82525ad21cace883ad340b8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/02.png",
+      "bytes": 85254,
+      "sha256": "c175ad7f136e35b582b015bfc65c618d3971a9a8cf78c50934500ed301c6127c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/03.png",
+      "bytes": 83256,
+      "sha256": "443ad50e7410b87946aae9397d03bee846ae0e1be67760f67756e47f392ceeff"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/04.png",
+      "bytes": 83789,
+      "sha256": "7b10a7841ca180a1380d26fcc5668becd008f9d55cd481c9a827af5aeb402c90"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/05.png",
+      "bytes": 82009,
+      "sha256": "e43909256f4e0fd5fb7799856884279800b8cb23b1908b180b904615c0e8b457"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/06.png",
+      "bytes": 79310,
+      "sha256": "5c8e5628d7a6a9f0c53b4e022afa5c6dc636814b352e463f3c85abaa8368a14c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/07.png",
+      "bytes": 78353,
+      "sha256": "961a1dff2d91821e34f17cfdb165ca6384332a6aba08f3ef210785915c34ec34"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/08.png",
+      "bytes": 78765,
+      "sha256": "d1c8c8896ab5ea3aabbc45145b9735b1e5536abcd25a759eb3b0d380c22143fb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/09.png",
+      "bytes": 76766,
+      "sha256": "535c4bf2cd736bc63093c72e27ec4070c49cd3abd75d94318ac3aa201ca1aaa8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/10.png",
+      "bytes": 76915,
+      "sha256": "8bb2ed55896c5ed699aea4e242ed9b3f53f62e69f01062d242c9c63357391d89"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/11.png",
+      "bytes": 74869,
+      "sha256": "ad6c16144a5a9124f57370fb192e83dddd4be40c086fd3ff579fbc985cc0fa30"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/12.png",
+      "bytes": 79341,
+      "sha256": "c186e767f9250616d69c187fe8f33db68fbdd6377a2b565464ca9de7d70b2e08"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/13.png",
+      "bytes": 76857,
+      "sha256": "1f04eb0597793cb8b53543ed1e21dd564f7b61330880486f6602d3899cc93e08"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/14.png",
+      "bytes": 79496,
+      "sha256": "cf68fd423c51fb91876dd2658c256b1b26c0536516c30a5ee1aa5cc98547619c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/15.png",
+      "bytes": 81459,
+      "sha256": "e9579a7111873ecc7921699690c7ffdd61bf3a2bf521fa6b85ffc25790fff58e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_down/16.png",
+      "bytes": 83454,
+      "sha256": "99fad0044500bff7290d689e414f03cfc07acc6a1773f815d99f57fc925e7a81"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/01.png",
+      "bytes": 76755,
+      "sha256": "381cc428a6bfc46ae2ef445fc8b5fb98f40404b2fd2ee0ff940c62b891eaed3a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/02.png",
+      "bytes": 73935,
+      "sha256": "9aabe91090f1b12e8b9c768c8df8859f1dcdf568818892f6b3a0a8d97bb30402"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/03.png",
+      "bytes": 70277,
+      "sha256": "68bb255081d8166dc014c6dd85c97c06c987a459a1f0d6f0dab9eff656d23ebb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/04.png",
+      "bytes": 68585,
+      "sha256": "de1c995e67e9ac4c490dd63407a246b027c497866ec4a0f95410331824247348"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/05.png",
+      "bytes": 67342,
+      "sha256": "b56d0413e411051bfaa70426804af7d58cb53eab74dc156fd966609496828ff4"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/06.png",
+      "bytes": 67361,
+      "sha256": "20e9ece371fd0413fcdf469de4ee3ee7056f2a54a35ecedf41992c630b93b0a9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/07.png",
+      "bytes": 66903,
+      "sha256": "53d9cd74cf73a8af11246fff9e61d904fb816c3ac0f881fc55666665b8d68360"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/08.png",
+      "bytes": 70847,
+      "sha256": "95bffe9faf1a25c49828a44c38bc3cfcd15d2a538601cfa59ae3503481ae3ea9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/09.png",
+      "bytes": 73007,
+      "sha256": "4d09d916e05b145e506d4934914f088614963661614eccf293663d3974b4afdc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/10.png",
+      "bytes": 71915,
+      "sha256": "ac1e3a04752120f3988d00daaf809f0c5c367fae69dc77525fe8c4bceb1e668b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/11.png",
+      "bytes": 70882,
+      "sha256": "83be34000b8e29ee53dc00993d5b5226312dcbec872dbcb96da05515b666176f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/12.png",
+      "bytes": 67487,
+      "sha256": "4db0afeb8536fc0d9f61d2633fb4ad374dd9560d31746c4905deb4c75df60772"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/13.png",
+      "bytes": 70634,
+      "sha256": "f7d20f59b772bbd3d339287a31ac59dcf86a3eb435758e3dd97ab96f9eb071a4"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/14.png",
+      "bytes": 71683,
+      "sha256": "2297396afddb639871dbe4d379fd5bf2d6fe8c754b1acb2d11262bf236bd4293"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/15.png",
+      "bytes": 75468,
+      "sha256": "4a2e0ca7df7d6e51df60dd81be292f1d71e5c68ab9fdf80e1dffa2e4d3d9b00a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/climb_up/16.png",
+      "bytes": 76433,
+      "sha256": "cde59b704e23c38c179479c704b601c42e1a55948a12b385f649da9b9c62802c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/01.png",
+      "bytes": 89029,
+      "sha256": "3ed5f95f88dadd0efc031abb34e32bb6eacdf4f481f2385d7950f0ccbfdc967e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/02.png",
+      "bytes": 88729,
+      "sha256": "b036563f81cabd2bc1b257c791a8f1665b339c1705c983f6bb6138f1fa991332"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/03.png",
+      "bytes": 87555,
+      "sha256": "c6ff2cc372852baf91fd78b31993a5cae09d662ef2c7ab3f03a1476eecea41e2"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/04.png",
+      "bytes": 88241,
+      "sha256": "33070c7cb5dab368b9cac989160420492f76e47962124974ca40d77c45d509bb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/05.png",
+      "bytes": 90091,
+      "sha256": "1a1d5e71cac7f3f979b747071936c5b09f50eb9581f9d7be2aad7b2b0c9823b7"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/06.png",
+      "bytes": 89156,
+      "sha256": "0119648f6e0e9d249b309290f22e85fc4a20793ce1ad082e6b0f4b00f14ea386"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/07.png",
+      "bytes": 87262,
+      "sha256": "925f6ed987d69a1560d936468088145d81f488b4f801f43358ba4a244de7a3c8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/08.png",
+      "bytes": 86947,
+      "sha256": "5857d8e9a8cb222953a52f6586e77a81c528a35a75e0a416bbd4838121915f8f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/09.png",
+      "bytes": 85596,
+      "sha256": "facda36129340870ab5e8fd87a8d5c5a1c83aa28ac5620fd95f0cd40d8d8266f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/10.png",
+      "bytes": 85551,
+      "sha256": "565bddc72830f75cc3202dc868a592bf4a5d256f0fb75e1df5c010ebd3a43491"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/11.png",
+      "bytes": 79441,
+      "sha256": "ca595b3df5d7f9fc8fc6662642be60522a48cf0b39a6181f9b2259b2b98e8fa7"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/12.png",
+      "bytes": 75620,
+      "sha256": "9909b20b374550ed5319b7cb2166551ce3cc33adc1c36e408b753719b1d47733"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/13.png",
+      "bytes": 72073,
+      "sha256": "7eb7149ee064728682f134963409ed10967ffdb069a8dc0aabfa4e0ded872d1b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/14.png",
+      "bytes": 74615,
+      "sha256": "0b96489f54a3e37eb358ad66cfc782f5b9b7b11b2bd4e9f5f39cd433860c8726"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/15.png",
+      "bytes": 74161,
+      "sha256": "6b6c466c6dd71f2bdb488cea7c47e4fd120c44d20b4291ae7da3d05ecdf7016b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_a/16.png",
+      "bytes": 72476,
+      "sha256": "51bdf8ae90a670e11101c2634adcda34db237e307df5c40dbace633e20a0ce66"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/01.png",
+      "bytes": 87187,
+      "sha256": "b80b3ebd8311fc4b621dfcc2b97ae6fd876b9eea8658d8ea9290b0338eafc020"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/02.png",
+      "bytes": 87111,
+      "sha256": "d1e768e44624abc5e65b5cf74a7e9a50b20d2c49a27c6fc80cb76d439b02a4c8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/03.png",
+      "bytes": 83189,
+      "sha256": "0ca37a10a2a4f93f105b75beefb26925f89a81b89f504e57eb1e08e3a005d8aa"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/04.png",
+      "bytes": 82767,
+      "sha256": "6609ad0206580cdd99257feb4110ad1b643922af544a0b39e217585c44985dc6"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/05.png",
+      "bytes": 80601,
+      "sha256": "119d71bbff944b940ef34ea8486ac585aad23d4bebce16fe14f215da2bd19c85"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/06.png",
+      "bytes": 82569,
+      "sha256": "5d157868f365fab7ccc2c2678002574afed2b62a642e267b229c45d04da28046"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/07.png",
+      "bytes": 83017,
+      "sha256": "71735c8dedc247d44c0621894905516ca49d30481fc3e1c29bed79915bd89a4d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/08.png",
+      "bytes": 85458,
+      "sha256": "c1e005e714f147d044509c9f403746b15b8cd282d348b8ef70649b1125aa925c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/09.png",
+      "bytes": 88503,
+      "sha256": "e95374d02b0f6774548558fba897d86c37b1f91a7d89850e794ad413aa16e687"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/10.png",
+      "bytes": 90237,
+      "sha256": "c304deb9c5b0c81291cd04c5f19950d14141f55fc41df3df799fbd21129b1343"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/11.png",
+      "bytes": 91384,
+      "sha256": "06baa5e99ab4cfe9b9d725595e426b39ea8514194b5b3bdc0beab0c0855b7f1c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/12.png",
+      "bytes": 93046,
+      "sha256": "76ea54aa4e52f0b8334fde7a63e36b9d3831d683578496038f8863596aa304c6"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/13.png",
+      "bytes": 93946,
+      "sha256": "df77932fecbe582341a6f2919a348539a5d4efb127854c79f1ab6fc5aba4610c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/14.png",
+      "bytes": 95212,
+      "sha256": "99c6ad2cb015d535e23951bb33eb01f9c48c296053282685063e64d969ff476b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/15.png",
+      "bytes": 94127,
+      "sha256": "5d9a89e8606f157a3e80bfeaa97194bb4a837c14c1abf0cf4024dd2b85611206"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/combo_finisher_b/16.png",
+      "bytes": 93221,
+      "sha256": "5da79b508a298d2e31cfc8a17e036cf0c7f2bdc243915ca10c8687a3af411ea0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/01.png",
+      "bytes": 95252,
+      "sha256": "e57f91b409a19267bea8b5937591845324cbf2115eb0647378ca11d48e0590b0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/02.png",
+      "bytes": 96324,
+      "sha256": "ae1a5beef64ef81c6bfd2cc45af696a15e342c5fc4a2e8b1ae9ae0653a40b32a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/03.png",
+      "bytes": 99347,
+      "sha256": "a28c3515764f191494a94c010c17d4e1c1c725d7f40b62c40710285f9d0149e8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/04.png",
+      "bytes": 95929,
+      "sha256": "90a3a0deacbd531f533356d08457db41239f964542ad629a02c5aeb21b8814cd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/05.png",
+      "bytes": 96406,
+      "sha256": "87034f73bb4a459ccee5e7c49d1d0db3636bfe33ae01b043fb1ed5dd2f50b3dc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/06.png",
+      "bytes": 92247,
+      "sha256": "76cfe6a82aff2c99276bd7e54ace2607b35e51694d6028966d315dff4662d7f6"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/07.png",
+      "bytes": 81836,
+      "sha256": "e5e40845a4387fecbd17b20f5fc0875ee51e72add9b9347e9d96442edcbcd717"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/08.png",
+      "bytes": 84445,
+      "sha256": "52abcd2578f96072d03f028f63a3e50e7f393e5d83cdc17f88af2b292e3af963"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/09.png",
+      "bytes": 87219,
+      "sha256": "09a3401fccede436b31349de325488e5c1578ba92641cb35164eaa81cfd5191d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/10.png",
+      "bytes": 80682,
+      "sha256": "5ec28d6519cee03abf4c7eb63fc3bdbde3d369db738f9d112cf8972d73b78f7d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/11.png",
+      "bytes": 82215,
+      "sha256": "06858154d21ca4bcc607414d5647dce59e4e47716036f3735e1fe8c5a032d884"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/12.png",
+      "bytes": 85125,
+      "sha256": "a18d1fd42adc38745e93f718345154590664de68952eeb5435eae96ce8eec033"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/13.png",
+      "bytes": 91503,
+      "sha256": "ec23c4ed04da3621e419431cac1c7974a18d66de01a8ed32ee4ebfc4bc8d7e6d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/14.png",
+      "bytes": 92619,
+      "sha256": "ad008a163d74a1c746f39365be2d8b6f9e21967d8a9e6e73f0cdb440e49230ba"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/15.png",
+      "bytes": 94385,
+      "sha256": "0d8196add49fd9c8d3337d6aa3e78bc86c2b8a586b72daa7cd87a04e199a78c1"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/dodge/16.png",
+      "bytes": 94967,
+      "sha256": "b5574f261c738ca2515f92b95ff9d0f7f0b2aa9322a6b316c95ec8e824975c6d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/01.png",
+      "bytes": 95661,
+      "sha256": "9e331831c47c9897f8e362a7609d88c3bd5c8a302c4e01204d3b83efe60c910e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/02.png",
+      "bytes": 94160,
+      "sha256": "948a07f56ffdbfed987fe6aed9c28678c1c4ba8773f230b3d53687de2c8aa784"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/03.png",
+      "bytes": 94713,
+      "sha256": "d5ef00cdde2f1614513df24fd1cb85e359b2f99f2171a0cc88e055d328818eef"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/04.png",
+      "bytes": 94992,
+      "sha256": "64d87e60433575b7fac910d0c0e1d048aea33eef5303408616b62f4ec328d6d5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/05.png",
+      "bytes": 97971,
+      "sha256": "5cac6901375475e8de912bd8b3e68a5db27e23dd9424c00d51d97e4bee5c38ca"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/06.png",
+      "bytes": 95415,
+      "sha256": "38ae6478ff80711c235ffedc05e2bc04061287ea71fa33b09d54d3b9e68bac8d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/07.png",
+      "bytes": 98695,
+      "sha256": "ce036b3ba39006dd2b2e9c98da339294b34a65c7e8c23eded4a458aa02d3ee60"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/08.png",
+      "bytes": 100911,
+      "sha256": "557d1fadfa952ae990b5b1ff83783bb360d28d2a1eed0952ed6f4e9637acadf0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/09.png",
+      "bytes": 100245,
+      "sha256": "eca80f3f05f36f9115cbdcac340390bc5fb1c681f507f82b8e2a847147756e88"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/10.png",
+      "bytes": 98808,
+      "sha256": "f07021bd86cd99bc77e8c1c39ac5a8c16a1103f36cc9f3db13748d24c6b1f229"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/11.png",
+      "bytes": 100676,
+      "sha256": "10d5dcb1a8a67d24d645c6312bc6374211705949ce3066c3d415cc60bd76e4b3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/12.png",
+      "bytes": 100096,
+      "sha256": "9d4594e6aad73dc02930f522fc701f4b35199fd46220b6bf82b91594c8122134"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/13.png",
+      "bytes": 101242,
+      "sha256": "11e8b7b9b50c28623a252527173ce49b812e16f6d0d05ddfce04f82422d83896"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/14.png",
+      "bytes": 99746,
+      "sha256": "d174fede9f16966504129f1973ab647bafd34108e8844ad9c33fa37901e83a42"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/15.png",
+      "bytes": 100525,
+      "sha256": "b8f8e02c20c1058f4496b1c9bf9fe8c12114bc84b99ee92f83fd5e9bb95972cd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_a/16.png",
+      "bytes": 98999,
+      "sha256": "b94305327a612e8077382d5512d3f322e4b4d37edd7edad4e48075095d847b94"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/01.png",
+      "bytes": 105609,
+      "sha256": "71336f320820ea3ae9a4ed9132dcdb2da54d1fbbaa7ad46b471348eb59481b65"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/02.png",
+      "bytes": 104057,
+      "sha256": "528e55b5815e0ef679643175563d9c5ef8bcb37605bbd946fb9178575f19d324"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/03.png",
+      "bytes": 102167,
+      "sha256": "87fffd848a24e2504e366c734f17a02dfd26db6e89a3a62e625d7b35bc860149"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/04.png",
+      "bytes": 100097,
+      "sha256": "2e7fb65fa5ad4b0e3139774a1d7473a42152426d64695f0bca0f9d59f42cefee"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/05.png",
+      "bytes": 98763,
+      "sha256": "f36311e4491e5c36f8eef6f64755d94e7ffad8ddafdce6a0c4ec9e90fa59b621"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/06.png",
+      "bytes": 97051,
+      "sha256": "22c82b9b58944b6fc7ff4a0b8721ff383a3b0d0c9fb1747eb4e24b414389f741"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/07.png",
+      "bytes": 95736,
+      "sha256": "eaba3e8b2c6dc318039a436afdc13b6f9ea67fcc352c584158d19f5b6c9f7946"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/08.png",
+      "bytes": 95531,
+      "sha256": "5cd72ebf612b3eb25045b744508430c6f1b0f16d2b50eaba1b4556a54c31a08b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/09.png",
+      "bytes": 96707,
+      "sha256": "22205578823025a69d8ed3c509ec462a704982cd3fbf1f936210e1bf39c5306a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/10.png",
+      "bytes": 96570,
+      "sha256": "8e8aecdf459b15471f5ff502e7c02d61d498b04e408b638da89d37557423f1fd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/11.png",
+      "bytes": 97539,
+      "sha256": "8bf22f92080380a746020350f08d691b868569078fed4a5855e399e2886fa7b9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/12.png",
+      "bytes": 98863,
+      "sha256": "f67643efbdb5ef13eb6b5a774f8fe24c28e77e062514e3671849d2298961d3dd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/13.png",
+      "bytes": 99987,
+      "sha256": "c1b7ffa28d55e56758642ed279dc5a583e03eb073156f21f56931e99ad021449"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/14.png",
+      "bytes": 100086,
+      "sha256": "81998039612336adb97c87f7a9b00b0e99359d51f9f238b554c6972bc74a626c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/15.png",
+      "bytes": 98927,
+      "sha256": "7a8652ef2b46c4e558e23b20a9fdd0b1edb58b986f602254a016df8c3037ee7d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/guard_break_b/16.png",
+      "bytes": 98757,
+      "sha256": "169d5892320f7b3040328786d9d6fe762991b3df7ba29e12859480d7a0e792c9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/01.png",
+      "bytes": 81777,
+      "sha256": "6d463c77bfdf79be7655a5570d9d73beec16624ef849bb69bd0e935e2f645b79"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/02.png",
+      "bytes": 80989,
+      "sha256": "4c65d951cd1cfb5d21302eb76d950501fe23e1e09c9f6c20722ee5ce5202b34f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/03.png",
+      "bytes": 79350,
+      "sha256": "d206a31d02eec182edb244b01e5e197fb03f58dfb3022d1cf9327891ef5a8ad7"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/04.png",
+      "bytes": 78913,
+      "sha256": "79c18b737701da11c270fe28de31170cac951cf4a63767b057db44f336ea5d02"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/05.png",
+      "bytes": 77825,
+      "sha256": "681ce83953d455c5734c6ad23c97521f9a342e2920326acc2401a4d02b6f29ae"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/06.png",
+      "bytes": 78165,
+      "sha256": "8217d6d65e980035f15ba4bf094fed690e0c4ba63564cc001aafa4bd9307a365"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/07.png",
+      "bytes": 81811,
+      "sha256": "d146cc3cd55d7f1d42d6c3f9a2eeb36da9fc143f04c9d34d206ae10bed93d057"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/08.png",
+      "bytes": 83843,
+      "sha256": "e6f3372f67467b93dd7d1a743af75d598e93565079cd6cef0ea85173cb31970b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/09.png",
+      "bytes": 83619,
+      "sha256": "31b6f5f4bccec56ec2877aaca24bd06b3928b21d440a6247ab12d173b59e5e72"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/10.png",
+      "bytes": 82497,
+      "sha256": "b653ec8a7595a637cc7ef8e8ae6b705e7bfd6c85ec9859b03960716326712c1a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/11.png",
+      "bytes": 81993,
+      "sha256": "a6ca7731ae400848c57f6c308bef6b9798ea54de199df8e12dddafb8f07f5fbb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/12.png",
+      "bytes": 77813,
+      "sha256": "0589a41d19789eb50af980dd4900096252733cc02e5761a89e950b5e268ac4c9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/13.png",
+      "bytes": 74852,
+      "sha256": "6256453c638f04c3ed29a8897928c91361b26c5f444bc09f96419269bd7163f5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/14.png",
+      "bytes": 74677,
+      "sha256": "36bbc85d1e74c19b31cddbd91b0794e48a0c8fd0c7fbfa6bf39a618c27d42f4b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/15.png",
+      "bytes": 68961,
+      "sha256": "516746fb4d97199a4ea9ef3077f2891c128009cf2056274bc8cb064132f7c5b5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_a/16.png",
+      "bytes": 68962,
+      "sha256": "129d27360e17b336c69210efc16c5642f6291e4d243def7a42aa1891e940eb5b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/01.png",
+      "bytes": 87447,
+      "sha256": "ac4c592c2dee8826c20c2095d274b57846ceca818541b95a68716eb2742ce68c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/02.png",
+      "bytes": 87409,
+      "sha256": "ff353b905e85761a5d51ed7b68e047e842bcc4cb48c24747920963012390a16b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/03.png",
+      "bytes": 85974,
+      "sha256": "e2aad01da431b520b7c40d06881520f292d5c3cd93d672f10c2ba95e0d5e6222"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/04.png",
+      "bytes": 87330,
+      "sha256": "ab2f6b1da1872ece5d97bfdcf1afdf70b5d4f7a141babb97c786d8025f5cdfcd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/05.png",
+      "bytes": 87614,
+      "sha256": "503409ee72465a4681a110425e4bebdf01e41013ea9a077e8549d928d51b19ff"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/06.png",
+      "bytes": 87694,
+      "sha256": "ecae3489e92aebfd38c8e462d4a1df8f3b3753505c6725eb4753dec9b04cb58b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/07.png",
+      "bytes": 90559,
+      "sha256": "a80f4a3e21ce898fd55cfb2d3cecdaec44f82c0aa9092e8389df6553846f26e7"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/08.png",
+      "bytes": 94224,
+      "sha256": "a5e8c84a5cd998af544bded2884697202ee4da4dde583271390ff6b02e6e20a8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/09.png",
+      "bytes": 96319,
+      "sha256": "3b4b60a1558c19dba3e0c6b7a6e0f7e9abaf63532235f682dda476e18ec7b0ea"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/10.png",
+      "bytes": 99777,
+      "sha256": "bb355cf6bed01b4b15e750462abc38c567174226de3df964dbbee4f92209a3e1"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/11.png",
+      "bytes": 100870,
+      "sha256": "dc9e06b2f8f8cc6e77c22bd62571acd49348c5185a6b4d66e986da1841c5238c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/12.png",
+      "bytes": 104377,
+      "sha256": "e796f9a9543dd7664c962a61cf575152326f238fca03cdd06a5dbe1c264c1022"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/13.png",
+      "bytes": 102662,
+      "sha256": "3e09e7860a6197ea7ca606e059d8425e1572cd03879b5a3a8dd6a4742a75878c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/14.png",
+      "bytes": 102425,
+      "sha256": "c8d6361a5e9e056ef5dbd7e0502f59b877ade4146389a5d5138bcdfe616ca399"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/15.png",
+      "bytes": 100646,
+      "sha256": "84571f89e44ea336fb1b9588b105fb81821e4fbc759ffa5f57f501366bed181b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/heavy_strike_b/16.png",
+      "bytes": 100614,
+      "sha256": "c1983d1c86377b00884ca02af41c08de250d6afcc0aabee5498b1a985419b11b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/01.png",
+      "bytes": 94753,
+      "sha256": "35b6b57b621d7803696e00e5a16aae04ec2d1df9402069083742e8f179e33c06"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/02.png",
+      "bytes": 96227,
+      "sha256": "46f5f5fdbe1ecb43c90a46ac9b0a1ef7d2678944054cf304a1f7e14740ea1a78"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/03.png",
+      "bytes": 96885,
+      "sha256": "95a4980a30598b37ef2dc1b5522ce8f02fd194f35e6e021569971967c7950477"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/04.png",
+      "bytes": 92795,
+      "sha256": "fe7085d3855ed8a883c8b54eb7349b6f6cbba278db8432504470f876cd6b998d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/05.png",
+      "bytes": 92575,
+      "sha256": "8cf541446d0ffa56b097d6612b9c996a3fcdebb1f3fed599a1c933cccf0b2ddd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/06.png",
+      "bytes": 94969,
+      "sha256": "723b3de5d8b327587050a2199862a7d3c5159df770b686bf9a968054e4e0017d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/07.png",
+      "bytes": 95413,
+      "sha256": "9a052d1f198da4eaba68ccb65b69dca571d663e66140c73e35f2e5a5ae6ff8ef"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/08.png",
+      "bytes": 94936,
+      "sha256": "8c2cf8d6f73465eb26871278631769617818a4b779ca286427fcf4c8acf7a49a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/09.png",
+      "bytes": 94196,
+      "sha256": "d35f7f3904b6207e5349117d67835ce946f986f96816bee333788bf7e1e28893"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/10.png",
+      "bytes": 90424,
+      "sha256": "96f2ee47a2641c25852b307e0dab28c7748a8665194b22334ede8919dfb21154"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/11.png",
+      "bytes": 86898,
+      "sha256": "517290fae3409d44fb0608464f545f1297d0e9a5e8a115618f58d5c54fb348bf"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/12.png",
+      "bytes": 82345,
+      "sha256": "1fcbb56f64ebd8d90a324be6c8c852f5774ded84edf9e1627b9a420933331c5d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/13.png",
+      "bytes": 82325,
+      "sha256": "d887517697d0643d0367cb61d8e437723d4d041f694cdcda3188cd2948144e29"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/14.png",
+      "bytes": 81247,
+      "sha256": "5698dbbc9412af3130e7bcc96dcda58154132baf69dc06b14a0a1f072bca2283"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/15.png",
+      "bytes": 77551,
+      "sha256": "420cd5e498c75e225ac213ae4a17cf2911200bec2790de244a83adcfe9c11133"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_a/16.png",
+      "bytes": 74824,
+      "sha256": "020b252181792299e022d42ffff2478aaa9864b740bff00cf6cd99cb69c7824e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/01.png",
+      "bytes": 91849,
+      "sha256": "9814a7f2b370797cd42af06df781fc3115434d18c6695fa0846397f64cbf28ea"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/02.png",
+      "bytes": 94921,
+      "sha256": "1acd307812a340f82ab833adfd900caa898ee64ac46558b4b9f53492d410a1ec"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/03.png",
+      "bytes": 100337,
+      "sha256": "14e775b33fea90337000f3463e48855a8071926542ddcd5d40054a16879e1f43"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/04.png",
+      "bytes": 104664,
+      "sha256": "3036fbc975a10a010ce4a375dc1d6455907cc967ef09d79147eb07d04862c89c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/05.png",
+      "bytes": 104285,
+      "sha256": "03e0eec24fadaeb1c4f795d8caf218734598939d6483c7cf162aece4f05d13c9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/06.png",
+      "bytes": 105852,
+      "sha256": "e37e2b2e6b84a91f724caf909a6818fec11398b8e67792ff432a0b165aad475a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/07.png",
+      "bytes": 104015,
+      "sha256": "97fb7564e517ea423511412f1236791987c61e10fedc35be0e7aef7013afb280"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/08.png",
+      "bytes": 103030,
+      "sha256": "fc03d048f8100026c77aab9da8dedd960b431f7b5b5039eac1439c0438ad9782"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/09.png",
+      "bytes": 103195,
+      "sha256": "c88377db6a3e6b1e32ab5fcfc6ab55b90c81d2165e189bf5edf99e816650d1fd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/10.png",
+      "bytes": 103166,
+      "sha256": "2ba3fc483cdff6fbfb907525cc0c5576453b493c1a1d012e81ab03f1ccfd0a4a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/11.png",
+      "bytes": 105967,
+      "sha256": "dccfc9122d09f788bd726da1d4dfdeb0e4702b57b55800a282bf8cc6ce0fba4e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/12.png",
+      "bytes": 106748,
+      "sha256": "552e387f0d869fab7f11da1cf8dd7216a30fc7d79719519b1c2da452463829a1"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/13.png",
+      "bytes": 107253,
+      "sha256": "4bdc481e82e5022fd8b0a3f62f72d2a0630da68abf6d73d9c8229d19b92cdbcb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/14.png",
+      "bytes": 108663,
+      "sha256": "8a6546fbd2c4c6ae67c2d2fc8d55ac208336420627200e3d1bd839e00252fc2a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/15.png",
+      "bytes": 107954,
+      "sha256": "87447a47a52f1807eaa38b263dd63d11bbb04d183a72e469aca415bd88097bf8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/jump_b/16.png",
+      "bytes": 108419,
+      "sha256": "950d0246a430f25cc609aa206b298bc8925d87b5a8c901893749105b65f5f342"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/01.png",
+      "bytes": 101059,
+      "sha256": "938fa5915aa027cf7c8d99ef1049e2b69eeee4262d8a392c7981bc54d657ce9c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/02.png",
+      "bytes": 103286,
+      "sha256": "bae0648ddf67e4e8c0177b1a8c22c3f1d6fac55dc68fdf12dfa23830dee4e27f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/03.png",
+      "bytes": 99812,
+      "sha256": "3df66bb705ed8ed77cb2439054151d3f37aef5cb734b775701a1517adc943498"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/04.png",
+      "bytes": 97753,
+      "sha256": "a40b287ea63d00d9370b87bdcad08dd7c82f53476f7732c417815077f7e74597"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/05.png",
+      "bytes": 99006,
+      "sha256": "2fbfc33344a6769d0aea267f44c50687ec40b4c5ccf0bfbd4b1157df0fda4fab"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/06.png",
+      "bytes": 95088,
+      "sha256": "3a94afb68f8d130b74382b996c693a91bce2b7aaa5e9af2cabcd387ee960b843"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/07.png",
+      "bytes": 93253,
+      "sha256": "c3a522e0a23354fd45aba39c60028027e75fae65dd515e6fd170795b27dd74bd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/08.png",
+      "bytes": 94433,
+      "sha256": "c2275111a8b7c3274156625e809ad7a2a2a295696ff717ccb42871141fa3c775"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/09.png",
+      "bytes": 96677,
+      "sha256": "39fdfe4ade03e5a68d2fdddda875714d13d75365551efd3511ae97967fded296"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/10.png",
+      "bytes": 99109,
+      "sha256": "5c6685b9497d200e9492afd355d2be9286707fc2031100a36c2013a6dc2d7619"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/11.png",
+      "bytes": 101444,
+      "sha256": "e8c1e312d07390ebbbbff409ed011541fd4beca8d6293723a6f7a95b706d082d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/12.png",
+      "bytes": 103524,
+      "sha256": "83890c3cb74d9a198d908874ffd77ba906490ce0baa1db6f2a7005d8c6f40e0e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/13.png",
+      "bytes": 103555,
+      "sha256": "98427a3eb079784560b6f3e78d08f70e1798dcb36ac62d67e607b2fdac106518"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/14.png",
+      "bytes": 103133,
+      "sha256": "1aad002d6007e7a76f1736ad1c75ee59a34bbb19a56299fbefe798d6daefc435"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/15.png",
+      "bytes": 102384,
+      "sha256": "2eb40b976a8ece26279e50d64d80feec46969ce02432200d705685b79ecf76ce"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/landing/16.png",
+      "bytes": 102539,
+      "sha256": "33608712dcc847632b4a2e35d04f43f08d6023aaa1630aee8f97cecba049fd5a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/01.png",
+      "bytes": 99354,
+      "sha256": "de5657bf04bbbe51d41eaf7e6956acceeefd491a98ca91ebc5dda584a2ddf53e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/02.png",
+      "bytes": 100144,
+      "sha256": "6caac55e045ff6ebc4c2b2a5a3e976f90e6fa19c461a873fe1073a4ddf9a2ad7"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/03.png",
+      "bytes": 99662,
+      "sha256": "c3e333622301d022e55c72ed0a5490e500ee2f0eae4dd9847d4634640dcfab87"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/04.png",
+      "bytes": 101547,
+      "sha256": "961978422e03073c64c5aff5f0674958b7afa42eecc9893a59dc9f6c101d4471"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/05.png",
+      "bytes": 103406,
+      "sha256": "a53b9d7cca57c6466a89ff2cb7faa518d6538abfe6dc632fe935da736655ef61"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/06.png",
+      "bytes": 95503,
+      "sha256": "d7ff30f78088cf81e1007e9f50cea744800e03143efc691aa27caee9db356076"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/07.png",
+      "bytes": 90291,
+      "sha256": "6921394b5e4be4873219882e8bb48761edeaf110813eead3502b1aaf67a0bf37"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/08.png",
+      "bytes": 93245,
+      "sha256": "6dc30cfcb0ff08ee0951c911e19b035c282e83bd92de66ea5314d4fa9d7dc9cf"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/09.png",
+      "bytes": 94149,
+      "sha256": "41deb733a54b1acb95fd04ab9f28efabb995ba10d2b49c1a5c606e56241fd78b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/10.png",
+      "bytes": 93046,
+      "sha256": "08007a236ba39dd616af59534e18ac28c7174e2924aea3819de9ccbe79607123"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/11.png",
+      "bytes": 89429,
+      "sha256": "765cf170ac0a3121437296c038c8152fc2eab28d83cf5c4f07db9fdc35b28d0f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/12.png",
+      "bytes": 90893,
+      "sha256": "6d77de95203e53e9a279e8e2fadf4f46eb0d8ea87aa7f4da31905a78228cd1bc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/13.png",
+      "bytes": 91833,
+      "sha256": "20fcfa9851d78fe7f618f5bc69ac00fe40653ac1a18842840fb89b8f198e98bc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/14.png",
+      "bytes": 94110,
+      "sha256": "207e0d3f624cec75b616ec12f315b4ec2b3c6812672fc7583eee3c15c640c11d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/15.png",
+      "bytes": 94641,
+      "sha256": "c1f41b10764fea1a9f6f15983a7550e4ae82f0e7b4938d7a2e001690bec4a4be"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/16.png",
+      "bytes": 96478,
+      "sha256": "de5a578b3ed282168c2b0fb3597fcaf68b8da6a37b288ef9a0d9d2b5fc2b37af"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/01.png",
+      "bytes": 93009,
+      "sha256": "e79482349e7f13e19f73407a2def7c0b5b0af060cd946b325b8c945557826045"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/02.png",
+      "bytes": 91045,
+      "sha256": "d74c1b7682ecd821cf8be8cf5e159ed38fd5cbe5d8a7a6a86a8d2ebfef14efd5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/03.png",
+      "bytes": 89493,
+      "sha256": "5366dfdafd7ebff095db85f931d5b203133f119b8d37fc47ac1bdd1caba59eb8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/04.png",
+      "bytes": 87471,
+      "sha256": "808989c5bfcbe6e4642db42bdb97d274e84add9ec5ac709910da8604854ecf9c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/05.png",
+      "bytes": 87217,
+      "sha256": "c75e240857d5a30677371df3b1f35f20e258c4f9f3f439db3c9d175b3800c3b5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/06.png",
+      "bytes": 87084,
+      "sha256": "e5cec7d5b9584cf8037e049dd4aec0e12cb09b5ba0e70daeebeca62517f8c8de"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/07.png",
+      "bytes": 87453,
+      "sha256": "b81972465cbeb65641ceed6721e84dc9e6ef88534a48af3686ef3a097d77fbfd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/08.png",
+      "bytes": 92774,
+      "sha256": "57a915810b632297b21196550cd258cac139fd5dc22ad13267bee51b8a9dc0ed"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/09.png",
+      "bytes": 93618,
+      "sha256": "f491ffa3e80e72e58af149abc6af5640284b4851287b9037a0f11e33725e7d95"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/10.png",
+      "bytes": 88267,
+      "sha256": "fec3479cfec7d6e9a183da6d17f156e598ca2834fe554df0988637a597188ed2"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/11.png",
+      "bytes": 86728,
+      "sha256": "a57668eb11eab2221f3469c0286be0c68bd41dc530369caa30f7d4b9a618203d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/12.png",
+      "bytes": 87708,
+      "sha256": "238f5ca62c8ff3da61cb1dbfb51962258e51c85748a4ff59add81987b8472dc4"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/13.png",
+      "bytes": 88756,
+      "sha256": "5eea0d930c3a847db95422b3ab383e31f6b7775830a8f9306b965a6bb7dd186a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/14.png",
+      "bytes": 88425,
+      "sha256": "b29228d199b7fb433661e920f76fc27ef05a6234fd7521cd5f858745cec38907"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/15.png",
+      "bytes": 89897,
+      "sha256": "e5829ad43b38e565e7e5900934f68b90395a042bef16d110784972c77ada1010"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_2/16.png",
+      "bytes": 89778,
+      "sha256": "9ef289e9bd83cb59b806be4294f8a15764f3809d6f191154d08a757d2c5d9652"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/01.png",
+      "bytes": 90707,
+      "sha256": "f3e5b0b2f27f08b54a1b67bd431eefe182b81f786de6a6b838dfcdab607807f5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/02.png",
+      "bytes": 84569,
+      "sha256": "1a7483f5259115b19c77e683b0c58e303e3db999759fd68b566c29b8cfb81353"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/03.png",
+      "bytes": 81915,
+      "sha256": "fc9e3451fdf5f77f7d0d89d53428712459618d93f7a1d6019bb0caa1ad0fe1b3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/04.png",
+      "bytes": 83303,
+      "sha256": "4e0ea24754e7c3452426d18aae77597d0a319e4473706143a273c057783fc122"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/05.png",
+      "bytes": 83572,
+      "sha256": "736e17c91d17b46334f6acc1ce8903df72cf4e485b96a925555eca9e272e7a19"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/06.png",
+      "bytes": 82610,
+      "sha256": "7a1d6ec4e2d67b3b11460680dcd3bc19289726f3e502cf3a4a80697fd902dc92"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/07.png",
+      "bytes": 83770,
+      "sha256": "e446932729873967e9f156fe7577980844c310d682e79d57ea7e0ba909fb7b92"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/08.png",
+      "bytes": 84154,
+      "sha256": "61e7801fa62f8664752bbb5d32b48b0cca275e694dcfb215481a63befe83a25c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/09.png",
+      "bytes": 85055,
+      "sha256": "5ef0e756c7e9d5cb1727b83032af144a75a8f47e1b8695c9f8ebd842ee1a648c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/10.png",
+      "bytes": 82299,
+      "sha256": "3ffce94320830ef7c204a6a048948abe83cdfd71ddccdcc1cc54899a34bb4f2d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/11.png",
+      "bytes": 81183,
+      "sha256": "fde23a7db78ff6bdb7ede12795cf203d7bfb39042617479ec8cc98bc87e6cbb4"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/12.png",
+      "bytes": 83503,
+      "sha256": "8f1481134f6c54277ad02289440755d1adf2e0d66ee8657bc4d5b79fda90ff92"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/13.png",
+      "bytes": 83400,
+      "sha256": "24caf0642a4302af01805b7bcd03aa6c5dce02e4a2cf1aa2f37e48bd0cb1a528"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/14.png",
+      "bytes": 83542,
+      "sha256": "f8f66fc795162a49ce25641deeba9db85e3aa62fac5a17dc458700a2280731d1"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/15.png",
+      "bytes": 86013,
+      "sha256": "ca3ab7040528a2ae3c84c2cd5833b732d9e30ba36dca4d06f96175de0733e8dc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/parry/16.png",
+      "bytes": 89949,
+      "sha256": "971cba1269409ce6fdc1f3644db47879caa43b4c2ddbaa668c8a6be6d996f119"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/01.png",
+      "bytes": 86524,
+      "sha256": "7d0ec98c187651903a11ca3c254b3fe2e9cd438e1360b2e8f5bb77a41eafc382"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/02.png",
+      "bytes": 82533,
+      "sha256": "3b92cb7b88b253403f87d33d2ade91aada3772d8f68beafd1f6d8d5c405e96a8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/03.png",
+      "bytes": 78598,
+      "sha256": "77695d867a9aed459fdb0059595581c2603f35d1b7cbcabe2008459cbebf7148"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/04.png",
+      "bytes": 71100,
+      "sha256": "a89d27a6256f6bd65617ee541927c4a53059970ccc82fc91294417c6919fd3c5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/05.png",
+      "bytes": 68462,
+      "sha256": "c285c60cd4d7498cd6549c9fcb49f9a2cfa538415f54ab8e3300a28d2890f4d0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/06.png",
+      "bytes": 75092,
+      "sha256": "3ba85f18d0c49fa6b3bb72fe406b2b8e84596a054b30b2810dbfb34fab3d1dad"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/07.png",
+      "bytes": 76741,
+      "sha256": "113d5a2c3074ad57469eb3c909944609a5cafa4cd0370ff2fbaa8d2156178ed1"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/08.png",
+      "bytes": 74458,
+      "sha256": "45fd40693f76a36c3c21343a803112c73467f424f1c71708ee822c8ee49297fb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/09.png",
+      "bytes": 74071,
+      "sha256": "f9cd7cd8ad264f95156f4add8ef89db39716a83dcbc7d674ba0267a6702fbd79"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/10.png",
+      "bytes": 75510,
+      "sha256": "4c52b9b2597dd58e0aefed113566f6e8796ce92f6e650ca4f5dede3f0cb93348"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/11.png",
+      "bytes": 78185,
+      "sha256": "cfc6e91e4c4f2bf00cc7f88822273dd397480e9c5c47c141976132cc3a62aee6"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/12.png",
+      "bytes": 79033,
+      "sha256": "af10edec2b705a500b4c08dab021036682d656a4af76e76cdf8e4e42185cd034"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/13.png",
+      "bytes": 75997,
+      "sha256": "8f3aacb4c12bc273980c34035081bdbdca289c00db262fa0f7e1ee2a17613b65"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/14.png",
+      "bytes": 74936,
+      "sha256": "161982dd210712c586a7463a81484419d75f1ced9d945f093fe2e3fbbbe2fe75"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/15.png",
+      "bytes": 77465,
+      "sha256": "67b653106d6f4f00621864d1a7523c305cbb07636052be59a6f5306cd6457a9e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_backward/16.png",
+      "bytes": 80787,
+      "sha256": "ad0bba5e6011fc33b12fc7cc4425aa8a779780f5f559ef924647528cff207736"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/01.png",
+      "bytes": 95205,
+      "sha256": "6978cc4aebf693bea3212f779b0f5765ad4fd7675f4e387716eef76d65e37d1f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/02.png",
+      "bytes": 85542,
+      "sha256": "76cefb794b0cb55497de2e587c554b339a6e95426073ac3f9f0b9b27d48921b7"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/03.png",
+      "bytes": 77964,
+      "sha256": "3b0d8eb9b34a7cf8262d69be23ae8e3a592247b7946e52bf315851919f7ab41b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/04.png",
+      "bytes": 79102,
+      "sha256": "852552ceada6da3325ada1524adbc42c87730558cfba8e5b13e8ed48bec6c1ac"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/05.png",
+      "bytes": 80162,
+      "sha256": "a92766de61efccf2b393963263179fd5d7f3b9eaa17162e8ea411b030e079eda"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/06.png",
+      "bytes": 84317,
+      "sha256": "ce4d4a629885a1ba340a73afd0dbb4ab9ebb182bdc9ebfcf61871913f02e4174"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/07.png",
+      "bytes": 81653,
+      "sha256": "89fe89681473758b4c3e79d75aaedde5e722363b739692bcce36f78fd682d67c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/08.png",
+      "bytes": 82612,
+      "sha256": "d4263cee400e6ad28a2c408d64c5a0744222a09ae35b33b3dd1582be39d22ddb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/09.png",
+      "bytes": 86067,
+      "sha256": "f30572b87b174efedf2f9366b0e1c9d7532eb538164f64634c5d51b1a5224ea2"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/10.png",
+      "bytes": 84128,
+      "sha256": "f92fa54dc06df9f0009c539c7262d95448290ae8b110d0d5d3cb06a1642762a5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/11.png",
+      "bytes": 81404,
+      "sha256": "c501c7847334ef915c302afd9876dff04a3a40b4956b61510f4bc7e179bf2bad"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/12.png",
+      "bytes": 81132,
+      "sha256": "e82ed26ef3ddfe97500307dccf0f38795d0bc5c2823a8aed64a18ff2d4377f6b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/13.png",
+      "bytes": 84564,
+      "sha256": "e4f54c9ee14941377cc6b27e6d1a39768e745d8ff170723733f2ff62efea3af9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/14.png",
+      "bytes": 86230,
+      "sha256": "b4399b596572cbf03441ddff3e9dae419a6213f8348a4e5bef2619fcbb84db34"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/15.png",
+      "bytes": 84329,
+      "sha256": "e75c2c676f5ebda78451fb68f315c7bd97b9b3cbba09e8dcd2f38465f2890378"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/frames/run_forward/16.png",
+      "bytes": 88624,
+      "sha256": "a2548e3437d20328d0dd6a1f868a21942e3fa7b7b128ce213b8b31d931cb8be2"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/hunt_animation_state_map.json",
+      "bytes": 26691,
+      "sha256": "5e86da7f5e39f1056f5d43717d995752055b3d3a76e0b8b6d23725623d4ac98a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases.json",
+      "bytes": 192080,
+      "sha256": "bfda0030c5a31ba63d9cb775e7069f6c153f62eb2d4a9bcebbf61462ccbe2a1a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/air_strike_a.png",
+      "bytes": 1290790,
+      "sha256": "ec6c41be4cb4227adde4df31773ae486b759ab12dbd652635da942884bcd47ef"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/air_strike_b.png",
+      "bytes": 1518937,
+      "sha256": "478d0088593c92b5f638776c149c5b24ce7822365da28cab291fbdce6036a71c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/climb_down.png",
+      "bytes": 1283588,
+      "sha256": "82dccef53f28adb12877b5c403ab50b15efd3980ac2ec1e3df19437af28a2eec"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/climb_up.png",
+      "bytes": 1133516,
+      "sha256": "7c9961f8aeb9cfe9a32a6f64ba179a9e8fc7e590a2c24d0cda240421af14c515"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/combo_finisher_a.png",
+      "bytes": 1315166,
+      "sha256": "8b615cc6094ff1f732e2fde8195a06155e8115d236ffe2eaae06878897af20b0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/combo_finisher_b.png",
+      "bytes": 1391617,
+      "sha256": "1269b4e7de7f293538ed2ed2aaa8462bc171c9e9c9adf99cf1c9af979fd4cc2f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/dodge.png",
+      "bytes": 1443934,
+      "sha256": "af920881854f32611570f758c9929be4d7e2d7244eddc3d97edad30a736c87e5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/guard_break_a.png",
+      "bytes": 1556879,
+      "sha256": "8409c05c31c78694014c36d9f3df7601ed48fa086815e607cf48da7d656c193b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/guard_break_b.png",
+      "bytes": 1567994,
+      "sha256": "2d41715ba4e103f7750ada5580ae4c49915baefc5e3b82600eb7e6457878e5d2"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/heavy_strike_a.png",
+      "bytes": 1245799,
+      "sha256": "1e095660478d9dd2d55448abff085fdafa06d3920513d5d009d515991a8f4986"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/heavy_strike_b.png",
+      "bytes": 1495943,
+      "sha256": "fa3af67955d4cff0a5bfce616492e115a46742d6abbfc6f3f751cef7a9189d6e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/jump_a.png",
+      "bytes": 1424733,
+      "sha256": "4ef644d1ba7aba59842d0ba3f1bb44b9c76b193a484fefdc6c62c96d223009dd"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/jump_b.png",
+      "bytes": 1646111,
+      "sha256": "5337d463534ca8a706f4ed1f0d7fe5b9a192689b9329a056e9abb6cb24b4f761"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/landing.png",
+      "bytes": 1588214,
+      "sha256": "6a5f1c9ac8feeb7b0f44c9f2a07c5d3cb4b2cf3e9c59e621ff2fea527f0fcda6"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/light_1.png",
+      "bytes": 1517208,
+      "sha256": "a7579b5f10b360e7f538d7a5479d834c55a06d9bfc7b1b9b6dda1216110c752a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/light_2.png",
+      "bytes": 1419115,
+      "sha256": "a432c61b93a3e2450380c40672753af092b9d69e3068f28af28fcb2f15cbd163"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/parry.png",
+      "bytes": 1337233,
+      "sha256": "417ee3016b423cfec9930d464a188c6287f3f8f5991d4c93ecff30220bbc1ca0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/run_backward.png",
+      "bytes": 1219446,
+      "sha256": "cf743cb561a183cc122d3c6ebde02cab486c51f1281f196866274fb50eb37331"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/import_atlases/run_forward.png",
+      "bytes": 1338329,
+      "sha256": "683facc99ece9b0d844bb502df8b8123c6ace845f35d9524288e05d8db4a9684"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/package_file_index.json",
+      "bytes": 85097,
+      "sha256": "43008e35261b687c50e5a27599ab79be95cfdf2f19f358d22cf77d67a6979e78"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/playback.json",
+      "bytes": 125615,
+      "sha256": "d5d9180b060b68ea85a27011d05f23ac0e0d6d6b4c7f892f69f2e4203f8043ed"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/preview.html",
+      "bytes": 490483,
+      "sha256": "ea4e9d067dd73b28b3991f146ce38897aa77ae1131547a0541832b41807418cb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/prompts.json",
+      "bytes": 79291,
+      "sha256": "c18df7144188e9417b7ddd7097d02f0ad2eac0c6ca94c0d6ad2178e70fd8d472"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/provenance.json",
+      "bytes": 5990,
+      "sha256": "e8c1805265392c78ff6951a2e0610d4c5db3a3a9c8de6f7d021abd5fb26bc876"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/ART_REVIEW_LIMITATIONS.md",
+      "bytes": 4402,
+      "sha256": "001d58489f99b91375640cd2e557325b96754d2637306af0dc3aa3194ba9b1e8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/CONSOLIDATED_REVIEW.json",
+      "bytes": 37835,
+      "sha256": "8eeedabf33ada18a84ba67f0306ff2e81051754bd69f13c2be04e8d43a94ad7f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/CONSOLIDATED_REVIEW.md",
+      "bytes": 4302,
+      "sha256": "70c0c02ca52d4dea99d501ec519d8bd0501fa09a64016f5e4d87f6f4e0b2943f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/README.md",
+      "bytes": 16803,
+      "sha256": "c8fe63fb63ce48221241864a7beb8c91d88d7ea91a174cd8776f4194798fdb92"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/air-strike-b-corrected-qa.json",
+      "bytes": 38513,
+      "sha256": "711644698dbfb46f1978c50d592fa781918919dd2722cd567eb8eabeb1b4b3cb"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/air-strike-b-corrected-review.md",
+      "bytes": 2151,
+      "sha256": "add77ee20f21a12d05c9e2b0ba21a2dd0fc63bc3834c5801a784269337a576a9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-01-qa.json",
+      "bytes": 345492,
+      "sha256": "b96be0c43644a7fc15abae71b86610ee29b7956fa05eae2bd60c5f485e182d79"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-01-visual-review.md",
+      "bytes": 5548,
+      "sha256": "3d8cc4c98ca31a72da012faa8870f75e371f53d3e73e1b08ef52e691ece7a810"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-02-transition-qa.json",
+      "bytes": 12651,
+      "sha256": "068fbe6db221f6cf0885d99299cf03bd9a6ed1c9553b0e5884faae672b447e37"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-02-transition-review.md",
+      "bytes": 3911,
+      "sha256": "4cc2ef4a5c29f7d68bcec6d860a51478486b286db08f136244e44b7c04ed3ee0"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-03-heavy-guard-qa.json",
+      "bytes": 83947,
+      "sha256": "884c8d343d31ddd3087a9489187fb59b778e39cb5690084f932f75a56f3bff55"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-03-heavy-guard-review.md",
+      "bytes": 3058,
+      "sha256": "fde02fe99c546ff720476f398e2f99f78b93e896aff44a3c2a829df3f3a367f5"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-04-dodge-run-review.md",
+      "bytes": 2587,
+      "sha256": "9200b58003a0bb525bec5f0fba9cdf2a0546b85d78dcb478577a60b9d588e381"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-04-qa.json",
+      "bytes": 108451,
+      "sha256": "24521f7106a9beb2ef94689e7485093d773cfb982c72e5aa89ee3368a77dc14f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-05-guard-retreat-climb-review.md",
+      "bytes": 3026,
+      "sha256": "e64eafa0f1d2eab22d98515ca14728199d384472054eda1e6166228ba9357617"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-05-loop-diagnostics.json",
+      "bytes": 5106,
+      "sha256": "9dabe5bf714d615044508fdff97874f1e504591200bbafc71db21fb7633cf695"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-05-qa.json",
+      "bytes": 163041,
+      "sha256": "1020fc787cf8477cf7c4c84b27bbd55f2f77c0c7101258d10a972e5e8871a02c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-06-climb-jump-landing-review.md",
+      "bytes": 2879,
+      "sha256": "e639f081402a7780da0575fe47e519130b2aab286fa9ba9a7098f8d8da449ea1"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-06-initial-qa.json",
+      "bytes": 124055,
+      "sha256": "9701f0e642e5ecfe7b370dff7c586305c5eccaec09c6092347570598f5315886"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-06-initial-review.md",
+      "bytes": 1872,
+      "sha256": "7f70ce56a4e5007bf7157ba7a09f58b8a9031a43973ccd238d4d71a2f0155531"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-06-qa.json",
+      "bytes": 165498,
+      "sha256": "430f95cee7d0bff6346a0943559ce58994d0fafdf1ca3a4dacb6c6a1cd53d655"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-07-jump-review.md",
+      "bytes": 2736,
+      "sha256": "816d8a72f0114e2132dd8aa9c75670b858e909ef185376b176fd4ff055ca25f3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/batch-07-qa.json",
+      "bytes": 41547,
+      "sha256": "caae648f87663f01755a536fd54fd2873f7d9badf30c7b45fc6554d073f248bc"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/combo-finisher-b-corrected-qa.json",
+      "bytes": 38799,
+      "sha256": "4d5839780be28436512add59eee8c40d14e55a6c40370e9cec7f1a7f4fdd584b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/combo-finisher-b-corrected-review.md",
+      "bytes": 2518,
+      "sha256": "ba5ab7223d51469f8298158fb55661a06380fddfb2d8e4a392cd9a140ed28e1b"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/excluded-locomotion-attempts.json",
+      "bytes": 1994,
+      "sha256": "fc439f45875c6da035e2b08ac76fa327a9b2f25d197fcd4e97f70b5637f23d96"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/gap_audit_2026-11-10.json",
+      "bytes": 38286,
+      "sha256": "94f516464c01880fb0449845eb7e61359ca571957ee865d85cc4c4f0ae1d9b46"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/guard-break-a-b-transition-qa.json",
+      "bytes": 959,
+      "sha256": "f84cb518c44427c7324b7800740174ca43ba85d32f0fa5326ac27836c6a6a6e9"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/hunt_animation_state_map.json",
+      "bytes": 26691,
+      "sha256": "5e86da7f5e39f1056f5d43717d995752055b3d3a76e0b8b6d23725623d4ac98a"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/jump-endpoint-diagnostic.json",
+      "bytes": 2039,
+      "sha256": "aacfd7508e86817ce6c7d933e4a2d8f2e43283de2d5a0e81d0aecd47a1ae5e1c"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/page-calibrations.json",
+      "bytes": 2303,
+      "sha256": "9b7b61d808edae3970c0cf665aa58eec30ab18288858045942bb5df8a8c69cf3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/qa/run-forward-loop-diagnostic.json",
+      "bytes": 2493,
+      "sha256": "144ec19a56415301e3a8b99e4e151cecad0d0b4411877629051a20f352fb6b19"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/air_strike.draft.json",
+      "bytes": 9604,
+      "sha256": "0b989184d1250deb097832dd41ecdc283cffa1e5a6ccd84b95d025e4c94d631d"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/climb_down.draft.json",
+      "bytes": 4975,
+      "sha256": "448948d57bb1b6b126f0ff628144686d9438cbfe019028f73d7c51d9d8572d2e"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/climb_up.draft.json",
+      "bytes": 4933,
+      "sha256": "f2546f661c00ef02bbc8da7b83d706eb54a0bc588643bef0106ffa2603897742"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/combo_finisher.draft.json",
+      "bytes": 9584,
+      "sha256": "96b14f687a14cca6c369b3e3a08d8c2099d2de8b1d8344c9d08246ab33a83dc3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/dodge.draft.json",
+      "bytes": 4665,
+      "sha256": "934440934b1726984abb56bc62ce49426175ef42ec55c4e51080743fa11f6e34"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/guard_break.draft.json",
+      "bytes": 9227,
+      "sha256": "81160ffcb22074986b069d586ce370fd635f20bdce86543bb9c2b0bcff78a0b8"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/heavy_strike.draft.json",
+      "bytes": 9266,
+      "sha256": "92173d24d9658e05c32983b25522ac8b9d06e18b21de41d503f609ad49d82503"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/index.json",
+      "bytes": 60933,
+      "sha256": "bf4ec61d802681b80c6eb8392876eb69e252365cedfe3dc3a72b8fd1899730ec"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/jump.draft.json",
+      "bytes": 9370,
+      "sha256": "079890e117a3c6ca50a68bbb2d50548d115c75f565338ebce39fbebdabd08962"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/landing.draft.json",
+      "bytes": 4707,
+      "sha256": "bbb6552374cccaecf42a6b20d515b90914914ebfa75456e15a1e13ec40c57c74"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/light_1.draft.json",
+      "bytes": 4707,
+      "sha256": "fa14e67ebbb1f3e94472e9fe29aafa0d4ac003864f6672024dc78f0f33b0cf19"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/light_2.draft.json",
+      "bytes": 4707,
+      "sha256": "3abe1e20871ce62c565d065d6687b1e0fa927d03123d1b9990c7405385aad4aa"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/parry.draft.json",
+      "bytes": 4665,
+      "sha256": "1cff4f69f796c51225a39abe79abd1c4554bd8fe93107550ecf3fddf790a1d41"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/run_backward.draft.json",
+      "bytes": 4809,
+      "sha256": "0ba3597930c8ace659107dc72f2cdd1e6ee59999ea99b5c0d0fd10618c4c2033"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/runtime_atlases/run_forward.draft.json",
+      "bytes": 4788,
+      "sha256": "0ae40330617be9a6bc243123bf422a5aac4f7cd1ff1ef715993e7c6e59c295be"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/sources.json",
+      "bytes": 71170,
+      "sha256": "3d2dec2fa5c3b9bbcee826dd7d7be52d717129254ec62caf93491796f36f9b40"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/standalone_preview.json",
+      "bytes": 433,
+      "sha256": "b3490e75c8da2ec2fe08a09f335c6d4a7633e9f37f711c3ad2138415f52e256f"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/technical_review.json",
+      "bytes": 69230,
+      "sha256": "717b99bb24316adf9cf45f182dd0932ed4264106595e81c65a8b3acac78dbf91"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/verification_report.json",
+      "bytes": 7737,
+      "sha256": "7c2db9f52f12878e88d8cac63cd5872a500c93fa4fe052d36e46905fd01217a3"
+    },
+    {
+      "path": "public/game/sprites/hunter-missing-actions/v1/video_preview.json",
+      "bytes": 2334,
+      "sha256": "730f9f03c2a7bfee31a6c600d8a353205ca9841d00ac0f20a2745e6dea1659c2"
+    }
+  ]
+}

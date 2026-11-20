@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "artisticStatus": "draft",
+  "artisticApproval": false,
+  "scope": "Delivered source assets, exact pixels, native draft schema, offline preview behavior and offline media composition; no active gameplay integration.",
+  "counts": {
+    "actions": 14,
+    "oneShots": 10,
+    "loops": 4,
+    "sourceAtlases": 19,
+    "retainedSourceFrames": 304,
+    "uniqueDecodedRgbaFrames": 304,
+    "spritePngFiles": 342,
+    "contactReviewPngFiles": 1,
+    "supersededAttemptPromptRecords": 6,
+    "rejectedArtworkPngFilesIncluded": 0
+  },
+  "sourcePixels": {
+    "status": "passed",
+    "sourceAtlases": 19,
+    "frames": 304,
+    "uniqueDecodedRgbaFrames": 304,
+    "uniqueDecodedRgbaHashes": 304,
+    "duplicateDecodedRgbaGroups": [],
+    "exactRgbaPixels": 29973184,
+    "transparentGuardPixels": 768512,
+    "sourceCellEdges": {
+      "scope": "Actual source rectangles before transparent padding",
+      "visibleAtAlpha16Cells": 0,
+      "visibleAtAlpha16Pixels": 0,
+      "aboveAlpha2Cells": 24,
+      "aboveAlpha2Pages": 8
+    },
+    "playbackRegistry": true,
+    "artisticApproval": false
+  },
+  "nativeManifests": {
+    "manifests": 14,
+    "sourceDrawings": 304,
+    "frameReferences": 304,
+    "reviewTicksPerSecond": 16,
+    "status": "draft",
+    "gameplayTiming": "unretimed"
+  },
+  "nativeContract": {
+    "status": "passed",
+    "actions": 14,
+    "nativeClips": 14,
+    "frameReferences": 304,
+    "sourceDrawings": 304,
+    "actualGameContract": true,
+    "draftResolutionBlocked": true,
+    "artisticApproval": false,
+    "inGameValidation": false
+  },
+  "relativePreview": {
+    "status": "passed",
+    "actions": 14,
+    "terminalOneShots": 10,
+    "loops": 4,
+    "multiPageActions": 5,
+    "sustained": 0,
+    "drawOffsetChecks": 29,
+    "embeddedAtlasImages": 0,
+    "externalImageRequests": 304,
+    "source": "Actual preview JavaScript executed in Node VM",
+    "browserInteraction": false,
+    "artisticApproval": false
+  },
+  "standalonePreview": {
+    "schemaVersion": 1,
+    "file": "Yautja_Animations_Manquantes_V1_Apercu.html",
+    "sourceAtlases": 19,
+    "sourceDrawings": 304,
+    "embeddedImages": 19,
+    "bytes": 36003985,
+    "externalImageRequests": 0,
+    "externalScripts": 0,
+    "externalStyles": 0,
+    "rendering": "Exact native-size crops from the original embedded atlas bytes; same frame offsets as relative preview.",
+    "artisticStatus": "draft",
+    "browserValidation": false,
+    "behavior": {
+      "status": "passed",
+      "actions": 14,
+      "terminalOneShots": 10,
+      "loops": 4,
+      "multiPageActions": 5,
+      "sustained": 0,
+      "drawOffsetChecks": 29,
+      "embeddedAtlasImages": 19,
+      "externalImageRequests": 0,
+      "source": "Actual preview JavaScript executed in Node VM",
+      "browserInteraction": false,
+      "artisticApproval": false
+    }
+  },
+  "videoPreview": {
+    "schemaVersion": 1,
+    "file": "Yautja_Animations_Manquantes_V1.mp4",
+    "width": 1260,
+    "height": 562,
+    "containerFps": 16,
+    "videoFrames": 200,
+    "durationSeconds": 12.5,
+    "uniqueSourceDrawingsShown": 304,
+    "expectedSourceDrawings": 304,
+    "pages": [
+      {
+        "actions": [
+          "light_1",
+          "light_2",
+          "combo_finisher"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "heavy_strike",
+          "air_strike",
+          "guard_break"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "parry",
+          "dodge",
+          "run_forward"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "run_backward",
+          "climb_up",
+          "climb_down"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      },
+      {
+        "actions": [
+          "jump",
+          "landing"
+        ],
+        "durationTicks": 40,
+        "terminalHoldTicks": 8
+      }
+    ],
+    "composition": "Read-only source PNGs at native size; fractional preview offsets rounded for video placement. Terminal cells are held after shorter actions finish; no invented idle phase.",
+    "registrationApplied": [
+      {
+        "clip": "combo_finisher_b",
+        "method": "constant-page-calibration",
+        "sourceSha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62",
+        "sourceDrawOffsets": [
+          {
+            "x": 20.861091636008922,
+            "y": 4
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      },
+      {
+        "clip": "heavy_strike_b",
+        "method": "constant-page-calibration",
+        "sourceSha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3",
+        "sourceDrawOffsets": [
+          {
+            "x": 0,
+            "y": -6
+          }
+        ],
+        "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+      }
+    ],
+    "timingPurpose": "Art review only; gameplay timings in seconds are not retimed.",
+    "browserValidation": false,
+    "artisticStatus": "draft",
+    "ffprobe": {
+      "width": 1260,
+      "height": 562,
+      "r_frame_rate": "16/1",
+      "duration": "12.500000",
+      "nb_frames": "200"
+    }
+  },
+  "contactSheet": {
+    "file": "Yautja_Animations_Manquantes_V1_Contact.png",
+    "width": 1782,
+    "height": 2170,
+    "shownDrawings": 14,
+    "visualInspection": "Contact sheet inspected; all 14 representative silhouettes and labels fit their cards."
+  },
+  "framingAndPreservation": {
+    "status": "passed",
+    "previouslyPreloadedPngFilesUnchanged": 324,
+    "sourceAtlases": 19,
+    "actionEvidenceMappings": 14,
+    "supersededAttemptPromptRecords": 6,
+    "rejectedPngFilesIncluded": 0,
+    "panel": {
+      "width": 420,
+      "height": 420,
+      "padding": 50
+    },
+    "checkedFrames": 304,
+    "wholePngBoundsAcrossAllFrames": {
+      "minLeft": 50,
+      "minTop": 44,
+      "maxRight": 384.86109163600895,
+      "maxBottom": 368
+    },
+    "firstAndLastActions": [
+      {
+        "action": "light_1",
+        "first": "frames/light_1/01.png",
+        "last": "frames/light_1/16.png"
+      },
+      {
+        "action": "landing",
+        "first": "frames/landing/01.png",
+        "last": "frames/landing/16.png"
+      }
+    ]
+  },
+  "sourceBoundaryRegression": {
+    "status": "passed",
+    "sourceSize": [
+      313,
+      313
+    ],
+    "paddedStride": 314,
+    "testPixel": [
+      312,
+      20
+    ],
+    "testAlpha": 128,
+    "paddedBoundaryCount": 0,
+    "actualSourceBoundaryCount": 1,
+    "rawPixelsChanged": false
+  },
+  "reviewEvidence": {
+    "sourceReview": "qa/CONSOLIDATED_REVIEW.json",
+    "limitations": "ART_REVIEW_LIMITATIONS.md",
+    "stateCoverage": "hunt_animation_state_map.json",
+    "qaFiles": 32
+  },
+  "runtimeBinding": null,
+  "gameplayTimingChanged": false,
+  "browserValidation": false,
+  "moduleScope": {
+    "status": "passed",
+    "portablePackConfiguration": "package.json",
+    "repositoryConfiguration": "art-source/hunter-missing-actions/v1/package.json",
+    "configuration": {
+      "private": true,
+      "type": "commonjs"
+    },
+    "reason": "Keep the shared playback core callable from CommonJS tools when this folder is placed under a repository whose root declares type:module. Explicit .mjs modules remain ESM.",
+    "repositoryChecks": {
+      "check_pack.cjs": "passed",
+      "check_runtime_manifests.mjs": "passed",
+      "check_preview_behavior.cjs": "passed"
+    },
+    "standaloneCoreResolution": "passed",
+    "sourcePixelsOrMediaChanged": false
+  }
+}

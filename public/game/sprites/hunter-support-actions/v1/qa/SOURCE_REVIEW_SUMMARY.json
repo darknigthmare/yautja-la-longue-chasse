@@ -1,0 +1,56 @@
+{
+  "auditedCommit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+  "status": "draft",
+  "sourcePagesSelected": 19,
+  "sourceFramesSelected": 304,
+  "actions": 16,
+  "loops": 4,
+  "oneShots": 12,
+  "generatedAttempts": 24,
+  "excludedAttempts": [
+    {
+      "id": "idle",
+      "sourcePath": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-0e97fc4d-fe45-4109-b8ba-d19d6e6e9ff3.png",
+      "sourceSha256": "6e869af548b938fa3430651200f02b8715d6a63bab2199cee135cfca23a13823",
+      "reason": "Rejected: gray translucent background; zero fully transparent pixels and visible alpha at cell edges."
+    },
+    {
+      "id": "canopy_attach",
+      "sourcePath": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-892fdcb2-38c9-474b-b7d6-ec72006f9447.png",
+      "sourceSha256": "234a0e6708d756a26bfcc4eee21c2bc14f8d7cd99910343735e73a45bad17436",
+      "reason": "Rejected: reaching hand clips source cell boundary; source cell5 has visible edge alpha."
+    },
+    {
+      "id": "aim_hold",
+      "sourcePath": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-9c9ed7c5-e981-4f3b-8fba-04e34662677b.png",
+      "sourceSha256": "e00036b240907c1da20cc419d60b045d39b26356dd47fdf6b92c19762134aded",
+      "reason": "Rejected: overcorrected into an exaggerated deep squat, different from the intended entry endpoint."
+    },
+    {
+      "id": "aim_hold",
+      "sourcePath": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-21294782-e7ec-4d7f-9f44-05f9c8bdf6bd.png",
+      "sourceSha256": "310644c2c0433e0ac95c29156b4d7673a37ea214f7575e2fd7900c5f23d5c6d7",
+      "reason": "Superseded: head and hips raised abruptly compared to entry endpoint; final version uses exact endpoint reference."
+    },
+    {
+      "id": "aim_exit",
+      "sourcePath": "/workspace/scratch/85eadbd0ff6f/generated_images/exec-517eb279-e1a5-4a72-9e79-767214dac71d.png",
+      "sourceSha256": "5e0b4356820090d100b1a3387b110d3588ba861f8cabded8d357b2ff4b2ac2e3",
+      "reason": "Superseded: correction improves left foot position, silhouette overlap and early stance continuity against entry endpoint."
+    }
+  ],
+  "previousDrawingsNotRegenerated": 592,
+  "cumulativeSourceDrawings": 896,
+  "globalRawRgbaUniqueFrames": 304,
+  "globalVisibleNormalizedUniqueFrames": 304,
+  "visibleSourceEdgeCellsAlphaGe16": 0,
+  "opaqueClippedSourceCellsAlphaGe128": 0,
+  "sourceCellsWithEdgeAlphaGt2": 40,
+  "maximumSourceCellEdgeAlpha": 8,
+  "floorCandidateSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+  "gripCandidateSha256": "14e3ae266223fe3cf24c87c6039fd3d99dfb68db0e21e292f44948edb34f85be",
+  "registrationApproval": "Both candidates explicitly approved by task lead for draft presentation metadata only. Execution is verified separately in final independent receipts.",
+  "sourcePngMutation": false,
+  "gameplayBindingAdded": false,
+  "humanArtisticApproval": false
+}

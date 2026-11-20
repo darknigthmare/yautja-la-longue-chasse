@@ -1,0 +1,4895 @@
+{
+  "schemaVersion": 1,
+  "ticksPerSecond": 16,
+  "purpose": "Art review timing only; gameplay timing is preserved separately and is not changed.",
+  "actions": [
+    {
+      "id": "light_1",
+      "label": "Frappe légère I",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "light_1_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "light_1"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "light_1",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_1",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "light_1",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_1",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 16,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L3-L13",
+            "startLine": 3,
+            "endLine": 13
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L129-L156",
+            "startLine": 129,
+            "endLine": 156
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L247-L266",
+            "startLine": 247,
+            "endLine": 266
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "startupSeconds": 0.1,
+          "activeSeconds": 0.08,
+          "minimumRecoverySeconds": 0.08,
+          "minimumTotalSeconds": 0.26,
+          "activeWindowSeconds": [
+            0.1,
+            0.18
+          ],
+          "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+          "recoveryDependsOnProfileCooldown": true,
+          "recoveryFormula": "max(baseRecovery, profile.cooldownSeconds * 1 - startupSeconds - activeSeconds)"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "light_2",
+      "label": "Frappe légère II",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "light_2_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "light_2"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "light_2",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "light_2",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "light_2",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "light_2",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 16,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L3-L13",
+            "startLine": 3,
+            "endLine": 13
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L129-L156",
+            "startLine": 129,
+            "endLine": 156
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L247-L266",
+            "startLine": 247,
+            "endLine": 266
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "startupSeconds": 0.085,
+          "activeSeconds": 0.09,
+          "minimumRecoverySeconds": 0.095,
+          "minimumTotalSeconds": 0.27,
+          "activeWindowSeconds": [
+            0.085,
+            0.175
+          ],
+          "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+          "recoveryDependsOnProfileCooldown": true,
+          "recoveryFormula": "max(baseRecovery, profile.cooldownSeconds * 1.04 - startupSeconds - activeSeconds)"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "combo_finisher",
+      "label": "Fin de combo",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "combo_finisher_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "combo_finisher_a",
+            "combo_finisher_b"
+          ],
+          "durationTicks": 32,
+          "steps": [
+            {
+              "clip": "combo_finisher_a",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_a",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "combo_finisher_b",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "combo_finisher_a",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_a",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "combo_finisher_b",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L3-L13",
+            "startLine": 3,
+            "endLine": 13
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L129-L156",
+            "startLine": 129,
+            "endLine": 156
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L247-L266",
+            "startLine": 247,
+            "endLine": 266
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "startupSeconds": 0.13,
+          "activeSeconds": 0.105,
+          "minimumRecoverySeconds": 0.23,
+          "minimumTotalSeconds": 0.465,
+          "activeWindowSeconds": [
+            0.13,
+            0.235
+          ],
+          "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+          "recoveryDependsOnProfileCooldown": true,
+          "recoveryFormula": "max(baseRecovery, profile.cooldownSeconds * 1.4 - startupSeconds - activeSeconds)"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "heavy_strike",
+      "label": "Frappe lourde",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "heavy_strike_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "heavy_strike_a",
+            "heavy_strike_b"
+          ],
+          "durationTicks": 32,
+          "steps": [
+            {
+              "clip": "heavy_strike_a",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_a",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "heavy_strike_b",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "heavy_strike_a",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_a",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "heavy_strike_b",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L3-L13",
+            "startLine": 3,
+            "endLine": 13
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L174-L241",
+            "startLine": 174,
+            "endLine": 241
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L7158-L7239",
+            "startLine": 7158,
+            "endLine": 7239
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "startupSeconds": 0.22,
+          "activeSeconds": 0.12,
+          "minimumRecoverySeconds": 0.34,
+          "minimumTotalSeconds": 0.68,
+          "activeWindowSeconds": [
+            0.22,
+            0.34
+          ],
+          "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+          "recoveryDependsOnProfileCooldown": false
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "air_strike",
+      "label": "Frappe aérienne",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "air_strike_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "air_strike_a",
+            "air_strike_b"
+          ],
+          "durationTicks": 32,
+          "steps": [
+            {
+              "clip": "air_strike_a",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_a",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "air_strike_b",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "air_strike_a",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_a",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "air_strike_b",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L3-L13",
+            "startLine": 3,
+            "endLine": 13
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L174-L241",
+            "startLine": 174,
+            "endLine": 241
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L7158-L7239",
+            "startLine": 7158,
+            "endLine": 7239
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "startupSeconds": 0.07,
+          "activeSeconds": 0.17,
+          "minimumRecoverySeconds": 0.2,
+          "minimumTotalSeconds": 0.44,
+          "activeWindowSeconds": [
+            0.07,
+            0.24
+          ],
+          "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+          "recoveryDependsOnProfileCooldown": false
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "guard_break",
+      "label": "Brise-garde",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "guard_break_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "guard_break_a",
+            "guard_break_b"
+          ],
+          "durationTicks": 32,
+          "steps": [
+            {
+              "clip": "guard_break_a",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_a",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "guard_break_b",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "guard_break_a",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_a",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "guard_break_b",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L3-L13",
+            "startLine": 3,
+            "endLine": 13
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L174-L241",
+            "startLine": 174,
+            "endLine": 241
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L7158-L7239",
+            "startLine": 7158,
+            "endLine": 7239
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "startupSeconds": 0.18,
+          "activeSeconds": 0.1,
+          "minimumRecoverySeconds": 0.3,
+          "minimumTotalSeconds": 0.58,
+          "activeWindowSeconds": [
+            0.18,
+            0.28
+          ],
+          "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+          "recoveryDependsOnProfileCooldown": false
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "parry",
+      "label": "Parade",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "parry_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "parry"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "parry",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "parry",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "parry",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "parry",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 16,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L119-L127",
+            "startLine": 119,
+            "endLine": 127
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L760-L807",
+            "startLine": 760,
+            "endLine": 807
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8605-L8697",
+            "startLine": 8605,
+            "endLine": 8697
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "totalSeconds": 0.24,
+          "activeWindowSeconds": [
+            0,
+            0.14
+          ],
+          "activeMeaning": "parry eligible until consumed",
+          "startupDelaySeconds": 0
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "dodge",
+      "label": "Esquive",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "dodge_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "dodge"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "dodge",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "dodge",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "dodge",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "dodge",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 16,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L119-L127",
+            "startLine": 119,
+            "endLine": 127
+          },
+          {
+            "path": "app/game/systems/huntMeleeCombat.ts",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L760-L807",
+            "startLine": 760,
+            "endLine": 807
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8605-L8697",
+            "startLine": 8605,
+            "endLine": 8697
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "simulation-delta-seconds",
+          "totalSeconds": 0.3,
+          "activeWindowSeconds": [
+            0,
+            0.18
+          ],
+          "activeMeaning": "invulnerability",
+          "startupDelaySeconds": 0
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "run_forward",
+      "label": "Course avant",
+      "kind": "loop",
+      "phases": {
+        "loop": {
+          "id": "run_forward_loop",
+          "loop": true,
+          "order": "forward",
+          "sourceClips": [
+            "run_forward"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "run_forward",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_forward",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "loop"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "run_forward",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_forward",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8502-L8536",
+            "startLine": 8502,
+            "endLine": 8536
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "real movement state; preview fps is not gameplay timing"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "run_backward",
+      "label": "Course arrière",
+      "kind": "loop",
+      "phases": {
+        "loop": {
+          "id": "run_backward_loop",
+          "loop": true,
+          "order": "forward",
+          "sourceClips": [
+            "run_backward"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "run_backward",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "run_backward",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "loop"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "run_backward",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "run_backward",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8502-L8536",
+            "startLine": 8502,
+            "endLine": 8536
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "real movement state; preview fps is not gameplay timing"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "climb_up",
+      "label": "Ascension",
+      "kind": "loop",
+      "phases": {
+        "loop": {
+          "id": "climb_up_loop",
+          "loop": true,
+          "order": "forward",
+          "sourceClips": [
+            "climb_up"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "climb_up",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_up",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "loop"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "climb_up",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_up",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8751-L8779",
+            "startLine": 8751,
+            "endLine": 8779
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "real movement state; preview fps is not gameplay timing"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "climb_down",
+      "label": "Descente",
+      "kind": "loop",
+      "phases": {
+        "loop": {
+          "id": "climb_down_loop",
+          "loop": true,
+          "order": "forward",
+          "sourceClips": [
+            "climb_down"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "climb_down",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "loop"
+            },
+            {
+              "clip": "climb_down",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "loop"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "climb_down",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "loop"
+        },
+        {
+          "clip": "climb_down",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "loop"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8751-L8779",
+            "startLine": 8751,
+            "endLine": 8779
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "real movement state; preview fps is not gameplay timing"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "jump",
+      "label": "Saut",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "jump_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "jump_a",
+            "jump_b"
+          ],
+          "durationTicks": 32,
+          "steps": [
+            {
+              "clip": "jump_a",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_a",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "jump_b",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "jump_a",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_a",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "jump_b",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 32,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8235-L8280",
+            "startLine": 8235,
+            "endLine": 8280
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "real movement state; preview fps is not gameplay timing"
+        },
+        "retimingApplied": false
+      }
+    },
+    {
+      "id": "landing",
+      "label": "Réception",
+      "kind": "one-shot",
+      "phases": {
+        "action": {
+          "id": "landing_action",
+          "loop": false,
+          "order": "forward",
+          "sourceClips": [
+            "landing"
+          ],
+          "durationTicks": 16,
+          "steps": [
+            {
+              "clip": "landing",
+              "number": 1,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 2,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 3,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 4,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 5,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 6,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 7,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 8,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 9,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 10,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 11,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 12,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 13,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 14,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 15,
+              "durationTicks": 1,
+              "phase": "action"
+            },
+            {
+              "clip": "landing",
+              "number": 16,
+              "durationTicks": 1,
+              "phase": "action"
+            }
+          ]
+        }
+      },
+      "sequence": [
+        {
+          "clip": "landing",
+          "number": 1,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 2,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 3,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 4,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 5,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 6,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 7,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 8,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 9,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 10,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 11,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 12,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 13,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 14,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 15,
+          "durationTicks": 1,
+          "phase": "action"
+        },
+        {
+          "clip": "landing",
+          "number": 16,
+          "durationTicks": 1,
+          "phase": "action"
+        }
+      ],
+      "durationTicks": 16,
+      "reviewFps": [
+        16
+      ],
+      "gameplayTiming": {
+        "domain": "Hunt",
+        "unit": "seconds",
+        "status": "unretimed-review",
+        "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+        "source": [
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8790-L8825",
+            "startLine": 8790,
+            "endLine": 8825
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8235-L8280",
+            "startLine": 8235,
+            "endLine": 8280
+          },
+          {
+            "path": "app/game/HuntCanvas.tsx",
+            "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+            "startLine": 1093,
+            "endLine": 1158
+          }
+        ],
+        "parameters": {
+          "clock": "real movement state; preview fps is not gameplay timing"
+        },
+        "retimingApplied": false
+      }
+    }
+  ]
+}

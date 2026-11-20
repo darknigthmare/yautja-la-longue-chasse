@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 1,
+  "file": "Yautja_Survie_Equipement_Canopee_V1.mp4",
+  "width": 1260,
+  "height": 562,
+  "containerFps": 16,
+  "videoFrames": 224,
+  "durationSeconds": 14,
+  "uniqueSourceDrawingsShown": 304,
+  "expectedSourceDrawings": 304,
+  "pages": [
+    {
+      "actions": [
+        "idle",
+        "aim_enter",
+        "aim_hold"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "aim_exit",
+        "canopy_attach",
+        "canopy_hold"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "canopy_release",
+        "canopy_swing",
+        "aerial_boost"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "scan",
+        "cloak_on",
+        "cloak_off"
+      ],
+      "durationTicks": 24,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "heal",
+        "second_wind",
+        "hurt"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "death"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    }
+  ],
+  "composition": "Read-only source PNGs at native size; fractional preview offsets rounded for video placement. Terminal cells are held after shorter actions finish; no invented idle phase.",
+  "registrationApplied": [
+    {
+      "clip": "idle",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "fd062eb0c7a680e8305030f51f258923c974a3a030aa1022e64c5c8642de054f",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 0,
+          "y": 3
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "aim_enter",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "aim_hold",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": -4
+        },
+        {
+          "x": 0,
+          "y": -3
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "aim_exit",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "canopy_attach",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab",
+      "sourceDrawOffsets": [
+        {
+          "x": -1.2488977072310377,
+          "y": -1.7187683715461475
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "canopy_hold",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148",
+      "sourceDrawOffsets": [
+        {
+          "x": -7.360342555994748,
+          "y": 0.8522983457766031
+        },
+        {
+          "x": -7.365205755900661,
+          "y": 2.7525152817993046
+        },
+        {
+          "x": -9.231360680018042,
+          "y": 4.078144117457661
+        },
+        {
+          "x": -10.135799638550964,
+          "y": 5.963774175275802
+        },
+        {
+          "x": -11.110012250523198,
+          "y": 6.0636261548670305
+        },
+        {
+          "x": -9.339724310776944,
+          "y": 4.084743107769427
+        },
+        {
+          "x": -9.65350888588651,
+          "y": 1.0635782581583868
+        },
+        {
+          "x": -9.170041322314034,
+          "y": 0.6524157660521297
+        },
+        {
+          "x": -9.043097139832156,
+          "y": 1.6707848724056902
+        },
+        {
+          "x": -7.605498721227605,
+          "y": 2.6510169285105363
+        },
+        {
+          "x": -8.121339597902079,
+          "y": 3.8703835227272734
+        },
+        {
+          "x": -8.323587236642851,
+          "y": 5.92524376311804
+        },
+        {
+          "x": -7.9026251526251485,
+          "y": 4.861192511192513
+        },
+        {
+          "x": -7.932598491640732,
+          "y": 2.998721059015878
+        },
+        {
+          "x": -8.279729632039334,
+          "y": 0.7895395069760696
+        },
+        {
+          "x": -8.201850079744816,
+          "y": 0.0813397129186626
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "canopy_release",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6",
+      "sourceDrawOffsets": [
+        {
+          "x": -6.161111448711722,
+          "y": 8.899048979095767
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "canopy_swing",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46",
+      "sourceDrawOffsets": [
+        {
+          "x": -28.19262388154607,
+          "y": 4.270518235908618
+        },
+        {
+          "x": -23.545849154143696,
+          "y": 3.6171274756225813
+        },
+        {
+          "x": -20.84291187739464,
+          "y": 3.6786332860966766
+        },
+        {
+          "x": -19.578055416229688,
+          "y": 3.9718359095952422
+        },
+        {
+          "x": -20.02975731895225,
+          "y": 4.723228043143294
+        },
+        {
+          "x": -13.947838827838837,
+          "y": 5.102237762237763
+        },
+        {
+          "x": -8.916661706939635,
+          "y": 4.9952014641114175
+        },
+        {
+          "x": -4.44668623135243,
+          "y": 5.125682726012883
+        },
+        {
+          "x": -3.2255970067128885,
+          "y": 5.7153626059205465
+        },
+        {
+          "x": -1.9488863892013342,
+          "y": 7.1811698537682815
+        },
+        {
+          "x": 0.28733538191397656,
+          "y": 7.200000000000003
+        },
+        {
+          "x": 1.5521764379134595,
+          "y": 7.007322122910672
+        },
+        {
+          "x": -0.3493617957746551,
+          "y": 7.487125880281695
+        },
+        {
+          "x": -2.216226377617602,
+          "y": 6.007845752227453
+        },
+        {
+          "x": -3.2848840852130365,
+          "y": 5.836168546365911
+        },
+        {
+          "x": -4.356470814132081,
+          "y": 6.114343317972349
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "scan",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "7eaab576eba5f9a02760e31474fac981869f00cd1a25a57b038f71be939b3887",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": -1
+        },
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 1
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "cloak_on",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "8c5645194a12137c1c46815e3ccc076aab8acdaf3b5d90de28a4e7817949ae6f",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": -1
+        },
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "cloak_off",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "fadfd4a17e3d5d9482e8cb92261d83c2da960deab08636e0fc62dca6b6cd99f8",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 2
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "heal_a",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "dcb1b881b2d76ac31d3c182e49aa97ceb504e5099d1af7e66a4f24d7072b8d04",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 2
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "heal_b",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "c5c921a00c98eda2cbacb7ef33c0a905ffee44a26070d3d38c4922c0fb0c74c0",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 2
+        },
+        {
+          "x": 0,
+          "y": -1
+        },
+        {
+          "x": 0,
+          "y": -2
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "second_wind_a",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "f9ec1224681d88cc4bc7da0724c3fac215686ebe911f4070ba7ac3fcd1657162",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": -2
+        },
+        {
+          "x": 0,
+          "y": -1
+        },
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "second_wind_b",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "513664779cad09a3e82aa2b905d08b454b9938a95a3a7f02253ccf1287248be8",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 16
+        },
+        {
+          "x": 0,
+          "y": 17
+        },
+        {
+          "x": 0,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": -4
+        },
+        {
+          "x": 0,
+          "y": -3
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "hurt",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "c202b4a78ae0f10d706ff23957fc215cdcc75025cdeb1a50173f5651abd3a1db",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 1
+        },
+        {
+          "x": 0,
+          "y": 2
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "death_a",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "7ffad389391a316f5e223024d750eef1ccc32f3cfe32a85c7eee39cd10cc2bde",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": -9
+        },
+        {
+          "x": 0,
+          "y": -7
+        },
+        {
+          "x": 0,
+          "y": -3
+        },
+        {
+          "x": 0,
+          "y": -4
+        },
+        {
+          "x": 0,
+          "y": 3
+        },
+        {
+          "x": 0,
+          "y": 2
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "death_b",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "eef4bf450fb6f4ad14f4a53924450638015a7439df7c65539daf56f92c41903a",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": 24
+        },
+        {
+          "x": 0,
+          "y": 22
+        },
+        {
+          "x": 0,
+          "y": 15
+        },
+        {
+          "x": 0,
+          "y": 14
+        },
+        {
+          "x": 0,
+          "y": 11
+        },
+        {
+          "x": 0,
+          "y": 12
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    }
+  ],
+  "timingPurpose": "Art review only; gameplay timings in seconds are not retimed.",
+  "browserValidation": false,
+  "artisticStatus": "draft",
+  "ffprobe": {
+    "width": 1260,
+    "height": 562,
+    "r_frame_rate": "16/1",
+    "duration": "14.000000",
+    "nb_frames": "224"
+  }
+}

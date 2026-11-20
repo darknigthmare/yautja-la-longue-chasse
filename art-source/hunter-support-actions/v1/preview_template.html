@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Yautja — survie, équipement et canopée</title>
+<style>
+:root{color-scheme:dark;font-family:Inter,system-ui,sans-serif;background:#101612;color:#edf0e9}*{box-sizing:border-box}body{margin:0}main{max-width:1100px;margin:auto;padding:36px 24px}header{display:flex;justify-content:space-between;gap:24px;align-items:start;margin-bottom:28px}h1{font-size:clamp(26px,4vw,40px);margin:8px 0 12px;letter-spacing:-.04em}p{color:#aebaae;line-height:1.5;margin:6px 0}.eyebrow{font-size:11px;letter-spacing:.2em;color:#b6d687;text-transform:uppercase}.badge{border:1px solid #657a4d;border-radius:20px;padding:7px 12px;color:#c5df9e;white-space:nowrap;font-size:12px}.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px}.viewer,.controls{border:1px solid #334032;border-radius:16px;overflow:hidden;background:#172018}.viewer{display:flex;flex-direction:column;align-items:center;min-width:0}.canvas-wrap{width:100%;padding:18px;display:flex;align-items:center;justify-content:center;background:#202a22}canvas{max-width:100%;height:auto;image-rendering:pixelated;display:block}.caption{width:100%;padding:16px 20px;border-top:1px solid #334032;font-size:13px;font-variant-numeric:tabular-nums;min-height:76px}.controls{padding:20px}label,.group-title{display:block;font-size:12px;color:#becbb9;margin:0 0 8px}select,button{font:inherit;color:inherit;background:#263324;border:1px solid #4a5d40;border-radius:8px;min-height:42px;padding:8px 12px}select{width:100%;margin-bottom:20px}button{cursor:pointer}button:hover{background:#3a4c30}button[aria-pressed=true]{background:#b9d98c;color:#13200e;border-color:#c4e29f}.phases{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}.phases button{font-size:12px;min-height:36px}.transport{display:flex;gap:8px}.transport button:first-child{flex:1;background:#b9d98c;color:#13200e;font-weight:650}.scrub{width:100%;margin:18px 0 8px;accent-color:#b9d98c}.setting{margin-top:20px}.setting select{margin:0}.check{display:flex;align-items:center;gap:8px;color:#b8c4b3}.small{font-size:12px}.footer{margin-top:18px;font-size:12px;color:#8da185}.error{color:#ffb69e;white-space:pre-wrap}kbd{padding:2px 5px;background:#263324;border-radius:3px;font-family:inherit}@media(max-width:760px){main{padding:24px 14px}.layout{grid-template-columns:1fr}.controls{order:-1}.canvas-wrap{padding:10px}.badge{display:none}.controls select{margin-bottom:12px}.setting{margin-top:12px}}
+</style>
+</head>
+<body><main>
+<header><div><div class="eyebrow">Yautja · The Long Hunt</div><h1>Survie, équipement et canopée</h1><p>Visée, suspension, équipement et réactions. Chaque mouvement conserve ses images et son déroulé propre.</p></div><span class="badge">Revue artistique</span></header>
+<div class="layout"><section class="viewer"><div class="canvas-wrap"><canvas id="stage" width="434" height="434" aria-label="Aperçu de l’animation Yautja"></canvas></div><div class="caption"><div id="frame-label">Chargement…</div><p id="timing-label" class="small"></p><div id="error" class="error"></div></div></section>
+<aside class="controls"><label for="action">Mouvement</label><select id="action"></select><div class="group-title">Lecture</div><div id="phases" class="phases"></div><div class="transport"><button id="play" type="button">Lecture</button><button id="restart" type="button" aria-label="Recommencer">↺</button></div><input id="seek" class="scrub" type="range" min="0" value="0" max="15" step="1" aria-label="Image de la séquence"><p class="small">Les actions ponctuelles s’arrêtent sur leur dernière image. <kbd>Espace</kbd> : lecture / pause.</p><div class="setting"><label for="backdrop">Fond</label><select id="backdrop"><option value="dark">Forêt sombre</option><option value="light">Clair</option><option value="checker">Damier</option></select></div><div class="setting"><label class="check"><input type="checkbox" id="anchor">Afficher la racine de cadrage</label></div></aside></div>
+<p class="footer">Sprites en revue · cadence de présentation indépendante du rythme de combat du jeu · orientation droite.</p>
+</main>
+<script>__PLAYBACK_CORE__</script>
+<script>
+'use strict';
+const DATA = __SPRITE_DATA__;
+const {manifest, playback} = DATA;
+const elements = Object.fromEntries(['stage','action','phases','play','restart','seek','frame-label','timing-label','backdrop','anchor','error'].map(id => [id, document.getElementById(id)]));
+const ctx = elements.stage.getContext('2d');
+elements.stage.width = manifest.preview.stageWidth; elements.stage.height = manifest.preview.stageHeight;
+const imageMap = new Map(), frameMap = new Map();
+manifest.clips.forEach(clip => clip.frames.forEach(frame => frameMap.set(`${clip.id}:${frame.number}`, frame)));
+const state = {actionId: playback.actions[0].id, mode: 'sequence', elapsedTicks: 0, playing: false, lastTimestamp: null};
+function current() { const action = playback.actions.find(item => item.id === state.actionId); const phase = state.mode === 'sequence' ? null : action.phases[state.mode]; return {action, steps: phase ? phase.steps : action.sequence, loop: phase ? phase.loop : action.kind === 'loop'}; }
+function selection() { const value = current(); return {...value, ...HuntPlayback.resolve(value.steps, state.elapsedTicks, value.loop)}; }
+function draw() {
+  const selected = selection(), frame = frameMap.get(`${selected.step.clip}:${selected.step.number}`);
+  const w = elements.stage.width, h = elements.stage.height, background = elements.backdrop.value || 'dark';
+  ctx.fillStyle = background === 'light' ? '#d5ddcf' : '#202a22'; ctx.fillRect(0, 0, w, h);
+  if (background === 'checker') for (let y = 0; y < h; y += 20) for (let x = 0; x < w; x += 20) { ctx.fillStyle = (x / 20 + y / 20) % 2 ? '#485247' : '#343d33'; ctx.fillRect(x, y, 20, 20); }
+  ctx.imageSmoothingEnabled = false;
+  const image = imageMap.get(DATA.embeddedAtlases ? selected.step.clip : frame.file), padding = manifest.preview.padding;
+  if (image) {
+    if (DATA.embeddedAtlases) { const rect=frame.atlasRect; ctx.drawImage(image,rect.x,rect.y,rect.width,rect.height,padding+frame.drawOffset.x,padding+frame.drawOffset.y,rect.width,rect.height); }
+    else ctx.drawImage(image,padding+frame.drawOffset.x,padding+frame.drawOffset.y);
+  }
+  if (elements.anchor.checked) { ctx.strokeStyle = '#cbea9b'; ctx.beginPath(); ctx.arc(padding + frame.anchorTarget.x, padding + frame.anchorTarget.y, 5, 0, Math.PI * 2); ctx.stroke(); }
+  elements['frame-label'].textContent = `${selected.action.label} · ${selected.index + 1}/${selected.steps.length} · ${selected.step.clip} #${String(selected.step.number).padStart(2,'0')}`;
+  elements['timing-label'].textContent = `Revue : ${selected.action.reviewFps.join(' / ')} images/s · ${selected.loop ? 'boucle' : selected.ended ? 'dernière image' : 'action ponctuelle'} · ${manifest.frameCount} dessins dans le pack`;
+  elements.seek.max = String(selected.steps.length - 1); elements.seek.value = String(selected.index);
+  elements.play.textContent = state.playing ? 'Pause' : selected.ended ? 'Relire' : 'Lecture';
+}
+function updatePhases() {
+  const {action} = current(); elements.phases.replaceChildren();
+  const names = {sequence:'Séquence complète',action:'Action',enter:'Entrée',loop:'Boucle',exit:'Sortie'};
+  for (const key of ['sequence', ...Object.keys(action.phases)]) {
+    const button = document.createElement('button'); button.type = 'button'; button.textContent = names[key] || key; button.setAttribute('aria-pressed', String(state.mode === key)); button.addEventListener('click', () => selectPhase(key)); elements.phases.append(button);
+  }
+}
+function restart(play = state.playing) { state.elapsedTicks = 0; state.lastTimestamp = null; state.playing = play; draw(); }
+function selectAction(id) { if (!playback.actions.some(action => action.id === id)) throw new Error('Mouvement inconnu.'); state.actionId = id; state.mode = 'sequence'; elements.action.value = id; updatePhases(); restart(false); }
+function selectPhase(mode) { if (mode !== 'sequence' && !current().action.phases[mode]) throw new Error('Phase inconnue.'); state.mode = mode; updatePhases(); restart(false); }
+function toggle() { if (!state.playing && selection().ended) state.elapsedTicks = 0; state.playing = !state.playing; state.lastTimestamp = null; draw(); }
+function seek(index) { const {steps} = current(); const position = Math.max(0, Math.min(steps.length - 1, Number(index))); state.elapsedTicks = steps.slice(0, position).reduce((sum, step) => sum + step.durationTicks, 0); state.playing = false; state.lastTimestamp = null; draw(); }
+function tick(timestamp) {
+  if (state.playing) {
+    if (state.lastTimestamp !== null) state.elapsedTicks += Math.max(0, timestamp - state.lastTimestamp) * playback.ticksPerSecond / 1000;
+    state.lastTimestamp = timestamp;
+    if (selection().ended) { state.playing = false; state.lastTimestamp = null; }
+    draw();
+  }
+  requestAnimationFrame(tick);
+}
+playback.actions.forEach(action => { const option = document.createElement('option'); option.value = action.id; option.textContent = action.label; elements.action.append(option); });
+elements.action.addEventListener('change', () => selectAction(elements.action.value));
+elements.play.addEventListener('click', toggle); elements.restart.addEventListener('click', () => restart(true));
+elements.seek.addEventListener('input', () => seek(elements.seek.value)); elements.backdrop.addEventListener('change', draw); elements.anchor.addEventListener('change', draw);
+document.addEventListener('keydown', event => { if (event.code !== 'Space' || /^(INPUT|SELECT|TEXTAREA|BUTTON)$/.test(event.target.tagName)) return; event.preventDefault(); toggle(); });
+window.HuntPreview = {state, current, selection, selectAction, selectPhase, toggle, restart, seek, tick};
+selectAction(state.actionId);
+const imageSources=DATA.embeddedAtlases ? manifest.clips.map(clip=>({key:clip.id,src:DATA.embeddedAtlases[clip.id]})) : [...frameMap.values()].map(frame=>({key:frame.file,src:frame.file}));
+Promise.all(imageSources.map(source => new Promise((resolve, reject) => { const image = new Image(); image.onload = () => { imageMap.set(source.key, image); resolve(); }; image.onerror = () => reject(new Error(`Image manquante : ${source.key}`)); image.src = source.src; }))).then(draw).catch(error => {elements.error.textContent = error.message;});
+requestAnimationFrame(tick);
+</script>
+</body></html>
+

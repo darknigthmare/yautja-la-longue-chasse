@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "file": "Yautja_Animations_Manquantes_V1.mp4",
+  "width": 1260,
+  "height": 562,
+  "containerFps": 16,
+  "videoFrames": 200,
+  "durationSeconds": 12.5,
+  "uniqueSourceDrawingsShown": 304,
+  "expectedSourceDrawings": 304,
+  "pages": [
+    {
+      "actions": [
+        "light_1",
+        "light_2",
+        "combo_finisher"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "heavy_strike",
+        "air_strike",
+        "guard_break"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "parry",
+        "dodge",
+        "run_forward"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "run_backward",
+        "climb_up",
+        "climb_down"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    },
+    {
+      "actions": [
+        "jump",
+        "landing"
+      ],
+      "durationTicks": 40,
+      "terminalHoldTicks": 8
+    }
+  ],
+  "composition": "Read-only source PNGs at native size; fractional preview offsets rounded for video placement. Terminal cells are held after shorter actions finish; no invented idle phase.",
+  "registrationApplied": [
+    {
+      "clip": "combo_finisher_b",
+      "method": "constant-page-calibration",
+      "sourceSha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62",
+      "sourceDrawOffsets": [
+        {
+          "x": 20.861091636008922,
+          "y": 4
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    },
+    {
+      "clip": "heavy_strike_b",
+      "method": "constant-page-calibration",
+      "sourceSha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3",
+      "sourceDrawOffsets": [
+        {
+          "x": 0,
+          "y": -6
+        }
+      ],
+      "placement": "One application of padding + drawOffset, then Math.round for video composition; no resizing."
+    }
+  ],
+  "timingPurpose": "Art review only; gameplay timings in seconds are not retimed.",
+  "browserValidation": false,
+  "artisticStatus": "draft",
+  "ffprobe": {
+    "width": 1260,
+    "height": 562,
+    "r_frame_rate": "16/1",
+    "duration": "12.500000",
+    "nb_frames": "200"
+  }
+}

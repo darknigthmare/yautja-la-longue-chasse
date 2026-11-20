@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "packId": "hunter-support-actions",
+  "artisticStatus": "draft",
+  "humanArtisticApproval": false,
+  "generationMethod": "Built-in image_gen; transparent_background=true for all 24 generation and edit calls",
+  "generationCalls": 24,
+  "selectedAtlases": 19,
+  "selectedSourceDrawings": 304,
+  "supersededAttempts": 5,
+  "identity": "Adaptation du chasseur équipé et masqué de référence du projet, orienté vers la droite; aucune nouvelle confirmation canonique ni validation humaine.",
+  "priorReference": {
+    "repository": "darknigthmare/yautja-la-longue-chasse",
+    "commit": "b97ca20bb72a31ee5e773d9297f446818100c599",
+    "path": "public/game/sprites/hunter-missing-actions/v1/frames/light_1/01.png",
+    "gitBlobSha": "36980f91458ff0c50ca5ab3d0ad39f6213966aaf",
+    "sha256": "de5657bf04bbbe51d41eaf7e6956acceeefd491a98ca91ebc5dda584a2ddf53e",
+    "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/b97ca20bb72a31ee5e773d9297f446818100c599/public/game/sprites/hunter-missing-actions/v1/frames/light_1/01.png"
+  },
+  "derivedEndpointReference": {
+    "source": "atlases/aim_enter.png",
+    "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86",
+    "sourceRect": {
+      "x": 941,
+      "y": 941,
+      "width": 313,
+      "height": 313
+    },
+    "transparentPadding": {
+      "right": 1,
+      "bottom": 1
+    },
+    "purpose": "Exact last source pose supplied as a pose/scale reference for final aim_hold generation",
+    "resampling": false,
+    "sourcePixelsChanged": false
+  },
+  "selected": [
+    {
+      "id": "idle",
+      "file": "atlases/idle.png",
+      "sourceSha256": "fd062eb0c7a680e8305030f51f258923c974a3a030aa1022e64c5c8642de054f",
+      "generationFilename": "exec-f61ad8a5-bfbc-49f6-8bac-5be68b78fdcd.png",
+      "prompt": "prompts.json#/clips/idle",
+      "superseded": [
+        {
+          "generationFilename": "exec-0e97fc4d-fe45-4109-b8ba-d19d6e6e9ff3.png",
+          "reason": "Rejected: gray translucent background; zero fully transparent pixels and visible alpha at cell edges.",
+          "includedInPack": false
+        }
+      ]
+    },
+    {
+      "id": "aim_enter",
+      "file": "atlases/aim_enter.png",
+      "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86",
+      "generationFilename": "exec-1b39707e-1aa8-409d-af27-ec79ec6a6174.png",
+      "prompt": "prompts.json#/clips/aim_enter",
+      "superseded": []
+    },
+    {
+      "id": "canopy_attach",
+      "file": "atlases/canopy_attach.png",
+      "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab",
+      "generationFilename": "exec-08b5db4c-9ea3-4dfe-8f1b-6ac47ae9c770.png",
+      "prompt": "prompts.json#/clips/canopy_attach",
+      "superseded": [
+        {
+          "generationFilename": "exec-892fdcb2-38c9-474b-b7d6-ec72006f9447.png",
+          "reason": "Rejected: reaching hand clips source cell boundary; source cell5 has visible edge alpha.",
+          "includedInPack": false
+        }
+      ]
+    },
+    {
+      "id": "hurt",
+      "file": "atlases/hurt.png",
+      "sourceSha256": "c202b4a78ae0f10d706ff23957fc215cdcc75025cdeb1a50173f5651abd3a1db",
+      "generationFilename": "exec-ef9c593e-d8bc-4550-a092-e0314e8362fe.png",
+      "prompt": "prompts.json#/clips/hurt",
+      "superseded": []
+    },
+    {
+      "id": "aim_hold",
+      "file": "atlases/aim_hold.png",
+      "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302",
+      "generationFilename": "exec-8fdeb4ff-9820-451a-9f44-c530c9007907.png",
+      "prompt": "prompts.json#/clips/aim_hold",
+      "superseded": [
+        {
+          "generationFilename": "exec-9c9ed7c5-e981-4f3b-8fba-04e34662677b.png",
+          "reason": "Rejected: overcorrected into an exaggerated deep squat, different from the intended entry endpoint.",
+          "includedInPack": false
+        },
+        {
+          "generationFilename": "exec-21294782-e7ec-4d7f-9f44-05f9c8bdf6bd.png",
+          "reason": "Superseded: head and hips raised abruptly compared to entry endpoint; final version uses exact endpoint reference.",
+          "includedInPack": false
+        }
+      ]
+    },
+    {
+      "id": "aim_exit",
+      "file": "atlases/aim_exit.png",
+      "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55",
+      "generationFilename": "exec-e740c02d-58e2-4853-8380-4458200eb385.png",
+      "prompt": "prompts.json#/clips/aim_exit",
+      "superseded": [
+        {
+          "generationFilename": "exec-517eb279-e1a5-4a72-9e79-767214dac71d.png",
+          "reason": "Superseded: correction improves left foot position, silhouette overlap and early stance continuity against entry endpoint.",
+          "includedInPack": false
+        }
+      ]
+    },
+    {
+      "id": "canopy_hold",
+      "file": "atlases/canopy_hold.png",
+      "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148",
+      "generationFilename": "exec-cfe8ee9d-425a-48d8-91c8-5a515a611f1c.png",
+      "prompt": "prompts.json#/clips/canopy_hold",
+      "superseded": []
+    },
+    {
+      "id": "canopy_release",
+      "file": "atlases/canopy_release.png",
+      "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6",
+      "generationFilename": "exec-33b6dcb7-c7a0-4e61-be4b-b23727699680.png",
+      "prompt": "prompts.json#/clips/canopy_release",
+      "superseded": []
+    },
+    {
+      "id": "canopy_swing",
+      "file": "atlases/canopy_swing.png",
+      "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46",
+      "generationFilename": "exec-5608c639-aae0-4e95-93b8-06f033e756f9.png",
+      "prompt": "prompts.json#/clips/canopy_swing",
+      "superseded": []
+    },
+    {
+      "id": "aerial_boost",
+      "file": "atlases/aerial_boost.png",
+      "sourceSha256": "c870f43aaaf45ffea681297b653563890658946bc04d5642e100a8dac690de3d",
+      "generationFilename": "exec-af4d0d8d-7024-4e09-b6db-91a3504947d9.png",
+      "prompt": "prompts.json#/clips/aerial_boost",
+      "superseded": []
+    },
+    {
+      "id": "scan",
+      "file": "atlases/scan.png",
+      "sourceSha256": "7eaab576eba5f9a02760e31474fac981869f00cd1a25a57b038f71be939b3887",
+      "generationFilename": "exec-84470f84-afe4-48a3-839b-677bd3f17ca9.png",
+      "prompt": "prompts.json#/clips/scan",
+      "superseded": []
+    },
+    {
+      "id": "cloak_on",
+      "file": "atlases/cloak_on.png",
+      "sourceSha256": "8c5645194a12137c1c46815e3ccc076aab8acdaf3b5d90de28a4e7817949ae6f",
+      "generationFilename": "exec-832e4321-0376-47b7-924a-34d876c5fa33.png",
+      "prompt": "prompts.json#/clips/cloak_on",
+      "superseded": []
+    },
+    {
+      "id": "cloak_off",
+      "file": "atlases/cloak_off.png",
+      "sourceSha256": "fadfd4a17e3d5d9482e8cb92261d83c2da960deab08636e0fc62dca6b6cd99f8",
+      "generationFilename": "exec-335de679-63a6-4e14-b308-7722dc0b3164.png",
+      "prompt": "prompts.json#/clips/cloak_off",
+      "superseded": []
+    },
+    {
+      "id": "heal_a",
+      "file": "atlases/heal_a.png",
+      "sourceSha256": "dcb1b881b2d76ac31d3c182e49aa97ceb504e5099d1af7e66a4f24d7072b8d04",
+      "generationFilename": "exec-02c595a0-9c15-4943-a42c-b83bd79cf1a5.png",
+      "prompt": "prompts.json#/clips/heal_a",
+      "superseded": []
+    },
+    {
+      "id": "second_wind_a",
+      "file": "atlases/second_wind_a.png",
+      "sourceSha256": "f9ec1224681d88cc4bc7da0724c3fac215686ebe911f4070ba7ac3fcd1657162",
+      "generationFilename": "exec-0715a860-669a-4d6c-ac18-33b4c80f0070.png",
+      "prompt": "prompts.json#/clips/second_wind_a",
+      "superseded": []
+    },
+    {
+      "id": "death_a",
+      "file": "atlases/death_a.png",
+      "sourceSha256": "7ffad389391a316f5e223024d750eef1ccc32f3cfe32a85c7eee39cd10cc2bde",
+      "generationFilename": "exec-8642ddb1-6ed5-4dfa-9f39-3b85aaf322c0.png",
+      "prompt": "prompts.json#/clips/death_a",
+      "superseded": []
+    },
+    {
+      "id": "heal_b",
+      "file": "atlases/heal_b.png",
+      "sourceSha256": "c5c921a00c98eda2cbacb7ef33c0a905ffee44a26070d3d38c4922c0fb0c74c0",
+      "generationFilename": "exec-0326c80e-d834-4a6a-abfd-8d82fd7bf59e.png",
+      "prompt": "prompts.json#/clips/heal_b",
+      "superseded": []
+    },
+    {
+      "id": "second_wind_b",
+      "file": "atlases/second_wind_b.png",
+      "sourceSha256": "513664779cad09a3e82aa2b905d08b454b9938a95a3a7f02253ccf1287248be8",
+      "generationFilename": "exec-4868a293-75e9-4dfa-8561-a8a050b56f94.png",
+      "prompt": "prompts.json#/clips/second_wind_b",
+      "superseded": []
+    },
+    {
+      "id": "death_b",
+      "file": "atlases/death_b.png",
+      "sourceSha256": "eef4bf450fb6f4ad14f4a53924450638015a7439df7c65539daf56f92c41903a",
+      "generationFilename": "exec-e5169717-774a-4ba0-b167-5f454b796fdc.png",
+      "prompt": "prompts.json#/clips/death_b",
+      "superseded": []
+    }
+  ],
+  "authoredVersusMechanical": {
+    "artwork": "Generated and corrected with image_gen; five unsuitable/superseded outputs omitted.",
+    "mechanicalExports": "Exact 4×4 RGBA extraction, transparent padding and 2 px guards. Metadata registration never repaints or resamples the source.",
+    "notCountedAsNewDrawings": [
+      "repeats in videos",
+      "contact sheet copies",
+      "sprite atlas packaging",
+      "pivot changes",
+      "superseded attempts"
+    ]
+  }
+}

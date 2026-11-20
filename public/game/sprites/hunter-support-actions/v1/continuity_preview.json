@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "file": "Yautja_Survie_Equipement_Canopee_V1_Raccords.mp4",
+  "purpose": "Cross-action seam inspection, with no gap, interpolation, extra registration or concealed transition.",
+  "width": 840,
+  "height": 584,
+  "containerFps": 16,
+  "videoFrames": 104,
+  "durationSeconds": 6.5,
+  "terminalHoldTicks": 8,
+  "uniqueSourceDrawingsShown": 112,
+  "additionalSourceDrawings": 0,
+  "playbackReferencesAcrossGroups": 160,
+  "groups": [
+    {
+      "id": "aim_continuity",
+      "label": "Visée — entrée, maintien, sortie",
+      "durationTicks": 64,
+      "segments": [
+        {
+          "action": "aim_enter",
+          "label": "Mise en visée",
+          "kind": "one-shot",
+          "repeat": 1,
+          "startTick": 0,
+          "endTick": 16,
+          "startSeconds": 0,
+          "endSeconds": 1,
+          "playbackReferences": 16,
+          "uniqueSourceDrawings": 16,
+          "first": {
+            "clip": "aim_enter",
+            "number": 1
+          },
+          "last": {
+            "clip": "aim_enter",
+            "number": 16
+          }
+        },
+        {
+          "action": "aim_hold",
+          "label": "Visée maintenue",
+          "kind": "loop",
+          "repeat": 2,
+          "startTick": 16,
+          "endTick": 48,
+          "startSeconds": 1,
+          "endSeconds": 3,
+          "playbackReferences": 32,
+          "uniqueSourceDrawings": 16,
+          "first": {
+            "clip": "aim_hold",
+            "number": 1
+          },
+          "last": {
+            "clip": "aim_hold",
+            "number": 16
+          }
+        },
+        {
+          "action": "aim_exit",
+          "label": "Fin de visée",
+          "kind": "one-shot",
+          "repeat": 1,
+          "startTick": 48,
+          "endTick": 64,
+          "startSeconds": 3,
+          "endSeconds": 4,
+          "playbackReferences": 16,
+          "uniqueSourceDrawings": 16,
+          "first": {
+            "clip": "aim_exit",
+            "number": 1
+          },
+          "last": {
+            "clip": "aim_exit",
+            "number": 16
+          }
+        }
+      ],
+      "junctions": [
+        {
+          "tick": 16,
+          "seconds": 1,
+          "from": {
+            "action": "aim_enter",
+            "clip": "aim_enter",
+            "number": 16
+          },
+          "to": {
+            "action": "aim_hold",
+            "clip": "aim_hold",
+            "number": 1
+          }
+        },
+        {
+          "tick": 48,
+          "seconds": 3,
+          "from": {
+            "action": "aim_hold",
+            "clip": "aim_hold",
+            "number": 16
+          },
+          "to": {
+            "action": "aim_exit",
+            "clip": "aim_exit",
+            "number": 1
+          }
+        }
+      ],
+      "loopSeams": [
+        {
+          "tick": 32,
+          "seconds": 2,
+          "action": "aim_hold",
+          "from": {
+            "clip": "aim_hold",
+            "number": 16
+          },
+          "to": {
+            "clip": "aim_hold",
+            "number": 1
+          }
+        }
+      ],
+      "playbackReferences": 64
+    },
+    {
+      "id": "canopy_continuity",
+      "label": "Canopée — accroche et lâcher",
+      "durationTicks": 96,
+      "segments": [
+        {
+          "action": "canopy_attach",
+          "label": "Accroche en canopée",
+          "kind": "one-shot",
+          "repeat": 1,
+          "startTick": 0,
+          "endTick": 16,
+          "startSeconds": 0,
+          "endSeconds": 1,
+          "playbackReferences": 16,
+          "uniqueSourceDrawings": 16,
+          "first": {
+            "clip": "canopy_attach",
+            "number": 1
+          },
+          "last": {
+            "clip": "canopy_attach",
+            "number": 16
+          }
+        },
+        {
+          "action": "canopy_hold",
+          "label": "Suspension en canopée",
+          "kind": "loop",
+          "repeat": 2,
+          "startTick": 16,
+          "endTick": 48,
+          "startSeconds": 1,
+          "endSeconds": 3,
+          "playbackReferences": 32,
+          "uniqueSourceDrawings": 16,
+          "first": {
+            "clip": "canopy_hold",
+            "number": 1
+          },
+          "last": {
+            "clip": "canopy_hold",
+            "number": 16
+          }
+        },
+        {
+          "action": "canopy_swing",
+          "label": "Balancement en canopée",
+          "kind": "loop",
+          "repeat": 2,
+          "startTick": 48,
+          "endTick": 80,
+          "startSeconds": 3,
+          "endSeconds": 5,
+          "playbackReferences": 32,
+          "uniqueSourceDrawings": 16,
+          "first": {
+            "clip": "canopy_swing",
+            "number": 1
+          },
+          "last": {
+            "clip": "canopy_swing",
+            "number": 16
+          }
+        },
+        {
+          "action": "canopy_release",
+          "label": "Lâcher de canopée",
+          "kind": "one-shot",
+          "repeat": 1,
+          "startTick": 80,
+          "endTick": 96,
+          "startSeconds": 5,
+          "endSeconds": 6,
+          "playbackReferences": 16,
+          "uniqueSourceDrawings": 16,
+          "first": {
+            "clip": "canopy_release",
+            "number": 1
+          },
+          "last": {
+            "clip": "canopy_release",
+            "number": 16
+          }
+        }
+      ],
+      "junctions": [
+        {
+          "tick": 16,
+          "seconds": 1,
+          "from": {
+            "action": "canopy_attach",
+            "clip": "canopy_attach",
+            "number": 16
+          },
+          "to": {
+            "action": "canopy_hold",
+            "clip": "canopy_hold",
+            "number": 1
+          }
+        },
+        {
+          "tick": 48,
+          "seconds": 3,
+          "from": {
+            "action": "canopy_hold",
+            "clip": "canopy_hold",
+            "number": 16
+          },
+          "to": {
+            "action": "canopy_swing",
+            "clip": "canopy_swing",
+            "number": 1
+          }
+        },
+        {
+          "tick": 80,
+          "seconds": 5,
+          "from": {
+            "action": "canopy_swing",
+            "clip": "canopy_swing",
+            "number": 16
+          },
+          "to": {
+            "action": "canopy_release",
+            "clip": "canopy_release",
+            "number": 1
+          }
+        }
+      ],
+      "loopSeams": [
+        {
+          "tick": 32,
+          "seconds": 2,
+          "action": "canopy_hold",
+          "from": {
+            "clip": "canopy_hold",
+            "number": 16
+          },
+          "to": {
+            "clip": "canopy_hold",
+            "number": 1
+          }
+        },
+        {
+          "tick": 64,
+          "seconds": 4,
+          "action": "canopy_swing",
+          "from": {
+            "clip": "canopy_swing",
+            "number": 16
+          },
+          "to": {
+            "clip": "canopy_swing",
+            "number": 1
+          }
+        }
+      ],
+      "playbackReferences": 96
+    }
+  ],
+  "sampler": "playback_core.js resolve; canonical playback.json phase steps; one padding + drawOffset application then Math.round for offline video placement.",
+  "rootPolicy": "Canonical SHA-bound floor and grip metadata from the manifest are applied once. These graphical proxies remain draft-only; anatomy, separate contacts and physical pendulum phase remain pending.",
+  "registrationApplied": [
+    {
+      "clip": "aim_enter",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86"
+    },
+    {
+      "clip": "aim_hold",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302"
+    },
+    {
+      "clip": "aim_exit",
+      "method": "bottom-support silhouette row",
+      "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55"
+    },
+    {
+      "clip": "canopy_attach",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab"
+    },
+    {
+      "clip": "canopy_hold",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148"
+    },
+    {
+      "clip": "canopy_release",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6"
+    },
+    {
+      "clip": "canopy_swing",
+      "method": "two-fist silhouette proxy",
+      "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46"
+    }
+  ],
+  "browserValidation": false,
+  "inGameValidation": false,
+  "artisticStatus": "draft",
+  "artisticApproval": false,
+  "ffprobe": {
+    "width": 840,
+    "height": 584,
+    "r_frame_rate": "16/1",
+    "duration": "6.500000",
+    "nb_frames": "104"
+  }
+}
