@@ -3,10 +3,10 @@
   "path": "docs/suivi-production/classeurs/Yautja_V6_Bible_Cumulative_et_Dialogues.xlsx",
   "sheets": {
    "origins": "Les six voies",
-   "transitions": "V5 Transitions des voies (lignes -01, système Maison)",
+   "transitions": "V5 Transitions des voies (lignes -01, système Maison ; lignes -02, système Trophée)",
    "flags": "V5 États communs (STATE5-01, 09-13)"
   },
-  "note": "Texte copié du classeur V6. Seules les transitions « Maison » (-01) sont reprises ici."
+  "note": "Texte copié du classeur V6. Sont reprises les transitions « Maison » (-01) et « Trophée » (-02)."
  },
  "origins": [
   {
@@ -154,6 +154,86 @@
    "failure": "Un meuble qui gêne la circulation doit être déplacé avant validation, sans bonus domestique cumulable ailleurs.",
    "exit": "STORY5-TR-O6-01.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O6.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
    "sourceRow": 36
+  }
+ ],
+ "trophyTransitions": [
+  {
+   "id": "STORY5-TR-O1-02",
+   "title": "La lame n’est pas ma victoire",
+   "originId": "O1",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "À l’atelier, la lame de Varek ne peut être présentée que si le joueur en a encore la garde. Il l’oriente, montre la trace de l’agression et choisit un support de preuve ou un compartiment privé. Si elle a été rendue, la scène utilise le relevé réellement conservé et explique l’absence.",
+   "choices": "Exposer une preuve contextualisée ou garder l’histoire privée change les visites et le récit public.",
+   "consequence": "Le mini-jeu n’accorde aucun mérite de chasse pour l’arme d’un père hostile ; propriétaire et emplacement restent uniques.",
+   "failure": "Un relevé insuffisant laisse une plaque limitée aux faits connus, pas une reconstitution présentée comme certaine.",
+   "exit": "STORY5-TR-O1-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O1.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 7
+  },
+  {
+   "id": "STORY5-TR-O2-02",
+   "title": "Une marque, deux témoins",
+   "originId": "O2",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Le joueur reçoit deux commentaires différents sur une marque du crâne partagé. Au banc des traces, il règle la lampe, tourne le berceau et compare les angles décrits par les témoins. Une marque peut confirmer le coup final tandis qu’une autre témoigne de l’extraction ; les hypothèses restent séparées.",
+   "choices": "Conserver les deux lectures compatibles ou demander une comparaison supplémentaire change la précision de la plaque.",
+   "consequence": "Qualité, authenticité et reconnaissance évoluent séparément ; aucun succès ancestral n’est annulé par une aide retrouvée.",
+   "failure": "Une face encore non observée maintient l’étape ouverte et laisse les autres observations validées.",
+   "exit": "STORY5-TR-O2-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O2.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 13
+  },
+  {
+   "id": "STORY5-TR-O3-02",
+   "title": "Le fragment et la nouvelle chasse",
+   "originId": "O3",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "À l’atelier, le joueur place un fragment ancien près d’un trophée actuel, avec deux berceaux distincts. Il observe les traces, choisit des supports et construit une présentation qui montre perte et vie nouvelle sans prétendre que l’une compense l’autre.",
+   "choices": "Relier les objets par un récit personnel ou les exposer séparément change l’interprétation des visiteurs.",
+   "consequence": "Chaque pièce garde sa provenance et sa valeur propre ; aucune chasse actuelle ne ressuscite une personne perdue.",
+   "failure": "Une pièce fragile peut rester en réserve avec relevé visible ; l’absence d’original ne bloque pas toute l’exposition.",
+   "exit": "STORY5-TR-O3-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O3.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 19
+  },
+  {
+   "id": "STORY5-TR-O4-02",
+   "title": "Le trophée qui ne célèbre pas",
+   "originId": "O4",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Le joueur inspecte l’arme fautive de l’ancêtre sur un banc distinct de sa propre prise de chasse. Il choisit lumière, support et plaque pour expliquer la différence. La préparation du meuble ne rend pas honorable ce qui ne l’était pas.",
+   "choices": "Déposer l’arme aux archives ou l’exposer avec la faute explicitée change les interactions de galerie.",
+   "consequence": "La qualité du support et la vérité du récit restent distinctes du mérite ; propriétaire et garde sont conservés.",
+   "failure": "Une preuve manquante limite la formulation, sans inventer une innocence ou une culpabilité supplémentaire.",
+   "exit": "STORY5-TR-O4-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O4.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 25
+  },
+  {
+   "id": "STORY5-TR-O5-02",
+   "title": "Le câble prêté et son absence",
+   "originId": "O5",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Le joueur veut exposer le souvenir du secours. Il vérifie si Mara a donné, prêté ou gardé le câble, puis choisit original autorisé, relevé ou modèle d’exercice marqué. Le mini-jeu consiste à placer les deux appuis de la falaise sur une table et montrer le geste de traction.",
+   "choices": "Exposer la coordination technique ou le récit de gratitude change la visite.",
+   "consequence": "La dette n’accorde aucun droit sur les biens de Mara ; une copie ne reçoit pas le statut d’original.",
+   "failure": "Un prêt arrivé à échéance retire physiquement l’objet de l’exposition et laisse la place au relevé autorisé.",
+   "exit": "STORY5-TR-O5-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O5.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 31
+  },
+  {
+   "id": "STORY5-TR-O6-02",
+   "title": "Le premier trophée à quatre regards",
+   "originId": "O6",
+   "system": "Trophée",
+   "entry": "Atelier accessible ; objet réel, prêt autorisé ou relevé explicitement identifié ; propriété vérifiée. Lire les missions de voie et les relations réellement résolues ; scène facultative, sans blocage de rang.",
+   "scene": "Un trophée actuel est examiné par les partenaires réellement impliqués. Le joueur tourne le berceau, montre les marques de leurs gestes et place des plaques distinctes. Un camarade absent peut fournir un relevé autorisé, mais sa voix n’est pas inventée.",
+   "choices": "Mettre en avant la chronologie ou les techniques complémentaires change la galerie.",
+   "consequence": "La prise raconte la progression de cette cohorte et conserve les contributions réelles.",
+   "failure": "Une attribution contestée reste ouverte jusqu’à comparaison, sans effacer toute la chasse ou créer une seconde pièce.",
+   "exit": "STORY5-TR-O6-02.resolved et success distincts ; mémoriser décisions locales, relations et emplacement des objets. Aucun changement de O6.endingId, des rangs communs ou d’une récompense de guerre déjà appliquée.",
+   "sourceRow": 37
   }
  ]
 }
