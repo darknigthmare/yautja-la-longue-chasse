@@ -47,7 +47,7 @@ test("legacy V12 import upgrades to V13 without gifting any of 44 studies",()=>{
 });
 test("rank-unlocked equipped Wolf survives a real V13 export/import roundtrip",()=>{
   const save=defaultSave(owner);
-  save.profile={...save.profile,honor:730,rankId:"elite"};
+  save.profile={...save.profile,honor:730,rankId:"elite",acquiredRankIdV166:"elite"};
   const update=gauntletCampaignEquipV134(save,"wolf");
   assert.equal(update.ok,true);
   const next={...save,gauntletV134:update.archive};

@@ -15,7 +15,7 @@ function store(entries=[]){
   removeItem(name){data.delete(name);}};
 }
 function fixture(){
- const base=saves.defaultSave(owner);base.profile.honor=250;base.profile.rankId='blooded';
+ const base=saves.defaultSave(owner);base.profile.honor=250;base.profile.rankId='blooded';base.profile.acquiredRankIdV166='blooded';
  const context={save:base,active:true,focused:true,suspended:false,...ship.shipAcquisitionSceneFactsV89(),authority:null};
  let state=null;
  const act=action=>{const result=ship.actShipAcquisitionV89(state,action,context);assert(result.accepted,result.message);state=result.state;};

@@ -20,6 +20,13 @@
  * `warpAccessContextFromSaveV165`, `evaluateWarpDepartureV165`,
  * `departWarpV165`, `canReturnFromWarpV165`, `returnFromWarpV165`,
  * `branchVisitV165`. Elles ne dépendent pas de W-02.
+ *
+ * V167 — Exception écrite dans la bible (décision du 20 novembre 2026) : le
+ * Warp peut aussi atteindre 2204 (Tantalus) ; 2204 est une branche du Warp
+ * (`warp-tantalus-2204`). Le classeur V6 n'a pas d'époque 2204 : aucune fiche
+ * WARP-E ne la décrit. Le contenu propre à la branche (choix de l'Echo-8) vit
+ * dans `tantalusV164.ts` et utilise ce même état (un seul voyage engagé, un
+ * seul retour réservé, état de branche STATE5-30).
  */
 import type { MissionDefinition, MissionResult } from "../types";
 import {
@@ -33,8 +40,10 @@ export const WARP_EPOCHS_V165_VERSION = 1 as const;
 // Données de source
 // ---------------------------------------------------------------------------
 
-export type WarpBranchIdV165 = "W-01" | "W-02" | "W-03" | "W-04" | "W-05" | "W-GB";
-export const WARP_BRANCH_IDS_V165: readonly WarpBranchIdV165[] = ["W-01", "W-02", "W-03", "W-04", "W-05", "W-GB"];
+/** Identifiant de la branche 2204, repris de la PR #163 (sauvegardes `tantalusV164`). */
+export const WARP_TANTALUS_BRANCH_ID_V165 = "warp-tantalus-2204" as const;
+export type WarpBranchIdV165 = "W-01" | "W-02" | "W-03" | "W-04" | "W-05" | "W-GB" | typeof WARP_TANTALUS_BRANCH_ID_V165;
+export const WARP_BRANCH_IDS_V165: readonly WarpBranchIdV165[] = ["W-01", "W-02", "W-03", "W-04", "W-05", "W-GB", WARP_TANTALUS_BRANCH_ID_V165];
 
 export interface WarpCanonHeroV165 {
   id: string;
@@ -52,7 +61,7 @@ export interface WarpBranchV165 {
   proposedScene: string;
   year: number | null;
   canonHeroes: readonly WarpCanonHeroV165[];
-  /** Seule W-02 a une boucle jouable dans V165. */
+  /** W-02 (V165) et la branche 2204 (V167) ont une boucle jouable. */
   status: "jouable" | "non-implemente";
 }
 
@@ -69,6 +78,11 @@ export const WARP_BRANCHES_V165: readonly WarpBranchV165[] = [
     canonHeroes: [{ id: "torres", name: "Torres", year: 1942, killable: false }], status: "non-implemente" },
   { id: "W-GB", label: "XVIIIe siècle, piste de Greyback", canonFrame: "Greyback sur Terre au XVIIIe siècle contre des pirates (bio NECA, résumée par la bible)", proposedScene: "branche sur la piste de Greyback et des pirates", year: null,
     canonHeroes: [], status: "non-implemente" },
+  // Exception du 20 novembre 2026 : seule destination future du Warp. Le
+  // classeur V6 n'a pas d'époque 2204 ; le cadre vient de la section
+  // « Crossover : USS Tantalus » de la bible (mission annexe proposée).
+  { id: WARP_TANTALUS_BRANCH_ID_V165, label: "Tantalus Reach, 2204", canonFrame: "2204, Tantalus Reach, station Asphodèle (crossover USS Tantalus) — exception : époque future, absente du classeur V6", proposedScene: "« Le silence d'Asphodèle » : abordage de la station, sort de l'Echo-8", year: 2204,
+    canonHeroes: [], status: "jouable" },
 ];
 export const WARP_CANON_HERO_IDS_V165: readonly string[] = WARP_BRANCHES_V165.flatMap(branch => branch.canonHeroes.map(hero => hero.id));
 
@@ -149,6 +163,9 @@ export interface WarpTrophyV165 {
   container: "vaisseau";
   circumstances: string;
 }
+/** Choix d'honneur de la branche 2204 (bible, « Crossover : USS Tantalus »). */
+export type WarpTantalusEcho8ChoiceV165 = "emporte" | "marque";
+export interface WarpTantalusEcho8V165 { choice: WarpTantalusEcho8ChoiceV165; tripId: string }
 export interface WarpBranchVisitV165 {
   visits: number;
   steps: Partial<Record<WarpW02StepIdV165, WarpStepRecordV165>>;
@@ -162,6 +179,8 @@ export interface WarpBranchVisitV165 {
   huntSuccess: boolean;
   trophy: WarpTrophyV165 | null;
   epochCompleted: boolean;
+  /** V167, branche 2204 seulement : sort de l'Echo-8, décidé une fois et conservé (STATE5-30). Absent ailleurs. */
+  echo8?: WarpTantalusEcho8V165;
 }
 export interface WarpEchoV165 { id: string; fromBranchId: WarpBranchIdV165; toBranchId: WarpBranchIdV165; text: string; effect: string }
 export interface WarpEpochsStateV165 {
@@ -219,7 +238,7 @@ const idList = (value: unknown, max = 400): string[] | null =>
   Array.isArray(value) && value.length <= max && value.every(item => safeId(item)) && new Set(value).size === value.length ? [...value] as string[] : null;
 const oneOf = <T extends string>(value: unknown, allowed: readonly T[]): value is T => allowed.includes(value as T);
 
-function normalizeVisit(value: unknown): WarpBranchVisitV165 | null {
+function normalizeVisit(value: unknown, id: WarpBranchIdV165): WarpBranchVisitV165 | null {
   if (!record(value) || !count(value.visits) || !count(value.localKills) || !count(value.huntRuns) ||
       typeof value.huntSuccess !== "boolean" || typeof value.epochCompleted !== "boolean" || !record(value.steps)) return null;
   const alertedPassages = idList(value.alertedPassages), deadIds = idList(value.deadIds), takenObjectIds = idList(value.takenObjectIds);
@@ -241,8 +260,15 @@ function normalizeVisit(value: unknown): WarpBranchVisitV165 | null {
         typeof t.circumstances !== "string" || t.circumstances.length > 400) return null;
     trophy = { id: t.id, name: t.name, branchId: t.branchId, year: t.year as number | null, ownerCreatedAt: t.ownerCreatedAt, container: "vaisseau", circumstances: t.circumstances };
   }
+  let echo8: WarpTantalusEcho8V165 | undefined;
+  if (value.echo8 !== undefined) {
+    const e = value.echo8;
+    if (id !== WARP_TANTALUS_BRANCH_ID_V165 || !record(e) || Object.keys(e).length !== 2 ||
+        (e.choice !== "emporte" && e.choice !== "marque") || !safeId(e.tripId)) return null;
+    echo8 = { choice: e.choice, tripId: e.tripId };
+  }
   return { visits: value.visits, steps, alertedPassages, deadIds, takenObjectIds, localKills: value.localKills,
-    huntRuns: value.huntRuns, huntSuccess: value.huntSuccess, trophy, epochCompleted: value.epochCompleted };
+    huntRuns: value.huntRuns, huntSuccess: value.huntSuccess, trophy, epochCompleted: value.epochCompleted, ...(echo8 ? { echo8 } : {}) };
 }
 
 /** Renvoie l'état normalisé, ou null si la forme est invalide ou d'une autre campagne. */
@@ -266,7 +292,7 @@ export function normalizeWarpEpochsV165(value: unknown, ownerCreatedAt: string):
   }
   const branchVisitState: WarpEpochsStateV165["branchVisitState"] = {};
   for (const [key, raw] of Object.entries(value.branchVisitState)) {
-    const visit = branchId(key) ? normalizeVisit(raw) : null;
+    const visit = branchId(key) ? normalizeVisit(raw, key) : null;
     if (!visit) return null;
     branchVisitState[key as WarpBranchIdV165] = visit;
   }
@@ -312,8 +338,6 @@ export interface WarpAccessContextV165 {
   personalShip: boolean;
   /** Fonction Adjutant actuelle du joueur. */
   adjutant: boolean;
-  /** Voyage réservé vers une autre branche Warp. */
-  otherWarpTripActive?: boolean;
 }
 type ChronicleSaveSource = { prologue?: { chronicle?: ClanChronicle | null } | null } & Record<string, unknown>;
 /** Lit la chronique existante (rang, rite Adjutant) et la disponibilité réelle du vaisseau. */
@@ -347,12 +371,10 @@ export function warpConditionsV165(state: WarpEpochsStateV165 | null, ctx: WarpA
 
 export function evaluateWarpDepartureV165(state: WarpEpochsStateV165 | null, ctx: WarpAccessContextV165): WarpEvaluationV165 {
   const missing = warpConditionsV165(state, ctx);
-  if (state?.activeWarpTripId || ctx.otherWarpTripActive) {
-    missing.push({ id: "trip-active", label: "Un voyage Warp est déjà engagé", where: "Revenir par le retour réservé" });
-  }
+  if (state?.activeWarpTripId) missing.push({ id: "trip-active", label: "Un voyage est déjà engagé", where: "Revenir par le retour réservé" });
   const branch = WARP_BRANCHES_V165.find(entry => entry.id === state?.warpBranchId);
   if (!branch) missing.push({ id: "branch", label: "Choisir une branche (STATE5-27)", where: "Carte des branches" });
-  else if (branch.status !== "jouable") missing.push({ id: "branch-not-implemented", label: `${branch.id} n'est pas encore implémentée`, where: "Choisir W-02" });
+  else if (branch.status !== "jouable") missing.push({ id: "branch-not-implemented", label: `${branch.id} n'est pas encore implémentée`, where: "Choisir W-02 ou 2204" });
   return { allowed: missing.length === 0, missing };
 }
 

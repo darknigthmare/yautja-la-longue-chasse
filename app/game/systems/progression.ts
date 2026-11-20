@@ -1,3 +1,4 @@
+import { nextBibleTierV166, type BibleHonorTierV166 } from "./honorProgressionV166";
 import { archiveTransferPending } from "./archiveTransferGuard";
 import { normalizeSave, parseSaveImport, RANK_THRESHOLDS, SAVE_STORAGE_KEY } from "../save";
 import {
@@ -171,6 +172,11 @@ export interface ClanProgressSnapshot {
   nextRankLabel: string | null;
   honorForNextRank: number | null;
   rankProgress: number;
+  /**
+   * V166 : prochain palier de la bible au-dessus de l'honneur actuel (rang du
+   * jeu ou non), ou null après Black God (40 000).
+   */
+  nextBibleTier: BibleHonorTierV166 | null;
   prestige: number;
   completedRites: RiteProgress[];
   pendingRites: RiteProgress[];
@@ -1561,6 +1567,7 @@ export function evaluateClanProgression(
     nextRankLabel: nextRankId ? RANK_LABELS[nextRankId] : null,
     honorForNextRank: nextThreshold,
     rankProgress,
+    nextBibleTier: nextBibleTierV166(save.profile.honor),
     prestige: Math.round(
       save.profile.honor +
         save.profile.clanMarks * 0.25 +

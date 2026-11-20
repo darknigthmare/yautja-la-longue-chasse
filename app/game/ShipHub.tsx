@@ -1202,7 +1202,9 @@ function RoomSummary({
           detail={
             clan.nextRankLabel
               ? `Prochain rang : ${clan.nextRankLabel} à ${clan.honorForNextRank} honneur.`
-              : "Le rang d’Ancien est atteint ; les rites restent ouverts."
+              : clan.nextBibleTier
+                ? `Le rang d’Ancien est atteint ; prochain palier d’honneur de la bible : ${clan.nextBibleTier.bibleRank} à ${clan.nextBibleTier.threshold.toLocaleString("fr-FR")} honneur${clan.nextBibleTier.gameRankId ? "" : " (rang pas encore présent dans le jeu)"}.`
+                : "Le rang d’Ancien est atteint ; le seuil de Black God (40 000 honneur) est atteint."
           }
         />
         <ProgressMeter
