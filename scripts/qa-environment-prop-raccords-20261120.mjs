@@ -26,11 +26,12 @@ const report = {
   mode: materializeOnly ? "materialization-only" : "limited-canvas",
   scope: "Real production registry/world/draw helper in a limited Canvas2D fixture. Not GameClient, not native flexible-support rendering, not animation/collision play, and not human artistic review.",
   encounterRun, substituteAssets: false, nativeGameClient: false, humanArtReview: false,
-  checks: [], captures: [], assets: [], requestedAssetUrls: [], pageErrors: [], consoleErrors: [], requestFailures: [], externalPageRequests: [],
+  checks: [], captures: [], inlineCaptures: [], assets: [], requestedAssetUrls: [], pageErrors: [], consoleErrors: [], requestFailures: [], externalPageRequests: [],
   sourceFingerprintPhase: "After bundling, before browser; compared to Git HEAD and rechecked after browser.",
   passed: false, failure: null,
 };
 let server, browser;
+const inlinePngLogs = [];
 
 function safeRelative(file) {
   assert.equal(typeof file, "string");
@@ -61,6 +62,71 @@ async function fingerprints(files) {
 async function capture(name, bytes) {
   await writeFile(resolve(out, name), bytes);
   report.captures.push({ path: name, bytes: bytes.length, sha256: sha(bytes), humanPixelsInspected: false });
+}
+
+async function prepareInlineNativePng(page, canvas, item, fullPng) {
+  const maxBytes = 256 * 1024;
+  let bytes = fullPng, file = item.id + ".png", clip = null;
+  if (bytes.length > maxBytes) {
+    await canvas.scrollIntoViewIfNeeded();
+    const bounds = await canvas.boundingBox();
+    assert.ok(bounds);
+    assert.equal(bounds.width, item.canvas.width);
+    assert.equal(bounds.height, item.canvas.height);
+    const { scroll, documentBounds } = await page.evaluate(() => ({
+      scroll: { x: window.scrollX, y: window.scrollY },
+      documentBounds: {
+        width: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth,
+          document.documentElement.offsetWidth, document.body.offsetWidth,
+          document.documentElement.clientWidth, document.body.clientWidth),
+        height: Math.max(document.documentElement.scrollHeight, document.body.scrollHeight,
+          document.documentElement.offsetHeight, document.body.offsetHeight,
+          document.documentElement.clientHeight, document.body.clientHeight),
+      },
+    }));
+    const anchor = {
+      x: item.geometry.x + item.geometry.width / 2 - item.canvas.cameraX,
+      y: item.geometry.y + item.geometry.height,
+    };
+    for (let side = 512; side >= 64; side /= 2) {
+      const width = Math.min(side, item.canvas.width), height = Math.min(side, item.canvas.height);
+      const canvasClip = {
+        x: Math.max(0, Math.min(Math.floor(anchor.x - width / 2), item.canvas.width - width)),
+        y: Math.max(0, Math.min(Math.floor(anchor.y - height / 2), item.canvas.height - height)),
+        width, height,
+      };
+      const origin = { x: bounds.x + scroll.x, y: bounds.y + scroll.y };
+      const pageClip = { ...canvasClip, x: Math.floor(origin.x + canvasClip.x), y: Math.floor(origin.y + canvasClip.y) };
+      assert.ok(pageClip.x >= 0 && pageClip.y >= 0 && pageClip.x + pageClip.width <= documentBounds.width &&
+        pageClip.y + pageClip.height <= documentBounds.height, "Native anchor clip must stay inside the document");
+      bytes = await page.screenshot({ fullPage: true, clip: pageClip });
+      clip = { coordinateSpace: "document CSS pixels", documentBounds, anchorInCanvas: anchor, canvasOriginInPage: origin,
+        canvas: { ...pageClip, x: pageClip.x - origin.x, y: pageClip.y - origin.y }, page: pageClip };
+      if (bytes.length <= maxBytes) break;
+    }
+    file = item.id + ".native-anchor.png";
+    await writeFile(resolve(out, file), bytes);
+  }
+  assert.ok(bytes.length <= maxBytes, "Native inline PNG exceeds 256 KiB: " + item.id);
+  assert.equal(bytes.subarray(0, 8).toString("hex"), "89504e470d0a1a0a");
+  const record = {
+    file, bytes: bytes.length, sha256: sha(bytes),
+    width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20),
+    provenance: {
+      sourceCommit: report.sourceCommit, fixture: fixturePath, scenarioId: item.id, geometryId: item.geometryId,
+      assetId: item.asset.id, runtimeUrl: item.asset.runtimeUrl,
+      method: clip ? "page.screenshot document native anchor clip" : "unchanged full locator.screenshot PNG",
+      fullCanvas: { width: item.canvas.width, height: item.canvas.height }, clip,
+      deviceScaleFactor: 1, worldUnitsPerPixel: 1, resized: false, qaColliderOutline: true,
+      scope: "Limited production draw-helper Canvas, not GameClient or native flexible-support rendering.",
+    },
+  };
+  if (clip) {
+    assert.equal(record.width, clip.page.width);
+    assert.equal(record.height, clip.page.height);
+  }
+  report.inlineCaptures.push(record);
+  inlinePngLogs.push({ ...record, base64: bytes.toString("base64") });
 }
 
 try {
@@ -175,7 +241,9 @@ try {
       assert.ok(item.canvas.paintedPixelsBeforeQaOverlay > 0);
       assert.ok(item.image.naturalWidth > 48 && item.image.naturalHeight > 48);
       const canvas = page.locator('[data-raccord-canvas="' + item.id + '"]');
-      await capture(item.id + ".png", await canvas.screenshot());
+      const png = await canvas.screenshot();
+      await capture(item.id + ".png", png);
+      if (item.id === "jungle-tree" || item.id === "jungle-ladder") await prepareInlineNativePng(page, canvas, item, png);
       pass("original image painted through the production draw helper: " + item.id);
     }
     assert.ok(result.report.cases.filter(({ evidence }) => evidence !== "canvas-production-draw-helper").every(({ rendered }) => rendered === false));
@@ -195,6 +263,9 @@ try {
     assert.equal(git(["rev-parse", "HEAD"]).trim(), report.sourceCommit);
     report.trackedWorkingTreeAfter = git(["status", "--porcelain", "--untracked-files=no"]);
     pass("source code and original image bytes remain identical to the reviewed Git HEAD");
+    assert.equal(inlinePngLogs.length, 2);
+    assert.ok(inlinePngLogs.reduce((total, item) => total + item.bytes, 0) <= 512 * 1024);
+    for (const image of inlinePngLogs) console.log("ENVIRONMENT_PROP_RACCORD_NATIVE_PNG " + JSON.stringify(image));
   }
   report.passed = true;
 } catch (error) {
