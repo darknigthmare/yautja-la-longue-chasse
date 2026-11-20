@@ -71,7 +71,7 @@ export default function HeritagePanelV152({ save, disabled, onAction }: {
               : <><button type="button" data-heritage-seal disabled={disabled || !weaponId} onClick={() => { if (weaponId) run({ kind: "seal", weaponId }); }}>Confirmer · sceller définitivement</button><button type="button" onClick={() => setConfirming(false)}>Annuler</button></>}
           </div>
           {!eligibility.allowed && <p className={styles.proposed}>{eligibility.reason}</p>}
-          <p className={styles.proposed}>Déclencheur proposé : {retirement.label}. Les déclencheurs de la bible (sacrifice, mort en Hardcore, fin BB-E2) n’existent pas encore dans le jeu.</p>
+          <p className={styles.proposed}>Déclencheur proposé : {retirement.label}. Une mort en Hardcore scelle aussi le legs, à la clôture confirmée de la chronique. Le sacrifice et la fin BB-E2 n’existent pas encore dans le jeu.</p>
         </>}
       </article>
     </div>}
