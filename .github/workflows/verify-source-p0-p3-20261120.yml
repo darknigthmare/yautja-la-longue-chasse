@@ -1,4 +1,4 @@
-name: Verify final Cradle and hunt regression tests
+name: Verify native compatibility and regenerate exact inventory
 
 on:
   push:
@@ -8,24 +8,24 @@ permissions:
   contents: read
 
 concurrency:
-  group: yautja-p0-p3-final-test-20261120
+  group: yautja-p0-p3-native-compat-20261120
   cancel-in-progress: false
 
 jobs:
   source:
-    name: Final Cradle, ship flow, field receipts and scene audio
+    name: Exact inventory and conservation checkpoint regression
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: 'a063a1becb853eba16db2cb9204e64c172976c75'
+      ASSET_RACCORDS_SOURCE_COMMIT: '8ea7bfe049305727fae8d40d12a1484a16040090'
       BASE_COMMIT: '04d493265a14fb51faa4d811553beb8ff26767cc'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: 'a063a1becb853eba16db2cb9204e64c172976c75'
+          ref: '8ea7bfe049305727fae8d40d12a1484a16040090'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -44,7 +44,6 @@ jobs:
             /.openai/
             /.github/workflows/
             /docs/
-            /public/game/xeno-prime/berceau-v1/
             /public/**/manifest.json
             /public/game/p0-sprites-20261113/warp/
             /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
@@ -60,8 +59,125 @@ jobs:
         run: |
           node scripts/materialize-asset-raccords-20261120.mjs runtime
           npm ci --ignore-scripts --no-audit --no-fund
-      - name: Exercise the canonical campaign and hearing contracts
+      - name: Generate the official candidate inventory
         run: |
-          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 tests/buried-cradle-campaign.test.mjs tests/game-client-ship-flow.test.mjs tests/harvest-inventory-v112.test.mjs tests/clan-war-four-modes-v138.test.mjs tests/scene-audio.test.mjs
-      - name: Strict lint of final test
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 tests/buried-cradle-campaign.test.mjs
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Exercise real GameClient campaign settlement and conservation
+        run: node --experimental-strip-types --test --test-reporter=spec tests/conservation-persistence-ui-v112.test.mjs tests/game-client-ship-flow.test.mjs tests/harvest-inventory-v112.test.mjs
+
+  field:
+    name: Original clan props and native asynchronous keyboard controls
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8ea7bfe049305727fae8d40d12a1484a16040090
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /package.json
+            /package-lock.json
+            /tsconfig*.json
+            /eslint.config.mjs
+            /app/game/
+            /types/
+            /lib/
+            /tests/
+            /scripts/build-clan-field-pack.mjs
+            /scripts/apply-clan-field-ui.mjs
+            /scripts/qa-clan-war-v115-multitab-v151.mjs
+            /scripts/qa-clan-field-20261103.mjs
+            /public/game/assets/v15/trophies/manifest.json
+            /public/game/assets/clan-field-20261103/
+            /docs/clan-war-field-pack/
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Asset, controls and source-engine regressions
+        run: |
+          node --experimental-strip-types --test --test-concurrency=1 \
+            tests/clan-field-pack-20261103.test.mjs \
+            tests/clan-war-v115-multitab-v151.test.mjs \
+            tests/clan-war-operations-v115.test.mjs \
+            tests/clan-war-stealth-last-contact.test.mjs \
+            tests/clan-war-outer-pace-reconcile.test.mjs \
+            tests/clan-war-council-v146.test.mjs \
+            tests/clan-war-source-consolidation-v147.test.mjs
+      - name: Check committed interfaces
+        run: npx --no-install tsc --noEmit -p tsconfig.clan-field-20261103.json
+      - name: Lint changed source and generation scripts
+        run: npx --no-install eslint app/game/ClanWarOperationsV115.tsx app/game/ClanWarRtsSquadsV133.tsx app/game/ClanWarFieldSprite.tsx app/game/systems/clanWarFieldControls.ts scripts/build-clan-field-pack.mjs scripts/apply-clan-field-ui.mjs scripts/qa-clan-field-20261103.mjs tests/browser/clan-field-20261103.fixture.tsx tests/clan-field-pack-20261103.test.mjs
+      - name: Exercise keyboard, actual zoom and two-tab save locks
+        run: |
+          export AUDIT_CHROME_EXECUTABLE=/usr/bin/google-chrome
+          node scripts/qa-clan-field-20261103.mjs
+          node scripts/qa-clan-war-v115-multitab-v151.mjs
+      - name: Ensure verification left committed source and assets unchanged
+        run: git diff --exit-code -- app/game public/game/assets/clan-field-20261103
+      - name: Preserve committed pack and browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clan-field-12-original-props-and-qa
+          path: |
+            public/game/assets/clan-field-20261103/
+            outputs/clan-field-20261103/
+            outputs/clan-war-v115-multitab-v151/
+          retention-days: 30
+          if-no-files-found: warn
+
+  lifecycle:
+    name: Existing native hunt lifecycle and conservation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      AUDIT_CHROME_CHANNEL: chrome
+    steps:
+      - name: Checkout bounded source and hunting evidence
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8ea7bfe049305727fae8d40d12a1484a16040090
+          persist-credentials: false
+          fetch-depth: 3
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/hosting.json
+            /docs/hunt-mechanics-v111.json
+            /docs/YAUTJA_V111_MECANIQUES_CHASSE.xlsx
+            /docs/hunt-mechanics-v112.json
+            /docs/hunt-mechanics-v112.md
+            /docs/YAUTJA_V112_MECANIQUES_CHASSE.xlsx
+            /docs/qa/v112-hunt-closure/
+            /public/game/ui/v112/
+            /public/game/assets/v112/discovery/
+            /public/**/manifest.json
+            /public/game/sprites/v7/enemies/flora-other/xeno-drone-sheet.png
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Run the native lifecycle and durable workshop
+        run: node scripts/qa-hunt-lifecycle-browser-v112.mjs
+      - name: Preserve compatibility reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-lifecycle-8ea7bfe049305727fae8d40d12a1484a16040090
+          path: outputs/qa-hunt-lifecycle-v112/
+          if-no-files-found: error
