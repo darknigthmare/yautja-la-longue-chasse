@@ -5093,7 +5093,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         <section className="screen panel-screen" inert={settingsOpen}>
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
-              <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)} />
+              <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)}
+                onOpenCradle={campaignSaveBusy || archiveTransferBusy || archiveRecoveryIssue || resumableHunt
+                  ? undefined : () => go("buried-cradle-briefing")} />
             </Suspense>
             <p className="source-badge">
               <button type="button" className="ghost-button" data-warp-entry-v165 onClick={() => go("warp-epochs")}>

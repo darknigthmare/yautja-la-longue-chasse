@@ -171,3 +171,31 @@ test("progression du clan : prochain palier de la bible affiché après Elder", 
   assert.equal(snapshot.nextBibleTier.bibleRank, "Clan Leader");
   assert.equal(snapshot.nextBibleTier.gameRankId, null);
 });
+
+const dossier = qa.load("app/game/systems/rankRiteDossierV168.ts");
+const cradle = qa.load("app/game/systems/buriedCradle.ts");
+
+test("the canonical rite dossier distinguishes career rank from dated crown evidence", () => {
+  const save = withProfile({ honor: 8_120, rankId: "elder", acquiredRankIdV166: "elder" });
+  save.honorSourcesV169 = { version: 1, entries: [
+    { id: "contract:single", kind: "contract", amount: 1 },
+  ], outsideBalance: 1 };
+  const first = dossier.rankRiteDossierV168(save);
+  assert(first.thresholds.find(tier => tier.bibleRank === "Elder").remainingHonor === 0);
+  assert.equal(first.queen.canOpenExpedition, false);
+  assert.match(first.queen.label, /chasses à terminer/);
+  for (const mission of MISSIONS) save.missionProgress[mission.id] = {
+    ...save.missionProgress[mission.id], status: "completed", attempts: 1, completions: 1,
+  };
+  const intact = { ...cradle.createBuriedCradleProgress(), visitedRoomIds: [...cradle.CRADLE_ROOM_IDS],
+    bossDefeated: true, rootRingCut: true, crownClaimed: true };
+  save.buriedCradle = { version: 1, ownerCreatedAt: save.createdAt, personalShipId: "classic-predator-spaceship",
+    difficultyId: "hunter", progress: intact, status: "extracted", outcome: "crown-returned", crownDelivered: false };
+  assert.equal(dossier.rankRiteDossierV168(save).queen.label, "Débrief à effectuer");
+  save.buriedCradle = { ...save.buriedCradle, status: "reported", crownDelivered: true };
+  const input = JSON.stringify(save);
+  assert.deepEqual(dossier.rankRiteDossierV168(save).queen, { label: "Crête rapportée au débrief", canOpenExpedition: true });
+  assert.equal(JSON.stringify(save), input);
+  save.buriedCradle = { ...save.buriedCradle, ownerCreatedAt: "2026-11-16T02:00:00.000Z" };
+  assert.deepEqual(dossier.rankRiteDossierV168(save).queen, { label: "Relevé d’expédition incompatible", canOpenExpedition: false });
+});
