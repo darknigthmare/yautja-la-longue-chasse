@@ -48,6 +48,7 @@ import { inspectPlanetArrivalRun } from "./systems/planetArrivalRun";
 import { expeditionTrioReady, inspectExpeditionRoster } from "./systems/planetInsertion";
 import { hasShipInsertionDebit, inspectShipInsertionEnergy } from "./systems/shipInsertionEnergy";
 import { emptyGauntletCampaignV134, normalizeGauntletCampaignV134 } from "./systems/gauntletCampaignV134";
+import { inspectWarpEpochsV165 } from "./systems/warpEpochsV165";
 import {
   ARMORS,
   CODEX_ENTRIES,
@@ -1268,6 +1269,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.gauntletV134 === undefined ? {} : {
       gauntletV134: normalizeGauntletCampaignV134(source.gauntletV134,validIsoDate(source.createdAt,fallback.createdAt)),
     }),
+    ...(source.warpEpochsV165 === undefined ? {} : {
+      warpEpochsV165: inspectWarpEpochsV165(source.warpEpochsV165, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1600,6 +1604,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
     if (typeof value.createdAt !== "string" ||
         !normalizeGauntletCampaignV134(value.gauntletV134,value.createdAt))
       return { save:null, failure:"invalid-save" };
+  }
+  // V165 : une version future ou une forme invalide du Warp est refusée, jamais effacée.
+  if (value.warpEpochsV165 !== undefined && value.warpEpochsV165 !== null) {
+    const warp = inspectWarpEpochsV165(value.warpEpochsV165, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (warp.status === "future-version" || warp.status === "invalid-save") return { save: null, failure: warp.status };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;

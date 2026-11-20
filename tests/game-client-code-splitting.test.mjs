@@ -75,6 +75,7 @@ test("GameClient lazily loads every heavyweight game surface", async () => {
     "HomeworldRegionV68",
     "GameReserveV66",
     "ClanWarPanelV85",
+    "WarpEpochsPanelV165",
     "RecentSpriteLibraryV85",
   ]) {
     const moduleName = componentName === "PitCanvas" ? "PitExperienceV79" : componentName;

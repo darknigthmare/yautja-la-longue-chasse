@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V165 : quête commune, module, branches Warp, voyage engagé et état de branche ; absent sur les anciennes sauvegardes. */
+  warpEpochsV165?: import("./systems/warpEpochsV165").WarpEpochsStateV165 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

@@ -304,6 +304,7 @@ const MobilityGarage = React.lazy(() => import("./MobilityGarage"));
 const JusticePanel = React.lazy(() => import("./JusticePanel"));
 const ClanChroniclePanel = React.lazy(() => import("./ClanChroniclePanel"));
 const ClanWarPanelV85 = React.lazy(() => import("./ClanWarPanelV85"));
+const WarpEpochsPanelV165 = React.lazy(() => import("./WarpEpochsPanelV165"));
 const ClanWarGauntletLockerV132 = React.lazy(() => import("./ClanWarGauntletLockerV132"));
 const RecentSpriteLibraryV85 = React.lazy(() => import("./RecentSpriteLibraryV85"));
 const Mausoleum = React.lazy(() => import("./Mausoleum"));
@@ -361,6 +362,7 @@ type Screen =
   | "ship-acquisition-v89"
   | "title"
   | "clan-chronicle"
+  | "warp-epochs"
   | "clan-war"
   | "sprite-library"
   | "ship"
@@ -2183,7 +2185,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "warpEpochsV165">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2193,7 +2195,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, warpEpochsV165: update.warpEpochsV165 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -4291,7 +4293,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   const topBar =
     screen !== 'wolf-castle' && screen !== 'planet-arrival' && screen !== 'buried-cradle' &&
-    !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
+    !newGamePhase && !clanShipVisible && screen !== "prologue" && screen !== "youth-training" && screen !== "solo-v66" && screen !== "solo-v67" && screen !== "solo-v68" && screen !== "solo-v69" && screen !== "solo-v70" && screen !== "solo-v90" && screen !== "homeworld-region-v68" && screen !== "homeworld-passage-v67" && screen !== "game-reserve" && screen !== "ship-acquisition-v89" && screen !== "title" && screen !== "clan-chronicle" && screen !== "warp-epochs" && screen !== "mausoleum" && screen !== "mission" && screen !== "pit" && screen !== "pit-narrative" ? (
       <TopBar
         save={save}
         onShip={() => go(save.clanShipDocking?.status === "aboard" || save.clanShipDocking?.status === "approach" ? "clan-ship" : save.prologue ? "homeworld" : "deck")}
@@ -4532,6 +4534,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
           <div className="screen-safe">
             <Suspense fallback={<DeferredGameScreen />}>
               <ClanChroniclePanel save={save} onGameReserveV66={openGameReserveV66} onClose={() => go(chronicleReturnScreen)} />
+            </Suspense>
+            <p className="source-badge">
+              <button type="button" className="ghost-button" data-warp-entry-v165 onClick={() => go("warp-epochs")}>
+                Warp · époques (W-02 · 1629)
+              </button>
+            </p>
+          </div>
+        </section>
+      )}
+
+      {screen === "warp-epochs" && (
+        <section className="screen panel-screen" inert={settingsOpen}>
+          <div className="screen-safe">
+            <Suspense fallback={<DeferredGameScreen />}>
+              <WarpEpochsPanelV165 save={save} shipContext={mainMenuBrowserShipContextV81(save)}
+                onPersist={state => persistSocialProgress({ warpEpochsV165: state })}
+                onClose={() => go("clan-chronicle")} />
             </Suspense>
           </div>
         </section>
