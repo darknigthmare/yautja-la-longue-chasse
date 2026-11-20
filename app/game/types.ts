@@ -753,6 +753,8 @@ export interface SaveGame {
   hardcoreV155?: import("./systems/hardcoreV155").HardcoreStateV155 | null;
   /** V162: épreuve finale Black God (hors canon), victoire et sacrifice qui clôt la chronique. Absent tant qu'il n'est pas utilisé. */
   blackGodV162?: import("./systems/blackGodV162").BlackGodStateV162 | null;
+  /** V159: routes spatiales typées, voyage engagé et position du vaisseau (STATE5-18/19); absent des anciennes sauvegardes. */
+  spaceRoutesV159?: import("./systems/spaceRoutesV159").SpaceRoutesStateV159 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

@@ -49,6 +49,7 @@ import { isHomeworldContractsV68 } from "./systems/homeworldContractsV68";
 import { normalizeGameReserveV66, gameReserveV66Supported } from "./systems/gameReserveV66";
 import { normalizeShipPreparationV88 } from "./systems/shipPreparationV88";
 import { normalizeShipAcquisitionV89 } from "./systems/shipAcquisitionV89";
+import { inspectSpaceRoutesV159 } from "./systems/spaceRoutesV159";
 import { inspectClanShipDocking } from "./systems/clanShipDocking";
 import { evaluateClanShipAccess, evaluateClanShipOperationsCampaign, inspectClanShipOperations } from "./systems/clanShipOperations";
 import { inspectWolfCastleVisit } from "./systems/wolfCastle";
@@ -1349,6 +1350,9 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.blackGodV162 === undefined ? {} : {
       blackGodV162: source.blackGodV162 === null ? null : normalizeBlackGodV162(source.blackGodV162, validIsoDate(source.createdAt, fallback.createdAt)),
     }),
+    ...(source.spaceRoutesV159 === undefined ? {} : {
+      spaceRoutesV159: inspectSpaceRoutesV159(source.spaceRoutesV159, validIsoDate(source.createdAt, fallback.createdAt)).state,
+    }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1725,6 +1729,11 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.blackGodV162 !== undefined && value.blackGodV162 !== null) {
     if (isFutureBlackGodV162(value.blackGodV162)) return { save: null, failure: "future-version" };
     if (typeof value.createdAt !== "string" || !normalizeBlackGodV162(value.blackGodV162, value.createdAt)) return { save: null, failure: "invalid-save" };
+  }
+  // A newer or foreign route log cannot be silently dropped during import/export.
+  if (value.spaceRoutesV159 !== undefined && value.spaceRoutesV159 !== null) {
+    const routes = inspectSpaceRoutesV159(value.spaceRoutesV159, typeof value.createdAt === "string" ? value.createdAt : "");
+    if (routes.status === "future-version" || routes.status === "invalid-save") return { save: null, failure: routes.status };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;

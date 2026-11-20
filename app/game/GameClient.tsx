@@ -83,6 +83,7 @@ import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
 import { createGameReserveV66, createGameReserveV104, createGameReserveV107, createGameReserveV108, createGameReserveV109, canAdvanceGameReserveV66, type GameReserveV66State, type GameReserveChoiceV109 } from "./systems/gameReserveV66";
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
+import { actSpaceRoutesV159, normalizeSpaceRoutesV159, spacePersonalShipV159, type SpaceRoutesActionV159, type SpaceRoutesResultV159 } from './systems/spaceRoutesV159';
 import { actShipAcquisitionV89, normalizeShipAcquisitionV89, shipAcquisitionEligibleV89, shipAcquisitionSceneFactsV89, type ShipAcquisitionContextV89, type ShipAcquisitionActionV89, type ShipAcquisitionResultV89 } from './systems/shipAcquisitionV89';
 import { withNurseryCheckpoint, withNurseryCompletion } from "./systems/nurseryCampaign";
 import type { NurseryState, NurseryCompletionReceipt } from "./systems/nurseryPrologue";
@@ -367,6 +368,7 @@ const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
 const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
+const SpaceRoutesPanelV159 = React.lazy(() => import("./SpaceRoutesPanelV159"));
 const TrophyWorkshop = React.lazy(() => import("./TrophyWorkshop"));
 const TrophyTutorialBay = React.lazy(() => import("./TrophyTutorialBay"));
 const EnemyBestiaryV8 = React.lazy(() => import("./EnemyBestiaryV8"));
@@ -2242,7 +2244,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2252,7 +2254,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2648,6 +2650,25 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!result.accepted || !result.changed) return result;
     if (!persistSocialProgress({ shipAcquisitionV89: result.state })) return refused('Travail non confirmé dans la sauvegarde. Le dernier repère enregistré reste conservé ; réessaie.');
     return { ...result, state: saveRef.current.shipAcquisitionV89 ?? null };
+  };
+
+  const spaceShipV159 = useMemo(() => screen === 'map' ? spacePersonalShipV159(save, loadShipProgression(save)) : null,
+    [save, screen, selectedShipId]);
+  // V159: routes typées. L’action est écrite avant d’être annoncée ; l’écran relit la sauvegarde confirmée.
+  const onSpaceRouteActionV159 = (action: SpaceRoutesActionV159): SpaceRoutesResultV159 => {
+    const current = saveRef.current;
+    const refused = (message: string): SpaceRoutesResultV159 => ({ accepted: false, changed: false, state: current.spaceRoutesV159 ?? null, message });
+    let transferPending = true;
+    try { transferPending = archiveTransferPending(window.localStorage); } catch { /* Cannot attest a free archive transaction. */ }
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || transferPending || campaignOperationRef.current ||
+        settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy) {
+      return refused('Poste de route suspendu : confirme d’abord la campagne et ses sauvegardes.');
+    }
+    const result = actSpaceRoutesV159(current.spaceRoutesV159, action,
+      { ownerCreatedAt: current.createdAt, ship: spacePersonalShipV159(current, loadShipProgression(current)) });
+    if (!result.accepted || !result.changed) return result;
+    if (!persistSocialProgress({ spaceRoutesV159: result.state })) return refused('Route non confirmée dans la sauvegarde. Le dernier relevé enregistré reste conservé ; réessaie.');
+    return { ...result, state: saveRef.current.spaceRoutesV159 ?? null };
   };
 
   const persistHomeworldProgress = useCallback((homeworld: HomeworldProgress): boolean => {
@@ -3253,6 +3274,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const chooseMission = useCallback(
     (mission: MissionDefinition) => {
       if (save.missionProgress[mission.id].status === "locked") return;
+      if (normalizeSpaceRoutesV159(saveRef.current.spaceRoutesV159, saveRef.current.createdAt)?.trip) {
+        setToast("Le vaisseau personnel est en route : achève le trajet engagé avant de préparer une chasse."); return;
+      }
       const justice = saveRef.current.justice;
       const control = getJusticeRouteControl(justice, "clan-core");
       if (justice.intervention.stage !== "none" || justice.detention || control.kind === "identity-check" || control.kind === "summons") {
@@ -5308,6 +5332,15 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             onVisitHomeworld={() => go("homeworld")}
             justiceControlLabel={getJusticeRouteControl(save.justice, "clan-core").label}
             onOpenJustice={() => { setJusticeJurisdiction("clan-core"); openStationScreen("justice", hubLocation); setJusticeReturnScreen("map"); }}
+            routesPanel={
+              <SpaceRoutesPanelV159
+                ownerCreatedAt={save.createdAt}
+                state={normalizeSpaceRoutesV159(save.spaceRoutesV159, save.createdAt)}
+                ship={spaceShipV159 ?? spacePersonalShipV159(save, loadShipProgression(save))}
+                disabled={settingsOpen || trophyWorkshop !== null || archiveTransferBusy || !!archiveRecoveryIssue || campaignSaveBusy}
+                onAction={onSpaceRouteActionV159}
+              />
+            }
           />
         </Suspense>
       )}
