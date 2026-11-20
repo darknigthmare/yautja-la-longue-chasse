@@ -93,7 +93,28 @@ async function playStorageRecovery(page,context){
  await click(page,'Stopper le déplacement');
  await walk(page,op,343,302);
  const terrain=root(page).getByRole('group',{name:'Terrain logistique jouable'});
- await terrain.press('ArrowRight');await settled(page);
+ const terrainKeys=await terrain.getAttribute('aria-keyshortcuts');
+ const terrainHelp=await terrain.evaluate(node=>document.getElementById(node.getAttribute('aria-describedby'))?.textContent);
+ const pad=root(page).getByRole('group',{name:'Commandes de déplacement'});
+ const padButtons=await pad.getByRole('button').all();
+ const padRects=await Promise.all(padButtons.map(button=>button.boundingBox()));
+ check('The map exposes four keyboard shortcuts, focused instructions and five 44-pixel movement targets',
+  terrainKeys==='ArrowUp ArrowDown ArrowLeft ArrowRight'&&terrainHelp?.includes('focus clavier')&&
+  padRects.length===5&&padRects.every(rect=>rect&&rect.width>=44&&rect.height>=44)&&
+  await pad.getByRole('button',{name:'Arrêter le déplacement',exact:true}).count()===1);
+ const beforeKeys=await state(page);
+ for(const modifier of ['Control','Alt','Meta','Shift'])await terrain.press(`${modifier}+ArrowRight`);
+ await terrain.dispatchEvent('keydown',{key:'ArrowRight',code:'ArrowRight',isComposing:true});
+ await settled(page);
+ check('Modified arrows and composition leave the confirmed archive untouched',JSON.stringify(await state(page))===JSON.stringify(beforeKeys));
+ await terrain.press('ArrowRight');
+ await page.waitForFunction(revision=>Number(document.querySelector('[data-logistics-v109]')?.dataset.revision)>revision,beforeKeys.revision);
+ await settled(page);
+ const afterKey=await state(page),operatorBefore=api.logisticsActorV108(beforeKeys.convoy,op);
+ const operatorAfter=api.logisticsActorV108(afterKey.convoy,op);
+ check('One plain arrow moves only the focused selected team by one step',afterKey.revision===beforeKeys.revision+1&&
+  operatorAfter.x===operatorBefore.x+18&&operatorAfter.y===operatorBefore.y&&
+  await terrain.evaluate(node=>node===document.activeElement));
  await send(page,'Poser l’appui gauche');
  for(let i=0;i<3;i++){await terrain.press('ArrowRight');await settled(page);}
  await send(page,'Poser l’appui droit');
@@ -118,6 +139,12 @@ async function playStorageRecovery(page,context){
   await root(page).getByRole('button',{name:'Relire le carnet confirmé',exact:true}).waitFor();
   check('The stale tab keeps its original view and cannot issue another order',Number(await root(page).getAttribute('data-revision'))===before.revision&&await root(page).getByRole('button',{name:'Avancer le skiff',exact:true}).isDisabled());
   await page.bringToFront();
+  const staleMessage=await root(page).getByRole('status').innerText();
+  await terrain.press('ArrowRight');
+  await settled(page);
+  check('An arrow in the stale tab keeps the durable bytes and reload instruction intact',
+   staleMessage===await root(page).getByRole('status').innerText()&&
+   bytes===await page.evaluate(k=>localStorage.getItem(k),key));
   await click(page,'Relire le carnet confirmé');
   check('The same confirmed position, manifest, and stock are reread without rewriting',winner.convoy.boat.progress===7&&Number(await root(page).getAttribute('data-revision'))===winner.revision&&await page.evaluate(k=>localStorage.getItem(k),key)===bytes);
  }finally{await second.close();await page.bringToFront();}

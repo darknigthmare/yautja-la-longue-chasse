@@ -13,6 +13,8 @@ import ShipPreparationPanelV88 from "./ShipPreparationPanelV88";
 import CompanionResidencePanel from "./CompanionResidencePanel";
 import CompanionQuartersScene from "./CompanionQuartersScene";
 import BuriedCradleReturnPanel from './BuriedCradleReturnPanel';
+import { CRADLE_RETURN_MENTOR } from './systems/buriedCradleReturn';
+import type { HunterAppearance } from './types';
 import cradleArt from './data/buriedCradleArt.json';
 import type { CompanionResidenceObservation } from "./systems/companionResidence";
 import { SHIP_LEVEL_ART } from "./shipInteriorKit";
@@ -52,6 +54,12 @@ const crownSource = cradleArt.assets['100'];
 const CRADLE_CROWN_ART: NativeArt = { src: crownSource.src, sourceWidth: crownSource.width, sourceHeight: crownSource.height,
   alphaBounds: { x: crownSource.bounds[0], y: crownSource.bounds[1],
     width: crownSource.bounds[2] - crownSource.bounds[0], height: crownSource.bounds[3] - crownSource.bounds[1] } };
+
+const RETURN_MENTOR_APPEARANCE: HunterAppearance = {
+  presetId: 'custom', bodyMorphId: 'classic', headStyleId: 'legacy-clan',
+  skinId: 'ashen-mottle', biomaskId: null, dreadStyleId: 'braided', dreadTintId: 'obsidian',
+  armorStyleId: 'classic', armorTintId: 'bronze', trophyAdornmentId: 'none',
+};
 
 const freshControls = (): Record<Direction, boolean> => ({ up: false, down: false, left: false, right: false });
 const clamp = (value: number, min: number, max: number) => Math.max(min, Math.min(max, value));
@@ -366,6 +374,18 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
   const cradleState = cradleReturn?.save.buriedCradle;
   const cradleInstalled = !!cradleState && ['extracted', 'reported'].includes(cradleState.status) &&
     cradleState.personalShipId === cradleReturn?.selectedShipId && (cradleState.returnVisit?.revision ?? 0) >= 2;
+  const cradleMentorHere = frame.roomId === CRADLE_RETURN_MENTOR.roomId &&
+    cradleState?.status === 'extracted' && cradleState.personalShipId === cradleReturn?.selectedShipId &&
+    cradleState.returnVisit?.revision === 1;
+  const cradleMentorPosition = CRADLE_RETURN_MENTOR.position;
+  const cradleMentorScreen = pointOnScreen(cradleMentorPosition);
+  const visitCradleMentor = () => {
+    const current = frameRef.current;
+    if (suspendedRef.current || current.roomId !== CRADLE_RETURN_MENTOR.roomId) return;
+    const interaction = nearbyShipInterior25dInteraction(current.roomId, current.actor);
+    if (interaction?.type === 'service') focusCradleReturn();
+    else walkTo(ROOMS[current.roomId].station.approach);
+  };
 
   return <section ref={rootRef} className={styles.interior + " physical-ship-deck"} role="region"
     aria-label="Intérieur du vaisseau Yautja en 2,5D, huit salles reliées sur deux ponts" aria-describedby={helpId}
@@ -392,6 +412,15 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenP
         {room.fixtures.map(fixture => <Fixture key={fixture.id} fixture={fixture} actor={frame.actor}
           artOverride={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? CRADLE_CROWN_ART : FIXTURE_ART.archiveTerminal : undefined}
           label={cradleInstalled && fixture.id === 'trophy-workbench' ? cradleState?.progress.crownClaimed ? 'Crête de la Matriarche rapportée' : 'Relevés du Berceau sans trophée' : undefined} />)}
+        {cradleMentorHere && <div className={styles.actor} data-cradle-return-mentor={CRADLE_RETURN_MENTOR.id}
+          style={{ left: cradleMentorScreen.x, top: cradleMentorScreen.y, zIndex: 20 + Math.round(cradleMentorPosition.y) }}>
+          <span className={styles.actorShadow} />
+          <HunterRigPreview appearance={RETURN_MENTOR_APPEARANCE} armorId="scout" weaponIds={[]} gearIds={[]}
+            size={ACTOR_WIDTH} pose="idle" label="Mentor du retour du Berceau"
+            style={{ position: "absolute", left: -ACTOR_WIDTH / 2, top: -ACTOR_FOOT }} />
+          <button type="button" className={styles.returnMentorAction} data-cradle-return-mentor-action
+            disabled={suspended} tabIndex={inView(cradleMentorPosition, 80) ? 0 : -1} onClick={visitCradleMentor}>Parler au mentor</button>
+        </div>}
         {companions && <CompanionQuartersScene save={companions.save} site="personal" shipId={companions.selectedShipId} roomId={frame.roomId} />}
         {frame.roomId === "trophy-hall" && trophyDisplays.slice(0, 4).map((trophy, index) => <div className={styles.trophy} key={trophy.id} style={{ left: 260 + index * 185, top: 50 }}>
           <img src={trophy.image} alt={trophy.label} draggable={false} /><span>{trophy.label}</span>

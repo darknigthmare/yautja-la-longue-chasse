@@ -70,6 +70,39 @@ test('both debrief choices use real walked room routes and retain the extraction
   }
 });
 
+test('the mentor witnesses only the physical examination and the receipt survives reload', () => {
+  const route = createCradleReturnRoute(qa);
+  const care = route.act(extracted('retreat'), 'treat-return', context);
+  const before = JSON.stringify(care);
+  assert.equal(care.buriedCradle.returnVisit.events[0].witness, undefined);
+  assert.match(render(care, SHIP, 'trophy-hall'), /Le mentor te rejoint à l’établi/);
+  assert.equal(invoke(care, 'inspect-return', { returnObservation: observation('treat-return') }).accepted, false);
+  assert.equal(invoke(care, 'inspect-return', { personalShipId: 'wolf-ship', ownedShipIds: [SHIP, 'wolf-ship'] }).accepted, false);
+  assert.equal(JSON.stringify(care), before);
+
+  const examined = route.act(care, 'inspect-return', context);
+  const visit = examined.buriedCradle.returnVisit;
+  assert.equal(visit.events[1].witness, returns.CRADLE_RETURN_MENTOR.id);
+  assert.equal(examined.buriedCradle.crownDelivered, false);
+  assert.deepEqual(examined.buriedCradle.snapshot, care.buriedCradle.snapshot);
+  assert.deepEqual(examined.profile, care.profile);
+  assert.deepEqual(examined.prologue, care.prologue);
+  assert.equal(invoke(examined, 'inspect-return').accepted, false);
+
+  const reloaded = saves.parseSaveImport(saves.exportSave(examined));
+  assert(reloaded.save, reloaded.failure);
+  assert.deepEqual(reloaded.save.buriedCradle.returnVisit, visit);
+  assert.match(render(reloaded.save, SHIP, 'trophy-hall'), /data-cradle-return-witness="true"/);
+  assert.doesNotMatch(render(reloaded.save, SHIP, 'trophy-hall'), /100_trophee_couronne_socle/);
+  const legacy = structuredClone(examined);
+  delete legacy.buriedCradle.returnVisit.events[1].witness;
+  const oldReloaded = saves.parseSaveImport(saves.exportSave(legacy));
+  assert(oldReloaded.save, oldReloaded.failure);
+  assert.deepEqual(oldReloaded.save.buriedCradle.returnVisit, legacy.buriedCradle.returnVisit);
+  assert.doesNotMatch(render(oldReloaded.save, SHIP, 'trophy-hall'), /data-cradle-return-witness/);
+  assert.equal(route.act(oldReloaded.save, 'analyze-workshop', context).buriedCradle.status, 'reported');
+});
+
 test('all three outcomes are truthful and a failed crown retrieval can be retried without old return receipts', () => {
   for (const outcome of ['crown', 'victory', 'retreat']) {
     let save = extracted(outcome); const world = structuredClone(save.buriedCradle.progress);
@@ -139,6 +172,8 @@ test('import rejects future, reordered, duplicated, extra and physically impossi
     ['invalid-save', v => { v.returnVisit.events[0].observation.x = 600; v.returnVisit.events[0].observation.y = 330; }],
     ['invalid-save', v => { v.returnVisit.events[1].observation.roomId = 'clan-archives'; }],
     ['invalid-save', v => { v.returnVisit.events[2].unexpected = true; }],
+    ['invalid-save', v => { v.returnVisit.events[0].witness = returns.CRADLE_RETURN_MENTOR.id; }],
+    ['invalid-save', v => { v.returnVisit.events[1].witness = 'another-visitor'; }],
     ['invalid-save', v => { v.returnVisit.events.pop(); v.returnVisit.revision = 2; }],
     ['invalid-save', v => { v.status = 'extracted'; v.crownDelivered = false; }],
   ];

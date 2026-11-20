@@ -791,4 +791,6 @@ export interface SaveGame {
   homeworld: HomeworldProgress;
   /** Evidence and warrants are independent of honor and versus matches. */
   justice: JusticeProgress;
+  /** Receipts for honour settled with its owning campaign. Unknown archives stay intact until inspected. */
+  honorSourcesV169?: unknown;
 }
