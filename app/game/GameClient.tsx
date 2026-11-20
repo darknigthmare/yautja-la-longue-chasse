@@ -83,6 +83,8 @@ import { createHomeworldPassageV67, normalizeHomeworldPassageV67, canEnterHomewo
 import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
 import { createGameReserveV66, createGameReserveV104, createGameReserveV107, createGameReserveV108, createGameReserveV109, canAdvanceGameReserveV66, type GameReserveV66State, type GameReserveChoiceV109 } from "./systems/gameReserveV66";
 import { mainMenuModeAccessV81, mainMenuBrowserShipContextV81 } from './systems/mainMenuModesV81';
+import { abandonQueenHuntContractV163, emptyQueenHuntV163, evaluateQueenHuntAccessV163, normalizeQueenHuntV163,
+  QUEEN_HUNT_SUPPORT_MISSION_V163, settleQueenHuntMissionV163, syncFirstQueenFromCradleV163, takeQueenHuntContractV163 } from './systems/queenHuntV163';
 import { evaluateShipPreparationV88, inspectShipPreparationV88, readShipPreparationFleetV88, type ShipPreparationObservationV88, type ShipPreparationResultV88 } from './systems/shipPreparationV88';
 import { actSpaceRoutesV159, normalizeSpaceRoutesV159, spacePersonalShipV159, type SpaceRoutesActionV159, type SpaceRoutesResultV159 } from './systems/spaceRoutesV159';
 import { shipAcquisitionAuthorityV161 } from './systems/shipReceiptV161';
@@ -368,6 +370,7 @@ const WolfCastleScene = React.lazy(() => import("./WolfCastleScene"));
 const PlanetArrivalCinematic = React.lazy(() => import("./PlanetArrivalCinematic"));
 const PitHonorsPanel = React.lazy(() => import("./PitHonorsPanel"));
 const GalaxyMapPanel = React.lazy(() => import("./GalaxyMapPanel"));
+const QueenHuntPanelV163 = React.lazy(() => import("./QueenHuntPanelV163"));
 const ShipInterior25D = React.lazy(() => import("./ShipInterior25D"));
 const ShipAcquisitionV89 = React.lazy(() => import("./ShipAcquisitionV89"));
 const SpaceRoutesPanelV159 = React.lazy(() => import("./SpaceRoutesPanelV159"));
@@ -402,6 +405,7 @@ type Screen =
   | "ship-acquisition-v89"
   | "title"
   | "clan-chronicle"
+  | "queen-hunt"
   | "clan-war"
   | "sprite-library"
   | "ship"
@@ -2246,7 +2250,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "spaceRoutesV159" | "queenHuntV163" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162" | "minorArcsV160">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2256,7 +2260,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, spaceRoutesV159: update.spaceRoutesV159, queenHuntV163: update.queenHuntV163, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162, minorArcsV160: update.minorArcsV160 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -3309,6 +3313,38 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     [playSound, save.missionProgress, persistJusticeProgress],
   );
 
+  // V163 — Queen Hunt : prise, abandon et départ d'un contrat de ruche.
+  const queenHuntBusy = campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt || !!save.planetArrival;
+  const queenHuntAccess = evaluateQueenHuntAccessV163(save, mainMenuBrowserShipContextV81(save));
+  const openQueenHunt = useCallback(() => {
+    const current = saveRef.current;
+    const state = normalizeQueenHuntV163(current.queenHuntV163, current.createdAt) ?? (current.queenHuntV163 == null ? emptyQueenHuntV163(current.createdAt) : null);
+    if (state) {
+      const sync = syncFirstQueenFromCradleV163(state, current, new Date().toISOString());
+      if (sync.changed) persistSocialProgress({ queenHuntV163: sync.state });
+    }
+    setScreen("queen-hunt");
+  }, [persistSocialProgress]);
+  const takeQueenHunt = useCallback((contractId: string) => {
+    const current = saveRef.current;
+    const update = takeQueenHuntContractV163(current.queenHuntV163, current, mainMenuBrowserShipContextV81(current), contractId, new Date().toISOString());
+    if (update.accepted && update.changed && !persistSocialProgress({ queenHuntV163: update.state })) {
+      setToast("Contrat non confirmé par la sauvegarde."); return;
+    }
+    setToast(update.message);
+  }, [persistSocialProgress]);
+  const abandonQueenHunt = useCallback(() => {
+    const current = saveRef.current;
+    if (!current.queenHuntV163) return;
+    const update = abandonQueenHuntContractV163(current.queenHuntV163);
+    if (update.changed && !persistSocialProgress({ queenHuntV163: update.state })) { setToast("Abandon non confirmé par la sauvegarde."); return; }
+    setToast(update.message);
+  }, [persistSocialProgress]);
+  const launchQueenHunt = useCallback(() => {
+    const mission = MISSIONS.find(candidate => candidate.id === QUEEN_HUNT_SUPPORT_MISSION_V163);
+    if (mission && saveRef.current.queenHuntV163?.activeContract) chooseMission(mission);
+  }, [chooseMission]);
+
   const clearHuntSession = useCallback(() => {
     if (!sessionAliveRef.current) return false;
     reconcileHuntWrite();
@@ -3866,9 +3902,19 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
             ...(reward > 0 ? { profile: { ...next.profile, clanMarks: next.profile.clanMarks + reward } } : {}) };
         }
       }
+      // V163 : règle une seule fois le contrat Queen Hunt lié à cette sortie (runId).
+      let queenHuntMessage: string | null = null;
+      if (current.queenHuntV163?.activeContract && session) {
+        const queen = settleQueenHuntMissionV163(current.queenHuntV163, result,
+          { runId: session.runId, missionId: session.missionId, encounterRun: session.encounterRun, ownerSaveCreatedAt: session.ownerSaveCreatedAt },
+          next.missionProgress[result.missionId]?.attempts ?? -1);
+        if (queen.changed) next = { ...next, queenHuntV163: queen.state };
+        if (queen.changed || !queen.accepted) queenHuntMessage = queen.message;
+      }
       setPendingHuntResult(null);
       missionSettlementRef.current = true;
       const written = writeSaveWithStatus(next);
+      if (queenHuntMessage) setToast(written.persisted ? queenHuntMessage : "Résultat du contrat de ruche non confirmé par la sauvegarde.");
       saveRef.current = written.save;
       setSave(written.save);
       setSaveFailure(written.failure);
@@ -4909,6 +4955,16 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </section>
       )}
 
+      {screen === "queen-hunt" && (
+        <Suspense fallback={<DeferredGameScreen />}>
+          <QueenHuntPanelV163 access={queenHuntAccess}
+            state={normalizeQueenHuntV163(save.queenHuntV163, save.createdAt)}
+            nextEncounterShowsXeno={isEnemyV7RosterEncounter(QUEEN_HUNT_SUPPORT_MISSION_V163, save.missionProgress[QUEEN_HUNT_SUPPORT_MISSION_V163].attempts)}
+            busy={queenHuntBusy} onTake={takeQueenHunt} onAbandon={abandonQueenHunt} onLaunch={launchQueenHunt}
+            onClose={() => go("deck")} />
+        </Suspense>
+      )}
+
       {screen === "clan-chronicle" && (
         <section className="screen panel-screen" inert={settingsOpen}>
           <div className="screen-safe">
@@ -5178,6 +5234,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </button>
                 <button type="button" className="ghost-button" onClick={() => { setChronicleReturnScreen("deck"); go("clan-chronicle"); }}>
                   Dossier de campagne
+                </button>
+                <button type="button" className="ghost-button" data-open-queen-hunt-v163 disabled={queenHuntBusy} onClick={openQueenHunt}>
+                  Queen Hunt · contrats de ruche{queenHuntAccess.allowed ? "" : " (fermé)"}
                 </button>
                 <button type="button" className="ghost-button" data-open-buried-cradle
                   disabled={campaignSaveBusy || archiveTransferBusy || !!archiveRecoveryIssue || !!resumableHunt}

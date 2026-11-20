@@ -757,6 +757,8 @@ export interface SaveGame {
   spaceRoutesV159?: import("./systems/spaceRoutesV159").SpaceRoutesStateV159 | null;
   /** V160 : mini-arcs Lost Tribe / Serpent Clan, champ additif créé à la première épreuve acceptée. */
   minorArcsV160?: import("./systems/minorArcsV160").MinorArcsV160 | null;
+  /** V163: contrats Queen Hunt et jalon firstQueenResolved ; champ additif, absent des anciennes sauvegardes. */
+  queenHuntV163?: import("./systems/queenHuntV163").QueenHuntStateV163 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
