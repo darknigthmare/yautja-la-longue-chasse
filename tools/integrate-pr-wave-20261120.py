@@ -207,39 +207,20 @@ function normalizeCampaignCreationV155(originOrOptions: unknown, options: Campai
     git("commit", "-m", "Preserve legacy campaign creation and bind the combined hunt checks")
 
 
-def prefetch_source_blobs(refs):
-    wanted = set()
-    for ref in refs:
-        lines = git("ls-tree", "-r", ref, "--", "app", "scripts", "tests", INVENTORY).splitlines()
-        for line in lines:
-            record = line.split("\t", 1)[0].split()
-            assert len(record) == 3
-            if record[1] == "blob":
-                wanted.add(record[2])
-    inventory = "\n".join(sorted(wanted)) + "\n"
-    known = subprocess.run(["git", "cat-file", "--batch-check"], input=inventory, text=True,
-        capture_output=True, check=True, env={**os.environ, "GIT_NO_LAZY_FETCH": "1"})
-    missing = [line.split()[0] for line in known.stdout.splitlines() if line.endswith(" missing")]
-    print("Prefetching", len(missing), "original source blobs", flush=True)
-    for start in range(0, len(missing), 350):
-        batch = "\n".join(missing[start:start + 350]) + "\n"
-        subprocess.run(["git", "fetch", "--no-tags", "--filter=blob:none", "--stdin", "origin"],
-            input=batch, text=True, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-
 def main():
     assert git("rev-parse", "HEAD") == os.environ["INTEGRATION_SEED"]
     git("config", "user.name", "Codex")
     git("config", "user.email", "codex@users.noreply.github.com")
     git("config", "core.hooksPath", "/dev/null")
     git("config", "merge.conflictStyle", "diff3")
+    git("config", "merge.renames", "false")
     git("sparse-checkout", "set", "--no-cone", "/*", "!/*/", "/app/", "/scripts/", "/tests/", "/.github/",
         "/" + INVENTORY, "/.openai/hosting.json", "/build/")
     refspecs = [f"+refs/pull/{pr}/head:refs/wave/pr/{pr}" for pr in ORDER]
-    git("fetch", "--filter=blob:none", "--no-tags", "origin", "+refs/heads/main:refs/wave/main", *refspecs, visible=True)
+    git("fetch", "--refetch", "--filter=blob:limit=128k", "--no-tags", "origin", "+refs/heads/main:refs/wave/main", *refspecs, visible=True)
     assert git("rev-parse", "refs/wave/main") == MAIN, "main advanced; review changes before assembly"
     for pr in ORDER:
         assert git("rev-parse", f"refs/wave/pr/{pr}") == HEADS[pr], f"PR #{pr} moved"
-    prefetch_source_blobs([os.environ["INTEGRATION_SEED"], "refs/wave/main", *(f"refs/wave/pr/{p}" for p in ORDER)])
     merge_tip("refs/wave/main", "Bring in the verified main branch")
     for pr in ORDER:
         merge_tip(f"refs/wave/pr/{pr}", f"Merge PR #{pr} into November integration", pr)
