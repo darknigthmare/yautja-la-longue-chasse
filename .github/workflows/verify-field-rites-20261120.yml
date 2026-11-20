@@ -1,0 +1,115 @@
+name: Verify field receipts and campaign settlement
+
+on:
+  push:
+    branches: [codex/verify-field-rites-20261120]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: yautja-field-return-rites-20261120
+  cancel-in-progress: false
+
+jobs:
+  source:
+    name: Application, tests and reproducible runtime inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'd589f6d6855fb8191c5a021dc0b89031de3c15f7'
+      BASE_COMMIT: '04d493265a14fb51faa4d811553beb8ff26767cc'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 'd589f6d6855fb8191c5a021dc0b89031de3c15f7'
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate the official candidate inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Verify Next types
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Exercise the changed and adjacent contracts
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_COMMIT"
+          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
+          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
+            tests/scene-audio.test.mjs \
+            tests/game-client-ship-flow.test.mjs \
+            tests/harvest-inventory-v112.test.mjs \
+            tests/hunt-harvest-runtime-v111.test.mjs \
+            tests/honor-sources-v169.test.mjs \
+            tests/nursery-campaign.test.mjs \
+            tests/canopy-traversal-v112.test.mjs \
+            tests/hunt-canopy-runtime-v112.test.mjs \
+            tests/hunt-skinning-worksite-20261109.test.mjs \
+            tests/hunt-harvest-runtime-v111.test.mjs \
+            tests/trophy-harvest-v111.test.mjs \
+            tests/warp-module-bay.test.mjs \
+            tests/warp-epochs-v165.test.mjs \
+            tests/tantalus-warp-v167.test.mjs \
+            tests/clan-logistics-v108.test.mjs \
+            tests/clan-supply-route-v109.test.mjs \
+            tests/clan-war-summary-keyboard-20261120.test.mjs \
+            tests/ship-receipt-v161.test.mjs \
+            tests/homeworld-contracts-v68-integration.test.mjs \
+            tests/residence-life-v150.test.mjs \
+            tests/mobility-training-reward.test.mjs \
+            tests/pit-backward-throws-v112.test.mjs \
+            tests/pit-forward-throws-v109.test.mjs | sort -u)
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
+      - name: Strict lint of modified source and QA drivers
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          mapfile -t edited < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'app/**/*.ts' 'app/**/*.tsx' 'scripts/*.mjs' 'tests/*.test.mjs')
+          test "${#edited[@]}" -gt 0
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 "${edited[@]}"
+      - name: Preserve inventory and materialization evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: runtime-candidate-d589f6d6855fb8191c5a021dc0b89031de3c15f7
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
