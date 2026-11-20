@@ -14,7 +14,7 @@ const source = readFileSync(new URL("../app/game/GameClient.tsx", import.meta.ur
 const tree = ts.createSourceFile("GameClient.tsx", source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
 const handlers = [
   "persistSocialProgress", "settleResidenceLifeForRegionV150", "checkpointHomeworldRegionV68",
-  "fieldHomeworldRegionV68", "residenceActionV149", "originActionV151",
+  "fieldHomeworldRegionV68", "residenceActionV149", "residenceLifeActionV150", "originActionV151",
 ];
 const bodies = new Map();
 function collect(node) {
@@ -287,4 +287,70 @@ test("BUILD5-07 / QA5-05: a confirmed threshold mission opens three rooms and mo
   assert.deepEqual(settled.objects.filter(object => object.id === lamp).map(object => object.location),
     [{ kind: "room", houseId: NEXT, slotId: "arrival" }]);
   assert.equal(f.actHouse(NEXT, { kind: "arrive" }).ok, false);
+});
+
+test("a report follows the visible guide's saved visit and rejects a forged old-post receipt", () => {
+  const f = fixture("O1");
+  f.house(FIRST);
+  performed(f.actHouse(FIRST, { kind: "accept" }));
+  f.sortie();
+  f.house(FIRST);
+  performed(f.actHouse(FIRST, { kind: "route", choice: 0 }));
+  f.sortie();
+  f.house(FIRST);
+  performed(f.actHouse(FIRST, { kind: "activate" }));
+  f.huntToCache();
+  f.house(FIRST);
+  performed(f.env.residenceLifeActionV150({ kind: "invite", guestId: "guide" }));
+
+  // The normal threshold exit starts the visit in the persisted ledger.
+  const interior = f.current().homeworldRegionV68;
+  const outside = api.stepHomeworldRegionV68(interior, { interact: true });
+  assert.equal(outside.zone, "village");
+  assert(f.env.checkpointHomeworldRegionV68(outside));
+  const committedVisit = f.current().residenceLifeV150.visits.find(visit => visit.guestId === "guide");
+  assert.equal(committedVisit.stage, "under-way");
+  const route = api.guestRouteV150(FIRST, "guide");
+  const travelTicks = Math.floor(api.routeLengthV150(route) / api.GUEST_SPEED_V150 * 60);
+  const savedLife = f.reload().residenceLifeV150;
+  const guestsAt = state => api.guestsInSceneV150(savedLife, state);
+  const fixedGuide = api.HOMEWORLD_REGIONS_V68[REGION].residents.find(resident => resident.id === "guide");
+  const anchor = f.current().homeworldRegionV68;
+
+  function approaches(tick, wanted) {
+    const candidates = [];
+    for (const dy of [0, 45, 65, 90, -45, -65, -90]) {
+      for (const dx of [0, 45, 65, 90, -45, -65, -90]) {
+        const x = wanted.x + dx, y = wanted.y + dy;
+        const state = { ...anchor, tick, walked: anchor.walked + Math.hypot(x - anchor.actor.x, y - anchor.actor.y),
+          actor: { ...anchor.actor, x, y } };
+        if (api.canAdvanceHomeworldRegionV68(anchor, state)) candidates.push(state);
+      }
+    }
+    return candidates;
+  }
+  let actualProof, obsoleteProof, visible;
+  for (let tick = anchor.tick + Math.ceil(travelTicks / 2); tick < anchor.tick + travelTicks - 1; tick += 20) {
+    const guest = guestsAt({ ...anchor, tick }).find(item => item.residentId === "guide");
+    if (!guest || guest.inside || Math.hypot(guest.x - fixedGuide.x, guest.y - fixedGuide.y) <= 315) continue;
+    actualProof = approaches(tick, guest).map(state => api.stepHomeworldRegionV68(state, { interact: true }, false, guestsAt))
+      .find(next => next.pendingFieldEvent?.action === "report" && !api.normalizeRegionFieldEventV68(next.pendingFieldEvent));
+    if (!actualProof) continue;
+    obsoleteProof = approaches(tick, fixedGuide).map(state => api.stepHomeworldRegionV68(state, { interact: true }))
+      .find(next => next.pendingFieldEvent?.action === "report" && api.normalizeRegionFieldEventV68(next.pendingFieldEvent));
+    if (!obsoleteProof) continue;
+    visible = guestsAt(actualProof).find(item => item.residentId === "guide");
+    break;
+  }
+  assert(actualProof && obsoleteProof && visible, "Select reachable walking and fixed-post checkpoints");
+  assert(api.normalizeHomeworldRegionV68(actualProof, visible));
+  assert(api.normalizeHomeworldRegionV68(obsoleteProof), "Legacy fixed-post reports keep their original format");
+  const before = f.bytes();
+  assert.equal(f.env.fieldHomeworldRegionV68(obsoleteProof.pendingFieldEvent, obsoleteProof), false);
+  assert.equal(f.bytes(), before);
+  assert.equal(f.env.fieldHomeworldRegionV68(actualProof.pendingFieldEvent, actualProof), true);
+  const reloaded = f.reload().homeworldRegionV68;
+  assert.equal(reloaded.pendingFieldEvent, null);
+  assert(reloaded.eventReceipts.includes("report"));
+  assert.deepEqual(reloaded.actor, actualProof.actor);
 });

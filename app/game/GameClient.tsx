@@ -59,7 +59,7 @@ import { normalizeHunterChromaticsV113, maskOriginForCustomizationV135, type Hun
 import { commitHunterChromaticsV116 } from "./systems/hunterChromaticPersistenceV116";
 import { commitHunterCustomizationV146 } from "./systems/hunterCustomizationPersistenceV146";
 import { TrophyUsageControlsV147, TrophyUsageSummaryV147 } from "./TrophyUsagesV147";
-import { applyTrophyUsageV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
+import { applyTrophyUsageV147, isPersonalShipTrophyDisplayV147, type TrophyUsageActionV147 } from "./systems/trophyUsagesV147";
 import CloudAccountV71, { openCloudAccountV71 } from "./CloudAccountV71";
 import HomeworldModularHunter from "./HomeworldModularHunter";
 import { startYouthCampaign, withYouthCheckpoint, withYouthProgress, youthCampaignNeedsScene, youthCampaignObjective } from "./systems/youthCampaign";
@@ -1181,6 +1181,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     useState<MapReturnScreen>("deck");
   const [stationReturnScreen, setStationReturnScreen] =
     useState<StationReturnScreen>("deck");
+  const [openedTrophyHallAtPost, setOpenedTrophyHallAtPost] = useState(false);
+  const atPersonalTrophyHall = openedTrophyHallAtPost && hubLocation === "deck" && stationReturnScreen === "deck";
   const [chromaticFacilityV115, setChromaticFacilityV115] =
     useState<ChromaticFacilityV115>("ship");
   const [lastResult, setLastResult] = useState<MissionResult | null>(null);
@@ -3032,15 +3034,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const fieldHomeworldRegionV68 = useCallback((event: RegionFieldEventV68, state: HomeworldRegionStateV68): boolean => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt || !current.homeworldRegionV68 ||
-      !canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state) || JSON.stringify(state.pendingFieldEvent) !== JSON.stringify(event) ||
-      !canEnterHomeworldRegionV68(current, event.regionId).allowed) return false;
-    const result = recordContractsFieldEventV68(current.homeworld.contractsV68, event, {regionId:state.regionId,runId:state.runId});
+      JSON.stringify(state.pendingFieldEvent) !== JSON.stringify(event) || !canEnterHomeworldRegionV68(current, event.regionId).allowed) return false;
+    // Use the same authoritative visit and tick as the rendered guide. The
+    // pending proof supplies no NPC coordinates and is erased on acceptance.
+    const visitingGuide = event.action === "report"
+      ? guestsInSceneV150(normalizeResidenceLifeV150(current.residenceLifeV150) ?? emptyResidenceLifeV150(), state)
+        .find(guest => guest.residentId === "guide")
+      : undefined;
+    const reportAt = state.zone !== "village" || visitingGuide?.inside ? null : visitingGuide;
+    if (!canAdvanceHomeworldRegionV68(current.homeworldRegionV68, state, reportAt)) return false;
+    const context = { regionId: state.regionId, runId: state.runId, reportAt };
+    const result = recordContractsFieldEventV68(current.homeworld.contractsV68, event, context);
     if (!result.ok) return false;
     // V149: the same visible action raises local respect and advances threshold missions (one write).
     const residence = isFutureResidenceV149(current.residenceV149) ? { state: current.residenceV149, completed: [] as string[] }
       : recordResidenceFieldEventV149(normalizeResidenceV149(current.residenceV149) ?? emptyResidenceV149(),
         { regionId: event.regionId, runId: event.runId, action: event.action });
-    const arcs = recordMinorArcsFieldEventV160(current.minorArcsV160, current.createdAt, event, {regionId:state.regionId,runId:state.runId});
+    const arcs = recordMinorArcsFieldEventV160(current.minorArcsV160, current.createdAt, event, context);
     const saved = persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state},
       residenceV149: residence.state, ...settleResidenceLifeForRegionV150(current, state),
       ...(arcs.changed && arcs.state ? { minorArcsV160: arcs.state } : {}) });
@@ -3313,7 +3323,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const openStationScreen = useCallback(
-    (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115) => {
+    (next: StationScreen, returnScreen: StationReturnScreen, facility?: ChromaticFacilityV115, openedAtTrophyPost = false) => {
       const access = tribunalAccessV147(saveRef.current.tribunalV147);
       if ((returnScreen === "homeworld" && !access.city) || (returnScreen === "clan-ship" && !access.clanShip)) {
         setToast("Les services du clan sont fermés pendant l’exil. Le dossier de justice est accessible depuis le pont."); return;
@@ -3321,6 +3331,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de changer d’installation."); return; }
       setHubLocation(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       setStationReturnScreen(returnScreen);
+      setOpenedTrophyHallAtPost(next === "trophies" && returnScreen === "deck" && openedAtTrophyPost);
       if (next === "customization") setChromaticFacilityV115(facility ?? (returnScreen === "homeworld" ? "forge" : "ship"));
       if (next === "justice") setJusticeReturnScreen(returnScreen === "homeworld" ? "homeworld" : returnScreen === "clan-ship" ? "clan-ship" : "deck");
       go(next);
@@ -4269,7 +4280,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     const result = commitHunterCustomizationV146({
       current: saveRef.current,
       expectedOwnerCreatedAt: entry.ownerCreatedAt,
-      apply: current => applyTrophyUsageV147(current, action),
+      apply: current => applyTrophyUsageV147(current, action, undefined, { atPersonalTrophyHall }),
       write: next => writeSaveWithStatus(next),
       reconcile: (attempt, owner) => reconcileSaveWrite(attempt, owner),
     });
@@ -4287,7 +4298,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     void playSound("select");
     return true;
   }, [screen, settingsOpen, campaignSaveBusy, archiveTransferBusy, archiveRecoveryIssue,
-      entry.ownerCreatedAt, playSound]);
+      entry.ownerCreatedAt, playSound, atPersonalTrophyHall]);
 
   const applyShipLoadout = useCallback(
     (loadout: Loadout, appearance: HunterAppearance) => {
@@ -4767,12 +4778,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ),
     [save.trophies],
   );
+  const trophyAssignments = save.trophyUsagesV147?.assignments;
   const deckTrophyDisplays = useMemo(() => trophyRecords.flatMap((trophy) => {
+    if (!isPersonalShipTrophyDisplayV147(trophyAssignments?.[trophy.id])) return [];
     const visual = trophyWallVisualForDefinitionId(trophy.definitionId) ??
       enemyTrophyGameplayForDefinitionId(trophy.definitionId);
     if (!visual) return [];
     return [{ id: trophy.id, label: visual.name, image: visual.runtimeUrl }];
-  }), [trophyRecords]);
+  }), [trophyAssignments, trophyRecords]);
   const resumableMission = resumableHunt
     ? MISSIONS.find(({ id }) => id === resumableHunt.missionId) ?? null
     : null;
@@ -5371,6 +5384,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 onOpenMap={() => openMap("deck")}
                 onOpenArmory={() => openStationScreen("armory", "deck")}
                 onOpenTrophies={() => openStationScreen("trophies", "deck")}
+                onOpenPersonalTrophyHall={() => openStationScreen("trophies", "deck", undefined, true)}
                 onOpenArchives={() => openStationScreen("codex", "deck")}
                 onOpenAppearanceForge={() => openStationScreen("customization", "deck")}
                 onOpenMedbay={() => openStationScreen("medbay", "deck")}
@@ -6492,6 +6506,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               gamepadButtons={conservationPadButtonsV112} onClose={menuBack}
               disabled={settingsOpen||archiveTransferBusy||!!archiveRecoveryIssue||campaignSaveBusy} onAction={performConservationActionV112}/>
             <TrophyUsageSummaryV147 save={save} />
+            {trophyRecords.length > 0 && !atPersonalTrophyHall && (
+              <p>Pour déposer ou reprendre une prise à bord, rejoins le poste de la Salle des trophées du vaisseau personnel.</p>
+            )}
             <div className="trophy-grid">
               <details className="franchise-trophy-archive">
                 <summary>
@@ -6688,6 +6705,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                         trophy={trophy}
                         disabled={pendingTrophyCommit !== null || settingsOpen || campaignSaveBusy ||
                           archiveTransferBusy || !!archiveRecoveryIssue}
+                        station={{ atPersonalTrophyHall }}
                         onApply={commitTrophyUsageV147}
                       />
                     </article>

@@ -62,7 +62,7 @@ const pointOnScreen = (point: ShipInterior25dPoint) => {
 
 /** The same eight services, on a real ground plane. All coordinates below are
  * physical floor coordinates until the one projection in the renderer. */
-export default function ShipInterior25D(props: PhysicalShipDeckProps) {
+export default function ShipInterior25D(props: PhysicalShipDeckProps & { onOpenPersonalTrophyHall?: () => void }) {
   const {
     appearance, loadout, trophyDisplays = [], rankLabel = "Chasseur",
     selectedDestination = "Choisis une chasse à la carte galactique",
@@ -135,14 +135,15 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     return actual?.type === 'service' ? { site: 'personal', roomId: current.roomId, x: current.actor.x, y: current.actor.y } : null;
   }, []);
 
-  const openService = useCallback((id: PhysicalShipStationId) => {
+  const openService = useCallback((id: PhysicalShipStationId, atFixture = false) => {
     if (suspendedRef.current) return;
     stop();
     const active = propsRef.current;
     active.onInteract?.(id);
     const actions: Record<PhysicalShipStationId, (() => void) | undefined> = {
       "galaxy-map": active.onOpenMap, "wall-armory": active.onOpenArmory,
-      "trophy-hall": active.onOpenTrophies, "clan-archives": active.onOpenArchives,
+      "trophy-hall": atFixture ? (active.onOpenPersonalTrophyHall ?? active.onOpenTrophies) : active.onOpenTrophies,
+      "clan-archives": active.onOpenArchives,
       "appearance-forge": active.onOpenAppearanceForge, "medical-bay": active.onOpenMedbay,
       "training-arena": active.onOpenTraining, "launch-airlock": active.onOpenAirlock,
     };
@@ -181,7 +182,7 @@ export default function ShipInterior25D(props: PhysicalShipDeckProps) {
     const current = frameRef.current;
     const actual = nearbyShipInterior25dInteraction(current.roomId, current.actor);
     if (!actual) { notify("Approche-toi d’une installation ou d’un passage."); return; }
-    if (actual.type === "service") { openService(actual.station.id); return; }
+    if (actual.type === "service") { openService(actual.station.id, true); return; }
     const destination = shipInterior25dTransition(current.roomId, actual.door.id, current.actor);
     if (!destination) { notify("Le seuil doit être libre et à portée pour passer."); return; }
     stop();

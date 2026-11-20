@@ -12,7 +12,7 @@ import {
   TROPHY_DISPLAY_SITES_V147, TROPHY_DISPLAY_SITE_LABELS_V147, TROPHY_EXCHANGE_CLANS_V147,
   checkTrophyUsageV147, communityRespectV147, exchangeFavorsV147, openedRevelationLeadsV147,
   trophyUsageV147, wornTrophyEffectsV147,
-  type TrophyExchangeClanIdV147, type TrophyUsageActionV147,
+  type TrophyExchangeClanIdV147, type TrophyUsageActionV147, type TrophyUsageStationV147,
 } from "./systems/trophyUsagesV147";
 import styles from "./TrophyUsagesV147.module.css";
 
@@ -74,10 +74,11 @@ export function TrophyUsageSummaryV147({ save }: { save: SaveGame }) {
 
 const USAGE_LABELS = { reserve: "En réserve", displayed: "Exposé", worn: "Porté", traded: "Échangé" } as const;
 
-export function TrophyUsageControlsV147({ save, trophy, disabled, onApply }: {
+export function TrophyUsageControlsV147({ save, trophy, disabled, station, onApply }: {
   save: SaveGame;
   trophy: TrophyRecord;
   disabled: boolean;
+  station?: TrophyUsageStationV147;
   onApply: TrophyUsageApplyV147;
 }) {
   const [clanId, setClanId] = useState<TrophyExchangeClanIdV147>(TROPHY_EXCHANGE_CLANS_V147[0].id);
@@ -90,7 +91,7 @@ export function TrophyUsageControlsV147({ save, trophy, disabled, onApply }: {
     if (onApply(action, confirmation)) setConfirming(false);
   };
   const button = (action: TrophyUsageActionV147, label: string, confirmation: string) => {
-    const check = checkTrophyUsageV147(save, action);
+    const check = checkTrophyUsageV147(save, action, station);
     return (
       <button type="button" disabled={disabled || !check.ok} title={check.ok ? undefined : check.reason}
         onClick={() => run(action, confirmation)}>{label}</button>
