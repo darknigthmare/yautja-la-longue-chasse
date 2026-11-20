@@ -1,0 +1,590 @@
+{
+  "candidateSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+  "seams": [
+    {
+      "action": "heal",
+      "a16": {
+        "frame": 16,
+        "sourceRect": [
+          941,
+          941,
+          313,
+          313
+        ],
+        "rowIndex": 301,
+        "floorY": 301.5,
+        "rowPixelCount": 8,
+        "contactRowXSpans": [
+          [
+            99,
+            100
+          ],
+          [
+            106,
+            107
+          ],
+          [
+            113,
+            119
+          ]
+        ],
+        "lowestAlpha128Row": 301,
+        "ignoredLowerOpaqueRows": 0,
+        "originalPivot": {
+          "x": 157,
+          "y": 282.6
+        },
+        "candidatePivot": {
+          "x": 157,
+          "y": 301.5
+        },
+        "candidateAnchorTarget": {
+          "x": 157,
+          "y": 302.5
+        },
+        "candidateDrawOffset": {
+          "x": 0,
+          "y": 1.0
+        },
+        "opaqueBounds": [
+          79,
+          92,
+          230,
+          302
+        ],
+        "visibleBounds": [
+          78,
+          90,
+          231,
+          303
+        ],
+        "translatedVisibleBounds": [
+          78,
+          91.0,
+          231,
+          304.0
+        ],
+        "sensitivity": [
+          {
+            "threshold": 96,
+            "minPixels": 8,
+            "row": 301,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 160,
+            "minPixels": 8,
+            "row": 300,
+            "deltaRows": -1
+          },
+          {
+            "threshold": 128,
+            "minPixels": 6,
+            "row": 301,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 10,
+            "row": 300,
+            "deltaRows": -1
+          }
+        ]
+      },
+      "b01": {
+        "frame": 1,
+        "sourceRect": [
+          0,
+          0,
+          314,
+          314
+        ],
+        "rowIndex": 302,
+        "floorY": 302.5,
+        "rowPixelCount": 51,
+        "contactRowXSpans": [
+          [
+            96,
+            124
+          ],
+          [
+            133,
+            135
+          ],
+          [
+            183,
+            204
+          ]
+        ],
+        "lowestAlpha128Row": 303,
+        "ignoredLowerOpaqueRows": 1,
+        "originalPivot": {
+          "x": 157,
+          "y": 282.6
+        },
+        "candidatePivot": {
+          "x": 157,
+          "y": 302.5
+        },
+        "candidateAnchorTarget": {
+          "x": 157,
+          "y": 302.5
+        },
+        "candidateDrawOffset": {
+          "x": 0,
+          "y": 0.0
+        },
+        "opaqueBounds": [
+          81,
+          78,
+          237,
+          304
+        ],
+        "visibleBounds": [
+          81,
+          77,
+          238,
+          305
+        ],
+        "translatedVisibleBounds": [
+          81,
+          77.0,
+          238,
+          305.0
+        ],
+        "sensitivity": [
+          {
+            "threshold": 96,
+            "minPixels": 8,
+            "row": 303,
+            "deltaRows": 1
+          },
+          {
+            "threshold": 160,
+            "minPixels": 8,
+            "row": 302,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 6,
+            "row": 303,
+            "deltaRows": 1
+          },
+          {
+            "threshold": 128,
+            "minPixels": 10,
+            "row": 302,
+            "deltaRows": 0
+          }
+        ]
+      },
+      "nativeFloorDeltaBminusA": 1.0,
+      "silhouetteIouBefore": 0.809204021094265,
+      "silhouetteIouWithCandidateY": 0.8058559855245302,
+      "interpretation": "Geometric silhouette overlap only; not temporal smoothness or anatomy approval"
+    },
+    {
+      "action": "second_wind",
+      "a16": {
+        "frame": 16,
+        "sourceRect": [
+          941,
+          941,
+          313,
+          313
+        ],
+        "rowIndex": 301,
+        "floorY": 301.5,
+        "rowPixelCount": 30,
+        "contactRowXSpans": [
+          [
+            186,
+            207
+          ],
+          [
+            210,
+            214
+          ],
+          [
+            239,
+            241
+          ],
+          [
+            254,
+            257
+          ]
+        ],
+        "lowestAlpha128Row": 302,
+        "ignoredLowerOpaqueRows": 1,
+        "originalPivot": {
+          "x": 157,
+          "y": 282.6
+        },
+        "candidatePivot": {
+          "x": 157,
+          "y": 301.5
+        },
+        "candidateAnchorTarget": {
+          "x": 157,
+          "y": 302.5
+        },
+        "candidateDrawOffset": {
+          "x": 0,
+          "y": 1.0
+        },
+        "opaqueBounds": [
+          73,
+          89,
+          265,
+          303
+        ],
+        "visibleBounds": [
+          72,
+          88,
+          265,
+          304
+        ],
+        "translatedVisibleBounds": [
+          72,
+          89.0,
+          265,
+          305.0
+        ],
+        "sensitivity": [
+          {
+            "threshold": 96,
+            "minPixels": 8,
+            "row": 301,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 160,
+            "minPixels": 8,
+            "row": 301,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 6,
+            "row": 301,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 10,
+            "row": 301,
+            "deltaRows": 0
+          }
+        ]
+      },
+      "b01": {
+        "frame": 1,
+        "sourceRect": [
+          0,
+          0,
+          314,
+          314
+        ],
+        "rowIndex": 286,
+        "floorY": 286.5,
+        "rowPixelCount": 35,
+        "contactRowXSpans": [
+          [
+            120,
+            129
+          ],
+          [
+            186,
+            206
+          ],
+          [
+            219,
+            221
+          ],
+          [
+            246,
+            248
+          ],
+          [
+            256,
+            258
+          ]
+        ],
+        "lowestAlpha128Row": 286,
+        "ignoredLowerOpaqueRows": 0,
+        "originalPivot": {
+          "x": 157,
+          "y": 282.6
+        },
+        "candidatePivot": {
+          "x": 157,
+          "y": 286.5
+        },
+        "candidateAnchorTarget": {
+          "x": 157,
+          "y": 302.5
+        },
+        "candidateDrawOffset": {
+          "x": 0,
+          "y": 16.0
+        },
+        "opaqueBounds": [
+          73,
+          89,
+          268,
+          287
+        ],
+        "visibleBounds": [
+          73,
+          87,
+          269,
+          288
+        ],
+        "translatedVisibleBounds": [
+          73,
+          103.0,
+          269,
+          304.0
+        ],
+        "sensitivity": [
+          {
+            "threshold": 96,
+            "minPixels": 8,
+            "row": 286,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 160,
+            "minPixels": 8,
+            "row": 286,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 6,
+            "row": 286,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 10,
+            "row": 286,
+            "deltaRows": 0
+          }
+        ]
+      },
+      "nativeFloorDeltaBminusA": -15.0,
+      "silhouetteIouBefore": 0.6904337492572786,
+      "silhouetteIouWithCandidateY": 0.7273214285714286,
+      "interpretation": "Geometric silhouette overlap only; not temporal smoothness or anatomy approval"
+    },
+    {
+      "action": "death",
+      "a16": {
+        "frame": 16,
+        "sourceRect": [
+          941,
+          941,
+          313,
+          313
+        ],
+        "rowIndex": 300,
+        "floorY": 300.5,
+        "rowPixelCount": 14,
+        "contactRowXSpans": [
+          [
+            81,
+            84
+          ],
+          [
+            88,
+            91
+          ],
+          [
+            96,
+            100
+          ],
+          [
+            107,
+            110
+          ],
+          [
+            117,
+            118
+          ]
+        ],
+        "lowestAlpha128Row": 300,
+        "ignoredLowerOpaqueRows": 0,
+        "originalPivot": {
+          "x": 157,
+          "y": 282.6
+        },
+        "candidatePivot": {
+          "x": 157,
+          "y": 300.5
+        },
+        "candidateAnchorTarget": {
+          "x": 157,
+          "y": 302.5
+        },
+        "candidateDrawOffset": {
+          "x": 0,
+          "y": 2.0
+        },
+        "opaqueBounds": [
+          49,
+          165,
+          235,
+          301
+        ],
+        "visibleBounds": [
+          48,
+          165,
+          236,
+          302
+        ],
+        "translatedVisibleBounds": [
+          48,
+          167.0,
+          236,
+          304.0
+        ],
+        "sensitivity": [
+          {
+            "threshold": 96,
+            "minPixels": 8,
+            "row": 300,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 160,
+            "minPixels": 8,
+            "row": 300,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 6,
+            "row": 300,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 10,
+            "row": 300,
+            "deltaRows": 0
+          }
+        ]
+      },
+      "b01": {
+        "frame": 1,
+        "sourceRect": [
+          0,
+          0,
+          314,
+          314
+        ],
+        "rowIndex": 278,
+        "floorY": 278.5,
+        "rowPixelCount": 24,
+        "contactRowXSpans": [
+          [
+            97,
+            100
+          ],
+          [
+            107,
+            111
+          ],
+          [
+            117,
+            122
+          ],
+          [
+            127,
+            130
+          ],
+          [
+            228,
+            234
+          ],
+          [
+            242,
+            244
+          ],
+          [
+            247,
+            248
+          ]
+        ],
+        "lowestAlpha128Row": 279,
+        "ignoredLowerOpaqueRows": 1,
+        "originalPivot": {
+          "x": 157,
+          "y": 282.6
+        },
+        "candidatePivot": {
+          "x": 157,
+          "y": 278.5
+        },
+        "candidateAnchorTarget": {
+          "x": 157,
+          "y": 302.5
+        },
+        "candidateDrawOffset": {
+          "x": 0,
+          "y": 24.0
+        },
+        "opaqueBounds": [
+          57,
+          126,
+          254,
+          280
+        ],
+        "visibleBounds": [
+          57,
+          126,
+          255,
+          281
+        ],
+        "translatedVisibleBounds": [
+          57,
+          150.0,
+          255,
+          305.0
+        ],
+        "sensitivity": [
+          {
+            "threshold": 96,
+            "minPixels": 8,
+            "row": 278,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 160,
+            "minPixels": 8,
+            "row": 278,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 6,
+            "row": 278,
+            "deltaRows": 0
+          },
+          {
+            "threshold": 128,
+            "minPixels": 10,
+            "row": 278,
+            "deltaRows": 0
+          }
+        ]
+      },
+      "nativeFloorDeltaBminusA": -22.0,
+      "silhouetteIouBefore": 0.5033237175467202,
+      "silhouetteIouWithCandidateY": 0.670367445533516,
+      "interpretation": "Geometric silhouette overlap only; not temporal smoothness or anatomy approval"
+    }
+  ]
+}

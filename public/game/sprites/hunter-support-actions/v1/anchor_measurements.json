@@ -1,0 +1,2774 @@
+{
+  "schemaVersion": 1,
+  "artisticStatus": "draft",
+  "clips": {
+    "canopy_attach": {
+      "sourceSha256": "94893cdde22bbb9d5f6cd3fdd9e10e2e569830aabe802f9fb758ceedc043a9ab",
+      "method": "two-fist silhouette proxy",
+      "target": {
+        "x": 157,
+        "y": 50
+      },
+      "notes": "Mean of two separately measured alpha128 top12 fist-silhouette centroids. A graphical review proxy, not anatomical validation, real support contact or inverse kinematics. Every source pixel and all relative limb motion are retained.",
+      "registration": {
+        "method": "two-fist silhouette proxy",
+        "mode": "constant-from-last-frame",
+        "candidateReceiptSha256": "14e3ae266223fe3cf24c87c6039fd3d99dfb68db0e21e292f44948edb34f85be",
+        "evidence": "grip_registration_receipt.json",
+        "review": "Assistant visual review adopted this draft-only proxy; no human approval.",
+        "applyTo": "Constant endpoint pivot from source frame 16, shared by all 16 frames.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "gameplayBinding": null,
+        "residualSeam": "The mean grip is aligned, but the distance between fists, body volumes, limb poses, page joins and physical pendulum phase remain different; neither individual hand is guaranteed to remain at a real support contact."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 158.24889770723104,
+            "y": 51.71876837154615
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        }
+      ]
+    },
+    "canopy_hold": {
+      "sourceSha256": "007d5bdfd9afacd66f1b4055fd62b2ea960bbd9784b5d17b0488ab1117f93148",
+      "method": "two-fist silhouette proxy",
+      "target": {
+        "x": 157,
+        "y": 50
+      },
+      "notes": "Mean of two separately measured alpha128 top12 fist-silhouette centroids. A graphical review proxy, not anatomical validation, real support contact or inverse kinematics. Every source pixel and all relative limb motion are retained.",
+      "registration": {
+        "method": "two-fist silhouette proxy",
+        "mode": "per-frame",
+        "candidateReceiptSha256": "14e3ae266223fe3cf24c87c6039fd3d99dfb68db0e21e292f44948edb34f85be",
+        "evidence": "grip_registration_receipt.json",
+        "review": "Assistant visual review adopted this draft-only proxy; no human approval.",
+        "applyTo": "One measured pivot for each of the 16 frames.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "gameplayBinding": null,
+        "residualSeam": "The mean grip is aligned, but the distance between fists, body volumes, limb poses, page joins and physical pendulum phase remain different; neither individual hand is guaranteed to remain at a real support contact."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 164.36034255599475,
+            "y": 49.1477016542234
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 164.36520575590066,
+            "y": 47.247484718200695
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 166.23136068001804,
+            "y": 45.92185588254234
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 167.13579963855096,
+            "y": 44.0362258247242
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 168.1100122505232,
+            "y": 43.93637384513297
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 166.33972431077694,
+            "y": 45.91525689223057
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 166.6535088858865,
+            "y": 48.93642174184161
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 166.17004132231403,
+            "y": 49.34758423394787
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 166.04309713983216,
+            "y": 48.32921512759431
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 164.6054987212276,
+            "y": 47.348983071489464
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 165.12133959790208,
+            "y": 46.12961647727273
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 165.32358723664285,
+            "y": 44.07475623688196
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 164.90262515262515,
+            "y": 45.13880748880749
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 164.93259849164073,
+            "y": 47.00127894098412
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 165.27972963203933,
+            "y": 49.21046049302393
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 165.20185007974482,
+            "y": 49.91866028708134
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        }
+      ]
+    },
+    "canopy_swing": {
+      "sourceSha256": "b48dc885b4b68e0404edbff3f1512ec05327a695c2cff1b287ee7f2cf7891b46",
+      "method": "two-fist silhouette proxy",
+      "target": {
+        "x": 157,
+        "y": 50
+      },
+      "notes": "Mean of two separately measured alpha128 top12 fist-silhouette centroids. A graphical review proxy, not anatomical validation, real support contact or inverse kinematics. Every source pixel and all relative limb motion are retained.",
+      "registration": {
+        "method": "two-fist silhouette proxy",
+        "mode": "per-frame",
+        "candidateReceiptSha256": "14e3ae266223fe3cf24c87c6039fd3d99dfb68db0e21e292f44948edb34f85be",
+        "evidence": "grip_registration_receipt.json",
+        "review": "Assistant visual review adopted this draft-only proxy; no human approval.",
+        "applyTo": "One measured pivot for each of the 16 frames.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "gameplayBinding": null,
+        "residualSeam": "The mean grip is aligned, but the distance between fists, body volumes, limb poses, page joins and physical pendulum phase remain different; neither individual hand is guaranteed to remain at a real support contact."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 185.19262388154607,
+            "y": 45.72948176409138
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 180.5458491541437,
+            "y": 46.38287252437742
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 177.84291187739464,
+            "y": 46.32136671390332
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 176.5780554162297,
+            "y": 46.02816409040476
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 177.02975731895225,
+            "y": 45.276771956856706
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 170.94783882783884,
+            "y": 44.89776223776224
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 165.91666170693964,
+            "y": 45.00479853588858
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 161.44668623135243,
+            "y": 44.87431727398712
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 160.2255970067129,
+            "y": 44.28463739407945
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 158.94888638920133,
+            "y": 42.81883014623172
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 156.71266461808602,
+            "y": 42.8
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 155.44782356208654,
+            "y": 42.99267787708933
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157.34936179577466,
+            "y": 42.512874119718305
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 159.2162263776176,
+            "y": 43.99215424777255
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 160.28488408521304,
+            "y": 44.16383145363409
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 161.35647081413208,
+            "y": 43.88565668202765
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        }
+      ]
+    },
+    "canopy_release": {
+      "sourceSha256": "8212a5cf1e68adff9e47361f01fc05b33c84e1da32e32a6d3620e3ea043689e6",
+      "method": "two-fist silhouette proxy",
+      "target": {
+        "x": 157,
+        "y": 50
+      },
+      "notes": "Mean of two separately measured alpha128 top12 fist-silhouette centroids. A graphical review proxy, not anatomical validation, real support contact or inverse kinematics. Every source pixel and all relative limb motion are retained.",
+      "registration": {
+        "method": "two-fist silhouette proxy",
+        "mode": "constant-from-first-frame",
+        "candidateReceiptSha256": "14e3ae266223fe3cf24c87c6039fd3d99dfb68db0e21e292f44948edb34f85be",
+        "evidence": "grip_registration_receipt.json",
+        "review": "Assistant visual review adopted this draft-only proxy; no human approval.",
+        "applyTo": "Constant endpoint pivot from source frame 1, shared by all 16 frames.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "gameplayBinding": null,
+        "residualSeam": "The mean grip is aligned, but the distance between fists, body volumes, limb poses, page joins and physical pendulum phase remain different; neither individual hand is guaranteed to remain at a real support contact."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 163.16111144871172,
+            "y": 41.10095102090423
+          },
+          "confidence": "inspected-graphical-proxy-not-anatomical-contact"
+        }
+      ]
+    },
+    "idle": {
+      "sourceSha256": "fd062eb0c7a680e8305030f51f258923c974a3a030aa1022e64c5c8642de054f",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 299.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 299.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 299.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 299.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "aim_enter": {
+      "sourceSha256": "e81e6d789478823e0669b57d4fe010045120a8d0edcef89e02faa41b2a809d86",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "aim_hold": {
+      "sourceSha256": "df61087de8e200e1eeb746798457129aab97d9ce592da7281c9a763ea5e21302",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "aim_exit": {
+      "sourceSha256": "4111eeddf660b5c8ddd3ffa030297ee51d699c87d3ca4d66ce6c195f83340e55",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "hurt": {
+      "sourceSha256": "c202b4a78ae0f10d706ff23957fc215cdcc75025cdeb1a50173f5651abd3a1db",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "scan": {
+      "sourceSha256": "7eaab576eba5f9a02760e31474fac981869f00cd1a25a57b038f71be939b3887",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "cloak_on": {
+      "sourceSha256": "8c5645194a12137c1c46815e3ccc076aab8acdaf3b5d90de28a4e7817949ae6f",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "cloak_off": {
+      "sourceSha256": "fadfd4a17e3d5d9482e8cb92261d83c2da960deab08636e0fc62dca6b6cd99f8",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "heal_a": {
+      "sourceSha256": "dcb1b881b2d76ac31d3c182e49aa97ceb504e5099d1af7e66a4f24d7072b8d04",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "heal_b": {
+      "sourceSha256": "c5c921a00c98eda2cbacb7ef33c0a905ffee44a26070d3d38c4922c0fb0c74c0",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 304.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "second_wind_a": {
+      "sourceSha256": "f9ec1224681d88cc4bc7da0724c3fac215686ebe911f4070ba7ac3fcd1657162",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 304.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 304.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 304.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 303.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 302.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 301.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "second_wind_b": {
+      "sourceSha256": "513664779cad09a3e82aa2b905d08b454b9938a95a3a7f02253ccf1287248be8",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 286.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 286.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 286.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 286.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 285.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 285.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 285.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 285.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 286.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 287.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 286.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 287.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "death_a": {
+      "sourceSha256": "7ffad389391a316f5e223024d750eef1ccc32f3cfe32a85c7eee39cd10cc2bde",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 311.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 311.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 311.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 311.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 309.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 309.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 309.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 309.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 305.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 306.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 299.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 300.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    },
+    "death_b": {
+      "sourceSha256": "eef4bf450fb6f4ad14f4a53924450638015a7439df7c65539daf56f92c41903a",
+      "method": "bottom-support silhouette row",
+      "target": {
+        "x": 157,
+        "y": 302.5
+      },
+      "notes": "Last native source-cell row with at least eight alpha128 pixels, measured at row center. A graphical support proxy that may come from toes, a palm, knee or prone body; not certified anatomy or collision.",
+      "registration": {
+        "method": "bottom-support silhouette row",
+        "measurementMethod": "bottommost-source-cell-row-alpha-ge128-count-ge8",
+        "mode": "per-frame-y-only",
+        "candidateReceiptSha256": "39c7dcf81223892f0df6cd91cd6cf7d0c54929ee2897d3ca7e759a50284bbf70",
+        "evidence": "floor_registration_receipt.json",
+        "review": "Explicitly adopted after assistant visual review; no human artistic or anatomical approval.",
+        "sourcePixelsChanged": false,
+        "scaleChanged": false,
+        "authoredInternalMotionPreserved": true,
+        "presentationTranslationChanged": true,
+        "horizontalOffsetChanged": false,
+        "gameplayBinding": null,
+        "residualSeam": "Vertical silhouette-floor drift is removed. Different anatomy, body scale, hand/foot spacing, horizontal position and action phase between pages remain artistic differences."
+      },
+      "frames": [
+        {
+          "number": 1,
+          "pivot": {
+            "x": 157,
+            "y": 278.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 2,
+          "pivot": {
+            "x": 157,
+            "y": 278.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 3,
+          "pivot": {
+            "x": 157,
+            "y": 280.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 4,
+          "pivot": {
+            "x": 157,
+            "y": 278.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 5,
+          "pivot": {
+            "x": 157,
+            "y": 287.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 6,
+          "pivot": {
+            "x": 157,
+            "y": 288.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 7,
+          "pivot": {
+            "x": 157,
+            "y": 288.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 8,
+          "pivot": {
+            "x": 157,
+            "y": 288.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 9,
+          "pivot": {
+            "x": 157,
+            "y": 291.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 10,
+          "pivot": {
+            "x": 157,
+            "y": 291.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 11,
+          "pivot": {
+            "x": 157,
+            "y": 290.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 12,
+          "pivot": {
+            "x": 157,
+            "y": 291.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 13,
+          "pivot": {
+            "x": 157,
+            "y": 291.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 14,
+          "pivot": {
+            "x": 157,
+            "y": 291.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 15,
+          "pivot": {
+            "x": 157,
+            "y": 291.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        },
+        {
+          "number": 16,
+          "pivot": {
+            "x": 157,
+            "y": 291.5
+          },
+          "confidence": "inspected-graphical-floor-proxy-not-world-collision"
+        }
+      ]
+    }
+  }
+}

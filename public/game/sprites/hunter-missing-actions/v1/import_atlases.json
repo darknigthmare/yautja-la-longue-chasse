@@ -1,0 +1,7551 @@
+{
+  "schemaVersion": 1,
+  "artisticStatus": "draft",
+  "guardPixels": 2,
+  "packing": "Exact decoded source RGBA, with transparent padding and 2px outer guards; no resizing or repainting.",
+  "atlases": [
+    {
+      "id": "light_1",
+      "file": "import_atlases/light_1.png",
+      "sourceSha256": "7ffc19d904b921135eb7035034bfc8dbe70e1e16f9b4522f7eaebe6605b8631f",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/light_1/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1540d19df99ad9ff0f05a9a4a228991dee7d526bb672e9ca9941b6e417181cff"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/light_1/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "acdebf940a5abfe794749f9bfb23f9ee69d001a64436bba3a80884591bbdc3ce"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/light_1/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "054835dfbcb1e4682971126519b17d60c820763120a91264efc3ec4a24da0655"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/light_1/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a5808b3419d68c6fa69d3a90e7ed6425619251dfa5988e65228586f6ae84162b"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/light_1/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "255533f8f2330ec8b06b8f9be3e94b1eab6e7c168f3bbec8a3c4cb54b64f4118"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/light_1/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "38dde31fb8495c901daee5ce7ceda48566f571db3dcb4eb512b30fb2a9a46a02"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/light_1/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "17e66cc60a4bc8a16a9d57e0d04d7ede27bab8b1534602c04895b6e4a5a09e4e"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/light_1/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8aaa6b32ac57ad0d2ab38f56f7b2c034789dbaa4b6d2a09cc8a41b4dcc656ee1"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/light_1/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7ce2ea52ba3b680b3c9954c1937e04e63bdaad15677a2062cbc9e5631386d368"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/light_1/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a40ed5f64776adc1e15c7ac99d9a091b3f06ccb4102c03a79e798437039e09b2"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/light_1/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c9532f748466b642987338d59a07f5eaf6140e6fbfcc4e5ed15033d02cdb006f"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/light_1/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "9e183c9a22d81dc34e909891cf907ef50ecf27442c5c7d6165ee1e2410f3ce98"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/light_1/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a4d7c86853ba868618b6275ff05ca6f58ba64f6d7c9c17a366dd1266fb0f892f"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/light_1/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5ada909631c445c78a26967631e9563807bd8ef6e8883eab6f6b66c880d0439e"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/light_1/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "4183ee1646aa8d84d20432bc4bdddc7ba19e51b3f28cc00874a38b4671258f47"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/light_1/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7d59bc981efd3b680bac31d1c3c05fa42df692799bd37016b26bb87875277037"
+        }
+      ],
+      "sha256": "a7579b5f10b360e7f538d7a5479d834c55a06d9bfc7b1b9b6dda1216110c752a"
+    },
+    {
+      "id": "light_2",
+      "file": "import_atlases/light_2.png",
+      "sourceSha256": "b11645bbb7793e5efa07c88a1827d019ea2667582139c3e6e079b325357bb280",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/light_2/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d0bb91f5532326e4dd727ccfbc74858061014cc86f26f30d4b81bb48e3c18954"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/light_2/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "799b24553fa8f188a58e97d38ba7c74948e7fda9ce677276fb111721256b15fb"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/light_2/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1c33960a3510f63a86c39493f8e757333df62044f4d105e080c3359459da9f9d"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/light_2/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "be25b56e0e39eacd7acc4ebdfcb45016435cc7316f65360fbc8b212374f9deaa"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/light_2/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "152c3399d8a2780b518a08b6915040779572f16a316d749dfbcb584b90f744ce"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/light_2/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e84f1d834f643fed2d9a972dcd9678879423e1b5c091176974e419f2b7c3911b"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/light_2/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "401595b47e9921d20a7729356f6cc4188c41787ba7113d35592576840d23c292"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/light_2/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "4b30b3f1f4ace3ede9fe1d78c140de9d1d4fa2de3b2903822377b69036464b66"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/light_2/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "80525ade73f1b8b050413d6ad974dfd4ff1703ac932da87752de28d2c1ba2e38"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/light_2/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "023fd098b4bbf636cf8e5c93873a4437cdd35d308be794e94bce5bb3c94db443"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/light_2/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "eb49750ad921d704c539eea6b5a2f0e8063d582ee628af0779835f321aa0d35b"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/light_2/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d3b5a4d11204281ebac2ece8ec71d7ec4cbeb25eac2ebc89ed5e350cba740bd4"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/light_2/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "134a0e9a0a4f47a799bc1e18f316f7d8a454bd0cafa23292959425147940c202"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/light_2/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7d4d6c00f054d1bc916b8b1730a5a17d718c59bf965456a7e7ab45210fa26d6b"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/light_2/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a65f4c6c25f5732e1ed710a16a8a30a16cf60feb482c005cc3b2e5bb5a503b38"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/light_2/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6d2496039313ad4d58f329ab7a8ac896edf01c275326db2e2f47ad542b2de705"
+        }
+      ],
+      "sha256": "a432c61b93a3e2450380c40672753af092b9d69e3068f28af28fcb2f15cbd163"
+    },
+    {
+      "id": "combo_finisher_a",
+      "file": "import_atlases/combo_finisher_a.png",
+      "sourceSha256": "fbcd7a34e252654e4ea771c2242cadf7bdd3c0495cede63f826cba38fb1053b3",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/combo_finisher_a/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b0a9268d52223cc2792e5384905c1f2f86c46fc766298345afac13d2569f9df9"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/combo_finisher_a/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "30ba002e7ae7a5a115696e0a696ccabac7446065858c2119d49f82f90d8ccda3"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/combo_finisher_a/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "3c997b1e2d4b948c9acd78bbe2faeb6cb1684dda7e274e929833d0c1b2cc7194"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/combo_finisher_a/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c7bdb8dd5ea46a22038a661f563c6b31890d1d469b9efce88f56c68412d27db7"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/combo_finisher_a/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ad41d6b7511208e7ab66a4919f137a762bd0d4882d52870c3ae85f6820f0cabe"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/combo_finisher_a/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "30afa85b37d33950e4ed03723c20e4de1c01a1aa8b8e798f6296b56f9534c01d"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/combo_finisher_a/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "dc8bbc1513e6d0402f17b506d2301514e70d446a978bca1e24e6e0ac976fab2b"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/combo_finisher_a/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ed6ee1fa3fdc692b4ba7fa7167b8ec199f2a9e96a4b2b43f64435bcd561b9f4e"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/combo_finisher_a/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8fb296080c03dc70d89b78c268b40311625bff773a80ae34d281ffe8dc3b6322"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/combo_finisher_a/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "47be96efe8bd10bd73c702d2a9e8a7147d6f7885813a338b05a02b2b7e2ae29b"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/combo_finisher_a/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d8a07c9ade12860e96bd0c7e14fa5282827862c219e20705a82ab8b0462e706c"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/combo_finisher_a/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "37d643fd0edf5a4d45531c97561eabb64a922a6f2d203d78a1ec7e9c230b18e5"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/combo_finisher_a/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "cccc64a791fd637ab5167a4ed94e0dc6e083cc9b48b5c465314c3ba6835a4709"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/combo_finisher_a/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "46c6455d4b5c7af8865df405dd8f3ad5593691f2c13fbcc6f5f86c41928806be"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/combo_finisher_a/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "feb271667372739b304e1aeeee05c03d9317b4ca657296d6abcadd234eed14b1"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/combo_finisher_a/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1a1330d68a9ccacb93d2689d663cc871ae7f2e6cd43bba6c393957f22392d7a2"
+        }
+      ],
+      "sha256": "8b615cc6094ff1f732e2fde8195a06155e8115d236ffe2eaae06878897af20b0"
+    },
+    {
+      "id": "combo_finisher_b",
+      "file": "import_atlases/combo_finisher_b.png",
+      "sourceSha256": "3f75838d35018d1974e6e5d9ea185de1865e0de46446008d9ff0bc3a533a5a62",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/combo_finisher_b/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7f49b4da58ab1ae8f4cca969e8a4ee6cfc2f9b309231bde47e67306f4ba13e10"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/combo_finisher_b/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "aa2a8699a2441c60cf49dc027961a9bb00e232353f254e5680a6712f515ea25c"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/combo_finisher_b/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "63e05266adb7c7e0c0634c1ce4aae391a751eb2b313a57f8f2ab85aa6b7f254d"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/combo_finisher_b/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6aa4c2fd4b6ed814a8ef913434133f3a778c977a93ed81d3989d5c0e8b4147f9"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/combo_finisher_b/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "dd493b78f717c7a038562ae614fb30adaf5a7e8a91a67277b4b056c4193e98df"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/combo_finisher_b/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "dae6134613fed35ca9263c3e668ca29305b74a289fe61a10e057198b3644b45e"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/combo_finisher_b/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "79d87ea888a98675c3cb43bb41954cda7aeef5f38e6b5b2cb0be61b2dc5d1556"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/combo_finisher_b/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a631e6aa91d9cdb7b319c5d74cd88e3268de0fc63d65e9b6014930c1bf35d418"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/combo_finisher_b/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "4127e74d370b6de809a06d76355e5af924d0fc1feed9b501531c2c4359fe0b89"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/combo_finisher_b/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "275d90ed1838394b48c213de3759c832ababe6d7e2ae2aaf8db9c4f1d9433629"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/combo_finisher_b/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c07d3645be16b6e3425e47170904312ff6257b5444cfe60dfa2fc9cbb19b49ba"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/combo_finisher_b/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c62a4bc68402a49d949c55b2958d19bf63bda77494c121575a3fa0895c4024be"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/combo_finisher_b/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "3e9e64fd82c6aa74eea4cc4201a75f4630f5d09b7303b8379b1cbf2e3bc4729a"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/combo_finisher_b/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "89a1752995d241b564a561cc4b8e621a64669086a375d76c1b92c87f7c10e2f3"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/combo_finisher_b/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c86360fcdc1e1f320fa925a2fb6122cf6baed5f13fd90d1189dbd87352f91cb5"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/combo_finisher_b/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 138.13890836399108,
+            "y": 280.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": 18.861091636008922,
+            "y": 2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ac4b0e157090f26ac87a9f1b13af0f3b537baecbaf9204b904c5edb20ba09a63"
+        }
+      ],
+      "sha256": "1269b4e7de7f293538ed2ed2aaa8462bc171c9e9c9adf99cf1c9af979fd4cc2f"
+    },
+    {
+      "id": "heavy_strike_a",
+      "file": "import_atlases/heavy_strike_a.png",
+      "sourceSha256": "ab63427c92184a82acb2f6a0f0ec0931585133655d0940c76ab50ad958a6cdb9",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/heavy_strike_a/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5002cb7b255a6824f437e556377c8db78da4b97f0d4463cdb14994503b429b7f"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/heavy_strike_a/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "fb91ac4bb542ebbb3e4e256ae058f7ded3884d29a98ed6b5e7397b0a4b1f7b88"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/heavy_strike_a/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a651a6a4bfc45cc718839cc4f38fa697d036711bb3c8fceb65fe8ac925d1a275"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/heavy_strike_a/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "af473cfac9cd7f5640bfbcf6b205db39032df093008847244bae7d04e377bda1"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/heavy_strike_a/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "92712c95da11e0411fb47e8e1ee518b2a49fb09057c69c166da190313ea8edd1"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/heavy_strike_a/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c9e407b1cbf4cf69a6dd4f70464af1410d7b4e0ad6ba946e026d278ff60dd783"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/heavy_strike_a/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d33add5e561d749069eac8e54aa0c3114b9d3dd6e8fe27a9bba87afbb81d9ab4"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/heavy_strike_a/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "cbc9f7939f5537f3f4ef2668bb6d8c85cfa6361cd6a4f7b9acce559ba14833c4"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/heavy_strike_a/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8a2bece3f86a7b0ca1b076d259378ac2c4aaa8ee4c01c1622016a578a70e196d"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/heavy_strike_a/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f1bc2b29903253aab61e56233bdde58402d8043c8abaf7c0ce484fcb20f781dd"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/heavy_strike_a/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1aa4567e08e7c3269baa5df08c0df9dc36bd6d91dd530eb6b52b9e26aea50f2c"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/heavy_strike_a/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7843c6f91e2185770085b6aa7b3e8e89dae26feff8d98b3d508e02d543386f77"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/heavy_strike_a/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "bc29f60c53babd471e21d5aa22bf0591d278a7fb5384910f032cbbd9b2545f21"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/heavy_strike_a/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "20156c8711935837fb9662469b3de1444cc1969dd6c594bfeb5b748ca5fe9e57"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/heavy_strike_a/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d0115a112b5bada90afa3020f189aa009f84491f706d7abbcb939a69ae333935"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/heavy_strike_a/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "34f07efd0fb85b32e6ae14e3d0cb86170b97e2269a8b1db42fa5d852881d6cf4"
+        }
+      ],
+      "sha256": "1e095660478d9dd2d55448abff085fdafa06d3920513d5d009d515991a8f4986"
+    },
+    {
+      "id": "heavy_strike_b",
+      "file": "import_atlases/heavy_strike_b.png",
+      "sourceSha256": "c6ced644aa0acef0057e89c46776a684661f54449de30f61516e560ced4e17e3",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/heavy_strike_b/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "2204808a21e0bb3829cde9f5485cbaf1d7e6804fea544e55b33ad17ffdba821d"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/heavy_strike_b/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "45f14afd7e95c8b23ed42f41a370853844b2b0b6670fed4ad72514ead4c2a1cd"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/heavy_strike_b/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "30ec86861fcfffa386a9320428821c6e8d9c803460049520686113038246a852"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/heavy_strike_b/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a180456fb0ca2ac5a6d8ff2a2738813333e20aac2dfeeeeab79ccc2a32bd1341"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/heavy_strike_b/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "06ffdb2e0dcdb4787af84cf65f8470363b7c0b3cbe012b4acbed919ae2e8eb3c"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/heavy_strike_b/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "27c45bb357e44ee505adef694236fa0710a98b8b13468c68342d9b7e0abc49c0"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/heavy_strike_b/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "79e9183958b21f201ef5e8be158db0169b7b7657c21050afd8b4a25e3baca8a4"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/heavy_strike_b/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b8cde45fb97be7fdd075ea6307506b9e4671dd78a8468b3d1815f0dedc5b68d9"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/heavy_strike_b/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b0ced9eb7a353e50385e27b558cbe88b5fd75c0623416babe20f0d5d47c77067"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/heavy_strike_b/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "dc7ebdc9ed5c07aea91b90581f9d371b560ffd9dd428e3dbe453298fbc8e5207"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/heavy_strike_b/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "cc4a7be0325bc59f7725f241264b7360796a7d35f63e232ee5b9e33ebe329aaa"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/heavy_strike_b/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6c19c738d74fd0d11aae28d0532cb085e4befbabaad3772ae0fc5787d104c388"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/heavy_strike_b/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6348a33f6fa6f8336ad8d11f93e907777f8fcfa76836175cd67168006b73c785"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/heavy_strike_b/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "44f25faf8322eb54cd789586a9c111f6c0e7eba7fa206a95089e9652e4e3af7c"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/heavy_strike_b/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "24dcfa532088065542a4d3d4897bcdbaed87a7a6acdf2715f86f7a4be38aa40e"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/heavy_strike_b/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 290.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -8
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f884b648dc63291a3dcc0350b3815e7416ba718df4783371061d0e337b55bd29"
+        }
+      ],
+      "sha256": "fa3af67955d4cff0a5bfce616492e115a46742d6abbfc6f3f751cef7a9189d6e"
+    },
+    {
+      "id": "air_strike_a",
+      "file": "import_atlases/air_strike_a.png",
+      "sourceSha256": "a314900fa37cfee70f67f7f21409eb792be0413fb8fd01bd4442c58ed0498174",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/air_strike_a/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "07eaaaa7a8199dad252af823c358a3574dcf7750cc2328b64f119e08f8d41ab9"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/air_strike_a/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b204385497bef6bb5c79334bbf582931143634f1ccefb49d827134de528847eb"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/air_strike_a/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "899e1f800b1fe1d6eea9448c048d7c93bfda799c799dc0709407875d1be283b2"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/air_strike_a/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c8de4d2cdda75c62b1b6cba3b2c8c41d0267c29b3e120c8900b52ee51b71e24e"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/air_strike_a/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b7b03a811acdf4f5ca230ab50aa5150467210b71a5ef0e8ab7e4045740d28786"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/air_strike_a/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "82173f9d3cfca9502cbd71670de69706d5e0e3cbe6d2cf6ebc084deadbfaf454"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/air_strike_a/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5e24dec5dcc86fbd377f806664210aef21bfc5f5c0608af5a768c79838bb4e14"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/air_strike_a/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "db333f5bd678d5369c4742fdad3b53b2b2a47080a80007bd55627d1f221ebb41"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/air_strike_a/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "00d6f73dce56e570f18825f2b077914b2d49267d47dca144cf903adc42f74a4e"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/air_strike_a/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "98e99a996568ba2c31f026094913eab8780609b6ea7176e1f5f670934e6fe6cc"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/air_strike_a/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "307a16143ebd2fbf1fefb5ec42293097fad911e1ec56d1272b87e3b4f833f22b"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/air_strike_a/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5122599cbd4a9f3ade393ec3cb7c80a9ffae30a520cbb783dec50a851a0b39ec"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/air_strike_a/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a0a765661fc25d7c5e753ab87d58100c179ffa7801f2b7e96024ffdc0e914cd1"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/air_strike_a/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "16a5905f298e6f32d9606eb8842ef744053e65bcf4cd4ad7fcf4732ce1c84f43"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/air_strike_a/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d927bb43319b7e6653e2e8cea3d84bf19819dca8a323dd321b6fd8a6a42154c8"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/air_strike_a/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7161a5540edd7b14d741e4489563a98c0405957a6222ddcf516770f61b95f8fc"
+        }
+      ],
+      "sha256": "ec6c41be4cb4227adde4df31773ae486b759ab12dbd652635da942884bcd47ef"
+    },
+    {
+      "id": "air_strike_b",
+      "file": "import_atlases/air_strike_b.png",
+      "sourceSha256": "5a8323b3ea18a292cb7e372ff57a5a79efa4903e307e93687a5af399ab5e5d49",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/air_strike_b/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "0092ac3558718e6ec16cdc7226c15259b8d76401ca7ca074a27bede2f499904c"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/air_strike_b/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7896fdb88e815a7c47e6349d48a975148827b8df6f600652e33459752b50d0c0"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/air_strike_b/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a1f1976e369893a61a9dea88659c04db66fccf301ca4ff49ff38a9498b68b0c9"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/air_strike_b/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5c73c5b92d746553009238e8b523ffaf3a16eb088d1b35b4c98bdfc64a59aaee"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/air_strike_b/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f3c8b542f12b89b766ad2d479c236e16ce0908e41c3d966884b3a3e707ad85dc"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/air_strike_b/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8ddf111c437539be32066240770b5074a72af1e20820ac35db2c416bf141e376"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/air_strike_b/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "850baaa137f06f58a2e14bd3247cddf145a6570f1c8bc012ea4426c693785197"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/air_strike_b/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "24c84e7b040b3153a9193bd8bb18b8c20f5a8daabac485f6c7770c8fd1be43dc"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/air_strike_b/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "4f15d206e66ae67691dc844cee6db68746219371e759948ab3165690d5d2e952"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/air_strike_b/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6222853810d549242b59bf8fbbb6798e482587744eae23c76afa3f44d91f1a4d"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/air_strike_b/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "705f6c721f21257b01e9661222a078295d31139f9b48c76a7fbad272ddc0325f"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/air_strike_b/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "12aa75dfea533a80f5f323a38c88d49cd6bff358e338a82464dc323f677c6d80"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/air_strike_b/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "94d46e463f11c958c4e40e3e7559cabdf2cdb6ea40c19b83dcbc04f0701d9c4f"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/air_strike_b/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b91fbd611cdece38c6404403087faf1cd19109e1942595ffe4e0bd6ecc0f4f76"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/air_strike_b/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d01966d30c759f49bec67b823cf0c6facba294fe995c52cdce17bc99dafeeea9"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/air_strike_b/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ca60f5c220fcb6eca560b85566d2b974b71f92404e78e0119c1257b776db11ac"
+        }
+      ],
+      "sha256": "478d0088593c92b5f638776c149c5b24ce7822365da28cab291fbdce6036a71c"
+    },
+    {
+      "id": "guard_break_a",
+      "file": "import_atlases/guard_break_a.png",
+      "sourceSha256": "9f1419af4d2a434e733827f16ad097754cdd9a585d8eac2b5869e02915c78829",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/guard_break_a/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "599bb7b2973e37432291b358cabfa2ae179c34f337255dd598a517cd346be251"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/guard_break_a/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "422f78625576791a64bc9198aed9ac1510665d890e7a2175d73d028b39aab68b"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/guard_break_a/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "0ca99460baa837a3793c3d90da81c18f7dd5e548e2c411abe43e8e73a5675520"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/guard_break_a/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e0e2cd814357181a876e78b2c6c6b0eae26c253fce9c53d2c679a273e4e8308d"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/guard_break_a/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "725c2fbe36bf916a069b989e8f6d7d38c62a1eacfc7b6c3015ad9e9addf73fd7"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/guard_break_a/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "0115f4235f5a6ab8a3e636d9cea0dda0436d1f8aec5df89c09dfaefb0d16b720"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/guard_break_a/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1dcf39d44e8547e072be5d5b5cc3f55ff10e7542286596efebf981146b408d31"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/guard_break_a/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c4fe316abe37ec555a1076eff6842dfab8a201f1c515513e2688f31df88a42ba"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/guard_break_a/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "01676188974e8614d5a8b20e7d7ca128799596b7db2b869648d1efde2119b539"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/guard_break_a/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "eccfd4806fde3eaad2e0653b3b6a2d65c85d41fd71948e092c492da2fd472212"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/guard_break_a/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1be2f0b12e1077b773bee3af584d8952e8fdf84c140c800bdc61f81eebef824e"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/guard_break_a/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "26464e211d897235263e36d87d05a658d7f5bc4ba0e90762f30348fec678577e"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/guard_break_a/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "15c43da820e113306cc37b31fd07b96dd8976e53a580cfbe5c3f4b729ae915c2"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/guard_break_a/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a765c78193eb00eb3b0886ff650cc545c706d20818b15c5f026af293165fd8d2"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/guard_break_a/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "314dc52a59c5ecea3d46b34e9c89a0813faf01baf253f18dd8bb827f3063c00f"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/guard_break_a/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e45ec34601a9f32ec09860850ad776cf66b65d42f85ecf8fe8ce946307f00ffd"
+        }
+      ],
+      "sha256": "8409c05c31c78694014c36d9f3df7601ed48fa086815e607cf48da7d656c193b"
+    },
+    {
+      "id": "guard_break_b",
+      "file": "import_atlases/guard_break_b.png",
+      "sourceSha256": "7e6f4774e9291683ae8de2dbb995276453b13e73b2f18ccdcbd0dedfabe7f6ef",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/guard_break_b/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a5dbc7a56ad39431b12ac1814de21d17a70145176a8e680b63b98b76b3ebc06c"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/guard_break_b/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "711cfc324603ad394f715880e2aac32c4dcfbc0358d1f92804d54829543b7018"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/guard_break_b/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "fa9ff6e65cc6e7067b375bcd6562f0c4e6106ffa203b7911b4b1b7a196e9193d"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/guard_break_b/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "61a1d99b2f8f009f09603dfa721e1f6b1bb9920cbdd1c4760da114bfca16a65b"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/guard_break_b/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e5c939820de78540e54fa4ceb9a19f812b00e12917ef64640f78c130d4e620a2"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/guard_break_b/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b6f0b8a896d470fe22622339a41077a81f46266a592bd2e42f322458f0343e3f"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/guard_break_b/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "2b598857dfe19ee3846e8a4bc155d7a00cac51c5b19824d062b78706980764f0"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/guard_break_b/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e7bc0518930df12cff3433b6fc4a1158a38d8e52366da525fe7f540aaa253268"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/guard_break_b/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f1dc4fe5419f071e49b6c64becd26f27acb060f2911ac5857a84fbced0e830ee"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/guard_break_b/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e17cf193c089ff87be984567a5b69a2f8f5edafe7226112187fc81850f829ce1"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/guard_break_b/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "15fcd960195a18ef6931169ea2d72fcf0bffbd8f05984738776a36dc8798b1f1"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/guard_break_b/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "0d4e856227c0c0c96f6d9fbe9d3088fba7314c30d80b6a2532f1fc004b1b62e4"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/guard_break_b/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "050a632ca7a73fbfd65949852e6ee627b2a29df998ab8f450613718ec1437ede"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/guard_break_b/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f210799cd99c8489cd6b82ce65aab0db32292f3df75b7b9642815cc32484678b"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/guard_break_b/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "000b227e5b522123b7d3ac2ef2524d27c40770bc6edeb3df57379d8be6b787ee"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/guard_break_b/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "fda668b32bc84561d979f2a3219e643b3b5168dc25986f2033c09b728ea05551"
+        }
+      ],
+      "sha256": "2d41715ba4e103f7750ada5580ae4c49915baefc5e3b82600eb7e6457878e5d2"
+    },
+    {
+      "id": "parry",
+      "file": "import_atlases/parry.png",
+      "sourceSha256": "4678373ff386360eaa6681db06444b70d2fb7a9272f467472e81c39cbdd0808f",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/parry/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "3e3358b16862e93537df2866feb2ac0cf6147f19069467807cf32f8e8af64c86"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/parry/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "10771c870efb04698f955c775cba406eafbf0d819af0c4d4b29668d3b52099ee"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/parry/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f4b44a5f45338dc8171062cc46514a5366045c8938a38176c44881c1db871a7f"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/parry/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "60f4a6106de3aa89b55665fa52bae1d2dc2a1e79e55233469b6a9afc2b82e566"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/parry/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f43e4fc8ca803ae49ab4fb57cd49054fbd0f7467a0e61c92778748aed3c218a5"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/parry/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f709170b1f0fa1dd99d825c01e00877a72eca4d1688113de548ae26516e3b94e"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/parry/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b8cd45799ad446c6c5dd5fb1fc4ac2376abbdcc3919d079f111e46725bb9de9a"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/parry/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "47867c5b0fba774bc916975a450b44d05adca8bab83c5ed6a69cc2ad1b095d7f"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/parry/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c16002190aa1f4e14c4db2aed121e76e541291c9e084ae054092d0d29488962a"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/parry/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f9a3bbc74f1e1760808e117e0966986cee5c0d1eecc1912ee3145b69234a948c"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/parry/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b45d1b260028b4c094ed34b187f2a820aa946db351815d5f80196414be8c6b83"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/parry/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7d816f9ecb6629b07ab7910649acb0a9abfa220eb3d7d0d8c14d92481fe1c296"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/parry/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "4a0f07fbfeb88075f64888d17d8734e91eb7840c8a7c0becea09611d8c7c7dc6"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/parry/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "bef44ec4bf6bc93f777227f64cf8ef14f502bc73089c366589810bcd2078a089"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/parry/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "85bd73e5086f4bf282021bef20c09a4bf7d21fb85b52bc85a61f44a539034a71"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/parry/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "fe8c6829bc0954c13197371e0fc101a18dba67dfa80a04c8642bb8968a6e80ba"
+        }
+      ],
+      "sha256": "417ee3016b423cfec9930d464a188c6287f3f8f5991d4c93ecff30220bbc1ca0"
+    },
+    {
+      "id": "dodge",
+      "file": "import_atlases/dodge.png",
+      "sourceSha256": "11a487d96330b109f3f5134412dc49b42c111b0d561013e8b1c26f4314b8f1b5",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/dodge/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "9c0586c96f5d267b91bb0d3cabfbe883776b489d5385df611bd6d921501f4b28"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/dodge/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d26afce1347f3911a760a5b94aa189e45895c71a148ef3086b87bfac1477b8e9"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/dodge/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "42f770118825916ffc3ec3d9e5c8411ab85feb980eefbc481f0db42d1fa08dbf"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/dodge/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ea02edc047f915efe331fe7c7789a444d10b616a8f98b95077327ccf4ceb420a"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/dodge/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "45131a5f40b393e23f19454c11d25663dbbc442ad770895e34b34ab680d1e894"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/dodge/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6726a5c7b3dc4c85fa34b2a085b9b832f91a9c9d6f694a0af9156b92b73f6f78"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/dodge/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "92ee8c9025e2222d43a098f4d84572dad4ab0b55de9494d2043eda6a910ba826"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/dodge/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7682e1a5894fbdf0a4cd4fadd94f55e5bfef98ba2dad47524b17feeb8910feab"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/dodge/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e80c4ce00088db1d5fa5466a70450dd74b2f59f17271e64fc7500bc9d021db80"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/dodge/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "df733d32b29fc47d2dc9f8f6c163d416487c5d0b72dff80da1428a6545aaac9c"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/dodge/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5be4d164eba191acc414676c9e3348deb998736b0131ea2fc0aa9e47c5cef335"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/dodge/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "db5997428445d6e5493246c47540302525bbacb2b8fca80b5997a6c6e299e77d"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/dodge/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "605690f1385c6c3d37f3e7090646284cdf82361c7542d6fb3ade5e689fdceba3"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/dodge/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "13673ffcc430107098f81d4446e6899df569ea6786284a9d3917f55dd8818802"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/dodge/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b5d0b37011a5b9423d08af403f59fb03f893cc85af22702cd304cfe2d2d29efa"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/dodge/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ed103a28ce78835052bb9aa43ffd91ace587af029fc5b7809240c174bfb3377e"
+        }
+      ],
+      "sha256": "af920881854f32611570f758c9929be4d7e2d7244eddc3d97edad30a736c87e5"
+    },
+    {
+      "id": "run_forward",
+      "file": "import_atlases/run_forward.png",
+      "sourceSha256": "a3df5d789cb3e77f26f891391ce5ab48631c4e890828aa9dd8763302d5ab06f3",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/run_forward/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "de6337c3a1dae640a07148691dfc837cf8329aa6f4047da15cbdfd52e6c4ce85"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/run_forward/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "974f41e08686c0ebca6865c8f90e2eec76ce42a6a35480b0219c251882a15d54"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/run_forward/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "745b03a43870ce5ab83049f8ceb0d7f18cde327d8b98a40f735d300c1c5b4216"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/run_forward/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "2225a0e7cebe7d17d92fbf99572df9af0df8c7c84df05f730aad63fa1f7b001a"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/run_forward/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "3b36e570c8784e7a60a64f2aaacc5a6e6f4dcfaa44bac6b6274a2bc5a2d52ddf"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/run_forward/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "06c78ee5256215bc93492ae09d13ce0a8292e6011dadda782689c63974963aa8"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/run_forward/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e04dcbbf3471dee4470810f8620c882ec3f358f555ee57c2a999c5dcf08f27ff"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/run_forward/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "33c004dca3cae75f052f8061cf18b3c3397677c235aafa5b94a7b5047d629b67"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/run_forward/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5774064ec7b1e7a8ae9059e67ac160f80e456be243715e28eba407822145424b"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/run_forward/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "65c3b5c82902ef761e8f22ccd54ad6bcab05a260f4c38eca7567df0d543ae35b"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/run_forward/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "93e29f17b9eba0affadda1874b6b8e630b46863afec2983165178932478c254d"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/run_forward/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "acc8b97c83a617c2aa3f8a1d33295f95131f91b4f7d6158440d78111f31e9abd"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/run_forward/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b1b7493f671d12c4bc1a1f8b04600107a8de247216f59f913d176570a368b2e4"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/run_forward/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "dcb4c568640eb574e239749de7370d1df7e01067e45e6a45ad1119b0934379de"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/run_forward/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "cc4f545014fc3da149f8231d890fe817297bf8471977e4634d6bfe627d3efd03"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/run_forward/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "92f856b38e8351df4ff994d00c28e6797f3adcd36d750b938846cf34c2653838"
+        }
+      ],
+      "sha256": "683facc99ece9b0d844bb502df8b8123c6ace845f35d9524288e05d8db4a9684"
+    },
+    {
+      "id": "run_backward",
+      "file": "import_atlases/run_backward.png",
+      "sourceSha256": "2605f3cbcee3e5c9857c221275e2707623813e4ea44a7b5e9b29cc6cb8db8868",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/run_backward/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "21576bbd28c38fc86763f78f6312b089fc0d0347e4bd7718cd508bd762e330bc"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/run_backward/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a62b1b76fc522f418f81b2c1337edc022d39c0025505c3e11035b56a79b412d8"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/run_backward/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "59285b9d361e7961ca74f9e58bfbffe5553138075785c56995f798224395f224"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/run_backward/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "58a1311acd0805ca2b92ad463a8feb04a049e0a453d389f9ad656d5b100d2f07"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/run_backward/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "345e6221feda987f873b025d7ff736c35d26c04f5756f231040b9c3e27982d2a"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/run_backward/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c717bc01925bab24b0f601297a4e5191b2e76479952a6b6bdef09bff7360dc2e"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/run_backward/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "3d0ec5b8b63e8e4691f25c22f92701e445872b60e9dca71a2ad50ce389172cce"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/run_backward/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5da33a02d890510956d3749b5af21f871175833981be865da6f127cc2880ccbc"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/run_backward/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "28a515ef6cd2851368d5d85f42203e93cb8fe64a374c326587d1373610b8a070"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/run_backward/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "0c9c721181fcec34145ff1c9dad242b4be1f1ac3d55157e7eab555cbbafd41cb"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/run_backward/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "033b730073094b15163af9e83158c5ce661f5dad6230a1510e1516eaffc65613"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/run_backward/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "eb18c3a0de920782d83670859314dd601377e1ff710297ad4c12f466b4fcbf55"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/run_backward/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "bc6f4a460e80a182c8d44e6072fe49ee1f92f0c4b2a07e14adfab56d29f6b0c3"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/run_backward/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ba87f5a1369500755837a117b63509f9218f010f09666a67f9c5e0c574777023"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/run_backward/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "2598496579039361c9ad795ebb09e8849af19051d2f938128b4c80acdbf2b8c7"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/run_backward/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "83f352fcebe14d25ee80280cf12a04cfbc7ee0b8f005124a41dd99c966e4305c"
+        }
+      ],
+      "sha256": "cf743cb561a183cc122d3c6ebde02cab486c51f1281f196866274fb50eb37331"
+    },
+    {
+      "id": "climb_up",
+      "file": "import_atlases/climb_up.png",
+      "sourceSha256": "26b5af44f2af861574c5a215d086346716d7591a00a6744cd2f58043e4c93b02",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/climb_up/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "792a79bf7f358e8fee4bfe20af769af5df2a54c15422eb8ca0f6aeb814b90691"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/climb_up/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ec31b9860c1bbce775ec8928073cfd48b5e61acf9eabe150c1bab6933a2c7fc9"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/climb_up/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5fcc60f1f78e2160eb012e641df3fbba04204f823bb0e69277ddfbc8fe338f1d"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/climb_up/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7242defde646bf72a5628e4b91f3c8d0a1df729c9e78a81f0352fbe0c7c9cf77"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/climb_up/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "76406663c091037ddadbe5d96a7fe0284f4f14acad9d93414c2e2e323085e833"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/climb_up/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "43827c94978098d7c1beff1c60ab2ac98766fddbbb6ef507d58e4f9453471a03"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/climb_up/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5c44085298f2ecc54d1aea2f83c83a6633a77d3b27c5d189f26db8f0acada94a"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/climb_up/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8fe8da25ed1a85261db2bae9d7e678daeacdf08a893b3547acd8dcf7de65dcfe"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/climb_up/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1c4fb2a9c8353eca61e351e5c9b6db679153911841edabe0a15c7deb526767b5"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/climb_up/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6d653ad1243f2dc279ec2c1effb37abfd302dc548d13039894e5e26ba78dff36"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/climb_up/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6b945653203bb8b03aec1f670f135ba3e09ffbad8a7b8ed54c897048ef27ef80"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/climb_up/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "014e39263971ee92730e9efd236f7df6ec75b8872319afb4bdd4a3c85d6d24a1"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/climb_up/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "41d7bbf3a272e9c988f5619effe7871883fda25f4bcf199be2ed9efb73350efd"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/climb_up/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ea5fb1db21e83ce79991829e17154863284f26dc7f179f7f5203d39acbd823a2"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/climb_up/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "2e59de1cf7f0dfb2b47fe29f21d280db25203fa6bb4e8f04345d10dd6ffefc55"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/climb_up/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "2c6b71834eca59c07392b432e963da8966d5989b20a28f112eae311240cbb5bd"
+        }
+      ],
+      "sha256": "7c9961f8aeb9cfe9a32a6f64ba179a9e8fc7e590a2c24d0cda240421af14c515"
+    },
+    {
+      "id": "climb_down",
+      "file": "import_atlases/climb_down.png",
+      "sourceSha256": "fe5dfb2521f98b294ccf553512311dff85b9e7fdb81f5bdd975f3380d64dfcea",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/climb_down/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c85848d45ced5920e6fd804a695759e4c2fb823f7a49d79690d2f7a787104d6d"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/climb_down/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e3b1c05b510765f7db074a9f06ee03d8daf4ef765388df6fd331c70bfea8dca5"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/climb_down/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "fe7731a92a1c9d92272da2153ec4ac45c3fa43cd6e89c37d5090937ea6b8b059"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/climb_down/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "989b0f4f37ec49c56075cfb5f88970d004acb4b557f546317e5e768566f793fc"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/climb_down/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d019039f55c173b593bc5d65ab9466ab7a7625518d26eadd58ebe71bbe3e3252"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/climb_down/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "3e847e28d72d4b5b34ba910942e419a06b3a3501df8cd3fe0e67d2e3749b6026"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/climb_down/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7f036986216f4b7b222198d7433b254bc773be5c11c6954a3a84b164a7eb66e0"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/climb_down/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "b27b0650a4fb058128d9fc90e091554585db01f11a32611a5ea64e4dd38d8af5"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/climb_down/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5e86c4a9acde6edaaa58d6646436668dc20ff7821ea5a2ce9e55f5213c0c0e69"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/climb_down/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a6749fdb53f3b90771a3023fa5c3d2e1a8b0763a7c856ba0cac727f1c1202f31"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/climb_down/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "653d5fe402e5f191c99925913be75c2551bdde105cf759325ca4c5c7144bd1fa"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/climb_down/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "879ec6e8fefa91a8b010bf278c062dc9140794c9acc38eece420d967bac1defc"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/climb_down/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "46fd79838c096c050d0f42c11b7291cc09735ae4cce19950a462b4e34e398be8"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/climb_down/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "452a3e028b5bedfe1f0b9a27e00407463d1a5578e8f7a15eb5b85b0320625a6b"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/climb_down/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ebdbf379c41a164cd6a62a490df32f999800a450059f83b968da4b29ac408937"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/climb_down/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "322cfe939d0f3806c5d826f294311ccf4a1f3439ad64f2bf24d367c62f51a37f"
+        }
+      ],
+      "sha256": "82dccef53f28adb12877b5c403ab50b15efd3980ac2ec1e3df19437af28a2eec"
+    },
+    {
+      "id": "jump_a",
+      "file": "import_atlases/jump_a.png",
+      "sourceSha256": "10ecc974cf8280669b8afe34e34edffe457e0869d866b2242d8987624520eecc",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/jump_a/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "87f44616b0b35525c100e2c21694fe2587d82273d58546fdc8cd3e1f43b31d98"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/jump_a/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "81b6b1892f279341e7b3c081a4ecef9155776da91bdeb8d5134eb554e4fad232"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/jump_a/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "167c351028cd509bfcd0d4b7fb0f171dcd7a76fefd1672ff1b7a5fa1263be1f4"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/jump_a/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "53951b94ca3c6f652f34dea515ce6a3dc9e6100f672124c8dc35fd6f3d1087a7"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/jump_a/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "61a675d8b439f4444e61452da6bb05e99522b7bf0e6542355839c77d498243b4"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/jump_a/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8953c50e230212f626001b6cfdfff4020cf20ec95fc6b89eca934a698d6dc0be"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/jump_a/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "94474314e10fd6f6c2e3fc6b08ab42f1ce4ce62b3c0be5441e238f7750b48fe5"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/jump_a/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "1f12dc0c1a7ff4e4d1100be1190ad628b4e584569773f07cfec5cb8535c1f11c"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/jump_a/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "caa24c5bfa7d574b9d4dbc6e6bb6db3bc7d79e72fa4778e08b43b35b61d25ed1"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/jump_a/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "08ca2f08e5ebfbb37c30a5a2f7cf274376014b3e1770acbc5477ebf415e6b52c"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/jump_a/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7eaecffbf1fdcfa4248d468ece6938b3b8f566325e750be4a2e7d75d63ae0a23"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/jump_a/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "fc1be7d6ed7d4378b096c4885d535af559937b52d0817935739cce17c1185504"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/jump_a/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7931d936f3f40409068451d052f7bc16b31bfb7271e925c953dc5ef8072819fc"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/jump_a/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "0d12549b610a8cd93d82fe63d2546090a1ba7bfdba2834f8c8d6754107252fcb"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/jump_a/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "dee7f9d0bd11cb35b9595b931097a4cd65e318adec6505155b7c83da64aa7e18"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/jump_a/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "6717053d98101e0af33f280fb9c817d650d05a8fb36e3502e99dc469d4e317e5"
+        }
+      ],
+      "sha256": "4ef644d1ba7aba59842d0ba3f1bb44b9c76b193a484fefdc6c62c96d223009dd"
+    },
+    {
+      "id": "jump_b",
+      "file": "import_atlases/jump_b.png",
+      "sourceSha256": "1fa746dbe4ad062e18e826e6a110cd20113ede13291574e3caef94c74dc9afe9",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/jump_b/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "75f07b2a10db8816585af19b72e691c6474a015990edd959439f851c6fb6d763"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/jump_b/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "01c89f05d0e06f1e3c412e5b2efc2ec9bb2f7d119509359473d00c0aebb938ce"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/jump_b/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ddc6271585164c028e4e66e7cb2caec40d39e8088542eb66b67a851ddb059fb1"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/jump_b/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "887355b8a54f1eb29607843456cfd34d228dc34c25ae23cbc2d53ffcdf3ac7bc"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/jump_b/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "fb3d5fe64f88069b99cde1f300d11d59861de68ee78f70634a0a1bc203d31a19"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/jump_b/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "31fcdf242fcdf96cd6b6e6208498f5f3652ea057366376555ecca7adf8874e3e"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/jump_b/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d64b65c04a20d18c4c765877cbd648b0829fe8983c0f3b7018793a2052c47d2d"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/jump_b/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "7c142215e68de8c531aed471ba8887583ce0c785ed7b3118432dfe09ecb55eac"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/jump_b/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "891989ae9896babd24d08a552621f147341f548a3744734c9e700c7ba44612df"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/jump_b/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "dbbdb794c460fa4a1fce7cb8d432c6d8f7fb737f0c590541c3da09425ff45d4b"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/jump_b/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "a8f29be949b8d99c656758a843fb650c673c0d22f9524d80f0d3530cdbdedaf2"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/jump_b/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "deaa6e731f159b6fe6f7163ff67fe94cc339382e947bb74c017bf8fc41e1b446"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/jump_b/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "e6d689c7d408fc4124bb6bbe1201ad228de2966d48b4e3344e4d2392a2659f9a"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/jump_b/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "f31ce9481de9cd6e0a2d3e2c1386910a323553a52fcb30569018914e1cfa53fa"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/jump_b/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "ccff079cd73289f38f98e01b4835e8cf4d4a918c621920862e0ebe8efa30c506"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/jump_b/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 174.70000000000002
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 172.70000000000002
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d946dc9abe8496edb97b2451312b534891d23acf497931ff45172f23f9f9cb9d"
+        }
+      ],
+      "sha256": "5337d463534ca8a706f4ed1f0d7fe5b9a192689b9329a056e9abb6cb24b4f761"
+    },
+    {
+      "id": "landing",
+      "file": "import_atlases/landing.png",
+      "sourceSha256": "f4c5896f6fdae30f4e3049458411962e1ed9f3c3140ab1123df819422e85f805",
+      "guardPixels": 2,
+      "cellWidth": 318,
+      "cellHeight": 318,
+      "atlasWidth": 1272,
+      "atlasHeight": 1272,
+      "frames": [
+        {
+          "number": 1,
+          "sourceFile": "frames/landing/01.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "71efc8abd7fdd7445d85f3a8a3cf7570d07614aa10ca6efcf6506278ea20355c"
+        },
+        {
+          "number": 2,
+          "sourceFile": "frames/landing/02.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "d85b8d627450d165425a1fc66f0d7979099204dfbaa57b60fc7766b2aef91678"
+        },
+        {
+          "number": 3,
+          "sourceFile": "frames/landing/03.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "216345c1ae94ad3dcb157a78588b406fa817e66164613c803ec1cc9184f08e0c"
+        },
+        {
+          "number": 4,
+          "sourceFile": "frames/landing/04.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 0,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "18d77e99be80eed689d54e44f2cb264c1b91366e7a41c1a4edaba679cbce8398"
+        },
+        {
+          "number": 5,
+          "sourceFile": "frames/landing/05.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "58dc20ffc2201e2ec36ff059dce4fa034bfde2e5ce8d9607baf34af25c757f8c"
+        },
+        {
+          "number": 6,
+          "sourceFile": "frames/landing/06.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8234380909bcb8c66a3059f07df71639ec20fbbaa9b1e21d8059d8b0cc66347d"
+        },
+        {
+          "number": 7,
+          "sourceFile": "frames/landing/07.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "8744ca0450089483ad32a89637073680e0f09f471128911cfb8f755afa2bfbfc"
+        },
+        {
+          "number": 8,
+          "sourceFile": "frames/landing/08.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 318,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "936cf13f0167bd96359bba56798342d8a7cd7b332a0f3ec0a3d146a704e69b9d"
+        },
+        {
+          "number": 9,
+          "sourceFile": "frames/landing/09.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "5ebcd8146805d0670d9e3ee035fb775b064009f0aeaa2b8e8a32672bc38ddecf"
+        },
+        {
+          "number": 10,
+          "sourceFile": "frames/landing/10.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "3f0008d5cdad653555d1168250ae54f58fcd18d321e03aad4d38cb3568763f20"
+        },
+        {
+          "number": 11,
+          "sourceFile": "frames/landing/11.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "22b69e7fae62c233d4a5adba8d5b9d9ede2e3debdb6507fb80517bc9301e2b89"
+        },
+        {
+          "number": 12,
+          "sourceFile": "frames/landing/12.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 636,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "299903965b10e1e3aca7adc5b9f0cc371dcb6a9d99bb5643f317f1d1daddd51b"
+        },
+        {
+          "number": 13,
+          "sourceFile": "frames/landing/13.png",
+          "atlasRect": {
+            "x": 0,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "660d23ca90de68f2c7a6c97923f4277291c903688176141b0b7938f4ed4ed935"
+        },
+        {
+          "number": 14,
+          "sourceFile": "frames/landing/14.png",
+          "atlasRect": {
+            "x": 318,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "c94d6dea6203797e56f6393c90ec21f5f688a107c00d693db71ae087ecdc9e26"
+        },
+        {
+          "number": 15,
+          "sourceFile": "frames/landing/15.png",
+          "atlasRect": {
+            "x": 636,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "9f2a6ea6f366b4100558caa931cb04e7074a3b6e4bdcd46e7f08a5dc57d88f77"
+        },
+        {
+          "number": 16,
+          "sourceFile": "frames/landing/16.png",
+          "atlasRect": {
+            "x": 954,
+            "y": 954,
+            "width": 318,
+            "height": 318
+          },
+          "pivot": {
+            "x": 159,
+            "y": 284.6
+          },
+          "anchorTarget": {
+            "x": 157,
+            "y": 282.6
+          },
+          "drawOffset": {
+            "x": -2,
+            "y": -2
+          },
+          "durationMs": 62.5,
+          "rgbaSha256": "be8a64990c5412bd8f1c1b09c8b22179e7d7f1df56ea2855b020fd3514e53b7d"
+        }
+      ],
+      "sha256": "6a5f1c9ac8feeb7b0f44c9f2a07c5d3cb4b2cf3e9c59e621ff2fea527f0fcda6"
+    }
+  ]
+}

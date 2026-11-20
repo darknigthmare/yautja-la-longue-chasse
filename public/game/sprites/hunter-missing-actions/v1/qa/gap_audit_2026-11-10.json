@@ -1,0 +1,854 @@
+{
+  "auditVersion": 1,
+  "date": "2026-11-10",
+  "repository": "darknigthmare/yautja-la-longue-chasse",
+  "auditedCommit": "603b41d33141c376f9d404a9bd91c6792f318cbf",
+  "scope": "Read-only audit of Hunt personal hunter and existing reference-yautja source pack, bounded by current source and contracts.",
+  "identity": "reference-yautja (draft art identity; no live roster binding)",
+  "counts": {
+    "trackedPathsInspectedByName": 27549,
+    "existingPackDrawings": 288,
+    "selectedCombatActions": 8,
+    "selectedCombatDrawings": 192,
+    "selectedLocomotionActions": 6,
+    "selectedLocomotionDrawings": 112,
+    "totalSelectedActions": 14,
+    "totalPlannedNewDrawings": 304,
+    "planned16CellSheets": 19,
+    "newRuntimeValidatedClipsClaimed": 0
+  },
+  "statusDefinitions": {
+    "source-missing": "No native sequence for this action in the existing personal-hunter source pack. This is not a statement that no artwork exists for any roster character.",
+    "generic-rig": "Gameplay exists and current body motion is produced from transformed parts.",
+    "draft-source-exists": "Artwork exists but is not artist-approved, identity-bound or consumed as that action in Hunt.",
+    "integration-missing": "No current whole-body Hunt adapter or clip binding.",
+    "presentation-phase-needed": "Gameplay event exists, but no persistent visual phase clock exists for the proposed gesture."
+  },
+  "evidence": {
+    "genericRig": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 1093,
+      "endLine": 1158,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L1093-L1158",
+      "claim": "Hunt selects extract/climb/jump/fall/run/idle and invokes a rig, not the whole-body atlas renderer."
+    },
+    "layeredRendering": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 4037,
+      "endLine": 4343,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L4037-L4343",
+      "claim": "Character is composed from transformed body and equipment layers."
+    },
+    "meleeKinds": {
+      "path": "app/game/systems/huntMeleeCombat.ts",
+      "startLine": 3,
+      "endLine": 13,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L3-L13",
+      "claim": "Existing attack and defense enums."
+    },
+    "comboTiming": {
+      "path": "app/game/systems/huntMeleeCombat.ts",
+      "startLine": 129,
+      "endLine": 156,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L129-L156",
+      "claim": "Three light combo timing baselines in seconds."
+    },
+    "techniqueTiming": {
+      "path": "app/game/systems/huntMeleeCombat.ts",
+      "startLine": 174,
+      "endLine": 241,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L174-L241",
+      "claim": "Heavy, aerial, guard-break, throw and execution timing."
+    },
+    "variableRecovery": {
+      "path": "app/game/systems/huntMeleeCombat.ts",
+      "startLine": 247,
+      "endLine": 266,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L247-L266",
+      "claim": "Light recovery depends on equipped profile cooldown."
+    },
+    "defenseTiming": {
+      "path": "app/game/systems/huntMeleeCombat.ts",
+      "startLine": 119,
+      "endLine": 127,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L119-L127",
+      "claim": "Parry/dodge active and total durations."
+    },
+    "defenseWindow": {
+      "path": "app/game/systems/huntMeleeCombat.ts",
+      "startLine": 760,
+      "endLine": 807,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntMeleeCombat.ts#L760-L807",
+      "claim": "Parry can be consumed early; dodge velocity and invulnerability use real state."
+    },
+    "weaponBinding": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 7158,
+      "endLine": 7239,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L7158-L7239",
+      "claim": "Techniques choose available active combistick or wristblades fallback."
+    },
+    "meleeInput": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8605,
+      "endLine": 8697,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8605-L8697",
+      "claim": "Real input routes aerial, parry, light, heavy, guard-break and throw/execution."
+    },
+    "backwardRunning": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8502,
+      "endLine": 8536,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8502-L8536",
+      "claim": "Ground velocity follows input; facing is not forced by movement while aiming."
+    },
+    "climb": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8751,
+      "endLine": 8779,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8751-L8779",
+      "claim": "Existing climb motion uses signed vertical velocity, with downward-positive coordinates."
+    },
+    "jump": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8235,
+      "endLine": 8280,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8235-L8280",
+      "claim": "Real jump/climb-release/aerial-boost impulses."
+    },
+    "landing": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 8790,
+      "endLine": 8825,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L8790-L8825",
+      "claim": "A real transition to grounded exists and emits landing noise; no landing pose clock is stored."
+    },
+    "scan": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 7624,
+      "endLine": 7637,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L7624-L7637",
+      "claim": "Scan is an event/pulse, not an authored body clip."
+    },
+    "heal": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 7693,
+      "endLine": 7718,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L7693-L7718",
+      "claim": "Medicomp applies recovery immediately; cooldown is not a body animation clock."
+    },
+    "injury": {
+      "path": "app/game/HuntCanvas.tsx",
+      "startLine": 6600,
+      "endLine": 6654,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/HuntCanvas.tsx#L6600-L6654",
+      "claim": "Damage flashes/invulnerability and death pause lack authored body motion phases."
+    },
+    "fieldWork": {
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "startLine": 18,
+      "endLine": 114,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/huntFieldPresentationV112.ts#L18-L114",
+      "claim": "Field work has approach/work/secure presentation phases but is solved by rig joints."
+    },
+    "trophyVictory": {
+      "path": "app/game/systems/trophyRitual.ts",
+      "startLine": 238,
+      "endLine": 273,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/app/game/systems/trophyRitual.ts#L238-L273",
+      "claim": "Trophy lift/hold/settle has a real duration-driven progress value."
+    },
+    "fullBodyContract": {
+      "path": "docs/expedition-animation-contract-v36.md",
+      "startLine": 1,
+      "endLine": 60,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/docs/expedition-animation-contract-v36.md#L1-L60",
+      "claim": "Whole anatomy and separate customizable equipment are required; metadata validity is not runtime coverage."
+    },
+    "sourcePack": {
+      "path": "public/game/sprites/hunter-postures-emotes/v1/runtime_atlases/index.json",
+      "startLine": 1,
+      "endLine": 100,
+      "url": "https://github.com/darknigthmare/yautja-la-longue-chasse/blob/603b41d33141c376f9d404a9bd91c6792f318cbf/public/game/sprites/hunter-postures-emotes/v1/runtime_atlases/index.json#L1-L100",
+      "claim": "Existing source pack declares 288 drawings, draft status and no roster binding."
+    }
+  },
+  "selectedActions": [
+    {
+      "artActionId": "light_1",
+      "label": "Premier coup du combo",
+      "productionPriority": 1,
+      "plannedDrawings": 16,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.actionKind": "light",
+        "player.melee.phase": [
+          "startup",
+          "active",
+          "recovery"
+        ],
+        "player.melee.comboIndex": 0
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "otherWeaponVariantStillMissing": "combistick",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "startupSeconds": 0.1,
+        "activeSeconds": 0.08,
+        "minimumRecoverySeconds": 0.08,
+        "minimumTotalSeconds": 0.26,
+        "activeWindowSeconds": [
+          0.1,
+          0.18
+        ],
+        "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+        "recoveryDependsOnProfileCooldown": true,
+        "recoveryFormula": "max(baseRecovery, profile.cooldownSeconds * 1 - startupSeconds - activeSeconds)"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig; no action-specific whole-body clip in solvePlayerRigFrame",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Future adapter can consume existing phaseRemainingSeconds and currentHuntMeleeAttack. Artwork frames must be visually assigned to the existing phase ranges; no phase durations or damage events may be changed.",
+      "anchor": "world root / stable ground reference; preserve intentional stepping",
+      "evidenceKeys": [
+        "meleeKinds",
+        "comboTiming",
+        "variableRecovery",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "light_2",
+      "label": "Deuxième coup du combo",
+      "productionPriority": 1,
+      "plannedDrawings": 16,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.actionKind": "light",
+        "player.melee.phase": [
+          "startup",
+          "active",
+          "recovery"
+        ],
+        "player.melee.comboIndex": 1
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "otherWeaponVariantStillMissing": "combistick",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "startupSeconds": 0.085,
+        "activeSeconds": 0.09,
+        "minimumRecoverySeconds": 0.095,
+        "minimumTotalSeconds": 0.27,
+        "activeWindowSeconds": [
+          0.085,
+          0.175
+        ],
+        "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+        "recoveryDependsOnProfileCooldown": true,
+        "recoveryFormula": "max(baseRecovery, profile.cooldownSeconds * 1.04 - startupSeconds - activeSeconds)"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig; no action-specific whole-body clip in solvePlayerRigFrame",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Future adapter can consume existing phaseRemainingSeconds and currentHuntMeleeAttack. Artwork frames must be visually assigned to the existing phase ranges; no phase durations or damage events may be changed.",
+      "anchor": "world root / stable ground reference; preserve intentional stepping",
+      "evidenceKeys": [
+        "meleeKinds",
+        "comboTiming",
+        "variableRecovery",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "combo_finisher",
+      "label": "Fin du combo",
+      "productionPriority": 1,
+      "plannedDrawings": 32,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.actionKind": "light",
+        "player.melee.phase": [
+          "startup",
+          "active",
+          "recovery"
+        ],
+        "player.melee.comboIndex": 2
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "otherWeaponVariantStillMissing": "combistick",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "startupSeconds": 0.13,
+        "activeSeconds": 0.105,
+        "minimumRecoverySeconds": 0.23,
+        "minimumTotalSeconds": 0.465,
+        "activeWindowSeconds": [
+          0.13,
+          0.235
+        ],
+        "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+        "recoveryDependsOnProfileCooldown": true,
+        "recoveryFormula": "max(baseRecovery, profile.cooldownSeconds * 1.4 - startupSeconds - activeSeconds)"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig; no action-specific whole-body clip in solvePlayerRigFrame",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Future adapter can consume existing phaseRemainingSeconds and currentHuntMeleeAttack. Artwork frames must be visually assigned to the existing phase ranges; no phase durations or damage events may be changed.",
+      "anchor": "world root / stable ground reference; preserve intentional stepping",
+      "evidenceKeys": [
+        "meleeKinds",
+        "comboTiming",
+        "variableRecovery",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "heavy_strike",
+      "label": "Frappe lourde",
+      "productionPriority": 1,
+      "plannedDrawings": 32,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.actionKind": "heavy",
+        "player.melee.phase": [
+          "startup",
+          "active",
+          "recovery"
+        ]
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "otherWeaponVariantStillMissing": "combistick",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "startupSeconds": 0.22,
+        "activeSeconds": 0.12,
+        "minimumRecoverySeconds": 0.34,
+        "minimumTotalSeconds": 0.68,
+        "activeWindowSeconds": [
+          0.22,
+          0.34
+        ],
+        "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+        "recoveryDependsOnProfileCooldown": false
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig; no action-specific whole-body clip in solvePlayerRigFrame",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Future adapter can consume existing phaseRemainingSeconds and currentHuntMeleeAttack. Artwork frames must be visually assigned to the existing phase ranges; no phase durations or damage events may be changed.",
+      "anchor": "world root / stable ground reference; preserve intentional stepping",
+      "evidenceKeys": [
+        "meleeKinds",
+        "techniqueTiming",
+        "weaponBinding",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "air_strike",
+      "label": "Frappe aérienne",
+      "productionPriority": 1,
+      "plannedDrawings": 32,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.actionKind": "aerial",
+        "player.melee.phase": [
+          "startup",
+          "active",
+          "recovery"
+        ]
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "otherWeaponVariantStillMissing": "combistick",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "startupSeconds": 0.07,
+        "activeSeconds": 0.17,
+        "minimumRecoverySeconds": 0.2,
+        "minimumTotalSeconds": 0.44,
+        "activeWindowSeconds": [
+          0.07,
+          0.24
+        ],
+        "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+        "recoveryDependsOnProfileCooldown": false
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig; no action-specific whole-body clip in solvePlayerRigFrame",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Future adapter can consume existing phaseRemainingSeconds and currentHuntMeleeAttack. Artwork frames must be visually assigned to the existing phase ranges; no phase durations or damage events may be changed.",
+      "anchor": "fixed pelvis reference while airborne",
+      "evidenceKeys": [
+        "meleeKinds",
+        "techniqueTiming",
+        "weaponBinding",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "guard_break",
+      "label": "Brise-garde",
+      "productionPriority": 1,
+      "plannedDrawings": 32,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.actionKind": "guard-break",
+        "player.melee.phase": [
+          "startup",
+          "active",
+          "recovery"
+        ]
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "otherWeaponVariantStillMissing": "combistick",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "startupSeconds": 0.18,
+        "activeSeconds": 0.1,
+        "minimumRecoverySeconds": 0.3,
+        "minimumTotalSeconds": 0.58,
+        "activeWindowSeconds": [
+          0.18,
+          0.28
+        ],
+        "interval": "start-inclusive/end-exclusive (subject to engine epsilon at boundaries)",
+        "recoveryDependsOnProfileCooldown": false
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig; no action-specific whole-body clip in solvePlayerRigFrame",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Future adapter can consume existing phaseRemainingSeconds and currentHuntMeleeAttack. Artwork frames must be visually assigned to the existing phase ranges; no phase durations or damage events may be changed.",
+      "anchor": "world root / stable ground reference; preserve intentional stepping",
+      "evidenceKeys": [
+        "meleeKinds",
+        "techniqueTiming",
+        "weaponBinding",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "parry",
+      "label": "Parade",
+      "productionPriority": 1,
+      "plannedDrawings": 16,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.phase": "idle",
+        "player.melee.defensePhase": "parry"
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "totalSeconds": 0.24,
+        "activeWindowSeconds": [
+          0,
+          0.14
+        ],
+        "activeMeaning": "parry eligible until consumed",
+        "startupDelaySeconds": 0
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Use defenseRemainingSeconds. Do not delay activation for visual anticipation. Successful parry resets defense to neutral immediately; an optional follow-through needs a presentation-only cursor, never a new gameplay lock.",
+      "anchor": "world root with intended step / low body motion retained",
+      "evidenceKeys": [
+        "defenseTiming",
+        "defenseWindow",
+        "meleeInput",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "dodge",
+      "label": "Esquive",
+      "productionPriority": 1,
+      "plannedDrawings": 16,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "player.melee.phase": "idle",
+        "player.melee.defensePhase": "dodge"
+      },
+      "engineIdsAreExisting": true,
+      "weaponVariant": "wristblades",
+      "timing": {
+        "clock": "simulation-delta-seconds",
+        "totalSeconds": 0.3,
+        "activeWindowSeconds": [
+          0,
+          0.18
+        ],
+        "activeMeaning": "invulnerability",
+        "startupDelaySeconds": 0
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Use defenseRemainingSeconds; world displacement already belongs to huntMeleeDodgeVelocity. In-place drawing avoids double travel.",
+      "anchor": "world root with intended step / low body motion retained",
+      "evidenceKeys": [
+        "defenseTiming",
+        "defenseWindow",
+        "meleeInput",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "run_forward",
+      "label": "Course avant",
+      "productionPriority": 2,
+      "plannedDrawings": 16,
+      "playback": "loop",
+      "enginePredicate": {
+        "player.grounded": true,
+        "player.climbing": false,
+        "abs(player.velocityX)": ">24",
+        "player.velocityX * player.facing": ">0"
+      },
+      "engineIdsAreExisting": false,
+      "artIdIsNewEngineEnum": false,
+      "timing": {
+        "clock": "real movement state; preview fps is not gameplay timing"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig using run",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Existing rig pose is run. A review label run_forward is not an engine enum. Source should run in place.",
+      "anchor": "root fixed in cell; world displacement supplied by physics",
+      "evidenceKeys": [
+        "backwardRunning",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "run_backward",
+      "label": "Course arrière en visée",
+      "productionPriority": 2,
+      "plannedDrawings": 16,
+      "playback": "loop",
+      "enginePredicate": {
+        "player.grounded": true,
+        "player.climbing": false,
+        "abs(player.velocityX)": ">24",
+        "player.velocityX * player.facing": "<0"
+      },
+      "engineIdsAreExisting": false,
+      "artIdIsNewEngineEnum": false,
+      "timing": {
+        "clock": "real movement state; preview fps is not gameplay timing"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig using run",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Existing rig pose is run. Moving backward while aiming is legal; draw an actual retreat cycle, not the forward cycle reversed or mirrored.",
+      "anchor": "root fixed in cell; world displacement supplied by physics",
+      "evidenceKeys": [
+        "backwardRunning",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "climb_up",
+      "label": "Ascension",
+      "productionPriority": 2,
+      "plannedDrawings": 16,
+      "playback": "loop",
+      "enginePredicate": {
+        "player.climbing": true,
+        "player.canopySwing": "absent",
+        "player.velocityY": "<0"
+      },
+      "engineIdsAreExisting": false,
+      "artIdIsNewEngineEnum": false,
+      "timing": {
+        "clock": "real movement state; preview fps is not gameplay timing"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig using climb",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Existing pose is climb. Frame progression needs a direction-aware presentation adapter. Draw character alone, without a fixed trunk or vine.",
+      "anchor": "root fixed in cell; world displacement supplied by physics",
+      "evidenceKeys": [
+        "climb",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "climb_down",
+      "label": "Descente",
+      "productionPriority": 2,
+      "plannedDrawings": 16,
+      "playback": "loop",
+      "enginePredicate": {
+        "player.climbing": true,
+        "player.canopySwing": "absent",
+        "player.velocityY": ">0"
+      },
+      "engineIdsAreExisting": false,
+      "artIdIsNewEngineEnum": false,
+      "timing": {
+        "clock": "real movement state; preview fps is not gameplay timing"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig using climb",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Existing pose is climb; screen Y increases downward. Draw descending grip exchange natively; do not reverse the ascent strip.",
+      "anchor": "root fixed in cell; world displacement supplied by physics",
+      "evidenceKeys": [
+        "climb",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "jump",
+      "label": "Saut : montée, sommet, chute",
+      "productionPriority": 2,
+      "plannedDrawings": 32,
+      "playback": "phase-segmented-one-shot",
+      "enginePredicate": {
+        "player.grounded": false,
+        "player.climbing": false,
+        "player.velocityY": "negative = rise; nonnegative = fall"
+      },
+      "engineIdsAreExisting": false,
+      "artIdIsNewEngineEnum": false,
+      "timing": {
+        "clock": "real movement state; preview fps is not gameplay timing"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig using jump/fall",
+      "newPresentationClockNeeded": false,
+      "presentationClockNote": "Engine rig poses are jump/fall, not an apex enum. Rise/apex/fall are artistic segments; variable jump and aerial boost prohibit a fixed duration for the whole sequence. Ground contact is not part of airborne art playback.",
+      "anchor": "standing-reference pelvis/baseline; do not follow tucked feet",
+      "evidenceKeys": [
+        "jump",
+        "genericRig"
+      ]
+    },
+    {
+      "artActionId": "landing",
+      "label": "Réception",
+      "productionPriority": 2,
+      "plannedDrawings": 16,
+      "playback": "one-shot",
+      "enginePredicate": {
+        "event": "!wasGrounded && player.grounded",
+        "impactVelocityForAuditedNoiseEvent": ">180"
+      },
+      "engineIdsAreExisting": false,
+      "artIdIsNewEngineEnum": false,
+      "timing": {
+        "clock": "real movement state; preview fps is not gameplay timing"
+      },
+      "sourceStatusAtAudit": "missing-in-reference-yautja-pack",
+      "currentPresentation": "generic-layered-rig using idle/run immediately after collision",
+      "newPresentationClockNeeded": true,
+      "presentationClockNote": "Ground contact is a real event. No landing animation state or timer exists. Future integration needs an interruptible presentation-only cursor; never lock input or change jump buffering.",
+      "anchor": "root fixed in cell; world displacement supplied by physics",
+      "evidenceKeys": [
+        "landing",
+        "jump",
+        "genericRig"
+      ]
+    }
+  ],
+  "remainingFamilies": [
+    {
+      "priority": 3,
+      "family": "Idle and aim hold",
+      "mechanism": "grounded stillness, aiming and aimAngle",
+      "status": "native whole-body source missing for this personal-hunter pack; rig already active",
+      "phaseNeeds": "idle loop, aim enter/hold/exit; body clock must remain independent of weapon firing"
+    },
+    {
+      "priority": 3,
+      "family": "Canopy attachment, hold, release and swing",
+      "mechanism": "climbing, climbZoneId, canopySwing, applyPlayerJump(climb), exhaustion",
+      "status": "generic rig / grip IK; V2.1 trunk poses are draft studies, not traversal clips",
+      "phaseNeeds": "attach and release one-shots; sustained grip/swing cycle; physics supplies support contact and flight"
+    },
+    {
+      "priority": 3,
+      "family": "Aerial boost",
+      "mechanism": "applyPlayerJump result.jump === boost; aerialBoostUsed",
+      "status": "mechanic present; no dedicated whole-body boost source/clip",
+      "phaseNeeds": "short one-shot with event cursor or explicit presentation selector"
+    },
+    {
+      "priority": 3,
+      "family": "Thrown and execution melee",
+      "mechanism": "actionKind throw and execution; lockedTargetId; existing startup/active/recovery",
+      "status": "mechanics present; attacker/victim synchronized native clips absent for personal hunter",
+      "phaseNeeds": "attacker and victim native clips matched to actual phases; no invented cinematic duration"
+    },
+    {
+      "priority": 3,
+      "family": "Combistick versions of selected attacks",
+      "mechanism": "active available combistick overrides wristblades profile",
+      "status": "not covered by wristblades artwork",
+      "phaseNeeds": "separate weapon-correct attack set and parry poses"
+    },
+    {
+      "priority": 4,
+      "family": "Ranged aim, charge, shot/recoil, throw, recall/pickup and weapon switch",
+      "mechanism": "HunterWeaponFamily melee/thrown/energy/bow/guided; aiming, charge and recovery logic",
+      "status": "layered weapon transforms/effects exist; body and equipment source sequences needed for each equipped weapon",
+      "phaseNeeds": "independent equipment clock; explicit object ownership during stored/hand/world states"
+    },
+    {
+      "priority": 4,
+      "family": "Mask on/off and wrist computer",
+      "mechanism": "mask input toggles maskOn; gauntletOpen procedural state",
+      "status": "mask draws by boolean; authored transfer between face/hand/storage missing",
+      "phaseNeeds": "presentation-only sequences; preserve one physical object and customization layers"
+    },
+    {
+      "priority": 4,
+      "family": "Scan",
+      "mechanism": "playerScan / scanPulse / scanCooldown",
+      "status": "event and VFX exist; no dedicated body sequence",
+      "phaseNeeds": "short gesture triggered by accepted scan; no artificial control lock"
+    },
+    {
+      "priority": 4,
+      "family": "Cloak on/off",
+      "mechanism": "cloaked boolean / forceDecloak",
+      "status": "effect exists; dedicated activation gesture missing",
+      "phaseNeeds": "equipment/body-independent cue; no gameplay resource changes"
+    },
+    {
+      "priority": 4,
+      "family": "Medicomp and Second Wind",
+      "mechanism": "playerHeal; hurtPlayer secondWindUsed branch",
+      "status": "mechanics apply immediately; no authored treatment/revival body phases",
+      "phaseNeeds": "separate healing one-shot and emergency recovery; presentation cannot delay existing healing"
+    },
+    {
+      "priority": 4,
+      "family": "Gear deployment",
+      "mechanism": "activateGearSlot with gearOne/gearTwo",
+      "status": "mechanics exist; equipment-specific native hand/body sequences missing",
+      "phaseNeeds": "draw exact loadout item; toss/set/return hand ownership and effect event separated"
+    },
+    {
+      "priority": 5,
+      "family": "Damage reaction and death",
+      "mechanism": "hurtPlayer health/invulnerability; dead phase pauses immediately",
+      "status": "generic presentation; authored flinch/fall/death absent",
+      "phaseNeeds": "event-driven presentation clock; death must be designed around pause without advancing simulation"
+    },
+    {
+      "priority": 5,
+      "family": "Field dressing and anatomy collection",
+      "mechanism": "HuntFieldWorkV112 action flay/harvest-hide/harvest-tissue/harvest-bone; approach/work/secure",
+      "status": "specialized IK rig already exists; whole-body native source absent for personal hunter",
+      "phaseNeeds": "approach one-shot, work loop, secure/return; interruption must follow real operation"
+    },
+    {
+      "priority": 5,
+      "family": "Carry, hang, set down and generic interaction",
+      "mechanism": "huntRites carryingCorpseId / operations and interact handlers",
+      "status": "mechanics/props exist; native whole-body transition library absent",
+      "phaseNeeds": "object-specific grips, ownership, occlusion and interruptible phase cues"
+    },
+    {
+      "priority": 5,
+      "family": "Trophy extraction, raise, hold and stow",
+      "mechanism": "TrophyRitualState; TrophyVictoryState lift/hold/settle",
+      "status": "extraction generic rig; two victory studies already exist in V2.1 with draft/no-binding status",
+      "phaseNeeds": "do not regenerate those two studies as missing; revise/integrate actual trophy type and anatomy/equipment contract"
+    },
+    {
+      "priority": 5,
+      "family": "Boarding",
+      "mechanism": "DropShipPhase boarding; boardingProgress",
+      "status": "actor is moved by sequence; no native climbing/boarding body clip",
+      "phaseNeeds": "presentation fitted to existing boardingProgress; transport physics untouched"
+    }
+  ],
+  "existingDraftActions": [
+    "branch",
+    "trunk_close",
+    "trunk_open",
+    "roar",
+    "victory_spear",
+    "victory_trophy"
+  ],
+  "constraints": [
+    "The 14 artActionId strings are production labels. They do not create engine enums or engine clip IDs.",
+    "This proposed 304-drawing batch is new source production, not 304 validated runtime clips. At audit time its status is planned.",
+    "The existing V2.1 pack contributes 288 source drawings for six stance/emote actions; its 468 playback references and reversed exits are not additional drawings.",
+    "One right-facing production lot does not cover left-facing gameplay. Native left artwork and review remain separate; do not mirror or substitute an opposite side silently.",
+    "The personal-hunter full-body composite may be useful art, but Expedition requires whole anatomy with separate customizable equipment families. This pack does not satisfy that modular contract by metadata alone.",
+    "Atlas draft status must remain draft pending human artistic approval. Technical alpha/rect/hash checks cannot grant validated.",
+    "Hunt uses elapsed seconds, not PIT fixed 60-tick action timing. Review FPS is not authoritative gameplay time.",
+    "More source drawings do not guarantee every drawing is visible during a short action at the eventual display rate. Fit phase selection to actual elapsed/remaining seconds without extending gameplay.",
+    "The camera, standing body scale and same equipment anatomy must remain constant across all drawings. Source root motion and world movement must not both translate the character.",
+    "Airborne pivots use a standing-reference pelvis/baseline rather than the current tucked feet; ground contact is supplied by the simulation.",
+    "Parry is active immediately and can end early when consumed; dodge invulnerability also begins immediately. Do not invent startup gating.",
+    "Landing is an observed collision event, not a current animation enum. Add only a future interruptible presentation cursor if integration is undertaken.",
+    "No global roster-completeness claim follows from this audit. Existing Feral/Scar workbook studies and v91/v92 costume-specific actions are not interchangeable with this personal hunter."
+  ],
+  "priorRosterAuditCaveat": {
+    "v32v53": "Historical missing-family lists are not current coverage inventories.",
+    "v91": "Wolf crouch-entry and several exact-costume idle clips already exist with only two drawings each.",
+    "v92": "Ahab/Samurai exact equipment attacks have authored three-phase clips.",
+    "v100": "52 Feral/Scar studies with 104 orientations and partial gameplay bindings; do not relabel them as absent or borrow their identity."
+  },
+  "sourceCacheChecks": [
+    {
+      "path": "app/game/HuntCanvas.tsx",
+      "commitBlob": "fad1d809852c32052ac22106e534363d13df076a",
+      "cacheBlob": "fad1d809852c32052ac22106e534363d13df076a",
+      "matchesAuditedCommit": true,
+      "sha256": "f4e1d0736352256b284b4d717747add3cda055e85b62d0abcff5bb1eed7caca3"
+    },
+    {
+      "path": "app/game/systems/huntMeleeCombat.ts",
+      "commitBlob": "823ba880c8e6b6720b8b0cf26e294ba2ce96b2d5",
+      "cacheBlob": "823ba880c8e6b6720b8b0cf26e294ba2ce96b2d5",
+      "matchesAuditedCommit": true,
+      "sha256": "de0d351da0b00cad82ff2b45aad3b00196faa4b80e2df303771b65484b0938a4"
+    },
+    {
+      "path": "app/game/systems/huntFieldPresentationV112.ts",
+      "commitBlob": "0dd94a0337b7d4073048b4ada5ac43834b84b837",
+      "cacheBlob": "0dd94a0337b7d4073048b4ada5ac43834b84b837",
+      "matchesAuditedCommit": true,
+      "sha256": "1883adca617ac9b07be8f63c32c3187052fa5423450561aa846c2938ed8606b6"
+    },
+    {
+      "path": "app/game/systems/trophyRitual.ts",
+      "commitBlob": "e506555bf6b687db92042df2d0b18eabb0deacd3",
+      "cacheBlob": "e506555bf6b687db92042df2d0b18eabb0deacd3",
+      "matchesAuditedCommit": true,
+      "sha256": "c20e3988a0857359440a2f310134ade092573b9fe892ec0f355401a816ecd3f8"
+    },
+    {
+      "path": "docs/expedition-animation-contract-v36.md",
+      "commitBlob": "635f8211c38252acbc7e146320282229702efabf",
+      "cacheBlob": "635f8211c38252acbc7e146320282229702efabf",
+      "matchesAuditedCommit": true,
+      "sha256": "ba6cabb626cee17fbb9359ddae588b7e1727f68bff9785a79348f1279b952686"
+    }
+  ],
+  "finalSourceDelivery": {
+    "selectedActions": 14,
+    "selectedAtlases": 19,
+    "newSourceDrawings": 304,
+    "sourceReview": "CONSOLIDATED_REVIEW.json",
+    "selectionStatus": "all_prioritized_sources_generated_and_reviewed_as_draft",
+    "artisticStatus": "draft_requires_human_review",
+    "runtimeBindingAdded": false,
+    "runtimeValidatedClipsClaimed": 0,
+    "remainingSourceAndIntegrationFamilies": 16,
+    "allGameAnimationsCompleted": false
+  }
+}

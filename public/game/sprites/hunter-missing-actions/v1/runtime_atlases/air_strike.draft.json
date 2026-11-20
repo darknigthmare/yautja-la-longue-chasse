@@ -1,0 +1,497 @@
+{
+  "schemaVersion": 1,
+  "id": "reference-yautja-air_strike-missing-draft-v1",
+  "characterId": "reference-yautja",
+  "variantId": "air_strike-reference-review",
+  "sourceKind": "authored-frames",
+  "status": "draft",
+  "pages": [
+    {
+      "id": "air_strike_a",
+      "src": "/game/sprites/hunter-missing-actions/v1/import_atlases/air_strike_a.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    },
+    {
+      "id": "air_strike_b",
+      "src": "/game/sprites/hunter-missing-actions/v1/import_atlases/air_strike_b.png",
+      "width": 1272,
+      "height": 1272,
+      "status": "draft",
+      "grid": {
+        "columns": 4,
+        "rows": 4
+      },
+      "transparency": {
+        "mode": "alpha"
+      }
+    }
+  ],
+  "clips": [
+    {
+      "id": "air_strike_action",
+      "facing": "right",
+      "status": "draft",
+      "loop": false,
+      "ticksPerSecond": 16,
+      "frames": [
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_a",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            0,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            318,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            636,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            954,
+            0,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            0,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            318,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            636,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            954,
+            318,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            0,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            318,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            636,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            954,
+            636,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            0,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            318,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            636,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        },
+        {
+          "pageId": "air_strike_b",
+          "rect": [
+            954,
+            954,
+            318,
+            318
+          ],
+          "pivot": [
+            159,
+            174.70000000000002
+          ],
+          "durationTicks": 1
+        }
+      ]
+    }
+  ]
+}
