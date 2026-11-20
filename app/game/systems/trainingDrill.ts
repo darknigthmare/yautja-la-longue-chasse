@@ -1,4 +1,4 @@
-import { MISSIONS } from "../data";
+import { MISSIONS } from "../data.ts";
 import type { SaveGame } from "../types";
 import type { TrainingDisciplineId } from "./progression";
 
