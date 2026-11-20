@@ -1,4 +1,4 @@
-name: Verify debrief honor and Clan Ship dialogue
+name: Qualify the plasma preparation in the real ship station
 
 on:
   push:
@@ -7,60 +7,65 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: yautja-p0-p3-next-off-ship-state
-  cancel-in-progress: false
-
 jobs:
-  source:
-    name: Application, tests and reproducible runtime inventory
+  ship-training:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 12
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
-      NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '55515da65f0ece85dcfb4de7d32e8050e4a75c35'
-      BASE_COMMIT: '62b3658cc04b3404a0e302163230995d47d83d66'
+      AUDIT_CHROME_CHANNEL: chrome
+      AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
     steps:
-      - name: Checkout the exact candidate and bounded inputs
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '55515da65f0ece85dcfb4de7d32e8050e4a75c35'
-          persist-credentials: false
-          fetch-depth: 12
+          ref: 4607676daca37021f6c92338a15e5fa67267f151
           filter: blob:none
+          persist-credentials: false
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /*
             !/*/
             /app/
-            /lib/
-            /types/
-            /desktop/
-            /worker/
             /tests/
             /scripts/
-            /build/
-            /.openai/
-            /.github/workflows/
-            /docs/
-            /public/game/xeno-prime/berceau-v1/
             /public/**/manifest.json
-            /public/game/p0-sprites-20261113/warp/
-            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
-            /public/game/homeworld/v77/lava-transit-skiff.png
-            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
-            /public/game/homeworld/v64/clan-shuttle.png
-            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
-      - name: Node 22
-        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Materialize official runtime inputs and install dependencies
-        run: |
-          node scripts/materialize-asset-raccords-20261120.mjs runtime
-          npm ci --ignore-scripts --no-audit --no-fund
-      - name: Verify debrief identity, quota and dialogue recovery with real saves
-        run: node --experimental-strip-types --test --test-reporter=spec tests/honor-sources-v169.test.mjs tests/clan-ship-dialogue.test.mjs tests/clan-ship-hunt-dialogue.test.mjs
-      - name: Strict lint of the updated state and fixtures
-        run: node node_modules/eslint/bin/eslint.js --max-warnings=0 app/game/systems/honorSourcesV169.ts app/game/systems/clanShipDialogue.ts tests/honor-sources-v169.test.mjs tests/clan-ship-dialogue.test.mjs
+      - name: Install locked dependencies without lifecycle scripts
+        id: dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: New score receipts and runtime regressions
+        run: >-
+          node --test --test-reporter=spec
+          tests/ship-training-receipt-v94.test.mjs
+          tests/ship-training-lifecycle-v94.test.mjs
+          tests/ship-training-recovery-v94.test.mjs
+          tests/ship-training-ack-v94.test.mjs
+          tests/ship-service-commit-v94.test.mjs
+      - name: Historical ship progression, ownership and training rules
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node --experimental-strip-types --test --test-reporter=spec
+          tests/ship-progression.test.mjs tests/ship-progression-owner.test.mjs
+          tests/ship-hub-input-runtime.test.mjs tests/training-drill.test.mjs
+          tests/training-lifecycle-v94.test.mjs
+      - name: Strict lint of changed ship training runtime
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: >-
+          node node_modules/eslint/bin/eslint.js --max-warnings=0
+          app/game/ShipHub.tsx app/game/TrainingDrill.tsx
+          app/game/useShipTrainingV94.ts app/game/systems/shipTrainingReceiptV94.ts
+          app/game/systems/shipTrainingRecoveryV94.ts
+          app/game/systems/shipTrainingAcknowledgementV94.ts
+          app/game/useShipServiceCommitV94.ts
+      - name: Play native ship training and verify score storage in Chrome
+        if: ${{ !cancelled() && steps.dependencies.outcome == 'success' }}
+        run: node scripts/qa-ship-training-browser-v94.mjs
+      - name: Preserve native exercise and training archive reports
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-training-4607676daca37021f6c92338a15e5fa67267f151
+          path: outputs/
+          if-no-files-found: warn
