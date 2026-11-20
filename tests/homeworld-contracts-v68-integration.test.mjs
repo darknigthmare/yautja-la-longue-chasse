@@ -11,6 +11,7 @@ export * from './app/game/systems/homeworld';
 export * from './app/game/systems/homeworldWorldV77';
 export * from './app/game/systems/homeworldInteriorsV64';
 export * from './app/game/systems/homeworldContractsV68';
+export * from './app/game/systems/minorArcsV160';
 export * from './app/game/systems/homeworldRegionsV68';
 export * from './app/game/systems/homeworldAccessV69';
 export {createNurseryCampaign} from './app/game/systems/nurseryCampaign';

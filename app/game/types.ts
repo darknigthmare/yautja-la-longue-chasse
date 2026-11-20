@@ -710,6 +710,8 @@ export interface SaveGame {
   shipInsertionEnergy?: import("./systems/shipInsertionEnergy").ShipInsertionEnergy | null;
   /** V134: versioned cosmetic gauntlet, research claims and owner binding; older saves may omit. */
   gauntletV134?: import("./systems/gauntletCampaignV134").GauntletCampaignV134 | null;
+  /** V160 : mini-arcs Lost Tribe / Serpent Clan, champ additif créé à la première épreuve acceptée. */
+  minorArcsV160?: import("./systems/minorArcsV160").MinorArcsV160 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

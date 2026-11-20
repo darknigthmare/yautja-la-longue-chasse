@@ -45,6 +45,7 @@ import type { SoloV90State, SoloV90Receipt } from "./systems/firstHuntSoloV90";
 import { createHomeworldRegionV68, normalizeHomeworldRegionV68, canEnterHomeworldRegionV68, canAdvanceHomeworldRegionV68, acknowledgeHomeworldRegionEventV68, type HomeworldRegionStateV68, type HomeworldRegionIdV68, type RegionFieldEventV68 } from "./systems/homeworldRegionsV68";
 import {BIBLE_CULTURAL_BINDING_V86,bibleCulturalContextV86,createBibleSceneTransactionV86,defaultBibleSceneLedgerV86,normalizeBibleSceneLedgerV86,type BibleSceneActionV86,type BibleSceneResultV86} from './systems/bibleSceneCulturalV86';
 import { bindContractsVillageRunV68, recordContractsFieldEventV68, contractMarksV68 } from "./systems/homeworldContractsV68";
+import { bindMinorArcsRunV160, recordMinorArcsFieldEventV160, type MinorArcsV160 } from "./systems/minorArcsV160";
 import { createHomeworldPassageV67, normalizeHomeworldPassageV67, canEnterHomeworldPassageV67, canAdvanceHomeworldPassageV67, beginReturnHomeworldPassageV67, type HomeworldPassageStateV67 } from "./systems/homeworldPassageV67";
 import { recordNpcMissionReportV66 } from "./systems/homeworldNpcMissionsV66";
 import { createGameReserveV66, createGameReserveV104, createGameReserveV107, createGameReserveV108, createGameReserveV109, canAdvanceGameReserveV66, type GameReserveV66State, type GameReserveChoiceV109 } from "./systems/gameReserveV66";
@@ -2183,7 +2184,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "minorArcsV160">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2193,7 +2194,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, minorArcsV160: update.minorArcsV160 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2518,6 +2519,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     // The ledger remains cumulative; spending the wallet cannot replay a reward.
     return persistSocialProgress({ homeworld, ...(reward ? {profile: {...current.profile, clanMarks: current.profile.clanMarks + reward}} : {}) });
   }, [persistSocialProgress]);
+  // V160 : l'écran n'annonce une épreuve acceptée ou remise qu'après écriture confirmée.
+  const persistMinorArcsV160 = useCallback((minorArcsV160: MinorArcsV160): boolean =>
+    persistSocialProgress({ minorArcsV160 }), [persistSocialProgress]);
   const persistJusticeProgress = useCallback((justice: JusticeProgress) =>
     persistSocialProgress({ justice }), [persistSocialProgress]);
 
@@ -2777,7 +2781,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (previous && previous.status !== "at-city" && previous.regionId !== regionId) { setToast("Reviens au seuil de la cité avant de changer de région."); return false; }
     const state = previous && previous.status !== "at-city" ? previous : createHomeworldRegionV68(regionId, globalThis.crypto.randomUUID());
     const binding = bindContractsVillageRunV68(current.homeworld.contractsV68, regionId, state.runId);
-    if (!binding.ok || !persistSocialProgress({ homeworldRegionV68: state, homeworld: { ...current.homeworld, contractsV68: binding.state } })) return false;
+    // V160 : la même sortie est liée aux épreuves de mini-arc suivies, dans la même écriture.
+    const arcsBinding = bindMinorArcsRunV160(current.minorArcsV160, current.createdAt, regionId, state.runId);
+    if (!binding.ok || !arcsBinding.ok || !persistSocialProgress({ homeworldRegionV68: state, homeworld: { ...current.homeworld, contractsV68: binding.state },
+      ...(arcsBinding.changed && arcsBinding.state ? { minorArcsV160: arcsBinding.state } : {}) })) return false;
     setHubLocation("homeworld"); setScreen("homeworld-region-v68"); return true;
   }, [entry.ownerCreatedAt, persistSocialProgress]);
   const checkpointHomeworldRegionV68 = useCallback((state: HomeworldRegionStateV68): boolean => {
@@ -2793,7 +2800,9 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       !canEnterHomeworldRegionV68(current, event.regionId).allowed) return false;
     const result = recordContractsFieldEventV68(current.homeworld.contractsV68, event, {regionId:state.regionId,runId:state.runId});
     if (!result.ok) return false;
-    return persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state} });
+    const arcs = recordMinorArcsFieldEventV160(current.minorArcsV160, current.createdAt, event, {regionId:state.regionId,runId:state.runId});
+    return persistSocialProgress({ homeworldRegionV68: acknowledgeHomeworldRegionEventV68(state), homeworld: {...current.homeworld, contractsV68:result.state},
+      ...(arcs.changed && arcs.state ? { minorArcsV160: arcs.state } : {}) });
   }, [entry.ownerCreatedAt, persistSocialProgress]);
   const bibleActionHomeworldV86 = useCallback((action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86 => {
     const previous=normalizeBibleSceneLedgerV86(saveRef.current.homeworld.bibleScenesV86)??defaultBibleSceneLedgerV86(entry.ownerCreatedAt);
@@ -4559,7 +4568,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 <p>{campaignWelcomeV69(save).next}</p>
               </section>}
                 suspended={screen !== "homeworld" || settingsOpen || trophyWorkshop !== null}
-                onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68}
+                onProgress={persistHomeworldProgress} onService={openHomeworldService} onYouthTraining={enterYouthTraining} onSoloV66={enterSoloV66} onSoloV67={enterSoloV67} onSoloV68={enterSoloV68} onSoloV69={enterSoloV69} onSoloV70={enterSoloV70} onSoloV90={enterSoloV90} onRegionV68={openHomeworldRegionV68} onMinorArcsV160={persistMinorArcsV160}
                 onReturnShip={() => go("deck")} onExpedition={openHomeworldExpedition} onNotify={setToast} />
             </div>
           </section>

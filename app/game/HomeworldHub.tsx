@@ -81,6 +81,8 @@ import {HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V83} from './systems/homeworldStree
 import {HOMEWORLD_STREET_DECOR_SCENE_SOURCES_V84} from './systems/homeworldStreetDecorV84';
 import {useHomeworldReducedMotionV77} from './useHomeworldReducedMotionV77';
 import HomeworldContractsV68, { HomeworldContractsJournalV68 } from "./HomeworldContractsV68";
+import HomeworldMinorArcsV160, { HomeworldMinorArcsJournalV160 } from "./HomeworldMinorArcsV160";
+import { applyMinorArcV160, type MinorArcActionV160, type MinorArcsV160 } from "./systems/minorArcsV160";
 import { applyHomeworldContractV68, type ContractActionV68 } from "./systems/homeworldContractsV68";
 import { canStartSoloV68 } from "./systems/campaignSoloV68";
 import { canStartSoloV69 } from "./systems/campaignSoloV69";
@@ -141,6 +143,8 @@ export interface HomeworldHubProps {
   onSoloV70?(): boolean;
   onSoloV90?(): boolean;
   onRegionV68?(id: HomeworldRegionIdV68): boolean;
+  /** V160 : renvoie false si l’écriture n’est pas confirmée ; rien n’est alors annoncé. */
+  onMinorArcsV160?(next: MinorArcsV160): boolean;
   /** A completed connector returns at its physical threshold while its arrival
    * request is pending. Ordinary city reloads use the existing Port spawn. */
   arrivalV67?: { pointId: string; requestId: string } | null;
@@ -157,7 +161,7 @@ function pointInCurrentSpace(actor: { x: number; y: number }, room: HomeworldInt
   return original ? { ...original, ...target.position } : null;
 }
 
-export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, recoveryStorage, ephemeralSession = false, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, arrivalV67 }: HomeworldHubProps) {
+export default function HomeworldHub({ save, selectedShipId, suspended, navigation, welcome, onProgress: persistProgress, recoveryStorage, ephemeralSession = false, onService, onReturnShip, onExpedition, onNotify, onYouthTraining, onSoloV66, onSoloV67, onSoloV68, onSoloV69, onSoloV70, onSoloV90, onRegionV68, onMinorArcsV160, arrivalV67 }: HomeworldHubProps) {
   const [initialLocationV77] = useState(() => resolveCargoArrivalV108(save.homeworld.locationV77,save.createdAt,save.homeworld.cargoV108,{cartographyV104:save.homeworld.cartographyV104,cartographyV105:save.homeworld.cartographyV105,archiveV106:save.homeworld.archiveV106,archiveComparisonV107:save.homeworld.archiveComparisonV107}));
   const [upgradeRecoveryPendingV112,setUpgradeRecoveryPendingV112]=useState(()=>!initialLocationV77.migrationBackup&&homeworldGeometryRecoveryRequiredV112(save.homeworld.locationV77,save.createdAt,homeworldGeometryRecoveryLedgersV112(save.homeworld)));
   const upgradeRecoveryPendingRefV112=useRef(upgradeRecoveryPendingV112);
@@ -1240,6 +1244,15 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
     }
     setAnnouncement(message); onNotify(message); setDialog(current => current ? { ...current, message } : current);
   };
+  const submitMinorArcV160 = (action: MinorArcActionV160) => {
+    const point = dialogStateRef.current?.point, nearby = pointInCurrentSpace(actorRef.current, interiorRef.current, levelRefV77.current);
+    if (!onMinorArcsV160 || suspendedRef.current || pausedRef.current || saveRef.current.createdAt !== save.createdAt || !point?.npcId || nearby?.id !== point.id) return;
+    clearInputs();
+    const result = applyMinorArcV160(saveRef.current, action, { interiorId: interiorRef.current?.buildingId ?? null, pointId: point.id, npcId: point.npcId, actor: actorRef.current });
+    let message = result.message;
+    if (result.changed && result.state && !onMinorArcsV160(result.state)) message = "L’épreuve n’a pas été sauvegardée. Réessaie ici ; rien n’a été enregistré.";
+    setAnnouncement(message); onNotify(message); setDialog(current => current ? { ...current, message } : current);
+  };
   const selectedPoint = dialog?.point;
   const residentRenderContextV110={ownerCreatedAt:save.createdAt,currentOwnerCreatedAt:save.createdAt,actor,levelId:levelIdV77,seconds:phase,interiorId,inTransit:!!transitV77||!!skiffV77,active:true,cargo:cargoViewV108};
   const selectedResidentV68 = homeworldResidentDialogueContactV110(dialog?.residentV110,residentRenderContextV110);
@@ -1563,6 +1576,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           <HomeworldSideStoryV66 progress={progress.sideStoryV66} pointId={selectedPoint.id} eligible={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => submitNarrativeV66("side", action)} />
           <HomeworldNpcMissionsV66 value={progress.npcMissionsV66} npcId={selectedPoint.npcId} autonomousHunter={!youthWelcome} disabled={suspended || paused || inactive} onAction={action => { submitNarrativeV66("npc", action); }} />
           <HomeworldContractsV68 value={progress.contractsV68} npcId={selectedPoint.npcId} eligible={villagesOpenV69} disabled={suspended || paused || inactive} onAction={submitContractV68} />
+          {onMinorArcsV160 && <HomeworldMinorArcsV160 save={save} npcId={selectedPoint.npcId} disabled={suspended || paused || inactive} onAction={submitMinorArcV160} />}
           {!youthWelcome && inquiryDialogue && <section className={styles.notice} aria-label="Contre-enquête du convoi" data-homeworld-inquiry-dialog={inquiryJournal.step}>
             <h4>{inquiryDialogue.title}</h4><p><YautjaTranslationV67 text={inquiryDialogue.text} paused={suspended || paused || inactive} /></p>
             {inquiryDialogue.options.map((option, index) => <div key={index}>
@@ -1590,6 +1604,7 @@ export default function HomeworldHub({ save, selectedShipId, suspended, navigati
           <section className={styles.notice} aria-label="Journal de La marque empruntée" data-side-story-v66-journal><h4>La marque empruntée · {sideStoryJournalV66.completed}/{sideStoryJournalV66.total}</h4><p><strong>{sideStoryJournalV66.label}</strong></p><p>{sideStoryJournalV66.objective}</p></section>
           <HomeworldNpcMissionsJournalV66 value={progress.npcMissionsV66} autonomousHunter={!youthWelcome} />
           <HomeworldContractsJournalV68 value={progress.contractsV68} />
+          {onMinorArcsV160 && <HomeworldMinorArcsJournalV160 save={save} />}
           <p data-homeworld-wallet-v68>Solde disponible : <strong>{save.profile.clanMarks} marques de clan</strong>. Les primes remises peuvent financer l’équipement à l’armurerie.</p>
           <p>Les villages accueillent les délégations et consignent les pistes de leurs territoires. L’artisane du marché tient le Tableau des chasses ; les demandes personnelles se reçoivent auprès de leurs commanditaires.</p>
         </>}
