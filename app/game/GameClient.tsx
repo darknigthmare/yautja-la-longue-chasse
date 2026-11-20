@@ -2276,11 +2276,27 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   const sacrificeBlackGodSession = useCallback((choice: BlackGodSacrificeChoiceV162): { ok: boolean; message: string } => {
     const current = saveRef.current;
     if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (screen !== "mausoleum" || settingsOpen || campaignOperationRef.current || archiveTransferBusy || archiveRecoveryIssue) {
+      return { ok: false, message: "Le sacrifice doit être confirmé au mausolée, après les opérations de sauvegarde." };
+    }
+    if (activeHuntSessionRef.current || resumableHunt || current.planetArrival || current.planetArrivalRun ||
+        pendingHuntResult || pendingTerminalRunRef.current) {
+      return { ok: false, message: "Termine la chasse et confirme son résultat avant de clore cette chronique." };
+    }
+    // A sidecar may have appeared after hydration in another tab.
+    const latest = loadActiveHuntSave();
+    if (latest.failure) {
+      return { ok: false, message: "Les archives de chasse sont indisponibles. Vérifie-les avant de confirmer le sacrifice." };
+    }
+    if (latest.save?.ownerSaveCreatedAt === current.createdAt) {
+      return { ok: false, message: "Une chasse à reprendre appartient à cette chronique. Termine-la avant de te sacrifier." };
+    }
     const change = sacrificeBlackGodV162(current, choice, new Date().toISOString());
     if (!change.ok) return { ok: false, message: change.reason };
     return persistSocialProgress({ blackGodV162: change.state, ...(change.heritage ? { heritageV152: change.heritage } : {}) })
       ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; le sacrifice n’est pas accompli." };
-  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  }, [archiveRecoveryIssue, archiveTransferBusy, entry.ownerCreatedAt, pendingHuntResult, persistSocialProgress,
+    resumableHunt, screen, settingsOpen]);
 
   const commitTrophyTutorialCheckpoint = useCallback((candidate: TrophyTutorialStateV6): boolean => {
     const current = saveRef.current;
@@ -3177,6 +3193,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   const mountArrivalHunt = useCallback((arrival: PlanetArrivalState, run: PlanetArrivalRun): boolean => {
+    if (blackGodStatusV162(saveRef.current) === "sacrificed") return false;
     if (!sessionAliveRef.current || arrivalMountedRunRef.current === arrival.runId) return arrivalMountedRunRef.current === arrival.runId;
     const current = saveRef.current;
     const mission = MISSIONS.find(item => item.id === arrival.missionId);
@@ -3241,6 +3258,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, mountArrivalHunt, persistSocialProgress, screen, settingsOpen]);
 
   const launchMission = useCallback(() => {
+    if (blackGodStatusV162(saveRef.current) === "sacrificed") return;
     if(saveRef.current.mobilityV1?.active){setToast("Remise au garage requise avant une chasse : reprends la sortie depuis le comptoir des Forges.");return;}
     if (pendingTrophyCommitRef.current) { setToast("Confirmez le rite en attente avant de lancer une chasse."); return; }
     if (!sessionAliveRef.current) return;
@@ -3349,7 +3367,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [hunterGauntlet.equippedId, insertionPlan, persistSocialProgress, playSound, save, selectedMission]);
 
   const resumeActiveHunt = useCallback(() => {
-    if (!sessionAliveRef.current) return;
+    if (!sessionAliveRef.current || blackGodStatusV162(saveRef.current) === "sacrificed") return;
     if (!resumableHunt) return;
     const latest = loadActiveHuntSave();
     if (!latest.save || latest.save.runId !== resumableHunt.runId || latest.save.sequence !== resumableHunt.sequence) {
@@ -3431,6 +3449,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       if (arrivalStartupRef.current || !sessionAliveRef.current) return;
       arrivalStartupRef.current = true;
       const current = saveRef.current;
+      if (blackGodStatusV162(current) === "sacrificed") return;
       const arrival = inspectPlanetArrival(current.planetArrival, current.createdAt).state;
       const run = inspectPlanetArrivalRun(current.planetArrivalRun, arrival).state;
       if (!arrival || !run) return;
@@ -4384,7 +4403,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   );
 
   // V162: a chronicle closed by the Black God sacrifice is read-only; nothing else is played.
-  if (blackGodStatusV162(save) === "sacrificed" && screen !== "mission") return (
+  if (blackGodStatusV162(save) === "sacrificed") return (
     <main className="game-shell" ref={gameShellRef} data-game-content-version={GAME_CONTENT_VERSION} data-campaign-session={entry.slotId} data-campaign-owner={entry.ownerCreatedAt}>
       <BlackGodChronicleClosedV162 save={save} busy={campaignSaveBusy} onMainMenu={() => { void returnToMainMenu(); }} />
       {campaignSaveMessage && <p role="status">{campaignSaveMessage}</p>}
