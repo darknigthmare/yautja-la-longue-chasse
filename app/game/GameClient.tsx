@@ -3,6 +3,8 @@ import { applyResidenceActionV149, emptyResidenceV149, houseForBuildingV149, hou
 import ResidencePanelV149 from "./ResidencePanelV149";
 import ResidenceLifePanelV150 from "./ResidenceLifePanelV150";
 import OriginTransitionPanelV151 from "./OriginTransitionPanelV151";
+import OriginTrophyTransitionPanelV157, { type OriginTrophyActionV157 } from "./OriginTrophyTransitionPanelV157";
+import { trophyTransitionChooseV157, trophyTransitionStepV157 } from "./systems/originTrophyV157";
 import HouseScenesPanelV154 from "./HouseScenesPanelV154";
 import { applySceneActionV154, emptyResidenceScenesV154, guestsAtHouseV154, isFutureResidenceScenesV154, normalizeResidenceScenesV154, type SceneActionV154 } from "./systems/residenceScenesV154";
 import { houseTransitionChooseV151, houseTransitionStepV151, isFutureOriginV151, originOfSaveV151 } from "./systems/originsV151";
@@ -2921,6 +2923,20 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!change.ok) return { ok: false, message: change.reason };
     return persistSocialProgress({ originV151: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
   }, [entry.ownerCreatedAt, persistSocialProgress]);
+  // V157: STORY5-TR-Ox-02, played at the trophy workshop (trophy wall) with a trophy the save really holds.
+  const originTrophyActionV157 = useCallback((action: OriginTrophyActionV157): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    if (isFutureOriginV151(current.originV151)) return { ok: false, message: "Registre d’une version plus récente : rien n’est modifié." };
+    const context = { atWorkshop: screen === "trophies" && !trophyTutorialOpen && !trophyWorkshop && pendingTrophyCommit === null,
+      ownedTrophyIds: current.trophies.map((trophy: { id: string }) => trophy.id) };
+    // An older save is read with the documented default origin; it is written only now, once used.
+    const origin = originOfSaveV151(current.originV151);
+    const change = action.kind === "step" ? trophyTransitionStepV157(origin, action.trophyId, action.index, context)
+      : trophyTransitionChooseV157(origin, action.trophyId, action.choice, context);
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ originV151: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a changé." };
+  }, [entry.ownerCreatedAt, persistSocialProgress, screen, trophyTutorialOpen, trophyWorkshop, pendingTrophyCommit]);
   const bibleActionHomeworldV86 = useCallback((action: BibleSceneActionV86, state: HomeworldRegionStateV68): BibleSceneResultV86 => {
     const previous=normalizeBibleSceneLedgerV86(saveRef.current.homeworld.bibleScenesV86)??defaultBibleSceneLedgerV86(entry.ownerCreatedAt);
     const fail=(message:string):BibleSceneResultV86=>({ok:false,changed:false,ledger:previous,message});
@@ -6101,6 +6117,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
                 </button>
               </div>
             </article>
+            <OriginTrophyTransitionPanelV157 origin={save.originV151} atWorkshop={!trophyWorkshop && pendingTrophyCommit === null}
+              disabled={settingsOpen || Boolean(pendingHuntResult) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy}
+              trophies={trophyRecords.map((trophy: { id: string; targetName: string; claimedAt: string }) =>
+                ({ id: trophy.id, label: `${trophy.targetName} · ${new Date(trophy.claimedAt).toLocaleDateString("fr-FR")}` }))}
+              onAction={originTrophyActionV157} />
             <Suspense fallback={<p>Lecture des distinctions THE PIT…</p>}>
               <PitHonorsPanel owner={save.createdAt} onOpenPit={openPit} />
             </Suspense>

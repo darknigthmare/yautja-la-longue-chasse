@@ -43,6 +43,10 @@ export interface HouseTransitionSourceV151 {
 }
 export const ORIGINS_V151 = source.origins as OriginDefinitionV151[];
 export const HOUSE_TRANSITIONS_SOURCE_V151 = source.houseTransitions as HouseTransitionSourceV151[];
+/** V157 : lignes STORY5-TR-Ox-02 (système « Trophée »), même forme que les lignes « Maison ». */
+export const TROPHY_TRANSITIONS_SOURCE_V151 = source.trophyTransitions as HouseTransitionSourceV151[];
+/** Gestures per scene: three for every -01 and -02 transition. */
+export const TRANSITION_STEP_COUNT_V151 = 3;
 export const originV151 = (id: unknown) => ORIGINS_V151.find(origin => origin.id === id) ?? null;
 export const isOriginIdV151 = (id: unknown): id is OriginIdV151 => (ORIGIN_IDS_V151 as readonly unknown[]).includes(id);
 
@@ -120,6 +124,11 @@ export interface TransitionRecordV151 {
   choice: 0 | 1 | null;
   /** House where the scene was resolved (local decision). */
   houseId: string | null;
+  /**
+   * V157, « Trophée » (-02) transitions only: the owned trophy (SaveGame.trophies id)
+   * placed at the bench. Absent from house records, whose shape is unchanged.
+   */
+  trophyId?: string | null;
 }
 export interface RelationV151 { name: string; presence: "present" | "awaited" | "absent"; transitionId: string; choice: 0 | 1 }
 export interface OriginStateV151 {
@@ -144,12 +153,24 @@ export function originOfSaveV151(raw: unknown): OriginStateV151 {
 export function normalizeOriginV151(raw: unknown): OriginStateV151 | null {
   if (!isRecord(raw) || isFutureOriginV151(raw) || !isOriginIdV151(raw.originId)) return null;
   const state = createOriginV151(raw.originId, raw.source === "legacy-default" ? "legacy-default" : "creation");
-  const ids = new Set(HOUSE_TRANSITIONS_SOURCE_V151.map(entry => entry.id));
+  const houseIds = new Set(HOUSE_TRANSITIONS_SOURCE_V151.map(entry => entry.id));
+  const trophyIds = new Set(TROPHY_TRANSITIONS_SOURCE_V151.map(entry => entry.id));
+  const ids = new Set([...houseIds, ...trophyIds]);
+  const max = TRANSITION_STEP_COUNT_V151;
   if (isRecord(raw.transitions)) for (const [id, value] of Object.entries(raw.transitions)) {
     if (!ids.has(id) || !isRecord(value)) continue;
-    const steps = Number.isInteger(value.steps) ? Math.max(0, Math.min(3, Number(value.steps))) : 0;
+    const steps = Number.isInteger(value.steps) ? Math.max(0, Math.min(max, Number(value.steps))) : 0;
     const choice = value.choice === 0 || value.choice === 1 ? value.choice : null;
-    const resolved = value.resolved === true && choice !== null && steps === 3;
+    if (trophyIds.has(id)) {
+      // V157: a trophy scene keeps its bench trophy; gestures or a resolution without it are not kept.
+      const trophyId = typeof value.trophyId === "string" && value.trophyId ? value.trophyId : null;
+      const kept = trophyId ? steps : 0;
+      const resolved = value.resolved === true && choice !== null && kept === max;
+      state.transitions[id] = { steps: kept, resolved, success: resolved && value.success === true, choice: resolved ? choice : null,
+        houseId: null, trophyId };
+      continue;
+    }
+    const resolved = value.resolved === true && choice !== null && steps === max;
     state.transitions[id] = { steps, resolved, success: resolved && value.success === true, choice: resolved ? choice : null,
       houseId: typeof value.houseId === "string" ? value.houseId : null };
   }
