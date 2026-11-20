@@ -6,15 +6,13 @@
  * est le choix du joueur), « Warp gate d'après le lore NECA » et le classeur V6
  * (WARP-R01, R05, R22 ; V5 États communs STATE5-25 → STATE5-30).
  *
- * Module isolé : la base Warp commune (R2-M030 → M032, quête commune et
- * installation du module) n'existe pas encore dans la sauvegarde. Ce module ne
- * la recrée pas. Il lit les conditions par l'accès existant `warp-universe` de
- * la chronique et ne conserve que l'état propre à la branche Tantalus
- * (STATE5-27 → STATE5-30 pour ce seul voyage). Tant qu'aucun contenu du jeu ne
- * produit « quête commune réussie » et « module installé », le départ reste refusé.
+ * La quête et l'installation sont lues dans le dossier Warp commun
+ * (R2-M030 → M032). Ce module conserve uniquement les voyages et les choix
+ * propres à la branche Tantalus (STATE5-27 → STATE5-30).
  */
-import { evaluateChronicleAccess, type ChronicleRequirement } from "./clanChronicle";
+import { evaluateChronicleAccess, type ChronicleAccessContext, type ChronicleRequirement } from "./clanChronicle";
 import { shipAcquisitionOwnedHullV89 } from "./shipAcquisitionV89";
+import { canReturnFromWarpV165, inspectWarpEpochsV165 } from "./warpEpochsV165";
 
 export const TANTALUS_LEDGER_VERSION_V164 = 1 as const;
 /** STATE5-27 : identifiant de branche. Le présent et la branche gardent des populations distinctes. */
@@ -52,9 +50,9 @@ export interface TantalusLedgerV164 {
 export interface TantalusWarpGateInputV164 {
   chronicle: unknown;
   personalShipAvailable: boolean;
-  /** STATE5-25. Sans base Warp, dérivé de la preuve de chronique `warp-module-quest`. */
+  /** STATE5-25 : issue lue dans le dossier de la quête commune. */
   warpQuestOutcome?: WarpQuestOutcomeV164;
-  /** STATE5-26 : installation matérielle vérifiée. Aucune source dans la sauvegarde actuelle. */
+  /** STATE5-26 : installation matérielle vérifiée. */
   warpModuleInstalled: boolean;
   /** STATE5-28 : un voyage engagé dans une autre branche Warp (base Warp, PR #162) bloque ce départ. */
   otherWarpTripActive?: boolean;
@@ -140,8 +138,8 @@ export function evaluateTantalusGateV164(input: TantalusWarpGateInputV164): Tant
     personalShipAvailable: input.personalShipAvailable === true,
     warpModuleInstalled: input.warpModuleInstalled === true,
   });
-  const missing = [...access.missing];
-  // STATE5-25 : réussite requise, pas une simple entrée de journal.
+  // Le résultat explicite de la quête commune fait foi sur le reçu de chronique.
+  const missing = access.missing.filter(m => m.id !== "warp-module-quest" || input.warpQuestOutcome !== "reussi");
   if (input.warpQuestOutcome !== undefined && input.warpQuestOutcome !== "reussi" && !missing.some(m => m.id === "warp-module-quest")) {
     missing.push({ id: "warp-module-quest", label: "Quête commune du Warp réussie" });
   }
@@ -212,16 +210,18 @@ export function tantalusViewV164(ledger: TantalusLedgerV164 | null) {
   };
 }
 
-/**
- * Lecture des conditions dans la sauvegarde actuelle. Chronique dans
- * `prologue.chronicle` ; vaisseau par le reçu d'acquisition V89. STATE5-26 n'a
- * aucune source : `warpModuleInstalled` vaut faux tant que la base Warp ne
- * l'écrit pas (signalé comme limite, non contourné).
- */
-export function tantalusGateFromSaveV164(save: { createdAt: string; prologue?: { chronicle?: unknown } | null; shipAcquisitionV89?: unknown }): TantalusWarpGateInputV164 {
+/** Lit le dossier Warp de cette campagne et les preuves réelles de possession. */
+export function tantalusGateFromSaveV164(
+  save: { createdAt: string; prologue?: { chronicle?: unknown } | null; shipAcquisitionV89?: unknown; warpEpochsV165?: unknown },
+  ship: ChronicleAccessContext = {},
+): TantalusWarpGateInputV164 {
+  const { state } = inspectWarpEpochsV165(save.warpEpochsV165, save.createdAt);
   return {
     chronicle: save.prologue?.chronicle ?? null,
-    personalShipAvailable: shipAcquisitionOwnedHullV89(save.shipAcquisitionV89 ?? null, save.createdAt) !== null,
-    warpModuleInstalled: false,
+    personalShipAvailable: ship.personalShipAvailable === true ||
+      shipAcquisitionOwnedHullV89(save.shipAcquisitionV89, save.createdAt) !== null,
+    warpQuestOutcome: state?.warpQuestOutcome ?? "non_commence",
+    warpModuleInstalled: state?.warpModuleInstalled === true,
+    otherWarpTripActive: canReturnFromWarpV165(state),
   };
 }

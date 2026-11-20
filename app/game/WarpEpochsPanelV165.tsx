@@ -12,6 +12,7 @@ import {
   warpAccessContextFromSaveV165, warpConditionsV165, warpW02HuntMissionV165,
   type WarpEpochsStateV165, type WarpUpdateV165,
 } from "./systems/warpEpochsV165";
+import { normalizeTantalusLedgerV164 } from "./systems/tantalusV164";
 import styles from "./WarpEpochsPanelV165.module.css";
 
 const HuntCanvas = React.lazy(() => import("./HuntCanvas"));
@@ -27,7 +28,10 @@ export interface WarpEpochsPanelV165Props {
 
 export default function WarpEpochsPanelV165({ save, shipContext = { personalShipAvailable: false }, onPersist, onClose }: WarpEpochsPanelV165Props) {
   const state = useMemo(() => normalizeWarpEpochsV165(save.warpEpochsV165, save.createdAt) ?? createWarpEpochsV165(save.createdAt), [save]);
-  const ctx = useMemo(() => warpAccessContextFromSaveV165(save, shipContext), [save, shipContext]);
+  const ctx = useMemo(() => ({
+    ...warpAccessContextFromSaveV165(save, shipContext),
+    otherWarpTripActive: Boolean(normalizeTantalusLedgerV164(save.tantalusV164, save.createdAt)?.activeTrip),
+  }), [save, shipContext]);
   const [message, setMessage] = useState("");
   const [hunting, setHunting] = useState(false);
   const base = MISSIONS.find(mission => mission.id === W02_HUNT_BASE_MISSION_ID_V165);
@@ -146,7 +150,7 @@ export default function WarpEpochsPanelV165({ save, shipContext = { personalShip
         </article>;
       })}
       <h4>Chasse complète (mission existante adaptée)</h4>
-      <p>« Sang dans la canopée » adaptée : champion du château (proposé). Le terrain et les sprites restent ceux de la mission de base. Aucun honneur ni rang n’est écrit.</p>
+      <p>Le panorama du col des cèdres situe le duel en 1629. Le terrain et les sprites viennent de « Sang dans la canopée ». Les trophées restent rattachés à la branche W-02.</p>
       <button type="button" disabled={!huntLaunch.allowed || !huntMission} onClick={() => { setMessage(""); setHunting(true); }}>Lancer la chasse</button>
       {!huntLaunch.allowed && <p className={styles.missing}>{huntLaunch.reason}</p>}
       {w02.trophy && <p className={styles.ok}>Trophée : {w02.trophy.name} — {w02.trophy.circumstances}</p>}

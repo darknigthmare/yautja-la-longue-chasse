@@ -23,8 +23,9 @@
  */
 import type { MissionDefinition, MissionResult } from "../types";
 import {
-  evaluateChronicleAccess, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,
+  evaluateChronicleAccess, getChronicleFunctions, migrateV35ClanChronicle, type ChronicleAccessContext, type ClanChronicle,
 } from "./clanChronicle";
+import { shipAcquisitionOwnedHullV89 } from "./shipAcquisitionV89";
 
 export const WARP_EPOCHS_V165_VERSION = 1 as const;
 
@@ -311,6 +312,8 @@ export interface WarpAccessContextV165 {
   personalShip: boolean;
   /** Fonction Adjutant actuelle du joueur. */
   adjutant: boolean;
+  /** Voyage réservé vers une autre branche Warp. */
+  otherWarpTripActive?: boolean;
 }
 type ChronicleSaveSource = { prologue?: { chronicle?: ClanChronicle | null } | null } & Record<string, unknown>;
 /** Lit la chronique existante (rang, rite Adjutant) et la disponibilité réelle du vaisseau. */
@@ -318,10 +321,13 @@ export function warpAccessContextFromSaveV165(save: unknown, ship: ChronicleAcce
   const source = (record(save) ? save : {}) as ChronicleSaveSource;
   const chronicle = source.prologue?.chronicle ?? migrateV35ClanChronicle(save);
   const blooded = evaluateChronicleAccess(chronicle, "personal-ship-acquisition").allowed;
+  const ownedHull = typeof source.createdAt === "string"
+    ? shipAcquisitionOwnedHullV89(source.shipAcquisitionV89, source.createdAt)
+    : null;
   return {
     blooded,
-    personalShip: ship?.personalShipAvailable === true,
-    adjutant: Array.isArray(chronicle?.rites) && chronicle.rites.some(rite => rite?.id === "adjutant-appointment"),
+    personalShip: ship?.personalShipAvailable === true || ownedHull !== null,
+    adjutant: getChronicleFunctions(chronicle).includes("adjutant"),
   };
 }
 
@@ -341,7 +347,9 @@ export function warpConditionsV165(state: WarpEpochsStateV165 | null, ctx: WarpA
 
 export function evaluateWarpDepartureV165(state: WarpEpochsStateV165 | null, ctx: WarpAccessContextV165): WarpEvaluationV165 {
   const missing = warpConditionsV165(state, ctx);
-  if (state?.activeWarpTripId) missing.push({ id: "trip-active", label: "Un voyage est déjà engagé", where: "Revenir par le retour réservé" });
+  if (state?.activeWarpTripId || ctx.otherWarpTripActive) {
+    missing.push({ id: "trip-active", label: "Un voyage Warp est déjà engagé", where: "Revenir par le retour réservé" });
+  }
   const branch = WARP_BRANCHES_V165.find(entry => entry.id === state?.warpBranchId);
   if (!branch) missing.push({ id: "branch", label: "Choisir une branche (STATE5-27)", where: "Carte des branches" });
   else if (branch.status !== "jouable") missing.push({ id: "branch-not-implemented", label: `${branch.id} n'est pas encore implémentée`, where: "Choisir W-02" });
@@ -526,8 +534,7 @@ export function applyW02HuntResultV165(state: WarpEpochsStateV165, result: Pick<
 
 export const W02_HUNT_BASE_MISSION_ID_V165 = "jungle-vey" as const;
 
-/** Adapte le texte d'une mission existante ; le niveau, les sprites et les
- * comportements restent ceux de la mission de base (limite assumée). */
+/** Adapte la présentation d'une chasse existante en conservant sa géométrie. */
 export function warpW02HuntMissionV165(base: MissionDefinition): MissionDefinition {
   if (base.id !== W02_HUNT_BASE_MISSION_ID_V165) throw new Error("Mission de base inattendue pour W-02.");
   const label = (id: string, text: string, description: string) => {
@@ -547,7 +554,12 @@ export function warpW02HuntMissionV165(base: MissionDefinition): MissionDefiniti
     subtitle: "Japon féodal, 1629 — branche Warp (chasse proposée)",
     planetName: "Terre · branche W-02 (1629)",
     targetName: "Champion du château",
-    briefing: "Branche W-02, 1629, de nuit. Un champion local tient la cour du château (personnage proposé, aucun personnage des films). Les héros canon restent intouchables. Le terrain et les sprites sont encore ceux de « Sang dans la canopée » : seule la mission est adaptée.",
+    briefing: "Branche W-02, 1629. Traverse le col des cèdres de nuit pour rejoindre la cour où t’attend le champion du château. Les héros canon restent intouchables.",
+    presentation: {
+      backgroundPath: "/game/warp/w02/cedar-pass-1629.webp",
+      backgroundLayout: "single",
+      revealAnnouncement: "Le feu de la garde révèle ta silhouette.",
+    },
     debrief: {
       success: "Le champion est tombé dans la branche W-02. Sa mort reste inscrite dans cette branche ; le présent n'en reçoit ni honneur ni rang.",
       failureHint: "Étudie la garde, reprends la lame de poignet, puis affronte le champion.",

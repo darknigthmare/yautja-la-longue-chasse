@@ -521,6 +521,11 @@ export interface MissionDefinition {
   targetKind: "human" | "beast" | "yautja";
   briefing: string;
   debrief: MissionDebriefDefinition;
+  presentation?: {
+    backgroundPath: string;
+    backgroundLayout: "single";
+    revealAnnouncement?: string;
+  };
   threatLevel: 1 | 2 | 3 | 4;
   prerequisiteMissionId: MissionId | null;
   recommendedArmorId: ArmorId;

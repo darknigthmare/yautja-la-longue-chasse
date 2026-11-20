@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { SaveGame } from './types';
+import type { ChronicleAccessContext } from './systems/clanChronicle';
 import {
   evaluateTantalusGateV164, normalizeTantalusLedgerV164, tantalusGateFromSaveV164, tantalusViewV164,
   TANTALUS_BEATS_V164, TANTALUS_ECHO8_CHOICES_V164, TANTALUS_YEAR_V164,
@@ -10,7 +11,8 @@ import {
 import styles from './TantalusPanelV164.module.css';
 
 export interface TantalusPanelV164Props {
-  save: Pick<SaveGame, 'createdAt' | 'prologue' | 'shipAcquisitionV89' | 'tantalusV164'>;
+  save: Pick<SaveGame, 'createdAt' | 'prologue' | 'shipAcquisitionV89' | 'tantalusV164' | 'warpEpochsV165'>;
+  shipContext?: ChronicleAccessContext;
   onCommit: (action: TantalusActionV164) => TantalusResultV164;
   /** Ouvert d'emblée (tests, accès direct). */
   initiallyOpen?: boolean;
@@ -20,12 +22,12 @@ let sequence = 0;
 const eventId = (kind: string) => `tantalus:${kind}:${Date.now().toString(36)}-${(sequence++).toString(36)}`;
 
 /** Branche Warp Tantalus 2204, accessible depuis la carte galactique. */
-export default function TantalusPanelV164({ save, onCommit, initiallyOpen = false }: TantalusPanelV164Props) {
+export default function TantalusPanelV164({ save, shipContext, onCommit, initiallyOpen = false }: TantalusPanelV164Props) {
   const [notice, setNotice] = useState<string | null>(null);
   const ledger = normalizeTantalusLedgerV164(save.tantalusV164 ?? null, save.createdAt);
   const unreadable = save.tantalusV164 != null && ledger === null;
   const view = tantalusViewV164(ledger);
-  const gate = evaluateTantalusGateV164(tantalusGateFromSaveV164(save));
+  const gate = evaluateTantalusGateV164(tantalusGateFromSaveV164(save, shipContext));
   const act = (action: TantalusActionV164) => setNotice(onCommit(action).message);
   return (
     <details className={styles.panel} open={initiallyOpen} data-tantalus-v164>

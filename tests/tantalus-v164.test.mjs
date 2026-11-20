@@ -5,13 +5,16 @@ import {homeworldSceneSsrV78} from './helpers/homeworld-scene-ssr-v78.mjs';
 
 const qa = homeworldSceneSsrV78();
 const t = qa.load('app/game/systems/tantalusV164.ts');
+const warp = qa.load('app/game/systems/warpEpochsV165.ts');
 const chron = qa.load('app/game/systems/clanChronicle.ts');
 const saves = qa.load('app/game/save.ts');
 const owner = '2026-11-20T10:00:00.000Z';
 
-/** Chronique Blooded + Adjutant + quête du module, obtenue par les reçus réels. */
-function warpReadyChronicle() {
-  const all = chron.CHRONICLE_EVIDENCE.filter(e => !['elder-time-passage', 'ancient-time-passage'].includes(e.id));
+/** Chronique Blooded + Adjutant, avec ou sans l'ancien reçu du module. */
+function warpReadyChronicle(legacyWarpReceipt = true) {
+  const all = chron.CHRONICLE_EVIDENCE.filter(e =>
+    !['elder-time-passage', 'ancient-time-passage'].includes(e.id) && (legacyWarpReceipt || e.id !== 'warp-module-quest'),
+  );
   const evidence = all.map(e => ({id: e.id, sourceId: e.sourceId}));
   const rites = chron.CHRONICLE_RITES.filter(r => ['nursery-recognition', 'unguided-hunt-recognition', 'blooding-mark', 'adjutant-appointment'].includes(r.id))
     .map(r => ({id: r.id, sourceId: r.sourceId}));
@@ -47,11 +50,56 @@ test('refus sans conditions Warp, avec chaque condition manquante nommée', () =
   assert.equal(t.actTantalusV164(null, owner, {kind: 'return', eventId: 'r1'}, ready()).accepted, false);
 });
 
-test('la sauvegarde actuelle ne fournit aucun module installé : départ refusé en jeu réel', () => {
+test('une campagne sans installation validée refuse le départ', () => {
   const save = saves.defaultSave(owner);
   const gate = t.tantalusGateFromSaveV164(save);
   assert.equal(gate.warpModuleInstalled, false);
   assert.equal(t.evaluateTantalusGateV164(gate).allowed, false);
+});
+
+test('installation commune : Tantalus et W-02 partagent le module et excluent deux voyages actifs', () => {
+  const ship = {personalShipAvailable: true};
+  // Les preuves du grade et de la nomination sont semées dans cette campagne de test.
+  const base = {...saves.defaultSave(owner), prologue: {chronicle: warpReadyChronicle(false)}};
+  const context = warp.warpAccessContextFromSaveV165(base, ship);
+  const applied = result => {
+    assert.equal(result.accepted, true, result.message);
+    return result.state;
+  };
+  let common = applied(warp.startWarpCommonQuestV165(warp.createWarpEpochsV165(owner), context, 'stabilite'));
+  for (const component of warp.WARP_COMPONENTS_V165) {
+    common = applied(warp.verifyWarpComponentV165(common, component.id, 'reparer'));
+  }
+  common = applied(warp.installWarpModuleV165(common, 'marge'));
+  common = applied(warp.selectWarpBranchV165(common, 'W-02'));
+  const save = {...base, warpEpochsV165: common};
+  const gate = t.tantalusGateFromSaveV164(save, ship);
+  assert.equal(gate.warpQuestOutcome, 'reussi');
+  assert.equal(gate.warpModuleInstalled, true);
+  assert.equal(t.evaluateTantalusGateV164(gate).allowed, true);
+  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164(save)).allowed, false);
+  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164({...save, warpEpochsV165: {...common, version: 2}}, ship)).allowed, false);
+  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164({...save, warpEpochsV165: {...common, ownerCreatedAt: '2026-01-01T00:00:00.000Z'}}, ship)).allowed, false);
+
+  const tantalus = t.actTantalusV164(null, owner, {kind: 'depart', eventId: 'tantalus-depart'}, gate);
+  assert.equal(tantalus.accepted, true, tantalus.message);
+  const withTantalus = {...save, tantalusV164: tantalus.ledger};
+  const blocked = qa.render('app/game/WarpEpochsPanelV165.tsx', {
+    save: withTantalus, shipContext: ship, onPersist: () => true, onClose: () => {},
+  });
+  assert.match(blocked, /Un voyage Warp est déjà engagé/);
+  assert.match(blocked, /disabled="">Engager le voyage/);
+  const returned = t.actTantalusV164(tantalus.ledger, owner, {kind: 'return', eventId: 'tantalus-return'},
+    t.tantalusGateFromSaveV164({...withTantalus, prologue: null}));
+  assert.equal(returned.accepted, true, returned.message);
+
+  const activeW02 = applied(warp.departWarpV165(common, context));
+  const fromW02 = t.tantalusGateFromSaveV164({...save, warpEpochsV165: activeW02}, ship);
+  assert.equal(fromW02.otherWarpTripActive, true);
+  assert.match(t.actTantalusV164(returned.ledger, owner, {kind: 'depart', eventId: 'blocked-depart'}, fromW02).message,
+    /Un autre voyage Warp est déjà engagé/);
+  const backW02 = applied(warp.returnFromWarpV165(activeW02));
+  assert.equal(t.evaluateTantalusGateV164(t.tantalusGateFromSaveV164({...save, warpEpochsV165: backW02}, ship)).allowed, true);
 });
 
 test('arrivée en 2204 avec branche, voyage et retour réservé', () => {

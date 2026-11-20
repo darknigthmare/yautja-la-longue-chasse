@@ -65,7 +65,11 @@ import { applyExplorationWorld, discoverExplorationRooms, interactWithExploratio
 import { defaultExplorationProgress, normalizeExplorationProgress, mergeExplorationProgress, explorationBonuses, isExplorationMission, explorationForMission } from "./systems/explorationProgress";
 import { OSERIS_VERTICAL_BOUNDS, PILOT_MISSION_ID, targetOserisCameraY } from "./systems/metroidvaniaPilot";
 import { resolvePlatformMotion, overlapsSolidPlatform, type PlatformMotionResult } from "./systems/platformCollision";
-import { attachCanopySwingV112, canopySupportReachableV112, canopySwingPointV112, isCanopySwingSnapshotV112, releaseCanopySwingV112, stepCanopySwingV112, type CanopySwingV112 } from "./systems/canopyTraversalV112";
+import {
+  attachCanopySwingV112, canopySupportReachableV112, canopySwingPointV112,
+  isCanopySwingSnapshotV112, releaseCanopySwingV112, selectCanopyEntrySupportV112,
+  stepCanopySwingV112, type CanopySwingV112,
+} from "./systems/canopyTraversalV112";
 import { solveCanopyGripRigV112 } from "./systems/canopyGripPresentationV112";
 import { canopyNavigationV112, type CanopyNavigationV112 } from "./systems/canopyNavigationV112";
 import { describeHuntFieldWorkV112, solveHuntFieldWorkRigV112, drawHuntFieldWorkV112,
@@ -712,6 +716,7 @@ function selectedHandWeapon(
 }
 
 interface AssetBank {
+  houndPortraitV147?: HTMLImageElement | null;
   insertionShip?: HTMLImageElement | null;
   insertionPod?: { hull: HTMLImageElement | null; hatchInterior: HTMLImageElement | null;
     core: HTMLImageElement | null; pressure: HTMLImageElement | null; scorch: HTMLImageElement | null;
@@ -1292,7 +1297,7 @@ function bossArchetype(mission: MissionDefinition): string {
 }
 
 function backgroundPath(mission: MissionDefinition): string {
-  return backgroundPathForBiome(mission.biome);
+  return mission.presentation?.backgroundPath ?? backgroundPathForBiome(mission.biome);
 }
 
 function loadImage(path: string): Promise<HTMLImageElement | null> {
@@ -5273,7 +5278,8 @@ function renderGame(
       mission.id,
       cameraX + VIEW_WIDTH / 2,
     );
-    const usesStackedPanorama = mission.biome === "jungle";
+    const singlePanorama = mission.presentation?.backgroundLayout === "single";
+    const usesStackedPanorama = mission.biome === "jungle" && !singlePanorama;
     // The OpenAI panorama is deliberately composed as three unequal rooms:
     // 430 px surface, 206 px ruins and 305 px flooded understory. Equal thirds
     // sliced through the lake and duplicated the first room in later sectors.
@@ -5289,21 +5295,28 @@ function renderGame(
     const sourceRatio = image.naturalWidth / sourceHeight;
     const drawHeight = VIEW_HEIGHT;
     const drawWidth = Math.max(VIEW_WIDTH, drawHeight * sourceRatio);
-    const offset = -((cameraX * activeSector.layers.background.parallax) % drawWidth);
     context.save();
     context.globalAlpha = 0.78;
-    for (let x = offset - drawWidth; x < VIEW_WIDTH + drawWidth; x += drawWidth) {
-      context.drawImage(
-        image,
-        0,
-        sourceY,
-        image.naturalWidth,
-        sourceHeight,
-        x,
-        0,
-        drawWidth,
-        drawHeight,
-      );
+    if (singlePanorama) {
+      const cameraRange = Math.max(1, state.world.width - VIEW_WIDTH);
+      const progress = clamp(cameraX / cameraRange, 0, 1);
+      const x = -(drawWidth - VIEW_WIDTH) * progress;
+      context.drawImage(image, x, 0, drawWidth, drawHeight);
+    } else {
+      const offset = -((cameraX * activeSector.layers.background.parallax) % drawWidth);
+      for (let x = offset - drawWidth; x < VIEW_WIDTH + drawWidth; x += drawWidth) {
+        context.drawImage(
+          image,
+          0,
+          sourceY,
+          image.naturalWidth,
+          sourceHeight,
+          x,
+          0,
+          drawWidth,
+          drawHeight,
+        );
+      }
     }
     context.restore();
     context.fillStyle = `${palette.sky}55`;
@@ -5311,7 +5324,7 @@ function renderGame(
   }
   // Le panorama V4 contient déjà son lac en plans lointain, médian et proche.
   // L'ancien calque V2 reste un fallback, mais ne doit pas couper l'image V4.
-  if (mission.biome === "jungle" && assets.farLake && !assets.background) {
+  if (!mission.presentation && mission.biome === "jungle" && assets.farLake && !assets.background) {
     const lake = assets.farLake;
     const lakeHeight = 560;
     const lakeWidth = lakeHeight * (lake.naturalWidth / lake.naturalHeight);
@@ -6124,7 +6137,7 @@ function renderGame(
     drawCanopyNavigationMarkersV112(context, currentCanopyNavigationV112(state).markers);
   }
   drawHuntCompanions(context, state, assets);
-  drawHoundV147(context, state);
+  drawHoundV147(context, state, assets.houndPortraitV147);
   const hunterAlpha = state.player.cloaked
     ? 0.24 + Math.sin(state.elapsed * 8) * 0.07
     : 1;
@@ -8729,20 +8742,13 @@ function updatePlayer(
     player.velocityX *= Math.pow(0.0008, delta);
   }
 
-  const playerCenter = {
-    x: player.x + player.width / 2,
-    y: player.y + player.height / 2,
-  };
   // Keep the active support before considering overlapping neighbours.
   const activeClimbZone = player.climbing
     ? state.world.climbables.find(zone => zone.id === player.climbZoneId &&
       canopySupportReachableV112(player, zone, state.world.platforms, player.canopySwing))
     : undefined;
-  const currentClimbZone = activeClimbZone ?? state.world.climbables
-    .filter(zone => canopySupportReachableV112(player, zone, state.world.platforms))
-    .sort((left, right) =>
-      Math.abs(playerCenter.x - left.x - left.width / 2) -
-      Math.abs(playerCenter.x - right.x - right.width / 2))[0];
+  const currentClimbZone = activeClimbZone ?? selectCanopyEntrySupportV112(player, state.world.climbables,
+    zone => canopySupportReachableV112(player, zone, state.world.platforms));
   if (player.climbing && (input.gripReleaseV112 || !activeClimbZone || player.stamina <= 0)) {
     if (input.gripReleaseV112) {
       player.climbReattachSeconds = CLIMB_TRAVERSAL.releaseSeconds;
@@ -9877,7 +9883,7 @@ function updateBoss(
         break;
       case "reveal-cloak":
         forceDecloak(state);
-        announce(state, "La fusée de Vey révèle ta signature.", 2.5);
+        announce(state, mission.presentation?.revealAnnouncement ?? "La fusée de Vey révèle ta signature.", 2.5);
         break;
       case "armor-plate-broken":
         {
@@ -10847,8 +10853,9 @@ function houndUiV147(state: GameState): HoundUiV147 | null {
     healthShare: field.maxHealth > 0 ? field.health / field.maxHealth : 0, wounded: field.wounded, dead: field.dead };
 }
 
-/** Provisional silhouette until the hound sprites are admitted (no runtime art yet). */
-function drawHoundV147(context: CanvasRenderingContext2D, state: GameState): void {
+const FIELD_HOUND_SPRITE_V147 = "/game/hounds/v147/field-hound.webp";
+
+function drawHoundV147(context: CanvasRenderingContext2D, state: GameState, portrait?: HTMLImageElement | null): void {
   const field = state.houndFieldV147;
   if (!field) return;
   const mark = state.houndMarkV147;
@@ -10869,25 +10876,31 @@ function drawHoundV147(context: CanvasRenderingContext2D, state: GameState): voi
   context.translate(field.x, groundY);
   if (field.dead) { context.rotate(facing * Math.PI / 2.4); context.globalAlpha = 0.7; }
   context.scale(facing, 1);
-  context.fillStyle = "#2a1d17";
-  context.strokeStyle = "#0d0907";
-  context.lineWidth = 2;
-  // Body, neck and head.
-  context.beginPath();
-  context.ellipse(0, -26, 30, 12, 0, 0, Math.PI * 2);
-  context.moveTo(22, -30); context.lineTo(38, -46); context.lineTo(54, -40); context.lineTo(48, -30); context.lineTo(28, -22);
-  context.fill(); context.stroke();
-  // Legs (four, alternating with movement).
-  const stride = field.dead ? 0 : Math.sin(state.elapsed * 12) * 5;
-  context.lineWidth = 4;
-  for (const [x, phase] of [[-20, 1], [-12, -1], [14, -1], [22, 1]] as const) {
-    context.beginPath(); context.moveTo(x, -18); context.lineTo(x + stride * phase, 0); context.stroke();
-  }
-  // Dorsal quills (hounds of Predators, 2010).
-  context.fillStyle = "#4b2f22";
-  for (let i = 0; i < 5; i++) {
-    const qx = -18 + i * 9;
-    context.beginPath(); context.moveTo(qx, -36); context.lineTo(qx + 4, -50 - (i % 2) * 5); context.lineTo(qx + 8, -36); context.fill();
+  if (portrait?.naturalWidth && portrait.naturalHeight) {
+    const height = 54;
+    const width = height * portrait.naturalWidth / portrait.naturalHeight;
+    context.drawImage(portrait, -width * 0.59, -height, width, height);
+  } else {
+    context.fillStyle = "#2a1d17";
+    context.strokeStyle = "#0d0907";
+    context.lineWidth = 2;
+    // Body, neck and head.
+    context.beginPath();
+    context.ellipse(0, -26, 30, 12, 0, 0, Math.PI * 2);
+    context.moveTo(22, -30); context.lineTo(38, -46); context.lineTo(54, -40); context.lineTo(48, -30); context.lineTo(28, -22);
+    context.fill(); context.stroke();
+    // Legs (four, alternating with movement).
+    const stride = field.dead ? 0 : Math.sin(state.elapsed * 12) * 5;
+    context.lineWidth = 4;
+    for (const [x, phase] of [[-20, 1], [-12, -1], [14, -1], [22, 1]] as const) {
+      context.beginPath(); context.moveTo(x, -18); context.lineTo(x + stride * phase, 0); context.stroke();
+    }
+    // Dorsal quills (hounds of Predators, 2010).
+    context.fillStyle = "#4b2f22";
+    for (let i = 0; i < 5; i++) {
+      const qx = -18 + i * 9;
+      context.beginPath(); context.moveTo(qx, -36); context.lineTo(qx + 4, -50 - (i % 2) * 5); context.lineTo(qx + 8, -36); context.fill();
+    }
   }
   context.restore();
   if (!field.dead) {
@@ -11498,15 +11511,21 @@ export default function HuntCanvas({
       });
     }
 
+    if (frozenHound) {
+      queueImage(FIELD_HOUND_SPRITE_V147, image => { assets.houndPortraitV147 = image; });
+    }
+
     queueImage(backgroundPath(mission), (image) => {
       assets.background = image;
     });
-    queueImage(
-      "/game/assets/v2/environments/jungle/layers/far-lake.webp",
-      (image) => {
-        assets.farLake = image;
-      },
-    );
+    if (!mission.presentation) {
+      queueImage(
+        "/game/assets/v2/environments/jungle/layers/far-lake.webp",
+        (image) => {
+          assets.farLake = image;
+        },
+      );
+    }
 
     queueImage(hunterBodyFullPath(appearance.bodyMorphId), (image) => {
       assets.hunterBodyFull = image;

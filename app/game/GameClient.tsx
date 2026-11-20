@@ -2380,11 +2380,11 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
   }, [archiveRecoveryIssue, archiveTransferBusy, entry.ownerCreatedAt, pendingHuntResult, persistSocialProgress,
     resumableHunt, screen, settingsOpen]);
 
-  // V164 : branche Warp Tantalus 2204. Le module Warp n'a encore aucune source
-  // dans la sauvegarde : le départ reste refusé tant qu'aucun contenu ne l'installe.
+  // V164 : le départ Tantalus lit les conditions de la campagne courante.
   const commitTantalusV164 = useCallback((action: TantalusActionV164): TantalusResultV164 => {
     const current = saveRef.current;
-    const result = actTantalusV164(current.tantalusV164 ?? null, current.createdAt, action, tantalusGateFromSaveV164(current));
+    const gate = tantalusGateFromSaveV164(current, mainMenuBrowserShipContextV81(current));
+    const result = actTantalusV164(current.tantalusV164 ?? null, current.createdAt, action, gate);
     if (!result.changed) return result;
     if (!persistSocialProgress({ tantalusV164: result.ledger })) {
       return { ...result, accepted: false, changed: false, ledger: saveRef.current.tantalusV164 ?? null, message: "Sauvegarde non confirmée : la branche reste dans son dernier état enregistré." };
@@ -5512,7 +5512,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       )}
       {screen === "map" && (
         <Suspense fallback={null}>
-          <TantalusPanelV164 save={save} onCommit={commitTantalusV164} />
+          <TantalusPanelV164 save={save} shipContext={mainMenuBrowserShipContextV81(save)} onCommit={commitTantalusV164} />
         </Suspense>
       )}
 

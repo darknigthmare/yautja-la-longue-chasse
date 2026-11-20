@@ -64,6 +64,12 @@ test("mission 1629 jouable via la chasse existante adaptée, sans honneur ni ran
   assert.equal(mission.baseRewards.honor, 0);
   assert.deepEqual(mission.objectives.map(o => o.id), base.objectives.map(o => o.id));
   assert.match(mission.planetName, /1629/);
+  assert.equal(base.presentation, undefined);
+  assert.equal(mission.presentation.backgroundLayout, "single");
+  assert.match(mission.presentation.revealAnnouncement, /garde/);
+  const panorama = readFileSync(new URL(`../public${mission.presentation.backgroundPath}`, import.meta.url));
+  assert.equal(panorama.toString("ascii", 0, 4), "RIFF");
+  assert.equal(panorama.toString("ascii", 8, 12), "WEBP");
   let s = ok(warp.departWarpV165(readyState(), full));
   assert.equal(warp.canLaunchW02HuntV165(s).allowed, false);
   s = ok(warp.resolveW02StepV165(s, "WARP-M16", "declencher"));
