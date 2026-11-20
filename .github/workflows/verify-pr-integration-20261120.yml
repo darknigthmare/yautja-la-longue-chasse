@@ -1,0 +1,135 @@
+name: Verify final Yautja integration source and inventory
+
+on:
+  push:
+    branches:
+      - codex/verify-pr-integration-20261120
+
+permissions:
+  contents: read
+
+concurrency:
+  group: yautja-final-qualification-20261120
+  cancel-in-progress: true
+
+env:
+  FINAL_CANDIDATE_SHA: '6a8dd3b602ce36ca9fee85024c6c954c414b4817'
+
+jobs:
+  runtime-candidate:
+    name: Verify and preserve the official V113 inventory candidate
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      ASSET_RACCORDS_SOURCE_COMMIT: ${{ env.FINAL_CANDIDATE_SHA }}
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.FINAL_CANDIDATE_SHA }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/warp/w02/
+            /public/game/hounds/v147/
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /art-source/v113/20261120-integration/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize runtime and install pinned dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate and verify the current inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Preserve the original candidate and receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: integration-v113-runtime-${{ env.FINAL_CANDIDATE_SHA }}
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
+
+  integration-checks:
+    name: Typecheck and changed gameplay regressions
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    permissions:
+      contents: read
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      INTEGRATION_MAIN: ba328df3d74fd540254bf72162d09b6240245012
+    steps:
+      - name: Checkout exact candidate
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.FINAL_CANDIDATE_SHA }}
+          persist-credentials: false
+          fetch-depth: 3
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /tests/
+            /scripts/
+            /build/
+            /worker/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/**/manifest.json
+            /public/game/warp/w02/
+            /public/game/hounds/v147/
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+            /art-source/v113/20261120-integration/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize runtime and install pinned dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate Next types and check TypeScript
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=2600 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Exercise changed and adjacent gameplay suites
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$INTEGRATION_MAIN"
+          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$INTEGRATION_MAIN" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
+          test "${#changed[@]}" -gt 0
+          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
+            tests/conservation-persistence-ui-v112.test.mjs \
+            tests/homeworld-player-equipment-raccords-20261120.test.mjs \
+            tests/environment-prop-raccords-20261120.test.mjs \
+            tests/canopy-navigation-v112.test.mjs \
+            tests/hunt-canopy-runtime-v112.test.mjs | sort -u)
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
