@@ -1,0 +1,60 @@
+name: Publish verified original Cradle score object
+
+on:
+  push:
+    branches: [codex/prepare-original-cradle-score-20261121]
+
+permissions:
+  contents: write
+
+jobs:
+  score:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/build-cradle-return-audio.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Reproduce the 180-second track exactly
+        shell: bash
+        run: |
+          curl --fail --silent --show-error --location --output "$RUNNER_TEMP/lame.min.js" https://raw.githubusercontent.com/zhuker/lamejs/582bbba6a12f981b984d8fb9e1874499fed85675/lame.min.js
+          node --input-type=module <<'NODE'
+          import { createHash } from 'node:crypto';
+          import { strict as assert } from 'node:assert';
+          import { readFileSync, writeFileSync } from 'node:fs';
+          import { renderCradleScore } from './scripts/build-cradle-return-audio.mjs';
+          const source = readFileSync(process.env.RUNNER_TEMP + '/lame.min.js', 'utf8');
+          const {Mp3Encoder} = Function(source + '\nreturn lamejs;')();
+          const {samples, sampleRate} = renderCradleScore('ship');
+          assert.equal(samples.length, 4320000);
+          assert.equal(sampleRate, 24000);
+          const encoder = new Mp3Encoder(1, 24000, 48);
+          const parts = [];
+          for (let index = 0; index < samples.length; index += 1152) {
+            parts.push(Buffer.from(encoder.encodeBuffer(samples.subarray(index,index+1152))));
+          }
+          parts.push(Buffer.from(encoder.flush()));
+          const bytes = Buffer.concat(parts);
+          assert.equal(bytes.length, 1080288);
+          const hash = createHash('sha256').update(bytes).digest('hex');
+          assert.equal(hash, '22782bef14c6127cb2b4b8569ba9a6cb48120d8c64a3b64ed2be719f150f9980');
+          writeFileSync(process.env.RUNNER_TEMP + '/cradle-audio-blob.json',
+            JSON.stringify({encoding:'base64',content:bytes.toString('base64')}));
+          console.log(JSON.stringify({bytes:bytes.length,sha256:hash}));
+          NODE
+      - name: Create the exact Git object in this repository
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          actual=$(gh api "repos/$GITHUB_REPOSITORY/git/blobs" --method POST --input "$RUNNER_TEMP/cradle-audio-blob.json" --jq .sha)
+          test "$actual" = ed4e91123194ef7797996993062629094374bfd5
+          printf 'EXACT_CRADLE_SCORE=%s\n' "$actual"
