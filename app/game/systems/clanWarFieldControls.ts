@@ -16,6 +16,6 @@ export function fieldKeyboardAction(e:FieldKey):FieldAction|null{
 }
 export function fieldKeyboardTargetBlocked(target:EventTarget|null):boolean{
  return typeof Element!=='undefined'&&target instanceof Element&&Boolean(
-  target.closest('input,textarea,select,button,a,[contenteditable]:not([contenteditable="false"])')
+  target.closest('input,textarea,select,button,a,summary,[contenteditable]:not([contenteditable="false"])')
  );
 }

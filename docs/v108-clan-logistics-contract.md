@@ -21,7 +21,7 @@ U19 reprend D24:H24 : trois membres, 3 PC, 10 RAV de recrutement, 2 RAV par tour
 
 Règles de guerre C12:D14 : plafond PC, stock situé et chaîne logistique ; C24:D24 : kit, supports et opérateurs ; C29:D29 : accords bornés ; C33:D34 : même coque/manifeste et reprise sans double transaction. Les prix, délais, puissances et logistiques du classeur restent des propositions de conception (Méthode de guerre C13:D13), sans certification canonique.
 
-R2-M021 reste distinct. Campagne commune D26:J26 et Scènes de dialogue V6 H597:J597 exigent Blooded, moyens et accord réunis, droits remis et entrée dans la coque. Depuis V161, le chantier V89 reçoit l’attestation liée au rang et exige la remise en état avant les droits. L’entrée dans le navire produit le reçu de campagne lu par les routes spatiales. Le convoi V108 utilise ses propres coques prêtées et ne modifie pas ce reçu. Le catalogue de 54 coques n’accorde pas 54 propriétés.
+R2-M021 reste distinct : Campagne commune D26:J26 et Scènes de dialogue V6 H597:J597 exigent Blooded, moyens et accord réellement réunis, droits remis et entrée dans la coque. Le runtime V89 reçoit toujours `authority: null` ; ce convoi ne fabrique aucun provider d’acquisition. Le catalogue de 54 coques n’accorde pas 54 propriétés.
 
 ## Hypothèses finies de l’exercice
 
@@ -45,7 +45,7 @@ Contexte `linked-physical-logistics-v108`, version 1, protocole `v108-linked-r1`
 
 Une seule archive contient l’état et au plus 10 000 commandes acceptées. L’import est limité à 4 Mio et rejoue tout depuis la dotation initiale avant de comparer exactement le checkpoint. Une version future, des RAV ajoutés, un champ supplémentaire ou un historique incohérent sont refusés sans mutation. Les personnages, couches, positions, cargaisons, travaux, consommations et résultats sont repris ensemble.
 
-Les écritures s’exécutent sous un Web Lock, comparent les octets observés et vérifient leur relecture avant d’avancer l’interface. Un quota, une lecture impossible ou une archive modifiée ailleurs conservent le dernier état confirmé ; aucune archive incompatible n’est remplacée par défaut. Une vue bloquée par un autre onglet peut relire le carnet confirmé sous le même verrou. La relecture vérifie l’historique sans écrire et retrouve le trajet, les stocks et l’équipage dans l’état conservé par l’autre onglet. Si l’archive a disparu ou est illisible, la vue reste verrouillée et le dernier état confirmé peut toujours être exporté. L’import fichier invalide immédiatement l’ancien brouillon, bloque l’import pendant lecture et ignore toute lecture devenue obsolète après annulation ou nouvelle sélection. Importer arrête les mouvements et les médias.
+Les écritures s’exécutent sous un Web Lock, comparent les octets observés et vérifient leur relecture avant d’avancer l’interface. Un quota, une lecture impossible ou une archive modifiée ailleurs conservent le dernier état confirmé ; aucune archive incompatible n’est remplacée par défaut. L’import fichier invalide immédiatement l’ancien brouillon, bloque l’import pendant lecture et ignore toute lecture devenue obsolète après annulation ou nouvelle sélection. Importer arrête les mouvements et les médias.
 
 Aucune écriture dans SaveGame, aucun changement aux planètes, aucune migration des carnets V87–V107. Les artefacts V107 ne sont pas modifiés. Le seul point d’entrée ajouté est l’onglet « Convoi des six ouvrages » dans la Bible V6.
 

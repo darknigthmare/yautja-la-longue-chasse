@@ -56,11 +56,24 @@ export function createSupplySessionV109(storage:LogisticsStorageV108|null,lock:L
     if(state.originalV108Archive!==null&&parsed.state.originalV108Archive!==state.originalV108Archive)throw Error('Ce carnet ne conserve pas la même archive V108 originale ; import refusé sans mutation.');
     await commit(parsed.state);message='Carnet de tournée repris exactement ; déplacements et médias arrêtés.';
   });}
+  function resume(){return queue(async()=>{
+    if(!loaded||!blocked||!storage||!lock)throw Error('Carnet non disponible pour la relecture.');
+    await lock(async()=>{
+      const bytes=storage.getItem(CLAN_SUPPLY_KEY_V109);
+      if(bytes===null)throw Error('Archive absente ; le dernier état confirmé reste conservé.');
+      const parsed=importSupplyV109(bytes,rules);
+      if(!parsed.state)throw Error(parsed.error??'Carnet incompatible.');
+      const original=state?.originalV108Archive;
+      if(original!=null&&parsed.state.originalV108Archive!==original)throw Error('L’archive V108 d’origine a changé ; dernier état confirmé conservé.');
+      observed=bytes;state=parsed.state;migrationPending=false;blocked=false;
+      message='Archive confirmée relue ; le trajet, les groupes et les stocks sont repris exactement.';
+    });
+  });}
   function externalChange(){
     if(!loaded||!storage)return;
-    try{if(storage.getItem(CLAN_SUPPLY_KEY_V109)!==observed){blocked=true;message='Archive modifiée ailleurs : rechargez avant tout nouveau geste.';emit();}}
+    try{if(storage.getItem(CLAN_SUPPLY_KEY_V109)!==observed){blocked=true;message='Archive modifiée ailleurs : relisez le carnet confirmé avant de poursuivre.';emit();}}
     catch{blocked=true;message='Archive illisible ; checkpoint confirmé conservé.';emit();}
   }
-  return {hydrate,act,importText,retryMigration,externalChange,whenSettled:()=>serial,getObservedText:()=>observed,
+  return {hydrate,act,importText,retryMigration,resume,externalChange,whenSettled:()=>serial,getObservedText:()=>observed,
     getSnapshot:()=>current,getServerSnapshot:()=>current,subscribe:(listener:()=>void)=>{listeners.add(listener);return()=>{listeners.delete(listener);};}};
 }

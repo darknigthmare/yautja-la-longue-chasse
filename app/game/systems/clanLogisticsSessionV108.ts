@@ -15,17 +15,6 @@ export function createLogisticsSessionV108(storage:LogisticsStorageV108|null,loc
  function queue(operation:()=>Promise<void>){pending++;emit();const task=serial.then(operation).catch(e=>{message=e instanceof Error?e.message:'Écriture refusée.';}).finally(()=>{pending--;emit();});serial=task;return task;}
  function act(action:LogisticsActionV108){return queue(async()=>{if(!loaded||!state||blocked)throw Error('Carnet non disponible ; aucune action appliquée.');const result=applyLogisticsV108(state,logisticsCommandV108(state,action),rules);if(!result.accepted){message=result.message;return;}const text=exportLogisticsV108(result.state)!;await commit(result.state,text);message=result.message;});}
  function importText(text:string){return queue(async()=>{const parsed=importLogisticsV108(text,rules);if(!parsed.state)throw Error(parsed.error??'Import refusé.');await commit(parsed.state,exportLogisticsV108(parsed.state)!);message='Carnet V108 repris exactement ; déplacements et sons arrêtés.';});}
- function resume(){return queue(async()=>{
-  if(!loaded||!blocked||!storage||!lock)throw Error('Carnet non disponible pour la relecture.');
-  await lock(async()=>{
-   const bytes=storage.getItem(CLAN_LOGISTICS_KEY_V108);
-   if(bytes===null)throw Error('Archive absente ; le dernier état confirmé reste disponible à l’export.');
-   const parsed=importLogisticsV108(bytes,rules);
-   if(!parsed.state)throw Error(parsed.error??'Carnet illisible ; dernier état confirmé conservé.');
-   observed=bytes;state=parsed.state;blocked=false;
-   message='Archive confirmée relue ; le trajet, les groupes et les stocks sont repris exactement.';
-  });
- });}
- function externalChange(){if(!loaded||!storage)return;try{if(storage.getItem(CLAN_LOGISTICS_KEY_V108)!==observed){blocked=true;message='Archive modifiée ailleurs : relisez le carnet confirmé avant de poursuivre.';emit();}}catch{blocked=true;message='Archive devenue illisible ; état confirmé conservé.';emit();}}
- return {hydrate,act,importText,resume,externalChange,getSnapshot:()=>current,getServerSnapshot:()=>current,subscribe:(listener:()=>void)=>{listeners.add(listener);return()=>{listeners.delete(listener);};}};
+ function externalChange(){if(!loaded||!storage)return;try{if(storage.getItem(CLAN_LOGISTICS_KEY_V108)!==observed){blocked=true;message='Archive modifiée ailleurs : rechargez, aucune écriture depuis cette vue.';emit();}}catch{blocked=true;message='Archive devenue illisible ; état confirmé conservé.';emit();}}
+ return {hydrate,act,importText,externalChange,getSnapshot:()=>current,getServerSnapshot:()=>current,subscribe:(listener:()=>void)=>{listeners.add(listener);return()=>{listeners.delete(listener);};}};
 }
