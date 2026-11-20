@@ -32,7 +32,7 @@ const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-li
     let source=await fs.readFile(path.join(resolveDir,'HuntCanvas.tsx'),'utf8');
     const marker='    const fixedStep = 1 / 60;';
     assert.equal(source.split(marker).length,2,'One production lifecycle instrumentation point');
-    source=source.replace(marker,'    window.__onHuntLifecycleMountV112?.({get game(){return game;},input,get alive(){return alive;}});\n'+marker);
+    source=source.replace(marker,'    window.__onHuntLifecycleMountV112?.({get game(){return game;},input,get alive(){return alive;},mission,encounterRun});\n'+marker);
     return{loader:'tsx',resolveDir,contents:source+'\nexport const __qaApiV112={makeEnemy,damageEnemy,createDropShipArrival};\n'};
    }
    const source=await fs.readFile(path.join(resolveDir,'GameClient.tsx'),'utf8');
@@ -49,11 +49,11 @@ const bundle=await build({absWorkingDir:root,entryPoints:['tests/browser/hunt-li
     'import {settleCompanionResidenceMission} from "./systems/companionResidence";\n'+
     'import {deliverHarvestV112,startConservationV112,workConservationV112,repairFieldToolV112,pauseConservationV112,resumeConservationV112,archiveMountedSpecimenV112} from "./systems/harvestInventoryV112";\n'+
     'export function makeGameClientCallbacksV112(h){\n'+
-    'const {saveRef,sessionAliveRef,setSave,setScreen,setToast,setSaveFailure,setLastResult,clearHuntSession}=h;\n'+
+    'const {saveRef,sessionAliveRef,activeHuntSessionRef,setSave,setScreen,setToast,setSaveFailure,setLastResult,clearHuntSession}=h;\n'+
     'const screen="trophies",settingsOpen=false,archiveTransferBusy=false,archiveRecoveryIssue=null,campaignSaveBusy=false;\n'+
-    'const pendingTrophyCommitRef={current:null},pendingTerminalRunRef={current:null},activeHuntSessionRef={current:null},pendingSocialWriteRef={current:null},missionSettlementRef={current:false};\n'+
+    'const pendingTrophyCommitRef={current:null},pendingTerminalRunRef={current:null},pendingSocialWriteRef={current:null},missionSettlementRef={current:false};\n'+
     '// Fixture admits one owned encounter; no whole-GameClient session claim.\n'+
-    'const checkHuntSessionForSettlement=()=>true,isExplorationMission=()=>false,reconcileHuntWrite=()=>null,explorationWriteFailure=()=>null;\n'+
+    'const checkHuntSessionForSettlement=()=>sessionAliveRef.current&&activeHuntSessionRef.current!==null,isExplorationMission=()=>false,reconcileHuntWrite=()=>null,explorationWriteFailure=()=>null;\n'+
     'const setPendingHuntResult=value=>{window.__huntLifecycleV112.pendingResult=value;},setHuntResumePayload=()=>{},setHuntRuntimeSave=()=>{},setResumableHunt=()=>{},setLastRewardSummary=()=>{},setSelectedMission=()=>{},playSound=()=>{};\n'+
     declarations+'\nreturn {completeMission,performConservationActionV112,resetSettlement(){missionSettlementRef.current=false;}};\n}'};
   });
@@ -163,6 +163,9 @@ try{
   assert.equal(check.clears,1);assert.equal(check.result.specimensV112.length,1);assert.equal(check.result.specimensV112[0].id,harvested.id);
   assert.equal(check.save.inventory.harvestV112.specimens[0].id,harvested.id);assert.equal(check.disk.inventory.harvestV112.specimens[0].id,harvested.id);
   assert.equal(check.save.inventory.harvestV112.toolCondition,90);
+  const {missionId,harvestEncounterRunV112:run}=check.result;
+  assert.equal(check.disk.missionProgress[missionId].attempts,run+1);
+  assert.equal(check.disk.inventory.harvestV112.settledEncounterRuns[missionId],run);
  });
  await scenario('real storage refusal and readback recovery drive the actual station callbacks without double debit',async()=>{
   const before=await page.evaluate(()=>window.__huntLifecycleV112.save().profile.clanMarks);

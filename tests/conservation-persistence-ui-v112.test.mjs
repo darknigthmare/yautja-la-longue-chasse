@@ -53,17 +53,27 @@ test("the lifecycle browser harness binds its real callbacks and persists extrac
   initial.profile.clanMarks=100;initial.inventory.fieldToolIds=["flaying-tool"];
   const written=runtime.replaceSaveWithStatus(initial);assert.equal(written.persisted,true);
   const saveRef={current:written.save},observed={clears:0,toasts:[]};
-  const callbacks=runtime.makeGameClientCallbacksV112({saveRef,sessionAliveRef:{current:true},
-    setSave:value=>{saveRef.current=value;},setScreen:value=>{observed.screen=value;},setToast:value=>observed.toasts.push(value),
-    setSaveFailure:value=>{observed.failure=value;},setLastResult:value=>{observed.result=value;},clearHuntSession:()=>{observed.clears++;}});
   const mission=runtime.MISSION_BY_ID["jungle-vey"];
+  const encounterRun=saveRef.current.missionProgress[mission.id].attempts;
+  const activeHuntSessionRef={current:{
+    runId:"v112-conservation-run",missionId:mission.id,encounterRun,ownerSaveCreatedAt:saveRef.current.createdAt,configuration:{},
+  }};
+  const callbacks=runtime.makeGameClientCallbacksV112({saveRef,sessionAliveRef:{current:true},activeHuntSessionRef,
+    setSave:value=>{saveRef.current=value;},setScreen:value=>{observed.screen=value;},setToast:value=>observed.toasts.push(value),
+    setSaveFailure:value=>{observed.failure=value;},setLastResult:value=>{observed.result=value;},
+    clearHuntSession:()=>{observed.clears++;activeHuntSessionRef.current=null;}});
   const result={missionId:mission.id,difficultyId:"hunter",outcome:"success",score:80,kills:1,scans:1,elapsedSeconds:60,
     completedObjectiveIds:mission.objectives.map(objective=>objective.id),honorEvents:[],trophyQuality:"worthy",secondWindUsed:false,
+    trophyClaims:[{id:mission.id+":v112-conservation-apex",definitionId:mission.trophy.id,targetName:mission.targetName,
+      targetKind:mission.targetKind,partId:mission.trophy.partId,condition:"intact",quality:"worthy"}],
     completedAt:"2026-11-08T00:01:00.000Z",specimensV112:[specimen],
-    toolUseIdsV112:["jungle-vey:0:flay:prey","jungle-vey:0:harvest-hide:prey"],harvestEncounterRunV112:0};
+    toolUseIdsV112:["jungle-vey:0:flay:prey","jungle-vey:0:harvest-hide:prey"],harvestEncounterRunV112:encounterRun};
   callbacks.completeMission(result);
   assert.equal(observed.clears,1);assert.equal(observed.screen,"debrief");assert.equal(observed.failure,null);
   assert.equal(observed.result,result);assert.deepEqual(observed.toasts,[]);
+  assert.equal(activeHuntSessionRef.current,null);
+  assert.equal(saveRef.current.missionProgress[mission.id].attempts,encounterRun+1);
+  assert.equal(saveRef.current.inventory.harvestV112.settledEncounterRuns[mission.id],encounterRun);
   assert.equal(saveRef.current.inventory.harvestV112.specimens[0].id,specimen.id);
   assert.equal(saveRef.current.inventory.harvestV112.toolCondition,90);
   assert.deepEqual(runtime.loadSaveWithStatus().save.inventory.harvestV112,saveRef.current.inventory.harvestV112);
