@@ -1,9 +1,11 @@
 """V113 provenance boundaries and actual workbook corruption regressions."""
 import copy
+import hashlib
 import importlib.util
 import io
 import json
 from pathlib import Path
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -90,14 +92,19 @@ class ProductionWorkbookV113(unittest.TestCase):
 
     def test_historical_git_fallback_preserves_old_bytes_but_new_products_stay_strict(self):
         reference = next(p for p in self.data['sourceInputs'] if p['context']=='SNAPSHOT_HISTORIQUE' and p['path'].startswith('app/'))
-        expected = build.local(reference['path']).read_bytes()
+        # The checkout can now differ from the preserved source. Anchor the expectation in Git.
+        expected = subprocess.run(['git', 'cat-file', 'blob', reference['gitBlobOid']],
+                                  cwd=ROOT, check=True, capture_output=True).stdout
+        self.assertEqual(len(expected), reference['bytes'])
+        self.assertEqual(hashlib.sha256(expected).hexdigest(), reference['sha256'])
         original_reader = Path.read_bytes
 
         def changed_current(path):
             return b'SIMULATED FUTURE RUNTIME SOURCE' if path == build.local(reference['path']) else original_reader(path)
 
-        with mock.patch.object(Path,'read_bytes',changed_current):
+        with mock.patch.object(Path,'read_bytes',changed_current), mock.patch.object(build,'read_git_reference',wraps=build.read_git_reference) as fallback:
             self.assertEqual(build.read_source_input(reference),expected)
+        fallback.assert_called_once_with(reference)
 
         current = next(p for p in self.data['sourceInputs'] if p['context']=='CURRENT_V113_PRODUCT_STRICT')
 
