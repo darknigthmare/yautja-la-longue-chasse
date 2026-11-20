@@ -23,7 +23,7 @@ jobs:
     permissions:
       contents: read
     env:
-      ASSET_RACCORDS_SOURCE_COMMIT: ${{ env.FINAL_CANDIDATE_SHA }}
+      ASSET_RACCORDS_SOURCE_COMMIT: '6a8dd3b602ce36ca9fee85024c6c954c414b4817'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
     steps:
