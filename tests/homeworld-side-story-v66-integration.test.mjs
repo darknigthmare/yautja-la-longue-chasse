@@ -66,7 +66,9 @@ const sideActions=branch=>[
  branch==='supervised-correction'?{kind:'correct',origin:'training',status:'unverified'}:{kind:'file',scope:'documented-claim-only'},
  {kind:'close'},
 ];
-const stableCampaign=save=>Object.fromEntries(Object.entries(save).filter(([key])=>!['updatedAt','homeworld'].includes(key)));
+// V169 : une histoire conclue ou une mission livrée verse de l'honneur (registre honorSourcesV169) ; le reste de la campagne ne change pas.
+const stableCampaign=save=>Object.fromEntries(Object.entries(save).filter(([key])=>!['updatedAt','homeworld','honorSourcesV169'].includes(key)).map(([key,value])=>key==='profile'?[key,{...value,honor:null}]:[key,value]));
+const honorGain=(after,before)=>after.profile.honor-before.profile.honor;
 const withoutNarrative=progress=>Object.fromEntries(Object.entries(progress).filter(([key])=>!['sideStoryV66','npcMissionsV66'].includes(key)));
 
 for(const branch of ['supervised-correction','recorded-review'])test(`live Hub and real storage complete ${branch} only after durable acknowledgments`,()=>{
@@ -85,6 +87,7 @@ for(const branch of ['supervised-correction','recorded-review'])test(`live Hub a
  assert.equal(f.writes.length,12);assert.equal(f.durable.homeworld.sideStoryV66.completed,true);
  assert.equal(f.durable.homeworld.sideStoryV66.resolution,branch);
  assert.deepEqual(stableCampaign(f.durable),stableCampaign(initial));
+ assert.equal(honorGain(f.durable,initial),50,'V169 : histoire annexe conclue, 50 d’honneur une fois');
  assert.deepEqual(withoutNarrative(f.durable.homeworld),withoutNarrative(initial.homeworld));
  assert.deepEqual(f.durable.homeworld.npcMissionsV66,initial.homeworld.npcMissionsV66);
  f.env.submitNarrativeV66('side',{kind:'close'});assert.equal(f.writes.length,12);
@@ -149,6 +152,7 @@ test('live NPC debriefs persist only supported answers and never change the side
  }
  assert.equal(f.durable.homeworld.npcMissionsV66.glass.delivered,true);
  assert.deepEqual(stableCampaign(f.durable),stableCampaign(before));
+ assert.equal(honorGain(f.durable,before),100,'V169 : deux missions de PNJ livrées, 50 chacune');
  assert.deepEqual(f.durable.homeworld.sideStoryV66,before.homeworld.sideStoryV66);
  assert.deepEqual(withoutNarrative(f.durable.homeworld),withoutNarrative(before.homeworld));
 });

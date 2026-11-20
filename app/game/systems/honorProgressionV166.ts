@@ -236,6 +236,28 @@ export interface HonorPaceAssumptions {
   durationFactor: number;
   rules: ReplayHonorRules;
   thresholds?: readonly { label: string; threshold: number }[];
+  /**
+   * V169 : sources d'honneur hors des 8 chasses (voir honorSourcesV169.ts,
+   * `paceSourcesV169`). Absent : estimation V166 inchangée (chasses seules).
+   */
+  extraSources?: HonorPaceExtraSources;
+}
+
+/** V169 : activité ponctuelle (un événement unique) pour l'estimation. */
+export interface HonorPaceActivity {
+  id: string;
+  honor: number;
+  seconds: number;
+}
+
+/** V169 : sources hors chasses, dans l'ordre où l'estimation les joue. */
+export interface HonorPaceExtraSources {
+  /** Jouées avant la première chasse (intro, jeunesse, campagnes solo). */
+  prelude: readonly HonorPaceActivity[];
+  /** Une activité après chaque chasse, tant qu'il en reste (contrats, cité, reine). */
+  interleaved: readonly HonorPaceActivity[];
+  /** Honneur de rites ajouté à chaque chasse réussie (déjà plafonné). */
+  perRunHonor: number;
 }
 
 export interface HonorTierEstimate {
@@ -281,6 +303,9 @@ const MAX_ESTIMATED_RUNS = 100_000;
  * chasses rejouées, jusqu'au dernier seuil. Hypothèses : chaque chasse réussit,
  * dure parTimeSeconds × durationFactor, sans menus ni échecs ; le score ne
  * s'améliore plus après la première réussite (bonus de progrès nul).
+ * V169 : avec `extraSources`, le prélude est joué d'abord, puis une activité
+ * ponctuelle après chaque chasse ; leurs durées ne sont pas multipliées par
+ * durationFactor ; `runs` ne compte que les chasses.
  */
 export function estimateHonorPaceV166(
   missions: readonly EstimatedMission[],
@@ -306,6 +331,14 @@ export function estimateHonorPaceV166(
     }
   };
   record();
+  const extra = a.extraSources;
+  for (const activity of extra?.prelude ?? []) {
+    if (targetIndex >= targets.length) break;
+    honor += activity.honor;
+    seconds += activity.seconds;
+    record();
+  }
+  let interleavedIndex = 0;
   while (targetIndex < targets.length && runs < MAX_ESTIMATED_RUNS) {
     const firstCompletion = runs < missions.length;
     const mission = firstCompletion
@@ -326,11 +359,19 @@ export function estimateHonorPaceV166(
       },
       a.rules,
     );
-    if (!firstCompletion && gain <= 0) break;
-    honor += gain;
+    const riteHonor = extra?.perRunHonor ?? 0;
+    if (!firstCompletion && gain + riteHonor <= 0) break;
+    honor += gain + riteHonor;
     seconds += mission.parTimeSeconds * a.durationFactor;
     runs += 1;
     record();
+    const activity = extra?.interleaved[interleavedIndex];
+    if (activity && targetIndex < targets.length) {
+      interleavedIndex += 1;
+      honor += activity.honor;
+      seconds += activity.seconds;
+      record();
+    }
   }
   return results;
 }

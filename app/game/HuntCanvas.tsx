@@ -50,6 +50,7 @@ import { createHuntAnnouncementQueueV78, enqueueHuntAnnouncementV78, advanceHunt
 import HuntRitesMenuV77 from './HuntRitesMenuV77';
 import {createRitesOfHuntV77,registerRitePreyV77,startHuntRiteV77,stepHuntRiteV77,discoverHuntRiteV77,riteOperationSecondsV77,
   type RitesOfHuntV77,type HuntRiteActionV77} from './systems/ritesOfHuntV77';
+import { riteHonorEventsFromHuntV169 } from "./systems/honorSourcesV169";
 import {huntRitesRunIdV77,riteRuntimeContextV77,restoreRitesRuntimeV77,followRiteCorpseAnchorsV77,
   riteWitnessCanSeeV77,riteLineOfSightV77,reactToRiteWitnessV77,huntRiteMenuSnapshotV77,type HuntRiteMenuSnapshotV77} from './systems/huntRitesRuntimeV77';
 import { createFirstHuntLearning, observeFirstHunt, firstHuntHint, type FirstHuntObservation, type FirstHuntHint } from "./systems/firstHuntGuide";
@@ -3335,6 +3336,7 @@ function resultFor(
     toolUseIdsV112: state.huntRites.completedEventIds.filter(id=>id.startsWith("flay:")||id.startsWith("harvest-"))
       .map(id=>state.huntRites.runId+":"+id),
     harvestEncounterRunV112: Number.isInteger(Number(state.huntRites.runId.slice(mission.id.length+1))) ? Number(state.huntRites.runId.slice(mission.id.length+1)) : undefined,
+    riteEventsV169: riteHonorEventsFromHuntV169(state.huntRites),
     kills: state.kills,
     scans: state.scans,
     discoveredEnemyIds: [

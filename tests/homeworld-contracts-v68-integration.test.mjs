@@ -215,7 +215,9 @@ test('the real physical delivery callback credits the spendable wallet with the 
   f.setRejected(false); f.environment.submitContractV68(action('deliver'));
   assert.equal(f.current.profile.clanMarks, before.profile.clanMarks + 18);
   assert.equal(f.current.homeworld.contractsV68.entries[0].status, 'completed');
-  for (const key of ['rankId', 'honor']) assert.equal(f.current.profile[key], before.profile[key]);
+  // V169 : la remise verse aussi l'honneur (1 par marque), une seule fois ; le rang ne bouge pas.
+  assert.equal(f.current.profile.rankId, before.profile.rankId);
+  assert.equal(f.current.profile.honor, before.profile.honor + 18);
   for (const key of ['inventory', 'trophies', 'prologue', 'youthTraining', 'soloV66', 'soloV67', 'soloV68']) assert.deepEqual(f.current[key], before[key]);
   const writes = f.writes.length;
   for (const kind of ['deliver', 'accept', 'resume']) f.environment.submitContractV68(action(kind));
@@ -274,7 +276,9 @@ test('a V69 chain upgrades the durable ledger only on acceptance, requires actua
   assert.deepEqual(f.current.homeworld.contractsV68.entries[0], completed); assert.equal(f.current.profile.clanMarks, 44);
   const writes = f.writes.length; f.environment.submitContractV68(acceptSecond); assert.equal(f.writes.length, writes);
   assert.deepEqual(api.loadSave(f.storage, 'contracts-v68').homeworld.contractsV68, f.current.homeworld.contractsV68);
-  for (const key of ['rankId', 'honor']) assert.equal(f.current.profile[key], before.profile[key]);
+  // V169 : chapitre 1 de la chaîne remis = 44 d'honneur, versé une fois.
+  assert.equal(f.current.profile.rankId, before.profile.rankId);
+  assert.equal(f.current.profile.honor, before.profile.honor + 44);
   for (const key of ['inventory', 'trophies', 'justice', 'prologue', 'youthTraining', 'soloV66', 'soloV67', 'soloV68', 'soloV69']) assert.deepEqual(f.current[key], before[key]);
 });
 
