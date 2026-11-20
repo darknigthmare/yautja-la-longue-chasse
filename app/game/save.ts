@@ -2097,11 +2097,12 @@ function persistCampaign(
   replaceExisting: boolean,
 ): SaveWriteResult {
   const validated = inspectSavePayload(save);
-  let snapshot: SaveGame = {
+  const requested: SaveGame = {
     ...(validated.save ?? normalizeSave(save)),
     updatedAt: new Date().toISOString(),
   };
-  const failed = (failure: SaveWriteFailure): SaveWriteResult => ({ save: snapshot, persisted: false, failure });
+  const failed = (failure: SaveWriteFailure, retryable = requested): SaveWriteResult =>
+    ({ save: retryable, persisted: false, failure });
   if (!validated.save) return failed("invalid-save");
   if (!storage) return failed("storage-unavailable");
   if (archiveTransferPending(storage)) return failed("protected-save");
@@ -2122,22 +2123,26 @@ function persistCampaign(
       if (!replaceExisting && !previous) {
         if (parsed.failure === "future-version" || parsed.protectedHonorLedger) return failed("protected-save");
         const recovered = loadSaveWithStatus(storage, key);
-        if (recovered.source !== "backup" || recovered.save.createdAt !== snapshot.createdAt) {
+        if (recovered.source !== "backup" || recovered.save.createdAt !== requested.createdAt) {
           return failed("protected-save");
         }
         previous = recovered.save;
         previousSerialized = JSON.stringify(previous);
       }
     }
-    if (!replaceExisting && previous && previous.createdAt !== snapshot.createdAt) {
-      return failed("save-conflict");
+    if (!replaceExisting && previous) {
+      if (previous.createdAt !== requested.createdAt) return failed("save-conflict");
+      // This receipt ledger belongs to the confirmed campaign write. Refuse a
+      // stale copy before it can lose points or convert them into a rank.
+      if (JSON.stringify(previous.honorSourcesV169) !== JSON.stringify(requested.honorSourcesV169)) {
+        return failed("save-conflict", previous);
+      }
     }
   } catch {
     return failed("read-failed");
   }
 
-  if (!replaceExisting) snapshot = settleHonorSourcesV169(snapshot, previous);
-
+  const snapshot = replaceExisting ? requested : settleHonorSourcesV169(requested, previous);
   const serialized = JSON.stringify(snapshot);
   if (new TextEncoder().encode(serialized).byteLength > SAVE_MAX_SERIALIZED_BYTES) return failed("invalid-save");
   const observedBefore = observedCampaigns.get(storage)?.get(key);

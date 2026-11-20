@@ -13,7 +13,13 @@ interface HonorSourceReceiptV169 extends Omit<HonorSourceEventV169, "source" | "
   source: HonorSourceKindV169 | "justice" | "bad-blood";
   label?: string;
 }
-interface HonorSourceLedgerV169 { version: typeof VERSION; entries: HonorSourceReceiptV169[] }
+interface HonorSourceLedgerV169 {
+  version: typeof VERSION;
+  entries: HonorSourceReceiptV169[];
+  outsideBalance?: number;
+}
+const totalCredited = (entries: HonorSourceReceiptV169[]) =>
+  entries.reduce((total, receipt) => total + Math.max(0, receipt.delta), 0);
 const MAX_RECEIPTS = 256;
 
 /**
@@ -94,7 +100,10 @@ function readHonorSources(raw: unknown): HonorSourceLedgerV169 | null {
         typeof entry.delta !== "number" || !Number.isSafeInteger(entry.delta) || Math.abs(entry.delta) > 1_000_000) return null;
     seen.add(entry.id);
   }
-  return raw as unknown as HonorSourceLedgerV169;
+  const ledger = raw as unknown as HonorSourceLedgerV169;
+  if (raw.outsideBalance !== undefined && (typeof raw.outsideBalance !== "number" ||
+      !Number.isSafeInteger(raw.outsideBalance) || raw.outsideBalance < 0 || raw.outsideBalance > totalCredited(ledger.entries))) return null;
+  return ledger;
 }
 
 export function honorSourcesStatusV169(raw: unknown): "absent" | "future-version" | "invalid" | "ok" {
@@ -143,9 +152,8 @@ function collectHonorSourceEventsV169(save: SaveGame): HonorSourceEventV169[] {
 
 /** The historical campaign ranks use their existing hunt thresholds. */
 export function honorForCampaignRankV169(honor: number, raw: unknown): number {
-  const outside = readHonorSources(raw)?.entries.reduce(
-    (total, receipt) => total + Math.max(0, receipt.delta), 0,
-  ) ?? 0;
+  const ledger = readHonorSources(raw);
+  const outside = ledger ? (ledger.outsideBalance ?? totalCredited(ledger.entries)) : 0;
   return Math.max(0, honor - outside);
 }
 
@@ -164,15 +172,20 @@ export function settleHonorSourcesV169(save: SaveGame, previous: SaveGame | null
     }
   }
   let honor = save.profile.honor;
+  const priorBalance = Math.min(prior.profile.honor, ledger?.outsideBalance ?? totalCredited(ledger?.entries ?? []));
+  const honorLost = Math.max(0, prior.profile.honor - honor);
+  let outsideBalance = Math.max(0, priorBalance - honorLost);
   for (const entry of collectHonorSourceEventsV169(save)) {
     if (known.has(entry.id)) continue;
     known.add(entry.id);
     const after = honor + Math.max(0, Math.min(Number.MAX_SAFE_INTEGER - honor, entry.delta));
-    entries.push({ ...entry, delta: after - honor });
+    const credited = after - honor;
+    entries.push({ ...entry, delta: credited });
+    outsideBalance += credited;
     honor = after;
   }
   if (entries.length > MAX_RECEIPTS) return { ...save, honorSourcesV169: raw };
   if (!entries.length && !ledger) return save;
-  if (entries.length === ledger?.entries.length && save.honorSourcesV169 === raw) return save;
-  return { ...save, profile: { ...save.profile, honor }, honorSourcesV169: { ...ledger, version: VERSION, entries } };
+  if (ledger && entries.length === ledger.entries.length && outsideBalance === ledger.outsideBalance && save.honorSourcesV169 === raw) return save;
+  return { ...save, profile: { ...save.profile, honor }, honorSourcesV169: { ...ledger, version: VERSION, entries, outsideBalance } };
 }

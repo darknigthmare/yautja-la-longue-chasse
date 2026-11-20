@@ -2844,9 +2844,10 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       ownedShipIds: fleet.unlockedShipIds, returnActive: true, returnObservation: observation });
     if (!result.accepted) { setToast(result.message); return false; }
     if (result.changed && !persistSocialProgress({ buriedCradle: result.state, prologue: result.prologue })) return false;
+    if (result.changed && action.type === "treat-return") playGameplaySound("medicomp");
     setToast(result.message); return true;
   }, [archiveRecoveryIssue, archiveTransferBusy, campaignSaveBusy, entry.ownerCreatedAt, gameFocusedV89,
-    persistSocialProgress, resumableHunt, screen, settingsOpen, trophyWorkshop]);
+    persistSocialProgress, playGameplaySound, resumableHunt, screen, settingsOpen, trophyWorkshop]);
 
   const commitCradleAction = useCallback((action: CradleCampaignAction): boolean => {
     const current = saveRef.current;

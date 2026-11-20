@@ -49,8 +49,10 @@ export default function HunterPieceForgeV146({
   /** Durable change; returns true once the campaign write is confirmed. */
   onCommit: (apply: CustomizationApplyV146, confirmation: string) => boolean;
 }) {
+  const savedAppearance = useMemo(() => normalizeHunterAppearanceV146(save.appearance), [save.appearance]);
   const [tab, setTab] = useState<Tab>("pieces");
-  const [draft, setDraft] = useState<HunterAppearance>(() => normalizeHunterAppearanceV146(save.appearance));
+  const [draft, setDraft] = useState(savedAppearance);
+  const [previousAppearance, setPreviousAppearance] = useState(savedAppearance);
   const [pieceId, setPieceId] = useState<HunterPieceIdV146>("chest");
   const [message, setMessage] = useState("");
   const [outfitName, setOutfitName] = useState("");
@@ -61,11 +63,23 @@ export default function HunterPieceForgeV146({
     justiceDeclaration: save.justice?.declaration,
   }, customization.earned), [save, customization.earned]);
 
+  // A mask, pigment or preset can be confirmed in a neighbouring editor.
+  // Adopt those fields while retaining draft edits on the remaining fields.
+  if (previousAppearance !== savedAppearance) {
+    setPreviousAppearance(savedAppearance);
+    const fields = new Set([...Object.keys(previousAppearance), ...Object.keys(savedAppearance)] as (keyof HunterAppearance)[]);
+    const changed = [...fields].filter(field =>
+      JSON.stringify(previousAppearance[field]) !== JSON.stringify(savedAppearance[field]));
+    if (changed.length > 0) {
+      const confirmed = Object.fromEntries(changed.map(field => [field, savedAppearance[field]]));
+      setDraft(current => ({ ...current, ...confirmed }));
+    }
+  }
+
   useEffect(() => { onPreview?.(draft); }, [draft, onPreview]);
   useEffect(() => () => onPreview?.(null), [onPreview]);
 
-  const dirty = JSON.stringify(normalizeHunterAppearanceV146(draft)) !==
-    JSON.stringify(normalizeHunterAppearanceV146(save.appearance));
+  const dirty = JSON.stringify(normalizeHunterAppearanceV146(draft)) !== JSON.stringify(savedAppearance);
   const piece = HUNTER_PIECES_V146.find(item => item.id === pieceId)!;
   const colors = draft.piecesV146?.[pieceId] ?? EMPTY;
 

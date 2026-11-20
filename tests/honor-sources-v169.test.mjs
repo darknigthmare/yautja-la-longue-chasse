@@ -4,31 +4,56 @@ import {homeworldSceneSsrV78} from "./helpers/homeworld-scene-ssr-v78.mjs";
 
 const qa = homeworldSceneSsrV78();
 const saves = qa.load("app/game/save.ts");
-const {createNurseryCampaign} = qa.load("app/game/systems/nurseryCampaign.ts");
-const {CHRONICLE_EVIDENCE} = qa.load("app/game/systems/clanChronicle.ts");
+const {createNurseryCampaign, withNurseryCheckpoint, withNurseryCompletion} = qa.load("app/game/systems/nurseryCampaign.ts");
+const {createNurseryPrologue, stepNurseryPrologue} = qa.load("app/game/systems/nurseryPrologue.ts");
+const {CHRONICLE_EVIDENCE, recordChronicleEvidence} = qa.load("app/game/systems/clanChronicle.ts");
 const key = saves.SAVE_STORAGE_KEY;
 const fresh = () => saves.defaultSave("2026-11-20T18:00:00.000Z");
 
 function storage() {
   const values = new Map();
+  let refuse = false;
   return {
     getItem: name => values.get(name) ?? null,
-    setItem: (name, value) => values.set(name, value),
+    setItem(name, value) {
+      if (refuse && name === key) throw new Error("fixture quota");
+      values.set(name, value);
+    },
     removeItem: name => values.delete(name),
+    refuseWrites: value => { refuse = value; },
   };
 }
 
+const env = { assetsReady: true, pageVisible: true, paused: false, nextChapterReady: true };
+function realEnding() {
+  let state = createNurseryPrologue({ readyMode: "press" }), before = state, receipt = null;
+  for (let frame = 0; frame < 2400 && state.phase !== "complete"; frame++) {
+    const distance = Math.abs(state.rival.x - state.player.x);
+    const actions = !state.inputArmed ? {} : state.phase === "prompt" ? { confirm: frame % 2 === 0 } : state.phase === "ready" ? { ready: frame % 2 === 0 } : state.phase === "duel" ? { move: distance > 44 ? state.rival.x > state.player.x ? 1 : -1 : 0, light: frame % 30 === 0 } : {};
+    before = state;
+    const result = stepNurseryPrologue(state, actions, env); state = result.state; receipt = result.completion ?? receipt;
+  }
+  assert.equal(state.phase, "complete"); assert(receipt);
+  return { before, state, receipt };
+}
+const ending = realEnding();
+function completedIntro(save) {
+  const active = withNurseryCheckpoint({ ...save, prologue: createNurseryCampaign() }, ending.before);
+  assert(active);
+  const completed = withNurseryCompletion(active, ending.receipt, ending.state, save.createdAt);
+  assert(completed);
+  return completed;
+}
+
 function withEvidence(save, ids) {
-  return {
-    ...save,
-    prologue: {
-      ...createNurseryCampaign(),
-      chronicle: {
-        version: 1, rites: [], legacyRecognition: null,
-        evidence: ids.map(id => ({ id, sourceId: CHRONICLE_EVIDENCE.find(item => item.id === id).sourceId })),
-      },
-    },
-  };
+  const completed = save.prologue?.status === "completed" ? save : completedIntro(save);
+  const chronicle = ids.reduce((state, id) => {
+    const receipt = CHRONICLE_EVIDENCE.find(item => item.id === id);
+    const result = recordChronicleEvidence(state, receipt);
+    assert(result.accepted);
+    return result.state;
+  }, completed.prologue.chronicle);
+  return { ...completed, prologue: { ...completed.prologue, chronicle } };
 }
 
 test("a saved chapter adds honour once while preserving the acquired rank through a reload", () => {
@@ -97,4 +122,51 @@ test("saving a V168 pilot archive preserves its rank trial receipts for a compat
   assert.equal(saves.loadSaveWithStatus(disk).failure, "future-version");
   assert.equal(saves.writeSaveWithStatus(old, disk).failure, "protected-save");
   assert.equal(disk.getItem(key), byteProof);
+});
+
+test("a quota error exposes the uncredited request, so a retry earns the chapter once", () => {
+  const disk = storage();
+  const initial = saves.writeSaveWithStatus(fresh(), disk);
+  assert(initial.persisted);
+  const before = disk.getItem(key);
+  disk.refuseWrites(true);
+  const refused = saves.writeSaveWithStatus(completedIntro(initial.save), disk);
+  assert.equal(refused.persisted, false);
+  assert.equal(refused.save.profile.honor, 0);
+  assert.equal(disk.getItem(key), before);
+  disk.refuseWrites(false);
+  const retried = saves.writeSaveWithStatus(refused.save, disk);
+  assert.equal(retried.persisted, true);
+  assert.equal(retried.save.profile.honor, 100);
+  assert.equal(saves.loadSave(disk).honorSourcesV169.entries.length, 1);
+});
+
+test("a copy without the confirmed ledger cannot turn supplementary points into a rank", () => {
+  const disk = storage();
+  const save = fresh();
+  save.profile.honor = 1499;
+  const initial = saves.writeSaveWithStatus(save, disk);
+  const first = saves.writeSaveWithStatus(completedIntro(initial.save), disk);
+  assert(first.persisted);
+  const bytes = disk.getItem(key);
+  const stale = { ...first.save, honorSourcesV169: undefined };
+  const refusal = saves.writeSaveWithStatus(stale, disk);
+  assert.equal(refusal.failure, "save-conflict");
+  assert.equal(refusal.save.profile.rankId, "young-blood");
+  assert.equal(disk.getItem(key), bytes);
+});
+
+test("lost supplementary points do not count against the later campaign rank", () => {
+  const disk = storage();
+  const initial = saves.writeSaveWithStatus(fresh(), disk);
+  const credited = saves.writeSaveWithStatus(completedIntro(initial.save), disk);
+  assert(credited.persisted);
+  const afterLoss = saves.writeSaveWithStatus({ ...credited.save, profile: { ...credited.save.profile, honor: 0 } }, disk);
+  assert(afterLoss.persisted);
+  assert.equal(afterLoss.save.honorSourcesV169.outsideBalance, 0);
+  assert.equal(afterLoss.save.honorSourcesV169.entries[0].delta, 100);
+  const later = saves.writeSaveWithStatus({ ...afterLoss.save, profile: { ...afterLoss.save.profile, honor: 1500 } }, disk);
+  assert(later.persisted);
+  assert.equal(later.save.profile.rankId, "blooded");
+  assert.equal(saves.loadSave(disk).profile.rankId, "blooded");
 });

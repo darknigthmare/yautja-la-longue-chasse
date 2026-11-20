@@ -262,16 +262,35 @@ try {
   assert.equal(await wear.getAttribute('aria-pressed'), 'false');
   assert.equal(api.parseSaveImport(await stored()).save?.appearance.biomaskId, null);
 
+  const pieceForge = page.locator('[data-hunter-pieces-v146]');
+  const plasmaColor = pieceForge.locator('label').filter({ hasText: "Plasma et tirs d'énergie" }).locator('input[type="color"]');
+  const newPlasmaColor = '#257085';
+  const beforeLightDraft = await stored();
+  await pieceForge.getByRole('tab', { name: 'Lumières', exact: true }).click();
+  await plasmaColor.fill(newPlasmaColor);
+  assert.equal(await stored(), beforeLightDraft, 'An independent light draft does not write the campaign');
+
   await checkRefusedMask(equip, false);
   await equip.click();
   await waitMask(true);
+  assert.equal(await plasmaColor.inputValue(), newPlasmaColor, 'Equipping the mask preserves the independent light draft');
   const equipped = api.parseSaveImport(await stored()).save;
   assert.deepEqual(equipped?.appearance, result.save.appearance, 'The same mask recovers its original pigment and decal');
   assert.deepEqual(equipped?.profile, result.save.profile);
   assert.deepEqual(equipped?.inventory, result.save.inventory);
+  await pieceForge.getByRole('button', { name: 'Confirmer les couleurs', exact: true }).click();
+  await page.waitForFunction(({ key, value }) =>
+    JSON.parse(localStorage.getItem(key))?.appearance?.lightsV146?.plasma === value,
+  { key: api.SAVE_STORAGE_KEY, value: newPlasmaColor });
+  assert.deepEqual(api.parseSaveImport(await stored()).save?.appearance, {
+    ...result.save.appearance,
+    lightsV146: { ...result.save.appearance.lightsV146, plasma: newPlasmaColor },
+  }, 'Confirming the independent light never restores an earlier mask');
+  await waitMask(true);
   await capture(preview, 'atelier-biomask-porte.png');
   report.biomaskSession = {
     previewCycles, failedDurableWrites: 2, confirmedDurableChanges: 2,
+    independentLightDraftPreserved: true,
     durationMs: Date.now() - maskStarted, originalMaskRestored: true,
   };
 
