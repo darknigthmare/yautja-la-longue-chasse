@@ -17,6 +17,8 @@ import { moveHeritageWeaponV152, sealHeritageTestamentV152 } from "./systems/her
 import HeritagePanelV152, { type HeritageActionV152 } from "./HeritagePanelV152";
 import { closeHardcoreChronicleV155, hardcoreStatusV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
 import HardcoreChroniclePanelV155, { type HardcoreCloseChoiceV155 } from "./HardcoreChroniclePanelV155";
+import { blackGodStatusV162, recordBlackGodTrialV162, sacrificeBlackGodV162, type BlackGodTrialRunV162 } from "./systems/blackGodV162";
+import BlackGodPanelV162, { BlackGodChronicleClosedV162, type BlackGodSacrificeChoiceV162 } from "./BlackGodPanelV162";
 import { atMobilityForge } from "./systems/mobility/access";
 import type { MobilityReceipt } from "./systems/mobility/controller";
 import { acceptTrophyTutorialCheckpointV6, inspectTrophyTutorialV6, type TrophyTutorialStateV6 } from "./systems/trophyTutorialV6";
@@ -2238,7 +2240,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "tribunalV147" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "trophyTutorialV6" | "houndsV147" | "residenceV149" | "residenceLifeV150" | "originV151" | "residenceScenesV154" | "pathObjectsV158" | "heritageV152" | "hardcoreV155" | "blackGodV162">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2248,7 +2250,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, tribunalV147: update.tribunalV147, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, trophyTutorialV6: update.trophyTutorialV6, houndsV147: update.houndsV147, residenceV149: update.residenceV149, residenceLifeV150: update.residenceLifeV150, originV151: update.originV151, residenceScenesV154: update.residenceScenesV154, pathObjectsV158: update.pathObjectsV158, heritageV152: update.heritageV152, hardcoreV155: update.hardcoreV155, blackGodV162: update.blackGodV162 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2312,6 +2314,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     if (!change.ok) return { ok: false, message: change.reason };
     return persistSocialProgress({ hardcoreV155: change.hardcore, ...(change.heritage ? { heritageV152: change.heritage } : {}) })
       ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; la chronique n’est pas close." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+
+  /** V162: Black God (hors canon). Trial outcome and sacrifice are written before anything is announced. */
+  const recordBlackGodTrialSession = useCallback((run: BlackGodTrialRunV162): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    const change = recordBlackGodTrialV162(current, run, new Date().toISOString());
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ blackGodV162: change.state }) ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; rien n’a été inscrit." };
+  }, [entry.ownerCreatedAt, persistSocialProgress]);
+  const sacrificeBlackGodSession = useCallback((choice: BlackGodSacrificeChoiceV162): { ok: boolean; message: string } => {
+    const current = saveRef.current;
+    if (!sessionAliveRef.current || current.createdAt !== entry.ownerCreatedAt) return { ok: false, message: "Session expirée." };
+    const change = sacrificeBlackGodV162(current, choice, new Date().toISOString());
+    if (!change.ok) return { ok: false, message: change.reason };
+    return persistSocialProgress({ blackGodV162: change.state, ...(change.heritage ? { heritageV152: change.heritage } : {}) })
+      ? { ok: true, message: change.message } : { ok: false, message: "Sauvegarde refusée ; le sacrifice n’est pas accompli." };
   }, [entry.ownerCreatedAt, persistSocialProgress]);
 
   const commitTrophyTutorialCheckpoint = useCallback((candidate: TrophyTutorialStateV6): boolean => {
@@ -4607,6 +4626,14 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
     </main>
   );
 
+  // V162: a chronicle closed by the Black God sacrifice is read-only; nothing else is played.
+  if (blackGodStatusV162(save) === "sacrificed" && screen !== "mission") return (
+    <main className="game-shell" ref={gameShellRef} data-game-content-version={GAME_CONTENT_VERSION} data-campaign-session={entry.slotId} data-campaign-owner={entry.ownerCreatedAt}>
+      <BlackGodChronicleClosedV162 save={save} busy={campaignSaveBusy} onMainMenu={() => { void returnToMainMenu(); }} />
+      {campaignSaveMessage && <p role="status">{campaignSaveMessage}</p>}
+    </main>
+  );
+
   return (
     <main
       ref={gameShellRef}
@@ -4863,7 +4890,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
         </Suspense>
       )}
 
-      {screen === "mausoleum" && (<Suspense fallback={<DeferredGameScreen />}><Mausoleum key={save.createdAt} save={save} suspended={settingsOpen} source={stationReturnScreen === "homeworld" ? "homeworld" : "menu"} onProgress={progress => persistHomeworldProgress({ ...saveRef.current.homeworld, mausoleum: progress })} onSound={playGameplaySound} onExit={() => go(stationReturnScreen)} heritage={<HeritagePanelV152 save={save} disabled={settingsOpen} onAction={heritageActionV152} />} /></Suspense>)}
+      {screen === "mausoleum" && (<Suspense fallback={<DeferredGameScreen />}><Mausoleum key={save.createdAt} save={save} suspended={settingsOpen} source={stationReturnScreen === "homeworld" ? "homeworld" : "menu"} onProgress={progress => persistHomeworldProgress({ ...saveRef.current.homeworld, mausoleum: progress })} onSound={playGameplaySound} onExit={() => go(stationReturnScreen)} heritage={<><HeritagePanelV152 save={save} disabled={settingsOpen} onAction={heritageActionV152} /><BlackGodPanelV162 save={save} disabled={settingsOpen || campaignSaveBusy} onTrialEnd={recordBlackGodTrialSession} onSacrifice={sacrificeBlackGodSession} /></>} /></Suspense>)}
       {screen === 'ship-acquisition-v89' && <section inert={settingsOpen} data-ship-acquisition-campaign>
         <Suspense fallback={<DeferredGameScreen />}>
           <ShipAcquisitionV89 key={save.createdAt} appearance={save.appearance} loadout={save.loadout}

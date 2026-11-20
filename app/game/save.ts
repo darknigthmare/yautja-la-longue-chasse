@@ -6,6 +6,7 @@ import { isFutureOriginV151, normalizeOriginV151 } from "./systems/originsV151";
 import { isFuturePathObjectsV158, normalizePathObjectsV158 } from "./systems/pathObjectsV158";
 import { isFutureHeritageV152, normalizeHeritageV152 } from "./systems/heritageV152";
 import { hardcoreStatusV155, isFutureHardcoreV155, normalizeHardcoreV155, recordHardcoreDeathV155 } from "./systems/hardcoreV155";
+import { isFutureBlackGodV162, normalizeBlackGodV162 } from "./systems/blackGodV162";
 import { inspectTrophyTutorialV6 } from "./systems/trophyTutorialV6";
 import {normalizeHomeworldArrivalRecoveryV111} from './systems/homeworldArrivalRecoveryLedgerV111';
 import {normalizeHomeworldArchiveContinuationV111,archiveContinuationActiveV111} from './systems/homeworldArchiveContinuationLedgerV111';
@@ -1335,6 +1336,10 @@ export function normalizeSave(value: unknown): SaveGame {
     ...(source.hardcoreV155 === undefined ? {} : {
       hardcoreV155: source.hardcoreV155 === null ? null : normalizeHardcoreV155(source.hardcoreV155, validIsoDate(source.createdAt, fallback.createdAt)),
     }),
+    // V162: written only once the Black God trial has been attempted; old saves keep their exact shape.
+    ...(source.blackGodV162 === undefined ? {} : {
+      blackGodV162: source.blackGodV162 === null ? null : normalizeBlackGodV162(source.blackGodV162, validIsoDate(source.createdAt, fallback.createdAt)),
+    }),
     ...(source.clanShipDocking === undefined ? {} : {
       clanShipDocking: inspectClanShipDocking(source.clanShipDocking, validIsoDate(source.createdAt, fallback.createdAt)).state,
     }),
@@ -1705,6 +1710,10 @@ function inspectSavePayload(value: unknown): SaveImportParseResult {
   if (value.hardcoreV155 !== undefined && value.hardcoreV155 !== null) {
     if (isFutureHardcoreV155(value.hardcoreV155)) return { save: null, failure: "future-version" };
     if (typeof value.createdAt !== "string" || !normalizeHardcoreV155(value.hardcoreV155, value.createdAt)) return { save: null, failure: "invalid-save" };
+  }
+  if (value.blackGodV162 !== undefined && value.blackGodV162 !== null) {
+    if (isFutureBlackGodV162(value.blackGodV162)) return { save: null, failure: "future-version" };
+    if (typeof value.createdAt !== "string" || !normalizeBlackGodV162(value.blackGodV162, value.createdAt)) return { save: null, failure: "invalid-save" };
   }
   if (value.shipPreparationV88 !== undefined && value.shipPreparationV88 !== null) {
     const raw = value.shipPreparationV88;

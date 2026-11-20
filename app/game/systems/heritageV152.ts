@@ -41,6 +41,8 @@ export interface HeritageTriggerDefinitionV152 {
   reachable: boolean; transmitsMask: boolean; transmitsWeapon: boolean;
 }
 export const HERITAGE_TRIGGERS_V152: readonly HeritageTriggerDefinitionV152[] = [
+  // V162 : le sacrifice existe (systems/blackGodV162.ts, hors canon) ; il scelle le legs après la victoire de
+  // l'épreuve finale et la confirmation du joueur, jamais depuis le panneau du Mausolée.
   { id: "black-god-sacrifice", label: "Sacrifice réclamé par le Black Warrior", origin: "bible", reachable: false, transmitsMask: true, transmitsWeapon: true },
   // V155 : la mort en Hardcore existe (systems/hardcoreV155.ts) ; elle scelle le legs à la clôture de la
   // chronique, jamais depuis le panneau. « reachable » désigne les déclencheurs choisis au Mausolée.
@@ -160,6 +162,7 @@ type SealSource = Pick<SaveGame, "createdAt" | "profile" | "prologue" | "appeara
 /** Scelle le legs dans la partie qui transmet. Irréversible ; un second scellement est refusé. */
 export function sealHeritageTestamentV152(save: SealSource, choice: { trigger: HeritageTriggerV152; weaponId: WeaponId | null }, now: string): HeritageChangeV152 {
   const definition = trigger(choice.trigger);
+  if (definition?.id === "black-god-sacrifice") return { ok: false, reason: "Le sacrifice scelle son legs au moment où il est accompli, pas depuis ce panneau." };
   if (definition?.id === "hardcore-death") return { ok: false, reason: "La mort en Hardcore scelle son legs à la clôture de la chronique, pas depuis ce panneau." };
   if (!definition?.reachable) return { ok: false, reason: "Ce déclencheur n’existe pas encore dans le jeu." };
   if (definition.id === "elder-retirement") { const gate = heritageSealEligibilityV152(save); if (!gate.allowed) return { ok: false, reason: gate.reason }; }
@@ -174,6 +177,16 @@ export function sealHeritageTestamentV152(save: SealSource, choice: { trigger: H
  */
 export function sealHardcoreDeathTestamentV152(save: SealSource, choice: { weaponId: WeaponId | null; maskId: BiomaskId | null }, now: string): HeritageChangeV152 {
   const definition = trigger("hardcore-death")!;
+  return sealWith(save, definition, choice.weaponId, isMask(save.appearance.biomaskId) ? save.appearance.biomaskId : choice.maskId, now);
+}
+
+/**
+ * V162 · legs du sacrifice Black God (hors canon). Appelé seulement par systems/blackGodV162.ts, après la
+ * victoire de l'épreuve finale et la confirmation explicite du joueur. L'arme est choisie avant la fin
+ * (bible : « le joueur la choisit avant la fin ») ; masque porté, ou désigné s'il n'y en a pas (proposé).
+ */
+export function sealBlackGodSacrificeTestamentV152(save: SealSource, choice: { weaponId: WeaponId | null; maskId: BiomaskId | null }, now: string): HeritageChangeV152 {
+  const definition = trigger("black-god-sacrifice")!;
   return sealWith(save, definition, choice.weaponId, isMask(save.appearance.biomaskId) ? save.appearance.biomaskId : choice.maskId, now);
 }
 

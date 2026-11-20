@@ -12,6 +12,7 @@ import { defaultSave, parseSaveImport, SAVE_STORAGE_KEY, SAVE_VERSION, SAVE_MAX_
 import type { SaveGame } from "../types";
 import { heritageClaimOfCampaignV152, heritageMaskLabelV152, heritageTestamentOfCampaignV152, heritageWeaponLabelV152, receiveHeritageV152 } from "./heritageV152";
 import { createHardcoreStateV155, hardcoreDeathRecordedV155, hardcoreStatusV155, type HardcoreStatusV155 } from "./hardcoreV155";
+import { blackGodSacrificedV162, blackGodStatusV162, type BlackGodStatusV162 } from "./blackGodV162";
 import { ARCHIVE_TRANSFER_JOURNAL_KEY, archiveTransferPending } from "./archiveTransferGuard";
 import { applyArchiveTransaction, withArchiveTransferLock, type ArchiveStorage, type ArchiveReplacement } from "./archiveTransaction";
 import { createCompleteArchive, importCompleteArchive, parseCompleteArchive, prepareCompleteArchiveImport, COMPLETE_ARCHIVE_FORMAT, type CompleteArchive } from "./completeArchive";
@@ -45,6 +46,8 @@ export interface CampaignSlotSummary {
   failure: CampaignSlotFailure | null; recoveryAvailable: boolean;
   /** V155: état Hardcore de la campagne qui représente la partie ; absent pour une partie normale. */
   hardcoreV155?: Exclude<HardcoreStatusV155, "none">;
+  /** V162: Black God (hors canon) : victoire ou sacrifice ; absent tant que l'épreuve n'est pas remportée. */
+  blackGodV162?: Exclude<BlackGodStatusV162, "none">;
 }
 /** V155: options fixées à la création d'une partie (proposé : le mode Hardcore ne change plus ensuite). */
 export interface CampaignCreationOptionsV155 { hardcore?: boolean }
@@ -194,6 +197,8 @@ export function loadCampaignSlots(storage: ArchiveStorage | null = browserStorag
     for (const slot of slotCampaignsV152(storage, catalog, current.save, false, reads)) {
       const status = hardcoreStatusV155(slot.latest);
       if (status !== "none") catalog.slots[slot.slotId - 1].hardcoreV155 = status;
+      const blackGod = blackGodStatusV162(slot.latest);
+      if (blackGod !== "none") catalog.slots[slot.slotId - 1].blackGodV162 = blackGod;
     }
   } catch (error) { catalog.status = "blocked"; catalog.failure = error instanceof Refusal ? error.failure : "read-failed"; catalog.legacy = "blocked"; }
   return catalog;
@@ -707,6 +712,10 @@ export async function activateCampaignCheckpoint(id: CampaignSlotId, checkpointI
     if ((target.checkpoints.some(c => hardcoreDeathRecordedV155(c.archive.campaign)) ||
         (working?.createdAt === target.ownerCreatedAt && hardcoreDeathRecordedV155(working))) && !hardcoreDeathRecordedV155(chosen.archive.campaign))
       fail("protected-save", "Chronique Hardcore : la mort est définitive. Cette sauvegarde antérieure reste conservée mais ne peut pas être chargée.");
+    // V162 (proposé) : après le sacrifice, une sauvegarde antérieure ne ramène pas le chasseur réclamé.
+    if ((target.checkpoints.some(c => blackGodSacrificedV162(c.archive.campaign)) ||
+        (working?.createdAt === target.ownerCreatedAt && blackGodSacrificedV162(working))) && !blackGodSacrificedV162(chosen.archive.campaign))
+      fail("protected-save", "Chronique close par le sacrifice : cette sauvegarde antérieure reste conservée mais ne peut pas être chargée.");
     // Take the immutable target before rotating autos; loading auto-1 in the
     // current party must not accidentally load the newly captured auto-1.
     const desired = checkArchive(JSON.stringify(chosen.archive));
