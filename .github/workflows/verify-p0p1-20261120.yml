@@ -19,13 +19,13 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '40ee0a3835e4269d6e7a519c423c6082490e01ac'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
       BASE_COMMIT: '5c44bf24506c71792f9dffa49761be6a87879bd6'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '40ee0a3835e4269d6e7a519c423c6082490e01ac'
+          ref: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -81,6 +81,7 @@ jobs:
             tests/tantalus-warp-v167.test.mjs \
             tests/clan-logistics-v108.test.mjs \
             tests/clan-supply-route-v109.test.mjs \
+            tests/clan-war-summary-keyboard-20261120.test.mjs \
             tests/ship-receipt-v161.test.mjs \
             tests/homeworld-contracts-v68-integration.test.mjs \
             tests/residence-life-v150.test.mjs \
@@ -99,7 +100,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: runtime-candidate-40ee0a3835e4269d6e7a519c423c6082490e01ac
+          name: runtime-candidate-e045fcc30bf68427e9a44587429fcfd922b99dfd
           path: outputs/qa-asset-raccords-20261120/
           if-no-files-found: error
 
@@ -110,7 +111,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '40ee0a3835e4269d6e7a519c423c6082490e01ac'
+      ASSET_RACCORDS_SOURCE_COMMIT: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -123,12 +124,12 @@ jobs:
       COMMAND_SUMMARY_OUTPUT: outputs/p0p1-native/command-keyboard
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
       YAUTJA_LOGISTICS_V108_QA_SCENARIO: storage-recovery
-      YAUTJA_QA_RUNTIME_COMMIT: '40ee0a3835e4269d6e7a519c423c6082490e01ac'
+      YAUTJA_QA_RUNTIME_COMMIT: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '40ee0a3835e4269d6e7a519c423c6082490e01ac'
+          ref: 'e045fcc30bf68427e9a44587429fcfd922b99dfd'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -188,7 +189,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: browser-recipes-40ee0a3835e4269d6e7a519c423c6082490e01ac
+          name: browser-recipes-e045fcc30bf68427e9a44587429fcfd922b99dfd
           path: |
             outputs/p0p1-native/
             outputs/phg-decal-parity/
