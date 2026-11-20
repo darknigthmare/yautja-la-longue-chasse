@@ -505,6 +505,9 @@ function slotCampaignsV152(storage: ArchiveStorage, catalog: CampaignSlotCatalog
       if (catalog.activeSlotId === id && working && working.createdAt === read.document.ownerCreatedAt) { latest = working; all.push(working); }
     }
     if (includeBackups) {
+      if (!read.document && storage.getItem(campaignSlotStorageKey(id)) !== null) {
+        fail("protected-save", "Une partie illisible peut contenir une réclamation de legs.");
+      }
       const backup = storage.getItem(campaignSlotStorageKey(id) + ".backup");
       if (backup !== null) all.push(...parseSlot(backup, id).checkpoints.map(c => c.archive.campaign));
       if (read.recovery) all.push(...read.recovery.checkpoints.map(c => c.archive.campaign));
@@ -521,7 +524,10 @@ function heritageClaimsV152(campaigns: ReturnType<typeof slotCampaignsV152>, wor
   return claims;
 }
 function heritageOffersV152(storage: ArchiveStorage, catalog: CampaignSlotCatalog, working: SaveGame | null, reads: ReadonlyMap<CampaignSlotId, SlotRead>): CampaignHeritageOfferV152[] {
-  const campaigns = slotCampaignsV152(storage, catalog, working, false, reads), claims = heritageClaimsV152(campaigns, working);
+  let campaigns: ReturnType<typeof slotCampaignsV152>;
+  try { campaigns = slotCampaignsV152(storage, catalog, working, true, reads); }
+  catch { return []; }
+  const claims = heritageClaimsV152(campaigns, working);
   return campaigns.flatMap(slot => {
     const testament = heritageTestamentOfCampaignV152(slot.latest);
     return testament ? [{ slotId: slot.slotId, testamentId: testament.id, hunterName: testament.legend.hunterName,
@@ -529,9 +535,21 @@ function heritageOffersV152(storage: ArchiveStorage, catalog: CampaignSlotCatalo
       claimed: claims.has(testament.id), claimedBySlotId: claims.get(testament.id) ?? null }] : [];
   });
 }
+/** Accept the original Hardcore options argument and the later origin selection. */
+function normalizeCampaignCreationV155(originOrOptions: unknown, options: CampaignCreationOptionsV155) {
+  if (typeof originOrOptions === "object" && originOrOptions !== null && !Array.isArray(originOrOptions)) {
+    const legacy = originOrOptions as Record<string, unknown>;
+    if (Object.keys(legacy).every(key => key === "hardcore") &&
+        (legacy.hardcore === undefined || legacy.hardcore === true)) {
+      return { originId: null, options: { ...options, ...(legacy.hardcore === true ? { hardcore: true as const } : {}) } };
+    }
+  }
+  return { originId: originOrOptions, options };
+}
 /** V152: create a new campaign in an empty slot that inherits the sealed legacy of another slot.
  * The legacy is read, never moved out of its source; a legacy already received anywhere is refused. */
-export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, fromSlotId: CampaignSlotId, storage: ArchiveStorage | null = browserStorage(), originId: unknown = null, options: CampaignCreationOptionsV155 = {}): Promise<CampaignSlotResult> {
+export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, fromSlotId: CampaignSlotId, storage: ArchiveStorage | null = browserStorage(), originOrOptions: unknown = null, creationOptions: CampaignCreationOptionsV155 = {}): Promise<CampaignSlotResult> {
+  const { originId, options } = normalizeCampaignCreationV155(originOrOptions, creationOptions);
   return mutation(storage, data => {
     if (!slotIdValid(id) || !slotIdValid(fromSlotId) || id === fromSlotId) fail("invalid-slot", "Numéro de partie invalide.");
     const catalog = loadCampaignSlots(data);
@@ -559,7 +577,8 @@ export async function createHeirCampaignSlot(id: CampaignSlotId, name: string, f
   });
 }
 /** Creation never replaces an occupied slot and does not activate it implicitly. */
-export async function createCampaignSlot(id: CampaignSlotId, name = "", storage: ArchiveStorage | null = browserStorage(), originId: unknown = null, options: CampaignCreationOptionsV155 = {}): Promise<CampaignSlotResult> {
+export async function createCampaignSlot(id: CampaignSlotId, name = "", storage: ArchiveStorage | null = browserStorage(), originOrOptions: unknown = null, creationOptions: CampaignCreationOptionsV155 = {}): Promise<CampaignSlotResult> {
+  const { originId, options } = normalizeCampaignCreationV155(originOrOptions, creationOptions);
   return mutation(storage, data => {
     if (!slotIdValid(id)) fail("invalid-slot", "Numéro de partie invalide.");
     const catalog = loadCampaignSlots(data);

@@ -1489,7 +1489,10 @@ export default function PitCanvas({
     selected: personalChosenV147, available: personalAvailableV147, playback: Boolean(playbackReplay),
     slotFighterId: combat?.fighters[0]?.definitionId,
   });
-  personalNameRefV147.current = personalChosenV147 && !playbackReplay ? personalFighterV147?.name ?? null : null;
+  const personalNameV147 = personalChosenV147 && !playbackReplay ? personalFighterV147?.name ?? null : null;
+  useEffect(() => {
+    personalNameRefV147.current = personalNameV147;
+  }, [personalNameV147]);
   const personalDrawV147 = useMemo<PitPersonalDrawV147 | null>(() => personalLiveV147 && personalFighterV147
     ? { appearance: personalFighterV147.appearance, bank: personalArtV147 } : null,
   [personalLiveV147, personalFighterV147, personalArtV147]);
