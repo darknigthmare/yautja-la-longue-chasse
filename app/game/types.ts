@@ -718,6 +718,8 @@ export interface SaveGame {
   originV151?: import("./systems/originsV151").OriginStateV151 | null;
   /** V154: residence scenes S1–S3 played (gestures, decision, material use inscribed). Absent until first used. */
   residenceScenesV154?: import("./systems/residenceScenesV154").ResidenceScenesV154 | null;
+  /** V158: voie originals (owner, single location, provenance mission) and the house material reserve. Absent until first used. */
+  pathObjectsV158?: import("./systems/pathObjectsV158").PathObjectsV158 | null;
   version: number;
   createdAt: string;
   updatedAt: string;

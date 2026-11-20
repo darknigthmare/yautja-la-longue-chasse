@@ -22,10 +22,12 @@
  *     `SaveGame.trophies` » : le jeu n'a pas d'état `objectOwnerId` ;
  *   - découpage de chaque scène en trois gestes ordonnés et des « Choix et
  *     effets » en deux options ;
- *   - objet central de la scène : quand le jeu ne le possède pas (lame de
+ *   - objet central de la scène : quand le joueur ne le possède pas (lame de
  *     Varek, crâne partagé, fragment ancien, arme fautive, câble de Mara), la
  *     scène se joue avec le relevé que la ligne autorise et l'absence est
- *     expliquée ; la scène est alors `resolved` sans `success` ;
+ *     expliquée ; la scène est alors `resolved` sans `success`. V158 : quand
+ *     l'original de voie (`pathObjectsV158`) est réellement sous sa garde, la
+ *     scène peut réussir ;
  *   - réactions courtes affichées après le choix, et explications d'absence ;
  *   - relation écrite seulement quand la ligne nomme une personne (O1 Varek,
  *     O5 Mara Venn, O6 partenaires), sous une clé distincte de celle de -01.
@@ -41,12 +43,15 @@ interface TrophyScenePlayV157 {
   reactions: readonly [string, string];
   /** The scene's central object; `inGame: false` means the save cannot hold it yet. */
   object: { name: string; inGame: boolean; absence: string | null };
+  /** V158: id of the voie original (`pathObjectsV158`) that stands for the object when the hunter really holds it. */
+  originalId: string | null;
   character: { id: string; name: string; presence: RelationV151["presence"] } | null;
 }
 
 /** Proposé : lecture jouable de chaque ligne -02 (voir l'en-tête). */
 const PLAY: Record<OriginIdV151, TrophyScenePlayV157> = {
   O1: {
+    originalId: "voie:O1:lame-de-varek",
     steps: ["Poser le relevé réellement conservé", "Orienter la lame sur le relevé", "Montrer la trace de l’agression"],
     options: ["Exposer une preuve contextualisée", "Garder l’histoire privée"],
     reactions: ["Le support de preuve montre la trace de l’agression et sa date ; la plaque ne compte aucune victoire de chasse.",
@@ -56,6 +61,7 @@ const PLAY: Record<OriginIdV151, TrophyScenePlayV157> = {
     character: { id: "O1:varek:trophee", name: "Varek", presence: "absent" },
   },
   O2: {
+    originalId: "voie:O2:crane-partage",
     steps: ["Régler la lampe", "Tourner le berceau", "Comparer les angles décrits par les témoins"],
     options: ["Conserver les deux lectures compatibles", "Demander une comparaison supplémentaire"],
     reactions: ["Deux lignes attribuées sur la plaque : le coup final de l’ancêtre et l’extraction, chacune avec son témoin.",
@@ -65,6 +71,7 @@ const PLAY: Record<OriginIdV151, TrophyScenePlayV157> = {
     character: null,
   },
   O3: {
+    originalId: "voie:O3:fragment-ancien",
     steps: ["Placer le fragment ancien près du trophée actuel", "Observer les traces", "Choisir des supports"],
     options: ["Relier les objets par un récit personnel", "Exposer les objets séparément"],
     reactions: ["Un seul récit court entre les deux berceaux : ce qui a été perdu, puis la chasse d’aujourd’hui, sans que l’une remplace l’autre.",
@@ -74,6 +81,7 @@ const PLAY: Record<OriginIdV151, TrophyScenePlayV157> = {
     character: null,
   },
   O4: {
+    originalId: "voie:O4:arme-de-l-ancetre",
     steps: ["Inspecter l’arme fautive sur un banc distinct", "Choisir la lumière et le support", "Choisir la plaque"],
     options: ["Déposer l’arme aux archives", "Exposer l’arme avec la faute explicitée"],
     reactions: ["L’arme part aux archives avec sa fiche ; la galerie ne montre que ta propre prise.",
@@ -83,6 +91,7 @@ const PLAY: Record<OriginIdV151, TrophyScenePlayV157> = {
     character: null,
   },
   O5: {
+    originalId: "voie:O5:cable-de-mara",
     steps: ["Vérifier si Mara a donné, prêté ou gardé le câble", "Placer les deux appuis de la falaise", "Montrer le geste de traction"],
     options: ["Exposer la coordination technique", "Exposer le récit de gratitude"],
     reactions: ["La table montre les deux appuis et la traction : deux chasseurs, deux gestes, aucun maître de l’autre.",
@@ -92,6 +101,7 @@ const PLAY: Record<OriginIdV151, TrophyScenePlayV157> = {
     character: { id: "O5:mara:trophee", name: "Mara Venn", presence: "absent" },
   },
   O6: {
+    originalId: null,
     steps: ["Tourner le berceau", "Montrer les marques de leurs gestes", "Placer des plaques distinctes"],
     options: ["Mettre en avant la chronologie", "Mettre en avant les techniques complémentaires"],
     reactions: ["Les plaques suivent la chasse dans l’ordre : qui a pisté, qui a frappé, qui a ramené la prise.",
@@ -112,6 +122,8 @@ export interface TrophyWorkshopContextV157 {
   atWorkshop: boolean;
   /** `SaveGame.trophies` ids (the player's own claims). */
   ownedTrophyIds: readonly string[];
+  /** V158: voie originals under the hunter's custody (`heldPathOriginalIdsV158`). Absent: none. */
+  heldOriginalIds?: readonly string[];
 }
 export type OriginTrophyChangeV157 = { ok: true; state: OriginStateV151; message: string } | { ok: false; reason: string };
 const refuse = (reason: string): OriginTrophyChangeV157 => ({ ok: false, reason });
@@ -159,7 +171,8 @@ export function trophyTransitionChooseV157(current: OriginStateV151, trophyId: s
   const state = structuredClone(current);
   state.consumed = [...state.consumed, eventId];
   // Resolved ≠ success: without the scene's real object, the line's fallback (relevé, absence explained) closes it.
-  const success = transition.object.inGame;
+  // V158: the voie original counts only while the hunter really holds it.
+  const success = transition.object.inGame || (!!transition.originalId && !!context.heldOriginalIds?.includes(transition.originalId));
   state.transitions[transition.id] = { ...record, resolved: true, success, choice, houseId: null, trophyId };
   if (transition.character)
     state.relations[transition.character.id] = { name: transition.character.name, presence: transition.character.presence, transitionId: transition.id, choice };
