@@ -8,7 +8,7 @@ on:
 permissions: {}
 
 concurrency:
-  group: yautja-integration-prs-20261120
+  group: yautja-integration-qualification-20261120
   cancel-in-progress: false
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
           git clone --filter=blob:none --no-checkout --single-branch --branch "${INTEGRATION_REF#refs/heads/}" \
             "https://github.com/$GITHUB_REPOSITORY" "$RUNNER_TEMP/wave-repository"
           cd "$RUNNER_TEMP/wave-repository"
-          git merge-base --is-ancestor "a96bb977cc9064effd533b0b9cc0e28ffc0081b0" HEAD
+          test "$(git rev-parse HEAD)" = "675b676a4e144c127d22ac968da5a32470977bfd"
           printf 'INTEGRATION_SEED=%s\n' "$(git rev-parse HEAD)" >> "$GITHUB_ENV"
           git config --local core.hooksPath /dev/null
 
