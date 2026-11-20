@@ -1,4 +1,4 @@
-name: Verify original concept mask assets in production
+name: Verify final original assets, forge and campaign receipts
 
 on:
   push:
@@ -8,10 +8,116 @@ permissions:
   contents: read
 
 concurrency:
-  group: yautja-p0-p3-next-field-masks
+  group: yautja-p0-p3-next final original assets
   cancel-in-progress: false
 
 jobs:
+  source:
+    name: Application, tests and reproducible runtime inventory
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+      NEXT_TELEMETRY_DISABLED: '1'
+      ASSET_RACCORDS_SOURCE_COMMIT: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
+      BASE_COMMIT: '62b3658cc04b3404a0e302163230995d47d83d66'
+    steps:
+      - name: Checkout the exact candidate and bounded inputs
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
+          persist-credentials: false
+          fetch-depth: 12
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /app/
+            /lib/
+            /types/
+            /desktop/
+            /worker/
+            /tests/
+            /scripts/
+            /build/
+            /.openai/
+            /.github/workflows/
+            /docs/
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
+            /public/game/assets/clan-field-20261103/
+            /public/**/manifest.json
+            /public/game/p0-sprites-20261113/warp/
+            /public/game/warp-universe/20261109-p1/193_japon_cloche_bonsho.png
+            /public/game/homeworld/v77/lava-transit-skiff.png
+            /public/game/homeworld/v77/fauna/yautja-horse-corrected.png
+            /public/game/homeworld/v64/clan-shuttle.png
+            /public/game/assets/v3/actors/yautja/hunter/armor/registered/
+      - name: Node 22
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Materialize official runtime inputs and install dependencies
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs runtime
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Generate the official candidate inventory
+        run: |
+          node scripts/materialize-asset-raccords-20261120.mjs candidate
+          node scripts/snapshot-runtime-v113.mjs --check outputs/qa-asset-raccords-20261120/runtime-inputs.candidate.json
+          node scripts/check-hunt-integration-source-v112.mjs --current
+      - name: Verify Next types
+        run: |
+          node node_modules/next/dist/bin/next typegen
+          node --max-old-space-size=3300 node_modules/typescript/bin/tsc --noEmit --incremental false
+      - name: Exercise the changed and adjacent contracts
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          git fetch --no-tags --filter=blob:none --depth=1 origin "$BASE_COMMIT"
+          mapfile -t changed < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'tests/*.test.mjs' 'tests/*.test.ts')
+          mapfile -t suites < <(printf '%s\n' "${changed[@]}" \
+            tests/scene-audio.test.mjs \
+            tests/game-client-ship-flow.test.mjs \
+            tests/harvest-inventory-v112.test.mjs \
+            tests/hunt-harvest-runtime-v111.test.mjs \
+            tests/honor-sources-v169.test.mjs \
+            tests/nursery-campaign.test.mjs \
+            tests/canopy-traversal-v112.test.mjs \
+            tests/hunt-canopy-runtime-v112.test.mjs \
+            tests/hunt-skinning-worksite-20261109.test.mjs \
+            tests/hunt-harvest-runtime-v111.test.mjs \
+            tests/trophy-harvest-v111.test.mjs \
+            tests/warp-module-bay.test.mjs \
+            tests/warp-epochs-v165.test.mjs \
+            tests/tantalus-warp-v167.test.mjs \
+            tests/clan-logistics-v108.test.mjs \
+            tests/clan-supply-route-v109.test.mjs \
+            tests/clan-war-summary-keyboard-20261120.test.mjs \
+            tests/ship-receipt-v161.test.mjs \
+            tests/homeworld-contracts-v68-integration.test.mjs \
+            tests/residence-life-v150.test.mjs \
+            tests/mobility-training-reward.test.mjs \
+            tests/pit-backward-throws-v112.test.mjs \
+            tests/pit-forward-throws-v109.test.mjs | sort -u)
+          node --experimental-strip-types --test --test-reporter=spec --test-concurrency=1 "${suites[@]}"
+      - name: Strict lint of modified source and QA drivers
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          mapfile -t edited < <(git diff --name-only --diff-filter=AM "$BASE_COMMIT" HEAD -- 'app/**/*.ts' 'app/**/*.tsx' 'scripts/*.mjs' 'tests/*.test.mjs')
+          test "${#edited[@]}" -gt 0
+          node node_modules/eslint/bin/eslint.js --max-warnings=0 "${edited[@]}"
+      - name: Preserve inventory and materialization evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: runtime-candidate-3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54
+          path: outputs/qa-asset-raccords-20261120/
+          if-no-files-found: error
+
+
   browser:
     name: Original concept masks in the compiled forge
     runs-on: ubuntu-24.04
@@ -19,7 +125,7 @@ jobs:
     env:
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
       NEXT_TELEMETRY_DISABLED: '1'
-      ASSET_RACCORDS_SOURCE_COMMIT: '4607676daca37021f6c92338a15e5fa67267f151'
+      ASSET_RACCORDS_SOURCE_COMMIT: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
       CHROMIUM_EXECUTABLE: /usr/bin/google-chrome
       PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH: /usr/bin/google-chrome
       AUDIT_CHROME_CHANNEL: chrome
@@ -27,12 +133,12 @@ jobs:
       YAUTJA_QA_BASE_URL: http://127.0.0.1:3121
       YAUTJA_QA_MODE: compiled-app
       AUDIT_CHROME_EXECUTABLE: /usr/bin/google-chrome
-      YAUTJA_QA_RUNTIME_COMMIT: '4607676daca37021f6c92338a15e5fa67267f151'
+      YAUTJA_QA_RUNTIME_COMMIT: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
     steps:
       - name: Checkout the exact candidate and bounded inputs
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
-          ref: '4607676daca37021f6c92338a15e5fa67267f151'
+          ref: '3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54'
           persist-credentials: false
           fetch-depth: 3
           filter: blob:none
@@ -95,6 +201,9 @@ jobs:
             /public/game/sprites/v62/masks/fugitive.png
             /public/game/sprites/v62/masks/wolf.png
             /public/game/assets/v3/actors/yautja/hunter/dreads/registered/
+            /public/game/assets/v3/actors/yautja/hunter/body/*/net/
+            /public/game/xeno-prime/berceau-v1/
+            /public/audio/
             /public/game/assets/v139/rig-gauntlets/jungle-hunter/base.svg
             /public/game/assets/v139/rig-gauntlets/jungle-hunter/lid.svg
             /public/game/planets/v101/runtime/land-temperate.webp
@@ -239,10 +348,18 @@ jobs:
         env:
           PHG_QA_OUTPUT: outputs/p0-p3-next/forge
         run: node scripts/qa-phg-p0p1-20261109.mjs
-      - name: Preserve the native forge reports
+      - name: Play the compiled Cradle treatment, mentor and acid return
+        if: ${{ !cancelled() && steps.server.outcome == 'success' }}
+        env:
+          CRADLE_RETURN_QA_URL: http://127.0.0.1:3121/
+          CRADLE_RETURN_QA_COMMIT: 3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54
+          CRADLE_RETURN_QA_SCENARIO: acid
+          CRADLE_RETURN_QA_OUTPUT: outputs/p0-p3-next/cradle
+        run: node scripts/qa-cradle-return-mentor-20261120.mjs
+      - name: Preserve native forge and Cradle reports
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: forge-browser-4607676daca37021f6c92338a15e5fa67267f151
+          name: forge-browser-3fc9ec439d2f4fe64a26b1b1da59b4b49c5b2a54
           path: outputs/p0-p3-next/
           if-no-files-found: error
