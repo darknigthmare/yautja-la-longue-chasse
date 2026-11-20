@@ -759,6 +759,8 @@ export interface SaveGame {
   minorArcsV160?: import("./systems/minorArcsV160").MinorArcsV160 | null;
   /** V163: contrats Queen Hunt et jalon firstQueenResolved ; champ additif, absent des anciennes sauvegardes. */
   queenHuntV163?: import("./systems/queenHuntV163").QueenHuntStateV163 | null;
+  /** V165 : quête commune, module, branches Warp, voyage engagé et état de branche ; absent sur les anciennes sauvegardes. */
+  warpEpochsV165?: import("./systems/warpEpochsV165").WarpEpochsStateV165 | null;
   version: number;
   createdAt: string;
   updatedAt: string;
