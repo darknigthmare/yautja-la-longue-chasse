@@ -1,0 +1,45 @@
+name: Verify historical Enforcer originals
+on:
+  push:
+    branches: [codex/verify-enforcer-p3-20261120]
+permissions:
+  contents: read
+jobs:
+  provenance:
+    name: Historical Enforcer PNG and receipt reconciliation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 18614e3984f350ba42eb43c728cf84a6cb26fbb9
+          filter: blob:none
+          fetch-depth: 1
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /scripts/audit-enforcer-historical-recovery.mjs
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Verify exact committed objects
+        run: |
+          mkdir -p outputs/enforcer-provenance
+          git fetch --no-tags --filter=blob:none --depth=1 origin 5417bafe9b2fe3ed064693d9e0f12d9d591217d3 09c42b77932f05160b956f731e2087c71a15dfdc 6e2a5546bd75e95901235af8d503621d0bc2201d 2d1d006628e7e657cda66470ed06f5055f4919c5 4ef1eb48e45278db4606d8ee9999647c62c80a21 d71e995ae886df69c4165a1a153291449e8f22f6
+          for path in docs/suivi-production/v611/data/prior-production-v610.json docs/suivi-production/v613/data/production-manifest.json docs/suivi-production/v613/recovery/native-checkpoint.json; do
+            git cat-file blob "d71e995ae886df69c4165a1a153291449e8f22f6:$path" > /dev/null
+          done
+          for commit in HEAD 5417bafe9b2fe3ed064693d9e0f12d9d591217d3 09c42b77932f05160b956f731e2087c71a15dfdc 6e2a5546bd75e95901235af8d503621d0bc2201d 2d1d006628e7e657cda66470ed06f5055f4919c5 4ef1eb48e45278db4606d8ee9999647c62c80a21 d71e995ae886df69c4165a1a153291449e8f22f6; do
+            git ls-tree -r --format='%(objectname)' "$commit" -- public/game/production/enforcers-v610 docs/suivi-production/v613/recovery/native-checkpoint.json
+          done | sort -u | while read -r object; do
+            git cat-file blob "$object" > /dev/null
+          done
+          node scripts/audit-enforcer-historical-recovery.mjs 5417bafe9b2fe3ed064693d9e0f12d9d591217d3 09c42b77932f05160b956f731e2087c71a15dfdc 6e2a5546bd75e95901235af8d503621d0bc2201d 2d1d006628e7e657cda66470ed06f5055f4919c5 4ef1eb48e45278db4606d8ee9999647c62c80a21 d71e995ae886df69c4165a1a153291449e8f22f6 > outputs/enforcer-provenance/report.json
+          node -e 'const r=require("./outputs/enforcer-provenance/report.json"); if(r.v610.preservedTraceCount!==36||r.v613.finalCount!==36) process.exit(1); console.log(JSON.stringify({v610:r.v610.originalPngMatches,v613:r.v613.matchingPublishedReceipts,missingV613:r.v613.missingPublishedReceipts.length}))'
+      - name: Preserve exact provenance report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: enforcer-provenance-18614e3984f350ba42eb43c728cf84a6cb26fbb9
+          path: outputs/enforcer-provenance/
+          if-no-files-found: error
