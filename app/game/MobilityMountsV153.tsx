@@ -6,12 +6,13 @@ import {
   MOUNT_EXERCISES_V153, MOUNT_CONDITIONS_V153, MOUNT_CONDITION_LABELS_V153, MOUNT_SESSION_GAIN_CAP_V153,
   type MountConditionV153, type MountOrderV153, type MountWriterV153,
 } from './systems/mobility/mountsV153';
+import {MOUNT_RIDE_MIN_BOND_V156,mountRideRefusalV156,createMountRidesV156,type MountRideWriterV156} from './systems/mobility/mountRidingV156';
 import styles from './MobilityGarage.module.css';
 
-export interface MobilityMountsV153Props {save:SaveGame;mountId:string;allowed:boolean;onCommand?:MountWriterV153;onMessage:(message:string)=>void}
+export interface MobilityMountsV153Props {save:SaveGame;mountId:string;allowed:boolean;onCommand?:MountWriterV153;onRideCommand?:MountRideWriterV156;onMessage:(message:string)=>void}
 
 /** MOB-012 : recrutement explicite, séances de lien, peur, fatigue, blessures et soins d'une monture. */
-export default function MobilityMountsV153({save,mountId,allowed,onCommand,onMessage}:MobilityMountsV153Props){
+export default function MobilityMountsV153({save,mountId,allowed,onCommand,onRideCommand,onMessage}:MobilityMountsV153Props){
  const [condition,setCondition]=useState<MountConditionV153>('calm');
  const profile=mountProfileV153(mountId);
  if(!profile)return null;
@@ -42,6 +43,7 @@ export default function MobilityMountsV153({save,mountId,allowed,onCommand,onMes
    <dl className={styles.metrics}><div><dt>BOND</dt><dd data-mount-bond={mount.bond}>{mount.bond} / 100</dd></div><div><dt>Fatigue</dt><dd data-mount-fatigue={mount.fatigue}>{mount.fatigue} / 100</dd></div><div><dt>Blessures</dt><dd data-mount-injury={mount.injury}>{mount.injury} / 100</dd></div><div><dt>Séances</dt><dd>{mount.sessions}</dd></div></dl>
    {!session?<div className={styles.actions}>
     <button disabled={!can||!!state.session} onClick={()=>order({type:'open-session',mountId:mount.id})}>Ouvrir une séance de lien</button>
+    {(()=>{const refusal=mountRideRefusalV156(state,mount.id);const rides=save.mountRidesV156??createMountRidesV156(save.createdAt);return <button data-mount-ride-start={refusal?'refused':'ready'} title={refusal??undefined} disabled={!allowed||!onRideCommand||!!refusal||!!rides.active} onClick={()=>{if(!onRideCommand)return;const r=onRideCommand({type:'mount',mountId:mount.id,ownerCreatedAt:save.createdAt,expectedRevision:rides.revision});onMessage(r.message);}}>Monter · aire des convois</button>;})()}
     {(()=>{const cost=mountCareQuoteV153(state,mount.id);return <button disabled={!can||cost===null||save.profile.clanMarks<(cost??Infinity)} onClick={()=>order({type:'care',mountId:mount.id,expectedCost:cost!})}>{cost===null?'Soins / repos · inutiles':`Soigner / reposer · ${cost} marques`}</button>;})()}
    </div>:<div data-mount-session={session.id}>
     <p>Séance {session.id} · BOND gagné {session.gain}/{MOUNT_SESSION_GAIN_CAP_V153}</p>
@@ -50,6 +52,8 @@ export default function MobilityMountsV153({save,mountId,allowed,onCommand,onMes
     <div className={styles.actions}>{MOUNT_EXERCISES_V153.map(ex=>{const locked=mount.bond<ex.minBond;const refusal=locked?null:mountExerciseRefusalV153(mount,ex);return <button key={ex.id} data-mount-exercise={ex.id} disabled={!can||locked} title={refusal??undefined} onClick={()=>order({type:'exercise',sessionId:session.id,exerciseId:ex.id,condition,eventId})}>{ex.label}{locked?` · BOND ${ex.minBond} requis`:` · fatigue +${ex.fatigue}`}</button>;})}
      <button onClick={()=>order({type:'close-session',sessionId:session.id})} disabled={!can}>Clore la séance</button></div>
    </div>}
+   {!session&&(()=>{const refusal=mountRideRefusalV156(state,mount.id);return <p className={styles.hint} data-mount-ride-refusal={refusal?'yes':'no'}>{refusal??'Prêt à être monté sur l’aire des convois.'} Seuil de monte : BOND {MOUNT_RIDE_MIN_BOND_V156} (« Seuil monte » des fiches V6, transposé au Kha’Rha : proposé).</p>;})()}
+   {save.mountRidesV156?.lastReport?.mountId===mount.id&&(()=>{const r=save.mountRidesV156!.lastReport!;return <p className={styles.hint} data-mount-ride-report={r.result}>Dernière sortie montée : {r.result==='passed'?`circuit réussi · séance ${r.sessionId} · BOND +${r.bondGain}`:r.result==='recovered'?'ramené en main · aucun BOND':'retour sans circuit complet · aucun BOND'} · fatigue {r.fatigue} · blessures {r.injury} · {r.impacts} choc(s).</p>;})()}
    {state.lastSession?.mountId===mount.id&&<p className={styles.hint}>Dernière séance {state.lastSession.id} : {state.lastSession.outcome==='interrupted'?'interrompue':'close'} · BOND +{state.lastSession.gain}.</p>}
   </div>}
   {!onCommand&&<p className={styles.hint}>Écriture des montures indisponible dans cette vue.</p>}

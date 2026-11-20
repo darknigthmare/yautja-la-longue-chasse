@@ -3,6 +3,7 @@ import { actMobility, type MobilityCommand } from "./systems/mobility/ledger";
 import { atMobilityForge } from "./systems/mobility/access";
 import type { MobilityReceipt } from "./systems/mobility/controller";
 import { actMountsV153, type MountCommandV153, type MountReceiptV153 } from "./systems/mobility/mountsV153";
+import { actMountRideV156, type MountRideCommandV156, type MountRideReceiptV156 } from "./systems/mobility/mountRidingV156";
 import { acceptTrophyTutorialCheckpointV6, inspectTrophyTutorialV6, type TrophyTutorialStateV6 } from "./systems/trophyTutorialV6";
 import ConservationPanelV112, {type ConservationPanelActionV112} from "./ConservationPanelV112";
 import {startConservationV112,workConservationV112,pauseConservationV112,resumeConservationV112,repairFieldToolV112,archiveMountedSpecimenV112,deliverHarvestV112,harvestInventoryForV112,capacityForArmorV112} from "./systems/harvestInventoryV112";
@@ -2184,7 +2185,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
 
   // City choices are acknowledged only after durable storage confirms the write.
   // A failed write must not announce a completed investigation or apply a reward.
-  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "trophyTutorialV6">>): boolean => {
+  const persistSocialProgress = useCallback((update: Partial<Pick<SaveGame, "prologue" | "buriedCradle" | "companionResidence" | "clanShipIncidents" | "clanShipTrophyHearing" | "clanShipReturnEscort" | "inventory" | "profile" | "homeworld" | "justice" | "gameReserveV66" | "homeworldPassageV67" | "homeworldRegionV68" | "shipPreparationV88" | "shipAcquisitionV89" | "gauntletV134" | "clanShipDocking" | "clanShipOperations" | "wolfCastle" | "planetArrival" | "planetArrivalRun" | "expeditionRoster" | "shipInsertionEnergy" | "mobilityV1" | "mountsV153" | "mountRidesV156" | "trophyTutorialV6">>): boolean => {
     if (!sessionAliveRef.current) return false;
     const current = saveRef.current;
     if (pendingTrophyCommitRef.current) {
@@ -2194,7 +2195,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       setToast("Termine la sauvegarde du résultat de chasse avant de poursuivre le dossier.");
       return false;
     }
-    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, trophyTutorialV6: update.trophyTutorialV6 });
+    const updateSerialized = JSON.stringify({ prologue: update.prologue, buriedCradle: update.buriedCradle, companionResidence: update.companionResidence, clanShipIncidents: update.clanShipIncidents, clanShipTrophyHearing: update.clanShipTrophyHearing, clanShipReturnEscort: update.clanShipReturnEscort, inventory: update.inventory, profile: update.profile, homeworld: update.homeworld, justice: update.justice, gameReserveV66: update.gameReserveV66, homeworldPassageV67: update.homeworldPassageV67, homeworldRegionV68: update.homeworldRegionV68, shipPreparationV88: update.shipPreparationV88, shipAcquisitionV89: update.shipAcquisitionV89, gauntletV134: update.gauntletV134, clanShipDocking: update.clanShipDocking, clanShipOperations: update.clanShipOperations, wolfCastle: update.wolfCastle, planetArrival: update.planetArrival, planetArrivalRun: update.planetArrivalRun, expeditionRoster: update.expeditionRoster, shipInsertionEnergy: update.shipInsertionEnergy, mobilityV1: update.mobilityV1, mountsV153: update.mountsV153, mountRidesV156: update.mountRidesV156, trophyTutorialV6: update.trophyTutorialV6 });
     const pending = pendingSocialWriteRef.current;
     if (pending) {
       const recovered = reconcileSaveWrite(pending.attempt, current.createdAt);
@@ -2348,6 +2349,8 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
        stationReturnScreen!=="homeworld" || !atMobilityForge(current) || archiveTransferBusy || archiveRecoveryIssue ||
        campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
        (command.type!=="drive" && (!gameFocusedV89 || settingsOpen))) return refused("Service suspendu ou présence au comptoir non confirmée.");
+    // V156 : l'aire est occupée pendant une chevauchée ; le registre mobilityV1 reste inchangé.
+    if(current.mountRidesV156?.active) return refused("Aire des convois occupée par une monture : reviens au sas d’abord.");
     const result=actMobility(current,command);
     if(!result.accepted||!result.state)return refused(result.message);
     if(!persistSocialProgress({mobilityV1:result.state,profile:{...current.profile,clanMarks:result.clanMarks}}))
@@ -2371,6 +2374,23 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
       return refused("Écriture non confirmée : action sur la monture à réconcilier avant toute suite.");
     setToast(result.message);
     return {accepted:true,message:result.message,state:saveRef.current.mountsV153??null};
+  },[entry.ownerCreatedAt,screen,stationReturnScreen,archiveTransferBusy,archiveRecoveryIssue,campaignSaveBusy,resumableHunt,gameFocusedV89,settingsOpen,persistSocialProgress]);
+
+  // V156 : chevauchée sur l'aire. Une seule écriture confirme à la fois le
+  // registre des chevauchées et, au retour, le registre des montures.
+  const commitMountRide = useCallback((command: MountRideCommandV156): MountRideReceiptV156 => {
+    const current=saveRef.current;
+    const refused=(message:string):MountRideReceiptV156=>({accepted:false,message,state:saveRef.current.mountRidesV156??null});
+    if(!sessionAliveRef.current || current.createdAt!==entry.ownerCreatedAt || screen!=="mobility" ||
+       stationReturnScreen!=="homeworld" || !atMobilityForge(current) || archiveTransferBusy || archiveRecoveryIssue ||
+       campaignSaveBusy || resumableHunt || activeHuntSessionRef.current ||
+       (command.type!=="ride" && (!gameFocusedV89 || settingsOpen))) return refused("Service suspendu ou présence au comptoir non confirmée.");
+    const result=actMountRideV156(current,command);
+    if(!result.accepted||!result.rides)return refused(result.message);
+    if(!persistSocialProgress(result.mounts?{mountRidesV156:result.rides,mountsV153:result.mounts}:{mountRidesV156:result.rides}))
+      return refused("Écriture non confirmée : chevauchée suspendue, à réconcilier avant toute suite.");
+    if(command.type!=="ride")setToast(result.message);
+    return {accepted:true,message:result.message,state:saveRef.current.mountRidesV156??null};
   },[entry.ownerCreatedAt,screen,stationReturnScreen,archiveTransferBusy,archiveRecoveryIssue,campaignSaveBusy,resumableHunt,gameFocusedV89,settingsOpen,persistSocialProgress]);
 
   const recruitExpeditionHunter = useCallback((id: ExpeditionMemberId) => {
@@ -4840,7 +4860,7 @@ function GameSession({ entry, onMainMenu }: { entry: CampaignSessionEntry; onMai
               Réglages
             </button>
           </div>}
-      {screen === "mobility" && (<Suspense fallback={<DeferredGameScreen />}><MobilityGarage key={save.createdAt} save={save} suspended={settingsOpen || Boolean(trophyWorkshop) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy} onCommand={commitMobility} onMountCommand={commitMounts} onClose={() => go("homeworld")} onSound={playGameplaySound} /></Suspense>)}
+      {screen === "mobility" && (<Suspense fallback={<DeferredGameScreen />}><MobilityGarage key={save.createdAt} save={save} suspended={settingsOpen || Boolean(trophyWorkshop) || archiveTransferBusy || Boolean(archiveRecoveryIssue) || campaignSaveBusy} onCommand={commitMobility} onMountCommand={commitMounts} onRideCommand={commitMountRide} onClose={() => go("homeworld")} onSound={playGameplaySound} /></Suspense>)}
       {screen === "justice" && (
         <Suspense fallback={<DeferredGameScreen />}>
           <JusticePanel progress={save.justice} jurisdictionId={justiceJurisdiction}

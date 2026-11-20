@@ -677,6 +677,8 @@ export interface SaveGame {
   mobilityV1?: import("./systems/mobility/ledger").MobilityLedger | null;
   /** Optional MOB-012 mount register (V153), separate from mobilityV1; written only once a mount action is confirmed. */
   mountsV153?: import("./systems/mobility/mountsV153").MountsV153 | null;
+  /** Optional V156 mounted rides on the convoy yard, separate from mobilityV1; mountsV153 changes only on return. */
+  mountRidesV156?: import("./systems/mobility/mountRidingV156").MountRidesV156 | null;
   /** Null preserves pre-prologue adult campaigns without retroactive narrative proof. */
   prologue: NurseryCampaignProgress | null;
   /** Actual Unblooded exercises and equipment; never the adult starter loadout. */
